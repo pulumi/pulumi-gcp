@@ -2660,6 +2660,21 @@ export namespace apigee {
         enabled?: pulumi.Input<boolean>;
     }
 
+    export interface ApiMetaData {
+        /**
+         * Time at which the API proxy was created, in milliseconds since epoch.
+         */
+        createdAt?: pulumi.Input<string>;
+        /**
+         * Time at which the API proxy was most recently modified, in milliseconds since epoch.
+         */
+        lastModifiedAt?: pulumi.Input<string>;
+        /**
+         * The type of entity described
+         */
+        subType?: pulumi.Input<string>;
+    }
+
     export interface AppGroupAttribute {
         /**
          * Key of the attribute
@@ -4870,6 +4885,123 @@ export namespace assuredworkloads {
 }
 
 export namespace backupdisasterrecovery {
+    export interface BackupPlanAssociationRulesConfigInfo {
+        /**
+         * (Output)
+         * google.rpc.Status object to store the last backup error
+         * Structure is documented below.
+         */
+        lastBackupErrors?: pulumi.Input<pulumi.Input<inputs.backupdisasterrecovery.BackupPlanAssociationRulesConfigInfoLastBackupError>[]>;
+        /**
+         * (Output)
+         * State of last backup taken.
+         */
+        lastBackupState?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Backup Rule id fetched from backup plan.
+         */
+        ruleId?: pulumi.Input<string>;
+    }
+
+    export interface BackupPlanAssociationRulesConfigInfoLastBackupError {
+        /**
+         * (Output)
+         * The status code, which should be an enum value of [google.rpc.Code]
+         */
+        code?: pulumi.Input<number>;
+        /**
+         * (Output)
+         * A developer-facing error message, which should be in English.
+         */
+        message?: pulumi.Input<string>;
+    }
+
+    export interface BackupPlanBackupRule {
+        /**
+         * Configures the duration for which backup data will be kept. The value should be greater than or equal to minimum enforced retention of the backup vault.
+         */
+        backupRetentionDays: pulumi.Input<number>;
+        /**
+         * The unique ID of this `BackupRule`. The `ruleId` is unique per `BackupPlan`.
+         */
+        ruleId: pulumi.Input<string>;
+        /**
+         * StandardSchedule defines a schedule that runs within the confines of a defined window of days.
+         * Structure is documented below.
+         */
+        standardSchedule: pulumi.Input<inputs.backupdisasterrecovery.BackupPlanBackupRuleStandardSchedule>;
+    }
+
+    export interface BackupPlanBackupRuleStandardSchedule {
+        /**
+         * A BackupWindow defines the window of the day during which backup jobs will run. Jobs are queued at the beginning of the window and will be marked as
+         * `NOT_RUN` if they do not start by the end of the window.
+         * Structure is documented below.
+         */
+        backupWindow?: pulumi.Input<inputs.backupdisasterrecovery.BackupPlanBackupRuleStandardScheduleBackupWindow>;
+        /**
+         * Specifies days of months like 1, 5, or 14 on which jobs will run.
+         */
+        daysOfMonths?: pulumi.Input<pulumi.Input<number>[]>;
+        /**
+         * Specifies days of week like MONDAY or TUESDAY, on which jobs will run. This is required for `recurrenceType`, `WEEKLY` and is not applicable otherwise.
+         * Each value may be one of: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`.
+         */
+        daysOfWeeks?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Specifies frequency for hourly backups. An hourly frequency of 2 means jobs will run every 2 hours from start time till end time defined.
+         * This is required for `recurrenceType`, `HOURLY` and is not applicable otherwise.
+         */
+        hourlyFrequency?: pulumi.Input<number>;
+        /**
+         * Specifies values of months
+         * Each value may be one of: `MONTH_UNSPECIFIED`, `JANUARY`, `FEBRUARY`, `MARCH`, `APRIL`, `MAY`, `JUNE`, `JULY`, `AUGUST`, `SEPTEMBER`, `OCTOBER`, `NOVEMBER`, `DECEMBER`.
+         */
+        months?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * RecurrenceType enumerates the applicable periodicity for the schedule.
+         * Possible values are: `HOURLY`, `DAILY`, `WEEKLY`, `MONTHLY`, `YEARLY`.
+         */
+        recurrenceType: pulumi.Input<string>;
+        /**
+         * The time zone to be used when interpreting the schedule.
+         */
+        timeZone: pulumi.Input<string>;
+        /**
+         * Specifies a week day of the month like FIRST SUNDAY or LAST MONDAY, on which jobs will run.
+         * Structure is documented below.
+         */
+        weekDayOfMonth?: pulumi.Input<inputs.backupdisasterrecovery.BackupPlanBackupRuleStandardScheduleWeekDayOfMonth>;
+    }
+
+    export interface BackupPlanBackupRuleStandardScheduleBackupWindow {
+        /**
+         * The hour of the day (1-24) when the window ends, for example, if the value of end hour of the day is 10, that means the backup window end time is 10:00.
+         * The end hour of the day should be greater than the start
+         *
+         * - - -
+         */
+        endHourOfDay?: pulumi.Input<number>;
+        /**
+         * The hour of the day (0-23) when the window starts, for example, if the value of the start hour of the day is 6, that means the backup window starts at 6:00.
+         */
+        startHourOfDay: pulumi.Input<number>;
+    }
+
+    export interface BackupPlanBackupRuleStandardScheduleWeekDayOfMonth {
+        /**
+         * Specifies the day of the week.
+         * Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+         */
+        dayOfWeek: pulumi.Input<string>;
+        /**
+         * WeekOfMonth enumerates possible weeks in the month, e.g. the first, third, or last week of the month.
+         * Possible values are: `WEEK_OF_MONTH_UNSPECIFIED`, `FIRST`, `SECOND`, `THIRD`, `FOURTH`, `LAST`.
+         */
+        weekOfMonth: pulumi.Input<string>;
+    }
+
     export interface ManagementServerManagementUri {
         /**
          * (Output)
@@ -13789,6 +13921,11 @@ export namespace cloudrunv2 {
          */
         bucket: pulumi.Input<string>;
         /**
+         * A list of flags to pass to the gcsfuse command for configuring this volume.
+         * Flags should be passed without leading dashes.
+         */
+        mountOptions?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
          * If true, mount this volume as read-only in all mounts. If false, mount this volume as read-write.
          */
         readOnly?: pulumi.Input<boolean>;
@@ -14461,6 +14598,11 @@ export namespace cloudrunv2 {
          * GCS Bucket name
          */
         bucket: pulumi.Input<string>;
+        /**
+         * A list of flags to pass to the gcsfuse command for configuring this volume.
+         * Flags should be passed without leading dashes.
+         */
+        mountOptions?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * If true, mount the GCS bucket as read-only
          */
@@ -15727,7 +15869,7 @@ export namespace compute {
 
     export interface AutoscalerAutoscalingPolicyScaleDownControl {
         /**
-         * A nested object resource
+         * A nested object resource.
          * Structure is documented below.
          */
         maxScaledDownReplicas?: pulumi.Input<inputs.compute.AutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas>;
@@ -15753,7 +15895,7 @@ export namespace compute {
 
     export interface AutoscalerAutoscalingPolicyScaleInControl {
         /**
-         * A nested object resource
+         * A nested object resource.
          * Structure is documented below.
          */
         maxScaledInReplicas?: pulumi.Input<inputs.compute.AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicas>;
@@ -16750,60 +16892,64 @@ export namespace compute {
 
     export interface FirewallPolicyRuleMatch {
         /**
-         * Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10. Destination address groups is only supported in Egress rules.
+         * Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10.
          */
         destAddressGroups?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Domain names that will be used to match against the resolved domain name of destination of traffic. Can only be specified if DIRECTION is egress.
+         * Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 100.
          */
         destFqdns?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
+         * CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
          */
         destIpRanges?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is egress.
+         * Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of dest region codes allowed is 5000.
          */
         destRegionCodes?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Name of the Google Cloud Threat Intelligence list.
+         * Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic destination.
          */
         destThreatIntelligences?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * Pairs of IP protocols and ports that the rule should match.
+         * Structure is documented below.
          */
         layer4Configs: pulumi.Input<pulumi.Input<inputs.compute.FirewallPolicyRuleMatchLayer4Config>[]>;
         /**
-         * Address groups which should be matched against the traffic source. Maximum number of source address groups is 10. Source address groups is only supported in Ingress rules.
+         * Address groups which should be matched against the traffic source. Maximum number of source address groups is 10.
          */
         srcAddressGroups?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Domain names that will be used to match against the resolved domain name of source of traffic. Can only be specified if DIRECTION is ingress.
+         * Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 100.
          */
         srcFqdns?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
+         * CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
          */
         srcIpRanges?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is ingress.
+         * Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of source region codes allowed is 5000.
          */
         srcRegionCodes?: pulumi.Input<pulumi.Input<string>[]>;
         /**
-         * Name of the Google Cloud Threat Intelligence list.
+         * Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
          *
-         * The `layer4Configs` block supports:
+         *
+         * <a name="nestedLayer4Configs"></a>The `layer4Configs` block supports:
          */
         srcThreatIntelligences?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface FirewallPolicyRuleMatchLayer4Config {
         /**
-         * The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule. This value can either be one of the following well known protocol strings (`tcp`, `udp`, `icmp`, `esp`, `ah`, `ipip`, `sctp`), or the IP protocol number.
+         * The IP protocol to which this rule applies. The protocol type is required when creating a firewall rule.
+         * This value can either be one of the following well known protocol strings (tcp, udp, icmp, esp, ah, ipip, sctp), or the IP protocol number.
          */
         ipProtocol: pulumi.Input<string>;
         /**
-         * An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port. Example inputs include: ``.
+         * An optional list of ports to which this rule applies. This field is only applicable for UDP or TCP protocol. Each entry must be either an integer or a range. If not specified, this rule applies to connections through any port.
+         * Example inputs include: ["22"], ["80","443"], and ["12345-12349"].
          */
         ports?: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -20699,6 +20845,21 @@ export namespace compute {
         acceleratorType?: pulumi.Input<string>;
     }
 
+    export interface NodeTemplateDisk {
+        /**
+         * Specifies the number of such disks.
+         */
+        diskCount?: pulumi.Input<number>;
+        /**
+         * Specifies the size of the disk in base-2 GB.
+         */
+        diskSizeGb?: pulumi.Input<number>;
+        /**
+         * Specifies the desired disk type on the node. This disk type must be a local storage type (e.g.: local-ssd). Note that for nodeTemplates, this should be the name of the disk type and not its URL.
+         */
+        diskType?: pulumi.Input<string>;
+    }
+
     export interface NodeTemplateNodeTypeFlexibility {
         /**
          * Number of virtual CPUs to use.
@@ -21133,7 +21294,7 @@ export namespace compute {
 
     export interface RegionAutoscalerAutoscalingPolicyScaleDownControl {
         /**
-         * A nested object resource
+         * A nested object resource.
          * Structure is documented below.
          */
         maxScaledDownReplicas?: pulumi.Input<inputs.compute.RegionAutoscalerAutoscalingPolicyScaleDownControlMaxScaledDownReplicas>;
@@ -21159,7 +21320,7 @@ export namespace compute {
 
     export interface RegionAutoscalerAutoscalingPolicyScaleInControl {
         /**
-         * A nested object resource
+         * A nested object resource.
          * Structure is documented below.
          */
         maxScaledInReplicas?: pulumi.Input<inputs.compute.RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicas>;
@@ -22205,13 +22366,11 @@ export namespace compute {
 
     export interface RegionInstanceGroupManagerAllInstancesConfig {
         /**
-         * , The label key-value pairs that you want to patch onto the instance.
-         *
-         * - - -
+         * The label key-value pairs that you want to patch onto the instance,
          */
         labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
         /**
-         * , The metadata key-value pairs that you want to patch onto the instance. For more information, see [Project and instance metadata](https://cloud.google.com/compute/docs/metadata#project_and_instance_metadata).
+         * The metadata key-value pairs that you want to patch onto the instance. For more information, see Project and instance metadata,
          */
         metadata?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
@@ -22228,11 +22387,37 @@ export namespace compute {
         initialDelaySec: pulumi.Input<number>;
     }
 
+    export interface RegionInstanceGroupManagerInstanceFlexibilityPolicy {
+        /**
+         * Named instance selections configuring properties that the group will use when creating new VMs.
+         */
+        instanceSelections?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection>[]>;
+    }
+
+    export interface RegionInstanceGroupManagerInstanceFlexibilityPolicyInstanceSelection {
+        /**
+         * Full machine-type names, e.g. "n1-standard-16"
+         */
+        machineTypes: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The name of the instance group manager. Must be 1-63
+         * characters long and comply with
+         * [RFC1035](https://www.ietf.org/rfc/rfc1035.txt). Supported characters
+         * include lowercase letters, numbers, and hyphens.
+         */
+        name: pulumi.Input<string>;
+        /**
+         * Preference of this instance selection. Lower number means higher preference. MIG will first try to create a VM based on the machine-type with lowest rank and fallback to next rank based on availability. Machine types and instance selections with the same rank have the same preference.
+         */
+        rank?: pulumi.Input<number>;
+    }
+
     export interface RegionInstanceGroupManagerInstanceLifecyclePolicy {
         /**
          * , Default behavior for all instance or health check failures. Valid options are: `REPAIR`, `DO_NOTHING`. If `DO_NOTHING` then instances will not be repaired. If `REPAIR` (default), then failed instances will be repaired.
          *
          * - - -
+         * <a name="nestedInstanceFlexibilityPolicy"></a>The `instanceFlexibilityPolicy` block supports:
          */
         defaultActionOnFailure?: pulumi.Input<string>;
         /**
@@ -23661,6 +23846,331 @@ export namespace compute {
         address?: pulumi.Input<string>;
     }
 
+    export interface RegionResizeRequestRequestedRunDuration {
+        /**
+         * Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
+         */
+        nanos?: pulumi.Input<number>;
+        /**
+         * Span of time at a resolution of a second. Must be from 600 to 604800 inclusive. Note: minimum and maximum allowed range for requestedRunDuration is 10 minutes (600 seconds) and 7 days(604800 seconds) correspondingly.
+         */
+        seconds: pulumi.Input<string>;
+    }
+
+    export interface RegionResizeRequestStatus {
+        /**
+         * (Output)
+         * Fatal errors encountered during the queueing or provisioning phases of the ResizeRequest that caused the transition to the FAILED state. Contrary to the lastAttempt errors, this field is final and errors are never removed from here, as the ResizeRequest is not going to retry.
+         * Structure is documented below.
+         */
+        errors?: pulumi.Input<pulumi.Input<inputs.compute.RegionResizeRequestStatusError>[]>;
+        /**
+         * (Output)
+         * Information about the last attempt to fulfill the request. The value is temporary since the ResizeRequest can retry, as long as it's still active and the last attempt value can either be cleared or replaced with a different error. Since ResizeRequest retries infrequently, the value may be stale and no longer show an active problem. The value is cleared when ResizeRequest transitions to the final state (becomes inactive). If the final state is FAILED the error describing it will be storred in the "error" field only.
+         * Structure is documented below.
+         */
+        lastAttempts?: pulumi.Input<pulumi.Input<inputs.compute.RegionResizeRequestStatusLastAttempt>[]>;
+    }
+
+    export interface RegionResizeRequestStatusError {
+        /**
+         * (Output)
+         * The array of errors encountered while processing this operation.
+         * Structure is documented below.
+         */
+        errors?: pulumi.Input<pulumi.Input<inputs.compute.RegionResizeRequestStatusErrorError>[]>;
+    }
+
+    export interface RegionResizeRequestStatusErrorError {
+        /**
+         * (Output)
+         * The error type identifier for this error.
+         */
+        code?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * An array of messages that contain the error details. There is a set of defined message types to use for providing details.The syntax depends on the error code. For example, QuotaExceededInfo will have details when the error code is QUOTA_EXCEEDED.
+         * Structure is documented below.
+         */
+        errorDetails?: pulumi.Input<pulumi.Input<inputs.compute.RegionResizeRequestStatusErrorErrorErrorDetail>[]>;
+        /**
+         * (Output)
+         * Indicates the field in the request that caused the error. This property is optional.
+         */
+        location?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The localized error message in the above locale.
+         */
+        message?: pulumi.Input<string>;
+    }
+
+    export interface RegionResizeRequestStatusErrorErrorErrorDetail {
+        /**
+         * (Output)
+         * A nested object resource.
+         * Structure is documented below.
+         */
+        errorInfos?: pulumi.Input<pulumi.Input<inputs.compute.RegionResizeRequestStatusErrorErrorErrorDetailErrorInfo>[]>;
+        /**
+         * (Output)
+         * A nested object resource.
+         * Structure is documented below.
+         */
+        helps?: pulumi.Input<pulumi.Input<inputs.compute.RegionResizeRequestStatusErrorErrorErrorDetailHelp>[]>;
+        /**
+         * (Output)
+         * A nested object resource.
+         * Structure is documented below.
+         */
+        localizedMessages?: pulumi.Input<pulumi.Input<inputs.compute.RegionResizeRequestStatusErrorErrorErrorDetailLocalizedMessage>[]>;
+        /**
+         * (Output)
+         * A nested object resource.
+         * Structure is documented below.
+         */
+        quotaInfos?: pulumi.Input<pulumi.Input<inputs.compute.RegionResizeRequestStatusErrorErrorErrorDetailQuotaInfo>[]>;
+    }
+
+    export interface RegionResizeRequestStatusErrorErrorErrorDetailErrorInfo {
+        /**
+         * (Output)
+         * The logical grouping to which the "reason" belongs. The error domain is typically the registered service name of the tool or product that generates the error. Example: "pubsub.googleapis.com".
+         */
+        domain?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Additional structured details about this error.
+         */
+        metadatas?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * (Output)
+         * The reason of the error. This is a constant value that identifies the proximate cause of the error. Error reasons are unique within a particular domain of errors.
+         */
+        reason?: pulumi.Input<string>;
+    }
+
+    export interface RegionResizeRequestStatusErrorErrorErrorDetailHelp {
+        /**
+         * (Output)
+         * A nested object resource.
+         * Structure is documented below.
+         */
+        links?: pulumi.Input<pulumi.Input<inputs.compute.RegionResizeRequestStatusErrorErrorErrorDetailHelpLink>[]>;
+    }
+
+    export interface RegionResizeRequestStatusErrorErrorErrorDetailHelpLink {
+        /**
+         * An optional description of this resize-request.
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The URL of the link.
+         */
+        url?: pulumi.Input<string>;
+    }
+
+    export interface RegionResizeRequestStatusErrorErrorErrorDetailLocalizedMessage {
+        /**
+         * (Output)
+         * The locale used following the specification defined at https://www.rfc-editor.org/rfc/bcp/bcp47.txt. Examples are: "en-US", "fr-CH", "es-MX"
+         */
+        locale?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The localized error message in the above locale.
+         */
+        message?: pulumi.Input<string>;
+    }
+
+    export interface RegionResizeRequestStatusErrorErrorErrorDetailQuotaInfo {
+        /**
+         * (Output)
+         * The map holding related quota dimensions
+         */
+        dimensions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * (Output)
+         * Future quota limit being rolled out. The limit's unit depends on the quota type or metric.
+         */
+        futureLimit?: pulumi.Input<number>;
+        /**
+         * (Output)
+         * Current effective quota limit. The limit's unit depends on the quota type or metric.
+         */
+        limit?: pulumi.Input<number>;
+        /**
+         * (Output)
+         * The name of the quota limit.
+         */
+        limitName?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The Compute Engine quota metric name.
+         */
+        metricName?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Rollout status of the future quota limit.
+         */
+        rolloutStatus?: pulumi.Input<string>;
+    }
+
+    export interface RegionResizeRequestStatusLastAttempt {
+        /**
+         * (Output)
+         * Fatal errors encountered during the queueing or provisioning phases of the ResizeRequest that caused the transition to the FAILED state. Contrary to the lastAttempt errors, this field is final and errors are never removed from here, as the ResizeRequest is not going to retry.
+         * Structure is documented below.
+         */
+        errors?: pulumi.Input<pulumi.Input<inputs.compute.RegionResizeRequestStatusLastAttemptError>[]>;
+    }
+
+    export interface RegionResizeRequestStatusLastAttemptError {
+        /**
+         * (Output)
+         * The array of errors encountered while processing this operation.
+         * Structure is documented below.
+         */
+        errors?: pulumi.Input<pulumi.Input<inputs.compute.RegionResizeRequestStatusLastAttemptErrorError>[]>;
+    }
+
+    export interface RegionResizeRequestStatusLastAttemptErrorError {
+        /**
+         * (Output)
+         * The error type identifier for this error.
+         */
+        code?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * An array of messages that contain the error details. There is a set of defined message types to use for providing details.The syntax depends on the error code. For example, QuotaExceededInfo will have details when the error code is QUOTA_EXCEEDED.
+         * Structure is documented below.
+         */
+        errorDetails?: pulumi.Input<pulumi.Input<inputs.compute.RegionResizeRequestStatusLastAttemptErrorErrorErrorDetail>[]>;
+        /**
+         * (Output)
+         * Indicates the field in the request that caused the error. This property is optional.
+         */
+        location?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The localized error message in the above locale.
+         */
+        message?: pulumi.Input<string>;
+    }
+
+    export interface RegionResizeRequestStatusLastAttemptErrorErrorErrorDetail {
+        /**
+         * (Output)
+         * A nested object resource.
+         * Structure is documented below.
+         */
+        errorInfos?: pulumi.Input<pulumi.Input<inputs.compute.RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailErrorInfo>[]>;
+        /**
+         * (Output)
+         * A nested object resource.
+         * Structure is documented below.
+         */
+        helps?: pulumi.Input<pulumi.Input<inputs.compute.RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelp>[]>;
+        /**
+         * (Output)
+         * A nested object resource.
+         * Structure is documented below.
+         */
+        localizedMessages?: pulumi.Input<pulumi.Input<inputs.compute.RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailLocalizedMessage>[]>;
+        /**
+         * (Output)
+         * A nested object resource.
+         * Structure is documented below.
+         */
+        quotaInfos?: pulumi.Input<pulumi.Input<inputs.compute.RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailQuotaInfo>[]>;
+    }
+
+    export interface RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailErrorInfo {
+        /**
+         * (Output)
+         * The logical grouping to which the "reason" belongs. The error domain is typically the registered service name of the tool or product that generates the error. Example: "pubsub.googleapis.com".
+         */
+        domain?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Additional structured details about this error.
+         */
+        metadatas?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * (Output)
+         * The reason of the error. This is a constant value that identifies the proximate cause of the error. Error reasons are unique within a particular domain of errors.
+         */
+        reason?: pulumi.Input<string>;
+    }
+
+    export interface RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelp {
+        /**
+         * (Output)
+         * A nested object resource.
+         * Structure is documented below.
+         */
+        links?: pulumi.Input<pulumi.Input<inputs.compute.RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpLink>[]>;
+    }
+
+    export interface RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpLink {
+        /**
+         * An optional description of this resize-request.
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The URL of the link.
+         */
+        url?: pulumi.Input<string>;
+    }
+
+    export interface RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailLocalizedMessage {
+        /**
+         * (Output)
+         * The locale used following the specification defined at https://www.rfc-editor.org/rfc/bcp/bcp47.txt. Examples are: "en-US", "fr-CH", "es-MX"
+         */
+        locale?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The localized error message in the above locale.
+         */
+        message?: pulumi.Input<string>;
+    }
+
+    export interface RegionResizeRequestStatusLastAttemptErrorErrorErrorDetailQuotaInfo {
+        /**
+         * (Output)
+         * The map holding related quota dimensions
+         */
+        dimensions?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * (Output)
+         * Future quota limit being rolled out. The limit's unit depends on the quota type or metric.
+         */
+        futureLimit?: pulumi.Input<number>;
+        /**
+         * (Output)
+         * Current effective quota limit. The limit's unit depends on the quota type or metric.
+         */
+        limit?: pulumi.Input<number>;
+        /**
+         * (Output)
+         * The name of the quota limit.
+         */
+        limitName?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The Compute Engine quota metric name.
+         */
+        metricName?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Rollout status of the future quota limit.
+         */
+        rolloutStatus?: pulumi.Input<string>;
+    }
+
     export interface RegionSecurityPolicyDdosProtectionConfig {
         /**
          * Google Cloud Armor offers the following options to help protect systems against DDoS attacks:
@@ -23670,6 +24180,61 @@ export namespace compute {
          * Possible values are: `ADVANCED`, `ADVANCED_PREVIEW`, `STANDARD`.
          */
         ddosProtection: pulumi.Input<string>;
+    }
+
+    export interface RegionSecurityPolicyRule {
+        /**
+         * The Action to perform when the rule is matched. The following are the valid actions:
+         * * allow: allow access to target.
+         * * deny(STATUS): deny access to target, returns the HTTP response code specified. Valid values for STATUS are 403, 404, and 502.
+         * * rate_based_ban: limit client traffic to the configured threshold and ban the client if the traffic exceeds the threshold. Configure parameters for this action in RateLimitOptions. Requires rateLimitOptions to be set.
+         * * redirect: redirect to a different target. This can either be an internal reCAPTCHA redirect, or an external URL-based redirect via a 302 response. Parameters for this action can be configured via redirectOptions. This action is only supported in Global Security Policies of type CLOUD_ARMOR.
+         * * throttle: limit client traffic to the configured threshold. Configure parameters for this action in rateLimitOptions. Requires rateLimitOptions to be set for this.
+         */
+        action: pulumi.Input<string>;
+        /**
+         * An optional description of this resource. Provide this property when you create the resource.
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * A match condition that incoming traffic is evaluated against.
+         * If it evaluates to true, the corresponding 'action' is enforced.
+         * Structure is documented below.
+         */
+        match?: pulumi.Input<inputs.compute.RegionSecurityPolicyRuleMatch>;
+        /**
+         * A match condition that incoming packets are evaluated against for CLOUD_ARMOR_NETWORK security policies. If it matches, the corresponding 'action' is enforced.
+         * The match criteria for a rule consists of built-in match fields (like 'srcIpRanges') and potentially multiple user-defined match fields ('userDefinedFields').
+         * Field values may be extracted directly from the packet or derived from it (e.g. 'srcRegionCodes'). Some fields may not be present in every packet (e.g. 'srcPorts'). A user-defined field is only present if the base header is found in the packet and the entire field is in bounds.
+         * Each match field may specify which values can match it, listing one or more ranges, prefixes, or exact values that are considered a match for the field. A field value must be present in order to match a specified match field. If no match values are specified for a match field, then any field value is considered to match it, and it's not required to be present. For strings specifying '*' is also equivalent to match all.
+         * For a packet to match a rule, all specified match fields must match the corresponding field values derived from the packet.
+         * Example:
+         * networkMatch: srcIpRanges: - "192.0.2.0/24" - "198.51.100.0/24" userDefinedFields: - name: "ipv4FragmentOffset" values: - "1-0x1fff"
+         * The above match condition matches packets with a source IP in 192.0.2.0/24 or 198.51.100.0/24 and a user-defined field named "ipv4FragmentOffset" with a value between 1 and 0x1fff inclusive
+         * Structure is documented below.
+         */
+        networkMatch?: pulumi.Input<inputs.compute.RegionSecurityPolicyRuleNetworkMatch>;
+        /**
+         * Preconfigured WAF configuration to be applied for the rule.
+         * If the rule does not evaluate preconfigured WAF rules, i.e., if evaluatePreconfiguredWaf() is not used, this field will have no effect.
+         * Structure is documented below.
+         */
+        preconfiguredWafConfig?: pulumi.Input<inputs.compute.RegionSecurityPolicyRulePreconfiguredWafConfig>;
+        /**
+         * If set to true, the specified action is not enforced.
+         */
+        preview?: pulumi.Input<boolean>;
+        /**
+         * An integer indicating the priority of a rule in the list.
+         * The priority must be a positive value between 0 and 2147483647.
+         * Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest priority.
+         */
+        priority: pulumi.Input<number>;
+        /**
+         * Must be specified if the action is "rateBasedBan" or "throttle". Cannot be specified for any other actions.
+         * Structure is documented below.
+         */
+        rateLimitOptions?: pulumi.Input<inputs.compute.RegionSecurityPolicyRuleRateLimitOptions>;
     }
 
     export interface RegionSecurityPolicyRuleMatch {
@@ -23991,7 +24556,7 @@ export namespace compute {
          */
         mask?: pulumi.Input<string>;
         /**
-         * The name of this field. Must be unique within the policy.
+         * Name of the user-defined field, as given in the definition.
          */
         name?: pulumi.Input<string>;
         /**
@@ -26363,7 +26928,7 @@ export namespace compute {
 
     export interface RouterPeerCustomLearnedIpRange {
         /**
-         * The IP range to advertise. The value must be a
+         * The IP range to learn. The value must be a
          * CIDR-formatted string.
          */
         range: pulumi.Input<string>;
@@ -30224,6 +30789,16 @@ export namespace container {
          */
         networkPolicyConfig?: pulumi.Input<inputs.container.ClusterAddonsConfigNetworkPolicyConfig>;
         /**
+         * The status of the Parallelstore CSI driver addon,
+         * which allows the usage of a Parallelstore instances as volumes.
+         * It is disabled by default for Standard clusters; set `enabled = true` to enable.
+         * It is enabled by default for Autopilot clusters with version 1.29 or later; set `enabled = true` to enable it explicitly.
+         * See [Enable the Parallelstore CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/parallelstore-csi-new-volume#enable) for more information.
+         *
+         * This example `addonsConfig` disables two addons:
+         */
+        parallelstoreCsiDriverConfig?: pulumi.Input<inputs.container.ClusterAddonsConfigParallelstoreCsiDriverConfig>;
+        /**
          * . The status of the [Ray Operator
          * addon](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/concepts/overview).
          * It is disabled by default. Set `enabled = true` to enable. The minimum
@@ -30236,9 +30811,6 @@ export namespace container {
          * clusters on
          * GKE](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/how-to/collect-view-logs-metrics)
          * for more information.
-         *
-         *
-         * This example `addonsConfig` disables two addons:
          */
         rayOperatorConfigs?: pulumi.Input<pulumi.Input<inputs.container.ClusterAddonsConfigRayOperatorConfig>[]>;
         /**
@@ -30326,6 +30898,10 @@ export namespace container {
          * <a name="nestedClusterTelemetry"></a>The `clusterTelemetry` block supports
          */
         disabled: pulumi.Input<boolean>;
+    }
+
+    export interface ClusterAddonsConfigParallelstoreCsiDriverConfig {
+        enabled: pulumi.Input<boolean>;
     }
 
     export interface ClusterAddonsConfigRayOperatorConfig {
@@ -30572,6 +31148,24 @@ export namespace container {
          * enforce encryption of data in-use.
          */
         enabled: pulumi.Input<boolean>;
+    }
+
+    export interface ClusterControlPlaneEndpointsConfig {
+        /**
+         * DNS endpoint configuration.
+         */
+        dnsEndpointConfig?: pulumi.Input<inputs.container.ClusterControlPlaneEndpointsConfigDnsEndpointConfig>;
+    }
+
+    export interface ClusterControlPlaneEndpointsConfigDnsEndpointConfig {
+        /**
+         * Controls whether user traffic is allowed over this endpoint. Note that GCP-managed services may still use the endpoint even if this is false.
+         */
+        allowExternalTraffic?: pulumi.Input<boolean>;
+        /**
+         * The cluster's DNS endpoint.
+         */
+        endpoint?: pulumi.Input<string>;
     }
 
     export interface ClusterCostManagementConfig {
@@ -30889,6 +31483,10 @@ export namespace container {
          * accessible via Google Compute Engine Public IPs.
          */
         gcpPublicCidrsAccessEnabled?: pulumi.Input<boolean>;
+        /**
+         * Whether authorized networks is enforced on the private endpoint or not. Defaults to false.
+         */
+        privateEndpointEnforcementEnabled?: pulumi.Input<boolean>;
     }
 
     export interface ClusterMasterAuthorizedNetworksConfigCidrBlock {
@@ -32647,6 +33245,41 @@ export namespace container {
          * Whether to use service networking for Cloud TPU or not
          */
         useServiceNetworking?: pulumi.Input<boolean>;
+    }
+
+    export interface ClusterUserManagedKeysConfig {
+        /**
+         * The Certificate Authority Service caPool to use for the aggreation CA in this cluster.
+         */
+        aggregationCa?: pulumi.Input<string>;
+        /**
+         * The Certificate Authority Service caPool to use for the cluster CA in this cluster.
+         */
+        clusterCa?: pulumi.Input<string>;
+        /**
+         * The Cloud KMS cryptoKey to use for Confidential Hyperdisk on the control plane nodes.
+         */
+        controlPlaneDiskEncryptionKey?: pulumi.Input<string>;
+        /**
+         * The Certificate Authority Service caPool to use for the etcd API CA in this cluster.
+         */
+        etcdApiCa?: pulumi.Input<string>;
+        /**
+         * The Certificate Authority Service caPool to use for the etcd peer CA in this cluster.
+         */
+        etcdPeerCa?: pulumi.Input<string>;
+        /**
+         * Resource path of the Cloud KMS cryptoKey to use for encryption of internal etcd backups.
+         */
+        gkeopsEtcdBackupEncryptionKey?: pulumi.Input<string>;
+        /**
+         * The Cloud KMS cryptoKeyVersions to use for signing service account JWTs issued by this cluster.
+         */
+        serviceAccountSigningKeys?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The Cloud KMS cryptoKeyVersions to use for verifying service account JWTs issued by this cluster.
+         */
+        serviceAccountVerificationKeys?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface ClusterVerticalPodAutoscaling {
@@ -42859,6 +43492,27 @@ export namespace dataproc {
         properties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     }
 
+    export interface GdcApplicationEnvironmentSparkApplicationEnvironmentConfig {
+        /**
+         * A map of default Spark properties to apply to workloads in this application environment. These defaults may be overridden by per-application properties.
+         */
+        defaultProperties?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * The default Dataproc version to use for applications submitted to this application environment
+         */
+        defaultVersion?: pulumi.Input<string>;
+    }
+
+    export interface GdcServiceInstanceGdceCluster {
+        /**
+         * Gdce cluster resource id.
+         */
+        gdceCluster: pulumi.Input<string>;
+    }
+
+    export interface GdcServiceInstanceSparkServiceInstanceConfig {
+    }
+
     export interface JobHadoopConfig {
         /**
          * HCFS URIs of archives to be extracted in the working directory of .jar, .tar, .tar.gz, .tgz, and .zip.
@@ -52293,7 +52947,7 @@ export namespace gkeonprem {
 
     export interface BareMetalAdminClusterLoadBalancer {
         /**
-         * A nested object resource
+         * A nested object resource.
          * Structure is documented below.
          */
         manualLbConfig?: pulumi.Input<inputs.gkeonprem.BareMetalAdminClusterLoadBalancerManualLbConfig>;
@@ -52342,7 +52996,7 @@ export namespace gkeonprem {
 
     export interface BareMetalAdminClusterNetworkConfig {
         /**
-         * A nested object resource
+         * A nested object resource.
          * Structure is documented below.
          */
         islandModeCidr?: pulumi.Input<inputs.gkeonprem.BareMetalAdminClusterNetworkConfigIslandModeCidr>;
@@ -52699,12 +53353,12 @@ export namespace gkeonprem {
          */
         bgpLbConfig?: pulumi.Input<inputs.gkeonprem.BareMetalClusterLoadBalancerBgpLbConfig>;
         /**
-         * A nested object resource
+         * A nested object resource.
          * Structure is documented below.
          */
         manualLbConfig?: pulumi.Input<inputs.gkeonprem.BareMetalClusterLoadBalancerManualLbConfig>;
         /**
-         * A nested object resource
+         * A nested object resource.
          * Structure is documented below.
          */
         metalLbConfig?: pulumi.Input<inputs.gkeonprem.BareMetalClusterLoadBalancerMetalLbConfig>;
@@ -53053,7 +53707,7 @@ export namespace gkeonprem {
          */
         advancedNetworking?: pulumi.Input<boolean>;
         /**
-         * A nested object resource
+         * A nested object resource.
          * Structure is documented below.
          */
         islandModeCidr?: pulumi.Input<inputs.gkeonprem.BareMetalClusterNetworkConfigIslandModeCidr>;
@@ -54600,6 +55254,44 @@ export namespace iam {
          * This can be used e.g. in UIs which allow to enter the expression.
          */
         title?: pulumi.Input<string>;
+    }
+
+    export interface PrincipalAccessBoundaryPolicyDetails {
+        /**
+         * The version number that indicates which Google Cloud services
+         * are included in the enforcement (e.g. \"latest\", \"1\", ...). If empty, the
+         * PAB policy version will be set to the current latest version, and this version
+         * won't get updated when new versions are released.
+         */
+        enforcementVersion?: pulumi.Input<string>;
+        /**
+         * A list of principal access boundary policy rules. The number of rules in a policy is limited to 500.
+         * Structure is documented below.
+         */
+        rules: pulumi.Input<pulumi.Input<inputs.iam.PrincipalAccessBoundaryPolicyDetailsRule>[]>;
+    }
+
+    export interface PrincipalAccessBoundaryPolicyDetailsRule {
+        /**
+         * The description of the principal access boundary policy rule. Must be less than or equal to 256 characters.
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * The access relationship of principals to the resources in this rule.
+         * Possible values: ALLOW
+         */
+        effect: pulumi.Input<string>;
+        /**
+         * A list of Cloud Resource Manager resources. The resource
+         * and all the descendants are included. The number of resources in a policy
+         * is limited to 500 across all rules.
+         * The following resource types are supported:
+         * * Organizations, such as `//cloudresourcemanager.googleapis.com/organizations/123`.
+         * * Folders, such as `//cloudresourcemanager.googleapis.com/folders/123`.
+         * * Projects, such as `//cloudresourcemanager.googleapis.com/projects/123`
+         * or `//cloudresourcemanager.googleapis.com/projects/my-project-id`.
+         */
+        resources: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface WorkforcePoolAccessRestrictions {
@@ -57460,6 +58152,8 @@ export namespace looker {
         clientId: pulumi.Input<string>;
         /**
          * The client secret for the Oauth config.
+         *
+         * - - -
          */
         clientSecret: pulumi.Input<string>;
     }
@@ -66875,7 +67569,7 @@ export namespace redis {
 
     export interface ClusterStateInfo {
         /**
-         * A nested object resource
+         * A nested object resource.
          * Structure is documented below.
          */
         updateInfo?: pulumi.Input<inputs.redis.ClusterStateInfoUpdateInfo>;
@@ -68858,12 +69552,12 @@ export namespace spanner {
 
     export interface InstanceAutoscalingConfigAsymmetricAutoscalingOption {
         /**
-         * A nested object resource
+         * A nested object resource.
          * Structure is documented below.
          */
         overrides: pulumi.Input<inputs.spanner.InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides>;
         /**
-         * A nested object resource
+         * A nested object resource.
          * Structure is documented below.
          */
         replicaSelection: pulumi.Input<inputs.spanner.InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelection>;
@@ -68871,7 +69565,7 @@ export namespace spanner {
 
     export interface InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides {
         /**
-         * A nested object resource
+         * A nested object resource.
          * Structure is documented below.
          */
         autoscalingLimits: pulumi.Input<inputs.spanner.InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimits>;
@@ -69014,6 +69708,12 @@ export namespace sql {
          * certificate.
          */
         caCertificate?: pulumi.Input<string>;
+        /**
+         * Specifies if the replica is a cascadable replica. If true, instance must be in different region from primary.
+         *
+         * > **NOTE:** Only supported for SQL Server database.
+         */
+        cascadableReplica?: pulumi.Input<boolean>;
         /**
          * PEM representation of the replica's x509
          * certificate.
@@ -69862,7 +70562,7 @@ export namespace storage {
          */
         storageDestinationOptions: pulumi.Input<inputs.storage.InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptions>;
         /**
-         * A nested object resource
+         * A nested object resource.
          * Structure is documented below.
          */
         storageFilters?: pulumi.Input<inputs.storage.InsightsReportConfigObjectMetadataReportOptionsStorageFilters>;
@@ -71477,6 +72177,44 @@ export namespace vertex {
         description?: pulumi.Input<string>;
         expression: pulumi.Input<string>;
         title: pulumi.Input<string>;
+    }
+
+    export interface AiEndpointPredictRequestResponseLoggingConfig {
+        /**
+         * BigQuery table for logging. If only given a project, a new dataset will be created with name `logging_<endpoint-display-name>_<endpoint-id>` where will be made BigQuery-dataset-name compatible (e.g. most special characters will become underscores). If no table name is given, a new table will be created with name `requestResponseLogging`
+         * Structure is documented below.
+         */
+        bigqueryDestination?: pulumi.Input<inputs.vertex.AiEndpointPredictRequestResponseLoggingConfigBigqueryDestination>;
+        /**
+         * If logging is enabled or not.
+         */
+        enabled?: pulumi.Input<boolean>;
+        /**
+         * Percentage of requests to be logged, expressed as a fraction in range(0,1]
+         */
+        samplingRate?: pulumi.Input<number>;
+    }
+
+    export interface AiEndpointPredictRequestResponseLoggingConfigBigqueryDestination {
+        /**
+         * BigQuery URI to a project or table, up to 2000 characters long. When only the project is specified, the Dataset and Table is created. When the full table reference is specified, the Dataset must exist and table must not exist. Accepted forms: - BigQuery path. For example: `bq://projectId` or `bq://projectId.bqDatasetId` or `bq://projectId.bqDatasetId.bqTableId`.
+         */
+        outputUri?: pulumi.Input<string>;
+    }
+
+    export interface AiEndpointPrivateServiceConnectConfig {
+        /**
+         * Required. If true, expose the IndexEndpoint via private service connect.
+         */
+        enablePrivateServiceConnect: pulumi.Input<boolean>;
+        /**
+         * If set to true, enable secure private service connect with IAM authorization. Otherwise, private service connect will be done without authorization. Note latency will be slightly increased if authorization is enabled.
+         */
+        enableSecurePrivateServiceConnect?: pulumi.Input<boolean>;
+        /**
+         * A list of Projects from which the forwarding rule will target the service attachment.
+         */
+        projectAllowlists?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
     export interface AiFeatureGroupBigQuery {

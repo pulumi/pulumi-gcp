@@ -29,7 +29,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string? Mask;
         /// <summary>
-        /// The name of this field. Must be unique within the policy.
+        /// Name of the user-defined field, as given in the definition.
         /// </summary>
         public readonly string? Name;
         /// <summary>

@@ -631,7 +631,7 @@ class NetworkFirewallPolicyRule(pulumi.CustomResource):
             })
         basic_value = gcp.tags.TagValue("basic_value",
             description="For valuename resources.",
-            parent=basic_key.name.apply(lambda name: f"tagKeys/{name}"),
+            parent=basic_key.id,
             short_name="tagvalue")
         primary = gcp.compute.NetworkFirewallPolicyRule("primary",
             action="allow",
@@ -649,7 +649,7 @@ class NetworkFirewallPolicyRule(pulumi.CustomResource):
                 "src_region_codes": ["US"],
                 "src_threat_intelligences": ["iplist-known-malicious-ips"],
                 "src_secure_tags": [{
-                    "name": basic_value.name.apply(lambda name: f"tagValues/{name}"),
+                    "name": basic_value.id,
                 }],
                 "layer4_configs": [{
                     "ip_protocol": "all",
@@ -756,7 +756,7 @@ class NetworkFirewallPolicyRule(pulumi.CustomResource):
             })
         basic_value = gcp.tags.TagValue("basic_value",
             description="For valuename resources.",
-            parent=basic_key.name.apply(lambda name: f"tagKeys/{name}"),
+            parent=basic_key.id,
             short_name="tagvalue")
         primary = gcp.compute.NetworkFirewallPolicyRule("primary",
             action="allow",
@@ -774,7 +774,7 @@ class NetworkFirewallPolicyRule(pulumi.CustomResource):
                 "src_region_codes": ["US"],
                 "src_threat_intelligences": ["iplist-known-malicious-ips"],
                 "src_secure_tags": [{
-                    "name": basic_value.name.apply(lambda name: f"tagValues/{name}"),
+                    "name": basic_value.id,
                 }],
                 "layer4_configs": [{
                     "ip_protocol": "all",

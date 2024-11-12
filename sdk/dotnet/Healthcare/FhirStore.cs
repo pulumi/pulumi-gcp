@@ -319,7 +319,7 @@ namespace Pulumi.Gcp.Healthcare
 
         /// <summary>
         /// (Optional, Deprecated)
-        /// A nested object resource
+        /// A nested object resource.
         /// Structure is documented below.
         /// 
         /// &gt; **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
@@ -525,7 +525,7 @@ namespace Pulumi.Gcp.Healthcare
 
         /// <summary>
         /// (Optional, Deprecated)
-        /// A nested object resource
+        /// A nested object resource.
         /// Structure is documented below.
         /// 
         /// &gt; **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
@@ -703,7 +703,7 @@ namespace Pulumi.Gcp.Healthcare
 
         /// <summary>
         /// (Optional, Deprecated)
-        /// A nested object resource
+        /// A nested object resource.
         /// Structure is documented below.
         /// 
         /// &gt; **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.

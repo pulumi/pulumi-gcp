@@ -17,7 +17,7 @@ public final class RegionAutoscalerAutoscalingPolicyScaleInControlArgs extends c
     public static final RegionAutoscalerAutoscalingPolicyScaleInControlArgs Empty = new RegionAutoscalerAutoscalingPolicyScaleInControlArgs();
 
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -25,7 +25,7 @@ public final class RegionAutoscalerAutoscalingPolicyScaleInControlArgs extends c
     private @Nullable Output<RegionAutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicasArgs> maxScaledInReplicas;
 
     /**
-     * @return A nested object resource
+     * @return A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -76,7 +76,7 @@ public final class RegionAutoscalerAutoscalingPolicyScaleInControlArgs extends c
         }
 
         /**
-         * @param maxScaledInReplicas A nested object resource
+         * @param maxScaledInReplicas A nested object resource.
          * Structure is documented below.
          * 
          * @return builder
@@ -88,7 +88,7 @@ public final class RegionAutoscalerAutoscalingPolicyScaleInControlArgs extends c
         }
 
         /**
-         * @param maxScaledInReplicas A nested object resource
+         * @param maxScaledInReplicas A nested object resource.
          * Structure is documented below.
          * 
          * @return builder

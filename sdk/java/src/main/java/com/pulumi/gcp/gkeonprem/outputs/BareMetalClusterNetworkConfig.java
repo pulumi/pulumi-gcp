@@ -23,7 +23,7 @@ public final class BareMetalClusterNetworkConfig {
      */
     private @Nullable Boolean advancedNetworking;
     /**
-     * @return A nested object resource
+     * @return A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -53,7 +53,7 @@ public final class BareMetalClusterNetworkConfig {
         return Optional.ofNullable(this.advancedNetworking);
     }
     /**
-     * @return A nested object resource
+     * @return A nested object resource.
      * Structure is documented below.
      * 
      */

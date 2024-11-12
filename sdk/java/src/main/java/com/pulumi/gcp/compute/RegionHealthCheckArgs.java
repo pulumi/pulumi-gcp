@@ -58,7 +58,7 @@ public final class RegionHealthCheckArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -66,7 +66,7 @@ public final class RegionHealthCheckArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<RegionHealthCheckGrpcHealthCheckArgs> grpcHealthCheck;
 
     /**
-     * @return A nested object resource
+     * @return A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -92,7 +92,7 @@ public final class RegionHealthCheckArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -100,7 +100,7 @@ public final class RegionHealthCheckArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<RegionHealthCheckHttp2HealthCheckArgs> http2HealthCheck;
 
     /**
-     * @return A nested object resource
+     * @return A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -109,7 +109,7 @@ public final class RegionHealthCheckArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -117,7 +117,7 @@ public final class RegionHealthCheckArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<RegionHealthCheckHttpHealthCheckArgs> httpHealthCheck;
 
     /**
-     * @return A nested object resource
+     * @return A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -126,7 +126,7 @@ public final class RegionHealthCheckArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -134,7 +134,7 @@ public final class RegionHealthCheckArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<RegionHealthCheckHttpsHealthCheckArgs> httpsHealthCheck;
 
     /**
-     * @return A nested object resource
+     * @return A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -225,7 +225,7 @@ public final class RegionHealthCheckArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -233,7 +233,7 @@ public final class RegionHealthCheckArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<RegionHealthCheckSslHealthCheckArgs> sslHealthCheck;
 
     /**
-     * @return A nested object resource
+     * @return A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -242,7 +242,7 @@ public final class RegionHealthCheckArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -250,7 +250,7 @@ public final class RegionHealthCheckArgs extends com.pulumi.resources.ResourceAr
     private @Nullable Output<RegionHealthCheckTcpHealthCheckArgs> tcpHealthCheck;
 
     /**
-     * @return A nested object resource
+     * @return A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -379,7 +379,7 @@ public final class RegionHealthCheckArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param grpcHealthCheck A nested object resource
+         * @param grpcHealthCheck A nested object resource.
          * Structure is documented below.
          * 
          * @return builder
@@ -391,7 +391,7 @@ public final class RegionHealthCheckArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param grpcHealthCheck A nested object resource
+         * @param grpcHealthCheck A nested object resource.
          * Structure is documented below.
          * 
          * @return builder
@@ -425,7 +425,7 @@ public final class RegionHealthCheckArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param http2HealthCheck A nested object resource
+         * @param http2HealthCheck A nested object resource.
          * Structure is documented below.
          * 
          * @return builder
@@ -437,7 +437,7 @@ public final class RegionHealthCheckArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param http2HealthCheck A nested object resource
+         * @param http2HealthCheck A nested object resource.
          * Structure is documented below.
          * 
          * @return builder
@@ -448,7 +448,7 @@ public final class RegionHealthCheckArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param httpHealthCheck A nested object resource
+         * @param httpHealthCheck A nested object resource.
          * Structure is documented below.
          * 
          * @return builder
@@ -460,7 +460,7 @@ public final class RegionHealthCheckArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param httpHealthCheck A nested object resource
+         * @param httpHealthCheck A nested object resource.
          * Structure is documented below.
          * 
          * @return builder
@@ -471,7 +471,7 @@ public final class RegionHealthCheckArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param httpsHealthCheck A nested object resource
+         * @param httpsHealthCheck A nested object resource.
          * Structure is documented below.
          * 
          * @return builder
@@ -483,7 +483,7 @@ public final class RegionHealthCheckArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param httpsHealthCheck A nested object resource
+         * @param httpsHealthCheck A nested object resource.
          * Structure is documented below.
          * 
          * @return builder
@@ -600,7 +600,7 @@ public final class RegionHealthCheckArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param sslHealthCheck A nested object resource
+         * @param sslHealthCheck A nested object resource.
          * Structure is documented below.
          * 
          * @return builder
@@ -612,7 +612,7 @@ public final class RegionHealthCheckArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param sslHealthCheck A nested object resource
+         * @param sslHealthCheck A nested object resource.
          * Structure is documented below.
          * 
          * @return builder
@@ -623,7 +623,7 @@ public final class RegionHealthCheckArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param tcpHealthCheck A nested object resource
+         * @param tcpHealthCheck A nested object resource.
          * Structure is documented below.
          * 
          * @return builder
@@ -635,7 +635,7 @@ public final class RegionHealthCheckArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param tcpHealthCheck A nested object resource
+         * @param tcpHealthCheck A nested object resource.
          * Structure is documented below.
          * 
          * @return builder

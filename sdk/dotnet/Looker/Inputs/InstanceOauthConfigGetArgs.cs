@@ -20,6 +20,8 @@ namespace Pulumi.Gcp.Looker.Inputs
 
         /// <summary>
         /// The client secret for the Oauth config.
+        /// 
+        /// - - -
         /// </summary>
         [Input("clientSecret", required: true)]
         public Input<string> ClientSecret { get; set; } = null!;

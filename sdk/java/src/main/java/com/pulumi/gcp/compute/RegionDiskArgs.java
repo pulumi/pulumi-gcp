@@ -24,7 +24,7 @@ public final class RegionDiskArgs extends com.pulumi.resources.ResourceArgs {
     public static final RegionDiskArgs Empty = new RegionDiskArgs();
 
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -32,7 +32,7 @@ public final class RegionDiskArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<RegionDiskAsyncPrimaryDiskArgs> asyncPrimaryDisk;
 
     /**
-     * @return A nested object resource
+     * @return A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -433,7 +433,7 @@ public final class RegionDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param asyncPrimaryDisk A nested object resource
+         * @param asyncPrimaryDisk A nested object resource.
          * Structure is documented below.
          * 
          * @return builder
@@ -445,7 +445,7 @@ public final class RegionDiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param asyncPrimaryDisk A nested object resource
+         * @param asyncPrimaryDisk A nested object resource.
          * Structure is documented below.
          * 
          * @return builder

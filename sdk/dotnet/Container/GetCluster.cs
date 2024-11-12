@@ -147,6 +147,7 @@ namespace Pulumi.Gcp.Container
         public readonly string ClusterIpv4Cidr;
         public readonly ImmutableArray<Outputs.GetClusterClusterTelemetryResult> ClusterTelemetries;
         public readonly ImmutableArray<Outputs.GetClusterConfidentialNodeResult> ConfidentialNodes;
+        public readonly ImmutableArray<Outputs.GetClusterControlPlaneEndpointsConfigResult> ControlPlaneEndpointsConfigs;
         public readonly ImmutableArray<Outputs.GetClusterCostManagementConfigResult> CostManagementConfigs;
         public readonly ImmutableArray<Outputs.GetClusterDatabaseEncryptionResult> DatabaseEncryptions;
         public readonly string DatapathProvider;
@@ -219,6 +220,7 @@ namespace Pulumi.Gcp.Container
         public readonly string Subnetwork;
         public readonly ImmutableArray<Outputs.GetClusterTpuConfigResult> TpuConfigs;
         public readonly string TpuIpv4CidrBlock;
+        public readonly ImmutableArray<Outputs.GetClusterUserManagedKeysConfigResult> UserManagedKeysConfigs;
         public readonly ImmutableArray<Outputs.GetClusterVerticalPodAutoscalingResult> VerticalPodAutoscalings;
         public readonly ImmutableArray<Outputs.GetClusterWorkloadAltsConfigResult> WorkloadAltsConfigs;
         public readonly ImmutableArray<Outputs.GetClusterWorkloadIdentityConfigResult> WorkloadIdentityConfigs;
@@ -240,6 +242,8 @@ namespace Pulumi.Gcp.Container
             ImmutableArray<Outputs.GetClusterClusterTelemetryResult> clusterTelemetries,
 
             ImmutableArray<Outputs.GetClusterConfidentialNodeResult> confidentialNodes,
+
+            ImmutableArray<Outputs.GetClusterControlPlaneEndpointsConfigResult> controlPlaneEndpointsConfigs,
 
             ImmutableArray<Outputs.GetClusterCostManagementConfigResult> costManagementConfigs,
 
@@ -379,6 +383,8 @@ namespace Pulumi.Gcp.Container
 
             string tpuIpv4CidrBlock,
 
+            ImmutableArray<Outputs.GetClusterUserManagedKeysConfigResult> userManagedKeysConfigs,
+
             ImmutableArray<Outputs.GetClusterVerticalPodAutoscalingResult> verticalPodAutoscalings,
 
             ImmutableArray<Outputs.GetClusterWorkloadAltsConfigResult> workloadAltsConfigs,
@@ -393,6 +399,7 @@ namespace Pulumi.Gcp.Container
             ClusterIpv4Cidr = clusterIpv4Cidr;
             ClusterTelemetries = clusterTelemetries;
             ConfidentialNodes = confidentialNodes;
+            ControlPlaneEndpointsConfigs = controlPlaneEndpointsConfigs;
             CostManagementConfigs = costManagementConfigs;
             DatabaseEncryptions = databaseEncryptions;
             DatapathProvider = datapathProvider;
@@ -462,6 +469,7 @@ namespace Pulumi.Gcp.Container
             Subnetwork = subnetwork;
             TpuConfigs = tpuConfigs;
             TpuIpv4CidrBlock = tpuIpv4CidrBlock;
+            UserManagedKeysConfigs = userManagedKeysConfigs;
             VerticalPodAutoscalings = verticalPodAutoscalings;
             WorkloadAltsConfigs = workloadAltsConfigs;
             WorkloadIdentityConfigs = workloadIdentityConfigs;

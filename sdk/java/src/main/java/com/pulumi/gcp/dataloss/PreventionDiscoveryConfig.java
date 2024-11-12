@@ -172,7 +172,7 @@ public class PreventionDiscoveryConfig extends com.pulumi.resources.CustomResour
         return this.name;
     }
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -180,7 +180,7 @@ public class PreventionDiscoveryConfig extends com.pulumi.resources.CustomResour
     private Output</* @Nullable */ PreventionDiscoveryConfigOrgConfig> orgConfig;
 
     /**
-     * @return A nested object resource
+     * @return A nested object resource.
      * Structure is documented below.
      * 
      */

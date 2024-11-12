@@ -32,7 +32,7 @@ namespace Pulumi.Gcp.Storage.Inputs
         public Input<Inputs.InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsGetArgs> StorageDestinationOptions { get; set; } = null!;
 
         /// <summary>
-        /// A nested object resource
+        /// A nested object resource.
         /// Structure is documented below.
         /// </summary>
         [Input("storageFilters")]

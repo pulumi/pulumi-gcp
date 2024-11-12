@@ -32,7 +32,7 @@ class DatasetArgs:
                
                
                - - -
-        :param pulumi.Input['DatasetEncryptionSpecArgs'] encryption_spec: A nested object resource
+        :param pulumi.Input['DatasetEncryptionSpecArgs'] encryption_spec: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[str] name: The resource name for the Dataset.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -70,7 +70,7 @@ class DatasetArgs:
     @pulumi.getter(name="encryptionSpec")
     def encryption_spec(self) -> Optional[pulumi.Input['DatasetEncryptionSpecArgs']]:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "encryption_spec")
@@ -130,7 +130,7 @@ class _DatasetState:
                  time_zone: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Dataset resources.
-        :param pulumi.Input['DatasetEncryptionSpecArgs'] encryption_spec: A nested object resource
+        :param pulumi.Input['DatasetEncryptionSpecArgs'] encryption_spec: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[str] location: The location for the Dataset.
                
@@ -161,7 +161,7 @@ class _DatasetState:
     @pulumi.getter(name="encryptionSpec")
     def encryption_spec(self) -> Optional[pulumi.Input['DatasetEncryptionSpecArgs']]:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "encryption_spec")
@@ -324,7 +324,7 @@ class Dataset(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['DatasetEncryptionSpecArgs', 'DatasetEncryptionSpecArgsDict']] encryption_spec: A nested object resource
+        :param pulumi.Input[Union['DatasetEncryptionSpecArgs', 'DatasetEncryptionSpecArgsDict']] encryption_spec: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[str] location: The location for the Dataset.
                
@@ -477,7 +477,7 @@ class Dataset(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
-        :param pulumi.Input[Union['DatasetEncryptionSpecArgs', 'DatasetEncryptionSpecArgsDict']] encryption_spec: A nested object resource
+        :param pulumi.Input[Union['DatasetEncryptionSpecArgs', 'DatasetEncryptionSpecArgsDict']] encryption_spec: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[str] location: The location for the Dataset.
                
@@ -507,7 +507,7 @@ class Dataset(pulumi.CustomResource):
     @pulumi.getter(name="encryptionSpec")
     def encryption_spec(self) -> pulumi.Output['outputs.DatasetEncryptionSpec']:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "encryption_spec")

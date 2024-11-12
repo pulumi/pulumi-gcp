@@ -1355,7 +1355,6 @@ class Service(pulumi.CustomResource):
             name="cloudrun-service",
             location="us-central1",
             deletion_protection=False,
-            launch_stage="BETA",
             ingress="INGRESS_TRAFFIC_ALL",
             template={
                 "containers": [
@@ -1899,7 +1898,6 @@ class Service(pulumi.CustomResource):
             name="cloudrun-service",
             location="us-central1",
             deletion_protection=False,
-            launch_stage="BETA",
             ingress="INGRESS_TRAFFIC_ALL",
             template={
                 "containers": [

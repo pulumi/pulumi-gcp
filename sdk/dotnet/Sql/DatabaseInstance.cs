@@ -187,6 +187,39 @@ namespace Pulumi.Gcp.Sql
     /// });
     /// ```
     /// 
+    /// ## Switchover (SQL Server Only)
+    /// 
+    /// Users can perform a switchover on any direct `cascadable` replica by following the steps below.
+    /// 
+    ///   ~&gt;**WARNING:** Failure to follow these steps can lead to data loss (You will be warned during plan stage). To prevent data loss during a switchover, please verify your plan with the checklist below.
+    /// 
+    /// For a more in-depth walkthrough with example code, see the Switchover Guide
+    /// 
+    /// ### Steps to Invoke Switchover
+    /// 
+    /// Create a `cascadable` replica in a different region from the primary (`cascadable_replica` is set to true in `replica_configuration`)
+    /// 
+    /// #### Invoking switchover in the replica resource:
+    /// 1. Change instance_type from `READ_REPLICA_INSTANCE` to `CLOUD_SQL_INSTANCE`
+    /// 2. Remove `master_instance_name`
+    /// 3. Remove `replica_configuration`
+    /// 4. Add current primary's name to the replica's `replica_names` list
+    /// 
+    /// #### Updating the primary resource:
+    /// 1. Change `instance_type` from `CLOUD_SQL_INSTANCE` to `READ_REPLICA_INSTANCE`
+    /// 2. Set `master_instance_name` to the original replica (which will be primary after switchover)
+    /// 3. Set `replica_configuration` and set `cascadable_replica` to `true`
+    /// 4. Remove original replica from `replica_names`
+    ///    
+    ///     &gt; **NOTE**: Do **not** delete the replica_names field, even if it has no replicas remaining. Set replica_names = [ ] to indicate it having no replicas.
+    /// 
+    /// #### Plan and verify that:
+    /// - `pulumi preview` outputs **"0 to add, 0 to destroy"**
+    /// - `pulumi preview` does not say **"must be replaced"** for any resource
+    /// - Every resource **"will be updated in-place"**
+    /// - Only the 2 instances involved in switchover have planned changes
+    /// - (Recommended) Use `deletion_protection` on instances as a safety measure
+    /// 
     /// ## Import
     /// 
     /// Database instances can be imported using one of any of these accepted formats:
@@ -263,7 +296,7 @@ namespace Pulumi.Gcp.Sql
         public Output<bool?> DeletionProtection { get; private set; } = null!;
 
         /// <summary>
-        /// The dns name of the instance.
+        /// The DNS name of the instance. See [Connect to an instance using Private Service Connect](https://cloud.google.com/sql/docs/mysql/configure-private-service-connect#view-summary-information-cloud-sql-instances-psc-enabled) for more details.
         /// </summary>
         [Output("dnsName")]
         public Output<string> DnsName { get; private set; } = null!;
@@ -355,10 +388,16 @@ namespace Pulumi.Gcp.Sql
 
         /// <summary>
         /// The configuration for replication. The
-        /// configuration is detailed below. Valid only for MySQL instances.
+        /// configuration is detailed below.
         /// </summary>
         [Output("replicaConfiguration")]
         public Output<Outputs.DatabaseInstanceReplicaConfiguration> ReplicaConfiguration { get; private set; } = null!;
+
+        /// <summary>
+        /// List of replica names. Can be updated.
+        /// </summary>
+        [Output("replicaNames")]
+        public Output<ImmutableArray<string>> ReplicaNames { get; private set; } = null!;
 
         /// <summary>
         /// The context needed to restore the database to a backup run. This field will
@@ -542,7 +581,7 @@ namespace Pulumi.Gcp.Sql
 
         /// <summary>
         /// The configuration for replication. The
-        /// configuration is detailed below. Valid only for MySQL instances.
+        /// configuration is detailed below.
         /// </summary>
         public Input<Inputs.DatabaseInstanceReplicaConfigurationArgs>? ReplicaConfiguration
         {
@@ -552,6 +591,18 @@ namespace Pulumi.Gcp.Sql
                 var emptySecret = Output.CreateSecret(0);
                 _replicaConfiguration = Output.Tuple<Input<Inputs.DatabaseInstanceReplicaConfigurationArgs>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
+        }
+
+        [Input("replicaNames")]
+        private InputList<string>? _replicaNames;
+
+        /// <summary>
+        /// List of replica names. Can be updated.
+        /// </summary>
+        public InputList<string> ReplicaNames
+        {
+            get => _replicaNames ?? (_replicaNames = new InputList<string>());
+            set => _replicaNames = value;
         }
 
         /// <summary>
@@ -643,7 +694,7 @@ namespace Pulumi.Gcp.Sql
         public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
-        /// The dns name of the instance.
+        /// The DNS name of the instance. See [Connect to an instance using Private Service Connect](https://cloud.google.com/sql/docs/mysql/configure-private-service-connect#view-summary-information-cloud-sql-instances-psc-enabled) for more details.
         /// </summary>
         [Input("dnsName")]
         public Input<string>? DnsName { get; set; }
@@ -743,7 +794,7 @@ namespace Pulumi.Gcp.Sql
 
         /// <summary>
         /// The configuration for replication. The
-        /// configuration is detailed below. Valid only for MySQL instances.
+        /// configuration is detailed below.
         /// </summary>
         public Input<Inputs.DatabaseInstanceReplicaConfigurationGetArgs>? ReplicaConfiguration
         {
@@ -753,6 +804,18 @@ namespace Pulumi.Gcp.Sql
                 var emptySecret = Output.CreateSecret(0);
                 _replicaConfiguration = Output.Tuple<Input<Inputs.DatabaseInstanceReplicaConfigurationGetArgs>?, int>(value, emptySecret).Apply(t => t.Item1);
             }
+        }
+
+        [Input("replicaNames")]
+        private InputList<string>? _replicaNames;
+
+        /// <summary>
+        /// List of replica names. Can be updated.
+        /// </summary>
+        public InputList<string> ReplicaNames
+        {
+            get => _replicaNames ?? (_replicaNames = new InputList<string>());
+            set => _replicaNames = value;
         }
 
         /// <summary>

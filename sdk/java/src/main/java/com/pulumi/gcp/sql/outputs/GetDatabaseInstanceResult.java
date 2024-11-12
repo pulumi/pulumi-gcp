@@ -44,6 +44,7 @@ public final class GetDatabaseInstanceResult {
     private String publicIpAddress;
     private String region;
     private List<GetDatabaseInstanceReplicaConfiguration> replicaConfigurations;
+    private List<String> replicaNames;
     private List<GetDatabaseInstanceRestoreBackupContext> restoreBackupContexts;
     private String rootPassword;
     private String selfLink;
@@ -116,6 +117,9 @@ public final class GetDatabaseInstanceResult {
     public List<GetDatabaseInstanceReplicaConfiguration> replicaConfigurations() {
         return this.replicaConfigurations;
     }
+    public List<String> replicaNames() {
+        return this.replicaNames;
+    }
     public List<GetDatabaseInstanceRestoreBackupContext> restoreBackupContexts() {
         return this.restoreBackupContexts;
     }
@@ -164,6 +168,7 @@ public final class GetDatabaseInstanceResult {
         private String publicIpAddress;
         private String region;
         private List<GetDatabaseInstanceReplicaConfiguration> replicaConfigurations;
+        private List<String> replicaNames;
         private List<GetDatabaseInstanceRestoreBackupContext> restoreBackupContexts;
         private String rootPassword;
         private String selfLink;
@@ -193,6 +198,7 @@ public final class GetDatabaseInstanceResult {
     	      this.publicIpAddress = defaults.publicIpAddress;
     	      this.region = defaults.region;
     	      this.replicaConfigurations = defaults.replicaConfigurations;
+    	      this.replicaNames = defaults.replicaNames;
     	      this.restoreBackupContexts = defaults.restoreBackupContexts;
     	      this.rootPassword = defaults.rootPassword;
     	      this.selfLink = defaults.selfLink;
@@ -372,6 +378,17 @@ public final class GetDatabaseInstanceResult {
             return replicaConfigurations(List.of(replicaConfigurations));
         }
         @CustomType.Setter
+        public Builder replicaNames(List<String> replicaNames) {
+            if (replicaNames == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceResult", "replicaNames");
+            }
+            this.replicaNames = replicaNames;
+            return this;
+        }
+        public Builder replicaNames(String... replicaNames) {
+            return replicaNames(List.of(replicaNames));
+        }
+        @CustomType.Setter
         public Builder restoreBackupContexts(List<GetDatabaseInstanceRestoreBackupContext> restoreBackupContexts) {
             if (restoreBackupContexts == null) {
               throw new MissingRequiredPropertyException("GetDatabaseInstanceResult", "restoreBackupContexts");
@@ -450,6 +467,7 @@ public final class GetDatabaseInstanceResult {
             _resultValue.publicIpAddress = publicIpAddress;
             _resultValue.region = region;
             _resultValue.replicaConfigurations = replicaConfigurations;
+            _resultValue.replicaNames = replicaNames;
             _resultValue.restoreBackupContexts = restoreBackupContexts;
             _resultValue.rootPassword = rootPassword;
             _resultValue.selfLink = selfLink;

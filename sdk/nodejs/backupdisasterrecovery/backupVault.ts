@@ -27,7 +27,8 @@ import * as utilities from "../utilities";
  *         annotations2: "baz1",
  *     },
  *     forceUpdate: true,
- *     forceDelete: true,
+ *     ignoreInactiveDatasources: true,
+ *     ignoreBackupPlanReferences: true,
  *     allowMissing: true,
  * });
  * ```
@@ -136,9 +137,14 @@ export class BackupVault extends pulumi.CustomResource {
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
+     * (Optional, Deprecated)
      * If set, the following restrictions against deletion of the backup vault instance can be overridden:
      * * deletion of a backup vault instance containing no backups, but still containing empty datasources.
      * * deletion of a backup vault instance that is being referenced by an active backup plan.
+     *
+     * > **Warning:** `forceDelete` is deprecated and will be removed in a future major release. Use `ignoreInactiveDatasources` instead.
+     *
+     * @deprecated `forceDelete` is deprecated and will be removed in a future major release. Use `ignoreInactiveDatasources` instead.
      */
     public readonly forceDelete!: pulumi.Output<boolean | undefined>;
     /**
@@ -148,6 +154,16 @@ export class BackupVault extends pulumi.CustomResource {
      * retention set by the backup vault.
      */
     public readonly forceUpdate!: pulumi.Output<boolean | undefined>;
+    /**
+     * If set, the following restrictions against deletion of the backup vault instance can be overridden:
+     * * deletion of a backup vault instance that is being referenced by an active backup plan.
+     */
+    public readonly ignoreBackupPlanReferences!: pulumi.Output<boolean | undefined>;
+    /**
+     * If set, the following restrictions against deletion of the backup vault instance can be overridden:
+     * * deletion of a backup vault instance containing no backups, but still containing empty datasources.
+     */
+    public readonly ignoreInactiveDatasources!: pulumi.Output<boolean | undefined>;
     /**
      * Optional. Resource labels to represent user provided metadata.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -226,6 +242,8 @@ export class BackupVault extends pulumi.CustomResource {
             resourceInputs["etag"] = state ? state.etag : undefined;
             resourceInputs["forceDelete"] = state ? state.forceDelete : undefined;
             resourceInputs["forceUpdate"] = state ? state.forceUpdate : undefined;
+            resourceInputs["ignoreBackupPlanReferences"] = state ? state.ignoreBackupPlanReferences : undefined;
+            resourceInputs["ignoreInactiveDatasources"] = state ? state.ignoreInactiveDatasources : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -255,6 +273,8 @@ export class BackupVault extends pulumi.CustomResource {
             resourceInputs["effectiveTime"] = args ? args.effectiveTime : undefined;
             resourceInputs["forceDelete"] = args ? args.forceDelete : undefined;
             resourceInputs["forceUpdate"] = args ? args.forceUpdate : undefined;
+            resourceInputs["ignoreBackupPlanReferences"] = args ? args.ignoreBackupPlanReferences : undefined;
+            resourceInputs["ignoreInactiveDatasources"] = args ? args.ignoreInactiveDatasources : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -335,9 +355,14 @@ export interface BackupVaultState {
      */
     etag?: pulumi.Input<string>;
     /**
+     * (Optional, Deprecated)
      * If set, the following restrictions against deletion of the backup vault instance can be overridden:
      * * deletion of a backup vault instance containing no backups, but still containing empty datasources.
      * * deletion of a backup vault instance that is being referenced by an active backup plan.
+     *
+     * > **Warning:** `forceDelete` is deprecated and will be removed in a future major release. Use `ignoreInactiveDatasources` instead.
+     *
+     * @deprecated `forceDelete` is deprecated and will be removed in a future major release. Use `ignoreInactiveDatasources` instead.
      */
     forceDelete?: pulumi.Input<boolean>;
     /**
@@ -347,6 +372,16 @@ export interface BackupVaultState {
      * retention set by the backup vault.
      */
     forceUpdate?: pulumi.Input<boolean>;
+    /**
+     * If set, the following restrictions against deletion of the backup vault instance can be overridden:
+     * * deletion of a backup vault instance that is being referenced by an active backup plan.
+     */
+    ignoreBackupPlanReferences?: pulumi.Input<boolean>;
+    /**
+     * If set, the following restrictions against deletion of the backup vault instance can be overridden:
+     * * deletion of a backup vault instance containing no backups, but still containing empty datasources.
+     */
+    ignoreInactiveDatasources?: pulumi.Input<boolean>;
     /**
      * Optional. Resource labels to represent user provided metadata.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -434,9 +469,14 @@ export interface BackupVaultArgs {
      */
     effectiveTime?: pulumi.Input<string>;
     /**
+     * (Optional, Deprecated)
      * If set, the following restrictions against deletion of the backup vault instance can be overridden:
      * * deletion of a backup vault instance containing no backups, but still containing empty datasources.
      * * deletion of a backup vault instance that is being referenced by an active backup plan.
+     *
+     * > **Warning:** `forceDelete` is deprecated and will be removed in a future major release. Use `ignoreInactiveDatasources` instead.
+     *
+     * @deprecated `forceDelete` is deprecated and will be removed in a future major release. Use `ignoreInactiveDatasources` instead.
      */
     forceDelete?: pulumi.Input<boolean>;
     /**
@@ -446,6 +486,16 @@ export interface BackupVaultArgs {
      * retention set by the backup vault.
      */
     forceUpdate?: pulumi.Input<boolean>;
+    /**
+     * If set, the following restrictions against deletion of the backup vault instance can be overridden:
+     * * deletion of a backup vault instance that is being referenced by an active backup plan.
+     */
+    ignoreBackupPlanReferences?: pulumi.Input<boolean>;
+    /**
+     * If set, the following restrictions against deletion of the backup vault instance can be overridden:
+     * * deletion of a backup vault instance containing no backups, but still containing empty datasources.
+     */
+    ignoreInactiveDatasources?: pulumi.Input<boolean>;
     /**
      * Optional. Resource labels to represent user provided metadata.
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.

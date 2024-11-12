@@ -145,6 +145,7 @@ namespace Pulumi.Gcp.Compute
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
         public readonly string Id;
+        public readonly ImmutableArray<Outputs.GetRegionInstanceGroupManagerInstanceFlexibilityPolicyResult> InstanceFlexibilityPolicies;
         public readonly string InstanceGroup;
         public readonly ImmutableArray<Outputs.GetRegionInstanceGroupManagerInstanceLifecyclePolicyResult> InstanceLifecyclePolicies;
         public readonly string ListManagedInstancesResults;
@@ -187,6 +188,8 @@ namespace Pulumi.Gcp.Compute
             string fingerprint,
 
             string id,
+
+            ImmutableArray<Outputs.GetRegionInstanceGroupManagerInstanceFlexibilityPolicyResult> instanceFlexibilityPolicies,
 
             string instanceGroup,
 
@@ -241,6 +244,7 @@ namespace Pulumi.Gcp.Compute
             DistributionPolicyZones = distributionPolicyZones;
             Fingerprint = fingerprint;
             Id = id;
+            InstanceFlexibilityPolicies = instanceFlexibilityPolicies;
             InstanceGroup = instanceGroup;
             InstanceLifecyclePolicies = instanceLifecyclePolicies;
             ListManagedInstancesResults = listManagedInstancesResults;

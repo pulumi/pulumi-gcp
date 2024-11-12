@@ -92,6 +92,57 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Region Security Policy With Rules
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var region_sec_policy_with_rules = new Gcp.Compute.RegionSecurityPolicy("region-sec-policy-with-rules", new()
+    ///     {
+    ///         Name = "my-sec-policy-with-rules",
+    ///         Description = "basic region security policy with multiple rules",
+    ///         Type = "CLOUD_ARMOR",
+    ///         Rules = new[]
+    ///         {
+    ///             new Gcp.Compute.Inputs.RegionSecurityPolicyRuleArgs
+    ///             {
+    ///                 Action = "deny",
+    ///                 Priority = 1000,
+    ///                 Match = new Gcp.Compute.Inputs.RegionSecurityPolicyRuleMatchArgs
+    ///                 {
+    ///                     Expr = new Gcp.Compute.Inputs.RegionSecurityPolicyRuleMatchExprArgs
+    ///                     {
+    ///                         Expression = "request.path.matches(\"/login.html\") &amp;&amp; token.recaptcha_session.score &lt; 0.2",
+    ///                     },
+    ///                 },
+    ///             },
+    ///             new Gcp.Compute.Inputs.RegionSecurityPolicyRuleArgs
+    ///             {
+    ///                 Action = "deny",
+    ///                 Priority = 2147483647,
+    ///                 Match = new Gcp.Compute.Inputs.RegionSecurityPolicyRuleMatchArgs
+    ///                 {
+    ///                     VersionedExpr = "SRC_IPS_V1",
+    ///                     Config = new Gcp.Compute.Inputs.RegionSecurityPolicyRuleMatchConfigArgs
+    ///                     {
+    ///                         SrcIpRanges = new[]
+    ///                         {
+    ///                             "*",
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 Description = "default rule",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -175,6 +226,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("region")]
         public Output<string> Region { get; private set; } = null!;
+
+        /// <summary>
+        /// The set of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("rules")]
+        public Output<ImmutableArray<Outputs.RegionSecurityPolicyRule>> Rules { get; private set; } = null!;
 
         /// <summary>
         /// Server-defined URL for the resource.
@@ -291,6 +349,19 @@ namespace Pulumi.Gcp.Compute
         [Input("region")]
         public Input<string>? Region { get; set; }
 
+        [Input("rules")]
+        private InputList<Inputs.RegionSecurityPolicyRuleArgs>? _rules;
+
+        /// <summary>
+        /// The set of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.RegionSecurityPolicyRuleArgs> Rules
+        {
+            get => _rules ?? (_rules = new InputList<Inputs.RegionSecurityPolicyRuleArgs>());
+            set => _rules = value;
+        }
+
         /// <summary>
         /// The type indicates the intended use of the security policy.
         /// - CLOUD_ARMOR: Cloud Armor backend security policies can be configured to filter incoming HTTP requests targeting backend services. They filter requests before they hit the origin servers.
@@ -374,6 +445,19 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }
+
+        [Input("rules")]
+        private InputList<Inputs.RegionSecurityPolicyRuleGetArgs>? _rules;
+
+        /// <summary>
+        /// The set of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match "*"). If no rules are provided when creating a security policy, a default rule with action "allow" will be added.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.RegionSecurityPolicyRuleGetArgs> Rules
+        {
+            get => _rules ?? (_rules = new InputList<Inputs.RegionSecurityPolicyRuleGetArgs>());
+            set => _rules = value;
+        }
 
         /// <summary>
         /// Server-defined URL for the resource.

@@ -20,6 +20,13 @@ public final class DatabaseInstanceReplicaConfiguration {
      */
     private @Nullable String caCertificate;
     /**
+     * @return Specifies if the replica is a cascadable replica. If true, instance must be in different region from primary.
+     * 
+     * &gt; **NOTE:** Only supported for SQL Server database.
+     * 
+     */
+    private @Nullable Boolean cascadableReplica;
+    /**
      * @return PEM representation of the replica&#39;s x509
      * certificate.
      * 
@@ -89,6 +96,15 @@ public final class DatabaseInstanceReplicaConfiguration {
      */
     public Optional<String> caCertificate() {
         return Optional.ofNullable(this.caCertificate);
+    }
+    /**
+     * @return Specifies if the replica is a cascadable replica. If true, instance must be in different region from primary.
+     * 
+     * &gt; **NOTE:** Only supported for SQL Server database.
+     * 
+     */
+    public Optional<Boolean> cascadableReplica() {
+        return Optional.ofNullable(this.cascadableReplica);
     }
     /**
      * @return PEM representation of the replica&#39;s x509
@@ -182,6 +198,7 @@ public final class DatabaseInstanceReplicaConfiguration {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String caCertificate;
+        private @Nullable Boolean cascadableReplica;
         private @Nullable String clientCertificate;
         private @Nullable String clientKey;
         private @Nullable Integer connectRetryInterval;
@@ -196,6 +213,7 @@ public final class DatabaseInstanceReplicaConfiguration {
         public Builder(DatabaseInstanceReplicaConfiguration defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.caCertificate = defaults.caCertificate;
+    	      this.cascadableReplica = defaults.cascadableReplica;
     	      this.clientCertificate = defaults.clientCertificate;
     	      this.clientKey = defaults.clientKey;
     	      this.connectRetryInterval = defaults.connectRetryInterval;
@@ -212,6 +230,12 @@ public final class DatabaseInstanceReplicaConfiguration {
         public Builder caCertificate(@Nullable String caCertificate) {
 
             this.caCertificate = caCertificate;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder cascadableReplica(@Nullable Boolean cascadableReplica) {
+
+            this.cascadableReplica = cascadableReplica;
             return this;
         }
         @CustomType.Setter
@@ -277,6 +301,7 @@ public final class DatabaseInstanceReplicaConfiguration {
         public DatabaseInstanceReplicaConfiguration build() {
             final var _resultValue = new DatabaseInstanceReplicaConfiguration();
             _resultValue.caCertificate = caCertificate;
+            _resultValue.cascadableReplica = cascadableReplica;
             _resultValue.clientCertificate = clientCertificate;
             _resultValue.clientKey = clientKey;
             _resultValue.connectRetryInterval = connectRetryInterval;

@@ -573,7 +573,7 @@ class ClusterStateInfo(dict):
     def __init__(__self__, *,
                  update_info: Optional['outputs.ClusterStateInfoUpdateInfo'] = None):
         """
-        :param 'ClusterStateInfoUpdateInfoArgs' update_info: A nested object resource
+        :param 'ClusterStateInfoUpdateInfoArgs' update_info: A nested object resource.
                Structure is documented below.
         """
         if update_info is not None:
@@ -583,7 +583,7 @@ class ClusterStateInfo(dict):
     @pulumi.getter(name="updateInfo")
     def update_info(self) -> Optional['outputs.ClusterStateInfoUpdateInfo']:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "update_info")

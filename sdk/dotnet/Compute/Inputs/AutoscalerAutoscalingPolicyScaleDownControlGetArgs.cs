@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class AutoscalerAutoscalingPolicyScaleDownControlGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A nested object resource
+        /// A nested object resource.
         /// Structure is documented below.
         /// </summary>
         [Input("maxScaledDownReplicas")]

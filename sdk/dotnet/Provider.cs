@@ -204,6 +204,9 @@ namespace Pulumi.Gcp
         [Output("dataprocCustomEndpoint")]
         public Output<string?> DataprocCustomEndpoint { get; private set; } = null!;
 
+        [Output("dataprocGdcCustomEndpoint")]
+        public Output<string?> DataprocGdcCustomEndpoint { get; private set; } = null!;
+
         [Output("dataprocMetastoreCustomEndpoint")]
         public Output<string?> DataprocMetastoreCustomEndpoint { get; private set; } = null!;
 
@@ -296,6 +299,9 @@ namespace Pulumi.Gcp
 
         [Output("iam2CustomEndpoint")]
         public Output<string?> Iam2CustomEndpoint { get; private set; } = null!;
+
+        [Output("iam3CustomEndpoint")]
+        public Output<string?> Iam3CustomEndpoint { get; private set; } = null!;
 
         [Output("iamBetaCustomEndpoint")]
         public Output<string?> IamBetaCustomEndpoint { get; private set; } = null!;
@@ -761,6 +767,9 @@ namespace Pulumi.Gcp
         [Input("dataprocCustomEndpoint")]
         public Input<string>? DataprocCustomEndpoint { get; set; }
 
+        [Input("dataprocGdcCustomEndpoint")]
+        public Input<string>? DataprocGdcCustomEndpoint { get; set; }
+
         [Input("dataprocMetastoreCustomEndpoint")]
         public Input<string>? DataprocMetastoreCustomEndpoint { get; set; }
 
@@ -864,6 +873,9 @@ namespace Pulumi.Gcp
 
         [Input("iam2CustomEndpoint")]
         public Input<string>? Iam2CustomEndpoint { get; set; }
+
+        [Input("iam3CustomEndpoint")]
+        public Input<string>? Iam3CustomEndpoint { get; set; }
 
         [Input("iamBetaCustomEndpoint")]
         public Input<string>? IamBetaCustomEndpoint { get; set; }

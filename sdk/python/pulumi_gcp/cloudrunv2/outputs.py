@@ -1270,7 +1270,9 @@ class JobTemplateTemplateVolumeGcs(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "readOnly":
+        if key == "mountOptions":
+            suggest = "mount_options"
+        elif key == "readOnly":
             suggest = "read_only"
 
         if suggest:
@@ -1286,12 +1288,17 @@ class JobTemplateTemplateVolumeGcs(dict):
 
     def __init__(__self__, *,
                  bucket: str,
+                 mount_options: Optional[Sequence[str]] = None,
                  read_only: Optional[bool] = None):
         """
         :param str bucket: Name of the cloud storage bucket to back the volume. The resource service account must have permission to access the bucket.
+        :param Sequence[str] mount_options: A list of flags to pass to the gcsfuse command for configuring this volume.
+               Flags should be passed without leading dashes.
         :param bool read_only: If true, mount this volume as read-only in all mounts. If false, mount this volume as read-write.
         """
         pulumi.set(__self__, "bucket", bucket)
+        if mount_options is not None:
+            pulumi.set(__self__, "mount_options", mount_options)
         if read_only is not None:
             pulumi.set(__self__, "read_only", read_only)
 
@@ -1302,6 +1309,15 @@ class JobTemplateTemplateVolumeGcs(dict):
         Name of the cloud storage bucket to back the volume. The resource service account must have permission to access the bucket.
         """
         return pulumi.get(self, "bucket")
+
+    @property
+    @pulumi.getter(name="mountOptions")
+    def mount_options(self) -> Optional[Sequence[str]]:
+        """
+        A list of flags to pass to the gcsfuse command for configuring this volume.
+        Flags should be passed without leading dashes.
+        """
+        return pulumi.get(self, "mount_options")
 
     @property
     @pulumi.getter(name="readOnly")
@@ -3577,7 +3593,9 @@ class ServiceTemplateVolumeGcs(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "readOnly":
+        if key == "mountOptions":
+            suggest = "mount_options"
+        elif key == "readOnly":
             suggest = "read_only"
 
         if suggest:
@@ -3593,12 +3611,17 @@ class ServiceTemplateVolumeGcs(dict):
 
     def __init__(__self__, *,
                  bucket: str,
+                 mount_options: Optional[Sequence[str]] = None,
                  read_only: Optional[bool] = None):
         """
         :param str bucket: GCS Bucket name
+        :param Sequence[str] mount_options: A list of flags to pass to the gcsfuse command for configuring this volume.
+               Flags should be passed without leading dashes.
         :param bool read_only: If true, mount the GCS bucket as read-only
         """
         pulumi.set(__self__, "bucket", bucket)
+        if mount_options is not None:
+            pulumi.set(__self__, "mount_options", mount_options)
         if read_only is not None:
             pulumi.set(__self__, "read_only", read_only)
 
@@ -3609,6 +3632,15 @@ class ServiceTemplateVolumeGcs(dict):
         GCS Bucket name
         """
         return pulumi.get(self, "bucket")
+
+    @property
+    @pulumi.getter(name="mountOptions")
+    def mount_options(self) -> Optional[Sequence[str]]:
+        """
+        A list of flags to pass to the gcsfuse command for configuring this volume.
+        Flags should be passed without leading dashes.
+        """
+        return pulumi.get(self, "mount_options")
 
     @property
     @pulumi.getter(name="readOnly")
@@ -4936,12 +4968,16 @@ class GetJobTemplateTemplateVolumeEmptyDirResult(dict):
 class GetJobTemplateTemplateVolumeGcResult(dict):
     def __init__(__self__, *,
                  bucket: str,
+                 mount_options: Sequence[str],
                  read_only: bool):
         """
         :param str bucket: Name of the cloud storage bucket to back the volume. The resource service account must have permission to access the bucket.
+        :param Sequence[str] mount_options: A list of flags to pass to the gcsfuse command for configuring this volume.
+               Flags should be passed without leading dashes.
         :param bool read_only: If true, mount this volume as read-only in all mounts. If false, mount this volume as read-write.
         """
         pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "mount_options", mount_options)
         pulumi.set(__self__, "read_only", read_only)
 
     @property
@@ -4951,6 +4987,15 @@ class GetJobTemplateTemplateVolumeGcResult(dict):
         Name of the cloud storage bucket to back the volume. The resource service account must have permission to access the bucket.
         """
         return pulumi.get(self, "bucket")
+
+    @property
+    @pulumi.getter(name="mountOptions")
+    def mount_options(self) -> Sequence[str]:
+        """
+        A list of flags to pass to the gcsfuse command for configuring this volume.
+        Flags should be passed without leading dashes.
+        """
+        return pulumi.get(self, "mount_options")
 
     @property
     @pulumi.getter(name="readOnly")
@@ -6562,12 +6607,16 @@ class GetServiceTemplateVolumeEmptyDirResult(dict):
 class GetServiceTemplateVolumeGcResult(dict):
     def __init__(__self__, *,
                  bucket: str,
+                 mount_options: Sequence[str],
                  read_only: bool):
         """
         :param str bucket: GCS Bucket name
+        :param Sequence[str] mount_options: A list of flags to pass to the gcsfuse command for configuring this volume.
+               Flags should be passed without leading dashes.
         :param bool read_only: If true, mount the GCS bucket as read-only
         """
         pulumi.set(__self__, "bucket", bucket)
+        pulumi.set(__self__, "mount_options", mount_options)
         pulumi.set(__self__, "read_only", read_only)
 
     @property
@@ -6577,6 +6626,15 @@ class GetServiceTemplateVolumeGcResult(dict):
         GCS Bucket name
         """
         return pulumi.get(self, "bucket")
+
+    @property
+    @pulumi.getter(name="mountOptions")
+    def mount_options(self) -> Sequence[str]:
+        """
+        A list of flags to pass to the gcsfuse command for configuring this volume.
+        Flags should be passed without leading dashes.
+        """
+        return pulumi.get(self, "mount_options")
 
     @property
     @pulumi.getter(name="readOnly")

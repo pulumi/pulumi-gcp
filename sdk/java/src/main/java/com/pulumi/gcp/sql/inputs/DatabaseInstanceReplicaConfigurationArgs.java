@@ -35,6 +35,25 @@ public final class DatabaseInstanceReplicaConfigurationArgs extends com.pulumi.r
     }
 
     /**
+     * Specifies if the replica is a cascadable replica. If true, instance must be in different region from primary.
+     * 
+     * &gt; **NOTE:** Only supported for SQL Server database.
+     * 
+     */
+    @Import(name="cascadableReplica")
+    private @Nullable Output<Boolean> cascadableReplica;
+
+    /**
+     * @return Specifies if the replica is a cascadable replica. If true, instance must be in different region from primary.
+     * 
+     * &gt; **NOTE:** Only supported for SQL Server database.
+     * 
+     */
+    public Optional<Output<Boolean>> cascadableReplica() {
+        return Optional.ofNullable(this.cascadableReplica);
+    }
+
+    /**
      * PEM representation of the replica&#39;s x509
      * certificate.
      * 
@@ -210,6 +229,7 @@ public final class DatabaseInstanceReplicaConfigurationArgs extends com.pulumi.r
 
     private DatabaseInstanceReplicaConfigurationArgs(DatabaseInstanceReplicaConfigurationArgs $) {
         this.caCertificate = $.caCertificate;
+        this.cascadableReplica = $.cascadableReplica;
         this.clientCertificate = $.clientCertificate;
         this.clientKey = $.clientKey;
         this.connectRetryInterval = $.connectRetryInterval;
@@ -261,6 +281,31 @@ public final class DatabaseInstanceReplicaConfigurationArgs extends com.pulumi.r
          */
         public Builder caCertificate(String caCertificate) {
             return caCertificate(Output.of(caCertificate));
+        }
+
+        /**
+         * @param cascadableReplica Specifies if the replica is a cascadable replica. If true, instance must be in different region from primary.
+         * 
+         * &gt; **NOTE:** Only supported for SQL Server database.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cascadableReplica(@Nullable Output<Boolean> cascadableReplica) {
+            $.cascadableReplica = cascadableReplica;
+            return this;
+        }
+
+        /**
+         * @param cascadableReplica Specifies if the replica is a cascadable replica. If true, instance must be in different region from primary.
+         * 
+         * &gt; **NOTE:** Only supported for SQL Server database.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cascadableReplica(Boolean cascadableReplica) {
+            return cascadableReplica(Output.of(cascadableReplica));
         }
 
         /**

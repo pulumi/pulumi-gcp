@@ -16,7 +16,7 @@ public final class ClusterStateInfoArgs extends com.pulumi.resources.ResourceArg
     public static final ClusterStateInfoArgs Empty = new ClusterStateInfoArgs();
 
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -24,7 +24,7 @@ public final class ClusterStateInfoArgs extends com.pulumi.resources.ResourceArg
     private @Nullable Output<ClusterStateInfoUpdateInfoArgs> updateInfo;
 
     /**
-     * @return A nested object resource
+     * @return A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -57,7 +57,7 @@ public final class ClusterStateInfoArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param updateInfo A nested object resource
+         * @param updateInfo A nested object resource.
          * Structure is documented below.
          * 
          * @return builder
@@ -69,7 +69,7 @@ public final class ClusterStateInfoArgs extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param updateInfo A nested object resource
+         * @param updateInfo A nested object resource.
          * Structure is documented below.
          * 
          * @return builder

@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.workflows.WorkflowArgs;
 import com.pulumi.gcp.workflows.inputs.WorkflowState;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -67,6 +68,7 @@ import javax.annotation.Nullable;
  *             .callLogLevel("LOG_ERRORS_ONLY")
  *             .labels(Map.of("env", "test"))
  *             .userEnvVars(Map.of("url", "https://timeapi.io/api/Time/current/zone?timeZone=Europe/Amsterdam"))
+ *             .deletionProtection(false)
  *             .sourceContents("""
  * # This is a sample workflow. You can replace it with your source code.
  * #
@@ -159,6 +161,12 @@ public class Workflow extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> cryptoKeyName() {
         return Codegen.optional(this.cryptoKeyName);
+    }
+    @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> deletionProtection;
+
+    public Output<Optional<Boolean>> deletionProtection() {
+        return Codegen.optional(this.deletionProtection);
     }
     /**
      * Description of the workflow provided by the user. Must be at most 1000 unicode characters long.

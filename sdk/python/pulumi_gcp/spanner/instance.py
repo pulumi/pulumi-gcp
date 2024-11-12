@@ -24,6 +24,7 @@ class InstanceArgs:
                  config: pulumi.Input[str],
                  display_name: pulumi.Input[str],
                  autoscaling_config: Optional[pulumi.Input['InstanceAutoscalingConfigArgs']] = None,
+                 default_backup_schedule_type: Optional[pulumi.Input[str]] = None,
                  edition: Optional[pulumi.Input[str]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -49,6 +50,10 @@ class InstanceArgs:
                OUTPUT_ONLY fields and reflect the current compute capacity allocated to
                the instance.
                Structure is documented below.
+        :param pulumi.Input[str] default_backup_schedule_type: Controls the default backup behavior for new databases within the instance.
+               Note that `AUTOMATIC` is not permitted for free instances, as backups and backup schedules are not allowed for free instances.
+               if unset or NONE, no default backup schedule will be created for new databases within the instance.
+               Possible values are: `NONE`, `AUTOMATIC`.
         :param pulumi.Input[str] edition: The edition selected for this instance. Different editions provide different capabilities at different price points.
                Possible values are: `EDITION_UNSPECIFIED`, `STANDARD`, `ENTERPRISE`, `ENTERPRISE_PLUS`.
         :param pulumi.Input[bool] force_destroy: When deleting a spanner instance, this boolean option will delete all backups of this instance.
@@ -69,6 +74,8 @@ class InstanceArgs:
         pulumi.set(__self__, "display_name", display_name)
         if autoscaling_config is not None:
             pulumi.set(__self__, "autoscaling_config", autoscaling_config)
+        if default_backup_schedule_type is not None:
+            pulumi.set(__self__, "default_backup_schedule_type", default_backup_schedule_type)
         if edition is not None:
             pulumi.set(__self__, "edition", edition)
         if force_destroy is not None:
@@ -132,6 +139,21 @@ class InstanceArgs:
     @autoscaling_config.setter
     def autoscaling_config(self, value: Optional[pulumi.Input['InstanceAutoscalingConfigArgs']]):
         pulumi.set(self, "autoscaling_config", value)
+
+    @property
+    @pulumi.getter(name="defaultBackupScheduleType")
+    def default_backup_schedule_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Controls the default backup behavior for new databases within the instance.
+        Note that `AUTOMATIC` is not permitted for free instances, as backups and backup schedules are not allowed for free instances.
+        if unset or NONE, no default backup schedule will be created for new databases within the instance.
+        Possible values are: `NONE`, `AUTOMATIC`.
+        """
+        return pulumi.get(self, "default_backup_schedule_type")
+
+    @default_backup_schedule_type.setter
+    def default_backup_schedule_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_backup_schedule_type", value)
 
     @property
     @pulumi.getter
@@ -227,6 +249,7 @@ class _InstanceState:
     def __init__(__self__, *,
                  autoscaling_config: Optional[pulumi.Input['InstanceAutoscalingConfigArgs']] = None,
                  config: Optional[pulumi.Input[str]] = None,
+                 default_backup_schedule_type: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  edition: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -251,6 +274,10 @@ class _InstanceState:
                is stored. Values are typically of the form `regional-europe-west1` , `us-central` etc.
                In order to obtain a valid list please consult the
                [Configuration section of the docs](https://cloud.google.com/spanner/docs/instances).
+        :param pulumi.Input[str] default_backup_schedule_type: Controls the default backup behavior for new databases within the instance.
+               Note that `AUTOMATIC` is not permitted for free instances, as backups and backup schedules are not allowed for free instances.
+               if unset or NONE, no default backup schedule will be created for new databases within the instance.
+               Possible values are: `NONE`, `AUTOMATIC`.
         :param pulumi.Input[str] display_name: The descriptive name for this instance as it appears in UIs. Must be
                unique per project and between 4 and 30 characters in length.
                
@@ -280,6 +307,8 @@ class _InstanceState:
             pulumi.set(__self__, "autoscaling_config", autoscaling_config)
         if config is not None:
             pulumi.set(__self__, "config", config)
+        if default_backup_schedule_type is not None:
+            pulumi.set(__self__, "default_backup_schedule_type", default_backup_schedule_type)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if edition is not None:
@@ -335,6 +364,21 @@ class _InstanceState:
     @config.setter
     def config(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "config", value)
+
+    @property
+    @pulumi.getter(name="defaultBackupScheduleType")
+    def default_backup_schedule_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Controls the default backup behavior for new databases within the instance.
+        Note that `AUTOMATIC` is not permitted for free instances, as backups and backup schedules are not allowed for free instances.
+        if unset or NONE, no default backup schedule will be created for new databases within the instance.
+        Possible values are: `NONE`, `AUTOMATIC`.
+        """
+        return pulumi.get(self, "default_backup_schedule_type")
+
+    @default_backup_schedule_type.setter
+    def default_backup_schedule_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "default_backup_schedule_type", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -485,6 +529,7 @@ class Instance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  autoscaling_config: Optional[pulumi.Input[Union['InstanceAutoscalingConfigArgs', 'InstanceAutoscalingConfigArgsDict']]] = None,
                  config: Optional[pulumi.Input[str]] = None,
+                 default_backup_schedule_type: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  edition: Optional[pulumi.Input[str]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
@@ -517,6 +562,7 @@ class Instance(pulumi.CustomResource):
             display_name="Test Spanner Instance",
             num_nodes=2,
             edition="STANDARD",
+            default_backup_schedule_type="AUTOMATIC",
             labels={
                 "foo": "bar",
             })
@@ -610,6 +656,10 @@ class Instance(pulumi.CustomResource):
                is stored. Values are typically of the form `regional-europe-west1` , `us-central` etc.
                In order to obtain a valid list please consult the
                [Configuration section of the docs](https://cloud.google.com/spanner/docs/instances).
+        :param pulumi.Input[str] default_backup_schedule_type: Controls the default backup behavior for new databases within the instance.
+               Note that `AUTOMATIC` is not permitted for free instances, as backups and backup schedules are not allowed for free instances.
+               if unset or NONE, no default backup schedule will be created for new databases within the instance.
+               Possible values are: `NONE`, `AUTOMATIC`.
         :param pulumi.Input[str] display_name: The descriptive name for this instance as it appears in UIs. Must be
                unique per project and between 4 and 30 characters in length.
                
@@ -660,6 +710,7 @@ class Instance(pulumi.CustomResource):
             display_name="Test Spanner Instance",
             num_nodes=2,
             edition="STANDARD",
+            default_backup_schedule_type="AUTOMATIC",
             labels={
                 "foo": "bar",
             })
@@ -757,6 +808,7 @@ class Instance(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  autoscaling_config: Optional[pulumi.Input[Union['InstanceAutoscalingConfigArgs', 'InstanceAutoscalingConfigArgsDict']]] = None,
                  config: Optional[pulumi.Input[str]] = None,
+                 default_backup_schedule_type: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  edition: Optional[pulumi.Input[str]] = None,
                  force_destroy: Optional[pulumi.Input[bool]] = None,
@@ -778,6 +830,7 @@ class Instance(pulumi.CustomResource):
             if config is None and not opts.urn:
                 raise TypeError("Missing required property 'config'")
             __props__.__dict__["config"] = config
+            __props__.__dict__["default_backup_schedule_type"] = default_backup_schedule_type
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
             __props__.__dict__["display_name"] = display_name
@@ -805,6 +858,7 @@ class Instance(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             autoscaling_config: Optional[pulumi.Input[Union['InstanceAutoscalingConfigArgs', 'InstanceAutoscalingConfigArgsDict']]] = None,
             config: Optional[pulumi.Input[str]] = None,
+            default_backup_schedule_type: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             edition: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -834,6 +888,10 @@ class Instance(pulumi.CustomResource):
                is stored. Values are typically of the form `regional-europe-west1` , `us-central` etc.
                In order to obtain a valid list please consult the
                [Configuration section of the docs](https://cloud.google.com/spanner/docs/instances).
+        :param pulumi.Input[str] default_backup_schedule_type: Controls the default backup behavior for new databases within the instance.
+               Note that `AUTOMATIC` is not permitted for free instances, as backups and backup schedules are not allowed for free instances.
+               if unset or NONE, no default backup schedule will be created for new databases within the instance.
+               Possible values are: `NONE`, `AUTOMATIC`.
         :param pulumi.Input[str] display_name: The descriptive name for this instance as it appears in UIs. Must be
                unique per project and between 4 and 30 characters in length.
                
@@ -865,6 +923,7 @@ class Instance(pulumi.CustomResource):
 
         __props__.__dict__["autoscaling_config"] = autoscaling_config
         __props__.__dict__["config"] = config
+        __props__.__dict__["default_backup_schedule_type"] = default_backup_schedule_type
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["edition"] = edition
         __props__.__dict__["effective_labels"] = effective_labels
@@ -902,6 +961,17 @@ class Instance(pulumi.CustomResource):
         [Configuration section of the docs](https://cloud.google.com/spanner/docs/instances).
         """
         return pulumi.get(self, "config")
+
+    @property
+    @pulumi.getter(name="defaultBackupScheduleType")
+    def default_backup_schedule_type(self) -> pulumi.Output[str]:
+        """
+        Controls the default backup behavior for new databases within the instance.
+        Note that `AUTOMATIC` is not permitted for free instances, as backups and backup schedules are not allowed for free instances.
+        if unset or NONE, no default backup schedule will be created for new databases within the instance.
+        Possible values are: `NONE`, `AUTOMATIC`.
+        """
+        return pulumi.get(self, "default_backup_schedule_type")
 
     @property
     @pulumi.getter(name="displayName")

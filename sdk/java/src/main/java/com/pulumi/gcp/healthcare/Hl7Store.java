@@ -369,7 +369,7 @@ public class Hl7Store extends com.pulumi.resources.CustomResource {
     }
     /**
      * (Optional, Deprecated)
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      * 
      * &gt; **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
@@ -384,7 +384,7 @@ public class Hl7Store extends com.pulumi.resources.CustomResource {
 
     /**
      * @return (Optional, Deprecated)
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      * 
      * &gt; **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
@@ -414,7 +414,7 @@ public class Hl7Store extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.notificationConfigs);
     }
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -422,7 +422,7 @@ public class Hl7Store extends com.pulumi.resources.CustomResource {
     private Output<Hl7StoreParserConfig> parserConfig;
 
     /**
-     * @return A nested object resource
+     * @return A nested object resource.
      * Structure is documented below.
      * 
      */

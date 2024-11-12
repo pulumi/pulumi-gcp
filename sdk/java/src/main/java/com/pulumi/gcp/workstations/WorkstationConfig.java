@@ -72,7 +72,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var tagValue1 = new TagValue("tagValue1", TagValueArgs.builder()
- *             .parent(tagKey1.name().applyValue(name -> String.format("tagKeys/%s", name)))
+ *             .parent(tagKey1.id())
  *             .shortName("valuename")
  *             .build());
  * 
@@ -115,10 +115,10 @@ import javax.annotation.Nullable;
  *                     .bootDiskSizeGb(35)
  *                     .disablePublicIpAddresses(true)
  *                     .disableSsh(false)
- *                     .vmTags(Output.tuple(tagKey1.name(), tagValue1.name()).applyValue(values -> {
- *                         var tagKey1Name = values.t1;
- *                         var tagValue1Name = values.t2;
- *                         return Map.of(String.format("tagKeys/%s", tagKey1Name), String.format("tagValues/%s", tagValue1Name));
+ *                     .vmTags(Output.tuple(tagKey1.id(), tagValue1.id()).applyValue(values -> {
+ *                         var tagKey1Id = values.t1;
+ *                         var tagValue1Id = values.t2;
+ *                         return Map.of(tagKey1Id, tagValue1Id);
  *                     }))
  *                     .build())
  *                 .build())

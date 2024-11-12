@@ -24,6 +24,7 @@ class NodeTemplateArgs:
                  accelerators: Optional[pulumi.Input[Sequence[pulumi.Input['NodeTemplateAcceleratorArgs']]]] = None,
                  cpu_overcommit_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disks: Optional[pulumi.Input[Sequence[pulumi.Input['NodeTemplateDiskArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_affinity_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  node_type: Optional[pulumi.Input[str]] = None,
@@ -40,6 +41,9 @@ class NodeTemplateArgs:
                Default value is `NONE`.
                Possible values are: `ENABLED`, `NONE`.
         :param pulumi.Input[str] description: An optional textual description of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input['NodeTemplateDiskArgs']]] disks: List of the type, size and count of disks attached to the
+               node template
+               Structure is documented below.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] node_affinity_labels: Labels to use for node affinity, which will be used in
                instance scheduling.
@@ -64,6 +68,8 @@ class NodeTemplateArgs:
             pulumi.set(__self__, "cpu_overcommit_type", cpu_overcommit_type)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if disks is not None:
+            pulumi.set(__self__, "disks", disks)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if node_affinity_labels is not None:
@@ -118,6 +124,20 @@ class NodeTemplateArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodeTemplateDiskArgs']]]]:
+        """
+        List of the type, size and count of disks attached to the
+        node template
+        Structure is documented below.
+        """
+        return pulumi.get(self, "disks")
+
+    @disks.setter
+    def disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodeTemplateDiskArgs']]]]):
+        pulumi.set(self, "disks", value)
 
     @property
     @pulumi.getter
@@ -221,6 +241,7 @@ class _NodeTemplateState:
                  cpu_overcommit_type: Optional[pulumi.Input[str]] = None,
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disks: Optional[pulumi.Input[Sequence[pulumi.Input['NodeTemplateDiskArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_affinity_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  node_type: Optional[pulumi.Input[str]] = None,
@@ -239,6 +260,9 @@ class _NodeTemplateState:
                Possible values are: `ENABLED`, `NONE`.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional textual description of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input['NodeTemplateDiskArgs']]] disks: List of the type, size and count of disks attached to the
+               node template
+               Structure is documented below.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] node_affinity_labels: Labels to use for node affinity, which will be used in
                instance scheduling.
@@ -266,6 +290,8 @@ class _NodeTemplateState:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if disks is not None:
+            pulumi.set(__self__, "disks", disks)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if node_affinity_labels is not None:
@@ -334,6 +360,20 @@ class _NodeTemplateState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def disks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['NodeTemplateDiskArgs']]]]:
+        """
+        List of the type, size and count of disks attached to the
+        node template
+        Structure is documented below.
+        """
+        return pulumi.get(self, "disks")
+
+    @disks.setter
+    def disks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['NodeTemplateDiskArgs']]]]):
+        pulumi.set(self, "disks", value)
 
     @property
     @pulumi.getter
@@ -450,6 +490,7 @@ class NodeTemplate(pulumi.CustomResource):
                  accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodeTemplateAcceleratorArgs', 'NodeTemplateAcceleratorArgsDict']]]]] = None,
                  cpu_overcommit_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodeTemplateDiskArgs', 'NodeTemplateDiskArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_affinity_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  node_type: Optional[pulumi.Input[str]] = None,
@@ -516,6 +557,23 @@ class NodeTemplate(pulumi.CustomResource):
                 "accelerator_count": 4,
             }])
         ```
+        ### Node Template Disks
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        central1a = gcp.compute.get_node_types(zone="us-central1-a")
+        template = gcp.compute.NodeTemplate("template",
+            name="soletenant-with-disks",
+            region="us-central1",
+            node_type="n2-node-80-640",
+            disks=[{
+                "disk_count": 16,
+                "disk_size_gb": 375,
+                "disk_type": "local-ssd",
+            }])
+        ```
 
         ## Import
 
@@ -556,6 +614,9 @@ class NodeTemplate(pulumi.CustomResource):
                Default value is `NONE`.
                Possible values are: `ENABLED`, `NONE`.
         :param pulumi.Input[str] description: An optional textual description of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NodeTemplateDiskArgs', 'NodeTemplateDiskArgsDict']]]] disks: List of the type, size and count of disks attached to the
+               node template
+               Structure is documented below.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] node_affinity_labels: Labels to use for node affinity, which will be used in
                instance scheduling.
@@ -638,6 +699,23 @@ class NodeTemplate(pulumi.CustomResource):
                 "accelerator_count": 4,
             }])
         ```
+        ### Node Template Disks
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        central1a = gcp.compute.get_node_types(zone="us-central1-a")
+        template = gcp.compute.NodeTemplate("template",
+            name="soletenant-with-disks",
+            region="us-central1",
+            node_type="n2-node-80-640",
+            disks=[{
+                "disk_count": 16,
+                "disk_size_gb": 375,
+                "disk_type": "local-ssd",
+            }])
+        ```
 
         ## Import
 
@@ -687,6 +765,7 @@ class NodeTemplate(pulumi.CustomResource):
                  accelerators: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodeTemplateAcceleratorArgs', 'NodeTemplateAcceleratorArgsDict']]]]] = None,
                  cpu_overcommit_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodeTemplateDiskArgs', 'NodeTemplateDiskArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_affinity_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  node_type: Optional[pulumi.Input[str]] = None,
@@ -706,6 +785,7 @@ class NodeTemplate(pulumi.CustomResource):
             __props__.__dict__["accelerators"] = accelerators
             __props__.__dict__["cpu_overcommit_type"] = cpu_overcommit_type
             __props__.__dict__["description"] = description
+            __props__.__dict__["disks"] = disks
             __props__.__dict__["name"] = name
             __props__.__dict__["node_affinity_labels"] = node_affinity_labels
             __props__.__dict__["node_type"] = node_type
@@ -729,6 +809,7 @@ class NodeTemplate(pulumi.CustomResource):
             cpu_overcommit_type: Optional[pulumi.Input[str]] = None,
             creation_timestamp: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
+            disks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['NodeTemplateDiskArgs', 'NodeTemplateDiskArgsDict']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             node_affinity_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             node_type: Optional[pulumi.Input[str]] = None,
@@ -752,6 +833,9 @@ class NodeTemplate(pulumi.CustomResource):
                Possible values are: `ENABLED`, `NONE`.
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional textual description of the resource.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['NodeTemplateDiskArgs', 'NodeTemplateDiskArgsDict']]]] disks: List of the type, size and count of disks attached to the
+               node template
+               Structure is documented below.
         :param pulumi.Input[str] name: Name of the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] node_affinity_labels: Labels to use for node affinity, which will be used in
                instance scheduling.
@@ -779,6 +863,7 @@ class NodeTemplate(pulumi.CustomResource):
         __props__.__dict__["cpu_overcommit_type"] = cpu_overcommit_type
         __props__.__dict__["creation_timestamp"] = creation_timestamp
         __props__.__dict__["description"] = description
+        __props__.__dict__["disks"] = disks
         __props__.__dict__["name"] = name
         __props__.__dict__["node_affinity_labels"] = node_affinity_labels
         __props__.__dict__["node_type"] = node_type
@@ -824,6 +909,16 @@ class NodeTemplate(pulumi.CustomResource):
         An optional textual description of the resource.
         """
         return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def disks(self) -> pulumi.Output[Optional[Sequence['outputs.NodeTemplateDisk']]]:
+        """
+        List of the type, size and count of disks attached to the
+        node template
+        Structure is documented below.
+        """
+        return pulumi.get(self, "disks")
 
     @property
     @pulumi.getter

@@ -68,6 +68,10 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// The configuration for replication.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDatabaseInstancesInstanceReplicaConfigurationResult> ReplicaConfigurations;
+        /// <summary>
+        /// The replicas of the instance.
+        /// </summary>
+        public readonly ImmutableArray<string> ReplicaNames;
         public readonly ImmutableArray<Outputs.GetDatabaseInstancesInstanceRestoreBackupContextResult> RestoreBackupContexts;
         /// <summary>
         /// Initial root password. Required for MS SQL Server.
@@ -127,6 +131,8 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             ImmutableArray<Outputs.GetDatabaseInstancesInstanceReplicaConfigurationResult> replicaConfigurations,
 
+            ImmutableArray<string> replicaNames,
+
             ImmutableArray<Outputs.GetDatabaseInstancesInstanceRestoreBackupContextResult> restoreBackupContexts,
 
             string rootPassword,
@@ -158,6 +164,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             PublicIpAddress = publicIpAddress;
             Region = region;
             ReplicaConfigurations = replicaConfigurations;
+            ReplicaNames = replicaNames;
             RestoreBackupContexts = restoreBackupContexts;
             RootPassword = rootPassword;
             SelfLink = selfLink;

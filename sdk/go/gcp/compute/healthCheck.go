@@ -608,19 +608,19 @@ type HealthCheck struct {
 	// An optional description of this resource. Provide this property when
 	// you create the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	GrpcHealthCheck HealthCheckGrpcHealthCheckPtrOutput `pulumi:"grpcHealthCheck"`
 	// A so-far unhealthy instance will be marked healthy after this many
 	// consecutive successes. The default value is 2.
 	HealthyThreshold pulumi.IntPtrOutput `pulumi:"healthyThreshold"`
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	Http2HealthCheck HealthCheckHttp2HealthCheckPtrOutput `pulumi:"http2HealthCheck"`
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	HttpHealthCheck HealthCheckHttpHealthCheckPtrOutput `pulumi:"httpHealthCheck"`
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	HttpsHealthCheck HealthCheckHttpsHealthCheckPtrOutput `pulumi:"httpsHealthCheck"`
 	// Configure logging on this health check.
@@ -654,10 +654,10 @@ type HealthCheck struct {
 	// * The health check cannot be used with BackendService nor with managed
 	//   instance group auto-healing.
 	SourceRegions pulumi.StringArrayOutput `pulumi:"sourceRegions"`
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	SslHealthCheck HealthCheckSslHealthCheckPtrOutput `pulumi:"sslHealthCheck"`
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	TcpHealthCheck HealthCheckTcpHealthCheckPtrOutput `pulumi:"tcpHealthCheck"`
 	// How long (in seconds) to wait before claiming failure.
@@ -709,19 +709,19 @@ type healthCheckState struct {
 	// An optional description of this resource. Provide this property when
 	// you create the resource.
 	Description *string `pulumi:"description"`
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	GrpcHealthCheck *HealthCheckGrpcHealthCheck `pulumi:"grpcHealthCheck"`
 	// A so-far unhealthy instance will be marked healthy after this many
 	// consecutive successes. The default value is 2.
 	HealthyThreshold *int `pulumi:"healthyThreshold"`
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	Http2HealthCheck *HealthCheckHttp2HealthCheck `pulumi:"http2HealthCheck"`
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	HttpHealthCheck *HealthCheckHttpHealthCheck `pulumi:"httpHealthCheck"`
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	HttpsHealthCheck *HealthCheckHttpsHealthCheck `pulumi:"httpsHealthCheck"`
 	// Configure logging on this health check.
@@ -755,10 +755,10 @@ type healthCheckState struct {
 	// * The health check cannot be used with BackendService nor with managed
 	//   instance group auto-healing.
 	SourceRegions []string `pulumi:"sourceRegions"`
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	SslHealthCheck *HealthCheckSslHealthCheck `pulumi:"sslHealthCheck"`
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	TcpHealthCheck *HealthCheckTcpHealthCheck `pulumi:"tcpHealthCheck"`
 	// How long (in seconds) to wait before claiming failure.
@@ -781,19 +781,19 @@ type HealthCheckState struct {
 	// An optional description of this resource. Provide this property when
 	// you create the resource.
 	Description pulumi.StringPtrInput
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	GrpcHealthCheck HealthCheckGrpcHealthCheckPtrInput
 	// A so-far unhealthy instance will be marked healthy after this many
 	// consecutive successes. The default value is 2.
 	HealthyThreshold pulumi.IntPtrInput
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	Http2HealthCheck HealthCheckHttp2HealthCheckPtrInput
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	HttpHealthCheck HealthCheckHttpHealthCheckPtrInput
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	HttpsHealthCheck HealthCheckHttpsHealthCheckPtrInput
 	// Configure logging on this health check.
@@ -827,10 +827,10 @@ type HealthCheckState struct {
 	// * The health check cannot be used with BackendService nor with managed
 	//   instance group auto-healing.
 	SourceRegions pulumi.StringArrayInput
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	SslHealthCheck HealthCheckSslHealthCheckPtrInput
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	TcpHealthCheck HealthCheckTcpHealthCheckPtrInput
 	// How long (in seconds) to wait before claiming failure.
@@ -855,19 +855,19 @@ type healthCheckArgs struct {
 	// An optional description of this resource. Provide this property when
 	// you create the resource.
 	Description *string `pulumi:"description"`
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	GrpcHealthCheck *HealthCheckGrpcHealthCheck `pulumi:"grpcHealthCheck"`
 	// A so-far unhealthy instance will be marked healthy after this many
 	// consecutive successes. The default value is 2.
 	HealthyThreshold *int `pulumi:"healthyThreshold"`
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	Http2HealthCheck *HealthCheckHttp2HealthCheck `pulumi:"http2HealthCheck"`
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	HttpHealthCheck *HealthCheckHttpHealthCheck `pulumi:"httpHealthCheck"`
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	HttpsHealthCheck *HealthCheckHttpsHealthCheck `pulumi:"httpsHealthCheck"`
 	// Configure logging on this health check.
@@ -899,10 +899,10 @@ type healthCheckArgs struct {
 	// * The health check cannot be used with BackendService nor with managed
 	//   instance group auto-healing.
 	SourceRegions []string `pulumi:"sourceRegions"`
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	SslHealthCheck *HealthCheckSslHealthCheck `pulumi:"sslHealthCheck"`
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	TcpHealthCheck *HealthCheckTcpHealthCheck `pulumi:"tcpHealthCheck"`
 	// How long (in seconds) to wait before claiming failure.
@@ -922,19 +922,19 @@ type HealthCheckArgs struct {
 	// An optional description of this resource. Provide this property when
 	// you create the resource.
 	Description pulumi.StringPtrInput
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	GrpcHealthCheck HealthCheckGrpcHealthCheckPtrInput
 	// A so-far unhealthy instance will be marked healthy after this many
 	// consecutive successes. The default value is 2.
 	HealthyThreshold pulumi.IntPtrInput
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	Http2HealthCheck HealthCheckHttp2HealthCheckPtrInput
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	HttpHealthCheck HealthCheckHttpHealthCheckPtrInput
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	HttpsHealthCheck HealthCheckHttpsHealthCheckPtrInput
 	// Configure logging on this health check.
@@ -966,10 +966,10 @@ type HealthCheckArgs struct {
 	// * The health check cannot be used with BackendService nor with managed
 	//   instance group auto-healing.
 	SourceRegions pulumi.StringArrayInput
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	SslHealthCheck HealthCheckSslHealthCheckPtrInput
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	TcpHealthCheck HealthCheckTcpHealthCheckPtrInput
 	// How long (in seconds) to wait before claiming failure.
@@ -1085,7 +1085,7 @@ func (o HealthCheckOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *HealthCheck) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// A nested object resource
+// A nested object resource.
 // Structure is documented below.
 func (o HealthCheckOutput) GrpcHealthCheck() HealthCheckGrpcHealthCheckPtrOutput {
 	return o.ApplyT(func(v *HealthCheck) HealthCheckGrpcHealthCheckPtrOutput { return v.GrpcHealthCheck }).(HealthCheckGrpcHealthCheckPtrOutput)
@@ -1097,19 +1097,19 @@ func (o HealthCheckOutput) HealthyThreshold() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *HealthCheck) pulumi.IntPtrOutput { return v.HealthyThreshold }).(pulumi.IntPtrOutput)
 }
 
-// A nested object resource
+// A nested object resource.
 // Structure is documented below.
 func (o HealthCheckOutput) Http2HealthCheck() HealthCheckHttp2HealthCheckPtrOutput {
 	return o.ApplyT(func(v *HealthCheck) HealthCheckHttp2HealthCheckPtrOutput { return v.Http2HealthCheck }).(HealthCheckHttp2HealthCheckPtrOutput)
 }
 
-// A nested object resource
+// A nested object resource.
 // Structure is documented below.
 func (o HealthCheckOutput) HttpHealthCheck() HealthCheckHttpHealthCheckPtrOutput {
 	return o.ApplyT(func(v *HealthCheck) HealthCheckHttpHealthCheckPtrOutput { return v.HttpHealthCheck }).(HealthCheckHttpHealthCheckPtrOutput)
 }
 
-// A nested object resource
+// A nested object resource.
 // Structure is documented below.
 func (o HealthCheckOutput) HttpsHealthCheck() HealthCheckHttpsHealthCheckPtrOutput {
 	return o.ApplyT(func(v *HealthCheck) HealthCheckHttpsHealthCheckPtrOutput { return v.HttpsHealthCheck }).(HealthCheckHttpsHealthCheckPtrOutput)
@@ -1161,13 +1161,13 @@ func (o HealthCheckOutput) SourceRegions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *HealthCheck) pulumi.StringArrayOutput { return v.SourceRegions }).(pulumi.StringArrayOutput)
 }
 
-// A nested object resource
+// A nested object resource.
 // Structure is documented below.
 func (o HealthCheckOutput) SslHealthCheck() HealthCheckSslHealthCheckPtrOutput {
 	return o.ApplyT(func(v *HealthCheck) HealthCheckSslHealthCheckPtrOutput { return v.SslHealthCheck }).(HealthCheckSslHealthCheckPtrOutput)
 }
 
-// A nested object resource
+// A nested object resource.
 // Structure is documented below.
 func (o HealthCheckOutput) TcpHealthCheck() HealthCheckTcpHealthCheckPtrOutput {
 	return o.ApplyT(func(v *HealthCheck) HealthCheckTcpHealthCheckPtrOutput { return v.TcpHealthCheck }).(HealthCheckTcpHealthCheckPtrOutput)

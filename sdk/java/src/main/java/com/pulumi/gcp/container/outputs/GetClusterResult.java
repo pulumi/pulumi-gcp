@@ -11,6 +11,7 @@ import com.pulumi.gcp.container.outputs.GetClusterBinaryAuthorization;
 import com.pulumi.gcp.container.outputs.GetClusterClusterAutoscaling;
 import com.pulumi.gcp.container.outputs.GetClusterClusterTelemetry;
 import com.pulumi.gcp.container.outputs.GetClusterConfidentialNode;
+import com.pulumi.gcp.container.outputs.GetClusterControlPlaneEndpointsConfig;
 import com.pulumi.gcp.container.outputs.GetClusterCostManagementConfig;
 import com.pulumi.gcp.container.outputs.GetClusterDatabaseEncryption;
 import com.pulumi.gcp.container.outputs.GetClusterDefaultSnatStatus;
@@ -41,6 +42,7 @@ import com.pulumi.gcp.container.outputs.GetClusterSecretManagerConfig;
 import com.pulumi.gcp.container.outputs.GetClusterSecurityPostureConfig;
 import com.pulumi.gcp.container.outputs.GetClusterServiceExternalIpsConfig;
 import com.pulumi.gcp.container.outputs.GetClusterTpuConfig;
+import com.pulumi.gcp.container.outputs.GetClusterUserManagedKeysConfig;
 import com.pulumi.gcp.container.outputs.GetClusterVerticalPodAutoscaling;
 import com.pulumi.gcp.container.outputs.GetClusterWorkloadAltsConfig;
 import com.pulumi.gcp.container.outputs.GetClusterWorkloadIdentityConfig;
@@ -63,6 +65,7 @@ public final class GetClusterResult {
     private String clusterIpv4Cidr;
     private List<GetClusterClusterTelemetry> clusterTelemetries;
     private List<GetClusterConfidentialNode> confidentialNodes;
+    private List<GetClusterControlPlaneEndpointsConfig> controlPlaneEndpointsConfigs;
     private List<GetClusterCostManagementConfig> costManagementConfigs;
     private List<GetClusterDatabaseEncryption> databaseEncryptions;
     private String datapathProvider;
@@ -136,6 +139,7 @@ public final class GetClusterResult {
     private String subnetwork;
     private List<GetClusterTpuConfig> tpuConfigs;
     private String tpuIpv4CidrBlock;
+    private List<GetClusterUserManagedKeysConfig> userManagedKeysConfigs;
     private List<GetClusterVerticalPodAutoscaling> verticalPodAutoscalings;
     private List<GetClusterWorkloadAltsConfig> workloadAltsConfigs;
     private List<GetClusterWorkloadIdentityConfig> workloadIdentityConfigs;
@@ -164,6 +168,9 @@ public final class GetClusterResult {
     }
     public List<GetClusterConfidentialNode> confidentialNodes() {
         return this.confidentialNodes;
+    }
+    public List<GetClusterControlPlaneEndpointsConfig> controlPlaneEndpointsConfigs() {
+        return this.controlPlaneEndpointsConfigs;
     }
     public List<GetClusterCostManagementConfig> costManagementConfigs() {
         return this.costManagementConfigs;
@@ -376,6 +383,9 @@ public final class GetClusterResult {
     public String tpuIpv4CidrBlock() {
         return this.tpuIpv4CidrBlock;
     }
+    public List<GetClusterUserManagedKeysConfig> userManagedKeysConfigs() {
+        return this.userManagedKeysConfigs;
+    }
     public List<GetClusterVerticalPodAutoscaling> verticalPodAutoscalings() {
         return this.verticalPodAutoscalings;
     }
@@ -403,6 +413,7 @@ public final class GetClusterResult {
         private String clusterIpv4Cidr;
         private List<GetClusterClusterTelemetry> clusterTelemetries;
         private List<GetClusterConfidentialNode> confidentialNodes;
+        private List<GetClusterControlPlaneEndpointsConfig> controlPlaneEndpointsConfigs;
         private List<GetClusterCostManagementConfig> costManagementConfigs;
         private List<GetClusterDatabaseEncryption> databaseEncryptions;
         private String datapathProvider;
@@ -472,6 +483,7 @@ public final class GetClusterResult {
         private String subnetwork;
         private List<GetClusterTpuConfig> tpuConfigs;
         private String tpuIpv4CidrBlock;
+        private List<GetClusterUserManagedKeysConfig> userManagedKeysConfigs;
         private List<GetClusterVerticalPodAutoscaling> verticalPodAutoscalings;
         private List<GetClusterWorkloadAltsConfig> workloadAltsConfigs;
         private List<GetClusterWorkloadIdentityConfig> workloadIdentityConfigs;
@@ -486,6 +498,7 @@ public final class GetClusterResult {
     	      this.clusterIpv4Cidr = defaults.clusterIpv4Cidr;
     	      this.clusterTelemetries = defaults.clusterTelemetries;
     	      this.confidentialNodes = defaults.confidentialNodes;
+    	      this.controlPlaneEndpointsConfigs = defaults.controlPlaneEndpointsConfigs;
     	      this.costManagementConfigs = defaults.costManagementConfigs;
     	      this.databaseEncryptions = defaults.databaseEncryptions;
     	      this.datapathProvider = defaults.datapathProvider;
@@ -555,6 +568,7 @@ public final class GetClusterResult {
     	      this.subnetwork = defaults.subnetwork;
     	      this.tpuConfigs = defaults.tpuConfigs;
     	      this.tpuIpv4CidrBlock = defaults.tpuIpv4CidrBlock;
+    	      this.userManagedKeysConfigs = defaults.userManagedKeysConfigs;
     	      this.verticalPodAutoscalings = defaults.verticalPodAutoscalings;
     	      this.workloadAltsConfigs = defaults.workloadAltsConfigs;
     	      this.workloadIdentityConfigs = defaults.workloadIdentityConfigs;
@@ -641,6 +655,17 @@ public final class GetClusterResult {
         }
         public Builder confidentialNodes(GetClusterConfidentialNode... confidentialNodes) {
             return confidentialNodes(List.of(confidentialNodes));
+        }
+        @CustomType.Setter
+        public Builder controlPlaneEndpointsConfigs(List<GetClusterControlPlaneEndpointsConfig> controlPlaneEndpointsConfigs) {
+            if (controlPlaneEndpointsConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterResult", "controlPlaneEndpointsConfigs");
+            }
+            this.controlPlaneEndpointsConfigs = controlPlaneEndpointsConfigs;
+            return this;
+        }
+        public Builder controlPlaneEndpointsConfigs(GetClusterControlPlaneEndpointsConfig... controlPlaneEndpointsConfigs) {
+            return controlPlaneEndpointsConfigs(List.of(controlPlaneEndpointsConfigs));
         }
         @CustomType.Setter
         public Builder costManagementConfigs(List<GetClusterCostManagementConfig> costManagementConfigs) {
@@ -1284,6 +1309,17 @@ public final class GetClusterResult {
             return this;
         }
         @CustomType.Setter
+        public Builder userManagedKeysConfigs(List<GetClusterUserManagedKeysConfig> userManagedKeysConfigs) {
+            if (userManagedKeysConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterResult", "userManagedKeysConfigs");
+            }
+            this.userManagedKeysConfigs = userManagedKeysConfigs;
+            return this;
+        }
+        public Builder userManagedKeysConfigs(GetClusterUserManagedKeysConfig... userManagedKeysConfigs) {
+            return userManagedKeysConfigs(List.of(userManagedKeysConfigs));
+        }
+        @CustomType.Setter
         public Builder verticalPodAutoscalings(List<GetClusterVerticalPodAutoscaling> verticalPodAutoscalings) {
             if (verticalPodAutoscalings == null) {
               throw new MissingRequiredPropertyException("GetClusterResult", "verticalPodAutoscalings");
@@ -1326,6 +1362,7 @@ public final class GetClusterResult {
             _resultValue.clusterIpv4Cidr = clusterIpv4Cidr;
             _resultValue.clusterTelemetries = clusterTelemetries;
             _resultValue.confidentialNodes = confidentialNodes;
+            _resultValue.controlPlaneEndpointsConfigs = controlPlaneEndpointsConfigs;
             _resultValue.costManagementConfigs = costManagementConfigs;
             _resultValue.databaseEncryptions = databaseEncryptions;
             _resultValue.datapathProvider = datapathProvider;
@@ -1395,6 +1432,7 @@ public final class GetClusterResult {
             _resultValue.subnetwork = subnetwork;
             _resultValue.tpuConfigs = tpuConfigs;
             _resultValue.tpuIpv4CidrBlock = tpuIpv4CidrBlock;
+            _resultValue.userManagedKeysConfigs = userManagedKeysConfigs;
             _resultValue.verticalPodAutoscalings = verticalPodAutoscalings;
             _resultValue.workloadAltsConfigs = workloadAltsConfigs;
             _resultValue.workloadIdentityConfigs = workloadIdentityConfigs;

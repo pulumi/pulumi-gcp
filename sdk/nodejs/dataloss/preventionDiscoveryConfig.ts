@@ -101,7 +101,7 @@ export class PreventionDiscoveryConfig extends pulumi.CustomResource {
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      */
     public readonly orgConfig!: pulumi.Output<outputs.dataloss.PreventionDiscoveryConfigOrgConfig | undefined>;
@@ -221,7 +221,7 @@ export interface PreventionDiscoveryConfigState {
      */
     name?: pulumi.Input<string>;
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      */
     orgConfig?: pulumi.Input<inputs.dataloss.PreventionDiscoveryConfigOrgConfig>;
@@ -272,7 +272,7 @@ export interface PreventionDiscoveryConfigArgs {
      */
     location: pulumi.Input<string>;
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      */
     orgConfig?: pulumi.Input<inputs.dataloss.PreventionDiscoveryConfigOrgConfig>;

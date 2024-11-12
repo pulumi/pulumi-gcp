@@ -39,7 +39,7 @@ namespace Pulumi.Gcp.Tags
     /// 
     ///     var @value = new Gcp.Tags.TagValue("value", new()
     ///     {
-    ///         Parent = key.Name.Apply(name =&gt; $"tagKeys/{name}"),
+    ///         Parent = key.Id,
     ///         ShortName = "valuename",
     ///         Description = "For valuename resources.",
     ///     });

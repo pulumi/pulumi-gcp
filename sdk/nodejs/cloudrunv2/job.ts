@@ -274,7 +274,6 @@ import * as utilities from "../utilities";
  *     name: "cloudrun-job",
  *     location: "us-central1",
  *     deletionProtection: false,
- *     launchStage: "BETA",
  *     template: {
  *         template: {
  *             containers: [{

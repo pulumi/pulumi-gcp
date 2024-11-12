@@ -18,7 +18,7 @@ public final class DatasetArgs extends com.pulumi.resources.ResourceArgs {
     public static final DatasetArgs Empty = new DatasetArgs();
 
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -26,7 +26,7 @@ public final class DatasetArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<DatasetEncryptionSpecArgs> encryptionSpec;
 
     /**
-     * @return A nested object resource
+     * @return A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -133,7 +133,7 @@ public final class DatasetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param encryptionSpec A nested object resource
+         * @param encryptionSpec A nested object resource.
          * Structure is documented below.
          * 
          * @return builder
@@ -145,7 +145,7 @@ public final class DatasetArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param encryptionSpec A nested object resource
+         * @param encryptionSpec A nested object resource.
          * Structure is documented below.
          * 
          * @return builder

@@ -31,7 +31,7 @@ public final class RegionSecurityPolicyUserDefinedField {
      */
     private @Nullable String mask;
     /**
-     * @return The name of this field. Must be unique within the policy.
+     * @return Name of the user-defined field, as given in the definition.
      * 
      */
     private @Nullable String name;
@@ -69,7 +69,7 @@ public final class RegionSecurityPolicyUserDefinedField {
         return Optional.ofNullable(this.mask);
     }
     /**
-     * @return The name of this field. Must be unique within the policy.
+     * @return Name of the user-defined field, as given in the definition.
      * 
      */
     public Optional<String> name() {

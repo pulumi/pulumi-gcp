@@ -537,16 +537,19 @@ namespace Pulumi.Gcp.Compute
         public Output<Outputs.RouterPeerBfd> Bfd { get; private set; } = null!;
 
         /// <summary>
-        /// The custom learned route IP address range. Must be a valid CIDR-formatted prefix. If an IP address is provided without a
-        /// subnet mask, it is interpreted as, for IPv4, a /32 singular IP address range, and, for IPv6, /128.
+        /// The custom learned route IP address range. Must be a valid CIDR-formatted prefix.
+        /// If an IP address is provided without a subnet mask, it is interpreted as, for IPv4,
+        /// a /32 singular IP address range, and, for IPv6, /128.
+        /// Structure is documented below.
         /// </summary>
         [Output("customLearnedIpRanges")]
         public Output<ImmutableArray<Outputs.RouterPeerCustomLearnedIpRange>> CustomLearnedIpRanges { get; private set; } = null!;
 
         /// <summary>
-        /// The user-defined custom learned route priority for a BGP session. This value is applied to all custom learned route
-        /// ranges for the session. You can choose a value from 0 to 65335. If you don't provide a value, Google Cloud assigns a
-        /// priority of 100 to the ranges.
+        /// The user-defined custom learned route priority for a BGP session.
+        /// This value is applied to all custom learned route ranges for the session.
+        /// You can choose a value from 0 to 65335. If you don't provide a value,
+        /// Google Cloud assigns a priority of 100 to the ranges.
         /// </summary>
         [Output("customLearnedRoutePriority")]
         public Output<int?> CustomLearnedRoutePriority { get; private set; } = null!;
@@ -819,8 +822,10 @@ namespace Pulumi.Gcp.Compute
         private InputList<Inputs.RouterPeerCustomLearnedIpRangeArgs>? _customLearnedIpRanges;
 
         /// <summary>
-        /// The custom learned route IP address range. Must be a valid CIDR-formatted prefix. If an IP address is provided without a
-        /// subnet mask, it is interpreted as, for IPv4, a /32 singular IP address range, and, for IPv6, /128.
+        /// The custom learned route IP address range. Must be a valid CIDR-formatted prefix.
+        /// If an IP address is provided without a subnet mask, it is interpreted as, for IPv4,
+        /// a /32 singular IP address range, and, for IPv6, /128.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.RouterPeerCustomLearnedIpRangeArgs> CustomLearnedIpRanges
         {
@@ -829,9 +834,10 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// The user-defined custom learned route priority for a BGP session. This value is applied to all custom learned route
-        /// ranges for the session. You can choose a value from 0 to 65335. If you don't provide a value, Google Cloud assigns a
-        /// priority of 100 to the ranges.
+        /// The user-defined custom learned route priority for a BGP session.
+        /// This value is applied to all custom learned route ranges for the session.
+        /// You can choose a value from 0 to 65335. If you don't provide a value,
+        /// Google Cloud assigns a priority of 100 to the ranges.
         /// </summary>
         [Input("customLearnedRoutePriority")]
         public Input<int>? CustomLearnedRoutePriority { get; set; }
@@ -1064,8 +1070,10 @@ namespace Pulumi.Gcp.Compute
         private InputList<Inputs.RouterPeerCustomLearnedIpRangeGetArgs>? _customLearnedIpRanges;
 
         /// <summary>
-        /// The custom learned route IP address range. Must be a valid CIDR-formatted prefix. If an IP address is provided without a
-        /// subnet mask, it is interpreted as, for IPv4, a /32 singular IP address range, and, for IPv6, /128.
+        /// The custom learned route IP address range. Must be a valid CIDR-formatted prefix.
+        /// If an IP address is provided without a subnet mask, it is interpreted as, for IPv4,
+        /// a /32 singular IP address range, and, for IPv6, /128.
+        /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.RouterPeerCustomLearnedIpRangeGetArgs> CustomLearnedIpRanges
         {
@@ -1074,9 +1082,10 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
-        /// The user-defined custom learned route priority for a BGP session. This value is applied to all custom learned route
-        /// ranges for the session. You can choose a value from 0 to 65335. If you don't provide a value, Google Cloud assigns a
-        /// priority of 100 to the ranges.
+        /// The user-defined custom learned route priority for a BGP session.
+        /// This value is applied to all custom learned route ranges for the session.
+        /// You can choose a value from 0 to 65335. If you don't provide a value,
+        /// Google Cloud assigns a priority of 100 to the ranges.
         /// </summary>
         [Input("customLearnedRoutePriority")]
         public Input<int>? CustomLearnedRoutePriority { get; set; }

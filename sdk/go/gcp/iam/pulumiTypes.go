@@ -1075,6 +1075,319 @@ func (o DenyPolicyRuleDenyRuleDenialConditionPtrOutput) Title() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+type PrincipalAccessBoundaryPolicyDetails struct {
+	// The version number that indicates which Google Cloud services
+	// are included in the enforcement (e.g. \"latest\", \"1\", ...). If empty, the
+	// PAB policy version will be set to the current latest version, and this version
+	// won't get updated when new versions are released.
+	EnforcementVersion *string `pulumi:"enforcementVersion"`
+	// A list of principal access boundary policy rules. The number of rules in a policy is limited to 500.
+	// Structure is documented below.
+	Rules []PrincipalAccessBoundaryPolicyDetailsRule `pulumi:"rules"`
+}
+
+// PrincipalAccessBoundaryPolicyDetailsInput is an input type that accepts PrincipalAccessBoundaryPolicyDetailsArgs and PrincipalAccessBoundaryPolicyDetailsOutput values.
+// You can construct a concrete instance of `PrincipalAccessBoundaryPolicyDetailsInput` via:
+//
+//	PrincipalAccessBoundaryPolicyDetailsArgs{...}
+type PrincipalAccessBoundaryPolicyDetailsInput interface {
+	pulumi.Input
+
+	ToPrincipalAccessBoundaryPolicyDetailsOutput() PrincipalAccessBoundaryPolicyDetailsOutput
+	ToPrincipalAccessBoundaryPolicyDetailsOutputWithContext(context.Context) PrincipalAccessBoundaryPolicyDetailsOutput
+}
+
+type PrincipalAccessBoundaryPolicyDetailsArgs struct {
+	// The version number that indicates which Google Cloud services
+	// are included in the enforcement (e.g. \"latest\", \"1\", ...). If empty, the
+	// PAB policy version will be set to the current latest version, and this version
+	// won't get updated when new versions are released.
+	EnforcementVersion pulumi.StringPtrInput `pulumi:"enforcementVersion"`
+	// A list of principal access boundary policy rules. The number of rules in a policy is limited to 500.
+	// Structure is documented below.
+	Rules PrincipalAccessBoundaryPolicyDetailsRuleArrayInput `pulumi:"rules"`
+}
+
+func (PrincipalAccessBoundaryPolicyDetailsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrincipalAccessBoundaryPolicyDetails)(nil)).Elem()
+}
+
+func (i PrincipalAccessBoundaryPolicyDetailsArgs) ToPrincipalAccessBoundaryPolicyDetailsOutput() PrincipalAccessBoundaryPolicyDetailsOutput {
+	return i.ToPrincipalAccessBoundaryPolicyDetailsOutputWithContext(context.Background())
+}
+
+func (i PrincipalAccessBoundaryPolicyDetailsArgs) ToPrincipalAccessBoundaryPolicyDetailsOutputWithContext(ctx context.Context) PrincipalAccessBoundaryPolicyDetailsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrincipalAccessBoundaryPolicyDetailsOutput)
+}
+
+func (i PrincipalAccessBoundaryPolicyDetailsArgs) ToPrincipalAccessBoundaryPolicyDetailsPtrOutput() PrincipalAccessBoundaryPolicyDetailsPtrOutput {
+	return i.ToPrincipalAccessBoundaryPolicyDetailsPtrOutputWithContext(context.Background())
+}
+
+func (i PrincipalAccessBoundaryPolicyDetailsArgs) ToPrincipalAccessBoundaryPolicyDetailsPtrOutputWithContext(ctx context.Context) PrincipalAccessBoundaryPolicyDetailsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrincipalAccessBoundaryPolicyDetailsOutput).ToPrincipalAccessBoundaryPolicyDetailsPtrOutputWithContext(ctx)
+}
+
+// PrincipalAccessBoundaryPolicyDetailsPtrInput is an input type that accepts PrincipalAccessBoundaryPolicyDetailsArgs, PrincipalAccessBoundaryPolicyDetailsPtr and PrincipalAccessBoundaryPolicyDetailsPtrOutput values.
+// You can construct a concrete instance of `PrincipalAccessBoundaryPolicyDetailsPtrInput` via:
+//
+//	        PrincipalAccessBoundaryPolicyDetailsArgs{...}
+//
+//	or:
+//
+//	        nil
+type PrincipalAccessBoundaryPolicyDetailsPtrInput interface {
+	pulumi.Input
+
+	ToPrincipalAccessBoundaryPolicyDetailsPtrOutput() PrincipalAccessBoundaryPolicyDetailsPtrOutput
+	ToPrincipalAccessBoundaryPolicyDetailsPtrOutputWithContext(context.Context) PrincipalAccessBoundaryPolicyDetailsPtrOutput
+}
+
+type principalAccessBoundaryPolicyDetailsPtrType PrincipalAccessBoundaryPolicyDetailsArgs
+
+func PrincipalAccessBoundaryPolicyDetailsPtr(v *PrincipalAccessBoundaryPolicyDetailsArgs) PrincipalAccessBoundaryPolicyDetailsPtrInput {
+	return (*principalAccessBoundaryPolicyDetailsPtrType)(v)
+}
+
+func (*principalAccessBoundaryPolicyDetailsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrincipalAccessBoundaryPolicyDetails)(nil)).Elem()
+}
+
+func (i *principalAccessBoundaryPolicyDetailsPtrType) ToPrincipalAccessBoundaryPolicyDetailsPtrOutput() PrincipalAccessBoundaryPolicyDetailsPtrOutput {
+	return i.ToPrincipalAccessBoundaryPolicyDetailsPtrOutputWithContext(context.Background())
+}
+
+func (i *principalAccessBoundaryPolicyDetailsPtrType) ToPrincipalAccessBoundaryPolicyDetailsPtrOutputWithContext(ctx context.Context) PrincipalAccessBoundaryPolicyDetailsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrincipalAccessBoundaryPolicyDetailsPtrOutput)
+}
+
+type PrincipalAccessBoundaryPolicyDetailsOutput struct{ *pulumi.OutputState }
+
+func (PrincipalAccessBoundaryPolicyDetailsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrincipalAccessBoundaryPolicyDetails)(nil)).Elem()
+}
+
+func (o PrincipalAccessBoundaryPolicyDetailsOutput) ToPrincipalAccessBoundaryPolicyDetailsOutput() PrincipalAccessBoundaryPolicyDetailsOutput {
+	return o
+}
+
+func (o PrincipalAccessBoundaryPolicyDetailsOutput) ToPrincipalAccessBoundaryPolicyDetailsOutputWithContext(ctx context.Context) PrincipalAccessBoundaryPolicyDetailsOutput {
+	return o
+}
+
+func (o PrincipalAccessBoundaryPolicyDetailsOutput) ToPrincipalAccessBoundaryPolicyDetailsPtrOutput() PrincipalAccessBoundaryPolicyDetailsPtrOutput {
+	return o.ToPrincipalAccessBoundaryPolicyDetailsPtrOutputWithContext(context.Background())
+}
+
+func (o PrincipalAccessBoundaryPolicyDetailsOutput) ToPrincipalAccessBoundaryPolicyDetailsPtrOutputWithContext(ctx context.Context) PrincipalAccessBoundaryPolicyDetailsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v PrincipalAccessBoundaryPolicyDetails) *PrincipalAccessBoundaryPolicyDetails {
+		return &v
+	}).(PrincipalAccessBoundaryPolicyDetailsPtrOutput)
+}
+
+// The version number that indicates which Google Cloud services
+// are included in the enforcement (e.g. \"latest\", \"1\", ...). If empty, the
+// PAB policy version will be set to the current latest version, and this version
+// won't get updated when new versions are released.
+func (o PrincipalAccessBoundaryPolicyDetailsOutput) EnforcementVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrincipalAccessBoundaryPolicyDetails) *string { return v.EnforcementVersion }).(pulumi.StringPtrOutput)
+}
+
+// A list of principal access boundary policy rules. The number of rules in a policy is limited to 500.
+// Structure is documented below.
+func (o PrincipalAccessBoundaryPolicyDetailsOutput) Rules() PrincipalAccessBoundaryPolicyDetailsRuleArrayOutput {
+	return o.ApplyT(func(v PrincipalAccessBoundaryPolicyDetails) []PrincipalAccessBoundaryPolicyDetailsRule {
+		return v.Rules
+	}).(PrincipalAccessBoundaryPolicyDetailsRuleArrayOutput)
+}
+
+type PrincipalAccessBoundaryPolicyDetailsPtrOutput struct{ *pulumi.OutputState }
+
+func (PrincipalAccessBoundaryPolicyDetailsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**PrincipalAccessBoundaryPolicyDetails)(nil)).Elem()
+}
+
+func (o PrincipalAccessBoundaryPolicyDetailsPtrOutput) ToPrincipalAccessBoundaryPolicyDetailsPtrOutput() PrincipalAccessBoundaryPolicyDetailsPtrOutput {
+	return o
+}
+
+func (o PrincipalAccessBoundaryPolicyDetailsPtrOutput) ToPrincipalAccessBoundaryPolicyDetailsPtrOutputWithContext(ctx context.Context) PrincipalAccessBoundaryPolicyDetailsPtrOutput {
+	return o
+}
+
+func (o PrincipalAccessBoundaryPolicyDetailsPtrOutput) Elem() PrincipalAccessBoundaryPolicyDetailsOutput {
+	return o.ApplyT(func(v *PrincipalAccessBoundaryPolicyDetails) PrincipalAccessBoundaryPolicyDetails {
+		if v != nil {
+			return *v
+		}
+		var ret PrincipalAccessBoundaryPolicyDetails
+		return ret
+	}).(PrincipalAccessBoundaryPolicyDetailsOutput)
+}
+
+// The version number that indicates which Google Cloud services
+// are included in the enforcement (e.g. \"latest\", \"1\", ...). If empty, the
+// PAB policy version will be set to the current latest version, and this version
+// won't get updated when new versions are released.
+func (o PrincipalAccessBoundaryPolicyDetailsPtrOutput) EnforcementVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PrincipalAccessBoundaryPolicyDetails) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EnforcementVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// A list of principal access boundary policy rules. The number of rules in a policy is limited to 500.
+// Structure is documented below.
+func (o PrincipalAccessBoundaryPolicyDetailsPtrOutput) Rules() PrincipalAccessBoundaryPolicyDetailsRuleArrayOutput {
+	return o.ApplyT(func(v *PrincipalAccessBoundaryPolicyDetails) []PrincipalAccessBoundaryPolicyDetailsRule {
+		if v == nil {
+			return nil
+		}
+		return v.Rules
+	}).(PrincipalAccessBoundaryPolicyDetailsRuleArrayOutput)
+}
+
+type PrincipalAccessBoundaryPolicyDetailsRule struct {
+	// The description of the principal access boundary policy rule. Must be less than or equal to 256 characters.
+	Description *string `pulumi:"description"`
+	// The access relationship of principals to the resources in this rule.
+	// Possible values: ALLOW
+	Effect string `pulumi:"effect"`
+	// A list of Cloud Resource Manager resources. The resource
+	// and all the descendants are included. The number of resources in a policy
+	// is limited to 500 across all rules.
+	// The following resource types are supported:
+	// * Organizations, such as `//cloudresourcemanager.googleapis.com/organizations/123`.
+	// * Folders, such as `//cloudresourcemanager.googleapis.com/folders/123`.
+	// * Projects, such as `//cloudresourcemanager.googleapis.com/projects/123`
+	//   or `//cloudresourcemanager.googleapis.com/projects/my-project-id`.
+	Resources []string `pulumi:"resources"`
+}
+
+// PrincipalAccessBoundaryPolicyDetailsRuleInput is an input type that accepts PrincipalAccessBoundaryPolicyDetailsRuleArgs and PrincipalAccessBoundaryPolicyDetailsRuleOutput values.
+// You can construct a concrete instance of `PrincipalAccessBoundaryPolicyDetailsRuleInput` via:
+//
+//	PrincipalAccessBoundaryPolicyDetailsRuleArgs{...}
+type PrincipalAccessBoundaryPolicyDetailsRuleInput interface {
+	pulumi.Input
+
+	ToPrincipalAccessBoundaryPolicyDetailsRuleOutput() PrincipalAccessBoundaryPolicyDetailsRuleOutput
+	ToPrincipalAccessBoundaryPolicyDetailsRuleOutputWithContext(context.Context) PrincipalAccessBoundaryPolicyDetailsRuleOutput
+}
+
+type PrincipalAccessBoundaryPolicyDetailsRuleArgs struct {
+	// The description of the principal access boundary policy rule. Must be less than or equal to 256 characters.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// The access relationship of principals to the resources in this rule.
+	// Possible values: ALLOW
+	Effect pulumi.StringInput `pulumi:"effect"`
+	// A list of Cloud Resource Manager resources. The resource
+	// and all the descendants are included. The number of resources in a policy
+	// is limited to 500 across all rules.
+	// The following resource types are supported:
+	// * Organizations, such as `//cloudresourcemanager.googleapis.com/organizations/123`.
+	// * Folders, such as `//cloudresourcemanager.googleapis.com/folders/123`.
+	// * Projects, such as `//cloudresourcemanager.googleapis.com/projects/123`
+	//   or `//cloudresourcemanager.googleapis.com/projects/my-project-id`.
+	Resources pulumi.StringArrayInput `pulumi:"resources"`
+}
+
+func (PrincipalAccessBoundaryPolicyDetailsRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrincipalAccessBoundaryPolicyDetailsRule)(nil)).Elem()
+}
+
+func (i PrincipalAccessBoundaryPolicyDetailsRuleArgs) ToPrincipalAccessBoundaryPolicyDetailsRuleOutput() PrincipalAccessBoundaryPolicyDetailsRuleOutput {
+	return i.ToPrincipalAccessBoundaryPolicyDetailsRuleOutputWithContext(context.Background())
+}
+
+func (i PrincipalAccessBoundaryPolicyDetailsRuleArgs) ToPrincipalAccessBoundaryPolicyDetailsRuleOutputWithContext(ctx context.Context) PrincipalAccessBoundaryPolicyDetailsRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrincipalAccessBoundaryPolicyDetailsRuleOutput)
+}
+
+// PrincipalAccessBoundaryPolicyDetailsRuleArrayInput is an input type that accepts PrincipalAccessBoundaryPolicyDetailsRuleArray and PrincipalAccessBoundaryPolicyDetailsRuleArrayOutput values.
+// You can construct a concrete instance of `PrincipalAccessBoundaryPolicyDetailsRuleArrayInput` via:
+//
+//	PrincipalAccessBoundaryPolicyDetailsRuleArray{ PrincipalAccessBoundaryPolicyDetailsRuleArgs{...} }
+type PrincipalAccessBoundaryPolicyDetailsRuleArrayInput interface {
+	pulumi.Input
+
+	ToPrincipalAccessBoundaryPolicyDetailsRuleArrayOutput() PrincipalAccessBoundaryPolicyDetailsRuleArrayOutput
+	ToPrincipalAccessBoundaryPolicyDetailsRuleArrayOutputWithContext(context.Context) PrincipalAccessBoundaryPolicyDetailsRuleArrayOutput
+}
+
+type PrincipalAccessBoundaryPolicyDetailsRuleArray []PrincipalAccessBoundaryPolicyDetailsRuleInput
+
+func (PrincipalAccessBoundaryPolicyDetailsRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PrincipalAccessBoundaryPolicyDetailsRule)(nil)).Elem()
+}
+
+func (i PrincipalAccessBoundaryPolicyDetailsRuleArray) ToPrincipalAccessBoundaryPolicyDetailsRuleArrayOutput() PrincipalAccessBoundaryPolicyDetailsRuleArrayOutput {
+	return i.ToPrincipalAccessBoundaryPolicyDetailsRuleArrayOutputWithContext(context.Background())
+}
+
+func (i PrincipalAccessBoundaryPolicyDetailsRuleArray) ToPrincipalAccessBoundaryPolicyDetailsRuleArrayOutputWithContext(ctx context.Context) PrincipalAccessBoundaryPolicyDetailsRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(PrincipalAccessBoundaryPolicyDetailsRuleArrayOutput)
+}
+
+type PrincipalAccessBoundaryPolicyDetailsRuleOutput struct{ *pulumi.OutputState }
+
+func (PrincipalAccessBoundaryPolicyDetailsRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*PrincipalAccessBoundaryPolicyDetailsRule)(nil)).Elem()
+}
+
+func (o PrincipalAccessBoundaryPolicyDetailsRuleOutput) ToPrincipalAccessBoundaryPolicyDetailsRuleOutput() PrincipalAccessBoundaryPolicyDetailsRuleOutput {
+	return o
+}
+
+func (o PrincipalAccessBoundaryPolicyDetailsRuleOutput) ToPrincipalAccessBoundaryPolicyDetailsRuleOutputWithContext(ctx context.Context) PrincipalAccessBoundaryPolicyDetailsRuleOutput {
+	return o
+}
+
+// The description of the principal access boundary policy rule. Must be less than or equal to 256 characters.
+func (o PrincipalAccessBoundaryPolicyDetailsRuleOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v PrincipalAccessBoundaryPolicyDetailsRule) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// The access relationship of principals to the resources in this rule.
+// Possible values: ALLOW
+func (o PrincipalAccessBoundaryPolicyDetailsRuleOutput) Effect() pulumi.StringOutput {
+	return o.ApplyT(func(v PrincipalAccessBoundaryPolicyDetailsRule) string { return v.Effect }).(pulumi.StringOutput)
+}
+
+// A list of Cloud Resource Manager resources. The resource
+// and all the descendants are included. The number of resources in a policy
+// is limited to 500 across all rules.
+// The following resource types are supported:
+//   - Organizations, such as `//cloudresourcemanager.googleapis.com/organizations/123`.
+//   - Folders, such as `//cloudresourcemanager.googleapis.com/folders/123`.
+//   - Projects, such as `//cloudresourcemanager.googleapis.com/projects/123`
+//     or `//cloudresourcemanager.googleapis.com/projects/my-project-id`.
+func (o PrincipalAccessBoundaryPolicyDetailsRuleOutput) Resources() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v PrincipalAccessBoundaryPolicyDetailsRule) []string { return v.Resources }).(pulumi.StringArrayOutput)
+}
+
+type PrincipalAccessBoundaryPolicyDetailsRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (PrincipalAccessBoundaryPolicyDetailsRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]PrincipalAccessBoundaryPolicyDetailsRule)(nil)).Elem()
+}
+
+func (o PrincipalAccessBoundaryPolicyDetailsRuleArrayOutput) ToPrincipalAccessBoundaryPolicyDetailsRuleArrayOutput() PrincipalAccessBoundaryPolicyDetailsRuleArrayOutput {
+	return o
+}
+
+func (o PrincipalAccessBoundaryPolicyDetailsRuleArrayOutput) ToPrincipalAccessBoundaryPolicyDetailsRuleArrayOutputWithContext(ctx context.Context) PrincipalAccessBoundaryPolicyDetailsRuleArrayOutput {
+	return o
+}
+
+func (o PrincipalAccessBoundaryPolicyDetailsRuleArrayOutput) Index(i pulumi.IntInput) PrincipalAccessBoundaryPolicyDetailsRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) PrincipalAccessBoundaryPolicyDetailsRule {
+		return vs[0].([]PrincipalAccessBoundaryPolicyDetailsRule)[vs[1].(int)]
+	}).(PrincipalAccessBoundaryPolicyDetailsRuleOutput)
+}
+
 type WorkforcePoolAccessRestrictions struct {
 	// Services allowed for web sign-in with the workforce pool.
 	// If not set by default there are no restrictions.
@@ -4999,6 +5312,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DenyPolicyRuleDenyRulePtrInput)(nil)).Elem(), DenyPolicyRuleDenyRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DenyPolicyRuleDenyRuleDenialConditionInput)(nil)).Elem(), DenyPolicyRuleDenyRuleDenialConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DenyPolicyRuleDenyRuleDenialConditionPtrInput)(nil)).Elem(), DenyPolicyRuleDenyRuleDenialConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrincipalAccessBoundaryPolicyDetailsInput)(nil)).Elem(), PrincipalAccessBoundaryPolicyDetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrincipalAccessBoundaryPolicyDetailsPtrInput)(nil)).Elem(), PrincipalAccessBoundaryPolicyDetailsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrincipalAccessBoundaryPolicyDetailsRuleInput)(nil)).Elem(), PrincipalAccessBoundaryPolicyDetailsRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*PrincipalAccessBoundaryPolicyDetailsRuleArrayInput)(nil)).Elem(), PrincipalAccessBoundaryPolicyDetailsRuleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkforcePoolAccessRestrictionsInput)(nil)).Elem(), WorkforcePoolAccessRestrictionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkforcePoolAccessRestrictionsPtrInput)(nil)).Elem(), WorkforcePoolAccessRestrictionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkforcePoolAccessRestrictionsAllowedServiceInput)(nil)).Elem(), WorkforcePoolAccessRestrictionsAllowedServiceArgs{})
@@ -5063,6 +5380,10 @@ func init() {
 	pulumi.RegisterOutputType(DenyPolicyRuleDenyRulePtrOutput{})
 	pulumi.RegisterOutputType(DenyPolicyRuleDenyRuleDenialConditionOutput{})
 	pulumi.RegisterOutputType(DenyPolicyRuleDenyRuleDenialConditionPtrOutput{})
+	pulumi.RegisterOutputType(PrincipalAccessBoundaryPolicyDetailsOutput{})
+	pulumi.RegisterOutputType(PrincipalAccessBoundaryPolicyDetailsPtrOutput{})
+	pulumi.RegisterOutputType(PrincipalAccessBoundaryPolicyDetailsRuleOutput{})
+	pulumi.RegisterOutputType(PrincipalAccessBoundaryPolicyDetailsRuleArrayOutput{})
 	pulumi.RegisterOutputType(WorkforcePoolAccessRestrictionsOutput{})
 	pulumi.RegisterOutputType(WorkforcePoolAccessRestrictionsPtrOutput{})
 	pulumi.RegisterOutputType(WorkforcePoolAccessRestrictionsAllowedServiceOutput{})

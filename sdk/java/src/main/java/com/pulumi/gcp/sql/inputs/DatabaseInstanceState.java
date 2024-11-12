@@ -123,14 +123,14 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * The dns name of the instance.
+     * The DNS name of the instance. See [Connect to an instance using Private Service Connect](https://cloud.google.com/sql/docs/mysql/configure-private-service-connect#view-summary-information-cloud-sql-instances-psc-enabled) for more details.
      * 
      */
     @Import(name="dnsName")
     private @Nullable Output<String> dnsName;
 
     /**
-     * @return The dns name of the instance.
+     * @return The DNS name of the instance. See [Connect to an instance using Private Service Connect](https://cloud.google.com/sql/docs/mysql/configure-private-service-connect#view-summary-information-cloud-sql-instances-psc-enabled) for more details.
      * 
      */
     public Optional<Output<String>> dnsName() {
@@ -343,7 +343,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
 
     /**
      * The configuration for replication. The
-     * configuration is detailed below. Valid only for MySQL instances.
+     * configuration is detailed below.
      * 
      */
     @Import(name="replicaConfiguration")
@@ -351,11 +351,26 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
 
     /**
      * @return The configuration for replication. The
-     * configuration is detailed below. Valid only for MySQL instances.
+     * configuration is detailed below.
      * 
      */
     public Optional<Output<DatabaseInstanceReplicaConfigurationArgs>> replicaConfiguration() {
         return Optional.ofNullable(this.replicaConfiguration);
+    }
+
+    /**
+     * List of replica names. Can be updated.
+     * 
+     */
+    @Import(name="replicaNames")
+    private @Nullable Output<List<String>> replicaNames;
+
+    /**
+     * @return List of replica names. Can be updated.
+     * 
+     */
+    public Optional<Output<List<String>>> replicaNames() {
+        return Optional.ofNullable(this.replicaNames);
     }
 
     /**
@@ -472,6 +487,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         this.publicIpAddress = $.publicIpAddress;
         this.region = $.region;
         this.replicaConfiguration = $.replicaConfiguration;
+        this.replicaNames = $.replicaNames;
         this.restoreBackupContext = $.restoreBackupContext;
         this.rootPassword = $.rootPassword;
         this.selfLink = $.selfLink;
@@ -638,7 +654,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param dnsName The dns name of the instance.
+         * @param dnsName The DNS name of the instance. See [Connect to an instance using Private Service Connect](https://cloud.google.com/sql/docs/mysql/configure-private-service-connect#view-summary-information-cloud-sql-instances-psc-enabled) for more details.
          * 
          * @return builder
          * 
@@ -649,7 +665,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
         }
 
         /**
-         * @param dnsName The dns name of the instance.
+         * @param dnsName The DNS name of the instance. See [Connect to an instance using Private Service Connect](https://cloud.google.com/sql/docs/mysql/configure-private-service-connect#view-summary-information-cloud-sql-instances-psc-enabled) for more details.
          * 
          * @return builder
          * 
@@ -936,7 +952,7 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param replicaConfiguration The configuration for replication. The
-         * configuration is detailed below. Valid only for MySQL instances.
+         * configuration is detailed below.
          * 
          * @return builder
          * 
@@ -948,13 +964,44 @@ public final class DatabaseInstanceState extends com.pulumi.resources.ResourceAr
 
         /**
          * @param replicaConfiguration The configuration for replication. The
-         * configuration is detailed below. Valid only for MySQL instances.
+         * configuration is detailed below.
          * 
          * @return builder
          * 
          */
         public Builder replicaConfiguration(DatabaseInstanceReplicaConfigurationArgs replicaConfiguration) {
             return replicaConfiguration(Output.of(replicaConfiguration));
+        }
+
+        /**
+         * @param replicaNames List of replica names. Can be updated.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replicaNames(@Nullable Output<List<String>> replicaNames) {
+            $.replicaNames = replicaNames;
+            return this;
+        }
+
+        /**
+         * @param replicaNames List of replica names. Can be updated.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replicaNames(List<String> replicaNames) {
+            return replicaNames(Output.of(replicaNames));
+        }
+
+        /**
+         * @param replicaNames List of replica names. Can be updated.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replicaNames(String... replicaNames) {
+            return replicaNames(List.of(replicaNames));
         }
 
         /**

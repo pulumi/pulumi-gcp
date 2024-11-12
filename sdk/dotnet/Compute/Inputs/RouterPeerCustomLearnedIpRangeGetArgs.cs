@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class RouterPeerCustomLearnedIpRangeGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The IP range to advertise. The value must be a
+        /// The IP range to learn. The value must be a
         /// CIDR-formatted string.
         /// </summary>
         [Input("range", required: true)]

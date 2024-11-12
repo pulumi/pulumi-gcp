@@ -395,6 +395,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> dataprocCustomEndpoint() {
         return Codegen.optional(this.dataprocCustomEndpoint);
     }
+    @Export(name="dataprocGdcCustomEndpoint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> dataprocGdcCustomEndpoint;
+
+    public Output<Optional<String>> dataprocGdcCustomEndpoint() {
+        return Codegen.optional(this.dataprocGdcCustomEndpoint);
+    }
     @Export(name="dataprocMetastoreCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> dataprocMetastoreCustomEndpoint;
 
@@ -580,6 +586,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
 
     public Output<Optional<String>> iam2CustomEndpoint() {
         return Codegen.optional(this.iam2CustomEndpoint);
+    }
+    @Export(name="iam3CustomEndpoint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> iam3CustomEndpoint;
+
+    public Output<Optional<String>> iam3CustomEndpoint() {
+        return Codegen.optional(this.iam3CustomEndpoint);
     }
     @Export(name="iamBetaCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> iamBetaCustomEndpoint;

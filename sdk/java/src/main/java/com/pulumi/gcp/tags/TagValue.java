@@ -59,7 +59,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var value = new TagValue("value", TagValueArgs.builder()
- *             .parent(key.name().applyValue(name -> String.format("tagKeys/%s", name)))
+ *             .parent(key.id())
  *             .shortName("valuename")
  *             .description("For valuename resources.")
  *             .build());

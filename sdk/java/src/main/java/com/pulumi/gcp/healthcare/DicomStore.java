@@ -274,7 +274,7 @@ public class DicomStore extends com.pulumi.resources.CustomResource {
         return this.name;
     }
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -282,7 +282,7 @@ public class DicomStore extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ DicomStoreNotificationConfig> notificationConfig;
 
     /**
-     * @return A nested object resource
+     * @return A nested object resource.
      * Structure is documented below.
      * 
      */

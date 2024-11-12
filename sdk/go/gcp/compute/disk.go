@@ -191,7 +191,7 @@ type Disk struct {
 	// * READ_WRITE_MANY
 	// * READ_ONLY_SINGLE
 	AccessMode pulumi.StringOutput `pulumi:"accessMode"`
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	AsyncPrimaryDisk DiskAsyncPrimaryDiskPtrOutput `pulumi:"asyncPrimaryDisk"`
 	// Creation timestamp in RFC3339 text format.
@@ -403,7 +403,7 @@ type diskState struct {
 	// * READ_WRITE_MANY
 	// * READ_ONLY_SINGLE
 	AccessMode *string `pulumi:"accessMode"`
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	AsyncPrimaryDisk *DiskAsyncPrimaryDisk `pulumi:"asyncPrimaryDisk"`
 	// Creation timestamp in RFC3339 text format.
@@ -581,7 +581,7 @@ type DiskState struct {
 	// * READ_WRITE_MANY
 	// * READ_ONLY_SINGLE
 	AccessMode pulumi.StringPtrInput
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	AsyncPrimaryDisk DiskAsyncPrimaryDiskPtrInput
 	// Creation timestamp in RFC3339 text format.
@@ -763,7 +763,7 @@ type diskArgs struct {
 	// * READ_WRITE_MANY
 	// * READ_ONLY_SINGLE
 	AccessMode *string `pulumi:"accessMode"`
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	AsyncPrimaryDisk *DiskAsyncPrimaryDisk `pulumi:"asyncPrimaryDisk"`
 	// An optional description of this resource. Provide this property when
@@ -904,7 +904,7 @@ type DiskArgs struct {
 	// * READ_WRITE_MANY
 	// * READ_ONLY_SINGLE
 	AccessMode pulumi.StringPtrInput
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	AsyncPrimaryDisk DiskAsyncPrimaryDiskPtrInput
 	// An optional description of this resource. Provide this property when
@@ -1133,7 +1133,7 @@ func (o DiskOutput) AccessMode() pulumi.StringOutput {
 	return o.ApplyT(func(v *Disk) pulumi.StringOutput { return v.AccessMode }).(pulumi.StringOutput)
 }
 
-// A nested object resource
+// A nested object resource.
 // Structure is documented below.
 func (o DiskOutput) AsyncPrimaryDisk() DiskAsyncPrimaryDiskPtrOutput {
 	return o.ApplyT(func(v *Disk) DiskAsyncPrimaryDiskPtrOutput { return v.AsyncPrimaryDisk }).(DiskAsyncPrimaryDiskPtrOutput)

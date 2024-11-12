@@ -22,6 +22,11 @@ public final class GetClusterMasterAuthorizedNetworksConfig {
      * 
      */
     private Boolean gcpPublicCidrsAccessEnabled;
+    /**
+     * @return Whether authorized networks is enforced on the private endpoint or not. Defaults to false.
+     * 
+     */
+    private Boolean privateEndpointEnforcementEnabled;
 
     private GetClusterMasterAuthorizedNetworksConfig() {}
     /**
@@ -38,6 +43,13 @@ public final class GetClusterMasterAuthorizedNetworksConfig {
     public Boolean gcpPublicCidrsAccessEnabled() {
         return this.gcpPublicCidrsAccessEnabled;
     }
+    /**
+     * @return Whether authorized networks is enforced on the private endpoint or not. Defaults to false.
+     * 
+     */
+    public Boolean privateEndpointEnforcementEnabled() {
+        return this.privateEndpointEnforcementEnabled;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -50,11 +62,13 @@ public final class GetClusterMasterAuthorizedNetworksConfig {
     public static final class Builder {
         private List<GetClusterMasterAuthorizedNetworksConfigCidrBlock> cidrBlocks;
         private Boolean gcpPublicCidrsAccessEnabled;
+        private Boolean privateEndpointEnforcementEnabled;
         public Builder() {}
         public Builder(GetClusterMasterAuthorizedNetworksConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.cidrBlocks = defaults.cidrBlocks;
     	      this.gcpPublicCidrsAccessEnabled = defaults.gcpPublicCidrsAccessEnabled;
+    	      this.privateEndpointEnforcementEnabled = defaults.privateEndpointEnforcementEnabled;
         }
 
         @CustomType.Setter
@@ -76,10 +90,19 @@ public final class GetClusterMasterAuthorizedNetworksConfig {
             this.gcpPublicCidrsAccessEnabled = gcpPublicCidrsAccessEnabled;
             return this;
         }
+        @CustomType.Setter
+        public Builder privateEndpointEnforcementEnabled(Boolean privateEndpointEnforcementEnabled) {
+            if (privateEndpointEnforcementEnabled == null) {
+              throw new MissingRequiredPropertyException("GetClusterMasterAuthorizedNetworksConfig", "privateEndpointEnforcementEnabled");
+            }
+            this.privateEndpointEnforcementEnabled = privateEndpointEnforcementEnabled;
+            return this;
+        }
         public GetClusterMasterAuthorizedNetworksConfig build() {
             final var _resultValue = new GetClusterMasterAuthorizedNetworksConfig();
             _resultValue.cidrBlocks = cidrBlocks;
             _resultValue.gcpPublicCidrsAccessEnabled = gcpPublicCidrsAccessEnabled;
+            _resultValue.privateEndpointEnforcementEnabled = privateEndpointEnforcementEnabled;
             return _resultValue;
         }
     }

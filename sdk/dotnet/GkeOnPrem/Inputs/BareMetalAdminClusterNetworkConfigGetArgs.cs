@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.GkeOnPrem.Inputs
     public sealed class BareMetalAdminClusterNetworkConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A nested object resource
+        /// A nested object resource.
         /// Structure is documented below.
         /// </summary>
         [Input("islandModeCidr")]

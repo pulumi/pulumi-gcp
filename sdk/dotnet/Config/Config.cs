@@ -480,6 +480,13 @@ namespace Pulumi.Gcp
             set => _dataprocCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _dataprocGdcCustomEndpoint = new __Value<string?>(() => __config.Get("dataprocGdcCustomEndpoint"));
+        public static string? DataprocGdcCustomEndpoint
+        {
+            get => _dataprocGdcCustomEndpoint.Get();
+            set => _dataprocGdcCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _dataprocMetastoreCustomEndpoint = new __Value<string?>(() => __config.Get("dataprocMetastoreCustomEndpoint"));
         public static string? DataprocMetastoreCustomEndpoint
         {
@@ -709,6 +716,13 @@ namespace Pulumi.Gcp
         {
             get => _iam2CustomEndpoint.Get();
             set => _iam2CustomEndpoint.Set(value);
+        }
+
+        private static readonly __Value<string?> _iam3CustomEndpoint = new __Value<string?>(() => __config.Get("iam3CustomEndpoint"));
+        public static string? Iam3CustomEndpoint
+        {
+            get => _iam3CustomEndpoint.Get();
+            set => _iam3CustomEndpoint.Set(value);
         }
 
         private static readonly __Value<string?> _iamBetaCustomEndpoint = new __Value<string?>(() => __config.Get("iamBetaCustomEndpoint"));

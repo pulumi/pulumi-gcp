@@ -12,6 +12,7 @@ import com.pulumi.gcp.compute.RegionInstanceGroupManagerArgs;
 import com.pulumi.gcp.compute.inputs.RegionInstanceGroupManagerState;
 import com.pulumi.gcp.compute.outputs.RegionInstanceGroupManagerAllInstancesConfig;
 import com.pulumi.gcp.compute.outputs.RegionInstanceGroupManagerAutoHealingPolicies;
+import com.pulumi.gcp.compute.outputs.RegionInstanceGroupManagerInstanceFlexibilityPolicy;
 import com.pulumi.gcp.compute.outputs.RegionInstanceGroupManagerInstanceLifecyclePolicy;
 import com.pulumi.gcp.compute.outputs.RegionInstanceGroupManagerNamedPort;
 import com.pulumi.gcp.compute.outputs.RegionInstanceGroupManagerParams;
@@ -366,6 +367,22 @@ public class RegionInstanceGroupManager extends com.pulumi.resources.CustomResou
         return this.fingerprint;
     }
     /**
+     * The flexibility policy for managed instance group. Instance flexibility allows managed instance group to create VMs from multiple types of machines. Instance flexibility configuration on managed instance group overrides instance template configuration. Structure is documented below.
+     * ***
+     * 
+     */
+    @Export(name="instanceFlexibilityPolicy", refs={RegionInstanceGroupManagerInstanceFlexibilityPolicy.class}, tree="[0]")
+    private Output</* @Nullable */ RegionInstanceGroupManagerInstanceFlexibilityPolicy> instanceFlexibilityPolicy;
+
+    /**
+     * @return The flexibility policy for managed instance group. Instance flexibility allows managed instance group to create VMs from multiple types of machines. Instance flexibility configuration on managed instance group overrides instance template configuration. Structure is documented below.
+     * ***
+     * 
+     */
+    public Output<Optional<RegionInstanceGroupManagerInstanceFlexibilityPolicy>> instanceFlexibilityPolicy() {
+        return Codegen.optional(this.instanceFlexibilityPolicy);
+    }
+    /**
      * The full URL of the instance group created by the manager.
      * 
      */
@@ -456,16 +473,12 @@ public class RegionInstanceGroupManager extends com.pulumi.resources.CustomResou
     /**
      * Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
      * 
-     * ***
-     * 
      */
     @Export(name="params", refs={RegionInstanceGroupManagerParams.class}, tree="[0]")
     private Output</* @Nullable */ RegionInstanceGroupManagerParams> params;
 
     /**
      * @return Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-     * 
-     * ***
      * 
      */
     public Output<Optional<RegionInstanceGroupManagerParams>> params() {

@@ -490,7 +490,7 @@ public class FhirStore extends com.pulumi.resources.CustomResource {
     }
     /**
      * (Optional, Deprecated)
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      * 
      * &gt; **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.
@@ -505,7 +505,7 @@ public class FhirStore extends com.pulumi.resources.CustomResource {
 
     /**
      * @return (Optional, Deprecated)
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      * 
      * &gt; **Warning:** `notification_config` is deprecated and will be removed in a future major release. Use `notification_configs` instead.

@@ -39,6 +39,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &ClusterIAMMember{}
 	case "gcp:dataproc/clusterIAMPolicy:ClusterIAMPolicy":
 		r = &ClusterIAMPolicy{}
+	case "gcp:dataproc/gdcApplicationEnvironment:GdcApplicationEnvironment":
+		r = &GdcApplicationEnvironment{}
+	case "gcp:dataproc/gdcServiceInstance:GdcServiceInstance":
+		r = &GdcServiceInstance{}
 	case "gcp:dataproc/job:Job":
 		r = &Job{}
 	case "gcp:dataproc/jobIAMBinding:JobIAMBinding":
@@ -121,6 +125,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"dataproc/clusterIAMPolicy",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"dataproc/gdcApplicationEnvironment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"dataproc/gdcServiceInstance",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

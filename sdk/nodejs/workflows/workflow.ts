@@ -37,6 +37,7 @@ import * as utilities from "../utilities";
  *     userEnvVars: {
  *         url: "https://timeapi.io/api/Time/current/zone?timeZone=Europe/Amsterdam",
  *     },
+ *     deletionProtection: false,
  *     sourceContents: `# This is a sample workflow. You can replace it with your source code.
  * #
  * # This workflow does the following:
@@ -115,6 +116,7 @@ export class Workflow extends pulumi.CustomResource {
      * Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
      */
     public readonly cryptoKeyName!: pulumi.Output<string | undefined>;
+    public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
     /**
      * Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
      */
@@ -200,6 +202,7 @@ export class Workflow extends pulumi.CustomResource {
             resourceInputs["callLogLevel"] = state ? state.callLogLevel : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["cryptoKeyName"] = state ? state.cryptoKeyName : undefined;
+            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
@@ -218,6 +221,7 @@ export class Workflow extends pulumi.CustomResource {
             const args = argsOrState as WorkflowArgs | undefined;
             resourceInputs["callLogLevel"] = args ? args.callLogLevel : undefined;
             resourceInputs["cryptoKeyName"] = args ? args.cryptoKeyName : undefined;
+            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -261,6 +265,7 @@ export interface WorkflowState {
      * Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
      */
     cryptoKeyName?: pulumi.Input<string>;
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
      */
@@ -347,6 +352,7 @@ export interface WorkflowArgs {
      * Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
      */
     cryptoKeyName?: pulumi.Input<string>;
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
      */

@@ -278,6 +278,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('dataprocCustomEndpoint')
 
     @property
+    def dataproc_gdc_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('dataprocGdcCustomEndpoint')
+
+    @property
     def dataproc_metastore_custom_endpoint(self) -> Optional[str]:
         return __config__.get('dataprocMetastoreCustomEndpoint')
 
@@ -408,6 +412,10 @@ class _ExportableConfig(types.ModuleType):
     @property
     def iam2_custom_endpoint(self) -> Optional[str]:
         return __config__.get('iam2CustomEndpoint')
+
+    @property
+    def iam3_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('iam3CustomEndpoint')
 
     @property
     def iam_beta_custom_endpoint(self) -> Optional[str]:

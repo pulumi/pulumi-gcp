@@ -42,15 +42,15 @@ class HealthCheckArgs:
                seconds.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource.
-        :param pulumi.Input['HealthCheckGrpcHealthCheckArgs'] grpc_health_check: A nested object resource
+        :param pulumi.Input['HealthCheckGrpcHealthCheckArgs'] grpc_health_check: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[int] healthy_threshold: A so-far unhealthy instance will be marked healthy after this many
                consecutive successes. The default value is 2.
-        :param pulumi.Input['HealthCheckHttp2HealthCheckArgs'] http2_health_check: A nested object resource
+        :param pulumi.Input['HealthCheckHttp2HealthCheckArgs'] http2_health_check: A nested object resource.
                Structure is documented below.
-        :param pulumi.Input['HealthCheckHttpHealthCheckArgs'] http_health_check: A nested object resource
+        :param pulumi.Input['HealthCheckHttpHealthCheckArgs'] http_health_check: A nested object resource.
                Structure is documented below.
-        :param pulumi.Input['HealthCheckHttpsHealthCheckArgs'] https_health_check: A nested object resource
+        :param pulumi.Input['HealthCheckHttpsHealthCheckArgs'] https_health_check: A nested object resource.
                Structure is documented below.
         :param pulumi.Input['HealthCheckLogConfigArgs'] log_config: Configure logging on this health check.
                Structure is documented below.
@@ -78,9 +78,9 @@ class HealthCheckArgs:
                * The checkIntervalSec field must be at least 30.
                * The health check cannot be used with BackendService nor with managed
                instance group auto-healing.
-        :param pulumi.Input['HealthCheckSslHealthCheckArgs'] ssl_health_check: A nested object resource
+        :param pulumi.Input['HealthCheckSslHealthCheckArgs'] ssl_health_check: A nested object resource.
                Structure is documented below.
-        :param pulumi.Input['HealthCheckTcpHealthCheckArgs'] tcp_health_check: A nested object resource
+        :param pulumi.Input['HealthCheckTcpHealthCheckArgs'] tcp_health_check: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[int] timeout_sec: How long (in seconds) to wait before claiming failure.
                The default value is 5 seconds.  It is invalid for timeoutSec to have
@@ -149,7 +149,7 @@ class HealthCheckArgs:
     @pulumi.getter(name="grpcHealthCheck")
     def grpc_health_check(self) -> Optional[pulumi.Input['HealthCheckGrpcHealthCheckArgs']]:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "grpc_health_check")
@@ -175,7 +175,7 @@ class HealthCheckArgs:
     @pulumi.getter(name="http2HealthCheck")
     def http2_health_check(self) -> Optional[pulumi.Input['HealthCheckHttp2HealthCheckArgs']]:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "http2_health_check")
@@ -188,7 +188,7 @@ class HealthCheckArgs:
     @pulumi.getter(name="httpHealthCheck")
     def http_health_check(self) -> Optional[pulumi.Input['HealthCheckHttpHealthCheckArgs']]:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "http_health_check")
@@ -201,7 +201,7 @@ class HealthCheckArgs:
     @pulumi.getter(name="httpsHealthCheck")
     def https_health_check(self) -> Optional[pulumi.Input['HealthCheckHttpsHealthCheckArgs']]:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "https_health_check")
@@ -284,7 +284,7 @@ class HealthCheckArgs:
     @pulumi.getter(name="sslHealthCheck")
     def ssl_health_check(self) -> Optional[pulumi.Input['HealthCheckSslHealthCheckArgs']]:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "ssl_health_check")
@@ -297,7 +297,7 @@ class HealthCheckArgs:
     @pulumi.getter(name="tcpHealthCheck")
     def tcp_health_check(self) -> Optional[pulumi.Input['HealthCheckTcpHealthCheckArgs']]:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "tcp_health_check")
@@ -362,15 +362,15 @@ class _HealthCheckState:
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource.
-        :param pulumi.Input['HealthCheckGrpcHealthCheckArgs'] grpc_health_check: A nested object resource
+        :param pulumi.Input['HealthCheckGrpcHealthCheckArgs'] grpc_health_check: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[int] healthy_threshold: A so-far unhealthy instance will be marked healthy after this many
                consecutive successes. The default value is 2.
-        :param pulumi.Input['HealthCheckHttp2HealthCheckArgs'] http2_health_check: A nested object resource
+        :param pulumi.Input['HealthCheckHttp2HealthCheckArgs'] http2_health_check: A nested object resource.
                Structure is documented below.
-        :param pulumi.Input['HealthCheckHttpHealthCheckArgs'] http_health_check: A nested object resource
+        :param pulumi.Input['HealthCheckHttpHealthCheckArgs'] http_health_check: A nested object resource.
                Structure is documented below.
-        :param pulumi.Input['HealthCheckHttpsHealthCheckArgs'] https_health_check: A nested object resource
+        :param pulumi.Input['HealthCheckHttpsHealthCheckArgs'] https_health_check: A nested object resource.
                Structure is documented below.
         :param pulumi.Input['HealthCheckLogConfigArgs'] log_config: Configure logging on this health check.
                Structure is documented below.
@@ -399,9 +399,9 @@ class _HealthCheckState:
                * The checkIntervalSec field must be at least 30.
                * The health check cannot be used with BackendService nor with managed
                instance group auto-healing.
-        :param pulumi.Input['HealthCheckSslHealthCheckArgs'] ssl_health_check: A nested object resource
+        :param pulumi.Input['HealthCheckSslHealthCheckArgs'] ssl_health_check: A nested object resource.
                Structure is documented below.
-        :param pulumi.Input['HealthCheckTcpHealthCheckArgs'] tcp_health_check: A nested object resource
+        :param pulumi.Input['HealthCheckTcpHealthCheckArgs'] tcp_health_check: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[int] timeout_sec: How long (in seconds) to wait before claiming failure.
                The default value is 5 seconds.  It is invalid for timeoutSec to have
@@ -489,7 +489,7 @@ class _HealthCheckState:
     @pulumi.getter(name="grpcHealthCheck")
     def grpc_health_check(self) -> Optional[pulumi.Input['HealthCheckGrpcHealthCheckArgs']]:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "grpc_health_check")
@@ -515,7 +515,7 @@ class _HealthCheckState:
     @pulumi.getter(name="http2HealthCheck")
     def http2_health_check(self) -> Optional[pulumi.Input['HealthCheckHttp2HealthCheckArgs']]:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "http2_health_check")
@@ -528,7 +528,7 @@ class _HealthCheckState:
     @pulumi.getter(name="httpHealthCheck")
     def http_health_check(self) -> Optional[pulumi.Input['HealthCheckHttpHealthCheckArgs']]:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "http_health_check")
@@ -541,7 +541,7 @@ class _HealthCheckState:
     @pulumi.getter(name="httpsHealthCheck")
     def https_health_check(self) -> Optional[pulumi.Input['HealthCheckHttpsHealthCheckArgs']]:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "https_health_check")
@@ -636,7 +636,7 @@ class _HealthCheckState:
     @pulumi.getter(name="sslHealthCheck")
     def ssl_health_check(self) -> Optional[pulumi.Input['HealthCheckSslHealthCheckArgs']]:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "ssl_health_check")
@@ -649,7 +649,7 @@ class _HealthCheckState:
     @pulumi.getter(name="tcpHealthCheck")
     def tcp_health_check(self) -> Optional[pulumi.Input['HealthCheckTcpHealthCheckArgs']]:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "tcp_health_check")
@@ -1057,15 +1057,15 @@ class HealthCheck(pulumi.CustomResource):
                seconds.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource.
-        :param pulumi.Input[Union['HealthCheckGrpcHealthCheckArgs', 'HealthCheckGrpcHealthCheckArgsDict']] grpc_health_check: A nested object resource
+        :param pulumi.Input[Union['HealthCheckGrpcHealthCheckArgs', 'HealthCheckGrpcHealthCheckArgsDict']] grpc_health_check: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[int] healthy_threshold: A so-far unhealthy instance will be marked healthy after this many
                consecutive successes. The default value is 2.
-        :param pulumi.Input[Union['HealthCheckHttp2HealthCheckArgs', 'HealthCheckHttp2HealthCheckArgsDict']] http2_health_check: A nested object resource
+        :param pulumi.Input[Union['HealthCheckHttp2HealthCheckArgs', 'HealthCheckHttp2HealthCheckArgsDict']] http2_health_check: A nested object resource.
                Structure is documented below.
-        :param pulumi.Input[Union['HealthCheckHttpHealthCheckArgs', 'HealthCheckHttpHealthCheckArgsDict']] http_health_check: A nested object resource
+        :param pulumi.Input[Union['HealthCheckHttpHealthCheckArgs', 'HealthCheckHttpHealthCheckArgsDict']] http_health_check: A nested object resource.
                Structure is documented below.
-        :param pulumi.Input[Union['HealthCheckHttpsHealthCheckArgs', 'HealthCheckHttpsHealthCheckArgsDict']] https_health_check: A nested object resource
+        :param pulumi.Input[Union['HealthCheckHttpsHealthCheckArgs', 'HealthCheckHttpsHealthCheckArgsDict']] https_health_check: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[Union['HealthCheckLogConfigArgs', 'HealthCheckLogConfigArgsDict']] log_config: Configure logging on this health check.
                Structure is documented below.
@@ -1093,9 +1093,9 @@ class HealthCheck(pulumi.CustomResource):
                * The checkIntervalSec field must be at least 30.
                * The health check cannot be used with BackendService nor with managed
                instance group auto-healing.
-        :param pulumi.Input[Union['HealthCheckSslHealthCheckArgs', 'HealthCheckSslHealthCheckArgsDict']] ssl_health_check: A nested object resource
+        :param pulumi.Input[Union['HealthCheckSslHealthCheckArgs', 'HealthCheckSslHealthCheckArgsDict']] ssl_health_check: A nested object resource.
                Structure is documented below.
-        :param pulumi.Input[Union['HealthCheckTcpHealthCheckArgs', 'HealthCheckTcpHealthCheckArgsDict']] tcp_health_check: A nested object resource
+        :param pulumi.Input[Union['HealthCheckTcpHealthCheckArgs', 'HealthCheckTcpHealthCheckArgsDict']] tcp_health_check: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[int] timeout_sec: How long (in seconds) to wait before claiming failure.
                The default value is 5 seconds.  It is invalid for timeoutSec to have
@@ -1538,15 +1538,15 @@ class HealthCheck(pulumi.CustomResource):
         :param pulumi.Input[str] creation_timestamp: Creation timestamp in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource.
-        :param pulumi.Input[Union['HealthCheckGrpcHealthCheckArgs', 'HealthCheckGrpcHealthCheckArgsDict']] grpc_health_check: A nested object resource
+        :param pulumi.Input[Union['HealthCheckGrpcHealthCheckArgs', 'HealthCheckGrpcHealthCheckArgsDict']] grpc_health_check: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[int] healthy_threshold: A so-far unhealthy instance will be marked healthy after this many
                consecutive successes. The default value is 2.
-        :param pulumi.Input[Union['HealthCheckHttp2HealthCheckArgs', 'HealthCheckHttp2HealthCheckArgsDict']] http2_health_check: A nested object resource
+        :param pulumi.Input[Union['HealthCheckHttp2HealthCheckArgs', 'HealthCheckHttp2HealthCheckArgsDict']] http2_health_check: A nested object resource.
                Structure is documented below.
-        :param pulumi.Input[Union['HealthCheckHttpHealthCheckArgs', 'HealthCheckHttpHealthCheckArgsDict']] http_health_check: A nested object resource
+        :param pulumi.Input[Union['HealthCheckHttpHealthCheckArgs', 'HealthCheckHttpHealthCheckArgsDict']] http_health_check: A nested object resource.
                Structure is documented below.
-        :param pulumi.Input[Union['HealthCheckHttpsHealthCheckArgs', 'HealthCheckHttpsHealthCheckArgsDict']] https_health_check: A nested object resource
+        :param pulumi.Input[Union['HealthCheckHttpsHealthCheckArgs', 'HealthCheckHttpsHealthCheckArgsDict']] https_health_check: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[Union['HealthCheckLogConfigArgs', 'HealthCheckLogConfigArgsDict']] log_config: Configure logging on this health check.
                Structure is documented below.
@@ -1575,9 +1575,9 @@ class HealthCheck(pulumi.CustomResource):
                * The checkIntervalSec field must be at least 30.
                * The health check cannot be used with BackendService nor with managed
                instance group auto-healing.
-        :param pulumi.Input[Union['HealthCheckSslHealthCheckArgs', 'HealthCheckSslHealthCheckArgsDict']] ssl_health_check: A nested object resource
+        :param pulumi.Input[Union['HealthCheckSslHealthCheckArgs', 'HealthCheckSslHealthCheckArgsDict']] ssl_health_check: A nested object resource.
                Structure is documented below.
-        :param pulumi.Input[Union['HealthCheckTcpHealthCheckArgs', 'HealthCheckTcpHealthCheckArgsDict']] tcp_health_check: A nested object resource
+        :param pulumi.Input[Union['HealthCheckTcpHealthCheckArgs', 'HealthCheckTcpHealthCheckArgsDict']] tcp_health_check: A nested object resource.
                Structure is documented below.
         :param pulumi.Input[int] timeout_sec: How long (in seconds) to wait before claiming failure.
                The default value is 5 seconds.  It is invalid for timeoutSec to have
@@ -1640,7 +1640,7 @@ class HealthCheck(pulumi.CustomResource):
     @pulumi.getter(name="grpcHealthCheck")
     def grpc_health_check(self) -> pulumi.Output[Optional['outputs.HealthCheckGrpcHealthCheck']]:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "grpc_health_check")
@@ -1658,7 +1658,7 @@ class HealthCheck(pulumi.CustomResource):
     @pulumi.getter(name="http2HealthCheck")
     def http2_health_check(self) -> pulumi.Output[Optional['outputs.HealthCheckHttp2HealthCheck']]:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "http2_health_check")
@@ -1667,7 +1667,7 @@ class HealthCheck(pulumi.CustomResource):
     @pulumi.getter(name="httpHealthCheck")
     def http_health_check(self) -> pulumi.Output[Optional['outputs.HealthCheckHttpHealthCheck']]:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "http_health_check")
@@ -1676,7 +1676,7 @@ class HealthCheck(pulumi.CustomResource):
     @pulumi.getter(name="httpsHealthCheck")
     def https_health_check(self) -> pulumi.Output[Optional['outputs.HealthCheckHttpsHealthCheck']]:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "https_health_check")
@@ -1747,7 +1747,7 @@ class HealthCheck(pulumi.CustomResource):
     @pulumi.getter(name="sslHealthCheck")
     def ssl_health_check(self) -> pulumi.Output[Optional['outputs.HealthCheckSslHealthCheck']]:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "ssl_health_check")
@@ -1756,7 +1756,7 @@ class HealthCheck(pulumi.CustomResource):
     @pulumi.getter(name="tcpHealthCheck")
     def tcp_health_check(self) -> pulumi.Output[Optional['outputs.HealthCheckTcpHealthCheck']]:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "tcp_health_check")

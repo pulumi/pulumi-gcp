@@ -254,6 +254,8 @@ class DatabaseInstanceReplicaConfiguration(dict):
         suggest = None
         if key == "caCertificate":
             suggest = "ca_certificate"
+        elif key == "cascadableReplica":
+            suggest = "cascadable_replica"
         elif key == "clientCertificate":
             suggest = "client_certificate"
         elif key == "clientKey":
@@ -284,6 +286,7 @@ class DatabaseInstanceReplicaConfiguration(dict):
 
     def __init__(__self__, *,
                  ca_certificate: Optional[str] = None,
+                 cascadable_replica: Optional[bool] = None,
                  client_certificate: Optional[str] = None,
                  client_key: Optional[str] = None,
                  connect_retry_interval: Optional[int] = None,
@@ -297,6 +300,9 @@ class DatabaseInstanceReplicaConfiguration(dict):
         """
         :param str ca_certificate: PEM representation of the trusted CA's x509
                certificate.
+        :param bool cascadable_replica: Specifies if the replica is a cascadable replica. If true, instance must be in different region from primary.
+               
+               > **NOTE:** Only supported for SQL Server database.
         :param str client_certificate: PEM representation of the replica's x509
                certificate.
         :param str client_key: PEM representation of the replica's private key. The
@@ -321,6 +327,8 @@ class DatabaseInstanceReplicaConfiguration(dict):
         """
         if ca_certificate is not None:
             pulumi.set(__self__, "ca_certificate", ca_certificate)
+        if cascadable_replica is not None:
+            pulumi.set(__self__, "cascadable_replica", cascadable_replica)
         if client_certificate is not None:
             pulumi.set(__self__, "client_certificate", client_certificate)
         if client_key is not None:
@@ -350,6 +358,16 @@ class DatabaseInstanceReplicaConfiguration(dict):
         certificate.
         """
         return pulumi.get(self, "ca_certificate")
+
+    @property
+    @pulumi.getter(name="cascadableReplica")
+    def cascadable_replica(self) -> Optional[bool]:
+        """
+        Specifies if the replica is a cascadable replica. If true, instance must be in different region from primary.
+
+        > **NOTE:** Only supported for SQL Server database.
+        """
+        return pulumi.get(self, "cascadable_replica")
 
     @property
     @pulumi.getter(name="clientCertificate")
@@ -2324,6 +2342,7 @@ class GetDatabaseInstanceIpAddressResult(dict):
 class GetDatabaseInstanceReplicaConfigurationResult(dict):
     def __init__(__self__, *,
                  ca_certificate: str,
+                 cascadable_replica: bool,
                  client_certificate: str,
                  client_key: str,
                  connect_retry_interval: int,
@@ -2336,6 +2355,7 @@ class GetDatabaseInstanceReplicaConfigurationResult(dict):
                  verify_server_certificate: bool):
         """
         :param str ca_certificate: PEM representation of the trusted CA's x509 certificate.
+        :param bool cascadable_replica: Specifies if a SQL Server replica is a cascadable replica. A cascadable replica is a SQL Server cross region replica that supports replica(s) under it.
         :param str client_certificate: PEM representation of the replica's x509 certificate.
         :param str client_key: PEM representation of the replica's private key. The corresponding public key in encoded in the client_certificate.
         :param int connect_retry_interval: The number of seconds between connect retries. MySQL's default is 60 seconds.
@@ -2348,6 +2368,7 @@ class GetDatabaseInstanceReplicaConfigurationResult(dict):
         :param bool verify_server_certificate: True if the master's common name value is checked during the SSL handshake.
         """
         pulumi.set(__self__, "ca_certificate", ca_certificate)
+        pulumi.set(__self__, "cascadable_replica", cascadable_replica)
         pulumi.set(__self__, "client_certificate", client_certificate)
         pulumi.set(__self__, "client_key", client_key)
         pulumi.set(__self__, "connect_retry_interval", connect_retry_interval)
@@ -2366,6 +2387,14 @@ class GetDatabaseInstanceReplicaConfigurationResult(dict):
         PEM representation of the trusted CA's x509 certificate.
         """
         return pulumi.get(self, "ca_certificate")
+
+    @property
+    @pulumi.getter(name="cascadableReplica")
+    def cascadable_replica(self) -> bool:
+        """
+        Specifies if a SQL Server replica is a cascadable replica. A cascadable replica is a SQL Server cross region replica that supports replica(s) under it.
+        """
+        return pulumi.get(self, "cascadable_replica")
 
     @property
     @pulumi.getter(name="clientCertificate")
@@ -3511,6 +3540,7 @@ class GetDatabaseInstancesInstanceResult(dict):
                  public_ip_address: str,
                  region: str,
                  replica_configurations: Sequence['outputs.GetDatabaseInstancesInstanceReplicaConfigurationResult'],
+                 replica_names: Sequence[str],
                  restore_backup_contexts: Sequence['outputs.GetDatabaseInstancesInstanceRestoreBackupContextResult'],
                  root_password: str,
                  self_link: str,
@@ -3530,6 +3560,7 @@ class GetDatabaseInstancesInstanceResult(dict):
         :param str psc_service_attachment_link: The link to service attachment of PSC instance.
         :param str region: To filter out the Cloud SQL instances which are located in the specified region.
         :param Sequence['GetDatabaseInstancesInstanceReplicaConfigurationArgs'] replica_configurations: The configuration for replication.
+        :param Sequence[str] replica_names: The replicas of the instance.
         :param str root_password: Initial root password. Required for MS SQL Server.
         :param str self_link: The URI of the created resource.
         :param str service_account_email_address: The service account email address assigned to the instance.
@@ -3554,6 +3585,7 @@ class GetDatabaseInstancesInstanceResult(dict):
         pulumi.set(__self__, "public_ip_address", public_ip_address)
         pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "replica_configurations", replica_configurations)
+        pulumi.set(__self__, "replica_names", replica_names)
         pulumi.set(__self__, "restore_backup_contexts", restore_backup_contexts)
         pulumi.set(__self__, "root_password", root_password)
         pulumi.set(__self__, "self_link", self_link)
@@ -3693,6 +3725,14 @@ class GetDatabaseInstancesInstanceResult(dict):
         return pulumi.get(self, "replica_configurations")
 
     @property
+    @pulumi.getter(name="replicaNames")
+    def replica_names(self) -> Sequence[str]:
+        """
+        The replicas of the instance.
+        """
+        return pulumi.get(self, "replica_names")
+
+    @property
     @pulumi.getter(name="restoreBackupContexts")
     def restore_backup_contexts(self) -> Sequence['outputs.GetDatabaseInstancesInstanceRestoreBackupContextResult']:
         return pulumi.get(self, "restore_backup_contexts")
@@ -3827,6 +3867,7 @@ class GetDatabaseInstancesInstanceIpAddressResult(dict):
 class GetDatabaseInstancesInstanceReplicaConfigurationResult(dict):
     def __init__(__self__, *,
                  ca_certificate: str,
+                 cascadable_replica: bool,
                  client_certificate: str,
                  client_key: str,
                  connect_retry_interval: int,
@@ -3839,6 +3880,7 @@ class GetDatabaseInstancesInstanceReplicaConfigurationResult(dict):
                  verify_server_certificate: bool):
         """
         :param str ca_certificate: PEM representation of the trusted CA's x509 certificate.
+        :param bool cascadable_replica: Specifies if a SQL Server replica is a cascadable replica. A cascadable replica is a SQL Server cross region replica that supports replica(s) under it.
         :param str client_certificate: PEM representation of the replica's x509 certificate.
         :param str client_key: PEM representation of the replica's private key. The corresponding public key in encoded in the client_certificate.
         :param int connect_retry_interval: The number of seconds between connect retries. MySQL's default is 60 seconds.
@@ -3851,6 +3893,7 @@ class GetDatabaseInstancesInstanceReplicaConfigurationResult(dict):
         :param bool verify_server_certificate: True if the master's common name value is checked during the SSL handshake.
         """
         pulumi.set(__self__, "ca_certificate", ca_certificate)
+        pulumi.set(__self__, "cascadable_replica", cascadable_replica)
         pulumi.set(__self__, "client_certificate", client_certificate)
         pulumi.set(__self__, "client_key", client_key)
         pulumi.set(__self__, "connect_retry_interval", connect_retry_interval)
@@ -3869,6 +3912,14 @@ class GetDatabaseInstancesInstanceReplicaConfigurationResult(dict):
         PEM representation of the trusted CA's x509 certificate.
         """
         return pulumi.get(self, "ca_certificate")
+
+    @property
+    @pulumi.getter(name="cascadableReplica")
+    def cascadable_replica(self) -> bool:
+        """
+        Specifies if a SQL Server replica is a cascadable replica. A cascadable replica is a SQL Server cross region replica that supports replica(s) under it.
+        """
+        return pulumi.get(self, "cascadable_replica")
 
     @property
     @pulumi.getter(name="clientCertificate")

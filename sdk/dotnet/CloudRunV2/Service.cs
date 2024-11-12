@@ -533,7 +533,6 @@ namespace Pulumi.Gcp.CloudRunV2
     ///         Name = "cloudrun-service",
     ///         Location = "us-central1",
     ///         DeletionProtection = false,
-    ///         LaunchStage = "BETA",
     ///         Ingress = "INGRESS_TRAFFIC_ALL",
     ///         Template = new Gcp.CloudRunV2.Inputs.ServiceTemplateArgs
     ///         {

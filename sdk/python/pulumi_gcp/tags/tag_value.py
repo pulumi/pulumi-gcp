@@ -241,7 +241,7 @@ class TagValue(pulumi.CustomResource):
             short_name="keyname",
             description="For keyname resources.")
         value = gcp.tags.TagValue("value",
-            parent=key.name.apply(lambda name: f"tagKeys/{name}"),
+            parent=key.id,
             short_name="valuename",
             description="For valuename resources.")
         ```
@@ -302,7 +302,7 @@ class TagValue(pulumi.CustomResource):
             short_name="keyname",
             description="For keyname resources.")
         value = gcp.tags.TagValue("value",
-            parent=key.name.apply(lambda name: f"tagKeys/{name}"),
+            parent=key.id,
             short_name="valuename",
             description="For valuename resources.")
         ```

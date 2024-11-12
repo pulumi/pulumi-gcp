@@ -231,6 +231,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &RegionNetworkFirewallPolicyWithRules{}
 	case "gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig":
 		r = &RegionPerInstanceConfig{}
+	case "gcp:compute/regionResizeRequest:RegionResizeRequest":
+		r = &RegionResizeRequest{}
 	case "gcp:compute/regionSecurityPolicy:RegionSecurityPolicy":
 		r = &RegionSecurityPolicy{}
 	case "gcp:compute/regionSecurityPolicyRule:RegionSecurityPolicyRule":
@@ -855,6 +857,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"compute/regionPerInstanceConfig",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"compute/regionResizeRequest",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

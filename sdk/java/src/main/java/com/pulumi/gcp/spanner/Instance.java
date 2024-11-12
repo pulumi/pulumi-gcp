@@ -61,6 +61,7 @@ import javax.annotation.Nullable;
  *             .displayName("Test Spanner Instance")
  *             .numNodes(2)
  *             .edition("STANDARD")
+ *             .defaultBackupScheduleType("AUTOMATIC")
  *             .labels(Map.of("foo", "bar"))
  *             .build());
  * 
@@ -265,6 +266,26 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> config() {
         return this.config;
+    }
+    /**
+     * Controls the default backup behavior for new databases within the instance.
+     * Note that `AUTOMATIC` is not permitted for free instances, as backups and backup schedules are not allowed for free instances.
+     * if unset or NONE, no default backup schedule will be created for new databases within the instance.
+     * Possible values are: `NONE`, `AUTOMATIC`.
+     * 
+     */
+    @Export(name="defaultBackupScheduleType", refs={String.class}, tree="[0]")
+    private Output<String> defaultBackupScheduleType;
+
+    /**
+     * @return Controls the default backup behavior for new databases within the instance.
+     * Note that `AUTOMATIC` is not permitted for free instances, as backups and backup schedules are not allowed for free instances.
+     * if unset or NONE, no default backup schedule will be created for new databases within the instance.
+     * Possible values are: `NONE`, `AUTOMATIC`.
+     * 
+     */
+    public Output<String> defaultBackupScheduleType() {
+        return this.defaultBackupScheduleType;
     }
     /**
      * The descriptive name for this instance as it appears in UIs. Must be

@@ -207,6 +207,9 @@ public final class Config {
     public Optional<String> dataprocCustomEndpoint() {
         return Codegen.stringProp("dataprocCustomEndpoint").config(config).get();
     }
+    public Optional<String> dataprocGdcCustomEndpoint() {
+        return Codegen.stringProp("dataprocGdcCustomEndpoint").config(config).get();
+    }
     public Optional<String> dataprocMetastoreCustomEndpoint() {
         return Codegen.stringProp("dataprocMetastoreCustomEndpoint").config(config).get();
     }
@@ -305,6 +308,9 @@ public final class Config {
     }
     public Optional<String> iam2CustomEndpoint() {
         return Codegen.stringProp("iam2CustomEndpoint").config(config).get();
+    }
+    public Optional<String> iam3CustomEndpoint() {
+        return Codegen.stringProp("iam3CustomEndpoint").config(config).get();
     }
     public Optional<String> iamBetaCustomEndpoint() {
         return Codegen.stringProp("iamBetaCustomEndpoint").config(config).get();

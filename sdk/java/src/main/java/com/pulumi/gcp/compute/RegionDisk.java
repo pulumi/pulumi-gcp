@@ -246,7 +246,7 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:compute/regionDisk:RegionDisk")
 public class RegionDisk extends com.pulumi.resources.CustomResource {
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -254,7 +254,7 @@ public class RegionDisk extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ RegionDiskAsyncPrimaryDisk> asyncPrimaryDisk;
 
     /**
-     * @return A nested object resource
+     * @return A nested object resource.
      * Structure is documented below.
      * 
      */

@@ -29,8 +29,6 @@ import (
 //
 // import (
 //
-//	"fmt"
-//
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/tags"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -47,9 +45,7 @@ import (
 //				return err
 //			}
 //			_, err = tags.NewTagValue(ctx, "value", &tags.TagValueArgs{
-//				Parent: key.Name.ApplyT(func(name string) (string, error) {
-//					return fmt.Sprintf("tagKeys/%v", name), nil
-//				}).(pulumi.StringOutput),
+//				Parent:      key.ID(),
 //				ShortName:   pulumi.String("valuename"),
 //				Description: pulumi.String("For valuename resources."),
 //			})

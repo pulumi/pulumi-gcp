@@ -69,14 +69,14 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var value = new TagValue("value", TagValueArgs.builder()
- *             .parent(key.name().applyValue(name -> String.format("tagKeys/%s", name)))
+ *             .parent(key.id())
  *             .shortName("valuename")
  *             .description("For valuename resources.")
  *             .build());
  * 
  *         var binding = new TagBinding("binding", TagBindingArgs.builder()
  *             .parent(project.number().applyValue(number -> String.format("//cloudresourcemanager.googleapis.com/projects/%s", number)))
- *             .tagValue(value.name().applyValue(name -> String.format("tagValues/%s", name)))
+ *             .tagValue(value.id())
  *             .build());
  * 
  *     }

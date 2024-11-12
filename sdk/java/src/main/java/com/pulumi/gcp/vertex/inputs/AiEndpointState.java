@@ -7,6 +7,9 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.vertex.inputs.AiEndpointDeployedModelArgs;
 import com.pulumi.gcp.vertex.inputs.AiEndpointEncryptionSpecArgs;
+import com.pulumi.gcp.vertex.inputs.AiEndpointPredictRequestResponseLoggingConfigArgs;
+import com.pulumi.gcp.vertex.inputs.AiEndpointPrivateServiceConnectConfigArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -34,6 +37,36 @@ public final class AiEndpointState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> createTime() {
         return Optional.ofNullable(this.createTime);
+    }
+
+    /**
+     * Output only. DNS of the dedicated endpoint. Will only be populated if dedicatedEndpointEnabled is true. Format: `https://{endpointId}.{region}-{projectNumber}.prediction.vertexai.goog`.
+     * 
+     */
+    @Import(name="dedicatedEndpointDns")
+    private @Nullable Output<String> dedicatedEndpointDns;
+
+    /**
+     * @return Output only. DNS of the dedicated endpoint. Will only be populated if dedicatedEndpointEnabled is true. Format: `https://{endpointId}.{region}-{projectNumber}.prediction.vertexai.goog`.
+     * 
+     */
+    public Optional<Output<String>> dedicatedEndpointDns() {
+        return Optional.ofNullable(this.dedicatedEndpointDns);
+    }
+
+    /**
+     * If true, the endpoint will be exposed through a dedicated DNS [Endpoint.dedicated_endpoint_dns]. Your request to the dedicated DNS will be isolated from other users&#39; traffic and will have better performance and reliability. Note: Once you enabled dedicated endpoint, you won&#39;t be able to send request to the shared DNS {region}-aiplatform.googleapis.com. The limitation will be removed soon.
+     * 
+     */
+    @Import(name="dedicatedEndpointEnabled")
+    private @Nullable Output<Boolean> dedicatedEndpointEnabled;
+
+    /**
+     * @return If true, the endpoint will be exposed through a dedicated DNS [Endpoint.dedicated_endpoint_dns]. Your request to the dedicated DNS will be isolated from other users&#39; traffic and will have better performance and reliability. Note: Once you enabled dedicated endpoint, you won&#39;t be able to send request to the shared DNS {region}-aiplatform.googleapis.com. The limitation will be removed soon.
+     * 
+     */
+    public Optional<Output<Boolean>> dedicatedEndpointEnabled() {
+        return Optional.ofNullable(this.dedicatedEndpointEnabled);
     }
 
     /**
@@ -199,18 +232,52 @@ public final class AiEndpointState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the Endpoint should be peered. Private services access must already be configured for the network. If left unspecified, the Endpoint is not peered with any network. Only one of the fields, network or enable_private_service_connect, can be set. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`. Where `{project}` is a project number, as in `12345`, and `{network}` is network name.
+     * The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the Endpoint should be peered. Private services access must already be configured for the network. If left unspecified, the Endpoint is not peered with any network. Only one of the fields, network or enable_private_service_connect, can be set. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`. Where `{project}` is a project number, as in `12345`, and `{network}` is network name. Only one of the fields, `network` or `privateServiceConnectConfig`, can be set.
      * 
      */
     @Import(name="network")
     private @Nullable Output<String> network;
 
     /**
-     * @return The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the Endpoint should be peered. Private services access must already be configured for the network. If left unspecified, the Endpoint is not peered with any network. Only one of the fields, network or enable_private_service_connect, can be set. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`. Where `{project}` is a project number, as in `12345`, and `{network}` is network name.
+     * @return The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the Endpoint should be peered. Private services access must already be configured for the network. If left unspecified, the Endpoint is not peered with any network. Only one of the fields, network or enable_private_service_connect, can be set. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`. Where `{project}` is a project number, as in `12345`, and `{network}` is network name. Only one of the fields, `network` or `privateServiceConnectConfig`, can be set.
      * 
      */
     public Optional<Output<String>> network() {
         return Optional.ofNullable(this.network);
+    }
+
+    /**
+     * Configures the request-response logging for online prediction.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="predictRequestResponseLoggingConfig")
+    private @Nullable Output<AiEndpointPredictRequestResponseLoggingConfigArgs> predictRequestResponseLoggingConfig;
+
+    /**
+     * @return Configures the request-response logging for online prediction.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<AiEndpointPredictRequestResponseLoggingConfigArgs>> predictRequestResponseLoggingConfig() {
+        return Optional.ofNullable(this.predictRequestResponseLoggingConfig);
+    }
+
+    /**
+     * Configuration for private service connect. `network` and `privateServiceConnectConfig` are mutually exclusive.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="privateServiceConnectConfig")
+    private @Nullable Output<AiEndpointPrivateServiceConnectConfigArgs> privateServiceConnectConfig;
+
+    /**
+     * @return Configuration for private service connect. `network` and `privateServiceConnectConfig` are mutually exclusive.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<AiEndpointPrivateServiceConnectConfigArgs>> privateServiceConnectConfig() {
+        return Optional.ofNullable(this.privateServiceConnectConfig);
     }
 
     /**
@@ -263,6 +330,33 @@ public final class AiEndpointState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * A map from a DeployedModel&#39;s id to the percentage of this Endpoint&#39;s traffic that should be forwarded to that DeployedModel.
+     * If a DeployedModel&#39;s id is not listed in this map, then it receives no traffic.
+     * The traffic percentage values must add up to 100, or map must be empty if the Endpoint is to not accept any traffic at a moment.
+     * &gt; **Note:** The `traffic_split` setting only applies after a model has been deployed to the endpoint. Re-applying a `gcp.vertex.AiEndpoint`
+     * resource without updating the `traffic_split` post-deployment may lead to your deployed `traffic_split` being lost; see
+     * the `deployModel` [example](https://cloud.google.com/vertex-ai/docs/general/deployment#deploy_a_model_to_an_endpoint) and
+     * [documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1beta1/projects.locations.endpoints/deployModel) for details.
+     * 
+     */
+    @Import(name="trafficSplit")
+    private @Nullable Output<String> trafficSplit;
+
+    /**
+     * @return A map from a DeployedModel&#39;s id to the percentage of this Endpoint&#39;s traffic that should be forwarded to that DeployedModel.
+     * If a DeployedModel&#39;s id is not listed in this map, then it receives no traffic.
+     * The traffic percentage values must add up to 100, or map must be empty if the Endpoint is to not accept any traffic at a moment.
+     * &gt; **Note:** The `traffic_split` setting only applies after a model has been deployed to the endpoint. Re-applying a `gcp.vertex.AiEndpoint`
+     * resource without updating the `traffic_split` post-deployment may lead to your deployed `traffic_split` being lost; see
+     * the `deployModel` [example](https://cloud.google.com/vertex-ai/docs/general/deployment#deploy_a_model_to_an_endpoint) and
+     * [documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1beta1/projects.locations.endpoints/deployModel) for details.
+     * 
+     */
+    public Optional<Output<String>> trafficSplit() {
+        return Optional.ofNullable(this.trafficSplit);
+    }
+
+    /**
      * Output only. Timestamp when this Endpoint was last updated.
      * 
      */
@@ -281,6 +375,8 @@ public final class AiEndpointState extends com.pulumi.resources.ResourceArgs {
 
     private AiEndpointState(AiEndpointState $) {
         this.createTime = $.createTime;
+        this.dedicatedEndpointDns = $.dedicatedEndpointDns;
+        this.dedicatedEndpointEnabled = $.dedicatedEndpointEnabled;
         this.deployedModels = $.deployedModels;
         this.description = $.description;
         this.displayName = $.displayName;
@@ -292,9 +388,12 @@ public final class AiEndpointState extends com.pulumi.resources.ResourceArgs {
         this.modelDeploymentMonitoringJob = $.modelDeploymentMonitoringJob;
         this.name = $.name;
         this.network = $.network;
+        this.predictRequestResponseLoggingConfig = $.predictRequestResponseLoggingConfig;
+        this.privateServiceConnectConfig = $.privateServiceConnectConfig;
         this.project = $.project;
         this.pulumiLabels = $.pulumiLabels;
         this.region = $.region;
+        this.trafficSplit = $.trafficSplit;
         this.updateTime = $.updateTime;
     }
 
@@ -337,6 +436,48 @@ public final class AiEndpointState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder createTime(String createTime) {
             return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param dedicatedEndpointDns Output only. DNS of the dedicated endpoint. Will only be populated if dedicatedEndpointEnabled is true. Format: `https://{endpointId}.{region}-{projectNumber}.prediction.vertexai.goog`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dedicatedEndpointDns(@Nullable Output<String> dedicatedEndpointDns) {
+            $.dedicatedEndpointDns = dedicatedEndpointDns;
+            return this;
+        }
+
+        /**
+         * @param dedicatedEndpointDns Output only. DNS of the dedicated endpoint. Will only be populated if dedicatedEndpointEnabled is true. Format: `https://{endpointId}.{region}-{projectNumber}.prediction.vertexai.goog`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dedicatedEndpointDns(String dedicatedEndpointDns) {
+            return dedicatedEndpointDns(Output.of(dedicatedEndpointDns));
+        }
+
+        /**
+         * @param dedicatedEndpointEnabled If true, the endpoint will be exposed through a dedicated DNS [Endpoint.dedicated_endpoint_dns]. Your request to the dedicated DNS will be isolated from other users&#39; traffic and will have better performance and reliability. Note: Once you enabled dedicated endpoint, you won&#39;t be able to send request to the shared DNS {region}-aiplatform.googleapis.com. The limitation will be removed soon.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dedicatedEndpointEnabled(@Nullable Output<Boolean> dedicatedEndpointEnabled) {
+            $.dedicatedEndpointEnabled = dedicatedEndpointEnabled;
+            return this;
+        }
+
+        /**
+         * @param dedicatedEndpointEnabled If true, the endpoint will be exposed through a dedicated DNS [Endpoint.dedicated_endpoint_dns]. Your request to the dedicated DNS will be isolated from other users&#39; traffic and will have better performance and reliability. Note: Once you enabled dedicated endpoint, you won&#39;t be able to send request to the shared DNS {region}-aiplatform.googleapis.com. The limitation will be removed soon.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder dedicatedEndpointEnabled(Boolean dedicatedEndpointEnabled) {
+            return dedicatedEndpointEnabled(Output.of(dedicatedEndpointEnabled));
         }
 
         /**
@@ -573,7 +714,7 @@ public final class AiEndpointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param network The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the Endpoint should be peered. Private services access must already be configured for the network. If left unspecified, the Endpoint is not peered with any network. Only one of the fields, network or enable_private_service_connect, can be set. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`. Where `{project}` is a project number, as in `12345`, and `{network}` is network name.
+         * @param network The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the Endpoint should be peered. Private services access must already be configured for the network. If left unspecified, the Endpoint is not peered with any network. Only one of the fields, network or enable_private_service_connect, can be set. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`. Where `{project}` is a project number, as in `12345`, and `{network}` is network name. Only one of the fields, `network` or `privateServiceConnectConfig`, can be set.
          * 
          * @return builder
          * 
@@ -584,13 +725,59 @@ public final class AiEndpointState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param network The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the Endpoint should be peered. Private services access must already be configured for the network. If left unspecified, the Endpoint is not peered with any network. Only one of the fields, network or enable_private_service_connect, can be set. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`. Where `{project}` is a project number, as in `12345`, and `{network}` is network name.
+         * @param network The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the Endpoint should be peered. Private services access must already be configured for the network. If left unspecified, the Endpoint is not peered with any network. Only one of the fields, network or enable_private_service_connect, can be set. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`. Where `{project}` is a project number, as in `12345`, and `{network}` is network name. Only one of the fields, `network` or `privateServiceConnectConfig`, can be set.
          * 
          * @return builder
          * 
          */
         public Builder network(String network) {
             return network(Output.of(network));
+        }
+
+        /**
+         * @param predictRequestResponseLoggingConfig Configures the request-response logging for online prediction.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder predictRequestResponseLoggingConfig(@Nullable Output<AiEndpointPredictRequestResponseLoggingConfigArgs> predictRequestResponseLoggingConfig) {
+            $.predictRequestResponseLoggingConfig = predictRequestResponseLoggingConfig;
+            return this;
+        }
+
+        /**
+         * @param predictRequestResponseLoggingConfig Configures the request-response logging for online prediction.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder predictRequestResponseLoggingConfig(AiEndpointPredictRequestResponseLoggingConfigArgs predictRequestResponseLoggingConfig) {
+            return predictRequestResponseLoggingConfig(Output.of(predictRequestResponseLoggingConfig));
+        }
+
+        /**
+         * @param privateServiceConnectConfig Configuration for private service connect. `network` and `privateServiceConnectConfig` are mutually exclusive.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateServiceConnectConfig(@Nullable Output<AiEndpointPrivateServiceConnectConfigArgs> privateServiceConnectConfig) {
+            $.privateServiceConnectConfig = privateServiceConnectConfig;
+            return this;
+        }
+
+        /**
+         * @param privateServiceConnectConfig Configuration for private service connect. `network` and `privateServiceConnectConfig` are mutually exclusive.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateServiceConnectConfig(AiEndpointPrivateServiceConnectConfigArgs privateServiceConnectConfig) {
+            return privateServiceConnectConfig(Output.of(privateServiceConnectConfig));
         }
 
         /**
@@ -658,6 +845,39 @@ public final class AiEndpointState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder region(String region) {
             return region(Output.of(region));
+        }
+
+        /**
+         * @param trafficSplit A map from a DeployedModel&#39;s id to the percentage of this Endpoint&#39;s traffic that should be forwarded to that DeployedModel.
+         * If a DeployedModel&#39;s id is not listed in this map, then it receives no traffic.
+         * The traffic percentage values must add up to 100, or map must be empty if the Endpoint is to not accept any traffic at a moment.
+         * &gt; **Note:** The `traffic_split` setting only applies after a model has been deployed to the endpoint. Re-applying a `gcp.vertex.AiEndpoint`
+         * resource without updating the `traffic_split` post-deployment may lead to your deployed `traffic_split` being lost; see
+         * the `deployModel` [example](https://cloud.google.com/vertex-ai/docs/general/deployment#deploy_a_model_to_an_endpoint) and
+         * [documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1beta1/projects.locations.endpoints/deployModel) for details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder trafficSplit(@Nullable Output<String> trafficSplit) {
+            $.trafficSplit = trafficSplit;
+            return this;
+        }
+
+        /**
+         * @param trafficSplit A map from a DeployedModel&#39;s id to the percentage of this Endpoint&#39;s traffic that should be forwarded to that DeployedModel.
+         * If a DeployedModel&#39;s id is not listed in this map, then it receives no traffic.
+         * The traffic percentage values must add up to 100, or map must be empty if the Endpoint is to not accept any traffic at a moment.
+         * &gt; **Note:** The `traffic_split` setting only applies after a model has been deployed to the endpoint. Re-applying a `gcp.vertex.AiEndpoint`
+         * resource without updating the `traffic_split` post-deployment may lead to your deployed `traffic_split` being lost; see
+         * the `deployModel` [example](https://cloud.google.com/vertex-ai/docs/general/deployment#deploy_a_model_to_an_endpoint) and
+         * [documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1beta1/projects.locations.endpoints/deployModel) for details.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder trafficSplit(String trafficSplit) {
+            return trafficSplit(Output.of(trafficSplit));
         }
 
         /**

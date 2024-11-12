@@ -235,6 +235,9 @@ type Cluster struct {
 	ClusterTelemetry ClusterClusterTelemetryOutput `pulumi:"clusterTelemetry"`
 	// Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
 	ConfidentialNodes ClusterConfidentialNodesOutput `pulumi:"confidentialNodes"`
+	// Configuration for all of the cluster's control plane endpoints.
+	// Structure is documented below.
+	ControlPlaneEndpointsConfig ClusterControlPlaneEndpointsConfigOutput `pulumi:"controlPlaneEndpointsConfig"`
 	// Configuration for the
 	// [Cost Allocation](https://cloud.google.com/kubernetes-engine/docs/how-to/cost-allocations) feature.
 	// Structure is documented below.
@@ -494,6 +497,8 @@ type Cluster struct {
 	// [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
 	// notation (e.g. `1.2.3.4/29`).
 	TpuIpv4CidrBlock pulumi.StringOutput `pulumi:"tpuIpv4CidrBlock"`
+	// The custom keys configuration of the cluster.
+	UserManagedKeysConfig ClusterUserManagedKeysConfigPtrOutput `pulumi:"userManagedKeysConfig"`
 	// Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
 	// Structure is documented below.
 	VerticalPodAutoscaling ClusterVerticalPodAutoscalingOutput `pulumi:"verticalPodAutoscaling"`
@@ -573,6 +578,9 @@ type clusterState struct {
 	ClusterTelemetry *ClusterClusterTelemetry `pulumi:"clusterTelemetry"`
 	// Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
 	ConfidentialNodes *ClusterConfidentialNodes `pulumi:"confidentialNodes"`
+	// Configuration for all of the cluster's control plane endpoints.
+	// Structure is documented below.
+	ControlPlaneEndpointsConfig *ClusterControlPlaneEndpointsConfig `pulumi:"controlPlaneEndpointsConfig"`
 	// Configuration for the
 	// [Cost Allocation](https://cloud.google.com/kubernetes-engine/docs/how-to/cost-allocations) feature.
 	// Structure is documented below.
@@ -832,6 +840,8 @@ type clusterState struct {
 	// [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
 	// notation (e.g. `1.2.3.4/29`).
 	TpuIpv4CidrBlock *string `pulumi:"tpuIpv4CidrBlock"`
+	// The custom keys configuration of the cluster.
+	UserManagedKeysConfig *ClusterUserManagedKeysConfig `pulumi:"userManagedKeysConfig"`
 	// Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
 	// Structure is documented below.
 	VerticalPodAutoscaling *ClusterVerticalPodAutoscaling `pulumi:"verticalPodAutoscaling"`
@@ -877,6 +887,9 @@ type ClusterState struct {
 	ClusterTelemetry ClusterClusterTelemetryPtrInput
 	// Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
 	ConfidentialNodes ClusterConfidentialNodesPtrInput
+	// Configuration for all of the cluster's control plane endpoints.
+	// Structure is documented below.
+	ControlPlaneEndpointsConfig ClusterControlPlaneEndpointsConfigPtrInput
 	// Configuration for the
 	// [Cost Allocation](https://cloud.google.com/kubernetes-engine/docs/how-to/cost-allocations) feature.
 	// Structure is documented below.
@@ -1136,6 +1149,8 @@ type ClusterState struct {
 	// [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
 	// notation (e.g. `1.2.3.4/29`).
 	TpuIpv4CidrBlock pulumi.StringPtrInput
+	// The custom keys configuration of the cluster.
+	UserManagedKeysConfig ClusterUserManagedKeysConfigPtrInput
 	// Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
 	// Structure is documented below.
 	VerticalPodAutoscaling ClusterVerticalPodAutoscalingPtrInput
@@ -1185,6 +1200,9 @@ type clusterArgs struct {
 	ClusterTelemetry *ClusterClusterTelemetry `pulumi:"clusterTelemetry"`
 	// Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
 	ConfidentialNodes *ClusterConfidentialNodes `pulumi:"confidentialNodes"`
+	// Configuration for all of the cluster's control plane endpoints.
+	// Structure is documented below.
+	ControlPlaneEndpointsConfig *ClusterControlPlaneEndpointsConfig `pulumi:"controlPlaneEndpointsConfig"`
 	// Configuration for the
 	// [Cost Allocation](https://cloud.google.com/kubernetes-engine/docs/how-to/cost-allocations) feature.
 	// Structure is documented below.
@@ -1420,6 +1438,8 @@ type clusterArgs struct {
 	Subnetwork *string `pulumi:"subnetwork"`
 	// TPU configuration for the cluster.
 	TpuConfig *ClusterTpuConfig `pulumi:"tpuConfig"`
+	// The custom keys configuration of the cluster.
+	UserManagedKeysConfig *ClusterUserManagedKeysConfig `pulumi:"userManagedKeysConfig"`
 	// Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
 	// Structure is documented below.
 	VerticalPodAutoscaling *ClusterVerticalPodAutoscaling `pulumi:"verticalPodAutoscaling"`
@@ -1466,6 +1486,9 @@ type ClusterArgs struct {
 	ClusterTelemetry ClusterClusterTelemetryPtrInput
 	// Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
 	ConfidentialNodes ClusterConfidentialNodesPtrInput
+	// Configuration for all of the cluster's control plane endpoints.
+	// Structure is documented below.
+	ControlPlaneEndpointsConfig ClusterControlPlaneEndpointsConfigPtrInput
 	// Configuration for the
 	// [Cost Allocation](https://cloud.google.com/kubernetes-engine/docs/how-to/cost-allocations) feature.
 	// Structure is documented below.
@@ -1701,6 +1724,8 @@ type ClusterArgs struct {
 	Subnetwork pulumi.StringPtrInput
 	// TPU configuration for the cluster.
 	TpuConfig ClusterTpuConfigPtrInput
+	// The custom keys configuration of the cluster.
+	UserManagedKeysConfig ClusterUserManagedKeysConfigPtrInput
 	// Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
 	// Structure is documented below.
 	VerticalPodAutoscaling ClusterVerticalPodAutoscalingPtrInput
@@ -1854,6 +1879,12 @@ func (o ClusterOutput) ClusterTelemetry() ClusterClusterTelemetryOutput {
 // Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
 func (o ClusterOutput) ConfidentialNodes() ClusterConfidentialNodesOutput {
 	return o.ApplyT(func(v *Cluster) ClusterConfidentialNodesOutput { return v.ConfidentialNodes }).(ClusterConfidentialNodesOutput)
+}
+
+// Configuration for all of the cluster's control plane endpoints.
+// Structure is documented below.
+func (o ClusterOutput) ControlPlaneEndpointsConfig() ClusterControlPlaneEndpointsConfigOutput {
+	return o.ApplyT(func(v *Cluster) ClusterControlPlaneEndpointsConfigOutput { return v.ControlPlaneEndpointsConfig }).(ClusterControlPlaneEndpointsConfigOutput)
 }
 
 // Configuration for the
@@ -2317,6 +2348,11 @@ func (o ClusterOutput) TpuConfig() ClusterTpuConfigOutput {
 // notation (e.g. `1.2.3.4/29`).
 func (o ClusterOutput) TpuIpv4CidrBlock() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.TpuIpv4CidrBlock }).(pulumi.StringOutput)
+}
+
+// The custom keys configuration of the cluster.
+func (o ClusterOutput) UserManagedKeysConfig() ClusterUserManagedKeysConfigPtrOutput {
+	return o.ApplyT(func(v *Cluster) ClusterUserManagedKeysConfigPtrOutput { return v.UserManagedKeysConfig }).(ClusterUserManagedKeysConfigPtrOutput)
 }
 
 // Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.

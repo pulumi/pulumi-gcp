@@ -242,7 +242,7 @@ public class Disk extends com.pulumi.resources.CustomResource {
         return this.accessMode;
     }
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -250,7 +250,7 @@ public class Disk extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ DiskAsyncPrimaryDisk> asyncPrimaryDisk;
 
     /**
-     * @return A nested object resource
+     * @return A nested object resource.
      * Structure is documented below.
      * 
      */

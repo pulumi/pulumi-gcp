@@ -356,6 +356,10 @@ type DatabaseInstanceReplicaConfiguration struct {
 	// PEM representation of the trusted CA's x509
 	// certificate.
 	CaCertificate *string `pulumi:"caCertificate"`
+	// Specifies if the replica is a cascadable replica. If true, instance must be in different region from primary.
+	//
+	// > **NOTE:** Only supported for SQL Server database.
+	CascadableReplica *bool `pulumi:"cascadableReplica"`
 	// PEM representation of the replica's x509
 	// certificate.
 	ClientCertificate *string `pulumi:"clientCertificate"`
@@ -404,6 +408,10 @@ type DatabaseInstanceReplicaConfigurationArgs struct {
 	// PEM representation of the trusted CA's x509
 	// certificate.
 	CaCertificate pulumi.StringPtrInput `pulumi:"caCertificate"`
+	// Specifies if the replica is a cascadable replica. If true, instance must be in different region from primary.
+	//
+	// > **NOTE:** Only supported for SQL Server database.
+	CascadableReplica pulumi.BoolPtrInput `pulumi:"cascadableReplica"`
 	// PEM representation of the replica's x509
 	// certificate.
 	ClientCertificate pulumi.StringPtrInput `pulumi:"clientCertificate"`
@@ -520,6 +528,13 @@ func (o DatabaseInstanceReplicaConfigurationOutput) CaCertificate() pulumi.Strin
 	return o.ApplyT(func(v DatabaseInstanceReplicaConfiguration) *string { return v.CaCertificate }).(pulumi.StringPtrOutput)
 }
 
+// Specifies if the replica is a cascadable replica. If true, instance must be in different region from primary.
+//
+// > **NOTE:** Only supported for SQL Server database.
+func (o DatabaseInstanceReplicaConfigurationOutput) CascadableReplica() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceReplicaConfiguration) *bool { return v.CascadableReplica }).(pulumi.BoolPtrOutput)
+}
+
 // PEM representation of the replica's x509
 // certificate.
 func (o DatabaseInstanceReplicaConfigurationOutput) ClientCertificate() pulumi.StringPtrOutput {
@@ -614,6 +629,18 @@ func (o DatabaseInstanceReplicaConfigurationPtrOutput) CaCertificate() pulumi.St
 		}
 		return v.CaCertificate
 	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies if the replica is a cascadable replica. If true, instance must be in different region from primary.
+//
+// > **NOTE:** Only supported for SQL Server database.
+func (o DatabaseInstanceReplicaConfigurationPtrOutput) CascadableReplica() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceReplicaConfiguration) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.CascadableReplica
+	}).(pulumi.BoolPtrOutput)
 }
 
 // PEM representation of the replica's x509
@@ -5145,6 +5172,8 @@ func (o GetDatabaseInstanceIpAddressArrayOutput) Index(i pulumi.IntInput) GetDat
 type GetDatabaseInstanceReplicaConfiguration struct {
 	// PEM representation of the trusted CA's x509 certificate.
 	CaCertificate string `pulumi:"caCertificate"`
+	// Specifies if a SQL Server replica is a cascadable replica. A cascadable replica is a SQL Server cross region replica that supports replica(s) under it.
+	CascadableReplica bool `pulumi:"cascadableReplica"`
 	// PEM representation of the replica's x509 certificate.
 	ClientCertificate string `pulumi:"clientCertificate"`
 	// PEM representation of the replica's private key. The corresponding public key in encoded in the client_certificate.
@@ -5181,6 +5210,8 @@ type GetDatabaseInstanceReplicaConfigurationInput interface {
 type GetDatabaseInstanceReplicaConfigurationArgs struct {
 	// PEM representation of the trusted CA's x509 certificate.
 	CaCertificate pulumi.StringInput `pulumi:"caCertificate"`
+	// Specifies if a SQL Server replica is a cascadable replica. A cascadable replica is a SQL Server cross region replica that supports replica(s) under it.
+	CascadableReplica pulumi.BoolInput `pulumi:"cascadableReplica"`
 	// PEM representation of the replica's x509 certificate.
 	ClientCertificate pulumi.StringInput `pulumi:"clientCertificate"`
 	// PEM representation of the replica's private key. The corresponding public key in encoded in the client_certificate.
@@ -5257,6 +5288,11 @@ func (o GetDatabaseInstanceReplicaConfigurationOutput) ToGetDatabaseInstanceRepl
 // PEM representation of the trusted CA's x509 certificate.
 func (o GetDatabaseInstanceReplicaConfigurationOutput) CaCertificate() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceReplicaConfiguration) string { return v.CaCertificate }).(pulumi.StringOutput)
+}
+
+// Specifies if a SQL Server replica is a cascadable replica. A cascadable replica is a SQL Server cross region replica that supports replica(s) under it.
+func (o GetDatabaseInstanceReplicaConfigurationOutput) CascadableReplica() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceReplicaConfiguration) bool { return v.CascadableReplica }).(pulumi.BoolOutput)
 }
 
 // PEM representation of the replica's x509 certificate.
@@ -7738,6 +7774,8 @@ type GetDatabaseInstancesInstance struct {
 	Region string `pulumi:"region"`
 	// The configuration for replication.
 	ReplicaConfigurations []GetDatabaseInstancesInstanceReplicaConfiguration `pulumi:"replicaConfigurations"`
+	// The replicas of the instance.
+	ReplicaNames          []string                                           `pulumi:"replicaNames"`
 	RestoreBackupContexts []GetDatabaseInstancesInstanceRestoreBackupContext `pulumi:"restoreBackupContexts"`
 	// Initial root password. Required for MS SQL Server.
 	RootPassword string `pulumi:"rootPassword"`
@@ -7793,6 +7831,8 @@ type GetDatabaseInstancesInstanceArgs struct {
 	Region pulumi.StringInput `pulumi:"region"`
 	// The configuration for replication.
 	ReplicaConfigurations GetDatabaseInstancesInstanceReplicaConfigurationArrayInput `pulumi:"replicaConfigurations"`
+	// The replicas of the instance.
+	ReplicaNames          pulumi.StringArrayInput                                    `pulumi:"replicaNames"`
 	RestoreBackupContexts GetDatabaseInstancesInstanceRestoreBackupContextArrayInput `pulumi:"restoreBackupContexts"`
 	// Initial root password. Required for MS SQL Server.
 	RootPassword pulumi.StringInput `pulumi:"rootPassword"`
@@ -7944,6 +7984,11 @@ func (o GetDatabaseInstancesInstanceOutput) ReplicaConfigurations() GetDatabaseI
 	return o.ApplyT(func(v GetDatabaseInstancesInstance) []GetDatabaseInstancesInstanceReplicaConfiguration {
 		return v.ReplicaConfigurations
 	}).(GetDatabaseInstancesInstanceReplicaConfigurationArrayOutput)
+}
+
+// The replicas of the instance.
+func (o GetDatabaseInstancesInstanceOutput) ReplicaNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstance) []string { return v.ReplicaNames }).(pulumi.StringArrayOutput)
 }
 
 func (o GetDatabaseInstancesInstanceOutput) RestoreBackupContexts() GetDatabaseInstancesInstanceRestoreBackupContextArrayOutput {
@@ -8240,6 +8285,8 @@ func (o GetDatabaseInstancesInstanceIpAddressArrayOutput) Index(i pulumi.IntInpu
 type GetDatabaseInstancesInstanceReplicaConfiguration struct {
 	// PEM representation of the trusted CA's x509 certificate.
 	CaCertificate string `pulumi:"caCertificate"`
+	// Specifies if a SQL Server replica is a cascadable replica. A cascadable replica is a SQL Server cross region replica that supports replica(s) under it.
+	CascadableReplica bool `pulumi:"cascadableReplica"`
 	// PEM representation of the replica's x509 certificate.
 	ClientCertificate string `pulumi:"clientCertificate"`
 	// PEM representation of the replica's private key. The corresponding public key in encoded in the client_certificate.
@@ -8276,6 +8323,8 @@ type GetDatabaseInstancesInstanceReplicaConfigurationInput interface {
 type GetDatabaseInstancesInstanceReplicaConfigurationArgs struct {
 	// PEM representation of the trusted CA's x509 certificate.
 	CaCertificate pulumi.StringInput `pulumi:"caCertificate"`
+	// Specifies if a SQL Server replica is a cascadable replica. A cascadable replica is a SQL Server cross region replica that supports replica(s) under it.
+	CascadableReplica pulumi.BoolInput `pulumi:"cascadableReplica"`
 	// PEM representation of the replica's x509 certificate.
 	ClientCertificate pulumi.StringInput `pulumi:"clientCertificate"`
 	// PEM representation of the replica's private key. The corresponding public key in encoded in the client_certificate.
@@ -8352,6 +8401,11 @@ func (o GetDatabaseInstancesInstanceReplicaConfigurationOutput) ToGetDatabaseIns
 // PEM representation of the trusted CA's x509 certificate.
 func (o GetDatabaseInstancesInstanceReplicaConfigurationOutput) CaCertificate() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstanceReplicaConfiguration) string { return v.CaCertificate }).(pulumi.StringOutput)
+}
+
+// Specifies if a SQL Server replica is a cascadable replica. A cascadable replica is a SQL Server cross region replica that supports replica(s) under it.
+func (o GetDatabaseInstancesInstanceReplicaConfigurationOutput) CascadableReplica() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceReplicaConfiguration) bool { return v.CascadableReplica }).(pulumi.BoolOutput)
 }
 
 // PEM representation of the replica's x509 certificate.

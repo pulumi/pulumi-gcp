@@ -33,6 +33,7 @@ __all__ = [
     'InstanceConfigReplica',
     'InstanceIAMBindingCondition',
     'InstanceIAMMemberCondition',
+    'GetDatabaseEncryptionConfigResult',
     'GetInstanceAutoscalingConfigResult',
     'GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionResult',
     'GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideResult',
@@ -364,9 +365,9 @@ class InstanceAutoscalingConfigAsymmetricAutoscalingOption(dict):
                  overrides: 'outputs.InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides',
                  replica_selection: 'outputs.InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelection'):
         """
-        :param 'InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesArgs' overrides: A nested object resource
+        :param 'InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesArgs' overrides: A nested object resource.
                Structure is documented below.
-        :param 'InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArgs' replica_selection: A nested object resource
+        :param 'InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArgs' replica_selection: A nested object resource.
                Structure is documented below.
         """
         pulumi.set(__self__, "overrides", overrides)
@@ -376,7 +377,7 @@ class InstanceAutoscalingConfigAsymmetricAutoscalingOption(dict):
     @pulumi.getter
     def overrides(self) -> 'outputs.InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides':
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "overrides")
@@ -385,7 +386,7 @@ class InstanceAutoscalingConfigAsymmetricAutoscalingOption(dict):
     @pulumi.getter(name="replicaSelection")
     def replica_selection(self) -> 'outputs.InstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelection':
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "replica_selection")
@@ -413,7 +414,7 @@ class InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides(dict):
     def __init__(__self__, *,
                  autoscaling_limits: 'outputs.InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimits'):
         """
-        :param 'InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsArgs' autoscaling_limits: A nested object resource
+        :param 'InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimitsArgs' autoscaling_limits: A nested object resource.
                Structure is documented below.
         """
         pulumi.set(__self__, "autoscaling_limits", autoscaling_limits)
@@ -422,7 +423,7 @@ class InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrides(dict):
     @pulumi.getter(name="autoscalingLimits")
     def autoscaling_limits(self) -> 'outputs.InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesAutoscalingLimits':
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "autoscaling_limits")
@@ -763,6 +764,39 @@ class InstanceIAMMemberCondition(dict):
 
 
 @pulumi.output_type
+class GetDatabaseEncryptionConfigResult(dict):
+    def __init__(__self__, *,
+                 kms_key_name: str,
+                 kms_key_names: Sequence[str]):
+        """
+        :param str kms_key_name: Fully qualified name of the KMS key to use to encrypt this database. This key must exist
+               in the same location as the Spanner Database.
+        :param Sequence[str] kms_key_names: Fully qualified name of the KMS keys to use to encrypt this database. The keys must exist
+               in the same locations as the Spanner Database.
+        """
+        pulumi.set(__self__, "kms_key_name", kms_key_name)
+        pulumi.set(__self__, "kms_key_names", kms_key_names)
+
+    @property
+    @pulumi.getter(name="kmsKeyName")
+    def kms_key_name(self) -> str:
+        """
+        Fully qualified name of the KMS key to use to encrypt this database. This key must exist
+        in the same location as the Spanner Database.
+        """
+        return pulumi.get(self, "kms_key_name")
+
+    @property
+    @pulumi.getter(name="kmsKeyNames")
+    def kms_key_names(self) -> Sequence[str]:
+        """
+        Fully qualified name of the KMS keys to use to encrypt this database. The keys must exist
+        in the same locations as the Spanner Database.
+        """
+        return pulumi.get(self, "kms_key_names")
+
+
+@pulumi.output_type
 class GetInstanceAutoscalingConfigResult(dict):
     def __init__(__self__, *,
                  asymmetric_autoscaling_options: Sequence['outputs.GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionResult'],
@@ -820,8 +854,8 @@ class GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionResult(dict):
                  overrides: Sequence['outputs.GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideResult'],
                  replica_selections: Sequence['outputs.GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionResult']):
         """
-        :param Sequence['GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideArgs'] overrides: A nested object resource
-        :param Sequence['GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArgs'] replica_selections: A nested object resource
+        :param Sequence['GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideArgs'] overrides: A nested object resource.
+        :param Sequence['GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionArgs'] replica_selections: A nested object resource.
         """
         pulumi.set(__self__, "overrides", overrides)
         pulumi.set(__self__, "replica_selections", replica_selections)
@@ -830,7 +864,7 @@ class GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionResult(dict):
     @pulumi.getter
     def overrides(self) -> Sequence['outputs.GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideResult']:
         """
-        A nested object resource
+        A nested object resource.
         """
         return pulumi.get(self, "overrides")
 
@@ -838,7 +872,7 @@ class GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionResult(dict):
     @pulumi.getter(name="replicaSelections")
     def replica_selections(self) -> Sequence['outputs.GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionReplicaSelectionResult']:
         """
-        A nested object resource
+        A nested object resource.
         """
         return pulumi.get(self, "replica_selections")
 
@@ -848,7 +882,7 @@ class GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideResult(dict
     def __init__(__self__, *,
                  autoscaling_limits: Sequence['outputs.GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitResult']):
         """
-        :param Sequence['GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitArgs'] autoscaling_limits: A nested object resource
+        :param Sequence['GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitArgs'] autoscaling_limits: A nested object resource.
         """
         pulumi.set(__self__, "autoscaling_limits", autoscaling_limits)
 
@@ -856,7 +890,7 @@ class GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideResult(dict
     @pulumi.getter(name="autoscalingLimits")
     def autoscaling_limits(self) -> Sequence['outputs.GetInstanceAutoscalingConfigAsymmetricAutoscalingOptionOverrideAutoscalingLimitResult']:
         """
-        A nested object resource
+        A nested object resource.
         """
         return pulumi.get(self, "autoscaling_limits")
 

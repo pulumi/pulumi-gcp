@@ -200,6 +200,11 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
      */
     public /*out*/ readonly fingerprint!: pulumi.Output<string>;
     /**
+     * The flexibility policy for managed instance group. Instance flexibility allows managed instance group to create VMs from multiple types of machines. Instance flexibility configuration on managed instance group overrides instance template configuration. Structure is documented below.
+     * - - -
+     */
+    public readonly instanceFlexibilityPolicy!: pulumi.Output<outputs.compute.RegionInstanceGroupManagerInstanceFlexibilityPolicy | undefined>;
+    /**
      * The full URL of the instance group created by the manager.
      */
     public /*out*/ readonly instanceGroup!: pulumi.Output<string>;
@@ -230,8 +235,6 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
     public readonly namedPorts!: pulumi.Output<outputs.compute.RegionInstanceGroupManagerNamedPort[] | undefined>;
     /**
      * Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-     *
-     * - - -
      */
     public readonly params!: pulumi.Output<outputs.compute.RegionInstanceGroupManagerParams | undefined>;
     /**
@@ -333,6 +336,7 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
             resourceInputs["distributionPolicyTargetShape"] = state ? state.distributionPolicyTargetShape : undefined;
             resourceInputs["distributionPolicyZones"] = state ? state.distributionPolicyZones : undefined;
             resourceInputs["fingerprint"] = state ? state.fingerprint : undefined;
+            resourceInputs["instanceFlexibilityPolicy"] = state ? state.instanceFlexibilityPolicy : undefined;
             resourceInputs["instanceGroup"] = state ? state.instanceGroup : undefined;
             resourceInputs["instanceLifecyclePolicy"] = state ? state.instanceLifecyclePolicy : undefined;
             resourceInputs["listManagedInstancesResults"] = state ? state.listManagedInstancesResults : undefined;
@@ -369,6 +373,7 @@ export class RegionInstanceGroupManager extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["distributionPolicyTargetShape"] = args ? args.distributionPolicyTargetShape : undefined;
             resourceInputs["distributionPolicyZones"] = args ? args.distributionPolicyZones : undefined;
+            resourceInputs["instanceFlexibilityPolicy"] = args ? args.instanceFlexibilityPolicy : undefined;
             resourceInputs["instanceLifecyclePolicy"] = args ? args.instanceLifecyclePolicy : undefined;
             resourceInputs["listManagedInstancesResults"] = args ? args.listManagedInstancesResults : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -446,6 +451,11 @@ export interface RegionInstanceGroupManagerState {
      */
     fingerprint?: pulumi.Input<string>;
     /**
+     * The flexibility policy for managed instance group. Instance flexibility allows managed instance group to create VMs from multiple types of machines. Instance flexibility configuration on managed instance group overrides instance template configuration. Structure is documented below.
+     * - - -
+     */
+    instanceFlexibilityPolicy?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerInstanceFlexibilityPolicy>;
+    /**
      * The full URL of the instance group created by the manager.
      */
     instanceGroup?: pulumi.Input<string>;
@@ -476,8 +486,6 @@ export interface RegionInstanceGroupManagerState {
     namedPorts?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerNamedPort>[]>;
     /**
      * Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-     *
-     * - - -
      */
     params?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerParams>;
     /**
@@ -598,6 +606,11 @@ export interface RegionInstanceGroupManagerArgs {
      */
     distributionPolicyZones?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * The flexibility policy for managed instance group. Instance flexibility allows managed instance group to create VMs from multiple types of machines. Instance flexibility configuration on managed instance group overrides instance template configuration. Structure is documented below.
+     * - - -
+     */
+    instanceFlexibilityPolicy?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerInstanceFlexibilityPolicy>;
+    /**
      * The instance lifecycle policy for this managed instance group.
      */
     instanceLifecyclePolicy?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerInstanceLifecyclePolicy>;
@@ -624,8 +637,6 @@ export interface RegionInstanceGroupManagerArgs {
     namedPorts?: pulumi.Input<pulumi.Input<inputs.compute.RegionInstanceGroupManagerNamedPort>[]>;
     /**
      * Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-     *
-     * - - -
      */
     params?: pulumi.Input<inputs.compute.RegionInstanceGroupManagerParams>;
     /**

@@ -317,7 +317,7 @@ class NetworkFirewallPolicyWithRules(pulumi.CustomResource):
         project = gcp.organizations.get_project()
         address_group1 = gcp.networksecurity.AddressGroup("address_group_1",
             name="tf-address-group",
-            parent=f"projects/{project.name}",
+            parent=project.id,
             description="Global address group",
             location="global",
             items=["208.80.154.224/32"],
@@ -325,7 +325,7 @@ class NetworkFirewallPolicyWithRules(pulumi.CustomResource):
             capacity=100)
         secure_tag_key1 = gcp.tags.TagKey("secure_tag_key_1",
             description="Tag key",
-            parent=f"projects/{project.name}",
+            parent=project.id,
             purpose="GCE_FIREWALL",
             short_name="tf-tag-key",
             purpose_data={
@@ -333,7 +333,7 @@ class NetworkFirewallPolicyWithRules(pulumi.CustomResource):
             })
         secure_tag_value1 = gcp.tags.TagValue("secure_tag_value_1",
             description="Tag value",
-            parent=secure_tag_key1.name.apply(lambda name: f"tagKeys/{name}"),
+            parent=secure_tag_key1.id,
             short_name="tf-tag-value")
         security_profile1 = gcp.networksecurity.SecurityProfile("security_profile_1",
             name="tf-security-profile",
@@ -379,7 +379,7 @@ class NetworkFirewallPolicyWithRules(pulumi.CustomResource):
                         "dest_address_groups": [address_group1.id],
                     },
                     "target_secure_tags": [{
-                        "name": secure_tag_value1.name.apply(lambda name: f"tagValues/{name}"),
+                        "name": secure_tag_value1.id,
                     }],
                 },
                 {
@@ -407,7 +407,7 @@ class NetworkFirewallPolicyWithRules(pulumi.CustomResource):
                         ],
                         "src_address_groups": [address_group1.id],
                         "src_secure_tags": [{
-                            "name": secure_tag_value1.name.apply(lambda name: f"tagValues/{name}"),
+                            "name": secure_tag_value1.id,
                         }],
                     },
                     "disabled": True,
@@ -487,7 +487,7 @@ class NetworkFirewallPolicyWithRules(pulumi.CustomResource):
         project = gcp.organizations.get_project()
         address_group1 = gcp.networksecurity.AddressGroup("address_group_1",
             name="tf-address-group",
-            parent=f"projects/{project.name}",
+            parent=project.id,
             description="Global address group",
             location="global",
             items=["208.80.154.224/32"],
@@ -495,7 +495,7 @@ class NetworkFirewallPolicyWithRules(pulumi.CustomResource):
             capacity=100)
         secure_tag_key1 = gcp.tags.TagKey("secure_tag_key_1",
             description="Tag key",
-            parent=f"projects/{project.name}",
+            parent=project.id,
             purpose="GCE_FIREWALL",
             short_name="tf-tag-key",
             purpose_data={
@@ -503,7 +503,7 @@ class NetworkFirewallPolicyWithRules(pulumi.CustomResource):
             })
         secure_tag_value1 = gcp.tags.TagValue("secure_tag_value_1",
             description="Tag value",
-            parent=secure_tag_key1.name.apply(lambda name: f"tagKeys/{name}"),
+            parent=secure_tag_key1.id,
             short_name="tf-tag-value")
         security_profile1 = gcp.networksecurity.SecurityProfile("security_profile_1",
             name="tf-security-profile",
@@ -549,7 +549,7 @@ class NetworkFirewallPolicyWithRules(pulumi.CustomResource):
                         "dest_address_groups": [address_group1.id],
                     },
                     "target_secure_tags": [{
-                        "name": secure_tag_value1.name.apply(lambda name: f"tagValues/{name}"),
+                        "name": secure_tag_value1.id,
                     }],
                 },
                 {
@@ -577,7 +577,7 @@ class NetworkFirewallPolicyWithRules(pulumi.CustomResource):
                         ],
                         "src_address_groups": [address_group1.id],
                         "src_secure_tags": [{
-                            "name": secure_tag_value1.name.apply(lambda name: f"tagValues/{name}"),
+                            "name": secure_tag_value1.id,
                         }],
                     },
                     "disabled": True,

@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.compute.RegionSecurityPolicyArgs;
 import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyState;
 import com.pulumi.gcp.compute.outputs.RegionSecurityPolicyDdosProtectionConfig;
+import com.pulumi.gcp.compute.outputs.RegionSecurityPolicyRule;
 import com.pulumi.gcp.compute.outputs.RegionSecurityPolicyUserDefinedField;
 import java.lang.String;
 import java.util.List;
@@ -140,6 +141,67 @@ import javax.annotation.Nullable;
  *                     .offset(16)
  *                     .size(4)
  *                     .mask("0xFFFFFFFF")
+ *                     .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Region Security Policy With Rules
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.RegionSecurityPolicy;
+ * import com.pulumi.gcp.compute.RegionSecurityPolicyArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyRuleMatchArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyRuleMatchExprArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionSecurityPolicyRuleMatchConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var region_sec_policy_with_rules = new RegionSecurityPolicy("region-sec-policy-with-rules", RegionSecurityPolicyArgs.builder()
+ *             .name("my-sec-policy-with-rules")
+ *             .description("basic region security policy with multiple rules")
+ *             .type("CLOUD_ARMOR")
+ *             .rules(            
+ *                 RegionSecurityPolicyRuleArgs.builder()
+ *                     .action("deny")
+ *                     .priority("1000")
+ *                     .match(RegionSecurityPolicyRuleMatchArgs.builder()
+ *                         .expr(RegionSecurityPolicyRuleMatchExprArgs.builder()
+ *                             .expression("request.path.matches(\"/login.html\") && token.recaptcha_session.score < 0.2")
+ *                             .build())
+ *                         .build())
+ *                     .build(),
+ *                 RegionSecurityPolicyRuleArgs.builder()
+ *                     .action("deny")
+ *                     .priority("2147483647")
+ *                     .match(RegionSecurityPolicyRuleMatchArgs.builder()
+ *                         .versionedExpr("SRC_IPS_V1")
+ *                         .config(RegionSecurityPolicyRuleMatchConfigArgs.builder()
+ *                             .srcIpRanges("*")
+ *                             .build())
+ *                         .build())
+ *                     .description("default rule")
  *                     .build())
  *             .build());
  * 
@@ -293,6 +355,22 @@ public class RegionSecurityPolicy extends com.pulumi.resources.CustomResource {
      */
     public Output<String> region() {
         return this.region;
+    }
+    /**
+     * The set of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match &#34;*&#34;). If no rules are provided when creating a security policy, a default rule with action &#34;allow&#34; will be added.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="rules", refs={List.class,RegionSecurityPolicyRule.class}, tree="[0,1]")
+    private Output<List<RegionSecurityPolicyRule>> rules;
+
+    /**
+     * @return The set of rules that belong to this policy. There must always be a default rule (rule with priority 2147483647 and match &#34;*&#34;). If no rules are provided when creating a security policy, a default rule with action &#34;allow&#34; will be added.
+     * Structure is documented below.
+     * 
+     */
+    public Output<List<RegionSecurityPolicyRule>> rules() {
+        return this.rules;
     }
     /**
      * Server-defined URL for the resource.

@@ -75,29 +75,30 @@ type LookupRegionInstanceGroupManagerResult struct {
 	DistributionPolicyZones       []string                                          `pulumi:"distributionPolicyZones"`
 	Fingerprint                   string                                            `pulumi:"fingerprint"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                          string                                                 `pulumi:"id"`
-	InstanceGroup               string                                                 `pulumi:"instanceGroup"`
-	InstanceLifecyclePolicies   []GetRegionInstanceGroupManagerInstanceLifecyclePolicy `pulumi:"instanceLifecyclePolicies"`
-	ListManagedInstancesResults string                                                 `pulumi:"listManagedInstancesResults"`
-	Name                        *string                                                `pulumi:"name"`
-	NamedPorts                  []GetRegionInstanceGroupManagerNamedPort               `pulumi:"namedPorts"`
-	Params                      []GetRegionInstanceGroupManagerParam                   `pulumi:"params"`
-	Project                     *string                                                `pulumi:"project"`
-	Region                      *string                                                `pulumi:"region"`
-	SelfLink                    *string                                                `pulumi:"selfLink"`
-	StandbyPolicies             []GetRegionInstanceGroupManagerStandbyPolicy           `pulumi:"standbyPolicies"`
-	StatefulDisks               []GetRegionInstanceGroupManagerStatefulDisk            `pulumi:"statefulDisks"`
-	StatefulExternalIps         []GetRegionInstanceGroupManagerStatefulExternalIp      `pulumi:"statefulExternalIps"`
-	StatefulInternalIps         []GetRegionInstanceGroupManagerStatefulInternalIp      `pulumi:"statefulInternalIps"`
-	Statuses                    []GetRegionInstanceGroupManagerStatus                  `pulumi:"statuses"`
-	TargetPools                 []string                                               `pulumi:"targetPools"`
-	TargetSize                  int                                                    `pulumi:"targetSize"`
-	TargetStoppedSize           int                                                    `pulumi:"targetStoppedSize"`
-	TargetSuspendedSize         int                                                    `pulumi:"targetSuspendedSize"`
-	UpdatePolicies              []GetRegionInstanceGroupManagerUpdatePolicy            `pulumi:"updatePolicies"`
-	Versions                    []GetRegionInstanceGroupManagerVersion                 `pulumi:"versions"`
-	WaitForInstances            bool                                                   `pulumi:"waitForInstances"`
-	WaitForInstancesStatus      string                                                 `pulumi:"waitForInstancesStatus"`
+	Id                          string                                                   `pulumi:"id"`
+	InstanceFlexibilityPolicies []GetRegionInstanceGroupManagerInstanceFlexibilityPolicy `pulumi:"instanceFlexibilityPolicies"`
+	InstanceGroup               string                                                   `pulumi:"instanceGroup"`
+	InstanceLifecyclePolicies   []GetRegionInstanceGroupManagerInstanceLifecyclePolicy   `pulumi:"instanceLifecyclePolicies"`
+	ListManagedInstancesResults string                                                   `pulumi:"listManagedInstancesResults"`
+	Name                        *string                                                  `pulumi:"name"`
+	NamedPorts                  []GetRegionInstanceGroupManagerNamedPort                 `pulumi:"namedPorts"`
+	Params                      []GetRegionInstanceGroupManagerParam                     `pulumi:"params"`
+	Project                     *string                                                  `pulumi:"project"`
+	Region                      *string                                                  `pulumi:"region"`
+	SelfLink                    *string                                                  `pulumi:"selfLink"`
+	StandbyPolicies             []GetRegionInstanceGroupManagerStandbyPolicy             `pulumi:"standbyPolicies"`
+	StatefulDisks               []GetRegionInstanceGroupManagerStatefulDisk              `pulumi:"statefulDisks"`
+	StatefulExternalIps         []GetRegionInstanceGroupManagerStatefulExternalIp        `pulumi:"statefulExternalIps"`
+	StatefulInternalIps         []GetRegionInstanceGroupManagerStatefulInternalIp        `pulumi:"statefulInternalIps"`
+	Statuses                    []GetRegionInstanceGroupManagerStatus                    `pulumi:"statuses"`
+	TargetPools                 []string                                                 `pulumi:"targetPools"`
+	TargetSize                  int                                                      `pulumi:"targetSize"`
+	TargetStoppedSize           int                                                      `pulumi:"targetStoppedSize"`
+	TargetSuspendedSize         int                                                      `pulumi:"targetSuspendedSize"`
+	UpdatePolicies              []GetRegionInstanceGroupManagerUpdatePolicy              `pulumi:"updatePolicies"`
+	Versions                    []GetRegionInstanceGroupManagerVersion                   `pulumi:"versions"`
+	WaitForInstances            bool                                                     `pulumi:"waitForInstances"`
+	WaitForInstancesStatus      string                                                   `pulumi:"waitForInstancesStatus"`
 }
 
 func LookupRegionInstanceGroupManagerOutput(ctx *pulumi.Context, args LookupRegionInstanceGroupManagerOutputArgs, opts ...pulumi.InvokeOption) LookupRegionInstanceGroupManagerResultOutput {
@@ -190,6 +191,12 @@ func (o LookupRegionInstanceGroupManagerResultOutput) Fingerprint() pulumi.Strin
 // The provider-assigned unique ID for this managed resource.
 func (o LookupRegionInstanceGroupManagerResultOutput) Id() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionInstanceGroupManagerResult) string { return v.Id }).(pulumi.StringOutput)
+}
+
+func (o LookupRegionInstanceGroupManagerResultOutput) InstanceFlexibilityPolicies() GetRegionInstanceGroupManagerInstanceFlexibilityPolicyArrayOutput {
+	return o.ApplyT(func(v LookupRegionInstanceGroupManagerResult) []GetRegionInstanceGroupManagerInstanceFlexibilityPolicy {
+		return v.InstanceFlexibilityPolicies
+	}).(GetRegionInstanceGroupManagerInstanceFlexibilityPolicyArrayOutput)
 }
 
 func (o LookupRegionInstanceGroupManagerResultOutput) InstanceGroup() pulumi.StringOutput {

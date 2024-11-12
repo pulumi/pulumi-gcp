@@ -128,6 +128,46 @@ import (
 //	}
 //
 // ```
+// ### Node Template Disks
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.GetNodeTypes(ctx, &compute.GetNodeTypesArgs{
+//				Zone: pulumi.StringRef("us-central1-a"),
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewNodeTemplate(ctx, "template", &compute.NodeTemplateArgs{
+//				Name:     pulumi.String("soletenant-with-disks"),
+//				Region:   pulumi.String("us-central1"),
+//				NodeType: pulumi.String("n2-node-80-640"),
+//				Disks: compute.NodeTemplateDiskArray{
+//					&compute.NodeTemplateDiskArgs{
+//						DiskCount:  pulumi.Int(16),
+//						DiskSizeGb: pulumi.Int(375),
+//						DiskType:   pulumi.String("local-ssd"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -173,6 +213,10 @@ type NodeTemplate struct {
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional textual description of the resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// List of the type, size and count of disks attached to the
+	// node template
+	// Structure is documented below.
+	Disks NodeTemplateDiskArrayOutput `pulumi:"disks"`
 	// Name of the resource.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Labels to use for node affinity, which will be used in
@@ -243,6 +287,10 @@ type nodeTemplateState struct {
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional textual description of the resource.
 	Description *string `pulumi:"description"`
+	// List of the type, size and count of disks attached to the
+	// node template
+	// Structure is documented below.
+	Disks []NodeTemplateDisk `pulumi:"disks"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
 	// Labels to use for node affinity, which will be used in
@@ -284,6 +332,10 @@ type NodeTemplateState struct {
 	CreationTimestamp pulumi.StringPtrInput
 	// An optional textual description of the resource.
 	Description pulumi.StringPtrInput
+	// List of the type, size and count of disks attached to the
+	// node template
+	// Structure is documented below.
+	Disks NodeTemplateDiskArrayInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
 	// Labels to use for node affinity, which will be used in
@@ -327,6 +379,10 @@ type nodeTemplateArgs struct {
 	CpuOvercommitType *string `pulumi:"cpuOvercommitType"`
 	// An optional textual description of the resource.
 	Description *string `pulumi:"description"`
+	// List of the type, size and count of disks attached to the
+	// node template
+	// Structure is documented below.
+	Disks []NodeTemplateDisk `pulumi:"disks"`
 	// Name of the resource.
 	Name *string `pulumi:"name"`
 	// Labels to use for node affinity, which will be used in
@@ -365,6 +421,10 @@ type NodeTemplateArgs struct {
 	CpuOvercommitType pulumi.StringPtrInput
 	// An optional textual description of the resource.
 	Description pulumi.StringPtrInput
+	// List of the type, size and count of disks attached to the
+	// node template
+	// Structure is documented below.
+	Disks NodeTemplateDiskArrayInput
 	// Name of the resource.
 	Name pulumi.StringPtrInput
 	// Labels to use for node affinity, which will be used in
@@ -500,6 +560,13 @@ func (o NodeTemplateOutput) CreationTimestamp() pulumi.StringOutput {
 // An optional textual description of the resource.
 func (o NodeTemplateOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *NodeTemplate) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// List of the type, size and count of disks attached to the
+// node template
+// Structure is documented below.
+func (o NodeTemplateOutput) Disks() NodeTemplateDiskArrayOutput {
+	return o.ApplyT(func(v *NodeTemplate) NodeTemplateDiskArrayOutput { return v.Disks }).(NodeTemplateDiskArrayOutput)
 }
 
 // Name of the resource.

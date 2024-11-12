@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.GkeOnPrem.Inputs
         public Input<bool>? AdvancedNetworking { get; set; }
 
         /// <summary>
-        /// A nested object resource
+        /// A nested object resource.
         /// Structure is documented below.
         /// </summary>
         [Input("islandModeCidr")]

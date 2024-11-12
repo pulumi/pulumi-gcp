@@ -19,6 +19,8 @@ namespace Pulumi.Gcp.Looker.Outputs
         public readonly string ClientId;
         /// <summary>
         /// The client secret for the Oauth config.
+        /// 
+        /// - - -
         /// </summary>
         public readonly string ClientSecret;
 

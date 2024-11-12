@@ -84,6 +84,7 @@ class ProviderArgs:
                  dataform_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataplex_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataproc_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 dataproc_gdc_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataproc_metastore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  datastream_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  default_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -117,6 +118,7 @@ class ProviderArgs:
                  google_partner_name: Optional[pulumi.Input[str]] = None,
                  healthcare_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  iam2_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 iam3_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  iam_beta_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  iam_credentials_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  iam_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -328,6 +330,8 @@ class ProviderArgs:
             pulumi.set(__self__, "dataplex_custom_endpoint", dataplex_custom_endpoint)
         if dataproc_custom_endpoint is not None:
             pulumi.set(__self__, "dataproc_custom_endpoint", dataproc_custom_endpoint)
+        if dataproc_gdc_custom_endpoint is not None:
+            pulumi.set(__self__, "dataproc_gdc_custom_endpoint", dataproc_gdc_custom_endpoint)
         if dataproc_metastore_custom_endpoint is not None:
             pulumi.set(__self__, "dataproc_metastore_custom_endpoint", dataproc_metastore_custom_endpoint)
         if datastream_custom_endpoint is not None:
@@ -394,6 +398,8 @@ class ProviderArgs:
             pulumi.set(__self__, "healthcare_custom_endpoint", healthcare_custom_endpoint)
         if iam2_custom_endpoint is not None:
             pulumi.set(__self__, "iam2_custom_endpoint", iam2_custom_endpoint)
+        if iam3_custom_endpoint is not None:
+            pulumi.set(__self__, "iam3_custom_endpoint", iam3_custom_endpoint)
         if iam_beta_custom_endpoint is not None:
             pulumi.set(__self__, "iam_beta_custom_endpoint", iam_beta_custom_endpoint)
         if iam_credentials_custom_endpoint is not None:
@@ -1138,6 +1144,15 @@ class ProviderArgs:
         pulumi.set(self, "dataproc_custom_endpoint", value)
 
     @property
+    @pulumi.getter(name="dataprocGdcCustomEndpoint")
+    def dataproc_gdc_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "dataproc_gdc_custom_endpoint")
+
+    @dataproc_gdc_custom_endpoint.setter
+    def dataproc_gdc_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dataproc_gdc_custom_endpoint", value)
+
+    @property
     @pulumi.getter(name="dataprocMetastoreCustomEndpoint")
     def dataproc_metastore_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "dataproc_metastore_custom_endpoint")
@@ -1433,6 +1448,15 @@ class ProviderArgs:
     @iam2_custom_endpoint.setter
     def iam2_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "iam2_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="iam3CustomEndpoint")
+    def iam3_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "iam3_custom_endpoint")
+
+    @iam3_custom_endpoint.setter
+    def iam3_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "iam3_custom_endpoint", value)
 
     @property
     @pulumi.getter(name="iamBetaCustomEndpoint")
@@ -2224,6 +2248,7 @@ class Provider(pulumi.ProviderResource):
                  dataform_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataplex_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataproc_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 dataproc_gdc_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataproc_metastore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  datastream_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  default_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -2257,6 +2282,7 @@ class Provider(pulumi.ProviderResource):
                  google_partner_name: Optional[pulumi.Input[str]] = None,
                  healthcare_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  iam2_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 iam3_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  iam_beta_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  iam_credentials_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  iam_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2438,6 +2464,7 @@ class Provider(pulumi.ProviderResource):
                  dataform_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataplex_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataproc_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 dataproc_gdc_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  dataproc_metastore_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  datastream_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  default_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -2471,6 +2498,7 @@ class Provider(pulumi.ProviderResource):
                  google_partner_name: Optional[pulumi.Input[str]] = None,
                  healthcare_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  iam2_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 iam3_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  iam_beta_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  iam_credentials_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  iam_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2624,6 +2652,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["dataform_custom_endpoint"] = dataform_custom_endpoint
             __props__.__dict__["dataplex_custom_endpoint"] = dataplex_custom_endpoint
             __props__.__dict__["dataproc_custom_endpoint"] = dataproc_custom_endpoint
+            __props__.__dict__["dataproc_gdc_custom_endpoint"] = dataproc_gdc_custom_endpoint
             __props__.__dict__["dataproc_metastore_custom_endpoint"] = dataproc_metastore_custom_endpoint
             __props__.__dict__["datastream_custom_endpoint"] = datastream_custom_endpoint
             __props__.__dict__["default_labels"] = pulumi.Output.from_input(default_labels).apply(pulumi.runtime.to_json) if default_labels is not None else None
@@ -2657,6 +2686,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["google_partner_name"] = google_partner_name
             __props__.__dict__["healthcare_custom_endpoint"] = healthcare_custom_endpoint
             __props__.__dict__["iam2_custom_endpoint"] = iam2_custom_endpoint
+            __props__.__dict__["iam3_custom_endpoint"] = iam3_custom_endpoint
             __props__.__dict__["iam_beta_custom_endpoint"] = iam_beta_custom_endpoint
             __props__.__dict__["iam_credentials_custom_endpoint"] = iam_credentials_custom_endpoint
             __props__.__dict__["iam_custom_endpoint"] = iam_custom_endpoint
@@ -3062,6 +3092,11 @@ class Provider(pulumi.ProviderResource):
         return pulumi.get(self, "dataproc_custom_endpoint")
 
     @property
+    @pulumi.getter(name="dataprocGdcCustomEndpoint")
+    def dataproc_gdc_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "dataproc_gdc_custom_endpoint")
+
+    @property
     @pulumi.getter(name="dataprocMetastoreCustomEndpoint")
     def dataproc_metastore_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "dataproc_metastore_custom_endpoint")
@@ -3215,6 +3250,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="iam2CustomEndpoint")
     def iam2_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "iam2_custom_endpoint")
+
+    @property
+    @pulumi.getter(name="iam3CustomEndpoint")
+    def iam3_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "iam3_custom_endpoint")
 
     @property
     @pulumi.getter(name="iamBetaCustomEndpoint")

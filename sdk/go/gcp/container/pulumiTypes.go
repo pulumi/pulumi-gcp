@@ -10823,6 +10823,14 @@ type ClusterAddonsConfig struct {
 	// It can only be disabled if the nodes already do not have network policies enabled.
 	// Defaults to disabled; set `disabled = false` to enable.
 	NetworkPolicyConfig *ClusterAddonsConfigNetworkPolicyConfig `pulumi:"networkPolicyConfig"`
+	// The status of the Parallelstore CSI driver addon,
+	// which allows the usage of a Parallelstore instances as volumes.
+	// It is disabled by default for Standard clusters; set `enabled = true` to enable.
+	// It is enabled by default for Autopilot clusters with version 1.29 or later; set `enabled = true` to enable it explicitly.
+	// See [Enable the Parallelstore CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/parallelstore-csi-new-volume#enable) for more information.
+	//
+	// This example `addonsConfig` disables two addons:
+	ParallelstoreCsiDriverConfig *ClusterAddonsConfigParallelstoreCsiDriverConfig `pulumi:"parallelstoreCsiDriverConfig"`
 	// . The status of the [Ray Operator
 	// addon](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/concepts/overview).
 	// It is disabled by default. Set `enabled = true` to enable. The minimum
@@ -10835,8 +10843,6 @@ type ClusterAddonsConfig struct {
 	// clusters on
 	// GKE](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/how-to/collect-view-logs-metrics)
 	// for more information.
-	//
-	// This example `addonsConfig` disables two addons:
 	RayOperatorConfigs []ClusterAddonsConfigRayOperatorConfig `pulumi:"rayOperatorConfigs"`
 	// .
 	// The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications.
@@ -10909,6 +10915,14 @@ type ClusterAddonsConfigArgs struct {
 	// It can only be disabled if the nodes already do not have network policies enabled.
 	// Defaults to disabled; set `disabled = false` to enable.
 	NetworkPolicyConfig ClusterAddonsConfigNetworkPolicyConfigPtrInput `pulumi:"networkPolicyConfig"`
+	// The status of the Parallelstore CSI driver addon,
+	// which allows the usage of a Parallelstore instances as volumes.
+	// It is disabled by default for Standard clusters; set `enabled = true` to enable.
+	// It is enabled by default for Autopilot clusters with version 1.29 or later; set `enabled = true` to enable it explicitly.
+	// See [Enable the Parallelstore CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/parallelstore-csi-new-volume#enable) for more information.
+	//
+	// This example `addonsConfig` disables two addons:
+	ParallelstoreCsiDriverConfig ClusterAddonsConfigParallelstoreCsiDriverConfigPtrInput `pulumi:"parallelstoreCsiDriverConfig"`
 	// . The status of the [Ray Operator
 	// addon](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/concepts/overview).
 	// It is disabled by default. Set `enabled = true` to enable. The minimum
@@ -10921,8 +10935,6 @@ type ClusterAddonsConfigArgs struct {
 	// clusters on
 	// GKE](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/how-to/collect-view-logs-metrics)
 	// for more information.
-	//
-	// This example `addonsConfig` disables two addons:
 	RayOperatorConfigs ClusterAddonsConfigRayOperatorConfigArrayInput `pulumi:"rayOperatorConfigs"`
 	// .
 	// The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications.
@@ -11104,6 +11116,19 @@ func (o ClusterAddonsConfigOutput) NetworkPolicyConfig() ClusterAddonsConfigNetw
 	return o.ApplyT(func(v ClusterAddonsConfig) *ClusterAddonsConfigNetworkPolicyConfig { return v.NetworkPolicyConfig }).(ClusterAddonsConfigNetworkPolicyConfigPtrOutput)
 }
 
+// The status of the Parallelstore CSI driver addon,
+// which allows the usage of a Parallelstore instances as volumes.
+// It is disabled by default for Standard clusters; set `enabled = true` to enable.
+// It is enabled by default for Autopilot clusters with version 1.29 or later; set `enabled = true` to enable it explicitly.
+// See [Enable the Parallelstore CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/parallelstore-csi-new-volume#enable) for more information.
+//
+// This example `addonsConfig` disables two addons:
+func (o ClusterAddonsConfigOutput) ParallelstoreCsiDriverConfig() ClusterAddonsConfigParallelstoreCsiDriverConfigPtrOutput {
+	return o.ApplyT(func(v ClusterAddonsConfig) *ClusterAddonsConfigParallelstoreCsiDriverConfig {
+		return v.ParallelstoreCsiDriverConfig
+	}).(ClusterAddonsConfigParallelstoreCsiDriverConfigPtrOutput)
+}
+
 // . The status of the [Ray Operator
 // addon](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/concepts/overview).
 // It is disabled by default. Set `enabled = true` to enable. The minimum
@@ -11116,8 +11141,6 @@ func (o ClusterAddonsConfigOutput) NetworkPolicyConfig() ClusterAddonsConfigNetw
 // clusters on
 // GKE](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/how-to/collect-view-logs-metrics)
 // for more information.
-//
-// This example `addonsConfig` disables two addons:
 func (o ClusterAddonsConfigOutput) RayOperatorConfigs() ClusterAddonsConfigRayOperatorConfigArrayOutput {
 	return o.ApplyT(func(v ClusterAddonsConfig) []ClusterAddonsConfigRayOperatorConfig { return v.RayOperatorConfigs }).(ClusterAddonsConfigRayOperatorConfigArrayOutput)
 }
@@ -11302,6 +11325,22 @@ func (o ClusterAddonsConfigPtrOutput) NetworkPolicyConfig() ClusterAddonsConfigN
 	}).(ClusterAddonsConfigNetworkPolicyConfigPtrOutput)
 }
 
+// The status of the Parallelstore CSI driver addon,
+// which allows the usage of a Parallelstore instances as volumes.
+// It is disabled by default for Standard clusters; set `enabled = true` to enable.
+// It is enabled by default for Autopilot clusters with version 1.29 or later; set `enabled = true` to enable it explicitly.
+// See [Enable the Parallelstore CSI driver](https://cloud.google.com/kubernetes-engine/docs/how-to/persistent-volumes/parallelstore-csi-new-volume#enable) for more information.
+//
+// This example `addonsConfig` disables two addons:
+func (o ClusterAddonsConfigPtrOutput) ParallelstoreCsiDriverConfig() ClusterAddonsConfigParallelstoreCsiDriverConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterAddonsConfig) *ClusterAddonsConfigParallelstoreCsiDriverConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ParallelstoreCsiDriverConfig
+	}).(ClusterAddonsConfigParallelstoreCsiDriverConfigPtrOutput)
+}
+
 // . The status of the [Ray Operator
 // addon](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/concepts/overview).
 // It is disabled by default. Set `enabled = true` to enable. The minimum
@@ -11314,8 +11353,6 @@ func (o ClusterAddonsConfigPtrOutput) NetworkPolicyConfig() ClusterAddonsConfigN
 // clusters on
 // GKE](https://cloud.google.com/kubernetes-engine/docs/add-on/ray-on-gke/how-to/collect-view-logs-metrics)
 // for more information.
-//
-// This example `addonsConfig` disables two addons:
 func (o ClusterAddonsConfigPtrOutput) RayOperatorConfigs() ClusterAddonsConfigRayOperatorConfigArrayOutput {
 	return o.ApplyT(func(v *ClusterAddonsConfig) []ClusterAddonsConfigRayOperatorConfig {
 		if v == nil {
@@ -13020,6 +13057,139 @@ func (o ClusterAddonsConfigNetworkPolicyConfigPtrOutput) Disabled() pulumi.BoolP
 			return nil
 		}
 		return &v.Disabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ClusterAddonsConfigParallelstoreCsiDriverConfig struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+// ClusterAddonsConfigParallelstoreCsiDriverConfigInput is an input type that accepts ClusterAddonsConfigParallelstoreCsiDriverConfigArgs and ClusterAddonsConfigParallelstoreCsiDriverConfigOutput values.
+// You can construct a concrete instance of `ClusterAddonsConfigParallelstoreCsiDriverConfigInput` via:
+//
+//	ClusterAddonsConfigParallelstoreCsiDriverConfigArgs{...}
+type ClusterAddonsConfigParallelstoreCsiDriverConfigInput interface {
+	pulumi.Input
+
+	ToClusterAddonsConfigParallelstoreCsiDriverConfigOutput() ClusterAddonsConfigParallelstoreCsiDriverConfigOutput
+	ToClusterAddonsConfigParallelstoreCsiDriverConfigOutputWithContext(context.Context) ClusterAddonsConfigParallelstoreCsiDriverConfigOutput
+}
+
+type ClusterAddonsConfigParallelstoreCsiDriverConfigArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (ClusterAddonsConfigParallelstoreCsiDriverConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAddonsConfigParallelstoreCsiDriverConfig)(nil)).Elem()
+}
+
+func (i ClusterAddonsConfigParallelstoreCsiDriverConfigArgs) ToClusterAddonsConfigParallelstoreCsiDriverConfigOutput() ClusterAddonsConfigParallelstoreCsiDriverConfigOutput {
+	return i.ToClusterAddonsConfigParallelstoreCsiDriverConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterAddonsConfigParallelstoreCsiDriverConfigArgs) ToClusterAddonsConfigParallelstoreCsiDriverConfigOutputWithContext(ctx context.Context) ClusterAddonsConfigParallelstoreCsiDriverConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAddonsConfigParallelstoreCsiDriverConfigOutput)
+}
+
+func (i ClusterAddonsConfigParallelstoreCsiDriverConfigArgs) ToClusterAddonsConfigParallelstoreCsiDriverConfigPtrOutput() ClusterAddonsConfigParallelstoreCsiDriverConfigPtrOutput {
+	return i.ToClusterAddonsConfigParallelstoreCsiDriverConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterAddonsConfigParallelstoreCsiDriverConfigArgs) ToClusterAddonsConfigParallelstoreCsiDriverConfigPtrOutputWithContext(ctx context.Context) ClusterAddonsConfigParallelstoreCsiDriverConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAddonsConfigParallelstoreCsiDriverConfigOutput).ToClusterAddonsConfigParallelstoreCsiDriverConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterAddonsConfigParallelstoreCsiDriverConfigPtrInput is an input type that accepts ClusterAddonsConfigParallelstoreCsiDriverConfigArgs, ClusterAddonsConfigParallelstoreCsiDriverConfigPtr and ClusterAddonsConfigParallelstoreCsiDriverConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterAddonsConfigParallelstoreCsiDriverConfigPtrInput` via:
+//
+//	        ClusterAddonsConfigParallelstoreCsiDriverConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterAddonsConfigParallelstoreCsiDriverConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterAddonsConfigParallelstoreCsiDriverConfigPtrOutput() ClusterAddonsConfigParallelstoreCsiDriverConfigPtrOutput
+	ToClusterAddonsConfigParallelstoreCsiDriverConfigPtrOutputWithContext(context.Context) ClusterAddonsConfigParallelstoreCsiDriverConfigPtrOutput
+}
+
+type clusterAddonsConfigParallelstoreCsiDriverConfigPtrType ClusterAddonsConfigParallelstoreCsiDriverConfigArgs
+
+func ClusterAddonsConfigParallelstoreCsiDriverConfigPtr(v *ClusterAddonsConfigParallelstoreCsiDriverConfigArgs) ClusterAddonsConfigParallelstoreCsiDriverConfigPtrInput {
+	return (*clusterAddonsConfigParallelstoreCsiDriverConfigPtrType)(v)
+}
+
+func (*clusterAddonsConfigParallelstoreCsiDriverConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAddonsConfigParallelstoreCsiDriverConfig)(nil)).Elem()
+}
+
+func (i *clusterAddonsConfigParallelstoreCsiDriverConfigPtrType) ToClusterAddonsConfigParallelstoreCsiDriverConfigPtrOutput() ClusterAddonsConfigParallelstoreCsiDriverConfigPtrOutput {
+	return i.ToClusterAddonsConfigParallelstoreCsiDriverConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterAddonsConfigParallelstoreCsiDriverConfigPtrType) ToClusterAddonsConfigParallelstoreCsiDriverConfigPtrOutputWithContext(ctx context.Context) ClusterAddonsConfigParallelstoreCsiDriverConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterAddonsConfigParallelstoreCsiDriverConfigPtrOutput)
+}
+
+type ClusterAddonsConfigParallelstoreCsiDriverConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterAddonsConfigParallelstoreCsiDriverConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterAddonsConfigParallelstoreCsiDriverConfig)(nil)).Elem()
+}
+
+func (o ClusterAddonsConfigParallelstoreCsiDriverConfigOutput) ToClusterAddonsConfigParallelstoreCsiDriverConfigOutput() ClusterAddonsConfigParallelstoreCsiDriverConfigOutput {
+	return o
+}
+
+func (o ClusterAddonsConfigParallelstoreCsiDriverConfigOutput) ToClusterAddonsConfigParallelstoreCsiDriverConfigOutputWithContext(ctx context.Context) ClusterAddonsConfigParallelstoreCsiDriverConfigOutput {
+	return o
+}
+
+func (o ClusterAddonsConfigParallelstoreCsiDriverConfigOutput) ToClusterAddonsConfigParallelstoreCsiDriverConfigPtrOutput() ClusterAddonsConfigParallelstoreCsiDriverConfigPtrOutput {
+	return o.ToClusterAddonsConfigParallelstoreCsiDriverConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterAddonsConfigParallelstoreCsiDriverConfigOutput) ToClusterAddonsConfigParallelstoreCsiDriverConfigPtrOutputWithContext(ctx context.Context) ClusterAddonsConfigParallelstoreCsiDriverConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterAddonsConfigParallelstoreCsiDriverConfig) *ClusterAddonsConfigParallelstoreCsiDriverConfig {
+		return &v
+	}).(ClusterAddonsConfigParallelstoreCsiDriverConfigPtrOutput)
+}
+
+func (o ClusterAddonsConfigParallelstoreCsiDriverConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v ClusterAddonsConfigParallelstoreCsiDriverConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type ClusterAddonsConfigParallelstoreCsiDriverConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterAddonsConfigParallelstoreCsiDriverConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterAddonsConfigParallelstoreCsiDriverConfig)(nil)).Elem()
+}
+
+func (o ClusterAddonsConfigParallelstoreCsiDriverConfigPtrOutput) ToClusterAddonsConfigParallelstoreCsiDriverConfigPtrOutput() ClusterAddonsConfigParallelstoreCsiDriverConfigPtrOutput {
+	return o
+}
+
+func (o ClusterAddonsConfigParallelstoreCsiDriverConfigPtrOutput) ToClusterAddonsConfigParallelstoreCsiDriverConfigPtrOutputWithContext(ctx context.Context) ClusterAddonsConfigParallelstoreCsiDriverConfigPtrOutput {
+	return o
+}
+
+func (o ClusterAddonsConfigParallelstoreCsiDriverConfigPtrOutput) Elem() ClusterAddonsConfigParallelstoreCsiDriverConfigOutput {
+	return o.ApplyT(func(v *ClusterAddonsConfigParallelstoreCsiDriverConfig) ClusterAddonsConfigParallelstoreCsiDriverConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterAddonsConfigParallelstoreCsiDriverConfig
+		return ret
+	}).(ClusterAddonsConfigParallelstoreCsiDriverConfigOutput)
+}
+
+func (o ClusterAddonsConfigParallelstoreCsiDriverConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterAddonsConfigParallelstoreCsiDriverConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -15837,6 +16007,301 @@ func (o ClusterConfidentialNodesPtrOutput) Enabled() pulumi.BoolPtrOutput {
 		}
 		return &v.Enabled
 	}).(pulumi.BoolPtrOutput)
+}
+
+type ClusterControlPlaneEndpointsConfig struct {
+	// DNS endpoint configuration.
+	DnsEndpointConfig *ClusterControlPlaneEndpointsConfigDnsEndpointConfig `pulumi:"dnsEndpointConfig"`
+}
+
+// ClusterControlPlaneEndpointsConfigInput is an input type that accepts ClusterControlPlaneEndpointsConfigArgs and ClusterControlPlaneEndpointsConfigOutput values.
+// You can construct a concrete instance of `ClusterControlPlaneEndpointsConfigInput` via:
+//
+//	ClusterControlPlaneEndpointsConfigArgs{...}
+type ClusterControlPlaneEndpointsConfigInput interface {
+	pulumi.Input
+
+	ToClusterControlPlaneEndpointsConfigOutput() ClusterControlPlaneEndpointsConfigOutput
+	ToClusterControlPlaneEndpointsConfigOutputWithContext(context.Context) ClusterControlPlaneEndpointsConfigOutput
+}
+
+type ClusterControlPlaneEndpointsConfigArgs struct {
+	// DNS endpoint configuration.
+	DnsEndpointConfig ClusterControlPlaneEndpointsConfigDnsEndpointConfigPtrInput `pulumi:"dnsEndpointConfig"`
+}
+
+func (ClusterControlPlaneEndpointsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterControlPlaneEndpointsConfig)(nil)).Elem()
+}
+
+func (i ClusterControlPlaneEndpointsConfigArgs) ToClusterControlPlaneEndpointsConfigOutput() ClusterControlPlaneEndpointsConfigOutput {
+	return i.ToClusterControlPlaneEndpointsConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterControlPlaneEndpointsConfigArgs) ToClusterControlPlaneEndpointsConfigOutputWithContext(ctx context.Context) ClusterControlPlaneEndpointsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterControlPlaneEndpointsConfigOutput)
+}
+
+func (i ClusterControlPlaneEndpointsConfigArgs) ToClusterControlPlaneEndpointsConfigPtrOutput() ClusterControlPlaneEndpointsConfigPtrOutput {
+	return i.ToClusterControlPlaneEndpointsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterControlPlaneEndpointsConfigArgs) ToClusterControlPlaneEndpointsConfigPtrOutputWithContext(ctx context.Context) ClusterControlPlaneEndpointsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterControlPlaneEndpointsConfigOutput).ToClusterControlPlaneEndpointsConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterControlPlaneEndpointsConfigPtrInput is an input type that accepts ClusterControlPlaneEndpointsConfigArgs, ClusterControlPlaneEndpointsConfigPtr and ClusterControlPlaneEndpointsConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterControlPlaneEndpointsConfigPtrInput` via:
+//
+//	        ClusterControlPlaneEndpointsConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterControlPlaneEndpointsConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterControlPlaneEndpointsConfigPtrOutput() ClusterControlPlaneEndpointsConfigPtrOutput
+	ToClusterControlPlaneEndpointsConfigPtrOutputWithContext(context.Context) ClusterControlPlaneEndpointsConfigPtrOutput
+}
+
+type clusterControlPlaneEndpointsConfigPtrType ClusterControlPlaneEndpointsConfigArgs
+
+func ClusterControlPlaneEndpointsConfigPtr(v *ClusterControlPlaneEndpointsConfigArgs) ClusterControlPlaneEndpointsConfigPtrInput {
+	return (*clusterControlPlaneEndpointsConfigPtrType)(v)
+}
+
+func (*clusterControlPlaneEndpointsConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterControlPlaneEndpointsConfig)(nil)).Elem()
+}
+
+func (i *clusterControlPlaneEndpointsConfigPtrType) ToClusterControlPlaneEndpointsConfigPtrOutput() ClusterControlPlaneEndpointsConfigPtrOutput {
+	return i.ToClusterControlPlaneEndpointsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterControlPlaneEndpointsConfigPtrType) ToClusterControlPlaneEndpointsConfigPtrOutputWithContext(ctx context.Context) ClusterControlPlaneEndpointsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterControlPlaneEndpointsConfigPtrOutput)
+}
+
+type ClusterControlPlaneEndpointsConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterControlPlaneEndpointsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterControlPlaneEndpointsConfig)(nil)).Elem()
+}
+
+func (o ClusterControlPlaneEndpointsConfigOutput) ToClusterControlPlaneEndpointsConfigOutput() ClusterControlPlaneEndpointsConfigOutput {
+	return o
+}
+
+func (o ClusterControlPlaneEndpointsConfigOutput) ToClusterControlPlaneEndpointsConfigOutputWithContext(ctx context.Context) ClusterControlPlaneEndpointsConfigOutput {
+	return o
+}
+
+func (o ClusterControlPlaneEndpointsConfigOutput) ToClusterControlPlaneEndpointsConfigPtrOutput() ClusterControlPlaneEndpointsConfigPtrOutput {
+	return o.ToClusterControlPlaneEndpointsConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterControlPlaneEndpointsConfigOutput) ToClusterControlPlaneEndpointsConfigPtrOutputWithContext(ctx context.Context) ClusterControlPlaneEndpointsConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterControlPlaneEndpointsConfig) *ClusterControlPlaneEndpointsConfig {
+		return &v
+	}).(ClusterControlPlaneEndpointsConfigPtrOutput)
+}
+
+// DNS endpoint configuration.
+func (o ClusterControlPlaneEndpointsConfigOutput) DnsEndpointConfig() ClusterControlPlaneEndpointsConfigDnsEndpointConfigPtrOutput {
+	return o.ApplyT(func(v ClusterControlPlaneEndpointsConfig) *ClusterControlPlaneEndpointsConfigDnsEndpointConfig {
+		return v.DnsEndpointConfig
+	}).(ClusterControlPlaneEndpointsConfigDnsEndpointConfigPtrOutput)
+}
+
+type ClusterControlPlaneEndpointsConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterControlPlaneEndpointsConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterControlPlaneEndpointsConfig)(nil)).Elem()
+}
+
+func (o ClusterControlPlaneEndpointsConfigPtrOutput) ToClusterControlPlaneEndpointsConfigPtrOutput() ClusterControlPlaneEndpointsConfigPtrOutput {
+	return o
+}
+
+func (o ClusterControlPlaneEndpointsConfigPtrOutput) ToClusterControlPlaneEndpointsConfigPtrOutputWithContext(ctx context.Context) ClusterControlPlaneEndpointsConfigPtrOutput {
+	return o
+}
+
+func (o ClusterControlPlaneEndpointsConfigPtrOutput) Elem() ClusterControlPlaneEndpointsConfigOutput {
+	return o.ApplyT(func(v *ClusterControlPlaneEndpointsConfig) ClusterControlPlaneEndpointsConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterControlPlaneEndpointsConfig
+		return ret
+	}).(ClusterControlPlaneEndpointsConfigOutput)
+}
+
+// DNS endpoint configuration.
+func (o ClusterControlPlaneEndpointsConfigPtrOutput) DnsEndpointConfig() ClusterControlPlaneEndpointsConfigDnsEndpointConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterControlPlaneEndpointsConfig) *ClusterControlPlaneEndpointsConfigDnsEndpointConfig {
+		if v == nil {
+			return nil
+		}
+		return v.DnsEndpointConfig
+	}).(ClusterControlPlaneEndpointsConfigDnsEndpointConfigPtrOutput)
+}
+
+type ClusterControlPlaneEndpointsConfigDnsEndpointConfig struct {
+	// Controls whether user traffic is allowed over this endpoint. Note that GCP-managed services may still use the endpoint even if this is false.
+	AllowExternalTraffic *bool `pulumi:"allowExternalTraffic"`
+	// The cluster's DNS endpoint.
+	Endpoint *string `pulumi:"endpoint"`
+}
+
+// ClusterControlPlaneEndpointsConfigDnsEndpointConfigInput is an input type that accepts ClusterControlPlaneEndpointsConfigDnsEndpointConfigArgs and ClusterControlPlaneEndpointsConfigDnsEndpointConfigOutput values.
+// You can construct a concrete instance of `ClusterControlPlaneEndpointsConfigDnsEndpointConfigInput` via:
+//
+//	ClusterControlPlaneEndpointsConfigDnsEndpointConfigArgs{...}
+type ClusterControlPlaneEndpointsConfigDnsEndpointConfigInput interface {
+	pulumi.Input
+
+	ToClusterControlPlaneEndpointsConfigDnsEndpointConfigOutput() ClusterControlPlaneEndpointsConfigDnsEndpointConfigOutput
+	ToClusterControlPlaneEndpointsConfigDnsEndpointConfigOutputWithContext(context.Context) ClusterControlPlaneEndpointsConfigDnsEndpointConfigOutput
+}
+
+type ClusterControlPlaneEndpointsConfigDnsEndpointConfigArgs struct {
+	// Controls whether user traffic is allowed over this endpoint. Note that GCP-managed services may still use the endpoint even if this is false.
+	AllowExternalTraffic pulumi.BoolPtrInput `pulumi:"allowExternalTraffic"`
+	// The cluster's DNS endpoint.
+	Endpoint pulumi.StringPtrInput `pulumi:"endpoint"`
+}
+
+func (ClusterControlPlaneEndpointsConfigDnsEndpointConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterControlPlaneEndpointsConfigDnsEndpointConfig)(nil)).Elem()
+}
+
+func (i ClusterControlPlaneEndpointsConfigDnsEndpointConfigArgs) ToClusterControlPlaneEndpointsConfigDnsEndpointConfigOutput() ClusterControlPlaneEndpointsConfigDnsEndpointConfigOutput {
+	return i.ToClusterControlPlaneEndpointsConfigDnsEndpointConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterControlPlaneEndpointsConfigDnsEndpointConfigArgs) ToClusterControlPlaneEndpointsConfigDnsEndpointConfigOutputWithContext(ctx context.Context) ClusterControlPlaneEndpointsConfigDnsEndpointConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterControlPlaneEndpointsConfigDnsEndpointConfigOutput)
+}
+
+func (i ClusterControlPlaneEndpointsConfigDnsEndpointConfigArgs) ToClusterControlPlaneEndpointsConfigDnsEndpointConfigPtrOutput() ClusterControlPlaneEndpointsConfigDnsEndpointConfigPtrOutput {
+	return i.ToClusterControlPlaneEndpointsConfigDnsEndpointConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterControlPlaneEndpointsConfigDnsEndpointConfigArgs) ToClusterControlPlaneEndpointsConfigDnsEndpointConfigPtrOutputWithContext(ctx context.Context) ClusterControlPlaneEndpointsConfigDnsEndpointConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterControlPlaneEndpointsConfigDnsEndpointConfigOutput).ToClusterControlPlaneEndpointsConfigDnsEndpointConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterControlPlaneEndpointsConfigDnsEndpointConfigPtrInput is an input type that accepts ClusterControlPlaneEndpointsConfigDnsEndpointConfigArgs, ClusterControlPlaneEndpointsConfigDnsEndpointConfigPtr and ClusterControlPlaneEndpointsConfigDnsEndpointConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterControlPlaneEndpointsConfigDnsEndpointConfigPtrInput` via:
+//
+//	        ClusterControlPlaneEndpointsConfigDnsEndpointConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterControlPlaneEndpointsConfigDnsEndpointConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterControlPlaneEndpointsConfigDnsEndpointConfigPtrOutput() ClusterControlPlaneEndpointsConfigDnsEndpointConfigPtrOutput
+	ToClusterControlPlaneEndpointsConfigDnsEndpointConfigPtrOutputWithContext(context.Context) ClusterControlPlaneEndpointsConfigDnsEndpointConfigPtrOutput
+}
+
+type clusterControlPlaneEndpointsConfigDnsEndpointConfigPtrType ClusterControlPlaneEndpointsConfigDnsEndpointConfigArgs
+
+func ClusterControlPlaneEndpointsConfigDnsEndpointConfigPtr(v *ClusterControlPlaneEndpointsConfigDnsEndpointConfigArgs) ClusterControlPlaneEndpointsConfigDnsEndpointConfigPtrInput {
+	return (*clusterControlPlaneEndpointsConfigDnsEndpointConfigPtrType)(v)
+}
+
+func (*clusterControlPlaneEndpointsConfigDnsEndpointConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterControlPlaneEndpointsConfigDnsEndpointConfig)(nil)).Elem()
+}
+
+func (i *clusterControlPlaneEndpointsConfigDnsEndpointConfigPtrType) ToClusterControlPlaneEndpointsConfigDnsEndpointConfigPtrOutput() ClusterControlPlaneEndpointsConfigDnsEndpointConfigPtrOutput {
+	return i.ToClusterControlPlaneEndpointsConfigDnsEndpointConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterControlPlaneEndpointsConfigDnsEndpointConfigPtrType) ToClusterControlPlaneEndpointsConfigDnsEndpointConfigPtrOutputWithContext(ctx context.Context) ClusterControlPlaneEndpointsConfigDnsEndpointConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterControlPlaneEndpointsConfigDnsEndpointConfigPtrOutput)
+}
+
+type ClusterControlPlaneEndpointsConfigDnsEndpointConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterControlPlaneEndpointsConfigDnsEndpointConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterControlPlaneEndpointsConfigDnsEndpointConfig)(nil)).Elem()
+}
+
+func (o ClusterControlPlaneEndpointsConfigDnsEndpointConfigOutput) ToClusterControlPlaneEndpointsConfigDnsEndpointConfigOutput() ClusterControlPlaneEndpointsConfigDnsEndpointConfigOutput {
+	return o
+}
+
+func (o ClusterControlPlaneEndpointsConfigDnsEndpointConfigOutput) ToClusterControlPlaneEndpointsConfigDnsEndpointConfigOutputWithContext(ctx context.Context) ClusterControlPlaneEndpointsConfigDnsEndpointConfigOutput {
+	return o
+}
+
+func (o ClusterControlPlaneEndpointsConfigDnsEndpointConfigOutput) ToClusterControlPlaneEndpointsConfigDnsEndpointConfigPtrOutput() ClusterControlPlaneEndpointsConfigDnsEndpointConfigPtrOutput {
+	return o.ToClusterControlPlaneEndpointsConfigDnsEndpointConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterControlPlaneEndpointsConfigDnsEndpointConfigOutput) ToClusterControlPlaneEndpointsConfigDnsEndpointConfigPtrOutputWithContext(ctx context.Context) ClusterControlPlaneEndpointsConfigDnsEndpointConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterControlPlaneEndpointsConfigDnsEndpointConfig) *ClusterControlPlaneEndpointsConfigDnsEndpointConfig {
+		return &v
+	}).(ClusterControlPlaneEndpointsConfigDnsEndpointConfigPtrOutput)
+}
+
+// Controls whether user traffic is allowed over this endpoint. Note that GCP-managed services may still use the endpoint even if this is false.
+func (o ClusterControlPlaneEndpointsConfigDnsEndpointConfigOutput) AllowExternalTraffic() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterControlPlaneEndpointsConfigDnsEndpointConfig) *bool { return v.AllowExternalTraffic }).(pulumi.BoolPtrOutput)
+}
+
+// The cluster's DNS endpoint.
+func (o ClusterControlPlaneEndpointsConfigDnsEndpointConfigOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterControlPlaneEndpointsConfigDnsEndpointConfig) *string { return v.Endpoint }).(pulumi.StringPtrOutput)
+}
+
+type ClusterControlPlaneEndpointsConfigDnsEndpointConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterControlPlaneEndpointsConfigDnsEndpointConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterControlPlaneEndpointsConfigDnsEndpointConfig)(nil)).Elem()
+}
+
+func (o ClusterControlPlaneEndpointsConfigDnsEndpointConfigPtrOutput) ToClusterControlPlaneEndpointsConfigDnsEndpointConfigPtrOutput() ClusterControlPlaneEndpointsConfigDnsEndpointConfigPtrOutput {
+	return o
+}
+
+func (o ClusterControlPlaneEndpointsConfigDnsEndpointConfigPtrOutput) ToClusterControlPlaneEndpointsConfigDnsEndpointConfigPtrOutputWithContext(ctx context.Context) ClusterControlPlaneEndpointsConfigDnsEndpointConfigPtrOutput {
+	return o
+}
+
+func (o ClusterControlPlaneEndpointsConfigDnsEndpointConfigPtrOutput) Elem() ClusterControlPlaneEndpointsConfigDnsEndpointConfigOutput {
+	return o.ApplyT(func(v *ClusterControlPlaneEndpointsConfigDnsEndpointConfig) ClusterControlPlaneEndpointsConfigDnsEndpointConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterControlPlaneEndpointsConfigDnsEndpointConfig
+		return ret
+	}).(ClusterControlPlaneEndpointsConfigDnsEndpointConfigOutput)
+}
+
+// Controls whether user traffic is allowed over this endpoint. Note that GCP-managed services may still use the endpoint even if this is false.
+func (o ClusterControlPlaneEndpointsConfigDnsEndpointConfigPtrOutput) AllowExternalTraffic() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterControlPlaneEndpointsConfigDnsEndpointConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.AllowExternalTraffic
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The cluster's DNS endpoint.
+func (o ClusterControlPlaneEndpointsConfigDnsEndpointConfigPtrOutput) Endpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterControlPlaneEndpointsConfigDnsEndpointConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Endpoint
+	}).(pulumi.StringPtrOutput)
 }
 
 type ClusterCostManagementConfig struct {
@@ -19027,6 +19492,8 @@ type ClusterMasterAuthorizedNetworksConfig struct {
 	// Whether Kubernetes master is
 	// accessible via Google Compute Engine Public IPs.
 	GcpPublicCidrsAccessEnabled *bool `pulumi:"gcpPublicCidrsAccessEnabled"`
+	// Whether authorized networks is enforced on the private endpoint or not. Defaults to false.
+	PrivateEndpointEnforcementEnabled *bool `pulumi:"privateEndpointEnforcementEnabled"`
 }
 
 // ClusterMasterAuthorizedNetworksConfigInput is an input type that accepts ClusterMasterAuthorizedNetworksConfigArgs and ClusterMasterAuthorizedNetworksConfigOutput values.
@@ -19047,6 +19514,8 @@ type ClusterMasterAuthorizedNetworksConfigArgs struct {
 	// Whether Kubernetes master is
 	// accessible via Google Compute Engine Public IPs.
 	GcpPublicCidrsAccessEnabled pulumi.BoolPtrInput `pulumi:"gcpPublicCidrsAccessEnabled"`
+	// Whether authorized networks is enforced on the private endpoint or not. Defaults to false.
+	PrivateEndpointEnforcementEnabled pulumi.BoolPtrInput `pulumi:"privateEndpointEnforcementEnabled"`
 }
 
 func (ClusterMasterAuthorizedNetworksConfigArgs) ElementType() reflect.Type {
@@ -19140,6 +19609,11 @@ func (o ClusterMasterAuthorizedNetworksConfigOutput) GcpPublicCidrsAccessEnabled
 	return o.ApplyT(func(v ClusterMasterAuthorizedNetworksConfig) *bool { return v.GcpPublicCidrsAccessEnabled }).(pulumi.BoolPtrOutput)
 }
 
+// Whether authorized networks is enforced on the private endpoint or not. Defaults to false.
+func (o ClusterMasterAuthorizedNetworksConfigOutput) PrivateEndpointEnforcementEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterMasterAuthorizedNetworksConfig) *bool { return v.PrivateEndpointEnforcementEnabled }).(pulumi.BoolPtrOutput)
+}
+
 type ClusterMasterAuthorizedNetworksConfigPtrOutput struct{ *pulumi.OutputState }
 
 func (ClusterMasterAuthorizedNetworksConfigPtrOutput) ElementType() reflect.Type {
@@ -19183,6 +19657,16 @@ func (o ClusterMasterAuthorizedNetworksConfigPtrOutput) GcpPublicCidrsAccessEnab
 			return nil
 		}
 		return v.GcpPublicCidrsAccessEnabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether authorized networks is enforced on the private endpoint or not. Defaults to false.
+func (o ClusterMasterAuthorizedNetworksConfigPtrOutput) PrivateEndpointEnforcementEnabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterMasterAuthorizedNetworksConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PrivateEndpointEnforcementEnabled
 	}).(pulumi.BoolPtrOutput)
 }
 
@@ -36567,6 +37051,276 @@ func (o ClusterTpuConfigPtrOutput) UseServiceNetworking() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+type ClusterUserManagedKeysConfig struct {
+	// The Certificate Authority Service caPool to use for the aggreation CA in this cluster.
+	AggregationCa *string `pulumi:"aggregationCa"`
+	// The Certificate Authority Service caPool to use for the cluster CA in this cluster.
+	ClusterCa *string `pulumi:"clusterCa"`
+	// The Cloud KMS cryptoKey to use for Confidential Hyperdisk on the control plane nodes.
+	ControlPlaneDiskEncryptionKey *string `pulumi:"controlPlaneDiskEncryptionKey"`
+	// The Certificate Authority Service caPool to use for the etcd API CA in this cluster.
+	EtcdApiCa *string `pulumi:"etcdApiCa"`
+	// The Certificate Authority Service caPool to use for the etcd peer CA in this cluster.
+	EtcdPeerCa *string `pulumi:"etcdPeerCa"`
+	// Resource path of the Cloud KMS cryptoKey to use for encryption of internal etcd backups.
+	GkeopsEtcdBackupEncryptionKey *string `pulumi:"gkeopsEtcdBackupEncryptionKey"`
+	// The Cloud KMS cryptoKeyVersions to use for signing service account JWTs issued by this cluster.
+	ServiceAccountSigningKeys []string `pulumi:"serviceAccountSigningKeys"`
+	// The Cloud KMS cryptoKeyVersions to use for verifying service account JWTs issued by this cluster.
+	ServiceAccountVerificationKeys []string `pulumi:"serviceAccountVerificationKeys"`
+}
+
+// ClusterUserManagedKeysConfigInput is an input type that accepts ClusterUserManagedKeysConfigArgs and ClusterUserManagedKeysConfigOutput values.
+// You can construct a concrete instance of `ClusterUserManagedKeysConfigInput` via:
+//
+//	ClusterUserManagedKeysConfigArgs{...}
+type ClusterUserManagedKeysConfigInput interface {
+	pulumi.Input
+
+	ToClusterUserManagedKeysConfigOutput() ClusterUserManagedKeysConfigOutput
+	ToClusterUserManagedKeysConfigOutputWithContext(context.Context) ClusterUserManagedKeysConfigOutput
+}
+
+type ClusterUserManagedKeysConfigArgs struct {
+	// The Certificate Authority Service caPool to use for the aggreation CA in this cluster.
+	AggregationCa pulumi.StringPtrInput `pulumi:"aggregationCa"`
+	// The Certificate Authority Service caPool to use for the cluster CA in this cluster.
+	ClusterCa pulumi.StringPtrInput `pulumi:"clusterCa"`
+	// The Cloud KMS cryptoKey to use for Confidential Hyperdisk on the control plane nodes.
+	ControlPlaneDiskEncryptionKey pulumi.StringPtrInput `pulumi:"controlPlaneDiskEncryptionKey"`
+	// The Certificate Authority Service caPool to use for the etcd API CA in this cluster.
+	EtcdApiCa pulumi.StringPtrInput `pulumi:"etcdApiCa"`
+	// The Certificate Authority Service caPool to use for the etcd peer CA in this cluster.
+	EtcdPeerCa pulumi.StringPtrInput `pulumi:"etcdPeerCa"`
+	// Resource path of the Cloud KMS cryptoKey to use for encryption of internal etcd backups.
+	GkeopsEtcdBackupEncryptionKey pulumi.StringPtrInput `pulumi:"gkeopsEtcdBackupEncryptionKey"`
+	// The Cloud KMS cryptoKeyVersions to use for signing service account JWTs issued by this cluster.
+	ServiceAccountSigningKeys pulumi.StringArrayInput `pulumi:"serviceAccountSigningKeys"`
+	// The Cloud KMS cryptoKeyVersions to use for verifying service account JWTs issued by this cluster.
+	ServiceAccountVerificationKeys pulumi.StringArrayInput `pulumi:"serviceAccountVerificationKeys"`
+}
+
+func (ClusterUserManagedKeysConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterUserManagedKeysConfig)(nil)).Elem()
+}
+
+func (i ClusterUserManagedKeysConfigArgs) ToClusterUserManagedKeysConfigOutput() ClusterUserManagedKeysConfigOutput {
+	return i.ToClusterUserManagedKeysConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterUserManagedKeysConfigArgs) ToClusterUserManagedKeysConfigOutputWithContext(ctx context.Context) ClusterUserManagedKeysConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterUserManagedKeysConfigOutput)
+}
+
+func (i ClusterUserManagedKeysConfigArgs) ToClusterUserManagedKeysConfigPtrOutput() ClusterUserManagedKeysConfigPtrOutput {
+	return i.ToClusterUserManagedKeysConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterUserManagedKeysConfigArgs) ToClusterUserManagedKeysConfigPtrOutputWithContext(ctx context.Context) ClusterUserManagedKeysConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterUserManagedKeysConfigOutput).ToClusterUserManagedKeysConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterUserManagedKeysConfigPtrInput is an input type that accepts ClusterUserManagedKeysConfigArgs, ClusterUserManagedKeysConfigPtr and ClusterUserManagedKeysConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterUserManagedKeysConfigPtrInput` via:
+//
+//	        ClusterUserManagedKeysConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterUserManagedKeysConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterUserManagedKeysConfigPtrOutput() ClusterUserManagedKeysConfigPtrOutput
+	ToClusterUserManagedKeysConfigPtrOutputWithContext(context.Context) ClusterUserManagedKeysConfigPtrOutput
+}
+
+type clusterUserManagedKeysConfigPtrType ClusterUserManagedKeysConfigArgs
+
+func ClusterUserManagedKeysConfigPtr(v *ClusterUserManagedKeysConfigArgs) ClusterUserManagedKeysConfigPtrInput {
+	return (*clusterUserManagedKeysConfigPtrType)(v)
+}
+
+func (*clusterUserManagedKeysConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterUserManagedKeysConfig)(nil)).Elem()
+}
+
+func (i *clusterUserManagedKeysConfigPtrType) ToClusterUserManagedKeysConfigPtrOutput() ClusterUserManagedKeysConfigPtrOutput {
+	return i.ToClusterUserManagedKeysConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterUserManagedKeysConfigPtrType) ToClusterUserManagedKeysConfigPtrOutputWithContext(ctx context.Context) ClusterUserManagedKeysConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterUserManagedKeysConfigPtrOutput)
+}
+
+type ClusterUserManagedKeysConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterUserManagedKeysConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterUserManagedKeysConfig)(nil)).Elem()
+}
+
+func (o ClusterUserManagedKeysConfigOutput) ToClusterUserManagedKeysConfigOutput() ClusterUserManagedKeysConfigOutput {
+	return o
+}
+
+func (o ClusterUserManagedKeysConfigOutput) ToClusterUserManagedKeysConfigOutputWithContext(ctx context.Context) ClusterUserManagedKeysConfigOutput {
+	return o
+}
+
+func (o ClusterUserManagedKeysConfigOutput) ToClusterUserManagedKeysConfigPtrOutput() ClusterUserManagedKeysConfigPtrOutput {
+	return o.ToClusterUserManagedKeysConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterUserManagedKeysConfigOutput) ToClusterUserManagedKeysConfigPtrOutputWithContext(ctx context.Context) ClusterUserManagedKeysConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterUserManagedKeysConfig) *ClusterUserManagedKeysConfig {
+		return &v
+	}).(ClusterUserManagedKeysConfigPtrOutput)
+}
+
+// The Certificate Authority Service caPool to use for the aggreation CA in this cluster.
+func (o ClusterUserManagedKeysConfigOutput) AggregationCa() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterUserManagedKeysConfig) *string { return v.AggregationCa }).(pulumi.StringPtrOutput)
+}
+
+// The Certificate Authority Service caPool to use for the cluster CA in this cluster.
+func (o ClusterUserManagedKeysConfigOutput) ClusterCa() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterUserManagedKeysConfig) *string { return v.ClusterCa }).(pulumi.StringPtrOutput)
+}
+
+// The Cloud KMS cryptoKey to use for Confidential Hyperdisk on the control plane nodes.
+func (o ClusterUserManagedKeysConfigOutput) ControlPlaneDiskEncryptionKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterUserManagedKeysConfig) *string { return v.ControlPlaneDiskEncryptionKey }).(pulumi.StringPtrOutput)
+}
+
+// The Certificate Authority Service caPool to use for the etcd API CA in this cluster.
+func (o ClusterUserManagedKeysConfigOutput) EtcdApiCa() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterUserManagedKeysConfig) *string { return v.EtcdApiCa }).(pulumi.StringPtrOutput)
+}
+
+// The Certificate Authority Service caPool to use for the etcd peer CA in this cluster.
+func (o ClusterUserManagedKeysConfigOutput) EtcdPeerCa() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterUserManagedKeysConfig) *string { return v.EtcdPeerCa }).(pulumi.StringPtrOutput)
+}
+
+// Resource path of the Cloud KMS cryptoKey to use for encryption of internal etcd backups.
+func (o ClusterUserManagedKeysConfigOutput) GkeopsEtcdBackupEncryptionKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterUserManagedKeysConfig) *string { return v.GkeopsEtcdBackupEncryptionKey }).(pulumi.StringPtrOutput)
+}
+
+// The Cloud KMS cryptoKeyVersions to use for signing service account JWTs issued by this cluster.
+func (o ClusterUserManagedKeysConfigOutput) ServiceAccountSigningKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterUserManagedKeysConfig) []string { return v.ServiceAccountSigningKeys }).(pulumi.StringArrayOutput)
+}
+
+// The Cloud KMS cryptoKeyVersions to use for verifying service account JWTs issued by this cluster.
+func (o ClusterUserManagedKeysConfigOutput) ServiceAccountVerificationKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ClusterUserManagedKeysConfig) []string { return v.ServiceAccountVerificationKeys }).(pulumi.StringArrayOutput)
+}
+
+type ClusterUserManagedKeysConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterUserManagedKeysConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterUserManagedKeysConfig)(nil)).Elem()
+}
+
+func (o ClusterUserManagedKeysConfigPtrOutput) ToClusterUserManagedKeysConfigPtrOutput() ClusterUserManagedKeysConfigPtrOutput {
+	return o
+}
+
+func (o ClusterUserManagedKeysConfigPtrOutput) ToClusterUserManagedKeysConfigPtrOutputWithContext(ctx context.Context) ClusterUserManagedKeysConfigPtrOutput {
+	return o
+}
+
+func (o ClusterUserManagedKeysConfigPtrOutput) Elem() ClusterUserManagedKeysConfigOutput {
+	return o.ApplyT(func(v *ClusterUserManagedKeysConfig) ClusterUserManagedKeysConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterUserManagedKeysConfig
+		return ret
+	}).(ClusterUserManagedKeysConfigOutput)
+}
+
+// The Certificate Authority Service caPool to use for the aggreation CA in this cluster.
+func (o ClusterUserManagedKeysConfigPtrOutput) AggregationCa() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterUserManagedKeysConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AggregationCa
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Certificate Authority Service caPool to use for the cluster CA in this cluster.
+func (o ClusterUserManagedKeysConfigPtrOutput) ClusterCa() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterUserManagedKeysConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterCa
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Cloud KMS cryptoKey to use for Confidential Hyperdisk on the control plane nodes.
+func (o ClusterUserManagedKeysConfigPtrOutput) ControlPlaneDiskEncryptionKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterUserManagedKeysConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ControlPlaneDiskEncryptionKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Certificate Authority Service caPool to use for the etcd API CA in this cluster.
+func (o ClusterUserManagedKeysConfigPtrOutput) EtcdApiCa() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterUserManagedKeysConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EtcdApiCa
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Certificate Authority Service caPool to use for the etcd peer CA in this cluster.
+func (o ClusterUserManagedKeysConfigPtrOutput) EtcdPeerCa() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterUserManagedKeysConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EtcdPeerCa
+	}).(pulumi.StringPtrOutput)
+}
+
+// Resource path of the Cloud KMS cryptoKey to use for encryption of internal etcd backups.
+func (o ClusterUserManagedKeysConfigPtrOutput) GkeopsEtcdBackupEncryptionKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterUserManagedKeysConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GkeopsEtcdBackupEncryptionKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Cloud KMS cryptoKeyVersions to use for signing service account JWTs issued by this cluster.
+func (o ClusterUserManagedKeysConfigPtrOutput) ServiceAccountSigningKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ClusterUserManagedKeysConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccountSigningKeys
+	}).(pulumi.StringArrayOutput)
+}
+
+// The Cloud KMS cryptoKeyVersions to use for verifying service account JWTs issued by this cluster.
+func (o ClusterUserManagedKeysConfigPtrOutput) ServiceAccountVerificationKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *ClusterUserManagedKeysConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccountVerificationKeys
+	}).(pulumi.StringArrayOutput)
+}
+
 type ClusterVerticalPodAutoscaling struct {
 	// Enables vertical pod autoscaling
 	Enabled bool `pulumi:"enabled"`
@@ -43909,6 +44663,8 @@ type GetClusterAddonsConfig struct {
 	KalmConfigs []GetClusterAddonsConfigKalmConfig `pulumi:"kalmConfigs"`
 	// Whether we should enable the network policy addon for the master. This must be enabled in order to enable network policy for the nodes. To enable this, you must also define a networkPolicy block, otherwise nothing will happen. It can only be disabled if the nodes already do not have network policies enabled. Defaults to disabled; set disabled = false to enable.
 	NetworkPolicyConfigs []GetClusterAddonsConfigNetworkPolicyConfig `pulumi:"networkPolicyConfigs"`
+	// The status of the Parallelstore CSI driver addon, which allows the usage of Parallelstore instances as volumes. Defaults to disabled; set enabled = true to enable.
+	ParallelstoreCsiDriverConfigs []GetClusterAddonsConfigParallelstoreCsiDriverConfig `pulumi:"parallelstoreCsiDriverConfigs"`
 	// The status of the Ray Operator addon, which enabled management of Ray AI/ML jobs on GKE. Defaults to disabled; set enabled = true to enable.
 	RayOperatorConfigs []GetClusterAddonsConfigRayOperatorConfig `pulumi:"rayOperatorConfigs"`
 	// The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications. Defaults to disabled; set enabled = true to enable.
@@ -43951,6 +44707,8 @@ type GetClusterAddonsConfigArgs struct {
 	KalmConfigs GetClusterAddonsConfigKalmConfigArrayInput `pulumi:"kalmConfigs"`
 	// Whether we should enable the network policy addon for the master. This must be enabled in order to enable network policy for the nodes. To enable this, you must also define a networkPolicy block, otherwise nothing will happen. It can only be disabled if the nodes already do not have network policies enabled. Defaults to disabled; set disabled = false to enable.
 	NetworkPolicyConfigs GetClusterAddonsConfigNetworkPolicyConfigArrayInput `pulumi:"networkPolicyConfigs"`
+	// The status of the Parallelstore CSI driver addon, which allows the usage of Parallelstore instances as volumes. Defaults to disabled; set enabled = true to enable.
+	ParallelstoreCsiDriverConfigs GetClusterAddonsConfigParallelstoreCsiDriverConfigArrayInput `pulumi:"parallelstoreCsiDriverConfigs"`
 	// The status of the Ray Operator addon, which enabled management of Ray AI/ML jobs on GKE. Defaults to disabled; set enabled = true to enable.
 	RayOperatorConfigs GetClusterAddonsConfigRayOperatorConfigArrayInput `pulumi:"rayOperatorConfigs"`
 	// The status of the Stateful HA addon, which provides automatic configurable failover for stateful applications. Defaults to disabled; set enabled = true to enable.
@@ -44080,6 +44838,13 @@ func (o GetClusterAddonsConfigOutput) NetworkPolicyConfigs() GetClusterAddonsCon
 	return o.ApplyT(func(v GetClusterAddonsConfig) []GetClusterAddonsConfigNetworkPolicyConfig {
 		return v.NetworkPolicyConfigs
 	}).(GetClusterAddonsConfigNetworkPolicyConfigArrayOutput)
+}
+
+// The status of the Parallelstore CSI driver addon, which allows the usage of Parallelstore instances as volumes. Defaults to disabled; set enabled = true to enable.
+func (o GetClusterAddonsConfigOutput) ParallelstoreCsiDriverConfigs() GetClusterAddonsConfigParallelstoreCsiDriverConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterAddonsConfig) []GetClusterAddonsConfigParallelstoreCsiDriverConfig {
+		return v.ParallelstoreCsiDriverConfigs
+	}).(GetClusterAddonsConfigParallelstoreCsiDriverConfigArrayOutput)
 }
 
 // The status of the Ray Operator addon, which enabled management of Ray AI/ML jobs on GKE. Defaults to disabled; set enabled = true to enable.
@@ -45256,6 +46021,100 @@ func (o GetClusterAddonsConfigNetworkPolicyConfigArrayOutput) Index(i pulumi.Int
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterAddonsConfigNetworkPolicyConfig {
 		return vs[0].([]GetClusterAddonsConfigNetworkPolicyConfig)[vs[1].(int)]
 	}).(GetClusterAddonsConfigNetworkPolicyConfigOutput)
+}
+
+type GetClusterAddonsConfigParallelstoreCsiDriverConfig struct {
+	Enabled bool `pulumi:"enabled"`
+}
+
+// GetClusterAddonsConfigParallelstoreCsiDriverConfigInput is an input type that accepts GetClusterAddonsConfigParallelstoreCsiDriverConfigArgs and GetClusterAddonsConfigParallelstoreCsiDriverConfigOutput values.
+// You can construct a concrete instance of `GetClusterAddonsConfigParallelstoreCsiDriverConfigInput` via:
+//
+//	GetClusterAddonsConfigParallelstoreCsiDriverConfigArgs{...}
+type GetClusterAddonsConfigParallelstoreCsiDriverConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterAddonsConfigParallelstoreCsiDriverConfigOutput() GetClusterAddonsConfigParallelstoreCsiDriverConfigOutput
+	ToGetClusterAddonsConfigParallelstoreCsiDriverConfigOutputWithContext(context.Context) GetClusterAddonsConfigParallelstoreCsiDriverConfigOutput
+}
+
+type GetClusterAddonsConfigParallelstoreCsiDriverConfigArgs struct {
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (GetClusterAddonsConfigParallelstoreCsiDriverConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterAddonsConfigParallelstoreCsiDriverConfig)(nil)).Elem()
+}
+
+func (i GetClusterAddonsConfigParallelstoreCsiDriverConfigArgs) ToGetClusterAddonsConfigParallelstoreCsiDriverConfigOutput() GetClusterAddonsConfigParallelstoreCsiDriverConfigOutput {
+	return i.ToGetClusterAddonsConfigParallelstoreCsiDriverConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterAddonsConfigParallelstoreCsiDriverConfigArgs) ToGetClusterAddonsConfigParallelstoreCsiDriverConfigOutputWithContext(ctx context.Context) GetClusterAddonsConfigParallelstoreCsiDriverConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAddonsConfigParallelstoreCsiDriverConfigOutput)
+}
+
+// GetClusterAddonsConfigParallelstoreCsiDriverConfigArrayInput is an input type that accepts GetClusterAddonsConfigParallelstoreCsiDriverConfigArray and GetClusterAddonsConfigParallelstoreCsiDriverConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterAddonsConfigParallelstoreCsiDriverConfigArrayInput` via:
+//
+//	GetClusterAddonsConfigParallelstoreCsiDriverConfigArray{ GetClusterAddonsConfigParallelstoreCsiDriverConfigArgs{...} }
+type GetClusterAddonsConfigParallelstoreCsiDriverConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterAddonsConfigParallelstoreCsiDriverConfigArrayOutput() GetClusterAddonsConfigParallelstoreCsiDriverConfigArrayOutput
+	ToGetClusterAddonsConfigParallelstoreCsiDriverConfigArrayOutputWithContext(context.Context) GetClusterAddonsConfigParallelstoreCsiDriverConfigArrayOutput
+}
+
+type GetClusterAddonsConfigParallelstoreCsiDriverConfigArray []GetClusterAddonsConfigParallelstoreCsiDriverConfigInput
+
+func (GetClusterAddonsConfigParallelstoreCsiDriverConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterAddonsConfigParallelstoreCsiDriverConfig)(nil)).Elem()
+}
+
+func (i GetClusterAddonsConfigParallelstoreCsiDriverConfigArray) ToGetClusterAddonsConfigParallelstoreCsiDriverConfigArrayOutput() GetClusterAddonsConfigParallelstoreCsiDriverConfigArrayOutput {
+	return i.ToGetClusterAddonsConfigParallelstoreCsiDriverConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterAddonsConfigParallelstoreCsiDriverConfigArray) ToGetClusterAddonsConfigParallelstoreCsiDriverConfigArrayOutputWithContext(ctx context.Context) GetClusterAddonsConfigParallelstoreCsiDriverConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterAddonsConfigParallelstoreCsiDriverConfigArrayOutput)
+}
+
+type GetClusterAddonsConfigParallelstoreCsiDriverConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterAddonsConfigParallelstoreCsiDriverConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterAddonsConfigParallelstoreCsiDriverConfig)(nil)).Elem()
+}
+
+func (o GetClusterAddonsConfigParallelstoreCsiDriverConfigOutput) ToGetClusterAddonsConfigParallelstoreCsiDriverConfigOutput() GetClusterAddonsConfigParallelstoreCsiDriverConfigOutput {
+	return o
+}
+
+func (o GetClusterAddonsConfigParallelstoreCsiDriverConfigOutput) ToGetClusterAddonsConfigParallelstoreCsiDriverConfigOutputWithContext(ctx context.Context) GetClusterAddonsConfigParallelstoreCsiDriverConfigOutput {
+	return o
+}
+
+func (o GetClusterAddonsConfigParallelstoreCsiDriverConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterAddonsConfigParallelstoreCsiDriverConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type GetClusterAddonsConfigParallelstoreCsiDriverConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterAddonsConfigParallelstoreCsiDriverConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterAddonsConfigParallelstoreCsiDriverConfig)(nil)).Elem()
+}
+
+func (o GetClusterAddonsConfigParallelstoreCsiDriverConfigArrayOutput) ToGetClusterAddonsConfigParallelstoreCsiDriverConfigArrayOutput() GetClusterAddonsConfigParallelstoreCsiDriverConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterAddonsConfigParallelstoreCsiDriverConfigArrayOutput) ToGetClusterAddonsConfigParallelstoreCsiDriverConfigArrayOutputWithContext(ctx context.Context) GetClusterAddonsConfigParallelstoreCsiDriverConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterAddonsConfigParallelstoreCsiDriverConfigArrayOutput) Index(i pulumi.IntInput) GetClusterAddonsConfigParallelstoreCsiDriverConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterAddonsConfigParallelstoreCsiDriverConfig {
+		return vs[0].([]GetClusterAddonsConfigParallelstoreCsiDriverConfig)[vs[1].(int)]
+	}).(GetClusterAddonsConfigParallelstoreCsiDriverConfigOutput)
 }
 
 type GetClusterAddonsConfigRayOperatorConfig struct {
@@ -47193,6 +48052,211 @@ func (o GetClusterConfidentialNodeArrayOutput) Index(i pulumi.IntInput) GetClust
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterConfidentialNode {
 		return vs[0].([]GetClusterConfidentialNode)[vs[1].(int)]
 	}).(GetClusterConfidentialNodeOutput)
+}
+
+type GetClusterControlPlaneEndpointsConfig struct {
+	// DNS endpoint configuration.
+	DnsEndpointConfigs []GetClusterControlPlaneEndpointsConfigDnsEndpointConfig `pulumi:"dnsEndpointConfigs"`
+}
+
+// GetClusterControlPlaneEndpointsConfigInput is an input type that accepts GetClusterControlPlaneEndpointsConfigArgs and GetClusterControlPlaneEndpointsConfigOutput values.
+// You can construct a concrete instance of `GetClusterControlPlaneEndpointsConfigInput` via:
+//
+//	GetClusterControlPlaneEndpointsConfigArgs{...}
+type GetClusterControlPlaneEndpointsConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterControlPlaneEndpointsConfigOutput() GetClusterControlPlaneEndpointsConfigOutput
+	ToGetClusterControlPlaneEndpointsConfigOutputWithContext(context.Context) GetClusterControlPlaneEndpointsConfigOutput
+}
+
+type GetClusterControlPlaneEndpointsConfigArgs struct {
+	// DNS endpoint configuration.
+	DnsEndpointConfigs GetClusterControlPlaneEndpointsConfigDnsEndpointConfigArrayInput `pulumi:"dnsEndpointConfigs"`
+}
+
+func (GetClusterControlPlaneEndpointsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterControlPlaneEndpointsConfig)(nil)).Elem()
+}
+
+func (i GetClusterControlPlaneEndpointsConfigArgs) ToGetClusterControlPlaneEndpointsConfigOutput() GetClusterControlPlaneEndpointsConfigOutput {
+	return i.ToGetClusterControlPlaneEndpointsConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterControlPlaneEndpointsConfigArgs) ToGetClusterControlPlaneEndpointsConfigOutputWithContext(ctx context.Context) GetClusterControlPlaneEndpointsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterControlPlaneEndpointsConfigOutput)
+}
+
+// GetClusterControlPlaneEndpointsConfigArrayInput is an input type that accepts GetClusterControlPlaneEndpointsConfigArray and GetClusterControlPlaneEndpointsConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterControlPlaneEndpointsConfigArrayInput` via:
+//
+//	GetClusterControlPlaneEndpointsConfigArray{ GetClusterControlPlaneEndpointsConfigArgs{...} }
+type GetClusterControlPlaneEndpointsConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterControlPlaneEndpointsConfigArrayOutput() GetClusterControlPlaneEndpointsConfigArrayOutput
+	ToGetClusterControlPlaneEndpointsConfigArrayOutputWithContext(context.Context) GetClusterControlPlaneEndpointsConfigArrayOutput
+}
+
+type GetClusterControlPlaneEndpointsConfigArray []GetClusterControlPlaneEndpointsConfigInput
+
+func (GetClusterControlPlaneEndpointsConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterControlPlaneEndpointsConfig)(nil)).Elem()
+}
+
+func (i GetClusterControlPlaneEndpointsConfigArray) ToGetClusterControlPlaneEndpointsConfigArrayOutput() GetClusterControlPlaneEndpointsConfigArrayOutput {
+	return i.ToGetClusterControlPlaneEndpointsConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterControlPlaneEndpointsConfigArray) ToGetClusterControlPlaneEndpointsConfigArrayOutputWithContext(ctx context.Context) GetClusterControlPlaneEndpointsConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterControlPlaneEndpointsConfigArrayOutput)
+}
+
+type GetClusterControlPlaneEndpointsConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterControlPlaneEndpointsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterControlPlaneEndpointsConfig)(nil)).Elem()
+}
+
+func (o GetClusterControlPlaneEndpointsConfigOutput) ToGetClusterControlPlaneEndpointsConfigOutput() GetClusterControlPlaneEndpointsConfigOutput {
+	return o
+}
+
+func (o GetClusterControlPlaneEndpointsConfigOutput) ToGetClusterControlPlaneEndpointsConfigOutputWithContext(ctx context.Context) GetClusterControlPlaneEndpointsConfigOutput {
+	return o
+}
+
+// DNS endpoint configuration.
+func (o GetClusterControlPlaneEndpointsConfigOutput) DnsEndpointConfigs() GetClusterControlPlaneEndpointsConfigDnsEndpointConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterControlPlaneEndpointsConfig) []GetClusterControlPlaneEndpointsConfigDnsEndpointConfig {
+		return v.DnsEndpointConfigs
+	}).(GetClusterControlPlaneEndpointsConfigDnsEndpointConfigArrayOutput)
+}
+
+type GetClusterControlPlaneEndpointsConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterControlPlaneEndpointsConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterControlPlaneEndpointsConfig)(nil)).Elem()
+}
+
+func (o GetClusterControlPlaneEndpointsConfigArrayOutput) ToGetClusterControlPlaneEndpointsConfigArrayOutput() GetClusterControlPlaneEndpointsConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterControlPlaneEndpointsConfigArrayOutput) ToGetClusterControlPlaneEndpointsConfigArrayOutputWithContext(ctx context.Context) GetClusterControlPlaneEndpointsConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterControlPlaneEndpointsConfigArrayOutput) Index(i pulumi.IntInput) GetClusterControlPlaneEndpointsConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterControlPlaneEndpointsConfig {
+		return vs[0].([]GetClusterControlPlaneEndpointsConfig)[vs[1].(int)]
+	}).(GetClusterControlPlaneEndpointsConfigOutput)
+}
+
+type GetClusterControlPlaneEndpointsConfigDnsEndpointConfig struct {
+	// Controls whether user traffic is allowed over this endpoint. Note that GCP-managed services may still use the endpoint even if this is false.
+	AllowExternalTraffic bool `pulumi:"allowExternalTraffic"`
+	// The cluster's DNS endpoint.
+	Endpoint string `pulumi:"endpoint"`
+}
+
+// GetClusterControlPlaneEndpointsConfigDnsEndpointConfigInput is an input type that accepts GetClusterControlPlaneEndpointsConfigDnsEndpointConfigArgs and GetClusterControlPlaneEndpointsConfigDnsEndpointConfigOutput values.
+// You can construct a concrete instance of `GetClusterControlPlaneEndpointsConfigDnsEndpointConfigInput` via:
+//
+//	GetClusterControlPlaneEndpointsConfigDnsEndpointConfigArgs{...}
+type GetClusterControlPlaneEndpointsConfigDnsEndpointConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterControlPlaneEndpointsConfigDnsEndpointConfigOutput() GetClusterControlPlaneEndpointsConfigDnsEndpointConfigOutput
+	ToGetClusterControlPlaneEndpointsConfigDnsEndpointConfigOutputWithContext(context.Context) GetClusterControlPlaneEndpointsConfigDnsEndpointConfigOutput
+}
+
+type GetClusterControlPlaneEndpointsConfigDnsEndpointConfigArgs struct {
+	// Controls whether user traffic is allowed over this endpoint. Note that GCP-managed services may still use the endpoint even if this is false.
+	AllowExternalTraffic pulumi.BoolInput `pulumi:"allowExternalTraffic"`
+	// The cluster's DNS endpoint.
+	Endpoint pulumi.StringInput `pulumi:"endpoint"`
+}
+
+func (GetClusterControlPlaneEndpointsConfigDnsEndpointConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterControlPlaneEndpointsConfigDnsEndpointConfig)(nil)).Elem()
+}
+
+func (i GetClusterControlPlaneEndpointsConfigDnsEndpointConfigArgs) ToGetClusterControlPlaneEndpointsConfigDnsEndpointConfigOutput() GetClusterControlPlaneEndpointsConfigDnsEndpointConfigOutput {
+	return i.ToGetClusterControlPlaneEndpointsConfigDnsEndpointConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterControlPlaneEndpointsConfigDnsEndpointConfigArgs) ToGetClusterControlPlaneEndpointsConfigDnsEndpointConfigOutputWithContext(ctx context.Context) GetClusterControlPlaneEndpointsConfigDnsEndpointConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterControlPlaneEndpointsConfigDnsEndpointConfigOutput)
+}
+
+// GetClusterControlPlaneEndpointsConfigDnsEndpointConfigArrayInput is an input type that accepts GetClusterControlPlaneEndpointsConfigDnsEndpointConfigArray and GetClusterControlPlaneEndpointsConfigDnsEndpointConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterControlPlaneEndpointsConfigDnsEndpointConfigArrayInput` via:
+//
+//	GetClusterControlPlaneEndpointsConfigDnsEndpointConfigArray{ GetClusterControlPlaneEndpointsConfigDnsEndpointConfigArgs{...} }
+type GetClusterControlPlaneEndpointsConfigDnsEndpointConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterControlPlaneEndpointsConfigDnsEndpointConfigArrayOutput() GetClusterControlPlaneEndpointsConfigDnsEndpointConfigArrayOutput
+	ToGetClusterControlPlaneEndpointsConfigDnsEndpointConfigArrayOutputWithContext(context.Context) GetClusterControlPlaneEndpointsConfigDnsEndpointConfigArrayOutput
+}
+
+type GetClusterControlPlaneEndpointsConfigDnsEndpointConfigArray []GetClusterControlPlaneEndpointsConfigDnsEndpointConfigInput
+
+func (GetClusterControlPlaneEndpointsConfigDnsEndpointConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterControlPlaneEndpointsConfigDnsEndpointConfig)(nil)).Elem()
+}
+
+func (i GetClusterControlPlaneEndpointsConfigDnsEndpointConfigArray) ToGetClusterControlPlaneEndpointsConfigDnsEndpointConfigArrayOutput() GetClusterControlPlaneEndpointsConfigDnsEndpointConfigArrayOutput {
+	return i.ToGetClusterControlPlaneEndpointsConfigDnsEndpointConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterControlPlaneEndpointsConfigDnsEndpointConfigArray) ToGetClusterControlPlaneEndpointsConfigDnsEndpointConfigArrayOutputWithContext(ctx context.Context) GetClusterControlPlaneEndpointsConfigDnsEndpointConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterControlPlaneEndpointsConfigDnsEndpointConfigArrayOutput)
+}
+
+type GetClusterControlPlaneEndpointsConfigDnsEndpointConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterControlPlaneEndpointsConfigDnsEndpointConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterControlPlaneEndpointsConfigDnsEndpointConfig)(nil)).Elem()
+}
+
+func (o GetClusterControlPlaneEndpointsConfigDnsEndpointConfigOutput) ToGetClusterControlPlaneEndpointsConfigDnsEndpointConfigOutput() GetClusterControlPlaneEndpointsConfigDnsEndpointConfigOutput {
+	return o
+}
+
+func (o GetClusterControlPlaneEndpointsConfigDnsEndpointConfigOutput) ToGetClusterControlPlaneEndpointsConfigDnsEndpointConfigOutputWithContext(ctx context.Context) GetClusterControlPlaneEndpointsConfigDnsEndpointConfigOutput {
+	return o
+}
+
+// Controls whether user traffic is allowed over this endpoint. Note that GCP-managed services may still use the endpoint even if this is false.
+func (o GetClusterControlPlaneEndpointsConfigDnsEndpointConfigOutput) AllowExternalTraffic() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterControlPlaneEndpointsConfigDnsEndpointConfig) bool { return v.AllowExternalTraffic }).(pulumi.BoolOutput)
+}
+
+// The cluster's DNS endpoint.
+func (o GetClusterControlPlaneEndpointsConfigDnsEndpointConfigOutput) Endpoint() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterControlPlaneEndpointsConfigDnsEndpointConfig) string { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+type GetClusterControlPlaneEndpointsConfigDnsEndpointConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterControlPlaneEndpointsConfigDnsEndpointConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterControlPlaneEndpointsConfigDnsEndpointConfig)(nil)).Elem()
+}
+
+func (o GetClusterControlPlaneEndpointsConfigDnsEndpointConfigArrayOutput) ToGetClusterControlPlaneEndpointsConfigDnsEndpointConfigArrayOutput() GetClusterControlPlaneEndpointsConfigDnsEndpointConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterControlPlaneEndpointsConfigDnsEndpointConfigArrayOutput) ToGetClusterControlPlaneEndpointsConfigDnsEndpointConfigArrayOutputWithContext(ctx context.Context) GetClusterControlPlaneEndpointsConfigDnsEndpointConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterControlPlaneEndpointsConfigDnsEndpointConfigArrayOutput) Index(i pulumi.IntInput) GetClusterControlPlaneEndpointsConfigDnsEndpointConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterControlPlaneEndpointsConfigDnsEndpointConfig {
+		return vs[0].([]GetClusterControlPlaneEndpointsConfigDnsEndpointConfig)[vs[1].(int)]
+	}).(GetClusterControlPlaneEndpointsConfigDnsEndpointConfigOutput)
 }
 
 type GetClusterCostManagementConfig struct {
@@ -49258,6 +50322,8 @@ type GetClusterMasterAuthorizedNetworksConfig struct {
 	CidrBlocks []GetClusterMasterAuthorizedNetworksConfigCidrBlock `pulumi:"cidrBlocks"`
 	// Whether Kubernetes master is accessible via Google Compute Engine Public IPs.
 	GcpPublicCidrsAccessEnabled bool `pulumi:"gcpPublicCidrsAccessEnabled"`
+	// Whether authorized networks is enforced on the private endpoint or not. Defaults to false.
+	PrivateEndpointEnforcementEnabled bool `pulumi:"privateEndpointEnforcementEnabled"`
 }
 
 // GetClusterMasterAuthorizedNetworksConfigInput is an input type that accepts GetClusterMasterAuthorizedNetworksConfigArgs and GetClusterMasterAuthorizedNetworksConfigOutput values.
@@ -49276,6 +50342,8 @@ type GetClusterMasterAuthorizedNetworksConfigArgs struct {
 	CidrBlocks GetClusterMasterAuthorizedNetworksConfigCidrBlockArrayInput `pulumi:"cidrBlocks"`
 	// Whether Kubernetes master is accessible via Google Compute Engine Public IPs.
 	GcpPublicCidrsAccessEnabled pulumi.BoolInput `pulumi:"gcpPublicCidrsAccessEnabled"`
+	// Whether authorized networks is enforced on the private endpoint or not. Defaults to false.
+	PrivateEndpointEnforcementEnabled pulumi.BoolInput `pulumi:"privateEndpointEnforcementEnabled"`
 }
 
 func (GetClusterMasterAuthorizedNetworksConfigArgs) ElementType() reflect.Type {
@@ -49339,6 +50407,11 @@ func (o GetClusterMasterAuthorizedNetworksConfigOutput) CidrBlocks() GetClusterM
 // Whether Kubernetes master is accessible via Google Compute Engine Public IPs.
 func (o GetClusterMasterAuthorizedNetworksConfigOutput) GcpPublicCidrsAccessEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetClusterMasterAuthorizedNetworksConfig) bool { return v.GcpPublicCidrsAccessEnabled }).(pulumi.BoolOutput)
+}
+
+// Whether authorized networks is enforced on the private endpoint or not. Defaults to false.
+func (o GetClusterMasterAuthorizedNetworksConfigOutput) PrivateEndpointEnforcementEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetClusterMasterAuthorizedNetworksConfig) bool { return v.PrivateEndpointEnforcementEnabled }).(pulumi.BoolOutput)
 }
 
 type GetClusterMasterAuthorizedNetworksConfigArrayOutput struct{ *pulumi.OutputState }
@@ -61163,6 +62236,166 @@ func (o GetClusterTpuConfigArrayOutput) Index(i pulumi.IntInput) GetClusterTpuCo
 	}).(GetClusterTpuConfigOutput)
 }
 
+type GetClusterUserManagedKeysConfig struct {
+	// The Certificate Authority Service caPool to use for the aggreation CA in this cluster.
+	AggregationCa string `pulumi:"aggregationCa"`
+	// The Certificate Authority Service caPool to use for the cluster CA in this cluster.
+	ClusterCa string `pulumi:"clusterCa"`
+	// The Cloud KMS cryptoKey to use for Confidential Hyperdisk on the control plane nodes.
+	ControlPlaneDiskEncryptionKey string `pulumi:"controlPlaneDiskEncryptionKey"`
+	// The Certificate Authority Service caPool to use for the etcd API CA in this cluster.
+	EtcdApiCa string `pulumi:"etcdApiCa"`
+	// The Certificate Authority Service caPool to use for the etcd peer CA in this cluster.
+	EtcdPeerCa string `pulumi:"etcdPeerCa"`
+	// Resource path of the Cloud KMS cryptoKey to use for encryption of internal etcd backups.
+	GkeopsEtcdBackupEncryptionKey string `pulumi:"gkeopsEtcdBackupEncryptionKey"`
+	// The Cloud KMS cryptoKeyVersions to use for signing service account JWTs issued by this cluster.
+	ServiceAccountSigningKeys []string `pulumi:"serviceAccountSigningKeys"`
+	// The Cloud KMS cryptoKeyVersions to use for verifying service account JWTs issued by this cluster.
+	ServiceAccountVerificationKeys []string `pulumi:"serviceAccountVerificationKeys"`
+}
+
+// GetClusterUserManagedKeysConfigInput is an input type that accepts GetClusterUserManagedKeysConfigArgs and GetClusterUserManagedKeysConfigOutput values.
+// You can construct a concrete instance of `GetClusterUserManagedKeysConfigInput` via:
+//
+//	GetClusterUserManagedKeysConfigArgs{...}
+type GetClusterUserManagedKeysConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterUserManagedKeysConfigOutput() GetClusterUserManagedKeysConfigOutput
+	ToGetClusterUserManagedKeysConfigOutputWithContext(context.Context) GetClusterUserManagedKeysConfigOutput
+}
+
+type GetClusterUserManagedKeysConfigArgs struct {
+	// The Certificate Authority Service caPool to use for the aggreation CA in this cluster.
+	AggregationCa pulumi.StringInput `pulumi:"aggregationCa"`
+	// The Certificate Authority Service caPool to use for the cluster CA in this cluster.
+	ClusterCa pulumi.StringInput `pulumi:"clusterCa"`
+	// The Cloud KMS cryptoKey to use for Confidential Hyperdisk on the control plane nodes.
+	ControlPlaneDiskEncryptionKey pulumi.StringInput `pulumi:"controlPlaneDiskEncryptionKey"`
+	// The Certificate Authority Service caPool to use for the etcd API CA in this cluster.
+	EtcdApiCa pulumi.StringInput `pulumi:"etcdApiCa"`
+	// The Certificate Authority Service caPool to use for the etcd peer CA in this cluster.
+	EtcdPeerCa pulumi.StringInput `pulumi:"etcdPeerCa"`
+	// Resource path of the Cloud KMS cryptoKey to use for encryption of internal etcd backups.
+	GkeopsEtcdBackupEncryptionKey pulumi.StringInput `pulumi:"gkeopsEtcdBackupEncryptionKey"`
+	// The Cloud KMS cryptoKeyVersions to use for signing service account JWTs issued by this cluster.
+	ServiceAccountSigningKeys pulumi.StringArrayInput `pulumi:"serviceAccountSigningKeys"`
+	// The Cloud KMS cryptoKeyVersions to use for verifying service account JWTs issued by this cluster.
+	ServiceAccountVerificationKeys pulumi.StringArrayInput `pulumi:"serviceAccountVerificationKeys"`
+}
+
+func (GetClusterUserManagedKeysConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterUserManagedKeysConfig)(nil)).Elem()
+}
+
+func (i GetClusterUserManagedKeysConfigArgs) ToGetClusterUserManagedKeysConfigOutput() GetClusterUserManagedKeysConfigOutput {
+	return i.ToGetClusterUserManagedKeysConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterUserManagedKeysConfigArgs) ToGetClusterUserManagedKeysConfigOutputWithContext(ctx context.Context) GetClusterUserManagedKeysConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterUserManagedKeysConfigOutput)
+}
+
+// GetClusterUserManagedKeysConfigArrayInput is an input type that accepts GetClusterUserManagedKeysConfigArray and GetClusterUserManagedKeysConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterUserManagedKeysConfigArrayInput` via:
+//
+//	GetClusterUserManagedKeysConfigArray{ GetClusterUserManagedKeysConfigArgs{...} }
+type GetClusterUserManagedKeysConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterUserManagedKeysConfigArrayOutput() GetClusterUserManagedKeysConfigArrayOutput
+	ToGetClusterUserManagedKeysConfigArrayOutputWithContext(context.Context) GetClusterUserManagedKeysConfigArrayOutput
+}
+
+type GetClusterUserManagedKeysConfigArray []GetClusterUserManagedKeysConfigInput
+
+func (GetClusterUserManagedKeysConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterUserManagedKeysConfig)(nil)).Elem()
+}
+
+func (i GetClusterUserManagedKeysConfigArray) ToGetClusterUserManagedKeysConfigArrayOutput() GetClusterUserManagedKeysConfigArrayOutput {
+	return i.ToGetClusterUserManagedKeysConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterUserManagedKeysConfigArray) ToGetClusterUserManagedKeysConfigArrayOutputWithContext(ctx context.Context) GetClusterUserManagedKeysConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterUserManagedKeysConfigArrayOutput)
+}
+
+type GetClusterUserManagedKeysConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterUserManagedKeysConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterUserManagedKeysConfig)(nil)).Elem()
+}
+
+func (o GetClusterUserManagedKeysConfigOutput) ToGetClusterUserManagedKeysConfigOutput() GetClusterUserManagedKeysConfigOutput {
+	return o
+}
+
+func (o GetClusterUserManagedKeysConfigOutput) ToGetClusterUserManagedKeysConfigOutputWithContext(ctx context.Context) GetClusterUserManagedKeysConfigOutput {
+	return o
+}
+
+// The Certificate Authority Service caPool to use for the aggreation CA in this cluster.
+func (o GetClusterUserManagedKeysConfigOutput) AggregationCa() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterUserManagedKeysConfig) string { return v.AggregationCa }).(pulumi.StringOutput)
+}
+
+// The Certificate Authority Service caPool to use for the cluster CA in this cluster.
+func (o GetClusterUserManagedKeysConfigOutput) ClusterCa() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterUserManagedKeysConfig) string { return v.ClusterCa }).(pulumi.StringOutput)
+}
+
+// The Cloud KMS cryptoKey to use for Confidential Hyperdisk on the control plane nodes.
+func (o GetClusterUserManagedKeysConfigOutput) ControlPlaneDiskEncryptionKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterUserManagedKeysConfig) string { return v.ControlPlaneDiskEncryptionKey }).(pulumi.StringOutput)
+}
+
+// The Certificate Authority Service caPool to use for the etcd API CA in this cluster.
+func (o GetClusterUserManagedKeysConfigOutput) EtcdApiCa() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterUserManagedKeysConfig) string { return v.EtcdApiCa }).(pulumi.StringOutput)
+}
+
+// The Certificate Authority Service caPool to use for the etcd peer CA in this cluster.
+func (o GetClusterUserManagedKeysConfigOutput) EtcdPeerCa() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterUserManagedKeysConfig) string { return v.EtcdPeerCa }).(pulumi.StringOutput)
+}
+
+// Resource path of the Cloud KMS cryptoKey to use for encryption of internal etcd backups.
+func (o GetClusterUserManagedKeysConfigOutput) GkeopsEtcdBackupEncryptionKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterUserManagedKeysConfig) string { return v.GkeopsEtcdBackupEncryptionKey }).(pulumi.StringOutput)
+}
+
+// The Cloud KMS cryptoKeyVersions to use for signing service account JWTs issued by this cluster.
+func (o GetClusterUserManagedKeysConfigOutput) ServiceAccountSigningKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClusterUserManagedKeysConfig) []string { return v.ServiceAccountSigningKeys }).(pulumi.StringArrayOutput)
+}
+
+// The Cloud KMS cryptoKeyVersions to use for verifying service account JWTs issued by this cluster.
+func (o GetClusterUserManagedKeysConfigOutput) ServiceAccountVerificationKeys() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetClusterUserManagedKeysConfig) []string { return v.ServiceAccountVerificationKeys }).(pulumi.StringArrayOutput)
+}
+
+type GetClusterUserManagedKeysConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterUserManagedKeysConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterUserManagedKeysConfig)(nil)).Elem()
+}
+
+func (o GetClusterUserManagedKeysConfigArrayOutput) ToGetClusterUserManagedKeysConfigArrayOutput() GetClusterUserManagedKeysConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterUserManagedKeysConfigArrayOutput) ToGetClusterUserManagedKeysConfigArrayOutputWithContext(ctx context.Context) GetClusterUserManagedKeysConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterUserManagedKeysConfigArrayOutput) Index(i pulumi.IntInput) GetClusterUserManagedKeysConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterUserManagedKeysConfig {
+		return vs[0].([]GetClusterUserManagedKeysConfig)[vs[1].(int)]
+	}).(GetClusterUserManagedKeysConfigOutput)
+}
+
 type GetClusterVerticalPodAutoscaling struct {
 	// Enables vertical pod autoscaling.
 	Enabled bool `pulumi:"enabled"`
@@ -61619,6 +62852,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigKalmConfigPtrInput)(nil)).Elem(), ClusterAddonsConfigKalmConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigNetworkPolicyConfigInput)(nil)).Elem(), ClusterAddonsConfigNetworkPolicyConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigNetworkPolicyConfigPtrInput)(nil)).Elem(), ClusterAddonsConfigNetworkPolicyConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigParallelstoreCsiDriverConfigInput)(nil)).Elem(), ClusterAddonsConfigParallelstoreCsiDriverConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigParallelstoreCsiDriverConfigPtrInput)(nil)).Elem(), ClusterAddonsConfigParallelstoreCsiDriverConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigRayOperatorConfigInput)(nil)).Elem(), ClusterAddonsConfigRayOperatorConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigRayOperatorConfigArrayInput)(nil)).Elem(), ClusterAddonsConfigRayOperatorConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigInput)(nil)).Elem(), ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArgs{})
@@ -61653,6 +62888,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterTelemetryPtrInput)(nil)).Elem(), ClusterClusterTelemetryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterConfidentialNodesInput)(nil)).Elem(), ClusterConfidentialNodesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterConfidentialNodesPtrInput)(nil)).Elem(), ClusterConfidentialNodesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterControlPlaneEndpointsConfigInput)(nil)).Elem(), ClusterControlPlaneEndpointsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterControlPlaneEndpointsConfigPtrInput)(nil)).Elem(), ClusterControlPlaneEndpointsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterControlPlaneEndpointsConfigDnsEndpointConfigInput)(nil)).Elem(), ClusterControlPlaneEndpointsConfigDnsEndpointConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterControlPlaneEndpointsConfigDnsEndpointConfigPtrInput)(nil)).Elem(), ClusterControlPlaneEndpointsConfigDnsEndpointConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterCostManagementConfigInput)(nil)).Elem(), ClusterCostManagementConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterCostManagementConfigPtrInput)(nil)).Elem(), ClusterCostManagementConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterDatabaseEncryptionInput)(nil)).Elem(), ClusterDatabaseEncryptionArgs{})
@@ -61894,6 +63133,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterServiceExternalIpsConfigPtrInput)(nil)).Elem(), ClusterServiceExternalIpsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterTpuConfigInput)(nil)).Elem(), ClusterTpuConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterTpuConfigPtrInput)(nil)).Elem(), ClusterTpuConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterUserManagedKeysConfigInput)(nil)).Elem(), ClusterUserManagedKeysConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterUserManagedKeysConfigPtrInput)(nil)).Elem(), ClusterUserManagedKeysConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterVerticalPodAutoscalingInput)(nil)).Elem(), ClusterVerticalPodAutoscalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterVerticalPodAutoscalingPtrInput)(nil)).Elem(), ClusterVerticalPodAutoscalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterWorkloadAltsConfigInput)(nil)).Elem(), ClusterWorkloadAltsConfigArgs{})
@@ -62007,6 +63248,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigKalmConfigArrayInput)(nil)).Elem(), GetClusterAddonsConfigKalmConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigNetworkPolicyConfigInput)(nil)).Elem(), GetClusterAddonsConfigNetworkPolicyConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigNetworkPolicyConfigArrayInput)(nil)).Elem(), GetClusterAddonsConfigNetworkPolicyConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigParallelstoreCsiDriverConfigInput)(nil)).Elem(), GetClusterAddonsConfigParallelstoreCsiDriverConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigParallelstoreCsiDriverConfigArrayInput)(nil)).Elem(), GetClusterAddonsConfigParallelstoreCsiDriverConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigRayOperatorConfigInput)(nil)).Elem(), GetClusterAddonsConfigRayOperatorConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigRayOperatorConfigArrayInput)(nil)).Elem(), GetClusterAddonsConfigRayOperatorConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigInput)(nil)).Elem(), GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigArgs{})
@@ -62041,6 +63284,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterClusterTelemetryArrayInput)(nil)).Elem(), GetClusterClusterTelemetryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterConfidentialNodeInput)(nil)).Elem(), GetClusterConfidentialNodeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterConfidentialNodeArrayInput)(nil)).Elem(), GetClusterConfidentialNodeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterControlPlaneEndpointsConfigInput)(nil)).Elem(), GetClusterControlPlaneEndpointsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterControlPlaneEndpointsConfigArrayInput)(nil)).Elem(), GetClusterControlPlaneEndpointsConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterControlPlaneEndpointsConfigDnsEndpointConfigInput)(nil)).Elem(), GetClusterControlPlaneEndpointsConfigDnsEndpointConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterControlPlaneEndpointsConfigDnsEndpointConfigArrayInput)(nil)).Elem(), GetClusterControlPlaneEndpointsConfigDnsEndpointConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterCostManagementConfigInput)(nil)).Elem(), GetClusterCostManagementConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterCostManagementConfigArrayInput)(nil)).Elem(), GetClusterCostManagementConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterDatabaseEncryptionInput)(nil)).Elem(), GetClusterDatabaseEncryptionArgs{})
@@ -62285,6 +63532,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterServiceExternalIpsConfigArrayInput)(nil)).Elem(), GetClusterServiceExternalIpsConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterTpuConfigInput)(nil)).Elem(), GetClusterTpuConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterTpuConfigArrayInput)(nil)).Elem(), GetClusterTpuConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterUserManagedKeysConfigInput)(nil)).Elem(), GetClusterUserManagedKeysConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterUserManagedKeysConfigArrayInput)(nil)).Elem(), GetClusterUserManagedKeysConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterVerticalPodAutoscalingInput)(nil)).Elem(), GetClusterVerticalPodAutoscalingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterVerticalPodAutoscalingArrayInput)(nil)).Elem(), GetClusterVerticalPodAutoscalingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterWorkloadAltsConfigInput)(nil)).Elem(), GetClusterWorkloadAltsConfigArgs{})
@@ -62455,6 +63704,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterAddonsConfigKalmConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigNetworkPolicyConfigOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigNetworkPolicyConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterAddonsConfigParallelstoreCsiDriverConfigOutput{})
+	pulumi.RegisterOutputType(ClusterAddonsConfigParallelstoreCsiDriverConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigRayOperatorConfigOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigRayOperatorConfigArrayOutput{})
 	pulumi.RegisterOutputType(ClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigOutput{})
@@ -62489,6 +63740,10 @@ func init() {
 	pulumi.RegisterOutputType(ClusterClusterTelemetryPtrOutput{})
 	pulumi.RegisterOutputType(ClusterConfidentialNodesOutput{})
 	pulumi.RegisterOutputType(ClusterConfidentialNodesPtrOutput{})
+	pulumi.RegisterOutputType(ClusterControlPlaneEndpointsConfigOutput{})
+	pulumi.RegisterOutputType(ClusterControlPlaneEndpointsConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterControlPlaneEndpointsConfigDnsEndpointConfigOutput{})
+	pulumi.RegisterOutputType(ClusterControlPlaneEndpointsConfigDnsEndpointConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterCostManagementConfigOutput{})
 	pulumi.RegisterOutputType(ClusterCostManagementConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterDatabaseEncryptionOutput{})
@@ -62730,6 +63985,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterServiceExternalIpsConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterTpuConfigOutput{})
 	pulumi.RegisterOutputType(ClusterTpuConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterUserManagedKeysConfigOutput{})
+	pulumi.RegisterOutputType(ClusterUserManagedKeysConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterVerticalPodAutoscalingOutput{})
 	pulumi.RegisterOutputType(ClusterVerticalPodAutoscalingPtrOutput{})
 	pulumi.RegisterOutputType(ClusterWorkloadAltsConfigOutput{})
@@ -62843,6 +64100,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterAddonsConfigKalmConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigNetworkPolicyConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigNetworkPolicyConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterAddonsConfigParallelstoreCsiDriverConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterAddonsConfigParallelstoreCsiDriverConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigRayOperatorConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigRayOperatorConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterAddonsConfigRayOperatorConfigRayClusterLoggingConfigOutput{})
@@ -62877,6 +64136,10 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterClusterTelemetryArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterConfidentialNodeOutput{})
 	pulumi.RegisterOutputType(GetClusterConfidentialNodeArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterControlPlaneEndpointsConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterControlPlaneEndpointsConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterControlPlaneEndpointsConfigDnsEndpointConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterControlPlaneEndpointsConfigDnsEndpointConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterCostManagementConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterCostManagementConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterDatabaseEncryptionOutput{})
@@ -63121,6 +64384,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterServiceExternalIpsConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterTpuConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterTpuConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterUserManagedKeysConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterUserManagedKeysConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterVerticalPodAutoscalingOutput{})
 	pulumi.RegisterOutputType(GetClusterVerticalPodAutoscalingArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterWorkloadAltsConfigOutput{})

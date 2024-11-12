@@ -339,7 +339,7 @@ export class RegionHealthCheck extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      */
     public readonly grpcHealthCheck!: pulumi.Output<outputs.compute.RegionHealthCheckGrpcHealthCheck | undefined>;
@@ -349,17 +349,17 @@ export class RegionHealthCheck extends pulumi.CustomResource {
      */
     public readonly healthyThreshold!: pulumi.Output<number | undefined>;
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      */
     public readonly http2HealthCheck!: pulumi.Output<outputs.compute.RegionHealthCheckHttp2HealthCheck | undefined>;
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      */
     public readonly httpHealthCheck!: pulumi.Output<outputs.compute.RegionHealthCheckHttpHealthCheck | undefined>;
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      */
     public readonly httpsHealthCheck!: pulumi.Output<outputs.compute.RegionHealthCheckHttpsHealthCheck | undefined>;
@@ -396,12 +396,12 @@ export class RegionHealthCheck extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      */
     public readonly sslHealthCheck!: pulumi.Output<outputs.compute.RegionHealthCheckSslHealthCheck | undefined>;
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      */
     public readonly tcpHealthCheck!: pulumi.Output<outputs.compute.RegionHealthCheckTcpHealthCheck | undefined>;
@@ -497,7 +497,7 @@ export interface RegionHealthCheckState {
      */
     description?: pulumi.Input<string>;
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      */
     grpcHealthCheck?: pulumi.Input<inputs.compute.RegionHealthCheckGrpcHealthCheck>;
@@ -507,17 +507,17 @@ export interface RegionHealthCheckState {
      */
     healthyThreshold?: pulumi.Input<number>;
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      */
     http2HealthCheck?: pulumi.Input<inputs.compute.RegionHealthCheckHttp2HealthCheck>;
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      */
     httpHealthCheck?: pulumi.Input<inputs.compute.RegionHealthCheckHttpHealthCheck>;
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      */
     httpsHealthCheck?: pulumi.Input<inputs.compute.RegionHealthCheckHttpsHealthCheck>;
@@ -554,12 +554,12 @@ export interface RegionHealthCheckState {
      */
     selfLink?: pulumi.Input<string>;
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      */
     sslHealthCheck?: pulumi.Input<inputs.compute.RegionHealthCheckSslHealthCheck>;
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      */
     tcpHealthCheck?: pulumi.Input<inputs.compute.RegionHealthCheckTcpHealthCheck>;
@@ -595,7 +595,7 @@ export interface RegionHealthCheckArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      */
     grpcHealthCheck?: pulumi.Input<inputs.compute.RegionHealthCheckGrpcHealthCheck>;
@@ -605,17 +605,17 @@ export interface RegionHealthCheckArgs {
      */
     healthyThreshold?: pulumi.Input<number>;
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      */
     http2HealthCheck?: pulumi.Input<inputs.compute.RegionHealthCheckHttp2HealthCheck>;
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      */
     httpHealthCheck?: pulumi.Input<inputs.compute.RegionHealthCheckHttpHealthCheck>;
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      */
     httpsHealthCheck?: pulumi.Input<inputs.compute.RegionHealthCheckHttpsHealthCheck>;
@@ -648,12 +648,12 @@ export interface RegionHealthCheckArgs {
      */
     region?: pulumi.Input<string>;
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      */
     sslHealthCheck?: pulumi.Input<inputs.compute.RegionHealthCheckSslHealthCheck>;
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      */
     tcpHealthCheck?: pulumi.Input<inputs.compute.RegionHealthCheckTcpHealthCheck>;

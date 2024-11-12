@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.compute.inputs.RegionInstanceGroupManagerAllInstancesConfigArgs;
 import com.pulumi.gcp.compute.inputs.RegionInstanceGroupManagerAutoHealingPoliciesArgs;
+import com.pulumi.gcp.compute.inputs.RegionInstanceGroupManagerInstanceFlexibilityPolicyArgs;
 import com.pulumi.gcp.compute.inputs.RegionInstanceGroupManagerInstanceLifecyclePolicyArgs;
 import com.pulumi.gcp.compute.inputs.RegionInstanceGroupManagerNamedPortArgs;
 import com.pulumi.gcp.compute.inputs.RegionInstanceGroupManagerParamsArgs;
@@ -171,6 +172,23 @@ public final class RegionInstanceGroupManagerState extends com.pulumi.resources.
     }
 
     /**
+     * The flexibility policy for managed instance group. Instance flexibility allows managed instance group to create VMs from multiple types of machines. Instance flexibility configuration on managed instance group overrides instance template configuration. Structure is documented below.
+     * ***
+     * 
+     */
+    @Import(name="instanceFlexibilityPolicy")
+    private @Nullable Output<RegionInstanceGroupManagerInstanceFlexibilityPolicyArgs> instanceFlexibilityPolicy;
+
+    /**
+     * @return The flexibility policy for managed instance group. Instance flexibility allows managed instance group to create VMs from multiple types of machines. Instance flexibility configuration on managed instance group overrides instance template configuration. Structure is documented below.
+     * ***
+     * 
+     */
+    public Optional<Output<RegionInstanceGroupManagerInstanceFlexibilityPolicyArgs>> instanceFlexibilityPolicy() {
+        return Optional.ofNullable(this.instanceFlexibilityPolicy);
+    }
+
+    /**
      * The full URL of the instance group created by the manager.
      * 
      */
@@ -266,16 +284,12 @@ public final class RegionInstanceGroupManagerState extends com.pulumi.resources.
     /**
      * Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
      * 
-     * ***
-     * 
      */
     @Import(name="params")
     private @Nullable Output<RegionInstanceGroupManagerParamsArgs> params;
 
     /**
      * @return Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-     * 
-     * ***
      * 
      */
     public Optional<Output<RegionInstanceGroupManagerParamsArgs>> params() {
@@ -559,6 +573,7 @@ public final class RegionInstanceGroupManagerState extends com.pulumi.resources.
         this.distributionPolicyTargetShape = $.distributionPolicyTargetShape;
         this.distributionPolicyZones = $.distributionPolicyZones;
         this.fingerprint = $.fingerprint;
+        this.instanceFlexibilityPolicy = $.instanceFlexibilityPolicy;
         this.instanceGroup = $.instanceGroup;
         this.instanceLifecyclePolicy = $.instanceLifecyclePolicy;
         this.listManagedInstancesResults = $.listManagedInstancesResults;
@@ -801,6 +816,29 @@ public final class RegionInstanceGroupManagerState extends com.pulumi.resources.
         }
 
         /**
+         * @param instanceFlexibilityPolicy The flexibility policy for managed instance group. Instance flexibility allows managed instance group to create VMs from multiple types of machines. Instance flexibility configuration on managed instance group overrides instance template configuration. Structure is documented below.
+         * ***
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceFlexibilityPolicy(@Nullable Output<RegionInstanceGroupManagerInstanceFlexibilityPolicyArgs> instanceFlexibilityPolicy) {
+            $.instanceFlexibilityPolicy = instanceFlexibilityPolicy;
+            return this;
+        }
+
+        /**
+         * @param instanceFlexibilityPolicy The flexibility policy for managed instance group. Instance flexibility allows managed instance group to create VMs from multiple types of machines. Instance flexibility configuration on managed instance group overrides instance template configuration. Structure is documented below.
+         * ***
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceFlexibilityPolicy(RegionInstanceGroupManagerInstanceFlexibilityPolicyArgs instanceFlexibilityPolicy) {
+            return instanceFlexibilityPolicy(Output.of(instanceFlexibilityPolicy));
+        }
+
+        /**
          * @param instanceGroup The full URL of the instance group created by the manager.
          * 
          * @return builder
@@ -937,8 +975,6 @@ public final class RegionInstanceGroupManagerState extends com.pulumi.resources.
         /**
          * @param params Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -949,8 +985,6 @@ public final class RegionInstanceGroupManagerState extends com.pulumi.resources.
 
         /**
          * @param params Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-         * 
-         * ***
          * 
          * @return builder
          * 

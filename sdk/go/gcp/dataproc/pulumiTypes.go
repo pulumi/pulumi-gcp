@@ -12427,6 +12427,419 @@ func (o ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConf
 	}).(pulumi.StringMapOutput)
 }
 
+type GdcApplicationEnvironmentSparkApplicationEnvironmentConfig struct {
+	// A map of default Spark properties to apply to workloads in this application environment. These defaults may be overridden by per-application properties.
+	DefaultProperties map[string]string `pulumi:"defaultProperties"`
+	// The default Dataproc version to use for applications submitted to this application environment
+	DefaultVersion *string `pulumi:"defaultVersion"`
+}
+
+// GdcApplicationEnvironmentSparkApplicationEnvironmentConfigInput is an input type that accepts GdcApplicationEnvironmentSparkApplicationEnvironmentConfigArgs and GdcApplicationEnvironmentSparkApplicationEnvironmentConfigOutput values.
+// You can construct a concrete instance of `GdcApplicationEnvironmentSparkApplicationEnvironmentConfigInput` via:
+//
+//	GdcApplicationEnvironmentSparkApplicationEnvironmentConfigArgs{...}
+type GdcApplicationEnvironmentSparkApplicationEnvironmentConfigInput interface {
+	pulumi.Input
+
+	ToGdcApplicationEnvironmentSparkApplicationEnvironmentConfigOutput() GdcApplicationEnvironmentSparkApplicationEnvironmentConfigOutput
+	ToGdcApplicationEnvironmentSparkApplicationEnvironmentConfigOutputWithContext(context.Context) GdcApplicationEnvironmentSparkApplicationEnvironmentConfigOutput
+}
+
+type GdcApplicationEnvironmentSparkApplicationEnvironmentConfigArgs struct {
+	// A map of default Spark properties to apply to workloads in this application environment. These defaults may be overridden by per-application properties.
+	DefaultProperties pulumi.StringMapInput `pulumi:"defaultProperties"`
+	// The default Dataproc version to use for applications submitted to this application environment
+	DefaultVersion pulumi.StringPtrInput `pulumi:"defaultVersion"`
+}
+
+func (GdcApplicationEnvironmentSparkApplicationEnvironmentConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GdcApplicationEnvironmentSparkApplicationEnvironmentConfig)(nil)).Elem()
+}
+
+func (i GdcApplicationEnvironmentSparkApplicationEnvironmentConfigArgs) ToGdcApplicationEnvironmentSparkApplicationEnvironmentConfigOutput() GdcApplicationEnvironmentSparkApplicationEnvironmentConfigOutput {
+	return i.ToGdcApplicationEnvironmentSparkApplicationEnvironmentConfigOutputWithContext(context.Background())
+}
+
+func (i GdcApplicationEnvironmentSparkApplicationEnvironmentConfigArgs) ToGdcApplicationEnvironmentSparkApplicationEnvironmentConfigOutputWithContext(ctx context.Context) GdcApplicationEnvironmentSparkApplicationEnvironmentConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GdcApplicationEnvironmentSparkApplicationEnvironmentConfigOutput)
+}
+
+func (i GdcApplicationEnvironmentSparkApplicationEnvironmentConfigArgs) ToGdcApplicationEnvironmentSparkApplicationEnvironmentConfigPtrOutput() GdcApplicationEnvironmentSparkApplicationEnvironmentConfigPtrOutput {
+	return i.ToGdcApplicationEnvironmentSparkApplicationEnvironmentConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GdcApplicationEnvironmentSparkApplicationEnvironmentConfigArgs) ToGdcApplicationEnvironmentSparkApplicationEnvironmentConfigPtrOutputWithContext(ctx context.Context) GdcApplicationEnvironmentSparkApplicationEnvironmentConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GdcApplicationEnvironmentSparkApplicationEnvironmentConfigOutput).ToGdcApplicationEnvironmentSparkApplicationEnvironmentConfigPtrOutputWithContext(ctx)
+}
+
+// GdcApplicationEnvironmentSparkApplicationEnvironmentConfigPtrInput is an input type that accepts GdcApplicationEnvironmentSparkApplicationEnvironmentConfigArgs, GdcApplicationEnvironmentSparkApplicationEnvironmentConfigPtr and GdcApplicationEnvironmentSparkApplicationEnvironmentConfigPtrOutput values.
+// You can construct a concrete instance of `GdcApplicationEnvironmentSparkApplicationEnvironmentConfigPtrInput` via:
+//
+//	        GdcApplicationEnvironmentSparkApplicationEnvironmentConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GdcApplicationEnvironmentSparkApplicationEnvironmentConfigPtrInput interface {
+	pulumi.Input
+
+	ToGdcApplicationEnvironmentSparkApplicationEnvironmentConfigPtrOutput() GdcApplicationEnvironmentSparkApplicationEnvironmentConfigPtrOutput
+	ToGdcApplicationEnvironmentSparkApplicationEnvironmentConfigPtrOutputWithContext(context.Context) GdcApplicationEnvironmentSparkApplicationEnvironmentConfigPtrOutput
+}
+
+type gdcApplicationEnvironmentSparkApplicationEnvironmentConfigPtrType GdcApplicationEnvironmentSparkApplicationEnvironmentConfigArgs
+
+func GdcApplicationEnvironmentSparkApplicationEnvironmentConfigPtr(v *GdcApplicationEnvironmentSparkApplicationEnvironmentConfigArgs) GdcApplicationEnvironmentSparkApplicationEnvironmentConfigPtrInput {
+	return (*gdcApplicationEnvironmentSparkApplicationEnvironmentConfigPtrType)(v)
+}
+
+func (*gdcApplicationEnvironmentSparkApplicationEnvironmentConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GdcApplicationEnvironmentSparkApplicationEnvironmentConfig)(nil)).Elem()
+}
+
+func (i *gdcApplicationEnvironmentSparkApplicationEnvironmentConfigPtrType) ToGdcApplicationEnvironmentSparkApplicationEnvironmentConfigPtrOutput() GdcApplicationEnvironmentSparkApplicationEnvironmentConfigPtrOutput {
+	return i.ToGdcApplicationEnvironmentSparkApplicationEnvironmentConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *gdcApplicationEnvironmentSparkApplicationEnvironmentConfigPtrType) ToGdcApplicationEnvironmentSparkApplicationEnvironmentConfigPtrOutputWithContext(ctx context.Context) GdcApplicationEnvironmentSparkApplicationEnvironmentConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GdcApplicationEnvironmentSparkApplicationEnvironmentConfigPtrOutput)
+}
+
+type GdcApplicationEnvironmentSparkApplicationEnvironmentConfigOutput struct{ *pulumi.OutputState }
+
+func (GdcApplicationEnvironmentSparkApplicationEnvironmentConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GdcApplicationEnvironmentSparkApplicationEnvironmentConfig)(nil)).Elem()
+}
+
+func (o GdcApplicationEnvironmentSparkApplicationEnvironmentConfigOutput) ToGdcApplicationEnvironmentSparkApplicationEnvironmentConfigOutput() GdcApplicationEnvironmentSparkApplicationEnvironmentConfigOutput {
+	return o
+}
+
+func (o GdcApplicationEnvironmentSparkApplicationEnvironmentConfigOutput) ToGdcApplicationEnvironmentSparkApplicationEnvironmentConfigOutputWithContext(ctx context.Context) GdcApplicationEnvironmentSparkApplicationEnvironmentConfigOutput {
+	return o
+}
+
+func (o GdcApplicationEnvironmentSparkApplicationEnvironmentConfigOutput) ToGdcApplicationEnvironmentSparkApplicationEnvironmentConfigPtrOutput() GdcApplicationEnvironmentSparkApplicationEnvironmentConfigPtrOutput {
+	return o.ToGdcApplicationEnvironmentSparkApplicationEnvironmentConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GdcApplicationEnvironmentSparkApplicationEnvironmentConfigOutput) ToGdcApplicationEnvironmentSparkApplicationEnvironmentConfigPtrOutputWithContext(ctx context.Context) GdcApplicationEnvironmentSparkApplicationEnvironmentConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GdcApplicationEnvironmentSparkApplicationEnvironmentConfig) *GdcApplicationEnvironmentSparkApplicationEnvironmentConfig {
+		return &v
+	}).(GdcApplicationEnvironmentSparkApplicationEnvironmentConfigPtrOutput)
+}
+
+// A map of default Spark properties to apply to workloads in this application environment. These defaults may be overridden by per-application properties.
+func (o GdcApplicationEnvironmentSparkApplicationEnvironmentConfigOutput) DefaultProperties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GdcApplicationEnvironmentSparkApplicationEnvironmentConfig) map[string]string {
+		return v.DefaultProperties
+	}).(pulumi.StringMapOutput)
+}
+
+// The default Dataproc version to use for applications submitted to this application environment
+func (o GdcApplicationEnvironmentSparkApplicationEnvironmentConfigOutput) DefaultVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GdcApplicationEnvironmentSparkApplicationEnvironmentConfig) *string { return v.DefaultVersion }).(pulumi.StringPtrOutput)
+}
+
+type GdcApplicationEnvironmentSparkApplicationEnvironmentConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GdcApplicationEnvironmentSparkApplicationEnvironmentConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GdcApplicationEnvironmentSparkApplicationEnvironmentConfig)(nil)).Elem()
+}
+
+func (o GdcApplicationEnvironmentSparkApplicationEnvironmentConfigPtrOutput) ToGdcApplicationEnvironmentSparkApplicationEnvironmentConfigPtrOutput() GdcApplicationEnvironmentSparkApplicationEnvironmentConfigPtrOutput {
+	return o
+}
+
+func (o GdcApplicationEnvironmentSparkApplicationEnvironmentConfigPtrOutput) ToGdcApplicationEnvironmentSparkApplicationEnvironmentConfigPtrOutputWithContext(ctx context.Context) GdcApplicationEnvironmentSparkApplicationEnvironmentConfigPtrOutput {
+	return o
+}
+
+func (o GdcApplicationEnvironmentSparkApplicationEnvironmentConfigPtrOutput) Elem() GdcApplicationEnvironmentSparkApplicationEnvironmentConfigOutput {
+	return o.ApplyT(func(v *GdcApplicationEnvironmentSparkApplicationEnvironmentConfig) GdcApplicationEnvironmentSparkApplicationEnvironmentConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GdcApplicationEnvironmentSparkApplicationEnvironmentConfig
+		return ret
+	}).(GdcApplicationEnvironmentSparkApplicationEnvironmentConfigOutput)
+}
+
+// A map of default Spark properties to apply to workloads in this application environment. These defaults may be overridden by per-application properties.
+func (o GdcApplicationEnvironmentSparkApplicationEnvironmentConfigPtrOutput) DefaultProperties() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GdcApplicationEnvironmentSparkApplicationEnvironmentConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultProperties
+	}).(pulumi.StringMapOutput)
+}
+
+// The default Dataproc version to use for applications submitted to this application environment
+func (o GdcApplicationEnvironmentSparkApplicationEnvironmentConfigPtrOutput) DefaultVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GdcApplicationEnvironmentSparkApplicationEnvironmentConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DefaultVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+type GdcServiceInstanceGdceCluster struct {
+	// Gdce cluster resource id.
+	GdceCluster string `pulumi:"gdceCluster"`
+}
+
+// GdcServiceInstanceGdceClusterInput is an input type that accepts GdcServiceInstanceGdceClusterArgs and GdcServiceInstanceGdceClusterOutput values.
+// You can construct a concrete instance of `GdcServiceInstanceGdceClusterInput` via:
+//
+//	GdcServiceInstanceGdceClusterArgs{...}
+type GdcServiceInstanceGdceClusterInput interface {
+	pulumi.Input
+
+	ToGdcServiceInstanceGdceClusterOutput() GdcServiceInstanceGdceClusterOutput
+	ToGdcServiceInstanceGdceClusterOutputWithContext(context.Context) GdcServiceInstanceGdceClusterOutput
+}
+
+type GdcServiceInstanceGdceClusterArgs struct {
+	// Gdce cluster resource id.
+	GdceCluster pulumi.StringInput `pulumi:"gdceCluster"`
+}
+
+func (GdcServiceInstanceGdceClusterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GdcServiceInstanceGdceCluster)(nil)).Elem()
+}
+
+func (i GdcServiceInstanceGdceClusterArgs) ToGdcServiceInstanceGdceClusterOutput() GdcServiceInstanceGdceClusterOutput {
+	return i.ToGdcServiceInstanceGdceClusterOutputWithContext(context.Background())
+}
+
+func (i GdcServiceInstanceGdceClusterArgs) ToGdcServiceInstanceGdceClusterOutputWithContext(ctx context.Context) GdcServiceInstanceGdceClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GdcServiceInstanceGdceClusterOutput)
+}
+
+func (i GdcServiceInstanceGdceClusterArgs) ToGdcServiceInstanceGdceClusterPtrOutput() GdcServiceInstanceGdceClusterPtrOutput {
+	return i.ToGdcServiceInstanceGdceClusterPtrOutputWithContext(context.Background())
+}
+
+func (i GdcServiceInstanceGdceClusterArgs) ToGdcServiceInstanceGdceClusterPtrOutputWithContext(ctx context.Context) GdcServiceInstanceGdceClusterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GdcServiceInstanceGdceClusterOutput).ToGdcServiceInstanceGdceClusterPtrOutputWithContext(ctx)
+}
+
+// GdcServiceInstanceGdceClusterPtrInput is an input type that accepts GdcServiceInstanceGdceClusterArgs, GdcServiceInstanceGdceClusterPtr and GdcServiceInstanceGdceClusterPtrOutput values.
+// You can construct a concrete instance of `GdcServiceInstanceGdceClusterPtrInput` via:
+//
+//	        GdcServiceInstanceGdceClusterArgs{...}
+//
+//	or:
+//
+//	        nil
+type GdcServiceInstanceGdceClusterPtrInput interface {
+	pulumi.Input
+
+	ToGdcServiceInstanceGdceClusterPtrOutput() GdcServiceInstanceGdceClusterPtrOutput
+	ToGdcServiceInstanceGdceClusterPtrOutputWithContext(context.Context) GdcServiceInstanceGdceClusterPtrOutput
+}
+
+type gdcServiceInstanceGdceClusterPtrType GdcServiceInstanceGdceClusterArgs
+
+func GdcServiceInstanceGdceClusterPtr(v *GdcServiceInstanceGdceClusterArgs) GdcServiceInstanceGdceClusterPtrInput {
+	return (*gdcServiceInstanceGdceClusterPtrType)(v)
+}
+
+func (*gdcServiceInstanceGdceClusterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GdcServiceInstanceGdceCluster)(nil)).Elem()
+}
+
+func (i *gdcServiceInstanceGdceClusterPtrType) ToGdcServiceInstanceGdceClusterPtrOutput() GdcServiceInstanceGdceClusterPtrOutput {
+	return i.ToGdcServiceInstanceGdceClusterPtrOutputWithContext(context.Background())
+}
+
+func (i *gdcServiceInstanceGdceClusterPtrType) ToGdcServiceInstanceGdceClusterPtrOutputWithContext(ctx context.Context) GdcServiceInstanceGdceClusterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GdcServiceInstanceGdceClusterPtrOutput)
+}
+
+type GdcServiceInstanceGdceClusterOutput struct{ *pulumi.OutputState }
+
+func (GdcServiceInstanceGdceClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GdcServiceInstanceGdceCluster)(nil)).Elem()
+}
+
+func (o GdcServiceInstanceGdceClusterOutput) ToGdcServiceInstanceGdceClusterOutput() GdcServiceInstanceGdceClusterOutput {
+	return o
+}
+
+func (o GdcServiceInstanceGdceClusterOutput) ToGdcServiceInstanceGdceClusterOutputWithContext(ctx context.Context) GdcServiceInstanceGdceClusterOutput {
+	return o
+}
+
+func (o GdcServiceInstanceGdceClusterOutput) ToGdcServiceInstanceGdceClusterPtrOutput() GdcServiceInstanceGdceClusterPtrOutput {
+	return o.ToGdcServiceInstanceGdceClusterPtrOutputWithContext(context.Background())
+}
+
+func (o GdcServiceInstanceGdceClusterOutput) ToGdcServiceInstanceGdceClusterPtrOutputWithContext(ctx context.Context) GdcServiceInstanceGdceClusterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GdcServiceInstanceGdceCluster) *GdcServiceInstanceGdceCluster {
+		return &v
+	}).(GdcServiceInstanceGdceClusterPtrOutput)
+}
+
+// Gdce cluster resource id.
+func (o GdcServiceInstanceGdceClusterOutput) GdceCluster() pulumi.StringOutput {
+	return o.ApplyT(func(v GdcServiceInstanceGdceCluster) string { return v.GdceCluster }).(pulumi.StringOutput)
+}
+
+type GdcServiceInstanceGdceClusterPtrOutput struct{ *pulumi.OutputState }
+
+func (GdcServiceInstanceGdceClusterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GdcServiceInstanceGdceCluster)(nil)).Elem()
+}
+
+func (o GdcServiceInstanceGdceClusterPtrOutput) ToGdcServiceInstanceGdceClusterPtrOutput() GdcServiceInstanceGdceClusterPtrOutput {
+	return o
+}
+
+func (o GdcServiceInstanceGdceClusterPtrOutput) ToGdcServiceInstanceGdceClusterPtrOutputWithContext(ctx context.Context) GdcServiceInstanceGdceClusterPtrOutput {
+	return o
+}
+
+func (o GdcServiceInstanceGdceClusterPtrOutput) Elem() GdcServiceInstanceGdceClusterOutput {
+	return o.ApplyT(func(v *GdcServiceInstanceGdceCluster) GdcServiceInstanceGdceCluster {
+		if v != nil {
+			return *v
+		}
+		var ret GdcServiceInstanceGdceCluster
+		return ret
+	}).(GdcServiceInstanceGdceClusterOutput)
+}
+
+// Gdce cluster resource id.
+func (o GdcServiceInstanceGdceClusterPtrOutput) GdceCluster() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GdcServiceInstanceGdceCluster) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.GdceCluster
+	}).(pulumi.StringPtrOutput)
+}
+
+type GdcServiceInstanceSparkServiceInstanceConfig struct {
+}
+
+// GdcServiceInstanceSparkServiceInstanceConfigInput is an input type that accepts GdcServiceInstanceSparkServiceInstanceConfigArgs and GdcServiceInstanceSparkServiceInstanceConfigOutput values.
+// You can construct a concrete instance of `GdcServiceInstanceSparkServiceInstanceConfigInput` via:
+//
+//	GdcServiceInstanceSparkServiceInstanceConfigArgs{...}
+type GdcServiceInstanceSparkServiceInstanceConfigInput interface {
+	pulumi.Input
+
+	ToGdcServiceInstanceSparkServiceInstanceConfigOutput() GdcServiceInstanceSparkServiceInstanceConfigOutput
+	ToGdcServiceInstanceSparkServiceInstanceConfigOutputWithContext(context.Context) GdcServiceInstanceSparkServiceInstanceConfigOutput
+}
+
+type GdcServiceInstanceSparkServiceInstanceConfigArgs struct {
+}
+
+func (GdcServiceInstanceSparkServiceInstanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GdcServiceInstanceSparkServiceInstanceConfig)(nil)).Elem()
+}
+
+func (i GdcServiceInstanceSparkServiceInstanceConfigArgs) ToGdcServiceInstanceSparkServiceInstanceConfigOutput() GdcServiceInstanceSparkServiceInstanceConfigOutput {
+	return i.ToGdcServiceInstanceSparkServiceInstanceConfigOutputWithContext(context.Background())
+}
+
+func (i GdcServiceInstanceSparkServiceInstanceConfigArgs) ToGdcServiceInstanceSparkServiceInstanceConfigOutputWithContext(ctx context.Context) GdcServiceInstanceSparkServiceInstanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GdcServiceInstanceSparkServiceInstanceConfigOutput)
+}
+
+func (i GdcServiceInstanceSparkServiceInstanceConfigArgs) ToGdcServiceInstanceSparkServiceInstanceConfigPtrOutput() GdcServiceInstanceSparkServiceInstanceConfigPtrOutput {
+	return i.ToGdcServiceInstanceSparkServiceInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GdcServiceInstanceSparkServiceInstanceConfigArgs) ToGdcServiceInstanceSparkServiceInstanceConfigPtrOutputWithContext(ctx context.Context) GdcServiceInstanceSparkServiceInstanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GdcServiceInstanceSparkServiceInstanceConfigOutput).ToGdcServiceInstanceSparkServiceInstanceConfigPtrOutputWithContext(ctx)
+}
+
+// GdcServiceInstanceSparkServiceInstanceConfigPtrInput is an input type that accepts GdcServiceInstanceSparkServiceInstanceConfigArgs, GdcServiceInstanceSparkServiceInstanceConfigPtr and GdcServiceInstanceSparkServiceInstanceConfigPtrOutput values.
+// You can construct a concrete instance of `GdcServiceInstanceSparkServiceInstanceConfigPtrInput` via:
+//
+//	        GdcServiceInstanceSparkServiceInstanceConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GdcServiceInstanceSparkServiceInstanceConfigPtrInput interface {
+	pulumi.Input
+
+	ToGdcServiceInstanceSparkServiceInstanceConfigPtrOutput() GdcServiceInstanceSparkServiceInstanceConfigPtrOutput
+	ToGdcServiceInstanceSparkServiceInstanceConfigPtrOutputWithContext(context.Context) GdcServiceInstanceSparkServiceInstanceConfigPtrOutput
+}
+
+type gdcServiceInstanceSparkServiceInstanceConfigPtrType GdcServiceInstanceSparkServiceInstanceConfigArgs
+
+func GdcServiceInstanceSparkServiceInstanceConfigPtr(v *GdcServiceInstanceSparkServiceInstanceConfigArgs) GdcServiceInstanceSparkServiceInstanceConfigPtrInput {
+	return (*gdcServiceInstanceSparkServiceInstanceConfigPtrType)(v)
+}
+
+func (*gdcServiceInstanceSparkServiceInstanceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GdcServiceInstanceSparkServiceInstanceConfig)(nil)).Elem()
+}
+
+func (i *gdcServiceInstanceSparkServiceInstanceConfigPtrType) ToGdcServiceInstanceSparkServiceInstanceConfigPtrOutput() GdcServiceInstanceSparkServiceInstanceConfigPtrOutput {
+	return i.ToGdcServiceInstanceSparkServiceInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *gdcServiceInstanceSparkServiceInstanceConfigPtrType) ToGdcServiceInstanceSparkServiceInstanceConfigPtrOutputWithContext(ctx context.Context) GdcServiceInstanceSparkServiceInstanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GdcServiceInstanceSparkServiceInstanceConfigPtrOutput)
+}
+
+type GdcServiceInstanceSparkServiceInstanceConfigOutput struct{ *pulumi.OutputState }
+
+func (GdcServiceInstanceSparkServiceInstanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GdcServiceInstanceSparkServiceInstanceConfig)(nil)).Elem()
+}
+
+func (o GdcServiceInstanceSparkServiceInstanceConfigOutput) ToGdcServiceInstanceSparkServiceInstanceConfigOutput() GdcServiceInstanceSparkServiceInstanceConfigOutput {
+	return o
+}
+
+func (o GdcServiceInstanceSparkServiceInstanceConfigOutput) ToGdcServiceInstanceSparkServiceInstanceConfigOutputWithContext(ctx context.Context) GdcServiceInstanceSparkServiceInstanceConfigOutput {
+	return o
+}
+
+func (o GdcServiceInstanceSparkServiceInstanceConfigOutput) ToGdcServiceInstanceSparkServiceInstanceConfigPtrOutput() GdcServiceInstanceSparkServiceInstanceConfigPtrOutput {
+	return o.ToGdcServiceInstanceSparkServiceInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GdcServiceInstanceSparkServiceInstanceConfigOutput) ToGdcServiceInstanceSparkServiceInstanceConfigPtrOutputWithContext(ctx context.Context) GdcServiceInstanceSparkServiceInstanceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GdcServiceInstanceSparkServiceInstanceConfig) *GdcServiceInstanceSparkServiceInstanceConfig {
+		return &v
+	}).(GdcServiceInstanceSparkServiceInstanceConfigPtrOutput)
+}
+
+type GdcServiceInstanceSparkServiceInstanceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GdcServiceInstanceSparkServiceInstanceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GdcServiceInstanceSparkServiceInstanceConfig)(nil)).Elem()
+}
+
+func (o GdcServiceInstanceSparkServiceInstanceConfigPtrOutput) ToGdcServiceInstanceSparkServiceInstanceConfigPtrOutput() GdcServiceInstanceSparkServiceInstanceConfigPtrOutput {
+	return o
+}
+
+func (o GdcServiceInstanceSparkServiceInstanceConfigPtrOutput) ToGdcServiceInstanceSparkServiceInstanceConfigPtrOutputWithContext(ctx context.Context) GdcServiceInstanceSparkServiceInstanceConfigPtrOutput {
+	return o
+}
+
+func (o GdcServiceInstanceSparkServiceInstanceConfigPtrOutput) Elem() GdcServiceInstanceSparkServiceInstanceConfigOutput {
+	return o.ApplyT(func(v *GdcServiceInstanceSparkServiceInstanceConfig) GdcServiceInstanceSparkServiceInstanceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GdcServiceInstanceSparkServiceInstanceConfig
+		return ret
+	}).(GdcServiceInstanceSparkServiceInstanceConfigOutput)
+}
+
 type JobHadoopConfig struct {
 	// HCFS URIs of archives to be extracted in the working directory of .jar, .tar, .tar.gz, .tgz, and .zip.
 	ArchiveUris []string `pulumi:"archiveUris"`
@@ -31341,6 +31754,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrInput)(nil)).Elem(), ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigInput)(nil)).Elem(), ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigPtrInput)(nil)).Elem(), ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GdcApplicationEnvironmentSparkApplicationEnvironmentConfigInput)(nil)).Elem(), GdcApplicationEnvironmentSparkApplicationEnvironmentConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GdcApplicationEnvironmentSparkApplicationEnvironmentConfigPtrInput)(nil)).Elem(), GdcApplicationEnvironmentSparkApplicationEnvironmentConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GdcServiceInstanceGdceClusterInput)(nil)).Elem(), GdcServiceInstanceGdceClusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GdcServiceInstanceGdceClusterPtrInput)(nil)).Elem(), GdcServiceInstanceGdceClusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GdcServiceInstanceSparkServiceInstanceConfigInput)(nil)).Elem(), GdcServiceInstanceSparkServiceInstanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GdcServiceInstanceSparkServiceInstanceConfigPtrInput)(nil)).Elem(), GdcServiceInstanceSparkServiceInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobHadoopConfigInput)(nil)).Elem(), JobHadoopConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobHadoopConfigPtrInput)(nil)).Elem(), JobHadoopConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobHadoopConfigLoggingConfigInput)(nil)).Elem(), JobHadoopConfigLoggingConfigArgs{})
@@ -31689,6 +32108,12 @@ func init() {
 	pulumi.RegisterOutputType(ClusterVirtualClusterConfigKubernetesClusterConfigGkeClusterConfigNodePoolTargetNodePoolConfigConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigOutput{})
 	pulumi.RegisterOutputType(ClusterVirtualClusterConfigKubernetesClusterConfigKubernetesSoftwareConfigPtrOutput{})
+	pulumi.RegisterOutputType(GdcApplicationEnvironmentSparkApplicationEnvironmentConfigOutput{})
+	pulumi.RegisterOutputType(GdcApplicationEnvironmentSparkApplicationEnvironmentConfigPtrOutput{})
+	pulumi.RegisterOutputType(GdcServiceInstanceGdceClusterOutput{})
+	pulumi.RegisterOutputType(GdcServiceInstanceGdceClusterPtrOutput{})
+	pulumi.RegisterOutputType(GdcServiceInstanceSparkServiceInstanceConfigOutput{})
+	pulumi.RegisterOutputType(GdcServiceInstanceSparkServiceInstanceConfigPtrOutput{})
 	pulumi.RegisterOutputType(JobHadoopConfigOutput{})
 	pulumi.RegisterOutputType(JobHadoopConfigPtrOutput{})
 	pulumi.RegisterOutputType(JobHadoopConfigLoggingConfigOutput{})

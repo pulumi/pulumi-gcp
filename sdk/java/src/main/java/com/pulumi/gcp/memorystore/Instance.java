@@ -27,6 +27,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * A Google Cloud Memorystore instance.
+ * 
  * ## Example Usage
  * 
  * ### Memorystore Instance Basic

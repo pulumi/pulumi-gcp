@@ -1116,7 +1116,7 @@ func (o ClusterPscConnectionArrayOutput) Index(i pulumi.IntInput) ClusterPscConn
 }
 
 type ClusterStateInfo struct {
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	UpdateInfo *ClusterStateInfoUpdateInfo `pulumi:"updateInfo"`
 }
@@ -1133,7 +1133,7 @@ type ClusterStateInfoInput interface {
 }
 
 type ClusterStateInfoArgs struct {
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	UpdateInfo ClusterStateInfoUpdateInfoPtrInput `pulumi:"updateInfo"`
 }
@@ -1189,7 +1189,7 @@ func (o ClusterStateInfoOutput) ToClusterStateInfoOutputWithContext(ctx context.
 	return o
 }
 
-// A nested object resource
+// A nested object resource.
 // Structure is documented below.
 func (o ClusterStateInfoOutput) UpdateInfo() ClusterStateInfoUpdateInfoPtrOutput {
 	return o.ApplyT(func(v ClusterStateInfo) *ClusterStateInfoUpdateInfo { return v.UpdateInfo }).(ClusterStateInfoUpdateInfoPtrOutput)

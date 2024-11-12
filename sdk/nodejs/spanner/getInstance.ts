@@ -55,6 +55,7 @@ export interface GetInstanceArgs {
 export interface GetInstanceResult {
     readonly autoscalingConfigs: outputs.spanner.GetInstanceAutoscalingConfig[];
     readonly config?: string;
+    readonly defaultBackupScheduleType: string;
     readonly displayName?: string;
     readonly edition: string;
     readonly effectiveLabels: {[key: string]: string};

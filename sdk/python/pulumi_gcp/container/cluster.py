@@ -29,6 +29,7 @@ class ClusterArgs:
                  cluster_ipv4_cidr: Optional[pulumi.Input[str]] = None,
                  cluster_telemetry: Optional[pulumi.Input['ClusterClusterTelemetryArgs']] = None,
                  confidential_nodes: Optional[pulumi.Input['ClusterConfidentialNodesArgs']] = None,
+                 control_plane_endpoints_config: Optional[pulumi.Input['ClusterControlPlaneEndpointsConfigArgs']] = None,
                  cost_management_config: Optional[pulumi.Input['ClusterCostManagementConfigArgs']] = None,
                  database_encryption: Optional[pulumi.Input['ClusterDatabaseEncryptionArgs']] = None,
                  datapath_provider: Optional[pulumi.Input[str]] = None,
@@ -88,6 +89,7 @@ class ClusterArgs:
                  service_external_ips_config: Optional[pulumi.Input['ClusterServiceExternalIpsConfigArgs']] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  tpu_config: Optional[pulumi.Input['ClusterTpuConfigArgs']] = None,
+                 user_managed_keys_config: Optional[pulumi.Input['ClusterUserManagedKeysConfigArgs']] = None,
                  vertical_pod_autoscaling: Optional[pulumi.Input['ClusterVerticalPodAutoscalingArgs']] = None,
                  workload_alts_config: Optional[pulumi.Input['ClusterWorkloadAltsConfigArgs']] = None,
                  workload_identity_config: Optional[pulumi.Input['ClusterWorkloadIdentityConfigArgs']] = None):
@@ -116,6 +118,8 @@ class ClusterArgs:
                [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
                Structure is documented below.
         :param pulumi.Input['ClusterConfidentialNodesArgs'] confidential_nodes: Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
+        :param pulumi.Input['ClusterControlPlaneEndpointsConfigArgs'] control_plane_endpoints_config: Configuration for all of the cluster's control plane endpoints.
+               Structure is documented below.
         :param pulumi.Input['ClusterCostManagementConfigArgs'] cost_management_config: Configuration for the
                [Cost Allocation](https://cloud.google.com/kubernetes-engine/docs/how-to/cost-allocations) feature.
                Structure is documented below.
@@ -292,6 +296,7 @@ class ClusterArgs:
         :param pulumi.Input[str] subnetwork: The name or self_link of the Google Compute Engine
                subnetwork in which the cluster's instances are launched.
         :param pulumi.Input['ClusterTpuConfigArgs'] tpu_config: TPU configuration for the cluster.
+        :param pulumi.Input['ClusterUserManagedKeysConfigArgs'] user_managed_keys_config: The custom keys configuration of the cluster.
         :param pulumi.Input['ClusterVerticalPodAutoscalingArgs'] vertical_pod_autoscaling: Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
                Structure is documented below.
         :param pulumi.Input['ClusterWorkloadAltsConfigArgs'] workload_alts_config: Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
@@ -317,6 +322,8 @@ class ClusterArgs:
             pulumi.set(__self__, "cluster_telemetry", cluster_telemetry)
         if confidential_nodes is not None:
             pulumi.set(__self__, "confidential_nodes", confidential_nodes)
+        if control_plane_endpoints_config is not None:
+            pulumi.set(__self__, "control_plane_endpoints_config", control_plane_endpoints_config)
         if cost_management_config is not None:
             pulumi.set(__self__, "cost_management_config", cost_management_config)
         if database_encryption is not None:
@@ -435,6 +442,8 @@ class ClusterArgs:
             pulumi.set(__self__, "subnetwork", subnetwork)
         if tpu_config is not None:
             pulumi.set(__self__, "tpu_config", tpu_config)
+        if user_managed_keys_config is not None:
+            pulumi.set(__self__, "user_managed_keys_config", user_managed_keys_config)
         if vertical_pod_autoscaling is not None:
             pulumi.set(__self__, "vertical_pod_autoscaling", vertical_pod_autoscaling)
         if workload_alts_config is not None:
@@ -552,6 +561,19 @@ class ClusterArgs:
     @confidential_nodes.setter
     def confidential_nodes(self, value: Optional[pulumi.Input['ClusterConfidentialNodesArgs']]):
         pulumi.set(self, "confidential_nodes", value)
+
+    @property
+    @pulumi.getter(name="controlPlaneEndpointsConfig")
+    def control_plane_endpoints_config(self) -> Optional[pulumi.Input['ClusterControlPlaneEndpointsConfigArgs']]:
+        """
+        Configuration for all of the cluster's control plane endpoints.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "control_plane_endpoints_config")
+
+    @control_plane_endpoints_config.setter
+    def control_plane_endpoints_config(self, value: Optional[pulumi.Input['ClusterControlPlaneEndpointsConfigArgs']]):
+        pulumi.set(self, "control_plane_endpoints_config", value)
 
     @property
     @pulumi.getter(name="costManagementConfig")
@@ -1377,6 +1399,18 @@ class ClusterArgs:
         pulumi.set(self, "tpu_config", value)
 
     @property
+    @pulumi.getter(name="userManagedKeysConfig")
+    def user_managed_keys_config(self) -> Optional[pulumi.Input['ClusterUserManagedKeysConfigArgs']]:
+        """
+        The custom keys configuration of the cluster.
+        """
+        return pulumi.get(self, "user_managed_keys_config")
+
+    @user_managed_keys_config.setter
+    def user_managed_keys_config(self, value: Optional[pulumi.Input['ClusterUserManagedKeysConfigArgs']]):
+        pulumi.set(self, "user_managed_keys_config", value)
+
+    @property
     @pulumi.getter(name="verticalPodAutoscaling")
     def vertical_pod_autoscaling(self) -> Optional[pulumi.Input['ClusterVerticalPodAutoscalingArgs']]:
         """
@@ -1429,6 +1463,7 @@ class _ClusterState:
                  cluster_ipv4_cidr: Optional[pulumi.Input[str]] = None,
                  cluster_telemetry: Optional[pulumi.Input['ClusterClusterTelemetryArgs']] = None,
                  confidential_nodes: Optional[pulumi.Input['ClusterConfidentialNodesArgs']] = None,
+                 control_plane_endpoints_config: Optional[pulumi.Input['ClusterControlPlaneEndpointsConfigArgs']] = None,
                  cost_management_config: Optional[pulumi.Input['ClusterCostManagementConfigArgs']] = None,
                  database_encryption: Optional[pulumi.Input['ClusterDatabaseEncryptionArgs']] = None,
                  datapath_provider: Optional[pulumi.Input[str]] = None,
@@ -1497,6 +1532,7 @@ class _ClusterState:
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  tpu_config: Optional[pulumi.Input['ClusterTpuConfigArgs']] = None,
                  tpu_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
+                 user_managed_keys_config: Optional[pulumi.Input['ClusterUserManagedKeysConfigArgs']] = None,
                  vertical_pod_autoscaling: Optional[pulumi.Input['ClusterVerticalPodAutoscalingArgs']] = None,
                  workload_alts_config: Optional[pulumi.Input['ClusterWorkloadAltsConfigArgs']] = None,
                  workload_identity_config: Optional[pulumi.Input['ClusterWorkloadIdentityConfigArgs']] = None):
@@ -1525,6 +1561,8 @@ class _ClusterState:
                [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
                Structure is documented below.
         :param pulumi.Input['ClusterConfidentialNodesArgs'] confidential_nodes: Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
+        :param pulumi.Input['ClusterControlPlaneEndpointsConfigArgs'] control_plane_endpoints_config: Configuration for all of the cluster's control plane endpoints.
+               Structure is documented below.
         :param pulumi.Input['ClusterCostManagementConfigArgs'] cost_management_config: Configuration for the
                [Cost Allocation](https://cloud.google.com/kubernetes-engine/docs/how-to/cost-allocations) feature.
                Structure is documented below.
@@ -1716,6 +1754,7 @@ class _ClusterState:
         :param pulumi.Input[str] tpu_ipv4_cidr_block: The IP address range of the Cloud TPUs in this cluster, in
                [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
                notation (e.g. `1.2.3.4/29`).
+        :param pulumi.Input['ClusterUserManagedKeysConfigArgs'] user_managed_keys_config: The custom keys configuration of the cluster.
         :param pulumi.Input['ClusterVerticalPodAutoscalingArgs'] vertical_pod_autoscaling: Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
                Structure is documented below.
         :param pulumi.Input['ClusterWorkloadAltsConfigArgs'] workload_alts_config: Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
@@ -1741,6 +1780,8 @@ class _ClusterState:
             pulumi.set(__self__, "cluster_telemetry", cluster_telemetry)
         if confidential_nodes is not None:
             pulumi.set(__self__, "confidential_nodes", confidential_nodes)
+        if control_plane_endpoints_config is not None:
+            pulumi.set(__self__, "control_plane_endpoints_config", control_plane_endpoints_config)
         if cost_management_config is not None:
             pulumi.set(__self__, "cost_management_config", cost_management_config)
         if database_encryption is not None:
@@ -1877,6 +1918,8 @@ class _ClusterState:
             pulumi.set(__self__, "tpu_config", tpu_config)
         if tpu_ipv4_cidr_block is not None:
             pulumi.set(__self__, "tpu_ipv4_cidr_block", tpu_ipv4_cidr_block)
+        if user_managed_keys_config is not None:
+            pulumi.set(__self__, "user_managed_keys_config", user_managed_keys_config)
         if vertical_pod_autoscaling is not None:
             pulumi.set(__self__, "vertical_pod_autoscaling", vertical_pod_autoscaling)
         if workload_alts_config is not None:
@@ -1994,6 +2037,19 @@ class _ClusterState:
     @confidential_nodes.setter
     def confidential_nodes(self, value: Optional[pulumi.Input['ClusterConfidentialNodesArgs']]):
         pulumi.set(self, "confidential_nodes", value)
+
+    @property
+    @pulumi.getter(name="controlPlaneEndpointsConfig")
+    def control_plane_endpoints_config(self) -> Optional[pulumi.Input['ClusterControlPlaneEndpointsConfigArgs']]:
+        """
+        Configuration for all of the cluster's control plane endpoints.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "control_plane_endpoints_config")
+
+    @control_plane_endpoints_config.setter
+    def control_plane_endpoints_config(self, value: Optional[pulumi.Input['ClusterControlPlaneEndpointsConfigArgs']]):
+        pulumi.set(self, "control_plane_endpoints_config", value)
 
     @property
     @pulumi.getter(name="costManagementConfig")
@@ -2931,6 +2987,18 @@ class _ClusterState:
         pulumi.set(self, "tpu_ipv4_cidr_block", value)
 
     @property
+    @pulumi.getter(name="userManagedKeysConfig")
+    def user_managed_keys_config(self) -> Optional[pulumi.Input['ClusterUserManagedKeysConfigArgs']]:
+        """
+        The custom keys configuration of the cluster.
+        """
+        return pulumi.get(self, "user_managed_keys_config")
+
+    @user_managed_keys_config.setter
+    def user_managed_keys_config(self, value: Optional[pulumi.Input['ClusterUserManagedKeysConfigArgs']]):
+        pulumi.set(self, "user_managed_keys_config", value)
+
+    @property
     @pulumi.getter(name="verticalPodAutoscaling")
     def vertical_pod_autoscaling(self) -> Optional[pulumi.Input['ClusterVerticalPodAutoscalingArgs']]:
         """
@@ -2985,6 +3053,7 @@ class Cluster(pulumi.CustomResource):
                  cluster_ipv4_cidr: Optional[pulumi.Input[str]] = None,
                  cluster_telemetry: Optional[pulumi.Input[Union['ClusterClusterTelemetryArgs', 'ClusterClusterTelemetryArgsDict']]] = None,
                  confidential_nodes: Optional[pulumi.Input[Union['ClusterConfidentialNodesArgs', 'ClusterConfidentialNodesArgsDict']]] = None,
+                 control_plane_endpoints_config: Optional[pulumi.Input[Union['ClusterControlPlaneEndpointsConfigArgs', 'ClusterControlPlaneEndpointsConfigArgsDict']]] = None,
                  cost_management_config: Optional[pulumi.Input[Union['ClusterCostManagementConfigArgs', 'ClusterCostManagementConfigArgsDict']]] = None,
                  database_encryption: Optional[pulumi.Input[Union['ClusterDatabaseEncryptionArgs', 'ClusterDatabaseEncryptionArgsDict']]] = None,
                  datapath_provider: Optional[pulumi.Input[str]] = None,
@@ -3044,6 +3113,7 @@ class Cluster(pulumi.CustomResource):
                  service_external_ips_config: Optional[pulumi.Input[Union['ClusterServiceExternalIpsConfigArgs', 'ClusterServiceExternalIpsConfigArgsDict']]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  tpu_config: Optional[pulumi.Input[Union['ClusterTpuConfigArgs', 'ClusterTpuConfigArgsDict']]] = None,
+                 user_managed_keys_config: Optional[pulumi.Input[Union['ClusterUserManagedKeysConfigArgs', 'ClusterUserManagedKeysConfigArgsDict']]] = None,
                  vertical_pod_autoscaling: Optional[pulumi.Input[Union['ClusterVerticalPodAutoscalingArgs', 'ClusterVerticalPodAutoscalingArgsDict']]] = None,
                  workload_alts_config: Optional[pulumi.Input[Union['ClusterWorkloadAltsConfigArgs', 'ClusterWorkloadAltsConfigArgsDict']]] = None,
                  workload_identity_config: Optional[pulumi.Input[Union['ClusterWorkloadIdentityConfigArgs', 'ClusterWorkloadIdentityConfigArgsDict']]] = None,
@@ -3194,6 +3264,8 @@ class Cluster(pulumi.CustomResource):
                [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
                Structure is documented below.
         :param pulumi.Input[Union['ClusterConfidentialNodesArgs', 'ClusterConfidentialNodesArgsDict']] confidential_nodes: Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
+        :param pulumi.Input[Union['ClusterControlPlaneEndpointsConfigArgs', 'ClusterControlPlaneEndpointsConfigArgsDict']] control_plane_endpoints_config: Configuration for all of the cluster's control plane endpoints.
+               Structure is documented below.
         :param pulumi.Input[Union['ClusterCostManagementConfigArgs', 'ClusterCostManagementConfigArgsDict']] cost_management_config: Configuration for the
                [Cost Allocation](https://cloud.google.com/kubernetes-engine/docs/how-to/cost-allocations) feature.
                Structure is documented below.
@@ -3370,6 +3442,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] subnetwork: The name or self_link of the Google Compute Engine
                subnetwork in which the cluster's instances are launched.
         :param pulumi.Input[Union['ClusterTpuConfigArgs', 'ClusterTpuConfigArgsDict']] tpu_config: TPU configuration for the cluster.
+        :param pulumi.Input[Union['ClusterUserManagedKeysConfigArgs', 'ClusterUserManagedKeysConfigArgsDict']] user_managed_keys_config: The custom keys configuration of the cluster.
         :param pulumi.Input[Union['ClusterVerticalPodAutoscalingArgs', 'ClusterVerticalPodAutoscalingArgsDict']] vertical_pod_autoscaling: Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
                Structure is documented below.
         :param pulumi.Input[Union['ClusterWorkloadAltsConfigArgs', 'ClusterWorkloadAltsConfigArgsDict']] workload_alts_config: Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
@@ -3529,6 +3602,7 @@ class Cluster(pulumi.CustomResource):
                  cluster_ipv4_cidr: Optional[pulumi.Input[str]] = None,
                  cluster_telemetry: Optional[pulumi.Input[Union['ClusterClusterTelemetryArgs', 'ClusterClusterTelemetryArgsDict']]] = None,
                  confidential_nodes: Optional[pulumi.Input[Union['ClusterConfidentialNodesArgs', 'ClusterConfidentialNodesArgsDict']]] = None,
+                 control_plane_endpoints_config: Optional[pulumi.Input[Union['ClusterControlPlaneEndpointsConfigArgs', 'ClusterControlPlaneEndpointsConfigArgsDict']]] = None,
                  cost_management_config: Optional[pulumi.Input[Union['ClusterCostManagementConfigArgs', 'ClusterCostManagementConfigArgsDict']]] = None,
                  database_encryption: Optional[pulumi.Input[Union['ClusterDatabaseEncryptionArgs', 'ClusterDatabaseEncryptionArgsDict']]] = None,
                  datapath_provider: Optional[pulumi.Input[str]] = None,
@@ -3588,6 +3662,7 @@ class Cluster(pulumi.CustomResource):
                  service_external_ips_config: Optional[pulumi.Input[Union['ClusterServiceExternalIpsConfigArgs', 'ClusterServiceExternalIpsConfigArgsDict']]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None,
                  tpu_config: Optional[pulumi.Input[Union['ClusterTpuConfigArgs', 'ClusterTpuConfigArgsDict']]] = None,
+                 user_managed_keys_config: Optional[pulumi.Input[Union['ClusterUserManagedKeysConfigArgs', 'ClusterUserManagedKeysConfigArgsDict']]] = None,
                  vertical_pod_autoscaling: Optional[pulumi.Input[Union['ClusterVerticalPodAutoscalingArgs', 'ClusterVerticalPodAutoscalingArgsDict']]] = None,
                  workload_alts_config: Optional[pulumi.Input[Union['ClusterWorkloadAltsConfigArgs', 'ClusterWorkloadAltsConfigArgsDict']]] = None,
                  workload_identity_config: Optional[pulumi.Input[Union['ClusterWorkloadIdentityConfigArgs', 'ClusterWorkloadIdentityConfigArgsDict']]] = None,
@@ -3608,6 +3683,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["cluster_ipv4_cidr"] = cluster_ipv4_cidr
             __props__.__dict__["cluster_telemetry"] = cluster_telemetry
             __props__.__dict__["confidential_nodes"] = confidential_nodes
+            __props__.__dict__["control_plane_endpoints_config"] = control_plane_endpoints_config
             __props__.__dict__["cost_management_config"] = cost_management_config
             __props__.__dict__["database_encryption"] = database_encryption
             __props__.__dict__["datapath_provider"] = datapath_provider
@@ -3667,6 +3743,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["service_external_ips_config"] = service_external_ips_config
             __props__.__dict__["subnetwork"] = subnetwork
             __props__.__dict__["tpu_config"] = tpu_config
+            __props__.__dict__["user_managed_keys_config"] = user_managed_keys_config
             __props__.__dict__["vertical_pod_autoscaling"] = vertical_pod_autoscaling
             __props__.__dict__["workload_alts_config"] = workload_alts_config
             __props__.__dict__["workload_identity_config"] = workload_identity_config
@@ -3699,6 +3776,7 @@ class Cluster(pulumi.CustomResource):
             cluster_ipv4_cidr: Optional[pulumi.Input[str]] = None,
             cluster_telemetry: Optional[pulumi.Input[Union['ClusterClusterTelemetryArgs', 'ClusterClusterTelemetryArgsDict']]] = None,
             confidential_nodes: Optional[pulumi.Input[Union['ClusterConfidentialNodesArgs', 'ClusterConfidentialNodesArgsDict']]] = None,
+            control_plane_endpoints_config: Optional[pulumi.Input[Union['ClusterControlPlaneEndpointsConfigArgs', 'ClusterControlPlaneEndpointsConfigArgsDict']]] = None,
             cost_management_config: Optional[pulumi.Input[Union['ClusterCostManagementConfigArgs', 'ClusterCostManagementConfigArgsDict']]] = None,
             database_encryption: Optional[pulumi.Input[Union['ClusterDatabaseEncryptionArgs', 'ClusterDatabaseEncryptionArgsDict']]] = None,
             datapath_provider: Optional[pulumi.Input[str]] = None,
@@ -3767,6 +3845,7 @@ class Cluster(pulumi.CustomResource):
             subnetwork: Optional[pulumi.Input[str]] = None,
             tpu_config: Optional[pulumi.Input[Union['ClusterTpuConfigArgs', 'ClusterTpuConfigArgsDict']]] = None,
             tpu_ipv4_cidr_block: Optional[pulumi.Input[str]] = None,
+            user_managed_keys_config: Optional[pulumi.Input[Union['ClusterUserManagedKeysConfigArgs', 'ClusterUserManagedKeysConfigArgsDict']]] = None,
             vertical_pod_autoscaling: Optional[pulumi.Input[Union['ClusterVerticalPodAutoscalingArgs', 'ClusterVerticalPodAutoscalingArgsDict']]] = None,
             workload_alts_config: Optional[pulumi.Input[Union['ClusterWorkloadAltsConfigArgs', 'ClusterWorkloadAltsConfigArgsDict']]] = None,
             workload_identity_config: Optional[pulumi.Input[Union['ClusterWorkloadIdentityConfigArgs', 'ClusterWorkloadIdentityConfigArgsDict']]] = None) -> 'Cluster':
@@ -3800,6 +3879,8 @@ class Cluster(pulumi.CustomResource):
                [ClusterTelemetry](https://cloud.google.com/monitoring/kubernetes-engine/installing#controlling_the_collection_of_application_logs) feature,
                Structure is documented below.
         :param pulumi.Input[Union['ClusterConfidentialNodesArgs', 'ClusterConfidentialNodesArgsDict']] confidential_nodes: Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
+        :param pulumi.Input[Union['ClusterControlPlaneEndpointsConfigArgs', 'ClusterControlPlaneEndpointsConfigArgsDict']] control_plane_endpoints_config: Configuration for all of the cluster's control plane endpoints.
+               Structure is documented below.
         :param pulumi.Input[Union['ClusterCostManagementConfigArgs', 'ClusterCostManagementConfigArgsDict']] cost_management_config: Configuration for the
                [Cost Allocation](https://cloud.google.com/kubernetes-engine/docs/how-to/cost-allocations) feature.
                Structure is documented below.
@@ -3991,6 +4072,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] tpu_ipv4_cidr_block: The IP address range of the Cloud TPUs in this cluster, in
                [CIDR](http://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing)
                notation (e.g. `1.2.3.4/29`).
+        :param pulumi.Input[Union['ClusterUserManagedKeysConfigArgs', 'ClusterUserManagedKeysConfigArgsDict']] user_managed_keys_config: The custom keys configuration of the cluster.
         :param pulumi.Input[Union['ClusterVerticalPodAutoscalingArgs', 'ClusterVerticalPodAutoscalingArgsDict']] vertical_pod_autoscaling: Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
                Structure is documented below.
         :param pulumi.Input[Union['ClusterWorkloadAltsConfigArgs', 'ClusterWorkloadAltsConfigArgsDict']] workload_alts_config: Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
@@ -4012,6 +4094,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["cluster_ipv4_cidr"] = cluster_ipv4_cidr
         __props__.__dict__["cluster_telemetry"] = cluster_telemetry
         __props__.__dict__["confidential_nodes"] = confidential_nodes
+        __props__.__dict__["control_plane_endpoints_config"] = control_plane_endpoints_config
         __props__.__dict__["cost_management_config"] = cost_management_config
         __props__.__dict__["database_encryption"] = database_encryption
         __props__.__dict__["datapath_provider"] = datapath_provider
@@ -4080,6 +4163,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["subnetwork"] = subnetwork
         __props__.__dict__["tpu_config"] = tpu_config
         __props__.__dict__["tpu_ipv4_cidr_block"] = tpu_ipv4_cidr_block
+        __props__.__dict__["user_managed_keys_config"] = user_managed_keys_config
         __props__.__dict__["vertical_pod_autoscaling"] = vertical_pod_autoscaling
         __props__.__dict__["workload_alts_config"] = workload_alts_config
         __props__.__dict__["workload_identity_config"] = workload_identity_config
@@ -4163,6 +4247,15 @@ class Cluster(pulumi.CustomResource):
         Configuration for [Confidential Nodes](https://cloud.google.com/kubernetes-engine/docs/how-to/confidential-gke-nodes) feature. Structure is documented below documented below.
         """
         return pulumi.get(self, "confidential_nodes")
+
+    @property
+    @pulumi.getter(name="controlPlaneEndpointsConfig")
+    def control_plane_endpoints_config(self) -> pulumi.Output['outputs.ClusterControlPlaneEndpointsConfig']:
+        """
+        Configuration for all of the cluster's control plane endpoints.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "control_plane_endpoints_config")
 
     @property
     @pulumi.getter(name="costManagementConfig")
@@ -4826,6 +4919,14 @@ class Cluster(pulumi.CustomResource):
         notation (e.g. `1.2.3.4/29`).
         """
         return pulumi.get(self, "tpu_ipv4_cidr_block")
+
+    @property
+    @pulumi.getter(name="userManagedKeysConfig")
+    def user_managed_keys_config(self) -> pulumi.Output[Optional['outputs.ClusterUserManagedKeysConfig']]:
+        """
+        The custom keys configuration of the cluster.
+        """
+        return pulumi.get(self, "user_managed_keys_config")
 
     @property
     @pulumi.getter(name="verticalPodAutoscaling")

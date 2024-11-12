@@ -13,13 +13,447 @@ if sys.version_info >= (3, 11):
 else:
     from typing_extensions import NotRequired, TypedDict, TypeAlias
 from .. import _utilities
+from . import outputs
 
 __all__ = [
+    'BackupPlanAssociationRulesConfigInfo',
+    'BackupPlanAssociationRulesConfigInfoLastBackupError',
+    'BackupPlanBackupRule',
+    'BackupPlanBackupRuleStandardSchedule',
+    'BackupPlanBackupRuleStandardScheduleBackupWindow',
+    'BackupPlanBackupRuleStandardScheduleWeekDayOfMonth',
     'ManagementServerManagementUri',
     'ManagementServerNetwork',
+    'GetBackupPlanAssociationRulesConfigInfoResult',
+    'GetBackupPlanAssociationRulesConfigInfoLastBackupErrorResult',
+    'GetBackupPlanBackupRuleResult',
+    'GetBackupPlanBackupRuleStandardScheduleResult',
+    'GetBackupPlanBackupRuleStandardScheduleBackupWindowResult',
+    'GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthResult',
     'GetManagementServerManagementUriResult',
     'GetManagementServerNetworkResult',
 ]
+
+@pulumi.output_type
+class BackupPlanAssociationRulesConfigInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "lastBackupErrors":
+            suggest = "last_backup_errors"
+        elif key == "lastBackupState":
+            suggest = "last_backup_state"
+        elif key == "ruleId":
+            suggest = "rule_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BackupPlanAssociationRulesConfigInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BackupPlanAssociationRulesConfigInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BackupPlanAssociationRulesConfigInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 last_backup_errors: Optional[Sequence['outputs.BackupPlanAssociationRulesConfigInfoLastBackupError']] = None,
+                 last_backup_state: Optional[str] = None,
+                 rule_id: Optional[str] = None):
+        """
+        :param Sequence['BackupPlanAssociationRulesConfigInfoLastBackupErrorArgs'] last_backup_errors: (Output)
+               google.rpc.Status object to store the last backup error
+               Structure is documented below.
+        :param str last_backup_state: (Output)
+               State of last backup taken.
+        :param str rule_id: (Output)
+               Backup Rule id fetched from backup plan.
+        """
+        if last_backup_errors is not None:
+            pulumi.set(__self__, "last_backup_errors", last_backup_errors)
+        if last_backup_state is not None:
+            pulumi.set(__self__, "last_backup_state", last_backup_state)
+        if rule_id is not None:
+            pulumi.set(__self__, "rule_id", rule_id)
+
+    @property
+    @pulumi.getter(name="lastBackupErrors")
+    def last_backup_errors(self) -> Optional[Sequence['outputs.BackupPlanAssociationRulesConfigInfoLastBackupError']]:
+        """
+        (Output)
+        google.rpc.Status object to store the last backup error
+        Structure is documented below.
+        """
+        return pulumi.get(self, "last_backup_errors")
+
+    @property
+    @pulumi.getter(name="lastBackupState")
+    def last_backup_state(self) -> Optional[str]:
+        """
+        (Output)
+        State of last backup taken.
+        """
+        return pulumi.get(self, "last_backup_state")
+
+    @property
+    @pulumi.getter(name="ruleId")
+    def rule_id(self) -> Optional[str]:
+        """
+        (Output)
+        Backup Rule id fetched from backup plan.
+        """
+        return pulumi.get(self, "rule_id")
+
+
+@pulumi.output_type
+class BackupPlanAssociationRulesConfigInfoLastBackupError(dict):
+    def __init__(__self__, *,
+                 code: Optional[float] = None,
+                 message: Optional[str] = None):
+        """
+        :param float code: (Output)
+               The status code, which should be an enum value of [google.rpc.Code]
+        :param str message: (Output)
+               A developer-facing error message, which should be in English.
+        """
+        if code is not None:
+            pulumi.set(__self__, "code", code)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+
+    @property
+    @pulumi.getter
+    def code(self) -> Optional[float]:
+        """
+        (Output)
+        The status code, which should be an enum value of [google.rpc.Code]
+        """
+        return pulumi.get(self, "code")
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[str]:
+        """
+        (Output)
+        A developer-facing error message, which should be in English.
+        """
+        return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class BackupPlanBackupRule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "backupRetentionDays":
+            suggest = "backup_retention_days"
+        elif key == "ruleId":
+            suggest = "rule_id"
+        elif key == "standardSchedule":
+            suggest = "standard_schedule"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BackupPlanBackupRule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BackupPlanBackupRule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BackupPlanBackupRule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 backup_retention_days: int,
+                 rule_id: str,
+                 standard_schedule: 'outputs.BackupPlanBackupRuleStandardSchedule'):
+        """
+        :param int backup_retention_days: Configures the duration for which backup data will be kept. The value should be greater than or equal to minimum enforced retention of the backup vault.
+        :param str rule_id: The unique ID of this `BackupRule`. The `rule_id` is unique per `BackupPlan`.
+        :param 'BackupPlanBackupRuleStandardScheduleArgs' standard_schedule: StandardSchedule defines a schedule that runs within the confines of a defined window of days.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "backup_retention_days", backup_retention_days)
+        pulumi.set(__self__, "rule_id", rule_id)
+        pulumi.set(__self__, "standard_schedule", standard_schedule)
+
+    @property
+    @pulumi.getter(name="backupRetentionDays")
+    def backup_retention_days(self) -> int:
+        """
+        Configures the duration for which backup data will be kept. The value should be greater than or equal to minimum enforced retention of the backup vault.
+        """
+        return pulumi.get(self, "backup_retention_days")
+
+    @property
+    @pulumi.getter(name="ruleId")
+    def rule_id(self) -> str:
+        """
+        The unique ID of this `BackupRule`. The `rule_id` is unique per `BackupPlan`.
+        """
+        return pulumi.get(self, "rule_id")
+
+    @property
+    @pulumi.getter(name="standardSchedule")
+    def standard_schedule(self) -> 'outputs.BackupPlanBackupRuleStandardSchedule':
+        """
+        StandardSchedule defines a schedule that runs within the confines of a defined window of days.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "standard_schedule")
+
+
+@pulumi.output_type
+class BackupPlanBackupRuleStandardSchedule(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "recurrenceType":
+            suggest = "recurrence_type"
+        elif key == "timeZone":
+            suggest = "time_zone"
+        elif key == "backupWindow":
+            suggest = "backup_window"
+        elif key == "daysOfMonths":
+            suggest = "days_of_months"
+        elif key == "daysOfWeeks":
+            suggest = "days_of_weeks"
+        elif key == "hourlyFrequency":
+            suggest = "hourly_frequency"
+        elif key == "weekDayOfMonth":
+            suggest = "week_day_of_month"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BackupPlanBackupRuleStandardSchedule. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BackupPlanBackupRuleStandardSchedule.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BackupPlanBackupRuleStandardSchedule.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 recurrence_type: str,
+                 time_zone: str,
+                 backup_window: Optional['outputs.BackupPlanBackupRuleStandardScheduleBackupWindow'] = None,
+                 days_of_months: Optional[Sequence[int]] = None,
+                 days_of_weeks: Optional[Sequence[str]] = None,
+                 hourly_frequency: Optional[int] = None,
+                 months: Optional[Sequence[str]] = None,
+                 week_day_of_month: Optional['outputs.BackupPlanBackupRuleStandardScheduleWeekDayOfMonth'] = None):
+        """
+        :param str recurrence_type: RecurrenceType enumerates the applicable periodicity for the schedule.
+               Possible values are: `HOURLY`, `DAILY`, `WEEKLY`, `MONTHLY`, `YEARLY`.
+        :param str time_zone: The time zone to be used when interpreting the schedule.
+        :param 'BackupPlanBackupRuleStandardScheduleBackupWindowArgs' backup_window: A BackupWindow defines the window of the day during which backup jobs will run. Jobs are queued at the beginning of the window and will be marked as
+               `NOT_RUN` if they do not start by the end of the window.
+               Structure is documented below.
+        :param Sequence[int] days_of_months: Specifies days of months like 1, 5, or 14 on which jobs will run.
+        :param Sequence[str] days_of_weeks: Specifies days of week like MONDAY or TUESDAY, on which jobs will run. This is required for `recurrence_type`, `WEEKLY` and is not applicable otherwise.
+               Each value may be one of: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`.
+        :param int hourly_frequency: Specifies frequency for hourly backups. An hourly frequency of 2 means jobs will run every 2 hours from start time till end time defined.
+               This is required for `recurrence_type`, `HOURLY` and is not applicable otherwise.
+        :param Sequence[str] months: Specifies values of months
+               Each value may be one of: `MONTH_UNSPECIFIED`, `JANUARY`, `FEBRUARY`, `MARCH`, `APRIL`, `MAY`, `JUNE`, `JULY`, `AUGUST`, `SEPTEMBER`, `OCTOBER`, `NOVEMBER`, `DECEMBER`.
+        :param 'BackupPlanBackupRuleStandardScheduleWeekDayOfMonthArgs' week_day_of_month: Specifies a week day of the month like FIRST SUNDAY or LAST MONDAY, on which jobs will run.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "recurrence_type", recurrence_type)
+        pulumi.set(__self__, "time_zone", time_zone)
+        if backup_window is not None:
+            pulumi.set(__self__, "backup_window", backup_window)
+        if days_of_months is not None:
+            pulumi.set(__self__, "days_of_months", days_of_months)
+        if days_of_weeks is not None:
+            pulumi.set(__self__, "days_of_weeks", days_of_weeks)
+        if hourly_frequency is not None:
+            pulumi.set(__self__, "hourly_frequency", hourly_frequency)
+        if months is not None:
+            pulumi.set(__self__, "months", months)
+        if week_day_of_month is not None:
+            pulumi.set(__self__, "week_day_of_month", week_day_of_month)
+
+    @property
+    @pulumi.getter(name="recurrenceType")
+    def recurrence_type(self) -> str:
+        """
+        RecurrenceType enumerates the applicable periodicity for the schedule.
+        Possible values are: `HOURLY`, `DAILY`, `WEEKLY`, `MONTHLY`, `YEARLY`.
+        """
+        return pulumi.get(self, "recurrence_type")
+
+    @property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> str:
+        """
+        The time zone to be used when interpreting the schedule.
+        """
+        return pulumi.get(self, "time_zone")
+
+    @property
+    @pulumi.getter(name="backupWindow")
+    def backup_window(self) -> Optional['outputs.BackupPlanBackupRuleStandardScheduleBackupWindow']:
+        """
+        A BackupWindow defines the window of the day during which backup jobs will run. Jobs are queued at the beginning of the window and will be marked as
+        `NOT_RUN` if they do not start by the end of the window.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "backup_window")
+
+    @property
+    @pulumi.getter(name="daysOfMonths")
+    def days_of_months(self) -> Optional[Sequence[int]]:
+        """
+        Specifies days of months like 1, 5, or 14 on which jobs will run.
+        """
+        return pulumi.get(self, "days_of_months")
+
+    @property
+    @pulumi.getter(name="daysOfWeeks")
+    def days_of_weeks(self) -> Optional[Sequence[str]]:
+        """
+        Specifies days of week like MONDAY or TUESDAY, on which jobs will run. This is required for `recurrence_type`, `WEEKLY` and is not applicable otherwise.
+        Each value may be one of: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`.
+        """
+        return pulumi.get(self, "days_of_weeks")
+
+    @property
+    @pulumi.getter(name="hourlyFrequency")
+    def hourly_frequency(self) -> Optional[int]:
+        """
+        Specifies frequency for hourly backups. An hourly frequency of 2 means jobs will run every 2 hours from start time till end time defined.
+        This is required for `recurrence_type`, `HOURLY` and is not applicable otherwise.
+        """
+        return pulumi.get(self, "hourly_frequency")
+
+    @property
+    @pulumi.getter
+    def months(self) -> Optional[Sequence[str]]:
+        """
+        Specifies values of months
+        Each value may be one of: `MONTH_UNSPECIFIED`, `JANUARY`, `FEBRUARY`, `MARCH`, `APRIL`, `MAY`, `JUNE`, `JULY`, `AUGUST`, `SEPTEMBER`, `OCTOBER`, `NOVEMBER`, `DECEMBER`.
+        """
+        return pulumi.get(self, "months")
+
+    @property
+    @pulumi.getter(name="weekDayOfMonth")
+    def week_day_of_month(self) -> Optional['outputs.BackupPlanBackupRuleStandardScheduleWeekDayOfMonth']:
+        """
+        Specifies a week day of the month like FIRST SUNDAY or LAST MONDAY, on which jobs will run.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "week_day_of_month")
+
+
+@pulumi.output_type
+class BackupPlanBackupRuleStandardScheduleBackupWindow(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "startHourOfDay":
+            suggest = "start_hour_of_day"
+        elif key == "endHourOfDay":
+            suggest = "end_hour_of_day"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BackupPlanBackupRuleStandardScheduleBackupWindow. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BackupPlanBackupRuleStandardScheduleBackupWindow.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BackupPlanBackupRuleStandardScheduleBackupWindow.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 start_hour_of_day: int,
+                 end_hour_of_day: Optional[int] = None):
+        """
+        :param int start_hour_of_day: The hour of the day (0-23) when the window starts, for example, if the value of the start hour of the day is 6, that means the backup window starts at 6:00.
+        :param int end_hour_of_day: The hour of the day (1-24) when the window ends, for example, if the value of end hour of the day is 10, that means the backup window end time is 10:00.
+               The end hour of the day should be greater than the start
+               
+               - - -
+        """
+        pulumi.set(__self__, "start_hour_of_day", start_hour_of_day)
+        if end_hour_of_day is not None:
+            pulumi.set(__self__, "end_hour_of_day", end_hour_of_day)
+
+    @property
+    @pulumi.getter(name="startHourOfDay")
+    def start_hour_of_day(self) -> int:
+        """
+        The hour of the day (0-23) when the window starts, for example, if the value of the start hour of the day is 6, that means the backup window starts at 6:00.
+        """
+        return pulumi.get(self, "start_hour_of_day")
+
+    @property
+    @pulumi.getter(name="endHourOfDay")
+    def end_hour_of_day(self) -> Optional[int]:
+        """
+        The hour of the day (1-24) when the window ends, for example, if the value of end hour of the day is 10, that means the backup window end time is 10:00.
+        The end hour of the day should be greater than the start
+
+        - - -
+        """
+        return pulumi.get(self, "end_hour_of_day")
+
+
+@pulumi.output_type
+class BackupPlanBackupRuleStandardScheduleWeekDayOfMonth(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "dayOfWeek":
+            suggest = "day_of_week"
+        elif key == "weekOfMonth":
+            suggest = "week_of_month"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in BackupPlanBackupRuleStandardScheduleWeekDayOfMonth. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        BackupPlanBackupRuleStandardScheduleWeekDayOfMonth.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        BackupPlanBackupRuleStandardScheduleWeekDayOfMonth.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 day_of_week: str,
+                 week_of_month: str):
+        """
+        :param str day_of_week: Specifies the day of the week.
+               Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+        :param str week_of_month: WeekOfMonth enumerates possible weeks in the month, e.g. the first, third, or last week of the month.
+               Possible values are: `WEEK_OF_MONTH_UNSPECIFIED`, `FIRST`, `SECOND`, `THIRD`, `FOURTH`, `LAST`.
+        """
+        pulumi.set(__self__, "day_of_week", day_of_week)
+        pulumi.set(__self__, "week_of_month", week_of_month)
+
+    @property
+    @pulumi.getter(name="dayOfWeek")
+    def day_of_week(self) -> str:
+        """
+        Specifies the day of the week.
+        Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+        """
+        return pulumi.get(self, "day_of_week")
+
+    @property
+    @pulumi.getter(name="weekOfMonth")
+    def week_of_month(self) -> str:
+        """
+        WeekOfMonth enumerates possible weeks in the month, e.g. the first, third, or last week of the month.
+        Possible values are: `WEEK_OF_MONTH_UNSPECIFIED`, `FIRST`, `SECOND`, `THIRD`, `FOURTH`, `LAST`.
+        """
+        return pulumi.get(self, "week_of_month")
+
 
 @pulumi.output_type
 class ManagementServerManagementUri(dict):
@@ -122,6 +556,274 @@ class ManagementServerNetwork(dict):
         Possible values are: `PRIVATE_SERVICE_ACCESS`.
         """
         return pulumi.get(self, "peering_mode")
+
+
+@pulumi.output_type
+class GetBackupPlanAssociationRulesConfigInfoResult(dict):
+    def __init__(__self__, *,
+                 last_backup_errors: Sequence['outputs.GetBackupPlanAssociationRulesConfigInfoLastBackupErrorResult'],
+                 last_backup_state: str,
+                 rule_id: str):
+        """
+        :param Sequence['GetBackupPlanAssociationRulesConfigInfoLastBackupErrorArgs'] last_backup_errors: google.rpc.Status object to store the last backup error
+        :param str last_backup_state: State of last backup taken.
+        :param str rule_id: Backup Rule id fetched from backup plan.
+        """
+        pulumi.set(__self__, "last_backup_errors", last_backup_errors)
+        pulumi.set(__self__, "last_backup_state", last_backup_state)
+        pulumi.set(__self__, "rule_id", rule_id)
+
+    @property
+    @pulumi.getter(name="lastBackupErrors")
+    def last_backup_errors(self) -> Sequence['outputs.GetBackupPlanAssociationRulesConfigInfoLastBackupErrorResult']:
+        """
+        google.rpc.Status object to store the last backup error
+        """
+        return pulumi.get(self, "last_backup_errors")
+
+    @property
+    @pulumi.getter(name="lastBackupState")
+    def last_backup_state(self) -> str:
+        """
+        State of last backup taken.
+        """
+        return pulumi.get(self, "last_backup_state")
+
+    @property
+    @pulumi.getter(name="ruleId")
+    def rule_id(self) -> str:
+        """
+        Backup Rule id fetched from backup plan.
+        """
+        return pulumi.get(self, "rule_id")
+
+
+@pulumi.output_type
+class GetBackupPlanAssociationRulesConfigInfoLastBackupErrorResult(dict):
+    def __init__(__self__, *,
+                 code: float,
+                 message: str):
+        """
+        :param float code: The status code, which should be an enum value of [google.rpc.Code]
+        :param str message: A developer-facing error message, which should be in English.
+        """
+        pulumi.set(__self__, "code", code)
+        pulumi.set(__self__, "message", message)
+
+    @property
+    @pulumi.getter
+    def code(self) -> float:
+        """
+        The status code, which should be an enum value of [google.rpc.Code]
+        """
+        return pulumi.get(self, "code")
+
+    @property
+    @pulumi.getter
+    def message(self) -> str:
+        """
+        A developer-facing error message, which should be in English.
+        """
+        return pulumi.get(self, "message")
+
+
+@pulumi.output_type
+class GetBackupPlanBackupRuleResult(dict):
+    def __init__(__self__, *,
+                 backup_retention_days: int,
+                 rule_id: str,
+                 standard_schedules: Sequence['outputs.GetBackupPlanBackupRuleStandardScheduleResult']):
+        """
+        :param int backup_retention_days: Configures the duration for which backup data will be kept. The value should be greater than or equal to minimum enforced retention of the backup vault.
+        :param str rule_id: The unique ID of this 'BackupRule'. The 'rule_id' is unique per 'BackupPlan'.
+        :param Sequence['GetBackupPlanBackupRuleStandardScheduleArgs'] standard_schedules: StandardSchedule defines a schedule that runs within the confines of a defined window of days.
+        """
+        pulumi.set(__self__, "backup_retention_days", backup_retention_days)
+        pulumi.set(__self__, "rule_id", rule_id)
+        pulumi.set(__self__, "standard_schedules", standard_schedules)
+
+    @property
+    @pulumi.getter(name="backupRetentionDays")
+    def backup_retention_days(self) -> int:
+        """
+        Configures the duration for which backup data will be kept. The value should be greater than or equal to minimum enforced retention of the backup vault.
+        """
+        return pulumi.get(self, "backup_retention_days")
+
+    @property
+    @pulumi.getter(name="ruleId")
+    def rule_id(self) -> str:
+        """
+        The unique ID of this 'BackupRule'. The 'rule_id' is unique per 'BackupPlan'.
+        """
+        return pulumi.get(self, "rule_id")
+
+    @property
+    @pulumi.getter(name="standardSchedules")
+    def standard_schedules(self) -> Sequence['outputs.GetBackupPlanBackupRuleStandardScheduleResult']:
+        """
+        StandardSchedule defines a schedule that runs within the confines of a defined window of days.
+        """
+        return pulumi.get(self, "standard_schedules")
+
+
+@pulumi.output_type
+class GetBackupPlanBackupRuleStandardScheduleResult(dict):
+    def __init__(__self__, *,
+                 backup_windows: Sequence['outputs.GetBackupPlanBackupRuleStandardScheduleBackupWindowResult'],
+                 days_of_months: Sequence[int],
+                 days_of_weeks: Sequence[str],
+                 hourly_frequency: int,
+                 months: Sequence[str],
+                 recurrence_type: str,
+                 time_zone: str,
+                 week_day_of_months: Sequence['outputs.GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthResult']):
+        """
+        :param Sequence['GetBackupPlanBackupRuleStandardScheduleBackupWindowArgs'] backup_windows: A BackupWindow defines the window of the day during which backup jobs will run. Jobs are queued at the beginning of the window and will be marked as
+               'NOT_RUN' if they do not start by the end of the window.
+        :param Sequence[int] days_of_months: Specifies days of months like 1, 5, or 14 on which jobs will run.
+        :param Sequence[str] days_of_weeks: Specifies days of week like MONDAY or TUESDAY, on which jobs will run. This is required for 'recurrence_type', 'WEEKLY' and is not applicable otherwise. Possible values: ["DAY_OF_WEEK_UNSPECIFIED", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"]
+        :param int hourly_frequency: Specifies frequency for hourly backups. An hourly frequency of 2 means jobs will run every 2 hours from start time till end time defined.
+               This is required for 'recurrence_type', 'HOURLY' and is not applicable otherwise.
+        :param Sequence[str] months: Specifies values of months Possible values: ["MONTH_UNSPECIFIED", "JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE", "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER"]
+        :param str recurrence_type: RecurrenceType enumerates the applicable periodicity for the schedule. Possible values: ["HOURLY", "DAILY", "WEEKLY", "MONTHLY", "YEARLY"]
+        :param str time_zone: The time zone to be used when interpreting the schedule.
+        :param Sequence['GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthArgs'] week_day_of_months: Specifies a week day of the month like FIRST SUNDAY or LAST MONDAY, on which jobs will run.
+        """
+        pulumi.set(__self__, "backup_windows", backup_windows)
+        pulumi.set(__self__, "days_of_months", days_of_months)
+        pulumi.set(__self__, "days_of_weeks", days_of_weeks)
+        pulumi.set(__self__, "hourly_frequency", hourly_frequency)
+        pulumi.set(__self__, "months", months)
+        pulumi.set(__self__, "recurrence_type", recurrence_type)
+        pulumi.set(__self__, "time_zone", time_zone)
+        pulumi.set(__self__, "week_day_of_months", week_day_of_months)
+
+    @property
+    @pulumi.getter(name="backupWindows")
+    def backup_windows(self) -> Sequence['outputs.GetBackupPlanBackupRuleStandardScheduleBackupWindowResult']:
+        """
+        A BackupWindow defines the window of the day during which backup jobs will run. Jobs are queued at the beginning of the window and will be marked as
+        'NOT_RUN' if they do not start by the end of the window.
+        """
+        return pulumi.get(self, "backup_windows")
+
+    @property
+    @pulumi.getter(name="daysOfMonths")
+    def days_of_months(self) -> Sequence[int]:
+        """
+        Specifies days of months like 1, 5, or 14 on which jobs will run.
+        """
+        return pulumi.get(self, "days_of_months")
+
+    @property
+    @pulumi.getter(name="daysOfWeeks")
+    def days_of_weeks(self) -> Sequence[str]:
+        """
+        Specifies days of week like MONDAY or TUESDAY, on which jobs will run. This is required for 'recurrence_type', 'WEEKLY' and is not applicable otherwise. Possible values: ["DAY_OF_WEEK_UNSPECIFIED", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"]
+        """
+        return pulumi.get(self, "days_of_weeks")
+
+    @property
+    @pulumi.getter(name="hourlyFrequency")
+    def hourly_frequency(self) -> int:
+        """
+        Specifies frequency for hourly backups. An hourly frequency of 2 means jobs will run every 2 hours from start time till end time defined.
+        This is required for 'recurrence_type', 'HOURLY' and is not applicable otherwise.
+        """
+        return pulumi.get(self, "hourly_frequency")
+
+    @property
+    @pulumi.getter
+    def months(self) -> Sequence[str]:
+        """
+        Specifies values of months Possible values: ["MONTH_UNSPECIFIED", "JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE", "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER"]
+        """
+        return pulumi.get(self, "months")
+
+    @property
+    @pulumi.getter(name="recurrenceType")
+    def recurrence_type(self) -> str:
+        """
+        RecurrenceType enumerates the applicable periodicity for the schedule. Possible values: ["HOURLY", "DAILY", "WEEKLY", "MONTHLY", "YEARLY"]
+        """
+        return pulumi.get(self, "recurrence_type")
+
+    @property
+    @pulumi.getter(name="timeZone")
+    def time_zone(self) -> str:
+        """
+        The time zone to be used when interpreting the schedule.
+        """
+        return pulumi.get(self, "time_zone")
+
+    @property
+    @pulumi.getter(name="weekDayOfMonths")
+    def week_day_of_months(self) -> Sequence['outputs.GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthResult']:
+        """
+        Specifies a week day of the month like FIRST SUNDAY or LAST MONDAY, on which jobs will run.
+        """
+        return pulumi.get(self, "week_day_of_months")
+
+
+@pulumi.output_type
+class GetBackupPlanBackupRuleStandardScheduleBackupWindowResult(dict):
+    def __init__(__self__, *,
+                 end_hour_of_day: int,
+                 start_hour_of_day: int):
+        """
+        :param int end_hour_of_day: The hour of the day (1-24) when the window ends, for example, if the value of end hour of the day is 10, that means the backup window end time is 10:00.
+               The end hour of the day should be greater than the start
+        :param int start_hour_of_day: The hour of the day (0-23) when the window starts, for example, if the value of the start hour of the day is 6, that means the backup window starts at 6:00.
+        """
+        pulumi.set(__self__, "end_hour_of_day", end_hour_of_day)
+        pulumi.set(__self__, "start_hour_of_day", start_hour_of_day)
+
+    @property
+    @pulumi.getter(name="endHourOfDay")
+    def end_hour_of_day(self) -> int:
+        """
+        The hour of the day (1-24) when the window ends, for example, if the value of end hour of the day is 10, that means the backup window end time is 10:00.
+        The end hour of the day should be greater than the start
+        """
+        return pulumi.get(self, "end_hour_of_day")
+
+    @property
+    @pulumi.getter(name="startHourOfDay")
+    def start_hour_of_day(self) -> int:
+        """
+        The hour of the day (0-23) when the window starts, for example, if the value of the start hour of the day is 6, that means the backup window starts at 6:00.
+        """
+        return pulumi.get(self, "start_hour_of_day")
+
+
+@pulumi.output_type
+class GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthResult(dict):
+    def __init__(__self__, *,
+                 day_of_week: str,
+                 week_of_month: str):
+        """
+        :param str day_of_week: Specifies the day of the week. Possible values: ["DAY_OF_WEEK_UNSPECIFIED", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
+        :param str week_of_month: WeekOfMonth enumerates possible weeks in the month, e.g. the first, third, or last week of the month. Possible values: ["WEEK_OF_MONTH_UNSPECIFIED", "FIRST", "SECOND", "THIRD", "FOURTH", "LAST"]
+        """
+        pulumi.set(__self__, "day_of_week", day_of_week)
+        pulumi.set(__self__, "week_of_month", week_of_month)
+
+    @property
+    @pulumi.getter(name="dayOfWeek")
+    def day_of_week(self) -> str:
+        """
+        Specifies the day of the week. Possible values: ["DAY_OF_WEEK_UNSPECIFIED", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
+        """
+        return pulumi.get(self, "day_of_week")
+
+    @property
+    @pulumi.getter(name="weekOfMonth")
+    def week_of_month(self) -> str:
+        """
+        WeekOfMonth enumerates possible weeks in the month, e.g. the first, third, or last week of the month. Possible values: ["WEEK_OF_MONTH_UNSPECIFIED", "FIRST", "SECOND", "THIRD", "FOURTH", "LAST"]
+        """
+        return pulumi.get(self, "week_of_month")
 
 
 @pulumi.output_type

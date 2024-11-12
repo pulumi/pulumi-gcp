@@ -669,7 +669,7 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
             })
         basic_value = gcp.tags.TagValue("basic_value",
             description="For valuename resources.",
-            parent=basic_key.name.apply(lambda name: f"tagKeys/{name}"),
+            parent=basic_key.id,
             short_name="tagvalue")
         primary = gcp.compute.RegionNetworkFirewallPolicyRule("primary",
             action="allow",
@@ -691,7 +691,7 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
                     "ip_protocol": "all",
                 }],
                 "src_secure_tags": [{
-                    "name": basic_value.name.apply(lambda name: f"tagValues/{name}"),
+                    "name": basic_value.id,
                 }],
                 "src_address_groups": [basic_regional_networksecurity_address_group.id],
             })
@@ -804,7 +804,7 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
             })
         basic_value = gcp.tags.TagValue("basic_value",
             description="For valuename resources.",
-            parent=basic_key.name.apply(lambda name: f"tagKeys/{name}"),
+            parent=basic_key.id,
             short_name="tagvalue")
         primary = gcp.compute.RegionNetworkFirewallPolicyRule("primary",
             action="allow",
@@ -826,7 +826,7 @@ class RegionNetworkFirewallPolicyRule(pulumi.CustomResource):
                     "ip_protocol": "all",
                 }],
                 "src_secure_tags": [{
-                    "name": basic_value.name.apply(lambda name: f"tagValues/{name}"),
+                    "name": basic_value.id,
                 }],
                 "src_address_groups": [basic_regional_networksecurity_address_group.id],
             })

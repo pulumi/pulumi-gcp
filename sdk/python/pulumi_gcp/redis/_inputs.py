@@ -735,7 +735,7 @@ if not MYPY:
     class ClusterStateInfoArgsDict(TypedDict):
         update_info: NotRequired[pulumi.Input['ClusterStateInfoUpdateInfoArgsDict']]
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
 elif False:
@@ -746,7 +746,7 @@ class ClusterStateInfoArgs:
     def __init__(__self__, *,
                  update_info: Optional[pulumi.Input['ClusterStateInfoUpdateInfoArgs']] = None):
         """
-        :param pulumi.Input['ClusterStateInfoUpdateInfoArgs'] update_info: A nested object resource
+        :param pulumi.Input['ClusterStateInfoUpdateInfoArgs'] update_info: A nested object resource.
                Structure is documented below.
         """
         if update_info is not None:
@@ -756,7 +756,7 @@ class ClusterStateInfoArgs:
     @pulumi.getter(name="updateInfo")
     def update_info(self) -> Optional[pulumi.Input['ClusterStateInfoUpdateInfoArgs']]:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "update_info")

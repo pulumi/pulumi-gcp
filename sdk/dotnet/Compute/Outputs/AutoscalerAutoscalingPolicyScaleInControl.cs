@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Compute.Outputs
     public sealed class AutoscalerAutoscalingPolicyScaleInControl
     {
         /// <summary>
-        /// A nested object resource
+        /// A nested object resource.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.AutoscalerAutoscalingPolicyScaleInControlMaxScaledInReplicas? MaxScaledInReplicas;

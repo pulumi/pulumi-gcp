@@ -15,7 +15,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class BareMetalAdminClusterLoadBalancer {
     /**
-     * @return A nested object resource
+     * @return A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -35,7 +35,7 @@ public final class BareMetalAdminClusterLoadBalancer {
 
     private BareMetalAdminClusterLoadBalancer() {}
     /**
-     * @return A nested object resource
+     * @return A nested object resource.
      * Structure is documented below.
      * 
      */

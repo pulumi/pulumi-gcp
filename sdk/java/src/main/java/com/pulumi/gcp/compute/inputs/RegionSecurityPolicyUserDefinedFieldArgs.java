@@ -62,14 +62,14 @@ public final class RegionSecurityPolicyUserDefinedFieldArgs extends com.pulumi.r
     }
 
     /**
-     * The name of this field. Must be unique within the policy.
+     * Name of the user-defined field, as given in the definition.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return The name of this field. Must be unique within the policy.
+     * @return Name of the user-defined field, as given in the definition.
      * 
      */
     public Optional<Output<String>> name() {
@@ -191,7 +191,7 @@ public final class RegionSecurityPolicyUserDefinedFieldArgs extends com.pulumi.r
         }
 
         /**
-         * @param name The name of this field. Must be unique within the policy.
+         * @param name Name of the user-defined field, as given in the definition.
          * 
          * @return builder
          * 
@@ -202,7 +202,7 @@ public final class RegionSecurityPolicyUserDefinedFieldArgs extends com.pulumi.r
         }
 
         /**
-         * @param name The name of this field. Must be unique within the policy.
+         * @param name Name of the user-defined field, as given in the definition.
          * 
          * @return builder
          * 

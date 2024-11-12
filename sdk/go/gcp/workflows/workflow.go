@@ -55,6 +55,7 @@ import (
 //				UserEnvVars: pulumi.StringMap{
 //					"url": pulumi.String("https://timeapi.io/api/Time/current/zone?timeZone=Europe/Amsterdam"),
 //				},
+//				DeletionProtection: pulumi.Bool(false),
 //				SourceContents: pulumi.String(`# This is a sample workflow. You can replace it with your source code.
 //
 // #
@@ -110,7 +111,8 @@ type Workflow struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The KMS key used to encrypt workflow and execution data.
 	// Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
-	CryptoKeyName pulumi.StringPtrOutput `pulumi:"cryptoKeyName"`
+	CryptoKeyName      pulumi.StringPtrOutput `pulumi:"cryptoKeyName"`
+	DeletionProtection pulumi.BoolPtrOutput   `pulumi:"deletionProtection"`
 	// Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
 	Description pulumi.StringOutput `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -197,7 +199,8 @@ type workflowState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// The KMS key used to encrypt workflow and execution data.
 	// Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
-	CryptoKeyName *string `pulumi:"cryptoKeyName"`
+	CryptoKeyName      *string `pulumi:"cryptoKeyName"`
+	DeletionProtection *bool   `pulumi:"deletionProtection"`
 	// Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
 	Description *string `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -250,7 +253,8 @@ type WorkflowState struct {
 	CreateTime pulumi.StringPtrInput
 	// The KMS key used to encrypt workflow and execution data.
 	// Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
-	CryptoKeyName pulumi.StringPtrInput
+	CryptoKeyName      pulumi.StringPtrInput
+	DeletionProtection pulumi.BoolPtrInput
 	// Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
 	Description pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -305,7 +309,8 @@ type workflowArgs struct {
 	CallLogLevel *string `pulumi:"callLogLevel"`
 	// The KMS key used to encrypt workflow and execution data.
 	// Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
-	CryptoKeyName *string `pulumi:"cryptoKeyName"`
+	CryptoKeyName      *string `pulumi:"cryptoKeyName"`
+	DeletionProtection *bool   `pulumi:"deletionProtection"`
 	// Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
 	Description *string `pulumi:"description"`
 	// A set of key/value label pairs to assign to this Workflow.
@@ -346,7 +351,8 @@ type WorkflowArgs struct {
 	CallLogLevel pulumi.StringPtrInput
 	// The KMS key used to encrypt workflow and execution data.
 	// Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
-	CryptoKeyName pulumi.StringPtrInput
+	CryptoKeyName      pulumi.StringPtrInput
+	DeletionProtection pulumi.BoolPtrInput
 	// Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
 	Description pulumi.StringPtrInput
 	// A set of key/value label pairs to assign to this Workflow.
@@ -482,6 +488,10 @@ func (o WorkflowOutput) CreateTime() pulumi.StringOutput {
 // Format: projects/{project}/locations/{location}/keyRings/{keyRing}/cryptoKeys/{cryptoKey}
 func (o WorkflowOutput) CryptoKeyName() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Workflow) pulumi.StringPtrOutput { return v.CryptoKeyName }).(pulumi.StringPtrOutput)
+}
+
+func (o WorkflowOutput) DeletionProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Workflow) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }
 
 // Description of the workflow provided by the user. Must be at most 1000 unicode characters long.

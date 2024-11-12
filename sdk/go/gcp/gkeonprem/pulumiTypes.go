@@ -1196,7 +1196,7 @@ func (o BareMetalAdminClusterFleetArrayOutput) Index(i pulumi.IntInput) BareMeta
 }
 
 type BareMetalAdminClusterLoadBalancer struct {
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	ManualLbConfig *BareMetalAdminClusterLoadBalancerManualLbConfig `pulumi:"manualLbConfig"`
 	// Specifies the load balancer ports.
@@ -1219,7 +1219,7 @@ type BareMetalAdminClusterLoadBalancerInput interface {
 }
 
 type BareMetalAdminClusterLoadBalancerArgs struct {
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	ManualLbConfig BareMetalAdminClusterLoadBalancerManualLbConfigPtrInput `pulumi:"manualLbConfig"`
 	// Specifies the load balancer ports.
@@ -1307,7 +1307,7 @@ func (o BareMetalAdminClusterLoadBalancerOutput) ToBareMetalAdminClusterLoadBala
 	}).(BareMetalAdminClusterLoadBalancerPtrOutput)
 }
 
-// A nested object resource
+// A nested object resource.
 // Structure is documented below.
 func (o BareMetalAdminClusterLoadBalancerOutput) ManualLbConfig() BareMetalAdminClusterLoadBalancerManualLbConfigPtrOutput {
 	return o.ApplyT(func(v BareMetalAdminClusterLoadBalancer) *BareMetalAdminClusterLoadBalancerManualLbConfig {
@@ -1355,7 +1355,7 @@ func (o BareMetalAdminClusterLoadBalancerPtrOutput) Elem() BareMetalAdminCluster
 	}).(BareMetalAdminClusterLoadBalancerOutput)
 }
 
-// A nested object resource
+// A nested object resource.
 // Structure is documented below.
 func (o BareMetalAdminClusterLoadBalancerPtrOutput) ManualLbConfig() BareMetalAdminClusterLoadBalancerManualLbConfigPtrOutput {
 	return o.ApplyT(func(v *BareMetalAdminClusterLoadBalancer) *BareMetalAdminClusterLoadBalancerManualLbConfig {
@@ -1949,7 +1949,7 @@ func (o BareMetalAdminClusterMaintenanceConfigPtrOutput) MaintenanceAddressCidrB
 }
 
 type BareMetalAdminClusterNetworkConfig struct {
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	IslandModeCidr *BareMetalAdminClusterNetworkConfigIslandModeCidr `pulumi:"islandModeCidr"`
 }
@@ -1966,7 +1966,7 @@ type BareMetalAdminClusterNetworkConfigInput interface {
 }
 
 type BareMetalAdminClusterNetworkConfigArgs struct {
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	IslandModeCidr BareMetalAdminClusterNetworkConfigIslandModeCidrPtrInput `pulumi:"islandModeCidr"`
 }
@@ -2048,7 +2048,7 @@ func (o BareMetalAdminClusterNetworkConfigOutput) ToBareMetalAdminClusterNetwork
 	}).(BareMetalAdminClusterNetworkConfigPtrOutput)
 }
 
-// A nested object resource
+// A nested object resource.
 // Structure is documented below.
 func (o BareMetalAdminClusterNetworkConfigOutput) IslandModeCidr() BareMetalAdminClusterNetworkConfigIslandModeCidrPtrOutput {
 	return o.ApplyT(func(v BareMetalAdminClusterNetworkConfig) *BareMetalAdminClusterNetworkConfigIslandModeCidr {
@@ -2080,7 +2080,7 @@ func (o BareMetalAdminClusterNetworkConfigPtrOutput) Elem() BareMetalAdminCluste
 	}).(BareMetalAdminClusterNetworkConfigOutput)
 }
 
-// A nested object resource
+// A nested object resource.
 // Structure is documented below.
 func (o BareMetalAdminClusterNetworkConfigPtrOutput) IslandModeCidr() BareMetalAdminClusterNetworkConfigIslandModeCidrPtrOutput {
 	return o.ApplyT(func(v *BareMetalAdminClusterNetworkConfig) *BareMetalAdminClusterNetworkConfigIslandModeCidr {
@@ -5724,10 +5724,10 @@ type BareMetalClusterLoadBalancer struct {
 	// Configuration for BGP typed load balancers.
 	// Structure is documented below.
 	BgpLbConfig *BareMetalClusterLoadBalancerBgpLbConfig `pulumi:"bgpLbConfig"`
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	ManualLbConfig *BareMetalClusterLoadBalancerManualLbConfig `pulumi:"manualLbConfig"`
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	MetalLbConfig *BareMetalClusterLoadBalancerMetalLbConfig `pulumi:"metalLbConfig"`
 	// Specifies the load balancer ports.
@@ -5753,10 +5753,10 @@ type BareMetalClusterLoadBalancerArgs struct {
 	// Configuration for BGP typed load balancers.
 	// Structure is documented below.
 	BgpLbConfig BareMetalClusterLoadBalancerBgpLbConfigPtrInput `pulumi:"bgpLbConfig"`
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	ManualLbConfig BareMetalClusterLoadBalancerManualLbConfigPtrInput `pulumi:"manualLbConfig"`
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	MetalLbConfig BareMetalClusterLoadBalancerMetalLbConfigPtrInput `pulumi:"metalLbConfig"`
 	// Specifies the load balancer ports.
@@ -5850,7 +5850,7 @@ func (o BareMetalClusterLoadBalancerOutput) BgpLbConfig() BareMetalClusterLoadBa
 	return o.ApplyT(func(v BareMetalClusterLoadBalancer) *BareMetalClusterLoadBalancerBgpLbConfig { return v.BgpLbConfig }).(BareMetalClusterLoadBalancerBgpLbConfigPtrOutput)
 }
 
-// A nested object resource
+// A nested object resource.
 // Structure is documented below.
 func (o BareMetalClusterLoadBalancerOutput) ManualLbConfig() BareMetalClusterLoadBalancerManualLbConfigPtrOutput {
 	return o.ApplyT(func(v BareMetalClusterLoadBalancer) *BareMetalClusterLoadBalancerManualLbConfig {
@@ -5858,7 +5858,7 @@ func (o BareMetalClusterLoadBalancerOutput) ManualLbConfig() BareMetalClusterLoa
 	}).(BareMetalClusterLoadBalancerManualLbConfigPtrOutput)
 }
 
-// A nested object resource
+// A nested object resource.
 // Structure is documented below.
 func (o BareMetalClusterLoadBalancerOutput) MetalLbConfig() BareMetalClusterLoadBalancerMetalLbConfigPtrOutput {
 	return o.ApplyT(func(v BareMetalClusterLoadBalancer) *BareMetalClusterLoadBalancerMetalLbConfig {
@@ -5913,7 +5913,7 @@ func (o BareMetalClusterLoadBalancerPtrOutput) BgpLbConfig() BareMetalClusterLoa
 	}).(BareMetalClusterLoadBalancerBgpLbConfigPtrOutput)
 }
 
-// A nested object resource
+// A nested object resource.
 // Structure is documented below.
 func (o BareMetalClusterLoadBalancerPtrOutput) ManualLbConfig() BareMetalClusterLoadBalancerManualLbConfigPtrOutput {
 	return o.ApplyT(func(v *BareMetalClusterLoadBalancer) *BareMetalClusterLoadBalancerManualLbConfig {
@@ -5924,7 +5924,7 @@ func (o BareMetalClusterLoadBalancerPtrOutput) ManualLbConfig() BareMetalCluster
 	}).(BareMetalClusterLoadBalancerManualLbConfigPtrOutput)
 }
 
-// A nested object resource
+// A nested object resource.
 // Structure is documented below.
 func (o BareMetalClusterLoadBalancerPtrOutput) MetalLbConfig() BareMetalClusterLoadBalancerMetalLbConfigPtrOutput {
 	return o.ApplyT(func(v *BareMetalClusterLoadBalancer) *BareMetalClusterLoadBalancerMetalLbConfig {
@@ -8914,7 +8914,7 @@ type BareMetalClusterNetworkConfig struct {
 	// Setting configuration for advanced networking features will automatically
 	// set this flag.
 	AdvancedNetworking *bool `pulumi:"advancedNetworking"`
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	IslandModeCidr *BareMetalClusterNetworkConfigIslandModeCidr `pulumi:"islandModeCidr"`
 	// Configuration for multiple network interfaces.
@@ -8942,7 +8942,7 @@ type BareMetalClusterNetworkConfigArgs struct {
 	// Setting configuration for advanced networking features will automatically
 	// set this flag.
 	AdvancedNetworking pulumi.BoolPtrInput `pulumi:"advancedNetworking"`
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	IslandModeCidr BareMetalClusterNetworkConfigIslandModeCidrPtrInput `pulumi:"islandModeCidr"`
 	// Configuration for multiple network interfaces.
@@ -9038,7 +9038,7 @@ func (o BareMetalClusterNetworkConfigOutput) AdvancedNetworking() pulumi.BoolPtr
 	return o.ApplyT(func(v BareMetalClusterNetworkConfig) *bool { return v.AdvancedNetworking }).(pulumi.BoolPtrOutput)
 }
 
-// A nested object resource
+// A nested object resource.
 // Structure is documented below.
 func (o BareMetalClusterNetworkConfigOutput) IslandModeCidr() BareMetalClusterNetworkConfigIslandModeCidrPtrOutput {
 	return o.ApplyT(func(v BareMetalClusterNetworkConfig) *BareMetalClusterNetworkConfigIslandModeCidr {
@@ -9097,7 +9097,7 @@ func (o BareMetalClusterNetworkConfigPtrOutput) AdvancedNetworking() pulumi.Bool
 	}).(pulumi.BoolPtrOutput)
 }
 
-// A nested object resource
+// A nested object resource.
 // Structure is documented below.
 func (o BareMetalClusterNetworkConfigPtrOutput) IslandModeCidr() BareMetalClusterNetworkConfigIslandModeCidrPtrOutput {
 	return o.ApplyT(func(v *BareMetalClusterNetworkConfig) *BareMetalClusterNetworkConfigIslandModeCidr {

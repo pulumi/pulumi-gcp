@@ -23,13 +23,17 @@ class AiEndpointArgs:
     def __init__(__self__, *,
                  display_name: pulumi.Input[str],
                  location: pulumi.Input[str],
+                 dedicated_endpoint_enabled: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  encryption_spec: Optional[pulumi.Input['AiEndpointEncryptionSpecArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
+                 predict_request_response_logging_config: Optional[pulumi.Input['AiEndpointPredictRequestResponseLoggingConfigArgs']] = None,
+                 private_service_connect_config: Optional[pulumi.Input['AiEndpointPrivateServiceConnectConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
-                 region: Optional[pulumi.Input[str]] = None):
+                 region: Optional[pulumi.Input[str]] = None,
+                 traffic_split: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a AiEndpoint resource.
         :param pulumi.Input[str] display_name: Required. The display name of the Endpoint. The name can be up to 128 characters long and can consist of any UTF-8 characters.
@@ -37,6 +41,7 @@ class AiEndpointArgs:
                
                
                - - -
+        :param pulumi.Input[bool] dedicated_endpoint_enabled: If true, the endpoint will be exposed through a dedicated DNS [Endpoint.dedicated_endpoint_dns]. Your request to the dedicated DNS will be isolated from other users' traffic and will have better performance and reliability. Note: Once you enabled dedicated endpoint, you won't be able to send request to the shared DNS {region}-aiplatform.googleapis.com. The limitation will be removed soon.
         :param pulumi.Input[str] description: The description of the Endpoint.
         :param pulumi.Input['AiEndpointEncryptionSpecArgs'] encryption_spec: Customer-managed encryption key spec for an Endpoint. If set, this Endpoint and all sub-resources of this Endpoint will be secured by this key.
                Structure is documented below.
@@ -44,13 +49,26 @@ class AiEndpointArgs:
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] name: The resource name of the Endpoint. The name must be numeric with no leading zeros and can be at most 10 digits.
-        :param pulumi.Input[str] network: The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the Endpoint should be peered. Private services access must already be configured for the network. If left unspecified, the Endpoint is not peered with any network. Only one of the fields, network or enable_private_service_connect, can be set. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`. Where `{project}` is a project number, as in `12345`, and `{network}` is network name.
+        :param pulumi.Input[str] network: The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the Endpoint should be peered. Private services access must already be configured for the network. If left unspecified, the Endpoint is not peered with any network. Only one of the fields, network or enable_private_service_connect, can be set. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`. Where `{project}` is a project number, as in `12345`, and `{network}` is network name. Only one of the fields, `network` or `privateServiceConnectConfig`, can be set.
+        :param pulumi.Input['AiEndpointPredictRequestResponseLoggingConfigArgs'] predict_request_response_logging_config: Configures the request-response logging for online prediction.
+               Structure is documented below.
+        :param pulumi.Input['AiEndpointPrivateServiceConnectConfigArgs'] private_service_connect_config: Configuration for private service connect. `network` and `privateServiceConnectConfig` are mutually exclusive.
+               Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region for the resource
+        :param pulumi.Input[str] traffic_split: A map from a DeployedModel's id to the percentage of this Endpoint's traffic that should be forwarded to that DeployedModel.
+               If a DeployedModel's id is not listed in this map, then it receives no traffic.
+               The traffic percentage values must add up to 100, or map must be empty if the Endpoint is to not accept any traffic at a moment.
+               > **Note:** The `traffic_split` setting only applies after a model has been deployed to the endpoint. Re-applying a `vertex.AiEndpoint`
+               resource without updating the `traffic_split` post-deployment may lead to your deployed `traffic_split` being lost; see
+               the `deployModel` [example](https://cloud.google.com/vertex-ai/docs/general/deployment#deploy_a_model_to_an_endpoint) and
+               [documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1beta1/projects.locations.endpoints/deployModel) for details.
         """
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "location", location)
+        if dedicated_endpoint_enabled is not None:
+            pulumi.set(__self__, "dedicated_endpoint_enabled", dedicated_endpoint_enabled)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if encryption_spec is not None:
@@ -61,10 +79,16 @@ class AiEndpointArgs:
             pulumi.set(__self__, "name", name)
         if network is not None:
             pulumi.set(__self__, "network", network)
+        if predict_request_response_logging_config is not None:
+            pulumi.set(__self__, "predict_request_response_logging_config", predict_request_response_logging_config)
+        if private_service_connect_config is not None:
+            pulumi.set(__self__, "private_service_connect_config", private_service_connect_config)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if traffic_split is not None:
+            pulumi.set(__self__, "traffic_split", traffic_split)
 
     @property
     @pulumi.getter(name="displayName")
@@ -92,6 +116,18 @@ class AiEndpointArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter(name="dedicatedEndpointEnabled")
+    def dedicated_endpoint_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, the endpoint will be exposed through a dedicated DNS [Endpoint.dedicated_endpoint_dns]. Your request to the dedicated DNS will be isolated from other users' traffic and will have better performance and reliability. Note: Once you enabled dedicated endpoint, you won't be able to send request to the shared DNS {region}-aiplatform.googleapis.com. The limitation will be removed soon.
+        """
+        return pulumi.get(self, "dedicated_endpoint_enabled")
+
+    @dedicated_endpoint_enabled.setter
+    def dedicated_endpoint_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "dedicated_endpoint_enabled", value)
 
     @property
     @pulumi.getter
@@ -148,13 +184,39 @@ class AiEndpointArgs:
     @pulumi.getter
     def network(self) -> Optional[pulumi.Input[str]]:
         """
-        The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the Endpoint should be peered. Private services access must already be configured for the network. If left unspecified, the Endpoint is not peered with any network. Only one of the fields, network or enable_private_service_connect, can be set. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`. Where `{project}` is a project number, as in `12345`, and `{network}` is network name.
+        The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the Endpoint should be peered. Private services access must already be configured for the network. If left unspecified, the Endpoint is not peered with any network. Only one of the fields, network or enable_private_service_connect, can be set. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`. Where `{project}` is a project number, as in `12345`, and `{network}` is network name. Only one of the fields, `network` or `privateServiceConnectConfig`, can be set.
         """
         return pulumi.get(self, "network")
 
     @network.setter
     def network(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "network", value)
+
+    @property
+    @pulumi.getter(name="predictRequestResponseLoggingConfig")
+    def predict_request_response_logging_config(self) -> Optional[pulumi.Input['AiEndpointPredictRequestResponseLoggingConfigArgs']]:
+        """
+        Configures the request-response logging for online prediction.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "predict_request_response_logging_config")
+
+    @predict_request_response_logging_config.setter
+    def predict_request_response_logging_config(self, value: Optional[pulumi.Input['AiEndpointPredictRequestResponseLoggingConfigArgs']]):
+        pulumi.set(self, "predict_request_response_logging_config", value)
+
+    @property
+    @pulumi.getter(name="privateServiceConnectConfig")
+    def private_service_connect_config(self) -> Optional[pulumi.Input['AiEndpointPrivateServiceConnectConfigArgs']]:
+        """
+        Configuration for private service connect. `network` and `privateServiceConnectConfig` are mutually exclusive.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "private_service_connect_config")
+
+    @private_service_connect_config.setter
+    def private_service_connect_config(self, value: Optional[pulumi.Input['AiEndpointPrivateServiceConnectConfigArgs']]):
+        pulumi.set(self, "private_service_connect_config", value)
 
     @property
     @pulumi.getter
@@ -181,11 +243,31 @@ class AiEndpointArgs:
     def region(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "region", value)
 
+    @property
+    @pulumi.getter(name="trafficSplit")
+    def traffic_split(self) -> Optional[pulumi.Input[str]]:
+        """
+        A map from a DeployedModel's id to the percentage of this Endpoint's traffic that should be forwarded to that DeployedModel.
+        If a DeployedModel's id is not listed in this map, then it receives no traffic.
+        The traffic percentage values must add up to 100, or map must be empty if the Endpoint is to not accept any traffic at a moment.
+        > **Note:** The `traffic_split` setting only applies after a model has been deployed to the endpoint. Re-applying a `vertex.AiEndpoint`
+        resource without updating the `traffic_split` post-deployment may lead to your deployed `traffic_split` being lost; see
+        the `deployModel` [example](https://cloud.google.com/vertex-ai/docs/general/deployment#deploy_a_model_to_an_endpoint) and
+        [documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1beta1/projects.locations.endpoints/deployModel) for details.
+        """
+        return pulumi.get(self, "traffic_split")
+
+    @traffic_split.setter
+    def traffic_split(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "traffic_split", value)
+
 
 @pulumi.input_type
 class _AiEndpointState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
+                 dedicated_endpoint_dns: Optional[pulumi.Input[str]] = None,
+                 dedicated_endpoint_enabled: Optional[pulumi.Input[bool]] = None,
                  deployed_models: Optional[pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelArgs']]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
@@ -197,14 +279,19 @@ class _AiEndpointState:
                  model_deployment_monitoring_job: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
+                 predict_request_response_logging_config: Optional[pulumi.Input['AiEndpointPredictRequestResponseLoggingConfigArgs']] = None,
+                 private_service_connect_config: Optional[pulumi.Input['AiEndpointPrivateServiceConnectConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 traffic_split: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering AiEndpoint resources.
         :param pulumi.Input[str] create_time: (Output)
                Output only. Timestamp when the DeployedModel was created.
+        :param pulumi.Input[str] dedicated_endpoint_dns: Output only. DNS of the dedicated endpoint. Will only be populated if dedicatedEndpointEnabled is true. Format: `https://{endpointId}.{region}-{projectNumber}.prediction.vertexai.goog`.
+        :param pulumi.Input[bool] dedicated_endpoint_enabled: If true, the endpoint will be exposed through a dedicated DNS [Endpoint.dedicated_endpoint_dns]. Your request to the dedicated DNS will be isolated from other users' traffic and will have better performance and reliability. Note: Once you enabled dedicated endpoint, you won't be able to send request to the shared DNS {region}-aiplatform.googleapis.com. The limitation will be removed soon.
         :param pulumi.Input[Sequence[pulumi.Input['AiEndpointDeployedModelArgs']]] deployed_models: Output only. The models deployed in this Endpoint. To add or remove DeployedModels use EndpointService.DeployModel and EndpointService.UndeployModel respectively. Models can also be deployed and undeployed using the [Cloud Console](https://console.cloud.google.com/vertex-ai/).
                Structure is documented below.
         :param pulumi.Input[str] description: The description of the Endpoint.
@@ -222,16 +309,31 @@ class _AiEndpointState:
                - - -
         :param pulumi.Input[str] model_deployment_monitoring_job: Output only. Resource name of the Model Monitoring job associated with this Endpoint if monitoring is enabled by CreateModelDeploymentMonitoringJob. Format: `projects/{project}/locations/{location}/modelDeploymentMonitoringJobs/{model_deployment_monitoring_job}`
         :param pulumi.Input[str] name: The resource name of the Endpoint. The name must be numeric with no leading zeros and can be at most 10 digits.
-        :param pulumi.Input[str] network: The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the Endpoint should be peered. Private services access must already be configured for the network. If left unspecified, the Endpoint is not peered with any network. Only one of the fields, network or enable_private_service_connect, can be set. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`. Where `{project}` is a project number, as in `12345`, and `{network}` is network name.
+        :param pulumi.Input[str] network: The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the Endpoint should be peered. Private services access must already be configured for the network. If left unspecified, the Endpoint is not peered with any network. Only one of the fields, network or enable_private_service_connect, can be set. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`. Where `{project}` is a project number, as in `12345`, and `{network}` is network name. Only one of the fields, `network` or `privateServiceConnectConfig`, can be set.
+        :param pulumi.Input['AiEndpointPredictRequestResponseLoggingConfigArgs'] predict_request_response_logging_config: Configures the request-response logging for online prediction.
+               Structure is documented below.
+        :param pulumi.Input['AiEndpointPrivateServiceConnectConfigArgs'] private_service_connect_config: Configuration for private service connect. `network` and `privateServiceConnectConfig` are mutually exclusive.
+               Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[str] region: The region for the resource
+        :param pulumi.Input[str] traffic_split: A map from a DeployedModel's id to the percentage of this Endpoint's traffic that should be forwarded to that DeployedModel.
+               If a DeployedModel's id is not listed in this map, then it receives no traffic.
+               The traffic percentage values must add up to 100, or map must be empty if the Endpoint is to not accept any traffic at a moment.
+               > **Note:** The `traffic_split` setting only applies after a model has been deployed to the endpoint. Re-applying a `vertex.AiEndpoint`
+               resource without updating the `traffic_split` post-deployment may lead to your deployed `traffic_split` being lost; see
+               the `deployModel` [example](https://cloud.google.com/vertex-ai/docs/general/deployment#deploy_a_model_to_an_endpoint) and
+               [documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1beta1/projects.locations.endpoints/deployModel) for details.
         :param pulumi.Input[str] update_time: Output only. Timestamp when this Endpoint was last updated.
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if dedicated_endpoint_dns is not None:
+            pulumi.set(__self__, "dedicated_endpoint_dns", dedicated_endpoint_dns)
+        if dedicated_endpoint_enabled is not None:
+            pulumi.set(__self__, "dedicated_endpoint_enabled", dedicated_endpoint_enabled)
         if deployed_models is not None:
             pulumi.set(__self__, "deployed_models", deployed_models)
         if description is not None:
@@ -254,12 +356,18 @@ class _AiEndpointState:
             pulumi.set(__self__, "name", name)
         if network is not None:
             pulumi.set(__self__, "network", network)
+        if predict_request_response_logging_config is not None:
+            pulumi.set(__self__, "predict_request_response_logging_config", predict_request_response_logging_config)
+        if private_service_connect_config is not None:
+            pulumi.set(__self__, "private_service_connect_config", private_service_connect_config)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if pulumi_labels is not None:
             pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if region is not None:
             pulumi.set(__self__, "region", region)
+        if traffic_split is not None:
+            pulumi.set(__self__, "traffic_split", traffic_split)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
 
@@ -275,6 +383,30 @@ class _AiEndpointState:
     @create_time.setter
     def create_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter(name="dedicatedEndpointDns")
+    def dedicated_endpoint_dns(self) -> Optional[pulumi.Input[str]]:
+        """
+        Output only. DNS of the dedicated endpoint. Will only be populated if dedicatedEndpointEnabled is true. Format: `https://{endpointId}.{region}-{projectNumber}.prediction.vertexai.goog`.
+        """
+        return pulumi.get(self, "dedicated_endpoint_dns")
+
+    @dedicated_endpoint_dns.setter
+    def dedicated_endpoint_dns(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dedicated_endpoint_dns", value)
+
+    @property
+    @pulumi.getter(name="dedicatedEndpointEnabled")
+    def dedicated_endpoint_enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, the endpoint will be exposed through a dedicated DNS [Endpoint.dedicated_endpoint_dns]. Your request to the dedicated DNS will be isolated from other users' traffic and will have better performance and reliability. Note: Once you enabled dedicated endpoint, you won't be able to send request to the shared DNS {region}-aiplatform.googleapis.com. The limitation will be removed soon.
+        """
+        return pulumi.get(self, "dedicated_endpoint_enabled")
+
+    @dedicated_endpoint_enabled.setter
+    def dedicated_endpoint_enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "dedicated_endpoint_enabled", value)
 
     @property
     @pulumi.getter(name="deployedModels")
@@ -407,13 +539,39 @@ class _AiEndpointState:
     @pulumi.getter
     def network(self) -> Optional[pulumi.Input[str]]:
         """
-        The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the Endpoint should be peered. Private services access must already be configured for the network. If left unspecified, the Endpoint is not peered with any network. Only one of the fields, network or enable_private_service_connect, can be set. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`. Where `{project}` is a project number, as in `12345`, and `{network}` is network name.
+        The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the Endpoint should be peered. Private services access must already be configured for the network. If left unspecified, the Endpoint is not peered with any network. Only one of the fields, network or enable_private_service_connect, can be set. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`. Where `{project}` is a project number, as in `12345`, and `{network}` is network name. Only one of the fields, `network` or `privateServiceConnectConfig`, can be set.
         """
         return pulumi.get(self, "network")
 
     @network.setter
     def network(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "network", value)
+
+    @property
+    @pulumi.getter(name="predictRequestResponseLoggingConfig")
+    def predict_request_response_logging_config(self) -> Optional[pulumi.Input['AiEndpointPredictRequestResponseLoggingConfigArgs']]:
+        """
+        Configures the request-response logging for online prediction.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "predict_request_response_logging_config")
+
+    @predict_request_response_logging_config.setter
+    def predict_request_response_logging_config(self, value: Optional[pulumi.Input['AiEndpointPredictRequestResponseLoggingConfigArgs']]):
+        pulumi.set(self, "predict_request_response_logging_config", value)
+
+    @property
+    @pulumi.getter(name="privateServiceConnectConfig")
+    def private_service_connect_config(self) -> Optional[pulumi.Input['AiEndpointPrivateServiceConnectConfigArgs']]:
+        """
+        Configuration for private service connect. `network` and `privateServiceConnectConfig` are mutually exclusive.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "private_service_connect_config")
+
+    @private_service_connect_config.setter
+    def private_service_connect_config(self, value: Optional[pulumi.Input['AiEndpointPrivateServiceConnectConfigArgs']]):
+        pulumi.set(self, "private_service_connect_config", value)
 
     @property
     @pulumi.getter
@@ -454,6 +612,24 @@ class _AiEndpointState:
         pulumi.set(self, "region", value)
 
     @property
+    @pulumi.getter(name="trafficSplit")
+    def traffic_split(self) -> Optional[pulumi.Input[str]]:
+        """
+        A map from a DeployedModel's id to the percentage of this Endpoint's traffic that should be forwarded to that DeployedModel.
+        If a DeployedModel's id is not listed in this map, then it receives no traffic.
+        The traffic percentage values must add up to 100, or map must be empty if the Endpoint is to not accept any traffic at a moment.
+        > **Note:** The `traffic_split` setting only applies after a model has been deployed to the endpoint. Re-applying a `vertex.AiEndpoint`
+        resource without updating the `traffic_split` post-deployment may lead to your deployed `traffic_split` being lost; see
+        the `deployModel` [example](https://cloud.google.com/vertex-ai/docs/general/deployment#deploy_a_model_to_an_endpoint) and
+        [documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1beta1/projects.locations.endpoints/deployModel) for details.
+        """
+        return pulumi.get(self, "traffic_split")
+
+    @traffic_split.setter
+    def traffic_split(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "traffic_split", value)
+
+    @property
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[str]]:
         """
@@ -471,6 +647,7 @@ class AiEndpoint(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 dedicated_endpoint_enabled: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  encryption_spec: Optional[pulumi.Input[Union['AiEndpointEncryptionSpecArgs', 'AiEndpointEncryptionSpecArgsDict']]] = None,
@@ -478,8 +655,11 @@ class AiEndpoint(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
+                 predict_request_response_logging_config: Optional[pulumi.Input[Union['AiEndpointPredictRequestResponseLoggingConfigArgs', 'AiEndpointPredictRequestResponseLoggingConfigArgsDict']]] = None,
+                 private_service_connect_config: Optional[pulumi.Input[Union['AiEndpointPrivateServiceConnectConfigArgs', 'AiEndpointPrivateServiceConnectConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 traffic_split: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
         Models are deployed into it, and afterwards Endpoint is called to obtain predictions and explanations.
@@ -496,6 +676,7 @@ class AiEndpoint(pulumi.CustomResource):
 
         ```python
         import pulumi
+        import json
         import pulumi_gcp as gcp
 
         vertex_network = gcp.compute.Network("vertex_network", name="network-name")
@@ -509,6 +690,12 @@ class AiEndpoint(pulumi.CustomResource):
             network=vertex_network.id,
             service="servicenetworking.googleapis.com",
             reserved_peering_ranges=[vertex_range.name])
+        bq_dataset = gcp.bigquery.Dataset("bq_dataset",
+            dataset_id="some_dataset",
+            friendly_name="logging dataset",
+            description="This is a dataset that requests are logged to",
+            location="US",
+            delete_contents_on_destroy=True)
         project = gcp.organizations.get_project()
         endpoint = gcp.vertex.AiEndpoint("endpoint",
             name="endpoint-name",
@@ -523,11 +710,61 @@ class AiEndpoint(pulumi.CustomResource):
             encryption_spec={
                 "kms_key_name": "kms-name",
             },
+            predict_request_response_logging_config={
+                "bigquery_destination": {
+                    "output_uri": bq_dataset.dataset_id.apply(lambda dataset_id: f"bq://{project.project_id}.{dataset_id}.request_response_logging"),
+                },
+                "enabled": True,
+                "sampling_rate": 0.1,
+            },
+            traffic_split=json.dumps({
+                "12345": 100,
+            }),
             opts = pulumi.ResourceOptions(depends_on=[vertex_vpc_connection]))
         crypto_key = gcp.kms.CryptoKeyIAMMember("crypto_key",
             crypto_key_id="kms-name",
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:service-{project.number}@gcp-sa-aiplatform.iam.gserviceaccount.com")
+        ```
+        ### Vertex Ai Endpoint Private Service Connect
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        endpoint = gcp.vertex.AiEndpoint("endpoint",
+            name="endpoint-name_69391",
+            display_name="sample-endpoint",
+            description="A sample vertex endpoint",
+            location="us-central1",
+            region="us-central1",
+            labels={
+                "label-one": "value-one",
+            },
+            private_service_connect_config={
+                "enable_private_service_connect": True,
+                "project_allowlists": [project.project_id],
+                "enable_secure_private_service_connect": False,
+            })
+        ```
+        ### Vertex Ai Endpoint Dedicated Endpoint
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        endpoint = gcp.vertex.AiEndpoint("endpoint",
+            name="endpoint-name_8270",
+            display_name="sample-endpoint",
+            description="A sample vertex endpoint",
+            location="us-central1",
+            region="us-central1",
+            labels={
+                "label-one": "value-one",
+            },
+            dedicated_endpoint_enabled=True)
+        project = gcp.organizations.get_project()
         ```
 
         ## Import
@@ -556,6 +793,7 @@ class AiEndpoint(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[bool] dedicated_endpoint_enabled: If true, the endpoint will be exposed through a dedicated DNS [Endpoint.dedicated_endpoint_dns]. Your request to the dedicated DNS will be isolated from other users' traffic and will have better performance and reliability. Note: Once you enabled dedicated endpoint, you won't be able to send request to the shared DNS {region}-aiplatform.googleapis.com. The limitation will be removed soon.
         :param pulumi.Input[str] description: The description of the Endpoint.
         :param pulumi.Input[str] display_name: Required. The display name of the Endpoint. The name can be up to 128 characters long and can consist of any UTF-8 characters.
         :param pulumi.Input[Union['AiEndpointEncryptionSpecArgs', 'AiEndpointEncryptionSpecArgsDict']] encryption_spec: Customer-managed encryption key spec for an Endpoint. If set, this Endpoint and all sub-resources of this Endpoint will be secured by this key.
@@ -568,10 +806,21 @@ class AiEndpoint(pulumi.CustomResource):
                
                - - -
         :param pulumi.Input[str] name: The resource name of the Endpoint. The name must be numeric with no leading zeros and can be at most 10 digits.
-        :param pulumi.Input[str] network: The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the Endpoint should be peered. Private services access must already be configured for the network. If left unspecified, the Endpoint is not peered with any network. Only one of the fields, network or enable_private_service_connect, can be set. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`. Where `{project}` is a project number, as in `12345`, and `{network}` is network name.
+        :param pulumi.Input[str] network: The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the Endpoint should be peered. Private services access must already be configured for the network. If left unspecified, the Endpoint is not peered with any network. Only one of the fields, network or enable_private_service_connect, can be set. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`. Where `{project}` is a project number, as in `12345`, and `{network}` is network name. Only one of the fields, `network` or `privateServiceConnectConfig`, can be set.
+        :param pulumi.Input[Union['AiEndpointPredictRequestResponseLoggingConfigArgs', 'AiEndpointPredictRequestResponseLoggingConfigArgsDict']] predict_request_response_logging_config: Configures the request-response logging for online prediction.
+               Structure is documented below.
+        :param pulumi.Input[Union['AiEndpointPrivateServiceConnectConfigArgs', 'AiEndpointPrivateServiceConnectConfigArgsDict']] private_service_connect_config: Configuration for private service connect. `network` and `privateServiceConnectConfig` are mutually exclusive.
+               Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] region: The region for the resource
+        :param pulumi.Input[str] traffic_split: A map from a DeployedModel's id to the percentage of this Endpoint's traffic that should be forwarded to that DeployedModel.
+               If a DeployedModel's id is not listed in this map, then it receives no traffic.
+               The traffic percentage values must add up to 100, or map must be empty if the Endpoint is to not accept any traffic at a moment.
+               > **Note:** The `traffic_split` setting only applies after a model has been deployed to the endpoint. Re-applying a `vertex.AiEndpoint`
+               resource without updating the `traffic_split` post-deployment may lead to your deployed `traffic_split` being lost; see
+               the `deployModel` [example](https://cloud.google.com/vertex-ai/docs/general/deployment#deploy_a_model_to_an_endpoint) and
+               [documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1beta1/projects.locations.endpoints/deployModel) for details.
         """
         ...
     @overload
@@ -594,6 +843,7 @@ class AiEndpoint(pulumi.CustomResource):
 
         ```python
         import pulumi
+        import json
         import pulumi_gcp as gcp
 
         vertex_network = gcp.compute.Network("vertex_network", name="network-name")
@@ -607,6 +857,12 @@ class AiEndpoint(pulumi.CustomResource):
             network=vertex_network.id,
             service="servicenetworking.googleapis.com",
             reserved_peering_ranges=[vertex_range.name])
+        bq_dataset = gcp.bigquery.Dataset("bq_dataset",
+            dataset_id="some_dataset",
+            friendly_name="logging dataset",
+            description="This is a dataset that requests are logged to",
+            location="US",
+            delete_contents_on_destroy=True)
         project = gcp.organizations.get_project()
         endpoint = gcp.vertex.AiEndpoint("endpoint",
             name="endpoint-name",
@@ -621,11 +877,61 @@ class AiEndpoint(pulumi.CustomResource):
             encryption_spec={
                 "kms_key_name": "kms-name",
             },
+            predict_request_response_logging_config={
+                "bigquery_destination": {
+                    "output_uri": bq_dataset.dataset_id.apply(lambda dataset_id: f"bq://{project.project_id}.{dataset_id}.request_response_logging"),
+                },
+                "enabled": True,
+                "sampling_rate": 0.1,
+            },
+            traffic_split=json.dumps({
+                "12345": 100,
+            }),
             opts = pulumi.ResourceOptions(depends_on=[vertex_vpc_connection]))
         crypto_key = gcp.kms.CryptoKeyIAMMember("crypto_key",
             crypto_key_id="kms-name",
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:service-{project.number}@gcp-sa-aiplatform.iam.gserviceaccount.com")
+        ```
+        ### Vertex Ai Endpoint Private Service Connect
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        endpoint = gcp.vertex.AiEndpoint("endpoint",
+            name="endpoint-name_69391",
+            display_name="sample-endpoint",
+            description="A sample vertex endpoint",
+            location="us-central1",
+            region="us-central1",
+            labels={
+                "label-one": "value-one",
+            },
+            private_service_connect_config={
+                "enable_private_service_connect": True,
+                "project_allowlists": [project.project_id],
+                "enable_secure_private_service_connect": False,
+            })
+        ```
+        ### Vertex Ai Endpoint Dedicated Endpoint
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        endpoint = gcp.vertex.AiEndpoint("endpoint",
+            name="endpoint-name_8270",
+            display_name="sample-endpoint",
+            description="A sample vertex endpoint",
+            location="us-central1",
+            region="us-central1",
+            labels={
+                "label-one": "value-one",
+            },
+            dedicated_endpoint_enabled=True)
+        project = gcp.organizations.get_project()
         ```
 
         ## Import
@@ -667,6 +973,7 @@ class AiEndpoint(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 dedicated_endpoint_enabled: Optional[pulumi.Input[bool]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  encryption_spec: Optional[pulumi.Input[Union['AiEndpointEncryptionSpecArgs', 'AiEndpointEncryptionSpecArgsDict']]] = None,
@@ -674,8 +981,11 @@ class AiEndpoint(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
+                 predict_request_response_logging_config: Optional[pulumi.Input[Union['AiEndpointPredictRequestResponseLoggingConfigArgs', 'AiEndpointPredictRequestResponseLoggingConfigArgsDict']]] = None,
+                 private_service_connect_config: Optional[pulumi.Input[Union['AiEndpointPrivateServiceConnectConfigArgs', 'AiEndpointPrivateServiceConnectConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
+                 traffic_split: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -685,6 +995,7 @@ class AiEndpoint(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = AiEndpointArgs.__new__(AiEndpointArgs)
 
+            __props__.__dict__["dedicated_endpoint_enabled"] = dedicated_endpoint_enabled
             __props__.__dict__["description"] = description
             if display_name is None and not opts.urn:
                 raise TypeError("Missing required property 'display_name'")
@@ -696,9 +1007,13 @@ class AiEndpoint(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["network"] = network
+            __props__.__dict__["predict_request_response_logging_config"] = predict_request_response_logging_config
+            __props__.__dict__["private_service_connect_config"] = private_service_connect_config
             __props__.__dict__["project"] = project
             __props__.__dict__["region"] = region
+            __props__.__dict__["traffic_split"] = traffic_split
             __props__.__dict__["create_time"] = None
+            __props__.__dict__["dedicated_endpoint_dns"] = None
             __props__.__dict__["deployed_models"] = None
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["etag"] = None
@@ -718,6 +1033,8 @@ class AiEndpoint(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[str]] = None,
+            dedicated_endpoint_dns: Optional[pulumi.Input[str]] = None,
+            dedicated_endpoint_enabled: Optional[pulumi.Input[bool]] = None,
             deployed_models: Optional[pulumi.Input[Sequence[pulumi.Input[Union['AiEndpointDeployedModelArgs', 'AiEndpointDeployedModelArgsDict']]]]] = None,
             description: Optional[pulumi.Input[str]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
@@ -729,9 +1046,12 @@ class AiEndpoint(pulumi.CustomResource):
             model_deployment_monitoring_job: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network: Optional[pulumi.Input[str]] = None,
+            predict_request_response_logging_config: Optional[pulumi.Input[Union['AiEndpointPredictRequestResponseLoggingConfigArgs', 'AiEndpointPredictRequestResponseLoggingConfigArgsDict']]] = None,
+            private_service_connect_config: Optional[pulumi.Input[Union['AiEndpointPrivateServiceConnectConfigArgs', 'AiEndpointPrivateServiceConnectConfigArgsDict']]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             region: Optional[pulumi.Input[str]] = None,
+            traffic_split: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None) -> 'AiEndpoint':
         """
         Get an existing AiEndpoint resource's state with the given name, id, and optional extra
@@ -742,6 +1062,8 @@ class AiEndpoint(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: (Output)
                Output only. Timestamp when the DeployedModel was created.
+        :param pulumi.Input[str] dedicated_endpoint_dns: Output only. DNS of the dedicated endpoint. Will only be populated if dedicatedEndpointEnabled is true. Format: `https://{endpointId}.{region}-{projectNumber}.prediction.vertexai.goog`.
+        :param pulumi.Input[bool] dedicated_endpoint_enabled: If true, the endpoint will be exposed through a dedicated DNS [Endpoint.dedicated_endpoint_dns]. Your request to the dedicated DNS will be isolated from other users' traffic and will have better performance and reliability. Note: Once you enabled dedicated endpoint, you won't be able to send request to the shared DNS {region}-aiplatform.googleapis.com. The limitation will be removed soon.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AiEndpointDeployedModelArgs', 'AiEndpointDeployedModelArgsDict']]]] deployed_models: Output only. The models deployed in this Endpoint. To add or remove DeployedModels use EndpointService.DeployModel and EndpointService.UndeployModel respectively. Models can also be deployed and undeployed using the [Cloud Console](https://console.cloud.google.com/vertex-ai/).
                Structure is documented below.
         :param pulumi.Input[str] description: The description of the Endpoint.
@@ -759,12 +1081,23 @@ class AiEndpoint(pulumi.CustomResource):
                - - -
         :param pulumi.Input[str] model_deployment_monitoring_job: Output only. Resource name of the Model Monitoring job associated with this Endpoint if monitoring is enabled by CreateModelDeploymentMonitoringJob. Format: `projects/{project}/locations/{location}/modelDeploymentMonitoringJobs/{model_deployment_monitoring_job}`
         :param pulumi.Input[str] name: The resource name of the Endpoint. The name must be numeric with no leading zeros and can be at most 10 digits.
-        :param pulumi.Input[str] network: The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the Endpoint should be peered. Private services access must already be configured for the network. If left unspecified, the Endpoint is not peered with any network. Only one of the fields, network or enable_private_service_connect, can be set. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`. Where `{project}` is a project number, as in `12345`, and `{network}` is network name.
+        :param pulumi.Input[str] network: The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the Endpoint should be peered. Private services access must already be configured for the network. If left unspecified, the Endpoint is not peered with any network. Only one of the fields, network or enable_private_service_connect, can be set. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`. Where `{project}` is a project number, as in `12345`, and `{network}` is network name. Only one of the fields, `network` or `privateServiceConnectConfig`, can be set.
+        :param pulumi.Input[Union['AiEndpointPredictRequestResponseLoggingConfigArgs', 'AiEndpointPredictRequestResponseLoggingConfigArgsDict']] predict_request_response_logging_config: Configures the request-response logging for online prediction.
+               Structure is documented below.
+        :param pulumi.Input[Union['AiEndpointPrivateServiceConnectConfigArgs', 'AiEndpointPrivateServiceConnectConfigArgsDict']] private_service_connect_config: Configuration for private service connect. `network` and `privateServiceConnectConfig` are mutually exclusive.
+               Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[str] region: The region for the resource
+        :param pulumi.Input[str] traffic_split: A map from a DeployedModel's id to the percentage of this Endpoint's traffic that should be forwarded to that DeployedModel.
+               If a DeployedModel's id is not listed in this map, then it receives no traffic.
+               The traffic percentage values must add up to 100, or map must be empty if the Endpoint is to not accept any traffic at a moment.
+               > **Note:** The `traffic_split` setting only applies after a model has been deployed to the endpoint. Re-applying a `vertex.AiEndpoint`
+               resource without updating the `traffic_split` post-deployment may lead to your deployed `traffic_split` being lost; see
+               the `deployModel` [example](https://cloud.google.com/vertex-ai/docs/general/deployment#deploy_a_model_to_an_endpoint) and
+               [documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1beta1/projects.locations.endpoints/deployModel) for details.
         :param pulumi.Input[str] update_time: Output only. Timestamp when this Endpoint was last updated.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -772,6 +1105,8 @@ class AiEndpoint(pulumi.CustomResource):
         __props__ = _AiEndpointState.__new__(_AiEndpointState)
 
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["dedicated_endpoint_dns"] = dedicated_endpoint_dns
+        __props__.__dict__["dedicated_endpoint_enabled"] = dedicated_endpoint_enabled
         __props__.__dict__["deployed_models"] = deployed_models
         __props__.__dict__["description"] = description
         __props__.__dict__["display_name"] = display_name
@@ -783,9 +1118,12 @@ class AiEndpoint(pulumi.CustomResource):
         __props__.__dict__["model_deployment_monitoring_job"] = model_deployment_monitoring_job
         __props__.__dict__["name"] = name
         __props__.__dict__["network"] = network
+        __props__.__dict__["predict_request_response_logging_config"] = predict_request_response_logging_config
+        __props__.__dict__["private_service_connect_config"] = private_service_connect_config
         __props__.__dict__["project"] = project
         __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["region"] = region
+        __props__.__dict__["traffic_split"] = traffic_split
         __props__.__dict__["update_time"] = update_time
         return AiEndpoint(resource_name, opts=opts, __props__=__props__)
 
@@ -797,6 +1135,22 @@ class AiEndpoint(pulumi.CustomResource):
         Output only. Timestamp when the DeployedModel was created.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="dedicatedEndpointDns")
+    def dedicated_endpoint_dns(self) -> pulumi.Output[str]:
+        """
+        Output only. DNS of the dedicated endpoint. Will only be populated if dedicatedEndpointEnabled is true. Format: `https://{endpointId}.{region}-{projectNumber}.prediction.vertexai.goog`.
+        """
+        return pulumi.get(self, "dedicated_endpoint_dns")
+
+    @property
+    @pulumi.getter(name="dedicatedEndpointEnabled")
+    def dedicated_endpoint_enabled(self) -> pulumi.Output[Optional[bool]]:
+        """
+        If true, the endpoint will be exposed through a dedicated DNS [Endpoint.dedicated_endpoint_dns]. Your request to the dedicated DNS will be isolated from other users' traffic and will have better performance and reliability. Note: Once you enabled dedicated endpoint, you won't be able to send request to the shared DNS {region}-aiplatform.googleapis.com. The limitation will be removed soon.
+        """
+        return pulumi.get(self, "dedicated_endpoint_enabled")
 
     @property
     @pulumi.getter(name="deployedModels")
@@ -889,9 +1243,27 @@ class AiEndpoint(pulumi.CustomResource):
     @pulumi.getter
     def network(self) -> pulumi.Output[Optional[str]]:
         """
-        The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the Endpoint should be peered. Private services access must already be configured for the network. If left unspecified, the Endpoint is not peered with any network. Only one of the fields, network or enable_private_service_connect, can be set. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`. Where `{project}` is a project number, as in `12345`, and `{network}` is network name.
+        The full name of the Google Compute Engine [network](https://cloud.google.com//compute/docs/networks-and-firewalls#networks) to which the Endpoint should be peered. Private services access must already be configured for the network. If left unspecified, the Endpoint is not peered with any network. Only one of the fields, network or enable_private_service_connect, can be set. [Format](https://cloud.google.com/compute/docs/reference/rest/v1/networks/insert): `projects/{project}/global/networks/{network}`. Where `{project}` is a project number, as in `12345`, and `{network}` is network name. Only one of the fields, `network` or `privateServiceConnectConfig`, can be set.
         """
         return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter(name="predictRequestResponseLoggingConfig")
+    def predict_request_response_logging_config(self) -> pulumi.Output[Optional['outputs.AiEndpointPredictRequestResponseLoggingConfig']]:
+        """
+        Configures the request-response logging for online prediction.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "predict_request_response_logging_config")
+
+    @property
+    @pulumi.getter(name="privateServiceConnectConfig")
+    def private_service_connect_config(self) -> pulumi.Output[Optional['outputs.AiEndpointPrivateServiceConnectConfig']]:
+        """
+        Configuration for private service connect. `network` and `privateServiceConnectConfig` are mutually exclusive.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "private_service_connect_config")
 
     @property
     @pulumi.getter
@@ -918,6 +1290,20 @@ class AiEndpoint(pulumi.CustomResource):
         The region for the resource
         """
         return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="trafficSplit")
+    def traffic_split(self) -> pulumi.Output[Optional[str]]:
+        """
+        A map from a DeployedModel's id to the percentage of this Endpoint's traffic that should be forwarded to that DeployedModel.
+        If a DeployedModel's id is not listed in this map, then it receives no traffic.
+        The traffic percentage values must add up to 100, or map must be empty if the Endpoint is to not accept any traffic at a moment.
+        > **Note:** The `traffic_split` setting only applies after a model has been deployed to the endpoint. Re-applying a `vertex.AiEndpoint`
+        resource without updating the `traffic_split` post-deployment may lead to your deployed `traffic_split` being lost; see
+        the `deployModel` [example](https://cloud.google.com/vertex-ai/docs/general/deployment#deploy_a_model_to_an_endpoint) and
+        [documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1beta1/projects.locations.endpoints/deployModel) for details.
+        """
+        return pulumi.get(self, "traffic_split")
 
     @property
     @pulumi.getter(name="updateTime")

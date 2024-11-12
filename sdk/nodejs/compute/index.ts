@@ -815,6 +815,11 @@ export type RegionPerInstanceConfig = import("./regionPerInstanceConfig").Region
 export const RegionPerInstanceConfig: typeof import("./regionPerInstanceConfig").RegionPerInstanceConfig = null as any;
 utilities.lazyLoad(exports, ["RegionPerInstanceConfig"], () => require("./regionPerInstanceConfig"));
 
+export { RegionResizeRequestArgs, RegionResizeRequestState } from "./regionResizeRequest";
+export type RegionResizeRequest = import("./regionResizeRequest").RegionResizeRequest;
+export const RegionResizeRequest: typeof import("./regionResizeRequest").RegionResizeRequest = null as any;
+utilities.lazyLoad(exports, ["RegionResizeRequest"], () => require("./regionResizeRequest"));
+
 export { RegionSecurityPolicyArgs, RegionSecurityPolicyState } from "./regionSecurityPolicy";
 export type RegionSecurityPolicy = import("./regionSecurityPolicy").RegionSecurityPolicy;
 export const RegionSecurityPolicy: typeof import("./regionSecurityPolicy").RegionSecurityPolicy = null as any;
@@ -1255,6 +1260,8 @@ const _module = {
                 return new RegionNetworkFirewallPolicyWithRules(name, <any>undefined, { urn })
             case "gcp:compute/regionPerInstanceConfig:RegionPerInstanceConfig":
                 return new RegionPerInstanceConfig(name, <any>undefined, { urn })
+            case "gcp:compute/regionResizeRequest:RegionResizeRequest":
+                return new RegionResizeRequest(name, <any>undefined, { urn })
             case "gcp:compute/regionSecurityPolicy:RegionSecurityPolicy":
                 return new RegionSecurityPolicy(name, <any>undefined, { urn })
             case "gcp:compute/regionSecurityPolicyRule:RegionSecurityPolicyRule":
@@ -1453,6 +1460,7 @@ pulumi.runtime.registerResourceModule("gcp", "compute/regionNetworkFirewallPolic
 pulumi.runtime.registerResourceModule("gcp", "compute/regionNetworkFirewallPolicyRule", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionNetworkFirewallPolicyWithRules", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionPerInstanceConfig", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/regionResizeRequest", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionSecurityPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionSecurityPolicyRule", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/regionSslCertificate", _module)

@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  *     description: "For keyname resources.",
  * });
  * const value = new gcp.tags.TagValue("value", {
- *     parent: pulumi.interpolate`tagKeys/${key.name}`,
+ *     parent: key.id,
  *     shortName: "valuename",
  *     description: "For valuename resources.",
  * });

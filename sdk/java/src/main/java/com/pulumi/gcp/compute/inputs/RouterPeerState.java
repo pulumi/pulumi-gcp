@@ -138,16 +138,20 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The custom learned route IP address range. Must be a valid CIDR-formatted prefix. If an IP address is provided without a
-     * subnet mask, it is interpreted as, for IPv4, a /32 singular IP address range, and, for IPv6, /128.
+     * The custom learned route IP address range. Must be a valid CIDR-formatted prefix.
+     * If an IP address is provided without a subnet mask, it is interpreted as, for IPv4,
+     * a /32 singular IP address range, and, for IPv6, /128.
+     * Structure is documented below.
      * 
      */
     @Import(name="customLearnedIpRanges")
     private @Nullable Output<List<RouterPeerCustomLearnedIpRangeArgs>> customLearnedIpRanges;
 
     /**
-     * @return The custom learned route IP address range. Must be a valid CIDR-formatted prefix. If an IP address is provided without a
-     * subnet mask, it is interpreted as, for IPv4, a /32 singular IP address range, and, for IPv6, /128.
+     * @return The custom learned route IP address range. Must be a valid CIDR-formatted prefix.
+     * If an IP address is provided without a subnet mask, it is interpreted as, for IPv4,
+     * a /32 singular IP address range, and, for IPv6, /128.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<List<RouterPeerCustomLearnedIpRangeArgs>>> customLearnedIpRanges() {
@@ -155,18 +159,20 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The user-defined custom learned route priority for a BGP session. This value is applied to all custom learned route
-     * ranges for the session. You can choose a value from 0 to 65335. If you don&#39;t provide a value, Google Cloud assigns a
-     * priority of 100 to the ranges.
+     * The user-defined custom learned route priority for a BGP session.
+     * This value is applied to all custom learned route ranges for the session.
+     * You can choose a value from 0 to 65335. If you don&#39;t provide a value,
+     * Google Cloud assigns a priority of 100 to the ranges.
      * 
      */
     @Import(name="customLearnedRoutePriority")
     private @Nullable Output<Integer> customLearnedRoutePriority;
 
     /**
-     * @return The user-defined custom learned route priority for a BGP session. This value is applied to all custom learned route
-     * ranges for the session. You can choose a value from 0 to 65335. If you don&#39;t provide a value, Google Cloud assigns a
-     * priority of 100 to the ranges.
+     * @return The user-defined custom learned route priority for a BGP session.
+     * This value is applied to all custom learned route ranges for the session.
+     * You can choose a value from 0 to 65335. If you don&#39;t provide a value,
+     * Google Cloud assigns a priority of 100 to the ranges.
      * 
      */
     public Optional<Output<Integer>> customLearnedRoutePriority() {
@@ -773,8 +779,10 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customLearnedIpRanges The custom learned route IP address range. Must be a valid CIDR-formatted prefix. If an IP address is provided without a
-         * subnet mask, it is interpreted as, for IPv4, a /32 singular IP address range, and, for IPv6, /128.
+         * @param customLearnedIpRanges The custom learned route IP address range. Must be a valid CIDR-formatted prefix.
+         * If an IP address is provided without a subnet mask, it is interpreted as, for IPv4,
+         * a /32 singular IP address range, and, for IPv6, /128.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -785,8 +793,10 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customLearnedIpRanges The custom learned route IP address range. Must be a valid CIDR-formatted prefix. If an IP address is provided without a
-         * subnet mask, it is interpreted as, for IPv4, a /32 singular IP address range, and, for IPv6, /128.
+         * @param customLearnedIpRanges The custom learned route IP address range. Must be a valid CIDR-formatted prefix.
+         * If an IP address is provided without a subnet mask, it is interpreted as, for IPv4,
+         * a /32 singular IP address range, and, for IPv6, /128.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -796,8 +806,10 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customLearnedIpRanges The custom learned route IP address range. Must be a valid CIDR-formatted prefix. If an IP address is provided without a
-         * subnet mask, it is interpreted as, for IPv4, a /32 singular IP address range, and, for IPv6, /128.
+         * @param customLearnedIpRanges The custom learned route IP address range. Must be a valid CIDR-formatted prefix.
+         * If an IP address is provided without a subnet mask, it is interpreted as, for IPv4,
+         * a /32 singular IP address range, and, for IPv6, /128.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -807,9 +819,10 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customLearnedRoutePriority The user-defined custom learned route priority for a BGP session. This value is applied to all custom learned route
-         * ranges for the session. You can choose a value from 0 to 65335. If you don&#39;t provide a value, Google Cloud assigns a
-         * priority of 100 to the ranges.
+         * @param customLearnedRoutePriority The user-defined custom learned route priority for a BGP session.
+         * This value is applied to all custom learned route ranges for the session.
+         * You can choose a value from 0 to 65335. If you don&#39;t provide a value,
+         * Google Cloud assigns a priority of 100 to the ranges.
          * 
          * @return builder
          * 
@@ -820,9 +833,10 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param customLearnedRoutePriority The user-defined custom learned route priority for a BGP session. This value is applied to all custom learned route
-         * ranges for the session. You can choose a value from 0 to 65335. If you don&#39;t provide a value, Google Cloud assigns a
-         * priority of 100 to the ranges.
+         * @param customLearnedRoutePriority The user-defined custom learned route priority for a BGP session.
+         * This value is applied to all custom learned route ranges for the session.
+         * You can choose a value from 0 to 65335. If you don&#39;t provide a value,
+         * Google Cloud assigns a priority of 100 to the ranges.
          * 
          * @return builder
          * 

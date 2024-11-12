@@ -48,9 +48,21 @@ namespace Pulumi.Gcp.ActiveDirectory
     /// 
     /// Domain can be imported using any of these accepted formats:
     /// 
+    /// * `{{project}}/{{name}}`
+    /// 
+    /// * `{{project}} {{name}}`
+    /// 
     /// * `{{name}}`
     /// 
     /// When using the `pulumi import` command, Domain can be imported using one of the formats above. For example:
+    /// 
+    /// ```sh
+    /// $ pulumi import gcp:activedirectory/domain:Domain default {{project}}/{{name}}
+    /// ```
+    /// 
+    /// ```sh
+    /// $ pulumi import gcp:activedirectory/domain:Domain default "{{project}} {{name}}"
+    /// ```
     /// 
     /// ```sh
     /// $ pulumi import gcp:activedirectory/domain:Domain default {{name}}

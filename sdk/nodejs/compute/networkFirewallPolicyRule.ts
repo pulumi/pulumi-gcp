@@ -47,7 +47,7 @@ import * as utilities from "../utilities";
  * });
  * const basicValue = new gcp.tags.TagValue("basic_value", {
  *     description: "For valuename resources.",
- *     parent: pulumi.interpolate`tagKeys/${basicKey.name}`,
+ *     parent: basicKey.id,
  *     shortName: "tagvalue",
  * });
  * const primary = new gcp.compute.NetworkFirewallPolicyRule("primary", {
@@ -66,7 +66,7 @@ import * as utilities from "../utilities";
  *         srcRegionCodes: ["US"],
  *         srcThreatIntelligences: ["iplist-known-malicious-ips"],
  *         srcSecureTags: [{
- *             name: pulumi.interpolate`tagValues/${basicValue.name}`,
+ *             name: basicValue.id,
  *         }],
  *         layer4Configs: [{
  *             ipProtocol: "all",

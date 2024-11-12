@@ -51,6 +51,7 @@ namespace Pulumi.Gcp.Workflows
     ///         {
     ///             { "url", "https://timeapi.io/api/Time/current/zone?timeZone=Europe/Amsterdam" },
     ///         },
+    ///         DeletionProtection = false,
     ///         SourceContents = @"# This is a sample workflow. You can replace it with your source code.
     /// #
     /// # This workflow does the following:
@@ -111,6 +112,9 @@ namespace Pulumi.Gcp.Workflows
         /// </summary>
         [Output("cryptoKeyName")]
         public Output<string?> CryptoKeyName { get; private set; } = null!;
+
+        [Output("deletionProtection")]
+        public Output<bool?> DeletionProtection { get; private set; } = null!;
 
         /// <summary>
         /// Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
@@ -275,6 +279,9 @@ namespace Pulumi.Gcp.Workflows
         [Input("cryptoKeyName")]
         public Input<string>? CryptoKeyName { get; set; }
 
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
+
         /// <summary>
         /// Description of the workflow provided by the user. Must be at most 1000 unicode characters long.
         /// </summary>
@@ -381,6 +388,9 @@ namespace Pulumi.Gcp.Workflows
         /// </summary>
         [Input("cryptoKeyName")]
         public Input<string>? CryptoKeyName { get; set; }
+
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
         /// Description of the workflow provided by the user. Must be at most 1000 unicode characters long.

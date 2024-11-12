@@ -192,7 +192,7 @@ type DicomStore struct {
 	// The resource name for the DicomStore.
 	// ** Changing this property may recreate the Dicom store (removing all data) **
 	Name pulumi.StringOutput `pulumi:"name"`
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	NotificationConfig DicomStoreNotificationConfigPtrOutput `pulumi:"notificationConfig"`
 	// The combination of labels configured directly on the resource
@@ -266,7 +266,7 @@ type dicomStoreState struct {
 	// The resource name for the DicomStore.
 	// ** Changing this property may recreate the Dicom store (removing all data) **
 	Name *string `pulumi:"name"`
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	NotificationConfig *DicomStoreNotificationConfig `pulumi:"notificationConfig"`
 	// The combination of labels configured directly on the resource
@@ -303,7 +303,7 @@ type DicomStoreState struct {
 	// The resource name for the DicomStore.
 	// ** Changing this property may recreate the Dicom store (removing all data) **
 	Name pulumi.StringPtrInput
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	NotificationConfig DicomStoreNotificationConfigPtrInput
 	// The combination of labels configured directly on the resource
@@ -342,7 +342,7 @@ type dicomStoreArgs struct {
 	// The resource name for the DicomStore.
 	// ** Changing this property may recreate the Dicom store (removing all data) **
 	Name *string `pulumi:"name"`
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	NotificationConfig *DicomStoreNotificationConfig `pulumi:"notificationConfig"`
 	// To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store.
@@ -373,7 +373,7 @@ type DicomStoreArgs struct {
 	// The resource name for the DicomStore.
 	// ** Changing this property may recreate the Dicom store (removing all data) **
 	Name pulumi.StringPtrInput
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	NotificationConfig DicomStoreNotificationConfigPtrInput
 	// To enable streaming to BigQuery, configure the streamConfigs object in your DICOM store.
@@ -503,7 +503,7 @@ func (o DicomStoreOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *DicomStore) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// A nested object resource
+// A nested object resource.
 // Structure is documented below.
 func (o DicomStoreOutput) NotificationConfig() DicomStoreNotificationConfigPtrOutput {
 	return o.ApplyT(func(v *DicomStore) DicomStoreNotificationConfigPtrOutput { return v.NotificationConfig }).(DicomStoreNotificationConfigPtrOutput)

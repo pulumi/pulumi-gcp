@@ -10,6 +10,7 @@ from .database import *
 from .database_iam_binding import *
 from .database_iam_member import *
 from .database_iam_policy import *
+from .get_database import *
 from .get_database_iam_policy import *
 from .get_instance import *
 from .get_instance_iam_policy import *

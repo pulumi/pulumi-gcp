@@ -16,7 +16,7 @@ public final class BareMetalAdminClusterNetworkConfigArgs extends com.pulumi.res
     public static final BareMetalAdminClusterNetworkConfigArgs Empty = new BareMetalAdminClusterNetworkConfigArgs();
 
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -24,7 +24,7 @@ public final class BareMetalAdminClusterNetworkConfigArgs extends com.pulumi.res
     private @Nullable Output<BareMetalAdminClusterNetworkConfigIslandModeCidrArgs> islandModeCidr;
 
     /**
-     * @return A nested object resource
+     * @return A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -57,7 +57,7 @@ public final class BareMetalAdminClusterNetworkConfigArgs extends com.pulumi.res
         }
 
         /**
-         * @param islandModeCidr A nested object resource
+         * @param islandModeCidr A nested object resource.
          * Structure is documented below.
          * 
          * @return builder
@@ -69,7 +69,7 @@ public final class BareMetalAdminClusterNetworkConfigArgs extends com.pulumi.res
         }
 
         /**
-         * @param islandModeCidr A nested object resource
+         * @param islandModeCidr A nested object resource.
          * Structure is documented below.
          * 
          * @return builder

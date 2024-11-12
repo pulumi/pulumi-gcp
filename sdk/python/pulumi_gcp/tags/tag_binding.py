@@ -157,12 +157,12 @@ class TagBinding(pulumi.CustomResource):
             short_name="keyname",
             description="For keyname resources.")
         value = gcp.tags.TagValue("value",
-            parent=key.name.apply(lambda name: f"tagKeys/{name}"),
+            parent=key.id,
             short_name="valuename",
             description="For valuename resources.")
         binding = gcp.tags.TagBinding("binding",
             parent=project.number.apply(lambda number: f"//cloudresourcemanager.googleapis.com/projects/{number}"),
-            tag_value=value.name.apply(lambda name: f"tagValues/{name}"))
+            tag_value=value.id)
         ```
 
         ## Import
@@ -224,12 +224,12 @@ class TagBinding(pulumi.CustomResource):
             short_name="keyname",
             description="For keyname resources.")
         value = gcp.tags.TagValue("value",
-            parent=key.name.apply(lambda name: f"tagKeys/{name}"),
+            parent=key.id,
             short_name="valuename",
             description="For valuename resources.")
         binding = gcp.tags.TagBinding("binding",
             parent=project.number.apply(lambda number: f"//cloudresourcemanager.googleapis.com/projects/{number}"),
-            tag_value=value.name.apply(lambda name: f"tagValues/{name}"))
+            tag_value=value.id)
         ```
 
         ## Import

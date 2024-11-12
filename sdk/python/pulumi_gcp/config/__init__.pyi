@@ -143,6 +143,8 @@ dataplexCustomEndpoint: Optional[str]
 
 dataprocCustomEndpoint: Optional[str]
 
+dataprocGdcCustomEndpoint: Optional[str]
+
 dataprocMetastoreCustomEndpoint: Optional[str]
 
 datastreamCustomEndpoint: Optional[str]
@@ -208,6 +210,8 @@ googlePartnerName: Optional[str]
 healthcareCustomEndpoint: Optional[str]
 
 iam2CustomEndpoint: Optional[str]
+
+iam3CustomEndpoint: Optional[str]
 
 iamBetaCustomEndpoint: Optional[str]
 

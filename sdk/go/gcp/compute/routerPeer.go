@@ -547,12 +547,15 @@ type RouterPeer struct {
 	// BFD configuration for the BGP peering.
 	// Structure is documented below.
 	Bfd RouterPeerBfdOutput `pulumi:"bfd"`
-	// The custom learned route IP address range. Must be a valid CIDR-formatted prefix. If an IP address is provided without a
-	// subnet mask, it is interpreted as, for IPv4, a /32 singular IP address range, and, for IPv6, /128.
+	// The custom learned route IP address range. Must be a valid CIDR-formatted prefix.
+	// If an IP address is provided without a subnet mask, it is interpreted as, for IPv4,
+	// a /32 singular IP address range, and, for IPv6, /128.
+	// Structure is documented below.
 	CustomLearnedIpRanges RouterPeerCustomLearnedIpRangeArrayOutput `pulumi:"customLearnedIpRanges"`
-	// The user-defined custom learned route priority for a BGP session. This value is applied to all custom learned route
-	// ranges for the session. You can choose a value from 0 to 65335. If you don't provide a value, Google Cloud assigns a
-	// priority of 100 to the ranges.
+	// The user-defined custom learned route priority for a BGP session.
+	// This value is applied to all custom learned route ranges for the session.
+	// You can choose a value from 0 to 65335. If you don't provide a value,
+	// Google Cloud assigns a priority of 100 to the ranges.
 	CustomLearnedRoutePriority pulumi.IntPtrOutput `pulumi:"customLearnedRoutePriority"`
 	// The status of the BGP peer connection. If set to false, any active session
 	// with the peer is terminated and all associated routing information is removed.
@@ -700,12 +703,15 @@ type routerPeerState struct {
 	// BFD configuration for the BGP peering.
 	// Structure is documented below.
 	Bfd *RouterPeerBfd `pulumi:"bfd"`
-	// The custom learned route IP address range. Must be a valid CIDR-formatted prefix. If an IP address is provided without a
-	// subnet mask, it is interpreted as, for IPv4, a /32 singular IP address range, and, for IPv6, /128.
+	// The custom learned route IP address range. Must be a valid CIDR-formatted prefix.
+	// If an IP address is provided without a subnet mask, it is interpreted as, for IPv4,
+	// a /32 singular IP address range, and, for IPv6, /128.
+	// Structure is documented below.
 	CustomLearnedIpRanges []RouterPeerCustomLearnedIpRange `pulumi:"customLearnedIpRanges"`
-	// The user-defined custom learned route priority for a BGP session. This value is applied to all custom learned route
-	// ranges for the session. You can choose a value from 0 to 65335. If you don't provide a value, Google Cloud assigns a
-	// priority of 100 to the ranges.
+	// The user-defined custom learned route priority for a BGP session.
+	// This value is applied to all custom learned route ranges for the session.
+	// You can choose a value from 0 to 65335. If you don't provide a value,
+	// Google Cloud assigns a priority of 100 to the ranges.
 	CustomLearnedRoutePriority *int `pulumi:"customLearnedRoutePriority"`
 	// The status of the BGP peer connection. If set to false, any active session
 	// with the peer is terminated and all associated routing information is removed.
@@ -815,12 +821,15 @@ type RouterPeerState struct {
 	// BFD configuration for the BGP peering.
 	// Structure is documented below.
 	Bfd RouterPeerBfdPtrInput
-	// The custom learned route IP address range. Must be a valid CIDR-formatted prefix. If an IP address is provided without a
-	// subnet mask, it is interpreted as, for IPv4, a /32 singular IP address range, and, for IPv6, /128.
+	// The custom learned route IP address range. Must be a valid CIDR-formatted prefix.
+	// If an IP address is provided without a subnet mask, it is interpreted as, for IPv4,
+	// a /32 singular IP address range, and, for IPv6, /128.
+	// Structure is documented below.
 	CustomLearnedIpRanges RouterPeerCustomLearnedIpRangeArrayInput
-	// The user-defined custom learned route priority for a BGP session. This value is applied to all custom learned route
-	// ranges for the session. You can choose a value from 0 to 65335. If you don't provide a value, Google Cloud assigns a
-	// priority of 100 to the ranges.
+	// The user-defined custom learned route priority for a BGP session.
+	// This value is applied to all custom learned route ranges for the session.
+	// You can choose a value from 0 to 65335. If you don't provide a value,
+	// Google Cloud assigns a priority of 100 to the ranges.
 	CustomLearnedRoutePriority pulumi.IntPtrInput
 	// The status of the BGP peer connection. If set to false, any active session
 	// with the peer is terminated and all associated routing information is removed.
@@ -934,12 +943,15 @@ type routerPeerArgs struct {
 	// BFD configuration for the BGP peering.
 	// Structure is documented below.
 	Bfd *RouterPeerBfd `pulumi:"bfd"`
-	// The custom learned route IP address range. Must be a valid CIDR-formatted prefix. If an IP address is provided without a
-	// subnet mask, it is interpreted as, for IPv4, a /32 singular IP address range, and, for IPv6, /128.
+	// The custom learned route IP address range. Must be a valid CIDR-formatted prefix.
+	// If an IP address is provided without a subnet mask, it is interpreted as, for IPv4,
+	// a /32 singular IP address range, and, for IPv6, /128.
+	// Structure is documented below.
 	CustomLearnedIpRanges []RouterPeerCustomLearnedIpRange `pulumi:"customLearnedIpRanges"`
-	// The user-defined custom learned route priority for a BGP session. This value is applied to all custom learned route
-	// ranges for the session. You can choose a value from 0 to 65335. If you don't provide a value, Google Cloud assigns a
-	// priority of 100 to the ranges.
+	// The user-defined custom learned route priority for a BGP session.
+	// This value is applied to all custom learned route ranges for the session.
+	// You can choose a value from 0 to 65335. If you don't provide a value,
+	// Google Cloud assigns a priority of 100 to the ranges.
 	CustomLearnedRoutePriority *int `pulumi:"customLearnedRoutePriority"`
 	// The status of the BGP peer connection. If set to false, any active session
 	// with the peer is terminated and all associated routing information is removed.
@@ -1040,12 +1052,15 @@ type RouterPeerArgs struct {
 	// BFD configuration for the BGP peering.
 	// Structure is documented below.
 	Bfd RouterPeerBfdPtrInput
-	// The custom learned route IP address range. Must be a valid CIDR-formatted prefix. If an IP address is provided without a
-	// subnet mask, it is interpreted as, for IPv4, a /32 singular IP address range, and, for IPv6, /128.
+	// The custom learned route IP address range. Must be a valid CIDR-formatted prefix.
+	// If an IP address is provided without a subnet mask, it is interpreted as, for IPv4,
+	// a /32 singular IP address range, and, for IPv6, /128.
+	// Structure is documented below.
 	CustomLearnedIpRanges RouterPeerCustomLearnedIpRangeArrayInput
-	// The user-defined custom learned route priority for a BGP session. This value is applied to all custom learned route
-	// ranges for the session. You can choose a value from 0 to 65335. If you don't provide a value, Google Cloud assigns a
-	// priority of 100 to the ranges.
+	// The user-defined custom learned route priority for a BGP session.
+	// This value is applied to all custom learned route ranges for the session.
+	// You can choose a value from 0 to 65335. If you don't provide a value,
+	// Google Cloud assigns a priority of 100 to the ranges.
 	CustomLearnedRoutePriority pulumi.IntPtrInput
 	// The status of the BGP peer connection. If set to false, any active session
 	// with the peer is terminated and all associated routing information is removed.
@@ -1246,15 +1261,18 @@ func (o RouterPeerOutput) Bfd() RouterPeerBfdOutput {
 	return o.ApplyT(func(v *RouterPeer) RouterPeerBfdOutput { return v.Bfd }).(RouterPeerBfdOutput)
 }
 
-// The custom learned route IP address range. Must be a valid CIDR-formatted prefix. If an IP address is provided without a
-// subnet mask, it is interpreted as, for IPv4, a /32 singular IP address range, and, for IPv6, /128.
+// The custom learned route IP address range. Must be a valid CIDR-formatted prefix.
+// If an IP address is provided without a subnet mask, it is interpreted as, for IPv4,
+// a /32 singular IP address range, and, for IPv6, /128.
+// Structure is documented below.
 func (o RouterPeerOutput) CustomLearnedIpRanges() RouterPeerCustomLearnedIpRangeArrayOutput {
 	return o.ApplyT(func(v *RouterPeer) RouterPeerCustomLearnedIpRangeArrayOutput { return v.CustomLearnedIpRanges }).(RouterPeerCustomLearnedIpRangeArrayOutput)
 }
 
-// The user-defined custom learned route priority for a BGP session. This value is applied to all custom learned route
-// ranges for the session. You can choose a value from 0 to 65335. If you don't provide a value, Google Cloud assigns a
-// priority of 100 to the ranges.
+// The user-defined custom learned route priority for a BGP session.
+// This value is applied to all custom learned route ranges for the session.
+// You can choose a value from 0 to 65335. If you don't provide a value,
+// Google Cloud assigns a priority of 100 to the ranges.
 func (o RouterPeerOutput) CustomLearnedRoutePriority() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *RouterPeer) pulumi.IntPtrOutput { return v.CustomLearnedRoutePriority }).(pulumi.IntPtrOutput)
 }

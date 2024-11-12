@@ -166,7 +166,7 @@ export class Disk extends pulumi.CustomResource {
      */
     public readonly accessMode!: pulumi.Output<string>;
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      */
     public readonly asyncPrimaryDisk!: pulumi.Output<outputs.compute.DiskAsyncPrimaryDisk | undefined>;
@@ -518,7 +518,7 @@ export interface DiskState {
      */
     accessMode?: pulumi.Input<string>;
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      */
     asyncPrimaryDisk?: pulumi.Input<inputs.compute.DiskAsyncPrimaryDisk>;
@@ -774,7 +774,7 @@ export interface DiskArgs {
      */
     accessMode?: pulumi.Input<string>;
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      */
     asyncPrimaryDisk?: pulumi.Input<inputs.compute.DiskAsyncPrimaryDisk>;

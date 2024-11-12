@@ -19,14 +19,14 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
     public static final FirewallPolicyRuleMatchArgs Empty = new FirewallPolicyRuleMatchArgs();
 
     /**
-     * Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10. Destination address groups is only supported in Egress rules.
+     * Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10.
      * 
      */
     @Import(name="destAddressGroups")
     private @Nullable Output<List<String>> destAddressGroups;
 
     /**
-     * @return Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10. Destination address groups is only supported in Egress rules.
+     * @return Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10.
      * 
      */
     public Optional<Output<List<String>>> destAddressGroups() {
@@ -34,14 +34,14 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Domain names that will be used to match against the resolved domain name of destination of traffic. Can only be specified if DIRECTION is egress.
+     * Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 100.
      * 
      */
     @Import(name="destFqdns")
     private @Nullable Output<List<String>> destFqdns;
 
     /**
-     * @return Domain names that will be used to match against the resolved domain name of destination of traffic. Can only be specified if DIRECTION is egress.
+     * @return Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 100.
      * 
      */
     public Optional<Output<List<String>>> destFqdns() {
@@ -49,14 +49,14 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
+     * CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
      * 
      */
     @Import(name="destIpRanges")
     private @Nullable Output<List<String>> destIpRanges;
 
     /**
-     * @return CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
+     * @return CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
      * 
      */
     public Optional<Output<List<String>>> destIpRanges() {
@@ -64,14 +64,14 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is egress.
+     * Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex.&#34;US&#34; Maximum number of dest region codes allowed is 5000.
      * 
      */
     @Import(name="destRegionCodes")
     private @Nullable Output<List<String>> destRegionCodes;
 
     /**
-     * @return The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is egress.
+     * @return Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex.&#34;US&#34; Maximum number of dest region codes allowed is 5000.
      * 
      */
     public Optional<Output<List<String>>> destRegionCodes() {
@@ -79,14 +79,14 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Name of the Google Cloud Threat Intelligence list.
+     * Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic destination.
      * 
      */
     @Import(name="destThreatIntelligences")
     private @Nullable Output<List<String>> destThreatIntelligences;
 
     /**
-     * @return Name of the Google Cloud Threat Intelligence list.
+     * @return Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic destination.
      * 
      */
     public Optional<Output<List<String>>> destThreatIntelligences() {
@@ -95,6 +95,7 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
 
     /**
      * Pairs of IP protocols and ports that the rule should match.
+     * Structure is documented below.
      * 
      */
     @Import(name="layer4Configs", required=true)
@@ -102,6 +103,7 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
 
     /**
      * @return Pairs of IP protocols and ports that the rule should match.
+     * Structure is documented below.
      * 
      */
     public Output<List<FirewallPolicyRuleMatchLayer4ConfigArgs>> layer4Configs() {
@@ -109,14 +111,14 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Address groups which should be matched against the traffic source. Maximum number of source address groups is 10. Source address groups is only supported in Ingress rules.
+     * Address groups which should be matched against the traffic source. Maximum number of source address groups is 10.
      * 
      */
     @Import(name="srcAddressGroups")
     private @Nullable Output<List<String>> srcAddressGroups;
 
     /**
-     * @return Address groups which should be matched against the traffic source. Maximum number of source address groups is 10. Source address groups is only supported in Ingress rules.
+     * @return Address groups which should be matched against the traffic source. Maximum number of source address groups is 10.
      * 
      */
     public Optional<Output<List<String>>> srcAddressGroups() {
@@ -124,14 +126,14 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Domain names that will be used to match against the resolved domain name of source of traffic. Can only be specified if DIRECTION is ingress.
+     * Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 100.
      * 
      */
     @Import(name="srcFqdns")
     private @Nullable Output<List<String>> srcFqdns;
 
     /**
-     * @return Domain names that will be used to match against the resolved domain name of source of traffic. Can only be specified if DIRECTION is ingress.
+     * @return Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 100.
      * 
      */
     public Optional<Output<List<String>>> srcFqdns() {
@@ -139,14 +141,14 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
+     * CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
      * 
      */
     @Import(name="srcIpRanges")
     private @Nullable Output<List<String>> srcIpRanges;
 
     /**
-     * @return CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
+     * @return CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
      * 
      */
     public Optional<Output<List<String>>> srcIpRanges() {
@@ -154,14 +156,14 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is ingress.
+     * Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex.&#34;US&#34; Maximum number of source region codes allowed is 5000.
      * 
      */
     @Import(name="srcRegionCodes")
     private @Nullable Output<List<String>> srcRegionCodes;
 
     /**
-     * @return The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is ingress.
+     * @return Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex.&#34;US&#34; Maximum number of source region codes allowed is 5000.
      * 
      */
     public Optional<Output<List<String>>> srcRegionCodes() {
@@ -169,18 +171,18 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
     }
 
     /**
-     * Name of the Google Cloud Threat Intelligence list.
+     * Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
      * 
-     * The `layer4_configs` block supports:
+     * &lt;a name=&#34;nested_layer4_configs&#34;&gt;&lt;/a&gt;The `layer4_configs` block supports:
      * 
      */
     @Import(name="srcThreatIntelligences")
     private @Nullable Output<List<String>> srcThreatIntelligences;
 
     /**
-     * @return Name of the Google Cloud Threat Intelligence list.
+     * @return Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
      * 
-     * The `layer4_configs` block supports:
+     * &lt;a name=&#34;nested_layer4_configs&#34;&gt;&lt;/a&gt;The `layer4_configs` block supports:
      * 
      */
     public Optional<Output<List<String>>> srcThreatIntelligences() {
@@ -222,7 +224,7 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param destAddressGroups Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10. Destination address groups is only supported in Egress rules.
+         * @param destAddressGroups Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10.
          * 
          * @return builder
          * 
@@ -233,7 +235,7 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param destAddressGroups Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10. Destination address groups is only supported in Egress rules.
+         * @param destAddressGroups Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10.
          * 
          * @return builder
          * 
@@ -243,7 +245,7 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param destAddressGroups Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10. Destination address groups is only supported in Egress rules.
+         * @param destAddressGroups Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10.
          * 
          * @return builder
          * 
@@ -253,7 +255,7 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param destFqdns Domain names that will be used to match against the resolved domain name of destination of traffic. Can only be specified if DIRECTION is egress.
+         * @param destFqdns Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 100.
          * 
          * @return builder
          * 
@@ -264,7 +266,7 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param destFqdns Domain names that will be used to match against the resolved domain name of destination of traffic. Can only be specified if DIRECTION is egress.
+         * @param destFqdns Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 100.
          * 
          * @return builder
          * 
@@ -274,7 +276,7 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param destFqdns Domain names that will be used to match against the resolved domain name of destination of traffic. Can only be specified if DIRECTION is egress.
+         * @param destFqdns Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 100.
          * 
          * @return builder
          * 
@@ -284,7 +286,7 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param destIpRanges CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
+         * @param destIpRanges CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
          * 
          * @return builder
          * 
@@ -295,7 +297,7 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param destIpRanges CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
+         * @param destIpRanges CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
          * 
          * @return builder
          * 
@@ -305,7 +307,7 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param destIpRanges CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 256.
+         * @param destIpRanges CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
          * 
          * @return builder
          * 
@@ -315,7 +317,7 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param destRegionCodes The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is egress.
+         * @param destRegionCodes Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex.&#34;US&#34; Maximum number of dest region codes allowed is 5000.
          * 
          * @return builder
          * 
@@ -326,7 +328,7 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param destRegionCodes The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is egress.
+         * @param destRegionCodes Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex.&#34;US&#34; Maximum number of dest region codes allowed is 5000.
          * 
          * @return builder
          * 
@@ -336,7 +338,7 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param destRegionCodes The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is egress.
+         * @param destRegionCodes Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex.&#34;US&#34; Maximum number of dest region codes allowed is 5000.
          * 
          * @return builder
          * 
@@ -346,7 +348,7 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param destThreatIntelligences Name of the Google Cloud Threat Intelligence list.
+         * @param destThreatIntelligences Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic destination.
          * 
          * @return builder
          * 
@@ -357,7 +359,7 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param destThreatIntelligences Name of the Google Cloud Threat Intelligence list.
+         * @param destThreatIntelligences Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic destination.
          * 
          * @return builder
          * 
@@ -367,7 +369,7 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param destThreatIntelligences Name of the Google Cloud Threat Intelligence list.
+         * @param destThreatIntelligences Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic destination.
          * 
          * @return builder
          * 
@@ -378,6 +380,7 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
 
         /**
          * @param layer4Configs Pairs of IP protocols and ports that the rule should match.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -389,6 +392,7 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
 
         /**
          * @param layer4Configs Pairs of IP protocols and ports that the rule should match.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -399,6 +403,7 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
 
         /**
          * @param layer4Configs Pairs of IP protocols and ports that the rule should match.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -408,7 +413,7 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param srcAddressGroups Address groups which should be matched against the traffic source. Maximum number of source address groups is 10. Source address groups is only supported in Ingress rules.
+         * @param srcAddressGroups Address groups which should be matched against the traffic source. Maximum number of source address groups is 10.
          * 
          * @return builder
          * 
@@ -419,7 +424,7 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param srcAddressGroups Address groups which should be matched against the traffic source. Maximum number of source address groups is 10. Source address groups is only supported in Ingress rules.
+         * @param srcAddressGroups Address groups which should be matched against the traffic source. Maximum number of source address groups is 10.
          * 
          * @return builder
          * 
@@ -429,7 +434,7 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param srcAddressGroups Address groups which should be matched against the traffic source. Maximum number of source address groups is 10. Source address groups is only supported in Ingress rules.
+         * @param srcAddressGroups Address groups which should be matched against the traffic source. Maximum number of source address groups is 10.
          * 
          * @return builder
          * 
@@ -439,7 +444,7 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param srcFqdns Domain names that will be used to match against the resolved domain name of source of traffic. Can only be specified if DIRECTION is ingress.
+         * @param srcFqdns Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 100.
          * 
          * @return builder
          * 
@@ -450,7 +455,7 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param srcFqdns Domain names that will be used to match against the resolved domain name of source of traffic. Can only be specified if DIRECTION is ingress.
+         * @param srcFqdns Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 100.
          * 
          * @return builder
          * 
@@ -460,7 +465,7 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param srcFqdns Domain names that will be used to match against the resolved domain name of source of traffic. Can only be specified if DIRECTION is ingress.
+         * @param srcFqdns Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 100.
          * 
          * @return builder
          * 
@@ -470,7 +475,7 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param srcIpRanges CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
+         * @param srcIpRanges CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
          * 
          * @return builder
          * 
@@ -481,7 +486,7 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param srcIpRanges CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
+         * @param srcIpRanges CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
          * 
          * @return builder
          * 
@@ -491,7 +496,7 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param srcIpRanges CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 256.
+         * @param srcIpRanges CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
          * 
          * @return builder
          * 
@@ -501,7 +506,7 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param srcRegionCodes The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is ingress.
+         * @param srcRegionCodes Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex.&#34;US&#34; Maximum number of source region codes allowed is 5000.
          * 
          * @return builder
          * 
@@ -512,7 +517,7 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param srcRegionCodes The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is ingress.
+         * @param srcRegionCodes Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex.&#34;US&#34; Maximum number of source region codes allowed is 5000.
          * 
          * @return builder
          * 
@@ -522,7 +527,7 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param srcRegionCodes The Unicode country codes whose IP addresses will be used to match against the source of traffic. Can only be specified if DIRECTION is ingress.
+         * @param srcRegionCodes Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex.&#34;US&#34; Maximum number of source region codes allowed is 5000.
          * 
          * @return builder
          * 
@@ -532,9 +537,9 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param srcThreatIntelligences Name of the Google Cloud Threat Intelligence list.
+         * @param srcThreatIntelligences Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
          * 
-         * The `layer4_configs` block supports:
+         * &lt;a name=&#34;nested_layer4_configs&#34;&gt;&lt;/a&gt;The `layer4_configs` block supports:
          * 
          * @return builder
          * 
@@ -545,9 +550,9 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param srcThreatIntelligences Name of the Google Cloud Threat Intelligence list.
+         * @param srcThreatIntelligences Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
          * 
-         * The `layer4_configs` block supports:
+         * &lt;a name=&#34;nested_layer4_configs&#34;&gt;&lt;/a&gt;The `layer4_configs` block supports:
          * 
          * @return builder
          * 
@@ -557,9 +562,9 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
         }
 
         /**
-         * @param srcThreatIntelligences Name of the Google Cloud Threat Intelligence list.
+         * @param srcThreatIntelligences Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
          * 
-         * The `layer4_configs` block supports:
+         * &lt;a name=&#34;nested_layer4_configs&#34;&gt;&lt;/a&gt;The `layer4_configs` block supports:
          * 
          * @return builder
          * 

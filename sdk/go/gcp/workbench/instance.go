@@ -330,7 +330,9 @@ type Instance struct {
 	InstanceId pulumi.StringPtrOutput `pulumi:"instanceId"`
 	// 'Optional. Input only. The owner of this instance after creation. Format:
 	// `alias@example.com` Currently supports one owner only. If not specified, all of
-	// the service account users of your VM instance''s service account can use the instance.'
+	// the service account users of your VM instance''s service account can use the instance.
+	// If specified, sets the access mode to `Single user`. For more details, see
+	// https://cloud.google.com/vertex-ai/docs/workbench/instances/manage-access-jupyterlab'
 	InstanceOwners pulumi.StringArrayOutput `pulumi:"instanceOwners"`
 	// Optional. Labels to apply to this instance. These can be later modified
 	// by the UpdateInstance method.
@@ -425,7 +427,9 @@ type instanceState struct {
 	InstanceId *string `pulumi:"instanceId"`
 	// 'Optional. Input only. The owner of this instance after creation. Format:
 	// `alias@example.com` Currently supports one owner only. If not specified, all of
-	// the service account users of your VM instance''s service account can use the instance.'
+	// the service account users of your VM instance''s service account can use the instance.
+	// If specified, sets the access mode to `Single user`. For more details, see
+	// https://cloud.google.com/vertex-ai/docs/workbench/instances/manage-access-jupyterlab'
 	InstanceOwners []string `pulumi:"instanceOwners"`
 	// Optional. Labels to apply to this instance. These can be later modified
 	// by the UpdateInstance method.
@@ -483,7 +487,9 @@ type InstanceState struct {
 	InstanceId pulumi.StringPtrInput
 	// 'Optional. Input only. The owner of this instance after creation. Format:
 	// `alias@example.com` Currently supports one owner only. If not specified, all of
-	// the service account users of your VM instance''s service account can use the instance.'
+	// the service account users of your VM instance''s service account can use the instance.
+	// If specified, sets the access mode to `Single user`. For more details, see
+	// https://cloud.google.com/vertex-ai/docs/workbench/instances/manage-access-jupyterlab'
 	InstanceOwners pulumi.StringArrayInput
 	// Optional. Labels to apply to this instance. These can be later modified
 	// by the UpdateInstance method.
@@ -532,7 +538,9 @@ type instanceArgs struct {
 	InstanceId *string `pulumi:"instanceId"`
 	// 'Optional. Input only. The owner of this instance after creation. Format:
 	// `alias@example.com` Currently supports one owner only. If not specified, all of
-	// the service account users of your VM instance''s service account can use the instance.'
+	// the service account users of your VM instance''s service account can use the instance.
+	// If specified, sets the access mode to `Single user`. For more details, see
+	// https://cloud.google.com/vertex-ai/docs/workbench/instances/manage-access-jupyterlab'
 	InstanceOwners []string `pulumi:"instanceOwners"`
 	// Optional. Labels to apply to this instance. These can be later modified
 	// by the UpdateInstance method.
@@ -564,7 +572,9 @@ type InstanceArgs struct {
 	InstanceId pulumi.StringPtrInput
 	// 'Optional. Input only. The owner of this instance after creation. Format:
 	// `alias@example.com` Currently supports one owner only. If not specified, all of
-	// the service account users of your VM instance''s service account can use the instance.'
+	// the service account users of your VM instance''s service account can use the instance.
+	// If specified, sets the access mode to `Single user`. For more details, see
+	// https://cloud.google.com/vertex-ai/docs/workbench/instances/manage-access-jupyterlab'
 	InstanceOwners pulumi.StringArrayInput
 	// Optional. Labels to apply to this instance. These can be later modified
 	// by the UpdateInstance method.
@@ -721,7 +731,9 @@ func (o InstanceOutput) InstanceId() pulumi.StringPtrOutput {
 
 // 'Optional. Input only. The owner of this instance after creation. Format:
 // `alias@example.com` Currently supports one owner only. If not specified, all of
-// the service account users of your VM instance”s service account can use the instance.'
+// the service account users of your VM instance”s service account can use the instance.
+// If specified, sets the access mode to `Single user`. For more details, see
+// https://cloud.google.com/vertex-ai/docs/workbench/instances/manage-access-jupyterlab'
 func (o InstanceOutput) InstanceOwners() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringArrayOutput { return v.InstanceOwners }).(pulumi.StringArrayOutput)
 }

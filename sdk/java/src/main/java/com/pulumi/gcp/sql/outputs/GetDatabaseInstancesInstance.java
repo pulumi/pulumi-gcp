@@ -85,6 +85,11 @@ public final class GetDatabaseInstancesInstance {
      * 
      */
     private List<GetDatabaseInstancesInstanceReplicaConfiguration> replicaConfigurations;
+    /**
+     * @return The replicas of the instance.
+     * 
+     */
+    private List<String> replicaNames;
     private List<GetDatabaseInstancesInstanceRestoreBackupContext> restoreBackupContexts;
     /**
      * @return Initial root password. Required for MS SQL Server.
@@ -214,6 +219,13 @@ public final class GetDatabaseInstancesInstance {
     public List<GetDatabaseInstancesInstanceReplicaConfiguration> replicaConfigurations() {
         return this.replicaConfigurations;
     }
+    /**
+     * @return The replicas of the instance.
+     * 
+     */
+    public List<String> replicaNames() {
+        return this.replicaNames;
+    }
     public List<GetDatabaseInstancesInstanceRestoreBackupContext> restoreBackupContexts() {
         return this.restoreBackupContexts;
     }
@@ -277,6 +289,7 @@ public final class GetDatabaseInstancesInstance {
         private String publicIpAddress;
         private String region;
         private List<GetDatabaseInstancesInstanceReplicaConfiguration> replicaConfigurations;
+        private List<String> replicaNames;
         private List<GetDatabaseInstancesInstanceRestoreBackupContext> restoreBackupContexts;
         private String rootPassword;
         private String selfLink;
@@ -305,6 +318,7 @@ public final class GetDatabaseInstancesInstance {
     	      this.publicIpAddress = defaults.publicIpAddress;
     	      this.region = defaults.region;
     	      this.replicaConfigurations = defaults.replicaConfigurations;
+    	      this.replicaNames = defaults.replicaNames;
     	      this.restoreBackupContexts = defaults.restoreBackupContexts;
     	      this.rootPassword = defaults.rootPassword;
     	      this.selfLink = defaults.selfLink;
@@ -478,6 +492,17 @@ public final class GetDatabaseInstancesInstance {
             return replicaConfigurations(List.of(replicaConfigurations));
         }
         @CustomType.Setter
+        public Builder replicaNames(List<String> replicaNames) {
+            if (replicaNames == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstance", "replicaNames");
+            }
+            this.replicaNames = replicaNames;
+            return this;
+        }
+        public Builder replicaNames(String... replicaNames) {
+            return replicaNames(List.of(replicaNames));
+        }
+        @CustomType.Setter
         public Builder restoreBackupContexts(List<GetDatabaseInstancesInstanceRestoreBackupContext> restoreBackupContexts) {
             if (restoreBackupContexts == null) {
               throw new MissingRequiredPropertyException("GetDatabaseInstancesInstance", "restoreBackupContexts");
@@ -555,6 +580,7 @@ public final class GetDatabaseInstancesInstance {
             _resultValue.publicIpAddress = publicIpAddress;
             _resultValue.region = region;
             _resultValue.replicaConfigurations = replicaConfigurations;
+            _resultValue.replicaNames = replicaNames;
             _resultValue.restoreBackupContexts = restoreBackupContexts;
             _resultValue.rootPassword = rootPassword;
             _resultValue.selfLink = selfLink;

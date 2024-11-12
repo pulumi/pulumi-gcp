@@ -16,10 +16,10 @@ from .. import _utilities
 from . import outputs
 from ._inputs import *
 
-__all__ = ['RegionSecurityPolicyRuleArgs', 'RegionSecurityPolicyRule']
+__all__ = ['RegionSecurityPolicyRuleInitArgs', 'RegionSecurityPolicyRule']
 
 @pulumi.input_type
-class RegionSecurityPolicyRuleArgs:
+class RegionSecurityPolicyRuleInitArgs:
     def __init__(__self__, *,
                  action: pulumi.Input[str],
                  priority: pulumi.Input[int],
@@ -780,7 +780,7 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
     @overload
     def __init__(__self__,
                  resource_name: str,
-                 args: RegionSecurityPolicyRuleArgs,
+                 args: RegionSecurityPolicyRuleInitArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         ## Example Usage
@@ -1026,12 +1026,12 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
         ```
 
         :param str resource_name: The name of the resource.
-        :param RegionSecurityPolicyRuleArgs args: The arguments to use to populate this resource's properties.
+        :param RegionSecurityPolicyRuleInitArgs args: The arguments to use to populate this resource's properties.
         :param pulumi.ResourceOptions opts: Options for the resource.
         """
         ...
     def __init__(__self__, resource_name: str, *args, **kwargs):
-        resource_args, opts = _utilities.get_resource_args_opts(RegionSecurityPolicyRuleArgs, pulumi.ResourceOptions, *args, **kwargs)
+        resource_args, opts = _utilities.get_resource_args_opts(RegionSecurityPolicyRuleInitArgs, pulumi.ResourceOptions, *args, **kwargs)
         if resource_args is not None:
             __self__._internal_init(resource_name, opts, **resource_args.__dict__)
         else:
@@ -1058,7 +1058,7 @@ class RegionSecurityPolicyRule(pulumi.CustomResource):
         if opts.id is None:
             if __props__ is not None:
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
-            __props__ = RegionSecurityPolicyRuleArgs.__new__(RegionSecurityPolicyRuleArgs)
+            __props__ = RegionSecurityPolicyRuleInitArgs.__new__(RegionSecurityPolicyRuleInitArgs)
 
             if action is None and not opts.urn:
                 raise TypeError("Missing required property 'action'")

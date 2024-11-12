@@ -243,6 +243,13 @@ namespace Pulumi.Gcp.Container
         public Output<Outputs.ClusterConfidentialNodes> ConfidentialNodes { get; private set; } = null!;
 
         /// <summary>
+        /// Configuration for all of the cluster's control plane endpoints.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("controlPlaneEndpointsConfig")]
+        public Output<Outputs.ClusterControlPlaneEndpointsConfig> ControlPlaneEndpointsConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Configuration for the
         /// [Cost Allocation](https://cloud.google.com/kubernetes-engine/docs/how-to/cost-allocations) feature.
         /// Structure is documented below.
@@ -770,6 +777,12 @@ namespace Pulumi.Gcp.Container
         public Output<string> TpuIpv4CidrBlock { get; private set; } = null!;
 
         /// <summary>
+        /// The custom keys configuration of the cluster.
+        /// </summary>
+        [Output("userManagedKeysConfig")]
+        public Output<Outputs.ClusterUserManagedKeysConfig?> UserManagedKeysConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
         /// Structure is documented below.
         /// </summary>
@@ -905,6 +918,13 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("confidentialNodes")]
         public Input<Inputs.ClusterConfidentialNodesArgs>? ConfidentialNodes { get; set; }
+
+        /// <summary>
+        /// Configuration for all of the cluster's control plane endpoints.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("controlPlaneEndpointsConfig")]
+        public Input<Inputs.ClusterControlPlaneEndpointsConfigArgs>? ControlPlaneEndpointsConfig { get; set; }
 
         /// <summary>
         /// Configuration for the
@@ -1394,6 +1414,12 @@ namespace Pulumi.Gcp.Container
         public Input<Inputs.ClusterTpuConfigArgs>? TpuConfig { get; set; }
 
         /// <summary>
+        /// The custom keys configuration of the cluster.
+        /// </summary>
+        [Input("userManagedKeysConfig")]
+        public Input<Inputs.ClusterUserManagedKeysConfigArgs>? UserManagedKeysConfig { get; set; }
+
+        /// <summary>
         /// Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
         /// Structure is documented below.
         /// </summary>
@@ -1486,6 +1512,13 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("confidentialNodes")]
         public Input<Inputs.ClusterConfidentialNodesGetArgs>? ConfidentialNodes { get; set; }
+
+        /// <summary>
+        /// Configuration for all of the cluster's control plane endpoints.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("controlPlaneEndpointsConfig")]
+        public Input<Inputs.ClusterControlPlaneEndpointsConfigGetArgs>? ControlPlaneEndpointsConfig { get; set; }
 
         /// <summary>
         /// Configuration for the
@@ -2051,6 +2084,12 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("tpuIpv4CidrBlock")]
         public Input<string>? TpuIpv4CidrBlock { get; set; }
+
+        /// <summary>
+        /// The custom keys configuration of the cluster.
+        /// </summary>
+        [Input("userManagedKeysConfig")]
+        public Input<Inputs.ClusterUserManagedKeysConfigGetArgs>? UserManagedKeysConfig { get; set; }
 
         /// <summary>
         /// Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.

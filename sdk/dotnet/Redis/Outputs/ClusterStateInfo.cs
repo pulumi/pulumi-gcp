@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Redis.Outputs
     public sealed class ClusterStateInfo
     {
         /// <summary>
-        /// A nested object resource
+        /// A nested object resource.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.ClusterStateInfoUpdateInfo? UpdateInfo;

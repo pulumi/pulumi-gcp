@@ -12,11 +12,10 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// The Compute FirewallPolicyRule resource
-//
 // ## Example Usage
 //
-// ### Basic_fir_sec_rule
+// ### Firewall Policy Rule
+//
 // ```go
 // package main
 //
@@ -32,7 +31,7 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			basicGlobalNetworksecurityAddressGroup, err := networksecurity.NewAddressGroup(ctx, "basic_global_networksecurity_address_group", &networksecurity.AddressGroupArgs{
-//				Name:        pulumi.String("policy"),
+//				Name:        pulumi.String("address"),
 //				Parent:      pulumi.String("organizations/123456789"),
 //				Description: pulumi.String("Sample global networksecurity_address_group"),
 //				Location:    pulumi.String("global"),
@@ -46,7 +45,7 @@ import (
 //				return err
 //			}
 //			folder, err := organizations.NewFolder(ctx, "folder", &organizations.FolderArgs{
-//				DisplayName:        pulumi.String("policy"),
+//				DisplayName:        pulumi.String("folder"),
 //				Parent:             pulumi.String("organizations/123456789"),
 //				DeletionProtection: pulumi.Bool(false),
 //			})
@@ -61,7 +60,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewFirewallPolicyRule(ctx, "primary", &compute.FirewallPolicyRuleArgs{
+//			_, err = compute.NewFirewallPolicyRule(ctx, "policy_rule", &compute.FirewallPolicyRuleArgs{
 //				FirewallPolicy: _default.Name,
 //				Description:    pulumi.String("Resource created for Terraform acceptance testing"),
 //				Priority:       pulumi.Int(9000),
@@ -134,9 +133,12 @@ type FirewallPolicyRule struct {
 
 	// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny", "gotoNext" and "applySecurityProfileGroup".
 	Action pulumi.StringOutput `pulumi:"action"`
+	// Creation timestamp in RFC3339 text format.
+	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional description for this resource.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The direction in which this rule applies. Possible values: INGRESS, EGRESS
+	// The direction in which this rule applies.
+	// Possible values are: `INGRESS`, `EGRESS`.
 	Direction pulumi.StringOutput `pulumi:"direction"`
 	// Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and
 	// traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
@@ -150,21 +152,24 @@ type FirewallPolicyRule struct {
 	// Type of the resource. Always `compute#firewallPolicyRule` for firewall policy rules
 	Kind pulumi.StringOutput `pulumi:"kind"`
 	// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+	// Structure is documented below.
 	Match FirewallPolicyRuleMatchOutput `pulumi:"match"`
-	// An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
+	// An integer indicating the priority of a rule in the list.
+	// The priority must be a positive value between 0 and 2147483647.
+	// Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
 	Priority pulumi.IntOutput `pulumi:"priority"`
 	// Calculation of the complexity of a single firewall policy rule.
 	RuleTupleCount pulumi.IntOutput `pulumi:"ruleTupleCount"`
-	// A fully-qualified URL of a SecurityProfileGroup resource. Example:
-	// https://networksecurity.googleapis.com/v1/organizations/{organizationId}/locations/global/securityProfileGroups/my-security-profile-group.
-	// It must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
+	// A fully-qualified URL of a SecurityProfile resource instance. Example:
+	// https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
+	// Must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
 	SecurityProfileGroup pulumi.StringPtrOutput `pulumi:"securityProfileGroup"`
 	// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get
 	// this rule. If this field is left blank, all VMs within the organization will receive the rule.
 	TargetResources pulumi.StringArrayOutput `pulumi:"targetResources"`
 	// A list of service accounts indicating the sets of instances that are applied with this rule.
 	TargetServiceAccounts pulumi.StringArrayOutput `pulumi:"targetServiceAccounts"`
-	// Boolean flag indicating if the traffic should be TLS decrypted. It can be set only if action =
+	// Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action =
 	// 'apply_security_profile_group' and cannot be set for other actions.
 	TlsInspect pulumi.BoolPtrOutput `pulumi:"tlsInspect"`
 }
@@ -216,9 +221,12 @@ func GetFirewallPolicyRule(ctx *pulumi.Context,
 type firewallPolicyRuleState struct {
 	// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny", "gotoNext" and "applySecurityProfileGroup".
 	Action *string `pulumi:"action"`
+	// Creation timestamp in RFC3339 text format.
+	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description for this resource.
 	Description *string `pulumi:"description"`
-	// The direction in which this rule applies. Possible values: INGRESS, EGRESS
+	// The direction in which this rule applies.
+	// Possible values are: `INGRESS`, `EGRESS`.
 	Direction *string `pulumi:"direction"`
 	// Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and
 	// traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
@@ -232,21 +240,24 @@ type firewallPolicyRuleState struct {
 	// Type of the resource. Always `compute#firewallPolicyRule` for firewall policy rules
 	Kind *string `pulumi:"kind"`
 	// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+	// Structure is documented below.
 	Match *FirewallPolicyRuleMatch `pulumi:"match"`
-	// An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
+	// An integer indicating the priority of a rule in the list.
+	// The priority must be a positive value between 0 and 2147483647.
+	// Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
 	Priority *int `pulumi:"priority"`
 	// Calculation of the complexity of a single firewall policy rule.
 	RuleTupleCount *int `pulumi:"ruleTupleCount"`
-	// A fully-qualified URL of a SecurityProfileGroup resource. Example:
-	// https://networksecurity.googleapis.com/v1/organizations/{organizationId}/locations/global/securityProfileGroups/my-security-profile-group.
-	// It must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
+	// A fully-qualified URL of a SecurityProfile resource instance. Example:
+	// https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
+	// Must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
 	SecurityProfileGroup *string `pulumi:"securityProfileGroup"`
 	// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get
 	// this rule. If this field is left blank, all VMs within the organization will receive the rule.
 	TargetResources []string `pulumi:"targetResources"`
 	// A list of service accounts indicating the sets of instances that are applied with this rule.
 	TargetServiceAccounts []string `pulumi:"targetServiceAccounts"`
-	// Boolean flag indicating if the traffic should be TLS decrypted. It can be set only if action =
+	// Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action =
 	// 'apply_security_profile_group' and cannot be set for other actions.
 	TlsInspect *bool `pulumi:"tlsInspect"`
 }
@@ -254,9 +265,12 @@ type firewallPolicyRuleState struct {
 type FirewallPolicyRuleState struct {
 	// The Action to perform when the client connection triggers the rule. Valid actions are "allow", "deny", "gotoNext" and "applySecurityProfileGroup".
 	Action pulumi.StringPtrInput
+	// Creation timestamp in RFC3339 text format.
+	CreationTimestamp pulumi.StringPtrInput
 	// An optional description for this resource.
 	Description pulumi.StringPtrInput
-	// The direction in which this rule applies. Possible values: INGRESS, EGRESS
+	// The direction in which this rule applies.
+	// Possible values are: `INGRESS`, `EGRESS`.
 	Direction pulumi.StringPtrInput
 	// Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and
 	// traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
@@ -270,21 +284,24 @@ type FirewallPolicyRuleState struct {
 	// Type of the resource. Always `compute#firewallPolicyRule` for firewall policy rules
 	Kind pulumi.StringPtrInput
 	// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+	// Structure is documented below.
 	Match FirewallPolicyRuleMatchPtrInput
-	// An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
+	// An integer indicating the priority of a rule in the list.
+	// The priority must be a positive value between 0 and 2147483647.
+	// Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
 	Priority pulumi.IntPtrInput
 	// Calculation of the complexity of a single firewall policy rule.
 	RuleTupleCount pulumi.IntPtrInput
-	// A fully-qualified URL of a SecurityProfileGroup resource. Example:
-	// https://networksecurity.googleapis.com/v1/organizations/{organizationId}/locations/global/securityProfileGroups/my-security-profile-group.
-	// It must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
+	// A fully-qualified URL of a SecurityProfile resource instance. Example:
+	// https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
+	// Must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
 	SecurityProfileGroup pulumi.StringPtrInput
 	// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get
 	// this rule. If this field is left blank, all VMs within the organization will receive the rule.
 	TargetResources pulumi.StringArrayInput
 	// A list of service accounts indicating the sets of instances that are applied with this rule.
 	TargetServiceAccounts pulumi.StringArrayInput
-	// Boolean flag indicating if the traffic should be TLS decrypted. It can be set only if action =
+	// Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action =
 	// 'apply_security_profile_group' and cannot be set for other actions.
 	TlsInspect pulumi.BoolPtrInput
 }
@@ -298,7 +315,8 @@ type firewallPolicyRuleArgs struct {
 	Action string `pulumi:"action"`
 	// An optional description for this resource.
 	Description *string `pulumi:"description"`
-	// The direction in which this rule applies. Possible values: INGRESS, EGRESS
+	// The direction in which this rule applies.
+	// Possible values are: `INGRESS`, `EGRESS`.
 	Direction string `pulumi:"direction"`
 	// Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and
 	// traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
@@ -310,19 +328,22 @@ type firewallPolicyRuleArgs struct {
 	// The firewall policy of the resource.
 	FirewallPolicy string `pulumi:"firewallPolicy"`
 	// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+	// Structure is documented below.
 	Match FirewallPolicyRuleMatch `pulumi:"match"`
-	// An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
+	// An integer indicating the priority of a rule in the list.
+	// The priority must be a positive value between 0 and 2147483647.
+	// Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
 	Priority int `pulumi:"priority"`
-	// A fully-qualified URL of a SecurityProfileGroup resource. Example:
-	// https://networksecurity.googleapis.com/v1/organizations/{organizationId}/locations/global/securityProfileGroups/my-security-profile-group.
-	// It must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
+	// A fully-qualified URL of a SecurityProfile resource instance. Example:
+	// https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
+	// Must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
 	SecurityProfileGroup *string `pulumi:"securityProfileGroup"`
 	// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get
 	// this rule. If this field is left blank, all VMs within the organization will receive the rule.
 	TargetResources []string `pulumi:"targetResources"`
 	// A list of service accounts indicating the sets of instances that are applied with this rule.
 	TargetServiceAccounts []string `pulumi:"targetServiceAccounts"`
-	// Boolean flag indicating if the traffic should be TLS decrypted. It can be set only if action =
+	// Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action =
 	// 'apply_security_profile_group' and cannot be set for other actions.
 	TlsInspect *bool `pulumi:"tlsInspect"`
 }
@@ -333,7 +354,8 @@ type FirewallPolicyRuleArgs struct {
 	Action pulumi.StringInput
 	// An optional description for this resource.
 	Description pulumi.StringPtrInput
-	// The direction in which this rule applies. Possible values: INGRESS, EGRESS
+	// The direction in which this rule applies.
+	// Possible values are: `INGRESS`, `EGRESS`.
 	Direction pulumi.StringInput
 	// Denotes whether the firewall policy rule is disabled. When set to true, the firewall policy rule is not enforced and
 	// traffic behaves as if it did not exist. If this is unspecified, the firewall policy rule will be enabled.
@@ -345,19 +367,22 @@ type FirewallPolicyRuleArgs struct {
 	// The firewall policy of the resource.
 	FirewallPolicy pulumi.StringInput
 	// A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+	// Structure is documented below.
 	Match FirewallPolicyRuleMatchInput
-	// An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
+	// An integer indicating the priority of a rule in the list.
+	// The priority must be a positive value between 0 and 2147483647.
+	// Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
 	Priority pulumi.IntInput
-	// A fully-qualified URL of a SecurityProfileGroup resource. Example:
-	// https://networksecurity.googleapis.com/v1/organizations/{organizationId}/locations/global/securityProfileGroups/my-security-profile-group.
-	// It must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
+	// A fully-qualified URL of a SecurityProfile resource instance. Example:
+	// https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
+	// Must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
 	SecurityProfileGroup pulumi.StringPtrInput
 	// A list of network resource URLs to which this rule applies. This field allows you to control which network's VMs get
 	// this rule. If this field is left blank, all VMs within the organization will receive the rule.
 	TargetResources pulumi.StringArrayInput
 	// A list of service accounts indicating the sets of instances that are applied with this rule.
 	TargetServiceAccounts pulumi.StringArrayInput
-	// Boolean flag indicating if the traffic should be TLS decrypted. It can be set only if action =
+	// Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action =
 	// 'apply_security_profile_group' and cannot be set for other actions.
 	TlsInspect pulumi.BoolPtrInput
 }
@@ -454,12 +479,18 @@ func (o FirewallPolicyRuleOutput) Action() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallPolicyRule) pulumi.StringOutput { return v.Action }).(pulumi.StringOutput)
 }
 
+// Creation timestamp in RFC3339 text format.
+func (o FirewallPolicyRuleOutput) CreationTimestamp() pulumi.StringOutput {
+	return o.ApplyT(func(v *FirewallPolicyRule) pulumi.StringOutput { return v.CreationTimestamp }).(pulumi.StringOutput)
+}
+
 // An optional description for this resource.
 func (o FirewallPolicyRuleOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FirewallPolicyRule) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The direction in which this rule applies. Possible values: INGRESS, EGRESS
+// The direction in which this rule applies.
+// Possible values are: `INGRESS`, `EGRESS`.
 func (o FirewallPolicyRuleOutput) Direction() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallPolicyRule) pulumi.StringOutput { return v.Direction }).(pulumi.StringOutput)
 }
@@ -488,11 +519,14 @@ func (o FirewallPolicyRuleOutput) Kind() pulumi.StringOutput {
 }
 
 // A match condition that incoming traffic is evaluated against. If it evaluates to true, the corresponding 'action' is enforced.
+// Structure is documented below.
 func (o FirewallPolicyRuleOutput) Match() FirewallPolicyRuleMatchOutput {
 	return o.ApplyT(func(v *FirewallPolicyRule) FirewallPolicyRuleMatchOutput { return v.Match }).(FirewallPolicyRuleMatchOutput)
 }
 
-// An integer indicating the priority of a rule in the list. The priority must be a positive value between 0 and 2147483647. Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
+// An integer indicating the priority of a rule in the list.
+// The priority must be a positive value between 0 and 2147483647.
+// Rules are evaluated from highest to lowest priority where 0 is the highest priority and 2147483647 is the lowest prority.
 func (o FirewallPolicyRuleOutput) Priority() pulumi.IntOutput {
 	return o.ApplyT(func(v *FirewallPolicyRule) pulumi.IntOutput { return v.Priority }).(pulumi.IntOutput)
 }
@@ -502,9 +536,9 @@ func (o FirewallPolicyRuleOutput) RuleTupleCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *FirewallPolicyRule) pulumi.IntOutput { return v.RuleTupleCount }).(pulumi.IntOutput)
 }
 
-// A fully-qualified URL of a SecurityProfileGroup resource. Example:
-// https://networksecurity.googleapis.com/v1/organizations/{organizationId}/locations/global/securityProfileGroups/my-security-profile-group.
-// It must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
+// A fully-qualified URL of a SecurityProfile resource instance. Example:
+// https://networksecurity.googleapis.com/v1/projects/{project}/locations/{location}/securityProfileGroups/my-security-profile-group
+// Must be specified if action = 'apply_security_profile_group' and cannot be specified for other actions.
 func (o FirewallPolicyRuleOutput) SecurityProfileGroup() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FirewallPolicyRule) pulumi.StringPtrOutput { return v.SecurityProfileGroup }).(pulumi.StringPtrOutput)
 }
@@ -520,7 +554,7 @@ func (o FirewallPolicyRuleOutput) TargetServiceAccounts() pulumi.StringArrayOutp
 	return o.ApplyT(func(v *FirewallPolicyRule) pulumi.StringArrayOutput { return v.TargetServiceAccounts }).(pulumi.StringArrayOutput)
 }
 
-// Boolean flag indicating if the traffic should be TLS decrypted. It can be set only if action =
+// Boolean flag indicating if the traffic should be TLS decrypted. Can be set only if action =
 // 'apply_security_profile_group' and cannot be set for other actions.
 func (o FirewallPolicyRuleOutput) TlsInspect() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *FirewallPolicyRule) pulumi.BoolPtrOutput { return v.TlsInspect }).(pulumi.BoolPtrOutput)

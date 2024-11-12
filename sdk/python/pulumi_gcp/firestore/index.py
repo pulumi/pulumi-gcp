@@ -388,6 +388,28 @@ class Index(pulumi.CustomResource):
                 },
             ])
         ```
+        ### Firestore Index Name Descending
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        database = gcp.firestore.Database("database",
+            project="my-project-name",
+            name="database-id",
+            location_id="nam5",
+            type="FIRESTORE_NATIVE",
+            delete_protection_state="DELETE_PROTECTION_DISABLED",
+            deletion_policy="DELETE")
+        my_index = gcp.firestore.Index("my-index",
+            project="my-project-name",
+            database=database.name,
+            collection="atestcollection",
+            fields=[{
+                "field_path": "__name__",
+                "order": "DESCENDING",
+            }])
+        ```
 
         ## Import
 
@@ -535,6 +557,28 @@ class Index(pulumi.CustomResource):
                     },
                 },
             ])
+        ```
+        ### Firestore Index Name Descending
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        database = gcp.firestore.Database("database",
+            project="my-project-name",
+            name="database-id",
+            location_id="nam5",
+            type="FIRESTORE_NATIVE",
+            delete_protection_state="DELETE_PROTECTION_DISABLED",
+            deletion_policy="DELETE")
+        my_index = gcp.firestore.Index("my-index",
+            project="my-project-name",
+            database=database.name,
+            collection="atestcollection",
+            fields=[{
+                "field_path": "__name__",
+                "order": "DESCENDING",
+            }])
         ```
 
         ## Import

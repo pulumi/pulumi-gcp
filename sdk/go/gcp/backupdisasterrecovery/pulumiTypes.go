@@ -13,6 +13,837 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type BackupPlanAssociationRulesConfigInfo struct {
+	// (Output)
+	// google.rpc.Status object to store the last backup error
+	// Structure is documented below.
+	LastBackupErrors []BackupPlanAssociationRulesConfigInfoLastBackupError `pulumi:"lastBackupErrors"`
+	// (Output)
+	// State of last backup taken.
+	LastBackupState *string `pulumi:"lastBackupState"`
+	// (Output)
+	// Backup Rule id fetched from backup plan.
+	RuleId *string `pulumi:"ruleId"`
+}
+
+// BackupPlanAssociationRulesConfigInfoInput is an input type that accepts BackupPlanAssociationRulesConfigInfoArgs and BackupPlanAssociationRulesConfigInfoOutput values.
+// You can construct a concrete instance of `BackupPlanAssociationRulesConfigInfoInput` via:
+//
+//	BackupPlanAssociationRulesConfigInfoArgs{...}
+type BackupPlanAssociationRulesConfigInfoInput interface {
+	pulumi.Input
+
+	ToBackupPlanAssociationRulesConfigInfoOutput() BackupPlanAssociationRulesConfigInfoOutput
+	ToBackupPlanAssociationRulesConfigInfoOutputWithContext(context.Context) BackupPlanAssociationRulesConfigInfoOutput
+}
+
+type BackupPlanAssociationRulesConfigInfoArgs struct {
+	// (Output)
+	// google.rpc.Status object to store the last backup error
+	// Structure is documented below.
+	LastBackupErrors BackupPlanAssociationRulesConfigInfoLastBackupErrorArrayInput `pulumi:"lastBackupErrors"`
+	// (Output)
+	// State of last backup taken.
+	LastBackupState pulumi.StringPtrInput `pulumi:"lastBackupState"`
+	// (Output)
+	// Backup Rule id fetched from backup plan.
+	RuleId pulumi.StringPtrInput `pulumi:"ruleId"`
+}
+
+func (BackupPlanAssociationRulesConfigInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupPlanAssociationRulesConfigInfo)(nil)).Elem()
+}
+
+func (i BackupPlanAssociationRulesConfigInfoArgs) ToBackupPlanAssociationRulesConfigInfoOutput() BackupPlanAssociationRulesConfigInfoOutput {
+	return i.ToBackupPlanAssociationRulesConfigInfoOutputWithContext(context.Background())
+}
+
+func (i BackupPlanAssociationRulesConfigInfoArgs) ToBackupPlanAssociationRulesConfigInfoOutputWithContext(ctx context.Context) BackupPlanAssociationRulesConfigInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanAssociationRulesConfigInfoOutput)
+}
+
+// BackupPlanAssociationRulesConfigInfoArrayInput is an input type that accepts BackupPlanAssociationRulesConfigInfoArray and BackupPlanAssociationRulesConfigInfoArrayOutput values.
+// You can construct a concrete instance of `BackupPlanAssociationRulesConfigInfoArrayInput` via:
+//
+//	BackupPlanAssociationRulesConfigInfoArray{ BackupPlanAssociationRulesConfigInfoArgs{...} }
+type BackupPlanAssociationRulesConfigInfoArrayInput interface {
+	pulumi.Input
+
+	ToBackupPlanAssociationRulesConfigInfoArrayOutput() BackupPlanAssociationRulesConfigInfoArrayOutput
+	ToBackupPlanAssociationRulesConfigInfoArrayOutputWithContext(context.Context) BackupPlanAssociationRulesConfigInfoArrayOutput
+}
+
+type BackupPlanAssociationRulesConfigInfoArray []BackupPlanAssociationRulesConfigInfoInput
+
+func (BackupPlanAssociationRulesConfigInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BackupPlanAssociationRulesConfigInfo)(nil)).Elem()
+}
+
+func (i BackupPlanAssociationRulesConfigInfoArray) ToBackupPlanAssociationRulesConfigInfoArrayOutput() BackupPlanAssociationRulesConfigInfoArrayOutput {
+	return i.ToBackupPlanAssociationRulesConfigInfoArrayOutputWithContext(context.Background())
+}
+
+func (i BackupPlanAssociationRulesConfigInfoArray) ToBackupPlanAssociationRulesConfigInfoArrayOutputWithContext(ctx context.Context) BackupPlanAssociationRulesConfigInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanAssociationRulesConfigInfoArrayOutput)
+}
+
+type BackupPlanAssociationRulesConfigInfoOutput struct{ *pulumi.OutputState }
+
+func (BackupPlanAssociationRulesConfigInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupPlanAssociationRulesConfigInfo)(nil)).Elem()
+}
+
+func (o BackupPlanAssociationRulesConfigInfoOutput) ToBackupPlanAssociationRulesConfigInfoOutput() BackupPlanAssociationRulesConfigInfoOutput {
+	return o
+}
+
+func (o BackupPlanAssociationRulesConfigInfoOutput) ToBackupPlanAssociationRulesConfigInfoOutputWithContext(ctx context.Context) BackupPlanAssociationRulesConfigInfoOutput {
+	return o
+}
+
+// (Output)
+// google.rpc.Status object to store the last backup error
+// Structure is documented below.
+func (o BackupPlanAssociationRulesConfigInfoOutput) LastBackupErrors() BackupPlanAssociationRulesConfigInfoLastBackupErrorArrayOutput {
+	return o.ApplyT(func(v BackupPlanAssociationRulesConfigInfo) []BackupPlanAssociationRulesConfigInfoLastBackupError {
+		return v.LastBackupErrors
+	}).(BackupPlanAssociationRulesConfigInfoLastBackupErrorArrayOutput)
+}
+
+// (Output)
+// State of last backup taken.
+func (o BackupPlanAssociationRulesConfigInfoOutput) LastBackupState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BackupPlanAssociationRulesConfigInfo) *string { return v.LastBackupState }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Backup Rule id fetched from backup plan.
+func (o BackupPlanAssociationRulesConfigInfoOutput) RuleId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BackupPlanAssociationRulesConfigInfo) *string { return v.RuleId }).(pulumi.StringPtrOutput)
+}
+
+type BackupPlanAssociationRulesConfigInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (BackupPlanAssociationRulesConfigInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BackupPlanAssociationRulesConfigInfo)(nil)).Elem()
+}
+
+func (o BackupPlanAssociationRulesConfigInfoArrayOutput) ToBackupPlanAssociationRulesConfigInfoArrayOutput() BackupPlanAssociationRulesConfigInfoArrayOutput {
+	return o
+}
+
+func (o BackupPlanAssociationRulesConfigInfoArrayOutput) ToBackupPlanAssociationRulesConfigInfoArrayOutputWithContext(ctx context.Context) BackupPlanAssociationRulesConfigInfoArrayOutput {
+	return o
+}
+
+func (o BackupPlanAssociationRulesConfigInfoArrayOutput) Index(i pulumi.IntInput) BackupPlanAssociationRulesConfigInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BackupPlanAssociationRulesConfigInfo {
+		return vs[0].([]BackupPlanAssociationRulesConfigInfo)[vs[1].(int)]
+	}).(BackupPlanAssociationRulesConfigInfoOutput)
+}
+
+type BackupPlanAssociationRulesConfigInfoLastBackupError struct {
+	// (Output)
+	// The status code, which should be an enum value of [google.rpc.Code]
+	Code *float64 `pulumi:"code"`
+	// (Output)
+	// A developer-facing error message, which should be in English.
+	Message *string `pulumi:"message"`
+}
+
+// BackupPlanAssociationRulesConfigInfoLastBackupErrorInput is an input type that accepts BackupPlanAssociationRulesConfigInfoLastBackupErrorArgs and BackupPlanAssociationRulesConfigInfoLastBackupErrorOutput values.
+// You can construct a concrete instance of `BackupPlanAssociationRulesConfigInfoLastBackupErrorInput` via:
+//
+//	BackupPlanAssociationRulesConfigInfoLastBackupErrorArgs{...}
+type BackupPlanAssociationRulesConfigInfoLastBackupErrorInput interface {
+	pulumi.Input
+
+	ToBackupPlanAssociationRulesConfigInfoLastBackupErrorOutput() BackupPlanAssociationRulesConfigInfoLastBackupErrorOutput
+	ToBackupPlanAssociationRulesConfigInfoLastBackupErrorOutputWithContext(context.Context) BackupPlanAssociationRulesConfigInfoLastBackupErrorOutput
+}
+
+type BackupPlanAssociationRulesConfigInfoLastBackupErrorArgs struct {
+	// (Output)
+	// The status code, which should be an enum value of [google.rpc.Code]
+	Code pulumi.Float64PtrInput `pulumi:"code"`
+	// (Output)
+	// A developer-facing error message, which should be in English.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+}
+
+func (BackupPlanAssociationRulesConfigInfoLastBackupErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupPlanAssociationRulesConfigInfoLastBackupError)(nil)).Elem()
+}
+
+func (i BackupPlanAssociationRulesConfigInfoLastBackupErrorArgs) ToBackupPlanAssociationRulesConfigInfoLastBackupErrorOutput() BackupPlanAssociationRulesConfigInfoLastBackupErrorOutput {
+	return i.ToBackupPlanAssociationRulesConfigInfoLastBackupErrorOutputWithContext(context.Background())
+}
+
+func (i BackupPlanAssociationRulesConfigInfoLastBackupErrorArgs) ToBackupPlanAssociationRulesConfigInfoLastBackupErrorOutputWithContext(ctx context.Context) BackupPlanAssociationRulesConfigInfoLastBackupErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanAssociationRulesConfigInfoLastBackupErrorOutput)
+}
+
+// BackupPlanAssociationRulesConfigInfoLastBackupErrorArrayInput is an input type that accepts BackupPlanAssociationRulesConfigInfoLastBackupErrorArray and BackupPlanAssociationRulesConfigInfoLastBackupErrorArrayOutput values.
+// You can construct a concrete instance of `BackupPlanAssociationRulesConfigInfoLastBackupErrorArrayInput` via:
+//
+//	BackupPlanAssociationRulesConfigInfoLastBackupErrorArray{ BackupPlanAssociationRulesConfigInfoLastBackupErrorArgs{...} }
+type BackupPlanAssociationRulesConfigInfoLastBackupErrorArrayInput interface {
+	pulumi.Input
+
+	ToBackupPlanAssociationRulesConfigInfoLastBackupErrorArrayOutput() BackupPlanAssociationRulesConfigInfoLastBackupErrorArrayOutput
+	ToBackupPlanAssociationRulesConfigInfoLastBackupErrorArrayOutputWithContext(context.Context) BackupPlanAssociationRulesConfigInfoLastBackupErrorArrayOutput
+}
+
+type BackupPlanAssociationRulesConfigInfoLastBackupErrorArray []BackupPlanAssociationRulesConfigInfoLastBackupErrorInput
+
+func (BackupPlanAssociationRulesConfigInfoLastBackupErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BackupPlanAssociationRulesConfigInfoLastBackupError)(nil)).Elem()
+}
+
+func (i BackupPlanAssociationRulesConfigInfoLastBackupErrorArray) ToBackupPlanAssociationRulesConfigInfoLastBackupErrorArrayOutput() BackupPlanAssociationRulesConfigInfoLastBackupErrorArrayOutput {
+	return i.ToBackupPlanAssociationRulesConfigInfoLastBackupErrorArrayOutputWithContext(context.Background())
+}
+
+func (i BackupPlanAssociationRulesConfigInfoLastBackupErrorArray) ToBackupPlanAssociationRulesConfigInfoLastBackupErrorArrayOutputWithContext(ctx context.Context) BackupPlanAssociationRulesConfigInfoLastBackupErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanAssociationRulesConfigInfoLastBackupErrorArrayOutput)
+}
+
+type BackupPlanAssociationRulesConfigInfoLastBackupErrorOutput struct{ *pulumi.OutputState }
+
+func (BackupPlanAssociationRulesConfigInfoLastBackupErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupPlanAssociationRulesConfigInfoLastBackupError)(nil)).Elem()
+}
+
+func (o BackupPlanAssociationRulesConfigInfoLastBackupErrorOutput) ToBackupPlanAssociationRulesConfigInfoLastBackupErrorOutput() BackupPlanAssociationRulesConfigInfoLastBackupErrorOutput {
+	return o
+}
+
+func (o BackupPlanAssociationRulesConfigInfoLastBackupErrorOutput) ToBackupPlanAssociationRulesConfigInfoLastBackupErrorOutputWithContext(ctx context.Context) BackupPlanAssociationRulesConfigInfoLastBackupErrorOutput {
+	return o
+}
+
+// (Output)
+// The status code, which should be an enum value of [google.rpc.Code]
+func (o BackupPlanAssociationRulesConfigInfoLastBackupErrorOutput) Code() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v BackupPlanAssociationRulesConfigInfoLastBackupError) *float64 { return v.Code }).(pulumi.Float64PtrOutput)
+}
+
+// (Output)
+// A developer-facing error message, which should be in English.
+func (o BackupPlanAssociationRulesConfigInfoLastBackupErrorOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BackupPlanAssociationRulesConfigInfoLastBackupError) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+type BackupPlanAssociationRulesConfigInfoLastBackupErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (BackupPlanAssociationRulesConfigInfoLastBackupErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BackupPlanAssociationRulesConfigInfoLastBackupError)(nil)).Elem()
+}
+
+func (o BackupPlanAssociationRulesConfigInfoLastBackupErrorArrayOutput) ToBackupPlanAssociationRulesConfigInfoLastBackupErrorArrayOutput() BackupPlanAssociationRulesConfigInfoLastBackupErrorArrayOutput {
+	return o
+}
+
+func (o BackupPlanAssociationRulesConfigInfoLastBackupErrorArrayOutput) ToBackupPlanAssociationRulesConfigInfoLastBackupErrorArrayOutputWithContext(ctx context.Context) BackupPlanAssociationRulesConfigInfoLastBackupErrorArrayOutput {
+	return o
+}
+
+func (o BackupPlanAssociationRulesConfigInfoLastBackupErrorArrayOutput) Index(i pulumi.IntInput) BackupPlanAssociationRulesConfigInfoLastBackupErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BackupPlanAssociationRulesConfigInfoLastBackupError {
+		return vs[0].([]BackupPlanAssociationRulesConfigInfoLastBackupError)[vs[1].(int)]
+	}).(BackupPlanAssociationRulesConfigInfoLastBackupErrorOutput)
+}
+
+type BackupPlanBackupRule struct {
+	// Configures the duration for which backup data will be kept. The value should be greater than or equal to minimum enforced retention of the backup vault.
+	BackupRetentionDays int `pulumi:"backupRetentionDays"`
+	// The unique ID of this `BackupRule`. The `ruleId` is unique per `BackupPlan`.
+	RuleId string `pulumi:"ruleId"`
+	// StandardSchedule defines a schedule that runs within the confines of a defined window of days.
+	// Structure is documented below.
+	StandardSchedule BackupPlanBackupRuleStandardSchedule `pulumi:"standardSchedule"`
+}
+
+// BackupPlanBackupRuleInput is an input type that accepts BackupPlanBackupRuleArgs and BackupPlanBackupRuleOutput values.
+// You can construct a concrete instance of `BackupPlanBackupRuleInput` via:
+//
+//	BackupPlanBackupRuleArgs{...}
+type BackupPlanBackupRuleInput interface {
+	pulumi.Input
+
+	ToBackupPlanBackupRuleOutput() BackupPlanBackupRuleOutput
+	ToBackupPlanBackupRuleOutputWithContext(context.Context) BackupPlanBackupRuleOutput
+}
+
+type BackupPlanBackupRuleArgs struct {
+	// Configures the duration for which backup data will be kept. The value should be greater than or equal to minimum enforced retention of the backup vault.
+	BackupRetentionDays pulumi.IntInput `pulumi:"backupRetentionDays"`
+	// The unique ID of this `BackupRule`. The `ruleId` is unique per `BackupPlan`.
+	RuleId pulumi.StringInput `pulumi:"ruleId"`
+	// StandardSchedule defines a schedule that runs within the confines of a defined window of days.
+	// Structure is documented below.
+	StandardSchedule BackupPlanBackupRuleStandardScheduleInput `pulumi:"standardSchedule"`
+}
+
+func (BackupPlanBackupRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupPlanBackupRule)(nil)).Elem()
+}
+
+func (i BackupPlanBackupRuleArgs) ToBackupPlanBackupRuleOutput() BackupPlanBackupRuleOutput {
+	return i.ToBackupPlanBackupRuleOutputWithContext(context.Background())
+}
+
+func (i BackupPlanBackupRuleArgs) ToBackupPlanBackupRuleOutputWithContext(ctx context.Context) BackupPlanBackupRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanBackupRuleOutput)
+}
+
+// BackupPlanBackupRuleArrayInput is an input type that accepts BackupPlanBackupRuleArray and BackupPlanBackupRuleArrayOutput values.
+// You can construct a concrete instance of `BackupPlanBackupRuleArrayInput` via:
+//
+//	BackupPlanBackupRuleArray{ BackupPlanBackupRuleArgs{...} }
+type BackupPlanBackupRuleArrayInput interface {
+	pulumi.Input
+
+	ToBackupPlanBackupRuleArrayOutput() BackupPlanBackupRuleArrayOutput
+	ToBackupPlanBackupRuleArrayOutputWithContext(context.Context) BackupPlanBackupRuleArrayOutput
+}
+
+type BackupPlanBackupRuleArray []BackupPlanBackupRuleInput
+
+func (BackupPlanBackupRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BackupPlanBackupRule)(nil)).Elem()
+}
+
+func (i BackupPlanBackupRuleArray) ToBackupPlanBackupRuleArrayOutput() BackupPlanBackupRuleArrayOutput {
+	return i.ToBackupPlanBackupRuleArrayOutputWithContext(context.Background())
+}
+
+func (i BackupPlanBackupRuleArray) ToBackupPlanBackupRuleArrayOutputWithContext(ctx context.Context) BackupPlanBackupRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanBackupRuleArrayOutput)
+}
+
+type BackupPlanBackupRuleOutput struct{ *pulumi.OutputState }
+
+func (BackupPlanBackupRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupPlanBackupRule)(nil)).Elem()
+}
+
+func (o BackupPlanBackupRuleOutput) ToBackupPlanBackupRuleOutput() BackupPlanBackupRuleOutput {
+	return o
+}
+
+func (o BackupPlanBackupRuleOutput) ToBackupPlanBackupRuleOutputWithContext(ctx context.Context) BackupPlanBackupRuleOutput {
+	return o
+}
+
+// Configures the duration for which backup data will be kept. The value should be greater than or equal to minimum enforced retention of the backup vault.
+func (o BackupPlanBackupRuleOutput) BackupRetentionDays() pulumi.IntOutput {
+	return o.ApplyT(func(v BackupPlanBackupRule) int { return v.BackupRetentionDays }).(pulumi.IntOutput)
+}
+
+// The unique ID of this `BackupRule`. The `ruleId` is unique per `BackupPlan`.
+func (o BackupPlanBackupRuleOutput) RuleId() pulumi.StringOutput {
+	return o.ApplyT(func(v BackupPlanBackupRule) string { return v.RuleId }).(pulumi.StringOutput)
+}
+
+// StandardSchedule defines a schedule that runs within the confines of a defined window of days.
+// Structure is documented below.
+func (o BackupPlanBackupRuleOutput) StandardSchedule() BackupPlanBackupRuleStandardScheduleOutput {
+	return o.ApplyT(func(v BackupPlanBackupRule) BackupPlanBackupRuleStandardSchedule { return v.StandardSchedule }).(BackupPlanBackupRuleStandardScheduleOutput)
+}
+
+type BackupPlanBackupRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (BackupPlanBackupRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]BackupPlanBackupRule)(nil)).Elem()
+}
+
+func (o BackupPlanBackupRuleArrayOutput) ToBackupPlanBackupRuleArrayOutput() BackupPlanBackupRuleArrayOutput {
+	return o
+}
+
+func (o BackupPlanBackupRuleArrayOutput) ToBackupPlanBackupRuleArrayOutputWithContext(ctx context.Context) BackupPlanBackupRuleArrayOutput {
+	return o
+}
+
+func (o BackupPlanBackupRuleArrayOutput) Index(i pulumi.IntInput) BackupPlanBackupRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) BackupPlanBackupRule {
+		return vs[0].([]BackupPlanBackupRule)[vs[1].(int)]
+	}).(BackupPlanBackupRuleOutput)
+}
+
+type BackupPlanBackupRuleStandardSchedule struct {
+	// A BackupWindow defines the window of the day during which backup jobs will run. Jobs are queued at the beginning of the window and will be marked as
+	// `NOT_RUN` if they do not start by the end of the window.
+	// Structure is documented below.
+	BackupWindow *BackupPlanBackupRuleStandardScheduleBackupWindow `pulumi:"backupWindow"`
+	// Specifies days of months like 1, 5, or 14 on which jobs will run.
+	DaysOfMonths []int `pulumi:"daysOfMonths"`
+	// Specifies days of week like MONDAY or TUESDAY, on which jobs will run. This is required for `recurrenceType`, `WEEKLY` and is not applicable otherwise.
+	// Each value may be one of: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`.
+	DaysOfWeeks []string `pulumi:"daysOfWeeks"`
+	// Specifies frequency for hourly backups. An hourly frequency of 2 means jobs will run every 2 hours from start time till end time defined.
+	// This is required for `recurrenceType`, `HOURLY` and is not applicable otherwise.
+	HourlyFrequency *int `pulumi:"hourlyFrequency"`
+	// Specifies values of months
+	// Each value may be one of: `MONTH_UNSPECIFIED`, `JANUARY`, `FEBRUARY`, `MARCH`, `APRIL`, `MAY`, `JUNE`, `JULY`, `AUGUST`, `SEPTEMBER`, `OCTOBER`, `NOVEMBER`, `DECEMBER`.
+	Months []string `pulumi:"months"`
+	// RecurrenceType enumerates the applicable periodicity for the schedule.
+	// Possible values are: `HOURLY`, `DAILY`, `WEEKLY`, `MONTHLY`, `YEARLY`.
+	RecurrenceType string `pulumi:"recurrenceType"`
+	// The time zone to be used when interpreting the schedule.
+	TimeZone string `pulumi:"timeZone"`
+	// Specifies a week day of the month like FIRST SUNDAY or LAST MONDAY, on which jobs will run.
+	// Structure is documented below.
+	WeekDayOfMonth *BackupPlanBackupRuleStandardScheduleWeekDayOfMonth `pulumi:"weekDayOfMonth"`
+}
+
+// BackupPlanBackupRuleStandardScheduleInput is an input type that accepts BackupPlanBackupRuleStandardScheduleArgs and BackupPlanBackupRuleStandardScheduleOutput values.
+// You can construct a concrete instance of `BackupPlanBackupRuleStandardScheduleInput` via:
+//
+//	BackupPlanBackupRuleStandardScheduleArgs{...}
+type BackupPlanBackupRuleStandardScheduleInput interface {
+	pulumi.Input
+
+	ToBackupPlanBackupRuleStandardScheduleOutput() BackupPlanBackupRuleStandardScheduleOutput
+	ToBackupPlanBackupRuleStandardScheduleOutputWithContext(context.Context) BackupPlanBackupRuleStandardScheduleOutput
+}
+
+type BackupPlanBackupRuleStandardScheduleArgs struct {
+	// A BackupWindow defines the window of the day during which backup jobs will run. Jobs are queued at the beginning of the window and will be marked as
+	// `NOT_RUN` if they do not start by the end of the window.
+	// Structure is documented below.
+	BackupWindow BackupPlanBackupRuleStandardScheduleBackupWindowPtrInput `pulumi:"backupWindow"`
+	// Specifies days of months like 1, 5, or 14 on which jobs will run.
+	DaysOfMonths pulumi.IntArrayInput `pulumi:"daysOfMonths"`
+	// Specifies days of week like MONDAY or TUESDAY, on which jobs will run. This is required for `recurrenceType`, `WEEKLY` and is not applicable otherwise.
+	// Each value may be one of: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`.
+	DaysOfWeeks pulumi.StringArrayInput `pulumi:"daysOfWeeks"`
+	// Specifies frequency for hourly backups. An hourly frequency of 2 means jobs will run every 2 hours from start time till end time defined.
+	// This is required for `recurrenceType`, `HOURLY` and is not applicable otherwise.
+	HourlyFrequency pulumi.IntPtrInput `pulumi:"hourlyFrequency"`
+	// Specifies values of months
+	// Each value may be one of: `MONTH_UNSPECIFIED`, `JANUARY`, `FEBRUARY`, `MARCH`, `APRIL`, `MAY`, `JUNE`, `JULY`, `AUGUST`, `SEPTEMBER`, `OCTOBER`, `NOVEMBER`, `DECEMBER`.
+	Months pulumi.StringArrayInput `pulumi:"months"`
+	// RecurrenceType enumerates the applicable periodicity for the schedule.
+	// Possible values are: `HOURLY`, `DAILY`, `WEEKLY`, `MONTHLY`, `YEARLY`.
+	RecurrenceType pulumi.StringInput `pulumi:"recurrenceType"`
+	// The time zone to be used when interpreting the schedule.
+	TimeZone pulumi.StringInput `pulumi:"timeZone"`
+	// Specifies a week day of the month like FIRST SUNDAY or LAST MONDAY, on which jobs will run.
+	// Structure is documented below.
+	WeekDayOfMonth BackupPlanBackupRuleStandardScheduleWeekDayOfMonthPtrInput `pulumi:"weekDayOfMonth"`
+}
+
+func (BackupPlanBackupRuleStandardScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupPlanBackupRuleStandardSchedule)(nil)).Elem()
+}
+
+func (i BackupPlanBackupRuleStandardScheduleArgs) ToBackupPlanBackupRuleStandardScheduleOutput() BackupPlanBackupRuleStandardScheduleOutput {
+	return i.ToBackupPlanBackupRuleStandardScheduleOutputWithContext(context.Background())
+}
+
+func (i BackupPlanBackupRuleStandardScheduleArgs) ToBackupPlanBackupRuleStandardScheduleOutputWithContext(ctx context.Context) BackupPlanBackupRuleStandardScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanBackupRuleStandardScheduleOutput)
+}
+
+type BackupPlanBackupRuleStandardScheduleOutput struct{ *pulumi.OutputState }
+
+func (BackupPlanBackupRuleStandardScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupPlanBackupRuleStandardSchedule)(nil)).Elem()
+}
+
+func (o BackupPlanBackupRuleStandardScheduleOutput) ToBackupPlanBackupRuleStandardScheduleOutput() BackupPlanBackupRuleStandardScheduleOutput {
+	return o
+}
+
+func (o BackupPlanBackupRuleStandardScheduleOutput) ToBackupPlanBackupRuleStandardScheduleOutputWithContext(ctx context.Context) BackupPlanBackupRuleStandardScheduleOutput {
+	return o
+}
+
+// A BackupWindow defines the window of the day during which backup jobs will run. Jobs are queued at the beginning of the window and will be marked as
+// `NOT_RUN` if they do not start by the end of the window.
+// Structure is documented below.
+func (o BackupPlanBackupRuleStandardScheduleOutput) BackupWindow() BackupPlanBackupRuleStandardScheduleBackupWindowPtrOutput {
+	return o.ApplyT(func(v BackupPlanBackupRuleStandardSchedule) *BackupPlanBackupRuleStandardScheduleBackupWindow {
+		return v.BackupWindow
+	}).(BackupPlanBackupRuleStandardScheduleBackupWindowPtrOutput)
+}
+
+// Specifies days of months like 1, 5, or 14 on which jobs will run.
+func (o BackupPlanBackupRuleStandardScheduleOutput) DaysOfMonths() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v BackupPlanBackupRuleStandardSchedule) []int { return v.DaysOfMonths }).(pulumi.IntArrayOutput)
+}
+
+// Specifies days of week like MONDAY or TUESDAY, on which jobs will run. This is required for `recurrenceType`, `WEEKLY` and is not applicable otherwise.
+// Each value may be one of: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`.
+func (o BackupPlanBackupRuleStandardScheduleOutput) DaysOfWeeks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BackupPlanBackupRuleStandardSchedule) []string { return v.DaysOfWeeks }).(pulumi.StringArrayOutput)
+}
+
+// Specifies frequency for hourly backups. An hourly frequency of 2 means jobs will run every 2 hours from start time till end time defined.
+// This is required for `recurrenceType`, `HOURLY` and is not applicable otherwise.
+func (o BackupPlanBackupRuleStandardScheduleOutput) HourlyFrequency() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BackupPlanBackupRuleStandardSchedule) *int { return v.HourlyFrequency }).(pulumi.IntPtrOutput)
+}
+
+// Specifies values of months
+// Each value may be one of: `MONTH_UNSPECIFIED`, `JANUARY`, `FEBRUARY`, `MARCH`, `APRIL`, `MAY`, `JUNE`, `JULY`, `AUGUST`, `SEPTEMBER`, `OCTOBER`, `NOVEMBER`, `DECEMBER`.
+func (o BackupPlanBackupRuleStandardScheduleOutput) Months() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BackupPlanBackupRuleStandardSchedule) []string { return v.Months }).(pulumi.StringArrayOutput)
+}
+
+// RecurrenceType enumerates the applicable periodicity for the schedule.
+// Possible values are: `HOURLY`, `DAILY`, `WEEKLY`, `MONTHLY`, `YEARLY`.
+func (o BackupPlanBackupRuleStandardScheduleOutput) RecurrenceType() pulumi.StringOutput {
+	return o.ApplyT(func(v BackupPlanBackupRuleStandardSchedule) string { return v.RecurrenceType }).(pulumi.StringOutput)
+}
+
+// The time zone to be used when interpreting the schedule.
+func (o BackupPlanBackupRuleStandardScheduleOutput) TimeZone() pulumi.StringOutput {
+	return o.ApplyT(func(v BackupPlanBackupRuleStandardSchedule) string { return v.TimeZone }).(pulumi.StringOutput)
+}
+
+// Specifies a week day of the month like FIRST SUNDAY or LAST MONDAY, on which jobs will run.
+// Structure is documented below.
+func (o BackupPlanBackupRuleStandardScheduleOutput) WeekDayOfMonth() BackupPlanBackupRuleStandardScheduleWeekDayOfMonthPtrOutput {
+	return o.ApplyT(func(v BackupPlanBackupRuleStandardSchedule) *BackupPlanBackupRuleStandardScheduleWeekDayOfMonth {
+		return v.WeekDayOfMonth
+	}).(BackupPlanBackupRuleStandardScheduleWeekDayOfMonthPtrOutput)
+}
+
+type BackupPlanBackupRuleStandardScheduleBackupWindow struct {
+	// The hour of the day (1-24) when the window ends, for example, if the value of end hour of the day is 10, that means the backup window end time is 10:00.
+	// The end hour of the day should be greater than the start
+	//
+	// ***
+	EndHourOfDay *int `pulumi:"endHourOfDay"`
+	// The hour of the day (0-23) when the window starts, for example, if the value of the start hour of the day is 6, that means the backup window starts at 6:00.
+	StartHourOfDay int `pulumi:"startHourOfDay"`
+}
+
+// BackupPlanBackupRuleStandardScheduleBackupWindowInput is an input type that accepts BackupPlanBackupRuleStandardScheduleBackupWindowArgs and BackupPlanBackupRuleStandardScheduleBackupWindowOutput values.
+// You can construct a concrete instance of `BackupPlanBackupRuleStandardScheduleBackupWindowInput` via:
+//
+//	BackupPlanBackupRuleStandardScheduleBackupWindowArgs{...}
+type BackupPlanBackupRuleStandardScheduleBackupWindowInput interface {
+	pulumi.Input
+
+	ToBackupPlanBackupRuleStandardScheduleBackupWindowOutput() BackupPlanBackupRuleStandardScheduleBackupWindowOutput
+	ToBackupPlanBackupRuleStandardScheduleBackupWindowOutputWithContext(context.Context) BackupPlanBackupRuleStandardScheduleBackupWindowOutput
+}
+
+type BackupPlanBackupRuleStandardScheduleBackupWindowArgs struct {
+	// The hour of the day (1-24) when the window ends, for example, if the value of end hour of the day is 10, that means the backup window end time is 10:00.
+	// The end hour of the day should be greater than the start
+	//
+	// ***
+	EndHourOfDay pulumi.IntPtrInput `pulumi:"endHourOfDay"`
+	// The hour of the day (0-23) when the window starts, for example, if the value of the start hour of the day is 6, that means the backup window starts at 6:00.
+	StartHourOfDay pulumi.IntInput `pulumi:"startHourOfDay"`
+}
+
+func (BackupPlanBackupRuleStandardScheduleBackupWindowArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupPlanBackupRuleStandardScheduleBackupWindow)(nil)).Elem()
+}
+
+func (i BackupPlanBackupRuleStandardScheduleBackupWindowArgs) ToBackupPlanBackupRuleStandardScheduleBackupWindowOutput() BackupPlanBackupRuleStandardScheduleBackupWindowOutput {
+	return i.ToBackupPlanBackupRuleStandardScheduleBackupWindowOutputWithContext(context.Background())
+}
+
+func (i BackupPlanBackupRuleStandardScheduleBackupWindowArgs) ToBackupPlanBackupRuleStandardScheduleBackupWindowOutputWithContext(ctx context.Context) BackupPlanBackupRuleStandardScheduleBackupWindowOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanBackupRuleStandardScheduleBackupWindowOutput)
+}
+
+func (i BackupPlanBackupRuleStandardScheduleBackupWindowArgs) ToBackupPlanBackupRuleStandardScheduleBackupWindowPtrOutput() BackupPlanBackupRuleStandardScheduleBackupWindowPtrOutput {
+	return i.ToBackupPlanBackupRuleStandardScheduleBackupWindowPtrOutputWithContext(context.Background())
+}
+
+func (i BackupPlanBackupRuleStandardScheduleBackupWindowArgs) ToBackupPlanBackupRuleStandardScheduleBackupWindowPtrOutputWithContext(ctx context.Context) BackupPlanBackupRuleStandardScheduleBackupWindowPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanBackupRuleStandardScheduleBackupWindowOutput).ToBackupPlanBackupRuleStandardScheduleBackupWindowPtrOutputWithContext(ctx)
+}
+
+// BackupPlanBackupRuleStandardScheduleBackupWindowPtrInput is an input type that accepts BackupPlanBackupRuleStandardScheduleBackupWindowArgs, BackupPlanBackupRuleStandardScheduleBackupWindowPtr and BackupPlanBackupRuleStandardScheduleBackupWindowPtrOutput values.
+// You can construct a concrete instance of `BackupPlanBackupRuleStandardScheduleBackupWindowPtrInput` via:
+//
+//	        BackupPlanBackupRuleStandardScheduleBackupWindowArgs{...}
+//
+//	or:
+//
+//	        nil
+type BackupPlanBackupRuleStandardScheduleBackupWindowPtrInput interface {
+	pulumi.Input
+
+	ToBackupPlanBackupRuleStandardScheduleBackupWindowPtrOutput() BackupPlanBackupRuleStandardScheduleBackupWindowPtrOutput
+	ToBackupPlanBackupRuleStandardScheduleBackupWindowPtrOutputWithContext(context.Context) BackupPlanBackupRuleStandardScheduleBackupWindowPtrOutput
+}
+
+type backupPlanBackupRuleStandardScheduleBackupWindowPtrType BackupPlanBackupRuleStandardScheduleBackupWindowArgs
+
+func BackupPlanBackupRuleStandardScheduleBackupWindowPtr(v *BackupPlanBackupRuleStandardScheduleBackupWindowArgs) BackupPlanBackupRuleStandardScheduleBackupWindowPtrInput {
+	return (*backupPlanBackupRuleStandardScheduleBackupWindowPtrType)(v)
+}
+
+func (*backupPlanBackupRuleStandardScheduleBackupWindowPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackupPlanBackupRuleStandardScheduleBackupWindow)(nil)).Elem()
+}
+
+func (i *backupPlanBackupRuleStandardScheduleBackupWindowPtrType) ToBackupPlanBackupRuleStandardScheduleBackupWindowPtrOutput() BackupPlanBackupRuleStandardScheduleBackupWindowPtrOutput {
+	return i.ToBackupPlanBackupRuleStandardScheduleBackupWindowPtrOutputWithContext(context.Background())
+}
+
+func (i *backupPlanBackupRuleStandardScheduleBackupWindowPtrType) ToBackupPlanBackupRuleStandardScheduleBackupWindowPtrOutputWithContext(ctx context.Context) BackupPlanBackupRuleStandardScheduleBackupWindowPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanBackupRuleStandardScheduleBackupWindowPtrOutput)
+}
+
+type BackupPlanBackupRuleStandardScheduleBackupWindowOutput struct{ *pulumi.OutputState }
+
+func (BackupPlanBackupRuleStandardScheduleBackupWindowOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupPlanBackupRuleStandardScheduleBackupWindow)(nil)).Elem()
+}
+
+func (o BackupPlanBackupRuleStandardScheduleBackupWindowOutput) ToBackupPlanBackupRuleStandardScheduleBackupWindowOutput() BackupPlanBackupRuleStandardScheduleBackupWindowOutput {
+	return o
+}
+
+func (o BackupPlanBackupRuleStandardScheduleBackupWindowOutput) ToBackupPlanBackupRuleStandardScheduleBackupWindowOutputWithContext(ctx context.Context) BackupPlanBackupRuleStandardScheduleBackupWindowOutput {
+	return o
+}
+
+func (o BackupPlanBackupRuleStandardScheduleBackupWindowOutput) ToBackupPlanBackupRuleStandardScheduleBackupWindowPtrOutput() BackupPlanBackupRuleStandardScheduleBackupWindowPtrOutput {
+	return o.ToBackupPlanBackupRuleStandardScheduleBackupWindowPtrOutputWithContext(context.Background())
+}
+
+func (o BackupPlanBackupRuleStandardScheduleBackupWindowOutput) ToBackupPlanBackupRuleStandardScheduleBackupWindowPtrOutputWithContext(ctx context.Context) BackupPlanBackupRuleStandardScheduleBackupWindowPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackupPlanBackupRuleStandardScheduleBackupWindow) *BackupPlanBackupRuleStandardScheduleBackupWindow {
+		return &v
+	}).(BackupPlanBackupRuleStandardScheduleBackupWindowPtrOutput)
+}
+
+// The hour of the day (1-24) when the window ends, for example, if the value of end hour of the day is 10, that means the backup window end time is 10:00.
+// The end hour of the day should be greater than the start
+//
+// ***
+func (o BackupPlanBackupRuleStandardScheduleBackupWindowOutput) EndHourOfDay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v BackupPlanBackupRuleStandardScheduleBackupWindow) *int { return v.EndHourOfDay }).(pulumi.IntPtrOutput)
+}
+
+// The hour of the day (0-23) when the window starts, for example, if the value of the start hour of the day is 6, that means the backup window starts at 6:00.
+func (o BackupPlanBackupRuleStandardScheduleBackupWindowOutput) StartHourOfDay() pulumi.IntOutput {
+	return o.ApplyT(func(v BackupPlanBackupRuleStandardScheduleBackupWindow) int { return v.StartHourOfDay }).(pulumi.IntOutput)
+}
+
+type BackupPlanBackupRuleStandardScheduleBackupWindowPtrOutput struct{ *pulumi.OutputState }
+
+func (BackupPlanBackupRuleStandardScheduleBackupWindowPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackupPlanBackupRuleStandardScheduleBackupWindow)(nil)).Elem()
+}
+
+func (o BackupPlanBackupRuleStandardScheduleBackupWindowPtrOutput) ToBackupPlanBackupRuleStandardScheduleBackupWindowPtrOutput() BackupPlanBackupRuleStandardScheduleBackupWindowPtrOutput {
+	return o
+}
+
+func (o BackupPlanBackupRuleStandardScheduleBackupWindowPtrOutput) ToBackupPlanBackupRuleStandardScheduleBackupWindowPtrOutputWithContext(ctx context.Context) BackupPlanBackupRuleStandardScheduleBackupWindowPtrOutput {
+	return o
+}
+
+func (o BackupPlanBackupRuleStandardScheduleBackupWindowPtrOutput) Elem() BackupPlanBackupRuleStandardScheduleBackupWindowOutput {
+	return o.ApplyT(func(v *BackupPlanBackupRuleStandardScheduleBackupWindow) BackupPlanBackupRuleStandardScheduleBackupWindow {
+		if v != nil {
+			return *v
+		}
+		var ret BackupPlanBackupRuleStandardScheduleBackupWindow
+		return ret
+	}).(BackupPlanBackupRuleStandardScheduleBackupWindowOutput)
+}
+
+// The hour of the day (1-24) when the window ends, for example, if the value of end hour of the day is 10, that means the backup window end time is 10:00.
+// The end hour of the day should be greater than the start
+//
+// ***
+func (o BackupPlanBackupRuleStandardScheduleBackupWindowPtrOutput) EndHourOfDay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BackupPlanBackupRuleStandardScheduleBackupWindow) *int {
+		if v == nil {
+			return nil
+		}
+		return v.EndHourOfDay
+	}).(pulumi.IntPtrOutput)
+}
+
+// The hour of the day (0-23) when the window starts, for example, if the value of the start hour of the day is 6, that means the backup window starts at 6:00.
+func (o BackupPlanBackupRuleStandardScheduleBackupWindowPtrOutput) StartHourOfDay() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *BackupPlanBackupRuleStandardScheduleBackupWindow) *int {
+		if v == nil {
+			return nil
+		}
+		return &v.StartHourOfDay
+	}).(pulumi.IntPtrOutput)
+}
+
+type BackupPlanBackupRuleStandardScheduleWeekDayOfMonth struct {
+	// Specifies the day of the week.
+	// Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+	DayOfWeek string `pulumi:"dayOfWeek"`
+	// WeekOfMonth enumerates possible weeks in the month, e.g. the first, third, or last week of the month.
+	// Possible values are: `WEEK_OF_MONTH_UNSPECIFIED`, `FIRST`, `SECOND`, `THIRD`, `FOURTH`, `LAST`.
+	WeekOfMonth string `pulumi:"weekOfMonth"`
+}
+
+// BackupPlanBackupRuleStandardScheduleWeekDayOfMonthInput is an input type that accepts BackupPlanBackupRuleStandardScheduleWeekDayOfMonthArgs and BackupPlanBackupRuleStandardScheduleWeekDayOfMonthOutput values.
+// You can construct a concrete instance of `BackupPlanBackupRuleStandardScheduleWeekDayOfMonthInput` via:
+//
+//	BackupPlanBackupRuleStandardScheduleWeekDayOfMonthArgs{...}
+type BackupPlanBackupRuleStandardScheduleWeekDayOfMonthInput interface {
+	pulumi.Input
+
+	ToBackupPlanBackupRuleStandardScheduleWeekDayOfMonthOutput() BackupPlanBackupRuleStandardScheduleWeekDayOfMonthOutput
+	ToBackupPlanBackupRuleStandardScheduleWeekDayOfMonthOutputWithContext(context.Context) BackupPlanBackupRuleStandardScheduleWeekDayOfMonthOutput
+}
+
+type BackupPlanBackupRuleStandardScheduleWeekDayOfMonthArgs struct {
+	// Specifies the day of the week.
+	// Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+	DayOfWeek pulumi.StringInput `pulumi:"dayOfWeek"`
+	// WeekOfMonth enumerates possible weeks in the month, e.g. the first, third, or last week of the month.
+	// Possible values are: `WEEK_OF_MONTH_UNSPECIFIED`, `FIRST`, `SECOND`, `THIRD`, `FOURTH`, `LAST`.
+	WeekOfMonth pulumi.StringInput `pulumi:"weekOfMonth"`
+}
+
+func (BackupPlanBackupRuleStandardScheduleWeekDayOfMonthArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupPlanBackupRuleStandardScheduleWeekDayOfMonth)(nil)).Elem()
+}
+
+func (i BackupPlanBackupRuleStandardScheduleWeekDayOfMonthArgs) ToBackupPlanBackupRuleStandardScheduleWeekDayOfMonthOutput() BackupPlanBackupRuleStandardScheduleWeekDayOfMonthOutput {
+	return i.ToBackupPlanBackupRuleStandardScheduleWeekDayOfMonthOutputWithContext(context.Background())
+}
+
+func (i BackupPlanBackupRuleStandardScheduleWeekDayOfMonthArgs) ToBackupPlanBackupRuleStandardScheduleWeekDayOfMonthOutputWithContext(ctx context.Context) BackupPlanBackupRuleStandardScheduleWeekDayOfMonthOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanBackupRuleStandardScheduleWeekDayOfMonthOutput)
+}
+
+func (i BackupPlanBackupRuleStandardScheduleWeekDayOfMonthArgs) ToBackupPlanBackupRuleStandardScheduleWeekDayOfMonthPtrOutput() BackupPlanBackupRuleStandardScheduleWeekDayOfMonthPtrOutput {
+	return i.ToBackupPlanBackupRuleStandardScheduleWeekDayOfMonthPtrOutputWithContext(context.Background())
+}
+
+func (i BackupPlanBackupRuleStandardScheduleWeekDayOfMonthArgs) ToBackupPlanBackupRuleStandardScheduleWeekDayOfMonthPtrOutputWithContext(ctx context.Context) BackupPlanBackupRuleStandardScheduleWeekDayOfMonthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanBackupRuleStandardScheduleWeekDayOfMonthOutput).ToBackupPlanBackupRuleStandardScheduleWeekDayOfMonthPtrOutputWithContext(ctx)
+}
+
+// BackupPlanBackupRuleStandardScheduleWeekDayOfMonthPtrInput is an input type that accepts BackupPlanBackupRuleStandardScheduleWeekDayOfMonthArgs, BackupPlanBackupRuleStandardScheduleWeekDayOfMonthPtr and BackupPlanBackupRuleStandardScheduleWeekDayOfMonthPtrOutput values.
+// You can construct a concrete instance of `BackupPlanBackupRuleStandardScheduleWeekDayOfMonthPtrInput` via:
+//
+//	        BackupPlanBackupRuleStandardScheduleWeekDayOfMonthArgs{...}
+//
+//	or:
+//
+//	        nil
+type BackupPlanBackupRuleStandardScheduleWeekDayOfMonthPtrInput interface {
+	pulumi.Input
+
+	ToBackupPlanBackupRuleStandardScheduleWeekDayOfMonthPtrOutput() BackupPlanBackupRuleStandardScheduleWeekDayOfMonthPtrOutput
+	ToBackupPlanBackupRuleStandardScheduleWeekDayOfMonthPtrOutputWithContext(context.Context) BackupPlanBackupRuleStandardScheduleWeekDayOfMonthPtrOutput
+}
+
+type backupPlanBackupRuleStandardScheduleWeekDayOfMonthPtrType BackupPlanBackupRuleStandardScheduleWeekDayOfMonthArgs
+
+func BackupPlanBackupRuleStandardScheduleWeekDayOfMonthPtr(v *BackupPlanBackupRuleStandardScheduleWeekDayOfMonthArgs) BackupPlanBackupRuleStandardScheduleWeekDayOfMonthPtrInput {
+	return (*backupPlanBackupRuleStandardScheduleWeekDayOfMonthPtrType)(v)
+}
+
+func (*backupPlanBackupRuleStandardScheduleWeekDayOfMonthPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackupPlanBackupRuleStandardScheduleWeekDayOfMonth)(nil)).Elem()
+}
+
+func (i *backupPlanBackupRuleStandardScheduleWeekDayOfMonthPtrType) ToBackupPlanBackupRuleStandardScheduleWeekDayOfMonthPtrOutput() BackupPlanBackupRuleStandardScheduleWeekDayOfMonthPtrOutput {
+	return i.ToBackupPlanBackupRuleStandardScheduleWeekDayOfMonthPtrOutputWithContext(context.Background())
+}
+
+func (i *backupPlanBackupRuleStandardScheduleWeekDayOfMonthPtrType) ToBackupPlanBackupRuleStandardScheduleWeekDayOfMonthPtrOutputWithContext(ctx context.Context) BackupPlanBackupRuleStandardScheduleWeekDayOfMonthPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BackupPlanBackupRuleStandardScheduleWeekDayOfMonthPtrOutput)
+}
+
+type BackupPlanBackupRuleStandardScheduleWeekDayOfMonthOutput struct{ *pulumi.OutputState }
+
+func (BackupPlanBackupRuleStandardScheduleWeekDayOfMonthOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BackupPlanBackupRuleStandardScheduleWeekDayOfMonth)(nil)).Elem()
+}
+
+func (o BackupPlanBackupRuleStandardScheduleWeekDayOfMonthOutput) ToBackupPlanBackupRuleStandardScheduleWeekDayOfMonthOutput() BackupPlanBackupRuleStandardScheduleWeekDayOfMonthOutput {
+	return o
+}
+
+func (o BackupPlanBackupRuleStandardScheduleWeekDayOfMonthOutput) ToBackupPlanBackupRuleStandardScheduleWeekDayOfMonthOutputWithContext(ctx context.Context) BackupPlanBackupRuleStandardScheduleWeekDayOfMonthOutput {
+	return o
+}
+
+func (o BackupPlanBackupRuleStandardScheduleWeekDayOfMonthOutput) ToBackupPlanBackupRuleStandardScheduleWeekDayOfMonthPtrOutput() BackupPlanBackupRuleStandardScheduleWeekDayOfMonthPtrOutput {
+	return o.ToBackupPlanBackupRuleStandardScheduleWeekDayOfMonthPtrOutputWithContext(context.Background())
+}
+
+func (o BackupPlanBackupRuleStandardScheduleWeekDayOfMonthOutput) ToBackupPlanBackupRuleStandardScheduleWeekDayOfMonthPtrOutputWithContext(ctx context.Context) BackupPlanBackupRuleStandardScheduleWeekDayOfMonthPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BackupPlanBackupRuleStandardScheduleWeekDayOfMonth) *BackupPlanBackupRuleStandardScheduleWeekDayOfMonth {
+		return &v
+	}).(BackupPlanBackupRuleStandardScheduleWeekDayOfMonthPtrOutput)
+}
+
+// Specifies the day of the week.
+// Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+func (o BackupPlanBackupRuleStandardScheduleWeekDayOfMonthOutput) DayOfWeek() pulumi.StringOutput {
+	return o.ApplyT(func(v BackupPlanBackupRuleStandardScheduleWeekDayOfMonth) string { return v.DayOfWeek }).(pulumi.StringOutput)
+}
+
+// WeekOfMonth enumerates possible weeks in the month, e.g. the first, third, or last week of the month.
+// Possible values are: `WEEK_OF_MONTH_UNSPECIFIED`, `FIRST`, `SECOND`, `THIRD`, `FOURTH`, `LAST`.
+func (o BackupPlanBackupRuleStandardScheduleWeekDayOfMonthOutput) WeekOfMonth() pulumi.StringOutput {
+	return o.ApplyT(func(v BackupPlanBackupRuleStandardScheduleWeekDayOfMonth) string { return v.WeekOfMonth }).(pulumi.StringOutput)
+}
+
+type BackupPlanBackupRuleStandardScheduleWeekDayOfMonthPtrOutput struct{ *pulumi.OutputState }
+
+func (BackupPlanBackupRuleStandardScheduleWeekDayOfMonthPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BackupPlanBackupRuleStandardScheduleWeekDayOfMonth)(nil)).Elem()
+}
+
+func (o BackupPlanBackupRuleStandardScheduleWeekDayOfMonthPtrOutput) ToBackupPlanBackupRuleStandardScheduleWeekDayOfMonthPtrOutput() BackupPlanBackupRuleStandardScheduleWeekDayOfMonthPtrOutput {
+	return o
+}
+
+func (o BackupPlanBackupRuleStandardScheduleWeekDayOfMonthPtrOutput) ToBackupPlanBackupRuleStandardScheduleWeekDayOfMonthPtrOutputWithContext(ctx context.Context) BackupPlanBackupRuleStandardScheduleWeekDayOfMonthPtrOutput {
+	return o
+}
+
+func (o BackupPlanBackupRuleStandardScheduleWeekDayOfMonthPtrOutput) Elem() BackupPlanBackupRuleStandardScheduleWeekDayOfMonthOutput {
+	return o.ApplyT(func(v *BackupPlanBackupRuleStandardScheduleWeekDayOfMonth) BackupPlanBackupRuleStandardScheduleWeekDayOfMonth {
+		if v != nil {
+			return *v
+		}
+		var ret BackupPlanBackupRuleStandardScheduleWeekDayOfMonth
+		return ret
+	}).(BackupPlanBackupRuleStandardScheduleWeekDayOfMonthOutput)
+}
+
+// Specifies the day of the week.
+// Possible values are: `DAY_OF_WEEK_UNSPECIFIED`, `MONDAY`, `TUESDAY`, `WEDNESDAY`, `THURSDAY`, `FRIDAY`, `SATURDAY`, `SUNDAY`.
+func (o BackupPlanBackupRuleStandardScheduleWeekDayOfMonthPtrOutput) DayOfWeek() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BackupPlanBackupRuleStandardScheduleWeekDayOfMonth) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.DayOfWeek
+	}).(pulumi.StringPtrOutput)
+}
+
+// WeekOfMonth enumerates possible weeks in the month, e.g. the first, third, or last week of the month.
+// Possible values are: `WEEK_OF_MONTH_UNSPECIFIED`, `FIRST`, `SECOND`, `THIRD`, `FOURTH`, `LAST`.
+func (o BackupPlanBackupRuleStandardScheduleWeekDayOfMonthPtrOutput) WeekOfMonth() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BackupPlanBackupRuleStandardScheduleWeekDayOfMonth) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.WeekOfMonth
+	}).(pulumi.StringPtrOutput)
+}
+
 type ManagementServerManagementUri struct {
 	// (Output)
 	// The management console api endpoint.
@@ -237,6 +1068,729 @@ func (o ManagementServerNetworkArrayOutput) Index(i pulumi.IntInput) ManagementS
 	}).(ManagementServerNetworkOutput)
 }
 
+type GetBackupPlanAssociationRulesConfigInfo struct {
+	// google.rpc.Status object to store the last backup error
+	LastBackupErrors []GetBackupPlanAssociationRulesConfigInfoLastBackupError `pulumi:"lastBackupErrors"`
+	// State of last backup taken.
+	LastBackupState string `pulumi:"lastBackupState"`
+	// Backup Rule id fetched from backup plan.
+	RuleId string `pulumi:"ruleId"`
+}
+
+// GetBackupPlanAssociationRulesConfigInfoInput is an input type that accepts GetBackupPlanAssociationRulesConfigInfoArgs and GetBackupPlanAssociationRulesConfigInfoOutput values.
+// You can construct a concrete instance of `GetBackupPlanAssociationRulesConfigInfoInput` via:
+//
+//	GetBackupPlanAssociationRulesConfigInfoArgs{...}
+type GetBackupPlanAssociationRulesConfigInfoInput interface {
+	pulumi.Input
+
+	ToGetBackupPlanAssociationRulesConfigInfoOutput() GetBackupPlanAssociationRulesConfigInfoOutput
+	ToGetBackupPlanAssociationRulesConfigInfoOutputWithContext(context.Context) GetBackupPlanAssociationRulesConfigInfoOutput
+}
+
+type GetBackupPlanAssociationRulesConfigInfoArgs struct {
+	// google.rpc.Status object to store the last backup error
+	LastBackupErrors GetBackupPlanAssociationRulesConfigInfoLastBackupErrorArrayInput `pulumi:"lastBackupErrors"`
+	// State of last backup taken.
+	LastBackupState pulumi.StringInput `pulumi:"lastBackupState"`
+	// Backup Rule id fetched from backup plan.
+	RuleId pulumi.StringInput `pulumi:"ruleId"`
+}
+
+func (GetBackupPlanAssociationRulesConfigInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackupPlanAssociationRulesConfigInfo)(nil)).Elem()
+}
+
+func (i GetBackupPlanAssociationRulesConfigInfoArgs) ToGetBackupPlanAssociationRulesConfigInfoOutput() GetBackupPlanAssociationRulesConfigInfoOutput {
+	return i.ToGetBackupPlanAssociationRulesConfigInfoOutputWithContext(context.Background())
+}
+
+func (i GetBackupPlanAssociationRulesConfigInfoArgs) ToGetBackupPlanAssociationRulesConfigInfoOutputWithContext(ctx context.Context) GetBackupPlanAssociationRulesConfigInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackupPlanAssociationRulesConfigInfoOutput)
+}
+
+// GetBackupPlanAssociationRulesConfigInfoArrayInput is an input type that accepts GetBackupPlanAssociationRulesConfigInfoArray and GetBackupPlanAssociationRulesConfigInfoArrayOutput values.
+// You can construct a concrete instance of `GetBackupPlanAssociationRulesConfigInfoArrayInput` via:
+//
+//	GetBackupPlanAssociationRulesConfigInfoArray{ GetBackupPlanAssociationRulesConfigInfoArgs{...} }
+type GetBackupPlanAssociationRulesConfigInfoArrayInput interface {
+	pulumi.Input
+
+	ToGetBackupPlanAssociationRulesConfigInfoArrayOutput() GetBackupPlanAssociationRulesConfigInfoArrayOutput
+	ToGetBackupPlanAssociationRulesConfigInfoArrayOutputWithContext(context.Context) GetBackupPlanAssociationRulesConfigInfoArrayOutput
+}
+
+type GetBackupPlanAssociationRulesConfigInfoArray []GetBackupPlanAssociationRulesConfigInfoInput
+
+func (GetBackupPlanAssociationRulesConfigInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackupPlanAssociationRulesConfigInfo)(nil)).Elem()
+}
+
+func (i GetBackupPlanAssociationRulesConfigInfoArray) ToGetBackupPlanAssociationRulesConfigInfoArrayOutput() GetBackupPlanAssociationRulesConfigInfoArrayOutput {
+	return i.ToGetBackupPlanAssociationRulesConfigInfoArrayOutputWithContext(context.Background())
+}
+
+func (i GetBackupPlanAssociationRulesConfigInfoArray) ToGetBackupPlanAssociationRulesConfigInfoArrayOutputWithContext(ctx context.Context) GetBackupPlanAssociationRulesConfigInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackupPlanAssociationRulesConfigInfoArrayOutput)
+}
+
+type GetBackupPlanAssociationRulesConfigInfoOutput struct{ *pulumi.OutputState }
+
+func (GetBackupPlanAssociationRulesConfigInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackupPlanAssociationRulesConfigInfo)(nil)).Elem()
+}
+
+func (o GetBackupPlanAssociationRulesConfigInfoOutput) ToGetBackupPlanAssociationRulesConfigInfoOutput() GetBackupPlanAssociationRulesConfigInfoOutput {
+	return o
+}
+
+func (o GetBackupPlanAssociationRulesConfigInfoOutput) ToGetBackupPlanAssociationRulesConfigInfoOutputWithContext(ctx context.Context) GetBackupPlanAssociationRulesConfigInfoOutput {
+	return o
+}
+
+// google.rpc.Status object to store the last backup error
+func (o GetBackupPlanAssociationRulesConfigInfoOutput) LastBackupErrors() GetBackupPlanAssociationRulesConfigInfoLastBackupErrorArrayOutput {
+	return o.ApplyT(func(v GetBackupPlanAssociationRulesConfigInfo) []GetBackupPlanAssociationRulesConfigInfoLastBackupError {
+		return v.LastBackupErrors
+	}).(GetBackupPlanAssociationRulesConfigInfoLastBackupErrorArrayOutput)
+}
+
+// State of last backup taken.
+func (o GetBackupPlanAssociationRulesConfigInfoOutput) LastBackupState() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupPlanAssociationRulesConfigInfo) string { return v.LastBackupState }).(pulumi.StringOutput)
+}
+
+// Backup Rule id fetched from backup plan.
+func (o GetBackupPlanAssociationRulesConfigInfoOutput) RuleId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupPlanAssociationRulesConfigInfo) string { return v.RuleId }).(pulumi.StringOutput)
+}
+
+type GetBackupPlanAssociationRulesConfigInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBackupPlanAssociationRulesConfigInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackupPlanAssociationRulesConfigInfo)(nil)).Elem()
+}
+
+func (o GetBackupPlanAssociationRulesConfigInfoArrayOutput) ToGetBackupPlanAssociationRulesConfigInfoArrayOutput() GetBackupPlanAssociationRulesConfigInfoArrayOutput {
+	return o
+}
+
+func (o GetBackupPlanAssociationRulesConfigInfoArrayOutput) ToGetBackupPlanAssociationRulesConfigInfoArrayOutputWithContext(ctx context.Context) GetBackupPlanAssociationRulesConfigInfoArrayOutput {
+	return o
+}
+
+func (o GetBackupPlanAssociationRulesConfigInfoArrayOutput) Index(i pulumi.IntInput) GetBackupPlanAssociationRulesConfigInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackupPlanAssociationRulesConfigInfo {
+		return vs[0].([]GetBackupPlanAssociationRulesConfigInfo)[vs[1].(int)]
+	}).(GetBackupPlanAssociationRulesConfigInfoOutput)
+}
+
+type GetBackupPlanAssociationRulesConfigInfoLastBackupError struct {
+	// The status code, which should be an enum value of [google.rpc.Code]
+	Code float64 `pulumi:"code"`
+	// A developer-facing error message, which should be in English.
+	Message string `pulumi:"message"`
+}
+
+// GetBackupPlanAssociationRulesConfigInfoLastBackupErrorInput is an input type that accepts GetBackupPlanAssociationRulesConfigInfoLastBackupErrorArgs and GetBackupPlanAssociationRulesConfigInfoLastBackupErrorOutput values.
+// You can construct a concrete instance of `GetBackupPlanAssociationRulesConfigInfoLastBackupErrorInput` via:
+//
+//	GetBackupPlanAssociationRulesConfigInfoLastBackupErrorArgs{...}
+type GetBackupPlanAssociationRulesConfigInfoLastBackupErrorInput interface {
+	pulumi.Input
+
+	ToGetBackupPlanAssociationRulesConfigInfoLastBackupErrorOutput() GetBackupPlanAssociationRulesConfigInfoLastBackupErrorOutput
+	ToGetBackupPlanAssociationRulesConfigInfoLastBackupErrorOutputWithContext(context.Context) GetBackupPlanAssociationRulesConfigInfoLastBackupErrorOutput
+}
+
+type GetBackupPlanAssociationRulesConfigInfoLastBackupErrorArgs struct {
+	// The status code, which should be an enum value of [google.rpc.Code]
+	Code pulumi.Float64Input `pulumi:"code"`
+	// A developer-facing error message, which should be in English.
+	Message pulumi.StringInput `pulumi:"message"`
+}
+
+func (GetBackupPlanAssociationRulesConfigInfoLastBackupErrorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackupPlanAssociationRulesConfigInfoLastBackupError)(nil)).Elem()
+}
+
+func (i GetBackupPlanAssociationRulesConfigInfoLastBackupErrorArgs) ToGetBackupPlanAssociationRulesConfigInfoLastBackupErrorOutput() GetBackupPlanAssociationRulesConfigInfoLastBackupErrorOutput {
+	return i.ToGetBackupPlanAssociationRulesConfigInfoLastBackupErrorOutputWithContext(context.Background())
+}
+
+func (i GetBackupPlanAssociationRulesConfigInfoLastBackupErrorArgs) ToGetBackupPlanAssociationRulesConfigInfoLastBackupErrorOutputWithContext(ctx context.Context) GetBackupPlanAssociationRulesConfigInfoLastBackupErrorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackupPlanAssociationRulesConfigInfoLastBackupErrorOutput)
+}
+
+// GetBackupPlanAssociationRulesConfigInfoLastBackupErrorArrayInput is an input type that accepts GetBackupPlanAssociationRulesConfigInfoLastBackupErrorArray and GetBackupPlanAssociationRulesConfigInfoLastBackupErrorArrayOutput values.
+// You can construct a concrete instance of `GetBackupPlanAssociationRulesConfigInfoLastBackupErrorArrayInput` via:
+//
+//	GetBackupPlanAssociationRulesConfigInfoLastBackupErrorArray{ GetBackupPlanAssociationRulesConfigInfoLastBackupErrorArgs{...} }
+type GetBackupPlanAssociationRulesConfigInfoLastBackupErrorArrayInput interface {
+	pulumi.Input
+
+	ToGetBackupPlanAssociationRulesConfigInfoLastBackupErrorArrayOutput() GetBackupPlanAssociationRulesConfigInfoLastBackupErrorArrayOutput
+	ToGetBackupPlanAssociationRulesConfigInfoLastBackupErrorArrayOutputWithContext(context.Context) GetBackupPlanAssociationRulesConfigInfoLastBackupErrorArrayOutput
+}
+
+type GetBackupPlanAssociationRulesConfigInfoLastBackupErrorArray []GetBackupPlanAssociationRulesConfigInfoLastBackupErrorInput
+
+func (GetBackupPlanAssociationRulesConfigInfoLastBackupErrorArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackupPlanAssociationRulesConfigInfoLastBackupError)(nil)).Elem()
+}
+
+func (i GetBackupPlanAssociationRulesConfigInfoLastBackupErrorArray) ToGetBackupPlanAssociationRulesConfigInfoLastBackupErrorArrayOutput() GetBackupPlanAssociationRulesConfigInfoLastBackupErrorArrayOutput {
+	return i.ToGetBackupPlanAssociationRulesConfigInfoLastBackupErrorArrayOutputWithContext(context.Background())
+}
+
+func (i GetBackupPlanAssociationRulesConfigInfoLastBackupErrorArray) ToGetBackupPlanAssociationRulesConfigInfoLastBackupErrorArrayOutputWithContext(ctx context.Context) GetBackupPlanAssociationRulesConfigInfoLastBackupErrorArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackupPlanAssociationRulesConfigInfoLastBackupErrorArrayOutput)
+}
+
+type GetBackupPlanAssociationRulesConfigInfoLastBackupErrorOutput struct{ *pulumi.OutputState }
+
+func (GetBackupPlanAssociationRulesConfigInfoLastBackupErrorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackupPlanAssociationRulesConfigInfoLastBackupError)(nil)).Elem()
+}
+
+func (o GetBackupPlanAssociationRulesConfigInfoLastBackupErrorOutput) ToGetBackupPlanAssociationRulesConfigInfoLastBackupErrorOutput() GetBackupPlanAssociationRulesConfigInfoLastBackupErrorOutput {
+	return o
+}
+
+func (o GetBackupPlanAssociationRulesConfigInfoLastBackupErrorOutput) ToGetBackupPlanAssociationRulesConfigInfoLastBackupErrorOutputWithContext(ctx context.Context) GetBackupPlanAssociationRulesConfigInfoLastBackupErrorOutput {
+	return o
+}
+
+// The status code, which should be an enum value of [google.rpc.Code]
+func (o GetBackupPlanAssociationRulesConfigInfoLastBackupErrorOutput) Code() pulumi.Float64Output {
+	return o.ApplyT(func(v GetBackupPlanAssociationRulesConfigInfoLastBackupError) float64 { return v.Code }).(pulumi.Float64Output)
+}
+
+// A developer-facing error message, which should be in English.
+func (o GetBackupPlanAssociationRulesConfigInfoLastBackupErrorOutput) Message() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupPlanAssociationRulesConfigInfoLastBackupError) string { return v.Message }).(pulumi.StringOutput)
+}
+
+type GetBackupPlanAssociationRulesConfigInfoLastBackupErrorArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBackupPlanAssociationRulesConfigInfoLastBackupErrorArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackupPlanAssociationRulesConfigInfoLastBackupError)(nil)).Elem()
+}
+
+func (o GetBackupPlanAssociationRulesConfigInfoLastBackupErrorArrayOutput) ToGetBackupPlanAssociationRulesConfigInfoLastBackupErrorArrayOutput() GetBackupPlanAssociationRulesConfigInfoLastBackupErrorArrayOutput {
+	return o
+}
+
+func (o GetBackupPlanAssociationRulesConfigInfoLastBackupErrorArrayOutput) ToGetBackupPlanAssociationRulesConfigInfoLastBackupErrorArrayOutputWithContext(ctx context.Context) GetBackupPlanAssociationRulesConfigInfoLastBackupErrorArrayOutput {
+	return o
+}
+
+func (o GetBackupPlanAssociationRulesConfigInfoLastBackupErrorArrayOutput) Index(i pulumi.IntInput) GetBackupPlanAssociationRulesConfigInfoLastBackupErrorOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackupPlanAssociationRulesConfigInfoLastBackupError {
+		return vs[0].([]GetBackupPlanAssociationRulesConfigInfoLastBackupError)[vs[1].(int)]
+	}).(GetBackupPlanAssociationRulesConfigInfoLastBackupErrorOutput)
+}
+
+type GetBackupPlanBackupRule struct {
+	// Configures the duration for which backup data will be kept. The value should be greater than or equal to minimum enforced retention of the backup vault.
+	BackupRetentionDays int `pulumi:"backupRetentionDays"`
+	// The unique ID of this 'BackupRule'. The 'rule_id' is unique per 'BackupPlan'.
+	RuleId string `pulumi:"ruleId"`
+	// StandardSchedule defines a schedule that runs within the confines of a defined window of days.
+	StandardSchedules []GetBackupPlanBackupRuleStandardSchedule `pulumi:"standardSchedules"`
+}
+
+// GetBackupPlanBackupRuleInput is an input type that accepts GetBackupPlanBackupRuleArgs and GetBackupPlanBackupRuleOutput values.
+// You can construct a concrete instance of `GetBackupPlanBackupRuleInput` via:
+//
+//	GetBackupPlanBackupRuleArgs{...}
+type GetBackupPlanBackupRuleInput interface {
+	pulumi.Input
+
+	ToGetBackupPlanBackupRuleOutput() GetBackupPlanBackupRuleOutput
+	ToGetBackupPlanBackupRuleOutputWithContext(context.Context) GetBackupPlanBackupRuleOutput
+}
+
+type GetBackupPlanBackupRuleArgs struct {
+	// Configures the duration for which backup data will be kept. The value should be greater than or equal to minimum enforced retention of the backup vault.
+	BackupRetentionDays pulumi.IntInput `pulumi:"backupRetentionDays"`
+	// The unique ID of this 'BackupRule'. The 'rule_id' is unique per 'BackupPlan'.
+	RuleId pulumi.StringInput `pulumi:"ruleId"`
+	// StandardSchedule defines a schedule that runs within the confines of a defined window of days.
+	StandardSchedules GetBackupPlanBackupRuleStandardScheduleArrayInput `pulumi:"standardSchedules"`
+}
+
+func (GetBackupPlanBackupRuleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackupPlanBackupRule)(nil)).Elem()
+}
+
+func (i GetBackupPlanBackupRuleArgs) ToGetBackupPlanBackupRuleOutput() GetBackupPlanBackupRuleOutput {
+	return i.ToGetBackupPlanBackupRuleOutputWithContext(context.Background())
+}
+
+func (i GetBackupPlanBackupRuleArgs) ToGetBackupPlanBackupRuleOutputWithContext(ctx context.Context) GetBackupPlanBackupRuleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackupPlanBackupRuleOutput)
+}
+
+// GetBackupPlanBackupRuleArrayInput is an input type that accepts GetBackupPlanBackupRuleArray and GetBackupPlanBackupRuleArrayOutput values.
+// You can construct a concrete instance of `GetBackupPlanBackupRuleArrayInput` via:
+//
+//	GetBackupPlanBackupRuleArray{ GetBackupPlanBackupRuleArgs{...} }
+type GetBackupPlanBackupRuleArrayInput interface {
+	pulumi.Input
+
+	ToGetBackupPlanBackupRuleArrayOutput() GetBackupPlanBackupRuleArrayOutput
+	ToGetBackupPlanBackupRuleArrayOutputWithContext(context.Context) GetBackupPlanBackupRuleArrayOutput
+}
+
+type GetBackupPlanBackupRuleArray []GetBackupPlanBackupRuleInput
+
+func (GetBackupPlanBackupRuleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackupPlanBackupRule)(nil)).Elem()
+}
+
+func (i GetBackupPlanBackupRuleArray) ToGetBackupPlanBackupRuleArrayOutput() GetBackupPlanBackupRuleArrayOutput {
+	return i.ToGetBackupPlanBackupRuleArrayOutputWithContext(context.Background())
+}
+
+func (i GetBackupPlanBackupRuleArray) ToGetBackupPlanBackupRuleArrayOutputWithContext(ctx context.Context) GetBackupPlanBackupRuleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackupPlanBackupRuleArrayOutput)
+}
+
+type GetBackupPlanBackupRuleOutput struct{ *pulumi.OutputState }
+
+func (GetBackupPlanBackupRuleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackupPlanBackupRule)(nil)).Elem()
+}
+
+func (o GetBackupPlanBackupRuleOutput) ToGetBackupPlanBackupRuleOutput() GetBackupPlanBackupRuleOutput {
+	return o
+}
+
+func (o GetBackupPlanBackupRuleOutput) ToGetBackupPlanBackupRuleOutputWithContext(ctx context.Context) GetBackupPlanBackupRuleOutput {
+	return o
+}
+
+// Configures the duration for which backup data will be kept. The value should be greater than or equal to minimum enforced retention of the backup vault.
+func (o GetBackupPlanBackupRuleOutput) BackupRetentionDays() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBackupPlanBackupRule) int { return v.BackupRetentionDays }).(pulumi.IntOutput)
+}
+
+// The unique ID of this 'BackupRule'. The 'rule_id' is unique per 'BackupPlan'.
+func (o GetBackupPlanBackupRuleOutput) RuleId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupPlanBackupRule) string { return v.RuleId }).(pulumi.StringOutput)
+}
+
+// StandardSchedule defines a schedule that runs within the confines of a defined window of days.
+func (o GetBackupPlanBackupRuleOutput) StandardSchedules() GetBackupPlanBackupRuleStandardScheduleArrayOutput {
+	return o.ApplyT(func(v GetBackupPlanBackupRule) []GetBackupPlanBackupRuleStandardSchedule { return v.StandardSchedules }).(GetBackupPlanBackupRuleStandardScheduleArrayOutput)
+}
+
+type GetBackupPlanBackupRuleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBackupPlanBackupRuleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackupPlanBackupRule)(nil)).Elem()
+}
+
+func (o GetBackupPlanBackupRuleArrayOutput) ToGetBackupPlanBackupRuleArrayOutput() GetBackupPlanBackupRuleArrayOutput {
+	return o
+}
+
+func (o GetBackupPlanBackupRuleArrayOutput) ToGetBackupPlanBackupRuleArrayOutputWithContext(ctx context.Context) GetBackupPlanBackupRuleArrayOutput {
+	return o
+}
+
+func (o GetBackupPlanBackupRuleArrayOutput) Index(i pulumi.IntInput) GetBackupPlanBackupRuleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackupPlanBackupRule {
+		return vs[0].([]GetBackupPlanBackupRule)[vs[1].(int)]
+	}).(GetBackupPlanBackupRuleOutput)
+}
+
+type GetBackupPlanBackupRuleStandardSchedule struct {
+	// A BackupWindow defines the window of the day during which backup jobs will run. Jobs are queued at the beginning of the window and will be marked as
+	// 'NOT_RUN' if they do not start by the end of the window.
+	BackupWindows []GetBackupPlanBackupRuleStandardScheduleBackupWindow `pulumi:"backupWindows"`
+	// Specifies days of months like 1, 5, or 14 on which jobs will run.
+	DaysOfMonths []int `pulumi:"daysOfMonths"`
+	// Specifies days of week like MONDAY or TUESDAY, on which jobs will run. This is required for 'recurrence_type', 'WEEKLY' and is not applicable otherwise. Possible values: ["DAY_OF_WEEK_UNSPECIFIED", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"]
+	DaysOfWeeks []string `pulumi:"daysOfWeeks"`
+	// Specifies frequency for hourly backups. An hourly frequency of 2 means jobs will run every 2 hours from start time till end time defined.
+	// This is required for 'recurrence_type', 'HOURLY' and is not applicable otherwise.
+	HourlyFrequency int `pulumi:"hourlyFrequency"`
+	// Specifies values of months Possible values: ["MONTH_UNSPECIFIED", "JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE", "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER"]
+	Months []string `pulumi:"months"`
+	// RecurrenceType enumerates the applicable periodicity for the schedule. Possible values: ["HOURLY", "DAILY", "WEEKLY", "MONTHLY", "YEARLY"]
+	RecurrenceType string `pulumi:"recurrenceType"`
+	// The time zone to be used when interpreting the schedule.
+	TimeZone string `pulumi:"timeZone"`
+	// Specifies a week day of the month like FIRST SUNDAY or LAST MONDAY, on which jobs will run.
+	WeekDayOfMonths []GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonth `pulumi:"weekDayOfMonths"`
+}
+
+// GetBackupPlanBackupRuleStandardScheduleInput is an input type that accepts GetBackupPlanBackupRuleStandardScheduleArgs and GetBackupPlanBackupRuleStandardScheduleOutput values.
+// You can construct a concrete instance of `GetBackupPlanBackupRuleStandardScheduleInput` via:
+//
+//	GetBackupPlanBackupRuleStandardScheduleArgs{...}
+type GetBackupPlanBackupRuleStandardScheduleInput interface {
+	pulumi.Input
+
+	ToGetBackupPlanBackupRuleStandardScheduleOutput() GetBackupPlanBackupRuleStandardScheduleOutput
+	ToGetBackupPlanBackupRuleStandardScheduleOutputWithContext(context.Context) GetBackupPlanBackupRuleStandardScheduleOutput
+}
+
+type GetBackupPlanBackupRuleStandardScheduleArgs struct {
+	// A BackupWindow defines the window of the day during which backup jobs will run. Jobs are queued at the beginning of the window and will be marked as
+	// 'NOT_RUN' if they do not start by the end of the window.
+	BackupWindows GetBackupPlanBackupRuleStandardScheduleBackupWindowArrayInput `pulumi:"backupWindows"`
+	// Specifies days of months like 1, 5, or 14 on which jobs will run.
+	DaysOfMonths pulumi.IntArrayInput `pulumi:"daysOfMonths"`
+	// Specifies days of week like MONDAY or TUESDAY, on which jobs will run. This is required for 'recurrence_type', 'WEEKLY' and is not applicable otherwise. Possible values: ["DAY_OF_WEEK_UNSPECIFIED", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"]
+	DaysOfWeeks pulumi.StringArrayInput `pulumi:"daysOfWeeks"`
+	// Specifies frequency for hourly backups. An hourly frequency of 2 means jobs will run every 2 hours from start time till end time defined.
+	// This is required for 'recurrence_type', 'HOURLY' and is not applicable otherwise.
+	HourlyFrequency pulumi.IntInput `pulumi:"hourlyFrequency"`
+	// Specifies values of months Possible values: ["MONTH_UNSPECIFIED", "JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE", "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER"]
+	Months pulumi.StringArrayInput `pulumi:"months"`
+	// RecurrenceType enumerates the applicable periodicity for the schedule. Possible values: ["HOURLY", "DAILY", "WEEKLY", "MONTHLY", "YEARLY"]
+	RecurrenceType pulumi.StringInput `pulumi:"recurrenceType"`
+	// The time zone to be used when interpreting the schedule.
+	TimeZone pulumi.StringInput `pulumi:"timeZone"`
+	// Specifies a week day of the month like FIRST SUNDAY or LAST MONDAY, on which jobs will run.
+	WeekDayOfMonths GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthArrayInput `pulumi:"weekDayOfMonths"`
+}
+
+func (GetBackupPlanBackupRuleStandardScheduleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackupPlanBackupRuleStandardSchedule)(nil)).Elem()
+}
+
+func (i GetBackupPlanBackupRuleStandardScheduleArgs) ToGetBackupPlanBackupRuleStandardScheduleOutput() GetBackupPlanBackupRuleStandardScheduleOutput {
+	return i.ToGetBackupPlanBackupRuleStandardScheduleOutputWithContext(context.Background())
+}
+
+func (i GetBackupPlanBackupRuleStandardScheduleArgs) ToGetBackupPlanBackupRuleStandardScheduleOutputWithContext(ctx context.Context) GetBackupPlanBackupRuleStandardScheduleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackupPlanBackupRuleStandardScheduleOutput)
+}
+
+// GetBackupPlanBackupRuleStandardScheduleArrayInput is an input type that accepts GetBackupPlanBackupRuleStandardScheduleArray and GetBackupPlanBackupRuleStandardScheduleArrayOutput values.
+// You can construct a concrete instance of `GetBackupPlanBackupRuleStandardScheduleArrayInput` via:
+//
+//	GetBackupPlanBackupRuleStandardScheduleArray{ GetBackupPlanBackupRuleStandardScheduleArgs{...} }
+type GetBackupPlanBackupRuleStandardScheduleArrayInput interface {
+	pulumi.Input
+
+	ToGetBackupPlanBackupRuleStandardScheduleArrayOutput() GetBackupPlanBackupRuleStandardScheduleArrayOutput
+	ToGetBackupPlanBackupRuleStandardScheduleArrayOutputWithContext(context.Context) GetBackupPlanBackupRuleStandardScheduleArrayOutput
+}
+
+type GetBackupPlanBackupRuleStandardScheduleArray []GetBackupPlanBackupRuleStandardScheduleInput
+
+func (GetBackupPlanBackupRuleStandardScheduleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackupPlanBackupRuleStandardSchedule)(nil)).Elem()
+}
+
+func (i GetBackupPlanBackupRuleStandardScheduleArray) ToGetBackupPlanBackupRuleStandardScheduleArrayOutput() GetBackupPlanBackupRuleStandardScheduleArrayOutput {
+	return i.ToGetBackupPlanBackupRuleStandardScheduleArrayOutputWithContext(context.Background())
+}
+
+func (i GetBackupPlanBackupRuleStandardScheduleArray) ToGetBackupPlanBackupRuleStandardScheduleArrayOutputWithContext(ctx context.Context) GetBackupPlanBackupRuleStandardScheduleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackupPlanBackupRuleStandardScheduleArrayOutput)
+}
+
+type GetBackupPlanBackupRuleStandardScheduleOutput struct{ *pulumi.OutputState }
+
+func (GetBackupPlanBackupRuleStandardScheduleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackupPlanBackupRuleStandardSchedule)(nil)).Elem()
+}
+
+func (o GetBackupPlanBackupRuleStandardScheduleOutput) ToGetBackupPlanBackupRuleStandardScheduleOutput() GetBackupPlanBackupRuleStandardScheduleOutput {
+	return o
+}
+
+func (o GetBackupPlanBackupRuleStandardScheduleOutput) ToGetBackupPlanBackupRuleStandardScheduleOutputWithContext(ctx context.Context) GetBackupPlanBackupRuleStandardScheduleOutput {
+	return o
+}
+
+// A BackupWindow defines the window of the day during which backup jobs will run. Jobs are queued at the beginning of the window and will be marked as
+// 'NOT_RUN' if they do not start by the end of the window.
+func (o GetBackupPlanBackupRuleStandardScheduleOutput) BackupWindows() GetBackupPlanBackupRuleStandardScheduleBackupWindowArrayOutput {
+	return o.ApplyT(func(v GetBackupPlanBackupRuleStandardSchedule) []GetBackupPlanBackupRuleStandardScheduleBackupWindow {
+		return v.BackupWindows
+	}).(GetBackupPlanBackupRuleStandardScheduleBackupWindowArrayOutput)
+}
+
+// Specifies days of months like 1, 5, or 14 on which jobs will run.
+func (o GetBackupPlanBackupRuleStandardScheduleOutput) DaysOfMonths() pulumi.IntArrayOutput {
+	return o.ApplyT(func(v GetBackupPlanBackupRuleStandardSchedule) []int { return v.DaysOfMonths }).(pulumi.IntArrayOutput)
+}
+
+// Specifies days of week like MONDAY or TUESDAY, on which jobs will run. This is required for 'recurrence_type', 'WEEKLY' and is not applicable otherwise. Possible values: ["DAY_OF_WEEK_UNSPECIFIED", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY"]
+func (o GetBackupPlanBackupRuleStandardScheduleOutput) DaysOfWeeks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetBackupPlanBackupRuleStandardSchedule) []string { return v.DaysOfWeeks }).(pulumi.StringArrayOutput)
+}
+
+// Specifies frequency for hourly backups. An hourly frequency of 2 means jobs will run every 2 hours from start time till end time defined.
+// This is required for 'recurrence_type', 'HOURLY' and is not applicable otherwise.
+func (o GetBackupPlanBackupRuleStandardScheduleOutput) HourlyFrequency() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBackupPlanBackupRuleStandardSchedule) int { return v.HourlyFrequency }).(pulumi.IntOutput)
+}
+
+// Specifies values of months Possible values: ["MONTH_UNSPECIFIED", "JANUARY", "FEBRUARY", "MARCH", "APRIL", "MAY", "JUNE", "JULY", "AUGUST", "SEPTEMBER", "OCTOBER", "NOVEMBER", "DECEMBER"]
+func (o GetBackupPlanBackupRuleStandardScheduleOutput) Months() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetBackupPlanBackupRuleStandardSchedule) []string { return v.Months }).(pulumi.StringArrayOutput)
+}
+
+// RecurrenceType enumerates the applicable periodicity for the schedule. Possible values: ["HOURLY", "DAILY", "WEEKLY", "MONTHLY", "YEARLY"]
+func (o GetBackupPlanBackupRuleStandardScheduleOutput) RecurrenceType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupPlanBackupRuleStandardSchedule) string { return v.RecurrenceType }).(pulumi.StringOutput)
+}
+
+// The time zone to be used when interpreting the schedule.
+func (o GetBackupPlanBackupRuleStandardScheduleOutput) TimeZone() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupPlanBackupRuleStandardSchedule) string { return v.TimeZone }).(pulumi.StringOutput)
+}
+
+// Specifies a week day of the month like FIRST SUNDAY or LAST MONDAY, on which jobs will run.
+func (o GetBackupPlanBackupRuleStandardScheduleOutput) WeekDayOfMonths() GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthArrayOutput {
+	return o.ApplyT(func(v GetBackupPlanBackupRuleStandardSchedule) []GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonth {
+		return v.WeekDayOfMonths
+	}).(GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthArrayOutput)
+}
+
+type GetBackupPlanBackupRuleStandardScheduleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBackupPlanBackupRuleStandardScheduleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackupPlanBackupRuleStandardSchedule)(nil)).Elem()
+}
+
+func (o GetBackupPlanBackupRuleStandardScheduleArrayOutput) ToGetBackupPlanBackupRuleStandardScheduleArrayOutput() GetBackupPlanBackupRuleStandardScheduleArrayOutput {
+	return o
+}
+
+func (o GetBackupPlanBackupRuleStandardScheduleArrayOutput) ToGetBackupPlanBackupRuleStandardScheduleArrayOutputWithContext(ctx context.Context) GetBackupPlanBackupRuleStandardScheduleArrayOutput {
+	return o
+}
+
+func (o GetBackupPlanBackupRuleStandardScheduleArrayOutput) Index(i pulumi.IntInput) GetBackupPlanBackupRuleStandardScheduleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackupPlanBackupRuleStandardSchedule {
+		return vs[0].([]GetBackupPlanBackupRuleStandardSchedule)[vs[1].(int)]
+	}).(GetBackupPlanBackupRuleStandardScheduleOutput)
+}
+
+type GetBackupPlanBackupRuleStandardScheduleBackupWindow struct {
+	// The hour of the day (1-24) when the window ends, for example, if the value of end hour of the day is 10, that means the backup window end time is 10:00.
+	// The end hour of the day should be greater than the start
+	EndHourOfDay int `pulumi:"endHourOfDay"`
+	// The hour of the day (0-23) when the window starts, for example, if the value of the start hour of the day is 6, that means the backup window starts at 6:00.
+	StartHourOfDay int `pulumi:"startHourOfDay"`
+}
+
+// GetBackupPlanBackupRuleStandardScheduleBackupWindowInput is an input type that accepts GetBackupPlanBackupRuleStandardScheduleBackupWindowArgs and GetBackupPlanBackupRuleStandardScheduleBackupWindowOutput values.
+// You can construct a concrete instance of `GetBackupPlanBackupRuleStandardScheduleBackupWindowInput` via:
+//
+//	GetBackupPlanBackupRuleStandardScheduleBackupWindowArgs{...}
+type GetBackupPlanBackupRuleStandardScheduleBackupWindowInput interface {
+	pulumi.Input
+
+	ToGetBackupPlanBackupRuleStandardScheduleBackupWindowOutput() GetBackupPlanBackupRuleStandardScheduleBackupWindowOutput
+	ToGetBackupPlanBackupRuleStandardScheduleBackupWindowOutputWithContext(context.Context) GetBackupPlanBackupRuleStandardScheduleBackupWindowOutput
+}
+
+type GetBackupPlanBackupRuleStandardScheduleBackupWindowArgs struct {
+	// The hour of the day (1-24) when the window ends, for example, if the value of end hour of the day is 10, that means the backup window end time is 10:00.
+	// The end hour of the day should be greater than the start
+	EndHourOfDay pulumi.IntInput `pulumi:"endHourOfDay"`
+	// The hour of the day (0-23) when the window starts, for example, if the value of the start hour of the day is 6, that means the backup window starts at 6:00.
+	StartHourOfDay pulumi.IntInput `pulumi:"startHourOfDay"`
+}
+
+func (GetBackupPlanBackupRuleStandardScheduleBackupWindowArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackupPlanBackupRuleStandardScheduleBackupWindow)(nil)).Elem()
+}
+
+func (i GetBackupPlanBackupRuleStandardScheduleBackupWindowArgs) ToGetBackupPlanBackupRuleStandardScheduleBackupWindowOutput() GetBackupPlanBackupRuleStandardScheduleBackupWindowOutput {
+	return i.ToGetBackupPlanBackupRuleStandardScheduleBackupWindowOutputWithContext(context.Background())
+}
+
+func (i GetBackupPlanBackupRuleStandardScheduleBackupWindowArgs) ToGetBackupPlanBackupRuleStandardScheduleBackupWindowOutputWithContext(ctx context.Context) GetBackupPlanBackupRuleStandardScheduleBackupWindowOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackupPlanBackupRuleStandardScheduleBackupWindowOutput)
+}
+
+// GetBackupPlanBackupRuleStandardScheduleBackupWindowArrayInput is an input type that accepts GetBackupPlanBackupRuleStandardScheduleBackupWindowArray and GetBackupPlanBackupRuleStandardScheduleBackupWindowArrayOutput values.
+// You can construct a concrete instance of `GetBackupPlanBackupRuleStandardScheduleBackupWindowArrayInput` via:
+//
+//	GetBackupPlanBackupRuleStandardScheduleBackupWindowArray{ GetBackupPlanBackupRuleStandardScheduleBackupWindowArgs{...} }
+type GetBackupPlanBackupRuleStandardScheduleBackupWindowArrayInput interface {
+	pulumi.Input
+
+	ToGetBackupPlanBackupRuleStandardScheduleBackupWindowArrayOutput() GetBackupPlanBackupRuleStandardScheduleBackupWindowArrayOutput
+	ToGetBackupPlanBackupRuleStandardScheduleBackupWindowArrayOutputWithContext(context.Context) GetBackupPlanBackupRuleStandardScheduleBackupWindowArrayOutput
+}
+
+type GetBackupPlanBackupRuleStandardScheduleBackupWindowArray []GetBackupPlanBackupRuleStandardScheduleBackupWindowInput
+
+func (GetBackupPlanBackupRuleStandardScheduleBackupWindowArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackupPlanBackupRuleStandardScheduleBackupWindow)(nil)).Elem()
+}
+
+func (i GetBackupPlanBackupRuleStandardScheduleBackupWindowArray) ToGetBackupPlanBackupRuleStandardScheduleBackupWindowArrayOutput() GetBackupPlanBackupRuleStandardScheduleBackupWindowArrayOutput {
+	return i.ToGetBackupPlanBackupRuleStandardScheduleBackupWindowArrayOutputWithContext(context.Background())
+}
+
+func (i GetBackupPlanBackupRuleStandardScheduleBackupWindowArray) ToGetBackupPlanBackupRuleStandardScheduleBackupWindowArrayOutputWithContext(ctx context.Context) GetBackupPlanBackupRuleStandardScheduleBackupWindowArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackupPlanBackupRuleStandardScheduleBackupWindowArrayOutput)
+}
+
+type GetBackupPlanBackupRuleStandardScheduleBackupWindowOutput struct{ *pulumi.OutputState }
+
+func (GetBackupPlanBackupRuleStandardScheduleBackupWindowOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackupPlanBackupRuleStandardScheduleBackupWindow)(nil)).Elem()
+}
+
+func (o GetBackupPlanBackupRuleStandardScheduleBackupWindowOutput) ToGetBackupPlanBackupRuleStandardScheduleBackupWindowOutput() GetBackupPlanBackupRuleStandardScheduleBackupWindowOutput {
+	return o
+}
+
+func (o GetBackupPlanBackupRuleStandardScheduleBackupWindowOutput) ToGetBackupPlanBackupRuleStandardScheduleBackupWindowOutputWithContext(ctx context.Context) GetBackupPlanBackupRuleStandardScheduleBackupWindowOutput {
+	return o
+}
+
+// The hour of the day (1-24) when the window ends, for example, if the value of end hour of the day is 10, that means the backup window end time is 10:00.
+// The end hour of the day should be greater than the start
+func (o GetBackupPlanBackupRuleStandardScheduleBackupWindowOutput) EndHourOfDay() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBackupPlanBackupRuleStandardScheduleBackupWindow) int { return v.EndHourOfDay }).(pulumi.IntOutput)
+}
+
+// The hour of the day (0-23) when the window starts, for example, if the value of the start hour of the day is 6, that means the backup window starts at 6:00.
+func (o GetBackupPlanBackupRuleStandardScheduleBackupWindowOutput) StartHourOfDay() pulumi.IntOutput {
+	return o.ApplyT(func(v GetBackupPlanBackupRuleStandardScheduleBackupWindow) int { return v.StartHourOfDay }).(pulumi.IntOutput)
+}
+
+type GetBackupPlanBackupRuleStandardScheduleBackupWindowArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBackupPlanBackupRuleStandardScheduleBackupWindowArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackupPlanBackupRuleStandardScheduleBackupWindow)(nil)).Elem()
+}
+
+func (o GetBackupPlanBackupRuleStandardScheduleBackupWindowArrayOutput) ToGetBackupPlanBackupRuleStandardScheduleBackupWindowArrayOutput() GetBackupPlanBackupRuleStandardScheduleBackupWindowArrayOutput {
+	return o
+}
+
+func (o GetBackupPlanBackupRuleStandardScheduleBackupWindowArrayOutput) ToGetBackupPlanBackupRuleStandardScheduleBackupWindowArrayOutputWithContext(ctx context.Context) GetBackupPlanBackupRuleStandardScheduleBackupWindowArrayOutput {
+	return o
+}
+
+func (o GetBackupPlanBackupRuleStandardScheduleBackupWindowArrayOutput) Index(i pulumi.IntInput) GetBackupPlanBackupRuleStandardScheduleBackupWindowOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackupPlanBackupRuleStandardScheduleBackupWindow {
+		return vs[0].([]GetBackupPlanBackupRuleStandardScheduleBackupWindow)[vs[1].(int)]
+	}).(GetBackupPlanBackupRuleStandardScheduleBackupWindowOutput)
+}
+
+type GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonth struct {
+	// Specifies the day of the week. Possible values: ["DAY_OF_WEEK_UNSPECIFIED", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
+	DayOfWeek string `pulumi:"dayOfWeek"`
+	// WeekOfMonth enumerates possible weeks in the month, e.g. the first, third, or last week of the month. Possible values: ["WEEK_OF_MONTH_UNSPECIFIED", "FIRST", "SECOND", "THIRD", "FOURTH", "LAST"]
+	WeekOfMonth string `pulumi:"weekOfMonth"`
+}
+
+// GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthInput is an input type that accepts GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthArgs and GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthOutput values.
+// You can construct a concrete instance of `GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthInput` via:
+//
+//	GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthArgs{...}
+type GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthInput interface {
+	pulumi.Input
+
+	ToGetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthOutput() GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthOutput
+	ToGetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthOutputWithContext(context.Context) GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthOutput
+}
+
+type GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthArgs struct {
+	// Specifies the day of the week. Possible values: ["DAY_OF_WEEK_UNSPECIFIED", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
+	DayOfWeek pulumi.StringInput `pulumi:"dayOfWeek"`
+	// WeekOfMonth enumerates possible weeks in the month, e.g. the first, third, or last week of the month. Possible values: ["WEEK_OF_MONTH_UNSPECIFIED", "FIRST", "SECOND", "THIRD", "FOURTH", "LAST"]
+	WeekOfMonth pulumi.StringInput `pulumi:"weekOfMonth"`
+}
+
+func (GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonth)(nil)).Elem()
+}
+
+func (i GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthArgs) ToGetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthOutput() GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthOutput {
+	return i.ToGetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthOutputWithContext(context.Background())
+}
+
+func (i GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthArgs) ToGetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthOutputWithContext(ctx context.Context) GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthOutput)
+}
+
+// GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthArrayInput is an input type that accepts GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthArray and GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthArrayOutput values.
+// You can construct a concrete instance of `GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthArrayInput` via:
+//
+//	GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthArray{ GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthArgs{...} }
+type GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthArrayInput interface {
+	pulumi.Input
+
+	ToGetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthArrayOutput() GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthArrayOutput
+	ToGetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthArrayOutputWithContext(context.Context) GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthArrayOutput
+}
+
+type GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthArray []GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthInput
+
+func (GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonth)(nil)).Elem()
+}
+
+func (i GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthArray) ToGetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthArrayOutput() GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthArrayOutput {
+	return i.ToGetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthArrayOutputWithContext(context.Background())
+}
+
+func (i GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthArray) ToGetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthArrayOutputWithContext(ctx context.Context) GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthArrayOutput)
+}
+
+type GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthOutput struct{ *pulumi.OutputState }
+
+func (GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonth)(nil)).Elem()
+}
+
+func (o GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthOutput) ToGetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthOutput() GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthOutput {
+	return o
+}
+
+func (o GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthOutput) ToGetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthOutputWithContext(ctx context.Context) GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthOutput {
+	return o
+}
+
+// Specifies the day of the week. Possible values: ["DAY_OF_WEEK_UNSPECIFIED", "MONDAY", "TUESDAY", "WEDNESDAY", "THURSDAY", "FRIDAY", "SATURDAY", "SUNDAY"]
+func (o GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthOutput) DayOfWeek() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonth) string { return v.DayOfWeek }).(pulumi.StringOutput)
+}
+
+// WeekOfMonth enumerates possible weeks in the month, e.g. the first, third, or last week of the month. Possible values: ["WEEK_OF_MONTH_UNSPECIFIED", "FIRST", "SECOND", "THIRD", "FOURTH", "LAST"]
+func (o GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthOutput) WeekOfMonth() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonth) string { return v.WeekOfMonth }).(pulumi.StringOutput)
+}
+
+type GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonth)(nil)).Elem()
+}
+
+func (o GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthArrayOutput) ToGetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthArrayOutput() GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthArrayOutput {
+	return o
+}
+
+func (o GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthArrayOutput) ToGetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthArrayOutputWithContext(ctx context.Context) GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthArrayOutput {
+	return o
+}
+
+func (o GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthArrayOutput) Index(i pulumi.IntInput) GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonth {
+		return vs[0].([]GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonth)[vs[1].(int)]
+	}).(GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthOutput)
+}
+
 type GetManagementServerManagementUri struct {
 	// The management console api endpoint.
 	Api string `pulumi:"api"`
@@ -450,18 +2004,64 @@ func (o GetManagementServerNetworkArrayOutput) Index(i pulumi.IntInput) GetManag
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanAssociationRulesConfigInfoInput)(nil)).Elem(), BackupPlanAssociationRulesConfigInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanAssociationRulesConfigInfoArrayInput)(nil)).Elem(), BackupPlanAssociationRulesConfigInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanAssociationRulesConfigInfoLastBackupErrorInput)(nil)).Elem(), BackupPlanAssociationRulesConfigInfoLastBackupErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanAssociationRulesConfigInfoLastBackupErrorArrayInput)(nil)).Elem(), BackupPlanAssociationRulesConfigInfoLastBackupErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanBackupRuleInput)(nil)).Elem(), BackupPlanBackupRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanBackupRuleArrayInput)(nil)).Elem(), BackupPlanBackupRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanBackupRuleStandardScheduleInput)(nil)).Elem(), BackupPlanBackupRuleStandardScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanBackupRuleStandardScheduleBackupWindowInput)(nil)).Elem(), BackupPlanBackupRuleStandardScheduleBackupWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanBackupRuleStandardScheduleBackupWindowPtrInput)(nil)).Elem(), BackupPlanBackupRuleStandardScheduleBackupWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanBackupRuleStandardScheduleWeekDayOfMonthInput)(nil)).Elem(), BackupPlanBackupRuleStandardScheduleWeekDayOfMonthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BackupPlanBackupRuleStandardScheduleWeekDayOfMonthPtrInput)(nil)).Elem(), BackupPlanBackupRuleStandardScheduleWeekDayOfMonthArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagementServerManagementUriInput)(nil)).Elem(), ManagementServerManagementUriArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagementServerManagementUriArrayInput)(nil)).Elem(), ManagementServerManagementUriArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagementServerNetworkInput)(nil)).Elem(), ManagementServerNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagementServerNetworkArrayInput)(nil)).Elem(), ManagementServerNetworkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupPlanAssociationRulesConfigInfoInput)(nil)).Elem(), GetBackupPlanAssociationRulesConfigInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupPlanAssociationRulesConfigInfoArrayInput)(nil)).Elem(), GetBackupPlanAssociationRulesConfigInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupPlanAssociationRulesConfigInfoLastBackupErrorInput)(nil)).Elem(), GetBackupPlanAssociationRulesConfigInfoLastBackupErrorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupPlanAssociationRulesConfigInfoLastBackupErrorArrayInput)(nil)).Elem(), GetBackupPlanAssociationRulesConfigInfoLastBackupErrorArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupPlanBackupRuleInput)(nil)).Elem(), GetBackupPlanBackupRuleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupPlanBackupRuleArrayInput)(nil)).Elem(), GetBackupPlanBackupRuleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupPlanBackupRuleStandardScheduleInput)(nil)).Elem(), GetBackupPlanBackupRuleStandardScheduleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupPlanBackupRuleStandardScheduleArrayInput)(nil)).Elem(), GetBackupPlanBackupRuleStandardScheduleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupPlanBackupRuleStandardScheduleBackupWindowInput)(nil)).Elem(), GetBackupPlanBackupRuleStandardScheduleBackupWindowArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupPlanBackupRuleStandardScheduleBackupWindowArrayInput)(nil)).Elem(), GetBackupPlanBackupRuleStandardScheduleBackupWindowArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthInput)(nil)).Elem(), GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthArrayInput)(nil)).Elem(), GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetManagementServerManagementUriInput)(nil)).Elem(), GetManagementServerManagementUriArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetManagementServerManagementUriArrayInput)(nil)).Elem(), GetManagementServerManagementUriArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetManagementServerNetworkInput)(nil)).Elem(), GetManagementServerNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetManagementServerNetworkArrayInput)(nil)).Elem(), GetManagementServerNetworkArray{})
+	pulumi.RegisterOutputType(BackupPlanAssociationRulesConfigInfoOutput{})
+	pulumi.RegisterOutputType(BackupPlanAssociationRulesConfigInfoArrayOutput{})
+	pulumi.RegisterOutputType(BackupPlanAssociationRulesConfigInfoLastBackupErrorOutput{})
+	pulumi.RegisterOutputType(BackupPlanAssociationRulesConfigInfoLastBackupErrorArrayOutput{})
+	pulumi.RegisterOutputType(BackupPlanBackupRuleOutput{})
+	pulumi.RegisterOutputType(BackupPlanBackupRuleArrayOutput{})
+	pulumi.RegisterOutputType(BackupPlanBackupRuleStandardScheduleOutput{})
+	pulumi.RegisterOutputType(BackupPlanBackupRuleStandardScheduleBackupWindowOutput{})
+	pulumi.RegisterOutputType(BackupPlanBackupRuleStandardScheduleBackupWindowPtrOutput{})
+	pulumi.RegisterOutputType(BackupPlanBackupRuleStandardScheduleWeekDayOfMonthOutput{})
+	pulumi.RegisterOutputType(BackupPlanBackupRuleStandardScheduleWeekDayOfMonthPtrOutput{})
 	pulumi.RegisterOutputType(ManagementServerManagementUriOutput{})
 	pulumi.RegisterOutputType(ManagementServerManagementUriArrayOutput{})
 	pulumi.RegisterOutputType(ManagementServerNetworkOutput{})
 	pulumi.RegisterOutputType(ManagementServerNetworkArrayOutput{})
+	pulumi.RegisterOutputType(GetBackupPlanAssociationRulesConfigInfoOutput{})
+	pulumi.RegisterOutputType(GetBackupPlanAssociationRulesConfigInfoArrayOutput{})
+	pulumi.RegisterOutputType(GetBackupPlanAssociationRulesConfigInfoLastBackupErrorOutput{})
+	pulumi.RegisterOutputType(GetBackupPlanAssociationRulesConfigInfoLastBackupErrorArrayOutput{})
+	pulumi.RegisterOutputType(GetBackupPlanBackupRuleOutput{})
+	pulumi.RegisterOutputType(GetBackupPlanBackupRuleArrayOutput{})
+	pulumi.RegisterOutputType(GetBackupPlanBackupRuleStandardScheduleOutput{})
+	pulumi.RegisterOutputType(GetBackupPlanBackupRuleStandardScheduleArrayOutput{})
+	pulumi.RegisterOutputType(GetBackupPlanBackupRuleStandardScheduleBackupWindowOutput{})
+	pulumi.RegisterOutputType(GetBackupPlanBackupRuleStandardScheduleBackupWindowArrayOutput{})
+	pulumi.RegisterOutputType(GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthOutput{})
+	pulumi.RegisterOutputType(GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthArrayOutput{})
 	pulumi.RegisterOutputType(GetManagementServerManagementUriOutput{})
 	pulumi.RegisterOutputType(GetManagementServerManagementUriArrayOutput{})
 	pulumi.RegisterOutputType(GetManagementServerNetworkOutput{})

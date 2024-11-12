@@ -106,7 +106,7 @@ namespace Pulumi.Gcp.Firebase
     /// When using the `pulumi import` command, AndroidApp can be imported using one of the formats above. For example:
     /// 
     /// ```sh
-    /// $ pulumi import gcp:firebase/androidApp:AndroidApp default {{project}} projects/{{project}}/androidApps/{{app_id}}
+    /// $ pulumi import gcp:firebase/androidApp:AndroidApp default "{{project}} projects/{{project}}/androidApps/{{app_id}}"
     /// ```
     /// 
     /// ```sh

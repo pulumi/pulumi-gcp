@@ -23,13 +23,13 @@ public final class BareMetalClusterLoadBalancer {
      */
     private @Nullable BareMetalClusterLoadBalancerBgpLbConfig bgpLbConfig;
     /**
-     * @return A nested object resource
+     * @return A nested object resource.
      * Structure is documented below.
      * 
      */
     private @Nullable BareMetalClusterLoadBalancerManualLbConfig manualLbConfig;
     /**
-     * @return A nested object resource
+     * @return A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -57,7 +57,7 @@ public final class BareMetalClusterLoadBalancer {
         return Optional.ofNullable(this.bgpLbConfig);
     }
     /**
-     * @return A nested object resource
+     * @return A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -65,7 +65,7 @@ public final class BareMetalClusterLoadBalancer {
         return Optional.ofNullable(this.manualLbConfig);
     }
     /**
-     * @return A nested object resource
+     * @return A nested object resource.
      * Structure is documented below.
      * 
      */

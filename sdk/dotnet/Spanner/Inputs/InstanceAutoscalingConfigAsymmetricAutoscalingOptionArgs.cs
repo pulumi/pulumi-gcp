@@ -13,14 +13,14 @@ namespace Pulumi.Gcp.Spanner.Inputs
     public sealed class InstanceAutoscalingConfigAsymmetricAutoscalingOptionArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A nested object resource
+        /// A nested object resource.
         /// Structure is documented below.
         /// </summary>
         [Input("overrides", required: true)]
         public Input<Inputs.InstanceAutoscalingConfigAsymmetricAutoscalingOptionOverridesArgs> Overrides { get; set; } = null!;
 
         /// <summary>
-        /// A nested object resource
+        /// A nested object resource.
         /// Structure is documented below.
         /// </summary>
         [Input("replicaSelection", required: true)]

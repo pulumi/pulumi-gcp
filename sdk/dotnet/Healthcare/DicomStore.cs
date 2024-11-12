@@ -190,7 +190,7 @@ namespace Pulumi.Gcp.Healthcare
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// A nested object resource
+        /// A nested object resource.
         /// Structure is documented below.
         /// </summary>
         [Output("notificationConfig")]
@@ -308,7 +308,7 @@ namespace Pulumi.Gcp.Healthcare
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// A nested object resource
+        /// A nested object resource.
         /// Structure is documented below.
         /// </summary>
         [Input("notificationConfig")]
@@ -392,7 +392,7 @@ namespace Pulumi.Gcp.Healthcare
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// A nested object resource
+        /// A nested object resource.
         /// Structure is documented below.
         /// </summary>
         [Input("notificationConfig")]

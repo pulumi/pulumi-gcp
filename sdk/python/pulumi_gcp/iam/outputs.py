@@ -22,6 +22,8 @@ __all__ = [
     'DenyPolicyRule',
     'DenyPolicyRuleDenyRule',
     'DenyPolicyRuleDenyRuleDenialCondition',
+    'PrincipalAccessBoundaryPolicyDetails',
+    'PrincipalAccessBoundaryPolicyDetailsRule',
     'WorkforcePoolAccessRestrictions',
     'WorkforcePoolAccessRestrictionsAllowedService',
     'WorkforcePoolProviderExtraAttributesOauth2Client',
@@ -444,6 +446,118 @@ class DenyPolicyRuleDenyRuleDenialCondition(dict):
         This can be used e.g. in UIs which allow to enter the expression.
         """
         return pulumi.get(self, "title")
+
+
+@pulumi.output_type
+class PrincipalAccessBoundaryPolicyDetails(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enforcementVersion":
+            suggest = "enforcement_version"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in PrincipalAccessBoundaryPolicyDetails. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        PrincipalAccessBoundaryPolicyDetails.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        PrincipalAccessBoundaryPolicyDetails.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 rules: Sequence['outputs.PrincipalAccessBoundaryPolicyDetailsRule'],
+                 enforcement_version: Optional[str] = None):
+        """
+        :param Sequence['PrincipalAccessBoundaryPolicyDetailsRuleArgs'] rules: A list of principal access boundary policy rules. The number of rules in a policy is limited to 500.
+               Structure is documented below.
+        :param str enforcement_version: The version number that indicates which Google Cloud services
+               are included in the enforcement (e.g. \\"latest\\", \\"1\\", ...). If empty, the
+               PAB policy version will be set to the current latest version, and this version
+               won't get updated when new versions are released.
+        """
+        pulumi.set(__self__, "rules", rules)
+        if enforcement_version is not None:
+            pulumi.set(__self__, "enforcement_version", enforcement_version)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> Sequence['outputs.PrincipalAccessBoundaryPolicyDetailsRule']:
+        """
+        A list of principal access boundary policy rules. The number of rules in a policy is limited to 500.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "rules")
+
+    @property
+    @pulumi.getter(name="enforcementVersion")
+    def enforcement_version(self) -> Optional[str]:
+        """
+        The version number that indicates which Google Cloud services
+        are included in the enforcement (e.g. \\"latest\\", \\"1\\", ...). If empty, the
+        PAB policy version will be set to the current latest version, and this version
+        won't get updated when new versions are released.
+        """
+        return pulumi.get(self, "enforcement_version")
+
+
+@pulumi.output_type
+class PrincipalAccessBoundaryPolicyDetailsRule(dict):
+    def __init__(__self__, *,
+                 effect: str,
+                 resources: Sequence[str],
+                 description: Optional[str] = None):
+        """
+        :param str effect: The access relationship of principals to the resources in this rule.
+               Possible values: ALLOW
+        :param Sequence[str] resources: A list of Cloud Resource Manager resources. The resource
+               and all the descendants are included. The number of resources in a policy
+               is limited to 500 across all rules.
+               The following resource types are supported:
+               * Organizations, such as `//cloudresourcemanager.googleapis.com/organizations/123`.
+               * Folders, such as `//cloudresourcemanager.googleapis.com/folders/123`.
+               * Projects, such as `//cloudresourcemanager.googleapis.com/projects/123`
+               or `//cloudresourcemanager.googleapis.com/projects/my-project-id`.
+        :param str description: The description of the principal access boundary policy rule. Must be less than or equal to 256 characters.
+        """
+        pulumi.set(__self__, "effect", effect)
+        pulumi.set(__self__, "resources", resources)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def effect(self) -> str:
+        """
+        The access relationship of principals to the resources in this rule.
+        Possible values: ALLOW
+        """
+        return pulumi.get(self, "effect")
+
+    @property
+    @pulumi.getter
+    def resources(self) -> Sequence[str]:
+        """
+        A list of Cloud Resource Manager resources. The resource
+        and all the descendants are included. The number of resources in a policy
+        is limited to 500 across all rules.
+        The following resource types are supported:
+        * Organizations, such as `//cloudresourcemanager.googleapis.com/organizations/123`.
+        * Folders, such as `//cloudresourcemanager.googleapis.com/folders/123`.
+        * Projects, such as `//cloudresourcemanager.googleapis.com/projects/123`
+        or `//cloudresourcemanager.googleapis.com/projects/my-project-id`.
+        """
+        return pulumi.get(self, "resources")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        The description of the principal access boundary policy rule. Must be less than or equal to 256 characters.
+        """
+        return pulumi.get(self, "description")
 
 
 @pulumi.output_type

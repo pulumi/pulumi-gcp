@@ -19,6 +19,12 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly string? CaCertificate;
         /// <summary>
+        /// Specifies if the replica is a cascadable replica. If true, instance must be in different region from primary.
+        /// 
+        /// &gt; **NOTE:** Only supported for SQL Server database.
+        /// </summary>
+        public readonly bool? CascadableReplica;
+        /// <summary>
         /// PEM representation of the replica's x509
         /// certificate.
         /// </summary>
@@ -74,6 +80,8 @@ namespace Pulumi.Gcp.Sql.Outputs
         private DatabaseInstanceReplicaConfiguration(
             string? caCertificate,
 
+            bool? cascadableReplica,
+
             string? clientCertificate,
 
             string? clientKey,
@@ -95,6 +103,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             bool? verifyServerCertificate)
         {
             CaCertificate = caCertificate;
+            CascadableReplica = cascadableReplica;
             ClientCertificate = clientCertificate;
             ClientKey = clientKey;
             ConnectRetryInterval = connectRetryInterval;

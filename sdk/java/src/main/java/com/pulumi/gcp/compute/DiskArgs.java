@@ -48,7 +48,7 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A nested object resource
+     * A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -56,7 +56,7 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<DiskAsyncPrimaryDiskArgs> asyncPrimaryDisk;
 
     /**
-     * @return A nested object resource
+     * @return A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -655,7 +655,7 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param asyncPrimaryDisk A nested object resource
+         * @param asyncPrimaryDisk A nested object resource.
          * Structure is documented below.
          * 
          * @return builder
@@ -667,7 +667,7 @@ public final class DiskArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param asyncPrimaryDisk A nested object resource
+         * @param asyncPrimaryDisk A nested object resource.
          * Structure is documented below.
          * 
          * @return builder

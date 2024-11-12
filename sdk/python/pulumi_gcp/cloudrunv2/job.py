@@ -1086,7 +1086,6 @@ class Job(pulumi.CustomResource):
             name="cloudrun-job",
             location="us-central1",
             deletion_protection=False,
-            launch_stage="BETA",
             template={
                 "template": {
                     "containers": [{
@@ -1440,7 +1439,6 @@ class Job(pulumi.CustomResource):
             name="cloudrun-job",
             location="us-central1",
             deletion_protection=False,
-            launch_stage="BETA",
             template={
                 "template": {
                     "containers": [{

@@ -30,7 +30,7 @@ namespace Pulumi.Gcp.Workstations
     /// 
     ///     var tagValue1 = new Gcp.Tags.TagValue("tag_value1", new()
     ///     {
-    ///         Parent = tagKey1.Name.Apply(name =&gt; $"tagKeys/{name}"),
+    ///         Parent = tagKey1.Id,
     ///         ShortName = "valuename",
     ///     });
     /// 
@@ -93,13 +93,13 @@ namespace Pulumi.Gcp.Workstations
     ///                 BootDiskSizeGb = 35,
     ///                 DisablePublicIpAddresses = true,
     ///                 DisableSsh = false,
-    ///                 VmTags = Output.Tuple(tagKey1.Name, tagValue1.Name).Apply(values =&gt;
+    ///                 VmTags = Output.Tuple(tagKey1.Id, tagValue1.Id).Apply(values =&gt;
     ///                 {
-    ///                     var tagKey1Name = values.Item1;
-    ///                     var tagValue1Name = values.Item2;
+    ///                     var tagKey1Id = values.Item1;
+    ///                     var tagValue1Id = values.Item2;
     ///                     return 
     ///                     {
-    ///                         { $"tagKeys/{tagKey1Name}", $"tagValues/{tagValue1Name}" },
+    ///                         { tagKey1Id, tagValue1Id },
     ///                     };
     ///                 }),
     ///             },

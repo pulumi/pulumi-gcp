@@ -80,6 +80,7 @@ type Provider struct {
 	DataformCustomEndpoint                 pulumi.StringPtrOutput `pulumi:"dataformCustomEndpoint"`
 	DataplexCustomEndpoint                 pulumi.StringPtrOutput `pulumi:"dataplexCustomEndpoint"`
 	DataprocCustomEndpoint                 pulumi.StringPtrOutput `pulumi:"dataprocCustomEndpoint"`
+	DataprocGdcCustomEndpoint              pulumi.StringPtrOutput `pulumi:"dataprocGdcCustomEndpoint"`
 	DataprocMetastoreCustomEndpoint        pulumi.StringPtrOutput `pulumi:"dataprocMetastoreCustomEndpoint"`
 	DatastreamCustomEndpoint               pulumi.StringPtrOutput `pulumi:"datastreamCustomEndpoint"`
 	DeploymentManagerCustomEndpoint        pulumi.StringPtrOutput `pulumi:"deploymentManagerCustomEndpoint"`
@@ -111,6 +112,7 @@ type Provider struct {
 	GooglePartnerName                      pulumi.StringPtrOutput `pulumi:"googlePartnerName"`
 	HealthcareCustomEndpoint               pulumi.StringPtrOutput `pulumi:"healthcareCustomEndpoint"`
 	Iam2CustomEndpoint                     pulumi.StringPtrOutput `pulumi:"iam2CustomEndpoint"`
+	Iam3CustomEndpoint                     pulumi.StringPtrOutput `pulumi:"iam3CustomEndpoint"`
 	IamBetaCustomEndpoint                  pulumi.StringPtrOutput `pulumi:"iamBetaCustomEndpoint"`
 	IamCredentialsCustomEndpoint           pulumi.StringPtrOutput `pulumi:"iamCredentialsCustomEndpoint"`
 	IamCustomEndpoint                      pulumi.StringPtrOutput `pulumi:"iamCustomEndpoint"`
@@ -293,6 +295,7 @@ type providerArgs struct {
 	DataformCustomEndpoint                 *string           `pulumi:"dataformCustomEndpoint"`
 	DataplexCustomEndpoint                 *string           `pulumi:"dataplexCustomEndpoint"`
 	DataprocCustomEndpoint                 *string           `pulumi:"dataprocCustomEndpoint"`
+	DataprocGdcCustomEndpoint              *string           `pulumi:"dataprocGdcCustomEndpoint"`
 	DataprocMetastoreCustomEndpoint        *string           `pulumi:"dataprocMetastoreCustomEndpoint"`
 	DatastreamCustomEndpoint               *string           `pulumi:"datastreamCustomEndpoint"`
 	DefaultLabels                          map[string]string `pulumi:"defaultLabels"`
@@ -326,6 +329,7 @@ type providerArgs struct {
 	GooglePartnerName                      *string           `pulumi:"googlePartnerName"`
 	HealthcareCustomEndpoint               *string           `pulumi:"healthcareCustomEndpoint"`
 	Iam2CustomEndpoint                     *string           `pulumi:"iam2CustomEndpoint"`
+	Iam3CustomEndpoint                     *string           `pulumi:"iam3CustomEndpoint"`
 	IamBetaCustomEndpoint                  *string           `pulumi:"iamBetaCustomEndpoint"`
 	IamCredentialsCustomEndpoint           *string           `pulumi:"iamCredentialsCustomEndpoint"`
 	IamCustomEndpoint                      *string           `pulumi:"iamCustomEndpoint"`
@@ -474,6 +478,7 @@ type ProviderArgs struct {
 	DataformCustomEndpoint                 pulumi.StringPtrInput
 	DataplexCustomEndpoint                 pulumi.StringPtrInput
 	DataprocCustomEndpoint                 pulumi.StringPtrInput
+	DataprocGdcCustomEndpoint              pulumi.StringPtrInput
 	DataprocMetastoreCustomEndpoint        pulumi.StringPtrInput
 	DatastreamCustomEndpoint               pulumi.StringPtrInput
 	DefaultLabels                          pulumi.StringMapInput
@@ -507,6 +512,7 @@ type ProviderArgs struct {
 	GooglePartnerName                      pulumi.StringPtrInput
 	HealthcareCustomEndpoint               pulumi.StringPtrInput
 	Iam2CustomEndpoint                     pulumi.StringPtrInput
+	Iam3CustomEndpoint                     pulumi.StringPtrInput
 	IamBetaCustomEndpoint                  pulumi.StringPtrInput
 	IamCredentialsCustomEndpoint           pulumi.StringPtrInput
 	IamCustomEndpoint                      pulumi.StringPtrInput
@@ -874,6 +880,10 @@ func (o ProviderOutput) DataprocCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.DataprocCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
+func (o ProviderOutput) DataprocGdcCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.DataprocGdcCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
 func (o ProviderOutput) DataprocMetastoreCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.DataprocMetastoreCustomEndpoint }).(pulumi.StringPtrOutput)
 }
@@ -996,6 +1006,10 @@ func (o ProviderOutput) HealthcareCustomEndpoint() pulumi.StringPtrOutput {
 
 func (o ProviderOutput) Iam2CustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Iam2CustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) Iam3CustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Iam3CustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) IamBetaCustomEndpoint() pulumi.StringPtrOutput {

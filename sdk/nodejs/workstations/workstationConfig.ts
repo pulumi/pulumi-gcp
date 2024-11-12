@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  *     shortName: "keyname",
  * });
  * const tagValue1 = new gcp.tags.TagValue("tag_value1", {
- *     parent: pulumi.interpolate`tagKeys/${tagKey1.name}`,
+ *     parent: tagKey1.id,
  *     shortName: "valuename",
  * });
  * const _default = new gcp.compute.Network("default", {
@@ -68,8 +68,8 @@ import * as utilities from "../utilities";
  *             bootDiskSizeGb: 35,
  *             disablePublicIpAddresses: true,
  *             disableSsh: false,
- *             vmTags: pulumi.all([tagKey1.name, tagValue1.name]).apply(([tagKey1Name, tagValue1Name]) => {
- *                 [`tagKeys/${tagKey1Name}`]: `tagValues/${tagValue1Name}`,
+ *             vmTags: pulumi.all([tagKey1.id, tagValue1.id]).apply(([tagKey1Id, tagValue1Id]) => {
+ *                 [tagKey1Id]: tagValue1Id,
  *             }),
  *         },
  *     },

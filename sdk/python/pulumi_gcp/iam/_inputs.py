@@ -27,6 +27,10 @@ __all__ = [
     'DenyPolicyRuleDenyRuleArgsDict',
     'DenyPolicyRuleDenyRuleDenialConditionArgs',
     'DenyPolicyRuleDenyRuleDenialConditionArgsDict',
+    'PrincipalAccessBoundaryPolicyDetailsArgs',
+    'PrincipalAccessBoundaryPolicyDetailsArgsDict',
+    'PrincipalAccessBoundaryPolicyDetailsRuleArgs',
+    'PrincipalAccessBoundaryPolicyDetailsRuleArgsDict',
     'WorkforcePoolAccessRestrictionsArgs',
     'WorkforcePoolAccessRestrictionsArgsDict',
     'WorkforcePoolAccessRestrictionsAllowedServiceArgs',
@@ -589,6 +593,163 @@ class DenyPolicyRuleDenyRuleDenialConditionArgs:
     @title.setter
     def title(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "title", value)
+
+
+if not MYPY:
+    class PrincipalAccessBoundaryPolicyDetailsArgsDict(TypedDict):
+        rules: pulumi.Input[Sequence[pulumi.Input['PrincipalAccessBoundaryPolicyDetailsRuleArgsDict']]]
+        """
+        A list of principal access boundary policy rules. The number of rules in a policy is limited to 500.
+        Structure is documented below.
+        """
+        enforcement_version: NotRequired[pulumi.Input[str]]
+        """
+        The version number that indicates which Google Cloud services
+        are included in the enforcement (e.g. \\"latest\\", \\"1\\", ...). If empty, the
+        PAB policy version will be set to the current latest version, and this version
+        won't get updated when new versions are released.
+        """
+elif False:
+    PrincipalAccessBoundaryPolicyDetailsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PrincipalAccessBoundaryPolicyDetailsArgs:
+    def __init__(__self__, *,
+                 rules: pulumi.Input[Sequence[pulumi.Input['PrincipalAccessBoundaryPolicyDetailsRuleArgs']]],
+                 enforcement_version: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['PrincipalAccessBoundaryPolicyDetailsRuleArgs']]] rules: A list of principal access boundary policy rules. The number of rules in a policy is limited to 500.
+               Structure is documented below.
+        :param pulumi.Input[str] enforcement_version: The version number that indicates which Google Cloud services
+               are included in the enforcement (e.g. \\"latest\\", \\"1\\", ...). If empty, the
+               PAB policy version will be set to the current latest version, and this version
+               won't get updated when new versions are released.
+        """
+        pulumi.set(__self__, "rules", rules)
+        if enforcement_version is not None:
+            pulumi.set(__self__, "enforcement_version", enforcement_version)
+
+    @property
+    @pulumi.getter
+    def rules(self) -> pulumi.Input[Sequence[pulumi.Input['PrincipalAccessBoundaryPolicyDetailsRuleArgs']]]:
+        """
+        A list of principal access boundary policy rules. The number of rules in a policy is limited to 500.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "rules")
+
+    @rules.setter
+    def rules(self, value: pulumi.Input[Sequence[pulumi.Input['PrincipalAccessBoundaryPolicyDetailsRuleArgs']]]):
+        pulumi.set(self, "rules", value)
+
+    @property
+    @pulumi.getter(name="enforcementVersion")
+    def enforcement_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version number that indicates which Google Cloud services
+        are included in the enforcement (e.g. \\"latest\\", \\"1\\", ...). If empty, the
+        PAB policy version will be set to the current latest version, and this version
+        won't get updated when new versions are released.
+        """
+        return pulumi.get(self, "enforcement_version")
+
+    @enforcement_version.setter
+    def enforcement_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "enforcement_version", value)
+
+
+if not MYPY:
+    class PrincipalAccessBoundaryPolicyDetailsRuleArgsDict(TypedDict):
+        effect: pulumi.Input[str]
+        """
+        The access relationship of principals to the resources in this rule.
+        Possible values: ALLOW
+        """
+        resources: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        A list of Cloud Resource Manager resources. The resource
+        and all the descendants are included. The number of resources in a policy
+        is limited to 500 across all rules.
+        The following resource types are supported:
+        * Organizations, such as `//cloudresourcemanager.googleapis.com/organizations/123`.
+        * Folders, such as `//cloudresourcemanager.googleapis.com/folders/123`.
+        * Projects, such as `//cloudresourcemanager.googleapis.com/projects/123`
+        or `//cloudresourcemanager.googleapis.com/projects/my-project-id`.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        The description of the principal access boundary policy rule. Must be less than or equal to 256 characters.
+        """
+elif False:
+    PrincipalAccessBoundaryPolicyDetailsRuleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class PrincipalAccessBoundaryPolicyDetailsRuleArgs:
+    def __init__(__self__, *,
+                 effect: pulumi.Input[str],
+                 resources: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 description: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] effect: The access relationship of principals to the resources in this rule.
+               Possible values: ALLOW
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] resources: A list of Cloud Resource Manager resources. The resource
+               and all the descendants are included. The number of resources in a policy
+               is limited to 500 across all rules.
+               The following resource types are supported:
+               * Organizations, such as `//cloudresourcemanager.googleapis.com/organizations/123`.
+               * Folders, such as `//cloudresourcemanager.googleapis.com/folders/123`.
+               * Projects, such as `//cloudresourcemanager.googleapis.com/projects/123`
+               or `//cloudresourcemanager.googleapis.com/projects/my-project-id`.
+        :param pulumi.Input[str] description: The description of the principal access boundary policy rule. Must be less than or equal to 256 characters.
+        """
+        pulumi.set(__self__, "effect", effect)
+        pulumi.set(__self__, "resources", resources)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def effect(self) -> pulumi.Input[str]:
+        """
+        The access relationship of principals to the resources in this rule.
+        Possible values: ALLOW
+        """
+        return pulumi.get(self, "effect")
+
+    @effect.setter
+    def effect(self, value: pulumi.Input[str]):
+        pulumi.set(self, "effect", value)
+
+    @property
+    @pulumi.getter
+    def resources(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        A list of Cloud Resource Manager resources. The resource
+        and all the descendants are included. The number of resources in a policy
+        is limited to 500 across all rules.
+        The following resource types are supported:
+        * Organizations, such as `//cloudresourcemanager.googleapis.com/organizations/123`.
+        * Folders, such as `//cloudresourcemanager.googleapis.com/folders/123`.
+        * Projects, such as `//cloudresourcemanager.googleapis.com/projects/123`
+        or `//cloudresourcemanager.googleapis.com/projects/my-project-id`.
+        """
+        return pulumi.get(self, "resources")
+
+    @resources.setter
+    def resources(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "resources", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        The description of the principal access boundary policy rule. Must be less than or equal to 256 characters.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
 
 
 if not MYPY:

@@ -62,7 +62,7 @@ type PreventionDiscoveryConfig struct {
 	Location pulumi.StringOutput `pulumi:"location"`
 	// Unique resource name for the DiscoveryConfig, assigned by the service when the DiscoveryConfig is created.
 	Name pulumi.StringOutput `pulumi:"name"`
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	OrgConfig PreventionDiscoveryConfigOrgConfigPtrOutput `pulumi:"orgConfig"`
 	// The parent of the discovery config in any of the following formats:
@@ -135,7 +135,7 @@ type preventionDiscoveryConfigState struct {
 	Location *string `pulumi:"location"`
 	// Unique resource name for the DiscoveryConfig, assigned by the service when the DiscoveryConfig is created.
 	Name *string `pulumi:"name"`
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	OrgConfig *PreventionDiscoveryConfigOrgConfig `pulumi:"orgConfig"`
 	// The parent of the discovery config in any of the following formats:
@@ -173,7 +173,7 @@ type PreventionDiscoveryConfigState struct {
 	Location pulumi.StringPtrInput
 	// Unique resource name for the DiscoveryConfig, assigned by the service when the DiscoveryConfig is created.
 	Name pulumi.StringPtrInput
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	OrgConfig PreventionDiscoveryConfigOrgConfigPtrInput
 	// The parent of the discovery config in any of the following formats:
@@ -206,7 +206,7 @@ type preventionDiscoveryConfigArgs struct {
 	//
 	// ***
 	Location string `pulumi:"location"`
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	OrgConfig *PreventionDiscoveryConfigOrgConfig `pulumi:"orgConfig"`
 	// The parent of the discovery config in any of the following formats:
@@ -234,7 +234,7 @@ type PreventionDiscoveryConfigArgs struct {
 	//
 	// ***
 	Location pulumi.StringInput
-	// A nested object resource
+	// A nested object resource.
 	// Structure is documented below.
 	OrgConfig PreventionDiscoveryConfigOrgConfigPtrInput
 	// The parent of the discovery config in any of the following formats:
@@ -380,7 +380,7 @@ func (o PreventionDiscoveryConfigOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *PreventionDiscoveryConfig) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// A nested object resource
+// A nested object resource.
 // Structure is documented below.
 func (o PreventionDiscoveryConfigOutput) OrgConfig() PreventionDiscoveryConfigOrgConfigPtrOutput {
 	return o.ApplyT(func(v *PreventionDiscoveryConfig) PreventionDiscoveryConfigOrgConfigPtrOutput { return v.OrgConfig }).(PreventionDiscoveryConfigOrgConfigPtrOutput)

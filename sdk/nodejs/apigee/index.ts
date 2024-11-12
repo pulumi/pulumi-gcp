@@ -10,6 +10,11 @@ export type AddonsConfig = import("./addonsConfig").AddonsConfig;
 export const AddonsConfig: typeof import("./addonsConfig").AddonsConfig = null as any;
 utilities.lazyLoad(exports, ["AddonsConfig"], () => require("./addonsConfig"));
 
+export { ApiArgs, ApiState } from "./api";
+export type Api = import("./api").Api;
+export const Api: typeof import("./api").Api = null as any;
+utilities.lazyLoad(exports, ["Api"], () => require("./api"));
+
 export { AppGroupArgs, AppGroupState } from "./appGroup";
 export type AppGroup = import("./appGroup").AppGroup;
 export const AppGroup: typeof import("./appGroup").AppGroup = null as any;
@@ -147,6 +152,8 @@ const _module = {
         switch (type) {
             case "gcp:apigee/addonsConfig:AddonsConfig":
                 return new AddonsConfig(name, <any>undefined, { urn })
+            case "gcp:apigee/api:Api":
+                return new Api(name, <any>undefined, { urn })
             case "gcp:apigee/appGroup:AppGroup":
                 return new AppGroup(name, <any>undefined, { urn })
             case "gcp:apigee/developer:Developer":
@@ -203,6 +210,7 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "apigee/addonsConfig", _module)
+pulumi.runtime.registerResourceModule("gcp", "apigee/api", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/appGroup", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/developer", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/endpointAttachment", _module)

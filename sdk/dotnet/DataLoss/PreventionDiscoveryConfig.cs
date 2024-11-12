@@ -95,7 +95,7 @@ namespace Pulumi.Gcp.DataLoss
         public Output<string> Name { get; private set; } = null!;
 
         /// <summary>
-        /// A nested object resource
+        /// A nested object resource.
         /// Structure is documented below.
         /// </summary>
         [Output("orgConfig")]
@@ -216,7 +216,7 @@ namespace Pulumi.Gcp.DataLoss
         public Input<string> Location { get; set; } = null!;
 
         /// <summary>
-        /// A nested object resource
+        /// A nested object resource.
         /// Structure is documented below.
         /// </summary>
         [Input("orgConfig")]
@@ -330,7 +330,7 @@ namespace Pulumi.Gcp.DataLoss
         public Input<string>? Name { get; set; }
 
         /// <summary>
-        /// A nested object resource
+        /// A nested object resource.
         /// Structure is documented below.
         /// </summary>
         [Input("orgConfig")]

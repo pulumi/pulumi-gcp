@@ -5,10 +5,30 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { BackupPlanArgs, BackupPlanState } from "./backupPlan";
+export type BackupPlan = import("./backupPlan").BackupPlan;
+export const BackupPlan: typeof import("./backupPlan").BackupPlan = null as any;
+utilities.lazyLoad(exports, ["BackupPlan"], () => require("./backupPlan"));
+
+export { BackupPlanAssociationArgs, BackupPlanAssociationState } from "./backupPlanAssociation";
+export type BackupPlanAssociation = import("./backupPlanAssociation").BackupPlanAssociation;
+export const BackupPlanAssociation: typeof import("./backupPlanAssociation").BackupPlanAssociation = null as any;
+utilities.lazyLoad(exports, ["BackupPlanAssociation"], () => require("./backupPlanAssociation"));
+
 export { BackupVaultArgs, BackupVaultState } from "./backupVault";
 export type BackupVault = import("./backupVault").BackupVault;
 export const BackupVault: typeof import("./backupVault").BackupVault = null as any;
 utilities.lazyLoad(exports, ["BackupVault"], () => require("./backupVault"));
+
+export { GetBackupPlanArgs, GetBackupPlanResult, GetBackupPlanOutputArgs } from "./getBackupPlan";
+export const getBackupPlan: typeof import("./getBackupPlan").getBackupPlan = null as any;
+export const getBackupPlanOutput: typeof import("./getBackupPlan").getBackupPlanOutput = null as any;
+utilities.lazyLoad(exports, ["getBackupPlan","getBackupPlanOutput"], () => require("./getBackupPlan"));
+
+export { GetBackupPlanAssociationArgs, GetBackupPlanAssociationResult, GetBackupPlanAssociationOutputArgs } from "./getBackupPlanAssociation";
+export const getBackupPlanAssociation: typeof import("./getBackupPlanAssociation").getBackupPlanAssociation = null as any;
+export const getBackupPlanAssociationOutput: typeof import("./getBackupPlanAssociation").getBackupPlanAssociationOutput = null as any;
+utilities.lazyLoad(exports, ["getBackupPlanAssociation","getBackupPlanAssociationOutput"], () => require("./getBackupPlanAssociation"));
 
 export { GetManagementServerArgs, GetManagementServerResult, GetManagementServerOutputArgs } from "./getManagementServer";
 export const getManagementServer: typeof import("./getManagementServer").getManagementServer = null as any;
@@ -25,6 +45,10 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp:backupdisasterrecovery/backupPlan:BackupPlan":
+                return new BackupPlan(name, <any>undefined, { urn })
+            case "gcp:backupdisasterrecovery/backupPlanAssociation:BackupPlanAssociation":
+                return new BackupPlanAssociation(name, <any>undefined, { urn })
             case "gcp:backupdisasterrecovery/backupVault:BackupVault":
                 return new BackupVault(name, <any>undefined, { urn })
             case "gcp:backupdisasterrecovery/managementServer:ManagementServer":
@@ -34,5 +58,7 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("gcp", "backupdisasterrecovery/backupPlan", _module)
+pulumi.runtime.registerResourceModule("gcp", "backupdisasterrecovery/backupPlanAssociation", _module)
 pulumi.runtime.registerResourceModule("gcp", "backupdisasterrecovery/backupVault", _module)
 pulumi.runtime.registerResourceModule("gcp", "backupdisasterrecovery/managementServer", _module)

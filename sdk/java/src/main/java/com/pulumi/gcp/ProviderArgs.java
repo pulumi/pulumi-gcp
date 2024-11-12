@@ -468,6 +468,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.dataprocCustomEndpoint);
     }
 
+    @Import(name="dataprocGdcCustomEndpoint")
+    private @Nullable Output<String> dataprocGdcCustomEndpoint;
+
+    public Optional<Output<String>> dataprocGdcCustomEndpoint() {
+        return Optional.ofNullable(this.dataprocGdcCustomEndpoint);
+    }
+
     @Import(name="dataprocMetastoreCustomEndpoint")
     private @Nullable Output<String> dataprocMetastoreCustomEndpoint;
 
@@ -697,6 +704,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
     public Optional<Output<String>> iam2CustomEndpoint() {
         return Optional.ofNullable(this.iam2CustomEndpoint);
+    }
+
+    @Import(name="iam3CustomEndpoint")
+    private @Nullable Output<String> iam3CustomEndpoint;
+
+    public Optional<Output<String>> iam3CustomEndpoint() {
+        return Optional.ofNullable(this.iam3CustomEndpoint);
     }
 
     @Import(name="iamBetaCustomEndpoint")
@@ -1326,6 +1340,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.dataformCustomEndpoint = $.dataformCustomEndpoint;
         this.dataplexCustomEndpoint = $.dataplexCustomEndpoint;
         this.dataprocCustomEndpoint = $.dataprocCustomEndpoint;
+        this.dataprocGdcCustomEndpoint = $.dataprocGdcCustomEndpoint;
         this.dataprocMetastoreCustomEndpoint = $.dataprocMetastoreCustomEndpoint;
         this.datastreamCustomEndpoint = $.datastreamCustomEndpoint;
         this.defaultLabels = $.defaultLabels;
@@ -1359,6 +1374,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.googlePartnerName = $.googlePartnerName;
         this.healthcareCustomEndpoint = $.healthcareCustomEndpoint;
         this.iam2CustomEndpoint = $.iam2CustomEndpoint;
+        this.iam3CustomEndpoint = $.iam3CustomEndpoint;
         this.iamBetaCustomEndpoint = $.iamBetaCustomEndpoint;
         this.iamCredentialsCustomEndpoint = $.iamCredentialsCustomEndpoint;
         this.iamCustomEndpoint = $.iamCustomEndpoint;
@@ -2035,6 +2051,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
             return dataprocCustomEndpoint(Output.of(dataprocCustomEndpoint));
         }
 
+        public Builder dataprocGdcCustomEndpoint(@Nullable Output<String> dataprocGdcCustomEndpoint) {
+            $.dataprocGdcCustomEndpoint = dataprocGdcCustomEndpoint;
+            return this;
+        }
+
+        public Builder dataprocGdcCustomEndpoint(String dataprocGdcCustomEndpoint) {
+            return dataprocGdcCustomEndpoint(Output.of(dataprocGdcCustomEndpoint));
+        }
+
         public Builder dataprocMetastoreCustomEndpoint(@Nullable Output<String> dataprocMetastoreCustomEndpoint) {
             $.dataprocMetastoreCustomEndpoint = dataprocMetastoreCustomEndpoint;
             return this;
@@ -2330,6 +2355,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder iam2CustomEndpoint(String iam2CustomEndpoint) {
             return iam2CustomEndpoint(Output.of(iam2CustomEndpoint));
+        }
+
+        public Builder iam3CustomEndpoint(@Nullable Output<String> iam3CustomEndpoint) {
+            $.iam3CustomEndpoint = iam3CustomEndpoint;
+            return this;
+        }
+
+        public Builder iam3CustomEndpoint(String iam3CustomEndpoint) {
+            return iam3CustomEndpoint(Output.of(iam3CustomEndpoint));
         }
 
         public Builder iamBetaCustomEndpoint(@Nullable Output<String> iamBetaCustomEndpoint) {

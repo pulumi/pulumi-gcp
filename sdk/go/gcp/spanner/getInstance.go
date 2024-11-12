@@ -63,12 +63,13 @@ type LookupInstanceArgs struct {
 
 // A collection of values returned by getInstance.
 type LookupInstanceResult struct {
-	AutoscalingConfigs []GetInstanceAutoscalingConfig `pulumi:"autoscalingConfigs"`
-	Config             *string                        `pulumi:"config"`
-	DisplayName        *string                        `pulumi:"displayName"`
-	Edition            string                         `pulumi:"edition"`
-	EffectiveLabels    map[string]string              `pulumi:"effectiveLabels"`
-	ForceDestroy       bool                           `pulumi:"forceDestroy"`
+	AutoscalingConfigs        []GetInstanceAutoscalingConfig `pulumi:"autoscalingConfigs"`
+	Config                    *string                        `pulumi:"config"`
+	DefaultBackupScheduleType string                         `pulumi:"defaultBackupScheduleType"`
+	DisplayName               *string                        `pulumi:"displayName"`
+	Edition                   string                         `pulumi:"edition"`
+	EffectiveLabels           map[string]string              `pulumi:"effectiveLabels"`
+	ForceDestroy              bool                           `pulumi:"forceDestroy"`
 	// The provider-assigned unique ID for this managed resource.
 	Id              string            `pulumi:"id"`
 	Labels          map[string]string `pulumi:"labels"`
@@ -137,6 +138,10 @@ func (o LookupInstanceResultOutput) AutoscalingConfigs() GetInstanceAutoscalingC
 
 func (o LookupInstanceResultOutput) Config() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupInstanceResult) *string { return v.Config }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupInstanceResultOutput) DefaultBackupScheduleType() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupInstanceResult) string { return v.DefaultBackupScheduleType }).(pulumi.StringOutput)
 }
 
 func (o LookupInstanceResultOutput) DisplayName() pulumi.StringPtrOutput {

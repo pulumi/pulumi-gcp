@@ -1976,6 +1976,499 @@ func (o AiEndpointIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type AiEndpointPredictRequestResponseLoggingConfig struct {
+	// BigQuery table for logging. If only given a project, a new dataset will be created with name `logging_<endpoint-display-name>_<endpoint-id>` where will be made BigQuery-dataset-name compatible (e.g. most special characters will become underscores). If no table name is given, a new table will be created with name `requestResponseLogging`
+	// Structure is documented below.
+	BigqueryDestination *AiEndpointPredictRequestResponseLoggingConfigBigqueryDestination `pulumi:"bigqueryDestination"`
+	// If logging is enabled or not.
+	Enabled *bool `pulumi:"enabled"`
+	// Percentage of requests to be logged, expressed as a fraction in range(0,1]
+	SamplingRate *float64 `pulumi:"samplingRate"`
+}
+
+// AiEndpointPredictRequestResponseLoggingConfigInput is an input type that accepts AiEndpointPredictRequestResponseLoggingConfigArgs and AiEndpointPredictRequestResponseLoggingConfigOutput values.
+// You can construct a concrete instance of `AiEndpointPredictRequestResponseLoggingConfigInput` via:
+//
+//	AiEndpointPredictRequestResponseLoggingConfigArgs{...}
+type AiEndpointPredictRequestResponseLoggingConfigInput interface {
+	pulumi.Input
+
+	ToAiEndpointPredictRequestResponseLoggingConfigOutput() AiEndpointPredictRequestResponseLoggingConfigOutput
+	ToAiEndpointPredictRequestResponseLoggingConfigOutputWithContext(context.Context) AiEndpointPredictRequestResponseLoggingConfigOutput
+}
+
+type AiEndpointPredictRequestResponseLoggingConfigArgs struct {
+	// BigQuery table for logging. If only given a project, a new dataset will be created with name `logging_<endpoint-display-name>_<endpoint-id>` where will be made BigQuery-dataset-name compatible (e.g. most special characters will become underscores). If no table name is given, a new table will be created with name `requestResponseLogging`
+	// Structure is documented below.
+	BigqueryDestination AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationPtrInput `pulumi:"bigqueryDestination"`
+	// If logging is enabled or not.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+	// Percentage of requests to be logged, expressed as a fraction in range(0,1]
+	SamplingRate pulumi.Float64PtrInput `pulumi:"samplingRate"`
+}
+
+func (AiEndpointPredictRequestResponseLoggingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointPredictRequestResponseLoggingConfig)(nil)).Elem()
+}
+
+func (i AiEndpointPredictRequestResponseLoggingConfigArgs) ToAiEndpointPredictRequestResponseLoggingConfigOutput() AiEndpointPredictRequestResponseLoggingConfigOutput {
+	return i.ToAiEndpointPredictRequestResponseLoggingConfigOutputWithContext(context.Background())
+}
+
+func (i AiEndpointPredictRequestResponseLoggingConfigArgs) ToAiEndpointPredictRequestResponseLoggingConfigOutputWithContext(ctx context.Context) AiEndpointPredictRequestResponseLoggingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointPredictRequestResponseLoggingConfigOutput)
+}
+
+func (i AiEndpointPredictRequestResponseLoggingConfigArgs) ToAiEndpointPredictRequestResponseLoggingConfigPtrOutput() AiEndpointPredictRequestResponseLoggingConfigPtrOutput {
+	return i.ToAiEndpointPredictRequestResponseLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AiEndpointPredictRequestResponseLoggingConfigArgs) ToAiEndpointPredictRequestResponseLoggingConfigPtrOutputWithContext(ctx context.Context) AiEndpointPredictRequestResponseLoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointPredictRequestResponseLoggingConfigOutput).ToAiEndpointPredictRequestResponseLoggingConfigPtrOutputWithContext(ctx)
+}
+
+// AiEndpointPredictRequestResponseLoggingConfigPtrInput is an input type that accepts AiEndpointPredictRequestResponseLoggingConfigArgs, AiEndpointPredictRequestResponseLoggingConfigPtr and AiEndpointPredictRequestResponseLoggingConfigPtrOutput values.
+// You can construct a concrete instance of `AiEndpointPredictRequestResponseLoggingConfigPtrInput` via:
+//
+//	        AiEndpointPredictRequestResponseLoggingConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiEndpointPredictRequestResponseLoggingConfigPtrInput interface {
+	pulumi.Input
+
+	ToAiEndpointPredictRequestResponseLoggingConfigPtrOutput() AiEndpointPredictRequestResponseLoggingConfigPtrOutput
+	ToAiEndpointPredictRequestResponseLoggingConfigPtrOutputWithContext(context.Context) AiEndpointPredictRequestResponseLoggingConfigPtrOutput
+}
+
+type aiEndpointPredictRequestResponseLoggingConfigPtrType AiEndpointPredictRequestResponseLoggingConfigArgs
+
+func AiEndpointPredictRequestResponseLoggingConfigPtr(v *AiEndpointPredictRequestResponseLoggingConfigArgs) AiEndpointPredictRequestResponseLoggingConfigPtrInput {
+	return (*aiEndpointPredictRequestResponseLoggingConfigPtrType)(v)
+}
+
+func (*aiEndpointPredictRequestResponseLoggingConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEndpointPredictRequestResponseLoggingConfig)(nil)).Elem()
+}
+
+func (i *aiEndpointPredictRequestResponseLoggingConfigPtrType) ToAiEndpointPredictRequestResponseLoggingConfigPtrOutput() AiEndpointPredictRequestResponseLoggingConfigPtrOutput {
+	return i.ToAiEndpointPredictRequestResponseLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *aiEndpointPredictRequestResponseLoggingConfigPtrType) ToAiEndpointPredictRequestResponseLoggingConfigPtrOutputWithContext(ctx context.Context) AiEndpointPredictRequestResponseLoggingConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointPredictRequestResponseLoggingConfigPtrOutput)
+}
+
+type AiEndpointPredictRequestResponseLoggingConfigOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointPredictRequestResponseLoggingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointPredictRequestResponseLoggingConfig)(nil)).Elem()
+}
+
+func (o AiEndpointPredictRequestResponseLoggingConfigOutput) ToAiEndpointPredictRequestResponseLoggingConfigOutput() AiEndpointPredictRequestResponseLoggingConfigOutput {
+	return o
+}
+
+func (o AiEndpointPredictRequestResponseLoggingConfigOutput) ToAiEndpointPredictRequestResponseLoggingConfigOutputWithContext(ctx context.Context) AiEndpointPredictRequestResponseLoggingConfigOutput {
+	return o
+}
+
+func (o AiEndpointPredictRequestResponseLoggingConfigOutput) ToAiEndpointPredictRequestResponseLoggingConfigPtrOutput() AiEndpointPredictRequestResponseLoggingConfigPtrOutput {
+	return o.ToAiEndpointPredictRequestResponseLoggingConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AiEndpointPredictRequestResponseLoggingConfigOutput) ToAiEndpointPredictRequestResponseLoggingConfigPtrOutputWithContext(ctx context.Context) AiEndpointPredictRequestResponseLoggingConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiEndpointPredictRequestResponseLoggingConfig) *AiEndpointPredictRequestResponseLoggingConfig {
+		return &v
+	}).(AiEndpointPredictRequestResponseLoggingConfigPtrOutput)
+}
+
+// BigQuery table for logging. If only given a project, a new dataset will be created with name `logging_<endpoint-display-name>_<endpoint-id>` where will be made BigQuery-dataset-name compatible (e.g. most special characters will become underscores). If no table name is given, a new table will be created with name `requestResponseLogging`
+// Structure is documented below.
+func (o AiEndpointPredictRequestResponseLoggingConfigOutput) BigqueryDestination() AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationPtrOutput {
+	return o.ApplyT(func(v AiEndpointPredictRequestResponseLoggingConfig) *AiEndpointPredictRequestResponseLoggingConfigBigqueryDestination {
+		return v.BigqueryDestination
+	}).(AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationPtrOutput)
+}
+
+// If logging is enabled or not.
+func (o AiEndpointPredictRequestResponseLoggingConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AiEndpointPredictRequestResponseLoggingConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+// Percentage of requests to be logged, expressed as a fraction in range(0,1]
+func (o AiEndpointPredictRequestResponseLoggingConfigOutput) SamplingRate() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v AiEndpointPredictRequestResponseLoggingConfig) *float64 { return v.SamplingRate }).(pulumi.Float64PtrOutput)
+}
+
+type AiEndpointPredictRequestResponseLoggingConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointPredictRequestResponseLoggingConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEndpointPredictRequestResponseLoggingConfig)(nil)).Elem()
+}
+
+func (o AiEndpointPredictRequestResponseLoggingConfigPtrOutput) ToAiEndpointPredictRequestResponseLoggingConfigPtrOutput() AiEndpointPredictRequestResponseLoggingConfigPtrOutput {
+	return o
+}
+
+func (o AiEndpointPredictRequestResponseLoggingConfigPtrOutput) ToAiEndpointPredictRequestResponseLoggingConfigPtrOutputWithContext(ctx context.Context) AiEndpointPredictRequestResponseLoggingConfigPtrOutput {
+	return o
+}
+
+func (o AiEndpointPredictRequestResponseLoggingConfigPtrOutput) Elem() AiEndpointPredictRequestResponseLoggingConfigOutput {
+	return o.ApplyT(func(v *AiEndpointPredictRequestResponseLoggingConfig) AiEndpointPredictRequestResponseLoggingConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AiEndpointPredictRequestResponseLoggingConfig
+		return ret
+	}).(AiEndpointPredictRequestResponseLoggingConfigOutput)
+}
+
+// BigQuery table for logging. If only given a project, a new dataset will be created with name `logging_<endpoint-display-name>_<endpoint-id>` where will be made BigQuery-dataset-name compatible (e.g. most special characters will become underscores). If no table name is given, a new table will be created with name `requestResponseLogging`
+// Structure is documented below.
+func (o AiEndpointPredictRequestResponseLoggingConfigPtrOutput) BigqueryDestination() AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationPtrOutput {
+	return o.ApplyT(func(v *AiEndpointPredictRequestResponseLoggingConfig) *AiEndpointPredictRequestResponseLoggingConfigBigqueryDestination {
+		if v == nil {
+			return nil
+		}
+		return v.BigqueryDestination
+	}).(AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationPtrOutput)
+}
+
+// If logging is enabled or not.
+func (o AiEndpointPredictRequestResponseLoggingConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AiEndpointPredictRequestResponseLoggingConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Percentage of requests to be logged, expressed as a fraction in range(0,1]
+func (o AiEndpointPredictRequestResponseLoggingConfigPtrOutput) SamplingRate() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v *AiEndpointPredictRequestResponseLoggingConfig) *float64 {
+		if v == nil {
+			return nil
+		}
+		return v.SamplingRate
+	}).(pulumi.Float64PtrOutput)
+}
+
+type AiEndpointPredictRequestResponseLoggingConfigBigqueryDestination struct {
+	// BigQuery URI to a project or table, up to 2000 characters long. When only the project is specified, the Dataset and Table is created. When the full table reference is specified, the Dataset must exist and table must not exist. Accepted forms: - BigQuery path. For example: `bq://projectId` or `bq://projectId.bqDatasetId` or `bq://projectId.bqDatasetId.bqTableId`.
+	OutputUri *string `pulumi:"outputUri"`
+}
+
+// AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationInput is an input type that accepts AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationArgs and AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationOutput values.
+// You can construct a concrete instance of `AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationInput` via:
+//
+//	AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationArgs{...}
+type AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationInput interface {
+	pulumi.Input
+
+	ToAiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationOutput() AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationOutput
+	ToAiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationOutputWithContext(context.Context) AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationOutput
+}
+
+type AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationArgs struct {
+	// BigQuery URI to a project or table, up to 2000 characters long. When only the project is specified, the Dataset and Table is created. When the full table reference is specified, the Dataset must exist and table must not exist. Accepted forms: - BigQuery path. For example: `bq://projectId` or `bq://projectId.bqDatasetId` or `bq://projectId.bqDatasetId.bqTableId`.
+	OutputUri pulumi.StringPtrInput `pulumi:"outputUri"`
+}
+
+func (AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointPredictRequestResponseLoggingConfigBigqueryDestination)(nil)).Elem()
+}
+
+func (i AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationArgs) ToAiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationOutput() AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationOutput {
+	return i.ToAiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationOutputWithContext(context.Background())
+}
+
+func (i AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationArgs) ToAiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationOutputWithContext(ctx context.Context) AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationOutput)
+}
+
+func (i AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationArgs) ToAiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationPtrOutput() AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationPtrOutput {
+	return i.ToAiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationArgs) ToAiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationPtrOutputWithContext(ctx context.Context) AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationOutput).ToAiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationPtrOutputWithContext(ctx)
+}
+
+// AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationPtrInput is an input type that accepts AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationArgs, AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationPtr and AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationPtrOutput values.
+// You can construct a concrete instance of `AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationPtrInput` via:
+//
+//	        AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationPtrInput interface {
+	pulumi.Input
+
+	ToAiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationPtrOutput() AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationPtrOutput
+	ToAiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationPtrOutputWithContext(context.Context) AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationPtrOutput
+}
+
+type aiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationPtrType AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationArgs
+
+func AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationPtr(v *AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationArgs) AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationPtrInput {
+	return (*aiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationPtrType)(v)
+}
+
+func (*aiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEndpointPredictRequestResponseLoggingConfigBigqueryDestination)(nil)).Elem()
+}
+
+func (i *aiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationPtrType) ToAiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationPtrOutput() AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationPtrOutput {
+	return i.ToAiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationPtrOutputWithContext(context.Background())
+}
+
+func (i *aiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationPtrType) ToAiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationPtrOutputWithContext(ctx context.Context) AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationPtrOutput)
+}
+
+type AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointPredictRequestResponseLoggingConfigBigqueryDestination)(nil)).Elem()
+}
+
+func (o AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationOutput) ToAiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationOutput() AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationOutput {
+	return o
+}
+
+func (o AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationOutput) ToAiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationOutputWithContext(ctx context.Context) AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationOutput {
+	return o
+}
+
+func (o AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationOutput) ToAiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationPtrOutput() AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationPtrOutput {
+	return o.ToAiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationPtrOutputWithContext(context.Background())
+}
+
+func (o AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationOutput) ToAiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationPtrOutputWithContext(ctx context.Context) AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiEndpointPredictRequestResponseLoggingConfigBigqueryDestination) *AiEndpointPredictRequestResponseLoggingConfigBigqueryDestination {
+		return &v
+	}).(AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationPtrOutput)
+}
+
+// BigQuery URI to a project or table, up to 2000 characters long. When only the project is specified, the Dataset and Table is created. When the full table reference is specified, the Dataset must exist and table must not exist. Accepted forms: - BigQuery path. For example: `bq://projectId` or `bq://projectId.bqDatasetId` or `bq://projectId.bqDatasetId.bqTableId`.
+func (o AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationOutput) OutputUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v AiEndpointPredictRequestResponseLoggingConfigBigqueryDestination) *string { return v.OutputUri }).(pulumi.StringPtrOutput)
+}
+
+type AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationPtrOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEndpointPredictRequestResponseLoggingConfigBigqueryDestination)(nil)).Elem()
+}
+
+func (o AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationPtrOutput) ToAiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationPtrOutput() AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationPtrOutput {
+	return o
+}
+
+func (o AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationPtrOutput) ToAiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationPtrOutputWithContext(ctx context.Context) AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationPtrOutput {
+	return o
+}
+
+func (o AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationPtrOutput) Elem() AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationOutput {
+	return o.ApplyT(func(v *AiEndpointPredictRequestResponseLoggingConfigBigqueryDestination) AiEndpointPredictRequestResponseLoggingConfigBigqueryDestination {
+		if v != nil {
+			return *v
+		}
+		var ret AiEndpointPredictRequestResponseLoggingConfigBigqueryDestination
+		return ret
+	}).(AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationOutput)
+}
+
+// BigQuery URI to a project or table, up to 2000 characters long. When only the project is specified, the Dataset and Table is created. When the full table reference is specified, the Dataset must exist and table must not exist. Accepted forms: - BigQuery path. For example: `bq://projectId` or `bq://projectId.bqDatasetId` or `bq://projectId.bqDatasetId.bqTableId`.
+func (o AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationPtrOutput) OutputUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *AiEndpointPredictRequestResponseLoggingConfigBigqueryDestination) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OutputUri
+	}).(pulumi.StringPtrOutput)
+}
+
+type AiEndpointPrivateServiceConnectConfig struct {
+	// Required. If true, expose the IndexEndpoint via private service connect.
+	EnablePrivateServiceConnect bool `pulumi:"enablePrivateServiceConnect"`
+	// If set to true, enable secure private service connect with IAM authorization. Otherwise, private service connect will be done without authorization. Note latency will be slightly increased if authorization is enabled.
+	EnableSecurePrivateServiceConnect *bool `pulumi:"enableSecurePrivateServiceConnect"`
+	// A list of Projects from which the forwarding rule will target the service attachment.
+	ProjectAllowlists []string `pulumi:"projectAllowlists"`
+}
+
+// AiEndpointPrivateServiceConnectConfigInput is an input type that accepts AiEndpointPrivateServiceConnectConfigArgs and AiEndpointPrivateServiceConnectConfigOutput values.
+// You can construct a concrete instance of `AiEndpointPrivateServiceConnectConfigInput` via:
+//
+//	AiEndpointPrivateServiceConnectConfigArgs{...}
+type AiEndpointPrivateServiceConnectConfigInput interface {
+	pulumi.Input
+
+	ToAiEndpointPrivateServiceConnectConfigOutput() AiEndpointPrivateServiceConnectConfigOutput
+	ToAiEndpointPrivateServiceConnectConfigOutputWithContext(context.Context) AiEndpointPrivateServiceConnectConfigOutput
+}
+
+type AiEndpointPrivateServiceConnectConfigArgs struct {
+	// Required. If true, expose the IndexEndpoint via private service connect.
+	EnablePrivateServiceConnect pulumi.BoolInput `pulumi:"enablePrivateServiceConnect"`
+	// If set to true, enable secure private service connect with IAM authorization. Otherwise, private service connect will be done without authorization. Note latency will be slightly increased if authorization is enabled.
+	EnableSecurePrivateServiceConnect pulumi.BoolPtrInput `pulumi:"enableSecurePrivateServiceConnect"`
+	// A list of Projects from which the forwarding rule will target the service attachment.
+	ProjectAllowlists pulumi.StringArrayInput `pulumi:"projectAllowlists"`
+}
+
+func (AiEndpointPrivateServiceConnectConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointPrivateServiceConnectConfig)(nil)).Elem()
+}
+
+func (i AiEndpointPrivateServiceConnectConfigArgs) ToAiEndpointPrivateServiceConnectConfigOutput() AiEndpointPrivateServiceConnectConfigOutput {
+	return i.ToAiEndpointPrivateServiceConnectConfigOutputWithContext(context.Background())
+}
+
+func (i AiEndpointPrivateServiceConnectConfigArgs) ToAiEndpointPrivateServiceConnectConfigOutputWithContext(ctx context.Context) AiEndpointPrivateServiceConnectConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointPrivateServiceConnectConfigOutput)
+}
+
+func (i AiEndpointPrivateServiceConnectConfigArgs) ToAiEndpointPrivateServiceConnectConfigPtrOutput() AiEndpointPrivateServiceConnectConfigPtrOutput {
+	return i.ToAiEndpointPrivateServiceConnectConfigPtrOutputWithContext(context.Background())
+}
+
+func (i AiEndpointPrivateServiceConnectConfigArgs) ToAiEndpointPrivateServiceConnectConfigPtrOutputWithContext(ctx context.Context) AiEndpointPrivateServiceConnectConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointPrivateServiceConnectConfigOutput).ToAiEndpointPrivateServiceConnectConfigPtrOutputWithContext(ctx)
+}
+
+// AiEndpointPrivateServiceConnectConfigPtrInput is an input type that accepts AiEndpointPrivateServiceConnectConfigArgs, AiEndpointPrivateServiceConnectConfigPtr and AiEndpointPrivateServiceConnectConfigPtrOutput values.
+// You can construct a concrete instance of `AiEndpointPrivateServiceConnectConfigPtrInput` via:
+//
+//	        AiEndpointPrivateServiceConnectConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type AiEndpointPrivateServiceConnectConfigPtrInput interface {
+	pulumi.Input
+
+	ToAiEndpointPrivateServiceConnectConfigPtrOutput() AiEndpointPrivateServiceConnectConfigPtrOutput
+	ToAiEndpointPrivateServiceConnectConfigPtrOutputWithContext(context.Context) AiEndpointPrivateServiceConnectConfigPtrOutput
+}
+
+type aiEndpointPrivateServiceConnectConfigPtrType AiEndpointPrivateServiceConnectConfigArgs
+
+func AiEndpointPrivateServiceConnectConfigPtr(v *AiEndpointPrivateServiceConnectConfigArgs) AiEndpointPrivateServiceConnectConfigPtrInput {
+	return (*aiEndpointPrivateServiceConnectConfigPtrType)(v)
+}
+
+func (*aiEndpointPrivateServiceConnectConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEndpointPrivateServiceConnectConfig)(nil)).Elem()
+}
+
+func (i *aiEndpointPrivateServiceConnectConfigPtrType) ToAiEndpointPrivateServiceConnectConfigPtrOutput() AiEndpointPrivateServiceConnectConfigPtrOutput {
+	return i.ToAiEndpointPrivateServiceConnectConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *aiEndpointPrivateServiceConnectConfigPtrType) ToAiEndpointPrivateServiceConnectConfigPtrOutputWithContext(ctx context.Context) AiEndpointPrivateServiceConnectConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(AiEndpointPrivateServiceConnectConfigPtrOutput)
+}
+
+type AiEndpointPrivateServiceConnectConfigOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointPrivateServiceConnectConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*AiEndpointPrivateServiceConnectConfig)(nil)).Elem()
+}
+
+func (o AiEndpointPrivateServiceConnectConfigOutput) ToAiEndpointPrivateServiceConnectConfigOutput() AiEndpointPrivateServiceConnectConfigOutput {
+	return o
+}
+
+func (o AiEndpointPrivateServiceConnectConfigOutput) ToAiEndpointPrivateServiceConnectConfigOutputWithContext(ctx context.Context) AiEndpointPrivateServiceConnectConfigOutput {
+	return o
+}
+
+func (o AiEndpointPrivateServiceConnectConfigOutput) ToAiEndpointPrivateServiceConnectConfigPtrOutput() AiEndpointPrivateServiceConnectConfigPtrOutput {
+	return o.ToAiEndpointPrivateServiceConnectConfigPtrOutputWithContext(context.Background())
+}
+
+func (o AiEndpointPrivateServiceConnectConfigOutput) ToAiEndpointPrivateServiceConnectConfigPtrOutputWithContext(ctx context.Context) AiEndpointPrivateServiceConnectConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v AiEndpointPrivateServiceConnectConfig) *AiEndpointPrivateServiceConnectConfig {
+		return &v
+	}).(AiEndpointPrivateServiceConnectConfigPtrOutput)
+}
+
+// Required. If true, expose the IndexEndpoint via private service connect.
+func (o AiEndpointPrivateServiceConnectConfigOutput) EnablePrivateServiceConnect() pulumi.BoolOutput {
+	return o.ApplyT(func(v AiEndpointPrivateServiceConnectConfig) bool { return v.EnablePrivateServiceConnect }).(pulumi.BoolOutput)
+}
+
+// If set to true, enable secure private service connect with IAM authorization. Otherwise, private service connect will be done without authorization. Note latency will be slightly increased if authorization is enabled.
+func (o AiEndpointPrivateServiceConnectConfigOutput) EnableSecurePrivateServiceConnect() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v AiEndpointPrivateServiceConnectConfig) *bool { return v.EnableSecurePrivateServiceConnect }).(pulumi.BoolPtrOutput)
+}
+
+// A list of Projects from which the forwarding rule will target the service attachment.
+func (o AiEndpointPrivateServiceConnectConfigOutput) ProjectAllowlists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v AiEndpointPrivateServiceConnectConfig) []string { return v.ProjectAllowlists }).(pulumi.StringArrayOutput)
+}
+
+type AiEndpointPrivateServiceConnectConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (AiEndpointPrivateServiceConnectConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**AiEndpointPrivateServiceConnectConfig)(nil)).Elem()
+}
+
+func (o AiEndpointPrivateServiceConnectConfigPtrOutput) ToAiEndpointPrivateServiceConnectConfigPtrOutput() AiEndpointPrivateServiceConnectConfigPtrOutput {
+	return o
+}
+
+func (o AiEndpointPrivateServiceConnectConfigPtrOutput) ToAiEndpointPrivateServiceConnectConfigPtrOutputWithContext(ctx context.Context) AiEndpointPrivateServiceConnectConfigPtrOutput {
+	return o
+}
+
+func (o AiEndpointPrivateServiceConnectConfigPtrOutput) Elem() AiEndpointPrivateServiceConnectConfigOutput {
+	return o.ApplyT(func(v *AiEndpointPrivateServiceConnectConfig) AiEndpointPrivateServiceConnectConfig {
+		if v != nil {
+			return *v
+		}
+		var ret AiEndpointPrivateServiceConnectConfig
+		return ret
+	}).(AiEndpointPrivateServiceConnectConfigOutput)
+}
+
+// Required. If true, expose the IndexEndpoint via private service connect.
+func (o AiEndpointPrivateServiceConnectConfigPtrOutput) EnablePrivateServiceConnect() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AiEndpointPrivateServiceConnectConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.EnablePrivateServiceConnect
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If set to true, enable secure private service connect with IAM authorization. Otherwise, private service connect will be done without authorization. Note latency will be slightly increased if authorization is enabled.
+func (o AiEndpointPrivateServiceConnectConfigPtrOutput) EnableSecurePrivateServiceConnect() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AiEndpointPrivateServiceConnectConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableSecurePrivateServiceConnect
+	}).(pulumi.BoolPtrOutput)
+}
+
+// A list of Projects from which the forwarding rule will target the service attachment.
+func (o AiEndpointPrivateServiceConnectConfigPtrOutput) ProjectAllowlists() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *AiEndpointPrivateServiceConnectConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ProjectAllowlists
+	}).(pulumi.StringArrayOutput)
+}
+
 type AiFeatureGroupBigQuery struct {
 	// The BigQuery source URI that points to either a BigQuery Table or View.
 	// Structure is documented below.
@@ -9898,6 +10391,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointIamBindingConditionPtrInput)(nil)).Elem(), AiEndpointIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointIamMemberConditionInput)(nil)).Elem(), AiEndpointIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointIamMemberConditionPtrInput)(nil)).Elem(), AiEndpointIamMemberConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointPredictRequestResponseLoggingConfigInput)(nil)).Elem(), AiEndpointPredictRequestResponseLoggingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointPredictRequestResponseLoggingConfigPtrInput)(nil)).Elem(), AiEndpointPredictRequestResponseLoggingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationInput)(nil)).Elem(), AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationPtrInput)(nil)).Elem(), AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointPrivateServiceConnectConfigInput)(nil)).Elem(), AiEndpointPrivateServiceConnectConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*AiEndpointPrivateServiceConnectConfigPtrInput)(nil)).Elem(), AiEndpointPrivateServiceConnectConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureGroupBigQueryInput)(nil)).Elem(), AiFeatureGroupBigQueryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureGroupBigQueryPtrInput)(nil)).Elem(), AiFeatureGroupBigQueryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AiFeatureGroupBigQueryBigQuerySourceInput)(nil)).Elem(), AiFeatureGroupBigQueryBigQuerySourceArgs{})
@@ -10028,6 +10527,12 @@ func init() {
 	pulumi.RegisterOutputType(AiEndpointIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(AiEndpointIamMemberConditionOutput{})
 	pulumi.RegisterOutputType(AiEndpointIamMemberConditionPtrOutput{})
+	pulumi.RegisterOutputType(AiEndpointPredictRequestResponseLoggingConfigOutput{})
+	pulumi.RegisterOutputType(AiEndpointPredictRequestResponseLoggingConfigPtrOutput{})
+	pulumi.RegisterOutputType(AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationOutput{})
+	pulumi.RegisterOutputType(AiEndpointPredictRequestResponseLoggingConfigBigqueryDestinationPtrOutput{})
+	pulumi.RegisterOutputType(AiEndpointPrivateServiceConnectConfigOutput{})
+	pulumi.RegisterOutputType(AiEndpointPrivateServiceConnectConfigPtrOutput{})
 	pulumi.RegisterOutputType(AiFeatureGroupBigQueryOutput{})
 	pulumi.RegisterOutputType(AiFeatureGroupBigQueryPtrOutput{})
 	pulumi.RegisterOutputType(AiFeatureGroupBigQueryBigQuerySourceOutput{})

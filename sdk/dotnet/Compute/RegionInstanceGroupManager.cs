@@ -243,6 +243,13 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Fingerprint { get; private set; } = null!;
 
         /// <summary>
+        /// The flexibility policy for managed instance group. Instance flexibility allows managed instance group to create VMs from multiple types of machines. Instance flexibility configuration on managed instance group overrides instance template configuration. Structure is documented below.
+        /// - - -
+        /// </summary>
+        [Output("instanceFlexibilityPolicy")]
+        public Output<Outputs.RegionInstanceGroupManagerInstanceFlexibilityPolicy?> InstanceFlexibilityPolicy { get; private set; } = null!;
+
+        /// <summary>
         /// The full URL of the instance group created by the manager.
         /// </summary>
         [Output("instanceGroup")]
@@ -283,8 +290,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-        /// 
-        /// - - -
         /// </summary>
         [Output("params")]
         public Output<Outputs.RegionInstanceGroupManagerParams?> Params { get; private set; } = null!;
@@ -497,6 +502,13 @@ namespace Pulumi.Gcp.Compute
         }
 
         /// <summary>
+        /// The flexibility policy for managed instance group. Instance flexibility allows managed instance group to create VMs from multiple types of machines. Instance flexibility configuration on managed instance group overrides instance template configuration. Structure is documented below.
+        /// - - -
+        /// </summary>
+        [Input("instanceFlexibilityPolicy")]
+        public Input<Inputs.RegionInstanceGroupManagerInstanceFlexibilityPolicyArgs>? InstanceFlexibilityPolicy { get; set; }
+
+        /// <summary>
         /// The instance lifecycle policy for this managed instance group.
         /// </summary>
         [Input("instanceLifecyclePolicy")]
@@ -537,8 +549,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-        /// 
-        /// - - -
         /// </summary>
         [Input("params")]
         public Input<Inputs.RegionInstanceGroupManagerParamsArgs>? Params { get; set; }
@@ -743,6 +753,13 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Fingerprint { get; set; }
 
         /// <summary>
+        /// The flexibility policy for managed instance group. Instance flexibility allows managed instance group to create VMs from multiple types of machines. Instance flexibility configuration on managed instance group overrides instance template configuration. Structure is documented below.
+        /// - - -
+        /// </summary>
+        [Input("instanceFlexibilityPolicy")]
+        public Input<Inputs.RegionInstanceGroupManagerInstanceFlexibilityPolicyGetArgs>? InstanceFlexibilityPolicy { get; set; }
+
+        /// <summary>
         /// The full URL of the instance group created by the manager.
         /// </summary>
         [Input("instanceGroup")]
@@ -789,8 +806,6 @@ namespace Pulumi.Gcp.Compute
 
         /// <summary>
         /// Input only additional params for instance group manager creation. Structure is documented below. For more information, see [API](https://cloud.google.com/compute/docs/reference/rest/beta/instanceGroupManagers/insert).
-        /// 
-        /// - - -
         /// </summary>
         [Input("params")]
         public Input<Inputs.RegionInstanceGroupManagerParamsGetArgs>? Params { get; set; }

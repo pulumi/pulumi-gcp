@@ -521,6 +521,14 @@ Object.defineProperty(exports, "dataprocCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const dataprocGdcCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "dataprocGdcCustomEndpoint", {
+    get() {
+        return __config.get("dataprocGdcCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const dataprocMetastoreCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "dataprocMetastoreCustomEndpoint", {
     get() {
@@ -781,6 +789,14 @@ export declare const iam2CustomEndpoint: string | undefined;
 Object.defineProperty(exports, "iam2CustomEndpoint", {
     get() {
         return __config.get("iam2CustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const iam3CustomEndpoint: string | undefined;
+Object.defineProperty(exports, "iam3CustomEndpoint", {
+    get() {
+        return __config.get("iam3CustomEndpoint");
     },
     enumerable: true,
 });

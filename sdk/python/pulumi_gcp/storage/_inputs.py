@@ -1683,7 +1683,7 @@ if not MYPY:
         """
         storage_filters: NotRequired[pulumi.Input['InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgsDict']]
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
 elif False:
@@ -1699,7 +1699,7 @@ class InsightsReportConfigObjectMetadataReportOptionsArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] metadata_fields: The metadata fields included in an inventory report.
         :param pulumi.Input['InsightsReportConfigObjectMetadataReportOptionsStorageDestinationOptionsArgs'] storage_destination_options: Options for where the inventory reports are stored.
                Structure is documented below.
-        :param pulumi.Input['InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgs'] storage_filters: A nested object resource
+        :param pulumi.Input['InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgs'] storage_filters: A nested object resource.
                Structure is documented below.
         """
         pulumi.set(__self__, "metadata_fields", metadata_fields)
@@ -1736,7 +1736,7 @@ class InsightsReportConfigObjectMetadataReportOptionsArgs:
     @pulumi.getter(name="storageFilters")
     def storage_filters(self) -> Optional[pulumi.Input['InsightsReportConfigObjectMetadataReportOptionsStorageFiltersArgs']]:
         """
-        A nested object resource
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "storage_filters")

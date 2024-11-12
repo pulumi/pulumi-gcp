@@ -897,6 +897,8 @@ class Instance(pulumi.CustomResource):
                  zone_distribution_config: Optional[pulumi.Input[Union['InstanceZoneDistributionConfigArgs', 'InstanceZoneDistributionConfigArgsDict']]] = None,
                  __props__=None):
         """
+        A Google Cloud Memorystore instance.
+
         ## Example Usage
 
         ### Memorystore Instance Basic
@@ -1113,6 +1115,8 @@ class Instance(pulumi.CustomResource):
                  args: InstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A Google Cloud Memorystore instance.
+
         ## Example Usage
 
         ### Memorystore Instance Basic
