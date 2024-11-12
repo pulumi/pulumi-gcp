@@ -1776,7 +1776,25 @@ func Provider() tfbridge.ProviderInfo {
 
 			// CloudRun Resources
 			"google_cloud_run_domain_mapping": {Tok: gcpResource(gcpCloudRun, "DomainMapping")},
-			"google_cloud_run_service":        {Tok: gcpResource(gcpCloudRun, "Service"), Fields: nameField(lowercaseAutoName())},
+			"google_cloud_run_service": {
+				Tok: gcpResource(gcpCloudRun, "Service"),
+				// PreCheckCallback: func(
+				// 	ctx context.Context, config resource.PropertyMap, meta resource.PropertyMap,
+				// ) (resource.PropertyMap, error) {
+				// 	panic("I am your provider")
+				// },
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"name": tfbridge.AutoNameWithCustomOptions("name",
+						// Name is auto-named without any suffix.
+						tfbridge.AutoNameOptions{Randlen: 0}),
+					"autogenerate_revision_name": {
+						Default: &tfbridge.DefaultInfo{
+							Value: true,
+						},
+					},
+				},
+				// Fields: nameField(lowercaseAutoName())
+			},
 			"google_cloud_run_service_iam_binding": {
 				Tok:  gcpResource(gcpCloudRun, "IamBinding"),
 				Docs: &tfbridge.DocInfo{Source: "cloud_run_service_iam.html.markdown"},
