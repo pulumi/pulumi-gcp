@@ -4,7 +4,6 @@ package gcp
 
 import (
 	"context"
-	"encoding/json"
 	"fmt"
 	"log"
 	"path"
@@ -1778,38 +1777,24 @@ func Provider() tfbridge.ProviderInfo {
 			// CloudRun Resources
 			"google_cloud_run_domain_mapping": {Tok: gcpResource(gcpCloudRun, "DomainMapping")},
 			"google_cloud_run_service": {
-				Tok: gcpResource(gcpCloudRun, "Service"),
-				// // PreCheckCallback: func(
-				// // 	ctx context.Context, config resource.PropertyMap, meta resource.PropertyMap,
-				// // ) (resource.PropertyMap, error) {
-				// // 	panic("I am your provider")
-				// // },
-				// Fields: map[string]*tfbridge.SchemaInfo{
-				// 	"name": tfbridge.AutoNameWithCustomOptions("name",
-				// 		// Name is auto-named without any suffix.
-				// 		tfbridge.AutoNameOptions{Randlen: 0}),
-				// 	"autogenerate_revision_name": {
-				// 		Default: &tfbridge.DefaultInfo{
-				// 			Value: true,
-				// 		},
-				// 	},
-				// },
+				Tok:    gcpResource(gcpCloudRun, "Service"),
 				Fields: nameField(lowercaseAutoName()),
+				// We need to remove the resourceVersion to avoid conflicts, when there are changes outside the pulumi
+				// program, and since pulumi does not refresh by default. See the following urls for more information:
+				// https://cloud.google.com/run/docs/reference/rpc/google.cloud.run.meta.v1#google.cloud.run.meta.v1.ObjectMeta
+				// https://github.com/pulumi/pulumi-gcp/issues/350
 				TransformFromState: func(ctx context.Context, state resource.PropertyMap) (resource.PropertyMap, error) {
-					jsonBytes, err := json.Marshal(state)
-					if err != nil {
-						return nil, err
-					}
-					log.Printf("state: %s", string(jsonBytes))
 					if _, md := state["metadata"]; md {
-						metadata := state["metadata"].ObjectValue()
-						if metadata == nil {
-							return nil, fmt.Errorf("metadata is not an object")
-						}
-						if _, rv := metadata["resourceVersion"]; rv {
-							delete(metadata, "resourceVersion")
-							state["metadata"] = resource.NewObjectProperty(metadata)
-							return state, nil
+						if state["metadata"].IsObject() {
+							metadata := state["metadata"].ObjectValue()
+							if metadata == nil {
+								return nil, fmt.Errorf("metadata is not an object")
+							}
+							if _, rv := metadata["resourceVersion"]; rv {
+								delete(metadata, "resourceVersion")
+								state["metadata"] = resource.NewObjectProperty(metadata)
+								return state, nil
+							}
 						}
 						return state, nil
 					}
