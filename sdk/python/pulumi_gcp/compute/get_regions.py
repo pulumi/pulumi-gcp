@@ -118,7 +118,7 @@ def get_regions(project: Optional[str] = None,
         status=pulumi.get(__ret__, 'status'))
 def get_regions_output(project: Optional[pulumi.Input[Optional[str]]] = None,
                        status: Optional[pulumi.Input[Optional[str]]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegionsResult]:
+                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegionsResult]:
     """
     Provides access to available Google Compute regions for a given project.
     See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/) in the upstream docs.
@@ -145,7 +145,7 @@ def get_regions_output(project: Optional[pulumi.Input[Optional[str]]] = None,
     __args__ = dict()
     __args__['project'] = project
     __args__['status'] = status
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:compute/getRegions:getRegions', __args__, opts=opts, typ=GetRegionsResult)
     return __ret__.apply(lambda __response__: GetRegionsResult(
         id=pulumi.get(__response__, 'id'),

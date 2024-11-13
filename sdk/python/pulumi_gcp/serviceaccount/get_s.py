@@ -102,7 +102,7 @@ def get_s(project: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         project=pulumi.get(__ret__, 'project'))
 def get_s_output(project: Optional[pulumi.Input[Optional[str]]] = None,
-                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSResult]:
+                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSResult]:
     """
     Gets a list of all service accounts from a project.
     See [the official documentation](https://cloud.google.com/iam/docs/service-account-overview)
@@ -124,7 +124,7 @@ def get_s_output(project: Optional[pulumi.Input[Optional[str]]] = None,
     """
     __args__ = dict()
     __args__['project'] = project
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:serviceaccount/getS:getS', __args__, opts=opts, typ=GetSResult)
     return __ret__.apply(lambda __response__: GetSResult(
         accounts=pulumi.get(__response__, 'accounts'),
