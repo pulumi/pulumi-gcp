@@ -1783,7 +1783,7 @@ func Provider() tfbridge.ProviderInfo {
 				// program, and since pulumi does not refresh by default. See the following urls for more information:
 				// https://cloud.google.com/run/docs/reference/rpc/google.cloud.run.meta.v1#google.cloud.run.meta.v1.ObjectMeta
 				// https://github.com/pulumi/pulumi-gcp/issues/350
-				TransformFromState: func(ctx context.Context, state resource.PropertyMap) (resource.PropertyMap, error) {
+				TransformFromState: func(_ context.Context, state resource.PropertyMap) (resource.PropertyMap, error) {
 					if _, md := state["metadata"]; md {
 						if state["metadata"].IsObject() {
 							metadata := state["metadata"].ObjectValue()
