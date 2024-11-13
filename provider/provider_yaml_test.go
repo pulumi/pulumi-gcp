@@ -121,6 +121,8 @@ func TestLogSink(t *testing.T) {
 }
 
 func TestTopicIamBinding(t *testing.T) {
+	// TODO[pulumi/pulumi-gcp#2628]: This test is flaky and fails intermittently in CI.
+	t.Skip("Skipping until https://github.com/pulumi/pulumi-gcp/issues/2628 is fixed")
 	skipIfNotCI(t)
 	// ServiceAccount requires 7.0
 	testUpgrade(t, "test-programs/topic-iam-binding",
