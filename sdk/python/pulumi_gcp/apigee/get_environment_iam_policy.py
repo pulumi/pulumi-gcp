@@ -125,7 +125,7 @@ def get_environment_iam_policy(env_id: Optional[str] = None,
         policy_data=pulumi.get(__ret__, 'policy_data'))
 def get_environment_iam_policy_output(env_id: Optional[pulumi.Input[str]] = None,
                                       org_id: Optional[pulumi.Input[str]] = None,
-                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEnvironmentIamPolicyResult]:
+                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEnvironmentIamPolicyResult]:
     """
     Retrieves the current IAM policy data for environment
 
@@ -145,7 +145,7 @@ def get_environment_iam_policy_output(env_id: Optional[pulumi.Input[str]] = None
     __args__ = dict()
     __args__['envId'] = env_id
     __args__['orgId'] = org_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:apigee/getEnvironmentIamPolicy:getEnvironmentIamPolicy', __args__, opts=opts, typ=GetEnvironmentIamPolicyResult)
     return __ret__.apply(lambda __response__: GetEnvironmentIamPolicyResult(
         env_id=pulumi.get(__response__, 'env_id'),

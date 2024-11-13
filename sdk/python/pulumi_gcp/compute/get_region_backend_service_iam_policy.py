@@ -134,7 +134,7 @@ def get_region_backend_service_iam_policy(name: Optional[str] = None,
 def get_region_backend_service_iam_policy_output(name: Optional[pulumi.Input[str]] = None,
                                                  project: Optional[pulumi.Input[Optional[str]]] = None,
                                                  region: Optional[pulumi.Input[Optional[str]]] = None,
-                                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegionBackendServiceIamPolicyResult]:
+                                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegionBackendServiceIamPolicyResult]:
     """
     Use this data source to access information about an existing resource.
 
@@ -151,7 +151,7 @@ def get_region_backend_service_iam_policy_output(name: Optional[pulumi.Input[str
     __args__['name'] = name
     __args__['project'] = project
     __args__['region'] = region
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:compute/getRegionBackendServiceIamPolicy:getRegionBackendServiceIamPolicy', __args__, opts=opts, typ=GetRegionBackendServiceIamPolicyResult)
     return __ret__.apply(lambda __response__: GetRegionBackendServiceIamPolicyResult(
         etag=pulumi.get(__response__, 'etag'),

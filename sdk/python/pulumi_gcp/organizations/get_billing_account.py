@@ -160,7 +160,7 @@ def get_billing_account_output(billing_account: Optional[pulumi.Input[Optional[s
                                display_name: Optional[pulumi.Input[Optional[str]]] = None,
                                lookup_projects: Optional[pulumi.Input[Optional[bool]]] = None,
                                open: Optional[pulumi.Input[Optional[bool]]] = None,
-                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBillingAccountResult]:
+                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBillingAccountResult]:
     """
     Use this data source to get information about a Google Billing Account.
 
@@ -191,7 +191,7 @@ def get_billing_account_output(billing_account: Optional[pulumi.Input[Optional[s
     __args__['displayName'] = display_name
     __args__['lookupProjects'] = lookup_projects
     __args__['open'] = open
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:organizations/getBillingAccount:getBillingAccount', __args__, opts=opts, typ=GetBillingAccountResult)
     return __ret__.apply(lambda __response__: GetBillingAccountResult(
         billing_account=pulumi.get(__response__, 'billing_account'),
