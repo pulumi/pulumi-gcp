@@ -1776,7 +1776,31 @@ func Provider() tfbridge.ProviderInfo {
 
 			// CloudRun Resources
 			"google_cloud_run_domain_mapping": {Tok: gcpResource(gcpCloudRun, "DomainMapping")},
-			"google_cloud_run_service":        {Tok: gcpResource(gcpCloudRun, "Service"), Fields: nameField(lowercaseAutoName())},
+			"google_cloud_run_service": {
+				Tok:    gcpResource(gcpCloudRun, "Service"),
+				Fields: nameField(lowercaseAutoName()),
+				// We need to remove the resourceVersion to avoid conflicts, when there are changes outside the pulumi
+				// program, and since pulumi does not refresh by default. See the following urls for more information:
+				// https://cloud.google.com/run/docs/reference/rpc/google.cloud.run.meta.v1#google.cloud.run.meta.v1.ObjectMeta
+				// https://github.com/pulumi/pulumi-gcp/issues/350
+				TransformFromState: func(_ context.Context, state resource.PropertyMap) (resource.PropertyMap, error) {
+					if _, md := state["metadata"]; md {
+						if state["metadata"].IsObject() {
+							metadata := state["metadata"].ObjectValue()
+							if metadata == nil {
+								return nil, fmt.Errorf("metadata is not an object")
+							}
+							if _, rv := metadata["resourceVersion"]; rv {
+								delete(metadata, "resourceVersion")
+								state["metadata"] = resource.NewObjectProperty(metadata)
+								return state, nil
+							}
+						}
+						return state, nil
+					}
+					return state, nil
+				},
+			},
 			"google_cloud_run_service_iam_binding": {
 				Tok:  gcpResource(gcpCloudRun, "IamBinding"),
 				Docs: &tfbridge.DocInfo{Source: "cloud_run_service_iam.html.markdown"},
