@@ -462,7 +462,7 @@ def get_backend_service(name: Optional[str] = None,
         timeout_sec=pulumi.get(__ret__, 'timeout_sec'))
 def get_backend_service_output(name: Optional[pulumi.Input[str]] = None,
                                project: Optional[pulumi.Input[Optional[str]]] = None,
-                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBackendServiceResult]:
+                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBackendServiceResult]:
     """
     Provide access to a Backend Service's attribute. For more information
     see [the official documentation](https://cloud.google.com/compute/docs/load-balancing/http/backend-service)
@@ -489,7 +489,7 @@ def get_backend_service_output(name: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['name'] = name
     __args__['project'] = project
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:compute/getBackendService:getBackendService', __args__, opts=opts, typ=GetBackendServiceResult)
     return __ret__.apply(lambda __response__: GetBackendServiceResult(
         affinity_cookie_ttl_sec=pulumi.get(__response__, 'affinity_cookie_ttl_sec'),

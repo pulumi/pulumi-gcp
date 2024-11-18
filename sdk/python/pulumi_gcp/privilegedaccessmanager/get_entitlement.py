@@ -231,7 +231,7 @@ def get_entitlement(entitlement_id: Optional[str] = None,
 def get_entitlement_output(entitlement_id: Optional[pulumi.Input[Optional[str]]] = None,
                            location: Optional[pulumi.Input[Optional[str]]] = None,
                            parent: Optional[pulumi.Input[Optional[str]]] = None,
-                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEntitlementResult]:
+                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEntitlementResult]:
     """
     Use this data source to get information about a Google Cloud Privileged Access Manager Entitlement.
 
@@ -261,7 +261,7 @@ def get_entitlement_output(entitlement_id: Optional[pulumi.Input[Optional[str]]]
     __args__['entitlementId'] = entitlement_id
     __args__['location'] = location
     __args__['parent'] = parent
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:privilegedaccessmanager/getEntitlement:getEntitlement', __args__, opts=opts, typ=GetEntitlementResult)
     return __ret__.apply(lambda __response__: GetEntitlementResult(
         additional_notification_targets=pulumi.get(__response__, 'additional_notification_targets'),

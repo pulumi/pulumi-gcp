@@ -172,7 +172,7 @@ def get_certificate_map(name: Optional[str] = None,
         update_time=pulumi.get(__ret__, 'update_time'))
 def get_certificate_map_output(name: Optional[pulumi.Input[str]] = None,
                                project: Optional[pulumi.Input[Optional[str]]] = None,
-                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCertificateMapResult]:
+                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCertificateMapResult]:
     """
     Get info about a Google Certificate Manager Certificate Map resource.
 
@@ -195,7 +195,7 @@ def get_certificate_map_output(name: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['name'] = name
     __args__['project'] = project
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:certificatemanager/getCertificateMap:getCertificateMap', __args__, opts=opts, typ=GetCertificateMapResult)
     return __ret__.apply(lambda __response__: GetCertificateMapResult(
         create_time=pulumi.get(__response__, 'create_time'),

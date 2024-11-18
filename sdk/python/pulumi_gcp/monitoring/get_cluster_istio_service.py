@@ -228,7 +228,7 @@ def get_cluster_istio_service_output(cluster_name: Optional[pulumi.Input[str]] =
                                      project: Optional[pulumi.Input[Optional[str]]] = None,
                                      service_name: Optional[pulumi.Input[str]] = None,
                                      service_namespace: Optional[pulumi.Input[str]] = None,
-                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClusterIstioServiceResult]:
+                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetClusterIstioServiceResult]:
     """
     A Monitoring Service is the root resource under which operational aspects of a
     generic service are accessible. A service is some discrete, autonomous, and
@@ -281,7 +281,7 @@ def get_cluster_istio_service_output(cluster_name: Optional[pulumi.Input[str]] =
     __args__['project'] = project
     __args__['serviceName'] = service_name
     __args__['serviceNamespace'] = service_namespace
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:monitoring/getClusterIstioService:getClusterIstioService', __args__, opts=opts, typ=GetClusterIstioServiceResult)
     return __ret__.apply(lambda __response__: GetClusterIstioServiceResult(
         cluster_name=pulumi.get(__response__, 'cluster_name'),

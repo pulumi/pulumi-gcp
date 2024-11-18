@@ -121,7 +121,7 @@ def get_project_service_account(project_id: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         project_id=pulumi.get(__ret__, 'project_id'))
 def get_project_service_account_output(project_id: Optional[pulumi.Input[str]] = None,
-                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectServiceAccountResult]:
+                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectServiceAccountResult]:
     """
     Get the email address of a project's Access Approval service account.
 
@@ -149,7 +149,7 @@ def get_project_service_account_output(project_id: Optional[pulumi.Input[str]] =
     """
     __args__ = dict()
     __args__['projectId'] = project_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:accessapproval/getProjectServiceAccount:getProjectServiceAccount', __args__, opts=opts, typ=GetProjectServiceAccountResult)
     return __ret__.apply(lambda __response__: GetProjectServiceAccountResult(
         account_email=pulumi.get(__response__, 'account_email'),
