@@ -144,7 +144,7 @@ def get_aspect_type_iam_policy(aspect_type_id: Optional[str] = None,
 def get_aspect_type_iam_policy_output(aspect_type_id: Optional[pulumi.Input[str]] = None,
                                       location: Optional[pulumi.Input[Optional[str]]] = None,
                                       project: Optional[pulumi.Input[Optional[str]]] = None,
-                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAspectTypeIamPolicyResult]:
+                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAspectTypeIamPolicyResult]:
     """
     Retrieves the current IAM policy data for aspecttype
 
@@ -171,7 +171,7 @@ def get_aspect_type_iam_policy_output(aspect_type_id: Optional[pulumi.Input[str]
     __args__['aspectTypeId'] = aspect_type_id
     __args__['location'] = location
     __args__['project'] = project
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:dataplex/getAspectTypeIamPolicy:getAspectTypeIamPolicy', __args__, opts=opts, typ=GetAspectTypeIamPolicyResult)
     return __ret__.apply(lambda __response__: GetAspectTypeIamPolicyResult(
         aspect_type_id=pulumi.get(__response__, 'aspect_type_id'),
