@@ -874,12 +874,14 @@ func Provider() tfbridge.ProviderInfo {
 				Docs: &tfbridge.DocInfo{
 					Source: "google_project_iam.html.markdown",
 				},
+				DeleteBeforeReplace: true,
 			},
 			"google_project_iam_policy": {
 				Tok: gcpResource(gcpProject, "IAMPolicy"),
 				Docs: &tfbridge.DocInfo{
 					Source: "google_project_iam.html.markdown",
 				},
+				DeleteBeforeReplace: true,
 			},
 			"google_project_organization_policy": {
 				Tok: gcpResource(gcpProject, "OrganizationPolicy"),
