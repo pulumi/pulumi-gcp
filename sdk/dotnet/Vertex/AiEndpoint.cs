@@ -343,14 +343,13 @@ namespace Pulumi.Gcp.Vertex
         /// <summary>
         /// A map from a DeployedModel's id to the percentage of this Endpoint's traffic that should be forwarded to that DeployedModel.
         /// If a DeployedModel's id is not listed in this map, then it receives no traffic.
-        /// The traffic percentage values must add up to 100, or map must be empty if the Endpoint is to not accept any traffic at a moment.
-        /// &gt; **Note:** The `traffic_split` setting only applies after a model has been deployed to the endpoint. Re-applying a `gcp.vertex.AiEndpoint`
-        /// resource without updating the `traffic_split` post-deployment may lead to your deployed `traffic_split` being lost; see
+        /// The traffic percentage values must add up to 100, or map must be empty if the Endpoint is to not accept any traffic at a moment. See
         /// the `deployModel` [example](https://cloud.google.com/vertex-ai/docs/general/deployment#deploy_a_model_to_an_endpoint) and
-        /// [documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1beta1/projects.locations.endpoints/deployModel) for details.
+        /// [documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1beta1/projects.locations.endpoints/deployModel) for more information.
+        /// &gt; **Note:** To set the map to empty, set `"{}"`, apply, and then remove the field from your config.
         /// </summary>
         [Output("trafficSplit")]
-        public Output<string?> TrafficSplit { get; private set; } = null!;
+        public Output<string> TrafficSplit { get; private set; } = null!;
 
         /// <summary>
         /// Output only. Timestamp when this Endpoint was last updated.
@@ -499,11 +498,10 @@ namespace Pulumi.Gcp.Vertex
         /// <summary>
         /// A map from a DeployedModel's id to the percentage of this Endpoint's traffic that should be forwarded to that DeployedModel.
         /// If a DeployedModel's id is not listed in this map, then it receives no traffic.
-        /// The traffic percentage values must add up to 100, or map must be empty if the Endpoint is to not accept any traffic at a moment.
-        /// &gt; **Note:** The `traffic_split` setting only applies after a model has been deployed to the endpoint. Re-applying a `gcp.vertex.AiEndpoint`
-        /// resource without updating the `traffic_split` post-deployment may lead to your deployed `traffic_split` being lost; see
+        /// The traffic percentage values must add up to 100, or map must be empty if the Endpoint is to not accept any traffic at a moment. See
         /// the `deployModel` [example](https://cloud.google.com/vertex-ai/docs/general/deployment#deploy_a_model_to_an_endpoint) and
-        /// [documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1beta1/projects.locations.endpoints/deployModel) for details.
+        /// [documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1beta1/projects.locations.endpoints/deployModel) for more information.
+        /// &gt; **Note:** To set the map to empty, set `"{}"`, apply, and then remove the field from your config.
         /// </summary>
         [Input("trafficSplit")]
         public Input<string>? TrafficSplit { get; set; }
@@ -677,11 +675,10 @@ namespace Pulumi.Gcp.Vertex
         /// <summary>
         /// A map from a DeployedModel's id to the percentage of this Endpoint's traffic that should be forwarded to that DeployedModel.
         /// If a DeployedModel's id is not listed in this map, then it receives no traffic.
-        /// The traffic percentage values must add up to 100, or map must be empty if the Endpoint is to not accept any traffic at a moment.
-        /// &gt; **Note:** The `traffic_split` setting only applies after a model has been deployed to the endpoint. Re-applying a `gcp.vertex.AiEndpoint`
-        /// resource without updating the `traffic_split` post-deployment may lead to your deployed `traffic_split` being lost; see
+        /// The traffic percentage values must add up to 100, or map must be empty if the Endpoint is to not accept any traffic at a moment. See
         /// the `deployModel` [example](https://cloud.google.com/vertex-ai/docs/general/deployment#deploy_a_model_to_an_endpoint) and
-        /// [documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1beta1/projects.locations.endpoints/deployModel) for details.
+        /// [documentation](https://cloud.google.com/vertex-ai/docs/reference/rest/v1beta1/projects.locations.endpoints/deployModel) for more information.
+        /// &gt; **Note:** To set the map to empty, set `"{}"`, apply, and then remove the field from your config.
         /// </summary>
         [Input("trafficSplit")]
         public Input<string>? TrafficSplit { get; set; }
