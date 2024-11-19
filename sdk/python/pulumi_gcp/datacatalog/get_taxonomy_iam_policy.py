@@ -139,7 +139,7 @@ def get_taxonomy_iam_policy(project: Optional[str] = None,
 def get_taxonomy_iam_policy_output(project: Optional[pulumi.Input[Optional[str]]] = None,
                                    region: Optional[pulumi.Input[Optional[str]]] = None,
                                    taxonomy: Optional[pulumi.Input[str]] = None,
-                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTaxonomyIamPolicyResult]:
+                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTaxonomyIamPolicyResult]:
     """
     Retrieves the current IAM policy data for taxonomy
 
@@ -161,7 +161,7 @@ def get_taxonomy_iam_policy_output(project: Optional[pulumi.Input[Optional[str]]
     __args__['project'] = project
     __args__['region'] = region
     __args__['taxonomy'] = taxonomy
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:datacatalog/getTaxonomyIamPolicy:getTaxonomyIamPolicy', __args__, opts=opts, typ=GetTaxonomyIamPolicyResult)
     return __ret__.apply(lambda __response__: GetTaxonomyIamPolicyResult(
         etag=pulumi.get(__response__, 'etag'),

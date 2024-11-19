@@ -137,7 +137,7 @@ def get_job_iam_policy(job_id: Optional[str] = None,
 def get_job_iam_policy_output(job_id: Optional[pulumi.Input[str]] = None,
                               project: Optional[pulumi.Input[Optional[str]]] = None,
                               region: Optional[pulumi.Input[Optional[str]]] = None,
-                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetJobIamPolicyResult]:
+                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetJobIamPolicyResult]:
     """
     Retrieves the current IAM policy data for a Dataproc job.
 
@@ -158,7 +158,7 @@ def get_job_iam_policy_output(job_id: Optional[pulumi.Input[str]] = None,
     __args__['jobId'] = job_id
     __args__['project'] = project
     __args__['region'] = region
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:dataproc/getJobIamPolicy:getJobIamPolicy', __args__, opts=opts, typ=GetJobIamPolicyResult)
     return __ret__.apply(lambda __response__: GetJobIamPolicyResult(
         etag=pulumi.get(__response__, 'etag'),

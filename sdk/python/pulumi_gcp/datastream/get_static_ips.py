@@ -114,7 +114,7 @@ def get_static_ips(location: Optional[str] = None,
         static_ips=pulumi.get(__ret__, 'static_ips'))
 def get_static_ips_output(location: Optional[pulumi.Input[str]] = None,
                           project: Optional[pulumi.Input[Optional[str]]] = None,
-                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetStaticIpsResult]:
+                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetStaticIpsResult]:
     """
     Returns the list of IP addresses that Datastream connects from. For more information see
     the [official documentation](https://cloud.google.com/datastream/docs/ip-allowlists-and-regions).
@@ -137,7 +137,7 @@ def get_static_ips_output(location: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['location'] = location
     __args__['project'] = project
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:datastream/getStaticIps:getStaticIps', __args__, opts=opts, typ=GetStaticIpsResult)
     return __ret__.apply(lambda __response__: GetStaticIpsResult(
         id=pulumi.get(__response__, 'id'),

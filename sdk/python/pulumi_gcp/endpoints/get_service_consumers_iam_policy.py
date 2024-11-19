@@ -112,14 +112,14 @@ def get_service_consumers_iam_policy(consumer_project: Optional[str] = None,
         service_name=pulumi.get(__ret__, 'service_name'))
 def get_service_consumers_iam_policy_output(consumer_project: Optional[pulumi.Input[str]] = None,
                                             service_name: Optional[pulumi.Input[str]] = None,
-                                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceConsumersIamPolicyResult]:
+                                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServiceConsumersIamPolicyResult]:
     """
     Retrieves the current IAM policy data for serviceconsumers
     """
     __args__ = dict()
     __args__['consumerProject'] = consumer_project
     __args__['serviceName'] = service_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:endpoints/getServiceConsumersIamPolicy:getServiceConsumersIamPolicy', __args__, opts=opts, typ=GetServiceConsumersIamPolicyResult)
     return __ret__.apply(lambda __response__: GetServiceConsumersIamPolicyResult(
         consumer_project=pulumi.get(__response__, 'consumer_project'),

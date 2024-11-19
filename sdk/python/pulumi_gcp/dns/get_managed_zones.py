@@ -97,7 +97,7 @@ def get_managed_zones(project: Optional[str] = None,
         managed_zones=pulumi.get(__ret__, 'managed_zones'),
         project=pulumi.get(__ret__, 'project'))
 def get_managed_zones_output(project: Optional[pulumi.Input[Optional[str]]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetManagedZonesResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetManagedZonesResult]:
     """
     Provides access to a list of zones within Google Cloud DNS.
     For more information see
@@ -117,7 +117,7 @@ def get_managed_zones_output(project: Optional[pulumi.Input[Optional[str]]] = No
     """
     __args__ = dict()
     __args__['project'] = project
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:dns/getManagedZones:getManagedZones', __args__, opts=opts, typ=GetManagedZonesResult)
     return __ret__.apply(lambda __response__: GetManagedZonesResult(
         id=pulumi.get(__response__, 'id'),
