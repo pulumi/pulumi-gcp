@@ -31,6 +31,7 @@ class InstanceArgs:
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 performance_config: Optional[pulumi.Input['InstancePerformanceConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
@@ -53,6 +54,7 @@ class InstanceArgs:
                resource.
         :param pulumi.Input[str] location: The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
         :param pulumi.Input[str] name: The resource name of the instance.
+        :param pulumi.Input['InstancePerformanceConfigArgs'] performance_config: Performance configuration for the instance. If not provided, the default performance settings will be used.
         :param pulumi.Input[str] protocol: Either NFSv3, for using NFS version 3 as file sharing protocol, or NFSv4.1, for using NFS version 4.1 as file sharing
                protocol. NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE. The default is NFSv3. Default value:
                "NFS_V3" Possible values: ["NFS_V3", "NFS_V4_1"]
@@ -75,6 +77,8 @@ class InstanceArgs:
             pulumi.set(__self__, "location", location)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if performance_config is not None:
+            pulumi.set(__self__, "performance_config", performance_config)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if protocol is not None:
@@ -213,6 +217,18 @@ class InstanceArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="performanceConfig")
+    def performance_config(self) -> Optional[pulumi.Input['InstancePerformanceConfigArgs']]:
+        """
+        Performance configuration for the instance. If not provided, the default performance settings will be used.
+        """
+        return pulumi.get(self, "performance_config")
+
+    @performance_config.setter
+    def performance_config(self, value: Optional[pulumi.Input['InstancePerformanceConfigArgs']]):
+        pulumi.set(self, "performance_config", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "project")
@@ -264,6 +280,7 @@ class _InstanceState:
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input['InstanceNetworkArgs']]]] = None,
+                 performance_config: Optional[pulumi.Input['InstancePerformanceConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -290,6 +307,7 @@ class _InstanceState:
         :param pulumi.Input[Sequence[pulumi.Input['InstanceNetworkArgs']]] networks: VPC networks to which the instance is connected. For this version,
                only a single network is supported.
                Structure is documented below.
+        :param pulumi.Input['InstancePerformanceConfigArgs'] performance_config: Performance configuration for the instance. If not provided, the default performance settings will be used.
         :param pulumi.Input[str] protocol: Either NFSv3, for using NFS version 3 as file sharing protocol, or NFSv4.1, for using NFS version 4.1 as file sharing
                protocol. NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE. The default is NFSv3. Default value:
                "NFS_V3" Possible values: ["NFS_V3", "NFS_V4_1"]
@@ -323,6 +341,8 @@ class _InstanceState:
             pulumi.set(__self__, "name", name)
         if networks is not None:
             pulumi.set(__self__, "networks", networks)
+        if performance_config is not None:
+            pulumi.set(__self__, "performance_config", performance_config)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if protocol is not None:
@@ -489,6 +509,18 @@ class _InstanceState:
         pulumi.set(self, "networks", value)
 
     @property
+    @pulumi.getter(name="performanceConfig")
+    def performance_config(self) -> Optional[pulumi.Input['InstancePerformanceConfigArgs']]:
+        """
+        Performance configuration for the instance. If not provided, the default performance settings will be used.
+        """
+        return pulumi.get(self, "performance_config")
+
+    @performance_config.setter
+    def performance_config(self, value: Optional[pulumi.Input['InstancePerformanceConfigArgs']]):
+        pulumi.set(self, "performance_config", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "project")
@@ -565,6 +597,7 @@ class Instance(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceNetworkArgs', 'InstanceNetworkArgsDict']]]]] = None,
+                 performance_config: Optional[pulumi.Input[Union['InstancePerformanceConfigArgs', 'InstancePerformanceConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  tier: Optional[pulumi.Input[str]] = None,
@@ -724,6 +757,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceNetworkArgs', 'InstanceNetworkArgsDict']]]] networks: VPC networks to which the instance is connected. For this version,
                only a single network is supported.
                Structure is documented below.
+        :param pulumi.Input[Union['InstancePerformanceConfigArgs', 'InstancePerformanceConfigArgsDict']] performance_config: Performance configuration for the instance. If not provided, the default performance settings will be used.
         :param pulumi.Input[str] protocol: Either NFSv3, for using NFS version 3 as file sharing protocol, or NFSv4.1, for using NFS version 4.1 as file sharing
                protocol. NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE. The default is NFSv3. Default value:
                "NFS_V3" Possible values: ["NFS_V3", "NFS_V4_1"]
@@ -898,6 +932,7 @@ class Instance(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceNetworkArgs', 'InstanceNetworkArgsDict']]]]] = None,
+                 performance_config: Optional[pulumi.Input[Union['InstancePerformanceConfigArgs', 'InstancePerformanceConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  tier: Optional[pulumi.Input[str]] = None,
@@ -924,6 +959,7 @@ class Instance(pulumi.CustomResource):
             if networks is None and not opts.urn:
                 raise TypeError("Missing required property 'networks'")
             __props__.__dict__["networks"] = networks
+            __props__.__dict__["performance_config"] = performance_config
             __props__.__dict__["project"] = project
             __props__.__dict__["protocol"] = protocol
             if tier is None and not opts.urn:
@@ -958,6 +994,7 @@ class Instance(pulumi.CustomResource):
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             networks: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InstanceNetworkArgs', 'InstanceNetworkArgsDict']]]]] = None,
+            performance_config: Optional[pulumi.Input[Union['InstancePerformanceConfigArgs', 'InstancePerformanceConfigArgsDict']]] = None,
             project: Optional[pulumi.Input[str]] = None,
             protocol: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -989,6 +1026,7 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceNetworkArgs', 'InstanceNetworkArgsDict']]]] networks: VPC networks to which the instance is connected. For this version,
                only a single network is supported.
                Structure is documented below.
+        :param pulumi.Input[Union['InstancePerformanceConfigArgs', 'InstancePerformanceConfigArgsDict']] performance_config: Performance configuration for the instance. If not provided, the default performance settings will be used.
         :param pulumi.Input[str] protocol: Either NFSv3, for using NFS version 3 as file sharing protocol, or NFSv4.1, for using NFS version 4.1 as file sharing
                protocol. NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE. The default is NFSv3. Default value:
                "NFS_V3" Possible values: ["NFS_V3", "NFS_V4_1"]
@@ -1014,6 +1052,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
         __props__.__dict__["networks"] = networks
+        __props__.__dict__["performance_config"] = performance_config
         __props__.__dict__["project"] = project
         __props__.__dict__["protocol"] = protocol
         __props__.__dict__["pulumi_labels"] = pulumi_labels
@@ -1123,6 +1162,14 @@ class Instance(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "networks")
+
+    @property
+    @pulumi.getter(name="performanceConfig")
+    def performance_config(self) -> pulumi.Output[Optional['outputs.InstancePerformanceConfig']]:
+        """
+        Performance configuration for the instance. If not provided, the default performance settings will be used.
+        """
+        return pulumi.get(self, "performance_config")
 
     @property
     @pulumi.getter

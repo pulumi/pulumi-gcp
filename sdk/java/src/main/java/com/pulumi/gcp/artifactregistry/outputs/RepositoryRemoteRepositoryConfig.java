@@ -5,6 +5,7 @@ package com.pulumi.gcp.artifactregistry.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.artifactregistry.outputs.RepositoryRemoteRepositoryConfigAptRepository;
+import com.pulumi.gcp.artifactregistry.outputs.RepositoryRemoteRepositoryConfigCommonRepository;
 import com.pulumi.gcp.artifactregistry.outputs.RepositoryRemoteRepositoryConfigDockerRepository;
 import com.pulumi.gcp.artifactregistry.outputs.RepositoryRemoteRepositoryConfigMavenRepository;
 import com.pulumi.gcp.artifactregistry.outputs.RepositoryRemoteRepositoryConfigNpmRepository;
@@ -25,6 +26,12 @@ public final class RepositoryRemoteRepositoryConfig {
      * 
      */
     private @Nullable RepositoryRemoteRepositoryConfigAptRepository aptRepository;
+    /**
+     * @return Specific settings for an Artifact Registory remote repository.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable RepositoryRemoteRepositoryConfigCommonRepository commonRepository;
     /**
      * @return The description of the remote source.
      * 
@@ -81,6 +88,14 @@ public final class RepositoryRemoteRepositoryConfig {
      */
     public Optional<RepositoryRemoteRepositoryConfigAptRepository> aptRepository() {
         return Optional.ofNullable(this.aptRepository);
+    }
+    /**
+     * @return Specific settings for an Artifact Registory remote repository.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<RepositoryRemoteRepositoryConfigCommonRepository> commonRepository() {
+        return Optional.ofNullable(this.commonRepository);
     }
     /**
      * @return The description of the remote source.
@@ -156,6 +171,7 @@ public final class RepositoryRemoteRepositoryConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable RepositoryRemoteRepositoryConfigAptRepository aptRepository;
+        private @Nullable RepositoryRemoteRepositoryConfigCommonRepository commonRepository;
         private @Nullable String description;
         private @Nullable Boolean disableUpstreamValidation;
         private @Nullable RepositoryRemoteRepositoryConfigDockerRepository dockerRepository;
@@ -168,6 +184,7 @@ public final class RepositoryRemoteRepositoryConfig {
         public Builder(RepositoryRemoteRepositoryConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.aptRepository = defaults.aptRepository;
+    	      this.commonRepository = defaults.commonRepository;
     	      this.description = defaults.description;
     	      this.disableUpstreamValidation = defaults.disableUpstreamValidation;
     	      this.dockerRepository = defaults.dockerRepository;
@@ -182,6 +199,12 @@ public final class RepositoryRemoteRepositoryConfig {
         public Builder aptRepository(@Nullable RepositoryRemoteRepositoryConfigAptRepository aptRepository) {
 
             this.aptRepository = aptRepository;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder commonRepository(@Nullable RepositoryRemoteRepositoryConfigCommonRepository commonRepository) {
+
+            this.commonRepository = commonRepository;
             return this;
         }
         @CustomType.Setter
@@ -235,6 +258,7 @@ public final class RepositoryRemoteRepositoryConfig {
         public RepositoryRemoteRepositoryConfig build() {
             final var _resultValue = new RepositoryRemoteRepositoryConfig();
             _resultValue.aptRepository = aptRepository;
+            _resultValue.commonRepository = commonRepository;
             _resultValue.description = description;
             _resultValue.disableUpstreamValidation = disableUpstreamValidation;
             _resultValue.dockerRepository = dockerRepository;

@@ -9632,7 +9632,7 @@ if not MYPY:
         type: pulumi.Input[str]
         """
         The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
-        Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `SUSPEND_RESUME_COMPATIBLE`, `TDX_CAPABLE`, `SEV_LIVE_MIGRATABLE_V2`.
+        Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `IDPF`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `SUSPEND_RESUME_COMPATIBLE`, `TDX_CAPABLE`, `SEV_LIVE_MIGRATABLE_V2`.
         """
 elif False:
     ImageGuestOsFeatureArgsDict: TypeAlias = Mapping[str, Any]
@@ -9643,7 +9643,7 @@ class ImageGuestOsFeatureArgs:
                  type: pulumi.Input[str]):
         """
         :param pulumi.Input[str] type: The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
-               Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `SUSPEND_RESUME_COMPATIBLE`, `TDX_CAPABLE`, `SEV_LIVE_MIGRATABLE_V2`.
+               Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `IDPF`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `SUSPEND_RESUME_COMPATIBLE`, `TDX_CAPABLE`, `SEV_LIVE_MIGRATABLE_V2`.
         """
         pulumi.set(__self__, "type", type)
 
@@ -9652,7 +9652,7 @@ class ImageGuestOsFeatureArgs:
     def type(self) -> pulumi.Input[str]:
         """
         The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
-        Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `SUSPEND_RESUME_COMPATIBLE`, `TDX_CAPABLE`, `SEV_LIVE_MIGRATABLE_V2`.
+        Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `IDPF`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `SUSPEND_RESUME_COMPATIBLE`, `TDX_CAPABLE`, `SEV_LIVE_MIGRATABLE_V2`.
         """
         return pulumi.get(self, "type")
 
@@ -11599,7 +11599,7 @@ if not MYPY:
         """
         nic_type: NotRequired[pulumi.Input[str]]
         """
-        The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET
+        The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, IDPF
         """
         queue_count: NotRequired[pulumi.Input[int]]
         """
@@ -11655,7 +11655,7 @@ class InstanceFromMachineImageNetworkInterfaceArgs:
         :param pulumi.Input[str] network: The name or self_link of the network attached to this interface.
         :param pulumi.Input[str] network_attachment: The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
         :param pulumi.Input[str] network_ip: The private IP address assigned to the instance.
-        :param pulumi.Input[str] nic_type: The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET
+        :param pulumi.Input[str] nic_type: The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, IDPF
         :param pulumi.Input[int] queue_count: The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
         :param pulumi.Input[str] security_policy: A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
         :param pulumi.Input[str] stack_type: The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
@@ -11820,7 +11820,7 @@ class InstanceFromMachineImageNetworkInterfaceArgs:
     @pulumi.getter(name="nicType")
     def nic_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET
+        The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, IDPF
         """
         return pulumi.get(self, "nic_type")
 
@@ -13765,7 +13765,7 @@ if not MYPY:
         """
         nic_type: NotRequired[pulumi.Input[str]]
         """
-        The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET
+        The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, IDPF
         """
         queue_count: NotRequired[pulumi.Input[int]]
         """
@@ -13821,7 +13821,7 @@ class InstanceFromTemplateNetworkInterfaceArgs:
         :param pulumi.Input[str] network: The name or self_link of the network attached to this interface.
         :param pulumi.Input[str] network_attachment: The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
         :param pulumi.Input[str] network_ip: The private IP address assigned to the instance.
-        :param pulumi.Input[str] nic_type: The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET
+        :param pulumi.Input[str] nic_type: The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, IDPF
         :param pulumi.Input[int] queue_count: The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
         :param pulumi.Input[str] security_policy: A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
         :param pulumi.Input[str] stack_type: The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
@@ -13986,7 +13986,7 @@ class InstanceFromTemplateNetworkInterfaceArgs:
     @pulumi.getter(name="nicType")
     def nic_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET
+        The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, IDPF
         """
         return pulumi.get(self, "nic_type")
 
@@ -16523,7 +16523,7 @@ if not MYPY:
         """
         nic_type: NotRequired[pulumi.Input[str]]
         """
-        The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET.
+        The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, IDPF.
         """
         queue_count: NotRequired[pulumi.Input[int]]
         """
@@ -16596,7 +16596,7 @@ class InstanceNetworkInterfaceArgs:
         :param pulumi.Input[str] network_attachment: The URL of the network attachment that this interface should connect to in the following format: `projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}`.
         :param pulumi.Input[str] network_ip: The private IP address to assign to the instance. If
                empty, the address will be automatically assigned.
-        :param pulumi.Input[str] nic_type: The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET.
+        :param pulumi.Input[str] nic_type: The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, IDPF.
         :param pulumi.Input[int] queue_count: The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
         :param pulumi.Input[str] security_policy: A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
         :param pulumi.Input[str] stack_type: The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6 or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
@@ -16778,7 +16778,7 @@ class InstanceNetworkInterfaceArgs:
     @pulumi.getter(name="nicType")
     def nic_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET.
+        The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, IDPF.
         """
         return pulumi.get(self, "nic_type")
 

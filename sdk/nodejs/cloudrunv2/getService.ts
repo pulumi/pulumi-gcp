@@ -99,6 +99,7 @@ export interface GetServiceResult {
     readonly uid: string;
     readonly updateTime: string;
     readonly uri: string;
+    readonly urls: string[];
 }
 /**
  * Get information about a Google Cloud Run v2 Service. For more information see

@@ -22,6 +22,9 @@ __all__ = [
     'ClusterMaintenancePolicyWeeklyMaintenanceWindow',
     'ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTime',
     'ClusterMaintenanceSchedule',
+    'ClusterPersistenceConfig',
+    'ClusterPersistenceConfigAofConfig',
+    'ClusterPersistenceConfigRdbConfig',
     'ClusterPscConfig',
     'ClusterPscConnection',
     'ClusterStateInfo',
@@ -435,6 +438,188 @@ class ClusterMaintenanceSchedule(dict):
         resolution and up to nine fractional digits.
         """
         return pulumi.get(self, "start_time")
+
+
+@pulumi.output_type
+class ClusterPersistenceConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "aofConfig":
+            suggest = "aof_config"
+        elif key == "rdbConfig":
+            suggest = "rdb_config"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterPersistenceConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterPersistenceConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterPersistenceConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 aof_config: Optional['outputs.ClusterPersistenceConfigAofConfig'] = None,
+                 mode: Optional[str] = None,
+                 rdb_config: Optional['outputs.ClusterPersistenceConfigRdbConfig'] = None):
+        """
+        :param 'ClusterPersistenceConfigAofConfigArgs' aof_config: AOF configuration. This field will be ignored if mode is not AOF.
+               Structure is documented below.
+        :param str mode: Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
+               - DISABLED: 	Persistence (both backup and restore) is disabled for the cluster.
+               - RDB: RDB based Persistence is enabled.
+               - AOF: AOF based Persistence is enabled.
+               Possible values are: `PERSISTENCE_MODE_UNSPECIFIED`, `DISABLED`, `RDB`, `AOF`.
+        :param 'ClusterPersistenceConfigRdbConfigArgs' rdb_config: RDB configuration. This field will be ignored if mode is not RDB.
+               Structure is documented below.
+        """
+        if aof_config is not None:
+            pulumi.set(__self__, "aof_config", aof_config)
+        if mode is not None:
+            pulumi.set(__self__, "mode", mode)
+        if rdb_config is not None:
+            pulumi.set(__self__, "rdb_config", rdb_config)
+
+    @property
+    @pulumi.getter(name="aofConfig")
+    def aof_config(self) -> Optional['outputs.ClusterPersistenceConfigAofConfig']:
+        """
+        AOF configuration. This field will be ignored if mode is not AOF.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "aof_config")
+
+    @property
+    @pulumi.getter
+    def mode(self) -> Optional[str]:
+        """
+        Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
+        - DISABLED: 	Persistence (both backup and restore) is disabled for the cluster.
+        - RDB: RDB based Persistence is enabled.
+        - AOF: AOF based Persistence is enabled.
+        Possible values are: `PERSISTENCE_MODE_UNSPECIFIED`, `DISABLED`, `RDB`, `AOF`.
+        """
+        return pulumi.get(self, "mode")
+
+    @property
+    @pulumi.getter(name="rdbConfig")
+    def rdb_config(self) -> Optional['outputs.ClusterPersistenceConfigRdbConfig']:
+        """
+        RDB configuration. This field will be ignored if mode is not RDB.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "rdb_config")
+
+
+@pulumi.output_type
+class ClusterPersistenceConfigAofConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "appendFsync":
+            suggest = "append_fsync"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterPersistenceConfigAofConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterPersistenceConfigAofConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterPersistenceConfigAofConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 append_fsync: Optional[str] = None):
+        """
+        :param str append_fsync: Optional. Available fsync modes.
+               - NO - Do not explicilty call fsync(). Rely on OS defaults.
+               - EVERYSEC - Call fsync() once per second in a background thread. A balance between performance and durability.
+               - ALWAYS - Call fsync() for earch write command.
+               Possible values are: `APPEND_FSYNC_UNSPECIFIED`, `NO`, `EVERYSEC`, `ALWAYS`.
+        """
+        if append_fsync is not None:
+            pulumi.set(__self__, "append_fsync", append_fsync)
+
+    @property
+    @pulumi.getter(name="appendFsync")
+    def append_fsync(self) -> Optional[str]:
+        """
+        Optional. Available fsync modes.
+        - NO - Do not explicilty call fsync(). Rely on OS defaults.
+        - EVERYSEC - Call fsync() once per second in a background thread. A balance between performance and durability.
+        - ALWAYS - Call fsync() for earch write command.
+        Possible values are: `APPEND_FSYNC_UNSPECIFIED`, `NO`, `EVERYSEC`, `ALWAYS`.
+        """
+        return pulumi.get(self, "append_fsync")
+
+
+@pulumi.output_type
+class ClusterPersistenceConfigRdbConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "rdbSnapshotPeriod":
+            suggest = "rdb_snapshot_period"
+        elif key == "rdbSnapshotStartTime":
+            suggest = "rdb_snapshot_start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterPersistenceConfigRdbConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterPersistenceConfigRdbConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterPersistenceConfigRdbConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 rdb_snapshot_period: Optional[str] = None,
+                 rdb_snapshot_start_time: Optional[str] = None):
+        """
+        :param str rdb_snapshot_period: Optional. Available snapshot periods for scheduling.
+               - ONE_HOUR:	Snapshot every 1 hour.
+               - SIX_HOURS:	Snapshot every 6 hours.
+               - TWELVE_HOURS:	Snapshot every 12 hours.
+               - TWENTY_FOUR_HOURS:	Snapshot every 24 hours.
+               Possible values are: `SNAPSHOT_PERIOD_UNSPECIFIED`, `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, `TWENTY_FOUR_HOURS`.
+        :param str rdb_snapshot_start_time: The time that the first snapshot was/will be attempted, and to which
+               future snapshots will be aligned.
+               If not provided, the current time will be used.
+        """
+        if rdb_snapshot_period is not None:
+            pulumi.set(__self__, "rdb_snapshot_period", rdb_snapshot_period)
+        if rdb_snapshot_start_time is not None:
+            pulumi.set(__self__, "rdb_snapshot_start_time", rdb_snapshot_start_time)
+
+    @property
+    @pulumi.getter(name="rdbSnapshotPeriod")
+    def rdb_snapshot_period(self) -> Optional[str]:
+        """
+        Optional. Available snapshot periods for scheduling.
+        - ONE_HOUR:	Snapshot every 1 hour.
+        - SIX_HOURS:	Snapshot every 6 hours.
+        - TWELVE_HOURS:	Snapshot every 12 hours.
+        - TWENTY_FOUR_HOURS:	Snapshot every 24 hours.
+        Possible values are: `SNAPSHOT_PERIOD_UNSPECIFIED`, `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, `TWENTY_FOUR_HOURS`.
+        """
+        return pulumi.get(self, "rdb_snapshot_period")
+
+    @property
+    @pulumi.getter(name="rdbSnapshotStartTime")
+    def rdb_snapshot_start_time(self) -> Optional[str]:
+        """
+        The time that the first snapshot was/will be attempted, and to which
+        future snapshots will be aligned.
+        If not provided, the current time will be used.
+        """
+        return pulumi.get(self, "rdb_snapshot_start_time")
 
 
 @pulumi.output_type

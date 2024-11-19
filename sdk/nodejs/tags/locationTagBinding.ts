@@ -34,13 +34,13 @@ import * as utilities from "../utilities";
  *     description: "For keyname resources.",
  * });
  * const value = new gcp.tags.TagValue("value", {
- *     parent: pulumi.interpolate`tagKeys/${key.name}`,
+ *     parent: key.id,
  *     shortName: "valuename",
  *     description: "For valuename resources.",
  * });
  * const binding = new gcp.tags.LocationTagBinding("binding", {
  *     parent: `//run.googleapis.com/projects/${projectGoogleProject.number}/locations/${_default.location}/services/${_default.name}`,
- *     tagValue: pulumi.interpolate`tagValues/${value.name}`,
+ *     tagValue: value.id,
  *     location: "us-central1",
  * });
  * ```
@@ -62,13 +62,13 @@ import * as utilities from "../utilities";
  *     description: "For keyname resources.",
  * });
  * const value = new gcp.tags.TagValue("value", {
- *     parent: pulumi.interpolate`tagKeys/${key.name}`,
+ *     parent: key.id,
  *     shortName: "valuename",
  *     description: "For valuename resources.",
  * });
  * const binding = new gcp.tags.LocationTagBinding("binding", {
  *     parent: pulumi.interpolate`//compute.googleapis.com/projects/${project.number}/zones/us-central1-a/instances/${instance.instanceId}`,
- *     tagValue: pulumi.interpolate`tagValues/${value.name}`,
+ *     tagValue: value.id,
  *     location: "us-central1-a",
  * });
  * ```

@@ -30,6 +30,11 @@ export const getBackupPlanAssociation: typeof import("./getBackupPlanAssociation
 export const getBackupPlanAssociationOutput: typeof import("./getBackupPlanAssociation").getBackupPlanAssociationOutput = null as any;
 utilities.lazyLoad(exports, ["getBackupPlanAssociation","getBackupPlanAssociationOutput"], () => require("./getBackupPlanAssociation"));
 
+export { GetDataSourceArgs, GetDataSourceResult, GetDataSourceOutputArgs } from "./getDataSource";
+export const getDataSource: typeof import("./getDataSource").getDataSource = null as any;
+export const getDataSourceOutput: typeof import("./getDataSource").getDataSourceOutput = null as any;
+utilities.lazyLoad(exports, ["getDataSource","getDataSourceOutput"], () => require("./getDataSource"));
+
 export { GetManagementServerArgs, GetManagementServerResult, GetManagementServerOutputArgs } from "./getManagementServer";
 export const getManagementServer: typeof import("./getManagementServer").getManagementServer = null as any;
 export const getManagementServerOutput: typeof import("./getManagementServer").getManagementServerOutput = null as any;

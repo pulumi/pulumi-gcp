@@ -20,6 +20,13 @@ namespace Pulumi.Gcp.ArtifactRegistry.Inputs
         public Input<Inputs.RepositoryRemoteRepositoryConfigAptRepositoryArgs>? AptRepository { get; set; }
 
         /// <summary>
+        /// Specific settings for an Artifact Registory remote repository.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("commonRepository")]
+        public Input<Inputs.RepositoryRemoteRepositoryConfigCommonRepositoryArgs>? CommonRepository { get; set; }
+
+        /// <summary>
         /// The description of the remote source.
         /// </summary>
         [Input("description")]

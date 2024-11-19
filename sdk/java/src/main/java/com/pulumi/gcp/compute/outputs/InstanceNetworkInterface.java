@@ -76,7 +76,7 @@ public final class InstanceNetworkInterface {
      */
     private @Nullable String networkIp;
     /**
-     * @return The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET.
+     * @return The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, IDPF.
      * 
      */
     private @Nullable String nicType;
@@ -196,7 +196,7 @@ public final class InstanceNetworkInterface {
         return Optional.ofNullable(this.networkIp);
     }
     /**
-     * @return The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET.
+     * @return The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, IDPF.
      * 
      */
     public Optional<String> nicType() {

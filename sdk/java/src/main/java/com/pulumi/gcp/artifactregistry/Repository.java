@@ -888,6 +888,59 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Artifact Registry Repository Remote Common Repository With Docker
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.artifactregistry.Repository;
+ * import com.pulumi.gcp.artifactregistry.RepositoryArgs;
+ * import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigArgs;
+ * import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigCommonRepositoryArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var upstreamRepo = new Repository("upstreamRepo", RepositoryArgs.builder()
+ *             .location("us-central1")
+ *             .repositoryId("example-upstream-repo")
+ *             .description("example upstream repository")
+ *             .format("DOCKER")
+ *             .build());
+ * 
+ *         var my_repo = new Repository("my-repo", RepositoryArgs.builder()
+ *             .location("us-central1")
+ *             .repositoryId("example-common-remote")
+ *             .description("example remote common repository with docker upstream")
+ *             .format("DOCKER")
+ *             .mode("REMOTE_REPOSITORY")
+ *             .remoteRepositoryConfig(RepositoryRemoteRepositoryConfigArgs.builder()
+ *                 .description("pull-through cache of another Artifact Registry repository")
+ *                 .commonRepository(RepositoryRemoteRepositoryConfigCommonRepositoryArgs.builder()
+ *                     .uri(upstreamRepo.id())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

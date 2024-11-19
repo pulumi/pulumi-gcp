@@ -873,6 +873,542 @@ func (o ClusterMaintenanceScheduleArrayOutput) Index(i pulumi.IntInput) ClusterM
 	}).(ClusterMaintenanceScheduleOutput)
 }
 
+type ClusterPersistenceConfig struct {
+	// AOF configuration. This field will be ignored if mode is not AOF.
+	// Structure is documented below.
+	AofConfig *ClusterPersistenceConfigAofConfig `pulumi:"aofConfig"`
+	// Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
+	// - DISABLED: 	Persistence (both backup and restore) is disabled for the cluster.
+	// - RDB: RDB based Persistence is enabled.
+	// - AOF: AOF based Persistence is enabled.
+	//   Possible values are: `PERSISTENCE_MODE_UNSPECIFIED`, `DISABLED`, `RDB`, `AOF`.
+	Mode *string `pulumi:"mode"`
+	// RDB configuration. This field will be ignored if mode is not RDB.
+	// Structure is documented below.
+	RdbConfig *ClusterPersistenceConfigRdbConfig `pulumi:"rdbConfig"`
+}
+
+// ClusterPersistenceConfigInput is an input type that accepts ClusterPersistenceConfigArgs and ClusterPersistenceConfigOutput values.
+// You can construct a concrete instance of `ClusterPersistenceConfigInput` via:
+//
+//	ClusterPersistenceConfigArgs{...}
+type ClusterPersistenceConfigInput interface {
+	pulumi.Input
+
+	ToClusterPersistenceConfigOutput() ClusterPersistenceConfigOutput
+	ToClusterPersistenceConfigOutputWithContext(context.Context) ClusterPersistenceConfigOutput
+}
+
+type ClusterPersistenceConfigArgs struct {
+	// AOF configuration. This field will be ignored if mode is not AOF.
+	// Structure is documented below.
+	AofConfig ClusterPersistenceConfigAofConfigPtrInput `pulumi:"aofConfig"`
+	// Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
+	// - DISABLED: 	Persistence (both backup and restore) is disabled for the cluster.
+	// - RDB: RDB based Persistence is enabled.
+	// - AOF: AOF based Persistence is enabled.
+	//   Possible values are: `PERSISTENCE_MODE_UNSPECIFIED`, `DISABLED`, `RDB`, `AOF`.
+	Mode pulumi.StringPtrInput `pulumi:"mode"`
+	// RDB configuration. This field will be ignored if mode is not RDB.
+	// Structure is documented below.
+	RdbConfig ClusterPersistenceConfigRdbConfigPtrInput `pulumi:"rdbConfig"`
+}
+
+func (ClusterPersistenceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterPersistenceConfig)(nil)).Elem()
+}
+
+func (i ClusterPersistenceConfigArgs) ToClusterPersistenceConfigOutput() ClusterPersistenceConfigOutput {
+	return i.ToClusterPersistenceConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterPersistenceConfigArgs) ToClusterPersistenceConfigOutputWithContext(ctx context.Context) ClusterPersistenceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterPersistenceConfigOutput)
+}
+
+func (i ClusterPersistenceConfigArgs) ToClusterPersistenceConfigPtrOutput() ClusterPersistenceConfigPtrOutput {
+	return i.ToClusterPersistenceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterPersistenceConfigArgs) ToClusterPersistenceConfigPtrOutputWithContext(ctx context.Context) ClusterPersistenceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterPersistenceConfigOutput).ToClusterPersistenceConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterPersistenceConfigPtrInput is an input type that accepts ClusterPersistenceConfigArgs, ClusterPersistenceConfigPtr and ClusterPersistenceConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterPersistenceConfigPtrInput` via:
+//
+//	        ClusterPersistenceConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterPersistenceConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterPersistenceConfigPtrOutput() ClusterPersistenceConfigPtrOutput
+	ToClusterPersistenceConfigPtrOutputWithContext(context.Context) ClusterPersistenceConfigPtrOutput
+}
+
+type clusterPersistenceConfigPtrType ClusterPersistenceConfigArgs
+
+func ClusterPersistenceConfigPtr(v *ClusterPersistenceConfigArgs) ClusterPersistenceConfigPtrInput {
+	return (*clusterPersistenceConfigPtrType)(v)
+}
+
+func (*clusterPersistenceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterPersistenceConfig)(nil)).Elem()
+}
+
+func (i *clusterPersistenceConfigPtrType) ToClusterPersistenceConfigPtrOutput() ClusterPersistenceConfigPtrOutput {
+	return i.ToClusterPersistenceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterPersistenceConfigPtrType) ToClusterPersistenceConfigPtrOutputWithContext(ctx context.Context) ClusterPersistenceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterPersistenceConfigPtrOutput)
+}
+
+type ClusterPersistenceConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterPersistenceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterPersistenceConfig)(nil)).Elem()
+}
+
+func (o ClusterPersistenceConfigOutput) ToClusterPersistenceConfigOutput() ClusterPersistenceConfigOutput {
+	return o
+}
+
+func (o ClusterPersistenceConfigOutput) ToClusterPersistenceConfigOutputWithContext(ctx context.Context) ClusterPersistenceConfigOutput {
+	return o
+}
+
+func (o ClusterPersistenceConfigOutput) ToClusterPersistenceConfigPtrOutput() ClusterPersistenceConfigPtrOutput {
+	return o.ToClusterPersistenceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterPersistenceConfigOutput) ToClusterPersistenceConfigPtrOutputWithContext(ctx context.Context) ClusterPersistenceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterPersistenceConfig) *ClusterPersistenceConfig {
+		return &v
+	}).(ClusterPersistenceConfigPtrOutput)
+}
+
+// AOF configuration. This field will be ignored if mode is not AOF.
+// Structure is documented below.
+func (o ClusterPersistenceConfigOutput) AofConfig() ClusterPersistenceConfigAofConfigPtrOutput {
+	return o.ApplyT(func(v ClusterPersistenceConfig) *ClusterPersistenceConfigAofConfig { return v.AofConfig }).(ClusterPersistenceConfigAofConfigPtrOutput)
+}
+
+// Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
+//   - DISABLED: 	Persistence (both backup and restore) is disabled for the cluster.
+//   - RDB: RDB based Persistence is enabled.
+//   - AOF: AOF based Persistence is enabled.
+//     Possible values are: `PERSISTENCE_MODE_UNSPECIFIED`, `DISABLED`, `RDB`, `AOF`.
+func (o ClusterPersistenceConfigOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterPersistenceConfig) *string { return v.Mode }).(pulumi.StringPtrOutput)
+}
+
+// RDB configuration. This field will be ignored if mode is not RDB.
+// Structure is documented below.
+func (o ClusterPersistenceConfigOutput) RdbConfig() ClusterPersistenceConfigRdbConfigPtrOutput {
+	return o.ApplyT(func(v ClusterPersistenceConfig) *ClusterPersistenceConfigRdbConfig { return v.RdbConfig }).(ClusterPersistenceConfigRdbConfigPtrOutput)
+}
+
+type ClusterPersistenceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterPersistenceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterPersistenceConfig)(nil)).Elem()
+}
+
+func (o ClusterPersistenceConfigPtrOutput) ToClusterPersistenceConfigPtrOutput() ClusterPersistenceConfigPtrOutput {
+	return o
+}
+
+func (o ClusterPersistenceConfigPtrOutput) ToClusterPersistenceConfigPtrOutputWithContext(ctx context.Context) ClusterPersistenceConfigPtrOutput {
+	return o
+}
+
+func (o ClusterPersistenceConfigPtrOutput) Elem() ClusterPersistenceConfigOutput {
+	return o.ApplyT(func(v *ClusterPersistenceConfig) ClusterPersistenceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterPersistenceConfig
+		return ret
+	}).(ClusterPersistenceConfigOutput)
+}
+
+// AOF configuration. This field will be ignored if mode is not AOF.
+// Structure is documented below.
+func (o ClusterPersistenceConfigPtrOutput) AofConfig() ClusterPersistenceConfigAofConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterPersistenceConfig) *ClusterPersistenceConfigAofConfig {
+		if v == nil {
+			return nil
+		}
+		return v.AofConfig
+	}).(ClusterPersistenceConfigAofConfigPtrOutput)
+}
+
+// Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
+//   - DISABLED: 	Persistence (both backup and restore) is disabled for the cluster.
+//   - RDB: RDB based Persistence is enabled.
+//   - AOF: AOF based Persistence is enabled.
+//     Possible values are: `PERSISTENCE_MODE_UNSPECIFIED`, `DISABLED`, `RDB`, `AOF`.
+func (o ClusterPersistenceConfigPtrOutput) Mode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterPersistenceConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Mode
+	}).(pulumi.StringPtrOutput)
+}
+
+// RDB configuration. This field will be ignored if mode is not RDB.
+// Structure is documented below.
+func (o ClusterPersistenceConfigPtrOutput) RdbConfig() ClusterPersistenceConfigRdbConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterPersistenceConfig) *ClusterPersistenceConfigRdbConfig {
+		if v == nil {
+			return nil
+		}
+		return v.RdbConfig
+	}).(ClusterPersistenceConfigRdbConfigPtrOutput)
+}
+
+type ClusterPersistenceConfigAofConfig struct {
+	// Optional. Available fsync modes.
+	// - NO - Do not explicilty call fsync(). Rely on OS defaults.
+	// - EVERYSEC - Call fsync() once per second in a background thread. A balance between performance and durability.
+	// - ALWAYS - Call fsync() for earch write command.
+	//   Possible values are: `APPEND_FSYNC_UNSPECIFIED`, `NO`, `EVERYSEC`, `ALWAYS`.
+	AppendFsync *string `pulumi:"appendFsync"`
+}
+
+// ClusterPersistenceConfigAofConfigInput is an input type that accepts ClusterPersistenceConfigAofConfigArgs and ClusterPersistenceConfigAofConfigOutput values.
+// You can construct a concrete instance of `ClusterPersistenceConfigAofConfigInput` via:
+//
+//	ClusterPersistenceConfigAofConfigArgs{...}
+type ClusterPersistenceConfigAofConfigInput interface {
+	pulumi.Input
+
+	ToClusterPersistenceConfigAofConfigOutput() ClusterPersistenceConfigAofConfigOutput
+	ToClusterPersistenceConfigAofConfigOutputWithContext(context.Context) ClusterPersistenceConfigAofConfigOutput
+}
+
+type ClusterPersistenceConfigAofConfigArgs struct {
+	// Optional. Available fsync modes.
+	// - NO - Do not explicilty call fsync(). Rely on OS defaults.
+	// - EVERYSEC - Call fsync() once per second in a background thread. A balance between performance and durability.
+	// - ALWAYS - Call fsync() for earch write command.
+	//   Possible values are: `APPEND_FSYNC_UNSPECIFIED`, `NO`, `EVERYSEC`, `ALWAYS`.
+	AppendFsync pulumi.StringPtrInput `pulumi:"appendFsync"`
+}
+
+func (ClusterPersistenceConfigAofConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterPersistenceConfigAofConfig)(nil)).Elem()
+}
+
+func (i ClusterPersistenceConfigAofConfigArgs) ToClusterPersistenceConfigAofConfigOutput() ClusterPersistenceConfigAofConfigOutput {
+	return i.ToClusterPersistenceConfigAofConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterPersistenceConfigAofConfigArgs) ToClusterPersistenceConfigAofConfigOutputWithContext(ctx context.Context) ClusterPersistenceConfigAofConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterPersistenceConfigAofConfigOutput)
+}
+
+func (i ClusterPersistenceConfigAofConfigArgs) ToClusterPersistenceConfigAofConfigPtrOutput() ClusterPersistenceConfigAofConfigPtrOutput {
+	return i.ToClusterPersistenceConfigAofConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterPersistenceConfigAofConfigArgs) ToClusterPersistenceConfigAofConfigPtrOutputWithContext(ctx context.Context) ClusterPersistenceConfigAofConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterPersistenceConfigAofConfigOutput).ToClusterPersistenceConfigAofConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterPersistenceConfigAofConfigPtrInput is an input type that accepts ClusterPersistenceConfigAofConfigArgs, ClusterPersistenceConfigAofConfigPtr and ClusterPersistenceConfigAofConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterPersistenceConfigAofConfigPtrInput` via:
+//
+//	        ClusterPersistenceConfigAofConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterPersistenceConfigAofConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterPersistenceConfigAofConfigPtrOutput() ClusterPersistenceConfigAofConfigPtrOutput
+	ToClusterPersistenceConfigAofConfigPtrOutputWithContext(context.Context) ClusterPersistenceConfigAofConfigPtrOutput
+}
+
+type clusterPersistenceConfigAofConfigPtrType ClusterPersistenceConfigAofConfigArgs
+
+func ClusterPersistenceConfigAofConfigPtr(v *ClusterPersistenceConfigAofConfigArgs) ClusterPersistenceConfigAofConfigPtrInput {
+	return (*clusterPersistenceConfigAofConfigPtrType)(v)
+}
+
+func (*clusterPersistenceConfigAofConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterPersistenceConfigAofConfig)(nil)).Elem()
+}
+
+func (i *clusterPersistenceConfigAofConfigPtrType) ToClusterPersistenceConfigAofConfigPtrOutput() ClusterPersistenceConfigAofConfigPtrOutput {
+	return i.ToClusterPersistenceConfigAofConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterPersistenceConfigAofConfigPtrType) ToClusterPersistenceConfigAofConfigPtrOutputWithContext(ctx context.Context) ClusterPersistenceConfigAofConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterPersistenceConfigAofConfigPtrOutput)
+}
+
+type ClusterPersistenceConfigAofConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterPersistenceConfigAofConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterPersistenceConfigAofConfig)(nil)).Elem()
+}
+
+func (o ClusterPersistenceConfigAofConfigOutput) ToClusterPersistenceConfigAofConfigOutput() ClusterPersistenceConfigAofConfigOutput {
+	return o
+}
+
+func (o ClusterPersistenceConfigAofConfigOutput) ToClusterPersistenceConfigAofConfigOutputWithContext(ctx context.Context) ClusterPersistenceConfigAofConfigOutput {
+	return o
+}
+
+func (o ClusterPersistenceConfigAofConfigOutput) ToClusterPersistenceConfigAofConfigPtrOutput() ClusterPersistenceConfigAofConfigPtrOutput {
+	return o.ToClusterPersistenceConfigAofConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterPersistenceConfigAofConfigOutput) ToClusterPersistenceConfigAofConfigPtrOutputWithContext(ctx context.Context) ClusterPersistenceConfigAofConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterPersistenceConfigAofConfig) *ClusterPersistenceConfigAofConfig {
+		return &v
+	}).(ClusterPersistenceConfigAofConfigPtrOutput)
+}
+
+// Optional. Available fsync modes.
+//   - NO - Do not explicilty call fsync(). Rely on OS defaults.
+//   - EVERYSEC - Call fsync() once per second in a background thread. A balance between performance and durability.
+//   - ALWAYS - Call fsync() for earch write command.
+//     Possible values are: `APPEND_FSYNC_UNSPECIFIED`, `NO`, `EVERYSEC`, `ALWAYS`.
+func (o ClusterPersistenceConfigAofConfigOutput) AppendFsync() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterPersistenceConfigAofConfig) *string { return v.AppendFsync }).(pulumi.StringPtrOutput)
+}
+
+type ClusterPersistenceConfigAofConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterPersistenceConfigAofConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterPersistenceConfigAofConfig)(nil)).Elem()
+}
+
+func (o ClusterPersistenceConfigAofConfigPtrOutput) ToClusterPersistenceConfigAofConfigPtrOutput() ClusterPersistenceConfigAofConfigPtrOutput {
+	return o
+}
+
+func (o ClusterPersistenceConfigAofConfigPtrOutput) ToClusterPersistenceConfigAofConfigPtrOutputWithContext(ctx context.Context) ClusterPersistenceConfigAofConfigPtrOutput {
+	return o
+}
+
+func (o ClusterPersistenceConfigAofConfigPtrOutput) Elem() ClusterPersistenceConfigAofConfigOutput {
+	return o.ApplyT(func(v *ClusterPersistenceConfigAofConfig) ClusterPersistenceConfigAofConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterPersistenceConfigAofConfig
+		return ret
+	}).(ClusterPersistenceConfigAofConfigOutput)
+}
+
+// Optional. Available fsync modes.
+//   - NO - Do not explicilty call fsync(). Rely on OS defaults.
+//   - EVERYSEC - Call fsync() once per second in a background thread. A balance between performance and durability.
+//   - ALWAYS - Call fsync() for earch write command.
+//     Possible values are: `APPEND_FSYNC_UNSPECIFIED`, `NO`, `EVERYSEC`, `ALWAYS`.
+func (o ClusterPersistenceConfigAofConfigPtrOutput) AppendFsync() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterPersistenceConfigAofConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AppendFsync
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterPersistenceConfigRdbConfig struct {
+	// Optional. Available snapshot periods for scheduling.
+	// - ONE_HOUR:	Snapshot every 1 hour.
+	// - SIX_HOURS:	Snapshot every 6 hours.
+	// - TWELVE_HOURS:	Snapshot every 12 hours.
+	// - TWENTY_FOUR_HOURS:	Snapshot every 24 hours.
+	//   Possible values are: `SNAPSHOT_PERIOD_UNSPECIFIED`, `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, `TWENTY_FOUR_HOURS`.
+	RdbSnapshotPeriod *string `pulumi:"rdbSnapshotPeriod"`
+	// The time that the first snapshot was/will be attempted, and to which
+	// future snapshots will be aligned.
+	// If not provided, the current time will be used.
+	RdbSnapshotStartTime *string `pulumi:"rdbSnapshotStartTime"`
+}
+
+// ClusterPersistenceConfigRdbConfigInput is an input type that accepts ClusterPersistenceConfigRdbConfigArgs and ClusterPersistenceConfigRdbConfigOutput values.
+// You can construct a concrete instance of `ClusterPersistenceConfigRdbConfigInput` via:
+//
+//	ClusterPersistenceConfigRdbConfigArgs{...}
+type ClusterPersistenceConfigRdbConfigInput interface {
+	pulumi.Input
+
+	ToClusterPersistenceConfigRdbConfigOutput() ClusterPersistenceConfigRdbConfigOutput
+	ToClusterPersistenceConfigRdbConfigOutputWithContext(context.Context) ClusterPersistenceConfigRdbConfigOutput
+}
+
+type ClusterPersistenceConfigRdbConfigArgs struct {
+	// Optional. Available snapshot periods for scheduling.
+	// - ONE_HOUR:	Snapshot every 1 hour.
+	// - SIX_HOURS:	Snapshot every 6 hours.
+	// - TWELVE_HOURS:	Snapshot every 12 hours.
+	// - TWENTY_FOUR_HOURS:	Snapshot every 24 hours.
+	//   Possible values are: `SNAPSHOT_PERIOD_UNSPECIFIED`, `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, `TWENTY_FOUR_HOURS`.
+	RdbSnapshotPeriod pulumi.StringPtrInput `pulumi:"rdbSnapshotPeriod"`
+	// The time that the first snapshot was/will be attempted, and to which
+	// future snapshots will be aligned.
+	// If not provided, the current time will be used.
+	RdbSnapshotStartTime pulumi.StringPtrInput `pulumi:"rdbSnapshotStartTime"`
+}
+
+func (ClusterPersistenceConfigRdbConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterPersistenceConfigRdbConfig)(nil)).Elem()
+}
+
+func (i ClusterPersistenceConfigRdbConfigArgs) ToClusterPersistenceConfigRdbConfigOutput() ClusterPersistenceConfigRdbConfigOutput {
+	return i.ToClusterPersistenceConfigRdbConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterPersistenceConfigRdbConfigArgs) ToClusterPersistenceConfigRdbConfigOutputWithContext(ctx context.Context) ClusterPersistenceConfigRdbConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterPersistenceConfigRdbConfigOutput)
+}
+
+func (i ClusterPersistenceConfigRdbConfigArgs) ToClusterPersistenceConfigRdbConfigPtrOutput() ClusterPersistenceConfigRdbConfigPtrOutput {
+	return i.ToClusterPersistenceConfigRdbConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterPersistenceConfigRdbConfigArgs) ToClusterPersistenceConfigRdbConfigPtrOutputWithContext(ctx context.Context) ClusterPersistenceConfigRdbConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterPersistenceConfigRdbConfigOutput).ToClusterPersistenceConfigRdbConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterPersistenceConfigRdbConfigPtrInput is an input type that accepts ClusterPersistenceConfigRdbConfigArgs, ClusterPersistenceConfigRdbConfigPtr and ClusterPersistenceConfigRdbConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterPersistenceConfigRdbConfigPtrInput` via:
+//
+//	        ClusterPersistenceConfigRdbConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterPersistenceConfigRdbConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterPersistenceConfigRdbConfigPtrOutput() ClusterPersistenceConfigRdbConfigPtrOutput
+	ToClusterPersistenceConfigRdbConfigPtrOutputWithContext(context.Context) ClusterPersistenceConfigRdbConfigPtrOutput
+}
+
+type clusterPersistenceConfigRdbConfigPtrType ClusterPersistenceConfigRdbConfigArgs
+
+func ClusterPersistenceConfigRdbConfigPtr(v *ClusterPersistenceConfigRdbConfigArgs) ClusterPersistenceConfigRdbConfigPtrInput {
+	return (*clusterPersistenceConfigRdbConfigPtrType)(v)
+}
+
+func (*clusterPersistenceConfigRdbConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterPersistenceConfigRdbConfig)(nil)).Elem()
+}
+
+func (i *clusterPersistenceConfigRdbConfigPtrType) ToClusterPersistenceConfigRdbConfigPtrOutput() ClusterPersistenceConfigRdbConfigPtrOutput {
+	return i.ToClusterPersistenceConfigRdbConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterPersistenceConfigRdbConfigPtrType) ToClusterPersistenceConfigRdbConfigPtrOutputWithContext(ctx context.Context) ClusterPersistenceConfigRdbConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterPersistenceConfigRdbConfigPtrOutput)
+}
+
+type ClusterPersistenceConfigRdbConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterPersistenceConfigRdbConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterPersistenceConfigRdbConfig)(nil)).Elem()
+}
+
+func (o ClusterPersistenceConfigRdbConfigOutput) ToClusterPersistenceConfigRdbConfigOutput() ClusterPersistenceConfigRdbConfigOutput {
+	return o
+}
+
+func (o ClusterPersistenceConfigRdbConfigOutput) ToClusterPersistenceConfigRdbConfigOutputWithContext(ctx context.Context) ClusterPersistenceConfigRdbConfigOutput {
+	return o
+}
+
+func (o ClusterPersistenceConfigRdbConfigOutput) ToClusterPersistenceConfigRdbConfigPtrOutput() ClusterPersistenceConfigRdbConfigPtrOutput {
+	return o.ToClusterPersistenceConfigRdbConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterPersistenceConfigRdbConfigOutput) ToClusterPersistenceConfigRdbConfigPtrOutputWithContext(ctx context.Context) ClusterPersistenceConfigRdbConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterPersistenceConfigRdbConfig) *ClusterPersistenceConfigRdbConfig {
+		return &v
+	}).(ClusterPersistenceConfigRdbConfigPtrOutput)
+}
+
+// Optional. Available snapshot periods for scheduling.
+//   - ONE_HOUR:	Snapshot every 1 hour.
+//   - SIX_HOURS:	Snapshot every 6 hours.
+//   - TWELVE_HOURS:	Snapshot every 12 hours.
+//   - TWENTY_FOUR_HOURS:	Snapshot every 24 hours.
+//     Possible values are: `SNAPSHOT_PERIOD_UNSPECIFIED`, `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, `TWENTY_FOUR_HOURS`.
+func (o ClusterPersistenceConfigRdbConfigOutput) RdbSnapshotPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterPersistenceConfigRdbConfig) *string { return v.RdbSnapshotPeriod }).(pulumi.StringPtrOutput)
+}
+
+// The time that the first snapshot was/will be attempted, and to which
+// future snapshots will be aligned.
+// If not provided, the current time will be used.
+func (o ClusterPersistenceConfigRdbConfigOutput) RdbSnapshotStartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterPersistenceConfigRdbConfig) *string { return v.RdbSnapshotStartTime }).(pulumi.StringPtrOutput)
+}
+
+type ClusterPersistenceConfigRdbConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterPersistenceConfigRdbConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterPersistenceConfigRdbConfig)(nil)).Elem()
+}
+
+func (o ClusterPersistenceConfigRdbConfigPtrOutput) ToClusterPersistenceConfigRdbConfigPtrOutput() ClusterPersistenceConfigRdbConfigPtrOutput {
+	return o
+}
+
+func (o ClusterPersistenceConfigRdbConfigPtrOutput) ToClusterPersistenceConfigRdbConfigPtrOutputWithContext(ctx context.Context) ClusterPersistenceConfigRdbConfigPtrOutput {
+	return o
+}
+
+func (o ClusterPersistenceConfigRdbConfigPtrOutput) Elem() ClusterPersistenceConfigRdbConfigOutput {
+	return o.ApplyT(func(v *ClusterPersistenceConfigRdbConfig) ClusterPersistenceConfigRdbConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterPersistenceConfigRdbConfig
+		return ret
+	}).(ClusterPersistenceConfigRdbConfigOutput)
+}
+
+// Optional. Available snapshot periods for scheduling.
+//   - ONE_HOUR:	Snapshot every 1 hour.
+//   - SIX_HOURS:	Snapshot every 6 hours.
+//   - TWELVE_HOURS:	Snapshot every 12 hours.
+//   - TWENTY_FOUR_HOURS:	Snapshot every 24 hours.
+//     Possible values are: `SNAPSHOT_PERIOD_UNSPECIFIED`, `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, `TWENTY_FOUR_HOURS`.
+func (o ClusterPersistenceConfigRdbConfigPtrOutput) RdbSnapshotPeriod() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterPersistenceConfigRdbConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RdbSnapshotPeriod
+	}).(pulumi.StringPtrOutput)
+}
+
+// The time that the first snapshot was/will be attempted, and to which
+// future snapshots will be aligned.
+// If not provided, the current time will be used.
+func (o ClusterPersistenceConfigRdbConfigPtrOutput) RdbSnapshotStartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterPersistenceConfigRdbConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RdbSnapshotStartTime
+	}).(pulumi.StringPtrOutput)
+}
+
 type ClusterPscConfig struct {
 	// Required. The consumer network where the network address of
 	// the discovery endpoint will be reserved, in the form of
@@ -3678,6 +4214,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeInput)(nil)).Elem(), ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMaintenanceScheduleInput)(nil)).Elem(), ClusterMaintenanceScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterMaintenanceScheduleArrayInput)(nil)).Elem(), ClusterMaintenanceScheduleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterPersistenceConfigInput)(nil)).Elem(), ClusterPersistenceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterPersistenceConfigPtrInput)(nil)).Elem(), ClusterPersistenceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterPersistenceConfigAofConfigInput)(nil)).Elem(), ClusterPersistenceConfigAofConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterPersistenceConfigAofConfigPtrInput)(nil)).Elem(), ClusterPersistenceConfigAofConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterPersistenceConfigRdbConfigInput)(nil)).Elem(), ClusterPersistenceConfigRdbConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterPersistenceConfigRdbConfigPtrInput)(nil)).Elem(), ClusterPersistenceConfigRdbConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterPscConfigInput)(nil)).Elem(), ClusterPscConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterPscConfigArrayInput)(nil)).Elem(), ClusterPscConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterPscConnectionInput)(nil)).Elem(), ClusterPscConnectionArgs{})
@@ -3726,6 +4268,12 @@ func init() {
 	pulumi.RegisterOutputType(ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeOutput{})
 	pulumi.RegisterOutputType(ClusterMaintenanceScheduleOutput{})
 	pulumi.RegisterOutputType(ClusterMaintenanceScheduleArrayOutput{})
+	pulumi.RegisterOutputType(ClusterPersistenceConfigOutput{})
+	pulumi.RegisterOutputType(ClusterPersistenceConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterPersistenceConfigAofConfigOutput{})
+	pulumi.RegisterOutputType(ClusterPersistenceConfigAofConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterPersistenceConfigRdbConfigOutput{})
+	pulumi.RegisterOutputType(ClusterPersistenceConfigRdbConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterPscConfigOutput{})
 	pulumi.RegisterOutputType(ClusterPscConfigArrayOutput{})
 	pulumi.RegisterOutputType(ClusterPscConnectionOutput{})

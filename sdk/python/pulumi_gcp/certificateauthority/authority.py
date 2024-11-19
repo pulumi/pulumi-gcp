@@ -797,40 +797,24 @@ class Authority(pulumi.CustomResource):
             config={
                 "subject_config": {
                     "subject": {
-                        "organization": "HashiCorp",
+                        "organization": "ACME",
                         "common_name": "my-certificate-authority",
-                    },
-                    "subject_alt_name": {
-                        "dns_names": ["hashicorp.com"],
                     },
                 },
                 "x509_config": {
                     "ca_options": {
                         "is_ca": True,
-                        "max_issuer_path_length": 10,
                     },
                     "key_usage": {
                         "base_key_usage": {
-                            "digital_signature": True,
-                            "content_commitment": True,
-                            "key_encipherment": False,
-                            "data_encipherment": True,
-                            "key_agreement": True,
                             "cert_sign": True,
                             "crl_sign": True,
-                            "decipher_only": True,
                         },
-                        "extended_key_usage": {
-                            "server_auth": True,
-                            "client_auth": False,
-                            "email_protection": True,
-                            "code_signing": True,
-                            "time_stamping": True,
-                        },
+                        "extended_key_usage": {},
                     },
                 },
             },
-            lifetime="86400s",
+            lifetime=f"{10 * 365 * 24 * 3600}s",
             key_spec={
                 "algorithm": "RSA_PKCS1_4096_SHA256",
             })
@@ -848,11 +832,8 @@ class Authority(pulumi.CustomResource):
             config={
                 "subject_config": {
                     "subject": {
-                        "organization": "HashiCorp",
+                        "organization": "ACME",
                         "common_name": "my-certificate-authority",
-                    },
-                    "subject_alt_name": {
-                        "dns_names": ["hashicorp.com"],
                     },
                 },
                 "x509_config": {
@@ -864,9 +845,7 @@ class Authority(pulumi.CustomResource):
                             "cert_sign": True,
                             "crl_sign": True,
                         },
-                        "extended_key_usage": {
-                            "server_auth": False,
-                        },
+                        "extended_key_usage": {},
                     },
                 },
             },
@@ -887,42 +866,27 @@ class Authority(pulumi.CustomResource):
             config={
                 "subject_config": {
                     "subject": {
-                        "organization": "HashiCorp",
+                        "organization": "ACME",
                         "common_name": "my-subordinate-authority",
-                    },
-                    "subject_alt_name": {
-                        "dns_names": ["hashicorp.com"],
                     },
                 },
                 "x509_config": {
                     "ca_options": {
                         "is_ca": True,
-                        "max_issuer_path_length": 0,
+                        "zero_max_issuer_path_length": True,
                     },
                     "key_usage": {
                         "base_key_usage": {
-                            "digital_signature": True,
-                            "content_commitment": True,
-                            "key_encipherment": False,
-                            "data_encipherment": True,
-                            "key_agreement": True,
                             "cert_sign": True,
                             "crl_sign": True,
-                            "decipher_only": True,
                         },
-                        "extended_key_usage": {
-                            "server_auth": True,
-                            "client_auth": False,
-                            "email_protection": True,
-                            "code_signing": True,
-                            "time_stamping": True,
-                        },
+                        "extended_key_usage": {},
                     },
                 },
             },
-            lifetime="86400s",
+            lifetime=f"{5 * 365 * 24 * 3600}s",
             key_spec={
-                "algorithm": "RSA_PKCS1_4096_SHA256",
+                "algorithm": "RSA_PKCS1_2048_SHA256",
             },
             type="SUBORDINATE")
         ```
@@ -959,16 +923,13 @@ class Authority(pulumi.CustomResource):
                 "x509_config": {
                     "ca_options": {
                         "is_ca": True,
-                        "max_issuer_path_length": 10,
                     },
                     "key_usage": {
                         "base_key_usage": {
                             "cert_sign": True,
                             "crl_sign": True,
                         },
-                        "extended_key_usage": {
-                            "server_auth": False,
-                        },
+                        "extended_key_usage": {},
                     },
                     "name_constraints": {
                         "critical": True,
@@ -1002,11 +963,8 @@ class Authority(pulumi.CustomResource):
             config={
                 "subject_config": {
                     "subject": {
-                        "organization": "HashiCorp",
+                        "organization": "ACME",
                         "common_name": "my-certificate-authority",
-                    },
-                    "subject_alt_name": {
-                        "dns_names": ["hashicorp.com"],
                     },
                 },
                 "subject_key_id": {
@@ -1015,30 +973,17 @@ class Authority(pulumi.CustomResource):
                 "x509_config": {
                     "ca_options": {
                         "is_ca": True,
-                        "max_issuer_path_length": 10,
                     },
                     "key_usage": {
                         "base_key_usage": {
-                            "digital_signature": True,
-                            "content_commitment": True,
-                            "key_encipherment": False,
-                            "data_encipherment": True,
-                            "key_agreement": True,
                             "cert_sign": True,
                             "crl_sign": True,
-                            "decipher_only": True,
                         },
-                        "extended_key_usage": {
-                            "server_auth": True,
-                            "client_auth": False,
-                            "email_protection": True,
-                            "code_signing": True,
-                            "time_stamping": True,
-                        },
+                        "extended_key_usage": {},
                     },
                 },
             },
-            lifetime="86400s",
+            lifetime=f"{10 * 365 * 24 * 3600}s",
             key_spec={
                 "cloud_kms_key_version": "projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key/cryptoKeyVersions/1",
             })
@@ -1139,40 +1084,24 @@ class Authority(pulumi.CustomResource):
             config={
                 "subject_config": {
                     "subject": {
-                        "organization": "HashiCorp",
+                        "organization": "ACME",
                         "common_name": "my-certificate-authority",
-                    },
-                    "subject_alt_name": {
-                        "dns_names": ["hashicorp.com"],
                     },
                 },
                 "x509_config": {
                     "ca_options": {
                         "is_ca": True,
-                        "max_issuer_path_length": 10,
                     },
                     "key_usage": {
                         "base_key_usage": {
-                            "digital_signature": True,
-                            "content_commitment": True,
-                            "key_encipherment": False,
-                            "data_encipherment": True,
-                            "key_agreement": True,
                             "cert_sign": True,
                             "crl_sign": True,
-                            "decipher_only": True,
                         },
-                        "extended_key_usage": {
-                            "server_auth": True,
-                            "client_auth": False,
-                            "email_protection": True,
-                            "code_signing": True,
-                            "time_stamping": True,
-                        },
+                        "extended_key_usage": {},
                     },
                 },
             },
-            lifetime="86400s",
+            lifetime=f"{10 * 365 * 24 * 3600}s",
             key_spec={
                 "algorithm": "RSA_PKCS1_4096_SHA256",
             })
@@ -1190,11 +1119,8 @@ class Authority(pulumi.CustomResource):
             config={
                 "subject_config": {
                     "subject": {
-                        "organization": "HashiCorp",
+                        "organization": "ACME",
                         "common_name": "my-certificate-authority",
-                    },
-                    "subject_alt_name": {
-                        "dns_names": ["hashicorp.com"],
                     },
                 },
                 "x509_config": {
@@ -1206,9 +1132,7 @@ class Authority(pulumi.CustomResource):
                             "cert_sign": True,
                             "crl_sign": True,
                         },
-                        "extended_key_usage": {
-                            "server_auth": False,
-                        },
+                        "extended_key_usage": {},
                     },
                 },
             },
@@ -1229,42 +1153,27 @@ class Authority(pulumi.CustomResource):
             config={
                 "subject_config": {
                     "subject": {
-                        "organization": "HashiCorp",
+                        "organization": "ACME",
                         "common_name": "my-subordinate-authority",
-                    },
-                    "subject_alt_name": {
-                        "dns_names": ["hashicorp.com"],
                     },
                 },
                 "x509_config": {
                     "ca_options": {
                         "is_ca": True,
-                        "max_issuer_path_length": 0,
+                        "zero_max_issuer_path_length": True,
                     },
                     "key_usage": {
                         "base_key_usage": {
-                            "digital_signature": True,
-                            "content_commitment": True,
-                            "key_encipherment": False,
-                            "data_encipherment": True,
-                            "key_agreement": True,
                             "cert_sign": True,
                             "crl_sign": True,
-                            "decipher_only": True,
                         },
-                        "extended_key_usage": {
-                            "server_auth": True,
-                            "client_auth": False,
-                            "email_protection": True,
-                            "code_signing": True,
-                            "time_stamping": True,
-                        },
+                        "extended_key_usage": {},
                     },
                 },
             },
-            lifetime="86400s",
+            lifetime=f"{5 * 365 * 24 * 3600}s",
             key_spec={
-                "algorithm": "RSA_PKCS1_4096_SHA256",
+                "algorithm": "RSA_PKCS1_2048_SHA256",
             },
             type="SUBORDINATE")
         ```
@@ -1301,16 +1210,13 @@ class Authority(pulumi.CustomResource):
                 "x509_config": {
                     "ca_options": {
                         "is_ca": True,
-                        "max_issuer_path_length": 10,
                     },
                     "key_usage": {
                         "base_key_usage": {
                             "cert_sign": True,
                             "crl_sign": True,
                         },
-                        "extended_key_usage": {
-                            "server_auth": False,
-                        },
+                        "extended_key_usage": {},
                     },
                     "name_constraints": {
                         "critical": True,
@@ -1344,11 +1250,8 @@ class Authority(pulumi.CustomResource):
             config={
                 "subject_config": {
                     "subject": {
-                        "organization": "HashiCorp",
+                        "organization": "ACME",
                         "common_name": "my-certificate-authority",
-                    },
-                    "subject_alt_name": {
-                        "dns_names": ["hashicorp.com"],
                     },
                 },
                 "subject_key_id": {
@@ -1357,30 +1260,17 @@ class Authority(pulumi.CustomResource):
                 "x509_config": {
                     "ca_options": {
                         "is_ca": True,
-                        "max_issuer_path_length": 10,
                     },
                     "key_usage": {
                         "base_key_usage": {
-                            "digital_signature": True,
-                            "content_commitment": True,
-                            "key_encipherment": False,
-                            "data_encipherment": True,
-                            "key_agreement": True,
                             "cert_sign": True,
                             "crl_sign": True,
-                            "decipher_only": True,
                         },
-                        "extended_key_usage": {
-                            "server_auth": True,
-                            "client_auth": False,
-                            "email_protection": True,
-                            "code_signing": True,
-                            "time_stamping": True,
-                        },
+                        "extended_key_usage": {},
                     },
                 },
             },
-            lifetime="86400s",
+            lifetime=f"{10 * 365 * 24 * 3600}s",
             key_spec={
                 "cloud_kms_key_version": "projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key/cryptoKeyVersions/1",
             })

@@ -36,40 +36,24 @@ import * as utilities from "../utilities";
  *     config: {
  *         subjectConfig: {
  *             subject: {
- *                 organization: "HashiCorp",
+ *                 organization: "ACME",
  *                 commonName: "my-certificate-authority",
- *             },
- *             subjectAltName: {
- *                 dnsNames: ["hashicorp.com"],
  *             },
  *         },
  *         x509Config: {
  *             caOptions: {
  *                 isCa: true,
- *                 maxIssuerPathLength: 10,
  *             },
  *             keyUsage: {
  *                 baseKeyUsage: {
- *                     digitalSignature: true,
- *                     contentCommitment: true,
- *                     keyEncipherment: false,
- *                     dataEncipherment: true,
- *                     keyAgreement: true,
  *                     certSign: true,
  *                     crlSign: true,
- *                     decipherOnly: true,
  *                 },
- *                 extendedKeyUsage: {
- *                     serverAuth: true,
- *                     clientAuth: false,
- *                     emailProtection: true,
- *                     codeSigning: true,
- *                     timeStamping: true,
- *                 },
+ *                 extendedKeyUsage: {},
  *             },
  *         },
  *     },
- *     lifetime: "86400s",
+ *     lifetime: `${10 * 365 * 24 * 3600}s`,
  *     keySpec: {
  *         algorithm: "RSA_PKCS1_4096_SHA256",
  *     },
@@ -88,11 +72,8 @@ import * as utilities from "../utilities";
  *     config: {
  *         subjectConfig: {
  *             subject: {
- *                 organization: "HashiCorp",
+ *                 organization: "ACME",
  *                 commonName: "my-certificate-authority",
- *             },
- *             subjectAltName: {
- *                 dnsNames: ["hashicorp.com"],
  *             },
  *         },
  *         x509Config: {
@@ -104,9 +85,7 @@ import * as utilities from "../utilities";
  *                     certSign: true,
  *                     crlSign: true,
  *                 },
- *                 extendedKeyUsage: {
- *                     serverAuth: false,
- *                 },
+ *                 extendedKeyUsage: {},
  *             },
  *         },
  *     },
@@ -128,42 +107,27 @@ import * as utilities from "../utilities";
  *     config: {
  *         subjectConfig: {
  *             subject: {
- *                 organization: "HashiCorp",
+ *                 organization: "ACME",
  *                 commonName: "my-subordinate-authority",
- *             },
- *             subjectAltName: {
- *                 dnsNames: ["hashicorp.com"],
  *             },
  *         },
  *         x509Config: {
  *             caOptions: {
  *                 isCa: true,
- *                 maxIssuerPathLength: 0,
+ *                 zeroMaxIssuerPathLength: true,
  *             },
  *             keyUsage: {
  *                 baseKeyUsage: {
- *                     digitalSignature: true,
- *                     contentCommitment: true,
- *                     keyEncipherment: false,
- *                     dataEncipherment: true,
- *                     keyAgreement: true,
  *                     certSign: true,
  *                     crlSign: true,
- *                     decipherOnly: true,
  *                 },
- *                 extendedKeyUsage: {
- *                     serverAuth: true,
- *                     clientAuth: false,
- *                     emailProtection: true,
- *                     codeSigning: true,
- *                     timeStamping: true,
- *                 },
+ *                 extendedKeyUsage: {},
  *             },
  *         },
  *     },
- *     lifetime: "86400s",
+ *     lifetime: `${5 * 365 * 24 * 3600}s`,
  *     keySpec: {
- *         algorithm: "RSA_PKCS1_4096_SHA256",
+ *         algorithm: "RSA_PKCS1_2048_SHA256",
  *     },
  *     type: "SUBORDINATE",
  * });
@@ -203,16 +167,13 @@ import * as utilities from "../utilities";
  *         x509Config: {
  *             caOptions: {
  *                 isCa: true,
- *                 maxIssuerPathLength: 10,
  *             },
  *             keyUsage: {
  *                 baseKeyUsage: {
  *                     certSign: true,
  *                     crlSign: true,
  *                 },
- *                 extendedKeyUsage: {
- *                     serverAuth: false,
- *                 },
+ *                 extendedKeyUsage: {},
  *             },
  *             nameConstraints: {
  *                 critical: true,
@@ -248,11 +209,8 @@ import * as utilities from "../utilities";
  *     config: {
  *         subjectConfig: {
  *             subject: {
- *                 organization: "HashiCorp",
+ *                 organization: "ACME",
  *                 commonName: "my-certificate-authority",
- *             },
- *             subjectAltName: {
- *                 dnsNames: ["hashicorp.com"],
  *             },
  *         },
  *         subjectKeyId: {
@@ -261,30 +219,17 @@ import * as utilities from "../utilities";
  *         x509Config: {
  *             caOptions: {
  *                 isCa: true,
- *                 maxIssuerPathLength: 10,
  *             },
  *             keyUsage: {
  *                 baseKeyUsage: {
- *                     digitalSignature: true,
- *                     contentCommitment: true,
- *                     keyEncipherment: false,
- *                     dataEncipherment: true,
- *                     keyAgreement: true,
  *                     certSign: true,
  *                     crlSign: true,
- *                     decipherOnly: true,
  *                 },
- *                 extendedKeyUsage: {
- *                     serverAuth: true,
- *                     clientAuth: false,
- *                     emailProtection: true,
- *                     codeSigning: true,
- *                     timeStamping: true,
- *                 },
+ *                 extendedKeyUsage: {},
  *             },
  *         },
  *     },
- *     lifetime: "86400s",
+ *     lifetime: `${10 * 365 * 24 * 3600}s`,
  *     keySpec: {
  *         cloudKmsKeyVersion: "projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key/cryptoKeyVersions/1",
  *     },

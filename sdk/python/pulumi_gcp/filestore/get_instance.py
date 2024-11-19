@@ -27,7 +27,7 @@ class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, create_time=None, deletion_protection_enabled=None, deletion_protection_reason=None, description=None, effective_labels=None, etag=None, file_shares=None, id=None, kms_key_name=None, labels=None, location=None, name=None, networks=None, project=None, protocol=None, pulumi_labels=None, tier=None, zone=None):
+    def __init__(__self__, create_time=None, deletion_protection_enabled=None, deletion_protection_reason=None, description=None, effective_labels=None, etag=None, file_shares=None, id=None, kms_key_name=None, labels=None, location=None, name=None, networks=None, performance_configs=None, project=None, protocol=None, pulumi_labels=None, tier=None, zone=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -67,6 +67,9 @@ class GetInstanceResult:
         if networks and not isinstance(networks, list):
             raise TypeError("Expected argument 'networks' to be a list")
         pulumi.set(__self__, "networks", networks)
+        if performance_configs and not isinstance(performance_configs, list):
+            raise TypeError("Expected argument 'performance_configs' to be a list")
+        pulumi.set(__self__, "performance_configs", performance_configs)
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
@@ -152,6 +155,11 @@ class GetInstanceResult:
         return pulumi.get(self, "networks")
 
     @property
+    @pulumi.getter(name="performanceConfigs")
+    def performance_configs(self) -> Sequence['outputs.GetInstancePerformanceConfigResult']:
+        return pulumi.get(self, "performance_configs")
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[str]:
         return pulumi.get(self, "project")
@@ -196,6 +204,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             location=self.location,
             name=self.name,
             networks=self.networks,
+            performance_configs=self.performance_configs,
             project=self.project,
             protocol=self.protocol,
             pulumi_labels=self.pulumi_labels,
@@ -253,6 +262,7 @@ def get_instance(location: Optional[str] = None,
         location=pulumi.get(__ret__, 'location'),
         name=pulumi.get(__ret__, 'name'),
         networks=pulumi.get(__ret__, 'networks'),
+        performance_configs=pulumi.get(__ret__, 'performance_configs'),
         project=pulumi.get(__ret__, 'project'),
         protocol=pulumi.get(__ret__, 'protocol'),
         pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
@@ -307,6 +317,7 @@ def get_instance_output(location: Optional[pulumi.Input[Optional[str]]] = None,
         location=pulumi.get(__response__, 'location'),
         name=pulumi.get(__response__, 'name'),
         networks=pulumi.get(__response__, 'networks'),
+        performance_configs=pulumi.get(__response__, 'performance_configs'),
         project=pulumi.get(__response__, 'project'),
         protocol=pulumi.get(__response__, 'protocol'),
         pulumi_labels=pulumi.get(__response__, 'pulumi_labels'),

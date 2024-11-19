@@ -47,15 +47,8 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///             {
     ///                 Subject = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigSubjectArgs
     ///                 {
-    ///                     Organization = "HashiCorp",
+    ///                     Organization = "ACME",
     ///                     CommonName = "my-certificate-authority",
-    ///                 },
-    ///                 SubjectAltName = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigSubjectAltNameArgs
-    ///                 {
-    ///                     DnsNames = new[]
-    ///                     {
-    ///                         "hashicorp.com",
-    ///                     },
     ///                 },
     ///             },
     ///             X509Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigArgs
@@ -63,33 +56,19 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///                 CaOptions = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigCaOptionsArgs
     ///                 {
     ///                     IsCa = true,
-    ///                     MaxIssuerPathLength = 10,
     ///                 },
     ///                 KeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageArgs
     ///                 {
     ///                     BaseKeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs
     ///                     {
-    ///                         DigitalSignature = true,
-    ///                         ContentCommitment = true,
-    ///                         KeyEncipherment = false,
-    ///                         DataEncipherment = true,
-    ///                         KeyAgreement = true,
     ///                         CertSign = true,
     ///                         CrlSign = true,
-    ///                         DecipherOnly = true,
     ///                     },
-    ///                     ExtendedKeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs
-    ///                     {
-    ///                         ServerAuth = true,
-    ///                         ClientAuth = false,
-    ///                         EmailProtection = true,
-    ///                         CodeSigning = true,
-    ///                         TimeStamping = true,
-    ///                     },
+    ///                     ExtendedKeyUsage = null,
     ///                 },
     ///             },
     ///         },
-    ///         Lifetime = "86400s",
+    ///         Lifetime = $"{10 * 365 * 24 * 3600}s",
     ///         KeySpec = new Gcp.CertificateAuthority.Inputs.AuthorityKeySpecArgs
     ///         {
     ///             Algorithm = "RSA_PKCS1_4096_SHA256",
@@ -119,15 +98,8 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///             {
     ///                 Subject = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigSubjectArgs
     ///                 {
-    ///                     Organization = "HashiCorp",
+    ///                     Organization = "ACME",
     ///                     CommonName = "my-certificate-authority",
-    ///                 },
-    ///                 SubjectAltName = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigSubjectAltNameArgs
-    ///                 {
-    ///                     DnsNames = new[]
-    ///                     {
-    ///                         "hashicorp.com",
-    ///                     },
     ///                 },
     ///             },
     ///             X509Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigArgs
@@ -143,10 +115,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///                         CertSign = true,
     ///                         CrlSign = true,
     ///                     },
-    ///                     ExtendedKeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs
-    ///                     {
-    ///                         ServerAuth = false,
-    ///                     },
+    ///                     ExtendedKeyUsage = null,
     ///                 },
     ///             },
     ///         },
@@ -175,15 +144,8 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///             {
     ///                 Subject = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigSubjectArgs
     ///                 {
-    ///                     Organization = "HashiCorp",
+    ///                     Organization = "ACME",
     ///                     CommonName = "my-subordinate-authority",
-    ///                 },
-    ///                 SubjectAltName = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigSubjectAltNameArgs
-    ///                 {
-    ///                     DnsNames = new[]
-    ///                     {
-    ///                         "hashicorp.com",
-    ///                     },
     ///                 },
     ///             },
     ///             X509Config = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigArgs
@@ -191,36 +153,23 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///                 CaOptions = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigCaOptionsArgs
     ///                 {
     ///                     IsCa = true,
-    ///                     MaxIssuerPathLength = 0,
+    ///                     ZeroMaxIssuerPathLength = true,
     ///                 },
     ///                 KeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageArgs
     ///                 {
     ///                     BaseKeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs
     ///                     {
-    ///                         DigitalSignature = true,
-    ///                         ContentCommitment = true,
-    ///                         KeyEncipherment = false,
-    ///                         DataEncipherment = true,
-    ///                         KeyAgreement = true,
     ///                         CertSign = true,
     ///                         CrlSign = true,
-    ///                         DecipherOnly = true,
     ///                     },
-    ///                     ExtendedKeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs
-    ///                     {
-    ///                         ServerAuth = true,
-    ///                         ClientAuth = false,
-    ///                         EmailProtection = true,
-    ///                         CodeSigning = true,
-    ///                         TimeStamping = true,
-    ///                     },
+    ///                     ExtendedKeyUsage = null,
     ///                 },
     ///             },
     ///         },
-    ///         Lifetime = "86400s",
+    ///         Lifetime = $"{5 * 365 * 24 * 3600}s",
     ///         KeySpec = new Gcp.CertificateAuthority.Inputs.AuthorityKeySpecArgs
     ///         {
-    ///             Algorithm = "RSA_PKCS1_4096_SHA256",
+    ///             Algorithm = "RSA_PKCS1_2048_SHA256",
     ///         },
     ///         Type = "SUBORDINATE",
     ///     });
@@ -281,7 +230,6 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///                 CaOptions = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigCaOptionsArgs
     ///                 {
     ///                     IsCa = true,
-    ///                     MaxIssuerPathLength = 10,
     ///                 },
     ///                 KeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageArgs
     ///                 {
@@ -290,10 +238,7 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///                         CertSign = true,
     ///                         CrlSign = true,
     ///                     },
-    ///                     ExtendedKeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs
-    ///                     {
-    ///                         ServerAuth = false,
-    ///                     },
+    ///                     ExtendedKeyUsage = null,
     ///                 },
     ///                 NameConstraints = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigNameConstraintsArgs
     ///                 {
@@ -366,15 +311,8 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///             {
     ///                 Subject = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigSubjectArgs
     ///                 {
-    ///                     Organization = "HashiCorp",
+    ///                     Organization = "ACME",
     ///                     CommonName = "my-certificate-authority",
-    ///                 },
-    ///                 SubjectAltName = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectConfigSubjectAltNameArgs
-    ///                 {
-    ///                     DnsNames = new[]
-    ///                     {
-    ///                         "hashicorp.com",
-    ///                     },
     ///                 },
     ///             },
     ///             SubjectKeyId = new Gcp.CertificateAuthority.Inputs.AuthorityConfigSubjectKeyIdArgs
@@ -386,33 +324,19 @@ namespace Pulumi.Gcp.CertificateAuthority
     ///                 CaOptions = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigCaOptionsArgs
     ///                 {
     ///                     IsCa = true,
-    ///                     MaxIssuerPathLength = 10,
     ///                 },
     ///                 KeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageArgs
     ///                 {
     ///                     BaseKeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageBaseKeyUsageArgs
     ///                     {
-    ///                         DigitalSignature = true,
-    ///                         ContentCommitment = true,
-    ///                         KeyEncipherment = false,
-    ///                         DataEncipherment = true,
-    ///                         KeyAgreement = true,
     ///                         CertSign = true,
     ///                         CrlSign = true,
-    ///                         DecipherOnly = true,
     ///                     },
-    ///                     ExtendedKeyUsage = new Gcp.CertificateAuthority.Inputs.AuthorityConfigX509ConfigKeyUsageExtendedKeyUsageArgs
-    ///                     {
-    ///                         ServerAuth = true,
-    ///                         ClientAuth = false,
-    ///                         EmailProtection = true,
-    ///                         CodeSigning = true,
-    ///                         TimeStamping = true,
-    ///                     },
+    ///                     ExtendedKeyUsage = null,
     ///                 },
     ///             },
     ///         },
-    ///         Lifetime = "86400s",
+    ///         Lifetime = $"{10 * 365 * 24 * 3600}s",
     ///         KeySpec = new Gcp.CertificateAuthority.Inputs.AuthorityKeySpecArgs
     ///         {
     ///             CloudKmsKeyVersion = "projects/keys-project/locations/us-central1/keyRings/key-ring/cryptoKeys/crypto-key/cryptoKeyVersions/1",

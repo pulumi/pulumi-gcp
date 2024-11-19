@@ -33303,7 +33303,7 @@ type GetInstanceNetworkInterface struct {
 	NetworkAttachment string `pulumi:"networkAttachment"`
 	// The internal ip address of the instance, either manually or dynamically assigned.
 	NetworkIp string `pulumi:"networkIp"`
-	// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET
+	// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, IDPF
 	NicType string `pulumi:"nicType"`
 	// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
 	QueueCount int `pulumi:"queueCount"`
@@ -33350,7 +33350,7 @@ type GetInstanceNetworkInterfaceArgs struct {
 	NetworkAttachment pulumi.StringInput `pulumi:"networkAttachment"`
 	// The internal ip address of the instance, either manually or dynamically assigned.
 	NetworkIp pulumi.StringInput `pulumi:"networkIp"`
-	// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET
+	// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, IDPF
 	NicType pulumi.StringInput `pulumi:"nicType"`
 	// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
 	QueueCount pulumi.IntInput `pulumi:"queueCount"`
@@ -33468,7 +33468,7 @@ func (o GetInstanceNetworkInterfaceOutput) NetworkIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceNetworkInterface) string { return v.NetworkIp }).(pulumi.StringOutput)
 }
 
-// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET
+// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, IDPF
 func (o GetInstanceNetworkInterfaceOutput) NicType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceNetworkInterface) string { return v.NicType }).(pulumi.StringOutput)
 }

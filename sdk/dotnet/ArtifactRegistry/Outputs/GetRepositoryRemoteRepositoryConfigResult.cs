@@ -18,6 +18,10 @@ namespace Pulumi.Gcp.ArtifactRegistry.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetRepositoryRemoteRepositoryConfigAptRepositoryResult> AptRepositories;
         /// <summary>
+        /// Specific settings for an Artifact Registory remote repository.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetRepositoryRemoteRepositoryConfigCommonRepositoryResult> CommonRepositories;
+        /// <summary>
         /// The description of the remote source.
         /// </summary>
         public readonly string Description;
@@ -55,6 +59,8 @@ namespace Pulumi.Gcp.ArtifactRegistry.Outputs
         private GetRepositoryRemoteRepositoryConfigResult(
             ImmutableArray<Outputs.GetRepositoryRemoteRepositoryConfigAptRepositoryResult> aptRepositories,
 
+            ImmutableArray<Outputs.GetRepositoryRemoteRepositoryConfigCommonRepositoryResult> commonRepositories,
+
             string description,
 
             bool disableUpstreamValidation,
@@ -72,6 +78,7 @@ namespace Pulumi.Gcp.ArtifactRegistry.Outputs
             ImmutableArray<Outputs.GetRepositoryRemoteRepositoryConfigYumRepositoryResult> yumRepositories)
         {
             AptRepositories = aptRepositories;
+            CommonRepositories = commonRepositories;
             Description = description;
             DisableUpstreamValidation = disableUpstreamValidation;
             DockerRepositories = dockerRepositories;

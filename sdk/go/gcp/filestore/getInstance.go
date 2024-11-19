@@ -76,17 +76,18 @@ type LookupInstanceResult struct {
 	Etag                      string                 `pulumi:"etag"`
 	FileShares                []GetInstanceFileShare `pulumi:"fileShares"`
 	// The provider-assigned unique ID for this managed resource.
-	Id           string               `pulumi:"id"`
-	KmsKeyName   string               `pulumi:"kmsKeyName"`
-	Labels       map[string]string    `pulumi:"labels"`
-	Location     *string              `pulumi:"location"`
-	Name         string               `pulumi:"name"`
-	Networks     []GetInstanceNetwork `pulumi:"networks"`
-	Project      *string              `pulumi:"project"`
-	Protocol     string               `pulumi:"protocol"`
-	PulumiLabels map[string]string    `pulumi:"pulumiLabels"`
-	Tier         string               `pulumi:"tier"`
-	Zone         string               `pulumi:"zone"`
+	Id                 string                         `pulumi:"id"`
+	KmsKeyName         string                         `pulumi:"kmsKeyName"`
+	Labels             map[string]string              `pulumi:"labels"`
+	Location           *string                        `pulumi:"location"`
+	Name               string                         `pulumi:"name"`
+	Networks           []GetInstanceNetwork           `pulumi:"networks"`
+	PerformanceConfigs []GetInstancePerformanceConfig `pulumi:"performanceConfigs"`
+	Project            *string                        `pulumi:"project"`
+	Protocol           string                         `pulumi:"protocol"`
+	PulumiLabels       map[string]string              `pulumi:"pulumiLabels"`
+	Tier               string                         `pulumi:"tier"`
+	Zone               string                         `pulumi:"zone"`
 }
 
 func LookupInstanceOutput(ctx *pulumi.Context, args LookupInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupInstanceResultOutput {
@@ -193,6 +194,10 @@ func (o LookupInstanceResultOutput) Name() pulumi.StringOutput {
 
 func (o LookupInstanceResultOutput) Networks() GetInstanceNetworkArrayOutput {
 	return o.ApplyT(func(v LookupInstanceResult) []GetInstanceNetwork { return v.Networks }).(GetInstanceNetworkArrayOutput)
+}
+
+func (o LookupInstanceResultOutput) PerformanceConfigs() GetInstancePerformanceConfigArrayOutput {
+	return o.ApplyT(func(v LookupInstanceResult) []GetInstancePerformanceConfig { return v.PerformanceConfigs }).(GetInstancePerformanceConfigArrayOutput)
 }
 
 func (o LookupInstanceResultOutput) Project() pulumi.StringPtrOutput {

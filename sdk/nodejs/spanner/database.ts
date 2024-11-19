@@ -136,8 +136,8 @@ export class Database extends pulumi.CustomResource {
      */
     public readonly instance!: pulumi.Output<string>;
     /**
-     * A unique identifier for the database, which cannot be changed after
-     * the instance is created. Values are of the form [a-z][-a-z0-9]*[a-z0-9].
+     * A unique identifier for the database, which cannot be changed after the
+     * instance is created. Values are of the form `[a-z][-_a-z0-9]*[a-z0-9]`.
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -238,8 +238,8 @@ export interface DatabaseState {
      */
     instance?: pulumi.Input<string>;
     /**
-     * A unique identifier for the database, which cannot be changed after
-     * the instance is created. Values are of the form [a-z][-a-z0-9]*[a-z0-9].
+     * A unique identifier for the database, which cannot be changed after the
+     * instance is created. Values are of the form `[a-z][-_a-z0-9]*[a-z0-9]`.
      */
     name?: pulumi.Input<string>;
     /**
@@ -297,8 +297,8 @@ export interface DatabaseArgs {
      */
     instance: pulumi.Input<string>;
     /**
-     * A unique identifier for the database, which cannot be changed after
-     * the instance is created. Values are of the form [a-z][-a-z0-9]*[a-z0-9].
+     * A unique identifier for the database, which cannot be changed after the
+     * instance is created. Values are of the form `[a-z][-_a-z0-9]*[a-z0-9]`.
      */
     name?: pulumi.Input<string>;
     /**

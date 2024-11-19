@@ -274,7 +274,9 @@ type Instance struct {
 	// only a single network is supported.
 	// Structure is documented below.
 	Networks InstanceNetworkArrayOutput `pulumi:"networks"`
-	Project  pulumi.StringOutput        `pulumi:"project"`
+	// Performance configuration for the instance. If not provided, the default performance settings will be used.
+	PerformanceConfig InstancePerformanceConfigPtrOutput `pulumi:"performanceConfig"`
+	Project           pulumi.StringOutput                `pulumi:"project"`
 	// Either NFSv3, for using NFS version 3 as file sharing protocol, or NFSv4.1, for using NFS version 4.1 as file sharing
 	// protocol. NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE. The default is NFSv3. Default value:
 	// "NFS_V3" Possible values: ["NFS_V3", "NFS_V4_1"]
@@ -366,7 +368,9 @@ type instanceState struct {
 	// only a single network is supported.
 	// Structure is documented below.
 	Networks []InstanceNetwork `pulumi:"networks"`
-	Project  *string           `pulumi:"project"`
+	// Performance configuration for the instance. If not provided, the default performance settings will be used.
+	PerformanceConfig *InstancePerformanceConfig `pulumi:"performanceConfig"`
+	Project           *string                    `pulumi:"project"`
 	// Either NFSv3, for using NFS version 3 as file sharing protocol, or NFSv4.1, for using NFS version 4.1 as file sharing
 	// protocol. NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE. The default is NFSv3. Default value:
 	// "NFS_V3" Possible values: ["NFS_V3", "NFS_V4_1"]
@@ -415,7 +419,9 @@ type InstanceState struct {
 	// only a single network is supported.
 	// Structure is documented below.
 	Networks InstanceNetworkArrayInput
-	Project  pulumi.StringPtrInput
+	// Performance configuration for the instance. If not provided, the default performance settings will be used.
+	PerformanceConfig InstancePerformanceConfigPtrInput
+	Project           pulumi.StringPtrInput
 	// Either NFSv3, for using NFS version 3 as file sharing protocol, or NFSv4.1, for using NFS version 4.1 as file sharing
 	// protocol. NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE. The default is NFSv3. Default value:
 	// "NFS_V3" Possible values: ["NFS_V3", "NFS_V4_1"]
@@ -461,7 +467,9 @@ type instanceArgs struct {
 	// only a single network is supported.
 	// Structure is documented below.
 	Networks []InstanceNetwork `pulumi:"networks"`
-	Project  *string           `pulumi:"project"`
+	// Performance configuration for the instance. If not provided, the default performance settings will be used.
+	PerformanceConfig *InstancePerformanceConfig `pulumi:"performanceConfig"`
+	Project           *string                    `pulumi:"project"`
 	// Either NFSv3, for using NFS version 3 as file sharing protocol, or NFSv4.1, for using NFS version 4.1 as file sharing
 	// protocol. NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE. The default is NFSv3. Default value:
 	// "NFS_V3" Possible values: ["NFS_V3", "NFS_V4_1"]
@@ -501,7 +509,9 @@ type InstanceArgs struct {
 	// only a single network is supported.
 	// Structure is documented below.
 	Networks InstanceNetworkArrayInput
-	Project  pulumi.StringPtrInput
+	// Performance configuration for the instance. If not provided, the default performance settings will be used.
+	PerformanceConfig InstancePerformanceConfigPtrInput
+	Project           pulumi.StringPtrInput
 	// Either NFSv3, for using NFS version 3 as file sharing protocol, or NFSv4.1, for using NFS version 4.1 as file sharing
 	// protocol. NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE. The default is NFSv3. Default value:
 	// "NFS_V3" Possible values: ["NFS_V3", "NFS_V4_1"]
@@ -667,6 +677,11 @@ func (o InstanceOutput) Name() pulumi.StringOutput {
 // Structure is documented below.
 func (o InstanceOutput) Networks() InstanceNetworkArrayOutput {
 	return o.ApplyT(func(v *Instance) InstanceNetworkArrayOutput { return v.Networks }).(InstanceNetworkArrayOutput)
+}
+
+// Performance configuration for the instance. If not provided, the default performance settings will be used.
+func (o InstanceOutput) PerformanceConfig() InstancePerformanceConfigPtrOutput {
+	return o.ApplyT(func(v *Instance) InstancePerformanceConfigPtrOutput { return v.PerformanceConfig }).(InstancePerformanceConfigPtrOutput)
 }
 
 func (o InstanceOutput) Project() pulumi.StringOutput {

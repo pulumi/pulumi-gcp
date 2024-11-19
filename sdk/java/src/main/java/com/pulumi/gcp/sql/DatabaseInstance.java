@@ -258,6 +258,64 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ### Cloud SQL Instance with PSC auto connections
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.sql.DatabaseInstance;
+ * import com.pulumi.gcp.sql.DatabaseInstanceArgs;
+ * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
+ * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationArgs;
+ * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsBackupConfigurationArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var main = new DatabaseInstance("main", DatabaseInstanceArgs.builder()
+ *             .name("psc-enabled-main-instance")
+ *             .databaseVersion("MYSQL_8_0")
+ *             .settings(DatabaseInstanceSettingsArgs.builder()
+ *                 .tier("db-f1-micro")
+ *                 .ipConfiguration(DatabaseInstanceSettingsIpConfigurationArgs.builder()
+ *                     .pscConfigs(DatabaseInstanceSettingsIpConfigurationPscConfigArgs.builder()
+ *                         .pscEnabled(true)
+ *                         .allowedConsumerProjects("allowed-consumer-project-name")
+ *                         .pscAutoConnections(DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs.builder()
+ *                             .consumerNetwork("network-name")
+ *                             .consumerServiceProjectId("project-id")
+ *                             .build())
+ *                         .build())
+ *                     .ipv4Enabled(false)
+ *                     .build())
+ *                 .backupConfiguration(DatabaseInstanceSettingsBackupConfigurationArgs.builder()
+ *                     .enabled(true)
+ *                     .binaryLogEnabled(true)
+ *                     .build())
+ *                 .availabilityType("REGIONAL")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Switchover (SQL Server Only)
  * 
  * Users can perform a switchover on any direct `cascadable` replica by following the steps below.

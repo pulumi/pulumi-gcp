@@ -555,11 +555,6 @@ class Service(pulumi.CustomResource):
         default = gcp.cloudrun.Service("default",
             name="cloudrun-srv",
             location="us-central1",
-            metadata={
-                "annotations": {
-                    "run.googleapis.com/launch-stage": "BETA",
-                },
-            },
             template={
                 "metadata": {
                     "annotations": {
@@ -885,11 +880,6 @@ class Service(pulumi.CustomResource):
         default = gcp.cloudrun.Service("default",
             name="cloudrun-srv",
             location="us-central1",
-            metadata={
-                "annotations": {
-                    "run.googleapis.com/launch-stage": "BETA",
-                },
-            },
             template={
                 "metadata": {
                     "annotations": {

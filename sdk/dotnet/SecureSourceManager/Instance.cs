@@ -643,6 +643,28 @@ namespace Pulumi.Gcp.SecureSourceManager
     /// 
     /// });
     /// ```
+    /// ### Secure Source Manager Instance Workforce Identity Federation
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.SecureSourceManager.Instance("default", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         InstanceId = "my-instance",
+    ///         WorkforceIdentityFederationConfig = new Gcp.SecureSourceManager.Inputs.InstanceWorkforceIdentityFederationConfigArgs
+    ///         {
+    ///             Enabled = true,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -771,6 +793,14 @@ namespace Pulumi.Gcp.SecureSourceManager
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
 
+        /// <summary>
+        /// Configuration for Workforce Identity Federation to support third party identity provider.
+        /// If unset, defaults to the Google OIDC IdP.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("workforceIdentityFederationConfig")]
+        public Output<Outputs.InstanceWorkforceIdentityFederationConfig?> WorkforceIdentityFederationConfig { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Instance resource with the given unique name, arguments, and options.
@@ -871,6 +901,14 @@ namespace Pulumi.Gcp.SecureSourceManager
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Configuration for Workforce Identity Federation to support third party identity provider.
+        /// If unset, defaults to the Google OIDC IdP.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("workforceIdentityFederationConfig")]
+        public Input<Inputs.InstanceWorkforceIdentityFederationConfigArgs>? WorkforceIdentityFederationConfig { get; set; }
 
         public InstanceArgs()
         {
@@ -1005,6 +1043,14 @@ namespace Pulumi.Gcp.SecureSourceManager
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }
+
+        /// <summary>
+        /// Configuration for Workforce Identity Federation to support third party identity provider.
+        /// If unset, defaults to the Google OIDC IdP.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("workforceIdentityFederationConfig")]
+        public Input<Inputs.InstanceWorkforceIdentityFederationConfigGetArgs>? WorkforceIdentityFederationConfig { get; set; }
 
         public InstanceState()
         {

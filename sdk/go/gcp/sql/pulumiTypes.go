@@ -3508,6 +3508,8 @@ func (o DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArrayOutput) Ind
 type DatabaseInstanceSettingsIpConfigurationPscConfig struct {
 	// List of consumer projects that are allow-listed for PSC connections to this instance. This instance can be connected to with PSC from any network in these projects. Each consumer project in this list may be represented by a project number (numeric) or by a project id (alphanumeric).
 	AllowedConsumerProjects []string `pulumi:"allowedConsumerProjects"`
+	// A comma-separated list of networks or a comma-separated list of network-project pairs. Each project in this list is represented by a project number (numeric) or by a project ID (alphanumeric). This allows Private Service Connect connections to be created automatically for the specified networks.
+	PscAutoConnections []DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection `pulumi:"pscAutoConnections"`
 	// Whether PSC connectivity is enabled for this instance.
 	PscEnabled *bool `pulumi:"pscEnabled"`
 }
@@ -3526,6 +3528,8 @@ type DatabaseInstanceSettingsIpConfigurationPscConfigInput interface {
 type DatabaseInstanceSettingsIpConfigurationPscConfigArgs struct {
 	// List of consumer projects that are allow-listed for PSC connections to this instance. This instance can be connected to with PSC from any network in these projects. Each consumer project in this list may be represented by a project number (numeric) or by a project id (alphanumeric).
 	AllowedConsumerProjects pulumi.StringArrayInput `pulumi:"allowedConsumerProjects"`
+	// A comma-separated list of networks or a comma-separated list of network-project pairs. Each project in this list is represented by a project number (numeric) or by a project ID (alphanumeric). This allows Private Service Connect connections to be created automatically for the specified networks.
+	PscAutoConnections DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArrayInput `pulumi:"pscAutoConnections"`
 	// Whether PSC connectivity is enabled for this instance.
 	PscEnabled pulumi.BoolPtrInput `pulumi:"pscEnabled"`
 }
@@ -3586,6 +3590,13 @@ func (o DatabaseInstanceSettingsIpConfigurationPscConfigOutput) AllowedConsumerP
 	return o.ApplyT(func(v DatabaseInstanceSettingsIpConfigurationPscConfig) []string { return v.AllowedConsumerProjects }).(pulumi.StringArrayOutput)
 }
 
+// A comma-separated list of networks or a comma-separated list of network-project pairs. Each project in this list is represented by a project number (numeric) or by a project ID (alphanumeric). This allows Private Service Connect connections to be created automatically for the specified networks.
+func (o DatabaseInstanceSettingsIpConfigurationPscConfigOutput) PscAutoConnections() DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArrayOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsIpConfigurationPscConfig) []DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection {
+		return v.PscAutoConnections
+	}).(DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArrayOutput)
+}
+
 // Whether PSC connectivity is enabled for this instance.
 func (o DatabaseInstanceSettingsIpConfigurationPscConfigOutput) PscEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettingsIpConfigurationPscConfig) *bool { return v.PscEnabled }).(pulumi.BoolPtrOutput)
@@ -3609,6 +3620,116 @@ func (o DatabaseInstanceSettingsIpConfigurationPscConfigArrayOutput) Index(i pul
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatabaseInstanceSettingsIpConfigurationPscConfig {
 		return vs[0].([]DatabaseInstanceSettingsIpConfigurationPscConfig)[vs[1].(int)]
 	}).(DatabaseInstanceSettingsIpConfigurationPscConfigOutput)
+}
+
+type DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection struct {
+	// "The consumer network of this consumer endpoint. This must be a resource path that includes both the host project and the network name. For example, `projects/project1/global/networks/network1`. The consumer host project of this network might be different from the consumer service project."
+	ConsumerNetwork string `pulumi:"consumerNetwork"`
+	// The project ID of consumer service project of this consumer endpoint.
+	ConsumerServiceProjectId *string `pulumi:"consumerServiceProjectId"`
+}
+
+// DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionInput is an input type that accepts DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs and DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionOutput values.
+// You can construct a concrete instance of `DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionInput` via:
+//
+//	DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs{...}
+type DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionInput interface {
+	pulumi.Input
+
+	ToDatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionOutput() DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionOutput
+	ToDatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionOutputWithContext(context.Context) DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionOutput
+}
+
+type DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs struct {
+	// "The consumer network of this consumer endpoint. This must be a resource path that includes both the host project and the network name. For example, `projects/project1/global/networks/network1`. The consumer host project of this network might be different from the consumer service project."
+	ConsumerNetwork pulumi.StringInput `pulumi:"consumerNetwork"`
+	// The project ID of consumer service project of this consumer endpoint.
+	ConsumerServiceProjectId pulumi.StringPtrInput `pulumi:"consumerServiceProjectId"`
+}
+
+func (DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection)(nil)).Elem()
+}
+
+func (i DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs) ToDatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionOutput() DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionOutput {
+	return i.ToDatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionOutputWithContext(context.Background())
+}
+
+func (i DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs) ToDatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionOutputWithContext(ctx context.Context) DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionOutput)
+}
+
+// DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArrayInput is an input type that accepts DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArray and DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArrayOutput values.
+// You can construct a concrete instance of `DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArrayInput` via:
+//
+//	DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArray{ DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs{...} }
+type DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArrayInput interface {
+	pulumi.Input
+
+	ToDatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArrayOutput() DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArrayOutput
+	ToDatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArrayOutputWithContext(context.Context) DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArrayOutput
+}
+
+type DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArray []DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionInput
+
+func (DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection)(nil)).Elem()
+}
+
+func (i DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArray) ToDatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArrayOutput() DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArrayOutput {
+	return i.ToDatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArrayOutputWithContext(context.Background())
+}
+
+func (i DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArray) ToDatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArrayOutputWithContext(ctx context.Context) DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArrayOutput)
+}
+
+type DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionOutput struct{ *pulumi.OutputState }
+
+func (DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection)(nil)).Elem()
+}
+
+func (o DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionOutput) ToDatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionOutput() DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionOutput {
+	return o
+}
+
+func (o DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionOutput) ToDatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionOutputWithContext(ctx context.Context) DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionOutput {
+	return o
+}
+
+// "The consumer network of this consumer endpoint. This must be a resource path that includes both the host project and the network name. For example, `projects/project1/global/networks/network1`. The consumer host project of this network might be different from the consumer service project."
+func (o DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionOutput) ConsumerNetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection) string {
+		return v.ConsumerNetwork
+	}).(pulumi.StringOutput)
+}
+
+// The project ID of consumer service project of this consumer endpoint.
+func (o DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionOutput) ConsumerServiceProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection) *string {
+		return v.ConsumerServiceProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+type DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArrayOutput struct{ *pulumi.OutputState }
+
+func (DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection)(nil)).Elem()
+}
+
+func (o DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArrayOutput) ToDatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArrayOutput() DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArrayOutput {
+	return o
+}
+
+func (o DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArrayOutput) ToDatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArrayOutputWithContext(ctx context.Context) DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArrayOutput {
+	return o
+}
+
+func (o DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArrayOutput) Index(i pulumi.IntInput) DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection {
+		return vs[0].([]DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection)[vs[1].(int)]
+	}).(DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionOutput)
 }
 
 type DatabaseInstanceSettingsLocationPreference struct {
@@ -7152,6 +7273,8 @@ func (o GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkArrayOutput) I
 type GetDatabaseInstanceSettingIpConfigurationPscConfig struct {
 	// List of consumer projects that are allow-listed for PSC connections to this instance. This instance can be connected to with PSC from any network in these projects. Each consumer project in this list may be represented by a project number (numeric) or by a project id (alphanumeric).
 	AllowedConsumerProjects []string `pulumi:"allowedConsumerProjects"`
+	// A comma-separated list of networks or a comma-separated list of network-project pairs. Each project in this list is represented by a project number (numeric) or by a project ID (alphanumeric). This allows Private Service Connect connections to be created automatically for the specified networks.
+	PscAutoConnections []GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnection `pulumi:"pscAutoConnections"`
 	// Whether PSC connectivity is enabled for this instance.
 	PscEnabled bool `pulumi:"pscEnabled"`
 }
@@ -7170,6 +7293,8 @@ type GetDatabaseInstanceSettingIpConfigurationPscConfigInput interface {
 type GetDatabaseInstanceSettingIpConfigurationPscConfigArgs struct {
 	// List of consumer projects that are allow-listed for PSC connections to this instance. This instance can be connected to with PSC from any network in these projects. Each consumer project in this list may be represented by a project number (numeric) or by a project id (alphanumeric).
 	AllowedConsumerProjects pulumi.StringArrayInput `pulumi:"allowedConsumerProjects"`
+	// A comma-separated list of networks or a comma-separated list of network-project pairs. Each project in this list is represented by a project number (numeric) or by a project ID (alphanumeric). This allows Private Service Connect connections to be created automatically for the specified networks.
+	PscAutoConnections GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionArrayInput `pulumi:"pscAutoConnections"`
 	// Whether PSC connectivity is enabled for this instance.
 	PscEnabled pulumi.BoolInput `pulumi:"pscEnabled"`
 }
@@ -7230,6 +7355,13 @@ func (o GetDatabaseInstanceSettingIpConfigurationPscConfigOutput) AllowedConsume
 	return o.ApplyT(func(v GetDatabaseInstanceSettingIpConfigurationPscConfig) []string { return v.AllowedConsumerProjects }).(pulumi.StringArrayOutput)
 }
 
+// A comma-separated list of networks or a comma-separated list of network-project pairs. Each project in this list is represented by a project number (numeric) or by a project ID (alphanumeric). This allows Private Service Connect connections to be created automatically for the specified networks.
+func (o GetDatabaseInstanceSettingIpConfigurationPscConfigOutput) PscAutoConnections() GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionArrayOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingIpConfigurationPscConfig) []GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnection {
+		return v.PscAutoConnections
+	}).(GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionArrayOutput)
+}
+
 // Whether PSC connectivity is enabled for this instance.
 func (o GetDatabaseInstanceSettingIpConfigurationPscConfigOutput) PscEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSettingIpConfigurationPscConfig) bool { return v.PscEnabled }).(pulumi.BoolOutput)
@@ -7253,6 +7385,116 @@ func (o GetDatabaseInstanceSettingIpConfigurationPscConfigArrayOutput) Index(i p
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstanceSettingIpConfigurationPscConfig {
 		return vs[0].([]GetDatabaseInstanceSettingIpConfigurationPscConfig)[vs[1].(int)]
 	}).(GetDatabaseInstanceSettingIpConfigurationPscConfigOutput)
+}
+
+type GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnection struct {
+	// The consumer network of this consumer endpoint. This must be a resource path that includes both the host project and the network name. The consumer host project of this network might be different from the consumer service project.
+	ConsumerNetwork string `pulumi:"consumerNetwork"`
+	// The project ID of consumer service project of this consumer endpoint.
+	ConsumerServiceProjectId string `pulumi:"consumerServiceProjectId"`
+}
+
+// GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionInput is an input type that accepts GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionArgs and GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutput values.
+// You can construct a concrete instance of `GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionInput` via:
+//
+//	GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionArgs{...}
+type GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutput() GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutput
+	ToGetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutputWithContext(context.Context) GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutput
+}
+
+type GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionArgs struct {
+	// The consumer network of this consumer endpoint. This must be a resource path that includes both the host project and the network name. The consumer host project of this network might be different from the consumer service project.
+	ConsumerNetwork pulumi.StringInput `pulumi:"consumerNetwork"`
+	// The project ID of consumer service project of this consumer endpoint.
+	ConsumerServiceProjectId pulumi.StringInput `pulumi:"consumerServiceProjectId"`
+}
+
+func (GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnection)(nil)).Elem()
+}
+
+func (i GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionArgs) ToGetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutput() GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutput {
+	return i.ToGetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionArgs) ToGetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutput)
+}
+
+// GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionArrayInput is an input type that accepts GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionArray and GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionArrayInput` via:
+//
+//	GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionArray{ GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionArgs{...} }
+type GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionArrayOutput() GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionArrayOutput
+	ToGetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionArrayOutputWithContext(context.Context) GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionArrayOutput
+}
+
+type GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionArray []GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionInput
+
+func (GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnection)(nil)).Elem()
+}
+
+func (i GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionArray) ToGetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionArrayOutput() GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionArrayOutput {
+	return i.ToGetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionArray) ToGetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionArrayOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionArrayOutput)
+}
+
+type GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnection)(nil)).Elem()
+}
+
+func (o GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutput) ToGetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutput() GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutput) ToGetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutput {
+	return o
+}
+
+// The consumer network of this consumer endpoint. This must be a resource path that includes both the host project and the network name. The consumer host project of this network might be different from the consumer service project.
+func (o GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutput) ConsumerNetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnection) string {
+		return v.ConsumerNetwork
+	}).(pulumi.StringOutput)
+}
+
+// The project ID of consumer service project of this consumer endpoint.
+func (o GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutput) ConsumerServiceProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnection) string {
+		return v.ConsumerServiceProjectId
+	}).(pulumi.StringOutput)
+}
+
+type GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnection)(nil)).Elem()
+}
+
+func (o GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionArrayOutput) ToGetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionArrayOutput() GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionArrayOutput) ToGetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionArrayOutputWithContext(ctx context.Context) GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnection {
+		return vs[0].([]GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnection)[vs[1].(int)]
+	}).(GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutput)
 }
 
 type GetDatabaseInstanceSettingLocationPreference struct {
@@ -10270,6 +10512,8 @@ func (o GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArray
 type GetDatabaseInstancesInstanceSettingIpConfigurationPscConfig struct {
 	// List of consumer projects that are allow-listed for PSC connections to this instance. This instance can be connected to with PSC from any network in these projects. Each consumer project in this list may be represented by a project number (numeric) or by a project id (alphanumeric).
 	AllowedConsumerProjects []string `pulumi:"allowedConsumerProjects"`
+	// A comma-separated list of networks or a comma-separated list of network-project pairs. Each project in this list is represented by a project number (numeric) or by a project ID (alphanumeric). This allows Private Service Connect connections to be created automatically for the specified networks.
+	PscAutoConnections []GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnection `pulumi:"pscAutoConnections"`
 	// Whether PSC connectivity is enabled for this instance.
 	PscEnabled bool `pulumi:"pscEnabled"`
 }
@@ -10288,6 +10532,8 @@ type GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigInput interface 
 type GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArgs struct {
 	// List of consumer projects that are allow-listed for PSC connections to this instance. This instance can be connected to with PSC from any network in these projects. Each consumer project in this list may be represented by a project number (numeric) or by a project id (alphanumeric).
 	AllowedConsumerProjects pulumi.StringArrayInput `pulumi:"allowedConsumerProjects"`
+	// A comma-separated list of networks or a comma-separated list of network-project pairs. Each project in this list is represented by a project number (numeric) or by a project ID (alphanumeric). This allows Private Service Connect connections to be created automatically for the specified networks.
+	PscAutoConnections GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionArrayInput `pulumi:"pscAutoConnections"`
 	// Whether PSC connectivity is enabled for this instance.
 	PscEnabled pulumi.BoolInput `pulumi:"pscEnabled"`
 }
@@ -10350,6 +10596,13 @@ func (o GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigOutput) Allow
 	}).(pulumi.StringArrayOutput)
 }
 
+// A comma-separated list of networks or a comma-separated list of network-project pairs. Each project in this list is represented by a project number (numeric) or by a project ID (alphanumeric). This allows Private Service Connect connections to be created automatically for the specified networks.
+func (o GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigOutput) PscAutoConnections() GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionArrayOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingIpConfigurationPscConfig) []GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnection {
+		return v.PscAutoConnections
+	}).(GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionArrayOutput)
+}
+
 // Whether PSC connectivity is enabled for this instance.
 func (o GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigOutput) PscEnabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingIpConfigurationPscConfig) bool { return v.PscEnabled }).(pulumi.BoolOutput)
@@ -10373,6 +10626,116 @@ func (o GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArrayOutput) 
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstancesInstanceSettingIpConfigurationPscConfig {
 		return vs[0].([]GetDatabaseInstancesInstanceSettingIpConfigurationPscConfig)[vs[1].(int)]
 	}).(GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigOutput)
+}
+
+type GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnection struct {
+	// The consumer network of this consumer endpoint. This must be a resource path that includes both the host project and the network name. The consumer host project of this network might be different from the consumer service project.
+	ConsumerNetwork string `pulumi:"consumerNetwork"`
+	// The project ID of consumer service project of this consumer endpoint.
+	ConsumerServiceProjectId string `pulumi:"consumerServiceProjectId"`
+}
+
+// GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionInput is an input type that accepts GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionArgs and GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionInput` via:
+//
+//	GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionArgs{...}
+type GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutput() GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutput
+	ToGetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutputWithContext(context.Context) GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutput
+}
+
+type GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionArgs struct {
+	// The consumer network of this consumer endpoint. This must be a resource path that includes both the host project and the network name. The consumer host project of this network might be different from the consumer service project.
+	ConsumerNetwork pulumi.StringInput `pulumi:"consumerNetwork"`
+	// The project ID of consumer service project of this consumer endpoint.
+	ConsumerServiceProjectId pulumi.StringInput `pulumi:"consumerServiceProjectId"`
+}
+
+func (GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnection)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionArgs) ToGetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutput() GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutput {
+	return i.ToGetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionArgs) ToGetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutput)
+}
+
+// GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionArrayInput is an input type that accepts GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionArray and GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionArrayInput` via:
+//
+//	GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionArray{ GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionArgs{...} }
+type GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionArrayOutput() GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionArrayOutput
+	ToGetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionArrayOutputWithContext(context.Context) GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionArrayOutput
+}
+
+type GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionArray []GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionInput
+
+func (GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnection)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionArray) ToGetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionArrayOutput() GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionArrayOutput {
+	return i.ToGetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionArray) ToGetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionArrayOutput)
+}
+
+type GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnection)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutput) ToGetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutput() GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutput) ToGetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutput {
+	return o
+}
+
+// The consumer network of this consumer endpoint. This must be a resource path that includes both the host project and the network name. The consumer host project of this network might be different from the consumer service project.
+func (o GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutput) ConsumerNetwork() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnection) string {
+		return v.ConsumerNetwork
+	}).(pulumi.StringOutput)
+}
+
+// The project ID of consumer service project of this consumer endpoint.
+func (o GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutput) ConsumerServiceProjectId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnection) string {
+		return v.ConsumerServiceProjectId
+	}).(pulumi.StringOutput)
+}
+
+type GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnection)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionArrayOutput) ToGetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionArrayOutput() GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionArrayOutput) ToGetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnection {
+		return vs[0].([]GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnection)[vs[1].(int)]
+	}).(GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutput)
 }
 
 type GetDatabaseInstancesInstanceSettingLocationPreference struct {
@@ -11217,6 +11580,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArrayInput)(nil)).Elem(), DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsIpConfigurationPscConfigInput)(nil)).Elem(), DatabaseInstanceSettingsIpConfigurationPscConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsIpConfigurationPscConfigArrayInput)(nil)).Elem(), DatabaseInstanceSettingsIpConfigurationPscConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionInput)(nil)).Elem(), DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArrayInput)(nil)).Elem(), DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsLocationPreferenceInput)(nil)).Elem(), DatabaseInstanceSettingsLocationPreferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsLocationPreferencePtrInput)(nil)).Elem(), DatabaseInstanceSettingsLocationPreferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceSettingsMaintenanceWindowInput)(nil)).Elem(), DatabaseInstanceSettingsMaintenanceWindowArgs{})
@@ -11267,6 +11632,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkArrayInput)(nil)).Elem(), GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingIpConfigurationPscConfigInput)(nil)).Elem(), GetDatabaseInstanceSettingIpConfigurationPscConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingIpConfigurationPscConfigArrayInput)(nil)).Elem(), GetDatabaseInstanceSettingIpConfigurationPscConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionInput)(nil)).Elem(), GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionArrayInput)(nil)).Elem(), GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingLocationPreferenceInput)(nil)).Elem(), GetDatabaseInstanceSettingLocationPreferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingLocationPreferenceArrayInput)(nil)).Elem(), GetDatabaseInstanceSettingLocationPreferenceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceSettingMaintenanceWindowInput)(nil)).Elem(), GetDatabaseInstanceSettingMaintenanceWindowArgs{})
@@ -11311,6 +11678,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingLocationPreferenceInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingLocationPreferenceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingLocationPreferenceArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingLocationPreferenceArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceSettingMaintenanceWindowInput)(nil)).Elem(), GetDatabaseInstancesInstanceSettingMaintenanceWindowArgs{})
@@ -11357,6 +11726,8 @@ func init() {
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArrayOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsIpConfigurationPscConfigOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsIpConfigurationPscConfigArrayOutput{})
+	pulumi.RegisterOutputType(DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionOutput{})
+	pulumi.RegisterOutputType(DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArrayOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsLocationPreferenceOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsLocationPreferencePtrOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceSettingsMaintenanceWindowOutput{})
@@ -11407,6 +11778,8 @@ func init() {
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingIpConfigurationAuthorizedNetworkArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingIpConfigurationPscConfigOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingIpConfigurationPscConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnectionArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingLocationPreferenceOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingLocationPreferenceArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceSettingMaintenanceWindowOutput{})
@@ -11451,6 +11824,8 @@ func init() {
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingIpConfigurationAuthorizedNetworkArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingLocationPreferenceOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingLocationPreferenceArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceSettingMaintenanceWindowOutput{})

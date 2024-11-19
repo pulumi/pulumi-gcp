@@ -232,6 +232,10 @@ export class Instance extends pulumi.CustomResource {
      * Structure is documented below.
      */
     public readonly networks!: pulumi.Output<outputs.filestore.InstanceNetwork[]>;
+    /**
+     * Performance configuration for the instance. If not provided, the default performance settings will be used.
+     */
+    public readonly performanceConfig!: pulumi.Output<outputs.filestore.InstancePerformanceConfig | undefined>;
     public readonly project!: pulumi.Output<string>;
     /**
      * Either NFSv3, for using NFS version 3 as file sharing protocol, or NFSv4.1, for using NFS version 4.1 as file sharing
@@ -281,6 +285,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["networks"] = state ? state.networks : undefined;
+            resourceInputs["performanceConfig"] = state ? state.performanceConfig : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["protocol"] = state ? state.protocol : undefined;
             resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
@@ -306,6 +311,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["networks"] = args ? args.networks : undefined;
+            resourceInputs["performanceConfig"] = args ? args.performanceConfig : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["protocol"] = args ? args.protocol : undefined;
             resourceInputs["tier"] = args ? args.tier : undefined;
@@ -381,6 +387,10 @@ export interface InstanceState {
      * Structure is documented below.
      */
     networks?: pulumi.Input<pulumi.Input<inputs.filestore.InstanceNetwork>[]>;
+    /**
+     * Performance configuration for the instance. If not provided, the default performance settings will be used.
+     */
+    performanceConfig?: pulumi.Input<inputs.filestore.InstancePerformanceConfig>;
     project?: pulumi.Input<string>;
     /**
      * Either NFSv3, for using NFS version 3 as file sharing protocol, or NFSv4.1, for using NFS version 4.1 as file sharing
@@ -452,6 +462,10 @@ export interface InstanceArgs {
      * Structure is documented below.
      */
     networks: pulumi.Input<pulumi.Input<inputs.filestore.InstanceNetwork>[]>;
+    /**
+     * Performance configuration for the instance. If not provided, the default performance settings will be used.
+     */
+    performanceConfig?: pulumi.Input<inputs.filestore.InstancePerformanceConfig>;
     project?: pulumi.Input<string>;
     /**
      * Either NFSv3, for using NFS version 3 as file sharing protocol, or NFSv4.1, for using NFS version 4.1 as file sharing

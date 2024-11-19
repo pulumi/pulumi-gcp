@@ -65,6 +65,7 @@ public final class GetServiceResult {
     private String uid;
     private String updateTime;
     private String uri;
+    private List<String> urls;
 
     private GetServiceResult() {}
     public Map<String,String> annotations() {
@@ -188,6 +189,9 @@ public final class GetServiceResult {
     public String uri() {
         return this.uri;
     }
+    public List<String> urls() {
+        return this.urls;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -237,6 +241,7 @@ public final class GetServiceResult {
         private String uid;
         private String updateTime;
         private String uri;
+        private List<String> urls;
         public Builder() {}
         public Builder(GetServiceResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -279,6 +284,7 @@ public final class GetServiceResult {
     	      this.uid = defaults.uid;
     	      this.updateTime = defaults.updateTime;
     	      this.uri = defaults.uri;
+    	      this.urls = defaults.urls;
         }
 
         @CustomType.Setter
@@ -613,6 +619,17 @@ public final class GetServiceResult {
             this.uri = uri;
             return this;
         }
+        @CustomType.Setter
+        public Builder urls(List<String> urls) {
+            if (urls == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "urls");
+            }
+            this.urls = urls;
+            return this;
+        }
+        public Builder urls(String... urls) {
+            return urls(List.of(urls));
+        }
         public GetServiceResult build() {
             final var _resultValue = new GetServiceResult();
             _resultValue.annotations = annotations;
@@ -654,6 +671,7 @@ public final class GetServiceResult {
             _resultValue.uid = uid;
             _resultValue.updateTime = updateTime;
             _resultValue.uri = uri;
+            _resultValue.urls = urls;
             return _resultValue;
         }
     }

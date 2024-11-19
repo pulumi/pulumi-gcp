@@ -12,6 +12,7 @@ import com.pulumi.gcp.securesourcemanager.InstanceArgs;
 import com.pulumi.gcp.securesourcemanager.inputs.InstanceState;
 import com.pulumi.gcp.securesourcemanager.outputs.InstanceHostConfig;
 import com.pulumi.gcp.securesourcemanager.outputs.InstancePrivateConfig;
+import com.pulumi.gcp.securesourcemanager.outputs.InstanceWorkforceIdentityFederationConfig;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -700,6 +701,45 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Secure Source Manager Instance Workforce Identity Federation
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.securesourcemanager.Instance;
+ * import com.pulumi.gcp.securesourcemanager.InstanceArgs;
+ * import com.pulumi.gcp.securesourcemanager.inputs.InstanceWorkforceIdentityFederationConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Instance("default", InstanceArgs.builder()
+ *             .location("us-central1")
+ *             .instanceId("my-instance")
+ *             .workforceIdentityFederationConfig(InstanceWorkforceIdentityFederationConfigArgs.builder()
+ *                 .enabled(true)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -947,6 +987,24 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> updateTime() {
         return this.updateTime;
+    }
+    /**
+     * Configuration for Workforce Identity Federation to support third party identity provider.
+     * If unset, defaults to the Google OIDC IdP.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="workforceIdentityFederationConfig", refs={InstanceWorkforceIdentityFederationConfig.class}, tree="[0]")
+    private Output</* @Nullable */ InstanceWorkforceIdentityFederationConfig> workforceIdentityFederationConfig;
+
+    /**
+     * @return Configuration for Workforce Identity Federation to support third party identity provider.
+     * If unset, defaults to the Google OIDC IdP.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<InstanceWorkforceIdentityFederationConfig>> workforceIdentityFederationConfig() {
+        return Codegen.optional(this.workforceIdentityFederationConfig);
     }
 
     /**

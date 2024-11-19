@@ -747,6 +747,50 @@ import (
 //	}
 //
 // ```
+// ### Artifact Registry Repository Remote Common Repository With Docker
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/artifactregistry"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			upstreamRepo, err := artifactregistry.NewRepository(ctx, "upstream_repo", &artifactregistry.RepositoryArgs{
+//				Location:     pulumi.String("us-central1"),
+//				RepositoryId: pulumi.String("example-upstream-repo"),
+//				Description:  pulumi.String("example upstream repository"),
+//				Format:       pulumi.String("DOCKER"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = artifactregistry.NewRepository(ctx, "my-repo", &artifactregistry.RepositoryArgs{
+//				Location:     pulumi.String("us-central1"),
+//				RepositoryId: pulumi.String("example-common-remote"),
+//				Description:  pulumi.String("example remote common repository with docker upstream"),
+//				Format:       pulumi.String("DOCKER"),
+//				Mode:         pulumi.String("REMOTE_REPOSITORY"),
+//				RemoteRepositoryConfig: &artifactregistry.RepositoryRemoteRepositoryConfigArgs{
+//					Description: pulumi.String("pull-through cache of another Artifact Registry repository"),
+//					CommonRepository: &artifactregistry.RepositoryRemoteRepositoryConfigCommonRepositoryArgs{
+//						Uri: upstreamRepo.ID(),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

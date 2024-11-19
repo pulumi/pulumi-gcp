@@ -6,6 +6,7 @@ package com.pulumi.gcp.artifactregistry.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigAptRepositoryArgs;
+import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigCommonRepositoryArgs;
 import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigDockerRepositoryArgs;
 import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigMavenRepositoryArgs;
 import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigNpmRepositoryArgs;
@@ -38,6 +39,23 @@ public final class RepositoryRemoteRepositoryConfigArgs extends com.pulumi.resou
      */
     public Optional<Output<RepositoryRemoteRepositoryConfigAptRepositoryArgs>> aptRepository() {
         return Optional.ofNullable(this.aptRepository);
+    }
+
+    /**
+     * Specific settings for an Artifact Registory remote repository.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="commonRepository")
+    private @Nullable Output<RepositoryRemoteRepositoryConfigCommonRepositoryArgs> commonRepository;
+
+    /**
+     * @return Specific settings for an Artifact Registory remote repository.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<RepositoryRemoteRepositoryConfigCommonRepositoryArgs>> commonRepository() {
+        return Optional.ofNullable(this.commonRepository);
     }
 
     /**
@@ -178,6 +196,7 @@ public final class RepositoryRemoteRepositoryConfigArgs extends com.pulumi.resou
 
     private RepositoryRemoteRepositoryConfigArgs(RepositoryRemoteRepositoryConfigArgs $) {
         this.aptRepository = $.aptRepository;
+        this.commonRepository = $.commonRepository;
         this.description = $.description;
         this.disableUpstreamValidation = $.disableUpstreamValidation;
         this.dockerRepository = $.dockerRepository;
@@ -227,6 +246,29 @@ public final class RepositoryRemoteRepositoryConfigArgs extends com.pulumi.resou
          */
         public Builder aptRepository(RepositoryRemoteRepositoryConfigAptRepositoryArgs aptRepository) {
             return aptRepository(Output.of(aptRepository));
+        }
+
+        /**
+         * @param commonRepository Specific settings for an Artifact Registory remote repository.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder commonRepository(@Nullable Output<RepositoryRemoteRepositoryConfigCommonRepositoryArgs> commonRepository) {
+            $.commonRepository = commonRepository;
+            return this;
+        }
+
+        /**
+         * @param commonRepository Specific settings for an Artifact Registory remote repository.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder commonRepository(RepositoryRemoteRepositoryConfigCommonRepositoryArgs commonRepository) {
+            return commonRepository(Output.of(commonRepository));
         }
 
         /**

@@ -198,6 +198,201 @@ import (
 //	}
 //
 // ```
+// ### Redis Cluster Rdb
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/networkconnectivity"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/redis"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			producerNet, err := compute.NewNetwork(ctx, "producer_net", &compute.NetworkArgs{
+//				Name:                  pulumi.String("mynetwork"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			producerSubnet, err := compute.NewSubnetwork(ctx, "producer_subnet", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("mysubnet"),
+//				IpCidrRange: pulumi.String("10.0.0.248/29"),
+//				Region:      pulumi.String("us-central1"),
+//				Network:     producerNet.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networkconnectivity.NewServiceConnectionPolicy(ctx, "default", &networkconnectivity.ServiceConnectionPolicyArgs{
+//				Name:         pulumi.String("mypolicy"),
+//				Location:     pulumi.String("us-central1"),
+//				ServiceClass: pulumi.String("gcp-memorystore-redis"),
+//				Description:  pulumi.String("my basic service connection policy"),
+//				Network:      producerNet.ID(),
+//				PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
+//					Subnetworks: pulumi.StringArray{
+//						producerSubnet.ID(),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = redis.NewCluster(ctx, "cluster-rdb", &redis.ClusterArgs{
+//				Name:       pulumi.String("rdb-cluster"),
+//				ShardCount: pulumi.Int(3),
+//				PscConfigs: redis.ClusterPscConfigArray{
+//					&redis.ClusterPscConfigArgs{
+//						Network: producerNet.ID(),
+//					},
+//				},
+//				Region:                pulumi.String("us-central1"),
+//				ReplicaCount:          pulumi.Int(0),
+//				NodeType:              pulumi.String("REDIS_SHARED_CORE_NANO"),
+//				TransitEncryptionMode: pulumi.String("TRANSIT_ENCRYPTION_MODE_DISABLED"),
+//				AuthorizationMode:     pulumi.String("AUTH_MODE_DISABLED"),
+//				RedisConfigs: pulumi.StringMap{
+//					"maxmemory-policy": pulumi.String("volatile-ttl"),
+//				},
+//				DeletionProtectionEnabled: pulumi.Bool(true),
+//				ZoneDistributionConfig: &redis.ClusterZoneDistributionConfigArgs{
+//					Mode: pulumi.String("MULTI_ZONE"),
+//				},
+//				MaintenancePolicy: &redis.ClusterMaintenancePolicyArgs{
+//					WeeklyMaintenanceWindows: redis.ClusterMaintenancePolicyWeeklyMaintenanceWindowArray{
+//						&redis.ClusterMaintenancePolicyWeeklyMaintenanceWindowArgs{
+//							Day: pulumi.String("MONDAY"),
+//							StartTime: &redis.ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs{
+//								Hours:   pulumi.Int(1),
+//								Minutes: pulumi.Int(0),
+//								Seconds: pulumi.Int(0),
+//								Nanos:   pulumi.Int(0),
+//							},
+//						},
+//					},
+//				},
+//				PersistenceConfig: &redis.ClusterPersistenceConfigArgs{
+//					Mode: pulumi.String("RDB"),
+//					RdbConfig: &redis.ClusterPersistenceConfigRdbConfigArgs{
+//						RdbSnapshotPeriod:    pulumi.String("ONE_HOUR"),
+//						RdbSnapshotStartTime: pulumi.String("2024-10-02T15:01:23Z"),
+//					},
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				_default,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Redis Cluster Aof
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/networkconnectivity"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/redis"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			producerNet, err := compute.NewNetwork(ctx, "producer_net", &compute.NetworkArgs{
+//				Name:                  pulumi.String("mynetwork"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			producerSubnet, err := compute.NewSubnetwork(ctx, "producer_subnet", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("mysubnet"),
+//				IpCidrRange: pulumi.String("10.0.0.248/29"),
+//				Region:      pulumi.String("us-central1"),
+//				Network:     producerNet.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networkconnectivity.NewServiceConnectionPolicy(ctx, "default", &networkconnectivity.ServiceConnectionPolicyArgs{
+//				Name:         pulumi.String("mypolicy"),
+//				Location:     pulumi.String("us-central1"),
+//				ServiceClass: pulumi.String("gcp-memorystore-redis"),
+//				Description:  pulumi.String("my basic service connection policy"),
+//				Network:      producerNet.ID(),
+//				PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
+//					Subnetworks: pulumi.StringArray{
+//						producerSubnet.ID(),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = redis.NewCluster(ctx, "cluster-aof", &redis.ClusterArgs{
+//				Name:       pulumi.String("aof-cluster"),
+//				ShardCount: pulumi.Int(3),
+//				PscConfigs: redis.ClusterPscConfigArray{
+//					&redis.ClusterPscConfigArgs{
+//						Network: producerNet.ID(),
+//					},
+//				},
+//				Region:                pulumi.String("us-central1"),
+//				ReplicaCount:          pulumi.Int(0),
+//				NodeType:              pulumi.String("REDIS_SHARED_CORE_NANO"),
+//				TransitEncryptionMode: pulumi.String("TRANSIT_ENCRYPTION_MODE_DISABLED"),
+//				AuthorizationMode:     pulumi.String("AUTH_MODE_DISABLED"),
+//				RedisConfigs: pulumi.StringMap{
+//					"maxmemory-policy": pulumi.String("volatile-ttl"),
+//				},
+//				DeletionProtectionEnabled: pulumi.Bool(true),
+//				ZoneDistributionConfig: &redis.ClusterZoneDistributionConfigArgs{
+//					Mode: pulumi.String("MULTI_ZONE"),
+//				},
+//				MaintenancePolicy: &redis.ClusterMaintenancePolicyArgs{
+//					WeeklyMaintenanceWindows: redis.ClusterMaintenancePolicyWeeklyMaintenanceWindowArray{
+//						&redis.ClusterMaintenancePolicyWeeklyMaintenanceWindowArgs{
+//							Day: pulumi.String("MONDAY"),
+//							StartTime: &redis.ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs{
+//								Hours:   pulumi.Int(1),
+//								Minutes: pulumi.Int(0),
+//								Seconds: pulumi.Int(0),
+//								Nanos:   pulumi.Int(0),
+//							},
+//						},
+//					},
+//				},
+//				PersistenceConfig: &redis.ClusterPersistenceConfigArgs{
+//					Mode: pulumi.String("AOF"),
+//					AofConfig: &redis.ClusterPersistenceConfigAofConfigArgs{
+//						AppendFsync: pulumi.String("EVERYSEC"),
+//					},
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				_default,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -258,6 +453,8 @@ type Cluster struct {
 	// The nodeType for the Redis cluster. If not provided, REDIS_HIGHMEM_MEDIUM will be used as default Possible values:
 	// ["REDIS_SHARED_CORE_NANO", "REDIS_HIGHMEM_MEDIUM", "REDIS_HIGHMEM_XLARGE", "REDIS_STANDARD_SMALL"]
 	NodeType pulumi.StringOutput `pulumi:"nodeType"`
+	// Persistence config (RDB, AOF) for the cluster.
+	PersistenceConfig ClusterPersistenceConfigOutput `pulumi:"persistenceConfig"`
 	// Output only. Redis memory precise size in GB for the entire cluster.
 	PreciseSizeGb pulumi.Float64Output `pulumi:"preciseSizeGb"`
 	Project       pulumi.StringOutput  `pulumi:"project"`
@@ -359,6 +556,8 @@ type clusterState struct {
 	// The nodeType for the Redis cluster. If not provided, REDIS_HIGHMEM_MEDIUM will be used as default Possible values:
 	// ["REDIS_SHARED_CORE_NANO", "REDIS_HIGHMEM_MEDIUM", "REDIS_HIGHMEM_XLARGE", "REDIS_STANDARD_SMALL"]
 	NodeType *string `pulumi:"nodeType"`
+	// Persistence config (RDB, AOF) for the cluster.
+	PersistenceConfig *ClusterPersistenceConfig `pulumi:"persistenceConfig"`
 	// Output only. Redis memory precise size in GB for the entire cluster.
 	PreciseSizeGb *float64 `pulumi:"preciseSizeGb"`
 	Project       *string  `pulumi:"project"`
@@ -425,6 +624,8 @@ type ClusterState struct {
 	// The nodeType for the Redis cluster. If not provided, REDIS_HIGHMEM_MEDIUM will be used as default Possible values:
 	// ["REDIS_SHARED_CORE_NANO", "REDIS_HIGHMEM_MEDIUM", "REDIS_HIGHMEM_XLARGE", "REDIS_STANDARD_SMALL"]
 	NodeType pulumi.StringPtrInput
+	// Persistence config (RDB, AOF) for the cluster.
+	PersistenceConfig ClusterPersistenceConfigPtrInput
 	// Output only. Redis memory precise size in GB for the entire cluster.
 	PreciseSizeGb pulumi.Float64PtrInput
 	Project       pulumi.StringPtrInput
@@ -483,7 +684,9 @@ type clusterArgs struct {
 	// The nodeType for the Redis cluster. If not provided, REDIS_HIGHMEM_MEDIUM will be used as default Possible values:
 	// ["REDIS_SHARED_CORE_NANO", "REDIS_HIGHMEM_MEDIUM", "REDIS_HIGHMEM_XLARGE", "REDIS_STANDARD_SMALL"]
 	NodeType *string `pulumi:"nodeType"`
-	Project  *string `pulumi:"project"`
+	// Persistence config (RDB, AOF) for the cluster.
+	PersistenceConfig *ClusterPersistenceConfig `pulumi:"persistenceConfig"`
+	Project           *string                   `pulumi:"project"`
 	// Required. Each PscConfig configures the consumer network where two
 	// network addresses will be designated to the cluster for client access.
 	// Currently, only one PscConfig is supported.
@@ -524,7 +727,9 @@ type ClusterArgs struct {
 	// The nodeType for the Redis cluster. If not provided, REDIS_HIGHMEM_MEDIUM will be used as default Possible values:
 	// ["REDIS_SHARED_CORE_NANO", "REDIS_HIGHMEM_MEDIUM", "REDIS_HIGHMEM_XLARGE", "REDIS_STANDARD_SMALL"]
 	NodeType pulumi.StringPtrInput
-	Project  pulumi.StringPtrInput
+	// Persistence config (RDB, AOF) for the cluster.
+	PersistenceConfig ClusterPersistenceConfigPtrInput
+	Project           pulumi.StringPtrInput
 	// Required. Each PscConfig configures the consumer network where two
 	// network addresses will be designated to the cluster for client access.
 	// Currently, only one PscConfig is supported.
@@ -684,6 +889,11 @@ func (o ClusterOutput) Name() pulumi.StringOutput {
 // ["REDIS_SHARED_CORE_NANO", "REDIS_HIGHMEM_MEDIUM", "REDIS_HIGHMEM_XLARGE", "REDIS_STANDARD_SMALL"]
 func (o ClusterOutput) NodeType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.NodeType }).(pulumi.StringOutput)
+}
+
+// Persistence config (RDB, AOF) for the cluster.
+func (o ClusterOutput) PersistenceConfig() ClusterPersistenceConfigOutput {
+	return o.ApplyT(func(v *Cluster) ClusterPersistenceConfigOutput { return v.PersistenceConfig }).(ClusterPersistenceConfigOutput)
 }
 
 // Output only. Redis memory precise size in GB for the entire cluster.

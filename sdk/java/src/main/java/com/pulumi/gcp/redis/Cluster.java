@@ -13,6 +13,7 @@ import com.pulumi.gcp.redis.inputs.ClusterState;
 import com.pulumi.gcp.redis.outputs.ClusterDiscoveryEndpoint;
 import com.pulumi.gcp.redis.outputs.ClusterMaintenancePolicy;
 import com.pulumi.gcp.redis.outputs.ClusterMaintenanceSchedule;
+import com.pulumi.gcp.redis.outputs.ClusterPersistenceConfig;
 import com.pulumi.gcp.redis.outputs.ClusterPscConfig;
 import com.pulumi.gcp.redis.outputs.ClusterPscConnection;
 import com.pulumi.gcp.redis.outputs.ClusterStateInfo;
@@ -223,6 +224,213 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Redis Cluster Rdb
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.networkconnectivity.ServiceConnectionPolicy;
+ * import com.pulumi.gcp.networkconnectivity.ServiceConnectionPolicyArgs;
+ * import com.pulumi.gcp.networkconnectivity.inputs.ServiceConnectionPolicyPscConfigArgs;
+ * import com.pulumi.gcp.redis.Cluster;
+ * import com.pulumi.gcp.redis.ClusterArgs;
+ * import com.pulumi.gcp.redis.inputs.ClusterPscConfigArgs;
+ * import com.pulumi.gcp.redis.inputs.ClusterZoneDistributionConfigArgs;
+ * import com.pulumi.gcp.redis.inputs.ClusterMaintenancePolicyArgs;
+ * import com.pulumi.gcp.redis.inputs.ClusterPersistenceConfigArgs;
+ * import com.pulumi.gcp.redis.inputs.ClusterPersistenceConfigRdbConfigArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var producerNet = new Network("producerNet", NetworkArgs.builder()
+ *             .name("mynetwork")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var producerSubnet = new Subnetwork("producerSubnet", SubnetworkArgs.builder()
+ *             .name("mysubnet")
+ *             .ipCidrRange("10.0.0.248/29")
+ *             .region("us-central1")
+ *             .network(producerNet.id())
+ *             .build());
+ * 
+ *         var default_ = new ServiceConnectionPolicy("default", ServiceConnectionPolicyArgs.builder()
+ *             .name("mypolicy")
+ *             .location("us-central1")
+ *             .serviceClass("gcp-memorystore-redis")
+ *             .description("my basic service connection policy")
+ *             .network(producerNet.id())
+ *             .pscConfig(ServiceConnectionPolicyPscConfigArgs.builder()
+ *                 .subnetworks(producerSubnet.id())
+ *                 .build())
+ *             .build());
+ * 
+ *         var cluster_rdb = new Cluster("cluster-rdb", ClusterArgs.builder()
+ *             .name("rdb-cluster")
+ *             .shardCount(3)
+ *             .pscConfigs(ClusterPscConfigArgs.builder()
+ *                 .network(producerNet.id())
+ *                 .build())
+ *             .region("us-central1")
+ *             .replicaCount(0)
+ *             .nodeType("REDIS_SHARED_CORE_NANO")
+ *             .transitEncryptionMode("TRANSIT_ENCRYPTION_MODE_DISABLED")
+ *             .authorizationMode("AUTH_MODE_DISABLED")
+ *             .redisConfigs(Map.of("maxmemory-policy", "volatile-ttl"))
+ *             .deletionProtectionEnabled(true)
+ *             .zoneDistributionConfig(ClusterZoneDistributionConfigArgs.builder()
+ *                 .mode("MULTI_ZONE")
+ *                 .build())
+ *             .maintenancePolicy(ClusterMaintenancePolicyArgs.builder()
+ *                 .weeklyMaintenanceWindows(ClusterMaintenancePolicyWeeklyMaintenanceWindowArgs.builder()
+ *                     .day("MONDAY")
+ *                     .startTime(ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs.builder()
+ *                         .hours(1)
+ *                         .minutes(0)
+ *                         .seconds(0)
+ *                         .nanos(0)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .persistenceConfig(ClusterPersistenceConfigArgs.builder()
+ *                 .mode("RDB")
+ *                 .rdbConfig(ClusterPersistenceConfigRdbConfigArgs.builder()
+ *                     .rdbSnapshotPeriod("ONE_HOUR")
+ *                     .rdbSnapshotStartTime("2024-10-02T15:01:23Z")
+ *                     .build())
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(default_)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Redis Cluster Aof
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.networkconnectivity.ServiceConnectionPolicy;
+ * import com.pulumi.gcp.networkconnectivity.ServiceConnectionPolicyArgs;
+ * import com.pulumi.gcp.networkconnectivity.inputs.ServiceConnectionPolicyPscConfigArgs;
+ * import com.pulumi.gcp.redis.Cluster;
+ * import com.pulumi.gcp.redis.ClusterArgs;
+ * import com.pulumi.gcp.redis.inputs.ClusterPscConfigArgs;
+ * import com.pulumi.gcp.redis.inputs.ClusterZoneDistributionConfigArgs;
+ * import com.pulumi.gcp.redis.inputs.ClusterMaintenancePolicyArgs;
+ * import com.pulumi.gcp.redis.inputs.ClusterPersistenceConfigArgs;
+ * import com.pulumi.gcp.redis.inputs.ClusterPersistenceConfigAofConfigArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var producerNet = new Network("producerNet", NetworkArgs.builder()
+ *             .name("mynetwork")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var producerSubnet = new Subnetwork("producerSubnet", SubnetworkArgs.builder()
+ *             .name("mysubnet")
+ *             .ipCidrRange("10.0.0.248/29")
+ *             .region("us-central1")
+ *             .network(producerNet.id())
+ *             .build());
+ * 
+ *         var default_ = new ServiceConnectionPolicy("default", ServiceConnectionPolicyArgs.builder()
+ *             .name("mypolicy")
+ *             .location("us-central1")
+ *             .serviceClass("gcp-memorystore-redis")
+ *             .description("my basic service connection policy")
+ *             .network(producerNet.id())
+ *             .pscConfig(ServiceConnectionPolicyPscConfigArgs.builder()
+ *                 .subnetworks(producerSubnet.id())
+ *                 .build())
+ *             .build());
+ * 
+ *         var cluster_aof = new Cluster("cluster-aof", ClusterArgs.builder()
+ *             .name("aof-cluster")
+ *             .shardCount(3)
+ *             .pscConfigs(ClusterPscConfigArgs.builder()
+ *                 .network(producerNet.id())
+ *                 .build())
+ *             .region("us-central1")
+ *             .replicaCount(0)
+ *             .nodeType("REDIS_SHARED_CORE_NANO")
+ *             .transitEncryptionMode("TRANSIT_ENCRYPTION_MODE_DISABLED")
+ *             .authorizationMode("AUTH_MODE_DISABLED")
+ *             .redisConfigs(Map.of("maxmemory-policy", "volatile-ttl"))
+ *             .deletionProtectionEnabled(true)
+ *             .zoneDistributionConfig(ClusterZoneDistributionConfigArgs.builder()
+ *                 .mode("MULTI_ZONE")
+ *                 .build())
+ *             .maintenancePolicy(ClusterMaintenancePolicyArgs.builder()
+ *                 .weeklyMaintenanceWindows(ClusterMaintenancePolicyWeeklyMaintenanceWindowArgs.builder()
+ *                     .day("MONDAY")
+ *                     .startTime(ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs.builder()
+ *                         .hours(1)
+ *                         .minutes(0)
+ *                         .seconds(0)
+ *                         .nanos(0)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .persistenceConfig(ClusterPersistenceConfigArgs.builder()
+ *                 .mode("AOF")
+ *                 .aofConfig(ClusterPersistenceConfigAofConfigArgs.builder()
+ *                     .appendFsync("EVERYSEC")
+ *                     .build())
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(default_)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -390,6 +598,20 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<String> nodeType() {
         return this.nodeType;
+    }
+    /**
+     * Persistence config (RDB, AOF) for the cluster.
+     * 
+     */
+    @Export(name="persistenceConfig", refs={ClusterPersistenceConfig.class}, tree="[0]")
+    private Output<ClusterPersistenceConfig> persistenceConfig;
+
+    /**
+     * @return Persistence config (RDB, AOF) for the cluster.
+     * 
+     */
+    public Output<ClusterPersistenceConfig> persistenceConfig() {
+        return this.persistenceConfig;
     }
     /**
      * Output only. Redis memory precise size in GB for the entire cluster.

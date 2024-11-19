@@ -71,14 +71,14 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var value = new TagValue("value", TagValueArgs.builder()
- *             .parent(key.name().applyValue(name -> String.format("tagKeys/%s", name)))
+ *             .parent(key.id())
  *             .shortName("valuename")
  *             .description("For valuename resources.")
  *             .build());
  * 
  *         var binding = new LocationTagBinding("binding", LocationTagBindingArgs.builder()
  *             .parent(String.format("//run.googleapis.com/projects/%s/locations/%s/services/%s", projectGoogleProject.number(),default_.location(),default_.name()))
- *             .tagValue(value.name().applyValue(name -> String.format("tagValues/%s", name)))
+ *             .tagValue(value.id())
  *             .location("us-central1")
  *             .build());
  * 
@@ -132,14 +132,14 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var value = new TagValue("value", TagValueArgs.builder()
- *             .parent(key.name().applyValue(name -> String.format("tagKeys/%s", name)))
+ *             .parent(key.id())
  *             .shortName("valuename")
  *             .description("For valuename resources.")
  *             .build());
  * 
  *         var binding = new LocationTagBinding("binding", LocationTagBindingArgs.builder()
  *             .parent(project.number().applyValue(number -> String.format("//compute.googleapis.com/projects/%s/zones/us-central1-a/instances/%s", number,instance.instanceId())))
- *             .tagValue(value.name().applyValue(name -> String.format("tagValues/%s", name)))
+ *             .tagValue(value.id())
  *             .location("us-central1-a")
  *             .build());
  * 

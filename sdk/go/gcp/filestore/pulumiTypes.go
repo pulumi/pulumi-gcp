@@ -558,6 +558,476 @@ func (o InstanceNetworkArrayOutput) Index(i pulumi.IntInput) InstanceNetworkOutp
 	}).(InstanceNetworkOutput)
 }
 
+type InstancePerformanceConfig struct {
+	// The instance will have a fixed provisioned IOPS value,
+	// which will remain constant regardless of instance
+	// capacity.
+	// Structure is documented below.
+	FixedIops *InstancePerformanceConfigFixedIops `pulumi:"fixedIops"`
+	// The instance provisioned IOPS will change dynamically
+	// based on the capacity of the instance.
+	// Structure is documented below.
+	IopsPerTb *InstancePerformanceConfigIopsPerTb `pulumi:"iopsPerTb"`
+}
+
+// InstancePerformanceConfigInput is an input type that accepts InstancePerformanceConfigArgs and InstancePerformanceConfigOutput values.
+// You can construct a concrete instance of `InstancePerformanceConfigInput` via:
+//
+//	InstancePerformanceConfigArgs{...}
+type InstancePerformanceConfigInput interface {
+	pulumi.Input
+
+	ToInstancePerformanceConfigOutput() InstancePerformanceConfigOutput
+	ToInstancePerformanceConfigOutputWithContext(context.Context) InstancePerformanceConfigOutput
+}
+
+type InstancePerformanceConfigArgs struct {
+	// The instance will have a fixed provisioned IOPS value,
+	// which will remain constant regardless of instance
+	// capacity.
+	// Structure is documented below.
+	FixedIops InstancePerformanceConfigFixedIopsPtrInput `pulumi:"fixedIops"`
+	// The instance provisioned IOPS will change dynamically
+	// based on the capacity of the instance.
+	// Structure is documented below.
+	IopsPerTb InstancePerformanceConfigIopsPerTbPtrInput `pulumi:"iopsPerTb"`
+}
+
+func (InstancePerformanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstancePerformanceConfig)(nil)).Elem()
+}
+
+func (i InstancePerformanceConfigArgs) ToInstancePerformanceConfigOutput() InstancePerformanceConfigOutput {
+	return i.ToInstancePerformanceConfigOutputWithContext(context.Background())
+}
+
+func (i InstancePerformanceConfigArgs) ToInstancePerformanceConfigOutputWithContext(ctx context.Context) InstancePerformanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstancePerformanceConfigOutput)
+}
+
+func (i InstancePerformanceConfigArgs) ToInstancePerformanceConfigPtrOutput() InstancePerformanceConfigPtrOutput {
+	return i.ToInstancePerformanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i InstancePerformanceConfigArgs) ToInstancePerformanceConfigPtrOutputWithContext(ctx context.Context) InstancePerformanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstancePerformanceConfigOutput).ToInstancePerformanceConfigPtrOutputWithContext(ctx)
+}
+
+// InstancePerformanceConfigPtrInput is an input type that accepts InstancePerformanceConfigArgs, InstancePerformanceConfigPtr and InstancePerformanceConfigPtrOutput values.
+// You can construct a concrete instance of `InstancePerformanceConfigPtrInput` via:
+//
+//	        InstancePerformanceConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstancePerformanceConfigPtrInput interface {
+	pulumi.Input
+
+	ToInstancePerformanceConfigPtrOutput() InstancePerformanceConfigPtrOutput
+	ToInstancePerformanceConfigPtrOutputWithContext(context.Context) InstancePerformanceConfigPtrOutput
+}
+
+type instancePerformanceConfigPtrType InstancePerformanceConfigArgs
+
+func InstancePerformanceConfigPtr(v *InstancePerformanceConfigArgs) InstancePerformanceConfigPtrInput {
+	return (*instancePerformanceConfigPtrType)(v)
+}
+
+func (*instancePerformanceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstancePerformanceConfig)(nil)).Elem()
+}
+
+func (i *instancePerformanceConfigPtrType) ToInstancePerformanceConfigPtrOutput() InstancePerformanceConfigPtrOutput {
+	return i.ToInstancePerformanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *instancePerformanceConfigPtrType) ToInstancePerformanceConfigPtrOutputWithContext(ctx context.Context) InstancePerformanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstancePerformanceConfigPtrOutput)
+}
+
+type InstancePerformanceConfigOutput struct{ *pulumi.OutputState }
+
+func (InstancePerformanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstancePerformanceConfig)(nil)).Elem()
+}
+
+func (o InstancePerformanceConfigOutput) ToInstancePerformanceConfigOutput() InstancePerformanceConfigOutput {
+	return o
+}
+
+func (o InstancePerformanceConfigOutput) ToInstancePerformanceConfigOutputWithContext(ctx context.Context) InstancePerformanceConfigOutput {
+	return o
+}
+
+func (o InstancePerformanceConfigOutput) ToInstancePerformanceConfigPtrOutput() InstancePerformanceConfigPtrOutput {
+	return o.ToInstancePerformanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o InstancePerformanceConfigOutput) ToInstancePerformanceConfigPtrOutputWithContext(ctx context.Context) InstancePerformanceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstancePerformanceConfig) *InstancePerformanceConfig {
+		return &v
+	}).(InstancePerformanceConfigPtrOutput)
+}
+
+// The instance will have a fixed provisioned IOPS value,
+// which will remain constant regardless of instance
+// capacity.
+// Structure is documented below.
+func (o InstancePerformanceConfigOutput) FixedIops() InstancePerformanceConfigFixedIopsPtrOutput {
+	return o.ApplyT(func(v InstancePerformanceConfig) *InstancePerformanceConfigFixedIops { return v.FixedIops }).(InstancePerformanceConfigFixedIopsPtrOutput)
+}
+
+// The instance provisioned IOPS will change dynamically
+// based on the capacity of the instance.
+// Structure is documented below.
+func (o InstancePerformanceConfigOutput) IopsPerTb() InstancePerformanceConfigIopsPerTbPtrOutput {
+	return o.ApplyT(func(v InstancePerformanceConfig) *InstancePerformanceConfigIopsPerTb { return v.IopsPerTb }).(InstancePerformanceConfigIopsPerTbPtrOutput)
+}
+
+type InstancePerformanceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (InstancePerformanceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstancePerformanceConfig)(nil)).Elem()
+}
+
+func (o InstancePerformanceConfigPtrOutput) ToInstancePerformanceConfigPtrOutput() InstancePerformanceConfigPtrOutput {
+	return o
+}
+
+func (o InstancePerformanceConfigPtrOutput) ToInstancePerformanceConfigPtrOutputWithContext(ctx context.Context) InstancePerformanceConfigPtrOutput {
+	return o
+}
+
+func (o InstancePerformanceConfigPtrOutput) Elem() InstancePerformanceConfigOutput {
+	return o.ApplyT(func(v *InstancePerformanceConfig) InstancePerformanceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret InstancePerformanceConfig
+		return ret
+	}).(InstancePerformanceConfigOutput)
+}
+
+// The instance will have a fixed provisioned IOPS value,
+// which will remain constant regardless of instance
+// capacity.
+// Structure is documented below.
+func (o InstancePerformanceConfigPtrOutput) FixedIops() InstancePerformanceConfigFixedIopsPtrOutput {
+	return o.ApplyT(func(v *InstancePerformanceConfig) *InstancePerformanceConfigFixedIops {
+		if v == nil {
+			return nil
+		}
+		return v.FixedIops
+	}).(InstancePerformanceConfigFixedIopsPtrOutput)
+}
+
+// The instance provisioned IOPS will change dynamically
+// based on the capacity of the instance.
+// Structure is documented below.
+func (o InstancePerformanceConfigPtrOutput) IopsPerTb() InstancePerformanceConfigIopsPerTbPtrOutput {
+	return o.ApplyT(func(v *InstancePerformanceConfig) *InstancePerformanceConfigIopsPerTb {
+		if v == nil {
+			return nil
+		}
+		return v.IopsPerTb
+	}).(InstancePerformanceConfigIopsPerTbPtrOutput)
+}
+
+type InstancePerformanceConfigFixedIops struct {
+	// The number of IOPS to provision for the instance.
+	// maxIops must be in multiple of 1000.
+	MaxIops *int `pulumi:"maxIops"`
+}
+
+// InstancePerformanceConfigFixedIopsInput is an input type that accepts InstancePerformanceConfigFixedIopsArgs and InstancePerformanceConfigFixedIopsOutput values.
+// You can construct a concrete instance of `InstancePerformanceConfigFixedIopsInput` via:
+//
+//	InstancePerformanceConfigFixedIopsArgs{...}
+type InstancePerformanceConfigFixedIopsInput interface {
+	pulumi.Input
+
+	ToInstancePerformanceConfigFixedIopsOutput() InstancePerformanceConfigFixedIopsOutput
+	ToInstancePerformanceConfigFixedIopsOutputWithContext(context.Context) InstancePerformanceConfigFixedIopsOutput
+}
+
+type InstancePerformanceConfigFixedIopsArgs struct {
+	// The number of IOPS to provision for the instance.
+	// maxIops must be in multiple of 1000.
+	MaxIops pulumi.IntPtrInput `pulumi:"maxIops"`
+}
+
+func (InstancePerformanceConfigFixedIopsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstancePerformanceConfigFixedIops)(nil)).Elem()
+}
+
+func (i InstancePerformanceConfigFixedIopsArgs) ToInstancePerformanceConfigFixedIopsOutput() InstancePerformanceConfigFixedIopsOutput {
+	return i.ToInstancePerformanceConfigFixedIopsOutputWithContext(context.Background())
+}
+
+func (i InstancePerformanceConfigFixedIopsArgs) ToInstancePerformanceConfigFixedIopsOutputWithContext(ctx context.Context) InstancePerformanceConfigFixedIopsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstancePerformanceConfigFixedIopsOutput)
+}
+
+func (i InstancePerformanceConfigFixedIopsArgs) ToInstancePerformanceConfigFixedIopsPtrOutput() InstancePerformanceConfigFixedIopsPtrOutput {
+	return i.ToInstancePerformanceConfigFixedIopsPtrOutputWithContext(context.Background())
+}
+
+func (i InstancePerformanceConfigFixedIopsArgs) ToInstancePerformanceConfigFixedIopsPtrOutputWithContext(ctx context.Context) InstancePerformanceConfigFixedIopsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstancePerformanceConfigFixedIopsOutput).ToInstancePerformanceConfigFixedIopsPtrOutputWithContext(ctx)
+}
+
+// InstancePerformanceConfigFixedIopsPtrInput is an input type that accepts InstancePerformanceConfigFixedIopsArgs, InstancePerformanceConfigFixedIopsPtr and InstancePerformanceConfigFixedIopsPtrOutput values.
+// You can construct a concrete instance of `InstancePerformanceConfigFixedIopsPtrInput` via:
+//
+//	        InstancePerformanceConfigFixedIopsArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstancePerformanceConfigFixedIopsPtrInput interface {
+	pulumi.Input
+
+	ToInstancePerformanceConfigFixedIopsPtrOutput() InstancePerformanceConfigFixedIopsPtrOutput
+	ToInstancePerformanceConfigFixedIopsPtrOutputWithContext(context.Context) InstancePerformanceConfigFixedIopsPtrOutput
+}
+
+type instancePerformanceConfigFixedIopsPtrType InstancePerformanceConfigFixedIopsArgs
+
+func InstancePerformanceConfigFixedIopsPtr(v *InstancePerformanceConfigFixedIopsArgs) InstancePerformanceConfigFixedIopsPtrInput {
+	return (*instancePerformanceConfigFixedIopsPtrType)(v)
+}
+
+func (*instancePerformanceConfigFixedIopsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstancePerformanceConfigFixedIops)(nil)).Elem()
+}
+
+func (i *instancePerformanceConfigFixedIopsPtrType) ToInstancePerformanceConfigFixedIopsPtrOutput() InstancePerformanceConfigFixedIopsPtrOutput {
+	return i.ToInstancePerformanceConfigFixedIopsPtrOutputWithContext(context.Background())
+}
+
+func (i *instancePerformanceConfigFixedIopsPtrType) ToInstancePerformanceConfigFixedIopsPtrOutputWithContext(ctx context.Context) InstancePerformanceConfigFixedIopsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstancePerformanceConfigFixedIopsPtrOutput)
+}
+
+type InstancePerformanceConfigFixedIopsOutput struct{ *pulumi.OutputState }
+
+func (InstancePerformanceConfigFixedIopsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstancePerformanceConfigFixedIops)(nil)).Elem()
+}
+
+func (o InstancePerformanceConfigFixedIopsOutput) ToInstancePerformanceConfigFixedIopsOutput() InstancePerformanceConfigFixedIopsOutput {
+	return o
+}
+
+func (o InstancePerformanceConfigFixedIopsOutput) ToInstancePerformanceConfigFixedIopsOutputWithContext(ctx context.Context) InstancePerformanceConfigFixedIopsOutput {
+	return o
+}
+
+func (o InstancePerformanceConfigFixedIopsOutput) ToInstancePerformanceConfigFixedIopsPtrOutput() InstancePerformanceConfigFixedIopsPtrOutput {
+	return o.ToInstancePerformanceConfigFixedIopsPtrOutputWithContext(context.Background())
+}
+
+func (o InstancePerformanceConfigFixedIopsOutput) ToInstancePerformanceConfigFixedIopsPtrOutputWithContext(ctx context.Context) InstancePerformanceConfigFixedIopsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstancePerformanceConfigFixedIops) *InstancePerformanceConfigFixedIops {
+		return &v
+	}).(InstancePerformanceConfigFixedIopsPtrOutput)
+}
+
+// The number of IOPS to provision for the instance.
+// maxIops must be in multiple of 1000.
+func (o InstancePerformanceConfigFixedIopsOutput) MaxIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstancePerformanceConfigFixedIops) *int { return v.MaxIops }).(pulumi.IntPtrOutput)
+}
+
+type InstancePerformanceConfigFixedIopsPtrOutput struct{ *pulumi.OutputState }
+
+func (InstancePerformanceConfigFixedIopsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstancePerformanceConfigFixedIops)(nil)).Elem()
+}
+
+func (o InstancePerformanceConfigFixedIopsPtrOutput) ToInstancePerformanceConfigFixedIopsPtrOutput() InstancePerformanceConfigFixedIopsPtrOutput {
+	return o
+}
+
+func (o InstancePerformanceConfigFixedIopsPtrOutput) ToInstancePerformanceConfigFixedIopsPtrOutputWithContext(ctx context.Context) InstancePerformanceConfigFixedIopsPtrOutput {
+	return o
+}
+
+func (o InstancePerformanceConfigFixedIopsPtrOutput) Elem() InstancePerformanceConfigFixedIopsOutput {
+	return o.ApplyT(func(v *InstancePerformanceConfigFixedIops) InstancePerformanceConfigFixedIops {
+		if v != nil {
+			return *v
+		}
+		var ret InstancePerformanceConfigFixedIops
+		return ret
+	}).(InstancePerformanceConfigFixedIopsOutput)
+}
+
+// The number of IOPS to provision for the instance.
+// maxIops must be in multiple of 1000.
+func (o InstancePerformanceConfigFixedIopsPtrOutput) MaxIops() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstancePerformanceConfigFixedIops) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxIops
+	}).(pulumi.IntPtrOutput)
+}
+
+type InstancePerformanceConfigIopsPerTb struct {
+	// The instance max IOPS will be calculated by multiplying
+	// the capacity of the instance (TB) by max_iops_per_tb,
+	// and rounding to the nearest 1000. The instance max IOPS
+	// will be changed dynamically based on the instance
+	// capacity.
+	MaxIopsPerTb *int `pulumi:"maxIopsPerTb"`
+}
+
+// InstancePerformanceConfigIopsPerTbInput is an input type that accepts InstancePerformanceConfigIopsPerTbArgs and InstancePerformanceConfigIopsPerTbOutput values.
+// You can construct a concrete instance of `InstancePerformanceConfigIopsPerTbInput` via:
+//
+//	InstancePerformanceConfigIopsPerTbArgs{...}
+type InstancePerformanceConfigIopsPerTbInput interface {
+	pulumi.Input
+
+	ToInstancePerformanceConfigIopsPerTbOutput() InstancePerformanceConfigIopsPerTbOutput
+	ToInstancePerformanceConfigIopsPerTbOutputWithContext(context.Context) InstancePerformanceConfigIopsPerTbOutput
+}
+
+type InstancePerformanceConfigIopsPerTbArgs struct {
+	// The instance max IOPS will be calculated by multiplying
+	// the capacity of the instance (TB) by max_iops_per_tb,
+	// and rounding to the nearest 1000. The instance max IOPS
+	// will be changed dynamically based on the instance
+	// capacity.
+	MaxIopsPerTb pulumi.IntPtrInput `pulumi:"maxIopsPerTb"`
+}
+
+func (InstancePerformanceConfigIopsPerTbArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstancePerformanceConfigIopsPerTb)(nil)).Elem()
+}
+
+func (i InstancePerformanceConfigIopsPerTbArgs) ToInstancePerformanceConfigIopsPerTbOutput() InstancePerformanceConfigIopsPerTbOutput {
+	return i.ToInstancePerformanceConfigIopsPerTbOutputWithContext(context.Background())
+}
+
+func (i InstancePerformanceConfigIopsPerTbArgs) ToInstancePerformanceConfigIopsPerTbOutputWithContext(ctx context.Context) InstancePerformanceConfigIopsPerTbOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstancePerformanceConfigIopsPerTbOutput)
+}
+
+func (i InstancePerformanceConfigIopsPerTbArgs) ToInstancePerformanceConfigIopsPerTbPtrOutput() InstancePerformanceConfigIopsPerTbPtrOutput {
+	return i.ToInstancePerformanceConfigIopsPerTbPtrOutputWithContext(context.Background())
+}
+
+func (i InstancePerformanceConfigIopsPerTbArgs) ToInstancePerformanceConfigIopsPerTbPtrOutputWithContext(ctx context.Context) InstancePerformanceConfigIopsPerTbPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstancePerformanceConfigIopsPerTbOutput).ToInstancePerformanceConfigIopsPerTbPtrOutputWithContext(ctx)
+}
+
+// InstancePerformanceConfigIopsPerTbPtrInput is an input type that accepts InstancePerformanceConfigIopsPerTbArgs, InstancePerformanceConfigIopsPerTbPtr and InstancePerformanceConfigIopsPerTbPtrOutput values.
+// You can construct a concrete instance of `InstancePerformanceConfigIopsPerTbPtrInput` via:
+//
+//	        InstancePerformanceConfigIopsPerTbArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstancePerformanceConfigIopsPerTbPtrInput interface {
+	pulumi.Input
+
+	ToInstancePerformanceConfigIopsPerTbPtrOutput() InstancePerformanceConfigIopsPerTbPtrOutput
+	ToInstancePerformanceConfigIopsPerTbPtrOutputWithContext(context.Context) InstancePerformanceConfigIopsPerTbPtrOutput
+}
+
+type instancePerformanceConfigIopsPerTbPtrType InstancePerformanceConfigIopsPerTbArgs
+
+func InstancePerformanceConfigIopsPerTbPtr(v *InstancePerformanceConfigIopsPerTbArgs) InstancePerformanceConfigIopsPerTbPtrInput {
+	return (*instancePerformanceConfigIopsPerTbPtrType)(v)
+}
+
+func (*instancePerformanceConfigIopsPerTbPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstancePerformanceConfigIopsPerTb)(nil)).Elem()
+}
+
+func (i *instancePerformanceConfigIopsPerTbPtrType) ToInstancePerformanceConfigIopsPerTbPtrOutput() InstancePerformanceConfigIopsPerTbPtrOutput {
+	return i.ToInstancePerformanceConfigIopsPerTbPtrOutputWithContext(context.Background())
+}
+
+func (i *instancePerformanceConfigIopsPerTbPtrType) ToInstancePerformanceConfigIopsPerTbPtrOutputWithContext(ctx context.Context) InstancePerformanceConfigIopsPerTbPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstancePerformanceConfigIopsPerTbPtrOutput)
+}
+
+type InstancePerformanceConfigIopsPerTbOutput struct{ *pulumi.OutputState }
+
+func (InstancePerformanceConfigIopsPerTbOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstancePerformanceConfigIopsPerTb)(nil)).Elem()
+}
+
+func (o InstancePerformanceConfigIopsPerTbOutput) ToInstancePerformanceConfigIopsPerTbOutput() InstancePerformanceConfigIopsPerTbOutput {
+	return o
+}
+
+func (o InstancePerformanceConfigIopsPerTbOutput) ToInstancePerformanceConfigIopsPerTbOutputWithContext(ctx context.Context) InstancePerformanceConfigIopsPerTbOutput {
+	return o
+}
+
+func (o InstancePerformanceConfigIopsPerTbOutput) ToInstancePerformanceConfigIopsPerTbPtrOutput() InstancePerformanceConfigIopsPerTbPtrOutput {
+	return o.ToInstancePerformanceConfigIopsPerTbPtrOutputWithContext(context.Background())
+}
+
+func (o InstancePerformanceConfigIopsPerTbOutput) ToInstancePerformanceConfigIopsPerTbPtrOutputWithContext(ctx context.Context) InstancePerformanceConfigIopsPerTbPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstancePerformanceConfigIopsPerTb) *InstancePerformanceConfigIopsPerTb {
+		return &v
+	}).(InstancePerformanceConfigIopsPerTbPtrOutput)
+}
+
+// The instance max IOPS will be calculated by multiplying
+// the capacity of the instance (TB) by max_iops_per_tb,
+// and rounding to the nearest 1000. The instance max IOPS
+// will be changed dynamically based on the instance
+// capacity.
+func (o InstancePerformanceConfigIopsPerTbOutput) MaxIopsPerTb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v InstancePerformanceConfigIopsPerTb) *int { return v.MaxIopsPerTb }).(pulumi.IntPtrOutput)
+}
+
+type InstancePerformanceConfigIopsPerTbPtrOutput struct{ *pulumi.OutputState }
+
+func (InstancePerformanceConfigIopsPerTbPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstancePerformanceConfigIopsPerTb)(nil)).Elem()
+}
+
+func (o InstancePerformanceConfigIopsPerTbPtrOutput) ToInstancePerformanceConfigIopsPerTbPtrOutput() InstancePerformanceConfigIopsPerTbPtrOutput {
+	return o
+}
+
+func (o InstancePerformanceConfigIopsPerTbPtrOutput) ToInstancePerformanceConfigIopsPerTbPtrOutputWithContext(ctx context.Context) InstancePerformanceConfigIopsPerTbPtrOutput {
+	return o
+}
+
+func (o InstancePerformanceConfigIopsPerTbPtrOutput) Elem() InstancePerformanceConfigIopsPerTbOutput {
+	return o.ApplyT(func(v *InstancePerformanceConfigIopsPerTb) InstancePerformanceConfigIopsPerTb {
+		if v != nil {
+			return *v
+		}
+		var ret InstancePerformanceConfigIopsPerTb
+		return ret
+	}).(InstancePerformanceConfigIopsPerTbOutput)
+}
+
+// The instance max IOPS will be calculated by multiplying
+// the capacity of the instance (TB) by max_iops_per_tb,
+// and rounding to the nearest 1000. The instance max IOPS
+// will be changed dynamically based on the instance
+// capacity.
+func (o InstancePerformanceConfigIopsPerTbPtrOutput) MaxIopsPerTb() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *InstancePerformanceConfigIopsPerTb) *int {
+		if v == nil {
+			return nil
+		}
+		return v.MaxIopsPerTb
+	}).(pulumi.IntPtrOutput)
+}
+
 type GetInstanceFileShare struct {
 	// File share capacity in GiB. This must be at least 1024 GiB
 	// for the standard tier, or 2560 GiB for the premium tier.
@@ -1002,6 +1472,330 @@ func (o GetInstanceNetworkArrayOutput) Index(i pulumi.IntInput) GetInstanceNetwo
 	}).(GetInstanceNetworkOutput)
 }
 
+type GetInstancePerformanceConfig struct {
+	// The instance will have a fixed provisioned IOPS value,
+	// which will remain constant regardless of instance
+	// capacity.
+	FixedIops []GetInstancePerformanceConfigFixedIop `pulumi:"fixedIops"`
+	// The instance provisioned IOPS will change dynamically
+	// based on the capacity of the instance.
+	IopsPerTbs []GetInstancePerformanceConfigIopsPerTb `pulumi:"iopsPerTbs"`
+}
+
+// GetInstancePerformanceConfigInput is an input type that accepts GetInstancePerformanceConfigArgs and GetInstancePerformanceConfigOutput values.
+// You can construct a concrete instance of `GetInstancePerformanceConfigInput` via:
+//
+//	GetInstancePerformanceConfigArgs{...}
+type GetInstancePerformanceConfigInput interface {
+	pulumi.Input
+
+	ToGetInstancePerformanceConfigOutput() GetInstancePerformanceConfigOutput
+	ToGetInstancePerformanceConfigOutputWithContext(context.Context) GetInstancePerformanceConfigOutput
+}
+
+type GetInstancePerformanceConfigArgs struct {
+	// The instance will have a fixed provisioned IOPS value,
+	// which will remain constant regardless of instance
+	// capacity.
+	FixedIops GetInstancePerformanceConfigFixedIopArrayInput `pulumi:"fixedIops"`
+	// The instance provisioned IOPS will change dynamically
+	// based on the capacity of the instance.
+	IopsPerTbs GetInstancePerformanceConfigIopsPerTbArrayInput `pulumi:"iopsPerTbs"`
+}
+
+func (GetInstancePerformanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancePerformanceConfig)(nil)).Elem()
+}
+
+func (i GetInstancePerformanceConfigArgs) ToGetInstancePerformanceConfigOutput() GetInstancePerformanceConfigOutput {
+	return i.ToGetInstancePerformanceConfigOutputWithContext(context.Background())
+}
+
+func (i GetInstancePerformanceConfigArgs) ToGetInstancePerformanceConfigOutputWithContext(ctx context.Context) GetInstancePerformanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancePerformanceConfigOutput)
+}
+
+// GetInstancePerformanceConfigArrayInput is an input type that accepts GetInstancePerformanceConfigArray and GetInstancePerformanceConfigArrayOutput values.
+// You can construct a concrete instance of `GetInstancePerformanceConfigArrayInput` via:
+//
+//	GetInstancePerformanceConfigArray{ GetInstancePerformanceConfigArgs{...} }
+type GetInstancePerformanceConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetInstancePerformanceConfigArrayOutput() GetInstancePerformanceConfigArrayOutput
+	ToGetInstancePerformanceConfigArrayOutputWithContext(context.Context) GetInstancePerformanceConfigArrayOutput
+}
+
+type GetInstancePerformanceConfigArray []GetInstancePerformanceConfigInput
+
+func (GetInstancePerformanceConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancePerformanceConfig)(nil)).Elem()
+}
+
+func (i GetInstancePerformanceConfigArray) ToGetInstancePerformanceConfigArrayOutput() GetInstancePerformanceConfigArrayOutput {
+	return i.ToGetInstancePerformanceConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstancePerformanceConfigArray) ToGetInstancePerformanceConfigArrayOutputWithContext(ctx context.Context) GetInstancePerformanceConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancePerformanceConfigArrayOutput)
+}
+
+type GetInstancePerformanceConfigOutput struct{ *pulumi.OutputState }
+
+func (GetInstancePerformanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancePerformanceConfig)(nil)).Elem()
+}
+
+func (o GetInstancePerformanceConfigOutput) ToGetInstancePerformanceConfigOutput() GetInstancePerformanceConfigOutput {
+	return o
+}
+
+func (o GetInstancePerformanceConfigOutput) ToGetInstancePerformanceConfigOutputWithContext(ctx context.Context) GetInstancePerformanceConfigOutput {
+	return o
+}
+
+// The instance will have a fixed provisioned IOPS value,
+// which will remain constant regardless of instance
+// capacity.
+func (o GetInstancePerformanceConfigOutput) FixedIops() GetInstancePerformanceConfigFixedIopArrayOutput {
+	return o.ApplyT(func(v GetInstancePerformanceConfig) []GetInstancePerformanceConfigFixedIop { return v.FixedIops }).(GetInstancePerformanceConfigFixedIopArrayOutput)
+}
+
+// The instance provisioned IOPS will change dynamically
+// based on the capacity of the instance.
+func (o GetInstancePerformanceConfigOutput) IopsPerTbs() GetInstancePerformanceConfigIopsPerTbArrayOutput {
+	return o.ApplyT(func(v GetInstancePerformanceConfig) []GetInstancePerformanceConfigIopsPerTb { return v.IopsPerTbs }).(GetInstancePerformanceConfigIopsPerTbArrayOutput)
+}
+
+type GetInstancePerformanceConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstancePerformanceConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancePerformanceConfig)(nil)).Elem()
+}
+
+func (o GetInstancePerformanceConfigArrayOutput) ToGetInstancePerformanceConfigArrayOutput() GetInstancePerformanceConfigArrayOutput {
+	return o
+}
+
+func (o GetInstancePerformanceConfigArrayOutput) ToGetInstancePerformanceConfigArrayOutputWithContext(ctx context.Context) GetInstancePerformanceConfigArrayOutput {
+	return o
+}
+
+func (o GetInstancePerformanceConfigArrayOutput) Index(i pulumi.IntInput) GetInstancePerformanceConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancePerformanceConfig {
+		return vs[0].([]GetInstancePerformanceConfig)[vs[1].(int)]
+	}).(GetInstancePerformanceConfigOutput)
+}
+
+type GetInstancePerformanceConfigFixedIop struct {
+	// The number of IOPS to provision for the instance.
+	// maxIops must be in multiple of 1000.
+	MaxIops int `pulumi:"maxIops"`
+}
+
+// GetInstancePerformanceConfigFixedIopInput is an input type that accepts GetInstancePerformanceConfigFixedIopArgs and GetInstancePerformanceConfigFixedIopOutput values.
+// You can construct a concrete instance of `GetInstancePerformanceConfigFixedIopInput` via:
+//
+//	GetInstancePerformanceConfigFixedIopArgs{...}
+type GetInstancePerformanceConfigFixedIopInput interface {
+	pulumi.Input
+
+	ToGetInstancePerformanceConfigFixedIopOutput() GetInstancePerformanceConfigFixedIopOutput
+	ToGetInstancePerformanceConfigFixedIopOutputWithContext(context.Context) GetInstancePerformanceConfigFixedIopOutput
+}
+
+type GetInstancePerformanceConfigFixedIopArgs struct {
+	// The number of IOPS to provision for the instance.
+	// maxIops must be in multiple of 1000.
+	MaxIops pulumi.IntInput `pulumi:"maxIops"`
+}
+
+func (GetInstancePerformanceConfigFixedIopArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancePerformanceConfigFixedIop)(nil)).Elem()
+}
+
+func (i GetInstancePerformanceConfigFixedIopArgs) ToGetInstancePerformanceConfigFixedIopOutput() GetInstancePerformanceConfigFixedIopOutput {
+	return i.ToGetInstancePerformanceConfigFixedIopOutputWithContext(context.Background())
+}
+
+func (i GetInstancePerformanceConfigFixedIopArgs) ToGetInstancePerformanceConfigFixedIopOutputWithContext(ctx context.Context) GetInstancePerformanceConfigFixedIopOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancePerformanceConfigFixedIopOutput)
+}
+
+// GetInstancePerformanceConfigFixedIopArrayInput is an input type that accepts GetInstancePerformanceConfigFixedIopArray and GetInstancePerformanceConfigFixedIopArrayOutput values.
+// You can construct a concrete instance of `GetInstancePerformanceConfigFixedIopArrayInput` via:
+//
+//	GetInstancePerformanceConfigFixedIopArray{ GetInstancePerformanceConfigFixedIopArgs{...} }
+type GetInstancePerformanceConfigFixedIopArrayInput interface {
+	pulumi.Input
+
+	ToGetInstancePerformanceConfigFixedIopArrayOutput() GetInstancePerformanceConfigFixedIopArrayOutput
+	ToGetInstancePerformanceConfigFixedIopArrayOutputWithContext(context.Context) GetInstancePerformanceConfigFixedIopArrayOutput
+}
+
+type GetInstancePerformanceConfigFixedIopArray []GetInstancePerformanceConfigFixedIopInput
+
+func (GetInstancePerformanceConfigFixedIopArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancePerformanceConfigFixedIop)(nil)).Elem()
+}
+
+func (i GetInstancePerformanceConfigFixedIopArray) ToGetInstancePerformanceConfigFixedIopArrayOutput() GetInstancePerformanceConfigFixedIopArrayOutput {
+	return i.ToGetInstancePerformanceConfigFixedIopArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstancePerformanceConfigFixedIopArray) ToGetInstancePerformanceConfigFixedIopArrayOutputWithContext(ctx context.Context) GetInstancePerformanceConfigFixedIopArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancePerformanceConfigFixedIopArrayOutput)
+}
+
+type GetInstancePerformanceConfigFixedIopOutput struct{ *pulumi.OutputState }
+
+func (GetInstancePerformanceConfigFixedIopOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancePerformanceConfigFixedIop)(nil)).Elem()
+}
+
+func (o GetInstancePerformanceConfigFixedIopOutput) ToGetInstancePerformanceConfigFixedIopOutput() GetInstancePerformanceConfigFixedIopOutput {
+	return o
+}
+
+func (o GetInstancePerformanceConfigFixedIopOutput) ToGetInstancePerformanceConfigFixedIopOutputWithContext(ctx context.Context) GetInstancePerformanceConfigFixedIopOutput {
+	return o
+}
+
+// The number of IOPS to provision for the instance.
+// maxIops must be in multiple of 1000.
+func (o GetInstancePerformanceConfigFixedIopOutput) MaxIops() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstancePerformanceConfigFixedIop) int { return v.MaxIops }).(pulumi.IntOutput)
+}
+
+type GetInstancePerformanceConfigFixedIopArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstancePerformanceConfigFixedIopArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancePerformanceConfigFixedIop)(nil)).Elem()
+}
+
+func (o GetInstancePerformanceConfigFixedIopArrayOutput) ToGetInstancePerformanceConfigFixedIopArrayOutput() GetInstancePerformanceConfigFixedIopArrayOutput {
+	return o
+}
+
+func (o GetInstancePerformanceConfigFixedIopArrayOutput) ToGetInstancePerformanceConfigFixedIopArrayOutputWithContext(ctx context.Context) GetInstancePerformanceConfigFixedIopArrayOutput {
+	return o
+}
+
+func (o GetInstancePerformanceConfigFixedIopArrayOutput) Index(i pulumi.IntInput) GetInstancePerformanceConfigFixedIopOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancePerformanceConfigFixedIop {
+		return vs[0].([]GetInstancePerformanceConfigFixedIop)[vs[1].(int)]
+	}).(GetInstancePerformanceConfigFixedIopOutput)
+}
+
+type GetInstancePerformanceConfigIopsPerTb struct {
+	// The instance max IOPS will be calculated by multiplying
+	// the capacity of the instance (TB) by max_iops_per_tb,
+	// and rounding to the nearest 1000. The instance max IOPS
+	// will be changed dynamically based on the instance
+	// capacity.
+	MaxIopsPerTb int `pulumi:"maxIopsPerTb"`
+}
+
+// GetInstancePerformanceConfigIopsPerTbInput is an input type that accepts GetInstancePerformanceConfigIopsPerTbArgs and GetInstancePerformanceConfigIopsPerTbOutput values.
+// You can construct a concrete instance of `GetInstancePerformanceConfigIopsPerTbInput` via:
+//
+//	GetInstancePerformanceConfigIopsPerTbArgs{...}
+type GetInstancePerformanceConfigIopsPerTbInput interface {
+	pulumi.Input
+
+	ToGetInstancePerformanceConfigIopsPerTbOutput() GetInstancePerformanceConfigIopsPerTbOutput
+	ToGetInstancePerformanceConfigIopsPerTbOutputWithContext(context.Context) GetInstancePerformanceConfigIopsPerTbOutput
+}
+
+type GetInstancePerformanceConfigIopsPerTbArgs struct {
+	// The instance max IOPS will be calculated by multiplying
+	// the capacity of the instance (TB) by max_iops_per_tb,
+	// and rounding to the nearest 1000. The instance max IOPS
+	// will be changed dynamically based on the instance
+	// capacity.
+	MaxIopsPerTb pulumi.IntInput `pulumi:"maxIopsPerTb"`
+}
+
+func (GetInstancePerformanceConfigIopsPerTbArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancePerformanceConfigIopsPerTb)(nil)).Elem()
+}
+
+func (i GetInstancePerformanceConfigIopsPerTbArgs) ToGetInstancePerformanceConfigIopsPerTbOutput() GetInstancePerformanceConfigIopsPerTbOutput {
+	return i.ToGetInstancePerformanceConfigIopsPerTbOutputWithContext(context.Background())
+}
+
+func (i GetInstancePerformanceConfigIopsPerTbArgs) ToGetInstancePerformanceConfigIopsPerTbOutputWithContext(ctx context.Context) GetInstancePerformanceConfigIopsPerTbOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancePerformanceConfigIopsPerTbOutput)
+}
+
+// GetInstancePerformanceConfigIopsPerTbArrayInput is an input type that accepts GetInstancePerformanceConfigIopsPerTbArray and GetInstancePerformanceConfigIopsPerTbArrayOutput values.
+// You can construct a concrete instance of `GetInstancePerformanceConfigIopsPerTbArrayInput` via:
+//
+//	GetInstancePerformanceConfigIopsPerTbArray{ GetInstancePerformanceConfigIopsPerTbArgs{...} }
+type GetInstancePerformanceConfigIopsPerTbArrayInput interface {
+	pulumi.Input
+
+	ToGetInstancePerformanceConfigIopsPerTbArrayOutput() GetInstancePerformanceConfigIopsPerTbArrayOutput
+	ToGetInstancePerformanceConfigIopsPerTbArrayOutputWithContext(context.Context) GetInstancePerformanceConfigIopsPerTbArrayOutput
+}
+
+type GetInstancePerformanceConfigIopsPerTbArray []GetInstancePerformanceConfigIopsPerTbInput
+
+func (GetInstancePerformanceConfigIopsPerTbArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancePerformanceConfigIopsPerTb)(nil)).Elem()
+}
+
+func (i GetInstancePerformanceConfigIopsPerTbArray) ToGetInstancePerformanceConfigIopsPerTbArrayOutput() GetInstancePerformanceConfigIopsPerTbArrayOutput {
+	return i.ToGetInstancePerformanceConfigIopsPerTbArrayOutputWithContext(context.Background())
+}
+
+func (i GetInstancePerformanceConfigIopsPerTbArray) ToGetInstancePerformanceConfigIopsPerTbArrayOutputWithContext(ctx context.Context) GetInstancePerformanceConfigIopsPerTbArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetInstancePerformanceConfigIopsPerTbArrayOutput)
+}
+
+type GetInstancePerformanceConfigIopsPerTbOutput struct{ *pulumi.OutputState }
+
+func (GetInstancePerformanceConfigIopsPerTbOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetInstancePerformanceConfigIopsPerTb)(nil)).Elem()
+}
+
+func (o GetInstancePerformanceConfigIopsPerTbOutput) ToGetInstancePerformanceConfigIopsPerTbOutput() GetInstancePerformanceConfigIopsPerTbOutput {
+	return o
+}
+
+func (o GetInstancePerformanceConfigIopsPerTbOutput) ToGetInstancePerformanceConfigIopsPerTbOutputWithContext(ctx context.Context) GetInstancePerformanceConfigIopsPerTbOutput {
+	return o
+}
+
+// The instance max IOPS will be calculated by multiplying
+// the capacity of the instance (TB) by max_iops_per_tb,
+// and rounding to the nearest 1000. The instance max IOPS
+// will be changed dynamically based on the instance
+// capacity.
+func (o GetInstancePerformanceConfigIopsPerTbOutput) MaxIopsPerTb() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstancePerformanceConfigIopsPerTb) int { return v.MaxIopsPerTb }).(pulumi.IntOutput)
+}
+
+type GetInstancePerformanceConfigIopsPerTbArrayOutput struct{ *pulumi.OutputState }
+
+func (GetInstancePerformanceConfigIopsPerTbArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetInstancePerformanceConfigIopsPerTb)(nil)).Elem()
+}
+
+func (o GetInstancePerformanceConfigIopsPerTbArrayOutput) ToGetInstancePerformanceConfigIopsPerTbArrayOutput() GetInstancePerformanceConfigIopsPerTbArrayOutput {
+	return o
+}
+
+func (o GetInstancePerformanceConfigIopsPerTbArrayOutput) ToGetInstancePerformanceConfigIopsPerTbArrayOutputWithContext(ctx context.Context) GetInstancePerformanceConfigIopsPerTbArrayOutput {
+	return o
+}
+
+func (o GetInstancePerformanceConfigIopsPerTbArrayOutput) Index(i pulumi.IntInput) GetInstancePerformanceConfigIopsPerTbOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetInstancePerformanceConfigIopsPerTb {
+		return vs[0].([]GetInstancePerformanceConfigIopsPerTb)[vs[1].(int)]
+	}).(GetInstancePerformanceConfigIopsPerTbOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceFileSharesInput)(nil)).Elem(), InstanceFileSharesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceFileSharesPtrInput)(nil)).Elem(), InstanceFileSharesArgs{})
@@ -1009,22 +1803,46 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceFileSharesNfsExportOptionArrayInput)(nil)).Elem(), InstanceFileSharesNfsExportOptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkInput)(nil)).Elem(), InstanceNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceNetworkArrayInput)(nil)).Elem(), InstanceNetworkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstancePerformanceConfigInput)(nil)).Elem(), InstancePerformanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstancePerformanceConfigPtrInput)(nil)).Elem(), InstancePerformanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstancePerformanceConfigFixedIopsInput)(nil)).Elem(), InstancePerformanceConfigFixedIopsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstancePerformanceConfigFixedIopsPtrInput)(nil)).Elem(), InstancePerformanceConfigFixedIopsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstancePerformanceConfigIopsPerTbInput)(nil)).Elem(), InstancePerformanceConfigIopsPerTbArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstancePerformanceConfigIopsPerTbPtrInput)(nil)).Elem(), InstancePerformanceConfigIopsPerTbArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceFileShareInput)(nil)).Elem(), GetInstanceFileShareArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceFileShareArrayInput)(nil)).Elem(), GetInstanceFileShareArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceFileShareNfsExportOptionInput)(nil)).Elem(), GetInstanceFileShareNfsExportOptionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceFileShareNfsExportOptionArrayInput)(nil)).Elem(), GetInstanceFileShareNfsExportOptionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkInput)(nil)).Elem(), GetInstanceNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceNetworkArrayInput)(nil)).Elem(), GetInstanceNetworkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePerformanceConfigInput)(nil)).Elem(), GetInstancePerformanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePerformanceConfigArrayInput)(nil)).Elem(), GetInstancePerformanceConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePerformanceConfigFixedIopInput)(nil)).Elem(), GetInstancePerformanceConfigFixedIopArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePerformanceConfigFixedIopArrayInput)(nil)).Elem(), GetInstancePerformanceConfigFixedIopArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePerformanceConfigIopsPerTbInput)(nil)).Elem(), GetInstancePerformanceConfigIopsPerTbArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePerformanceConfigIopsPerTbArrayInput)(nil)).Elem(), GetInstancePerformanceConfigIopsPerTbArray{})
 	pulumi.RegisterOutputType(InstanceFileSharesOutput{})
 	pulumi.RegisterOutputType(InstanceFileSharesPtrOutput{})
 	pulumi.RegisterOutputType(InstanceFileSharesNfsExportOptionOutput{})
 	pulumi.RegisterOutputType(InstanceFileSharesNfsExportOptionArrayOutput{})
 	pulumi.RegisterOutputType(InstanceNetworkOutput{})
 	pulumi.RegisterOutputType(InstanceNetworkArrayOutput{})
+	pulumi.RegisterOutputType(InstancePerformanceConfigOutput{})
+	pulumi.RegisterOutputType(InstancePerformanceConfigPtrOutput{})
+	pulumi.RegisterOutputType(InstancePerformanceConfigFixedIopsOutput{})
+	pulumi.RegisterOutputType(InstancePerformanceConfigFixedIopsPtrOutput{})
+	pulumi.RegisterOutputType(InstancePerformanceConfigIopsPerTbOutput{})
+	pulumi.RegisterOutputType(InstancePerformanceConfigIopsPerTbPtrOutput{})
 	pulumi.RegisterOutputType(GetInstanceFileShareOutput{})
 	pulumi.RegisterOutputType(GetInstanceFileShareArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceFileShareNfsExportOptionOutput{})
 	pulumi.RegisterOutputType(GetInstanceFileShareNfsExportOptionArrayOutput{})
 	pulumi.RegisterOutputType(GetInstanceNetworkOutput{})
 	pulumi.RegisterOutputType(GetInstanceNetworkArrayOutput{})
+	pulumi.RegisterOutputType(GetInstancePerformanceConfigOutput{})
+	pulumi.RegisterOutputType(GetInstancePerformanceConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetInstancePerformanceConfigFixedIopOutput{})
+	pulumi.RegisterOutputType(GetInstancePerformanceConfigFixedIopArrayOutput{})
+	pulumi.RegisterOutputType(GetInstancePerformanceConfigIopsPerTbOutput{})
+	pulumi.RegisterOutputType(GetInstancePerformanceConfigIopsPerTbArrayOutput{})
 }

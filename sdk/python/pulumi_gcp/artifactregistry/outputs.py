@@ -26,6 +26,7 @@ __all__ = [
     'RepositoryRemoteRepositoryConfig',
     'RepositoryRemoteRepositoryConfigAptRepository',
     'RepositoryRemoteRepositoryConfigAptRepositoryPublicRepository',
+    'RepositoryRemoteRepositoryConfigCommonRepository',
     'RepositoryRemoteRepositoryConfigDockerRepository',
     'RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository',
     'RepositoryRemoteRepositoryConfigMavenRepository',
@@ -48,6 +49,7 @@ __all__ = [
     'GetRepositoryRemoteRepositoryConfigResult',
     'GetRepositoryRemoteRepositoryConfigAptRepositoryResult',
     'GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryResult',
+    'GetRepositoryRemoteRepositoryConfigCommonRepositoryResult',
     'GetRepositoryRemoteRepositoryConfigDockerRepositoryResult',
     'GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryResult',
     'GetRepositoryRemoteRepositoryConfigMavenRepositoryResult',
@@ -456,6 +458,8 @@ class RepositoryRemoteRepositoryConfig(dict):
         suggest = None
         if key == "aptRepository":
             suggest = "apt_repository"
+        elif key == "commonRepository":
+            suggest = "common_repository"
         elif key == "disableUpstreamValidation":
             suggest = "disable_upstream_validation"
         elif key == "dockerRepository":
@@ -484,6 +488,7 @@ class RepositoryRemoteRepositoryConfig(dict):
 
     def __init__(__self__, *,
                  apt_repository: Optional['outputs.RepositoryRemoteRepositoryConfigAptRepository'] = None,
+                 common_repository: Optional['outputs.RepositoryRemoteRepositoryConfigCommonRepository'] = None,
                  description: Optional[str] = None,
                  disable_upstream_validation: Optional[bool] = None,
                  docker_repository: Optional['outputs.RepositoryRemoteRepositoryConfigDockerRepository'] = None,
@@ -494,6 +499,8 @@ class RepositoryRemoteRepositoryConfig(dict):
                  yum_repository: Optional['outputs.RepositoryRemoteRepositoryConfigYumRepository'] = None):
         """
         :param 'RepositoryRemoteRepositoryConfigAptRepositoryArgs' apt_repository: Specific settings for an Apt remote repository.
+               Structure is documented below.
+        :param 'RepositoryRemoteRepositoryConfigCommonRepositoryArgs' common_repository: Specific settings for an Artifact Registory remote repository.
                Structure is documented below.
         :param str description: The description of the remote source.
         :param bool disable_upstream_validation: If true, the remote repository upstream and upstream credentials will
@@ -513,6 +520,8 @@ class RepositoryRemoteRepositoryConfig(dict):
         """
         if apt_repository is not None:
             pulumi.set(__self__, "apt_repository", apt_repository)
+        if common_repository is not None:
+            pulumi.set(__self__, "common_repository", common_repository)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disable_upstream_validation is not None:
@@ -538,6 +547,15 @@ class RepositoryRemoteRepositoryConfig(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "apt_repository")
+
+    @property
+    @pulumi.getter(name="commonRepository")
+    def common_repository(self) -> Optional['outputs.RepositoryRemoteRepositoryConfigCommonRepository']:
+        """
+        Specific settings for an Artifact Registory remote repository.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "common_repository")
 
     @property
     @pulumi.getter
@@ -697,6 +715,24 @@ class RepositoryRemoteRepositoryConfigAptRepositoryPublicRepository(dict):
         Specific repository from the base, e.g. `"pub/rocky/9/BaseOS/x86_64/os"`
         """
         return pulumi.get(self, "repository_path")
+
+
+@pulumi.output_type
+class RepositoryRemoteRepositoryConfigCommonRepository(dict):
+    def __init__(__self__, *,
+                 uri: str):
+        """
+        :param str uri: Specific uri to the Artifact Registory repository, e.g. `projects/UPSTREAM_PROJECT_ID/locations/REGION/repositories/UPSTREAM_REPOSITORY`
+        """
+        pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> str:
+        """
+        Specific uri to the Artifact Registory repository, e.g. `projects/UPSTREAM_PROJECT_ID/locations/REGION/repositories/UPSTREAM_REPOSITORY`
+        """
+        return pulumi.get(self, "uri")
 
 
 @pulumi.output_type
@@ -1466,6 +1502,7 @@ class GetRepositoryMavenConfigResult(dict):
 class GetRepositoryRemoteRepositoryConfigResult(dict):
     def __init__(__self__, *,
                  apt_repositories: Sequence['outputs.GetRepositoryRemoteRepositoryConfigAptRepositoryResult'],
+                 common_repositories: Sequence['outputs.GetRepositoryRemoteRepositoryConfigCommonRepositoryResult'],
                  description: str,
                  disable_upstream_validation: bool,
                  docker_repositories: Sequence['outputs.GetRepositoryRemoteRepositoryConfigDockerRepositoryResult'],
@@ -1476,6 +1513,7 @@ class GetRepositoryRemoteRepositoryConfigResult(dict):
                  yum_repositories: Sequence['outputs.GetRepositoryRemoteRepositoryConfigYumRepositoryResult']):
         """
         :param Sequence['GetRepositoryRemoteRepositoryConfigAptRepositoryArgs'] apt_repositories: Specific settings for an Apt remote repository.
+        :param Sequence['GetRepositoryRemoteRepositoryConfigCommonRepositoryArgs'] common_repositories: Specific settings for an Artifact Registory remote repository.
         :param str description: The description of the remote source.
         :param bool disable_upstream_validation: If true, the remote repository upstream and upstream credentials will
                not be validated.
@@ -1487,6 +1525,7 @@ class GetRepositoryRemoteRepositoryConfigResult(dict):
         :param Sequence['GetRepositoryRemoteRepositoryConfigYumRepositoryArgs'] yum_repositories: Specific settings for an Yum remote repository.
         """
         pulumi.set(__self__, "apt_repositories", apt_repositories)
+        pulumi.set(__self__, "common_repositories", common_repositories)
         pulumi.set(__self__, "description", description)
         pulumi.set(__self__, "disable_upstream_validation", disable_upstream_validation)
         pulumi.set(__self__, "docker_repositories", docker_repositories)
@@ -1503,6 +1542,14 @@ class GetRepositoryRemoteRepositoryConfigResult(dict):
         Specific settings for an Apt remote repository.
         """
         return pulumi.get(self, "apt_repositories")
+
+    @property
+    @pulumi.getter(name="commonRepositories")
+    def common_repositories(self) -> Sequence['outputs.GetRepositoryRemoteRepositoryConfigCommonRepositoryResult']:
+        """
+        Specific settings for an Artifact Registory remote repository.
+        """
+        return pulumi.get(self, "common_repositories")
 
     @property
     @pulumi.getter
@@ -1615,6 +1662,24 @@ class GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryResult(dic
         Specific repository from the base.
         """
         return pulumi.get(self, "repository_path")
+
+
+@pulumi.output_type
+class GetRepositoryRemoteRepositoryConfigCommonRepositoryResult(dict):
+    def __init__(__self__, *,
+                 uri: str):
+        """
+        :param str uri: Specific uri to the Artifact Registory repository, e.g. 'projects/UPSTREAM_PROJECT_ID/locations/REGION/repositories/UPSTREAM_REPOSITORY'
+        """
+        pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> str:
+        """
+        Specific uri to the Artifact Registory repository, e.g. 'projects/UPSTREAM_PROJECT_ID/locations/REGION/repositories/UPSTREAM_REPOSITORY'
+        """
+        return pulumi.get(self, "uri")
 
 
 @pulumi.output_type

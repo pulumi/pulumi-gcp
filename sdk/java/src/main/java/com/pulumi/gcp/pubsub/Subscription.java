@@ -445,13 +445,13 @@ import javax.annotation.Nullable;
  * 
  *         final var project = OrganizationsFunctions.getProject();
  * 
- *         var viewer = new IAMMember("viewer", IAMMemberArgs.builder()
+ *         var bigqueryMetadataViewer = new IAMMember("bigqueryMetadataViewer", IAMMemberArgs.builder()
  *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
  *             .role("roles/bigquery.metadataViewer")
  *             .member(bqWriteServiceAccount.email().applyValue(email -> String.format("serviceAccount:%s", email)))
  *             .build());
  * 
- *         var editor = new IAMMember("editor", IAMMemberArgs.builder()
+ *         var bigqueryDataEditor = new IAMMember("bigqueryDataEditor", IAMMemberArgs.builder()
  *             .project(project.applyValue(getProjectResult -> getProjectResult.projectId()))
  *             .role("roles/bigquery.dataEditor")
  *             .member(bqWriteServiceAccount.email().applyValue(email -> String.format("serviceAccount:%s", email)))
@@ -492,8 +492,8 @@ import javax.annotation.Nullable;
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(                
  *                     bqWriteServiceAccount,
- *                     viewer,
- *                     editor)
+ *                     bigqueryMetadataViewer,
+ *                     bigqueryDataEditor)
  *                 .build());
  * 
  *     }

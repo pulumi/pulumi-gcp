@@ -299,14 +299,14 @@ namespace Pulumi.Gcp.PubSub
     /// 
     ///     var project = Gcp.Organizations.GetProject.Invoke();
     /// 
-    ///     var viewer = new Gcp.Projects.IAMMember("viewer", new()
+    ///     var bigqueryMetadataViewer = new Gcp.Projects.IAMMember("bigquery_metadata_viewer", new()
     ///     {
     ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
     ///         Role = "roles/bigquery.metadataViewer",
     ///         Member = bqWriteServiceAccount.Email.Apply(email =&gt; $"serviceAccount:{email}"),
     ///     });
     /// 
-    ///     var editor = new Gcp.Projects.IAMMember("editor", new()
+    ///     var bigqueryDataEditor = new Gcp.Projects.IAMMember("bigquery_data_editor", new()
     ///     {
     ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
     ///         Role = "roles/bigquery.dataEditor",
@@ -354,8 +354,8 @@ namespace Pulumi.Gcp.PubSub
     ///         DependsOn =
     ///         {
     ///             bqWriteServiceAccount,
-    ///             viewer,
-    ///             editor,
+    ///             bigqueryMetadataViewer,
+    ///             bigqueryDataEditor,
     ///         },
     ///     });
     /// 

@@ -121,8 +121,8 @@ type Database struct {
 	//
 	// ***
 	Instance pulumi.StringOutput `pulumi:"instance"`
-	// A unique identifier for the database, which cannot be changed after
-	// the instance is created. Values are of the form [a-z][-a-z0-9]*[a-z0-9].
+	// A unique identifier for the database, which cannot be changed after the
+	// instance is created. Values are of the form `[a-z][-_a-z0-9]*[a-z0-9]`.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -190,8 +190,8 @@ type databaseState struct {
 	//
 	// ***
 	Instance *string `pulumi:"instance"`
-	// A unique identifier for the database, which cannot be changed after
-	// the instance is created. Values are of the form [a-z][-a-z0-9]*[a-z0-9].
+	// A unique identifier for the database, which cannot be changed after the
+	// instance is created. Values are of the form `[a-z][-_a-z0-9]*[a-z0-9]`.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -227,8 +227,8 @@ type DatabaseState struct {
 	//
 	// ***
 	Instance pulumi.StringPtrInput
-	// A unique identifier for the database, which cannot be changed after
-	// the instance is created. Values are of the form [a-z][-a-z0-9]*[a-z0-9].
+	// A unique identifier for the database, which cannot be changed after the
+	// instance is created. Values are of the form `[a-z][-_a-z0-9]*[a-z0-9]`.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -268,8 +268,8 @@ type databaseArgs struct {
 	//
 	// ***
 	Instance string `pulumi:"instance"`
-	// A unique identifier for the database, which cannot be changed after
-	// the instance is created. Values are of the form [a-z][-a-z0-9]*[a-z0-9].
+	// A unique identifier for the database, which cannot be changed after the
+	// instance is created. Values are of the form `[a-z][-_a-z0-9]*[a-z0-9]`.
 	Name *string `pulumi:"name"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -304,8 +304,8 @@ type DatabaseArgs struct {
 	//
 	// ***
 	Instance pulumi.StringInput
-	// A unique identifier for the database, which cannot be changed after
-	// the instance is created. Values are of the form [a-z][-a-z0-9]*[a-z0-9].
+	// A unique identifier for the database, which cannot be changed after the
+	// instance is created. Values are of the form `[a-z][-_a-z0-9]*[a-z0-9]`.
 	Name pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -443,8 +443,8 @@ func (o DatabaseOutput) Instance() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.Instance }).(pulumi.StringOutput)
 }
 
-// A unique identifier for the database, which cannot be changed after
-// the instance is created. Values are of the form [a-z][-a-z0-9]*[a-z0-9].
+// A unique identifier for the database, which cannot be changed after the
+// instance is created. Values are of the form `[a-z][-_a-z0-9]*[a-z0-9]`.
 func (o DatabaseOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Database) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

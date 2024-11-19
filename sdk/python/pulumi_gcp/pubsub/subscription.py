@@ -1051,11 +1051,11 @@ class Subscription(pulumi.CustomResource):
             account_id="example-bqw",
             display_name="BQ Write Service Account")
         project = gcp.organizations.get_project()
-        viewer = gcp.projects.IAMMember("viewer",
+        bigquery_metadata_viewer = gcp.projects.IAMMember("bigquery_metadata_viewer",
             project=project.project_id,
             role="roles/bigquery.metadataViewer",
             member=bq_write_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
-        editor = gcp.projects.IAMMember("editor",
+        bigquery_data_editor = gcp.projects.IAMMember("bigquery_data_editor",
             project=project.project_id,
             role="roles/bigquery.dataEditor",
             member=bq_write_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
@@ -1087,8 +1087,8 @@ class Subscription(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[
                     bq_write_service_account,
-                    viewer,
-                    editor,
+                    bigquery_metadata_viewer,
+                    bigquery_data_editor,
                 ]))
         ```
         ### Pubsub Subscription Push Cloudstorage
@@ -1491,11 +1491,11 @@ class Subscription(pulumi.CustomResource):
             account_id="example-bqw",
             display_name="BQ Write Service Account")
         project = gcp.organizations.get_project()
-        viewer = gcp.projects.IAMMember("viewer",
+        bigquery_metadata_viewer = gcp.projects.IAMMember("bigquery_metadata_viewer",
             project=project.project_id,
             role="roles/bigquery.metadataViewer",
             member=bq_write_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
-        editor = gcp.projects.IAMMember("editor",
+        bigquery_data_editor = gcp.projects.IAMMember("bigquery_data_editor",
             project=project.project_id,
             role="roles/bigquery.dataEditor",
             member=bq_write_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
@@ -1527,8 +1527,8 @@ class Subscription(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[
                     bq_write_service_account,
-                    viewer,
-                    editor,
+                    bigquery_metadata_viewer,
+                    bigquery_data_editor,
                 ]))
         ```
         ### Pubsub Subscription Push Cloudstorage

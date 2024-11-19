@@ -394,7 +394,8 @@ class _ServiceState:
                  traffics: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceTrafficArgs']]]] = None,
                  uid: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
-                 uri: Optional[pulumi.Input[str]] = None):
+                 uri: Optional[pulumi.Input[str]] = None,
+                 urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Service resources.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Unstructured key value map that may be set by external tools to store and arbitrary metadata. They are not queryable and
@@ -465,6 +466,7 @@ class _ServiceState:
         :param pulumi.Input[str] update_time: The last-modified time.
         :param pulumi.Input[str] uri: (Output)
                Displays the target URI.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] urls: All URLs serving traffic for this Service.
         """
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
@@ -542,6 +544,8 @@ class _ServiceState:
             pulumi.set(__self__, "update_time", update_time)
         if uri is not None:
             pulumi.set(__self__, "uri", uri)
+        if urls is not None:
+            pulumi.set(__self__, "urls", urls)
 
     @property
     @pulumi.getter
@@ -1022,6 +1026,18 @@ class _ServiceState:
     @uri.setter
     def uri(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "uri", value)
+
+    @property
+    @pulumi.getter
+    def urls(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        All URLs serving traffic for this Service.
+        """
+        return pulumi.get(self, "urls")
+
+    @urls.setter
+    def urls(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "urls", value)
 
 
 class Service(pulumi.CustomResource):
@@ -2168,6 +2184,7 @@ class Service(pulumi.CustomResource):
             __props__.__dict__["uid"] = None
             __props__.__dict__["update_time"] = None
             __props__.__dict__["uri"] = None
+            __props__.__dict__["urls"] = None
         secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
         opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(Service, __self__).__init__(
@@ -2217,7 +2234,8 @@ class Service(pulumi.CustomResource):
             traffics: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceTrafficArgs', 'ServiceTrafficArgsDict']]]]] = None,
             uid: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None,
-            uri: Optional[pulumi.Input[str]] = None) -> 'Service':
+            uri: Optional[pulumi.Input[str]] = None,
+            urls: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None) -> 'Service':
         """
         Get an existing Service resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -2293,6 +2311,7 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[str] update_time: The last-modified time.
         :param pulumi.Input[str] uri: (Output)
                Displays the target URI.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] urls: All URLs serving traffic for this Service.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -2336,6 +2355,7 @@ class Service(pulumi.CustomResource):
         __props__.__dict__["uid"] = uid
         __props__.__dict__["update_time"] = update_time
         __props__.__dict__["uri"] = uri
+        __props__.__dict__["urls"] = urls
         return Service(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -2665,4 +2685,12 @@ class Service(pulumi.CustomResource):
         Displays the target URI.
         """
         return pulumi.get(self, "uri")
+
+    @property
+    @pulumi.getter
+    def urls(self) -> pulumi.Output[Sequence[str]]:
+        """
+        All URLs serving traffic for this Service.
+        """
+        return pulumi.get(self, "urls")
 

@@ -47,8 +47,8 @@ class DatabaseArgs:
                in state, a `destroy` or `update` that would delete the instance will fail.
         :param pulumi.Input['DatabaseEncryptionConfigArgs'] encryption_config: Encryption configuration for the database
                Structure is documented below.
-        :param pulumi.Input[str] name: A unique identifier for the database, which cannot be changed after
-               the instance is created. Values are of the form [a-z][-a-z0-9]*[a-z0-9].
+        :param pulumi.Input[str] name: A unique identifier for the database, which cannot be changed after the
+               instance is created. Values are of the form `[a-z][-_a-z0-9]*[a-z0-9]`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] version_retention_period: The retention period for the database. The retention period must be between 1 hour
@@ -158,8 +158,8 @@ class DatabaseArgs:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        A unique identifier for the database, which cannot be changed after
-        the instance is created. Values are of the form [a-z][-a-z0-9]*[a-z0-9].
+        A unique identifier for the database, which cannot be changed after the
+        instance is created. Values are of the form `[a-z][-_a-z0-9]*[a-z0-9]`.
         """
         return pulumi.get(self, "name")
 
@@ -227,8 +227,8 @@ class _DatabaseState:
                
                
                - - -
-        :param pulumi.Input[str] name: A unique identifier for the database, which cannot be changed after
-               the instance is created. Values are of the form [a-z][-a-z0-9]*[a-z0-9].
+        :param pulumi.Input[str] name: A unique identifier for the database, which cannot be changed after the
+               instance is created. Values are of the form `[a-z][-_a-z0-9]*[a-z0-9]`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] state: An explanation of the status of the database.
@@ -342,8 +342,8 @@ class _DatabaseState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        A unique identifier for the database, which cannot be changed after
-        the instance is created. Values are of the form [a-z][-a-z0-9]*[a-z0-9].
+        A unique identifier for the database, which cannot be changed after the
+        instance is created. Values are of the form `[a-z][-_a-z0-9]*[a-z0-9]`.
         """
         return pulumi.get(self, "name")
 
@@ -493,8 +493,8 @@ class Database(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[str] name: A unique identifier for the database, which cannot be changed after
-               the instance is created. Values are of the form [a-z][-a-z0-9]*[a-z0-9].
+        :param pulumi.Input[str] name: A unique identifier for the database, which cannot be changed after the
+               instance is created. Values are of the form `[a-z][-_a-z0-9]*[a-z0-9]`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] version_retention_period: The retention period for the database. The retention period must be between 1 hour
@@ -664,8 +664,8 @@ class Database(pulumi.CustomResource):
                
                
                - - -
-        :param pulumi.Input[str] name: A unique identifier for the database, which cannot be changed after
-               the instance is created. Values are of the form [a-z][-a-z0-9]*[a-z0-9].
+        :param pulumi.Input[str] name: A unique identifier for the database, which cannot be changed after the
+               instance is created. Values are of the form `[a-z][-_a-z0-9]*[a-z0-9]`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] state: An explanation of the status of the database.
@@ -750,8 +750,8 @@ class Database(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        A unique identifier for the database, which cannot be changed after
-        the instance is created. Values are of the form [a-z][-a-z0-9]*[a-z0-9].
+        A unique identifier for the database, which cannot be changed after the
+        instance is created. Values are of the form `[a-z][-_a-z0-9]*[a-z0-9]`.
         """
         return pulumi.get(self, "name")
 

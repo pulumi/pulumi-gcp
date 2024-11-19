@@ -1682,9 +1682,11 @@ class ServicePerimeterDryRunEgressPolicyEgressFrom(dict):
                  source_restriction: Optional[str] = None,
                  sources: Optional[Sequence['outputs.ServicePerimeterDryRunEgressPolicyEgressFromSource']] = None):
         """
-        :param Sequence[str] identities: A list of identities that are allowed access through this `EgressPolicy`.
-               Should be in the format of email address. The email address should
-               represent individual user or service account only.
+        :param Sequence[str] identities: Identities can be an individual user, service account, Google group,
+               or third-party identity. For third-party identity, only single identities
+               are supported and other identity types are not supported.The v1 identities
+               that have the prefix user, group and serviceAccount in
+               https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.
         :param str identity_type: Specifies the type of identities that are allowed access to outside the
                perimeter. If left unspecified, then members of `identities` field will
                be allowed access.
@@ -1707,9 +1709,11 @@ class ServicePerimeterDryRunEgressPolicyEgressFrom(dict):
     @pulumi.getter
     def identities(self) -> Optional[Sequence[str]]:
         """
-        A list of identities that are allowed access through this `EgressPolicy`.
-        Should be in the format of email address. The email address should
-        represent individual user or service account only.
+        Identities can be an individual user, service account, Google group,
+        or third-party identity. For third-party identity, only single identities
+        are supported and other identity types are not supported.The v1 identities
+        that have the prefix user, group and serviceAccount in
+        https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.
         """
         return pulumi.get(self, "identities")
 
@@ -1978,9 +1982,11 @@ class ServicePerimeterDryRunIngressPolicyIngressFrom(dict):
                  identity_type: Optional[str] = None,
                  sources: Optional[Sequence['outputs.ServicePerimeterDryRunIngressPolicyIngressFromSource']] = None):
         """
-        :param Sequence[str] identities: A list of identities that are allowed access through this ingress policy.
-               Should be in the format of email address. The email address should represent
-               individual user or service account only.
+        :param Sequence[str] identities: Identities can be an individual user, service account, Google group,
+               or third-party identity. For third-party identity, only single identities
+               are supported and other identity types are not supported.The v1 identities
+               that have the prefix user, group and serviceAccount in
+               https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.
         :param str identity_type: Specifies the type of identities that are allowed access from outside the
                perimeter. If left unspecified, then members of `identities` field will be
                allowed access.
@@ -1999,9 +2005,11 @@ class ServicePerimeterDryRunIngressPolicyIngressFrom(dict):
     @pulumi.getter
     def identities(self) -> Optional[Sequence[str]]:
         """
-        A list of identities that are allowed access through this ingress policy.
-        Should be in the format of email address. The email address should represent
-        individual user or service account only.
+        Identities can be an individual user, service account, Google group,
+        or third-party identity. For third-party identity, only single identities
+        are supported and other identity types are not supported.The v1 identities
+        that have the prefix user, group and serviceAccount in
+        https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.
         """
         return pulumi.get(self, "identities")
 
@@ -2273,9 +2281,11 @@ class ServicePerimeterEgressPolicyEgressFrom(dict):
                  source_restriction: Optional[str] = None,
                  sources: Optional[Sequence['outputs.ServicePerimeterEgressPolicyEgressFromSource']] = None):
         """
-        :param Sequence[str] identities: A list of identities that are allowed access through this `EgressPolicy`.
-               Should be in the format of email address. The email address should
-               represent individual user or service account only.
+        :param Sequence[str] identities: Identities can be an individual user, service account, Google group,
+               or third-party identity. For third-party identity, only single identities
+               are supported and other identity types are not supported.The v1 identities
+               that have the prefix user, group and serviceAccount in
+               https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.
         :param str identity_type: Specifies the type of identities that are allowed access to outside the
                perimeter. If left unspecified, then members of `identities` field will
                be allowed access.
@@ -2298,9 +2308,11 @@ class ServicePerimeterEgressPolicyEgressFrom(dict):
     @pulumi.getter
     def identities(self) -> Optional[Sequence[str]]:
         """
-        A list of identities that are allowed access through this `EgressPolicy`.
-        Should be in the format of email address. The email address should
-        represent individual user or service account only.
+        Identities can be an individual user, service account, Google group,
+        or third-party identity. For third-party identity, only single identities
+        are supported and other identity types are not supported.The v1 identities
+        that have the prefix user, group and serviceAccount in
+        https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.
         """
         return pulumi.get(self, "identities")
 
@@ -2569,9 +2581,11 @@ class ServicePerimeterIngressPolicyIngressFrom(dict):
                  identity_type: Optional[str] = None,
                  sources: Optional[Sequence['outputs.ServicePerimeterIngressPolicyIngressFromSource']] = None):
         """
-        :param Sequence[str] identities: A list of identities that are allowed access through this ingress policy.
-               Should be in the format of email address. The email address should represent
-               individual user or service account only.
+        :param Sequence[str] identities: Identities can be an individual user, service account, Google group,
+               or third-party identity. For third-party identity, only single identities
+               are supported and other identity types are not supported.The v1 identities
+               that have the prefix user, group and serviceAccount in
+               https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.
         :param str identity_type: Specifies the type of identities that are allowed access from outside the
                perimeter. If left unspecified, then members of `identities` field will be
                allowed access.
@@ -2590,9 +2604,11 @@ class ServicePerimeterIngressPolicyIngressFrom(dict):
     @pulumi.getter
     def identities(self) -> Optional[Sequence[str]]:
         """
-        A list of identities that are allowed access through this ingress policy.
-        Should be in the format of email address. The email address should represent
-        individual user or service account only.
+        Identities can be an individual user, service account, Google group,
+        or third-party identity. For third-party identity, only single identities
+        are supported and other identity types are not supported.The v1 identities
+        that have the prefix user, group and serviceAccount in
+        https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.
         """
         return pulumi.get(self, "identities")
 
@@ -5078,9 +5094,11 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom(dict):
                  source_restriction: Optional[str] = None,
                  sources: Optional[Sequence['outputs.ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromSource']] = None):
         """
-        :param Sequence[str] identities: A list of identities that are allowed access through this `EgressPolicy`.
-               Should be in the format of email address. The email address should
-               represent individual user or service account only.
+        :param Sequence[str] identities: Identities can be an individual user, service account, Google group,
+               or third-party identity. For third-party identity, only single identities
+               are supported and other identity types are not supported.The v1 identities
+               that have the prefix user, group and serviceAccount in
+               https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.
         :param str identity_type: Specifies the type of identities that are allowed access to outside the
                perimeter. If left unspecified, then members of `identities` field will
                be allowed access.
@@ -5103,9 +5121,11 @@ class ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom(dict):
     @pulumi.getter
     def identities(self) -> Optional[Sequence[str]]:
         """
-        A list of identities that are allowed access through this `EgressPolicy`.
-        Should be in the format of email address. The email address should
-        represent individual user or service account only.
+        Identities can be an individual user, service account, Google group,
+        or third-party identity. For third-party identity, only single identities
+        are supported and other identity types are not supported.The v1 identities
+        that have the prefix user, group and serviceAccount in
+        https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.
         """
         return pulumi.get(self, "identities")
 
@@ -5975,9 +5995,11 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom(dict):
                  source_restriction: Optional[str] = None,
                  sources: Optional[Sequence['outputs.ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromSource']] = None):
         """
-        :param Sequence[str] identities: A list of identities that are allowed access through this `EgressPolicy`.
-               Should be in the format of email address. The email address should
-               represent individual user or service account only.
+        :param Sequence[str] identities: Identities can be an individual user, service account, Google group,
+               or third-party identity. For third-party identity, only single identities
+               are supported and other identity types are not supported.The v1 identities
+               that have the prefix user, group and serviceAccount in
+               https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.
         :param str identity_type: Specifies the type of identities that are allowed access to outside the
                perimeter. If left unspecified, then members of `identities` field will
                be allowed access.
@@ -6000,9 +6022,11 @@ class ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom(dict):
     @pulumi.getter
     def identities(self) -> Optional[Sequence[str]]:
         """
-        A list of identities that are allowed access through this `EgressPolicy`.
-        Should be in the format of email address. The email address should
-        represent individual user or service account only.
+        Identities can be an individual user, service account, Google group,
+        or third-party identity. For third-party identity, only single identities
+        are supported and other identity types are not supported.The v1 identities
+        that have the prefix user, group and serviceAccount in
+        https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.
         """
         return pulumi.get(self, "identities")
 

@@ -943,6 +943,36 @@ class DatabaseInstance(pulumi.CustomResource):
             })
         ```
 
+        ### Cloud SQL Instance with PSC auto connections
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        main = gcp.sql.DatabaseInstance("main",
+            name="psc-enabled-main-instance",
+            database_version="MYSQL_8_0",
+            settings={
+                "tier": "db-f1-micro",
+                "ip_configuration": {
+                    "psc_configs": [{
+                        "psc_enabled": True,
+                        "allowed_consumer_projects": ["allowed-consumer-project-name"],
+                        "psc_auto_connections": [{
+                            "consumer_network": "network-name",
+                            "consumer_service_project_id": "project-id",
+                        }],
+                    }],
+                    "ipv4_enabled": False,
+                },
+                "backup_configuration": {
+                    "enabled": True,
+                    "binary_log_enabled": True,
+                },
+                "availability_type": "REGIONAL",
+            })
+        ```
+
         ## Switchover (SQL Server Only)
 
         Users can perform a switchover on any direct `cascadable` replica by following the steps below.
@@ -1160,6 +1190,36 @@ class DatabaseInstance(pulumi.CustomResource):
                     "psc_configs": [{
                         "psc_enabled": True,
                         "allowed_consumer_projects": ["allowed-consumer-project-name"],
+                    }],
+                    "ipv4_enabled": False,
+                },
+                "backup_configuration": {
+                    "enabled": True,
+                    "binary_log_enabled": True,
+                },
+                "availability_type": "REGIONAL",
+            })
+        ```
+
+        ### Cloud SQL Instance with PSC auto connections
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        main = gcp.sql.DatabaseInstance("main",
+            name="psc-enabled-main-instance",
+            database_version="MYSQL_8_0",
+            settings={
+                "tier": "db-f1-micro",
+                "ip_configuration": {
+                    "psc_configs": [{
+                        "psc_enabled": True,
+                        "allowed_consumer_projects": ["allowed-consumer-project-name"],
+                        "psc_auto_connections": [{
+                            "consumer_network": "network-name",
+                            "consumer_service_project_id": "project-id",
+                        }],
                     }],
                     "ipv4_enabled": False,
                 },

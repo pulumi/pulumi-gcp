@@ -421,11 +421,6 @@ import (
 //			_, err = cloudrun.NewService(ctx, "default", &cloudrun.ServiceArgs{
 //				Name:     pulumi.String("cloudrun-srv"),
 //				Location: pulumi.String("us-central1"),
-//				Metadata: &cloudrun.ServiceMetadataArgs{
-//					Annotations: pulumi.StringMap{
-//						"run.googleapis.com/launch-stage": pulumi.String("BETA"),
-//					},
-//				},
 //				Template: &cloudrun.ServiceTemplateArgs{
 //					Metadata: &cloudrun.ServiceTemplateMetadataArgs{
 //						Annotations: pulumi.StringMap{

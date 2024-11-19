@@ -187,6 +187,58 @@ namespace Pulumi.Gcp.Sql
     /// });
     /// ```
     /// 
+    /// ### Cloud SQL Instance with PSC auto connections
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var main = new Gcp.Sql.DatabaseInstance("main", new()
+    ///     {
+    ///         Name = "psc-enabled-main-instance",
+    ///         DatabaseVersion = "MYSQL_8_0",
+    ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
+    ///         {
+    ///             Tier = "db-f1-micro",
+    ///             IpConfiguration = new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationArgs
+    ///             {
+    ///                 PscConfigs = new[]
+    ///                 {
+    ///                     new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationPscConfigArgs
+    ///                     {
+    ///                         PscEnabled = true,
+    ///                         AllowedConsumerProjects = new[]
+    ///                         {
+    ///                             "allowed-consumer-project-name",
+    ///                         },
+    ///                         PscAutoConnections = new[]
+    ///                         {
+    ///                             new Gcp.Sql.Inputs.DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs
+    ///                             {
+    ///                                 ConsumerNetwork = "network-name",
+    ///                                 ConsumerServiceProjectId = "project-id",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///                 Ipv4Enabled = false,
+    ///             },
+    ///             BackupConfiguration = new Gcp.Sql.Inputs.DatabaseInstanceSettingsBackupConfigurationArgs
+    ///             {
+    ///                 Enabled = true,
+    ///                 BinaryLogEnabled = true,
+    ///             },
+    ///             AvailabilityType = "REGIONAL",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Switchover (SQL Server Only)
     /// 
     /// Users can perform a switchover on any direct `cascadable` replica by following the steps below.

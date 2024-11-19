@@ -28,6 +28,7 @@ class ClusterArgs:
                  maintenance_policy: Optional[pulumi.Input['ClusterMaintenancePolicyArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_type: Optional[pulumi.Input[str]] = None,
+                 persistence_config: Optional[pulumi.Input['ClusterPersistenceConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  redis_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -51,6 +52,7 @@ class ClusterArgs:
                projects/{projectId}/locations/{locationId}/clusters/{clusterId}
         :param pulumi.Input[str] node_type: The nodeType for the Redis cluster. If not provided, REDIS_HIGHMEM_MEDIUM will be used as default Possible values:
                ["REDIS_SHARED_CORE_NANO", "REDIS_HIGHMEM_MEDIUM", "REDIS_HIGHMEM_XLARGE", "REDIS_STANDARD_SMALL"]
+        :param pulumi.Input['ClusterPersistenceConfigArgs'] persistence_config: Persistence config (RDB, AOF) for the cluster.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] redis_configs: Configure Redis Cluster behavior using a subset of native Redis configuration parameters. Please check Memorystore
                documentation for the list of supported parameters:
                https://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations
@@ -73,6 +75,8 @@ class ClusterArgs:
             pulumi.set(__self__, "name", name)
         if node_type is not None:
             pulumi.set(__self__, "node_type", node_type)
+        if persistence_config is not None:
+            pulumi.set(__self__, "persistence_config", persistence_config)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if redis_configs is not None:
@@ -179,6 +183,18 @@ class ClusterArgs:
         pulumi.set(self, "node_type", value)
 
     @property
+    @pulumi.getter(name="persistenceConfig")
+    def persistence_config(self) -> Optional[pulumi.Input['ClusterPersistenceConfigArgs']]:
+        """
+        Persistence config (RDB, AOF) for the cluster.
+        """
+        return pulumi.get(self, "persistence_config")
+
+    @persistence_config.setter
+    def persistence_config(self, value: Optional[pulumi.Input['ClusterPersistenceConfigArgs']]):
+        pulumi.set(self, "persistence_config", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "project")
@@ -263,6 +279,7 @@ class _ClusterState:
                  maintenance_schedules: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterMaintenanceScheduleArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_type: Optional[pulumi.Input[str]] = None,
+                 persistence_config: Optional[pulumi.Input['ClusterPersistenceConfigArgs']] = None,
                  precise_size_gb: Optional[pulumi.Input[float]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  psc_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterPscConfigArgs']]]] = None,
@@ -298,6 +315,7 @@ class _ClusterState:
                projects/{projectId}/locations/{locationId}/clusters/{clusterId}
         :param pulumi.Input[str] node_type: The nodeType for the Redis cluster. If not provided, REDIS_HIGHMEM_MEDIUM will be used as default Possible values:
                ["REDIS_SHARED_CORE_NANO", "REDIS_HIGHMEM_MEDIUM", "REDIS_HIGHMEM_XLARGE", "REDIS_STANDARD_SMALL"]
+        :param pulumi.Input['ClusterPersistenceConfigArgs'] persistence_config: Persistence config (RDB, AOF) for the cluster.
         :param pulumi.Input[float] precise_size_gb: Output only. Redis memory precise size in GB for the entire cluster.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterPscConfigArgs']]] psc_configs: Required. Each PscConfig configures the consumer network where two
                network addresses will be designated to the cluster for client access.
@@ -337,6 +355,8 @@ class _ClusterState:
             pulumi.set(__self__, "name", name)
         if node_type is not None:
             pulumi.set(__self__, "node_type", node_type)
+        if persistence_config is not None:
+            pulumi.set(__self__, "persistence_config", persistence_config)
         if precise_size_gb is not None:
             pulumi.set(__self__, "precise_size_gb", precise_size_gb)
         if project is not None:
@@ -472,6 +492,18 @@ class _ClusterState:
     @node_type.setter
     def node_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "node_type", value)
+
+    @property
+    @pulumi.getter(name="persistenceConfig")
+    def persistence_config(self) -> Optional[pulumi.Input['ClusterPersistenceConfigArgs']]:
+        """
+        Persistence config (RDB, AOF) for the cluster.
+        """
+        return pulumi.get(self, "persistence_config")
+
+    @persistence_config.setter
+    def persistence_config(self, value: Optional[pulumi.Input['ClusterPersistenceConfigArgs']]):
+        pulumi.set(self, "persistence_config", value)
 
     @property
     @pulumi.getter(name="preciseSizeGb")
@@ -658,6 +690,7 @@ class Cluster(pulumi.CustomResource):
                  maintenance_policy: Optional[pulumi.Input[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_type: Optional[pulumi.Input[str]] = None,
+                 persistence_config: Optional[pulumi.Input[Union['ClusterPersistenceConfigArgs', 'ClusterPersistenceConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  psc_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterPscConfigArgs', 'ClusterPscConfigArgsDict']]]]] = None,
                  redis_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -780,6 +813,127 @@ class Cluster(pulumi.CustomResource):
             deletion_protection_enabled=True,
             opts = pulumi.ResourceOptions(depends_on=[default]))
         ```
+        ### Redis Cluster Rdb
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        producer_net = gcp.compute.Network("producer_net",
+            name="mynetwork",
+            auto_create_subnetworks=False)
+        producer_subnet = gcp.compute.Subnetwork("producer_subnet",
+            name="mysubnet",
+            ip_cidr_range="10.0.0.248/29",
+            region="us-central1",
+            network=producer_net.id)
+        default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
+            name="mypolicy",
+            location="us-central1",
+            service_class="gcp-memorystore-redis",
+            description="my basic service connection policy",
+            network=producer_net.id,
+            psc_config={
+                "subnetworks": [producer_subnet.id],
+            })
+        cluster_rdb = gcp.redis.Cluster("cluster-rdb",
+            name="rdb-cluster",
+            shard_count=3,
+            psc_configs=[{
+                "network": producer_net.id,
+            }],
+            region="us-central1",
+            replica_count=0,
+            node_type="REDIS_SHARED_CORE_NANO",
+            transit_encryption_mode="TRANSIT_ENCRYPTION_MODE_DISABLED",
+            authorization_mode="AUTH_MODE_DISABLED",
+            redis_configs={
+                "maxmemory-policy": "volatile-ttl",
+            },
+            deletion_protection_enabled=True,
+            zone_distribution_config={
+                "mode": "MULTI_ZONE",
+            },
+            maintenance_policy={
+                "weekly_maintenance_windows": [{
+                    "day": "MONDAY",
+                    "start_time": {
+                        "hours": 1,
+                        "minutes": 0,
+                        "seconds": 0,
+                        "nanos": 0,
+                    },
+                }],
+            },
+            persistence_config={
+                "mode": "RDB",
+                "rdb_config": {
+                    "rdb_snapshot_period": "ONE_HOUR",
+                    "rdb_snapshot_start_time": "2024-10-02T15:01:23Z",
+                },
+            },
+            opts = pulumi.ResourceOptions(depends_on=[default]))
+        ```
+        ### Redis Cluster Aof
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        producer_net = gcp.compute.Network("producer_net",
+            name="mynetwork",
+            auto_create_subnetworks=False)
+        producer_subnet = gcp.compute.Subnetwork("producer_subnet",
+            name="mysubnet",
+            ip_cidr_range="10.0.0.248/29",
+            region="us-central1",
+            network=producer_net.id)
+        default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
+            name="mypolicy",
+            location="us-central1",
+            service_class="gcp-memorystore-redis",
+            description="my basic service connection policy",
+            network=producer_net.id,
+            psc_config={
+                "subnetworks": [producer_subnet.id],
+            })
+        cluster_aof = gcp.redis.Cluster("cluster-aof",
+            name="aof-cluster",
+            shard_count=3,
+            psc_configs=[{
+                "network": producer_net.id,
+            }],
+            region="us-central1",
+            replica_count=0,
+            node_type="REDIS_SHARED_CORE_NANO",
+            transit_encryption_mode="TRANSIT_ENCRYPTION_MODE_DISABLED",
+            authorization_mode="AUTH_MODE_DISABLED",
+            redis_configs={
+                "maxmemory-policy": "volatile-ttl",
+            },
+            deletion_protection_enabled=True,
+            zone_distribution_config={
+                "mode": "MULTI_ZONE",
+            },
+            maintenance_policy={
+                "weekly_maintenance_windows": [{
+                    "day": "MONDAY",
+                    "start_time": {
+                        "hours": 1,
+                        "minutes": 0,
+                        "seconds": 0,
+                        "nanos": 0,
+                    },
+                }],
+            },
+            persistence_config={
+                "mode": "AOF",
+                "aof_config": {
+                    "append_fsync": "EVERYSEC",
+                },
+            },
+            opts = pulumi.ResourceOptions(depends_on=[default]))
+        ```
 
         ## Import
 
@@ -823,6 +977,7 @@ class Cluster(pulumi.CustomResource):
                projects/{projectId}/locations/{locationId}/clusters/{clusterId}
         :param pulumi.Input[str] node_type: The nodeType for the Redis cluster. If not provided, REDIS_HIGHMEM_MEDIUM will be used as default Possible values:
                ["REDIS_SHARED_CORE_NANO", "REDIS_HIGHMEM_MEDIUM", "REDIS_HIGHMEM_XLARGE", "REDIS_STANDARD_SMALL"]
+        :param pulumi.Input[Union['ClusterPersistenceConfigArgs', 'ClusterPersistenceConfigArgsDict']] persistence_config: Persistence config (RDB, AOF) for the cluster.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterPscConfigArgs', 'ClusterPscConfigArgsDict']]]] psc_configs: Required. Each PscConfig configures the consumer network where two
                network addresses will be designated to the cluster for client access.
                Currently, only one PscConfig is supported.
@@ -957,6 +1112,127 @@ class Cluster(pulumi.CustomResource):
             deletion_protection_enabled=True,
             opts = pulumi.ResourceOptions(depends_on=[default]))
         ```
+        ### Redis Cluster Rdb
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        producer_net = gcp.compute.Network("producer_net",
+            name="mynetwork",
+            auto_create_subnetworks=False)
+        producer_subnet = gcp.compute.Subnetwork("producer_subnet",
+            name="mysubnet",
+            ip_cidr_range="10.0.0.248/29",
+            region="us-central1",
+            network=producer_net.id)
+        default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
+            name="mypolicy",
+            location="us-central1",
+            service_class="gcp-memorystore-redis",
+            description="my basic service connection policy",
+            network=producer_net.id,
+            psc_config={
+                "subnetworks": [producer_subnet.id],
+            })
+        cluster_rdb = gcp.redis.Cluster("cluster-rdb",
+            name="rdb-cluster",
+            shard_count=3,
+            psc_configs=[{
+                "network": producer_net.id,
+            }],
+            region="us-central1",
+            replica_count=0,
+            node_type="REDIS_SHARED_CORE_NANO",
+            transit_encryption_mode="TRANSIT_ENCRYPTION_MODE_DISABLED",
+            authorization_mode="AUTH_MODE_DISABLED",
+            redis_configs={
+                "maxmemory-policy": "volatile-ttl",
+            },
+            deletion_protection_enabled=True,
+            zone_distribution_config={
+                "mode": "MULTI_ZONE",
+            },
+            maintenance_policy={
+                "weekly_maintenance_windows": [{
+                    "day": "MONDAY",
+                    "start_time": {
+                        "hours": 1,
+                        "minutes": 0,
+                        "seconds": 0,
+                        "nanos": 0,
+                    },
+                }],
+            },
+            persistence_config={
+                "mode": "RDB",
+                "rdb_config": {
+                    "rdb_snapshot_period": "ONE_HOUR",
+                    "rdb_snapshot_start_time": "2024-10-02T15:01:23Z",
+                },
+            },
+            opts = pulumi.ResourceOptions(depends_on=[default]))
+        ```
+        ### Redis Cluster Aof
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        producer_net = gcp.compute.Network("producer_net",
+            name="mynetwork",
+            auto_create_subnetworks=False)
+        producer_subnet = gcp.compute.Subnetwork("producer_subnet",
+            name="mysubnet",
+            ip_cidr_range="10.0.0.248/29",
+            region="us-central1",
+            network=producer_net.id)
+        default = gcp.networkconnectivity.ServiceConnectionPolicy("default",
+            name="mypolicy",
+            location="us-central1",
+            service_class="gcp-memorystore-redis",
+            description="my basic service connection policy",
+            network=producer_net.id,
+            psc_config={
+                "subnetworks": [producer_subnet.id],
+            })
+        cluster_aof = gcp.redis.Cluster("cluster-aof",
+            name="aof-cluster",
+            shard_count=3,
+            psc_configs=[{
+                "network": producer_net.id,
+            }],
+            region="us-central1",
+            replica_count=0,
+            node_type="REDIS_SHARED_CORE_NANO",
+            transit_encryption_mode="TRANSIT_ENCRYPTION_MODE_DISABLED",
+            authorization_mode="AUTH_MODE_DISABLED",
+            redis_configs={
+                "maxmemory-policy": "volatile-ttl",
+            },
+            deletion_protection_enabled=True,
+            zone_distribution_config={
+                "mode": "MULTI_ZONE",
+            },
+            maintenance_policy={
+                "weekly_maintenance_windows": [{
+                    "day": "MONDAY",
+                    "start_time": {
+                        "hours": 1,
+                        "minutes": 0,
+                        "seconds": 0,
+                        "nanos": 0,
+                    },
+                }],
+            },
+            persistence_config={
+                "mode": "AOF",
+                "aof_config": {
+                    "append_fsync": "EVERYSEC",
+                },
+            },
+            opts = pulumi.ResourceOptions(depends_on=[default]))
+        ```
 
         ## Import
 
@@ -1008,6 +1284,7 @@ class Cluster(pulumi.CustomResource):
                  maintenance_policy: Optional[pulumi.Input[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_type: Optional[pulumi.Input[str]] = None,
+                 persistence_config: Optional[pulumi.Input[Union['ClusterPersistenceConfigArgs', 'ClusterPersistenceConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  psc_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterPscConfigArgs', 'ClusterPscConfigArgsDict']]]]] = None,
                  redis_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1030,6 +1307,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["maintenance_policy"] = maintenance_policy
             __props__.__dict__["name"] = name
             __props__.__dict__["node_type"] = node_type
+            __props__.__dict__["persistence_config"] = persistence_config
             __props__.__dict__["project"] = project
             if psc_configs is None and not opts.urn:
                 raise TypeError("Missing required property 'psc_configs'")
@@ -1069,6 +1347,7 @@ class Cluster(pulumi.CustomResource):
             maintenance_schedules: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterMaintenanceScheduleArgs', 'ClusterMaintenanceScheduleArgsDict']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             node_type: Optional[pulumi.Input[str]] = None,
+            persistence_config: Optional[pulumi.Input[Union['ClusterPersistenceConfigArgs', 'ClusterPersistenceConfigArgsDict']]] = None,
             precise_size_gb: Optional[pulumi.Input[float]] = None,
             project: Optional[pulumi.Input[str]] = None,
             psc_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterPscConfigArgs', 'ClusterPscConfigArgsDict']]]]] = None,
@@ -1109,6 +1388,7 @@ class Cluster(pulumi.CustomResource):
                projects/{projectId}/locations/{locationId}/clusters/{clusterId}
         :param pulumi.Input[str] node_type: The nodeType for the Redis cluster. If not provided, REDIS_HIGHMEM_MEDIUM will be used as default Possible values:
                ["REDIS_SHARED_CORE_NANO", "REDIS_HIGHMEM_MEDIUM", "REDIS_HIGHMEM_XLARGE", "REDIS_STANDARD_SMALL"]
+        :param pulumi.Input[Union['ClusterPersistenceConfigArgs', 'ClusterPersistenceConfigArgsDict']] persistence_config: Persistence config (RDB, AOF) for the cluster.
         :param pulumi.Input[float] precise_size_gb: Output only. Redis memory precise size in GB for the entire cluster.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterPscConfigArgs', 'ClusterPscConfigArgsDict']]]] psc_configs: Required. Each PscConfig configures the consumer network where two
                network addresses will be designated to the cluster for client access.
@@ -1144,6 +1424,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["maintenance_schedules"] = maintenance_schedules
         __props__.__dict__["name"] = name
         __props__.__dict__["node_type"] = node_type
+        __props__.__dict__["persistence_config"] = persistence_config
         __props__.__dict__["precise_size_gb"] = precise_size_gb
         __props__.__dict__["project"] = project
         __props__.__dict__["psc_configs"] = psc_configs
@@ -1234,6 +1515,14 @@ class Cluster(pulumi.CustomResource):
         ["REDIS_SHARED_CORE_NANO", "REDIS_HIGHMEM_MEDIUM", "REDIS_HIGHMEM_XLARGE", "REDIS_STANDARD_SMALL"]
         """
         return pulumi.get(self, "node_type")
+
+    @property
+    @pulumi.getter(name="persistenceConfig")
+    def persistence_config(self) -> pulumi.Output['outputs.ClusterPersistenceConfig']:
+        """
+        Persistence config (RDB, AOF) for the cluster.
+        """
+        return pulumi.get(self, "persistence_config")
 
     @property
     @pulumi.getter(name="preciseSizeGb")

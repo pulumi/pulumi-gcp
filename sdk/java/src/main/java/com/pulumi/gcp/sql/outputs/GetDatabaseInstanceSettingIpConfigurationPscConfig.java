@@ -5,6 +5,7 @@ package com.pulumi.gcp.sql.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnection;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -18,6 +19,11 @@ public final class GetDatabaseInstanceSettingIpConfigurationPscConfig {
      */
     private List<String> allowedConsumerProjects;
     /**
+     * @return A comma-separated list of networks or a comma-separated list of network-project pairs. Each project in this list is represented by a project number (numeric) or by a project ID (alphanumeric). This allows Private Service Connect connections to be created automatically for the specified networks.
+     * 
+     */
+    private List<GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnection> pscAutoConnections;
+    /**
      * @return Whether PSC connectivity is enabled for this instance.
      * 
      */
@@ -30,6 +36,13 @@ public final class GetDatabaseInstanceSettingIpConfigurationPscConfig {
      */
     public List<String> allowedConsumerProjects() {
         return this.allowedConsumerProjects;
+    }
+    /**
+     * @return A comma-separated list of networks or a comma-separated list of network-project pairs. Each project in this list is represented by a project number (numeric) or by a project ID (alphanumeric). This allows Private Service Connect connections to be created automatically for the specified networks.
+     * 
+     */
+    public List<GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnection> pscAutoConnections() {
+        return this.pscAutoConnections;
     }
     /**
      * @return Whether PSC connectivity is enabled for this instance.
@@ -49,11 +62,13 @@ public final class GetDatabaseInstanceSettingIpConfigurationPscConfig {
     @CustomType.Builder
     public static final class Builder {
         private List<String> allowedConsumerProjects;
+        private List<GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnection> pscAutoConnections;
         private Boolean pscEnabled;
         public Builder() {}
         public Builder(GetDatabaseInstanceSettingIpConfigurationPscConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowedConsumerProjects = defaults.allowedConsumerProjects;
+    	      this.pscAutoConnections = defaults.pscAutoConnections;
     	      this.pscEnabled = defaults.pscEnabled;
         }
 
@@ -69,6 +84,17 @@ public final class GetDatabaseInstanceSettingIpConfigurationPscConfig {
             return allowedConsumerProjects(List.of(allowedConsumerProjects));
         }
         @CustomType.Setter
+        public Builder pscAutoConnections(List<GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnection> pscAutoConnections) {
+            if (pscAutoConnections == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceSettingIpConfigurationPscConfig", "pscAutoConnections");
+            }
+            this.pscAutoConnections = pscAutoConnections;
+            return this;
+        }
+        public Builder pscAutoConnections(GetDatabaseInstanceSettingIpConfigurationPscConfigPscAutoConnection... pscAutoConnections) {
+            return pscAutoConnections(List.of(pscAutoConnections));
+        }
+        @CustomType.Setter
         public Builder pscEnabled(Boolean pscEnabled) {
             if (pscEnabled == null) {
               throw new MissingRequiredPropertyException("GetDatabaseInstanceSettingIpConfigurationPscConfig", "pscEnabled");
@@ -79,6 +105,7 @@ public final class GetDatabaseInstanceSettingIpConfigurationPscConfig {
         public GetDatabaseInstanceSettingIpConfigurationPscConfig build() {
             final var _resultValue = new GetDatabaseInstanceSettingIpConfigurationPscConfig();
             _resultValue.allowedConsumerProjects = allowedConsumerProjects;
+            _resultValue.pscAutoConnections = pscAutoConnections;
             _resultValue.pscEnabled = pscEnabled;
             return _resultValue;
         }

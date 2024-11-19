@@ -24,6 +24,18 @@ namespace Pulumi.Gcp.Sql.Inputs
             set => _allowedConsumerProjects = value;
         }
 
+        [Input("pscAutoConnections")]
+        private InputList<Inputs.DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs>? _pscAutoConnections;
+
+        /// <summary>
+        /// A comma-separated list of networks or a comma-separated list of network-project pairs. Each project in this list is represented by a project number (numeric) or by a project ID (alphanumeric). This allows Private Service Connect connections to be created automatically for the specified networks.
+        /// </summary>
+        public InputList<Inputs.DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs> PscAutoConnections
+        {
+            get => _pscAutoConnections ?? (_pscAutoConnections = new InputList<Inputs.DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs>());
+            set => _pscAutoConnections = value;
+        }
+
         /// <summary>
         /// Whether PSC connectivity is enabled for this instance.
         /// </summary>

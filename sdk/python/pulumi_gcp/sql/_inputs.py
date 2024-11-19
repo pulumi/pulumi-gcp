@@ -49,6 +49,8 @@ __all__ = [
     'DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgsDict',
     'DatabaseInstanceSettingsIpConfigurationPscConfigArgs',
     'DatabaseInstanceSettingsIpConfigurationPscConfigArgsDict',
+    'DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs',
+    'DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgsDict',
     'DatabaseInstanceSettingsLocationPreferenceArgs',
     'DatabaseInstanceSettingsLocationPreferenceArgsDict',
     'DatabaseInstanceSettingsMaintenanceWindowArgs',
@@ -2104,6 +2106,10 @@ if not MYPY:
         """
         List of consumer projects that are allow-listed for PSC connections to this instance. This instance can be connected to with PSC from any network in these projects. Each consumer project in this list may be represented by a project number (numeric) or by a project id (alphanumeric).
         """
+        psc_auto_connections: NotRequired[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgsDict']]]]
+        """
+        A comma-separated list of networks or a comma-separated list of network-project pairs. Each project in this list is represented by a project number (numeric) or by a project ID (alphanumeric). This allows Private Service Connect connections to be created automatically for the specified networks.
+        """
         psc_enabled: NotRequired[pulumi.Input[bool]]
         """
         Whether PSC connectivity is enabled for this instance.
@@ -2115,13 +2121,17 @@ elif False:
 class DatabaseInstanceSettingsIpConfigurationPscConfigArgs:
     def __init__(__self__, *,
                  allowed_consumer_projects: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 psc_auto_connections: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs']]]] = None,
                  psc_enabled: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_consumer_projects: List of consumer projects that are allow-listed for PSC connections to this instance. This instance can be connected to with PSC from any network in these projects. Each consumer project in this list may be represented by a project number (numeric) or by a project id (alphanumeric).
+        :param pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs']]] psc_auto_connections: A comma-separated list of networks or a comma-separated list of network-project pairs. Each project in this list is represented by a project number (numeric) or by a project ID (alphanumeric). This allows Private Service Connect connections to be created automatically for the specified networks.
         :param pulumi.Input[bool] psc_enabled: Whether PSC connectivity is enabled for this instance.
         """
         if allowed_consumer_projects is not None:
             pulumi.set(__self__, "allowed_consumer_projects", allowed_consumer_projects)
+        if psc_auto_connections is not None:
+            pulumi.set(__self__, "psc_auto_connections", psc_auto_connections)
         if psc_enabled is not None:
             pulumi.set(__self__, "psc_enabled", psc_enabled)
 
@@ -2138,6 +2148,18 @@ class DatabaseInstanceSettingsIpConfigurationPscConfigArgs:
         pulumi.set(self, "allowed_consumer_projects", value)
 
     @property
+    @pulumi.getter(name="pscAutoConnections")
+    def psc_auto_connections(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs']]]]:
+        """
+        A comma-separated list of networks or a comma-separated list of network-project pairs. Each project in this list is represented by a project number (numeric) or by a project ID (alphanumeric). This allows Private Service Connect connections to be created automatically for the specified networks.
+        """
+        return pulumi.get(self, "psc_auto_connections")
+
+    @psc_auto_connections.setter
+    def psc_auto_connections(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs']]]]):
+        pulumi.set(self, "psc_auto_connections", value)
+
+    @property
     @pulumi.getter(name="pscEnabled")
     def psc_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -2148,6 +2170,57 @@ class DatabaseInstanceSettingsIpConfigurationPscConfigArgs:
     @psc_enabled.setter
     def psc_enabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "psc_enabled", value)
+
+
+if not MYPY:
+    class DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgsDict(TypedDict):
+        consumer_network: pulumi.Input[str]
+        """
+        "The consumer network of this consumer endpoint. This must be a resource path that includes both the host project and the network name. For example, `projects/project1/global/networks/network1`. The consumer host project of this network might be different from the consumer service project."
+        """
+        consumer_service_project_id: NotRequired[pulumi.Input[str]]
+        """
+        The project ID of consumer service project of this consumer endpoint.
+        """
+elif False:
+    DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs:
+    def __init__(__self__, *,
+                 consumer_network: pulumi.Input[str],
+                 consumer_service_project_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] consumer_network: "The consumer network of this consumer endpoint. This must be a resource path that includes both the host project and the network name. For example, `projects/project1/global/networks/network1`. The consumer host project of this network might be different from the consumer service project."
+        :param pulumi.Input[str] consumer_service_project_id: The project ID of consumer service project of this consumer endpoint.
+        """
+        pulumi.set(__self__, "consumer_network", consumer_network)
+        if consumer_service_project_id is not None:
+            pulumi.set(__self__, "consumer_service_project_id", consumer_service_project_id)
+
+    @property
+    @pulumi.getter(name="consumerNetwork")
+    def consumer_network(self) -> pulumi.Input[str]:
+        """
+        "The consumer network of this consumer endpoint. This must be a resource path that includes both the host project and the network name. For example, `projects/project1/global/networks/network1`. The consumer host project of this network might be different from the consumer service project."
+        """
+        return pulumi.get(self, "consumer_network")
+
+    @consumer_network.setter
+    def consumer_network(self, value: pulumi.Input[str]):
+        pulumi.set(self, "consumer_network", value)
+
+    @property
+    @pulumi.getter(name="consumerServiceProjectId")
+    def consumer_service_project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The project ID of consumer service project of this consumer endpoint.
+        """
+        return pulumi.get(self, "consumer_service_project_id")
+
+    @consumer_service_project_id.setter
+    def consumer_service_project_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "consumer_service_project_id", value)
 
 
 if not MYPY:

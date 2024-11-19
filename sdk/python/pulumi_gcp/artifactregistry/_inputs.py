@@ -35,6 +35,8 @@ __all__ = [
     'RepositoryRemoteRepositoryConfigAptRepositoryArgsDict',
     'RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgs',
     'RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgsDict',
+    'RepositoryRemoteRepositoryConfigCommonRepositoryArgs',
+    'RepositoryRemoteRepositoryConfigCommonRepositoryArgsDict',
     'RepositoryRemoteRepositoryConfigDockerRepositoryArgs',
     'RepositoryRemoteRepositoryConfigDockerRepositoryArgsDict',
     'RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs',
@@ -554,6 +556,11 @@ if not MYPY:
         Specific settings for an Apt remote repository.
         Structure is documented below.
         """
+        common_repository: NotRequired[pulumi.Input['RepositoryRemoteRepositoryConfigCommonRepositoryArgsDict']]
+        """
+        Specific settings for an Artifact Registory remote repository.
+        Structure is documented below.
+        """
         description: NotRequired[pulumi.Input[str]]
         """
         The description of the remote source.
@@ -600,6 +607,7 @@ elif False:
 class RepositoryRemoteRepositoryConfigArgs:
     def __init__(__self__, *,
                  apt_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigAptRepositoryArgs']] = None,
+                 common_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigCommonRepositoryArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  disable_upstream_validation: Optional[pulumi.Input[bool]] = None,
                  docker_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigDockerRepositoryArgs']] = None,
@@ -610,6 +618,8 @@ class RepositoryRemoteRepositoryConfigArgs:
                  yum_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigYumRepositoryArgs']] = None):
         """
         :param pulumi.Input['RepositoryRemoteRepositoryConfigAptRepositoryArgs'] apt_repository: Specific settings for an Apt remote repository.
+               Structure is documented below.
+        :param pulumi.Input['RepositoryRemoteRepositoryConfigCommonRepositoryArgs'] common_repository: Specific settings for an Artifact Registory remote repository.
                Structure is documented below.
         :param pulumi.Input[str] description: The description of the remote source.
         :param pulumi.Input[bool] disable_upstream_validation: If true, the remote repository upstream and upstream credentials will
@@ -629,6 +639,8 @@ class RepositoryRemoteRepositoryConfigArgs:
         """
         if apt_repository is not None:
             pulumi.set(__self__, "apt_repository", apt_repository)
+        if common_repository is not None:
+            pulumi.set(__self__, "common_repository", common_repository)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if disable_upstream_validation is not None:
@@ -658,6 +670,19 @@ class RepositoryRemoteRepositoryConfigArgs:
     @apt_repository.setter
     def apt_repository(self, value: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigAptRepositoryArgs']]):
         pulumi.set(self, "apt_repository", value)
+
+    @property
+    @pulumi.getter(name="commonRepository")
+    def common_repository(self) -> Optional[pulumi.Input['RepositoryRemoteRepositoryConfigCommonRepositoryArgs']]:
+        """
+        Specific settings for an Artifact Registory remote repository.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "common_repository")
+
+    @common_repository.setter
+    def common_repository(self, value: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigCommonRepositoryArgs']]):
+        pulumi.set(self, "common_repository", value)
 
     @property
     @pulumi.getter
@@ -849,6 +874,37 @@ class RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgs:
     @repository_path.setter
     def repository_path(self, value: pulumi.Input[str]):
         pulumi.set(self, "repository_path", value)
+
+
+if not MYPY:
+    class RepositoryRemoteRepositoryConfigCommonRepositoryArgsDict(TypedDict):
+        uri: pulumi.Input[str]
+        """
+        Specific uri to the Artifact Registory repository, e.g. `projects/UPSTREAM_PROJECT_ID/locations/REGION/repositories/UPSTREAM_REPOSITORY`
+        """
+elif False:
+    RepositoryRemoteRepositoryConfigCommonRepositoryArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RepositoryRemoteRepositoryConfigCommonRepositoryArgs:
+    def __init__(__self__, *,
+                 uri: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] uri: Specific uri to the Artifact Registory repository, e.g. `projects/UPSTREAM_PROJECT_ID/locations/REGION/repositories/UPSTREAM_REPOSITORY`
+        """
+        pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> pulumi.Input[str]:
+        """
+        Specific uri to the Artifact Registory repository, e.g. `projects/UPSTREAM_PROJECT_ID/locations/REGION/repositories/UPSTREAM_REPOSITORY`
+        """
+        return pulumi.get(self, "uri")
+
+    @uri.setter
+    def uri(self, value: pulumi.Input[str]):
+        pulumi.set(self, "uri", value)
 
 
 if not MYPY:

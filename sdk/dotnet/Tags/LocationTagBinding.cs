@@ -48,7 +48,7 @@ namespace Pulumi.Gcp.Tags
     /// 
     ///     var @value = new Gcp.Tags.TagValue("value", new()
     ///     {
-    ///         Parent = key.Name.Apply(name =&gt; $"tagKeys/{name}"),
+    ///         Parent = key.Id,
     ///         ShortName = "valuename",
     ///         Description = "For valuename resources.",
     ///     });
@@ -56,7 +56,7 @@ namespace Pulumi.Gcp.Tags
     ///     var binding = new Gcp.Tags.LocationTagBinding("binding", new()
     ///     {
     ///         Parent = $"//run.googleapis.com/projects/{projectGoogleProject.Number}/locations/{@default.Location}/services/{@default.Name}",
-    ///         TagValue = @value.Name.Apply(name =&gt; $"tagValues/{name}"),
+    ///         TagValue = @value.Id,
     ///         Location = "us-central1",
     ///     });
     /// 
@@ -89,7 +89,7 @@ namespace Pulumi.Gcp.Tags
     /// 
     ///     var @value = new Gcp.Tags.TagValue("value", new()
     ///     {
-    ///         Parent = key.Name.Apply(name =&gt; $"tagKeys/{name}"),
+    ///         Parent = key.Id,
     ///         ShortName = "valuename",
     ///         Description = "For valuename resources.",
     ///     });
@@ -97,7 +97,7 @@ namespace Pulumi.Gcp.Tags
     ///     var binding = new Gcp.Tags.LocationTagBinding("binding", new()
     ///     {
     ///         Parent = project.Number.Apply(number =&gt; $"//compute.googleapis.com/projects/{number}/zones/us-central1-a/instances/{instance.InstanceId}"),
-    ///         TagValue = @value.Name.Apply(name =&gt; $"tagValues/{name}"),
+    ///         TagValue = @value.Id,
     ///         Location = "us-central1-a",
     ///     });
     /// 

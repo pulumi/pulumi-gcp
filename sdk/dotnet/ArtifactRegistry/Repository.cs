@@ -644,6 +644,43 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// });
     /// ```
+    /// ### Artifact Registry Repository Remote Common Repository With Docker
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var upstreamRepo = new Gcp.ArtifactRegistry.Repository("upstream_repo", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         RepositoryId = "example-upstream-repo",
+    ///         Description = "example upstream repository",
+    ///         Format = "DOCKER",
+    ///     });
+    /// 
+    ///     var my_repo = new Gcp.ArtifactRegistry.Repository("my-repo", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         RepositoryId = "example-common-remote",
+    ///         Description = "example remote common repository with docker upstream",
+    ///         Format = "DOCKER",
+    ///         Mode = "REMOTE_REPOSITORY",
+    ///         RemoteRepositoryConfig = new Gcp.ArtifactRegistry.Inputs.RepositoryRemoteRepositoryConfigArgs
+    ///         {
+    ///             Description = "pull-through cache of another Artifact Registry repository",
+    ///             CommonRepository = new Gcp.ArtifactRegistry.Inputs.RepositoryRemoteRepositoryConfigCommonRepositoryArgs
+    ///             {
+    ///                 Uri = upstreamRepo.Id,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

@@ -55,6 +55,11 @@ export type GcpUserAccessBinding = import("./gcpUserAccessBinding").GcpUserAcces
 export const GcpUserAccessBinding: typeof import("./gcpUserAccessBinding").GcpUserAccessBinding = null as any;
 utilities.lazyLoad(exports, ["GcpUserAccessBinding"], () => require("./gcpUserAccessBinding"));
 
+export { GetAccessPolicyArgs, GetAccessPolicyResult, GetAccessPolicyOutputArgs } from "./getAccessPolicy";
+export const getAccessPolicy: typeof import("./getAccessPolicy").getAccessPolicy = null as any;
+export const getAccessPolicyOutput: typeof import("./getAccessPolicy").getAccessPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getAccessPolicy","getAccessPolicyOutput"], () => require("./getAccessPolicy"));
+
 export { GetAccessPolicyIamPolicyArgs, GetAccessPolicyIamPolicyResult, GetAccessPolicyIamPolicyOutputArgs } from "./getAccessPolicyIamPolicy";
 export const getAccessPolicyIamPolicy: typeof import("./getAccessPolicyIamPolicy").getAccessPolicyIamPolicy = null as any;
 export const getAccessPolicyIamPolicyOutput: typeof import("./getAccessPolicyIamPolicy").getAccessPolicyIamPolicyOutput = null as any;

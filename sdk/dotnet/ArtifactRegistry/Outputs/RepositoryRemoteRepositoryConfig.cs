@@ -19,6 +19,11 @@ namespace Pulumi.Gcp.ArtifactRegistry.Outputs
         /// </summary>
         public readonly Outputs.RepositoryRemoteRepositoryConfigAptRepository? AptRepository;
         /// <summary>
+        /// Specific settings for an Artifact Registory remote repository.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.RepositoryRemoteRepositoryConfigCommonRepository? CommonRepository;
+        /// <summary>
         /// The description of the remote source.
         /// </summary>
         public readonly string? Description;
@@ -62,6 +67,8 @@ namespace Pulumi.Gcp.ArtifactRegistry.Outputs
         private RepositoryRemoteRepositoryConfig(
             Outputs.RepositoryRemoteRepositoryConfigAptRepository? aptRepository,
 
+            Outputs.RepositoryRemoteRepositoryConfigCommonRepository? commonRepository,
+
             string? description,
 
             bool? disableUpstreamValidation,
@@ -79,6 +86,7 @@ namespace Pulumi.Gcp.ArtifactRegistry.Outputs
             Outputs.RepositoryRemoteRepositoryConfigYumRepository? yumRepository)
         {
             AptRepository = aptRepository;
+            CommonRepository = commonRepository;
             Description = description;
             DisableUpstreamValidation = disableUpstreamValidation;
             DockerRepository = dockerRepository;

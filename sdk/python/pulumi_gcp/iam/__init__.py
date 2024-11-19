@@ -7,10 +7,12 @@ import typing
 # Export this package's modules as members:
 from .access_boundary_policy import *
 from .deny_policy import *
+from .folders_policy_binding import *
 from .get_rule import *
 from .get_testable_permissions import *
 from .get_workload_identity_pool import *
 from .get_workload_identity_pool_provider import *
+from .organizations_policy_binding import *
 from .principal_access_boundary_policy import *
 from .workforce_pool import *
 from .workforce_pool_provider import *

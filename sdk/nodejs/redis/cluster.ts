@@ -129,6 +129,137 @@ import * as utilities from "../utilities";
  *     dependsOn: [_default],
  * });
  * ```
+ * ### Redis Cluster Rdb
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const producerNet = new gcp.compute.Network("producer_net", {
+ *     name: "mynetwork",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const producerSubnet = new gcp.compute.Subnetwork("producer_subnet", {
+ *     name: "mysubnet",
+ *     ipCidrRange: "10.0.0.248/29",
+ *     region: "us-central1",
+ *     network: producerNet.id,
+ * });
+ * const _default = new gcp.networkconnectivity.ServiceConnectionPolicy("default", {
+ *     name: "mypolicy",
+ *     location: "us-central1",
+ *     serviceClass: "gcp-memorystore-redis",
+ *     description: "my basic service connection policy",
+ *     network: producerNet.id,
+ *     pscConfig: {
+ *         subnetworks: [producerSubnet.id],
+ *     },
+ * });
+ * const cluster_rdb = new gcp.redis.Cluster("cluster-rdb", {
+ *     name: "rdb-cluster",
+ *     shardCount: 3,
+ *     pscConfigs: [{
+ *         network: producerNet.id,
+ *     }],
+ *     region: "us-central1",
+ *     replicaCount: 0,
+ *     nodeType: "REDIS_SHARED_CORE_NANO",
+ *     transitEncryptionMode: "TRANSIT_ENCRYPTION_MODE_DISABLED",
+ *     authorizationMode: "AUTH_MODE_DISABLED",
+ *     redisConfigs: {
+ *         "maxmemory-policy": "volatile-ttl",
+ *     },
+ *     deletionProtectionEnabled: true,
+ *     zoneDistributionConfig: {
+ *         mode: "MULTI_ZONE",
+ *     },
+ *     maintenancePolicy: {
+ *         weeklyMaintenanceWindows: [{
+ *             day: "MONDAY",
+ *             startTime: {
+ *                 hours: 1,
+ *                 minutes: 0,
+ *                 seconds: 0,
+ *                 nanos: 0,
+ *             },
+ *         }],
+ *     },
+ *     persistenceConfig: {
+ *         mode: "RDB",
+ *         rdbConfig: {
+ *             rdbSnapshotPeriod: "ONE_HOUR",
+ *             rdbSnapshotStartTime: "2024-10-02T15:01:23Z",
+ *         },
+ *     },
+ * }, {
+ *     dependsOn: [_default],
+ * });
+ * ```
+ * ### Redis Cluster Aof
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const producerNet = new gcp.compute.Network("producer_net", {
+ *     name: "mynetwork",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const producerSubnet = new gcp.compute.Subnetwork("producer_subnet", {
+ *     name: "mysubnet",
+ *     ipCidrRange: "10.0.0.248/29",
+ *     region: "us-central1",
+ *     network: producerNet.id,
+ * });
+ * const _default = new gcp.networkconnectivity.ServiceConnectionPolicy("default", {
+ *     name: "mypolicy",
+ *     location: "us-central1",
+ *     serviceClass: "gcp-memorystore-redis",
+ *     description: "my basic service connection policy",
+ *     network: producerNet.id,
+ *     pscConfig: {
+ *         subnetworks: [producerSubnet.id],
+ *     },
+ * });
+ * const cluster_aof = new gcp.redis.Cluster("cluster-aof", {
+ *     name: "aof-cluster",
+ *     shardCount: 3,
+ *     pscConfigs: [{
+ *         network: producerNet.id,
+ *     }],
+ *     region: "us-central1",
+ *     replicaCount: 0,
+ *     nodeType: "REDIS_SHARED_CORE_NANO",
+ *     transitEncryptionMode: "TRANSIT_ENCRYPTION_MODE_DISABLED",
+ *     authorizationMode: "AUTH_MODE_DISABLED",
+ *     redisConfigs: {
+ *         "maxmemory-policy": "volatile-ttl",
+ *     },
+ *     deletionProtectionEnabled: true,
+ *     zoneDistributionConfig: {
+ *         mode: "MULTI_ZONE",
+ *     },
+ *     maintenancePolicy: {
+ *         weeklyMaintenanceWindows: [{
+ *             day: "MONDAY",
+ *             startTime: {
+ *                 hours: 1,
+ *                 minutes: 0,
+ *                 seconds: 0,
+ *                 nanos: 0,
+ *             },
+ *         }],
+ *     },
+ *     persistenceConfig: {
+ *         mode: "AOF",
+ *         aofConfig: {
+ *             appendFsync: "EVERYSEC",
+ *         },
+ *     },
+ * }, {
+ *     dependsOn: [_default],
+ * });
+ * ```
  *
  * ## Import
  *
@@ -232,6 +363,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly nodeType!: pulumi.Output<string>;
     /**
+     * Persistence config (RDB, AOF) for the cluster.
+     */
+    public readonly persistenceConfig!: pulumi.Output<outputs.redis.ClusterPersistenceConfig>;
+    /**
      * Output only. Redis memory precise size in GB for the entire cluster.
      */
     public /*out*/ readonly preciseSizeGb!: pulumi.Output<number>;
@@ -315,6 +450,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["maintenanceSchedules"] = state ? state.maintenanceSchedules : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["nodeType"] = state ? state.nodeType : undefined;
+            resourceInputs["persistenceConfig"] = state ? state.persistenceConfig : undefined;
             resourceInputs["preciseSizeGb"] = state ? state.preciseSizeGb : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["pscConfigs"] = state ? state.pscConfigs : undefined;
@@ -342,6 +478,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["maintenancePolicy"] = args ? args.maintenancePolicy : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["nodeType"] = args ? args.nodeType : undefined;
+            resourceInputs["persistenceConfig"] = args ? args.persistenceConfig : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["pscConfigs"] = args ? args.pscConfigs : undefined;
             resourceInputs["redisConfigs"] = args ? args.redisConfigs : undefined;
@@ -412,6 +549,10 @@ export interface ClusterState {
      * ["REDIS_SHARED_CORE_NANO", "REDIS_HIGHMEM_MEDIUM", "REDIS_HIGHMEM_XLARGE", "REDIS_STANDARD_SMALL"]
      */
     nodeType?: pulumi.Input<string>;
+    /**
+     * Persistence config (RDB, AOF) for the cluster.
+     */
+    persistenceConfig?: pulumi.Input<inputs.redis.ClusterPersistenceConfig>;
     /**
      * Output only. Redis memory precise size in GB for the entire cluster.
      */
@@ -505,6 +646,10 @@ export interface ClusterArgs {
      * ["REDIS_SHARED_CORE_NANO", "REDIS_HIGHMEM_MEDIUM", "REDIS_HIGHMEM_XLARGE", "REDIS_STANDARD_SMALL"]
      */
     nodeType?: pulumi.Input<string>;
+    /**
+     * Persistence config (RDB, AOF) for the cluster.
+     */
+    persistenceConfig?: pulumi.Input<inputs.redis.ClusterPersistenceConfig>;
     project?: pulumi.Input<string>;
     /**
      * Required. Each PscConfig configures the consumer network where two

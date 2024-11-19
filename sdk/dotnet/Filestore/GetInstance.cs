@@ -155,6 +155,7 @@ namespace Pulumi.Gcp.Filestore
         public readonly string? Location;
         public readonly string Name;
         public readonly ImmutableArray<Outputs.GetInstanceNetworkResult> Networks;
+        public readonly ImmutableArray<Outputs.GetInstancePerformanceConfigResult> PerformanceConfigs;
         public readonly string? Project;
         public readonly string Protocol;
         public readonly ImmutableDictionary<string, string> PulumiLabels;
@@ -189,6 +190,8 @@ namespace Pulumi.Gcp.Filestore
 
             ImmutableArray<Outputs.GetInstanceNetworkResult> networks,
 
+            ImmutableArray<Outputs.GetInstancePerformanceConfigResult> performanceConfigs,
+
             string? project,
 
             string protocol,
@@ -212,6 +215,7 @@ namespace Pulumi.Gcp.Filestore
             Location = location;
             Name = name;
             Networks = networks;
+            PerformanceConfigs = performanceConfigs;
             Project = project;
             Protocol = protocol;
             PulumiLabels = pulumiLabels;

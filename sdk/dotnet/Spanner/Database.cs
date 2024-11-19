@@ -136,8 +136,8 @@ namespace Pulumi.Gcp.Spanner
         public Output<string> Instance { get; private set; } = null!;
 
         /// <summary>
-        /// A unique identifier for the database, which cannot be changed after
-        /// the instance is created. Values are of the form [a-z][-a-z0-9]*[a-z0-9].
+        /// A unique identifier for the database, which cannot be changed after the
+        /// instance is created. Values are of the form `[a-z][-_a-z0-9]*[a-z0-9]`.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -261,8 +261,8 @@ namespace Pulumi.Gcp.Spanner
         public Input<string> Instance { get; set; } = null!;
 
         /// <summary>
-        /// A unique identifier for the database, which cannot be changed after
-        /// the instance is created. Values are of the form [a-z][-a-z0-9]*[a-z0-9].
+        /// A unique identifier for the database, which cannot be changed after the
+        /// instance is created. Values are of the form `[a-z][-_a-z0-9]*[a-z0-9]`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -342,8 +342,8 @@ namespace Pulumi.Gcp.Spanner
         public Input<string>? Instance { get; set; }
 
         /// <summary>
-        /// A unique identifier for the database, which cannot be changed after
-        /// the instance is created. Values are of the form [a-z][-a-z0-9]*[a-z0-9].
+        /// A unique identifier for the database, which cannot be changed after the
+        /// instance is created. Values are of the form `[a-z][-_a-z0-9]*[a-z0-9]`.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
