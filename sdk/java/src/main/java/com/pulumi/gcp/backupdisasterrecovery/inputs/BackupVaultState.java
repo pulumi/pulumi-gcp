@@ -18,6 +18,25 @@ public final class BackupVaultState extends com.pulumi.resources.ResourceArgs {
     public static final BackupVaultState Empty = new BackupVaultState();
 
     /**
+     * Access restriction for the backup vault. Default value is `WITHIN_ORGANIZATION` if not provided during creation.
+     * Default value is `WITHIN_ORGANIZATION`.
+     * Possible values are: `ACCESS_RESTRICTION_UNSPECIFIED`, `WITHIN_PROJECT`, `WITHIN_ORGANIZATION`, `UNRESTRICTED`, `WITHIN_ORG_BUT_UNRESTRICTED_FOR_BA`.
+     * 
+     */
+    @Import(name="accessRestriction")
+    private @Nullable Output<String> accessRestriction;
+
+    /**
+     * @return Access restriction for the backup vault. Default value is `WITHIN_ORGANIZATION` if not provided during creation.
+     * Default value is `WITHIN_ORGANIZATION`.
+     * Possible values are: `ACCESS_RESTRICTION_UNSPECIFIED`, `WITHIN_PROJECT`, `WITHIN_ORGANIZATION`, `UNRESTRICTED`, `WITHIN_ORG_BUT_UNRESTRICTED_FOR_BA`.
+     * 
+     */
+    public Optional<Output<String>> accessRestriction() {
+        return Optional.ofNullable(this.accessRestriction);
+    }
+
+    /**
      * Allow idempotent deletion of backup vault. The request will still succeed in case the backup vault does not exist.
      * 
      */
@@ -460,6 +479,7 @@ public final class BackupVaultState extends com.pulumi.resources.ResourceArgs {
     private BackupVaultState() {}
 
     private BackupVaultState(BackupVaultState $) {
+        this.accessRestriction = $.accessRestriction;
         this.allowMissing = $.allowMissing;
         this.annotations = $.annotations;
         this.backupCount = $.backupCount;
@@ -504,6 +524,31 @@ public final class BackupVaultState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(BackupVaultState defaults) {
             $ = new BackupVaultState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param accessRestriction Access restriction for the backup vault. Default value is `WITHIN_ORGANIZATION` if not provided during creation.
+         * Default value is `WITHIN_ORGANIZATION`.
+         * Possible values are: `ACCESS_RESTRICTION_UNSPECIFIED`, `WITHIN_PROJECT`, `WITHIN_ORGANIZATION`, `UNRESTRICTED`, `WITHIN_ORG_BUT_UNRESTRICTED_FOR_BA`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accessRestriction(@Nullable Output<String> accessRestriction) {
+            $.accessRestriction = accessRestriction;
+            return this;
+        }
+
+        /**
+         * @param accessRestriction Access restriction for the backup vault. Default value is `WITHIN_ORGANIZATION` if not provided during creation.
+         * Default value is `WITHIN_ORGANIZATION`.
+         * Possible values are: `ACCESS_RESTRICTION_UNSPECIFIED`, `WITHIN_PROJECT`, `WITHIN_ORGANIZATION`, `UNRESTRICTED`, `WITHIN_ORG_BUT_UNRESTRICTED_FOR_BA`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accessRestriction(String accessRestriction) {
+            return accessRestriction(Output.of(accessRestriction));
         }
 
         /**

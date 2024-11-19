@@ -677,6 +677,143 @@ func (o InstancePrivateConfigPtrOutput) SshServiceAttachment() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+type InstanceWorkforceIdentityFederationConfig struct {
+	// 'Whether Workforce Identity Federation is enabled.'
+	Enabled bool `pulumi:"enabled"`
+}
+
+// InstanceWorkforceIdentityFederationConfigInput is an input type that accepts InstanceWorkforceIdentityFederationConfigArgs and InstanceWorkforceIdentityFederationConfigOutput values.
+// You can construct a concrete instance of `InstanceWorkforceIdentityFederationConfigInput` via:
+//
+//	InstanceWorkforceIdentityFederationConfigArgs{...}
+type InstanceWorkforceIdentityFederationConfigInput interface {
+	pulumi.Input
+
+	ToInstanceWorkforceIdentityFederationConfigOutput() InstanceWorkforceIdentityFederationConfigOutput
+	ToInstanceWorkforceIdentityFederationConfigOutputWithContext(context.Context) InstanceWorkforceIdentityFederationConfigOutput
+}
+
+type InstanceWorkforceIdentityFederationConfigArgs struct {
+	// 'Whether Workforce Identity Federation is enabled.'
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (InstanceWorkforceIdentityFederationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceWorkforceIdentityFederationConfig)(nil)).Elem()
+}
+
+func (i InstanceWorkforceIdentityFederationConfigArgs) ToInstanceWorkforceIdentityFederationConfigOutput() InstanceWorkforceIdentityFederationConfigOutput {
+	return i.ToInstanceWorkforceIdentityFederationConfigOutputWithContext(context.Background())
+}
+
+func (i InstanceWorkforceIdentityFederationConfigArgs) ToInstanceWorkforceIdentityFederationConfigOutputWithContext(ctx context.Context) InstanceWorkforceIdentityFederationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceWorkforceIdentityFederationConfigOutput)
+}
+
+func (i InstanceWorkforceIdentityFederationConfigArgs) ToInstanceWorkforceIdentityFederationConfigPtrOutput() InstanceWorkforceIdentityFederationConfigPtrOutput {
+	return i.ToInstanceWorkforceIdentityFederationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i InstanceWorkforceIdentityFederationConfigArgs) ToInstanceWorkforceIdentityFederationConfigPtrOutputWithContext(ctx context.Context) InstanceWorkforceIdentityFederationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceWorkforceIdentityFederationConfigOutput).ToInstanceWorkforceIdentityFederationConfigPtrOutputWithContext(ctx)
+}
+
+// InstanceWorkforceIdentityFederationConfigPtrInput is an input type that accepts InstanceWorkforceIdentityFederationConfigArgs, InstanceWorkforceIdentityFederationConfigPtr and InstanceWorkforceIdentityFederationConfigPtrOutput values.
+// You can construct a concrete instance of `InstanceWorkforceIdentityFederationConfigPtrInput` via:
+//
+//	        InstanceWorkforceIdentityFederationConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type InstanceWorkforceIdentityFederationConfigPtrInput interface {
+	pulumi.Input
+
+	ToInstanceWorkforceIdentityFederationConfigPtrOutput() InstanceWorkforceIdentityFederationConfigPtrOutput
+	ToInstanceWorkforceIdentityFederationConfigPtrOutputWithContext(context.Context) InstanceWorkforceIdentityFederationConfigPtrOutput
+}
+
+type instanceWorkforceIdentityFederationConfigPtrType InstanceWorkforceIdentityFederationConfigArgs
+
+func InstanceWorkforceIdentityFederationConfigPtr(v *InstanceWorkforceIdentityFederationConfigArgs) InstanceWorkforceIdentityFederationConfigPtrInput {
+	return (*instanceWorkforceIdentityFederationConfigPtrType)(v)
+}
+
+func (*instanceWorkforceIdentityFederationConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceWorkforceIdentityFederationConfig)(nil)).Elem()
+}
+
+func (i *instanceWorkforceIdentityFederationConfigPtrType) ToInstanceWorkforceIdentityFederationConfigPtrOutput() InstanceWorkforceIdentityFederationConfigPtrOutput {
+	return i.ToInstanceWorkforceIdentityFederationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *instanceWorkforceIdentityFederationConfigPtrType) ToInstanceWorkforceIdentityFederationConfigPtrOutputWithContext(ctx context.Context) InstanceWorkforceIdentityFederationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(InstanceWorkforceIdentityFederationConfigPtrOutput)
+}
+
+type InstanceWorkforceIdentityFederationConfigOutput struct{ *pulumi.OutputState }
+
+func (InstanceWorkforceIdentityFederationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*InstanceWorkforceIdentityFederationConfig)(nil)).Elem()
+}
+
+func (o InstanceWorkforceIdentityFederationConfigOutput) ToInstanceWorkforceIdentityFederationConfigOutput() InstanceWorkforceIdentityFederationConfigOutput {
+	return o
+}
+
+func (o InstanceWorkforceIdentityFederationConfigOutput) ToInstanceWorkforceIdentityFederationConfigOutputWithContext(ctx context.Context) InstanceWorkforceIdentityFederationConfigOutput {
+	return o
+}
+
+func (o InstanceWorkforceIdentityFederationConfigOutput) ToInstanceWorkforceIdentityFederationConfigPtrOutput() InstanceWorkforceIdentityFederationConfigPtrOutput {
+	return o.ToInstanceWorkforceIdentityFederationConfigPtrOutputWithContext(context.Background())
+}
+
+func (o InstanceWorkforceIdentityFederationConfigOutput) ToInstanceWorkforceIdentityFederationConfigPtrOutputWithContext(ctx context.Context) InstanceWorkforceIdentityFederationConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v InstanceWorkforceIdentityFederationConfig) *InstanceWorkforceIdentityFederationConfig {
+		return &v
+	}).(InstanceWorkforceIdentityFederationConfigPtrOutput)
+}
+
+// 'Whether Workforce Identity Federation is enabled.'
+func (o InstanceWorkforceIdentityFederationConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v InstanceWorkforceIdentityFederationConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type InstanceWorkforceIdentityFederationConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (InstanceWorkforceIdentityFederationConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**InstanceWorkforceIdentityFederationConfig)(nil)).Elem()
+}
+
+func (o InstanceWorkforceIdentityFederationConfigPtrOutput) ToInstanceWorkforceIdentityFederationConfigPtrOutput() InstanceWorkforceIdentityFederationConfigPtrOutput {
+	return o
+}
+
+func (o InstanceWorkforceIdentityFederationConfigPtrOutput) ToInstanceWorkforceIdentityFederationConfigPtrOutputWithContext(ctx context.Context) InstanceWorkforceIdentityFederationConfigPtrOutput {
+	return o
+}
+
+func (o InstanceWorkforceIdentityFederationConfigPtrOutput) Elem() InstanceWorkforceIdentityFederationConfigOutput {
+	return o.ApplyT(func(v *InstanceWorkforceIdentityFederationConfig) InstanceWorkforceIdentityFederationConfig {
+		if v != nil {
+			return *v
+		}
+		var ret InstanceWorkforceIdentityFederationConfig
+		return ret
+	}).(InstanceWorkforceIdentityFederationConfigOutput)
+}
+
+// 'Whether Workforce Identity Federation is enabled.'
+func (o InstanceWorkforceIdentityFederationConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *InstanceWorkforceIdentityFederationConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
 type RepositoryIamBindingCondition struct {
 	Description *string `pulumi:"description"`
 	Expression  string  `pulumi:"expression"`
@@ -1342,6 +1479,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceIamMemberConditionPtrInput)(nil)).Elem(), InstanceIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancePrivateConfigInput)(nil)).Elem(), InstancePrivateConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstancePrivateConfigPtrInput)(nil)).Elem(), InstancePrivateConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceWorkforceIdentityFederationConfigInput)(nil)).Elem(), InstanceWorkforceIdentityFederationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*InstanceWorkforceIdentityFederationConfigPtrInput)(nil)).Elem(), InstanceWorkforceIdentityFederationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryIamBindingConditionInput)(nil)).Elem(), RepositoryIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryIamBindingConditionPtrInput)(nil)).Elem(), RepositoryIamBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryIamMemberConditionInput)(nil)).Elem(), RepositoryIamMemberConditionArgs{})
@@ -1358,6 +1497,8 @@ func init() {
 	pulumi.RegisterOutputType(InstanceIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(InstancePrivateConfigOutput{})
 	pulumi.RegisterOutputType(InstancePrivateConfigPtrOutput{})
+	pulumi.RegisterOutputType(InstanceWorkforceIdentityFederationConfigOutput{})
+	pulumi.RegisterOutputType(InstanceWorkforceIdentityFederationConfigPtrOutput{})
 	pulumi.RegisterOutputType(RepositoryIamBindingConditionOutput{})
 	pulumi.RegisterOutputType(RepositoryIamBindingConditionPtrOutput{})
 	pulumi.RegisterOutputType(RepositoryIamMemberConditionOutput{})

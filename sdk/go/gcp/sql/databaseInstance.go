@@ -215,6 +215,58 @@ import (
 //
 // ```
 //
+// ### Cloud SQL Instance with PSC auto connections
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/sql"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := sql.NewDatabaseInstance(ctx, "main", &sql.DatabaseInstanceArgs{
+//				Name:            pulumi.String("psc-enabled-main-instance"),
+//				DatabaseVersion: pulumi.String("MYSQL_8_0"),
+//				Settings: &sql.DatabaseInstanceSettingsArgs{
+//					Tier: pulumi.String("db-f1-micro"),
+//					IpConfiguration: &sql.DatabaseInstanceSettingsIpConfigurationArgs{
+//						PscConfigs: sql.DatabaseInstanceSettingsIpConfigurationPscConfigArray{
+//							&sql.DatabaseInstanceSettingsIpConfigurationPscConfigArgs{
+//								PscEnabled: pulumi.Bool(true),
+//								AllowedConsumerProjects: pulumi.StringArray{
+//									pulumi.String("allowed-consumer-project-name"),
+//								},
+//								PscAutoConnections: sql.DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArray{
+//									&sql.DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs{
+//										ConsumerNetwork:          pulumi.String("network-name"),
+//										ConsumerServiceProjectId: pulumi.String("project-id"),
+//									},
+//								},
+//							},
+//						},
+//						Ipv4Enabled: pulumi.Bool(false),
+//					},
+//					BackupConfiguration: &sql.DatabaseInstanceSettingsBackupConfigurationArgs{
+//						Enabled:          pulumi.Bool(true),
+//						BinaryLogEnabled: pulumi.Bool(true),
+//					},
+//					AvailabilityType: pulumi.String("REGIONAL"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Switchover (SQL Server Only)
 //
 // Users can perform a switchover on any direct `cascadable` replica by following the steps below.

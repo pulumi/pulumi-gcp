@@ -17,6 +17,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * A Managed Service for Apache Kafka topic. Apache Kafka is a trademark owned by the Apache Software Foundation.
+ * 
  * ## Example Usage
  * 
  * ### Managedkafka Topic Basic

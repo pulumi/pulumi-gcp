@@ -59,6 +59,7 @@ import javax.annotation.Nullable;
  *                 Map.entry("annotations2", "baz1")
  *             ))
  *             .forceUpdate("true")
+ *             .accessRestriction("WITHIN_ORGANIZATION")
  *             .ignoreInactiveDatasources("true")
  *             .ignoreBackupPlanReferences("true")
  *             .allowMissing("true")
@@ -97,6 +98,24 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:backupdisasterrecovery/backupVault:BackupVault")
 public class BackupVault extends com.pulumi.resources.CustomResource {
+    /**
+     * Access restriction for the backup vault. Default value is `WITHIN_ORGANIZATION` if not provided during creation.
+     * Default value is `WITHIN_ORGANIZATION`.
+     * Possible values are: `ACCESS_RESTRICTION_UNSPECIFIED`, `WITHIN_PROJECT`, `WITHIN_ORGANIZATION`, `UNRESTRICTED`, `WITHIN_ORG_BUT_UNRESTRICTED_FOR_BA`.
+     * 
+     */
+    @Export(name="accessRestriction", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> accessRestriction;
+
+    /**
+     * @return Access restriction for the backup vault. Default value is `WITHIN_ORGANIZATION` if not provided during creation.
+     * Default value is `WITHIN_ORGANIZATION`.
+     * Possible values are: `ACCESS_RESTRICTION_UNSPECIFIED`, `WITHIN_PROJECT`, `WITHIN_ORGANIZATION`, `UNRESTRICTED`, `WITHIN_ORG_BUT_UNRESTRICTED_FOR_BA`.
+     * 
+     */
+    public Output<Optional<String>> accessRestriction() {
+        return Codegen.optional(this.accessRestriction);
+    }
     /**
      * Allow idempotent deletion of backup vault. The request will still succeed in case the backup vault does not exist.
      * 

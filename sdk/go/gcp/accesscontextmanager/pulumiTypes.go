@@ -3930,9 +3930,11 @@ func (o AccessPolicyIamMemberConditionPtrOutput) Title() pulumi.StringPtrOutput 
 }
 
 type ServicePerimeterDryRunEgressPolicyEgressFrom struct {
-	// A list of identities that are allowed access through this `EgressPolicy`.
-	// Should be in the format of email address. The email address should
-	// represent individual user or service account only.
+	// Identities can be an individual user, service account, Google group,
+	// or third-party identity. For third-party identity, only single identities
+	// are supported and other identity types are not supported.The v1 identities
+	// that have the prefix user, group and serviceAccount in
+	// https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.
 	Identities []string `pulumi:"identities"`
 	// Specifies the type of identities that are allowed access to outside the
 	// perimeter. If left unspecified, then members of `identities` field will
@@ -3959,9 +3961,11 @@ type ServicePerimeterDryRunEgressPolicyEgressFromInput interface {
 }
 
 type ServicePerimeterDryRunEgressPolicyEgressFromArgs struct {
-	// A list of identities that are allowed access through this `EgressPolicy`.
-	// Should be in the format of email address. The email address should
-	// represent individual user or service account only.
+	// Identities can be an individual user, service account, Google group,
+	// or third-party identity. For third-party identity, only single identities
+	// are supported and other identity types are not supported.The v1 identities
+	// that have the prefix user, group and serviceAccount in
+	// https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.
 	Identities pulumi.StringArrayInput `pulumi:"identities"`
 	// Specifies the type of identities that are allowed access to outside the
 	// perimeter. If left unspecified, then members of `identities` field will
@@ -4053,9 +4057,11 @@ func (o ServicePerimeterDryRunEgressPolicyEgressFromOutput) ToServicePerimeterDr
 	}).(ServicePerimeterDryRunEgressPolicyEgressFromPtrOutput)
 }
 
-// A list of identities that are allowed access through this `EgressPolicy`.
-// Should be in the format of email address. The email address should
-// represent individual user or service account only.
+// Identities can be an individual user, service account, Google group,
+// or third-party identity. For third-party identity, only single identities
+// are supported and other identity types are not supported.The v1 identities
+// that have the prefix user, group and serviceAccount in
+// https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.
 func (o ServicePerimeterDryRunEgressPolicyEgressFromOutput) Identities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServicePerimeterDryRunEgressPolicyEgressFrom) []string { return v.Identities }).(pulumi.StringArrayOutput)
 }
@@ -4106,9 +4112,11 @@ func (o ServicePerimeterDryRunEgressPolicyEgressFromPtrOutput) Elem() ServicePer
 	}).(ServicePerimeterDryRunEgressPolicyEgressFromOutput)
 }
 
-// A list of identities that are allowed access through this `EgressPolicy`.
-// Should be in the format of email address. The email address should
-// represent individual user or service account only.
+// Identities can be an individual user, service account, Google group,
+// or third-party identity. For third-party identity, only single identities
+// are supported and other identity types are not supported.The v1 identities
+// that have the prefix user, group and serviceAccount in
+// https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.
 func (o ServicePerimeterDryRunEgressPolicyEgressFromPtrOutput) Identities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServicePerimeterDryRunEgressPolicyEgressFrom) []string {
 		if v == nil {
@@ -4701,9 +4709,11 @@ func (o ServicePerimeterDryRunEgressPolicyEgressToOperationMethodSelectorArrayOu
 }
 
 type ServicePerimeterDryRunIngressPolicyIngressFrom struct {
-	// A list of identities that are allowed access through this ingress policy.
-	// Should be in the format of email address. The email address should represent
-	// individual user or service account only.
+	// Identities can be an individual user, service account, Google group,
+	// or third-party identity. For third-party identity, only single identities
+	// are supported and other identity types are not supported.The v1 identities
+	// that have the prefix user, group and serviceAccount in
+	// https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.
 	Identities []string `pulumi:"identities"`
 	// Specifies the type of identities that are allowed access from outside the
 	// perimeter. If left unspecified, then members of `identities` field will be
@@ -4727,9 +4737,11 @@ type ServicePerimeterDryRunIngressPolicyIngressFromInput interface {
 }
 
 type ServicePerimeterDryRunIngressPolicyIngressFromArgs struct {
-	// A list of identities that are allowed access through this ingress policy.
-	// Should be in the format of email address. The email address should represent
-	// individual user or service account only.
+	// Identities can be an individual user, service account, Google group,
+	// or third-party identity. For third-party identity, only single identities
+	// are supported and other identity types are not supported.The v1 identities
+	// that have the prefix user, group and serviceAccount in
+	// https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.
 	Identities pulumi.StringArrayInput `pulumi:"identities"`
 	// Specifies the type of identities that are allowed access from outside the
 	// perimeter. If left unspecified, then members of `identities` field will be
@@ -4818,9 +4830,11 @@ func (o ServicePerimeterDryRunIngressPolicyIngressFromOutput) ToServicePerimeter
 	}).(ServicePerimeterDryRunIngressPolicyIngressFromPtrOutput)
 }
 
-// A list of identities that are allowed access through this ingress policy.
-// Should be in the format of email address. The email address should represent
-// individual user or service account only.
+// Identities can be an individual user, service account, Google group,
+// or third-party identity. For third-party identity, only single identities
+// are supported and other identity types are not supported.The v1 identities
+// that have the prefix user, group and serviceAccount in
+// https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.
 func (o ServicePerimeterDryRunIngressPolicyIngressFromOutput) Identities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServicePerimeterDryRunIngressPolicyIngressFrom) []string { return v.Identities }).(pulumi.StringArrayOutput)
 }
@@ -4865,9 +4879,11 @@ func (o ServicePerimeterDryRunIngressPolicyIngressFromPtrOutput) Elem() ServiceP
 	}).(ServicePerimeterDryRunIngressPolicyIngressFromOutput)
 }
 
-// A list of identities that are allowed access through this ingress policy.
-// Should be in the format of email address. The email address should represent
-// individual user or service account only.
+// Identities can be an individual user, service account, Google group,
+// or third-party identity. For third-party identity, only single identities
+// are supported and other identity types are not supported.The v1 identities
+// that have the prefix user, group and serviceAccount in
+// https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.
 func (o ServicePerimeterDryRunIngressPolicyIngressFromPtrOutput) Identities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServicePerimeterDryRunIngressPolicyIngressFrom) []string {
 		if v == nil {
@@ -5481,9 +5497,11 @@ func (o ServicePerimeterDryRunIngressPolicyIngressToOperationMethodSelectorArray
 }
 
 type ServicePerimeterEgressPolicyEgressFrom struct {
-	// A list of identities that are allowed access through this `EgressPolicy`.
-	// Should be in the format of email address. The email address should
-	// represent individual user or service account only.
+	// Identities can be an individual user, service account, Google group,
+	// or third-party identity. For third-party identity, only single identities
+	// are supported and other identity types are not supported.The v1 identities
+	// that have the prefix user, group and serviceAccount in
+	// https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.
 	Identities []string `pulumi:"identities"`
 	// Specifies the type of identities that are allowed access to outside the
 	// perimeter. If left unspecified, then members of `identities` field will
@@ -5510,9 +5528,11 @@ type ServicePerimeterEgressPolicyEgressFromInput interface {
 }
 
 type ServicePerimeterEgressPolicyEgressFromArgs struct {
-	// A list of identities that are allowed access through this `EgressPolicy`.
-	// Should be in the format of email address. The email address should
-	// represent individual user or service account only.
+	// Identities can be an individual user, service account, Google group,
+	// or third-party identity. For third-party identity, only single identities
+	// are supported and other identity types are not supported.The v1 identities
+	// that have the prefix user, group and serviceAccount in
+	// https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.
 	Identities pulumi.StringArrayInput `pulumi:"identities"`
 	// Specifies the type of identities that are allowed access to outside the
 	// perimeter. If left unspecified, then members of `identities` field will
@@ -5604,9 +5624,11 @@ func (o ServicePerimeterEgressPolicyEgressFromOutput) ToServicePerimeterEgressPo
 	}).(ServicePerimeterEgressPolicyEgressFromPtrOutput)
 }
 
-// A list of identities that are allowed access through this `EgressPolicy`.
-// Should be in the format of email address. The email address should
-// represent individual user or service account only.
+// Identities can be an individual user, service account, Google group,
+// or third-party identity. For third-party identity, only single identities
+// are supported and other identity types are not supported.The v1 identities
+// that have the prefix user, group and serviceAccount in
+// https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.
 func (o ServicePerimeterEgressPolicyEgressFromOutput) Identities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServicePerimeterEgressPolicyEgressFrom) []string { return v.Identities }).(pulumi.StringArrayOutput)
 }
@@ -5657,9 +5679,11 @@ func (o ServicePerimeterEgressPolicyEgressFromPtrOutput) Elem() ServicePerimeter
 	}).(ServicePerimeterEgressPolicyEgressFromOutput)
 }
 
-// A list of identities that are allowed access through this `EgressPolicy`.
-// Should be in the format of email address. The email address should
-// represent individual user or service account only.
+// Identities can be an individual user, service account, Google group,
+// or third-party identity. For third-party identity, only single identities
+// are supported and other identity types are not supported.The v1 identities
+// that have the prefix user, group and serviceAccount in
+// https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.
 func (o ServicePerimeterEgressPolicyEgressFromPtrOutput) Identities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServicePerimeterEgressPolicyEgressFrom) []string {
 		if v == nil {
@@ -6252,9 +6276,11 @@ func (o ServicePerimeterEgressPolicyEgressToOperationMethodSelectorArrayOutput) 
 }
 
 type ServicePerimeterIngressPolicyIngressFrom struct {
-	// A list of identities that are allowed access through this ingress policy.
-	// Should be in the format of email address. The email address should represent
-	// individual user or service account only.
+	// Identities can be an individual user, service account, Google group,
+	// or third-party identity. For third-party identity, only single identities
+	// are supported and other identity types are not supported.The v1 identities
+	// that have the prefix user, group and serviceAccount in
+	// https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.
 	Identities []string `pulumi:"identities"`
 	// Specifies the type of identities that are allowed access from outside the
 	// perimeter. If left unspecified, then members of `identities` field will be
@@ -6278,9 +6304,11 @@ type ServicePerimeterIngressPolicyIngressFromInput interface {
 }
 
 type ServicePerimeterIngressPolicyIngressFromArgs struct {
-	// A list of identities that are allowed access through this ingress policy.
-	// Should be in the format of email address. The email address should represent
-	// individual user or service account only.
+	// Identities can be an individual user, service account, Google group,
+	// or third-party identity. For third-party identity, only single identities
+	// are supported and other identity types are not supported.The v1 identities
+	// that have the prefix user, group and serviceAccount in
+	// https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.
 	Identities pulumi.StringArrayInput `pulumi:"identities"`
 	// Specifies the type of identities that are allowed access from outside the
 	// perimeter. If left unspecified, then members of `identities` field will be
@@ -6369,9 +6397,11 @@ func (o ServicePerimeterIngressPolicyIngressFromOutput) ToServicePerimeterIngres
 	}).(ServicePerimeterIngressPolicyIngressFromPtrOutput)
 }
 
-// A list of identities that are allowed access through this ingress policy.
-// Should be in the format of email address. The email address should represent
-// individual user or service account only.
+// Identities can be an individual user, service account, Google group,
+// or third-party identity. For third-party identity, only single identities
+// are supported and other identity types are not supported.The v1 identities
+// that have the prefix user, group and serviceAccount in
+// https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.
 func (o ServicePerimeterIngressPolicyIngressFromOutput) Identities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServicePerimeterIngressPolicyIngressFrom) []string { return v.Identities }).(pulumi.StringArrayOutput)
 }
@@ -6416,9 +6446,11 @@ func (o ServicePerimeterIngressPolicyIngressFromPtrOutput) Elem() ServicePerimet
 	}).(ServicePerimeterIngressPolicyIngressFromOutput)
 }
 
-// A list of identities that are allowed access through this ingress policy.
-// Should be in the format of email address. The email address should represent
-// individual user or service account only.
+// Identities can be an individual user, service account, Google group,
+// or third-party identity. For third-party identity, only single identities
+// are supported and other identity types are not supported.The v1 identities
+// that have the prefix user, group and serviceAccount in
+// https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.
 func (o ServicePerimeterIngressPolicyIngressFromPtrOutput) Identities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServicePerimeterIngressPolicyIngressFrom) []string {
 		if v == nil {
@@ -12292,9 +12324,11 @@ func (o ServicePerimetersServicePerimeterSpecEgressPolicyArrayOutput) Index(i pu
 }
 
 type ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom struct {
-	// A list of identities that are allowed access through this `EgressPolicy`.
-	// Should be in the format of email address. The email address should
-	// represent individual user or service account only.
+	// Identities can be an individual user, service account, Google group,
+	// or third-party identity. For third-party identity, only single identities
+	// are supported and other identity types are not supported.The v1 identities
+	// that have the prefix user, group and serviceAccount in
+	// https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.
 	Identities []string `pulumi:"identities"`
 	// Specifies the type of identities that are allowed access to outside the
 	// perimeter. If left unspecified, then members of `identities` field will
@@ -12321,9 +12355,11 @@ type ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromInput interface 
 }
 
 type ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromArgs struct {
-	// A list of identities that are allowed access through this `EgressPolicy`.
-	// Should be in the format of email address. The email address should
-	// represent individual user or service account only.
+	// Identities can be an individual user, service account, Google group,
+	// or third-party identity. For third-party identity, only single identities
+	// are supported and other identity types are not supported.The v1 identities
+	// that have the prefix user, group and serviceAccount in
+	// https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.
 	Identities pulumi.StringArrayInput `pulumi:"identities"`
 	// Specifies the type of identities that are allowed access to outside the
 	// perimeter. If left unspecified, then members of `identities` field will
@@ -12415,9 +12451,11 @@ func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromOutput) ToSer
 	}).(ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutput)
 }
 
-// A list of identities that are allowed access through this `EgressPolicy`.
-// Should be in the format of email address. The email address should
-// represent individual user or service account only.
+// Identities can be an individual user, service account, Google group,
+// or third-party identity. For third-party identity, only single identities
+// are supported and other identity types are not supported.The v1 identities
+// that have the prefix user, group and serviceAccount in
+// https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.
 func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromOutput) Identities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom) []string { return v.Identities }).(pulumi.StringArrayOutput)
 }
@@ -12470,9 +12508,11 @@ func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutput) El
 	}).(ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromOutput)
 }
 
-// A list of identities that are allowed access through this `EgressPolicy`.
-// Should be in the format of email address. The email address should
-// represent individual user or service account only.
+// Identities can be an individual user, service account, Google group,
+// or third-party identity. For third-party identity, only single identities
+// are supported and other identity types are not supported.The v1 identities
+// that have the prefix user, group and serviceAccount in
+// https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.
 func (o ServicePerimetersServicePerimeterSpecEgressPolicyEgressFromPtrOutput) Identities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom) []string {
 		if v == nil {
@@ -14577,9 +14617,11 @@ func (o ServicePerimetersServicePerimeterStatusEgressPolicyArrayOutput) Index(i 
 }
 
 type ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom struct {
-	// A list of identities that are allowed access through this `EgressPolicy`.
-	// Should be in the format of email address. The email address should
-	// represent individual user or service account only.
+	// Identities can be an individual user, service account, Google group,
+	// or third-party identity. For third-party identity, only single identities
+	// are supported and other identity types are not supported.The v1 identities
+	// that have the prefix user, group and serviceAccount in
+	// https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.
 	Identities []string `pulumi:"identities"`
 	// Specifies the type of identities that are allowed access to outside the
 	// perimeter. If left unspecified, then members of `identities` field will
@@ -14606,9 +14648,11 @@ type ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromInput interfac
 }
 
 type ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromArgs struct {
-	// A list of identities that are allowed access through this `EgressPolicy`.
-	// Should be in the format of email address. The email address should
-	// represent individual user or service account only.
+	// Identities can be an individual user, service account, Google group,
+	// or third-party identity. For third-party identity, only single identities
+	// are supported and other identity types are not supported.The v1 identities
+	// that have the prefix user, group and serviceAccount in
+	// https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.
 	Identities pulumi.StringArrayInput `pulumi:"identities"`
 	// Specifies the type of identities that are allowed access to outside the
 	// perimeter. If left unspecified, then members of `identities` field will
@@ -14700,9 +14744,11 @@ func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromOutput) ToS
 	}).(ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutput)
 }
 
-// A list of identities that are allowed access through this `EgressPolicy`.
-// Should be in the format of email address. The email address should
-// represent individual user or service account only.
+// Identities can be an individual user, service account, Google group,
+// or third-party identity. For third-party identity, only single identities
+// are supported and other identity types are not supported.The v1 identities
+// that have the prefix user, group and serviceAccount in
+// https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.
 func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromOutput) Identities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom) []string { return v.Identities }).(pulumi.StringArrayOutput)
 }
@@ -14755,9 +14801,11 @@ func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutput) 
 	}).(ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromOutput)
 }
 
-// A list of identities that are allowed access through this `EgressPolicy`.
-// Should be in the format of email address. The email address should
-// represent individual user or service account only.
+// Identities can be an individual user, service account, Google group,
+// or third-party identity. For third-party identity, only single identities
+// are supported and other identity types are not supported.The v1 identities
+// that have the prefix user, group and serviceAccount in
+// https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.
 func (o ServicePerimetersServicePerimeterStatusEgressPolicyEgressFromPtrOutput) Identities() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom) []string {
 		if v == nil {

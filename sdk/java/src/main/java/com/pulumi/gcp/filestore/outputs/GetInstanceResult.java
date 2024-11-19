@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.filestore.outputs.GetInstanceFileShare;
 import com.pulumi.gcp.filestore.outputs.GetInstanceNetwork;
+import com.pulumi.gcp.filestore.outputs.GetInstancePerformanceConfig;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -34,6 +35,7 @@ public final class GetInstanceResult {
     private @Nullable String location;
     private String name;
     private List<GetInstanceNetwork> networks;
+    private List<GetInstancePerformanceConfig> performanceConfigs;
     private @Nullable String project;
     private String protocol;
     private Map<String,String> pulumiLabels;
@@ -84,6 +86,9 @@ public final class GetInstanceResult {
     public List<GetInstanceNetwork> networks() {
         return this.networks;
     }
+    public List<GetInstancePerformanceConfig> performanceConfigs() {
+        return this.performanceConfigs;
+    }
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
@@ -122,6 +127,7 @@ public final class GetInstanceResult {
         private @Nullable String location;
         private String name;
         private List<GetInstanceNetwork> networks;
+        private List<GetInstancePerformanceConfig> performanceConfigs;
         private @Nullable String project;
         private String protocol;
         private Map<String,String> pulumiLabels;
@@ -143,6 +149,7 @@ public final class GetInstanceResult {
     	      this.location = defaults.location;
     	      this.name = defaults.name;
     	      this.networks = defaults.networks;
+    	      this.performanceConfigs = defaults.performanceConfigs;
     	      this.project = defaults.project;
     	      this.protocol = defaults.protocol;
     	      this.pulumiLabels = defaults.pulumiLabels;
@@ -259,6 +266,17 @@ public final class GetInstanceResult {
             return networks(List.of(networks));
         }
         @CustomType.Setter
+        public Builder performanceConfigs(List<GetInstancePerformanceConfig> performanceConfigs) {
+            if (performanceConfigs == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "performanceConfigs");
+            }
+            this.performanceConfigs = performanceConfigs;
+            return this;
+        }
+        public Builder performanceConfigs(GetInstancePerformanceConfig... performanceConfigs) {
+            return performanceConfigs(List.of(performanceConfigs));
+        }
+        @CustomType.Setter
         public Builder project(@Nullable String project) {
 
             this.project = project;
@@ -311,6 +329,7 @@ public final class GetInstanceResult {
             _resultValue.location = location;
             _resultValue.name = name;
             _resultValue.networks = networks;
+            _resultValue.performanceConfigs = performanceConfigs;
             _resultValue.project = project;
             _resultValue.protocol = protocol;
             _resultValue.pulumiLabels = pulumiLabels;

@@ -4,6 +4,7 @@
 package com.pulumi.gcp.sql.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.sql.outputs.DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -19,6 +20,11 @@ public final class DatabaseInstanceSettingsIpConfigurationPscConfig {
      */
     private @Nullable List<String> allowedConsumerProjects;
     /**
+     * @return A comma-separated list of networks or a comma-separated list of network-project pairs. Each project in this list is represented by a project number (numeric) or by a project ID (alphanumeric). This allows Private Service Connect connections to be created automatically for the specified networks.
+     * 
+     */
+    private @Nullable List<DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection> pscAutoConnections;
+    /**
      * @return Whether PSC connectivity is enabled for this instance.
      * 
      */
@@ -31,6 +37,13 @@ public final class DatabaseInstanceSettingsIpConfigurationPscConfig {
      */
     public List<String> allowedConsumerProjects() {
         return this.allowedConsumerProjects == null ? List.of() : this.allowedConsumerProjects;
+    }
+    /**
+     * @return A comma-separated list of networks or a comma-separated list of network-project pairs. Each project in this list is represented by a project number (numeric) or by a project ID (alphanumeric). This allows Private Service Connect connections to be created automatically for the specified networks.
+     * 
+     */
+    public List<DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection> pscAutoConnections() {
+        return this.pscAutoConnections == null ? List.of() : this.pscAutoConnections;
     }
     /**
      * @return Whether PSC connectivity is enabled for this instance.
@@ -50,11 +63,13 @@ public final class DatabaseInstanceSettingsIpConfigurationPscConfig {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable List<String> allowedConsumerProjects;
+        private @Nullable List<DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection> pscAutoConnections;
         private @Nullable Boolean pscEnabled;
         public Builder() {}
         public Builder(DatabaseInstanceSettingsIpConfigurationPscConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowedConsumerProjects = defaults.allowedConsumerProjects;
+    	      this.pscAutoConnections = defaults.pscAutoConnections;
     	      this.pscEnabled = defaults.pscEnabled;
         }
 
@@ -68,6 +83,15 @@ public final class DatabaseInstanceSettingsIpConfigurationPscConfig {
             return allowedConsumerProjects(List.of(allowedConsumerProjects));
         }
         @CustomType.Setter
+        public Builder pscAutoConnections(@Nullable List<DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection> pscAutoConnections) {
+
+            this.pscAutoConnections = pscAutoConnections;
+            return this;
+        }
+        public Builder pscAutoConnections(DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection... pscAutoConnections) {
+            return pscAutoConnections(List.of(pscAutoConnections));
+        }
+        @CustomType.Setter
         public Builder pscEnabled(@Nullable Boolean pscEnabled) {
 
             this.pscEnabled = pscEnabled;
@@ -76,6 +100,7 @@ public final class DatabaseInstanceSettingsIpConfigurationPscConfig {
         public DatabaseInstanceSettingsIpConfigurationPscConfig build() {
             final var _resultValue = new DatabaseInstanceSettingsIpConfigurationPscConfig();
             _resultValue.allowedConsumerProjects = allowedConsumerProjects;
+            _resultValue.pscAutoConnections = pscAutoConnections;
             _resultValue.pscEnabled = pscEnabled;
             return _resultValue;
         }

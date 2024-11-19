@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.securesourcemanager.inputs.InstancePrivateConfigArgs;
+import com.pulumi.gcp.securesourcemanager.inputs.InstanceWorkforceIdentityFederationConfigArgs;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -122,6 +123,25 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.project);
     }
 
+    /**
+     * Configuration for Workforce Identity Federation to support third party identity provider.
+     * If unset, defaults to the Google OIDC IdP.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="workforceIdentityFederationConfig")
+    private @Nullable Output<InstanceWorkforceIdentityFederationConfigArgs> workforceIdentityFederationConfig;
+
+    /**
+     * @return Configuration for Workforce Identity Federation to support third party identity provider.
+     * If unset, defaults to the Google OIDC IdP.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<InstanceWorkforceIdentityFederationConfigArgs>> workforceIdentityFederationConfig() {
+        return Optional.ofNullable(this.workforceIdentityFederationConfig);
+    }
+
     private InstanceArgs() {}
 
     private InstanceArgs(InstanceArgs $) {
@@ -131,6 +151,7 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
         this.location = $.location;
         this.privateConfig = $.privateConfig;
         this.project = $.project;
+        this.workforceIdentityFederationConfig = $.workforceIdentityFederationConfig;
     }
 
     public static Builder builder() {
@@ -289,6 +310,31 @@ public final class InstanceArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param workforceIdentityFederationConfig Configuration for Workforce Identity Federation to support third party identity provider.
+         * If unset, defaults to the Google OIDC IdP.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workforceIdentityFederationConfig(@Nullable Output<InstanceWorkforceIdentityFederationConfigArgs> workforceIdentityFederationConfig) {
+            $.workforceIdentityFederationConfig = workforceIdentityFederationConfig;
+            return this;
+        }
+
+        /**
+         * @param workforceIdentityFederationConfig Configuration for Workforce Identity Federation to support third party identity provider.
+         * If unset, defaults to the Google OIDC IdP.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder workforceIdentityFederationConfig(InstanceWorkforceIdentityFederationConfigArgs workforceIdentityFederationConfig) {
+            return workforceIdentityFederationConfig(Output.of(workforceIdentityFederationConfig));
         }
 
         public InstanceArgs build() {

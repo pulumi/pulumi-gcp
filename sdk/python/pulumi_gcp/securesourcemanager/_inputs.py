@@ -23,6 +23,8 @@ __all__ = [
     'InstanceIamMemberConditionArgsDict',
     'InstancePrivateConfigArgs',
     'InstancePrivateConfigArgsDict',
+    'InstanceWorkforceIdentityFederationConfigArgs',
+    'InstanceWorkforceIdentityFederationConfigArgsDict',
     'RepositoryIamBindingConditionArgs',
     'RepositoryIamBindingConditionArgsDict',
     'RepositoryIamMemberConditionArgs',
@@ -327,6 +329,37 @@ class InstancePrivateConfigArgs:
     @ssh_service_attachment.setter
     def ssh_service_attachment(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ssh_service_attachment", value)
+
+
+if not MYPY:
+    class InstanceWorkforceIdentityFederationConfigArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        'Whether Workforce Identity Federation is enabled.'
+        """
+elif False:
+    InstanceWorkforceIdentityFederationConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstanceWorkforceIdentityFederationConfigArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool]):
+        """
+        :param pulumi.Input[bool] enabled: 'Whether Workforce Identity Federation is enabled.'
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        """
+        'Whether Workforce Identity Federation is enabled.'
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
 
 
 if not MYPY:

@@ -298,6 +298,8 @@ class Topic(pulumi.CustomResource):
                  topic_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        A Managed Service for Apache Kafka topic. Apache Kafka is a trademark owned by the Apache Software Foundation.
+
         ## Example Usage
 
         ### Managedkafka Topic Basic
@@ -377,6 +379,8 @@ class Topic(pulumi.CustomResource):
                  args: TopicArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A Managed Service for Apache Kafka topic. Apache Kafka is a trademark owned by the Apache Software Foundation.
+
         ## Example Usage
 
         ### Managedkafka Topic Basic

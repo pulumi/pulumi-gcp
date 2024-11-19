@@ -12,10 +12,13 @@ import com.pulumi.gcp.backupdisasterrecovery.inputs.GetBackupPlanArgs;
 import com.pulumi.gcp.backupdisasterrecovery.inputs.GetBackupPlanAssociationArgs;
 import com.pulumi.gcp.backupdisasterrecovery.inputs.GetBackupPlanAssociationPlainArgs;
 import com.pulumi.gcp.backupdisasterrecovery.inputs.GetBackupPlanPlainArgs;
+import com.pulumi.gcp.backupdisasterrecovery.inputs.GetDataSourceArgs;
+import com.pulumi.gcp.backupdisasterrecovery.inputs.GetDataSourcePlainArgs;
 import com.pulumi.gcp.backupdisasterrecovery.inputs.GetManagementServerArgs;
 import com.pulumi.gcp.backupdisasterrecovery.inputs.GetManagementServerPlainArgs;
 import com.pulumi.gcp.backupdisasterrecovery.outputs.GetBackupPlanAssociationResult;
 import com.pulumi.gcp.backupdisasterrecovery.outputs.GetBackupPlanResult;
+import com.pulumi.gcp.backupdisasterrecovery.outputs.GetDataSourceResult;
 import com.pulumi.gcp.backupdisasterrecovery.outputs.GetManagementServerResult;
 import java.util.concurrent.CompletableFuture;
 
@@ -195,6 +198,18 @@ public final class BackupdisasterrecoveryFunctions {
      */
     public static CompletableFuture<GetBackupPlanAssociationResult> getBackupPlanAssociationPlain(GetBackupPlanAssociationPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:backupdisasterrecovery/getBackupPlanAssociation:getBackupPlanAssociation", TypeShape.of(GetBackupPlanAssociationResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetDataSourceResult> getDataSource(GetDataSourceArgs args) {
+        return getDataSource(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetDataSourceResult> getDataSourcePlain(GetDataSourcePlainArgs args) {
+        return getDataSourcePlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetDataSourceResult> getDataSource(GetDataSourceArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:backupdisasterrecovery/getDataSource:getDataSource", TypeShape.of(GetDataSourceResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetDataSourceResult> getDataSourcePlain(GetDataSourcePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:backupdisasterrecovery/getDataSource:getDataSource", TypeShape.of(GetDataSourceResult.class), args, Utilities.withVersion(options));
     }
     /**
      * ## Example Usage

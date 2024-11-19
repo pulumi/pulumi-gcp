@@ -117,7 +117,7 @@ import javax.annotation.Nullable;
  *             .settings(DatabaseInstanceSettingsArgs.builder()
  *                 .tier("db-f1-micro")
  *                 .databaseFlags(DatabaseInstanceSettingsDatabaseFlagArgs.builder()
- *                     .name("cloudsql_iam_authentication")
+ *                     .name("cloudsql.iam_authentication")
  *                     .value("on")
  *                     .build())
  *                 .build())

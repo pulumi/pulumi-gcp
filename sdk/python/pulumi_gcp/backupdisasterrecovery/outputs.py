@@ -30,6 +30,12 @@ __all__ = [
     'GetBackupPlanBackupRuleStandardScheduleResult',
     'GetBackupPlanBackupRuleStandardScheduleBackupWindowResult',
     'GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthResult',
+    'GetDataSourceBackupConfigInfoResult',
+    'GetDataSourceBackupConfigInfoBackupApplianceBackupConfigResult',
+    'GetDataSourceBackupConfigInfoGcpBackupConfigResult',
+    'GetDataSourceDataSourceBackupApplianceApplicationResult',
+    'GetDataSourceDataSourceGcpResourceResult',
+    'GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyResult',
     'GetManagementServerManagementUriResult',
     'GetManagementServerNetworkResult',
 ]
@@ -824,6 +830,402 @@ class GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthResult(dict):
         WeekOfMonth enumerates possible weeks in the month, e.g. the first, third, or last week of the month. Possible values: ["WEEK_OF_MONTH_UNSPECIFIED", "FIRST", "SECOND", "THIRD", "FOURTH", "LAST"]
         """
         return pulumi.get(self, "week_of_month")
+
+
+@pulumi.output_type
+class GetDataSourceBackupConfigInfoResult(dict):
+    def __init__(__self__, *,
+                 backup_appliance_backup_configs: Sequence['outputs.GetDataSourceBackupConfigInfoBackupApplianceBackupConfigResult'],
+                 gcp_backup_configs: Sequence['outputs.GetDataSourceBackupConfigInfoGcpBackupConfigResult'],
+                 last_backup_error: Mapping[str, str],
+                 last_backup_state: str,
+                 last_successful_backup_consistency_time: str):
+        """
+        :param Sequence['GetDataSourceBackupConfigInfoBackupApplianceBackupConfigArgs'] backup_appliance_backup_configs: Configuration for an application backed up by a Backup Appliance.
+        :param Sequence['GetDataSourceBackupConfigInfoGcpBackupConfigArgs'] gcp_backup_configs: Configuration for a Google Cloud resource.
+        :param Mapping[str, str] last_backup_error: If the last backup failed, this field has the error message.
+        :param str last_backup_state: LastBackupstate tracks whether the last backup was not yet started, successful, failed, or could not be run because of the lack of permissions.
+        :param str last_successful_backup_consistency_time: If the last backup were successful, this field has the consistency date.
+        """
+        pulumi.set(__self__, "backup_appliance_backup_configs", backup_appliance_backup_configs)
+        pulumi.set(__self__, "gcp_backup_configs", gcp_backup_configs)
+        pulumi.set(__self__, "last_backup_error", last_backup_error)
+        pulumi.set(__self__, "last_backup_state", last_backup_state)
+        pulumi.set(__self__, "last_successful_backup_consistency_time", last_successful_backup_consistency_time)
+
+    @property
+    @pulumi.getter(name="backupApplianceBackupConfigs")
+    def backup_appliance_backup_configs(self) -> Sequence['outputs.GetDataSourceBackupConfigInfoBackupApplianceBackupConfigResult']:
+        """
+        Configuration for an application backed up by a Backup Appliance.
+        """
+        return pulumi.get(self, "backup_appliance_backup_configs")
+
+    @property
+    @pulumi.getter(name="gcpBackupConfigs")
+    def gcp_backup_configs(self) -> Sequence['outputs.GetDataSourceBackupConfigInfoGcpBackupConfigResult']:
+        """
+        Configuration for a Google Cloud resource.
+        """
+        return pulumi.get(self, "gcp_backup_configs")
+
+    @property
+    @pulumi.getter(name="lastBackupError")
+    def last_backup_error(self) -> Mapping[str, str]:
+        """
+        If the last backup failed, this field has the error message.
+        """
+        return pulumi.get(self, "last_backup_error")
+
+    @property
+    @pulumi.getter(name="lastBackupState")
+    def last_backup_state(self) -> str:
+        """
+        LastBackupstate tracks whether the last backup was not yet started, successful, failed, or could not be run because of the lack of permissions.
+        """
+        return pulumi.get(self, "last_backup_state")
+
+    @property
+    @pulumi.getter(name="lastSuccessfulBackupConsistencyTime")
+    def last_successful_backup_consistency_time(self) -> str:
+        """
+        If the last backup were successful, this field has the consistency date.
+        """
+        return pulumi.get(self, "last_successful_backup_consistency_time")
+
+
+@pulumi.output_type
+class GetDataSourceBackupConfigInfoBackupApplianceBackupConfigResult(dict):
+    def __init__(__self__, *,
+                 application_name: str,
+                 backup_appliance_id: str,
+                 backup_appliance_name: str,
+                 host_name: str,
+                 sla_id: str,
+                 slp_name: str,
+                 slt_name: str):
+        """
+        :param str application_name: The name of the application.
+        :param str backup_appliance_id: The ID of the backup appliance.
+        :param str backup_appliance_name: The name of the backup appliance.
+        :param str host_name: The name of the host where the application is running.
+        :param str sla_id: The ID of the SLA of this application.
+        :param str slp_name: The name of the SLP associated with the application.
+        :param str slt_name: The name of the SLT associated with the application.
+        """
+        pulumi.set(__self__, "application_name", application_name)
+        pulumi.set(__self__, "backup_appliance_id", backup_appliance_id)
+        pulumi.set(__self__, "backup_appliance_name", backup_appliance_name)
+        pulumi.set(__self__, "host_name", host_name)
+        pulumi.set(__self__, "sla_id", sla_id)
+        pulumi.set(__self__, "slp_name", slp_name)
+        pulumi.set(__self__, "slt_name", slt_name)
+
+    @property
+    @pulumi.getter(name="applicationName")
+    def application_name(self) -> str:
+        """
+        The name of the application.
+        """
+        return pulumi.get(self, "application_name")
+
+    @property
+    @pulumi.getter(name="backupApplianceId")
+    def backup_appliance_id(self) -> str:
+        """
+        The ID of the backup appliance.
+        """
+        return pulumi.get(self, "backup_appliance_id")
+
+    @property
+    @pulumi.getter(name="backupApplianceName")
+    def backup_appliance_name(self) -> str:
+        """
+        The name of the backup appliance.
+        """
+        return pulumi.get(self, "backup_appliance_name")
+
+    @property
+    @pulumi.getter(name="hostName")
+    def host_name(self) -> str:
+        """
+        The name of the host where the application is running.
+        """
+        return pulumi.get(self, "host_name")
+
+    @property
+    @pulumi.getter(name="slaId")
+    def sla_id(self) -> str:
+        """
+        The ID of the SLA of this application.
+        """
+        return pulumi.get(self, "sla_id")
+
+    @property
+    @pulumi.getter(name="slpName")
+    def slp_name(self) -> str:
+        """
+        The name of the SLP associated with the application.
+        """
+        return pulumi.get(self, "slp_name")
+
+    @property
+    @pulumi.getter(name="sltName")
+    def slt_name(self) -> str:
+        """
+        The name of the SLT associated with the application.
+        """
+        return pulumi.get(self, "slt_name")
+
+
+@pulumi.output_type
+class GetDataSourceBackupConfigInfoGcpBackupConfigResult(dict):
+    def __init__(__self__, *,
+                 backup_plan: str,
+                 backup_plan_association: str,
+                 backup_plan_description: str,
+                 backup_plan_rules: Sequence[str]):
+        """
+        :param str backup_plan: The name of the backup plan.
+        :param str backup_plan_association: The name of the backup plan association.
+        :param str backup_plan_description: The description of the backup plan.
+        :param Sequence[str] backup_plan_rules: The names of the backup plan rules which point to this backupvault
+        """
+        pulumi.set(__self__, "backup_plan", backup_plan)
+        pulumi.set(__self__, "backup_plan_association", backup_plan_association)
+        pulumi.set(__self__, "backup_plan_description", backup_plan_description)
+        pulumi.set(__self__, "backup_plan_rules", backup_plan_rules)
+
+    @property
+    @pulumi.getter(name="backupPlan")
+    def backup_plan(self) -> str:
+        """
+        The name of the backup plan.
+        """
+        return pulumi.get(self, "backup_plan")
+
+    @property
+    @pulumi.getter(name="backupPlanAssociation")
+    def backup_plan_association(self) -> str:
+        """
+        The name of the backup plan association.
+        """
+        return pulumi.get(self, "backup_plan_association")
+
+    @property
+    @pulumi.getter(name="backupPlanDescription")
+    def backup_plan_description(self) -> str:
+        """
+        The description of the backup plan.
+        """
+        return pulumi.get(self, "backup_plan_description")
+
+    @property
+    @pulumi.getter(name="backupPlanRules")
+    def backup_plan_rules(self) -> Sequence[str]:
+        """
+        The names of the backup plan rules which point to this backupvault
+        """
+        return pulumi.get(self, "backup_plan_rules")
+
+
+@pulumi.output_type
+class GetDataSourceDataSourceBackupApplianceApplicationResult(dict):
+    def __init__(__self__, *,
+                 appliance_id: str,
+                 application_id: str,
+                 application_name: str,
+                 backup_appliance: str,
+                 host_id: str,
+                 hostname: str,
+                 type: str):
+        """
+        :param str appliance_id: Appliance Id of the Backup Appliance.
+        :param str application_id: The appid field of the application within the Backup Appliance.
+        :param str application_name: The name of the Application as known to the Backup Appliance.
+        :param str backup_appliance: Appliance name.
+        :param str host_id: Hostid of the application host.
+        :param str hostname: Hostname of the host where the application is running.
+        :param str type: The type of the application. e.g. VMBackup
+        """
+        pulumi.set(__self__, "appliance_id", appliance_id)
+        pulumi.set(__self__, "application_id", application_id)
+        pulumi.set(__self__, "application_name", application_name)
+        pulumi.set(__self__, "backup_appliance", backup_appliance)
+        pulumi.set(__self__, "host_id", host_id)
+        pulumi.set(__self__, "hostname", hostname)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="applianceId")
+    def appliance_id(self) -> str:
+        """
+        Appliance Id of the Backup Appliance.
+        """
+        return pulumi.get(self, "appliance_id")
+
+    @property
+    @pulumi.getter(name="applicationId")
+    def application_id(self) -> str:
+        """
+        The appid field of the application within the Backup Appliance.
+        """
+        return pulumi.get(self, "application_id")
+
+    @property
+    @pulumi.getter(name="applicationName")
+    def application_name(self) -> str:
+        """
+        The name of the Application as known to the Backup Appliance.
+        """
+        return pulumi.get(self, "application_name")
+
+    @property
+    @pulumi.getter(name="backupAppliance")
+    def backup_appliance(self) -> str:
+        """
+        Appliance name.
+        """
+        return pulumi.get(self, "backup_appliance")
+
+    @property
+    @pulumi.getter(name="hostId")
+    def host_id(self) -> str:
+        """
+        Hostid of the application host.
+        """
+        return pulumi.get(self, "host_id")
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> str:
+        """
+        Hostname of the host where the application is running.
+        """
+        return pulumi.get(self, "hostname")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of the application. e.g. VMBackup
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetDataSourceDataSourceGcpResourceResult(dict):
+    def __init__(__self__, *,
+                 compute_instance_data_source_properties: Sequence['outputs.GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyResult'],
+                 gcp_resourcename: str,
+                 location: str,
+                 type: str):
+        """
+        :param Sequence['GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyArgs'] compute_instance_data_source_properties: ComputeInstanceDataSourceProperties has a subset of Compute Instance properties that are useful at the Datasource level.
+        :param str gcp_resourcename: Full resource pathname URL of the source Google Cloud resource.
+        :param str location: Location of the resource: <region>/<zone>/"global"/"unspecified".
+        :param str type: The type of the Google Cloud resource. Use the Unified Resource Type,
+               						eg. compute.googleapis.com/Instance.
+        """
+        pulumi.set(__self__, "compute_instance_data_source_properties", compute_instance_data_source_properties)
+        pulumi.set(__self__, "gcp_resourcename", gcp_resourcename)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="computeInstanceDataSourceProperties")
+    def compute_instance_data_source_properties(self) -> Sequence['outputs.GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyResult']:
+        """
+        ComputeInstanceDataSourceProperties has a subset of Compute Instance properties that are useful at the Datasource level.
+        """
+        return pulumi.get(self, "compute_instance_data_source_properties")
+
+    @property
+    @pulumi.getter(name="gcpResourcename")
+    def gcp_resourcename(self) -> str:
+        """
+        Full resource pathname URL of the source Google Cloud resource.
+        """
+        return pulumi.get(self, "gcp_resourcename")
+
+    @property
+    @pulumi.getter
+    def location(self) -> str:
+        """
+        Location of the resource: <region>/<zone>/"global"/"unspecified".
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
+    def type(self) -> str:
+        """
+        The type of the Google Cloud resource. Use the Unified Resource Type,
+        						eg. compute.googleapis.com/Instance.
+        """
+        return pulumi.get(self, "type")
+
+
+@pulumi.output_type
+class GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyResult(dict):
+    def __init__(__self__, *,
+                 description: str,
+                 machine_type: str,
+                 name: str,
+                 total_disk_count: str,
+                 total_disk_size_gb: str):
+        """
+        :param str description: The description of the Compute Engine instance.
+        :param str machine_type: The machine type of the instance.
+        :param str name: Name of the compute instance backed up by the datasource.
+        :param str total_disk_count: The total number of disks attached to the Instance.
+        :param str total_disk_size_gb: The sum of all the disk sizes.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "machine_type", machine_type)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "total_disk_count", total_disk_count)
+        pulumi.set(__self__, "total_disk_size_gb", total_disk_size_gb)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        The description of the Compute Engine instance.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="machineType")
+    def machine_type(self) -> str:
+        """
+        The machine type of the instance.
+        """
+        return pulumi.get(self, "machine_type")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of the compute instance backed up by the datasource.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="totalDiskCount")
+    def total_disk_count(self) -> str:
+        """
+        The total number of disks attached to the Instance.
+        """
+        return pulumi.get(self, "total_disk_count")
+
+    @property
+    @pulumi.getter(name="totalDiskSizeGb")
+    def total_disk_size_gb(self) -> str:
+        """
+        The sum of all the disk sizes.
+        """
+        return pulumi.get(self, "total_disk_size_gb")
 
 
 @pulumi.output_type

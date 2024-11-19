@@ -1182,6 +1182,9 @@ type RepositoryRemoteRepositoryConfig struct {
 	// Specific settings for an Apt remote repository.
 	// Structure is documented below.
 	AptRepository *RepositoryRemoteRepositoryConfigAptRepository `pulumi:"aptRepository"`
+	// Specific settings for an Artifact Registory remote repository.
+	// Structure is documented below.
+	CommonRepository *RepositoryRemoteRepositoryConfigCommonRepository `pulumi:"commonRepository"`
 	// The description of the remote source.
 	Description *string `pulumi:"description"`
 	// If true, the remote repository upstream and upstream credentials will
@@ -1222,6 +1225,9 @@ type RepositoryRemoteRepositoryConfigArgs struct {
 	// Specific settings for an Apt remote repository.
 	// Structure is documented below.
 	AptRepository RepositoryRemoteRepositoryConfigAptRepositoryPtrInput `pulumi:"aptRepository"`
+	// Specific settings for an Artifact Registory remote repository.
+	// Structure is documented below.
+	CommonRepository RepositoryRemoteRepositoryConfigCommonRepositoryPtrInput `pulumi:"commonRepository"`
 	// The description of the remote source.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// If true, the remote repository upstream and upstream credentials will
@@ -1332,6 +1338,14 @@ func (o RepositoryRemoteRepositoryConfigOutput) AptRepository() RepositoryRemote
 	}).(RepositoryRemoteRepositoryConfigAptRepositoryPtrOutput)
 }
 
+// Specific settings for an Artifact Registory remote repository.
+// Structure is documented below.
+func (o RepositoryRemoteRepositoryConfigOutput) CommonRepository() RepositoryRemoteRepositoryConfigCommonRepositoryPtrOutput {
+	return o.ApplyT(func(v RepositoryRemoteRepositoryConfig) *RepositoryRemoteRepositoryConfigCommonRepository {
+		return v.CommonRepository
+	}).(RepositoryRemoteRepositoryConfigCommonRepositoryPtrOutput)
+}
+
 // The description of the remote source.
 func (o RepositoryRemoteRepositoryConfigOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v RepositoryRemoteRepositoryConfig) *string { return v.Description }).(pulumi.StringPtrOutput)
@@ -1424,6 +1438,17 @@ func (o RepositoryRemoteRepositoryConfigPtrOutput) AptRepository() RepositoryRem
 		}
 		return v.AptRepository
 	}).(RepositoryRemoteRepositoryConfigAptRepositoryPtrOutput)
+}
+
+// Specific settings for an Artifact Registory remote repository.
+// Structure is documented below.
+func (o RepositoryRemoteRepositoryConfigPtrOutput) CommonRepository() RepositoryRemoteRepositoryConfigCommonRepositoryPtrOutput {
+	return o.ApplyT(func(v *RepositoryRemoteRepositoryConfig) *RepositoryRemoteRepositoryConfigCommonRepository {
+		if v == nil {
+			return nil
+		}
+		return v.CommonRepository
+	}).(RepositoryRemoteRepositoryConfigCommonRepositoryPtrOutput)
 }
 
 // The description of the remote source.
@@ -1813,6 +1838,143 @@ func (o RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryPtrOutput) 
 			return nil
 		}
 		return &v.RepositoryPath
+	}).(pulumi.StringPtrOutput)
+}
+
+type RepositoryRemoteRepositoryConfigCommonRepository struct {
+	// Specific uri to the Artifact Registory repository, e.g. `projects/UPSTREAM_PROJECT_ID/locations/REGION/repositories/UPSTREAM_REPOSITORY`
+	Uri string `pulumi:"uri"`
+}
+
+// RepositoryRemoteRepositoryConfigCommonRepositoryInput is an input type that accepts RepositoryRemoteRepositoryConfigCommonRepositoryArgs and RepositoryRemoteRepositoryConfigCommonRepositoryOutput values.
+// You can construct a concrete instance of `RepositoryRemoteRepositoryConfigCommonRepositoryInput` via:
+//
+//	RepositoryRemoteRepositoryConfigCommonRepositoryArgs{...}
+type RepositoryRemoteRepositoryConfigCommonRepositoryInput interface {
+	pulumi.Input
+
+	ToRepositoryRemoteRepositoryConfigCommonRepositoryOutput() RepositoryRemoteRepositoryConfigCommonRepositoryOutput
+	ToRepositoryRemoteRepositoryConfigCommonRepositoryOutputWithContext(context.Context) RepositoryRemoteRepositoryConfigCommonRepositoryOutput
+}
+
+type RepositoryRemoteRepositoryConfigCommonRepositoryArgs struct {
+	// Specific uri to the Artifact Registory repository, e.g. `projects/UPSTREAM_PROJECT_ID/locations/REGION/repositories/UPSTREAM_REPOSITORY`
+	Uri pulumi.StringInput `pulumi:"uri"`
+}
+
+func (RepositoryRemoteRepositoryConfigCommonRepositoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryRemoteRepositoryConfigCommonRepository)(nil)).Elem()
+}
+
+func (i RepositoryRemoteRepositoryConfigCommonRepositoryArgs) ToRepositoryRemoteRepositoryConfigCommonRepositoryOutput() RepositoryRemoteRepositoryConfigCommonRepositoryOutput {
+	return i.ToRepositoryRemoteRepositoryConfigCommonRepositoryOutputWithContext(context.Background())
+}
+
+func (i RepositoryRemoteRepositoryConfigCommonRepositoryArgs) ToRepositoryRemoteRepositoryConfigCommonRepositoryOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigCommonRepositoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryRemoteRepositoryConfigCommonRepositoryOutput)
+}
+
+func (i RepositoryRemoteRepositoryConfigCommonRepositoryArgs) ToRepositoryRemoteRepositoryConfigCommonRepositoryPtrOutput() RepositoryRemoteRepositoryConfigCommonRepositoryPtrOutput {
+	return i.ToRepositoryRemoteRepositoryConfigCommonRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (i RepositoryRemoteRepositoryConfigCommonRepositoryArgs) ToRepositoryRemoteRepositoryConfigCommonRepositoryPtrOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigCommonRepositoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryRemoteRepositoryConfigCommonRepositoryOutput).ToRepositoryRemoteRepositoryConfigCommonRepositoryPtrOutputWithContext(ctx)
+}
+
+// RepositoryRemoteRepositoryConfigCommonRepositoryPtrInput is an input type that accepts RepositoryRemoteRepositoryConfigCommonRepositoryArgs, RepositoryRemoteRepositoryConfigCommonRepositoryPtr and RepositoryRemoteRepositoryConfigCommonRepositoryPtrOutput values.
+// You can construct a concrete instance of `RepositoryRemoteRepositoryConfigCommonRepositoryPtrInput` via:
+//
+//	        RepositoryRemoteRepositoryConfigCommonRepositoryArgs{...}
+//
+//	or:
+//
+//	        nil
+type RepositoryRemoteRepositoryConfigCommonRepositoryPtrInput interface {
+	pulumi.Input
+
+	ToRepositoryRemoteRepositoryConfigCommonRepositoryPtrOutput() RepositoryRemoteRepositoryConfigCommonRepositoryPtrOutput
+	ToRepositoryRemoteRepositoryConfigCommonRepositoryPtrOutputWithContext(context.Context) RepositoryRemoteRepositoryConfigCommonRepositoryPtrOutput
+}
+
+type repositoryRemoteRepositoryConfigCommonRepositoryPtrType RepositoryRemoteRepositoryConfigCommonRepositoryArgs
+
+func RepositoryRemoteRepositoryConfigCommonRepositoryPtr(v *RepositoryRemoteRepositoryConfigCommonRepositoryArgs) RepositoryRemoteRepositoryConfigCommonRepositoryPtrInput {
+	return (*repositoryRemoteRepositoryConfigCommonRepositoryPtrType)(v)
+}
+
+func (*repositoryRemoteRepositoryConfigCommonRepositoryPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryRemoteRepositoryConfigCommonRepository)(nil)).Elem()
+}
+
+func (i *repositoryRemoteRepositoryConfigCommonRepositoryPtrType) ToRepositoryRemoteRepositoryConfigCommonRepositoryPtrOutput() RepositoryRemoteRepositoryConfigCommonRepositoryPtrOutput {
+	return i.ToRepositoryRemoteRepositoryConfigCommonRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (i *repositoryRemoteRepositoryConfigCommonRepositoryPtrType) ToRepositoryRemoteRepositoryConfigCommonRepositoryPtrOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigCommonRepositoryPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryRemoteRepositoryConfigCommonRepositoryPtrOutput)
+}
+
+type RepositoryRemoteRepositoryConfigCommonRepositoryOutput struct{ *pulumi.OutputState }
+
+func (RepositoryRemoteRepositoryConfigCommonRepositoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryRemoteRepositoryConfigCommonRepository)(nil)).Elem()
+}
+
+func (o RepositoryRemoteRepositoryConfigCommonRepositoryOutput) ToRepositoryRemoteRepositoryConfigCommonRepositoryOutput() RepositoryRemoteRepositoryConfigCommonRepositoryOutput {
+	return o
+}
+
+func (o RepositoryRemoteRepositoryConfigCommonRepositoryOutput) ToRepositoryRemoteRepositoryConfigCommonRepositoryOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigCommonRepositoryOutput {
+	return o
+}
+
+func (o RepositoryRemoteRepositoryConfigCommonRepositoryOutput) ToRepositoryRemoteRepositoryConfigCommonRepositoryPtrOutput() RepositoryRemoteRepositoryConfigCommonRepositoryPtrOutput {
+	return o.ToRepositoryRemoteRepositoryConfigCommonRepositoryPtrOutputWithContext(context.Background())
+}
+
+func (o RepositoryRemoteRepositoryConfigCommonRepositoryOutput) ToRepositoryRemoteRepositoryConfigCommonRepositoryPtrOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigCommonRepositoryPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RepositoryRemoteRepositoryConfigCommonRepository) *RepositoryRemoteRepositoryConfigCommonRepository {
+		return &v
+	}).(RepositoryRemoteRepositoryConfigCommonRepositoryPtrOutput)
+}
+
+// Specific uri to the Artifact Registory repository, e.g. `projects/UPSTREAM_PROJECT_ID/locations/REGION/repositories/UPSTREAM_REPOSITORY`
+func (o RepositoryRemoteRepositoryConfigCommonRepositoryOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v RepositoryRemoteRepositoryConfigCommonRepository) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+type RepositoryRemoteRepositoryConfigCommonRepositoryPtrOutput struct{ *pulumi.OutputState }
+
+func (RepositoryRemoteRepositoryConfigCommonRepositoryPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryRemoteRepositoryConfigCommonRepository)(nil)).Elem()
+}
+
+func (o RepositoryRemoteRepositoryConfigCommonRepositoryPtrOutput) ToRepositoryRemoteRepositoryConfigCommonRepositoryPtrOutput() RepositoryRemoteRepositoryConfigCommonRepositoryPtrOutput {
+	return o
+}
+
+func (o RepositoryRemoteRepositoryConfigCommonRepositoryPtrOutput) ToRepositoryRemoteRepositoryConfigCommonRepositoryPtrOutputWithContext(ctx context.Context) RepositoryRemoteRepositoryConfigCommonRepositoryPtrOutput {
+	return o
+}
+
+func (o RepositoryRemoteRepositoryConfigCommonRepositoryPtrOutput) Elem() RepositoryRemoteRepositoryConfigCommonRepositoryOutput {
+	return o.ApplyT(func(v *RepositoryRemoteRepositoryConfigCommonRepository) RepositoryRemoteRepositoryConfigCommonRepository {
+		if v != nil {
+			return *v
+		}
+		var ret RepositoryRemoteRepositoryConfigCommonRepository
+		return ret
+	}).(RepositoryRemoteRepositoryConfigCommonRepositoryOutput)
+}
+
+// Specific uri to the Artifact Registory repository, e.g. `projects/UPSTREAM_PROJECT_ID/locations/REGION/repositories/UPSTREAM_REPOSITORY`
+func (o RepositoryRemoteRepositoryConfigCommonRepositoryPtrOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepositoryRemoteRepositoryConfigCommonRepository) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Uri
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -4506,6 +4668,8 @@ func (o GetRepositoryMavenConfigArrayOutput) Index(i pulumi.IntInput) GetReposit
 type GetRepositoryRemoteRepositoryConfig struct {
 	// Specific settings for an Apt remote repository.
 	AptRepositories []GetRepositoryRemoteRepositoryConfigAptRepository `pulumi:"aptRepositories"`
+	// Specific settings for an Artifact Registory remote repository.
+	CommonRepositories []GetRepositoryRemoteRepositoryConfigCommonRepository `pulumi:"commonRepositories"`
 	// The description of the remote source.
 	Description string `pulumi:"description"`
 	// If true, the remote repository upstream and upstream credentials will
@@ -4539,6 +4703,8 @@ type GetRepositoryRemoteRepositoryConfigInput interface {
 type GetRepositoryRemoteRepositoryConfigArgs struct {
 	// Specific settings for an Apt remote repository.
 	AptRepositories GetRepositoryRemoteRepositoryConfigAptRepositoryArrayInput `pulumi:"aptRepositories"`
+	// Specific settings for an Artifact Registory remote repository.
+	CommonRepositories GetRepositoryRemoteRepositoryConfigCommonRepositoryArrayInput `pulumi:"commonRepositories"`
 	// The description of the remote source.
 	Description pulumi.StringInput `pulumi:"description"`
 	// If true, the remote repository upstream and upstream credentials will
@@ -4614,6 +4780,13 @@ func (o GetRepositoryRemoteRepositoryConfigOutput) AptRepositories() GetReposito
 	return o.ApplyT(func(v GetRepositoryRemoteRepositoryConfig) []GetRepositoryRemoteRepositoryConfigAptRepository {
 		return v.AptRepositories
 	}).(GetRepositoryRemoteRepositoryConfigAptRepositoryArrayOutput)
+}
+
+// Specific settings for an Artifact Registory remote repository.
+func (o GetRepositoryRemoteRepositoryConfigOutput) CommonRepositories() GetRepositoryRemoteRepositoryConfigCommonRepositoryArrayOutput {
+	return o.ApplyT(func(v GetRepositoryRemoteRepositoryConfig) []GetRepositoryRemoteRepositoryConfigCommonRepository {
+		return v.CommonRepositories
+	}).(GetRepositoryRemoteRepositoryConfigCommonRepositoryArrayOutput)
 }
 
 // The description of the remote source.
@@ -4896,6 +5069,103 @@ func (o GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArrayOut
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepository {
 		return vs[0].([]GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepository)[vs[1].(int)]
 	}).(GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryOutput)
+}
+
+type GetRepositoryRemoteRepositoryConfigCommonRepository struct {
+	// Specific uri to the Artifact Registory repository, e.g. 'projects/UPSTREAM_PROJECT_ID/locations/REGION/repositories/UPSTREAM_REPOSITORY'
+	Uri string `pulumi:"uri"`
+}
+
+// GetRepositoryRemoteRepositoryConfigCommonRepositoryInput is an input type that accepts GetRepositoryRemoteRepositoryConfigCommonRepositoryArgs and GetRepositoryRemoteRepositoryConfigCommonRepositoryOutput values.
+// You can construct a concrete instance of `GetRepositoryRemoteRepositoryConfigCommonRepositoryInput` via:
+//
+//	GetRepositoryRemoteRepositoryConfigCommonRepositoryArgs{...}
+type GetRepositoryRemoteRepositoryConfigCommonRepositoryInput interface {
+	pulumi.Input
+
+	ToGetRepositoryRemoteRepositoryConfigCommonRepositoryOutput() GetRepositoryRemoteRepositoryConfigCommonRepositoryOutput
+	ToGetRepositoryRemoteRepositoryConfigCommonRepositoryOutputWithContext(context.Context) GetRepositoryRemoteRepositoryConfigCommonRepositoryOutput
+}
+
+type GetRepositoryRemoteRepositoryConfigCommonRepositoryArgs struct {
+	// Specific uri to the Artifact Registory repository, e.g. 'projects/UPSTREAM_PROJECT_ID/locations/REGION/repositories/UPSTREAM_REPOSITORY'
+	Uri pulumi.StringInput `pulumi:"uri"`
+}
+
+func (GetRepositoryRemoteRepositoryConfigCommonRepositoryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigCommonRepository)(nil)).Elem()
+}
+
+func (i GetRepositoryRemoteRepositoryConfigCommonRepositoryArgs) ToGetRepositoryRemoteRepositoryConfigCommonRepositoryOutput() GetRepositoryRemoteRepositoryConfigCommonRepositoryOutput {
+	return i.ToGetRepositoryRemoteRepositoryConfigCommonRepositoryOutputWithContext(context.Background())
+}
+
+func (i GetRepositoryRemoteRepositoryConfigCommonRepositoryArgs) ToGetRepositoryRemoteRepositoryConfigCommonRepositoryOutputWithContext(ctx context.Context) GetRepositoryRemoteRepositoryConfigCommonRepositoryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryRemoteRepositoryConfigCommonRepositoryOutput)
+}
+
+// GetRepositoryRemoteRepositoryConfigCommonRepositoryArrayInput is an input type that accepts GetRepositoryRemoteRepositoryConfigCommonRepositoryArray and GetRepositoryRemoteRepositoryConfigCommonRepositoryArrayOutput values.
+// You can construct a concrete instance of `GetRepositoryRemoteRepositoryConfigCommonRepositoryArrayInput` via:
+//
+//	GetRepositoryRemoteRepositoryConfigCommonRepositoryArray{ GetRepositoryRemoteRepositoryConfigCommonRepositoryArgs{...} }
+type GetRepositoryRemoteRepositoryConfigCommonRepositoryArrayInput interface {
+	pulumi.Input
+
+	ToGetRepositoryRemoteRepositoryConfigCommonRepositoryArrayOutput() GetRepositoryRemoteRepositoryConfigCommonRepositoryArrayOutput
+	ToGetRepositoryRemoteRepositoryConfigCommonRepositoryArrayOutputWithContext(context.Context) GetRepositoryRemoteRepositoryConfigCommonRepositoryArrayOutput
+}
+
+type GetRepositoryRemoteRepositoryConfigCommonRepositoryArray []GetRepositoryRemoteRepositoryConfigCommonRepositoryInput
+
+func (GetRepositoryRemoteRepositoryConfigCommonRepositoryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRepositoryRemoteRepositoryConfigCommonRepository)(nil)).Elem()
+}
+
+func (i GetRepositoryRemoteRepositoryConfigCommonRepositoryArray) ToGetRepositoryRemoteRepositoryConfigCommonRepositoryArrayOutput() GetRepositoryRemoteRepositoryConfigCommonRepositoryArrayOutput {
+	return i.ToGetRepositoryRemoteRepositoryConfigCommonRepositoryArrayOutputWithContext(context.Background())
+}
+
+func (i GetRepositoryRemoteRepositoryConfigCommonRepositoryArray) ToGetRepositoryRemoteRepositoryConfigCommonRepositoryArrayOutputWithContext(ctx context.Context) GetRepositoryRemoteRepositoryConfigCommonRepositoryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryRemoteRepositoryConfigCommonRepositoryArrayOutput)
+}
+
+type GetRepositoryRemoteRepositoryConfigCommonRepositoryOutput struct{ *pulumi.OutputState }
+
+func (GetRepositoryRemoteRepositoryConfigCommonRepositoryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigCommonRepository)(nil)).Elem()
+}
+
+func (o GetRepositoryRemoteRepositoryConfigCommonRepositoryOutput) ToGetRepositoryRemoteRepositoryConfigCommonRepositoryOutput() GetRepositoryRemoteRepositoryConfigCommonRepositoryOutput {
+	return o
+}
+
+func (o GetRepositoryRemoteRepositoryConfigCommonRepositoryOutput) ToGetRepositoryRemoteRepositoryConfigCommonRepositoryOutputWithContext(ctx context.Context) GetRepositoryRemoteRepositoryConfigCommonRepositoryOutput {
+	return o
+}
+
+// Specific uri to the Artifact Registory repository, e.g. 'projects/UPSTREAM_PROJECT_ID/locations/REGION/repositories/UPSTREAM_REPOSITORY'
+func (o GetRepositoryRemoteRepositoryConfigCommonRepositoryOutput) Uri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRepositoryRemoteRepositoryConfigCommonRepository) string { return v.Uri }).(pulumi.StringOutput)
+}
+
+type GetRepositoryRemoteRepositoryConfigCommonRepositoryArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRepositoryRemoteRepositoryConfigCommonRepositoryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRepositoryRemoteRepositoryConfigCommonRepository)(nil)).Elem()
+}
+
+func (o GetRepositoryRemoteRepositoryConfigCommonRepositoryArrayOutput) ToGetRepositoryRemoteRepositoryConfigCommonRepositoryArrayOutput() GetRepositoryRemoteRepositoryConfigCommonRepositoryArrayOutput {
+	return o
+}
+
+func (o GetRepositoryRemoteRepositoryConfigCommonRepositoryArrayOutput) ToGetRepositoryRemoteRepositoryConfigCommonRepositoryArrayOutputWithContext(ctx context.Context) GetRepositoryRemoteRepositoryConfigCommonRepositoryArrayOutput {
+	return o
+}
+
+func (o GetRepositoryRemoteRepositoryConfigCommonRepositoryArrayOutput) Index(i pulumi.IntInput) GetRepositoryRemoteRepositoryConfigCommonRepositoryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRepositoryRemoteRepositoryConfigCommonRepository {
+		return vs[0].([]GetRepositoryRemoteRepositoryConfigCommonRepository)[vs[1].(int)]
+	}).(GetRepositoryRemoteRepositoryConfigCommonRepositoryOutput)
 }
 
 type GetRepositoryRemoteRepositoryConfigDockerRepository struct {
@@ -6383,6 +6653,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryRemoteRepositoryConfigAptRepositoryPtrInput)(nil)).Elem(), RepositoryRemoteRepositoryConfigAptRepositoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryInput)(nil)).Elem(), RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryPtrInput)(nil)).Elem(), RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryRemoteRepositoryConfigCommonRepositoryInput)(nil)).Elem(), RepositoryRemoteRepositoryConfigCommonRepositoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryRemoteRepositoryConfigCommonRepositoryPtrInput)(nil)).Elem(), RepositoryRemoteRepositoryConfigCommonRepositoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryRemoteRepositoryConfigDockerRepositoryInput)(nil)).Elem(), RepositoryRemoteRepositoryConfigDockerRepositoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryRemoteRepositoryConfigDockerRepositoryPtrInput)(nil)).Elem(), RepositoryRemoteRepositoryConfigDockerRepositoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryInput)(nil)).Elem(), RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs{})
@@ -6427,6 +6699,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigAptRepositoryArrayInput)(nil)).Elem(), GetRepositoryRemoteRepositoryConfigAptRepositoryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryInput)(nil)).Elem(), GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArrayInput)(nil)).Elem(), GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigCommonRepositoryInput)(nil)).Elem(), GetRepositoryRemoteRepositoryConfigCommonRepositoryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigCommonRepositoryArrayInput)(nil)).Elem(), GetRepositoryRemoteRepositoryConfigCommonRepositoryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigDockerRepositoryInput)(nil)).Elem(), GetRepositoryRemoteRepositoryConfigDockerRepositoryArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigDockerRepositoryArrayInput)(nil)).Elem(), GetRepositoryRemoteRepositoryConfigDockerRepositoryArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryInput)(nil)).Elem(), GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs{})
@@ -6475,6 +6749,8 @@ func init() {
 	pulumi.RegisterOutputType(RepositoryRemoteRepositoryConfigAptRepositoryPtrOutput{})
 	pulumi.RegisterOutputType(RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryOutput{})
 	pulumi.RegisterOutputType(RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryPtrOutput{})
+	pulumi.RegisterOutputType(RepositoryRemoteRepositoryConfigCommonRepositoryOutput{})
+	pulumi.RegisterOutputType(RepositoryRemoteRepositoryConfigCommonRepositoryPtrOutput{})
 	pulumi.RegisterOutputType(RepositoryRemoteRepositoryConfigDockerRepositoryOutput{})
 	pulumi.RegisterOutputType(RepositoryRemoteRepositoryConfigDockerRepositoryPtrOutput{})
 	pulumi.RegisterOutputType(RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryOutput{})
@@ -6519,6 +6795,8 @@ func init() {
 	pulumi.RegisterOutputType(GetRepositoryRemoteRepositoryConfigAptRepositoryArrayOutput{})
 	pulumi.RegisterOutputType(GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryOutput{})
 	pulumi.RegisterOutputType(GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArrayOutput{})
+	pulumi.RegisterOutputType(GetRepositoryRemoteRepositoryConfigCommonRepositoryOutput{})
+	pulumi.RegisterOutputType(GetRepositoryRemoteRepositoryConfigCommonRepositoryArrayOutput{})
 	pulumi.RegisterOutputType(GetRepositoryRemoteRepositoryConfigDockerRepositoryOutput{})
 	pulumi.RegisterOutputType(GetRepositoryRemoteRepositoryConfigDockerRepositoryArrayOutput{})
 	pulumi.RegisterOutputType(GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryOutput{})

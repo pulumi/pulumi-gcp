@@ -12840,6 +12840,1001 @@ func (o GdcServiceInstanceSparkServiceInstanceConfigPtrOutput) Elem() GdcService
 	}).(GdcServiceInstanceSparkServiceInstanceConfigOutput)
 }
 
+type GdcSparkApplicationPysparkApplicationConfig struct {
+	// HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+	ArchiveUris []string `pulumi:"archiveUris"`
+	// The arguments to pass to the driver.  Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+	Args []string `pulumi:"args"`
+	// HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
+	FileUris []string `pulumi:"fileUris"`
+	// HCFS URIs of jar files to add to the CLASSPATHs of the Python driver and tasks.
+	JarFileUris []string `pulumi:"jarFileUris"`
+	// The HCFS URI of the main Python file to use as the driver. Must be a .py file.
+	MainPythonFileUri string `pulumi:"mainPythonFileUri"`
+	// HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
+	PythonFileUris []string `pulumi:"pythonFileUris"`
+}
+
+// GdcSparkApplicationPysparkApplicationConfigInput is an input type that accepts GdcSparkApplicationPysparkApplicationConfigArgs and GdcSparkApplicationPysparkApplicationConfigOutput values.
+// You can construct a concrete instance of `GdcSparkApplicationPysparkApplicationConfigInput` via:
+//
+//	GdcSparkApplicationPysparkApplicationConfigArgs{...}
+type GdcSparkApplicationPysparkApplicationConfigInput interface {
+	pulumi.Input
+
+	ToGdcSparkApplicationPysparkApplicationConfigOutput() GdcSparkApplicationPysparkApplicationConfigOutput
+	ToGdcSparkApplicationPysparkApplicationConfigOutputWithContext(context.Context) GdcSparkApplicationPysparkApplicationConfigOutput
+}
+
+type GdcSparkApplicationPysparkApplicationConfigArgs struct {
+	// HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+	ArchiveUris pulumi.StringArrayInput `pulumi:"archiveUris"`
+	// The arguments to pass to the driver.  Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+	Args pulumi.StringArrayInput `pulumi:"args"`
+	// HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
+	FileUris pulumi.StringArrayInput `pulumi:"fileUris"`
+	// HCFS URIs of jar files to add to the CLASSPATHs of the Python driver and tasks.
+	JarFileUris pulumi.StringArrayInput `pulumi:"jarFileUris"`
+	// The HCFS URI of the main Python file to use as the driver. Must be a .py file.
+	MainPythonFileUri pulumi.StringInput `pulumi:"mainPythonFileUri"`
+	// HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
+	PythonFileUris pulumi.StringArrayInput `pulumi:"pythonFileUris"`
+}
+
+func (GdcSparkApplicationPysparkApplicationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GdcSparkApplicationPysparkApplicationConfig)(nil)).Elem()
+}
+
+func (i GdcSparkApplicationPysparkApplicationConfigArgs) ToGdcSparkApplicationPysparkApplicationConfigOutput() GdcSparkApplicationPysparkApplicationConfigOutput {
+	return i.ToGdcSparkApplicationPysparkApplicationConfigOutputWithContext(context.Background())
+}
+
+func (i GdcSparkApplicationPysparkApplicationConfigArgs) ToGdcSparkApplicationPysparkApplicationConfigOutputWithContext(ctx context.Context) GdcSparkApplicationPysparkApplicationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GdcSparkApplicationPysparkApplicationConfigOutput)
+}
+
+func (i GdcSparkApplicationPysparkApplicationConfigArgs) ToGdcSparkApplicationPysparkApplicationConfigPtrOutput() GdcSparkApplicationPysparkApplicationConfigPtrOutput {
+	return i.ToGdcSparkApplicationPysparkApplicationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GdcSparkApplicationPysparkApplicationConfigArgs) ToGdcSparkApplicationPysparkApplicationConfigPtrOutputWithContext(ctx context.Context) GdcSparkApplicationPysparkApplicationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GdcSparkApplicationPysparkApplicationConfigOutput).ToGdcSparkApplicationPysparkApplicationConfigPtrOutputWithContext(ctx)
+}
+
+// GdcSparkApplicationPysparkApplicationConfigPtrInput is an input type that accepts GdcSparkApplicationPysparkApplicationConfigArgs, GdcSparkApplicationPysparkApplicationConfigPtr and GdcSparkApplicationPysparkApplicationConfigPtrOutput values.
+// You can construct a concrete instance of `GdcSparkApplicationPysparkApplicationConfigPtrInput` via:
+//
+//	        GdcSparkApplicationPysparkApplicationConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GdcSparkApplicationPysparkApplicationConfigPtrInput interface {
+	pulumi.Input
+
+	ToGdcSparkApplicationPysparkApplicationConfigPtrOutput() GdcSparkApplicationPysparkApplicationConfigPtrOutput
+	ToGdcSparkApplicationPysparkApplicationConfigPtrOutputWithContext(context.Context) GdcSparkApplicationPysparkApplicationConfigPtrOutput
+}
+
+type gdcSparkApplicationPysparkApplicationConfigPtrType GdcSparkApplicationPysparkApplicationConfigArgs
+
+func GdcSparkApplicationPysparkApplicationConfigPtr(v *GdcSparkApplicationPysparkApplicationConfigArgs) GdcSparkApplicationPysparkApplicationConfigPtrInput {
+	return (*gdcSparkApplicationPysparkApplicationConfigPtrType)(v)
+}
+
+func (*gdcSparkApplicationPysparkApplicationConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GdcSparkApplicationPysparkApplicationConfig)(nil)).Elem()
+}
+
+func (i *gdcSparkApplicationPysparkApplicationConfigPtrType) ToGdcSparkApplicationPysparkApplicationConfigPtrOutput() GdcSparkApplicationPysparkApplicationConfigPtrOutput {
+	return i.ToGdcSparkApplicationPysparkApplicationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *gdcSparkApplicationPysparkApplicationConfigPtrType) ToGdcSparkApplicationPysparkApplicationConfigPtrOutputWithContext(ctx context.Context) GdcSparkApplicationPysparkApplicationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GdcSparkApplicationPysparkApplicationConfigPtrOutput)
+}
+
+type GdcSparkApplicationPysparkApplicationConfigOutput struct{ *pulumi.OutputState }
+
+func (GdcSparkApplicationPysparkApplicationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GdcSparkApplicationPysparkApplicationConfig)(nil)).Elem()
+}
+
+func (o GdcSparkApplicationPysparkApplicationConfigOutput) ToGdcSparkApplicationPysparkApplicationConfigOutput() GdcSparkApplicationPysparkApplicationConfigOutput {
+	return o
+}
+
+func (o GdcSparkApplicationPysparkApplicationConfigOutput) ToGdcSparkApplicationPysparkApplicationConfigOutputWithContext(ctx context.Context) GdcSparkApplicationPysparkApplicationConfigOutput {
+	return o
+}
+
+func (o GdcSparkApplicationPysparkApplicationConfigOutput) ToGdcSparkApplicationPysparkApplicationConfigPtrOutput() GdcSparkApplicationPysparkApplicationConfigPtrOutput {
+	return o.ToGdcSparkApplicationPysparkApplicationConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GdcSparkApplicationPysparkApplicationConfigOutput) ToGdcSparkApplicationPysparkApplicationConfigPtrOutputWithContext(ctx context.Context) GdcSparkApplicationPysparkApplicationConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GdcSparkApplicationPysparkApplicationConfig) *GdcSparkApplicationPysparkApplicationConfig {
+		return &v
+	}).(GdcSparkApplicationPysparkApplicationConfigPtrOutput)
+}
+
+// HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+func (o GdcSparkApplicationPysparkApplicationConfigOutput) ArchiveUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GdcSparkApplicationPysparkApplicationConfig) []string { return v.ArchiveUris }).(pulumi.StringArrayOutput)
+}
+
+// The arguments to pass to the driver.  Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+func (o GdcSparkApplicationPysparkApplicationConfigOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GdcSparkApplicationPysparkApplicationConfig) []string { return v.Args }).(pulumi.StringArrayOutput)
+}
+
+// HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
+func (o GdcSparkApplicationPysparkApplicationConfigOutput) FileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GdcSparkApplicationPysparkApplicationConfig) []string { return v.FileUris }).(pulumi.StringArrayOutput)
+}
+
+// HCFS URIs of jar files to add to the CLASSPATHs of the Python driver and tasks.
+func (o GdcSparkApplicationPysparkApplicationConfigOutput) JarFileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GdcSparkApplicationPysparkApplicationConfig) []string { return v.JarFileUris }).(pulumi.StringArrayOutput)
+}
+
+// The HCFS URI of the main Python file to use as the driver. Must be a .py file.
+func (o GdcSparkApplicationPysparkApplicationConfigOutput) MainPythonFileUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GdcSparkApplicationPysparkApplicationConfig) string { return v.MainPythonFileUri }).(pulumi.StringOutput)
+}
+
+// HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
+func (o GdcSparkApplicationPysparkApplicationConfigOutput) PythonFileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GdcSparkApplicationPysparkApplicationConfig) []string { return v.PythonFileUris }).(pulumi.StringArrayOutput)
+}
+
+type GdcSparkApplicationPysparkApplicationConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GdcSparkApplicationPysparkApplicationConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GdcSparkApplicationPysparkApplicationConfig)(nil)).Elem()
+}
+
+func (o GdcSparkApplicationPysparkApplicationConfigPtrOutput) ToGdcSparkApplicationPysparkApplicationConfigPtrOutput() GdcSparkApplicationPysparkApplicationConfigPtrOutput {
+	return o
+}
+
+func (o GdcSparkApplicationPysparkApplicationConfigPtrOutput) ToGdcSparkApplicationPysparkApplicationConfigPtrOutputWithContext(ctx context.Context) GdcSparkApplicationPysparkApplicationConfigPtrOutput {
+	return o
+}
+
+func (o GdcSparkApplicationPysparkApplicationConfigPtrOutput) Elem() GdcSparkApplicationPysparkApplicationConfigOutput {
+	return o.ApplyT(func(v *GdcSparkApplicationPysparkApplicationConfig) GdcSparkApplicationPysparkApplicationConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GdcSparkApplicationPysparkApplicationConfig
+		return ret
+	}).(GdcSparkApplicationPysparkApplicationConfigOutput)
+}
+
+// HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+func (o GdcSparkApplicationPysparkApplicationConfigPtrOutput) ArchiveUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GdcSparkApplicationPysparkApplicationConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ArchiveUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// The arguments to pass to the driver.  Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+func (o GdcSparkApplicationPysparkApplicationConfigPtrOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GdcSparkApplicationPysparkApplicationConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Args
+	}).(pulumi.StringArrayOutput)
+}
+
+// HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
+func (o GdcSparkApplicationPysparkApplicationConfigPtrOutput) FileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GdcSparkApplicationPysparkApplicationConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.FileUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// HCFS URIs of jar files to add to the CLASSPATHs of the Python driver and tasks.
+func (o GdcSparkApplicationPysparkApplicationConfigPtrOutput) JarFileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GdcSparkApplicationPysparkApplicationConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.JarFileUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// The HCFS URI of the main Python file to use as the driver. Must be a .py file.
+func (o GdcSparkApplicationPysparkApplicationConfigPtrOutput) MainPythonFileUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GdcSparkApplicationPysparkApplicationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MainPythonFileUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
+func (o GdcSparkApplicationPysparkApplicationConfigPtrOutput) PythonFileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GdcSparkApplicationPysparkApplicationConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PythonFileUris
+	}).(pulumi.StringArrayOutput)
+}
+
+type GdcSparkApplicationSparkApplicationConfig struct {
+	// HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: `.jar`, `.tar`, `.tar.gz`, `.tgz`, and `.zip`.
+	ArchiveUris []string `pulumi:"archiveUris"`
+	// The arguments to pass to the driver. Do not include arguments that can be set as application properties, such as `--conf`, since a collision can occur that causes an incorrect application submission.
+	Args []string `pulumi:"args"`
+	// HCFS URIs of files to be placed in the working directory of each executor.
+	FileUris []string `pulumi:"fileUris"`
+	// HCFS URIs of jar files to add to the classpath of the Spark driver and tasks.
+	JarFileUris []string `pulumi:"jarFileUris"`
+	// The name of the driver main class. The jar file that contains the class must be in the classpath or specified in `jarFileUris`.
+	MainClass *string `pulumi:"mainClass"`
+	// The HCFS URI of the jar file that contains the main class.
+	MainJarFileUri *string `pulumi:"mainJarFileUri"`
+}
+
+// GdcSparkApplicationSparkApplicationConfigInput is an input type that accepts GdcSparkApplicationSparkApplicationConfigArgs and GdcSparkApplicationSparkApplicationConfigOutput values.
+// You can construct a concrete instance of `GdcSparkApplicationSparkApplicationConfigInput` via:
+//
+//	GdcSparkApplicationSparkApplicationConfigArgs{...}
+type GdcSparkApplicationSparkApplicationConfigInput interface {
+	pulumi.Input
+
+	ToGdcSparkApplicationSparkApplicationConfigOutput() GdcSparkApplicationSparkApplicationConfigOutput
+	ToGdcSparkApplicationSparkApplicationConfigOutputWithContext(context.Context) GdcSparkApplicationSparkApplicationConfigOutput
+}
+
+type GdcSparkApplicationSparkApplicationConfigArgs struct {
+	// HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: `.jar`, `.tar`, `.tar.gz`, `.tgz`, and `.zip`.
+	ArchiveUris pulumi.StringArrayInput `pulumi:"archiveUris"`
+	// The arguments to pass to the driver. Do not include arguments that can be set as application properties, such as `--conf`, since a collision can occur that causes an incorrect application submission.
+	Args pulumi.StringArrayInput `pulumi:"args"`
+	// HCFS URIs of files to be placed in the working directory of each executor.
+	FileUris pulumi.StringArrayInput `pulumi:"fileUris"`
+	// HCFS URIs of jar files to add to the classpath of the Spark driver and tasks.
+	JarFileUris pulumi.StringArrayInput `pulumi:"jarFileUris"`
+	// The name of the driver main class. The jar file that contains the class must be in the classpath or specified in `jarFileUris`.
+	MainClass pulumi.StringPtrInput `pulumi:"mainClass"`
+	// The HCFS URI of the jar file that contains the main class.
+	MainJarFileUri pulumi.StringPtrInput `pulumi:"mainJarFileUri"`
+}
+
+func (GdcSparkApplicationSparkApplicationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GdcSparkApplicationSparkApplicationConfig)(nil)).Elem()
+}
+
+func (i GdcSparkApplicationSparkApplicationConfigArgs) ToGdcSparkApplicationSparkApplicationConfigOutput() GdcSparkApplicationSparkApplicationConfigOutput {
+	return i.ToGdcSparkApplicationSparkApplicationConfigOutputWithContext(context.Background())
+}
+
+func (i GdcSparkApplicationSparkApplicationConfigArgs) ToGdcSparkApplicationSparkApplicationConfigOutputWithContext(ctx context.Context) GdcSparkApplicationSparkApplicationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GdcSparkApplicationSparkApplicationConfigOutput)
+}
+
+func (i GdcSparkApplicationSparkApplicationConfigArgs) ToGdcSparkApplicationSparkApplicationConfigPtrOutput() GdcSparkApplicationSparkApplicationConfigPtrOutput {
+	return i.ToGdcSparkApplicationSparkApplicationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GdcSparkApplicationSparkApplicationConfigArgs) ToGdcSparkApplicationSparkApplicationConfigPtrOutputWithContext(ctx context.Context) GdcSparkApplicationSparkApplicationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GdcSparkApplicationSparkApplicationConfigOutput).ToGdcSparkApplicationSparkApplicationConfigPtrOutputWithContext(ctx)
+}
+
+// GdcSparkApplicationSparkApplicationConfigPtrInput is an input type that accepts GdcSparkApplicationSparkApplicationConfigArgs, GdcSparkApplicationSparkApplicationConfigPtr and GdcSparkApplicationSparkApplicationConfigPtrOutput values.
+// You can construct a concrete instance of `GdcSparkApplicationSparkApplicationConfigPtrInput` via:
+//
+//	        GdcSparkApplicationSparkApplicationConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GdcSparkApplicationSparkApplicationConfigPtrInput interface {
+	pulumi.Input
+
+	ToGdcSparkApplicationSparkApplicationConfigPtrOutput() GdcSparkApplicationSparkApplicationConfigPtrOutput
+	ToGdcSparkApplicationSparkApplicationConfigPtrOutputWithContext(context.Context) GdcSparkApplicationSparkApplicationConfigPtrOutput
+}
+
+type gdcSparkApplicationSparkApplicationConfigPtrType GdcSparkApplicationSparkApplicationConfigArgs
+
+func GdcSparkApplicationSparkApplicationConfigPtr(v *GdcSparkApplicationSparkApplicationConfigArgs) GdcSparkApplicationSparkApplicationConfigPtrInput {
+	return (*gdcSparkApplicationSparkApplicationConfigPtrType)(v)
+}
+
+func (*gdcSparkApplicationSparkApplicationConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GdcSparkApplicationSparkApplicationConfig)(nil)).Elem()
+}
+
+func (i *gdcSparkApplicationSparkApplicationConfigPtrType) ToGdcSparkApplicationSparkApplicationConfigPtrOutput() GdcSparkApplicationSparkApplicationConfigPtrOutput {
+	return i.ToGdcSparkApplicationSparkApplicationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *gdcSparkApplicationSparkApplicationConfigPtrType) ToGdcSparkApplicationSparkApplicationConfigPtrOutputWithContext(ctx context.Context) GdcSparkApplicationSparkApplicationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GdcSparkApplicationSparkApplicationConfigPtrOutput)
+}
+
+type GdcSparkApplicationSparkApplicationConfigOutput struct{ *pulumi.OutputState }
+
+func (GdcSparkApplicationSparkApplicationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GdcSparkApplicationSparkApplicationConfig)(nil)).Elem()
+}
+
+func (o GdcSparkApplicationSparkApplicationConfigOutput) ToGdcSparkApplicationSparkApplicationConfigOutput() GdcSparkApplicationSparkApplicationConfigOutput {
+	return o
+}
+
+func (o GdcSparkApplicationSparkApplicationConfigOutput) ToGdcSparkApplicationSparkApplicationConfigOutputWithContext(ctx context.Context) GdcSparkApplicationSparkApplicationConfigOutput {
+	return o
+}
+
+func (o GdcSparkApplicationSparkApplicationConfigOutput) ToGdcSparkApplicationSparkApplicationConfigPtrOutput() GdcSparkApplicationSparkApplicationConfigPtrOutput {
+	return o.ToGdcSparkApplicationSparkApplicationConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GdcSparkApplicationSparkApplicationConfigOutput) ToGdcSparkApplicationSparkApplicationConfigPtrOutputWithContext(ctx context.Context) GdcSparkApplicationSparkApplicationConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GdcSparkApplicationSparkApplicationConfig) *GdcSparkApplicationSparkApplicationConfig {
+		return &v
+	}).(GdcSparkApplicationSparkApplicationConfigPtrOutput)
+}
+
+// HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: `.jar`, `.tar`, `.tar.gz`, `.tgz`, and `.zip`.
+func (o GdcSparkApplicationSparkApplicationConfigOutput) ArchiveUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GdcSparkApplicationSparkApplicationConfig) []string { return v.ArchiveUris }).(pulumi.StringArrayOutput)
+}
+
+// The arguments to pass to the driver. Do not include arguments that can be set as application properties, such as `--conf`, since a collision can occur that causes an incorrect application submission.
+func (o GdcSparkApplicationSparkApplicationConfigOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GdcSparkApplicationSparkApplicationConfig) []string { return v.Args }).(pulumi.StringArrayOutput)
+}
+
+// HCFS URIs of files to be placed in the working directory of each executor.
+func (o GdcSparkApplicationSparkApplicationConfigOutput) FileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GdcSparkApplicationSparkApplicationConfig) []string { return v.FileUris }).(pulumi.StringArrayOutput)
+}
+
+// HCFS URIs of jar files to add to the classpath of the Spark driver and tasks.
+func (o GdcSparkApplicationSparkApplicationConfigOutput) JarFileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GdcSparkApplicationSparkApplicationConfig) []string { return v.JarFileUris }).(pulumi.StringArrayOutput)
+}
+
+// The name of the driver main class. The jar file that contains the class must be in the classpath or specified in `jarFileUris`.
+func (o GdcSparkApplicationSparkApplicationConfigOutput) MainClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GdcSparkApplicationSparkApplicationConfig) *string { return v.MainClass }).(pulumi.StringPtrOutput)
+}
+
+// The HCFS URI of the jar file that contains the main class.
+func (o GdcSparkApplicationSparkApplicationConfigOutput) MainJarFileUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GdcSparkApplicationSparkApplicationConfig) *string { return v.MainJarFileUri }).(pulumi.StringPtrOutput)
+}
+
+type GdcSparkApplicationSparkApplicationConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GdcSparkApplicationSparkApplicationConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GdcSparkApplicationSparkApplicationConfig)(nil)).Elem()
+}
+
+func (o GdcSparkApplicationSparkApplicationConfigPtrOutput) ToGdcSparkApplicationSparkApplicationConfigPtrOutput() GdcSparkApplicationSparkApplicationConfigPtrOutput {
+	return o
+}
+
+func (o GdcSparkApplicationSparkApplicationConfigPtrOutput) ToGdcSparkApplicationSparkApplicationConfigPtrOutputWithContext(ctx context.Context) GdcSparkApplicationSparkApplicationConfigPtrOutput {
+	return o
+}
+
+func (o GdcSparkApplicationSparkApplicationConfigPtrOutput) Elem() GdcSparkApplicationSparkApplicationConfigOutput {
+	return o.ApplyT(func(v *GdcSparkApplicationSparkApplicationConfig) GdcSparkApplicationSparkApplicationConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GdcSparkApplicationSparkApplicationConfig
+		return ret
+	}).(GdcSparkApplicationSparkApplicationConfigOutput)
+}
+
+// HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: `.jar`, `.tar`, `.tar.gz`, `.tgz`, and `.zip`.
+func (o GdcSparkApplicationSparkApplicationConfigPtrOutput) ArchiveUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GdcSparkApplicationSparkApplicationConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ArchiveUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// The arguments to pass to the driver. Do not include arguments that can be set as application properties, such as `--conf`, since a collision can occur that causes an incorrect application submission.
+func (o GdcSparkApplicationSparkApplicationConfigPtrOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GdcSparkApplicationSparkApplicationConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Args
+	}).(pulumi.StringArrayOutput)
+}
+
+// HCFS URIs of files to be placed in the working directory of each executor.
+func (o GdcSparkApplicationSparkApplicationConfigPtrOutput) FileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GdcSparkApplicationSparkApplicationConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.FileUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// HCFS URIs of jar files to add to the classpath of the Spark driver and tasks.
+func (o GdcSparkApplicationSparkApplicationConfigPtrOutput) JarFileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GdcSparkApplicationSparkApplicationConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.JarFileUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// The name of the driver main class. The jar file that contains the class must be in the classpath or specified in `jarFileUris`.
+func (o GdcSparkApplicationSparkApplicationConfigPtrOutput) MainClass() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GdcSparkApplicationSparkApplicationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MainClass
+	}).(pulumi.StringPtrOutput)
+}
+
+// The HCFS URI of the jar file that contains the main class.
+func (o GdcSparkApplicationSparkApplicationConfigPtrOutput) MainJarFileUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GdcSparkApplicationSparkApplicationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MainJarFileUri
+	}).(pulumi.StringPtrOutput)
+}
+
+type GdcSparkApplicationSparkRApplicationConfig struct {
+	// HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+	ArchiveUris []string `pulumi:"archiveUris"`
+	// The arguments to pass to the driver.  Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+	Args []string `pulumi:"args"`
+	// HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
+	FileUris []string `pulumi:"fileUris"`
+	// The HCFS URI of the main R file to use as the driver. Must be a .R file.
+	MainRFileUri string `pulumi:"mainRFileUri"`
+}
+
+// GdcSparkApplicationSparkRApplicationConfigInput is an input type that accepts GdcSparkApplicationSparkRApplicationConfigArgs and GdcSparkApplicationSparkRApplicationConfigOutput values.
+// You can construct a concrete instance of `GdcSparkApplicationSparkRApplicationConfigInput` via:
+//
+//	GdcSparkApplicationSparkRApplicationConfigArgs{...}
+type GdcSparkApplicationSparkRApplicationConfigInput interface {
+	pulumi.Input
+
+	ToGdcSparkApplicationSparkRApplicationConfigOutput() GdcSparkApplicationSparkRApplicationConfigOutput
+	ToGdcSparkApplicationSparkRApplicationConfigOutputWithContext(context.Context) GdcSparkApplicationSparkRApplicationConfigOutput
+}
+
+type GdcSparkApplicationSparkRApplicationConfigArgs struct {
+	// HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+	ArchiveUris pulumi.StringArrayInput `pulumi:"archiveUris"`
+	// The arguments to pass to the driver.  Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+	Args pulumi.StringArrayInput `pulumi:"args"`
+	// HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
+	FileUris pulumi.StringArrayInput `pulumi:"fileUris"`
+	// The HCFS URI of the main R file to use as the driver. Must be a .R file.
+	MainRFileUri pulumi.StringInput `pulumi:"mainRFileUri"`
+}
+
+func (GdcSparkApplicationSparkRApplicationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GdcSparkApplicationSparkRApplicationConfig)(nil)).Elem()
+}
+
+func (i GdcSparkApplicationSparkRApplicationConfigArgs) ToGdcSparkApplicationSparkRApplicationConfigOutput() GdcSparkApplicationSparkRApplicationConfigOutput {
+	return i.ToGdcSparkApplicationSparkRApplicationConfigOutputWithContext(context.Background())
+}
+
+func (i GdcSparkApplicationSparkRApplicationConfigArgs) ToGdcSparkApplicationSparkRApplicationConfigOutputWithContext(ctx context.Context) GdcSparkApplicationSparkRApplicationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GdcSparkApplicationSparkRApplicationConfigOutput)
+}
+
+func (i GdcSparkApplicationSparkRApplicationConfigArgs) ToGdcSparkApplicationSparkRApplicationConfigPtrOutput() GdcSparkApplicationSparkRApplicationConfigPtrOutput {
+	return i.ToGdcSparkApplicationSparkRApplicationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GdcSparkApplicationSparkRApplicationConfigArgs) ToGdcSparkApplicationSparkRApplicationConfigPtrOutputWithContext(ctx context.Context) GdcSparkApplicationSparkRApplicationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GdcSparkApplicationSparkRApplicationConfigOutput).ToGdcSparkApplicationSparkRApplicationConfigPtrOutputWithContext(ctx)
+}
+
+// GdcSparkApplicationSparkRApplicationConfigPtrInput is an input type that accepts GdcSparkApplicationSparkRApplicationConfigArgs, GdcSparkApplicationSparkRApplicationConfigPtr and GdcSparkApplicationSparkRApplicationConfigPtrOutput values.
+// You can construct a concrete instance of `GdcSparkApplicationSparkRApplicationConfigPtrInput` via:
+//
+//	        GdcSparkApplicationSparkRApplicationConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GdcSparkApplicationSparkRApplicationConfigPtrInput interface {
+	pulumi.Input
+
+	ToGdcSparkApplicationSparkRApplicationConfigPtrOutput() GdcSparkApplicationSparkRApplicationConfigPtrOutput
+	ToGdcSparkApplicationSparkRApplicationConfigPtrOutputWithContext(context.Context) GdcSparkApplicationSparkRApplicationConfigPtrOutput
+}
+
+type gdcSparkApplicationSparkRApplicationConfigPtrType GdcSparkApplicationSparkRApplicationConfigArgs
+
+func GdcSparkApplicationSparkRApplicationConfigPtr(v *GdcSparkApplicationSparkRApplicationConfigArgs) GdcSparkApplicationSparkRApplicationConfigPtrInput {
+	return (*gdcSparkApplicationSparkRApplicationConfigPtrType)(v)
+}
+
+func (*gdcSparkApplicationSparkRApplicationConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GdcSparkApplicationSparkRApplicationConfig)(nil)).Elem()
+}
+
+func (i *gdcSparkApplicationSparkRApplicationConfigPtrType) ToGdcSparkApplicationSparkRApplicationConfigPtrOutput() GdcSparkApplicationSparkRApplicationConfigPtrOutput {
+	return i.ToGdcSparkApplicationSparkRApplicationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *gdcSparkApplicationSparkRApplicationConfigPtrType) ToGdcSparkApplicationSparkRApplicationConfigPtrOutputWithContext(ctx context.Context) GdcSparkApplicationSparkRApplicationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GdcSparkApplicationSparkRApplicationConfigPtrOutput)
+}
+
+type GdcSparkApplicationSparkRApplicationConfigOutput struct{ *pulumi.OutputState }
+
+func (GdcSparkApplicationSparkRApplicationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GdcSparkApplicationSparkRApplicationConfig)(nil)).Elem()
+}
+
+func (o GdcSparkApplicationSparkRApplicationConfigOutput) ToGdcSparkApplicationSparkRApplicationConfigOutput() GdcSparkApplicationSparkRApplicationConfigOutput {
+	return o
+}
+
+func (o GdcSparkApplicationSparkRApplicationConfigOutput) ToGdcSparkApplicationSparkRApplicationConfigOutputWithContext(ctx context.Context) GdcSparkApplicationSparkRApplicationConfigOutput {
+	return o
+}
+
+func (o GdcSparkApplicationSparkRApplicationConfigOutput) ToGdcSparkApplicationSparkRApplicationConfigPtrOutput() GdcSparkApplicationSparkRApplicationConfigPtrOutput {
+	return o.ToGdcSparkApplicationSparkRApplicationConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GdcSparkApplicationSparkRApplicationConfigOutput) ToGdcSparkApplicationSparkRApplicationConfigPtrOutputWithContext(ctx context.Context) GdcSparkApplicationSparkRApplicationConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GdcSparkApplicationSparkRApplicationConfig) *GdcSparkApplicationSparkRApplicationConfig {
+		return &v
+	}).(GdcSparkApplicationSparkRApplicationConfigPtrOutput)
+}
+
+// HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+func (o GdcSparkApplicationSparkRApplicationConfigOutput) ArchiveUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GdcSparkApplicationSparkRApplicationConfig) []string { return v.ArchiveUris }).(pulumi.StringArrayOutput)
+}
+
+// The arguments to pass to the driver.  Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+func (o GdcSparkApplicationSparkRApplicationConfigOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GdcSparkApplicationSparkRApplicationConfig) []string { return v.Args }).(pulumi.StringArrayOutput)
+}
+
+// HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
+func (o GdcSparkApplicationSparkRApplicationConfigOutput) FileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GdcSparkApplicationSparkRApplicationConfig) []string { return v.FileUris }).(pulumi.StringArrayOutput)
+}
+
+// The HCFS URI of the main R file to use as the driver. Must be a .R file.
+func (o GdcSparkApplicationSparkRApplicationConfigOutput) MainRFileUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GdcSparkApplicationSparkRApplicationConfig) string { return v.MainRFileUri }).(pulumi.StringOutput)
+}
+
+type GdcSparkApplicationSparkRApplicationConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GdcSparkApplicationSparkRApplicationConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GdcSparkApplicationSparkRApplicationConfig)(nil)).Elem()
+}
+
+func (o GdcSparkApplicationSparkRApplicationConfigPtrOutput) ToGdcSparkApplicationSparkRApplicationConfigPtrOutput() GdcSparkApplicationSparkRApplicationConfigPtrOutput {
+	return o
+}
+
+func (o GdcSparkApplicationSparkRApplicationConfigPtrOutput) ToGdcSparkApplicationSparkRApplicationConfigPtrOutputWithContext(ctx context.Context) GdcSparkApplicationSparkRApplicationConfigPtrOutput {
+	return o
+}
+
+func (o GdcSparkApplicationSparkRApplicationConfigPtrOutput) Elem() GdcSparkApplicationSparkRApplicationConfigOutput {
+	return o.ApplyT(func(v *GdcSparkApplicationSparkRApplicationConfig) GdcSparkApplicationSparkRApplicationConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GdcSparkApplicationSparkRApplicationConfig
+		return ret
+	}).(GdcSparkApplicationSparkRApplicationConfigOutput)
+}
+
+// HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+func (o GdcSparkApplicationSparkRApplicationConfigPtrOutput) ArchiveUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GdcSparkApplicationSparkRApplicationConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ArchiveUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// The arguments to pass to the driver.  Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+func (o GdcSparkApplicationSparkRApplicationConfigPtrOutput) Args() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GdcSparkApplicationSparkRApplicationConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Args
+	}).(pulumi.StringArrayOutput)
+}
+
+// HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
+func (o GdcSparkApplicationSparkRApplicationConfigPtrOutput) FileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GdcSparkApplicationSparkRApplicationConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.FileUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// The HCFS URI of the main R file to use as the driver. Must be a .R file.
+func (o GdcSparkApplicationSparkRApplicationConfigPtrOutput) MainRFileUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GdcSparkApplicationSparkRApplicationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MainRFileUri
+	}).(pulumi.StringPtrOutput)
+}
+
+type GdcSparkApplicationSparkSqlApplicationConfig struct {
+	// HCFS URIs of jar files to be added to the Spark CLASSPATH.
+	JarFileUris []string `pulumi:"jarFileUris"`
+	// The HCFS URI of the script that contains SQL queries.
+	QueryFileUri *string `pulumi:"queryFileUri"`
+	// Represents a list of queries.
+	// Structure is documented below.
+	QueryList *GdcSparkApplicationSparkSqlApplicationConfigQueryList `pulumi:"queryList"`
+	// Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name="value";`).
+	ScriptVariables map[string]string `pulumi:"scriptVariables"`
+}
+
+// GdcSparkApplicationSparkSqlApplicationConfigInput is an input type that accepts GdcSparkApplicationSparkSqlApplicationConfigArgs and GdcSparkApplicationSparkSqlApplicationConfigOutput values.
+// You can construct a concrete instance of `GdcSparkApplicationSparkSqlApplicationConfigInput` via:
+//
+//	GdcSparkApplicationSparkSqlApplicationConfigArgs{...}
+type GdcSparkApplicationSparkSqlApplicationConfigInput interface {
+	pulumi.Input
+
+	ToGdcSparkApplicationSparkSqlApplicationConfigOutput() GdcSparkApplicationSparkSqlApplicationConfigOutput
+	ToGdcSparkApplicationSparkSqlApplicationConfigOutputWithContext(context.Context) GdcSparkApplicationSparkSqlApplicationConfigOutput
+}
+
+type GdcSparkApplicationSparkSqlApplicationConfigArgs struct {
+	// HCFS URIs of jar files to be added to the Spark CLASSPATH.
+	JarFileUris pulumi.StringArrayInput `pulumi:"jarFileUris"`
+	// The HCFS URI of the script that contains SQL queries.
+	QueryFileUri pulumi.StringPtrInput `pulumi:"queryFileUri"`
+	// Represents a list of queries.
+	// Structure is documented below.
+	QueryList GdcSparkApplicationSparkSqlApplicationConfigQueryListPtrInput `pulumi:"queryList"`
+	// Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name="value";`).
+	ScriptVariables pulumi.StringMapInput `pulumi:"scriptVariables"`
+}
+
+func (GdcSparkApplicationSparkSqlApplicationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GdcSparkApplicationSparkSqlApplicationConfig)(nil)).Elem()
+}
+
+func (i GdcSparkApplicationSparkSqlApplicationConfigArgs) ToGdcSparkApplicationSparkSqlApplicationConfigOutput() GdcSparkApplicationSparkSqlApplicationConfigOutput {
+	return i.ToGdcSparkApplicationSparkSqlApplicationConfigOutputWithContext(context.Background())
+}
+
+func (i GdcSparkApplicationSparkSqlApplicationConfigArgs) ToGdcSparkApplicationSparkSqlApplicationConfigOutputWithContext(ctx context.Context) GdcSparkApplicationSparkSqlApplicationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GdcSparkApplicationSparkSqlApplicationConfigOutput)
+}
+
+func (i GdcSparkApplicationSparkSqlApplicationConfigArgs) ToGdcSparkApplicationSparkSqlApplicationConfigPtrOutput() GdcSparkApplicationSparkSqlApplicationConfigPtrOutput {
+	return i.ToGdcSparkApplicationSparkSqlApplicationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i GdcSparkApplicationSparkSqlApplicationConfigArgs) ToGdcSparkApplicationSparkSqlApplicationConfigPtrOutputWithContext(ctx context.Context) GdcSparkApplicationSparkSqlApplicationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GdcSparkApplicationSparkSqlApplicationConfigOutput).ToGdcSparkApplicationSparkSqlApplicationConfigPtrOutputWithContext(ctx)
+}
+
+// GdcSparkApplicationSparkSqlApplicationConfigPtrInput is an input type that accepts GdcSparkApplicationSparkSqlApplicationConfigArgs, GdcSparkApplicationSparkSqlApplicationConfigPtr and GdcSparkApplicationSparkSqlApplicationConfigPtrOutput values.
+// You can construct a concrete instance of `GdcSparkApplicationSparkSqlApplicationConfigPtrInput` via:
+//
+//	        GdcSparkApplicationSparkSqlApplicationConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type GdcSparkApplicationSparkSqlApplicationConfigPtrInput interface {
+	pulumi.Input
+
+	ToGdcSparkApplicationSparkSqlApplicationConfigPtrOutput() GdcSparkApplicationSparkSqlApplicationConfigPtrOutput
+	ToGdcSparkApplicationSparkSqlApplicationConfigPtrOutputWithContext(context.Context) GdcSparkApplicationSparkSqlApplicationConfigPtrOutput
+}
+
+type gdcSparkApplicationSparkSqlApplicationConfigPtrType GdcSparkApplicationSparkSqlApplicationConfigArgs
+
+func GdcSparkApplicationSparkSqlApplicationConfigPtr(v *GdcSparkApplicationSparkSqlApplicationConfigArgs) GdcSparkApplicationSparkSqlApplicationConfigPtrInput {
+	return (*gdcSparkApplicationSparkSqlApplicationConfigPtrType)(v)
+}
+
+func (*gdcSparkApplicationSparkSqlApplicationConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GdcSparkApplicationSparkSqlApplicationConfig)(nil)).Elem()
+}
+
+func (i *gdcSparkApplicationSparkSqlApplicationConfigPtrType) ToGdcSparkApplicationSparkSqlApplicationConfigPtrOutput() GdcSparkApplicationSparkSqlApplicationConfigPtrOutput {
+	return i.ToGdcSparkApplicationSparkSqlApplicationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *gdcSparkApplicationSparkSqlApplicationConfigPtrType) ToGdcSparkApplicationSparkSqlApplicationConfigPtrOutputWithContext(ctx context.Context) GdcSparkApplicationSparkSqlApplicationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GdcSparkApplicationSparkSqlApplicationConfigPtrOutput)
+}
+
+type GdcSparkApplicationSparkSqlApplicationConfigOutput struct{ *pulumi.OutputState }
+
+func (GdcSparkApplicationSparkSqlApplicationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GdcSparkApplicationSparkSqlApplicationConfig)(nil)).Elem()
+}
+
+func (o GdcSparkApplicationSparkSqlApplicationConfigOutput) ToGdcSparkApplicationSparkSqlApplicationConfigOutput() GdcSparkApplicationSparkSqlApplicationConfigOutput {
+	return o
+}
+
+func (o GdcSparkApplicationSparkSqlApplicationConfigOutput) ToGdcSparkApplicationSparkSqlApplicationConfigOutputWithContext(ctx context.Context) GdcSparkApplicationSparkSqlApplicationConfigOutput {
+	return o
+}
+
+func (o GdcSparkApplicationSparkSqlApplicationConfigOutput) ToGdcSparkApplicationSparkSqlApplicationConfigPtrOutput() GdcSparkApplicationSparkSqlApplicationConfigPtrOutput {
+	return o.ToGdcSparkApplicationSparkSqlApplicationConfigPtrOutputWithContext(context.Background())
+}
+
+func (o GdcSparkApplicationSparkSqlApplicationConfigOutput) ToGdcSparkApplicationSparkSqlApplicationConfigPtrOutputWithContext(ctx context.Context) GdcSparkApplicationSparkSqlApplicationConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GdcSparkApplicationSparkSqlApplicationConfig) *GdcSparkApplicationSparkSqlApplicationConfig {
+		return &v
+	}).(GdcSparkApplicationSparkSqlApplicationConfigPtrOutput)
+}
+
+// HCFS URIs of jar files to be added to the Spark CLASSPATH.
+func (o GdcSparkApplicationSparkSqlApplicationConfigOutput) JarFileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GdcSparkApplicationSparkSqlApplicationConfig) []string { return v.JarFileUris }).(pulumi.StringArrayOutput)
+}
+
+// The HCFS URI of the script that contains SQL queries.
+func (o GdcSparkApplicationSparkSqlApplicationConfigOutput) QueryFileUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v GdcSparkApplicationSparkSqlApplicationConfig) *string { return v.QueryFileUri }).(pulumi.StringPtrOutput)
+}
+
+// Represents a list of queries.
+// Structure is documented below.
+func (o GdcSparkApplicationSparkSqlApplicationConfigOutput) QueryList() GdcSparkApplicationSparkSqlApplicationConfigQueryListPtrOutput {
+	return o.ApplyT(func(v GdcSparkApplicationSparkSqlApplicationConfig) *GdcSparkApplicationSparkSqlApplicationConfigQueryList {
+		return v.QueryList
+	}).(GdcSparkApplicationSparkSqlApplicationConfigQueryListPtrOutput)
+}
+
+// Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name="value";`).
+func (o GdcSparkApplicationSparkSqlApplicationConfigOutput) ScriptVariables() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GdcSparkApplicationSparkSqlApplicationConfig) map[string]string { return v.ScriptVariables }).(pulumi.StringMapOutput)
+}
+
+type GdcSparkApplicationSparkSqlApplicationConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (GdcSparkApplicationSparkSqlApplicationConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GdcSparkApplicationSparkSqlApplicationConfig)(nil)).Elem()
+}
+
+func (o GdcSparkApplicationSparkSqlApplicationConfigPtrOutput) ToGdcSparkApplicationSparkSqlApplicationConfigPtrOutput() GdcSparkApplicationSparkSqlApplicationConfigPtrOutput {
+	return o
+}
+
+func (o GdcSparkApplicationSparkSqlApplicationConfigPtrOutput) ToGdcSparkApplicationSparkSqlApplicationConfigPtrOutputWithContext(ctx context.Context) GdcSparkApplicationSparkSqlApplicationConfigPtrOutput {
+	return o
+}
+
+func (o GdcSparkApplicationSparkSqlApplicationConfigPtrOutput) Elem() GdcSparkApplicationSparkSqlApplicationConfigOutput {
+	return o.ApplyT(func(v *GdcSparkApplicationSparkSqlApplicationConfig) GdcSparkApplicationSparkSqlApplicationConfig {
+		if v != nil {
+			return *v
+		}
+		var ret GdcSparkApplicationSparkSqlApplicationConfig
+		return ret
+	}).(GdcSparkApplicationSparkSqlApplicationConfigOutput)
+}
+
+// HCFS URIs of jar files to be added to the Spark CLASSPATH.
+func (o GdcSparkApplicationSparkSqlApplicationConfigPtrOutput) JarFileUris() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GdcSparkApplicationSparkSqlApplicationConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.JarFileUris
+	}).(pulumi.StringArrayOutput)
+}
+
+// The HCFS URI of the script that contains SQL queries.
+func (o GdcSparkApplicationSparkSqlApplicationConfigPtrOutput) QueryFileUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *GdcSparkApplicationSparkSqlApplicationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.QueryFileUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Represents a list of queries.
+// Structure is documented below.
+func (o GdcSparkApplicationSparkSqlApplicationConfigPtrOutput) QueryList() GdcSparkApplicationSparkSqlApplicationConfigQueryListPtrOutput {
+	return o.ApplyT(func(v *GdcSparkApplicationSparkSqlApplicationConfig) *GdcSparkApplicationSparkSqlApplicationConfigQueryList {
+		if v == nil {
+			return nil
+		}
+		return v.QueryList
+	}).(GdcSparkApplicationSparkSqlApplicationConfigQueryListPtrOutput)
+}
+
+// Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name="value";`).
+func (o GdcSparkApplicationSparkSqlApplicationConfigPtrOutput) ScriptVariables() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *GdcSparkApplicationSparkSqlApplicationConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.ScriptVariables
+	}).(pulumi.StringMapOutput)
+}
+
+type GdcSparkApplicationSparkSqlApplicationConfigQueryList struct {
+	// The queries to run.
+	Queries []string `pulumi:"queries"`
+}
+
+// GdcSparkApplicationSparkSqlApplicationConfigQueryListInput is an input type that accepts GdcSparkApplicationSparkSqlApplicationConfigQueryListArgs and GdcSparkApplicationSparkSqlApplicationConfigQueryListOutput values.
+// You can construct a concrete instance of `GdcSparkApplicationSparkSqlApplicationConfigQueryListInput` via:
+//
+//	GdcSparkApplicationSparkSqlApplicationConfigQueryListArgs{...}
+type GdcSparkApplicationSparkSqlApplicationConfigQueryListInput interface {
+	pulumi.Input
+
+	ToGdcSparkApplicationSparkSqlApplicationConfigQueryListOutput() GdcSparkApplicationSparkSqlApplicationConfigQueryListOutput
+	ToGdcSparkApplicationSparkSqlApplicationConfigQueryListOutputWithContext(context.Context) GdcSparkApplicationSparkSqlApplicationConfigQueryListOutput
+}
+
+type GdcSparkApplicationSparkSqlApplicationConfigQueryListArgs struct {
+	// The queries to run.
+	Queries pulumi.StringArrayInput `pulumi:"queries"`
+}
+
+func (GdcSparkApplicationSparkSqlApplicationConfigQueryListArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GdcSparkApplicationSparkSqlApplicationConfigQueryList)(nil)).Elem()
+}
+
+func (i GdcSparkApplicationSparkSqlApplicationConfigQueryListArgs) ToGdcSparkApplicationSparkSqlApplicationConfigQueryListOutput() GdcSparkApplicationSparkSqlApplicationConfigQueryListOutput {
+	return i.ToGdcSparkApplicationSparkSqlApplicationConfigQueryListOutputWithContext(context.Background())
+}
+
+func (i GdcSparkApplicationSparkSqlApplicationConfigQueryListArgs) ToGdcSparkApplicationSparkSqlApplicationConfigQueryListOutputWithContext(ctx context.Context) GdcSparkApplicationSparkSqlApplicationConfigQueryListOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GdcSparkApplicationSparkSqlApplicationConfigQueryListOutput)
+}
+
+func (i GdcSparkApplicationSparkSqlApplicationConfigQueryListArgs) ToGdcSparkApplicationSparkSqlApplicationConfigQueryListPtrOutput() GdcSparkApplicationSparkSqlApplicationConfigQueryListPtrOutput {
+	return i.ToGdcSparkApplicationSparkSqlApplicationConfigQueryListPtrOutputWithContext(context.Background())
+}
+
+func (i GdcSparkApplicationSparkSqlApplicationConfigQueryListArgs) ToGdcSparkApplicationSparkSqlApplicationConfigQueryListPtrOutputWithContext(ctx context.Context) GdcSparkApplicationSparkSqlApplicationConfigQueryListPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GdcSparkApplicationSparkSqlApplicationConfigQueryListOutput).ToGdcSparkApplicationSparkSqlApplicationConfigQueryListPtrOutputWithContext(ctx)
+}
+
+// GdcSparkApplicationSparkSqlApplicationConfigQueryListPtrInput is an input type that accepts GdcSparkApplicationSparkSqlApplicationConfigQueryListArgs, GdcSparkApplicationSparkSqlApplicationConfigQueryListPtr and GdcSparkApplicationSparkSqlApplicationConfigQueryListPtrOutput values.
+// You can construct a concrete instance of `GdcSparkApplicationSparkSqlApplicationConfigQueryListPtrInput` via:
+//
+//	        GdcSparkApplicationSparkSqlApplicationConfigQueryListArgs{...}
+//
+//	or:
+//
+//	        nil
+type GdcSparkApplicationSparkSqlApplicationConfigQueryListPtrInput interface {
+	pulumi.Input
+
+	ToGdcSparkApplicationSparkSqlApplicationConfigQueryListPtrOutput() GdcSparkApplicationSparkSqlApplicationConfigQueryListPtrOutput
+	ToGdcSparkApplicationSparkSqlApplicationConfigQueryListPtrOutputWithContext(context.Context) GdcSparkApplicationSparkSqlApplicationConfigQueryListPtrOutput
+}
+
+type gdcSparkApplicationSparkSqlApplicationConfigQueryListPtrType GdcSparkApplicationSparkSqlApplicationConfigQueryListArgs
+
+func GdcSparkApplicationSparkSqlApplicationConfigQueryListPtr(v *GdcSparkApplicationSparkSqlApplicationConfigQueryListArgs) GdcSparkApplicationSparkSqlApplicationConfigQueryListPtrInput {
+	return (*gdcSparkApplicationSparkSqlApplicationConfigQueryListPtrType)(v)
+}
+
+func (*gdcSparkApplicationSparkSqlApplicationConfigQueryListPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**GdcSparkApplicationSparkSqlApplicationConfigQueryList)(nil)).Elem()
+}
+
+func (i *gdcSparkApplicationSparkSqlApplicationConfigQueryListPtrType) ToGdcSparkApplicationSparkSqlApplicationConfigQueryListPtrOutput() GdcSparkApplicationSparkSqlApplicationConfigQueryListPtrOutput {
+	return i.ToGdcSparkApplicationSparkSqlApplicationConfigQueryListPtrOutputWithContext(context.Background())
+}
+
+func (i *gdcSparkApplicationSparkSqlApplicationConfigQueryListPtrType) ToGdcSparkApplicationSparkSqlApplicationConfigQueryListPtrOutputWithContext(ctx context.Context) GdcSparkApplicationSparkSqlApplicationConfigQueryListPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GdcSparkApplicationSparkSqlApplicationConfigQueryListPtrOutput)
+}
+
+type GdcSparkApplicationSparkSqlApplicationConfigQueryListOutput struct{ *pulumi.OutputState }
+
+func (GdcSparkApplicationSparkSqlApplicationConfigQueryListOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GdcSparkApplicationSparkSqlApplicationConfigQueryList)(nil)).Elem()
+}
+
+func (o GdcSparkApplicationSparkSqlApplicationConfigQueryListOutput) ToGdcSparkApplicationSparkSqlApplicationConfigQueryListOutput() GdcSparkApplicationSparkSqlApplicationConfigQueryListOutput {
+	return o
+}
+
+func (o GdcSparkApplicationSparkSqlApplicationConfigQueryListOutput) ToGdcSparkApplicationSparkSqlApplicationConfigQueryListOutputWithContext(ctx context.Context) GdcSparkApplicationSparkSqlApplicationConfigQueryListOutput {
+	return o
+}
+
+func (o GdcSparkApplicationSparkSqlApplicationConfigQueryListOutput) ToGdcSparkApplicationSparkSqlApplicationConfigQueryListPtrOutput() GdcSparkApplicationSparkSqlApplicationConfigQueryListPtrOutput {
+	return o.ToGdcSparkApplicationSparkSqlApplicationConfigQueryListPtrOutputWithContext(context.Background())
+}
+
+func (o GdcSparkApplicationSparkSqlApplicationConfigQueryListOutput) ToGdcSparkApplicationSparkSqlApplicationConfigQueryListPtrOutputWithContext(ctx context.Context) GdcSparkApplicationSparkSqlApplicationConfigQueryListPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v GdcSparkApplicationSparkSqlApplicationConfigQueryList) *GdcSparkApplicationSparkSqlApplicationConfigQueryList {
+		return &v
+	}).(GdcSparkApplicationSparkSqlApplicationConfigQueryListPtrOutput)
+}
+
+// The queries to run.
+func (o GdcSparkApplicationSparkSqlApplicationConfigQueryListOutput) Queries() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GdcSparkApplicationSparkSqlApplicationConfigQueryList) []string { return v.Queries }).(pulumi.StringArrayOutput)
+}
+
+type GdcSparkApplicationSparkSqlApplicationConfigQueryListPtrOutput struct{ *pulumi.OutputState }
+
+func (GdcSparkApplicationSparkSqlApplicationConfigQueryListPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**GdcSparkApplicationSparkSqlApplicationConfigQueryList)(nil)).Elem()
+}
+
+func (o GdcSparkApplicationSparkSqlApplicationConfigQueryListPtrOutput) ToGdcSparkApplicationSparkSqlApplicationConfigQueryListPtrOutput() GdcSparkApplicationSparkSqlApplicationConfigQueryListPtrOutput {
+	return o
+}
+
+func (o GdcSparkApplicationSparkSqlApplicationConfigQueryListPtrOutput) ToGdcSparkApplicationSparkSqlApplicationConfigQueryListPtrOutputWithContext(ctx context.Context) GdcSparkApplicationSparkSqlApplicationConfigQueryListPtrOutput {
+	return o
+}
+
+func (o GdcSparkApplicationSparkSqlApplicationConfigQueryListPtrOutput) Elem() GdcSparkApplicationSparkSqlApplicationConfigQueryListOutput {
+	return o.ApplyT(func(v *GdcSparkApplicationSparkSqlApplicationConfigQueryList) GdcSparkApplicationSparkSqlApplicationConfigQueryList {
+		if v != nil {
+			return *v
+		}
+		var ret GdcSparkApplicationSparkSqlApplicationConfigQueryList
+		return ret
+	}).(GdcSparkApplicationSparkSqlApplicationConfigQueryListOutput)
+}
+
+// The queries to run.
+func (o GdcSparkApplicationSparkSqlApplicationConfigQueryListPtrOutput) Queries() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *GdcSparkApplicationSparkSqlApplicationConfigQueryList) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Queries
+	}).(pulumi.StringArrayOutput)
+}
+
 type JobHadoopConfig struct {
 	// HCFS URIs of archives to be extracted in the working directory of .jar, .tar, .tar.gz, .tgz, and .zip.
 	ArchiveUris []string `pulumi:"archiveUris"`
@@ -31760,6 +32755,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GdcServiceInstanceGdceClusterPtrInput)(nil)).Elem(), GdcServiceInstanceGdceClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GdcServiceInstanceSparkServiceInstanceConfigInput)(nil)).Elem(), GdcServiceInstanceSparkServiceInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GdcServiceInstanceSparkServiceInstanceConfigPtrInput)(nil)).Elem(), GdcServiceInstanceSparkServiceInstanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GdcSparkApplicationPysparkApplicationConfigInput)(nil)).Elem(), GdcSparkApplicationPysparkApplicationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GdcSparkApplicationPysparkApplicationConfigPtrInput)(nil)).Elem(), GdcSparkApplicationPysparkApplicationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GdcSparkApplicationSparkApplicationConfigInput)(nil)).Elem(), GdcSparkApplicationSparkApplicationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GdcSparkApplicationSparkApplicationConfigPtrInput)(nil)).Elem(), GdcSparkApplicationSparkApplicationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GdcSparkApplicationSparkRApplicationConfigInput)(nil)).Elem(), GdcSparkApplicationSparkRApplicationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GdcSparkApplicationSparkRApplicationConfigPtrInput)(nil)).Elem(), GdcSparkApplicationSparkRApplicationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GdcSparkApplicationSparkSqlApplicationConfigInput)(nil)).Elem(), GdcSparkApplicationSparkSqlApplicationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GdcSparkApplicationSparkSqlApplicationConfigPtrInput)(nil)).Elem(), GdcSparkApplicationSparkSqlApplicationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GdcSparkApplicationSparkSqlApplicationConfigQueryListInput)(nil)).Elem(), GdcSparkApplicationSparkSqlApplicationConfigQueryListArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GdcSparkApplicationSparkSqlApplicationConfigQueryListPtrInput)(nil)).Elem(), GdcSparkApplicationSparkSqlApplicationConfigQueryListArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobHadoopConfigInput)(nil)).Elem(), JobHadoopConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobHadoopConfigPtrInput)(nil)).Elem(), JobHadoopConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*JobHadoopConfigLoggingConfigInput)(nil)).Elem(), JobHadoopConfigLoggingConfigArgs{})
@@ -32114,6 +33119,16 @@ func init() {
 	pulumi.RegisterOutputType(GdcServiceInstanceGdceClusterPtrOutput{})
 	pulumi.RegisterOutputType(GdcServiceInstanceSparkServiceInstanceConfigOutput{})
 	pulumi.RegisterOutputType(GdcServiceInstanceSparkServiceInstanceConfigPtrOutput{})
+	pulumi.RegisterOutputType(GdcSparkApplicationPysparkApplicationConfigOutput{})
+	pulumi.RegisterOutputType(GdcSparkApplicationPysparkApplicationConfigPtrOutput{})
+	pulumi.RegisterOutputType(GdcSparkApplicationSparkApplicationConfigOutput{})
+	pulumi.RegisterOutputType(GdcSparkApplicationSparkApplicationConfigPtrOutput{})
+	pulumi.RegisterOutputType(GdcSparkApplicationSparkRApplicationConfigOutput{})
+	pulumi.RegisterOutputType(GdcSparkApplicationSparkRApplicationConfigPtrOutput{})
+	pulumi.RegisterOutputType(GdcSparkApplicationSparkSqlApplicationConfigOutput{})
+	pulumi.RegisterOutputType(GdcSparkApplicationSparkSqlApplicationConfigPtrOutput{})
+	pulumi.RegisterOutputType(GdcSparkApplicationSparkSqlApplicationConfigQueryListOutput{})
+	pulumi.RegisterOutputType(GdcSparkApplicationSparkSqlApplicationConfigQueryListPtrOutput{})
 	pulumi.RegisterOutputType(JobHadoopConfigOutput{})
 	pulumi.RegisterOutputType(JobHadoopConfigPtrOutput{})
 	pulumi.RegisterOutputType(JobHadoopConfigLoggingConfigOutput{})

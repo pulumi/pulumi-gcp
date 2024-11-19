@@ -18,18 +18,22 @@ public final class ServicePerimeterDryRunIngressPolicyIngressFromArgs extends co
     public static final ServicePerimeterDryRunIngressPolicyIngressFromArgs Empty = new ServicePerimeterDryRunIngressPolicyIngressFromArgs();
 
     /**
-     * A list of identities that are allowed access through this ingress policy.
-     * Should be in the format of email address. The email address should represent
-     * individual user or service account only.
+     * Identities can be an individual user, service account, Google group,
+     * or third-party identity. For third-party identity, only single identities
+     * are supported and other identity types are not supported.The v1 identities
+     * that have the prefix user, group and serviceAccount in
+     * https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.
      * 
      */
     @Import(name="identities")
     private @Nullable Output<List<String>> identities;
 
     /**
-     * @return A list of identities that are allowed access through this ingress policy.
-     * Should be in the format of email address. The email address should represent
-     * individual user or service account only.
+     * @return Identities can be an individual user, service account, Google group,
+     * or third-party identity. For third-party identity, only single identities
+     * are supported and other identity types are not supported.The v1 identities
+     * that have the prefix user, group and serviceAccount in
+     * https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.
      * 
      */
     public Optional<Output<List<String>>> identities() {
@@ -101,9 +105,11 @@ public final class ServicePerimeterDryRunIngressPolicyIngressFromArgs extends co
         }
 
         /**
-         * @param identities A list of identities that are allowed access through this ingress policy.
-         * Should be in the format of email address. The email address should represent
-         * individual user or service account only.
+         * @param identities Identities can be an individual user, service account, Google group,
+         * or third-party identity. For third-party identity, only single identities
+         * are supported and other identity types are not supported.The v1 identities
+         * that have the prefix user, group and serviceAccount in
+         * https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.
          * 
          * @return builder
          * 
@@ -114,9 +120,11 @@ public final class ServicePerimeterDryRunIngressPolicyIngressFromArgs extends co
         }
 
         /**
-         * @param identities A list of identities that are allowed access through this ingress policy.
-         * Should be in the format of email address. The email address should represent
-         * individual user or service account only.
+         * @param identities Identities can be an individual user, service account, Google group,
+         * or third-party identity. For third-party identity, only single identities
+         * are supported and other identity types are not supported.The v1 identities
+         * that have the prefix user, group and serviceAccount in
+         * https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.
          * 
          * @return builder
          * 
@@ -126,9 +134,11 @@ public final class ServicePerimeterDryRunIngressPolicyIngressFromArgs extends co
         }
 
         /**
-         * @param identities A list of identities that are allowed access through this ingress policy.
-         * Should be in the format of email address. The email address should represent
-         * individual user or service account only.
+         * @param identities Identities can be an individual user, service account, Google group,
+         * or third-party identity. For third-party identity, only single identities
+         * are supported and other identity types are not supported.The v1 identities
+         * that have the prefix user, group and serviceAccount in
+         * https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.
          * 
          * @return builder
          * 

@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.redis.inputs.ClusterDiscoveryEndpointArgs;
 import com.pulumi.gcp.redis.inputs.ClusterMaintenancePolicyArgs;
 import com.pulumi.gcp.redis.inputs.ClusterMaintenanceScheduleArgs;
+import com.pulumi.gcp.redis.inputs.ClusterPersistenceConfigArgs;
 import com.pulumi.gcp.redis.inputs.ClusterPscConfigArgs;
 import com.pulumi.gcp.redis.inputs.ClusterPscConnectionArgs;
 import com.pulumi.gcp.redis.inputs.ClusterStateInfoArgs;
@@ -167,6 +168,21 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> nodeType() {
         return Optional.ofNullable(this.nodeType);
+    }
+
+    /**
+     * Persistence config (RDB, AOF) for the cluster.
+     * 
+     */
+    @Import(name="persistenceConfig")
+    private @Nullable Output<ClusterPersistenceConfigArgs> persistenceConfig;
+
+    /**
+     * @return Persistence config (RDB, AOF) for the cluster.
+     * 
+     */
+    public Optional<Output<ClusterPersistenceConfigArgs>> persistenceConfig() {
+        return Optional.ofNullable(this.persistenceConfig);
     }
 
     /**
@@ -400,6 +416,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         this.maintenanceSchedules = $.maintenanceSchedules;
         this.name = $.name;
         this.nodeType = $.nodeType;
+        this.persistenceConfig = $.persistenceConfig;
         this.preciseSizeGb = $.preciseSizeGb;
         this.project = $.project;
         this.pscConfigs = $.pscConfigs;
@@ -646,6 +663,27 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder nodeType(String nodeType) {
             return nodeType(Output.of(nodeType));
+        }
+
+        /**
+         * @param persistenceConfig Persistence config (RDB, AOF) for the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder persistenceConfig(@Nullable Output<ClusterPersistenceConfigArgs> persistenceConfig) {
+            $.persistenceConfig = persistenceConfig;
+            return this;
+        }
+
+        /**
+         * @param persistenceConfig Persistence config (RDB, AOF) for the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder persistenceConfig(ClusterPersistenceConfigArgs persistenceConfig) {
+            return persistenceConfig(Output.of(persistenceConfig));
         }
 
         /**

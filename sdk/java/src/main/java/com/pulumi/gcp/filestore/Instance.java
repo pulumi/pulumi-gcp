@@ -12,6 +12,7 @@ import com.pulumi.gcp.filestore.InstanceArgs;
 import com.pulumi.gcp.filestore.inputs.InstanceState;
 import com.pulumi.gcp.filestore.outputs.InstanceFileShares;
 import com.pulumi.gcp.filestore.outputs.InstanceNetwork;
+import com.pulumi.gcp.filestore.outputs.InstancePerformanceConfig;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -455,6 +456,20 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<List<InstanceNetwork>> networks() {
         return this.networks;
+    }
+    /**
+     * Performance configuration for the instance. If not provided, the default performance settings will be used.
+     * 
+     */
+    @Export(name="performanceConfig", refs={InstancePerformanceConfig.class}, tree="[0]")
+    private Output</* @Nullable */ InstancePerformanceConfig> performanceConfig;
+
+    /**
+     * @return Performance configuration for the instance. If not provided, the default performance settings will be used.
+     * 
+     */
+    public Output<Optional<InstancePerformanceConfig>> performanceConfig() {
+        return Codegen.optional(this.performanceConfig);
     }
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;

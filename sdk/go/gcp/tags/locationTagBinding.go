@@ -58,9 +58,7 @@ import (
 //				return err
 //			}
 //			value, err := tags.NewTagValue(ctx, "value", &tags.TagValueArgs{
-//				Parent: key.Name.ApplyT(func(name string) (string, error) {
-//					return fmt.Sprintf("tagKeys/%v", name), nil
-//				}).(pulumi.StringOutput),
+//				Parent:      key.ID(),
 //				ShortName:   pulumi.String("valuename"),
 //				Description: pulumi.String("For valuename resources."),
 //			})
@@ -68,10 +66,8 @@ import (
 //				return err
 //			}
 //			_, err = tags.NewLocationTagBinding(ctx, "binding", &tags.LocationTagBindingArgs{
-//				Parent: pulumi.Sprintf("//run.googleapis.com/projects/%v/locations/%v/services/%v", projectGoogleProject.Number, _default.Location, _default.Name),
-//				TagValue: value.Name.ApplyT(func(name string) (string, error) {
-//					return fmt.Sprintf("tagValues/%v", name), nil
-//				}).(pulumi.StringOutput),
+//				Parent:   pulumi.Sprintf("//run.googleapis.com/projects/%v/locations/%v/services/%v", projectGoogleProject.Number, _default.Location, _default.Name),
+//				TagValue: value.ID(),
 //				Location: pulumi.String("us-central1"),
 //			})
 //			if err != nil {
@@ -117,9 +113,7 @@ import (
 //				return err
 //			}
 //			value, err := tags.NewTagValue(ctx, "value", &tags.TagValueArgs{
-//				Parent: key.Name.ApplyT(func(name string) (string, error) {
-//					return fmt.Sprintf("tagKeys/%v", name), nil
-//				}).(pulumi.StringOutput),
+//				Parent:      key.ID(),
 //				ShortName:   pulumi.String("valuename"),
 //				Description: pulumi.String("For valuename resources."),
 //			})
@@ -130,9 +124,7 @@ import (
 //				Parent: project.Number.ApplyT(func(number string) (string, error) {
 //					return fmt.Sprintf("//compute.googleapis.com/projects/%v/zones/us-central1-a/instances/%v", number, instance.InstanceId), nil
 //				}).(pulumi.StringOutput),
-//				TagValue: value.Name.ApplyT(func(name string) (string, error) {
-//					return fmt.Sprintf("tagValues/%v", name), nil
-//				}).(pulumi.StringOutput),
+//				TagValue: value.ID(),
 //				Location: pulumi.String("us-central1-a"),
 //			})
 //			if err != nil {

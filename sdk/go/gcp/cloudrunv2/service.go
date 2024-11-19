@@ -968,6 +968,8 @@ type Service struct {
 	// (Output)
 	// Displays the target URI.
 	Uri pulumi.StringOutput `pulumi:"uri"`
+	// All URLs serving traffic for this Service.
+	Urls pulumi.StringArrayOutput `pulumi:"urls"`
 }
 
 // NewService registers a new resource with the given unique name, arguments, and options.
@@ -1117,6 +1119,8 @@ type serviceState struct {
 	// (Output)
 	// Displays the target URI.
 	Uri *string `pulumi:"uri"`
+	// All URLs serving traffic for this Service.
+	Urls []string `pulumi:"urls"`
 }
 
 type ServiceState struct {
@@ -1226,6 +1230,8 @@ type ServiceState struct {
 	// (Output)
 	// Displays the target URI.
 	Uri pulumi.StringPtrInput
+	// All URLs serving traffic for this Service.
+	Urls pulumi.StringArrayInput
 }
 
 func (ServiceState) ElementType() reflect.Type {
@@ -1662,6 +1668,11 @@ func (o ServiceOutput) UpdateTime() pulumi.StringOutput {
 // Displays the target URI.
 func (o ServiceOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Uri }).(pulumi.StringOutput)
+}
+
+// All URLs serving traffic for this Service.
+func (o ServiceOutput) Urls() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *Service) pulumi.StringArrayOutput { return v.Urls }).(pulumi.StringArrayOutput)
 }
 
 type ServiceArrayOutput struct{ *pulumi.OutputState }

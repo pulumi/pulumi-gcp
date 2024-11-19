@@ -19,6 +19,7 @@ __all__ = [
     'InstanceIamBindingCondition',
     'InstanceIamMemberCondition',
     'InstancePrivateConfig',
+    'InstanceWorkforceIdentityFederationConfig',
     'RepositoryIamBindingCondition',
     'RepositoryIamMemberCondition',
     'RepositoryInitialConfig',
@@ -239,6 +240,24 @@ class InstancePrivateConfig(dict):
         Service Attachment for SSH, resource is in the format of `projects/{project}/regions/{region}/serviceAttachments/{service_attachment}`.
         """
         return pulumi.get(self, "ssh_service_attachment")
+
+
+@pulumi.output_type
+class InstanceWorkforceIdentityFederationConfig(dict):
+    def __init__(__self__, *,
+                 enabled: bool):
+        """
+        :param bool enabled: 'Whether Workforce Identity Federation is enabled.'
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        'Whether Workforce Identity Federation is enabled.'
+        """
+        return pulumi.get(self, "enabled")
 
 
 @pulumi.output_type

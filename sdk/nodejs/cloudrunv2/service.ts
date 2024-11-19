@@ -734,6 +734,10 @@ export class Service extends pulumi.CustomResource {
      * Displays the target URI.
      */
     public /*out*/ readonly uri!: pulumi.Output<string>;
+    /**
+     * All URLs serving traffic for this Service.
+     */
+    public /*out*/ readonly urls!: pulumi.Output<string[]>;
 
     /**
      * Create a Service resource with the given unique name, arguments, and options.
@@ -786,6 +790,7 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["uid"] = state ? state.uid : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
             resourceInputs["uri"] = state ? state.uri : undefined;
+            resourceInputs["urls"] = state ? state.urls : undefined;
         } else {
             const args = argsOrState as ServiceArgs | undefined;
             if ((!args || args.location === undefined) && !opts.urn) {
@@ -832,6 +837,7 @@ export class Service extends pulumi.CustomResource {
             resourceInputs["uid"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
             resourceInputs["uri"] = undefined /*out*/;
+            resourceInputs["urls"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         const secretOpts = { additionalSecretOutputs: ["effectiveLabels", "pulumiLabels"] };
@@ -1020,6 +1026,10 @@ export interface ServiceState {
      * Displays the target URI.
      */
     uri?: pulumi.Input<string>;
+    /**
+     * All URLs serving traffic for this Service.
+     */
+    urls?: pulumi.Input<pulumi.Input<string>[]>;
 }
 
 /**

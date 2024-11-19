@@ -43,6 +43,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &GdcApplicationEnvironment{}
 	case "gcp:dataproc/gdcServiceInstance:GdcServiceInstance":
 		r = &GdcServiceInstance{}
+	case "gcp:dataproc/gdcSparkApplication:GdcSparkApplication":
+		r = &GdcSparkApplication{}
 	case "gcp:dataproc/job:Job":
 		r = &Job{}
 	case "gcp:dataproc/jobIAMBinding:JobIAMBinding":
@@ -135,6 +137,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"dataproc/gdcServiceInstance",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"dataproc/gdcSparkApplication",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

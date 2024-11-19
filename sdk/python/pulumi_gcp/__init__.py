@@ -4125,6 +4125,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "dataproc/gdcSparkApplication",
+  "fqn": "pulumi_gcp.dataproc",
+  "classes": {
+   "gcp:dataproc/gdcSparkApplication:GdcSparkApplication": "GdcSparkApplication"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "dataproc/job",
   "fqn": "pulumi_gcp.dataproc",
   "classes": {
@@ -5369,6 +5377,22 @@ _utilities.register(
   "fqn": "pulumi_gcp.iam",
   "classes": {
    "gcp:iam/denyPolicy:DenyPolicy": "DenyPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "iam/foldersPolicyBinding",
+  "fqn": "pulumi_gcp.iam",
+  "classes": {
+   "gcp:iam/foldersPolicyBinding:FoldersPolicyBinding": "FoldersPolicyBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "iam/organizationsPolicyBinding",
+  "fqn": "pulumi_gcp.iam",
+  "classes": {
+   "gcp:iam/organizationsPolicyBinding:OrganizationsPolicyBinding": "OrganizationsPolicyBinding"
   }
  },
  {

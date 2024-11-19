@@ -26,7 +26,8 @@ class InstanceArgs:
                  kms_key: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  private_config: Optional[pulumi.Input['InstancePrivateConfigArgs']] = None,
-                 project: Optional[pulumi.Input[str]] = None):
+                 project: Optional[pulumi.Input[str]] = None,
+                 workforce_identity_federation_config: Optional[pulumi.Input['InstanceWorkforceIdentityFederationConfigArgs']] = None):
         """
         The set of arguments for constructing a Instance resource.
         :param pulumi.Input[str] instance_id: The name for the Instance.
@@ -43,6 +44,9 @@ class InstanceArgs:
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input['InstanceWorkforceIdentityFederationConfigArgs'] workforce_identity_federation_config: Configuration for Workforce Identity Federation to support third party identity provider.
+               If unset, defaults to the Google OIDC IdP.
+               Structure is documented below.
         """
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "location", location)
@@ -54,6 +58,8 @@ class InstanceArgs:
             pulumi.set(__self__, "private_config", private_config)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if workforce_identity_federation_config is not None:
+            pulumi.set(__self__, "workforce_identity_federation_config", workforce_identity_federation_config)
 
     @property
     @pulumi.getter(name="instanceId")
@@ -135,6 +141,20 @@ class InstanceArgs:
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
 
+    @property
+    @pulumi.getter(name="workforceIdentityFederationConfig")
+    def workforce_identity_federation_config(self) -> Optional[pulumi.Input['InstanceWorkforceIdentityFederationConfigArgs']]:
+        """
+        Configuration for Workforce Identity Federation to support third party identity provider.
+        If unset, defaults to the Google OIDC IdP.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "workforce_identity_federation_config")
+
+    @workforce_identity_federation_config.setter
+    def workforce_identity_federation_config(self, value: Optional[pulumi.Input['InstanceWorkforceIdentityFederationConfigArgs']]):
+        pulumi.set(self, "workforce_identity_federation_config", value)
+
 
 @pulumi.input_type
 class _InstanceState:
@@ -152,7 +172,8 @@ class _InstanceState:
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  state_note: Optional[pulumi.Input[str]] = None,
-                 update_time: Optional[pulumi.Input[str]] = None):
+                 update_time: Optional[pulumi.Input[str]] = None,
+                 workforce_identity_federation_config: Optional[pulumi.Input['InstanceWorkforceIdentityFederationConfigArgs']] = None):
         """
         Input properties used for looking up and filtering Instance resources.
         :param pulumi.Input[str] create_time: Time the Instance was created in UTC.
@@ -179,6 +200,9 @@ class _InstanceState:
         :param pulumi.Input[str] state: The current state of the Instance.
         :param pulumi.Input[str] state_note: Provides information about the current instance state.
         :param pulumi.Input[str] update_time: Time the Instance was updated in UTC.
+        :param pulumi.Input['InstanceWorkforceIdentityFederationConfigArgs'] workforce_identity_federation_config: Configuration for Workforce Identity Federation to support third party identity provider.
+               If unset, defaults to the Google OIDC IdP.
+               Structure is documented below.
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
@@ -208,6 +232,8 @@ class _InstanceState:
             pulumi.set(__self__, "state_note", state_note)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
+        if workforce_identity_federation_config is not None:
+            pulumi.set(__self__, "workforce_identity_federation_config", workforce_identity_federation_config)
 
     @property
     @pulumi.getter(name="createTime")
@@ -387,6 +413,20 @@ class _InstanceState:
     def update_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "update_time", value)
 
+    @property
+    @pulumi.getter(name="workforceIdentityFederationConfig")
+    def workforce_identity_federation_config(self) -> Optional[pulumi.Input['InstanceWorkforceIdentityFederationConfigArgs']]:
+        """
+        Configuration for Workforce Identity Federation to support third party identity provider.
+        If unset, defaults to the Google OIDC IdP.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "workforce_identity_federation_config")
+
+    @workforce_identity_federation_config.setter
+    def workforce_identity_federation_config(self, value: Optional[pulumi.Input['InstanceWorkforceIdentityFederationConfigArgs']]):
+        pulumi.set(self, "workforce_identity_federation_config", value)
+
 
 class Instance(pulumi.CustomResource):
     @overload
@@ -399,6 +439,7 @@ class Instance(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  private_config: Optional[pulumi.Input[Union['InstancePrivateConfigArgs', 'InstancePrivateConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 workforce_identity_federation_config: Optional[pulumi.Input[Union['InstanceWorkforceIdentityFederationConfigArgs', 'InstanceWorkforceIdentityFederationConfigArgsDict']]] = None,
                  __props__=None):
         """
         Instances are deployed to an available Google Cloud region and are accessible via their web interface.
@@ -776,6 +817,19 @@ class Instance(pulumi.CustomResource):
             managed_zone=private_zone.name,
             rrdatas=[fw_rule_service_attachment.ip_address])
         ```
+        ### Secure Source Manager Instance Workforce Identity Federation
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.securesourcemanager.Instance("default",
+            location="us-central1",
+            instance_id="my-instance",
+            workforce_identity_federation_config={
+                "enabled": True,
+            })
+        ```
 
         ## Import
 
@@ -823,6 +877,9 @@ class Instance(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Union['InstanceWorkforceIdentityFederationConfigArgs', 'InstanceWorkforceIdentityFederationConfigArgsDict']] workforce_identity_federation_config: Configuration for Workforce Identity Federation to support third party identity provider.
+               If unset, defaults to the Google OIDC IdP.
+               Structure is documented below.
         """
         ...
     @overload
@@ -1206,6 +1263,19 @@ class Instance(pulumi.CustomResource):
             managed_zone=private_zone.name,
             rrdatas=[fw_rule_service_attachment.ip_address])
         ```
+        ### Secure Source Manager Instance Workforce Identity Federation
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.securesourcemanager.Instance("default",
+            location="us-central1",
+            instance_id="my-instance",
+            workforce_identity_federation_config={
+                "enabled": True,
+            })
+        ```
 
         ## Import
 
@@ -1258,6 +1328,7 @@ class Instance(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  private_config: Optional[pulumi.Input[Union['InstancePrivateConfigArgs', 'InstancePrivateConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 workforce_identity_federation_config: Optional[pulumi.Input[Union['InstanceWorkforceIdentityFederationConfigArgs', 'InstanceWorkforceIdentityFederationConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1277,6 +1348,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["private_config"] = private_config
             __props__.__dict__["project"] = project
+            __props__.__dict__["workforce_identity_federation_config"] = workforce_identity_federation_config
             __props__.__dict__["create_time"] = None
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["host_configs"] = None
@@ -1310,7 +1382,8 @@ class Instance(pulumi.CustomResource):
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             state: Optional[pulumi.Input[str]] = None,
             state_note: Optional[pulumi.Input[str]] = None,
-            update_time: Optional[pulumi.Input[str]] = None) -> 'Instance':
+            update_time: Optional[pulumi.Input[str]] = None,
+            workforce_identity_federation_config: Optional[pulumi.Input[Union['InstanceWorkforceIdentityFederationConfigArgs', 'InstanceWorkforceIdentityFederationConfigArgsDict']]] = None) -> 'Instance':
         """
         Get an existing Instance resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1342,6 +1415,9 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] state: The current state of the Instance.
         :param pulumi.Input[str] state_note: Provides information about the current instance state.
         :param pulumi.Input[str] update_time: Time the Instance was updated in UTC.
+        :param pulumi.Input[Union['InstanceWorkforceIdentityFederationConfigArgs', 'InstanceWorkforceIdentityFederationConfigArgsDict']] workforce_identity_federation_config: Configuration for Workforce Identity Federation to support third party identity provider.
+               If unset, defaults to the Google OIDC IdP.
+               Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1361,6 +1437,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["state"] = state
         __props__.__dict__["state_note"] = state_note
         __props__.__dict__["update_time"] = update_time
+        __props__.__dict__["workforce_identity_federation_config"] = workforce_identity_federation_config
         return Instance(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -1484,4 +1561,14 @@ class Instance(pulumi.CustomResource):
         Time the Instance was updated in UTC.
         """
         return pulumi.get(self, "update_time")
+
+    @property
+    @pulumi.getter(name="workforceIdentityFederationConfig")
+    def workforce_identity_federation_config(self) -> pulumi.Output[Optional['outputs.InstanceWorkforceIdentityFederationConfig']]:
+        """
+        Configuration for Workforce Identity Federation to support third party identity provider.
+        If unset, defaults to the Google OIDC IdP.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "workforce_identity_federation_config")
 

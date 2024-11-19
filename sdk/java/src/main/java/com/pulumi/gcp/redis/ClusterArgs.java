@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.redis.inputs.ClusterMaintenancePolicyArgs;
+import com.pulumi.gcp.redis.inputs.ClusterPersistenceConfigArgs;
 import com.pulumi.gcp.redis.inputs.ClusterPscConfigArgs;
 import com.pulumi.gcp.redis.inputs.ClusterZoneDistributionConfigArgs;
 import java.lang.Boolean;
@@ -106,6 +107,21 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> nodeType() {
         return Optional.ofNullable(this.nodeType);
+    }
+
+    /**
+     * Persistence config (RDB, AOF) for the cluster.
+     * 
+     */
+    @Import(name="persistenceConfig")
+    private @Nullable Output<ClusterPersistenceConfigArgs> persistenceConfig;
+
+    /**
+     * @return Persistence config (RDB, AOF) for the cluster.
+     * 
+     */
+    public Optional<Output<ClusterPersistenceConfigArgs>> persistenceConfig() {
+        return Optional.ofNullable(this.persistenceConfig);
     }
 
     @Import(name="project")
@@ -242,6 +258,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.maintenancePolicy = $.maintenancePolicy;
         this.name = $.name;
         this.nodeType = $.nodeType;
+        this.persistenceConfig = $.persistenceConfig;
         this.project = $.project;
         this.pscConfigs = $.pscConfigs;
         this.redisConfigs = $.redisConfigs;
@@ -383,6 +400,27 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder nodeType(String nodeType) {
             return nodeType(Output.of(nodeType));
+        }
+
+        /**
+         * @param persistenceConfig Persistence config (RDB, AOF) for the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder persistenceConfig(@Nullable Output<ClusterPersistenceConfigArgs> persistenceConfig) {
+            $.persistenceConfig = persistenceConfig;
+            return this;
+        }
+
+        /**
+         * @param persistenceConfig Persistence config (RDB, AOF) for the cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder persistenceConfig(ClusterPersistenceConfigArgs persistenceConfig) {
+            return persistenceConfig(Output.of(persistenceConfig));
         }
 
         public Builder project(@Nullable Output<String> project) {

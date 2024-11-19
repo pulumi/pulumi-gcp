@@ -197,6 +197,207 @@ namespace Pulumi.Gcp.Redis
     /// 
     /// });
     /// ```
+    /// ### Redis Cluster Rdb
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var producerNet = new Gcp.Compute.Network("producer_net", new()
+    ///     {
+    ///         Name = "mynetwork",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var producerSubnet = new Gcp.Compute.Subnetwork("producer_subnet", new()
+    ///     {
+    ///         Name = "mysubnet",
+    ///         IpCidrRange = "10.0.0.248/29",
+    ///         Region = "us-central1",
+    ///         Network = producerNet.Id,
+    ///     });
+    /// 
+    ///     var @default = new Gcp.NetworkConnectivity.ServiceConnectionPolicy("default", new()
+    ///     {
+    ///         Name = "mypolicy",
+    ///         Location = "us-central1",
+    ///         ServiceClass = "gcp-memorystore-redis",
+    ///         Description = "my basic service connection policy",
+    ///         Network = producerNet.Id,
+    ///         PscConfig = new Gcp.NetworkConnectivity.Inputs.ServiceConnectionPolicyPscConfigArgs
+    ///         {
+    ///             Subnetworks = new[]
+    ///             {
+    ///                 producerSubnet.Id,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var cluster_rdb = new Gcp.Redis.Cluster("cluster-rdb", new()
+    ///     {
+    ///         Name = "rdb-cluster",
+    ///         ShardCount = 3,
+    ///         PscConfigs = new[]
+    ///         {
+    ///             new Gcp.Redis.Inputs.ClusterPscConfigArgs
+    ///             {
+    ///                 Network = producerNet.Id,
+    ///             },
+    ///         },
+    ///         Region = "us-central1",
+    ///         ReplicaCount = 0,
+    ///         NodeType = "REDIS_SHARED_CORE_NANO",
+    ///         TransitEncryptionMode = "TRANSIT_ENCRYPTION_MODE_DISABLED",
+    ///         AuthorizationMode = "AUTH_MODE_DISABLED",
+    ///         RedisConfigs = 
+    ///         {
+    ///             { "maxmemory-policy", "volatile-ttl" },
+    ///         },
+    ///         DeletionProtectionEnabled = true,
+    ///         ZoneDistributionConfig = new Gcp.Redis.Inputs.ClusterZoneDistributionConfigArgs
+    ///         {
+    ///             Mode = "MULTI_ZONE",
+    ///         },
+    ///         MaintenancePolicy = new Gcp.Redis.Inputs.ClusterMaintenancePolicyArgs
+    ///         {
+    ///             WeeklyMaintenanceWindows = new[]
+    ///             {
+    ///                 new Gcp.Redis.Inputs.ClusterMaintenancePolicyWeeklyMaintenanceWindowArgs
+    ///                 {
+    ///                     Day = "MONDAY",
+    ///                     StartTime = new Gcp.Redis.Inputs.ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs
+    ///                     {
+    ///                         Hours = 1,
+    ///                         Minutes = 0,
+    ///                         Seconds = 0,
+    ///                         Nanos = 0,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         PersistenceConfig = new Gcp.Redis.Inputs.ClusterPersistenceConfigArgs
+    ///         {
+    ///             Mode = "RDB",
+    ///             RdbConfig = new Gcp.Redis.Inputs.ClusterPersistenceConfigRdbConfigArgs
+    ///             {
+    ///                 RdbSnapshotPeriod = "ONE_HOUR",
+    ///                 RdbSnapshotStartTime = "2024-10-02T15:01:23Z",
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             @default,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Redis Cluster Aof
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var producerNet = new Gcp.Compute.Network("producer_net", new()
+    ///     {
+    ///         Name = "mynetwork",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var producerSubnet = new Gcp.Compute.Subnetwork("producer_subnet", new()
+    ///     {
+    ///         Name = "mysubnet",
+    ///         IpCidrRange = "10.0.0.248/29",
+    ///         Region = "us-central1",
+    ///         Network = producerNet.Id,
+    ///     });
+    /// 
+    ///     var @default = new Gcp.NetworkConnectivity.ServiceConnectionPolicy("default", new()
+    ///     {
+    ///         Name = "mypolicy",
+    ///         Location = "us-central1",
+    ///         ServiceClass = "gcp-memorystore-redis",
+    ///         Description = "my basic service connection policy",
+    ///         Network = producerNet.Id,
+    ///         PscConfig = new Gcp.NetworkConnectivity.Inputs.ServiceConnectionPolicyPscConfigArgs
+    ///         {
+    ///             Subnetworks = new[]
+    ///             {
+    ///                 producerSubnet.Id,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var cluster_aof = new Gcp.Redis.Cluster("cluster-aof", new()
+    ///     {
+    ///         Name = "aof-cluster",
+    ///         ShardCount = 3,
+    ///         PscConfigs = new[]
+    ///         {
+    ///             new Gcp.Redis.Inputs.ClusterPscConfigArgs
+    ///             {
+    ///                 Network = producerNet.Id,
+    ///             },
+    ///         },
+    ///         Region = "us-central1",
+    ///         ReplicaCount = 0,
+    ///         NodeType = "REDIS_SHARED_CORE_NANO",
+    ///         TransitEncryptionMode = "TRANSIT_ENCRYPTION_MODE_DISABLED",
+    ///         AuthorizationMode = "AUTH_MODE_DISABLED",
+    ///         RedisConfigs = 
+    ///         {
+    ///             { "maxmemory-policy", "volatile-ttl" },
+    ///         },
+    ///         DeletionProtectionEnabled = true,
+    ///         ZoneDistributionConfig = new Gcp.Redis.Inputs.ClusterZoneDistributionConfigArgs
+    ///         {
+    ///             Mode = "MULTI_ZONE",
+    ///         },
+    ///         MaintenancePolicy = new Gcp.Redis.Inputs.ClusterMaintenancePolicyArgs
+    ///         {
+    ///             WeeklyMaintenanceWindows = new[]
+    ///             {
+    ///                 new Gcp.Redis.Inputs.ClusterMaintenancePolicyWeeklyMaintenanceWindowArgs
+    ///                 {
+    ///                     Day = "MONDAY",
+    ///                     StartTime = new Gcp.Redis.Inputs.ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs
+    ///                     {
+    ///                         Hours = 1,
+    ///                         Minutes = 0,
+    ///                         Seconds = 0,
+    ///                         Nanos = 0,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         PersistenceConfig = new Gcp.Redis.Inputs.ClusterPersistenceConfigArgs
+    ///         {
+    ///             Mode = "AOF",
+    ///             AofConfig = new Gcp.Redis.Inputs.ClusterPersistenceConfigAofConfigArgs
+    ///             {
+    ///                 AppendFsync = "EVERYSEC",
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             @default,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -289,6 +490,12 @@ namespace Pulumi.Gcp.Redis
         /// </summary>
         [Output("nodeType")]
         public Output<string> NodeType { get; private set; } = null!;
+
+        /// <summary>
+        /// Persistence config (RDB, AOF) for the cluster.
+        /// </summary>
+        [Output("persistenceConfig")]
+        public Output<Outputs.ClusterPersistenceConfig> PersistenceConfig { get; private set; } = null!;
 
         /// <summary>
         /// Output only. Redis memory precise size in GB for the entire cluster.
@@ -461,6 +668,12 @@ namespace Pulumi.Gcp.Redis
         [Input("nodeType")]
         public Input<string>? NodeType { get; set; }
 
+        /// <summary>
+        /// Persistence config (RDB, AOF) for the cluster.
+        /// </summary>
+        [Input("persistenceConfig")]
+        public Input<Inputs.ClusterPersistenceConfigArgs>? PersistenceConfig { get; set; }
+
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -603,6 +816,12 @@ namespace Pulumi.Gcp.Redis
         /// </summary>
         [Input("nodeType")]
         public Input<string>? NodeType { get; set; }
+
+        /// <summary>
+        /// Persistence config (RDB, AOF) for the cluster.
+        /// </summary>
+        [Input("persistenceConfig")]
+        public Input<Inputs.ClusterPersistenceConfigGetArgs>? PersistenceConfig { get; set; }
 
         /// <summary>
         /// Output only. Redis memory precise size in GB for the entire cluster.

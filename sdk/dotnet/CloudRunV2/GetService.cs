@@ -171,6 +171,7 @@ namespace Pulumi.Gcp.CloudRunV2
         public readonly string Uid;
         public readonly string UpdateTime;
         public readonly string Uri;
+        public readonly ImmutableArray<string> Urls;
 
         [OutputConstructor]
         private GetServiceResult(
@@ -250,7 +251,9 @@ namespace Pulumi.Gcp.CloudRunV2
 
             string updateTime,
 
-            string uri)
+            string uri,
+
+            ImmutableArray<string> urls)
         {
             Annotations = annotations;
             BinaryAuthorizations = binaryAuthorizations;
@@ -291,6 +294,7 @@ namespace Pulumi.Gcp.CloudRunV2
             Uid = uid;
             UpdateTime = updateTime;
             Uri = uri;
+            Urls = urls;
         }
     }
 }

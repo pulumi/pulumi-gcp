@@ -1119,6 +1119,30 @@ class Repository(pulumi.CustomResource):
                 },
             })
         ```
+        ### Artifact Registry Repository Remote Common Repository With Docker
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        upstream_repo = gcp.artifactregistry.Repository("upstream_repo",
+            location="us-central1",
+            repository_id="example-upstream-repo",
+            description="example upstream repository",
+            format="DOCKER")
+        my_repo = gcp.artifactregistry.Repository("my-repo",
+            location="us-central1",
+            repository_id="example-common-remote",
+            description="example remote common repository with docker upstream",
+            format="DOCKER",
+            mode="REMOTE_REPOSITORY",
+            remote_repository_config={
+                "description": "pull-through cache of another Artifact Registry repository",
+                "common_repository": {
+                    "uri": upstream_repo.id,
+                },
+            })
+        ```
 
         ## Import
 
@@ -1612,6 +1636,30 @@ class Repository(pulumi.CustomResource):
                         "username": "remote-username",
                         "password_secret_version": example_remote_secret_version.name,
                     },
+                },
+            })
+        ```
+        ### Artifact Registry Repository Remote Common Repository With Docker
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        upstream_repo = gcp.artifactregistry.Repository("upstream_repo",
+            location="us-central1",
+            repository_id="example-upstream-repo",
+            description="example upstream repository",
+            format="DOCKER")
+        my_repo = gcp.artifactregistry.Repository("my-repo",
+            location="us-central1",
+            repository_id="example-common-remote",
+            description="example remote common repository with docker upstream",
+            format="DOCKER",
+            mode="REMOTE_REPOSITORY",
+            remote_repository_config={
+                "description": "pull-through cache of another Artifact Registry repository",
+                "common_repository": {
+                    "uri": upstream_repo.id,
                 },
             })
         ```

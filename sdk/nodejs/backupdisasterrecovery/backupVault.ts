@@ -27,6 +27,7 @@ import * as utilities from "../utilities";
  *         annotations2: "baz1",
  *     },
  *     forceUpdate: true,
+ *     accessRestriction: "WITHIN_ORGANIZATION",
  *     ignoreInactiveDatasources: true,
  *     ignoreBackupPlanReferences: true,
  *     allowMissing: true,
@@ -85,6 +86,12 @@ export class BackupVault extends pulumi.CustomResource {
         return obj['__pulumiType'] === BackupVault.__pulumiType;
     }
 
+    /**
+     * Access restriction for the backup vault. Default value is `WITHIN_ORGANIZATION` if not provided during creation.
+     * Default value is `WITHIN_ORGANIZATION`.
+     * Possible values are: `ACCESS_RESTRICTION_UNSPECIFIED`, `WITHIN_PROJECT`, `WITHIN_ORGANIZATION`, `UNRESTRICTED`, `WITHIN_ORG_BUT_UNRESTRICTED_FOR_BA`.
+     */
+    public readonly accessRestriction!: pulumi.Output<string | undefined>;
     /**
      * Allow idempotent deletion of backup vault. The request will still succeed in case the backup vault does not exist.
      */
@@ -228,6 +235,7 @@ export class BackupVault extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as BackupVaultState | undefined;
+            resourceInputs["accessRestriction"] = state ? state.accessRestriction : undefined;
             resourceInputs["allowMissing"] = state ? state.allowMissing : undefined;
             resourceInputs["annotations"] = state ? state.annotations : undefined;
             resourceInputs["backupCount"] = state ? state.backupCount : undefined;
@@ -265,6 +273,7 @@ export class BackupVault extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
+            resourceInputs["accessRestriction"] = args ? args.accessRestriction : undefined;
             resourceInputs["allowMissing"] = args ? args.allowMissing : undefined;
             resourceInputs["annotations"] = args ? args.annotations : undefined;
             resourceInputs["backupMinimumEnforcedRetentionDuration"] = args ? args.backupMinimumEnforcedRetentionDuration : undefined;
@@ -303,6 +312,12 @@ export class BackupVault extends pulumi.CustomResource {
  * Input properties used for looking up and filtering BackupVault resources.
  */
 export interface BackupVaultState {
+    /**
+     * Access restriction for the backup vault. Default value is `WITHIN_ORGANIZATION` if not provided during creation.
+     * Default value is `WITHIN_ORGANIZATION`.
+     * Possible values are: `ACCESS_RESTRICTION_UNSPECIFIED`, `WITHIN_PROJECT`, `WITHIN_ORGANIZATION`, `UNRESTRICTED`, `WITHIN_ORG_BUT_UNRESTRICTED_FOR_BA`.
+     */
+    accessRestriction?: pulumi.Input<string>;
     /**
      * Allow idempotent deletion of backup vault. The request will still succeed in case the backup vault does not exist.
      */
@@ -438,6 +453,12 @@ export interface BackupVaultState {
  * The set of arguments for constructing a BackupVault resource.
  */
 export interface BackupVaultArgs {
+    /**
+     * Access restriction for the backup vault. Default value is `WITHIN_ORGANIZATION` if not provided during creation.
+     * Default value is `WITHIN_ORGANIZATION`.
+     * Possible values are: `ACCESS_RESTRICTION_UNSPECIFIED`, `WITHIN_PROJECT`, `WITHIN_ORGANIZATION`, `UNRESTRICTED`, `WITHIN_ORG_BUT_UNRESTRICTED_FOR_BA`.
+     */
+    accessRestriction?: pulumi.Input<string>;
     /**
      * Allow idempotent deletion of backup vault. The request will still succeed in case the backup vault does not exist.
      */

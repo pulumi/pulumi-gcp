@@ -378,6 +378,8 @@ class Cluster(pulumi.CustomResource):
                  rebalance_config: Optional[pulumi.Input[Union['ClusterRebalanceConfigArgs', 'ClusterRebalanceConfigArgsDict']]] = None,
                  __props__=None):
         """
+        A Managed Service for Apache Kafka cluster. Apache Kafka is a trademark owned by the Apache Software Foundation.
+
         ## Example Usage
 
         ### Managedkafka Cluster Basic
@@ -490,6 +492,8 @@ class Cluster(pulumi.CustomResource):
                  args: ClusterArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A Managed Service for Apache Kafka cluster. Apache Kafka is a trademark owned by the Apache Software Foundation.
+
         ## Example Usage
 
         ### Managedkafka Cluster Basic

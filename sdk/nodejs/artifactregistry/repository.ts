@@ -449,6 +449,32 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Artifact Registry Repository Remote Common Repository With Docker
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const upstreamRepo = new gcp.artifactregistry.Repository("upstream_repo", {
+ *     location: "us-central1",
+ *     repositoryId: "example-upstream-repo",
+ *     description: "example upstream repository",
+ *     format: "DOCKER",
+ * });
+ * const my_repo = new gcp.artifactregistry.Repository("my-repo", {
+ *     location: "us-central1",
+ *     repositoryId: "example-common-remote",
+ *     description: "example remote common repository with docker upstream",
+ *     format: "DOCKER",
+ *     mode: "REMOTE_REPOSITORY",
+ *     remoteRepositoryConfig: {
+ *         description: "pull-through cache of another Artifact Registry repository",
+ *         commonRepository: {
+ *             uri: upstreamRepo.id,
+ *         },
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

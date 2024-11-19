@@ -39,6 +39,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
     ///             { "annotations2", "baz1" },
     ///         },
     ///         ForceUpdate = true,
+    ///         AccessRestriction = "WITHIN_ORGANIZATION",
     ///         IgnoreInactiveDatasources = true,
     ///         IgnoreBackupPlanReferences = true,
     ///         AllowMissing = true,
@@ -74,6 +75,14 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
     [GcpResourceType("gcp:backupdisasterrecovery/backupVault:BackupVault")]
     public partial class BackupVault : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Access restriction for the backup vault. Default value is `WITHIN_ORGANIZATION` if not provided during creation.
+        /// Default value is `WITHIN_ORGANIZATION`.
+        /// Possible values are: `ACCESS_RESTRICTION_UNSPECIFIED`, `WITHIN_PROJECT`, `WITHIN_ORGANIZATION`, `UNRESTRICTED`, `WITHIN_ORG_BUT_UNRESTRICTED_FOR_BA`.
+        /// </summary>
+        [Output("accessRestriction")]
+        public Output<string?> AccessRestriction { get; private set; } = null!;
+
         /// <summary>
         /// Allow idempotent deletion of backup vault. The request will still succeed in case the backup vault does not exist.
         /// </summary>
@@ -305,6 +314,14 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
     public sealed class BackupVaultArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Access restriction for the backup vault. Default value is `WITHIN_ORGANIZATION` if not provided during creation.
+        /// Default value is `WITHIN_ORGANIZATION`.
+        /// Possible values are: `ACCESS_RESTRICTION_UNSPECIFIED`, `WITHIN_PROJECT`, `WITHIN_ORGANIZATION`, `UNRESTRICTED`, `WITHIN_ORG_BUT_UNRESTRICTED_FOR_BA`.
+        /// </summary>
+        [Input("accessRestriction")]
+        public Input<string>? AccessRestriction { get; set; }
+
+        /// <summary>
         /// Allow idempotent deletion of backup vault. The request will still succeed in case the backup vault does not exist.
         /// </summary>
         [Input("allowMissing")]
@@ -421,6 +438,14 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
 
     public sealed class BackupVaultState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Access restriction for the backup vault. Default value is `WITHIN_ORGANIZATION` if not provided during creation.
+        /// Default value is `WITHIN_ORGANIZATION`.
+        /// Possible values are: `ACCESS_RESTRICTION_UNSPECIFIED`, `WITHIN_PROJECT`, `WITHIN_ORGANIZATION`, `UNRESTRICTED`, `WITHIN_ORG_BUT_UNRESTRICTED_FOR_BA`.
+        /// </summary>
+        [Input("accessRestriction")]
+        public Input<string>? AccessRestriction { get; set; }
+
         /// <summary>
         /// Allow idempotent deletion of backup vault. The request will still succeed in case the backup vault does not exist.
         /// </summary>

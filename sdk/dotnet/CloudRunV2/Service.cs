@@ -1108,6 +1108,12 @@ namespace Pulumi.Gcp.CloudRunV2
         [Output("uri")]
         public Output<string> Uri { get; private set; } = null!;
 
+        /// <summary>
+        /// All URLs serving traffic for this Service.
+        /// </summary>
+        [Output("urls")]
+        public Output<ImmutableArray<string>> Urls { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Service resource with the given unique name, arguments, and options.
@@ -1636,6 +1642,18 @@ namespace Pulumi.Gcp.CloudRunV2
         /// </summary>
         [Input("uri")]
         public Input<string>? Uri { get; set; }
+
+        [Input("urls")]
+        private InputList<string>? _urls;
+
+        /// <summary>
+        /// All URLs serving traffic for this Service.
+        /// </summary>
+        public InputList<string> Urls
+        {
+            get => _urls ?? (_urls = new InputList<string>());
+            set => _urls = value;
+        }
 
         public ServiceState()
         {

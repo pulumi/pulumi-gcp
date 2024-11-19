@@ -79,7 +79,7 @@ namespace Pulumi.Gcp.Sql
     ///             {
     ///                 new Gcp.Sql.Inputs.DatabaseInstanceSettingsDatabaseFlagArgs
     ///                 {
-    ///                     Name = "cloudsql_iam_authentication",
+    ///                     Name = "cloudsql.iam_authentication",
     ///                     Value = "on",
     ///                 },
     ///             },

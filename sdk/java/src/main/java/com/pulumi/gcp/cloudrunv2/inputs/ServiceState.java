@@ -637,6 +637,21 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.uri);
     }
 
+    /**
+     * All URLs serving traffic for this Service.
+     * 
+     */
+    @Import(name="urls")
+    private @Nullable Output<List<String>> urls;
+
+    /**
+     * @return All URLs serving traffic for this Service.
+     * 
+     */
+    public Optional<Output<List<String>>> urls() {
+        return Optional.ofNullable(this.urls);
+    }
+
     private ServiceState() {}
 
     private ServiceState(ServiceState $) {
@@ -678,6 +693,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         this.uid = $.uid;
         this.updateTime = $.updateTime;
         this.uri = $.uri;
+        this.urls = $.urls;
     }
 
     public static Builder builder() {
@@ -1580,6 +1596,37 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder uri(String uri) {
             return uri(Output.of(uri));
+        }
+
+        /**
+         * @param urls All URLs serving traffic for this Service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder urls(@Nullable Output<List<String>> urls) {
+            $.urls = urls;
+            return this;
+        }
+
+        /**
+         * @param urls All URLs serving traffic for this Service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder urls(List<String> urls) {
+            return urls(Output.of(urls));
+        }
+
+        /**
+         * @param urls All URLs serving traffic for this Service.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder urls(String... urls) {
+            return urls(List.of(urls));
         }
 
         public ServiceState build() {

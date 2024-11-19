@@ -1791,6 +1791,840 @@ func (o GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthArrayOutput) Index(
 	}).(GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthOutput)
 }
 
+type GetDataSourceBackupConfigInfo struct {
+	// Configuration for an application backed up by a Backup Appliance.
+	BackupApplianceBackupConfigs []GetDataSourceBackupConfigInfoBackupApplianceBackupConfig `pulumi:"backupApplianceBackupConfigs"`
+	// Configuration for a Google Cloud resource.
+	GcpBackupConfigs []GetDataSourceBackupConfigInfoGcpBackupConfig `pulumi:"gcpBackupConfigs"`
+	// If the last backup failed, this field has the error message.
+	LastBackupError map[string]string `pulumi:"lastBackupError"`
+	// LastBackupstate tracks whether the last backup was not yet started, successful, failed, or could not be run because of the lack of permissions.
+	LastBackupState string `pulumi:"lastBackupState"`
+	// If the last backup were successful, this field has the consistency date.
+	LastSuccessfulBackupConsistencyTime string `pulumi:"lastSuccessfulBackupConsistencyTime"`
+}
+
+// GetDataSourceBackupConfigInfoInput is an input type that accepts GetDataSourceBackupConfigInfoArgs and GetDataSourceBackupConfigInfoOutput values.
+// You can construct a concrete instance of `GetDataSourceBackupConfigInfoInput` via:
+//
+//	GetDataSourceBackupConfigInfoArgs{...}
+type GetDataSourceBackupConfigInfoInput interface {
+	pulumi.Input
+
+	ToGetDataSourceBackupConfigInfoOutput() GetDataSourceBackupConfigInfoOutput
+	ToGetDataSourceBackupConfigInfoOutputWithContext(context.Context) GetDataSourceBackupConfigInfoOutput
+}
+
+type GetDataSourceBackupConfigInfoArgs struct {
+	// Configuration for an application backed up by a Backup Appliance.
+	BackupApplianceBackupConfigs GetDataSourceBackupConfigInfoBackupApplianceBackupConfigArrayInput `pulumi:"backupApplianceBackupConfigs"`
+	// Configuration for a Google Cloud resource.
+	GcpBackupConfigs GetDataSourceBackupConfigInfoGcpBackupConfigArrayInput `pulumi:"gcpBackupConfigs"`
+	// If the last backup failed, this field has the error message.
+	LastBackupError pulumi.StringMapInput `pulumi:"lastBackupError"`
+	// LastBackupstate tracks whether the last backup was not yet started, successful, failed, or could not be run because of the lack of permissions.
+	LastBackupState pulumi.StringInput `pulumi:"lastBackupState"`
+	// If the last backup were successful, this field has the consistency date.
+	LastSuccessfulBackupConsistencyTime pulumi.StringInput `pulumi:"lastSuccessfulBackupConsistencyTime"`
+}
+
+func (GetDataSourceBackupConfigInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDataSourceBackupConfigInfo)(nil)).Elem()
+}
+
+func (i GetDataSourceBackupConfigInfoArgs) ToGetDataSourceBackupConfigInfoOutput() GetDataSourceBackupConfigInfoOutput {
+	return i.ToGetDataSourceBackupConfigInfoOutputWithContext(context.Background())
+}
+
+func (i GetDataSourceBackupConfigInfoArgs) ToGetDataSourceBackupConfigInfoOutputWithContext(ctx context.Context) GetDataSourceBackupConfigInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDataSourceBackupConfigInfoOutput)
+}
+
+// GetDataSourceBackupConfigInfoArrayInput is an input type that accepts GetDataSourceBackupConfigInfoArray and GetDataSourceBackupConfigInfoArrayOutput values.
+// You can construct a concrete instance of `GetDataSourceBackupConfigInfoArrayInput` via:
+//
+//	GetDataSourceBackupConfigInfoArray{ GetDataSourceBackupConfigInfoArgs{...} }
+type GetDataSourceBackupConfigInfoArrayInput interface {
+	pulumi.Input
+
+	ToGetDataSourceBackupConfigInfoArrayOutput() GetDataSourceBackupConfigInfoArrayOutput
+	ToGetDataSourceBackupConfigInfoArrayOutputWithContext(context.Context) GetDataSourceBackupConfigInfoArrayOutput
+}
+
+type GetDataSourceBackupConfigInfoArray []GetDataSourceBackupConfigInfoInput
+
+func (GetDataSourceBackupConfigInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDataSourceBackupConfigInfo)(nil)).Elem()
+}
+
+func (i GetDataSourceBackupConfigInfoArray) ToGetDataSourceBackupConfigInfoArrayOutput() GetDataSourceBackupConfigInfoArrayOutput {
+	return i.ToGetDataSourceBackupConfigInfoArrayOutputWithContext(context.Background())
+}
+
+func (i GetDataSourceBackupConfigInfoArray) ToGetDataSourceBackupConfigInfoArrayOutputWithContext(ctx context.Context) GetDataSourceBackupConfigInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDataSourceBackupConfigInfoArrayOutput)
+}
+
+type GetDataSourceBackupConfigInfoOutput struct{ *pulumi.OutputState }
+
+func (GetDataSourceBackupConfigInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDataSourceBackupConfigInfo)(nil)).Elem()
+}
+
+func (o GetDataSourceBackupConfigInfoOutput) ToGetDataSourceBackupConfigInfoOutput() GetDataSourceBackupConfigInfoOutput {
+	return o
+}
+
+func (o GetDataSourceBackupConfigInfoOutput) ToGetDataSourceBackupConfigInfoOutputWithContext(ctx context.Context) GetDataSourceBackupConfigInfoOutput {
+	return o
+}
+
+// Configuration for an application backed up by a Backup Appliance.
+func (o GetDataSourceBackupConfigInfoOutput) BackupApplianceBackupConfigs() GetDataSourceBackupConfigInfoBackupApplianceBackupConfigArrayOutput {
+	return o.ApplyT(func(v GetDataSourceBackupConfigInfo) []GetDataSourceBackupConfigInfoBackupApplianceBackupConfig {
+		return v.BackupApplianceBackupConfigs
+	}).(GetDataSourceBackupConfigInfoBackupApplianceBackupConfigArrayOutput)
+}
+
+// Configuration for a Google Cloud resource.
+func (o GetDataSourceBackupConfigInfoOutput) GcpBackupConfigs() GetDataSourceBackupConfigInfoGcpBackupConfigArrayOutput {
+	return o.ApplyT(func(v GetDataSourceBackupConfigInfo) []GetDataSourceBackupConfigInfoGcpBackupConfig {
+		return v.GcpBackupConfigs
+	}).(GetDataSourceBackupConfigInfoGcpBackupConfigArrayOutput)
+}
+
+// If the last backup failed, this field has the error message.
+func (o GetDataSourceBackupConfigInfoOutput) LastBackupError() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetDataSourceBackupConfigInfo) map[string]string { return v.LastBackupError }).(pulumi.StringMapOutput)
+}
+
+// LastBackupstate tracks whether the last backup was not yet started, successful, failed, or could not be run because of the lack of permissions.
+func (o GetDataSourceBackupConfigInfoOutput) LastBackupState() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataSourceBackupConfigInfo) string { return v.LastBackupState }).(pulumi.StringOutput)
+}
+
+// If the last backup were successful, this field has the consistency date.
+func (o GetDataSourceBackupConfigInfoOutput) LastSuccessfulBackupConsistencyTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataSourceBackupConfigInfo) string { return v.LastSuccessfulBackupConsistencyTime }).(pulumi.StringOutput)
+}
+
+type GetDataSourceBackupConfigInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDataSourceBackupConfigInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDataSourceBackupConfigInfo)(nil)).Elem()
+}
+
+func (o GetDataSourceBackupConfigInfoArrayOutput) ToGetDataSourceBackupConfigInfoArrayOutput() GetDataSourceBackupConfigInfoArrayOutput {
+	return o
+}
+
+func (o GetDataSourceBackupConfigInfoArrayOutput) ToGetDataSourceBackupConfigInfoArrayOutputWithContext(ctx context.Context) GetDataSourceBackupConfigInfoArrayOutput {
+	return o
+}
+
+func (o GetDataSourceBackupConfigInfoArrayOutput) Index(i pulumi.IntInput) GetDataSourceBackupConfigInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDataSourceBackupConfigInfo {
+		return vs[0].([]GetDataSourceBackupConfigInfo)[vs[1].(int)]
+	}).(GetDataSourceBackupConfigInfoOutput)
+}
+
+type GetDataSourceBackupConfigInfoBackupApplianceBackupConfig struct {
+	// The name of the application.
+	ApplicationName string `pulumi:"applicationName"`
+	// The ID of the backup appliance.
+	BackupApplianceId string `pulumi:"backupApplianceId"`
+	// The name of the backup appliance.
+	BackupApplianceName string `pulumi:"backupApplianceName"`
+	// The name of the host where the application is running.
+	HostName string `pulumi:"hostName"`
+	// The ID of the SLA of this application.
+	SlaId string `pulumi:"slaId"`
+	// The name of the SLP associated with the application.
+	SlpName string `pulumi:"slpName"`
+	// The name of the SLT associated with the application.
+	SltName string `pulumi:"sltName"`
+}
+
+// GetDataSourceBackupConfigInfoBackupApplianceBackupConfigInput is an input type that accepts GetDataSourceBackupConfigInfoBackupApplianceBackupConfigArgs and GetDataSourceBackupConfigInfoBackupApplianceBackupConfigOutput values.
+// You can construct a concrete instance of `GetDataSourceBackupConfigInfoBackupApplianceBackupConfigInput` via:
+//
+//	GetDataSourceBackupConfigInfoBackupApplianceBackupConfigArgs{...}
+type GetDataSourceBackupConfigInfoBackupApplianceBackupConfigInput interface {
+	pulumi.Input
+
+	ToGetDataSourceBackupConfigInfoBackupApplianceBackupConfigOutput() GetDataSourceBackupConfigInfoBackupApplianceBackupConfigOutput
+	ToGetDataSourceBackupConfigInfoBackupApplianceBackupConfigOutputWithContext(context.Context) GetDataSourceBackupConfigInfoBackupApplianceBackupConfigOutput
+}
+
+type GetDataSourceBackupConfigInfoBackupApplianceBackupConfigArgs struct {
+	// The name of the application.
+	ApplicationName pulumi.StringInput `pulumi:"applicationName"`
+	// The ID of the backup appliance.
+	BackupApplianceId pulumi.StringInput `pulumi:"backupApplianceId"`
+	// The name of the backup appliance.
+	BackupApplianceName pulumi.StringInput `pulumi:"backupApplianceName"`
+	// The name of the host where the application is running.
+	HostName pulumi.StringInput `pulumi:"hostName"`
+	// The ID of the SLA of this application.
+	SlaId pulumi.StringInput `pulumi:"slaId"`
+	// The name of the SLP associated with the application.
+	SlpName pulumi.StringInput `pulumi:"slpName"`
+	// The name of the SLT associated with the application.
+	SltName pulumi.StringInput `pulumi:"sltName"`
+}
+
+func (GetDataSourceBackupConfigInfoBackupApplianceBackupConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDataSourceBackupConfigInfoBackupApplianceBackupConfig)(nil)).Elem()
+}
+
+func (i GetDataSourceBackupConfigInfoBackupApplianceBackupConfigArgs) ToGetDataSourceBackupConfigInfoBackupApplianceBackupConfigOutput() GetDataSourceBackupConfigInfoBackupApplianceBackupConfigOutput {
+	return i.ToGetDataSourceBackupConfigInfoBackupApplianceBackupConfigOutputWithContext(context.Background())
+}
+
+func (i GetDataSourceBackupConfigInfoBackupApplianceBackupConfigArgs) ToGetDataSourceBackupConfigInfoBackupApplianceBackupConfigOutputWithContext(ctx context.Context) GetDataSourceBackupConfigInfoBackupApplianceBackupConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDataSourceBackupConfigInfoBackupApplianceBackupConfigOutput)
+}
+
+// GetDataSourceBackupConfigInfoBackupApplianceBackupConfigArrayInput is an input type that accepts GetDataSourceBackupConfigInfoBackupApplianceBackupConfigArray and GetDataSourceBackupConfigInfoBackupApplianceBackupConfigArrayOutput values.
+// You can construct a concrete instance of `GetDataSourceBackupConfigInfoBackupApplianceBackupConfigArrayInput` via:
+//
+//	GetDataSourceBackupConfigInfoBackupApplianceBackupConfigArray{ GetDataSourceBackupConfigInfoBackupApplianceBackupConfigArgs{...} }
+type GetDataSourceBackupConfigInfoBackupApplianceBackupConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetDataSourceBackupConfigInfoBackupApplianceBackupConfigArrayOutput() GetDataSourceBackupConfigInfoBackupApplianceBackupConfigArrayOutput
+	ToGetDataSourceBackupConfigInfoBackupApplianceBackupConfigArrayOutputWithContext(context.Context) GetDataSourceBackupConfigInfoBackupApplianceBackupConfigArrayOutput
+}
+
+type GetDataSourceBackupConfigInfoBackupApplianceBackupConfigArray []GetDataSourceBackupConfigInfoBackupApplianceBackupConfigInput
+
+func (GetDataSourceBackupConfigInfoBackupApplianceBackupConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDataSourceBackupConfigInfoBackupApplianceBackupConfig)(nil)).Elem()
+}
+
+func (i GetDataSourceBackupConfigInfoBackupApplianceBackupConfigArray) ToGetDataSourceBackupConfigInfoBackupApplianceBackupConfigArrayOutput() GetDataSourceBackupConfigInfoBackupApplianceBackupConfigArrayOutput {
+	return i.ToGetDataSourceBackupConfigInfoBackupApplianceBackupConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetDataSourceBackupConfigInfoBackupApplianceBackupConfigArray) ToGetDataSourceBackupConfigInfoBackupApplianceBackupConfigArrayOutputWithContext(ctx context.Context) GetDataSourceBackupConfigInfoBackupApplianceBackupConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDataSourceBackupConfigInfoBackupApplianceBackupConfigArrayOutput)
+}
+
+type GetDataSourceBackupConfigInfoBackupApplianceBackupConfigOutput struct{ *pulumi.OutputState }
+
+func (GetDataSourceBackupConfigInfoBackupApplianceBackupConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDataSourceBackupConfigInfoBackupApplianceBackupConfig)(nil)).Elem()
+}
+
+func (o GetDataSourceBackupConfigInfoBackupApplianceBackupConfigOutput) ToGetDataSourceBackupConfigInfoBackupApplianceBackupConfigOutput() GetDataSourceBackupConfigInfoBackupApplianceBackupConfigOutput {
+	return o
+}
+
+func (o GetDataSourceBackupConfigInfoBackupApplianceBackupConfigOutput) ToGetDataSourceBackupConfigInfoBackupApplianceBackupConfigOutputWithContext(ctx context.Context) GetDataSourceBackupConfigInfoBackupApplianceBackupConfigOutput {
+	return o
+}
+
+// The name of the application.
+func (o GetDataSourceBackupConfigInfoBackupApplianceBackupConfigOutput) ApplicationName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataSourceBackupConfigInfoBackupApplianceBackupConfig) string { return v.ApplicationName }).(pulumi.StringOutput)
+}
+
+// The ID of the backup appliance.
+func (o GetDataSourceBackupConfigInfoBackupApplianceBackupConfigOutput) BackupApplianceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataSourceBackupConfigInfoBackupApplianceBackupConfig) string { return v.BackupApplianceId }).(pulumi.StringOutput)
+}
+
+// The name of the backup appliance.
+func (o GetDataSourceBackupConfigInfoBackupApplianceBackupConfigOutput) BackupApplianceName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataSourceBackupConfigInfoBackupApplianceBackupConfig) string { return v.BackupApplianceName }).(pulumi.StringOutput)
+}
+
+// The name of the host where the application is running.
+func (o GetDataSourceBackupConfigInfoBackupApplianceBackupConfigOutput) HostName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataSourceBackupConfigInfoBackupApplianceBackupConfig) string { return v.HostName }).(pulumi.StringOutput)
+}
+
+// The ID of the SLA of this application.
+func (o GetDataSourceBackupConfigInfoBackupApplianceBackupConfigOutput) SlaId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataSourceBackupConfigInfoBackupApplianceBackupConfig) string { return v.SlaId }).(pulumi.StringOutput)
+}
+
+// The name of the SLP associated with the application.
+func (o GetDataSourceBackupConfigInfoBackupApplianceBackupConfigOutput) SlpName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataSourceBackupConfigInfoBackupApplianceBackupConfig) string { return v.SlpName }).(pulumi.StringOutput)
+}
+
+// The name of the SLT associated with the application.
+func (o GetDataSourceBackupConfigInfoBackupApplianceBackupConfigOutput) SltName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataSourceBackupConfigInfoBackupApplianceBackupConfig) string { return v.SltName }).(pulumi.StringOutput)
+}
+
+type GetDataSourceBackupConfigInfoBackupApplianceBackupConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDataSourceBackupConfigInfoBackupApplianceBackupConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDataSourceBackupConfigInfoBackupApplianceBackupConfig)(nil)).Elem()
+}
+
+func (o GetDataSourceBackupConfigInfoBackupApplianceBackupConfigArrayOutput) ToGetDataSourceBackupConfigInfoBackupApplianceBackupConfigArrayOutput() GetDataSourceBackupConfigInfoBackupApplianceBackupConfigArrayOutput {
+	return o
+}
+
+func (o GetDataSourceBackupConfigInfoBackupApplianceBackupConfigArrayOutput) ToGetDataSourceBackupConfigInfoBackupApplianceBackupConfigArrayOutputWithContext(ctx context.Context) GetDataSourceBackupConfigInfoBackupApplianceBackupConfigArrayOutput {
+	return o
+}
+
+func (o GetDataSourceBackupConfigInfoBackupApplianceBackupConfigArrayOutput) Index(i pulumi.IntInput) GetDataSourceBackupConfigInfoBackupApplianceBackupConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDataSourceBackupConfigInfoBackupApplianceBackupConfig {
+		return vs[0].([]GetDataSourceBackupConfigInfoBackupApplianceBackupConfig)[vs[1].(int)]
+	}).(GetDataSourceBackupConfigInfoBackupApplianceBackupConfigOutput)
+}
+
+type GetDataSourceBackupConfigInfoGcpBackupConfig struct {
+	// The name of the backup plan.
+	BackupPlan string `pulumi:"backupPlan"`
+	// The name of the backup plan association.
+	BackupPlanAssociation string `pulumi:"backupPlanAssociation"`
+	// The description of the backup plan.
+	BackupPlanDescription string `pulumi:"backupPlanDescription"`
+	// The names of the backup plan rules which point to this backupvault
+	BackupPlanRules []string `pulumi:"backupPlanRules"`
+}
+
+// GetDataSourceBackupConfigInfoGcpBackupConfigInput is an input type that accepts GetDataSourceBackupConfigInfoGcpBackupConfigArgs and GetDataSourceBackupConfigInfoGcpBackupConfigOutput values.
+// You can construct a concrete instance of `GetDataSourceBackupConfigInfoGcpBackupConfigInput` via:
+//
+//	GetDataSourceBackupConfigInfoGcpBackupConfigArgs{...}
+type GetDataSourceBackupConfigInfoGcpBackupConfigInput interface {
+	pulumi.Input
+
+	ToGetDataSourceBackupConfigInfoGcpBackupConfigOutput() GetDataSourceBackupConfigInfoGcpBackupConfigOutput
+	ToGetDataSourceBackupConfigInfoGcpBackupConfigOutputWithContext(context.Context) GetDataSourceBackupConfigInfoGcpBackupConfigOutput
+}
+
+type GetDataSourceBackupConfigInfoGcpBackupConfigArgs struct {
+	// The name of the backup plan.
+	BackupPlan pulumi.StringInput `pulumi:"backupPlan"`
+	// The name of the backup plan association.
+	BackupPlanAssociation pulumi.StringInput `pulumi:"backupPlanAssociation"`
+	// The description of the backup plan.
+	BackupPlanDescription pulumi.StringInput `pulumi:"backupPlanDescription"`
+	// The names of the backup plan rules which point to this backupvault
+	BackupPlanRules pulumi.StringArrayInput `pulumi:"backupPlanRules"`
+}
+
+func (GetDataSourceBackupConfigInfoGcpBackupConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDataSourceBackupConfigInfoGcpBackupConfig)(nil)).Elem()
+}
+
+func (i GetDataSourceBackupConfigInfoGcpBackupConfigArgs) ToGetDataSourceBackupConfigInfoGcpBackupConfigOutput() GetDataSourceBackupConfigInfoGcpBackupConfigOutput {
+	return i.ToGetDataSourceBackupConfigInfoGcpBackupConfigOutputWithContext(context.Background())
+}
+
+func (i GetDataSourceBackupConfigInfoGcpBackupConfigArgs) ToGetDataSourceBackupConfigInfoGcpBackupConfigOutputWithContext(ctx context.Context) GetDataSourceBackupConfigInfoGcpBackupConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDataSourceBackupConfigInfoGcpBackupConfigOutput)
+}
+
+// GetDataSourceBackupConfigInfoGcpBackupConfigArrayInput is an input type that accepts GetDataSourceBackupConfigInfoGcpBackupConfigArray and GetDataSourceBackupConfigInfoGcpBackupConfigArrayOutput values.
+// You can construct a concrete instance of `GetDataSourceBackupConfigInfoGcpBackupConfigArrayInput` via:
+//
+//	GetDataSourceBackupConfigInfoGcpBackupConfigArray{ GetDataSourceBackupConfigInfoGcpBackupConfigArgs{...} }
+type GetDataSourceBackupConfigInfoGcpBackupConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetDataSourceBackupConfigInfoGcpBackupConfigArrayOutput() GetDataSourceBackupConfigInfoGcpBackupConfigArrayOutput
+	ToGetDataSourceBackupConfigInfoGcpBackupConfigArrayOutputWithContext(context.Context) GetDataSourceBackupConfigInfoGcpBackupConfigArrayOutput
+}
+
+type GetDataSourceBackupConfigInfoGcpBackupConfigArray []GetDataSourceBackupConfigInfoGcpBackupConfigInput
+
+func (GetDataSourceBackupConfigInfoGcpBackupConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDataSourceBackupConfigInfoGcpBackupConfig)(nil)).Elem()
+}
+
+func (i GetDataSourceBackupConfigInfoGcpBackupConfigArray) ToGetDataSourceBackupConfigInfoGcpBackupConfigArrayOutput() GetDataSourceBackupConfigInfoGcpBackupConfigArrayOutput {
+	return i.ToGetDataSourceBackupConfigInfoGcpBackupConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetDataSourceBackupConfigInfoGcpBackupConfigArray) ToGetDataSourceBackupConfigInfoGcpBackupConfigArrayOutputWithContext(ctx context.Context) GetDataSourceBackupConfigInfoGcpBackupConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDataSourceBackupConfigInfoGcpBackupConfigArrayOutput)
+}
+
+type GetDataSourceBackupConfigInfoGcpBackupConfigOutput struct{ *pulumi.OutputState }
+
+func (GetDataSourceBackupConfigInfoGcpBackupConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDataSourceBackupConfigInfoGcpBackupConfig)(nil)).Elem()
+}
+
+func (o GetDataSourceBackupConfigInfoGcpBackupConfigOutput) ToGetDataSourceBackupConfigInfoGcpBackupConfigOutput() GetDataSourceBackupConfigInfoGcpBackupConfigOutput {
+	return o
+}
+
+func (o GetDataSourceBackupConfigInfoGcpBackupConfigOutput) ToGetDataSourceBackupConfigInfoGcpBackupConfigOutputWithContext(ctx context.Context) GetDataSourceBackupConfigInfoGcpBackupConfigOutput {
+	return o
+}
+
+// The name of the backup plan.
+func (o GetDataSourceBackupConfigInfoGcpBackupConfigOutput) BackupPlan() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataSourceBackupConfigInfoGcpBackupConfig) string { return v.BackupPlan }).(pulumi.StringOutput)
+}
+
+// The name of the backup plan association.
+func (o GetDataSourceBackupConfigInfoGcpBackupConfigOutput) BackupPlanAssociation() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataSourceBackupConfigInfoGcpBackupConfig) string { return v.BackupPlanAssociation }).(pulumi.StringOutput)
+}
+
+// The description of the backup plan.
+func (o GetDataSourceBackupConfigInfoGcpBackupConfigOutput) BackupPlanDescription() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataSourceBackupConfigInfoGcpBackupConfig) string { return v.BackupPlanDescription }).(pulumi.StringOutput)
+}
+
+// The names of the backup plan rules which point to this backupvault
+func (o GetDataSourceBackupConfigInfoGcpBackupConfigOutput) BackupPlanRules() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetDataSourceBackupConfigInfoGcpBackupConfig) []string { return v.BackupPlanRules }).(pulumi.StringArrayOutput)
+}
+
+type GetDataSourceBackupConfigInfoGcpBackupConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDataSourceBackupConfigInfoGcpBackupConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDataSourceBackupConfigInfoGcpBackupConfig)(nil)).Elem()
+}
+
+func (o GetDataSourceBackupConfigInfoGcpBackupConfigArrayOutput) ToGetDataSourceBackupConfigInfoGcpBackupConfigArrayOutput() GetDataSourceBackupConfigInfoGcpBackupConfigArrayOutput {
+	return o
+}
+
+func (o GetDataSourceBackupConfigInfoGcpBackupConfigArrayOutput) ToGetDataSourceBackupConfigInfoGcpBackupConfigArrayOutputWithContext(ctx context.Context) GetDataSourceBackupConfigInfoGcpBackupConfigArrayOutput {
+	return o
+}
+
+func (o GetDataSourceBackupConfigInfoGcpBackupConfigArrayOutput) Index(i pulumi.IntInput) GetDataSourceBackupConfigInfoGcpBackupConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDataSourceBackupConfigInfoGcpBackupConfig {
+		return vs[0].([]GetDataSourceBackupConfigInfoGcpBackupConfig)[vs[1].(int)]
+	}).(GetDataSourceBackupConfigInfoGcpBackupConfigOutput)
+}
+
+type GetDataSourceDataSourceBackupApplianceApplication struct {
+	// Appliance Id of the Backup Appliance.
+	ApplianceId string `pulumi:"applianceId"`
+	// The appid field of the application within the Backup Appliance.
+	ApplicationId string `pulumi:"applicationId"`
+	// The name of the Application as known to the Backup Appliance.
+	ApplicationName string `pulumi:"applicationName"`
+	// Appliance name.
+	BackupAppliance string `pulumi:"backupAppliance"`
+	// Hostid of the application host.
+	HostId string `pulumi:"hostId"`
+	// Hostname of the host where the application is running.
+	Hostname string `pulumi:"hostname"`
+	// The type of the application. e.g. VMBackup
+	Type string `pulumi:"type"`
+}
+
+// GetDataSourceDataSourceBackupApplianceApplicationInput is an input type that accepts GetDataSourceDataSourceBackupApplianceApplicationArgs and GetDataSourceDataSourceBackupApplianceApplicationOutput values.
+// You can construct a concrete instance of `GetDataSourceDataSourceBackupApplianceApplicationInput` via:
+//
+//	GetDataSourceDataSourceBackupApplianceApplicationArgs{...}
+type GetDataSourceDataSourceBackupApplianceApplicationInput interface {
+	pulumi.Input
+
+	ToGetDataSourceDataSourceBackupApplianceApplicationOutput() GetDataSourceDataSourceBackupApplianceApplicationOutput
+	ToGetDataSourceDataSourceBackupApplianceApplicationOutputWithContext(context.Context) GetDataSourceDataSourceBackupApplianceApplicationOutput
+}
+
+type GetDataSourceDataSourceBackupApplianceApplicationArgs struct {
+	// Appliance Id of the Backup Appliance.
+	ApplianceId pulumi.StringInput `pulumi:"applianceId"`
+	// The appid field of the application within the Backup Appliance.
+	ApplicationId pulumi.StringInput `pulumi:"applicationId"`
+	// The name of the Application as known to the Backup Appliance.
+	ApplicationName pulumi.StringInput `pulumi:"applicationName"`
+	// Appliance name.
+	BackupAppliance pulumi.StringInput `pulumi:"backupAppliance"`
+	// Hostid of the application host.
+	HostId pulumi.StringInput `pulumi:"hostId"`
+	// Hostname of the host where the application is running.
+	Hostname pulumi.StringInput `pulumi:"hostname"`
+	// The type of the application. e.g. VMBackup
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetDataSourceDataSourceBackupApplianceApplicationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDataSourceDataSourceBackupApplianceApplication)(nil)).Elem()
+}
+
+func (i GetDataSourceDataSourceBackupApplianceApplicationArgs) ToGetDataSourceDataSourceBackupApplianceApplicationOutput() GetDataSourceDataSourceBackupApplianceApplicationOutput {
+	return i.ToGetDataSourceDataSourceBackupApplianceApplicationOutputWithContext(context.Background())
+}
+
+func (i GetDataSourceDataSourceBackupApplianceApplicationArgs) ToGetDataSourceDataSourceBackupApplianceApplicationOutputWithContext(ctx context.Context) GetDataSourceDataSourceBackupApplianceApplicationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDataSourceDataSourceBackupApplianceApplicationOutput)
+}
+
+// GetDataSourceDataSourceBackupApplianceApplicationArrayInput is an input type that accepts GetDataSourceDataSourceBackupApplianceApplicationArray and GetDataSourceDataSourceBackupApplianceApplicationArrayOutput values.
+// You can construct a concrete instance of `GetDataSourceDataSourceBackupApplianceApplicationArrayInput` via:
+//
+//	GetDataSourceDataSourceBackupApplianceApplicationArray{ GetDataSourceDataSourceBackupApplianceApplicationArgs{...} }
+type GetDataSourceDataSourceBackupApplianceApplicationArrayInput interface {
+	pulumi.Input
+
+	ToGetDataSourceDataSourceBackupApplianceApplicationArrayOutput() GetDataSourceDataSourceBackupApplianceApplicationArrayOutput
+	ToGetDataSourceDataSourceBackupApplianceApplicationArrayOutputWithContext(context.Context) GetDataSourceDataSourceBackupApplianceApplicationArrayOutput
+}
+
+type GetDataSourceDataSourceBackupApplianceApplicationArray []GetDataSourceDataSourceBackupApplianceApplicationInput
+
+func (GetDataSourceDataSourceBackupApplianceApplicationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDataSourceDataSourceBackupApplianceApplication)(nil)).Elem()
+}
+
+func (i GetDataSourceDataSourceBackupApplianceApplicationArray) ToGetDataSourceDataSourceBackupApplianceApplicationArrayOutput() GetDataSourceDataSourceBackupApplianceApplicationArrayOutput {
+	return i.ToGetDataSourceDataSourceBackupApplianceApplicationArrayOutputWithContext(context.Background())
+}
+
+func (i GetDataSourceDataSourceBackupApplianceApplicationArray) ToGetDataSourceDataSourceBackupApplianceApplicationArrayOutputWithContext(ctx context.Context) GetDataSourceDataSourceBackupApplianceApplicationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDataSourceDataSourceBackupApplianceApplicationArrayOutput)
+}
+
+type GetDataSourceDataSourceBackupApplianceApplicationOutput struct{ *pulumi.OutputState }
+
+func (GetDataSourceDataSourceBackupApplianceApplicationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDataSourceDataSourceBackupApplianceApplication)(nil)).Elem()
+}
+
+func (o GetDataSourceDataSourceBackupApplianceApplicationOutput) ToGetDataSourceDataSourceBackupApplianceApplicationOutput() GetDataSourceDataSourceBackupApplianceApplicationOutput {
+	return o
+}
+
+func (o GetDataSourceDataSourceBackupApplianceApplicationOutput) ToGetDataSourceDataSourceBackupApplianceApplicationOutputWithContext(ctx context.Context) GetDataSourceDataSourceBackupApplianceApplicationOutput {
+	return o
+}
+
+// Appliance Id of the Backup Appliance.
+func (o GetDataSourceDataSourceBackupApplianceApplicationOutput) ApplianceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataSourceDataSourceBackupApplianceApplication) string { return v.ApplianceId }).(pulumi.StringOutput)
+}
+
+// The appid field of the application within the Backup Appliance.
+func (o GetDataSourceDataSourceBackupApplianceApplicationOutput) ApplicationId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataSourceDataSourceBackupApplianceApplication) string { return v.ApplicationId }).(pulumi.StringOutput)
+}
+
+// The name of the Application as known to the Backup Appliance.
+func (o GetDataSourceDataSourceBackupApplianceApplicationOutput) ApplicationName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataSourceDataSourceBackupApplianceApplication) string { return v.ApplicationName }).(pulumi.StringOutput)
+}
+
+// Appliance name.
+func (o GetDataSourceDataSourceBackupApplianceApplicationOutput) BackupAppliance() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataSourceDataSourceBackupApplianceApplication) string { return v.BackupAppliance }).(pulumi.StringOutput)
+}
+
+// Hostid of the application host.
+func (o GetDataSourceDataSourceBackupApplianceApplicationOutput) HostId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataSourceDataSourceBackupApplianceApplication) string { return v.HostId }).(pulumi.StringOutput)
+}
+
+// Hostname of the host where the application is running.
+func (o GetDataSourceDataSourceBackupApplianceApplicationOutput) Hostname() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataSourceDataSourceBackupApplianceApplication) string { return v.Hostname }).(pulumi.StringOutput)
+}
+
+// The type of the application. e.g. VMBackup
+func (o GetDataSourceDataSourceBackupApplianceApplicationOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataSourceDataSourceBackupApplianceApplication) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetDataSourceDataSourceBackupApplianceApplicationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDataSourceDataSourceBackupApplianceApplicationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDataSourceDataSourceBackupApplianceApplication)(nil)).Elem()
+}
+
+func (o GetDataSourceDataSourceBackupApplianceApplicationArrayOutput) ToGetDataSourceDataSourceBackupApplianceApplicationArrayOutput() GetDataSourceDataSourceBackupApplianceApplicationArrayOutput {
+	return o
+}
+
+func (o GetDataSourceDataSourceBackupApplianceApplicationArrayOutput) ToGetDataSourceDataSourceBackupApplianceApplicationArrayOutputWithContext(ctx context.Context) GetDataSourceDataSourceBackupApplianceApplicationArrayOutput {
+	return o
+}
+
+func (o GetDataSourceDataSourceBackupApplianceApplicationArrayOutput) Index(i pulumi.IntInput) GetDataSourceDataSourceBackupApplianceApplicationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDataSourceDataSourceBackupApplianceApplication {
+		return vs[0].([]GetDataSourceDataSourceBackupApplianceApplication)[vs[1].(int)]
+	}).(GetDataSourceDataSourceBackupApplianceApplicationOutput)
+}
+
+type GetDataSourceDataSourceGcpResource struct {
+	// ComputeInstanceDataSourceProperties has a subset of Compute Instance properties that are useful at the Datasource level.
+	ComputeInstanceDataSourceProperties []GetDataSourceDataSourceGcpResourceComputeInstanceDataSourceProperty `pulumi:"computeInstanceDataSourceProperties"`
+	// Full resource pathname URL of the source Google Cloud resource.
+	GcpResourcename string `pulumi:"gcpResourcename"`
+	// Location of the resource: <region>/<zone>/"global"/"unspecified".
+	Location string `pulumi:"location"`
+	// The type of the Google Cloud resource. Use the Unified Resource Type,
+	// 						eg. compute.googleapis.com/Instance.
+	Type string `pulumi:"type"`
+}
+
+// GetDataSourceDataSourceGcpResourceInput is an input type that accepts GetDataSourceDataSourceGcpResourceArgs and GetDataSourceDataSourceGcpResourceOutput values.
+// You can construct a concrete instance of `GetDataSourceDataSourceGcpResourceInput` via:
+//
+//	GetDataSourceDataSourceGcpResourceArgs{...}
+type GetDataSourceDataSourceGcpResourceInput interface {
+	pulumi.Input
+
+	ToGetDataSourceDataSourceGcpResourceOutput() GetDataSourceDataSourceGcpResourceOutput
+	ToGetDataSourceDataSourceGcpResourceOutputWithContext(context.Context) GetDataSourceDataSourceGcpResourceOutput
+}
+
+type GetDataSourceDataSourceGcpResourceArgs struct {
+	// ComputeInstanceDataSourceProperties has a subset of Compute Instance properties that are useful at the Datasource level.
+	ComputeInstanceDataSourceProperties GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyArrayInput `pulumi:"computeInstanceDataSourceProperties"`
+	// Full resource pathname URL of the source Google Cloud resource.
+	GcpResourcename pulumi.StringInput `pulumi:"gcpResourcename"`
+	// Location of the resource: <region>/<zone>/"global"/"unspecified".
+	Location pulumi.StringInput `pulumi:"location"`
+	// The type of the Google Cloud resource. Use the Unified Resource Type,
+	// 						eg. compute.googleapis.com/Instance.
+	Type pulumi.StringInput `pulumi:"type"`
+}
+
+func (GetDataSourceDataSourceGcpResourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDataSourceDataSourceGcpResource)(nil)).Elem()
+}
+
+func (i GetDataSourceDataSourceGcpResourceArgs) ToGetDataSourceDataSourceGcpResourceOutput() GetDataSourceDataSourceGcpResourceOutput {
+	return i.ToGetDataSourceDataSourceGcpResourceOutputWithContext(context.Background())
+}
+
+func (i GetDataSourceDataSourceGcpResourceArgs) ToGetDataSourceDataSourceGcpResourceOutputWithContext(ctx context.Context) GetDataSourceDataSourceGcpResourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDataSourceDataSourceGcpResourceOutput)
+}
+
+// GetDataSourceDataSourceGcpResourceArrayInput is an input type that accepts GetDataSourceDataSourceGcpResourceArray and GetDataSourceDataSourceGcpResourceArrayOutput values.
+// You can construct a concrete instance of `GetDataSourceDataSourceGcpResourceArrayInput` via:
+//
+//	GetDataSourceDataSourceGcpResourceArray{ GetDataSourceDataSourceGcpResourceArgs{...} }
+type GetDataSourceDataSourceGcpResourceArrayInput interface {
+	pulumi.Input
+
+	ToGetDataSourceDataSourceGcpResourceArrayOutput() GetDataSourceDataSourceGcpResourceArrayOutput
+	ToGetDataSourceDataSourceGcpResourceArrayOutputWithContext(context.Context) GetDataSourceDataSourceGcpResourceArrayOutput
+}
+
+type GetDataSourceDataSourceGcpResourceArray []GetDataSourceDataSourceGcpResourceInput
+
+func (GetDataSourceDataSourceGcpResourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDataSourceDataSourceGcpResource)(nil)).Elem()
+}
+
+func (i GetDataSourceDataSourceGcpResourceArray) ToGetDataSourceDataSourceGcpResourceArrayOutput() GetDataSourceDataSourceGcpResourceArrayOutput {
+	return i.ToGetDataSourceDataSourceGcpResourceArrayOutputWithContext(context.Background())
+}
+
+func (i GetDataSourceDataSourceGcpResourceArray) ToGetDataSourceDataSourceGcpResourceArrayOutputWithContext(ctx context.Context) GetDataSourceDataSourceGcpResourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDataSourceDataSourceGcpResourceArrayOutput)
+}
+
+type GetDataSourceDataSourceGcpResourceOutput struct{ *pulumi.OutputState }
+
+func (GetDataSourceDataSourceGcpResourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDataSourceDataSourceGcpResource)(nil)).Elem()
+}
+
+func (o GetDataSourceDataSourceGcpResourceOutput) ToGetDataSourceDataSourceGcpResourceOutput() GetDataSourceDataSourceGcpResourceOutput {
+	return o
+}
+
+func (o GetDataSourceDataSourceGcpResourceOutput) ToGetDataSourceDataSourceGcpResourceOutputWithContext(ctx context.Context) GetDataSourceDataSourceGcpResourceOutput {
+	return o
+}
+
+// ComputeInstanceDataSourceProperties has a subset of Compute Instance properties that are useful at the Datasource level.
+func (o GetDataSourceDataSourceGcpResourceOutput) ComputeInstanceDataSourceProperties() GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyArrayOutput {
+	return o.ApplyT(func(v GetDataSourceDataSourceGcpResource) []GetDataSourceDataSourceGcpResourceComputeInstanceDataSourceProperty {
+		return v.ComputeInstanceDataSourceProperties
+	}).(GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyArrayOutput)
+}
+
+// Full resource pathname URL of the source Google Cloud resource.
+func (o GetDataSourceDataSourceGcpResourceOutput) GcpResourcename() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataSourceDataSourceGcpResource) string { return v.GcpResourcename }).(pulumi.StringOutput)
+}
+
+// Location of the resource: <region>/<zone>/"global"/"unspecified".
+func (o GetDataSourceDataSourceGcpResourceOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataSourceDataSourceGcpResource) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// The type of the Google Cloud resource. Use the Unified Resource Type,
+//
+//	eg. compute.googleapis.com/Instance.
+func (o GetDataSourceDataSourceGcpResourceOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataSourceDataSourceGcpResource) string { return v.Type }).(pulumi.StringOutput)
+}
+
+type GetDataSourceDataSourceGcpResourceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDataSourceDataSourceGcpResourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDataSourceDataSourceGcpResource)(nil)).Elem()
+}
+
+func (o GetDataSourceDataSourceGcpResourceArrayOutput) ToGetDataSourceDataSourceGcpResourceArrayOutput() GetDataSourceDataSourceGcpResourceArrayOutput {
+	return o
+}
+
+func (o GetDataSourceDataSourceGcpResourceArrayOutput) ToGetDataSourceDataSourceGcpResourceArrayOutputWithContext(ctx context.Context) GetDataSourceDataSourceGcpResourceArrayOutput {
+	return o
+}
+
+func (o GetDataSourceDataSourceGcpResourceArrayOutput) Index(i pulumi.IntInput) GetDataSourceDataSourceGcpResourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDataSourceDataSourceGcpResource {
+		return vs[0].([]GetDataSourceDataSourceGcpResource)[vs[1].(int)]
+	}).(GetDataSourceDataSourceGcpResourceOutput)
+}
+
+type GetDataSourceDataSourceGcpResourceComputeInstanceDataSourceProperty struct {
+	// The description of the Compute Engine instance.
+	Description string `pulumi:"description"`
+	// The machine type of the instance.
+	MachineType string `pulumi:"machineType"`
+	// Name of the compute instance backed up by the datasource.
+	Name string `pulumi:"name"`
+	// The total number of disks attached to the Instance.
+	TotalDiskCount string `pulumi:"totalDiskCount"`
+	// The sum of all the disk sizes.
+	TotalDiskSizeGb string `pulumi:"totalDiskSizeGb"`
+}
+
+// GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyInput is an input type that accepts GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyArgs and GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyOutput values.
+// You can construct a concrete instance of `GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyInput` via:
+//
+//	GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyArgs{...}
+type GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyInput interface {
+	pulumi.Input
+
+	ToGetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyOutput() GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyOutput
+	ToGetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyOutputWithContext(context.Context) GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyOutput
+}
+
+type GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyArgs struct {
+	// The description of the Compute Engine instance.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The machine type of the instance.
+	MachineType pulumi.StringInput `pulumi:"machineType"`
+	// Name of the compute instance backed up by the datasource.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The total number of disks attached to the Instance.
+	TotalDiskCount pulumi.StringInput `pulumi:"totalDiskCount"`
+	// The sum of all the disk sizes.
+	TotalDiskSizeGb pulumi.StringInput `pulumi:"totalDiskSizeGb"`
+}
+
+func (GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDataSourceDataSourceGcpResourceComputeInstanceDataSourceProperty)(nil)).Elem()
+}
+
+func (i GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyArgs) ToGetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyOutput() GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyOutput {
+	return i.ToGetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyOutputWithContext(context.Background())
+}
+
+func (i GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyArgs) ToGetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyOutputWithContext(ctx context.Context) GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyOutput)
+}
+
+// GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyArrayInput is an input type that accepts GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyArray and GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyArrayOutput values.
+// You can construct a concrete instance of `GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyArrayInput` via:
+//
+//	GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyArray{ GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyArgs{...} }
+type GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyArrayInput interface {
+	pulumi.Input
+
+	ToGetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyArrayOutput() GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyArrayOutput
+	ToGetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyArrayOutputWithContext(context.Context) GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyArrayOutput
+}
+
+type GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyArray []GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyInput
+
+func (GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDataSourceDataSourceGcpResourceComputeInstanceDataSourceProperty)(nil)).Elem()
+}
+
+func (i GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyArray) ToGetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyArrayOutput() GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyArrayOutput {
+	return i.ToGetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyArrayOutputWithContext(context.Background())
+}
+
+func (i GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyArray) ToGetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyArrayOutputWithContext(ctx context.Context) GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyArrayOutput)
+}
+
+type GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyOutput struct{ *pulumi.OutputState }
+
+func (GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDataSourceDataSourceGcpResourceComputeInstanceDataSourceProperty)(nil)).Elem()
+}
+
+func (o GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyOutput) ToGetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyOutput() GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyOutput {
+	return o
+}
+
+func (o GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyOutput) ToGetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyOutputWithContext(ctx context.Context) GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyOutput {
+	return o
+}
+
+// The description of the Compute Engine instance.
+func (o GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataSourceDataSourceGcpResourceComputeInstanceDataSourceProperty) string {
+		return v.Description
+	}).(pulumi.StringOutput)
+}
+
+// The machine type of the instance.
+func (o GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyOutput) MachineType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataSourceDataSourceGcpResourceComputeInstanceDataSourceProperty) string {
+		return v.MachineType
+	}).(pulumi.StringOutput)
+}
+
+// Name of the compute instance backed up by the datasource.
+func (o GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataSourceDataSourceGcpResourceComputeInstanceDataSourceProperty) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The total number of disks attached to the Instance.
+func (o GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyOutput) TotalDiskCount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataSourceDataSourceGcpResourceComputeInstanceDataSourceProperty) string {
+		return v.TotalDiskCount
+	}).(pulumi.StringOutput)
+}
+
+// The sum of all the disk sizes.
+func (o GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyOutput) TotalDiskSizeGb() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDataSourceDataSourceGcpResourceComputeInstanceDataSourceProperty) string {
+		return v.TotalDiskSizeGb
+	}).(pulumi.StringOutput)
+}
+
+type GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDataSourceDataSourceGcpResourceComputeInstanceDataSourceProperty)(nil)).Elem()
+}
+
+func (o GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyArrayOutput) ToGetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyArrayOutput() GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyArrayOutput {
+	return o
+}
+
+func (o GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyArrayOutput) ToGetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyArrayOutputWithContext(ctx context.Context) GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyArrayOutput {
+	return o
+}
+
+func (o GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyArrayOutput) Index(i pulumi.IntInput) GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDataSourceDataSourceGcpResourceComputeInstanceDataSourceProperty {
+		return vs[0].([]GetDataSourceDataSourceGcpResourceComputeInstanceDataSourceProperty)[vs[1].(int)]
+	}).(GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyOutput)
+}
+
 type GetManagementServerManagementUri struct {
 	// The management console api endpoint.
 	Api string `pulumi:"api"`
@@ -2031,6 +2865,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupPlanBackupRuleStandardScheduleBackupWindowArrayInput)(nil)).Elem(), GetBackupPlanBackupRuleStandardScheduleBackupWindowArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthInput)(nil)).Elem(), GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthArrayInput)(nil)).Elem(), GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDataSourceBackupConfigInfoInput)(nil)).Elem(), GetDataSourceBackupConfigInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDataSourceBackupConfigInfoArrayInput)(nil)).Elem(), GetDataSourceBackupConfigInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDataSourceBackupConfigInfoBackupApplianceBackupConfigInput)(nil)).Elem(), GetDataSourceBackupConfigInfoBackupApplianceBackupConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDataSourceBackupConfigInfoBackupApplianceBackupConfigArrayInput)(nil)).Elem(), GetDataSourceBackupConfigInfoBackupApplianceBackupConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDataSourceBackupConfigInfoGcpBackupConfigInput)(nil)).Elem(), GetDataSourceBackupConfigInfoGcpBackupConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDataSourceBackupConfigInfoGcpBackupConfigArrayInput)(nil)).Elem(), GetDataSourceBackupConfigInfoGcpBackupConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDataSourceDataSourceBackupApplianceApplicationInput)(nil)).Elem(), GetDataSourceDataSourceBackupApplianceApplicationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDataSourceDataSourceBackupApplianceApplicationArrayInput)(nil)).Elem(), GetDataSourceDataSourceBackupApplianceApplicationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDataSourceDataSourceGcpResourceInput)(nil)).Elem(), GetDataSourceDataSourceGcpResourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDataSourceDataSourceGcpResourceArrayInput)(nil)).Elem(), GetDataSourceDataSourceGcpResourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyInput)(nil)).Elem(), GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyArrayInput)(nil)).Elem(), GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetManagementServerManagementUriInput)(nil)).Elem(), GetManagementServerManagementUriArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetManagementServerManagementUriArrayInput)(nil)).Elem(), GetManagementServerManagementUriArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetManagementServerNetworkInput)(nil)).Elem(), GetManagementServerNetworkArgs{})
@@ -2062,6 +2908,18 @@ func init() {
 	pulumi.RegisterOutputType(GetBackupPlanBackupRuleStandardScheduleBackupWindowArrayOutput{})
 	pulumi.RegisterOutputType(GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthOutput{})
 	pulumi.RegisterOutputType(GetBackupPlanBackupRuleStandardScheduleWeekDayOfMonthArrayOutput{})
+	pulumi.RegisterOutputType(GetDataSourceBackupConfigInfoOutput{})
+	pulumi.RegisterOutputType(GetDataSourceBackupConfigInfoArrayOutput{})
+	pulumi.RegisterOutputType(GetDataSourceBackupConfigInfoBackupApplianceBackupConfigOutput{})
+	pulumi.RegisterOutputType(GetDataSourceBackupConfigInfoBackupApplianceBackupConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetDataSourceBackupConfigInfoGcpBackupConfigOutput{})
+	pulumi.RegisterOutputType(GetDataSourceBackupConfigInfoGcpBackupConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetDataSourceDataSourceBackupApplianceApplicationOutput{})
+	pulumi.RegisterOutputType(GetDataSourceDataSourceBackupApplianceApplicationArrayOutput{})
+	pulumi.RegisterOutputType(GetDataSourceDataSourceGcpResourceOutput{})
+	pulumi.RegisterOutputType(GetDataSourceDataSourceGcpResourceArrayOutput{})
+	pulumi.RegisterOutputType(GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyOutput{})
+	pulumi.RegisterOutputType(GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyArrayOutput{})
 	pulumi.RegisterOutputType(GetManagementServerManagementUriOutput{})
 	pulumi.RegisterOutputType(GetManagementServerManagementUriArrayOutput{})
 	pulumi.RegisterOutputType(GetManagementServerNetworkOutput{})

@@ -307,6 +307,12 @@ namespace Pulumi.Gcp.Filestore
         [Output("networks")]
         public Output<ImmutableArray<Outputs.InstanceNetwork>> Networks { get; private set; } = null!;
 
+        /// <summary>
+        /// Performance configuration for the instance. If not provided, the default performance settings will be used.
+        /// </summary>
+        [Output("performanceConfig")]
+        public Output<Outputs.InstancePerformanceConfig?> PerformanceConfig { get; private set; } = null!;
+
         [Output("project")]
         public Output<string> Project { get; private set; } = null!;
 
@@ -461,6 +467,12 @@ namespace Pulumi.Gcp.Filestore
             set => _networks = value;
         }
 
+        /// <summary>
+        /// Performance configuration for the instance. If not provided, the default performance settings will be used.
+        /// </summary>
+        [Input("performanceConfig")]
+        public Input<Inputs.InstancePerformanceConfigArgs>? PerformanceConfig { get; set; }
+
         [Input("project")]
         public Input<string>? Project { get; set; }
 
@@ -593,6 +605,12 @@ namespace Pulumi.Gcp.Filestore
             get => _networks ?? (_networks = new InputList<Inputs.InstanceNetworkGetArgs>());
             set => _networks = value;
         }
+
+        /// <summary>
+        /// Performance configuration for the instance. If not provided, the default performance settings will be used.
+        /// </summary>
+        [Input("performanceConfig")]
+        public Input<Inputs.InstancePerformanceConfigGetArgs>? PerformanceConfig { get; set; }
 
         [Input("project")]
         public Input<string>? Project { get; set; }

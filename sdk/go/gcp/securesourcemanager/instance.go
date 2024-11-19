@@ -680,6 +680,35 @@ import (
 //	}
 //
 // ```
+// ### Secure Source Manager Instance Workforce Identity Federation
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/securesourcemanager"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := securesourcemanager.NewInstance(ctx, "default", &securesourcemanager.InstanceArgs{
+//				Location:   pulumi.String("us-central1"),
+//				InstanceId: pulumi.String("my-instance"),
+//				WorkforceIdentityFederationConfig: &securesourcemanager.InstanceWorkforceIdentityFederationConfigArgs{
+//					Enabled: pulumi.Bool(true),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -750,6 +779,10 @@ type Instance struct {
 	StateNote pulumi.StringOutput `pulumi:"stateNote"`
 	// Time the Instance was updated in UTC.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
+	// Configuration for Workforce Identity Federation to support third party identity provider.
+	// If unset, defaults to the Google OIDC IdP.
+	// Structure is documented below.
+	WorkforceIdentityFederationConfig InstanceWorkforceIdentityFederationConfigPtrOutput `pulumi:"workforceIdentityFederationConfig"`
 }
 
 // NewInstance registers a new resource with the given unique name, arguments, and options.
@@ -830,6 +863,10 @@ type instanceState struct {
 	StateNote *string `pulumi:"stateNote"`
 	// Time the Instance was updated in UTC.
 	UpdateTime *string `pulumi:"updateTime"`
+	// Configuration for Workforce Identity Federation to support third party identity provider.
+	// If unset, defaults to the Google OIDC IdP.
+	// Structure is documented below.
+	WorkforceIdentityFederationConfig *InstanceWorkforceIdentityFederationConfig `pulumi:"workforceIdentityFederationConfig"`
 }
 
 type InstanceState struct {
@@ -870,6 +907,10 @@ type InstanceState struct {
 	StateNote pulumi.StringPtrInput
 	// Time the Instance was updated in UTC.
 	UpdateTime pulumi.StringPtrInput
+	// Configuration for Workforce Identity Federation to support third party identity provider.
+	// If unset, defaults to the Google OIDC IdP.
+	// Structure is documented below.
+	WorkforceIdentityFederationConfig InstanceWorkforceIdentityFederationConfigPtrInput
 }
 
 func (InstanceState) ElementType() reflect.Type {
@@ -896,6 +937,10 @@ type instanceArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Configuration for Workforce Identity Federation to support third party identity provider.
+	// If unset, defaults to the Google OIDC IdP.
+	// Structure is documented below.
+	WorkforceIdentityFederationConfig *InstanceWorkforceIdentityFederationConfig `pulumi:"workforceIdentityFederationConfig"`
 }
 
 // The set of arguments for constructing a Instance resource.
@@ -919,6 +964,10 @@ type InstanceArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Configuration for Workforce Identity Federation to support third party identity provider.
+	// If unset, defaults to the Google OIDC IdP.
+	// Structure is documented below.
+	WorkforceIdentityFederationConfig InstanceWorkforceIdentityFederationConfigPtrInput
 }
 
 func (InstanceArgs) ElementType() reflect.Type {
@@ -1085,6 +1134,15 @@ func (o InstanceOutput) StateNote() pulumi.StringOutput {
 // Time the Instance was updated in UTC.
 func (o InstanceOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+// Configuration for Workforce Identity Federation to support third party identity provider.
+// If unset, defaults to the Google OIDC IdP.
+// Structure is documented below.
+func (o InstanceOutput) WorkforceIdentityFederationConfig() InstanceWorkforceIdentityFederationConfigPtrOutput {
+	return o.ApplyT(func(v *Instance) InstanceWorkforceIdentityFederationConfigPtrOutput {
+		return v.WorkforceIdentityFederationConfig
+	}).(InstanceWorkforceIdentityFederationConfigPtrOutput)
 }
 
 type InstanceArrayOutput struct{ *pulumi.OutputState }

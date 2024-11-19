@@ -187,12 +187,12 @@ class LocationTagBinding(pulumi.CustomResource):
             short_name="keyname",
             description="For keyname resources.")
         value = gcp.tags.TagValue("value",
-            parent=key.name.apply(lambda name: f"tagKeys/{name}"),
+            parent=key.id,
             short_name="valuename",
             description="For valuename resources.")
         binding = gcp.tags.LocationTagBinding("binding",
             parent=f"//run.googleapis.com/projects/{project_google_project['number']}/locations/{default['location']}/services/{default['name']}",
-            tag_value=value.name.apply(lambda name: f"tagValues/{name}"),
+            tag_value=value.id,
             location="us-central1")
         ```
 
@@ -211,12 +211,12 @@ class LocationTagBinding(pulumi.CustomResource):
             short_name="keyname",
             description="For keyname resources.")
         value = gcp.tags.TagValue("value",
-            parent=key.name.apply(lambda name: f"tagKeys/{name}"),
+            parent=key.id,
             short_name="valuename",
             description="For valuename resources.")
         binding = gcp.tags.LocationTagBinding("binding",
             parent=project.number.apply(lambda number: f"//compute.googleapis.com/projects/{number}/zones/us-central1-a/instances/{instance['instanceId']}"),
-            tag_value=value.name.apply(lambda name: f"tagValues/{name}"),
+            tag_value=value.id,
             location="us-central1-a")
         ```
 
@@ -274,12 +274,12 @@ class LocationTagBinding(pulumi.CustomResource):
             short_name="keyname",
             description="For keyname resources.")
         value = gcp.tags.TagValue("value",
-            parent=key.name.apply(lambda name: f"tagKeys/{name}"),
+            parent=key.id,
             short_name="valuename",
             description="For valuename resources.")
         binding = gcp.tags.LocationTagBinding("binding",
             parent=f"//run.googleapis.com/projects/{project_google_project['number']}/locations/{default['location']}/services/{default['name']}",
-            tag_value=value.name.apply(lambda name: f"tagValues/{name}"),
+            tag_value=value.id,
             location="us-central1")
         ```
 
@@ -298,12 +298,12 @@ class LocationTagBinding(pulumi.CustomResource):
             short_name="keyname",
             description="For keyname resources.")
         value = gcp.tags.TagValue("value",
-            parent=key.name.apply(lambda name: f"tagKeys/{name}"),
+            parent=key.id,
             short_name="valuename",
             description="For valuename resources.")
         binding = gcp.tags.LocationTagBinding("binding",
             parent=project.number.apply(lambda number: f"//compute.googleapis.com/projects/{number}/zones/us-central1-a/instances/{instance['instanceId']}"),
-            tag_value=value.name.apply(lambda name: f"tagValues/{name}"),
+            tag_value=value.id,
             location="us-central1-a")
         ```
 

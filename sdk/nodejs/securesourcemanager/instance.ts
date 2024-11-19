@@ -426,6 +426,20 @@ import * as utilities from "../utilities";
  *     rrdatas: [fwRuleServiceAttachment.ipAddress],
  * });
  * ```
+ * ### Secure Source Manager Instance Workforce Identity Federation
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.securesourcemanager.Instance("default", {
+ *     location: "us-central1",
+ *     instanceId: "my-instance",
+ *     workforceIdentityFederationConfig: {
+ *         enabled: true,
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -551,6 +565,12 @@ export class Instance extends pulumi.CustomResource {
      * Time the Instance was updated in UTC.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
+    /**
+     * Configuration for Workforce Identity Federation to support third party identity provider.
+     * If unset, defaults to the Google OIDC IdP.
+     * Structure is documented below.
+     */
+    public readonly workforceIdentityFederationConfig!: pulumi.Output<outputs.securesourcemanager.InstanceWorkforceIdentityFederationConfig | undefined>;
 
     /**
      * Create a Instance resource with the given unique name, arguments, and options.
@@ -579,6 +599,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["stateNote"] = state ? state.stateNote : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
+            resourceInputs["workforceIdentityFederationConfig"] = state ? state.workforceIdentityFederationConfig : undefined;
         } else {
             const args = argsOrState as InstanceArgs | undefined;
             if ((!args || args.instanceId === undefined) && !opts.urn) {
@@ -593,6 +614,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["privateConfig"] = args ? args.privateConfig : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["workforceIdentityFederationConfig"] = args ? args.workforceIdentityFederationConfig : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["hostConfigs"] = undefined /*out*/;
@@ -679,6 +701,12 @@ export interface InstanceState {
      * Time the Instance was updated in UTC.
      */
     updateTime?: pulumi.Input<string>;
+    /**
+     * Configuration for Workforce Identity Federation to support third party identity provider.
+     * If unset, defaults to the Google OIDC IdP.
+     * Structure is documented below.
+     */
+    workforceIdentityFederationConfig?: pulumi.Input<inputs.securesourcemanager.InstanceWorkforceIdentityFederationConfig>;
 }
 
 /**
@@ -717,4 +745,10 @@ export interface InstanceArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * Configuration for Workforce Identity Federation to support third party identity provider.
+     * If unset, defaults to the Google OIDC IdP.
+     * Structure is documented below.
+     */
+    workforceIdentityFederationConfig?: pulumi.Input<inputs.securesourcemanager.InstanceWorkforceIdentityFederationConfig>;
 }

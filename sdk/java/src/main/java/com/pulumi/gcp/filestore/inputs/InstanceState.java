@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.filestore.inputs.InstanceFileSharesArgs;
 import com.pulumi.gcp.filestore.inputs.InstanceNetworkArgs;
+import com.pulumi.gcp.filestore.inputs.InstancePerformanceConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -214,6 +215,21 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.networks);
     }
 
+    /**
+     * Performance configuration for the instance. If not provided, the default performance settings will be used.
+     * 
+     */
+    @Import(name="performanceConfig")
+    private @Nullable Output<InstancePerformanceConfigArgs> performanceConfig;
+
+    /**
+     * @return Performance configuration for the instance. If not provided, the default performance settings will be used.
+     * 
+     */
+    public Optional<Output<InstancePerformanceConfigArgs>> performanceConfig() {
+        return Optional.ofNullable(this.performanceConfig);
+    }
+
     @Import(name="project")
     private @Nullable Output<String> project;
 
@@ -312,6 +328,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.location = $.location;
         this.name = $.name;
         this.networks = $.networks;
+        this.performanceConfig = $.performanceConfig;
         this.project = $.project;
         this.protocol = $.protocol;
         this.pulumiLabels = $.pulumiLabels;
@@ -613,6 +630,27 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder networks(InstanceNetworkArgs... networks) {
             return networks(List.of(networks));
+        }
+
+        /**
+         * @param performanceConfig Performance configuration for the instance. If not provided, the default performance settings will be used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder performanceConfig(@Nullable Output<InstancePerformanceConfigArgs> performanceConfig) {
+            $.performanceConfig = performanceConfig;
+            return this;
+        }
+
+        /**
+         * @param performanceConfig Performance configuration for the instance. If not provided, the default performance settings will be used.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder performanceConfig(InstancePerformanceConfigArgs performanceConfig) {
+            return performanceConfig(Output.of(performanceConfig));
         }
 
         public Builder project(@Nullable Output<String> project) {

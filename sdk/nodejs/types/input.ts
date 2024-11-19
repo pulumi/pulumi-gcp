@@ -467,9 +467,11 @@ export namespace accesscontextmanager {
 
     export interface ServicePerimeterDryRunEgressPolicyEgressFrom {
         /**
-         * A list of identities that are allowed access through this `EgressPolicy`.
-         * Should be in the format of email address. The email address should
-         * represent individual user or service account only.
+         * Identities can be an individual user, service account, Google group,
+         * or third-party identity. For third-party identity, only single identities
+         * are supported and other identity types are not supported.The v1 identities
+         * that have the prefix user, group and serviceAccount in
+         * https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.
          */
         identities?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -554,9 +556,11 @@ export namespace accesscontextmanager {
 
     export interface ServicePerimeterDryRunIngressPolicyIngressFrom {
         /**
-         * A list of identities that are allowed access through this ingress policy.
-         * Should be in the format of email address. The email address should represent
-         * individual user or service account only.
+         * Identities can be an individual user, service account, Google group,
+         * or third-party identity. For third-party identity, only single identities
+         * are supported and other identity types are not supported.The v1 identities
+         * that have the prefix user, group and serviceAccount in
+         * https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.
          */
         identities?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -649,9 +653,11 @@ export namespace accesscontextmanager {
 
     export interface ServicePerimeterEgressPolicyEgressFrom {
         /**
-         * A list of identities that are allowed access through this `EgressPolicy`.
-         * Should be in the format of email address. The email address should
-         * represent individual user or service account only.
+         * Identities can be an individual user, service account, Google group,
+         * or third-party identity. For third-party identity, only single identities
+         * are supported and other identity types are not supported.The v1 identities
+         * that have the prefix user, group and serviceAccount in
+         * https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.
          */
         identities?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -736,9 +742,11 @@ export namespace accesscontextmanager {
 
     export interface ServicePerimeterIngressPolicyIngressFrom {
         /**
-         * A list of identities that are allowed access through this ingress policy.
-         * Should be in the format of email address. The email address should represent
-         * individual user or service account only.
+         * Identities can be an individual user, service account, Google group,
+         * or third-party identity. For third-party identity, only single identities
+         * are supported and other identity types are not supported.The v1 identities
+         * that have the prefix user, group and serviceAccount in
+         * https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.
          */
         identities?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -1509,9 +1517,11 @@ export namespace accesscontextmanager {
 
     export interface ServicePerimetersServicePerimeterSpecEgressPolicyEgressFrom {
         /**
-         * A list of identities that are allowed access through this `EgressPolicy`.
-         * Should be in the format of email address. The email address should
-         * represent individual user or service account only.
+         * Identities can be an individual user, service account, Google group,
+         * or third-party identity. For third-party identity, only single identities
+         * are supported and other identity types are not supported.The v1 identities
+         * that have the prefix user, group and serviceAccount in
+         * https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.
          */
         identities?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -1777,9 +1787,11 @@ export namespace accesscontextmanager {
 
     export interface ServicePerimetersServicePerimeterStatusEgressPolicyEgressFrom {
         /**
-         * A list of identities that are allowed access through this `EgressPolicy`.
-         * Should be in the format of email address. The email address should
-         * represent individual user or service account only.
+         * Identities can be an individual user, service account, Google group,
+         * or third-party identity. For third-party identity, only single identities
+         * are supported and other identity types are not supported.The v1 identities
+         * that have the prefix user, group and serviceAccount in
+         * https://cloud.google.com/iam/docs/principal-identifiers#v1 are supported.
          */
         identities?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -4575,6 +4587,11 @@ export namespace artifactregistry {
          */
         aptRepository?: pulumi.Input<inputs.artifactregistry.RepositoryRemoteRepositoryConfigAptRepository>;
         /**
+         * Specific settings for an Artifact Registory remote repository.
+         * Structure is documented below.
+         */
+        commonRepository?: pulumi.Input<inputs.artifactregistry.RepositoryRemoteRepositoryConfigCommonRepository>;
+        /**
          * The description of the remote source.
          */
         description?: pulumi.Input<string>;
@@ -4633,6 +4650,13 @@ export namespace artifactregistry {
          * Specific repository from the base, e.g. `"pub/rocky/9/BaseOS/x86_64/os"`
          */
         repositoryPath: pulumi.Input<string>;
+    }
+
+    export interface RepositoryRemoteRepositoryConfigCommonRepository {
+        /**
+         * Specific uri to the Artifact Registory repository, e.g. `projects/UPSTREAM_PROJECT_ID/locations/REGION/repositories/UPSTREAM_REPOSITORY`
+         */
+        uri: pulumi.Input<string>;
     }
 
     export interface RepositoryRemoteRepositoryConfigDockerRepository {
@@ -17653,7 +17677,7 @@ export namespace compute {
     export interface ImageGuestOsFeature {
         /**
          * The type of supported feature. Read [Enabling guest operating system features](https://cloud.google.com/compute/docs/images/create-delete-deprecate-private-images#guest-os-features) to see a list of available options.
-         * Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `SUSPEND_RESUME_COMPATIBLE`, `TDX_CAPABLE`, `SEV_LIVE_MIGRATABLE_V2`.
+         * Possible values are: `MULTI_IP_SUBNET`, `SECURE_BOOT`, `SEV_CAPABLE`, `UEFI_COMPATIBLE`, `VIRTIO_SCSI_MULTIQUEUE`, `WINDOWS`, `GVNIC`, `IDPF`, `SEV_LIVE_MIGRATABLE`, `SEV_SNP_CAPABLE`, `SUSPEND_RESUME_COMPATIBLE`, `TDX_CAPABLE`, `SEV_LIVE_MIGRATABLE_V2`.
          */
         type: pulumi.Input<string>;
     }
@@ -18120,7 +18144,7 @@ export namespace compute {
          */
         networkIp?: pulumi.Input<string>;
         /**
-         * The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET
+         * The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, IDPF
          */
         nicType?: pulumi.Input<string>;
         /**
@@ -18570,7 +18594,7 @@ export namespace compute {
          */
         networkIp?: pulumi.Input<string>;
         /**
-         * The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET
+         * The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, IDPF
          */
         nicType?: pulumi.Input<string>;
         /**
@@ -19164,7 +19188,7 @@ export namespace compute {
          */
         networkIp?: pulumi.Input<string>;
         /**
-         * The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET.
+         * The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, IDPF.
          */
         nicType?: pulumi.Input<string>;
         /**
@@ -43513,6 +43537,106 @@ export namespace dataproc {
     export interface GdcServiceInstanceSparkServiceInstanceConfig {
     }
 
+    export interface GdcSparkApplicationPysparkApplicationConfig {
+        /**
+         * HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+         */
+        archiveUris?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The arguments to pass to the driver.  Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+         */
+        args?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
+         */
+        fileUris?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * HCFS URIs of jar files to add to the CLASSPATHs of the Python driver and tasks.
+         */
+        jarFileUris?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The HCFS URI of the main Python file to use as the driver. Must be a .py file.
+         */
+        mainPythonFileUri: pulumi.Input<string>;
+        /**
+         * HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
+         */
+        pythonFileUris?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface GdcSparkApplicationSparkApplicationConfig {
+        /**
+         * HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: `.jar`, `.tar`, `.tar.gz`, `.tgz`, and `.zip`.
+         */
+        archiveUris?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The arguments to pass to the driver. Do not include arguments that can be set as application properties, such as `--conf`, since a collision can occur that causes an incorrect application submission.
+         */
+        args?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * HCFS URIs of files to be placed in the working directory of each executor.
+         */
+        fileUris?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * HCFS URIs of jar files to add to the classpath of the Spark driver and tasks.
+         */
+        jarFileUris?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The name of the driver main class. The jar file that contains the class must be in the classpath or specified in `jarFileUris`.
+         */
+        mainClass?: pulumi.Input<string>;
+        /**
+         * The HCFS URI of the jar file that contains the main class.
+         */
+        mainJarFileUri?: pulumi.Input<string>;
+    }
+
+    export interface GdcSparkApplicationSparkRApplicationConfig {
+        /**
+         * HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+         */
+        archiveUris?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The arguments to pass to the driver.  Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+         */
+        args?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
+         */
+        fileUris?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The HCFS URI of the main R file to use as the driver. Must be a .R file.
+         */
+        mainRFileUri: pulumi.Input<string>;
+    }
+
+    export interface GdcSparkApplicationSparkSqlApplicationConfig {
+        /**
+         * HCFS URIs of jar files to be added to the Spark CLASSPATH.
+         */
+        jarFileUris?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * The HCFS URI of the script that contains SQL queries.
+         */
+        queryFileUri?: pulumi.Input<string>;
+        /**
+         * Represents a list of queries.
+         * Structure is documented below.
+         */
+        queryList?: pulumi.Input<inputs.dataproc.GdcSparkApplicationSparkSqlApplicationConfigQueryList>;
+        /**
+         * Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name="value";`).
+         */
+        scriptVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    }
+
+    export interface GdcSparkApplicationSparkSqlApplicationConfigQueryList {
+        /**
+         * The queries to run.
+         */
+        queries: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
     export interface JobHadoopConfig {
         /**
          * HCFS URIs of archives to be extracted in the working directory of .jar, .tar, .tar.gz, .tgz, and .zip.
@@ -50500,6 +50624,41 @@ export namespace filestore {
          */
         reservedIpRange?: pulumi.Input<string>;
     }
+
+    export interface InstancePerformanceConfig {
+        /**
+         * The instance will have a fixed provisioned IOPS value,
+         * which will remain constant regardless of instance
+         * capacity.
+         * Structure is documented below.
+         */
+        fixedIops?: pulumi.Input<inputs.filestore.InstancePerformanceConfigFixedIops>;
+        /**
+         * The instance provisioned IOPS will change dynamically
+         * based on the capacity of the instance.
+         * Structure is documented below.
+         */
+        iopsPerTb?: pulumi.Input<inputs.filestore.InstancePerformanceConfigIopsPerTb>;
+    }
+
+    export interface InstancePerformanceConfigFixedIops {
+        /**
+         * The number of IOPS to provision for the instance.
+         * maxIops must be in multiple of 1000.
+         */
+        maxIops?: pulumi.Input<number>;
+    }
+
+    export interface InstancePerformanceConfigIopsPerTb {
+        /**
+         * The instance max IOPS will be calculated by multiplying
+         * the capacity of the instance (TB) by max_iops_per_tb,
+         * and rounding to the nearest 1000. The instance max IOPS
+         * will be changed dynamically based on the instance
+         * capacity.
+         */
+        maxIopsPerTb?: pulumi.Input<number>;
+    }
 }
 
 export namespace firebase {
@@ -55254,6 +55413,64 @@ export namespace iam {
          * This can be used e.g. in UIs which allow to enter the expression.
          */
         title?: pulumi.Input<string>;
+    }
+
+    export interface FoldersPolicyBindingCondition {
+        /**
+         * Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression?: pulumi.Input<string>;
+        /**
+         * Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+         */
+        location?: pulumi.Input<string>;
+        /**
+         * Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+         */
+        title?: pulumi.Input<string>;
+    }
+
+    export interface FoldersPolicyBindingTarget {
+        /**
+         * Required. Immutable. The resource name of the policy to be bound.
+         * The binding parent and policy must belong to the same Organization (or Project).
+         *
+         * - - -
+         */
+        principalSet?: pulumi.Input<string>;
+    }
+
+    export interface OrganizationsPolicyBindingCondition {
+        /**
+         * Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         */
+        description?: pulumi.Input<string>;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression?: pulumi.Input<string>;
+        /**
+         * Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+         */
+        location?: pulumi.Input<string>;
+        /**
+         * Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+         */
+        title?: pulumi.Input<string>;
+    }
+
+    export interface OrganizationsPolicyBindingTarget {
+        /**
+         * Required. Immutable. The resource name of the policy to be bound.
+         * The binding parent and policy must belong to the same Organization (or Project).
+         *
+         * - - -
+         */
+        principalSet?: pulumi.Input<string>;
     }
 
     export interface PrincipalAccessBoundaryPolicyDetails {
@@ -67533,6 +67750,56 @@ export namespace redis {
         startTime?: pulumi.Input<string>;
     }
 
+    export interface ClusterPersistenceConfig {
+        /**
+         * AOF configuration. This field will be ignored if mode is not AOF.
+         * Structure is documented below.
+         */
+        aofConfig?: pulumi.Input<inputs.redis.ClusterPersistenceConfigAofConfig>;
+        /**
+         * Optional. Controls whether Persistence features are enabled. If not provided, the existing value will be used.
+         * - DISABLED: 	Persistence (both backup and restore) is disabled for the cluster.
+         * - RDB: RDB based Persistence is enabled.
+         * - AOF: AOF based Persistence is enabled.
+         * Possible values are: `PERSISTENCE_MODE_UNSPECIFIED`, `DISABLED`, `RDB`, `AOF`.
+         */
+        mode?: pulumi.Input<string>;
+        /**
+         * RDB configuration. This field will be ignored if mode is not RDB.
+         * Structure is documented below.
+         */
+        rdbConfig?: pulumi.Input<inputs.redis.ClusterPersistenceConfigRdbConfig>;
+    }
+
+    export interface ClusterPersistenceConfigAofConfig {
+        /**
+         * Optional. Available fsync modes.
+         * - NO - Do not explicilty call fsync(). Rely on OS defaults.
+         * - EVERYSEC - Call fsync() once per second in a background thread. A balance between performance and durability.
+         * - ALWAYS - Call fsync() for earch write command.
+         * Possible values are: `APPEND_FSYNC_UNSPECIFIED`, `NO`, `EVERYSEC`, `ALWAYS`.
+         */
+        appendFsync?: pulumi.Input<string>;
+    }
+
+    export interface ClusterPersistenceConfigRdbConfig {
+        /**
+         * Optional. Available snapshot periods for scheduling.
+         * - ONE_HOUR:	Snapshot every 1 hour.
+         * - SIX_HOURS:	Snapshot every 6 hours.
+         * - TWELVE_HOURS:	Snapshot every 12 hours.
+         * - TWENTY_FOUR_HOURS:	Snapshot every 24 hours.
+         * Possible values are: `SNAPSHOT_PERIOD_UNSPECIFIED`, `ONE_HOUR`, `SIX_HOURS`, `TWELVE_HOURS`, `TWENTY_FOUR_HOURS`.
+         */
+        rdbSnapshotPeriod?: pulumi.Input<string>;
+        /**
+         * The time that the first snapshot was/will be attempted, and to which
+         * future snapshots will be aligned.
+         * If not provided, the current time will be used.
+         */
+        rdbSnapshotStartTime?: pulumi.Input<string>;
+    }
+
     export interface ClusterPscConfig {
         /**
          * Required. The consumer network where the network address of
@@ -68023,6 +68290,13 @@ export namespace securesourcemanager {
          * Service Attachment for SSH, resource is in the format of `projects/{project}/regions/{region}/serviceAttachments/{service_attachment}`.
          */
         sshServiceAttachment?: pulumi.Input<string>;
+    }
+
+    export interface InstanceWorkforceIdentityFederationConfig {
+        /**
+         * 'Whether Workforce Identity Federation is enabled.'
+         */
+        enabled: pulumi.Input<boolean>;
     }
 
     export interface RepositoryIamBindingCondition {
@@ -70085,9 +70359,24 @@ export namespace sql {
          */
         allowedConsumerProjects?: pulumi.Input<pulumi.Input<string>[]>;
         /**
+         * A comma-separated list of networks or a comma-separated list of network-project pairs. Each project in this list is represented by a project number (numeric) or by a project ID (alphanumeric). This allows Private Service Connect connections to be created automatically for the specified networks.
+         */
+        pscAutoConnections?: pulumi.Input<pulumi.Input<inputs.sql.DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection>[]>;
+        /**
          * Whether PSC connectivity is enabled for this instance.
          */
         pscEnabled?: pulumi.Input<boolean>;
+    }
+
+    export interface DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnection {
+        /**
+         * "The consumer network of this consumer endpoint. This must be a resource path that includes both the host project and the network name. For example, `projects/project1/global/networks/network1`. The consumer host project of this network might be different from the consumer service project."
+         */
+        consumerNetwork: pulumi.Input<string>;
+        /**
+         * The project ID of consumer service project of this consumer endpoint.
+         */
+        consumerServiceProjectId?: pulumi.Input<string>;
     }
 
     export interface DatabaseInstanceSettingsLocationPreference {

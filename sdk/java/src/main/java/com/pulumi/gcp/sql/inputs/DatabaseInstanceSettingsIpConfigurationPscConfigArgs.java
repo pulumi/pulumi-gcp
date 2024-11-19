@@ -5,6 +5,7 @@ package com.pulumi.gcp.sql.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -33,6 +34,21 @@ public final class DatabaseInstanceSettingsIpConfigurationPscConfigArgs extends 
     }
 
     /**
+     * A comma-separated list of networks or a comma-separated list of network-project pairs. Each project in this list is represented by a project number (numeric) or by a project ID (alphanumeric). This allows Private Service Connect connections to be created automatically for the specified networks.
+     * 
+     */
+    @Import(name="pscAutoConnections")
+    private @Nullable Output<List<DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs>> pscAutoConnections;
+
+    /**
+     * @return A comma-separated list of networks or a comma-separated list of network-project pairs. Each project in this list is represented by a project number (numeric) or by a project ID (alphanumeric). This allows Private Service Connect connections to be created automatically for the specified networks.
+     * 
+     */
+    public Optional<Output<List<DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs>>> pscAutoConnections() {
+        return Optional.ofNullable(this.pscAutoConnections);
+    }
+
+    /**
      * Whether PSC connectivity is enabled for this instance.
      * 
      */
@@ -51,6 +67,7 @@ public final class DatabaseInstanceSettingsIpConfigurationPscConfigArgs extends 
 
     private DatabaseInstanceSettingsIpConfigurationPscConfigArgs(DatabaseInstanceSettingsIpConfigurationPscConfigArgs $) {
         this.allowedConsumerProjects = $.allowedConsumerProjects;
+        this.pscAutoConnections = $.pscAutoConnections;
         this.pscEnabled = $.pscEnabled;
     }
 
@@ -101,6 +118,37 @@ public final class DatabaseInstanceSettingsIpConfigurationPscConfigArgs extends 
          */
         public Builder allowedConsumerProjects(String... allowedConsumerProjects) {
             return allowedConsumerProjects(List.of(allowedConsumerProjects));
+        }
+
+        /**
+         * @param pscAutoConnections A comma-separated list of networks or a comma-separated list of network-project pairs. Each project in this list is represented by a project number (numeric) or by a project ID (alphanumeric). This allows Private Service Connect connections to be created automatically for the specified networks.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pscAutoConnections(@Nullable Output<List<DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs>> pscAutoConnections) {
+            $.pscAutoConnections = pscAutoConnections;
+            return this;
+        }
+
+        /**
+         * @param pscAutoConnections A comma-separated list of networks or a comma-separated list of network-project pairs. Each project in this list is represented by a project number (numeric) or by a project ID (alphanumeric). This allows Private Service Connect connections to be created automatically for the specified networks.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pscAutoConnections(List<DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs> pscAutoConnections) {
+            return pscAutoConnections(Output.of(pscAutoConnections));
+        }
+
+        /**
+         * @param pscAutoConnections A comma-separated list of networks or a comma-separated list of network-project pairs. Each project in this list is represented by a project number (numeric) or by a project ID (alphanumeric). This allows Private Service Connect connections to be created automatically for the specified networks.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pscAutoConnections(DatabaseInstanceSettingsIpConfigurationPscConfigPscAutoConnectionArgs... pscAutoConnections) {
+            return pscAutoConnections(List.of(pscAutoConnections));
         }
 
         /**

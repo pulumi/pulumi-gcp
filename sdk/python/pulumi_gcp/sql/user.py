@@ -424,7 +424,7 @@ class User(pulumi.CustomResource):
             settings={
                 "tier": "db-f1-micro",
                 "database_flags": [{
-                    "name": "cloudsql_iam_authentication",
+                    "name": "cloudsql.iam_authentication",
                     "value": "on",
                 }],
             })
@@ -563,7 +563,7 @@ class User(pulumi.CustomResource):
             settings={
                 "tier": "db-f1-micro",
                 "database_flags": [{
-                    "name": "cloudsql_iam_authentication",
+                    "name": "cloudsql.iam_authentication",
                     "value": "on",
                 }],
             })

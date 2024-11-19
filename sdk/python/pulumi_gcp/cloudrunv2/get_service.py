@@ -27,7 +27,7 @@ class GetServiceResult:
     """
     A collection of values returned by getService.
     """
-    def __init__(__self__, annotations=None, binary_authorizations=None, client=None, client_version=None, conditions=None, create_time=None, creator=None, custom_audiences=None, default_uri_disabled=None, delete_time=None, deletion_protection=None, description=None, effective_annotations=None, effective_labels=None, etag=None, expire_time=None, generation=None, id=None, ingress=None, invoker_iam_disabled=None, labels=None, last_modifier=None, latest_created_revision=None, latest_ready_revision=None, launch_stage=None, location=None, name=None, observed_generation=None, project=None, pulumi_labels=None, reconciling=None, scalings=None, templates=None, terminal_conditions=None, traffic_statuses=None, traffics=None, uid=None, update_time=None, uri=None):
+    def __init__(__self__, annotations=None, binary_authorizations=None, client=None, client_version=None, conditions=None, create_time=None, creator=None, custom_audiences=None, default_uri_disabled=None, delete_time=None, deletion_protection=None, description=None, effective_annotations=None, effective_labels=None, etag=None, expire_time=None, generation=None, id=None, ingress=None, invoker_iam_disabled=None, labels=None, last_modifier=None, latest_created_revision=None, latest_ready_revision=None, launch_stage=None, location=None, name=None, observed_generation=None, project=None, pulumi_labels=None, reconciling=None, scalings=None, templates=None, terminal_conditions=None, traffic_statuses=None, traffics=None, uid=None, update_time=None, uri=None, urls=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
@@ -145,6 +145,9 @@ class GetServiceResult:
         if uri and not isinstance(uri, str):
             raise TypeError("Expected argument 'uri' to be a str")
         pulumi.set(__self__, "uri", uri)
+        if urls and not isinstance(urls, list):
+            raise TypeError("Expected argument 'urls' to be a list")
+        pulumi.set(__self__, "urls", urls)
 
     @property
     @pulumi.getter
@@ -344,6 +347,11 @@ class GetServiceResult:
     def uri(self) -> str:
         return pulumi.get(self, "uri")
 
+    @property
+    @pulumi.getter
+    def urls(self) -> Sequence[str]:
+        return pulumi.get(self, "urls")
+
 
 class AwaitableGetServiceResult(GetServiceResult):
     # pylint: disable=using-constant-test
@@ -389,7 +397,8 @@ class AwaitableGetServiceResult(GetServiceResult):
             traffics=self.traffics,
             uid=self.uid,
             update_time=self.update_time,
-            uri=self.uri)
+            uri=self.uri,
+            urls=self.urls)
 
 
 def get_service(location: Optional[str] = None,
@@ -465,7 +474,8 @@ def get_service(location: Optional[str] = None,
         traffics=pulumi.get(__ret__, 'traffics'),
         uid=pulumi.get(__ret__, 'uid'),
         update_time=pulumi.get(__ret__, 'update_time'),
-        uri=pulumi.get(__ret__, 'uri'))
+        uri=pulumi.get(__ret__, 'uri'),
+        urls=pulumi.get(__ret__, 'urls'))
 def get_service_output(location: Optional[pulumi.Input[Optional[str]]] = None,
                        name: Optional[pulumi.Input[str]] = None,
                        project: Optional[pulumi.Input[Optional[str]]] = None,
@@ -538,4 +548,5 @@ def get_service_output(location: Optional[pulumi.Input[Optional[str]]] = None,
         traffics=pulumi.get(__response__, 'traffics'),
         uid=pulumi.get(__response__, 'uid'),
         update_time=pulumi.get(__response__, 'update_time'),
-        uri=pulumi.get(__response__, 'uri')))
+        uri=pulumi.get(__response__, 'uri'),
+        urls=pulumi.get(__response__, 'urls')))

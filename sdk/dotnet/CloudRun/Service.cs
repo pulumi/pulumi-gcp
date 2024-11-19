@@ -389,13 +389,6 @@ namespace Pulumi.Gcp.CloudRun
     ///     {
     ///         Name = "cloudrun-srv",
     ///         Location = "us-central1",
-    ///         Metadata = new Gcp.CloudRun.Inputs.ServiceMetadataArgs
-    ///         {
-    ///             Annotations = 
-    ///             {
-    ///                 { "run.googleapis.com/launch-stage", "BETA" },
-    ///             },
-    ///         },
     ///         Template = new Gcp.CloudRun.Inputs.ServiceTemplateArgs
     ///         {
     ///             Metadata = new Gcp.CloudRun.Inputs.ServiceTemplateMetadataArgs

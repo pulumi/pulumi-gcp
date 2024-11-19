@@ -122,6 +122,37 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ### Cloud SQL Instance with PSC auto connections
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const main = new gcp.sql.DatabaseInstance("main", {
+ *     name: "psc-enabled-main-instance",
+ *     databaseVersion: "MYSQL_8_0",
+ *     settings: {
+ *         tier: "db-f1-micro",
+ *         ipConfiguration: {
+ *             pscConfigs: [{
+ *                 pscEnabled: true,
+ *                 allowedConsumerProjects: ["allowed-consumer-project-name"],
+ *                 pscAutoConnections: [{
+ *                     consumerNetwork: "network-name",
+ *                     consumerServiceProjectId: "project-id",
+ *                 }],
+ *             }],
+ *             ipv4Enabled: false,
+ *         },
+ *         backupConfiguration: {
+ *             enabled: true,
+ *             binaryLogEnabled: true,
+ *         },
+ *         availabilityType: "REGIONAL",
+ *     },
+ * });
+ * ```
+ *
  * ## Switchover (SQL Server Only)
  *
  * Users can perform a switchover on any direct `cascadable` replica by following the steps below.

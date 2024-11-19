@@ -16,6 +16,7 @@ from .cluster_iam_member import *
 from .cluster_iam_policy import *
 from .gdc_application_environment import *
 from .gdc_service_instance import *
+from .gdc_spark_application import *
 from .get_autoscaling_policy_iam_policy import *
 from .get_cluster_iam_policy import *
 from .get_job_iam_policy import *

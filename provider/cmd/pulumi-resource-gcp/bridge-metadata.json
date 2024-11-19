@@ -1982,6 +1982,9 @@
                                         }
                                     }
                                 },
+                                "common_repository": {
+                                    "maxItemsOne": true
+                                },
                                 "docker_repository": {
                                     "maxItemsOne": true,
                                     "elem": {
@@ -4046,6 +4049,9 @@
                         "maxItemsOne": false
                     },
                     "traffic_statuses": {
+                        "maxItemsOne": false
+                    },
+                    "urls": {
                         "maxItemsOne": false
                     }
                 }
@@ -15127,6 +15133,92 @@
                     }
                 }
             },
+            "google_dataproc_gdc_spark_application": {
+                "current": "gcp:dataproc/gdcSparkApplication:GdcSparkApplication",
+                "majorVersion": 8,
+                "fields": {
+                    "dependency_images": {
+                        "maxItemsOne": false
+                    },
+                    "pyspark_application_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "archive_uris": {
+                                    "maxItemsOne": false
+                                },
+                                "args": {
+                                    "maxItemsOne": false
+                                },
+                                "file_uris": {
+                                    "maxItemsOne": false
+                                },
+                                "jar_file_uris": {
+                                    "maxItemsOne": false
+                                },
+                                "python_file_uris": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "spark_application_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "archive_uris": {
+                                    "maxItemsOne": false
+                                },
+                                "args": {
+                                    "maxItemsOne": false
+                                },
+                                "file_uris": {
+                                    "maxItemsOne": false
+                                },
+                                "jar_file_uris": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "spark_r_application_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "archive_uris": {
+                                    "maxItemsOne": false
+                                },
+                                "args": {
+                                    "maxItemsOne": false
+                                },
+                                "file_uris": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    },
+                    "spark_sql_application_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "jar_file_uris": {
+                                    "maxItemsOne": false
+                                },
+                                "query_list": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "queries": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "google_dataproc_job": {
                 "current": "gcp:dataproc/job:Job",
                 "majorVersion": 8,
@@ -17883,6 +17975,19 @@
                                 }
                             }
                         }
+                    },
+                    "performance_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "fixed_iops": {
+                                    "maxItemsOne": true
+                                },
+                                "iops_per_tb": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -20030,6 +20135,30 @@
                                 }
                             }
                         }
+                    }
+                }
+            },
+            "google_iam_folders_policy_binding": {
+                "current": "gcp:iam/foldersPolicyBinding:FoldersPolicyBinding",
+                "majorVersion": 8,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    },
+                    "target": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "google_iam_organizations_policy_binding": {
+                "current": "gcp:iam/organizationsPolicyBinding:OrganizationsPolicyBinding",
+                "majorVersion": 8,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    },
+                    "target": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -25621,6 +25750,19 @@
                     "maintenance_schedule": {
                         "maxItemsOne": false
                     },
+                    "persistence_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "aof_config": {
+                                    "maxItemsOne": true
+                                },
+                                "rdb_config": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
                     "psc_configs": {
                         "maxItemsOne": false
                     },
@@ -26277,6 +26419,9 @@
                         "maxItemsOne": false
                     },
                     "private_config": {
+                        "maxItemsOne": true
+                    },
+                    "workforce_identity_federation_config": {
                         "maxItemsOne": true
                     }
                 }
@@ -26955,6 +27100,9 @@
                                                 "elem": {
                                                     "fields": {
                                                         "allowed_consumer_projects": {
+                                                            "maxItemsOne": false
+                                                        },
+                                                        "psc_auto_connections": {
                                                             "maxItemsOne": false
                                                         }
                                                     }
@@ -28700,6 +28848,15 @@
                 "current": "gcp:accessapproval/getProjectServiceAccount:getProjectServiceAccount",
                 "majorVersion": 8
             },
+            "google_access_context_manager_access_policy": {
+                "current": "gcp:accesscontextmanager/getAccessPolicy:getAccessPolicy",
+                "majorVersion": 8,
+                "fields": {
+                    "scopes": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "google_access_context_manager_access_policy_iam_policy": {
                 "current": "gcp:accesscontextmanager/getAccessPolicyIamPolicy:getAccessPolicyIamPolicy",
                 "majorVersion": 8
@@ -28896,6 +29053,9 @@
                                         }
                                     }
                                 },
+                                "common_repository": {
+                                    "maxItemsOne": false
+                                },
                                 "docker_repository": {
                                     "maxItemsOne": false,
                                     "elem": {
@@ -29019,6 +29179,45 @@
                         "elem": {
                             "fields": {
                                 "last_backup_error": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "google_backup_dr_data_source": {
+                "current": "gcp:backupdisasterrecovery/getDataSource:getDataSource",
+                "majorVersion": 8,
+                "fields": {
+                    "backup_config_info": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "backup_appliance_backup_config": {
+                                    "maxItemsOne": false
+                                },
+                                "gcp_backup_config": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "backup_plan_rules": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    },
+                    "data_source_backup_appliance_application": {
+                        "maxItemsOne": false
+                    },
+                    "data_source_gcp_resource": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "compute_instance_data_source_properties": {
                                     "maxItemsOne": false
                                 }
                             }
@@ -29939,6 +30138,9 @@
                         "maxItemsOne": false
                     },
                     "traffic_statuses": {
+                        "maxItemsOne": false
+                    },
+                    "urls": {
                         "maxItemsOne": false
                     }
                 }
@@ -33007,6 +33209,19 @@
                                 }
                             }
                         }
+                    },
+                    "performance_config": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "fixed_iops": {
+                                    "maxItemsOne": false
+                                },
+                                "iops_per_tb": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -34757,6 +34972,9 @@
                                                     "fields": {
                                                         "allowed_consumer_projects": {
                                                             "maxItemsOne": false
+                                                        },
+                                                        "psc_auto_connections": {
+                                                            "maxItemsOne": false
                                                         }
                                                     }
                                                 }
@@ -34865,6 +35083,9 @@
                                                             "elem": {
                                                                 "fields": {
                                                                     "allowed_consumer_projects": {
+                                                                        "maxItemsOne": false
+                                                                    },
+                                                                    "psc_auto_connections": {
                                                                         "maxItemsOne": false
                                                                     }
                                                                 }
@@ -35679,6 +35900,10 @@
                 "terraform_labels"
             ],
             "google_dataproc_gdc_service_instance": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_dataproc_gdc_spark_application": [
                 "effective_labels",
                 "terraform_labels"
             ],
@@ -36862,6 +37087,7 @@
             "gcp:dataproc/clusterIAMPolicy:ClusterIAMPolicy": 0,
             "gcp:dataproc/gdcApplicationEnvironment:GdcApplicationEnvironment": 0,
             "gcp:dataproc/gdcServiceInstance:GdcServiceInstance": 0,
+            "gcp:dataproc/gdcSparkApplication:GdcSparkApplication": 0,
             "gcp:dataproc/job:Job": 0,
             "gcp:dataproc/jobIAMBinding:JobIAMBinding": 0,
             "gcp:dataproc/jobIAMMember:JobIAMMember": 0,
@@ -37018,6 +37244,8 @@
             "gcp:healthcare/workspace:Workspace": 0,
             "gcp:iam/accessBoundaryPolicy:AccessBoundaryPolicy": 0,
             "gcp:iam/denyPolicy:DenyPolicy": 0,
+            "gcp:iam/foldersPolicyBinding:FoldersPolicyBinding": 0,
+            "gcp:iam/organizationsPolicyBinding:OrganizationsPolicyBinding": 0,
             "gcp:iam/principalAccessBoundaryPolicy:PrincipalAccessBoundaryPolicy": 0,
             "gcp:iam/workforcePool:WorkforcePool": 0,
             "gcp:iam/workforcePoolProvider:WorkforcePoolProvider": 0,
@@ -37420,6 +37648,7 @@
             "gcp:accessapproval/getFolderServiceAccount:getFolderServiceAccount": 0,
             "gcp:accessapproval/getOrganizationServiceAccount:getOrganizationServiceAccount": 0,
             "gcp:accessapproval/getProjectServiceAccount:getProjectServiceAccount": 0,
+            "gcp:accesscontextmanager/getAccessPolicy:getAccessPolicy": 0,
             "gcp:accesscontextmanager/getAccessPolicyIamPolicy:getAccessPolicyIamPolicy": 0,
             "gcp:alloydb/getLocations:getLocations": 0,
             "gcp:alloydb/getSupportedDatabaseFlags:getSupportedDatabaseFlags": 0,
@@ -37437,6 +37666,7 @@
             "gcp:artifactregistry/getRepositoryIamPolicy:getRepositoryIamPolicy": 0,
             "gcp:backupdisasterrecovery/getBackupPlan:getBackupPlan": 0,
             "gcp:backupdisasterrecovery/getBackupPlanAssociation:getBackupPlanAssociation": 0,
+            "gcp:backupdisasterrecovery/getDataSource:getDataSource": 0,
             "gcp:backupdisasterrecovery/getManagementServer:getManagementServer": 0,
             "gcp:beyondcorp/getAppConnection:getAppConnection": 0,
             "gcp:beyondcorp/getAppConnector:getAppConnector": 0,

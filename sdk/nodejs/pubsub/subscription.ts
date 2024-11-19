@@ -179,12 +179,12 @@ import * as utilities from "../utilities";
  *     displayName: "BQ Write Service Account",
  * });
  * const project = gcp.organizations.getProject({});
- * const viewer = new gcp.projects.IAMMember("viewer", {
+ * const bigqueryMetadataViewer = new gcp.projects.IAMMember("bigquery_metadata_viewer", {
  *     project: project.then(project => project.projectId),
  *     role: "roles/bigquery.metadataViewer",
  *     member: pulumi.interpolate`serviceAccount:${bqWriteServiceAccount.email}`,
  * });
- * const editor = new gcp.projects.IAMMember("editor", {
+ * const bigqueryDataEditor = new gcp.projects.IAMMember("bigquery_data_editor", {
  *     project: project.then(project => project.projectId),
  *     role: "roles/bigquery.dataEditor",
  *     member: pulumi.interpolate`serviceAccount:${bqWriteServiceAccount.email}`,
@@ -214,8 +214,8 @@ import * as utilities from "../utilities";
  * }, {
  *     dependsOn: [
  *         bqWriteServiceAccount,
- *         viewer,
- *         editor,
+ *         bigqueryMetadataViewer,
+ *         bigqueryDataEditor,
  *     ],
  * });
  * ```

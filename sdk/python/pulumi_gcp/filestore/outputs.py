@@ -19,9 +19,15 @@ __all__ = [
     'InstanceFileShares',
     'InstanceFileSharesNfsExportOption',
     'InstanceNetwork',
+    'InstancePerformanceConfig',
+    'InstancePerformanceConfigFixedIops',
+    'InstancePerformanceConfigIopsPerTb',
     'GetInstanceFileShareResult',
     'GetInstanceFileShareNfsExportOptionResult',
     'GetInstanceNetworkResult',
+    'GetInstancePerformanceConfigResult',
+    'GetInstancePerformanceConfigFixedIopResult',
+    'GetInstancePerformanceConfigIopsPerTbResult',
 ]
 
 @pulumi.output_type
@@ -331,6 +337,148 @@ class InstanceNetwork(dict):
 
 
 @pulumi.output_type
+class InstancePerformanceConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "fixedIops":
+            suggest = "fixed_iops"
+        elif key == "iopsPerTb":
+            suggest = "iops_per_tb"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstancePerformanceConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstancePerformanceConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstancePerformanceConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 fixed_iops: Optional['outputs.InstancePerformanceConfigFixedIops'] = None,
+                 iops_per_tb: Optional['outputs.InstancePerformanceConfigIopsPerTb'] = None):
+        """
+        :param 'InstancePerformanceConfigFixedIopsArgs' fixed_iops: The instance will have a fixed provisioned IOPS value,
+               which will remain constant regardless of instance
+               capacity.
+               Structure is documented below.
+        :param 'InstancePerformanceConfigIopsPerTbArgs' iops_per_tb: The instance provisioned IOPS will change dynamically
+               based on the capacity of the instance.
+               Structure is documented below.
+        """
+        if fixed_iops is not None:
+            pulumi.set(__self__, "fixed_iops", fixed_iops)
+        if iops_per_tb is not None:
+            pulumi.set(__self__, "iops_per_tb", iops_per_tb)
+
+    @property
+    @pulumi.getter(name="fixedIops")
+    def fixed_iops(self) -> Optional['outputs.InstancePerformanceConfigFixedIops']:
+        """
+        The instance will have a fixed provisioned IOPS value,
+        which will remain constant regardless of instance
+        capacity.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "fixed_iops")
+
+    @property
+    @pulumi.getter(name="iopsPerTb")
+    def iops_per_tb(self) -> Optional['outputs.InstancePerformanceConfigIopsPerTb']:
+        """
+        The instance provisioned IOPS will change dynamically
+        based on the capacity of the instance.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "iops_per_tb")
+
+
+@pulumi.output_type
+class InstancePerformanceConfigFixedIops(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxIops":
+            suggest = "max_iops"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstancePerformanceConfigFixedIops. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstancePerformanceConfigFixedIops.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstancePerformanceConfigFixedIops.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 max_iops: Optional[int] = None):
+        """
+        :param int max_iops: The number of IOPS to provision for the instance.
+               max_iops must be in multiple of 1000.
+        """
+        if max_iops is not None:
+            pulumi.set(__self__, "max_iops", max_iops)
+
+    @property
+    @pulumi.getter(name="maxIops")
+    def max_iops(self) -> Optional[int]:
+        """
+        The number of IOPS to provision for the instance.
+        max_iops must be in multiple of 1000.
+        """
+        return pulumi.get(self, "max_iops")
+
+
+@pulumi.output_type
+class InstancePerformanceConfigIopsPerTb(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "maxIopsPerTb":
+            suggest = "max_iops_per_tb"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in InstancePerformanceConfigIopsPerTb. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        InstancePerformanceConfigIopsPerTb.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        InstancePerformanceConfigIopsPerTb.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 max_iops_per_tb: Optional[int] = None):
+        """
+        :param int max_iops_per_tb: The instance max IOPS will be calculated by multiplying
+               the capacity of the instance (TB) by max_iops_per_tb,
+               and rounding to the nearest 1000. The instance max IOPS
+               will be changed dynamically based on the instance
+               capacity.
+        """
+        if max_iops_per_tb is not None:
+            pulumi.set(__self__, "max_iops_per_tb", max_iops_per_tb)
+
+    @property
+    @pulumi.getter(name="maxIopsPerTb")
+    def max_iops_per_tb(self) -> Optional[int]:
+        """
+        The instance max IOPS will be calculated by multiplying
+        the capacity of the instance (TB) by max_iops_per_tb,
+        and rounding to the nearest 1000. The instance max IOPS
+        will be changed dynamically based on the instance
+        capacity.
+        """
+        return pulumi.get(self, "max_iops_per_tb")
+
+
+@pulumi.output_type
 class GetInstanceFileShareResult(dict):
     def __init__(__self__, *,
                  capacity_gb: int,
@@ -539,5 +687,86 @@ class GetInstanceNetworkResult(dict):
         addresses reserved for this instance.
         """
         return pulumi.get(self, "reserved_ip_range")
+
+
+@pulumi.output_type
+class GetInstancePerformanceConfigResult(dict):
+    def __init__(__self__, *,
+                 fixed_iops: Sequence['outputs.GetInstancePerformanceConfigFixedIopResult'],
+                 iops_per_tbs: Sequence['outputs.GetInstancePerformanceConfigIopsPerTbResult']):
+        """
+        :param Sequence['GetInstancePerformanceConfigFixedIopArgs'] fixed_iops: The instance will have a fixed provisioned IOPS value,
+               which will remain constant regardless of instance
+               capacity.
+        :param Sequence['GetInstancePerformanceConfigIopsPerTbArgs'] iops_per_tbs: The instance provisioned IOPS will change dynamically
+               based on the capacity of the instance.
+        """
+        pulumi.set(__self__, "fixed_iops", fixed_iops)
+        pulumi.set(__self__, "iops_per_tbs", iops_per_tbs)
+
+    @property
+    @pulumi.getter(name="fixedIops")
+    def fixed_iops(self) -> Sequence['outputs.GetInstancePerformanceConfigFixedIopResult']:
+        """
+        The instance will have a fixed provisioned IOPS value,
+        which will remain constant regardless of instance
+        capacity.
+        """
+        return pulumi.get(self, "fixed_iops")
+
+    @property
+    @pulumi.getter(name="iopsPerTbs")
+    def iops_per_tbs(self) -> Sequence['outputs.GetInstancePerformanceConfigIopsPerTbResult']:
+        """
+        The instance provisioned IOPS will change dynamically
+        based on the capacity of the instance.
+        """
+        return pulumi.get(self, "iops_per_tbs")
+
+
+@pulumi.output_type
+class GetInstancePerformanceConfigFixedIopResult(dict):
+    def __init__(__self__, *,
+                 max_iops: int):
+        """
+        :param int max_iops: The number of IOPS to provision for the instance.
+               max_iops must be in multiple of 1000.
+        """
+        pulumi.set(__self__, "max_iops", max_iops)
+
+    @property
+    @pulumi.getter(name="maxIops")
+    def max_iops(self) -> int:
+        """
+        The number of IOPS to provision for the instance.
+        max_iops must be in multiple of 1000.
+        """
+        return pulumi.get(self, "max_iops")
+
+
+@pulumi.output_type
+class GetInstancePerformanceConfigIopsPerTbResult(dict):
+    def __init__(__self__, *,
+                 max_iops_per_tb: int):
+        """
+        :param int max_iops_per_tb: The instance max IOPS will be calculated by multiplying
+               the capacity of the instance (TB) by max_iops_per_tb,
+               and rounding to the nearest 1000. The instance max IOPS
+               will be changed dynamically based on the instance
+               capacity.
+        """
+        pulumi.set(__self__, "max_iops_per_tb", max_iops_per_tb)
+
+    @property
+    @pulumi.getter(name="maxIopsPerTb")
+    def max_iops_per_tb(self) -> int:
+        """
+        The instance max IOPS will be calculated by multiplying
+        the capacity of the instance (TB) by max_iops_per_tb,
+        and rounding to the nearest 1000. The instance max IOPS
+        will be changed dynamically based on the instance
+        capacity.
+        """
+        return pulumi.get(self, "max_iops_per_tb")
 
 

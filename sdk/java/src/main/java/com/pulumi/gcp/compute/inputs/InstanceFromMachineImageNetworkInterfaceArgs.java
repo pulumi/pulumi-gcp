@@ -173,14 +173,14 @@ public final class InstanceFromMachineImageNetworkInterfaceArgs extends com.pulu
     }
 
     /**
-     * The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET
+     * The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, IDPF
      * 
      */
     @Import(name="nicType")
     private @Nullable Output<String> nicType;
 
     /**
-     * @return The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET
+     * @return The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, IDPF
      * 
      */
     public Optional<Output<String>> nicType() {
@@ -544,7 +544,7 @@ public final class InstanceFromMachineImageNetworkInterfaceArgs extends com.pulu
         }
 
         /**
-         * @param nicType The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET
+         * @param nicType The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, IDPF
          * 
          * @return builder
          * 
@@ -555,7 +555,7 @@ public final class InstanceFromMachineImageNetworkInterfaceArgs extends com.pulu
         }
 
         /**
-         * @param nicType The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET
+         * @param nicType The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, IDPF
          * 
          * @return builder
          * 

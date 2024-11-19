@@ -22,6 +22,10 @@ __all__ = [
     'DenyPolicyRule',
     'DenyPolicyRuleDenyRule',
     'DenyPolicyRuleDenyRuleDenialCondition',
+    'FoldersPolicyBindingCondition',
+    'FoldersPolicyBindingTarget',
+    'OrganizationsPolicyBindingCondition',
+    'OrganizationsPolicyBindingTarget',
     'PrincipalAccessBoundaryPolicyDetails',
     'PrincipalAccessBoundaryPolicyDetailsRule',
     'WorkforcePoolAccessRestrictions',
@@ -446,6 +450,200 @@ class DenyPolicyRuleDenyRuleDenialCondition(dict):
         This can be used e.g. in UIs which allow to enter the expression.
         """
         return pulumi.get(self, "title")
+
+
+@pulumi.output_type
+class FoldersPolicyBindingCondition(dict):
+    def __init__(__self__, *,
+                 description: Optional[str] = None,
+                 expression: Optional[str] = None,
+                 location: Optional[str] = None,
+                 title: Optional[str] = None):
+        """
+        :param str description: Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+        :param str expression: Textual representation of an expression in Common Expression Language syntax.
+        :param str location: Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+        :param str title: Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if expression is not None:
+            pulumi.set(__self__, "expression", expression)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def expression(self) -> Optional[str]:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[str]:
+        """
+        Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[str]:
+        """
+        Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+        """
+        return pulumi.get(self, "title")
+
+
+@pulumi.output_type
+class FoldersPolicyBindingTarget(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "principalSet":
+            suggest = "principal_set"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in FoldersPolicyBindingTarget. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        FoldersPolicyBindingTarget.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        FoldersPolicyBindingTarget.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 principal_set: Optional[str] = None):
+        """
+        :param str principal_set: Required. Immutable. The resource name of the policy to be bound.
+               The binding parent and policy must belong to the same Organization (or Project).
+               
+               - - -
+        """
+        if principal_set is not None:
+            pulumi.set(__self__, "principal_set", principal_set)
+
+    @property
+    @pulumi.getter(name="principalSet")
+    def principal_set(self) -> Optional[str]:
+        """
+        Required. Immutable. The resource name of the policy to be bound.
+        The binding parent and policy must belong to the same Organization (or Project).
+
+        - - -
+        """
+        return pulumi.get(self, "principal_set")
+
+
+@pulumi.output_type
+class OrganizationsPolicyBindingCondition(dict):
+    def __init__(__self__, *,
+                 description: Optional[str] = None,
+                 expression: Optional[str] = None,
+                 location: Optional[str] = None,
+                 title: Optional[str] = None):
+        """
+        :param str description: Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+        :param str expression: Textual representation of an expression in Common Expression Language syntax.
+        :param str location: Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+        :param str title: Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if expression is not None:
+            pulumi.set(__self__, "expression", expression)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def expression(self) -> Optional[str]:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[str]:
+        """
+        Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[str]:
+        """
+        Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+        """
+        return pulumi.get(self, "title")
+
+
+@pulumi.output_type
+class OrganizationsPolicyBindingTarget(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "principalSet":
+            suggest = "principal_set"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in OrganizationsPolicyBindingTarget. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        OrganizationsPolicyBindingTarget.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        OrganizationsPolicyBindingTarget.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 principal_set: Optional[str] = None):
+        """
+        :param str principal_set: Required. Immutable. The resource name of the policy to be bound.
+               The binding parent and policy must belong to the same Organization (or Project).
+               
+               - - -
+        """
+        if principal_set is not None:
+            pulumi.set(__self__, "principal_set", principal_set)
+
+    @property
+    @pulumi.getter(name="principalSet")
+    def principal_set(self) -> Optional[str]:
+        """
+        Required. Immutable. The resource name of the policy to be bound.
+        The binding parent and policy must belong to the same Organization (or Project).
+
+        - - -
+        """
+        return pulumi.get(self, "principal_set")
 
 
 @pulumi.output_type

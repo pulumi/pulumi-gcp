@@ -99,7 +99,7 @@ import (
 //					Tier: pulumi.String("db-f1-micro"),
 //					DatabaseFlags: sql.DatabaseInstanceSettingsDatabaseFlagArray{
 //						&sql.DatabaseInstanceSettingsDatabaseFlagArgs{
-//							Name:  pulumi.String("cloudsql_iam_authentication"),
+//							Name:  pulumi.String("cloudsql.iam_authentication"),
 //							Value: pulumi.String("on"),
 //						},
 //					},

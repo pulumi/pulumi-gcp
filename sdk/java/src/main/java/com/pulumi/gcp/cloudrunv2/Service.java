@@ -1517,6 +1517,20 @@ public class Service extends com.pulumi.resources.CustomResource {
     public Output<String> uri() {
         return this.uri;
     }
+    /**
+     * All URLs serving traffic for this Service.
+     * 
+     */
+    @Export(name="urls", refs={List.class,String.class}, tree="[0,1]")
+    private Output<List<String>> urls;
+
+    /**
+     * @return All URLs serving traffic for this Service.
+     * 
+     */
+    public Output<List<String>> urls() {
+        return this.urls;
+    }
 
     /**
      *

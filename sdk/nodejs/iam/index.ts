@@ -15,6 +15,11 @@ export type DenyPolicy = import("./denyPolicy").DenyPolicy;
 export const DenyPolicy: typeof import("./denyPolicy").DenyPolicy = null as any;
 utilities.lazyLoad(exports, ["DenyPolicy"], () => require("./denyPolicy"));
 
+export { FoldersPolicyBindingArgs, FoldersPolicyBindingState } from "./foldersPolicyBinding";
+export type FoldersPolicyBinding = import("./foldersPolicyBinding").FoldersPolicyBinding;
+export const FoldersPolicyBinding: typeof import("./foldersPolicyBinding").FoldersPolicyBinding = null as any;
+utilities.lazyLoad(exports, ["FoldersPolicyBinding"], () => require("./foldersPolicyBinding"));
+
 export { GetRuleArgs, GetRuleResult, GetRuleOutputArgs } from "./getRule";
 export const getRule: typeof import("./getRule").getRule = null as any;
 export const getRuleOutput: typeof import("./getRule").getRuleOutput = null as any;
@@ -34,6 +39,11 @@ export { GetWorkloadIdentityPoolProviderArgs, GetWorkloadIdentityPoolProviderRes
 export const getWorkloadIdentityPoolProvider: typeof import("./getWorkloadIdentityPoolProvider").getWorkloadIdentityPoolProvider = null as any;
 export const getWorkloadIdentityPoolProviderOutput: typeof import("./getWorkloadIdentityPoolProvider").getWorkloadIdentityPoolProviderOutput = null as any;
 utilities.lazyLoad(exports, ["getWorkloadIdentityPoolProvider","getWorkloadIdentityPoolProviderOutput"], () => require("./getWorkloadIdentityPoolProvider"));
+
+export { OrganizationsPolicyBindingArgs, OrganizationsPolicyBindingState } from "./organizationsPolicyBinding";
+export type OrganizationsPolicyBinding = import("./organizationsPolicyBinding").OrganizationsPolicyBinding;
+export const OrganizationsPolicyBinding: typeof import("./organizationsPolicyBinding").OrganizationsPolicyBinding = null as any;
+utilities.lazyLoad(exports, ["OrganizationsPolicyBinding"], () => require("./organizationsPolicyBinding"));
 
 export { PrincipalAccessBoundaryPolicyArgs, PrincipalAccessBoundaryPolicyState } from "./principalAccessBoundaryPolicy";
 export type PrincipalAccessBoundaryPolicy = import("./principalAccessBoundaryPolicy").PrincipalAccessBoundaryPolicy;
@@ -69,6 +79,10 @@ const _module = {
                 return new AccessBoundaryPolicy(name, <any>undefined, { urn })
             case "gcp:iam/denyPolicy:DenyPolicy":
                 return new DenyPolicy(name, <any>undefined, { urn })
+            case "gcp:iam/foldersPolicyBinding:FoldersPolicyBinding":
+                return new FoldersPolicyBinding(name, <any>undefined, { urn })
+            case "gcp:iam/organizationsPolicyBinding:OrganizationsPolicyBinding":
+                return new OrganizationsPolicyBinding(name, <any>undefined, { urn })
             case "gcp:iam/principalAccessBoundaryPolicy:PrincipalAccessBoundaryPolicy":
                 return new PrincipalAccessBoundaryPolicy(name, <any>undefined, { urn })
             case "gcp:iam/workforcePool:WorkforcePool":
@@ -86,6 +100,8 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("gcp", "iam/accessBoundaryPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "iam/denyPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "iam/foldersPolicyBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "iam/organizationsPolicyBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "iam/principalAccessBoundaryPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "iam/workforcePool", _module)
 pulumi.runtime.registerResourceModule("gcp", "iam/workforcePoolProvider", _module)

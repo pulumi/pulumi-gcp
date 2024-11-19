@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * A Managed Service for Apache Kafka topic. Apache Kafka is a trademark owned by the Apache Software Foundation.
+ *
  * ## Example Usage
  *
  * ### Managedkafka Topic Basic

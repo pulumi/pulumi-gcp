@@ -119,16 +119,16 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * A unique identifier for the database, which cannot be changed after
-     * the instance is created. Values are of the form [a-z][-a-z0-9]*[a-z0-9].
+     * A unique identifier for the database, which cannot be changed after the
+     * instance is created. Values are of the form `[a-z][-_a-z0-9]*[a-z0-9]`.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return A unique identifier for the database, which cannot be changed after
-     * the instance is created. Values are of the form [a-z][-a-z0-9]*[a-z0-9].
+     * @return A unique identifier for the database, which cannot be changed after the
+     * instance is created. Values are of the form `[a-z][-_a-z0-9]*[a-z0-9]`.
      * 
      */
     public Optional<Output<String>> name() {
@@ -369,8 +369,8 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name A unique identifier for the database, which cannot be changed after
-         * the instance is created. Values are of the form [a-z][-a-z0-9]*[a-z0-9].
+         * @param name A unique identifier for the database, which cannot be changed after the
+         * instance is created. Values are of the form `[a-z][-_a-z0-9]*[a-z0-9]`.
          * 
          * @return builder
          * 
@@ -381,8 +381,8 @@ public final class DatabaseState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param name A unique identifier for the database, which cannot be changed after
-         * the instance is created. Values are of the form [a-z][-a-z0-9]*[a-z0-9].
+         * @param name A unique identifier for the database, which cannot be changed after the
+         * instance is created. Values are of the form `[a-z][-_a-z0-9]*[a-z0-9]`.
          * 
          * @return builder
          * 

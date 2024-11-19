@@ -6,6 +6,7 @@ package com.pulumi.gcp.artifactregistry.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryRemoteRepositoryConfigAptRepository;
+import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryRemoteRepositoryConfigCommonRepository;
 import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryRemoteRepositoryConfigDockerRepository;
 import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryRemoteRepositoryConfigMavenRepository;
 import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryRemoteRepositoryConfigNpmRepository;
@@ -24,6 +25,11 @@ public final class GetRepositoryRemoteRepositoryConfig {
      * 
      */
     private List<GetRepositoryRemoteRepositoryConfigAptRepository> aptRepositories;
+    /**
+     * @return Specific settings for an Artifact Registory remote repository.
+     * 
+     */
+    private List<GetRepositoryRemoteRepositoryConfigCommonRepository> commonRepositories;
     /**
      * @return The description of the remote source.
      * 
@@ -73,6 +79,13 @@ public final class GetRepositoryRemoteRepositoryConfig {
      */
     public List<GetRepositoryRemoteRepositoryConfigAptRepository> aptRepositories() {
         return this.aptRepositories;
+    }
+    /**
+     * @return Specific settings for an Artifact Registory remote repository.
+     * 
+     */
+    public List<GetRepositoryRemoteRepositoryConfigCommonRepository> commonRepositories() {
+        return this.commonRepositories;
     }
     /**
      * @return The description of the remote source.
@@ -142,6 +155,7 @@ public final class GetRepositoryRemoteRepositoryConfig {
     @CustomType.Builder
     public static final class Builder {
         private List<GetRepositoryRemoteRepositoryConfigAptRepository> aptRepositories;
+        private List<GetRepositoryRemoteRepositoryConfigCommonRepository> commonRepositories;
         private String description;
         private Boolean disableUpstreamValidation;
         private List<GetRepositoryRemoteRepositoryConfigDockerRepository> dockerRepositories;
@@ -154,6 +168,7 @@ public final class GetRepositoryRemoteRepositoryConfig {
         public Builder(GetRepositoryRemoteRepositoryConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.aptRepositories = defaults.aptRepositories;
+    	      this.commonRepositories = defaults.commonRepositories;
     	      this.description = defaults.description;
     	      this.disableUpstreamValidation = defaults.disableUpstreamValidation;
     	      this.dockerRepositories = defaults.dockerRepositories;
@@ -174,6 +189,17 @@ public final class GetRepositoryRemoteRepositoryConfig {
         }
         public Builder aptRepositories(GetRepositoryRemoteRepositoryConfigAptRepository... aptRepositories) {
             return aptRepositories(List.of(aptRepositories));
+        }
+        @CustomType.Setter
+        public Builder commonRepositories(List<GetRepositoryRemoteRepositoryConfigCommonRepository> commonRepositories) {
+            if (commonRepositories == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryRemoteRepositoryConfig", "commonRepositories");
+            }
+            this.commonRepositories = commonRepositories;
+            return this;
+        }
+        public Builder commonRepositories(GetRepositoryRemoteRepositoryConfigCommonRepository... commonRepositories) {
+            return commonRepositories(List.of(commonRepositories));
         }
         @CustomType.Setter
         public Builder description(String description) {
@@ -260,6 +286,7 @@ public final class GetRepositoryRemoteRepositoryConfig {
         public GetRepositoryRemoteRepositoryConfig build() {
             final var _resultValue = new GetRepositoryRemoteRepositoryConfig();
             _resultValue.aptRepositories = aptRepositories;
+            _resultValue.commonRepositories = commonRepositories;
             _resultValue.description = description;
             _resultValue.disableUpstreamValidation = disableUpstreamValidation;
             _resultValue.dockerRepositories = dockerRepositories;

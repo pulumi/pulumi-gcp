@@ -42,6 +42,7 @@ import (
 //					"annotations2": pulumi.String("baz1"),
 //				},
 //				ForceUpdate:                pulumi.Bool(true),
+//				AccessRestriction:          pulumi.String("WITHIN_ORGANIZATION"),
 //				IgnoreInactiveDatasources:  pulumi.Bool(true),
 //				IgnoreBackupPlanReferences: pulumi.Bool(true),
 //				AllowMissing:               pulumi.Bool(true),
@@ -81,6 +82,10 @@ import (
 type BackupVault struct {
 	pulumi.CustomResourceState
 
+	// Access restriction for the backup vault. Default value is `WITHIN_ORGANIZATION` if not provided during creation.
+	// Default value is `WITHIN_ORGANIZATION`.
+	// Possible values are: `ACCESS_RESTRICTION_UNSPECIFIED`, `WITHIN_PROJECT`, `WITHIN_ORGANIZATION`, `UNRESTRICTED`, `WITHIN_ORG_BUT_UNRESTRICTED_FOR_BA`.
+	AccessRestriction pulumi.StringPtrOutput `pulumi:"accessRestriction"`
 	// Allow idempotent deletion of backup vault. The request will still succeed in case the backup vault does not exist.
 	AllowMissing pulumi.BoolPtrOutput `pulumi:"allowMissing"`
 	// Optional. User annotations. See https://google.aip.dev/128#annotations
@@ -205,6 +210,10 @@ func GetBackupVault(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering BackupVault resources.
 type backupVaultState struct {
+	// Access restriction for the backup vault. Default value is `WITHIN_ORGANIZATION` if not provided during creation.
+	// Default value is `WITHIN_ORGANIZATION`.
+	// Possible values are: `ACCESS_RESTRICTION_UNSPECIFIED`, `WITHIN_PROJECT`, `WITHIN_ORGANIZATION`, `UNRESTRICTED`, `WITHIN_ORG_BUT_UNRESTRICTED_FOR_BA`.
+	AccessRestriction *string `pulumi:"accessRestriction"`
 	// Allow idempotent deletion of backup vault. The request will still succeed in case the backup vault does not exist.
 	AllowMissing *bool `pulumi:"allowMissing"`
 	// Optional. User annotations. See https://google.aip.dev/128#annotations
@@ -286,6 +295,10 @@ type backupVaultState struct {
 }
 
 type BackupVaultState struct {
+	// Access restriction for the backup vault. Default value is `WITHIN_ORGANIZATION` if not provided during creation.
+	// Default value is `WITHIN_ORGANIZATION`.
+	// Possible values are: `ACCESS_RESTRICTION_UNSPECIFIED`, `WITHIN_PROJECT`, `WITHIN_ORGANIZATION`, `UNRESTRICTED`, `WITHIN_ORG_BUT_UNRESTRICTED_FOR_BA`.
+	AccessRestriction pulumi.StringPtrInput
 	// Allow idempotent deletion of backup vault. The request will still succeed in case the backup vault does not exist.
 	AllowMissing pulumi.BoolPtrInput
 	// Optional. User annotations. See https://google.aip.dev/128#annotations
@@ -371,6 +384,10 @@ func (BackupVaultState) ElementType() reflect.Type {
 }
 
 type backupVaultArgs struct {
+	// Access restriction for the backup vault. Default value is `WITHIN_ORGANIZATION` if not provided during creation.
+	// Default value is `WITHIN_ORGANIZATION`.
+	// Possible values are: `ACCESS_RESTRICTION_UNSPECIFIED`, `WITHIN_PROJECT`, `WITHIN_ORGANIZATION`, `UNRESTRICTED`, `WITHIN_ORG_BUT_UNRESTRICTED_FOR_BA`.
+	AccessRestriction *string `pulumi:"accessRestriction"`
 	// Allow idempotent deletion of backup vault. The request will still succeed in case the backup vault does not exist.
 	AllowMissing *bool `pulumi:"allowMissing"`
 	// Optional. User annotations. See https://google.aip.dev/128#annotations
@@ -421,6 +438,10 @@ type backupVaultArgs struct {
 
 // The set of arguments for constructing a BackupVault resource.
 type BackupVaultArgs struct {
+	// Access restriction for the backup vault. Default value is `WITHIN_ORGANIZATION` if not provided during creation.
+	// Default value is `WITHIN_ORGANIZATION`.
+	// Possible values are: `ACCESS_RESTRICTION_UNSPECIFIED`, `WITHIN_PROJECT`, `WITHIN_ORGANIZATION`, `UNRESTRICTED`, `WITHIN_ORG_BUT_UNRESTRICTED_FOR_BA`.
+	AccessRestriction pulumi.StringPtrInput
 	// Allow idempotent deletion of backup vault. The request will still succeed in case the backup vault does not exist.
 	AllowMissing pulumi.BoolPtrInput
 	// Optional. User annotations. See https://google.aip.dev/128#annotations
@@ -554,6 +575,13 @@ func (o BackupVaultOutput) ToBackupVaultOutput() BackupVaultOutput {
 
 func (o BackupVaultOutput) ToBackupVaultOutputWithContext(ctx context.Context) BackupVaultOutput {
 	return o
+}
+
+// Access restriction for the backup vault. Default value is `WITHIN_ORGANIZATION` if not provided during creation.
+// Default value is `WITHIN_ORGANIZATION`.
+// Possible values are: `ACCESS_RESTRICTION_UNSPECIFIED`, `WITHIN_PROJECT`, `WITHIN_ORGANIZATION`, `UNRESTRICTED`, `WITHIN_ORG_BUT_UNRESTRICTED_FOR_BA`.
+func (o BackupVaultOutput) AccessRestriction() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BackupVault) pulumi.StringPtrOutput { return v.AccessRestriction }).(pulumi.StringPtrOutput)
 }
 
 // Allow idempotent deletion of backup vault. The request will still succeed in case the backup vault does not exist.

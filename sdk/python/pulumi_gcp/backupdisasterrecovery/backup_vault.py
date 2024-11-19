@@ -22,6 +22,7 @@ class BackupVaultArgs:
                  backup_minimum_enforced_retention_duration: pulumi.Input[str],
                  backup_vault_id: pulumi.Input[str],
                  location: pulumi.Input[str],
+                 access_restriction: Optional[pulumi.Input[str]] = None,
                  allow_missing: Optional[pulumi.Input[bool]] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -40,6 +41,9 @@ class BackupVaultArgs:
                
                - - -
         :param pulumi.Input[str] location: The GCP location for the backup vault.
+        :param pulumi.Input[str] access_restriction: Access restriction for the backup vault. Default value is `WITHIN_ORGANIZATION` if not provided during creation.
+               Default value is `WITHIN_ORGANIZATION`.
+               Possible values are: `ACCESS_RESTRICTION_UNSPECIFIED`, `WITHIN_PROJECT`, `WITHIN_ORGANIZATION`, `UNRESTRICTED`, `WITHIN_ORG_BUT_UNRESTRICTED_FOR_BA`.
         :param pulumi.Input[bool] allow_missing: Allow idempotent deletion of backup vault. The request will still succeed in case the backup vault does not exist.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. User annotations. See https://google.aip.dev/128#annotations
                Stores small amounts of arbitrary data.
@@ -70,6 +74,8 @@ class BackupVaultArgs:
         pulumi.set(__self__, "backup_minimum_enforced_retention_duration", backup_minimum_enforced_retention_duration)
         pulumi.set(__self__, "backup_vault_id", backup_vault_id)
         pulumi.set(__self__, "location", location)
+        if access_restriction is not None:
+            pulumi.set(__self__, "access_restriction", access_restriction)
         if allow_missing is not None:
             pulumi.set(__self__, "allow_missing", allow_missing)
         if annotations is not None:
@@ -132,6 +138,20 @@ class BackupVaultArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter(name="accessRestriction")
+    def access_restriction(self) -> Optional[pulumi.Input[str]]:
+        """
+        Access restriction for the backup vault. Default value is `WITHIN_ORGANIZATION` if not provided during creation.
+        Default value is `WITHIN_ORGANIZATION`.
+        Possible values are: `ACCESS_RESTRICTION_UNSPECIFIED`, `WITHIN_PROJECT`, `WITHIN_ORGANIZATION`, `UNRESTRICTED`, `WITHIN_ORG_BUT_UNRESTRICTED_FOR_BA`.
+        """
+        return pulumi.get(self, "access_restriction")
+
+    @access_restriction.setter
+    def access_restriction(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access_restriction", value)
 
     @property
     @pulumi.getter(name="allowMissing")
@@ -274,6 +294,7 @@ class BackupVaultArgs:
 @pulumi.input_type
 class _BackupVaultState:
     def __init__(__self__, *,
+                 access_restriction: Optional[pulumi.Input[str]] = None,
                  allow_missing: Optional[pulumi.Input[bool]] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  backup_count: Optional[pulumi.Input[str]] = None,
@@ -302,6 +323,9 @@ class _BackupVaultState:
                  update_time: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering BackupVault resources.
+        :param pulumi.Input[str] access_restriction: Access restriction for the backup vault. Default value is `WITHIN_ORGANIZATION` if not provided during creation.
+               Default value is `WITHIN_ORGANIZATION`.
+               Possible values are: `ACCESS_RESTRICTION_UNSPECIFIED`, `WITHIN_PROJECT`, `WITHIN_ORGANIZATION`, `UNRESTRICTED`, `WITHIN_ORG_BUT_UNRESTRICTED_FOR_BA`.
         :param pulumi.Input[bool] allow_missing: Allow idempotent deletion of backup vault. The request will still succeed in case the backup vault does not exist.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. User annotations. See https://google.aip.dev/128#annotations
                Stores small amounts of arbitrary data.
@@ -354,6 +378,8 @@ class _BackupVaultState:
         :param pulumi.Input[str] uid: Output only. Output only Immutable after resource creation until resource deletion.
         :param pulumi.Input[str] update_time: Output only. The time when the instance was updated.
         """
+        if access_restriction is not None:
+            pulumi.set(__self__, "access_restriction", access_restriction)
         if allow_missing is not None:
             pulumi.set(__self__, "allow_missing", allow_missing)
         if annotations is not None:
@@ -409,6 +435,20 @@ class _BackupVaultState:
             pulumi.set(__self__, "uid", uid)
         if update_time is not None:
             pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter(name="accessRestriction")
+    def access_restriction(self) -> Optional[pulumi.Input[str]]:
+        """
+        Access restriction for the backup vault. Default value is `WITHIN_ORGANIZATION` if not provided during creation.
+        Default value is `WITHIN_ORGANIZATION`.
+        Possible values are: `ACCESS_RESTRICTION_UNSPECIFIED`, `WITHIN_PROJECT`, `WITHIN_ORGANIZATION`, `UNRESTRICTED`, `WITHIN_ORG_BUT_UNRESTRICTED_FOR_BA`.
+        """
+        return pulumi.get(self, "access_restriction")
+
+    @access_restriction.setter
+    def access_restriction(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access_restriction", value)
 
     @property
     @pulumi.getter(name="allowMissing")
@@ -752,6 +792,7 @@ class BackupVault(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 access_restriction: Optional[pulumi.Input[str]] = None,
                  allow_missing: Optional[pulumi.Input[bool]] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  backup_minimum_enforced_retention_duration: Optional[pulumi.Input[str]] = None,
@@ -789,6 +830,7 @@ class BackupVault(pulumi.CustomResource):
                 "annotations2": "baz1",
             },
             force_update=True,
+            access_restriction="WITHIN_ORGANIZATION",
             ignore_inactive_datasources=True,
             ignore_backup_plan_references=True,
             allow_missing=True)
@@ -820,6 +862,9 @@ class BackupVault(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] access_restriction: Access restriction for the backup vault. Default value is `WITHIN_ORGANIZATION` if not provided during creation.
+               Default value is `WITHIN_ORGANIZATION`.
+               Possible values are: `ACCESS_RESTRICTION_UNSPECIFIED`, `WITHIN_PROJECT`, `WITHIN_ORGANIZATION`, `UNRESTRICTED`, `WITHIN_ORG_BUT_UNRESTRICTED_FOR_BA`.
         :param pulumi.Input[bool] allow_missing: Allow idempotent deletion of backup vault. The request will still succeed in case the backup vault does not exist.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. User annotations. See https://google.aip.dev/128#annotations
                Stores small amounts of arbitrary data.
@@ -882,6 +927,7 @@ class BackupVault(pulumi.CustomResource):
                 "annotations2": "baz1",
             },
             force_update=True,
+            access_restriction="WITHIN_ORGANIZATION",
             ignore_inactive_datasources=True,
             ignore_backup_plan_references=True,
             allow_missing=True)
@@ -926,6 +972,7 @@ class BackupVault(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 access_restriction: Optional[pulumi.Input[str]] = None,
                  allow_missing: Optional[pulumi.Input[bool]] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  backup_minimum_enforced_retention_duration: Optional[pulumi.Input[str]] = None,
@@ -948,6 +995,7 @@ class BackupVault(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = BackupVaultArgs.__new__(BackupVaultArgs)
 
+            __props__.__dict__["access_restriction"] = access_restriction
             __props__.__dict__["allow_missing"] = allow_missing
             __props__.__dict__["annotations"] = annotations
             if backup_minimum_enforced_retention_duration is None and not opts.urn:
@@ -992,6 +1040,7 @@ class BackupVault(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            access_restriction: Optional[pulumi.Input[str]] = None,
             allow_missing: Optional[pulumi.Input[bool]] = None,
             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             backup_count: Optional[pulumi.Input[str]] = None,
@@ -1025,6 +1074,9 @@ class BackupVault(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] access_restriction: Access restriction for the backup vault. Default value is `WITHIN_ORGANIZATION` if not provided during creation.
+               Default value is `WITHIN_ORGANIZATION`.
+               Possible values are: `ACCESS_RESTRICTION_UNSPECIFIED`, `WITHIN_PROJECT`, `WITHIN_ORGANIZATION`, `UNRESTRICTED`, `WITHIN_ORG_BUT_UNRESTRICTED_FOR_BA`.
         :param pulumi.Input[bool] allow_missing: Allow idempotent deletion of backup vault. The request will still succeed in case the backup vault does not exist.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. User annotations. See https://google.aip.dev/128#annotations
                Stores small amounts of arbitrary data.
@@ -1081,6 +1133,7 @@ class BackupVault(pulumi.CustomResource):
 
         __props__ = _BackupVaultState.__new__(_BackupVaultState)
 
+        __props__.__dict__["access_restriction"] = access_restriction
         __props__.__dict__["allow_missing"] = allow_missing
         __props__.__dict__["annotations"] = annotations
         __props__.__dict__["backup_count"] = backup_count
@@ -1108,6 +1161,16 @@ class BackupVault(pulumi.CustomResource):
         __props__.__dict__["uid"] = uid
         __props__.__dict__["update_time"] = update_time
         return BackupVault(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="accessRestriction")
+    def access_restriction(self) -> pulumi.Output[Optional[str]]:
+        """
+        Access restriction for the backup vault. Default value is `WITHIN_ORGANIZATION` if not provided during creation.
+        Default value is `WITHIN_ORGANIZATION`.
+        Possible values are: `ACCESS_RESTRICTION_UNSPECIFIED`, `WITHIN_PROJECT`, `WITHIN_ORGANIZATION`, `UNRESTRICTED`, `WITHIN_ORG_BUT_UNRESTRICTED_FOR_BA`.
+        """
+        return pulumi.get(self, "access_restriction")
 
     @property
     @pulumi.getter(name="allowMissing")

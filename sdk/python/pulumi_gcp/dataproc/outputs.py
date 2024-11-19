@@ -83,6 +83,11 @@ __all__ = [
     'GdcApplicationEnvironmentSparkApplicationEnvironmentConfig',
     'GdcServiceInstanceGdceCluster',
     'GdcServiceInstanceSparkServiceInstanceConfig',
+    'GdcSparkApplicationPysparkApplicationConfig',
+    'GdcSparkApplicationSparkApplicationConfig',
+    'GdcSparkApplicationSparkRApplicationConfig',
+    'GdcSparkApplicationSparkSqlApplicationConfig',
+    'GdcSparkApplicationSparkSqlApplicationConfigQueryList',
     'JobHadoopConfig',
     'JobHadoopConfigLoggingConfig',
     'JobHiveConfig',
@@ -5296,6 +5301,386 @@ class GdcServiceInstanceGdceCluster(dict):
 class GdcServiceInstanceSparkServiceInstanceConfig(dict):
     def __init__(__self__):
         pass
+
+
+@pulumi.output_type
+class GdcSparkApplicationPysparkApplicationConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mainPythonFileUri":
+            suggest = "main_python_file_uri"
+        elif key == "archiveUris":
+            suggest = "archive_uris"
+        elif key == "fileUris":
+            suggest = "file_uris"
+        elif key == "jarFileUris":
+            suggest = "jar_file_uris"
+        elif key == "pythonFileUris":
+            suggest = "python_file_uris"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GdcSparkApplicationPysparkApplicationConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GdcSparkApplicationPysparkApplicationConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GdcSparkApplicationPysparkApplicationConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 main_python_file_uri: str,
+                 archive_uris: Optional[Sequence[str]] = None,
+                 args: Optional[Sequence[str]] = None,
+                 file_uris: Optional[Sequence[str]] = None,
+                 jar_file_uris: Optional[Sequence[str]] = None,
+                 python_file_uris: Optional[Sequence[str]] = None):
+        """
+        :param str main_python_file_uri: The HCFS URI of the main Python file to use as the driver. Must be a .py file.
+        :param Sequence[str] archive_uris: HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+        :param Sequence[str] args: The arguments to pass to the driver.  Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+        :param Sequence[str] file_uris: HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
+        :param Sequence[str] jar_file_uris: HCFS URIs of jar files to add to the CLASSPATHs of the Python driver and tasks.
+        :param Sequence[str] python_file_uris: HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
+        """
+        pulumi.set(__self__, "main_python_file_uri", main_python_file_uri)
+        if archive_uris is not None:
+            pulumi.set(__self__, "archive_uris", archive_uris)
+        if args is not None:
+            pulumi.set(__self__, "args", args)
+        if file_uris is not None:
+            pulumi.set(__self__, "file_uris", file_uris)
+        if jar_file_uris is not None:
+            pulumi.set(__self__, "jar_file_uris", jar_file_uris)
+        if python_file_uris is not None:
+            pulumi.set(__self__, "python_file_uris", python_file_uris)
+
+    @property
+    @pulumi.getter(name="mainPythonFileUri")
+    def main_python_file_uri(self) -> str:
+        """
+        The HCFS URI of the main Python file to use as the driver. Must be a .py file.
+        """
+        return pulumi.get(self, "main_python_file_uri")
+
+    @property
+    @pulumi.getter(name="archiveUris")
+    def archive_uris(self) -> Optional[Sequence[str]]:
+        """
+        HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+        """
+        return pulumi.get(self, "archive_uris")
+
+    @property
+    @pulumi.getter
+    def args(self) -> Optional[Sequence[str]]:
+        """
+        The arguments to pass to the driver.  Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+        """
+        return pulumi.get(self, "args")
+
+    @property
+    @pulumi.getter(name="fileUris")
+    def file_uris(self) -> Optional[Sequence[str]]:
+        """
+        HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
+        """
+        return pulumi.get(self, "file_uris")
+
+    @property
+    @pulumi.getter(name="jarFileUris")
+    def jar_file_uris(self) -> Optional[Sequence[str]]:
+        """
+        HCFS URIs of jar files to add to the CLASSPATHs of the Python driver and tasks.
+        """
+        return pulumi.get(self, "jar_file_uris")
+
+    @property
+    @pulumi.getter(name="pythonFileUris")
+    def python_file_uris(self) -> Optional[Sequence[str]]:
+        """
+        HCFS file URIs of Python files to pass to the PySpark framework. Supported file types: .py, .egg, and .zip.
+        """
+        return pulumi.get(self, "python_file_uris")
+
+
+@pulumi.output_type
+class GdcSparkApplicationSparkApplicationConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "archiveUris":
+            suggest = "archive_uris"
+        elif key == "fileUris":
+            suggest = "file_uris"
+        elif key == "jarFileUris":
+            suggest = "jar_file_uris"
+        elif key == "mainClass":
+            suggest = "main_class"
+        elif key == "mainJarFileUri":
+            suggest = "main_jar_file_uri"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GdcSparkApplicationSparkApplicationConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GdcSparkApplicationSparkApplicationConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GdcSparkApplicationSparkApplicationConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 archive_uris: Optional[Sequence[str]] = None,
+                 args: Optional[Sequence[str]] = None,
+                 file_uris: Optional[Sequence[str]] = None,
+                 jar_file_uris: Optional[Sequence[str]] = None,
+                 main_class: Optional[str] = None,
+                 main_jar_file_uri: Optional[str] = None):
+        """
+        :param Sequence[str] archive_uris: HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: `.jar`, `.tar`, `.tar.gz`, `.tgz`, and `.zip`.
+        :param Sequence[str] args: The arguments to pass to the driver. Do not include arguments that can be set as application properties, such as `--conf`, since a collision can occur that causes an incorrect application submission.
+        :param Sequence[str] file_uris: HCFS URIs of files to be placed in the working directory of each executor.
+        :param Sequence[str] jar_file_uris: HCFS URIs of jar files to add to the classpath of the Spark driver and tasks.
+        :param str main_class: The name of the driver main class. The jar file that contains the class must be in the classpath or specified in `jar_file_uris`.
+        :param str main_jar_file_uri: The HCFS URI of the jar file that contains the main class.
+        """
+        if archive_uris is not None:
+            pulumi.set(__self__, "archive_uris", archive_uris)
+        if args is not None:
+            pulumi.set(__self__, "args", args)
+        if file_uris is not None:
+            pulumi.set(__self__, "file_uris", file_uris)
+        if jar_file_uris is not None:
+            pulumi.set(__self__, "jar_file_uris", jar_file_uris)
+        if main_class is not None:
+            pulumi.set(__self__, "main_class", main_class)
+        if main_jar_file_uri is not None:
+            pulumi.set(__self__, "main_jar_file_uri", main_jar_file_uri)
+
+    @property
+    @pulumi.getter(name="archiveUris")
+    def archive_uris(self) -> Optional[Sequence[str]]:
+        """
+        HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: `.jar`, `.tar`, `.tar.gz`, `.tgz`, and `.zip`.
+        """
+        return pulumi.get(self, "archive_uris")
+
+    @property
+    @pulumi.getter
+    def args(self) -> Optional[Sequence[str]]:
+        """
+        The arguments to pass to the driver. Do not include arguments that can be set as application properties, such as `--conf`, since a collision can occur that causes an incorrect application submission.
+        """
+        return pulumi.get(self, "args")
+
+    @property
+    @pulumi.getter(name="fileUris")
+    def file_uris(self) -> Optional[Sequence[str]]:
+        """
+        HCFS URIs of files to be placed in the working directory of each executor.
+        """
+        return pulumi.get(self, "file_uris")
+
+    @property
+    @pulumi.getter(name="jarFileUris")
+    def jar_file_uris(self) -> Optional[Sequence[str]]:
+        """
+        HCFS URIs of jar files to add to the classpath of the Spark driver and tasks.
+        """
+        return pulumi.get(self, "jar_file_uris")
+
+    @property
+    @pulumi.getter(name="mainClass")
+    def main_class(self) -> Optional[str]:
+        """
+        The name of the driver main class. The jar file that contains the class must be in the classpath or specified in `jar_file_uris`.
+        """
+        return pulumi.get(self, "main_class")
+
+    @property
+    @pulumi.getter(name="mainJarFileUri")
+    def main_jar_file_uri(self) -> Optional[str]:
+        """
+        The HCFS URI of the jar file that contains the main class.
+        """
+        return pulumi.get(self, "main_jar_file_uri")
+
+
+@pulumi.output_type
+class GdcSparkApplicationSparkRApplicationConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mainRFileUri":
+            suggest = "main_r_file_uri"
+        elif key == "archiveUris":
+            suggest = "archive_uris"
+        elif key == "fileUris":
+            suggest = "file_uris"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GdcSparkApplicationSparkRApplicationConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GdcSparkApplicationSparkRApplicationConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GdcSparkApplicationSparkRApplicationConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 main_r_file_uri: str,
+                 archive_uris: Optional[Sequence[str]] = None,
+                 args: Optional[Sequence[str]] = None,
+                 file_uris: Optional[Sequence[str]] = None):
+        """
+        :param str main_r_file_uri: The HCFS URI of the main R file to use as the driver. Must be a .R file.
+        :param Sequence[str] archive_uris: HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+        :param Sequence[str] args: The arguments to pass to the driver.  Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+        :param Sequence[str] file_uris: HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
+        """
+        pulumi.set(__self__, "main_r_file_uri", main_r_file_uri)
+        if archive_uris is not None:
+            pulumi.set(__self__, "archive_uris", archive_uris)
+        if args is not None:
+            pulumi.set(__self__, "args", args)
+        if file_uris is not None:
+            pulumi.set(__self__, "file_uris", file_uris)
+
+    @property
+    @pulumi.getter(name="mainRFileUri")
+    def main_r_file_uri(self) -> str:
+        """
+        The HCFS URI of the main R file to use as the driver. Must be a .R file.
+        """
+        return pulumi.get(self, "main_r_file_uri")
+
+    @property
+    @pulumi.getter(name="archiveUris")
+    def archive_uris(self) -> Optional[Sequence[str]]:
+        """
+        HCFS URIs of archives to be extracted into the working directory of each executor. Supported file types: .jar, .tar, .tar.gz, .tgz, and .zip.
+        """
+        return pulumi.get(self, "archive_uris")
+
+    @property
+    @pulumi.getter
+    def args(self) -> Optional[Sequence[str]]:
+        """
+        The arguments to pass to the driver.  Do not include arguments, such as `--conf`, that can be set as job properties, since a collision may occur that causes an incorrect job submission.
+        """
+        return pulumi.get(self, "args")
+
+    @property
+    @pulumi.getter(name="fileUris")
+    def file_uris(self) -> Optional[Sequence[str]]:
+        """
+        HCFS URIs of files to be placed in the working directory of each executor. Useful for naively parallel tasks.
+        """
+        return pulumi.get(self, "file_uris")
+
+
+@pulumi.output_type
+class GdcSparkApplicationSparkSqlApplicationConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "jarFileUris":
+            suggest = "jar_file_uris"
+        elif key == "queryFileUri":
+            suggest = "query_file_uri"
+        elif key == "queryList":
+            suggest = "query_list"
+        elif key == "scriptVariables":
+            suggest = "script_variables"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in GdcSparkApplicationSparkSqlApplicationConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        GdcSparkApplicationSparkSqlApplicationConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        GdcSparkApplicationSparkSqlApplicationConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 jar_file_uris: Optional[Sequence[str]] = None,
+                 query_file_uri: Optional[str] = None,
+                 query_list: Optional['outputs.GdcSparkApplicationSparkSqlApplicationConfigQueryList'] = None,
+                 script_variables: Optional[Mapping[str, str]] = None):
+        """
+        :param Sequence[str] jar_file_uris: HCFS URIs of jar files to be added to the Spark CLASSPATH.
+        :param str query_file_uri: The HCFS URI of the script that contains SQL queries.
+        :param 'GdcSparkApplicationSparkSqlApplicationConfigQueryListArgs' query_list: Represents a list of queries.
+               Structure is documented below.
+        :param Mapping[str, str] script_variables: Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name="value";`).
+        """
+        if jar_file_uris is not None:
+            pulumi.set(__self__, "jar_file_uris", jar_file_uris)
+        if query_file_uri is not None:
+            pulumi.set(__self__, "query_file_uri", query_file_uri)
+        if query_list is not None:
+            pulumi.set(__self__, "query_list", query_list)
+        if script_variables is not None:
+            pulumi.set(__self__, "script_variables", script_variables)
+
+    @property
+    @pulumi.getter(name="jarFileUris")
+    def jar_file_uris(self) -> Optional[Sequence[str]]:
+        """
+        HCFS URIs of jar files to be added to the Spark CLASSPATH.
+        """
+        return pulumi.get(self, "jar_file_uris")
+
+    @property
+    @pulumi.getter(name="queryFileUri")
+    def query_file_uri(self) -> Optional[str]:
+        """
+        The HCFS URI of the script that contains SQL queries.
+        """
+        return pulumi.get(self, "query_file_uri")
+
+    @property
+    @pulumi.getter(name="queryList")
+    def query_list(self) -> Optional['outputs.GdcSparkApplicationSparkSqlApplicationConfigQueryList']:
+        """
+        Represents a list of queries.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "query_list")
+
+    @property
+    @pulumi.getter(name="scriptVariables")
+    def script_variables(self) -> Optional[Mapping[str, str]]:
+        """
+        Mapping of query variable names to values (equivalent to the Spark SQL command: SET `name="value";`).
+        """
+        return pulumi.get(self, "script_variables")
+
+
+@pulumi.output_type
+class GdcSparkApplicationSparkSqlApplicationConfigQueryList(dict):
+    def __init__(__self__, *,
+                 queries: Sequence[str]):
+        """
+        :param Sequence[str] queries: The queries to run.
+        """
+        pulumi.set(__self__, "queries", queries)
+
+    @property
+    @pulumi.getter
+    def queries(self) -> Sequence[str]:
+        """
+        The queries to run.
+        """
+        return pulumi.get(self, "queries")
 
 
 @pulumi.output_type

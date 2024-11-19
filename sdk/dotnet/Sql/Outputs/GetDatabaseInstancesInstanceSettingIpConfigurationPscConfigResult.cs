@@ -18,6 +18,10 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly ImmutableArray<string> AllowedConsumerProjects;
         /// <summary>
+        /// A comma-separated list of networks or a comma-separated list of network-project pairs. Each project in this list is represented by a project number (numeric) or by a project ID (alphanumeric). This allows Private Service Connect connections to be created automatically for the specified networks.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionResult> PscAutoConnections;
+        /// <summary>
         /// Whether PSC connectivity is enabled for this instance.
         /// </summary>
         public readonly bool PscEnabled;
@@ -26,9 +30,12 @@ namespace Pulumi.Gcp.Sql.Outputs
         private GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigResult(
             ImmutableArray<string> allowedConsumerProjects,
 
+            ImmutableArray<Outputs.GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigPscAutoConnectionResult> pscAutoConnections,
+
             bool pscEnabled)
         {
             AllowedConsumerProjects = allowedConsumerProjects;
+            PscAutoConnections = pscAutoConnections;
             PscEnabled = pscEnabled;
         }
     }

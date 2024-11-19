@@ -1075,6 +1075,692 @@ func (o DenyPolicyRuleDenyRuleDenialConditionPtrOutput) Title() pulumi.StringPtr
 	}).(pulumi.StringPtrOutput)
 }
 
+type FoldersPolicyBindingCondition struct {
+	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	Description *string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression *string `pulumi:"expression"`
+	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+	Location *string `pulumi:"location"`
+	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+	Title *string `pulumi:"title"`
+}
+
+// FoldersPolicyBindingConditionInput is an input type that accepts FoldersPolicyBindingConditionArgs and FoldersPolicyBindingConditionOutput values.
+// You can construct a concrete instance of `FoldersPolicyBindingConditionInput` via:
+//
+//	FoldersPolicyBindingConditionArgs{...}
+type FoldersPolicyBindingConditionInput interface {
+	pulumi.Input
+
+	ToFoldersPolicyBindingConditionOutput() FoldersPolicyBindingConditionOutput
+	ToFoldersPolicyBindingConditionOutputWithContext(context.Context) FoldersPolicyBindingConditionOutput
+}
+
+type FoldersPolicyBindingConditionArgs struct {
+	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringPtrInput `pulumi:"expression"`
+	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+	Location pulumi.StringPtrInput `pulumi:"location"`
+	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+	Title pulumi.StringPtrInput `pulumi:"title"`
+}
+
+func (FoldersPolicyBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FoldersPolicyBindingCondition)(nil)).Elem()
+}
+
+func (i FoldersPolicyBindingConditionArgs) ToFoldersPolicyBindingConditionOutput() FoldersPolicyBindingConditionOutput {
+	return i.ToFoldersPolicyBindingConditionOutputWithContext(context.Background())
+}
+
+func (i FoldersPolicyBindingConditionArgs) ToFoldersPolicyBindingConditionOutputWithContext(ctx context.Context) FoldersPolicyBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FoldersPolicyBindingConditionOutput)
+}
+
+func (i FoldersPolicyBindingConditionArgs) ToFoldersPolicyBindingConditionPtrOutput() FoldersPolicyBindingConditionPtrOutput {
+	return i.ToFoldersPolicyBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i FoldersPolicyBindingConditionArgs) ToFoldersPolicyBindingConditionPtrOutputWithContext(ctx context.Context) FoldersPolicyBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FoldersPolicyBindingConditionOutput).ToFoldersPolicyBindingConditionPtrOutputWithContext(ctx)
+}
+
+// FoldersPolicyBindingConditionPtrInput is an input type that accepts FoldersPolicyBindingConditionArgs, FoldersPolicyBindingConditionPtr and FoldersPolicyBindingConditionPtrOutput values.
+// You can construct a concrete instance of `FoldersPolicyBindingConditionPtrInput` via:
+//
+//	        FoldersPolicyBindingConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type FoldersPolicyBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToFoldersPolicyBindingConditionPtrOutput() FoldersPolicyBindingConditionPtrOutput
+	ToFoldersPolicyBindingConditionPtrOutputWithContext(context.Context) FoldersPolicyBindingConditionPtrOutput
+}
+
+type foldersPolicyBindingConditionPtrType FoldersPolicyBindingConditionArgs
+
+func FoldersPolicyBindingConditionPtr(v *FoldersPolicyBindingConditionArgs) FoldersPolicyBindingConditionPtrInput {
+	return (*foldersPolicyBindingConditionPtrType)(v)
+}
+
+func (*foldersPolicyBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FoldersPolicyBindingCondition)(nil)).Elem()
+}
+
+func (i *foldersPolicyBindingConditionPtrType) ToFoldersPolicyBindingConditionPtrOutput() FoldersPolicyBindingConditionPtrOutput {
+	return i.ToFoldersPolicyBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *foldersPolicyBindingConditionPtrType) ToFoldersPolicyBindingConditionPtrOutputWithContext(ctx context.Context) FoldersPolicyBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FoldersPolicyBindingConditionPtrOutput)
+}
+
+type FoldersPolicyBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (FoldersPolicyBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FoldersPolicyBindingCondition)(nil)).Elem()
+}
+
+func (o FoldersPolicyBindingConditionOutput) ToFoldersPolicyBindingConditionOutput() FoldersPolicyBindingConditionOutput {
+	return o
+}
+
+func (o FoldersPolicyBindingConditionOutput) ToFoldersPolicyBindingConditionOutputWithContext(ctx context.Context) FoldersPolicyBindingConditionOutput {
+	return o
+}
+
+func (o FoldersPolicyBindingConditionOutput) ToFoldersPolicyBindingConditionPtrOutput() FoldersPolicyBindingConditionPtrOutput {
+	return o.ToFoldersPolicyBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o FoldersPolicyBindingConditionOutput) ToFoldersPolicyBindingConditionPtrOutputWithContext(ctx context.Context) FoldersPolicyBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FoldersPolicyBindingCondition) *FoldersPolicyBindingCondition {
+		return &v
+	}).(FoldersPolicyBindingConditionPtrOutput)
+}
+
+// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+func (o FoldersPolicyBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FoldersPolicyBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o FoldersPolicyBindingConditionOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FoldersPolicyBindingCondition) *string { return v.Expression }).(pulumi.StringPtrOutput)
+}
+
+// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+func (o FoldersPolicyBindingConditionOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FoldersPolicyBindingCondition) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+func (o FoldersPolicyBindingConditionOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FoldersPolicyBindingCondition) *string { return v.Title }).(pulumi.StringPtrOutput)
+}
+
+type FoldersPolicyBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (FoldersPolicyBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FoldersPolicyBindingCondition)(nil)).Elem()
+}
+
+func (o FoldersPolicyBindingConditionPtrOutput) ToFoldersPolicyBindingConditionPtrOutput() FoldersPolicyBindingConditionPtrOutput {
+	return o
+}
+
+func (o FoldersPolicyBindingConditionPtrOutput) ToFoldersPolicyBindingConditionPtrOutputWithContext(ctx context.Context) FoldersPolicyBindingConditionPtrOutput {
+	return o
+}
+
+func (o FoldersPolicyBindingConditionPtrOutput) Elem() FoldersPolicyBindingConditionOutput {
+	return o.ApplyT(func(v *FoldersPolicyBindingCondition) FoldersPolicyBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret FoldersPolicyBindingCondition
+		return ret
+	}).(FoldersPolicyBindingConditionOutput)
+}
+
+// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+func (o FoldersPolicyBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FoldersPolicyBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o FoldersPolicyBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FoldersPolicyBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+func (o FoldersPolicyBindingConditionPtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FoldersPolicyBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Location
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+func (o FoldersPolicyBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FoldersPolicyBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type FoldersPolicyBindingTarget struct {
+	// Required. Immutable. The resource name of the policy to be bound.
+	// The binding parent and policy must belong to the same Organization (or Project).
+	//
+	// ***
+	PrincipalSet *string `pulumi:"principalSet"`
+}
+
+// FoldersPolicyBindingTargetInput is an input type that accepts FoldersPolicyBindingTargetArgs and FoldersPolicyBindingTargetOutput values.
+// You can construct a concrete instance of `FoldersPolicyBindingTargetInput` via:
+//
+//	FoldersPolicyBindingTargetArgs{...}
+type FoldersPolicyBindingTargetInput interface {
+	pulumi.Input
+
+	ToFoldersPolicyBindingTargetOutput() FoldersPolicyBindingTargetOutput
+	ToFoldersPolicyBindingTargetOutputWithContext(context.Context) FoldersPolicyBindingTargetOutput
+}
+
+type FoldersPolicyBindingTargetArgs struct {
+	// Required. Immutable. The resource name of the policy to be bound.
+	// The binding parent and policy must belong to the same Organization (or Project).
+	//
+	// ***
+	PrincipalSet pulumi.StringPtrInput `pulumi:"principalSet"`
+}
+
+func (FoldersPolicyBindingTargetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*FoldersPolicyBindingTarget)(nil)).Elem()
+}
+
+func (i FoldersPolicyBindingTargetArgs) ToFoldersPolicyBindingTargetOutput() FoldersPolicyBindingTargetOutput {
+	return i.ToFoldersPolicyBindingTargetOutputWithContext(context.Background())
+}
+
+func (i FoldersPolicyBindingTargetArgs) ToFoldersPolicyBindingTargetOutputWithContext(ctx context.Context) FoldersPolicyBindingTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FoldersPolicyBindingTargetOutput)
+}
+
+func (i FoldersPolicyBindingTargetArgs) ToFoldersPolicyBindingTargetPtrOutput() FoldersPolicyBindingTargetPtrOutput {
+	return i.ToFoldersPolicyBindingTargetPtrOutputWithContext(context.Background())
+}
+
+func (i FoldersPolicyBindingTargetArgs) ToFoldersPolicyBindingTargetPtrOutputWithContext(ctx context.Context) FoldersPolicyBindingTargetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FoldersPolicyBindingTargetOutput).ToFoldersPolicyBindingTargetPtrOutputWithContext(ctx)
+}
+
+// FoldersPolicyBindingTargetPtrInput is an input type that accepts FoldersPolicyBindingTargetArgs, FoldersPolicyBindingTargetPtr and FoldersPolicyBindingTargetPtrOutput values.
+// You can construct a concrete instance of `FoldersPolicyBindingTargetPtrInput` via:
+//
+//	        FoldersPolicyBindingTargetArgs{...}
+//
+//	or:
+//
+//	        nil
+type FoldersPolicyBindingTargetPtrInput interface {
+	pulumi.Input
+
+	ToFoldersPolicyBindingTargetPtrOutput() FoldersPolicyBindingTargetPtrOutput
+	ToFoldersPolicyBindingTargetPtrOutputWithContext(context.Context) FoldersPolicyBindingTargetPtrOutput
+}
+
+type foldersPolicyBindingTargetPtrType FoldersPolicyBindingTargetArgs
+
+func FoldersPolicyBindingTargetPtr(v *FoldersPolicyBindingTargetArgs) FoldersPolicyBindingTargetPtrInput {
+	return (*foldersPolicyBindingTargetPtrType)(v)
+}
+
+func (*foldersPolicyBindingTargetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**FoldersPolicyBindingTarget)(nil)).Elem()
+}
+
+func (i *foldersPolicyBindingTargetPtrType) ToFoldersPolicyBindingTargetPtrOutput() FoldersPolicyBindingTargetPtrOutput {
+	return i.ToFoldersPolicyBindingTargetPtrOutputWithContext(context.Background())
+}
+
+func (i *foldersPolicyBindingTargetPtrType) ToFoldersPolicyBindingTargetPtrOutputWithContext(ctx context.Context) FoldersPolicyBindingTargetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(FoldersPolicyBindingTargetPtrOutput)
+}
+
+type FoldersPolicyBindingTargetOutput struct{ *pulumi.OutputState }
+
+func (FoldersPolicyBindingTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*FoldersPolicyBindingTarget)(nil)).Elem()
+}
+
+func (o FoldersPolicyBindingTargetOutput) ToFoldersPolicyBindingTargetOutput() FoldersPolicyBindingTargetOutput {
+	return o
+}
+
+func (o FoldersPolicyBindingTargetOutput) ToFoldersPolicyBindingTargetOutputWithContext(ctx context.Context) FoldersPolicyBindingTargetOutput {
+	return o
+}
+
+func (o FoldersPolicyBindingTargetOutput) ToFoldersPolicyBindingTargetPtrOutput() FoldersPolicyBindingTargetPtrOutput {
+	return o.ToFoldersPolicyBindingTargetPtrOutputWithContext(context.Background())
+}
+
+func (o FoldersPolicyBindingTargetOutput) ToFoldersPolicyBindingTargetPtrOutputWithContext(ctx context.Context) FoldersPolicyBindingTargetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v FoldersPolicyBindingTarget) *FoldersPolicyBindingTarget {
+		return &v
+	}).(FoldersPolicyBindingTargetPtrOutput)
+}
+
+// Required. Immutable. The resource name of the policy to be bound.
+// The binding parent and policy must belong to the same Organization (or Project).
+//
+// ***
+func (o FoldersPolicyBindingTargetOutput) PrincipalSet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v FoldersPolicyBindingTarget) *string { return v.PrincipalSet }).(pulumi.StringPtrOutput)
+}
+
+type FoldersPolicyBindingTargetPtrOutput struct{ *pulumi.OutputState }
+
+func (FoldersPolicyBindingTargetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**FoldersPolicyBindingTarget)(nil)).Elem()
+}
+
+func (o FoldersPolicyBindingTargetPtrOutput) ToFoldersPolicyBindingTargetPtrOutput() FoldersPolicyBindingTargetPtrOutput {
+	return o
+}
+
+func (o FoldersPolicyBindingTargetPtrOutput) ToFoldersPolicyBindingTargetPtrOutputWithContext(ctx context.Context) FoldersPolicyBindingTargetPtrOutput {
+	return o
+}
+
+func (o FoldersPolicyBindingTargetPtrOutput) Elem() FoldersPolicyBindingTargetOutput {
+	return o.ApplyT(func(v *FoldersPolicyBindingTarget) FoldersPolicyBindingTarget {
+		if v != nil {
+			return *v
+		}
+		var ret FoldersPolicyBindingTarget
+		return ret
+	}).(FoldersPolicyBindingTargetOutput)
+}
+
+// Required. Immutable. The resource name of the policy to be bound.
+// The binding parent and policy must belong to the same Organization (or Project).
+//
+// ***
+func (o FoldersPolicyBindingTargetPtrOutput) PrincipalSet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *FoldersPolicyBindingTarget) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrincipalSet
+	}).(pulumi.StringPtrOutput)
+}
+
+type OrganizationsPolicyBindingCondition struct {
+	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	Description *string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression *string `pulumi:"expression"`
+	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+	Location *string `pulumi:"location"`
+	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+	Title *string `pulumi:"title"`
+}
+
+// OrganizationsPolicyBindingConditionInput is an input type that accepts OrganizationsPolicyBindingConditionArgs and OrganizationsPolicyBindingConditionOutput values.
+// You can construct a concrete instance of `OrganizationsPolicyBindingConditionInput` via:
+//
+//	OrganizationsPolicyBindingConditionArgs{...}
+type OrganizationsPolicyBindingConditionInput interface {
+	pulumi.Input
+
+	ToOrganizationsPolicyBindingConditionOutput() OrganizationsPolicyBindingConditionOutput
+	ToOrganizationsPolicyBindingConditionOutputWithContext(context.Context) OrganizationsPolicyBindingConditionOutput
+}
+
+type OrganizationsPolicyBindingConditionArgs struct {
+	// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringPtrInput `pulumi:"expression"`
+	// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+	Location pulumi.StringPtrInput `pulumi:"location"`
+	// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+	Title pulumi.StringPtrInput `pulumi:"title"`
+}
+
+func (OrganizationsPolicyBindingConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationsPolicyBindingCondition)(nil)).Elem()
+}
+
+func (i OrganizationsPolicyBindingConditionArgs) ToOrganizationsPolicyBindingConditionOutput() OrganizationsPolicyBindingConditionOutput {
+	return i.ToOrganizationsPolicyBindingConditionOutputWithContext(context.Background())
+}
+
+func (i OrganizationsPolicyBindingConditionArgs) ToOrganizationsPolicyBindingConditionOutputWithContext(ctx context.Context) OrganizationsPolicyBindingConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationsPolicyBindingConditionOutput)
+}
+
+func (i OrganizationsPolicyBindingConditionArgs) ToOrganizationsPolicyBindingConditionPtrOutput() OrganizationsPolicyBindingConditionPtrOutput {
+	return i.ToOrganizationsPolicyBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i OrganizationsPolicyBindingConditionArgs) ToOrganizationsPolicyBindingConditionPtrOutputWithContext(ctx context.Context) OrganizationsPolicyBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationsPolicyBindingConditionOutput).ToOrganizationsPolicyBindingConditionPtrOutputWithContext(ctx)
+}
+
+// OrganizationsPolicyBindingConditionPtrInput is an input type that accepts OrganizationsPolicyBindingConditionArgs, OrganizationsPolicyBindingConditionPtr and OrganizationsPolicyBindingConditionPtrOutput values.
+// You can construct a concrete instance of `OrganizationsPolicyBindingConditionPtrInput` via:
+//
+//	        OrganizationsPolicyBindingConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type OrganizationsPolicyBindingConditionPtrInput interface {
+	pulumi.Input
+
+	ToOrganizationsPolicyBindingConditionPtrOutput() OrganizationsPolicyBindingConditionPtrOutput
+	ToOrganizationsPolicyBindingConditionPtrOutputWithContext(context.Context) OrganizationsPolicyBindingConditionPtrOutput
+}
+
+type organizationsPolicyBindingConditionPtrType OrganizationsPolicyBindingConditionArgs
+
+func OrganizationsPolicyBindingConditionPtr(v *OrganizationsPolicyBindingConditionArgs) OrganizationsPolicyBindingConditionPtrInput {
+	return (*organizationsPolicyBindingConditionPtrType)(v)
+}
+
+func (*organizationsPolicyBindingConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OrganizationsPolicyBindingCondition)(nil)).Elem()
+}
+
+func (i *organizationsPolicyBindingConditionPtrType) ToOrganizationsPolicyBindingConditionPtrOutput() OrganizationsPolicyBindingConditionPtrOutput {
+	return i.ToOrganizationsPolicyBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *organizationsPolicyBindingConditionPtrType) ToOrganizationsPolicyBindingConditionPtrOutputWithContext(ctx context.Context) OrganizationsPolicyBindingConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationsPolicyBindingConditionPtrOutput)
+}
+
+type OrganizationsPolicyBindingConditionOutput struct{ *pulumi.OutputState }
+
+func (OrganizationsPolicyBindingConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationsPolicyBindingCondition)(nil)).Elem()
+}
+
+func (o OrganizationsPolicyBindingConditionOutput) ToOrganizationsPolicyBindingConditionOutput() OrganizationsPolicyBindingConditionOutput {
+	return o
+}
+
+func (o OrganizationsPolicyBindingConditionOutput) ToOrganizationsPolicyBindingConditionOutputWithContext(ctx context.Context) OrganizationsPolicyBindingConditionOutput {
+	return o
+}
+
+func (o OrganizationsPolicyBindingConditionOutput) ToOrganizationsPolicyBindingConditionPtrOutput() OrganizationsPolicyBindingConditionPtrOutput {
+	return o.ToOrganizationsPolicyBindingConditionPtrOutputWithContext(context.Background())
+}
+
+func (o OrganizationsPolicyBindingConditionOutput) ToOrganizationsPolicyBindingConditionPtrOutputWithContext(ctx context.Context) OrganizationsPolicyBindingConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OrganizationsPolicyBindingCondition) *OrganizationsPolicyBindingCondition {
+		return &v
+	}).(OrganizationsPolicyBindingConditionPtrOutput)
+}
+
+// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+func (o OrganizationsPolicyBindingConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OrganizationsPolicyBindingCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o OrganizationsPolicyBindingConditionOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OrganizationsPolicyBindingCondition) *string { return v.Expression }).(pulumi.StringPtrOutput)
+}
+
+// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+func (o OrganizationsPolicyBindingConditionOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OrganizationsPolicyBindingCondition) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+func (o OrganizationsPolicyBindingConditionOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OrganizationsPolicyBindingCondition) *string { return v.Title }).(pulumi.StringPtrOutput)
+}
+
+type OrganizationsPolicyBindingConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (OrganizationsPolicyBindingConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OrganizationsPolicyBindingCondition)(nil)).Elem()
+}
+
+func (o OrganizationsPolicyBindingConditionPtrOutput) ToOrganizationsPolicyBindingConditionPtrOutput() OrganizationsPolicyBindingConditionPtrOutput {
+	return o
+}
+
+func (o OrganizationsPolicyBindingConditionPtrOutput) ToOrganizationsPolicyBindingConditionPtrOutputWithContext(ctx context.Context) OrganizationsPolicyBindingConditionPtrOutput {
+	return o
+}
+
+func (o OrganizationsPolicyBindingConditionPtrOutput) Elem() OrganizationsPolicyBindingConditionOutput {
+	return o.ApplyT(func(v *OrganizationsPolicyBindingCondition) OrganizationsPolicyBindingCondition {
+		if v != nil {
+			return *v
+		}
+		var ret OrganizationsPolicyBindingCondition
+		return ret
+	}).(OrganizationsPolicyBindingConditionOutput)
+}
+
+// Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+func (o OrganizationsPolicyBindingConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OrganizationsPolicyBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o OrganizationsPolicyBindingConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OrganizationsPolicyBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+func (o OrganizationsPolicyBindingConditionPtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OrganizationsPolicyBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Location
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+func (o OrganizationsPolicyBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OrganizationsPolicyBindingCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Title
+	}).(pulumi.StringPtrOutput)
+}
+
+type OrganizationsPolicyBindingTarget struct {
+	// Required. Immutable. The resource name of the policy to be bound.
+	// The binding parent and policy must belong to the same Organization (or Project).
+	//
+	// ***
+	PrincipalSet *string `pulumi:"principalSet"`
+}
+
+// OrganizationsPolicyBindingTargetInput is an input type that accepts OrganizationsPolicyBindingTargetArgs and OrganizationsPolicyBindingTargetOutput values.
+// You can construct a concrete instance of `OrganizationsPolicyBindingTargetInput` via:
+//
+//	OrganizationsPolicyBindingTargetArgs{...}
+type OrganizationsPolicyBindingTargetInput interface {
+	pulumi.Input
+
+	ToOrganizationsPolicyBindingTargetOutput() OrganizationsPolicyBindingTargetOutput
+	ToOrganizationsPolicyBindingTargetOutputWithContext(context.Context) OrganizationsPolicyBindingTargetOutput
+}
+
+type OrganizationsPolicyBindingTargetArgs struct {
+	// Required. Immutable. The resource name of the policy to be bound.
+	// The binding parent and policy must belong to the same Organization (or Project).
+	//
+	// ***
+	PrincipalSet pulumi.StringPtrInput `pulumi:"principalSet"`
+}
+
+func (OrganizationsPolicyBindingTargetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationsPolicyBindingTarget)(nil)).Elem()
+}
+
+func (i OrganizationsPolicyBindingTargetArgs) ToOrganizationsPolicyBindingTargetOutput() OrganizationsPolicyBindingTargetOutput {
+	return i.ToOrganizationsPolicyBindingTargetOutputWithContext(context.Background())
+}
+
+func (i OrganizationsPolicyBindingTargetArgs) ToOrganizationsPolicyBindingTargetOutputWithContext(ctx context.Context) OrganizationsPolicyBindingTargetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationsPolicyBindingTargetOutput)
+}
+
+func (i OrganizationsPolicyBindingTargetArgs) ToOrganizationsPolicyBindingTargetPtrOutput() OrganizationsPolicyBindingTargetPtrOutput {
+	return i.ToOrganizationsPolicyBindingTargetPtrOutputWithContext(context.Background())
+}
+
+func (i OrganizationsPolicyBindingTargetArgs) ToOrganizationsPolicyBindingTargetPtrOutputWithContext(ctx context.Context) OrganizationsPolicyBindingTargetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationsPolicyBindingTargetOutput).ToOrganizationsPolicyBindingTargetPtrOutputWithContext(ctx)
+}
+
+// OrganizationsPolicyBindingTargetPtrInput is an input type that accepts OrganizationsPolicyBindingTargetArgs, OrganizationsPolicyBindingTargetPtr and OrganizationsPolicyBindingTargetPtrOutput values.
+// You can construct a concrete instance of `OrganizationsPolicyBindingTargetPtrInput` via:
+//
+//	        OrganizationsPolicyBindingTargetArgs{...}
+//
+//	or:
+//
+//	        nil
+type OrganizationsPolicyBindingTargetPtrInput interface {
+	pulumi.Input
+
+	ToOrganizationsPolicyBindingTargetPtrOutput() OrganizationsPolicyBindingTargetPtrOutput
+	ToOrganizationsPolicyBindingTargetPtrOutputWithContext(context.Context) OrganizationsPolicyBindingTargetPtrOutput
+}
+
+type organizationsPolicyBindingTargetPtrType OrganizationsPolicyBindingTargetArgs
+
+func OrganizationsPolicyBindingTargetPtr(v *OrganizationsPolicyBindingTargetArgs) OrganizationsPolicyBindingTargetPtrInput {
+	return (*organizationsPolicyBindingTargetPtrType)(v)
+}
+
+func (*organizationsPolicyBindingTargetPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**OrganizationsPolicyBindingTarget)(nil)).Elem()
+}
+
+func (i *organizationsPolicyBindingTargetPtrType) ToOrganizationsPolicyBindingTargetPtrOutput() OrganizationsPolicyBindingTargetPtrOutput {
+	return i.ToOrganizationsPolicyBindingTargetPtrOutputWithContext(context.Background())
+}
+
+func (i *organizationsPolicyBindingTargetPtrType) ToOrganizationsPolicyBindingTargetPtrOutputWithContext(ctx context.Context) OrganizationsPolicyBindingTargetPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(OrganizationsPolicyBindingTargetPtrOutput)
+}
+
+type OrganizationsPolicyBindingTargetOutput struct{ *pulumi.OutputState }
+
+func (OrganizationsPolicyBindingTargetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*OrganizationsPolicyBindingTarget)(nil)).Elem()
+}
+
+func (o OrganizationsPolicyBindingTargetOutput) ToOrganizationsPolicyBindingTargetOutput() OrganizationsPolicyBindingTargetOutput {
+	return o
+}
+
+func (o OrganizationsPolicyBindingTargetOutput) ToOrganizationsPolicyBindingTargetOutputWithContext(ctx context.Context) OrganizationsPolicyBindingTargetOutput {
+	return o
+}
+
+func (o OrganizationsPolicyBindingTargetOutput) ToOrganizationsPolicyBindingTargetPtrOutput() OrganizationsPolicyBindingTargetPtrOutput {
+	return o.ToOrganizationsPolicyBindingTargetPtrOutputWithContext(context.Background())
+}
+
+func (o OrganizationsPolicyBindingTargetOutput) ToOrganizationsPolicyBindingTargetPtrOutputWithContext(ctx context.Context) OrganizationsPolicyBindingTargetPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v OrganizationsPolicyBindingTarget) *OrganizationsPolicyBindingTarget {
+		return &v
+	}).(OrganizationsPolicyBindingTargetPtrOutput)
+}
+
+// Required. Immutable. The resource name of the policy to be bound.
+// The binding parent and policy must belong to the same Organization (or Project).
+//
+// ***
+func (o OrganizationsPolicyBindingTargetOutput) PrincipalSet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v OrganizationsPolicyBindingTarget) *string { return v.PrincipalSet }).(pulumi.StringPtrOutput)
+}
+
+type OrganizationsPolicyBindingTargetPtrOutput struct{ *pulumi.OutputState }
+
+func (OrganizationsPolicyBindingTargetPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**OrganizationsPolicyBindingTarget)(nil)).Elem()
+}
+
+func (o OrganizationsPolicyBindingTargetPtrOutput) ToOrganizationsPolicyBindingTargetPtrOutput() OrganizationsPolicyBindingTargetPtrOutput {
+	return o
+}
+
+func (o OrganizationsPolicyBindingTargetPtrOutput) ToOrganizationsPolicyBindingTargetPtrOutputWithContext(ctx context.Context) OrganizationsPolicyBindingTargetPtrOutput {
+	return o
+}
+
+func (o OrganizationsPolicyBindingTargetPtrOutput) Elem() OrganizationsPolicyBindingTargetOutput {
+	return o.ApplyT(func(v *OrganizationsPolicyBindingTarget) OrganizationsPolicyBindingTarget {
+		if v != nil {
+			return *v
+		}
+		var ret OrganizationsPolicyBindingTarget
+		return ret
+	}).(OrganizationsPolicyBindingTargetOutput)
+}
+
+// Required. Immutable. The resource name of the policy to be bound.
+// The binding parent and policy must belong to the same Organization (or Project).
+//
+// ***
+func (o OrganizationsPolicyBindingTargetPtrOutput) PrincipalSet() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *OrganizationsPolicyBindingTarget) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PrincipalSet
+	}).(pulumi.StringPtrOutput)
+}
+
 type PrincipalAccessBoundaryPolicyDetails struct {
 	// The version number that indicates which Google Cloud services
 	// are included in the enforcement (e.g. \"latest\", \"1\", ...). If empty, the
@@ -5312,6 +5998,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DenyPolicyRuleDenyRulePtrInput)(nil)).Elem(), DenyPolicyRuleDenyRuleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DenyPolicyRuleDenyRuleDenialConditionInput)(nil)).Elem(), DenyPolicyRuleDenyRuleDenialConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DenyPolicyRuleDenyRuleDenialConditionPtrInput)(nil)).Elem(), DenyPolicyRuleDenyRuleDenialConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FoldersPolicyBindingConditionInput)(nil)).Elem(), FoldersPolicyBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FoldersPolicyBindingConditionPtrInput)(nil)).Elem(), FoldersPolicyBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FoldersPolicyBindingTargetInput)(nil)).Elem(), FoldersPolicyBindingTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*FoldersPolicyBindingTargetPtrInput)(nil)).Elem(), FoldersPolicyBindingTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationsPolicyBindingConditionInput)(nil)).Elem(), OrganizationsPolicyBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationsPolicyBindingConditionPtrInput)(nil)).Elem(), OrganizationsPolicyBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationsPolicyBindingTargetInput)(nil)).Elem(), OrganizationsPolicyBindingTargetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*OrganizationsPolicyBindingTargetPtrInput)(nil)).Elem(), OrganizationsPolicyBindingTargetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrincipalAccessBoundaryPolicyDetailsInput)(nil)).Elem(), PrincipalAccessBoundaryPolicyDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrincipalAccessBoundaryPolicyDetailsPtrInput)(nil)).Elem(), PrincipalAccessBoundaryPolicyDetailsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*PrincipalAccessBoundaryPolicyDetailsRuleInput)(nil)).Elem(), PrincipalAccessBoundaryPolicyDetailsRuleArgs{})
@@ -5380,6 +6074,14 @@ func init() {
 	pulumi.RegisterOutputType(DenyPolicyRuleDenyRulePtrOutput{})
 	pulumi.RegisterOutputType(DenyPolicyRuleDenyRuleDenialConditionOutput{})
 	pulumi.RegisterOutputType(DenyPolicyRuleDenyRuleDenialConditionPtrOutput{})
+	pulumi.RegisterOutputType(FoldersPolicyBindingConditionOutput{})
+	pulumi.RegisterOutputType(FoldersPolicyBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(FoldersPolicyBindingTargetOutput{})
+	pulumi.RegisterOutputType(FoldersPolicyBindingTargetPtrOutput{})
+	pulumi.RegisterOutputType(OrganizationsPolicyBindingConditionOutput{})
+	pulumi.RegisterOutputType(OrganizationsPolicyBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(OrganizationsPolicyBindingTargetOutput{})
+	pulumi.RegisterOutputType(OrganizationsPolicyBindingTargetPtrOutput{})
 	pulumi.RegisterOutputType(PrincipalAccessBoundaryPolicyDetailsOutput{})
 	pulumi.RegisterOutputType(PrincipalAccessBoundaryPolicyDetailsPtrOutput{})
 	pulumi.RegisterOutputType(PrincipalAccessBoundaryPolicyDetailsRuleOutput{})
