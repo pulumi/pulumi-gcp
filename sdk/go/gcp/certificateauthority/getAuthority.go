@@ -5,6 +5,7 @@ package certificateauthority
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -43,6 +44,16 @@ import (
 // ```
 func LookupAuthority(ctx *pulumi.Context, args *LookupAuthorityArgs, opts ...pulumi.InvokeOption) (*LookupAuthorityResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupAuthorityResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupAuthorityResult{}, errors.New("DependsOn is not supported for direct form invoke LookupAuthority, use LookupAuthorityOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupAuthorityResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupAuthority, use LookupAuthorityOutput instead")
+	}
 	var rv LookupAuthorityResult
 	err := ctx.Invoke("gcp:certificateauthority/getAuthority:getAuthority", args, &rv, opts...)
 	if err != nil {
@@ -99,17 +110,18 @@ type LookupAuthorityResult struct {
 }
 
 func LookupAuthorityOutput(ctx *pulumi.Context, args LookupAuthorityOutputArgs, opts ...pulumi.InvokeOption) LookupAuthorityResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAuthorityResultOutput, error) {
 			args := v.(LookupAuthorityArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupAuthorityResult
-			secret, err := ctx.InvokePackageRaw("gcp:certificateauthority/getAuthority:getAuthority", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:certificateauthority/getAuthority:getAuthority", args, &rv, "", opts...)
 			if err != nil {
 				return LookupAuthorityResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupAuthorityResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupAuthorityResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupAuthorityResultOutput), nil
 			}

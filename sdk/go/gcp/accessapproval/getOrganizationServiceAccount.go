@@ -5,6 +5,7 @@ package accessapproval
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -57,6 +58,16 @@ import (
 // ```
 func GetOrganizationServiceAccount(ctx *pulumi.Context, args *GetOrganizationServiceAccountArgs, opts ...pulumi.InvokeOption) (*GetOrganizationServiceAccountResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetOrganizationServiceAccountResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetOrganizationServiceAccountResult{}, errors.New("DependsOn is not supported for direct form invoke GetOrganizationServiceAccount, use GetOrganizationServiceAccountOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetOrganizationServiceAccountResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetOrganizationServiceAccount, use GetOrganizationServiceAccountOutput instead")
+	}
 	var rv GetOrganizationServiceAccountResult
 	err := ctx.Invoke("gcp:accessapproval/getOrganizationServiceAccount:getOrganizationServiceAccount", args, &rv, opts...)
 	if err != nil {
@@ -84,17 +95,18 @@ type GetOrganizationServiceAccountResult struct {
 }
 
 func GetOrganizationServiceAccountOutput(ctx *pulumi.Context, args GetOrganizationServiceAccountOutputArgs, opts ...pulumi.InvokeOption) GetOrganizationServiceAccountResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetOrganizationServiceAccountResultOutput, error) {
 			args := v.(GetOrganizationServiceAccountArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetOrganizationServiceAccountResult
-			secret, err := ctx.InvokePackageRaw("gcp:accessapproval/getOrganizationServiceAccount:getOrganizationServiceAccount", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:accessapproval/getOrganizationServiceAccount:getOrganizationServiceAccount", args, &rv, "", opts...)
 			if err != nil {
 				return GetOrganizationServiceAccountResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetOrganizationServiceAccountResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetOrganizationServiceAccountResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetOrganizationServiceAccountResultOutput), nil
 			}

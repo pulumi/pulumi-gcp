@@ -111,7 +111,7 @@ def get_iam_policy(project: Optional[str] = None,
         policy_data=pulumi.get(__ret__, 'policy_data'),
         project=pulumi.get(__ret__, 'project'))
 def get_iam_policy_output(project: Optional[pulumi.Input[str]] = None,
-                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIamPolicyResult]:
+                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIamPolicyResult]:
     """
     Retrieves the current IAM policy data for a project.
 
@@ -130,7 +130,7 @@ def get_iam_policy_output(project: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['project'] = project
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:projects/getIamPolicy:getIamPolicy', __args__, opts=opts, typ=GetIamPolicyResult)
     return __ret__.apply(lambda __response__: GetIamPolicyResult(
         etag=pulumi.get(__response__, 'etag'),

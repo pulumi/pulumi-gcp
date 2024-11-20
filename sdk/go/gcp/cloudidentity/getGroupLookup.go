@@ -5,6 +5,7 @@ package cloudidentity
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -44,6 +45,16 @@ import (
 // ```
 func GetGroupLookup(ctx *pulumi.Context, args *GetGroupLookupArgs, opts ...pulumi.InvokeOption) (*GetGroupLookupResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetGroupLookupResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetGroupLookupResult{}, errors.New("DependsOn is not supported for direct form invoke GetGroupLookup, use GetGroupLookupOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetGroupLookupResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetGroupLookup, use GetGroupLookupOutput instead")
+	}
 	var rv GetGroupLookupResult
 	err := ctx.Invoke("gcp:cloudidentity/getGroupLookup:getGroupLookup", args, &rv, opts...)
 	if err != nil {
@@ -70,17 +81,18 @@ type GetGroupLookupResult struct {
 }
 
 func GetGroupLookupOutput(ctx *pulumi.Context, args GetGroupLookupOutputArgs, opts ...pulumi.InvokeOption) GetGroupLookupResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetGroupLookupResultOutput, error) {
 			args := v.(GetGroupLookupArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetGroupLookupResult
-			secret, err := ctx.InvokePackageRaw("gcp:cloudidentity/getGroupLookup:getGroupLookup", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:cloudidentity/getGroupLookup:getGroupLookup", args, &rv, "", opts...)
 			if err != nil {
 				return GetGroupLookupResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetGroupLookupResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetGroupLookupResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetGroupLookupResultOutput), nil
 			}

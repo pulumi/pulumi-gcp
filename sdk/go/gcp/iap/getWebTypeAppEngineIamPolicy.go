@@ -5,6 +5,7 @@ package iap
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -41,6 +42,16 @@ import (
 // ```
 func GetWebTypeAppEngineIamPolicy(ctx *pulumi.Context, args *GetWebTypeAppEngineIamPolicyArgs, opts ...pulumi.InvokeOption) (*GetWebTypeAppEngineIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetWebTypeAppEngineIamPolicyResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetWebTypeAppEngineIamPolicyResult{}, errors.New("DependsOn is not supported for direct form invoke GetWebTypeAppEngineIamPolicy, use GetWebTypeAppEngineIamPolicyOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetWebTypeAppEngineIamPolicyResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetWebTypeAppEngineIamPolicy, use GetWebTypeAppEngineIamPolicyOutput instead")
+	}
 	var rv GetWebTypeAppEngineIamPolicyResult
 	err := ctx.Invoke("gcp:iap/getWebTypeAppEngineIamPolicy:getWebTypeAppEngineIamPolicy", args, &rv, opts...)
 	if err != nil {
@@ -72,17 +83,18 @@ type GetWebTypeAppEngineIamPolicyResult struct {
 }
 
 func GetWebTypeAppEngineIamPolicyOutput(ctx *pulumi.Context, args GetWebTypeAppEngineIamPolicyOutputArgs, opts ...pulumi.InvokeOption) GetWebTypeAppEngineIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetWebTypeAppEngineIamPolicyResultOutput, error) {
 			args := v.(GetWebTypeAppEngineIamPolicyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetWebTypeAppEngineIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:iap/getWebTypeAppEngineIamPolicy:getWebTypeAppEngineIamPolicy", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:iap/getWebTypeAppEngineIamPolicy:getWebTypeAppEngineIamPolicy", args, &rv, "", opts...)
 			if err != nil {
 				return GetWebTypeAppEngineIamPolicyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetWebTypeAppEngineIamPolicyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetWebTypeAppEngineIamPolicyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetWebTypeAppEngineIamPolicyResultOutput), nil
 			}

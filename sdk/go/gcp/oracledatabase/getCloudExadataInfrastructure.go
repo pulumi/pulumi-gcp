@@ -5,6 +5,7 @@ package oracledatabase
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -44,6 +45,16 @@ import (
 // ```
 func LookupCloudExadataInfrastructure(ctx *pulumi.Context, args *LookupCloudExadataInfrastructureArgs, opts ...pulumi.InvokeOption) (*LookupCloudExadataInfrastructureResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupCloudExadataInfrastructureResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupCloudExadataInfrastructureResult{}, errors.New("DependsOn is not supported for direct form invoke LookupCloudExadataInfrastructure, use LookupCloudExadataInfrastructureOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupCloudExadataInfrastructureResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupCloudExadataInfrastructure, use LookupCloudExadataInfrastructureOutput instead")
+	}
 	var rv LookupCloudExadataInfrastructureResult
 	err := ctx.Invoke("gcp:oracledatabase/getCloudExadataInfrastructure:getCloudExadataInfrastructure", args, &rv, opts...)
 	if err != nil {
@@ -84,17 +95,18 @@ type LookupCloudExadataInfrastructureResult struct {
 }
 
 func LookupCloudExadataInfrastructureOutput(ctx *pulumi.Context, args LookupCloudExadataInfrastructureOutputArgs, opts ...pulumi.InvokeOption) LookupCloudExadataInfrastructureResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupCloudExadataInfrastructureResultOutput, error) {
 			args := v.(LookupCloudExadataInfrastructureArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupCloudExadataInfrastructureResult
-			secret, err := ctx.InvokePackageRaw("gcp:oracledatabase/getCloudExadataInfrastructure:getCloudExadataInfrastructure", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:oracledatabase/getCloudExadataInfrastructure:getCloudExadataInfrastructure", args, &rv, "", opts...)
 			if err != nil {
 				return LookupCloudExadataInfrastructureResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupCloudExadataInfrastructureResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupCloudExadataInfrastructureResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupCloudExadataInfrastructureResultOutput), nil
 			}

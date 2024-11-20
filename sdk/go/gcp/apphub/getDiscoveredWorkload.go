@@ -5,6 +5,7 @@ package apphub
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -41,6 +42,16 @@ import (
 // ```
 func GetDiscoveredWorkload(ctx *pulumi.Context, args *GetDiscoveredWorkloadArgs, opts ...pulumi.InvokeOption) (*GetDiscoveredWorkloadResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetDiscoveredWorkloadResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetDiscoveredWorkloadResult{}, errors.New("DependsOn is not supported for direct form invoke GetDiscoveredWorkload, use GetDiscoveredWorkloadOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetDiscoveredWorkloadResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetDiscoveredWorkload, use GetDiscoveredWorkloadOutput instead")
+	}
 	var rv GetDiscoveredWorkloadResult
 	err := ctx.Invoke("gcp:apphub/getDiscoveredWorkload:getDiscoveredWorkload", args, &rv, opts...)
 	if err != nil {
@@ -76,17 +87,18 @@ type GetDiscoveredWorkloadResult struct {
 }
 
 func GetDiscoveredWorkloadOutput(ctx *pulumi.Context, args GetDiscoveredWorkloadOutputArgs, opts ...pulumi.InvokeOption) GetDiscoveredWorkloadResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetDiscoveredWorkloadResultOutput, error) {
 			args := v.(GetDiscoveredWorkloadArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetDiscoveredWorkloadResult
-			secret, err := ctx.InvokePackageRaw("gcp:apphub/getDiscoveredWorkload:getDiscoveredWorkload", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:apphub/getDiscoveredWorkload:getDiscoveredWorkload", args, &rv, "", opts...)
 			if err != nil {
 				return GetDiscoveredWorkloadResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetDiscoveredWorkloadResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetDiscoveredWorkloadResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetDiscoveredWorkloadResultOutput), nil
 			}

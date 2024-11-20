@@ -5,6 +5,7 @@ package monitoring
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -57,6 +58,16 @@ import (
 // ```
 func GetIstioCanonicalService(ctx *pulumi.Context, args *GetIstioCanonicalServiceArgs, opts ...pulumi.InvokeOption) (*GetIstioCanonicalServiceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetIstioCanonicalServiceResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetIstioCanonicalServiceResult{}, errors.New("DependsOn is not supported for direct form invoke GetIstioCanonicalService, use GetIstioCanonicalServiceOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetIstioCanonicalServiceResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetIstioCanonicalService, use GetIstioCanonicalServiceOutput instead")
+	}
 	var rv GetIstioCanonicalServiceResult
 	err := ctx.Invoke("gcp:monitoring/getIstioCanonicalService:getIstioCanonicalService", args, &rv, opts...)
 	if err != nil {
@@ -105,17 +116,18 @@ type GetIstioCanonicalServiceResult struct {
 }
 
 func GetIstioCanonicalServiceOutput(ctx *pulumi.Context, args GetIstioCanonicalServiceOutputArgs, opts ...pulumi.InvokeOption) GetIstioCanonicalServiceResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetIstioCanonicalServiceResultOutput, error) {
 			args := v.(GetIstioCanonicalServiceArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetIstioCanonicalServiceResult
-			secret, err := ctx.InvokePackageRaw("gcp:monitoring/getIstioCanonicalService:getIstioCanonicalService", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:monitoring/getIstioCanonicalService:getIstioCanonicalService", args, &rv, "", opts...)
 			if err != nil {
 				return GetIstioCanonicalServiceResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetIstioCanonicalServiceResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetIstioCanonicalServiceResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetIstioCanonicalServiceResultOutput), nil
 			}

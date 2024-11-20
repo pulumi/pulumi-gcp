@@ -5,6 +5,7 @@ package cloudidentity
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -13,6 +14,16 @@ import (
 
 func GetGroupTransitiveMemberships(ctx *pulumi.Context, args *GetGroupTransitiveMembershipsArgs, opts ...pulumi.InvokeOption) (*GetGroupTransitiveMembershipsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetGroupTransitiveMembershipsResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetGroupTransitiveMembershipsResult{}, errors.New("DependsOn is not supported for direct form invoke GetGroupTransitiveMemberships, use GetGroupTransitiveMembershipsOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetGroupTransitiveMembershipsResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetGroupTransitiveMemberships, use GetGroupTransitiveMembershipsOutput instead")
+	}
 	var rv GetGroupTransitiveMembershipsResult
 	err := ctx.Invoke("gcp:cloudidentity/getGroupTransitiveMemberships:getGroupTransitiveMemberships", args, &rv, opts...)
 	if err != nil {
@@ -35,17 +46,18 @@ type GetGroupTransitiveMembershipsResult struct {
 }
 
 func GetGroupTransitiveMembershipsOutput(ctx *pulumi.Context, args GetGroupTransitiveMembershipsOutputArgs, opts ...pulumi.InvokeOption) GetGroupTransitiveMembershipsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetGroupTransitiveMembershipsResultOutput, error) {
 			args := v.(GetGroupTransitiveMembershipsArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetGroupTransitiveMembershipsResult
-			secret, err := ctx.InvokePackageRaw("gcp:cloudidentity/getGroupTransitiveMemberships:getGroupTransitiveMemberships", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:cloudidentity/getGroupTransitiveMemberships:getGroupTransitiveMemberships", args, &rv, "", opts...)
 			if err != nil {
 				return GetGroupTransitiveMembershipsResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetGroupTransitiveMembershipsResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetGroupTransitiveMembershipsResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetGroupTransitiveMembershipsResultOutput), nil
 			}

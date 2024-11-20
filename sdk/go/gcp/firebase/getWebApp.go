@@ -5,6 +5,7 @@ package firebase
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -14,6 +15,16 @@ import (
 // A Google Cloud Firebase web application instance
 func LookupWebApp(ctx *pulumi.Context, args *LookupWebAppArgs, opts ...pulumi.InvokeOption) (*LookupWebAppResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupWebAppResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupWebAppResult{}, errors.New("DependsOn is not supported for direct form invoke LookupWebApp, use LookupWebAppOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupWebAppResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupWebApp, use LookupWebAppOutput instead")
+	}
 	var rv LookupWebAppResult
 	err := ctx.Invoke("gcp:firebase/getWebApp:getWebApp", args, &rv, opts...)
 	if err != nil {
@@ -51,17 +62,18 @@ type LookupWebAppResult struct {
 }
 
 func LookupWebAppOutput(ctx *pulumi.Context, args LookupWebAppOutputArgs, opts ...pulumi.InvokeOption) LookupWebAppResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupWebAppResultOutput, error) {
 			args := v.(LookupWebAppArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupWebAppResult
-			secret, err := ctx.InvokePackageRaw("gcp:firebase/getWebApp:getWebApp", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:firebase/getWebApp:getWebApp", args, &rv, "", opts...)
 			if err != nil {
 				return LookupWebAppResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupWebAppResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupWebAppResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupWebAppResultOutput), nil
 			}

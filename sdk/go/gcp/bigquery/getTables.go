@@ -5,6 +5,7 @@ package bigquery
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -43,6 +44,16 @@ import (
 // ```
 func GetTables(ctx *pulumi.Context, args *GetTablesArgs, opts ...pulumi.InvokeOption) (*GetTablesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetTablesResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetTablesResult{}, errors.New("DependsOn is not supported for direct form invoke GetTables, use GetTablesOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetTablesResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetTables, use GetTablesOutput instead")
+	}
 	var rv GetTablesResult
 	err := ctx.Invoke("gcp:bigquery/getTables:getTables", args, &rv, opts...)
 	if err != nil {
@@ -71,17 +82,18 @@ type GetTablesResult struct {
 }
 
 func GetTablesOutput(ctx *pulumi.Context, args GetTablesOutputArgs, opts ...pulumi.InvokeOption) GetTablesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetTablesResultOutput, error) {
 			args := v.(GetTablesArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetTablesResult
-			secret, err := ctx.InvokePackageRaw("gcp:bigquery/getTables:getTables", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:bigquery/getTables:getTables", args, &rv, "", opts...)
 			if err != nil {
 				return GetTablesResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetTablesResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetTablesResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetTablesResultOutput), nil
 			}

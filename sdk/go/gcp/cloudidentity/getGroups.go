@@ -5,6 +5,7 @@ package cloudidentity
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -42,6 +43,16 @@ import (
 // ```
 func GetGroups(ctx *pulumi.Context, args *GetGroupsArgs, opts ...pulumi.InvokeOption) (*GetGroupsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetGroupsResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetGroupsResult{}, errors.New("DependsOn is not supported for direct form invoke GetGroups, use GetGroupsOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetGroupsResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetGroups, use GetGroupsOutput instead")
+	}
 	var rv GetGroupsResult
 	err := ctx.Invoke("gcp:cloudidentity/getGroups:getGroups", args, &rv, opts...)
 	if err != nil {
@@ -66,17 +77,18 @@ type GetGroupsResult struct {
 }
 
 func GetGroupsOutput(ctx *pulumi.Context, args GetGroupsOutputArgs, opts ...pulumi.InvokeOption) GetGroupsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetGroupsResultOutput, error) {
 			args := v.(GetGroupsArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetGroupsResult
-			secret, err := ctx.InvokePackageRaw("gcp:cloudidentity/getGroups:getGroups", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:cloudidentity/getGroups:getGroups", args, &rv, "", opts...)
 			if err != nil {
 				return GetGroupsResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetGroupsResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetGroupsResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetGroupsResultOutput), nil
 			}

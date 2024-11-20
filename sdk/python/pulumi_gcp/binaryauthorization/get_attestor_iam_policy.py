@@ -127,7 +127,7 @@ def get_attestor_iam_policy(attestor: Optional[str] = None,
         project=pulumi.get(__ret__, 'project'))
 def get_attestor_iam_policy_output(attestor: Optional[pulumi.Input[str]] = None,
                                    project: Optional[pulumi.Input[Optional[str]]] = None,
-                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAttestorIamPolicyResult]:
+                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAttestorIamPolicyResult]:
     """
     Retrieves the current IAM policy data for attestor
 
@@ -149,7 +149,7 @@ def get_attestor_iam_policy_output(attestor: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['attestor'] = attestor
     __args__['project'] = project
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:binaryauthorization/getAttestorIamPolicy:getAttestorIamPolicy', __args__, opts=opts, typ=GetAttestorIamPolicyResult)
     return __ret__.apply(lambda __response__: GetAttestorIamPolicyResult(
         attestor=pulumi.get(__response__, 'attestor'),

@@ -5,6 +5,7 @@ package compute
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -49,6 +50,16 @@ import (
 // ```
 func LookupNetworkEndpointGroup(ctx *pulumi.Context, args *LookupNetworkEndpointGroupArgs, opts ...pulumi.InvokeOption) (*LookupNetworkEndpointGroupResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupNetworkEndpointGroupResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupNetworkEndpointGroupResult{}, errors.New("DependsOn is not supported for direct form invoke LookupNetworkEndpointGroup, use LookupNetworkEndpointGroupOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupNetworkEndpointGroupResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupNetworkEndpointGroup, use LookupNetworkEndpointGroupOutput instead")
+	}
 	var rv LookupNetworkEndpointGroupResult
 	err := ctx.Invoke("gcp:compute/getNetworkEndpointGroup:getNetworkEndpointGroup", args, &rv, opts...)
 	if err != nil {
@@ -94,17 +105,18 @@ type LookupNetworkEndpointGroupResult struct {
 }
 
 func LookupNetworkEndpointGroupOutput(ctx *pulumi.Context, args LookupNetworkEndpointGroupOutputArgs, opts ...pulumi.InvokeOption) LookupNetworkEndpointGroupResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupNetworkEndpointGroupResultOutput, error) {
 			args := v.(LookupNetworkEndpointGroupArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupNetworkEndpointGroupResult
-			secret, err := ctx.InvokePackageRaw("gcp:compute/getNetworkEndpointGroup:getNetworkEndpointGroup", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:compute/getNetworkEndpointGroup:getNetworkEndpointGroup", args, &rv, "", opts...)
 			if err != nil {
 				return LookupNetworkEndpointGroupResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupNetworkEndpointGroupResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupNetworkEndpointGroupResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupNetworkEndpointGroupResultOutput), nil
 			}

@@ -5,6 +5,7 @@ package certificateauthority
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -40,6 +41,16 @@ import (
 // ```
 func LookupCertificateTemplateIamPolicy(ctx *pulumi.Context, args *LookupCertificateTemplateIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupCertificateTemplateIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupCertificateTemplateIamPolicyResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupCertificateTemplateIamPolicyResult{}, errors.New("DependsOn is not supported for direct form invoke LookupCertificateTemplateIamPolicy, use LookupCertificateTemplateIamPolicyOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupCertificateTemplateIamPolicyResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupCertificateTemplateIamPolicy, use LookupCertificateTemplateIamPolicyOutput instead")
+	}
 	var rv LookupCertificateTemplateIamPolicyResult
 	err := ctx.Invoke("gcp:certificateauthority/getCertificateTemplateIamPolicy:getCertificateTemplateIamPolicy", args, &rv, opts...)
 	if err != nil {
@@ -76,17 +87,18 @@ type LookupCertificateTemplateIamPolicyResult struct {
 }
 
 func LookupCertificateTemplateIamPolicyOutput(ctx *pulumi.Context, args LookupCertificateTemplateIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupCertificateTemplateIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupCertificateTemplateIamPolicyResultOutput, error) {
 			args := v.(LookupCertificateTemplateIamPolicyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupCertificateTemplateIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:certificateauthority/getCertificateTemplateIamPolicy:getCertificateTemplateIamPolicy", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:certificateauthority/getCertificateTemplateIamPolicy:getCertificateTemplateIamPolicy", args, &rv, "", opts...)
 			if err != nil {
 				return LookupCertificateTemplateIamPolicyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupCertificateTemplateIamPolicyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupCertificateTemplateIamPolicyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupCertificateTemplateIamPolicyResultOutput), nil
 			}

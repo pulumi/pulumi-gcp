@@ -5,6 +5,7 @@ package compute
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -41,6 +42,16 @@ import (
 // ```
 func LookupImageIamPolicy(ctx *pulumi.Context, args *LookupImageIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupImageIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupImageIamPolicyResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupImageIamPolicyResult{}, errors.New("DependsOn is not supported for direct form invoke LookupImageIamPolicy, use LookupImageIamPolicyOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupImageIamPolicyResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupImageIamPolicy, use LookupImageIamPolicyOutput instead")
+	}
 	var rv LookupImageIamPolicyResult
 	err := ctx.Invoke("gcp:compute/getImageIamPolicy:getImageIamPolicy", args, &rv, opts...)
 	if err != nil {
@@ -72,17 +83,18 @@ type LookupImageIamPolicyResult struct {
 }
 
 func LookupImageIamPolicyOutput(ctx *pulumi.Context, args LookupImageIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupImageIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupImageIamPolicyResultOutput, error) {
 			args := v.(LookupImageIamPolicyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupImageIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:compute/getImageIamPolicy:getImageIamPolicy", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:compute/getImageIamPolicy:getImageIamPolicy", args, &rv, "", opts...)
 			if err != nil {
 				return LookupImageIamPolicyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupImageIamPolicyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupImageIamPolicyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupImageIamPolicyResultOutput), nil
 			}

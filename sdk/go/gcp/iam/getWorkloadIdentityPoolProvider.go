@@ -5,6 +5,7 @@ package iam
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -41,6 +42,16 @@ import (
 // ```
 func LookupWorkloadIdentityPoolProvider(ctx *pulumi.Context, args *LookupWorkloadIdentityPoolProviderArgs, opts ...pulumi.InvokeOption) (*LookupWorkloadIdentityPoolProviderResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupWorkloadIdentityPoolProviderResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupWorkloadIdentityPoolProviderResult{}, errors.New("DependsOn is not supported for direct form invoke LookupWorkloadIdentityPoolProvider, use LookupWorkloadIdentityPoolProviderOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupWorkloadIdentityPoolProviderResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupWorkloadIdentityPoolProvider, use LookupWorkloadIdentityPoolProviderOutput instead")
+	}
 	var rv LookupWorkloadIdentityPoolProviderResult
 	err := ctx.Invoke("gcp:iam/getWorkloadIdentityPoolProvider:getWorkloadIdentityPoolProvider", args, &rv, opts...)
 	if err != nil {
@@ -85,17 +96,18 @@ type LookupWorkloadIdentityPoolProviderResult struct {
 }
 
 func LookupWorkloadIdentityPoolProviderOutput(ctx *pulumi.Context, args LookupWorkloadIdentityPoolProviderOutputArgs, opts ...pulumi.InvokeOption) LookupWorkloadIdentityPoolProviderResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupWorkloadIdentityPoolProviderResultOutput, error) {
 			args := v.(LookupWorkloadIdentityPoolProviderArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupWorkloadIdentityPoolProviderResult
-			secret, err := ctx.InvokePackageRaw("gcp:iam/getWorkloadIdentityPoolProvider:getWorkloadIdentityPoolProvider", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:iam/getWorkloadIdentityPoolProvider:getWorkloadIdentityPoolProvider", args, &rv, "", opts...)
 			if err != nil {
 				return LookupWorkloadIdentityPoolProviderResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupWorkloadIdentityPoolProviderResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupWorkloadIdentityPoolProviderResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupWorkloadIdentityPoolProviderResultOutput), nil
 			}

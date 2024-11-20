@@ -5,6 +5,7 @@ package sql
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -39,6 +40,16 @@ import (
 // ```
 func GetDatabases(ctx *pulumi.Context, args *GetDatabasesArgs, opts ...pulumi.InvokeOption) (*GetDatabasesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetDatabasesResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetDatabasesResult{}, errors.New("DependsOn is not supported for direct form invoke GetDatabases, use GetDatabasesOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetDatabasesResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetDatabases, use GetDatabasesOutput instead")
+	}
 	var rv GetDatabasesResult
 	err := ctx.Invoke("gcp:sql/getDatabases:getDatabases", args, &rv, opts...)
 	if err != nil {
@@ -67,17 +78,18 @@ type GetDatabasesResult struct {
 }
 
 func GetDatabasesOutput(ctx *pulumi.Context, args GetDatabasesOutputArgs, opts ...pulumi.InvokeOption) GetDatabasesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetDatabasesResultOutput, error) {
 			args := v.(GetDatabasesArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetDatabasesResult
-			secret, err := ctx.InvokePackageRaw("gcp:sql/getDatabases:getDatabases", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:sql/getDatabases:getDatabases", args, &rv, "", opts...)
 			if err != nil {
 				return GetDatabasesResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetDatabasesResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetDatabasesResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetDatabasesResultOutput), nil
 			}

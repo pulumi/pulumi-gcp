@@ -5,6 +5,7 @@ package secretmanager
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -40,6 +41,16 @@ import (
 // ```
 func GetRegionalSecrets(ctx *pulumi.Context, args *GetRegionalSecretsArgs, opts ...pulumi.InvokeOption) (*GetRegionalSecretsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetRegionalSecretsResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetRegionalSecretsResult{}, errors.New("DependsOn is not supported for direct form invoke GetRegionalSecrets, use GetRegionalSecretsOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetRegionalSecretsResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetRegionalSecrets, use GetRegionalSecretsOutput instead")
+	}
 	var rv GetRegionalSecretsResult
 	err := ctx.Invoke("gcp:secretmanager/getRegionalSecrets:getRegionalSecrets", args, &rv, opts...)
 	if err != nil {
@@ -72,17 +83,18 @@ type GetRegionalSecretsResult struct {
 }
 
 func GetRegionalSecretsOutput(ctx *pulumi.Context, args GetRegionalSecretsOutputArgs, opts ...pulumi.InvokeOption) GetRegionalSecretsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetRegionalSecretsResultOutput, error) {
 			args := v.(GetRegionalSecretsArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetRegionalSecretsResult
-			secret, err := ctx.InvokePackageRaw("gcp:secretmanager/getRegionalSecrets:getRegionalSecrets", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:secretmanager/getRegionalSecrets:getRegionalSecrets", args, &rv, "", opts...)
 			if err != nil {
 				return GetRegionalSecretsResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetRegionalSecretsResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetRegionalSecretsResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetRegionalSecretsResultOutput), nil
 			}

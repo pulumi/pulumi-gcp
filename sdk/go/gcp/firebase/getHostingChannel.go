@@ -5,6 +5,7 @@ package firebase
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -13,6 +14,16 @@ import (
 
 func LookupHostingChannel(ctx *pulumi.Context, args *LookupHostingChannelArgs, opts ...pulumi.InvokeOption) (*LookupHostingChannelResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupHostingChannelResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupHostingChannelResult{}, errors.New("DependsOn is not supported for direct form invoke LookupHostingChannel, use LookupHostingChannelOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupHostingChannelResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupHostingChannel, use LookupHostingChannelOutput instead")
+	}
 	var rv LookupHostingChannelResult
 	err := ctx.Invoke("gcp:firebase/getHostingChannel:getHostingChannel", args, &rv, opts...)
 	if err != nil {
@@ -46,17 +57,18 @@ type LookupHostingChannelResult struct {
 }
 
 func LookupHostingChannelOutput(ctx *pulumi.Context, args LookupHostingChannelOutputArgs, opts ...pulumi.InvokeOption) LookupHostingChannelResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupHostingChannelResultOutput, error) {
 			args := v.(LookupHostingChannelArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupHostingChannelResult
-			secret, err := ctx.InvokePackageRaw("gcp:firebase/getHostingChannel:getHostingChannel", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:firebase/getHostingChannel:getHostingChannel", args, &rv, "", opts...)
 			if err != nil {
 				return LookupHostingChannelResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupHostingChannelResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupHostingChannelResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupHostingChannelResultOutput), nil
 			}

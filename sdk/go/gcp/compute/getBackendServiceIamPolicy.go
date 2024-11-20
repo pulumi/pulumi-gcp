@@ -5,6 +5,7 @@ package compute
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -13,6 +14,16 @@ import (
 
 func LookupBackendServiceIamPolicy(ctx *pulumi.Context, args *LookupBackendServiceIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupBackendServiceIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupBackendServiceIamPolicyResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupBackendServiceIamPolicyResult{}, errors.New("DependsOn is not supported for direct form invoke LookupBackendServiceIamPolicy, use LookupBackendServiceIamPolicyOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupBackendServiceIamPolicyResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupBackendServiceIamPolicy, use LookupBackendServiceIamPolicyOutput instead")
+	}
 	var rv LookupBackendServiceIamPolicyResult
 	err := ctx.Invoke("gcp:compute/getBackendServiceIamPolicy:getBackendServiceIamPolicy", args, &rv, opts...)
 	if err != nil {
@@ -44,17 +55,18 @@ type LookupBackendServiceIamPolicyResult struct {
 }
 
 func LookupBackendServiceIamPolicyOutput(ctx *pulumi.Context, args LookupBackendServiceIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupBackendServiceIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupBackendServiceIamPolicyResultOutput, error) {
 			args := v.(LookupBackendServiceIamPolicyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupBackendServiceIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:compute/getBackendServiceIamPolicy:getBackendServiceIamPolicy", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:compute/getBackendServiceIamPolicy:getBackendServiceIamPolicy", args, &rv, "", opts...)
 			if err != nil {
 				return LookupBackendServiceIamPolicyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupBackendServiceIamPolicyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupBackendServiceIamPolicyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupBackendServiceIamPolicyResultOutput), nil
 			}

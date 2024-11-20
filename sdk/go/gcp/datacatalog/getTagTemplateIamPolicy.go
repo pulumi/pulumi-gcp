@@ -5,6 +5,7 @@ package datacatalog
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -40,6 +41,16 @@ import (
 // ```
 func LookupTagTemplateIamPolicy(ctx *pulumi.Context, args *LookupTagTemplateIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupTagTemplateIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupTagTemplateIamPolicyResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupTagTemplateIamPolicyResult{}, errors.New("DependsOn is not supported for direct form invoke LookupTagTemplateIamPolicy, use LookupTagTemplateIamPolicyOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupTagTemplateIamPolicyResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupTagTemplateIamPolicy, use LookupTagTemplateIamPolicyOutput instead")
+	}
 	var rv LookupTagTemplateIamPolicyResult
 	err := ctx.Invoke("gcp:datacatalog/getTagTemplateIamPolicy:getTagTemplateIamPolicy", args, &rv, opts...)
 	if err != nil {
@@ -73,17 +84,18 @@ type LookupTagTemplateIamPolicyResult struct {
 }
 
 func LookupTagTemplateIamPolicyOutput(ctx *pulumi.Context, args LookupTagTemplateIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupTagTemplateIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupTagTemplateIamPolicyResultOutput, error) {
 			args := v.(LookupTagTemplateIamPolicyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupTagTemplateIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:datacatalog/getTagTemplateIamPolicy:getTagTemplateIamPolicy", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:datacatalog/getTagTemplateIamPolicy:getTagTemplateIamPolicy", args, &rv, "", opts...)
 			if err != nil {
 				return LookupTagTemplateIamPolicyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupTagTemplateIamPolicyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupTagTemplateIamPolicyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupTagTemplateIamPolicyResultOutput), nil
 			}

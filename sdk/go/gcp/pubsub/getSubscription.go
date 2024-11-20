@@ -5,6 +5,7 @@ package pubsub
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -42,6 +43,16 @@ import (
 // ```
 func LookupSubscription(ctx *pulumi.Context, args *LookupSubscriptionArgs, opts ...pulumi.InvokeOption) (*LookupSubscriptionResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupSubscriptionResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupSubscriptionResult{}, errors.New("DependsOn is not supported for direct form invoke LookupSubscription, use LookupSubscriptionOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupSubscriptionResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupSubscription, use LookupSubscriptionOutput instead")
+	}
 	var rv LookupSubscriptionResult
 	err := ctx.Invoke("gcp:pubsub/getSubscription:getSubscription", args, &rv, opts...)
 	if err != nil {
@@ -86,17 +97,18 @@ type LookupSubscriptionResult struct {
 }
 
 func LookupSubscriptionOutput(ctx *pulumi.Context, args LookupSubscriptionOutputArgs, opts ...pulumi.InvokeOption) LookupSubscriptionResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupSubscriptionResultOutput, error) {
 			args := v.(LookupSubscriptionArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupSubscriptionResult
-			secret, err := ctx.InvokePackageRaw("gcp:pubsub/getSubscription:getSubscription", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:pubsub/getSubscription:getSubscription", args, &rv, "", opts...)
 			if err != nil {
 				return LookupSubscriptionResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupSubscriptionResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupSubscriptionResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupSubscriptionResultOutput), nil
 			}

@@ -5,6 +5,7 @@ package tags
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -63,6 +64,16 @@ import (
 // ```
 func GetTagKeys(ctx *pulumi.Context, args *GetTagKeysArgs, opts ...pulumi.InvokeOption) (*GetTagKeysResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetTagKeysResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetTagKeysResult{}, errors.New("DependsOn is not supported for direct form invoke GetTagKeys, use GetTagKeysOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetTagKeysResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetTagKeys, use GetTagKeysOutput instead")
+	}
 	var rv GetTagKeysResult
 	err := ctx.Invoke("gcp:tags/getTagKeys:getTagKeys", args, &rv, opts...)
 	if err != nil {
@@ -87,17 +98,18 @@ type GetTagKeysResult struct {
 }
 
 func GetTagKeysOutput(ctx *pulumi.Context, args GetTagKeysOutputArgs, opts ...pulumi.InvokeOption) GetTagKeysResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetTagKeysResultOutput, error) {
 			args := v.(GetTagKeysArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetTagKeysResult
-			secret, err := ctx.InvokePackageRaw("gcp:tags/getTagKeys:getTagKeys", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:tags/getTagKeys:getTagKeys", args, &rv, "", opts...)
 			if err != nil {
 				return GetTagKeysResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetTagKeysResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetTagKeysResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetTagKeysResultOutput), nil
 			}

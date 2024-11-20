@@ -5,6 +5,7 @@ package tags
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -40,6 +41,16 @@ import (
 // ```
 func LookupTagValueIamPolicy(ctx *pulumi.Context, args *LookupTagValueIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupTagValueIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupTagValueIamPolicyResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupTagValueIamPolicyResult{}, errors.New("DependsOn is not supported for direct form invoke LookupTagValueIamPolicy, use LookupTagValueIamPolicyOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupTagValueIamPolicyResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupTagValueIamPolicy, use LookupTagValueIamPolicyOutput instead")
+	}
 	var rv LookupTagValueIamPolicyResult
 	err := ctx.Invoke("gcp:tags/getTagValueIamPolicy:getTagValueIamPolicy", args, &rv, opts...)
 	if err != nil {
@@ -67,17 +78,18 @@ type LookupTagValueIamPolicyResult struct {
 }
 
 func LookupTagValueIamPolicyOutput(ctx *pulumi.Context, args LookupTagValueIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupTagValueIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupTagValueIamPolicyResultOutput, error) {
 			args := v.(LookupTagValueIamPolicyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupTagValueIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:tags/getTagValueIamPolicy:getTagValueIamPolicy", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:tags/getTagValueIamPolicy:getTagValueIamPolicy", args, &rv, "", opts...)
 			if err != nil {
 				return LookupTagValueIamPolicyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupTagValueIamPolicyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupTagValueIamPolicyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupTagValueIamPolicyResultOutput), nil
 			}

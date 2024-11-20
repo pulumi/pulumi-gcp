@@ -5,6 +5,7 @@ package artifactregistry
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -84,6 +85,16 @@ import (
 // ```
 func GetLocations(ctx *pulumi.Context, args *GetLocationsArgs, opts ...pulumi.InvokeOption) (*GetLocationsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetLocationsResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetLocationsResult{}, errors.New("DependsOn is not supported for direct form invoke GetLocations, use GetLocationsOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetLocationsResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetLocations, use GetLocationsOutput instead")
+	}
 	var rv GetLocationsResult
 	err := ctx.Invoke("gcp:artifactregistry/getLocations:getLocations", args, &rv, opts...)
 	if err != nil {
@@ -109,17 +120,18 @@ type GetLocationsResult struct {
 }
 
 func GetLocationsOutput(ctx *pulumi.Context, args GetLocationsOutputArgs, opts ...pulumi.InvokeOption) GetLocationsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetLocationsResultOutput, error) {
 			args := v.(GetLocationsArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetLocationsResult
-			secret, err := ctx.InvokePackageRaw("gcp:artifactregistry/getLocations:getLocations", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:artifactregistry/getLocations:getLocations", args, &rv, "", opts...)
 			if err != nil {
 				return GetLocationsResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetLocationsResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetLocationsResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetLocationsResultOutput), nil
 			}

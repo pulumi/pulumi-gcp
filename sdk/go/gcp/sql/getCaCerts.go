@@ -5,6 +5,7 @@ package sql
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -17,6 +18,16 @@ import (
 // [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/instances/listServerCas).
 func GetCaCerts(ctx *pulumi.Context, args *GetCaCertsArgs, opts ...pulumi.InvokeOption) (*GetCaCertsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetCaCertsResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetCaCertsResult{}, errors.New("DependsOn is not supported for direct form invoke GetCaCerts, use GetCaCertsOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetCaCertsResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetCaCerts, use GetCaCertsOutput instead")
+	}
 	var rv GetCaCertsResult
 	err := ctx.Invoke("gcp:sql/getCaCerts:getCaCerts", args, &rv, opts...)
 	if err != nil {
@@ -46,17 +57,18 @@ type GetCaCertsResult struct {
 }
 
 func GetCaCertsOutput(ctx *pulumi.Context, args GetCaCertsOutputArgs, opts ...pulumi.InvokeOption) GetCaCertsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetCaCertsResultOutput, error) {
 			args := v.(GetCaCertsArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetCaCertsResult
-			secret, err := ctx.InvokePackageRaw("gcp:sql/getCaCerts:getCaCerts", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:sql/getCaCerts:getCaCerts", args, &rv, "", opts...)
 			if err != nil {
 				return GetCaCertsResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetCaCertsResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetCaCertsResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetCaCertsResultOutput), nil
 			}

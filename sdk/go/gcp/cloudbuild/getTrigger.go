@@ -5,6 +5,7 @@ package cloudbuild
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -46,6 +47,16 @@ import (
 // ```
 func LookupTrigger(ctx *pulumi.Context, args *LookupTriggerArgs, opts ...pulumi.InvokeOption) (*LookupTriggerResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupTriggerResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupTriggerResult{}, errors.New("DependsOn is not supported for direct form invoke LookupTrigger, use LookupTriggerOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupTriggerResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupTrigger, use LookupTriggerOutput instead")
+	}
 	var rv LookupTriggerResult
 	err := ctx.Invoke("gcp:cloudbuild/getTrigger:getTrigger", args, &rv, opts...)
 	if err != nil {
@@ -98,17 +109,18 @@ type LookupTriggerResult struct {
 }
 
 func LookupTriggerOutput(ctx *pulumi.Context, args LookupTriggerOutputArgs, opts ...pulumi.InvokeOption) LookupTriggerResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupTriggerResultOutput, error) {
 			args := v.(LookupTriggerArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupTriggerResult
-			secret, err := ctx.InvokePackageRaw("gcp:cloudbuild/getTrigger:getTrigger", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:cloudbuild/getTrigger:getTrigger", args, &rv, "", opts...)
 			if err != nil {
 				return LookupTriggerResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupTriggerResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupTriggerResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupTriggerResultOutput), nil
 			}

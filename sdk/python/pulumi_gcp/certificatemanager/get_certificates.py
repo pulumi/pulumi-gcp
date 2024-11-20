@@ -118,7 +118,7 @@ def get_certificates(filter: Optional[str] = None,
         region=pulumi.get(__ret__, 'region'))
 def get_certificates_output(filter: Optional[pulumi.Input[Optional[str]]] = None,
                             region: Optional[pulumi.Input[Optional[str]]] = None,
-                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCertificatesResult]:
+                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCertificatesResult]:
     """
     List all certificates within Google Certificate Manager for a given project, region or filter.
 
@@ -147,7 +147,7 @@ def get_certificates_output(filter: Optional[pulumi.Input[Optional[str]]] = None
     __args__ = dict()
     __args__['filter'] = filter
     __args__['region'] = region
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:certificatemanager/getCertificates:getCertificates', __args__, opts=opts, typ=GetCertificatesResult)
     return __ret__.apply(lambda __response__: GetCertificatesResult(
         certificates=pulumi.get(__response__, 'certificates'),

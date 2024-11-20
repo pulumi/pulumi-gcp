@@ -5,6 +5,7 @@ package compute
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -40,6 +41,16 @@ import (
 // ```
 func LookupGlobalForwardingRule(ctx *pulumi.Context, args *LookupGlobalForwardingRuleArgs, opts ...pulumi.InvokeOption) (*LookupGlobalForwardingRuleResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupGlobalForwardingRuleResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupGlobalForwardingRuleResult{}, errors.New("DependsOn is not supported for direct form invoke LookupGlobalForwardingRule, use LookupGlobalForwardingRuleOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupGlobalForwardingRuleResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupGlobalForwardingRule, use LookupGlobalForwardingRuleOutput instead")
+	}
 	var rv LookupGlobalForwardingRuleResult
 	err := ctx.Invoke("gcp:compute/getGlobalForwardingRule:getGlobalForwardingRule", args, &rv, opts...)
 	if err != nil {
@@ -90,17 +101,18 @@ type LookupGlobalForwardingRuleResult struct {
 }
 
 func LookupGlobalForwardingRuleOutput(ctx *pulumi.Context, args LookupGlobalForwardingRuleOutputArgs, opts ...pulumi.InvokeOption) LookupGlobalForwardingRuleResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupGlobalForwardingRuleResultOutput, error) {
 			args := v.(LookupGlobalForwardingRuleArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupGlobalForwardingRuleResult
-			secret, err := ctx.InvokePackageRaw("gcp:compute/getGlobalForwardingRule:getGlobalForwardingRule", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:compute/getGlobalForwardingRule:getGlobalForwardingRule", args, &rv, "", opts...)
 			if err != nil {
 				return LookupGlobalForwardingRuleResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupGlobalForwardingRuleResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupGlobalForwardingRuleResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupGlobalForwardingRuleResultOutput), nil
 			}

@@ -5,6 +5,7 @@ package storage
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -40,6 +41,16 @@ import (
 // ```
 func GetBucketIamPolicy(ctx *pulumi.Context, args *GetBucketIamPolicyArgs, opts ...pulumi.InvokeOption) (*GetBucketIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetBucketIamPolicyResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetBucketIamPolicyResult{}, errors.New("DependsOn is not supported for direct form invoke GetBucketIamPolicy, use GetBucketIamPolicyOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetBucketIamPolicyResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetBucketIamPolicy, use GetBucketIamPolicyOutput instead")
+	}
 	var rv GetBucketIamPolicyResult
 	err := ctx.Invoke("gcp:storage/getBucketIamPolicy:getBucketIamPolicy", args, &rv, opts...)
 	if err != nil {
@@ -67,17 +78,18 @@ type GetBucketIamPolicyResult struct {
 }
 
 func GetBucketIamPolicyOutput(ctx *pulumi.Context, args GetBucketIamPolicyOutputArgs, opts ...pulumi.InvokeOption) GetBucketIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetBucketIamPolicyResultOutput, error) {
 			args := v.(GetBucketIamPolicyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetBucketIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:storage/getBucketIamPolicy:getBucketIamPolicy", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:storage/getBucketIamPolicy:getBucketIamPolicy", args, &rv, "", opts...)
 			if err != nil {
 				return GetBucketIamPolicyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetBucketIamPolicyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetBucketIamPolicyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetBucketIamPolicyResultOutput), nil
 			}

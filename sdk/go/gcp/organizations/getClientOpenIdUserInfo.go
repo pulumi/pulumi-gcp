@@ -5,6 +5,7 @@ package organizations
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -51,6 +52,16 @@ import (
 // ```
 func GetClientOpenIdUserInfo(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetClientOpenIdUserInfoResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetClientOpenIdUserInfoResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetClientOpenIdUserInfoResult{}, errors.New("DependsOn is not supported for direct form invoke GetClientOpenIdUserInfo, use GetClientOpenIdUserInfoOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetClientOpenIdUserInfoResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetClientOpenIdUserInfo, use GetClientOpenIdUserInfoOutput instead")
+	}
 	var rv GetClientOpenIdUserInfoResult
 	err := ctx.Invoke("gcp:organizations/getClientOpenIdUserInfo:getClientOpenIdUserInfo", nil, &rv, opts...)
 	if err != nil {

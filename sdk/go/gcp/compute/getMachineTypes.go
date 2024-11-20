@@ -5,6 +5,7 @@ package compute
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -22,6 +23,16 @@ import (
 // ## Example Usage
 func GetMachineTypes(ctx *pulumi.Context, args *GetMachineTypesArgs, opts ...pulumi.InvokeOption) (*GetMachineTypesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetMachineTypesResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetMachineTypesResult{}, errors.New("DependsOn is not supported for direct form invoke GetMachineTypes, use GetMachineTypesOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetMachineTypesResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetMachineTypes, use GetMachineTypesOutput instead")
+	}
 	var rv GetMachineTypesResult
 	err := ctx.Invoke("gcp:compute/getMachineTypes:getMachineTypes", args, &rv, opts...)
 	if err != nil {
@@ -52,17 +63,18 @@ type GetMachineTypesResult struct {
 }
 
 func GetMachineTypesOutput(ctx *pulumi.Context, args GetMachineTypesOutputArgs, opts ...pulumi.InvokeOption) GetMachineTypesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetMachineTypesResultOutput, error) {
 			args := v.(GetMachineTypesArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetMachineTypesResult
-			secret, err := ctx.InvokePackageRaw("gcp:compute/getMachineTypes:getMachineTypes", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:compute/getMachineTypes:getMachineTypes", args, &rv, "", opts...)
 			if err != nil {
 				return GetMachineTypesResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetMachineTypesResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetMachineTypesResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetMachineTypesResultOutput), nil
 			}

@@ -5,6 +5,7 @@ package sql
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -40,6 +41,16 @@ import (
 // ```
 func GetDatabaseInstances(ctx *pulumi.Context, args *GetDatabaseInstancesArgs, opts ...pulumi.InvokeOption) (*GetDatabaseInstancesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetDatabaseInstancesResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetDatabaseInstancesResult{}, errors.New("DependsOn is not supported for direct form invoke GetDatabaseInstances, use GetDatabaseInstancesOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetDatabaseInstancesResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetDatabaseInstances, use GetDatabaseInstancesOutput instead")
+	}
 	var rv GetDatabaseInstancesResult
 	err := ctx.Invoke("gcp:sql/getDatabaseInstances:getDatabaseInstances", args, &rv, opts...)
 	if err != nil {
@@ -78,17 +89,18 @@ type GetDatabaseInstancesResult struct {
 }
 
 func GetDatabaseInstancesOutput(ctx *pulumi.Context, args GetDatabaseInstancesOutputArgs, opts ...pulumi.InvokeOption) GetDatabaseInstancesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetDatabaseInstancesResultOutput, error) {
 			args := v.(GetDatabaseInstancesArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetDatabaseInstancesResult
-			secret, err := ctx.InvokePackageRaw("gcp:sql/getDatabaseInstances:getDatabaseInstances", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:sql/getDatabaseInstances:getDatabaseInstances", args, &rv, "", opts...)
 			if err != nil {
 				return GetDatabaseInstancesResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetDatabaseInstancesResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetDatabaseInstancesResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetDatabaseInstancesResultOutput), nil
 			}

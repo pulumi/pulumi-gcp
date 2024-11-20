@@ -5,6 +5,7 @@ package vmwareengine
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -44,6 +45,16 @@ import (
 // ```
 func LookupExternalAddress(ctx *pulumi.Context, args *LookupExternalAddressArgs, opts ...pulumi.InvokeOption) (*LookupExternalAddressResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupExternalAddressResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupExternalAddressResult{}, errors.New("DependsOn is not supported for direct form invoke LookupExternalAddress, use LookupExternalAddressOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupExternalAddressResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupExternalAddress, use LookupExternalAddressOutput instead")
+	}
 	var rv LookupExternalAddressResult
 	err := ctx.Invoke("gcp:vmwareengine/getExternalAddress:getExternalAddress", args, &rv, opts...)
 	if err != nil {
@@ -76,17 +87,18 @@ type LookupExternalAddressResult struct {
 }
 
 func LookupExternalAddressOutput(ctx *pulumi.Context, args LookupExternalAddressOutputArgs, opts ...pulumi.InvokeOption) LookupExternalAddressResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupExternalAddressResultOutput, error) {
 			args := v.(LookupExternalAddressArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupExternalAddressResult
-			secret, err := ctx.InvokePackageRaw("gcp:vmwareengine/getExternalAddress:getExternalAddress", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:vmwareengine/getExternalAddress:getExternalAddress", args, &rv, "", opts...)
 			if err != nil {
 				return LookupExternalAddressResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupExternalAddressResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupExternalAddressResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupExternalAddressResultOutput), nil
 			}

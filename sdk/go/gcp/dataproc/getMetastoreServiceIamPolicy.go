@@ -5,6 +5,7 @@ package dataproc
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -42,6 +43,16 @@ import (
 // ```
 func LookupMetastoreServiceIamPolicy(ctx *pulumi.Context, args *LookupMetastoreServiceIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupMetastoreServiceIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupMetastoreServiceIamPolicyResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupMetastoreServiceIamPolicyResult{}, errors.New("DependsOn is not supported for direct form invoke LookupMetastoreServiceIamPolicy, use LookupMetastoreServiceIamPolicyOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupMetastoreServiceIamPolicyResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupMetastoreServiceIamPolicy, use LookupMetastoreServiceIamPolicyOutput instead")
+	}
 	var rv LookupMetastoreServiceIamPolicyResult
 	err := ctx.Invoke("gcp:dataproc/getMetastoreServiceIamPolicy:getMetastoreServiceIamPolicy", args, &rv, opts...)
 	if err != nil {
@@ -79,17 +90,18 @@ type LookupMetastoreServiceIamPolicyResult struct {
 }
 
 func LookupMetastoreServiceIamPolicyOutput(ctx *pulumi.Context, args LookupMetastoreServiceIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupMetastoreServiceIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupMetastoreServiceIamPolicyResultOutput, error) {
 			args := v.(LookupMetastoreServiceIamPolicyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupMetastoreServiceIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:dataproc/getMetastoreServiceIamPolicy:getMetastoreServiceIamPolicy", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:dataproc/getMetastoreServiceIamPolicy:getMetastoreServiceIamPolicy", args, &rv, "", opts...)
 			if err != nil {
 				return LookupMetastoreServiceIamPolicyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupMetastoreServiceIamPolicyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupMetastoreServiceIamPolicyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupMetastoreServiceIamPolicyResultOutput), nil
 			}

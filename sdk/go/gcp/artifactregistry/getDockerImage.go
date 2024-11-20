@@ -5,6 +5,7 @@ package artifactregistry
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -65,6 +66,16 @@ import (
 // ```
 func GetDockerImage(ctx *pulumi.Context, args *GetDockerImageArgs, opts ...pulumi.InvokeOption) (*GetDockerImageResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetDockerImageResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetDockerImageResult{}, errors.New("DependsOn is not supported for direct form invoke GetDockerImage, use GetDockerImageOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetDockerImageResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetDockerImage, use GetDockerImageOutput instead")
+	}
 	var rv GetDockerImageResult
 	err := ctx.Invoke("gcp:artifactregistry/getDockerImage:getDockerImage", args, &rv, opts...)
 	if err != nil {
@@ -112,17 +123,18 @@ type GetDockerImageResult struct {
 }
 
 func GetDockerImageOutput(ctx *pulumi.Context, args GetDockerImageOutputArgs, opts ...pulumi.InvokeOption) GetDockerImageResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetDockerImageResultOutput, error) {
 			args := v.(GetDockerImageArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetDockerImageResult
-			secret, err := ctx.InvokePackageRaw("gcp:artifactregistry/getDockerImage:getDockerImage", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:artifactregistry/getDockerImage:getDockerImage", args, &rv, "", opts...)
 			if err != nil {
 				return GetDockerImageResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetDockerImageResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetDockerImageResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetDockerImageResultOutput), nil
 			}

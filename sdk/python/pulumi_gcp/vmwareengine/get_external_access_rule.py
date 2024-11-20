@@ -223,7 +223,7 @@ def get_external_access_rule(name: Optional[str] = None,
         update_time=pulumi.get(__ret__, 'update_time'))
 def get_external_access_rule_output(name: Optional[pulumi.Input[str]] = None,
                                     parent: Optional[pulumi.Input[str]] = None,
-                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetExternalAccessRuleResult]:
+                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetExternalAccessRuleResult]:
     """
     Use this data source to get details about a external access rule resource.
 
@@ -247,7 +247,7 @@ def get_external_access_rule_output(name: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['name'] = name
     __args__['parent'] = parent
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:vmwareengine/getExternalAccessRule:getExternalAccessRule', __args__, opts=opts, typ=GetExternalAccessRuleResult)
     return __ret__.apply(lambda __response__: GetExternalAccessRuleResult(
         action=pulumi.get(__response__, 'action'),

@@ -5,6 +5,7 @@ package container
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -42,6 +43,16 @@ import (
 // ```
 func GetAttachedVersions(ctx *pulumi.Context, args *GetAttachedVersionsArgs, opts ...pulumi.InvokeOption) (*GetAttachedVersionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetAttachedVersionsResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetAttachedVersionsResult{}, errors.New("DependsOn is not supported for direct form invoke GetAttachedVersions, use GetAttachedVersionsOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetAttachedVersionsResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetAttachedVersions, use GetAttachedVersionsOutput instead")
+	}
 	var rv GetAttachedVersionsResult
 	err := ctx.Invoke("gcp:container/getAttachedVersions:getAttachedVersions", args, &rv, opts...)
 	if err != nil {
@@ -70,17 +81,18 @@ type GetAttachedVersionsResult struct {
 }
 
 func GetAttachedVersionsOutput(ctx *pulumi.Context, args GetAttachedVersionsOutputArgs, opts ...pulumi.InvokeOption) GetAttachedVersionsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetAttachedVersionsResultOutput, error) {
 			args := v.(GetAttachedVersionsArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetAttachedVersionsResult
-			secret, err := ctx.InvokePackageRaw("gcp:container/getAttachedVersions:getAttachedVersions", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:container/getAttachedVersions:getAttachedVersions", args, &rv, "", opts...)
 			if err != nil {
 				return GetAttachedVersionsResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetAttachedVersionsResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetAttachedVersionsResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetAttachedVersionsResultOutput), nil
 			}

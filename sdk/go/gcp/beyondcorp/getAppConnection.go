@@ -5,6 +5,7 @@ package beyondcorp
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -40,6 +41,16 @@ import (
 // ```
 func LookupAppConnection(ctx *pulumi.Context, args *LookupAppConnectionArgs, opts ...pulumi.InvokeOption) (*LookupAppConnectionResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupAppConnectionResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupAppConnectionResult{}, errors.New("DependsOn is not supported for direct form invoke LookupAppConnection, use LookupAppConnectionOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupAppConnectionResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupAppConnection, use LookupAppConnectionOutput instead")
+	}
 	var rv LookupAppConnectionResult
 	err := ctx.Invoke("gcp:beyondcorp/getAppConnection:getAppConnection", args, &rv, opts...)
 	if err != nil {
@@ -80,17 +91,18 @@ type LookupAppConnectionResult struct {
 }
 
 func LookupAppConnectionOutput(ctx *pulumi.Context, args LookupAppConnectionOutputArgs, opts ...pulumi.InvokeOption) LookupAppConnectionResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAppConnectionResultOutput, error) {
 			args := v.(LookupAppConnectionArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupAppConnectionResult
-			secret, err := ctx.InvokePackageRaw("gcp:beyondcorp/getAppConnection:getAppConnection", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:beyondcorp/getAppConnection:getAppConnection", args, &rv, "", opts...)
 			if err != nil {
 				return LookupAppConnectionResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupAppConnectionResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupAppConnectionResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupAppConnectionResultOutput), nil
 			}

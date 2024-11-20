@@ -5,6 +5,7 @@ package alloydb
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -40,6 +41,16 @@ import (
 // ```
 func GetSupportedDatabaseFlags(ctx *pulumi.Context, args *GetSupportedDatabaseFlagsArgs, opts ...pulumi.InvokeOption) (*GetSupportedDatabaseFlagsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetSupportedDatabaseFlagsResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetSupportedDatabaseFlagsResult{}, errors.New("DependsOn is not supported for direct form invoke GetSupportedDatabaseFlags, use GetSupportedDatabaseFlagsOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetSupportedDatabaseFlagsResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetSupportedDatabaseFlags, use GetSupportedDatabaseFlagsOutput instead")
+	}
 	var rv GetSupportedDatabaseFlagsResult
 	err := ctx.Invoke("gcp:alloydb/getSupportedDatabaseFlags:getSupportedDatabaseFlags", args, &rv, opts...)
 	if err != nil {
@@ -67,17 +78,18 @@ type GetSupportedDatabaseFlagsResult struct {
 }
 
 func GetSupportedDatabaseFlagsOutput(ctx *pulumi.Context, args GetSupportedDatabaseFlagsOutputArgs, opts ...pulumi.InvokeOption) GetSupportedDatabaseFlagsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetSupportedDatabaseFlagsResultOutput, error) {
 			args := v.(GetSupportedDatabaseFlagsArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetSupportedDatabaseFlagsResult
-			secret, err := ctx.InvokePackageRaw("gcp:alloydb/getSupportedDatabaseFlags:getSupportedDatabaseFlags", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:alloydb/getSupportedDatabaseFlags:getSupportedDatabaseFlags", args, &rv, "", opts...)
 			if err != nil {
 				return GetSupportedDatabaseFlagsResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetSupportedDatabaseFlagsResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetSupportedDatabaseFlagsResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetSupportedDatabaseFlagsResultOutput), nil
 			}

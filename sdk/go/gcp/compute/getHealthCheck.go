@@ -5,6 +5,7 @@ package compute
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -40,6 +41,16 @@ import (
 // ```
 func LookupHealthCheck(ctx *pulumi.Context, args *LookupHealthCheckArgs, opts ...pulumi.InvokeOption) (*LookupHealthCheckResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupHealthCheckResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupHealthCheckResult{}, errors.New("DependsOn is not supported for direct form invoke LookupHealthCheck, use LookupHealthCheckOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupHealthCheckResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupHealthCheck, use LookupHealthCheckOutput instead")
+	}
 	var rv LookupHealthCheckResult
 	err := ctx.Invoke("gcp:compute/getHealthCheck:getHealthCheck", args, &rv, opts...)
 	if err != nil {
@@ -84,17 +95,18 @@ type LookupHealthCheckResult struct {
 }
 
 func LookupHealthCheckOutput(ctx *pulumi.Context, args LookupHealthCheckOutputArgs, opts ...pulumi.InvokeOption) LookupHealthCheckResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupHealthCheckResultOutput, error) {
 			args := v.(LookupHealthCheckArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupHealthCheckResult
-			secret, err := ctx.InvokePackageRaw("gcp:compute/getHealthCheck:getHealthCheck", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:compute/getHealthCheck:getHealthCheck", args, &rv, "", opts...)
 			if err != nil {
 				return LookupHealthCheckResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupHealthCheckResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupHealthCheckResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupHealthCheckResultOutput), nil
 			}
