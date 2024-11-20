@@ -210,7 +210,7 @@ def get_network_endpoint_group_output(name: Optional[pulumi.Input[Optional[str]]
                                       project: Optional[pulumi.Input[Optional[str]]] = None,
                                       self_link: Optional[pulumi.Input[Optional[str]]] = None,
                                       zone: Optional[pulumi.Input[Optional[str]]] = None,
-                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNetworkEndpointGroupResult]:
+                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNetworkEndpointGroupResult]:
     """
     Use this data source to access a Network Endpoint Group's attributes.
 
@@ -240,7 +240,7 @@ def get_network_endpoint_group_output(name: Optional[pulumi.Input[Optional[str]]
     __args__['project'] = project
     __args__['selfLink'] = self_link
     __args__['zone'] = zone
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:compute/getNetworkEndpointGroup:getNetworkEndpointGroup', __args__, opts=opts, typ=GetNetworkEndpointGroupResult)
     return __ret__.apply(lambda __response__: GetNetworkEndpointGroupResult(
         default_port=pulumi.get(__response__, 'default_port'),

@@ -212,7 +212,7 @@ def get_mesh_istio_service_output(mesh_uid: Optional[pulumi.Input[str]] = None,
                                   project: Optional[pulumi.Input[Optional[str]]] = None,
                                   service_name: Optional[pulumi.Input[str]] = None,
                                   service_namespace: Optional[pulumi.Input[str]] = None,
-                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMeshIstioServiceResult]:
+                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMeshIstioServiceResult]:
     """
     A Monitoring Service is the root resource under which operational aspects of a
     generic service are accessible. A service is some discrete, autonomous, and
@@ -261,7 +261,7 @@ def get_mesh_istio_service_output(mesh_uid: Optional[pulumi.Input[str]] = None,
     __args__['project'] = project
     __args__['serviceName'] = service_name
     __args__['serviceNamespace'] = service_namespace
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:monitoring/getMeshIstioService:getMeshIstioService', __args__, opts=opts, typ=GetMeshIstioServiceResult)
     return __ret__.apply(lambda __response__: GetMeshIstioServiceResult(
         display_name=pulumi.get(__response__, 'display_name'),
