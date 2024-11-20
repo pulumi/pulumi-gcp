@@ -5,6 +5,7 @@ package storage
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -13,6 +14,16 @@ import (
 
 func LookupManagedFolderIamPolicy(ctx *pulumi.Context, args *LookupManagedFolderIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupManagedFolderIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupManagedFolderIamPolicyResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupManagedFolderIamPolicyResult{}, errors.New("DependsOn is not supported for direct form invoke LookupManagedFolderIamPolicy, use LookupManagedFolderIamPolicyOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupManagedFolderIamPolicyResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupManagedFolderIamPolicy, use LookupManagedFolderIamPolicyOutput instead")
+	}
 	var rv LookupManagedFolderIamPolicyResult
 	err := ctx.Invoke("gcp:storage/getManagedFolderIamPolicy:getManagedFolderIamPolicy", args, &rv, opts...)
 	if err != nil {
@@ -38,17 +49,18 @@ type LookupManagedFolderIamPolicyResult struct {
 }
 
 func LookupManagedFolderIamPolicyOutput(ctx *pulumi.Context, args LookupManagedFolderIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupManagedFolderIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupManagedFolderIamPolicyResultOutput, error) {
 			args := v.(LookupManagedFolderIamPolicyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupManagedFolderIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:storage/getManagedFolderIamPolicy:getManagedFolderIamPolicy", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:storage/getManagedFolderIamPolicy:getManagedFolderIamPolicy", args, &rv, "", opts...)
 			if err != nil {
 				return LookupManagedFolderIamPolicyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupManagedFolderIamPolicyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupManagedFolderIamPolicyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupManagedFolderIamPolicyResultOutput), nil
 			}

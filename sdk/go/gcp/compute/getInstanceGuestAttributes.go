@@ -5,6 +5,7 @@ package compute
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -79,6 +80,16 @@ import (
 // ```
 func GetInstanceGuestAttributes(ctx *pulumi.Context, args *GetInstanceGuestAttributesArgs, opts ...pulumi.InvokeOption) (*GetInstanceGuestAttributesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetInstanceGuestAttributesResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetInstanceGuestAttributesResult{}, errors.New("DependsOn is not supported for direct form invoke GetInstanceGuestAttributes, use GetInstanceGuestAttributesOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetInstanceGuestAttributesResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetInstanceGuestAttributes, use GetInstanceGuestAttributesOutput instead")
+	}
 	var rv GetInstanceGuestAttributesResult
 	err := ctx.Invoke("gcp:compute/getInstanceGuestAttributes:getInstanceGuestAttributes", args, &rv, opts...)
 	if err != nil {
@@ -125,17 +136,18 @@ type GetInstanceGuestAttributesResult struct {
 }
 
 func GetInstanceGuestAttributesOutput(ctx *pulumi.Context, args GetInstanceGuestAttributesOutputArgs, opts ...pulumi.InvokeOption) GetInstanceGuestAttributesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetInstanceGuestAttributesResultOutput, error) {
 			args := v.(GetInstanceGuestAttributesArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetInstanceGuestAttributesResult
-			secret, err := ctx.InvokePackageRaw("gcp:compute/getInstanceGuestAttributes:getInstanceGuestAttributes", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:compute/getInstanceGuestAttributes:getInstanceGuestAttributes", args, &rv, "", opts...)
 			if err != nil {
 				return GetInstanceGuestAttributesResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetInstanceGuestAttributesResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetInstanceGuestAttributesResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetInstanceGuestAttributesResultOutput), nil
 			}

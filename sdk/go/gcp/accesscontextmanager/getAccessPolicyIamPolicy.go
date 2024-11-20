@@ -5,6 +5,7 @@ package accesscontextmanager
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -40,6 +41,16 @@ import (
 // ```
 func LookupAccessPolicyIamPolicy(ctx *pulumi.Context, args *LookupAccessPolicyIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupAccessPolicyIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupAccessPolicyIamPolicyResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupAccessPolicyIamPolicyResult{}, errors.New("DependsOn is not supported for direct form invoke LookupAccessPolicyIamPolicy, use LookupAccessPolicyIamPolicyOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupAccessPolicyIamPolicyResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupAccessPolicyIamPolicy, use LookupAccessPolicyIamPolicyOutput instead")
+	}
 	var rv LookupAccessPolicyIamPolicyResult
 	err := ctx.Invoke("gcp:accesscontextmanager/getAccessPolicyIamPolicy:getAccessPolicyIamPolicy", args, &rv, opts...)
 	if err != nil {
@@ -67,17 +78,18 @@ type LookupAccessPolicyIamPolicyResult struct {
 }
 
 func LookupAccessPolicyIamPolicyOutput(ctx *pulumi.Context, args LookupAccessPolicyIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupAccessPolicyIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAccessPolicyIamPolicyResultOutput, error) {
 			args := v.(LookupAccessPolicyIamPolicyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupAccessPolicyIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:accesscontextmanager/getAccessPolicyIamPolicy:getAccessPolicyIamPolicy", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:accesscontextmanager/getAccessPolicyIamPolicy:getAccessPolicyIamPolicy", args, &rv, "", opts...)
 			if err != nil {
 				return LookupAccessPolicyIamPolicyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupAccessPolicyIamPolicyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupAccessPolicyIamPolicyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupAccessPolicyIamPolicyResultOutput), nil
 			}

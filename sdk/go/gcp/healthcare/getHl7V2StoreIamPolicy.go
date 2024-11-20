@@ -5,6 +5,7 @@ package healthcare
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -40,6 +41,16 @@ import (
 // ```
 func GetHl7V2StoreIamPolicy(ctx *pulumi.Context, args *GetHl7V2StoreIamPolicyArgs, opts ...pulumi.InvokeOption) (*GetHl7V2StoreIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetHl7V2StoreIamPolicyResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetHl7V2StoreIamPolicyResult{}, errors.New("DependsOn is not supported for direct form invoke GetHl7V2StoreIamPolicy, use GetHl7V2StoreIamPolicyOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetHl7V2StoreIamPolicyResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetHl7V2StoreIamPolicy, use GetHl7V2StoreIamPolicyOutput instead")
+	}
 	var rv GetHl7V2StoreIamPolicyResult
 	err := ctx.Invoke("gcp:healthcare/getHl7V2StoreIamPolicy:getHl7V2StoreIamPolicy", args, &rv, opts...)
 	if err != nil {
@@ -69,17 +80,18 @@ type GetHl7V2StoreIamPolicyResult struct {
 }
 
 func GetHl7V2StoreIamPolicyOutput(ctx *pulumi.Context, args GetHl7V2StoreIamPolicyOutputArgs, opts ...pulumi.InvokeOption) GetHl7V2StoreIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetHl7V2StoreIamPolicyResultOutput, error) {
 			args := v.(GetHl7V2StoreIamPolicyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetHl7V2StoreIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:healthcare/getHl7V2StoreIamPolicy:getHl7V2StoreIamPolicy", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:healthcare/getHl7V2StoreIamPolicy:getHl7V2StoreIamPolicy", args, &rv, "", opts...)
 			if err != nil {
 				return GetHl7V2StoreIamPolicyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetHl7V2StoreIamPolicyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetHl7V2StoreIamPolicyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetHl7V2StoreIamPolicyResultOutput), nil
 			}

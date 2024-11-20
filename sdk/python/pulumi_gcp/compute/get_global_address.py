@@ -220,7 +220,7 @@ def get_global_address(name: Optional[str] = None,
         users=pulumi.get(__ret__, 'users'))
 def get_global_address_output(name: Optional[pulumi.Input[str]] = None,
                               project: Optional[pulumi.Input[Optional[str]]] = None,
-                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGlobalAddressResult]:
+                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGlobalAddressResult]:
     """
     Get the IP address from a static address reserved for a Global Forwarding Rule which are only used for HTTP load balancing. For more information see
     the official [API](https://cloud.google.com/compute/docs/reference/latest/globalAddresses) documentation.
@@ -253,7 +253,7 @@ def get_global_address_output(name: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['name'] = name
     __args__['project'] = project
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:compute/getGlobalAddress:getGlobalAddress', __args__, opts=opts, typ=GetGlobalAddressResult)
     return __ret__.apply(lambda __response__: GetGlobalAddressResult(
         address=pulumi.get(__response__, 'address'),

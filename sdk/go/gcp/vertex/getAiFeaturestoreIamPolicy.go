@@ -5,6 +5,7 @@ package vertex
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -13,6 +14,16 @@ import (
 
 func GetAiFeaturestoreIamPolicy(ctx *pulumi.Context, args *GetAiFeaturestoreIamPolicyArgs, opts ...pulumi.InvokeOption) (*GetAiFeaturestoreIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetAiFeaturestoreIamPolicyResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetAiFeaturestoreIamPolicyResult{}, errors.New("DependsOn is not supported for direct form invoke GetAiFeaturestoreIamPolicy, use GetAiFeaturestoreIamPolicyOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetAiFeaturestoreIamPolicyResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetAiFeaturestoreIamPolicy, use GetAiFeaturestoreIamPolicyOutput instead")
+	}
 	var rv GetAiFeaturestoreIamPolicyResult
 	err := ctx.Invoke("gcp:vertex/getAiFeaturestoreIamPolicy:getAiFeaturestoreIamPolicy", args, &rv, opts...)
 	if err != nil {
@@ -49,17 +60,18 @@ type GetAiFeaturestoreIamPolicyResult struct {
 }
 
 func GetAiFeaturestoreIamPolicyOutput(ctx *pulumi.Context, args GetAiFeaturestoreIamPolicyOutputArgs, opts ...pulumi.InvokeOption) GetAiFeaturestoreIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetAiFeaturestoreIamPolicyResultOutput, error) {
 			args := v.(GetAiFeaturestoreIamPolicyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetAiFeaturestoreIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:vertex/getAiFeaturestoreIamPolicy:getAiFeaturestoreIamPolicy", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:vertex/getAiFeaturestoreIamPolicy:getAiFeaturestoreIamPolicy", args, &rv, "", opts...)
 			if err != nil {
 				return GetAiFeaturestoreIamPolicyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetAiFeaturestoreIamPolicyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetAiFeaturestoreIamPolicyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetAiFeaturestoreIamPolicyResultOutput), nil
 			}

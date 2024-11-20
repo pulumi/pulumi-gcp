@@ -5,6 +5,7 @@ package datastream
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -43,6 +44,16 @@ import (
 // ```
 func GetStaticIps(ctx *pulumi.Context, args *GetStaticIpsArgs, opts ...pulumi.InvokeOption) (*GetStaticIpsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetStaticIpsResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetStaticIpsResult{}, errors.New("DependsOn is not supported for direct form invoke GetStaticIps, use GetStaticIpsOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetStaticIpsResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetStaticIps, use GetStaticIpsOutput instead")
+	}
 	var rv GetStaticIpsResult
 	err := ctx.Invoke("gcp:datastream/getStaticIps:getStaticIps", args, &rv, opts...)
 	if err != nil {
@@ -70,17 +81,18 @@ type GetStaticIpsResult struct {
 }
 
 func GetStaticIpsOutput(ctx *pulumi.Context, args GetStaticIpsOutputArgs, opts ...pulumi.InvokeOption) GetStaticIpsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetStaticIpsResultOutput, error) {
 			args := v.(GetStaticIpsArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetStaticIpsResult
-			secret, err := ctx.InvokePackageRaw("gcp:datastream/getStaticIps:getStaticIps", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:datastream/getStaticIps:getStaticIps", args, &rv, "", opts...)
 			if err != nil {
 				return GetStaticIpsResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetStaticIpsResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetStaticIpsResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetStaticIpsResultOutput), nil
 			}

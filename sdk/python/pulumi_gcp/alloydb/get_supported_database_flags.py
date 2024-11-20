@@ -112,7 +112,7 @@ def get_supported_database_flags(location: Optional[str] = None,
         supported_database_flags=pulumi.get(__ret__, 'supported_database_flags'))
 def get_supported_database_flags_output(location: Optional[pulumi.Input[str]] = None,
                                         project: Optional[pulumi.Input[Optional[str]]] = None,
-                                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSupportedDatabaseFlagsResult]:
+                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSupportedDatabaseFlagsResult]:
     """
     Use this data source to get information about the supported alloydb database flags in a location.
 
@@ -132,7 +132,7 @@ def get_supported_database_flags_output(location: Optional[pulumi.Input[str]] = 
     __args__ = dict()
     __args__['location'] = location
     __args__['project'] = project
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:alloydb/getSupportedDatabaseFlags:getSupportedDatabaseFlags', __args__, opts=opts, typ=GetSupportedDatabaseFlagsResult)
     return __ret__.apply(lambda __response__: GetSupportedDatabaseFlagsResult(
         id=pulumi.get(__response__, 'id'),

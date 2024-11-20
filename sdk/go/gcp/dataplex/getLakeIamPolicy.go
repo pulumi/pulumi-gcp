@@ -5,6 +5,7 @@ package dataplex
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -42,6 +43,16 @@ import (
 // ```
 func LookupLakeIamPolicy(ctx *pulumi.Context, args *LookupLakeIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupLakeIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupLakeIamPolicyResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupLakeIamPolicyResult{}, errors.New("DependsOn is not supported for direct form invoke LookupLakeIamPolicy, use LookupLakeIamPolicyOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupLakeIamPolicyResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupLakeIamPolicy, use LookupLakeIamPolicyOutput instead")
+	}
 	var rv LookupLakeIamPolicyResult
 	err := ctx.Invoke("gcp:dataplex/getLakeIamPolicy:getLakeIamPolicy", args, &rv, opts...)
 	if err != nil {
@@ -75,17 +86,18 @@ type LookupLakeIamPolicyResult struct {
 }
 
 func LookupLakeIamPolicyOutput(ctx *pulumi.Context, args LookupLakeIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupLakeIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupLakeIamPolicyResultOutput, error) {
 			args := v.(LookupLakeIamPolicyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupLakeIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:dataplex/getLakeIamPolicy:getLakeIamPolicy", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:dataplex/getLakeIamPolicy:getLakeIamPolicy", args, &rv, "", opts...)
 			if err != nil {
 				return LookupLakeIamPolicyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupLakeIamPolicyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupLakeIamPolicyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupLakeIamPolicyResultOutput), nil
 			}

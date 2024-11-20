@@ -5,6 +5,7 @@ package organizations
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -41,6 +42,16 @@ import (
 // ```
 func LookupProject(ctx *pulumi.Context, args *LookupProjectArgs, opts ...pulumi.InvokeOption) (*LookupProjectResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupProjectResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupProjectResult{}, errors.New("DependsOn is not supported for direct form invoke LookupProject, use LookupProjectOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupProjectResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupProject, use LookupProjectOutput instead")
+	}
 	var rv LookupProjectResult
 	err := ctx.Invoke("gcp:organizations/getProject:getProject", args, &rv, opts...)
 	if err != nil {
@@ -75,17 +86,18 @@ type LookupProjectResult struct {
 }
 
 func LookupProjectOutput(ctx *pulumi.Context, args LookupProjectOutputArgs, opts ...pulumi.InvokeOption) LookupProjectResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupProjectResultOutput, error) {
 			args := v.(LookupProjectArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupProjectResult
-			secret, err := ctx.InvokePackageRaw("gcp:organizations/getProject:getProject", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:organizations/getProject:getProject", args, &rv, "", opts...)
 			if err != nil {
 				return LookupProjectResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupProjectResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupProjectResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupProjectResultOutput), nil
 			}

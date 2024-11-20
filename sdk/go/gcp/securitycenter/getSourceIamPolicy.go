@@ -5,6 +5,7 @@ package securitycenter
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -40,6 +41,16 @@ import (
 // ```
 func LookupSourceIamPolicy(ctx *pulumi.Context, args *LookupSourceIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupSourceIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupSourceIamPolicyResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupSourceIamPolicyResult{}, errors.New("DependsOn is not supported for direct form invoke LookupSourceIamPolicy, use LookupSourceIamPolicyOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupSourceIamPolicyResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupSourceIamPolicy, use LookupSourceIamPolicyOutput instead")
+	}
 	var rv LookupSourceIamPolicyResult
 	err := ctx.Invoke("gcp:securitycenter/getSourceIamPolicy:getSourceIamPolicy", args, &rv, opts...)
 	if err != nil {
@@ -69,17 +80,18 @@ type LookupSourceIamPolicyResult struct {
 }
 
 func LookupSourceIamPolicyOutput(ctx *pulumi.Context, args LookupSourceIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupSourceIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupSourceIamPolicyResultOutput, error) {
 			args := v.(LookupSourceIamPolicyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupSourceIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:securitycenter/getSourceIamPolicy:getSourceIamPolicy", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:securitycenter/getSourceIamPolicy:getSourceIamPolicy", args, &rv, "", opts...)
 			if err != nil {
 				return LookupSourceIamPolicyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupSourceIamPolicyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupSourceIamPolicyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupSourceIamPolicyResultOutput), nil
 			}

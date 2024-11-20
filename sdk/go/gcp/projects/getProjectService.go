@@ -5,6 +5,7 @@ package projects
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -52,6 +53,16 @@ import (
 // ```
 func GetProjectService(ctx *pulumi.Context, args *GetProjectServiceArgs, opts ...pulumi.InvokeOption) (*GetProjectServiceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetProjectServiceResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetProjectServiceResult{}, errors.New("DependsOn is not supported for direct form invoke GetProjectService, use GetProjectServiceOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetProjectServiceResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetProjectService, use GetProjectServiceOutput instead")
+	}
 	var rv GetProjectServiceResult
 	err := ctx.Invoke("gcp:projects/getProjectService:getProjectService", args, &rv, opts...)
 	if err != nil {
@@ -83,17 +94,18 @@ type GetProjectServiceResult struct {
 }
 
 func GetProjectServiceOutput(ctx *pulumi.Context, args GetProjectServiceOutputArgs, opts ...pulumi.InvokeOption) GetProjectServiceResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetProjectServiceResultOutput, error) {
 			args := v.(GetProjectServiceArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetProjectServiceResult
-			secret, err := ctx.InvokePackageRaw("gcp:projects/getProjectService:getProjectService", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:projects/getProjectService:getProjectService", args, &rv, "", opts...)
 			if err != nil {
 				return GetProjectServiceResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetProjectServiceResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetProjectServiceResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetProjectServiceResultOutput), nil
 			}

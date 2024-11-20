@@ -141,7 +141,7 @@ def get_tunnel_instance_iam_policy(instance: Optional[str] = None,
 def get_tunnel_instance_iam_policy_output(instance: Optional[pulumi.Input[str]] = None,
                                           project: Optional[pulumi.Input[Optional[str]]] = None,
                                           zone: Optional[pulumi.Input[Optional[str]]] = None,
-                                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTunnelInstanceIamPolicyResult]:
+                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTunnelInstanceIamPolicyResult]:
     """
     Retrieves the current IAM policy data for tunnelinstance
 
@@ -165,7 +165,7 @@ def get_tunnel_instance_iam_policy_output(instance: Optional[pulumi.Input[str]] 
     __args__['instance'] = instance
     __args__['project'] = project
     __args__['zone'] = zone
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:iap/getTunnelInstanceIamPolicy:getTunnelInstanceIamPolicy', __args__, opts=opts, typ=GetTunnelInstanceIamPolicyResult)
     return __ret__.apply(lambda __response__: GetTunnelInstanceIamPolicyResult(
         etag=pulumi.get(__response__, 'etag'),

@@ -5,6 +5,7 @@ package networksecurity
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -14,6 +15,16 @@ import (
 // Retrieves the current IAM policy data for projectaddressgroup
 func LookupAddressGroupIamPolicy(ctx *pulumi.Context, args *LookupAddressGroupIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupAddressGroupIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupAddressGroupIamPolicyResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupAddressGroupIamPolicyResult{}, errors.New("DependsOn is not supported for direct form invoke LookupAddressGroupIamPolicy, use LookupAddressGroupIamPolicyOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupAddressGroupIamPolicyResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupAddressGroupIamPolicy, use LookupAddressGroupIamPolicyOutput instead")
+	}
 	var rv LookupAddressGroupIamPolicyResult
 	err := ctx.Invoke("gcp:networksecurity/getAddressGroupIamPolicy:getAddressGroupIamPolicy", args, &rv, opts...)
 	if err != nil {
@@ -51,17 +62,18 @@ type LookupAddressGroupIamPolicyResult struct {
 }
 
 func LookupAddressGroupIamPolicyOutput(ctx *pulumi.Context, args LookupAddressGroupIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupAddressGroupIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAddressGroupIamPolicyResultOutput, error) {
 			args := v.(LookupAddressGroupIamPolicyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupAddressGroupIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:networksecurity/getAddressGroupIamPolicy:getAddressGroupIamPolicy", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:networksecurity/getAddressGroupIamPolicy:getAddressGroupIamPolicy", args, &rv, "", opts...)
 			if err != nil {
 				return LookupAddressGroupIamPolicyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupAddressGroupIamPolicyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupAddressGroupIamPolicyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupAddressGroupIamPolicyResultOutput), nil
 			}

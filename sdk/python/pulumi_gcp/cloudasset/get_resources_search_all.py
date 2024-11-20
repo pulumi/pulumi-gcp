@@ -148,7 +148,7 @@ def get_resources_search_all(asset_types: Optional[Sequence[str]] = None,
 def get_resources_search_all_output(asset_types: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                     query: Optional[pulumi.Input[Optional[str]]] = None,
                                     scope: Optional[pulumi.Input[str]] = None,
-                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetResourcesSearchAllResult]:
+                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetResourcesSearchAllResult]:
     """
     ## Example Usage
 
@@ -192,7 +192,7 @@ def get_resources_search_all_output(asset_types: Optional[pulumi.Input[Optional[
     __args__['assetTypes'] = asset_types
     __args__['query'] = query
     __args__['scope'] = scope
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:cloudasset/getResourcesSearchAll:getResourcesSearchAll', __args__, opts=opts, typ=GetResourcesSearchAllResult)
     return __ret__.apply(lambda __response__: GetResourcesSearchAllResult(
         asset_types=pulumi.get(__response__, 'asset_types'),

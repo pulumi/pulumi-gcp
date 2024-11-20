@@ -203,7 +203,7 @@ def get_backup_plan_association(backup_plan_association_id: Optional[str] = None
 def get_backup_plan_association_output(backup_plan_association_id: Optional[pulumi.Input[str]] = None,
                                        location: Optional[pulumi.Input[str]] = None,
                                        project: Optional[pulumi.Input[Optional[str]]] = None,
-                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBackupPlanAssociationResult]:
+                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBackupPlanAssociationResult]:
     """
     ## Example Usage
 
@@ -225,7 +225,7 @@ def get_backup_plan_association_output(backup_plan_association_id: Optional[pulu
     __args__['backupPlanAssociationId'] = backup_plan_association_id
     __args__['location'] = location
     __args__['project'] = project
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:backupdisasterrecovery/getBackupPlanAssociation:getBackupPlanAssociation', __args__, opts=opts, typ=GetBackupPlanAssociationResult)
     return __ret__.apply(lambda __response__: GetBackupPlanAssociationResult(
         backup_plan=pulumi.get(__response__, 'backup_plan'),

@@ -5,6 +5,7 @@ package runtimeconfig
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -38,6 +39,16 @@ import (
 // ```
 func LookupConfig(ctx *pulumi.Context, args *LookupConfigArgs, opts ...pulumi.InvokeOption) (*LookupConfigResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupConfigResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupConfigResult{}, errors.New("DependsOn is not supported for direct form invoke LookupConfig, use LookupConfigOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupConfigResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupConfig, use LookupConfigOutput instead")
+	}
 	var rv LookupConfigResult
 	err := ctx.Invoke("gcp:runtimeconfig/getConfig:getConfig", args, &rv, opts...)
 	if err != nil {
@@ -67,17 +78,18 @@ type LookupConfigResult struct {
 }
 
 func LookupConfigOutput(ctx *pulumi.Context, args LookupConfigOutputArgs, opts ...pulumi.InvokeOption) LookupConfigResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupConfigResultOutput, error) {
 			args := v.(LookupConfigArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupConfigResult
-			secret, err := ctx.InvokePackageRaw("gcp:runtimeconfig/getConfig:getConfig", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:runtimeconfig/getConfig:getConfig", args, &rv, "", opts...)
 			if err != nil {
 				return LookupConfigResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupConfigResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupConfigResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupConfigResultOutput), nil
 			}

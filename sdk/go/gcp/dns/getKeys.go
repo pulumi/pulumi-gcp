@@ -5,6 +5,7 @@ package dns
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -60,6 +61,16 @@ import (
 // ```
 func GetKeys(ctx *pulumi.Context, args *GetKeysArgs, opts ...pulumi.InvokeOption) (*GetKeysResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetKeysResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetKeysResult{}, errors.New("DependsOn is not supported for direct form invoke GetKeys, use GetKeysOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetKeysResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetKeys, use GetKeysOutput instead")
+	}
 	var rv GetKeysResult
 	err := ctx.Invoke("gcp:dns/getKeys:getKeys", args, &rv, opts...)
 	if err != nil {
@@ -89,17 +100,18 @@ type GetKeysResult struct {
 }
 
 func GetKeysOutput(ctx *pulumi.Context, args GetKeysOutputArgs, opts ...pulumi.InvokeOption) GetKeysResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetKeysResultOutput, error) {
 			args := v.(GetKeysArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetKeysResult
-			secret, err := ctx.InvokePackageRaw("gcp:dns/getKeys:getKeys", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:dns/getKeys:getKeys", args, &rv, "", opts...)
 			if err != nil {
 				return GetKeysResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetKeysResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetKeysResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetKeysResultOutput), nil
 			}

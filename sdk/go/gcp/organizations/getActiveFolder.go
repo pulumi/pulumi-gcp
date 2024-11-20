@@ -5,6 +5,7 @@ package organizations
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -41,6 +42,16 @@ import (
 // ```
 func GetActiveFolder(ctx *pulumi.Context, args *GetActiveFolderArgs, opts ...pulumi.InvokeOption) (*GetActiveFolderResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetActiveFolderResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetActiveFolderResult{}, errors.New("DependsOn is not supported for direct form invoke GetActiveFolder, use GetActiveFolderOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetActiveFolderResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetActiveFolder, use GetActiveFolderOutput instead")
+	}
 	var rv GetActiveFolderResult
 	err := ctx.Invoke("gcp:organizations/getActiveFolder:getActiveFolder", args, &rv, opts...)
 	if err != nil {
@@ -71,17 +82,18 @@ type GetActiveFolderResult struct {
 }
 
 func GetActiveFolderOutput(ctx *pulumi.Context, args GetActiveFolderOutputArgs, opts ...pulumi.InvokeOption) GetActiveFolderResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetActiveFolderResultOutput, error) {
 			args := v.(GetActiveFolderArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetActiveFolderResult
-			secret, err := ctx.InvokePackageRaw("gcp:organizations/getActiveFolder:getActiveFolder", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:organizations/getActiveFolder:getActiveFolder", args, &rv, "", opts...)
 			if err != nil {
 				return GetActiveFolderResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetActiveFolderResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetActiveFolderResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetActiveFolderResultOutput), nil
 			}

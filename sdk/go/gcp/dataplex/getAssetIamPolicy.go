@@ -5,6 +5,7 @@ package dataplex
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -44,6 +45,16 @@ import (
 // ```
 func LookupAssetIamPolicy(ctx *pulumi.Context, args *LookupAssetIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupAssetIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupAssetIamPolicyResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupAssetIamPolicyResult{}, errors.New("DependsOn is not supported for direct form invoke LookupAssetIamPolicy, use LookupAssetIamPolicyOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupAssetIamPolicyResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupAssetIamPolicy, use LookupAssetIamPolicyOutput instead")
+	}
 	var rv LookupAssetIamPolicyResult
 	err := ctx.Invoke("gcp:dataplex/getAssetIamPolicy:getAssetIamPolicy", args, &rv, opts...)
 	if err != nil {
@@ -81,17 +92,18 @@ type LookupAssetIamPolicyResult struct {
 }
 
 func LookupAssetIamPolicyOutput(ctx *pulumi.Context, args LookupAssetIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupAssetIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAssetIamPolicyResultOutput, error) {
 			args := v.(LookupAssetIamPolicyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupAssetIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:dataplex/getAssetIamPolicy:getAssetIamPolicy", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:dataplex/getAssetIamPolicy:getAssetIamPolicy", args, &rv, "", opts...)
 			if err != nil {
 				return LookupAssetIamPolicyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupAssetIamPolicyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupAssetIamPolicyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupAssetIamPolicyResultOutput), nil
 			}

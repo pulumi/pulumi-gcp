@@ -5,6 +5,7 @@ package container
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -42,6 +43,16 @@ import (
 // ```
 func GetAwsVersions(ctx *pulumi.Context, args *GetAwsVersionsArgs, opts ...pulumi.InvokeOption) (*GetAwsVersionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetAwsVersionsResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetAwsVersionsResult{}, errors.New("DependsOn is not supported for direct form invoke GetAwsVersions, use GetAwsVersionsOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetAwsVersionsResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetAwsVersions, use GetAwsVersionsOutput instead")
+	}
 	var rv GetAwsVersionsResult
 	err := ctx.Invoke("gcp:container/getAwsVersions:getAwsVersions", args, &rv, opts...)
 	if err != nil {
@@ -72,17 +83,18 @@ type GetAwsVersionsResult struct {
 }
 
 func GetAwsVersionsOutput(ctx *pulumi.Context, args GetAwsVersionsOutputArgs, opts ...pulumi.InvokeOption) GetAwsVersionsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetAwsVersionsResultOutput, error) {
 			args := v.(GetAwsVersionsArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetAwsVersionsResult
-			secret, err := ctx.InvokePackageRaw("gcp:container/getAwsVersions:getAwsVersions", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:container/getAwsVersions:getAwsVersions", args, &rv, "", opts...)
 			if err != nil {
 				return GetAwsVersionsResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetAwsVersionsResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetAwsVersionsResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetAwsVersionsResultOutput), nil
 			}

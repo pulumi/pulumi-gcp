@@ -179,7 +179,7 @@ def get_backup_plan(backup_plan_id: Optional[str] = None,
 def get_backup_plan_output(backup_plan_id: Optional[pulumi.Input[str]] = None,
                            location: Optional[pulumi.Input[str]] = None,
                            project: Optional[pulumi.Input[Optional[str]]] = None,
-                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBackupPlanResult]:
+                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBackupPlanResult]:
     """
     Use this data source to access information about an existing resource.
     """
@@ -187,7 +187,7 @@ def get_backup_plan_output(backup_plan_id: Optional[pulumi.Input[str]] = None,
     __args__['backupPlanId'] = backup_plan_id
     __args__['location'] = location
     __args__['project'] = project
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:backupdisasterrecovery/getBackupPlan:getBackupPlan', __args__, opts=opts, typ=GetBackupPlanResult)
     return __ret__.apply(lambda __response__: GetBackupPlanResult(
         backup_plan_id=pulumi.get(__response__, 'backup_plan_id'),

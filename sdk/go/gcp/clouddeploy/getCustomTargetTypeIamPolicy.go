@@ -5,6 +5,7 @@ package clouddeploy
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -42,6 +43,16 @@ import (
 // ```
 func LookupCustomTargetTypeIamPolicy(ctx *pulumi.Context, args *LookupCustomTargetTypeIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupCustomTargetTypeIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupCustomTargetTypeIamPolicyResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupCustomTargetTypeIamPolicyResult{}, errors.New("DependsOn is not supported for direct form invoke LookupCustomTargetTypeIamPolicy, use LookupCustomTargetTypeIamPolicyOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupCustomTargetTypeIamPolicyResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupCustomTargetTypeIamPolicy, use LookupCustomTargetTypeIamPolicyOutput instead")
+	}
 	var rv LookupCustomTargetTypeIamPolicyResult
 	err := ctx.Invoke("gcp:clouddeploy/getCustomTargetTypeIamPolicy:getCustomTargetTypeIamPolicy", args, &rv, opts...)
 	if err != nil {
@@ -78,17 +89,18 @@ type LookupCustomTargetTypeIamPolicyResult struct {
 }
 
 func LookupCustomTargetTypeIamPolicyOutput(ctx *pulumi.Context, args LookupCustomTargetTypeIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupCustomTargetTypeIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupCustomTargetTypeIamPolicyResultOutput, error) {
 			args := v.(LookupCustomTargetTypeIamPolicyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupCustomTargetTypeIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:clouddeploy/getCustomTargetTypeIamPolicy:getCustomTargetTypeIamPolicy", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:clouddeploy/getCustomTargetTypeIamPolicy:getCustomTargetTypeIamPolicy", args, &rv, "", opts...)
 			if err != nil {
 				return LookupCustomTargetTypeIamPolicyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupCustomTargetTypeIamPolicyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupCustomTargetTypeIamPolicyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupCustomTargetTypeIamPolicyResultOutput), nil
 			}

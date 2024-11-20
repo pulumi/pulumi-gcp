@@ -5,6 +5,7 @@ package backupdisasterrecovery
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -13,6 +14,16 @@ import (
 
 func GetDataSource(ctx *pulumi.Context, args *GetDataSourceArgs, opts ...pulumi.InvokeOption) (*GetDataSourceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetDataSourceResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetDataSourceResult{}, errors.New("DependsOn is not supported for direct form invoke GetDataSource, use GetDataSourceOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetDataSourceResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetDataSource, use GetDataSourceOutput instead")
+	}
 	var rv GetDataSourceResult
 	err := ctx.Invoke("gcp:backupdisasterrecovery/getDataSource:getDataSource", args, &rv, opts...)
 	if err != nil {
@@ -52,17 +63,18 @@ type GetDataSourceResult struct {
 }
 
 func GetDataSourceOutput(ctx *pulumi.Context, args GetDataSourceOutputArgs, opts ...pulumi.InvokeOption) GetDataSourceResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetDataSourceResultOutput, error) {
 			args := v.(GetDataSourceArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetDataSourceResult
-			secret, err := ctx.InvokePackageRaw("gcp:backupdisasterrecovery/getDataSource:getDataSource", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:backupdisasterrecovery/getDataSource:getDataSource", args, &rv, "", opts...)
 			if err != nil {
 				return GetDataSourceResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetDataSourceResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetDataSourceResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetDataSourceResultOutput), nil
 			}

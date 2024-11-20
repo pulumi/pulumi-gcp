@@ -5,6 +5,7 @@ package compute
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -91,6 +92,16 @@ import (
 // ```
 func GetNetblockIPRanges(ctx *pulumi.Context, args *GetNetblockIPRangesArgs, opts ...pulumi.InvokeOption) (*GetNetblockIPRangesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetNetblockIPRangesResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetNetblockIPRangesResult{}, errors.New("DependsOn is not supported for direct form invoke GetNetblockIPRanges, use GetNetblockIPRangesOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetNetblockIPRangesResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetNetblockIPRanges, use GetNetblockIPRangesOutput instead")
+	}
 	var rv GetNetblockIPRangesResult
 	err := ctx.Invoke("gcp:compute/getNetblockIPRanges:getNetblockIPRanges", args, &rv, opts...)
 	if err != nil {
@@ -137,17 +148,18 @@ type GetNetblockIPRangesResult struct {
 }
 
 func GetNetblockIPRangesOutput(ctx *pulumi.Context, args GetNetblockIPRangesOutputArgs, opts ...pulumi.InvokeOption) GetNetblockIPRangesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetNetblockIPRangesResultOutput, error) {
 			args := v.(GetNetblockIPRangesArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetNetblockIPRangesResult
-			secret, err := ctx.InvokePackageRaw("gcp:compute/getNetblockIPRanges:getNetblockIPRanges", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:compute/getNetblockIPRanges:getNetblockIPRanges", args, &rv, "", opts...)
 			if err != nil {
 				return GetNetblockIPRangesResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetNetblockIPRangesResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetNetblockIPRangesResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetNetblockIPRangesResultOutput), nil
 			}

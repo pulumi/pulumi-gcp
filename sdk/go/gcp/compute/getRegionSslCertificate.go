@@ -5,6 +5,7 @@ package compute
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -43,6 +44,16 @@ import (
 // ```
 func LookupRegionSslCertificate(ctx *pulumi.Context, args *LookupRegionSslCertificateArgs, opts ...pulumi.InvokeOption) (*LookupRegionSslCertificateResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupRegionSslCertificateResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupRegionSslCertificateResult{}, errors.New("DependsOn is not supported for direct form invoke LookupRegionSslCertificate, use LookupRegionSslCertificateOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupRegionSslCertificateResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupRegionSslCertificate, use LookupRegionSslCertificateOutput instead")
+	}
 	var rv LookupRegionSslCertificateResult
 	err := ctx.Invoke("gcp:compute/getRegionSslCertificate:getRegionSslCertificate", args, &rv, opts...)
 	if err != nil {
@@ -83,17 +94,18 @@ type LookupRegionSslCertificateResult struct {
 }
 
 func LookupRegionSslCertificateOutput(ctx *pulumi.Context, args LookupRegionSslCertificateOutputArgs, opts ...pulumi.InvokeOption) LookupRegionSslCertificateResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupRegionSslCertificateResultOutput, error) {
 			args := v.(LookupRegionSslCertificateArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupRegionSslCertificateResult
-			secret, err := ctx.InvokePackageRaw("gcp:compute/getRegionSslCertificate:getRegionSslCertificate", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:compute/getRegionSslCertificate:getRegionSslCertificate", args, &rv, "", opts...)
 			if err != nil {
 				return LookupRegionSslCertificateResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupRegionSslCertificateResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupRegionSslCertificateResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupRegionSslCertificateResultOutput), nil
 			}

@@ -5,6 +5,7 @@ package serviceaccount
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -90,6 +91,16 @@ import (
 // ```
 func LookupAccount(ctx *pulumi.Context, args *LookupAccountArgs, opts ...pulumi.InvokeOption) (*LookupAccountResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupAccountResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupAccountResult{}, errors.New("DependsOn is not supported for direct form invoke LookupAccount, use LookupAccountOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupAccountResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupAccount, use LookupAccountOutput instead")
+	}
 	var rv LookupAccountResult
 	err := ctx.Invoke("gcp:serviceaccount/getAccount:getAccount", args, &rv, opts...)
 	if err != nil {
@@ -138,17 +149,18 @@ type LookupAccountResult struct {
 }
 
 func LookupAccountOutput(ctx *pulumi.Context, args LookupAccountOutputArgs, opts ...pulumi.InvokeOption) LookupAccountResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAccountResultOutput, error) {
 			args := v.(LookupAccountArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupAccountResult
-			secret, err := ctx.InvokePackageRaw("gcp:serviceaccount/getAccount:getAccount", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:serviceaccount/getAccount:getAccount", args, &rv, "", opts...)
 			if err != nil {
 				return LookupAccountResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupAccountResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupAccountResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupAccountResultOutput), nil
 			}

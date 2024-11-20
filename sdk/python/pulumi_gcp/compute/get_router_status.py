@@ -160,7 +160,7 @@ def get_router_status(name: Optional[str] = None,
 def get_router_status_output(name: Optional[pulumi.Input[str]] = None,
                              project: Optional[pulumi.Input[Optional[str]]] = None,
                              region: Optional[pulumi.Input[Optional[str]]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRouterStatusResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRouterStatusResult]:
     """
     Get a Cloud Router's status within GCE from its name and region. This data source exposes the
     routes learned by a Cloud Router via BGP peers.
@@ -189,7 +189,7 @@ def get_router_status_output(name: Optional[pulumi.Input[str]] = None,
     __args__['name'] = name
     __args__['project'] = project
     __args__['region'] = region
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:compute/getRouterStatus:getRouterStatus', __args__, opts=opts, typ=GetRouterStatusResult)
     return __ret__.apply(lambda __response__: GetRouterStatusResult(
         best_routes=pulumi.get(__response__, 'best_routes'),

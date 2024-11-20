@@ -5,6 +5,7 @@ package cloudrunv2
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -43,6 +44,16 @@ import (
 // ```
 func LookupJob(ctx *pulumi.Context, args *LookupJobArgs, opts ...pulumi.InvokeOption) (*LookupJobResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupJobResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupJobResult{}, errors.New("DependsOn is not supported for direct form invoke LookupJob, use LookupJobOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupJobResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupJob, use LookupJobOutput instead")
+	}
 	var rv LookupJobResult
 	err := ctx.Invoke("gcp:cloudrunv2/getJob:getJob", args, &rv, opts...)
 	if err != nil {
@@ -102,17 +113,18 @@ type LookupJobResult struct {
 }
 
 func LookupJobOutput(ctx *pulumi.Context, args LookupJobOutputArgs, opts ...pulumi.InvokeOption) LookupJobResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupJobResultOutput, error) {
 			args := v.(LookupJobArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupJobResult
-			secret, err := ctx.InvokePackageRaw("gcp:cloudrunv2/getJob:getJob", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:cloudrunv2/getJob:getJob", args, &rv, "", opts...)
 			if err != nil {
 				return LookupJobResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupJobResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupJobResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupJobResultOutput), nil
 			}
