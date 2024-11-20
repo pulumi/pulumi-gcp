@@ -80,11 +80,12 @@ func TestComputeFirewallUpgrade(t *testing.T) {
 }
 
 func TestCloudFunctionUpgrade(t *testing.T) {
+	t.Skipf("TODO[https://github.com/pulumi/pulumi-gcp/issues/2670]: Flaky")
 	testUpgrade(t, "test-programs/cloudfunctions-function")
 }
 
 func TestNetworkUpgrade(t *testing.T) {
-	t.Skipf("Flakey: see https://github.com/pulumi/pulumi-gcp/issues/1655 for details")
+	t.Skipf("TODO[https://github.com/pulumi/pulumi-gcp/issues/1655]: Flaky")
 	testUpgrade(t, "test-programs/network")
 }
 
@@ -114,6 +115,7 @@ func TestIamMember(t *testing.T) {
 }
 
 func TestLogSink(t *testing.T) {
+	t.Skipf("TODO[https://github.com/pulumi/pulumi-gcp/issues/2671]: Flaky")
 	skipIfNotCI(t)
 	// ServiceAccount requires 7.0
 	testUpgrade(t, "test-programs/logsink",
