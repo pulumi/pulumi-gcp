@@ -5,6 +5,7 @@ package spanner
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -41,6 +42,16 @@ import (
 // ```
 func LookupDatabase(ctx *pulumi.Context, args *LookupDatabaseArgs, opts ...pulumi.InvokeOption) (*LookupDatabaseResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupDatabaseResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupDatabaseResult{}, errors.New("DependsOn is not supported for direct form invoke LookupDatabase, use LookupDatabaseOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupDatabaseResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupDatabase, use LookupDatabaseOutput instead")
+	}
 	var rv LookupDatabaseResult
 	err := ctx.Invoke("gcp:spanner/getDatabase:getDatabase", args, &rv, opts...)
 	if err != nil {
@@ -79,17 +90,18 @@ type LookupDatabaseResult struct {
 }
 
 func LookupDatabaseOutput(ctx *pulumi.Context, args LookupDatabaseOutputArgs, opts ...pulumi.InvokeOption) LookupDatabaseResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupDatabaseResultOutput, error) {
 			args := v.(LookupDatabaseArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupDatabaseResult
-			secret, err := ctx.InvokePackageRaw("gcp:spanner/getDatabase:getDatabase", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:spanner/getDatabase:getDatabase", args, &rv, "", opts...)
 			if err != nil {
 				return LookupDatabaseResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupDatabaseResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupDatabaseResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupDatabaseResultOutput), nil
 			}

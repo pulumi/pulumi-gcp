@@ -5,6 +5,7 @@ package compute
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -121,6 +122,16 @@ import (
 // ```
 func GetInstanceSerialPort(ctx *pulumi.Context, args *GetInstanceSerialPortArgs, opts ...pulumi.InvokeOption) (*GetInstanceSerialPortResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetInstanceSerialPortResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetInstanceSerialPortResult{}, errors.New("DependsOn is not supported for direct form invoke GetInstanceSerialPort, use GetInstanceSerialPortOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetInstanceSerialPortResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetInstanceSerialPort, use GetInstanceSerialPortOutput instead")
+	}
 	var rv GetInstanceSerialPortResult
 	err := ctx.Invoke("gcp:compute/getInstanceSerialPort:getInstanceSerialPort", args, &rv, opts...)
 	if err != nil {
@@ -158,17 +169,18 @@ type GetInstanceSerialPortResult struct {
 }
 
 func GetInstanceSerialPortOutput(ctx *pulumi.Context, args GetInstanceSerialPortOutputArgs, opts ...pulumi.InvokeOption) GetInstanceSerialPortResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetInstanceSerialPortResultOutput, error) {
 			args := v.(GetInstanceSerialPortArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetInstanceSerialPortResult
-			secret, err := ctx.InvokePackageRaw("gcp:compute/getInstanceSerialPort:getInstanceSerialPort", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:compute/getInstanceSerialPort:getInstanceSerialPort", args, &rv, "", opts...)
 			if err != nil {
 				return GetInstanceSerialPortResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetInstanceSerialPortResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetInstanceSerialPortResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetInstanceSerialPortResultOutput), nil
 			}

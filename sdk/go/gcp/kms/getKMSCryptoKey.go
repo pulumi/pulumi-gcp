@@ -5,6 +5,7 @@ package kms
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -54,6 +55,16 @@ import (
 // ```
 func GetKMSCryptoKey(ctx *pulumi.Context, args *GetKMSCryptoKeyArgs, opts ...pulumi.InvokeOption) (*GetKMSCryptoKeyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetKMSCryptoKeyResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetKMSCryptoKeyResult{}, errors.New("DependsOn is not supported for direct form invoke GetKMSCryptoKey, use GetKMSCryptoKeyOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetKMSCryptoKeyResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetKMSCryptoKey, use GetKMSCryptoKeyOutput instead")
+	}
 	var rv GetKMSCryptoKeyResult
 	err := ctx.Invoke("gcp:kms/getKMSCryptoKey:getKMSCryptoKey", args, &rv, opts...)
 	if err != nil {
@@ -96,17 +107,18 @@ type GetKMSCryptoKeyResult struct {
 }
 
 func GetKMSCryptoKeyOutput(ctx *pulumi.Context, args GetKMSCryptoKeyOutputArgs, opts ...pulumi.InvokeOption) GetKMSCryptoKeyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetKMSCryptoKeyResultOutput, error) {
 			args := v.(GetKMSCryptoKeyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetKMSCryptoKeyResult
-			secret, err := ctx.InvokePackageRaw("gcp:kms/getKMSCryptoKey:getKMSCryptoKey", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:kms/getKMSCryptoKey:getKMSCryptoKey", args, &rv, "", opts...)
 			if err != nil {
 				return GetKMSCryptoKeyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetKMSCryptoKeyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetKMSCryptoKeyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetKMSCryptoKeyResultOutput), nil
 			}

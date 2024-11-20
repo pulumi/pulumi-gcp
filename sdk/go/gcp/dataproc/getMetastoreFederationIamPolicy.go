@@ -5,6 +5,7 @@ package dataproc
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -42,6 +43,16 @@ import (
 // ```
 func LookupMetastoreFederationIamPolicy(ctx *pulumi.Context, args *LookupMetastoreFederationIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupMetastoreFederationIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupMetastoreFederationIamPolicyResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupMetastoreFederationIamPolicyResult{}, errors.New("DependsOn is not supported for direct form invoke LookupMetastoreFederationIamPolicy, use LookupMetastoreFederationIamPolicyOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupMetastoreFederationIamPolicyResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupMetastoreFederationIamPolicy, use LookupMetastoreFederationIamPolicyOutput instead")
+	}
 	var rv LookupMetastoreFederationIamPolicyResult
 	err := ctx.Invoke("gcp:dataproc/getMetastoreFederationIamPolicy:getMetastoreFederationIamPolicy", args, &rv, opts...)
 	if err != nil {
@@ -78,17 +89,18 @@ type LookupMetastoreFederationIamPolicyResult struct {
 }
 
 func LookupMetastoreFederationIamPolicyOutput(ctx *pulumi.Context, args LookupMetastoreFederationIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupMetastoreFederationIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupMetastoreFederationIamPolicyResultOutput, error) {
 			args := v.(LookupMetastoreFederationIamPolicyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupMetastoreFederationIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:dataproc/getMetastoreFederationIamPolicy:getMetastoreFederationIamPolicy", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:dataproc/getMetastoreFederationIamPolicy:getMetastoreFederationIamPolicy", args, &rv, "", opts...)
 			if err != nil {
 				return LookupMetastoreFederationIamPolicyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupMetastoreFederationIamPolicyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupMetastoreFederationIamPolicyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupMetastoreFederationIamPolicyResultOutput), nil
 			}

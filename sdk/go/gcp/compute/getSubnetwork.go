@@ -5,6 +5,7 @@ package compute
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -41,6 +42,16 @@ import (
 // ```
 func LookupSubnetwork(ctx *pulumi.Context, args *LookupSubnetworkArgs, opts ...pulumi.InvokeOption) (*LookupSubnetworkResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupSubnetworkResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupSubnetworkResult{}, errors.New("DependsOn is not supported for direct form invoke LookupSubnetwork, use LookupSubnetworkOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupSubnetworkResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupSubnetwork, use LookupSubnetworkOutput instead")
+	}
 	var rv LookupSubnetworkResult
 	err := ctx.Invoke("gcp:compute/getSubnetwork:getSubnetwork", args, &rv, opts...)
 	if err != nil {
@@ -95,17 +106,18 @@ type LookupSubnetworkResult struct {
 }
 
 func LookupSubnetworkOutput(ctx *pulumi.Context, args LookupSubnetworkOutputArgs, opts ...pulumi.InvokeOption) LookupSubnetworkResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupSubnetworkResultOutput, error) {
 			args := v.(LookupSubnetworkArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupSubnetworkResult
-			secret, err := ctx.InvokePackageRaw("gcp:compute/getSubnetwork:getSubnetwork", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:compute/getSubnetwork:getSubnetwork", args, &rv, "", opts...)
 			if err != nil {
 				return LookupSubnetworkResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupSubnetworkResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupSubnetworkResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupSubnetworkResultOutput), nil
 			}

@@ -5,6 +5,7 @@ package logging
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -47,6 +48,16 @@ import (
 // ```
 func LookupFolderSettings(ctx *pulumi.Context, args *LookupFolderSettingsArgs, opts ...pulumi.InvokeOption) (*LookupFolderSettingsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupFolderSettingsResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupFolderSettingsResult{}, errors.New("DependsOn is not supported for direct form invoke LookupFolderSettings, use LookupFolderSettingsOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupFolderSettingsResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupFolderSettings, use LookupFolderSettingsOutput instead")
+	}
 	var rv LookupFolderSettingsResult
 	err := ctx.Invoke("gcp:logging/getFolderSettings:getFolderSettings", args, &rv, opts...)
 	if err != nil {
@@ -87,17 +98,18 @@ type LookupFolderSettingsResult struct {
 }
 
 func LookupFolderSettingsOutput(ctx *pulumi.Context, args LookupFolderSettingsOutputArgs, opts ...pulumi.InvokeOption) LookupFolderSettingsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupFolderSettingsResultOutput, error) {
 			args := v.(LookupFolderSettingsArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupFolderSettingsResult
-			secret, err := ctx.InvokePackageRaw("gcp:logging/getFolderSettings:getFolderSettings", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:logging/getFolderSettings:getFolderSettings", args, &rv, "", opts...)
 			if err != nil {
 				return LookupFolderSettingsResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupFolderSettingsResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupFolderSettingsResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupFolderSettingsResultOutput), nil
 			}

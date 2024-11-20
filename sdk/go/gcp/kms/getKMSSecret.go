@@ -5,6 +5,7 @@ package kms
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -123,6 +124,16 @@ import (
 // This will result in a Cloud SQL user being created with password `my-secret-password`.
 func GetKMSSecret(ctx *pulumi.Context, args *GetKMSSecretArgs, opts ...pulumi.InvokeOption) (*GetKMSSecretResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetKMSSecretResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetKMSSecretResult{}, errors.New("DependsOn is not supported for direct form invoke GetKMSSecret, use GetKMSSecretOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetKMSSecretResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetKMSSecret, use GetKMSSecretOutput instead")
+	}
 	var rv GetKMSSecretResult
 	err := ctx.Invoke("gcp:kms/getKMSSecret:getKMSSecret", args, &rv, opts...)
 	if err != nil {
@@ -155,17 +166,18 @@ type GetKMSSecretResult struct {
 }
 
 func GetKMSSecretOutput(ctx *pulumi.Context, args GetKMSSecretOutputArgs, opts ...pulumi.InvokeOption) GetKMSSecretResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetKMSSecretResultOutput, error) {
 			args := v.(GetKMSSecretArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetKMSSecretResult
-			secret, err := ctx.InvokePackageRaw("gcp:kms/getKMSSecret:getKMSSecret", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:kms/getKMSSecret:getKMSSecret", args, &rv, "", opts...)
 			if err != nil {
 				return GetKMSSecretResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetKMSSecretResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetKMSSecretResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetKMSSecretResultOutput), nil
 			}

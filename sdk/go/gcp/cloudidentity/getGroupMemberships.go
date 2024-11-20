@@ -5,6 +5,7 @@ package cloudidentity
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -48,6 +49,16 @@ import (
 // ```
 func GetGroupMemberships(ctx *pulumi.Context, args *GetGroupMembershipsArgs, opts ...pulumi.InvokeOption) (*GetGroupMembershipsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetGroupMembershipsResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetGroupMembershipsResult{}, errors.New("DependsOn is not supported for direct form invoke GetGroupMemberships, use GetGroupMembershipsOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetGroupMembershipsResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetGroupMemberships, use GetGroupMembershipsOutput instead")
+	}
 	var rv GetGroupMembershipsResult
 	err := ctx.Invoke("gcp:cloudidentity/getGroupMemberships:getGroupMemberships", args, &rv, opts...)
 	if err != nil {
@@ -72,17 +83,18 @@ type GetGroupMembershipsResult struct {
 }
 
 func GetGroupMembershipsOutput(ctx *pulumi.Context, args GetGroupMembershipsOutputArgs, opts ...pulumi.InvokeOption) GetGroupMembershipsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetGroupMembershipsResultOutput, error) {
 			args := v.(GetGroupMembershipsArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetGroupMembershipsResult
-			secret, err := ctx.InvokePackageRaw("gcp:cloudidentity/getGroupMemberships:getGroupMemberships", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:cloudidentity/getGroupMemberships:getGroupMemberships", args, &rv, "", opts...)
 			if err != nil {
 				return GetGroupMembershipsResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetGroupMembershipsResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetGroupMembershipsResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetGroupMembershipsResultOutput), nil
 			}

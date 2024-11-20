@@ -5,6 +5,7 @@ package runtimeconfig
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -39,6 +40,16 @@ import (
 // ```
 func LookupVariable(ctx *pulumi.Context, args *LookupVariableArgs, opts ...pulumi.InvokeOption) (*LookupVariableResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupVariableResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupVariableResult{}, errors.New("DependsOn is not supported for direct form invoke LookupVariable, use LookupVariableOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupVariableResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupVariable, use LookupVariableOutput instead")
+	}
 	var rv LookupVariableResult
 	err := ctx.Invoke("gcp:runtimeconfig/getVariable:getVariable", args, &rv, opts...)
 	if err != nil {
@@ -73,17 +84,18 @@ type LookupVariableResult struct {
 }
 
 func LookupVariableOutput(ctx *pulumi.Context, args LookupVariableOutputArgs, opts ...pulumi.InvokeOption) LookupVariableResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupVariableResultOutput, error) {
 			args := v.(LookupVariableArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupVariableResult
-			secret, err := ctx.InvokePackageRaw("gcp:runtimeconfig/getVariable:getVariable", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:runtimeconfig/getVariable:getVariable", args, &rv, "", opts...)
 			if err != nil {
 				return LookupVariableResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupVariableResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupVariableResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupVariableResultOutput), nil
 			}

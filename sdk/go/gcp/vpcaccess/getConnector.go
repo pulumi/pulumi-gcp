@@ -5,6 +5,7 @@ package vpcaccess
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -57,6 +58,16 @@ import (
 // ```
 func LookupConnector(ctx *pulumi.Context, args *LookupConnectorArgs, opts ...pulumi.InvokeOption) (*LookupConnectorResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupConnectorResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupConnectorResult{}, errors.New("DependsOn is not supported for direct form invoke LookupConnector, use LookupConnectorOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupConnectorResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupConnector, use LookupConnectorOutput instead")
+	}
 	var rv LookupConnectorResult
 	err := ctx.Invoke("gcp:vpcaccess/getConnector:getConnector", args, &rv, opts...)
 	if err != nil {
@@ -100,17 +111,18 @@ type LookupConnectorResult struct {
 }
 
 func LookupConnectorOutput(ctx *pulumi.Context, args LookupConnectorOutputArgs, opts ...pulumi.InvokeOption) LookupConnectorResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupConnectorResultOutput, error) {
 			args := v.(LookupConnectorArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupConnectorResult
-			secret, err := ctx.InvokePackageRaw("gcp:vpcaccess/getConnector:getConnector", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:vpcaccess/getConnector:getConnector", args, &rv, "", opts...)
 			if err != nil {
 				return LookupConnectorResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupConnectorResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupConnectorResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupConnectorResultOutput), nil
 			}

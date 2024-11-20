@@ -5,6 +5,7 @@ package iap
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -41,6 +42,16 @@ import (
 // ```
 func LookupWebBackendServiceIamPolicy(ctx *pulumi.Context, args *LookupWebBackendServiceIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupWebBackendServiceIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupWebBackendServiceIamPolicyResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupWebBackendServiceIamPolicyResult{}, errors.New("DependsOn is not supported for direct form invoke LookupWebBackendServiceIamPolicy, use LookupWebBackendServiceIamPolicyOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupWebBackendServiceIamPolicyResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupWebBackendServiceIamPolicy, use LookupWebBackendServiceIamPolicyOutput instead")
+	}
 	var rv LookupWebBackendServiceIamPolicyResult
 	err := ctx.Invoke("gcp:iap/getWebBackendServiceIamPolicy:getWebBackendServiceIamPolicy", args, &rv, opts...)
 	if err != nil {
@@ -72,17 +83,18 @@ type LookupWebBackendServiceIamPolicyResult struct {
 }
 
 func LookupWebBackendServiceIamPolicyOutput(ctx *pulumi.Context, args LookupWebBackendServiceIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupWebBackendServiceIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupWebBackendServiceIamPolicyResultOutput, error) {
 			args := v.(LookupWebBackendServiceIamPolicyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupWebBackendServiceIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:iap/getWebBackendServiceIamPolicy:getWebBackendServiceIamPolicy", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:iap/getWebBackendServiceIamPolicy:getWebBackendServiceIamPolicy", args, &rv, "", opts...)
 			if err != nil {
 				return LookupWebBackendServiceIamPolicyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupWebBackendServiceIamPolicyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupWebBackendServiceIamPolicyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupWebBackendServiceIamPolicyResultOutput), nil
 			}

@@ -5,6 +5,7 @@ package firebase
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -13,6 +14,16 @@ import (
 
 func LookupAppleApp(ctx *pulumi.Context, args *LookupAppleAppArgs, opts ...pulumi.InvokeOption) (*LookupAppleAppResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupAppleAppResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupAppleAppResult{}, errors.New("DependsOn is not supported for direct form invoke LookupAppleApp, use LookupAppleAppOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupAppleAppResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupAppleApp, use LookupAppleAppOutput instead")
+	}
 	var rv LookupAppleAppResult
 	err := ctx.Invoke("gcp:firebase/getAppleApp:getAppleApp", args, &rv, opts...)
 	if err != nil {
@@ -56,17 +67,18 @@ type LookupAppleAppResult struct {
 }
 
 func LookupAppleAppOutput(ctx *pulumi.Context, args LookupAppleAppOutputArgs, opts ...pulumi.InvokeOption) LookupAppleAppResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAppleAppResultOutput, error) {
 			args := v.(LookupAppleAppArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupAppleAppResult
-			secret, err := ctx.InvokePackageRaw("gcp:firebase/getAppleApp:getAppleApp", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:firebase/getAppleApp:getAppleApp", args, &rv, "", opts...)
 			if err != nil {
 				return LookupAppleAppResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupAppleAppResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupAppleAppResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupAppleAppResultOutput), nil
 			}

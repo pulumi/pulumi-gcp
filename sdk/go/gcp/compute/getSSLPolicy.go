@@ -5,6 +5,7 @@ package compute
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -42,6 +43,16 @@ import (
 // ```
 func LookupSSLPolicy(ctx *pulumi.Context, args *LookupSSLPolicyArgs, opts ...pulumi.InvokeOption) (*LookupSSLPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupSSLPolicyResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupSSLPolicyResult{}, errors.New("DependsOn is not supported for direct form invoke LookupSSLPolicy, use LookupSSLPolicyOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupSSLPolicyResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupSSLPolicy, use LookupSSLPolicyOutput instead")
+	}
 	var rv LookupSSLPolicyResult
 	err := ctx.Invoke("gcp:compute/getSSLPolicy:getSSLPolicy", args, &rv, opts...)
 	if err != nil {
@@ -87,17 +98,18 @@ type LookupSSLPolicyResult struct {
 }
 
 func LookupSSLPolicyOutput(ctx *pulumi.Context, args LookupSSLPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupSSLPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupSSLPolicyResultOutput, error) {
 			args := v.(LookupSSLPolicyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupSSLPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:compute/getSSLPolicy:getSSLPolicy", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:compute/getSSLPolicy:getSSLPolicy", args, &rv, "", opts...)
 			if err != nil {
 				return LookupSSLPolicyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupSSLPolicyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupSSLPolicyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupSSLPolicyResultOutput), nil
 			}

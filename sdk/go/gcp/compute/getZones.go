@@ -5,6 +5,7 @@ package compute
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -15,6 +16,16 @@ import (
 // See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/regions-zones) in the upstream docs.
 func GetZones(ctx *pulumi.Context, args *GetZonesArgs, opts ...pulumi.InvokeOption) (*GetZonesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetZonesResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetZonesResult{}, errors.New("DependsOn is not supported for direct form invoke GetZones, use GetZonesOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetZonesResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetZones, use GetZonesOutput instead")
+	}
 	var rv GetZonesResult
 	err := ctx.Invoke("gcp:compute/getZones:getZones", args, &rv, opts...)
 	if err != nil {
@@ -46,17 +57,18 @@ type GetZonesResult struct {
 }
 
 func GetZonesOutput(ctx *pulumi.Context, args GetZonesOutputArgs, opts ...pulumi.InvokeOption) GetZonesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetZonesResultOutput, error) {
 			args := v.(GetZonesArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetZonesResult
-			secret, err := ctx.InvokePackageRaw("gcp:compute/getZones:getZones", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:compute/getZones:getZones", args, &rv, "", opts...)
 			if err != nil {
 				return GetZonesResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetZonesResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetZonesResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetZonesResultOutput), nil
 			}

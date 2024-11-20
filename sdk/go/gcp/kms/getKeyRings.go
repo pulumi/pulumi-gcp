@@ -5,6 +5,7 @@ package kms
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -13,6 +14,16 @@ import (
 
 func GetKeyRings(ctx *pulumi.Context, args *GetKeyRingsArgs, opts ...pulumi.InvokeOption) (*GetKeyRingsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetKeyRingsResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetKeyRingsResult{}, errors.New("DependsOn is not supported for direct form invoke GetKeyRings, use GetKeyRingsOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetKeyRingsResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetKeyRings, use GetKeyRingsOutput instead")
+	}
 	var rv GetKeyRingsResult
 	err := ctx.Invoke("gcp:kms/getKeyRings:getKeyRings", args, &rv, opts...)
 	if err != nil {
@@ -39,17 +50,18 @@ type GetKeyRingsResult struct {
 }
 
 func GetKeyRingsOutput(ctx *pulumi.Context, args GetKeyRingsOutputArgs, opts ...pulumi.InvokeOption) GetKeyRingsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetKeyRingsResultOutput, error) {
 			args := v.(GetKeyRingsArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetKeyRingsResult
-			secret, err := ctx.InvokePackageRaw("gcp:kms/getKeyRings:getKeyRings", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:kms/getKeyRings:getKeyRings", args, &rv, "", opts...)
 			if err != nil {
 				return GetKeyRingsResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetKeyRingsResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetKeyRingsResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetKeyRingsResultOutput), nil
 			}

@@ -5,6 +5,7 @@ package secretmanager
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -41,6 +42,16 @@ import (
 // ```
 func GetRegionalSecretVersionAccess(ctx *pulumi.Context, args *GetRegionalSecretVersionAccessArgs, opts ...pulumi.InvokeOption) (*GetRegionalSecretVersionAccessResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetRegionalSecretVersionAccessResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetRegionalSecretVersionAccessResult{}, errors.New("DependsOn is not supported for direct form invoke GetRegionalSecretVersionAccess, use GetRegionalSecretVersionAccessOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetRegionalSecretVersionAccessResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetRegionalSecretVersionAccess, use GetRegionalSecretVersionAccessOutput instead")
+	}
 	var rv GetRegionalSecretVersionAccessResult
 	err := ctx.Invoke("gcp:secretmanager/getRegionalSecretVersionAccess:getRegionalSecretVersionAccess", args, &rv, opts...)
 	if err != nil {
@@ -85,17 +96,18 @@ type GetRegionalSecretVersionAccessResult struct {
 }
 
 func GetRegionalSecretVersionAccessOutput(ctx *pulumi.Context, args GetRegionalSecretVersionAccessOutputArgs, opts ...pulumi.InvokeOption) GetRegionalSecretVersionAccessResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetRegionalSecretVersionAccessResultOutput, error) {
 			args := v.(GetRegionalSecretVersionAccessArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetRegionalSecretVersionAccessResult
-			secret, err := ctx.InvokePackageRaw("gcp:secretmanager/getRegionalSecretVersionAccess:getRegionalSecretVersionAccess", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:secretmanager/getRegionalSecretVersionAccess:getRegionalSecretVersionAccess", args, &rv, "", opts...)
 			if err != nil {
 				return GetRegionalSecretVersionAccessResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetRegionalSecretVersionAccessResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetRegionalSecretVersionAccessResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetRegionalSecretVersionAccessResultOutput), nil
 			}

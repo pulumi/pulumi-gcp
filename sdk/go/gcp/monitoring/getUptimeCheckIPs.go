@@ -5,6 +5,7 @@ package monitoring
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -40,6 +41,16 @@ import (
 // ```
 func GetUptimeCheckIPs(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetUptimeCheckIPsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetUptimeCheckIPsResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetUptimeCheckIPsResult{}, errors.New("DependsOn is not supported for direct form invoke GetUptimeCheckIPs, use GetUptimeCheckIPsOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetUptimeCheckIPsResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetUptimeCheckIPs, use GetUptimeCheckIPsOutput instead")
+	}
 	var rv GetUptimeCheckIPsResult
 	err := ctx.Invoke("gcp:monitoring/getUptimeCheckIPs:getUptimeCheckIPs", nil, &rv, opts...)
 	if err != nil {

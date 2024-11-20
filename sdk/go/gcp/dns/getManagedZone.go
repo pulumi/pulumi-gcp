@@ -5,6 +5,7 @@ package dns
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -56,6 +57,16 @@ import (
 // ```
 func LookupManagedZone(ctx *pulumi.Context, args *LookupManagedZoneArgs, opts ...pulumi.InvokeOption) (*LookupManagedZoneResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupManagedZoneResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupManagedZoneResult{}, errors.New("DependsOn is not supported for direct form invoke LookupManagedZone, use LookupManagedZoneOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupManagedZoneResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupManagedZone, use LookupManagedZoneOutput instead")
+	}
 	var rv LookupManagedZoneResult
 	err := ctx.Invoke("gcp:dns/getManagedZone:getManagedZone", args, &rv, opts...)
 	if err != nil {
@@ -92,17 +103,18 @@ type LookupManagedZoneResult struct {
 }
 
 func LookupManagedZoneOutput(ctx *pulumi.Context, args LookupManagedZoneOutputArgs, opts ...pulumi.InvokeOption) LookupManagedZoneResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupManagedZoneResultOutput, error) {
 			args := v.(LookupManagedZoneArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupManagedZoneResult
-			secret, err := ctx.InvokePackageRaw("gcp:dns/getManagedZone:getManagedZone", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:dns/getManagedZone:getManagedZone", args, &rv, "", opts...)
 			if err != nil {
 				return LookupManagedZoneResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupManagedZoneResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupManagedZoneResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupManagedZoneResultOutput), nil
 			}

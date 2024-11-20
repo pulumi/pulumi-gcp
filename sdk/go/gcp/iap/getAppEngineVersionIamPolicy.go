@@ -5,6 +5,7 @@ package iap
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -43,6 +44,16 @@ import (
 // ```
 func LookupAppEngineVersionIamPolicy(ctx *pulumi.Context, args *LookupAppEngineVersionIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupAppEngineVersionIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupAppEngineVersionIamPolicyResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupAppEngineVersionIamPolicyResult{}, errors.New("DependsOn is not supported for direct form invoke LookupAppEngineVersionIamPolicy, use LookupAppEngineVersionIamPolicyOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupAppEngineVersionIamPolicyResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupAppEngineVersionIamPolicy, use LookupAppEngineVersionIamPolicyOutput instead")
+	}
 	var rv LookupAppEngineVersionIamPolicyResult
 	err := ctx.Invoke("gcp:iap/getAppEngineVersionIamPolicy:getAppEngineVersionIamPolicy", args, &rv, opts...)
 	if err != nil {
@@ -80,17 +91,18 @@ type LookupAppEngineVersionIamPolicyResult struct {
 }
 
 func LookupAppEngineVersionIamPolicyOutput(ctx *pulumi.Context, args LookupAppEngineVersionIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupAppEngineVersionIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAppEngineVersionIamPolicyResultOutput, error) {
 			args := v.(LookupAppEngineVersionIamPolicyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupAppEngineVersionIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:iap/getAppEngineVersionIamPolicy:getAppEngineVersionIamPolicy", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:iap/getAppEngineVersionIamPolicy:getAppEngineVersionIamPolicy", args, &rv, "", opts...)
 			if err != nil {
 				return LookupAppEngineVersionIamPolicyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupAppEngineVersionIamPolicyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupAppEngineVersionIamPolicyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupAppEngineVersionIamPolicyResultOutput), nil
 			}

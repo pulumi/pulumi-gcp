@@ -5,6 +5,7 @@ package vertex
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -13,6 +14,16 @@ import (
 
 func GetAiFeaturestoreEntitytypeIamPolicy(ctx *pulumi.Context, args *GetAiFeaturestoreEntitytypeIamPolicyArgs, opts ...pulumi.InvokeOption) (*GetAiFeaturestoreEntitytypeIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetAiFeaturestoreEntitytypeIamPolicyResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetAiFeaturestoreEntitytypeIamPolicyResult{}, errors.New("DependsOn is not supported for direct form invoke GetAiFeaturestoreEntitytypeIamPolicy, use GetAiFeaturestoreEntitytypeIamPolicyOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetAiFeaturestoreEntitytypeIamPolicyResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetAiFeaturestoreEntitytypeIamPolicy, use GetAiFeaturestoreEntitytypeIamPolicyOutput instead")
+	}
 	var rv GetAiFeaturestoreEntitytypeIamPolicyResult
 	err := ctx.Invoke("gcp:vertex/getAiFeaturestoreEntitytypeIamPolicy:getAiFeaturestoreEntitytypeIamPolicy", args, &rv, opts...)
 	if err != nil {
@@ -43,17 +54,18 @@ type GetAiFeaturestoreEntitytypeIamPolicyResult struct {
 }
 
 func GetAiFeaturestoreEntitytypeIamPolicyOutput(ctx *pulumi.Context, args GetAiFeaturestoreEntitytypeIamPolicyOutputArgs, opts ...pulumi.InvokeOption) GetAiFeaturestoreEntitytypeIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetAiFeaturestoreEntitytypeIamPolicyResultOutput, error) {
 			args := v.(GetAiFeaturestoreEntitytypeIamPolicyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetAiFeaturestoreEntitytypeIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:vertex/getAiFeaturestoreEntitytypeIamPolicy:getAiFeaturestoreEntitytypeIamPolicy", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:vertex/getAiFeaturestoreEntitytypeIamPolicy:getAiFeaturestoreEntitytypeIamPolicy", args, &rv, "", opts...)
 			if err != nil {
 				return GetAiFeaturestoreEntitytypeIamPolicyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetAiFeaturestoreEntitytypeIamPolicyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetAiFeaturestoreEntitytypeIamPolicyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetAiFeaturestoreEntitytypeIamPolicyResultOutput), nil
 			}

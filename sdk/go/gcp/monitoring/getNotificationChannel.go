@@ -5,6 +5,7 @@ package monitoring
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -78,6 +79,16 @@ import (
 // ```
 func LookupNotificationChannel(ctx *pulumi.Context, args *LookupNotificationChannelArgs, opts ...pulumi.InvokeOption) (*LookupNotificationChannelResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupNotificationChannelResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupNotificationChannelResult{}, errors.New("DependsOn is not supported for direct form invoke LookupNotificationChannel, use LookupNotificationChannelOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupNotificationChannelResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupNotificationChannel, use LookupNotificationChannelOutput instead")
+	}
 	var rv LookupNotificationChannelResult
 	err := ctx.Invoke("gcp:monitoring/getNotificationChannel:getNotificationChannel", args, &rv, opts...)
 	if err != nil {
@@ -131,17 +142,18 @@ type LookupNotificationChannelResult struct {
 }
 
 func LookupNotificationChannelOutput(ctx *pulumi.Context, args LookupNotificationChannelOutputArgs, opts ...pulumi.InvokeOption) LookupNotificationChannelResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupNotificationChannelResultOutput, error) {
 			args := v.(LookupNotificationChannelArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupNotificationChannelResult
-			secret, err := ctx.InvokePackageRaw("gcp:monitoring/getNotificationChannel:getNotificationChannel", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:monitoring/getNotificationChannel:getNotificationChannel", args, &rv, "", opts...)
 			if err != nil {
 				return LookupNotificationChannelResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupNotificationChannelResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupNotificationChannelResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupNotificationChannelResultOutput), nil
 			}

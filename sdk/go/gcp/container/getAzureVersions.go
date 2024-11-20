@@ -5,6 +5,7 @@ package container
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -42,6 +43,16 @@ import (
 // ```
 func GetAzureVersions(ctx *pulumi.Context, args *GetAzureVersionsArgs, opts ...pulumi.InvokeOption) (*GetAzureVersionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetAzureVersionsResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetAzureVersionsResult{}, errors.New("DependsOn is not supported for direct form invoke GetAzureVersions, use GetAzureVersionsOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetAzureVersionsResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetAzureVersions, use GetAzureVersionsOutput instead")
+	}
 	var rv GetAzureVersionsResult
 	err := ctx.Invoke("gcp:container/getAzureVersions:getAzureVersions", args, &rv, opts...)
 	if err != nil {
@@ -72,17 +83,18 @@ type GetAzureVersionsResult struct {
 }
 
 func GetAzureVersionsOutput(ctx *pulumi.Context, args GetAzureVersionsOutputArgs, opts ...pulumi.InvokeOption) GetAzureVersionsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetAzureVersionsResultOutput, error) {
 			args := v.(GetAzureVersionsArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetAzureVersionsResult
-			secret, err := ctx.InvokePackageRaw("gcp:container/getAzureVersions:getAzureVersions", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:container/getAzureVersions:getAzureVersions", args, &rv, "", opts...)
 			if err != nil {
 				return GetAzureVersionsResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetAzureVersionsResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetAzureVersionsResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetAzureVersionsResultOutput), nil
 			}

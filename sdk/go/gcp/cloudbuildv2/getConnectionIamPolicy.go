@@ -5,6 +5,7 @@ package cloudbuildv2
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -42,6 +43,16 @@ import (
 // ```
 func GetConnectionIamPolicy(ctx *pulumi.Context, args *GetConnectionIamPolicyArgs, opts ...pulumi.InvokeOption) (*GetConnectionIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetConnectionIamPolicyResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetConnectionIamPolicyResult{}, errors.New("DependsOn is not supported for direct form invoke GetConnectionIamPolicy, use GetConnectionIamPolicyOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetConnectionIamPolicyResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetConnectionIamPolicy, use GetConnectionIamPolicyOutput instead")
+	}
 	var rv GetConnectionIamPolicyResult
 	err := ctx.Invoke("gcp:cloudbuildv2/getConnectionIamPolicy:getConnectionIamPolicy", args, &rv, opts...)
 	if err != nil {
@@ -78,17 +89,18 @@ type GetConnectionIamPolicyResult struct {
 }
 
 func GetConnectionIamPolicyOutput(ctx *pulumi.Context, args GetConnectionIamPolicyOutputArgs, opts ...pulumi.InvokeOption) GetConnectionIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetConnectionIamPolicyResultOutput, error) {
 			args := v.(GetConnectionIamPolicyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetConnectionIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:cloudbuildv2/getConnectionIamPolicy:getConnectionIamPolicy", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:cloudbuildv2/getConnectionIamPolicy:getConnectionIamPolicy", args, &rv, "", opts...)
 			if err != nil {
 				return GetConnectionIamPolicyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetConnectionIamPolicyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetConnectionIamPolicyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetConnectionIamPolicyResultOutput), nil
 			}

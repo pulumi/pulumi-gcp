@@ -5,6 +5,7 @@ package workstations
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -13,6 +14,16 @@ import (
 
 func LookupWorkstationConfigIamPolicy(ctx *pulumi.Context, args *LookupWorkstationConfigIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupWorkstationConfigIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupWorkstationConfigIamPolicyResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupWorkstationConfigIamPolicyResult{}, errors.New("DependsOn is not supported for direct form invoke LookupWorkstationConfigIamPolicy, use LookupWorkstationConfigIamPolicyOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupWorkstationConfigIamPolicyResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupWorkstationConfigIamPolicy, use LookupWorkstationConfigIamPolicyOutput instead")
+	}
 	var rv LookupWorkstationConfigIamPolicyResult
 	err := ctx.Invoke("gcp:workstations/getWorkstationConfigIamPolicy:getWorkstationConfigIamPolicy", args, &rv, opts...)
 	if err != nil {
@@ -51,17 +62,18 @@ type LookupWorkstationConfigIamPolicyResult struct {
 }
 
 func LookupWorkstationConfigIamPolicyOutput(ctx *pulumi.Context, args LookupWorkstationConfigIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupWorkstationConfigIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupWorkstationConfigIamPolicyResultOutput, error) {
 			args := v.(LookupWorkstationConfigIamPolicyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupWorkstationConfigIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:workstations/getWorkstationConfigIamPolicy:getWorkstationConfigIamPolicy", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:workstations/getWorkstationConfigIamPolicy:getWorkstationConfigIamPolicy", args, &rv, "", opts...)
 			if err != nil {
 				return LookupWorkstationConfigIamPolicyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupWorkstationConfigIamPolicyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupWorkstationConfigIamPolicyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupWorkstationConfigIamPolicyResultOutput), nil
 			}

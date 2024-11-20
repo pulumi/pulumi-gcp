@@ -5,6 +5,7 @@ package vertex
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -14,6 +15,16 @@ import (
 // A representation of a collection of database items organized in a way that allows for approximate nearest neighbor (a.k.a ANN) algorithms search.
 func LookupAiIndex(ctx *pulumi.Context, args *LookupAiIndexArgs, opts ...pulumi.InvokeOption) (*LookupAiIndexResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupAiIndexResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupAiIndexResult{}, errors.New("DependsOn is not supported for direct form invoke LookupAiIndex, use LookupAiIndexOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupAiIndexResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupAiIndex, use LookupAiIndexOutput instead")
+	}
 	var rv LookupAiIndexResult
 	err := ctx.Invoke("gcp:vertex/getAiIndex:getAiIndex", args, &rv, opts...)
 	if err != nil {
@@ -57,17 +68,18 @@ type LookupAiIndexResult struct {
 }
 
 func LookupAiIndexOutput(ctx *pulumi.Context, args LookupAiIndexOutputArgs, opts ...pulumi.InvokeOption) LookupAiIndexResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAiIndexResultOutput, error) {
 			args := v.(LookupAiIndexArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupAiIndexResult
-			secret, err := ctx.InvokePackageRaw("gcp:vertex/getAiIndex:getAiIndex", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:vertex/getAiIndex:getAiIndex", args, &rv, "", opts...)
 			if err != nil {
 				return LookupAiIndexResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupAiIndexResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupAiIndexResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupAiIndexResultOutput), nil
 			}

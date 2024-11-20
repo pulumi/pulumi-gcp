@@ -5,6 +5,7 @@ package kms
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -20,6 +21,16 @@ import (
 // Google Cloud KMS KeyRing.
 func GetCryptoKeys(ctx *pulumi.Context, args *GetCryptoKeysArgs, opts ...pulumi.InvokeOption) (*GetCryptoKeysResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetCryptoKeysResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetCryptoKeysResult{}, errors.New("DependsOn is not supported for direct form invoke GetCryptoKeys, use GetCryptoKeysOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetCryptoKeysResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetCryptoKeys, use GetCryptoKeysOutput instead")
+	}
 	var rv GetCryptoKeysResult
 	err := ctx.Invoke("gcp:kms/getCryptoKeys:getCryptoKeys", args, &rv, opts...)
 	if err != nil {
@@ -54,17 +65,18 @@ type GetCryptoKeysResult struct {
 }
 
 func GetCryptoKeysOutput(ctx *pulumi.Context, args GetCryptoKeysOutputArgs, opts ...pulumi.InvokeOption) GetCryptoKeysResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetCryptoKeysResultOutput, error) {
 			args := v.(GetCryptoKeysArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetCryptoKeysResult
-			secret, err := ctx.InvokePackageRaw("gcp:kms/getCryptoKeys:getCryptoKeys", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:kms/getCryptoKeys:getCryptoKeys", args, &rv, "", opts...)
 			if err != nil {
 				return GetCryptoKeysResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetCryptoKeysResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetCryptoKeysResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetCryptoKeysResultOutput), nil
 			}

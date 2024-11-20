@@ -5,6 +5,7 @@ package pubsub
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -40,6 +41,16 @@ import (
 // ```
 func GetSubscriptionIamPolicy(ctx *pulumi.Context, args *GetSubscriptionIamPolicyArgs, opts ...pulumi.InvokeOption) (*GetSubscriptionIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetSubscriptionIamPolicyResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetSubscriptionIamPolicyResult{}, errors.New("DependsOn is not supported for direct form invoke GetSubscriptionIamPolicy, use GetSubscriptionIamPolicyOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetSubscriptionIamPolicyResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetSubscriptionIamPolicy, use GetSubscriptionIamPolicyOutput instead")
+	}
 	var rv GetSubscriptionIamPolicyResult
 	err := ctx.Invoke("gcp:pubsub/getSubscriptionIamPolicy:getSubscriptionIamPolicy", args, &rv, opts...)
 	if err != nil {
@@ -70,17 +81,18 @@ type GetSubscriptionIamPolicyResult struct {
 }
 
 func GetSubscriptionIamPolicyOutput(ctx *pulumi.Context, args GetSubscriptionIamPolicyOutputArgs, opts ...pulumi.InvokeOption) GetSubscriptionIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetSubscriptionIamPolicyResultOutput, error) {
 			args := v.(GetSubscriptionIamPolicyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetSubscriptionIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:pubsub/getSubscriptionIamPolicy:getSubscriptionIamPolicy", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:pubsub/getSubscriptionIamPolicy:getSubscriptionIamPolicy", args, &rv, "", opts...)
 			if err != nil {
 				return GetSubscriptionIamPolicyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetSubscriptionIamPolicyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetSubscriptionIamPolicyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetSubscriptionIamPolicyResultOutput), nil
 			}

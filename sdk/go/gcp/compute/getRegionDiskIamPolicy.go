@@ -5,6 +5,7 @@ package compute
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -42,6 +43,16 @@ import (
 // ```
 func LookupRegionDiskIamPolicy(ctx *pulumi.Context, args *LookupRegionDiskIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupRegionDiskIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupRegionDiskIamPolicyResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupRegionDiskIamPolicyResult{}, errors.New("DependsOn is not supported for direct form invoke LookupRegionDiskIamPolicy, use LookupRegionDiskIamPolicyOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupRegionDiskIamPolicyResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupRegionDiskIamPolicy, use LookupRegionDiskIamPolicyOutput instead")
+	}
 	var rv LookupRegionDiskIamPolicyResult
 	err := ctx.Invoke("gcp:compute/getRegionDiskIamPolicy:getRegionDiskIamPolicy", args, &rv, opts...)
 	if err != nil {
@@ -78,17 +89,18 @@ type LookupRegionDiskIamPolicyResult struct {
 }
 
 func LookupRegionDiskIamPolicyOutput(ctx *pulumi.Context, args LookupRegionDiskIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupRegionDiskIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupRegionDiskIamPolicyResultOutput, error) {
 			args := v.(LookupRegionDiskIamPolicyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupRegionDiskIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:compute/getRegionDiskIamPolicy:getRegionDiskIamPolicy", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:compute/getRegionDiskIamPolicy:getRegionDiskIamPolicy", args, &rv, "", opts...)
 			if err != nil {
 				return LookupRegionDiskIamPolicyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupRegionDiskIamPolicyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupRegionDiskIamPolicyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupRegionDiskIamPolicyResultOutput), nil
 			}

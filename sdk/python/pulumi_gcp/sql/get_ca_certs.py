@@ -119,7 +119,7 @@ def get_ca_certs(instance: Optional[str] = None,
         project=pulumi.get(__ret__, 'project'))
 def get_ca_certs_output(instance: Optional[pulumi.Input[str]] = None,
                         project: Optional[pulumi.Input[Optional[str]]] = None,
-                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCaCertsResult]:
+                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCaCertsResult]:
     """
     Get all of the trusted Certificate Authorities (CAs) for the specified SQL database instance. For more information see the
     [official documentation](https://cloud.google.com/sql/)
@@ -133,7 +133,7 @@ def get_ca_certs_output(instance: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['instance'] = instance
     __args__['project'] = project
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:sql/getCaCerts:getCaCerts', __args__, opts=opts, typ=GetCaCertsResult)
     return __ret__.apply(lambda __response__: GetCaCertsResult(
         active_version=pulumi.get(__response__, 'active_version'),

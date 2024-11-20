@@ -5,6 +5,7 @@ package kms
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -57,6 +58,16 @@ import (
 // ```
 func GetCryptoKeyLatestVersion(ctx *pulumi.Context, args *GetCryptoKeyLatestVersionArgs, opts ...pulumi.InvokeOption) (*GetCryptoKeyLatestVersionResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetCryptoKeyLatestVersionResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetCryptoKeyLatestVersionResult{}, errors.New("DependsOn is not supported for direct form invoke GetCryptoKeyLatestVersion, use GetCryptoKeyLatestVersionOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetCryptoKeyLatestVersionResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetCryptoKeyLatestVersion, use GetCryptoKeyLatestVersionOutput instead")
+	}
 	var rv GetCryptoKeyLatestVersionResult
 	err := ctx.Invoke("gcp:kms/getCryptoKeyLatestVersion:getCryptoKeyLatestVersion", args, &rv, opts...)
 	if err != nil {
@@ -99,17 +110,18 @@ type GetCryptoKeyLatestVersionResult struct {
 }
 
 func GetCryptoKeyLatestVersionOutput(ctx *pulumi.Context, args GetCryptoKeyLatestVersionOutputArgs, opts ...pulumi.InvokeOption) GetCryptoKeyLatestVersionResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetCryptoKeyLatestVersionResultOutput, error) {
 			args := v.(GetCryptoKeyLatestVersionArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetCryptoKeyLatestVersionResult
-			secret, err := ctx.InvokePackageRaw("gcp:kms/getCryptoKeyLatestVersion:getCryptoKeyLatestVersion", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:kms/getCryptoKeyLatestVersion:getCryptoKeyLatestVersion", args, &rv, "", opts...)
 			if err != nil {
 				return GetCryptoKeyLatestVersionResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetCryptoKeyLatestVersionResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetCryptoKeyLatestVersionResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetCryptoKeyLatestVersionResultOutput), nil
 			}

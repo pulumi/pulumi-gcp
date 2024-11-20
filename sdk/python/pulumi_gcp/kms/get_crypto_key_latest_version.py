@@ -185,7 +185,7 @@ def get_crypto_key_latest_version(crypto_key: Optional[str] = None,
         version=pulumi.get(__ret__, 'version'))
 def get_crypto_key_latest_version_output(crypto_key: Optional[pulumi.Input[str]] = None,
                                          filter: Optional[pulumi.Input[Optional[str]]] = None,
-                                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCryptoKeyLatestVersionResult]:
+                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCryptoKeyLatestVersionResult]:
     """
     Provides access to the latest Google Cloud Platform KMS CryptoKeyVersion in a CryptoKey. For more information see
     [the official documentation](https://cloud.google.com/kms/docs/object-hierarchy#key_version)
@@ -219,7 +219,7 @@ def get_crypto_key_latest_version_output(crypto_key: Optional[pulumi.Input[str]]
     __args__ = dict()
     __args__['cryptoKey'] = crypto_key
     __args__['filter'] = filter
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:kms/getCryptoKeyLatestVersion:getCryptoKeyLatestVersion', __args__, opts=opts, typ=GetCryptoKeyLatestVersionResult)
     return __ret__.apply(lambda __response__: GetCryptoKeyLatestVersionResult(
         algorithm=pulumi.get(__response__, 'algorithm'),

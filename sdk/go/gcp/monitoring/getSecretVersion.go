@@ -5,6 +5,7 @@ package monitoring
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -42,6 +43,16 @@ import (
 // Deprecated: gcp.monitoring.getSecretVersion has been deprecated in favor of gcp.secretmanager.getSecretVersion
 func GetSecretVersion(ctx *pulumi.Context, args *GetSecretVersionArgs, opts ...pulumi.InvokeOption) (*GetSecretVersionResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetSecretVersionResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetSecretVersionResult{}, errors.New("DependsOn is not supported for direct form invoke GetSecretVersion, use GetSecretVersionOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetSecretVersionResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetSecretVersion, use GetSecretVersionOutput instead")
+	}
 	var rv GetSecretVersionResult
 	err := ctx.Invoke("gcp:monitoring/getSecretVersion:getSecretVersion", args, &rv, opts...)
 	if err != nil {
@@ -87,17 +98,18 @@ type GetSecretVersionResult struct {
 }
 
 func GetSecretVersionOutput(ctx *pulumi.Context, args GetSecretVersionOutputArgs, opts ...pulumi.InvokeOption) GetSecretVersionResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetSecretVersionResultOutput, error) {
 			args := v.(GetSecretVersionArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetSecretVersionResult
-			secret, err := ctx.InvokePackageRaw("gcp:monitoring/getSecretVersion:getSecretVersion", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:monitoring/getSecretVersion:getSecretVersion", args, &rv, "", opts...)
 			if err != nil {
 				return GetSecretVersionResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetSecretVersionResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetSecretVersionResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetSecretVersionResultOutput), nil
 			}

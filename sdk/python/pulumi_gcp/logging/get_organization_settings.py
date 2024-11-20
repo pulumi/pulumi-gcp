@@ -175,7 +175,7 @@ def get_organization_settings(organization: Optional[str] = None,
         organization=pulumi.get(__ret__, 'organization'),
         storage_location=pulumi.get(__ret__, 'storage_location'))
 def get_organization_settings_output(organization: Optional[pulumi.Input[str]] = None,
-                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOrganizationSettingsResult]:
+                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrganizationSettingsResult]:
     """
     Describes the settings associated with a organization.
 
@@ -200,7 +200,7 @@ def get_organization_settings_output(organization: Optional[pulumi.Input[str]] =
     """
     __args__ = dict()
     __args__['organization'] = organization
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:logging/getOrganizationSettings:getOrganizationSettings', __args__, opts=opts, typ=GetOrganizationSettingsResult)
     return __ret__.apply(lambda __response__: GetOrganizationSettingsResult(
         disable_default_sink=pulumi.get(__response__, 'disable_default_sink'),

@@ -5,6 +5,7 @@ package bigtable
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -41,6 +42,16 @@ import (
 // ```
 func LookupTableIamPolicy(ctx *pulumi.Context, args *LookupTableIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupTableIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupTableIamPolicyResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupTableIamPolicyResult{}, errors.New("DependsOn is not supported for direct form invoke LookupTableIamPolicy, use LookupTableIamPolicyOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupTableIamPolicyResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupTableIamPolicy, use LookupTableIamPolicyOutput instead")
+	}
 	var rv LookupTableIamPolicyResult
 	err := ctx.Invoke("gcp:bigtable/getTableIamPolicy:getTableIamPolicy", args, &rv, opts...)
 	if err != nil {
@@ -72,17 +83,18 @@ type LookupTableIamPolicyResult struct {
 }
 
 func LookupTableIamPolicyOutput(ctx *pulumi.Context, args LookupTableIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupTableIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupTableIamPolicyResultOutput, error) {
 			args := v.(LookupTableIamPolicyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupTableIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:bigtable/getTableIamPolicy:getTableIamPolicy", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:bigtable/getTableIamPolicy:getTableIamPolicy", args, &rv, "", opts...)
 			if err != nil {
 				return LookupTableIamPolicyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupTableIamPolicyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupTableIamPolicyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupTableIamPolicyResultOutput), nil
 			}

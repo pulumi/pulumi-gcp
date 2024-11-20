@@ -5,6 +5,7 @@ package composer
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -61,6 +62,16 @@ import (
 // ```
 func LookupUserWorkloadsConfigMap(ctx *pulumi.Context, args *LookupUserWorkloadsConfigMapArgs, opts ...pulumi.InvokeOption) (*LookupUserWorkloadsConfigMapResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupUserWorkloadsConfigMapResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupUserWorkloadsConfigMapResult{}, errors.New("DependsOn is not supported for direct form invoke LookupUserWorkloadsConfigMap, use LookupUserWorkloadsConfigMapOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupUserWorkloadsConfigMapResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupUserWorkloadsConfigMap, use LookupUserWorkloadsConfigMapOutput instead")
+	}
 	var rv LookupUserWorkloadsConfigMapResult
 	err := ctx.Invoke("gcp:composer/getUserWorkloadsConfigMap:getUserWorkloadsConfigMap", args, &rv, opts...)
 	if err != nil {
@@ -96,17 +107,18 @@ type LookupUserWorkloadsConfigMapResult struct {
 }
 
 func LookupUserWorkloadsConfigMapOutput(ctx *pulumi.Context, args LookupUserWorkloadsConfigMapOutputArgs, opts ...pulumi.InvokeOption) LookupUserWorkloadsConfigMapResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupUserWorkloadsConfigMapResultOutput, error) {
 			args := v.(LookupUserWorkloadsConfigMapArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupUserWorkloadsConfigMapResult
-			secret, err := ctx.InvokePackageRaw("gcp:composer/getUserWorkloadsConfigMap:getUserWorkloadsConfigMap", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:composer/getUserWorkloadsConfigMap:getUserWorkloadsConfigMap", args, &rv, "", opts...)
 			if err != nil {
 				return LookupUserWorkloadsConfigMapResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupUserWorkloadsConfigMapResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupUserWorkloadsConfigMapResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupUserWorkloadsConfigMapResultOutput), nil
 			}

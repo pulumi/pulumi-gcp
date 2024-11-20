@@ -5,6 +5,7 @@ package monitoring
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -95,6 +96,16 @@ import (
 // ```
 func GetAppEngineService(ctx *pulumi.Context, args *GetAppEngineServiceArgs, opts ...pulumi.InvokeOption) (*GetAppEngineServiceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetAppEngineServiceResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetAppEngineServiceResult{}, errors.New("DependsOn is not supported for direct form invoke GetAppEngineService, use GetAppEngineServiceOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetAppEngineServiceResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetAppEngineService, use GetAppEngineServiceOutput instead")
+	}
 	var rv GetAppEngineServiceResult
 	err := ctx.Invoke("gcp:monitoring/getAppEngineService:getAppEngineService", args, &rv, opts...)
 	if err != nil {
@@ -135,17 +146,18 @@ type GetAppEngineServiceResult struct {
 }
 
 func GetAppEngineServiceOutput(ctx *pulumi.Context, args GetAppEngineServiceOutputArgs, opts ...pulumi.InvokeOption) GetAppEngineServiceResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetAppEngineServiceResultOutput, error) {
 			args := v.(GetAppEngineServiceArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetAppEngineServiceResult
-			secret, err := ctx.InvokePackageRaw("gcp:monitoring/getAppEngineService:getAppEngineService", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:monitoring/getAppEngineService:getAppEngineService", args, &rv, "", opts...)
 			if err != nil {
 				return GetAppEngineServiceResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetAppEngineServiceResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetAppEngineServiceResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetAppEngineServiceResultOutput), nil
 			}

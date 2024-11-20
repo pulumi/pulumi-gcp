@@ -5,6 +5,7 @@ package compute
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -52,6 +53,16 @@ import (
 // ```
 func LookupRegionInstanceTemplate(ctx *pulumi.Context, args *LookupRegionInstanceTemplateArgs, opts ...pulumi.InvokeOption) (*LookupRegionInstanceTemplateResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupRegionInstanceTemplateResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupRegionInstanceTemplateResult{}, errors.New("DependsOn is not supported for direct form invoke LookupRegionInstanceTemplate, use LookupRegionInstanceTemplateOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupRegionInstanceTemplateResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupRegionInstanceTemplate, use LookupRegionInstanceTemplateOutput instead")
+	}
 	var rv LookupRegionInstanceTemplateResult
 	err := ctx.Invoke("gcp:compute/getRegionInstanceTemplate:getRegionInstanceTemplate", args, &rv, opts...)
 	if err != nil {
@@ -165,17 +176,18 @@ type LookupRegionInstanceTemplateResult struct {
 }
 
 func LookupRegionInstanceTemplateOutput(ctx *pulumi.Context, args LookupRegionInstanceTemplateOutputArgs, opts ...pulumi.InvokeOption) LookupRegionInstanceTemplateResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupRegionInstanceTemplateResultOutput, error) {
 			args := v.(LookupRegionInstanceTemplateArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupRegionInstanceTemplateResult
-			secret, err := ctx.InvokePackageRaw("gcp:compute/getRegionInstanceTemplate:getRegionInstanceTemplate", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:compute/getRegionInstanceTemplate:getRegionInstanceTemplate", args, &rv, "", opts...)
 			if err != nil {
 				return LookupRegionInstanceTemplateResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupRegionInstanceTemplateResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupRegionInstanceTemplateResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupRegionInstanceTemplateResultOutput), nil
 			}

@@ -5,6 +5,7 @@ package cloudquota
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -41,6 +42,16 @@ import (
 // ```
 func GetSQuotaInfos(ctx *pulumi.Context, args *GetSQuotaInfosArgs, opts ...pulumi.InvokeOption) (*GetSQuotaInfosResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetSQuotaInfosResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetSQuotaInfosResult{}, errors.New("DependsOn is not supported for direct form invoke GetSQuotaInfos, use GetSQuotaInfosOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetSQuotaInfosResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetSQuotaInfos, use GetSQuotaInfosOutput instead")
+	}
 	var rv GetSQuotaInfosResult
 	err := ctx.Invoke("gcp:cloudquota/getSQuotaInfos:getSQuotaInfos", args, &rv, opts...)
 	if err != nil {
@@ -68,17 +79,18 @@ type GetSQuotaInfosResult struct {
 }
 
 func GetSQuotaInfosOutput(ctx *pulumi.Context, args GetSQuotaInfosOutputArgs, opts ...pulumi.InvokeOption) GetSQuotaInfosResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetSQuotaInfosResultOutput, error) {
 			args := v.(GetSQuotaInfosArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetSQuotaInfosResult
-			secret, err := ctx.InvokePackageRaw("gcp:cloudquota/getSQuotaInfos:getSQuotaInfos", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:cloudquota/getSQuotaInfos:getSQuotaInfos", args, &rv, "", opts...)
 			if err != nil {
 				return GetSQuotaInfosResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetSQuotaInfosResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetSQuotaInfosResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetSQuotaInfosResultOutput), nil
 			}

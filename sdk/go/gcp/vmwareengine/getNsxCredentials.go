@@ -5,6 +5,7 @@ package vmwareengine
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -43,6 +44,16 @@ import (
 // ```
 func GetNsxCredentials(ctx *pulumi.Context, args *GetNsxCredentialsArgs, opts ...pulumi.InvokeOption) (*GetNsxCredentialsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetNsxCredentialsResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetNsxCredentialsResult{}, errors.New("DependsOn is not supported for direct form invoke GetNsxCredentials, use GetNsxCredentialsOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetNsxCredentialsResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetNsxCredentials, use GetNsxCredentialsOutput instead")
+	}
 	var rv GetNsxCredentialsResult
 	err := ctx.Invoke("gcp:vmwareengine/getNsxCredentials:getNsxCredentials", args, &rv, opts...)
 	if err != nil {
@@ -69,17 +80,18 @@ type GetNsxCredentialsResult struct {
 }
 
 func GetNsxCredentialsOutput(ctx *pulumi.Context, args GetNsxCredentialsOutputArgs, opts ...pulumi.InvokeOption) GetNsxCredentialsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetNsxCredentialsResultOutput, error) {
 			args := v.(GetNsxCredentialsArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetNsxCredentialsResult
-			secret, err := ctx.InvokePackageRaw("gcp:vmwareengine/getNsxCredentials:getNsxCredentials", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:vmwareengine/getNsxCredentials:getNsxCredentials", args, &rv, "", opts...)
 			if err != nil {
 				return GetNsxCredentialsResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetNsxCredentialsResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetNsxCredentialsResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetNsxCredentialsResultOutput), nil
 			}

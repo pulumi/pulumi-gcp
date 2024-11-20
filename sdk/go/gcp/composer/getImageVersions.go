@@ -5,6 +5,7 @@ package composer
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -50,6 +51,16 @@ import (
 // ```
 func GetImageVersions(ctx *pulumi.Context, args *GetImageVersionsArgs, opts ...pulumi.InvokeOption) (*GetImageVersionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetImageVersionsResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetImageVersionsResult{}, errors.New("DependsOn is not supported for direct form invoke GetImageVersions, use GetImageVersionsOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetImageVersionsResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetImageVersions, use GetImageVersionsOutput instead")
+	}
 	var rv GetImageVersionsResult
 	err := ctx.Invoke("gcp:composer/getImageVersions:getImageVersions", args, &rv, opts...)
 	if err != nil {
@@ -79,17 +90,18 @@ type GetImageVersionsResult struct {
 }
 
 func GetImageVersionsOutput(ctx *pulumi.Context, args GetImageVersionsOutputArgs, opts ...pulumi.InvokeOption) GetImageVersionsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetImageVersionsResultOutput, error) {
 			args := v.(GetImageVersionsArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetImageVersionsResult
-			secret, err := ctx.InvokePackageRaw("gcp:composer/getImageVersions:getImageVersions", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:composer/getImageVersions:getImageVersions", args, &rv, "", opts...)
 			if err != nil {
 				return GetImageVersionsResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetImageVersionsResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetImageVersionsResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetImageVersionsResultOutput), nil
 			}

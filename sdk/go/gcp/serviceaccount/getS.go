@@ -5,6 +5,7 @@ package serviceaccount
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -44,6 +45,16 @@ import (
 // ```
 func GetS(ctx *pulumi.Context, args *GetSArgs, opts ...pulumi.InvokeOption) (*GetSResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetSResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetSResult{}, errors.New("DependsOn is not supported for direct form invoke GetS, use GetSOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetSResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetS, use GetSOutput instead")
+	}
 	var rv GetSResult
 	err := ctx.Invoke("gcp:serviceaccount/getS:getS", args, &rv, opts...)
 	if err != nil {
@@ -68,17 +79,18 @@ type GetSResult struct {
 }
 
 func GetSOutput(ctx *pulumi.Context, args GetSOutputArgs, opts ...pulumi.InvokeOption) GetSResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetSResultOutput, error) {
 			args := v.(GetSArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetSResult
-			secret, err := ctx.InvokePackageRaw("gcp:serviceaccount/getS:getS", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:serviceaccount/getS:getS", args, &rv, "", opts...)
 			if err != nil {
 				return GetSResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetSResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetSResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetSResultOutput), nil
 			}

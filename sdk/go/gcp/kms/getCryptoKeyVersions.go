@@ -5,6 +5,7 @@ package kms
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -57,6 +58,16 @@ import (
 // ```
 func GetCryptoKeyVersions(ctx *pulumi.Context, args *GetCryptoKeyVersionsArgs, opts ...pulumi.InvokeOption) (*GetCryptoKeyVersionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetCryptoKeyVersionsResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetCryptoKeyVersionsResult{}, errors.New("DependsOn is not supported for direct form invoke GetCryptoKeyVersions, use GetCryptoKeyVersionsOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetCryptoKeyVersionsResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetCryptoKeyVersions, use GetCryptoKeyVersionsOutput instead")
+	}
 	var rv GetCryptoKeyVersionsResult
 	err := ctx.Invoke("gcp:kms/getCryptoKeyVersions:getCryptoKeyVersions", args, &rv, opts...)
 	if err != nil {
@@ -93,17 +104,18 @@ type GetCryptoKeyVersionsResult struct {
 }
 
 func GetCryptoKeyVersionsOutput(ctx *pulumi.Context, args GetCryptoKeyVersionsOutputArgs, opts ...pulumi.InvokeOption) GetCryptoKeyVersionsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetCryptoKeyVersionsResultOutput, error) {
 			args := v.(GetCryptoKeyVersionsArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetCryptoKeyVersionsResult
-			secret, err := ctx.InvokePackageRaw("gcp:kms/getCryptoKeyVersions:getCryptoKeyVersions", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:kms/getCryptoKeyVersions:getCryptoKeyVersions", args, &rv, "", opts...)
 			if err != nil {
 				return GetCryptoKeyVersionsResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetCryptoKeyVersionsResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetCryptoKeyVersionsResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetCryptoKeyVersionsResultOutput), nil
 			}

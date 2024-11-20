@@ -5,6 +5,7 @@ package serviceaccount
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -40,6 +41,16 @@ import (
 // ```
 func GetIamPolicy(ctx *pulumi.Context, args *GetIamPolicyArgs, opts ...pulumi.InvokeOption) (*GetIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetIamPolicyResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetIamPolicyResult{}, errors.New("DependsOn is not supported for direct form invoke GetIamPolicy, use GetIamPolicyOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetIamPolicyResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetIamPolicy, use GetIamPolicyOutput instead")
+	}
 	var rv GetIamPolicyResult
 	err := ctx.Invoke("gcp:serviceaccount/getIamPolicy:getIamPolicy", args, &rv, opts...)
 	if err != nil {
@@ -66,17 +77,18 @@ type GetIamPolicyResult struct {
 }
 
 func GetIamPolicyOutput(ctx *pulumi.Context, args GetIamPolicyOutputArgs, opts ...pulumi.InvokeOption) GetIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetIamPolicyResultOutput, error) {
 			args := v.(GetIamPolicyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:serviceaccount/getIamPolicy:getIamPolicy", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:serviceaccount/getIamPolicy:getIamPolicy", args, &rv, "", opts...)
 			if err != nil {
 				return GetIamPolicyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetIamPolicyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetIamPolicyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetIamPolicyResultOutput), nil
 			}
