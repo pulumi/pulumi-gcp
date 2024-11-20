@@ -5,6 +5,7 @@ package backupdisasterrecovery
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -38,6 +39,16 @@ import (
 // ```
 func LookupManagementServer(ctx *pulumi.Context, args *LookupManagementServerArgs, opts ...pulumi.InvokeOption) (*LookupManagementServerResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupManagementServerResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupManagementServerResult{}, errors.New("DependsOn is not supported for direct form invoke LookupManagementServer, use LookupManagementServerOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupManagementServerResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupManagementServer, use LookupManagementServerOutput instead")
+	}
 	var rv LookupManagementServerResult
 	err := ctx.Invoke("gcp:backupdisasterrecovery/getManagementServer:getManagementServer", args, &rv, opts...)
 	if err != nil {
@@ -65,17 +76,18 @@ type LookupManagementServerResult struct {
 }
 
 func LookupManagementServerOutput(ctx *pulumi.Context, args LookupManagementServerOutputArgs, opts ...pulumi.InvokeOption) LookupManagementServerResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupManagementServerResultOutput, error) {
 			args := v.(LookupManagementServerArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupManagementServerResult
-			secret, err := ctx.InvokePackageRaw("gcp:backupdisasterrecovery/getManagementServer:getManagementServer", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:backupdisasterrecovery/getManagementServer:getManagementServer", args, &rv, "", opts...)
 			if err != nil {
 				return LookupManagementServerResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupManagementServerResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupManagementServerResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupManagementServerResultOutput), nil
 			}

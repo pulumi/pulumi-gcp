@@ -5,6 +5,7 @@ package monitoring
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -57,6 +58,16 @@ import (
 // ```
 func GetMeshIstioService(ctx *pulumi.Context, args *GetMeshIstioServiceArgs, opts ...pulumi.InvokeOption) (*GetMeshIstioServiceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetMeshIstioServiceResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetMeshIstioServiceResult{}, errors.New("DependsOn is not supported for direct form invoke GetMeshIstioService, use GetMeshIstioServiceOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetMeshIstioServiceResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetMeshIstioService, use GetMeshIstioServiceOutput instead")
+	}
 	var rv GetMeshIstioServiceResult
 	err := ctx.Invoke("gcp:monitoring/getMeshIstioService:getMeshIstioService", args, &rv, opts...)
 	if err != nil {
@@ -105,17 +116,18 @@ type GetMeshIstioServiceResult struct {
 }
 
 func GetMeshIstioServiceOutput(ctx *pulumi.Context, args GetMeshIstioServiceOutputArgs, opts ...pulumi.InvokeOption) GetMeshIstioServiceResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetMeshIstioServiceResultOutput, error) {
 			args := v.(GetMeshIstioServiceArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetMeshIstioServiceResult
-			secret, err := ctx.InvokePackageRaw("gcp:monitoring/getMeshIstioService:getMeshIstioService", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:monitoring/getMeshIstioService:getMeshIstioService", args, &rv, "", opts...)
 			if err != nil {
 				return GetMeshIstioServiceResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetMeshIstioServiceResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetMeshIstioServiceResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetMeshIstioServiceResultOutput), nil
 			}

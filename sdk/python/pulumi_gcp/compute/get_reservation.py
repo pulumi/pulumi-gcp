@@ -193,7 +193,7 @@ def get_reservation(name: Optional[str] = None,
 def get_reservation_output(name: Optional[pulumi.Input[str]] = None,
                            project: Optional[pulumi.Input[Optional[str]]] = None,
                            zone: Optional[pulumi.Input[str]] = None,
-                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetReservationResult]:
+                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetReservationResult]:
     """
     Provides access to available Google Compute Reservation Resources for a given project.
     See more about [Reservations of Compute Engine resources](https://cloud.google.com/compute/docs/instances/reservations-overview) in the upstream docs.
@@ -215,7 +215,7 @@ def get_reservation_output(name: Optional[pulumi.Input[str]] = None,
     __args__['name'] = name
     __args__['project'] = project
     __args__['zone'] = zone
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:compute/getReservation:getReservation', __args__, opts=opts, typ=GetReservationResult)
     return __ret__.apply(lambda __response__: GetReservationResult(
         commitment=pulumi.get(__response__, 'commitment'),

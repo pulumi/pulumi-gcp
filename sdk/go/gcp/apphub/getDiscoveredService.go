@@ -5,6 +5,7 @@ package apphub
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -41,6 +42,16 @@ import (
 // ```
 func GetDiscoveredService(ctx *pulumi.Context, args *GetDiscoveredServiceArgs, opts ...pulumi.InvokeOption) (*GetDiscoveredServiceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetDiscoveredServiceResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetDiscoveredServiceResult{}, errors.New("DependsOn is not supported for direct form invoke GetDiscoveredService, use GetDiscoveredServiceOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetDiscoveredServiceResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetDiscoveredService, use GetDiscoveredServiceOutput instead")
+	}
 	var rv GetDiscoveredServiceResult
 	err := ctx.Invoke("gcp:apphub/getDiscoveredService:getDiscoveredService", args, &rv, opts...)
 	if err != nil {
@@ -76,17 +87,18 @@ type GetDiscoveredServiceResult struct {
 }
 
 func GetDiscoveredServiceOutput(ctx *pulumi.Context, args GetDiscoveredServiceOutputArgs, opts ...pulumi.InvokeOption) GetDiscoveredServiceResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetDiscoveredServiceResultOutput, error) {
 			args := v.(GetDiscoveredServiceArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetDiscoveredServiceResult
-			secret, err := ctx.InvokePackageRaw("gcp:apphub/getDiscoveredService:getDiscoveredService", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:apphub/getDiscoveredService:getDiscoveredService", args, &rv, "", opts...)
 			if err != nil {
 				return GetDiscoveredServiceResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetDiscoveredServiceResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetDiscoveredServiceResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetDiscoveredServiceResultOutput), nil
 			}

@@ -5,6 +5,7 @@ package compute
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -41,6 +42,16 @@ import (
 // ```
 func LookupRouter(ctx *pulumi.Context, args *LookupRouterArgs, opts ...pulumi.InvokeOption) (*LookupRouterResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupRouterResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupRouterResult{}, errors.New("DependsOn is not supported for direct form invoke LookupRouter, use LookupRouterOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupRouterResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupRouter, use LookupRouterOutput instead")
+	}
 	var rv LookupRouterResult
 	err := ctx.Invoke("gcp:compute/getRouter:getRouter", args, &rv, opts...)
 	if err != nil {
@@ -79,17 +90,18 @@ type LookupRouterResult struct {
 }
 
 func LookupRouterOutput(ctx *pulumi.Context, args LookupRouterOutputArgs, opts ...pulumi.InvokeOption) LookupRouterResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupRouterResultOutput, error) {
 			args := v.(LookupRouterArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupRouterResult
-			secret, err := ctx.InvokePackageRaw("gcp:compute/getRouter:getRouter", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:compute/getRouter:getRouter", args, &rv, "", opts...)
 			if err != nil {
 				return LookupRouterResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupRouterResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupRouterResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupRouterResultOutput), nil
 			}

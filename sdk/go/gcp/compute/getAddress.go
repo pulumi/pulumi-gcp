@@ -5,6 +5,7 @@ package compute
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -65,6 +66,16 @@ import (
 // ```
 func LookupAddress(ctx *pulumi.Context, args *LookupAddressArgs, opts ...pulumi.InvokeOption) (*LookupAddressResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupAddressResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupAddressResult{}, errors.New("DependsOn is not supported for direct form invoke LookupAddress, use LookupAddressOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupAddressResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupAddress, use LookupAddressOutput instead")
+	}
 	var rv LookupAddressResult
 	err := ctx.Invoke("gcp:compute/getAddress:getAddress", args, &rv, opts...)
 	if err != nil {
@@ -110,17 +121,18 @@ type LookupAddressResult struct {
 }
 
 func LookupAddressOutput(ctx *pulumi.Context, args LookupAddressOutputArgs, opts ...pulumi.InvokeOption) LookupAddressResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAddressResultOutput, error) {
 			args := v.(LookupAddressArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupAddressResult
-			secret, err := ctx.InvokePackageRaw("gcp:compute/getAddress:getAddress", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:compute/getAddress:getAddress", args, &rv, "", opts...)
 			if err != nil {
 				return LookupAddressResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupAddressResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupAddressResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupAddressResultOutput), nil
 			}

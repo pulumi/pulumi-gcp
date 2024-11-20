@@ -5,6 +5,7 @@ package firebase
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -13,6 +14,16 @@ import (
 
 func GetAndroidAppConfig(ctx *pulumi.Context, args *GetAndroidAppConfigArgs, opts ...pulumi.InvokeOption) (*GetAndroidAppConfigResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetAndroidAppConfigResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetAndroidAppConfigResult{}, errors.New("DependsOn is not supported for direct form invoke GetAndroidAppConfig, use GetAndroidAppConfigOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetAndroidAppConfigResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetAndroidAppConfig, use GetAndroidAppConfigOutput instead")
+	}
 	var rv GetAndroidAppConfigResult
 	err := ctx.Invoke("gcp:firebase/getAndroidAppConfig:getAndroidAppConfig", args, &rv, opts...)
 	if err != nil {
@@ -37,17 +48,18 @@ type GetAndroidAppConfigResult struct {
 }
 
 func GetAndroidAppConfigOutput(ctx *pulumi.Context, args GetAndroidAppConfigOutputArgs, opts ...pulumi.InvokeOption) GetAndroidAppConfigResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetAndroidAppConfigResultOutput, error) {
 			args := v.(GetAndroidAppConfigArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetAndroidAppConfigResult
-			secret, err := ctx.InvokePackageRaw("gcp:firebase/getAndroidAppConfig:getAndroidAppConfig", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:firebase/getAndroidAppConfig:getAndroidAppConfig", args, &rv, "", opts...)
 			if err != nil {
 				return GetAndroidAppConfigResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetAndroidAppConfigResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetAndroidAppConfigResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetAndroidAppConfigResultOutput), nil
 			}

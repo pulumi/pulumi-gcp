@@ -5,6 +5,7 @@ package cloudquota
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -42,6 +43,16 @@ import (
 // ```
 func GetSQuotaInfo(ctx *pulumi.Context, args *GetSQuotaInfoArgs, opts ...pulumi.InvokeOption) (*GetSQuotaInfoResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetSQuotaInfoResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetSQuotaInfoResult{}, errors.New("DependsOn is not supported for direct form invoke GetSQuotaInfo, use GetSQuotaInfoOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetSQuotaInfoResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetSQuotaInfo, use GetSQuotaInfoOutput instead")
+	}
 	var rv GetSQuotaInfoResult
 	err := ctx.Invoke("gcp:cloudquota/getSQuotaInfo:getSQuotaInfo", args, &rv, opts...)
 	if err != nil {
@@ -98,17 +109,18 @@ type GetSQuotaInfoResult struct {
 }
 
 func GetSQuotaInfoOutput(ctx *pulumi.Context, args GetSQuotaInfoOutputArgs, opts ...pulumi.InvokeOption) GetSQuotaInfoResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetSQuotaInfoResultOutput, error) {
 			args := v.(GetSQuotaInfoArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetSQuotaInfoResult
-			secret, err := ctx.InvokePackageRaw("gcp:cloudquota/getSQuotaInfo:getSQuotaInfo", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:cloudquota/getSQuotaInfo:getSQuotaInfo", args, &rv, "", opts...)
 			if err != nil {
 				return GetSQuotaInfoResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetSQuotaInfoResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetSQuotaInfoResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetSQuotaInfoResultOutput), nil
 			}

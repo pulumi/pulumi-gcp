@@ -5,6 +5,7 @@ package tags
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -41,6 +42,16 @@ import (
 // ```
 func LookupTagValue(ctx *pulumi.Context, args *LookupTagValueArgs, opts ...pulumi.InvokeOption) (*LookupTagValueResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupTagValueResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupTagValueResult{}, errors.New("DependsOn is not supported for direct form invoke LookupTagValue, use LookupTagValueOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupTagValueResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupTagValue, use LookupTagValueOutput instead")
+	}
 	var rv LookupTagValueResult
 	err := ctx.Invoke("gcp:tags/getTagValue:getTagValue", args, &rv, opts...)
 	if err != nil {
@@ -77,17 +88,18 @@ type LookupTagValueResult struct {
 }
 
 func LookupTagValueOutput(ctx *pulumi.Context, args LookupTagValueOutputArgs, opts ...pulumi.InvokeOption) LookupTagValueResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupTagValueResultOutput, error) {
 			args := v.(LookupTagValueArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupTagValueResult
-			secret, err := ctx.InvokePackageRaw("gcp:tags/getTagValue:getTagValue", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:tags/getTagValue:getTagValue", args, &rv, "", opts...)
 			if err != nil {
 				return LookupTagValueResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupTagValueResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupTagValueResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupTagValueResultOutput), nil
 			}

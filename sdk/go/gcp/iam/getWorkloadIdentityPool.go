@@ -5,6 +5,7 @@ package iam
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -40,6 +41,16 @@ import (
 // ```
 func LookupWorkloadIdentityPool(ctx *pulumi.Context, args *LookupWorkloadIdentityPoolArgs, opts ...pulumi.InvokeOption) (*LookupWorkloadIdentityPoolResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupWorkloadIdentityPoolResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupWorkloadIdentityPoolResult{}, errors.New("DependsOn is not supported for direct form invoke LookupWorkloadIdentityPool, use LookupWorkloadIdentityPoolOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupWorkloadIdentityPoolResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupWorkloadIdentityPool, use LookupWorkloadIdentityPoolOutput instead")
+	}
 	var rv LookupWorkloadIdentityPoolResult
 	err := ctx.Invoke("gcp:iam/getWorkloadIdentityPool:getWorkloadIdentityPool", args, &rv, opts...)
 	if err != nil {
@@ -74,17 +85,18 @@ type LookupWorkloadIdentityPoolResult struct {
 }
 
 func LookupWorkloadIdentityPoolOutput(ctx *pulumi.Context, args LookupWorkloadIdentityPoolOutputArgs, opts ...pulumi.InvokeOption) LookupWorkloadIdentityPoolResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupWorkloadIdentityPoolResultOutput, error) {
 			args := v.(LookupWorkloadIdentityPoolArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupWorkloadIdentityPoolResult
-			secret, err := ctx.InvokePackageRaw("gcp:iam/getWorkloadIdentityPool:getWorkloadIdentityPool", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:iam/getWorkloadIdentityPool:getWorkloadIdentityPool", args, &rv, "", opts...)
 			if err != nil {
 				return LookupWorkloadIdentityPoolResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupWorkloadIdentityPoolResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupWorkloadIdentityPoolResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupWorkloadIdentityPoolResultOutput), nil
 			}

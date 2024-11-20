@@ -5,6 +5,7 @@ package compute
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -40,6 +41,16 @@ import (
 // ```
 func GetHcVpnGateway(ctx *pulumi.Context, args *GetHcVpnGatewayArgs, opts ...pulumi.InvokeOption) (*GetHcVpnGatewayResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetHcVpnGatewayResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetHcVpnGatewayResult{}, errors.New("DependsOn is not supported for direct form invoke GetHcVpnGateway, use GetHcVpnGatewayOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetHcVpnGatewayResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetHcVpnGateway, use GetHcVpnGatewayOutput instead")
+	}
 	var rv GetHcVpnGatewayResult
 	err := ctx.Invoke("gcp:compute/getHcVpnGateway:getHcVpnGateway", args, &rv, opts...)
 	if err != nil {
@@ -78,17 +89,18 @@ type GetHcVpnGatewayResult struct {
 }
 
 func GetHcVpnGatewayOutput(ctx *pulumi.Context, args GetHcVpnGatewayOutputArgs, opts ...pulumi.InvokeOption) GetHcVpnGatewayResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetHcVpnGatewayResultOutput, error) {
 			args := v.(GetHcVpnGatewayArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetHcVpnGatewayResult
-			secret, err := ctx.InvokePackageRaw("gcp:compute/getHcVpnGateway:getHcVpnGateway", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:compute/getHcVpnGateway:getHcVpnGateway", args, &rv, "", opts...)
 			if err != nil {
 				return GetHcVpnGatewayResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetHcVpnGatewayResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetHcVpnGatewayResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetHcVpnGatewayResultOutput), nil
 			}

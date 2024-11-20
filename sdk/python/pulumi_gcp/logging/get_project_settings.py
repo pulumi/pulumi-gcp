@@ -175,7 +175,7 @@ def get_project_settings(project: Optional[str] = None,
         project=pulumi.get(__ret__, 'project'),
         storage_location=pulumi.get(__ret__, 'storage_location'))
 def get_project_settings_output(project: Optional[pulumi.Input[str]] = None,
-                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectSettingsResult]:
+                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectSettingsResult]:
     """
     Describes the settings associated with a project.
 
@@ -200,7 +200,7 @@ def get_project_settings_output(project: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['project'] = project
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:logging/getProjectSettings:getProjectSettings', __args__, opts=opts, typ=GetProjectSettingsResult)
     return __ret__.apply(lambda __response__: GetProjectSettingsResult(
         disable_default_sink=pulumi.get(__response__, 'disable_default_sink'),

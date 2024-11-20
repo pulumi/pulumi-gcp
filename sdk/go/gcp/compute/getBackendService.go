@@ -5,6 +5,7 @@ package compute
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -49,6 +50,16 @@ import (
 // ```
 func LookupBackendService(ctx *pulumi.Context, args *LookupBackendServiceArgs, opts ...pulumi.InvokeOption) (*LookupBackendServiceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupBackendServiceResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupBackendServiceResult{}, errors.New("DependsOn is not supported for direct form invoke LookupBackendService, use LookupBackendServiceOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupBackendServiceResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupBackendService, use LookupBackendServiceOutput instead")
+	}
 	var rv LookupBackendServiceResult
 	err := ctx.Invoke("gcp:compute/getBackendService:getBackendService", args, &rv, opts...)
 	if err != nil {
@@ -120,17 +131,18 @@ type LookupBackendServiceResult struct {
 }
 
 func LookupBackendServiceOutput(ctx *pulumi.Context, args LookupBackendServiceOutputArgs, opts ...pulumi.InvokeOption) LookupBackendServiceResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupBackendServiceResultOutput, error) {
 			args := v.(LookupBackendServiceArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupBackendServiceResult
-			secret, err := ctx.InvokePackageRaw("gcp:compute/getBackendService:getBackendService", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:compute/getBackendService:getBackendService", args, &rv, "", opts...)
 			if err != nil {
 				return LookupBackendServiceResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupBackendServiceResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupBackendServiceResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupBackendServiceResultOutput), nil
 			}

@@ -5,6 +5,7 @@ package dataproc
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -42,6 +43,16 @@ import (
 // ```
 func LookupAutoscalingPolicyIamPolicy(ctx *pulumi.Context, args *LookupAutoscalingPolicyIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupAutoscalingPolicyIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupAutoscalingPolicyIamPolicyResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupAutoscalingPolicyIamPolicyResult{}, errors.New("DependsOn is not supported for direct form invoke LookupAutoscalingPolicyIamPolicy, use LookupAutoscalingPolicyIamPolicyOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupAutoscalingPolicyIamPolicyResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupAutoscalingPolicyIamPolicy, use LookupAutoscalingPolicyIamPolicyOutput instead")
+	}
 	var rv LookupAutoscalingPolicyIamPolicyResult
 	err := ctx.Invoke("gcp:dataproc/getAutoscalingPolicyIamPolicy:getAutoscalingPolicyIamPolicy", args, &rv, opts...)
 	if err != nil {
@@ -83,17 +94,18 @@ type LookupAutoscalingPolicyIamPolicyResult struct {
 }
 
 func LookupAutoscalingPolicyIamPolicyOutput(ctx *pulumi.Context, args LookupAutoscalingPolicyIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupAutoscalingPolicyIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAutoscalingPolicyIamPolicyResultOutput, error) {
 			args := v.(LookupAutoscalingPolicyIamPolicyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupAutoscalingPolicyIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:dataproc/getAutoscalingPolicyIamPolicy:getAutoscalingPolicyIamPolicy", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:dataproc/getAutoscalingPolicyIamPolicy:getAutoscalingPolicyIamPolicy", args, &rv, "", opts...)
 			if err != nil {
 				return LookupAutoscalingPolicyIamPolicyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupAutoscalingPolicyIamPolicyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupAutoscalingPolicyIamPolicyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupAutoscalingPolicyIamPolicyResultOutput), nil
 			}

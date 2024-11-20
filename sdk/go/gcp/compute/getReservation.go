@@ -5,6 +5,7 @@ package compute
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -40,6 +41,16 @@ import (
 // ```
 func LookupReservation(ctx *pulumi.Context, args *LookupReservationArgs, opts ...pulumi.InvokeOption) (*LookupReservationResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupReservationResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupReservationResult{}, errors.New("DependsOn is not supported for direct form invoke LookupReservation, use LookupReservationOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupReservationResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupReservation, use LookupReservationOutput instead")
+	}
 	var rv LookupReservationResult
 	err := ctx.Invoke("gcp:compute/getReservation:getReservation", args, &rv, opts...)
 	if err != nil {
@@ -76,17 +87,18 @@ type LookupReservationResult struct {
 }
 
 func LookupReservationOutput(ctx *pulumi.Context, args LookupReservationOutputArgs, opts ...pulumi.InvokeOption) LookupReservationResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupReservationResultOutput, error) {
 			args := v.(LookupReservationArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupReservationResult
-			secret, err := ctx.InvokePackageRaw("gcp:compute/getReservation:getReservation", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:compute/getReservation:getReservation", args, &rv, "", opts...)
 			if err != nil {
 				return LookupReservationResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupReservationResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupReservationResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupReservationResultOutput), nil
 			}

@@ -5,6 +5,7 @@ package vmwareengine
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -44,6 +45,16 @@ import (
 // ```
 func LookupExternalAccessRule(ctx *pulumi.Context, args *LookupExternalAccessRuleArgs, opts ...pulumi.InvokeOption) (*LookupExternalAccessRuleResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupExternalAccessRuleResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupExternalAccessRuleResult{}, errors.New("DependsOn is not supported for direct form invoke LookupExternalAccessRule, use LookupExternalAccessRuleOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupExternalAccessRuleResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupExternalAccessRule, use LookupExternalAccessRuleOutput instead")
+	}
 	var rv LookupExternalAccessRuleResult
 	err := ctx.Invoke("gcp:vmwareengine/getExternalAccessRule:getExternalAccessRule", args, &rv, opts...)
 	if err != nil {
@@ -81,17 +92,18 @@ type LookupExternalAccessRuleResult struct {
 }
 
 func LookupExternalAccessRuleOutput(ctx *pulumi.Context, args LookupExternalAccessRuleOutputArgs, opts ...pulumi.InvokeOption) LookupExternalAccessRuleResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupExternalAccessRuleResultOutput, error) {
 			args := v.(LookupExternalAccessRuleArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupExternalAccessRuleResult
-			secret, err := ctx.InvokePackageRaw("gcp:vmwareengine/getExternalAccessRule:getExternalAccessRule", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:vmwareengine/getExternalAccessRule:getExternalAccessRule", args, &rv, "", opts...)
 			if err != nil {
 				return LookupExternalAccessRuleResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupExternalAccessRuleResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupExternalAccessRuleResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupExternalAccessRuleResultOutput), nil
 			}

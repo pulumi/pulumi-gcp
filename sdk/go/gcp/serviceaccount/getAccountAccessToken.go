@@ -5,6 +5,7 @@ package serviceaccount
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -96,6 +97,16 @@ import (
 // > *Note*: the generated token is non-refreshable and can have a maximum `lifetime` of `3600` seconds.
 func GetAccountAccessToken(ctx *pulumi.Context, args *GetAccountAccessTokenArgs, opts ...pulumi.InvokeOption) (*GetAccountAccessTokenResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetAccountAccessTokenResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetAccountAccessTokenResult{}, errors.New("DependsOn is not supported for direct form invoke GetAccountAccessToken, use GetAccountAccessTokenOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetAccountAccessTokenResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetAccountAccessToken, use GetAccountAccessTokenOutput instead")
+	}
 	var rv GetAccountAccessTokenResult
 	err := ctx.Invoke("gcp:serviceaccount/getAccountAccessToken:getAccountAccessToken", args, &rv, opts...)
 	if err != nil {
@@ -129,17 +140,18 @@ type GetAccountAccessTokenResult struct {
 }
 
 func GetAccountAccessTokenOutput(ctx *pulumi.Context, args GetAccountAccessTokenOutputArgs, opts ...pulumi.InvokeOption) GetAccountAccessTokenResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetAccountAccessTokenResultOutput, error) {
 			args := v.(GetAccountAccessTokenArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetAccountAccessTokenResult
-			secret, err := ctx.InvokePackageRaw("gcp:serviceaccount/getAccountAccessToken:getAccountAccessToken", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:serviceaccount/getAccountAccessToken:getAccountAccessToken", args, &rv, "", opts...)
 			if err != nil {
 				return GetAccountAccessTokenResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetAccountAccessTokenResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetAccountAccessTokenResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetAccountAccessTokenResultOutput), nil
 			}

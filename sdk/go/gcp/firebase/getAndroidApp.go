@@ -5,6 +5,7 @@ package firebase
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -13,6 +14,16 @@ import (
 
 func LookupAndroidApp(ctx *pulumi.Context, args *LookupAndroidAppArgs, opts ...pulumi.InvokeOption) (*LookupAndroidAppResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupAndroidAppResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupAndroidAppResult{}, errors.New("DependsOn is not supported for direct form invoke LookupAndroidApp, use LookupAndroidAppOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupAndroidAppResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupAndroidApp, use LookupAndroidAppOutput instead")
+	}
 	var rv LookupAndroidAppResult
 	err := ctx.Invoke("gcp:firebase/getAndroidApp:getAndroidApp", args, &rv, opts...)
 	if err != nil {
@@ -59,17 +70,18 @@ type LookupAndroidAppResult struct {
 }
 
 func LookupAndroidAppOutput(ctx *pulumi.Context, args LookupAndroidAppOutputArgs, opts ...pulumi.InvokeOption) LookupAndroidAppResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAndroidAppResultOutput, error) {
 			args := v.(LookupAndroidAppArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupAndroidAppResult
-			secret, err := ctx.InvokePackageRaw("gcp:firebase/getAndroidApp:getAndroidApp", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:firebase/getAndroidApp:getAndroidApp", args, &rv, "", opts...)
 			if err != nil {
 				return LookupAndroidAppResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupAndroidAppResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupAndroidAppResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupAndroidAppResultOutput), nil
 			}

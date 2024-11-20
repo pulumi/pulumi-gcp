@@ -127,7 +127,7 @@ def get_web_backend_service_iam_policy(project: Optional[str] = None,
         web_backend_service=pulumi.get(__ret__, 'web_backend_service'))
 def get_web_backend_service_iam_policy_output(project: Optional[pulumi.Input[Optional[str]]] = None,
                                               web_backend_service: Optional[pulumi.Input[str]] = None,
-                                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetWebBackendServiceIamPolicyResult]:
+                                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWebBackendServiceIamPolicyResult]:
     """
     Retrieves the current IAM policy data for webbackendservice
 
@@ -149,7 +149,7 @@ def get_web_backend_service_iam_policy_output(project: Optional[pulumi.Input[Opt
     __args__ = dict()
     __args__['project'] = project
     __args__['webBackendService'] = web_backend_service
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:iap/getWebBackendServiceIamPolicy:getWebBackendServiceIamPolicy', __args__, opts=opts, typ=GetWebBackendServiceIamPolicyResult)
     return __ret__.apply(lambda __response__: GetWebBackendServiceIamPolicyResult(
         etag=pulumi.get(__response__, 'etag'),

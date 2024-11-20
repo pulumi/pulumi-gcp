@@ -5,6 +5,7 @@ package dataproc
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -41,6 +42,16 @@ import (
 // ```
 func GetJobIamPolicy(ctx *pulumi.Context, args *GetJobIamPolicyArgs, opts ...pulumi.InvokeOption) (*GetJobIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetJobIamPolicyResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetJobIamPolicyResult{}, errors.New("DependsOn is not supported for direct form invoke GetJobIamPolicy, use GetJobIamPolicyOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetJobIamPolicyResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetJobIamPolicy, use GetJobIamPolicyOutput instead")
+	}
 	var rv GetJobIamPolicyResult
 	err := ctx.Invoke("gcp:dataproc/getJobIamPolicy:getJobIamPolicy", args, &rv, opts...)
 	if err != nil {
@@ -71,17 +82,18 @@ type GetJobIamPolicyResult struct {
 }
 
 func GetJobIamPolicyOutput(ctx *pulumi.Context, args GetJobIamPolicyOutputArgs, opts ...pulumi.InvokeOption) GetJobIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetJobIamPolicyResultOutput, error) {
 			args := v.(GetJobIamPolicyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetJobIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:dataproc/getJobIamPolicy:getJobIamPolicy", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:dataproc/getJobIamPolicy:getJobIamPolicy", args, &rv, "", opts...)
 			if err != nil {
 				return GetJobIamPolicyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetJobIamPolicyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetJobIamPolicyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetJobIamPolicyResultOutput), nil
 			}

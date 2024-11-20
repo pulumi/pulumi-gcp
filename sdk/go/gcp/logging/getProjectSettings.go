@@ -5,6 +5,7 @@ package logging
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -47,6 +48,16 @@ import (
 // ```
 func GetProjectSettings(ctx *pulumi.Context, args *GetProjectSettingsArgs, opts ...pulumi.InvokeOption) (*GetProjectSettingsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetProjectSettingsResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetProjectSettingsResult{}, errors.New("DependsOn is not supported for direct form invoke GetProjectSettings, use GetProjectSettingsOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetProjectSettingsResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetProjectSettings, use GetProjectSettingsOutput instead")
+	}
 	var rv GetProjectSettingsResult
 	err := ctx.Invoke("gcp:logging/getProjectSettings:getProjectSettings", args, &rv, opts...)
 	if err != nil {
@@ -87,17 +98,18 @@ type GetProjectSettingsResult struct {
 }
 
 func GetProjectSettingsOutput(ctx *pulumi.Context, args GetProjectSettingsOutputArgs, opts ...pulumi.InvokeOption) GetProjectSettingsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetProjectSettingsResultOutput, error) {
 			args := v.(GetProjectSettingsArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetProjectSettingsResult
-			secret, err := ctx.InvokePackageRaw("gcp:logging/getProjectSettings:getProjectSettings", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:logging/getProjectSettings:getProjectSettings", args, &rv, "", opts...)
 			if err != nil {
 				return GetProjectSettingsResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetProjectSettingsResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetProjectSettingsResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetProjectSettingsResultOutput), nil
 			}

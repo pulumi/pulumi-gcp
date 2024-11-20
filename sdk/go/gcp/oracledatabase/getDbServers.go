@@ -5,6 +5,7 @@ package oracledatabase
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -84,6 +85,16 @@ import (
 // * `dbNodeIds` - The OCID of database nodes associated with the database server.
 func GetDbServers(ctx *pulumi.Context, args *GetDbServersArgs, opts ...pulumi.InvokeOption) (*GetDbServersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetDbServersResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetDbServersResult{}, errors.New("DependsOn is not supported for direct form invoke GetDbServers, use GetDbServersOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetDbServersResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetDbServers, use GetDbServersOutput instead")
+	}
 	var rv GetDbServersResult
 	err := ctx.Invoke("gcp:oracledatabase/getDbServers:getDbServers", args, &rv, opts...)
 	if err != nil {
@@ -114,17 +125,18 @@ type GetDbServersResult struct {
 }
 
 func GetDbServersOutput(ctx *pulumi.Context, args GetDbServersOutputArgs, opts ...pulumi.InvokeOption) GetDbServersResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetDbServersResultOutput, error) {
 			args := v.(GetDbServersArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetDbServersResult
-			secret, err := ctx.InvokePackageRaw("gcp:oracledatabase/getDbServers:getDbServers", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:oracledatabase/getDbServers:getDbServers", args, &rv, "", opts...)
 			if err != nil {
 				return GetDbServersResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetDbServersResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetDbServersResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetDbServersResultOutput), nil
 			}

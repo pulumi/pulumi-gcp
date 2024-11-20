@@ -5,6 +5,7 @@ package organizations
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -37,6 +38,16 @@ import (
 // ```
 func GetClientConfig(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetClientConfigResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetClientConfigResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetClientConfigResult{}, errors.New("DependsOn is not supported for direct form invoke GetClientConfig, use GetClientConfigOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetClientConfigResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetClientConfig, use GetClientConfigOutput instead")
+	}
 	var rv GetClientConfigResult
 	err := ctx.Invoke("gcp:organizations/getClientConfig:getClientConfig", nil, &rv, opts...)
 	if err != nil {

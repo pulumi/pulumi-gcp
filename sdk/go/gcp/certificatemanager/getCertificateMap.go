@@ -5,6 +5,7 @@ package certificatemanager
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -40,6 +41,16 @@ import (
 // ```
 func GetCertificateMap(ctx *pulumi.Context, args *GetCertificateMapArgs, opts ...pulumi.InvokeOption) (*GetCertificateMapResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetCertificateMapResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetCertificateMapResult{}, errors.New("DependsOn is not supported for direct form invoke GetCertificateMap, use GetCertificateMapOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetCertificateMapResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetCertificateMap, use GetCertificateMapOutput instead")
+	}
 	var rv GetCertificateMapResult
 	err := ctx.Invoke("gcp:certificatemanager/getCertificateMap:getCertificateMap", args, &rv, opts...)
 	if err != nil {
@@ -75,17 +86,18 @@ type GetCertificateMapResult struct {
 }
 
 func GetCertificateMapOutput(ctx *pulumi.Context, args GetCertificateMapOutputArgs, opts ...pulumi.InvokeOption) GetCertificateMapResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetCertificateMapResultOutput, error) {
 			args := v.(GetCertificateMapArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetCertificateMapResult
-			secret, err := ctx.InvokePackageRaw("gcp:certificatemanager/getCertificateMap:getCertificateMap", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:certificatemanager/getCertificateMap:getCertificateMap", args, &rv, "", opts...)
 			if err != nil {
 				return GetCertificateMapResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetCertificateMapResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetCertificateMapResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetCertificateMapResultOutput), nil
 			}

@@ -5,6 +5,7 @@ package tpu
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -75,6 +76,16 @@ import (
 // ```
 func GetV2AcceleratorTypes(ctx *pulumi.Context, args *GetV2AcceleratorTypesArgs, opts ...pulumi.InvokeOption) (*GetV2AcceleratorTypesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetV2AcceleratorTypesResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetV2AcceleratorTypesResult{}, errors.New("DependsOn is not supported for direct form invoke GetV2AcceleratorTypes, use GetV2AcceleratorTypesOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetV2AcceleratorTypesResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetV2AcceleratorTypes, use GetV2AcceleratorTypesOutput instead")
+	}
 	var rv GetV2AcceleratorTypesResult
 	err := ctx.Invoke("gcp:tpu/getV2AcceleratorTypes:getV2AcceleratorTypes", args, &rv, opts...)
 	if err != nil {
@@ -104,17 +115,18 @@ type GetV2AcceleratorTypesResult struct {
 }
 
 func GetV2AcceleratorTypesOutput(ctx *pulumi.Context, args GetV2AcceleratorTypesOutputArgs, opts ...pulumi.InvokeOption) GetV2AcceleratorTypesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetV2AcceleratorTypesResultOutput, error) {
 			args := v.(GetV2AcceleratorTypesArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetV2AcceleratorTypesResult
-			secret, err := ctx.InvokePackageRaw("gcp:tpu/getV2AcceleratorTypes:getV2AcceleratorTypes", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:tpu/getV2AcceleratorTypes:getV2AcceleratorTypes", args, &rv, "", opts...)
 			if err != nil {
 				return GetV2AcceleratorTypesResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetV2AcceleratorTypesResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetV2AcceleratorTypesResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetV2AcceleratorTypesResultOutput), nil
 			}

@@ -5,6 +5,7 @@ package iap
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -42,6 +43,16 @@ import (
 // ```
 func GetTunnelInstanceIamPolicy(ctx *pulumi.Context, args *GetTunnelInstanceIamPolicyArgs, opts ...pulumi.InvokeOption) (*GetTunnelInstanceIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetTunnelInstanceIamPolicyResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetTunnelInstanceIamPolicyResult{}, errors.New("DependsOn is not supported for direct form invoke GetTunnelInstanceIamPolicy, use GetTunnelInstanceIamPolicyOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetTunnelInstanceIamPolicyResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetTunnelInstanceIamPolicy, use GetTunnelInstanceIamPolicyOutput instead")
+	}
 	var rv GetTunnelInstanceIamPolicyResult
 	err := ctx.Invoke("gcp:iap/getTunnelInstanceIamPolicy:getTunnelInstanceIamPolicy", args, &rv, opts...)
 	if err != nil {
@@ -75,17 +86,18 @@ type GetTunnelInstanceIamPolicyResult struct {
 }
 
 func GetTunnelInstanceIamPolicyOutput(ctx *pulumi.Context, args GetTunnelInstanceIamPolicyOutputArgs, opts ...pulumi.InvokeOption) GetTunnelInstanceIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetTunnelInstanceIamPolicyResultOutput, error) {
 			args := v.(GetTunnelInstanceIamPolicyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetTunnelInstanceIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:iap/getTunnelInstanceIamPolicy:getTunnelInstanceIamPolicy", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:iap/getTunnelInstanceIamPolicy:getTunnelInstanceIamPolicy", args, &rv, "", opts...)
 			if err != nil {
 				return GetTunnelInstanceIamPolicyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetTunnelInstanceIamPolicyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetTunnelInstanceIamPolicyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetTunnelInstanceIamPolicyResultOutput), nil
 			}

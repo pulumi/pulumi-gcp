@@ -5,6 +5,7 @@ package storage
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -39,6 +40,16 @@ import (
 // ```
 func GetTransferProjectServiceAccount(ctx *pulumi.Context, args *GetTransferProjectServiceAccountArgs, opts ...pulumi.InvokeOption) (*GetTransferProjectServiceAccountResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetTransferProjectServiceAccountResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetTransferProjectServiceAccountResult{}, errors.New("DependsOn is not supported for direct form invoke GetTransferProjectServiceAccount, use GetTransferProjectServiceAccountOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetTransferProjectServiceAccountResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetTransferProjectServiceAccount, use GetTransferProjectServiceAccountOutput instead")
+	}
 	var rv GetTransferProjectServiceAccountResult
 	err := ctx.Invoke("gcp:storage/getTransferProjectServiceAccount:getTransferProjectServiceAccount", args, &rv, opts...)
 	if err != nil {
@@ -67,17 +78,18 @@ type GetTransferProjectServiceAccountResult struct {
 }
 
 func GetTransferProjectServiceAccountOutput(ctx *pulumi.Context, args GetTransferProjectServiceAccountOutputArgs, opts ...pulumi.InvokeOption) GetTransferProjectServiceAccountResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetTransferProjectServiceAccountResultOutput, error) {
 			args := v.(GetTransferProjectServiceAccountArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetTransferProjectServiceAccountResult
-			secret, err := ctx.InvokePackageRaw("gcp:storage/getTransferProjectServiceAccount:getTransferProjectServiceAccount", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:storage/getTransferProjectServiceAccount:getTransferProjectServiceAccount", args, &rv, "", opts...)
 			if err != nil {
 				return GetTransferProjectServiceAccountResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetTransferProjectServiceAccountResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetTransferProjectServiceAccountResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetTransferProjectServiceAccountResultOutput), nil
 			}

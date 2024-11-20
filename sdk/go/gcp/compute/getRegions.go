@@ -5,6 +5,7 @@ package compute
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -54,6 +55,16 @@ import (
 // ```
 func GetRegions(ctx *pulumi.Context, args *GetRegionsArgs, opts ...pulumi.InvokeOption) (*GetRegionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetRegionsResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetRegionsResult{}, errors.New("DependsOn is not supported for direct form invoke GetRegions, use GetRegionsOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetRegionsResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetRegions, use GetRegionsOutput instead")
+	}
 	var rv GetRegionsResult
 	err := ctx.Invoke("gcp:compute/getRegions:getRegions", args, &rv, opts...)
 	if err != nil {
@@ -82,17 +93,18 @@ type GetRegionsResult struct {
 }
 
 func GetRegionsOutput(ctx *pulumi.Context, args GetRegionsOutputArgs, opts ...pulumi.InvokeOption) GetRegionsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetRegionsResultOutput, error) {
 			args := v.(GetRegionsArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetRegionsResult
-			secret, err := ctx.InvokePackageRaw("gcp:compute/getRegions:getRegions", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:compute/getRegions:getRegions", args, &rv, "", opts...)
 			if err != nil {
 				return GetRegionsResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetRegionsResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetRegionsResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetRegionsResultOutput), nil
 			}

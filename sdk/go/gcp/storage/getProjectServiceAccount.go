@@ -5,6 +5,7 @@ package storage
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -134,6 +135,16 @@ import (
 // ```
 func GetProjectServiceAccount(ctx *pulumi.Context, args *GetProjectServiceAccountArgs, opts ...pulumi.InvokeOption) (*GetProjectServiceAccountResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetProjectServiceAccountResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetProjectServiceAccountResult{}, errors.New("DependsOn is not supported for direct form invoke GetProjectServiceAccount, use GetProjectServiceAccountOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetProjectServiceAccountResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetProjectServiceAccount, use GetProjectServiceAccountOutput instead")
+	}
 	var rv GetProjectServiceAccountResult
 	err := ctx.Invoke("gcp:storage/getProjectServiceAccount:getProjectServiceAccount", args, &rv, opts...)
 	if err != nil {
@@ -165,17 +176,18 @@ type GetProjectServiceAccountResult struct {
 }
 
 func GetProjectServiceAccountOutput(ctx *pulumi.Context, args GetProjectServiceAccountOutputArgs, opts ...pulumi.InvokeOption) GetProjectServiceAccountResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetProjectServiceAccountResultOutput, error) {
 			args := v.(GetProjectServiceAccountArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetProjectServiceAccountResult
-			secret, err := ctx.InvokePackageRaw("gcp:storage/getProjectServiceAccount:getProjectServiceAccount", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:storage/getProjectServiceAccount:getProjectServiceAccount", args, &rv, "", opts...)
 			if err != nil {
 				return GetProjectServiceAccountResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetProjectServiceAccountResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetProjectServiceAccountResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetProjectServiceAccountResultOutput), nil
 			}

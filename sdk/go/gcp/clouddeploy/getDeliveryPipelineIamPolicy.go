@@ -5,6 +5,7 @@ package clouddeploy
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -42,6 +43,16 @@ import (
 // ```
 func LookupDeliveryPipelineIamPolicy(ctx *pulumi.Context, args *LookupDeliveryPipelineIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupDeliveryPipelineIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupDeliveryPipelineIamPolicyResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupDeliveryPipelineIamPolicyResult{}, errors.New("DependsOn is not supported for direct form invoke LookupDeliveryPipelineIamPolicy, use LookupDeliveryPipelineIamPolicyOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupDeliveryPipelineIamPolicyResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupDeliveryPipelineIamPolicy, use LookupDeliveryPipelineIamPolicyOutput instead")
+	}
 	var rv LookupDeliveryPipelineIamPolicyResult
 	err := ctx.Invoke("gcp:clouddeploy/getDeliveryPipelineIamPolicy:getDeliveryPipelineIamPolicy", args, &rv, opts...)
 	if err != nil {
@@ -75,17 +86,18 @@ type LookupDeliveryPipelineIamPolicyResult struct {
 }
 
 func LookupDeliveryPipelineIamPolicyOutput(ctx *pulumi.Context, args LookupDeliveryPipelineIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupDeliveryPipelineIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupDeliveryPipelineIamPolicyResultOutput, error) {
 			args := v.(LookupDeliveryPipelineIamPolicyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupDeliveryPipelineIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:clouddeploy/getDeliveryPipelineIamPolicy:getDeliveryPipelineIamPolicy", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:clouddeploy/getDeliveryPipelineIamPolicy:getDeliveryPipelineIamPolicy", args, &rv, "", opts...)
 			if err != nil {
 				return LookupDeliveryPipelineIamPolicyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupDeliveryPipelineIamPolicyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupDeliveryPipelineIamPolicyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupDeliveryPipelineIamPolicyResultOutput), nil
 			}

@@ -5,6 +5,7 @@ package logging
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -47,6 +48,16 @@ import (
 // ```
 func GetProjectCmekSettings(ctx *pulumi.Context, args *GetProjectCmekSettingsArgs, opts ...pulumi.InvokeOption) (*GetProjectCmekSettingsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetProjectCmekSettingsResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetProjectCmekSettingsResult{}, errors.New("DependsOn is not supported for direct form invoke GetProjectCmekSettings, use GetProjectCmekSettingsOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetProjectCmekSettingsResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetProjectCmekSettings, use GetProjectCmekSettingsOutput instead")
+	}
 	var rv GetProjectCmekSettingsResult
 	err := ctx.Invoke("gcp:logging/getProjectCmekSettings:getProjectCmekSettings", args, &rv, opts...)
 	if err != nil {
@@ -96,17 +107,18 @@ type GetProjectCmekSettingsResult struct {
 }
 
 func GetProjectCmekSettingsOutput(ctx *pulumi.Context, args GetProjectCmekSettingsOutputArgs, opts ...pulumi.InvokeOption) GetProjectCmekSettingsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetProjectCmekSettingsResultOutput, error) {
 			args := v.(GetProjectCmekSettingsArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetProjectCmekSettingsResult
-			secret, err := ctx.InvokePackageRaw("gcp:logging/getProjectCmekSettings:getProjectCmekSettings", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:logging/getProjectCmekSettings:getProjectCmekSettings", args, &rv, "", opts...)
 			if err != nil {
 				return GetProjectCmekSettingsResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetProjectCmekSettingsResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetProjectCmekSettingsResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetProjectCmekSettingsResultOutput), nil
 			}

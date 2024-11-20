@@ -5,6 +5,7 @@ package compute
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -59,6 +60,16 @@ import (
 // ```
 func GetLBIPRanges(ctx *pulumi.Context, opts ...pulumi.InvokeOption) (*GetLBIPRangesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetLBIPRangesResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetLBIPRangesResult{}, errors.New("DependsOn is not supported for direct form invoke GetLBIPRanges, use GetLBIPRangesOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetLBIPRangesResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetLBIPRanges, use GetLBIPRangesOutput instead")
+	}
 	var rv GetLBIPRangesResult
 	err := ctx.Invoke("gcp:compute/getLBIPRanges:getLBIPRanges", nil, &rv, opts...)
 	if err != nil {

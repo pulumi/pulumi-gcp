@@ -5,6 +5,7 @@ package sql
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -17,6 +18,16 @@ import (
 // [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/tiers/list).
 func GetTiers(ctx *pulumi.Context, args *GetTiersArgs, opts ...pulumi.InvokeOption) (*GetTiersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetTiersResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetTiersResult{}, errors.New("DependsOn is not supported for direct form invoke GetTiers, use GetTiersOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetTiersResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetTiers, use GetTiersOutput instead")
+	}
 	var rv GetTiersResult
 	err := ctx.Invoke("gcp:sql/getTiers:getTiers", args, &rv, opts...)
 	if err != nil {
@@ -41,17 +52,18 @@ type GetTiersResult struct {
 }
 
 func GetTiersOutput(ctx *pulumi.Context, args GetTiersOutputArgs, opts ...pulumi.InvokeOption) GetTiersResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetTiersResultOutput, error) {
 			args := v.(GetTiersArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetTiersResult
-			secret, err := ctx.InvokePackageRaw("gcp:sql/getTiers:getTiers", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:sql/getTiers:getTiers", args, &rv, "", opts...)
 			if err != nil {
 				return GetTiersResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetTiersResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetTiersResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetTiersResultOutput), nil
 			}

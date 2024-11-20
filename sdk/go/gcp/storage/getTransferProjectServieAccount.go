@@ -5,6 +5,7 @@ package storage
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -41,6 +42,16 @@ import (
 // Deprecated: gcp.storage.getTransferProjectServieAccount has been deprecated in favor of gcp.storage.getTransferProjectServiceAccount
 func GetTransferProjectServieAccount(ctx *pulumi.Context, args *GetTransferProjectServieAccountArgs, opts ...pulumi.InvokeOption) (*GetTransferProjectServieAccountResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetTransferProjectServieAccountResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetTransferProjectServieAccountResult{}, errors.New("DependsOn is not supported for direct form invoke GetTransferProjectServieAccount, use GetTransferProjectServieAccountOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetTransferProjectServieAccountResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetTransferProjectServieAccount, use GetTransferProjectServieAccountOutput instead")
+	}
 	var rv GetTransferProjectServieAccountResult
 	err := ctx.Invoke("gcp:storage/getTransferProjectServieAccount:getTransferProjectServieAccount", args, &rv, opts...)
 	if err != nil {
@@ -69,17 +80,18 @@ type GetTransferProjectServieAccountResult struct {
 }
 
 func GetTransferProjectServieAccountOutput(ctx *pulumi.Context, args GetTransferProjectServieAccountOutputArgs, opts ...pulumi.InvokeOption) GetTransferProjectServieAccountResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetTransferProjectServieAccountResultOutput, error) {
 			args := v.(GetTransferProjectServieAccountArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetTransferProjectServieAccountResult
-			secret, err := ctx.InvokePackageRaw("gcp:storage/getTransferProjectServieAccount:getTransferProjectServieAccount", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:storage/getTransferProjectServieAccount:getTransferProjectServieAccount", args, &rv, "", opts...)
 			if err != nil {
 				return GetTransferProjectServieAccountResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetTransferProjectServieAccountResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetTransferProjectServieAccountResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetTransferProjectServieAccountResultOutput), nil
 			}

@@ -5,6 +5,7 @@ package bigquery
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -43,6 +44,16 @@ import (
 // ```
 func LookupDataset(ctx *pulumi.Context, args *LookupDatasetArgs, opts ...pulumi.InvokeOption) (*LookupDatasetResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupDatasetResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupDatasetResult{}, errors.New("DependsOn is not supported for direct form invoke LookupDataset, use LookupDatasetOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupDatasetResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupDataset, use LookupDatasetOutput instead")
+	}
 	var rv LookupDatasetResult
 	err := ctx.Invoke("gcp:bigquery/getDataset:getDataset", args, &rv, opts...)
 	if err != nil {
@@ -91,17 +102,18 @@ type LookupDatasetResult struct {
 }
 
 func LookupDatasetOutput(ctx *pulumi.Context, args LookupDatasetOutputArgs, opts ...pulumi.InvokeOption) LookupDatasetResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupDatasetResultOutput, error) {
 			args := v.(LookupDatasetArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupDatasetResult
-			secret, err := ctx.InvokePackageRaw("gcp:bigquery/getDataset:getDataset", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:bigquery/getDataset:getDataset", args, &rv, "", opts...)
 			if err != nil {
 				return LookupDatasetResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupDatasetResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupDatasetResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupDatasetResultOutput), nil
 			}

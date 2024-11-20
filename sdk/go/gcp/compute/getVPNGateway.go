@@ -5,6 +5,7 @@ package compute
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -40,6 +41,16 @@ import (
 // ```
 func LookupVPNGateway(ctx *pulumi.Context, args *LookupVPNGatewayArgs, opts ...pulumi.InvokeOption) (*LookupVPNGatewayResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupVPNGatewayResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupVPNGatewayResult{}, errors.New("DependsOn is not supported for direct form invoke LookupVPNGateway, use LookupVPNGatewayOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupVPNGatewayResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupVPNGateway, use LookupVPNGatewayOutput instead")
+	}
 	var rv LookupVPNGatewayResult
 	err := ctx.Invoke("gcp:compute/getVPNGateway:getVPNGateway", args, &rv, opts...)
 	if err != nil {
@@ -79,17 +90,18 @@ type LookupVPNGatewayResult struct {
 }
 
 func LookupVPNGatewayOutput(ctx *pulumi.Context, args LookupVPNGatewayOutputArgs, opts ...pulumi.InvokeOption) LookupVPNGatewayResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupVPNGatewayResultOutput, error) {
 			args := v.(LookupVPNGatewayArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupVPNGatewayResult
-			secret, err := ctx.InvokePackageRaw("gcp:compute/getVPNGateway:getVPNGateway", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:compute/getVPNGateway:getVPNGateway", args, &rv, "", opts...)
 			if err != nil {
 				return LookupVPNGatewayResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupVPNGatewayResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupVPNGatewayResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupVPNGatewayResultOutput), nil
 			}

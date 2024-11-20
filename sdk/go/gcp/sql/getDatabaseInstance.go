@@ -5,6 +5,7 @@ package sql
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -40,6 +41,16 @@ import (
 // ```
 func LookupDatabaseInstance(ctx *pulumi.Context, args *LookupDatabaseInstanceArgs, opts ...pulumi.InvokeOption) (*LookupDatabaseInstanceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupDatabaseInstanceResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupDatabaseInstanceResult{}, errors.New("DependsOn is not supported for direct form invoke LookupDatabaseInstance, use LookupDatabaseInstanceOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupDatabaseInstanceResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupDatabaseInstance, use LookupDatabaseInstanceOutput instead")
+	}
 	var rv LookupDatabaseInstanceResult
 	err := ctx.Invoke("gcp:sql/getDatabaseInstance:getDatabaseInstance", args, &rv, opts...)
 	if err != nil {
@@ -89,17 +100,18 @@ type LookupDatabaseInstanceResult struct {
 }
 
 func LookupDatabaseInstanceOutput(ctx *pulumi.Context, args LookupDatabaseInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupDatabaseInstanceResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupDatabaseInstanceResultOutput, error) {
 			args := v.(LookupDatabaseInstanceArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupDatabaseInstanceResult
-			secret, err := ctx.InvokePackageRaw("gcp:sql/getDatabaseInstance:getDatabaseInstance", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:sql/getDatabaseInstance:getDatabaseInstance", args, &rv, "", opts...)
 			if err != nil {
 				return LookupDatabaseInstanceResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupDatabaseInstanceResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupDatabaseInstanceResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupDatabaseInstanceResultOutput), nil
 			}
