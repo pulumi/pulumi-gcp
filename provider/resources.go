@@ -167,8 +167,10 @@ const (
 	gcpWorkbench                = "Workbench"                   // Workbench
 	gcpWorkflows                = "Workflows"                   // Workflows
 	gcpWorkstations             = "Workstations"                // Workstations
-	noProjectVar                = "DisableGlobalProjectWarning" //Setting value for project config option
 )
+
+// When `gcp:project` is set to noProjectMarkerValue, we don't warn that a global project is missing and we don't try to validate the project.
+const noProjectMarker = "DisableGlobalProjectWarning"
 
 var moduleMapping = map[string]string{
 	"access_approval":                 gcpAccessApproval,
