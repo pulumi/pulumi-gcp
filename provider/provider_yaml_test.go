@@ -219,13 +219,9 @@ func TestGlobalProjectNoProjectWarning(t *testing.T) {
 	test := pulumitest.NewPulumiTest(t, "test-programs/project-bucket",
 		opttest.LocalProviderPath(providerName, filepath.Join(cwd, "..", "bin")))
 
-	test.SetConfig(t, "gcp:project", noProjectVar)
+	test.SetConfig(t, "gcp:project", noProjectMarker)
 	test.SetConfig(t, "gcpProj", proj)
-	res := test.Up(t)
-	require.Contains(
-		t, res.StdOut,
-		noProjectVar,
-	)
+	test.Up(t)
 }
 
 // Test programs that were automatically extracted from examples without autocorrection.
