@@ -124,7 +124,7 @@ def get_transfer_project_service_account(project: Optional[str] = None,
         project=pulumi.get(__ret__, 'project'),
         subject_id=pulumi.get(__ret__, 'subject_id'))
 def get_transfer_project_service_account_output(project: Optional[pulumi.Input[Optional[str]]] = None,
-                                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTransferProjectServiceAccountResult]:
+                                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTransferProjectServiceAccountResult]:
     """
     Use this data source to retrieve Storage Transfer service account for this project
 
@@ -143,7 +143,7 @@ def get_transfer_project_service_account_output(project: Optional[pulumi.Input[O
     """
     __args__ = dict()
     __args__['project'] = project
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:storage/getTransferProjectServiceAccount:getTransferProjectServiceAccount', __args__, opts=opts, typ=GetTransferProjectServiceAccountResult)
     return __ret__.apply(lambda __response__: GetTransferProjectServiceAccountResult(
         email=pulumi.get(__response__, 'email'),

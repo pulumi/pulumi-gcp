@@ -139,7 +139,7 @@ def get_entry_group_iam_policy(entry_group: Optional[str] = None,
 def get_entry_group_iam_policy_output(entry_group: Optional[pulumi.Input[str]] = None,
                                       project: Optional[pulumi.Input[Optional[str]]] = None,
                                       region: Optional[pulumi.Input[Optional[str]]] = None,
-                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEntryGroupIamPolicyResult]:
+                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEntryGroupIamPolicyResult]:
     """
     Retrieves the current IAM policy data for entrygroup
 
@@ -161,7 +161,7 @@ def get_entry_group_iam_policy_output(entry_group: Optional[pulumi.Input[str]] =
     __args__['entryGroup'] = entry_group
     __args__['project'] = project
     __args__['region'] = region
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:datacatalog/getEntryGroupIamPolicy:getEntryGroupIamPolicy', __args__, opts=opts, typ=GetEntryGroupIamPolicyResult)
     return __ret__.apply(lambda __response__: GetEntryGroupIamPolicyResult(
         entry_group=pulumi.get(__response__, 'entry_group'),

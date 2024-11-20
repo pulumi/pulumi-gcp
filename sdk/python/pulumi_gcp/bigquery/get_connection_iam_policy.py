@@ -151,7 +151,7 @@ def get_connection_iam_policy(connection_id: Optional[str] = None,
 def get_connection_iam_policy_output(connection_id: Optional[pulumi.Input[str]] = None,
                                      location: Optional[pulumi.Input[Optional[str]]] = None,
                                      project: Optional[pulumi.Input[Optional[str]]] = None,
-                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConnectionIamPolicyResult]:
+                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConnectionIamPolicyResult]:
     """
     Retrieves the current IAM policy data for connection
 
@@ -185,7 +185,7 @@ def get_connection_iam_policy_output(connection_id: Optional[pulumi.Input[str]] 
     __args__['connectionId'] = connection_id
     __args__['location'] = location
     __args__['project'] = project
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:bigquery/getConnectionIamPolicy:getConnectionIamPolicy', __args__, opts=opts, typ=GetConnectionIamPolicyResult)
     return __ret__.apply(lambda __response__: GetConnectionIamPolicyResult(
         connection_id=pulumi.get(__response__, 'connection_id'),
