@@ -141,7 +141,7 @@ def get_web_region_backend_service_iam_policy(project: Optional[str] = None,
 def get_web_region_backend_service_iam_policy_output(project: Optional[pulumi.Input[Optional[str]]] = None,
                                                      region: Optional[pulumi.Input[Optional[str]]] = None,
                                                      web_region_backend_service: Optional[pulumi.Input[str]] = None,
-                                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetWebRegionBackendServiceIamPolicyResult]:
+                                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWebRegionBackendServiceIamPolicyResult]:
     """
     Retrieves the current IAM policy data for webregionbackendservice
 
@@ -165,7 +165,7 @@ def get_web_region_backend_service_iam_policy_output(project: Optional[pulumi.In
     __args__['project'] = project
     __args__['region'] = region
     __args__['webRegionBackendService'] = web_region_backend_service
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:iap/getWebRegionBackendServiceIamPolicy:getWebRegionBackendServiceIamPolicy', __args__, opts=opts, typ=GetWebRegionBackendServiceIamPolicyResult)
     return __ret__.apply(lambda __response__: GetWebRegionBackendServiceIamPolicyResult(
         etag=pulumi.get(__response__, 'etag'),

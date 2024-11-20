@@ -115,7 +115,7 @@ def get_cloud_vm_clusters(location: Optional[str] = None,
         project=pulumi.get(__ret__, 'project'))
 def get_cloud_vm_clusters_output(location: Optional[pulumi.Input[str]] = None,
                                  project: Optional[pulumi.Input[Optional[str]]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCloudVmClustersResult]:
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCloudVmClustersResult]:
     """
     List all CloudVmClusters.
 
@@ -141,7 +141,7 @@ def get_cloud_vm_clusters_output(location: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['location'] = location
     __args__['project'] = project
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:oracledatabase/getCloudVmClusters:getCloudVmClusters', __args__, opts=opts, typ=GetCloudVmClustersResult)
     return __ret__.apply(lambda __response__: GetCloudVmClustersResult(
         cloud_vm_clusters=pulumi.get(__response__, 'cloud_vm_clusters'),
