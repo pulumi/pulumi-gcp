@@ -124,7 +124,7 @@ def get_v2_organization_source_iam_policy(organization: Optional[str] = None,
         source=pulumi.get(__ret__, 'source'))
 def get_v2_organization_source_iam_policy_output(organization: Optional[pulumi.Input[str]] = None,
                                                  source: Optional[pulumi.Input[str]] = None,
-                                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetV2OrganizationSourceIamPolicyResult]:
+                                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetV2OrganizationSourceIamPolicyResult]:
     """
     Retrieves the current IAM policy data for organizationsource
 
@@ -143,7 +143,7 @@ def get_v2_organization_source_iam_policy_output(organization: Optional[pulumi.I
     __args__ = dict()
     __args__['organization'] = organization
     __args__['source'] = source
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:securitycenter/getV2OrganizationSourceIamPolicy:getV2OrganizationSourceIamPolicy', __args__, opts=opts, typ=GetV2OrganizationSourceIamPolicyResult)
     return __ret__.apply(lambda __response__: GetV2OrganizationSourceIamPolicyResult(
         etag=pulumi.get(__response__, 'etag'),

@@ -74,7 +74,7 @@ export interface GetSecretIamPolicyResult {
  * });
  * ```
  */
-export function getSecretIamPolicyOutput(args: GetSecretIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecretIamPolicyResult> {
+export function getSecretIamPolicyOutput(args: GetSecretIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSecretIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:secretmanager/getSecretIamPolicy:getSecretIamPolicy", {
         "project": args.project,

@@ -82,7 +82,7 @@ export interface GetNetworkPeeringResult {
  * });
  * ```
  */
-export function getNetworkPeeringOutput(args: GetNetworkPeeringOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkPeeringResult> {
+export function getNetworkPeeringOutput(args: GetNetworkPeeringOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNetworkPeeringResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:vmwareengine/getNetworkPeering:getNetworkPeering", {
         "name": args.name,

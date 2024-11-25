@@ -69,7 +69,7 @@ export interface GetRuleResult {
  * export const theRolePermissions = roleinfo.then(roleinfo => roleinfo.includedPermissions);
  * ```
  */
-export function getRuleOutput(args: GetRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRuleResult> {
+export function getRuleOutput(args: GetRuleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:iam/getRule:getRule", {
         "name": args.name,

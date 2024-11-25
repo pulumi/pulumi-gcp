@@ -195,7 +195,7 @@ def get_secret_version_output(is_secret_data_base64: Optional[pulumi.Input[Optio
                               project: Optional[pulumi.Input[Optional[str]]] = None,
                               secret: Optional[pulumi.Input[str]] = None,
                               version: Optional[pulumi.Input[Optional[str]]] = None,
-                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSecretVersionResult]:
+                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSecretVersionResult]:
     """
     Get the value and metadata from a Secret Manager secret version. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions). If you don't need the metadata (i.e., if you want to use a more limited role to access the secret version only), see also the secretmanager_get_secret_version_access datasource.
 
@@ -222,7 +222,7 @@ def get_secret_version_output(is_secret_data_base64: Optional[pulumi.Input[Optio
     __args__['project'] = project
     __args__['secret'] = secret
     __args__['version'] = version
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:secretmanager/getSecretVersion:getSecretVersion', __args__, opts=opts, typ=GetSecretVersionResult)
     return __ret__.apply(lambda __response__: GetSecretVersionResult(
         create_time=pulumi.get(__response__, 'create_time'),

@@ -44,7 +44,7 @@ export interface GetBackupPlanResult {
     readonly resourceType: string;
     readonly updateTime: string;
 }
-export function getBackupPlanOutput(args: GetBackupPlanOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBackupPlanResult> {
+export function getBackupPlanOutput(args: GetBackupPlanOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBackupPlanResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:backupdisasterrecovery/getBackupPlan:getBackupPlan", {
         "backupPlanId": args.backupPlanId,

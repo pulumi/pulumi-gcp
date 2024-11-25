@@ -67,7 +67,7 @@ export interface GetCryptoKeyIamPolicyResult {
  * });
  * ```
  */
-export function getCryptoKeyIamPolicyOutput(args: GetCryptoKeyIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCryptoKeyIamPolicyResult> {
+export function getCryptoKeyIamPolicyOutput(args: GetCryptoKeyIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCryptoKeyIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:kms/getCryptoKeyIamPolicy:getCryptoKeyIamPolicy", {
         "cryptoKeyId": args.cryptoKeyId,

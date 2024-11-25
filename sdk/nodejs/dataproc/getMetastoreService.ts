@@ -101,7 +101,7 @@ export interface GetMetastoreServiceResult {
  * });
  * ```
  */
-export function getMetastoreServiceOutput(args: GetMetastoreServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMetastoreServiceResult> {
+export function getMetastoreServiceOutput(args: GetMetastoreServiceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMetastoreServiceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:dataproc/getMetastoreService:getMetastoreService", {
         "location": args.location,

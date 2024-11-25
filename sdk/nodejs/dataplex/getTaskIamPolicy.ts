@@ -94,7 +94,7 @@ export interface GetTaskIamPolicyResult {
  * });
  * ```
  */
-export function getTaskIamPolicyOutput(args: GetTaskIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTaskIamPolicyResult> {
+export function getTaskIamPolicyOutput(args: GetTaskIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTaskIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:dataplex/getTaskIamPolicy:getTaskIamPolicy", {
         "lake": args.lake,

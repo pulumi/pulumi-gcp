@@ -92,7 +92,7 @@ export interface GetGlobalForwardingRuleResult {
  * });
  * ```
  */
-export function getGlobalForwardingRuleOutput(args: GetGlobalForwardingRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGlobalForwardingRuleResult> {
+export function getGlobalForwardingRuleOutput(args: GetGlobalForwardingRuleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGlobalForwardingRuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:compute/getGlobalForwardingRule:getGlobalForwardingRule", {
         "name": args.name,

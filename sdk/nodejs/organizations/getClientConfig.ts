@@ -58,7 +58,7 @@ export interface GetClientConfigResult {
  * export const project = current.then(current => current.project);
  * ```
  */
-export function getClientConfigOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetClientConfigResult> {
+export function getClientConfigOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetClientConfigResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:organizations/getClientConfig:getClientConfig", {
     }, opts);

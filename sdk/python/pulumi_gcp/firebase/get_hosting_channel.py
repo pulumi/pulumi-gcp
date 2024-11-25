@@ -161,7 +161,7 @@ def get_hosting_channel(channel_id: Optional[str] = None,
         ttl=pulumi.get(__ret__, 'ttl'))
 def get_hosting_channel_output(channel_id: Optional[pulumi.Input[str]] = None,
                                site_id: Optional[pulumi.Input[str]] = None,
-                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHostingChannelResult]:
+                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHostingChannelResult]:
     """
     Use this data source to access information about an existing resource.
 
@@ -171,7 +171,7 @@ def get_hosting_channel_output(channel_id: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['channelId'] = channel_id
     __args__['siteId'] = site_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:firebase/getHostingChannel:getHostingChannel', __args__, opts=opts, typ=GetHostingChannelResult)
     return __ret__.apply(lambda __response__: GetHostingChannelResult(
         channel_id=pulumi.get(__response__, 'channel_id'),
