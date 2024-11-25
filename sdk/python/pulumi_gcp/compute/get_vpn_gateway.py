@@ -159,7 +159,7 @@ def get_vpn_gateway(name: Optional[str] = None,
 def get_vpn_gateway_output(name: Optional[pulumi.Input[str]] = None,
                            project: Optional[pulumi.Input[Optional[str]]] = None,
                            region: Optional[pulumi.Input[Optional[str]]] = None,
-                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetVPNGatewayResult]:
+                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetVPNGatewayResult]:
     """
     Get a VPN gateway within GCE from its name.
 
@@ -186,7 +186,7 @@ def get_vpn_gateway_output(name: Optional[pulumi.Input[str]] = None,
     __args__['name'] = name
     __args__['project'] = project
     __args__['region'] = region
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:compute/getVPNGateway:getVPNGateway', __args__, opts=opts, typ=GetVPNGatewayResult)
     return __ret__.apply(lambda __response__: GetVPNGatewayResult(
         description=pulumi.get(__response__, 'description'),

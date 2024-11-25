@@ -110,7 +110,7 @@ def get_account_iam_policy(billing_account_id: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         policy_data=pulumi.get(__ret__, 'policy_data'))
 def get_account_iam_policy_output(billing_account_id: Optional[pulumi.Input[str]] = None,
-                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountIamPolicyResult]:
+                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountIamPolicyResult]:
     """
     Retrieves the current IAM policy data for a Billing Account.
 
@@ -128,7 +128,7 @@ def get_account_iam_policy_output(billing_account_id: Optional[pulumi.Input[str]
     """
     __args__ = dict()
     __args__['billingAccountId'] = billing_account_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:billing/getAccountIamPolicy:getAccountIamPolicy', __args__, opts=opts, typ=GetAccountIamPolicyResult)
     return __ret__.apply(lambda __response__: GetAccountIamPolicyResult(
         billing_account_id=pulumi.get(__response__, 'billing_account_id'),
