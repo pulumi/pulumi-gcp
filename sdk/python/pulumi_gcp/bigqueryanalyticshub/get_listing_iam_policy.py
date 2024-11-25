@@ -160,7 +160,7 @@ def get_listing_iam_policy_output(data_exchange_id: Optional[pulumi.Input[str]] 
                                   listing_id: Optional[pulumi.Input[str]] = None,
                                   location: Optional[pulumi.Input[Optional[str]]] = None,
                                   project: Optional[pulumi.Input[Optional[str]]] = None,
-                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetListingIamPolicyResult]:
+                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetListingIamPolicyResult]:
     """
     Retrieves the current IAM policy data for listing
 
@@ -191,7 +191,7 @@ def get_listing_iam_policy_output(data_exchange_id: Optional[pulumi.Input[str]] 
     __args__['listingId'] = listing_id
     __args__['location'] = location
     __args__['project'] = project
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:bigqueryanalyticshub/getListingIamPolicy:getListingIamPolicy', __args__, opts=opts, typ=GetListingIamPolicyResult)
     return __ret__.apply(lambda __response__: GetListingIamPolicyResult(
         data_exchange_id=pulumi.get(__response__, 'data_exchange_id'),

@@ -102,14 +102,14 @@ def get_android_app_config(app_id: Optional[str] = None,
         project=pulumi.get(__ret__, 'project'))
 def get_android_app_config_output(app_id: Optional[pulumi.Input[str]] = None,
                                   project: Optional[pulumi.Input[Optional[str]]] = None,
-                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAndroidAppConfigResult]:
+                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAndroidAppConfigResult]:
     """
     Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['appId'] = app_id
     __args__['project'] = project
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:firebase/getAndroidAppConfig:getAndroidAppConfig', __args__, opts=opts, typ=GetAndroidAppConfigResult)
     return __ret__.apply(lambda __response__: GetAndroidAppConfigResult(
         app_id=pulumi.get(__response__, 'app_id'),
