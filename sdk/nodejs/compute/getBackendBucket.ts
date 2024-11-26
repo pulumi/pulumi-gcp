@@ -79,7 +79,7 @@ export interface GetBackendBucketResult {
  * });
  * ```
  */
-export function getBackendBucketOutput(args: GetBackendBucketOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBackendBucketResult> {
+export function getBackendBucketOutput(args: GetBackendBucketOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBackendBucketResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:compute/getBackendBucket:getBackendBucket", {
         "name": args.name,

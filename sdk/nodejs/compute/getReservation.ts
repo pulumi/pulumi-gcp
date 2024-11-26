@@ -81,7 +81,7 @@ export interface GetReservationResult {
  * });
  * ```
  */
-export function getReservationOutput(args: GetReservationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetReservationResult> {
+export function getReservationOutput(args: GetReservationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetReservationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:compute/getReservation:getReservation", {
         "name": args.name,

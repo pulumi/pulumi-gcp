@@ -111,7 +111,7 @@ def get_policy_tag_iam_policy(policy_tag: Optional[str] = None,
         policy_data=pulumi.get(__ret__, 'policy_data'),
         policy_tag=pulumi.get(__ret__, 'policy_tag'))
 def get_policy_tag_iam_policy_output(policy_tag: Optional[pulumi.Input[str]] = None,
-                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPolicyTagIamPolicyResult]:
+                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPolicyTagIamPolicyResult]:
     """
     Retrieves the current IAM policy data for policytag
 
@@ -129,7 +129,7 @@ def get_policy_tag_iam_policy_output(policy_tag: Optional[pulumi.Input[str]] = N
     """
     __args__ = dict()
     __args__['policyTag'] = policy_tag
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:datacatalog/getPolicyTagIamPolicy:getPolicyTagIamPolicy', __args__, opts=opts, typ=GetPolicyTagIamPolicyResult)
     return __ret__.apply(lambda __response__: GetPolicyTagIamPolicyResult(
         etag=pulumi.get(__response__, 'etag'),

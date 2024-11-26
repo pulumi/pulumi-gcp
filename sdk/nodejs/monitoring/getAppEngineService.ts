@@ -170,7 +170,7 @@ export interface GetAppEngineServiceResult {
  * });
  * ```
  */
-export function getAppEngineServiceOutput(args: GetAppEngineServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppEngineServiceResult> {
+export function getAppEngineServiceOutput(args: GetAppEngineServiceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAppEngineServiceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:monitoring/getAppEngineService:getAppEngineService", {
         "moduleId": args.moduleId,

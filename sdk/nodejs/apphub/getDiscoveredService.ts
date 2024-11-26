@@ -90,7 +90,7 @@ export interface GetDiscoveredServiceResult {
  * });
  * ```
  */
-export function getDiscoveredServiceOutput(args: GetDiscoveredServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDiscoveredServiceResult> {
+export function getDiscoveredServiceOutput(args: GetDiscoveredServiceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDiscoveredServiceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:apphub/getDiscoveredService:getDiscoveredService", {
         "location": args.location,

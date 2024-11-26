@@ -264,7 +264,7 @@ def get_subscription(name: Optional[str] = None,
         topic=pulumi.get(__ret__, 'topic'))
 def get_subscription_output(name: Optional[pulumi.Input[str]] = None,
                             project: Optional[pulumi.Input[Optional[str]]] = None,
-                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSubscriptionResult]:
+                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSubscriptionResult]:
     """
     Get information about a Google Cloud Pub/Sub Subscription. For more information see
     the [official documentation](https://cloud.google.com/pubsub/docs/)
@@ -289,7 +289,7 @@ def get_subscription_output(name: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['name'] = name
     __args__['project'] = project
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:pubsub/getSubscription:getSubscription', __args__, opts=opts, typ=GetSubscriptionResult)
     return __ret__.apply(lambda __response__: GetSubscriptionResult(
         ack_deadline_seconds=pulumi.get(__response__, 'ack_deadline_seconds'),

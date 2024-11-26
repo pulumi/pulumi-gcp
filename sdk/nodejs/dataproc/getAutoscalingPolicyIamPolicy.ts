@@ -92,7 +92,7 @@ export interface GetAutoscalingPolicyIamPolicyResult {
  * });
  * ```
  */
-export function getAutoscalingPolicyIamPolicyOutput(args: GetAutoscalingPolicyIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAutoscalingPolicyIamPolicyResult> {
+export function getAutoscalingPolicyIamPolicyOutput(args: GetAutoscalingPolicyIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAutoscalingPolicyIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:dataproc/getAutoscalingPolicyIamPolicy:getAutoscalingPolicyIamPolicy", {
         "location": args.location,

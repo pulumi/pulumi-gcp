@@ -72,7 +72,7 @@ export interface GetRegistryRepositoryResult {
  * export const gcrLocation = foo.then(foo => foo.repositoryUrl);
  * ```
  */
-export function getRegistryRepositoryOutput(args?: GetRegistryRepositoryOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegistryRepositoryResult> {
+export function getRegistryRepositoryOutput(args?: GetRegistryRepositoryOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRegistryRepositoryResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:container/getRegistryRepository:getRegistryRepository", {
