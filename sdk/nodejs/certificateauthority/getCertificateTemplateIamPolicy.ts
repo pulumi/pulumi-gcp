@@ -83,7 +83,7 @@ export interface GetCertificateTemplateIamPolicyResult {
  * });
  * ```
  */
-export function getCertificateTemplateIamPolicyOutput(args: GetCertificateTemplateIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCertificateTemplateIamPolicyResult> {
+export function getCertificateTemplateIamPolicyOutput(args: GetCertificateTemplateIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCertificateTemplateIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:certificateauthority/getCertificateTemplateIamPolicy:getCertificateTemplateIamPolicy", {
         "certificateTemplate": args.certificateTemplate,

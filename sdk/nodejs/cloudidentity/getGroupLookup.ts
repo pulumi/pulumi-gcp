@@ -75,7 +75,7 @@ export interface GetGroupLookupResult {
  * });
  * ```
  */
-export function getGroupLookupOutput(args: GetGroupLookupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupLookupResult> {
+export function getGroupLookupOutput(args: GetGroupLookupOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGroupLookupResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:cloudidentity/getGroupLookup:getGroupLookup", {
         "groupKey": args.groupKey,

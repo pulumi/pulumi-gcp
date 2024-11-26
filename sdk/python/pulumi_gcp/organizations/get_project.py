@@ -200,7 +200,7 @@ def get_project(project_id: Optional[str] = None,
         pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
         tags=pulumi.get(__ret__, 'tags'))
 def get_project_output(project_id: Optional[pulumi.Input[Optional[str]]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectResult]:
+                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectResult]:
     """
     Use this data source to get project details.
     For more information see
@@ -221,7 +221,7 @@ def get_project_output(project_id: Optional[pulumi.Input[Optional[str]]] = None,
     """
     __args__ = dict()
     __args__['projectId'] = project_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:organizations/getProject:getProject', __args__, opts=opts, typ=GetProjectResult)
     return __ret__.apply(lambda __response__: GetProjectResult(
         auto_create_network=pulumi.get(__response__, 'auto_create_network'),

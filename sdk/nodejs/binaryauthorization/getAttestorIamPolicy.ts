@@ -77,7 +77,7 @@ export interface GetAttestorIamPolicyResult {
  * });
  * ```
  */
-export function getAttestorIamPolicyOutput(args: GetAttestorIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAttestorIamPolicyResult> {
+export function getAttestorIamPolicyOutput(args: GetAttestorIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAttestorIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:binaryauthorization/getAttestorIamPolicy:getAttestorIamPolicy", {
         "attestor": args.attestor,

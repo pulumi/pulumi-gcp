@@ -132,7 +132,7 @@ def get_ai_featurestore_iam_policy(featurestore: Optional[str] = None,
 def get_ai_featurestore_iam_policy_output(featurestore: Optional[pulumi.Input[str]] = None,
                                           project: Optional[pulumi.Input[Optional[str]]] = None,
                                           region: Optional[pulumi.Input[Optional[str]]] = None,
-                                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAiFeaturestoreIamPolicyResult]:
+                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAiFeaturestoreIamPolicyResult]:
     """
     Use this data source to access information about an existing resource.
 
@@ -147,7 +147,7 @@ def get_ai_featurestore_iam_policy_output(featurestore: Optional[pulumi.Input[st
     __args__['featurestore'] = featurestore
     __args__['project'] = project
     __args__['region'] = region
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:vertex/getAiFeaturestoreIamPolicy:getAiFeaturestoreIamPolicy', __args__, opts=opts, typ=GetAiFeaturestoreIamPolicyResult)
     return __ret__.apply(lambda __response__: GetAiFeaturestoreIamPolicyResult(
         etag=pulumi.get(__response__, 'etag'),

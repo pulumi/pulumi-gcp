@@ -105,7 +105,7 @@ export interface GetSinkResult {
  * });
  * ```
  */
-export function getSinkOutput(args: GetSinkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSinkResult> {
+export function getSinkOutput(args: GetSinkOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSinkResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:logging/getSink:getSink", {
         "id": args.id,

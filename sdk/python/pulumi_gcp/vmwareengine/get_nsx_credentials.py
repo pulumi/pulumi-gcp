@@ -113,7 +113,7 @@ def get_nsx_credentials(parent: Optional[str] = None,
         password=pulumi.get(__ret__, 'password'),
         username=pulumi.get(__ret__, 'username'))
 def get_nsx_credentials_output(parent: Optional[pulumi.Input[str]] = None,
-                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNsxCredentialsResult]:
+                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNsxCredentialsResult]:
     """
     Use this data source to get NSX credentials for a Private Cloud.
 
@@ -134,7 +134,7 @@ def get_nsx_credentials_output(parent: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['parent'] = parent
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:vmwareengine/getNsxCredentials:getNsxCredentials', __args__, opts=opts, typ=GetNsxCredentialsResult)
     return __ret__.apply(lambda __response__: GetNsxCredentialsResult(
         id=pulumi.get(__response__, 'id'),

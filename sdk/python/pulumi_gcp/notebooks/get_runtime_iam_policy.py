@@ -144,7 +144,7 @@ def get_runtime_iam_policy(location: Optional[str] = None,
 def get_runtime_iam_policy_output(location: Optional[pulumi.Input[Optional[str]]] = None,
                                   project: Optional[pulumi.Input[Optional[str]]] = None,
                                   runtime_name: Optional[pulumi.Input[str]] = None,
-                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRuntimeIamPolicyResult]:
+                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRuntimeIamPolicyResult]:
     """
     Retrieves the current IAM policy data for runtime
 
@@ -171,7 +171,7 @@ def get_runtime_iam_policy_output(location: Optional[pulumi.Input[Optional[str]]
     __args__['location'] = location
     __args__['project'] = project
     __args__['runtimeName'] = runtime_name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:notebooks/getRuntimeIamPolicy:getRuntimeIamPolicy', __args__, opts=opts, typ=GetRuntimeIamPolicyResult)
     return __ret__.apply(lambda __response__: GetRuntimeIamPolicyResult(
         etag=pulumi.get(__response__, 'etag'),

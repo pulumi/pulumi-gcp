@@ -104,7 +104,7 @@ export interface GetTagKeyResult {
  * });
  * ```
  */
-export function getTagKeyOutput(args: GetTagKeyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTagKeyResult> {
+export function getTagKeyOutput(args: GetTagKeyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTagKeyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:tags/getTagKey:getTagKey", {
         "parent": args.parent,
