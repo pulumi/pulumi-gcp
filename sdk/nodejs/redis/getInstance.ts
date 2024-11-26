@@ -116,7 +116,7 @@ export interface GetInstanceResult {
  * export const instanceAuthorizedNetwork = myInstance.then(myInstance => myInstance.authorizedNetwork);
  * ```
  */
-export function getInstanceOutput(args: GetInstanceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceResult> {
+export function getInstanceOutput(args: GetInstanceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInstanceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:redis/getInstance:getInstance", {
         "name": args.name,

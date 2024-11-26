@@ -156,7 +156,7 @@ def get_discovered_workload(location: Optional[str] = None,
 def get_discovered_workload_output(location: Optional[pulumi.Input[str]] = None,
                                    project: Optional[pulumi.Input[Optional[str]]] = None,
                                    workload_uri: Optional[pulumi.Input[str]] = None,
-                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDiscoveredWorkloadResult]:
+                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDiscoveredWorkloadResult]:
     """
     Get information about a discovered workload from its uri.
 
@@ -179,7 +179,7 @@ def get_discovered_workload_output(location: Optional[pulumi.Input[str]] = None,
     __args__['location'] = location
     __args__['project'] = project
     __args__['workloadUri'] = workload_uri
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:apphub/getDiscoveredWorkload:getDiscoveredWorkload', __args__, opts=opts, typ=GetDiscoveredWorkloadResult)
     return __ret__.apply(lambda __response__: GetDiscoveredWorkloadResult(
         id=pulumi.get(__response__, 'id'),

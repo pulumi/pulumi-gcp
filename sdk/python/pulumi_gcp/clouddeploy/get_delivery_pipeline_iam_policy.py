@@ -141,7 +141,7 @@ def get_delivery_pipeline_iam_policy(location: Optional[str] = None,
 def get_delivery_pipeline_iam_policy_output(location: Optional[pulumi.Input[Optional[str]]] = None,
                                             name: Optional[pulumi.Input[str]] = None,
                                             project: Optional[pulumi.Input[Optional[str]]] = None,
-                                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDeliveryPipelineIamPolicyResult]:
+                                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDeliveryPipelineIamPolicyResult]:
     """
     Retrieves the current IAM policy data for deliverypipeline
 
@@ -165,7 +165,7 @@ def get_delivery_pipeline_iam_policy_output(location: Optional[pulumi.Input[Opti
     __args__['location'] = location
     __args__['name'] = name
     __args__['project'] = project
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:clouddeploy/getDeliveryPipelineIamPolicy:getDeliveryPipelineIamPolicy', __args__, opts=opts, typ=GetDeliveryPipelineIamPolicyResult)
     return __ret__.apply(lambda __response__: GetDeliveryPipelineIamPolicyResult(
         etag=pulumi.get(__response__, 'etag'),

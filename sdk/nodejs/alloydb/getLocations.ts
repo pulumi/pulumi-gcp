@@ -62,7 +62,7 @@ export interface GetLocationsResult {
  * const qa = gcp.alloydb.getLocations({});
  * ```
  */
-export function getLocationsOutput(args?: GetLocationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLocationsResult> {
+export function getLocationsOutput(args?: GetLocationsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLocationsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:alloydb/getLocations:getLocations", {

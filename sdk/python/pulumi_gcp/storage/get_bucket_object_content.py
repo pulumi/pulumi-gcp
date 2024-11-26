@@ -325,7 +325,7 @@ def get_bucket_object_content(bucket: Optional[str] = None,
 def get_bucket_object_content_output(bucket: Optional[pulumi.Input[str]] = None,
                                      content: Optional[pulumi.Input[Optional[str]]] = None,
                                      name: Optional[pulumi.Input[str]] = None,
-                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBucketObjectContentResult]:
+                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBucketObjectContentResult]:
     """
     Gets an existing object content inside an existing bucket in Google Cloud Storage service (GCS).
     See [the official documentation](https://cloud.google.com/storage/docs/key-terms#objects)
@@ -356,7 +356,7 @@ def get_bucket_object_content_output(bucket: Optional[pulumi.Input[str]] = None,
     __args__['bucket'] = bucket
     __args__['content'] = content
     __args__['name'] = name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:storage/getBucketObjectContent:getBucketObjectContent', __args__, opts=opts, typ=GetBucketObjectContentResult)
     return __ret__.apply(lambda __response__: GetBucketObjectContentResult(
         bucket=pulumi.get(__response__, 'bucket'),

@@ -68,7 +68,7 @@ export interface GetBucketIamPolicyResult {
  * });
  * ```
  */
-export function getBucketIamPolicyOutput(args: GetBucketIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBucketIamPolicyResult> {
+export function getBucketIamPolicyOutput(args: GetBucketIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBucketIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:storage/getBucketIamPolicy:getBucketIamPolicy", {
         "bucket": args.bucket,

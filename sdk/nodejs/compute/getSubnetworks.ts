@@ -88,7 +88,7 @@ export interface GetSubnetworksResult {
  * });
  * ```
  */
-export function getSubnetworksOutput(args?: GetSubnetworksOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSubnetworksResult> {
+export function getSubnetworksOutput(args?: GetSubnetworksOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSubnetworksResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:compute/getSubnetworks:getSubnetworks", {

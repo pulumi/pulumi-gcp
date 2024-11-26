@@ -361,7 +361,7 @@ def get_image_output(family: Optional[pulumi.Input[Optional[str]]] = None,
                      most_recent: Optional[pulumi.Input[Optional[bool]]] = None,
                      name: Optional[pulumi.Input[Optional[str]]] = None,
                      project: Optional[pulumi.Input[Optional[str]]] = None,
-                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetImageResult]:
+                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetImageResult]:
     """
     Get information about a Google Compute Image. Check that your service account has the `compute.imageUser` role if you want to share [custom images](https://cloud.google.com/compute/docs/images/sharing-images-across-projects) from another project. If you want to use [public images][pubimg], do not forget to specify the dedicated project. For more information see
     [the official documentation](https://cloud.google.com/compute/docs/images) and its [API](https://cloud.google.com/compute/docs/reference/latest/images).
@@ -403,7 +403,7 @@ def get_image_output(family: Optional[pulumi.Input[Optional[str]]] = None,
     __args__['mostRecent'] = most_recent
     __args__['name'] = name
     __args__['project'] = project
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:compute/getImage:getImage', __args__, opts=opts, typ=GetImageResult)
     return __ret__.apply(lambda __response__: GetImageResult(
         archive_size_bytes=pulumi.get(__response__, 'archive_size_bytes'),
