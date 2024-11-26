@@ -93,7 +93,7 @@ export interface GetAppEngineVersionIamPolicyResult {
  * });
  * ```
  */
-export function getAppEngineVersionIamPolicyOutput(args: GetAppEngineVersionIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppEngineVersionIamPolicyResult> {
+export function getAppEngineVersionIamPolicyOutput(args: GetAppEngineVersionIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAppEngineVersionIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:iap/getAppEngineVersionIamPolicy:getAppEngineVersionIamPolicy", {
         "appId": args.appId,

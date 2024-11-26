@@ -59,7 +59,7 @@ export interface GetWorkstationIamPolicyResult {
     readonly workstationConfigId: string;
     readonly workstationId: string;
 }
-export function getWorkstationIamPolicyOutput(args: GetWorkstationIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWorkstationIamPolicyResult> {
+export function getWorkstationIamPolicyOutput(args: GetWorkstationIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkstationIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:workstations/getWorkstationIamPolicy:getWorkstationIamPolicy", {
         "location": args.location,

@@ -45,7 +45,7 @@ export interface GetAppleAppConfigResult {
     readonly id: string;
     readonly project?: string;
 }
-export function getAppleAppConfigOutput(args: GetAppleAppConfigOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppleAppConfigResult> {
+export function getAppleAppConfigOutput(args: GetAppleAppConfigOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAppleAppConfigResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:firebase/getAppleAppConfig:getAppleAppConfig", {
         "appId": args.appId,

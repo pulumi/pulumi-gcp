@@ -85,7 +85,7 @@ export interface GetNodeTypesResult {
  * });
  * ```
  */
-export function getNodeTypesOutput(args?: GetNodeTypesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNodeTypesResult> {
+export function getNodeTypesOutput(args?: GetNodeTypesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNodeTypesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:compute/getNodeTypes:getNodeTypes", {

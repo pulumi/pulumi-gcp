@@ -47,7 +47,7 @@ export interface GetMachineImageIamPolicyResult {
     readonly policyData: string;
     readonly project: string;
 }
-export function getMachineImageIamPolicyOutput(args: GetMachineImageIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMachineImageIamPolicyResult> {
+export function getMachineImageIamPolicyOutput(args: GetMachineImageIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMachineImageIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:compute/getMachineImageIamPolicy:getMachineImageIamPolicy", {
         "machineImage": args.machineImage,

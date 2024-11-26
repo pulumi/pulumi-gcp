@@ -150,7 +150,7 @@ export interface GetInstanceGuestAttributesResult {
  * });
  * ```
  */
-export function getInstanceGuestAttributesOutput(args: GetInstanceGuestAttributesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceGuestAttributesResult> {
+export function getInstanceGuestAttributesOutput(args: GetInstanceGuestAttributesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInstanceGuestAttributesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:compute/getInstanceGuestAttributes:getInstanceGuestAttributes", {
         "name": args.name,

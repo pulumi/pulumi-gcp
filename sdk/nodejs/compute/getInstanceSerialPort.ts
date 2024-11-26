@@ -183,7 +183,7 @@ export interface GetInstanceSerialPortResult {
  * export const serialOut = serial.apply(serial => serial.contents);
  * ```
  */
-export function getInstanceSerialPortOutput(args: GetInstanceSerialPortOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceSerialPortResult> {
+export function getInstanceSerialPortOutput(args: GetInstanceSerialPortOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInstanceSerialPortResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:compute/getInstanceSerialPort:getInstanceSerialPort", {
         "instance": args.instance,

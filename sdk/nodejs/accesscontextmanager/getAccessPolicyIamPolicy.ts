@@ -68,7 +68,7 @@ export interface GetAccessPolicyIamPolicyResult {
  * });
  * ```
  */
-export function getAccessPolicyIamPolicyOutput(args: GetAccessPolicyIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccessPolicyIamPolicyResult> {
+export function getAccessPolicyIamPolicyOutput(args: GetAccessPolicyIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccessPolicyIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:accesscontextmanager/getAccessPolicyIamPolicy:getAccessPolicyIamPolicy", {
         "name": args.name,

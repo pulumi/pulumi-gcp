@@ -87,7 +87,7 @@ export interface GetExternalAccessRuleResult {
  * });
  * ```
  */
-export function getExternalAccessRuleOutput(args: GetExternalAccessRuleOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetExternalAccessRuleResult> {
+export function getExternalAccessRuleOutput(args: GetExternalAccessRuleOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetExternalAccessRuleResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:vmwareengine/getExternalAccessRule:getExternalAccessRule", {
         "name": args.name,

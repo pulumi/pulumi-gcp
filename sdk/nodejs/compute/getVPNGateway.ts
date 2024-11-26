@@ -91,7 +91,7 @@ export interface GetVPNGatewayResult {
  * });
  * ```
  */
-export function getVPNGatewayOutput(args: GetVPNGatewayOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVPNGatewayResult> {
+export function getVPNGatewayOutput(args: GetVPNGatewayOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVPNGatewayResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:compute/getVPNGateway:getVPNGateway", {
         "name": args.name,

@@ -137,7 +137,7 @@ def get_cluster_iam_policy(cluster: Optional[str] = None,
 def get_cluster_iam_policy_output(cluster: Optional[pulumi.Input[str]] = None,
                                   project: Optional[pulumi.Input[Optional[str]]] = None,
                                   region: Optional[pulumi.Input[Optional[str]]] = None,
-                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClusterIamPolicyResult]:
+                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetClusterIamPolicyResult]:
     """
     Retrieves the current IAM policy data for a Dataproc cluster.
 
@@ -158,7 +158,7 @@ def get_cluster_iam_policy_output(cluster: Optional[pulumi.Input[str]] = None,
     __args__['cluster'] = cluster
     __args__['project'] = project
     __args__['region'] = region
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:dataproc/getClusterIamPolicy:getClusterIamPolicy', __args__, opts=opts, typ=GetClusterIamPolicyResult)
     return __ret__.apply(lambda __response__: GetClusterIamPolicyResult(
         cluster=pulumi.get(__response__, 'cluster'),
