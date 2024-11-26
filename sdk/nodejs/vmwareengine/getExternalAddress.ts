@@ -80,7 +80,7 @@ export interface GetExternalAddressResult {
  * });
  * ```
  */
-export function getExternalAddressOutput(args: GetExternalAddressOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetExternalAddressResult> {
+export function getExternalAddressOutput(args: GetExternalAddressOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetExternalAddressResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:vmwareengine/getExternalAddress:getExternalAddress", {
         "name": args.name,

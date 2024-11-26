@@ -126,7 +126,7 @@ def get_secret_iam_policy(project: Optional[str] = None,
         secret_id=pulumi.get(__ret__, 'secret_id'))
 def get_secret_iam_policy_output(project: Optional[pulumi.Input[Optional[str]]] = None,
                                  secret_id: Optional[pulumi.Input[str]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSecretIamPolicyResult]:
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSecretIamPolicyResult]:
     """
     Retrieves the current IAM policy data for secret
 
@@ -147,7 +147,7 @@ def get_secret_iam_policy_output(project: Optional[pulumi.Input[Optional[str]]] 
     __args__ = dict()
     __args__['project'] = project
     __args__['secretId'] = secret_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:secretmanager/getSecretIamPolicy:getSecretIamPolicy', __args__, opts=opts, typ=GetSecretIamPolicyResult)
     return __ret__.apply(lambda __response__: GetSecretIamPolicyResult(
         etag=pulumi.get(__response__, 'etag'),

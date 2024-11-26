@@ -90,7 +90,7 @@ export interface GetDiscoveredWorkloadResult {
  * });
  * ```
  */
-export function getDiscoveredWorkloadOutput(args: GetDiscoveredWorkloadOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDiscoveredWorkloadResult> {
+export function getDiscoveredWorkloadOutput(args: GetDiscoveredWorkloadOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDiscoveredWorkloadResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:apphub/getDiscoveredWorkload:getDiscoveredWorkload", {
         "location": args.location,

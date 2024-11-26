@@ -87,7 +87,7 @@ export interface GetRegionDiskIamPolicyResult {
  * });
  * ```
  */
-export function getRegionDiskIamPolicyOutput(args: GetRegionDiskIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionDiskIamPolicyResult> {
+export function getRegionDiskIamPolicyOutput(args: GetRegionDiskIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRegionDiskIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:compute/getRegionDiskIamPolicy:getRegionDiskIamPolicy", {
         "name": args.name,

@@ -118,7 +118,7 @@ export interface GetAddressResult {
  * });
  * ```
  */
-export function getAddressOutput(args: GetAddressOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAddressResult> {
+export function getAddressOutput(args: GetAddressOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAddressResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:compute/getAddress:getAddress", {
         "name": args.name,

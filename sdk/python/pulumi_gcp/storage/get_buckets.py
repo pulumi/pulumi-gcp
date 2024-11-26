@@ -116,7 +116,7 @@ def get_buckets(prefix: Optional[str] = None,
         project=pulumi.get(__ret__, 'project'))
 def get_buckets_output(prefix: Optional[pulumi.Input[Optional[str]]] = None,
                        project: Optional[pulumi.Input[Optional[str]]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBucketsResult]:
+                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBucketsResult]:
     """
     Gets a list of existing GCS buckets.
     See [the official documentation](https://cloud.google.com/storage/docs/introduction)
@@ -140,7 +140,7 @@ def get_buckets_output(prefix: Optional[pulumi.Input[Optional[str]]] = None,
     __args__ = dict()
     __args__['prefix'] = prefix
     __args__['project'] = project
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:storage/getBuckets:getBuckets', __args__, opts=opts, typ=GetBucketsResult)
     return __ret__.apply(lambda __response__: GetBucketsResult(
         buckets=pulumi.get(__response__, 'buckets'),

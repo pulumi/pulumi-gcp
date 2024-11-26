@@ -85,7 +85,7 @@ export interface GetAccountKeyResult {
  * });
  * ```
  */
-export function getAccountKeyOutput(args: GetAccountKeyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountKeyResult> {
+export function getAccountKeyOutput(args: GetAccountKeyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountKeyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:serviceaccount/getAccountKey:getAccountKey", {
         "name": args.name,

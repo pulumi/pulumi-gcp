@@ -101,7 +101,7 @@ def get_service_iam_policy(name: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         policy_data=pulumi.get(__ret__, 'policy_data'))
 def get_service_iam_policy_output(name: Optional[pulumi.Input[str]] = None,
-                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetServiceIamPolicyResult]:
+                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetServiceIamPolicyResult]:
     """
     Use this data source to access information about an existing resource.
 
@@ -109,7 +109,7 @@ def get_service_iam_policy_output(name: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['name'] = name
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:servicedirectory/getServiceIamPolicy:getServiceIamPolicy', __args__, opts=opts, typ=GetServiceIamPolicyResult)
     return __ret__.apply(lambda __response__: GetServiceIamPolicyResult(
         etag=pulumi.get(__response__, 'etag'),

@@ -128,7 +128,7 @@ def get_tensorflow_versions(project: Optional[str] = None,
         zone=pulumi.get(__ret__, 'zone'))
 def get_tensorflow_versions_output(project: Optional[pulumi.Input[Optional[str]]] = None,
                                    zone: Optional[pulumi.Input[Optional[str]]] = None,
-                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTensorflowVersionsResult]:
+                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTensorflowVersionsResult]:
     """
     Get TensorFlow versions available for a project. For more information see the [official documentation](https://cloud.google.com/tpu/docs/) and [API](https://cloud.google.com/tpu/docs/reference/rest/v1/projects.locations.tensorflowVersions).
 
@@ -165,7 +165,7 @@ def get_tensorflow_versions_output(project: Optional[pulumi.Input[Optional[str]]
     __args__ = dict()
     __args__['project'] = project
     __args__['zone'] = zone
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:tpu/getTensorflowVersions:getTensorflowVersions', __args__, opts=opts, typ=GetTensorflowVersionsResult)
     return __ret__.apply(lambda __response__: GetTensorflowVersionsResult(
         id=pulumi.get(__response__, 'id'),

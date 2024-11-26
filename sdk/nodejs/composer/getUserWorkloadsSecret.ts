@@ -121,7 +121,7 @@ export interface GetUserWorkloadsSecretResult {
  * export const debug = example;
  * ```
  */
-export function getUserWorkloadsSecretOutput(args: GetUserWorkloadsSecretOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUserWorkloadsSecretResult> {
+export function getUserWorkloadsSecretOutput(args: GetUserWorkloadsSecretOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetUserWorkloadsSecretResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:composer/getUserWorkloadsSecret:getUserWorkloadsSecret", {
         "environment": args.environment,

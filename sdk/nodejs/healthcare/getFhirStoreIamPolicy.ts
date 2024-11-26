@@ -70,7 +70,7 @@ export interface GetFhirStoreIamPolicyResult {
  * });
  * ```
  */
-export function getFhirStoreIamPolicyOutput(args: GetFhirStoreIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFhirStoreIamPolicyResult> {
+export function getFhirStoreIamPolicyOutput(args: GetFhirStoreIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFhirStoreIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:healthcare/getFhirStoreIamPolicy:getFhirStoreIamPolicy", {
         "fhirStoreId": args.fhirStoreId,

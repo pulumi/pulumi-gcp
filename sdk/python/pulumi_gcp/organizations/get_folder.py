@@ -198,7 +198,7 @@ def get_folder(folder: Optional[str] = None,
         parent=pulumi.get(__ret__, 'parent'))
 def get_folder_output(folder: Optional[pulumi.Input[str]] = None,
                       lookup_organization: Optional[pulumi.Input[Optional[bool]]] = None,
-                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFolderResult]:
+                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFolderResult]:
     """
     Use this data source to get information about a Google Cloud Folder.
 
@@ -220,7 +220,7 @@ def get_folder_output(folder: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['folder'] = folder
     __args__['lookupOrganization'] = lookup_organization
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:organizations/getFolder:getFolder', __args__, opts=opts, typ=GetFolderResult)
     return __ret__.apply(lambda __response__: GetFolderResult(
         create_time=pulumi.get(__response__, 'create_time'),

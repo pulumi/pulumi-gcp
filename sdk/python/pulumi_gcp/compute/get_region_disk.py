@@ -349,7 +349,7 @@ def get_region_disk(name: Optional[str] = None,
 def get_region_disk_output(name: Optional[pulumi.Input[str]] = None,
                            project: Optional[pulumi.Input[Optional[str]]] = None,
                            region: Optional[pulumi.Input[Optional[str]]] = None,
-                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegionDiskResult]:
+                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegionDiskResult]:
     """
     Get information about a Google Compute Regional Persistent disks.
 
@@ -367,7 +367,7 @@ def get_region_disk_output(name: Optional[pulumi.Input[str]] = None,
     __args__['name'] = name
     __args__['project'] = project
     __args__['region'] = region
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:compute/getRegionDisk:getRegionDisk', __args__, opts=opts, typ=GetRegionDiskResult)
     return __ret__.apply(lambda __response__: GetRegionDiskResult(
         async_primary_disks=pulumi.get(__response__, 'async_primary_disks'),

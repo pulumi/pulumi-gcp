@@ -113,7 +113,7 @@ export interface GetAuthorityResult {
  * export const csr = _default.then(_default => _default.pemCsr);
  * ```
  */
-export function getAuthorityOutput(args?: GetAuthorityOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAuthorityResult> {
+export function getAuthorityOutput(args?: GetAuthorityOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAuthorityResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:certificateauthority/getAuthority:getAuthority", {
