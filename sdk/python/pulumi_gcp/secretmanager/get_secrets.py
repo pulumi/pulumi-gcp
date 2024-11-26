@@ -115,7 +115,7 @@ def get_secrets(filter: Optional[str] = None,
         secrets=pulumi.get(__ret__, 'secrets'))
 def get_secrets_output(filter: Optional[pulumi.Input[Optional[str]]] = None,
                        project: Optional[pulumi.Input[Optional[str]]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSecretsResult]:
+                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSecretsResult]:
     """
     Use this data source to list the Secret Manager Secrets
 
@@ -135,7 +135,7 @@ def get_secrets_output(filter: Optional[pulumi.Input[Optional[str]]] = None,
     __args__ = dict()
     __args__['filter'] = filter
     __args__['project'] = project
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:secretmanager/getSecrets:getSecrets', __args__, opts=opts, typ=GetSecretsResult)
     return __ret__.apply(lambda __response__: GetSecretsResult(
         filter=pulumi.get(__response__, 'filter'),

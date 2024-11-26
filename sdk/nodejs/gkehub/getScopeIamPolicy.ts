@@ -74,7 +74,7 @@ export interface GetScopeIamPolicyResult {
  * });
  * ```
  */
-export function getScopeIamPolicyOutput(args: GetScopeIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetScopeIamPolicyResult> {
+export function getScopeIamPolicyOutput(args: GetScopeIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetScopeIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:gkehub/getScopeIamPolicy:getScopeIamPolicy", {
         "project": args.project,

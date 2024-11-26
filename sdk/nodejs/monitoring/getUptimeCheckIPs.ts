@@ -53,7 +53,7 @@ export interface GetUptimeCheckIPsResult {
  * export const ipList = ips.then(ips => ips.uptimeCheckIps);
  * ```
  */
-export function getUptimeCheckIPsOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetUptimeCheckIPsResult> {
+export function getUptimeCheckIPsOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetUptimeCheckIPsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:monitoring/getUptimeCheckIPs:getUptimeCheckIPs", {
     }, opts);

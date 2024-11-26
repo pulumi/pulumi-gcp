@@ -173,7 +173,7 @@ export interface GetKMSSecretCiphertextResult {
  * The resulting instance can then access the encrypted password from its metadata
  * and decrypt it, e.g. using the [Cloud SDK](https://cloud.google.com/sdk/gcloud/reference/kms/decrypt)):
  */
-export function getKMSSecretCiphertextOutput(args: GetKMSSecretCiphertextOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKMSSecretCiphertextResult> {
+export function getKMSSecretCiphertextOutput(args: GetKMSSecretCiphertextOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKMSSecretCiphertextResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:kms/getKMSSecretCiphertext:getKMSSecretCiphertext", {
         "cryptoKey": args.cryptoKey,

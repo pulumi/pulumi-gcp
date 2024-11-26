@@ -103,7 +103,7 @@ export interface GetOrganizationSettingsResult {
  * });
  * ```
  */
-export function getOrganizationSettingsOutput(args: GetOrganizationSettingsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOrganizationSettingsResult> {
+export function getOrganizationSettingsOutput(args: GetOrganizationSettingsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOrganizationSettingsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:logging/getOrganizationSettings:getOrganizationSettings", {
         "organization": args.organization,

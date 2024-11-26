@@ -57,7 +57,7 @@ export interface GetRegionBackendServiceIamPolicyResult {
     readonly project: string;
     readonly region: string;
 }
-export function getRegionBackendServiceIamPolicyOutput(args: GetRegionBackendServiceIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionBackendServiceIamPolicyResult> {
+export function getRegionBackendServiceIamPolicyOutput(args: GetRegionBackendServiceIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRegionBackendServiceIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:compute/getRegionBackendServiceIamPolicy:getRegionBackendServiceIamPolicy", {
         "name": args.name,

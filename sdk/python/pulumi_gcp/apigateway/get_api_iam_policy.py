@@ -115,7 +115,7 @@ def get_api_iam_policy(api: Optional[str] = None,
         project=pulumi.get(__ret__, 'project'))
 def get_api_iam_policy_output(api: Optional[pulumi.Input[str]] = None,
                               project: Optional[pulumi.Input[Optional[str]]] = None,
-                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetApiIamPolicyResult]:
+                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetApiIamPolicyResult]:
     """
     Use this data source to access information about an existing resource.
 
@@ -125,7 +125,7 @@ def get_api_iam_policy_output(api: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['api'] = api
     __args__['project'] = project
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:apigateway/getApiIamPolicy:getApiIamPolicy', __args__, opts=opts, typ=GetApiIamPolicyResult)
     return __ret__.apply(lambda __response__: GetApiIamPolicyResult(
         api=pulumi.get(__response__, 'api'),
