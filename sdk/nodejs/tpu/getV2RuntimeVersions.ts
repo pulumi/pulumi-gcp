@@ -96,7 +96,7 @@ export interface GetV2RuntimeVersionsResult {
  * });
  * ```
  */
-export function getV2RuntimeVersionsOutput(args?: GetV2RuntimeVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetV2RuntimeVersionsResult> {
+export function getV2RuntimeVersionsOutput(args?: GetV2RuntimeVersionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetV2RuntimeVersionsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:tpu/getV2RuntimeVersions:getV2RuntimeVersions", {

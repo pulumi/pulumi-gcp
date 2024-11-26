@@ -220,7 +220,7 @@ export interface GetInstanceTemplateResult {
  * and
  * [API](https://cloud.google.com/compute/docs/reference/rest/v1/instanceTemplates).
  */
-export function getInstanceTemplateOutput(args?: GetInstanceTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceTemplateResult> {
+export function getInstanceTemplateOutput(args?: GetInstanceTemplateOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInstanceTemplateResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:compute/getInstanceTemplate:getInstanceTemplate", {

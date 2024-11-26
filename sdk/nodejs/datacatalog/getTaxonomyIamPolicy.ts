@@ -78,7 +78,7 @@ export interface GetTaxonomyIamPolicyResult {
  * });
  * ```
  */
-export function getTaxonomyIamPolicyOutput(args: GetTaxonomyIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTaxonomyIamPolicyResult> {
+export function getTaxonomyIamPolicyOutput(args: GetTaxonomyIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTaxonomyIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:datacatalog/getTaxonomyIamPolicy:getTaxonomyIamPolicy", {
         "project": args.project,

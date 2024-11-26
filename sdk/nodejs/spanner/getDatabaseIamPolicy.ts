@@ -84,7 +84,7 @@ export interface GetDatabaseIamPolicyResult {
  * });
  * ```
  */
-export function getDatabaseIamPolicyOutput(args: GetDatabaseIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseIamPolicyResult> {
+export function getDatabaseIamPolicyOutput(args: GetDatabaseIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDatabaseIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:spanner/getDatabaseIamPolicy:getDatabaseIamPolicy", {
         "database": args.database,

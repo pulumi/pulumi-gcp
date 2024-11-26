@@ -144,7 +144,7 @@ def get_feature_iam_policy(location: Optional[str] = None,
 def get_feature_iam_policy_output(location: Optional[pulumi.Input[Optional[str]]] = None,
                                   name: Optional[pulumi.Input[str]] = None,
                                   project: Optional[pulumi.Input[Optional[str]]] = None,
-                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFeatureIamPolicyResult]:
+                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFeatureIamPolicyResult]:
     """
     Retrieves the current IAM policy data for feature
 
@@ -171,7 +171,7 @@ def get_feature_iam_policy_output(location: Optional[pulumi.Input[Optional[str]]
     __args__['location'] = location
     __args__['name'] = name
     __args__['project'] = project
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:gkehub/getFeatureIamPolicy:getFeatureIamPolicy', __args__, opts=opts, typ=GetFeatureIamPolicyResult)
     return __ret__.apply(lambda __response__: GetFeatureIamPolicyResult(
         etag=pulumi.get(__response__, 'etag'),

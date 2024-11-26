@@ -77,7 +77,7 @@ export interface GetCloudVmClustersResult {
  * });
  * ```
  */
-export function getCloudVmClustersOutput(args: GetCloudVmClustersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCloudVmClustersResult> {
+export function getCloudVmClustersOutput(args: GetCloudVmClustersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCloudVmClustersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:oracledatabase/getCloudVmClusters:getCloudVmClusters", {
         "location": args.location,
