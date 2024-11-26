@@ -95,7 +95,7 @@ export interface GetProjectServiceResult {
  * });
  * ```
  */
-export function getProjectServiceOutput(args: GetProjectServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectServiceResult> {
+export function getProjectServiceOutput(args: GetProjectServiceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProjectServiceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:projects/getProjectService:getProjectService", {
         "project": args.project,

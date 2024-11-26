@@ -155,7 +155,7 @@ def get_zone_iam_policy_output(dataplex_zone: Optional[pulumi.Input[str]] = None
                                lake: Optional[pulumi.Input[str]] = None,
                                location: Optional[pulumi.Input[Optional[str]]] = None,
                                project: Optional[pulumi.Input[Optional[str]]] = None,
-                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetZoneIamPolicyResult]:
+                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZoneIamPolicyResult]:
     """
     Retrieves the current IAM policy data for zone
 
@@ -181,7 +181,7 @@ def get_zone_iam_policy_output(dataplex_zone: Optional[pulumi.Input[str]] = None
     __args__['lake'] = lake
     __args__['location'] = location
     __args__['project'] = project
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:dataplex/getZoneIamPolicy:getZoneIamPolicy', __args__, opts=opts, typ=GetZoneIamPolicyResult)
     return __ret__.apply(lambda __response__: GetZoneIamPolicyResult(
         dataplex_zone=pulumi.get(__response__, 'dataplex_zone'),

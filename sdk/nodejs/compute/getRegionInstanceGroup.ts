@@ -99,7 +99,7 @@ export interface GetRegionInstanceGroupResult {
  *
  * The most common use of this datasource will be to fetch information about the instances inside regional managed instance groups, for instance:
  */
-export function getRegionInstanceGroupOutput(args?: GetRegionInstanceGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionInstanceGroupResult> {
+export function getRegionInstanceGroupOutput(args?: GetRegionInstanceGroupOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRegionInstanceGroupResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:compute/getRegionInstanceGroup:getRegionInstanceGroup", {

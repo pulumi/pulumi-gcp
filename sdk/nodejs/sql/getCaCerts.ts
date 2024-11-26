@@ -59,7 +59,7 @@ export interface GetCaCertsResult {
  * and
  * [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/instances/listServerCas).
  */
-export function getCaCertsOutput(args: GetCaCertsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCaCertsResult> {
+export function getCaCertsOutput(args: GetCaCertsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCaCertsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:sql/getCaCerts:getCaCerts", {
         "instance": args.instance,

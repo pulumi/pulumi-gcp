@@ -86,7 +86,7 @@ export interface GetHealthCheckResult {
  * });
  * ```
  */
-export function getHealthCheckOutput(args: GetHealthCheckOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHealthCheckResult> {
+export function getHealthCheckOutput(args: GetHealthCheckOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetHealthCheckResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:compute/getHealthCheck:getHealthCheck", {
         "name": args.name,

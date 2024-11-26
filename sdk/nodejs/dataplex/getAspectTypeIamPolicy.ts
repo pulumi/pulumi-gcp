@@ -85,7 +85,7 @@ export interface GetAspectTypeIamPolicyResult {
  * });
  * ```
  */
-export function getAspectTypeIamPolicyOutput(args: GetAspectTypeIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAspectTypeIamPolicyResult> {
+export function getAspectTypeIamPolicyOutput(args: GetAspectTypeIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAspectTypeIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:dataplex/getAspectTypeIamPolicy:getAspectTypeIamPolicy", {
         "aspectTypeId": args.aspectTypeId,

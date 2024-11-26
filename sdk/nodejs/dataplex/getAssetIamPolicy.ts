@@ -92,7 +92,7 @@ export interface GetAssetIamPolicyResult {
  * });
  * ```
  */
-export function getAssetIamPolicyOutput(args: GetAssetIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAssetIamPolicyResult> {
+export function getAssetIamPolicyOutput(args: GetAssetIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAssetIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:dataplex/getAssetIamPolicy:getAssetIamPolicy", {
         "asset": args.asset,

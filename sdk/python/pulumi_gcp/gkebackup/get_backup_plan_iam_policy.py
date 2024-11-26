@@ -145,7 +145,7 @@ def get_backup_plan_iam_policy(location: Optional[str] = None,
 def get_backup_plan_iam_policy_output(location: Optional[pulumi.Input[Optional[str]]] = None,
                                       name: Optional[pulumi.Input[str]] = None,
                                       project: Optional[pulumi.Input[Optional[str]]] = None,
-                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBackupPlanIamPolicyResult]:
+                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBackupPlanIamPolicyResult]:
     """
     Retrieves the current IAM policy data for backupplan
 
@@ -173,7 +173,7 @@ def get_backup_plan_iam_policy_output(location: Optional[pulumi.Input[Optional[s
     __args__['location'] = location
     __args__['name'] = name
     __args__['project'] = project
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:gkebackup/getBackupPlanIamPolicy:getBackupPlanIamPolicy', __args__, opts=opts, typ=GetBackupPlanIamPolicyResult)
     return __ret__.apply(lambda __response__: GetBackupPlanIamPolicyResult(
         etag=pulumi.get(__response__, 'etag'),

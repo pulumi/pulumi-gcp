@@ -97,7 +97,7 @@ export interface GetSecurityPolicyResult {
  * });
  * ```
  */
-export function getSecurityPolicyOutput(args?: GetSecurityPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecurityPolicyResult> {
+export function getSecurityPolicyOutput(args?: GetSecurityPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSecurityPolicyResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:compute/getSecurityPolicy:getSecurityPolicy", {
