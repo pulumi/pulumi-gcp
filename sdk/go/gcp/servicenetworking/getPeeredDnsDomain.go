@@ -5,6 +5,7 @@ package servicenetworking
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -13,6 +14,16 @@ import (
 
 func LookupPeeredDnsDomain(ctx *pulumi.Context, args *LookupPeeredDnsDomainArgs, opts ...pulumi.InvokeOption) (*LookupPeeredDnsDomainResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupPeeredDnsDomainResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupPeeredDnsDomainResult{}, errors.New("DependsOn is not supported for direct form invoke LookupPeeredDnsDomain, use LookupPeeredDnsDomainOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupPeeredDnsDomainResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupPeeredDnsDomain, use LookupPeeredDnsDomainOutput instead")
+	}
 	var rv LookupPeeredDnsDomainResult
 	err := ctx.Invoke("gcp:servicenetworking/getPeeredDnsDomain:getPeeredDnsDomain", args, &rv, opts...)
 	if err != nil {
@@ -42,17 +53,18 @@ type LookupPeeredDnsDomainResult struct {
 }
 
 func LookupPeeredDnsDomainOutput(ctx *pulumi.Context, args LookupPeeredDnsDomainOutputArgs, opts ...pulumi.InvokeOption) LookupPeeredDnsDomainResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupPeeredDnsDomainResultOutput, error) {
 			args := v.(LookupPeeredDnsDomainArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupPeeredDnsDomainResult
-			secret, err := ctx.InvokePackageRaw("gcp:servicenetworking/getPeeredDnsDomain:getPeeredDnsDomain", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:servicenetworking/getPeeredDnsDomain:getPeeredDnsDomain", args, &rv, "", opts...)
 			if err != nil {
 				return LookupPeeredDnsDomainResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupPeeredDnsDomainResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupPeeredDnsDomainResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupPeeredDnsDomainResultOutput), nil
 			}

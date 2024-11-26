@@ -5,6 +5,7 @@ package compute
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -71,6 +72,16 @@ import (
 // ```
 func LookupNetworkPeering(ctx *pulumi.Context, args *LookupNetworkPeeringArgs, opts ...pulumi.InvokeOption) (*LookupNetworkPeeringResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupNetworkPeeringResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupNetworkPeeringResult{}, errors.New("DependsOn is not supported for direct form invoke LookupNetworkPeering, use LookupNetworkPeeringOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupNetworkPeeringResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupNetworkPeering, use LookupNetworkPeeringOutput instead")
+	}
 	var rv LookupNetworkPeeringResult
 	err := ctx.Invoke("gcp:compute/getNetworkPeering:getNetworkPeering", args, &rv, opts...)
 	if err != nil {
@@ -104,17 +115,18 @@ type LookupNetworkPeeringResult struct {
 }
 
 func LookupNetworkPeeringOutput(ctx *pulumi.Context, args LookupNetworkPeeringOutputArgs, opts ...pulumi.InvokeOption) LookupNetworkPeeringResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupNetworkPeeringResultOutput, error) {
 			args := v.(LookupNetworkPeeringArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupNetworkPeeringResult
-			secret, err := ctx.InvokePackageRaw("gcp:compute/getNetworkPeering:getNetworkPeering", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:compute/getNetworkPeering:getNetworkPeering", args, &rv, "", opts...)
 			if err != nil {
 				return LookupNetworkPeeringResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupNetworkPeeringResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupNetworkPeeringResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupNetworkPeeringResultOutput), nil
 			}

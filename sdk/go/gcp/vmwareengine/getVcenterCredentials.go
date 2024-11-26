@@ -5,6 +5,7 @@ package vmwareengine
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -43,6 +44,16 @@ import (
 // ```
 func GetVcenterCredentials(ctx *pulumi.Context, args *GetVcenterCredentialsArgs, opts ...pulumi.InvokeOption) (*GetVcenterCredentialsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetVcenterCredentialsResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetVcenterCredentialsResult{}, errors.New("DependsOn is not supported for direct form invoke GetVcenterCredentials, use GetVcenterCredentialsOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetVcenterCredentialsResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetVcenterCredentials, use GetVcenterCredentialsOutput instead")
+	}
 	var rv GetVcenterCredentialsResult
 	err := ctx.Invoke("gcp:vmwareengine/getVcenterCredentials:getVcenterCredentials", args, &rv, opts...)
 	if err != nil {
@@ -69,17 +80,18 @@ type GetVcenterCredentialsResult struct {
 }
 
 func GetVcenterCredentialsOutput(ctx *pulumi.Context, args GetVcenterCredentialsOutputArgs, opts ...pulumi.InvokeOption) GetVcenterCredentialsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetVcenterCredentialsResultOutput, error) {
 			args := v.(GetVcenterCredentialsArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetVcenterCredentialsResult
-			secret, err := ctx.InvokePackageRaw("gcp:vmwareengine/getVcenterCredentials:getVcenterCredentials", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:vmwareengine/getVcenterCredentials:getVcenterCredentials", args, &rv, "", opts...)
 			if err != nil {
 				return GetVcenterCredentialsResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetVcenterCredentialsResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetVcenterCredentialsResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetVcenterCredentialsResultOutput), nil
 			}

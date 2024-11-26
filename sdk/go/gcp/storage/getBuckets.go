@@ -5,6 +5,7 @@ package storage
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -44,6 +45,16 @@ import (
 // ```
 func GetBuckets(ctx *pulumi.Context, args *GetBucketsArgs, opts ...pulumi.InvokeOption) (*GetBucketsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetBucketsResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetBucketsResult{}, errors.New("DependsOn is not supported for direct form invoke GetBuckets, use GetBucketsOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetBucketsResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetBuckets, use GetBucketsOutput instead")
+	}
 	var rv GetBucketsResult
 	err := ctx.Invoke("gcp:storage/getBuckets:getBuckets", args, &rv, opts...)
 	if err != nil {
@@ -71,17 +82,18 @@ type GetBucketsResult struct {
 }
 
 func GetBucketsOutput(ctx *pulumi.Context, args GetBucketsOutputArgs, opts ...pulumi.InvokeOption) GetBucketsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetBucketsResultOutput, error) {
 			args := v.(GetBucketsArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetBucketsResult
-			secret, err := ctx.InvokePackageRaw("gcp:storage/getBuckets:getBuckets", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:storage/getBuckets:getBuckets", args, &rv, "", opts...)
 			if err != nil {
 				return GetBucketsResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetBucketsResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetBucketsResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetBucketsResultOutput), nil
 			}

@@ -5,6 +5,7 @@ package tags
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -40,6 +41,16 @@ import (
 // ```
 func GetTagValues(ctx *pulumi.Context, args *GetTagValuesArgs, opts ...pulumi.InvokeOption) (*GetTagValuesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetTagValuesResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetTagValuesResult{}, errors.New("DependsOn is not supported for direct form invoke GetTagValues, use GetTagValuesOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetTagValuesResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetTagValues, use GetTagValuesOutput instead")
+	}
 	var rv GetTagValuesResult
 	err := ctx.Invoke("gcp:tags/getTagValues:getTagValues", args, &rv, opts...)
 	if err != nil {
@@ -64,17 +75,18 @@ type GetTagValuesResult struct {
 }
 
 func GetTagValuesOutput(ctx *pulumi.Context, args GetTagValuesOutputArgs, opts ...pulumi.InvokeOption) GetTagValuesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetTagValuesResultOutput, error) {
 			args := v.(GetTagValuesArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetTagValuesResult
-			secret, err := ctx.InvokePackageRaw("gcp:tags/getTagValues:getTagValues", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:tags/getTagValues:getTagValues", args, &rv, "", opts...)
 			if err != nil {
 				return GetTagValuesResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetTagValuesResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetTagValuesResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetTagValuesResultOutput), nil
 			}

@@ -5,6 +5,7 @@ package kms
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -117,6 +118,16 @@ import (
 // and decrypt it, e.g. using the [Cloud SDK](https://cloud.google.com/sdk/gcloud/reference/kms/decrypt)):
 func GetKMSSecretCiphertext(ctx *pulumi.Context, args *GetKMSSecretCiphertextArgs, opts ...pulumi.InvokeOption) (*GetKMSSecretCiphertextResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetKMSSecretCiphertextResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetKMSSecretCiphertextResult{}, errors.New("DependsOn is not supported for direct form invoke GetKMSSecretCiphertext, use GetKMSSecretCiphertextOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetKMSSecretCiphertextResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetKMSSecretCiphertext, use GetKMSSecretCiphertextOutput instead")
+	}
 	var rv GetKMSSecretCiphertextResult
 	err := ctx.Invoke("gcp:kms/getKMSSecretCiphertext:getKMSSecretCiphertext", args, &rv, opts...)
 	if err != nil {
@@ -146,17 +157,18 @@ type GetKMSSecretCiphertextResult struct {
 }
 
 func GetKMSSecretCiphertextOutput(ctx *pulumi.Context, args GetKMSSecretCiphertextOutputArgs, opts ...pulumi.InvokeOption) GetKMSSecretCiphertextResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetKMSSecretCiphertextResultOutput, error) {
 			args := v.(GetKMSSecretCiphertextArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetKMSSecretCiphertextResult
-			secret, err := ctx.InvokePackageRaw("gcp:kms/getKMSSecretCiphertext:getKMSSecretCiphertext", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:kms/getKMSSecretCiphertext:getKMSSecretCiphertext", args, &rv, "", opts...)
 			if err != nil {
 				return GetKMSSecretCiphertextResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetKMSSecretCiphertextResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetKMSSecretCiphertextResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetKMSSecretCiphertextResultOutput), nil
 			}

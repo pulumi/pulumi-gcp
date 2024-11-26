@@ -5,6 +5,7 @@ package compute
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -43,6 +44,16 @@ import (
 // ```
 func LookupRegionInstanceGroupManager(ctx *pulumi.Context, args *LookupRegionInstanceGroupManagerArgs, opts ...pulumi.InvokeOption) (*LookupRegionInstanceGroupManagerResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupRegionInstanceGroupManagerResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupRegionInstanceGroupManagerResult{}, errors.New("DependsOn is not supported for direct form invoke LookupRegionInstanceGroupManager, use LookupRegionInstanceGroupManagerOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupRegionInstanceGroupManagerResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupRegionInstanceGroupManager, use LookupRegionInstanceGroupManagerOutput instead")
+	}
 	var rv LookupRegionInstanceGroupManagerResult
 	err := ctx.Invoke("gcp:compute/getRegionInstanceGroupManager:getRegionInstanceGroupManager", args, &rv, opts...)
 	if err != nil {
@@ -102,17 +113,18 @@ type LookupRegionInstanceGroupManagerResult struct {
 }
 
 func LookupRegionInstanceGroupManagerOutput(ctx *pulumi.Context, args LookupRegionInstanceGroupManagerOutputArgs, opts ...pulumi.InvokeOption) LookupRegionInstanceGroupManagerResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupRegionInstanceGroupManagerResultOutput, error) {
 			args := v.(LookupRegionInstanceGroupManagerArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupRegionInstanceGroupManagerResult
-			secret, err := ctx.InvokePackageRaw("gcp:compute/getRegionInstanceGroupManager:getRegionInstanceGroupManager", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:compute/getRegionInstanceGroupManager:getRegionInstanceGroupManager", args, &rv, "", opts...)
 			if err != nil {
 				return LookupRegionInstanceGroupManagerResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupRegionInstanceGroupManagerResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupRegionInstanceGroupManagerResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupRegionInstanceGroupManagerResultOutput), nil
 			}

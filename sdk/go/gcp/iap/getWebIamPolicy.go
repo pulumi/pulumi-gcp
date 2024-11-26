@@ -5,6 +5,7 @@ package iap
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -40,6 +41,16 @@ import (
 // ```
 func LookupWebIamPolicy(ctx *pulumi.Context, args *LookupWebIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupWebIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupWebIamPolicyResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupWebIamPolicyResult{}, errors.New("DependsOn is not supported for direct form invoke LookupWebIamPolicy, use LookupWebIamPolicyOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupWebIamPolicyResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupWebIamPolicy, use LookupWebIamPolicyOutput instead")
+	}
 	var rv LookupWebIamPolicyResult
 	err := ctx.Invoke("gcp:iap/getWebIamPolicy:getWebIamPolicy", args, &rv, opts...)
 	if err != nil {
@@ -68,17 +79,18 @@ type LookupWebIamPolicyResult struct {
 }
 
 func LookupWebIamPolicyOutput(ctx *pulumi.Context, args LookupWebIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupWebIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupWebIamPolicyResultOutput, error) {
 			args := v.(LookupWebIamPolicyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupWebIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:iap/getWebIamPolicy:getWebIamPolicy", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:iap/getWebIamPolicy:getWebIamPolicy", args, &rv, "", opts...)
 			if err != nil {
 				return LookupWebIamPolicyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupWebIamPolicyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupWebIamPolicyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupWebIamPolicyResultOutput), nil
 			}

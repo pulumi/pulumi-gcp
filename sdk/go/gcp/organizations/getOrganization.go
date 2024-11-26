@@ -5,6 +5,7 @@ package organizations
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -45,6 +46,16 @@ import (
 // ```
 func GetOrganization(ctx *pulumi.Context, args *GetOrganizationArgs, opts ...pulumi.InvokeOption) (*GetOrganizationResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetOrganizationResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetOrganizationResult{}, errors.New("DependsOn is not supported for direct form invoke GetOrganization, use GetOrganizationOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetOrganizationResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetOrganization, use GetOrganizationOutput instead")
+	}
 	var rv GetOrganizationResult
 	err := ctx.Invoke("gcp:organizations/getOrganization:getOrganization", args, &rv, opts...)
 	if err != nil {
@@ -82,17 +93,18 @@ type GetOrganizationResult struct {
 }
 
 func GetOrganizationOutput(ctx *pulumi.Context, args GetOrganizationOutputArgs, opts ...pulumi.InvokeOption) GetOrganizationResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetOrganizationResultOutput, error) {
 			args := v.(GetOrganizationArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetOrganizationResult
-			secret, err := ctx.InvokePackageRaw("gcp:organizations/getOrganization:getOrganization", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:organizations/getOrganization:getOrganization", args, &rv, "", opts...)
 			if err != nil {
 				return GetOrganizationResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetOrganizationResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetOrganizationResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetOrganizationResultOutput), nil
 			}

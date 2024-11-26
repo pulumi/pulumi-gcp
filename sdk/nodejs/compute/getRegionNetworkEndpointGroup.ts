@@ -116,7 +116,7 @@ export interface GetRegionNetworkEndpointGroupResult {
  * });
  * ```
  */
-export function getRegionNetworkEndpointGroupOutput(args?: GetRegionNetworkEndpointGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionNetworkEndpointGroupResult> {
+export function getRegionNetworkEndpointGroupOutput(args?: GetRegionNetworkEndpointGroupOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRegionNetworkEndpointGroupResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:compute/getRegionNetworkEndpointGroup:getRegionNetworkEndpointGroup", {

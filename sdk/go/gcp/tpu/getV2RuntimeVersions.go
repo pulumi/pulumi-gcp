@@ -5,6 +5,7 @@ package tpu
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -70,6 +71,16 @@ import (
 // ```
 func GetV2RuntimeVersions(ctx *pulumi.Context, args *GetV2RuntimeVersionsArgs, opts ...pulumi.InvokeOption) (*GetV2RuntimeVersionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetV2RuntimeVersionsResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetV2RuntimeVersionsResult{}, errors.New("DependsOn is not supported for direct form invoke GetV2RuntimeVersions, use GetV2RuntimeVersionsOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetV2RuntimeVersionsResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetV2RuntimeVersions, use GetV2RuntimeVersionsOutput instead")
+	}
 	var rv GetV2RuntimeVersionsResult
 	err := ctx.Invoke("gcp:tpu/getV2RuntimeVersions:getV2RuntimeVersions", args, &rv, opts...)
 	if err != nil {
@@ -99,17 +110,18 @@ type GetV2RuntimeVersionsResult struct {
 }
 
 func GetV2RuntimeVersionsOutput(ctx *pulumi.Context, args GetV2RuntimeVersionsOutputArgs, opts ...pulumi.InvokeOption) GetV2RuntimeVersionsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetV2RuntimeVersionsResultOutput, error) {
 			args := v.(GetV2RuntimeVersionsArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetV2RuntimeVersionsResult
-			secret, err := ctx.InvokePackageRaw("gcp:tpu/getV2RuntimeVersions:getV2RuntimeVersions", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:tpu/getV2RuntimeVersions:getV2RuntimeVersions", args, &rv, "", opts...)
 			if err != nil {
 				return GetV2RuntimeVersionsResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetV2RuntimeVersionsResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetV2RuntimeVersionsResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetV2RuntimeVersionsResultOutput), nil
 			}

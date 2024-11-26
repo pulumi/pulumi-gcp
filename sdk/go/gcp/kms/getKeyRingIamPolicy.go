@@ -5,6 +5,7 @@ package kms
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -40,6 +41,16 @@ import (
 // ```
 func GetKeyRingIamPolicy(ctx *pulumi.Context, args *GetKeyRingIamPolicyArgs, opts ...pulumi.InvokeOption) (*GetKeyRingIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetKeyRingIamPolicyResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetKeyRingIamPolicyResult{}, errors.New("DependsOn is not supported for direct form invoke GetKeyRingIamPolicy, use GetKeyRingIamPolicyOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetKeyRingIamPolicyResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetKeyRingIamPolicy, use GetKeyRingIamPolicyOutput instead")
+	}
 	var rv GetKeyRingIamPolicyResult
 	err := ctx.Invoke("gcp:kms/getKeyRingIamPolicy:getKeyRingIamPolicy", args, &rv, opts...)
 	if err != nil {
@@ -69,17 +80,18 @@ type GetKeyRingIamPolicyResult struct {
 }
 
 func GetKeyRingIamPolicyOutput(ctx *pulumi.Context, args GetKeyRingIamPolicyOutputArgs, opts ...pulumi.InvokeOption) GetKeyRingIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetKeyRingIamPolicyResultOutput, error) {
 			args := v.(GetKeyRingIamPolicyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetKeyRingIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:kms/getKeyRingIamPolicy:getKeyRingIamPolicy", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:kms/getKeyRingIamPolicy:getKeyRingIamPolicy", args, &rv, "", opts...)
 			if err != nil {
 				return GetKeyRingIamPolicyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetKeyRingIamPolicyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetKeyRingIamPolicyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetKeyRingIamPolicyResultOutput), nil
 			}

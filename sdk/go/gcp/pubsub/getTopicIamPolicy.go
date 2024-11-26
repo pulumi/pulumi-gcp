@@ -5,6 +5,7 @@ package pubsub
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -41,6 +42,16 @@ import (
 // ```
 func GetTopicIamPolicy(ctx *pulumi.Context, args *GetTopicIamPolicyArgs, opts ...pulumi.InvokeOption) (*GetTopicIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetTopicIamPolicyResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetTopicIamPolicyResult{}, errors.New("DependsOn is not supported for direct form invoke GetTopicIamPolicy, use GetTopicIamPolicyOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetTopicIamPolicyResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetTopicIamPolicy, use GetTopicIamPolicyOutput instead")
+	}
 	var rv GetTopicIamPolicyResult
 	err := ctx.Invoke("gcp:pubsub/getTopicIamPolicy:getTopicIamPolicy", args, &rv, opts...)
 	if err != nil {
@@ -72,17 +83,18 @@ type GetTopicIamPolicyResult struct {
 }
 
 func GetTopicIamPolicyOutput(ctx *pulumi.Context, args GetTopicIamPolicyOutputArgs, opts ...pulumi.InvokeOption) GetTopicIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetTopicIamPolicyResultOutput, error) {
 			args := v.(GetTopicIamPolicyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetTopicIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:pubsub/getTopicIamPolicy:getTopicIamPolicy", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:pubsub/getTopicIamPolicy:getTopicIamPolicy", args, &rv, "", opts...)
 			if err != nil {
 				return GetTopicIamPolicyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetTopicIamPolicyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetTopicIamPolicyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetTopicIamPolicyResultOutput), nil
 			}

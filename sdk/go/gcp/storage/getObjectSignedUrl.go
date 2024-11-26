@@ -5,6 +5,7 @@ package storage
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -87,6 +88,16 @@ import (
 // ```
 func GetObjectSignedUrl(ctx *pulumi.Context, args *GetObjectSignedUrlArgs, opts ...pulumi.InvokeOption) (*GetObjectSignedUrlResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetObjectSignedUrlResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetObjectSignedUrlResult{}, errors.New("DependsOn is not supported for direct form invoke GetObjectSignedUrl, use GetObjectSignedUrlOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetObjectSignedUrlResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetObjectSignedUrl, use GetObjectSignedUrlOutput instead")
+	}
 	var rv GetObjectSignedUrlResult
 	err := ctx.Invoke("gcp:storage/getObjectSignedUrl:getObjectSignedUrl", args, &rv, opts...)
 	if err != nil {
@@ -139,17 +150,18 @@ type GetObjectSignedUrlResult struct {
 }
 
 func GetObjectSignedUrlOutput(ctx *pulumi.Context, args GetObjectSignedUrlOutputArgs, opts ...pulumi.InvokeOption) GetObjectSignedUrlResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetObjectSignedUrlResultOutput, error) {
 			args := v.(GetObjectSignedUrlArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetObjectSignedUrlResult
-			secret, err := ctx.InvokePackageRaw("gcp:storage/getObjectSignedUrl:getObjectSignedUrl", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:storage/getObjectSignedUrl:getObjectSignedUrl", args, &rv, "", opts...)
 			if err != nil {
 				return GetObjectSignedUrlResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetObjectSignedUrlResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetObjectSignedUrlResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetObjectSignedUrlResultOutput), nil
 			}

@@ -5,6 +5,7 @@ package organizations
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -47,6 +48,16 @@ import (
 // ```
 func LookupFolder(ctx *pulumi.Context, args *LookupFolderArgs, opts ...pulumi.InvokeOption) (*LookupFolderResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupFolderResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupFolderResult{}, errors.New("DependsOn is not supported for direct form invoke LookupFolder, use LookupFolderOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupFolderResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupFolder, use LookupFolderOutput instead")
+	}
 	var rv LookupFolderResult
 	err := ctx.Invoke("gcp:organizations/getFolder:getFolder", args, &rv, opts...)
 	if err != nil {
@@ -86,17 +97,18 @@ type LookupFolderResult struct {
 }
 
 func LookupFolderOutput(ctx *pulumi.Context, args LookupFolderOutputArgs, opts ...pulumi.InvokeOption) LookupFolderResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupFolderResultOutput, error) {
 			args := v.(LookupFolderArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupFolderResult
-			secret, err := ctx.InvokePackageRaw("gcp:organizations/getFolder:getFolder", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:organizations/getFolder:getFolder", args, &rv, "", opts...)
 			if err != nil {
 				return LookupFolderResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupFolderResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupFolderResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupFolderResultOutput), nil
 			}

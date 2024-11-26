@@ -5,6 +5,7 @@ package kms
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -40,6 +41,16 @@ import (
 // ```
 func GetCryptoKeyIamPolicy(ctx *pulumi.Context, args *GetCryptoKeyIamPolicyArgs, opts ...pulumi.InvokeOption) (*GetCryptoKeyIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetCryptoKeyIamPolicyResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetCryptoKeyIamPolicyResult{}, errors.New("DependsOn is not supported for direct form invoke GetCryptoKeyIamPolicy, use GetCryptoKeyIamPolicyOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetCryptoKeyIamPolicyResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetCryptoKeyIamPolicy, use GetCryptoKeyIamPolicyOutput instead")
+	}
 	var rv GetCryptoKeyIamPolicyResult
 	err := ctx.Invoke("gcp:kms/getCryptoKeyIamPolicy:getCryptoKeyIamPolicy", args, &rv, opts...)
 	if err != nil {
@@ -66,17 +77,18 @@ type GetCryptoKeyIamPolicyResult struct {
 }
 
 func GetCryptoKeyIamPolicyOutput(ctx *pulumi.Context, args GetCryptoKeyIamPolicyOutputArgs, opts ...pulumi.InvokeOption) GetCryptoKeyIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetCryptoKeyIamPolicyResultOutput, error) {
 			args := v.(GetCryptoKeyIamPolicyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetCryptoKeyIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:kms/getCryptoKeyIamPolicy:getCryptoKeyIamPolicy", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:kms/getCryptoKeyIamPolicy:getCryptoKeyIamPolicy", args, &rv, "", opts...)
 			if err != nil {
 				return GetCryptoKeyIamPolicyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetCryptoKeyIamPolicyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetCryptoKeyIamPolicyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetCryptoKeyIamPolicyResultOutput), nil
 			}

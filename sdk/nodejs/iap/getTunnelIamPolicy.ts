@@ -70,7 +70,7 @@ export interface GetTunnelIamPolicyResult {
  * });
  * ```
  */
-export function getTunnelIamPolicyOutput(args?: GetTunnelIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTunnelIamPolicyResult> {
+export function getTunnelIamPolicyOutput(args?: GetTunnelIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTunnelIamPolicyResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:iap/getTunnelIamPolicy:getTunnelIamPolicy", {

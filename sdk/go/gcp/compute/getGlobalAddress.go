@@ -5,6 +5,7 @@ package compute
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -65,6 +66,16 @@ import (
 // ```
 func LookupGlobalAddress(ctx *pulumi.Context, args *LookupGlobalAddressArgs, opts ...pulumi.InvokeOption) (*LookupGlobalAddressResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupGlobalAddressResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupGlobalAddressResult{}, errors.New("DependsOn is not supported for direct form invoke LookupGlobalAddress, use LookupGlobalAddressOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupGlobalAddressResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupGlobalAddress, use LookupGlobalAddressOutput instead")
+	}
 	var rv LookupGlobalAddressResult
 	err := ctx.Invoke("gcp:compute/getGlobalAddress:getGlobalAddress", args, &rv, opts...)
 	if err != nil {
@@ -106,17 +117,18 @@ type LookupGlobalAddressResult struct {
 }
 
 func LookupGlobalAddressOutput(ctx *pulumi.Context, args LookupGlobalAddressOutputArgs, opts ...pulumi.InvokeOption) LookupGlobalAddressResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupGlobalAddressResultOutput, error) {
 			args := v.(LookupGlobalAddressArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupGlobalAddressResult
-			secret, err := ctx.InvokePackageRaw("gcp:compute/getGlobalAddress:getGlobalAddress", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:compute/getGlobalAddress:getGlobalAddress", args, &rv, "", opts...)
 			if err != nil {
 				return LookupGlobalAddressResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupGlobalAddressResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupGlobalAddressResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupGlobalAddressResultOutput), nil
 			}

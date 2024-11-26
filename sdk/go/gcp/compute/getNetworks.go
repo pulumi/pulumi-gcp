@@ -5,6 +5,7 @@ package compute
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -40,6 +41,16 @@ import (
 // ```
 func GetNetworks(ctx *pulumi.Context, args *GetNetworksArgs, opts ...pulumi.InvokeOption) (*GetNetworksResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetNetworksResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetNetworksResult{}, errors.New("DependsOn is not supported for direct form invoke GetNetworks, use GetNetworksOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetNetworksResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetNetworks, use GetNetworksOutput instead")
+	}
 	var rv GetNetworksResult
 	err := ctx.Invoke("gcp:compute/getNetworks:getNetworks", args, &rv, opts...)
 	if err != nil {
@@ -67,17 +78,18 @@ type GetNetworksResult struct {
 }
 
 func GetNetworksOutput(ctx *pulumi.Context, args GetNetworksOutputArgs, opts ...pulumi.InvokeOption) GetNetworksResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetNetworksResultOutput, error) {
 			args := v.(GetNetworksArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetNetworksResult
-			secret, err := ctx.InvokePackageRaw("gcp:compute/getNetworks:getNetworks", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:compute/getNetworks:getNetworks", args, &rv, "", opts...)
 			if err != nil {
 				return GetNetworksResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetNetworksResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetNetworksResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetNetworksResultOutput), nil
 			}

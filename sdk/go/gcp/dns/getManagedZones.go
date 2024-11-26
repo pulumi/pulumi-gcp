@@ -5,6 +5,7 @@ package dns
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -42,6 +43,16 @@ import (
 // ```
 func GetManagedZones(ctx *pulumi.Context, args *GetManagedZonesArgs, opts ...pulumi.InvokeOption) (*GetManagedZonesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetManagedZonesResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetManagedZonesResult{}, errors.New("DependsOn is not supported for direct form invoke GetManagedZones, use GetManagedZonesOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetManagedZonesResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetManagedZones, use GetManagedZonesOutput instead")
+	}
 	var rv GetManagedZonesResult
 	err := ctx.Invoke("gcp:dns/getManagedZones:getManagedZones", args, &rv, opts...)
 	if err != nil {
@@ -65,17 +76,18 @@ type GetManagedZonesResult struct {
 }
 
 func GetManagedZonesOutput(ctx *pulumi.Context, args GetManagedZonesOutputArgs, opts ...pulumi.InvokeOption) GetManagedZonesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetManagedZonesResultOutput, error) {
 			args := v.(GetManagedZonesArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetManagedZonesResult
-			secret, err := ctx.InvokePackageRaw("gcp:dns/getManagedZones:getManagedZones", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:dns/getManagedZones:getManagedZones", args, &rv, "", opts...)
 			if err != nil {
 				return GetManagedZonesResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetManagedZonesResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetManagedZonesResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetManagedZonesResultOutput), nil
 			}

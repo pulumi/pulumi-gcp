@@ -5,6 +5,7 @@ package oracledatabase
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -43,6 +44,16 @@ import (
 // ```
 func GetCloudExadataInfrastructures(ctx *pulumi.Context, args *GetCloudExadataInfrastructuresArgs, opts ...pulumi.InvokeOption) (*GetCloudExadataInfrastructuresResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetCloudExadataInfrastructuresResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetCloudExadataInfrastructuresResult{}, errors.New("DependsOn is not supported for direct form invoke GetCloudExadataInfrastructures, use GetCloudExadataInfrastructuresOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetCloudExadataInfrastructuresResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetCloudExadataInfrastructures, use GetCloudExadataInfrastructuresOutput instead")
+	}
 	var rv GetCloudExadataInfrastructuresResult
 	err := ctx.Invoke("gcp:oracledatabase/getCloudExadataInfrastructures:getCloudExadataInfrastructures", args, &rv, opts...)
 	if err != nil {
@@ -72,17 +83,18 @@ type GetCloudExadataInfrastructuresResult struct {
 }
 
 func GetCloudExadataInfrastructuresOutput(ctx *pulumi.Context, args GetCloudExadataInfrastructuresOutputArgs, opts ...pulumi.InvokeOption) GetCloudExadataInfrastructuresResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetCloudExadataInfrastructuresResultOutput, error) {
 			args := v.(GetCloudExadataInfrastructuresArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetCloudExadataInfrastructuresResult
-			secret, err := ctx.InvokePackageRaw("gcp:oracledatabase/getCloudExadataInfrastructures:getCloudExadataInfrastructures", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:oracledatabase/getCloudExadataInfrastructures:getCloudExadataInfrastructures", args, &rv, "", opts...)
 			if err != nil {
 				return GetCloudExadataInfrastructuresResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetCloudExadataInfrastructuresResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetCloudExadataInfrastructuresResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetCloudExadataInfrastructuresResultOutput), nil
 			}

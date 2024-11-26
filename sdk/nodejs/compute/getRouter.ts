@@ -88,7 +88,7 @@ export interface GetRouterResult {
  * });
  * ```
  */
-export function getRouterOutput(args: GetRouterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRouterResult> {
+export function getRouterOutput(args: GetRouterOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRouterResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:compute/getRouter:getRouter", {
         "name": args.name,

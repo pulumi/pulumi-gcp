@@ -5,6 +5,7 @@ package bigquery
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -42,6 +43,16 @@ import (
 // ```
 func LookupConnectionIamPolicy(ctx *pulumi.Context, args *LookupConnectionIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupConnectionIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupConnectionIamPolicyResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupConnectionIamPolicyResult{}, errors.New("DependsOn is not supported for direct form invoke LookupConnectionIamPolicy, use LookupConnectionIamPolicyOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupConnectionIamPolicyResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupConnectionIamPolicy, use LookupConnectionIamPolicyOutput instead")
+	}
 	var rv LookupConnectionIamPolicyResult
 	err := ctx.Invoke("gcp:bigquery/getConnectionIamPolicy:getConnectionIamPolicy", args, &rv, opts...)
 	if err != nil {
@@ -85,17 +96,18 @@ type LookupConnectionIamPolicyResult struct {
 }
 
 func LookupConnectionIamPolicyOutput(ctx *pulumi.Context, args LookupConnectionIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupConnectionIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupConnectionIamPolicyResultOutput, error) {
 			args := v.(LookupConnectionIamPolicyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupConnectionIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:bigquery/getConnectionIamPolicy:getConnectionIamPolicy", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:bigquery/getConnectionIamPolicy:getConnectionIamPolicy", args, &rv, "", opts...)
 			if err != nil {
 				return LookupConnectionIamPolicyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupConnectionIamPolicyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupConnectionIamPolicyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupConnectionIamPolicyResultOutput), nil
 			}

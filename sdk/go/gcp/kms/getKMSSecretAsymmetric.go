@@ -5,6 +5,7 @@ package kms
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -133,6 +134,16 @@ import (
 // This will result in a Cloud SQL user being created with password `my-secret-password`.
 func GetKMSSecretAsymmetric(ctx *pulumi.Context, args *GetKMSSecretAsymmetricArgs, opts ...pulumi.InvokeOption) (*GetKMSSecretAsymmetricResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetKMSSecretAsymmetricResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetKMSSecretAsymmetricResult{}, errors.New("DependsOn is not supported for direct form invoke GetKMSSecretAsymmetric, use GetKMSSecretAsymmetricOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetKMSSecretAsymmetricResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetKMSSecretAsymmetric, use GetKMSSecretAsymmetricOutput instead")
+	}
 	var rv GetKMSSecretAsymmetricResult
 	err := ctx.Invoke("gcp:kms/getKMSSecretAsymmetric:getKMSSecretAsymmetric", args, &rv, opts...)
 	if err != nil {
@@ -166,17 +177,18 @@ type GetKMSSecretAsymmetricResult struct {
 }
 
 func GetKMSSecretAsymmetricOutput(ctx *pulumi.Context, args GetKMSSecretAsymmetricOutputArgs, opts ...pulumi.InvokeOption) GetKMSSecretAsymmetricResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetKMSSecretAsymmetricResultOutput, error) {
 			args := v.(GetKMSSecretAsymmetricArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetKMSSecretAsymmetricResult
-			secret, err := ctx.InvokePackageRaw("gcp:kms/getKMSSecretAsymmetric:getKMSSecretAsymmetric", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:kms/getKMSSecretAsymmetric:getKMSSecretAsymmetric", args, &rv, "", opts...)
 			if err != nil {
 				return GetKMSSecretAsymmetricResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetKMSSecretAsymmetricResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetKMSSecretAsymmetricResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetKMSSecretAsymmetricResultOutput), nil
 			}

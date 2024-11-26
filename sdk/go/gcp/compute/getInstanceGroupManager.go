@@ -5,6 +5,7 @@ package compute
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -49,6 +50,16 @@ import (
 // ```
 func LookupInstanceGroupManager(ctx *pulumi.Context, args *LookupInstanceGroupManagerArgs, opts ...pulumi.InvokeOption) (*LookupInstanceGroupManagerResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupInstanceGroupManagerResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupInstanceGroupManagerResult{}, errors.New("DependsOn is not supported for direct form invoke LookupInstanceGroupManager, use LookupInstanceGroupManagerOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupInstanceGroupManagerResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupInstanceGroupManager, use LookupInstanceGroupManagerOutput instead")
+	}
 	var rv LookupInstanceGroupManagerResult
 	err := ctx.Invoke("gcp:compute/getInstanceGroupManager:getInstanceGroupManager", args, &rv, opts...)
 	if err != nil {
@@ -105,17 +116,18 @@ type LookupInstanceGroupManagerResult struct {
 }
 
 func LookupInstanceGroupManagerOutput(ctx *pulumi.Context, args LookupInstanceGroupManagerOutputArgs, opts ...pulumi.InvokeOption) LookupInstanceGroupManagerResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupInstanceGroupManagerResultOutput, error) {
 			args := v.(LookupInstanceGroupManagerArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupInstanceGroupManagerResult
-			secret, err := ctx.InvokePackageRaw("gcp:compute/getInstanceGroupManager:getInstanceGroupManager", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:compute/getInstanceGroupManager:getInstanceGroupManager", args, &rv, "", opts...)
 			if err != nil {
 				return LookupInstanceGroupManagerResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupInstanceGroupManagerResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupInstanceGroupManagerResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupInstanceGroupManagerResultOutput), nil
 			}

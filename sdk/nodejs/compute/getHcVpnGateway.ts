@@ -84,7 +84,7 @@ export interface GetHcVpnGatewayResult {
  * });
  * ```
  */
-export function getHcVpnGatewayOutput(args: GetHcVpnGatewayOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHcVpnGatewayResult> {
+export function getHcVpnGatewayOutput(args: GetHcVpnGatewayOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetHcVpnGatewayResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:compute/getHcVpnGateway:getHcVpnGateway", {
         "name": args.name,

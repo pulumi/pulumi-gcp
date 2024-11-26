@@ -5,6 +5,7 @@ package compute
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -52,6 +53,16 @@ import (
 // ```
 func LookupDisk(ctx *pulumi.Context, args *LookupDiskArgs, opts ...pulumi.InvokeOption) (*LookupDiskResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupDiskResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupDiskResult{}, errors.New("DependsOn is not supported for direct form invoke LookupDisk, use LookupDiskOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupDiskResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupDisk, use LookupDiskOutput instead")
+	}
 	var rv LookupDiskResult
 	err := ctx.Invoke("gcp:compute/getDisk:getDisk", args, &rv, opts...)
 	if err != nil {
@@ -147,17 +158,18 @@ type LookupDiskResult struct {
 }
 
 func LookupDiskOutput(ctx *pulumi.Context, args LookupDiskOutputArgs, opts ...pulumi.InvokeOption) LookupDiskResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupDiskResultOutput, error) {
 			args := v.(LookupDiskArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupDiskResult
-			secret, err := ctx.InvokePackageRaw("gcp:compute/getDisk:getDisk", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:compute/getDisk:getDisk", args, &rv, "", opts...)
 			if err != nil {
 				return LookupDiskResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupDiskResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupDiskResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupDiskResultOutput), nil
 			}

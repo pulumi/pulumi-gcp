@@ -5,6 +5,7 @@ package apphub
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -42,6 +43,16 @@ import (
 // ```
 func LookupApplication(ctx *pulumi.Context, args *LookupApplicationArgs, opts ...pulumi.InvokeOption) (*LookupApplicationResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupApplicationResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupApplicationResult{}, errors.New("DependsOn is not supported for direct form invoke LookupApplication, use LookupApplicationOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupApplicationResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupApplication, use LookupApplicationOutput instead")
+	}
 	var rv LookupApplicationResult
 	err := ctx.Invoke("gcp:apphub/getApplication:getApplication", args, &rv, opts...)
 	if err != nil {
@@ -76,17 +87,18 @@ type LookupApplicationResult struct {
 }
 
 func LookupApplicationOutput(ctx *pulumi.Context, args LookupApplicationOutputArgs, opts ...pulumi.InvokeOption) LookupApplicationResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupApplicationResultOutput, error) {
 			args := v.(LookupApplicationArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupApplicationResult
-			secret, err := ctx.InvokePackageRaw("gcp:apphub/getApplication:getApplication", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:apphub/getApplication:getApplication", args, &rv, "", opts...)
 			if err != nil {
 				return LookupApplicationResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupApplicationResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupApplicationResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupApplicationResultOutput), nil
 			}

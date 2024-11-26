@@ -5,6 +5,7 @@ package privilegedaccessmanager
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -48,6 +49,16 @@ import (
 // ```
 func LookupEntitlement(ctx *pulumi.Context, args *LookupEntitlementArgs, opts ...pulumi.InvokeOption) (*LookupEntitlementResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupEntitlementResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupEntitlementResult{}, errors.New("DependsOn is not supported for direct form invoke LookupEntitlement, use LookupEntitlementOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupEntitlementResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupEntitlement, use LookupEntitlementOutput instead")
+	}
 	var rv LookupEntitlementResult
 	err := ctx.Invoke("gcp:privilegedaccessmanager/getEntitlement:getEntitlement", args, &rv, opts...)
 	if err != nil {
@@ -87,17 +98,18 @@ type LookupEntitlementResult struct {
 }
 
 func LookupEntitlementOutput(ctx *pulumi.Context, args LookupEntitlementOutputArgs, opts ...pulumi.InvokeOption) LookupEntitlementResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupEntitlementResultOutput, error) {
 			args := v.(LookupEntitlementArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupEntitlementResult
-			secret, err := ctx.InvokePackageRaw("gcp:privilegedaccessmanager/getEntitlement:getEntitlement", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:privilegedaccessmanager/getEntitlement:getEntitlement", args, &rv, "", opts...)
 			if err != nil {
 				return LookupEntitlementResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupEntitlementResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupEntitlementResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupEntitlementResultOutput), nil
 			}

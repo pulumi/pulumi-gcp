@@ -5,6 +5,7 @@ package compute
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -42,6 +43,16 @@ import (
 // ```
 func GetSubnetworkIamPolicy(ctx *pulumi.Context, args *GetSubnetworkIamPolicyArgs, opts ...pulumi.InvokeOption) (*GetSubnetworkIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetSubnetworkIamPolicyResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetSubnetworkIamPolicyResult{}, errors.New("DependsOn is not supported for direct form invoke GetSubnetworkIamPolicy, use GetSubnetworkIamPolicyOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetSubnetworkIamPolicyResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetSubnetworkIamPolicy, use GetSubnetworkIamPolicyOutput instead")
+	}
 	var rv GetSubnetworkIamPolicyResult
 	err := ctx.Invoke("gcp:compute/getSubnetworkIamPolicy:getSubnetworkIamPolicy", args, &rv, opts...)
 	if err != nil {
@@ -79,17 +90,18 @@ type GetSubnetworkIamPolicyResult struct {
 }
 
 func GetSubnetworkIamPolicyOutput(ctx *pulumi.Context, args GetSubnetworkIamPolicyOutputArgs, opts ...pulumi.InvokeOption) GetSubnetworkIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetSubnetworkIamPolicyResultOutput, error) {
 			args := v.(GetSubnetworkIamPolicyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetSubnetworkIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:compute/getSubnetworkIamPolicy:getSubnetworkIamPolicy", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:compute/getSubnetworkIamPolicy:getSubnetworkIamPolicy", args, &rv, "", opts...)
 			if err != nil {
 				return GetSubnetworkIamPolicyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetSubnetworkIamPolicyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetSubnetworkIamPolicyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetSubnetworkIamPolicyResultOutput), nil
 			}

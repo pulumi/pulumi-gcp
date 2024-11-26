@@ -5,6 +5,7 @@ package serviceaccount
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -136,6 +137,16 @@ import (
 // ```
 func GetAccountIdToken(ctx *pulumi.Context, args *GetAccountIdTokenArgs, opts ...pulumi.InvokeOption) (*GetAccountIdTokenResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetAccountIdTokenResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetAccountIdTokenResult{}, errors.New("DependsOn is not supported for direct form invoke GetAccountIdToken, use GetAccountIdTokenOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetAccountIdTokenResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetAccountIdToken, use GetAccountIdTokenOutput instead")
+	}
 	var rv GetAccountIdTokenResult
 	err := ctx.Invoke("gcp:serviceaccount/getAccountIdToken:getAccountIdToken", args, &rv, opts...)
 	if err != nil {
@@ -169,17 +180,18 @@ type GetAccountIdTokenResult struct {
 }
 
 func GetAccountIdTokenOutput(ctx *pulumi.Context, args GetAccountIdTokenOutputArgs, opts ...pulumi.InvokeOption) GetAccountIdTokenResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetAccountIdTokenResultOutput, error) {
 			args := v.(GetAccountIdTokenArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetAccountIdTokenResult
-			secret, err := ctx.InvokePackageRaw("gcp:serviceaccount/getAccountIdToken:getAccountIdToken", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:serviceaccount/getAccountIdToken:getAccountIdToken", args, &rv, "", opts...)
 			if err != nil {
 				return GetAccountIdTokenResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetAccountIdTokenResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetAccountIdTokenResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetAccountIdTokenResultOutput), nil
 			}

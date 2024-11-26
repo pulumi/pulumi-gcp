@@ -74,7 +74,7 @@ export interface GetWorkloadIdentityPoolResult {
  * });
  * ```
  */
-export function getWorkloadIdentityPoolOutput(args: GetWorkloadIdentityPoolOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWorkloadIdentityPoolResult> {
+export function getWorkloadIdentityPoolOutput(args: GetWorkloadIdentityPoolOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWorkloadIdentityPoolResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:iam/getWorkloadIdentityPool:getWorkloadIdentityPool", {
         "project": args.project,

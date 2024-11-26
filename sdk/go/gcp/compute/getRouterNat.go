@@ -5,6 +5,7 @@ package compute
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -45,6 +46,16 @@ import (
 // ```
 func LookupRouterNat(ctx *pulumi.Context, args *LookupRouterNatArgs, opts ...pulumi.InvokeOption) (*LookupRouterNatResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupRouterNatResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupRouterNatResult{}, errors.New("DependsOn is not supported for direct form invoke LookupRouterNat, use LookupRouterNatOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupRouterNatResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupRouterNat, use LookupRouterNatOutput instead")
+	}
 	var rv LookupRouterNatResult
 	err := ctx.Invoke("gcp:compute/getRouterNat:getRouterNat", args, &rv, opts...)
 	if err != nil {
@@ -100,17 +111,18 @@ type LookupRouterNatResult struct {
 }
 
 func LookupRouterNatOutput(ctx *pulumi.Context, args LookupRouterNatOutputArgs, opts ...pulumi.InvokeOption) LookupRouterNatResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupRouterNatResultOutput, error) {
 			args := v.(LookupRouterNatArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupRouterNatResult
-			secret, err := ctx.InvokePackageRaw("gcp:compute/getRouterNat:getRouterNat", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:compute/getRouterNat:getRouterNat", args, &rv, "", opts...)
 			if err != nil {
 				return LookupRouterNatResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupRouterNatResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupRouterNatResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupRouterNatResultOutput), nil
 			}

@@ -5,6 +5,7 @@ package iap
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -50,6 +51,16 @@ import (
 // ```
 func LookupClient(ctx *pulumi.Context, args *LookupClientArgs, opts ...pulumi.InvokeOption) (*LookupClientResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupClientResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupClientResult{}, errors.New("DependsOn is not supported for direct form invoke LookupClient, use LookupClientOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupClientResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupClient, use LookupClientOutput instead")
+	}
 	var rv LookupClientResult
 	err := ctx.Invoke("gcp:iap/getClient:getClient", args, &rv, opts...)
 	if err != nil {
@@ -77,17 +88,18 @@ type LookupClientResult struct {
 }
 
 func LookupClientOutput(ctx *pulumi.Context, args LookupClientOutputArgs, opts ...pulumi.InvokeOption) LookupClientResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupClientResultOutput, error) {
 			args := v.(LookupClientArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupClientResult
-			secret, err := ctx.InvokePackageRaw("gcp:iap/getClient:getClient", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:iap/getClient:getClient", args, &rv, "", opts...)
 			if err != nil {
 				return LookupClientResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupClientResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupClientResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupClientResultOutput), nil
 			}

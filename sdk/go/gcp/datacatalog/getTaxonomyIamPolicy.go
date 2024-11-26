@@ -5,6 +5,7 @@ package datacatalog
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -40,6 +41,16 @@ import (
 // ```
 func LookupTaxonomyIamPolicy(ctx *pulumi.Context, args *LookupTaxonomyIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupTaxonomyIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupTaxonomyIamPolicyResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupTaxonomyIamPolicyResult{}, errors.New("DependsOn is not supported for direct form invoke LookupTaxonomyIamPolicy, use LookupTaxonomyIamPolicyOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupTaxonomyIamPolicyResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupTaxonomyIamPolicy, use LookupTaxonomyIamPolicyOutput instead")
+	}
 	var rv LookupTaxonomyIamPolicyResult
 	err := ctx.Invoke("gcp:datacatalog/getTaxonomyIamPolicy:getTaxonomyIamPolicy", args, &rv, opts...)
 	if err != nil {
@@ -73,17 +84,18 @@ type LookupTaxonomyIamPolicyResult struct {
 }
 
 func LookupTaxonomyIamPolicyOutput(ctx *pulumi.Context, args LookupTaxonomyIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupTaxonomyIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupTaxonomyIamPolicyResultOutput, error) {
 			args := v.(LookupTaxonomyIamPolicyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupTaxonomyIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:datacatalog/getTaxonomyIamPolicy:getTaxonomyIamPolicy", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:datacatalog/getTaxonomyIamPolicy:getTaxonomyIamPolicy", args, &rv, "", opts...)
 			if err != nil {
 				return LookupTaxonomyIamPolicyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupTaxonomyIamPolicyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupTaxonomyIamPolicyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupTaxonomyIamPolicyResultOutput), nil
 			}

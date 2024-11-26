@@ -5,6 +5,7 @@ package firebase
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -20,6 +21,16 @@ import (
 //   - [Official Documentation](https://firebase.google.com/)
 func GetWebAppConfig(ctx *pulumi.Context, args *GetWebAppConfigArgs, opts ...pulumi.InvokeOption) (*GetWebAppConfigResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetWebAppConfigResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetWebAppConfigResult{}, errors.New("DependsOn is not supported for direct form invoke GetWebAppConfig, use GetWebAppConfigOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetWebAppConfigResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetWebAppConfig, use GetWebAppConfigOutput instead")
+	}
 	var rv GetWebAppConfigResult
 	err := ctx.Invoke("gcp:firebase/getWebAppConfig:getWebAppConfig", args, &rv, opts...)
 	if err != nil {
@@ -70,17 +81,18 @@ type GetWebAppConfigResult struct {
 }
 
 func GetWebAppConfigOutput(ctx *pulumi.Context, args GetWebAppConfigOutputArgs, opts ...pulumi.InvokeOption) GetWebAppConfigResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetWebAppConfigResultOutput, error) {
 			args := v.(GetWebAppConfigArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetWebAppConfigResult
-			secret, err := ctx.InvokePackageRaw("gcp:firebase/getWebAppConfig:getWebAppConfig", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:firebase/getWebAppConfig:getWebAppConfig", args, &rv, "", opts...)
 			if err != nil {
 				return GetWebAppConfigResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetWebAppConfigResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetWebAppConfigResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetWebAppConfigResultOutput), nil
 			}

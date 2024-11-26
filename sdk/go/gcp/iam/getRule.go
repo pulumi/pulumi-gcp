@@ -5,6 +5,7 @@ package iam
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -39,6 +40,16 @@ import (
 // ```
 func GetRule(ctx *pulumi.Context, args *GetRuleArgs, opts ...pulumi.InvokeOption) (*GetRuleResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetRuleResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetRuleResult{}, errors.New("DependsOn is not supported for direct form invoke GetRule, use GetRuleOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetRuleResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetRule, use GetRuleOutput instead")
+	}
 	var rv GetRuleResult
 	err := ctx.Invoke("gcp:iam/getRule:getRule", args, &rv, opts...)
 	if err != nil {
@@ -67,17 +78,18 @@ type GetRuleResult struct {
 }
 
 func GetRuleOutput(ctx *pulumi.Context, args GetRuleOutputArgs, opts ...pulumi.InvokeOption) GetRuleResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetRuleResultOutput, error) {
 			args := v.(GetRuleArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetRuleResult
-			secret, err := ctx.InvokePackageRaw("gcp:iam/getRule:getRule", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:iam/getRule:getRule", args, &rv, "", opts...)
 			if err != nil {
 				return GetRuleResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetRuleResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetRuleResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetRuleResultOutput), nil
 			}

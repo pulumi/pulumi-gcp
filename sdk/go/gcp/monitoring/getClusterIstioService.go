@@ -5,6 +5,7 @@ package monitoring
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -58,6 +59,16 @@ import (
 // ```
 func GetClusterIstioService(ctx *pulumi.Context, args *GetClusterIstioServiceArgs, opts ...pulumi.InvokeOption) (*GetClusterIstioServiceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetClusterIstioServiceResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetClusterIstioServiceResult{}, errors.New("DependsOn is not supported for direct form invoke GetClusterIstioService, use GetClusterIstioServiceOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetClusterIstioServiceResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetClusterIstioService, use GetClusterIstioServiceOutput instead")
+	}
 	var rv GetClusterIstioServiceResult
 	err := ctx.Invoke("gcp:monitoring/getClusterIstioService:getClusterIstioService", args, &rv, opts...)
 	if err != nil {
@@ -110,17 +121,18 @@ type GetClusterIstioServiceResult struct {
 }
 
 func GetClusterIstioServiceOutput(ctx *pulumi.Context, args GetClusterIstioServiceOutputArgs, opts ...pulumi.InvokeOption) GetClusterIstioServiceResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetClusterIstioServiceResultOutput, error) {
 			args := v.(GetClusterIstioServiceArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetClusterIstioServiceResult
-			secret, err := ctx.InvokePackageRaw("gcp:monitoring/getClusterIstioService:getClusterIstioService", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:monitoring/getClusterIstioService:getClusterIstioService", args, &rv, "", opts...)
 			if err != nil {
 				return GetClusterIstioServiceResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetClusterIstioServiceResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetClusterIstioServiceResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetClusterIstioServiceResultOutput), nil
 			}

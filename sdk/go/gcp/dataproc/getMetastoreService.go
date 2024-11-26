@@ -5,6 +5,7 @@ package dataproc
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -41,6 +42,16 @@ import (
 // ```
 func LookupMetastoreService(ctx *pulumi.Context, args *LookupMetastoreServiceArgs, opts ...pulumi.InvokeOption) (*LookupMetastoreServiceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupMetastoreServiceResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupMetastoreServiceResult{}, errors.New("DependsOn is not supported for direct form invoke LookupMetastoreService, use LookupMetastoreServiceOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupMetastoreServiceResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupMetastoreService, use LookupMetastoreServiceOutput instead")
+	}
 	var rv LookupMetastoreServiceResult
 	err := ctx.Invoke("gcp:dataproc/getMetastoreService:getMetastoreService", args, &rv, opts...)
 	if err != nil {
@@ -95,17 +106,18 @@ type LookupMetastoreServiceResult struct {
 }
 
 func LookupMetastoreServiceOutput(ctx *pulumi.Context, args LookupMetastoreServiceOutputArgs, opts ...pulumi.InvokeOption) LookupMetastoreServiceResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupMetastoreServiceResultOutput, error) {
 			args := v.(LookupMetastoreServiceArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupMetastoreServiceResult
-			secret, err := ctx.InvokePackageRaw("gcp:dataproc/getMetastoreService:getMetastoreService", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:dataproc/getMetastoreService:getMetastoreService", args, &rv, "", opts...)
 			if err != nil {
 				return LookupMetastoreServiceResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupMetastoreServiceResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupMetastoreServiceResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupMetastoreServiceResultOutput), nil
 			}

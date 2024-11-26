@@ -5,6 +5,7 @@ package sql
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -44,6 +45,16 @@ import (
 // ```
 func GetDatabaseInstanceLatestRecoveryTime(ctx *pulumi.Context, args *GetDatabaseInstanceLatestRecoveryTimeArgs, opts ...pulumi.InvokeOption) (*GetDatabaseInstanceLatestRecoveryTimeResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetDatabaseInstanceLatestRecoveryTimeResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetDatabaseInstanceLatestRecoveryTimeResult{}, errors.New("DependsOn is not supported for direct form invoke GetDatabaseInstanceLatestRecoveryTime, use GetDatabaseInstanceLatestRecoveryTimeOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetDatabaseInstanceLatestRecoveryTimeResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetDatabaseInstanceLatestRecoveryTime, use GetDatabaseInstanceLatestRecoveryTimeOutput instead")
+	}
 	var rv GetDatabaseInstanceLatestRecoveryTimeResult
 	err := ctx.Invoke("gcp:sql/getDatabaseInstanceLatestRecoveryTime:getDatabaseInstanceLatestRecoveryTime", args, &rv, opts...)
 	if err != nil {
@@ -73,17 +84,18 @@ type GetDatabaseInstanceLatestRecoveryTimeResult struct {
 }
 
 func GetDatabaseInstanceLatestRecoveryTimeOutput(ctx *pulumi.Context, args GetDatabaseInstanceLatestRecoveryTimeOutputArgs, opts ...pulumi.InvokeOption) GetDatabaseInstanceLatestRecoveryTimeResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetDatabaseInstanceLatestRecoveryTimeResultOutput, error) {
 			args := v.(GetDatabaseInstanceLatestRecoveryTimeArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetDatabaseInstanceLatestRecoveryTimeResult
-			secret, err := ctx.InvokePackageRaw("gcp:sql/getDatabaseInstanceLatestRecoveryTime:getDatabaseInstanceLatestRecoveryTime", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:sql/getDatabaseInstanceLatestRecoveryTime:getDatabaseInstanceLatestRecoveryTime", args, &rv, "", opts...)
 			if err != nil {
 				return GetDatabaseInstanceLatestRecoveryTimeResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetDatabaseInstanceLatestRecoveryTimeResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetDatabaseInstanceLatestRecoveryTimeResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetDatabaseInstanceLatestRecoveryTimeResultOutput), nil
 			}
