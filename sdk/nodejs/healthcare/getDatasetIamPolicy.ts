@@ -70,7 +70,7 @@ export interface GetDatasetIamPolicyResult {
  * });
  * ```
  */
-export function getDatasetIamPolicyOutput(args: GetDatasetIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatasetIamPolicyResult> {
+export function getDatasetIamPolicyOutput(args: GetDatasetIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDatasetIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:healthcare/getDatasetIamPolicy:getDatasetIamPolicy", {
         "datasetId": args.datasetId,

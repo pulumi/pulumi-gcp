@@ -96,7 +96,7 @@ export interface GetAutonomousDatabaseResult {
  * });
  * ```
  */
-export function getAutonomousDatabaseOutput(args: GetAutonomousDatabaseOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAutonomousDatabaseResult> {
+export function getAutonomousDatabaseOutput(args: GetAutonomousDatabaseOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAutonomousDatabaseResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:oracledatabase/getAutonomousDatabase:getAutonomousDatabase", {
         "autonomousDatabaseId": args.autonomousDatabaseId,

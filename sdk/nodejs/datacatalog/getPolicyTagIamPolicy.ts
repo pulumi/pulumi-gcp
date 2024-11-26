@@ -68,7 +68,7 @@ export interface GetPolicyTagIamPolicyResult {
  * });
  * ```
  */
-export function getPolicyTagIamPolicyOutput(args: GetPolicyTagIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPolicyTagIamPolicyResult> {
+export function getPolicyTagIamPolicyOutput(args: GetPolicyTagIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPolicyTagIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:datacatalog/getPolicyTagIamPolicy:getPolicyTagIamPolicy", {
         "policyTag": args.policyTag,

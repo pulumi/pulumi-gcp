@@ -111,7 +111,7 @@ export interface GetKeysResult {
  * export const fooDnsDsRecord = fooDnsKeys.apply(fooDnsKeys => fooDnsKeys.keySigningKeys?.[0]?.dsRecord);
  * ```
  */
-export function getKeysOutput(args: GetKeysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKeysResult> {
+export function getKeysOutput(args: GetKeysOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKeysResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:dns/getKeys:getKeys", {
         "managedZone": args.managedZone,

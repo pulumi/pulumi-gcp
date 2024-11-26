@@ -150,7 +150,7 @@ def get_default_service_account(project: Optional[str] = None,
         project=pulumi.get(__ret__, 'project'),
         unique_id=pulumi.get(__ret__, 'unique_id'))
 def get_default_service_account_output(project: Optional[pulumi.Input[Optional[str]]] = None,
-                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDefaultServiceAccountResult]:
+                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDefaultServiceAccountResult]:
     """
     Use this data source to retrieve the default App Engine service account for the specified project.
 
@@ -169,7 +169,7 @@ def get_default_service_account_output(project: Optional[pulumi.Input[Optional[s
     """
     __args__ = dict()
     __args__['project'] = project
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:appengine/getDefaultServiceAccount:getDefaultServiceAccount', __args__, opts=opts, typ=GetDefaultServiceAccountResult)
     return __ret__.apply(lambda __response__: GetDefaultServiceAccountResult(
         display_name=pulumi.get(__response__, 'display_name'),
