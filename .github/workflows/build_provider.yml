@@ -30,7 +30,7 @@ jobs:
             arch: amd64
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4.2.2
         with:
           persist-credentials: false
       - name: Setup tools
@@ -40,7 +40,7 @@ jobs:
       - name: Prepare local workspace before restoring previously built
         run: make prepare_local_workspace
       - name: Download schema-embed.json
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v4.1.8
         with:
           # Use a pattern to avoid failing if the artifact doesn't exist
           pattern: schema-embed.*
@@ -48,14 +48,11 @@ jobs:
           merge-multiple: true
           path: provider/cmd/pulumi-resource-gcp/schema-embed.json
       - name: Restore makefile progress
-        uses: actions/download-artifact@v4
-        with:
-          name: prerequisites.make
-          path: .make
+        run: make --touch provider schema
       - name: Build & package provider
         run: make provider_dist-${{ matrix.platform.os }}-${{ matrix.platform.arch }}
       - name: Upload artifacts
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v4.4.3
         with:
           name: pulumi-resource-gcp-v${{ inputs.version }}-${{ matrix.platform.os }}-${{ matrix.platform.arch }}.tar.gz
           path: bin/pulumi-resource-gcp-v${{ inputs.version }}-${{ matrix.platform.os }}-${{ matrix.platform.arch }}.tar.gz
