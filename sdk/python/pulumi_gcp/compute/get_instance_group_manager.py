@@ -381,7 +381,7 @@ def get_instance_group_manager_output(name: Optional[pulumi.Input[Optional[str]]
                                       project: Optional[pulumi.Input[Optional[str]]] = None,
                                       self_link: Optional[pulumi.Input[Optional[str]]] = None,
                                       zone: Optional[pulumi.Input[Optional[str]]] = None,
-                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceGroupManagerResult]:
+                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstanceGroupManagerResult]:
     """
     Get a Compute Instance Group Manager within GCE.
     For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups#managed_instance_groups)
@@ -409,7 +409,7 @@ def get_instance_group_manager_output(name: Optional[pulumi.Input[Optional[str]]
     __args__['project'] = project
     __args__['selfLink'] = self_link
     __args__['zone'] = zone
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:compute/getInstanceGroupManager:getInstanceGroupManager', __args__, opts=opts, typ=GetInstanceGroupManagerResult)
     return __ret__.apply(lambda __response__: GetInstanceGroupManagerResult(
         all_instances_configs=pulumi.get(__response__, 'all_instances_configs'),

@@ -207,7 +207,7 @@ def get_app_engine_service(module_id: Optional[str] = None,
         user_labels=pulumi.get(__ret__, 'user_labels'))
 def get_app_engine_service_output(module_id: Optional[pulumi.Input[str]] = None,
                                   project: Optional[pulumi.Input[Optional[str]]] = None,
-                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAppEngineServiceResult]:
+                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAppEngineServiceResult]:
     """
     A Monitoring Service is the root resource under which operational aspects of a
     generic service are accessible. A service is some discrete, autonomous, and
@@ -275,7 +275,7 @@ def get_app_engine_service_output(module_id: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['moduleId'] = module_id
     __args__['project'] = project
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:monitoring/getAppEngineService:getAppEngineService', __args__, opts=opts, typ=GetAppEngineServiceResult)
     return __ret__.apply(lambda __response__: GetAppEngineServiceResult(
         display_name=pulumi.get(__response__, 'display_name'),
