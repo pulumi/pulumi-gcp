@@ -51,7 +51,7 @@ jobs:
       version: ${{ steps.provider-version.outputs.version }}
     steps:
     - name: Checkout Repo
-      uses: actions/checkout@v4
+      uses: actions/checkout@v4.2.2
       with:
         persist-credentials: false
     - uses: pulumi/provider-version-action@v1
@@ -85,15 +85,9 @@ jobs:
           schema-tools compare -r github://api.github.com/pulumi -p gcp -o "${{ inputs.default_branch }}" -n --local-path=provider/cmd/pulumi-resource-gcp/schema.json;
           echo "$EOF";
         } >> "$GITHUB_ENV"
-    - name: Save makefile progress
-      uses: actions/upload-artifact@v4
-      with:
-        name: prerequisites.make
-        path: .make
-        include-hidden-files: true
     - if: inputs.is_pr && inputs.is_automated == false
       name: Comment on PR with Details of Schema Check
-      uses: thollander/actions-comment-pull-request@v2
+      uses: thollander/actions-comment-pull-request@v2.5.0
       with:
         GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         comment_tag: schemaCheck
@@ -107,7 +101,7 @@ jobs:
       uses: ./.github/actions/upload-bin
 
     - name: Upload schema-embed.json
-      uses: actions/upload-artifact@v4
+      uses: actions/upload-artifact@v4.4.3
       with:
         name: schema-embed.json
         path: provider/cmd/pulumi-resource-gcp/schema-embed.json
