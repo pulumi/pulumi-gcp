@@ -49,7 +49,7 @@ jobs:
         - java
     steps:
       - name: Checkout Repo
-        uses: actions/checkout@v4
+        uses: actions/checkout@v4.2.2
         with:
           persist-credentials: false
       - name: Cache examples generation
@@ -69,10 +69,7 @@ jobs:
       - name: Update path
         run: echo "${{ github.workspace }}/bin" >> "$GITHUB_PATH"
       - name: Restore makefile progress
-        uses: actions/download-artifact@v4
-        with:
-          name: prerequisites.make
-          path: .make
+        run: make --touch provider schema
       - name: Build SDK
         run: make build_${{ matrix.language }}
       - name: Check worktree clean
@@ -88,9 +85,3 @@ jobs:
         uses: ./.github/actions/upload-sdk
         with:
           language: ${{ matrix.language }}
-      - name: Save makefile progress
-        uses: actions/upload-artifact@v4
-        with:
-          name: build_${{ matrix.language }}.make
-          path: .make
-          include-hidden-files: true

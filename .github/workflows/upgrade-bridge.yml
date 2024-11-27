@@ -49,16 +49,23 @@ on:
         required: false
         type: boolean
         default: false
+
+permissions:
+  contents: write
+  issues: write
+  pull-requests: write
+
 env:
-  GH_TOKEN: ${{ secrets.PULUMI_BOT_TOKEN }}
+  GH_TOKEN: ${{ secrets.PULUMI_PROVIDER_AUTOMATION_TOKEN || secrets.PULUMI_BOT_TOKEN || secrets.GITHUB_TOKEN }}
   GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        
 jobs:
   upgrade_provider:
     name: upgrade-provider
     runs-on: ubuntu-latest
     steps:
     - name: Checkout Repo
-      uses: actions/checkout@v4
+      uses: actions/checkout@v4.2.2
       with:
         persist-credentials: false
     - name: Setup tools
