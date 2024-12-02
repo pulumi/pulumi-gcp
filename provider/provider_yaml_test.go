@@ -214,6 +214,22 @@ func TestNoGlobalProjectWarning(t *testing.T) {
 	)
 }
 
+func TestGlobalProjectNoProjectWarning(t *testing.T) {
+	if testing.Short() {
+		t.Skipf("Skipping in testing.Short() mode, assuming this is a CI run without GCP creds")
+	}
+	cwd, err := os.Getwd()
+	require.NoError(t, err)
+	proj := getProject()
+	test := pulumitest.NewPulumiTest(t, "test-programs/project-bucket",
+		opttest.LocalProviderPath(providerName, filepath.Join(cwd, "..", "bin")))
+
+	test.SetConfig(t, "gcp:disableGlobalProjectWarning", "true")
+	test.SetConfig(t, "gcpProj", proj)
+	res := test.Up(t)
+	require.NotContains(t, res.StdOut, "If you would like to disable this warning use")
+}
+
 // Test programs that were automatically extracted from examples without autocorrection.
 func TestAutoExtractedProgramsUpgrade(t *testing.T) {
 	type testCase struct {

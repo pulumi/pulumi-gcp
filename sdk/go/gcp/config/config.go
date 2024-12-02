@@ -227,6 +227,17 @@ func GetDialogflowCustomEndpoint(ctx *pulumi.Context) string {
 func GetDialogflowCxCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:dialogflowCxCustomEndpoint")
 }
+func GetDisableGlobalProjectWarning(ctx *pulumi.Context) bool {
+	v, err := config.TryBool(ctx, "gcp:disableGlobalProjectWarning")
+	if err == nil {
+		return v
+	}
+	var value bool
+	if d := internal.GetEnvOrDefault(false, internal.ParseEnvBool, "PULUMI_GCP_DISABLE_GLOBAL_PROJECT_WARNING"); d != nil {
+		value = d.(bool)
+	}
+	return value
+}
 func GetDisableGooglePartnerName(ctx *pulumi.Context) bool {
 	return config.GetBool(ctx, "gcp:disableGooglePartnerName")
 }

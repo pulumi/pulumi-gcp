@@ -159,6 +159,8 @@ dialogflowCustomEndpoint: Optional[str]
 
 dialogflowCxCustomEndpoint: Optional[str]
 
+disableGlobalProjectWarning: bool
+
 disableGooglePartnerName: Optional[bool]
 
 discoveryEngineCustomEndpoint: Optional[str]

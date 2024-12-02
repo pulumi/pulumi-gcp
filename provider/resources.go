@@ -414,12 +414,7 @@ func preConfigureCallbackWithLogger(credentialsValidationRun *atomic.Bool, gcpCl
 			}),
 			ImpersonateServiceAccount: tfbridge.ConfigStringValue(vars,
 				"impersonateServiceAccount", []string{"GOOGLE_IMPERSONATE_SERVICE_ACCOUNT"}),
-			Project: tfbridge.ConfigStringValue(vars, "project", []string{
-				"GOOGLE_PROJECT",
-				"GOOGLE_CLOUD_PROJECT",
-				"GCLOUD_PROJECT",
-				"CLOUDSDK_CORE_PROJECT",
-			}),
+			Project: project,
 			Region: tfbridge.ConfigStringValue(vars, "region", []string{
 				"GOOGLE_REGION",
 				"GCLOUD_REGION",
@@ -432,15 +427,23 @@ func preConfigureCallbackWithLogger(credentialsValidationRun *atomic.Bool, gcpCl
 			}),
 		}
 
+		skipRegionValidation := tfbridge.ConfigBoolValue(
+			vars, "skipRegionValidation", []string{"PULUMI_GCP_SKIP_REGION_VALIDATION"},
+		)
+
+		disableGlobalProjectWarning := tfbridge.ConfigBoolValue(
+			vars, "disableGlobalProjectWarning", []string{"PULUMI_GCP_DISABLE_GLOBAL_PROJECT_WARNING"},
+		)
+
+		if disableGlobalProjectWarning {
+			return nil
+		}
+
 		// validate the gcloud config
 		err := config.LoadAndValidate(ctx)
 		if err != nil {
 			return fmt.Errorf(noCredentialsErr, err)
 		}
-
-		skipRegionValidation := tfbridge.ConfigBoolValue(
-			vars, "skipRegionValidation", []string{"PULUMI_GCP_SKIP_REGION_VALIDATION"},
-		)
 
 		if !skipRegionValidation && config.Region != "" && config.Project != "" {
 			regionList, err := getRegionsList(ctx, config.Project, gcpClientOpts)
@@ -540,6 +543,18 @@ func Provider() tfbridge.ProviderInfo {
 					Default: &tfbridge.DefaultInfo{
 						Value:   false,
 						EnvVars: []string{"PULUMI_GCP_SKIP_REGION_VALIDATION"},
+					},
+				},
+			},
+			"disableGlobalProjectWarning": {
+				Schema: shimv2.NewSchema(&schema.Schema{
+					Type:     schema.TypeBool,
+					Optional: true,
+				}),
+				Info: &tfbridge.SchemaInfo{
+					Default: &tfbridge.DefaultInfo{
+						Value:   false,
+						EnvVars: []string{"PULUMI_GCP_DISABLE_GLOBAL_PROJECT_WARNING"},
 					},
 				},
 			},
