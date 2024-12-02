@@ -89,7 +89,7 @@ export interface GetRegionalSecretResult {
  * });
  * ```
  */
-export function getRegionalSecretOutput(args: GetRegionalSecretOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionalSecretResult> {
+export function getRegionalSecretOutput(args: GetRegionalSecretOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRegionalSecretResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:secretmanager/getRegionalSecret:getRegionalSecret", {
         "location": args.location,

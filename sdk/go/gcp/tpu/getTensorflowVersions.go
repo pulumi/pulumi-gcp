@@ -5,6 +5,7 @@ package tpu
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -72,6 +73,16 @@ import (
 // ```
 func GetTensorflowVersions(ctx *pulumi.Context, args *GetTensorflowVersionsArgs, opts ...pulumi.InvokeOption) (*GetTensorflowVersionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetTensorflowVersionsResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetTensorflowVersionsResult{}, errors.New("DependsOn is not supported for direct form invoke GetTensorflowVersions, use GetTensorflowVersionsOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetTensorflowVersionsResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetTensorflowVersions, use GetTensorflowVersionsOutput instead")
+	}
 	var rv GetTensorflowVersionsResult
 	err := ctx.Invoke("gcp:tpu/getTensorflowVersions:getTensorflowVersions", args, &rv, opts...)
 	if err != nil {
@@ -101,17 +112,18 @@ type GetTensorflowVersionsResult struct {
 }
 
 func GetTensorflowVersionsOutput(ctx *pulumi.Context, args GetTensorflowVersionsOutputArgs, opts ...pulumi.InvokeOption) GetTensorflowVersionsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetTensorflowVersionsResultOutput, error) {
 			args := v.(GetTensorflowVersionsArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetTensorflowVersionsResult
-			secret, err := ctx.InvokePackageRaw("gcp:tpu/getTensorflowVersions:getTensorflowVersions", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:tpu/getTensorflowVersions:getTensorflowVersions", args, &rv, "", opts...)
 			if err != nil {
 				return GetTensorflowVersionsResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetTensorflowVersionsResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetTensorflowVersionsResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetTensorflowVersionsResultOutput), nil
 			}

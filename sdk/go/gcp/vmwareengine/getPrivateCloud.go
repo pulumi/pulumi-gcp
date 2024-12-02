@@ -5,6 +5,7 @@ package vmwareengine
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -44,6 +45,16 @@ import (
 // ```
 func LookupPrivateCloud(ctx *pulumi.Context, args *LookupPrivateCloudArgs, opts ...pulumi.InvokeOption) (*LookupPrivateCloudResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupPrivateCloudResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupPrivateCloudResult{}, errors.New("DependsOn is not supported for direct form invoke LookupPrivateCloud, use LookupPrivateCloudOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupPrivateCloudResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupPrivateCloud, use LookupPrivateCloudOutput instead")
+	}
 	var rv LookupPrivateCloudResult
 	err := ctx.Invoke("gcp:vmwareengine/getPrivateCloud:getPrivateCloud", args, &rv, opts...)
 	if err != nil {
@@ -86,17 +97,18 @@ type LookupPrivateCloudResult struct {
 }
 
 func LookupPrivateCloudOutput(ctx *pulumi.Context, args LookupPrivateCloudOutputArgs, opts ...pulumi.InvokeOption) LookupPrivateCloudResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupPrivateCloudResultOutput, error) {
 			args := v.(LookupPrivateCloudArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupPrivateCloudResult
-			secret, err := ctx.InvokePackageRaw("gcp:vmwareengine/getPrivateCloud:getPrivateCloud", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:vmwareengine/getPrivateCloud:getPrivateCloud", args, &rv, "", opts...)
 			if err != nil {
 				return LookupPrivateCloudResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupPrivateCloudResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupPrivateCloudResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupPrivateCloudResultOutput), nil
 			}

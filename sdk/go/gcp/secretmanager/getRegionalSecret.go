@@ -5,6 +5,7 @@ package secretmanager
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -41,6 +42,16 @@ import (
 // ```
 func LookupRegionalSecret(ctx *pulumi.Context, args *LookupRegionalSecretArgs, opts ...pulumi.InvokeOption) (*LookupRegionalSecretResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupRegionalSecretResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupRegionalSecretResult{}, errors.New("DependsOn is not supported for direct form invoke LookupRegionalSecret, use LookupRegionalSecretOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupRegionalSecretResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupRegionalSecret, use LookupRegionalSecretOutput instead")
+	}
 	var rv LookupRegionalSecretResult
 	err := ctx.Invoke("gcp:secretmanager/getRegionalSecret:getRegionalSecret", args, &rv, opts...)
 	if err != nil {
@@ -83,17 +94,18 @@ type LookupRegionalSecretResult struct {
 }
 
 func LookupRegionalSecretOutput(ctx *pulumi.Context, args LookupRegionalSecretOutputArgs, opts ...pulumi.InvokeOption) LookupRegionalSecretResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupRegionalSecretResultOutput, error) {
 			args := v.(LookupRegionalSecretArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupRegionalSecretResult
-			secret, err := ctx.InvokePackageRaw("gcp:secretmanager/getRegionalSecret:getRegionalSecret", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:secretmanager/getRegionalSecret:getRegionalSecret", args, &rv, "", opts...)
 			if err != nil {
 				return LookupRegionalSecretResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupRegionalSecretResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupRegionalSecretResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupRegionalSecretResultOutput), nil
 			}

@@ -5,6 +5,7 @@ package container
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -41,6 +42,16 @@ import (
 // ```
 func GetRegistryRepository(ctx *pulumi.Context, args *GetRegistryRepositoryArgs, opts ...pulumi.InvokeOption) (*GetRegistryRepositoryResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetRegistryRepositoryResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetRegistryRepositoryResult{}, errors.New("DependsOn is not supported for direct form invoke GetRegistryRepository, use GetRegistryRepositoryOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetRegistryRepositoryResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetRegistryRepository, use GetRegistryRepositoryOutput instead")
+	}
 	var rv GetRegistryRepositoryResult
 	err := ctx.Invoke("gcp:container/getRegistryRepository:getRegistryRepository", args, &rv, opts...)
 	if err != nil {
@@ -68,17 +79,18 @@ type GetRegistryRepositoryResult struct {
 }
 
 func GetRegistryRepositoryOutput(ctx *pulumi.Context, args GetRegistryRepositoryOutputArgs, opts ...pulumi.InvokeOption) GetRegistryRepositoryResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetRegistryRepositoryResultOutput, error) {
 			args := v.(GetRegistryRepositoryArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetRegistryRepositoryResult
-			secret, err := ctx.InvokePackageRaw("gcp:container/getRegistryRepository:getRegistryRepository", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:container/getRegistryRepository:getRegistryRepository", args, &rv, "", opts...)
 			if err != nil {
 				return GetRegistryRepositoryResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetRegistryRepositoryResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetRegistryRepositoryResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetRegistryRepositoryResultOutput), nil
 			}

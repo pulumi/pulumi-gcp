@@ -5,6 +5,7 @@ package compute
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -40,6 +41,16 @@ import (
 // ```
 func LookupBackendBucket(ctx *pulumi.Context, args *LookupBackendBucketArgs, opts ...pulumi.InvokeOption) (*LookupBackendBucketResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupBackendBucketResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupBackendBucketResult{}, errors.New("DependsOn is not supported for direct form invoke LookupBackendBucket, use LookupBackendBucketOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupBackendBucketResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupBackendBucket, use LookupBackendBucketOutput instead")
+	}
 	var rv LookupBackendBucketResult
 	err := ctx.Invoke("gcp:compute/getBackendBucket:getBackendBucket", args, &rv, opts...)
 	if err != nil {
@@ -77,17 +88,18 @@ type LookupBackendBucketResult struct {
 }
 
 func LookupBackendBucketOutput(ctx *pulumi.Context, args LookupBackendBucketOutputArgs, opts ...pulumi.InvokeOption) LookupBackendBucketResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupBackendBucketResultOutput, error) {
 			args := v.(LookupBackendBucketArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupBackendBucketResult
-			secret, err := ctx.InvokePackageRaw("gcp:compute/getBackendBucket:getBackendBucket", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:compute/getBackendBucket:getBackendBucket", args, &rv, "", opts...)
 			if err != nil {
 				return LookupBackendBucketResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupBackendBucketResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupBackendBucketResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupBackendBucketResultOutput), nil
 			}

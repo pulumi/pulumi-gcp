@@ -5,6 +5,7 @@ package siteverification
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -78,6 +79,16 @@ import (
 // ```
 func GetToken(ctx *pulumi.Context, args *GetTokenArgs, opts ...pulumi.InvokeOption) (*GetTokenResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetTokenResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetTokenResult{}, errors.New("DependsOn is not supported for direct form invoke GetToken, use GetTokenOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetTokenResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetToken, use GetTokenOutput instead")
+	}
 	var rv GetTokenResult
 	err := ctx.Invoke("gcp:siteverification/getToken:getToken", args, &rv, opts...)
 	if err != nil {
@@ -114,17 +125,18 @@ type GetTokenResult struct {
 }
 
 func GetTokenOutput(ctx *pulumi.Context, args GetTokenOutputArgs, opts ...pulumi.InvokeOption) GetTokenResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetTokenResultOutput, error) {
 			args := v.(GetTokenArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetTokenResult
-			secret, err := ctx.InvokePackageRaw("gcp:siteverification/getToken:getToken", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:siteverification/getToken:getToken", args, &rv, "", opts...)
 			if err != nil {
 				return GetTokenResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetTokenResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetTokenResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetTokenResultOutput), nil
 			}

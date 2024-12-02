@@ -5,6 +5,7 @@ package logging
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -45,6 +46,16 @@ import (
 // ```
 func GetSink(ctx *pulumi.Context, args *GetSinkArgs, opts ...pulumi.InvokeOption) (*GetSinkResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetSinkResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetSinkResult{}, errors.New("DependsOn is not supported for direct form invoke GetSink, use GetSinkOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetSinkResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetSink, use GetSinkOutput instead")
+	}
 	var rv GetSinkResult
 	err := ctx.Invoke("gcp:logging/getSink:getSink", args, &rv, opts...)
 	if err != nil {
@@ -87,17 +98,18 @@ type GetSinkResult struct {
 }
 
 func GetSinkOutput(ctx *pulumi.Context, args GetSinkOutputArgs, opts ...pulumi.InvokeOption) GetSinkResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetSinkResultOutput, error) {
 			args := v.(GetSinkArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetSinkResult
-			secret, err := ctx.InvokePackageRaw("gcp:logging/getSink:getSink", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:logging/getSink:getSink", args, &rv, "", opts...)
 			if err != nil {
 				return GetSinkResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetSinkResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetSinkResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetSinkResultOutput), nil
 			}

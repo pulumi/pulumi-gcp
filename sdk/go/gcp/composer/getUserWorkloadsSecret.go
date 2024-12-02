@@ -5,6 +5,7 @@ package composer
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -74,6 +75,16 @@ import (
 // ```
 func LookupUserWorkloadsSecret(ctx *pulumi.Context, args *LookupUserWorkloadsSecretArgs, opts ...pulumi.InvokeOption) (*LookupUserWorkloadsSecretResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupUserWorkloadsSecretResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupUserWorkloadsSecretResult{}, errors.New("DependsOn is not supported for direct form invoke LookupUserWorkloadsSecret, use LookupUserWorkloadsSecretOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupUserWorkloadsSecretResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupUserWorkloadsSecret, use LookupUserWorkloadsSecretOutput instead")
+	}
 	var rv LookupUserWorkloadsSecretResult
 	err := ctx.Invoke("gcp:composer/getUserWorkloadsSecret:getUserWorkloadsSecret", args, &rv, opts...)
 	if err != nil {
@@ -107,17 +118,18 @@ type LookupUserWorkloadsSecretResult struct {
 }
 
 func LookupUserWorkloadsSecretOutput(ctx *pulumi.Context, args LookupUserWorkloadsSecretOutputArgs, opts ...pulumi.InvokeOption) LookupUserWorkloadsSecretResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupUserWorkloadsSecretResultOutput, error) {
 			args := v.(LookupUserWorkloadsSecretArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupUserWorkloadsSecretResult
-			secret, err := ctx.InvokePackageRaw("gcp:composer/getUserWorkloadsSecret:getUserWorkloadsSecret", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:composer/getUserWorkloadsSecret:getUserWorkloadsSecret", args, &rv, "", opts...)
 			if err != nil {
 				return LookupUserWorkloadsSecretResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupUserWorkloadsSecretResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupUserWorkloadsSecretResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupUserWorkloadsSecretResultOutput), nil
 			}

@@ -5,6 +5,7 @@ package iam
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -46,6 +47,16 @@ import (
 // ```
 func GetTestablePermissions(ctx *pulumi.Context, args *GetTestablePermissionsArgs, opts ...pulumi.InvokeOption) (*GetTestablePermissionsResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetTestablePermissionsResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetTestablePermissionsResult{}, errors.New("DependsOn is not supported for direct form invoke GetTestablePermissions, use GetTestablePermissionsOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetTestablePermissionsResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetTestablePermissions, use GetTestablePermissionsOutput instead")
+	}
 	var rv GetTestablePermissionsResult
 	err := ctx.Invoke("gcp:iam/getTestablePermissions:getTestablePermissions", args, &rv, opts...)
 	if err != nil {
@@ -77,17 +88,18 @@ type GetTestablePermissionsResult struct {
 }
 
 func GetTestablePermissionsOutput(ctx *pulumi.Context, args GetTestablePermissionsOutputArgs, opts ...pulumi.InvokeOption) GetTestablePermissionsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetTestablePermissionsResultOutput, error) {
 			args := v.(GetTestablePermissionsArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetTestablePermissionsResult
-			secret, err := ctx.InvokePackageRaw("gcp:iam/getTestablePermissions:getTestablePermissions", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:iam/getTestablePermissions:getTestablePermissions", args, &rv, "", opts...)
 			if err != nil {
 				return GetTestablePermissionsResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetTestablePermissionsResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetTestablePermissionsResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetTestablePermissionsResultOutput), nil
 			}

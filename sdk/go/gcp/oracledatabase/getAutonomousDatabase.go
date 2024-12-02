@@ -5,6 +5,7 @@ package oracledatabase
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -44,6 +45,16 @@ import (
 // ```
 func LookupAutonomousDatabase(ctx *pulumi.Context, args *LookupAutonomousDatabaseArgs, opts ...pulumi.InvokeOption) (*LookupAutonomousDatabaseResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupAutonomousDatabaseResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupAutonomousDatabaseResult{}, errors.New("DependsOn is not supported for direct form invoke LookupAutonomousDatabase, use LookupAutonomousDatabaseOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupAutonomousDatabaseResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupAutonomousDatabase, use LookupAutonomousDatabaseOutput instead")
+	}
 	var rv LookupAutonomousDatabaseResult
 	err := ctx.Invoke("gcp:oracledatabase/getAutonomousDatabase:getAutonomousDatabase", args, &rv, opts...)
 	if err != nil {
@@ -87,17 +98,18 @@ type LookupAutonomousDatabaseResult struct {
 }
 
 func LookupAutonomousDatabaseOutput(ctx *pulumi.Context, args LookupAutonomousDatabaseOutputArgs, opts ...pulumi.InvokeOption) LookupAutonomousDatabaseResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAutonomousDatabaseResultOutput, error) {
 			args := v.(LookupAutonomousDatabaseArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupAutonomousDatabaseResult
-			secret, err := ctx.InvokePackageRaw("gcp:oracledatabase/getAutonomousDatabase:getAutonomousDatabase", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:oracledatabase/getAutonomousDatabase:getAutonomousDatabase", args, &rv, "", opts...)
 			if err != nil {
 				return LookupAutonomousDatabaseResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupAutonomousDatabaseResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupAutonomousDatabaseResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupAutonomousDatabaseResultOutput), nil
 			}

@@ -5,6 +5,7 @@ package compute
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -41,6 +42,16 @@ import (
 // ```
 func GetForwardingRules(ctx *pulumi.Context, args *GetForwardingRulesArgs, opts ...pulumi.InvokeOption) (*GetForwardingRulesResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetForwardingRulesResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetForwardingRulesResult{}, errors.New("DependsOn is not supported for direct form invoke GetForwardingRules, use GetForwardingRulesOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetForwardingRulesResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetForwardingRules, use GetForwardingRulesOutput instead")
+	}
 	var rv GetForwardingRulesResult
 	err := ctx.Invoke("gcp:compute/getForwardingRules:getForwardingRules", args, &rv, opts...)
 	if err != nil {
@@ -72,17 +83,18 @@ type GetForwardingRulesResult struct {
 }
 
 func GetForwardingRulesOutput(ctx *pulumi.Context, args GetForwardingRulesOutputArgs, opts ...pulumi.InvokeOption) GetForwardingRulesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetForwardingRulesResultOutput, error) {
 			args := v.(GetForwardingRulesArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetForwardingRulesResult
-			secret, err := ctx.InvokePackageRaw("gcp:compute/getForwardingRules:getForwardingRules", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:compute/getForwardingRules:getForwardingRules", args, &rv, "", opts...)
 			if err != nil {
 				return GetForwardingRulesResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetForwardingRulesResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetForwardingRulesResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetForwardingRulesResultOutput), nil
 			}

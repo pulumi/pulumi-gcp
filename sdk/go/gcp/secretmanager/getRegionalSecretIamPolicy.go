@@ -5,6 +5,7 @@ package secretmanager
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -42,6 +43,16 @@ import (
 // ```
 func LookupRegionalSecretIamPolicy(ctx *pulumi.Context, args *LookupRegionalSecretIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupRegionalSecretIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupRegionalSecretIamPolicyResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupRegionalSecretIamPolicyResult{}, errors.New("DependsOn is not supported for direct form invoke LookupRegionalSecretIamPolicy, use LookupRegionalSecretIamPolicyOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupRegionalSecretIamPolicyResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupRegionalSecretIamPolicy, use LookupRegionalSecretIamPolicyOutput instead")
+	}
 	var rv LookupRegionalSecretIamPolicyResult
 	err := ctx.Invoke("gcp:secretmanager/getRegionalSecretIamPolicy:getRegionalSecretIamPolicy", args, &rv, opts...)
 	if err != nil {
@@ -78,17 +89,18 @@ type LookupRegionalSecretIamPolicyResult struct {
 }
 
 func LookupRegionalSecretIamPolicyOutput(ctx *pulumi.Context, args LookupRegionalSecretIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupRegionalSecretIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupRegionalSecretIamPolicyResultOutput, error) {
 			args := v.(LookupRegionalSecretIamPolicyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupRegionalSecretIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:secretmanager/getRegionalSecretIamPolicy:getRegionalSecretIamPolicy", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:secretmanager/getRegionalSecretIamPolicy:getRegionalSecretIamPolicy", args, &rv, "", opts...)
 			if err != nil {
 				return LookupRegionalSecretIamPolicyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupRegionalSecretIamPolicyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupRegionalSecretIamPolicyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupRegionalSecretIamPolicyResultOutput), nil
 			}

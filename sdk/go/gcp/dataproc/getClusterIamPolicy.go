@@ -5,6 +5,7 @@ package dataproc
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -41,6 +42,16 @@ import (
 // ```
 func GetClusterIamPolicy(ctx *pulumi.Context, args *GetClusterIamPolicyArgs, opts ...pulumi.InvokeOption) (*GetClusterIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetClusterIamPolicyResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetClusterIamPolicyResult{}, errors.New("DependsOn is not supported for direct form invoke GetClusterIamPolicy, use GetClusterIamPolicyOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetClusterIamPolicyResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetClusterIamPolicy, use GetClusterIamPolicyOutput instead")
+	}
 	var rv GetClusterIamPolicyResult
 	err := ctx.Invoke("gcp:dataproc/getClusterIamPolicy:getClusterIamPolicy", args, &rv, opts...)
 	if err != nil {
@@ -71,17 +82,18 @@ type GetClusterIamPolicyResult struct {
 }
 
 func GetClusterIamPolicyOutput(ctx *pulumi.Context, args GetClusterIamPolicyOutputArgs, opts ...pulumi.InvokeOption) GetClusterIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetClusterIamPolicyResultOutput, error) {
 			args := v.(GetClusterIamPolicyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetClusterIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:dataproc/getClusterIamPolicy:getClusterIamPolicy", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:dataproc/getClusterIamPolicy:getClusterIamPolicy", args, &rv, "", opts...)
 			if err != nil {
 				return GetClusterIamPolicyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetClusterIamPolicyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetClusterIamPolicyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetClusterIamPolicyResultOutput), nil
 			}

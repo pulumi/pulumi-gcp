@@ -5,6 +5,7 @@ package compute
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -47,6 +48,16 @@ import (
 // Deprecated: gcp.compute.RouterStatus has been deprecated in favor of gcp.compute.getRouterStatus
 func RouterStatus(ctx *pulumi.Context, args *RouterStatusArgs, opts ...pulumi.InvokeOption) (*RouterStatusResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &RouterStatusResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &RouterStatusResult{}, errors.New("DependsOn is not supported for direct form invoke RouterStatus, use RouterStatusOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &RouterStatusResult{}, errors.New("DependsOnInputs is not supported for direct form invoke RouterStatus, use RouterStatusOutput instead")
+	}
 	var rv RouterStatusResult
 	err := ctx.Invoke("gcp:compute/routerStatus:RouterStatus", args, &rv, opts...)
 	if err != nil {
@@ -84,17 +95,18 @@ type RouterStatusResult struct {
 }
 
 func RouterStatusOutput(ctx *pulumi.Context, args RouterStatusOutputArgs, opts ...pulumi.InvokeOption) RouterStatusResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (RouterStatusResultOutput, error) {
 			args := v.(RouterStatusArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv RouterStatusResult
-			secret, err := ctx.InvokePackageRaw("gcp:compute/routerStatus:RouterStatus", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:compute/routerStatus:RouterStatus", args, &rv, "", opts...)
 			if err != nil {
 				return RouterStatusResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(RouterStatusResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(RouterStatusResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(RouterStatusResultOutput), nil
 			}

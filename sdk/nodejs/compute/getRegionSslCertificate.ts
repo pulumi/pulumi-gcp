@@ -89,7 +89,7 @@ export interface GetRegionSslCertificateResult {
  * export const selfLink = myCert.then(myCert => myCert.selfLink);
  * ```
  */
-export function getRegionSslCertificateOutput(args: GetRegionSslCertificateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionSslCertificateResult> {
+export function getRegionSslCertificateOutput(args: GetRegionSslCertificateOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRegionSslCertificateResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:compute/getRegionSslCertificate:getRegionSslCertificate", {
         "name": args.name,

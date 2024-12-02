@@ -74,7 +74,7 @@ export interface GetSResult {
  * });
  * ```
  */
-export function getSOutput(args?: GetSOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSResult> {
+export function getSOutput(args?: GetSOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:serviceaccount/getS:getS", {

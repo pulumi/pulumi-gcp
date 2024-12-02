@@ -5,6 +5,7 @@ package backupdisasterrecovery
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -39,6 +40,16 @@ import (
 // ```
 func LookupBackupPlanAssociation(ctx *pulumi.Context, args *LookupBackupPlanAssociationArgs, opts ...pulumi.InvokeOption) (*LookupBackupPlanAssociationResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupBackupPlanAssociationResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupBackupPlanAssociationResult{}, errors.New("DependsOn is not supported for direct form invoke LookupBackupPlanAssociation, use LookupBackupPlanAssociationOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupBackupPlanAssociationResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupBackupPlanAssociation, use LookupBackupPlanAssociationOutput instead")
+	}
 	var rv LookupBackupPlanAssociationResult
 	err := ctx.Invoke("gcp:backupdisasterrecovery/getBackupPlanAssociation:getBackupPlanAssociation", args, &rv, opts...)
 	if err != nil {
@@ -77,17 +88,18 @@ type LookupBackupPlanAssociationResult struct {
 }
 
 func LookupBackupPlanAssociationOutput(ctx *pulumi.Context, args LookupBackupPlanAssociationOutputArgs, opts ...pulumi.InvokeOption) LookupBackupPlanAssociationResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupBackupPlanAssociationResultOutput, error) {
 			args := v.(LookupBackupPlanAssociationArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupBackupPlanAssociationResult
-			secret, err := ctx.InvokePackageRaw("gcp:backupdisasterrecovery/getBackupPlanAssociation:getBackupPlanAssociation", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:backupdisasterrecovery/getBackupPlanAssociation:getBackupPlanAssociation", args, &rv, "", opts...)
 			if err != nil {
 				return LookupBackupPlanAssociationResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupBackupPlanAssociationResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupBackupPlanAssociationResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupBackupPlanAssociationResultOutput), nil
 			}

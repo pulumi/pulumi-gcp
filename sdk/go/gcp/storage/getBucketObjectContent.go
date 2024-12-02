@@ -5,6 +5,7 @@ package storage
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -49,6 +50,16 @@ import (
 // ```
 func GetBucketObjectContent(ctx *pulumi.Context, args *GetBucketObjectContentArgs, opts ...pulumi.InvokeOption) (*GetBucketObjectContentResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetBucketObjectContentResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetBucketObjectContentResult{}, errors.New("DependsOn is not supported for direct form invoke GetBucketObjectContent, use GetBucketObjectContentOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetBucketObjectContentResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetBucketObjectContent, use GetBucketObjectContentOutput instead")
+	}
 	var rv GetBucketObjectContentResult
 	err := ctx.Invoke("gcp:storage/getBucketObjectContent:getBucketObjectContent", args, &rv, opts...)
 	if err != nil {
@@ -98,17 +109,18 @@ type GetBucketObjectContentResult struct {
 }
 
 func GetBucketObjectContentOutput(ctx *pulumi.Context, args GetBucketObjectContentOutputArgs, opts ...pulumi.InvokeOption) GetBucketObjectContentResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetBucketObjectContentResultOutput, error) {
 			args := v.(GetBucketObjectContentArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetBucketObjectContentResult
-			secret, err := ctx.InvokePackageRaw("gcp:storage/getBucketObjectContent:getBucketObjectContent", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:storage/getBucketObjectContent:getBucketObjectContent", args, &rv, "", opts...)
 			if err != nil {
 				return GetBucketObjectContentResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetBucketObjectContentResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetBucketObjectContentResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetBucketObjectContentResultOutput), nil
 			}

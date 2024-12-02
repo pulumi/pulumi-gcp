@@ -5,6 +5,7 @@ package securitycenter
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -40,6 +41,16 @@ import (
 // ```
 func LookupV2OrganizationSourceIamPolicy(ctx *pulumi.Context, args *LookupV2OrganizationSourceIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupV2OrganizationSourceIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupV2OrganizationSourceIamPolicyResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupV2OrganizationSourceIamPolicyResult{}, errors.New("DependsOn is not supported for direct form invoke LookupV2OrganizationSourceIamPolicy, use LookupV2OrganizationSourceIamPolicyOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupV2OrganizationSourceIamPolicyResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupV2OrganizationSourceIamPolicy, use LookupV2OrganizationSourceIamPolicyOutput instead")
+	}
 	var rv LookupV2OrganizationSourceIamPolicyResult
 	err := ctx.Invoke("gcp:securitycenter/getV2OrganizationSourceIamPolicy:getV2OrganizationSourceIamPolicy", args, &rv, opts...)
 	if err != nil {
@@ -69,17 +80,18 @@ type LookupV2OrganizationSourceIamPolicyResult struct {
 }
 
 func LookupV2OrganizationSourceIamPolicyOutput(ctx *pulumi.Context, args LookupV2OrganizationSourceIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupV2OrganizationSourceIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupV2OrganizationSourceIamPolicyResultOutput, error) {
 			args := v.(LookupV2OrganizationSourceIamPolicyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupV2OrganizationSourceIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:securitycenter/getV2OrganizationSourceIamPolicy:getV2OrganizationSourceIamPolicy", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:securitycenter/getV2OrganizationSourceIamPolicy:getV2OrganizationSourceIamPolicy", args, &rv, "", opts...)
 			if err != nil {
 				return LookupV2OrganizationSourceIamPolicyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupV2OrganizationSourceIamPolicyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupV2OrganizationSourceIamPolicyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupV2OrganizationSourceIamPolicyResultOutput), nil
 			}

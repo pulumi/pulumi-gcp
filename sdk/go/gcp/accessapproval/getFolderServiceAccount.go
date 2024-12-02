@@ -5,6 +5,7 @@ package accessapproval
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -57,6 +58,16 @@ import (
 // ```
 func GetFolderServiceAccount(ctx *pulumi.Context, args *GetFolderServiceAccountArgs, opts ...pulumi.InvokeOption) (*GetFolderServiceAccountResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetFolderServiceAccountResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetFolderServiceAccountResult{}, errors.New("DependsOn is not supported for direct form invoke GetFolderServiceAccount, use GetFolderServiceAccountOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetFolderServiceAccountResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetFolderServiceAccount, use GetFolderServiceAccountOutput instead")
+	}
 	var rv GetFolderServiceAccountResult
 	err := ctx.Invoke("gcp:accessapproval/getFolderServiceAccount:getFolderServiceAccount", args, &rv, opts...)
 	if err != nil {
@@ -84,17 +95,18 @@ type GetFolderServiceAccountResult struct {
 }
 
 func GetFolderServiceAccountOutput(ctx *pulumi.Context, args GetFolderServiceAccountOutputArgs, opts ...pulumi.InvokeOption) GetFolderServiceAccountResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetFolderServiceAccountResultOutput, error) {
 			args := v.(GetFolderServiceAccountArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetFolderServiceAccountResult
-			secret, err := ctx.InvokePackageRaw("gcp:accessapproval/getFolderServiceAccount:getFolderServiceAccount", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:accessapproval/getFolderServiceAccount:getFolderServiceAccount", args, &rv, "", opts...)
 			if err != nil {
 				return GetFolderServiceAccountResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetFolderServiceAccountResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetFolderServiceAccountResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetFolderServiceAccountResultOutput), nil
 			}

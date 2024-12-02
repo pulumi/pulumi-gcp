@@ -5,6 +5,7 @@ package binaryauthorization
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -41,6 +42,16 @@ import (
 // ```
 func LookupAttestorIamPolicy(ctx *pulumi.Context, args *LookupAttestorIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupAttestorIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupAttestorIamPolicyResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupAttestorIamPolicyResult{}, errors.New("DependsOn is not supported for direct form invoke LookupAttestorIamPolicy, use LookupAttestorIamPolicyOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupAttestorIamPolicyResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupAttestorIamPolicy, use LookupAttestorIamPolicyOutput instead")
+	}
 	var rv LookupAttestorIamPolicyResult
 	err := ctx.Invoke("gcp:binaryauthorization/getAttestorIamPolicy:getAttestorIamPolicy", args, &rv, opts...)
 	if err != nil {
@@ -72,17 +83,18 @@ type LookupAttestorIamPolicyResult struct {
 }
 
 func LookupAttestorIamPolicyOutput(ctx *pulumi.Context, args LookupAttestorIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupAttestorIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAttestorIamPolicyResultOutput, error) {
 			args := v.(LookupAttestorIamPolicyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupAttestorIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:binaryauthorization/getAttestorIamPolicy:getAttestorIamPolicy", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:binaryauthorization/getAttestorIamPolicy:getAttestorIamPolicy", args, &rv, "", opts...)
 			if err != nil {
 				return LookupAttestorIamPolicyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupAttestorIamPolicyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupAttestorIamPolicyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupAttestorIamPolicyResultOutput), nil
 			}

@@ -81,7 +81,7 @@ export interface GetGroupMembershipsResult {
  * });
  * ```
  */
-export function getGroupMembershipsOutput(args: GetGroupMembershipsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupMembershipsResult> {
+export function getGroupMembershipsOutput(args: GetGroupMembershipsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGroupMembershipsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:cloudidentity/getGroupMemberships:getGroupMemberships", {
         "group": args.group,

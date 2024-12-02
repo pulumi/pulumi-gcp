@@ -5,6 +5,7 @@ package compute
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -16,6 +17,16 @@ import (
 // [the official documentation](https://cloud.google.com/compute/docs/disks) and its [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionDisks).
 func LookupRegionDisk(ctx *pulumi.Context, args *LookupRegionDiskArgs, opts ...pulumi.InvokeOption) (*LookupRegionDiskResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupRegionDiskResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupRegionDiskResult{}, errors.New("DependsOn is not supported for direct form invoke LookupRegionDisk, use LookupRegionDiskOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupRegionDiskResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupRegionDisk, use LookupRegionDiskOutput instead")
+	}
 	var rv LookupRegionDiskResult
 	err := ctx.Invoke("gcp:compute/getRegionDisk:getRegionDisk", args, &rv, opts...)
 	if err != nil {
@@ -71,17 +82,18 @@ type LookupRegionDiskResult struct {
 }
 
 func LookupRegionDiskOutput(ctx *pulumi.Context, args LookupRegionDiskOutputArgs, opts ...pulumi.InvokeOption) LookupRegionDiskResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupRegionDiskResultOutput, error) {
 			args := v.(LookupRegionDiskArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupRegionDiskResult
-			secret, err := ctx.InvokePackageRaw("gcp:compute/getRegionDisk:getRegionDisk", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:compute/getRegionDisk:getRegionDisk", args, &rv, "", opts...)
 			if err != nil {
 				return LookupRegionDiskResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupRegionDiskResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupRegionDiskResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupRegionDiskResultOutput), nil
 			}

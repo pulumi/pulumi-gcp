@@ -5,6 +5,7 @@ package cloudrunv2
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -42,6 +43,16 @@ import (
 // ```
 func LookupJobIamPolicy(ctx *pulumi.Context, args *LookupJobIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupJobIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &LookupJobIamPolicyResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &LookupJobIamPolicyResult{}, errors.New("DependsOn is not supported for direct form invoke LookupJobIamPolicy, use LookupJobIamPolicyOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &LookupJobIamPolicyResult{}, errors.New("DependsOnInputs is not supported for direct form invoke LookupJobIamPolicy, use LookupJobIamPolicyOutput instead")
+	}
 	var rv LookupJobIamPolicyResult
 	err := ctx.Invoke("gcp:cloudrunv2/getJobIamPolicy:getJobIamPolicy", args, &rv, opts...)
 	if err != nil {
@@ -78,17 +89,18 @@ type LookupJobIamPolicyResult struct {
 }
 
 func LookupJobIamPolicyOutput(ctx *pulumi.Context, args LookupJobIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupJobIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupJobIamPolicyResultOutput, error) {
 			args := v.(LookupJobIamPolicyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupJobIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:cloudrunv2/getJobIamPolicy:getJobIamPolicy", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:cloudrunv2/getJobIamPolicy:getJobIamPolicy", args, &rv, "", opts...)
 			if err != nil {
 				return LookupJobIamPolicyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupJobIamPolicyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupJobIamPolicyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupJobIamPolicyResultOutput), nil
 			}

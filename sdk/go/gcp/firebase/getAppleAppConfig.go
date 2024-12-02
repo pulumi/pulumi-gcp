@@ -5,6 +5,7 @@ package firebase
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -13,6 +14,16 @@ import (
 
 func GetAppleAppConfig(ctx *pulumi.Context, args *GetAppleAppConfigArgs, opts ...pulumi.InvokeOption) (*GetAppleAppConfigResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetAppleAppConfigResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetAppleAppConfigResult{}, errors.New("DependsOn is not supported for direct form invoke GetAppleAppConfig, use GetAppleAppConfigOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetAppleAppConfigResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetAppleAppConfig, use GetAppleAppConfigOutput instead")
+	}
 	var rv GetAppleAppConfigResult
 	err := ctx.Invoke("gcp:firebase/getAppleAppConfig:getAppleAppConfig", args, &rv, opts...)
 	if err != nil {
@@ -44,17 +55,18 @@ type GetAppleAppConfigResult struct {
 }
 
 func GetAppleAppConfigOutput(ctx *pulumi.Context, args GetAppleAppConfigOutputArgs, opts ...pulumi.InvokeOption) GetAppleAppConfigResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetAppleAppConfigResultOutput, error) {
 			args := v.(GetAppleAppConfigArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetAppleAppConfigResult
-			secret, err := ctx.InvokePackageRaw("gcp:firebase/getAppleAppConfig:getAppleAppConfig", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:firebase/getAppleAppConfig:getAppleAppConfig", args, &rv, "", opts...)
 			if err != nil {
 				return GetAppleAppConfigResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetAppleAppConfigResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetAppleAppConfigResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetAppleAppConfigResultOutput), nil
 			}

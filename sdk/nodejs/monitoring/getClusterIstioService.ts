@@ -145,7 +145,7 @@ export interface GetClusterIstioServiceResult {
  * });
  * ```
  */
-export function getClusterIstioServiceOutput(args: GetClusterIstioServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterIstioServiceResult> {
+export function getClusterIstioServiceOutput(args: GetClusterIstioServiceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetClusterIstioServiceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:monitoring/getClusterIstioService:getClusterIstioService", {
         "clusterName": args.clusterName,

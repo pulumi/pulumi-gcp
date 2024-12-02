@@ -113,7 +113,7 @@ def get_iam_policy(audit_configs: Optional[Sequence[Union['GetIAMPolicyAuditConf
         policy_data=pulumi.get(__ret__, 'policy_data'))
 def get_iam_policy_output(audit_configs: Optional[pulumi.Input[Optional[Sequence[Union['GetIAMPolicyAuditConfigArgs', 'GetIAMPolicyAuditConfigArgsDict']]]]] = None,
                           bindings: Optional[pulumi.Input[Optional[Sequence[Union['GetIAMPolicyBindingArgs', 'GetIAMPolicyBindingArgsDict']]]]] = None,
-                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIAMPolicyResult]:
+                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIAMPolicyResult]:
     """
     Generates an IAM policy document that may be referenced by and applied to
     other Google Cloud Platform IAM resources, such as the `projects.IAMPolicy` resource.
@@ -132,7 +132,7 @@ def get_iam_policy_output(audit_configs: Optional[pulumi.Input[Optional[Sequence
     __args__ = dict()
     __args__['auditConfigs'] = audit_configs
     __args__['bindings'] = bindings
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:organizations/getIAMPolicy:getIAMPolicy', __args__, opts=opts, typ=GetIAMPolicyResult)
     return __ret__.apply(lambda __response__: GetIAMPolicyResult(
         audit_configs=pulumi.get(__response__, 'audit_configs'),

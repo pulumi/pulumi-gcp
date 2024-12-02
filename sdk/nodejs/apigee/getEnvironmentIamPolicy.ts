@@ -73,7 +73,7 @@ export interface GetEnvironmentIamPolicyResult {
  * });
  * ```
  */
-export function getEnvironmentIamPolicyOutput(args: GetEnvironmentIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEnvironmentIamPolicyResult> {
+export function getEnvironmentIamPolicyOutput(args: GetEnvironmentIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEnvironmentIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:apigee/getEnvironmentIamPolicy:getEnvironmentIamPolicy", {
         "envId": args.envId,

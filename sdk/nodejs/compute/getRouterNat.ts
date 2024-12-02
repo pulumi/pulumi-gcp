@@ -113,7 +113,7 @@ export interface GetRouterNatResult {
  * });
  * ```
  */
-export function getRouterNatOutput(args: GetRouterNatOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRouterNatResult> {
+export function getRouterNatOutput(args: GetRouterNatOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRouterNatResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:compute/getRouterNat:getRouterNat", {
         "name": args.name,

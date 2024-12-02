@@ -5,6 +5,7 @@ package projects
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -51,6 +52,16 @@ import (
 // ```
 func GetProject(ctx *pulumi.Context, args *GetProjectArgs, opts ...pulumi.InvokeOption) (*GetProjectResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetProjectResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetProjectResult{}, errors.New("DependsOn is not supported for direct form invoke GetProject, use GetProjectOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetProjectResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetProject, use GetProjectOutput instead")
+	}
 	var rv GetProjectResult
 	err := ctx.Invoke("gcp:projects/getProject:getProject", args, &rv, opts...)
 	if err != nil {
@@ -75,17 +86,18 @@ type GetProjectResult struct {
 }
 
 func GetProjectOutput(ctx *pulumi.Context, args GetProjectOutputArgs, opts ...pulumi.InvokeOption) GetProjectResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetProjectResultOutput, error) {
 			args := v.(GetProjectArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetProjectResult
-			secret, err := ctx.InvokePackageRaw("gcp:projects/getProject:getProject", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:projects/getProject:getProject", args, &rv, "", opts...)
 			if err != nil {
 				return GetProjectResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetProjectResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetProjectResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetProjectResultOutput), nil
 			}

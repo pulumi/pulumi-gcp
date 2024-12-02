@@ -5,6 +5,7 @@ package compute
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -41,6 +42,16 @@ import (
 // The most common use of this datasource will be to fetch information about the instances inside regional managed instance groups, for instance:
 func GetRegionInstanceGroup(ctx *pulumi.Context, args *GetRegionInstanceGroupArgs, opts ...pulumi.InvokeOption) (*GetRegionInstanceGroupResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetRegionInstanceGroupResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetRegionInstanceGroupResult{}, errors.New("DependsOn is not supported for direct form invoke GetRegionInstanceGroup, use GetRegionInstanceGroupOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetRegionInstanceGroupResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetRegionInstanceGroup, use GetRegionInstanceGroupOutput instead")
+	}
 	var rv GetRegionInstanceGroupResult
 	err := ctx.Invoke("gcp:compute/getRegionInstanceGroup:getRegionInstanceGroup", args, &rv, opts...)
 	if err != nil {
@@ -83,17 +94,18 @@ type GetRegionInstanceGroupResult struct {
 }
 
 func GetRegionInstanceGroupOutput(ctx *pulumi.Context, args GetRegionInstanceGroupOutputArgs, opts ...pulumi.InvokeOption) GetRegionInstanceGroupResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetRegionInstanceGroupResultOutput, error) {
 			args := v.(GetRegionInstanceGroupArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetRegionInstanceGroupResult
-			secret, err := ctx.InvokePackageRaw("gcp:compute/getRegionInstanceGroup:getRegionInstanceGroup", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:compute/getRegionInstanceGroup:getRegionInstanceGroup", args, &rv, "", opts...)
 			if err != nil {
 				return GetRegionInstanceGroupResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetRegionInstanceGroupResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetRegionInstanceGroupResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetRegionInstanceGroupResultOutput), nil
 			}

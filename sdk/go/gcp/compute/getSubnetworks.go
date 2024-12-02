@@ -5,6 +5,7 @@ package compute
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -44,6 +45,16 @@ import (
 // ```
 func GetSubnetworks(ctx *pulumi.Context, args *GetSubnetworksArgs, opts ...pulumi.InvokeOption) (*GetSubnetworksResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetSubnetworksResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetSubnetworksResult{}, errors.New("DependsOn is not supported for direct form invoke GetSubnetworks, use GetSubnetworksOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetSubnetworksResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetSubnetworks, use GetSubnetworksOutput instead")
+	}
 	var rv GetSubnetworksResult
 	err := ctx.Invoke("gcp:compute/getSubnetworks:getSubnetworks", args, &rv, opts...)
 	if err != nil {
@@ -76,17 +87,18 @@ type GetSubnetworksResult struct {
 }
 
 func GetSubnetworksOutput(ctx *pulumi.Context, args GetSubnetworksOutputArgs, opts ...pulumi.InvokeOption) GetSubnetworksResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetSubnetworksResultOutput, error) {
 			args := v.(GetSubnetworksArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetSubnetworksResult
-			secret, err := ctx.InvokePackageRaw("gcp:compute/getSubnetworks:getSubnetworks", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:compute/getSubnetworks:getSubnetworks", args, &rv, "", opts...)
 			if err != nil {
 				return GetSubnetworksResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetSubnetworksResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetSubnetworksResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetSubnetworksResultOutput), nil
 			}

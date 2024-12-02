@@ -5,6 +5,7 @@ package oracledatabase
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -43,6 +44,16 @@ import (
 // ```
 func GetCloudVmClusters(ctx *pulumi.Context, args *GetCloudVmClustersArgs, opts ...pulumi.InvokeOption) (*GetCloudVmClustersResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetCloudVmClustersResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetCloudVmClustersResult{}, errors.New("DependsOn is not supported for direct form invoke GetCloudVmClusters, use GetCloudVmClustersOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetCloudVmClustersResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetCloudVmClusters, use GetCloudVmClustersOutput instead")
+	}
 	var rv GetCloudVmClustersResult
 	err := ctx.Invoke("gcp:oracledatabase/getCloudVmClusters:getCloudVmClusters", args, &rv, opts...)
 	if err != nil {
@@ -72,17 +83,18 @@ type GetCloudVmClustersResult struct {
 }
 
 func GetCloudVmClustersOutput(ctx *pulumi.Context, args GetCloudVmClustersOutputArgs, opts ...pulumi.InvokeOption) GetCloudVmClustersResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetCloudVmClustersResultOutput, error) {
 			args := v.(GetCloudVmClustersArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetCloudVmClustersResult
-			secret, err := ctx.InvokePackageRaw("gcp:oracledatabase/getCloudVmClusters:getCloudVmClusters", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:oracledatabase/getCloudVmClusters:getCloudVmClusters", args, &rv, "", opts...)
 			if err != nil {
 				return GetCloudVmClustersResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetCloudVmClustersResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetCloudVmClustersResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetCloudVmClustersResultOutput), nil
 			}

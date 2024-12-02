@@ -5,6 +5,7 @@ package spanner
 
 import (
 	"context"
+	"errors"
 	"reflect"
 
 	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/internal"
@@ -41,6 +42,16 @@ import (
 // ```
 func GetInstanceIamPolicy(ctx *pulumi.Context, args *GetInstanceIamPolicyArgs, opts ...pulumi.InvokeOption) (*GetInstanceIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
+	invokeOpts, optsErr := pulumi.NewInvokeOptions(opts...)
+	if optsErr != nil {
+		return &GetInstanceIamPolicyResult{}, optsErr
+	}
+	if len(invokeOpts.DependsOn) > 0 {
+		return &GetInstanceIamPolicyResult{}, errors.New("DependsOn is not supported for direct form invoke GetInstanceIamPolicy, use GetInstanceIamPolicyOutput instead")
+	}
+	if len(invokeOpts.DependsOnInputs) > 0 {
+		return &GetInstanceIamPolicyResult{}, errors.New("DependsOnInputs is not supported for direct form invoke GetInstanceIamPolicy, use GetInstanceIamPolicyOutput instead")
+	}
 	var rv GetInstanceIamPolicyResult
 	err := ctx.Invoke("gcp:spanner/getInstanceIamPolicy:getInstanceIamPolicy", args, &rv, opts...)
 	if err != nil {
@@ -71,17 +82,18 @@ type GetInstanceIamPolicyResult struct {
 }
 
 func GetInstanceIamPolicyOutput(ctx *pulumi.Context, args GetInstanceIamPolicyOutputArgs, opts ...pulumi.InvokeOption) GetInstanceIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetInstanceIamPolicyResultOutput, error) {
 			args := v.(GetInstanceIamPolicyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetInstanceIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:spanner/getInstanceIamPolicy:getInstanceIamPolicy", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:spanner/getInstanceIamPolicy:getInstanceIamPolicy", args, &rv, "", opts...)
 			if err != nil {
 				return GetInstanceIamPolicyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetInstanceIamPolicyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetInstanceIamPolicyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetInstanceIamPolicyResultOutput), nil
 			}
