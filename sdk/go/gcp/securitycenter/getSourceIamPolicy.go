@@ -69,17 +69,18 @@ type LookupSourceIamPolicyResult struct {
 }
 
 func LookupSourceIamPolicyOutput(ctx *pulumi.Context, args LookupSourceIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupSourceIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupSourceIamPolicyResultOutput, error) {
 			args := v.(LookupSourceIamPolicyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupSourceIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:securitycenter/getSourceIamPolicy:getSourceIamPolicy", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:securitycenter/getSourceIamPolicy:getSourceIamPolicy", args, &rv, "", opts...)
 			if err != nil {
 				return LookupSourceIamPolicyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupSourceIamPolicyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupSourceIamPolicyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupSourceIamPolicyResultOutput), nil
 			}

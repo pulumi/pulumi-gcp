@@ -64,17 +64,18 @@ type GetTagValuesResult struct {
 }
 
 func GetTagValuesOutput(ctx *pulumi.Context, args GetTagValuesOutputArgs, opts ...pulumi.InvokeOption) GetTagValuesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetTagValuesResultOutput, error) {
 			args := v.(GetTagValuesArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetTagValuesResult
-			secret, err := ctx.InvokePackageRaw("gcp:tags/getTagValues:getTagValues", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:tags/getTagValues:getTagValues", args, &rv, "", opts...)
 			if err != nil {
 				return GetTagValuesResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetTagValuesResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetTagValuesResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetTagValuesResultOutput), nil
 			}

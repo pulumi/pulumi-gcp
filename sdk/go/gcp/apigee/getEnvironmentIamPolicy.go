@@ -70,17 +70,18 @@ type LookupEnvironmentIamPolicyResult struct {
 }
 
 func LookupEnvironmentIamPolicyOutput(ctx *pulumi.Context, args LookupEnvironmentIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupEnvironmentIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupEnvironmentIamPolicyResultOutput, error) {
 			args := v.(LookupEnvironmentIamPolicyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupEnvironmentIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:apigee/getEnvironmentIamPolicy:getEnvironmentIamPolicy", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:apigee/getEnvironmentIamPolicy:getEnvironmentIamPolicy", args, &rv, "", opts...)
 			if err != nil {
 				return LookupEnvironmentIamPolicyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupEnvironmentIamPolicyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupEnvironmentIamPolicyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupEnvironmentIamPolicyResultOutput), nil
 			}

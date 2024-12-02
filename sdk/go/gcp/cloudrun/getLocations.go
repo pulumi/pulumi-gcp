@@ -69,17 +69,18 @@ type GetLocationsResult struct {
 }
 
 func GetLocationsOutput(ctx *pulumi.Context, args GetLocationsOutputArgs, opts ...pulumi.InvokeOption) GetLocationsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetLocationsResultOutput, error) {
 			args := v.(GetLocationsArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetLocationsResult
-			secret, err := ctx.InvokePackageRaw("gcp:cloudrun/getLocations:getLocations", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:cloudrun/getLocations:getLocations", args, &rv, "", opts...)
 			if err != nil {
 				return GetLocationsResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetLocationsResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetLocationsResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetLocationsResultOutput), nil
 			}

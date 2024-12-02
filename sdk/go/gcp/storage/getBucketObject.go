@@ -108,17 +108,18 @@ type LookupBucketObjectResult struct {
 }
 
 func LookupBucketObjectOutput(ctx *pulumi.Context, args LookupBucketObjectOutputArgs, opts ...pulumi.InvokeOption) LookupBucketObjectResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupBucketObjectResultOutput, error) {
 			args := v.(LookupBucketObjectArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupBucketObjectResult
-			secret, err := ctx.InvokePackageRaw("gcp:storage/getBucketObject:getBucketObject", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:storage/getBucketObject:getBucketObject", args, &rv, "", opts...)
 			if err != nil {
 				return LookupBucketObjectResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupBucketObjectResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupBucketObjectResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupBucketObjectResultOutput), nil
 			}

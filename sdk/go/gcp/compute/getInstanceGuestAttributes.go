@@ -125,17 +125,18 @@ type GetInstanceGuestAttributesResult struct {
 }
 
 func GetInstanceGuestAttributesOutput(ctx *pulumi.Context, args GetInstanceGuestAttributesOutputArgs, opts ...pulumi.InvokeOption) GetInstanceGuestAttributesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetInstanceGuestAttributesResultOutput, error) {
 			args := v.(GetInstanceGuestAttributesArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetInstanceGuestAttributesResult
-			secret, err := ctx.InvokePackageRaw("gcp:compute/getInstanceGuestAttributes:getInstanceGuestAttributes", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:compute/getInstanceGuestAttributes:getInstanceGuestAttributes", args, &rv, "", opts...)
 			if err != nil {
 				return GetInstanceGuestAttributesResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetInstanceGuestAttributesResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetInstanceGuestAttributesResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetInstanceGuestAttributesResultOutput), nil
 			}

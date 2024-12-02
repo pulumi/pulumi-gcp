@@ -73,7 +73,7 @@ export interface GetVcenterCredentialsResult {
  * });
  * ```
  */
-export function getVcenterCredentialsOutput(args: GetVcenterCredentialsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetVcenterCredentialsResult> {
+export function getVcenterCredentialsOutput(args: GetVcenterCredentialsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetVcenterCredentialsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:vmwareengine/getVcenterCredentials:getVcenterCredentials", {
         "parent": args.parent,

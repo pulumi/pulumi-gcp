@@ -77,17 +77,18 @@ type LookupBackupPlanAssociationResult struct {
 }
 
 func LookupBackupPlanAssociationOutput(ctx *pulumi.Context, args LookupBackupPlanAssociationOutputArgs, opts ...pulumi.InvokeOption) LookupBackupPlanAssociationResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupBackupPlanAssociationResultOutput, error) {
 			args := v.(LookupBackupPlanAssociationArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupBackupPlanAssociationResult
-			secret, err := ctx.InvokePackageRaw("gcp:backupdisasterrecovery/getBackupPlanAssociation:getBackupPlanAssociation", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:backupdisasterrecovery/getBackupPlanAssociation:getBackupPlanAssociation", args, &rv, "", opts...)
 			if err != nil {
 				return LookupBackupPlanAssociationResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupBackupPlanAssociationResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupBackupPlanAssociationResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupBackupPlanAssociationResultOutput), nil
 			}

@@ -43,17 +43,18 @@ type GetAiFeaturestoreEntitytypeIamPolicyResult struct {
 }
 
 func GetAiFeaturestoreEntitytypeIamPolicyOutput(ctx *pulumi.Context, args GetAiFeaturestoreEntitytypeIamPolicyOutputArgs, opts ...pulumi.InvokeOption) GetAiFeaturestoreEntitytypeIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetAiFeaturestoreEntitytypeIamPolicyResultOutput, error) {
 			args := v.(GetAiFeaturestoreEntitytypeIamPolicyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetAiFeaturestoreEntitytypeIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:vertex/getAiFeaturestoreEntitytypeIamPolicy:getAiFeaturestoreEntitytypeIamPolicy", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:vertex/getAiFeaturestoreEntitytypeIamPolicy:getAiFeaturestoreEntitytypeIamPolicy", args, &rv, "", opts...)
 			if err != nil {
 				return GetAiFeaturestoreEntitytypeIamPolicyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetAiFeaturestoreEntitytypeIamPolicyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetAiFeaturestoreEntitytypeIamPolicyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetAiFeaturestoreEntitytypeIamPolicyResultOutput), nil
 			}

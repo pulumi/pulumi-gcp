@@ -142,7 +142,7 @@ def get_keys(managed_zone: Optional[str] = None,
         zone_signing_keys=pulumi.get(__ret__, 'zone_signing_keys'))
 def get_keys_output(managed_zone: Optional[pulumi.Input[str]] = None,
                     project: Optional[pulumi.Input[Optional[str]]] = None,
-                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKeysResult]:
+                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKeysResult]:
     """
     Get the DNSKEY and DS records of DNSSEC-signed managed zones.
 
@@ -179,7 +179,7 @@ def get_keys_output(managed_zone: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['managedZone'] = managed_zone
     __args__['project'] = project
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:dns/getKeys:getKeys', __args__, opts=opts, typ=GetKeysResult)
     return __ret__.apply(lambda __response__: GetKeysResult(
         id=pulumi.get(__response__, 'id'),

@@ -86,7 +86,7 @@ export interface GetEnvironmentResult {
  * export const debug = composerEnv.then(composerEnv => composerEnv.configs);
  * ```
  */
-export function getEnvironmentOutput(args: GetEnvironmentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEnvironmentResult> {
+export function getEnvironmentOutput(args: GetEnvironmentOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEnvironmentResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:composer/getEnvironment:getEnvironment", {
         "name": args.name,

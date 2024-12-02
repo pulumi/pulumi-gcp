@@ -129,17 +129,18 @@ type GetAccountAccessTokenResult struct {
 }
 
 func GetAccountAccessTokenOutput(ctx *pulumi.Context, args GetAccountAccessTokenOutputArgs, opts ...pulumi.InvokeOption) GetAccountAccessTokenResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetAccountAccessTokenResultOutput, error) {
 			args := v.(GetAccountAccessTokenArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetAccountAccessTokenResult
-			secret, err := ctx.InvokePackageRaw("gcp:serviceaccount/getAccountAccessToken:getAccountAccessToken", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:serviceaccount/getAccountAccessToken:getAccountAccessToken", args, &rv, "", opts...)
 			if err != nil {
 				return GetAccountAccessTokenResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetAccountAccessTokenResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetAccountAccessTokenResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetAccountAccessTokenResultOutput), nil
 			}

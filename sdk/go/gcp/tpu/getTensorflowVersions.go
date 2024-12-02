@@ -101,17 +101,18 @@ type GetTensorflowVersionsResult struct {
 }
 
 func GetTensorflowVersionsOutput(ctx *pulumi.Context, args GetTensorflowVersionsOutputArgs, opts ...pulumi.InvokeOption) GetTensorflowVersionsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetTensorflowVersionsResultOutput, error) {
 			args := v.(GetTensorflowVersionsArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetTensorflowVersionsResult
-			secret, err := ctx.InvokePackageRaw("gcp:tpu/getTensorflowVersions:getTensorflowVersions", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:tpu/getTensorflowVersions:getTensorflowVersions", args, &rv, "", opts...)
 			if err != nil {
 				return GetTensorflowVersionsResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetTensorflowVersionsResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetTensorflowVersionsResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetTensorflowVersionsResultOutput), nil
 			}

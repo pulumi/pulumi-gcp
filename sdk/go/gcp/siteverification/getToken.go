@@ -114,17 +114,18 @@ type GetTokenResult struct {
 }
 
 func GetTokenOutput(ctx *pulumi.Context, args GetTokenOutputArgs, opts ...pulumi.InvokeOption) GetTokenResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetTokenResultOutput, error) {
 			args := v.(GetTokenArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetTokenResult
-			secret, err := ctx.InvokePackageRaw("gcp:siteverification/getToken:getToken", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:siteverification/getToken:getToken", args, &rv, "", opts...)
 			if err != nil {
 				return GetTokenResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetTokenResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetTokenResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetTokenResultOutput), nil
 			}

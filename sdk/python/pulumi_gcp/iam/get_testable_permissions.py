@@ -135,7 +135,7 @@ def get_testable_permissions(custom_support_level: Optional[str] = None,
 def get_testable_permissions_output(custom_support_level: Optional[pulumi.Input[Optional[str]]] = None,
                                     full_resource_name: Optional[pulumi.Input[str]] = None,
                                     stages: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
-                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTestablePermissionsResult]:
+                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTestablePermissionsResult]:
     """
     Retrieve a list of testable permissions for a resource. Testable permissions mean the permissions that user can add or remove in a role at a given resource. The resource can be referenced either via the full resource name or via a URI.
 
@@ -163,7 +163,7 @@ def get_testable_permissions_output(custom_support_level: Optional[pulumi.Input[
     __args__['customSupportLevel'] = custom_support_level
     __args__['fullResourceName'] = full_resource_name
     __args__['stages'] = stages
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:iam/getTestablePermissions:getTestablePermissions', __args__, opts=opts, typ=GetTestablePermissionsResult)
     return __ret__.apply(lambda __response__: GetTestablePermissionsResult(
         custom_support_level=pulumi.get(__response__, 'custom_support_level'),

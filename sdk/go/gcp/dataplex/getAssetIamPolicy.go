@@ -81,17 +81,18 @@ type LookupAssetIamPolicyResult struct {
 }
 
 func LookupAssetIamPolicyOutput(ctx *pulumi.Context, args LookupAssetIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupAssetIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAssetIamPolicyResultOutput, error) {
 			args := v.(LookupAssetIamPolicyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupAssetIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:dataplex/getAssetIamPolicy:getAssetIamPolicy", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:dataplex/getAssetIamPolicy:getAssetIamPolicy", args, &rv, "", opts...)
 			if err != nil {
 				return LookupAssetIamPolicyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupAssetIamPolicyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupAssetIamPolicyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupAssetIamPolicyResultOutput), nil
 			}

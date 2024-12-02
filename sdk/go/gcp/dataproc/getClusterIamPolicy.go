@@ -71,17 +71,18 @@ type GetClusterIamPolicyResult struct {
 }
 
 func GetClusterIamPolicyOutput(ctx *pulumi.Context, args GetClusterIamPolicyOutputArgs, opts ...pulumi.InvokeOption) GetClusterIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetClusterIamPolicyResultOutput, error) {
 			args := v.(GetClusterIamPolicyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetClusterIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:dataproc/getClusterIamPolicy:getClusterIamPolicy", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:dataproc/getClusterIamPolicy:getClusterIamPolicy", args, &rv, "", opts...)
 			if err != nil {
 				return GetClusterIamPolicyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetClusterIamPolicyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetClusterIamPolicyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetClusterIamPolicyResultOutput), nil
 			}

@@ -69,17 +69,18 @@ type LookupFhirStoreIamPolicyResult struct {
 }
 
 func LookupFhirStoreIamPolicyOutput(ctx *pulumi.Context, args LookupFhirStoreIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupFhirStoreIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupFhirStoreIamPolicyResultOutput, error) {
 			args := v.(LookupFhirStoreIamPolicyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupFhirStoreIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:healthcare/getFhirStoreIamPolicy:getFhirStoreIamPolicy", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:healthcare/getFhirStoreIamPolicy:getFhirStoreIamPolicy", args, &rv, "", opts...)
 			if err != nil {
 				return LookupFhirStoreIamPolicyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupFhirStoreIamPolicyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupFhirStoreIamPolicyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupFhirStoreIamPolicyResultOutput), nil
 			}

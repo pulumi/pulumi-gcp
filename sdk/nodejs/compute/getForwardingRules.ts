@@ -82,7 +82,7 @@ export interface GetForwardingRulesResult {
  * });
  * ```
  */
-export function getForwardingRulesOutput(args?: GetForwardingRulesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetForwardingRulesResult> {
+export function getForwardingRulesOutput(args?: GetForwardingRulesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetForwardingRulesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:compute/getForwardingRules:getForwardingRules", {

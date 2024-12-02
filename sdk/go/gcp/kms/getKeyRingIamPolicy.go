@@ -69,17 +69,18 @@ type GetKeyRingIamPolicyResult struct {
 }
 
 func GetKeyRingIamPolicyOutput(ctx *pulumi.Context, args GetKeyRingIamPolicyOutputArgs, opts ...pulumi.InvokeOption) GetKeyRingIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetKeyRingIamPolicyResultOutput, error) {
 			args := v.(GetKeyRingIamPolicyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetKeyRingIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:kms/getKeyRingIamPolicy:getKeyRingIamPolicy", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:kms/getKeyRingIamPolicy:getKeyRingIamPolicy", args, &rv, "", opts...)
 			if err != nil {
 				return GetKeyRingIamPolicyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetKeyRingIamPolicyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetKeyRingIamPolicyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetKeyRingIamPolicyResultOutput), nil
 			}

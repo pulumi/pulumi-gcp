@@ -49,17 +49,18 @@ type LookupGatewayIamPolicyResult struct {
 }
 
 func LookupGatewayIamPolicyOutput(ctx *pulumi.Context, args LookupGatewayIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupGatewayIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupGatewayIamPolicyResultOutput, error) {
 			args := v.(LookupGatewayIamPolicyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupGatewayIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:apigateway/getGatewayIamPolicy:getGatewayIamPolicy", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:apigateway/getGatewayIamPolicy:getGatewayIamPolicy", args, &rv, "", opts...)
 			if err != nil {
 				return LookupGatewayIamPolicyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupGatewayIamPolicyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupGatewayIamPolicyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupGatewayIamPolicyResultOutput), nil
 			}

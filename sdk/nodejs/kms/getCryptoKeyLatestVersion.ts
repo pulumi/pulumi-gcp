@@ -114,7 +114,7 @@ export interface GetCryptoKeyLatestVersionResult {
  * });
  * ```
  */
-export function getCryptoKeyLatestVersionOutput(args: GetCryptoKeyLatestVersionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCryptoKeyLatestVersionResult> {
+export function getCryptoKeyLatestVersionOutput(args: GetCryptoKeyLatestVersionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCryptoKeyLatestVersionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:kms/getCryptoKeyLatestVersion:getCryptoKeyLatestVersion", {
         "cryptoKey": args.cryptoKey,

@@ -83,17 +83,18 @@ type LookupListingIamPolicyResult struct {
 }
 
 func LookupListingIamPolicyOutput(ctx *pulumi.Context, args LookupListingIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupListingIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupListingIamPolicyResultOutput, error) {
 			args := v.(LookupListingIamPolicyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupListingIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:bigqueryanalyticshub/getListingIamPolicy:getListingIamPolicy", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:bigqueryanalyticshub/getListingIamPolicy:getListingIamPolicy", args, &rv, "", opts...)
 			if err != nil {
 				return LookupListingIamPolicyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupListingIamPolicyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupListingIamPolicyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupListingIamPolicyResultOutput), nil
 			}

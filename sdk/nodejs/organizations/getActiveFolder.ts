@@ -77,7 +77,7 @@ export interface GetActiveFolderResult {
  * });
  * ```
  */
-export function getActiveFolderOutput(args: GetActiveFolderOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetActiveFolderResult> {
+export function getActiveFolderOutput(args: GetActiveFolderOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetActiveFolderResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:organizations/getActiveFolder:getActiveFolder", {
         "apiMethod": args.apiMethod,

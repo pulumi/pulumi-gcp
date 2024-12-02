@@ -33,7 +33,7 @@ export interface GetManagedFolderIamPolicyResult {
     readonly managedFolder: string;
     readonly policyData: string;
 }
-export function getManagedFolderIamPolicyOutput(args: GetManagedFolderIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetManagedFolderIamPolicyResult> {
+export function getManagedFolderIamPolicyOutput(args: GetManagedFolderIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetManagedFolderIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:storage/getManagedFolderIamPolicy:getManagedFolderIamPolicy", {
         "bucket": args.bucket,

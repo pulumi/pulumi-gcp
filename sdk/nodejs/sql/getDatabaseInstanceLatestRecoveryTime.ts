@@ -83,7 +83,7 @@ export interface GetDatabaseInstanceLatestRecoveryTimeResult {
  * export const latestRecoveryTime = _default;
  * ```
  */
-export function getDatabaseInstanceLatestRecoveryTimeOutput(args: GetDatabaseInstanceLatestRecoveryTimeOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseInstanceLatestRecoveryTimeResult> {
+export function getDatabaseInstanceLatestRecoveryTimeOutput(args: GetDatabaseInstanceLatestRecoveryTimeOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDatabaseInstanceLatestRecoveryTimeResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:sql/getDatabaseInstanceLatestRecoveryTime:getDatabaseInstanceLatestRecoveryTime", {
         "instance": args.instance,

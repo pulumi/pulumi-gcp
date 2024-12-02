@@ -56,17 +56,18 @@ type LookupAppleAppResult struct {
 }
 
 func LookupAppleAppOutput(ctx *pulumi.Context, args LookupAppleAppOutputArgs, opts ...pulumi.InvokeOption) LookupAppleAppResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAppleAppResultOutput, error) {
 			args := v.(LookupAppleAppArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupAppleAppResult
-			secret, err := ctx.InvokePackageRaw("gcp:firebase/getAppleApp:getAppleApp", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:firebase/getAppleApp:getAppleApp", args, &rv, "", opts...)
 			if err != nil {
 				return LookupAppleAppResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupAppleAppResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupAppleAppResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupAppleAppResultOutput), nil
 			}

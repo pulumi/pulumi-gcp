@@ -89,7 +89,7 @@ export interface GetEkmConnectionIamPolicyResult {
  * });
  * ```
  */
-export function getEkmConnectionIamPolicyOutput(args: GetEkmConnectionIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEkmConnectionIamPolicyResult> {
+export function getEkmConnectionIamPolicyOutput(args: GetEkmConnectionIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEkmConnectionIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:kms/getEkmConnectionIamPolicy:getEkmConnectionIamPolicy", {
         "location": args.location,

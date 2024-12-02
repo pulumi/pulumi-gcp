@@ -80,17 +80,18 @@ type LookupEkmConnectionIamPolicyResult struct {
 }
 
 func LookupEkmConnectionIamPolicyOutput(ctx *pulumi.Context, args LookupEkmConnectionIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupEkmConnectionIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupEkmConnectionIamPolicyResultOutput, error) {
 			args := v.(LookupEkmConnectionIamPolicyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupEkmConnectionIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:kms/getEkmConnectionIamPolicy:getEkmConnectionIamPolicy", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:kms/getEkmConnectionIamPolicy:getEkmConnectionIamPolicy", args, &rv, "", opts...)
 			if err != nil {
 				return LookupEkmConnectionIamPolicyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupEkmConnectionIamPolicyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupEkmConnectionIamPolicyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupEkmConnectionIamPolicyResultOutput), nil
 			}

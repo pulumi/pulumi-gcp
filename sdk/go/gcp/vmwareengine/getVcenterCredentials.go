@@ -69,17 +69,18 @@ type GetVcenterCredentialsResult struct {
 }
 
 func GetVcenterCredentialsOutput(ctx *pulumi.Context, args GetVcenterCredentialsOutputArgs, opts ...pulumi.InvokeOption) GetVcenterCredentialsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetVcenterCredentialsResultOutput, error) {
 			args := v.(GetVcenterCredentialsArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetVcenterCredentialsResult
-			secret, err := ctx.InvokePackageRaw("gcp:vmwareengine/getVcenterCredentials:getVcenterCredentials", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:vmwareengine/getVcenterCredentials:getVcenterCredentials", args, &rv, "", opts...)
 			if err != nil {
 				return GetVcenterCredentialsResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetVcenterCredentialsResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetVcenterCredentialsResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetVcenterCredentialsResultOutput), nil
 			}

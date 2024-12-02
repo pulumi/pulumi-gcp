@@ -84,17 +84,18 @@ type GetDefaultServiceAccountResult struct {
 }
 
 func GetDefaultServiceAccountOutput(ctx *pulumi.Context, args GetDefaultServiceAccountOutputArgs, opts ...pulumi.InvokeOption) GetDefaultServiceAccountResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetDefaultServiceAccountResultOutput, error) {
 			args := v.(GetDefaultServiceAccountArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetDefaultServiceAccountResult
-			secret, err := ctx.InvokePackageRaw("gcp:bigquery/getDefaultServiceAccount:getDefaultServiceAccount", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:bigquery/getDefaultServiceAccount:getDefaultServiceAccount", args, &rv, "", opts...)
 			if err != nil {
 				return GetDefaultServiceAccountResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetDefaultServiceAccountResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetDefaultServiceAccountResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetDefaultServiceAccountResultOutput), nil
 			}

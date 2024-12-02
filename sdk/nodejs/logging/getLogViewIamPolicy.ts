@@ -94,7 +94,7 @@ export interface GetLogViewIamPolicyResult {
  * });
  * ```
  */
-export function getLogViewIamPolicyOutput(args: GetLogViewIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLogViewIamPolicyResult> {
+export function getLogViewIamPolicyOutput(args: GetLogViewIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLogViewIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:logging/getLogViewIamPolicy:getLogViewIamPolicy", {
         "bucket": args.bucket,

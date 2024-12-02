@@ -79,17 +79,18 @@ type GetRegistryImageResult struct {
 }
 
 func GetRegistryImageOutput(ctx *pulumi.Context, args GetRegistryImageOutputArgs, opts ...pulumi.InvokeOption) GetRegistryImageResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetRegistryImageResultOutput, error) {
 			args := v.(GetRegistryImageArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetRegistryImageResult
-			secret, err := ctx.InvokePackageRaw("gcp:container/getRegistryImage:getRegistryImage", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:container/getRegistryImage:getRegistryImage", args, &rv, "", opts...)
 			if err != nil {
 				return GetRegistryImageResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetRegistryImageResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetRegistryImageResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetRegistryImageResultOutput), nil
 			}

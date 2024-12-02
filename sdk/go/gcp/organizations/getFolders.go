@@ -76,17 +76,18 @@ type GetFoldersResult struct {
 }
 
 func GetFoldersOutput(ctx *pulumi.Context, args GetFoldersOutputArgs, opts ...pulumi.InvokeOption) GetFoldersResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetFoldersResultOutput, error) {
 			args := v.(GetFoldersArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetFoldersResult
-			secret, err := ctx.InvokePackageRaw("gcp:organizations/getFolders:getFolders", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:organizations/getFolders:getFolders", args, &rv, "", opts...)
 			if err != nil {
 				return GetFoldersResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetFoldersResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetFoldersResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetFoldersResultOutput), nil
 			}

@@ -78,17 +78,18 @@ type LookupEntryGroupIamPolicyResult struct {
 }
 
 func LookupEntryGroupIamPolicyOutput(ctx *pulumi.Context, args LookupEntryGroupIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupEntryGroupIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupEntryGroupIamPolicyResultOutput, error) {
 			args := v.(LookupEntryGroupIamPolicyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupEntryGroupIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:dataplex/getEntryGroupIamPolicy:getEntryGroupIamPolicy", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:dataplex/getEntryGroupIamPolicy:getEntryGroupIamPolicy", args, &rv, "", opts...)
 			if err != nil {
 				return LookupEntryGroupIamPolicyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupEntryGroupIamPolicyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupEntryGroupIamPolicyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupEntryGroupIamPolicyResultOutput), nil
 			}

@@ -89,17 +89,18 @@ type LookupRecordSetResult struct {
 }
 
 func LookupRecordSetOutput(ctx *pulumi.Context, args LookupRecordSetOutputArgs, opts ...pulumi.InvokeOption) LookupRecordSetResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupRecordSetResultOutput, error) {
 			args := v.(LookupRecordSetArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupRecordSetResult
-			secret, err := ctx.InvokePackageRaw("gcp:dns/getRecordSet:getRecordSet", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:dns/getRecordSet:getRecordSet", args, &rv, "", opts...)
 			if err != nil {
 				return LookupRecordSetResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupRecordSetResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupRecordSetResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupRecordSetResultOutput), nil
 			}

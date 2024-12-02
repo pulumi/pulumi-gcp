@@ -80,17 +80,18 @@ type LookupNetworkPolicyResult struct {
 }
 
 func LookupNetworkPolicyOutput(ctx *pulumi.Context, args LookupNetworkPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupNetworkPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupNetworkPolicyResultOutput, error) {
 			args := v.(LookupNetworkPolicyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupNetworkPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:vmwareengine/getNetworkPolicy:getNetworkPolicy", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:vmwareengine/getNetworkPolicy:getNetworkPolicy", args, &rv, "", opts...)
 			if err != nil {
 				return LookupNetworkPolicyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupNetworkPolicyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupNetworkPolicyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupNetworkPolicyResultOutput), nil
 			}

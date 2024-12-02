@@ -96,17 +96,18 @@ type GetKMSCryptoKeyResult struct {
 }
 
 func GetKMSCryptoKeyOutput(ctx *pulumi.Context, args GetKMSCryptoKeyOutputArgs, opts ...pulumi.InvokeOption) GetKMSCryptoKeyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetKMSCryptoKeyResultOutput, error) {
 			args := v.(GetKMSCryptoKeyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetKMSCryptoKeyResult
-			secret, err := ctx.InvokePackageRaw("gcp:kms/getKMSCryptoKey:getKMSCryptoKey", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:kms/getKMSCryptoKey:getKMSCryptoKey", args, &rv, "", opts...)
 			if err != nil {
 				return GetKMSCryptoKeyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetKMSCryptoKeyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetKMSCryptoKeyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetKMSCryptoKeyResultOutput), nil
 			}

@@ -82,17 +82,18 @@ type GetRouterStatusResult struct {
 }
 
 func GetRouterStatusOutput(ctx *pulumi.Context, args GetRouterStatusOutputArgs, opts ...pulumi.InvokeOption) GetRouterStatusResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetRouterStatusResultOutput, error) {
 			args := v.(GetRouterStatusArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetRouterStatusResult
-			secret, err := ctx.InvokePackageRaw("gcp:compute/getRouterStatus:getRouterStatus", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:compute/getRouterStatus:getRouterStatus", args, &rv, "", opts...)
 			if err != nil {
 				return GetRouterStatusResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetRouterStatusResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetRouterStatusResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetRouterStatusResultOutput), nil
 			}

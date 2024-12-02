@@ -137,17 +137,18 @@ type GetNetblockIPRangesResult struct {
 }
 
 func GetNetblockIPRangesOutput(ctx *pulumi.Context, args GetNetblockIPRangesOutputArgs, opts ...pulumi.InvokeOption) GetNetblockIPRangesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetNetblockIPRangesResultOutput, error) {
 			args := v.(GetNetblockIPRangesArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetNetblockIPRangesResult
-			secret, err := ctx.InvokePackageRaw("gcp:compute/getNetblockIPRanges:getNetblockIPRanges", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:compute/getNetblockIPRanges:getNetblockIPRanges", args, &rv, "", opts...)
 			if err != nil {
 				return GetNetblockIPRangesResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetNetblockIPRangesResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetNetblockIPRangesResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetNetblockIPRangesResultOutput), nil
 			}

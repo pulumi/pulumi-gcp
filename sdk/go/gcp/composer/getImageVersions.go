@@ -79,17 +79,18 @@ type GetImageVersionsResult struct {
 }
 
 func GetImageVersionsOutput(ctx *pulumi.Context, args GetImageVersionsOutputArgs, opts ...pulumi.InvokeOption) GetImageVersionsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetImageVersionsResultOutput, error) {
 			args := v.(GetImageVersionsArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetImageVersionsResult
-			secret, err := ctx.InvokePackageRaw("gcp:composer/getImageVersions:getImageVersions", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:composer/getImageVersions:getImageVersions", args, &rv, "", opts...)
 			if err != nil {
 				return GetImageVersionsResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetImageVersionsResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetImageVersionsResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetImageVersionsResultOutput), nil
 			}

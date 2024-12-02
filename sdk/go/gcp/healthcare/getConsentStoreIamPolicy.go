@@ -73,17 +73,18 @@ type LookupConsentStoreIamPolicyResult struct {
 }
 
 func LookupConsentStoreIamPolicyOutput(ctx *pulumi.Context, args LookupConsentStoreIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupConsentStoreIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupConsentStoreIamPolicyResultOutput, error) {
 			args := v.(LookupConsentStoreIamPolicyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupConsentStoreIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:healthcare/getConsentStoreIamPolicy:getConsentStoreIamPolicy", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:healthcare/getConsentStoreIamPolicy:getConsentStoreIamPolicy", args, &rv, "", opts...)
 			if err != nil {
 				return LookupConsentStoreIamPolicyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupConsentStoreIamPolicyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupConsentStoreIamPolicyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupConsentStoreIamPolicyResultOutput), nil
 			}

@@ -69,17 +69,18 @@ type LookupDatasetIamPolicyResult struct {
 }
 
 func LookupDatasetIamPolicyOutput(ctx *pulumi.Context, args LookupDatasetIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupDatasetIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupDatasetIamPolicyResultOutput, error) {
 			args := v.(LookupDatasetIamPolicyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupDatasetIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:healthcare/getDatasetIamPolicy:getDatasetIamPolicy", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:healthcare/getDatasetIamPolicy:getDatasetIamPolicy", args, &rv, "", opts...)
 			if err != nil {
 				return LookupDatasetIamPolicyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupDatasetIamPolicyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupDatasetIamPolicyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupDatasetIamPolicyResultOutput), nil
 			}

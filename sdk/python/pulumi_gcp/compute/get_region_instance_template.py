@@ -558,7 +558,7 @@ def get_region_instance_template_output(filter: Optional[pulumi.Input[Optional[s
                                         name: Optional[pulumi.Input[Optional[str]]] = None,
                                         project: Optional[pulumi.Input[Optional[str]]] = None,
                                         region: Optional[pulumi.Input[Optional[str]]] = None,
-                                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegionInstanceTemplateResult]:
+                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegionInstanceTemplateResult]:
     """
     Get information about a VM instance template resource within GCE. For more information see
     [the official documentation](https://cloud.google.com/compute/docs/instance-templates)
@@ -595,7 +595,7 @@ def get_region_instance_template_output(filter: Optional[pulumi.Input[Optional[s
     __args__['name'] = name
     __args__['project'] = project
     __args__['region'] = region
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:compute/getRegionInstanceTemplate:getRegionInstanceTemplate', __args__, opts=opts, typ=GetRegionInstanceTemplateResult)
     return __ret__.apply(lambda __response__: GetRegionInstanceTemplateResult(
         advanced_machine_features=pulumi.get(__response__, 'advanced_machine_features'),

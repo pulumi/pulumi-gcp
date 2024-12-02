@@ -104,17 +104,18 @@ type LookupForwardingRuleResult struct {
 }
 
 func LookupForwardingRuleOutput(ctx *pulumi.Context, args LookupForwardingRuleOutputArgs, opts ...pulumi.InvokeOption) LookupForwardingRuleResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupForwardingRuleResultOutput, error) {
 			args := v.(LookupForwardingRuleArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupForwardingRuleResult
-			secret, err := ctx.InvokePackageRaw("gcp:compute/getForwardingRule:getForwardingRule", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:compute/getForwardingRule:getForwardingRule", args, &rv, "", opts...)
 			if err != nil {
 				return LookupForwardingRuleResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupForwardingRuleResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupForwardingRuleResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupForwardingRuleResultOutput), nil
 			}
