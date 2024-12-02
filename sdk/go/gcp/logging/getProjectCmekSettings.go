@@ -96,17 +96,18 @@ type GetProjectCmekSettingsResult struct {
 }
 
 func GetProjectCmekSettingsOutput(ctx *pulumi.Context, args GetProjectCmekSettingsOutputArgs, opts ...pulumi.InvokeOption) GetProjectCmekSettingsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetProjectCmekSettingsResultOutput, error) {
 			args := v.(GetProjectCmekSettingsArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetProjectCmekSettingsResult
-			secret, err := ctx.InvokePackageRaw("gcp:logging/getProjectCmekSettings:getProjectCmekSettings", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:logging/getProjectCmekSettings:getProjectCmekSettings", args, &rv, "", opts...)
 			if err != nil {
 				return GetProjectCmekSettingsResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetProjectCmekSettingsResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetProjectCmekSettingsResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetProjectCmekSettingsResultOutput), nil
 			}

@@ -71,17 +71,18 @@ type LookupRegionDiskResult struct {
 }
 
 func LookupRegionDiskOutput(ctx *pulumi.Context, args LookupRegionDiskOutputArgs, opts ...pulumi.InvokeOption) LookupRegionDiskResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupRegionDiskResultOutput, error) {
 			args := v.(LookupRegionDiskArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupRegionDiskResult
-			secret, err := ctx.InvokePackageRaw("gcp:compute/getRegionDisk:getRegionDisk", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:compute/getRegionDisk:getRegionDisk", args, &rv, "", opts...)
 			if err != nil {
 				return LookupRegionDiskResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupRegionDiskResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupRegionDiskResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupRegionDiskResultOutput), nil
 			}

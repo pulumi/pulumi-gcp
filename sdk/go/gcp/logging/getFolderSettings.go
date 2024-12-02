@@ -87,17 +87,18 @@ type LookupFolderSettingsResult struct {
 }
 
 func LookupFolderSettingsOutput(ctx *pulumi.Context, args LookupFolderSettingsOutputArgs, opts ...pulumi.InvokeOption) LookupFolderSettingsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupFolderSettingsResultOutput, error) {
 			args := v.(LookupFolderSettingsArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupFolderSettingsResult
-			secret, err := ctx.InvokePackageRaw("gcp:logging/getFolderSettings:getFolderSettings", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:logging/getFolderSettings:getFolderSettings", args, &rv, "", opts...)
 			if err != nil {
 				return LookupFolderSettingsResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupFolderSettingsResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupFolderSettingsResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupFolderSettingsResultOutput), nil
 			}

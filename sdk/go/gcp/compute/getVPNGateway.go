@@ -79,17 +79,18 @@ type LookupVPNGatewayResult struct {
 }
 
 func LookupVPNGatewayOutput(ctx *pulumi.Context, args LookupVPNGatewayOutputArgs, opts ...pulumi.InvokeOption) LookupVPNGatewayResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupVPNGatewayResultOutput, error) {
 			args := v.(LookupVPNGatewayArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupVPNGatewayResult
-			secret, err := ctx.InvokePackageRaw("gcp:compute/getVPNGateway:getVPNGateway", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:compute/getVPNGateway:getVPNGateway", args, &rv, "", opts...)
 			if err != nil {
 				return LookupVPNGatewayResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupVPNGatewayResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupVPNGatewayResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupVPNGatewayResultOutput), nil
 			}

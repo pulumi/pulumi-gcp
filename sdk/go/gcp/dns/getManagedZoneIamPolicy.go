@@ -72,17 +72,18 @@ type GetManagedZoneIamPolicyResult struct {
 }
 
 func GetManagedZoneIamPolicyOutput(ctx *pulumi.Context, args GetManagedZoneIamPolicyOutputArgs, opts ...pulumi.InvokeOption) GetManagedZoneIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetManagedZoneIamPolicyResultOutput, error) {
 			args := v.(GetManagedZoneIamPolicyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetManagedZoneIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:dns/getManagedZoneIamPolicy:getManagedZoneIamPolicy", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:dns/getManagedZoneIamPolicy:getManagedZoneIamPolicy", args, &rv, "", opts...)
 			if err != nil {
 				return GetManagedZoneIamPolicyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetManagedZoneIamPolicyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetManagedZoneIamPolicyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetManagedZoneIamPolicyResultOutput), nil
 			}

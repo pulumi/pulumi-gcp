@@ -86,17 +86,18 @@ type LookupSubscriptionResult struct {
 }
 
 func LookupSubscriptionOutput(ctx *pulumi.Context, args LookupSubscriptionOutputArgs, opts ...pulumi.InvokeOption) LookupSubscriptionResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupSubscriptionResultOutput, error) {
 			args := v.(LookupSubscriptionArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupSubscriptionResult
-			secret, err := ctx.InvokePackageRaw("gcp:pubsub/getSubscription:getSubscription", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:pubsub/getSubscription:getSubscription", args, &rv, "", opts...)
 			if err != nil {
 				return LookupSubscriptionResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupSubscriptionResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupSubscriptionResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupSubscriptionResultOutput), nil
 			}

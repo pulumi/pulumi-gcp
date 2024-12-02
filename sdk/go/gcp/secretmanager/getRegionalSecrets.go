@@ -72,17 +72,18 @@ type GetRegionalSecretsResult struct {
 }
 
 func GetRegionalSecretsOutput(ctx *pulumi.Context, args GetRegionalSecretsOutputArgs, opts ...pulumi.InvokeOption) GetRegionalSecretsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetRegionalSecretsResultOutput, error) {
 			args := v.(GetRegionalSecretsArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetRegionalSecretsResult
-			secret, err := ctx.InvokePackageRaw("gcp:secretmanager/getRegionalSecrets:getRegionalSecrets", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:secretmanager/getRegionalSecrets:getRegionalSecrets", args, &rv, "", opts...)
 			if err != nil {
 				return GetRegionalSecretsResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetRegionalSecretsResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetRegionalSecretsResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetRegionalSecretsResultOutput), nil
 			}

@@ -51,17 +51,18 @@ type LookupRegionBackendServiceIamPolicyResult struct {
 }
 
 func LookupRegionBackendServiceIamPolicyOutput(ctx *pulumi.Context, args LookupRegionBackendServiceIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupRegionBackendServiceIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupRegionBackendServiceIamPolicyResultOutput, error) {
 			args := v.(LookupRegionBackendServiceIamPolicyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupRegionBackendServiceIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:compute/getRegionBackendServiceIamPolicy:getRegionBackendServiceIamPolicy", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:compute/getRegionBackendServiceIamPolicy:getRegionBackendServiceIamPolicy", args, &rv, "", opts...)
 			if err != nil {
 				return LookupRegionBackendServiceIamPolicyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupRegionBackendServiceIamPolicyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupRegionBackendServiceIamPolicyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupRegionBackendServiceIamPolicyResultOutput), nil
 			}

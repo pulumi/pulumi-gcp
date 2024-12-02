@@ -77,17 +77,18 @@ type LookupClientResult struct {
 }
 
 func LookupClientOutput(ctx *pulumi.Context, args LookupClientOutputArgs, opts ...pulumi.InvokeOption) LookupClientResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupClientResultOutput, error) {
 			args := v.(LookupClientArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupClientResult
-			secret, err := ctx.InvokePackageRaw("gcp:iap/getClient:getClient", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:iap/getClient:getClient", args, &rv, "", opts...)
 			if err != nil {
 				return LookupClientResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupClientResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupClientResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupClientResultOutput), nil
 			}

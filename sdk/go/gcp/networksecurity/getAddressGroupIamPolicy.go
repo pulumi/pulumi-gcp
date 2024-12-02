@@ -51,17 +51,18 @@ type LookupAddressGroupIamPolicyResult struct {
 }
 
 func LookupAddressGroupIamPolicyOutput(ctx *pulumi.Context, args LookupAddressGroupIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupAddressGroupIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAddressGroupIamPolicyResultOutput, error) {
 			args := v.(LookupAddressGroupIamPolicyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupAddressGroupIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:networksecurity/getAddressGroupIamPolicy:getAddressGroupIamPolicy", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:networksecurity/getAddressGroupIamPolicy:getAddressGroupIamPolicy", args, &rv, "", opts...)
 			if err != nil {
 				return LookupAddressGroupIamPolicyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupAddressGroupIamPolicyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupAddressGroupIamPolicyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupAddressGroupIamPolicyResultOutput), nil
 			}

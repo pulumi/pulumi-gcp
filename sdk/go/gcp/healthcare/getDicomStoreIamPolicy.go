@@ -69,17 +69,18 @@ type LookupDicomStoreIamPolicyResult struct {
 }
 
 func LookupDicomStoreIamPolicyOutput(ctx *pulumi.Context, args LookupDicomStoreIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupDicomStoreIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupDicomStoreIamPolicyResultOutput, error) {
 			args := v.(LookupDicomStoreIamPolicyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupDicomStoreIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:healthcare/getDicomStoreIamPolicy:getDicomStoreIamPolicy", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:healthcare/getDicomStoreIamPolicy:getDicomStoreIamPolicy", args, &rv, "", opts...)
 			if err != nil {
 				return LookupDicomStoreIamPolicyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupDicomStoreIamPolicyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupDicomStoreIamPolicyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupDicomStoreIamPolicyResultOutput), nil
 			}

@@ -68,17 +68,18 @@ type GetSResult struct {
 }
 
 func GetSOutput(ctx *pulumi.Context, args GetSOutputArgs, opts ...pulumi.InvokeOption) GetSResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetSResultOutput, error) {
 			args := v.(GetSArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetSResult
-			secret, err := ctx.InvokePackageRaw("gcp:serviceaccount/getS:getS", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:serviceaccount/getS:getS", args, &rv, "", opts...)
 			if err != nil {
 				return GetSResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetSResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetSResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetSResultOutput), nil
 			}

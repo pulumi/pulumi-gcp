@@ -76,17 +76,18 @@ type LookupCertificateTemplateIamPolicyResult struct {
 }
 
 func LookupCertificateTemplateIamPolicyOutput(ctx *pulumi.Context, args LookupCertificateTemplateIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupCertificateTemplateIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupCertificateTemplateIamPolicyResultOutput, error) {
 			args := v.(LookupCertificateTemplateIamPolicyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupCertificateTemplateIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:certificateauthority/getCertificateTemplateIamPolicy:getCertificateTemplateIamPolicy", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:certificateauthority/getCertificateTemplateIamPolicy:getCertificateTemplateIamPolicy", args, &rv, "", opts...)
 			if err != nil {
 				return LookupCertificateTemplateIamPolicyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupCertificateTemplateIamPolicyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupCertificateTemplateIamPolicyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupCertificateTemplateIamPolicyResultOutput), nil
 			}

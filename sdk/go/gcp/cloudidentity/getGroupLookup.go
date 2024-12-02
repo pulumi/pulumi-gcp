@@ -70,17 +70,18 @@ type GetGroupLookupResult struct {
 }
 
 func GetGroupLookupOutput(ctx *pulumi.Context, args GetGroupLookupOutputArgs, opts ...pulumi.InvokeOption) GetGroupLookupResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetGroupLookupResultOutput, error) {
 			args := v.(GetGroupLookupArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetGroupLookupResult
-			secret, err := ctx.InvokePackageRaw("gcp:cloudidentity/getGroupLookup:getGroupLookup", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:cloudidentity/getGroupLookup:getGroupLookup", args, &rv, "", opts...)
 			if err != nil {
 				return GetGroupLookupResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetGroupLookupResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetGroupLookupResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetGroupLookupResultOutput), nil
 			}

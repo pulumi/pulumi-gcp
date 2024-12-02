@@ -85,7 +85,7 @@ export interface GetBucketObjectsResult {
  * });
  * ```
  */
-export function getBucketObjectsOutput(args: GetBucketObjectsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBucketObjectsResult> {
+export function getBucketObjectsOutput(args: GetBucketObjectsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBucketObjectsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:storage/getBucketObjects:getBucketObjects", {
         "bucket": args.bucket,

@@ -83,17 +83,18 @@ type LookupRegionSslCertificateResult struct {
 }
 
 func LookupRegionSslCertificateOutput(ctx *pulumi.Context, args LookupRegionSslCertificateOutputArgs, opts ...pulumi.InvokeOption) LookupRegionSslCertificateResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupRegionSslCertificateResultOutput, error) {
 			args := v.(LookupRegionSslCertificateArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupRegionSslCertificateResult
-			secret, err := ctx.InvokePackageRaw("gcp:compute/getRegionSslCertificate:getRegionSslCertificate", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:compute/getRegionSslCertificate:getRegionSslCertificate", args, &rv, "", opts...)
 			if err != nil {
 				return LookupRegionSslCertificateResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupRegionSslCertificateResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupRegionSslCertificateResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupRegionSslCertificateResultOutput), nil
 			}

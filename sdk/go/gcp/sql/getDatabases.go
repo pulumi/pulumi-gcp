@@ -67,17 +67,18 @@ type GetDatabasesResult struct {
 }
 
 func GetDatabasesOutput(ctx *pulumi.Context, args GetDatabasesOutputArgs, opts ...pulumi.InvokeOption) GetDatabasesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetDatabasesResultOutput, error) {
 			args := v.(GetDatabasesArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetDatabasesResult
-			secret, err := ctx.InvokePackageRaw("gcp:sql/getDatabases:getDatabases", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:sql/getDatabases:getDatabases", args, &rv, "", opts...)
 			if err != nil {
 				return GetDatabasesResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetDatabasesResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetDatabasesResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetDatabasesResultOutput), nil
 			}

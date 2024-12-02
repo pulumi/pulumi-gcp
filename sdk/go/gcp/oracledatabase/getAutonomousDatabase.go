@@ -87,17 +87,18 @@ type LookupAutonomousDatabaseResult struct {
 }
 
 func LookupAutonomousDatabaseOutput(ctx *pulumi.Context, args LookupAutonomousDatabaseOutputArgs, opts ...pulumi.InvokeOption) LookupAutonomousDatabaseResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAutonomousDatabaseResultOutput, error) {
 			args := v.(LookupAutonomousDatabaseArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupAutonomousDatabaseResult
-			secret, err := ctx.InvokePackageRaw("gcp:oracledatabase/getAutonomousDatabase:getAutonomousDatabase", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:oracledatabase/getAutonomousDatabase:getAutonomousDatabase", args, &rv, "", opts...)
 			if err != nil {
 				return LookupAutonomousDatabaseResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupAutonomousDatabaseResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupAutonomousDatabaseResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupAutonomousDatabaseResultOutput), nil
 			}

@@ -571,7 +571,7 @@ def get_instance_template_output(filter: Optional[pulumi.Input[Optional[str]]] =
                                  name: Optional[pulumi.Input[Optional[str]]] = None,
                                  project: Optional[pulumi.Input[Optional[str]]] = None,
                                  self_link_unique: Optional[pulumi.Input[Optional[str]]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceTemplateResult]:
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstanceTemplateResult]:
     """
     > **Note**: Global instance templates can be used in any region. To lower the impact of outages outside your region and gain data residency within your region, use google_compute_region_instance_template.
 
@@ -597,7 +597,7 @@ def get_instance_template_output(filter: Optional[pulumi.Input[Optional[str]]] =
     __args__['name'] = name
     __args__['project'] = project
     __args__['selfLinkUnique'] = self_link_unique
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:compute/getInstanceTemplate:getInstanceTemplate', __args__, opts=opts, typ=GetInstanceTemplateResult)
     return __ret__.apply(lambda __response__: GetInstanceTemplateResult(
         advanced_machine_features=pulumi.get(__response__, 'advanced_machine_features'),

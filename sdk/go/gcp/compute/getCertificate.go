@@ -79,17 +79,18 @@ type GetCertificateResult struct {
 }
 
 func GetCertificateOutput(ctx *pulumi.Context, args GetCertificateOutputArgs, opts ...pulumi.InvokeOption) GetCertificateResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetCertificateResultOutput, error) {
 			args := v.(GetCertificateArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetCertificateResult
-			secret, err := ctx.InvokePackageRaw("gcp:compute/getCertificate:getCertificate", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:compute/getCertificate:getCertificate", args, &rv, "", opts...)
 			if err != nil {
 				return GetCertificateResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetCertificateResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetCertificateResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetCertificateResultOutput), nil
 			}

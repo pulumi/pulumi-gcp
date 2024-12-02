@@ -105,17 +105,18 @@ type GetIstioCanonicalServiceResult struct {
 }
 
 func GetIstioCanonicalServiceOutput(ctx *pulumi.Context, args GetIstioCanonicalServiceOutputArgs, opts ...pulumi.InvokeOption) GetIstioCanonicalServiceResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetIstioCanonicalServiceResultOutput, error) {
 			args := v.(GetIstioCanonicalServiceArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetIstioCanonicalServiceResult
-			secret, err := ctx.InvokePackageRaw("gcp:monitoring/getIstioCanonicalService:getIstioCanonicalService", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:monitoring/getIstioCanonicalService:getIstioCanonicalService", args, &rv, "", opts...)
 			if err != nil {
 				return GetIstioCanonicalServiceResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetIstioCanonicalServiceResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetIstioCanonicalServiceResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetIstioCanonicalServiceResultOutput), nil
 			}

@@ -78,17 +78,18 @@ type GetHcVpnGatewayResult struct {
 }
 
 func GetHcVpnGatewayOutput(ctx *pulumi.Context, args GetHcVpnGatewayOutputArgs, opts ...pulumi.InvokeOption) GetHcVpnGatewayResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetHcVpnGatewayResultOutput, error) {
 			args := v.(GetHcVpnGatewayArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetHcVpnGatewayResult
-			secret, err := ctx.InvokePackageRaw("gcp:compute/getHcVpnGateway:getHcVpnGateway", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:compute/getHcVpnGateway:getHcVpnGateway", args, &rv, "", opts...)
 			if err != nil {
 				return GetHcVpnGatewayResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetHcVpnGatewayResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetHcVpnGatewayResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetHcVpnGatewayResultOutput), nil
 			}

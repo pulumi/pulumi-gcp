@@ -85,17 +85,18 @@ type LookupInstanceGroupResult struct {
 }
 
 func LookupInstanceGroupOutput(ctx *pulumi.Context, args LookupInstanceGroupOutputArgs, opts ...pulumi.InvokeOption) LookupInstanceGroupResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupInstanceGroupResultOutput, error) {
 			args := v.(LookupInstanceGroupArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupInstanceGroupResult
-			secret, err := ctx.InvokePackageRaw("gcp:compute/getInstanceGroup:getInstanceGroup", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:compute/getInstanceGroup:getInstanceGroup", args, &rv, "", opts...)
 			if err != nil {
 				return LookupInstanceGroupResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupInstanceGroupResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupInstanceGroupResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupInstanceGroupResultOutput), nil
 			}

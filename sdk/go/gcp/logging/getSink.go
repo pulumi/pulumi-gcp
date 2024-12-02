@@ -87,17 +87,18 @@ type GetSinkResult struct {
 }
 
 func GetSinkOutput(ctx *pulumi.Context, args GetSinkOutputArgs, opts ...pulumi.InvokeOption) GetSinkResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetSinkResultOutput, error) {
 			args := v.(GetSinkArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetSinkResult
-			secret, err := ctx.InvokePackageRaw("gcp:logging/getSink:getSink", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:logging/getSink:getSink", args, &rv, "", opts...)
 			if err != nil {
 				return GetSinkResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetSinkResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetSinkResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetSinkResultOutput), nil
 			}

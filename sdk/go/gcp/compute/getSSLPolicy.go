@@ -87,17 +87,18 @@ type LookupSSLPolicyResult struct {
 }
 
 func LookupSSLPolicyOutput(ctx *pulumi.Context, args LookupSSLPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupSSLPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupSSLPolicyResultOutput, error) {
 			args := v.(LookupSSLPolicyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupSSLPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:compute/getSSLPolicy:getSSLPolicy", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:compute/getSSLPolicy:getSSLPolicy", args, &rv, "", opts...)
 			if err != nil {
 				return LookupSSLPolicyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupSSLPolicyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupSSLPolicyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupSSLPolicyResultOutput), nil
 			}

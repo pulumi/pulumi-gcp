@@ -87,17 +87,18 @@ type GetProjectSettingsResult struct {
 }
 
 func GetProjectSettingsOutput(ctx *pulumi.Context, args GetProjectSettingsOutputArgs, opts ...pulumi.InvokeOption) GetProjectSettingsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetProjectSettingsResultOutput, error) {
 			args := v.(GetProjectSettingsArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetProjectSettingsResult
-			secret, err := ctx.InvokePackageRaw("gcp:logging/getProjectSettings:getProjectSettings", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:logging/getProjectSettings:getProjectSettings", args, &rv, "", opts...)
 			if err != nil {
 				return GetProjectSettingsResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetProjectSettingsResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetProjectSettingsResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetProjectSettingsResultOutput), nil
 			}

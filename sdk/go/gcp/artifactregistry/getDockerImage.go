@@ -112,17 +112,18 @@ type GetDockerImageResult struct {
 }
 
 func GetDockerImageOutput(ctx *pulumi.Context, args GetDockerImageOutputArgs, opts ...pulumi.InvokeOption) GetDockerImageResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetDockerImageResultOutput, error) {
 			args := v.(GetDockerImageArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetDockerImageResult
-			secret, err := ctx.InvokePackageRaw("gcp:artifactregistry/getDockerImage:getDockerImage", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:artifactregistry/getDockerImage:getDockerImage", args, &rv, "", opts...)
 			if err != nil {
 				return GetDockerImageResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetDockerImageResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetDockerImageResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetDockerImageResultOutput), nil
 			}

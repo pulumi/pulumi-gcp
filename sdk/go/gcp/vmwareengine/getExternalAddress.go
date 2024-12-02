@@ -76,17 +76,18 @@ type LookupExternalAddressResult struct {
 }
 
 func LookupExternalAddressOutput(ctx *pulumi.Context, args LookupExternalAddressOutputArgs, opts ...pulumi.InvokeOption) LookupExternalAddressResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupExternalAddressResultOutput, error) {
 			args := v.(LookupExternalAddressArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv LookupExternalAddressResult
-			secret, err := ctx.InvokePackageRaw("gcp:vmwareengine/getExternalAddress:getExternalAddress", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:vmwareengine/getExternalAddress:getExternalAddress", args, &rv, "", opts...)
 			if err != nil {
 				return LookupExternalAddressResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(LookupExternalAddressResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(LookupExternalAddressResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(LookupExternalAddressResultOutput), nil
 			}

@@ -86,7 +86,7 @@ export interface GetMetastoreServiceIamPolicyResult {
  * });
  * ```
  */
-export function getMetastoreServiceIamPolicyOutput(args: GetMetastoreServiceIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMetastoreServiceIamPolicyResult> {
+export function getMetastoreServiceIamPolicyOutput(args: GetMetastoreServiceIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMetastoreServiceIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:dataproc/getMetastoreServiceIamPolicy:getMetastoreServiceIamPolicy", {
         "location": args.location,

@@ -42,17 +42,18 @@ type GetServiceConsumersIamPolicyResult struct {
 }
 
 func GetServiceConsumersIamPolicyOutput(ctx *pulumi.Context, args GetServiceConsumersIamPolicyOutputArgs, opts ...pulumi.InvokeOption) GetServiceConsumersIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetServiceConsumersIamPolicyResultOutput, error) {
 			args := v.(GetServiceConsumersIamPolicyArgs)
 			opts = internal.PkgInvokeDefaultOpts(opts)
 			var rv GetServiceConsumersIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:endpoints/getServiceConsumersIamPolicy:getServiceConsumersIamPolicy", args, &rv, "", opts...)
+			secret, deps, err := ctx.InvokePackageRawWithDeps("gcp:endpoints/getServiceConsumersIamPolicy:getServiceConsumersIamPolicy", args, &rv, "", opts...)
 			if err != nil {
 				return GetServiceConsumersIamPolicyResultOutput{}, err
 			}
 
 			output := pulumi.ToOutput(rv).(GetServiceConsumersIamPolicyResultOutput)
+			output = pulumi.OutputWithDependencies(ctx.Context(), output, deps...).(GetServiceConsumersIamPolicyResultOutput)
 			if secret {
 				return pulumi.ToSecret(output).(GetServiceConsumersIamPolicyResultOutput), nil
 			}
