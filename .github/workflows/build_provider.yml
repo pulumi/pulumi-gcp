@@ -46,7 +46,7 @@ jobs:
           pattern: schema-embed.*
           # Avoid creating directories for each artifact
           merge-multiple: true
-          path: provider/cmd/pulumi-resource-gcp/schema-embed.json
+          path: provider/cmd/pulumi-resource-gcp
       - name: Restore makefile progress
         run: make --touch provider schema
       - name: Build & package provider

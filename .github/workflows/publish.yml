@@ -14,6 +14,10 @@ on:
         default: false
         type: boolean
         description: Skip publishing & verifying the Go SDK
+      skipJavaSdk:
+        default: false
+        type: boolean
+        description: Skip publishing the Java SDK
 
 env:
   IS_PRERELEASE: ${{ inputs.isPrerelease }}
@@ -127,9 +131,16 @@ jobs:
       with:
         tools: pulumictl, pulumicli, nodejs, python, dotnet, go, java
     - name: Publish SDKs
+      if: inputs.skipJavaSdk == false
       uses: pulumi/pulumi-package-publisher@1c0359ba74243cf6651efacfd839c751d8ff87e2 # v0.0.20
       with:
         sdk: all
+        version: ${{ inputs.version }}
+    - name: Publish SDKs (except Java)
+      if: inputs.skipJavaSdk == true
+      uses: pulumi/pulumi-package-publisher@1c0359ba74243cf6651efacfd839c751d8ff87e2 # v0.0.20
+      with:
+        sdk: all,!java
         version: ${{ inputs.version }}
     - name: Download Go SDK
       uses: ./.github/actions/download-sdk
