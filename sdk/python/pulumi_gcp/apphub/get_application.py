@@ -200,7 +200,7 @@ def get_application(application_id: Optional[str] = None,
 def get_application_output(application_id: Optional[pulumi.Input[str]] = None,
                            location: Optional[pulumi.Input[str]] = None,
                            project: Optional[pulumi.Input[str]] = None,
-                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetApplicationResult]:
+                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetApplicationResult]:
     """
     Application is a functional grouping of Services and Workloads that helps achieve a desired end-to-end business functionality. Services and Workloads are owned by the Application.
 
@@ -219,7 +219,7 @@ def get_application_output(application_id: Optional[pulumi.Input[str]] = None,
     __args__['applicationId'] = application_id
     __args__['location'] = location
     __args__['project'] = project
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:apphub/getApplication:getApplication', __args__, opts=opts, typ=GetApplicationResult)
     return __ret__.apply(lambda __response__: GetApplicationResult(
         application_id=pulumi.get(__response__, 'application_id'),

@@ -71,7 +71,7 @@ export interface GetSupportedDatabaseFlagsResult {
  * });
  * ```
  */
-export function getSupportedDatabaseFlagsOutput(args: GetSupportedDatabaseFlagsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSupportedDatabaseFlagsResult> {
+export function getSupportedDatabaseFlagsOutput(args: GetSupportedDatabaseFlagsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSupportedDatabaseFlagsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:alloydb/getSupportedDatabaseFlags:getSupportedDatabaseFlags", {
         "location": args.location,

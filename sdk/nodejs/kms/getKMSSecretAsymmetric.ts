@@ -194,7 +194,7 @@ export interface GetKMSSecretAsymmetricResult {
  *
  * This will result in a Cloud SQL user being created with password `my-secret-password`.
  */
-export function getKMSSecretAsymmetricOutput(args: GetKMSSecretAsymmetricOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKMSSecretAsymmetricResult> {
+export function getKMSSecretAsymmetricOutput(args: GetKMSSecretAsymmetricOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKMSSecretAsymmetricResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:kms/getKMSSecretAsymmetric:getKMSSecretAsymmetric", {
         "ciphertext": args.ciphertext,

@@ -141,7 +141,7 @@ def get_account_key(name: Optional[str] = None,
 def get_account_key_output(name: Optional[pulumi.Input[str]] = None,
                            project: Optional[pulumi.Input[Optional[str]]] = None,
                            public_key_type: Optional[pulumi.Input[Optional[str]]] = None,
-                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountKeyResult]:
+                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountKeyResult]:
     """
     Get service account public key. For more information, see [the official documentation](https://cloud.google.com/iam/docs/creating-managing-service-account-keys) and [API](https://cloud.google.com/iam/reference/rest/v1/projects.serviceAccounts.keys/get).
 
@@ -169,7 +169,7 @@ def get_account_key_output(name: Optional[pulumi.Input[str]] = None,
     __args__['name'] = name
     __args__['project'] = project
     __args__['publicKeyType'] = public_key_type
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:serviceaccount/getAccountKey:getAccountKey', __args__, opts=opts, typ=GetAccountKeyResult)
     return __ret__.apply(lambda __response__: GetAccountKeyResult(
         id=pulumi.get(__response__, 'id'),

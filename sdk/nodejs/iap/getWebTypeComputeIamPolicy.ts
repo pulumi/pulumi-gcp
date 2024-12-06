@@ -70,7 +70,7 @@ export interface GetWebTypeComputeIamPolicyResult {
  * });
  * ```
  */
-export function getWebTypeComputeIamPolicyOutput(args?: GetWebTypeComputeIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWebTypeComputeIamPolicyResult> {
+export function getWebTypeComputeIamPolicyOutput(args?: GetWebTypeComputeIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWebTypeComputeIamPolicyResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:iap/getWebTypeComputeIamPolicy:getWebTypeComputeIamPolicy", {

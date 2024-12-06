@@ -101,7 +101,7 @@ export interface GetEntitlementResult {
  * });
  * ```
  */
-export function getEntitlementOutput(args?: GetEntitlementOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEntitlementResult> {
+export function getEntitlementOutput(args?: GetEntitlementOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEntitlementResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:privilegedaccessmanager/getEntitlement:getEntitlement", {

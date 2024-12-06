@@ -111,7 +111,7 @@ export interface GetProjectCmekSettingsResult {
  * });
  * ```
  */
-export function getProjectCmekSettingsOutput(args: GetProjectCmekSettingsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectCmekSettingsResult> {
+export function getProjectCmekSettingsOutput(args: GetProjectCmekSettingsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProjectCmekSettingsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:logging/getProjectCmekSettings:getProjectCmekSettings", {
         "kmsKeyName": args.kmsKeyName,

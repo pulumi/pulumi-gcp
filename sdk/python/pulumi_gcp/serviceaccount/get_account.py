@@ -206,7 +206,7 @@ def get_account(account_id: Optional[str] = None,
         unique_id=pulumi.get(__ret__, 'unique_id'))
 def get_account_output(account_id: Optional[pulumi.Input[str]] = None,
                        project: Optional[pulumi.Input[Optional[str]]] = None,
-                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountResult]:
+                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountResult]:
     """
     Get the service account from a project. For more information see
     the official [API](https://cloud.google.com/compute/docs/access/service-accounts) documentation.
@@ -254,7 +254,7 @@ def get_account_output(account_id: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['accountId'] = account_id
     __args__['project'] = project
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:serviceaccount/getAccount:getAccount', __args__, opts=opts, typ=GetAccountResult)
     return __ret__.apply(lambda __response__: GetAccountResult(
         account_id=pulumi.get(__response__, 'account_id'),

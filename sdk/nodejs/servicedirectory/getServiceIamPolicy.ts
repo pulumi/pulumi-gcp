@@ -40,7 +40,7 @@ export interface GetServiceIamPolicyResult {
      */
     readonly policyData: string;
 }
-export function getServiceIamPolicyOutput(args: GetServiceIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceIamPolicyResult> {
+export function getServiceIamPolicyOutput(args: GetServiceIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServiceIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:servicedirectory/getServiceIamPolicy:getServiceIamPolicy", {
         "name": args.name,

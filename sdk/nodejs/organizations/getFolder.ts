@@ -99,7 +99,7 @@ export interface GetFolderResult {
  * export const myFolder2Parent = myFolder2.then(myFolder2 => myFolder2.parent);
  * ```
  */
-export function getFolderOutput(args: GetFolderOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFolderResult> {
+export function getFolderOutput(args: GetFolderOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFolderResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:organizations/getFolder:getFolder", {
         "folder": args.folder,

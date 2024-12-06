@@ -132,7 +132,7 @@ def get_subnetworks(filter: Optional[str] = None,
 def get_subnetworks_output(filter: Optional[pulumi.Input[Optional[str]]] = None,
                            project: Optional[pulumi.Input[Optional[str]]] = None,
                            region: Optional[pulumi.Input[Optional[str]]] = None,
-                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSubnetworksResult]:
+                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSubnetworksResult]:
     """
     Get subnetworks within GCE.
     See [the official documentation](https://cloud.google.com/vpc/docs/subnets)
@@ -160,7 +160,7 @@ def get_subnetworks_output(filter: Optional[pulumi.Input[Optional[str]]] = None,
     __args__['filter'] = filter
     __args__['project'] = project
     __args__['region'] = region
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:compute/getSubnetworks:getSubnetworks', __args__, opts=opts, typ=GetSubnetworksResult)
     return __ret__.apply(lambda __response__: GetSubnetworksResult(
         filter=pulumi.get(__response__, 'filter'),

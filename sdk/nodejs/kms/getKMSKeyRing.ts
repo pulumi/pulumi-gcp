@@ -90,7 +90,7 @@ export interface GetKMSKeyRingResult {
  * });
  * ```
  */
-export function getKMSKeyRingOutput(args: GetKMSKeyRingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKMSKeyRingResult> {
+export function getKMSKeyRingOutput(args: GetKMSKeyRingOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKMSKeyRingResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:kms/getKMSKeyRing:getKMSKeyRing", {
         "location": args.location,

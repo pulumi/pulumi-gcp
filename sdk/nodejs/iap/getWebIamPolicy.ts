@@ -70,7 +70,7 @@ export interface GetWebIamPolicyResult {
  * });
  * ```
  */
-export function getWebIamPolicyOutput(args?: GetWebIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWebIamPolicyResult> {
+export function getWebIamPolicyOutput(args?: GetWebIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWebIamPolicyResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:iap/getWebIamPolicy:getWebIamPolicy", {
