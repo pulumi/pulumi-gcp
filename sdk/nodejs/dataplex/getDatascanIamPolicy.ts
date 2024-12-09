@@ -85,7 +85,7 @@ export interface GetDatascanIamPolicyResult {
  * });
  * ```
  */
-export function getDatascanIamPolicyOutput(args: GetDatascanIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatascanIamPolicyResult> {
+export function getDatascanIamPolicyOutput(args: GetDatascanIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDatascanIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:dataplex/getDatascanIamPolicy:getDatascanIamPolicy", {
         "dataScanId": args.dataScanId,

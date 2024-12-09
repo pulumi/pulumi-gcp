@@ -529,7 +529,7 @@ def get_disk(name: Optional[str] = None,
 def get_disk_output(name: Optional[pulumi.Input[str]] = None,
                     project: Optional[pulumi.Input[Optional[str]]] = None,
                     zone: Optional[pulumi.Input[Optional[str]]] = None,
-                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDiskResult]:
+                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDiskResult]:
     """
     Get information about a Google Compute Persistent disks.
 
@@ -561,7 +561,7 @@ def get_disk_output(name: Optional[pulumi.Input[str]] = None,
     __args__['name'] = name
     __args__['project'] = project
     __args__['zone'] = zone
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:compute/getDisk:getDisk', __args__, opts=opts, typ=GetDiskResult)
     return __ret__.apply(lambda __response__: GetDiskResult(
         access_mode=pulumi.get(__response__, 'access_mode'),

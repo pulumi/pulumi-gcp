@@ -107,7 +107,7 @@ export interface GetInstanceGroupResult {
  * });
  * ```
  */
-export function getInstanceGroupOutput(args?: GetInstanceGroupOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceGroupResult> {
+export function getInstanceGroupOutput(args?: GetInstanceGroupOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInstanceGroupResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:compute/getInstanceGroup:getInstanceGroup", {

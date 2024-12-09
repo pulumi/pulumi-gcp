@@ -62,7 +62,7 @@ export interface GetAddressGroupIamPolicyResult {
 /**
  * Retrieves the current IAM policy data for projectaddressgroup
  */
-export function getAddressGroupIamPolicyOutput(args: GetAddressGroupIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAddressGroupIamPolicyResult> {
+export function getAddressGroupIamPolicyOutput(args: GetAddressGroupIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAddressGroupIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:networksecurity/getAddressGroupIamPolicy:getAddressGroupIamPolicy", {
         "location": args.location,

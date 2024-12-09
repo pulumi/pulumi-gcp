@@ -90,7 +90,7 @@ export interface GetProjectServiceAccountResult {
  * });
  * ```
  */
-export function getProjectServiceAccountOutput(args: GetProjectServiceAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectServiceAccountResult> {
+export function getProjectServiceAccountOutput(args: GetProjectServiceAccountOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProjectServiceAccountResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:accessapproval/getProjectServiceAccount:getProjectServiceAccount", {
         "projectId": args.projectId,

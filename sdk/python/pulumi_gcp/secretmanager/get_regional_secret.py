@@ -254,7 +254,7 @@ def get_regional_secret(location: Optional[str] = None,
 def get_regional_secret_output(location: Optional[pulumi.Input[str]] = None,
                                project: Optional[pulumi.Input[Optional[str]]] = None,
                                secret_id: Optional[pulumi.Input[str]] = None,
-                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegionalSecretResult]:
+                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegionalSecretResult]:
     """
     Use this data source to get information about a Secret Manager Regional Secret
 
@@ -277,7 +277,7 @@ def get_regional_secret_output(location: Optional[pulumi.Input[str]] = None,
     __args__['location'] = location
     __args__['project'] = project
     __args__['secretId'] = secret_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:secretmanager/getRegionalSecret:getRegionalSecret', __args__, opts=opts, typ=GetRegionalSecretResult)
     return __ret__.apply(lambda __response__: GetRegionalSecretResult(
         annotations=pulumi.get(__response__, 'annotations'),

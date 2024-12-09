@@ -170,7 +170,7 @@ def get_backup_run_output(backup_id: Optional[pulumi.Input[Optional[int]]] = Non
                           instance: Optional[pulumi.Input[str]] = None,
                           most_recent: Optional[pulumi.Input[Optional[bool]]] = None,
                           project: Optional[pulumi.Input[Optional[str]]] = None,
-                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBackupRunResult]:
+                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBackupRunResult]:
     """
     Use this data source to get information about a Cloud SQL instance backup run.
 
@@ -198,7 +198,7 @@ def get_backup_run_output(backup_id: Optional[pulumi.Input[Optional[int]]] = Non
     __args__['instance'] = instance
     __args__['mostRecent'] = most_recent
     __args__['project'] = project
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:sql/getBackupRun:getBackupRun', __args__, opts=opts, typ=GetBackupRunResult)
     return __ret__.apply(lambda __response__: GetBackupRunResult(
         backup_id=pulumi.get(__response__, 'backup_id'),

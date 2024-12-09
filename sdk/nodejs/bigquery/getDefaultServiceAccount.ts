@@ -91,7 +91,7 @@ export interface GetDefaultServiceAccountResult {
  * });
  * ```
  */
-export function getDefaultServiceAccountOutput(args?: GetDefaultServiceAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDefaultServiceAccountResult> {
+export function getDefaultServiceAccountOutput(args?: GetDefaultServiceAccountOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDefaultServiceAccountResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:bigquery/getDefaultServiceAccount:getDefaultServiceAccount", {
