@@ -67,7 +67,7 @@ export interface GetAccountIamPolicyResult {
  * });
  * ```
  */
-export function getAccountIamPolicyOutput(args: GetAccountIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountIamPolicyResult> {
+export function getAccountIamPolicyOutput(args: GetAccountIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:billing/getAccountIamPolicy:getAccountIamPolicy", {
         "billingAccountId": args.billingAccountId,

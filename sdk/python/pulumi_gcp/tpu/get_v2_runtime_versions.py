@@ -126,7 +126,7 @@ def get_v2_runtime_versions(project: Optional[str] = None,
         zone=pulumi.get(__ret__, 'zone'))
 def get_v2_runtime_versions_output(project: Optional[pulumi.Input[Optional[str]]] = None,
                                    zone: Optional[pulumi.Input[Optional[str]]] = None,
-                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetV2RuntimeVersionsResult]:
+                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetV2RuntimeVersionsResult]:
     """
     Get runtime versions available for a project. For more information see the [official documentation](https://cloud.google.com/tpu/docs/) and [API](https://cloud.google.com/tpu/docs/reference/rest/v2/projects.locations.runtimeVersions).
 
@@ -161,7 +161,7 @@ def get_v2_runtime_versions_output(project: Optional[pulumi.Input[Optional[str]]
     __args__ = dict()
     __args__['project'] = project
     __args__['zone'] = zone
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:tpu/getV2RuntimeVersions:getV2RuntimeVersions', __args__, opts=opts, typ=GetV2RuntimeVersionsResult)
     return __ret__.apply(lambda __response__: GetV2RuntimeVersionsResult(
         id=pulumi.get(__response__, 'id'),

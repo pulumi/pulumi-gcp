@@ -88,7 +88,7 @@ export interface GetImageVersionsResult {
  * });
  * ```
  */
-export function getImageVersionsOutput(args?: GetImageVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetImageVersionsResult> {
+export function getImageVersionsOutput(args?: GetImageVersionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetImageVersionsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:composer/getImageVersions:getImageVersions", {

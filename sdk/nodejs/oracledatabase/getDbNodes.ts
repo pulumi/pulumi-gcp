@@ -163,7 +163,7 @@ export interface GetDbNodesResult {
  *
  * * `totalCpuCoreCount` - The total number of CPU cores reserved on the database node.
  */
-export function getDbNodesOutput(args: GetDbNodesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDbNodesResult> {
+export function getDbNodesOutput(args: GetDbNodesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDbNodesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:oracledatabase/getDbNodes:getDbNodes", {
         "cloudVmCluster": args.cloudVmCluster,

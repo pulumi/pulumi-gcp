@@ -208,7 +208,7 @@ def get_instance_guest_attributes_output(name: Optional[pulumi.Input[str]] = Non
                                          region: Optional[pulumi.Input[Optional[str]]] = None,
                                          variable_key: Optional[pulumi.Input[Optional[str]]] = None,
                                          zone: Optional[pulumi.Input[Optional[str]]] = None,
-                                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceGuestAttributesResult]:
+                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstanceGuestAttributesResult]:
     """
     Get information about a VM instance resource within GCE. For more information see
     [the official documentation](https://cloud.google.com/compute/docs/instances)
@@ -263,7 +263,7 @@ def get_instance_guest_attributes_output(name: Optional[pulumi.Input[str]] = Non
     __args__['region'] = region
     __args__['variableKey'] = variable_key
     __args__['zone'] = zone
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:compute/getInstanceGuestAttributes:getInstanceGuestAttributes', __args__, opts=opts, typ=GetInstanceGuestAttributesResult)
     return __ret__.apply(lambda __response__: GetInstanceGuestAttributesResult(
         id=pulumi.get(__response__, 'id'),

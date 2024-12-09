@@ -144,7 +144,7 @@ def get_function_iam_policy(cloud_function: Optional[str] = None,
 def get_function_iam_policy_output(cloud_function: Optional[pulumi.Input[str]] = None,
                                    project: Optional[pulumi.Input[Optional[str]]] = None,
                                    region: Optional[pulumi.Input[Optional[str]]] = None,
-                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFunctionIamPolicyResult]:
+                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFunctionIamPolicyResult]:
     """
     Retrieves the current IAM policy data for cloudfunction
 
@@ -171,7 +171,7 @@ def get_function_iam_policy_output(cloud_function: Optional[pulumi.Input[str]] =
     __args__['cloudFunction'] = cloud_function
     __args__['project'] = project
     __args__['region'] = region
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:cloudfunctions/getFunctionIamPolicy:getFunctionIamPolicy', __args__, opts=opts, typ=GetFunctionIamPolicyResult)
     return __ret__.apply(lambda __response__: GetFunctionIamPolicyResult(
         cloud_function=pulumi.get(__response__, 'cloud_function'),

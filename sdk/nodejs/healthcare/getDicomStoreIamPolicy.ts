@@ -70,7 +70,7 @@ export interface GetDicomStoreIamPolicyResult {
  * });
  * ```
  */
-export function getDicomStoreIamPolicyOutput(args: GetDicomStoreIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDicomStoreIamPolicyResult> {
+export function getDicomStoreIamPolicyOutput(args: GetDicomStoreIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDicomStoreIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:healthcare/getDicomStoreIamPolicy:getDicomStoreIamPolicy", {
         "dicomStoreId": args.dicomStoreId,
