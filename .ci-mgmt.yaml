@@ -38,6 +38,6 @@ actions:
         make upstream
     - name: Run provider tests
       run: |
-        cd provider && go test -v -json -count=1 -cover -timeout 2h -tags=${{ matrix.language }} -parallel 4 . 2>&1 | tee /tmp/gotest.log | gotestfmt
+        cd provider && go test -v -json -count=1 -cover -timeout 2h -tags=${{ matrix.language }} -parallel 4 .
 # Use `pulumi convert` for translating examples from TF to Pulumi.
 pulumiConvert: 1
