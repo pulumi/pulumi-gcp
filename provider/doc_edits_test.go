@@ -63,7 +63,7 @@ Some more text.`,
 
 	for _, tt := range tests {
 		tt := tt
-		t.Run(tt.text, func(t *testing.T) {
+		t.Run("", func(t *testing.T) {
 			t.Parallel()
 			actual, err := removeSecretsInPlainTextNote.Edit("doc.md", []byte(tt.text))
 			require.NoError(t, err)
