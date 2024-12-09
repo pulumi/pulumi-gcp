@@ -77,7 +77,7 @@ export interface GetImageIamPolicyResult {
  * });
  * ```
  */
-export function getImageIamPolicyOutput(args: GetImageIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetImageIamPolicyResult> {
+export function getImageIamPolicyOutput(args: GetImageIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetImageIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:compute/getImageIamPolicy:getImageIamPolicy", {
         "image": args.image,

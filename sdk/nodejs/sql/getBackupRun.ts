@@ -95,7 +95,7 @@ export interface GetBackupRunResult {
  * });
  * ```
  */
-export function getBackupRunOutput(args: GetBackupRunOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBackupRunResult> {
+export function getBackupRunOutput(args: GetBackupRunOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBackupRunResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:sql/getBackupRun:getBackupRun", {
         "backupId": args.backupId,

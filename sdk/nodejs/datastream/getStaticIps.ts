@@ -75,7 +75,7 @@ export interface GetStaticIpsResult {
  * export const ipList = datastreamIps.then(datastreamIps => datastreamIps.staticIps);
  * ```
  */
-export function getStaticIpsOutput(args: GetStaticIpsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetStaticIpsResult> {
+export function getStaticIpsOutput(args: GetStaticIpsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetStaticIpsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:datastream/getStaticIps:getStaticIps", {
         "location": args.location,

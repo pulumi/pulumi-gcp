@@ -131,7 +131,7 @@ def get_peered_dns_domain_output(name: Optional[pulumi.Input[str]] = None,
                                  network: Optional[pulumi.Input[str]] = None,
                                  project: Optional[pulumi.Input[str]] = None,
                                  service: Optional[pulumi.Input[str]] = None,
-                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPeeredDnsDomainResult]:
+                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPeeredDnsDomainResult]:
     """
     Use this data source to access information about an existing resource.
     """
@@ -140,7 +140,7 @@ def get_peered_dns_domain_output(name: Optional[pulumi.Input[str]] = None,
     __args__['network'] = network
     __args__['project'] = project
     __args__['service'] = service
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:servicenetworking/getPeeredDnsDomain:getPeeredDnsDomain', __args__, opts=opts, typ=GetPeeredDnsDomainResult)
     return __ret__.apply(lambda __response__: GetPeeredDnsDomainResult(
         dns_suffix=pulumi.get(__response__, 'dns_suffix'),

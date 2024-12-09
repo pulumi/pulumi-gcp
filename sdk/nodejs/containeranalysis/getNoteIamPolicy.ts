@@ -77,7 +77,7 @@ export interface GetNoteIamPolicyResult {
  * });
  * ```
  */
-export function getNoteIamPolicyOutput(args: GetNoteIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNoteIamPolicyResult> {
+export function getNoteIamPolicyOutput(args: GetNoteIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNoteIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:containeranalysis/getNoteIamPolicy:getNoteIamPolicy", {
         "note": args.note,

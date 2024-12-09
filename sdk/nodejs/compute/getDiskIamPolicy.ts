@@ -87,7 +87,7 @@ export interface GetDiskIamPolicyResult {
  * });
  * ```
  */
-export function getDiskIamPolicyOutput(args: GetDiskIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDiskIamPolicyResult> {
+export function getDiskIamPolicyOutput(args: GetDiskIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDiskIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:compute/getDiskIamPolicy:getDiskIamPolicy", {
         "name": args.name,

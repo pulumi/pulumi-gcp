@@ -37,7 +37,7 @@ export interface GetKeyRingsResult {
     readonly location: string;
     readonly project?: string;
 }
-export function getKeyRingsOutput(args: GetKeyRingsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKeyRingsResult> {
+export function getKeyRingsOutput(args: GetKeyRingsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKeyRingsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:kms/getKeyRings:getKeyRings", {
         "filter": args.filter,

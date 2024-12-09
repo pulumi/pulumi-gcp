@@ -47,7 +47,7 @@ export interface GetBackendBucketIamPolicyResult {
     readonly policyData: string;
     readonly project: string;
 }
-export function getBackendBucketIamPolicyOutput(args: GetBackendBucketIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBackendBucketIamPolicyResult> {
+export function getBackendBucketIamPolicyOutput(args: GetBackendBucketIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBackendBucketIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:compute/getBackendBucketIamPolicy:getBackendBucketIamPolicy", {
         "name": args.name,

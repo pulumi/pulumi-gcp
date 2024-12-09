@@ -163,7 +163,7 @@ def get_addresses(filter: Optional[str] = None,
 def get_addresses_output(filter: Optional[pulumi.Input[Optional[str]]] = None,
                          project: Optional[pulumi.Input[Optional[str]]] = None,
                          region: Optional[pulumi.Input[Optional[str]]] = None,
-                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAddressesResult]:
+                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAddressesResult]:
     """
     List IP addresses in a project. For more information see
     the official API [list](https://cloud.google.com/compute/docs/reference/latest/addresses/list) and
@@ -219,7 +219,7 @@ def get_addresses_output(filter: Optional[pulumi.Input[Optional[str]]] = None,
     __args__['filter'] = filter
     __args__['project'] = project
     __args__['region'] = region
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:compute/getAddresses:getAddresses', __args__, opts=opts, typ=GetAddressesResult)
     return __ret__.apply(lambda __response__: GetAddressesResult(
         addresses=pulumi.get(__response__, 'addresses'),
