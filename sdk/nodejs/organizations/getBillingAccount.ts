@@ -100,7 +100,7 @@ export interface GetBillingAccountResult {
  * });
  * ```
  */
-export function getBillingAccountOutput(args?: GetBillingAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBillingAccountResult> {
+export function getBillingAccountOutput(args?: GetBillingAccountOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBillingAccountResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:organizations/getBillingAccount:getBillingAccount", {

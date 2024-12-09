@@ -145,7 +145,7 @@ def get_workstation_config_iam_policy_output(location: Optional[pulumi.Input[Opt
                                              project: Optional[pulumi.Input[Optional[str]]] = None,
                                              workstation_cluster_id: Optional[pulumi.Input[str]] = None,
                                              workstation_config_id: Optional[pulumi.Input[str]] = None,
-                                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetWorkstationConfigIamPolicyResult]:
+                                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkstationConfigIamPolicyResult]:
     """
     Use this data source to access information about an existing resource.
 
@@ -161,7 +161,7 @@ def get_workstation_config_iam_policy_output(location: Optional[pulumi.Input[Opt
     __args__['project'] = project
     __args__['workstationClusterId'] = workstation_cluster_id
     __args__['workstationConfigId'] = workstation_config_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:workstations/getWorkstationConfigIamPolicy:getWorkstationConfigIamPolicy', __args__, opts=opts, typ=GetWorkstationConfigIamPolicyResult)
     return __ret__.apply(lambda __response__: GetWorkstationConfigIamPolicyResult(
         etag=pulumi.get(__response__, 'etag'),
