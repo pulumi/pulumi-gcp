@@ -72,7 +72,7 @@ export interface GetMachineTypesResult {
  *
  * ## Example Usage
  */
-export function getMachineTypesOutput(args?: GetMachineTypesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMachineTypesResult> {
+export function getMachineTypesOutput(args?: GetMachineTypesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMachineTypesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:compute/getMachineTypes:getMachineTypes", {

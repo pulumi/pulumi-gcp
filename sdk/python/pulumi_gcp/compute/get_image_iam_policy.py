@@ -127,7 +127,7 @@ def get_image_iam_policy(image: Optional[str] = None,
         project=pulumi.get(__ret__, 'project'))
 def get_image_iam_policy_output(image: Optional[pulumi.Input[str]] = None,
                                 project: Optional[pulumi.Input[Optional[str]]] = None,
-                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetImageIamPolicyResult]:
+                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetImageIamPolicyResult]:
     """
     Retrieves the current IAM policy data for image
 
@@ -149,7 +149,7 @@ def get_image_iam_policy_output(image: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['image'] = image
     __args__['project'] = project
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:compute/getImageIamPolicy:getImageIamPolicy', __args__, opts=opts, typ=GetImageIamPolicyResult)
     return __ret__.apply(lambda __response__: GetImageIamPolicyResult(
         etag=pulumi.get(__response__, 'etag'),

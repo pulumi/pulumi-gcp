@@ -119,7 +119,7 @@ export interface GetSubnetworkResult {
  * });
  * ```
  */
-export function getSubnetworkOutput(args?: GetSubnetworkOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSubnetworkResult> {
+export function getSubnetworkOutput(args?: GetSubnetworkOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSubnetworkResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:compute/getSubnetwork:getSubnetwork", {

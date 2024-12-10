@@ -163,7 +163,7 @@ export interface GetDbServersResult {
  *
  * * `dbNodeIds` - The OCID of database nodes associated with the database server.
  */
-export function getDbServersOutput(args: GetDbServersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDbServersResult> {
+export function getDbServersOutput(args: GetDbServersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDbServersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:oracledatabase/getDbServers:getDbServers", {
         "cloudExadataInfrastructure": args.cloudExadataInfrastructure,

@@ -85,7 +85,7 @@ export interface GetRegionalSecretIamPolicyResult {
  * });
  * ```
  */
-export function getRegionalSecretIamPolicyOutput(args: GetRegionalSecretIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRegionalSecretIamPolicyResult> {
+export function getRegionalSecretIamPolicyOutput(args: GetRegionalSecretIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionalSecretIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:secretmanager/getRegionalSecretIamPolicy:getRegionalSecretIamPolicy", {
         "location": args.location,

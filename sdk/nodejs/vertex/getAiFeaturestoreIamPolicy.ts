@@ -55,7 +55,7 @@ export interface GetAiFeaturestoreIamPolicyResult {
     readonly project: string;
     readonly region: string;
 }
-export function getAiFeaturestoreIamPolicyOutput(args: GetAiFeaturestoreIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAiFeaturestoreIamPolicyResult> {
+export function getAiFeaturestoreIamPolicyOutput(args: GetAiFeaturestoreIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAiFeaturestoreIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:vertex/getAiFeaturestoreIamPolicy:getAiFeaturestoreIamPolicy", {
         "featurestore": args.featurestore,

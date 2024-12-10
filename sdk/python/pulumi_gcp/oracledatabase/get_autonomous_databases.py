@@ -115,7 +115,7 @@ def get_autonomous_databases(location: Optional[str] = None,
         project=pulumi.get(__ret__, 'project'))
 def get_autonomous_databases_output(location: Optional[pulumi.Input[str]] = None,
                                     project: Optional[pulumi.Input[Optional[str]]] = None,
-                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAutonomousDatabasesResult]:
+                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAutonomousDatabasesResult]:
     """
     List all AutonomousDatabases.
 
@@ -141,7 +141,7 @@ def get_autonomous_databases_output(location: Optional[pulumi.Input[str]] = None
     __args__ = dict()
     __args__['location'] = location
     __args__['project'] = project
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:oracledatabase/getAutonomousDatabases:getAutonomousDatabases', __args__, opts=opts, typ=GetAutonomousDatabasesResult)
     return __ret__.apply(lambda __response__: GetAutonomousDatabasesResult(
         autonomous_databases=pulumi.get(__response__, 'autonomous_databases'),

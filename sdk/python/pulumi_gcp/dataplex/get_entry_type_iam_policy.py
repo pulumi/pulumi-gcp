@@ -144,7 +144,7 @@ def get_entry_type_iam_policy(entry_type_id: Optional[str] = None,
 def get_entry_type_iam_policy_output(entry_type_id: Optional[pulumi.Input[str]] = None,
                                      location: Optional[pulumi.Input[Optional[str]]] = None,
                                      project: Optional[pulumi.Input[Optional[str]]] = None,
-                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEntryTypeIamPolicyResult]:
+                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEntryTypeIamPolicyResult]:
     """
     Retrieves the current IAM policy data for entrytype
 
@@ -171,7 +171,7 @@ def get_entry_type_iam_policy_output(entry_type_id: Optional[pulumi.Input[str]] 
     __args__['entryTypeId'] = entry_type_id
     __args__['location'] = location
     __args__['project'] = project
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:dataplex/getEntryTypeIamPolicy:getEntryTypeIamPolicy', __args__, opts=opts, typ=GetEntryTypeIamPolicyResult)
     return __ret__.apply(lambda __response__: GetEntryTypeIamPolicyResult(
         entry_type_id=pulumi.get(__response__, 'entry_type_id'),

@@ -153,7 +153,7 @@ def get_token(identifier: Optional[str] = None,
 def get_token_output(identifier: Optional[pulumi.Input[str]] = None,
                      type: Optional[pulumi.Input[str]] = None,
                      verification_method: Optional[pulumi.Input[str]] = None,
-                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTokenResult]:
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTokenResult]:
     """
     A verification token is used to demonstrate ownership of a website or domain.
 
@@ -203,7 +203,7 @@ def get_token_output(identifier: Optional[pulumi.Input[str]] = None,
     __args__['identifier'] = identifier
     __args__['type'] = type
     __args__['verificationMethod'] = verification_method
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:siteverification/getToken:getToken', __args__, opts=opts, typ=GetTokenResult)
     return __ret__.apply(lambda __response__: GetTokenResult(
         id=pulumi.get(__response__, 'id'),

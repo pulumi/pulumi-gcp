@@ -159,7 +159,7 @@ def get_record_set_output(managed_zone: Optional[pulumi.Input[str]] = None,
                           name: Optional[pulumi.Input[str]] = None,
                           project: Optional[pulumi.Input[Optional[str]]] = None,
                           type: Optional[pulumi.Input[str]] = None,
-                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRecordSetResult]:
+                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRecordSetResult]:
     """
     Get a DNS record set within Google Cloud DNS
     For more information see
@@ -190,7 +190,7 @@ def get_record_set_output(managed_zone: Optional[pulumi.Input[str]] = None,
     __args__['name'] = name
     __args__['project'] = project
     __args__['type'] = type
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:dns/getRecordSet:getRecordSet', __args__, opts=opts, typ=GetRecordSetResult)
     return __ret__.apply(lambda __response__: GetRecordSetResult(
         id=pulumi.get(__response__, 'id'),

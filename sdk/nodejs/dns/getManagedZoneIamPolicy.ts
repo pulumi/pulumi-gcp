@@ -77,7 +77,7 @@ export interface GetManagedZoneIamPolicyResult {
  * });
  * ```
  */
-export function getManagedZoneIamPolicyOutput(args: GetManagedZoneIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetManagedZoneIamPolicyResult> {
+export function getManagedZoneIamPolicyOutput(args: GetManagedZoneIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetManagedZoneIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:dns/getManagedZoneIamPolicy:getManagedZoneIamPolicy", {
         "managedZone": args.managedZone,

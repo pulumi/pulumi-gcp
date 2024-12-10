@@ -157,7 +157,7 @@ def get_app_engine_version_iam_policy_output(app_id: Optional[pulumi.Input[str]]
                                              project: Optional[pulumi.Input[Optional[str]]] = None,
                                              service: Optional[pulumi.Input[str]] = None,
                                              version_id: Optional[pulumi.Input[str]] = None,
-                                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAppEngineVersionIamPolicyResult]:
+                                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAppEngineVersionIamPolicyResult]:
     """
     Retrieves the current IAM policy data for appengineversion
 
@@ -185,7 +185,7 @@ def get_app_engine_version_iam_policy_output(app_id: Optional[pulumi.Input[str]]
     __args__['project'] = project
     __args__['service'] = service
     __args__['versionId'] = version_id
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:iap/getAppEngineVersionIamPolicy:getAppEngineVersionIamPolicy', __args__, opts=opts, typ=GetAppEngineVersionIamPolicyResult)
     return __ret__.apply(lambda __response__: GetAppEngineVersionIamPolicyResult(
         app_id=pulumi.get(__response__, 'app_id'),

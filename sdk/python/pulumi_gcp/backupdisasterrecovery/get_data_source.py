@@ -232,7 +232,7 @@ def get_data_source_output(backup_vault_id: Optional[pulumi.Input[str]] = None,
                            data_source_id: Optional[pulumi.Input[str]] = None,
                            location: Optional[pulumi.Input[str]] = None,
                            project: Optional[pulumi.Input[str]] = None,
-                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDataSourceResult]:
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDataSourceResult]:
     """
     Use this data source to access information about an existing resource.
     """
@@ -241,7 +241,7 @@ def get_data_source_output(backup_vault_id: Optional[pulumi.Input[str]] = None,
     __args__['dataSourceId'] = data_source_id
     __args__['location'] = location
     __args__['project'] = project
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:backupdisasterrecovery/getDataSource:getDataSource', __args__, opts=opts, typ=GetDataSourceResult)
     return __ret__.apply(lambda __response__: GetDataSourceResult(
         backup_config_infos=pulumi.get(__response__, 'backup_config_infos'),

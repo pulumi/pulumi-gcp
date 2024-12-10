@@ -142,7 +142,7 @@ def get_certificate_template_iam_policy(certificate_template: Optional[str] = No
 def get_certificate_template_iam_policy_output(certificate_template: Optional[pulumi.Input[str]] = None,
                                                location: Optional[pulumi.Input[Optional[str]]] = None,
                                                project: Optional[pulumi.Input[Optional[str]]] = None,
-                                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCertificateTemplateIamPolicyResult]:
+                                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCertificateTemplateIamPolicyResult]:
     """
     Retrieves the current IAM policy data for certificatetemplate
 
@@ -167,7 +167,7 @@ def get_certificate_template_iam_policy_output(certificate_template: Optional[pu
     __args__['certificateTemplate'] = certificate_template
     __args__['location'] = location
     __args__['project'] = project
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:certificateauthority/getCertificateTemplateIamPolicy:getCertificateTemplateIamPolicy', __args__, opts=opts, typ=GetCertificateTemplateIamPolicyResult)
     return __ret__.apply(lambda __response__: GetCertificateTemplateIamPolicyResult(
         certificate_template=pulumi.get(__response__, 'certificate_template'),

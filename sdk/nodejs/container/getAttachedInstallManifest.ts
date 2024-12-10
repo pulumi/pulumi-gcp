@@ -90,7 +90,7 @@ export interface GetAttachedInstallManifestResult {
  * export const installManifest = manifest;
  * ```
  */
-export function getAttachedInstallManifestOutput(args: GetAttachedInstallManifestOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAttachedInstallManifestResult> {
+export function getAttachedInstallManifestOutput(args: GetAttachedInstallManifestOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAttachedInstallManifestResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:container/getAttachedInstallManifest:getAttachedInstallManifest", {
         "clusterId": args.clusterId,

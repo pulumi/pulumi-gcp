@@ -31,7 +31,7 @@ export interface GetGroupTransitiveMembershipsResult {
     readonly id: string;
     readonly memberships: outputs.cloudidentity.GetGroupTransitiveMembershipsMembership[];
 }
-export function getGroupTransitiveMembershipsOutput(args: GetGroupTransitiveMembershipsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGroupTransitiveMembershipsResult> {
+export function getGroupTransitiveMembershipsOutput(args: GetGroupTransitiveMembershipsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGroupTransitiveMembershipsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:cloudidentity/getGroupTransitiveMemberships:getGroupTransitiveMemberships", {
         "group": args.group,

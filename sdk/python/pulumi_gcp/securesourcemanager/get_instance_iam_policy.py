@@ -146,7 +146,7 @@ def get_instance_iam_policy(instance_id: Optional[str] = None,
 def get_instance_iam_policy_output(instance_id: Optional[pulumi.Input[str]] = None,
                                    location: Optional[pulumi.Input[Optional[str]]] = None,
                                    project: Optional[pulumi.Input[Optional[str]]] = None,
-                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstanceIamPolicyResult]:
+                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceIamPolicyResult]:
     """
     Retrieves the current IAM policy data for instance
 
@@ -175,7 +175,7 @@ def get_instance_iam_policy_output(instance_id: Optional[pulumi.Input[str]] = No
     __args__['instanceId'] = instance_id
     __args__['location'] = location
     __args__['project'] = project
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:securesourcemanager/getInstanceIamPolicy:getInstanceIamPolicy', __args__, opts=opts, typ=GetInstanceIamPolicyResult)
     return __ret__.apply(lambda __response__: GetInstanceIamPolicyResult(
         etag=pulumi.get(__response__, 'etag'),

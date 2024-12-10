@@ -93,7 +93,7 @@ export interface GetDatabaseInstancesResult {
  * });
  * ```
  */
-export function getDatabaseInstancesOutput(args?: GetDatabaseInstancesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDatabaseInstancesResult> {
+export function getDatabaseInstancesOutput(args?: GetDatabaseInstancesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDatabaseInstancesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:sql/getDatabaseInstances:getDatabaseInstances", {

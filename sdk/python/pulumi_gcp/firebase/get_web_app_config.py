@@ -195,7 +195,7 @@ def get_web_app_config(project: Optional[str] = None,
         web_app_id=pulumi.get(__ret__, 'web_app_id'))
 def get_web_app_config_output(project: Optional[pulumi.Input[Optional[str]]] = None,
                               web_app_id: Optional[pulumi.Input[str]] = None,
-                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWebAppConfigResult]:
+                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetWebAppConfigResult]:
     """
     A Google Cloud Firebase web application configuration
 
@@ -215,7 +215,7 @@ def get_web_app_config_output(project: Optional[pulumi.Input[Optional[str]]] = N
     __args__ = dict()
     __args__['project'] = project
     __args__['webAppId'] = web_app_id
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:firebase/getWebAppConfig:getWebAppConfig', __args__, opts=opts, typ=GetWebAppConfigResult)
     return __ret__.apply(lambda __response__: GetWebAppConfigResult(
         api_key=pulumi.get(__response__, 'api_key'),

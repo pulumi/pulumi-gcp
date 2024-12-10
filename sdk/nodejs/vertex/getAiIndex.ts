@@ -66,7 +66,7 @@ export interface GetAiIndexResult {
 /**
  * A representation of a collection of database items organized in a way that allows for approximate nearest neighbor (a.k.a ANN) algorithms search.
  */
-export function getAiIndexOutput(args: GetAiIndexOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAiIndexResult> {
+export function getAiIndexOutput(args: GetAiIndexOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAiIndexResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:vertex/getAiIndex:getAiIndex", {
         "name": args.name,

@@ -47,7 +47,7 @@ export interface GetHostingChannelResult {
     readonly siteId: string;
     readonly ttl: string;
 }
-export function getHostingChannelOutput(args: GetHostingChannelOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetHostingChannelResult> {
+export function getHostingChannelOutput(args: GetHostingChannelOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHostingChannelResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:firebase/getHostingChannel:getHostingChannel", {
         "channelId": args.channelId,

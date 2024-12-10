@@ -175,7 +175,7 @@ def get_folder_settings(folder: Optional[str] = None,
         name=pulumi.get(__ret__, 'name'),
         storage_location=pulumi.get(__ret__, 'storage_location'))
 def get_folder_settings_output(folder: Optional[pulumi.Input[str]] = None,
-                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFolderSettingsResult]:
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFolderSettingsResult]:
     """
     Describes the settings associated with a folder.
 
@@ -200,7 +200,7 @@ def get_folder_settings_output(folder: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['folder'] = folder
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:logging/getFolderSettings:getFolderSettings', __args__, opts=opts, typ=GetFolderSettingsResult)
     return __ret__.apply(lambda __response__: GetFolderSettingsResult(
         disable_default_sink=pulumi.get(__response__, 'disable_default_sink'),

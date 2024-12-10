@@ -194,7 +194,7 @@ export interface GetProjectServiceAccountResult {
  * });
  * ```
  */
-export function getProjectServiceAccountOutput(args?: GetProjectServiceAccountOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProjectServiceAccountResult> {
+export function getProjectServiceAccountOutput(args?: GetProjectServiceAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectServiceAccountResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:storage/getProjectServiceAccount:getProjectServiceAccount", {

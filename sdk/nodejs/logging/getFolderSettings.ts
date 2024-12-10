@@ -103,7 +103,7 @@ export interface GetFolderSettingsResult {
  * });
  * ```
  */
-export function getFolderSettingsOutput(args: GetFolderSettingsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFolderSettingsResult> {
+export function getFolderSettingsOutput(args: GetFolderSettingsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFolderSettingsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:logging/getFolderSettings:getFolderSettings", {
         "folder": args.folder,

@@ -113,7 +113,7 @@ def get_hl7_v2_store_iam_policy(hl7_v2_store_id: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         policy_data=pulumi.get(__ret__, 'policy_data'))
 def get_hl7_v2_store_iam_policy_output(hl7_v2_store_id: Optional[pulumi.Input[str]] = None,
-                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetHl7V2StoreIamPolicyResult]:
+                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetHl7V2StoreIamPolicyResult]:
     """
     Retrieves the current IAM policy data for a Google Cloud Healthcare HL7v2 store.
 
@@ -134,7 +134,7 @@ def get_hl7_v2_store_iam_policy_output(hl7_v2_store_id: Optional[pulumi.Input[st
     """
     __args__ = dict()
     __args__['hl7V2StoreId'] = hl7_v2_store_id
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:healthcare/getHl7V2StoreIamPolicy:getHl7V2StoreIamPolicy', __args__, opts=opts, typ=GetHl7V2StoreIamPolicyResult)
     return __ret__.apply(lambda __response__: GetHl7V2StoreIamPolicyResult(
         etag=pulumi.get(__response__, 'etag'),

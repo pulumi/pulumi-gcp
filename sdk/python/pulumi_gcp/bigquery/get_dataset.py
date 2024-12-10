@@ -323,7 +323,7 @@ def get_dataset(dataset_id: Optional[str] = None,
         storage_billing_model=pulumi.get(__ret__, 'storage_billing_model'))
 def get_dataset_output(dataset_id: Optional[pulumi.Input[str]] = None,
                        project: Optional[pulumi.Input[Optional[str]]] = None,
-                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatasetResult]:
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatasetResult]:
     """
     Get information about a BigQuery dataset. For more information see
     the [official documentation](https://cloud.google.com/bigquery/docs)
@@ -347,7 +347,7 @@ def get_dataset_output(dataset_id: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['datasetId'] = dataset_id
     __args__['project'] = project
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:bigquery/getDataset:getDataset', __args__, opts=opts, typ=GetDatasetResult)
     return __ret__.apply(lambda __response__: GetDatasetResult(
         accesses=pulumi.get(__response__, 'accesses'),

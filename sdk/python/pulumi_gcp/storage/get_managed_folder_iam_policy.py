@@ -105,14 +105,14 @@ def get_managed_folder_iam_policy(bucket: Optional[str] = None,
         policy_data=pulumi.get(__ret__, 'policy_data'))
 def get_managed_folder_iam_policy_output(bucket: Optional[pulumi.Input[str]] = None,
                                          managed_folder: Optional[pulumi.Input[str]] = None,
-                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetManagedFolderIamPolicyResult]:
+                                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetManagedFolderIamPolicyResult]:
     """
     Use this data source to access information about an existing resource.
     """
     __args__ = dict()
     __args__['bucket'] = bucket
     __args__['managedFolder'] = managed_folder
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:storage/getManagedFolderIamPolicy:getManagedFolderIamPolicy', __args__, opts=opts, typ=GetManagedFolderIamPolicyResult)
     return __ret__.apply(lambda __response__: GetManagedFolderIamPolicyResult(
         bucket=pulumi.get(__response__, 'bucket'),

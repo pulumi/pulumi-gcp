@@ -113,7 +113,7 @@ def get_key_ring_iam_policy(key_ring_id: Optional[str] = None,
         key_ring_id=pulumi.get(__ret__, 'key_ring_id'),
         policy_data=pulumi.get(__ret__, 'policy_data'))
 def get_key_ring_iam_policy_output(key_ring_id: Optional[pulumi.Input[str]] = None,
-                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKeyRingIamPolicyResult]:
+                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKeyRingIamPolicyResult]:
     """
     Retrieves the current IAM policy data for a Google Cloud KMS key ring.
 
@@ -134,7 +134,7 @@ def get_key_ring_iam_policy_output(key_ring_id: Optional[pulumi.Input[str]] = No
     """
     __args__ = dict()
     __args__['keyRingId'] = key_ring_id
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:kms/getKeyRingIamPolicy:getKeyRingIamPolicy', __args__, opts=opts, typ=GetKeyRingIamPolicyResult)
     return __ret__.apply(lambda __response__: GetKeyRingIamPolicyResult(
         etag=pulumi.get(__response__, 'etag'),

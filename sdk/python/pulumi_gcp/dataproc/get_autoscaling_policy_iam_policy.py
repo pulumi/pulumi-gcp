@@ -149,7 +149,7 @@ def get_autoscaling_policy_iam_policy(location: Optional[str] = None,
 def get_autoscaling_policy_iam_policy_output(location: Optional[pulumi.Input[Optional[str]]] = None,
                                              policy_id: Optional[pulumi.Input[str]] = None,
                                              project: Optional[pulumi.Input[Optional[str]]] = None,
-                                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAutoscalingPolicyIamPolicyResult]:
+                                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAutoscalingPolicyIamPolicyResult]:
     """
     Retrieves the current IAM policy data for autoscalingpolicy
 
@@ -181,7 +181,7 @@ def get_autoscaling_policy_iam_policy_output(location: Optional[pulumi.Input[Opt
     __args__['location'] = location
     __args__['policyId'] = policy_id
     __args__['project'] = project
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:dataproc/getAutoscalingPolicyIamPolicy:getAutoscalingPolicyIamPolicy', __args__, opts=opts, typ=GetAutoscalingPolicyIamPolicyResult)
     return __ret__.apply(lambda __response__: GetAutoscalingPolicyIamPolicyResult(
         etag=pulumi.get(__response__, 'etag'),

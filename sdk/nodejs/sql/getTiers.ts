@@ -76,7 +76,7 @@ export interface GetTiersResult {
  * export const avaialbleTiers = allAvailableTiers;
  * ```
  */
-export function getTiersOutput(args?: GetTiersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTiersResult> {
+export function getTiersOutput(args?: GetTiersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTiersResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:sql/getTiers:getTiers", {

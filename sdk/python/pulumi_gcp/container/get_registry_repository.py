@@ -114,7 +114,7 @@ def get_registry_repository(project: Optional[str] = None,
         repository_url=pulumi.get(__ret__, 'repository_url'))
 def get_registry_repository_output(project: Optional[pulumi.Input[Optional[str]]] = None,
                                    region: Optional[pulumi.Input[Optional[str]]] = None,
-                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegistryRepositoryResult]:
+                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegistryRepositoryResult]:
     """
     This data source fetches the project name, and provides the appropriate URLs to use for container registry for this project.
 
@@ -137,7 +137,7 @@ def get_registry_repository_output(project: Optional[pulumi.Input[Optional[str]]
     __args__ = dict()
     __args__['project'] = project
     __args__['region'] = region
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:container/getRegistryRepository:getRegistryRepository', __args__, opts=opts, typ=GetRegistryRepositoryResult)
     return __ret__.apply(lambda __response__: GetRegistryRepositoryResult(
         id=pulumi.get(__response__, 'id'),

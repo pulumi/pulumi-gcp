@@ -46,7 +46,7 @@ export interface GetServiceConsumersIamPolicyResult {
 /**
  * Retrieves the current IAM policy data for serviceconsumers
  */
-export function getServiceConsumersIamPolicyOutput(args: GetServiceConsumersIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetServiceConsumersIamPolicyResult> {
+export function getServiceConsumersIamPolicyOutput(args: GetServiceConsumersIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetServiceConsumersIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:endpoints/getServiceConsumersIamPolicy:getServiceConsumersIamPolicy", {
         "consumerProject": args.consumerProject,

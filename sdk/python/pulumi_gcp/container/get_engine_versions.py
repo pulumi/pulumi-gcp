@@ -229,7 +229,7 @@ def get_engine_versions(location: Optional[str] = None,
 def get_engine_versions_output(location: Optional[pulumi.Input[Optional[str]]] = None,
                                project: Optional[pulumi.Input[Optional[str]]] = None,
                                version_prefix: Optional[pulumi.Input[Optional[str]]] = None,
-                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetEngineVersionsResult]:
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetEngineVersionsResult]:
     """
     Provides access to available Google Kubernetes Engine versions in a zone or region for a given project.
 
@@ -277,7 +277,7 @@ def get_engine_versions_output(location: Optional[pulumi.Input[Optional[str]]] =
     __args__['location'] = location
     __args__['project'] = project
     __args__['versionPrefix'] = version_prefix
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:container/getEngineVersions:getEngineVersions', __args__, opts=opts, typ=GetEngineVersionsResult)
     return __ret__.apply(lambda __response__: GetEngineVersionsResult(
         default_cluster_version=pulumi.get(__response__, 'default_cluster_version'),

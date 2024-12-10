@@ -347,7 +347,7 @@ def get_metastore_service(location: Optional[str] = None,
 def get_metastore_service_output(location: Optional[pulumi.Input[str]] = None,
                                  project: Optional[pulumi.Input[Optional[str]]] = None,
                                  service_id: Optional[pulumi.Input[str]] = None,
-                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMetastoreServiceResult]:
+                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMetastoreServiceResult]:
     """
     Get a Dataproc Metastore service from Google Cloud by its id and location.
 
@@ -373,7 +373,7 @@ def get_metastore_service_output(location: Optional[pulumi.Input[str]] = None,
     __args__['location'] = location
     __args__['project'] = project
     __args__['serviceId'] = service_id
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:dataproc/getMetastoreService:getMetastoreService', __args__, opts=opts, typ=GetMetastoreServiceResult)
     return __ret__.apply(lambda __response__: GetMetastoreServiceResult(
         artifact_gcs_uri=pulumi.get(__response__, 'artifact_gcs_uri'),

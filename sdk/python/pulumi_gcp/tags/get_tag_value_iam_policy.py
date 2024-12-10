@@ -111,7 +111,7 @@ def get_tag_value_iam_policy(tag_value: Optional[str] = None,
         policy_data=pulumi.get(__ret__, 'policy_data'),
         tag_value=pulumi.get(__ret__, 'tag_value'))
 def get_tag_value_iam_policy_output(tag_value: Optional[pulumi.Input[str]] = None,
-                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTagValueIamPolicyResult]:
+                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTagValueIamPolicyResult]:
     """
     Retrieves the current IAM policy data for tagvalue
 
@@ -129,7 +129,7 @@ def get_tag_value_iam_policy_output(tag_value: Optional[pulumi.Input[str]] = Non
     """
     __args__ = dict()
     __args__['tagValue'] = tag_value
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:tags/getTagValueIamPolicy:getTagValueIamPolicy', __args__, opts=opts, typ=GetTagValueIamPolicyResult)
     return __ret__.apply(lambda __response__: GetTagValueIamPolicyResult(
         etag=pulumi.get(__response__, 'etag'),

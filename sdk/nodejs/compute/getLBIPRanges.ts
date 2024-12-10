@@ -75,7 +75,7 @@ export interface GetLBIPRangesResult {
  * });
  * ```
  */
-export function getLBIPRangesOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLBIPRangesResult> {
+export function getLBIPRangesOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetLBIPRangesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:compute/getLBIPRanges:getLBIPRanges", {
     }, opts);

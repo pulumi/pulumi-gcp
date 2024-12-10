@@ -127,7 +127,7 @@ def get_aws_versions(location: Optional[str] = None,
         valid_versions=pulumi.get(__ret__, 'valid_versions'))
 def get_aws_versions_output(location: Optional[pulumi.Input[Optional[str]]] = None,
                             project: Optional[pulumi.Input[Optional[str]]] = None,
-                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAwsVersionsResult]:
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAwsVersionsResult]:
     """
     Provides access to available Kubernetes versions in a location for a given project.
 
@@ -150,7 +150,7 @@ def get_aws_versions_output(location: Optional[pulumi.Input[Optional[str]]] = No
     __args__ = dict()
     __args__['location'] = location
     __args__['project'] = project
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:container/getAwsVersions:getAwsVersions', __args__, opts=opts, typ=GetAwsVersionsResult)
     return __ret__.apply(lambda __response__: GetAwsVersionsResult(
         id=pulumi.get(__response__, 'id'),

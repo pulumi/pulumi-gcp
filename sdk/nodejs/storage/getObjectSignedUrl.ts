@@ -164,7 +164,7 @@ export interface GetObjectSignedUrlResult {
  * }));
  * ```
  */
-export function getObjectSignedUrlOutput(args: GetObjectSignedUrlOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetObjectSignedUrlResult> {
+export function getObjectSignedUrlOutput(args: GetObjectSignedUrlOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetObjectSignedUrlResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:storage/getObjectSignedUrl:getObjectSignedUrl", {
         "bucket": args.bucket,

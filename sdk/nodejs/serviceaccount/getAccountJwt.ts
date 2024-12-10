@@ -97,7 +97,7 @@ export interface GetAccountJwtResult {
  * export const jwt = foo.then(foo => foo.jwt);
  * ```
  */
-export function getAccountJwtOutput(args: GetAccountJwtOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountJwtResult> {
+export function getAccountJwtOutput(args: GetAccountJwtOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountJwtResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:serviceaccount/getAccountJwt:getAccountJwt", {
         "delegates": args.delegates,

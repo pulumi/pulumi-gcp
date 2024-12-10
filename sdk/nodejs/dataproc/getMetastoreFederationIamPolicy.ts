@@ -85,7 +85,7 @@ export interface GetMetastoreFederationIamPolicyResult {
  * });
  * ```
  */
-export function getMetastoreFederationIamPolicyOutput(args: GetMetastoreFederationIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMetastoreFederationIamPolicyResult> {
+export function getMetastoreFederationIamPolicyOutput(args: GetMetastoreFederationIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMetastoreFederationIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:dataproc/getMetastoreFederationIamPolicy:getMetastoreFederationIamPolicy", {
         "federationId": args.federationId,

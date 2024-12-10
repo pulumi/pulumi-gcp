@@ -78,7 +78,7 @@ export interface GetTagTemplateIamPolicyResult {
  * });
  * ```
  */
-export function getTagTemplateIamPolicyOutput(args: GetTagTemplateIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTagTemplateIamPolicyResult> {
+export function getTagTemplateIamPolicyOutput(args: GetTagTemplateIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTagTemplateIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:datacatalog/getTagTemplateIamPolicy:getTagTemplateIamPolicy", {
         "project": args.project,

@@ -180,7 +180,7 @@ def get_router_output(name: Optional[pulumi.Input[str]] = None,
                       network: Optional[pulumi.Input[str]] = None,
                       project: Optional[pulumi.Input[Optional[str]]] = None,
                       region: Optional[pulumi.Input[Optional[str]]] = None,
-                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRouterResult]:
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRouterResult]:
     """
     Get a router within GCE from its name and VPC.
 
@@ -207,7 +207,7 @@ def get_router_output(name: Optional[pulumi.Input[str]] = None,
     __args__['network'] = network
     __args__['project'] = project
     __args__['region'] = region
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:compute/getRouter:getRouter', __args__, opts=opts, typ=GetRouterResult)
     return __ret__.apply(lambda __response__: GetRouterResult(
         bgps=pulumi.get(__response__, 'bgps'),

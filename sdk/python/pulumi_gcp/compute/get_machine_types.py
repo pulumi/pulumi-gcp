@@ -125,7 +125,7 @@ def get_machine_types(filter: Optional[str] = None,
 def get_machine_types_output(filter: Optional[pulumi.Input[Optional[str]]] = None,
                              project: Optional[pulumi.Input[Optional[str]]] = None,
                              zone: Optional[pulumi.Input[Optional[str]]] = None,
-                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMachineTypesResult]:
+                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMachineTypesResult]:
     """
     Provides access to available Google Compute machine types in a zone for a given project.
     See more about [machine type availability](https://cloud.google.com/compute/docs/regions-zones#available) in the upstream docs.
@@ -146,7 +146,7 @@ def get_machine_types_output(filter: Optional[pulumi.Input[Optional[str]]] = Non
     __args__['filter'] = filter
     __args__['project'] = project
     __args__['zone'] = zone
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:compute/getMachineTypes:getMachineTypes', __args__, opts=opts, typ=GetMachineTypesResult)
     return __ret__.apply(lambda __response__: GetMachineTypesResult(
         filter=pulumi.get(__response__, 'filter'),

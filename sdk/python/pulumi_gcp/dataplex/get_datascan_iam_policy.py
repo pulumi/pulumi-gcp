@@ -144,7 +144,7 @@ def get_datascan_iam_policy(data_scan_id: Optional[str] = None,
 def get_datascan_iam_policy_output(data_scan_id: Optional[pulumi.Input[str]] = None,
                                    location: Optional[pulumi.Input[Optional[str]]] = None,
                                    project: Optional[pulumi.Input[Optional[str]]] = None,
-                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatascanIamPolicyResult]:
+                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatascanIamPolicyResult]:
     """
     Retrieves the current IAM policy data for datascan
 
@@ -171,7 +171,7 @@ def get_datascan_iam_policy_output(data_scan_id: Optional[pulumi.Input[str]] = N
     __args__['dataScanId'] = data_scan_id
     __args__['location'] = location
     __args__['project'] = project
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:dataplex/getDatascanIamPolicy:getDatascanIamPolicy', __args__, opts=opts, typ=GetDatascanIamPolicyResult)
     return __ret__.apply(lambda __response__: GetDatascanIamPolicyResult(
         data_scan_id=pulumi.get(__response__, 'data_scan_id'),

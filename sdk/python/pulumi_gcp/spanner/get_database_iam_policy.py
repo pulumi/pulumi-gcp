@@ -141,7 +141,7 @@ def get_database_iam_policy(database: Optional[str] = None,
 def get_database_iam_policy_output(database: Optional[pulumi.Input[str]] = None,
                                    instance: Optional[pulumi.Input[str]] = None,
                                    project: Optional[pulumi.Input[Optional[str]]] = None,
-                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatabaseIamPolicyResult]:
+                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatabaseIamPolicyResult]:
     """
     Retrieves the current IAM policy data for a Spanner database.
 
@@ -166,7 +166,7 @@ def get_database_iam_policy_output(database: Optional[pulumi.Input[str]] = None,
     __args__['database'] = database
     __args__['instance'] = instance
     __args__['project'] = project
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:spanner/getDatabaseIamPolicy:getDatabaseIamPolicy', __args__, opts=opts, typ=GetDatabaseIamPolicyResult)
     return __ret__.apply(lambda __response__: GetDatabaseIamPolicyResult(
         database=pulumi.get(__response__, 'database'),

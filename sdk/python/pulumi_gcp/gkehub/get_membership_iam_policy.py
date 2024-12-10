@@ -145,7 +145,7 @@ def get_membership_iam_policy(location: Optional[str] = None,
 def get_membership_iam_policy_output(location: Optional[pulumi.Input[Optional[str]]] = None,
                                      membership_id: Optional[pulumi.Input[str]] = None,
                                      project: Optional[pulumi.Input[Optional[str]]] = None,
-                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMembershipIamPolicyResult]:
+                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMembershipIamPolicyResult]:
     """
     Retrieves the current IAM policy data for membership
 
@@ -173,7 +173,7 @@ def get_membership_iam_policy_output(location: Optional[pulumi.Input[Optional[st
     __args__['location'] = location
     __args__['membershipId'] = membership_id
     __args__['project'] = project
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:gkehub/getMembershipIamPolicy:getMembershipIamPolicy', __args__, opts=opts, typ=GetMembershipIamPolicyResult)
     return __ret__.apply(lambda __response__: GetMembershipIamPolicyResult(
         etag=pulumi.get(__response__, 'etag'),

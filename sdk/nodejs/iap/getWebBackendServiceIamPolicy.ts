@@ -77,7 +77,7 @@ export interface GetWebBackendServiceIamPolicyResult {
  * });
  * ```
  */
-export function getWebBackendServiceIamPolicyOutput(args: GetWebBackendServiceIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWebBackendServiceIamPolicyResult> {
+export function getWebBackendServiceIamPolicyOutput(args: GetWebBackendServiceIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWebBackendServiceIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:iap/getWebBackendServiceIamPolicy:getWebBackendServiceIamPolicy", {
         "project": args.project,

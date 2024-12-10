@@ -175,7 +175,7 @@ export interface GetNotificationChannelResult {
  * });
  * ```
  */
-export function getNotificationChannelOutput(args?: GetNotificationChannelOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNotificationChannelResult> {
+export function getNotificationChannelOutput(args?: GetNotificationChannelOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNotificationChannelResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:monitoring/getNotificationChannel:getNotificationChannel", {

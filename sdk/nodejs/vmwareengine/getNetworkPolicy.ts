@@ -87,7 +87,7 @@ export interface GetNetworkPolicyResult {
  * });
  * ```
  */
-export function getNetworkPolicyOutput(args: GetNetworkPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNetworkPolicyResult> {
+export function getNetworkPolicyOutput(args: GetNetworkPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetworkPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:vmwareengine/getNetworkPolicy:getNetworkPolicy", {
         "location": args.location,

@@ -237,7 +237,7 @@ def get_kms_crypto_key(key_ring: Optional[str] = None,
         version_templates=pulumi.get(__ret__, 'version_templates'))
 def get_kms_crypto_key_output(key_ring: Optional[pulumi.Input[str]] = None,
                               name: Optional[pulumi.Input[str]] = None,
-                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKMSCryptoKeyResult]:
+                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKMSCryptoKeyResult]:
     """
     Provides access to a Google Cloud Platform KMS CryptoKey. For more information see
     [the official documentation](https://cloud.google.com/kms/docs/object-hierarchy#key)
@@ -267,7 +267,7 @@ def get_kms_crypto_key_output(key_ring: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['keyRing'] = key_ring
     __args__['name'] = name
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:kms/getKMSCryptoKey:getKMSCryptoKey', __args__, opts=opts, typ=GetKMSCryptoKeyResult)
     return __ret__.apply(lambda __response__: GetKMSCryptoKeyResult(
         crypto_key_backend=pulumi.get(__response__, 'crypto_key_backend'),

@@ -79,7 +79,7 @@ export interface GetAwsVersionsResult {
  * export const firstAvailableVersion = versions.validVersions[0];
  * ```
  */
-export function getAwsVersionsOutput(args?: GetAwsVersionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAwsVersionsResult> {
+export function getAwsVersionsOutput(args?: GetAwsVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAwsVersionsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:container/getAwsVersions:getAwsVersions", {

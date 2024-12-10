@@ -163,7 +163,7 @@ def get_organization_policy(constraint: Optional[str] = None,
         version=pulumi.get(__ret__, 'version'))
 def get_organization_policy_output(constraint: Optional[pulumi.Input[str]] = None,
                                    folder: Optional[pulumi.Input[str]] = None,
-                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetOrganizationPolicyResult]:
+                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetOrganizationPolicyResult]:
     """
     Allows management of Organization policies for a Google Folder. For more information see
     [the official
@@ -187,7 +187,7 @@ def get_organization_policy_output(constraint: Optional[pulumi.Input[str]] = Non
     __args__ = dict()
     __args__['constraint'] = constraint
     __args__['folder'] = folder
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:folder/getOrganizationPolicy:getOrganizationPolicy', __args__, opts=opts, typ=GetOrganizationPolicyResult)
     return __ret__.apply(lambda __response__: GetOrganizationPolicyResult(
         boolean_policies=pulumi.get(__response__, 'boolean_policies'),

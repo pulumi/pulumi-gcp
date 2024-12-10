@@ -148,7 +148,7 @@ def get_account_jwt_output(delegates: Optional[pulumi.Input[Optional[Sequence[st
                            expires_in: Optional[pulumi.Input[Optional[int]]] = None,
                            payload: Optional[pulumi.Input[str]] = None,
                            target_service_account: Optional[pulumi.Input[str]] = None,
-                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAccountJwtResult]:
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAccountJwtResult]:
     """
     This data source provides a [self-signed JWT](https://cloud.google.com/iam/docs/create-short-lived-credentials-direct#sa-credentials-jwt).  Tokens issued from this data source are typically used to call external services that accept JWTs for authentication.
 
@@ -181,7 +181,7 @@ def get_account_jwt_output(delegates: Optional[pulumi.Input[Optional[Sequence[st
     __args__['expiresIn'] = expires_in
     __args__['payload'] = payload
     __args__['targetServiceAccount'] = target_service_account
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:serviceaccount/getAccountJwt:getAccountJwt', __args__, opts=opts, typ=GetAccountJwtResult)
     return __ret__.apply(lambda __response__: GetAccountJwtResult(
         delegates=pulumi.get(__response__, 'delegates'),

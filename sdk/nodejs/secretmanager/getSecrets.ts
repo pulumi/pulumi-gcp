@@ -71,7 +71,7 @@ export interface GetSecretsResult {
  * const secrets = gcp.secretmanager.getSecrets({});
  * ```
  */
-export function getSecretsOutput(args?: GetSecretsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSecretsResult> {
+export function getSecretsOutput(args?: GetSecretsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecretsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:secretmanager/getSecrets:getSecrets", {

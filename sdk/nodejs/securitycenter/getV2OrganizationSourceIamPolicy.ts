@@ -71,7 +71,7 @@ export interface GetV2OrganizationSourceIamPolicyResult {
  * });
  * ```
  */
-export function getV2OrganizationSourceIamPolicyOutput(args: GetV2OrganizationSourceIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetV2OrganizationSourceIamPolicyResult> {
+export function getV2OrganizationSourceIamPolicyOutput(args: GetV2OrganizationSourceIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetV2OrganizationSourceIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:securitycenter/getV2OrganizationSourceIamPolicy:getV2OrganizationSourceIamPolicy", {
         "organization": args.organization,

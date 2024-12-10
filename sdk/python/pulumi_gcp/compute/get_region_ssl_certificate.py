@@ -199,7 +199,7 @@ def get_region_ssl_certificate(name: Optional[str] = None,
 def get_region_ssl_certificate_output(name: Optional[pulumi.Input[str]] = None,
                                       project: Optional[pulumi.Input[Optional[str]]] = None,
                                       region: Optional[pulumi.Input[Optional[str]]] = None,
-                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegionSslCertificateResult]:
+                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegionSslCertificateResult]:
     """
     Get info about a Region Google Compute SSL Certificate from its name.
 
@@ -228,7 +228,7 @@ def get_region_ssl_certificate_output(name: Optional[pulumi.Input[str]] = None,
     __args__['name'] = name
     __args__['project'] = project
     __args__['region'] = region
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:compute/getRegionSslCertificate:getRegionSslCertificate', __args__, opts=opts, typ=GetRegionSslCertificateResult)
     return __ret__.apply(lambda __response__: GetRegionSslCertificateResult(
         certificate=pulumi.get(__response__, 'certificate'),

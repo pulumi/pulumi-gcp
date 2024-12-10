@@ -82,7 +82,7 @@ export interface GetRegionDiskResult {
  *
  * [the official documentation](https://cloud.google.com/compute/docs/disks) and its [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionDisks).
  */
-export function getRegionDiskOutput(args: GetRegionDiskOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRegionDiskResult> {
+export function getRegionDiskOutput(args: GetRegionDiskOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionDiskResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:compute/getRegionDisk:getRegionDisk", {
         "name": args.name,

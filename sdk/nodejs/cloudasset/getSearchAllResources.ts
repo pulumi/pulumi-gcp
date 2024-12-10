@@ -137,7 +137,7 @@ export interface GetSearchAllResourcesResult {
  * });
  * ```
  */
-export function getSearchAllResourcesOutput(args: GetSearchAllResourcesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSearchAllResourcesResult> {
+export function getSearchAllResourcesOutput(args: GetSearchAllResourcesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSearchAllResourcesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:cloudasset/getSearchAllResources:getSearchAllResources", {
         "assetTypes": args.assetTypes,

@@ -212,7 +212,7 @@ def get_membership_binding_output(location: Optional[pulumi.Input[str]] = None,
                                   membership_binding_id: Optional[pulumi.Input[str]] = None,
                                   membership_id: Optional[pulumi.Input[str]] = None,
                                   project: Optional[pulumi.Input[Optional[str]]] = None,
-                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMembershipBindingResult]:
+                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMembershipBindingResult]:
     """
     Use this data source to access information about an existing resource.
     """
@@ -221,7 +221,7 @@ def get_membership_binding_output(location: Optional[pulumi.Input[str]] = None,
     __args__['membershipBindingId'] = membership_binding_id
     __args__['membershipId'] = membership_id
     __args__['project'] = project
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:gkehub/getMembershipBinding:getMembershipBinding', __args__, opts=opts, typ=GetMembershipBindingResult)
     return __ret__.apply(lambda __response__: GetMembershipBindingResult(
         create_time=pulumi.get(__response__, 'create_time'),

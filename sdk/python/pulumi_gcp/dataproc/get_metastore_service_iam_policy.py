@@ -145,7 +145,7 @@ def get_metastore_service_iam_policy(location: Optional[str] = None,
 def get_metastore_service_iam_policy_output(location: Optional[pulumi.Input[Optional[str]]] = None,
                                             project: Optional[pulumi.Input[Optional[str]]] = None,
                                             service_id: Optional[pulumi.Input[str]] = None,
-                                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMetastoreServiceIamPolicyResult]:
+                                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMetastoreServiceIamPolicyResult]:
     """
     Retrieves the current IAM policy data for service
 
@@ -173,7 +173,7 @@ def get_metastore_service_iam_policy_output(location: Optional[pulumi.Input[Opti
     __args__['location'] = location
     __args__['project'] = project
     __args__['serviceId'] = service_id
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:dataproc/getMetastoreServiceIamPolicy:getMetastoreServiceIamPolicy', __args__, opts=opts, typ=GetMetastoreServiceIamPolicyResult)
     return __ret__.apply(lambda __response__: GetMetastoreServiceIamPolicyResult(
         etag=pulumi.get(__response__, 'etag'),

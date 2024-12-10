@@ -115,7 +115,7 @@ def get_ai_featurestore_entitytype_iam_policy(entitytype: Optional[str] = None,
         policy_data=pulumi.get(__ret__, 'policy_data'))
 def get_ai_featurestore_entitytype_iam_policy_output(entitytype: Optional[pulumi.Input[str]] = None,
                                                      featurestore: Optional[pulumi.Input[str]] = None,
-                                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAiFeaturestoreEntitytypeIamPolicyResult]:
+                                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAiFeaturestoreEntitytypeIamPolicyResult]:
     """
     Use this data source to access information about an existing resource.
 
@@ -125,7 +125,7 @@ def get_ai_featurestore_entitytype_iam_policy_output(entitytype: Optional[pulumi
     __args__ = dict()
     __args__['entitytype'] = entitytype
     __args__['featurestore'] = featurestore
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:vertex/getAiFeaturestoreEntitytypeIamPolicy:getAiFeaturestoreEntitytypeIamPolicy', __args__, opts=opts, typ=GetAiFeaturestoreEntitytypeIamPolicyResult)
     return __ret__.apply(lambda __response__: GetAiFeaturestoreEntitytypeIamPolicyResult(
         entitytype=pulumi.get(__response__, 'entitytype'),

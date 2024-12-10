@@ -339,7 +339,7 @@ def get_database_instance(name: Optional[str] = None,
         settings=pulumi.get(__ret__, 'settings'))
 def get_database_instance_output(name: Optional[pulumi.Input[str]] = None,
                                  project: Optional[pulumi.Input[Optional[str]]] = None,
-                                 opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatabaseInstanceResult]:
+                                 opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatabaseInstanceResult]:
     """
     Use this data source to get information about a Cloud SQL instance.
 
@@ -359,7 +359,7 @@ def get_database_instance_output(name: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['name'] = name
     __args__['project'] = project
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:sql/getDatabaseInstance:getDatabaseInstance', __args__, opts=opts, typ=GetDatabaseInstanceResult)
     return __ret__.apply(lambda __response__: GetDatabaseInstanceResult(
         available_maintenance_versions=pulumi.get(__response__, 'available_maintenance_versions'),

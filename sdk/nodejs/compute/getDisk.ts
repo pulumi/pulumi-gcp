@@ -190,7 +190,7 @@ export interface GetDiskResult {
  * }});
  * ```
  */
-export function getDiskOutput(args: GetDiskOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDiskResult> {
+export function getDiskOutput(args: GetDiskOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDiskResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:compute/getDisk:getDisk", {
         "name": args.name,

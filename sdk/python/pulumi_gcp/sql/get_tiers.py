@@ -103,7 +103,7 @@ def get_tiers(project: Optional[str] = None,
         project=pulumi.get(__ret__, 'project'),
         tiers=pulumi.get(__ret__, 'tiers'))
 def get_tiers_output(project: Optional[pulumi.Input[Optional[str]]] = None,
-                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTiersResult]:
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTiersResult]:
     """
     Get all available machine types (tiers) for a project, for example, db-custom-1-3840. For more information see the
     [official documentation](https://cloud.google.com/sql/)
@@ -126,7 +126,7 @@ def get_tiers_output(project: Optional[pulumi.Input[Optional[str]]] = None,
     """
     __args__ = dict()
     __args__['project'] = project
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:sql/getTiers:getTiers', __args__, opts=opts, typ=GetTiersResult)
     return __ret__.apply(lambda __response__: GetTiersResult(
         id=pulumi.get(__response__, 'id'),

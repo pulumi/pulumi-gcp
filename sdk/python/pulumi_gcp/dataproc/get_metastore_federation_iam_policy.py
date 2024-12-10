@@ -144,7 +144,7 @@ def get_metastore_federation_iam_policy(federation_id: Optional[str] = None,
 def get_metastore_federation_iam_policy_output(federation_id: Optional[pulumi.Input[str]] = None,
                                                location: Optional[pulumi.Input[Optional[str]]] = None,
                                                project: Optional[pulumi.Input[Optional[str]]] = None,
-                                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetMetastoreFederationIamPolicyResult]:
+                                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetMetastoreFederationIamPolicyResult]:
     """
     Retrieves the current IAM policy data for federation
 
@@ -171,7 +171,7 @@ def get_metastore_federation_iam_policy_output(federation_id: Optional[pulumi.In
     __args__['federationId'] = federation_id
     __args__['location'] = location
     __args__['project'] = project
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:dataproc/getMetastoreFederationIamPolicy:getMetastoreFederationIamPolicy', __args__, opts=opts, typ=GetMetastoreFederationIamPolicyResult)
     return __ret__.apply(lambda __response__: GetMetastoreFederationIamPolicyResult(
         etag=pulumi.get(__response__, 'etag'),

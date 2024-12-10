@@ -88,7 +88,7 @@ export interface GetBackupPlanIamPolicyResult {
  * });
  * ```
  */
-export function getBackupPlanIamPolicyOutput(args: GetBackupPlanIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBackupPlanIamPolicyResult> {
+export function getBackupPlanIamPolicyOutput(args: GetBackupPlanIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBackupPlanIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:gkebackup/getBackupPlanIamPolicy:getBackupPlanIamPolicy", {
         "location": args.location,

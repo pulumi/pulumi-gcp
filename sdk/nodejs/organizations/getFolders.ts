@@ -79,7 +79,7 @@ export interface GetFoldersResult {
  * }));
  * ```
  */
-export function getFoldersOutput(args: GetFoldersOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFoldersResult> {
+export function getFoldersOutput(args: GetFoldersOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFoldersResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:organizations/getFolders:getFolders", {
         "parentId": args.parentId,

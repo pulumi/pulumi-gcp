@@ -155,7 +155,7 @@ def get_user_workloads_config_map_output(environment: Optional[pulumi.Input[str]
                                          name: Optional[pulumi.Input[str]] = None,
                                          project: Optional[pulumi.Input[Optional[str]]] = None,
                                          region: Optional[pulumi.Input[Optional[str]]] = None,
-                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUserWorkloadsConfigMapResult]:
+                                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetUserWorkloadsConfigMapResult]:
     """
     ## Example Usage
 
@@ -194,7 +194,7 @@ def get_user_workloads_config_map_output(environment: Optional[pulumi.Input[str]
     __args__['name'] = name
     __args__['project'] = project
     __args__['region'] = region
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:composer/getUserWorkloadsConfigMap:getUserWorkloadsConfigMap', __args__, opts=opts, typ=GetUserWorkloadsConfigMapResult)
     return __ret__.apply(lambda __response__: GetUserWorkloadsConfigMapResult(
         data=pulumi.get(__response__, 'data'),

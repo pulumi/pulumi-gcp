@@ -60,7 +60,7 @@ export interface GetWebAppResult {
 /**
  * A Google Cloud Firebase web application instance
  */
-export function getWebAppOutput(args: GetWebAppOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWebAppResult> {
+export function getWebAppOutput(args: GetWebAppOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWebAppResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:firebase/getWebApp:getWebApp", {
         "appId": args.appId,

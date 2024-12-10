@@ -123,7 +123,7 @@ def get_default_service_account(project: Optional[str] = None,
         member=pulumi.get(__ret__, 'member'),
         project=pulumi.get(__ret__, 'project'))
 def get_default_service_account_output(project: Optional[pulumi.Input[Optional[str]]] = None,
-                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDefaultServiceAccountResult]:
+                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDefaultServiceAccountResult]:
     """
     Get the email address of a project's unique BigQuery service account.
 
@@ -153,7 +153,7 @@ def get_default_service_account_output(project: Optional[pulumi.Input[Optional[s
     """
     __args__ = dict()
     __args__['project'] = project
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:bigquery/getDefaultServiceAccount:getDefaultServiceAccount', __args__, opts=opts, typ=GetDefaultServiceAccountResult)
     return __ret__.apply(lambda __response__: GetDefaultServiceAccountResult(
         email=pulumi.get(__response__, 'email'),

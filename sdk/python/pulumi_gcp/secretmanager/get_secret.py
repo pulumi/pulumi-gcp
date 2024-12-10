@@ -239,7 +239,7 @@ def get_secret(project: Optional[str] = None,
         version_destroy_ttl=pulumi.get(__ret__, 'version_destroy_ttl'))
 def get_secret_output(project: Optional[pulumi.Input[Optional[str]]] = None,
                       secret_id: Optional[pulumi.Input[str]] = None,
-                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSecretResult]:
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSecretResult]:
     """
     Use this data source to get information about a Secret Manager Secret
 
@@ -259,7 +259,7 @@ def get_secret_output(project: Optional[pulumi.Input[Optional[str]]] = None,
     __args__ = dict()
     __args__['project'] = project
     __args__['secretId'] = secret_id
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:secretmanager/getSecret:getSecret', __args__, opts=opts, typ=GetSecretResult)
     return __ret__.apply(lambda __response__: GetSecretResult(
         annotations=pulumi.get(__response__, 'annotations'),

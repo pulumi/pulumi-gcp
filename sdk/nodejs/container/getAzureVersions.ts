@@ -79,7 +79,7 @@ export interface GetAzureVersionsResult {
  * export const firstAvailableVersion = versions.validVersions[0];
  * ```
  */
-export function getAzureVersionsOutput(args?: GetAzureVersionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAzureVersionsResult> {
+export function getAzureVersionsOutput(args?: GetAzureVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAzureVersionsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:container/getAzureVersions:getAzureVersions", {

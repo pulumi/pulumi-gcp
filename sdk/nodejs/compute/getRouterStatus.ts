@@ -98,7 +98,7 @@ export interface GetRouterStatusResult {
  * });
  * ```
  */
-export function getRouterStatusOutput(args: GetRouterStatusOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRouterStatusResult> {
+export function getRouterStatusOutput(args: GetRouterStatusOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRouterStatusResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:compute/getRouterStatus:getRouterStatus", {
         "name": args.name,

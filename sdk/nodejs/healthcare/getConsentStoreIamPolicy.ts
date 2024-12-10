@@ -78,7 +78,7 @@ export interface GetConsentStoreIamPolicyResult {
  * });
  * ```
  */
-export function getConsentStoreIamPolicyOutput(args: GetConsentStoreIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetConsentStoreIamPolicyResult> {
+export function getConsentStoreIamPolicyOutput(args: GetConsentStoreIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConsentStoreIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:healthcare/getConsentStoreIamPolicy:getConsentStoreIamPolicy", {
         "consentStoreId": args.consentStoreId,

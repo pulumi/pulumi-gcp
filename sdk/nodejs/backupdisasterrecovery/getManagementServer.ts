@@ -60,7 +60,7 @@ export interface GetManagementServerResult {
  * });
  * ```
  */
-export function getManagementServerOutput(args: GetManagementServerOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetManagementServerResult> {
+export function getManagementServerOutput(args: GetManagementServerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetManagementServerResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:backupdisasterrecovery/getManagementServer:getManagementServer", {
         "location": args.location,

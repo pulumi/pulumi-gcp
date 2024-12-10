@@ -90,7 +90,7 @@ export interface GetFolderServiceAccountResult {
  * });
  * ```
  */
-export function getFolderServiceAccountOutput(args: GetFolderServiceAccountOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFolderServiceAccountResult> {
+export function getFolderServiceAccountOutput(args: GetFolderServiceAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFolderServiceAccountResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:accessapproval/getFolderServiceAccount:getFolderServiceAccount", {
         "folderId": args.folderId,

@@ -143,7 +143,7 @@ def get_project_service(project: Optional[str] = None,
         service=pulumi.get(__ret__, 'service'))
 def get_project_service_output(project: Optional[pulumi.Input[Optional[str]]] = None,
                                service: Optional[pulumi.Input[str]] = None,
-                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetProjectServiceResult]:
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetProjectServiceResult]:
     """
     Verify the API service for the Google Cloud Platform project to see if it is enabled or not.
 
@@ -178,7 +178,7 @@ def get_project_service_output(project: Optional[pulumi.Input[Optional[str]]] = 
     __args__ = dict()
     __args__['project'] = project
     __args__['service'] = service
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:projects/getProjectService:getProjectService', __args__, opts=opts, typ=GetProjectServiceResult)
     return __ret__.apply(lambda __response__: GetProjectServiceResult(
         check_if_service_has_usage_on_destroy=pulumi.get(__response__, 'check_if_service_has_usage_on_destroy'),

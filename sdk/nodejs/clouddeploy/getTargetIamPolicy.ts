@@ -82,7 +82,7 @@ export interface GetTargetIamPolicyResult {
  * });
  * ```
  */
-export function getTargetIamPolicyOutput(args: GetTargetIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTargetIamPolicyResult> {
+export function getTargetIamPolicyOutput(args: GetTargetIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTargetIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:clouddeploy/getTargetIamPolicy:getTargetIamPolicy", {
         "location": args.location,

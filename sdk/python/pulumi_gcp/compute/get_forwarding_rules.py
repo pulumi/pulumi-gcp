@@ -121,7 +121,7 @@ def get_forwarding_rules(project: Optional[str] = None,
         rules=pulumi.get(__ret__, 'rules'))
 def get_forwarding_rules_output(project: Optional[pulumi.Input[Optional[str]]] = None,
                                 region: Optional[pulumi.Input[Optional[str]]] = None,
-                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetForwardingRulesResult]:
+                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetForwardingRulesResult]:
     """
     List all networks in a specified Google Cloud project.
 
@@ -144,7 +144,7 @@ def get_forwarding_rules_output(project: Optional[pulumi.Input[Optional[str]]] =
     __args__ = dict()
     __args__['project'] = project
     __args__['region'] = region
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:compute/getForwardingRules:getForwardingRules', __args__, opts=opts, typ=GetForwardingRulesResult)
     return __ret__.apply(lambda __response__: GetForwardingRulesResult(
         id=pulumi.get(__response__, 'id'),

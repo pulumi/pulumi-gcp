@@ -122,7 +122,7 @@ def get_rule(name: Optional[str] = None,
         stage=pulumi.get(__ret__, 'stage'),
         title=pulumi.get(__ret__, 'title'))
 def get_rule_output(name: Optional[pulumi.Input[str]] = None,
-                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRuleResult]:
+                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRuleResult]:
     """
     Use this data source to get information about a Google IAM Role.
 
@@ -139,7 +139,7 @@ def get_rule_output(name: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['name'] = name
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:iam/getRule:getRule', __args__, opts=opts, typ=GetRuleResult)
     return __ret__.apply(lambda __response__: GetRuleResult(
         id=pulumi.get(__response__, 'id'),

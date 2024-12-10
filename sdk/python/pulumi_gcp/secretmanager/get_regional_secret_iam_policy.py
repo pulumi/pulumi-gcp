@@ -144,7 +144,7 @@ def get_regional_secret_iam_policy(location: Optional[str] = None,
 def get_regional_secret_iam_policy_output(location: Optional[pulumi.Input[Optional[str]]] = None,
                                           project: Optional[pulumi.Input[Optional[str]]] = None,
                                           secret_id: Optional[pulumi.Input[str]] = None,
-                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegionalSecretIamPolicyResult]:
+                                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegionalSecretIamPolicyResult]:
     """
     Retrieves the current IAM policy data for regionalsecret
 
@@ -171,7 +171,7 @@ def get_regional_secret_iam_policy_output(location: Optional[pulumi.Input[Option
     __args__['location'] = location
     __args__['project'] = project
     __args__['secretId'] = secret_id
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:secretmanager/getRegionalSecretIamPolicy:getRegionalSecretIamPolicy', __args__, opts=opts, typ=GetRegionalSecretIamPolicyResult)
     return __ret__.apply(lambda __response__: GetRegionalSecretIamPolicyResult(
         etag=pulumi.get(__response__, 'etag'),

@@ -322,7 +322,7 @@ def get_global_forwarding_rule(name: Optional[str] = None,
         target=pulumi.get(__ret__, 'target'))
 def get_global_forwarding_rule_output(name: Optional[pulumi.Input[str]] = None,
                                       project: Optional[pulumi.Input[Optional[str]]] = None,
-                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGlobalForwardingRuleResult]:
+                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGlobalForwardingRuleResult]:
     """
     Get a global forwarding rule within GCE from its name.
 
@@ -345,7 +345,7 @@ def get_global_forwarding_rule_output(name: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['name'] = name
     __args__['project'] = project
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:compute/getGlobalForwardingRule:getGlobalForwardingRule', __args__, opts=opts, typ=GetGlobalForwardingRuleResult)
     return __ret__.apply(lambda __response__: GetGlobalForwardingRuleResult(
         allow_psc_global_access=pulumi.get(__response__, 'allow_psc_global_access'),

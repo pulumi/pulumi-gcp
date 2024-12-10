@@ -438,7 +438,7 @@ def get_forwarding_rule(name: Optional[str] = None,
 def get_forwarding_rule_output(name: Optional[pulumi.Input[str]] = None,
                                project: Optional[pulumi.Input[Optional[str]]] = None,
                                region: Optional[pulumi.Input[Optional[str]]] = None,
-                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetForwardingRuleResult]:
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetForwardingRuleResult]:
     """
     Get a forwarding rule within GCE from its name.
 
@@ -465,7 +465,7 @@ def get_forwarding_rule_output(name: Optional[pulumi.Input[str]] = None,
     __args__['name'] = name
     __args__['project'] = project
     __args__['region'] = region
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:compute/getForwardingRule:getForwardingRule', __args__, opts=opts, typ=GetForwardingRuleResult)
     return __ret__.apply(lambda __response__: GetForwardingRuleResult(
         all_ports=pulumi.get(__response__, 'all_ports'),

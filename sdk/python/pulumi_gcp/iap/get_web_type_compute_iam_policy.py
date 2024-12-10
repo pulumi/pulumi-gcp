@@ -112,7 +112,7 @@ def get_web_type_compute_iam_policy(project: Optional[str] = None,
         policy_data=pulumi.get(__ret__, 'policy_data'),
         project=pulumi.get(__ret__, 'project'))
 def get_web_type_compute_iam_policy_output(project: Optional[pulumi.Input[Optional[str]]] = None,
-                                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWebTypeComputeIamPolicyResult]:
+                                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetWebTypeComputeIamPolicyResult]:
     """
     Retrieves the current IAM policy data for webtypecompute
 
@@ -131,7 +131,7 @@ def get_web_type_compute_iam_policy_output(project: Optional[pulumi.Input[Option
     """
     __args__ = dict()
     __args__['project'] = project
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:iap/getWebTypeComputeIamPolicy:getWebTypeComputeIamPolicy', __args__, opts=opts, typ=GetWebTypeComputeIamPolicyResult)
     return __ret__.apply(lambda __response__: GetWebTypeComputeIamPolicyResult(
         etag=pulumi.get(__response__, 'etag'),

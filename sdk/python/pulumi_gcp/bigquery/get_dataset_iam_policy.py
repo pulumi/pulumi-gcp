@@ -125,7 +125,7 @@ def get_dataset_iam_policy(dataset_id: Optional[str] = None,
         project=pulumi.get(__ret__, 'project'))
 def get_dataset_iam_policy_output(dataset_id: Optional[pulumi.Input[str]] = None,
                                   project: Optional[pulumi.Input[Optional[str]]] = None,
-                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatasetIamPolicyResult]:
+                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatasetIamPolicyResult]:
     """
     Retrieves the current IAM policy data for a BigQuery dataset.
 
@@ -146,7 +146,7 @@ def get_dataset_iam_policy_output(dataset_id: Optional[pulumi.Input[str]] = None
     __args__ = dict()
     __args__['datasetId'] = dataset_id
     __args__['project'] = project
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:bigquery/getDatasetIamPolicy:getDatasetIamPolicy', __args__, opts=opts, typ=GetDatasetIamPolicyResult)
     return __ret__.apply(lambda __response__: GetDatasetIamPolicyResult(
         dataset_id=pulumi.get(__response__, 'dataset_id'),

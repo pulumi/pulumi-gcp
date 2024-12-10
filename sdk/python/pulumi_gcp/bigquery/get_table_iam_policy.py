@@ -140,7 +140,7 @@ def get_table_iam_policy(dataset_id: Optional[str] = None,
 def get_table_iam_policy_output(dataset_id: Optional[pulumi.Input[str]] = None,
                                 project: Optional[pulumi.Input[Optional[str]]] = None,
                                 table_id: Optional[pulumi.Input[str]] = None,
-                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTableIamPolicyResult]:
+                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTableIamPolicyResult]:
     """
     Retrieves the current IAM policy data for table
 
@@ -163,7 +163,7 @@ def get_table_iam_policy_output(dataset_id: Optional[pulumi.Input[str]] = None,
     __args__['datasetId'] = dataset_id
     __args__['project'] = project
     __args__['tableId'] = table_id
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:bigquery/getTableIamPolicy:getTableIamPolicy', __args__, opts=opts, typ=GetTableIamPolicyResult)
     return __ret__.apply(lambda __response__: GetTableIamPolicyResult(
         dataset_id=pulumi.get(__response__, 'dataset_id'),

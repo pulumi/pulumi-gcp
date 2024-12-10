@@ -73,7 +73,7 @@ export interface GetAndroidAppResult {
      */
     readonly sha256Hashes: string[];
 }
-export function getAndroidAppOutput(args: GetAndroidAppOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAndroidAppResult> {
+export function getAndroidAppOutput(args: GetAndroidAppOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAndroidAppResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:firebase/getAndroidApp:getAndroidApp", {
         "appId": args.appId,

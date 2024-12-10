@@ -240,7 +240,7 @@ def get_cloud_vm_cluster(cloud_vm_cluster_id: Optional[str] = None,
 def get_cloud_vm_cluster_output(cloud_vm_cluster_id: Optional[pulumi.Input[str]] = None,
                                 location: Optional[pulumi.Input[str]] = None,
                                 project: Optional[pulumi.Input[Optional[str]]] = None,
-                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCloudVmClusterResult]:
+                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCloudVmClusterResult]:
     """
     Get information about a CloudVmCluster.
 
@@ -269,7 +269,7 @@ def get_cloud_vm_cluster_output(cloud_vm_cluster_id: Optional[pulumi.Input[str]]
     __args__['cloudVmClusterId'] = cloud_vm_cluster_id
     __args__['location'] = location
     __args__['project'] = project
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:oracledatabase/getCloudVmCluster:getCloudVmCluster', __args__, opts=opts, typ=GetCloudVmClusterResult)
     return __ret__.apply(lambda __response__: GetCloudVmClusterResult(
         backup_subnet_cidr=pulumi.get(__response__, 'backup_subnet_cidr'),

@@ -116,7 +116,7 @@ def get_crypto_keys(filter: Optional[str] = None,
         keys=pulumi.get(__ret__, 'keys'))
 def get_crypto_keys_output(filter: Optional[pulumi.Input[Optional[str]]] = None,
                            key_ring: Optional[pulumi.Input[str]] = None,
-                           opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCryptoKeysResult]:
+                           opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCryptoKeysResult]:
     """
     Provides access to all Google Cloud Platform KMS CryptoKeys in a given KeyRing. For more information see
     [the official documentation](https://cloud.google.com/kms/docs/object-hierarchy#key)
@@ -140,7 +140,7 @@ def get_crypto_keys_output(filter: Optional[pulumi.Input[Optional[str]]] = None,
     __args__ = dict()
     __args__['filter'] = filter
     __args__['keyRing'] = key_ring
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:kms/getCryptoKeys:getCryptoKeys', __args__, opts=opts, typ=GetCryptoKeysResult)
     return __ret__.apply(lambda __response__: GetCryptoKeysResult(
         filter=pulumi.get(__response__, 'filter'),

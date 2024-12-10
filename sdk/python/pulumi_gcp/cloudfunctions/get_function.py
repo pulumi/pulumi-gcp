@@ -493,7 +493,7 @@ def get_function(name: Optional[str] = None,
 def get_function_output(name: Optional[pulumi.Input[str]] = None,
                         project: Optional[pulumi.Input[Optional[str]]] = None,
                         region: Optional[pulumi.Input[Optional[str]]] = None,
-                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFunctionResult]:
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFunctionResult]:
     """
     Get information about a Google Cloud Function. For more information see
     the [official documentation](https://cloud.google.com/functions/docs/)
@@ -521,7 +521,7 @@ def get_function_output(name: Optional[pulumi.Input[str]] = None,
     __args__['name'] = name
     __args__['project'] = project
     __args__['region'] = region
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:cloudfunctions/getFunction:getFunction', __args__, opts=opts, typ=GetFunctionResult)
     return __ret__.apply(lambda __response__: GetFunctionResult(
         available_memory_mb=pulumi.get(__response__, 'available_memory_mb'),

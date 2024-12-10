@@ -87,7 +87,7 @@ export interface GetJobIamPolicyResult {
  * });
  * ```
  */
-export function getJobIamPolicyOutput(args: GetJobIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetJobIamPolicyResult> {
+export function getJobIamPolicyOutput(args: GetJobIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetJobIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:cloudrunv2/getJobIamPolicy:getJobIamPolicy", {
         "location": args.location,

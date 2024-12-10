@@ -146,7 +146,7 @@ def get_repository_iam_policy(location: Optional[str] = None,
 def get_repository_iam_policy_output(location: Optional[pulumi.Input[Optional[str]]] = None,
                                      project: Optional[pulumi.Input[Optional[str]]] = None,
                                      repository_id: Optional[pulumi.Input[str]] = None,
-                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRepositoryIamPolicyResult]:
+                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRepositoryIamPolicyResult]:
     """
     Retrieves the current IAM policy data for repository
 
@@ -175,7 +175,7 @@ def get_repository_iam_policy_output(location: Optional[pulumi.Input[Optional[st
     __args__['location'] = location
     __args__['project'] = project
     __args__['repositoryId'] = repository_id
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:securesourcemanager/getRepositoryIamPolicy:getRepositoryIamPolicy', __args__, opts=opts, typ=GetRepositoryIamPolicyResult)
     return __ret__.apply(lambda __response__: GetRepositoryIamPolicyResult(
         etag=pulumi.get(__response__, 'etag'),

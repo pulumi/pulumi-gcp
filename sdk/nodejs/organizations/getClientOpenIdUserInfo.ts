@@ -78,7 +78,7 @@ export interface GetClientOpenIdUserInfoResult {
  * }
  * ```
  */
-export function getClientOpenIdUserInfoOutput(opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetClientOpenIdUserInfoResult> {
+export function getClientOpenIdUserInfoOutput(opts?: pulumi.InvokeOptions): pulumi.Output<GetClientOpenIdUserInfoResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:organizations/getClientOpenIdUserInfo:getClientOpenIdUserInfo", {
     }, opts);

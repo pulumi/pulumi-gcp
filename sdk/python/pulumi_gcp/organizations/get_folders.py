@@ -103,7 +103,7 @@ def get_folders(parent_id: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         parent_id=pulumi.get(__ret__, 'parent_id'))
 def get_folders_output(parent_id: Optional[pulumi.Input[str]] = None,
-                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFoldersResult]:
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFoldersResult]:
     """
     Retrieve information about a set of folders based on a parent ID. See the
     [REST API](https://cloud.google.com/resource-manager/reference/rest/v3/folders/list)
@@ -126,7 +126,7 @@ def get_folders_output(parent_id: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['parentId'] = parent_id
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:organizations/getFolders:getFolders', __args__, opts=opts, typ=GetFoldersResult)
     return __ret__.apply(lambda __response__: GetFoldersResult(
         folders=pulumi.get(__response__, 'folders'),

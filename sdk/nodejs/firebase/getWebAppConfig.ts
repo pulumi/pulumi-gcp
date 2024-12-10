@@ -92,7 +92,7 @@ export interface GetWebAppConfigResult {
  * * How-to Guides
  *     * [Official Documentation](https://firebase.google.com/)
  */
-export function getWebAppConfigOutput(args: GetWebAppConfigOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWebAppConfigResult> {
+export function getWebAppConfigOutput(args: GetWebAppConfigOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWebAppConfigResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:firebase/getWebAppConfig:getWebAppConfig", {
         "project": args.project,

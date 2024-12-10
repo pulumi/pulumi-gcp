@@ -129,7 +129,7 @@ def get_client_config(opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableG
         project=pulumi.get(__ret__, 'project'),
         region=pulumi.get(__ret__, 'region'),
         zone=pulumi.get(__ret__, 'zone'))
-def get_client_config_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetClientConfigResult]:
+def get_client_config_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClientConfigResult]:
     """
     ## Example Usage
 
@@ -142,7 +142,7 @@ def get_client_config_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.I
     ```
     """
     __args__ = dict()
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:organizations/getClientConfig:getClientConfig', __args__, opts=opts, typ=GetClientConfigResult)
     return __ret__.apply(lambda __response__: GetClientConfigResult(
         access_token=pulumi.get(__response__, 'access_token'),

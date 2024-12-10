@@ -49,7 +49,7 @@ export interface GetMembershipBindingResult {
     readonly uid: string;
     readonly updateTime: string;
 }
-export function getMembershipBindingOutput(args: GetMembershipBindingOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMembershipBindingResult> {
+export function getMembershipBindingOutput(args: GetMembershipBindingOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMembershipBindingResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:gkehub/getMembershipBinding:getMembershipBinding", {
         "location": args.location,

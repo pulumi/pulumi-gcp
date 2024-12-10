@@ -77,7 +77,7 @@ export interface GetWebTypeAppEngineIamPolicyResult {
  * });
  * ```
  */
-export function getWebTypeAppEngineIamPolicyOutput(args: GetWebTypeAppEngineIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWebTypeAppEngineIamPolicyResult> {
+export function getWebTypeAppEngineIamPolicyOutput(args: GetWebTypeAppEngineIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWebTypeAppEngineIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:iap/getWebTypeAppEngineIamPolicy:getWebTypeAppEngineIamPolicy", {
         "appId": args.appId,

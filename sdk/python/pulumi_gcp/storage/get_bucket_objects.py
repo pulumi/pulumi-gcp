@@ -130,7 +130,7 @@ def get_bucket_objects(bucket: Optional[str] = None,
 def get_bucket_objects_output(bucket: Optional[pulumi.Input[str]] = None,
                               match_glob: Optional[pulumi.Input[Optional[str]]] = None,
                               prefix: Optional[pulumi.Input[Optional[str]]] = None,
-                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBucketObjectsResult]:
+                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBucketObjectsResult]:
     """
     Gets existing objects inside an existing bucket in Google Cloud Storage service (GCS).
     See [the official documentation](https://cloud.google.com/storage/docs/key-terms#objects)
@@ -156,7 +156,7 @@ def get_bucket_objects_output(bucket: Optional[pulumi.Input[str]] = None,
     __args__['bucket'] = bucket
     __args__['matchGlob'] = match_glob
     __args__['prefix'] = prefix
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:storage/getBucketObjects:getBucketObjects', __args__, opts=opts, typ=GetBucketObjectsResult)
     return __ret__.apply(lambda __response__: GetBucketObjectsResult(
         bucket=pulumi.get(__response__, 'bucket'),

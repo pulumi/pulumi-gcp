@@ -99,7 +99,7 @@ export interface GetInstanceResult {
  * export const instanceFileShareName = myInstance.then(myInstance => myInstance.fileShares?.name);
  * ```
  */
-export function getInstanceOutput(args: GetInstanceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInstanceResult> {
+export function getInstanceOutput(args: GetInstanceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:filestore/getInstance:getInstance", {
         "location": args.location,

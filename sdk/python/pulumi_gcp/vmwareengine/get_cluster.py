@@ -153,7 +153,7 @@ def get_cluster(name: Optional[str] = None,
         uid=pulumi.get(__ret__, 'uid'))
 def get_cluster_output(name: Optional[pulumi.Input[str]] = None,
                        parent: Optional[pulumi.Input[str]] = None,
-                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetClusterResult]:
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClusterResult]:
     """
     Use this data source to get details about a cluster resource.
 
@@ -177,7 +177,7 @@ def get_cluster_output(name: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['name'] = name
     __args__['parent'] = parent
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:vmwareengine/getCluster:getCluster', __args__, opts=opts, typ=GetClusterResult)
     return __ret__.apply(lambda __response__: GetClusterResult(
         autoscaling_settings=pulumi.get(__response__, 'autoscaling_settings'),

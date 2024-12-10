@@ -156,7 +156,7 @@ def get_secret_version_access_output(is_secret_data_base64: Optional[pulumi.Inpu
                                      project: Optional[pulumi.Input[Optional[str]]] = None,
                                      secret: Optional[pulumi.Input[str]] = None,
                                      version: Optional[pulumi.Input[Optional[str]]] = None,
-                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSecretVersionAccessResult]:
+                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSecretVersionAccessResult]:
     """
     Get the value from a Secret Manager secret version. This is similar to the secretmanager.SecretVersion datasource, but it only requires the [Secret Manager Secret Accessor](https://cloud.google.com/secret-manager/docs/access-control#secretmanager.secretAccessor) role. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions/access).
 
@@ -183,7 +183,7 @@ def get_secret_version_access_output(is_secret_data_base64: Optional[pulumi.Inpu
     __args__['project'] = project
     __args__['secret'] = secret
     __args__['version'] = version
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:secretmanager/getSecretVersionAccess:getSecretVersionAccess', __args__, opts=opts, typ=GetSecretVersionAccessResult)
     return __ret__.apply(lambda __response__: GetSecretVersionAccessResult(
         id=pulumi.get(__response__, 'id'),

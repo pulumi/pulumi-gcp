@@ -100,7 +100,7 @@ export interface GetTensorflowVersionsResult {
  * });
  * ```
  */
-export function getTensorflowVersionsOutput(args?: GetTensorflowVersionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTensorflowVersionsResult> {
+export function getTensorflowVersionsOutput(args?: GetTensorflowVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTensorflowVersionsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:tpu/getTensorflowVersions:getTensorflowVersions", {

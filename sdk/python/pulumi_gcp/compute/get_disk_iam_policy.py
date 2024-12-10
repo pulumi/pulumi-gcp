@@ -144,7 +144,7 @@ def get_disk_iam_policy(name: Optional[str] = None,
 def get_disk_iam_policy_output(name: Optional[pulumi.Input[str]] = None,
                                project: Optional[pulumi.Input[Optional[str]]] = None,
                                zone: Optional[pulumi.Input[Optional[str]]] = None,
-                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDiskIamPolicyResult]:
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDiskIamPolicyResult]:
     """
     Retrieves the current IAM policy data for disk
 
@@ -171,7 +171,7 @@ def get_disk_iam_policy_output(name: Optional[pulumi.Input[str]] = None,
     __args__['name'] = name
     __args__['project'] = project
     __args__['zone'] = zone
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:compute/getDiskIamPolicy:getDiskIamPolicy', __args__, opts=opts, typ=GetDiskIamPolicyResult)
     return __ret__.apply(lambda __response__: GetDiskIamPolicyResult(
         etag=pulumi.get(__response__, 'etag'),

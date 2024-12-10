@@ -78,7 +78,7 @@ export interface GetEntryGroupIamPolicyResult {
  * });
  * ```
  */
-export function getEntryGroupIamPolicyOutput(args: GetEntryGroupIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEntryGroupIamPolicyResult> {
+export function getEntryGroupIamPolicyOutput(args: GetEntryGroupIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEntryGroupIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:datacatalog/getEntryGroupIamPolicy:getEntryGroupIamPolicy", {
         "entryGroup": args.entryGroup,

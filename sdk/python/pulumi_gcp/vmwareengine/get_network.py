@@ -169,7 +169,7 @@ def get_network(location: Optional[str] = None,
 def get_network_output(location: Optional[pulumi.Input[str]] = None,
                        name: Optional[pulumi.Input[str]] = None,
                        project: Optional[pulumi.Input[Optional[str]]] = None,
-                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNetworkResult]:
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNetworkResult]:
     """
     Use this data source to get details about a VMwareEngine network resource.
 
@@ -197,7 +197,7 @@ def get_network_output(location: Optional[pulumi.Input[str]] = None,
     __args__['location'] = location
     __args__['name'] = name
     __args__['project'] = project
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:vmwareengine/getNetwork:getNetwork', __args__, opts=opts, typ=GetNetworkResult)
     return __ret__.apply(lambda __response__: GetNetworkResult(
         description=pulumi.get(__response__, 'description'),

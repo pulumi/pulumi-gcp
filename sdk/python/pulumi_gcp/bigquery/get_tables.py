@@ -116,7 +116,7 @@ def get_tables(dataset_id: Optional[str] = None,
         tables=pulumi.get(__ret__, 'tables'))
 def get_tables_output(dataset_id: Optional[pulumi.Input[str]] = None,
                       project: Optional[pulumi.Input[Optional[str]]] = None,
-                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTablesResult]:
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTablesResult]:
     """
     Get a list of tables in a BigQuery dataset. For more information see
     the [official documentation](https://cloud.google.com/bigquery/docs)
@@ -140,7 +140,7 @@ def get_tables_output(dataset_id: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['datasetId'] = dataset_id
     __args__['project'] = project
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:bigquery/getTables:getTables', __args__, opts=opts, typ=GetTablesResult)
     return __ret__.apply(lambda __response__: GetTablesResult(
         dataset_id=pulumi.get(__response__, 'dataset_id'),

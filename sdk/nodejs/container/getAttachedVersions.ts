@@ -74,7 +74,7 @@ export interface GetAttachedVersionsResult {
  * export const firstAvailableVersion = versions.validVersions[0];
  * ```
  */
-export function getAttachedVersionsOutput(args: GetAttachedVersionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAttachedVersionsResult> {
+export function getAttachedVersionsOutput(args: GetAttachedVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAttachedVersionsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:container/getAttachedVersions:getAttachedVersions", {
         "location": args.location,

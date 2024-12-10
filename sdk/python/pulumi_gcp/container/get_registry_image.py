@@ -156,7 +156,7 @@ def get_registry_image_output(digest: Optional[pulumi.Input[Optional[str]]] = No
                               project: Optional[pulumi.Input[Optional[str]]] = None,
                               region: Optional[pulumi.Input[Optional[str]]] = None,
                               tag: Optional[pulumi.Input[Optional[str]]] = None,
-                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegistryImageResult]:
+                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegistryImageResult]:
     """
     This data source fetches the project name, and provides the appropriate URLs to use for container registry for this project.
 
@@ -185,7 +185,7 @@ def get_registry_image_output(digest: Optional[pulumi.Input[Optional[str]]] = No
     __args__['project'] = project
     __args__['region'] = region
     __args__['tag'] = tag
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:container/getRegistryImage:getRegistryImage', __args__, opts=opts, typ=GetRegistryImageResult)
     return __ret__.apply(lambda __response__: GetRegistryImageResult(
         digest=pulumi.get(__response__, 'digest'),

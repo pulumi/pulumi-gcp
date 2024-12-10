@@ -161,7 +161,7 @@ def get_kms_secret_ciphertext(crypto_key: Optional[str] = None,
         plaintext=pulumi.get(__ret__, 'plaintext'))
 def get_kms_secret_ciphertext_output(crypto_key: Optional[pulumi.Input[str]] = None,
                                      plaintext: Optional[pulumi.Input[str]] = None,
-                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKMSSecretCiphertextResult]:
+                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKMSSecretCiphertextResult]:
     """
     !> **Warning:** This data source is deprecated. Use the `kms.SecretCiphertext` **resource** instead.
 
@@ -231,7 +231,7 @@ def get_kms_secret_ciphertext_output(crypto_key: Optional[pulumi.Input[str]] = N
     __args__ = dict()
     __args__['cryptoKey'] = crypto_key
     __args__['plaintext'] = plaintext
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:kms/getKMSSecretCiphertext:getKMSSecretCiphertext', __args__, opts=opts, typ=GetKMSSecretCiphertextResult)
     return __ret__.apply(lambda __response__: GetKMSSecretCiphertextResult(
         ciphertext=pulumi.get(__response__, 'ciphertext'),

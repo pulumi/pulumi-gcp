@@ -82,7 +82,7 @@ export interface GetWebRegionBackendServiceIamPolicyResult {
  * });
  * ```
  */
-export function getWebRegionBackendServiceIamPolicyOutput(args: GetWebRegionBackendServiceIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetWebRegionBackendServiceIamPolicyResult> {
+export function getWebRegionBackendServiceIamPolicyOutput(args: GetWebRegionBackendServiceIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetWebRegionBackendServiceIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:iap/getWebRegionBackendServiceIamPolicy:getWebRegionBackendServiceIamPolicy", {
         "project": args.project,

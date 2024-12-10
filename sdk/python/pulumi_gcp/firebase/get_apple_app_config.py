@@ -114,7 +114,7 @@ def get_apple_app_config(app_id: Optional[str] = None,
         project=pulumi.get(__ret__, 'project'))
 def get_apple_app_config_output(app_id: Optional[pulumi.Input[str]] = None,
                                 project: Optional[pulumi.Input[Optional[str]]] = None,
-                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAppleAppConfigResult]:
+                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAppleAppConfigResult]:
     """
     Use this data source to access information about an existing resource.
 
@@ -127,7 +127,7 @@ def get_apple_app_config_output(app_id: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['appId'] = app_id
     __args__['project'] = project
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:firebase/getAppleAppConfig:getAppleAppConfig', __args__, opts=opts, typ=GetAppleAppConfigResult)
     return __ret__.apply(lambda __response__: GetAppleAppConfigResult(
         app_id=pulumi.get(__response__, 'app_id'),

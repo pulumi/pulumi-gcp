@@ -73,7 +73,7 @@ export interface GetTransferProjectServieAccountResult {
  * ```
  */
 /** @deprecated gcp.storage.getTransferProjectServieAccount has been deprecated in favor of gcp.storage.getTransferProjectServiceAccount */
-export function getTransferProjectServieAccountOutput(args?: GetTransferProjectServieAccountOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTransferProjectServieAccountResult> {
+export function getTransferProjectServieAccountOutput(args?: GetTransferProjectServieAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransferProjectServieAccountResult> {
     pulumi.log.warn("getTransferProjectServieAccount is deprecated: gcp.storage.getTransferProjectServieAccount has been deprecated in favor of gcp.storage.getTransferProjectServiceAccount")
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});

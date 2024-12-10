@@ -115,7 +115,7 @@ export interface GetUserWorkloadsConfigMapResult {
  * export const debug = example;
  * ```
  */
-export function getUserWorkloadsConfigMapOutput(args: GetUserWorkloadsConfigMapOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetUserWorkloadsConfigMapResult> {
+export function getUserWorkloadsConfigMapOutput(args: GetUserWorkloadsConfigMapOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetUserWorkloadsConfigMapResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:composer/getUserWorkloadsConfigMap:getUserWorkloadsConfigMap", {
         "environment": args.environment,

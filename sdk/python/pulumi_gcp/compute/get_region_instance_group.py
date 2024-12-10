@@ -163,7 +163,7 @@ def get_region_instance_group_output(name: Optional[pulumi.Input[Optional[str]]]
                                      project: Optional[pulumi.Input[Optional[str]]] = None,
                                      region: Optional[pulumi.Input[Optional[str]]] = None,
                                      self_link: Optional[pulumi.Input[Optional[str]]] = None,
-                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegionInstanceGroupResult]:
+                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegionInstanceGroupResult]:
     """
     Get a Compute Region Instance Group within GCE.
     For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/latest/regionInstanceGroups).
@@ -194,7 +194,7 @@ def get_region_instance_group_output(name: Optional[pulumi.Input[Optional[str]]]
     __args__['project'] = project
     __args__['region'] = region
     __args__['selfLink'] = self_link
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:compute/getRegionInstanceGroup:getRegionInstanceGroup', __args__, opts=opts, typ=GetRegionInstanceGroupResult)
     return __ret__.apply(lambda __response__: GetRegionInstanceGroupResult(
         id=pulumi.get(__response__, 'id'),

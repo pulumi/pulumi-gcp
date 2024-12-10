@@ -153,7 +153,7 @@ export interface GetAccountAccessTokenResult {
  *
  * > *Note*: the generated token is non-refreshable and can have a maximum `lifetime` of `3600` seconds.
  */
-export function getAccountAccessTokenOutput(args: GetAccountAccessTokenOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountAccessTokenResult> {
+export function getAccountAccessTokenOutput(args: GetAccountAccessTokenOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountAccessTokenResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:serviceaccount/getAccountAccessToken:getAccountAccessToken", {
         "delegates": args.delegates,

@@ -92,7 +92,7 @@ export interface GetTestablePermissionsResult {
  * });
  * ```
  */
-export function getTestablePermissionsOutput(args: GetTestablePermissionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTestablePermissionsResult> {
+export function getTestablePermissionsOutput(args: GetTestablePermissionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTestablePermissionsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:iam/getTestablePermissions:getTestablePermissions", {
         "customSupportLevel": args.customSupportLevel,

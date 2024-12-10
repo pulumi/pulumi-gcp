@@ -139,7 +139,7 @@ def get_tag_template_iam_policy(project: Optional[str] = None,
 def get_tag_template_iam_policy_output(project: Optional[pulumi.Input[Optional[str]]] = None,
                                        region: Optional[pulumi.Input[Optional[str]]] = None,
                                        tag_template: Optional[pulumi.Input[str]] = None,
-                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTagTemplateIamPolicyResult]:
+                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTagTemplateIamPolicyResult]:
     """
     Retrieves the current IAM policy data for tagtemplate
 
@@ -161,7 +161,7 @@ def get_tag_template_iam_policy_output(project: Optional[pulumi.Input[Optional[s
     __args__['project'] = project
     __args__['region'] = region
     __args__['tagTemplate'] = tag_template
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:datacatalog/getTagTemplateIamPolicy:getTagTemplateIamPolicy', __args__, opts=opts, typ=GetTagTemplateIamPolicyResult)
     return __ret__.apply(lambda __response__: GetTagTemplateIamPolicyResult(
         etag=pulumi.get(__response__, 'etag'),

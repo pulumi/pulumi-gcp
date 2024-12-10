@@ -70,7 +70,7 @@ export interface GetTransferProjectServiceAccountResult {
  * export const defaultAccount = _default.then(_default => _default.email);
  * ```
  */
-export function getTransferProjectServiceAccountOutput(args?: GetTransferProjectServiceAccountOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTransferProjectServiceAccountResult> {
+export function getTransferProjectServiceAccountOutput(args?: GetTransferProjectServiceAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTransferProjectServiceAccountResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:storage/getTransferProjectServiceAccount:getTransferProjectServiceAccount", {

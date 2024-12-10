@@ -341,7 +341,7 @@ def get_trigger(location: Optional[str] = None,
 def get_trigger_output(location: Optional[pulumi.Input[str]] = None,
                        project: Optional[pulumi.Input[Optional[str]]] = None,
                        trigger_id: Optional[pulumi.Input[str]] = None,
-                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTriggerResult]:
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTriggerResult]:
     """
     To get more information about Cloudbuild Trigger, see:
 
@@ -371,7 +371,7 @@ def get_trigger_output(location: Optional[pulumi.Input[str]] = None,
     __args__['location'] = location
     __args__['project'] = project
     __args__['triggerId'] = trigger_id
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:cloudbuild/getTrigger:getTrigger', __args__, opts=opts, typ=GetTriggerResult)
     return __ret__.apply(lambda __response__: GetTriggerResult(
         approval_configs=pulumi.get(__response__, 'approval_configs'),

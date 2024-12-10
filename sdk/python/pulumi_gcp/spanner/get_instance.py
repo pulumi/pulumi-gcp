@@ -228,7 +228,7 @@ def get_instance_output(config: Optional[pulumi.Input[Optional[str]]] = None,
                         display_name: Optional[pulumi.Input[Optional[str]]] = None,
                         name: Optional[pulumi.Input[str]] = None,
                         project: Optional[pulumi.Input[Optional[str]]] = None,
-                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstanceResult]:
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceResult]:
     """
     Get a spanner instance from Google Cloud by its name.
 
@@ -253,7 +253,7 @@ def get_instance_output(config: Optional[pulumi.Input[Optional[str]]] = None,
     __args__['displayName'] = display_name
     __args__['name'] = name
     __args__['project'] = project
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:spanner/getInstance:getInstance', __args__, opts=opts, typ=GetInstanceResult)
     return __ret__.apply(lambda __response__: GetInstanceResult(
         autoscaling_configs=pulumi.get(__response__, 'autoscaling_configs'),

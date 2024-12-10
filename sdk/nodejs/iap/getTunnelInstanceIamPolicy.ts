@@ -82,7 +82,7 @@ export interface GetTunnelInstanceIamPolicyResult {
  * });
  * ```
  */
-export function getTunnelInstanceIamPolicyOutput(args: GetTunnelInstanceIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTunnelInstanceIamPolicyResult> {
+export function getTunnelInstanceIamPolicyOutput(args: GetTunnelInstanceIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTunnelInstanceIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:iap/getTunnelInstanceIamPolicy:getTunnelInstanceIamPolicy", {
         "instance": args.instance,

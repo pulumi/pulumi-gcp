@@ -79,7 +79,7 @@ export interface GetTableIamPolicyResult {
  * });
  * ```
  */
-export function getTableIamPolicyOutput(args: GetTableIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTableIamPolicyResult> {
+export function getTableIamPolicyOutput(args: GetTableIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTableIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:bigquery/getTableIamPolicy:getTableIamPolicy", {
         "datasetId": args.datasetId,

@@ -254,7 +254,7 @@ def get_notification_channel_output(display_name: Optional[pulumi.Input[Optional
                                     project: Optional[pulumi.Input[Optional[str]]] = None,
                                     type: Optional[pulumi.Input[Optional[str]]] = None,
                                     user_labels: Optional[pulumi.Input[Optional[Mapping[str, str]]]] = None,
-                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNotificationChannelResult]:
+                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNotificationChannelResult]:
     """
     A NotificationChannel is a medium through which an alert is delivered
     when a policy violation is detected. Examples of channels include email, SMS,
@@ -314,7 +314,7 @@ def get_notification_channel_output(display_name: Optional[pulumi.Input[Optional
     __args__['project'] = project
     __args__['type'] = type
     __args__['userLabels'] = user_labels
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:monitoring/getNotificationChannel:getNotificationChannel', __args__, opts=opts, typ=GetNotificationChannelResult)
     return __ret__.apply(lambda __response__: GetNotificationChannelResult(
         description=pulumi.get(__response__, 'description'),

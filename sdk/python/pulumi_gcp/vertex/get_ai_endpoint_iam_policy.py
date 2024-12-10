@@ -132,7 +132,7 @@ def get_ai_endpoint_iam_policy(endpoint: Optional[str] = None,
 def get_ai_endpoint_iam_policy_output(endpoint: Optional[pulumi.Input[str]] = None,
                                       location: Optional[pulumi.Input[Optional[str]]] = None,
                                       project: Optional[pulumi.Input[Optional[str]]] = None,
-                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAiEndpointIamPolicyResult]:
+                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAiEndpointIamPolicyResult]:
     """
     Use this data source to access information about an existing resource.
 
@@ -147,7 +147,7 @@ def get_ai_endpoint_iam_policy_output(endpoint: Optional[pulumi.Input[str]] = No
     __args__['endpoint'] = endpoint
     __args__['location'] = location
     __args__['project'] = project
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:vertex/getAiEndpointIamPolicy:getAiEndpointIamPolicy', __args__, opts=opts, typ=GetAiEndpointIamPolicyResult)
     return __ret__.apply(lambda __response__: GetAiEndpointIamPolicyResult(
         endpoint=pulumi.get(__response__, 'endpoint'),

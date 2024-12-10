@@ -170,7 +170,7 @@ def get_tag_key(parent: Optional[str] = None,
         update_time=pulumi.get(__ret__, 'update_time'))
 def get_tag_key_output(parent: Optional[pulumi.Input[str]] = None,
                        short_name: Optional[pulumi.Input[str]] = None,
-                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTagKeyResult]:
+                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTagKeyResult]:
     """
     Get a tag key by org or project `parent` and `short_name`.
 
@@ -198,7 +198,7 @@ def get_tag_key_output(parent: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['parent'] = parent
     __args__['shortName'] = short_name
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:tags/getTagKey:getTagKey', __args__, opts=opts, typ=GetTagKeyResult)
     return __ret__.apply(lambda __response__: GetTagKeyResult(
         create_time=pulumi.get(__response__, 'create_time'),

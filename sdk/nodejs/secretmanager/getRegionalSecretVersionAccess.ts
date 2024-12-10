@@ -99,7 +99,7 @@ export interface GetRegionalSecretVersionAccessResult {
  * });
  * ```
  */
-export function getRegionalSecretVersionAccessOutput(args: GetRegionalSecretVersionAccessOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRegionalSecretVersionAccessResult> {
+export function getRegionalSecretVersionAccessOutput(args: GetRegionalSecretVersionAccessOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionalSecretVersionAccessResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:secretmanager/getRegionalSecretVersionAccess:getRegionalSecretVersionAccess", {
         "isSecretDataBase64": args.isSecretDataBase64,

@@ -111,7 +111,7 @@ export interface GetGlobalAddressResult {
  * });
  * ```
  */
-export function getGlobalAddressOutput(args: GetGlobalAddressOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetGlobalAddressResult> {
+export function getGlobalAddressOutput(args: GetGlobalAddressOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetGlobalAddressResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:compute/getGlobalAddress:getGlobalAddress", {
         "name": args.name,

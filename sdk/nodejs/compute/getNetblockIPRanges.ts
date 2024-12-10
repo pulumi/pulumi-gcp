@@ -138,7 +138,7 @@ export interface GetNetblockIPRangesResult {
  * });
  * ```
  */
-export function getNetblockIPRangesOutput(args?: GetNetblockIPRangesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNetblockIPRangesResult> {
+export function getNetblockIPRangesOutput(args?: GetNetblockIPRangesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNetblockIPRangesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:compute/getNetblockIPRanges:getNetblockIPRanges", {

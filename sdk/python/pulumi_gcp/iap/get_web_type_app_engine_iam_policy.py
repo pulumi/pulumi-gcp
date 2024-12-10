@@ -127,7 +127,7 @@ def get_web_type_app_engine_iam_policy(app_id: Optional[str] = None,
         project=pulumi.get(__ret__, 'project'))
 def get_web_type_app_engine_iam_policy_output(app_id: Optional[pulumi.Input[str]] = None,
                                               project: Optional[pulumi.Input[Optional[str]]] = None,
-                                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWebTypeAppEngineIamPolicyResult]:
+                                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetWebTypeAppEngineIamPolicyResult]:
     """
     Retrieves the current IAM policy data for webtypeappengine
 
@@ -149,7 +149,7 @@ def get_web_type_app_engine_iam_policy_output(app_id: Optional[pulumi.Input[str]
     __args__ = dict()
     __args__['appId'] = app_id
     __args__['project'] = project
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:iap/getWebTypeAppEngineIamPolicy:getWebTypeAppEngineIamPolicy', __args__, opts=opts, typ=GetWebTypeAppEngineIamPolicyResult)
     return __ret__.apply(lambda __response__: GetWebTypeAppEngineIamPolicyResult(
         app_id=pulumi.get(__response__, 'app_id'),

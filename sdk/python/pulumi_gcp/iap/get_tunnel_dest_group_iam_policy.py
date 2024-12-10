@@ -144,7 +144,7 @@ def get_tunnel_dest_group_iam_policy(dest_group: Optional[str] = None,
 def get_tunnel_dest_group_iam_policy_output(dest_group: Optional[pulumi.Input[str]] = None,
                                             project: Optional[pulumi.Input[Optional[str]]] = None,
                                             region: Optional[pulumi.Input[Optional[str]]] = None,
-                                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTunnelDestGroupIamPolicyResult]:
+                                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTunnelDestGroupIamPolicyResult]:
     """
     Retrieves the current IAM policy data for tunneldestgroup
 
@@ -171,7 +171,7 @@ def get_tunnel_dest_group_iam_policy_output(dest_group: Optional[pulumi.Input[st
     __args__['destGroup'] = dest_group
     __args__['project'] = project
     __args__['region'] = region
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:iap/getTunnelDestGroupIamPolicy:getTunnelDestGroupIamPolicy', __args__, opts=opts, typ=GetTunnelDestGroupIamPolicyResult)
     return __ret__.apply(lambda __response__: GetTunnelDestGroupIamPolicyResult(
         dest_group=pulumi.get(__response__, 'dest_group'),

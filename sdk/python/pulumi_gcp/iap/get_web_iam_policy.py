@@ -112,7 +112,7 @@ def get_web_iam_policy(project: Optional[str] = None,
         policy_data=pulumi.get(__ret__, 'policy_data'),
         project=pulumi.get(__ret__, 'project'))
 def get_web_iam_policy_output(project: Optional[pulumi.Input[Optional[str]]] = None,
-                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWebIamPolicyResult]:
+                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetWebIamPolicyResult]:
     """
     Retrieves the current IAM policy data for web
 
@@ -131,7 +131,7 @@ def get_web_iam_policy_output(project: Optional[pulumi.Input[Optional[str]]] = N
     """
     __args__ = dict()
     __args__['project'] = project
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:iap/getWebIamPolicy:getWebIamPolicy', __args__, opts=opts, typ=GetWebIamPolicyResult)
     return __ret__.apply(lambda __response__: GetWebIamPolicyResult(
         etag=pulumi.get(__response__, 'etag'),

@@ -152,7 +152,7 @@ def get_search_all_resources(asset_types: Optional[Sequence[str]] = None,
 def get_search_all_resources_output(asset_types: Optional[pulumi.Input[Optional[Sequence[str]]]] = None,
                                     query: Optional[pulumi.Input[Optional[str]]] = None,
                                     scope: Optional[pulumi.Input[str]] = None,
-                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSearchAllResourcesResult]:
+                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSearchAllResourcesResult]:
     """
     Searches all Google Cloud resources within the specified scope, such as a project, folder, or organization. See the
     [REST API](https://cloud.google.com/asset-inventory/docs/reference/rest/v1/TopLevel/searchAllResources)
@@ -200,7 +200,7 @@ def get_search_all_resources_output(asset_types: Optional[pulumi.Input[Optional[
     __args__['assetTypes'] = asset_types
     __args__['query'] = query
     __args__['scope'] = scope
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:cloudasset/getSearchAllResources:getSearchAllResources', __args__, opts=opts, typ=GetSearchAllResourcesResult)
     return __ret__.apply(lambda __response__: GetSearchAllResourcesResult(
         asset_types=pulumi.get(__response__, 'asset_types'),

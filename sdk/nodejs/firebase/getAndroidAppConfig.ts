@@ -30,7 +30,7 @@ export interface GetAndroidAppConfigResult {
     readonly id: string;
     readonly project?: string;
 }
-export function getAndroidAppConfigOutput(args: GetAndroidAppConfigOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAndroidAppConfigResult> {
+export function getAndroidAppConfigOutput(args: GetAndroidAppConfigOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAndroidAppConfigResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:firebase/getAndroidAppConfig:getAndroidAppConfig", {
         "appId": args.appId,

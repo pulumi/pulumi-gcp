@@ -110,7 +110,7 @@ export interface GetKMSCryptoKeyResult {
  * }));
  * ```
  */
-export function getKMSCryptoKeyOutput(args: GetKMSCryptoKeyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKMSCryptoKeyResult> {
+export function getKMSCryptoKeyOutput(args: GetKMSCryptoKeyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKMSCryptoKeyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:kms/getKMSCryptoKey:getKMSCryptoKey", {
         "keyRing": args.keyRing,

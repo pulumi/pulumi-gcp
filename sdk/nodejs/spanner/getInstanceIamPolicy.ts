@@ -76,7 +76,7 @@ export interface GetInstanceIamPolicyResult {
  * });
  * ```
  */
-export function getInstanceIamPolicyOutput(args: GetInstanceIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInstanceIamPolicyResult> {
+export function getInstanceIamPolicyOutput(args: GetInstanceIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:spanner/getInstanceIamPolicy:getInstanceIamPolicy", {
         "instance": args.instance,

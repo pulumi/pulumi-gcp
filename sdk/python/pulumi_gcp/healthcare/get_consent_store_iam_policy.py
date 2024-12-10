@@ -128,7 +128,7 @@ def get_consent_store_iam_policy(consent_store_id: Optional[str] = None,
         policy_data=pulumi.get(__ret__, 'policy_data'))
 def get_consent_store_iam_policy_output(consent_store_id: Optional[pulumi.Input[str]] = None,
                                         dataset: Optional[pulumi.Input[str]] = None,
-                                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetConsentStoreIamPolicyResult]:
+                                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetConsentStoreIamPolicyResult]:
     """
     Retrieves the current IAM policy data for consentstore
 
@@ -151,7 +151,7 @@ def get_consent_store_iam_policy_output(consent_store_id: Optional[pulumi.Input[
     __args__ = dict()
     __args__['consentStoreId'] = consent_store_id
     __args__['dataset'] = dataset
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:healthcare/getConsentStoreIamPolicy:getConsentStoreIamPolicy', __args__, opts=opts, typ=GetConsentStoreIamPolicyResult)
     return __ret__.apply(lambda __response__: GetConsentStoreIamPolicyResult(
         consent_store_id=pulumi.get(__response__, 'consent_store_id'),

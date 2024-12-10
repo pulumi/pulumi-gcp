@@ -226,7 +226,7 @@ def get_regional_secret_version_output(is_secret_data_base64: Optional[pulumi.In
                                        project: Optional[pulumi.Input[Optional[str]]] = None,
                                        secret: Optional[pulumi.Input[str]] = None,
                                        version: Optional[pulumi.Input[Optional[str]]] = None,
-                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRegionalSecretVersionResult]:
+                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetRegionalSecretVersionResult]:
     """
     Get the value and metadata from a Secret Manager regional secret version. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/regional-secrets-overview) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.locations.secrets.versions). If you don't need the metadata (i.e., if you want to use a more limited role to access the regional secret version only), see also the secretmanager_get_regional_secret_version_access datasource.
 
@@ -258,7 +258,7 @@ def get_regional_secret_version_output(is_secret_data_base64: Optional[pulumi.In
     __args__['project'] = project
     __args__['secret'] = secret
     __args__['version'] = version
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:secretmanager/getRegionalSecretVersion:getRegionalSecretVersion', __args__, opts=opts, typ=GetRegionalSecretVersionResult)
     return __ret__.apply(lambda __response__: GetRegionalSecretVersionResult(
         create_time=pulumi.get(__response__, 'create_time'),

@@ -145,7 +145,7 @@ export interface GetEngineVersionsResult {
  * export const stableChannelLatestVersion = central1b.then(central1b => central1b.releaseChannelLatestVersion?.STABLE);
  * ```
  */
-export function getEngineVersionsOutput(args?: GetEngineVersionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEngineVersionsResult> {
+export function getEngineVersionsOutput(args?: GetEngineVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEngineVersionsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:container/getEngineVersions:getEngineVersions", {

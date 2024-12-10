@@ -87,7 +87,7 @@ export interface GetRuntimeIamPolicyResult {
  * });
  * ```
  */
-export function getRuntimeIamPolicyOutput(args: GetRuntimeIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRuntimeIamPolicyResult> {
+export function getRuntimeIamPolicyOutput(args: GetRuntimeIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRuntimeIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:notebooks/getRuntimeIamPolicy:getRuntimeIamPolicy", {
         "location": args.location,

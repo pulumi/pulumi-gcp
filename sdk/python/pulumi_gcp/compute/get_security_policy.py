@@ -189,7 +189,7 @@ def get_security_policy(name: Optional[str] = None,
 def get_security_policy_output(name: Optional[pulumi.Input[Optional[str]]] = None,
                                project: Optional[pulumi.Input[Optional[str]]] = None,
                                self_link: Optional[pulumi.Input[Optional[str]]] = None,
-                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSecurityPolicyResult]:
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSecurityPolicyResult]:
     """
     To get more information about Google Compute Security Policy, see:
 
@@ -217,7 +217,7 @@ def get_security_policy_output(name: Optional[pulumi.Input[Optional[str]]] = Non
     __args__['name'] = name
     __args__['project'] = project
     __args__['selfLink'] = self_link
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:compute/getSecurityPolicy:getSecurityPolicy', __args__, opts=opts, typ=GetSecurityPolicyResult)
     return __ret__.apply(lambda __response__: GetSecurityPolicyResult(
         adaptive_protection_configs=pulumi.get(__response__, 'adaptive_protection_configs'),

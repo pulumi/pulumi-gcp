@@ -116,7 +116,7 @@ def get_backend_bucket_iam_policy(name: Optional[str] = None,
         project=pulumi.get(__ret__, 'project'))
 def get_backend_bucket_iam_policy_output(name: Optional[pulumi.Input[str]] = None,
                                          project: Optional[pulumi.Input[Optional[str]]] = None,
-                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBackendBucketIamPolicyResult]:
+                                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetBackendBucketIamPolicyResult]:
     """
     Use this data source to access information about an existing resource.
 
@@ -127,7 +127,7 @@ def get_backend_bucket_iam_policy_output(name: Optional[pulumi.Input[str]] = Non
     __args__ = dict()
     __args__['name'] = name
     __args__['project'] = project
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:compute/getBackendBucketIamPolicy:getBackendBucketIamPolicy', __args__, opts=opts, typ=GetBackendBucketIamPolicyResult)
     return __ret__.apply(lambda __response__: GetBackendBucketIamPolicyResult(
         etag=pulumi.get(__response__, 'etag'),

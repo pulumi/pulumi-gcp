@@ -193,7 +193,7 @@ export interface GetAccountIdTokenResult {
  * export const cloudRunResponse = cloudrun.then(cloudrun => cloudrun.body);
  * ```
  */
-export function getAccountIdTokenOutput(args: GetAccountIdTokenOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAccountIdTokenResult> {
+export function getAccountIdTokenOutput(args: GetAccountIdTokenOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAccountIdTokenResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:serviceaccount/getAccountIdToken:getAccountIdToken", {
         "delegates": args.delegates,

@@ -118,7 +118,7 @@ def get_zones(project: Optional[str] = None,
 def get_zones_output(project: Optional[pulumi.Input[Optional[str]]] = None,
                      region: Optional[pulumi.Input[Optional[str]]] = None,
                      status: Optional[pulumi.Input[Optional[str]]] = None,
-                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetZonesResult]:
+                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetZonesResult]:
     """
     Provides access to available Google Compute zones in a region for a given project.
     See more about [regions and zones](https://cloud.google.com/compute/docs/regions-zones/regions-zones) in the upstream docs.
@@ -133,7 +133,7 @@ def get_zones_output(project: Optional[pulumi.Input[Optional[str]]] = None,
     __args__['project'] = project
     __args__['region'] = region
     __args__['status'] = status
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:compute/getZones:getZones', __args__, opts=opts, typ=GetZonesResult)
     return __ret__.apply(lambda __response__: GetZonesResult(
         id=pulumi.get(__response__, 'id'),

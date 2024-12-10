@@ -77,7 +77,7 @@ export interface GetTopicIamPolicyResult {
  * });
  * ```
  */
-export function getTopicIamPolicyOutput(args: GetTopicIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTopicIamPolicyResult> {
+export function getTopicIamPolicyOutput(args: GetTopicIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTopicIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:pubsub/getTopicIamPolicy:getTopicIamPolicy", {
         "project": args.project,

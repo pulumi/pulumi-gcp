@@ -85,7 +85,7 @@ export interface GetEntryTypeIamPolicyResult {
  * });
  * ```
  */
-export function getEntryTypeIamPolicyOutput(args: GetEntryTypeIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetEntryTypeIamPolicyResult> {
+export function getEntryTypeIamPolicyOutput(args: GetEntryTypeIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetEntryTypeIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:dataplex/getEntryTypeIamPolicy:getEntryTypeIamPolicy", {
         "entryTypeId": args.entryTypeId,

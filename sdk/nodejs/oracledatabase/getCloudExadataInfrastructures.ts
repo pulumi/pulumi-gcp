@@ -77,7 +77,7 @@ export interface GetCloudExadataInfrastructuresResult {
  * });
  * ```
  */
-export function getCloudExadataInfrastructuresOutput(args: GetCloudExadataInfrastructuresOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCloudExadataInfrastructuresResult> {
+export function getCloudExadataInfrastructuresOutput(args: GetCloudExadataInfrastructuresOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCloudExadataInfrastructuresResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:oracledatabase/getCloudExadataInfrastructures:getCloudExadataInfrastructures", {
         "location": args.location,

@@ -120,7 +120,7 @@ def get_client(brand: Optional[str] = None,
         secret=pulumi.get(__ret__, 'secret'))
 def get_client_output(brand: Optional[pulumi.Input[str]] = None,
                       client_id: Optional[pulumi.Input[str]] = None,
-                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetClientResult]:
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClientResult]:
     """
     Get info about a Google Cloud IAP Client.
 
@@ -142,7 +142,7 @@ def get_client_output(brand: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['brand'] = brand
     __args__['clientId'] = client_id
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:iap/getClient:getClient', __args__, opts=opts, typ=GetClientResult)
     return __ret__.apply(lambda __response__: GetClientResult(
         brand=pulumi.get(__response__, 'brand'),

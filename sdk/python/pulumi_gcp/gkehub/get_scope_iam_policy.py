@@ -126,7 +126,7 @@ def get_scope_iam_policy(project: Optional[str] = None,
         scope_id=pulumi.get(__ret__, 'scope_id'))
 def get_scope_iam_policy_output(project: Optional[pulumi.Input[Optional[str]]] = None,
                                 scope_id: Optional[pulumi.Input[str]] = None,
-                                opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetScopeIamPolicyResult]:
+                                opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetScopeIamPolicyResult]:
     """
     Retrieves the current IAM policy data for scope
 
@@ -147,7 +147,7 @@ def get_scope_iam_policy_output(project: Optional[pulumi.Input[Optional[str]]] =
     __args__ = dict()
     __args__['project'] = project
     __args__['scopeId'] = scope_id
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:gkehub/getScopeIamPolicy:getScopeIamPolicy', __args__, opts=opts, typ=GetScopeIamPolicyResult)
     return __ret__.apply(lambda __response__: GetScopeIamPolicyResult(
         etag=pulumi.get(__response__, 'etag'),

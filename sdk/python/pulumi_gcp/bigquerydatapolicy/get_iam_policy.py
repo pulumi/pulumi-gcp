@@ -144,7 +144,7 @@ def get_iam_policy(data_policy_id: Optional[str] = None,
 def get_iam_policy_output(data_policy_id: Optional[pulumi.Input[str]] = None,
                           location: Optional[pulumi.Input[Optional[str]]] = None,
                           project: Optional[pulumi.Input[Optional[str]]] = None,
-                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIamPolicyResult]:
+                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIamPolicyResult]:
     """
     Retrieves the current IAM policy data for datapolicy
 
@@ -171,7 +171,7 @@ def get_iam_policy_output(data_policy_id: Optional[pulumi.Input[str]] = None,
     __args__['dataPolicyId'] = data_policy_id
     __args__['location'] = location
     __args__['project'] = project
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:bigquerydatapolicy/getIamPolicy:getIamPolicy', __args__, opts=opts, typ=GetIamPolicyResult)
     return __ret__.apply(lambda __response__: GetIamPolicyResult(
         data_policy_id=pulumi.get(__response__, 'data_policy_id'),

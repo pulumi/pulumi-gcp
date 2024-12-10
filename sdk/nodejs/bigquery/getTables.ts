@@ -78,7 +78,7 @@ export interface GetTablesResult {
  * });
  * ```
  */
-export function getTablesOutput(args: GetTablesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTablesResult> {
+export function getTablesOutput(args: GetTablesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTablesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:bigquery/getTables:getTables", {
         "datasetId": args.datasetId,

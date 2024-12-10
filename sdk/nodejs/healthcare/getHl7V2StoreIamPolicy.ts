@@ -70,7 +70,7 @@ export interface GetHl7V2StoreIamPolicyResult {
  * });
  * ```
  */
-export function getHl7V2StoreIamPolicyOutput(args: GetHl7V2StoreIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetHl7V2StoreIamPolicyResult> {
+export function getHl7V2StoreIamPolicyOutput(args: GetHl7V2StoreIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetHl7V2StoreIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:healthcare/getHl7V2StoreIamPolicy:getHl7V2StoreIamPolicy", {
         "hl7V2StoreId": args.hl7V2StoreId,

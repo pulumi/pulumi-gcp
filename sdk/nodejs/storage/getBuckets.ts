@@ -80,7 +80,7 @@ export interface GetBucketsResult {
  * });
  * ```
  */
-export function getBucketsOutput(args?: GetBucketsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBucketsResult> {
+export function getBucketsOutput(args?: GetBucketsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBucketsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:storage/getBuckets:getBuckets", {

@@ -158,7 +158,7 @@ def get_log_view_iam_policy_output(bucket: Optional[pulumi.Input[str]] = None,
                                    location: Optional[pulumi.Input[Optional[str]]] = None,
                                    name: Optional[pulumi.Input[str]] = None,
                                    parent: Optional[pulumi.Input[str]] = None,
-                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetLogViewIamPolicyResult]:
+                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetLogViewIamPolicyResult]:
     """
     Retrieves the current IAM policy data for logview
 
@@ -187,7 +187,7 @@ def get_log_view_iam_policy_output(bucket: Optional[pulumi.Input[str]] = None,
     __args__['location'] = location
     __args__['name'] = name
     __args__['parent'] = parent
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:logging/getLogViewIamPolicy:getLogViewIamPolicy', __args__, opts=opts, typ=GetLogViewIamPolicyResult)
     return __ret__.apply(lambda __response__: GetLogViewIamPolicyResult(
         bucket=pulumi.get(__response__, 'bucket'),

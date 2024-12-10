@@ -110,7 +110,7 @@ def get_crypto_key_iam_policy(crypto_key_id: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         policy_data=pulumi.get(__ret__, 'policy_data'))
 def get_crypto_key_iam_policy_output(crypto_key_id: Optional[pulumi.Input[str]] = None,
-                                     opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCryptoKeyIamPolicyResult]:
+                                     opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCryptoKeyIamPolicyResult]:
     """
     Retrieves the current IAM policy data for a Google Cloud KMS crypto key.
 
@@ -128,7 +128,7 @@ def get_crypto_key_iam_policy_output(crypto_key_id: Optional[pulumi.Input[str]] 
     """
     __args__ = dict()
     __args__['cryptoKeyId'] = crypto_key_id
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:kms/getCryptoKeyIamPolicy:getCryptoKeyIamPolicy', __args__, opts=opts, typ=GetCryptoKeyIamPolicyResult)
     return __ret__.apply(lambda __response__: GetCryptoKeyIamPolicyResult(
         crypto_key_id=pulumi.get(__response__, 'crypto_key_id'),

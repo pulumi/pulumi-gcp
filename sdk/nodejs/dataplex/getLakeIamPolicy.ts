@@ -82,7 +82,7 @@ export interface GetLakeIamPolicyResult {
  * });
  * ```
  */
-export function getLakeIamPolicyOutput(args: GetLakeIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLakeIamPolicyResult> {
+export function getLakeIamPolicyOutput(args: GetLakeIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLakeIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:dataplex/getLakeIamPolicy:getLakeIamPolicy", {
         "lake": args.lake,

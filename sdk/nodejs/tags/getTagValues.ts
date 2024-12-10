@@ -65,7 +65,7 @@ export interface GetTagValuesResult {
  * });
  * ```
  */
-export function getTagValuesOutput(args: GetTagValuesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTagValuesResult> {
+export function getTagValuesOutput(args: GetTagValuesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTagValuesResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:tags/getTagValues:getTagValues", {
         "parent": args.parent,

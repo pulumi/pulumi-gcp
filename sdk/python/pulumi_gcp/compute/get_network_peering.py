@@ -196,7 +196,7 @@ def get_network_peering(name: Optional[str] = None,
         state_details=pulumi.get(__ret__, 'state_details'))
 def get_network_peering_output(name: Optional[pulumi.Input[str]] = None,
                                network: Optional[pulumi.Input[str]] = None,
-                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNetworkPeeringResult]:
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNetworkPeeringResult]:
     """
     Get information of a specified compute network peering. For more information see
     [the official documentation](https://cloud.google.com/compute/docs/vpc/vpc-peering)
@@ -234,7 +234,7 @@ def get_network_peering_output(name: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['name'] = name
     __args__['network'] = network
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:compute/getNetworkPeering:getNetworkPeering', __args__, opts=opts, typ=GetNetworkPeeringResult)
     return __ret__.apply(lambda __response__: GetNetworkPeeringResult(
         export_custom_routes=pulumi.get(__response__, 'export_custom_routes'),

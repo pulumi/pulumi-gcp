@@ -137,7 +137,7 @@ def get_crypto_key_versions(crypto_key: Optional[str] = None,
         versions=pulumi.get(__ret__, 'versions'))
 def get_crypto_key_versions_output(crypto_key: Optional[pulumi.Input[str]] = None,
                                    filter: Optional[pulumi.Input[Optional[str]]] = None,
-                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCryptoKeyVersionsResult]:
+                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCryptoKeyVersionsResult]:
     """
     Provides access to Google Cloud Platform KMS CryptoKeyVersions. For more information see
     [the official documentation](https://cloud.google.com/kms/docs/object-hierarchy#key_version)
@@ -172,7 +172,7 @@ def get_crypto_key_versions_output(crypto_key: Optional[pulumi.Input[str]] = Non
     __args__ = dict()
     __args__['cryptoKey'] = crypto_key
     __args__['filter'] = filter
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:kms/getCryptoKeyVersions:getCryptoKeyVersions', __args__, opts=opts, typ=GetCryptoKeyVersionsResult)
     return __ret__.apply(lambda __response__: GetCryptoKeyVersionsResult(
         crypto_key=pulumi.get(__response__, 'crypto_key'),

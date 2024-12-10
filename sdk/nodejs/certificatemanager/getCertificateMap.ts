@@ -77,7 +77,7 @@ export interface GetCertificateMapResult {
  * });
  * ```
  */
-export function getCertificateMapOutput(args: GetCertificateMapOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCertificateMapResult> {
+export function getCertificateMapOutput(args: GetCertificateMapOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCertificateMapResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:certificatemanager/getCertificateMap:getCertificateMap", {
         "name": args.name,

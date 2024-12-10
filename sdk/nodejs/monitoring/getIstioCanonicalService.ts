@@ -136,7 +136,7 @@ export interface GetIstioCanonicalServiceResult {
  * });
  * ```
  */
-export function getIstioCanonicalServiceOutput(args: GetIstioCanonicalServiceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIstioCanonicalServiceResult> {
+export function getIstioCanonicalServiceOutput(args: GetIstioCanonicalServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIstioCanonicalServiceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:monitoring/getIstioCanonicalService:getIstioCanonicalService", {
         "canonicalService": args.canonicalService,

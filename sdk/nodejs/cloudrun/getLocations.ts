@@ -73,7 +73,7 @@ export interface GetLocationsResult {
  * const available = gcp.cloudrun.getLocations({});
  * ```
  */
-export function getLocationsOutput(args?: GetLocationsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetLocationsResult> {
+export function getLocationsOutput(args?: GetLocationsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetLocationsResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:cloudrun/getLocations:getLocations", {

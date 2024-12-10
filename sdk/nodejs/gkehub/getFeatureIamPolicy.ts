@@ -87,7 +87,7 @@ export interface GetFeatureIamPolicyResult {
  * });
  * ```
  */
-export function getFeatureIamPolicyOutput(args: GetFeatureIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetFeatureIamPolicyResult> {
+export function getFeatureIamPolicyOutput(args: GetFeatureIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetFeatureIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:gkehub/getFeatureIamPolicy:getFeatureIamPolicy", {
         "location": args.location,

@@ -206,7 +206,7 @@ def get_network_policy(location: Optional[str] = None,
 def get_network_policy_output(location: Optional[pulumi.Input[str]] = None,
                               name: Optional[pulumi.Input[str]] = None,
                               project: Optional[pulumi.Input[Optional[str]]] = None,
-                              opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNetworkPolicyResult]:
+                              opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNetworkPolicyResult]:
     """
     Use this data source to get details about a network policy resource.
 
@@ -231,7 +231,7 @@ def get_network_policy_output(location: Optional[pulumi.Input[str]] = None,
     __args__['location'] = location
     __args__['name'] = name
     __args__['project'] = project
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:vmwareengine/getNetworkPolicy:getNetworkPolicy', __args__, opts=opts, typ=GetNetworkPolicyResult)
     return __ret__.apply(lambda __response__: GetNetworkPolicyResult(
         create_time=pulumi.get(__response__, 'create_time'),

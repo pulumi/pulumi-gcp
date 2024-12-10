@@ -126,7 +126,7 @@ def get_active_folder(api_method: Optional[str] = None,
 def get_active_folder_output(api_method: Optional[pulumi.Input[Optional[str]]] = None,
                              display_name: Optional[pulumi.Input[str]] = None,
                              parent: Optional[pulumi.Input[str]] = None,
-                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetActiveFolderResult]:
+                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetActiveFolderResult]:
     """
     Get an active folder within GCP by `display_name` and `parent`.
 
@@ -149,7 +149,7 @@ def get_active_folder_output(api_method: Optional[pulumi.Input[Optional[str]]] =
     __args__['apiMethod'] = api_method
     __args__['displayName'] = display_name
     __args__['parent'] = parent
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:organizations/getActiveFolder:getActiveFolder', __args__, opts=opts, typ=GetActiveFolderResult)
     return __ret__.apply(lambda __response__: GetActiveFolderResult(
         api_method=pulumi.get(__response__, 'api_method'),

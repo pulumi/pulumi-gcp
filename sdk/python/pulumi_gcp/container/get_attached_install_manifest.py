@@ -144,7 +144,7 @@ def get_attached_install_manifest_output(cluster_id: Optional[pulumi.Input[str]]
                                          location: Optional[pulumi.Input[str]] = None,
                                          platform_version: Optional[pulumi.Input[str]] = None,
                                          project: Optional[pulumi.Input[str]] = None,
-                                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAttachedInstallManifestResult]:
+                                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAttachedInstallManifestResult]:
     """
     Provides access to available platform versions in a location for a given project.
 
@@ -173,7 +173,7 @@ def get_attached_install_manifest_output(cluster_id: Optional[pulumi.Input[str]]
     __args__['location'] = location
     __args__['platformVersion'] = platform_version
     __args__['project'] = project
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:container/getAttachedInstallManifest:getAttachedInstallManifest', __args__, opts=opts, typ=GetAttachedInstallManifestResult)
     return __ret__.apply(lambda __response__: GetAttachedInstallManifestResult(
         cluster_id=pulumi.get(__response__, 'cluster_id'),

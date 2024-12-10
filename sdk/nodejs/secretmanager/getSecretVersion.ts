@@ -101,7 +101,7 @@ export interface GetSecretVersionResult {
  * });
  * ```
  */
-export function getSecretVersionOutput(args: GetSecretVersionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSecretVersionResult> {
+export function getSecretVersionOutput(args: GetSecretVersionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecretVersionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:secretmanager/getSecretVersion:getSecretVersion", {
         "isSecretDataBase64": args.isSecretDataBase64,

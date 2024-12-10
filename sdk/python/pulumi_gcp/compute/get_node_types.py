@@ -119,7 +119,7 @@ def get_node_types(project: Optional[str] = None,
         zone=pulumi.get(__ret__, 'zone'))
 def get_node_types_output(project: Optional[pulumi.Input[Optional[str]]] = None,
                           zone: Optional[pulumi.Input[Optional[str]]] = None,
-                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNodeTypesResult]:
+                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNodeTypesResult]:
     """
     Provides available node types for Compute Engine sole-tenant nodes in a zone
     for a given project. For more information, see [the official documentation](https://cloud.google.com/compute/docs/nodes/#types) and [API](https://cloud.google.com/compute/docs/reference/rest/v1/nodeTypes).
@@ -147,7 +147,7 @@ def get_node_types_output(project: Optional[pulumi.Input[Optional[str]]] = None,
     __args__ = dict()
     __args__['project'] = project
     __args__['zone'] = zone
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:compute/getNodeTypes:getNodeTypes', __args__, opts=opts, typ=GetNodeTypesResult)
     return __ret__.apply(lambda __response__: GetNodeTypesResult(
         id=pulumi.get(__response__, 'id'),

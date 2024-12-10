@@ -73,7 +73,7 @@ export interface GetNsxCredentialsResult {
  * });
  * ```
  */
-export function getNsxCredentialsOutput(args: GetNsxCredentialsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetNsxCredentialsResult> {
+export function getNsxCredentialsOutput(args: GetNsxCredentialsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetNsxCredentialsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:vmwareengine/getNsxCredentials:getNsxCredentials", {
         "parent": args.parent,

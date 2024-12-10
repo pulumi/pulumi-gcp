@@ -240,7 +240,7 @@ def get_network_peering(name: Optional[str] = None,
         vmware_engine_network_canonical=pulumi.get(__ret__, 'vmware_engine_network_canonical'))
 def get_network_peering_output(name: Optional[pulumi.Input[str]] = None,
                                project: Optional[pulumi.Input[Optional[str]]] = None,
-                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNetworkPeeringResult]:
+                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetNetworkPeeringResult]:
     """
     Use this data source to get details about a network peering resource.
 
@@ -262,7 +262,7 @@ def get_network_peering_output(name: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['name'] = name
     __args__['project'] = project
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:vmwareengine/getNetworkPeering:getNetworkPeering', __args__, opts=opts, typ=GetNetworkPeeringResult)
     return __ret__.apply(lambda __response__: GetNetworkPeeringResult(
         create_time=pulumi.get(__response__, 'create_time'),

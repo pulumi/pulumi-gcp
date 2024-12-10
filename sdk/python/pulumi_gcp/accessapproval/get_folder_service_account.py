@@ -121,7 +121,7 @@ def get_folder_service_account(folder_id: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         name=pulumi.get(__ret__, 'name'))
 def get_folder_service_account_output(folder_id: Optional[pulumi.Input[str]] = None,
-                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetFolderServiceAccountResult]:
+                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetFolderServiceAccountResult]:
     """
     Get the email address of a folder's Access Approval service account.
 
@@ -149,7 +149,7 @@ def get_folder_service_account_output(folder_id: Optional[pulumi.Input[str]] = N
     """
     __args__ = dict()
     __args__['folderId'] = folder_id
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:accessapproval/getFolderServiceAccount:getFolderServiceAccount', __args__, opts=opts, typ=GetFolderServiceAccountResult)
     return __ret__.apply(lambda __response__: GetFolderServiceAccountResult(
         account_email=pulumi.get(__response__, 'account_email'),

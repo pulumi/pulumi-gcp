@@ -172,7 +172,7 @@ def get_kms_secret(additional_authenticated_data: Optional[str] = None,
 def get_kms_secret_output(additional_authenticated_data: Optional[pulumi.Input[Optional[str]]] = None,
                           ciphertext: Optional[pulumi.Input[str]] = None,
                           crypto_key: Optional[pulumi.Input[str]] = None,
-                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetKMSSecretResult]:
+                          opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetKMSSecretResult]:
     """
     This data source allows you to use data encrypted with Google Cloud KMS
     within your resource definitions.
@@ -241,7 +241,7 @@ def get_kms_secret_output(additional_authenticated_data: Optional[pulumi.Input[O
     __args__['additionalAuthenticatedData'] = additional_authenticated_data
     __args__['ciphertext'] = ciphertext
     __args__['cryptoKey'] = crypto_key
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:kms/getKMSSecret:getKMSSecret', __args__, opts=opts, typ=GetKMSSecretResult)
     return __ret__.apply(lambda __response__: GetKMSSecretResult(
         additional_authenticated_data=pulumi.get(__response__, 'additional_authenticated_data'),

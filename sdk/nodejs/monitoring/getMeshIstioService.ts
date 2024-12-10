@@ -136,7 +136,7 @@ export interface GetMeshIstioServiceResult {
  * });
  * ```
  */
-export function getMeshIstioServiceOutput(args: GetMeshIstioServiceOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMeshIstioServiceResult> {
+export function getMeshIstioServiceOutput(args: GetMeshIstioServiceOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMeshIstioServiceResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:monitoring/getMeshIstioService:getMeshIstioService", {
         "meshUid": args.meshUid,

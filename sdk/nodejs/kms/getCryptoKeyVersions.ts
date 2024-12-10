@@ -102,7 +102,7 @@ export interface GetCryptoKeyVersionsResult {
  * });
  * ```
  */
-export function getCryptoKeyVersionsOutput(args: GetCryptoKeyVersionsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCryptoKeyVersionsResult> {
+export function getCryptoKeyVersionsOutput(args: GetCryptoKeyVersionsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCryptoKeyVersionsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:kms/getCryptoKeyVersions:getCryptoKeyVersions", {
         "cryptoKey": args.cryptoKey,

@@ -90,7 +90,7 @@ export interface GetOrganizationServiceAccountResult {
  * });
  * ```
  */
-export function getOrganizationServiceAccountOutput(args: GetOrganizationServiceAccountOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOrganizationServiceAccountResult> {
+export function getOrganizationServiceAccountOutput(args: GetOrganizationServiceAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOrganizationServiceAccountResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:accessapproval/getOrganizationServiceAccount:getOrganizationServiceAccount", {
         "organizationId": args.organizationId,

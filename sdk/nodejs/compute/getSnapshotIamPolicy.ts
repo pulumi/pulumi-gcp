@@ -77,7 +77,7 @@ export interface GetSnapshotIamPolicyResult {
  * });
  * ```
  */
-export function getSnapshotIamPolicyOutput(args: GetSnapshotIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSnapshotIamPolicyResult> {
+export function getSnapshotIamPolicyOutput(args: GetSnapshotIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSnapshotIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:compute/getSnapshotIamPolicy:getSnapshotIamPolicy", {
         "name": args.name,

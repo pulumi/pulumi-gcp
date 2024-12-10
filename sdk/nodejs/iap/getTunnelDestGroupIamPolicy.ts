@@ -85,7 +85,7 @@ export interface GetTunnelDestGroupIamPolicyResult {
  * });
  * ```
  */
-export function getTunnelDestGroupIamPolicyOutput(args: GetTunnelDestGroupIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTunnelDestGroupIamPolicyResult> {
+export function getTunnelDestGroupIamPolicyOutput(args: GetTunnelDestGroupIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTunnelDestGroupIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:iap/getTunnelDestGroupIamPolicy:getTunnelDestGroupIamPolicy", {
         "destGroup": args.destGroup,

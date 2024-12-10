@@ -100,7 +100,7 @@ def get_groups(parent: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         parent=pulumi.get(__ret__, 'parent'))
 def get_groups_output(parent: Optional[pulumi.Input[str]] = None,
-                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetGroupsResult]:
+                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetGroupsResult]:
     """
     Use this data source to get list of the Cloud Identity Groups under a customer or namespace.
 
@@ -120,7 +120,7 @@ def get_groups_output(parent: Optional[pulumi.Input[str]] = None,
     """
     __args__ = dict()
     __args__['parent'] = parent
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:cloudidentity/getGroups:getGroups', __args__, opts=opts, typ=GetGroupsResult)
     return __ret__.apply(lambda __response__: GetGroupsResult(
         groups=pulumi.get(__response__, 'groups'),

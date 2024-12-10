@@ -117,7 +117,7 @@ export interface GetInstanceGroupManagerResult {
  * });
  * ```
  */
-export function getInstanceGroupManagerOutput(args?: GetInstanceGroupManagerOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetInstanceGroupManagerResult> {
+export function getInstanceGroupManagerOutput(args?: GetInstanceGroupManagerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetInstanceGroupManagerResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:compute/getInstanceGroupManager:getInstanceGroupManager", {

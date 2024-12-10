@@ -103,7 +103,7 @@ export interface GetRecordSetResult {
  * }));
  * ```
  */
-export function getRecordSetOutput(args: GetRecordSetOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRecordSetResult> {
+export function getRecordSetOutput(args: GetRecordSetOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRecordSetResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:dns/getRecordSet:getRecordSet", {
         "managedZone": args.managedZone,

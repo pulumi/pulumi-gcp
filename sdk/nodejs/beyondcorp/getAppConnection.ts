@@ -85,7 +85,7 @@ export interface GetAppConnectionResult {
  * });
  * ```
  */
-export function getAppConnectionOutput(args: GetAppConnectionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAppConnectionResult> {
+export function getAppConnectionOutput(args: GetAppConnectionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppConnectionResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:beyondcorp/getAppConnection:getAppConnection", {
         "name": args.name,

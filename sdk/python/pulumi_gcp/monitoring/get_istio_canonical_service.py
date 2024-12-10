@@ -212,7 +212,7 @@ def get_istio_canonical_service_output(canonical_service: Optional[pulumi.Input[
                                        canonical_service_namespace: Optional[pulumi.Input[str]] = None,
                                        mesh_uid: Optional[pulumi.Input[str]] = None,
                                        project: Optional[pulumi.Input[Optional[str]]] = None,
-                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetIstioCanonicalServiceResult]:
+                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetIstioCanonicalServiceResult]:
     """
     A Monitoring Service is the root resource under which operational aspects of a
     generic service are accessible. A service is some discrete, autonomous, and
@@ -261,7 +261,7 @@ def get_istio_canonical_service_output(canonical_service: Optional[pulumi.Input[
     __args__['canonicalServiceNamespace'] = canonical_service_namespace
     __args__['meshUid'] = mesh_uid
     __args__['project'] = project
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:monitoring/getIstioCanonicalService:getIstioCanonicalService', __args__, opts=opts, typ=GetIstioCanonicalServiceResult)
     return __ret__.apply(lambda __response__: GetIstioCanonicalServiceResult(
         canonical_service=pulumi.get(__response__, 'canonical_service'),

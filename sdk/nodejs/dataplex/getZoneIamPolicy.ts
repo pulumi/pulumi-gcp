@@ -87,7 +87,7 @@ export interface GetZoneIamPolicyResult {
  * });
  * ```
  */
-export function getZoneIamPolicyOutput(args: GetZoneIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetZoneIamPolicyResult> {
+export function getZoneIamPolicyOutput(args: GetZoneIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetZoneIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:dataplex/getZoneIamPolicy:getZoneIamPolicy", {
         "dataplexZone": args.dataplexZone,

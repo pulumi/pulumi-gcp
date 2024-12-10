@@ -121,7 +121,7 @@ def get_database_instance_latest_recovery_time(instance: Optional[str] = None,
         project=pulumi.get(__ret__, 'project'))
 def get_database_instance_latest_recovery_time_output(instance: Optional[pulumi.Input[str]] = None,
                                                       project: Optional[pulumi.Input[Optional[str]]] = None,
-                                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatabaseInstanceLatestRecoveryTimeResult]:
+                                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatabaseInstanceLatestRecoveryTimeResult]:
     """
     Get Latest Recovery Time for a given instance. For more information see the
     [official documentation](https://cloud.google.com/sql/)
@@ -145,7 +145,7 @@ def get_database_instance_latest_recovery_time_output(instance: Optional[pulumi.
     __args__ = dict()
     __args__['instance'] = instance
     __args__['project'] = project
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:sql/getDatabaseInstanceLatestRecoveryTime:getDatabaseInstanceLatestRecoveryTime', __args__, opts=opts, typ=GetDatabaseInstanceLatestRecoveryTimeResult)
     return __ret__.apply(lambda __response__: GetDatabaseInstanceLatestRecoveryTimeResult(
         id=pulumi.get(__response__, 'id'),

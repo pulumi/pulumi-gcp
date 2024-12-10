@@ -87,7 +87,7 @@ export interface GetCustomTargetTypeIamPolicyResult {
  * });
  * ```
  */
-export function getCustomTargetTypeIamPolicyOutput(args: GetCustomTargetTypeIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCustomTargetTypeIamPolicyResult> {
+export function getCustomTargetTypeIamPolicyOutput(args: GetCustomTargetTypeIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCustomTargetTypeIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:clouddeploy/getCustomTargetTypeIamPolicy:getCustomTargetTypeIamPolicy", {
         "location": args.location,

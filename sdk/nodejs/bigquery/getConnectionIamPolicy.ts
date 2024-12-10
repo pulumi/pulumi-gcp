@@ -94,7 +94,7 @@ export interface GetConnectionIamPolicyResult {
  * });
  * ```
  */
-export function getConnectionIamPolicyOutput(args: GetConnectionIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetConnectionIamPolicyResult> {
+export function getConnectionIamPolicyOutput(args: GetConnectionIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConnectionIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:bigquery/getConnectionIamPolicy:getConnectionIamPolicy", {
         "connectionId": args.connectionId,

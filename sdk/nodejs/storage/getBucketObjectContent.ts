@@ -114,7 +114,7 @@ export interface GetBucketObjectContentResult {
  * export const encrypted = key.then(key => key.content);
  * ```
  */
-export function getBucketObjectContentOutput(args: GetBucketObjectContentOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBucketObjectContentResult> {
+export function getBucketObjectContentOutput(args: GetBucketObjectContentOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBucketObjectContentResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:storage/getBucketObjectContent:getBucketObjectContent", {
         "bucket": args.bucket,

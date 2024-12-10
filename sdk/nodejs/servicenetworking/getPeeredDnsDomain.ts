@@ -39,7 +39,7 @@ export interface GetPeeredDnsDomainResult {
     readonly project: string;
     readonly service: string;
 }
-export function getPeeredDnsDomainOutput(args: GetPeeredDnsDomainOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetPeeredDnsDomainResult> {
+export function getPeeredDnsDomainOutput(args: GetPeeredDnsDomainOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetPeeredDnsDomainResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:servicenetworking/getPeeredDnsDomain:getPeeredDnsDomain", {
         "name": args.name,

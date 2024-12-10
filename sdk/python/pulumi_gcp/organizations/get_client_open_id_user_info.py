@@ -91,7 +91,7 @@ def get_client_open_id_user_info(opts: Optional[pulumi.InvokeOptions] = None) ->
     return AwaitableGetClientOpenIdUserInfoResult(
         email=pulumi.get(__ret__, 'email'),
         id=pulumi.get(__ret__, 'id'))
-def get_client_open_id_user_info_output(opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetClientOpenIdUserInfoResult]:
+def get_client_open_id_user_info_output(opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetClientOpenIdUserInfoResult]:
     """
     Get OpenID userinfo about the credentials used with the Google provider,
     specifically the email.
@@ -118,7 +118,7 @@ def get_client_open_id_user_info_output(opts: Optional[Union[pulumi.InvokeOption
     ```
     """
     __args__ = dict()
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:organizations/getClientOpenIdUserInfo:getClientOpenIdUserInfo', __args__, opts=opts, typ=GetClientOpenIdUserInfoResult)
     return __ret__.apply(lambda __response__: GetClientOpenIdUserInfoResult(
         email=pulumi.get(__response__, 'email'),

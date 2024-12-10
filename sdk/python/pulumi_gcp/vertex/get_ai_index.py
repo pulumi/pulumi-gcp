@@ -236,7 +236,7 @@ def get_ai_index(name: Optional[str] = None,
 def get_ai_index_output(name: Optional[pulumi.Input[str]] = None,
                         project: Optional[pulumi.Input[Optional[str]]] = None,
                         region: Optional[pulumi.Input[str]] = None,
-                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAiIndexResult]:
+                        opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAiIndexResult]:
     """
     A representation of a collection of database items organized in a way that allows for approximate nearest neighbor (a.k.a ANN) algorithms search.
 
@@ -251,7 +251,7 @@ def get_ai_index_output(name: Optional[pulumi.Input[str]] = None,
     __args__['name'] = name
     __args__['project'] = project
     __args__['region'] = region
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:vertex/getAiIndex:getAiIndex', __args__, opts=opts, typ=GetAiIndexResult)
     return __ret__.apply(lambda __response__: GetAiIndexResult(
         create_time=pulumi.get(__response__, 'create_time'),

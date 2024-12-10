@@ -68,7 +68,7 @@ export interface GetCryptoKeysResult {
  * A CryptoKey is an interface to key material which can be used to encrypt and decrypt data. A CryptoKey belongs to a
  * Google Cloud KMS KeyRing.
  */
-export function getCryptoKeysOutput(args: GetCryptoKeysOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCryptoKeysResult> {
+export function getCryptoKeysOutput(args: GetCryptoKeysOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCryptoKeysResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:kms/getCryptoKeys:getCryptoKeys", {
         "filter": args.filter,

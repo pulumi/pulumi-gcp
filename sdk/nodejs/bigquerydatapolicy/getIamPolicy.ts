@@ -85,7 +85,7 @@ export interface GetIamPolicyResult {
  * });
  * ```
  */
-export function getIamPolicyOutput(args: GetIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetIamPolicyResult> {
+export function getIamPolicyOutput(args: GetIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:bigquerydatapolicy/getIamPolicy:getIamPolicy", {
         "dataPolicyId": args.dataPolicyId,

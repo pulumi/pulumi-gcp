@@ -128,7 +128,7 @@ export interface GetTokenResult {
  * });
  * ```
  */
-export function getTokenOutput(args: GetTokenOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetTokenResult> {
+export function getTokenOutput(args: GetTokenOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetTokenResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:siteverification/getToken:getToken", {
         "identifier": args.identifier,

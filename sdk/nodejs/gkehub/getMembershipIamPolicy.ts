@@ -86,7 +86,7 @@ export interface GetMembershipIamPolicyResult {
  * });
  * ```
  */
-export function getMembershipIamPolicyOutput(args: GetMembershipIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetMembershipIamPolicyResult> {
+export function getMembershipIamPolicyOutput(args: GetMembershipIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetMembershipIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:gkehub/getMembershipIamPolicy:getMembershipIamPolicy", {
         "location": args.location,

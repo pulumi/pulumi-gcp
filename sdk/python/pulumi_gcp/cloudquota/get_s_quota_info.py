@@ -297,7 +297,7 @@ def get_s_quota_info(parent: Optional[str] = None,
 def get_s_quota_info_output(parent: Optional[pulumi.Input[str]] = None,
                             quota_id: Optional[pulumi.Input[str]] = None,
                             service: Optional[pulumi.Input[str]] = None,
-                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSQuotaInfoResult]:
+                            opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSQuotaInfoResult]:
     """
     Provides information about a particular quota for a given project, folder or organization.
 
@@ -321,7 +321,7 @@ def get_s_quota_info_output(parent: Optional[pulumi.Input[str]] = None,
     __args__['parent'] = parent
     __args__['quotaId'] = quota_id
     __args__['service'] = service
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:cloudquota/getSQuotaInfo:getSQuotaInfo', __args__, opts=opts, typ=GetSQuotaInfoResult)
     return __ret__.apply(lambda __response__: GetSQuotaInfoResult(
         container_type=pulumi.get(__response__, 'container_type'),

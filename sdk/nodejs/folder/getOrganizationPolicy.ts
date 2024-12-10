@@ -81,7 +81,7 @@ export interface GetOrganizationPolicyResult {
  * export const version = policy.then(policy => policy.version);
  * ```
  */
-export function getOrganizationPolicyOutput(args: GetOrganizationPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetOrganizationPolicyResult> {
+export function getOrganizationPolicyOutput(args: GetOrganizationPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetOrganizationPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:folder/getOrganizationPolicy:getOrganizationPolicy", {
         "constraint": args.constraint,

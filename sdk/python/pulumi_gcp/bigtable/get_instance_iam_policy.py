@@ -123,7 +123,7 @@ def get_instance_iam_policy(instance: Optional[str] = None,
         project=pulumi.get(__ret__, 'project'))
 def get_instance_iam_policy_output(instance: Optional[pulumi.Input[str]] = None,
                                    project: Optional[pulumi.Input[Optional[str]]] = None,
-                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstanceIamPolicyResult]:
+                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceIamPolicyResult]:
     """
     Retrieves the current IAM policy data for a Bigtable instance.
 
@@ -142,7 +142,7 @@ def get_instance_iam_policy_output(instance: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['instance'] = instance
     __args__['project'] = project
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:bigtable/getInstanceIamPolicy:getInstanceIamPolicy', __args__, opts=opts, typ=GetInstanceIamPolicyResult)
     return __ret__.apply(lambda __response__: GetInstanceIamPolicyResult(
         etag=pulumi.get(__response__, 'etag'),

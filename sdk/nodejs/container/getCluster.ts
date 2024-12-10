@@ -164,7 +164,7 @@ export interface GetClusterResult {
  * export const nodePools = myCluster.then(myCluster => myCluster.nodePools);
  * ```
  */
-export function getClusterOutput(args: GetClusterOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetClusterResult> {
+export function getClusterOutput(args: GetClusterOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:container/getCluster:getCluster", {
         "location": args.location,

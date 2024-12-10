@@ -182,7 +182,7 @@ def get_apple_app(app_id: Optional[str] = None,
         team_id=pulumi.get(__ret__, 'team_id'))
 def get_apple_app_output(app_id: Optional[pulumi.Input[str]] = None,
                          project: Optional[pulumi.Input[Optional[str]]] = None,
-                         opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetAppleAppResult]:
+                         opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetAppleAppResult]:
     """
     Use this data source to access information about an existing resource.
 
@@ -196,7 +196,7 @@ def get_apple_app_output(app_id: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['appId'] = app_id
     __args__['project'] = project
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:firebase/getAppleApp:getAppleApp', __args__, opts=opts, typ=GetAppleAppResult)
     return __ret__.apply(lambda __response__: GetAppleAppResult(
         api_key_id=pulumi.get(__response__, 'api_key_id'),

@@ -127,7 +127,7 @@ def get_snapshot_iam_policy(name: Optional[str] = None,
         project=pulumi.get(__ret__, 'project'))
 def get_snapshot_iam_policy_output(name: Optional[pulumi.Input[str]] = None,
                                    project: Optional[pulumi.Input[Optional[str]]] = None,
-                                   opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSnapshotIamPolicyResult]:
+                                   opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSnapshotIamPolicyResult]:
     """
     Retrieves the current IAM policy data for snapshot
 
@@ -149,7 +149,7 @@ def get_snapshot_iam_policy_output(name: Optional[pulumi.Input[str]] = None,
     __args__ = dict()
     __args__['name'] = name
     __args__['project'] = project
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:compute/getSnapshotIamPolicy:getSnapshotIamPolicy', __args__, opts=opts, typ=GetSnapshotIamPolicyResult)
     return __ret__.apply(lambda __response__: GetSnapshotIamPolicyResult(
         etag=pulumi.get(__response__, 'etag'),

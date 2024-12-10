@@ -101,7 +101,7 @@ export interface GetSSLPolicyResult {
  * });
  * ```
  */
-export function getSSLPolicyOutput(args: GetSSLPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSSLPolicyResult> {
+export function getSSLPolicyOutput(args: GetSSLPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSSLPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:compute/getSSLPolicy:getSSLPolicy", {
         "name": args.name,

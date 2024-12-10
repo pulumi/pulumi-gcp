@@ -75,7 +75,7 @@ export interface GetClusterIamPolicyResult {
  * });
  * ```
  */
-export function getClusterIamPolicyOutput(args: GetClusterIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetClusterIamPolicyResult> {
+export function getClusterIamPolicyOutput(args: GetClusterIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetClusterIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:dataproc/getClusterIamPolicy:getClusterIamPolicy", {
         "cluster": args.cluster,

@@ -79,7 +79,7 @@ export interface GetBackupPlanAssociationResult {
  * });
  * ```
  */
-export function getBackupPlanAssociationOutput(args: GetBackupPlanAssociationOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBackupPlanAssociationResult> {
+export function getBackupPlanAssociationOutput(args: GetBackupPlanAssociationOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetBackupPlanAssociationResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:backupdisasterrecovery/getBackupPlanAssociation:getBackupPlanAssociation", {
         "backupPlanAssociationId": args.backupPlanAssociationId,

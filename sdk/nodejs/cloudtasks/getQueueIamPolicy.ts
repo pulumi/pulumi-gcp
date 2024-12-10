@@ -87,7 +87,7 @@ export interface GetQueueIamPolicyResult {
  * });
  * ```
  */
-export function getQueueIamPolicyOutput(args: GetQueueIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetQueueIamPolicyResult> {
+export function getQueueIamPolicyOutput(args: GetQueueIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetQueueIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:cloudtasks/getQueueIamPolicy:getQueueIamPolicy", {
         "location": args.location,

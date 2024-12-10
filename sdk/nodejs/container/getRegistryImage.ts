@@ -93,7 +93,7 @@ export interface GetRegistryImageResult {
  * export const gcrLocation = debian.then(debian => debian.imageUrl);
  * ```
  */
-export function getRegistryImageOutput(args: GetRegistryImageOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRegistryImageResult> {
+export function getRegistryImageOutput(args: GetRegistryImageOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegistryImageResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:container/getRegistryImage:getRegistryImage", {
         "digest": args.digest,

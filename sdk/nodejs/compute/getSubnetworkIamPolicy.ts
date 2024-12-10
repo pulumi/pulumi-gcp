@@ -88,7 +88,7 @@ export interface GetSubnetworkIamPolicyResult {
  * });
  * ```
  */
-export function getSubnetworkIamPolicyOutput(args: GetSubnetworkIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSubnetworkIamPolicyResult> {
+export function getSubnetworkIamPolicyOutput(args: GetSubnetworkIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSubnetworkIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:compute/getSubnetworkIamPolicy:getSubnetworkIamPolicy", {
         "project": args.project,

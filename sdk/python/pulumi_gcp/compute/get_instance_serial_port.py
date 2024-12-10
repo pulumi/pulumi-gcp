@@ -194,7 +194,7 @@ def get_instance_serial_port_output(instance: Optional[pulumi.Input[str]] = None
                                     port: Optional[pulumi.Input[int]] = None,
                                     project: Optional[pulumi.Input[Optional[str]]] = None,
                                     zone: Optional[pulumi.Input[Optional[str]]] = None,
-                                    opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetInstanceSerialPortResult]:
+                                    opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetInstanceSerialPortResult]:
     """
     Get the serial port output from a Compute Instance. For more information see
     the official [API](https://cloud.google.com/compute/docs/instances/viewing-serial-port-output) documentation.
@@ -273,7 +273,7 @@ def get_instance_serial_port_output(instance: Optional[pulumi.Input[str]] = None
     __args__['port'] = port
     __args__['project'] = project
     __args__['zone'] = zone
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:compute/getInstanceSerialPort:getInstanceSerialPort', __args__, opts=opts, typ=GetInstanceSerialPortResult)
     return __ret__.apply(lambda __response__: GetInstanceSerialPortResult(
         contents=pulumi.get(__response__, 'contents'),

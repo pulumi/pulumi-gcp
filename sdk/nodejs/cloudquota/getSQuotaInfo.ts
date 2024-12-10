@@ -133,7 +133,7 @@ export interface GetSQuotaInfoResult {
  * });
  * ```
  */
-export function getSQuotaInfoOutput(args: GetSQuotaInfoOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSQuotaInfoResult> {
+export function getSQuotaInfoOutput(args: GetSQuotaInfoOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSQuotaInfoResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:cloudquota/getSQuotaInfo:getSQuotaInfo", {
         "parent": args.parent,

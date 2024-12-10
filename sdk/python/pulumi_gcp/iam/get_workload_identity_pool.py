@@ -152,7 +152,7 @@ def get_workload_identity_pool(project: Optional[str] = None,
         workload_identity_pool_id=pulumi.get(__ret__, 'workload_identity_pool_id'))
 def get_workload_identity_pool_output(project: Optional[pulumi.Input[Optional[str]]] = None,
                                       workload_identity_pool_id: Optional[pulumi.Input[str]] = None,
-                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetWorkloadIdentityPoolResult]:
+                                      opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetWorkloadIdentityPoolResult]:
     """
     Get a IAM workload identity pool from Google Cloud by its id.
     > **Note:** The following resource requires the Beta IAM role `roles/iam.workloadIdentityPoolAdmin` in order to succeed. `OWNER` and `EDITOR` roles do not include the necessary permissions.
@@ -176,7 +176,7 @@ def get_workload_identity_pool_output(project: Optional[pulumi.Input[Optional[st
     __args__ = dict()
     __args__['project'] = project
     __args__['workloadIdentityPoolId'] = workload_identity_pool_id
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:iam/getWorkloadIdentityPool:getWorkloadIdentityPool', __args__, opts=opts, typ=GetWorkloadIdentityPoolResult)
     return __ret__.apply(lambda __response__: GetWorkloadIdentityPoolResult(
         description=pulumi.get(__response__, 'description'),

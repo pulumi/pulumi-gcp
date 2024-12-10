@@ -85,7 +85,7 @@ export interface GetCaPoolIamPolicyResult {
  * });
  * ```
  */
-export function getCaPoolIamPolicyOutput(args: GetCaPoolIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetCaPoolIamPolicyResult> {
+export function getCaPoolIamPolicyOutput(args: GetCaPoolIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetCaPoolIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:certificateauthority/getCaPoolIamPolicy:getCaPoolIamPolicy", {
         "caPool": args.caPool,

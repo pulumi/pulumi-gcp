@@ -55,7 +55,7 @@ export interface GetAiEndpointIamPolicyResult {
     readonly policyData: string;
     readonly project: string;
 }
-export function getAiEndpointIamPolicyOutput(args: GetAiEndpointIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAiEndpointIamPolicyResult> {
+export function getAiEndpointIamPolicyOutput(args: GetAiEndpointIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAiEndpointIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:vertex/getAiEndpointIamPolicy:getAiEndpointIamPolicy", {
         "endpoint": args.endpoint,

@@ -115,7 +115,7 @@ def get_cloud_exadata_infrastructures(location: Optional[str] = None,
         project=pulumi.get(__ret__, 'project'))
 def get_cloud_exadata_infrastructures_output(location: Optional[pulumi.Input[str]] = None,
                                              project: Optional[pulumi.Input[Optional[str]]] = None,
-                                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetCloudExadataInfrastructuresResult]:
+                                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetCloudExadataInfrastructuresResult]:
     """
     List all ExadataInfrastructures.
 
@@ -141,7 +141,7 @@ def get_cloud_exadata_infrastructures_output(location: Optional[pulumi.Input[str
     __args__ = dict()
     __args__['location'] = location
     __args__['project'] = project
-    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:oracledatabase/getCloudExadataInfrastructures:getCloudExadataInfrastructures', __args__, opts=opts, typ=GetCloudExadataInfrastructuresResult)
     return __ret__.apply(lambda __response__: GetCloudExadataInfrastructuresResult(
         cloud_exadata_infrastructures=pulumi.get(__response__, 'cloud_exadata_infrastructures'),

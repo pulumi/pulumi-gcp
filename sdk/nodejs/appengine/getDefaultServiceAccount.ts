@@ -78,7 +78,7 @@ export interface GetDefaultServiceAccountResult {
  * export const defaultAccount = _default.then(_default => _default.email);
  * ```
  */
-export function getDefaultServiceAccountOutput(args?: GetDefaultServiceAccountOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDefaultServiceAccountResult> {
+export function getDefaultServiceAccountOutput(args?: GetDefaultServiceAccountOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDefaultServiceAccountResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:appengine/getDefaultServiceAccount:getDefaultServiceAccount", {

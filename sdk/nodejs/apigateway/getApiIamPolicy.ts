@@ -44,7 +44,7 @@ export interface GetApiIamPolicyResult {
     readonly policyData: string;
     readonly project: string;
 }
-export function getApiIamPolicyOutput(args: GetApiIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetApiIamPolicyResult> {
+export function getApiIamPolicyOutput(args: GetApiIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetApiIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:apigateway/getApiIamPolicy:getApiIamPolicy", {
         "api": args.api,
