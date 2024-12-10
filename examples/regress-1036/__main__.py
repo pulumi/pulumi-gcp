@@ -6,6 +6,5 @@ from description import description
 private_zone = gcp.dns.ManagedZone("private",
     description=description,
     dns_name="example.net.",
-    name="private",
     visibility="private",
 )
