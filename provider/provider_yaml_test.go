@@ -90,6 +90,7 @@ func TestNetworkUpgrade(t *testing.T) {
 }
 
 func TestClusterUpgrade(t *testing.T) {
+	t.Skipf("TODO[https://github.com/pulumi/pulumi-gcp/issues/2729]: Flaky")
 	testUpgrade(t, "test-programs/cluster",
 		optproviderupgrade.BaselineOpts(opttest.DownloadProviderVersion(providerName, "7.2.1")))
 }
@@ -101,6 +102,7 @@ func skipIfNotCI(t *testing.T) {
 }
 
 func TestIamBinding(t *testing.T) {
+	t.Skip("TODO[https://github.com/pulumi/pulumi-gcp/issues/2725]: Flaky")
 	skipIfNotCI(t)
 	// ServiceAccount requires 7.0
 	testUpgrade(t, "test-programs/iam-binding",
@@ -108,6 +110,7 @@ func TestIamBinding(t *testing.T) {
 }
 
 func TestIamMember(t *testing.T) {
+	t.Skip("TODO[https://github.com/pulumi/pulumi-gcp/issues/2726]: Flaky")
 	skipIfNotCI(t)
 	// ServiceAccount requires 7.0
 	testUpgrade(t, "test-programs/iam-member",
