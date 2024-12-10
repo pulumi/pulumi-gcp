@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
     public sealed class AuthorityConfigSubjectKeyIdArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The value of the KeyId in lowercase hexidecimal.
+        /// The value of the KeyId in lowercase hexadecimal.
         /// 
         /// &lt;a name="nested_x509_config"&gt;&lt;/a&gt;The `x509_config` block supports:
         /// </summary>

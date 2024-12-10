@@ -16,8 +16,7 @@ public final class V2VmAcceleratorConfig {
      */
     private String topology;
     /**
-     * @return Type of TPU.
-     * Possible values are: `V2`, `V3`, `V4`, `V5P`.
+     * @return Type of TPU. Please select one of the allowed types: https://cloud.google.com/tpu/docs/reference/rest/v2/AcceleratorConfig#Type
      * 
      */
     private String type;
@@ -31,8 +30,7 @@ public final class V2VmAcceleratorConfig {
         return this.topology;
     }
     /**
-     * @return Type of TPU.
-     * Possible values are: `V2`, `V3`, `V4`, `V5P`.
+     * @return Type of TPU. Please select one of the allowed types: https://cloud.google.com/tpu/docs/reference/rest/v2/AcceleratorConfig#Type
      * 
      */
     public String type() {

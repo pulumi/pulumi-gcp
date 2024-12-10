@@ -12,6 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Container to store and organize immutable and indelible backups.
+//
 // ## Example Usage
 //
 // ### Backup Dr Backup Vault Full
@@ -33,13 +35,13 @@ import (
 //				BackupVaultId:                          pulumi.String("backup-vault-test"),
 //				Description:                            pulumi.String("This is a second backup vault built by Terraform."),
 //				BackupMinimumEnforcedRetentionDuration: pulumi.String("100000s"),
-//				Labels: pulumi.StringMap{
-//					"foo": pulumi.String("bar1"),
-//					"bar": pulumi.String("baz1"),
-//				},
 //				Annotations: pulumi.StringMap{
 //					"annotations1": pulumi.String("bar1"),
 //					"annotations2": pulumi.String("baz1"),
+//				},
+//				Labels: pulumi.StringMap{
+//					"foo": pulumi.String("bar1"),
+//					"bar": pulumi.String("baz1"),
 //				},
 //				ForceUpdate:                pulumi.Bool(true),
 //				AccessRestriction:          pulumi.String("WITHIN_ORGANIZATION"),

@@ -238,7 +238,7 @@ export class Volume extends pulumi.CustomResource {
      */
     public readonly securityStyle!: pulumi.Output<string>;
     /**
-     * Service level of the volume. Inherited from storage pool. Supported values are : PREMIUM, EXTERME, STANDARD, FLEX.
+     * Service level of the volume. Inherited from storage pool. Supported values are : PREMIUM, EXTREME, STANDARD, FLEX.
      */
     public /*out*/ readonly serviceLevel!: pulumi.Output<string>;
     /**
@@ -269,7 +269,7 @@ export class Volume extends pulumi.CustomResource {
      */
     public /*out*/ readonly stateDetails!: pulumi.Output<string>;
     /**
-     * Name of the storage pool to create the volume in. Pool needs enough spare capacity to accomodate the volume.
+     * Name of the storage pool to create the volume in. Pool needs enough spare capacity to accommodate the volume.
      */
     public readonly storagePool!: pulumi.Output<string>;
     /**
@@ -551,7 +551,7 @@ export interface VolumeState {
      */
     securityStyle?: pulumi.Input<string>;
     /**
-     * Service level of the volume. Inherited from storage pool. Supported values are : PREMIUM, EXTERME, STANDARD, FLEX.
+     * Service level of the volume. Inherited from storage pool. Supported values are : PREMIUM, EXTREME, STANDARD, FLEX.
      */
     serviceLevel?: pulumi.Input<string>;
     /**
@@ -582,7 +582,7 @@ export interface VolumeState {
      */
     stateDetails?: pulumi.Input<string>;
     /**
-     * Name of the storage pool to create the volume in. Pool needs enough spare capacity to accomodate the volume.
+     * Name of the storage pool to create the volume in. Pool needs enough spare capacity to accommodate the volume.
      */
     storagePool?: pulumi.Input<string>;
     /**
@@ -710,7 +710,7 @@ export interface VolumeArgs {
      */
     snapshotPolicy?: pulumi.Input<inputs.netapp.VolumeSnapshotPolicy>;
     /**
-     * Name of the storage pool to create the volume in. Pool needs enough spare capacity to accomodate the volume.
+     * Name of the storage pool to create the volume in. Pool needs enough spare capacity to accommodate the volume.
      */
     storagePool: pulumi.Input<string>;
     /**

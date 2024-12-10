@@ -19,6 +19,12 @@ __all__ = [
     'NodeNetworkEndpointArgsDict',
     'NodeSchedulingConfigArgs',
     'NodeSchedulingConfigArgsDict',
+    'V2QueuedResourceTpuArgs',
+    'V2QueuedResourceTpuArgsDict',
+    'V2QueuedResourceTpuNodeSpecArgs',
+    'V2QueuedResourceTpuNodeSpecArgsDict',
+    'V2QueuedResourceTpuNodeSpecNodeArgs',
+    'V2QueuedResourceTpuNodeSpecNodeArgsDict',
     'V2VmAcceleratorConfigArgs',
     'V2VmAcceleratorConfigArgsDict',
     'V2VmDataDiskArgs',
@@ -131,6 +137,185 @@ class NodeSchedulingConfigArgs:
 
 
 if not MYPY:
+    class V2QueuedResourceTpuArgsDict(TypedDict):
+        node_specs: NotRequired[pulumi.Input[Sequence[pulumi.Input['V2QueuedResourceTpuNodeSpecArgsDict']]]]
+        """
+        The TPU node(s) being requested.
+        Structure is documented below.
+        """
+elif False:
+    V2QueuedResourceTpuArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class V2QueuedResourceTpuArgs:
+    def __init__(__self__, *,
+                 node_specs: Optional[pulumi.Input[Sequence[pulumi.Input['V2QueuedResourceTpuNodeSpecArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['V2QueuedResourceTpuNodeSpecArgs']]] node_specs: The TPU node(s) being requested.
+               Structure is documented below.
+        """
+        if node_specs is not None:
+            pulumi.set(__self__, "node_specs", node_specs)
+
+    @property
+    @pulumi.getter(name="nodeSpecs")
+    def node_specs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['V2QueuedResourceTpuNodeSpecArgs']]]]:
+        """
+        The TPU node(s) being requested.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "node_specs")
+
+    @node_specs.setter
+    def node_specs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['V2QueuedResourceTpuNodeSpecArgs']]]]):
+        pulumi.set(self, "node_specs", value)
+
+
+if not MYPY:
+    class V2QueuedResourceTpuNodeSpecArgsDict(TypedDict):
+        node: pulumi.Input['V2QueuedResourceTpuNodeSpecNodeArgsDict']
+        """
+        The node.
+        Structure is documented below.
+        """
+        parent: pulumi.Input[str]
+        """
+        The parent resource name.
+        """
+        node_id: NotRequired[pulumi.Input[str]]
+        """
+        Unqualified node identifier used to identify the node in the project once provisioned.
+        """
+elif False:
+    V2QueuedResourceTpuNodeSpecArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class V2QueuedResourceTpuNodeSpecArgs:
+    def __init__(__self__, *,
+                 node: pulumi.Input['V2QueuedResourceTpuNodeSpecNodeArgs'],
+                 parent: pulumi.Input[str],
+                 node_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input['V2QueuedResourceTpuNodeSpecNodeArgs'] node: The node.
+               Structure is documented below.
+        :param pulumi.Input[str] parent: The parent resource name.
+        :param pulumi.Input[str] node_id: Unqualified node identifier used to identify the node in the project once provisioned.
+        """
+        pulumi.set(__self__, "node", node)
+        pulumi.set(__self__, "parent", parent)
+        if node_id is not None:
+            pulumi.set(__self__, "node_id", node_id)
+
+    @property
+    @pulumi.getter
+    def node(self) -> pulumi.Input['V2QueuedResourceTpuNodeSpecNodeArgs']:
+        """
+        The node.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "node")
+
+    @node.setter
+    def node(self, value: pulumi.Input['V2QueuedResourceTpuNodeSpecNodeArgs']):
+        pulumi.set(self, "node", value)
+
+    @property
+    @pulumi.getter
+    def parent(self) -> pulumi.Input[str]:
+        """
+        The parent resource name.
+        """
+        return pulumi.get(self, "parent")
+
+    @parent.setter
+    def parent(self, value: pulumi.Input[str]):
+        pulumi.set(self, "parent", value)
+
+    @property
+    @pulumi.getter(name="nodeId")
+    def node_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Unqualified node identifier used to identify the node in the project once provisioned.
+        """
+        return pulumi.get(self, "node_id")
+
+    @node_id.setter
+    def node_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "node_id", value)
+
+
+if not MYPY:
+    class V2QueuedResourceTpuNodeSpecNodeArgsDict(TypedDict):
+        runtime_version: pulumi.Input[str]
+        """
+        Runtime version for the TPU.
+        """
+        accelerator_type: NotRequired[pulumi.Input[str]]
+        """
+        TPU accelerator type for the TPU. If not specified, this defaults to 'v2-8'.
+        """
+        description: NotRequired[pulumi.Input[str]]
+        """
+        Text description of the TPU.
+        """
+elif False:
+    V2QueuedResourceTpuNodeSpecNodeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class V2QueuedResourceTpuNodeSpecNodeArgs:
+    def __init__(__self__, *,
+                 runtime_version: pulumi.Input[str],
+                 accelerator_type: Optional[pulumi.Input[str]] = None,
+                 description: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] runtime_version: Runtime version for the TPU.
+        :param pulumi.Input[str] accelerator_type: TPU accelerator type for the TPU. If not specified, this defaults to 'v2-8'.
+        :param pulumi.Input[str] description: Text description of the TPU.
+        """
+        pulumi.set(__self__, "runtime_version", runtime_version)
+        if accelerator_type is not None:
+            pulumi.set(__self__, "accelerator_type", accelerator_type)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter(name="runtimeVersion")
+    def runtime_version(self) -> pulumi.Input[str]:
+        """
+        Runtime version for the TPU.
+        """
+        return pulumi.get(self, "runtime_version")
+
+    @runtime_version.setter
+    def runtime_version(self, value: pulumi.Input[str]):
+        pulumi.set(self, "runtime_version", value)
+
+    @property
+    @pulumi.getter(name="acceleratorType")
+    def accelerator_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        TPU accelerator type for the TPU. If not specified, this defaults to 'v2-8'.
+        """
+        return pulumi.get(self, "accelerator_type")
+
+    @accelerator_type.setter
+    def accelerator_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "accelerator_type", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Text description of the TPU.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+
+if not MYPY:
     class V2VmAcceleratorConfigArgsDict(TypedDict):
         topology: pulumi.Input[str]
         """
@@ -138,8 +323,7 @@ if not MYPY:
         """
         type: pulumi.Input[str]
         """
-        Type of TPU.
-        Possible values are: `V2`, `V3`, `V4`, `V5P`.
+        Type of TPU. Please select one of the allowed types: https://cloud.google.com/tpu/docs/reference/rest/v2/AcceleratorConfig#Type
         """
 elif False:
     V2VmAcceleratorConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -151,8 +335,7 @@ class V2VmAcceleratorConfigArgs:
                  type: pulumi.Input[str]):
         """
         :param pulumi.Input[str] topology: Topology of TPU in chips.
-        :param pulumi.Input[str] type: Type of TPU.
-               Possible values are: `V2`, `V3`, `V4`, `V5P`.
+        :param pulumi.Input[str] type: Type of TPU. Please select one of the allowed types: https://cloud.google.com/tpu/docs/reference/rest/v2/AcceleratorConfig#Type
         """
         pulumi.set(__self__, "topology", topology)
         pulumi.set(__self__, "type", type)
@@ -173,8 +356,7 @@ class V2VmAcceleratorConfigArgs:
     @pulumi.getter
     def type(self) -> pulumi.Input[str]:
         """
-        Type of TPU.
-        Possible values are: `V2`, `V3`, `V4`, `V5P`.
+        Type of TPU. Please select one of the allowed types: https://cloud.google.com/tpu/docs/reference/rest/v2/AcceleratorConfig#Type
         """
         return pulumi.get(self, "type")
 

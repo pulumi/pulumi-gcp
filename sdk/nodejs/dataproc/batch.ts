@@ -248,6 +248,45 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Dataproc Batch Autotuning
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const exampleBatchAutotuning = new gcp.dataproc.Batch("example_batch_autotuning", {
+ *     batchId: "tf-test-batch_16511",
+ *     location: "us-central1",
+ *     labels: {
+ *         batch_test: "terraform",
+ *     },
+ *     runtimeConfig: {
+ *         version: "2.2",
+ *         properties: {
+ *             "spark.dynamicAllocation.enabled": "false",
+ *             "spark.executor.instances": "2",
+ *         },
+ *         cohort: "tf-dataproc-batch-example",
+ *         autotuningConfig: {
+ *             scenarios: [
+ *                 "SCALING",
+ *                 "MEMORY",
+ *             ],
+ *         },
+ *     },
+ *     environmentConfig: {
+ *         executionConfig: {
+ *             subnetworkUri: "default",
+ *             ttl: "3600s",
+ *         },
+ *     },
+ *     sparkBatch: {
+ *         mainClass: "org.apache.spark.examples.SparkPi",
+ *         args: ["10"],
+ *         jarFileUris: ["file:///usr/lib/spark/examples/jars/spark-examples.jar"],
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

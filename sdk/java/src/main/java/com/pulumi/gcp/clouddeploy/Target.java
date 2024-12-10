@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.clouddeploy.TargetArgs;
 import com.pulumi.gcp.clouddeploy.inputs.TargetState;
 import com.pulumi.gcp.clouddeploy.outputs.TargetAnthosCluster;
+import com.pulumi.gcp.clouddeploy.outputs.TargetAssociatedEntity;
 import com.pulumi.gcp.clouddeploy.outputs.TargetCustomTarget;
 import com.pulumi.gcp.clouddeploy.outputs.TargetExecutionConfig;
 import com.pulumi.gcp.clouddeploy.outputs.TargetGke;
@@ -258,6 +259,20 @@ public class Target extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<TargetAnthosCluster>> anthosCluster() {
         return Codegen.optional(this.anthosCluster);
+    }
+    /**
+     * Optional. Map of entity IDs to their associated entities. Associated entities allows specifying places other than the deployment target for specific features. For example, the Gateway API canary can be configured to deploy the HTTPRoute to a different cluster(s) than the deployment cluster using associated entities. An entity ID must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
+     * 
+     */
+    @Export(name="associatedEntities", refs={List.class,TargetAssociatedEntity.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<TargetAssociatedEntity>> associatedEntities;
+
+    /**
+     * @return Optional. Map of entity IDs to their associated entities. Associated entities allows specifying places other than the deployment target for specific features. For example, the Gateway API canary can be configured to deploy the HTTPRoute to a different cluster(s) than the deployment cluster using associated entities. An entity ID must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
+     * 
+     */
+    public Output<Optional<List<TargetAssociatedEntity>>> associatedEntities() {
+        return Codegen.optional(this.associatedEntities);
     }
     /**
      * Output only. Time at which the `Target` was created.

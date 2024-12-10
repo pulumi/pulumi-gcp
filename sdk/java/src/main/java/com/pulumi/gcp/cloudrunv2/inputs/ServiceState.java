@@ -253,14 +253,14 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * For a deleted resource, the time after which it will be permamently deleted.
+     * For a deleted resource, the time after which it will be permanently deleted.
      * 
      */
     @Import(name="expireTime")
     private @Nullable Output<String> expireTime;
 
     /**
-     * @return For a deleted resource, the time after which it will be permamently deleted.
+     * @return For a deleted resource, the time after which it will be permanently deleted.
      * 
      */
     public Optional<Output<String>> expireTime() {
@@ -1047,7 +1047,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param expireTime For a deleted resource, the time after which it will be permamently deleted.
+         * @param expireTime For a deleted resource, the time after which it will be permanently deleted.
          * 
          * @return builder
          * 
@@ -1058,7 +1058,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param expireTime For a deleted resource, the time after which it will be permamently deleted.
+         * @param expireTime For a deleted resource, the time after which it will be permanently deleted.
          * 
          * @return builder
          * 

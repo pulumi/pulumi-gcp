@@ -94,7 +94,7 @@ namespace Pulumi.Gcp.ServiceAccount
         public string Name { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the project that the service account will be created in.
+        /// The ID of the project that the service account is present in.
         /// Defaults to the provider project configuration.
         /// </summary>
         [Input("project")]
@@ -123,7 +123,7 @@ namespace Pulumi.Gcp.ServiceAccount
         public Input<string> Name { get; set; } = null!;
 
         /// <summary>
-        /// The ID of the project that the service account will be created in.
+        /// The ID of the project that the service account is present in.
         /// Defaults to the provider project configuration.
         /// </summary>
         [Input("project")]

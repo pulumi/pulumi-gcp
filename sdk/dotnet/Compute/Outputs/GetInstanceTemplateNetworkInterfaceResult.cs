@@ -64,7 +64,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly string NetworkIp;
         /// <summary>
-        /// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET
+        /// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, MRDMA, and IRDMA
         /// </summary>
         public readonly string NicType;
         /// <summary>

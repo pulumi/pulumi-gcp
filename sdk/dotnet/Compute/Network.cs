@@ -269,6 +269,16 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> NetworkFirewallPolicyEnforcementOrder { get; private set; } = null!;
 
         /// <summary>
+        /// A full or partial URL of the network profile to apply to this network.
+        /// This field can be set only at resource creation time. For example, the
+        /// following are valid URLs:
+        /// * https://www.googleapis.com/compute/beta/projects/{projectId}/global/networkProfiles/{network_profile_name}
+        /// * projects/{projectId}/global/networkProfiles/{network_profile_name}
+        /// </summary>
+        [Output("networkProfile")]
+        public Output<string?> NetworkProfile { get; private set; } = null!;
+
+        /// <summary>
         /// The unique identifier for the resource. This identifier is defined by the server.
         /// </summary>
         [Output("numericId")]
@@ -440,6 +450,16 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? NetworkFirewallPolicyEnforcementOrder { get; set; }
 
         /// <summary>
+        /// A full or partial URL of the network profile to apply to this network.
+        /// This field can be set only at resource creation time. For example, the
+        /// following are valid URLs:
+        /// * https://www.googleapis.com/compute/beta/projects/{projectId}/global/networkProfiles/{network_profile_name}
+        /// * projects/{projectId}/global/networkProfiles/{network_profile_name}
+        /// </summary>
+        [Input("networkProfile")]
+        public Input<string>? NetworkProfile { get; set; }
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
@@ -566,6 +586,16 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("networkFirewallPolicyEnforcementOrder")]
         public Input<string>? NetworkFirewallPolicyEnforcementOrder { get; set; }
+
+        /// <summary>
+        /// A full or partial URL of the network profile to apply to this network.
+        /// This field can be set only at resource creation time. For example, the
+        /// following are valid URLs:
+        /// * https://www.googleapis.com/compute/beta/projects/{projectId}/global/networkProfiles/{network_profile_name}
+        /// * projects/{projectId}/global/networkProfiles/{network_profile_name}
+        /// </summary>
+        [Input("networkProfile")]
+        public Input<string>? NetworkProfile { get; set; }
 
         /// <summary>
         /// The unique identifier for the resource. This identifier is defined by the server.

@@ -71,7 +71,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var membership = new Membership("membership", MembershipArgs.builder()
- *             .membershipId("tf-test-membership_9106")
+ *             .membershipId("tf-test-membership_27169")
  *             .endpoint(MembershipEndpointArgs.builder()
  *                 .gkeCluster(MembershipEndpointGkeClusterArgs.builder()
  *                     .resourceLink(primary.id().applyValue(id -> String.format("//container.googleapis.com/%s", id)))
@@ -82,11 +82,11 @@ import javax.annotation.Nullable;
  *                 .build());
  * 
  *         var scope = new Scope("scope", ScopeArgs.builder()
- *             .scopeId("tf-test-scope_27169")
+ *             .scopeId("tf-test-scope_75223")
  *             .build());
  * 
  *         var membershipBinding = new MembershipBinding("membershipBinding", MembershipBindingArgs.builder()
- *             .membershipBindingId("tf-test-membership-binding_75223")
+ *             .membershipBindingId("tf-test-membership-binding_41819")
  *             .scope(scope.name())
  *             .membershipId(membership.membershipId())
  *             .location("global")

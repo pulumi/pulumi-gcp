@@ -2255,6 +2255,11 @@ func (o BatchPysparkBatchPtrOutput) PythonFileUris() pulumi.StringArrayOutput {
 }
 
 type BatchRuntimeConfig struct {
+	// Optional. Autotuning configuration of the workload.
+	// Structure is documented below.
+	AutotuningConfig *BatchRuntimeConfigAutotuningConfig `pulumi:"autotuningConfig"`
+	// Optional. Cohort identifier. Identifies families of the workloads having the same shape, e.g. daily ETL jobs.
+	Cohort *string `pulumi:"cohort"`
 	// Optional custom container image for the job runtime environment. If not specified, a default container image will be used.
 	ContainerImage *string `pulumi:"containerImage"`
 	// (Output)
@@ -2278,6 +2283,11 @@ type BatchRuntimeConfigInput interface {
 }
 
 type BatchRuntimeConfigArgs struct {
+	// Optional. Autotuning configuration of the workload.
+	// Structure is documented below.
+	AutotuningConfig BatchRuntimeConfigAutotuningConfigPtrInput `pulumi:"autotuningConfig"`
+	// Optional. Cohort identifier. Identifies families of the workloads having the same shape, e.g. daily ETL jobs.
+	Cohort pulumi.StringPtrInput `pulumi:"cohort"`
 	// Optional custom container image for the job runtime environment. If not specified, a default container image will be used.
 	ContainerImage pulumi.StringPtrInput `pulumi:"containerImage"`
 	// (Output)
@@ -2366,6 +2376,17 @@ func (o BatchRuntimeConfigOutput) ToBatchRuntimeConfigPtrOutputWithContext(ctx c
 	}).(BatchRuntimeConfigPtrOutput)
 }
 
+// Optional. Autotuning configuration of the workload.
+// Structure is documented below.
+func (o BatchRuntimeConfigOutput) AutotuningConfig() BatchRuntimeConfigAutotuningConfigPtrOutput {
+	return o.ApplyT(func(v BatchRuntimeConfig) *BatchRuntimeConfigAutotuningConfig { return v.AutotuningConfig }).(BatchRuntimeConfigAutotuningConfigPtrOutput)
+}
+
+// Optional. Cohort identifier. Identifies families of the workloads having the same shape, e.g. daily ETL jobs.
+func (o BatchRuntimeConfigOutput) Cohort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v BatchRuntimeConfig) *string { return v.Cohort }).(pulumi.StringPtrOutput)
+}
+
 // Optional custom container image for the job runtime environment. If not specified, a default container image will be used.
 func (o BatchRuntimeConfigOutput) ContainerImage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BatchRuntimeConfig) *string { return v.ContainerImage }).(pulumi.StringPtrOutput)
@@ -2411,6 +2432,27 @@ func (o BatchRuntimeConfigPtrOutput) Elem() BatchRuntimeConfigOutput {
 	}).(BatchRuntimeConfigOutput)
 }
 
+// Optional. Autotuning configuration of the workload.
+// Structure is documented below.
+func (o BatchRuntimeConfigPtrOutput) AutotuningConfig() BatchRuntimeConfigAutotuningConfigPtrOutput {
+	return o.ApplyT(func(v *BatchRuntimeConfig) *BatchRuntimeConfigAutotuningConfig {
+		if v == nil {
+			return nil
+		}
+		return v.AutotuningConfig
+	}).(BatchRuntimeConfigAutotuningConfigPtrOutput)
+}
+
+// Optional. Cohort identifier. Identifies families of the workloads having the same shape, e.g. daily ETL jobs.
+func (o BatchRuntimeConfigPtrOutput) Cohort() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *BatchRuntimeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Cohort
+	}).(pulumi.StringPtrOutput)
+}
+
 // Optional custom container image for the job runtime environment. If not specified, a default container image will be used.
 func (o BatchRuntimeConfigPtrOutput) ContainerImage() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BatchRuntimeConfig) *string {
@@ -2450,6 +2492,147 @@ func (o BatchRuntimeConfigPtrOutput) Version() pulumi.StringPtrOutput {
 		}
 		return v.Version
 	}).(pulumi.StringPtrOutput)
+}
+
+type BatchRuntimeConfigAutotuningConfig struct {
+	// Optional. Scenarios for which tunings are applied.
+	// Each value may be one of: `SCALING`, `BROADCAST_HASH_JOIN`, `MEMORY`.
+	Scenarios []string `pulumi:"scenarios"`
+}
+
+// BatchRuntimeConfigAutotuningConfigInput is an input type that accepts BatchRuntimeConfigAutotuningConfigArgs and BatchRuntimeConfigAutotuningConfigOutput values.
+// You can construct a concrete instance of `BatchRuntimeConfigAutotuningConfigInput` via:
+//
+//	BatchRuntimeConfigAutotuningConfigArgs{...}
+type BatchRuntimeConfigAutotuningConfigInput interface {
+	pulumi.Input
+
+	ToBatchRuntimeConfigAutotuningConfigOutput() BatchRuntimeConfigAutotuningConfigOutput
+	ToBatchRuntimeConfigAutotuningConfigOutputWithContext(context.Context) BatchRuntimeConfigAutotuningConfigOutput
+}
+
+type BatchRuntimeConfigAutotuningConfigArgs struct {
+	// Optional. Scenarios for which tunings are applied.
+	// Each value may be one of: `SCALING`, `BROADCAST_HASH_JOIN`, `MEMORY`.
+	Scenarios pulumi.StringArrayInput `pulumi:"scenarios"`
+}
+
+func (BatchRuntimeConfigAutotuningConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*BatchRuntimeConfigAutotuningConfig)(nil)).Elem()
+}
+
+func (i BatchRuntimeConfigAutotuningConfigArgs) ToBatchRuntimeConfigAutotuningConfigOutput() BatchRuntimeConfigAutotuningConfigOutput {
+	return i.ToBatchRuntimeConfigAutotuningConfigOutputWithContext(context.Background())
+}
+
+func (i BatchRuntimeConfigAutotuningConfigArgs) ToBatchRuntimeConfigAutotuningConfigOutputWithContext(ctx context.Context) BatchRuntimeConfigAutotuningConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BatchRuntimeConfigAutotuningConfigOutput)
+}
+
+func (i BatchRuntimeConfigAutotuningConfigArgs) ToBatchRuntimeConfigAutotuningConfigPtrOutput() BatchRuntimeConfigAutotuningConfigPtrOutput {
+	return i.ToBatchRuntimeConfigAutotuningConfigPtrOutputWithContext(context.Background())
+}
+
+func (i BatchRuntimeConfigAutotuningConfigArgs) ToBatchRuntimeConfigAutotuningConfigPtrOutputWithContext(ctx context.Context) BatchRuntimeConfigAutotuningConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BatchRuntimeConfigAutotuningConfigOutput).ToBatchRuntimeConfigAutotuningConfigPtrOutputWithContext(ctx)
+}
+
+// BatchRuntimeConfigAutotuningConfigPtrInput is an input type that accepts BatchRuntimeConfigAutotuningConfigArgs, BatchRuntimeConfigAutotuningConfigPtr and BatchRuntimeConfigAutotuningConfigPtrOutput values.
+// You can construct a concrete instance of `BatchRuntimeConfigAutotuningConfigPtrInput` via:
+//
+//	        BatchRuntimeConfigAutotuningConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type BatchRuntimeConfigAutotuningConfigPtrInput interface {
+	pulumi.Input
+
+	ToBatchRuntimeConfigAutotuningConfigPtrOutput() BatchRuntimeConfigAutotuningConfigPtrOutput
+	ToBatchRuntimeConfigAutotuningConfigPtrOutputWithContext(context.Context) BatchRuntimeConfigAutotuningConfigPtrOutput
+}
+
+type batchRuntimeConfigAutotuningConfigPtrType BatchRuntimeConfigAutotuningConfigArgs
+
+func BatchRuntimeConfigAutotuningConfigPtr(v *BatchRuntimeConfigAutotuningConfigArgs) BatchRuntimeConfigAutotuningConfigPtrInput {
+	return (*batchRuntimeConfigAutotuningConfigPtrType)(v)
+}
+
+func (*batchRuntimeConfigAutotuningConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**BatchRuntimeConfigAutotuningConfig)(nil)).Elem()
+}
+
+func (i *batchRuntimeConfigAutotuningConfigPtrType) ToBatchRuntimeConfigAutotuningConfigPtrOutput() BatchRuntimeConfigAutotuningConfigPtrOutput {
+	return i.ToBatchRuntimeConfigAutotuningConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *batchRuntimeConfigAutotuningConfigPtrType) ToBatchRuntimeConfigAutotuningConfigPtrOutputWithContext(ctx context.Context) BatchRuntimeConfigAutotuningConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(BatchRuntimeConfigAutotuningConfigPtrOutput)
+}
+
+type BatchRuntimeConfigAutotuningConfigOutput struct{ *pulumi.OutputState }
+
+func (BatchRuntimeConfigAutotuningConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*BatchRuntimeConfigAutotuningConfig)(nil)).Elem()
+}
+
+func (o BatchRuntimeConfigAutotuningConfigOutput) ToBatchRuntimeConfigAutotuningConfigOutput() BatchRuntimeConfigAutotuningConfigOutput {
+	return o
+}
+
+func (o BatchRuntimeConfigAutotuningConfigOutput) ToBatchRuntimeConfigAutotuningConfigOutputWithContext(ctx context.Context) BatchRuntimeConfigAutotuningConfigOutput {
+	return o
+}
+
+func (o BatchRuntimeConfigAutotuningConfigOutput) ToBatchRuntimeConfigAutotuningConfigPtrOutput() BatchRuntimeConfigAutotuningConfigPtrOutput {
+	return o.ToBatchRuntimeConfigAutotuningConfigPtrOutputWithContext(context.Background())
+}
+
+func (o BatchRuntimeConfigAutotuningConfigOutput) ToBatchRuntimeConfigAutotuningConfigPtrOutputWithContext(ctx context.Context) BatchRuntimeConfigAutotuningConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v BatchRuntimeConfigAutotuningConfig) *BatchRuntimeConfigAutotuningConfig {
+		return &v
+	}).(BatchRuntimeConfigAutotuningConfigPtrOutput)
+}
+
+// Optional. Scenarios for which tunings are applied.
+// Each value may be one of: `SCALING`, `BROADCAST_HASH_JOIN`, `MEMORY`.
+func (o BatchRuntimeConfigAutotuningConfigOutput) Scenarios() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v BatchRuntimeConfigAutotuningConfig) []string { return v.Scenarios }).(pulumi.StringArrayOutput)
+}
+
+type BatchRuntimeConfigAutotuningConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (BatchRuntimeConfigAutotuningConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**BatchRuntimeConfigAutotuningConfig)(nil)).Elem()
+}
+
+func (o BatchRuntimeConfigAutotuningConfigPtrOutput) ToBatchRuntimeConfigAutotuningConfigPtrOutput() BatchRuntimeConfigAutotuningConfigPtrOutput {
+	return o
+}
+
+func (o BatchRuntimeConfigAutotuningConfigPtrOutput) ToBatchRuntimeConfigAutotuningConfigPtrOutputWithContext(ctx context.Context) BatchRuntimeConfigAutotuningConfigPtrOutput {
+	return o
+}
+
+func (o BatchRuntimeConfigAutotuningConfigPtrOutput) Elem() BatchRuntimeConfigAutotuningConfigOutput {
+	return o.ApplyT(func(v *BatchRuntimeConfigAutotuningConfig) BatchRuntimeConfigAutotuningConfig {
+		if v != nil {
+			return *v
+		}
+		var ret BatchRuntimeConfigAutotuningConfig
+		return ret
+	}).(BatchRuntimeConfigAutotuningConfigOutput)
+}
+
+// Optional. Scenarios for which tunings are applied.
+// Each value may be one of: `SCALING`, `BROADCAST_HASH_JOIN`, `MEMORY`.
+func (o BatchRuntimeConfigAutotuningConfigPtrOutput) Scenarios() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *BatchRuntimeConfigAutotuningConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.Scenarios
+	}).(pulumi.StringArrayOutput)
 }
 
 type BatchRuntimeInfo struct {
@@ -5792,6 +5975,8 @@ func (o ClusterClusterConfigEndpointConfigPtrOutput) HttpPorts() pulumi.StringMa
 }
 
 type ClusterClusterConfigGceClusterConfig struct {
+	// Confidential Instance Config for clusters using [Confidential VMs](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/confidential-compute)
+	ConfidentialInstanceConfig *ClusterClusterConfigGceClusterConfigConfidentialInstanceConfig `pulumi:"confidentialInstanceConfig"`
 	// By default, clusters are not restricted to internal IP addresses,
 	// and will have ephemeral external IP addresses assigned to each instance. If set to true, all
 	// instances in the cluster will only have internal IP addresses. Note: Private Google Access
@@ -5850,6 +6035,8 @@ type ClusterClusterConfigGceClusterConfigInput interface {
 }
 
 type ClusterClusterConfigGceClusterConfigArgs struct {
+	// Confidential Instance Config for clusters using [Confidential VMs](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/confidential-compute)
+	ConfidentialInstanceConfig ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigPtrInput `pulumi:"confidentialInstanceConfig"`
 	// By default, clusters are not restricted to internal IP addresses,
 	// and will have ephemeral external IP addresses assigned to each instance. If set to true, all
 	// instances in the cluster will only have internal IP addresses. Note: Private Google Access
@@ -5973,6 +6160,13 @@ func (o ClusterClusterConfigGceClusterConfigOutput) ToClusterClusterConfigGceClu
 	}).(ClusterClusterConfigGceClusterConfigPtrOutput)
 }
 
+// Confidential Instance Config for clusters using [Confidential VMs](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/confidential-compute)
+func (o ClusterClusterConfigGceClusterConfigOutput) ConfidentialInstanceConfig() ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigGceClusterConfig) *ClusterClusterConfigGceClusterConfigConfidentialInstanceConfig {
+		return v.ConfidentialInstanceConfig
+	}).(ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigPtrOutput)
+}
+
 // By default, clusters are not restricted to internal IP addresses,
 // and will have ephemeral external IP addresses assigned to each instance. If set to true, all
 // instances in the cluster will only have internal IP addresses. Note: Private Google Access
@@ -6078,6 +6272,16 @@ func (o ClusterClusterConfigGceClusterConfigPtrOutput) Elem() ClusterClusterConf
 		var ret ClusterClusterConfigGceClusterConfig
 		return ret
 	}).(ClusterClusterConfigGceClusterConfigOutput)
+}
+
+// Confidential Instance Config for clusters using [Confidential VMs](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/confidential-compute)
+func (o ClusterClusterConfigGceClusterConfigPtrOutput) ConfidentialInstanceConfig() ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigGceClusterConfig) *ClusterClusterConfigGceClusterConfigConfidentialInstanceConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ConfidentialInstanceConfig
+	}).(ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigPtrOutput)
 }
 
 // By default, clusters are not restricted to internal IP addresses,
@@ -6210,6 +6414,145 @@ func (o ClusterClusterConfigGceClusterConfigPtrOutput) Zone() pulumi.StringPtrOu
 		}
 		return v.Zone
 	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterClusterConfigGceClusterConfigConfidentialInstanceConfig struct {
+	// Defines whether the instance should have confidential compute enabled.
+	EnableConfidentialCompute *bool `pulumi:"enableConfidentialCompute"`
+}
+
+// ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigInput is an input type that accepts ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigArgs and ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigOutput values.
+// You can construct a concrete instance of `ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigInput` via:
+//
+//	ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigArgs{...}
+type ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigInput interface {
+	pulumi.Input
+
+	ToClusterClusterConfigGceClusterConfigConfidentialInstanceConfigOutput() ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigOutput
+	ToClusterClusterConfigGceClusterConfigConfidentialInstanceConfigOutputWithContext(context.Context) ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigOutput
+}
+
+type ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigArgs struct {
+	// Defines whether the instance should have confidential compute enabled.
+	EnableConfidentialCompute pulumi.BoolPtrInput `pulumi:"enableConfidentialCompute"`
+}
+
+func (ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterClusterConfigGceClusterConfigConfidentialInstanceConfig)(nil)).Elem()
+}
+
+func (i ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigArgs) ToClusterClusterConfigGceClusterConfigConfidentialInstanceConfigOutput() ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigOutput {
+	return i.ToClusterClusterConfigGceClusterConfigConfidentialInstanceConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigArgs) ToClusterClusterConfigGceClusterConfigConfidentialInstanceConfigOutputWithContext(ctx context.Context) ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigOutput)
+}
+
+func (i ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigArgs) ToClusterClusterConfigGceClusterConfigConfidentialInstanceConfigPtrOutput() ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigPtrOutput {
+	return i.ToClusterClusterConfigGceClusterConfigConfidentialInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigArgs) ToClusterClusterConfigGceClusterConfigConfidentialInstanceConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigOutput).ToClusterClusterConfigGceClusterConfigConfidentialInstanceConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigPtrInput is an input type that accepts ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigArgs, ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigPtr and ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigPtrInput` via:
+//
+//	        ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterClusterConfigGceClusterConfigConfidentialInstanceConfigPtrOutput() ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigPtrOutput
+	ToClusterClusterConfigGceClusterConfigConfidentialInstanceConfigPtrOutputWithContext(context.Context) ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigPtrOutput
+}
+
+type clusterClusterConfigGceClusterConfigConfidentialInstanceConfigPtrType ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigArgs
+
+func ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigPtr(v *ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigArgs) ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigPtrInput {
+	return (*clusterClusterConfigGceClusterConfigConfidentialInstanceConfigPtrType)(v)
+}
+
+func (*clusterClusterConfigGceClusterConfigConfidentialInstanceConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterClusterConfigGceClusterConfigConfidentialInstanceConfig)(nil)).Elem()
+}
+
+func (i *clusterClusterConfigGceClusterConfigConfidentialInstanceConfigPtrType) ToClusterClusterConfigGceClusterConfigConfidentialInstanceConfigPtrOutput() ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigPtrOutput {
+	return i.ToClusterClusterConfigGceClusterConfigConfidentialInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterClusterConfigGceClusterConfigConfidentialInstanceConfigPtrType) ToClusterClusterConfigGceClusterConfigConfidentialInstanceConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigPtrOutput)
+}
+
+type ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterClusterConfigGceClusterConfigConfidentialInstanceConfig)(nil)).Elem()
+}
+
+func (o ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigOutput) ToClusterClusterConfigGceClusterConfigConfidentialInstanceConfigOutput() ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigOutput {
+	return o
+}
+
+func (o ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigOutput) ToClusterClusterConfigGceClusterConfigConfidentialInstanceConfigOutputWithContext(ctx context.Context) ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigOutput {
+	return o
+}
+
+func (o ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigOutput) ToClusterClusterConfigGceClusterConfigConfidentialInstanceConfigPtrOutput() ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigPtrOutput {
+	return o.ToClusterClusterConfigGceClusterConfigConfidentialInstanceConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigOutput) ToClusterClusterConfigGceClusterConfigConfidentialInstanceConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterClusterConfigGceClusterConfigConfidentialInstanceConfig) *ClusterClusterConfigGceClusterConfigConfidentialInstanceConfig {
+		return &v
+	}).(ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigPtrOutput)
+}
+
+// Defines whether the instance should have confidential compute enabled.
+func (o ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigOutput) EnableConfidentialCompute() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigGceClusterConfigConfidentialInstanceConfig) *bool {
+		return v.EnableConfidentialCompute
+	}).(pulumi.BoolPtrOutput)
+}
+
+type ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterClusterConfigGceClusterConfigConfidentialInstanceConfig)(nil)).Elem()
+}
+
+func (o ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigPtrOutput) ToClusterClusterConfigGceClusterConfigConfidentialInstanceConfigPtrOutput() ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigPtrOutput {
+	return o
+}
+
+func (o ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigPtrOutput) ToClusterClusterConfigGceClusterConfigConfidentialInstanceConfigPtrOutputWithContext(ctx context.Context) ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigPtrOutput {
+	return o
+}
+
+func (o ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigPtrOutput) Elem() ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigGceClusterConfigConfidentialInstanceConfig) ClusterClusterConfigGceClusterConfigConfidentialInstanceConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterClusterConfigGceClusterConfigConfidentialInstanceConfig
+		return ret
+	}).(ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigOutput)
+}
+
+// Defines whether the instance should have confidential compute enabled.
+func (o ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigPtrOutput) EnableConfidentialCompute() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigGceClusterConfigConfidentialInstanceConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableConfidentialCompute
+	}).(pulumi.BoolPtrOutput)
 }
 
 type ClusterClusterConfigGceClusterConfigNodeGroupAffinity struct {
@@ -8285,6 +8628,8 @@ type ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy struct
 	InstanceSelectionLists []ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList `pulumi:"instanceSelectionLists"`
 	// A list of instance selection results in the group.
 	InstanceSelectionResults []ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult `pulumi:"instanceSelectionResults"`
+	// Defines how Dataproc should create VMs with a mixture of provisioning models.
+	ProvisioningModelMix *ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix `pulumi:"provisioningModelMix"`
 }
 
 // ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInput is an input type that accepts ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyArgs and ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyOutput values.
@@ -8303,6 +8648,8 @@ type ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyArgs st
 	InstanceSelectionLists ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayInput `pulumi:"instanceSelectionLists"`
 	// A list of instance selection results in the group.
 	InstanceSelectionResults ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayInput `pulumi:"instanceSelectionResults"`
+	// Defines how Dataproc should create VMs with a mixture of provisioning models.
+	ProvisioningModelMix ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrInput `pulumi:"provisioningModelMix"`
 }
 
 func (ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyArgs) ElementType() reflect.Type {
@@ -8396,6 +8743,13 @@ func (o ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyOutp
 	}).(ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput)
 }
 
+// Defines how Dataproc should create VMs with a mixture of provisioning models.
+func (o ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyOutput) ProvisioningModelMix() ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy) *ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix {
+		return v.ProvisioningModelMix
+	}).(ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutput)
+}
+
 type ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyPtrOutput) ElementType() reflect.Type {
@@ -8438,6 +8792,16 @@ func (o ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyPtrO
 		}
 		return v.InstanceSelectionResults
 	}).(ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput)
+}
+
+// Defines how Dataproc should create VMs with a mixture of provisioning models.
+func (o ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyPtrOutput) ProvisioningModelMix() ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy) *ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix {
+		if v == nil {
+			return nil
+		}
+		return v.ProvisioningModelMix
+	}).(ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutput)
 }
 
 type ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList struct {
@@ -8664,6 +9028,166 @@ func (o ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInst
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult {
 		return vs[0].([]ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult)[vs[1].(int)]
 	}).(ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput)
+}
+
+type ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix struct {
+	// The base capacity that will always use Standard VMs to avoid risk of more preemption than the minimum capacity you need.
+	StandardCapacityBase *int `pulumi:"standardCapacityBase"`
+	// The percentage of target capacity that should use Standard VM. The remaining percentage will use Spot VMs.
+	StandardCapacityPercentAboveBase *int `pulumi:"standardCapacityPercentAboveBase"`
+}
+
+// ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixInput is an input type that accepts ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs and ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixOutput values.
+// You can construct a concrete instance of `ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixInput` via:
+//
+//	ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs{...}
+type ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixInput interface {
+	pulumi.Input
+
+	ToClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixOutput() ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixOutput
+	ToClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixOutputWithContext(context.Context) ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixOutput
+}
+
+type ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs struct {
+	// The base capacity that will always use Standard VMs to avoid risk of more preemption than the minimum capacity you need.
+	StandardCapacityBase pulumi.IntPtrInput `pulumi:"standardCapacityBase"`
+	// The percentage of target capacity that should use Standard VM. The remaining percentage will use Spot VMs.
+	StandardCapacityPercentAboveBase pulumi.IntPtrInput `pulumi:"standardCapacityPercentAboveBase"`
+}
+
+func (ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix)(nil)).Elem()
+}
+
+func (i ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs) ToClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixOutput() ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixOutput {
+	return i.ToClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixOutputWithContext(context.Background())
+}
+
+func (i ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs) ToClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixOutputWithContext(ctx context.Context) ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixOutput)
+}
+
+func (i ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs) ToClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutput() ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutput {
+	return i.ToClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs) ToClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutputWithContext(ctx context.Context) ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixOutput).ToClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutputWithContext(ctx)
+}
+
+// ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrInput is an input type that accepts ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs, ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtr and ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutput values.
+// You can construct a concrete instance of `ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrInput` via:
+//
+//	        ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrInput interface {
+	pulumi.Input
+
+	ToClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutput() ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutput
+	ToClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutputWithContext(context.Context) ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutput
+}
+
+type clusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrType ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs
+
+func ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtr(v *ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs) ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrInput {
+	return (*clusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrType)(v)
+}
+
+func (*clusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix)(nil)).Elem()
+}
+
+func (i *clusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrType) ToClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutput() ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutput {
+	return i.ToClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrType) ToClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutputWithContext(ctx context.Context) ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutput)
+}
+
+type ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixOutput struct{ *pulumi.OutputState }
+
+func (ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix)(nil)).Elem()
+}
+
+func (o ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixOutput) ToClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixOutput() ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixOutput {
+	return o
+}
+
+func (o ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixOutput) ToClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixOutputWithContext(ctx context.Context) ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixOutput {
+	return o
+}
+
+func (o ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixOutput) ToClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutput() ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutput {
+	return o.ToClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixOutput) ToClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutputWithContext(ctx context.Context) ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix) *ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix {
+		return &v
+	}).(ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutput)
+}
+
+// The base capacity that will always use Standard VMs to avoid risk of more preemption than the minimum capacity you need.
+func (o ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixOutput) StandardCapacityBase() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix) *int {
+		return v.StandardCapacityBase
+	}).(pulumi.IntPtrOutput)
+}
+
+// The percentage of target capacity that should use Standard VM. The remaining percentage will use Spot VMs.
+func (o ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixOutput) StandardCapacityPercentAboveBase() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix) *int {
+		return v.StandardCapacityPercentAboveBase
+	}).(pulumi.IntPtrOutput)
+}
+
+type ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix)(nil)).Elem()
+}
+
+func (o ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutput) ToClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutput() ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutput {
+	return o
+}
+
+func (o ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutput) ToClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutputWithContext(ctx context.Context) ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutput {
+	return o
+}
+
+func (o ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutput) Elem() ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix) ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix
+		return ret
+	}).(ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixOutput)
+}
+
+// The base capacity that will always use Standard VMs to avoid risk of more preemption than the minimum capacity you need.
+func (o ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutput) StandardCapacityBase() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix) *int {
+		if v == nil {
+			return nil
+		}
+		return v.StandardCapacityBase
+	}).(pulumi.IntPtrOutput)
+}
+
+// The percentage of target capacity that should use Standard VM. The remaining percentage will use Spot VMs.
+func (o ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutput) StandardCapacityPercentAboveBase() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix) *int {
+		if v == nil {
+			return nil
+		}
+		return v.StandardCapacityPercentAboveBase
+	}).(pulumi.IntPtrOutput)
 }
 
 type ClusterClusterConfigSecurityConfig struct {
@@ -32645,6 +33169,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BatchPysparkBatchPtrInput)(nil)).Elem(), BatchPysparkBatchArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BatchRuntimeConfigInput)(nil)).Elem(), BatchRuntimeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BatchRuntimeConfigPtrInput)(nil)).Elem(), BatchRuntimeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BatchRuntimeConfigAutotuningConfigInput)(nil)).Elem(), BatchRuntimeConfigAutotuningConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*BatchRuntimeConfigAutotuningConfigPtrInput)(nil)).Elem(), BatchRuntimeConfigAutotuningConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BatchRuntimeInfoInput)(nil)).Elem(), BatchRuntimeInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BatchRuntimeInfoArrayInput)(nil)).Elem(), BatchRuntimeInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BatchRuntimeInfoApproximateUsageInput)(nil)).Elem(), BatchRuntimeInfoApproximateUsageArgs{})
@@ -32683,6 +33209,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigEndpointConfigPtrInput)(nil)).Elem(), ClusterClusterConfigEndpointConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigGceClusterConfigInput)(nil)).Elem(), ClusterClusterConfigGceClusterConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigGceClusterConfigPtrInput)(nil)).Elem(), ClusterClusterConfigGceClusterConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigInput)(nil)).Elem(), ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigPtrInput)(nil)).Elem(), ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigGceClusterConfigNodeGroupAffinityInput)(nil)).Elem(), ClusterClusterConfigGceClusterConfigNodeGroupAffinityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigGceClusterConfigNodeGroupAffinityPtrInput)(nil)).Elem(), ClusterClusterConfigGceClusterConfigNodeGroupAffinityArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigGceClusterConfigReservationAffinityInput)(nil)).Elem(), ClusterClusterConfigGceClusterConfigReservationAffinityArgs{})
@@ -32711,6 +33239,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayInput)(nil)).Elem(), ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultInput)(nil)).Elem(), ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayInput)(nil)).Elem(), ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixInput)(nil)).Elem(), ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrInput)(nil)).Elem(), ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigSecurityConfigInput)(nil)).Elem(), ClusterClusterConfigSecurityConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigSecurityConfigPtrInput)(nil)).Elem(), ClusterClusterConfigSecurityConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterClusterConfigSecurityConfigKerberosConfigInput)(nil)).Elem(), ClusterClusterConfigSecurityConfigKerberosConfigArgs{})
@@ -33009,6 +33539,8 @@ func init() {
 	pulumi.RegisterOutputType(BatchPysparkBatchPtrOutput{})
 	pulumi.RegisterOutputType(BatchRuntimeConfigOutput{})
 	pulumi.RegisterOutputType(BatchRuntimeConfigPtrOutput{})
+	pulumi.RegisterOutputType(BatchRuntimeConfigAutotuningConfigOutput{})
+	pulumi.RegisterOutputType(BatchRuntimeConfigAutotuningConfigPtrOutput{})
 	pulumi.RegisterOutputType(BatchRuntimeInfoOutput{})
 	pulumi.RegisterOutputType(BatchRuntimeInfoArrayOutput{})
 	pulumi.RegisterOutputType(BatchRuntimeInfoApproximateUsageOutput{})
@@ -33047,6 +33579,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterClusterConfigEndpointConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigGceClusterConfigOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigGceClusterConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigOutput{})
+	pulumi.RegisterOutputType(ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigGceClusterConfigNodeGroupAffinityOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigGceClusterConfigNodeGroupAffinityPtrOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigGceClusterConfigReservationAffinityOutput{})
@@ -33075,6 +33609,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArrayOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArrayOutput{})
+	pulumi.RegisterOutputType(ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixOutput{})
+	pulumi.RegisterOutputType(ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixPtrOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigSecurityConfigOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigSecurityConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterClusterConfigSecurityConfigKerberosConfigOutput{})

@@ -729,6 +729,14 @@ Object.defineProperty(exports, "firestoreCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const geminiCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "geminiCustomEndpoint", {
+    get() {
+        return __config.get("geminiCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const gkeBackupCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "gkeBackupCustomEndpoint", {
     get() {

@@ -319,7 +319,7 @@ if not MYPY:
         """
         encryption_key_value: NotRequired[pulumi.Input['ConnectionAuthConfigAdditionalVariableEncryptionKeyValueArgsDict']]
         """
-        Encription key value of configVariable.
+        Encryption key value of configVariable.
         Structure is documented below.
         """
         integer_value: NotRequired[pulumi.Input[int]]
@@ -350,7 +350,7 @@ class ConnectionAuthConfigAdditionalVariableArgs:
         """
         :param pulumi.Input[str] key: Key for the configVariable
         :param pulumi.Input[bool] boolean_value: Boolean Value of configVariable.
-        :param pulumi.Input['ConnectionAuthConfigAdditionalVariableEncryptionKeyValueArgs'] encryption_key_value: Encription key value of configVariable.
+        :param pulumi.Input['ConnectionAuthConfigAdditionalVariableEncryptionKeyValueArgs'] encryption_key_value: Encryption key value of configVariable.
                Structure is documented below.
         :param pulumi.Input[int] integer_value: Integer Value of configVariable.
         :param pulumi.Input['ConnectionAuthConfigAdditionalVariableSecretValueArgs'] secret_value: Secret value of configVariable
@@ -397,7 +397,7 @@ class ConnectionAuthConfigAdditionalVariableArgs:
     @pulumi.getter(name="encryptionKeyValue")
     def encryption_key_value(self) -> Optional[pulumi.Input['ConnectionAuthConfigAdditionalVariableEncryptionKeyValueArgs']]:
         """
-        Encription key value of configVariable.
+        Encryption key value of configVariable.
         Structure is documented below.
         """
         return pulumi.get(self, "encryption_key_value")
@@ -1207,7 +1207,7 @@ if not MYPY:
         """
         encryption_key_value: NotRequired[pulumi.Input['ConnectionConfigVariableEncryptionKeyValueArgsDict']]
         """
-        Encription key value of configVariable.
+        Encryption key value of configVariable.
         Structure is documented below.
         """
         integer_value: NotRequired[pulumi.Input[int]]
@@ -1238,7 +1238,7 @@ class ConnectionConfigVariableArgs:
         """
         :param pulumi.Input[str] key: Key for the configVariable
         :param pulumi.Input[bool] boolean_value: Boolean Value of configVariable
-        :param pulumi.Input['ConnectionConfigVariableEncryptionKeyValueArgs'] encryption_key_value: Encription key value of configVariable.
+        :param pulumi.Input['ConnectionConfigVariableEncryptionKeyValueArgs'] encryption_key_value: Encryption key value of configVariable.
                Structure is documented below.
         :param pulumi.Input[int] integer_value: Integer Value of configVariable
         :param pulumi.Input['ConnectionConfigVariableSecretValueArgs'] secret_value: Secret value of configVariable.
@@ -1285,7 +1285,7 @@ class ConnectionConfigVariableArgs:
     @pulumi.getter(name="encryptionKeyValue")
     def encryption_key_value(self) -> Optional[pulumi.Input['ConnectionConfigVariableEncryptionKeyValueArgs']]:
         """
-        Encription key value of configVariable.
+        Encryption key value of configVariable.
         Structure is documented below.
         """
         return pulumi.get(self, "encryption_key_value")
@@ -1696,7 +1696,7 @@ if not MYPY:
         """
         encryption_key_value: NotRequired[pulumi.Input['ConnectionEventingConfigAdditionalVariableEncryptionKeyValueArgsDict']]
         """
-        Encription key value of configVariable.
+        Encryption key value of configVariable.
         Structure is documented below.
         """
         integer_value: NotRequired[pulumi.Input[int]]
@@ -1727,7 +1727,7 @@ class ConnectionEventingConfigAdditionalVariableArgs:
         """
         :param pulumi.Input[str] key: Key for the configVariable
         :param pulumi.Input[bool] boolean_value: Boolean Value of configVariable.
-        :param pulumi.Input['ConnectionEventingConfigAdditionalVariableEncryptionKeyValueArgs'] encryption_key_value: Encription key value of configVariable.
+        :param pulumi.Input['ConnectionEventingConfigAdditionalVariableEncryptionKeyValueArgs'] encryption_key_value: Encryption key value of configVariable.
                Structure is documented below.
         :param pulumi.Input[int] integer_value: Integer Value of configVariable.
         :param pulumi.Input['ConnectionEventingConfigAdditionalVariableSecretValueArgs'] secret_value: Secret value of configVariable
@@ -1774,7 +1774,7 @@ class ConnectionEventingConfigAdditionalVariableArgs:
     @pulumi.getter(name="encryptionKeyValue")
     def encryption_key_value(self) -> Optional[pulumi.Input['ConnectionEventingConfigAdditionalVariableEncryptionKeyValueArgs']]:
         """
-        Encription key value of configVariable.
+        Encryption key value of configVariable.
         Structure is documented below.
         """
         return pulumi.get(self, "encryption_key_value")
@@ -2024,7 +2024,7 @@ if not MYPY:
         """
         encryption_key_value: NotRequired[pulumi.Input['ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValueArgsDict']]
         """
-        Encription key value of configVariable.
+        Encryption key value of configVariable.
         Structure is documented below.
         """
         integer_value: NotRequired[pulumi.Input[int]]
@@ -2055,7 +2055,7 @@ class ConnectionEventingConfigAuthConfigAdditionalVariableArgs:
         """
         :param pulumi.Input[str] key: Key for the configVariable
         :param pulumi.Input[bool] boolean_value: Boolean Value of configVariable.
-        :param pulumi.Input['ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValueArgs'] encryption_key_value: Encription key value of configVariable.
+        :param pulumi.Input['ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValueArgs'] encryption_key_value: Encryption key value of configVariable.
                Structure is documented below.
         :param pulumi.Input[int] integer_value: Integer Value of configVariable.
         :param pulumi.Input['ConnectionEventingConfigAuthConfigAdditionalVariableSecretValueArgs'] secret_value: Secret value of configVariable
@@ -2102,7 +2102,7 @@ class ConnectionEventingConfigAuthConfigAdditionalVariableArgs:
     @pulumi.getter(name="encryptionKeyValue")
     def encryption_key_value(self) -> Optional[pulumi.Input['ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValueArgs']]:
         """
-        Encription key value of configVariable.
+        Encryption key value of configVariable.
         Structure is documented below.
         """
         return pulumi.get(self, "encryption_key_value")
@@ -2954,7 +2954,7 @@ if not MYPY:
         """
         encryption_key_value: NotRequired[pulumi.Input['ConnectionSslConfigAdditionalVariableEncryptionKeyValueArgsDict']]
         """
-        Encription key value of configVariable.
+        Encryption key value of configVariable.
         Structure is documented below.
         """
         integer_value: NotRequired[pulumi.Input[int]]
@@ -2985,7 +2985,7 @@ class ConnectionSslConfigAdditionalVariableArgs:
         """
         :param pulumi.Input[str] key: Key for the configVariable
         :param pulumi.Input[bool] boolean_value: Boolean Value of configVariable.
-        :param pulumi.Input['ConnectionSslConfigAdditionalVariableEncryptionKeyValueArgs'] encryption_key_value: Encription key value of configVariable.
+        :param pulumi.Input['ConnectionSslConfigAdditionalVariableEncryptionKeyValueArgs'] encryption_key_value: Encryption key value of configVariable.
                Structure is documented below.
         :param pulumi.Input[int] integer_value: Integer Value of configVariable.
         :param pulumi.Input['ConnectionSslConfigAdditionalVariableSecretValueArgs'] secret_value: Secret value of configVariable
@@ -3032,7 +3032,7 @@ class ConnectionSslConfigAdditionalVariableArgs:
     @pulumi.getter(name="encryptionKeyValue")
     def encryption_key_value(self) -> Optional[pulumi.Input['ConnectionSslConfigAdditionalVariableEncryptionKeyValueArgs']]:
         """
-        Encription key value of configVariable.
+        Encryption key value of configVariable.
         Structure is documented below.
         """
         return pulumi.get(self, "encryption_key_value")

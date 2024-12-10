@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Provides access to Kubernetes Secret configuration for a given project, region and Composer Environment.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -87,6 +89,8 @@ export interface GetUserWorkloadsSecretResult {
     readonly region?: string;
 }
 /**
+ * Provides access to Kubernetes Secret configuration for a given project, region and Composer Environment.
+ *
  * ## Example Usage
  *
  * ```typescript

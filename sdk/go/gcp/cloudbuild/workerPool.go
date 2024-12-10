@@ -170,6 +170,8 @@ type WorkerPool struct {
 	Name pulumi.StringOutput `pulumi:"name"`
 	// Network configuration for the `WorkerPool`. Structure is documented below.
 	NetworkConfig WorkerPoolNetworkConfigPtrOutput `pulumi:"networkConfig"`
+	// Private Service Connect configuration for the pool.
+	PrivateServiceConnect WorkerPoolPrivateServiceConnectPtrOutput `pulumi:"privateServiceConnect"`
 	// The project for the resource
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Output only. WorkerPool state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
@@ -234,6 +236,8 @@ type workerPoolState struct {
 	Name *string `pulumi:"name"`
 	// Network configuration for the `WorkerPool`. Structure is documented below.
 	NetworkConfig *WorkerPoolNetworkConfig `pulumi:"networkConfig"`
+	// Private Service Connect configuration for the pool.
+	PrivateServiceConnect *WorkerPoolPrivateServiceConnect `pulumi:"privateServiceConnect"`
 	// The project for the resource
 	Project *string `pulumi:"project"`
 	// Output only. WorkerPool state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
@@ -266,6 +270,8 @@ type WorkerPoolState struct {
 	Name pulumi.StringPtrInput
 	// Network configuration for the `WorkerPool`. Structure is documented below.
 	NetworkConfig WorkerPoolNetworkConfigPtrInput
+	// Private Service Connect configuration for the pool.
+	PrivateServiceConnect WorkerPoolPrivateServiceConnectPtrInput
 	// The project for the resource
 	Project pulumi.StringPtrInput
 	// Output only. WorkerPool state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
@@ -297,6 +303,8 @@ type workerPoolArgs struct {
 	Name *string `pulumi:"name"`
 	// Network configuration for the `WorkerPool`. Structure is documented below.
 	NetworkConfig *WorkerPoolNetworkConfig `pulumi:"networkConfig"`
+	// Private Service Connect configuration for the pool.
+	PrivateServiceConnect *WorkerPoolPrivateServiceConnect `pulumi:"privateServiceConnect"`
 	// The project for the resource
 	Project *string `pulumi:"project"`
 	// Configuration to be used for a creating workers in the `WorkerPool`. Structure is documented below.
@@ -319,6 +327,8 @@ type WorkerPoolArgs struct {
 	Name pulumi.StringPtrInput
 	// Network configuration for the `WorkerPool`. Structure is documented below.
 	NetworkConfig WorkerPoolNetworkConfigPtrInput
+	// Private Service Connect configuration for the pool.
+	PrivateServiceConnect WorkerPoolPrivateServiceConnectPtrInput
 	// The project for the resource
 	Project pulumi.StringPtrInput
 	// Configuration to be used for a creating workers in the `WorkerPool`. Structure is documented below.
@@ -453,6 +463,11 @@ func (o WorkerPoolOutput) Name() pulumi.StringOutput {
 // Network configuration for the `WorkerPool`. Structure is documented below.
 func (o WorkerPoolOutput) NetworkConfig() WorkerPoolNetworkConfigPtrOutput {
 	return o.ApplyT(func(v *WorkerPool) WorkerPoolNetworkConfigPtrOutput { return v.NetworkConfig }).(WorkerPoolNetworkConfigPtrOutput)
+}
+
+// Private Service Connect configuration for the pool.
+func (o WorkerPoolOutput) PrivateServiceConnect() WorkerPoolPrivateServiceConnectPtrOutput {
+	return o.ApplyT(func(v *WorkerPool) WorkerPoolPrivateServiceConnectPtrOutput { return v.PrivateServiceConnect }).(WorkerPoolPrivateServiceConnectPtrOutput)
 }
 
 // The project for the resource

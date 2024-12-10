@@ -221,7 +221,11 @@ import * as utilities from "../utilities";
  *     region: "europe-west4",
  *     loadBalancingScheme: "INTERNAL",
  *     backendService: defaultRegionBackendService.id,
- *     allPorts: true,
+ *     ports: [
+ *         "80",
+ *         "88",
+ *         "443",
+ *     ],
  *     network: _default.name,
  *     subnetwork: defaultSubnetwork.name,
  * });
@@ -239,6 +243,9 @@ import * as utilities from "../utilities";
  *     region: "europe-west4",
  *     networkEndpointType: "PRIVATE_SERVICE_CONNECT",
  *     pscTargetService: defaultServiceAttachment.selfLink,
+ *     pscData: {
+ *         producerPort: "88",
+ *     },
  *     network: _default.selfLink,
  *     subnetwork: defaultSubnetwork.selfLink,
  * });
@@ -402,6 +409,11 @@ export class RegionNetworkEndpointGroup extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * This field is only used for PSC NEGs.
+     * Structure is documented below.
+     */
+    public readonly pscData!: pulumi.Output<outputs.compute.RegionNetworkEndpointGroupPscData | undefined>;
+    /**
      * This field is only used for PSC and INTERNET NEGs.
      * The target service url used to set up private service connection to
      * a Google API or a PSC Producer Service Attachment.
@@ -451,6 +463,7 @@ export class RegionNetworkEndpointGroup extends pulumi.CustomResource {
             resourceInputs["network"] = state ? state.network : undefined;
             resourceInputs["networkEndpointType"] = state ? state.networkEndpointType : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["pscData"] = state ? state.pscData : undefined;
             resourceInputs["pscTargetService"] = state ? state.pscTargetService : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
@@ -469,6 +482,7 @@ export class RegionNetworkEndpointGroup extends pulumi.CustomResource {
             resourceInputs["network"] = args ? args.network : undefined;
             resourceInputs["networkEndpointType"] = args ? args.networkEndpointType : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["pscData"] = args ? args.pscData : undefined;
             resourceInputs["pscTargetService"] = args ? args.pscTargetService : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["serverlessDeployment"] = args ? args.serverlessDeployment : undefined;
@@ -534,6 +548,11 @@ export interface RegionNetworkEndpointGroupState {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * This field is only used for PSC NEGs.
+     * Structure is documented below.
+     */
+    pscData?: pulumi.Input<inputs.compute.RegionNetworkEndpointGroupPscData>;
     /**
      * This field is only used for PSC and INTERNET NEGs.
      * The target service url used to set up private service connection to
@@ -618,6 +637,11 @@ export interface RegionNetworkEndpointGroupArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * This field is only used for PSC NEGs.
+     * Structure is documented below.
+     */
+    pscData?: pulumi.Input<inputs.compute.RegionNetworkEndpointGroupPscData>;
     /**
      * This field is only used for PSC and INTERNET NEGs.
      * The target service url used to set up private service connection to

@@ -20,6 +20,11 @@ export type BackupVault = import("./backupVault").BackupVault;
 export const BackupVault: typeof import("./backupVault").BackupVault = null as any;
 utilities.lazyLoad(exports, ["BackupVault"], () => require("./backupVault"));
 
+export { GetBackupArgs, GetBackupResult, GetBackupOutputArgs } from "./getBackup";
+export const getBackup: typeof import("./getBackup").getBackup = null as any;
+export const getBackupOutput: typeof import("./getBackup").getBackupOutput = null as any;
+utilities.lazyLoad(exports, ["getBackup","getBackupOutput"], () => require("./getBackup"));
+
 export { GetBackupPlanArgs, GetBackupPlanResult, GetBackupPlanOutputArgs } from "./getBackupPlan";
 export const getBackupPlan: typeof import("./getBackupPlan").getBackupPlan = null as any;
 export const getBackupPlanOutput: typeof import("./getBackupPlan").getBackupPlanOutput = null as any;
@@ -29,6 +34,11 @@ export { GetBackupPlanAssociationArgs, GetBackupPlanAssociationResult, GetBackup
 export const getBackupPlanAssociation: typeof import("./getBackupPlanAssociation").getBackupPlanAssociation = null as any;
 export const getBackupPlanAssociationOutput: typeof import("./getBackupPlanAssociation").getBackupPlanAssociationOutput = null as any;
 utilities.lazyLoad(exports, ["getBackupPlanAssociation","getBackupPlanAssociationOutput"], () => require("./getBackupPlanAssociation"));
+
+export { GetBackupVaultArgs, GetBackupVaultResult, GetBackupVaultOutputArgs } from "./getBackupVault";
+export const getBackupVault: typeof import("./getBackupVault").getBackupVault = null as any;
+export const getBackupVaultOutput: typeof import("./getBackupVault").getBackupVaultOutput = null as any;
+utilities.lazyLoad(exports, ["getBackupVault","getBackupVaultOutput"], () => require("./getBackupVault"));
 
 export { GetDataSourceArgs, GetDataSourceResult, GetDataSourceOutputArgs } from "./getDataSource";
 export const getDataSource: typeof import("./getDataSource").getDataSource = null as any;

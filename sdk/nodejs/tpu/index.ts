@@ -25,6 +25,11 @@ export type Node = import("./node").Node;
 export const Node: typeof import("./node").Node = null as any;
 utilities.lazyLoad(exports, ["Node"], () => require("./node"));
 
+export { V2QueuedResourceArgs, V2QueuedResourceState } from "./v2queuedResource";
+export type V2QueuedResource = import("./v2queuedResource").V2QueuedResource;
+export const V2QueuedResource: typeof import("./v2queuedResource").V2QueuedResource = null as any;
+utilities.lazyLoad(exports, ["V2QueuedResource"], () => require("./v2queuedResource"));
+
 export { V2VmArgs, V2VmState } from "./v2vm";
 export type V2Vm = import("./v2vm").V2Vm;
 export const V2Vm: typeof import("./v2vm").V2Vm = null as any;
@@ -37,6 +42,8 @@ const _module = {
         switch (type) {
             case "gcp:tpu/node:Node":
                 return new Node(name, <any>undefined, { urn })
+            case "gcp:tpu/v2QueuedResource:V2QueuedResource":
+                return new V2QueuedResource(name, <any>undefined, { urn })
             case "gcp:tpu/v2Vm:V2Vm":
                 return new V2Vm(name, <any>undefined, { urn })
             default:
@@ -45,4 +52,5 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "tpu/node", _module)
+pulumi.runtime.registerResourceModule("gcp", "tpu/v2QueuedResource", _module)
 pulumi.runtime.registerResourceModule("gcp", "tpu/v2Vm", _module)

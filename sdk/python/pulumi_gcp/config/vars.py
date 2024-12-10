@@ -382,6 +382,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('firestoreCustomEndpoint')
 
     @property
+    def gemini_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('geminiCustomEndpoint')
+
+    @property
     def gke_backup_custom_endpoint(self) -> Optional[str]:
         return __config__.get('gkeBackupCustomEndpoint')
 

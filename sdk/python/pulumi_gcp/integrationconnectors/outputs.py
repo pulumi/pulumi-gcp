@@ -250,7 +250,7 @@ class ConnectionAuthConfigAdditionalVariable(dict):
         """
         :param str key: Key for the configVariable
         :param bool boolean_value: Boolean Value of configVariable.
-        :param 'ConnectionAuthConfigAdditionalVariableEncryptionKeyValueArgs' encryption_key_value: Encription key value of configVariable.
+        :param 'ConnectionAuthConfigAdditionalVariableEncryptionKeyValueArgs' encryption_key_value: Encryption key value of configVariable.
                Structure is documented below.
         :param int integer_value: Integer Value of configVariable.
         :param 'ConnectionAuthConfigAdditionalVariableSecretValueArgs' secret_value: Secret value of configVariable
@@ -289,7 +289,7 @@ class ConnectionAuthConfigAdditionalVariable(dict):
     @pulumi.getter(name="encryptionKeyValue")
     def encryption_key_value(self) -> Optional['outputs.ConnectionAuthConfigAdditionalVariableEncryptionKeyValue']:
         """
-        Encription key value of configVariable.
+        Encryption key value of configVariable.
         Structure is documented below.
         """
         return pulumi.get(self, "encryption_key_value")
@@ -1022,7 +1022,7 @@ class ConnectionConfigVariable(dict):
         """
         :param str key: Key for the configVariable
         :param bool boolean_value: Boolean Value of configVariable
-        :param 'ConnectionConfigVariableEncryptionKeyValueArgs' encryption_key_value: Encription key value of configVariable.
+        :param 'ConnectionConfigVariableEncryptionKeyValueArgs' encryption_key_value: Encryption key value of configVariable.
                Structure is documented below.
         :param int integer_value: Integer Value of configVariable
         :param 'ConnectionConfigVariableSecretValueArgs' secret_value: Secret value of configVariable.
@@ -1061,7 +1061,7 @@ class ConnectionConfigVariable(dict):
     @pulumi.getter(name="encryptionKeyValue")
     def encryption_key_value(self) -> Optional['outputs.ConnectionConfigVariableEncryptionKeyValue']:
         """
-        Encription key value of configVariable.
+        Encryption key value of configVariable.
         Structure is documented below.
         """
         return pulumi.get(self, "encryption_key_value")
@@ -1430,7 +1430,7 @@ class ConnectionEventingConfigAdditionalVariable(dict):
         """
         :param str key: Key for the configVariable
         :param bool boolean_value: Boolean Value of configVariable.
-        :param 'ConnectionEventingConfigAdditionalVariableEncryptionKeyValueArgs' encryption_key_value: Encription key value of configVariable.
+        :param 'ConnectionEventingConfigAdditionalVariableEncryptionKeyValueArgs' encryption_key_value: Encryption key value of configVariable.
                Structure is documented below.
         :param int integer_value: Integer Value of configVariable.
         :param 'ConnectionEventingConfigAdditionalVariableSecretValueArgs' secret_value: Secret value of configVariable
@@ -1469,7 +1469,7 @@ class ConnectionEventingConfigAdditionalVariable(dict):
     @pulumi.getter(name="encryptionKeyValue")
     def encryption_key_value(self) -> Optional['outputs.ConnectionEventingConfigAdditionalVariableEncryptionKeyValue']:
         """
-        Encription key value of configVariable.
+        Encryption key value of configVariable.
         Structure is documented below.
         """
         return pulumi.get(self, "encryption_key_value")
@@ -1708,7 +1708,7 @@ class ConnectionEventingConfigAuthConfigAdditionalVariable(dict):
         """
         :param str key: Key for the configVariable
         :param bool boolean_value: Boolean Value of configVariable.
-        :param 'ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValueArgs' encryption_key_value: Encription key value of configVariable.
+        :param 'ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValueArgs' encryption_key_value: Encryption key value of configVariable.
                Structure is documented below.
         :param int integer_value: Integer Value of configVariable.
         :param 'ConnectionEventingConfigAuthConfigAdditionalVariableSecretValueArgs' secret_value: Secret value of configVariable
@@ -1747,7 +1747,7 @@ class ConnectionEventingConfigAuthConfigAdditionalVariable(dict):
     @pulumi.getter(name="encryptionKeyValue")
     def encryption_key_value(self) -> Optional['outputs.ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValue']:
         """
-        Encription key value of configVariable.
+        Encryption key value of configVariable.
         Structure is documented below.
         """
         return pulumi.get(self, "encryption_key_value")
@@ -2427,7 +2427,7 @@ class ConnectionSslConfigAdditionalVariable(dict):
         """
         :param str key: Key for the configVariable
         :param bool boolean_value: Boolean Value of configVariable.
-        :param 'ConnectionSslConfigAdditionalVariableEncryptionKeyValueArgs' encryption_key_value: Encription key value of configVariable.
+        :param 'ConnectionSslConfigAdditionalVariableEncryptionKeyValueArgs' encryption_key_value: Encryption key value of configVariable.
                Structure is documented below.
         :param int integer_value: Integer Value of configVariable.
         :param 'ConnectionSslConfigAdditionalVariableSecretValueArgs' secret_value: Secret value of configVariable
@@ -2466,7 +2466,7 @@ class ConnectionSslConfigAdditionalVariable(dict):
     @pulumi.getter(name="encryptionKeyValue")
     def encryption_key_value(self) -> Optional['outputs.ConnectionSslConfigAdditionalVariableEncryptionKeyValue']:
         """
-        Encription key value of configVariable.
+        Encryption key value of configVariable.
         Structure is documented below.
         """
         return pulumi.get(self, "encryption_key_value")

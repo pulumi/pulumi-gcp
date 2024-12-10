@@ -5,6 +5,7 @@ package com.pulumi.gcp.clouddeploy.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.clouddeploy.outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinations;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -27,6 +28,11 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfi
      * 
      */
     private @Nullable String podSelectorLabel;
+    /**
+     * @return Optional. Route destinations allow configuring the Gateway API HTTPRoute to be deployed to additional clusters. This option is available for multi-cluster service mesh set ups that require the route to exist in the clusters that call the service. If unspecified, the HTTPRoute will only be deployed to the Target cluster.
+     * 
+     */
+    private @Nullable DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinations routeDestinations;
     /**
      * @return Optional. The time to wait for route updates to propagate. The maximum configurable time is 3 hours, in seconds format. If unspecified, there is no wait time.
      * 
@@ -66,6 +72,13 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfi
         return Optional.ofNullable(this.podSelectorLabel);
     }
     /**
+     * @return Optional. Route destinations allow configuring the Gateway API HTTPRoute to be deployed to additional clusters. This option is available for multi-cluster service mesh set ups that require the route to exist in the clusters that call the service. If unspecified, the HTTPRoute will only be deployed to the Target cluster.
+     * 
+     */
+    public Optional<DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinations> routeDestinations() {
+        return Optional.ofNullable(this.routeDestinations);
+    }
+    /**
      * @return Optional. The time to wait for route updates to propagate. The maximum configurable time is 3 hours, in seconds format. If unspecified, there is no wait time.
      * 
      */
@@ -99,6 +112,7 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfi
         private String deployment;
         private String httpRoute;
         private @Nullable String podSelectorLabel;
+        private @Nullable DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinations routeDestinations;
         private @Nullable String routeUpdateWaitTime;
         private String service;
         private @Nullable String stableCutbackDuration;
@@ -108,6 +122,7 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfi
     	      this.deployment = defaults.deployment;
     	      this.httpRoute = defaults.httpRoute;
     	      this.podSelectorLabel = defaults.podSelectorLabel;
+    	      this.routeDestinations = defaults.routeDestinations;
     	      this.routeUpdateWaitTime = defaults.routeUpdateWaitTime;
     	      this.service = defaults.service;
     	      this.stableCutbackDuration = defaults.stableCutbackDuration;
@@ -136,6 +151,12 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfi
             return this;
         }
         @CustomType.Setter
+        public Builder routeDestinations(@Nullable DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinations routeDestinations) {
+
+            this.routeDestinations = routeDestinations;
+            return this;
+        }
+        @CustomType.Setter
         public Builder routeUpdateWaitTime(@Nullable String routeUpdateWaitTime) {
 
             this.routeUpdateWaitTime = routeUpdateWaitTime;
@@ -160,6 +181,7 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfi
             _resultValue.deployment = deployment;
             _resultValue.httpRoute = httpRoute;
             _resultValue.podSelectorLabel = podSelectorLabel;
+            _resultValue.routeDestinations = routeDestinations;
             _resultValue.routeUpdateWaitTime = routeUpdateWaitTime;
             _resultValue.service = service;
             _resultValue.stableCutbackDuration = stableCutbackDuration;

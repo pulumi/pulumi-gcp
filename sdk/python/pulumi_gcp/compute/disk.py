@@ -152,10 +152,12 @@ class DiskArgs:
                if the source snapshot is protected by a customer-supplied encryption
                key.
                Structure is documented below.
-        :param pulumi.Input[str] storage_pool: The URL of the storage pool in which the new disk is created.
+        :param pulumi.Input[str] storage_pool: The URL or the name of the storage pool in which the new disk is created.
                For example:
                * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
                * /projects/{project}/zones/{zone}/storagePools/{storagePool}
+               * /zones/{zone}/storagePools/{storagePool}
+               * /{storagePool}
         :param pulumi.Input[str] type: URL of the disk type resource describing which disk type to use to
                create the disk. Provide this when creating the disk.
         :param pulumi.Input[str] zone: A reference to the zone where the disk resides.
@@ -565,10 +567,12 @@ class DiskArgs:
     @pulumi.getter(name="storagePool")
     def storage_pool(self) -> Optional[pulumi.Input[str]]:
         """
-        The URL of the storage pool in which the new disk is created.
+        The URL or the name of the storage pool in which the new disk is created.
         For example:
         * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
         * /projects/{project}/zones/{zone}/storagePools/{storagePool}
+        * /zones/{zone}/storagePools/{storagePool}
+        * /{storagePool}
         """
         return pulumi.get(self, "storage_pool")
 
@@ -772,10 +776,12 @@ class _DiskState:
                that was later deleted and recreated under the same name, the source
                snapshot ID would identify the exact version of the snapshot that was
                used.
-        :param pulumi.Input[str] storage_pool: The URL of the storage pool in which the new disk is created.
+        :param pulumi.Input[str] storage_pool: The URL or the name of the storage pool in which the new disk is created.
                For example:
                * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
                * /projects/{project}/zones/{zone}/storagePools/{storagePool}
+               * /zones/{zone}/storagePools/{storagePool}
+               * /{storagePool}
         :param pulumi.Input[str] type: URL of the disk type resource describing which disk type to use to
                create the disk. Provide this when creating the disk.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] users: Links to the users of the disk (attached instances) in form:
@@ -1356,10 +1362,12 @@ class _DiskState:
     @pulumi.getter(name="storagePool")
     def storage_pool(self) -> Optional[pulumi.Input[str]]:
         """
-        The URL of the storage pool in which the new disk is created.
+        The URL or the name of the storage pool in which the new disk is created.
         For example:
         * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
         * /projects/{project}/zones/{zone}/storagePools/{storagePool}
+        * /zones/{zone}/storagePools/{storagePool}
+        * /{storagePool}
         """
         return pulumi.get(self, "storage_pool")
 
@@ -1662,10 +1670,12 @@ class Disk(pulumi.CustomResource):
                if the source snapshot is protected by a customer-supplied encryption
                key.
                Structure is documented below.
-        :param pulumi.Input[str] storage_pool: The URL of the storage pool in which the new disk is created.
+        :param pulumi.Input[str] storage_pool: The URL or the name of the storage pool in which the new disk is created.
                For example:
                * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
                * /projects/{project}/zones/{zone}/storagePools/{storagePool}
+               * /zones/{zone}/storagePools/{storagePool}
+               * /{storagePool}
         :param pulumi.Input[str] type: URL of the disk type resource describing which disk type to use to
                create the disk. Provide this when creating the disk.
         :param pulumi.Input[str] zone: A reference to the zone where the disk resides.
@@ -2065,10 +2075,12 @@ class Disk(pulumi.CustomResource):
                that was later deleted and recreated under the same name, the source
                snapshot ID would identify the exact version of the snapshot that was
                used.
-        :param pulumi.Input[str] storage_pool: The URL of the storage pool in which the new disk is created.
+        :param pulumi.Input[str] storage_pool: The URL or the name of the storage pool in which the new disk is created.
                For example:
                * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
                * /projects/{project}/zones/{zone}/storagePools/{storagePool}
+               * /zones/{zone}/storagePools/{storagePool}
+               * /{storagePool}
         :param pulumi.Input[str] type: URL of the disk type resource describing which disk type to use to
                create the disk. Provide this when creating the disk.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] users: Links to the users of the disk (attached instances) in form:
@@ -2482,10 +2494,12 @@ class Disk(pulumi.CustomResource):
     @pulumi.getter(name="storagePool")
     def storage_pool(self) -> pulumi.Output[Optional[str]]:
         """
-        The URL of the storage pool in which the new disk is created.
+        The URL or the name of the storage pool in which the new disk is created.
         For example:
         * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
         * /projects/{project}/zones/{zone}/storagePools/{storagePool}
+        * /zones/{zone}/storagePools/{storagePool}
+        * /{storagePool}
         """
         return pulumi.get(self, "storage_pool")
 

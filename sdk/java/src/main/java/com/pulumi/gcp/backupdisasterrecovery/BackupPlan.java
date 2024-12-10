@@ -51,7 +51,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var myBackupVault = new BackupVault("myBackupVault", BackupVaultArgs.builder()
  *             .location("us-central1")
- *             .backupVaultId("bv-bp-test")
+ *             .backupVaultId("backup-vault-simple-test")
  *             .backupMinimumEnforcedRetentionDuration("100000s")
  *             .build());
  * 

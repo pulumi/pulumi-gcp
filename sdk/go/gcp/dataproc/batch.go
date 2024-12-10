@@ -384,6 +384,64 @@ import (
 //	}
 //
 // ```
+// ### Dataproc Batch Autotuning
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/dataproc"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := dataproc.NewBatch(ctx, "example_batch_autotuning", &dataproc.BatchArgs{
+//				BatchId:  pulumi.String("tf-test-batch_16511"),
+//				Location: pulumi.String("us-central1"),
+//				Labels: pulumi.StringMap{
+//					"batch_test": pulumi.String("terraform"),
+//				},
+//				RuntimeConfig: &dataproc.BatchRuntimeConfigArgs{
+//					Version: pulumi.String("2.2"),
+//					Properties: pulumi.StringMap{
+//						"spark.dynamicAllocation.enabled": pulumi.String("false"),
+//						"spark.executor.instances":        pulumi.String("2"),
+//					},
+//					Cohort: pulumi.String("tf-dataproc-batch-example"),
+//					AutotuningConfig: &dataproc.BatchRuntimeConfigAutotuningConfigArgs{
+//						Scenarios: pulumi.StringArray{
+//							pulumi.String("SCALING"),
+//							pulumi.String("MEMORY"),
+//						},
+//					},
+//				},
+//				EnvironmentConfig: &dataproc.BatchEnvironmentConfigArgs{
+//					ExecutionConfig: &dataproc.BatchEnvironmentConfigExecutionConfigArgs{
+//						SubnetworkUri: pulumi.String("default"),
+//						Ttl:           pulumi.String("3600s"),
+//					},
+//				},
+//				SparkBatch: &dataproc.BatchSparkBatchArgs{
+//					MainClass: pulumi.String("org.apache.spark.examples.SparkPi"),
+//					Args: pulumi.StringArray{
+//						pulumi.String("10"),
+//					},
+//					JarFileUris: pulumi.StringArray{
+//						pulumi.String("file:///usr/lib/spark/examples/jars/spark-examples.jar"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //

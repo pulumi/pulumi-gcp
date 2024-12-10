@@ -126,7 +126,7 @@ namespace Pulumi.Gcp.DiscoveryEngine
         /// <summary>
         /// The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore:
         /// If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
-        /// Default value: "GENERIC" Possible values: ["GENERIC", "MEDIA"]
+        /// Default value: "GENERIC" Possible values: ["GENERIC", "MEDIA", "HEALTHCARE_FHIR"]
         /// </summary>
         [Output("industryVertical")]
         public Output<string?> IndustryVertical { get; private set; } = null!;
@@ -247,7 +247,7 @@ namespace Pulumi.Gcp.DiscoveryEngine
         /// <summary>
         /// The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore:
         /// If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
-        /// Default value: "GENERIC" Possible values: ["GENERIC", "MEDIA"]
+        /// Default value: "GENERIC" Possible values: ["GENERIC", "MEDIA", "HEALTHCARE_FHIR"]
         /// </summary>
         [Input("industryVertical")]
         public Input<string>? IndustryVertical { get; set; }
@@ -321,7 +321,7 @@ namespace Pulumi.Gcp.DiscoveryEngine
         /// <summary>
         /// The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore:
         /// If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
-        /// Default value: "GENERIC" Possible values: ["GENERIC", "MEDIA"]
+        /// Default value: "GENERIC" Possible values: ["GENERIC", "MEDIA", "HEALTHCARE_FHIR"]
         /// </summary>
         [Input("industryVertical")]
         public Input<string>? IndustryVertical { get; set; }

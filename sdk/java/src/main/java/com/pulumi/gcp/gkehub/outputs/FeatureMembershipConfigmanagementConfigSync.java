@@ -25,7 +25,7 @@ public final class FeatureMembershipConfigmanagementConfigSync {
      */
     private @Nullable FeatureMembershipConfigmanagementConfigSyncGit git;
     /**
-     * @return The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA.
+     * @return Deprecated: If Workload Identity Federation for GKE is enabled, Google Cloud Service Account is no longer needed for exporting Config Sync metrics: https://cloud.google.com/kubernetes-engine/enterprise/config-sync/docs/how-to/monitor-config-sync-cloud-monitoring#custom-monitoring.
      * 
      */
     private @Nullable String metricsGcpServiceAccountEmail;
@@ -37,7 +37,7 @@ public final class FeatureMembershipConfigmanagementConfigSync {
      */
     private @Nullable FeatureMembershipConfigmanagementConfigSyncOci oci;
     /**
-     * @return Supported from Config Sync versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to &#34;false&#34;, disables the Config Sync admission webhook and does not prevent drifts.
+     * @return Supported from Config Sync versions 1.10.0 onwards. Set to `true` to enable the Config Sync admission webhook to prevent drifts. If set to `false`, disables the Config Sync admission webhook and does not prevent drifts.
      * 
      */
     private @Nullable Boolean preventDrift;
@@ -46,6 +46,11 @@ public final class FeatureMembershipConfigmanagementConfigSync {
      * 
      */
     private @Nullable String sourceFormat;
+    /**
+     * @return Set to `true` to stop syncing configurations for a single cluster. This field is only available on clusters using Config Sync [auto-upgrades](http://cloud/kubernetes-engine/enterprise/config-sync/docs/how-to/upgrade-config-sync#auto-upgrade-config) or on Config Sync version 1.20.0 or later. Defaults: `false`.
+     * 
+     */
+    private @Nullable Boolean stopSyncing;
 
     private FeatureMembershipConfigmanagementConfigSync() {}
     /**
@@ -63,7 +68,7 @@ public final class FeatureMembershipConfigmanagementConfigSync {
         return Optional.ofNullable(this.git);
     }
     /**
-     * @return The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA.
+     * @return Deprecated: If Workload Identity Federation for GKE is enabled, Google Cloud Service Account is no longer needed for exporting Config Sync metrics: https://cloud.google.com/kubernetes-engine/enterprise/config-sync/docs/how-to/monitor-config-sync-cloud-monitoring#custom-monitoring.
      * 
      */
     public Optional<String> metricsGcpServiceAccountEmail() {
@@ -79,7 +84,7 @@ public final class FeatureMembershipConfigmanagementConfigSync {
         return Optional.ofNullable(this.oci);
     }
     /**
-     * @return Supported from Config Sync versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to &#34;false&#34;, disables the Config Sync admission webhook and does not prevent drifts.
+     * @return Supported from Config Sync versions 1.10.0 onwards. Set to `true` to enable the Config Sync admission webhook to prevent drifts. If set to `false`, disables the Config Sync admission webhook and does not prevent drifts.
      * 
      */
     public Optional<Boolean> preventDrift() {
@@ -91,6 +96,13 @@ public final class FeatureMembershipConfigmanagementConfigSync {
      */
     public Optional<String> sourceFormat() {
         return Optional.ofNullable(this.sourceFormat);
+    }
+    /**
+     * @return Set to `true` to stop syncing configurations for a single cluster. This field is only available on clusters using Config Sync [auto-upgrades](http://cloud/kubernetes-engine/enterprise/config-sync/docs/how-to/upgrade-config-sync#auto-upgrade-config) or on Config Sync version 1.20.0 or later. Defaults: `false`.
+     * 
+     */
+    public Optional<Boolean> stopSyncing() {
+        return Optional.ofNullable(this.stopSyncing);
     }
 
     public static Builder builder() {
@@ -108,6 +120,7 @@ public final class FeatureMembershipConfigmanagementConfigSync {
         private @Nullable FeatureMembershipConfigmanagementConfigSyncOci oci;
         private @Nullable Boolean preventDrift;
         private @Nullable String sourceFormat;
+        private @Nullable Boolean stopSyncing;
         public Builder() {}
         public Builder(FeatureMembershipConfigmanagementConfigSync defaults) {
     	      Objects.requireNonNull(defaults);
@@ -117,6 +130,7 @@ public final class FeatureMembershipConfigmanagementConfigSync {
     	      this.oci = defaults.oci;
     	      this.preventDrift = defaults.preventDrift;
     	      this.sourceFormat = defaults.sourceFormat;
+    	      this.stopSyncing = defaults.stopSyncing;
         }
 
         @CustomType.Setter
@@ -155,6 +169,12 @@ public final class FeatureMembershipConfigmanagementConfigSync {
             this.sourceFormat = sourceFormat;
             return this;
         }
+        @CustomType.Setter
+        public Builder stopSyncing(@Nullable Boolean stopSyncing) {
+
+            this.stopSyncing = stopSyncing;
+            return this;
+        }
         public FeatureMembershipConfigmanagementConfigSync build() {
             final var _resultValue = new FeatureMembershipConfigmanagementConfigSync();
             _resultValue.enabled = enabled;
@@ -163,6 +183,7 @@ public final class FeatureMembershipConfigmanagementConfigSync {
             _resultValue.oci = oci;
             _resultValue.preventDrift = preventDrift;
             _resultValue.sourceFormat = sourceFormat;
+            _resultValue.stopSyncing = stopSyncing;
             return _resultValue;
         }
     }

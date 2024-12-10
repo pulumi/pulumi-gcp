@@ -24,6 +24,18 @@ namespace Pulumi.Gcp.Compute.Inputs
         [Input("ruleVisibility")]
         public Input<string>? RuleVisibility { get; set; }
 
+        [Input("thresholdConfigs")]
+        private InputList<Inputs.SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigGetArgs>? _thresholdConfigs;
+
+        /// <summary>
+        /// Configuration options for layer7 adaptive protection for various customizable thresholds.
+        /// </summary>
+        public InputList<Inputs.SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigGetArgs> ThresholdConfigs
+        {
+            get => _thresholdConfigs ?? (_thresholdConfigs = new InputList<Inputs.SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigGetArgs>());
+            set => _thresholdConfigs = value;
+        }
+
         public SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigGetArgs()
         {
         }

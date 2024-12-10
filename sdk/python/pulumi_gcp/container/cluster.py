@@ -49,6 +49,7 @@ class ClusterArgs:
                  enable_multi_networking: Optional[pulumi.Input[bool]] = None,
                  enable_shielded_nodes: Optional[pulumi.Input[bool]] = None,
                  enable_tpu: Optional[pulumi.Input[bool]] = None,
+                 enterprise_config: Optional[pulumi.Input['ClusterEnterpriseConfigArgs']] = None,
                  fleet: Optional[pulumi.Input['ClusterFleetArgs']] = None,
                  gateway_api_config: Optional[pulumi.Input['ClusterGatewayApiConfigArgs']] = None,
                  identity_service_config: Optional[pulumi.Input['ClusterIdentityServiceConfigArgs']] = None,
@@ -153,6 +154,10 @@ class ClusterArgs:
         :param pulumi.Input[bool] enable_shielded_nodes: Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `true`.
         :param pulumi.Input[bool] enable_tpu: Whether to enable Cloud TPU resources in this cluster.
                See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
+        :param pulumi.Input['ClusterEnterpriseConfigArgs'] enterprise_config: Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
+               
+               
+               <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         :param pulumi.Input['ClusterFleetArgs'] fleet: Fleet configuration for the cluster. Structure is documented below.
         :param pulumi.Input['ClusterGatewayApiConfigArgs'] gateway_api_config: Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
         :param pulumi.Input['ClusterIdentityServiceConfigArgs'] identity_service_config: . Structure is documented below.
@@ -300,8 +305,6 @@ class ClusterArgs:
         :param pulumi.Input['ClusterVerticalPodAutoscalingArgs'] vertical_pod_autoscaling: Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
                Structure is documented below.
         :param pulumi.Input['ClusterWorkloadAltsConfigArgs'] workload_alts_config: Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
-               
-               <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         :param pulumi.Input['ClusterWorkloadIdentityConfigArgs'] workload_identity_config: Workload Identity allows Kubernetes service accounts to act as a user-managed
                [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
                Structure is documented below.
@@ -362,6 +365,8 @@ class ClusterArgs:
             pulumi.set(__self__, "enable_shielded_nodes", enable_shielded_nodes)
         if enable_tpu is not None:
             pulumi.set(__self__, "enable_tpu", enable_tpu)
+        if enterprise_config is not None:
+            pulumi.set(__self__, "enterprise_config", enterprise_config)
         if fleet is not None:
             pulumi.set(__self__, "fleet", fleet)
         if gateway_api_config is not None:
@@ -814,6 +819,21 @@ class ClusterArgs:
     @enable_tpu.setter
     def enable_tpu(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_tpu", value)
+
+    @property
+    @pulumi.getter(name="enterpriseConfig")
+    def enterprise_config(self) -> Optional[pulumi.Input['ClusterEnterpriseConfigArgs']]:
+        """
+        Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
+
+
+        <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
+        """
+        return pulumi.get(self, "enterprise_config")
+
+    @enterprise_config.setter
+    def enterprise_config(self, value: Optional[pulumi.Input['ClusterEnterpriseConfigArgs']]):
+        pulumi.set(self, "enterprise_config", value)
 
     @property
     @pulumi.getter
@@ -1428,8 +1448,6 @@ class ClusterArgs:
     def workload_alts_config(self) -> Optional[pulumi.Input['ClusterWorkloadAltsConfigArgs']]:
         """
         Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
-
-        <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         """
         return pulumi.get(self, "workload_alts_config")
 
@@ -1485,6 +1503,7 @@ class _ClusterState:
                  enable_shielded_nodes: Optional[pulumi.Input[bool]] = None,
                  enable_tpu: Optional[pulumi.Input[bool]] = None,
                  endpoint: Optional[pulumi.Input[str]] = None,
+                 enterprise_config: Optional[pulumi.Input['ClusterEnterpriseConfigArgs']] = None,
                  fleet: Optional[pulumi.Input['ClusterFleetArgs']] = None,
                  gateway_api_config: Optional[pulumi.Input['ClusterGatewayApiConfigArgs']] = None,
                  identity_service_config: Optional[pulumi.Input['ClusterIdentityServiceConfigArgs']] = None,
@@ -1598,6 +1617,10 @@ class _ClusterState:
         :param pulumi.Input[bool] enable_tpu: Whether to enable Cloud TPU resources in this cluster.
                See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
         :param pulumi.Input[str] endpoint: The IP address of this cluster's Kubernetes master.
+        :param pulumi.Input['ClusterEnterpriseConfigArgs'] enterprise_config: Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
+               
+               
+               <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         :param pulumi.Input['ClusterFleetArgs'] fleet: Fleet configuration for the cluster. Structure is documented below.
         :param pulumi.Input['ClusterGatewayApiConfigArgs'] gateway_api_config: Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
         :param pulumi.Input['ClusterIdentityServiceConfigArgs'] identity_service_config: . Structure is documented below.
@@ -1758,8 +1781,6 @@ class _ClusterState:
         :param pulumi.Input['ClusterVerticalPodAutoscalingArgs'] vertical_pod_autoscaling: Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
                Structure is documented below.
         :param pulumi.Input['ClusterWorkloadAltsConfigArgs'] workload_alts_config: Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
-               
-               <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         :param pulumi.Input['ClusterWorkloadIdentityConfigArgs'] workload_identity_config: Workload Identity allows Kubernetes service accounts to act as a user-managed
                [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
                Structure is documented below.
@@ -1824,6 +1845,8 @@ class _ClusterState:
             pulumi.set(__self__, "enable_tpu", enable_tpu)
         if endpoint is not None:
             pulumi.set(__self__, "endpoint", endpoint)
+        if enterprise_config is not None:
+            pulumi.set(__self__, "enterprise_config", enterprise_config)
         if fleet is not None:
             pulumi.set(__self__, "fleet", fleet)
         if gateway_api_config is not None:
@@ -2314,6 +2337,21 @@ class _ClusterState:
     @endpoint.setter
     def endpoint(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "endpoint", value)
+
+    @property
+    @pulumi.getter(name="enterpriseConfig")
+    def enterprise_config(self) -> Optional[pulumi.Input['ClusterEnterpriseConfigArgs']]:
+        """
+        Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
+
+
+        <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
+        """
+        return pulumi.get(self, "enterprise_config")
+
+    @enterprise_config.setter
+    def enterprise_config(self, value: Optional[pulumi.Input['ClusterEnterpriseConfigArgs']]):
+        pulumi.set(self, "enterprise_config", value)
 
     @property
     @pulumi.getter
@@ -3016,8 +3054,6 @@ class _ClusterState:
     def workload_alts_config(self) -> Optional[pulumi.Input['ClusterWorkloadAltsConfigArgs']]:
         """
         Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
-
-        <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         """
         return pulumi.get(self, "workload_alts_config")
 
@@ -3073,6 +3109,7 @@ class Cluster(pulumi.CustomResource):
                  enable_multi_networking: Optional[pulumi.Input[bool]] = None,
                  enable_shielded_nodes: Optional[pulumi.Input[bool]] = None,
                  enable_tpu: Optional[pulumi.Input[bool]] = None,
+                 enterprise_config: Optional[pulumi.Input[Union['ClusterEnterpriseConfigArgs', 'ClusterEnterpriseConfigArgsDict']]] = None,
                  fleet: Optional[pulumi.Input[Union['ClusterFleetArgs', 'ClusterFleetArgsDict']]] = None,
                  gateway_api_config: Optional[pulumi.Input[Union['ClusterGatewayApiConfigArgs', 'ClusterGatewayApiConfigArgsDict']]] = None,
                  identity_service_config: Optional[pulumi.Input[Union['ClusterIdentityServiceConfigArgs', 'ClusterIdentityServiceConfigArgsDict']]] = None,
@@ -3299,6 +3336,10 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_shielded_nodes: Enable Shielded Nodes features on all nodes in this cluster.  Defaults to `true`.
         :param pulumi.Input[bool] enable_tpu: Whether to enable Cloud TPU resources in this cluster.
                See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
+        :param pulumi.Input[Union['ClusterEnterpriseConfigArgs', 'ClusterEnterpriseConfigArgsDict']] enterprise_config: Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
+               
+               
+               <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         :param pulumi.Input[Union['ClusterFleetArgs', 'ClusterFleetArgsDict']] fleet: Fleet configuration for the cluster. Structure is documented below.
         :param pulumi.Input[Union['ClusterGatewayApiConfigArgs', 'ClusterGatewayApiConfigArgsDict']] gateway_api_config: Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
         :param pulumi.Input[Union['ClusterIdentityServiceConfigArgs', 'ClusterIdentityServiceConfigArgsDict']] identity_service_config: . Structure is documented below.
@@ -3446,8 +3487,6 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[Union['ClusterVerticalPodAutoscalingArgs', 'ClusterVerticalPodAutoscalingArgsDict']] vertical_pod_autoscaling: Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
                Structure is documented below.
         :param pulumi.Input[Union['ClusterWorkloadAltsConfigArgs', 'ClusterWorkloadAltsConfigArgsDict']] workload_alts_config: Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
-               
-               <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         :param pulumi.Input[Union['ClusterWorkloadIdentityConfigArgs', 'ClusterWorkloadIdentityConfigArgsDict']] workload_identity_config: Workload Identity allows Kubernetes service accounts to act as a user-managed
                [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
                Structure is documented below.
@@ -3622,6 +3661,7 @@ class Cluster(pulumi.CustomResource):
                  enable_multi_networking: Optional[pulumi.Input[bool]] = None,
                  enable_shielded_nodes: Optional[pulumi.Input[bool]] = None,
                  enable_tpu: Optional[pulumi.Input[bool]] = None,
+                 enterprise_config: Optional[pulumi.Input[Union['ClusterEnterpriseConfigArgs', 'ClusterEnterpriseConfigArgsDict']]] = None,
                  fleet: Optional[pulumi.Input[Union['ClusterFleetArgs', 'ClusterFleetArgsDict']]] = None,
                  gateway_api_config: Optional[pulumi.Input[Union['ClusterGatewayApiConfigArgs', 'ClusterGatewayApiConfigArgsDict']]] = None,
                  identity_service_config: Optional[pulumi.Input[Union['ClusterIdentityServiceConfigArgs', 'ClusterIdentityServiceConfigArgsDict']]] = None,
@@ -3703,6 +3743,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["enable_multi_networking"] = enable_multi_networking
             __props__.__dict__["enable_shielded_nodes"] = enable_shielded_nodes
             __props__.__dict__["enable_tpu"] = enable_tpu
+            __props__.__dict__["enterprise_config"] = enterprise_config
             __props__.__dict__["fleet"] = fleet
             __props__.__dict__["gateway_api_config"] = gateway_api_config
             __props__.__dict__["identity_service_config"] = identity_service_config
@@ -3798,6 +3839,7 @@ class Cluster(pulumi.CustomResource):
             enable_shielded_nodes: Optional[pulumi.Input[bool]] = None,
             enable_tpu: Optional[pulumi.Input[bool]] = None,
             endpoint: Optional[pulumi.Input[str]] = None,
+            enterprise_config: Optional[pulumi.Input[Union['ClusterEnterpriseConfigArgs', 'ClusterEnterpriseConfigArgsDict']]] = None,
             fleet: Optional[pulumi.Input[Union['ClusterFleetArgs', 'ClusterFleetArgsDict']]] = None,
             gateway_api_config: Optional[pulumi.Input[Union['ClusterGatewayApiConfigArgs', 'ClusterGatewayApiConfigArgsDict']]] = None,
             identity_service_config: Optional[pulumi.Input[Union['ClusterIdentityServiceConfigArgs', 'ClusterIdentityServiceConfigArgsDict']]] = None,
@@ -3916,6 +3958,10 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[bool] enable_tpu: Whether to enable Cloud TPU resources in this cluster.
                See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
         :param pulumi.Input[str] endpoint: The IP address of this cluster's Kubernetes master.
+        :param pulumi.Input[Union['ClusterEnterpriseConfigArgs', 'ClusterEnterpriseConfigArgsDict']] enterprise_config: Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
+               
+               
+               <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         :param pulumi.Input[Union['ClusterFleetArgs', 'ClusterFleetArgsDict']] fleet: Fleet configuration for the cluster. Structure is documented below.
         :param pulumi.Input[Union['ClusterGatewayApiConfigArgs', 'ClusterGatewayApiConfigArgsDict']] gateway_api_config: Configuration for [GKE Gateway API controller](https://cloud.google.com/kubernetes-engine/docs/concepts/gateway-api). Structure is documented below.
         :param pulumi.Input[Union['ClusterIdentityServiceConfigArgs', 'ClusterIdentityServiceConfigArgsDict']] identity_service_config: . Structure is documented below.
@@ -4076,8 +4122,6 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[Union['ClusterVerticalPodAutoscalingArgs', 'ClusterVerticalPodAutoscalingArgsDict']] vertical_pod_autoscaling: Vertical Pod Autoscaling automatically adjusts the resources of pods controlled by it.
                Structure is documented below.
         :param pulumi.Input[Union['ClusterWorkloadAltsConfigArgs', 'ClusterWorkloadAltsConfigArgsDict']] workload_alts_config: Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
-               
-               <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         :param pulumi.Input[Union['ClusterWorkloadIdentityConfigArgs', 'ClusterWorkloadIdentityConfigArgsDict']] workload_identity_config: Workload Identity allows Kubernetes service accounts to act as a user-managed
                [Google IAM Service Account](https://cloud.google.com/iam/docs/service-accounts#user-managed_service_accounts).
                Structure is documented below.
@@ -4116,6 +4160,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["enable_shielded_nodes"] = enable_shielded_nodes
         __props__.__dict__["enable_tpu"] = enable_tpu
         __props__.__dict__["endpoint"] = endpoint
+        __props__.__dict__["enterprise_config"] = enterprise_config
         __props__.__dict__["fleet"] = fleet
         __props__.__dict__["gateway_api_config"] = gateway_api_config
         __props__.__dict__["identity_service_config"] = identity_service_config
@@ -4436,6 +4481,17 @@ class Cluster(pulumi.CustomResource):
         The IP address of this cluster's Kubernetes master.
         """
         return pulumi.get(self, "endpoint")
+
+    @property
+    @pulumi.getter(name="enterpriseConfig")
+    def enterprise_config(self) -> pulumi.Output['outputs.ClusterEnterpriseConfig']:
+        """
+        Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
+
+
+        <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
+        """
+        return pulumi.get(self, "enterprise_config")
 
     @property
     @pulumi.getter
@@ -4942,8 +4998,6 @@ class Cluster(pulumi.CustomResource):
     def workload_alts_config(self) -> pulumi.Output['outputs.ClusterWorkloadAltsConfig']:
         """
         Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
-
-        <a name="nested_default_snat_status"></a>The `default_snat_status` block supports
         """
         return pulumi.get(self, "workload_alts_config")
 

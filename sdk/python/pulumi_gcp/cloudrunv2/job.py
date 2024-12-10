@@ -322,7 +322,7 @@ class _JobState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] etag: A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
         :param pulumi.Input[int] execution_count: Number of executions created for this job.
-        :param pulumi.Input[str] expire_time: For a deleted resource, the time after which it will be permamently deleted.
+        :param pulumi.Input[str] expire_time: For a deleted resource, the time after which it will be permanently deleted.
         :param pulumi.Input[str] generation: A number that monotonically increases every time the user modifies the desired state.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with
                Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment,
@@ -587,7 +587,7 @@ class _JobState:
     @pulumi.getter(name="expireTime")
     def expire_time(self) -> Optional[pulumi.Input[str]]:
         """
-        For a deleted resource, the time after which it will be permamently deleted.
+        For a deleted resource, the time after which it will be permanently deleted.
         """
         return pulumi.get(self, "expire_time")
 
@@ -1644,7 +1644,7 @@ class Job(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] etag: A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
         :param pulumi.Input[int] execution_count: Number of executions created for this job.
-        :param pulumi.Input[str] expire_time: For a deleted resource, the time after which it will be permamently deleted.
+        :param pulumi.Input[str] expire_time: For a deleted resource, the time after which it will be permanently deleted.
         :param pulumi.Input[str] generation: A number that monotonically increases every time the user modifies the desired state.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Unstructured key value map that can be used to organize and categorize objects. User-provided labels are shared with
                Google's billing system, so they can be used to filter, or break down billing charges by team, component, environment,
@@ -1831,7 +1831,7 @@ class Job(pulumi.CustomResource):
     @pulumi.getter(name="expireTime")
     def expire_time(self) -> pulumi.Output[str]:
         """
-        For a deleted resource, the time after which it will be permamently deleted.
+        For a deleted resource, the time after which it will be permanently deleted.
         """
         return pulumi.get(self, "expire_time")
 

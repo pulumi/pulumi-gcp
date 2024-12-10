@@ -18,6 +18,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * Container to store and organize immutable and indelible backups.
+ * 
  * ## Example Usage
  * 
  * ### Backup Dr Backup Vault Full
@@ -50,13 +52,13 @@ import javax.annotation.Nullable;
  *             .backupVaultId("backup-vault-test")
  *             .description("This is a second backup vault built by Terraform.")
  *             .backupMinimumEnforcedRetentionDuration("100000s")
- *             .labels(Map.ofEntries(
- *                 Map.entry("foo", "bar1"),
- *                 Map.entry("bar", "baz1")
- *             ))
  *             .annotations(Map.ofEntries(
  *                 Map.entry("annotations1", "bar1"),
  *                 Map.entry("annotations2", "baz1")
+ *             ))
+ *             .labels(Map.ofEntries(
+ *                 Map.entry("foo", "bar1"),
+ *                 Map.entry("bar", "baz1")
  *             ))
  *             .forceUpdate("true")
  *             .accessRestriction("WITHIN_ORGANIZATION")

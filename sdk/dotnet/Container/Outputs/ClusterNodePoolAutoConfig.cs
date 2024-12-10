@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class ClusterNodePoolAutoConfig
     {
         /// <summary>
+        /// Linux system configuration for the cluster's automatically provisioned node pools. Only `cgroup_mode` field is supported in `node_pool_auto_config`. Structure is documented below.
+        /// </summary>
+        public readonly Outputs.ClusterNodePoolAutoConfigLinuxNodeConfig? LinuxNodeConfig;
+        /// <summary>
         /// The network tag config for the cluster's automatically provisioned node pools. Structure is documented below.
         /// </summary>
         public readonly Outputs.ClusterNodePoolAutoConfigNetworkTags? NetworkTags;
@@ -29,12 +33,15 @@ namespace Pulumi.Gcp.Container.Outputs
 
         [OutputConstructor]
         private ClusterNodePoolAutoConfig(
+            Outputs.ClusterNodePoolAutoConfigLinuxNodeConfig? linuxNodeConfig,
+
             Outputs.ClusterNodePoolAutoConfigNetworkTags? networkTags,
 
             Outputs.ClusterNodePoolAutoConfigNodeKubeletConfig? nodeKubeletConfig,
 
             ImmutableDictionary<string, string>? resourceManagerTags)
         {
+            LinuxNodeConfig = linuxNodeConfig;
             NetworkTags = networkTags;
             NodeKubeletConfig = nodeKubeletConfig;
             ResourceManagerTags = resourceManagerTags;

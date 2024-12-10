@@ -13,7 +13,7 @@ import java.util.Objects;
 @CustomType
 public final class GetRepositoryRemoteRepositoryConfigPythonRepository {
     /**
-     * @return Settings for a remote repository with a custom uri.
+     * @return [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
      * 
      */
     private List<GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository> customRepositories;
@@ -25,7 +25,7 @@ public final class GetRepositoryRemoteRepositoryConfigPythonRepository {
 
     private GetRepositoryRemoteRepositoryConfigPythonRepository() {}
     /**
-     * @return Settings for a remote repository with a custom uri.
+     * @return [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
      * 
      */
     public List<GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository> customRepositories() {

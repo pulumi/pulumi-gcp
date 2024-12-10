@@ -662,6 +662,13 @@ namespace Pulumi.Gcp
             set => _firestoreCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _geminiCustomEndpoint = new __Value<string?>(() => __config.Get("geminiCustomEndpoint"));
+        public static string? GeminiCustomEndpoint
+        {
+            get => _geminiCustomEndpoint.Get();
+            set => _geminiCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _gkeBackupCustomEndpoint = new __Value<string?>(() => __config.Get("gkeBackupCustomEndpoint"));
         public static string? GkeBackupCustomEndpoint
         {

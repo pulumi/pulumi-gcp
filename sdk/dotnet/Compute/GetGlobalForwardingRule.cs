@@ -115,6 +115,7 @@ namespace Pulumi.Gcp.Compute
         public readonly string BaseForwardingRule;
         public readonly string Description;
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
+        public readonly int ForwardingRuleId;
         /// <summary>
         /// The provider-assigned unique ID for this managed resource.
         /// </summary>
@@ -149,6 +150,8 @@ namespace Pulumi.Gcp.Compute
             string description,
 
             ImmutableDictionary<string, string> effectiveLabels,
+
+            int forwardingRuleId,
 
             string id,
 
@@ -196,6 +199,7 @@ namespace Pulumi.Gcp.Compute
             BaseForwardingRule = baseForwardingRule;
             Description = description;
             EffectiveLabels = effectiveLabels;
+            ForwardingRuleId = forwardingRuleId;
             Id = id;
             IpAddress = ipAddress;
             IpProtocol = ipProtocol;

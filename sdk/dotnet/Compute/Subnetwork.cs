@@ -576,6 +576,12 @@ namespace Pulumi.Gcp.Compute
         [Output("stackType")]
         public Output<string> StackType { get; private set; } = null!;
 
+        /// <summary>
+        /// The unique identifier number for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("subnetworkId")]
+        public Output<int> SubnetworkId { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Subnetwork resource with the given unique name, arguments, and options.
@@ -996,6 +1002,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("stackType")]
         public Input<string>? StackType { get; set; }
+
+        /// <summary>
+        /// The unique identifier number for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Input("subnetworkId")]
+        public Input<int>? SubnetworkId { get; set; }
 
         public SubnetworkState()
         {

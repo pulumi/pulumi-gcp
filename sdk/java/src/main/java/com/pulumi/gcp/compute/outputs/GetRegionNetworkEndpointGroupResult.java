@@ -8,6 +8,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.GetRegionNetworkEndpointGroupAppEngine;
 import com.pulumi.gcp.compute.outputs.GetRegionNetworkEndpointGroupCloudFunction;
 import com.pulumi.gcp.compute.outputs.GetRegionNetworkEndpointGroupCloudRun;
+import com.pulumi.gcp.compute.outputs.GetRegionNetworkEndpointGroupPscData;
 import com.pulumi.gcp.compute.outputs.GetRegionNetworkEndpointGroupServerlessDeployment;
 import java.lang.String;
 import java.util.List;
@@ -42,6 +43,7 @@ public final class GetRegionNetworkEndpointGroupResult {
      */
     private String networkEndpointType;
     private @Nullable String project;
+    private List<GetRegionNetworkEndpointGroupPscData> pscDatas;
     /**
      * @return The target service url used to set up private service connection to a Google API or a PSC Producer Service Attachment.
      * 
@@ -100,6 +102,9 @@ public final class GetRegionNetworkEndpointGroupResult {
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
+    public List<GetRegionNetworkEndpointGroupPscData> pscDatas() {
+        return this.pscDatas;
+    }
     /**
      * @return The target service url used to set up private service connection to a Google API or a PSC Producer Service Attachment.
      * 
@@ -142,6 +147,7 @@ public final class GetRegionNetworkEndpointGroupResult {
         private String network;
         private String networkEndpointType;
         private @Nullable String project;
+        private List<GetRegionNetworkEndpointGroupPscData> pscDatas;
         private String pscTargetService;
         private @Nullable String region;
         private @Nullable String selfLink;
@@ -159,6 +165,7 @@ public final class GetRegionNetworkEndpointGroupResult {
     	      this.network = defaults.network;
     	      this.networkEndpointType = defaults.networkEndpointType;
     	      this.project = defaults.project;
+    	      this.pscDatas = defaults.pscDatas;
     	      this.pscTargetService = defaults.pscTargetService;
     	      this.region = defaults.region;
     	      this.selfLink = defaults.selfLink;
@@ -244,6 +251,17 @@ public final class GetRegionNetworkEndpointGroupResult {
             return this;
         }
         @CustomType.Setter
+        public Builder pscDatas(List<GetRegionNetworkEndpointGroupPscData> pscDatas) {
+            if (pscDatas == null) {
+              throw new MissingRequiredPropertyException("GetRegionNetworkEndpointGroupResult", "pscDatas");
+            }
+            this.pscDatas = pscDatas;
+            return this;
+        }
+        public Builder pscDatas(GetRegionNetworkEndpointGroupPscData... pscDatas) {
+            return pscDatas(List.of(pscDatas));
+        }
+        @CustomType.Setter
         public Builder pscTargetService(String pscTargetService) {
             if (pscTargetService == null) {
               throw new MissingRequiredPropertyException("GetRegionNetworkEndpointGroupResult", "pscTargetService");
@@ -293,6 +311,7 @@ public final class GetRegionNetworkEndpointGroupResult {
             _resultValue.network = network;
             _resultValue.networkEndpointType = networkEndpointType;
             _resultValue.project = project;
+            _resultValue.pscDatas = pscDatas;
             _resultValue.pscTargetService = pscTargetService;
             _resultValue.region = region;
             _resultValue.selfLink = selfLink;

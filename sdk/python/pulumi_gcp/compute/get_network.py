@@ -26,7 +26,7 @@ class GetNetworkResult:
     """
     A collection of values returned by getNetwork.
     """
-    def __init__(__self__, description=None, gateway_ipv4=None, id=None, internal_ipv6_range=None, name=None, project=None, self_link=None, subnetworks_self_links=None):
+    def __init__(__self__, description=None, gateway_ipv4=None, id=None, internal_ipv6_range=None, name=None, network_profile=None, numeric_id=None, project=None, self_link=None, subnetworks_self_links=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -42,6 +42,12 @@ class GetNetworkResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if network_profile and not isinstance(network_profile, str):
+            raise TypeError("Expected argument 'network_profile' to be a str")
+        pulumi.set(__self__, "network_profile", network_profile)
+        if numeric_id and not isinstance(numeric_id, str):
+            raise TypeError("Expected argument 'numeric_id' to be a str")
+        pulumi.set(__self__, "numeric_id", numeric_id)
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
@@ -90,6 +96,22 @@ class GetNetworkResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="networkProfile")
+    def network_profile(self) -> Optional[str]:
+        """
+        Beta A full or partial URL of the network profile to apply to this network.
+        """
+        return pulumi.get(self, "network_profile")
+
+    @property
+    @pulumi.getter(name="numericId")
+    def numeric_id(self) -> str:
+        """
+        The numeric unique identifier for the resource.
+        """
+        return pulumi.get(self, "numeric_id")
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[str]:
         return pulumi.get(self, "project")
@@ -122,12 +144,15 @@ class AwaitableGetNetworkResult(GetNetworkResult):
             id=self.id,
             internal_ipv6_range=self.internal_ipv6_range,
             name=self.name,
+            network_profile=self.network_profile,
+            numeric_id=self.numeric_id,
             project=self.project,
             self_link=self.self_link,
             subnetworks_self_links=self.subnetworks_self_links)
 
 
 def get_network(name: Optional[str] = None,
+                network_profile: Optional[str] = None,
                 project: Optional[str] = None,
                 opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetNetworkResult:
     """
@@ -147,11 +172,13 @@ def get_network(name: Optional[str] = None,
            
            
            - - -
+    :param str network_profile: Beta A full or partial URL of the network profile to apply to this network.
     :param str project: The ID of the project in which the resource belongs. If it
            is not provided, the provider project is used.
     """
     __args__ = dict()
     __args__['name'] = name
+    __args__['networkProfile'] = network_profile
     __args__['project'] = project
     opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke('gcp:compute/getNetwork:getNetwork', __args__, opts=opts, typ=GetNetworkResult).value
@@ -162,10 +189,13 @@ def get_network(name: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         internal_ipv6_range=pulumi.get(__ret__, 'internal_ipv6_range'),
         name=pulumi.get(__ret__, 'name'),
+        network_profile=pulumi.get(__ret__, 'network_profile'),
+        numeric_id=pulumi.get(__ret__, 'numeric_id'),
         project=pulumi.get(__ret__, 'project'),
         self_link=pulumi.get(__ret__, 'self_link'),
         subnetworks_self_links=pulumi.get(__ret__, 'subnetworks_self_links'))
 def get_network_output(name: Optional[pulumi.Input[str]] = None,
+                       network_profile: Optional[pulumi.Input[Optional[str]]] = None,
                        project: Optional[pulumi.Input[Optional[str]]] = None,
                        opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetNetworkResult]:
     """
@@ -185,11 +215,13 @@ def get_network_output(name: Optional[pulumi.Input[str]] = None,
            
            
            - - -
+    :param str network_profile: Beta A full or partial URL of the network profile to apply to this network.
     :param str project: The ID of the project in which the resource belongs. If it
            is not provided, the provider project is used.
     """
     __args__ = dict()
     __args__['name'] = name
+    __args__['networkProfile'] = network_profile
     __args__['project'] = project
     opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:compute/getNetwork:getNetwork', __args__, opts=opts, typ=GetNetworkResult)
@@ -199,6 +231,8 @@ def get_network_output(name: Optional[pulumi.Input[str]] = None,
         id=pulumi.get(__response__, 'id'),
         internal_ipv6_range=pulumi.get(__response__, 'internal_ipv6_range'),
         name=pulumi.get(__response__, 'name'),
+        network_profile=pulumi.get(__response__, 'network_profile'),
+        numeric_id=pulumi.get(__response__, 'numeric_id'),
         project=pulumi.get(__response__, 'project'),
         self_link=pulumi.get(__response__, 'self_link'),
         subnetworks_self_links=pulumi.get(__response__, 'subnetworks_self_links')))

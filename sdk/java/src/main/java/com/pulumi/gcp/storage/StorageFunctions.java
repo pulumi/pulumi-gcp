@@ -686,7 +686,7 @@ public final class StorageFunctions {
      * and
      * [API](https://cloud.google.com/storage/docs/json_api/v1/objects).
      * 
-     * &gt; **Warning:** The object content will be saved in the state, and visiable to everyone who has access to the state file.
+     * &gt; **Warning:** The object content will be saved in the state, and visible to everyone who has access to the state file.
      * 
      * ## Example Usage
      * 
@@ -737,7 +737,7 @@ public final class StorageFunctions {
      * and
      * [API](https://cloud.google.com/storage/docs/json_api/v1/objects).
      * 
-     * &gt; **Warning:** The object content will be saved in the state, and visiable to everyone who has access to the state file.
+     * &gt; **Warning:** The object content will be saved in the state, and visible to everyone who has access to the state file.
      * 
      * ## Example Usage
      * 
@@ -788,7 +788,7 @@ public final class StorageFunctions {
      * and
      * [API](https://cloud.google.com/storage/docs/json_api/v1/objects).
      * 
-     * &gt; **Warning:** The object content will be saved in the state, and visiable to everyone who has access to the state file.
+     * &gt; **Warning:** The object content will be saved in the state, and visible to everyone who has access to the state file.
      * 
      * ## Example Usage
      * 
@@ -839,7 +839,7 @@ public final class StorageFunctions {
      * and
      * [API](https://cloud.google.com/storage/docs/json_api/v1/objects).
      * 
-     * &gt; **Warning:** The object content will be saved in the state, and visiable to everyone who has access to the state file.
+     * &gt; **Warning:** The object content will be saved in the state, and visible to everyone who has access to the state file.
      * 
      * ## Example Usage
      * 

@@ -73,6 +73,12 @@ namespace Pulumi.Gcp.Compute
         public string Name { get; set; } = null!;
 
         /// <summary>
+        /// Beta A full or partial URL of the network profile to apply to this network.
+        /// </summary>
+        [Input("networkProfile")]
+        public string? NetworkProfile { get; set; }
+
+        /// <summary>
         /// The ID of the project in which the resource belongs. If it
         /// is not provided, the provider project is used.
         /// </summary>
@@ -95,6 +101,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("name", required: true)]
         public Input<string> Name { get; set; } = null!;
+
+        /// <summary>
+        /// Beta A full or partial URL of the network profile to apply to this network.
+        /// </summary>
+        [Input("networkProfile")]
+        public Input<string>? NetworkProfile { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs. If it
@@ -130,6 +142,14 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public readonly string InternalIpv6Range;
         public readonly string Name;
+        /// <summary>
+        /// Beta A full or partial URL of the network profile to apply to this network.
+        /// </summary>
+        public readonly string? NetworkProfile;
+        /// <summary>
+        /// The numeric unique identifier for the resource.
+        /// </summary>
+        public readonly string NumericId;
         public readonly string? Project;
         /// <summary>
         /// The URI of the resource.
@@ -152,6 +172,10 @@ namespace Pulumi.Gcp.Compute
 
             string name,
 
+            string? networkProfile,
+
+            string numericId,
+
             string? project,
 
             string selfLink,
@@ -163,6 +187,8 @@ namespace Pulumi.Gcp.Compute
             Id = id;
             InternalIpv6Range = internalIpv6Range;
             Name = name;
+            NetworkProfile = networkProfile;
+            NumericId = numericId;
             Project = project;
             SelfLink = selfLink;
             SubnetworksSelfLinks = subnetworksSelfLinks;

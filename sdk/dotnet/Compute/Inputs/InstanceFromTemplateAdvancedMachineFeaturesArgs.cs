@@ -19,6 +19,18 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<bool>? EnableNestedVirtualization { get; set; }
 
         /// <summary>
+        /// Whether to enable UEFI networking for the instance.
+        /// </summary>
+        [Input("enableUefiNetworking")]
+        public Input<bool>? EnableUefiNetworking { get; set; }
+
+        /// <summary>
+        /// The PMU is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are "STANDARD", "ENHANCED", and "ARCHITECTURAL".
+        /// </summary>
+        [Input("performanceMonitoringUnit")]
+        public Input<string>? PerformanceMonitoringUnit { get; set; }
+
+        /// <summary>
         /// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
         /// </summary>
         [Input("threadsPerCore")]

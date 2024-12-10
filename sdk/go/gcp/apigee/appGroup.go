@@ -226,7 +226,7 @@ type AppGroup struct {
 	// A list of attributes
 	// Structure is documented below.
 	Attributes AppGroupAttributeArrayOutput `pulumi:"attributes"`
-	// Channel identifier identifies the owner maintaing this grouping.
+	// Channel identifier identifies the owner maintaining this grouping.
 	ChannelId pulumi.StringPtrOutput `pulumi:"channelId"`
 	// A reference to the associated storefront/marketplace.
 	ChannelUri pulumi.StringPtrOutput `pulumi:"channelUri"`
@@ -288,7 +288,7 @@ type appGroupState struct {
 	// A list of attributes
 	// Structure is documented below.
 	Attributes []AppGroupAttribute `pulumi:"attributes"`
-	// Channel identifier identifies the owner maintaing this grouping.
+	// Channel identifier identifies the owner maintaining this grouping.
 	ChannelId *string `pulumi:"channelId"`
 	// A reference to the associated storefront/marketplace.
 	ChannelUri *string `pulumi:"channelUri"`
@@ -318,7 +318,7 @@ type AppGroupState struct {
 	// A list of attributes
 	// Structure is documented below.
 	Attributes AppGroupAttributeArrayInput
-	// Channel identifier identifies the owner maintaing this grouping.
+	// Channel identifier identifies the owner maintaining this grouping.
 	ChannelId pulumi.StringPtrInput
 	// A reference to the associated storefront/marketplace.
 	ChannelUri pulumi.StringPtrInput
@@ -350,7 +350,7 @@ type appGroupArgs struct {
 	// A list of attributes
 	// Structure is documented below.
 	Attributes []AppGroupAttribute `pulumi:"attributes"`
-	// Channel identifier identifies the owner maintaing this grouping.
+	// Channel identifier identifies the owner maintaining this grouping.
 	ChannelId *string `pulumi:"channelId"`
 	// A reference to the associated storefront/marketplace.
 	ChannelUri *string `pulumi:"channelUri"`
@@ -373,7 +373,7 @@ type AppGroupArgs struct {
 	// A list of attributes
 	// Structure is documented below.
 	Attributes AppGroupAttributeArrayInput
-	// Channel identifier identifies the owner maintaing this grouping.
+	// Channel identifier identifies the owner maintaining this grouping.
 	ChannelId pulumi.StringPtrInput
 	// A reference to the associated storefront/marketplace.
 	ChannelUri pulumi.StringPtrInput
@@ -489,7 +489,7 @@ func (o AppGroupOutput) Attributes() AppGroupAttributeArrayOutput {
 	return o.ApplyT(func(v *AppGroup) AppGroupAttributeArrayOutput { return v.Attributes }).(AppGroupAttributeArrayOutput)
 }
 
-// Channel identifier identifies the owner maintaing this grouping.
+// Channel identifier identifies the owner maintaining this grouping.
 func (o AppGroupOutput) ChannelId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AppGroup) pulumi.StringPtrOutput { return v.ChannelId }).(pulumi.StringPtrOutput)
 }

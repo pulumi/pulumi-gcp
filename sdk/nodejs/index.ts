@@ -79,6 +79,7 @@ import * as firebase from "./firebase";
 import * as firebaserules from "./firebaserules";
 import * as firestore from "./firestore";
 import * as folder from "./folder";
+import * as gemini from "./gemini";
 import * as gkebackup from "./gkebackup";
 import * as gkehub from "./gkehub";
 import * as gkeonprem from "./gkeonprem";
@@ -206,6 +207,7 @@ export {
     firebaserules,
     firestore,
     folder,
+    gemini,
     gkebackup,
     gkehub,
     gkeonprem,

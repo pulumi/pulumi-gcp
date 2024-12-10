@@ -38,6 +38,7 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
         /// contain a maximum of 30 alphanumeric characters.
         /// </summary>
         public readonly string Database;
+        public readonly bool DeletionProtection;
         /// <summary>
         /// The display name for the Autonomous Database. The name does not have to
         /// be unique within your project.
@@ -99,6 +100,8 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
 
             string database,
 
+            bool deletionProtection,
+
             string displayName,
 
             ImmutableDictionary<string, string> effectiveLabels,
@@ -124,6 +127,7 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
             Cidr = cidr;
             CreateTime = createTime;
             Database = database;
+            DeletionProtection = deletionProtection;
             DisplayName = displayName;
             EffectiveLabels = effectiveLabels;
             EntitlementId = entitlementId;

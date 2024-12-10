@@ -13,6 +13,12 @@ namespace Pulumi.Gcp.Dataproc.Inputs
     public sealed class ClusterClusterConfigGceClusterConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Confidential Instance Config for clusters using [Confidential VMs](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/confidential-compute)
+        /// </summary>
+        [Input("confidentialInstanceConfig")]
+        public Input<Inputs.ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigGetArgs>? ConfidentialInstanceConfig { get; set; }
+
+        /// <summary>
         /// By default, clusters are not restricted to internal IP addresses,
         /// and will have ephemeral external IP addresses assigned to each instance. If set to true, all
         /// instances in the cluster will only have internal IP addresses. Note: Private Google Access

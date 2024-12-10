@@ -246,6 +246,14 @@ export class AppProfile extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * Must be used with multi-cluster routing. If true, then this app profile will use row affinity sticky routing. With row
+     * affinity, Bigtable will route single row key requests based on the row key, rather than randomly. Instead, each row key
+     * will be assigned to a cluster by Cloud Bigtable, and will stick to that cluster. Choosing this option improves
+     * read-your-writes consistency for most requests under most circumstances, without sacrificing availability. Consistency
+     * is not guaranteed, as requests may still fail over between clusters in the event of errors or latency.
+     */
+    public readonly rowAffinity!: pulumi.Output<boolean | undefined>;
+    /**
      * Use a single-cluster routing policy.
      * Structure is documented below.
      */
@@ -278,6 +286,7 @@ export class AppProfile extends pulumi.CustomResource {
             resourceInputs["multiClusterRoutingUseAny"] = state ? state.multiClusterRoutingUseAny : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["rowAffinity"] = state ? state.rowAffinity : undefined;
             resourceInputs["singleClusterRouting"] = state ? state.singleClusterRouting : undefined;
             resourceInputs["standardIsolation"] = state ? state.standardIsolation : undefined;
         } else {
@@ -293,6 +302,7 @@ export class AppProfile extends pulumi.CustomResource {
             resourceInputs["multiClusterRoutingClusterIds"] = args ? args.multiClusterRoutingClusterIds : undefined;
             resourceInputs["multiClusterRoutingUseAny"] = args ? args.multiClusterRoutingUseAny : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["rowAffinity"] = args ? args.rowAffinity : undefined;
             resourceInputs["singleClusterRouting"] = args ? args.singleClusterRouting : undefined;
             resourceInputs["standardIsolation"] = args ? args.standardIsolation : undefined;
             resourceInputs["name"] = undefined /*out*/;
@@ -351,6 +361,14 @@ export interface AppProfileState {
      */
     project?: pulumi.Input<string>;
     /**
+     * Must be used with multi-cluster routing. If true, then this app profile will use row affinity sticky routing. With row
+     * affinity, Bigtable will route single row key requests based on the row key, rather than randomly. Instead, each row key
+     * will be assigned to a cluster by Cloud Bigtable, and will stick to that cluster. Choosing this option improves
+     * read-your-writes consistency for most requests under most circumstances, without sacrificing availability. Consistency
+     * is not guaranteed, as requests may still fail over between clusters in the event of errors or latency.
+     */
+    rowAffinity?: pulumi.Input<boolean>;
+    /**
      * Use a single-cluster routing policy.
      * Structure is documented below.
      */
@@ -406,6 +424,14 @@ export interface AppProfileArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * Must be used with multi-cluster routing. If true, then this app profile will use row affinity sticky routing. With row
+     * affinity, Bigtable will route single row key requests based on the row key, rather than randomly. Instead, each row key
+     * will be assigned to a cluster by Cloud Bigtable, and will stick to that cluster. Choosing this option improves
+     * read-your-writes consistency for most requests under most circumstances, without sacrificing availability. Consistency
+     * is not guaranteed, as requests may still fail over between clusters in the event of errors or latency.
+     */
+    rowAffinity?: pulumi.Input<boolean>;
     /**
      * Use a single-cluster routing policy.
      * Structure is documented below.

@@ -704,6 +704,20 @@ public class RegionHealthCheck extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.grpcHealthCheck);
     }
     /**
+     * The unique identifier number for the resource. This identifier is defined by the server.
+     * 
+     */
+    @Export(name="healthCheckId", refs={Integer.class}, tree="[0]")
+    private Output<Integer> healthCheckId;
+
+    /**
+     * @return The unique identifier number for the resource. This identifier is defined by the server.
+     * 
+     */
+    public Output<Integer> healthCheckId() {
+        return this.healthCheckId;
+    }
+    /**
      * A so-far unhealthy instance will be marked healthy after this many
      * consecutive successes. The default value is 2.
      * 

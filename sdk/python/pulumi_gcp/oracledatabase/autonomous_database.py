@@ -28,6 +28,7 @@ class AutonomousDatabaseArgs:
                  network: pulumi.Input[str],
                  properties: pulumi.Input['AutonomousDatabasePropertiesArgs'],
                  admin_password: Optional[pulumi.Input[str]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None):
@@ -60,6 +61,8 @@ class AutonomousDatabaseArgs:
         pulumi.set(__self__, "properties", properties)
         if admin_password is not None:
             pulumi.set(__self__, "admin_password", admin_password)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if labels is not None:
@@ -159,6 +162,15 @@ class AutonomousDatabaseArgs:
         pulumi.set(self, "admin_password", value)
 
     @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deletion_protection", value)
+
+    @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -202,6 +214,7 @@ class _AutonomousDatabaseState:
                  cidr: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  database: Optional[pulumi.Input[str]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  entitlement_id: Optional[pulumi.Input[str]] = None,
@@ -251,6 +264,8 @@ class _AutonomousDatabaseState:
             pulumi.set(__self__, "create_time", create_time)
         if database is not None:
             pulumi.set(__self__, "database", database)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if effective_labels is not None:
@@ -336,6 +351,15 @@ class _AutonomousDatabaseState:
     @database.setter
     def database(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "database", value)
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deletion_protection", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -471,6 +495,7 @@ class AutonomousDatabase(pulumi.CustomResource):
                  autonomous_database_id: Optional[pulumi.Input[str]] = None,
                  cidr: Optional[pulumi.Input[str]] = None,
                  database: Optional[pulumi.Input[str]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -511,7 +536,8 @@ class AutonomousDatabase(pulumi.CustomResource):
                 "db_version": "19c",
                 "db_workload": "OLTP",
                 "license_type": "LICENSE_INCLUDED",
-            })
+            },
+            deletion_protection=True)
         ```
         ### Oracledatabase Autonomous Database Full
 
@@ -553,7 +579,8 @@ class AutonomousDatabase(pulumi.CustomResource):
                 }],
                 "private_endpoint_ip": "10.5.0.11",
                 "private_endpoint_label": "testhost",
-            })
+            },
+            deletion_protection=True)
         ```
 
         ## Import
@@ -640,7 +667,8 @@ class AutonomousDatabase(pulumi.CustomResource):
                 "db_version": "19c",
                 "db_workload": "OLTP",
                 "license_type": "LICENSE_INCLUDED",
-            })
+            },
+            deletion_protection=True)
         ```
         ### Oracledatabase Autonomous Database Full
 
@@ -682,7 +710,8 @@ class AutonomousDatabase(pulumi.CustomResource):
                 }],
                 "private_endpoint_ip": "10.5.0.11",
                 "private_endpoint_label": "testhost",
-            })
+            },
+            deletion_protection=True)
         ```
 
         ## Import
@@ -728,6 +757,7 @@ class AutonomousDatabase(pulumi.CustomResource):
                  autonomous_database_id: Optional[pulumi.Input[str]] = None,
                  cidr: Optional[pulumi.Input[str]] = None,
                  database: Optional[pulumi.Input[str]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -753,6 +783,7 @@ class AutonomousDatabase(pulumi.CustomResource):
             if database is None and not opts.urn:
                 raise TypeError("Missing required property 'database'")
             __props__.__dict__["database"] = database
+            __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["labels"] = labels
             if location is None and not opts.urn:
@@ -787,6 +818,7 @@ class AutonomousDatabase(pulumi.CustomResource):
             cidr: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             database: Optional[pulumi.Input[str]] = None,
+            deletion_protection: Optional[pulumi.Input[bool]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             entitlement_id: Optional[pulumi.Input[str]] = None,
@@ -840,6 +872,7 @@ class AutonomousDatabase(pulumi.CustomResource):
         __props__.__dict__["cidr"] = cidr
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["database"] = database
+        __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["entitlement_id"] = entitlement_id
@@ -896,6 +929,11 @@ class AutonomousDatabase(pulumi.CustomResource):
         contain a maximum of 30 alphanumeric characters.
         """
         return pulumi.get(self, "database")
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> pulumi.Output[Optional[bool]]:
+        return pulumi.get(self, "deletion_protection")
 
     @property
     @pulumi.getter(name="displayName")

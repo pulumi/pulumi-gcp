@@ -497,6 +497,14 @@ class OrganizationsPolicyBinding(pulumi.CustomResource):
                  target: Optional[pulumi.Input[Union['OrganizationsPolicyBindingTargetArgs', 'OrganizationsPolicyBindingTargetArgsDict']]] = None,
                  __props__=None):
         """
+        A policy binding to an organizations
+
+        To get more information about OrganizationsPolicyBinding, see:
+
+        * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v3/organizations.locations.policyBindings)
+        * How-to Guides
+            * [Apply a policy binding](https://cloud.google.com/iam/docs/principal-access-boundary-policies-create#create_binding)
+
         ## Example Usage
 
         ### Iam Organizations Policy Binding
@@ -573,6 +581,14 @@ class OrganizationsPolicyBinding(pulumi.CustomResource):
                  args: OrganizationsPolicyBindingArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A policy binding to an organizations
+
+        To get more information about OrganizationsPolicyBinding, see:
+
+        * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v3/organizations.locations.policyBindings)
+        * How-to Guides
+            * [Apply a policy binding](https://cloud.google.com/iam/docs/principal-access-boundary-policies-create#create_binding)
+
         ## Example Usage
 
         ### Iam Organizations Policy Binding

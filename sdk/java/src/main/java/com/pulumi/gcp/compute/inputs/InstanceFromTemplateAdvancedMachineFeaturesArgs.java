@@ -33,6 +33,36 @@ public final class InstanceFromTemplateAdvancedMachineFeaturesArgs extends com.p
     }
 
     /**
+     * Whether to enable UEFI networking for the instance.
+     * 
+     */
+    @Import(name="enableUefiNetworking")
+    private @Nullable Output<Boolean> enableUefiNetworking;
+
+    /**
+     * @return Whether to enable UEFI networking for the instance.
+     * 
+     */
+    public Optional<Output<Boolean>> enableUefiNetworking() {
+        return Optional.ofNullable(this.enableUefiNetworking);
+    }
+
+    /**
+     * The PMU is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are &#34;STANDARD&#34;, &#34;ENHANCED&#34;, and &#34;ARCHITECTURAL&#34;.
+     * 
+     */
+    @Import(name="performanceMonitoringUnit")
+    private @Nullable Output<String> performanceMonitoringUnit;
+
+    /**
+     * @return The PMU is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are &#34;STANDARD&#34;, &#34;ENHANCED&#34;, and &#34;ARCHITECTURAL&#34;.
+     * 
+     */
+    public Optional<Output<String>> performanceMonitoringUnit() {
+        return Optional.ofNullable(this.performanceMonitoringUnit);
+    }
+
+    /**
      * The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
      * 
      */
@@ -81,6 +111,8 @@ public final class InstanceFromTemplateAdvancedMachineFeaturesArgs extends com.p
 
     private InstanceFromTemplateAdvancedMachineFeaturesArgs(InstanceFromTemplateAdvancedMachineFeaturesArgs $) {
         this.enableNestedVirtualization = $.enableNestedVirtualization;
+        this.enableUefiNetworking = $.enableUefiNetworking;
+        this.performanceMonitoringUnit = $.performanceMonitoringUnit;
         this.threadsPerCore = $.threadsPerCore;
         this.turboMode = $.turboMode;
         this.visibleCoreCount = $.visibleCoreCount;
@@ -123,6 +155,48 @@ public final class InstanceFromTemplateAdvancedMachineFeaturesArgs extends com.p
          */
         public Builder enableNestedVirtualization(Boolean enableNestedVirtualization) {
             return enableNestedVirtualization(Output.of(enableNestedVirtualization));
+        }
+
+        /**
+         * @param enableUefiNetworking Whether to enable UEFI networking for the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableUefiNetworking(@Nullable Output<Boolean> enableUefiNetworking) {
+            $.enableUefiNetworking = enableUefiNetworking;
+            return this;
+        }
+
+        /**
+         * @param enableUefiNetworking Whether to enable UEFI networking for the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableUefiNetworking(Boolean enableUefiNetworking) {
+            return enableUefiNetworking(Output.of(enableUefiNetworking));
+        }
+
+        /**
+         * @param performanceMonitoringUnit The PMU is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are &#34;STANDARD&#34;, &#34;ENHANCED&#34;, and &#34;ARCHITECTURAL&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder performanceMonitoringUnit(@Nullable Output<String> performanceMonitoringUnit) {
+            $.performanceMonitoringUnit = performanceMonitoringUnit;
+            return this;
+        }
+
+        /**
+         * @param performanceMonitoringUnit The PMU is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are &#34;STANDARD&#34;, &#34;ENHANCED&#34;, and &#34;ARCHITECTURAL&#34;.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder performanceMonitoringUnit(String performanceMonitoringUnit) {
+            return performanceMonitoringUnit(Output.of(performanceMonitoringUnit));
         }
 
         /**

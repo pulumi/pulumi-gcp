@@ -51,7 +51,7 @@ class VolumeArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] protocols: The protocol of the volume. Allowed combinations are `['NFSV3']`, `['NFSV4']`, `['SMB']`, `['NFSV3', 'NFSV4']`, `['SMB', 'NFSV3']` and `['SMB', 'NFSV4']`.
                Each value may be one of: `NFSV3`, `NFSV4`, `SMB`.
         :param pulumi.Input[str] share_name: Share name (SMB) or export path (NFS) of the volume. Needs to be unique per location.
-        :param pulumi.Input[str] storage_pool: Name of the storage pool to create the volume in. Pool needs enough spare capacity to accomodate the volume.
+        :param pulumi.Input[str] storage_pool: Name of the storage pool to create the volume in. Pool needs enough spare capacity to accommodate the volume.
         :param pulumi.Input['VolumeBackupConfigArgs'] backup_config: Backup configuration for the volume.
                Structure is documented below.
         :param pulumi.Input[str] deletion_policy: Policy to determine if the volume should be deleted forcefully.
@@ -187,7 +187,7 @@ class VolumeArgs:
     @pulumi.getter(name="storagePool")
     def storage_pool(self) -> pulumi.Input[str]:
         """
-        Name of the storage pool to create the volume in. Pool needs enough spare capacity to accomodate the volume.
+        Name of the storage pool to create the volume in. Pool needs enough spare capacity to accommodate the volume.
         """
         return pulumi.get(self, "storage_pool")
 
@@ -528,7 +528,7 @@ class _VolumeState:
         :param pulumi.Input[str] security_style: Security Style of the Volume. Use UNIX to use UNIX or NFSV4 ACLs for file permissions.
                Use NTFS to use NTFS ACLs for file permissions. Can only be set for volumes which use SMB together with NFS as protocol.
                Possible values are: `NTFS`, `UNIX`.
-        :param pulumi.Input[str] service_level: Service level of the volume. Inherited from storage pool. Supported values are : PREMIUM, EXTERME, STANDARD, FLEX.
+        :param pulumi.Input[str] service_level: Service level of the volume. Inherited from storage pool. Supported values are : PREMIUM, EXTREME, STANDARD, FLEX.
         :param pulumi.Input[str] share_name: Share name (SMB) or export path (NFS) of the volume. Needs to be unique per location.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] smb_settings: Settings for volumes with SMB access.
                Each value may be one of: `ENCRYPT_DATA`, `BROWSABLE`, `CHANGE_NOTIFY`, `NON_BROWSABLE`, `OPLOCKS`, `SHOW_SNAPSHOT`, `SHOW_PREVIOUS_VERSIONS`, `ACCESS_BASED_ENUMERATION`, `CONTINUOUSLY_AVAILABLE`.
@@ -538,7 +538,7 @@ class _VolumeState:
                Structure is documented below.
         :param pulumi.Input[str] state: State of the volume.
         :param pulumi.Input[str] state_details: State details of the volume.
-        :param pulumi.Input[str] storage_pool: Name of the storage pool to create the volume in. Pool needs enough spare capacity to accomodate the volume.
+        :param pulumi.Input[str] storage_pool: Name of the storage pool to create the volume in. Pool needs enough spare capacity to accommodate the volume.
         :param pulumi.Input['VolumeTieringPolicyArgs'] tiering_policy: Tiering policy for the volume.
                Structure is documented below.
         :param pulumi.Input[str] unix_permissions: Unix permission the mount point will be created with. Default is 0770. Applicable for UNIX security style volumes only.
@@ -1000,7 +1000,7 @@ class _VolumeState:
     @pulumi.getter(name="serviceLevel")
     def service_level(self) -> Optional[pulumi.Input[str]]:
         """
-        Service level of the volume. Inherited from storage pool. Supported values are : PREMIUM, EXTERME, STANDARD, FLEX.
+        Service level of the volume. Inherited from storage pool. Supported values are : PREMIUM, EXTREME, STANDARD, FLEX.
         """
         return pulumi.get(self, "service_level")
 
@@ -1087,7 +1087,7 @@ class _VolumeState:
     @pulumi.getter(name="storagePool")
     def storage_pool(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the storage pool to create the volume in. Pool needs enough spare capacity to accomodate the volume.
+        Name of the storage pool to create the volume in. Pool needs enough spare capacity to accommodate the volume.
         """
         return pulumi.get(self, "storage_pool")
 
@@ -1280,7 +1280,7 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[Union['VolumeSnapshotPolicyArgs', 'VolumeSnapshotPolicyArgsDict']] snapshot_policy: Snapshot policy defines the schedule for automatic snapshot creation.
                To disable automatic snapshot creation you have to remove the whole snapshot_policy block.
                Structure is documented below.
-        :param pulumi.Input[str] storage_pool: Name of the storage pool to create the volume in. Pool needs enough spare capacity to accomodate the volume.
+        :param pulumi.Input[str] storage_pool: Name of the storage pool to create the volume in. Pool needs enough spare capacity to accommodate the volume.
         :param pulumi.Input[Union['VolumeTieringPolicyArgs', 'VolumeTieringPolicyArgsDict']] tiering_policy: Tiering policy for the volume.
                Structure is documented below.
         :param pulumi.Input[str] unix_permissions: Unix permission the mount point will be created with. Default is 0770. Applicable for UNIX security style volumes only.
@@ -1561,7 +1561,7 @@ class Volume(pulumi.CustomResource):
         :param pulumi.Input[str] security_style: Security Style of the Volume. Use UNIX to use UNIX or NFSV4 ACLs for file permissions.
                Use NTFS to use NTFS ACLs for file permissions. Can only be set for volumes which use SMB together with NFS as protocol.
                Possible values are: `NTFS`, `UNIX`.
-        :param pulumi.Input[str] service_level: Service level of the volume. Inherited from storage pool. Supported values are : PREMIUM, EXTERME, STANDARD, FLEX.
+        :param pulumi.Input[str] service_level: Service level of the volume. Inherited from storage pool. Supported values are : PREMIUM, EXTREME, STANDARD, FLEX.
         :param pulumi.Input[str] share_name: Share name (SMB) or export path (NFS) of the volume. Needs to be unique per location.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] smb_settings: Settings for volumes with SMB access.
                Each value may be one of: `ENCRYPT_DATA`, `BROWSABLE`, `CHANGE_NOTIFY`, `NON_BROWSABLE`, `OPLOCKS`, `SHOW_SNAPSHOT`, `SHOW_PREVIOUS_VERSIONS`, `ACCESS_BASED_ENUMERATION`, `CONTINUOUSLY_AVAILABLE`.
@@ -1571,7 +1571,7 @@ class Volume(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] state: State of the volume.
         :param pulumi.Input[str] state_details: State details of the volume.
-        :param pulumi.Input[str] storage_pool: Name of the storage pool to create the volume in. Pool needs enough spare capacity to accomodate the volume.
+        :param pulumi.Input[str] storage_pool: Name of the storage pool to create the volume in. Pool needs enough spare capacity to accommodate the volume.
         :param pulumi.Input[Union['VolumeTieringPolicyArgs', 'VolumeTieringPolicyArgsDict']] tiering_policy: Tiering policy for the volume.
                Structure is documented below.
         :param pulumi.Input[str] unix_permissions: Unix permission the mount point will be created with. Default is 0770. Applicable for UNIX security style volumes only.
@@ -1881,7 +1881,7 @@ class Volume(pulumi.CustomResource):
     @pulumi.getter(name="serviceLevel")
     def service_level(self) -> pulumi.Output[str]:
         """
-        Service level of the volume. Inherited from storage pool. Supported values are : PREMIUM, EXTERME, STANDARD, FLEX.
+        Service level of the volume. Inherited from storage pool. Supported values are : PREMIUM, EXTREME, STANDARD, FLEX.
         """
         return pulumi.get(self, "service_level")
 
@@ -1940,7 +1940,7 @@ class Volume(pulumi.CustomResource):
     @pulumi.getter(name="storagePool")
     def storage_pool(self) -> pulumi.Output[str]:
         """
-        Name of the storage pool to create the volume in. Pool needs enough spare capacity to accomodate the volume.
+        Name of the storage pool to create the volume in. Pool needs enough spare capacity to accommodate the volume.
         """
         return pulumi.get(self, "storage_pool")
 

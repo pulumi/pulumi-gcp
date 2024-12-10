@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataproc.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigArgs;
 import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigGceClusterConfigNodeGroupAffinityArgs;
 import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigGceClusterConfigReservationAffinityArgs;
 import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigGceClusterConfigShieldedInstanceConfigArgs;
@@ -20,6 +21,21 @@ import javax.annotation.Nullable;
 public final class ClusterClusterConfigGceClusterConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ClusterClusterConfigGceClusterConfigArgs Empty = new ClusterClusterConfigGceClusterConfigArgs();
+
+    /**
+     * Confidential Instance Config for clusters using [Confidential VMs](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/confidential-compute)
+     * 
+     */
+    @Import(name="confidentialInstanceConfig")
+    private @Nullable Output<ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigArgs> confidentialInstanceConfig;
+
+    /**
+     * @return Confidential Instance Config for clusters using [Confidential VMs](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/confidential-compute)
+     * 
+     */
+    public Optional<Output<ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigArgs>> confidentialInstanceConfig() {
+        return Optional.ofNullable(this.confidentialInstanceConfig);
+    }
 
     /**
      * By default, clusters are not restricted to internal IP addresses,
@@ -233,6 +249,7 @@ public final class ClusterClusterConfigGceClusterConfigArgs extends com.pulumi.r
     private ClusterClusterConfigGceClusterConfigArgs() {}
 
     private ClusterClusterConfigGceClusterConfigArgs(ClusterClusterConfigGceClusterConfigArgs $) {
+        this.confidentialInstanceConfig = $.confidentialInstanceConfig;
         this.internalIpOnly = $.internalIpOnly;
         this.metadata = $.metadata;
         this.network = $.network;
@@ -262,6 +279,27 @@ public final class ClusterClusterConfigGceClusterConfigArgs extends com.pulumi.r
 
         public Builder(ClusterClusterConfigGceClusterConfigArgs defaults) {
             $ = new ClusterClusterConfigGceClusterConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param confidentialInstanceConfig Confidential Instance Config for clusters using [Confidential VMs](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/confidential-compute)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder confidentialInstanceConfig(@Nullable Output<ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigArgs> confidentialInstanceConfig) {
+            $.confidentialInstanceConfig = confidentialInstanceConfig;
+            return this;
+        }
+
+        /**
+         * @param confidentialInstanceConfig Confidential Instance Config for clusters using [Confidential VMs](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/confidential-compute)
+         * 
+         * @return builder
+         * 
+         */
+        public Builder confidentialInstanceConfig(ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigArgs confidentialInstanceConfig) {
+            return confidentialInstanceConfig(Output.of(confidentialInstanceConfig));
         }
 
         /**

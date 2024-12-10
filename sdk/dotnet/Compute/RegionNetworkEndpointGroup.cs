@@ -323,7 +323,12 @@ namespace Pulumi.Gcp.Compute
     ///         Region = "europe-west4",
     ///         LoadBalancingScheme = "INTERNAL",
     ///         BackendService = defaultRegionBackendService.Id,
-    ///         AllPorts = true,
+    ///         Ports = new[]
+    ///         {
+    ///             "80",
+    ///             "88",
+    ///             "443",
+    ///         },
     ///         Network = @default.Name,
     ///         Subnetwork = defaultSubnetwork.Name,
     ///     });
@@ -348,6 +353,10 @@ namespace Pulumi.Gcp.Compute
     ///         Region = "europe-west4",
     ///         NetworkEndpointType = "PRIVATE_SERVICE_CONNECT",
     ///         PscTargetService = defaultServiceAttachment.SelfLink,
+    ///         PscData = new Gcp.Compute.Inputs.RegionNetworkEndpointGroupPscDataArgs
+    ///         {
+    ///             ProducerPort = "88",
+    ///         },
     ///         Network = @default.SelfLink,
     ///         Subnetwork = defaultSubnetwork.SelfLink,
     ///     });
@@ -539,6 +548,13 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// This field is only used for PSC NEGs.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("pscData")]
+        public Output<Outputs.RegionNetworkEndpointGroupPscData?> PscData { get; private set; } = null!;
+
+        /// <summary>
         /// This field is only used for PSC and INTERNET NEGs.
         /// The target service url used to set up private service connection to
         /// a Google API or a PSC Producer Service Attachment.
@@ -689,6 +705,13 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// This field is only used for PSC NEGs.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("pscData")]
+        public Input<Inputs.RegionNetworkEndpointGroupPscDataArgs>? PscData { get; set; }
+
+        /// <summary>
         /// This field is only used for PSC and INTERNET NEGs.
         /// The target service url used to set up private service connection to
         /// a Google API or a PSC Producer Service Attachment.
@@ -793,6 +816,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// This field is only used for PSC NEGs.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("pscData")]
+        public Input<Inputs.RegionNetworkEndpointGroupPscDataGetArgs>? PscData { get; set; }
 
         /// <summary>
         /// This field is only used for PSC and INTERNET NEGs.

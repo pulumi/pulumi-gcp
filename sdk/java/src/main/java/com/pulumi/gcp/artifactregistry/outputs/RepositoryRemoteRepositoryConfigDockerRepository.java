@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class RepositoryRemoteRepositoryConfigDockerRepository {
     /**
-     * @return Settings for a remote repository with a custom uri.
+     * @return [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
      * Structure is documented below.
      * 
      */
@@ -28,7 +28,7 @@ public final class RepositoryRemoteRepositoryConfigDockerRepository {
 
     private RepositoryRemoteRepositoryConfigDockerRepository() {}
     /**
-     * @return Settings for a remote repository with a custom uri.
+     * @return [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
      * Structure is documented below.
      * 
      */

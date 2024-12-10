@@ -27,7 +27,7 @@ class GetRegionNetworkEndpointGroupResult:
     """
     A collection of values returned by getRegionNetworkEndpointGroup.
     """
-    def __init__(__self__, app_engines=None, cloud_functions=None, cloud_runs=None, description=None, id=None, name=None, network=None, network_endpoint_type=None, project=None, psc_target_service=None, region=None, self_link=None, serverless_deployments=None, subnetwork=None):
+    def __init__(__self__, app_engines=None, cloud_functions=None, cloud_runs=None, description=None, id=None, name=None, network=None, network_endpoint_type=None, project=None, psc_datas=None, psc_target_service=None, region=None, self_link=None, serverless_deployments=None, subnetwork=None):
         if app_engines and not isinstance(app_engines, list):
             raise TypeError("Expected argument 'app_engines' to be a list")
         pulumi.set(__self__, "app_engines", app_engines)
@@ -55,6 +55,9 @@ class GetRegionNetworkEndpointGroupResult:
         if project and not isinstance(project, str):
             raise TypeError("Expected argument 'project' to be a str")
         pulumi.set(__self__, "project", project)
+        if psc_datas and not isinstance(psc_datas, list):
+            raise TypeError("Expected argument 'psc_datas' to be a list")
+        pulumi.set(__self__, "psc_datas", psc_datas)
         if psc_target_service and not isinstance(psc_target_service, str):
             raise TypeError("Expected argument 'psc_target_service' to be a str")
         pulumi.set(__self__, "psc_target_service", psc_target_service)
@@ -129,6 +132,11 @@ class GetRegionNetworkEndpointGroupResult:
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="pscDatas")
+    def psc_datas(self) -> Sequence['outputs.GetRegionNetworkEndpointGroupPscDataResult']:
+        return pulumi.get(self, "psc_datas")
+
+    @property
     @pulumi.getter(name="pscTargetService")
     def psc_target_service(self) -> str:
         """
@@ -175,6 +183,7 @@ class AwaitableGetRegionNetworkEndpointGroupResult(GetRegionNetworkEndpointGroup
             network=self.network,
             network_endpoint_type=self.network_endpoint_type,
             project=self.project,
+            psc_datas=self.psc_datas,
             psc_target_service=self.psc_target_service,
             region=self.region,
             self_link=self.self_link,
@@ -227,6 +236,7 @@ def get_region_network_endpoint_group(name: Optional[str] = None,
         network=pulumi.get(__ret__, 'network'),
         network_endpoint_type=pulumi.get(__ret__, 'network_endpoint_type'),
         project=pulumi.get(__ret__, 'project'),
+        psc_datas=pulumi.get(__ret__, 'psc_datas'),
         psc_target_service=pulumi.get(__ret__, 'psc_target_service'),
         region=pulumi.get(__ret__, 'region'),
         self_link=pulumi.get(__ret__, 'self_link'),
@@ -276,6 +286,7 @@ def get_region_network_endpoint_group_output(name: Optional[pulumi.Input[Optiona
         network=pulumi.get(__response__, 'network'),
         network_endpoint_type=pulumi.get(__response__, 'network_endpoint_type'),
         project=pulumi.get(__response__, 'project'),
+        psc_datas=pulumi.get(__response__, 'psc_datas'),
         psc_target_service=pulumi.get(__response__, 'psc_target_service'),
         region=pulumi.get(__response__, 'region'),
         self_link=pulumi.get(__response__, 'self_link'),

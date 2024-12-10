@@ -12,6 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A Parallelstore Instance.
+//
 // ## Example Usage
 //
 // ### Parallelstore Instance Basic

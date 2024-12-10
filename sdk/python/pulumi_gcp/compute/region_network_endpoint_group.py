@@ -30,6 +30,7 @@ class RegionNetworkEndpointGroupArgs:
                  network: Optional[pulumi.Input[str]] = None,
                  network_endpoint_type: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 psc_data: Optional[pulumi.Input['RegionNetworkEndpointGroupPscDataArgs']] = None,
                  psc_target_service: Optional[pulumi.Input[str]] = None,
                  serverless_deployment: Optional[pulumi.Input['RegionNetworkEndpointGroupServerlessDeploymentArgs']] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None):
@@ -65,6 +66,8 @@ class RegionNetworkEndpointGroupArgs:
                Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`, `GCE_VM_IP_PORTMAP`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input['RegionNetworkEndpointGroupPscDataArgs'] psc_data: This field is only used for PSC NEGs.
+               Structure is documented below.
         :param pulumi.Input[str] psc_target_service: This field is only used for PSC and INTERNET NEGs.
                The target service url used to set up private service connection to
                a Google API or a PSC Producer Service Attachment.
@@ -91,6 +94,8 @@ class RegionNetworkEndpointGroupArgs:
             pulumi.set(__self__, "network_endpoint_type", network_endpoint_type)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if psc_data is not None:
+            pulumi.set(__self__, "psc_data", psc_data)
         if psc_target_service is not None:
             pulumi.set(__self__, "psc_target_service", psc_target_service)
         if serverless_deployment is not None:
@@ -228,6 +233,19 @@ class RegionNetworkEndpointGroupArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="pscData")
+    def psc_data(self) -> Optional[pulumi.Input['RegionNetworkEndpointGroupPscDataArgs']]:
+        """
+        This field is only used for PSC NEGs.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "psc_data")
+
+    @psc_data.setter
+    def psc_data(self, value: Optional[pulumi.Input['RegionNetworkEndpointGroupPscDataArgs']]):
+        pulumi.set(self, "psc_data", value)
+
+    @property
     @pulumi.getter(name="pscTargetService")
     def psc_target_service(self) -> Optional[pulumi.Input[str]]:
         """
@@ -280,6 +298,7 @@ class _RegionNetworkEndpointGroupState:
                  network: Optional[pulumi.Input[str]] = None,
                  network_endpoint_type: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 psc_data: Optional[pulumi.Input['RegionNetworkEndpointGroupPscDataArgs']] = None,
                  psc_target_service: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
@@ -313,6 +332,8 @@ class _RegionNetworkEndpointGroupState:
                Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`, `GCE_VM_IP_PORTMAP`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input['RegionNetworkEndpointGroupPscDataArgs'] psc_data: This field is only used for PSC NEGs.
+               Structure is documented below.
         :param pulumi.Input[str] psc_target_service: This field is only used for PSC and INTERNET NEGs.
                The target service url used to set up private service connection to
                a Google API or a PSC Producer Service Attachment.
@@ -343,6 +364,8 @@ class _RegionNetworkEndpointGroupState:
             pulumi.set(__self__, "network_endpoint_type", network_endpoint_type)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if psc_data is not None:
+            pulumi.set(__self__, "psc_data", psc_data)
         if psc_target_service is not None:
             pulumi.set(__self__, "psc_target_service", psc_target_service)
         if region is not None:
@@ -469,6 +492,19 @@ class _RegionNetworkEndpointGroupState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="pscData")
+    def psc_data(self) -> Optional[pulumi.Input['RegionNetworkEndpointGroupPscDataArgs']]:
+        """
+        This field is only used for PSC NEGs.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "psc_data")
+
+    @psc_data.setter
+    def psc_data(self, value: Optional[pulumi.Input['RegionNetworkEndpointGroupPscDataArgs']]):
+        pulumi.set(self, "psc_data", value)
+
+    @property
     @pulumi.getter(name="pscTargetService")
     def psc_target_service(self) -> Optional[pulumi.Input[str]]:
         """
@@ -550,6 +586,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
                  network: Optional[pulumi.Input[str]] = None,
                  network_endpoint_type: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 psc_data: Optional[pulumi.Input[Union['RegionNetworkEndpointGroupPscDataArgs', 'RegionNetworkEndpointGroupPscDataArgsDict']]] = None,
                  psc_target_service: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  serverless_deployment: Optional[pulumi.Input[Union['RegionNetworkEndpointGroupServerlessDeploymentArgs', 'RegionNetworkEndpointGroupServerlessDeploymentArgsDict']]] = None,
@@ -758,7 +795,11 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
             region="europe-west4",
             load_balancing_scheme="INTERNAL",
             backend_service=default_region_backend_service.id,
-            all_ports=True,
+            ports=[
+                "80",
+                "88",
+                "443",
+            ],
             network=default.name,
             subnetwork=default_subnetwork.name)
         default_service_attachment = gcp.compute.ServiceAttachment("default",
@@ -774,6 +815,9 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
             region="europe-west4",
             network_endpoint_type="PRIVATE_SERVICE_CONNECT",
             psc_target_service=default_service_attachment.self_link,
+            psc_data={
+                "producer_port": "88",
+            },
             network=default.self_link,
             subnetwork=default_subnetwork.self_link)
         ```
@@ -881,6 +925,8 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
                Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`, `GCE_VM_IP_PORTMAP`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Union['RegionNetworkEndpointGroupPscDataArgs', 'RegionNetworkEndpointGroupPscDataArgsDict']] psc_data: This field is only used for PSC NEGs.
+               Structure is documented below.
         :param pulumi.Input[str] psc_target_service: This field is only used for PSC and INTERNET NEGs.
                The target service url used to set up private service connection to
                a Google API or a PSC Producer Service Attachment.
@@ -1103,7 +1149,11 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
             region="europe-west4",
             load_balancing_scheme="INTERNAL",
             backend_service=default_region_backend_service.id,
-            all_ports=True,
+            ports=[
+                "80",
+                "88",
+                "443",
+            ],
             network=default.name,
             subnetwork=default_subnetwork.name)
         default_service_attachment = gcp.compute.ServiceAttachment("default",
@@ -1119,6 +1169,9 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
             region="europe-west4",
             network_endpoint_type="PRIVATE_SERVICE_CONNECT",
             psc_target_service=default_service_attachment.self_link,
+            psc_data={
+                "producer_port": "88",
+            },
             network=default.self_link,
             subnetwork=default_subnetwork.self_link)
         ```
@@ -1221,6 +1274,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
                  network: Optional[pulumi.Input[str]] = None,
                  network_endpoint_type: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 psc_data: Optional[pulumi.Input[Union['RegionNetworkEndpointGroupPscDataArgs', 'RegionNetworkEndpointGroupPscDataArgsDict']]] = None,
                  psc_target_service: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  serverless_deployment: Optional[pulumi.Input[Union['RegionNetworkEndpointGroupServerlessDeploymentArgs', 'RegionNetworkEndpointGroupServerlessDeploymentArgsDict']]] = None,
@@ -1242,6 +1296,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
             __props__.__dict__["network"] = network
             __props__.__dict__["network_endpoint_type"] = network_endpoint_type
             __props__.__dict__["project"] = project
+            __props__.__dict__["psc_data"] = psc_data
             __props__.__dict__["psc_target_service"] = psc_target_service
             if region is None and not opts.urn:
                 raise TypeError("Missing required property 'region'")
@@ -1267,6 +1322,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
             network: Optional[pulumi.Input[str]] = None,
             network_endpoint_type: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            psc_data: Optional[pulumi.Input[Union['RegionNetworkEndpointGroupPscDataArgs', 'RegionNetworkEndpointGroupPscDataArgsDict']]] = None,
             psc_target_service: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
@@ -1305,6 +1361,8 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
                Possible values are: `SERVERLESS`, `PRIVATE_SERVICE_CONNECT`, `INTERNET_IP_PORT`, `INTERNET_FQDN_PORT`, `GCE_VM_IP_PORTMAP`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Union['RegionNetworkEndpointGroupPscDataArgs', 'RegionNetworkEndpointGroupPscDataArgsDict']] psc_data: This field is only used for PSC NEGs.
+               Structure is documented below.
         :param pulumi.Input[str] psc_target_service: This field is only used for PSC and INTERNET NEGs.
                The target service url used to set up private service connection to
                a Google API or a PSC Producer Service Attachment.
@@ -1331,6 +1389,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
         __props__.__dict__["network"] = network
         __props__.__dict__["network_endpoint_type"] = network_endpoint_type
         __props__.__dict__["project"] = project
+        __props__.__dict__["psc_data"] = psc_data
         __props__.__dict__["psc_target_service"] = psc_target_service
         __props__.__dict__["region"] = region
         __props__.__dict__["self_link"] = self_link
@@ -1419,6 +1478,15 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="pscData")
+    def psc_data(self) -> pulumi.Output[Optional['outputs.RegionNetworkEndpointGroupPscData']]:
+        """
+        This field is only used for PSC NEGs.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "psc_data")
 
     @property
     @pulumi.getter(name="pscTargetService")

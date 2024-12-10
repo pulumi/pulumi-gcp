@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class AuthorityConfigSubjectKeyId {
     /**
-     * @return The value of the KeyId in lowercase hexidecimal.
+     * @return The value of the KeyId in lowercase hexadecimal.
      * 
      * &lt;a name=&#34;nested_x509_config&#34;&gt;&lt;/a&gt;The `x509_config` block supports:
      * 
@@ -21,7 +21,7 @@ public final class AuthorityConfigSubjectKeyId {
 
     private AuthorityConfigSubjectKeyId() {}
     /**
-     * @return The value of the KeyId in lowercase hexidecimal.
+     * @return The value of the KeyId in lowercase hexadecimal.
      * 
      * &lt;a name=&#34;nested_x509_config&#34;&gt;&lt;/a&gt;The `x509_config` block supports:
      * 

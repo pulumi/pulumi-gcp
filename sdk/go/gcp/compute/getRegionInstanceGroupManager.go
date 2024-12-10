@@ -78,6 +78,7 @@ type LookupRegionInstanceGroupManagerResult struct {
 	Id                          string                                                   `pulumi:"id"`
 	InstanceFlexibilityPolicies []GetRegionInstanceGroupManagerInstanceFlexibilityPolicy `pulumi:"instanceFlexibilityPolicies"`
 	InstanceGroup               string                                                   `pulumi:"instanceGroup"`
+	InstanceGroupManagerId      int                                                      `pulumi:"instanceGroupManagerId"`
 	InstanceLifecyclePolicies   []GetRegionInstanceGroupManagerInstanceLifecyclePolicy   `pulumi:"instanceLifecyclePolicies"`
 	ListManagedInstancesResults string                                                   `pulumi:"listManagedInstancesResults"`
 	Name                        *string                                                  `pulumi:"name"`
@@ -201,6 +202,10 @@ func (o LookupRegionInstanceGroupManagerResultOutput) InstanceFlexibilityPolicie
 
 func (o LookupRegionInstanceGroupManagerResultOutput) InstanceGroup() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupRegionInstanceGroupManagerResult) string { return v.InstanceGroup }).(pulumi.StringOutput)
+}
+
+func (o LookupRegionInstanceGroupManagerResultOutput) InstanceGroupManagerId() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupRegionInstanceGroupManagerResult) int { return v.InstanceGroupManagerId }).(pulumi.IntOutput)
 }
 
 func (o LookupRegionInstanceGroupManagerResultOutput) InstanceLifecyclePolicies() GetRegionInstanceGroupManagerInstanceLifecyclePolicyArrayOutput {

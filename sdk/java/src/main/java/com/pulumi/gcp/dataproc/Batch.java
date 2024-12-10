@@ -432,6 +432,71 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Dataproc Batch Autotuning
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.dataproc.Batch;
+ * import com.pulumi.gcp.dataproc.BatchArgs;
+ * import com.pulumi.gcp.dataproc.inputs.BatchRuntimeConfigArgs;
+ * import com.pulumi.gcp.dataproc.inputs.BatchRuntimeConfigAutotuningConfigArgs;
+ * import com.pulumi.gcp.dataproc.inputs.BatchEnvironmentConfigArgs;
+ * import com.pulumi.gcp.dataproc.inputs.BatchEnvironmentConfigExecutionConfigArgs;
+ * import com.pulumi.gcp.dataproc.inputs.BatchSparkBatchArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var exampleBatchAutotuning = new Batch("exampleBatchAutotuning", BatchArgs.builder()
+ *             .batchId("tf-test-batch_16511")
+ *             .location("us-central1")
+ *             .labels(Map.of("batch_test", "terraform"))
+ *             .runtimeConfig(BatchRuntimeConfigArgs.builder()
+ *                 .version("2.2")
+ *                 .properties(Map.ofEntries(
+ *                     Map.entry("spark.dynamicAllocation.enabled", "false"),
+ *                     Map.entry("spark.executor.instances", "2")
+ *                 ))
+ *                 .cohort("tf-dataproc-batch-example")
+ *                 .autotuningConfig(BatchRuntimeConfigAutotuningConfigArgs.builder()
+ *                     .scenarios(                    
+ *                         "SCALING",
+ *                         "MEMORY")
+ *                     .build())
+ *                 .build())
+ *             .environmentConfig(BatchEnvironmentConfigArgs.builder()
+ *                 .executionConfig(BatchEnvironmentConfigExecutionConfigArgs.builder()
+ *                     .subnetworkUri("default")
+ *                     .ttl("3600s")
+ *                     .build())
+ *                 .build())
+ *             .sparkBatch(BatchSparkBatchArgs.builder()
+ *                 .mainClass("org.apache.spark.examples.SparkPi")
+ *                 .args("10")
+ *                 .jarFileUris("file:///usr/lib/spark/examples/jars/spark-examples.jar")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

@@ -72,6 +72,7 @@ type LookupAutonomousDatabaseResult struct {
 	Cidr                 string            `pulumi:"cidr"`
 	CreateTime           string            `pulumi:"createTime"`
 	Database             string            `pulumi:"database"`
+	DeletionProtection   bool              `pulumi:"deletionProtection"`
 	DisplayName          string            `pulumi:"displayName"`
 	EffectiveLabels      map[string]string `pulumi:"effectiveLabels"`
 	EntitlementId        string            `pulumi:"entitlementId"`
@@ -155,6 +156,10 @@ func (o LookupAutonomousDatabaseResultOutput) CreateTime() pulumi.StringOutput {
 
 func (o LookupAutonomousDatabaseResultOutput) Database() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupAutonomousDatabaseResult) string { return v.Database }).(pulumi.StringOutput)
+}
+
+func (o LookupAutonomousDatabaseResultOutput) DeletionProtection() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupAutonomousDatabaseResult) bool { return v.DeletionProtection }).(pulumi.BoolOutput)
 }
 
 func (o LookupAutonomousDatabaseResultOutput) DisplayName() pulumi.StringOutput {

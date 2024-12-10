@@ -667,7 +667,7 @@ if not MYPY:
     class AuthorityConfigSubjectKeyIdArgsDict(TypedDict):
         key_id: NotRequired[pulumi.Input[str]]
         """
-        The value of the KeyId in lowercase hexidecimal.
+        The value of the KeyId in lowercase hexadecimal.
 
         <a name="nested_x509_config"></a>The `x509_config` block supports:
         """
@@ -679,7 +679,7 @@ class AuthorityConfigSubjectKeyIdArgs:
     def __init__(__self__, *,
                  key_id: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] key_id: The value of the KeyId in lowercase hexidecimal.
+        :param pulumi.Input[str] key_id: The value of the KeyId in lowercase hexadecimal.
                
                <a name="nested_x509_config"></a>The `x509_config` block supports:
         """
@@ -690,7 +690,7 @@ class AuthorityConfigSubjectKeyIdArgs:
     @pulumi.getter(name="keyId")
     def key_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The value of the KeyId in lowercase hexidecimal.
+        The value of the KeyId in lowercase hexadecimal.
 
         <a name="nested_x509_config"></a>The `x509_config` block supports:
         """
@@ -4672,7 +4672,7 @@ if not MYPY:
     class CertificateCertificateDescriptionSubjectKeyIdArgsDict(TypedDict):
         key_id: NotRequired[pulumi.Input[str]]
         """
-        The value of the KeyId in lowercase hexidecimal.
+        The value of the KeyId in lowercase hexadecimal.
         """
 elif False:
     CertificateCertificateDescriptionSubjectKeyIdArgsDict: TypeAlias = Mapping[str, Any]
@@ -4682,7 +4682,7 @@ class CertificateCertificateDescriptionSubjectKeyIdArgs:
     def __init__(__self__, *,
                  key_id: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] key_id: The value of the KeyId in lowercase hexidecimal.
+        :param pulumi.Input[str] key_id: The value of the KeyId in lowercase hexadecimal.
         """
         if key_id is not None:
             pulumi.set(__self__, "key_id", key_id)
@@ -4691,7 +4691,7 @@ class CertificateCertificateDescriptionSubjectKeyIdArgs:
     @pulumi.getter(name="keyId")
     def key_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The value of the KeyId in lowercase hexidecimal.
+        The value of the KeyId in lowercase hexadecimal.
         """
         return pulumi.get(self, "key_id")
 
@@ -6253,7 +6253,7 @@ if not MYPY:
     class CertificateConfigSubjectKeyIdArgsDict(TypedDict):
         key_id: NotRequired[pulumi.Input[str]]
         """
-        The value of the KeyId in lowercase hexidecimal.
+        The value of the KeyId in lowercase hexadecimal.
         """
 elif False:
     CertificateConfigSubjectKeyIdArgsDict: TypeAlias = Mapping[str, Any]
@@ -6263,7 +6263,7 @@ class CertificateConfigSubjectKeyIdArgs:
     def __init__(__self__, *,
                  key_id: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] key_id: The value of the KeyId in lowercase hexidecimal.
+        :param pulumi.Input[str] key_id: The value of the KeyId in lowercase hexadecimal.
         """
         if key_id is not None:
             pulumi.set(__self__, "key_id", key_id)
@@ -6272,7 +6272,7 @@ class CertificateConfigSubjectKeyIdArgs:
     @pulumi.getter(name="keyId")
     def key_id(self) -> Optional[pulumi.Input[str]]:
         """
-        The value of the KeyId in lowercase hexidecimal.
+        The value of the KeyId in lowercase hexadecimal.
         """
         return pulumi.get(self, "key_id")
 

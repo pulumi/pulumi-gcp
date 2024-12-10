@@ -145,7 +145,7 @@ export class ActiveDirectory extends pulumi.CustomResource {
      */
     public readonly encryptDcConnections!: pulumi.Output<boolean | undefined>;
     /**
-     * Hostname of the Active Directory server used as Kerberos Key Distribution Center. Only requried for volumes using kerberized NFSv4.1
+     * Hostname of the Active Directory server used as Kerberos Key Distribution Center. Only required for volumes using kerberized NFSv4.1
      */
     public readonly kdcHostname!: pulumi.Output<string | undefined>;
     /**
@@ -357,7 +357,7 @@ export interface ActiveDirectoryState {
      */
     encryptDcConnections?: pulumi.Input<boolean>;
     /**
-     * Hostname of the Active Directory server used as Kerberos Key Distribution Center. Only requried for volumes using kerberized NFSv4.1
+     * Hostname of the Active Directory server used as Kerberos Key Distribution Center. Only required for volumes using kerberized NFSv4.1
      */
     kdcHostname?: pulumi.Input<string>;
     /**
@@ -469,7 +469,7 @@ export interface ActiveDirectoryArgs {
      */
     encryptDcConnections?: pulumi.Input<boolean>;
     /**
-     * Hostname of the Active Directory server used as Kerberos Key Distribution Center. Only requried for volumes using kerberized NFSv4.1
+     * Hostname of the Active Directory server used as Kerberos Key Distribution Center. Only required for volumes using kerberized NFSv4.1
      */
     kdcHostname?: pulumi.Input<string>;
     /**

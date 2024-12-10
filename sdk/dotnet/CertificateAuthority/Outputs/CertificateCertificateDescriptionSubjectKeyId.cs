@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
     public sealed class CertificateCertificateDescriptionSubjectKeyId
     {
         /// <summary>
-        /// The value of the KeyId in lowercase hexidecimal.
+        /// The value of the KeyId in lowercase hexadecimal.
         /// </summary>
         public readonly string? KeyId;
 

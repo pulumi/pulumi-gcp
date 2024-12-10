@@ -180,6 +180,9 @@ class ServicePerimeterIngressPolicy(pulumi.CustomResource):
         > **Note:** By default, updates to this resource will remove the IngressPolicy from the
         from the perimeter and add it back in a non-atomic manner. To ensure that the new IngressPolicy
         is added before the old one is removed, add a `lifecycle` block with `create_before_destroy = true` to this resource.
+        **Note:** If this resource is used alongside a `accesscontextmanager.ServicePerimeter` resource,
+        the service perimeter resource must have a `lifecycle` block with `ignore_changes = [status[0].ingress_policies]` so
+        they don't fight over which ingress rules should be in the policy.
 
         To get more information about ServicePerimeterIngressPolicy, see:
 
@@ -222,6 +225,9 @@ class ServicePerimeterIngressPolicy(pulumi.CustomResource):
         > **Note:** By default, updates to this resource will remove the IngressPolicy from the
         from the perimeter and add it back in a non-atomic manner. To ensure that the new IngressPolicy
         is added before the old one is removed, add a `lifecycle` block with `create_before_destroy = true` to this resource.
+        **Note:** If this resource is used alongside a `accesscontextmanager.ServicePerimeter` resource,
+        the service perimeter resource must have a `lifecycle` block with `ignore_changes = [status[0].ingress_policies]` so
+        they don't fight over which ingress rules should be in the policy.
 
         To get more information about ServicePerimeterIngressPolicy, see:
 

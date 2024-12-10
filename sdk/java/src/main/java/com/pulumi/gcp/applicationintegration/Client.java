@@ -126,9 +126,9 @@ import javax.annotation.Nullable;
  *             .runAsServiceAccount(serviceAccount.email())
  *             .cloudKmsConfig(ClientCloudKmsConfigArgs.builder()
  *                 .kmsLocation("us-east1")
- *                 .kmsRing(keyring.id())
- *                 .key(cryptokey.id())
- *                 .keyVersion(testKey.id())
+ *                 .kmsRing(StdFunctions.basename().applyValue(invoke -> invoke.result()))
+ *                 .key(StdFunctions.basename().applyValue(invoke -> invoke.result()))
+ *                 .keyVersion(StdFunctions.basename().applyValue(invoke -> invoke.result()))
  *                 .kmsProjectId(testProject.applyValue(getProjectResult -> getProjectResult.projectId()))
  *                 .build())
  *             .build());

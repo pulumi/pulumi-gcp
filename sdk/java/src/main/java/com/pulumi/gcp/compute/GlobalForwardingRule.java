@@ -13,6 +13,7 @@ import com.pulumi.gcp.compute.inputs.GlobalForwardingRuleState;
 import com.pulumi.gcp.compute.outputs.GlobalForwardingRuleMetadataFilter;
 import com.pulumi.gcp.compute.outputs.GlobalForwardingRuleServiceDirectoryRegistrations;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -738,6 +739,20 @@ public class GlobalForwardingRule extends com.pulumi.resources.CustomResource {
      */
     public Output<Map<String,String>> effectiveLabels() {
         return this.effectiveLabels;
+    }
+    /**
+     * The unique identifier number for the resource. This identifier is defined by the server.
+     * 
+     */
+    @Export(name="forwardingRuleId", refs={Integer.class}, tree="[0]")
+    private Output<Integer> forwardingRuleId;
+
+    /**
+     * @return The unique identifier number for the resource. This identifier is defined by the server.
+     * 
+     */
+    public Output<Integer> forwardingRuleId() {
+        return this.forwardingRuleId;
     }
     /**
      * IP address for which this forwarding rule accepts traffic. When a client

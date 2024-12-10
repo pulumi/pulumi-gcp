@@ -46,6 +46,7 @@ import (
 //					ComputeCount: pulumi.Int(2),
 //					StorageCount: pulumi.Int(3),
 //				},
+//				DeletionProtection: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -111,6 +112,7 @@ import (
 //				Labels: pulumi.StringMap{
 //					"label-one": pulumi.String("value-one"),
 //				},
+//				DeletionProtection: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -155,7 +157,8 @@ type CloudExadataInfrastructure struct {
 	// ***
 	CloudExadataInfrastructureId pulumi.StringOutput `pulumi:"cloudExadataInfrastructureId"`
 	// The date and time that the Exadata Infrastructure was created.
-	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	CreateTime         pulumi.StringOutput  `pulumi:"createTime"`
+	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// User friendly name for this resource.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -234,7 +237,8 @@ type cloudExadataInfrastructureState struct {
 	// ***
 	CloudExadataInfrastructureId *string `pulumi:"cloudExadataInfrastructureId"`
 	// The date and time that the Exadata Infrastructure was created.
-	CreateTime *string `pulumi:"createTime"`
+	CreateTime         *string `pulumi:"createTime"`
+	DeletionProtection *bool   `pulumi:"deletionProtection"`
 	// User friendly name for this resource.
 	DisplayName *string `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -273,7 +277,8 @@ type CloudExadataInfrastructureState struct {
 	// ***
 	CloudExadataInfrastructureId pulumi.StringPtrInput
 	// The date and time that the Exadata Infrastructure was created.
-	CreateTime pulumi.StringPtrInput
+	CreateTime         pulumi.StringPtrInput
+	DeletionProtection pulumi.BoolPtrInput
 	// User friendly name for this resource.
 	DisplayName pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -315,6 +320,7 @@ type cloudExadataInfrastructureArgs struct {
 	//
 	// ***
 	CloudExadataInfrastructureId string `pulumi:"cloudExadataInfrastructureId"`
+	DeletionProtection           *bool  `pulumi:"deletionProtection"`
 	// User friendly name for this resource.
 	DisplayName *string `pulumi:"displayName"`
 	// GCP location where Oracle Exadata is hosted.
@@ -342,6 +348,7 @@ type CloudExadataInfrastructureArgs struct {
 	//
 	// ***
 	CloudExadataInfrastructureId pulumi.StringInput
+	DeletionProtection           pulumi.BoolPtrInput
 	// User friendly name for this resource.
 	DisplayName pulumi.StringPtrInput
 	// GCP location where Oracle Exadata is hosted.
@@ -460,6 +467,10 @@ func (o CloudExadataInfrastructureOutput) CloudExadataInfrastructureId() pulumi.
 // The date and time that the Exadata Infrastructure was created.
 func (o CloudExadataInfrastructureOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *CloudExadataInfrastructure) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+func (o CloudExadataInfrastructureOutput) DeletionProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudExadataInfrastructure) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }
 
 // User friendly name for this resource.

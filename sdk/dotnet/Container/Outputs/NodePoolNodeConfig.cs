@@ -98,6 +98,10 @@ namespace Pulumi.Gcp.Container.Outputs
         /// </summary>
         public readonly int? LocalSsdCount;
         /// <summary>
+        /// LocalSsdEncryptionMode specified the method used for encrypting the local SSDs attached to the node.
+        /// </summary>
+        public readonly string? LocalSsdEncryptionMode;
+        /// <summary>
         /// Type of logging agent that is used as the default value for node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT.
         /// </summary>
         public readonly string? LoggingVariant;
@@ -225,6 +229,8 @@ namespace Pulumi.Gcp.Container.Outputs
 
             int? localSsdCount,
 
+            string? localSsdEncryptionMode,
+
             string? loggingVariant,
 
             string? machineType,
@@ -286,6 +292,7 @@ namespace Pulumi.Gcp.Container.Outputs
             LinuxNodeConfig = linuxNodeConfig;
             LocalNvmeSsdBlockConfig = localNvmeSsdBlockConfig;
             LocalSsdCount = localSsdCount;
+            LocalSsdEncryptionMode = localSsdEncryptionMode;
             LoggingVariant = loggingVariant;
             MachineType = machineType;
             Metadata = metadata;

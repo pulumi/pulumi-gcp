@@ -10,6 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Iam
 {
     /// <summary>
+    /// A policy binding to an organizations
+    /// 
+    /// To get more information about OrganizationsPolicyBinding, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v3/organizations.locations.policyBindings)
+    /// * How-to Guides
+    ///     * [Apply a policy binding](https://cloud.google.com/iam/docs/principal-access-boundary-policies-create#create_binding)
+    /// 
     /// ## Example Usage
     /// 
     /// ### Iam Organizations Policy Binding

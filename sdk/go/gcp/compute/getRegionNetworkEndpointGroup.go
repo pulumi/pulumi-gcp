@@ -82,8 +82,9 @@ type LookupRegionNetworkEndpointGroupResult struct {
 	// The network to which all network endpoints in the RNEG belong.
 	Network string `pulumi:"network"`
 	// Type of network endpoints in this network endpoint group.
-	NetworkEndpointType string  `pulumi:"networkEndpointType"`
-	Project             *string `pulumi:"project"`
+	NetworkEndpointType string                                 `pulumi:"networkEndpointType"`
+	Project             *string                                `pulumi:"project"`
+	PscDatas            []GetRegionNetworkEndpointGroupPscData `pulumi:"pscDatas"`
 	// The target service url used to set up private service connection to a Google API or a PSC Producer Service Attachment.
 	PscTargetService      string                                              `pulumi:"pscTargetService"`
 	Region                *string                                             `pulumi:"region"`
@@ -187,6 +188,12 @@ func (o LookupRegionNetworkEndpointGroupResultOutput) NetworkEndpointType() pulu
 
 func (o LookupRegionNetworkEndpointGroupResultOutput) Project() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupRegionNetworkEndpointGroupResult) *string { return v.Project }).(pulumi.StringPtrOutput)
+}
+
+func (o LookupRegionNetworkEndpointGroupResultOutput) PscDatas() GetRegionNetworkEndpointGroupPscDataArrayOutput {
+	return o.ApplyT(func(v LookupRegionNetworkEndpointGroupResult) []GetRegionNetworkEndpointGroupPscData {
+		return v.PscDatas
+	}).(GetRegionNetworkEndpointGroupPscDataArrayOutput)
 }
 
 // The target service url used to set up private service connection to a Google API or a PSC Producer Service Attachment.

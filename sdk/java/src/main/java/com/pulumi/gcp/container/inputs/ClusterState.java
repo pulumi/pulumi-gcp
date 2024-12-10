@@ -17,6 +17,7 @@ import com.pulumi.gcp.container.inputs.ClusterDatabaseEncryptionArgs;
 import com.pulumi.gcp.container.inputs.ClusterDefaultSnatStatusArgs;
 import com.pulumi.gcp.container.inputs.ClusterDnsConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterEnableK8sBetaApisArgs;
+import com.pulumi.gcp.container.inputs.ClusterEnterpriseConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterFleetArgs;
 import com.pulumi.gcp.container.inputs.ClusterGatewayApiConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterIdentityServiceConfigArgs;
@@ -562,6 +563,25 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> endpoint() {
         return Optional.ofNullable(this.endpoint);
+    }
+
+    /**
+     * Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
+     * 
+     * &lt;a name=&#34;nested_default_snat_status&#34;&gt;&lt;/a&gt;The `default_snat_status` block supports
+     * 
+     */
+    @Import(name="enterpriseConfig")
+    private @Nullable Output<ClusterEnterpriseConfigArgs> enterpriseConfig;
+
+    /**
+     * @return Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
+     * 
+     * &lt;a name=&#34;nested_default_snat_status&#34;&gt;&lt;/a&gt;The `default_snat_status` block supports
+     * 
+     */
+    public Optional<Output<ClusterEnterpriseConfigArgs>> enterpriseConfig() {
+        return Optional.ofNullable(this.enterpriseConfig);
     }
 
     /**
@@ -1516,16 +1536,12 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     /**
      * Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_default_snat_status&#34;&gt;&lt;/a&gt;The `default_snat_status` block supports
-     * 
      */
     @Import(name="workloadAltsConfig")
     private @Nullable Output<ClusterWorkloadAltsConfigArgs> workloadAltsConfig;
 
     /**
      * @return Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
-     * 
-     * &lt;a name=&#34;nested_default_snat_status&#34;&gt;&lt;/a&gt;The `default_snat_status` block supports
      * 
      */
     public Optional<Output<ClusterWorkloadAltsConfigArgs>> workloadAltsConfig() {
@@ -1584,6 +1600,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         this.enableShieldedNodes = $.enableShieldedNodes;
         this.enableTpu = $.enableTpu;
         this.endpoint = $.endpoint;
+        this.enterpriseConfig = $.enterpriseConfig;
         this.fleet = $.fleet;
         this.gatewayApiConfig = $.gatewayApiConfig;
         this.identityServiceConfig = $.identityServiceConfig;
@@ -2333,6 +2350,31 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder endpoint(String endpoint) {
             return endpoint(Output.of(endpoint));
+        }
+
+        /**
+         * @param enterpriseConfig Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
+         * 
+         * &lt;a name=&#34;nested_default_snat_status&#34;&gt;&lt;/a&gt;The `default_snat_status` block supports
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enterpriseConfig(@Nullable Output<ClusterEnterpriseConfigArgs> enterpriseConfig) {
+            $.enterpriseConfig = enterpriseConfig;
+            return this;
+        }
+
+        /**
+         * @param enterpriseConfig Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
+         * 
+         * &lt;a name=&#34;nested_default_snat_status&#34;&gt;&lt;/a&gt;The `default_snat_status` block supports
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enterpriseConfig(ClusterEnterpriseConfigArgs enterpriseConfig) {
+            return enterpriseConfig(Output.of(enterpriseConfig));
         }
 
         /**
@@ -3612,8 +3654,6 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param workloadAltsConfig Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
          * 
-         * &lt;a name=&#34;nested_default_snat_status&#34;&gt;&lt;/a&gt;The `default_snat_status` block supports
-         * 
          * @return builder
          * 
          */
@@ -3624,8 +3664,6 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param workloadAltsConfig Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
-         * 
-         * &lt;a name=&#34;nested_default_snat_status&#34;&gt;&lt;/a&gt;The `default_snat_status` block supports
          * 
          * @return builder
          * 

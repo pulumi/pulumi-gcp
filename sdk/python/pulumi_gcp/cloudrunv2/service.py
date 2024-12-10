@@ -420,7 +420,7 @@ class _ServiceState:
         :param pulumi.Input[str] description: User-provided description of the Service. This field currently has a 512-character limit.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] etag: A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
-        :param pulumi.Input[str] expire_time: For a deleted resource, the time after which it will be permamently deleted.
+        :param pulumi.Input[str] expire_time: For a deleted resource, the time after which it will be permanently deleted.
         :param pulumi.Input[str] generation: A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
         :param pulumi.Input[str] ingress: Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or
                INGRESS_TRAFFIC_UNSPECIFIED if no revision is active. Possible values: ["INGRESS_TRAFFIC_ALL",
@@ -734,7 +734,7 @@ class _ServiceState:
     @pulumi.getter(name="expireTime")
     def expire_time(self) -> Optional[pulumi.Input[str]]:
         """
-        For a deleted resource, the time after which it will be permamently deleted.
+        For a deleted resource, the time after which it will be permanently deleted.
         """
         return pulumi.get(self, "expire_time")
 
@@ -2265,7 +2265,7 @@ class Service(pulumi.CustomResource):
         :param pulumi.Input[str] description: User-provided description of the Service. This field currently has a 512-character limit.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] etag: A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
-        :param pulumi.Input[str] expire_time: For a deleted resource, the time after which it will be permamently deleted.
+        :param pulumi.Input[str] expire_time: For a deleted resource, the time after which it will be permanently deleted.
         :param pulumi.Input[str] generation: A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
         :param pulumi.Input[str] ingress: Provides the ingress settings for this Service. On output, returns the currently observed ingress settings, or
                INGRESS_TRAFFIC_UNSPECIFIED if no revision is active. Possible values: ["INGRESS_TRAFFIC_ALL",
@@ -2485,7 +2485,7 @@ class Service(pulumi.CustomResource):
     @pulumi.getter(name="expireTime")
     def expire_time(self) -> pulumi.Output[str]:
         """
-        For a deleted resource, the time after which it will be permamently deleted.
+        For a deleted resource, the time after which it will be permanently deleted.
         """
         return pulumi.get(self, "expire_time")
 

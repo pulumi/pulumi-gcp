@@ -59,6 +59,7 @@ import (
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/kms"
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -102,10 +103,22 @@ import (
 //				CreateSampleIntegrations: pulumi.Bool(true),
 //				RunAsServiceAccount:      serviceAccount.Email,
 //				CloudKmsConfig: &applicationintegration.ClientCloudKmsConfigArgs{
-//					KmsLocation:  pulumi.String("us-east1"),
-//					KmsRing:      keyring.ID(),
-//					Key:          cryptokey.ID(),
-//					KeyVersion:   testKey.ID(),
+//					KmsLocation: pulumi.String("us-east1"),
+//					KmsRing: std.BasenameOutput(ctx, std.BasenameOutputArgs{
+//						Input: keyring.ID(),
+//					}, nil).ApplyT(func(invoke std.BasenameResult) (*string, error) {
+//						return invoke.Result, nil
+//					}).(pulumi.StringPtrOutput),
+//					Key: std.BasenameOutput(ctx, std.BasenameOutputArgs{
+//						Input: cryptokey.ID(),
+//					}, nil).ApplyT(func(invoke std.BasenameResult) (*string, error) {
+//						return invoke.Result, nil
+//					}).(pulumi.StringPtrOutput),
+//					KeyVersion: std.BasenameOutput(ctx, std.BasenameOutputArgs{
+//						Input: testKey.ID(),
+//					}, nil).ApplyT(func(invoke std.BasenameResult) (*string, error) {
+//						return invoke.Result, nil
+//					}).(pulumi.StringPtrOutput),
 //					KmsProjectId: pulumi.String(testProject.ProjectId),
 //				},
 //			})

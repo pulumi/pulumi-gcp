@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.ArtifactRegistry.Outputs
     public sealed class GetRepositoryRemoteRepositoryConfigMavenRepositoryResult
     {
         /// <summary>
-        /// Settings for a remote repository with a custom uri.
+        /// [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryResult> CustomRepositories;
         /// <summary>

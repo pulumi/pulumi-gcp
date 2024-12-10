@@ -27,7 +27,7 @@ class GetInstanceGroupManagerResult:
     """
     A collection of values returned by getInstanceGroupManager.
     """
-    def __init__(__self__, all_instances_configs=None, auto_healing_policies=None, base_instance_name=None, creation_timestamp=None, description=None, fingerprint=None, id=None, instance_group=None, instance_lifecycle_policies=None, list_managed_instances_results=None, name=None, named_ports=None, operation=None, params=None, project=None, self_link=None, standby_policies=None, stateful_disks=None, stateful_external_ips=None, stateful_internal_ips=None, statuses=None, target_pools=None, target_size=None, target_stopped_size=None, target_suspended_size=None, update_policies=None, versions=None, wait_for_instances=None, wait_for_instances_status=None, zone=None):
+    def __init__(__self__, all_instances_configs=None, auto_healing_policies=None, base_instance_name=None, creation_timestamp=None, description=None, fingerprint=None, id=None, instance_group=None, instance_group_manager_id=None, instance_lifecycle_policies=None, list_managed_instances_results=None, name=None, named_ports=None, operation=None, params=None, project=None, self_link=None, standby_policies=None, stateful_disks=None, stateful_external_ips=None, stateful_internal_ips=None, statuses=None, target_pools=None, target_size=None, target_stopped_size=None, target_suspended_size=None, update_policies=None, versions=None, wait_for_instances=None, wait_for_instances_status=None, zone=None):
         if all_instances_configs and not isinstance(all_instances_configs, list):
             raise TypeError("Expected argument 'all_instances_configs' to be a list")
         pulumi.set(__self__, "all_instances_configs", all_instances_configs)
@@ -52,6 +52,9 @@ class GetInstanceGroupManagerResult:
         if instance_group and not isinstance(instance_group, str):
             raise TypeError("Expected argument 'instance_group' to be a str")
         pulumi.set(__self__, "instance_group", instance_group)
+        if instance_group_manager_id and not isinstance(instance_group_manager_id, int):
+            raise TypeError("Expected argument 'instance_group_manager_id' to be a int")
+        pulumi.set(__self__, "instance_group_manager_id", instance_group_manager_id)
         if instance_lifecycle_policies and not isinstance(instance_lifecycle_policies, list):
             raise TypeError("Expected argument 'instance_lifecycle_policies' to be a list")
         pulumi.set(__self__, "instance_lifecycle_policies", instance_lifecycle_policies)
@@ -161,6 +164,11 @@ class GetInstanceGroupManagerResult:
     @pulumi.getter(name="instanceGroup")
     def instance_group(self) -> str:
         return pulumi.get(self, "instance_group")
+
+    @property
+    @pulumi.getter(name="instanceGroupManagerId")
+    def instance_group_manager_id(self) -> int:
+        return pulumi.get(self, "instance_group_manager_id")
 
     @property
     @pulumi.getter(name="instanceLifecyclePolicies")
@@ -287,6 +295,7 @@ class AwaitableGetInstanceGroupManagerResult(GetInstanceGroupManagerResult):
             fingerprint=self.fingerprint,
             id=self.id,
             instance_group=self.instance_group,
+            instance_group_manager_id=self.instance_group_manager_id,
             instance_lifecycle_policies=self.instance_lifecycle_policies,
             list_managed_instances_results=self.list_managed_instances_results,
             name=self.name,
@@ -355,6 +364,7 @@ def get_instance_group_manager(name: Optional[str] = None,
         fingerprint=pulumi.get(__ret__, 'fingerprint'),
         id=pulumi.get(__ret__, 'id'),
         instance_group=pulumi.get(__ret__, 'instance_group'),
+        instance_group_manager_id=pulumi.get(__ret__, 'instance_group_manager_id'),
         instance_lifecycle_policies=pulumi.get(__ret__, 'instance_lifecycle_policies'),
         list_managed_instances_results=pulumi.get(__ret__, 'list_managed_instances_results'),
         name=pulumi.get(__ret__, 'name'),
@@ -420,6 +430,7 @@ def get_instance_group_manager_output(name: Optional[pulumi.Input[Optional[str]]
         fingerprint=pulumi.get(__response__, 'fingerprint'),
         id=pulumi.get(__response__, 'id'),
         instance_group=pulumi.get(__response__, 'instance_group'),
+        instance_group_manager_id=pulumi.get(__response__, 'instance_group_manager_id'),
         instance_lifecycle_policies=pulumi.get(__response__, 'instance_lifecycle_policies'),
         list_managed_instances_results=pulumi.get(__response__, 'list_managed_instances_results'),
         name=pulumi.get(__response__, 'name'),

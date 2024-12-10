@@ -13,6 +13,7 @@ import com.pulumi.gcp.compute.inputs.RegionNetworkEndpointGroupState;
 import com.pulumi.gcp.compute.outputs.RegionNetworkEndpointGroupAppEngine;
 import com.pulumi.gcp.compute.outputs.RegionNetworkEndpointGroupCloudFunction;
 import com.pulumi.gcp.compute.outputs.RegionNetworkEndpointGroupCloudRun;
+import com.pulumi.gcp.compute.outputs.RegionNetworkEndpointGroupPscData;
 import com.pulumi.gcp.compute.outputs.RegionNetworkEndpointGroupServerlessDeployment;
 import java.lang.String;
 import java.util.Optional;
@@ -382,6 +383,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.compute.ServiceAttachmentArgs;
  * import com.pulumi.gcp.compute.RegionNetworkEndpointGroup;
  * import com.pulumi.gcp.compute.RegionNetworkEndpointGroupArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionNetworkEndpointGroupPscDataArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -434,7 +436,10 @@ import javax.annotation.Nullable;
  *             .region("europe-west4")
  *             .loadBalancingScheme("INTERNAL")
  *             .backendService(defaultRegionBackendService.id())
- *             .allPorts(true)
+ *             .ports(            
+ *                 "80",
+ *                 "88",
+ *                 "443")
  *             .network(default_.name())
  *             .subnetwork(defaultSubnetwork.name())
  *             .build());
@@ -454,6 +459,9 @@ import javax.annotation.Nullable;
  *             .region("europe-west4")
  *             .networkEndpointType("PRIVATE_SERVICE_CONNECT")
  *             .pscTargetService(defaultServiceAttachment.selfLink())
+ *             .pscData(RegionNetworkEndpointGroupPscDataArgs.builder()
+ *                 .producerPort("88")
+ *                 .build())
  *             .network(default_.selfLink())
  *             .subnetwork(defaultSubnetwork.selfLink())
  *             .build());
@@ -783,6 +791,22 @@ public class RegionNetworkEndpointGroup extends com.pulumi.resources.CustomResou
      */
     public Output<String> project() {
         return this.project;
+    }
+    /**
+     * This field is only used for PSC NEGs.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="pscData", refs={RegionNetworkEndpointGroupPscData.class}, tree="[0]")
+    private Output</* @Nullable */ RegionNetworkEndpointGroupPscData> pscData;
+
+    /**
+     * @return This field is only used for PSC NEGs.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<RegionNetworkEndpointGroupPscData>> pscData() {
+        return Codegen.optional(this.pscData);
     }
     /**
      * This field is only used for PSC and INTERNET NEGs.

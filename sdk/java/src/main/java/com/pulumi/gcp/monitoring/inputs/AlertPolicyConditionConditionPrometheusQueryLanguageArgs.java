@@ -6,6 +6,7 @@ package com.pulumi.gcp.monitoring.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -28,8 +29,6 @@ public final class AlertPolicyConditionConditionPrometheusQueryLanguageArgs exte
      * This field is optional. If this field is not empty, then it must be a
      * valid Prometheus label name.
      * 
-     * ***
-     * 
      */
     @Import(name="alertRule")
     private @Nullable Output<String> alertRule;
@@ -45,11 +44,16 @@ public final class AlertPolicyConditionConditionPrometheusQueryLanguageArgs exte
      * This field is optional. If this field is not empty, then it must be a
      * valid Prometheus label name.
      * 
-     * ***
-     * 
      */
     public Optional<Output<String>> alertRule() {
         return Optional.ofNullable(this.alertRule);
+    }
+
+    @Import(name="disableMetricValidation")
+    private @Nullable Output<Boolean> disableMetricValidation;
+
+    public Optional<Output<Boolean>> disableMetricValidation() {
+        return Optional.ofNullable(this.disableMetricValidation);
     }
 
     /**
@@ -171,6 +175,7 @@ public final class AlertPolicyConditionConditionPrometheusQueryLanguageArgs exte
 
     private AlertPolicyConditionConditionPrometheusQueryLanguageArgs(AlertPolicyConditionConditionPrometheusQueryLanguageArgs $) {
         this.alertRule = $.alertRule;
+        this.disableMetricValidation = $.disableMetricValidation;
         this.duration = $.duration;
         this.evaluationInterval = $.evaluationInterval;
         this.labels = $.labels;
@@ -207,8 +212,6 @@ public final class AlertPolicyConditionConditionPrometheusQueryLanguageArgs exte
          * This field is optional. If this field is not empty, then it must be a
          * valid Prometheus label name.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -228,13 +231,20 @@ public final class AlertPolicyConditionConditionPrometheusQueryLanguageArgs exte
          * This field is optional. If this field is not empty, then it must be a
          * valid Prometheus label name.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
         public Builder alertRule(String alertRule) {
             return alertRule(Output.of(alertRule));
+        }
+
+        public Builder disableMetricValidation(@Nullable Output<Boolean> disableMetricValidation) {
+            $.disableMetricValidation = disableMetricValidation;
+            return this;
+        }
+
+        public Builder disableMetricValidation(Boolean disableMetricValidation) {
+            return disableMetricValidation(Output.of(disableMetricValidation));
         }
 
         /**

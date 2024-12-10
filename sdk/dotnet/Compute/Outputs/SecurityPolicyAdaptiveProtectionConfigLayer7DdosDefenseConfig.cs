@@ -21,15 +21,22 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// Rule visibility. Supported values include: "STANDARD", "PREMIUM".
         /// </summary>
         public readonly string? RuleVisibility;
+        /// <summary>
+        /// Configuration options for layer7 adaptive protection for various customizable thresholds.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig> ThresholdConfigs;
 
         [OutputConstructor]
         private SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig(
             bool? enable,
 
-            string? ruleVisibility)
+            string? ruleVisibility,
+
+            ImmutableArray<Outputs.SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig> thresholdConfigs)
         {
             Enable = enable;
             RuleVisibility = ruleVisibility;
+            ThresholdConfigs = thresholdConfigs;
         }
     }
 }

@@ -71,6 +71,7 @@ type LookupCloudVmClusterResult struct {
 	Cidr                  string            `pulumi:"cidr"`
 	CloudVmClusterId      string            `pulumi:"cloudVmClusterId"`
 	CreateTime            string            `pulumi:"createTime"`
+	DeletionProtection    bool              `pulumi:"deletionProtection"`
 	DisplayName           string            `pulumi:"displayName"`
 	EffectiveLabels       map[string]string `pulumi:"effectiveLabels"`
 	ExadataInfrastructure string            `pulumi:"exadataInfrastructure"`
@@ -151,6 +152,10 @@ func (o LookupCloudVmClusterResultOutput) CloudVmClusterId() pulumi.StringOutput
 
 func (o LookupCloudVmClusterResultOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupCloudVmClusterResult) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+func (o LookupCloudVmClusterResultOutput) DeletionProtection() pulumi.BoolOutput {
+	return o.ApplyT(func(v LookupCloudVmClusterResult) bool { return v.DeletionProtection }).(pulumi.BoolOutput)
 }
 
 func (o LookupCloudVmClusterResultOutput) DisplayName() pulumi.StringOutput {

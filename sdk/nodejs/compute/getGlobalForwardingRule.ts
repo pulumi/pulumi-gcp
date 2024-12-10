@@ -53,6 +53,7 @@ export interface GetGlobalForwardingRuleResult {
     readonly baseForwardingRule: string;
     readonly description: string;
     readonly effectiveLabels: {[key: string]: string};
+    readonly forwardingRuleId: number;
     /**
      * The provider-assigned unique ID for this managed resource.
      */

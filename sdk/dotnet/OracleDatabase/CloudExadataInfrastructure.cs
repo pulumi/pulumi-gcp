@@ -42,6 +42,7 @@ namespace Pulumi.Gcp.OracleDatabase
     ///             ComputeCount = 2,
     ///             StorageCount = 3,
     ///         },
+    ///         DeletionProtection = true,
     ///     });
     /// 
     /// });
@@ -108,6 +109,7 @@ namespace Pulumi.Gcp.OracleDatabase
     ///         {
     ///             { "label-one", "value-one" },
     ///         },
+    ///         DeletionProtection = true,
     ///     });
     /// 
     /// });
@@ -157,6 +159,9 @@ namespace Pulumi.Gcp.OracleDatabase
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
+
+        [Output("deletionProtection")]
+        public Output<bool?> DeletionProtection { get; private set; } = null!;
 
         /// <summary>
         /// User friendly name for this resource.
@@ -288,6 +293,9 @@ namespace Pulumi.Gcp.OracleDatabase
         [Input("cloudExadataInfrastructureId", required: true)]
         public Input<string> CloudExadataInfrastructureId { get; set; } = null!;
 
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
+
         /// <summary>
         /// User friendly name for this resource.
         /// </summary>
@@ -359,6 +367,9 @@ namespace Pulumi.Gcp.OracleDatabase
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
+
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
         /// User friendly name for this resource.

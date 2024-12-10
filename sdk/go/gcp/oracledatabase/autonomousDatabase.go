@@ -59,6 +59,7 @@ import (
 //					DbWorkload:        pulumi.String("OLTP"),
 //					LicenseType:       pulumi.String("LICENSE_INCLUDED"),
 //				},
+//				DeletionProtection: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -125,6 +126,7 @@ import (
 //					PrivateEndpointIp:    pulumi.String("10.5.0.11"),
 //					PrivateEndpointLabel: pulumi.String("testhost"),
 //				},
+//				DeletionProtection: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -175,7 +177,8 @@ type AutonomousDatabase struct {
 	// The name of the Autonomous Database. The database name must be unique in
 	// the project. The name must begin with a letter and can
 	// contain a maximum of 30 alphanumeric characters.
-	Database pulumi.StringOutput `pulumi:"database"`
+	Database           pulumi.StringOutput  `pulumi:"database"`
+	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// The display name for the Autonomous Database. The name does not have to be unique within your project.
 	DisplayName pulumi.StringOutput `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -271,7 +274,8 @@ type autonomousDatabaseState struct {
 	// The name of the Autonomous Database. The database name must be unique in
 	// the project. The name must begin with a letter and can
 	// contain a maximum of 30 alphanumeric characters.
-	Database *string `pulumi:"database"`
+	Database           *string `pulumi:"database"`
+	DeletionProtection *bool   `pulumi:"deletionProtection"`
 	// The display name for the Autonomous Database. The name does not have to be unique within your project.
 	DisplayName *string `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -315,7 +319,8 @@ type AutonomousDatabaseState struct {
 	// The name of the Autonomous Database. The database name must be unique in
 	// the project. The name must begin with a letter and can
 	// contain a maximum of 30 alphanumeric characters.
-	Database pulumi.StringPtrInput
+	Database           pulumi.StringPtrInput
+	DeletionProtection pulumi.BoolPtrInput
 	// The display name for the Autonomous Database. The name does not have to be unique within your project.
 	DisplayName pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -361,7 +366,8 @@ type autonomousDatabaseArgs struct {
 	// The name of the Autonomous Database. The database name must be unique in
 	// the project. The name must begin with a letter and can
 	// contain a maximum of 30 alphanumeric characters.
-	Database string `pulumi:"database"`
+	Database           string `pulumi:"database"`
+	DeletionProtection *bool  `pulumi:"deletionProtection"`
 	// The display name for the Autonomous Database. The name does not have to be unique within your project.
 	DisplayName *string `pulumi:"displayName"`
 	// The labels or tags associated with the Autonomous Database. **Note**: This field is non-authoritative, and will only
@@ -393,7 +399,8 @@ type AutonomousDatabaseArgs struct {
 	// The name of the Autonomous Database. The database name must be unique in
 	// the project. The name must begin with a letter and can
 	// contain a maximum of 30 alphanumeric characters.
-	Database pulumi.StringInput
+	Database           pulumi.StringInput
+	DeletionProtection pulumi.BoolPtrInput
 	// The display name for the Autonomous Database. The name does not have to be unique within your project.
 	DisplayName pulumi.StringPtrInput
 	// The labels or tags associated with the Autonomous Database. **Note**: This field is non-authoritative, and will only
@@ -526,6 +533,10 @@ func (o AutonomousDatabaseOutput) CreateTime() pulumi.StringOutput {
 // contain a maximum of 30 alphanumeric characters.
 func (o AutonomousDatabaseOutput) Database() pulumi.StringOutput {
 	return o.ApplyT(func(v *AutonomousDatabase) pulumi.StringOutput { return v.Database }).(pulumi.StringOutput)
+}
+
+func (o AutonomousDatabaseOutput) DeletionProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *AutonomousDatabase) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }
 
 // The display name for the Autonomous Database. The name does not have to be unique within your project.

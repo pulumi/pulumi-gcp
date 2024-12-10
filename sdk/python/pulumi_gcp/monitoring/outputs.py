@@ -1004,6 +1004,8 @@ class AlertPolicyConditionConditionPrometheusQueryLanguage(dict):
         suggest = None
         if key == "alertRule":
             suggest = "alert_rule"
+        elif key == "disableMetricValidation":
+            suggest = "disable_metric_validation"
         elif key == "evaluationInterval":
             suggest = "evaluation_interval"
         elif key == "ruleGroup":
@@ -1023,6 +1025,7 @@ class AlertPolicyConditionConditionPrometheusQueryLanguage(dict):
     def __init__(__self__, *,
                  query: str,
                  alert_rule: Optional[str] = None,
+                 disable_metric_validation: Optional[bool] = None,
                  duration: Optional[str] = None,
                  evaluation_interval: Optional[str] = None,
                  labels: Optional[Mapping[str, str]] = None,
@@ -1040,8 +1043,6 @@ class AlertPolicyConditionConditionPrometheusQueryLanguage(dict):
                in the future.
                This field is optional. If this field is not empty, then it must be a
                valid Prometheus label name.
-               
-               - - -
         :param str duration: Alerts are considered firing once their PromQL expression evaluated
                to be "true" for this long. Alerts whose PromQL expression was not
                evaluated to be "true" for long enough are considered pending. The
@@ -1068,6 +1069,8 @@ class AlertPolicyConditionConditionPrometheusQueryLanguage(dict):
         pulumi.set(__self__, "query", query)
         if alert_rule is not None:
             pulumi.set(__self__, "alert_rule", alert_rule)
+        if disable_metric_validation is not None:
+            pulumi.set(__self__, "disable_metric_validation", disable_metric_validation)
         if duration is not None:
             pulumi.set(__self__, "duration", duration)
         if evaluation_interval is not None:
@@ -1100,10 +1103,13 @@ class AlertPolicyConditionConditionPrometheusQueryLanguage(dict):
         in the future.
         This field is optional. If this field is not empty, then it must be a
         valid Prometheus label name.
-
-        - - -
         """
         return pulumi.get(self, "alert_rule")
+
+    @property
+    @pulumi.getter(name="disableMetricValidation")
+    def disable_metric_validation(self) -> Optional[bool]:
+        return pulumi.get(self, "disable_metric_validation")
 
     @property
     @pulumi.getter

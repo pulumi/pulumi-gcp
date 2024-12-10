@@ -205,6 +205,44 @@ class Release(pulumi.CustomResource):
         * [Get started with Firebase Security Rules](https://firebase.google.com/docs/rules/get-started)
         ## Example Usage
 
+        ### Firestore_release
+        Creates a Firebase Rules Release to the default Cloud Firestore instance
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        firestore = gcp.firebaserules.Ruleset("firestore",
+            project="my-project-name",
+            source={
+                "files": [{
+                    "content": "service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }",
+                    "name": "firestore.rules",
+                }],
+            })
+        primary = gcp.firebaserules.Release("primary",
+            name="cloud.firestore",
+            project="my-project-name",
+            ruleset_name=firestore.name.apply(lambda name: f"projects/my-project-name/rulesets/{name}"))
+        ```
+        ### Firestore_release_additional
+        Creates a Firebase Rules Release to an additional Cloud Firestore instance
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        firestore = gcp.firebaserules.Ruleset("firestore",
+            project="my-project-name",
+            source={
+                "files": [{
+                    "content": "service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }",
+                    "name": "firestore.rules",
+                }],
+            })
+        primary = gcp.firebaserules.Release("primary",
+            name="cloud.firestore/database",
+            project="my-project-name",
+            ruleset_name=firestore.name.apply(lambda name: f"projects/my-project-name/rulesets/{name}"))
+        ```
         ## Import
 
         Release can be imported using any of these accepted formats:
@@ -237,6 +275,44 @@ class Release(pulumi.CustomResource):
         * [Get started with Firebase Security Rules](https://firebase.google.com/docs/rules/get-started)
         ## Example Usage
 
+        ### Firestore_release
+        Creates a Firebase Rules Release to the default Cloud Firestore instance
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        firestore = gcp.firebaserules.Ruleset("firestore",
+            project="my-project-name",
+            source={
+                "files": [{
+                    "content": "service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }",
+                    "name": "firestore.rules",
+                }],
+            })
+        primary = gcp.firebaserules.Release("primary",
+            name="cloud.firestore",
+            project="my-project-name",
+            ruleset_name=firestore.name.apply(lambda name: f"projects/my-project-name/rulesets/{name}"))
+        ```
+        ### Firestore_release_additional
+        Creates a Firebase Rules Release to an additional Cloud Firestore instance
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        firestore = gcp.firebaserules.Ruleset("firestore",
+            project="my-project-name",
+            source={
+                "files": [{
+                    "content": "service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }",
+                    "name": "firestore.rules",
+                }],
+            })
+        primary = gcp.firebaserules.Release("primary",
+            name="cloud.firestore/database",
+            project="my-project-name",
+            ruleset_name=firestore.name.apply(lambda name: f"projects/my-project-name/rulesets/{name}"))
+        ```
         ## Import
 
         Release can be imported using any of these accepted formats:

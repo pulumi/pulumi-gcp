@@ -106,7 +106,7 @@ def get_forwarding_rules(project: Optional[str] = None,
     :param str project: The name of the project.
     :param str region: The region you want to get the forwarding rules from.
            
-           These arguments must be set in either the provider or the resouce in order for the information to be queried.
+           These arguments must be set in either the provider or the resource in order for the information to be queried.
     """
     __args__ = dict()
     __args__['project'] = project
@@ -139,7 +139,7 @@ def get_forwarding_rules_output(project: Optional[pulumi.Input[Optional[str]]] =
     :param str project: The name of the project.
     :param str region: The region you want to get the forwarding rules from.
            
-           These arguments must be set in either the provider or the resouce in order for the information to be queried.
+           These arguments must be set in either the provider or the resource in order for the information to be queried.
     """
     __args__ = dict()
     __args__['project'] = project

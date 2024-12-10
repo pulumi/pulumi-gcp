@@ -19,6 +19,16 @@ public final class InstanceTemplateAdvancedMachineFeatures {
      */
     private @Nullable Boolean enableNestedVirtualization;
     /**
+     * @return Whether to enable UEFI networking for instance creation.
+     * 
+     */
+    private @Nullable Boolean enableUefiNetworking;
+    /**
+     * @return [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+     * 
+     */
+    private @Nullable String performanceMonitoringUnit;
+    /**
      * @return The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
      * 
      */
@@ -41,6 +51,20 @@ public final class InstanceTemplateAdvancedMachineFeatures {
      */
     public Optional<Boolean> enableNestedVirtualization() {
         return Optional.ofNullable(this.enableNestedVirtualization);
+    }
+    /**
+     * @return Whether to enable UEFI networking for instance creation.
+     * 
+     */
+    public Optional<Boolean> enableUefiNetworking() {
+        return Optional.ofNullable(this.enableUefiNetworking);
+    }
+    /**
+     * @return [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+     * 
+     */
+    public Optional<String> performanceMonitoringUnit() {
+        return Optional.ofNullable(this.performanceMonitoringUnit);
     }
     /**
      * @return The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
@@ -74,6 +98,8 @@ public final class InstanceTemplateAdvancedMachineFeatures {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean enableNestedVirtualization;
+        private @Nullable Boolean enableUefiNetworking;
+        private @Nullable String performanceMonitoringUnit;
         private @Nullable Integer threadsPerCore;
         private @Nullable String turboMode;
         private @Nullable Integer visibleCoreCount;
@@ -81,6 +107,8 @@ public final class InstanceTemplateAdvancedMachineFeatures {
         public Builder(InstanceTemplateAdvancedMachineFeatures defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableNestedVirtualization = defaults.enableNestedVirtualization;
+    	      this.enableUefiNetworking = defaults.enableUefiNetworking;
+    	      this.performanceMonitoringUnit = defaults.performanceMonitoringUnit;
     	      this.threadsPerCore = defaults.threadsPerCore;
     	      this.turboMode = defaults.turboMode;
     	      this.visibleCoreCount = defaults.visibleCoreCount;
@@ -90,6 +118,18 @@ public final class InstanceTemplateAdvancedMachineFeatures {
         public Builder enableNestedVirtualization(@Nullable Boolean enableNestedVirtualization) {
 
             this.enableNestedVirtualization = enableNestedVirtualization;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enableUefiNetworking(@Nullable Boolean enableUefiNetworking) {
+
+            this.enableUefiNetworking = enableUefiNetworking;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder performanceMonitoringUnit(@Nullable String performanceMonitoringUnit) {
+
+            this.performanceMonitoringUnit = performanceMonitoringUnit;
             return this;
         }
         @CustomType.Setter
@@ -113,6 +153,8 @@ public final class InstanceTemplateAdvancedMachineFeatures {
         public InstanceTemplateAdvancedMachineFeatures build() {
             final var _resultValue = new InstanceTemplateAdvancedMachineFeatures();
             _resultValue.enableNestedVirtualization = enableNestedVirtualization;
+            _resultValue.enableUefiNetworking = enableUefiNetworking;
+            _resultValue.performanceMonitoringUnit = performanceMonitoringUnit;
             _resultValue.threadsPerCore = threadsPerCore;
             _resultValue.turboMode = turboMode;
             _resultValue.visibleCoreCount = visibleCoreCount;

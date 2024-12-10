@@ -344,6 +344,10 @@ export class RegionHealthCheck extends pulumi.CustomResource {
      */
     public readonly grpcHealthCheck!: pulumi.Output<outputs.compute.RegionHealthCheckGrpcHealthCheck | undefined>;
     /**
+     * The unique identifier number for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly healthCheckId!: pulumi.Output<number>;
+    /**
      * A so-far unhealthy instance will be marked healthy after this many
      * consecutive successes. The default value is 2.
      */
@@ -438,6 +442,7 @@ export class RegionHealthCheck extends pulumi.CustomResource {
             resourceInputs["creationTimestamp"] = state ? state.creationTimestamp : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["grpcHealthCheck"] = state ? state.grpcHealthCheck : undefined;
+            resourceInputs["healthCheckId"] = state ? state.healthCheckId : undefined;
             resourceInputs["healthyThreshold"] = state ? state.healthyThreshold : undefined;
             resourceInputs["http2HealthCheck"] = state ? state.http2HealthCheck : undefined;
             resourceInputs["httpHealthCheck"] = state ? state.httpHealthCheck : undefined;
@@ -470,6 +475,7 @@ export class RegionHealthCheck extends pulumi.CustomResource {
             resourceInputs["timeoutSec"] = args ? args.timeoutSec : undefined;
             resourceInputs["unhealthyThreshold"] = args ? args.unhealthyThreshold : undefined;
             resourceInputs["creationTimestamp"] = undefined /*out*/;
+            resourceInputs["healthCheckId"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["type"] = undefined /*out*/;
         }
@@ -501,6 +507,10 @@ export interface RegionHealthCheckState {
      * Structure is documented below.
      */
     grpcHealthCheck?: pulumi.Input<inputs.compute.RegionHealthCheckGrpcHealthCheck>;
+    /**
+     * The unique identifier number for the resource. This identifier is defined by the server.
+     */
+    healthCheckId?: pulumi.Input<number>;
     /**
      * A so-far unhealthy instance will be marked healthy after this many
      * consecutive successes. The default value is 2.

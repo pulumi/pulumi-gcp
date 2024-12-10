@@ -461,6 +461,10 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
      */
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
     /**
+     * The unique identifier number for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly forwardingRuleId!: pulumi.Output<number>;
+    /**
      * IP address for which this forwarding rule accepts traffic. When a client
      * sends traffic to this IP address, the forwarding rule directs the traffic
      * to the referenced `target`.
@@ -673,6 +677,7 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
             resourceInputs["baseForwardingRule"] = state ? state.baseForwardingRule : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
+            resourceInputs["forwardingRuleId"] = state ? state.forwardingRuleId : undefined;
             resourceInputs["ipAddress"] = state ? state.ipAddress : undefined;
             resourceInputs["ipProtocol"] = state ? state.ipProtocol : undefined;
             resourceInputs["ipVersion"] = state ? state.ipVersion : undefined;
@@ -717,6 +722,7 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
             resourceInputs["target"] = args ? args.target : undefined;
             resourceInputs["baseForwardingRule"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
+            resourceInputs["forwardingRuleId"] = undefined /*out*/;
             resourceInputs["labelFingerprint"] = undefined /*out*/;
             resourceInputs["pscConnectionId"] = undefined /*out*/;
             resourceInputs["pscConnectionStatus"] = undefined /*out*/;
@@ -751,6 +757,10 @@ export interface GlobalForwardingRuleState {
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The unique identifier number for the resource. This identifier is defined by the server.
+     */
+    forwardingRuleId?: pulumi.Input<number>;
     /**
      * IP address for which this forwarding rule accepts traffic. When a client
      * sends traffic to this IP address, the forwarding rule directs the traffic

@@ -519,6 +519,7 @@ class _RegionInstanceGroupManagerState:
                  fingerprint: Optional[pulumi.Input[str]] = None,
                  instance_flexibility_policy: Optional[pulumi.Input['RegionInstanceGroupManagerInstanceFlexibilityPolicyArgs']] = None,
                  instance_group: Optional[pulumi.Input[str]] = None,
+                 instance_group_manager_id: Optional[pulumi.Input[int]] = None,
                  instance_lifecycle_policy: Optional[pulumi.Input['RegionInstanceGroupManagerInstanceLifecyclePolicyArgs']] = None,
                  list_managed_instances_results: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -563,6 +564,7 @@ class _RegionInstanceGroupManagerState:
         :param pulumi.Input['RegionInstanceGroupManagerInstanceFlexibilityPolicyArgs'] instance_flexibility_policy: The flexibility policy for managed instance group. Instance flexibility allows managed instance group to create VMs from multiple types of machines. Instance flexibility configuration on managed instance group overrides instance template configuration. Structure is documented below.
                - - -
         :param pulumi.Input[str] instance_group: The full URL of the instance group created by the manager.
+        :param pulumi.Input[int] instance_group_manager_id: The unique identifier number for the resource. This identifier is defined by the server.
         :param pulumi.Input['RegionInstanceGroupManagerInstanceLifecyclePolicyArgs'] instance_lifecycle_policy: The instance lifecycle policy for this managed instance group.
         :param pulumi.Input[str] list_managed_instances_results: Pagination behavior of the `listManagedInstances` API
                method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
@@ -627,6 +629,8 @@ class _RegionInstanceGroupManagerState:
             pulumi.set(__self__, "instance_flexibility_policy", instance_flexibility_policy)
         if instance_group is not None:
             pulumi.set(__self__, "instance_group", instance_group)
+        if instance_group_manager_id is not None:
+            pulumi.set(__self__, "instance_group_manager_id", instance_group_manager_id)
         if instance_lifecycle_policy is not None:
             pulumi.set(__self__, "instance_lifecycle_policy", instance_lifecycle_policy)
         if list_managed_instances_results is not None:
@@ -800,6 +804,18 @@ class _RegionInstanceGroupManagerState:
     @instance_group.setter
     def instance_group(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "instance_group", value)
+
+    @property
+    @pulumi.getter(name="instanceGroupManagerId")
+    def instance_group_manager_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The unique identifier number for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "instance_group_manager_id")
+
+    @instance_group_manager_id.setter
+    def instance_group_manager_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "instance_group_manager_id", value)
 
     @property
     @pulumi.getter(name="instanceLifecyclePolicy")
@@ -1497,6 +1513,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["fingerprint"] = None
             __props__.__dict__["instance_group"] = None
+            __props__.__dict__["instance_group_manager_id"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["statuses"] = None
         super(RegionInstanceGroupManager, __self__).__init__(
@@ -1519,6 +1536,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
             fingerprint: Optional[pulumi.Input[str]] = None,
             instance_flexibility_policy: Optional[pulumi.Input[Union['RegionInstanceGroupManagerInstanceFlexibilityPolicyArgs', 'RegionInstanceGroupManagerInstanceFlexibilityPolicyArgsDict']]] = None,
             instance_group: Optional[pulumi.Input[str]] = None,
+            instance_group_manager_id: Optional[pulumi.Input[int]] = None,
             instance_lifecycle_policy: Optional[pulumi.Input[Union['RegionInstanceGroupManagerInstanceLifecyclePolicyArgs', 'RegionInstanceGroupManagerInstanceLifecyclePolicyArgsDict']]] = None,
             list_managed_instances_results: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -1568,6 +1586,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input[Union['RegionInstanceGroupManagerInstanceFlexibilityPolicyArgs', 'RegionInstanceGroupManagerInstanceFlexibilityPolicyArgsDict']] instance_flexibility_policy: The flexibility policy for managed instance group. Instance flexibility allows managed instance group to create VMs from multiple types of machines. Instance flexibility configuration on managed instance group overrides instance template configuration. Structure is documented below.
                - - -
         :param pulumi.Input[str] instance_group: The full URL of the instance group created by the manager.
+        :param pulumi.Input[int] instance_group_manager_id: The unique identifier number for the resource. This identifier is defined by the server.
         :param pulumi.Input[Union['RegionInstanceGroupManagerInstanceLifecyclePolicyArgs', 'RegionInstanceGroupManagerInstanceLifecyclePolicyArgsDict']] instance_lifecycle_policy: The instance lifecycle policy for this managed instance group.
         :param pulumi.Input[str] list_managed_instances_results: Pagination behavior of the `listManagedInstances` API
                method for this managed instance group. Valid values are: `PAGELESS`, `PAGINATED`.
@@ -1626,6 +1645,7 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         __props__.__dict__["fingerprint"] = fingerprint
         __props__.__dict__["instance_flexibility_policy"] = instance_flexibility_policy
         __props__.__dict__["instance_group"] = instance_group
+        __props__.__dict__["instance_group_manager_id"] = instance_group_manager_id
         __props__.__dict__["instance_lifecycle_policy"] = instance_lifecycle_policy
         __props__.__dict__["list_managed_instances_results"] = list_managed_instances_results
         __props__.__dict__["name"] = name
@@ -1739,6 +1759,14 @@ class RegionInstanceGroupManager(pulumi.CustomResource):
         The full URL of the instance group created by the manager.
         """
         return pulumi.get(self, "instance_group")
+
+    @property
+    @pulumi.getter(name="instanceGroupManagerId")
+    def instance_group_manager_id(self) -> pulumi.Output[int]:
+        """
+        The unique identifier number for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "instance_group_manager_id")
 
     @property
     @pulumi.getter(name="instanceLifecyclePolicy")

@@ -123,6 +123,7 @@ __all__ = [
     'ClusterDefaultSnatStatus',
     'ClusterDnsConfig',
     'ClusterEnableK8sBetaApis',
+    'ClusterEnterpriseConfig',
     'ClusterFleet',
     'ClusterGatewayApiConfig',
     'ClusterIdentityServiceConfig',
@@ -175,6 +176,7 @@ __all__ = [
     'ClusterNodeConfigWorkloadMetadataConfig',
     'ClusterNodePool',
     'ClusterNodePoolAutoConfig',
+    'ClusterNodePoolAutoConfigLinuxNodeConfig',
     'ClusterNodePoolAutoConfigNetworkTags',
     'ClusterNodePoolAutoConfigNodeKubeletConfig',
     'ClusterNodePoolAutoscaling',
@@ -323,6 +325,7 @@ __all__ = [
     'GetClusterDefaultSnatStatusResult',
     'GetClusterDnsConfigResult',
     'GetClusterEnableK8sBetaApiResult',
+    'GetClusterEnterpriseConfigResult',
     'GetClusterFleetResult',
     'GetClusterGatewayApiConfigResult',
     'GetClusterIdentityServiceConfigResult',
@@ -375,6 +378,7 @@ __all__ = [
     'GetClusterNodeConfigWorkloadMetadataConfigResult',
     'GetClusterNodePoolResult',
     'GetClusterNodePoolAutoConfigResult',
+    'GetClusterNodePoolAutoConfigLinuxNodeConfigResult',
     'GetClusterNodePoolAutoConfigNetworkTagResult',
     'GetClusterNodePoolAutoConfigNodeKubeletConfigResult',
     'GetClusterNodePoolAutoscalingResult',
@@ -4780,7 +4784,7 @@ class ClusterClusterAutoscalingAutoProvisioningDefaults(dict):
         """
         :param str boot_disk_kms_key: The Customer Managed Encryption Key used to encrypt the boot disk attached to each node in the node pool. This should be of the form projects/[KEY_PROJECT_ID]/locations/[LOCATION]/keyRings/[RING_NAME]/cryptoKeys/[KEY_NAME]. For more information about protecting resources with Cloud KMS Keys please see: https://cloud.google.com/compute/docs/disks/customer-managed-encryption
         :param int disk_size: Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. Defaults to `100`
-        :param str disk_type: Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced'). Defaults to `pd-standard`
+        :param str disk_type: Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd', 'pd-balanced', or 'hyperdisk-balanced'). Defaults to `hyperdisk-balanced` if `hyperdisk-balanced` is supported and `pd-balanced` is not supported for the machine type; otherwise defaults to `pd-balanced`.
         :param str image_type: The default image type used by NAP once a new node pool is being created. Please note that according to the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning#default-image-type) the value must be one of the [COS_CONTAINERD, COS, UBUNTU_CONTAINERD, UBUNTU]. __NOTE__ : COS AND UBUNTU are deprecated as of `GKE 1.24`
         :param 'ClusterClusterAutoscalingAutoProvisioningDefaultsManagementArgs' management: NodeManagement configuration for this NodePool. Structure is documented below.
         :param str min_cpu_platform: Minimum CPU platform to be used for NAP created node pools. The instance may be scheduled on the
@@ -4834,7 +4838,7 @@ class ClusterClusterAutoscalingAutoProvisioningDefaults(dict):
     @pulumi.getter(name="diskType")
     def disk_type(self) -> Optional[str]:
         """
-        Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced'). Defaults to `pd-standard`
+        Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd', 'pd-balanced', or 'hyperdisk-balanced'). Defaults to `hyperdisk-balanced` if `hyperdisk-balanced` is supported and `pd-balanced` is not supported for the machine type; otherwise defaults to `pd-balanced`.
         """
         return pulumi.get(self, "disk_type")
 
@@ -5652,6 +5656,56 @@ class ClusterEnableK8sBetaApis(dict):
         Enabled Kubernetes Beta APIs.
         """
         return pulumi.get(self, "enabled_apis")
+
+
+@pulumi.output_type
+class ClusterEnterpriseConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clusterTier":
+            suggest = "cluster_tier"
+        elif key == "desiredTier":
+            suggest = "desired_tier"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterEnterpriseConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterEnterpriseConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterEnterpriseConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cluster_tier: Optional[str] = None,
+                 desired_tier: Optional[str] = None):
+        """
+        :param str cluster_tier: The effective tier of the cluster.
+        :param str desired_tier: Sets the tier of the cluster. Available options include `STANDARD` and `ENTERPRISE`.
+        """
+        if cluster_tier is not None:
+            pulumi.set(__self__, "cluster_tier", cluster_tier)
+        if desired_tier is not None:
+            pulumi.set(__self__, "desired_tier", desired_tier)
+
+    @property
+    @pulumi.getter(name="clusterTier")
+    def cluster_tier(self) -> Optional[str]:
+        """
+        The effective tier of the cluster.
+        """
+        return pulumi.get(self, "cluster_tier")
+
+    @property
+    @pulumi.getter(name="desiredTier")
+    def desired_tier(self) -> Optional[str]:
+        """
+        Sets the tier of the cluster. Available options include `STANDARD` and `ENTERPRISE`.
+        """
+        return pulumi.get(self, "desired_tier")
 
 
 @pulumi.output_type
@@ -6865,6 +6919,8 @@ class ClusterNodeConfig(dict):
             suggest = "local_nvme_ssd_block_config"
         elif key == "localSsdCount":
             suggest = "local_ssd_count"
+        elif key == "localSsdEncryptionMode":
+            suggest = "local_ssd_encryption_mode"
         elif key == "loggingVariant":
             suggest = "logging_variant"
         elif key == "machineType":
@@ -6929,6 +6985,7 @@ class ClusterNodeConfig(dict):
                  linux_node_config: Optional['outputs.ClusterNodeConfigLinuxNodeConfig'] = None,
                  local_nvme_ssd_block_config: Optional['outputs.ClusterNodeConfigLocalNvmeSsdBlockConfig'] = None,
                  local_ssd_count: Optional[int] = None,
+                 local_ssd_encryption_mode: Optional[str] = None,
                  logging_variant: Optional[str] = None,
                  machine_type: Optional[str] = None,
                  metadata: Optional[Mapping[str, str]] = None,
@@ -7000,6 +7057,10 @@ class ClusterNodeConfig(dict):
         :param 'ClusterNodeConfigLocalNvmeSsdBlockConfigArgs' local_nvme_ssd_block_config: Parameters for the local NVMe SSDs. Structure is documented below.
         :param int local_ssd_count: The amount of local SSD disks that will be
                attached to each cluster node. Defaults to 0.
+        :param str local_ssd_encryption_mode: Possible Local SSD encryption modes:
+               Accepted values are:
+               * `STANDARD_ENCRYPTION`: The given node will be encrypted using keys managed by Google infrastructure and the keys wll be deleted when the node is deleted.
+               * `EPHEMERAL_KEY_ENCRYPTION`: The given node will opt-in for using ephemeral key for encrypting Local SSDs. The Local SSDs will not be able to recover data in case of node crash.
         :param str logging_variant: Parameter for specifying the type of logging agent used in a node pool. This will override any cluster-wide default value. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
         :param str machine_type: The name of a Google Compute Engine machine type.
                Defaults to `e2-medium`. To create a custom machine type, value should be set as specified
@@ -7092,6 +7153,8 @@ class ClusterNodeConfig(dict):
             pulumi.set(__self__, "local_nvme_ssd_block_config", local_nvme_ssd_block_config)
         if local_ssd_count is not None:
             pulumi.set(__self__, "local_ssd_count", local_ssd_count)
+        if local_ssd_encryption_mode is not None:
+            pulumi.set(__self__, "local_ssd_encryption_mode", local_ssd_encryption_mode)
         if logging_variant is not None:
             pulumi.set(__self__, "logging_variant", logging_variant)
         if machine_type is not None:
@@ -7329,6 +7392,17 @@ class ClusterNodeConfig(dict):
         attached to each cluster node. Defaults to 0.
         """
         return pulumi.get(self, "local_ssd_count")
+
+    @property
+    @pulumi.getter(name="localSsdEncryptionMode")
+    def local_ssd_encryption_mode(self) -> Optional[str]:
+        """
+        Possible Local SSD encryption modes:
+        Accepted values are:
+        * `STANDARD_ENCRYPTION`: The given node will be encrypted using keys managed by Google infrastructure and the keys wll be deleted when the node is deleted.
+        * `EPHEMERAL_KEY_ENCRYPTION`: The given node will opt-in for using ephemeral key for encrypting Local SSDs. The Local SSDs will not be able to recover data in case of node crash.
+        """
+        return pulumi.get(self, "local_ssd_encryption_mode")
 
     @property
     @pulumi.getter(name="loggingVariant")
@@ -9054,7 +9128,9 @@ class ClusterNodePoolAutoConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "networkTags":
+        if key == "linuxNodeConfig":
+            suggest = "linux_node_config"
+        elif key == "networkTags":
             suggest = "network_tags"
         elif key == "nodeKubeletConfig":
             suggest = "node_kubelet_config"
@@ -9073,21 +9149,33 @@ class ClusterNodePoolAutoConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 linux_node_config: Optional['outputs.ClusterNodePoolAutoConfigLinuxNodeConfig'] = None,
                  network_tags: Optional['outputs.ClusterNodePoolAutoConfigNetworkTags'] = None,
                  node_kubelet_config: Optional['outputs.ClusterNodePoolAutoConfigNodeKubeletConfig'] = None,
                  resource_manager_tags: Optional[Mapping[str, str]] = None):
         """
+        :param 'ClusterNodePoolAutoConfigLinuxNodeConfigArgs' linux_node_config: Linux system configuration for the cluster's automatically provisioned node pools. Only `cgroup_mode` field is supported in `node_pool_auto_config`. Structure is documented below.
         :param 'ClusterNodePoolAutoConfigNetworkTagsArgs' network_tags: The network tag config for the cluster's automatically provisioned node pools. Structure is documented below.
         :param 'ClusterNodePoolAutoConfigNodeKubeletConfigArgs' node_kubelet_config: Kubelet configuration for Autopilot clusters. Currently, only `insecure_kubelet_readonly_port_enabled` is supported here.
                Structure is documented below.
         :param Mapping[str, str] resource_manager_tags: A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
         """
+        if linux_node_config is not None:
+            pulumi.set(__self__, "linux_node_config", linux_node_config)
         if network_tags is not None:
             pulumi.set(__self__, "network_tags", network_tags)
         if node_kubelet_config is not None:
             pulumi.set(__self__, "node_kubelet_config", node_kubelet_config)
         if resource_manager_tags is not None:
             pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
+
+    @property
+    @pulumi.getter(name="linuxNodeConfig")
+    def linux_node_config(self) -> Optional['outputs.ClusterNodePoolAutoConfigLinuxNodeConfig']:
+        """
+        Linux system configuration for the cluster's automatically provisioned node pools. Only `cgroup_mode` field is supported in `node_pool_auto_config`. Structure is documented below.
+        """
+        return pulumi.get(self, "linux_node_config")
 
     @property
     @pulumi.getter(name="networkTags")
@@ -9113,6 +9201,50 @@ class ClusterNodePoolAutoConfig(dict):
         A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
         """
         return pulumi.get(self, "resource_manager_tags")
+
+
+@pulumi.output_type
+class ClusterNodePoolAutoConfigLinuxNodeConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "cgroupMode":
+            suggest = "cgroup_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterNodePoolAutoConfigLinuxNodeConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterNodePoolAutoConfigLinuxNodeConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterNodePoolAutoConfigLinuxNodeConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cgroup_mode: Optional[str] = None):
+        """
+        :param str cgroup_mode: Possible cgroup modes that can be used.
+               Accepted values are:
+               * `CGROUP_MODE_UNSPECIFIED`: CGROUP_MODE_UNSPECIFIED is when unspecified cgroup configuration is used. The default for the GKE node OS image will be used.
+               * `CGROUP_MODE_V1`: CGROUP_MODE_V1 specifies to use cgroupv1 for the cgroup configuration on the node image.
+               * `CGROUP_MODE_V2`: CGROUP_MODE_V2 specifies to use cgroupv2 for the cgroup configuration on the node image.
+        """
+        if cgroup_mode is not None:
+            pulumi.set(__self__, "cgroup_mode", cgroup_mode)
+
+    @property
+    @pulumi.getter(name="cgroupMode")
+    def cgroup_mode(self) -> Optional[str]:
+        """
+        Possible cgroup modes that can be used.
+        Accepted values are:
+        * `CGROUP_MODE_UNSPECIFIED`: CGROUP_MODE_UNSPECIFIED is when unspecified cgroup configuration is used. The default for the GKE node OS image will be used.
+        * `CGROUP_MODE_V1`: CGROUP_MODE_V1 specifies to use cgroupv1 for the cgroup configuration on the node image.
+        * `CGROUP_MODE_V2`: CGROUP_MODE_V2 specifies to use cgroupv2 for the cgroup configuration on the node image.
+        """
+        return pulumi.get(self, "cgroup_mode")
 
 
 @pulumi.output_type
@@ -9947,6 +10079,8 @@ class ClusterNodePoolNodeConfig(dict):
             suggest = "local_nvme_ssd_block_config"
         elif key == "localSsdCount":
             suggest = "local_ssd_count"
+        elif key == "localSsdEncryptionMode":
+            suggest = "local_ssd_encryption_mode"
         elif key == "loggingVariant":
             suggest = "logging_variant"
         elif key == "machineType":
@@ -10011,6 +10145,7 @@ class ClusterNodePoolNodeConfig(dict):
                  linux_node_config: Optional['outputs.ClusterNodePoolNodeConfigLinuxNodeConfig'] = None,
                  local_nvme_ssd_block_config: Optional['outputs.ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig'] = None,
                  local_ssd_count: Optional[int] = None,
+                 local_ssd_encryption_mode: Optional[str] = None,
                  logging_variant: Optional[str] = None,
                  machine_type: Optional[str] = None,
                  metadata: Optional[Mapping[str, str]] = None,
@@ -10082,6 +10217,10 @@ class ClusterNodePoolNodeConfig(dict):
         :param 'ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArgs' local_nvme_ssd_block_config: Parameters for the local NVMe SSDs. Structure is documented below.
         :param int local_ssd_count: The amount of local SSD disks that will be
                attached to each cluster node. Defaults to 0.
+        :param str local_ssd_encryption_mode: Possible Local SSD encryption modes:
+               Accepted values are:
+               * `STANDARD_ENCRYPTION`: The given node will be encrypted using keys managed by Google infrastructure and the keys wll be deleted when the node is deleted.
+               * `EPHEMERAL_KEY_ENCRYPTION`: The given node will opt-in for using ephemeral key for encrypting Local SSDs. The Local SSDs will not be able to recover data in case of node crash.
         :param str logging_variant: Parameter for specifying the type of logging agent used in a node pool. This will override any cluster-wide default value. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
         :param str machine_type: The name of a Google Compute Engine machine type.
                Defaults to `e2-medium`. To create a custom machine type, value should be set as specified
@@ -10174,6 +10313,8 @@ class ClusterNodePoolNodeConfig(dict):
             pulumi.set(__self__, "local_nvme_ssd_block_config", local_nvme_ssd_block_config)
         if local_ssd_count is not None:
             pulumi.set(__self__, "local_ssd_count", local_ssd_count)
+        if local_ssd_encryption_mode is not None:
+            pulumi.set(__self__, "local_ssd_encryption_mode", local_ssd_encryption_mode)
         if logging_variant is not None:
             pulumi.set(__self__, "logging_variant", logging_variant)
         if machine_type is not None:
@@ -10411,6 +10552,17 @@ class ClusterNodePoolNodeConfig(dict):
         attached to each cluster node. Defaults to 0.
         """
         return pulumi.get(self, "local_ssd_count")
+
+    @property
+    @pulumi.getter(name="localSsdEncryptionMode")
+    def local_ssd_encryption_mode(self) -> Optional[str]:
+        """
+        Possible Local SSD encryption modes:
+        Accepted values are:
+        * `STANDARD_ENCRYPTION`: The given node will be encrypted using keys managed by Google infrastructure and the keys wll be deleted when the node is deleted.
+        * `EPHEMERAL_KEY_ENCRYPTION`: The given node will opt-in for using ephemeral key for encrypting Local SSDs. The Local SSDs will not be able to recover data in case of node crash.
+        """
+        return pulumi.get(self, "local_ssd_encryption_mode")
 
     @property
     @pulumi.getter(name="loggingVariant")
@@ -13510,6 +13662,8 @@ class NodePoolNodeConfig(dict):
             suggest = "local_nvme_ssd_block_config"
         elif key == "localSsdCount":
             suggest = "local_ssd_count"
+        elif key == "localSsdEncryptionMode":
+            suggest = "local_ssd_encryption_mode"
         elif key == "loggingVariant":
             suggest = "logging_variant"
         elif key == "machineType":
@@ -13574,6 +13728,7 @@ class NodePoolNodeConfig(dict):
                  linux_node_config: Optional['outputs.NodePoolNodeConfigLinuxNodeConfig'] = None,
                  local_nvme_ssd_block_config: Optional['outputs.NodePoolNodeConfigLocalNvmeSsdBlockConfig'] = None,
                  local_ssd_count: Optional[int] = None,
+                 local_ssd_encryption_mode: Optional[str] = None,
                  logging_variant: Optional[str] = None,
                  machine_type: Optional[str] = None,
                  metadata: Optional[Mapping[str, str]] = None,
@@ -13616,6 +13771,7 @@ class NodePoolNodeConfig(dict):
         :param 'NodePoolNodeConfigLinuxNodeConfigArgs' linux_node_config: Parameters that can be configured on Linux nodes.
         :param 'NodePoolNodeConfigLocalNvmeSsdBlockConfigArgs' local_nvme_ssd_block_config: Parameters for raw-block local NVMe SSDs.
         :param int local_ssd_count: The number of local SSD disks to be attached to the node.
+        :param str local_ssd_encryption_mode: LocalSsdEncryptionMode specified the method used for encrypting the local SSDs attached to the node.
         :param str logging_variant: Type of logging agent that is used as the default value for node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT.
         :param str machine_type: The name of a Google Compute Engine machine type.
         :param Mapping[str, str] metadata: The metadata key/value pairs assigned to instances in the cluster.
@@ -13682,6 +13838,8 @@ class NodePoolNodeConfig(dict):
             pulumi.set(__self__, "local_nvme_ssd_block_config", local_nvme_ssd_block_config)
         if local_ssd_count is not None:
             pulumi.set(__self__, "local_ssd_count", local_ssd_count)
+        if local_ssd_encryption_mode is not None:
+            pulumi.set(__self__, "local_ssd_encryption_mode", local_ssd_encryption_mode)
         if logging_variant is not None:
             pulumi.set(__self__, "logging_variant", logging_variant)
         if machine_type is not None:
@@ -13890,6 +14048,14 @@ class NodePoolNodeConfig(dict):
         The number of local SSD disks to be attached to the node.
         """
         return pulumi.get(self, "local_ssd_count")
+
+    @property
+    @pulumi.getter(name="localSsdEncryptionMode")
+    def local_ssd_encryption_mode(self) -> Optional[str]:
+        """
+        LocalSsdEncryptionMode specified the method used for encrypting the local SSDs attached to the node.
+        """
+        return pulumi.get(self, "local_ssd_encryption_mode")
 
     @property
     @pulumi.getter(name="loggingVariant")
@@ -16658,6 +16824,35 @@ class GetClusterEnableK8sBetaApiResult(dict):
 
 
 @pulumi.output_type
+class GetClusterEnterpriseConfigResult(dict):
+    def __init__(__self__, *,
+                 cluster_tier: str,
+                 desired_tier: str):
+        """
+        :param str cluster_tier: Indicates the effective cluster tier. Available options include STANDARD and ENTERPRISE.
+        :param str desired_tier: Indicates the desired cluster tier. Available options include STANDARD and ENTERPRISE.
+        """
+        pulumi.set(__self__, "cluster_tier", cluster_tier)
+        pulumi.set(__self__, "desired_tier", desired_tier)
+
+    @property
+    @pulumi.getter(name="clusterTier")
+    def cluster_tier(self) -> str:
+        """
+        Indicates the effective cluster tier. Available options include STANDARD and ENTERPRISE.
+        """
+        return pulumi.get(self, "cluster_tier")
+
+    @property
+    @pulumi.getter(name="desiredTier")
+    def desired_tier(self) -> str:
+        """
+        Indicates the desired cluster tier. Available options include STANDARD and ENTERPRISE.
+        """
+        return pulumi.get(self, "desired_tier")
+
+
+@pulumi.output_type
 class GetClusterFleetResult(dict):
     def __init__(__self__, *,
                  membership: str,
@@ -17327,6 +17522,7 @@ class GetClusterNodeConfigResult(dict):
                  linux_node_configs: Sequence['outputs.GetClusterNodeConfigLinuxNodeConfigResult'],
                  local_nvme_ssd_block_configs: Sequence['outputs.GetClusterNodeConfigLocalNvmeSsdBlockConfigResult'],
                  local_ssd_count: int,
+                 local_ssd_encryption_mode: str,
                  logging_variant: str,
                  machine_type: str,
                  metadata: Mapping[str, str],
@@ -17369,6 +17565,7 @@ class GetClusterNodeConfigResult(dict):
         :param Sequence['GetClusterNodeConfigLinuxNodeConfigArgs'] linux_node_configs: Parameters that can be configured on Linux nodes.
         :param Sequence['GetClusterNodeConfigLocalNvmeSsdBlockConfigArgs'] local_nvme_ssd_block_configs: Parameters for raw-block local NVMe SSDs.
         :param int local_ssd_count: The number of local SSD disks to be attached to the node.
+        :param str local_ssd_encryption_mode: LocalSsdEncryptionMode specified the method used for encrypting the local SSDs attached to the node.
         :param str logging_variant: Type of logging agent that is used as the default value for node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT.
         :param str machine_type: The name of a Google Compute Engine machine type.
         :param Mapping[str, str] metadata: The metadata key/value pairs assigned to instances in the cluster.
@@ -17411,6 +17608,7 @@ class GetClusterNodeConfigResult(dict):
         pulumi.set(__self__, "linux_node_configs", linux_node_configs)
         pulumi.set(__self__, "local_nvme_ssd_block_configs", local_nvme_ssd_block_configs)
         pulumi.set(__self__, "local_ssd_count", local_ssd_count)
+        pulumi.set(__self__, "local_ssd_encryption_mode", local_ssd_encryption_mode)
         pulumi.set(__self__, "logging_variant", logging_variant)
         pulumi.set(__self__, "machine_type", machine_type)
         pulumi.set(__self__, "metadata", metadata)
@@ -17599,6 +17797,14 @@ class GetClusterNodeConfigResult(dict):
         The number of local SSD disks to be attached to the node.
         """
         return pulumi.get(self, "local_ssd_count")
+
+    @property
+    @pulumi.getter(name="localSsdEncryptionMode")
+    def local_ssd_encryption_mode(self) -> str:
+        """
+        LocalSsdEncryptionMode specified the method used for encrypting the local SSDs attached to the node.
+        """
+        return pulumi.get(self, "local_ssd_encryption_mode")
 
     @property
     @pulumi.getter(name="loggingVariant")
@@ -18722,17 +18928,28 @@ class GetClusterNodePoolResult(dict):
 @pulumi.output_type
 class GetClusterNodePoolAutoConfigResult(dict):
     def __init__(__self__, *,
+                 linux_node_configs: Sequence['outputs.GetClusterNodePoolAutoConfigLinuxNodeConfigResult'],
                  network_tags: Sequence['outputs.GetClusterNodePoolAutoConfigNetworkTagResult'],
                  node_kubelet_configs: Sequence['outputs.GetClusterNodePoolAutoConfigNodeKubeletConfigResult'],
                  resource_manager_tags: Mapping[str, str]):
         """
+        :param Sequence['GetClusterNodePoolAutoConfigLinuxNodeConfigArgs'] linux_node_configs: Linux node configuration options.
         :param Sequence['GetClusterNodePoolAutoConfigNetworkTagArgs'] network_tags: Collection of Compute Engine network tags that can be applied to a node's underlying VM instance.
         :param Sequence['GetClusterNodePoolAutoConfigNodeKubeletConfigArgs'] node_kubelet_configs: Node kubelet configs.
         :param Mapping[str, str] resource_manager_tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
         """
+        pulumi.set(__self__, "linux_node_configs", linux_node_configs)
         pulumi.set(__self__, "network_tags", network_tags)
         pulumi.set(__self__, "node_kubelet_configs", node_kubelet_configs)
         pulumi.set(__self__, "resource_manager_tags", resource_manager_tags)
+
+    @property
+    @pulumi.getter(name="linuxNodeConfigs")
+    def linux_node_configs(self) -> Sequence['outputs.GetClusterNodePoolAutoConfigLinuxNodeConfigResult']:
+        """
+        Linux node configuration options.
+        """
+        return pulumi.get(self, "linux_node_configs")
 
     @property
     @pulumi.getter(name="networkTags")
@@ -18757,6 +18974,24 @@ class GetClusterNodePoolAutoConfigResult(dict):
         A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
         """
         return pulumi.get(self, "resource_manager_tags")
+
+
+@pulumi.output_type
+class GetClusterNodePoolAutoConfigLinuxNodeConfigResult(dict):
+    def __init__(__self__, *,
+                 cgroup_mode: str):
+        """
+        :param str cgroup_mode: cgroupMode specifies the cgroup mode to be used on the node.
+        """
+        pulumi.set(__self__, "cgroup_mode", cgroup_mode)
+
+    @property
+    @pulumi.getter(name="cgroupMode")
+    def cgroup_mode(self) -> str:
+        """
+        cgroupMode specifies the cgroup mode to be used on the node.
+        """
+        return pulumi.get(self, "cgroup_mode")
 
 
 @pulumi.output_type
@@ -19285,6 +19520,7 @@ class GetClusterNodePoolNodeConfigResult(dict):
                  linux_node_configs: Sequence['outputs.GetClusterNodePoolNodeConfigLinuxNodeConfigResult'],
                  local_nvme_ssd_block_configs: Sequence['outputs.GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigResult'],
                  local_ssd_count: int,
+                 local_ssd_encryption_mode: str,
                  logging_variant: str,
                  machine_type: str,
                  metadata: Mapping[str, str],
@@ -19327,6 +19563,7 @@ class GetClusterNodePoolNodeConfigResult(dict):
         :param Sequence['GetClusterNodePoolNodeConfigLinuxNodeConfigArgs'] linux_node_configs: Parameters that can be configured on Linux nodes.
         :param Sequence['GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArgs'] local_nvme_ssd_block_configs: Parameters for raw-block local NVMe SSDs.
         :param int local_ssd_count: The number of local SSD disks to be attached to the node.
+        :param str local_ssd_encryption_mode: LocalSsdEncryptionMode specified the method used for encrypting the local SSDs attached to the node.
         :param str logging_variant: Type of logging agent that is used as the default value for node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT.
         :param str machine_type: The name of a Google Compute Engine machine type.
         :param Mapping[str, str] metadata: The metadata key/value pairs assigned to instances in the cluster.
@@ -19369,6 +19606,7 @@ class GetClusterNodePoolNodeConfigResult(dict):
         pulumi.set(__self__, "linux_node_configs", linux_node_configs)
         pulumi.set(__self__, "local_nvme_ssd_block_configs", local_nvme_ssd_block_configs)
         pulumi.set(__self__, "local_ssd_count", local_ssd_count)
+        pulumi.set(__self__, "local_ssd_encryption_mode", local_ssd_encryption_mode)
         pulumi.set(__self__, "logging_variant", logging_variant)
         pulumi.set(__self__, "machine_type", machine_type)
         pulumi.set(__self__, "metadata", metadata)
@@ -19557,6 +19795,14 @@ class GetClusterNodePoolNodeConfigResult(dict):
         The number of local SSD disks to be attached to the node.
         """
         return pulumi.get(self, "local_ssd_count")
+
+    @property
+    @pulumi.getter(name="localSsdEncryptionMode")
+    def local_ssd_encryption_mode(self) -> str:
+        """
+        LocalSsdEncryptionMode specified the method used for encrypting the local SSDs attached to the node.
+        """
+        return pulumi.get(self, "local_ssd_encryption_mode")
 
     @property
     @pulumi.getter(name="loggingVariant")

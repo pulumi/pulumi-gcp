@@ -25,7 +25,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
     ///     var myBackupVault = new Gcp.BackupDisasterRecovery.BackupVault("my_backup_vault", new()
     ///     {
     ///         Location = "us-central1",
-    ///         BackupVaultId = "bv-bp-test",
+    ///         BackupVaultId = "backup-vault-simple-test",
     ///         BackupMinimumEnforcedRetentionDuration = "100000s",
     ///     });
     /// 

@@ -2473,7 +2473,7 @@ func (o FunctionServiceConfigPtrOutput) VpcConnectorEgressSettings() pulumi.Stri
 type FunctionServiceConfigSecretEnvironmentVariable struct {
 	// Name of the environment variable.
 	Key string `pulumi:"key"`
-	// Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+	// Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
 	ProjectId string `pulumi:"projectId"`
 	// Name of the secret in secret manager (not the full resource name).
 	Secret string `pulumi:"secret"`
@@ -2495,7 +2495,7 @@ type FunctionServiceConfigSecretEnvironmentVariableInput interface {
 type FunctionServiceConfigSecretEnvironmentVariableArgs struct {
 	// Name of the environment variable.
 	Key pulumi.StringInput `pulumi:"key"`
-	// Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+	// Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
 	// Name of the secret in secret manager (not the full resource name).
 	Secret pulumi.StringInput `pulumi:"secret"`
@@ -2559,7 +2559,7 @@ func (o FunctionServiceConfigSecretEnvironmentVariableOutput) Key() pulumi.Strin
 	return o.ApplyT(func(v FunctionServiceConfigSecretEnvironmentVariable) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+// Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
 func (o FunctionServiceConfigSecretEnvironmentVariableOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v FunctionServiceConfigSecretEnvironmentVariable) string { return v.ProjectId }).(pulumi.StringOutput)
 }
@@ -2597,7 +2597,7 @@ func (o FunctionServiceConfigSecretEnvironmentVariableArrayOutput) Index(i pulum
 type FunctionServiceConfigSecretVolume struct {
 	// The path within the container to mount the secret volume. For example, setting the mountPath as /etc/secrets would mount the secret value files under the /etc/secrets directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount path: /etc/secrets
 	MountPath string `pulumi:"mountPath"`
-	// Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+	// Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
 	ProjectId string `pulumi:"projectId"`
 	// Name of the secret in secret manager (not the full resource name).
 	Secret string `pulumi:"secret"`
@@ -2620,7 +2620,7 @@ type FunctionServiceConfigSecretVolumeInput interface {
 type FunctionServiceConfigSecretVolumeArgs struct {
 	// The path within the container to mount the secret volume. For example, setting the mountPath as /etc/secrets would mount the secret value files under the /etc/secrets directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount path: /etc/secrets
 	MountPath pulumi.StringInput `pulumi:"mountPath"`
-	// Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+	// Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
 	// Name of the secret in secret manager (not the full resource name).
 	Secret pulumi.StringInput `pulumi:"secret"`
@@ -2685,7 +2685,7 @@ func (o FunctionServiceConfigSecretVolumeOutput) MountPath() pulumi.StringOutput
 	return o.ApplyT(func(v FunctionServiceConfigSecretVolume) string { return v.MountPath }).(pulumi.StringOutput)
 }
 
-// Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+// Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
 func (o FunctionServiceConfigSecretVolumeOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v FunctionServiceConfigSecretVolume) string { return v.ProjectId }).(pulumi.StringOutput)
 }
@@ -4172,7 +4172,7 @@ func (o GetFunctionServiceConfigArrayOutput) Index(i pulumi.IntInput) GetFunctio
 type GetFunctionServiceConfigSecretEnvironmentVariable struct {
 	// Name of the environment variable.
 	Key string `pulumi:"key"`
-	// Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+	// Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
 	ProjectId string `pulumi:"projectId"`
 	// Name of the secret in secret manager (not the full resource name).
 	Secret string `pulumi:"secret"`
@@ -4194,7 +4194,7 @@ type GetFunctionServiceConfigSecretEnvironmentVariableInput interface {
 type GetFunctionServiceConfigSecretEnvironmentVariableArgs struct {
 	// Name of the environment variable.
 	Key pulumi.StringInput `pulumi:"key"`
-	// Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+	// Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
 	// Name of the secret in secret manager (not the full resource name).
 	Secret pulumi.StringInput `pulumi:"secret"`
@@ -4258,7 +4258,7 @@ func (o GetFunctionServiceConfigSecretEnvironmentVariableOutput) Key() pulumi.St
 	return o.ApplyT(func(v GetFunctionServiceConfigSecretEnvironmentVariable) string { return v.Key }).(pulumi.StringOutput)
 }
 
-// Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+// Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
 func (o GetFunctionServiceConfigSecretEnvironmentVariableOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFunctionServiceConfigSecretEnvironmentVariable) string { return v.ProjectId }).(pulumi.StringOutput)
 }
@@ -4296,7 +4296,7 @@ func (o GetFunctionServiceConfigSecretEnvironmentVariableArrayOutput) Index(i pu
 type GetFunctionServiceConfigSecretVolume struct {
 	// The path within the container to mount the secret volume. For example, setting the mountPath as /etc/secrets would mount the secret value files under the /etc/secrets directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount path: /etc/secrets
 	MountPath string `pulumi:"mountPath"`
-	// Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+	// Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
 	ProjectId string `pulumi:"projectId"`
 	// Name of the secret in secret manager (not the full resource name).
 	Secret string `pulumi:"secret"`
@@ -4318,7 +4318,7 @@ type GetFunctionServiceConfigSecretVolumeInput interface {
 type GetFunctionServiceConfigSecretVolumeArgs struct {
 	// The path within the container to mount the secret volume. For example, setting the mountPath as /etc/secrets would mount the secret value files under the /etc/secrets directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount path: /etc/secrets
 	MountPath pulumi.StringInput `pulumi:"mountPath"`
-	// Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+	// Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
 	ProjectId pulumi.StringInput `pulumi:"projectId"`
 	// Name of the secret in secret manager (not the full resource name).
 	Secret pulumi.StringInput `pulumi:"secret"`
@@ -4382,7 +4382,7 @@ func (o GetFunctionServiceConfigSecretVolumeOutput) MountPath() pulumi.StringOut
 	return o.ApplyT(func(v GetFunctionServiceConfigSecretVolume) string { return v.MountPath }).(pulumi.StringOutput)
 }
 
-// Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+// Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
 func (o GetFunctionServiceConfigSecretVolumeOutput) ProjectId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetFunctionServiceConfigSecretVolume) string { return v.ProjectId }).(pulumi.StringOutput)
 }

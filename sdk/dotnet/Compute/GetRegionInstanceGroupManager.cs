@@ -147,6 +147,7 @@ namespace Pulumi.Gcp.Compute
         public readonly string Id;
         public readonly ImmutableArray<Outputs.GetRegionInstanceGroupManagerInstanceFlexibilityPolicyResult> InstanceFlexibilityPolicies;
         public readonly string InstanceGroup;
+        public readonly int InstanceGroupManagerId;
         public readonly ImmutableArray<Outputs.GetRegionInstanceGroupManagerInstanceLifecyclePolicyResult> InstanceLifecyclePolicies;
         public readonly string ListManagedInstancesResults;
         public readonly string? Name;
@@ -192,6 +193,8 @@ namespace Pulumi.Gcp.Compute
             ImmutableArray<Outputs.GetRegionInstanceGroupManagerInstanceFlexibilityPolicyResult> instanceFlexibilityPolicies,
 
             string instanceGroup,
+
+            int instanceGroupManagerId,
 
             ImmutableArray<Outputs.GetRegionInstanceGroupManagerInstanceLifecyclePolicyResult> instanceLifecyclePolicies,
 
@@ -246,6 +249,7 @@ namespace Pulumi.Gcp.Compute
             Id = id;
             InstanceFlexibilityPolicies = instanceFlexibilityPolicies;
             InstanceGroup = instanceGroup;
+            InstanceGroupManagerId = instanceGroupManagerId;
             InstanceLifecyclePolicies = instanceLifecyclePolicies;
             ListManagedInstancesResults = listManagedInstancesResults;
             Name = name;

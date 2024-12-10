@@ -396,6 +396,27 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Possible Local SSD encryption modes:
+     * Accepted values are:
+     * * `STANDARD_ENCRYPTION`: The given node will be encrypted using keys managed by Google infrastructure and the keys wll be deleted when the node is deleted.
+     * * `EPHEMERAL_KEY_ENCRYPTION`: The given node will opt-in for using ephemeral key for encrypting Local SSDs. The Local SSDs will not be able to recover data in case of node crash.
+     * 
+     */
+    @Import(name="localSsdEncryptionMode")
+    private @Nullable Output<String> localSsdEncryptionMode;
+
+    /**
+     * @return Possible Local SSD encryption modes:
+     * Accepted values are:
+     * * `STANDARD_ENCRYPTION`: The given node will be encrypted using keys managed by Google infrastructure and the keys wll be deleted when the node is deleted.
+     * * `EPHEMERAL_KEY_ENCRYPTION`: The given node will opt-in for using ephemeral key for encrypting Local SSDs. The Local SSDs will not be able to recover data in case of node crash.
+     * 
+     */
+    public Optional<Output<String>> localSsdEncryptionMode() {
+        return Optional.ofNullable(this.localSsdEncryptionMode);
+    }
+
+    /**
      * Parameter for specifying the type of logging agent used in a node pool. This will override any cluster-wide default value. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
      * 
      */
@@ -777,6 +798,7 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
         this.linuxNodeConfig = $.linuxNodeConfig;
         this.localNvmeSsdBlockConfig = $.localNvmeSsdBlockConfig;
         this.localSsdCount = $.localSsdCount;
+        this.localSsdEncryptionMode = $.localSsdEncryptionMode;
         this.loggingVariant = $.loggingVariant;
         this.machineType = $.machineType;
         this.metadata = $.metadata;
@@ -1317,6 +1339,33 @@ public final class ClusterNodeConfigArgs extends com.pulumi.resources.ResourceAr
          */
         public Builder localSsdCount(Integer localSsdCount) {
             return localSsdCount(Output.of(localSsdCount));
+        }
+
+        /**
+         * @param localSsdEncryptionMode Possible Local SSD encryption modes:
+         * Accepted values are:
+         * * `STANDARD_ENCRYPTION`: The given node will be encrypted using keys managed by Google infrastructure and the keys wll be deleted when the node is deleted.
+         * * `EPHEMERAL_KEY_ENCRYPTION`: The given node will opt-in for using ephemeral key for encrypting Local SSDs. The Local SSDs will not be able to recover data in case of node crash.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder localSsdEncryptionMode(@Nullable Output<String> localSsdEncryptionMode) {
+            $.localSsdEncryptionMode = localSsdEncryptionMode;
+            return this;
+        }
+
+        /**
+         * @param localSsdEncryptionMode Possible Local SSD encryption modes:
+         * Accepted values are:
+         * * `STANDARD_ENCRYPTION`: The given node will be encrypted using keys managed by Google infrastructure and the keys wll be deleted when the node is deleted.
+         * * `EPHEMERAL_KEY_ENCRYPTION`: The given node will opt-in for using ephemeral key for encrypting Local SSDs. The Local SSDs will not be able to recover data in case of node crash.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder localSsdEncryptionMode(String localSsdEncryptionMode) {
+            return localSsdEncryptionMode(Output.of(localSsdEncryptionMode));
         }
 
         /**

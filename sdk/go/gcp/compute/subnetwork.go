@@ -570,6 +570,8 @@ type Subnetwork struct {
 	// If not specified IPV4_ONLY will be used.
 	// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
 	StackType pulumi.StringOutput `pulumi:"stackType"`
+	// The unique identifier number for the resource. This identifier is defined by the server.
+	SubnetworkId pulumi.IntOutput `pulumi:"subnetworkId"`
 }
 
 // NewSubnetwork registers a new resource with the given unique name, arguments, and options.
@@ -706,6 +708,8 @@ type subnetworkState struct {
 	// If not specified IPV4_ONLY will be used.
 	// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
 	StackType *string `pulumi:"stackType"`
+	// The unique identifier number for the resource. This identifier is defined by the server.
+	SubnetworkId *int `pulumi:"subnetworkId"`
 }
 
 type SubnetworkState struct {
@@ -810,6 +814,8 @@ type SubnetworkState struct {
 	// If not specified IPV4_ONLY will be used.
 	// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
 	StackType pulumi.StringPtrInput
+	// The unique identifier number for the resource. This identifier is defined by the server.
+	SubnetworkId pulumi.IntPtrInput
 }
 
 func (SubnetworkState) ElementType() reflect.Type {
@@ -1253,6 +1259,11 @@ func (o SubnetworkOutput) SendSecondaryIpRangeIfEmpty() pulumi.BoolPtrOutput {
 // Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
 func (o SubnetworkOutput) StackType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Subnetwork) pulumi.StringOutput { return v.StackType }).(pulumi.StringOutput)
+}
+
+// The unique identifier number for the resource. This identifier is defined by the server.
+func (o SubnetworkOutput) SubnetworkId() pulumi.IntOutput {
+	return o.ApplyT(func(v *Subnetwork) pulumi.IntOutput { return v.SubnetworkId }).(pulumi.IntOutput)
 }
 
 type SubnetworkArrayOutput struct{ *pulumi.OutputState }

@@ -16,6 +16,10 @@ from .firewall_endpoint_association import *
 from .gateway_security_policy import *
 from .gateway_security_policy_rule import *
 from .get_address_group_iam_policy import *
+from .mirroring_deployment import *
+from .mirroring_deployment_group import *
+from .mirroring_endpoint_group import *
+from .mirroring_endpoint_group_association import *
 from .security_profile import *
 from .security_profile_group import *
 from .server_tls_policy import *

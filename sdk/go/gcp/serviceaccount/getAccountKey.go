@@ -64,7 +64,7 @@ type GetAccountKeyArgs struct {
 	// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}/keys/{KEYID}`, where `{ACCOUNT}`
 	// is the email address or unique id of the service account.
 	Name string `pulumi:"name"`
-	// The ID of the project that the service account will be created in.
+	// The ID of the project that the service account is present in.
 	// Defaults to the provider project configuration.
 	Project *string `pulumi:"project"`
 	// The output format of the public key requested. TYPE_X509_PEM_FILE is the default output format.
@@ -108,7 +108,7 @@ type GetAccountKeyOutputArgs struct {
 	// `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}/keys/{KEYID}`, where `{ACCOUNT}`
 	// is the email address or unique id of the service account.
 	Name pulumi.StringInput `pulumi:"name"`
-	// The ID of the project that the service account will be created in.
+	// The ID of the project that the service account is present in.
 	// Defaults to the provider project configuration.
 	Project pulumi.StringPtrInput `pulumi:"project"`
 	// The output format of the public key requested. TYPE_X509_PEM_FILE is the default output format.

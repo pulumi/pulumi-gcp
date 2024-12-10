@@ -109,7 +109,7 @@ type SearchEngine struct {
 	EngineId pulumi.StringOutput `pulumi:"engineId"`
 	// The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore:
 	// If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
-	// Default value: "GENERIC" Possible values: ["GENERIC", "MEDIA"]
+	// Default value: "GENERIC" Possible values: ["GENERIC", "MEDIA", "HEALTHCARE_FHIR"]
 	IndustryVertical pulumi.StringPtrOutput `pulumi:"industryVertical"`
 	// Location.
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -188,7 +188,7 @@ type searchEngineState struct {
 	EngineId *string `pulumi:"engineId"`
 	// The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore:
 	// If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
-	// Default value: "GENERIC" Possible values: ["GENERIC", "MEDIA"]
+	// Default value: "GENERIC" Possible values: ["GENERIC", "MEDIA", "HEALTHCARE_FHIR"]
 	IndustryVertical *string `pulumi:"industryVertical"`
 	// Location.
 	Location *string `pulumi:"location"`
@@ -220,7 +220,7 @@ type SearchEngineState struct {
 	EngineId pulumi.StringPtrInput
 	// The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore:
 	// If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
-	// Default value: "GENERIC" Possible values: ["GENERIC", "MEDIA"]
+	// Default value: "GENERIC" Possible values: ["GENERIC", "MEDIA", "HEALTHCARE_FHIR"]
 	IndustryVertical pulumi.StringPtrInput
 	// Location.
 	Location pulumi.StringPtrInput
@@ -254,7 +254,7 @@ type searchEngineArgs struct {
 	EngineId string `pulumi:"engineId"`
 	// The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore:
 	// If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
-	// Default value: "GENERIC" Possible values: ["GENERIC", "MEDIA"]
+	// Default value: "GENERIC" Possible values: ["GENERIC", "MEDIA", "HEALTHCARE_FHIR"]
 	IndustryVertical *string `pulumi:"industryVertical"`
 	// Location.
 	Location string  `pulumi:"location"`
@@ -278,7 +278,7 @@ type SearchEngineArgs struct {
 	EngineId pulumi.StringInput
 	// The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore:
 	// If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
-	// Default value: "GENERIC" Possible values: ["GENERIC", "MEDIA"]
+	// Default value: "GENERIC" Possible values: ["GENERIC", "MEDIA", "HEALTHCARE_FHIR"]
 	IndustryVertical pulumi.StringPtrInput
 	// Location.
 	Location pulumi.StringInput
@@ -407,7 +407,7 @@ func (o SearchEngineOutput) EngineId() pulumi.StringOutput {
 
 // The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore:
 // If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
-// Default value: "GENERIC" Possible values: ["GENERIC", "MEDIA"]
+// Default value: "GENERIC" Possible values: ["GENERIC", "MEDIA", "HEALTHCARE_FHIR"]
 func (o SearchEngineOutput) IndustryVertical() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SearchEngine) pulumi.StringPtrOutput { return v.IndustryVertical }).(pulumi.StringPtrOutput)
 }

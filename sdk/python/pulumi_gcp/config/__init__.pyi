@@ -195,6 +195,8 @@ firebaserulesCustomEndpoint: Optional[str]
 
 firestoreCustomEndpoint: Optional[str]
 
+geminiCustomEndpoint: Optional[str]
+
 gkeBackupCustomEndpoint: Optional[str]
 
 gkeHub2CustomEndpoint: Optional[str]

@@ -47,6 +47,7 @@ import (
 //					ComputeCount: pulumi.Int(2),
 //					StorageCount: pulumi.Int(3),
 //				},
+//				DeletionProtection: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -76,6 +77,7 @@ import (
 //					GiVersion:      pulumi.String("19.0.0.0"),
 //					HostnamePrefix: pulumi.String("hostname1"),
 //				},
+//				DeletionProtection: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -110,6 +112,7 @@ import (
 //					ComputeCount: pulumi.Int(2),
 //					StorageCount: pulumi.Int(3),
 //				},
+//				DeletionProtection: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -172,6 +175,7 @@ import (
 //					},
 //					MemorySizeGb: pulumi.Int(60),
 //				},
+//				DeletionProtection: pulumi.Bool(true),
 //			})
 //			if err != nil {
 //				return err
@@ -220,7 +224,8 @@ type CloudVmCluster struct {
 	// ***
 	CloudVmClusterId pulumi.StringOutput `pulumi:"cloudVmClusterId"`
 	// The date and time that the VM cluster was created.
-	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	CreateTime         pulumi.StringOutput  `pulumi:"createTime"`
+	DeletionProtection pulumi.BoolPtrOutput `pulumi:"deletionProtection"`
 	// User friendly name for this resource.
 	DisplayName pulumi.StringPtrOutput `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -320,7 +325,8 @@ type cloudVmClusterState struct {
 	// ***
 	CloudVmClusterId *string `pulumi:"cloudVmClusterId"`
 	// The date and time that the VM cluster was created.
-	CreateTime *string `pulumi:"createTime"`
+	CreateTime         *string `pulumi:"createTime"`
+	DeletionProtection *bool   `pulumi:"deletionProtection"`
 	// User friendly name for this resource.
 	DisplayName *string `pulumi:"displayName"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -368,7 +374,8 @@ type CloudVmClusterState struct {
 	// ***
 	CloudVmClusterId pulumi.StringPtrInput
 	// The date and time that the VM cluster was created.
-	CreateTime pulumi.StringPtrInput
+	CreateTime         pulumi.StringPtrInput
+	DeletionProtection pulumi.BoolPtrInput
 	// User friendly name for this resource.
 	DisplayName pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -418,7 +425,8 @@ type cloudVmClusterArgs struct {
 	// a letter or a number.
 	//
 	// ***
-	CloudVmClusterId string `pulumi:"cloudVmClusterId"`
+	CloudVmClusterId   string `pulumi:"cloudVmClusterId"`
+	DeletionProtection *bool  `pulumi:"deletionProtection"`
 	// User friendly name for this resource.
 	DisplayName *string `pulumi:"displayName"`
 	// The name of the Exadata Infrastructure resource on which VM cluster
@@ -454,7 +462,8 @@ type CloudVmClusterArgs struct {
 	// a letter or a number.
 	//
 	// ***
-	CloudVmClusterId pulumi.StringInput
+	CloudVmClusterId   pulumi.StringInput
+	DeletionProtection pulumi.BoolPtrInput
 	// User friendly name for this resource.
 	DisplayName pulumi.StringPtrInput
 	// The name of the Exadata Infrastructure resource on which VM cluster
@@ -588,6 +597,10 @@ func (o CloudVmClusterOutput) CloudVmClusterId() pulumi.StringOutput {
 // The date and time that the VM cluster was created.
 func (o CloudVmClusterOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *CloudVmCluster) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+func (o CloudVmClusterOutput) DeletionProtection() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CloudVmCluster) pulumi.BoolPtrOutput { return v.DeletionProtection }).(pulumi.BoolPtrOutput)
 }
 
 // User friendly name for this resource.

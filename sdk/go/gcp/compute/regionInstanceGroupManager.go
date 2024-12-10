@@ -223,6 +223,8 @@ type RegionInstanceGroupManager struct {
 	InstanceFlexibilityPolicy RegionInstanceGroupManagerInstanceFlexibilityPolicyPtrOutput `pulumi:"instanceFlexibilityPolicy"`
 	// The full URL of the instance group created by the manager.
 	InstanceGroup pulumi.StringOutput `pulumi:"instanceGroup"`
+	// The unique identifier number for the resource. This identifier is defined by the server.
+	InstanceGroupManagerId pulumi.IntOutput `pulumi:"instanceGroupManagerId"`
 	// The instance lifecycle policy for this managed instance group.
 	InstanceLifecyclePolicy RegionInstanceGroupManagerInstanceLifecyclePolicyOutput `pulumi:"instanceLifecyclePolicy"`
 	// Pagination behavior of the `listManagedInstances` API
@@ -356,6 +358,8 @@ type regionInstanceGroupManagerState struct {
 	InstanceFlexibilityPolicy *RegionInstanceGroupManagerInstanceFlexibilityPolicy `pulumi:"instanceFlexibilityPolicy"`
 	// The full URL of the instance group created by the manager.
 	InstanceGroup *string `pulumi:"instanceGroup"`
+	// The unique identifier number for the resource. This identifier is defined by the server.
+	InstanceGroupManagerId *int `pulumi:"instanceGroupManagerId"`
 	// The instance lifecycle policy for this managed instance group.
 	InstanceLifecyclePolicy *RegionInstanceGroupManagerInstanceLifecyclePolicy `pulumi:"instanceLifecyclePolicy"`
 	// Pagination behavior of the `listManagedInstances` API
@@ -454,6 +458,8 @@ type RegionInstanceGroupManagerState struct {
 	InstanceFlexibilityPolicy RegionInstanceGroupManagerInstanceFlexibilityPolicyPtrInput
 	// The full URL of the instance group created by the manager.
 	InstanceGroup pulumi.StringPtrInput
+	// The unique identifier number for the resource. This identifier is defined by the server.
+	InstanceGroupManagerId pulumi.IntPtrInput
 	// The instance lifecycle policy for this managed instance group.
 	InstanceLifecyclePolicy RegionInstanceGroupManagerInstanceLifecyclePolicyPtrInput
 	// Pagination behavior of the `listManagedInstances` API
@@ -853,6 +859,11 @@ func (o RegionInstanceGroupManagerOutput) InstanceFlexibilityPolicy() RegionInst
 // The full URL of the instance group created by the manager.
 func (o RegionInstanceGroupManagerOutput) InstanceGroup() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionInstanceGroupManager) pulumi.StringOutput { return v.InstanceGroup }).(pulumi.StringOutput)
+}
+
+// The unique identifier number for the resource. This identifier is defined by the server.
+func (o RegionInstanceGroupManagerOutput) InstanceGroupManagerId() pulumi.IntOutput {
+	return o.ApplyT(func(v *RegionInstanceGroupManager) pulumi.IntOutput { return v.InstanceGroupManagerId }).(pulumi.IntOutput)
 }
 
 // The instance lifecycle policy for this managed instance group.

@@ -18,6 +18,14 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly bool EnableNestedVirtualization;
         /// <summary>
+        /// Whether to enable UEFI networking for the instance.
+        /// </summary>
+        public readonly bool EnableUefiNetworking;
+        /// <summary>
+        /// The PMU is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are "STANDARD", "ENHANCED", and "ARCHITECTURAL".
+        /// </summary>
+        public readonly string PerformanceMonitoringUnit;
+        /// <summary>
         /// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
         /// </summary>
         public readonly int ThreadsPerCore;
@@ -34,6 +42,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         private GetInstanceAdvancedMachineFeatureResult(
             bool enableNestedVirtualization,
 
+            bool enableUefiNetworking,
+
+            string performanceMonitoringUnit,
+
             int threadsPerCore,
 
             string turboMode,
@@ -41,6 +53,8 @@ namespace Pulumi.Gcp.Compute.Outputs
             int visibleCoreCount)
         {
             EnableNestedVirtualization = enableNestedVirtualization;
+            EnableUefiNetworking = enableUefiNetworking;
+            PerformanceMonitoringUnit = performanceMonitoringUnit;
             ThreadsPerCore = threadsPerCore;
             TurboMode = turboMode;
             VisibleCoreCount = visibleCoreCount;

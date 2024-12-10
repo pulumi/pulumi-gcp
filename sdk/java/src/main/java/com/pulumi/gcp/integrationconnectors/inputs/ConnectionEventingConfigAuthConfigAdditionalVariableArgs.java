@@ -36,7 +36,7 @@ public final class ConnectionEventingConfigAuthConfigAdditionalVariableArgs exte
     }
 
     /**
-     * Encription key value of configVariable.
+     * Encryption key value of configVariable.
      * Structure is documented below.
      * 
      */
@@ -44,7 +44,7 @@ public final class ConnectionEventingConfigAuthConfigAdditionalVariableArgs exte
     private @Nullable Output<ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValueArgs> encryptionKeyValue;
 
     /**
-     * @return Encription key value of configVariable.
+     * @return Encryption key value of configVariable.
      * Structure is documented below.
      * 
      */
@@ -165,7 +165,7 @@ public final class ConnectionEventingConfigAuthConfigAdditionalVariableArgs exte
         }
 
         /**
-         * @param encryptionKeyValue Encription key value of configVariable.
+         * @param encryptionKeyValue Encryption key value of configVariable.
          * Structure is documented below.
          * 
          * @return builder
@@ -177,7 +177,7 @@ public final class ConnectionEventingConfigAuthConfigAdditionalVariableArgs exte
         }
 
         /**
-         * @param encryptionKeyValue Encription key value of configVariable.
+         * @param encryptionKeyValue Encryption key value of configVariable.
          * Structure is documented below.
          * 
          * @return builder

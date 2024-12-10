@@ -447,6 +447,10 @@ export class Subnetwork extends pulumi.CustomResource {
      * Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
      */
     public readonly stackType!: pulumi.Output<string>;
+    /**
+     * The unique identifier number for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly subnetworkId!: pulumi.Output<number>;
 
     /**
      * Create a Subnetwork resource with the given unique name, arguments, and options.
@@ -485,6 +489,7 @@ export class Subnetwork extends pulumi.CustomResource {
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
             resourceInputs["sendSecondaryIpRangeIfEmpty"] = state ? state.sendSecondaryIpRangeIfEmpty : undefined;
             resourceInputs["stackType"] = state ? state.stackType : undefined;
+            resourceInputs["subnetworkId"] = state ? state.subnetworkId : undefined;
         } else {
             const args = argsOrState as SubnetworkArgs | undefined;
             if ((!args || args.network === undefined) && !opts.urn) {
@@ -514,6 +519,7 @@ export class Subnetwork extends pulumi.CustomResource {
             resourceInputs["internalIpv6Prefix"] = undefined /*out*/;
             resourceInputs["ipv6CidrRange"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
+            resourceInputs["subnetworkId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(Subnetwork.__pulumiType, name, resourceInputs, opts);
@@ -674,6 +680,10 @@ export interface SubnetworkState {
      * Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
      */
     stackType?: pulumi.Input<string>;
+    /**
+     * The unique identifier number for the resource. This identifier is defined by the server.
+     */
+    subnetworkId?: pulumi.Input<number>;
 }
 
 /**

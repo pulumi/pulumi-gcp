@@ -4969,6 +4969,7 @@ class GetAutonomousDatabasesAutonomousDatabaseResult(dict):
                  cidr: str,
                  create_time: str,
                  database: str,
+                 deletion_protection: bool,
                  display_name: str,
                  effective_labels: Mapping[str, str],
                  entitlement_id: str,
@@ -5016,6 +5017,7 @@ class GetAutonomousDatabasesAutonomousDatabaseResult(dict):
         pulumi.set(__self__, "cidr", cidr)
         pulumi.set(__self__, "create_time", create_time)
         pulumi.set(__self__, "database", database)
+        pulumi.set(__self__, "deletion_protection", deletion_protection)
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "effective_labels", effective_labels)
         pulumi.set(__self__, "entitlement_id", entitlement_id)
@@ -5071,6 +5073,11 @@ class GetAutonomousDatabasesAutonomousDatabaseResult(dict):
         contain a maximum of 30 alphanumeric characters.
         """
         return pulumi.get(self, "database")
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> bool:
+        return pulumi.get(self, "deletion_protection")
 
     @property
     @pulumi.getter(name="displayName")
@@ -7248,6 +7255,7 @@ class GetCloudExadataInfrastructuresCloudExadataInfrastructureResult(dict):
     def __init__(__self__, *,
                  cloud_exadata_infrastructure_id: str,
                  create_time: str,
+                 deletion_protection: bool,
                  display_name: str,
                  effective_labels: Mapping[str, str],
                  entitlement_id: str,
@@ -7285,6 +7293,7 @@ class GetCloudExadataInfrastructuresCloudExadataInfrastructureResult(dict):
         """
         pulumi.set(__self__, "cloud_exadata_infrastructure_id", cloud_exadata_infrastructure_id)
         pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "deletion_protection", deletion_protection)
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "effective_labels", effective_labels)
         pulumi.set(__self__, "entitlement_id", entitlement_id)
@@ -7314,6 +7323,11 @@ class GetCloudExadataInfrastructuresCloudExadataInfrastructureResult(dict):
         The date and time that the Exadata Infrastructure was created.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> bool:
+        return pulumi.get(self, "deletion_protection")
 
     @property
     @pulumi.getter(name="displayName")
@@ -8386,6 +8400,7 @@ class GetCloudVmClustersCloudVmClusterResult(dict):
                  cidr: str,
                  cloud_vm_cluster_id: str,
                  create_time: str,
+                 deletion_protection: bool,
                  display_name: str,
                  effective_labels: Mapping[str, str],
                  exadata_infrastructure: str,
@@ -8432,6 +8447,7 @@ class GetCloudVmClustersCloudVmClusterResult(dict):
         pulumi.set(__self__, "cidr", cidr)
         pulumi.set(__self__, "cloud_vm_cluster_id", cloud_vm_cluster_id)
         pulumi.set(__self__, "create_time", create_time)
+        pulumi.set(__self__, "deletion_protection", deletion_protection)
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "effective_labels", effective_labels)
         pulumi.set(__self__, "exadata_infrastructure", exadata_infrastructure)
@@ -8478,6 +8494,11 @@ class GetCloudVmClustersCloudVmClusterResult(dict):
         The date and time that the VM cluster was created.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> bool:
+        return pulumi.get(self, "deletion_protection")
 
     @property
     @pulumi.getter(name="displayName")

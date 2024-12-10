@@ -423,7 +423,7 @@ export class Job extends pulumi.CustomResource {
      */
     public /*out*/ readonly executionCount!: pulumi.Output<number>;
     /**
-     * For a deleted resource, the time after which it will be permamently deleted.
+     * For a deleted resource, the time after which it will be permanently deleted.
      */
     public /*out*/ readonly expireTime!: pulumi.Output<string>;
     /**
@@ -664,7 +664,7 @@ export interface JobState {
      */
     executionCount?: pulumi.Input<number>;
     /**
-     * For a deleted resource, the time after which it will be permamently deleted.
+     * For a deleted resource, the time after which it will be permanently deleted.
      */
     expireTime?: pulumi.Input<string>;
     /**

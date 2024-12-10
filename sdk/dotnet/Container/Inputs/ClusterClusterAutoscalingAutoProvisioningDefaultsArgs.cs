@@ -25,7 +25,7 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<int>? DiskSize { get; set; }
 
         /// <summary>
-        /// Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced'). Defaults to `pd-standard`
+        /// Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd', 'pd-balanced', or 'hyperdisk-balanced'). Defaults to `hyperdisk-balanced` if `hyperdisk-balanced` is supported and `pd-balanced` is not supported for the machine type; otherwise defaults to `pd-balanced`.
         /// </summary>
         [Input("diskType")]
         public Input<string>? DiskType { get; set; }

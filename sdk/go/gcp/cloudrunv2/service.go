@@ -899,7 +899,7 @@ type Service struct {
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
 	Etag pulumi.StringOutput `pulumi:"etag"`
-	// For a deleted resource, the time after which it will be permamently deleted.
+	// For a deleted resource, the time after which it will be permanently deleted.
 	ExpireTime pulumi.StringOutput `pulumi:"expireTime"`
 	// A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
 	Generation pulumi.StringOutput `pulumi:"generation"`
@@ -1050,7 +1050,7 @@ type serviceState struct {
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
 	Etag *string `pulumi:"etag"`
-	// For a deleted resource, the time after which it will be permamently deleted.
+	// For a deleted resource, the time after which it will be permanently deleted.
 	ExpireTime *string `pulumi:"expireTime"`
 	// A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
 	Generation *string `pulumi:"generation"`
@@ -1161,7 +1161,7 @@ type ServiceState struct {
 	EffectiveLabels pulumi.StringMapInput
 	// A system-generated fingerprint for this version of the resource. May be used to detect modification conflict during updates.
 	Etag pulumi.StringPtrInput
-	// For a deleted resource, the time after which it will be permamently deleted.
+	// For a deleted resource, the time after which it will be permanently deleted.
 	ExpireTime pulumi.StringPtrInput
 	// A number that monotonically increases every time the user modifies the desired state. Please note that unlike v1, this is an int64 value. As with most Google APIs, its JSON representation will be a string instead of an integer.
 	Generation pulumi.StringPtrInput
@@ -1532,7 +1532,7 @@ func (o ServiceOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
-// For a deleted resource, the time after which it will be permamently deleted.
+// For a deleted resource, the time after which it will be permanently deleted.
 func (o ServiceOutput) ExpireTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Service) pulumi.StringOutput { return v.ExpireTime }).(pulumi.StringOutput)
 }

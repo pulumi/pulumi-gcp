@@ -63,7 +63,7 @@ import * as utilities from "../utilities";
  *     },
  *     privateServiceConnectConfig: {
  *         enablePrivateServiceConnect: true,
- *         projectAllowlists: [project.then(project => project.number)],
+ *         projectAllowlists: [project.then(project => project.name)],
  *     },
  * });
  * ```

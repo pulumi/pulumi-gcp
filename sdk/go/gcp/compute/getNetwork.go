@@ -54,6 +54,8 @@ type LookupNetworkArgs struct {
 	//
 	// ***
 	Name string `pulumi:"name"`
+	// Beta A full or partial URL of the network profile to apply to this network.
+	NetworkProfile *string `pulumi:"networkProfile"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -68,9 +70,13 @@ type LookupNetworkResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id string `pulumi:"id"`
 	// The ula internal ipv6 range assigned to this network.
-	InternalIpv6Range string  `pulumi:"internalIpv6Range"`
-	Name              string  `pulumi:"name"`
-	Project           *string `pulumi:"project"`
+	InternalIpv6Range string `pulumi:"internalIpv6Range"`
+	Name              string `pulumi:"name"`
+	// Beta A full or partial URL of the network profile to apply to this network.
+	NetworkProfile *string `pulumi:"networkProfile"`
+	// The numeric unique identifier for the resource.
+	NumericId string  `pulumi:"numericId"`
+	Project   *string `pulumi:"project"`
 	// The URI of the resource.
 	SelfLink string `pulumi:"selfLink"`
 	// the list of subnetworks which belong to the network
@@ -102,6 +108,8 @@ type LookupNetworkOutputArgs struct {
 	//
 	// ***
 	Name pulumi.StringInput `pulumi:"name"`
+	// Beta A full or partial URL of the network profile to apply to this network.
+	NetworkProfile pulumi.StringPtrInput `pulumi:"networkProfile"`
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput `pulumi:"project"`
@@ -148,6 +156,16 @@ func (o LookupNetworkResultOutput) InternalIpv6Range() pulumi.StringOutput {
 
 func (o LookupNetworkResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkResult) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Beta A full or partial URL of the network profile to apply to this network.
+func (o LookupNetworkResultOutput) NetworkProfile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v LookupNetworkResult) *string { return v.NetworkProfile }).(pulumi.StringPtrOutput)
+}
+
+// The numeric unique identifier for the resource.
+func (o LookupNetworkResultOutput) NumericId() pulumi.StringOutput {
+	return o.ApplyT(func(v LookupNetworkResult) string { return v.NumericId }).(pulumi.StringOutput)
 }
 
 func (o LookupNetworkResultOutput) Project() pulumi.StringPtrOutput {
