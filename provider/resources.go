@@ -239,6 +239,7 @@ var moduleMapping = map[string]string{
 	"firestore":                  gcpFirestore,
 	"folder":                     gcpFolder,
 	"game_services":              gcpGameServices,
+	"gemini":                     "Gemini",
 	"gke_backup":                 gcpGkeBackup,
 	"gke_hub":                    gcpGkeHub,
 	"gkeonprem":                  gcpGkeOnPrem,
@@ -467,12 +468,10 @@ var metadata []byte
 //
 //nolint:lll
 func Provider() tfbridge.ProviderInfo {
-	p := pf.MuxShimWithDisjointgPF(
-		context.Background(),
-		shimv2.NewProvider(gcpProvider.Provider(),
-			shimv2.WithPlanStateEdit(fixEmptyLabels),
-		),
-		gcpPFProvider.New())
+	gcpSDKv2 := gcpProvider.Provider()
+	p := pf.MuxShimWithDisjointgPF(context.Background(),
+		shimv2.NewProvider(gcpSDKv2, shimv2.WithPlanStateEdit(fixEmptyLabels)),
+		gcpPFProvider.New(gcpSDKv2))
 
 	// We should only run the validation once to avoid duplicating the reported errors.
 	var credentialsValidationRun atomic.Bool
@@ -2733,6 +2732,7 @@ func Provider() tfbridge.ProviderInfo {
 			},
 			"google_backup_dr_backup_plan": {Docs: &tfbridge.DocInfo{AllowMissing: true}},
 			"google_backup_dr_data_source": {Docs: &tfbridge.DocInfo{AllowMissing: true}},
+			"google_backup_dr_backup":      {Docs: &tfbridge.DocInfo{AllowMissing: true}},
 		},
 		JavaScript: &tfbridge.JavaScriptInfo{
 			Dependencies: map[string]string{
