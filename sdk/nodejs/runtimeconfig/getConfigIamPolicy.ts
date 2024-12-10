@@ -47,7 +47,7 @@ export interface GetConfigIamPolicyResult {
     readonly policyData: string;
     readonly project: string;
 }
-export function getConfigIamPolicyOutput(args: GetConfigIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetConfigIamPolicyResult> {
+export function getConfigIamPolicyOutput(args: GetConfigIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetConfigIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:runtimeconfig/getConfigIamPolicy:getConfigIamPolicy", {
         "config": args.config,

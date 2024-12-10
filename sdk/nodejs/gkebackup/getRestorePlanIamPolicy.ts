@@ -88,7 +88,7 @@ export interface GetRestorePlanIamPolicyResult {
  * });
  * ```
  */
-export function getRestorePlanIamPolicyOutput(args: GetRestorePlanIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRestorePlanIamPolicyResult> {
+export function getRestorePlanIamPolicyOutput(args: GetRestorePlanIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRestorePlanIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:gkebackup/getRestorePlanIamPolicy:getRestorePlanIamPolicy", {
         "location": args.location,

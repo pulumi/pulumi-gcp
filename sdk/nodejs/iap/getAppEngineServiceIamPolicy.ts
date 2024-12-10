@@ -85,7 +85,7 @@ export interface GetAppEngineServiceIamPolicyResult {
  * });
  * ```
  */
-export function getAppEngineServiceIamPolicyOutput(args: GetAppEngineServiceIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAppEngineServiceIamPolicyResult> {
+export function getAppEngineServiceIamPolicyOutput(args: GetAppEngineServiceIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAppEngineServiceIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:iap/getAppEngineServiceIamPolicy:getAppEngineServiceIamPolicy", {
         "appId": args.appId,

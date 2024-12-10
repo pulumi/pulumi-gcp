@@ -100,7 +100,7 @@ export interface GetV2AcceleratorTypesResult {
  * });
  * ```
  */
-export function getV2AcceleratorTypesOutput(args?: GetV2AcceleratorTypesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetV2AcceleratorTypesResult> {
+export function getV2AcceleratorTypesOutput(args?: GetV2AcceleratorTypesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetV2AcceleratorTypesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:tpu/getV2AcceleratorTypes:getV2AcceleratorTypes", {

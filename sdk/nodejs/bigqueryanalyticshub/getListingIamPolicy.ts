@@ -96,7 +96,7 @@ export interface GetListingIamPolicyResult {
  * });
  * ```
  */
-export function getListingIamPolicyOutput(args: GetListingIamPolicyOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetListingIamPolicyResult> {
+export function getListingIamPolicyOutput(args: GetListingIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetListingIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:bigqueryanalyticshub/getListingIamPolicy:getListingIamPolicy", {
         "dataExchangeId": args.dataExchangeId,

@@ -235,7 +235,7 @@ export interface GetRegionInstanceTemplateResult {
  * });
  * ```
  */
-export function getRegionInstanceTemplateOutput(args?: GetRegionInstanceTemplateOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionInstanceTemplateResult> {
+export function getRegionInstanceTemplateOutput(args?: GetRegionInstanceTemplateOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRegionInstanceTemplateResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:compute/getRegionInstanceTemplate:getRegionInstanceTemplate", {

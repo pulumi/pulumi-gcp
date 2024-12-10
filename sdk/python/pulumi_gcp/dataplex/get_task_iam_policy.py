@@ -160,7 +160,7 @@ def get_task_iam_policy_output(lake: Optional[pulumi.Input[str]] = None,
                                location: Optional[pulumi.Input[Optional[str]]] = None,
                                project: Optional[pulumi.Input[Optional[str]]] = None,
                                task_id: Optional[pulumi.Input[str]] = None,
-                               opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetTaskIamPolicyResult]:
+                               opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetTaskIamPolicyResult]:
     """
     Retrieves the current IAM policy data for task
 
@@ -191,7 +191,7 @@ def get_task_iam_policy_output(lake: Optional[pulumi.Input[str]] = None,
     __args__['location'] = location
     __args__['project'] = project
     __args__['taskId'] = task_id
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:dataplex/getTaskIamPolicy:getTaskIamPolicy', __args__, opts=opts, typ=GetTaskIamPolicyResult)
     return __ret__.apply(lambda __response__: GetTaskIamPolicyResult(
         etag=pulumi.get(__response__, 'etag'),

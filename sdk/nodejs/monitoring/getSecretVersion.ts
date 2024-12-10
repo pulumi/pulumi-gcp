@@ -104,7 +104,7 @@ export interface GetSecretVersionResult {
  * ```
  */
 /** @deprecated gcp.monitoring.getSecretVersion has been deprecated in favor of gcp.secretmanager.getSecretVersion */
-export function getSecretVersionOutput(args: GetSecretVersionOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetSecretVersionResult> {
+export function getSecretVersionOutput(args: GetSecretVersionOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetSecretVersionResult> {
     pulumi.log.warn("getSecretVersion is deprecated: gcp.monitoring.getSecretVersion has been deprecated in favor of gcp.secretmanager.getSecretVersion")
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:monitoring/getSecretVersion:getSecretVersion", {

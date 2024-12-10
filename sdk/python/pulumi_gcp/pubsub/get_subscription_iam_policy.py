@@ -125,7 +125,7 @@ def get_subscription_iam_policy(project: Optional[str] = None,
         subscription=pulumi.get(__ret__, 'subscription'))
 def get_subscription_iam_policy_output(project: Optional[pulumi.Input[Optional[str]]] = None,
                                        subscription: Optional[pulumi.Input[str]] = None,
-                                       opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetSubscriptionIamPolicyResult]:
+                                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetSubscriptionIamPolicyResult]:
     """
     Retrieves the current IAM policy data for a Pubsub subscription.
 
@@ -146,7 +146,7 @@ def get_subscription_iam_policy_output(project: Optional[pulumi.Input[Optional[s
     __args__ = dict()
     __args__['project'] = project
     __args__['subscription'] = subscription
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:pubsub/getSubscriptionIamPolicy:getSubscriptionIamPolicy', __args__, opts=opts, typ=GetSubscriptionIamPolicyResult)
     return __ret__.apply(lambda __response__: GetSubscriptionIamPolicyResult(
         etag=pulumi.get(__response__, 'etag'),

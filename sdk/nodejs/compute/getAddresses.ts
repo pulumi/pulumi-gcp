@@ -130,7 +130,7 @@ export interface GetAddressesResult {
  * });
  * ```
  */
-export function getAddressesOutput(args?: GetAddressesOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetAddressesResult> {
+export function getAddressesOutput(args?: GetAddressesOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetAddressesResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:compute/getAddresses:getAddresses", {

@@ -112,7 +112,7 @@ export interface GetRegionInstanceGroupManagerResult {
  * });
  * ```
  */
-export function getRegionInstanceGroupManagerOutput(args?: GetRegionInstanceGroupManagerOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetRegionInstanceGroupManagerResult> {
+export function getRegionInstanceGroupManagerOutput(args?: GetRegionInstanceGroupManagerOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRegionInstanceGroupManagerResult> {
     args = args || {};
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:compute/getRegionInstanceGroupManager:getRegionInstanceGroupManager", {

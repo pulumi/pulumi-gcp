@@ -230,7 +230,7 @@ def get_private_cloud(location: Optional[str] = None,
 def get_private_cloud_output(location: Optional[pulumi.Input[str]] = None,
                              name: Optional[pulumi.Input[str]] = None,
                              project: Optional[pulumi.Input[Optional[str]]] = None,
-                             opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetPrivateCloudResult]:
+                             opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetPrivateCloudResult]:
     """
     Use this data source to get details about a private cloud resource.
 
@@ -259,7 +259,7 @@ def get_private_cloud_output(location: Optional[pulumi.Input[str]] = None,
     __args__['location'] = location
     __args__['name'] = name
     __args__['project'] = project
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:vmwareengine/getPrivateCloud:getPrivateCloud', __args__, opts=opts, typ=GetPrivateCloudResult)
     return __ret__.apply(lambda __response__: GetPrivateCloudResult(
         deletion_delay_hours=pulumi.get(__response__, 'deletion_delay_hours'),

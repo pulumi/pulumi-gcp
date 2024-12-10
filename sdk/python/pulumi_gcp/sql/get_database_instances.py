@@ -165,7 +165,7 @@ def get_database_instances_output(database_version: Optional[pulumi.Input[Option
                                   state: Optional[pulumi.Input[Optional[str]]] = None,
                                   tier: Optional[pulumi.Input[Optional[str]]] = None,
                                   zone: Optional[pulumi.Input[Optional[str]]] = None,
-                                  opts: Optional[pulumi.InvokeOptions] = None) -> pulumi.Output[GetDatabaseInstancesResult]:
+                                  opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetDatabaseInstancesResult]:
     """
     Use this data source to get information about a list of Cloud SQL instances in a project. You can also apply some filters over this list to get a more filtered list of Cloud SQL instances.
 
@@ -193,7 +193,7 @@ def get_database_instances_output(database_version: Optional[pulumi.Input[Option
     __args__['state'] = state
     __args__['tier'] = tier
     __args__['zone'] = zone
-    opts = pulumi.InvokeOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
+    opts = pulumi.InvokeOutputOptions.merge(_utilities.get_invoke_opts_defaults(), opts)
     __ret__ = pulumi.runtime.invoke_output('gcp:sql/getDatabaseInstances:getDatabaseInstances', __args__, opts=opts, typ=GetDatabaseInstancesResult)
     return __ret__.apply(lambda __response__: GetDatabaseInstancesResult(
         database_version=pulumi.get(__response__, 'database_version'),

@@ -175,7 +175,7 @@ export interface GetKMSSecretResult {
  *
  * This will result in a Cloud SQL user being created with password `my-secret-password`.
  */
-export function getKMSSecretOutput(args: GetKMSSecretOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetKMSSecretResult> {
+export function getKMSSecretOutput(args: GetKMSSecretOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetKMSSecretResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:kms/getKMSSecret:getKMSSecret", {
         "additionalAuthenticatedData": args.additionalAuthenticatedData,

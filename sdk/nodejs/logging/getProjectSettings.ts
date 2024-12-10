@@ -103,7 +103,7 @@ export interface GetProjectSettingsResult {
  * });
  * ```
  */
-export function getProjectSettingsOutput(args: GetProjectSettingsOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetProjectSettingsResult> {
+export function getProjectSettingsOutput(args: GetProjectSettingsOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetProjectSettingsResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:logging/getProjectSettings:getProjectSettings", {
         "project": args.project,

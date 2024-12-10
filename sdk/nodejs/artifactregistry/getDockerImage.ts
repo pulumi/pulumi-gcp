@@ -145,7 +145,7 @@ export interface GetDockerImageResult {
  * }});
  * ```
  */
-export function getDockerImageOutput(args: GetDockerImageOutputArgs, opts?: pulumi.InvokeOptions): pulumi.Output<GetDockerImageResult> {
+export function getDockerImageOutput(args: GetDockerImageOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetDockerImageResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:artifactregistry/getDockerImage:getDockerImage", {
         "imageName": args.imageName,
