@@ -28,6 +28,7 @@ __all__ = [
     'BatchEnvironmentConfigPeripheralsConfigSparkHistoryServerConfig',
     'BatchPysparkBatch',
     'BatchRuntimeConfig',
+    'BatchRuntimeConfigAutotuningConfig',
     'BatchRuntimeInfo',
     'BatchRuntimeInfoApproximateUsage',
     'BatchRuntimeInfoCurrentUsage',
@@ -47,6 +48,7 @@ __all__ = [
     'ClusterClusterConfigEncryptionConfig',
     'ClusterClusterConfigEndpointConfig',
     'ClusterClusterConfigGceClusterConfig',
+    'ClusterClusterConfigGceClusterConfigConfidentialInstanceConfig',
     'ClusterClusterConfigGceClusterConfigNodeGroupAffinity',
     'ClusterClusterConfigGceClusterConfigReservationAffinity',
     'ClusterClusterConfigGceClusterConfigShieldedInstanceConfig',
@@ -61,6 +63,7 @@ __all__ = [
     'ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy',
     'ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList',
     'ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult',
+    'ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix',
     'ClusterClusterConfigSecurityConfig',
     'ClusterClusterConfigSecurityConfigKerberosConfig',
     'ClusterClusterConfigSoftwareConfig',
@@ -1008,7 +1011,9 @@ class BatchRuntimeConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "containerImage":
+        if key == "autotuningConfig":
+            suggest = "autotuning_config"
+        elif key == "containerImage":
             suggest = "container_image"
         elif key == "effectiveProperties":
             suggest = "effective_properties"
@@ -1025,17 +1030,26 @@ class BatchRuntimeConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 autotuning_config: Optional['outputs.BatchRuntimeConfigAutotuningConfig'] = None,
+                 cohort: Optional[str] = None,
                  container_image: Optional[str] = None,
                  effective_properties: Optional[Mapping[str, str]] = None,
                  properties: Optional[Mapping[str, str]] = None,
                  version: Optional[str] = None):
         """
+        :param 'BatchRuntimeConfigAutotuningConfigArgs' autotuning_config: Optional. Autotuning configuration of the workload.
+               Structure is documented below.
+        :param str cohort: Optional. Cohort identifier. Identifies families of the workloads having the same shape, e.g. daily ETL jobs.
         :param str container_image: Optional custom container image for the job runtime environment. If not specified, a default container image will be used.
         :param Mapping[str, str] effective_properties: (Output)
                A mapping of property names to values, which are used to configure workload execution.
         :param Mapping[str, str] properties: A mapping of property names to values, which are used to configure workload execution.
         :param str version: Version of the batch runtime.
         """
+        if autotuning_config is not None:
+            pulumi.set(__self__, "autotuning_config", autotuning_config)
+        if cohort is not None:
+            pulumi.set(__self__, "cohort", cohort)
         if container_image is not None:
             pulumi.set(__self__, "container_image", container_image)
         if effective_properties is not None:
@@ -1044,6 +1058,23 @@ class BatchRuntimeConfig(dict):
             pulumi.set(__self__, "properties", properties)
         if version is not None:
             pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="autotuningConfig")
+    def autotuning_config(self) -> Optional['outputs.BatchRuntimeConfigAutotuningConfig']:
+        """
+        Optional. Autotuning configuration of the workload.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "autotuning_config")
+
+    @property
+    @pulumi.getter
+    def cohort(self) -> Optional[str]:
+        """
+        Optional. Cohort identifier. Identifies families of the workloads having the same shape, e.g. daily ETL jobs.
+        """
+        return pulumi.get(self, "cohort")
 
     @property
     @pulumi.getter(name="containerImage")
@@ -1077,6 +1108,27 @@ class BatchRuntimeConfig(dict):
         Version of the batch runtime.
         """
         return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class BatchRuntimeConfigAutotuningConfig(dict):
+    def __init__(__self__, *,
+                 scenarios: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] scenarios: Optional. Scenarios for which tunings are applied.
+               Each value may be one of: `SCALING`, `BROADCAST_HASH_JOIN`, `MEMORY`.
+        """
+        if scenarios is not None:
+            pulumi.set(__self__, "scenarios", scenarios)
+
+    @property
+    @pulumi.getter
+    def scenarios(self) -> Optional[Sequence[str]]:
+        """
+        Optional. Scenarios for which tunings are applied.
+        Each value may be one of: `SCALING`, `BROADCAST_HASH_JOIN`, `MEMORY`.
+        """
+        return pulumi.get(self, "scenarios")
 
 
 @pulumi.output_type
@@ -2634,7 +2686,9 @@ class ClusterClusterConfigGceClusterConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "internalIpOnly":
+        if key == "confidentialInstanceConfig":
+            suggest = "confidential_instance_config"
+        elif key == "internalIpOnly":
             suggest = "internal_ip_only"
         elif key == "nodeGroupAffinity":
             suggest = "node_group_affinity"
@@ -2659,6 +2713,7 @@ class ClusterClusterConfigGceClusterConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 confidential_instance_config: Optional['outputs.ClusterClusterConfigGceClusterConfigConfidentialInstanceConfig'] = None,
                  internal_ip_only: Optional[bool] = None,
                  metadata: Optional[Mapping[str, str]] = None,
                  network: Optional[str] = None,
@@ -2671,6 +2726,7 @@ class ClusterClusterConfigGceClusterConfig(dict):
                  tags: Optional[Sequence[str]] = None,
                  zone: Optional[str] = None):
         """
+        :param 'ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigArgs' confidential_instance_config: Confidential Instance Config for clusters using [Confidential VMs](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/confidential-compute)
         :param bool internal_ip_only: By default, clusters are not restricted to internal IP addresses,
                and will have ephemeral external IP addresses assigned to each instance. If set to true, all
                instances in the cluster will only have internal IP addresses. Note: Private Google Access
@@ -2705,6 +2761,8 @@ class ClusterClusterConfigGceClusterConfig(dict):
                which computing resources are available for use with other configs such as
                `cluster_config.master_config.machine_type` and `cluster_config.worker_config.machine_type`.
         """
+        if confidential_instance_config is not None:
+            pulumi.set(__self__, "confidential_instance_config", confidential_instance_config)
         if internal_ip_only is not None:
             pulumi.set(__self__, "internal_ip_only", internal_ip_only)
         if metadata is not None:
@@ -2727,6 +2785,14 @@ class ClusterClusterConfigGceClusterConfig(dict):
             pulumi.set(__self__, "tags", tags)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter(name="confidentialInstanceConfig")
+    def confidential_instance_config(self) -> Optional['outputs.ClusterClusterConfigGceClusterConfigConfidentialInstanceConfig']:
+        """
+        Confidential Instance Config for clusters using [Confidential VMs](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/confidential-compute)
+        """
+        return pulumi.get(self, "confidential_instance_config")
 
     @property
     @pulumi.getter(name="internalIpOnly")
@@ -2837,6 +2903,42 @@ class ClusterClusterConfigGceClusterConfig(dict):
         `cluster_config.master_config.machine_type` and `cluster_config.worker_config.machine_type`.
         """
         return pulumi.get(self, "zone")
+
+
+@pulumi.output_type
+class ClusterClusterConfigGceClusterConfigConfidentialInstanceConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enableConfidentialCompute":
+            suggest = "enable_confidential_compute"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterClusterConfigGceClusterConfigConfidentialInstanceConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterClusterConfigGceClusterConfigConfidentialInstanceConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterClusterConfigGceClusterConfigConfidentialInstanceConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enable_confidential_compute: Optional[bool] = None):
+        """
+        :param bool enable_confidential_compute: Defines whether the instance should have confidential compute enabled.
+        """
+        if enable_confidential_compute is not None:
+            pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
+
+    @property
+    @pulumi.getter(name="enableConfidentialCompute")
+    def enable_confidential_compute(self) -> Optional[bool]:
+        """
+        Defines whether the instance should have confidential compute enabled.
+        """
+        return pulumi.get(self, "enable_confidential_compute")
 
 
 @pulumi.output_type
@@ -3667,6 +3769,8 @@ class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy(dict)
             suggest = "instance_selection_lists"
         elif key == "instanceSelectionResults":
             suggest = "instance_selection_results"
+        elif key == "provisioningModelMix":
+            suggest = "provisioning_model_mix"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy. Access the value via the '{suggest}' property getter instead.")
@@ -3681,15 +3785,19 @@ class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy(dict)
 
     def __init__(__self__, *,
                  instance_selection_lists: Optional[Sequence['outputs.ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList']] = None,
-                 instance_selection_results: Optional[Sequence['outputs.ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult']] = None):
+                 instance_selection_results: Optional[Sequence['outputs.ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult']] = None,
+                 provisioning_model_mix: Optional['outputs.ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix'] = None):
         """
         :param Sequence['ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs'] instance_selection_lists: List of instance selection options that the group will use when creating new VMs.
         :param Sequence['ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs'] instance_selection_results: A list of instance selection results in the group.
+        :param 'ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs' provisioning_model_mix: Defines how Dataproc should create VMs with a mixture of provisioning models.
         """
         if instance_selection_lists is not None:
             pulumi.set(__self__, "instance_selection_lists", instance_selection_lists)
         if instance_selection_results is not None:
             pulumi.set(__self__, "instance_selection_results", instance_selection_results)
+        if provisioning_model_mix is not None:
+            pulumi.set(__self__, "provisioning_model_mix", provisioning_model_mix)
 
     @property
     @pulumi.getter(name="instanceSelectionLists")
@@ -3706,6 +3814,14 @@ class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy(dict)
         A list of instance selection results in the group.
         """
         return pulumi.get(self, "instance_selection_results")
+
+    @property
+    @pulumi.getter(name="provisioningModelMix")
+    def provisioning_model_mix(self) -> Optional['outputs.ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix']:
+        """
+        Defines how Dataproc should create VMs with a mixture of provisioning models.
+        """
+        return pulumi.get(self, "provisioning_model_mix")
 
 
 @pulumi.output_type
@@ -3808,6 +3924,56 @@ class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstan
         Number of VM provisioned with the machine_type.
         """
         return pulumi.get(self, "vm_count")
+
+
+@pulumi.output_type
+class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "standardCapacityBase":
+            suggest = "standard_capacity_base"
+        elif key == "standardCapacityPercentAboveBase":
+            suggest = "standard_capacity_percent_above_base"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 standard_capacity_base: Optional[int] = None,
+                 standard_capacity_percent_above_base: Optional[int] = None):
+        """
+        :param int standard_capacity_base: The base capacity that will always use Standard VMs to avoid risk of more preemption than the minimum capacity you need.
+        :param int standard_capacity_percent_above_base: The percentage of target capacity that should use Standard VM. The remaining percentage will use Spot VMs.
+        """
+        if standard_capacity_base is not None:
+            pulumi.set(__self__, "standard_capacity_base", standard_capacity_base)
+        if standard_capacity_percent_above_base is not None:
+            pulumi.set(__self__, "standard_capacity_percent_above_base", standard_capacity_percent_above_base)
+
+    @property
+    @pulumi.getter(name="standardCapacityBase")
+    def standard_capacity_base(self) -> Optional[int]:
+        """
+        The base capacity that will always use Standard VMs to avoid risk of more preemption than the minimum capacity you need.
+        """
+        return pulumi.get(self, "standard_capacity_base")
+
+    @property
+    @pulumi.getter(name="standardCapacityPercentAboveBase")
+    def standard_capacity_percent_above_base(self) -> Optional[int]:
+        """
+        The percentage of target capacity that should use Standard VM. The remaining percentage will use Spot VMs.
+        """
+        return pulumi.get(self, "standard_capacity_percent_above_base")
 
 
 @pulumi.output_type

@@ -12,14 +12,14 @@ import javax.annotation.Nullable;
 @CustomType
 public final class CertificateCertificateDescriptionSubjectKeyId {
     /**
-     * @return The value of the KeyId in lowercase hexidecimal.
+     * @return The value of the KeyId in lowercase hexadecimal.
      * 
      */
     private @Nullable String keyId;
 
     private CertificateCertificateDescriptionSubjectKeyId() {}
     /**
-     * @return The value of the KeyId in lowercase hexidecimal.
+     * @return The value of the KeyId in lowercase hexadecimal.
      * 
      */
     public Optional<String> keyId() {

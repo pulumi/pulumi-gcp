@@ -230,6 +230,12 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> IpAddress { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier number for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("networkEndpointId")]
+        public Output<int> NetworkEndpointId { get; private set; } = null!;
+
+        /// <summary>
         /// Port number of network endpoint.
         /// </summary>
         [Output("port")]
@@ -392,6 +398,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("ipAddress")]
         public Input<string>? IpAddress { get; set; }
+
+        /// <summary>
+        /// The unique identifier number for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Input("networkEndpointId")]
+        public Input<int>? NetworkEndpointId { get; set; }
 
         /// <summary>
         /// Port number of network endpoint.

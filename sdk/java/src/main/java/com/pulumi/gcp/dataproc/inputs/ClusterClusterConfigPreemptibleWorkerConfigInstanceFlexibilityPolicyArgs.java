@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs;
 import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs;
+import com.pulumi.gcp.dataproc.inputs.ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -47,11 +48,27 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilit
         return Optional.ofNullable(this.instanceSelectionResults);
     }
 
+    /**
+     * Defines how Dataproc should create VMs with a mixture of provisioning models.
+     * 
+     */
+    @Import(name="provisioningModelMix")
+    private @Nullable Output<ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs> provisioningModelMix;
+
+    /**
+     * @return Defines how Dataproc should create VMs with a mixture of provisioning models.
+     * 
+     */
+    public Optional<Output<ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs>> provisioningModelMix() {
+        return Optional.ofNullable(this.provisioningModelMix);
+    }
+
     private ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyArgs() {}
 
     private ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyArgs(ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyArgs $) {
         this.instanceSelectionLists = $.instanceSelectionLists;
         this.instanceSelectionResults = $.instanceSelectionResults;
+        this.provisioningModelMix = $.provisioningModelMix;
     }
 
     public static Builder builder() {
@@ -132,6 +149,27 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilit
          */
         public Builder instanceSelectionResults(ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs... instanceSelectionResults) {
             return instanceSelectionResults(List.of(instanceSelectionResults));
+        }
+
+        /**
+         * @param provisioningModelMix Defines how Dataproc should create VMs with a mixture of provisioning models.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder provisioningModelMix(@Nullable Output<ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs> provisioningModelMix) {
+            $.provisioningModelMix = provisioningModelMix;
+            return this;
+        }
+
+        /**
+         * @param provisioningModelMix Defines how Dataproc should create VMs with a mixture of provisioning models.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder provisioningModelMix(ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs provisioningModelMix) {
+            return provisioningModelMix(Output.of(provisioningModelMix));
         }
 
         public ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyArgs build() {

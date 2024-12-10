@@ -337,7 +337,7 @@ class BackupPlan(pulumi.CustomResource):
 
         my_backup_vault = gcp.backupdisasterrecovery.BackupVault("my_backup_vault",
             location="us-central1",
-            backup_vault_id="bv-bp-test",
+            backup_vault_id="backup-vault-simple-test",
             backup_minimum_enforced_retention_duration="100000s")
         my_backup_plan_1 = gcp.backupdisasterrecovery.BackupPlan("my-backup-plan-1",
             location="us-central1",
@@ -410,7 +410,7 @@ class BackupPlan(pulumi.CustomResource):
 
         my_backup_vault = gcp.backupdisasterrecovery.BackupVault("my_backup_vault",
             location="us-central1",
-            backup_vault_id="bv-bp-test",
+            backup_vault_id="backup-vault-simple-test",
             backup_minimum_enforced_retention_duration="100000s")
         my_backup_plan_1 = gcp.backupdisasterrecovery.BackupPlan("my-backup-plan-1",
             location="us-central1",

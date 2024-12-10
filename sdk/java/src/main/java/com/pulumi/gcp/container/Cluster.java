@@ -22,6 +22,7 @@ import com.pulumi.gcp.container.outputs.ClusterDatabaseEncryption;
 import com.pulumi.gcp.container.outputs.ClusterDefaultSnatStatus;
 import com.pulumi.gcp.container.outputs.ClusterDnsConfig;
 import com.pulumi.gcp.container.outputs.ClusterEnableK8sBetaApis;
+import com.pulumi.gcp.container.outputs.ClusterEnterpriseConfig;
 import com.pulumi.gcp.container.outputs.ClusterFleet;
 import com.pulumi.gcp.container.outputs.ClusterGatewayApiConfig;
 import com.pulumi.gcp.container.outputs.ClusterIdentityServiceConfig;
@@ -746,6 +747,24 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<String> endpoint() {
         return this.endpoint;
+    }
+    /**
+     * Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
+     * 
+     * &lt;a name=&#34;nested_default_snat_status&#34;&gt;&lt;/a&gt;The `default_snat_status` block supports
+     * 
+     */
+    @Export(name="enterpriseConfig", refs={ClusterEnterpriseConfig.class}, tree="[0]")
+    private Output<ClusterEnterpriseConfig> enterpriseConfig;
+
+    /**
+     * @return Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
+     * 
+     * &lt;a name=&#34;nested_default_snat_status&#34;&gt;&lt;/a&gt;The `default_snat_status` block supports
+     * 
+     */
+    public Output<ClusterEnterpriseConfig> enterpriseConfig() {
+        return this.enterpriseConfig;
     }
     /**
      * Fleet configuration for the cluster. Structure is documented below.
@@ -1650,16 +1669,12 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     /**
      * Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_default_snat_status&#34;&gt;&lt;/a&gt;The `default_snat_status` block supports
-     * 
      */
     @Export(name="workloadAltsConfig", refs={ClusterWorkloadAltsConfig.class}, tree="[0]")
     private Output<ClusterWorkloadAltsConfig> workloadAltsConfig;
 
     /**
      * @return Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
-     * 
-     * &lt;a name=&#34;nested_default_snat_status&#34;&gt;&lt;/a&gt;The `default_snat_status` block supports
      * 
      */
     public Output<ClusterWorkloadAltsConfig> workloadAltsConfig() {

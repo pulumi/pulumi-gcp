@@ -197,14 +197,14 @@ public final class InstanceTemplateNetworkInterfaceArgs extends com.pulumi.resou
     }
 
     /**
-     * The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET.
+     * The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET. In the beta provider the additional values of MRDMA and IRDMA are supported.
      * 
      */
     @Import(name="nicType")
     private @Nullable Output<String> nicType;
 
     /**
-     * @return The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET.
+     * @return The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET. In the beta provider the additional values of MRDMA and IRDMA are supported.
      * 
      */
     public Optional<Output<String>> nicType() {
@@ -591,7 +591,7 @@ public final class InstanceTemplateNetworkInterfaceArgs extends com.pulumi.resou
         }
 
         /**
-         * @param nicType The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET.
+         * @param nicType The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET. In the beta provider the additional values of MRDMA and IRDMA are supported.
          * 
          * @return builder
          * 
@@ -602,7 +602,7 @@ public final class InstanceTemplateNetworkInterfaceArgs extends com.pulumi.resou
         }
 
         /**
-         * @param nicType The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET.
+         * @param nicType The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET. In the beta provider the additional values of MRDMA and IRDMA are supported.
          * 
          * @return builder
          * 

@@ -1842,7 +1842,10 @@ func (o RepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryPtrOutput) 
 }
 
 type RepositoryRemoteRepositoryConfigCommonRepository struct {
-	// Specific uri to the Artifact Registory repository, e.g. `projects/UPSTREAM_PROJECT_ID/locations/REGION/repositories/UPSTREAM_REPOSITORY`
+	// One of:
+	// a. Artifact Registry Repository resource, e.g. `projects/UPSTREAM_PROJECT_ID/locations/REGION/repositories/UPSTREAM_REPOSITORY`
+	// b. URI to the registry, e.g. `"https://registry-1.docker.io"`
+	// c. URI to Artifact Registry Repository, e.g. `"https://REGION-docker.pkg.dev/UPSTREAM_PROJECT_ID/UPSTREAM_REPOSITORY"`
 	Uri string `pulumi:"uri"`
 }
 
@@ -1858,7 +1861,10 @@ type RepositoryRemoteRepositoryConfigCommonRepositoryInput interface {
 }
 
 type RepositoryRemoteRepositoryConfigCommonRepositoryArgs struct {
-	// Specific uri to the Artifact Registory repository, e.g. `projects/UPSTREAM_PROJECT_ID/locations/REGION/repositories/UPSTREAM_REPOSITORY`
+	// One of:
+	// a. Artifact Registry Repository resource, e.g. `projects/UPSTREAM_PROJECT_ID/locations/REGION/repositories/UPSTREAM_REPOSITORY`
+	// b. URI to the registry, e.g. `"https://registry-1.docker.io"`
+	// c. URI to Artifact Registry Repository, e.g. `"https://REGION-docker.pkg.dev/UPSTREAM_PROJECT_ID/UPSTREAM_REPOSITORY"`
 	Uri pulumi.StringInput `pulumi:"uri"`
 }
 
@@ -1939,7 +1945,10 @@ func (o RepositoryRemoteRepositoryConfigCommonRepositoryOutput) ToRepositoryRemo
 	}).(RepositoryRemoteRepositoryConfigCommonRepositoryPtrOutput)
 }
 
-// Specific uri to the Artifact Registory repository, e.g. `projects/UPSTREAM_PROJECT_ID/locations/REGION/repositories/UPSTREAM_REPOSITORY`
+// One of:
+// a. Artifact Registry Repository resource, e.g. `projects/UPSTREAM_PROJECT_ID/locations/REGION/repositories/UPSTREAM_REPOSITORY`
+// b. URI to the registry, e.g. `"https://registry-1.docker.io"`
+// c. URI to Artifact Registry Repository, e.g. `"https://REGION-docker.pkg.dev/UPSTREAM_PROJECT_ID/UPSTREAM_REPOSITORY"`
 func (o RepositoryRemoteRepositoryConfigCommonRepositoryOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v RepositoryRemoteRepositoryConfigCommonRepository) string { return v.Uri }).(pulumi.StringOutput)
 }
@@ -1968,7 +1977,10 @@ func (o RepositoryRemoteRepositoryConfigCommonRepositoryPtrOutput) Elem() Reposi
 	}).(RepositoryRemoteRepositoryConfigCommonRepositoryOutput)
 }
 
-// Specific uri to the Artifact Registory repository, e.g. `projects/UPSTREAM_PROJECT_ID/locations/REGION/repositories/UPSTREAM_REPOSITORY`
+// One of:
+// a. Artifact Registry Repository resource, e.g. `projects/UPSTREAM_PROJECT_ID/locations/REGION/repositories/UPSTREAM_REPOSITORY`
+// b. URI to the registry, e.g. `"https://registry-1.docker.io"`
+// c. URI to Artifact Registry Repository, e.g. `"https://REGION-docker.pkg.dev/UPSTREAM_PROJECT_ID/UPSTREAM_REPOSITORY"`
 func (o RepositoryRemoteRepositoryConfigCommonRepositoryPtrOutput) Uri() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RepositoryRemoteRepositoryConfigCommonRepository) *string {
 		if v == nil {
@@ -1979,7 +1991,7 @@ func (o RepositoryRemoteRepositoryConfigCommonRepositoryPtrOutput) Uri() pulumi.
 }
 
 type RepositoryRemoteRepositoryConfigDockerRepository struct {
-	// Settings for a remote repository with a custom uri.
+	// [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
 	// Structure is documented below.
 	CustomRepository *RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository `pulumi:"customRepository"`
 	// Address of the remote repository.
@@ -2000,7 +2012,7 @@ type RepositoryRemoteRepositoryConfigDockerRepositoryInput interface {
 }
 
 type RepositoryRemoteRepositoryConfigDockerRepositoryArgs struct {
-	// Settings for a remote repository with a custom uri.
+	// [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
 	// Structure is documented below.
 	CustomRepository RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrInput `pulumi:"customRepository"`
 	// Address of the remote repository.
@@ -2086,7 +2098,7 @@ func (o RepositoryRemoteRepositoryConfigDockerRepositoryOutput) ToRepositoryRemo
 	}).(RepositoryRemoteRepositoryConfigDockerRepositoryPtrOutput)
 }
 
-// Settings for a remote repository with a custom uri.
+// [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
 // Structure is documented below.
 func (o RepositoryRemoteRepositoryConfigDockerRepositoryOutput) CustomRepository() RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutput {
 	return o.ApplyT(func(v RepositoryRemoteRepositoryConfigDockerRepository) *RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository {
@@ -2125,7 +2137,7 @@ func (o RepositoryRemoteRepositoryConfigDockerRepositoryPtrOutput) Elem() Reposi
 	}).(RepositoryRemoteRepositoryConfigDockerRepositoryOutput)
 }
 
-// Settings for a remote repository with a custom uri.
+// [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
 // Structure is documented below.
 func (o RepositoryRemoteRepositoryConfigDockerRepositoryPtrOutput) CustomRepository() RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutput {
 	return o.ApplyT(func(v *RepositoryRemoteRepositoryConfigDockerRepository) *RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository {
@@ -2286,7 +2298,7 @@ func (o RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryPtrOutpu
 }
 
 type RepositoryRemoteRepositoryConfigMavenRepository struct {
-	// Settings for a remote repository with a custom uri.
+	// [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
 	// Structure is documented below.
 	CustomRepository *RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository `pulumi:"customRepository"`
 	// Address of the remote repository.
@@ -2307,7 +2319,7 @@ type RepositoryRemoteRepositoryConfigMavenRepositoryInput interface {
 }
 
 type RepositoryRemoteRepositoryConfigMavenRepositoryArgs struct {
-	// Settings for a remote repository with a custom uri.
+	// [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
 	// Structure is documented below.
 	CustomRepository RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrInput `pulumi:"customRepository"`
 	// Address of the remote repository.
@@ -2393,7 +2405,7 @@ func (o RepositoryRemoteRepositoryConfigMavenRepositoryOutput) ToRepositoryRemot
 	}).(RepositoryRemoteRepositoryConfigMavenRepositoryPtrOutput)
 }
 
-// Settings for a remote repository with a custom uri.
+// [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
 // Structure is documented below.
 func (o RepositoryRemoteRepositoryConfigMavenRepositoryOutput) CustomRepository() RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutput {
 	return o.ApplyT(func(v RepositoryRemoteRepositoryConfigMavenRepository) *RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository {
@@ -2432,7 +2444,7 @@ func (o RepositoryRemoteRepositoryConfigMavenRepositoryPtrOutput) Elem() Reposit
 	}).(RepositoryRemoteRepositoryConfigMavenRepositoryOutput)
 }
 
-// Settings for a remote repository with a custom uri.
+// [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
 // Structure is documented below.
 func (o RepositoryRemoteRepositoryConfigMavenRepositoryPtrOutput) CustomRepository() RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutput {
 	return o.ApplyT(func(v *RepositoryRemoteRepositoryConfigMavenRepository) *RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository {
@@ -2593,7 +2605,7 @@ func (o RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryPtrOutput
 }
 
 type RepositoryRemoteRepositoryConfigNpmRepository struct {
-	// Settings for a remote repository with a custom uri.
+	// [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
 	// Structure is documented below.
 	CustomRepository *RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepository `pulumi:"customRepository"`
 	// Address of the remote repository.
@@ -2614,7 +2626,7 @@ type RepositoryRemoteRepositoryConfigNpmRepositoryInput interface {
 }
 
 type RepositoryRemoteRepositoryConfigNpmRepositoryArgs struct {
-	// Settings for a remote repository with a custom uri.
+	// [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
 	// Structure is documented below.
 	CustomRepository RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrInput `pulumi:"customRepository"`
 	// Address of the remote repository.
@@ -2700,7 +2712,7 @@ func (o RepositoryRemoteRepositoryConfigNpmRepositoryOutput) ToRepositoryRemoteR
 	}).(RepositoryRemoteRepositoryConfigNpmRepositoryPtrOutput)
 }
 
-// Settings for a remote repository with a custom uri.
+// [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
 // Structure is documented below.
 func (o RepositoryRemoteRepositoryConfigNpmRepositoryOutput) CustomRepository() RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutput {
 	return o.ApplyT(func(v RepositoryRemoteRepositoryConfigNpmRepository) *RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepository {
@@ -2739,7 +2751,7 @@ func (o RepositoryRemoteRepositoryConfigNpmRepositoryPtrOutput) Elem() Repositor
 	}).(RepositoryRemoteRepositoryConfigNpmRepositoryOutput)
 }
 
-// Settings for a remote repository with a custom uri.
+// [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
 // Structure is documented below.
 func (o RepositoryRemoteRepositoryConfigNpmRepositoryPtrOutput) CustomRepository() RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutput {
 	return o.ApplyT(func(v *RepositoryRemoteRepositoryConfigNpmRepository) *RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepository {
@@ -2900,7 +2912,7 @@ func (o RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryPtrOutput) 
 }
 
 type RepositoryRemoteRepositoryConfigPythonRepository struct {
-	// Settings for a remote repository with a custom uri.
+	// [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
 	// Structure is documented below.
 	CustomRepository *RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository `pulumi:"customRepository"`
 	// Address of the remote repository.
@@ -2921,7 +2933,7 @@ type RepositoryRemoteRepositoryConfigPythonRepositoryInput interface {
 }
 
 type RepositoryRemoteRepositoryConfigPythonRepositoryArgs struct {
-	// Settings for a remote repository with a custom uri.
+	// [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
 	// Structure is documented below.
 	CustomRepository RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrInput `pulumi:"customRepository"`
 	// Address of the remote repository.
@@ -3007,7 +3019,7 @@ func (o RepositoryRemoteRepositoryConfigPythonRepositoryOutput) ToRepositoryRemo
 	}).(RepositoryRemoteRepositoryConfigPythonRepositoryPtrOutput)
 }
 
-// Settings for a remote repository with a custom uri.
+// [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
 // Structure is documented below.
 func (o RepositoryRemoteRepositoryConfigPythonRepositoryOutput) CustomRepository() RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutput {
 	return o.ApplyT(func(v RepositoryRemoteRepositoryConfigPythonRepository) *RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository {
@@ -3046,7 +3058,7 @@ func (o RepositoryRemoteRepositoryConfigPythonRepositoryPtrOutput) Elem() Reposi
 	}).(RepositoryRemoteRepositoryConfigPythonRepositoryOutput)
 }
 
-// Settings for a remote repository with a custom uri.
+// [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
 // Structure is documented below.
 func (o RepositoryRemoteRepositoryConfigPythonRepositoryPtrOutput) CustomRepository() RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryPtrOutput {
 	return o.ApplyT(func(v *RepositoryRemoteRepositoryConfigPythonRepository) *RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository {
@@ -5072,7 +5084,10 @@ func (o GetRepositoryRemoteRepositoryConfigAptRepositoryPublicRepositoryArrayOut
 }
 
 type GetRepositoryRemoteRepositoryConfigCommonRepository struct {
-	// Specific uri to the Artifact Registory repository, e.g. 'projects/UPSTREAM_PROJECT_ID/locations/REGION/repositories/UPSTREAM_REPOSITORY'
+	// One of:
+	// a. Artifact Registry Repository resource, e.g. 'projects/UPSTREAM_PROJECT_ID/locations/REGION/repositories/UPSTREAM_REPOSITORY'
+	// b. URI to the registry, e.g. '"https://registry-1.docker.io"'
+	// c. URI to Artifact Registry Repository, e.g. '"https://REGION-docker.pkg.dev/UPSTREAM_PROJECT_ID/UPSTREAM_REPOSITORY"'
 	Uri string `pulumi:"uri"`
 }
 
@@ -5088,7 +5103,10 @@ type GetRepositoryRemoteRepositoryConfigCommonRepositoryInput interface {
 }
 
 type GetRepositoryRemoteRepositoryConfigCommonRepositoryArgs struct {
-	// Specific uri to the Artifact Registory repository, e.g. 'projects/UPSTREAM_PROJECT_ID/locations/REGION/repositories/UPSTREAM_REPOSITORY'
+	// One of:
+	// a. Artifact Registry Repository resource, e.g. 'projects/UPSTREAM_PROJECT_ID/locations/REGION/repositories/UPSTREAM_REPOSITORY'
+	// b. URI to the registry, e.g. '"https://registry-1.docker.io"'
+	// c. URI to Artifact Registry Repository, e.g. '"https://REGION-docker.pkg.dev/UPSTREAM_PROJECT_ID/UPSTREAM_REPOSITORY"'
 	Uri pulumi.StringInput `pulumi:"uri"`
 }
 
@@ -5143,7 +5161,10 @@ func (o GetRepositoryRemoteRepositoryConfigCommonRepositoryOutput) ToGetReposito
 	return o
 }
 
-// Specific uri to the Artifact Registory repository, e.g. 'projects/UPSTREAM_PROJECT_ID/locations/REGION/repositories/UPSTREAM_REPOSITORY'
+// One of:
+// a. Artifact Registry Repository resource, e.g. 'projects/UPSTREAM_PROJECT_ID/locations/REGION/repositories/UPSTREAM_REPOSITORY'
+// b. URI to the registry, e.g. '"https://registry-1.docker.io"'
+// c. URI to Artifact Registry Repository, e.g. '"https://REGION-docker.pkg.dev/UPSTREAM_PROJECT_ID/UPSTREAM_REPOSITORY"'
 func (o GetRepositoryRemoteRepositoryConfigCommonRepositoryOutput) Uri() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRepositoryRemoteRepositoryConfigCommonRepository) string { return v.Uri }).(pulumi.StringOutput)
 }
@@ -5169,7 +5190,7 @@ func (o GetRepositoryRemoteRepositoryConfigCommonRepositoryArrayOutput) Index(i 
 }
 
 type GetRepositoryRemoteRepositoryConfigDockerRepository struct {
-	// Settings for a remote repository with a custom uri.
+	// [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
 	CustomRepositories []GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository `pulumi:"customRepositories"`
 	// Address of the remote repository. Default value: "DOCKER_HUB" Possible values: ["DOCKER_HUB"]
 	PublicRepository string `pulumi:"publicRepository"`
@@ -5187,7 +5208,7 @@ type GetRepositoryRemoteRepositoryConfigDockerRepositoryInput interface {
 }
 
 type GetRepositoryRemoteRepositoryConfigDockerRepositoryArgs struct {
-	// Settings for a remote repository with a custom uri.
+	// [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
 	CustomRepositories GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArrayInput `pulumi:"customRepositories"`
 	// Address of the remote repository. Default value: "DOCKER_HUB" Possible values: ["DOCKER_HUB"]
 	PublicRepository pulumi.StringInput `pulumi:"publicRepository"`
@@ -5244,7 +5265,7 @@ func (o GetRepositoryRemoteRepositoryConfigDockerRepositoryOutput) ToGetReposito
 	return o
 }
 
-// Settings for a remote repository with a custom uri.
+// [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
 func (o GetRepositoryRemoteRepositoryConfigDockerRepositoryOutput) CustomRepositories() GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArrayOutput {
 	return o.ApplyT(func(v GetRepositoryRemoteRepositoryConfigDockerRepository) []GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository {
 		return v.CustomRepositories
@@ -5374,7 +5395,7 @@ func (o GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArray
 }
 
 type GetRepositoryRemoteRepositoryConfigMavenRepository struct {
-	// Settings for a remote repository with a custom uri.
+	// [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
 	CustomRepositories []GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository `pulumi:"customRepositories"`
 	// Address of the remote repository. Default value: "MAVEN_CENTRAL" Possible values: ["MAVEN_CENTRAL"]
 	PublicRepository string `pulumi:"publicRepository"`
@@ -5392,7 +5413,7 @@ type GetRepositoryRemoteRepositoryConfigMavenRepositoryInput interface {
 }
 
 type GetRepositoryRemoteRepositoryConfigMavenRepositoryArgs struct {
-	// Settings for a remote repository with a custom uri.
+	// [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
 	CustomRepositories GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArrayInput `pulumi:"customRepositories"`
 	// Address of the remote repository. Default value: "MAVEN_CENTRAL" Possible values: ["MAVEN_CENTRAL"]
 	PublicRepository pulumi.StringInput `pulumi:"publicRepository"`
@@ -5449,7 +5470,7 @@ func (o GetRepositoryRemoteRepositoryConfigMavenRepositoryOutput) ToGetRepositor
 	return o
 }
 
-// Settings for a remote repository with a custom uri.
+// [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
 func (o GetRepositoryRemoteRepositoryConfigMavenRepositoryOutput) CustomRepositories() GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArrayOutput {
 	return o.ApplyT(func(v GetRepositoryRemoteRepositoryConfigMavenRepository) []GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository {
 		return v.CustomRepositories
@@ -5579,7 +5600,7 @@ func (o GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArrayO
 }
 
 type GetRepositoryRemoteRepositoryConfigNpmRepository struct {
-	// Settings for a remote repository with a custom uri.
+	// [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
 	CustomRepositories []GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepository `pulumi:"customRepositories"`
 	// Address of the remote repository. Default value: "NPMJS" Possible values: ["NPMJS"]
 	PublicRepository string `pulumi:"publicRepository"`
@@ -5597,7 +5618,7 @@ type GetRepositoryRemoteRepositoryConfigNpmRepositoryInput interface {
 }
 
 type GetRepositoryRemoteRepositoryConfigNpmRepositoryArgs struct {
-	// Settings for a remote repository with a custom uri.
+	// [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
 	CustomRepositories GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArrayInput `pulumi:"customRepositories"`
 	// Address of the remote repository. Default value: "NPMJS" Possible values: ["NPMJS"]
 	PublicRepository pulumi.StringInput `pulumi:"publicRepository"`
@@ -5654,7 +5675,7 @@ func (o GetRepositoryRemoteRepositoryConfigNpmRepositoryOutput) ToGetRepositoryR
 	return o
 }
 
-// Settings for a remote repository with a custom uri.
+// [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
 func (o GetRepositoryRemoteRepositoryConfigNpmRepositoryOutput) CustomRepositories() GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArrayOutput {
 	return o.ApplyT(func(v GetRepositoryRemoteRepositoryConfigNpmRepository) []GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepository {
 		return v.CustomRepositories
@@ -5784,7 +5805,7 @@ func (o GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArrayOut
 }
 
 type GetRepositoryRemoteRepositoryConfigPythonRepository struct {
-	// Settings for a remote repository with a custom uri.
+	// [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
 	CustomRepositories []GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository `pulumi:"customRepositories"`
 	// Address of the remote repository. Default value: "PYPI" Possible values: ["PYPI"]
 	PublicRepository string `pulumi:"publicRepository"`
@@ -5802,7 +5823,7 @@ type GetRepositoryRemoteRepositoryConfigPythonRepositoryInput interface {
 }
 
 type GetRepositoryRemoteRepositoryConfigPythonRepositoryArgs struct {
-	// Settings for a remote repository with a custom uri.
+	// [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
 	CustomRepositories GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArrayInput `pulumi:"customRepositories"`
 	// Address of the remote repository. Default value: "PYPI" Possible values: ["PYPI"]
 	PublicRepository pulumi.StringInput `pulumi:"publicRepository"`
@@ -5859,7 +5880,7 @@ func (o GetRepositoryRemoteRepositoryConfigPythonRepositoryOutput) ToGetReposito
 	return o
 }
 
-// Settings for a remote repository with a custom uri.
+// [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
 func (o GetRepositoryRemoteRepositoryConfigPythonRepositoryOutput) CustomRepositories() GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArrayOutput {
 	return o.ApplyT(func(v GetRepositoryRemoteRepositoryConfigPythonRepository) []GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository {
 		return v.CustomRepositories

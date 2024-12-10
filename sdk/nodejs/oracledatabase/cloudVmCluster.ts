@@ -33,6 +33,7 @@ import * as utilities from "../utilities";
  *         computeCount: 2,
  *         storageCount: 3,
  *     },
+ *     deletionProtection: true,
  * });
  * const default = gcp.compute.getNetwork({
  *     name: "new",
@@ -54,6 +55,7 @@ import * as utilities from "../utilities";
  *         giVersion: "19.0.0.0",
  *         hostnamePrefix: "hostname1",
  *     },
+ *     deletionProtection: true,
  * });
  * ```
  * ### Oracledatabase Cloud Vmcluster Full
@@ -72,6 +74,7 @@ import * as utilities from "../utilities";
  *         computeCount: 2,
  *         storageCount: 3,
  *     },
+ *     deletionProtection: true,
  * });
  * const default = gcp.compute.getNetwork({
  *     name: "new",
@@ -122,6 +125,7 @@ import * as utilities from "../utilities";
  *         },
  *         memorySizeGb: 60,
  *     },
+ *     deletionProtection: true,
  * });
  * ```
  *
@@ -199,6 +203,7 @@ export class CloudVmCluster extends pulumi.CustomResource {
      * The date and time that the VM cluster was created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
+    public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
     /**
      * User friendly name for this resource.
      */
@@ -271,6 +276,7 @@ export class CloudVmCluster extends pulumi.CustomResource {
             resourceInputs["cidr"] = state ? state.cidr : undefined;
             resourceInputs["cloudVmClusterId"] = state ? state.cloudVmClusterId : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["exadataInfrastructure"] = state ? state.exadataInfrastructure : undefined;
@@ -305,6 +311,7 @@ export class CloudVmCluster extends pulumi.CustomResource {
             resourceInputs["backupSubnetCidr"] = args ? args.backupSubnetCidr : undefined;
             resourceInputs["cidr"] = args ? args.cidr : undefined;
             resourceInputs["cloudVmClusterId"] = args ? args.cloudVmClusterId : undefined;
+            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["exadataInfrastructure"] = args ? args.exadataInfrastructure : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
@@ -351,6 +358,7 @@ export interface CloudVmClusterState {
      * The date and time that the VM cluster was created.
      */
     createTime?: pulumi.Input<string>;
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * User friendly name for this resource.
      */
@@ -429,6 +437,7 @@ export interface CloudVmClusterArgs {
      * - - -
      */
     cloudVmClusterId: pulumi.Input<string>;
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * User friendly name for this resource.
      */

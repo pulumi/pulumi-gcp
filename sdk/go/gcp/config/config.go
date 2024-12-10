@@ -292,6 +292,9 @@ func GetFirebaserulesCustomEndpoint(ctx *pulumi.Context) string {
 func GetFirestoreCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:firestoreCustomEndpoint")
 }
+func GetGeminiCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:geminiCustomEndpoint")
+}
 func GetGkeBackupCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:gkeBackupCustomEndpoint")
 }

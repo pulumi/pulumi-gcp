@@ -12,6 +12,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// An IAM Principal Access Boundary Policy resource
+//
+// To get more information about PrincipalAccessBoundaryPolicy, see:
+//
+// * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v3/organizations.locations.principalAccessBoundaryPolicies)
+// * How-to Guides
+//   - [Create and apply Principal Access Boundaries](https://cloud.google.com/iam/docs/principal-access-boundary-policies-create)
+//
 // ## Example Usage
 //
 // ### Iam Principal Access Boundary Policy

@@ -171,6 +171,7 @@ class _RegionNetworkEndpointState:
                  fqdn: Optional[pulumi.Input[str]] = None,
                  instance: Optional[pulumi.Input[str]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
+                 network_endpoint_id: Optional[pulumi.Input[int]] = None,
                  port: Optional[pulumi.Input[int]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
@@ -184,6 +185,7 @@ class _RegionNetworkEndpointState:
                This is required for network endpoints of type GCE_VM_IP_PORTMAP.
         :param pulumi.Input[str] ip_address: IPv4 address external endpoint.
                This can only be specified when network_endpoint_type of the NEG is INTERNET_IP_PORT.
+        :param pulumi.Input[int] network_endpoint_id: The unique identifier number for the resource. This identifier is defined by the server.
         :param pulumi.Input[int] port: Port number of network endpoint.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -201,6 +203,8 @@ class _RegionNetworkEndpointState:
             pulumi.set(__self__, "instance", instance)
         if ip_address is not None:
             pulumi.set(__self__, "ip_address", ip_address)
+        if network_endpoint_id is not None:
+            pulumi.set(__self__, "network_endpoint_id", network_endpoint_id)
         if port is not None:
             pulumi.set(__self__, "port", port)
         if project is not None:
@@ -260,6 +264,18 @@ class _RegionNetworkEndpointState:
     @ip_address.setter
     def ip_address(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ip_address", value)
+
+    @property
+    @pulumi.getter(name="networkEndpointId")
+    def network_endpoint_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The unique identifier number for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "network_endpoint_id")
+
+    @network_endpoint_id.setter
+    def network_endpoint_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "network_endpoint_id", value)
 
     @property
     @pulumi.getter
@@ -654,6 +670,7 @@ class RegionNetworkEndpoint(pulumi.CustomResource):
             if region_network_endpoint_group is None and not opts.urn:
                 raise TypeError("Missing required property 'region_network_endpoint_group'")
             __props__.__dict__["region_network_endpoint_group"] = region_network_endpoint_group
+            __props__.__dict__["network_endpoint_id"] = None
         super(RegionNetworkEndpoint, __self__).__init__(
             'gcp:compute/regionNetworkEndpoint:RegionNetworkEndpoint',
             resource_name,
@@ -668,6 +685,7 @@ class RegionNetworkEndpoint(pulumi.CustomResource):
             fqdn: Optional[pulumi.Input[str]] = None,
             instance: Optional[pulumi.Input[str]] = None,
             ip_address: Optional[pulumi.Input[str]] = None,
+            network_endpoint_id: Optional[pulumi.Input[int]] = None,
             port: Optional[pulumi.Input[int]] = None,
             project: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
@@ -686,6 +704,7 @@ class RegionNetworkEndpoint(pulumi.CustomResource):
                This is required for network endpoints of type GCE_VM_IP_PORTMAP.
         :param pulumi.Input[str] ip_address: IPv4 address external endpoint.
                This can only be specified when network_endpoint_type of the NEG is INTERNET_IP_PORT.
+        :param pulumi.Input[int] network_endpoint_id: The unique identifier number for the resource. This identifier is defined by the server.
         :param pulumi.Input[int] port: Port number of network endpoint.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -703,6 +722,7 @@ class RegionNetworkEndpoint(pulumi.CustomResource):
         __props__.__dict__["fqdn"] = fqdn
         __props__.__dict__["instance"] = instance
         __props__.__dict__["ip_address"] = ip_address
+        __props__.__dict__["network_endpoint_id"] = network_endpoint_id
         __props__.__dict__["port"] = port
         __props__.__dict__["project"] = project
         __props__.__dict__["region"] = region
@@ -743,6 +763,14 @@ class RegionNetworkEndpoint(pulumi.CustomResource):
         This can only be specified when network_endpoint_type of the NEG is INTERNET_IP_PORT.
         """
         return pulumi.get(self, "ip_address")
+
+    @property
+    @pulumi.getter(name="networkEndpointId")
+    def network_endpoint_id(self) -> pulumi.Output[int]:
+        """
+        The unique identifier number for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "network_endpoint_id")
 
     @property
     @pulumi.getter

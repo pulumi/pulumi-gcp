@@ -142,6 +142,8 @@ if typing.TYPE_CHECKING:
     firestore = __firestore
     import pulumi_gcp.folder as __folder
     folder = __folder
+    import pulumi_gcp.gemini as __gemini
+    gemini = __gemini
     import pulumi_gcp.gkebackup as __gkebackup
     gkebackup = __gkebackup
     import pulumi_gcp.gkehub as __gkehub
@@ -325,6 +327,7 @@ else:
     firebaserules = _utilities.lazy_import('pulumi_gcp.firebaserules')
     firestore = _utilities.lazy_import('pulumi_gcp.firestore')
     folder = _utilities.lazy_import('pulumi_gcp.folder')
+    gemini = _utilities.lazy_import('pulumi_gcp.gemini')
     gkebackup = _utilities.lazy_import('pulumi_gcp.gkebackup')
     gkehub = _utilities.lazy_import('pulumi_gcp.gkehub')
     gkeonprem = _utilities.lazy_import('pulumi_gcp.gkeonprem')
@@ -4941,6 +4944,46 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "gemini/codeRepositoryIndex",
+  "fqn": "pulumi_gcp.gemini",
+  "classes": {
+   "gcp:gemini/codeRepositoryIndex:CodeRepositoryIndex": "CodeRepositoryIndex"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "gemini/repositoryGroup",
+  "fqn": "pulumi_gcp.gemini",
+  "classes": {
+   "gcp:gemini/repositoryGroup:RepositoryGroup": "RepositoryGroup"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "gemini/repositoryGroupIamBinding",
+  "fqn": "pulumi_gcp.gemini",
+  "classes": {
+   "gcp:gemini/repositoryGroupIamBinding:RepositoryGroupIamBinding": "RepositoryGroupIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "gemini/repositoryGroupIamMember",
+  "fqn": "pulumi_gcp.gemini",
+  "classes": {
+   "gcp:gemini/repositoryGroupIamMember:RepositoryGroupIamMember": "RepositoryGroupIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "gemini/repositoryGroupIamPolicy",
+  "fqn": "pulumi_gcp.gemini",
+  "classes": {
+   "gcp:gemini/repositoryGroupIamPolicy:RepositoryGroupIamPolicy": "RepositoryGroupIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "gkebackup/backupPlan",
   "fqn": "pulumi_gcp.gkebackup",
   "classes": {
@@ -5401,6 +5444,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.iam",
   "classes": {
    "gcp:iam/principalAccessBoundaryPolicy:PrincipalAccessBoundaryPolicy": "PrincipalAccessBoundaryPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "iam/projectsPolicyBinding",
+  "fqn": "pulumi_gcp.iam",
+  "classes": {
+   "gcp:iam/projectsPolicyBinding:ProjectsPolicyBinding": "ProjectsPolicyBinding"
   }
  },
  {
@@ -6465,6 +6516,38 @@ _utilities.register(
   "fqn": "pulumi_gcp.networksecurity",
   "classes": {
    "gcp:networksecurity/gatewaySecurityPolicyRule:GatewaySecurityPolicyRule": "GatewaySecurityPolicyRule"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "networksecurity/mirroringDeployment",
+  "fqn": "pulumi_gcp.networksecurity",
+  "classes": {
+   "gcp:networksecurity/mirroringDeployment:MirroringDeployment": "MirroringDeployment"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "networksecurity/mirroringDeploymentGroup",
+  "fqn": "pulumi_gcp.networksecurity",
+  "classes": {
+   "gcp:networksecurity/mirroringDeploymentGroup:MirroringDeploymentGroup": "MirroringDeploymentGroup"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "networksecurity/mirroringEndpointGroup",
+  "fqn": "pulumi_gcp.networksecurity",
+  "classes": {
+   "gcp:networksecurity/mirroringEndpointGroup:MirroringEndpointGroup": "MirroringEndpointGroup"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "networksecurity/mirroringEndpointGroupAssociation",
+  "fqn": "pulumi_gcp.networksecurity",
+  "classes": {
+   "gcp:networksecurity/mirroringEndpointGroupAssociation:MirroringEndpointGroupAssociation": "MirroringEndpointGroupAssociation"
   }
  },
  {
@@ -8169,6 +8252,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.tpu",
   "classes": {
    "gcp:tpu/node:Node": "Node"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "tpu/v2QueuedResource",
+  "fqn": "pulumi_gcp.tpu",
+  "classes": {
+   "gcp:tpu/v2QueuedResource:V2QueuedResource": "V2QueuedResource"
   }
  },
  {

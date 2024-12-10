@@ -1156,14 +1156,14 @@ public class Service extends com.pulumi.resources.CustomResource {
         return this.etag;
     }
     /**
-     * For a deleted resource, the time after which it will be permamently deleted.
+     * For a deleted resource, the time after which it will be permanently deleted.
      * 
      */
     @Export(name="expireTime", refs={String.class}, tree="[0]")
     private Output<String> expireTime;
 
     /**
-     * @return For a deleted resource, the time after which it will be permamently deleted.
+     * @return For a deleted resource, the time after which it will be permanently deleted.
      * 
      */
     public Output<String> expireTime() {

@@ -194,6 +194,12 @@ namespace Pulumi.Gcp.CloudBuild
         public Output<Outputs.WorkerPoolNetworkConfig?> NetworkConfig { get; private set; } = null!;
 
         /// <summary>
+        /// Private Service Connect configuration for the pool.
+        /// </summary>
+        [Output("privateServiceConnect")]
+        public Output<Outputs.WorkerPoolPrivateServiceConnect?> PrivateServiceConnect { get; private set; } = null!;
+
+        /// <summary>
         /// The project for the resource
         /// </summary>
         [Output("project")]
@@ -311,6 +317,12 @@ namespace Pulumi.Gcp.CloudBuild
         public Input<Inputs.WorkerPoolNetworkConfigArgs>? NetworkConfig { get; set; }
 
         /// <summary>
+        /// Private Service Connect configuration for the pool.
+        /// </summary>
+        [Input("privateServiceConnect")]
+        public Input<Inputs.WorkerPoolPrivateServiceConnectArgs>? PrivateServiceConnect { get; set; }
+
+        /// <summary>
         /// The project for the resource
         /// </summary>
         [Input("project")]
@@ -390,6 +402,12 @@ namespace Pulumi.Gcp.CloudBuild
         /// </summary>
         [Input("networkConfig")]
         public Input<Inputs.WorkerPoolNetworkConfigGetArgs>? NetworkConfig { get; set; }
+
+        /// <summary>
+        /// Private Service Connect configuration for the pool.
+        /// </summary>
+        [Input("privateServiceConnect")]
+        public Input<Inputs.WorkerPoolPrivateServiceConnectGetArgs>? PrivateServiceConnect { get; set; }
 
         /// <summary>
         /// The project for the resource

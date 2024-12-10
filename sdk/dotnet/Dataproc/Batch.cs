@@ -384,6 +384,66 @@ namespace Pulumi.Gcp.Dataproc
     /// 
     /// });
     /// ```
+    /// ### Dataproc Batch Autotuning
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var exampleBatchAutotuning = new Gcp.Dataproc.Batch("example_batch_autotuning", new()
+    ///     {
+    ///         BatchId = "tf-test-batch_16511",
+    ///         Location = "us-central1",
+    ///         Labels = 
+    ///         {
+    ///             { "batch_test", "terraform" },
+    ///         },
+    ///         RuntimeConfig = new Gcp.Dataproc.Inputs.BatchRuntimeConfigArgs
+    ///         {
+    ///             Version = "2.2",
+    ///             Properties = 
+    ///             {
+    ///                 { "spark.dynamicAllocation.enabled", "false" },
+    ///                 { "spark.executor.instances", "2" },
+    ///             },
+    ///             Cohort = "tf-dataproc-batch-example",
+    ///             AutotuningConfig = new Gcp.Dataproc.Inputs.BatchRuntimeConfigAutotuningConfigArgs
+    ///             {
+    ///                 Scenarios = new[]
+    ///                 {
+    ///                     "SCALING",
+    ///                     "MEMORY",
+    ///                 },
+    ///             },
+    ///         },
+    ///         EnvironmentConfig = new Gcp.Dataproc.Inputs.BatchEnvironmentConfigArgs
+    ///         {
+    ///             ExecutionConfig = new Gcp.Dataproc.Inputs.BatchEnvironmentConfigExecutionConfigArgs
+    ///             {
+    ///                 SubnetworkUri = "default",
+    ///                 Ttl = "3600s",
+    ///             },
+    ///         },
+    ///         SparkBatch = new Gcp.Dataproc.Inputs.BatchSparkBatchArgs
+    ///         {
+    ///             MainClass = "org.apache.spark.examples.SparkPi",
+    ///             Args = new[]
+    ///             {
+    ///                 "10",
+    ///             },
+    ///             JarFileUris = new[]
+    ///             {
+    ///                 "file:///usr/lib/spark/examples/jars/spark-examples.jar",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

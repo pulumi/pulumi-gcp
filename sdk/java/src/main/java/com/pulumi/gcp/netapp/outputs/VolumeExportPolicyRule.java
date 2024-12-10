@@ -19,7 +19,7 @@ public final class VolumeExportPolicyRule {
      */
     private @Nullable String accessType;
     /**
-     * @return Defines the client ingress specification (allowed clients) as a comma seperated list with IPv4 CIDRs or IPv4 host addresses.
+     * @return Defines the client ingress specification (allowed clients) as a comma separated list with IPv4 CIDRs or IPv4 host addresses.
      * 
      */
     private @Nullable String allowedClients;
@@ -79,7 +79,7 @@ public final class VolumeExportPolicyRule {
         return Optional.ofNullable(this.accessType);
     }
     /**
-     * @return Defines the client ingress specification (allowed clients) as a comma seperated list with IPv4 CIDRs or IPv4 host addresses.
+     * @return Defines the client ingress specification (allowed clients) as a comma separated list with IPv4 CIDRs or IPv4 host addresses.
      * 
      */
     public Optional<String> allowedClients() {

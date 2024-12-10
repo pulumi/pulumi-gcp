@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Provides access to Kubernetes ConfigMap configuration for a given project, region and Composer Environment.
+ *
  * ## Example Usage
  *
  * ```typescript
@@ -86,6 +88,8 @@ export interface GetUserWorkloadsConfigMapResult {
     readonly region?: string;
 }
 /**
+ * Provides access to Kubernetes ConfigMap configuration for a given project, region and Composer Environment.
+ *
  * ## Example Usage
  *
  * ```typescript

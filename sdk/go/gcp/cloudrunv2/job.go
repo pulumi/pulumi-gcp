@@ -578,7 +578,7 @@ type Job struct {
 	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Number of executions created for this job.
 	ExecutionCount pulumi.IntOutput `pulumi:"executionCount"`
-	// For a deleted resource, the time after which it will be permamently deleted.
+	// For a deleted resource, the time after which it will be permanently deleted.
 	ExpireTime pulumi.StringOutput `pulumi:"expireTime"`
 	// A number that monotonically increases every time the user modifies the desired state.
 	Generation pulumi.StringOutput `pulumi:"generation"`
@@ -710,7 +710,7 @@ type jobState struct {
 	Etag *string `pulumi:"etag"`
 	// Number of executions created for this job.
 	ExecutionCount *int `pulumi:"executionCount"`
-	// For a deleted resource, the time after which it will be permamently deleted.
+	// For a deleted resource, the time after which it will be permanently deleted.
 	ExpireTime *string `pulumi:"expireTime"`
 	// A number that monotonically increases every time the user modifies the desired state.
 	Generation *string `pulumi:"generation"`
@@ -802,7 +802,7 @@ type JobState struct {
 	Etag pulumi.StringPtrInput
 	// Number of executions created for this job.
 	ExecutionCount pulumi.IntPtrInput
-	// For a deleted resource, the time after which it will be permamently deleted.
+	// For a deleted resource, the time after which it will be permanently deleted.
 	ExpireTime pulumi.StringPtrInput
 	// A number that monotonically increases every time the user modifies the desired state.
 	Generation pulumi.StringPtrInput
@@ -1120,7 +1120,7 @@ func (o JobOutput) ExecutionCount() pulumi.IntOutput {
 	return o.ApplyT(func(v *Job) pulumi.IntOutput { return v.ExecutionCount }).(pulumi.IntOutput)
 }
 
-// For a deleted resource, the time after which it will be permamently deleted.
+// For a deleted resource, the time after which it will be permanently deleted.
 func (o JobOutput) ExpireTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Job) pulumi.StringOutput { return v.ExpireTime }).(pulumi.StringOutput)
 }

@@ -41,7 +41,7 @@ export interface GetAccountKeyArgs {
      */
     name: string;
     /**
-     * The ID of the project that the service account will be created in.
+     * The ID of the project that the service account is present in.
      * Defaults to the provider project configuration.
      */
     project?: string;
@@ -105,7 +105,7 @@ export interface GetAccountKeyOutputArgs {
      */
     name: pulumi.Input<string>;
     /**
-     * The ID of the project that the service account will be created in.
+     * The ID of the project that the service account is present in.
      * Defaults to the provider project configuration.
      */
     project?: pulumi.Input<string>;

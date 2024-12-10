@@ -7,14 +7,6 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
- * A Google Cloud Redis Cluster instance.
- *
- * To get more information about Cluster, see:
- *
- * * [API documentation](https://cloud.google.com/memorystore/docs/cluster/reference/rest/v1/projects.locations.clusters)
- * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/memorystore/docs/cluster/)
- *
  * ## Example Usage
  *
  * ### Redis Cluster Ha
@@ -127,6 +119,135 @@ import * as utilities from "../utilities";
  *     deletionProtectionEnabled: true,
  * }, {
  *     dependsOn: [_default],
+ * });
+ * ```
+ * ### Redis Cluster Secondary
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const producerNet = new gcp.compute.Network("producer_net", {
+ *     name: "mynetwork",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const primaryClusterProducerSubnet = new gcp.compute.Subnetwork("primary_cluster_producer_subnet", {
+ *     name: "mysubnet-primary-cluster",
+ *     ipCidrRange: "10.0.1.0/29",
+ *     region: "us-east1",
+ *     network: producerNet.id,
+ * });
+ * const primaryClusterRegionScp = new gcp.networkconnectivity.ServiceConnectionPolicy("primary_cluster_region_scp", {
+ *     name: "mypolicy-primary-cluster",
+ *     location: "us-east1",
+ *     serviceClass: "gcp-memorystore-redis",
+ *     description: "Primary cluster service connection policy",
+ *     network: producerNet.id,
+ *     pscConfig: {
+ *         subnetworks: [primaryClusterProducerSubnet.id],
+ *     },
+ * });
+ * // Primary cluster
+ * const primaryCluster = new gcp.redis.Cluster("primary_cluster", {
+ *     name: "my-primary-cluster",
+ *     region: "us-east1",
+ *     pscConfigs: [{
+ *         network: producerNet.id,
+ *     }],
+ *     authorizationMode: "AUTH_MODE_DISABLED",
+ *     transitEncryptionMode: "TRANSIT_ENCRYPTION_MODE_DISABLED",
+ *     shardCount: 3,
+ *     redisConfigs: {
+ *         "maxmemory-policy": "volatile-ttl",
+ *     },
+ *     nodeType: "REDIS_HIGHMEM_MEDIUM",
+ *     persistenceConfig: {
+ *         mode: "RDB",
+ *         rdbConfig: {
+ *             rdbSnapshotPeriod: "ONE_HOUR",
+ *             rdbSnapshotStartTime: "2024-10-02T15:01:23Z",
+ *         },
+ *     },
+ *     zoneDistributionConfig: {
+ *         mode: "MULTI_ZONE",
+ *     },
+ *     replicaCount: 1,
+ *     maintenancePolicy: {
+ *         weeklyMaintenanceWindows: [{
+ *             day: "MONDAY",
+ *             startTime: {
+ *                 hours: 1,
+ *                 minutes: 0,
+ *                 seconds: 0,
+ *                 nanos: 0,
+ *             },
+ *         }],
+ *     },
+ *     deletionProtectionEnabled: true,
+ * }, {
+ *     dependsOn: [primaryClusterRegionScp],
+ * });
+ * const secondaryClusterProducerSubnet = new gcp.compute.Subnetwork("secondary_cluster_producer_subnet", {
+ *     name: "mysubnet-secondary-cluster",
+ *     ipCidrRange: "10.0.2.0/29",
+ *     region: "europe-west1",
+ *     network: producerNet.id,
+ * });
+ * const secondaryClusterRegionScp = new gcp.networkconnectivity.ServiceConnectionPolicy("secondary_cluster_region_scp", {
+ *     name: "mypolicy-secondary-cluster",
+ *     location: "europe-west1",
+ *     serviceClass: "gcp-memorystore-redis",
+ *     description: "Secondary cluster service connection policy",
+ *     network: producerNet.id,
+ *     pscConfig: {
+ *         subnetworks: [secondaryClusterProducerSubnet.id],
+ *     },
+ * });
+ * // Secondary cluster
+ * const secondaryCluster = new gcp.redis.Cluster("secondary_cluster", {
+ *     name: "my-secondary-cluster",
+ *     region: "europe-west1",
+ *     pscConfigs: [{
+ *         network: producerNet.id,
+ *     }],
+ *     authorizationMode: "AUTH_MODE_DISABLED",
+ *     transitEncryptionMode: "TRANSIT_ENCRYPTION_MODE_DISABLED",
+ *     shardCount: 3,
+ *     redisConfigs: {
+ *         "maxmemory-policy": "volatile-ttl",
+ *     },
+ *     nodeType: "REDIS_HIGHMEM_MEDIUM",
+ *     persistenceConfig: {
+ *         mode: "RDB",
+ *         rdbConfig: {
+ *             rdbSnapshotPeriod: "ONE_HOUR",
+ *             rdbSnapshotStartTime: "2024-10-02T15:01:23Z",
+ *         },
+ *     },
+ *     zoneDistributionConfig: {
+ *         mode: "MULTI_ZONE",
+ *     },
+ *     replicaCount: 2,
+ *     maintenancePolicy: {
+ *         weeklyMaintenanceWindows: [{
+ *             day: "WEDNESDAY",
+ *             startTime: {
+ *                 hours: 1,
+ *                 minutes: 0,
+ *                 seconds: 0,
+ *                 nanos: 0,
+ *             },
+ *         }],
+ *     },
+ *     deletionProtectionEnabled: true,
+ *     crossClusterReplicationConfig: {
+ *         clusterRole: "SECONDARY",
+ *         primaryCluster: {
+ *             cluster: primaryCluster.id,
+ *         },
+ *     },
+ * }, {
+ *     dependsOn: [secondaryClusterRegionScp],
  * });
  * ```
  * ### Redis Cluster Rdb
@@ -332,6 +453,10 @@ export class Cluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
+     * Cross cluster replication config
+     */
+    public readonly crossClusterReplicationConfig!: pulumi.Output<outputs.redis.ClusterCrossClusterReplicationConfig>;
+    /**
      * Optional. Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster
      * operation will fail. Default value is true.
      */
@@ -444,6 +569,7 @@ export class Cluster extends pulumi.CustomResource {
             const state = argsOrState as ClusterState | undefined;
             resourceInputs["authorizationMode"] = state ? state.authorizationMode : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["crossClusterReplicationConfig"] = state ? state.crossClusterReplicationConfig : undefined;
             resourceInputs["deletionProtectionEnabled"] = state ? state.deletionProtectionEnabled : undefined;
             resourceInputs["discoveryEndpoints"] = state ? state.discoveryEndpoints : undefined;
             resourceInputs["maintenancePolicy"] = state ? state.maintenancePolicy : undefined;
@@ -474,6 +600,7 @@ export class Cluster extends pulumi.CustomResource {
                 throw new Error("Missing required property 'shardCount'");
             }
             resourceInputs["authorizationMode"] = args ? args.authorizationMode : undefined;
+            resourceInputs["crossClusterReplicationConfig"] = args ? args.crossClusterReplicationConfig : undefined;
             resourceInputs["deletionProtectionEnabled"] = args ? args.deletionProtectionEnabled : undefined;
             resourceInputs["maintenancePolicy"] = args ? args.maintenancePolicy : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
@@ -518,6 +645,10 @@ export interface ClusterState {
      * digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
      */
     createTime?: pulumi.Input<string>;
+    /**
+     * Cross cluster replication config
+     */
+    crossClusterReplicationConfig?: pulumi.Input<inputs.redis.ClusterCrossClusterReplicationConfig>;
     /**
      * Optional. Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster
      * operation will fail. Default value is true.
@@ -627,6 +758,10 @@ export interface ClusterArgs {
      * "AUTH_MODE_DISABLED"]
      */
     authorizationMode?: pulumi.Input<string>;
+    /**
+     * Cross cluster replication config
+     */
+    crossClusterReplicationConfig?: pulumi.Input<inputs.redis.ClusterCrossClusterReplicationConfig>;
     /**
      * Optional. Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster
      * operation will fail. Default value is true.

@@ -1384,6 +1384,13 @@ export namespace accesscontextmanager {
          */
         description?: string;
         /**
+         * (Output)
+         * An opaque identifier for the current version of the ServicePerimeter. This
+         * identifier does not follow any specific format. If an etag is not provided, the
+         * operation will be performed as if a valid etag is provided.
+         */
+        etag: string;
+        /**
          * Resource name for the ServicePerimeter. The shortName component must
          * begin with a letter and only include alphanumeric and '_'.
          * Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
@@ -4829,14 +4836,17 @@ export namespace artifactregistry {
 
     export interface GetRepositoryRemoteRepositoryConfigCommonRepository {
         /**
-         * Specific uri to the Artifact Registory repository, e.g. 'projects/UPSTREAM_PROJECT_ID/locations/REGION/repositories/UPSTREAM_REPOSITORY'
+         * One of:
+         * a. Artifact Registry Repository resource, e.g. 'projects/UPSTREAM_PROJECT_ID/locations/REGION/repositories/UPSTREAM_REPOSITORY'
+         * b. URI to the registry, e.g. '"https://registry-1.docker.io"'
+         * c. URI to Artifact Registry Repository, e.g. '"https://REGION-docker.pkg.dev/UPSTREAM_PROJECT_ID/UPSTREAM_REPOSITORY"'
          */
         uri: string;
     }
 
     export interface GetRepositoryRemoteRepositoryConfigDockerRepository {
         /**
-         * Settings for a remote repository with a custom uri.
+         * [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
          */
         customRepositories: outputs.artifactregistry.GetRepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository[];
         /**
@@ -4854,7 +4864,7 @@ export namespace artifactregistry {
 
     export interface GetRepositoryRemoteRepositoryConfigMavenRepository {
         /**
-         * Settings for a remote repository with a custom uri.
+         * [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
          */
         customRepositories: outputs.artifactregistry.GetRepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository[];
         /**
@@ -4872,7 +4882,7 @@ export namespace artifactregistry {
 
     export interface GetRepositoryRemoteRepositoryConfigNpmRepository {
         /**
-         * Settings for a remote repository with a custom uri.
+         * [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
          */
         customRepositories: outputs.artifactregistry.GetRepositoryRemoteRepositoryConfigNpmRepositoryCustomRepository[];
         /**
@@ -4890,7 +4900,7 @@ export namespace artifactregistry {
 
     export interface GetRepositoryRemoteRepositoryConfigPythonRepository {
         /**
-         * Settings for a remote repository with a custom uri.
+         * [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
          */
         customRepositories: outputs.artifactregistry.GetRepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository[];
         /**
@@ -5138,14 +5148,17 @@ export namespace artifactregistry {
 
     export interface RepositoryRemoteRepositoryConfigCommonRepository {
         /**
-         * Specific uri to the Artifact Registory repository, e.g. `projects/UPSTREAM_PROJECT_ID/locations/REGION/repositories/UPSTREAM_REPOSITORY`
+         * One of:
+         * a. Artifact Registry Repository resource, e.g. `projects/UPSTREAM_PROJECT_ID/locations/REGION/repositories/UPSTREAM_REPOSITORY`
+         * b. URI to the registry, e.g. `"https://registry-1.docker.io"`
+         * c. URI to Artifact Registry Repository, e.g. `"https://REGION-docker.pkg.dev/UPSTREAM_PROJECT_ID/UPSTREAM_REPOSITORY"`
          */
         uri: string;
     }
 
     export interface RepositoryRemoteRepositoryConfigDockerRepository {
         /**
-         * Settings for a remote repository with a custom uri.
+         * [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
          * Structure is documented below.
          */
         customRepository?: outputs.artifactregistry.RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepository;
@@ -5166,7 +5179,7 @@ export namespace artifactregistry {
 
     export interface RepositoryRemoteRepositoryConfigMavenRepository {
         /**
-         * Settings for a remote repository with a custom uri.
+         * [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
          * Structure is documented below.
          */
         customRepository?: outputs.artifactregistry.RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepository;
@@ -5187,7 +5200,7 @@ export namespace artifactregistry {
 
     export interface RepositoryRemoteRepositoryConfigNpmRepository {
         /**
-         * Settings for a remote repository with a custom uri.
+         * [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
          * Structure is documented below.
          */
         customRepository?: outputs.artifactregistry.RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepository;
@@ -5208,7 +5221,7 @@ export namespace artifactregistry {
 
     export interface RepositoryRemoteRepositoryConfigPythonRepository {
         /**
-         * Settings for a remote repository with a custom uri.
+         * [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
          * Structure is documented below.
          */
         customRepository?: outputs.artifactregistry.RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepository;
@@ -5510,6 +5523,29 @@ export namespace backupdisasterrecovery {
          * Possible values are: `WEEK_OF_MONTH_UNSPECIFIED`, `FIRST`, `SECOND`, `THIRD`, `FOURTH`, `LAST`.
          */
         weekOfMonth: string;
+    }
+
+    export interface GetBackupBackup {
+        /**
+         * Id of the requesting object, Backup.
+         */
+        backupId: string;
+        /**
+         * Name of the Backup Vault associated with Backup.
+         */
+        backupVaultId: string;
+        /**
+         * Name of the Data Source associated with Backup.
+         */
+        dataSourceId: string;
+        /**
+         * Location of the resource.
+         */
+        location: string;
+        /**
+         * Name of the resource.
+         */
+        name: string;
     }
 
     export interface GetBackupPlanAssociationRulesConfigInfo {
@@ -8280,7 +8316,7 @@ export namespace billing {
          * Optional. If creditTypesTreatment is INCLUDE_SPECIFIED_CREDITS,
          * this is a list of credit types to be subtracted from gross cost to determine the spend for threshold calculations. See a list of acceptable credit type values.
          * If creditTypesTreatment is not INCLUDE_SPECIFIED_CREDITS, this field must be empty.
-         * **Note:** If the field has a value in the config and needs to be removed, the field has to be an emtpy array in the config.
+         * **Note:** If the field has a value in the config and needs to be removed, the field has to be an empty array in the config.
          */
         creditTypes: string[];
         /**
@@ -8333,7 +8369,7 @@ export namespace billing {
          * the parent account, usage from the parent account will be included.
          * If the field is omitted, the report will include usage from the parent
          * account and all subaccounts, if they exist.
-         * **Note:** If the field has a value in the config and needs to be removed, the field has to be an emtpy array in the config.
+         * **Note:** If the field has a value in the config and needs to be removed, the field has to be an empty array in the config.
          */
         subaccounts: string[];
     }
@@ -8782,7 +8818,7 @@ export namespace certificateauthority {
 
     export interface AuthorityConfigSubjectKeyId {
         /**
-         * The value of the KeyId in lowercase hexidecimal.
+         * The value of the KeyId in lowercase hexadecimal.
          *
          * <a name="nestedX509Config"></a>The `x509Config` block supports:
          */
@@ -9671,7 +9707,7 @@ export namespace certificateauthority {
 
     export interface CertificateCertificateDescriptionSubjectKeyId {
         /**
-         * The value of the KeyId in lowercase hexidecimal.
+         * The value of the KeyId in lowercase hexadecimal.
          */
         keyId: string;
     }
@@ -10019,7 +10055,7 @@ export namespace certificateauthority {
 
     export interface CertificateConfigSubjectKeyId {
         /**
-         * The value of the KeyId in lowercase hexidecimal.
+         * The value of the KeyId in lowercase hexadecimal.
          */
         keyId?: string;
     }
@@ -10616,7 +10652,7 @@ export namespace certificateauthority {
 
     export interface GetAuthorityConfigSubjectKeyId {
         /**
-         * The value of the KeyId in lowercase hexidecimal.
+         * The value of the KeyId in lowercase hexadecimal.
          */
         keyId: string;
     }
@@ -13223,6 +13259,17 @@ export namespace cloudbuild {
         peeredNetworkIpRange?: string;
     }
 
+    export interface WorkerPoolPrivateServiceConnect {
+        /**
+         * Required. Immutable. The network attachment that the worker network interface is connected to. Must be in the format `projects/{project}/regions/{region}/networkAttachments/{networkAttachment}`. The region of network attachment must be the same as the worker pool. See [Network Attachments](https://cloud.google.com/vpc/docs/about-network-attachments)
+         */
+        networkAttachment: string;
+        /**
+         * Immutable. Route all traffic through PSC interface. Enable this if you want full control of traffic in the private pool. Configure Cloud NAT for the subnet of network attachment if you need to access public Internet. If false, Only route private IPs, e.g. 10.0.0.0/8, 172.16.0.0/12, and 192.168.0.0/16 through PSC interface.
+         */
+        routeAllTraffic?: boolean;
+    }
+
     export interface WorkerPoolWorkerConfig {
         /**
          * Size of the disk attached to the worker, in GB. See [diskSizeGb](https://cloud.google.com/build/docs/private-pools/private-pool-config-file-schema#disksizegb). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
@@ -13942,6 +13989,10 @@ export namespace clouddeploy {
          */
         podSelectorLabel?: string;
         /**
+         * Optional. Route destinations allow configuring the Gateway API HTTPRoute to be deployed to additional clusters. This option is available for multi-cluster service mesh set ups that require the route to exist in the clusters that call the service. If unspecified, the HTTPRoute will only be deployed to the Target cluster.
+         */
+        routeDestinations?: outputs.clouddeploy.DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinations;
+        /**
          * Optional. The time to wait for route updates to propagate. The maximum configurable time is 3 hours, in seconds format. If unspecified, there is no wait time.
          */
         routeUpdateWaitTime?: string;
@@ -13953,6 +14004,17 @@ export namespace clouddeploy {
          * Optional. The amount of time to migrate traffic back from the canary Service to the original Service during the stable phase deployment. If specified, must be between 15s and 3600s. If unspecified, there is no cutback time.
          */
         stableCutbackDuration?: string;
+    }
+
+    export interface DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinations {
+        /**
+         * Required. The clusters where the Gateway API HTTPRoute resource will be deployed to. Valid entries include the associated entities IDs configured in the Target resource and "@self" to include the Target cluster.
+         */
+        destinationIds: string[];
+        /**
+         * Optional. Whether to propagate the Kubernetes Service to the route destination clusters. The Service will always be deployed to the Target cluster even if the HTTPRoute is not. This option may be used to facilitiate successful DNS lookup in the route destination clusters. Can only be set to true if destinations are specified.
+         */
+        propagateService?: boolean;
     }
 
     export interface DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking {
@@ -14008,6 +14070,43 @@ export namespace clouddeploy {
          * Membership of the GKE Hub-registered cluster to which to apply the Skaffold configuration. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.
          */
         membership?: string;
+    }
+
+    export interface TargetAssociatedEntity {
+        /**
+         * Optional. Information specifying Anthos clusters as associated entities.
+         */
+        anthosClusters?: outputs.clouddeploy.TargetAssociatedEntityAnthosCluster[];
+        /**
+         * The name for the key in the map for which this object is mapped to in the API
+         */
+        entityId: string;
+        /**
+         * Optional. Information specifying GKE clusters as associated entities.
+         */
+        gkeClusters?: outputs.clouddeploy.TargetAssociatedEntityGkeCluster[];
+    }
+
+    export interface TargetAssociatedEntityAnthosCluster {
+        /**
+         * Optional. Membership of the GKE Hub-registered cluster to which to apply the Skaffold configuration. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.
+         */
+        membership?: string;
+    }
+
+    export interface TargetAssociatedEntityGkeCluster {
+        /**
+         * Optional. Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}`.
+         */
+        cluster?: string;
+        /**
+         * Optional. If true, `cluster` is accessed using the private IP address of the control plane endpoint. Otherwise, the default IP address of the control plane endpoint is used. The default IP address is the private IP address for clusters with private control-plane endpoints and the public IP address otherwise. Only specify this option when `cluster` is a [private GKE cluster](https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept).
+         */
+        internalIp?: boolean;
+        /**
+         * Optional. If set, used to configure a [proxy](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#proxy) to the Kubernetes server.
+         */
+        proxyUrl?: string;
     }
 
     export interface TargetCustomTarget {
@@ -14896,7 +14995,7 @@ export namespace cloudfunctionsv2 {
          */
         key: string;
         /**
-         * Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+         * Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
          */
         projectId: string;
         /**
@@ -14915,7 +15014,7 @@ export namespace cloudfunctionsv2 {
          */
         mountPath: string;
         /**
-         * Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+         * Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
          */
         projectId: string;
         /**
@@ -15203,7 +15302,7 @@ export namespace cloudfunctionsv2 {
          */
         key: string;
         /**
-         * Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+         * Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
          */
         projectId: string;
         /**
@@ -15222,7 +15321,7 @@ export namespace cloudfunctionsv2 {
          */
         mountPath: string;
         /**
-         * Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+         * Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
          */
         projectId: string;
         /**
@@ -23904,7 +24003,7 @@ export namespace compute {
         /**
          * The region you want to get the forwarding rules from.
          *
-         * These arguments must be set in either the provider or the resouce in order for the information to be queried.
+         * These arguments must be set in either the provider or the resource in order for the information to be queried.
          */
         region: string;
         /**
@@ -24354,6 +24453,14 @@ export namespace compute {
          */
         enableNestedVirtualization: boolean;
         /**
+         * Whether to enable UEFI networking for the instance.
+         */
+        enableUefiNetworking: boolean;
+        /**
+         * The PMU is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are "STANDARD", "ENHANCED", and "ARCHITECTURAL".
+         */
+        performanceMonitoringUnit: string;
+        /**
          * The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
          */
         threadsPerCore: number;
@@ -24789,7 +24896,7 @@ export namespace compute {
          */
         networkIp: string;
         /**
-         * The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, IDPF
+         * The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, IDPF, MRDMA, and IRDMA
          */
         nicType: string;
         /**
@@ -25054,6 +25161,14 @@ export namespace compute {
          */
         enableNestedVirtualization: boolean;
         /**
+         * Whether to enable UEFI networking or not.
+         */
+        enableUefiNetworking: boolean;
+        /**
+         * The PMU is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are "STANDARD", "ENHANCED", and "ARCHITECTURAL".
+         */
+        performanceMonitoringUnit: string;
+        /**
          * The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
          */
         threadsPerCore: number;
@@ -25294,7 +25409,7 @@ export namespace compute {
          */
         networkIp: string;
         /**
-         * The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET
+         * The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, MRDMA, and IRDMA
          */
         nicType: string;
         /**
@@ -25950,6 +26065,14 @@ export namespace compute {
          */
         enableNestedVirtualization: boolean;
         /**
+         * Whether to enable UEFI networking or not.
+         */
+        enableUefiNetworking: boolean;
+        /**
+         * The PMU is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are "STANDARD", "ENHANCED", and "ARCHITECTURAL".
+         */
+        performanceMonitoringUnit: string;
+        /**
          * The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
          */
         threadsPerCore: number;
@@ -26178,7 +26301,7 @@ export namespace compute {
          */
         networkIp: string;
         /**
-         * The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET
+         * The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, MRDMA, and IRDMA
          */
         nicType: string;
         /**
@@ -26503,6 +26626,16 @@ export namespace compute {
          * and { service="bar2", tag="foo2" } respectively.
          */
         urlMask: string;
+    }
+
+    export interface GetRegionNetworkEndpointGroupPscData {
+        /**
+         * The PSC producer port to use when consumer PSC NEG connects to a producer. If
+         * this flag isn't specified for a PSC NEG with endpoint type
+         * private-service-connect, then PSC NEG will be connected to a first port in the
+         * available PSC producer port range.
+         */
+        producerPort: string;
     }
 
     export interface GetRegionNetworkEndpointGroupServerlessDeployment {
@@ -27206,6 +27339,40 @@ export namespace compute {
          * Rule visibility. Supported values include: "STANDARD", "PREMIUM".
          */
         ruleVisibility: string;
+        /**
+         * Configuration options for layer7 adaptive protection for various customizable thresholds.
+         */
+        thresholdConfigs: outputs.compute.GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig[];
+    }
+
+    export interface GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig {
+        autoDeployConfidenceThreshold: number;
+        autoDeployExpirationSec: number;
+        autoDeployImpactedBaselineThreshold: number;
+        autoDeployLoadThreshold: number;
+        detectionAbsoluteQps: number;
+        detectionLoadThreshold: number;
+        detectionRelativeToBaselineQps: number;
+        /**
+         * The name of the security policy. Provide either this or a `selfLink`.
+         */
+        name: string;
+        trafficGranularityConfigs: outputs.compute.GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig[];
+    }
+
+    export interface GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig {
+        /**
+         * If enabled, traffic matching each unique value for the specified type constitutes a separate traffic unit. It can only be set to true if value is empty.
+         */
+        enableEachUniqueValue: boolean;
+        /**
+         * Type of this configuration.
+         */
+        type: string;
+        /**
+         * Requests that match this value constitute a granular traffic unit.
+         */
+        value: string;
     }
 
     export interface GetSecurityPolicyAdvancedOptionsConfig {
@@ -28046,6 +28213,14 @@ export namespace compute {
          */
         enableNestedVirtualization?: boolean;
         /**
+         * Whether to enable UEFI networking for instance creation.
+         */
+        enableUefiNetworking?: boolean;
+        /**
+         * [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+         */
+        performanceMonitoringUnit?: string;
+        /**
          * The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
          */
         threadsPerCore?: number;
@@ -28208,10 +28383,12 @@ export namespace compute {
          */
         size: number;
         /**
-         * The URL of the storage pool in which the new disk is created.
+         * The URL or the name of the storage pool in which the new disk is created.
          * For example:
          * * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
          * * /projects/{project}/zones/{zone}/storagePools/{storagePool}
+         * * /zones/{zone}/storagePools/{storagePool}
+         * * /{storagePool}
          */
         storagePool?: string;
         /**
@@ -28236,6 +28413,14 @@ export namespace compute {
          * Whether to enable nested virtualization or not.
          */
         enableNestedVirtualization: boolean;
+        /**
+         * Whether to enable UEFI networking for the instance.
+         */
+        enableUefiNetworking: boolean;
+        /**
+         * The PMU is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are "STANDARD", "ENHANCED", and "ARCHITECTURAL".
+         */
+        performanceMonitoringUnit: string;
         /**
          * The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
          */
@@ -28427,7 +28612,7 @@ export namespace compute {
          */
         networkIp: string;
         /**
-         * The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, IDPF
+         * The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, IDPF, MRDMA, and IRDMA
          */
         nicType: string;
         /**
@@ -28687,6 +28872,14 @@ export namespace compute {
          */
         enableNestedVirtualization: boolean;
         /**
+         * Whether to enable UEFI networking for the instance.
+         */
+        enableUefiNetworking: boolean;
+        /**
+         * The PMU is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are "STANDARD", "ENHANCED", and "ARCHITECTURAL".
+         */
+        performanceMonitoringUnit: string;
+        /**
          * The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
          */
         threadsPerCore: number;
@@ -28877,7 +29070,7 @@ export namespace compute {
          */
         networkIp: string;
         /**
-         * The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, IDPF
+         * The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, IDPF, MRDMA, and IRDMA
          */
         nicType: string;
         /**
@@ -29471,7 +29664,7 @@ export namespace compute {
          */
         networkIp: string;
         /**
-         * The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, IDPF.
+         * The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, IDPF. In the beta provider the additional values of MRDMA and IRDMA are supported.
          */
         nicType?: string;
         /**
@@ -29791,6 +29984,14 @@ export namespace compute {
          */
         enableNestedVirtualization?: boolean;
         /**
+         * Whether to enable UEFI networking for instance creation.
+         */
+        enableUefiNetworking?: boolean;
+        /**
+         * [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+         */
+        performanceMonitoringUnit?: string;
+        /**
          * The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
          */
         threadsPerCore?: number;
@@ -30042,7 +30243,7 @@ export namespace compute {
          */
         networkIp?: string;
         /**
-         * The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET.
+         * The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET. In the beta provider the additional values of MRDMA and IRDMA are supported.
          */
         nicType?: string;
         /**
@@ -32935,6 +33136,14 @@ export namespace compute {
          */
         enableNestedVirtualization?: boolean;
         /**
+         * Whether to enable UEFI networking for instance creation.
+         */
+        enableUefiNetworking?: boolean;
+        /**
+         * [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+         */
+        performanceMonitoringUnit?: string;
+        /**
          * The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
          */
         threadsPerCore?: number;
@@ -33173,7 +33382,7 @@ export namespace compute {
          */
         networkIp?: string;
         /**
-         * The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET.
+         * The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET. In the beta provider the additional values of MRDMA and IRDMA are supported.
          */
         nicType?: string;
         /**
@@ -33507,6 +33716,16 @@ export namespace compute {
          * and { service="bar2", tag="foo2" } respectively.
          */
         urlMask?: string;
+    }
+
+    export interface RegionNetworkEndpointGroupPscData {
+        /**
+         * The PSC producer port to use when consumer PSC NEG connects to a producer. If
+         * this flag isn't specified for a PSC NEG with endpoint type
+         * private-service-connect, then PSC NEG will be connected to a first port in the
+         * available PSC producer port range.
+         */
+        producerPort?: string;
     }
 
     export interface RegionNetworkEndpointGroupServerlessDeployment {
@@ -37574,6 +37793,66 @@ export namespace compute {
          * Rule visibility. Supported values include: "STANDARD", "PREMIUM".
          */
         ruleVisibility: string;
+        /**
+         * Configuration options for layer7 adaptive protection for various customizable thresholds.
+         */
+        thresholdConfigs?: outputs.compute.SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig[];
+    }
+
+    export interface SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig {
+        /**
+         * Confidence threshold above which Adaptive Protection's auto-deploy takes actions.
+         */
+        autoDeployConfidenceThreshold?: number;
+        /**
+         * Duration over which Adaptive Protection's auto-deployed actions last.
+         */
+        autoDeployExpirationSec?: number;
+        /**
+         * Impacted baseline threshold below which Adaptive Protection's auto-deploy takes actions.
+         */
+        autoDeployImpactedBaselineThreshold?: number;
+        /**
+         * Load threshold above which Adaptive Protection automatically deploy threshold based on the backend load threshold and detect a new rule during an alerted attack.
+         */
+        autoDeployLoadThreshold?: number;
+        /**
+         * Detection threshold based on absolute QPS.
+         */
+        detectionAbsoluteQps?: number;
+        /**
+         * Detection threshold based on the backend service's load.
+         */
+        detectionLoadThreshold?: number;
+        /**
+         * Detection threshold based on QPS relative to the average of baseline traffic.
+         */
+        detectionRelativeToBaselineQps?: number;
+        /**
+         * The name of config. The name must be 1-63 characters long, and comply with RFC1035. The name must be unique within the security policy.
+         */
+        name: string;
+        /**
+         * Configuration options for enabling Adaptive Protection to work on the specified service granularity. Structure is documented below.
+         */
+        trafficGranularityConfigs?: outputs.compute.SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig[];
+    }
+
+    export interface SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig {
+        /**
+         * If enabled, traffic matching each unique value for the specified type constitutes a separate traffic unit. It can only be set to true if value is empty.
+         */
+        enableEachUniqueValue?: boolean;
+        /**
+         * The type of this configuration, a granular traffic unit can be one of the following:
+         * * `HTTP_HEADER_HOST`
+         * * `HTTP_PATH`
+         */
+        type: string;
+        /**
+         * Requests that match this value constitute a granular traffic unit.
+         */
+        value?: string;
     }
 
     export interface SecurityPolicyAdvancedOptionsConfig {
@@ -38708,7 +38987,7 @@ export namespace compute {
 
     export interface URLMapPathMatcher {
         /**
-         * defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error.
+         * defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendService or BackendBucket responds with an error.
          * This policy takes effect at the PathMatcher level and applies only when no policy has been defined for the error code at lower levels like RouteRule and PathRule within this PathMatcher. If an error code does not have a policy defined in defaultCustomErrorResponsePolicy, then a policy defined for the error code in UrlMap.defaultCustomErrorResponsePolicy takes effect.
          * For example, consider a UrlMap with the following configuration:
          * UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors
@@ -39232,7 +39511,7 @@ export namespace compute {
 
     export interface URLMapPathMatcherPathRule {
         /**
-         * customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error.
+         * customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendService or BackendBucket responds with an error.
          * If a policy for an error code is not configured for the PathRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect.
          * For example, consider a UrlMap with the following configuration:
          * UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors
@@ -41521,7 +41800,7 @@ export namespace container {
          */
         diskSize?: number;
         /**
-         * Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced'). Defaults to `pd-standard`
+         * Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd', 'pd-balanced', or 'hyperdisk-balanced'). Defaults to `hyperdisk-balanced` if `hyperdisk-balanced` is supported and `pd-balanced` is not supported for the machine type; otherwise defaults to `pd-balanced`.
          */
         diskType?: string;
         /**
@@ -41750,6 +42029,17 @@ export namespace container {
          * Enabled Kubernetes Beta APIs.
          */
         enabledApis: string[];
+    }
+
+    export interface ClusterEnterpriseConfig {
+        /**
+         * The effective tier of the cluster.
+         */
+        clusterTier: string;
+        /**
+         * Sets the tier of the cluster. Available options include `STANDARD` and `ENTERPRISE`.
+         */
+        desiredTier: string;
     }
 
     export interface ClusterFleet {
@@ -42195,6 +42485,13 @@ export namespace container {
          * attached to each cluster node. Defaults to 0.
          */
         localSsdCount: number;
+        /**
+         * Possible Local SSD encryption modes:
+         * Accepted values are:
+         * * `STANDARD_ENCRYPTION`: The given node will be encrypted using keys managed by Google infrastructure and the keys wll be deleted when the node is deleted.
+         * * `EPHEMERAL_KEY_ENCRYPTION`: The given node will opt-in for using ephemeral key for encrypting Local SSDs. The Local SSDs will not be able to recover data in case of node crash.
+         */
+        localSsdEncryptionMode?: string;
         /**
          * Parameter for specifying the type of logging agent used in a node pool. This will override any cluster-wide default value. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
          */
@@ -42733,6 +43030,10 @@ export namespace container {
 
     export interface ClusterNodePoolAutoConfig {
         /**
+         * Linux system configuration for the cluster's automatically provisioned node pools. Only `cgroupMode` field is supported in `nodePoolAutoConfig`. Structure is documented below.
+         */
+        linuxNodeConfig?: outputs.container.ClusterNodePoolAutoConfigLinuxNodeConfig;
+        /**
          * The network tag config for the cluster's automatically provisioned node pools. Structure is documented below.
          */
         networkTags?: outputs.container.ClusterNodePoolAutoConfigNetworkTags;
@@ -42745,6 +43046,17 @@ export namespace container {
          * A map of resource manager tag keys and values to be attached to the nodes for managing Compute Engine firewalls using Network Firewall Policies. Tags must be according to specifications found [here](https://cloud.google.com/vpc/docs/tags-firewalls-overview#specifications). A maximum of 5 tag key-value pairs can be specified. Existing tags will be replaced with new values. Tags must be in one of the following formats ([KEY]=[VALUE]) 1. `tagKeys/{tag_key_id}=tagValues/{tag_value_id}` 2. `{org_id}/{tag_key_name}={tag_value_name}` 3. `{project_id}/{tag_key_name}={tag_value_name}`.
          */
         resourceManagerTags?: {[key: string]: string};
+    }
+
+    export interface ClusterNodePoolAutoConfigLinuxNodeConfig {
+        /**
+         * Possible cgroup modes that can be used.
+         * Accepted values are:
+         * * `CGROUP_MODE_UNSPECIFIED`: CGROUP_MODE_UNSPECIFIED is when unspecified cgroup configuration is used. The default for the GKE node OS image will be used.
+         * * `CGROUP_MODE_V1`: CGROUP_MODE_V1 specifies to use cgroupv1 for the cgroup configuration on the node image.
+         * * `CGROUP_MODE_V2`: CGROUP_MODE_V2 specifies to use cgroupv2 for the cgroup configuration on the node image.
+         */
+        cgroupMode: string;
     }
 
     export interface ClusterNodePoolAutoConfigNetworkTags {
@@ -43061,6 +43373,13 @@ export namespace container {
          * attached to each cluster node. Defaults to 0.
          */
         localSsdCount: number;
+        /**
+         * Possible Local SSD encryption modes:
+         * Accepted values are:
+         * * `STANDARD_ENCRYPTION`: The given node will be encrypted using keys managed by Google infrastructure and the keys wll be deleted when the node is deleted.
+         * * `EPHEMERAL_KEY_ENCRYPTION`: The given node will opt-in for using ephemeral key for encrypting Local SSDs. The Local SSDs will not be able to recover data in case of node crash.
+         */
+        localSsdEncryptionMode?: string;
         /**
          * Parameter for specifying the type of logging agent used in a node pool. This will override any cluster-wide default value. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
          */
@@ -44247,6 +44566,17 @@ export namespace container {
         enabledApis: string[];
     }
 
+    export interface GetClusterEnterpriseConfig {
+        /**
+         * Indicates the effective cluster tier. Available options include STANDARD and ENTERPRISE.
+         */
+        clusterTier: string;
+        /**
+         * Indicates the desired cluster tier. Available options include STANDARD and ENTERPRISE.
+         */
+        desiredTier: string;
+    }
+
     export interface GetClusterFleet {
         /**
          * Full resource name of the registered fleet membership of the cluster.
@@ -44565,6 +44895,10 @@ export namespace container {
          * The number of local SSD disks to be attached to the node.
          */
         localSsdCount: number;
+        /**
+         * LocalSsdEncryptionMode specified the method used for encrypting the local SSDs attached to the node.
+         */
+        localSsdEncryptionMode: string;
         /**
          * Type of logging agent that is used as the default value for node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT.
          */
@@ -45009,6 +45343,10 @@ export namespace container {
 
     export interface GetClusterNodePoolAutoConfig {
         /**
+         * Linux node configuration options.
+         */
+        linuxNodeConfigs: outputs.container.GetClusterNodePoolAutoConfigLinuxNodeConfig[];
+        /**
          * Collection of Compute Engine network tags that can be applied to a node's underlying VM instance.
          */
         networkTags: outputs.container.GetClusterNodePoolAutoConfigNetworkTag[];
@@ -45020,6 +45358,13 @@ export namespace container {
          * A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
          */
         resourceManagerTags: {[key: string]: string};
+    }
+
+    export interface GetClusterNodePoolAutoConfigLinuxNodeConfig {
+        /**
+         * cgroupMode specifies the cgroup mode to be used on the node.
+         */
+        cgroupMode: string;
     }
 
     export interface GetClusterNodePoolAutoConfigNetworkTag {
@@ -45296,6 +45641,10 @@ export namespace container {
          * The number of local SSD disks to be attached to the node.
          */
         localSsdCount: number;
+        /**
+         * LocalSsdEncryptionMode specified the method used for encrypting the local SSDs attached to the node.
+         */
+        localSsdEncryptionMode: string;
         /**
          * Type of logging agent that is used as the default value for node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT.
          */
@@ -46173,6 +46522,10 @@ export namespace container {
          * The number of local SSD disks to be attached to the node.
          */
         localSsdCount: number;
+        /**
+         * LocalSsdEncryptionMode specified the method used for encrypting the local SSDs attached to the node.
+         */
+        localSsdEncryptionMode?: string;
         /**
          * Type of logging agent that is used as the default value for node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT.
          */
@@ -54996,6 +55349,15 @@ export namespace dataproc {
 
     export interface BatchRuntimeConfig {
         /**
+         * Optional. Autotuning configuration of the workload.
+         * Structure is documented below.
+         */
+        autotuningConfig?: outputs.dataproc.BatchRuntimeConfigAutotuningConfig;
+        /**
+         * Optional. Cohort identifier. Identifies families of the workloads having the same shape, e.g. daily ETL jobs.
+         */
+        cohort?: string;
+        /**
          * Optional custom container image for the job runtime environment. If not specified, a default container image will be used.
          */
         containerImage?: string;
@@ -55012,6 +55374,14 @@ export namespace dataproc {
          * Version of the batch runtime.
          */
         version: string;
+    }
+
+    export interface BatchRuntimeConfigAutotuningConfig {
+        /**
+         * Optional. Scenarios for which tunings are applied.
+         * Each value may be one of: `SCALING`, `BROADCAST_HASH_JOIN`, `MEMORY`.
+         */
+        scenarios?: string[];
     }
 
     export interface BatchRuntimeInfo {
@@ -55449,6 +55819,10 @@ export namespace dataproc {
 
     export interface ClusterClusterConfigGceClusterConfig {
         /**
+         * Confidential Instance Config for clusters using [Confidential VMs](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/confidential-compute)
+         */
+        confidentialInstanceConfig: outputs.dataproc.ClusterClusterConfigGceClusterConfigConfidentialInstanceConfig;
+        /**
          * By default, clusters are not restricted to internal IP addresses,
          * and will have ephemeral external IP addresses assigned to each instance. If set to true, all
          * instances in the cluster will only have internal IP addresses. Note: Private Google Access
@@ -55514,6 +55888,13 @@ export namespace dataproc {
          * `cluster_config.master_config.machine_type` and `cluster_config.worker_config.machine_type`.
          */
         zone: string;
+    }
+
+    export interface ClusterClusterConfigGceClusterConfigConfidentialInstanceConfig {
+        /**
+         * Defines whether the instance should have confidential compute enabled.
+         */
+        enableConfidentialCompute?: boolean;
     }
 
     export interface ClusterClusterConfigGceClusterConfigNodeGroupAffinity {
@@ -55749,6 +56130,10 @@ export namespace dataproc {
          * A list of instance selection results in the group.
          */
         instanceSelectionResults: outputs.dataproc.ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult[];
+        /**
+         * Defines how Dataproc should create VMs with a mixture of provisioning models.
+         */
+        provisioningModelMix?: outputs.dataproc.ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix;
     }
 
     export interface ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList {
@@ -55773,6 +56158,17 @@ export namespace dataproc {
          * Number of VM provisioned with the machine_type.
          */
         vmCount: number;
+    }
+
+    export interface ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix {
+        /**
+         * The base capacity that will always use Standard VMs to avoid risk of more preemption than the minimum capacity you need.
+         */
+        standardCapacityBase?: number;
+        /**
+         * The percentage of target capacity that should use Standard VM. The remaining percentage will use Spot VMs.
+         */
+        standardCapacityPercentAboveBase?: number;
     }
 
     export interface ClusterClusterConfigSecurityConfig {
@@ -59877,7 +60273,7 @@ export namespace diagflow {
          */
         noSpeechTimeout?: string;
         /**
-         * Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+         * Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
          */
         useTimeoutBasedEndpointing?: boolean;
     }
@@ -64528,6 +64924,36 @@ export namespace folder {
 
 }
 
+export namespace gemini {
+    export interface RepositoryGroupIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface RepositoryGroupIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface RepositoryGroupRepository {
+        /**
+         * Required. The Git branch pattern used for indexing in RE2 syntax.
+         * See https://github.com/google/re2/wiki/syntax for syntax.
+         *
+         * - - -
+         */
+        branchPattern: string;
+        /**
+         * Required. The DeveloperConnect repository full resource name, relative resource name
+         * or resource URL to be indexed.
+         */
+        resource: string;
+    }
+
+}
+
 export namespace gkebackup {
     export interface BackupPlanBackupConfig {
         /**
@@ -65429,7 +65855,7 @@ export namespace gkehub {
     export interface FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary {
         /**
          * Configures the manner in which the template library is installed on the cluster.
-         * Possible values are: `INSTALATION_UNSPECIFIED`, `NOT_INSTALLED`, `ALL`.
+         * Possible values are: `INSTALLATION_UNSPECIFIED`, `NOT_INSTALLED`, `ALL`.
          */
         installation?: string;
     }
@@ -65498,7 +65924,7 @@ export namespace gkehub {
          */
         git?: outputs.gkehub.FeatureMembershipConfigmanagementConfigSyncGit;
         /**
-         * The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA.
+         * Deprecated: If Workload Identity Federation for GKE is enabled, Google Cloud Service Account is no longer needed for exporting Config Sync metrics: https://cloud.google.com/kubernetes-engine/enterprise/config-sync/docs/how-to/monitor-config-sync-cloud-monitoring#custom-monitoring.
          */
         metricsGcpServiceAccountEmail?: string;
         /**
@@ -65508,13 +65934,17 @@ export namespace gkehub {
          */
         oci?: outputs.gkehub.FeatureMembershipConfigmanagementConfigSyncOci;
         /**
-         * Supported from Config Sync versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to "false", disables the Config Sync admission webhook and does not prevent drifts.
+         * Supported from Config Sync versions 1.10.0 onwards. Set to `true` to enable the Config Sync admission webhook to prevent drifts. If set to `false`, disables the Config Sync admission webhook and does not prevent drifts.
          */
         preventDrift: boolean;
         /**
          * Specifies whether the Config Sync Repo is in "hierarchical" or "unstructured" mode.
          */
         sourceFormat?: string;
+        /**
+         * Set to `true` to stop syncing configurations for a single cluster. This field is only available on clusters using Config Sync [auto-upgrades](http://cloud/kubernetes-engine/enterprise/config-sync/docs/how-to/upgrade-config-sync#auto-upgrade-config) or on Config Sync version 1.20.0 or later. Defaults: `false`.
+         */
+        stopSyncing?: boolean;
     }
 
     export interface FeatureMembershipConfigmanagementConfigSyncGit {
@@ -68789,6 +69219,35 @@ export namespace iam {
         resources: string[];
     }
 
+    export interface ProjectsPolicyBindingCondition {
+        /**
+         * Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+         */
+        description?: string;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression?: string;
+        /**
+         * Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+         */
+        location?: string;
+        /**
+         * Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+         */
+        title?: string;
+    }
+
+    export interface ProjectsPolicyBindingTarget {
+        /**
+         * Required. Immutable. The resource name of the policy to be bound.
+         * The binding parent and policy must belong to the same Organization (or Project).
+         *
+         * - - -
+         */
+        principalSet?: string;
+    }
+
     export interface WorkforcePoolAccessRestrictions {
         /**
          * Services allowed for web sign-in with the workforce pool.
@@ -70096,7 +70555,7 @@ export namespace integrationconnectors {
          */
         booleanValue?: boolean;
         /**
-         * Encription key value of configVariable.
+         * Encryption key value of configVariable.
          * Structure is documented below.
          */
         encryptionKeyValue?: outputs.integrationconnectors.ConnectionAuthConfigAdditionalVariableEncryptionKeyValue;
@@ -70293,7 +70752,7 @@ export namespace integrationconnectors {
          */
         booleanValue?: boolean;
         /**
-         * Encription key value of configVariable.
+         * Encryption key value of configVariable.
          * Structure is documented below.
          */
         encryptionKeyValue?: outputs.integrationconnectors.ConnectionConfigVariableEncryptionKeyValue;
@@ -70400,7 +70859,7 @@ export namespace integrationconnectors {
          */
         booleanValue?: boolean;
         /**
-         * Encription key value of configVariable.
+         * Encryption key value of configVariable.
          * Structure is documented below.
          */
         encryptionKeyValue?: outputs.integrationconnectors.ConnectionEventingConfigAdditionalVariableEncryptionKeyValue;
@@ -70472,7 +70931,7 @@ export namespace integrationconnectors {
          */
         booleanValue?: boolean;
         /**
-         * Encription key value of configVariable.
+         * Encryption key value of configVariable.
          * Structure is documented below.
          */
         encryptionKeyValue?: outputs.integrationconnectors.ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValue;
@@ -70675,7 +71134,7 @@ export namespace integrationconnectors {
          */
         booleanValue?: boolean;
         /**
-         * Encription key value of configVariable.
+         * Encryption key value of configVariable.
          * Structure is documented below.
          */
         encryptionKeyValue?: outputs.integrationconnectors.ConnectionSslConfigAdditionalVariableEncryptionKeyValue;
@@ -72816,10 +73275,9 @@ export namespace monitoring {
          * in the future.
          * This field is optional. If this field is not empty, then it must be a
          * valid Prometheus label name.
-         *
-         * - - -
          */
         alertRule?: string;
+        disableMetricValidation?: boolean;
         /**
          * Alerts are considered firing once their PromQL expression evaluated
          * to be "true" for this long. Alerts whose PromQL expression was not
@@ -74063,7 +74521,7 @@ export namespace netapp {
          */
         accessType?: string;
         /**
-         * Defines the client ingress specification (allowed clients) as a comma seperated list with IPv4 CIDRs or IPv4 host addresses.
+         * Defines the client ingress specification (allowed clients) as a comma separated list with IPv4 CIDRs or IPv4 host addresses.
          */
         allowedClients?: string;
         /**
@@ -74791,6 +75249,33 @@ export namespace networksecurity {
          * The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
          */
         targetUri: string;
+    }
+
+    export interface MirroringDeploymentGroupConnectedEndpointGroup {
+        /**
+         * (Output)
+         * Output only. A connected mirroring endpoint group.
+         */
+        name: string;
+    }
+
+    export interface MirroringEndpointGroupAssociationLocationsDetail {
+        /**
+         * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringEndpointGroupAssociation`.
+         *
+         *
+         * - - -
+         */
+        location: string;
+        /**
+         * (Output)
+         * Output only. The association state in this location.
+         * Possible values:
+         * STATE_UNSPECIFIED
+         * ACTIVE
+         * OUT_OF_SYNC
+         */
+        state: string;
     }
 
     export interface SecurityProfileThreatPreventionProfile {
@@ -78725,6 +79210,7 @@ export namespace oracledatabase {
          * contain a maximum of 30 alphanumeric characters.
          */
         database: string;
+        deletionProtection: boolean;
         /**
          * The display name for the Autonomous Database. The name does not have to
          * be unique within your project.
@@ -79617,6 +80103,7 @@ export namespace oracledatabase {
          * The date and time that the Exadata Infrastructure was created.
          */
         createTime: string;
+        deletionProtection: boolean;
         /**
          * User friendly name for this resource.
          */
@@ -80061,6 +80548,7 @@ export namespace oracledatabase {
          * The date and time that the VM cluster was created.
          */
         createTime: string;
+        deletionProtection: boolean;
         /**
          * User friendly name for this resource.
          */
@@ -84085,6 +84573,100 @@ export namespace recaptcha {
 }
 
 export namespace redis {
+    export interface ClusterCrossClusterReplicationConfig {
+        /**
+         * The role of the cluster in cross cluster replication. Supported values are:
+         * 1. `CLUSTER_ROLE_UNSPECIFIED`: This is an independent cluster that has never participated in cross cluster replication. It allows both reads and writes.
+         * 1. `NONE`: This is an independent cluster that previously participated in cross cluster replication(either as a `PRIMARY` or `SECONDARY` cluster). It allows both reads and writes.
+         * 1. `PRIMARY`: This cluster serves as the replication source for secondary clusters that are replicating from it. Any data written to it is automatically replicated to its secondary clusters. It allows both reads and writes.
+         * 1. `SECONDARY`: This cluster replicates data from the primary cluster. It allows only reads.
+         * Possible values are: `CLUSTER_ROLE_UNSPECIFIED`, `NONE`, `PRIMARY`, `SECONDARY`.
+         */
+        clusterRole?: string;
+        /**
+         * (Output)
+         * An output only view of all the member clusters participating in cross cluster replication. This field is populated for all the member clusters irrespective of their cluster role.
+         * Structure is documented below.
+         */
+        memberships: outputs.redis.ClusterCrossClusterReplicationConfigMembership[];
+        /**
+         * Details of the primary cluster that is used as the replication source for this secondary cluster. This is allowed to be set only for clusters whose cluster role is of type `SECONDARY`.
+         * Structure is documented below.
+         */
+        primaryCluster?: outputs.redis.ClusterCrossClusterReplicationConfigPrimaryCluster;
+        /**
+         * List of secondary clusters that are replicating from this primary cluster. This is allowed to be set only for clusters whose cluster role is of type `PRIMARY`.
+         * Structure is documented below.
+         */
+        secondaryClusters?: outputs.redis.ClusterCrossClusterReplicationConfigSecondaryCluster[];
+        /**
+         * (Output)
+         * The last time cross cluster replication config was updated.
+         */
+        updateTime: string;
+    }
+
+    export interface ClusterCrossClusterReplicationConfigMembership {
+        /**
+         * Details of the primary cluster that is used as the replication source for all the secondary clusters.
+         */
+        primaryClusters: outputs.redis.ClusterCrossClusterReplicationConfigMembershipPrimaryCluster[];
+        /**
+         * List of secondary clusters that are replicating from the primary cluster.
+         */
+        secondaryClusters: outputs.redis.ClusterCrossClusterReplicationConfigMembershipSecondaryCluster[];
+    }
+
+    export interface ClusterCrossClusterReplicationConfigMembershipPrimaryCluster {
+        /**
+         * The full resource path of the primary cluster in the format: projects/{project}/locations/{region}/clusters/{cluster-id}
+         */
+        cluster: string;
+        /**
+         * (Output)
+         * The unique id of the primary cluster.
+         */
+        uid: string;
+    }
+
+    export interface ClusterCrossClusterReplicationConfigMembershipSecondaryCluster {
+        /**
+         * (Output)
+         * The full resource path of the secondary cluster in the format: projects/{project}/locations/{region}/clusters/{cluster-id}
+         */
+        cluster: string;
+        /**
+         * (Output)
+         * The unique id of the secondary cluster.
+         */
+        uid: string;
+    }
+
+    export interface ClusterCrossClusterReplicationConfigPrimaryCluster {
+        /**
+         * The full resource path of the primary cluster in the format: projects/{project}/locations/{region}/clusters/{cluster-id}
+         */
+        cluster?: string;
+        /**
+         * (Output)
+         * The unique id of the primary cluster.
+         */
+        uid: string;
+    }
+
+    export interface ClusterCrossClusterReplicationConfigSecondaryCluster {
+        /**
+         * (Output)
+         * The full resource path of the secondary cluster in the format: projects/{project}/locations/{region}/clusters/{cluster-id}
+         */
+        cluster?: string;
+        /**
+         * (Output)
+         * The unique id of the secondary cluster.
+         */
+        uid: string;
+    }
+
     export interface ClusterDiscoveryEndpoint {
         /**
          * Output only. The IP allocated on the consumer network for the PSC forwarding rule.
@@ -84232,7 +84814,7 @@ export namespace redis {
     export interface ClusterPersistenceConfigAofConfig {
         /**
          * Optional. Available fsync modes.
-         * - NO - Do not explicilty call fsync(). Rely on OS defaults.
+         * - NO - Do not explicitly call fsync(). Rely on OS defaults.
          * - EVERYSEC - Call fsync() once per second in a background thread. A balance between performance and durability.
          * - ALWAYS - Call fsync() for earch write command.
          * Possible values are: `APPEND_FSYNC_UNSPECIFIED`, `NO`, `EVERYSEC`, `ALWAYS`.
@@ -89848,14 +90430,52 @@ export namespace tpu {
         preemptible: boolean;
     }
 
+    export interface V2QueuedResourceTpu {
+        /**
+         * The TPU node(s) being requested.
+         * Structure is documented below.
+         */
+        nodeSpecs?: outputs.tpu.V2QueuedResourceTpuNodeSpec[];
+    }
+
+    export interface V2QueuedResourceTpuNodeSpec {
+        /**
+         * The node.
+         * Structure is documented below.
+         */
+        node: outputs.tpu.V2QueuedResourceTpuNodeSpecNode;
+        /**
+         * Unqualified node identifier used to identify the node in the project once provisioned.
+         */
+        nodeId?: string;
+        /**
+         * The parent resource name.
+         */
+        parent: string;
+    }
+
+    export interface V2QueuedResourceTpuNodeSpecNode {
+        /**
+         * TPU accelerator type for the TPU. If not specified, this defaults to 'v2-8'.
+         */
+        acceleratorType: string;
+        /**
+         * Text description of the TPU.
+         */
+        description?: string;
+        /**
+         * Runtime version for the TPU.
+         */
+        runtimeVersion: string;
+    }
+
     export interface V2VmAcceleratorConfig {
         /**
          * Topology of TPU in chips.
          */
         topology: string;
         /**
-         * Type of TPU.
-         * Possible values are: `V2`, `V3`, `V4`, `V5P`.
+         * Type of TPU. Please select one of the allowed types: https://cloud.google.com/tpu/docs/reference/rest/v2/AcceleratorConfig#Type
          */
         type: string;
     }

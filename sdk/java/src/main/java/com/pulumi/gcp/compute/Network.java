@@ -502,6 +502,28 @@ public class Network extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.networkFirewallPolicyEnforcementOrder);
     }
     /**
+     * A full or partial URL of the network profile to apply to this network.
+     * This field can be set only at resource creation time. For example, the
+     * following are valid URLs:
+     * * https://www.googleapis.com/compute/beta/projects/{projectId}/global/networkProfiles/{network_profile_name}
+     * * projects/{projectId}/global/networkProfiles/{network_profile_name}
+     * 
+     */
+    @Export(name="networkProfile", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> networkProfile;
+
+    /**
+     * @return A full or partial URL of the network profile to apply to this network.
+     * This field can be set only at resource creation time. For example, the
+     * following are valid URLs:
+     * * https://www.googleapis.com/compute/beta/projects/{projectId}/global/networkProfiles/{network_profile_name}
+     * * projects/{projectId}/global/networkProfiles/{network_profile_name}
+     * 
+     */
+    public Output<Optional<String>> networkProfile() {
+        return Codegen.optional(this.networkProfile);
+    }
+    /**
      * The unique identifier for the resource. This identifier is defined by the server.
      * 
      */

@@ -1076,7 +1076,7 @@ public class URLMap extends com.pulumi.resources.CustomResource {
         return this.creationTimestamp;
     }
     /**
-     * defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error.
+     * defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendService or BackendBucket responds with an error.
      * This policy takes effect at the PathMatcher level and applies only when no policy has been defined for the error code at lower levels like RouteRule and PathRule within this PathMatcher. If an error code does not have a policy defined in defaultCustomErrorResponsePolicy, then a policy defined for the error code in UrlMap.defaultCustomErrorResponsePolicy takes effect.
      * For example, consider a UrlMap with the following configuration:
      * UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors
@@ -1091,7 +1091,7 @@ public class URLMap extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ URLMapDefaultCustomErrorResponsePolicy> defaultCustomErrorResponsePolicy;
 
     /**
-     * @return defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error.
+     * @return defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendService or BackendBucket responds with an error.
      * This policy takes effect at the PathMatcher level and applies only when no policy has been defined for the error code at lower levels like RouteRule and PathRule within this PathMatcher. If an error code does not have a policy defined in defaultCustomErrorResponsePolicy, then a policy defined for the error code in UrlMap.defaultCustomErrorResponsePolicy takes effect.
      * For example, consider a UrlMap with the following configuration:
      * UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors

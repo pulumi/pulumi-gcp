@@ -365,14 +365,14 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the storage pool to create the volume in. Pool needs enough spare capacity to accomodate the volume.
+     * Name of the storage pool to create the volume in. Pool needs enough spare capacity to accommodate the volume.
      * 
      */
     @Import(name="storagePool", required=true)
     private Output<String> storagePool;
 
     /**
-     * @return Name of the storage pool to create the volume in. Pool needs enough spare capacity to accomodate the volume.
+     * @return Name of the storage pool to create the volume in. Pool needs enough spare capacity to accommodate the volume.
      * 
      */
     public Output<String> storagePool() {
@@ -951,7 +951,7 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storagePool Name of the storage pool to create the volume in. Pool needs enough spare capacity to accomodate the volume.
+         * @param storagePool Name of the storage pool to create the volume in. Pool needs enough spare capacity to accommodate the volume.
          * 
          * @return builder
          * 
@@ -962,7 +962,7 @@ public final class VolumeArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param storagePool Name of the storage pool to create the volume in. Pool needs enough spare capacity to accomodate the volume.
+         * @param storagePool Name of the storage pool to create the volume in. Pool needs enough spare capacity to accommodate the volume.
          * 
          * @return builder
          * 

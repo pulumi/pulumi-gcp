@@ -19,6 +19,104 @@ import javax.annotation.Nullable;
  * * [Get started with Firebase Security Rules](https://firebase.google.com/docs/rules/get-started)
  * ## Example Usage
  * 
+ * ### Firestore_release
+ * Creates a Firebase Rules Release to the default Cloud Firestore instance
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.firebaserules.Ruleset;
+ * import com.pulumi.gcp.firebaserules.RulesetArgs;
+ * import com.pulumi.gcp.firebaserules.inputs.RulesetSourceArgs;
+ * import com.pulumi.gcp.firebaserules.Release;
+ * import com.pulumi.gcp.firebaserules.ReleaseArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var firestore = new Ruleset("firestore", RulesetArgs.builder()
+ *             .project("my-project-name")
+ *             .source(RulesetSourceArgs.builder()
+ *                 .files(RulesetSourceFileArgs.builder()
+ *                     .content("service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }")
+ *                     .name("firestore.rules")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var primary = new Release("primary", ReleaseArgs.builder()
+ *             .name("cloud.firestore")
+ *             .project("my-project-name")
+ *             .rulesetName(firestore.name().applyValue(name -> String.format("projects/my-project-name/rulesets/%s", name)))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Firestore_release_additional
+ * Creates a Firebase Rules Release to an additional Cloud Firestore instance
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.firebaserules.Ruleset;
+ * import com.pulumi.gcp.firebaserules.RulesetArgs;
+ * import com.pulumi.gcp.firebaserules.inputs.RulesetSourceArgs;
+ * import com.pulumi.gcp.firebaserules.Release;
+ * import com.pulumi.gcp.firebaserules.ReleaseArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var firestore = new Ruleset("firestore", RulesetArgs.builder()
+ *             .project("my-project-name")
+ *             .source(RulesetSourceArgs.builder()
+ *                 .files(RulesetSourceFileArgs.builder()
+ *                     .content("service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }")
+ *                     .name("firestore.rules")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var primary = new Release("primary", ReleaseArgs.builder()
+ *             .name("cloud.firestore/database")
+ *             .project("my-project-name")
+ *             .rulesetName(firestore.name().applyValue(name -> String.format("projects/my-project-name/rulesets/%s", name)))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ## Import
  * 
  * Release can be imported using any of these accepted formats:

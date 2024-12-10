@@ -12,14 +12,6 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A Google Cloud Redis Cluster instance.
-//
-// To get more information about Cluster, see:
-//
-// * [API documentation](https://cloud.google.com/memorystore/docs/cluster/reference/rest/v1/projects.locations.clusters)
-// * How-to Guides
-//   - [Official Documentation](https://cloud.google.com/memorystore/docs/cluster/)
-//
 // ## Example Usage
 //
 // ### Redis Cluster Ha
@@ -189,6 +181,182 @@ import (
 //				DeletionProtectionEnabled: pulumi.Bool(true),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				_default,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Redis Cluster Secondary
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/networkconnectivity"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/redis"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			producerNet, err := compute.NewNetwork(ctx, "producer_net", &compute.NetworkArgs{
+//				Name:                  pulumi.String("mynetwork"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			primaryClusterProducerSubnet, err := compute.NewSubnetwork(ctx, "primary_cluster_producer_subnet", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("mysubnet-primary-cluster"),
+//				IpCidrRange: pulumi.String("10.0.1.0/29"),
+//				Region:      pulumi.String("us-east1"),
+//				Network:     producerNet.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			primaryClusterRegionScp, err := networkconnectivity.NewServiceConnectionPolicy(ctx, "primary_cluster_region_scp", &networkconnectivity.ServiceConnectionPolicyArgs{
+//				Name:         pulumi.String("mypolicy-primary-cluster"),
+//				Location:     pulumi.String("us-east1"),
+//				ServiceClass: pulumi.String("gcp-memorystore-redis"),
+//				Description:  pulumi.String("Primary cluster service connection policy"),
+//				Network:      producerNet.ID(),
+//				PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
+//					Subnetworks: pulumi.StringArray{
+//						primaryClusterProducerSubnet.ID(),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Primary cluster
+//			primaryCluster, err := redis.NewCluster(ctx, "primary_cluster", &redis.ClusterArgs{
+//				Name:   pulumi.String("my-primary-cluster"),
+//				Region: pulumi.String("us-east1"),
+//				PscConfigs: redis.ClusterPscConfigArray{
+//					&redis.ClusterPscConfigArgs{
+//						Network: producerNet.ID(),
+//					},
+//				},
+//				AuthorizationMode:     pulumi.String("AUTH_MODE_DISABLED"),
+//				TransitEncryptionMode: pulumi.String("TRANSIT_ENCRYPTION_MODE_DISABLED"),
+//				ShardCount:            pulumi.Int(3),
+//				RedisConfigs: pulumi.StringMap{
+//					"maxmemory-policy": pulumi.String("volatile-ttl"),
+//				},
+//				NodeType: pulumi.String("REDIS_HIGHMEM_MEDIUM"),
+//				PersistenceConfig: &redis.ClusterPersistenceConfigArgs{
+//					Mode: pulumi.String("RDB"),
+//					RdbConfig: &redis.ClusterPersistenceConfigRdbConfigArgs{
+//						RdbSnapshotPeriod:    pulumi.String("ONE_HOUR"),
+//						RdbSnapshotStartTime: pulumi.String("2024-10-02T15:01:23Z"),
+//					},
+//				},
+//				ZoneDistributionConfig: &redis.ClusterZoneDistributionConfigArgs{
+//					Mode: pulumi.String("MULTI_ZONE"),
+//				},
+//				ReplicaCount: pulumi.Int(1),
+//				MaintenancePolicy: &redis.ClusterMaintenancePolicyArgs{
+//					WeeklyMaintenanceWindows: redis.ClusterMaintenancePolicyWeeklyMaintenanceWindowArray{
+//						&redis.ClusterMaintenancePolicyWeeklyMaintenanceWindowArgs{
+//							Day: pulumi.String("MONDAY"),
+//							StartTime: &redis.ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs{
+//								Hours:   pulumi.Int(1),
+//								Minutes: pulumi.Int(0),
+//								Seconds: pulumi.Int(0),
+//								Nanos:   pulumi.Int(0),
+//							},
+//						},
+//					},
+//				},
+//				DeletionProtectionEnabled: pulumi.Bool(true),
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				primaryClusterRegionScp,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			secondaryClusterProducerSubnet, err := compute.NewSubnetwork(ctx, "secondary_cluster_producer_subnet", &compute.SubnetworkArgs{
+//				Name:        pulumi.String("mysubnet-secondary-cluster"),
+//				IpCidrRange: pulumi.String("10.0.2.0/29"),
+//				Region:      pulumi.String("europe-west1"),
+//				Network:     producerNet.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			secondaryClusterRegionScp, err := networkconnectivity.NewServiceConnectionPolicy(ctx, "secondary_cluster_region_scp", &networkconnectivity.ServiceConnectionPolicyArgs{
+//				Name:         pulumi.String("mypolicy-secondary-cluster"),
+//				Location:     pulumi.String("europe-west1"),
+//				ServiceClass: pulumi.String("gcp-memorystore-redis"),
+//				Description:  pulumi.String("Secondary cluster service connection policy"),
+//				Network:      producerNet.ID(),
+//				PscConfig: &networkconnectivity.ServiceConnectionPolicyPscConfigArgs{
+//					Subnetworks: pulumi.StringArray{
+//						secondaryClusterProducerSubnet.ID(),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Secondary cluster
+//			_, err = redis.NewCluster(ctx, "secondary_cluster", &redis.ClusterArgs{
+//				Name:   pulumi.String("my-secondary-cluster"),
+//				Region: pulumi.String("europe-west1"),
+//				PscConfigs: redis.ClusterPscConfigArray{
+//					&redis.ClusterPscConfigArgs{
+//						Network: producerNet.ID(),
+//					},
+//				},
+//				AuthorizationMode:     pulumi.String("AUTH_MODE_DISABLED"),
+//				TransitEncryptionMode: pulumi.String("TRANSIT_ENCRYPTION_MODE_DISABLED"),
+//				ShardCount:            pulumi.Int(3),
+//				RedisConfigs: pulumi.StringMap{
+//					"maxmemory-policy": pulumi.String("volatile-ttl"),
+//				},
+//				NodeType: pulumi.String("REDIS_HIGHMEM_MEDIUM"),
+//				PersistenceConfig: &redis.ClusterPersistenceConfigArgs{
+//					Mode: pulumi.String("RDB"),
+//					RdbConfig: &redis.ClusterPersistenceConfigRdbConfigArgs{
+//						RdbSnapshotPeriod:    pulumi.String("ONE_HOUR"),
+//						RdbSnapshotStartTime: pulumi.String("2024-10-02T15:01:23Z"),
+//					},
+//				},
+//				ZoneDistributionConfig: &redis.ClusterZoneDistributionConfigArgs{
+//					Mode: pulumi.String("MULTI_ZONE"),
+//				},
+//				ReplicaCount: pulumi.Int(2),
+//				MaintenancePolicy: &redis.ClusterMaintenancePolicyArgs{
+//					WeeklyMaintenanceWindows: redis.ClusterMaintenancePolicyWeeklyMaintenanceWindowArray{
+//						&redis.ClusterMaintenancePolicyWeeklyMaintenanceWindowArgs{
+//							Day: pulumi.String("WEDNESDAY"),
+//							StartTime: &redis.ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs{
+//								Hours:   pulumi.Int(1),
+//								Minutes: pulumi.Int(0),
+//								Seconds: pulumi.Int(0),
+//								Nanos:   pulumi.Int(0),
+//							},
+//						},
+//					},
+//				},
+//				DeletionProtectionEnabled: pulumi.Bool(true),
+//				CrossClusterReplicationConfig: &redis.ClusterCrossClusterReplicationConfigArgs{
+//					ClusterRole: pulumi.String("SECONDARY"),
+//					PrimaryCluster: &redis.ClusterCrossClusterReplicationConfigPrimaryClusterArgs{
+//						Cluster: primaryCluster.ID(),
+//					},
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				secondaryClusterRegionScp,
 //			}))
 //			if err != nil {
 //				return err
@@ -434,6 +602,8 @@ type Cluster struct {
 	// RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional
 	// digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// Cross cluster replication config
+	CrossClusterReplicationConfig ClusterCrossClusterReplicationConfigOutput `pulumi:"crossClusterReplicationConfig"`
 	// Optional. Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster
 	// operation will fail. Default value is true.
 	DeletionProtectionEnabled pulumi.BoolPtrOutput `pulumi:"deletionProtectionEnabled"`
@@ -537,6 +707,8 @@ type clusterState struct {
 	// RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional
 	// digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime *string `pulumi:"createTime"`
+	// Cross cluster replication config
+	CrossClusterReplicationConfig *ClusterCrossClusterReplicationConfig `pulumi:"crossClusterReplicationConfig"`
 	// Optional. Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster
 	// operation will fail. Default value is true.
 	DeletionProtectionEnabled *bool `pulumi:"deletionProtectionEnabled"`
@@ -605,6 +777,8 @@ type ClusterState struct {
 	// RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional
 	// digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime pulumi.StringPtrInput
+	// Cross cluster replication config
+	CrossClusterReplicationConfig ClusterCrossClusterReplicationConfigPtrInput
 	// Optional. Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster
 	// operation will fail. Default value is true.
 	DeletionProtectionEnabled pulumi.BoolPtrInput
@@ -673,6 +847,8 @@ type clusterArgs struct {
 	// Default value: "AUTH_MODE_DISABLED" Possible values: ["AUTH_MODE_UNSPECIFIED", "AUTH_MODE_IAM_AUTH",
 	// "AUTH_MODE_DISABLED"]
 	AuthorizationMode *string `pulumi:"authorizationMode"`
+	// Cross cluster replication config
+	CrossClusterReplicationConfig *ClusterCrossClusterReplicationConfig `pulumi:"crossClusterReplicationConfig"`
 	// Optional. Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster
 	// operation will fail. Default value is true.
 	DeletionProtectionEnabled *bool `pulumi:"deletionProtectionEnabled"`
@@ -716,6 +892,8 @@ type ClusterArgs struct {
 	// Default value: "AUTH_MODE_DISABLED" Possible values: ["AUTH_MODE_UNSPECIFIED", "AUTH_MODE_IAM_AUTH",
 	// "AUTH_MODE_DISABLED"]
 	AuthorizationMode pulumi.StringPtrInput
+	// Cross cluster replication config
+	CrossClusterReplicationConfig ClusterCrossClusterReplicationConfigPtrInput
 	// Optional. Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster
 	// operation will fail. Default value is true.
 	DeletionProtectionEnabled pulumi.BoolPtrInput
@@ -852,6 +1030,11 @@ func (o ClusterOutput) AuthorizationMode() pulumi.StringPtrOutput {
 // digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 func (o ClusterOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+// Cross cluster replication config
+func (o ClusterOutput) CrossClusterReplicationConfig() ClusterCrossClusterReplicationConfigOutput {
+	return o.ApplyT(func(v *Cluster) ClusterCrossClusterReplicationConfigOutput { return v.CrossClusterReplicationConfig }).(ClusterCrossClusterReplicationConfigOutput)
 }
 
 // Optional. Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster

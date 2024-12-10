@@ -4973,6 +4973,8 @@ type DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGat
 	HttpRoute string `pulumi:"httpRoute"`
 	// Optional. The label to use when selecting Pods for the Deployment and Service resources. This label must already be present in both resources.
 	PodSelectorLabel *string `pulumi:"podSelectorLabel"`
+	// Optional. Route destinations allow configuring the Gateway API HTTPRoute to be deployed to additional clusters. This option is available for multi-cluster service mesh set ups that require the route to exist in the clusters that call the service. If unspecified, the HTTPRoute will only be deployed to the Target cluster.
+	RouteDestinations *DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinations `pulumi:"routeDestinations"`
 	// Optional. The time to wait for route updates to propagate. The maximum configurable time is 3 hours, in seconds format. If unspecified, there is no wait time.
 	RouteUpdateWaitTime *string `pulumi:"routeUpdateWaitTime"`
 	// Required. Name of the Kubernetes Service.
@@ -4999,6 +5001,8 @@ type DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGat
 	HttpRoute pulumi.StringInput `pulumi:"httpRoute"`
 	// Optional. The label to use when selecting Pods for the Deployment and Service resources. This label must already be present in both resources.
 	PodSelectorLabel pulumi.StringPtrInput `pulumi:"podSelectorLabel"`
+	// Optional. Route destinations allow configuring the Gateway API HTTPRoute to be deployed to additional clusters. This option is available for multi-cluster service mesh set ups that require the route to exist in the clusters that call the service. If unspecified, the HTTPRoute will only be deployed to the Target cluster.
+	RouteDestinations DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsPtrInput `pulumi:"routeDestinations"`
 	// Optional. The time to wait for route updates to propagate. The maximum configurable time is 3 hours, in seconds format. If unspecified, there is no wait time.
 	RouteUpdateWaitTime pulumi.StringPtrInput `pulumi:"routeUpdateWaitTime"`
 	// Required. Name of the Kubernetes Service.
@@ -5105,6 +5109,13 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes
 	}).(pulumi.StringPtrOutput)
 }
 
+// Optional. Route destinations allow configuring the Gateway API HTTPRoute to be deployed to additional clusters. This option is available for multi-cluster service mesh set ups that require the route to exist in the clusters that call the service. If unspecified, the HTTPRoute will only be deployed to the Target cluster.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshOutput) RouteDestinations() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsPtrOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh) *DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinations {
+		return v.RouteDestinations
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsPtrOutput)
+}
+
 // Optional. The time to wait for route updates to propagate. The maximum configurable time is 3 hours, in seconds format. If unspecified, there is no wait time.
 func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshOutput) RouteUpdateWaitTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh) *string {
@@ -5180,6 +5191,16 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes
 	}).(pulumi.StringPtrOutput)
 }
 
+// Optional. Route destinations allow configuring the Gateway API HTTPRoute to be deployed to additional clusters. This option is available for multi-cluster service mesh set ups that require the route to exist in the clusters that call the service. If unspecified, the HTTPRoute will only be deployed to the Target cluster.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrOutput) RouteDestinations() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsPtrOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh) *DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinations {
+		if v == nil {
+			return nil
+		}
+		return v.RouteDestinations
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsPtrOutput)
+}
+
 // Optional. The time to wait for route updates to propagate. The maximum configurable time is 3 hours, in seconds format. If unspecified, there is no wait time.
 func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrOutput) RouteUpdateWaitTime() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMesh) *string {
@@ -5208,6 +5229,166 @@ func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetes
 		}
 		return v.StableCutbackDuration
 	}).(pulumi.StringPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinations struct {
+	// Required. The clusters where the Gateway API HTTPRoute resource will be deployed to. Valid entries include the associated entities IDs configured in the Target resource and "@self" to include the Target cluster.
+	DestinationIds []string `pulumi:"destinationIds"`
+	// Optional. Whether to propagate the Kubernetes Service to the route destination clusters. The Service will always be deployed to the Target cluster even if the HTTPRoute is not. This option may be used to facilitiate successful DNS lookup in the route destination clusters. Can only be set to true if destinations are specified.
+	PropagateService *bool `pulumi:"propagateService"`
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsArgs and DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsInput` via:
+//
+//	DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsArgs{...}
+type DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsOutput
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsArgs struct {
+	// Required. The clusters where the Gateway API HTTPRoute resource will be deployed to. Valid entries include the associated entities IDs configured in the Target resource and "@self" to include the Target cluster.
+	DestinationIds pulumi.StringArrayInput `pulumi:"destinationIds"`
+	// Optional. Whether to propagate the Kubernetes Service to the route destination clusters. The Service will always be deployed to the Target cluster even if the HTTPRoute is not. This option may be used to facilitiate successful DNS lookup in the route destination clusters. Can only be set to true if destinations are specified.
+	PropagateService pulumi.BoolPtrInput `pulumi:"propagateService"`
+}
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinations)(nil)).Elem()
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsOutput)
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsPtrOutputWithContext(context.Background())
+}
+
+func (i DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsArgs) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsOutput).ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsPtrOutputWithContext(ctx)
+}
+
+// DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsPtrInput is an input type that accepts DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsArgs, DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsPtr and DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsPtrOutput values.
+// You can construct a concrete instance of `DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsPtrInput` via:
+//
+//	        DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsArgs{...}
+//
+//	or:
+//
+//	        nil
+type DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsPtrInput interface {
+	pulumi.Input
+
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsPtrOutput
+	ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsPtrOutputWithContext(context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsPtrOutput
+}
+
+type deliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsPtrType DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsArgs
+
+func DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsPtr(v *DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsArgs) DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsPtrInput {
+	return (*deliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsPtrType)(v)
+}
+
+func (*deliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinations)(nil)).Elem()
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsPtrType) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsPtrOutput {
+	return i.ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsPtrOutputWithContext(context.Background())
+}
+
+func (i *deliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsPtrType) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinations)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsPtrOutput {
+	return o.ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsPtrOutputWithContext(context.Background())
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinations) *DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinations {
+		return &v
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsPtrOutput)
+}
+
+// Required. The clusters where the Gateway API HTTPRoute resource will be deployed to. Valid entries include the associated entities IDs configured in the Target resource and "@self" to include the Target cluster.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsOutput) DestinationIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinations) []string {
+		return v.DestinationIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. Whether to propagate the Kubernetes Service to the route destination clusters. The Service will always be deployed to the Target cluster even if the HTTPRoute is not. This option may be used to facilitiate successful DNS lookup in the route destination clusters. Can only be set to true if destinations are specified.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsOutput) PropagateService() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinations) *bool {
+		return v.PropagateService
+	}).(pulumi.BoolPtrOutput)
+}
+
+type DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsPtrOutput struct{ *pulumi.OutputState }
+
+func (DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinations)(nil)).Elem()
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsPtrOutput() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsPtrOutput) ToDeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsPtrOutputWithContext(ctx context.Context) DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsPtrOutput {
+	return o
+}
+
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsPtrOutput) Elem() DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinations) DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinations {
+		if v != nil {
+			return *v
+		}
+		var ret DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinations
+		return ret
+	}).(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsOutput)
+}
+
+// Required. The clusters where the Gateway API HTTPRoute resource will be deployed to. Valid entries include the associated entities IDs configured in the Target resource and "@self" to include the Target cluster.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsPtrOutput) DestinationIds() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinations) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DestinationIds
+	}).(pulumi.StringArrayOutput)
+}
+
+// Optional. Whether to propagate the Kubernetes Service to the route destination clusters. The Service will always be deployed to the Target cluster even if the HTTPRoute is not. This option may be used to facilitiate successful DNS lookup in the route destination clusters. Can only be set to true if destinations are specified.
+func (o DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsPtrOutput) PropagateService() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinations) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.PropagateService
+	}).(pulumi.BoolPtrOutput)
 }
 
 type DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworking struct {
@@ -6000,6 +6181,333 @@ func (o TargetAnthosClusterPtrOutput) Membership() pulumi.StringPtrOutput {
 		}
 		return v.Membership
 	}).(pulumi.StringPtrOutput)
+}
+
+type TargetAssociatedEntity struct {
+	// Optional. Information specifying Anthos clusters as associated entities.
+	AnthosClusters []TargetAssociatedEntityAnthosCluster `pulumi:"anthosClusters"`
+	// The name for the key in the map for which this object is mapped to in the API
+	EntityId string `pulumi:"entityId"`
+	// Optional. Information specifying GKE clusters as associated entities.
+	GkeClusters []TargetAssociatedEntityGkeCluster `pulumi:"gkeClusters"`
+}
+
+// TargetAssociatedEntityInput is an input type that accepts TargetAssociatedEntityArgs and TargetAssociatedEntityOutput values.
+// You can construct a concrete instance of `TargetAssociatedEntityInput` via:
+//
+//	TargetAssociatedEntityArgs{...}
+type TargetAssociatedEntityInput interface {
+	pulumi.Input
+
+	ToTargetAssociatedEntityOutput() TargetAssociatedEntityOutput
+	ToTargetAssociatedEntityOutputWithContext(context.Context) TargetAssociatedEntityOutput
+}
+
+type TargetAssociatedEntityArgs struct {
+	// Optional. Information specifying Anthos clusters as associated entities.
+	AnthosClusters TargetAssociatedEntityAnthosClusterArrayInput `pulumi:"anthosClusters"`
+	// The name for the key in the map for which this object is mapped to in the API
+	EntityId pulumi.StringInput `pulumi:"entityId"`
+	// Optional. Information specifying GKE clusters as associated entities.
+	GkeClusters TargetAssociatedEntityGkeClusterArrayInput `pulumi:"gkeClusters"`
+}
+
+func (TargetAssociatedEntityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetAssociatedEntity)(nil)).Elem()
+}
+
+func (i TargetAssociatedEntityArgs) ToTargetAssociatedEntityOutput() TargetAssociatedEntityOutput {
+	return i.ToTargetAssociatedEntityOutputWithContext(context.Background())
+}
+
+func (i TargetAssociatedEntityArgs) ToTargetAssociatedEntityOutputWithContext(ctx context.Context) TargetAssociatedEntityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetAssociatedEntityOutput)
+}
+
+// TargetAssociatedEntityArrayInput is an input type that accepts TargetAssociatedEntityArray and TargetAssociatedEntityArrayOutput values.
+// You can construct a concrete instance of `TargetAssociatedEntityArrayInput` via:
+//
+//	TargetAssociatedEntityArray{ TargetAssociatedEntityArgs{...} }
+type TargetAssociatedEntityArrayInput interface {
+	pulumi.Input
+
+	ToTargetAssociatedEntityArrayOutput() TargetAssociatedEntityArrayOutput
+	ToTargetAssociatedEntityArrayOutputWithContext(context.Context) TargetAssociatedEntityArrayOutput
+}
+
+type TargetAssociatedEntityArray []TargetAssociatedEntityInput
+
+func (TargetAssociatedEntityArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TargetAssociatedEntity)(nil)).Elem()
+}
+
+func (i TargetAssociatedEntityArray) ToTargetAssociatedEntityArrayOutput() TargetAssociatedEntityArrayOutput {
+	return i.ToTargetAssociatedEntityArrayOutputWithContext(context.Background())
+}
+
+func (i TargetAssociatedEntityArray) ToTargetAssociatedEntityArrayOutputWithContext(ctx context.Context) TargetAssociatedEntityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetAssociatedEntityArrayOutput)
+}
+
+type TargetAssociatedEntityOutput struct{ *pulumi.OutputState }
+
+func (TargetAssociatedEntityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetAssociatedEntity)(nil)).Elem()
+}
+
+func (o TargetAssociatedEntityOutput) ToTargetAssociatedEntityOutput() TargetAssociatedEntityOutput {
+	return o
+}
+
+func (o TargetAssociatedEntityOutput) ToTargetAssociatedEntityOutputWithContext(ctx context.Context) TargetAssociatedEntityOutput {
+	return o
+}
+
+// Optional. Information specifying Anthos clusters as associated entities.
+func (o TargetAssociatedEntityOutput) AnthosClusters() TargetAssociatedEntityAnthosClusterArrayOutput {
+	return o.ApplyT(func(v TargetAssociatedEntity) []TargetAssociatedEntityAnthosCluster { return v.AnthosClusters }).(TargetAssociatedEntityAnthosClusterArrayOutput)
+}
+
+// The name for the key in the map for which this object is mapped to in the API
+func (o TargetAssociatedEntityOutput) EntityId() pulumi.StringOutput {
+	return o.ApplyT(func(v TargetAssociatedEntity) string { return v.EntityId }).(pulumi.StringOutput)
+}
+
+// Optional. Information specifying GKE clusters as associated entities.
+func (o TargetAssociatedEntityOutput) GkeClusters() TargetAssociatedEntityGkeClusterArrayOutput {
+	return o.ApplyT(func(v TargetAssociatedEntity) []TargetAssociatedEntityGkeCluster { return v.GkeClusters }).(TargetAssociatedEntityGkeClusterArrayOutput)
+}
+
+type TargetAssociatedEntityArrayOutput struct{ *pulumi.OutputState }
+
+func (TargetAssociatedEntityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TargetAssociatedEntity)(nil)).Elem()
+}
+
+func (o TargetAssociatedEntityArrayOutput) ToTargetAssociatedEntityArrayOutput() TargetAssociatedEntityArrayOutput {
+	return o
+}
+
+func (o TargetAssociatedEntityArrayOutput) ToTargetAssociatedEntityArrayOutputWithContext(ctx context.Context) TargetAssociatedEntityArrayOutput {
+	return o
+}
+
+func (o TargetAssociatedEntityArrayOutput) Index(i pulumi.IntInput) TargetAssociatedEntityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TargetAssociatedEntity {
+		return vs[0].([]TargetAssociatedEntity)[vs[1].(int)]
+	}).(TargetAssociatedEntityOutput)
+}
+
+type TargetAssociatedEntityAnthosCluster struct {
+	// Optional. Membership of the GKE Hub-registered cluster to which to apply the Skaffold configuration. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.
+	Membership *string `pulumi:"membership"`
+}
+
+// TargetAssociatedEntityAnthosClusterInput is an input type that accepts TargetAssociatedEntityAnthosClusterArgs and TargetAssociatedEntityAnthosClusterOutput values.
+// You can construct a concrete instance of `TargetAssociatedEntityAnthosClusterInput` via:
+//
+//	TargetAssociatedEntityAnthosClusterArgs{...}
+type TargetAssociatedEntityAnthosClusterInput interface {
+	pulumi.Input
+
+	ToTargetAssociatedEntityAnthosClusterOutput() TargetAssociatedEntityAnthosClusterOutput
+	ToTargetAssociatedEntityAnthosClusterOutputWithContext(context.Context) TargetAssociatedEntityAnthosClusterOutput
+}
+
+type TargetAssociatedEntityAnthosClusterArgs struct {
+	// Optional. Membership of the GKE Hub-registered cluster to which to apply the Skaffold configuration. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.
+	Membership pulumi.StringPtrInput `pulumi:"membership"`
+}
+
+func (TargetAssociatedEntityAnthosClusterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetAssociatedEntityAnthosCluster)(nil)).Elem()
+}
+
+func (i TargetAssociatedEntityAnthosClusterArgs) ToTargetAssociatedEntityAnthosClusterOutput() TargetAssociatedEntityAnthosClusterOutput {
+	return i.ToTargetAssociatedEntityAnthosClusterOutputWithContext(context.Background())
+}
+
+func (i TargetAssociatedEntityAnthosClusterArgs) ToTargetAssociatedEntityAnthosClusterOutputWithContext(ctx context.Context) TargetAssociatedEntityAnthosClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetAssociatedEntityAnthosClusterOutput)
+}
+
+// TargetAssociatedEntityAnthosClusterArrayInput is an input type that accepts TargetAssociatedEntityAnthosClusterArray and TargetAssociatedEntityAnthosClusterArrayOutput values.
+// You can construct a concrete instance of `TargetAssociatedEntityAnthosClusterArrayInput` via:
+//
+//	TargetAssociatedEntityAnthosClusterArray{ TargetAssociatedEntityAnthosClusterArgs{...} }
+type TargetAssociatedEntityAnthosClusterArrayInput interface {
+	pulumi.Input
+
+	ToTargetAssociatedEntityAnthosClusterArrayOutput() TargetAssociatedEntityAnthosClusterArrayOutput
+	ToTargetAssociatedEntityAnthosClusterArrayOutputWithContext(context.Context) TargetAssociatedEntityAnthosClusterArrayOutput
+}
+
+type TargetAssociatedEntityAnthosClusterArray []TargetAssociatedEntityAnthosClusterInput
+
+func (TargetAssociatedEntityAnthosClusterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TargetAssociatedEntityAnthosCluster)(nil)).Elem()
+}
+
+func (i TargetAssociatedEntityAnthosClusterArray) ToTargetAssociatedEntityAnthosClusterArrayOutput() TargetAssociatedEntityAnthosClusterArrayOutput {
+	return i.ToTargetAssociatedEntityAnthosClusterArrayOutputWithContext(context.Background())
+}
+
+func (i TargetAssociatedEntityAnthosClusterArray) ToTargetAssociatedEntityAnthosClusterArrayOutputWithContext(ctx context.Context) TargetAssociatedEntityAnthosClusterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetAssociatedEntityAnthosClusterArrayOutput)
+}
+
+type TargetAssociatedEntityAnthosClusterOutput struct{ *pulumi.OutputState }
+
+func (TargetAssociatedEntityAnthosClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetAssociatedEntityAnthosCluster)(nil)).Elem()
+}
+
+func (o TargetAssociatedEntityAnthosClusterOutput) ToTargetAssociatedEntityAnthosClusterOutput() TargetAssociatedEntityAnthosClusterOutput {
+	return o
+}
+
+func (o TargetAssociatedEntityAnthosClusterOutput) ToTargetAssociatedEntityAnthosClusterOutputWithContext(ctx context.Context) TargetAssociatedEntityAnthosClusterOutput {
+	return o
+}
+
+// Optional. Membership of the GKE Hub-registered cluster to which to apply the Skaffold configuration. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.
+func (o TargetAssociatedEntityAnthosClusterOutput) Membership() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TargetAssociatedEntityAnthosCluster) *string { return v.Membership }).(pulumi.StringPtrOutput)
+}
+
+type TargetAssociatedEntityAnthosClusterArrayOutput struct{ *pulumi.OutputState }
+
+func (TargetAssociatedEntityAnthosClusterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TargetAssociatedEntityAnthosCluster)(nil)).Elem()
+}
+
+func (o TargetAssociatedEntityAnthosClusterArrayOutput) ToTargetAssociatedEntityAnthosClusterArrayOutput() TargetAssociatedEntityAnthosClusterArrayOutput {
+	return o
+}
+
+func (o TargetAssociatedEntityAnthosClusterArrayOutput) ToTargetAssociatedEntityAnthosClusterArrayOutputWithContext(ctx context.Context) TargetAssociatedEntityAnthosClusterArrayOutput {
+	return o
+}
+
+func (o TargetAssociatedEntityAnthosClusterArrayOutput) Index(i pulumi.IntInput) TargetAssociatedEntityAnthosClusterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TargetAssociatedEntityAnthosCluster {
+		return vs[0].([]TargetAssociatedEntityAnthosCluster)[vs[1].(int)]
+	}).(TargetAssociatedEntityAnthosClusterOutput)
+}
+
+type TargetAssociatedEntityGkeCluster struct {
+	// Optional. Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}`.
+	Cluster *string `pulumi:"cluster"`
+	// Optional. If true, `cluster` is accessed using the private IP address of the control plane endpoint. Otherwise, the default IP address of the control plane endpoint is used. The default IP address is the private IP address for clusters with private control-plane endpoints and the public IP address otherwise. Only specify this option when `cluster` is a [private GKE cluster](https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept).
+	InternalIp *bool `pulumi:"internalIp"`
+	// Optional. If set, used to configure a [proxy](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#proxy) to the Kubernetes server.
+	ProxyUrl *string `pulumi:"proxyUrl"`
+}
+
+// TargetAssociatedEntityGkeClusterInput is an input type that accepts TargetAssociatedEntityGkeClusterArgs and TargetAssociatedEntityGkeClusterOutput values.
+// You can construct a concrete instance of `TargetAssociatedEntityGkeClusterInput` via:
+//
+//	TargetAssociatedEntityGkeClusterArgs{...}
+type TargetAssociatedEntityGkeClusterInput interface {
+	pulumi.Input
+
+	ToTargetAssociatedEntityGkeClusterOutput() TargetAssociatedEntityGkeClusterOutput
+	ToTargetAssociatedEntityGkeClusterOutputWithContext(context.Context) TargetAssociatedEntityGkeClusterOutput
+}
+
+type TargetAssociatedEntityGkeClusterArgs struct {
+	// Optional. Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}`.
+	Cluster pulumi.StringPtrInput `pulumi:"cluster"`
+	// Optional. If true, `cluster` is accessed using the private IP address of the control plane endpoint. Otherwise, the default IP address of the control plane endpoint is used. The default IP address is the private IP address for clusters with private control-plane endpoints and the public IP address otherwise. Only specify this option when `cluster` is a [private GKE cluster](https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept).
+	InternalIp pulumi.BoolPtrInput `pulumi:"internalIp"`
+	// Optional. If set, used to configure a [proxy](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#proxy) to the Kubernetes server.
+	ProxyUrl pulumi.StringPtrInput `pulumi:"proxyUrl"`
+}
+
+func (TargetAssociatedEntityGkeClusterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetAssociatedEntityGkeCluster)(nil)).Elem()
+}
+
+func (i TargetAssociatedEntityGkeClusterArgs) ToTargetAssociatedEntityGkeClusterOutput() TargetAssociatedEntityGkeClusterOutput {
+	return i.ToTargetAssociatedEntityGkeClusterOutputWithContext(context.Background())
+}
+
+func (i TargetAssociatedEntityGkeClusterArgs) ToTargetAssociatedEntityGkeClusterOutputWithContext(ctx context.Context) TargetAssociatedEntityGkeClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetAssociatedEntityGkeClusterOutput)
+}
+
+// TargetAssociatedEntityGkeClusterArrayInput is an input type that accepts TargetAssociatedEntityGkeClusterArray and TargetAssociatedEntityGkeClusterArrayOutput values.
+// You can construct a concrete instance of `TargetAssociatedEntityGkeClusterArrayInput` via:
+//
+//	TargetAssociatedEntityGkeClusterArray{ TargetAssociatedEntityGkeClusterArgs{...} }
+type TargetAssociatedEntityGkeClusterArrayInput interface {
+	pulumi.Input
+
+	ToTargetAssociatedEntityGkeClusterArrayOutput() TargetAssociatedEntityGkeClusterArrayOutput
+	ToTargetAssociatedEntityGkeClusterArrayOutputWithContext(context.Context) TargetAssociatedEntityGkeClusterArrayOutput
+}
+
+type TargetAssociatedEntityGkeClusterArray []TargetAssociatedEntityGkeClusterInput
+
+func (TargetAssociatedEntityGkeClusterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TargetAssociatedEntityGkeCluster)(nil)).Elem()
+}
+
+func (i TargetAssociatedEntityGkeClusterArray) ToTargetAssociatedEntityGkeClusterArrayOutput() TargetAssociatedEntityGkeClusterArrayOutput {
+	return i.ToTargetAssociatedEntityGkeClusterArrayOutputWithContext(context.Background())
+}
+
+func (i TargetAssociatedEntityGkeClusterArray) ToTargetAssociatedEntityGkeClusterArrayOutputWithContext(ctx context.Context) TargetAssociatedEntityGkeClusterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TargetAssociatedEntityGkeClusterArrayOutput)
+}
+
+type TargetAssociatedEntityGkeClusterOutput struct{ *pulumi.OutputState }
+
+func (TargetAssociatedEntityGkeClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TargetAssociatedEntityGkeCluster)(nil)).Elem()
+}
+
+func (o TargetAssociatedEntityGkeClusterOutput) ToTargetAssociatedEntityGkeClusterOutput() TargetAssociatedEntityGkeClusterOutput {
+	return o
+}
+
+func (o TargetAssociatedEntityGkeClusterOutput) ToTargetAssociatedEntityGkeClusterOutputWithContext(ctx context.Context) TargetAssociatedEntityGkeClusterOutput {
+	return o
+}
+
+// Optional. Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}`.
+func (o TargetAssociatedEntityGkeClusterOutput) Cluster() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TargetAssociatedEntityGkeCluster) *string { return v.Cluster }).(pulumi.StringPtrOutput)
+}
+
+// Optional. If true, `cluster` is accessed using the private IP address of the control plane endpoint. Otherwise, the default IP address of the control plane endpoint is used. The default IP address is the private IP address for clusters with private control-plane endpoints and the public IP address otherwise. Only specify this option when `cluster` is a [private GKE cluster](https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept).
+func (o TargetAssociatedEntityGkeClusterOutput) InternalIp() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TargetAssociatedEntityGkeCluster) *bool { return v.InternalIp }).(pulumi.BoolPtrOutput)
+}
+
+// Optional. If set, used to configure a [proxy](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#proxy) to the Kubernetes server.
+func (o TargetAssociatedEntityGkeClusterOutput) ProxyUrl() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TargetAssociatedEntityGkeCluster) *string { return v.ProxyUrl }).(pulumi.StringPtrOutput)
+}
+
+type TargetAssociatedEntityGkeClusterArrayOutput struct{ *pulumi.OutputState }
+
+func (TargetAssociatedEntityGkeClusterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]TargetAssociatedEntityGkeCluster)(nil)).Elem()
+}
+
+func (o TargetAssociatedEntityGkeClusterArrayOutput) ToTargetAssociatedEntityGkeClusterArrayOutput() TargetAssociatedEntityGkeClusterArrayOutput {
+	return o
+}
+
+func (o TargetAssociatedEntityGkeClusterArrayOutput) ToTargetAssociatedEntityGkeClusterArrayOutputWithContext(ctx context.Context) TargetAssociatedEntityGkeClusterArrayOutput {
+	return o
+}
+
+func (o TargetAssociatedEntityGkeClusterArrayOutput) Index(i pulumi.IntInput) TargetAssociatedEntityGkeClusterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) TargetAssociatedEntityGkeCluster {
+		return vs[0].([]TargetAssociatedEntityGkeCluster)[vs[1].(int)]
+	}).(TargetAssociatedEntityGkeClusterOutput)
 }
 
 type TargetCustomTarget struct {
@@ -7125,6 +7633,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesPtrInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsPtrInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyStandardArgs{})
@@ -7135,6 +7645,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrInput)(nil)).Elem(), DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetAnthosClusterInput)(nil)).Elem(), TargetAnthosClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetAnthosClusterPtrInput)(nil)).Elem(), TargetAnthosClusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetAssociatedEntityInput)(nil)).Elem(), TargetAssociatedEntityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetAssociatedEntityArrayInput)(nil)).Elem(), TargetAssociatedEntityArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetAssociatedEntityAnthosClusterInput)(nil)).Elem(), TargetAssociatedEntityAnthosClusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetAssociatedEntityAnthosClusterArrayInput)(nil)).Elem(), TargetAssociatedEntityAnthosClusterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetAssociatedEntityGkeClusterInput)(nil)).Elem(), TargetAssociatedEntityGkeClusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TargetAssociatedEntityGkeClusterArrayInput)(nil)).Elem(), TargetAssociatedEntityGkeClusterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetCustomTargetInput)(nil)).Elem(), TargetCustomTargetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetCustomTargetPtrInput)(nil)).Elem(), TargetCustomTargetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TargetExecutionConfigInput)(nil)).Elem(), TargetExecutionConfigArgs{})
@@ -7217,6 +7733,8 @@ func init() {
 	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesPtrOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshPtrOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsOutput{})
+	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsPtrOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingPtrOutput{})
 	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyStandardOutput{})
@@ -7227,6 +7745,12 @@ func init() {
 	pulumi.RegisterOutputType(DeliveryPipelineSerialPipelineStageStrategyStandardPredeployPtrOutput{})
 	pulumi.RegisterOutputType(TargetAnthosClusterOutput{})
 	pulumi.RegisterOutputType(TargetAnthosClusterPtrOutput{})
+	pulumi.RegisterOutputType(TargetAssociatedEntityOutput{})
+	pulumi.RegisterOutputType(TargetAssociatedEntityArrayOutput{})
+	pulumi.RegisterOutputType(TargetAssociatedEntityAnthosClusterOutput{})
+	pulumi.RegisterOutputType(TargetAssociatedEntityAnthosClusterArrayOutput{})
+	pulumi.RegisterOutputType(TargetAssociatedEntityGkeClusterOutput{})
+	pulumi.RegisterOutputType(TargetAssociatedEntityGkeClusterArrayOutput{})
 	pulumi.RegisterOutputType(TargetCustomTargetOutput{})
 	pulumi.RegisterOutputType(TargetCustomTargetPtrOutput{})
 	pulumi.RegisterOutputType(TargetExecutionConfigOutput{})

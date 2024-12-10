@@ -9,6 +9,48 @@ import * as utilities from "../utilities";
  * * [Get started with Firebase Security Rules](https://firebase.google.com/docs/rules/get-started)
  * ## Example Usage
  *
+ * ### Firestore_release
+ * Creates a Firebase Rules Release to the default Cloud Firestore instance
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const firestore = new gcp.firebaserules.Ruleset("firestore", {
+ *     project: "my-project-name",
+ *     source: {
+ *         files: [{
+ *             content: "service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }",
+ *             name: "firestore.rules",
+ *         }],
+ *     },
+ * });
+ * const primary = new gcp.firebaserules.Release("primary", {
+ *     name: "cloud.firestore",
+ *     project: "my-project-name",
+ *     rulesetName: pulumi.interpolate`projects/my-project-name/rulesets/${firestore.name}`,
+ * });
+ * ```
+ * ### Firestore_release_additional
+ * Creates a Firebase Rules Release to an additional Cloud Firestore instance
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const firestore = new gcp.firebaserules.Ruleset("firestore", {
+ *     project: "my-project-name",
+ *     source: {
+ *         files: [{
+ *             content: "service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }",
+ *             name: "firestore.rules",
+ *         }],
+ *     },
+ * });
+ * const primary = new gcp.firebaserules.Release("primary", {
+ *     name: "cloud.firestore/database",
+ *     project: "my-project-name",
+ *     rulesetName: pulumi.interpolate`projects/my-project-name/rulesets/${firestore.name}`,
+ * });
+ * ```
  * ## Import
  *
  * Release can be imported using any of these accepted formats:

@@ -120,7 +120,7 @@ def get_account_key(name: Optional[str] = None,
     :param str name: The name of the service account key. This must have format
            `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}/keys/{KEYID}`, where `{ACCOUNT}`
            is the email address or unique id of the service account.
-    :param str project: The ID of the project that the service account will be created in.
+    :param str project: The ID of the project that the service account is present in.
            Defaults to the provider project configuration.
     :param str public_key_type: The output format of the public key requested. TYPE_X509_PEM_FILE is the default output format.
     """
@@ -161,7 +161,7 @@ def get_account_key_output(name: Optional[pulumi.Input[str]] = None,
     :param str name: The name of the service account key. This must have format
            `projects/{PROJECT_ID}/serviceAccounts/{ACCOUNT}/keys/{KEYID}`, where `{ACCOUNT}`
            is the email address or unique id of the service account.
-    :param str project: The ID of the project that the service account will be created in.
+    :param str project: The ID of the project that the service account is present in.
            Defaults to the provider project configuration.
     :param str public_key_type: The output format of the public key requested. TYPE_X509_PEM_FILE is the default output format.
     """

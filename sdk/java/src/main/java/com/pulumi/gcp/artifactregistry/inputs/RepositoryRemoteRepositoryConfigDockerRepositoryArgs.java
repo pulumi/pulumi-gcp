@@ -17,7 +17,7 @@ public final class RepositoryRemoteRepositoryConfigDockerRepositoryArgs extends 
     public static final RepositoryRemoteRepositoryConfigDockerRepositoryArgs Empty = new RepositoryRemoteRepositoryConfigDockerRepositoryArgs();
 
     /**
-     * Settings for a remote repository with a custom uri.
+     * [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
      * Structure is documented below.
      * 
      */
@@ -25,7 +25,7 @@ public final class RepositoryRemoteRepositoryConfigDockerRepositoryArgs extends 
     private @Nullable Output<RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs> customRepository;
 
     /**
-     * @return Settings for a remote repository with a custom uri.
+     * @return [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
      * Structure is documented below.
      * 
      */
@@ -78,7 +78,7 @@ public final class RepositoryRemoteRepositoryConfigDockerRepositoryArgs extends 
         }
 
         /**
-         * @param customRepository Settings for a remote repository with a custom uri.
+         * @param customRepository [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
          * Structure is documented below.
          * 
          * @return builder
@@ -90,7 +90,7 @@ public final class RepositoryRemoteRepositoryConfigDockerRepositoryArgs extends 
         }
 
         /**
-         * @param customRepository Settings for a remote repository with a custom uri.
+         * @param customRepository [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
          * Structure is documented below.
          * 
          * @return builder

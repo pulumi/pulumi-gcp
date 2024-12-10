@@ -1689,6 +1689,233 @@ func (o ClientTlsPolicyServerValidationCaGrpcEndpointPtrOutput) TargetUri() pulu
 	}).(pulumi.StringPtrOutput)
 }
 
+type MirroringDeploymentGroupConnectedEndpointGroup struct {
+	// (Output)
+	// Output only. A connected mirroring endpoint group.
+	Name *string `pulumi:"name"`
+}
+
+// MirroringDeploymentGroupConnectedEndpointGroupInput is an input type that accepts MirroringDeploymentGroupConnectedEndpointGroupArgs and MirroringDeploymentGroupConnectedEndpointGroupOutput values.
+// You can construct a concrete instance of `MirroringDeploymentGroupConnectedEndpointGroupInput` via:
+//
+//	MirroringDeploymentGroupConnectedEndpointGroupArgs{...}
+type MirroringDeploymentGroupConnectedEndpointGroupInput interface {
+	pulumi.Input
+
+	ToMirroringDeploymentGroupConnectedEndpointGroupOutput() MirroringDeploymentGroupConnectedEndpointGroupOutput
+	ToMirroringDeploymentGroupConnectedEndpointGroupOutputWithContext(context.Context) MirroringDeploymentGroupConnectedEndpointGroupOutput
+}
+
+type MirroringDeploymentGroupConnectedEndpointGroupArgs struct {
+	// (Output)
+	// Output only. A connected mirroring endpoint group.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+}
+
+func (MirroringDeploymentGroupConnectedEndpointGroupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MirroringDeploymentGroupConnectedEndpointGroup)(nil)).Elem()
+}
+
+func (i MirroringDeploymentGroupConnectedEndpointGroupArgs) ToMirroringDeploymentGroupConnectedEndpointGroupOutput() MirroringDeploymentGroupConnectedEndpointGroupOutput {
+	return i.ToMirroringDeploymentGroupConnectedEndpointGroupOutputWithContext(context.Background())
+}
+
+func (i MirroringDeploymentGroupConnectedEndpointGroupArgs) ToMirroringDeploymentGroupConnectedEndpointGroupOutputWithContext(ctx context.Context) MirroringDeploymentGroupConnectedEndpointGroupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MirroringDeploymentGroupConnectedEndpointGroupOutput)
+}
+
+// MirroringDeploymentGroupConnectedEndpointGroupArrayInput is an input type that accepts MirroringDeploymentGroupConnectedEndpointGroupArray and MirroringDeploymentGroupConnectedEndpointGroupArrayOutput values.
+// You can construct a concrete instance of `MirroringDeploymentGroupConnectedEndpointGroupArrayInput` via:
+//
+//	MirroringDeploymentGroupConnectedEndpointGroupArray{ MirroringDeploymentGroupConnectedEndpointGroupArgs{...} }
+type MirroringDeploymentGroupConnectedEndpointGroupArrayInput interface {
+	pulumi.Input
+
+	ToMirroringDeploymentGroupConnectedEndpointGroupArrayOutput() MirroringDeploymentGroupConnectedEndpointGroupArrayOutput
+	ToMirroringDeploymentGroupConnectedEndpointGroupArrayOutputWithContext(context.Context) MirroringDeploymentGroupConnectedEndpointGroupArrayOutput
+}
+
+type MirroringDeploymentGroupConnectedEndpointGroupArray []MirroringDeploymentGroupConnectedEndpointGroupInput
+
+func (MirroringDeploymentGroupConnectedEndpointGroupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MirroringDeploymentGroupConnectedEndpointGroup)(nil)).Elem()
+}
+
+func (i MirroringDeploymentGroupConnectedEndpointGroupArray) ToMirroringDeploymentGroupConnectedEndpointGroupArrayOutput() MirroringDeploymentGroupConnectedEndpointGroupArrayOutput {
+	return i.ToMirroringDeploymentGroupConnectedEndpointGroupArrayOutputWithContext(context.Background())
+}
+
+func (i MirroringDeploymentGroupConnectedEndpointGroupArray) ToMirroringDeploymentGroupConnectedEndpointGroupArrayOutputWithContext(ctx context.Context) MirroringDeploymentGroupConnectedEndpointGroupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MirroringDeploymentGroupConnectedEndpointGroupArrayOutput)
+}
+
+type MirroringDeploymentGroupConnectedEndpointGroupOutput struct{ *pulumi.OutputState }
+
+func (MirroringDeploymentGroupConnectedEndpointGroupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MirroringDeploymentGroupConnectedEndpointGroup)(nil)).Elem()
+}
+
+func (o MirroringDeploymentGroupConnectedEndpointGroupOutput) ToMirroringDeploymentGroupConnectedEndpointGroupOutput() MirroringDeploymentGroupConnectedEndpointGroupOutput {
+	return o
+}
+
+func (o MirroringDeploymentGroupConnectedEndpointGroupOutput) ToMirroringDeploymentGroupConnectedEndpointGroupOutputWithContext(ctx context.Context) MirroringDeploymentGroupConnectedEndpointGroupOutput {
+	return o
+}
+
+// (Output)
+// Output only. A connected mirroring endpoint group.
+func (o MirroringDeploymentGroupConnectedEndpointGroupOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MirroringDeploymentGroupConnectedEndpointGroup) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+type MirroringDeploymentGroupConnectedEndpointGroupArrayOutput struct{ *pulumi.OutputState }
+
+func (MirroringDeploymentGroupConnectedEndpointGroupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MirroringDeploymentGroupConnectedEndpointGroup)(nil)).Elem()
+}
+
+func (o MirroringDeploymentGroupConnectedEndpointGroupArrayOutput) ToMirroringDeploymentGroupConnectedEndpointGroupArrayOutput() MirroringDeploymentGroupConnectedEndpointGroupArrayOutput {
+	return o
+}
+
+func (o MirroringDeploymentGroupConnectedEndpointGroupArrayOutput) ToMirroringDeploymentGroupConnectedEndpointGroupArrayOutputWithContext(ctx context.Context) MirroringDeploymentGroupConnectedEndpointGroupArrayOutput {
+	return o
+}
+
+func (o MirroringDeploymentGroupConnectedEndpointGroupArrayOutput) Index(i pulumi.IntInput) MirroringDeploymentGroupConnectedEndpointGroupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MirroringDeploymentGroupConnectedEndpointGroup {
+		return vs[0].([]MirroringDeploymentGroupConnectedEndpointGroup)[vs[1].(int)]
+	}).(MirroringDeploymentGroupConnectedEndpointGroupOutput)
+}
+
+type MirroringEndpointGroupAssociationLocationsDetail struct {
+	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringEndpointGroupAssociation`.
+	//
+	// ***
+	Location *string `pulumi:"location"`
+	// (Output)
+	// Output only. The association state in this location.
+	// Possible values:
+	// STATE_UNSPECIFIED
+	// ACTIVE
+	// OUT_OF_SYNC
+	State *string `pulumi:"state"`
+}
+
+// MirroringEndpointGroupAssociationLocationsDetailInput is an input type that accepts MirroringEndpointGroupAssociationLocationsDetailArgs and MirroringEndpointGroupAssociationLocationsDetailOutput values.
+// You can construct a concrete instance of `MirroringEndpointGroupAssociationLocationsDetailInput` via:
+//
+//	MirroringEndpointGroupAssociationLocationsDetailArgs{...}
+type MirroringEndpointGroupAssociationLocationsDetailInput interface {
+	pulumi.Input
+
+	ToMirroringEndpointGroupAssociationLocationsDetailOutput() MirroringEndpointGroupAssociationLocationsDetailOutput
+	ToMirroringEndpointGroupAssociationLocationsDetailOutputWithContext(context.Context) MirroringEndpointGroupAssociationLocationsDetailOutput
+}
+
+type MirroringEndpointGroupAssociationLocationsDetailArgs struct {
+	// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringEndpointGroupAssociation`.
+	//
+	// ***
+	Location pulumi.StringPtrInput `pulumi:"location"`
+	// (Output)
+	// Output only. The association state in this location.
+	// Possible values:
+	// STATE_UNSPECIFIED
+	// ACTIVE
+	// OUT_OF_SYNC
+	State pulumi.StringPtrInput `pulumi:"state"`
+}
+
+func (MirroringEndpointGroupAssociationLocationsDetailArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*MirroringEndpointGroupAssociationLocationsDetail)(nil)).Elem()
+}
+
+func (i MirroringEndpointGroupAssociationLocationsDetailArgs) ToMirroringEndpointGroupAssociationLocationsDetailOutput() MirroringEndpointGroupAssociationLocationsDetailOutput {
+	return i.ToMirroringEndpointGroupAssociationLocationsDetailOutputWithContext(context.Background())
+}
+
+func (i MirroringEndpointGroupAssociationLocationsDetailArgs) ToMirroringEndpointGroupAssociationLocationsDetailOutputWithContext(ctx context.Context) MirroringEndpointGroupAssociationLocationsDetailOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MirroringEndpointGroupAssociationLocationsDetailOutput)
+}
+
+// MirroringEndpointGroupAssociationLocationsDetailArrayInput is an input type that accepts MirroringEndpointGroupAssociationLocationsDetailArray and MirroringEndpointGroupAssociationLocationsDetailArrayOutput values.
+// You can construct a concrete instance of `MirroringEndpointGroupAssociationLocationsDetailArrayInput` via:
+//
+//	MirroringEndpointGroupAssociationLocationsDetailArray{ MirroringEndpointGroupAssociationLocationsDetailArgs{...} }
+type MirroringEndpointGroupAssociationLocationsDetailArrayInput interface {
+	pulumi.Input
+
+	ToMirroringEndpointGroupAssociationLocationsDetailArrayOutput() MirroringEndpointGroupAssociationLocationsDetailArrayOutput
+	ToMirroringEndpointGroupAssociationLocationsDetailArrayOutputWithContext(context.Context) MirroringEndpointGroupAssociationLocationsDetailArrayOutput
+}
+
+type MirroringEndpointGroupAssociationLocationsDetailArray []MirroringEndpointGroupAssociationLocationsDetailInput
+
+func (MirroringEndpointGroupAssociationLocationsDetailArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MirroringEndpointGroupAssociationLocationsDetail)(nil)).Elem()
+}
+
+func (i MirroringEndpointGroupAssociationLocationsDetailArray) ToMirroringEndpointGroupAssociationLocationsDetailArrayOutput() MirroringEndpointGroupAssociationLocationsDetailArrayOutput {
+	return i.ToMirroringEndpointGroupAssociationLocationsDetailArrayOutputWithContext(context.Background())
+}
+
+func (i MirroringEndpointGroupAssociationLocationsDetailArray) ToMirroringEndpointGroupAssociationLocationsDetailArrayOutputWithContext(ctx context.Context) MirroringEndpointGroupAssociationLocationsDetailArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(MirroringEndpointGroupAssociationLocationsDetailArrayOutput)
+}
+
+type MirroringEndpointGroupAssociationLocationsDetailOutput struct{ *pulumi.OutputState }
+
+func (MirroringEndpointGroupAssociationLocationsDetailOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*MirroringEndpointGroupAssociationLocationsDetail)(nil)).Elem()
+}
+
+func (o MirroringEndpointGroupAssociationLocationsDetailOutput) ToMirroringEndpointGroupAssociationLocationsDetailOutput() MirroringEndpointGroupAssociationLocationsDetailOutput {
+	return o
+}
+
+func (o MirroringEndpointGroupAssociationLocationsDetailOutput) ToMirroringEndpointGroupAssociationLocationsDetailOutputWithContext(ctx context.Context) MirroringEndpointGroupAssociationLocationsDetailOutput {
+	return o
+}
+
+// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringEndpointGroupAssociation`.
+//
+// ***
+func (o MirroringEndpointGroupAssociationLocationsDetailOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MirroringEndpointGroupAssociationLocationsDetail) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Output only. The association state in this location.
+// Possible values:
+// STATE_UNSPECIFIED
+// ACTIVE
+// OUT_OF_SYNC
+func (o MirroringEndpointGroupAssociationLocationsDetailOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v MirroringEndpointGroupAssociationLocationsDetail) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+type MirroringEndpointGroupAssociationLocationsDetailArrayOutput struct{ *pulumi.OutputState }
+
+func (MirroringEndpointGroupAssociationLocationsDetailArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]MirroringEndpointGroupAssociationLocationsDetail)(nil)).Elem()
+}
+
+func (o MirroringEndpointGroupAssociationLocationsDetailArrayOutput) ToMirroringEndpointGroupAssociationLocationsDetailArrayOutput() MirroringEndpointGroupAssociationLocationsDetailArrayOutput {
+	return o
+}
+
+func (o MirroringEndpointGroupAssociationLocationsDetailArrayOutput) ToMirroringEndpointGroupAssociationLocationsDetailArrayOutputWithContext(ctx context.Context) MirroringEndpointGroupAssociationLocationsDetailArrayOutput {
+	return o
+}
+
+func (o MirroringEndpointGroupAssociationLocationsDetailArrayOutput) Index(i pulumi.IntInput) MirroringEndpointGroupAssociationLocationsDetailOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) MirroringEndpointGroupAssociationLocationsDetail {
+		return vs[0].([]MirroringEndpointGroupAssociationLocationsDetail)[vs[1].(int)]
+	}).(MirroringEndpointGroupAssociationLocationsDetailOutput)
+}
+
 type SecurityProfileThreatPreventionProfile struct {
 	// The configuration for overriding threats actions by severity match.
 	// Structure is documented below.
@@ -3165,6 +3392,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientTlsPolicyServerValidationCaCertificateProviderInstancePtrInput)(nil)).Elem(), ClientTlsPolicyServerValidationCaCertificateProviderInstanceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientTlsPolicyServerValidationCaGrpcEndpointInput)(nil)).Elem(), ClientTlsPolicyServerValidationCaGrpcEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClientTlsPolicyServerValidationCaGrpcEndpointPtrInput)(nil)).Elem(), ClientTlsPolicyServerValidationCaGrpcEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MirroringDeploymentGroupConnectedEndpointGroupInput)(nil)).Elem(), MirroringDeploymentGroupConnectedEndpointGroupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MirroringDeploymentGroupConnectedEndpointGroupArrayInput)(nil)).Elem(), MirroringDeploymentGroupConnectedEndpointGroupArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MirroringEndpointGroupAssociationLocationsDetailInput)(nil)).Elem(), MirroringEndpointGroupAssociationLocationsDetailArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*MirroringEndpointGroupAssociationLocationsDetailArrayInput)(nil)).Elem(), MirroringEndpointGroupAssociationLocationsDetailArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityProfileThreatPreventionProfileInput)(nil)).Elem(), SecurityProfileThreatPreventionProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityProfileThreatPreventionProfilePtrInput)(nil)).Elem(), SecurityProfileThreatPreventionProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityProfileThreatPreventionProfileSeverityOverrideInput)(nil)).Elem(), SecurityProfileThreatPreventionProfileSeverityOverrideArgs{})
@@ -3209,6 +3440,10 @@ func init() {
 	pulumi.RegisterOutputType(ClientTlsPolicyServerValidationCaCertificateProviderInstancePtrOutput{})
 	pulumi.RegisterOutputType(ClientTlsPolicyServerValidationCaGrpcEndpointOutput{})
 	pulumi.RegisterOutputType(ClientTlsPolicyServerValidationCaGrpcEndpointPtrOutput{})
+	pulumi.RegisterOutputType(MirroringDeploymentGroupConnectedEndpointGroupOutput{})
+	pulumi.RegisterOutputType(MirroringDeploymentGroupConnectedEndpointGroupArrayOutput{})
+	pulumi.RegisterOutputType(MirroringEndpointGroupAssociationLocationsDetailOutput{})
+	pulumi.RegisterOutputType(MirroringEndpointGroupAssociationLocationsDetailArrayOutput{})
 	pulumi.RegisterOutputType(SecurityProfileThreatPreventionProfileOutput{})
 	pulumi.RegisterOutputType(SecurityProfileThreatPreventionProfilePtrOutput{})
 	pulumi.RegisterOutputType(SecurityProfileThreatPreventionProfileSeverityOverrideOutput{})

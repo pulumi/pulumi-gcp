@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.redis.ClusterArgs;
 import com.pulumi.gcp.redis.inputs.ClusterState;
+import com.pulumi.gcp.redis.outputs.ClusterCrossClusterReplicationConfig;
 import com.pulumi.gcp.redis.outputs.ClusterDiscoveryEndpoint;
 import com.pulumi.gcp.redis.outputs.ClusterMaintenancePolicy;
 import com.pulumi.gcp.redis.outputs.ClusterMaintenanceSchedule;
@@ -28,14 +29,6 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * A Google Cloud Redis Cluster instance.
- * 
- * To get more information about Cluster, see:
- * 
- * * [API documentation](https://cloud.google.com/memorystore/docs/cluster/reference/rest/v1/projects.locations.clusters)
- * * How-to Guides
- *     * [Official Documentation](https://cloud.google.com/memorystore/docs/cluster/)
- * 
  * ## Example Usage
  * 
  * ### Redis Cluster Ha
@@ -217,6 +210,176 @@ import javax.annotation.Nullable;
  *             .deletionProtectionEnabled(true)
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(default_)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Redis Cluster Secondary
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.Subnetwork;
+ * import com.pulumi.gcp.compute.SubnetworkArgs;
+ * import com.pulumi.gcp.networkconnectivity.ServiceConnectionPolicy;
+ * import com.pulumi.gcp.networkconnectivity.ServiceConnectionPolicyArgs;
+ * import com.pulumi.gcp.networkconnectivity.inputs.ServiceConnectionPolicyPscConfigArgs;
+ * import com.pulumi.gcp.redis.Cluster;
+ * import com.pulumi.gcp.redis.ClusterArgs;
+ * import com.pulumi.gcp.redis.inputs.ClusterPscConfigArgs;
+ * import com.pulumi.gcp.redis.inputs.ClusterPersistenceConfigArgs;
+ * import com.pulumi.gcp.redis.inputs.ClusterPersistenceConfigRdbConfigArgs;
+ * import com.pulumi.gcp.redis.inputs.ClusterZoneDistributionConfigArgs;
+ * import com.pulumi.gcp.redis.inputs.ClusterMaintenancePolicyArgs;
+ * import com.pulumi.gcp.redis.inputs.ClusterCrossClusterReplicationConfigArgs;
+ * import com.pulumi.gcp.redis.inputs.ClusterCrossClusterReplicationConfigPrimaryClusterArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var producerNet = new Network("producerNet", NetworkArgs.builder()
+ *             .name("mynetwork")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var primaryClusterProducerSubnet = new Subnetwork("primaryClusterProducerSubnet", SubnetworkArgs.builder()
+ *             .name("mysubnet-primary-cluster")
+ *             .ipCidrRange("10.0.1.0/29")
+ *             .region("us-east1")
+ *             .network(producerNet.id())
+ *             .build());
+ * 
+ *         var primaryClusterRegionScp = new ServiceConnectionPolicy("primaryClusterRegionScp", ServiceConnectionPolicyArgs.builder()
+ *             .name("mypolicy-primary-cluster")
+ *             .location("us-east1")
+ *             .serviceClass("gcp-memorystore-redis")
+ *             .description("Primary cluster service connection policy")
+ *             .network(producerNet.id())
+ *             .pscConfig(ServiceConnectionPolicyPscConfigArgs.builder()
+ *                 .subnetworks(primaryClusterProducerSubnet.id())
+ *                 .build())
+ *             .build());
+ * 
+ *         // Primary cluster
+ *         var primaryCluster = new Cluster("primaryCluster", ClusterArgs.builder()
+ *             .name("my-primary-cluster")
+ *             .region("us-east1")
+ *             .pscConfigs(ClusterPscConfigArgs.builder()
+ *                 .network(producerNet.id())
+ *                 .build())
+ *             .authorizationMode("AUTH_MODE_DISABLED")
+ *             .transitEncryptionMode("TRANSIT_ENCRYPTION_MODE_DISABLED")
+ *             .shardCount(3)
+ *             .redisConfigs(Map.of("maxmemory-policy", "volatile-ttl"))
+ *             .nodeType("REDIS_HIGHMEM_MEDIUM")
+ *             .persistenceConfig(ClusterPersistenceConfigArgs.builder()
+ *                 .mode("RDB")
+ *                 .rdbConfig(ClusterPersistenceConfigRdbConfigArgs.builder()
+ *                     .rdbSnapshotPeriod("ONE_HOUR")
+ *                     .rdbSnapshotStartTime("2024-10-02T15:01:23Z")
+ *                     .build())
+ *                 .build())
+ *             .zoneDistributionConfig(ClusterZoneDistributionConfigArgs.builder()
+ *                 .mode("MULTI_ZONE")
+ *                 .build())
+ *             .replicaCount(1)
+ *             .maintenancePolicy(ClusterMaintenancePolicyArgs.builder()
+ *                 .weeklyMaintenanceWindows(ClusterMaintenancePolicyWeeklyMaintenanceWindowArgs.builder()
+ *                     .day("MONDAY")
+ *                     .startTime(ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs.builder()
+ *                         .hours(1)
+ *                         .minutes(0)
+ *                         .seconds(0)
+ *                         .nanos(0)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .deletionProtectionEnabled(true)
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(primaryClusterRegionScp)
+ *                 .build());
+ * 
+ *         var secondaryClusterProducerSubnet = new Subnetwork("secondaryClusterProducerSubnet", SubnetworkArgs.builder()
+ *             .name("mysubnet-secondary-cluster")
+ *             .ipCidrRange("10.0.2.0/29")
+ *             .region("europe-west1")
+ *             .network(producerNet.id())
+ *             .build());
+ * 
+ *         var secondaryClusterRegionScp = new ServiceConnectionPolicy("secondaryClusterRegionScp", ServiceConnectionPolicyArgs.builder()
+ *             .name("mypolicy-secondary-cluster")
+ *             .location("europe-west1")
+ *             .serviceClass("gcp-memorystore-redis")
+ *             .description("Secondary cluster service connection policy")
+ *             .network(producerNet.id())
+ *             .pscConfig(ServiceConnectionPolicyPscConfigArgs.builder()
+ *                 .subnetworks(secondaryClusterProducerSubnet.id())
+ *                 .build())
+ *             .build());
+ * 
+ *         // Secondary cluster
+ *         var secondaryCluster = new Cluster("secondaryCluster", ClusterArgs.builder()
+ *             .name("my-secondary-cluster")
+ *             .region("europe-west1")
+ *             .pscConfigs(ClusterPscConfigArgs.builder()
+ *                 .network(producerNet.id())
+ *                 .build())
+ *             .authorizationMode("AUTH_MODE_DISABLED")
+ *             .transitEncryptionMode("TRANSIT_ENCRYPTION_MODE_DISABLED")
+ *             .shardCount(3)
+ *             .redisConfigs(Map.of("maxmemory-policy", "volatile-ttl"))
+ *             .nodeType("REDIS_HIGHMEM_MEDIUM")
+ *             .persistenceConfig(ClusterPersistenceConfigArgs.builder()
+ *                 .mode("RDB")
+ *                 .rdbConfig(ClusterPersistenceConfigRdbConfigArgs.builder()
+ *                     .rdbSnapshotPeriod("ONE_HOUR")
+ *                     .rdbSnapshotStartTime("2024-10-02T15:01:23Z")
+ *                     .build())
+ *                 .build())
+ *             .zoneDistributionConfig(ClusterZoneDistributionConfigArgs.builder()
+ *                 .mode("MULTI_ZONE")
+ *                 .build())
+ *             .replicaCount(2)
+ *             .maintenancePolicy(ClusterMaintenancePolicyArgs.builder()
+ *                 .weeklyMaintenanceWindows(ClusterMaintenancePolicyWeeklyMaintenanceWindowArgs.builder()
+ *                     .day("WEDNESDAY")
+ *                     .startTime(ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs.builder()
+ *                         .hours(1)
+ *                         .minutes(0)
+ *                         .seconds(0)
+ *                         .nanos(0)
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .deletionProtectionEnabled(true)
+ *             .crossClusterReplicationConfig(ClusterCrossClusterReplicationConfigArgs.builder()
+ *                 .clusterRole("SECONDARY")
+ *                 .primaryCluster(ClusterCrossClusterReplicationConfigPrimaryClusterArgs.builder()
+ *                     .cluster(primaryCluster.id())
+ *                     .build())
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(secondaryClusterRegionScp)
  *                 .build());
  * 
  *     }
@@ -500,6 +663,20 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<String> createTime() {
         return this.createTime;
+    }
+    /**
+     * Cross cluster replication config
+     * 
+     */
+    @Export(name="crossClusterReplicationConfig", refs={ClusterCrossClusterReplicationConfig.class}, tree="[0]")
+    private Output<ClusterCrossClusterReplicationConfig> crossClusterReplicationConfig;
+
+    /**
+     * @return Cross cluster replication config
+     * 
+     */
+    public Output<ClusterCrossClusterReplicationConfig> crossClusterReplicationConfig() {
+        return this.crossClusterReplicationConfig;
     }
     /**
      * Optional. Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster

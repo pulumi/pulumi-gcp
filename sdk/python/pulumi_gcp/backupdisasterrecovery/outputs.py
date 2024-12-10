@@ -24,6 +24,7 @@ __all__ = [
     'BackupPlanBackupRuleStandardScheduleWeekDayOfMonth',
     'ManagementServerManagementUri',
     'ManagementServerNetwork',
+    'GetBackupBackupResult',
     'GetBackupPlanAssociationRulesConfigInfoResult',
     'GetBackupPlanAssociationRulesConfigInfoLastBackupErrorResult',
     'GetBackupPlanBackupRuleResult',
@@ -562,6 +563,68 @@ class ManagementServerNetwork(dict):
         Possible values are: `PRIVATE_SERVICE_ACCESS`.
         """
         return pulumi.get(self, "peering_mode")
+
+
+@pulumi.output_type
+class GetBackupBackupResult(dict):
+    def __init__(__self__, *,
+                 backup_id: str,
+                 backup_vault_id: str,
+                 data_source_id: str,
+                 location: str,
+                 name: str):
+        """
+        :param str backup_id: Id of the requesting object, Backup.
+        :param str backup_vault_id: Name of the Backup Vault associated with Backup.
+        :param str data_source_id: Name of the Data Source associated with Backup.
+        :param str location: Location of the resource.
+        :param str name: Name of the resource.
+        """
+        pulumi.set(__self__, "backup_id", backup_id)
+        pulumi.set(__self__, "backup_vault_id", backup_vault_id)
+        pulumi.set(__self__, "data_source_id", data_source_id)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter(name="backupId")
+    def backup_id(self) -> str:
+        """
+        Id of the requesting object, Backup.
+        """
+        return pulumi.get(self, "backup_id")
+
+    @property
+    @pulumi.getter(name="backupVaultId")
+    def backup_vault_id(self) -> str:
+        """
+        Name of the Backup Vault associated with Backup.
+        """
+        return pulumi.get(self, "backup_vault_id")
+
+    @property
+    @pulumi.getter(name="dataSourceId")
+    def data_source_id(self) -> str:
+        """
+        Name of the Data Source associated with Backup.
+        """
+        return pulumi.get(self, "data_source_id")
+
+    @property
+    @pulumi.getter
+    def location(self) -> str:
+        """
+        Location of the resource.
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of the resource.
+        """
+        return pulumi.get(self, "name")
 
 
 @pulumi.output_type

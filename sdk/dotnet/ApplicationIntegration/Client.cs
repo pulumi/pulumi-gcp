@@ -45,6 +45,7 @@ namespace Pulumi.Gcp.ApplicationIntegration
     /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
@@ -82,9 +83,18 @@ namespace Pulumi.Gcp.ApplicationIntegration
     ///         CloudKmsConfig = new Gcp.ApplicationIntegration.Inputs.ClientCloudKmsConfigArgs
     ///         {
     ///             KmsLocation = "us-east1",
-    ///             KmsRing = keyring.Id,
-    ///             Key = cryptokey.Id,
-    ///             KeyVersion = testKey.Id,
+    ///             KmsRing = Std.Basename.Invoke(new()
+    ///             {
+    ///                 Input = keyring.Id,
+    ///             }).Apply(invoke =&gt; invoke.Result),
+    ///             Key = Std.Basename.Invoke(new()
+    ///             {
+    ///                 Input = cryptokey.Id,
+    ///             }).Apply(invoke =&gt; invoke.Result),
+    ///             KeyVersion = Std.Basename.Invoke(new()
+    ///             {
+    ///                 Input = testKey.Id,
+    ///             }).Apply(invoke =&gt; invoke.Result),
     ///             KmsProjectId = testProject.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
     ///         },
     ///     });

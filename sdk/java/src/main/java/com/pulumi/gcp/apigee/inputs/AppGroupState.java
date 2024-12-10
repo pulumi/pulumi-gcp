@@ -50,14 +50,14 @@ public final class AppGroupState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Channel identifier identifies the owner maintaing this grouping.
+     * Channel identifier identifies the owner maintaining this grouping.
      * 
      */
     @Import(name="channelId")
     private @Nullable Output<String> channelId;
 
     /**
-     * @return Channel identifier identifies the owner maintaing this grouping.
+     * @return Channel identifier identifies the owner maintaining this grouping.
      * 
      */
     public Optional<Output<String>> channelId() {
@@ -282,7 +282,7 @@ public final class AppGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param channelId Channel identifier identifies the owner maintaing this grouping.
+         * @param channelId Channel identifier identifies the owner maintaining this grouping.
          * 
          * @return builder
          * 
@@ -293,7 +293,7 @@ public final class AppGroupState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param channelId Channel identifier identifies the owner maintaing this grouping.
+         * @param channelId Channel identifier identifies the owner maintaining this grouping.
          * 
          * @return builder
          * 

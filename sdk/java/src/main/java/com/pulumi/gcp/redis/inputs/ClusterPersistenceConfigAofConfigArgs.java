@@ -17,7 +17,7 @@ public final class ClusterPersistenceConfigAofConfigArgs extends com.pulumi.reso
 
     /**
      * Optional. Available fsync modes.
-     * - NO - Do not explicilty call fsync(). Rely on OS defaults.
+     * - NO - Do not explicitly call fsync(). Rely on OS defaults.
      * - EVERYSEC - Call fsync() once per second in a background thread. A balance between performance and durability.
      * - ALWAYS - Call fsync() for earch write command.
      *   Possible values are: `APPEND_FSYNC_UNSPECIFIED`, `NO`, `EVERYSEC`, `ALWAYS`.
@@ -28,7 +28,7 @@ public final class ClusterPersistenceConfigAofConfigArgs extends com.pulumi.reso
 
     /**
      * @return Optional. Available fsync modes.
-     * - NO - Do not explicilty call fsync(). Rely on OS defaults.
+     * - NO - Do not explicitly call fsync(). Rely on OS defaults.
      * - EVERYSEC - Call fsync() once per second in a background thread. A balance between performance and durability.
      * - ALWAYS - Call fsync() for earch write command.
      *   Possible values are: `APPEND_FSYNC_UNSPECIFIED`, `NO`, `EVERYSEC`, `ALWAYS`.
@@ -64,7 +64,7 @@ public final class ClusterPersistenceConfigAofConfigArgs extends com.pulumi.reso
 
         /**
          * @param appendFsync Optional. Available fsync modes.
-         * - NO - Do not explicilty call fsync(). Rely on OS defaults.
+         * - NO - Do not explicitly call fsync(). Rely on OS defaults.
          * - EVERYSEC - Call fsync() once per second in a background thread. A balance between performance and durability.
          * - ALWAYS - Call fsync() for earch write command.
          *   Possible values are: `APPEND_FSYNC_UNSPECIFIED`, `NO`, `EVERYSEC`, `ALWAYS`.
@@ -79,7 +79,7 @@ public final class ClusterPersistenceConfigAofConfigArgs extends com.pulumi.reso
 
         /**
          * @param appendFsync Optional. Available fsync modes.
-         * - NO - Do not explicilty call fsync(). Rely on OS defaults.
+         * - NO - Do not explicitly call fsync(). Rely on OS defaults.
          * - EVERYSEC - Call fsync() once per second in a background thread. A balance between performance and durability.
          * - ALWAYS - Call fsync() for earch write command.
          *   Possible values are: `APPEND_FSYNC_UNSPECIFIED`, `NO`, `EVERYSEC`, `ALWAYS`.

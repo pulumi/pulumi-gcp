@@ -18,8 +18,7 @@ namespace Pulumi.Gcp.Tpu.Outputs
         /// </summary>
         public readonly string Topology;
         /// <summary>
-        /// Type of TPU.
-        /// Possible values are: `V2`, `V3`, `V4`, `V5P`.
+        /// Type of TPU. Please select one of the allowed types: https://cloud.google.com/tpu/docs/reference/rest/v2/AcceleratorConfig#Type
         /// </summary>
         public readonly string Type;
 

@@ -11,14 +11,20 @@ import java.util.Objects;
 @CustomType
 public final class GetRepositoryRemoteRepositoryConfigCommonRepository {
     /**
-     * @return Specific uri to the Artifact Registory repository, e.g. &#39;projects/UPSTREAM_PROJECT_ID/locations/REGION/repositories/UPSTREAM_REPOSITORY&#39;
+     * @return One of:
+     * a. Artifact Registry Repository resource, e.g. &#39;projects/UPSTREAM_PROJECT_ID/locations/REGION/repositories/UPSTREAM_REPOSITORY&#39;
+     * b. URI to the registry, e.g. &#39;&#34;https://registry-1.docker.io&#34;&#39;
+     * c. URI to Artifact Registry Repository, e.g. &#39;&#34;https://REGION-docker.pkg.dev/UPSTREAM_PROJECT_ID/UPSTREAM_REPOSITORY&#34;&#39;
      * 
      */
     private String uri;
 
     private GetRepositoryRemoteRepositoryConfigCommonRepository() {}
     /**
-     * @return Specific uri to the Artifact Registory repository, e.g. &#39;projects/UPSTREAM_PROJECT_ID/locations/REGION/repositories/UPSTREAM_REPOSITORY&#39;
+     * @return One of:
+     * a. Artifact Registry Repository resource, e.g. &#39;projects/UPSTREAM_PROJECT_ID/locations/REGION/repositories/UPSTREAM_REPOSITORY&#39;
+     * b. URI to the registry, e.g. &#39;&#34;https://registry-1.docker.io&#34;&#39;
+     * c. URI to Artifact Registry Repository, e.g. &#39;&#34;https://REGION-docker.pkg.dev/UPSTREAM_PROJECT_ID/UPSTREAM_REPOSITORY&#34;&#39;
      * 
      */
     public String uri() {

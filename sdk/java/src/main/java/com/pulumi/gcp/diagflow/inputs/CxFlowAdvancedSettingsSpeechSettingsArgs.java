@@ -68,14 +68,14 @@ public final class CxFlowAdvancedSettingsSpeechSettingsArgs extends com.pulumi.r
     }
 
     /**
-     * Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+     * Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
      * 
      */
     @Import(name="useTimeoutBasedEndpointing")
     private @Nullable Output<Boolean> useTimeoutBasedEndpointing;
 
     /**
-     * @return Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+     * @return Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
      * 
      */
     public Optional<Output<Boolean>> useTimeoutBasedEndpointing() {
@@ -177,7 +177,7 @@ public final class CxFlowAdvancedSettingsSpeechSettingsArgs extends com.pulumi.r
         }
 
         /**
-         * @param useTimeoutBasedEndpointing Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+         * @param useTimeoutBasedEndpointing Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
          * 
          * @return builder
          * 
@@ -188,7 +188,7 @@ public final class CxFlowAdvancedSettingsSpeechSettingsArgs extends com.pulumi.r
         }
 
         /**
-         * @param useTimeoutBasedEndpointing Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+         * @param useTimeoutBasedEndpointing Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
          * 
          * @return builder
          * 

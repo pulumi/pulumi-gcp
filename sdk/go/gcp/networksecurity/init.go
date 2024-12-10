@@ -41,6 +41,14 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &GatewaySecurityPolicy{}
 	case "gcp:networksecurity/gatewaySecurityPolicyRule:GatewaySecurityPolicyRule":
 		r = &GatewaySecurityPolicyRule{}
+	case "gcp:networksecurity/mirroringDeployment:MirroringDeployment":
+		r = &MirroringDeployment{}
+	case "gcp:networksecurity/mirroringDeploymentGroup:MirroringDeploymentGroup":
+		r = &MirroringDeploymentGroup{}
+	case "gcp:networksecurity/mirroringEndpointGroup:MirroringEndpointGroup":
+		r = &MirroringEndpointGroup{}
+	case "gcp:networksecurity/mirroringEndpointGroupAssociation:MirroringEndpointGroupAssociation":
+		r = &MirroringEndpointGroupAssociation{}
 	case "gcp:networksecurity/securityProfile:SecurityProfile":
 		r = &SecurityProfile{}
 	case "gcp:networksecurity/securityProfileGroup:SecurityProfileGroup":
@@ -112,6 +120,26 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"networksecurity/gatewaySecurityPolicyRule",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"networksecurity/mirroringDeployment",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"networksecurity/mirroringDeploymentGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"networksecurity/mirroringEndpointGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"networksecurity/mirroringEndpointGroupAssociation",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

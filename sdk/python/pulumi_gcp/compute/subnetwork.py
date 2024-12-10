@@ -441,7 +441,8 @@ class _SubnetworkState:
                  secondary_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input['SubnetworkSecondaryIpRangeArgs']]]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  send_secondary_ip_range_if_empty: Optional[pulumi.Input[bool]] = None,
-                 stack_type: Optional[pulumi.Input[str]] = None):
+                 stack_type: Optional[pulumi.Input[str]] = None,
+                 subnetwork_id: Optional[pulumi.Input[int]] = None):
         """
         Input properties used for looking up and filtering Subnetwork resources.
         :param pulumi.Input[bool] allow_subnet_cidr_routes_overlap: Typically packets destined to IPs within the subnetwork range that do not match
@@ -520,6 +521,7 @@ class _SubnetworkState:
         :param pulumi.Input[str] stack_type: The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
                If not specified IPV4_ONLY will be used.
                Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+        :param pulumi.Input[int] subnetwork_id: The unique identifier number for the resource. This identifier is defined by the server.
         """
         if allow_subnet_cidr_routes_overlap is not None:
             pulumi.set(__self__, "allow_subnet_cidr_routes_overlap", allow_subnet_cidr_routes_overlap)
@@ -572,6 +574,8 @@ class _SubnetworkState:
             pulumi.set(__self__, "send_secondary_ip_range_if_empty", send_secondary_ip_range_if_empty)
         if stack_type is not None:
             pulumi.set(__self__, "stack_type", stack_type)
+        if subnetwork_id is not None:
+            pulumi.set(__self__, "subnetwork_id", subnetwork_id)
 
     @property
     @pulumi.getter(name="allowSubnetCidrRoutesOverlap")
@@ -913,6 +917,18 @@ class _SubnetworkState:
     @stack_type.setter
     def stack_type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "stack_type", value)
+
+    @property
+    @pulumi.getter(name="subnetworkId")
+    def subnetwork_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The unique identifier number for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "subnetwork_id")
+
+    @subnetwork_id.setter
+    def subnetwork_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "subnetwork_id", value)
 
 
 class Subnetwork(pulumi.CustomResource):
@@ -1569,6 +1585,7 @@ class Subnetwork(pulumi.CustomResource):
             __props__.__dict__["internal_ipv6_prefix"] = None
             __props__.__dict__["ipv6_cidr_range"] = None
             __props__.__dict__["self_link"] = None
+            __props__.__dict__["subnetwork_id"] = None
         super(Subnetwork, __self__).__init__(
             'gcp:compute/subnetwork:Subnetwork',
             resource_name,
@@ -1602,7 +1619,8 @@ class Subnetwork(pulumi.CustomResource):
             secondary_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[Union['SubnetworkSecondaryIpRangeArgs', 'SubnetworkSecondaryIpRangeArgsDict']]]]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             send_secondary_ip_range_if_empty: Optional[pulumi.Input[bool]] = None,
-            stack_type: Optional[pulumi.Input[str]] = None) -> 'Subnetwork':
+            stack_type: Optional[pulumi.Input[str]] = None,
+            subnetwork_id: Optional[pulumi.Input[int]] = None) -> 'Subnetwork':
         """
         Get an existing Subnetwork resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -1686,6 +1704,7 @@ class Subnetwork(pulumi.CustomResource):
         :param pulumi.Input[str] stack_type: The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
                If not specified IPV4_ONLY will be used.
                Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+        :param pulumi.Input[int] subnetwork_id: The unique identifier number for the resource. This identifier is defined by the server.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1715,6 +1734,7 @@ class Subnetwork(pulumi.CustomResource):
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["send_secondary_ip_range_if_empty"] = send_secondary_ip_range_if_empty
         __props__.__dict__["stack_type"] = stack_type
+        __props__.__dict__["subnetwork_id"] = subnetwork_id
         return Subnetwork(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -1961,4 +1981,12 @@ class Subnetwork(pulumi.CustomResource):
         Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
         """
         return pulumi.get(self, "stack_type")
+
+    @property
+    @pulumi.getter(name="subnetworkId")
+    def subnetwork_id(self) -> pulumi.Output[int]:
+        """
+        The unique identifier number for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "subnetwork_id")
 

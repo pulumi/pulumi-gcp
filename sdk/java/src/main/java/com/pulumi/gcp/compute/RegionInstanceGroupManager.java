@@ -397,6 +397,20 @@ public class RegionInstanceGroupManager extends com.pulumi.resources.CustomResou
         return this.instanceGroup;
     }
     /**
+     * The unique identifier number for the resource. This identifier is defined by the server.
+     * 
+     */
+    @Export(name="instanceGroupManagerId", refs={Integer.class}, tree="[0]")
+    private Output<Integer> instanceGroupManagerId;
+
+    /**
+     * @return The unique identifier number for the resource. This identifier is defined by the server.
+     * 
+     */
+    public Output<Integer> instanceGroupManagerId() {
+        return this.instanceGroupManagerId;
+    }
+    /**
      * The instance lifecycle policy for this managed instance group.
      * 
      */

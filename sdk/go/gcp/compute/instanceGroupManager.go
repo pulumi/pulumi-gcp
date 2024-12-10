@@ -226,6 +226,8 @@ type InstanceGroupManager struct {
 	Fingerprint pulumi.StringOutput `pulumi:"fingerprint"`
 	// The full URL of the instance group created by the manager.
 	InstanceGroup pulumi.StringOutput `pulumi:"instanceGroup"`
+	// The unique identifier number for the resource. This identifier is defined by the server.
+	InstanceGroupManagerId pulumi.IntOutput `pulumi:"instanceGroupManagerId"`
 	// The instance lifecycle policy for this managed instance group.
 	InstanceLifecyclePolicy InstanceGroupManagerInstanceLifecyclePolicyOutput `pulumi:"instanceLifecyclePolicy"`
 	// Pagination behavior of the `listManagedInstances` API
@@ -355,6 +357,8 @@ type instanceGroupManagerState struct {
 	Fingerprint *string `pulumi:"fingerprint"`
 	// The full URL of the instance group created by the manager.
 	InstanceGroup *string `pulumi:"instanceGroup"`
+	// The unique identifier number for the resource. This identifier is defined by the server.
+	InstanceGroupManagerId *int `pulumi:"instanceGroupManagerId"`
 	// The instance lifecycle policy for this managed instance group.
 	InstanceLifecyclePolicy *InstanceGroupManagerInstanceLifecyclePolicy `pulumi:"instanceLifecyclePolicy"`
 	// Pagination behavior of the `listManagedInstances` API
@@ -449,6 +453,8 @@ type InstanceGroupManagerState struct {
 	Fingerprint pulumi.StringPtrInput
 	// The full URL of the instance group created by the manager.
 	InstanceGroup pulumi.StringPtrInput
+	// The unique identifier number for the resource. This identifier is defined by the server.
+	InstanceGroupManagerId pulumi.IntPtrInput
 	// The instance lifecycle policy for this managed instance group.
 	InstanceLifecyclePolicy InstanceGroupManagerInstanceLifecyclePolicyPtrInput
 	// Pagination behavior of the `listManagedInstances` API
@@ -823,6 +829,11 @@ func (o InstanceGroupManagerOutput) Fingerprint() pulumi.StringOutput {
 // The full URL of the instance group created by the manager.
 func (o InstanceGroupManagerOutput) InstanceGroup() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceGroupManager) pulumi.StringOutput { return v.InstanceGroup }).(pulumi.StringOutput)
+}
+
+// The unique identifier number for the resource. This identifier is defined by the server.
+func (o InstanceGroupManagerOutput) InstanceGroupManagerId() pulumi.IntOutput {
+	return o.ApplyT(func(v *InstanceGroupManager) pulumi.IntOutput { return v.InstanceGroupManagerId }).(pulumi.IntOutput)
 }
 
 // The instance lifecycle policy for this managed instance group.

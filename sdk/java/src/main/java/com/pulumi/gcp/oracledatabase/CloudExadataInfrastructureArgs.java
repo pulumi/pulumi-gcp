@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.oracledatabase.inputs.CloudExadataInfrastructurePropertiesArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -41,6 +42,13 @@ public final class CloudExadataInfrastructureArgs extends com.pulumi.resources.R
      */
     public Output<String> cloudExadataInfrastructureId() {
         return this.cloudExadataInfrastructureId;
+    }
+
+    @Import(name="deletionProtection")
+    private @Nullable Output<Boolean> deletionProtection;
+
+    public Optional<Output<Boolean>> deletionProtection() {
+        return Optional.ofNullable(this.deletionProtection);
     }
 
     /**
@@ -145,6 +153,7 @@ public final class CloudExadataInfrastructureArgs extends com.pulumi.resources.R
 
     private CloudExadataInfrastructureArgs(CloudExadataInfrastructureArgs $) {
         this.cloudExadataInfrastructureId = $.cloudExadataInfrastructureId;
+        this.deletionProtection = $.deletionProtection;
         this.displayName = $.displayName;
         this.gcpOracleZone = $.gcpOracleZone;
         this.labels = $.labels;
@@ -200,6 +209,15 @@ public final class CloudExadataInfrastructureArgs extends com.pulumi.resources.R
          */
         public Builder cloudExadataInfrastructureId(String cloudExadataInfrastructureId) {
             return cloudExadataInfrastructureId(Output.of(cloudExadataInfrastructureId));
+        }
+
+        public Builder deletionProtection(@Nullable Output<Boolean> deletionProtection) {
+            $.deletionProtection = deletionProtection;
+            return this;
+        }
+
+        public Builder deletionProtection(Boolean deletionProtection) {
+            return deletionProtection(Output.of(deletionProtection));
         }
 
         /**

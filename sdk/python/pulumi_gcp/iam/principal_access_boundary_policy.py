@@ -366,6 +366,14 @@ class PrincipalAccessBoundaryPolicy(pulumi.CustomResource):
                  principal_access_boundary_policy_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        An IAM Principal Access Boundary Policy resource
+
+        To get more information about PrincipalAccessBoundaryPolicy, see:
+
+        * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v3/organizations.locations.principalAccessBoundaryPolicies)
+        * How-to Guides
+            * [Create and apply Principal Access Boundaries](https://cloud.google.com/iam/docs/principal-access-boundary-policies-create)
+
         ## Example Usage
 
         ### Iam Principal Access Boundary Policy
@@ -424,6 +432,14 @@ class PrincipalAccessBoundaryPolicy(pulumi.CustomResource):
                  args: PrincipalAccessBoundaryPolicyArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        An IAM Principal Access Boundary Policy resource
+
+        To get more information about PrincipalAccessBoundaryPolicy, see:
+
+        * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v3/organizations.locations.principalAccessBoundaryPolicies)
+        * How-to Guides
+            * [Create and apply Principal Access Boundaries](https://cloud.google.com/iam/docs/principal-access-boundary-policies-create)
+
         ## Example Usage
 
         ### Iam Principal Access Boundary Policy

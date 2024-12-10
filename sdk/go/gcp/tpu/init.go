@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:tpu/node:Node":
 		r = &Node{}
+	case "gcp:tpu/v2QueuedResource:V2QueuedResource":
+		r = &V2QueuedResource{}
 	case "gcp:tpu/v2Vm:V2Vm":
 		r = &V2Vm{}
 	default:
@@ -41,6 +43,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"tpu/node",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"tpu/v2QueuedResource",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

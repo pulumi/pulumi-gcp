@@ -1146,7 +1146,7 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPo
                  installation: Optional[str] = None):
         """
         :param str installation: Configures the manner in which the template library is installed on the cluster.
-               Possible values are: `INSTALATION_UNSPECIFIED`, `NOT_INSTALLED`, `ALL`.
+               Possible values are: `INSTALLATION_UNSPECIFIED`, `NOT_INSTALLED`, `ALL`.
         """
         if installation is not None:
             pulumi.set(__self__, "installation", installation)
@@ -1156,7 +1156,7 @@ class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPo
     def installation(self) -> Optional[str]:
         """
         Configures the manner in which the template library is installed on the cluster.
-        Possible values are: `INSTALATION_UNSPECIFIED`, `NOT_INSTALLED`, `ALL`.
+        Possible values are: `INSTALLATION_UNSPECIFIED`, `NOT_INSTALLED`, `ALL`.
         """
         return pulumi.get(self, "installation")
 
@@ -1361,6 +1361,8 @@ class FeatureMembershipConfigmanagementConfigSync(dict):
             suggest = "prevent_drift"
         elif key == "sourceFormat":
             suggest = "source_format"
+        elif key == "stopSyncing":
+            suggest = "stop_syncing"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in FeatureMembershipConfigmanagementConfigSync. Access the value via the '{suggest}' property getter instead.")
@@ -1379,16 +1381,18 @@ class FeatureMembershipConfigmanagementConfigSync(dict):
                  metrics_gcp_service_account_email: Optional[str] = None,
                  oci: Optional['outputs.FeatureMembershipConfigmanagementConfigSyncOci'] = None,
                  prevent_drift: Optional[bool] = None,
-                 source_format: Optional[str] = None):
+                 source_format: Optional[str] = None,
+                 stop_syncing: Optional[bool] = None):
         """
         :param bool enabled: Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
         :param 'FeatureMembershipConfigmanagementConfigSyncGitArgs' git: (Optional) Structure is documented below.
-        :param str metrics_gcp_service_account_email: The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA.
+        :param str metrics_gcp_service_account_email: Deprecated: If Workload Identity Federation for GKE is enabled, Google Cloud Service Account is no longer needed for exporting Config Sync metrics: https://cloud.google.com/kubernetes-engine/enterprise/config-sync/docs/how-to/monitor-config-sync-cloud-monitoring#custom-monitoring.
         :param 'FeatureMembershipConfigmanagementConfigSyncOciArgs' oci: (Optional) Supported from Config Sync versions 1.12.0 onwards. Structure is documented below.
                
                Use either `git` or `oci` config option.
-        :param bool prevent_drift: Supported from Config Sync versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to "false", disables the Config Sync admission webhook and does not prevent drifts.
+        :param bool prevent_drift: Supported from Config Sync versions 1.10.0 onwards. Set to `true` to enable the Config Sync admission webhook to prevent drifts. If set to `false`, disables the Config Sync admission webhook and does not prevent drifts.
         :param str source_format: Specifies whether the Config Sync Repo is in "hierarchical" or "unstructured" mode.
+        :param bool stop_syncing: Set to `true` to stop syncing configurations for a single cluster. This field is only available on clusters using Config Sync [auto-upgrades](http://cloud/kubernetes-engine/enterprise/config-sync/docs/how-to/upgrade-config-sync#auto-upgrade-config) or on Config Sync version 1.20.0 or later. Defaults: `false`.
         """
         if enabled is not None:
             pulumi.set(__self__, "enabled", enabled)
@@ -1402,6 +1406,8 @@ class FeatureMembershipConfigmanagementConfigSync(dict):
             pulumi.set(__self__, "prevent_drift", prevent_drift)
         if source_format is not None:
             pulumi.set(__self__, "source_format", source_format)
+        if stop_syncing is not None:
+            pulumi.set(__self__, "stop_syncing", stop_syncing)
 
     @property
     @pulumi.getter
@@ -1423,7 +1429,7 @@ class FeatureMembershipConfigmanagementConfigSync(dict):
     @pulumi.getter(name="metricsGcpServiceAccountEmail")
     def metrics_gcp_service_account_email(self) -> Optional[str]:
         """
-        The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA.
+        Deprecated: If Workload Identity Federation for GKE is enabled, Google Cloud Service Account is no longer needed for exporting Config Sync metrics: https://cloud.google.com/kubernetes-engine/enterprise/config-sync/docs/how-to/monitor-config-sync-cloud-monitoring#custom-monitoring.
         """
         return pulumi.get(self, "metrics_gcp_service_account_email")
 
@@ -1441,7 +1447,7 @@ class FeatureMembershipConfigmanagementConfigSync(dict):
     @pulumi.getter(name="preventDrift")
     def prevent_drift(self) -> Optional[bool]:
         """
-        Supported from Config Sync versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to "false", disables the Config Sync admission webhook and does not prevent drifts.
+        Supported from Config Sync versions 1.10.0 onwards. Set to `true` to enable the Config Sync admission webhook to prevent drifts. If set to `false`, disables the Config Sync admission webhook and does not prevent drifts.
         """
         return pulumi.get(self, "prevent_drift")
 
@@ -1452,6 +1458,14 @@ class FeatureMembershipConfigmanagementConfigSync(dict):
         Specifies whether the Config Sync Repo is in "hierarchical" or "unstructured" mode.
         """
         return pulumi.get(self, "source_format")
+
+    @property
+    @pulumi.getter(name="stopSyncing")
+    def stop_syncing(self) -> Optional[bool]:
+        """
+        Set to `true` to stop syncing configurations for a single cluster. This field is only available on clusters using Config Sync [auto-upgrades](http://cloud/kubernetes-engine/enterprise/config-sync/docs/how-to/upgrade-config-sync#auto-upgrade-config) or on Config Sync version 1.20.0 or later. Defaults: `false`.
+        """
+        return pulumi.get(self, "stop_syncing")
 
 
 @pulumi.output_type

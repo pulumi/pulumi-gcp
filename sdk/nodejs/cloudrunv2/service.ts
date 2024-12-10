@@ -622,7 +622,7 @@ export class Service extends pulumi.CustomResource {
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
-     * For a deleted resource, the time after which it will be permamently deleted.
+     * For a deleted resource, the time after which it will be permanently deleted.
      */
     public /*out*/ readonly expireTime!: pulumi.Output<string>;
     /**
@@ -914,7 +914,7 @@ export interface ServiceState {
      */
     etag?: pulumi.Input<string>;
     /**
-     * For a deleted resource, the time after which it will be permamently deleted.
+     * For a deleted resource, the time after which it will be permanently deleted.
      */
     expireTime?: pulumi.Input<string>;
     /**

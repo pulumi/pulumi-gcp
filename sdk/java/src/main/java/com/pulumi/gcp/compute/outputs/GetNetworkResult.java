@@ -34,6 +34,16 @@ public final class GetNetworkResult {
      */
     private String internalIpv6Range;
     private String name;
+    /**
+     * @return Beta A full or partial URL of the network profile to apply to this network.
+     * 
+     */
+    private @Nullable String networkProfile;
+    /**
+     * @return The numeric unique identifier for the resource.
+     * 
+     */
+    private String numericId;
     private @Nullable String project;
     /**
      * @return The URI of the resource.
@@ -78,6 +88,20 @@ public final class GetNetworkResult {
     public String name() {
         return this.name;
     }
+    /**
+     * @return Beta A full or partial URL of the network profile to apply to this network.
+     * 
+     */
+    public Optional<String> networkProfile() {
+        return Optional.ofNullable(this.networkProfile);
+    }
+    /**
+     * @return The numeric unique identifier for the resource.
+     * 
+     */
+    public String numericId() {
+        return this.numericId;
+    }
     public Optional<String> project() {
         return Optional.ofNullable(this.project);
     }
@@ -110,6 +134,8 @@ public final class GetNetworkResult {
         private String id;
         private String internalIpv6Range;
         private String name;
+        private @Nullable String networkProfile;
+        private String numericId;
         private @Nullable String project;
         private String selfLink;
         private List<String> subnetworksSelfLinks;
@@ -121,6 +147,8 @@ public final class GetNetworkResult {
     	      this.id = defaults.id;
     	      this.internalIpv6Range = defaults.internalIpv6Range;
     	      this.name = defaults.name;
+    	      this.networkProfile = defaults.networkProfile;
+    	      this.numericId = defaults.numericId;
     	      this.project = defaults.project;
     	      this.selfLink = defaults.selfLink;
     	      this.subnetworksSelfLinks = defaults.subnetworksSelfLinks;
@@ -167,6 +195,20 @@ public final class GetNetworkResult {
             return this;
         }
         @CustomType.Setter
+        public Builder networkProfile(@Nullable String networkProfile) {
+
+            this.networkProfile = networkProfile;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder numericId(String numericId) {
+            if (numericId == null) {
+              throw new MissingRequiredPropertyException("GetNetworkResult", "numericId");
+            }
+            this.numericId = numericId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder project(@Nullable String project) {
 
             this.project = project;
@@ -198,6 +240,8 @@ public final class GetNetworkResult {
             _resultValue.id = id;
             _resultValue.internalIpv6Range = internalIpv6Range;
             _resultValue.name = name;
+            _resultValue.networkProfile = networkProfile;
+            _resultValue.numericId = numericId;
             _resultValue.project = project;
             _resultValue.selfLink = selfLink;
             _resultValue.subnetworksSelfLinks = subnetworksSelfLinks;

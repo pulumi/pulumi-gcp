@@ -8,6 +8,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.GetGlobalForwardingRuleMetadataFilter;
 import com.pulumi.gcp.compute.outputs.GetGlobalForwardingRuleServiceDirectoryRegistration;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -21,6 +22,7 @@ public final class GetGlobalForwardingRuleResult {
     private String baseForwardingRule;
     private String description;
     private Map<String,String> effectiveLabels;
+    private Integer forwardingRuleId;
     /**
      * @return The provider-assigned unique ID for this managed resource.
      * 
@@ -59,6 +61,9 @@ public final class GetGlobalForwardingRuleResult {
     }
     public Map<String,String> effectiveLabels() {
         return this.effectiveLabels;
+    }
+    public Integer forwardingRuleId() {
+        return this.forwardingRuleId;
     }
     /**
      * @return The provider-assigned unique ID for this managed resource.
@@ -141,6 +146,7 @@ public final class GetGlobalForwardingRuleResult {
         private String baseForwardingRule;
         private String description;
         private Map<String,String> effectiveLabels;
+        private Integer forwardingRuleId;
         private String id;
         private String ipAddress;
         private String ipProtocol;
@@ -169,6 +175,7 @@ public final class GetGlobalForwardingRuleResult {
     	      this.baseForwardingRule = defaults.baseForwardingRule;
     	      this.description = defaults.description;
     	      this.effectiveLabels = defaults.effectiveLabels;
+    	      this.forwardingRuleId = defaults.forwardingRuleId;
     	      this.id = defaults.id;
     	      this.ipAddress = defaults.ipAddress;
     	      this.ipProtocol = defaults.ipProtocol;
@@ -222,6 +229,14 @@ public final class GetGlobalForwardingRuleResult {
               throw new MissingRequiredPropertyException("GetGlobalForwardingRuleResult", "effectiveLabels");
             }
             this.effectiveLabels = effectiveLabels;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder forwardingRuleId(Integer forwardingRuleId) {
+            if (forwardingRuleId == null) {
+              throw new MissingRequiredPropertyException("GetGlobalForwardingRuleResult", "forwardingRuleId");
+            }
+            this.forwardingRuleId = forwardingRuleId;
             return this;
         }
         @CustomType.Setter
@@ -405,6 +420,7 @@ public final class GetGlobalForwardingRuleResult {
             _resultValue.baseForwardingRule = baseForwardingRule;
             _resultValue.description = description;
             _resultValue.effectiveLabels = effectiveLabels;
+            _resultValue.forwardingRuleId = forwardingRuleId;
             _resultValue.id = id;
             _resultValue.ipAddress = ipAddress;
             _resultValue.ipProtocol = ipProtocol;

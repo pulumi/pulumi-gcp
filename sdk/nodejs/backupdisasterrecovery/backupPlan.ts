@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  *
  * const myBackupVault = new gcp.backupdisasterrecovery.BackupVault("my_backup_vault", {
  *     location: "us-central1",
- *     backupVaultId: "bv-bp-test",
+ *     backupVaultId: "backup-vault-simple-test",
  *     backupMinimumEnforcedRetentionDuration: "100000s",
  * });
  * const my_backup_plan_1 = new gcp.backupdisasterrecovery.BackupPlan("my-backup-plan-1", {

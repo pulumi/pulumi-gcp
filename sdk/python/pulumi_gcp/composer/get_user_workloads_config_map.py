@@ -104,6 +104,8 @@ def get_user_workloads_config_map(environment: Optional[str] = None,
                                   region: Optional[str] = None,
                                   opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUserWorkloadsConfigMapResult:
     """
+    Provides access to Kubernetes ConfigMap configuration for a given project, region and Composer Environment.
+
     ## Example Usage
 
     ```python
@@ -157,6 +159,8 @@ def get_user_workloads_config_map_output(environment: Optional[pulumi.Input[str]
                                          region: Optional[pulumi.Input[Optional[str]]] = None,
                                          opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUserWorkloadsConfigMapResult]:
     """
+    Provides access to Kubernetes ConfigMap configuration for a given project, region and Composer Environment.
+
     ## Example Usage
 
     ```python

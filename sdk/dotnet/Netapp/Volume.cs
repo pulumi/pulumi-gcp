@@ -288,7 +288,7 @@ namespace Pulumi.Gcp.Netapp
         public Output<string> SecurityStyle { get; private set; } = null!;
 
         /// <summary>
-        /// Service level of the volume. Inherited from storage pool. Supported values are : PREMIUM, EXTERME, STANDARD, FLEX.
+        /// Service level of the volume. Inherited from storage pool. Supported values are : PREMIUM, EXTREME, STANDARD, FLEX.
         /// </summary>
         [Output("serviceLevel")]
         public Output<string> ServiceLevel { get; private set; } = null!;
@@ -333,7 +333,7 @@ namespace Pulumi.Gcp.Netapp
         public Output<string> StateDetails { get; private set; } = null!;
 
         /// <summary>
-        /// Name of the storage pool to create the volume in. Pool needs enough spare capacity to accomodate the volume.
+        /// Name of the storage pool to create the volume in. Pool needs enough spare capacity to accommodate the volume.
         /// </summary>
         [Output("storagePool")]
         public Output<string> StoragePool { get; private set; } = null!;
@@ -580,7 +580,7 @@ namespace Pulumi.Gcp.Netapp
         public Input<Inputs.VolumeSnapshotPolicyArgs>? SnapshotPolicy { get; set; }
 
         /// <summary>
-        /// Name of the storage pool to create the volume in. Pool needs enough spare capacity to accomodate the volume.
+        /// Name of the storage pool to create the volume in. Pool needs enough spare capacity to accommodate the volume.
         /// </summary>
         [Input("storagePool", required: true)]
         public Input<string> StoragePool { get; set; } = null!;
@@ -845,7 +845,7 @@ namespace Pulumi.Gcp.Netapp
         public Input<string>? SecurityStyle { get; set; }
 
         /// <summary>
-        /// Service level of the volume. Inherited from storage pool. Supported values are : PREMIUM, EXTERME, STANDARD, FLEX.
+        /// Service level of the volume. Inherited from storage pool. Supported values are : PREMIUM, EXTREME, STANDARD, FLEX.
         /// </summary>
         [Input("serviceLevel")]
         public Input<string>? ServiceLevel { get; set; }
@@ -896,7 +896,7 @@ namespace Pulumi.Gcp.Netapp
         public Input<string>? StateDetails { get; set; }
 
         /// <summary>
-        /// Name of the storage pool to create the volume in. Pool needs enough spare capacity to accomodate the volume.
+        /// Name of the storage pool to create the volume in. Pool needs enough spare capacity to accommodate the volume.
         /// </summary>
         [Input("storagePool")]
         public Input<string>? StoragePool { get; set; }

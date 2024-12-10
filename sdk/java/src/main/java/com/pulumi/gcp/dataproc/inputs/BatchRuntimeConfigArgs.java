@@ -5,6 +5,7 @@ package com.pulumi.gcp.dataproc.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.dataproc.inputs.BatchRuntimeConfigAutotuningConfigArgs;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -15,6 +16,38 @@ import javax.annotation.Nullable;
 public final class BatchRuntimeConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final BatchRuntimeConfigArgs Empty = new BatchRuntimeConfigArgs();
+
+    /**
+     * Optional. Autotuning configuration of the workload.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="autotuningConfig")
+    private @Nullable Output<BatchRuntimeConfigAutotuningConfigArgs> autotuningConfig;
+
+    /**
+     * @return Optional. Autotuning configuration of the workload.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<BatchRuntimeConfigAutotuningConfigArgs>> autotuningConfig() {
+        return Optional.ofNullable(this.autotuningConfig);
+    }
+
+    /**
+     * Optional. Cohort identifier. Identifies families of the workloads having the same shape, e.g. daily ETL jobs.
+     * 
+     */
+    @Import(name="cohort")
+    private @Nullable Output<String> cohort;
+
+    /**
+     * @return Optional. Cohort identifier. Identifies families of the workloads having the same shape, e.g. daily ETL jobs.
+     * 
+     */
+    public Optional<Output<String>> cohort() {
+        return Optional.ofNullable(this.cohort);
+    }
 
     /**
      * Optional custom container image for the job runtime environment. If not specified, a default container image will be used.
@@ -81,6 +114,8 @@ public final class BatchRuntimeConfigArgs extends com.pulumi.resources.ResourceA
     private BatchRuntimeConfigArgs() {}
 
     private BatchRuntimeConfigArgs(BatchRuntimeConfigArgs $) {
+        this.autotuningConfig = $.autotuningConfig;
+        this.cohort = $.cohort;
         this.containerImage = $.containerImage;
         this.effectiveProperties = $.effectiveProperties;
         this.properties = $.properties;
@@ -103,6 +138,50 @@ public final class BatchRuntimeConfigArgs extends com.pulumi.resources.ResourceA
 
         public Builder(BatchRuntimeConfigArgs defaults) {
             $ = new BatchRuntimeConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param autotuningConfig Optional. Autotuning configuration of the workload.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autotuningConfig(@Nullable Output<BatchRuntimeConfigAutotuningConfigArgs> autotuningConfig) {
+            $.autotuningConfig = autotuningConfig;
+            return this;
+        }
+
+        /**
+         * @param autotuningConfig Optional. Autotuning configuration of the workload.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder autotuningConfig(BatchRuntimeConfigAutotuningConfigArgs autotuningConfig) {
+            return autotuningConfig(Output.of(autotuningConfig));
+        }
+
+        /**
+         * @param cohort Optional. Cohort identifier. Identifies families of the workloads having the same shape, e.g. daily ETL jobs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cohort(@Nullable Output<String> cohort) {
+            $.cohort = cohort;
+            return this;
+        }
+
+        /**
+         * @param cohort Optional. Cohort identifier. Identifies families of the workloads having the same shape, e.g. daily ETL jobs.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cohort(String cohort) {
+            return cohort(Output.of(cohort));
         }
 
         /**

@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.oracledatabase.inputs.AutonomousDatabasePropertiesArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -86,6 +87,13 @@ public final class AutonomousDatabaseArgs extends com.pulumi.resources.ResourceA
      */
     public Output<String> database() {
         return this.database;
+    }
+
+    @Import(name="deletionProtection")
+    private @Nullable Output<Boolean> deletionProtection;
+
+    public Optional<Output<Boolean>> deletionProtection() {
+        return Optional.ofNullable(this.deletionProtection);
     }
 
     /**
@@ -185,6 +193,7 @@ public final class AutonomousDatabaseArgs extends com.pulumi.resources.ResourceA
         this.autonomousDatabaseId = $.autonomousDatabaseId;
         this.cidr = $.cidr;
         this.database = $.database;
+        this.deletionProtection = $.deletionProtection;
         this.displayName = $.displayName;
         this.labels = $.labels;
         this.location = $.location;
@@ -303,6 +312,15 @@ public final class AutonomousDatabaseArgs extends com.pulumi.resources.ResourceA
          */
         public Builder database(String database) {
             return database(Output.of(database));
+        }
+
+        public Builder deletionProtection(@Nullable Output<Boolean> deletionProtection) {
+            $.deletionProtection = deletionProtection;
+            return this;
+        }
+
+        public Builder deletionProtection(Boolean deletionProtection) {
+            return deletionProtection(Output.of(deletionProtection));
         }
 
         /**

@@ -33,6 +33,7 @@ import * as utilities from "../utilities";
  *         computeCount: 2,
  *         storageCount: 3,
  *     },
+ *     deletionProtection: true,
  * });
  * ```
  * ### Oracledatabase Cloud Exadata Infrastructure Full
@@ -75,6 +76,7 @@ import * as utilities from "../utilities";
  *     labels: {
  *         "label-one": "value-one",
  *     },
+ *     deletionProtection: true,
  * });
  * ```
  *
@@ -144,6 +146,7 @@ export class CloudExadataInfrastructure extends pulumi.CustomResource {
      * The date and time that the Exadata Infrastructure was created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
+    public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
     /**
      * User friendly name for this resource.
      */
@@ -207,6 +210,7 @@ export class CloudExadataInfrastructure extends pulumi.CustomResource {
             const state = argsOrState as CloudExadataInfrastructureState | undefined;
             resourceInputs["cloudExadataInfrastructureId"] = state ? state.cloudExadataInfrastructureId : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["entitlementId"] = state ? state.entitlementId : undefined;
@@ -226,6 +230,7 @@ export class CloudExadataInfrastructure extends pulumi.CustomResource {
                 throw new Error("Missing required property 'location'");
             }
             resourceInputs["cloudExadataInfrastructureId"] = args ? args.cloudExadataInfrastructureId : undefined;
+            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["gcpOracleZone"] = args ? args.gcpOracleZone : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
@@ -263,6 +268,7 @@ export interface CloudExadataInfrastructureState {
      * The date and time that the Exadata Infrastructure was created.
      */
     createTime?: pulumi.Input<string>;
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * User friendly name for this resource.
      */
@@ -326,6 +332,7 @@ export interface CloudExadataInfrastructureArgs {
      * - - -
      */
     cloudExadataInfrastructureId: pulumi.Input<string>;
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * User friendly name for this resource.
      */

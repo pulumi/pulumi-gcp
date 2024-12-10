@@ -13,6 +13,502 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig struct {
+	// If enabled, traffic matching each unique value for the specified type constitutes a separate traffic unit. It can only be set to true if value is empty.
+	EnableEachUniqueValue *bool `pulumi:"enableEachUniqueValue"`
+	// The type of this configuration, a granular traffic unit can be one of the following:
+	// * `HTTP_HEADER_HOST`
+	// * `HTTP_PATH`
+	Type string `pulumi:"type"`
+	// Requests that match this value constitute a granular traffic unit.
+	Value *string `pulumi:"value"`
+}
+
+// SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigInput is an input type that accepts SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArgs and SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput values.
+// You can construct a concrete instance of `SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigInput` via:
+//
+//	SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArgs{...}
+type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput
+	ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutputWithContext(context.Context) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput
+}
+
+type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArgs struct {
+	// If enabled, traffic matching each unique value for the specified type constitutes a separate traffic unit. It can only be set to true if value is empty.
+	EnableEachUniqueValue pulumi.BoolPtrInput `pulumi:"enableEachUniqueValue"`
+	// The type of this configuration, a granular traffic unit can be one of the following:
+	// * `HTTP_HEADER_HOST`
+	// * `HTTP_PATH`
+	Type pulumi.StringInput `pulumi:"type"`
+	// Requests that match this value constitute a granular traffic unit.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig)(nil)).Elem()
+}
+
+func (i SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArgs) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput {
+	return i.ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArgs) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutputWithContext(ctx context.Context) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput)
+}
+
+// SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayInput is an input type that accepts SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArray and SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput values.
+// You can construct a concrete instance of `SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayInput` via:
+//
+//	SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArray{ SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArgs{...} }
+type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput
+	ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutputWithContext(context.Context) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput
+}
+
+type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArray []SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigInput
+
+func (SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig)(nil)).Elem()
+}
+
+func (i SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArray) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput {
+	return i.ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArray) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutputWithContext(ctx context.Context) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput)
+}
+
+type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig)(nil)).Elem()
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput {
+	return o
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutputWithContext(ctx context.Context) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput {
+	return o
+}
+
+// If enabled, traffic matching each unique value for the specified type constitutes a separate traffic unit. It can only be set to true if value is empty.
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput) EnableEachUniqueValue() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig) *bool {
+		return v.EnableEachUniqueValue
+	}).(pulumi.BoolPtrOutput)
+}
+
+// The type of this configuration, a granular traffic unit can be one of the following:
+// * `HTTP_HEADER_HOST`
+// * `HTTP_PATH`
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig) string {
+		return v.Type
+	}).(pulumi.StringOutput)
+}
+
+// Requests that match this value constitute a granular traffic unit.
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig) *string {
+		return v.Value
+	}).(pulumi.StringPtrOutput)
+}
+
+type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig)(nil)).Elem()
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutputWithContext(ctx context.Context) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput) Index(i pulumi.IntInput) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig {
+		return vs[0].([]SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig)[vs[1].(int)]
+	}).(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput)
+}
+
+type SecurityPolicyAdvancedOptionsConfig struct {
+	// Custom configuration to apply the JSON parsing. Only applicable when
+	// `jsonParsing` is set to `STANDARD`. Structure is documented below.
+	JsonCustomConfig *SecurityPolicyAdvancedOptionsConfigJsonCustomConfig `pulumi:"jsonCustomConfig"`
+	// Whether or not to JSON parse the payload body. Defaults to `DISABLED`.
+	// * `DISABLED` - Don't parse JSON payloads in POST bodies.
+	// * `STANDARD` - Parse JSON payloads in POST bodies.
+	// * `STANDARD_WITH_GRAPHQL` - Parse JSON and GraphQL payloads in POST bodies.
+	JsonParsing *string `pulumi:"jsonParsing"`
+	// Log level to use. Defaults to `NORMAL`.
+	// * `NORMAL` - Normal log level.
+	// * `VERBOSE` - Verbose log level.
+	LogLevel *string `pulumi:"logLevel"`
+	// An optional list of case-insensitive request header names to use for resolving the callers client IP address.
+	UserIpRequestHeaders []string `pulumi:"userIpRequestHeaders"`
+}
+
+// SecurityPolicyAdvancedOptionsConfigInput is an input type that accepts SecurityPolicyAdvancedOptionsConfigArgs and SecurityPolicyAdvancedOptionsConfigOutput values.
+// You can construct a concrete instance of `SecurityPolicyAdvancedOptionsConfigInput` via:
+//
+//	SecurityPolicyAdvancedOptionsConfigArgs{...}
+type SecurityPolicyAdvancedOptionsConfigInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyAdvancedOptionsConfigOutput() SecurityPolicyAdvancedOptionsConfigOutput
+	ToSecurityPolicyAdvancedOptionsConfigOutputWithContext(context.Context) SecurityPolicyAdvancedOptionsConfigOutput
+}
+
+type SecurityPolicyAdvancedOptionsConfigArgs struct {
+	// Custom configuration to apply the JSON parsing. Only applicable when
+	// `jsonParsing` is set to `STANDARD`. Structure is documented below.
+	JsonCustomConfig SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrInput `pulumi:"jsonCustomConfig"`
+	// Whether or not to JSON parse the payload body. Defaults to `DISABLED`.
+	// * `DISABLED` - Don't parse JSON payloads in POST bodies.
+	// * `STANDARD` - Parse JSON payloads in POST bodies.
+	// * `STANDARD_WITH_GRAPHQL` - Parse JSON and GraphQL payloads in POST bodies.
+	JsonParsing pulumi.StringPtrInput `pulumi:"jsonParsing"`
+	// Log level to use. Defaults to `NORMAL`.
+	// * `NORMAL` - Normal log level.
+	// * `VERBOSE` - Verbose log level.
+	LogLevel pulumi.StringPtrInput `pulumi:"logLevel"`
+	// An optional list of case-insensitive request header names to use for resolving the callers client IP address.
+	UserIpRequestHeaders pulumi.StringArrayInput `pulumi:"userIpRequestHeaders"`
+}
+
+func (SecurityPolicyAdvancedOptionsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyAdvancedOptionsConfig)(nil)).Elem()
+}
+
+func (i SecurityPolicyAdvancedOptionsConfigArgs) ToSecurityPolicyAdvancedOptionsConfigOutput() SecurityPolicyAdvancedOptionsConfigOutput {
+	return i.ToSecurityPolicyAdvancedOptionsConfigOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyAdvancedOptionsConfigArgs) ToSecurityPolicyAdvancedOptionsConfigOutputWithContext(ctx context.Context) SecurityPolicyAdvancedOptionsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyAdvancedOptionsConfigOutput)
+}
+
+func (i SecurityPolicyAdvancedOptionsConfigArgs) ToSecurityPolicyAdvancedOptionsConfigPtrOutput() SecurityPolicyAdvancedOptionsConfigPtrOutput {
+	return i.ToSecurityPolicyAdvancedOptionsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyAdvancedOptionsConfigArgs) ToSecurityPolicyAdvancedOptionsConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyAdvancedOptionsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyAdvancedOptionsConfigOutput).ToSecurityPolicyAdvancedOptionsConfigPtrOutputWithContext(ctx)
+}
+
+// SecurityPolicyAdvancedOptionsConfigPtrInput is an input type that accepts SecurityPolicyAdvancedOptionsConfigArgs, SecurityPolicyAdvancedOptionsConfigPtr and SecurityPolicyAdvancedOptionsConfigPtrOutput values.
+// You can construct a concrete instance of `SecurityPolicyAdvancedOptionsConfigPtrInput` via:
+//
+//	        SecurityPolicyAdvancedOptionsConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityPolicyAdvancedOptionsConfigPtrInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyAdvancedOptionsConfigPtrOutput() SecurityPolicyAdvancedOptionsConfigPtrOutput
+	ToSecurityPolicyAdvancedOptionsConfigPtrOutputWithContext(context.Context) SecurityPolicyAdvancedOptionsConfigPtrOutput
+}
+
+type securityPolicyAdvancedOptionsConfigPtrType SecurityPolicyAdvancedOptionsConfigArgs
+
+func SecurityPolicyAdvancedOptionsConfigPtr(v *SecurityPolicyAdvancedOptionsConfigArgs) SecurityPolicyAdvancedOptionsConfigPtrInput {
+	return (*securityPolicyAdvancedOptionsConfigPtrType)(v)
+}
+
+func (*securityPolicyAdvancedOptionsConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyAdvancedOptionsConfig)(nil)).Elem()
+}
+
+func (i *securityPolicyAdvancedOptionsConfigPtrType) ToSecurityPolicyAdvancedOptionsConfigPtrOutput() SecurityPolicyAdvancedOptionsConfigPtrOutput {
+	return i.ToSecurityPolicyAdvancedOptionsConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *securityPolicyAdvancedOptionsConfigPtrType) ToSecurityPolicyAdvancedOptionsConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyAdvancedOptionsConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyAdvancedOptionsConfigPtrOutput)
+}
+
+type SecurityPolicyAdvancedOptionsConfigOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyAdvancedOptionsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyAdvancedOptionsConfig)(nil)).Elem()
+}
+
+func (o SecurityPolicyAdvancedOptionsConfigOutput) ToSecurityPolicyAdvancedOptionsConfigOutput() SecurityPolicyAdvancedOptionsConfigOutput {
+	return o
+}
+
+func (o SecurityPolicyAdvancedOptionsConfigOutput) ToSecurityPolicyAdvancedOptionsConfigOutputWithContext(ctx context.Context) SecurityPolicyAdvancedOptionsConfigOutput {
+	return o
+}
+
+func (o SecurityPolicyAdvancedOptionsConfigOutput) ToSecurityPolicyAdvancedOptionsConfigPtrOutput() SecurityPolicyAdvancedOptionsConfigPtrOutput {
+	return o.ToSecurityPolicyAdvancedOptionsConfigPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyAdvancedOptionsConfigOutput) ToSecurityPolicyAdvancedOptionsConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyAdvancedOptionsConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityPolicyAdvancedOptionsConfig) *SecurityPolicyAdvancedOptionsConfig {
+		return &v
+	}).(SecurityPolicyAdvancedOptionsConfigPtrOutput)
+}
+
+// Custom configuration to apply the JSON parsing. Only applicable when
+// `jsonParsing` is set to `STANDARD`. Structure is documented below.
+func (o SecurityPolicyAdvancedOptionsConfigOutput) JsonCustomConfig() SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyAdvancedOptionsConfig) *SecurityPolicyAdvancedOptionsConfigJsonCustomConfig {
+		return v.JsonCustomConfig
+	}).(SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput)
+}
+
+// Whether or not to JSON parse the payload body. Defaults to `DISABLED`.
+// * `DISABLED` - Don't parse JSON payloads in POST bodies.
+// * `STANDARD` - Parse JSON payloads in POST bodies.
+// * `STANDARD_WITH_GRAPHQL` - Parse JSON and GraphQL payloads in POST bodies.
+func (o SecurityPolicyAdvancedOptionsConfigOutput) JsonParsing() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyAdvancedOptionsConfig) *string { return v.JsonParsing }).(pulumi.StringPtrOutput)
+}
+
+// Log level to use. Defaults to `NORMAL`.
+// * `NORMAL` - Normal log level.
+// * `VERBOSE` - Verbose log level.
+func (o SecurityPolicyAdvancedOptionsConfigOutput) LogLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyAdvancedOptionsConfig) *string { return v.LogLevel }).(pulumi.StringPtrOutput)
+}
+
+// An optional list of case-insensitive request header names to use for resolving the callers client IP address.
+func (o SecurityPolicyAdvancedOptionsConfigOutput) UserIpRequestHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyAdvancedOptionsConfig) []string { return v.UserIpRequestHeaders }).(pulumi.StringArrayOutput)
+}
+
+type SecurityPolicyAdvancedOptionsConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyAdvancedOptionsConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyAdvancedOptionsConfig)(nil)).Elem()
+}
+
+func (o SecurityPolicyAdvancedOptionsConfigPtrOutput) ToSecurityPolicyAdvancedOptionsConfigPtrOutput() SecurityPolicyAdvancedOptionsConfigPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyAdvancedOptionsConfigPtrOutput) ToSecurityPolicyAdvancedOptionsConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyAdvancedOptionsConfigPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyAdvancedOptionsConfigPtrOutput) Elem() SecurityPolicyAdvancedOptionsConfigOutput {
+	return o.ApplyT(func(v *SecurityPolicyAdvancedOptionsConfig) SecurityPolicyAdvancedOptionsConfig {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityPolicyAdvancedOptionsConfig
+		return ret
+	}).(SecurityPolicyAdvancedOptionsConfigOutput)
+}
+
+// Custom configuration to apply the JSON parsing. Only applicable when
+// `jsonParsing` is set to `STANDARD`. Structure is documented below.
+func (o SecurityPolicyAdvancedOptionsConfigPtrOutput) JsonCustomConfig() SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyAdvancedOptionsConfig) *SecurityPolicyAdvancedOptionsConfigJsonCustomConfig {
+		if v == nil {
+			return nil
+		}
+		return v.JsonCustomConfig
+	}).(SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput)
+}
+
+// Whether or not to JSON parse the payload body. Defaults to `DISABLED`.
+// * `DISABLED` - Don't parse JSON payloads in POST bodies.
+// * `STANDARD` - Parse JSON payloads in POST bodies.
+// * `STANDARD_WITH_GRAPHQL` - Parse JSON and GraphQL payloads in POST bodies.
+func (o SecurityPolicyAdvancedOptionsConfigPtrOutput) JsonParsing() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyAdvancedOptionsConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.JsonParsing
+	}).(pulumi.StringPtrOutput)
+}
+
+// Log level to use. Defaults to `NORMAL`.
+// * `NORMAL` - Normal log level.
+// * `VERBOSE` - Verbose log level.
+func (o SecurityPolicyAdvancedOptionsConfigPtrOutput) LogLevel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyAdvancedOptionsConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LogLevel
+	}).(pulumi.StringPtrOutput)
+}
+
+// An optional list of case-insensitive request header names to use for resolving the callers client IP address.
+func (o SecurityPolicyAdvancedOptionsConfigPtrOutput) UserIpRequestHeaders() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SecurityPolicyAdvancedOptionsConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.UserIpRequestHeaders
+	}).(pulumi.StringArrayOutput)
+}
+
+type SecurityPolicyAdvancedOptionsConfigJsonCustomConfig struct {
+	// A list of custom Content-Type header values to apply the JSON parsing. The
+	// format of the Content-Type header values is defined in
+	// [RFC 1341](https://www.ietf.org/rfc/rfc1341.txt). When configuring a custom Content-Type header
+	// value, only the type/subtype needs to be specified, and the parameters should be excluded.
+	ContentTypes []string `pulumi:"contentTypes"`
+}
+
+// SecurityPolicyAdvancedOptionsConfigJsonCustomConfigInput is an input type that accepts SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs and SecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput values.
+// You can construct a concrete instance of `SecurityPolicyAdvancedOptionsConfigJsonCustomConfigInput` via:
+//
+//	SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs{...}
+type SecurityPolicyAdvancedOptionsConfigJsonCustomConfigInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput() SecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput
+	ToSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutputWithContext(context.Context) SecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput
+}
+
+type SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs struct {
+	// A list of custom Content-Type header values to apply the JSON parsing. The
+	// format of the Content-Type header values is defined in
+	// [RFC 1341](https://www.ietf.org/rfc/rfc1341.txt). When configuring a custom Content-Type header
+	// value, only the type/subtype needs to be specified, and the parameters should be excluded.
+	ContentTypes pulumi.StringArrayInput `pulumi:"contentTypes"`
+}
+
+func (SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyAdvancedOptionsConfigJsonCustomConfig)(nil)).Elem()
+}
+
+func (i SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs) ToSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput() SecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput {
+	return i.ToSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs) ToSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutputWithContext(ctx context.Context) SecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput)
+}
+
+func (i SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs) ToSecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput() SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput {
+	return i.ToSecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs) ToSecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput).ToSecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutputWithContext(ctx)
+}
+
+// SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrInput is an input type that accepts SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs, SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtr and SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput values.
+// You can construct a concrete instance of `SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrInput` via:
+//
+//	        SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput() SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput
+	ToSecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutputWithContext(context.Context) SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput
+}
+
+type securityPolicyAdvancedOptionsConfigJsonCustomConfigPtrType SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs
+
+func SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtr(v *SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs) SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrInput {
+	return (*securityPolicyAdvancedOptionsConfigJsonCustomConfigPtrType)(v)
+}
+
+func (*securityPolicyAdvancedOptionsConfigJsonCustomConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyAdvancedOptionsConfigJsonCustomConfig)(nil)).Elem()
+}
+
+func (i *securityPolicyAdvancedOptionsConfigJsonCustomConfigPtrType) ToSecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput() SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput {
+	return i.ToSecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *securityPolicyAdvancedOptionsConfigJsonCustomConfigPtrType) ToSecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput)
+}
+
+type SecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyAdvancedOptionsConfigJsonCustomConfig)(nil)).Elem()
+}
+
+func (o SecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput) ToSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput() SecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput {
+	return o
+}
+
+func (o SecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput) ToSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutputWithContext(ctx context.Context) SecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput {
+	return o
+}
+
+func (o SecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput) ToSecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput() SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput {
+	return o.ToSecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput) ToSecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityPolicyAdvancedOptionsConfigJsonCustomConfig) *SecurityPolicyAdvancedOptionsConfigJsonCustomConfig {
+		return &v
+	}).(SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput)
+}
+
+// A list of custom Content-Type header values to apply the JSON parsing. The
+// format of the Content-Type header values is defined in
+// [RFC 1341](https://www.ietf.org/rfc/rfc1341.txt). When configuring a custom Content-Type header
+// value, only the type/subtype needs to be specified, and the parameters should be excluded.
+func (o SecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput) ContentTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyAdvancedOptionsConfigJsonCustomConfig) []string { return v.ContentTypes }).(pulumi.StringArrayOutput)
+}
+
+type SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyAdvancedOptionsConfigJsonCustomConfig)(nil)).Elem()
+}
+
+func (o SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput) ToSecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput() SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput) ToSecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput) Elem() SecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput {
+	return o.ApplyT(func(v *SecurityPolicyAdvancedOptionsConfigJsonCustomConfig) SecurityPolicyAdvancedOptionsConfigJsonCustomConfig {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityPolicyAdvancedOptionsConfigJsonCustomConfig
+		return ret
+	}).(SecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput)
+}
+
+// A list of custom Content-Type header values to apply the JSON parsing. The
+// format of the Content-Type header values is defined in
+// [RFC 1341](https://www.ietf.org/rfc/rfc1341.txt). When configuring a custom Content-Type header
+// value, only the type/subtype needs to be specified, and the parameters should be excluded.
+func (o SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput) ContentTypes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *SecurityPolicyAdvancedOptionsConfigJsonCustomConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ContentTypes
+	}).(pulumi.StringArrayOutput)
+}
+
 type SecurityPolicyRecaptchaOptionsConfig struct {
 	// A field to supply a reCAPTCHA site key to be used for all the rules using the redirect action with the type of `GOOGLE_RECAPTCHA` under the security policy. The specified site key needs to be created from the reCAPTCHA API. The user is responsible for the validity of the specified site key. If not specified, a Google-managed site key is used.
 	RedirectSiteKey string `pulumi:"redirectSiteKey"`
@@ -9832,7 +10328,7 @@ func (o URLMapHostRuleArrayOutput) Index(i pulumi.IntInput) URLMapHostRuleOutput
 }
 
 type URLMapPathMatcher struct {
-	// defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error.
+	// defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendService or BackendBucket responds with an error.
 	// This policy takes effect at the PathMatcher level and applies only when no policy has been defined for the error code at lower levels like RouteRule and PathRule within this PathMatcher. If an error code does not have a policy defined in defaultCustomErrorResponsePolicy, then a policy defined for the error code in UrlMap.defaultCustomErrorResponsePolicy takes effect.
 	// For example, consider a UrlMap with the following configuration:
 	// UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors
@@ -9896,7 +10392,7 @@ type URLMapPathMatcherInput interface {
 }
 
 type URLMapPathMatcherArgs struct {
-	// defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error.
+	// defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendService or BackendBucket responds with an error.
 	// This policy takes effect at the PathMatcher level and applies only when no policy has been defined for the error code at lower levels like RouteRule and PathRule within this PathMatcher. If an error code does not have a policy defined in defaultCustomErrorResponsePolicy, then a policy defined for the error code in UrlMap.defaultCustomErrorResponsePolicy takes effect.
 	// For example, consider a UrlMap with the following configuration:
 	// UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors
@@ -9999,7 +10495,7 @@ func (o URLMapPathMatcherOutput) ToURLMapPathMatcherOutputWithContext(ctx contex
 	return o
 }
 
-// defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error.
+// defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendService or BackendBucket responds with an error.
 // This policy takes effect at the PathMatcher level and applies only when no policy has been defined for the error code at lower levels like RouteRule and PathRule within this PathMatcher. If an error code does not have a policy defined in defaultCustomErrorResponsePolicy, then a policy defined for the error code in UrlMap.defaultCustomErrorResponsePolicy takes effect.
 // For example, consider a UrlMap with the following configuration:
 // UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors
@@ -14011,7 +14507,7 @@ func (o URLMapPathMatcherHeaderActionResponseHeadersToAddArrayOutput) Index(i pu
 }
 
 type URLMapPathMatcherPathRule struct {
-	// customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error.
+	// customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendService or BackendBucket responds with an error.
 	// If a policy for an error code is not configured for the PathRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect.
 	// For example, consider a UrlMap with the following configuration:
 	// UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors
@@ -14054,7 +14550,7 @@ type URLMapPathMatcherPathRuleInput interface {
 }
 
 type URLMapPathMatcherPathRuleArgs struct {
-	// customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error.
+	// customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendService or BackendBucket responds with an error.
 	// If a policy for an error code is not configured for the PathRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect.
 	// For example, consider a UrlMap with the following configuration:
 	// UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors
@@ -14136,7 +14632,7 @@ func (o URLMapPathMatcherPathRuleOutput) ToURLMapPathMatcherPathRuleOutputWithCo
 	return o
 }
 
-// customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error.
+// customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendService or BackendBucket responds with an error.
 // If a policy for an error code is not configured for the PathRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect.
 // For example, consider a UrlMap with the following configuration:
 // UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors
@@ -27611,7 +28107,7 @@ type GetForwardingRulesRule struct {
 	RecreateClosedPsc bool              `pulumi:"recreateClosedPsc"`
 	// The region you want to get the forwarding rules from.
 	//
-	// These arguments must be set in either the provider or the resouce in order for the information to be queried.
+	// These arguments must be set in either the provider or the resource in order for the information to be queried.
 	Region string `pulumi:"region"`
 	// The URI of the resource.
 	SelfLink string `pulumi:"selfLink"`
@@ -27895,7 +28391,7 @@ type GetForwardingRulesRuleArgs struct {
 	RecreateClosedPsc pulumi.BoolInput      `pulumi:"recreateClosedPsc"`
 	// The region you want to get the forwarding rules from.
 	//
-	// These arguments must be set in either the provider or the resouce in order for the information to be queried.
+	// These arguments must be set in either the provider or the resource in order for the information to be queried.
 	Region pulumi.StringInput `pulumi:"region"`
 	// The URI of the resource.
 	SelfLink pulumi.StringInput `pulumi:"selfLink"`
@@ -28300,7 +28796,7 @@ func (o GetForwardingRulesRuleOutput) RecreateClosedPsc() pulumi.BoolOutput {
 
 // The region you want to get the forwarding rules from.
 //
-// These arguments must be set in either the provider or the resouce in order for the information to be queried.
+// These arguments must be set in either the provider or the resource in order for the information to be queried.
 func (o GetForwardingRulesRuleOutput) Region() pulumi.StringOutput {
 	return o.ApplyT(func(v GetForwardingRulesRule) string { return v.Region }).(pulumi.StringOutput)
 }
@@ -30337,6 +30833,10 @@ func (o GetHealthCheckTcpHealthCheckArrayOutput) Index(i pulumi.IntInput) GetHea
 type GetInstanceAdvancedMachineFeature struct {
 	// Whether to enable nested virtualization or not.
 	EnableNestedVirtualization bool `pulumi:"enableNestedVirtualization"`
+	// Whether to enable UEFI networking for the instance.
+	EnableUefiNetworking bool `pulumi:"enableUefiNetworking"`
+	// The PMU is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are "STANDARD", "ENHANCED", and "ARCHITECTURAL".
+	PerformanceMonitoringUnit string `pulumi:"performanceMonitoringUnit"`
 	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 	ThreadsPerCore int `pulumi:"threadsPerCore"`
 	// Turbo frequency mode to use for the instance. Currently supported modes is "ALL_CORE_MAX".
@@ -30359,6 +30859,10 @@ type GetInstanceAdvancedMachineFeatureInput interface {
 type GetInstanceAdvancedMachineFeatureArgs struct {
 	// Whether to enable nested virtualization or not.
 	EnableNestedVirtualization pulumi.BoolInput `pulumi:"enableNestedVirtualization"`
+	// Whether to enable UEFI networking for the instance.
+	EnableUefiNetworking pulumi.BoolInput `pulumi:"enableUefiNetworking"`
+	// The PMU is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are "STANDARD", "ENHANCED", and "ARCHITECTURAL".
+	PerformanceMonitoringUnit pulumi.StringInput `pulumi:"performanceMonitoringUnit"`
 	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 	ThreadsPerCore pulumi.IntInput `pulumi:"threadsPerCore"`
 	// Turbo frequency mode to use for the instance. Currently supported modes is "ALL_CORE_MAX".
@@ -30421,6 +30925,16 @@ func (o GetInstanceAdvancedMachineFeatureOutput) ToGetInstanceAdvancedMachineFea
 // Whether to enable nested virtualization or not.
 func (o GetInstanceAdvancedMachineFeatureOutput) EnableNestedVirtualization() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetInstanceAdvancedMachineFeature) bool { return v.EnableNestedVirtualization }).(pulumi.BoolOutput)
+}
+
+// Whether to enable UEFI networking for the instance.
+func (o GetInstanceAdvancedMachineFeatureOutput) EnableUefiNetworking() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceAdvancedMachineFeature) bool { return v.EnableUefiNetworking }).(pulumi.BoolOutput)
+}
+
+// The PMU is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are "STANDARD", "ENHANCED", and "ARCHITECTURAL".
+func (o GetInstanceAdvancedMachineFeatureOutput) PerformanceMonitoringUnit() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceAdvancedMachineFeature) string { return v.PerformanceMonitoringUnit }).(pulumi.StringOutput)
 }
 
 // The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
@@ -33303,7 +33817,7 @@ type GetInstanceNetworkInterface struct {
 	NetworkAttachment string `pulumi:"networkAttachment"`
 	// The internal ip address of the instance, either manually or dynamically assigned.
 	NetworkIp string `pulumi:"networkIp"`
-	// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, IDPF
+	// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, IDPF, MRDMA, and IRDMA
 	NicType string `pulumi:"nicType"`
 	// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
 	QueueCount int `pulumi:"queueCount"`
@@ -33350,7 +33864,7 @@ type GetInstanceNetworkInterfaceArgs struct {
 	NetworkAttachment pulumi.StringInput `pulumi:"networkAttachment"`
 	// The internal ip address of the instance, either manually or dynamically assigned.
 	NetworkIp pulumi.StringInput `pulumi:"networkIp"`
-	// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, IDPF
+	// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, IDPF, MRDMA, and IRDMA
 	NicType pulumi.StringInput `pulumi:"nicType"`
 	// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
 	QueueCount pulumi.IntInput `pulumi:"queueCount"`
@@ -33468,7 +33982,7 @@ func (o GetInstanceNetworkInterfaceOutput) NetworkIp() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceNetworkInterface) string { return v.NetworkIp }).(pulumi.StringOutput)
 }
 
-// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, IDPF
+// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, IDPF, MRDMA, and IRDMA
 func (o GetInstanceNetworkInterfaceOutput) NicType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceNetworkInterface) string { return v.NicType }).(pulumi.StringOutput)
 }
@@ -35301,6 +35815,10 @@ func (o GetInstanceShieldedInstanceConfigArrayOutput) Index(i pulumi.IntInput) G
 type GetInstanceTemplateAdvancedMachineFeature struct {
 	// Whether to enable nested virtualization or not.
 	EnableNestedVirtualization bool `pulumi:"enableNestedVirtualization"`
+	// Whether to enable UEFI networking or not.
+	EnableUefiNetworking bool `pulumi:"enableUefiNetworking"`
+	// The PMU is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are "STANDARD", "ENHANCED", and "ARCHITECTURAL".
+	PerformanceMonitoringUnit string `pulumi:"performanceMonitoringUnit"`
 	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 	ThreadsPerCore int `pulumi:"threadsPerCore"`
 	// Turbo frequency mode to use for the instance. Currently supported modes is "ALL_CORE_MAX".
@@ -35323,6 +35841,10 @@ type GetInstanceTemplateAdvancedMachineFeatureInput interface {
 type GetInstanceTemplateAdvancedMachineFeatureArgs struct {
 	// Whether to enable nested virtualization or not.
 	EnableNestedVirtualization pulumi.BoolInput `pulumi:"enableNestedVirtualization"`
+	// Whether to enable UEFI networking or not.
+	EnableUefiNetworking pulumi.BoolInput `pulumi:"enableUefiNetworking"`
+	// The PMU is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are "STANDARD", "ENHANCED", and "ARCHITECTURAL".
+	PerformanceMonitoringUnit pulumi.StringInput `pulumi:"performanceMonitoringUnit"`
 	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 	ThreadsPerCore pulumi.IntInput `pulumi:"threadsPerCore"`
 	// Turbo frequency mode to use for the instance. Currently supported modes is "ALL_CORE_MAX".
@@ -35385,6 +35907,16 @@ func (o GetInstanceTemplateAdvancedMachineFeatureOutput) ToGetInstanceTemplateAd
 // Whether to enable nested virtualization or not.
 func (o GetInstanceTemplateAdvancedMachineFeatureOutput) EnableNestedVirtualization() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetInstanceTemplateAdvancedMachineFeature) bool { return v.EnableNestedVirtualization }).(pulumi.BoolOutput)
+}
+
+// Whether to enable UEFI networking or not.
+func (o GetInstanceTemplateAdvancedMachineFeatureOutput) EnableUefiNetworking() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetInstanceTemplateAdvancedMachineFeature) bool { return v.EnableUefiNetworking }).(pulumi.BoolOutput)
+}
+
+// The PMU is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are "STANDARD", "ENHANCED", and "ARCHITECTURAL".
+func (o GetInstanceTemplateAdvancedMachineFeatureOutput) PerformanceMonitoringUnit() pulumi.StringOutput {
+	return o.ApplyT(func(v GetInstanceTemplateAdvancedMachineFeature) string { return v.PerformanceMonitoringUnit }).(pulumi.StringOutput)
 }
 
 // The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
@@ -36372,7 +36904,7 @@ type GetInstanceTemplateNetworkInterface struct {
 	// The private IP address to assign to the instance. If
 	// empty, the address will be automatically assigned.
 	NetworkIp string `pulumi:"networkIp"`
-	// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET
+	// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, MRDMA, and IRDMA
 	NicType string `pulumi:"nicType"`
 	// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
 	QueueCount int `pulumi:"queueCount"`
@@ -36429,7 +36961,7 @@ type GetInstanceTemplateNetworkInterfaceArgs struct {
 	// The private IP address to assign to the instance. If
 	// empty, the address will be automatically assigned.
 	NetworkIp pulumi.StringInput `pulumi:"networkIp"`
-	// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET
+	// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, MRDMA, and IRDMA
 	NicType pulumi.StringInput `pulumi:"nicType"`
 	// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
 	QueueCount pulumi.IntInput `pulumi:"queueCount"`
@@ -36561,7 +37093,7 @@ func (o GetInstanceTemplateNetworkInterfaceOutput) NetworkIp() pulumi.StringOutp
 	return o.ApplyT(func(v GetInstanceTemplateNetworkInterface) string { return v.NetworkIp }).(pulumi.StringOutput)
 }
 
-// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET
+// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, MRDMA, and IRDMA
 func (o GetInstanceTemplateNetworkInterfaceOutput) NicType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetInstanceTemplateNetworkInterface) string { return v.NicType }).(pulumi.StringOutput)
 }
@@ -41493,6 +42025,10 @@ func (o GetRegionInstanceGroupManagerVersionTargetSizeArrayOutput) Index(i pulum
 type GetRegionInstanceTemplateAdvancedMachineFeature struct {
 	// Whether to enable nested virtualization or not.
 	EnableNestedVirtualization bool `pulumi:"enableNestedVirtualization"`
+	// Whether to enable UEFI networking or not.
+	EnableUefiNetworking bool `pulumi:"enableUefiNetworking"`
+	// The PMU is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are "STANDARD", "ENHANCED", and "ARCHITECTURAL".
+	PerformanceMonitoringUnit string `pulumi:"performanceMonitoringUnit"`
 	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 	ThreadsPerCore int `pulumi:"threadsPerCore"`
 	// Turbo frequency mode to use for the instance. Currently supported modes is "ALL_CORE_MAX".
@@ -41515,6 +42051,10 @@ type GetRegionInstanceTemplateAdvancedMachineFeatureInput interface {
 type GetRegionInstanceTemplateAdvancedMachineFeatureArgs struct {
 	// Whether to enable nested virtualization or not.
 	EnableNestedVirtualization pulumi.BoolInput `pulumi:"enableNestedVirtualization"`
+	// Whether to enable UEFI networking or not.
+	EnableUefiNetworking pulumi.BoolInput `pulumi:"enableUefiNetworking"`
+	// The PMU is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are "STANDARD", "ENHANCED", and "ARCHITECTURAL".
+	PerformanceMonitoringUnit pulumi.StringInput `pulumi:"performanceMonitoringUnit"`
 	// The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
 	ThreadsPerCore pulumi.IntInput `pulumi:"threadsPerCore"`
 	// Turbo frequency mode to use for the instance. Currently supported modes is "ALL_CORE_MAX".
@@ -41577,6 +42117,16 @@ func (o GetRegionInstanceTemplateAdvancedMachineFeatureOutput) ToGetRegionInstan
 // Whether to enable nested virtualization or not.
 func (o GetRegionInstanceTemplateAdvancedMachineFeatureOutput) EnableNestedVirtualization() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetRegionInstanceTemplateAdvancedMachineFeature) bool { return v.EnableNestedVirtualization }).(pulumi.BoolOutput)
+}
+
+// Whether to enable UEFI networking or not.
+func (o GetRegionInstanceTemplateAdvancedMachineFeatureOutput) EnableUefiNetworking() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateAdvancedMachineFeature) bool { return v.EnableUefiNetworking }).(pulumi.BoolOutput)
+}
+
+// The PMU is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are "STANDARD", "ENHANCED", and "ARCHITECTURAL".
+func (o GetRegionInstanceTemplateAdvancedMachineFeatureOutput) PerformanceMonitoringUnit() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateAdvancedMachineFeature) string { return v.PerformanceMonitoringUnit }).(pulumi.StringOutput)
 }
 
 // The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
@@ -42556,7 +43106,7 @@ type GetRegionInstanceTemplateNetworkInterface struct {
 	// The private IP address to assign to the instance. If
 	// empty, the address will be automatically assigned.
 	NetworkIp string `pulumi:"networkIp"`
-	// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET
+	// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, MRDMA, and IRDMA
 	NicType string `pulumi:"nicType"`
 	// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
 	QueueCount int `pulumi:"queueCount"`
@@ -42605,7 +43155,7 @@ type GetRegionInstanceTemplateNetworkInterfaceArgs struct {
 	// The private IP address to assign to the instance. If
 	// empty, the address will be automatically assigned.
 	NetworkIp pulumi.StringInput `pulumi:"networkIp"`
-	// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET
+	// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, MRDMA, and IRDMA
 	NicType pulumi.StringInput `pulumi:"nicType"`
 	// The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
 	QueueCount pulumi.IntInput `pulumi:"queueCount"`
@@ -42726,7 +43276,7 @@ func (o GetRegionInstanceTemplateNetworkInterfaceOutput) NetworkIp() pulumi.Stri
 	return o.ApplyT(func(v GetRegionInstanceTemplateNetworkInterface) string { return v.NetworkIp }).(pulumi.StringOutput)
 }
 
-// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET
+// The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, MRDMA, and IRDMA
 func (o GetRegionInstanceTemplateNetworkInterfaceOutput) NicType() pulumi.StringOutput {
 	return o.ApplyT(func(v GetRegionInstanceTemplateNetworkInterface) string { return v.NicType }).(pulumi.StringOutput)
 }
@@ -44820,6 +45370,112 @@ func (o GetRegionNetworkEndpointGroupCloudRunArrayOutput) Index(i pulumi.IntInpu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionNetworkEndpointGroupCloudRun {
 		return vs[0].([]GetRegionNetworkEndpointGroupCloudRun)[vs[1].(int)]
 	}).(GetRegionNetworkEndpointGroupCloudRunOutput)
+}
+
+type GetRegionNetworkEndpointGroupPscData struct {
+	// The PSC producer port to use when consumer PSC NEG connects to a producer. If
+	// this flag isn't specified for a PSC NEG with endpoint type
+	// private-service-connect, then PSC NEG will be connected to a first port in the
+	// available PSC producer port range.
+	ProducerPort string `pulumi:"producerPort"`
+}
+
+// GetRegionNetworkEndpointGroupPscDataInput is an input type that accepts GetRegionNetworkEndpointGroupPscDataArgs and GetRegionNetworkEndpointGroupPscDataOutput values.
+// You can construct a concrete instance of `GetRegionNetworkEndpointGroupPscDataInput` via:
+//
+//	GetRegionNetworkEndpointGroupPscDataArgs{...}
+type GetRegionNetworkEndpointGroupPscDataInput interface {
+	pulumi.Input
+
+	ToGetRegionNetworkEndpointGroupPscDataOutput() GetRegionNetworkEndpointGroupPscDataOutput
+	ToGetRegionNetworkEndpointGroupPscDataOutputWithContext(context.Context) GetRegionNetworkEndpointGroupPscDataOutput
+}
+
+type GetRegionNetworkEndpointGroupPscDataArgs struct {
+	// The PSC producer port to use when consumer PSC NEG connects to a producer. If
+	// this flag isn't specified for a PSC NEG with endpoint type
+	// private-service-connect, then PSC NEG will be connected to a first port in the
+	// available PSC producer port range.
+	ProducerPort pulumi.StringInput `pulumi:"producerPort"`
+}
+
+func (GetRegionNetworkEndpointGroupPscDataArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionNetworkEndpointGroupPscData)(nil)).Elem()
+}
+
+func (i GetRegionNetworkEndpointGroupPscDataArgs) ToGetRegionNetworkEndpointGroupPscDataOutput() GetRegionNetworkEndpointGroupPscDataOutput {
+	return i.ToGetRegionNetworkEndpointGroupPscDataOutputWithContext(context.Background())
+}
+
+func (i GetRegionNetworkEndpointGroupPscDataArgs) ToGetRegionNetworkEndpointGroupPscDataOutputWithContext(ctx context.Context) GetRegionNetworkEndpointGroupPscDataOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionNetworkEndpointGroupPscDataOutput)
+}
+
+// GetRegionNetworkEndpointGroupPscDataArrayInput is an input type that accepts GetRegionNetworkEndpointGroupPscDataArray and GetRegionNetworkEndpointGroupPscDataArrayOutput values.
+// You can construct a concrete instance of `GetRegionNetworkEndpointGroupPscDataArrayInput` via:
+//
+//	GetRegionNetworkEndpointGroupPscDataArray{ GetRegionNetworkEndpointGroupPscDataArgs{...} }
+type GetRegionNetworkEndpointGroupPscDataArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionNetworkEndpointGroupPscDataArrayOutput() GetRegionNetworkEndpointGroupPscDataArrayOutput
+	ToGetRegionNetworkEndpointGroupPscDataArrayOutputWithContext(context.Context) GetRegionNetworkEndpointGroupPscDataArrayOutput
+}
+
+type GetRegionNetworkEndpointGroupPscDataArray []GetRegionNetworkEndpointGroupPscDataInput
+
+func (GetRegionNetworkEndpointGroupPscDataArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionNetworkEndpointGroupPscData)(nil)).Elem()
+}
+
+func (i GetRegionNetworkEndpointGroupPscDataArray) ToGetRegionNetworkEndpointGroupPscDataArrayOutput() GetRegionNetworkEndpointGroupPscDataArrayOutput {
+	return i.ToGetRegionNetworkEndpointGroupPscDataArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionNetworkEndpointGroupPscDataArray) ToGetRegionNetworkEndpointGroupPscDataArrayOutputWithContext(ctx context.Context) GetRegionNetworkEndpointGroupPscDataArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionNetworkEndpointGroupPscDataArrayOutput)
+}
+
+type GetRegionNetworkEndpointGroupPscDataOutput struct{ *pulumi.OutputState }
+
+func (GetRegionNetworkEndpointGroupPscDataOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionNetworkEndpointGroupPscData)(nil)).Elem()
+}
+
+func (o GetRegionNetworkEndpointGroupPscDataOutput) ToGetRegionNetworkEndpointGroupPscDataOutput() GetRegionNetworkEndpointGroupPscDataOutput {
+	return o
+}
+
+func (o GetRegionNetworkEndpointGroupPscDataOutput) ToGetRegionNetworkEndpointGroupPscDataOutputWithContext(ctx context.Context) GetRegionNetworkEndpointGroupPscDataOutput {
+	return o
+}
+
+// The PSC producer port to use when consumer PSC NEG connects to a producer. If
+// this flag isn't specified for a PSC NEG with endpoint type
+// private-service-connect, then PSC NEG will be connected to a first port in the
+// available PSC producer port range.
+func (o GetRegionNetworkEndpointGroupPscDataOutput) ProducerPort() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionNetworkEndpointGroupPscData) string { return v.ProducerPort }).(pulumi.StringOutput)
+}
+
+type GetRegionNetworkEndpointGroupPscDataArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionNetworkEndpointGroupPscDataArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionNetworkEndpointGroupPscData)(nil)).Elem()
+}
+
+func (o GetRegionNetworkEndpointGroupPscDataArrayOutput) ToGetRegionNetworkEndpointGroupPscDataArrayOutput() GetRegionNetworkEndpointGroupPscDataArrayOutput {
+	return o
+}
+
+func (o GetRegionNetworkEndpointGroupPscDataArrayOutput) ToGetRegionNetworkEndpointGroupPscDataArrayOutputWithContext(ctx context.Context) GetRegionNetworkEndpointGroupPscDataArrayOutput {
+	return o
+}
+
+func (o GetRegionNetworkEndpointGroupPscDataArrayOutput) Index(i pulumi.IntInput) GetRegionNetworkEndpointGroupPscDataOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionNetworkEndpointGroupPscData {
+		return vs[0].([]GetRegionNetworkEndpointGroupPscData)[vs[1].(int)]
+	}).(GetRegionNetworkEndpointGroupPscDataOutput)
 }
 
 type GetRegionNetworkEndpointGroupServerlessDeployment struct {
@@ -48990,6 +49646,8 @@ type GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig struct {
 	Enable bool `pulumi:"enable"`
 	// Rule visibility. Supported values include: "STANDARD", "PREMIUM".
 	RuleVisibility string `pulumi:"ruleVisibility"`
+	// Configuration options for layer7 adaptive protection for various customizable thresholds.
+	ThresholdConfigs []GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig `pulumi:"thresholdConfigs"`
 }
 
 // GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigInput is an input type that accepts GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs and GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput values.
@@ -49008,6 +49666,8 @@ type GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs struct
 	Enable pulumi.BoolInput `pulumi:"enable"`
 	// Rule visibility. Supported values include: "STANDARD", "PREMIUM".
 	RuleVisibility pulumi.StringInput `pulumi:"ruleVisibility"`
+	// Configuration options for layer7 adaptive protection for various customizable thresholds.
+	ThresholdConfigs GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayInput `pulumi:"thresholdConfigs"`
 }
 
 func (GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs) ElementType() reflect.Type {
@@ -49073,6 +49733,13 @@ func (o GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput) 
 	}).(pulumi.StringOutput)
 }
 
+// Configuration options for layer7 adaptive protection for various customizable thresholds.
+func (o GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput) ThresholdConfigs() GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput {
+	return o.ApplyT(func(v GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig) []GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig {
+		return v.ThresholdConfigs
+	}).(GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput)
+}
+
 type GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArrayOutput struct{ *pulumi.OutputState }
 
 func (GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArrayOutput) ElementType() reflect.Type {
@@ -49091,6 +49758,290 @@ func (o GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArrayOut
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig {
 		return vs[0].([]GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig)[vs[1].(int)]
 	}).(GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput)
+}
+
+type GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig struct {
+	AutoDeployConfidenceThreshold       float64 `pulumi:"autoDeployConfidenceThreshold"`
+	AutoDeployExpirationSec             int     `pulumi:"autoDeployExpirationSec"`
+	AutoDeployImpactedBaselineThreshold float64 `pulumi:"autoDeployImpactedBaselineThreshold"`
+	AutoDeployLoadThreshold             float64 `pulumi:"autoDeployLoadThreshold"`
+	DetectionAbsoluteQps                float64 `pulumi:"detectionAbsoluteQps"`
+	DetectionLoadThreshold              float64 `pulumi:"detectionLoadThreshold"`
+	DetectionRelativeToBaselineQps      float64 `pulumi:"detectionRelativeToBaselineQps"`
+	// The name of the security policy. Provide either this or a `selfLink`.
+	Name                      string                                                                                                    `pulumi:"name"`
+	TrafficGranularityConfigs []GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig `pulumi:"trafficGranularityConfigs"`
+}
+
+// GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigInput is an input type that accepts GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArgs and GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigInput` via:
+//
+//	GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArgs{...}
+type GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput() GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput
+	ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutputWithContext(context.Context) GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput
+}
+
+type GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArgs struct {
+	AutoDeployConfidenceThreshold       pulumi.Float64Input `pulumi:"autoDeployConfidenceThreshold"`
+	AutoDeployExpirationSec             pulumi.IntInput     `pulumi:"autoDeployExpirationSec"`
+	AutoDeployImpactedBaselineThreshold pulumi.Float64Input `pulumi:"autoDeployImpactedBaselineThreshold"`
+	AutoDeployLoadThreshold             pulumi.Float64Input `pulumi:"autoDeployLoadThreshold"`
+	DetectionAbsoluteQps                pulumi.Float64Input `pulumi:"detectionAbsoluteQps"`
+	DetectionLoadThreshold              pulumi.Float64Input `pulumi:"detectionLoadThreshold"`
+	DetectionRelativeToBaselineQps      pulumi.Float64Input `pulumi:"detectionRelativeToBaselineQps"`
+	// The name of the security policy. Provide either this or a `selfLink`.
+	Name                      pulumi.StringInput                                                                                                `pulumi:"name"`
+	TrafficGranularityConfigs GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayInput `pulumi:"trafficGranularityConfigs"`
+}
+
+func (GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArgs) ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput() GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput {
+	return i.ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArgs) ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutputWithContext(ctx context.Context) GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput)
+}
+
+// GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayInput is an input type that accepts GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArray and GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayInput` via:
+//
+//	GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArray{ GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArgs{...} }
+type GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput() GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput
+	ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutputWithContext(context.Context) GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput
+}
+
+type GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArray []GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigInput
+
+func (GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArray) ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput() GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput {
+	return i.ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArray) ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutputWithContext(ctx context.Context) GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput)
+}
+
+type GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput) ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput() GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput {
+	return o
+}
+
+func (o GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput) ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutputWithContext(ctx context.Context) GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput {
+	return o
+}
+
+func (o GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput) AutoDeployConfidenceThreshold() pulumi.Float64Output {
+	return o.ApplyT(func(v GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig) float64 {
+		return v.AutoDeployConfidenceThreshold
+	}).(pulumi.Float64Output)
+}
+
+func (o GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput) AutoDeployExpirationSec() pulumi.IntOutput {
+	return o.ApplyT(func(v GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig) int {
+		return v.AutoDeployExpirationSec
+	}).(pulumi.IntOutput)
+}
+
+func (o GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput) AutoDeployImpactedBaselineThreshold() pulumi.Float64Output {
+	return o.ApplyT(func(v GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig) float64 {
+		return v.AutoDeployImpactedBaselineThreshold
+	}).(pulumi.Float64Output)
+}
+
+func (o GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput) AutoDeployLoadThreshold() pulumi.Float64Output {
+	return o.ApplyT(func(v GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig) float64 {
+		return v.AutoDeployLoadThreshold
+	}).(pulumi.Float64Output)
+}
+
+func (o GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput) DetectionAbsoluteQps() pulumi.Float64Output {
+	return o.ApplyT(func(v GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig) float64 {
+		return v.DetectionAbsoluteQps
+	}).(pulumi.Float64Output)
+}
+
+func (o GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput) DetectionLoadThreshold() pulumi.Float64Output {
+	return o.ApplyT(func(v GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig) float64 {
+		return v.DetectionLoadThreshold
+	}).(pulumi.Float64Output)
+}
+
+func (o GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput) DetectionRelativeToBaselineQps() pulumi.Float64Output {
+	return o.ApplyT(func(v GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig) float64 {
+		return v.DetectionRelativeToBaselineQps
+	}).(pulumi.Float64Output)
+}
+
+// The name of the security policy. Provide either this or a `selfLink`.
+func (o GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig) string {
+		return v.Name
+	}).(pulumi.StringOutput)
+}
+
+func (o GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput) TrafficGranularityConfigs() GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput {
+	return o.ApplyT(func(v GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig) []GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig {
+		return v.TrafficGranularityConfigs
+	}).(GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput)
+}
+
+type GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput) ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput() GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput) ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutputWithContext(ctx context.Context) GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput) Index(i pulumi.IntInput) GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig {
+		return vs[0].([]GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig)[vs[1].(int)]
+	}).(GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput)
+}
+
+type GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig struct {
+	// If enabled, traffic matching each unique value for the specified type constitutes a separate traffic unit. It can only be set to true if value is empty.
+	EnableEachUniqueValue bool `pulumi:"enableEachUniqueValue"`
+	// Type of this configuration.
+	Type string `pulumi:"type"`
+	// Requests that match this value constitute a granular traffic unit.
+	Value string `pulumi:"value"`
+}
+
+// GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigInput is an input type that accepts GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArgs and GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigInput` via:
+//
+//	GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArgs{...}
+type GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput() GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput
+	ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutputWithContext(context.Context) GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput
+}
+
+type GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArgs struct {
+	// If enabled, traffic matching each unique value for the specified type constitutes a separate traffic unit. It can only be set to true if value is empty.
+	EnableEachUniqueValue pulumi.BoolInput `pulumi:"enableEachUniqueValue"`
+	// Type of this configuration.
+	Type pulumi.StringInput `pulumi:"type"`
+	// Requests that match this value constitute a granular traffic unit.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArgs) ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput() GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput {
+	return i.ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArgs) ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutputWithContext(ctx context.Context) GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput)
+}
+
+// GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayInput is an input type that accepts GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArray and GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput values.
+// You can construct a concrete instance of `GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayInput` via:
+//
+//	GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArray{ GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArgs{...} }
+type GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput() GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput
+	ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutputWithContext(context.Context) GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput
+}
+
+type GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArray []GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigInput
+
+func (GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig)(nil)).Elem()
+}
+
+func (i GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArray) ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput() GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput {
+	return i.ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArray) ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutputWithContext(ctx context.Context) GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput)
+}
+
+type GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput) ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput() GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput {
+	return o
+}
+
+func (o GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput) ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutputWithContext(ctx context.Context) GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput {
+	return o
+}
+
+// If enabled, traffic matching each unique value for the specified type constitutes a separate traffic unit. It can only be set to true if value is empty.
+func (o GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput) EnableEachUniqueValue() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig) bool {
+		return v.EnableEachUniqueValue
+	}).(pulumi.BoolOutput)
+}
+
+// Type of this configuration.
+func (o GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput) Type() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig) string {
+		return v.Type
+	}).(pulumi.StringOutput)
+}
+
+// Requests that match this value constitute a granular traffic unit.
+func (o GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig) string {
+		return v.Value
+	}).(pulumi.StringOutput)
+}
+
+type GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig)(nil)).Elem()
+}
+
+func (o GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput) ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput() GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput) ToGetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutputWithContext(ctx context.Context) GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput {
+	return o
+}
+
+func (o GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput) Index(i pulumi.IntInput) GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig {
+		return vs[0].([]GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig)[vs[1].(int)]
+	}).(GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput)
 }
 
 type GetSecurityPolicyAdvancedOptionsConfig struct {
@@ -52200,6 +53151,12 @@ func (o GetSubnetworksSubnetworkArrayOutput) Index(i pulumi.IntInput) GetSubnetw
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigInput)(nil)).Elem(), SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayInput)(nil)).Elem(), SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdvancedOptionsConfigInput)(nil)).Elem(), SecurityPolicyAdvancedOptionsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdvancedOptionsConfigPtrInput)(nil)).Elem(), SecurityPolicyAdvancedOptionsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdvancedOptionsConfigJsonCustomConfigInput)(nil)).Elem(), SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrInput)(nil)).Elem(), SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRecaptchaOptionsConfigInput)(nil)).Elem(), SecurityPolicyRecaptchaOptionsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRecaptchaOptionsConfigPtrInput)(nil)).Elem(), SecurityPolicyRecaptchaOptionsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyRuleTypeInput)(nil)).Elem(), SecurityPolicyRuleTypeArgs{})
@@ -52772,6 +53729,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionNetworkEndpointGroupCloudFunctionArrayInput)(nil)).Elem(), GetRegionNetworkEndpointGroupCloudFunctionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionNetworkEndpointGroupCloudRunInput)(nil)).Elem(), GetRegionNetworkEndpointGroupCloudRunArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionNetworkEndpointGroupCloudRunArrayInput)(nil)).Elem(), GetRegionNetworkEndpointGroupCloudRunArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionNetworkEndpointGroupPscDataInput)(nil)).Elem(), GetRegionNetworkEndpointGroupPscDataArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionNetworkEndpointGroupPscDataArrayInput)(nil)).Elem(), GetRegionNetworkEndpointGroupPscDataArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionNetworkEndpointGroupServerlessDeploymentInput)(nil)).Elem(), GetRegionNetworkEndpointGroupServerlessDeploymentArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionNetworkEndpointGroupServerlessDeploymentArrayInput)(nil)).Elem(), GetRegionNetworkEndpointGroupServerlessDeploymentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetReservationShareSettingInput)(nil)).Elem(), GetReservationShareSettingArgs{})
@@ -52834,6 +53793,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArrayInput)(nil)).Elem(), GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigInput)(nil)).Elem(), GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArrayInput)(nil)).Elem(), GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigInput)(nil)).Elem(), GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayInput)(nil)).Elem(), GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigInput)(nil)).Elem(), GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayInput)(nil)).Elem(), GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyAdvancedOptionsConfigInput)(nil)).Elem(), GetSecurityPolicyAdvancedOptionsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyAdvancedOptionsConfigArrayInput)(nil)).Elem(), GetSecurityPolicyAdvancedOptionsConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigInput)(nil)).Elem(), GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs{})
@@ -52888,6 +53851,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeArrayInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkInput)(nil)).Elem(), GetSubnetworksSubnetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkArrayInput)(nil)).Elem(), GetSubnetworksSubnetworkArray{})
+	pulumi.RegisterOutputType(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyAdvancedOptionsConfigOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyAdvancedOptionsConfigPtrOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyAdvancedOptionsConfigJsonCustomConfigPtrOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRecaptchaOptionsConfigOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRecaptchaOptionsConfigPtrOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyRuleTypeOutput{})
@@ -53460,6 +54429,8 @@ func init() {
 	pulumi.RegisterOutputType(GetRegionNetworkEndpointGroupCloudFunctionArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionNetworkEndpointGroupCloudRunOutput{})
 	pulumi.RegisterOutputType(GetRegionNetworkEndpointGroupCloudRunArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionNetworkEndpointGroupPscDataOutput{})
+	pulumi.RegisterOutputType(GetRegionNetworkEndpointGroupPscDataArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionNetworkEndpointGroupServerlessDeploymentOutput{})
 	pulumi.RegisterOutputType(GetRegionNetworkEndpointGroupServerlessDeploymentArrayOutput{})
 	pulumi.RegisterOutputType(GetReservationShareSettingOutput{})
@@ -53522,6 +54493,10 @@ func init() {
 	pulumi.RegisterOutputType(GetSecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput{})
 	pulumi.RegisterOutputType(GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput{})
+	pulumi.RegisterOutputType(GetSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetSecurityPolicyAdvancedOptionsConfigOutput{})
 	pulumi.RegisterOutputType(GetSecurityPolicyAdvancedOptionsConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetSecurityPolicyAdvancedOptionsConfigJsonCustomConfigOutput{})

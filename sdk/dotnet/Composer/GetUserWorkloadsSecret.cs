@@ -12,6 +12,8 @@ namespace Pulumi.Gcp.Composer
     public static class GetUserWorkloadsSecret
     {
         /// <summary>
+        /// Provides access to Kubernetes Secret configuration for a given project, region and Composer Environment.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp
@@ -69,6 +71,8 @@ namespace Pulumi.Gcp.Composer
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetUserWorkloadsSecretResult>("gcp:composer/getUserWorkloadsSecret:getUserWorkloadsSecret", args ?? new GetUserWorkloadsSecretArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Provides access to Kubernetes Secret configuration for a given project, region and Composer Environment.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

@@ -27,6 +27,7 @@ class CloudVmClusterArgs:
                  exadata_infrastructure: pulumi.Input[str],
                  location: pulumi.Input[str],
                  network: pulumi.Input[str],
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -63,6 +64,8 @@ class CloudVmClusterArgs:
         pulumi.set(__self__, "exadata_infrastructure", exadata_infrastructure)
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "network", network)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if labels is not None:
@@ -154,6 +157,15 @@ class CloudVmClusterArgs:
         pulumi.set(self, "network", value)
 
     @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deletion_protection", value)
+
+    @property
     @pulumi.getter(name="displayName")
     def display_name(self) -> Optional[pulumi.Input[str]]:
         """
@@ -213,6 +225,7 @@ class _CloudVmClusterState:
                  cidr: Optional[pulumi.Input[str]] = None,
                  cloud_vm_cluster_id: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  exadata_infrastructure: Optional[pulumi.Input[str]] = None,
@@ -266,6 +279,8 @@ class _CloudVmClusterState:
             pulumi.set(__self__, "cloud_vm_cluster_id", cloud_vm_cluster_id)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if effective_labels is not None:
@@ -342,6 +357,15 @@ class _CloudVmClusterState:
     @create_time.setter
     def create_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deletion_protection", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -494,6 +518,7 @@ class CloudVmCluster(pulumi.CustomResource):
                  backup_subnet_cidr: Optional[pulumi.Input[str]] = None,
                  cidr: Optional[pulumi.Input[str]] = None,
                  cloud_vm_cluster_id: Optional[pulumi.Input[str]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  exadata_infrastructure: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -528,7 +553,8 @@ class CloudVmCluster(pulumi.CustomResource):
                 "shape": "Exadata.X9M",
                 "compute_count": 2,
                 "storage_count": 3,
-            })
+            },
+            deletion_protection=True)
         default = gcp.compute.get_network(name="new",
             project="my-project")
         my_vmcluster = gcp.oracledatabase.CloudVmCluster("my_vmcluster",
@@ -546,7 +572,8 @@ class CloudVmCluster(pulumi.CustomResource):
                 "cpu_core_count": 4,
                 "gi_version": "19.0.0.0",
                 "hostname_prefix": "hostname1",
-            })
+            },
+            deletion_protection=True)
         ```
         ### Oracledatabase Cloud Vmcluster Full
 
@@ -563,7 +590,8 @@ class CloudVmCluster(pulumi.CustomResource):
                 "shape": "Exadata.X9M",
                 "compute_count": 2,
                 "storage_count": 3,
-            })
+            },
+            deletion_protection=True)
         default = gcp.compute.get_network(name="new",
             project="my-project")
         mydbserver = gcp.oracledatabase.get_db_servers_output(location="us-east4",
@@ -608,7 +636,8 @@ class CloudVmCluster(pulumi.CustomResource):
                     "incident_logs_enabled": True,
                 },
                 "memory_size_gb": 60,
-            })
+            },
+            deletion_protection=True)
         ```
 
         ## Import
@@ -693,7 +722,8 @@ class CloudVmCluster(pulumi.CustomResource):
                 "shape": "Exadata.X9M",
                 "compute_count": 2,
                 "storage_count": 3,
-            })
+            },
+            deletion_protection=True)
         default = gcp.compute.get_network(name="new",
             project="my-project")
         my_vmcluster = gcp.oracledatabase.CloudVmCluster("my_vmcluster",
@@ -711,7 +741,8 @@ class CloudVmCluster(pulumi.CustomResource):
                 "cpu_core_count": 4,
                 "gi_version": "19.0.0.0",
                 "hostname_prefix": "hostname1",
-            })
+            },
+            deletion_protection=True)
         ```
         ### Oracledatabase Cloud Vmcluster Full
 
@@ -728,7 +759,8 @@ class CloudVmCluster(pulumi.CustomResource):
                 "shape": "Exadata.X9M",
                 "compute_count": 2,
                 "storage_count": 3,
-            })
+            },
+            deletion_protection=True)
         default = gcp.compute.get_network(name="new",
             project="my-project")
         mydbserver = gcp.oracledatabase.get_db_servers_output(location="us-east4",
@@ -773,7 +805,8 @@ class CloudVmCluster(pulumi.CustomResource):
                     "incident_logs_enabled": True,
                 },
                 "memory_size_gb": 60,
-            })
+            },
+            deletion_protection=True)
         ```
 
         ## Import
@@ -818,6 +851,7 @@ class CloudVmCluster(pulumi.CustomResource):
                  backup_subnet_cidr: Optional[pulumi.Input[str]] = None,
                  cidr: Optional[pulumi.Input[str]] = None,
                  cloud_vm_cluster_id: Optional[pulumi.Input[str]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  exadata_infrastructure: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -843,6 +877,7 @@ class CloudVmCluster(pulumi.CustomResource):
             if cloud_vm_cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cloud_vm_cluster_id'")
             __props__.__dict__["cloud_vm_cluster_id"] = cloud_vm_cluster_id
+            __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["display_name"] = display_name
             if exadata_infrastructure is None and not opts.urn:
                 raise TypeError("Missing required property 'exadata_infrastructure'")
@@ -877,6 +912,7 @@ class CloudVmCluster(pulumi.CustomResource):
             cidr: Optional[pulumi.Input[str]] = None,
             cloud_vm_cluster_id: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
+            deletion_protection: Optional[pulumi.Input[bool]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             exadata_infrastructure: Optional[pulumi.Input[str]] = None,
@@ -935,6 +971,7 @@ class CloudVmCluster(pulumi.CustomResource):
         __props__.__dict__["cidr"] = cidr
         __props__.__dict__["cloud_vm_cluster_id"] = cloud_vm_cluster_id
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["exadata_infrastructure"] = exadata_infrastructure
@@ -985,6 +1022,11 @@ class CloudVmCluster(pulumi.CustomResource):
         The date and time that the VM cluster was created.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> pulumi.Output[Optional[bool]]:
+        return pulumi.get(self, "deletion_protection")
 
     @property
     @pulumi.getter(name="displayName")

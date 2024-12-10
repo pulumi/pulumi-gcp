@@ -256,6 +256,12 @@ namespace Pulumi.Gcp.Compute
         public Output<string> InstanceGroup { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier number for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("instanceGroupManagerId")]
+        public Output<int> InstanceGroupManagerId { get; private set; } = null!;
+
+        /// <summary>
         /// The instance lifecycle policy for this managed instance group.
         /// </summary>
         [Output("instanceLifecyclePolicy")]
@@ -764,6 +770,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("instanceGroup")]
         public Input<string>? InstanceGroup { get; set; }
+
+        /// <summary>
+        /// The unique identifier number for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Input("instanceGroupManagerId")]
+        public Input<int>? InstanceGroupManagerId { get; set; }
 
         /// <summary>
         /// The instance lifecycle policy for this managed instance group.

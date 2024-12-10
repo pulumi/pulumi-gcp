@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudbuild.inputs.WorkerPoolNetworkConfigArgs;
+import com.pulumi.gcp.cloudbuild.inputs.WorkerPoolPrivateServiceConnectArgs;
 import com.pulumi.gcp.cloudbuild.inputs.WorkerPoolWorkerConfigArgs;
 import java.lang.String;
 import java.util.Map;
@@ -103,6 +104,21 @@ public final class WorkerPoolArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Private Service Connect configuration for the pool.
+     * 
+     */
+    @Import(name="privateServiceConnect")
+    private @Nullable Output<WorkerPoolPrivateServiceConnectArgs> privateServiceConnect;
+
+    /**
+     * @return Private Service Connect configuration for the pool.
+     * 
+     */
+    public Optional<Output<WorkerPoolPrivateServiceConnectArgs>> privateServiceConnect() {
+        return Optional.ofNullable(this.privateServiceConnect);
+    }
+
+    /**
      * The project for the resource
      * 
      */
@@ -140,6 +156,7 @@ public final class WorkerPoolArgs extends com.pulumi.resources.ResourceArgs {
         this.location = $.location;
         this.name = $.name;
         this.networkConfig = $.networkConfig;
+        this.privateServiceConnect = $.privateServiceConnect;
         this.project = $.project;
         this.workerConfig = $.workerConfig;
     }
@@ -273,6 +290,27 @@ public final class WorkerPoolArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder networkConfig(WorkerPoolNetworkConfigArgs networkConfig) {
             return networkConfig(Output.of(networkConfig));
+        }
+
+        /**
+         * @param privateServiceConnect Private Service Connect configuration for the pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateServiceConnect(@Nullable Output<WorkerPoolPrivateServiceConnectArgs> privateServiceConnect) {
+            $.privateServiceConnect = privateServiceConnect;
+            return this;
+        }
+
+        /**
+         * @param privateServiceConnect Private Service Connect configuration for the pool.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder privateServiceConnect(WorkerPoolPrivateServiceConnectArgs privateServiceConnect) {
+            return privateServiceConnect(Output.of(privateServiceConnect));
         }
 
         /**

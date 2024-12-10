@@ -49,7 +49,7 @@ import (
 //
 // ### Service Account Impersonation.
 //
-//	`serviceaccount.getAccountAccessToken` will use background impersonated credentials provided by `serviceaccount.getAccountAccessToken`.
+//	`serviceaccount.getAccountIdToken` will use background impersonated credentials provided by `serviceaccount.getAccountAccessToken`.
 //
 //	Note: to use the following, you must grant `targetServiceAccount` the
 //	`roles/iam.serviceAccountTokenCreator` role on itself.

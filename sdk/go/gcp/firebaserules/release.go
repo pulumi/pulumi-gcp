@@ -16,6 +16,96 @@ import (
 // * [Get started with Firebase Security Rules](https://firebase.google.com/docs/rules/get-started)
 // ## Example Usage
 //
+// ### Firestore_release
+// Creates a Firebase Rules Release to the default Cloud Firestore instance
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/firebaserules"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			firestore, err := firebaserules.NewRuleset(ctx, "firestore", &firebaserules.RulesetArgs{
+//				Project: pulumi.String("my-project-name"),
+//				Source: &firebaserules.RulesetSourceArgs{
+//					Files: firebaserules.RulesetSourceFileArray{
+//						&firebaserules.RulesetSourceFileArgs{
+//							Content: pulumi.String("service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }"),
+//							Name:    pulumi.String("firestore.rules"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = firebaserules.NewRelease(ctx, "primary", &firebaserules.ReleaseArgs{
+//				Name:    pulumi.String("cloud.firestore"),
+//				Project: pulumi.String("my-project-name"),
+//				RulesetName: firestore.Name.ApplyT(func(name string) (string, error) {
+//					return fmt.Sprintf("projects/my-project-name/rulesets/%v", name), nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Firestore_release_additional
+// Creates a Firebase Rules Release to an additional Cloud Firestore instance
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/firebaserules"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			firestore, err := firebaserules.NewRuleset(ctx, "firestore", &firebaserules.RulesetArgs{
+//				Project: pulumi.String("my-project-name"),
+//				Source: &firebaserules.RulesetSourceArgs{
+//					Files: firebaserules.RulesetSourceFileArray{
+//						&firebaserules.RulesetSourceFileArgs{
+//							Content: pulumi.String("service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }"),
+//							Name:    pulumi.String("firestore.rules"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = firebaserules.NewRelease(ctx, "primary", &firebaserules.ReleaseArgs{
+//				Name:    pulumi.String("cloud.firestore/database"),
+//				Project: pulumi.String("my-project-name"),
+//				RulesetName: firestore.Name.ApplyT(func(name string) (string, error) {
+//					return fmt.Sprintf("projects/my-project-name/rulesets/%v", name), nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ## Import
 //
 // Release can be imported using any of these accepted formats:

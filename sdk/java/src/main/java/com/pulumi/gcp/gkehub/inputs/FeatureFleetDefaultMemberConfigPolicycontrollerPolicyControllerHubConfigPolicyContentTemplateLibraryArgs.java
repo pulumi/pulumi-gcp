@@ -17,7 +17,7 @@ public final class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControll
 
     /**
      * Configures the manner in which the template library is installed on the cluster.
-     * Possible values are: `INSTALATION_UNSPECIFIED`, `NOT_INSTALLED`, `ALL`.
+     * Possible values are: `INSTALLATION_UNSPECIFIED`, `NOT_INSTALLED`, `ALL`.
      * 
      */
     @Import(name="installation")
@@ -25,7 +25,7 @@ public final class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControll
 
     /**
      * @return Configures the manner in which the template library is installed on the cluster.
-     * Possible values are: `INSTALATION_UNSPECIFIED`, `NOT_INSTALLED`, `ALL`.
+     * Possible values are: `INSTALLATION_UNSPECIFIED`, `NOT_INSTALLED`, `ALL`.
      * 
      */
     public Optional<Output<String>> installation() {
@@ -58,7 +58,7 @@ public final class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControll
 
         /**
          * @param installation Configures the manner in which the template library is installed on the cluster.
-         * Possible values are: `INSTALATION_UNSPECIFIED`, `NOT_INSTALLED`, `ALL`.
+         * Possible values are: `INSTALLATION_UNSPECIFIED`, `NOT_INSTALLED`, `ALL`.
          * 
          * @return builder
          * 
@@ -70,7 +70,7 @@ public final class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControll
 
         /**
          * @param installation Configures the manner in which the template library is installed on the cluster.
-         * Possible values are: `INSTALATION_UNSPECIFIED`, `NOT_INSTALLED`, `ALL`.
+         * Possible values are: `INSTALLATION_UNSPECIFIED`, `NOT_INSTALLED`, `ALL`.
          * 
          * @return builder
          * 

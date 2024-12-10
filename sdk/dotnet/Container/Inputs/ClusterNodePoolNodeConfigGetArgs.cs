@@ -186,6 +186,15 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<int>? LocalSsdCount { get; set; }
 
         /// <summary>
+        /// Possible Local SSD encryption modes:
+        /// Accepted values are:
+        /// * `STANDARD_ENCRYPTION`: The given node will be encrypted using keys managed by Google infrastructure and the keys wll be deleted when the node is deleted.
+        /// * `EPHEMERAL_KEY_ENCRYPTION`: The given node will opt-in for using ephemeral key for encrypting Local SSDs. The Local SSDs will not be able to recover data in case of node crash.
+        /// </summary>
+        [Input("localSsdEncryptionMode")]
+        public Input<string>? LocalSsdEncryptionMode { get; set; }
+
+        /// <summary>
         /// Parameter for specifying the type of logging agent used in a node pool. This will override any cluster-wide default value. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
         /// </summary>
         [Input("loggingVariant")]

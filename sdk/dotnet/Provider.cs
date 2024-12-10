@@ -276,6 +276,9 @@ namespace Pulumi.Gcp
         [Output("firestoreCustomEndpoint")]
         public Output<string?> FirestoreCustomEndpoint { get; private set; } = null!;
 
+        [Output("geminiCustomEndpoint")]
+        public Output<string?> GeminiCustomEndpoint { get; private set; } = null!;
+
         [Output("gkeBackupCustomEndpoint")]
         public Output<string?> GkeBackupCustomEndpoint { get; private set; } = null!;
 
@@ -849,6 +852,9 @@ namespace Pulumi.Gcp
 
         [Input("firestoreCustomEndpoint")]
         public Input<string>? FirestoreCustomEndpoint { get; set; }
+
+        [Input("geminiCustomEndpoint")]
+        public Input<string>? GeminiCustomEndpoint { get; set; }
 
         [Input("gkeBackupCustomEndpoint")]
         public Input<string>? GkeBackupCustomEndpoint { get; set; }

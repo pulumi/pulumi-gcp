@@ -188,6 +188,7 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public readonly string Id;
         public readonly string InstanceGroup;
+        public readonly int InstanceGroupManagerId;
         public readonly ImmutableArray<Outputs.GetInstanceGroupManagerInstanceLifecyclePolicyResult> InstanceLifecyclePolicies;
         public readonly string ListManagedInstancesResults;
         public readonly string? Name;
@@ -228,6 +229,8 @@ namespace Pulumi.Gcp.Compute
             string id,
 
             string instanceGroup,
+
+            int instanceGroupManagerId,
 
             ImmutableArray<Outputs.GetInstanceGroupManagerInstanceLifecyclePolicyResult> instanceLifecyclePolicies,
 
@@ -281,6 +284,7 @@ namespace Pulumi.Gcp.Compute
             Fingerprint = fingerprint;
             Id = id;
             InstanceGroup = instanceGroup;
+            InstanceGroupManagerId = instanceGroupManagerId;
             InstanceLifecyclePolicies = instanceLifecyclePolicies;
             ListManagedInstancesResults = listManagedInstancesResults;
             Name = name;

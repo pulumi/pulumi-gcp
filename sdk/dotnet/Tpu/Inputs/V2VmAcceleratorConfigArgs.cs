@@ -19,8 +19,7 @@ namespace Pulumi.Gcp.Tpu.Inputs
         public Input<string> Topology { get; set; } = null!;
 
         /// <summary>
-        /// Type of TPU.
-        /// Possible values are: `V2`, `V3`, `V4`, `V5P`.
+        /// Type of TPU. Please select one of the allowed types: https://cloud.google.com/tpu/docs/reference/rest/v2/AcceleratorConfig#Type
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;

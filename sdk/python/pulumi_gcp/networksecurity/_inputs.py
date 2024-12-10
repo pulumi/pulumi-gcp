@@ -39,6 +39,10 @@ __all__ = [
     'ClientTlsPolicyServerValidationCaCertificateProviderInstanceArgsDict',
     'ClientTlsPolicyServerValidationCaGrpcEndpointArgs',
     'ClientTlsPolicyServerValidationCaGrpcEndpointArgsDict',
+    'MirroringDeploymentGroupConnectedEndpointGroupArgs',
+    'MirroringDeploymentGroupConnectedEndpointGroupArgsDict',
+    'MirroringEndpointGroupAssociationLocationsDetailArgs',
+    'MirroringEndpointGroupAssociationLocationsDetailArgsDict',
     'SecurityProfileThreatPreventionProfileArgs',
     'SecurityProfileThreatPreventionProfileArgsDict',
     'SecurityProfileThreatPreventionProfileSeverityOverrideArgs',
@@ -662,6 +666,117 @@ class ClientTlsPolicyServerValidationCaGrpcEndpointArgs:
     @target_uri.setter
     def target_uri(self, value: pulumi.Input[str]):
         pulumi.set(self, "target_uri", value)
+
+
+if not MYPY:
+    class MirroringDeploymentGroupConnectedEndpointGroupArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Output only. A connected mirroring endpoint group.
+        """
+elif False:
+    MirroringDeploymentGroupConnectedEndpointGroupArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class MirroringDeploymentGroupConnectedEndpointGroupArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: (Output)
+               Output only. A connected mirroring endpoint group.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Output only. A connected mirroring endpoint group.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+
+if not MYPY:
+    class MirroringEndpointGroupAssociationLocationsDetailArgsDict(TypedDict):
+        location: NotRequired[pulumi.Input[str]]
+        """
+        Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringEndpointGroupAssociation`.
+
+
+        - - -
+        """
+        state: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Output only. The association state in this location.
+        Possible values:
+        STATE_UNSPECIFIED
+        ACTIVE
+        OUT_OF_SYNC
+        """
+elif False:
+    MirroringEndpointGroupAssociationLocationsDetailArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class MirroringEndpointGroupAssociationLocationsDetailArgs:
+    def __init__(__self__, *,
+                 location: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringEndpointGroupAssociation`.
+               
+               
+               - - -
+        :param pulumi.Input[str] state: (Output)
+               Output only. The association state in this location.
+               Possible values:
+               STATE_UNSPECIFIED
+               ACTIVE
+               OUT_OF_SYNC
+        """
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringEndpointGroupAssociation`.
+
+
+        - - -
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Output only. The association state in this location.
+        Possible values:
+        STATE_UNSPECIFIED
+        ACTIVE
+        OUT_OF_SYNC
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
 
 
 if not MYPY:

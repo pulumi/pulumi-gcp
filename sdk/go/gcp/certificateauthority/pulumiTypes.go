@@ -949,7 +949,7 @@ func (o AuthorityConfigSubjectConfigSubjectAltNamePtrOutput) Uris() pulumi.Strin
 }
 
 type AuthorityConfigSubjectKeyId struct {
-	// The value of the KeyId in lowercase hexidecimal.
+	// The value of the KeyId in lowercase hexadecimal.
 	//
 	// <a name="nestedX509Config"></a>The `x509Config` block supports:
 	KeyId *string `pulumi:"keyId"`
@@ -967,7 +967,7 @@ type AuthorityConfigSubjectKeyIdInput interface {
 }
 
 type AuthorityConfigSubjectKeyIdArgs struct {
-	// The value of the KeyId in lowercase hexidecimal.
+	// The value of the KeyId in lowercase hexadecimal.
 	//
 	// <a name="nestedX509Config"></a>The `x509Config` block supports:
 	KeyId pulumi.StringPtrInput `pulumi:"keyId"`
@@ -1050,7 +1050,7 @@ func (o AuthorityConfigSubjectKeyIdOutput) ToAuthorityConfigSubjectKeyIdPtrOutpu
 	}).(AuthorityConfigSubjectKeyIdPtrOutput)
 }
 
-// The value of the KeyId in lowercase hexidecimal.
+// The value of the KeyId in lowercase hexadecimal.
 //
 // <a name="nestedX509Config"></a>The `x509Config` block supports:
 func (o AuthorityConfigSubjectKeyIdOutput) KeyId() pulumi.StringPtrOutput {
@@ -1081,7 +1081,7 @@ func (o AuthorityConfigSubjectKeyIdPtrOutput) Elem() AuthorityConfigSubjectKeyId
 	}).(AuthorityConfigSubjectKeyIdOutput)
 }
 
-// The value of the KeyId in lowercase hexidecimal.
+// The value of the KeyId in lowercase hexadecimal.
 //
 // <a name="nestedX509Config"></a>The `x509Config` block supports:
 func (o AuthorityConfigSubjectKeyIdPtrOutput) KeyId() pulumi.StringPtrOutput {
@@ -8452,7 +8452,7 @@ func (o CertificateCertificateDescriptionSubjectDescriptionSubjectAltNameCustomS
 }
 
 type CertificateCertificateDescriptionSubjectKeyId struct {
-	// The value of the KeyId in lowercase hexidecimal.
+	// The value of the KeyId in lowercase hexadecimal.
 	KeyId *string `pulumi:"keyId"`
 }
 
@@ -8468,7 +8468,7 @@ type CertificateCertificateDescriptionSubjectKeyIdInput interface {
 }
 
 type CertificateCertificateDescriptionSubjectKeyIdArgs struct {
-	// The value of the KeyId in lowercase hexidecimal.
+	// The value of the KeyId in lowercase hexadecimal.
 	KeyId pulumi.StringPtrInput `pulumi:"keyId"`
 }
 
@@ -8523,7 +8523,7 @@ func (o CertificateCertificateDescriptionSubjectKeyIdOutput) ToCertificateCertif
 	return o
 }
 
-// The value of the KeyId in lowercase hexidecimal.
+// The value of the KeyId in lowercase hexadecimal.
 func (o CertificateCertificateDescriptionSubjectKeyIdOutput) KeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CertificateCertificateDescriptionSubjectKeyId) *string { return v.KeyId }).(pulumi.StringPtrOutput)
 }
@@ -10994,7 +10994,7 @@ func (o CertificateConfigSubjectConfigSubjectAltNamePtrOutput) Uris() pulumi.Str
 }
 
 type CertificateConfigSubjectKeyId struct {
-	// The value of the KeyId in lowercase hexidecimal.
+	// The value of the KeyId in lowercase hexadecimal.
 	KeyId *string `pulumi:"keyId"`
 }
 
@@ -11010,7 +11010,7 @@ type CertificateConfigSubjectKeyIdInput interface {
 }
 
 type CertificateConfigSubjectKeyIdArgs struct {
-	// The value of the KeyId in lowercase hexidecimal.
+	// The value of the KeyId in lowercase hexadecimal.
 	KeyId pulumi.StringPtrInput `pulumi:"keyId"`
 }
 
@@ -11091,7 +11091,7 @@ func (o CertificateConfigSubjectKeyIdOutput) ToCertificateConfigSubjectKeyIdPtrO
 	}).(CertificateConfigSubjectKeyIdPtrOutput)
 }
 
-// The value of the KeyId in lowercase hexidecimal.
+// The value of the KeyId in lowercase hexadecimal.
 func (o CertificateConfigSubjectKeyIdOutput) KeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v CertificateConfigSubjectKeyId) *string { return v.KeyId }).(pulumi.StringPtrOutput)
 }
@@ -11120,7 +11120,7 @@ func (o CertificateConfigSubjectKeyIdPtrOutput) Elem() CertificateConfigSubjectK
 	}).(CertificateConfigSubjectKeyIdOutput)
 }
 
-// The value of the KeyId in lowercase hexidecimal.
+// The value of the KeyId in lowercase hexadecimal.
 func (o CertificateConfigSubjectKeyIdPtrOutput) KeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CertificateConfigSubjectKeyId) *string {
 		if v == nil {
@@ -16275,7 +16275,7 @@ func (o GetAuthorityConfigSubjectConfigSubjectAltNameArrayOutput) Index(i pulumi
 }
 
 type GetAuthorityConfigSubjectKeyId struct {
-	// The value of the KeyId in lowercase hexidecimal.
+	// The value of the KeyId in lowercase hexadecimal.
 	KeyId string `pulumi:"keyId"`
 }
 
@@ -16291,7 +16291,7 @@ type GetAuthorityConfigSubjectKeyIdInput interface {
 }
 
 type GetAuthorityConfigSubjectKeyIdArgs struct {
-	// The value of the KeyId in lowercase hexidecimal.
+	// The value of the KeyId in lowercase hexadecimal.
 	KeyId pulumi.StringInput `pulumi:"keyId"`
 }
 
@@ -16346,7 +16346,7 @@ func (o GetAuthorityConfigSubjectKeyIdOutput) ToGetAuthorityConfigSubjectKeyIdOu
 	return o
 }
 
-// The value of the KeyId in lowercase hexidecimal.
+// The value of the KeyId in lowercase hexadecimal.
 func (o GetAuthorityConfigSubjectKeyIdOutput) KeyId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAuthorityConfigSubjectKeyId) string { return v.KeyId }).(pulumi.StringOutput)
 }

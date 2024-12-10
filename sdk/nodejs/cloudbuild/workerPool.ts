@@ -160,6 +160,10 @@ export class WorkerPool extends pulumi.CustomResource {
      */
     public readonly networkConfig!: pulumi.Output<outputs.cloudbuild.WorkerPoolNetworkConfig | undefined>;
     /**
+     * Private Service Connect configuration for the pool.
+     */
+    public readonly privateServiceConnect!: pulumi.Output<outputs.cloudbuild.WorkerPoolPrivateServiceConnect | undefined>;
+    /**
      * The project for the resource
      */
     public readonly project!: pulumi.Output<string>;
@@ -201,6 +205,7 @@ export class WorkerPool extends pulumi.CustomResource {
             resourceInputs["location"] = state ? state.location : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["networkConfig"] = state ? state.networkConfig : undefined;
+            resourceInputs["privateServiceConnect"] = state ? state.privateServiceConnect : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["uid"] = state ? state.uid : undefined;
@@ -216,6 +221,7 @@ export class WorkerPool extends pulumi.CustomResource {
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["networkConfig"] = args ? args.networkConfig : undefined;
+            resourceInputs["privateServiceConnect"] = args ? args.privateServiceConnect : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["workerConfig"] = args ? args.workerConfig : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -269,6 +275,10 @@ export interface WorkerPoolState {
      */
     networkConfig?: pulumi.Input<inputs.cloudbuild.WorkerPoolNetworkConfig>;
     /**
+     * Private Service Connect configuration for the pool.
+     */
+    privateServiceConnect?: pulumi.Input<inputs.cloudbuild.WorkerPoolPrivateServiceConnect>;
+    /**
      * The project for the resource
      */
     project?: pulumi.Input<string>;
@@ -319,6 +329,10 @@ export interface WorkerPoolArgs {
      * Network configuration for the `WorkerPool`. Structure is documented below.
      */
     networkConfig?: pulumi.Input<inputs.cloudbuild.WorkerPoolNetworkConfig>;
+    /**
+     * Private Service Connect configuration for the pool.
+     */
+    privateServiceConnect?: pulumi.Input<inputs.cloudbuild.WorkerPoolPrivateServiceConnect>;
     /**
      * The project for the resource
      */

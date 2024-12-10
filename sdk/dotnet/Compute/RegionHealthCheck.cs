@@ -435,6 +435,12 @@ namespace Pulumi.Gcp.Compute
         public Output<Outputs.RegionHealthCheckGrpcHealthCheck?> GrpcHealthCheck { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier number for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("healthCheckId")]
+        public Output<int> HealthCheckId { get; private set; } = null!;
+
+        /// <summary>
         /// A so-far unhealthy instance will be marked healthy after this many
         /// consecutive successes. The default value is 2.
         /// </summary>
@@ -733,6 +739,12 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("grpcHealthCheck")]
         public Input<Inputs.RegionHealthCheckGrpcHealthCheckGetArgs>? GrpcHealthCheck { get; set; }
+
+        /// <summary>
+        /// The unique identifier number for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Input("healthCheckId")]
+        public Input<int>? HealthCheckId { get; set; }
 
         /// <summary>
         /// A so-far unhealthy instance will be marked healthy after this many

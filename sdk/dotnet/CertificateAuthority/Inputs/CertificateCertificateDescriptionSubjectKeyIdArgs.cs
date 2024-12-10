@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.CertificateAuthority.Inputs
     public sealed class CertificateCertificateDescriptionSubjectKeyIdArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// The value of the KeyId in lowercase hexidecimal.
+        /// The value of the KeyId in lowercase hexadecimal.
         /// </summary>
         [Input("keyId")]
         public Input<string>? KeyId { get; set; }

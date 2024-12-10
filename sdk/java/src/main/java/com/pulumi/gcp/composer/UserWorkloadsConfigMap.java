@@ -16,6 +16,13 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * User workloads ConfigMap used by Airflow tasks that run with Kubernetes Executor or KubernetesPodOperator.
+ * Intended for Composer 3 Environments.
+ * 
+ * To get more information about UserWorkloadsConfigMap, see:
+ * 
+ * * [API documentation](https://cloud.google.com/composer/docs/reference/rest/v1/projects.locations.environments.userWorkloadsConfigMaps)
+ * 
  * ## Example Usage
  * 
  * ### Composer User Workloads Config Map Basic

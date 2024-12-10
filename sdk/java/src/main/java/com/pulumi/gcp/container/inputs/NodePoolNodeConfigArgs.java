@@ -356,6 +356,21 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * LocalSsdEncryptionMode specified the method used for encrypting the local SSDs attached to the node.
+     * 
+     */
+    @Import(name="localSsdEncryptionMode")
+    private @Nullable Output<String> localSsdEncryptionMode;
+
+    /**
+     * @return LocalSsdEncryptionMode specified the method used for encrypting the local SSDs attached to the node.
+     * 
+     */
+    public Optional<Output<String>> localSsdEncryptionMode() {
+        return Optional.ofNullable(this.localSsdEncryptionMode);
+    }
+
+    /**
      * Type of logging agent that is used as the default value for node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT.
      * 
      */
@@ -685,6 +700,7 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
         this.linuxNodeConfig = $.linuxNodeConfig;
         this.localNvmeSsdBlockConfig = $.localNvmeSsdBlockConfig;
         this.localSsdCount = $.localSsdCount;
+        this.localSsdEncryptionMode = $.localSsdEncryptionMode;
         this.loggingVariant = $.loggingVariant;
         this.machineType = $.machineType;
         this.metadata = $.metadata;
@@ -1184,6 +1200,27 @@ public final class NodePoolNodeConfigArgs extends com.pulumi.resources.ResourceA
          */
         public Builder localSsdCount(Integer localSsdCount) {
             return localSsdCount(Output.of(localSsdCount));
+        }
+
+        /**
+         * @param localSsdEncryptionMode LocalSsdEncryptionMode specified the method used for encrypting the local SSDs attached to the node.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder localSsdEncryptionMode(@Nullable Output<String> localSsdEncryptionMode) {
+            $.localSsdEncryptionMode = localSsdEncryptionMode;
+            return this;
+        }
+
+        /**
+         * @param localSsdEncryptionMode LocalSsdEncryptionMode specified the method used for encrypting the local SSDs attached to the node.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder localSsdEncryptionMode(String localSsdEncryptionMode) {
+            return localSsdEncryptionMode(Output.of(localSsdEncryptionMode));
         }
 
         /**

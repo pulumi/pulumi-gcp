@@ -1068,6 +1068,139 @@ func (o ManagementServerNetworkArrayOutput) Index(i pulumi.IntInput) ManagementS
 	}).(ManagementServerNetworkOutput)
 }
 
+type GetBackupBackup struct {
+	// Id of the requesting object, Backup.
+	BackupId string `pulumi:"backupId"`
+	// Name of the Backup Vault associated with Backup.
+	BackupVaultId string `pulumi:"backupVaultId"`
+	// Name of the Data Source associated with Backup.
+	DataSourceId string `pulumi:"dataSourceId"`
+	// Location of the resource.
+	Location string `pulumi:"location"`
+	// Name of the resource.
+	Name string `pulumi:"name"`
+}
+
+// GetBackupBackupInput is an input type that accepts GetBackupBackupArgs and GetBackupBackupOutput values.
+// You can construct a concrete instance of `GetBackupBackupInput` via:
+//
+//	GetBackupBackupArgs{...}
+type GetBackupBackupInput interface {
+	pulumi.Input
+
+	ToGetBackupBackupOutput() GetBackupBackupOutput
+	ToGetBackupBackupOutputWithContext(context.Context) GetBackupBackupOutput
+}
+
+type GetBackupBackupArgs struct {
+	// Id of the requesting object, Backup.
+	BackupId pulumi.StringInput `pulumi:"backupId"`
+	// Name of the Backup Vault associated with Backup.
+	BackupVaultId pulumi.StringInput `pulumi:"backupVaultId"`
+	// Name of the Data Source associated with Backup.
+	DataSourceId pulumi.StringInput `pulumi:"dataSourceId"`
+	// Location of the resource.
+	Location pulumi.StringInput `pulumi:"location"`
+	// Name of the resource.
+	Name pulumi.StringInput `pulumi:"name"`
+}
+
+func (GetBackupBackupArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackupBackup)(nil)).Elem()
+}
+
+func (i GetBackupBackupArgs) ToGetBackupBackupOutput() GetBackupBackupOutput {
+	return i.ToGetBackupBackupOutputWithContext(context.Background())
+}
+
+func (i GetBackupBackupArgs) ToGetBackupBackupOutputWithContext(ctx context.Context) GetBackupBackupOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackupBackupOutput)
+}
+
+// GetBackupBackupArrayInput is an input type that accepts GetBackupBackupArray and GetBackupBackupArrayOutput values.
+// You can construct a concrete instance of `GetBackupBackupArrayInput` via:
+//
+//	GetBackupBackupArray{ GetBackupBackupArgs{...} }
+type GetBackupBackupArrayInput interface {
+	pulumi.Input
+
+	ToGetBackupBackupArrayOutput() GetBackupBackupArrayOutput
+	ToGetBackupBackupArrayOutputWithContext(context.Context) GetBackupBackupArrayOutput
+}
+
+type GetBackupBackupArray []GetBackupBackupInput
+
+func (GetBackupBackupArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackupBackup)(nil)).Elem()
+}
+
+func (i GetBackupBackupArray) ToGetBackupBackupArrayOutput() GetBackupBackupArrayOutput {
+	return i.ToGetBackupBackupArrayOutputWithContext(context.Background())
+}
+
+func (i GetBackupBackupArray) ToGetBackupBackupArrayOutputWithContext(ctx context.Context) GetBackupBackupArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetBackupBackupArrayOutput)
+}
+
+type GetBackupBackupOutput struct{ *pulumi.OutputState }
+
+func (GetBackupBackupOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetBackupBackup)(nil)).Elem()
+}
+
+func (o GetBackupBackupOutput) ToGetBackupBackupOutput() GetBackupBackupOutput {
+	return o
+}
+
+func (o GetBackupBackupOutput) ToGetBackupBackupOutputWithContext(ctx context.Context) GetBackupBackupOutput {
+	return o
+}
+
+// Id of the requesting object, Backup.
+func (o GetBackupBackupOutput) BackupId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupBackup) string { return v.BackupId }).(pulumi.StringOutput)
+}
+
+// Name of the Backup Vault associated with Backup.
+func (o GetBackupBackupOutput) BackupVaultId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupBackup) string { return v.BackupVaultId }).(pulumi.StringOutput)
+}
+
+// Name of the Data Source associated with Backup.
+func (o GetBackupBackupOutput) DataSourceId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupBackup) string { return v.DataSourceId }).(pulumi.StringOutput)
+}
+
+// Location of the resource.
+func (o GetBackupBackupOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupBackup) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// Name of the resource.
+func (o GetBackupBackupOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetBackupBackup) string { return v.Name }).(pulumi.StringOutput)
+}
+
+type GetBackupBackupArrayOutput struct{ *pulumi.OutputState }
+
+func (GetBackupBackupArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetBackupBackup)(nil)).Elem()
+}
+
+func (o GetBackupBackupArrayOutput) ToGetBackupBackupArrayOutput() GetBackupBackupArrayOutput {
+	return o
+}
+
+func (o GetBackupBackupArrayOutput) ToGetBackupBackupArrayOutputWithContext(ctx context.Context) GetBackupBackupArrayOutput {
+	return o
+}
+
+func (o GetBackupBackupArrayOutput) Index(i pulumi.IntInput) GetBackupBackupOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetBackupBackup {
+		return vs[0].([]GetBackupBackup)[vs[1].(int)]
+	}).(GetBackupBackupOutput)
+}
+
 type GetBackupPlanAssociationRulesConfigInfo struct {
 	// google.rpc.Status object to store the last backup error
 	LastBackupErrors []GetBackupPlanAssociationRulesConfigInfoLastBackupError `pulumi:"lastBackupErrors"`
@@ -2853,6 +2986,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagementServerManagementUriArrayInput)(nil)).Elem(), ManagementServerManagementUriArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagementServerNetworkInput)(nil)).Elem(), ManagementServerNetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ManagementServerNetworkArrayInput)(nil)).Elem(), ManagementServerNetworkArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupBackupInput)(nil)).Elem(), GetBackupBackupArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupBackupArrayInput)(nil)).Elem(), GetBackupBackupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupPlanAssociationRulesConfigInfoInput)(nil)).Elem(), GetBackupPlanAssociationRulesConfigInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupPlanAssociationRulesConfigInfoArrayInput)(nil)).Elem(), GetBackupPlanAssociationRulesConfigInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetBackupPlanAssociationRulesConfigInfoLastBackupErrorInput)(nil)).Elem(), GetBackupPlanAssociationRulesConfigInfoLastBackupErrorArgs{})
@@ -2896,6 +3031,8 @@ func init() {
 	pulumi.RegisterOutputType(ManagementServerManagementUriArrayOutput{})
 	pulumi.RegisterOutputType(ManagementServerNetworkOutput{})
 	pulumi.RegisterOutputType(ManagementServerNetworkArrayOutput{})
+	pulumi.RegisterOutputType(GetBackupBackupOutput{})
+	pulumi.RegisterOutputType(GetBackupBackupArrayOutput{})
 	pulumi.RegisterOutputType(GetBackupPlanAssociationRulesConfigInfoOutput{})
 	pulumi.RegisterOutputType(GetBackupPlanAssociationRulesConfigInfoArrayOutput{})
 	pulumi.RegisterOutputType(GetBackupPlanAssociationRulesConfigInfoLastBackupErrorOutput{})

@@ -45,7 +45,7 @@ public final class BudgetBudgetFilterArgs extends com.pulumi.resources.ResourceA
      * Optional. If creditTypesTreatment is INCLUDE_SPECIFIED_CREDITS,
      * this is a list of credit types to be subtracted from gross cost to determine the spend for threshold calculations. See a list of acceptable credit type values.
      * If creditTypesTreatment is not INCLUDE_SPECIFIED_CREDITS, this field must be empty.
-     * **Note:** If the field has a value in the config and needs to be removed, the field has to be an emtpy array in the config.
+     * **Note:** If the field has a value in the config and needs to be removed, the field has to be an empty array in the config.
      * 
      */
     @Import(name="creditTypes")
@@ -55,7 +55,7 @@ public final class BudgetBudgetFilterArgs extends com.pulumi.resources.ResourceA
      * @return Optional. If creditTypesTreatment is INCLUDE_SPECIFIED_CREDITS,
      * this is a list of credit types to be subtracted from gross cost to determine the spend for threshold calculations. See a list of acceptable credit type values.
      * If creditTypesTreatment is not INCLUDE_SPECIFIED_CREDITS, this field must be empty.
-     * **Note:** If the field has a value in the config and needs to be removed, the field has to be an emtpy array in the config.
+     * **Note:** If the field has a value in the config and needs to be removed, the field has to be an empty array in the config.
      * 
      */
     public Optional<Output<List<String>>> creditTypes() {
@@ -197,7 +197,7 @@ public final class BudgetBudgetFilterArgs extends com.pulumi.resources.ResourceA
      * the parent account, usage from the parent account will be included.
      * If the field is omitted, the report will include usage from the parent
      * account and all subaccounts, if they exist.
-     * **Note:** If the field has a value in the config and needs to be removed, the field has to be an emtpy array in the config.
+     * **Note:** If the field has a value in the config and needs to be removed, the field has to be an empty array in the config.
      * 
      */
     @Import(name="subaccounts")
@@ -210,7 +210,7 @@ public final class BudgetBudgetFilterArgs extends com.pulumi.resources.ResourceA
      * the parent account, usage from the parent account will be included.
      * If the field is omitted, the report will include usage from the parent
      * account and all subaccounts, if they exist.
-     * **Note:** If the field has a value in the config and needs to be removed, the field has to be an emtpy array in the config.
+     * **Note:** If the field has a value in the config and needs to be removed, the field has to be an empty array in the config.
      * 
      */
     public Optional<Output<List<String>>> subaccounts() {
@@ -282,7 +282,7 @@ public final class BudgetBudgetFilterArgs extends com.pulumi.resources.ResourceA
          * @param creditTypes Optional. If creditTypesTreatment is INCLUDE_SPECIFIED_CREDITS,
          * this is a list of credit types to be subtracted from gross cost to determine the spend for threshold calculations. See a list of acceptable credit type values.
          * If creditTypesTreatment is not INCLUDE_SPECIFIED_CREDITS, this field must be empty.
-         * **Note:** If the field has a value in the config and needs to be removed, the field has to be an emtpy array in the config.
+         * **Note:** If the field has a value in the config and needs to be removed, the field has to be an empty array in the config.
          * 
          * @return builder
          * 
@@ -296,7 +296,7 @@ public final class BudgetBudgetFilterArgs extends com.pulumi.resources.ResourceA
          * @param creditTypes Optional. If creditTypesTreatment is INCLUDE_SPECIFIED_CREDITS,
          * this is a list of credit types to be subtracted from gross cost to determine the spend for threshold calculations. See a list of acceptable credit type values.
          * If creditTypesTreatment is not INCLUDE_SPECIFIED_CREDITS, this field must be empty.
-         * **Note:** If the field has a value in the config and needs to be removed, the field has to be an emtpy array in the config.
+         * **Note:** If the field has a value in the config and needs to be removed, the field has to be an empty array in the config.
          * 
          * @return builder
          * 
@@ -309,7 +309,7 @@ public final class BudgetBudgetFilterArgs extends com.pulumi.resources.ResourceA
          * @param creditTypes Optional. If creditTypesTreatment is INCLUDE_SPECIFIED_CREDITS,
          * this is a list of credit types to be subtracted from gross cost to determine the spend for threshold calculations. See a list of acceptable credit type values.
          * If creditTypesTreatment is not INCLUDE_SPECIFIED_CREDITS, this field must be empty.
-         * **Note:** If the field has a value in the config and needs to be removed, the field has to be an emtpy array in the config.
+         * **Note:** If the field has a value in the config and needs to be removed, the field has to be an empty array in the config.
          * 
          * @return builder
          * 
@@ -531,7 +531,7 @@ public final class BudgetBudgetFilterArgs extends com.pulumi.resources.ResourceA
          * the parent account, usage from the parent account will be included.
          * If the field is omitted, the report will include usage from the parent
          * account and all subaccounts, if they exist.
-         * **Note:** If the field has a value in the config and needs to be removed, the field has to be an emtpy array in the config.
+         * **Note:** If the field has a value in the config and needs to be removed, the field has to be an empty array in the config.
          * 
          * @return builder
          * 
@@ -548,7 +548,7 @@ public final class BudgetBudgetFilterArgs extends com.pulumi.resources.ResourceA
          * the parent account, usage from the parent account will be included.
          * If the field is omitted, the report will include usage from the parent
          * account and all subaccounts, if they exist.
-         * **Note:** If the field has a value in the config and needs to be removed, the field has to be an emtpy array in the config.
+         * **Note:** If the field has a value in the config and needs to be removed, the field has to be an empty array in the config.
          * 
          * @return builder
          * 
@@ -564,7 +564,7 @@ public final class BudgetBudgetFilterArgs extends com.pulumi.resources.ResourceA
          * the parent account, usage from the parent account will be included.
          * If the field is omitted, the report will include usage from the parent
          * account and all subaccounts, if they exist.
-         * **Note:** If the field has a value in the config and needs to be removed, the field has to be an emtpy array in the config.
+         * **Note:** If the field has a value in the config and needs to be removed, the field has to be an empty array in the config.
          * 
          * @return builder
          * 

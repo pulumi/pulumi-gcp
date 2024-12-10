@@ -6,8 +6,10 @@ package com.pulumi.gcp.dataproc.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.dataproc.outputs.ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList;
 import com.pulumi.gcp.dataproc.outputs.ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult;
+import com.pulumi.gcp.dataproc.outputs.ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
@@ -22,6 +24,11 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilit
      * 
      */
     private @Nullable List<ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult> instanceSelectionResults;
+    /**
+     * @return Defines how Dataproc should create VMs with a mixture of provisioning models.
+     * 
+     */
+    private @Nullable ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix provisioningModelMix;
 
     private ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy() {}
     /**
@@ -38,6 +45,13 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilit
     public List<ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult> instanceSelectionResults() {
         return this.instanceSelectionResults == null ? List.of() : this.instanceSelectionResults;
     }
+    /**
+     * @return Defines how Dataproc should create VMs with a mixture of provisioning models.
+     * 
+     */
+    public Optional<ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix> provisioningModelMix() {
+        return Optional.ofNullable(this.provisioningModelMix);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -50,11 +64,13 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilit
     public static final class Builder {
         private @Nullable List<ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList> instanceSelectionLists;
         private @Nullable List<ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult> instanceSelectionResults;
+        private @Nullable ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix provisioningModelMix;
         public Builder() {}
         public Builder(ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.instanceSelectionLists = defaults.instanceSelectionLists;
     	      this.instanceSelectionResults = defaults.instanceSelectionResults;
+    	      this.provisioningModelMix = defaults.provisioningModelMix;
         }
 
         @CustomType.Setter
@@ -75,10 +91,17 @@ public final class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilit
         public Builder instanceSelectionResults(ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult... instanceSelectionResults) {
             return instanceSelectionResults(List.of(instanceSelectionResults));
         }
+        @CustomType.Setter
+        public Builder provisioningModelMix(@Nullable ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix provisioningModelMix) {
+
+            this.provisioningModelMix = provisioningModelMix;
+            return this;
+        }
         public ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy build() {
             final var _resultValue = new ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy();
             _resultValue.instanceSelectionLists = instanceSelectionLists;
             _resultValue.instanceSelectionResults = instanceSelectionResults;
+            _resultValue.provisioningModelMix = provisioningModelMix;
             return _resultValue;
         }
     }

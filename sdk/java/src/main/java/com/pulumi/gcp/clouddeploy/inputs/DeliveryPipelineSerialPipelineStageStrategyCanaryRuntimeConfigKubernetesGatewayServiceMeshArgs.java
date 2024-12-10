@@ -6,6 +6,7 @@ package com.pulumi.gcp.clouddeploy.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.clouddeploy.inputs.DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -62,6 +63,21 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfi
     }
 
     /**
+     * Optional. Route destinations allow configuring the Gateway API HTTPRoute to be deployed to additional clusters. This option is available for multi-cluster service mesh set ups that require the route to exist in the clusters that call the service. If unspecified, the HTTPRoute will only be deployed to the Target cluster.
+     * 
+     */
+    @Import(name="routeDestinations")
+    private @Nullable Output<DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsArgs> routeDestinations;
+
+    /**
+     * @return Optional. Route destinations allow configuring the Gateway API HTTPRoute to be deployed to additional clusters. This option is available for multi-cluster service mesh set ups that require the route to exist in the clusters that call the service. If unspecified, the HTTPRoute will only be deployed to the Target cluster.
+     * 
+     */
+    public Optional<Output<DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsArgs>> routeDestinations() {
+        return Optional.ofNullable(this.routeDestinations);
+    }
+
+    /**
      * Optional. The time to wait for route updates to propagate. The maximum configurable time is 3 hours, in seconds format. If unspecified, there is no wait time.
      * 
      */
@@ -112,6 +128,7 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfi
         this.deployment = $.deployment;
         this.httpRoute = $.httpRoute;
         this.podSelectorLabel = $.podSelectorLabel;
+        this.routeDestinations = $.routeDestinations;
         this.routeUpdateWaitTime = $.routeUpdateWaitTime;
         this.service = $.service;
         this.stableCutbackDuration = $.stableCutbackDuration;
@@ -196,6 +213,27 @@ public final class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfi
          */
         public Builder podSelectorLabel(String podSelectorLabel) {
             return podSelectorLabel(Output.of(podSelectorLabel));
+        }
+
+        /**
+         * @param routeDestinations Optional. Route destinations allow configuring the Gateway API HTTPRoute to be deployed to additional clusters. This option is available for multi-cluster service mesh set ups that require the route to exist in the clusters that call the service. If unspecified, the HTTPRoute will only be deployed to the Target cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder routeDestinations(@Nullable Output<DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsArgs> routeDestinations) {
+            $.routeDestinations = routeDestinations;
+            return this;
+        }
+
+        /**
+         * @param routeDestinations Optional. Route destinations allow configuring the Gateway API HTTPRoute to be deployed to additional clusters. This option is available for multi-cluster service mesh set ups that require the route to exist in the clusters that call the service. If unspecified, the HTTPRoute will only be deployed to the Target cluster.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder routeDestinations(DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsArgs routeDestinations) {
+            return routeDestinations(Output.of(routeDestinations));
         }
 
         /**

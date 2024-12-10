@@ -39,6 +39,10 @@ __all__ = [
     'PrincipalAccessBoundaryPolicyDetailsArgsDict',
     'PrincipalAccessBoundaryPolicyDetailsRuleArgs',
     'PrincipalAccessBoundaryPolicyDetailsRuleArgsDict',
+    'ProjectsPolicyBindingConditionArgs',
+    'ProjectsPolicyBindingConditionArgsDict',
+    'ProjectsPolicyBindingTargetArgs',
+    'ProjectsPolicyBindingTargetArgsDict',
     'WorkforcePoolAccessRestrictionsArgs',
     'WorkforcePoolAccessRestrictionsArgsDict',
     'WorkforcePoolAccessRestrictionsAllowedServiceArgs',
@@ -1024,6 +1028,139 @@ class PrincipalAccessBoundaryPolicyDetailsRuleArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+
+if not MYPY:
+    class ProjectsPolicyBindingConditionArgsDict(TypedDict):
+        description: NotRequired[pulumi.Input[str]]
+        """
+        Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+        """
+        expression: NotRequired[pulumi.Input[str]]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        location: NotRequired[pulumi.Input[str]]
+        """
+        Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+        """
+        title: NotRequired[pulumi.Input[str]]
+        """
+        Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+        """
+elif False:
+    ProjectsPolicyBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ProjectsPolicyBindingConditionArgs:
+    def __init__(__self__, *,
+                 description: Optional[pulumi.Input[str]] = None,
+                 expression: Optional[pulumi.Input[str]] = None,
+                 location: Optional[pulumi.Input[str]] = None,
+                 title: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] description: Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+        :param pulumi.Input[str] expression: Textual representation of an expression in Common Expression Language syntax.
+        :param pulumi.Input[str] location: Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+        :param pulumi.Input[str] title: Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+        """
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if expression is not None:
+            pulumi.set(__self__, "expression", expression)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
+        """
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> Optional[pulumi.Input[str]]:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. String indicating the location of the expression for error reporting, e.g. a file name and a position in the file.
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Title for the expression, i.e. a short string describing its purpose. This can be used e.g. in UIs which allow to enter the expression.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "title", value)
+
+
+if not MYPY:
+    class ProjectsPolicyBindingTargetArgsDict(TypedDict):
+        principal_set: NotRequired[pulumi.Input[str]]
+        """
+        Required. Immutable. The resource name of the policy to be bound.
+        The binding parent and policy must belong to the same Organization (or Project).
+
+        - - -
+        """
+elif False:
+    ProjectsPolicyBindingTargetArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ProjectsPolicyBindingTargetArgs:
+    def __init__(__self__, *,
+                 principal_set: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] principal_set: Required. Immutable. The resource name of the policy to be bound.
+               The binding parent and policy must belong to the same Organization (or Project).
+               
+               - - -
+        """
+        if principal_set is not None:
+            pulumi.set(__self__, "principal_set", principal_set)
+
+    @property
+    @pulumi.getter(name="principalSet")
+    def principal_set(self) -> Optional[pulumi.Input[str]]:
+        """
+        Required. Immutable. The resource name of the policy to be bound.
+        The binding parent and policy must belong to the same Organization (or Project).
+
+        - - -
+        """
+        return pulumi.get(self, "principal_set")
+
+    @principal_set.setter
+    def principal_set(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "principal_set", value)
 
 
 if not MYPY:

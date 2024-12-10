@@ -15,14 +15,20 @@ public final class RepositoryRemoteRepositoryConfigCommonRepositoryArgs extends 
     public static final RepositoryRemoteRepositoryConfigCommonRepositoryArgs Empty = new RepositoryRemoteRepositoryConfigCommonRepositoryArgs();
 
     /**
-     * Specific uri to the Artifact Registory repository, e.g. `projects/UPSTREAM_PROJECT_ID/locations/REGION/repositories/UPSTREAM_REPOSITORY`
+     * One of:
+     * a. Artifact Registry Repository resource, e.g. `projects/UPSTREAM_PROJECT_ID/locations/REGION/repositories/UPSTREAM_REPOSITORY`
+     * b. URI to the registry, e.g. `&#34;https://registry-1.docker.io&#34;`
+     * c. URI to Artifact Registry Repository, e.g. `&#34;https://REGION-docker.pkg.dev/UPSTREAM_PROJECT_ID/UPSTREAM_REPOSITORY&#34;`
      * 
      */
     @Import(name="uri", required=true)
     private Output<String> uri;
 
     /**
-     * @return Specific uri to the Artifact Registory repository, e.g. `projects/UPSTREAM_PROJECT_ID/locations/REGION/repositories/UPSTREAM_REPOSITORY`
+     * @return One of:
+     * a. Artifact Registry Repository resource, e.g. `projects/UPSTREAM_PROJECT_ID/locations/REGION/repositories/UPSTREAM_REPOSITORY`
+     * b. URI to the registry, e.g. `&#34;https://registry-1.docker.io&#34;`
+     * c. URI to Artifact Registry Repository, e.g. `&#34;https://REGION-docker.pkg.dev/UPSTREAM_PROJECT_ID/UPSTREAM_REPOSITORY&#34;`
      * 
      */
     public Output<String> uri() {
@@ -54,7 +60,10 @@ public final class RepositoryRemoteRepositoryConfigCommonRepositoryArgs extends 
         }
 
         /**
-         * @param uri Specific uri to the Artifact Registory repository, e.g. `projects/UPSTREAM_PROJECT_ID/locations/REGION/repositories/UPSTREAM_REPOSITORY`
+         * @param uri One of:
+         * a. Artifact Registry Repository resource, e.g. `projects/UPSTREAM_PROJECT_ID/locations/REGION/repositories/UPSTREAM_REPOSITORY`
+         * b. URI to the registry, e.g. `&#34;https://registry-1.docker.io&#34;`
+         * c. URI to Artifact Registry Repository, e.g. `&#34;https://REGION-docker.pkg.dev/UPSTREAM_PROJECT_ID/UPSTREAM_REPOSITORY&#34;`
          * 
          * @return builder
          * 
@@ -65,7 +74,10 @@ public final class RepositoryRemoteRepositoryConfigCommonRepositoryArgs extends 
         }
 
         /**
-         * @param uri Specific uri to the Artifact Registory repository, e.g. `projects/UPSTREAM_PROJECT_ID/locations/REGION/repositories/UPSTREAM_REPOSITORY`
+         * @param uri One of:
+         * a. Artifact Registry Repository resource, e.g. `projects/UPSTREAM_PROJECT_ID/locations/REGION/repositories/UPSTREAM_REPOSITORY`
+         * b. URI to the registry, e.g. `&#34;https://registry-1.docker.io&#34;`
+         * c. URI to Artifact Registry Repository, e.g. `&#34;https://REGION-docker.pkg.dev/UPSTREAM_PROJECT_ID/UPSTREAM_REPOSITORY&#34;`
          * 
          * @return builder
          * 

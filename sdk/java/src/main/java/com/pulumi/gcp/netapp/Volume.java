@@ -568,14 +568,14 @@ public class Volume extends com.pulumi.resources.CustomResource {
         return this.securityStyle;
     }
     /**
-     * Service level of the volume. Inherited from storage pool. Supported values are : PREMIUM, EXTERME, STANDARD, FLEX.
+     * Service level of the volume. Inherited from storage pool. Supported values are : PREMIUM, EXTREME, STANDARD, FLEX.
      * 
      */
     @Export(name="serviceLevel", refs={String.class}, tree="[0]")
     private Output<String> serviceLevel;
 
     /**
-     * @return Service level of the volume. Inherited from storage pool. Supported values are : PREMIUM, EXTERME, STANDARD, FLEX.
+     * @return Service level of the volume. Inherited from storage pool. Supported values are : PREMIUM, EXTREME, STANDARD, FLEX.
      * 
      */
     public Output<String> serviceLevel() {
@@ -672,14 +672,14 @@ public class Volume extends com.pulumi.resources.CustomResource {
         return this.stateDetails;
     }
     /**
-     * Name of the storage pool to create the volume in. Pool needs enough spare capacity to accomodate the volume.
+     * Name of the storage pool to create the volume in. Pool needs enough spare capacity to accommodate the volume.
      * 
      */
     @Export(name="storagePool", refs={String.class}, tree="[0]")
     private Output<String> storagePool;
 
     /**
-     * @return Name of the storage pool to create the volume in. Pool needs enough spare capacity to accomodate the volume.
+     * @return Name of the storage pool to create the volume in. Pool needs enough spare capacity to accommodate the volume.
      * 
      */
     public Output<String> storagePool() {

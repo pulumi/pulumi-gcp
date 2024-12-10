@@ -28,6 +28,8 @@ __all__ = [
     'ClientTlsPolicyServerValidationCa',
     'ClientTlsPolicyServerValidationCaCertificateProviderInstance',
     'ClientTlsPolicyServerValidationCaGrpcEndpoint',
+    'MirroringDeploymentGroupConnectedEndpointGroup',
+    'MirroringEndpointGroupAssociationLocationsDetail',
     'SecurityProfileThreatPreventionProfile',
     'SecurityProfileThreatPreventionProfileSeverityOverride',
     'SecurityProfileThreatPreventionProfileThreatOverride',
@@ -552,6 +554,74 @@ class ClientTlsPolicyServerValidationCaGrpcEndpoint(dict):
         The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
         """
         return pulumi.get(self, "target_uri")
+
+
+@pulumi.output_type
+class MirroringDeploymentGroupConnectedEndpointGroup(dict):
+    def __init__(__self__, *,
+                 name: Optional[str] = None):
+        """
+        :param str name: (Output)
+               Output only. A connected mirroring endpoint group.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        (Output)
+        Output only. A connected mirroring endpoint group.
+        """
+        return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class MirroringEndpointGroupAssociationLocationsDetail(dict):
+    def __init__(__self__, *,
+                 location: Optional[str] = None,
+                 state: Optional[str] = None):
+        """
+        :param str location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringEndpointGroupAssociation`.
+               
+               
+               - - -
+        :param str state: (Output)
+               Output only. The association state in this location.
+               Possible values:
+               STATE_UNSPECIFIED
+               ACTIVE
+               OUT_OF_SYNC
+        """
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[str]:
+        """
+        Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122. See documentation for resource type `networksecurity.googleapis.com/MirroringEndpointGroupAssociation`.
+
+
+        - - -
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[str]:
+        """
+        (Output)
+        Output only. The association state in this location.
+        Possible values:
+        STATE_UNSPECIFIED
+        ACTIVE
+        OUT_OF_SYNC
+        """
+        return pulumi.get(self, "state")
 
 
 @pulumi.output_type

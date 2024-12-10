@@ -18,6 +18,9 @@ from . import outputs
 __all__ = [
     'NodeNetworkEndpoint',
     'NodeSchedulingConfig',
+    'V2QueuedResourceTpu',
+    'V2QueuedResourceTpuNodeSpec',
+    'V2QueuedResourceTpuNodeSpecNode',
     'V2VmAcceleratorConfig',
     'V2VmDataDisk',
     'V2VmNetworkConfig',
@@ -100,14 +103,172 @@ class NodeSchedulingConfig(dict):
 
 
 @pulumi.output_type
+class V2QueuedResourceTpu(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nodeSpecs":
+            suggest = "node_specs"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in V2QueuedResourceTpu. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        V2QueuedResourceTpu.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        V2QueuedResourceTpu.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 node_specs: Optional[Sequence['outputs.V2QueuedResourceTpuNodeSpec']] = None):
+        """
+        :param Sequence['V2QueuedResourceTpuNodeSpecArgs'] node_specs: The TPU node(s) being requested.
+               Structure is documented below.
+        """
+        if node_specs is not None:
+            pulumi.set(__self__, "node_specs", node_specs)
+
+    @property
+    @pulumi.getter(name="nodeSpecs")
+    def node_specs(self) -> Optional[Sequence['outputs.V2QueuedResourceTpuNodeSpec']]:
+        """
+        The TPU node(s) being requested.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "node_specs")
+
+
+@pulumi.output_type
+class V2QueuedResourceTpuNodeSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "nodeId":
+            suggest = "node_id"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in V2QueuedResourceTpuNodeSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        V2QueuedResourceTpuNodeSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        V2QueuedResourceTpuNodeSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 node: 'outputs.V2QueuedResourceTpuNodeSpecNode',
+                 parent: str,
+                 node_id: Optional[str] = None):
+        """
+        :param 'V2QueuedResourceTpuNodeSpecNodeArgs' node: The node.
+               Structure is documented below.
+        :param str parent: The parent resource name.
+        :param str node_id: Unqualified node identifier used to identify the node in the project once provisioned.
+        """
+        pulumi.set(__self__, "node", node)
+        pulumi.set(__self__, "parent", parent)
+        if node_id is not None:
+            pulumi.set(__self__, "node_id", node_id)
+
+    @property
+    @pulumi.getter
+    def node(self) -> 'outputs.V2QueuedResourceTpuNodeSpecNode':
+        """
+        The node.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "node")
+
+    @property
+    @pulumi.getter
+    def parent(self) -> str:
+        """
+        The parent resource name.
+        """
+        return pulumi.get(self, "parent")
+
+    @property
+    @pulumi.getter(name="nodeId")
+    def node_id(self) -> Optional[str]:
+        """
+        Unqualified node identifier used to identify the node in the project once provisioned.
+        """
+        return pulumi.get(self, "node_id")
+
+
+@pulumi.output_type
+class V2QueuedResourceTpuNodeSpecNode(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "runtimeVersion":
+            suggest = "runtime_version"
+        elif key == "acceleratorType":
+            suggest = "accelerator_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in V2QueuedResourceTpuNodeSpecNode. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        V2QueuedResourceTpuNodeSpecNode.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        V2QueuedResourceTpuNodeSpecNode.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 runtime_version: str,
+                 accelerator_type: Optional[str] = None,
+                 description: Optional[str] = None):
+        """
+        :param str runtime_version: Runtime version for the TPU.
+        :param str accelerator_type: TPU accelerator type for the TPU. If not specified, this defaults to 'v2-8'.
+        :param str description: Text description of the TPU.
+        """
+        pulumi.set(__self__, "runtime_version", runtime_version)
+        if accelerator_type is not None:
+            pulumi.set(__self__, "accelerator_type", accelerator_type)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter(name="runtimeVersion")
+    def runtime_version(self) -> str:
+        """
+        Runtime version for the TPU.
+        """
+        return pulumi.get(self, "runtime_version")
+
+    @property
+    @pulumi.getter(name="acceleratorType")
+    def accelerator_type(self) -> Optional[str]:
+        """
+        TPU accelerator type for the TPU. If not specified, this defaults to 'v2-8'.
+        """
+        return pulumi.get(self, "accelerator_type")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        Text description of the TPU.
+        """
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
 class V2VmAcceleratorConfig(dict):
     def __init__(__self__, *,
                  topology: str,
                  type: str):
         """
         :param str topology: Topology of TPU in chips.
-        :param str type: Type of TPU.
-               Possible values are: `V2`, `V3`, `V4`, `V5P`.
+        :param str type: Type of TPU. Please select one of the allowed types: https://cloud.google.com/tpu/docs/reference/rest/v2/AcceleratorConfig#Type
         """
         pulumi.set(__self__, "topology", topology)
         pulumi.set(__self__, "type", type)
@@ -124,8 +285,7 @@ class V2VmAcceleratorConfig(dict):
     @pulumi.getter
     def type(self) -> str:
         """
-        Type of TPU.
-        Possible values are: `V2`, `V3`, `V4`, `V5P`.
+        Type of TPU. Please select one of the allowed types: https://cloud.google.com/tpu/docs/reference/rest/v2/AcceleratorConfig#Type
         """
         return pulumi.get(self, "type")
 

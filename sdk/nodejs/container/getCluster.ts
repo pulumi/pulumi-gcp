@@ -89,6 +89,7 @@ export interface GetClusterResult {
     readonly enableShieldedNodes: boolean;
     readonly enableTpu: boolean;
     readonly endpoint: string;
+    readonly enterpriseConfigs: outputs.container.GetClusterEnterpriseConfig[];
     readonly fleets: outputs.container.GetClusterFleet[];
     readonly gatewayApiConfigs: outputs.container.GetClusterGatewayApiConfig[];
     /**

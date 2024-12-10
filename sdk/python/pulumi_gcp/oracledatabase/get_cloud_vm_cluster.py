@@ -27,7 +27,7 @@ class GetCloudVmClusterResult:
     """
     A collection of values returned by getCloudVmCluster.
     """
-    def __init__(__self__, backup_subnet_cidr=None, cidr=None, cloud_vm_cluster_id=None, create_time=None, display_name=None, effective_labels=None, exadata_infrastructure=None, gcp_oracle_zone=None, id=None, labels=None, location=None, name=None, network=None, project=None, properties=None, pulumi_labels=None):
+    def __init__(__self__, backup_subnet_cidr=None, cidr=None, cloud_vm_cluster_id=None, create_time=None, deletion_protection=None, display_name=None, effective_labels=None, exadata_infrastructure=None, gcp_oracle_zone=None, id=None, labels=None, location=None, name=None, network=None, project=None, properties=None, pulumi_labels=None):
         if backup_subnet_cidr and not isinstance(backup_subnet_cidr, str):
             raise TypeError("Expected argument 'backup_subnet_cidr' to be a str")
         pulumi.set(__self__, "backup_subnet_cidr", backup_subnet_cidr)
@@ -40,6 +40,9 @@ class GetCloudVmClusterResult:
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
+        if deletion_protection and not isinstance(deletion_protection, bool):
+            raise TypeError("Expected argument 'deletion_protection' to be a bool")
+        pulumi.set(__self__, "deletion_protection", deletion_protection)
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
@@ -96,6 +99,11 @@ class GetCloudVmClusterResult:
     @pulumi.getter(name="createTime")
     def create_time(self) -> str:
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> bool:
+        return pulumi.get(self, "deletion_protection")
 
     @property
     @pulumi.getter(name="displayName")
@@ -171,6 +179,7 @@ class AwaitableGetCloudVmClusterResult(GetCloudVmClusterResult):
             cidr=self.cidr,
             cloud_vm_cluster_id=self.cloud_vm_cluster_id,
             create_time=self.create_time,
+            deletion_protection=self.deletion_protection,
             display_name=self.display_name,
             effective_labels=self.effective_labels,
             exadata_infrastructure=self.exadata_infrastructure,
@@ -225,6 +234,7 @@ def get_cloud_vm_cluster(cloud_vm_cluster_id: Optional[str] = None,
         cidr=pulumi.get(__ret__, 'cidr'),
         cloud_vm_cluster_id=pulumi.get(__ret__, 'cloud_vm_cluster_id'),
         create_time=pulumi.get(__ret__, 'create_time'),
+        deletion_protection=pulumi.get(__ret__, 'deletion_protection'),
         display_name=pulumi.get(__ret__, 'display_name'),
         effective_labels=pulumi.get(__ret__, 'effective_labels'),
         exadata_infrastructure=pulumi.get(__ret__, 'exadata_infrastructure'),
@@ -276,6 +286,7 @@ def get_cloud_vm_cluster_output(cloud_vm_cluster_id: Optional[pulumi.Input[str]]
         cidr=pulumi.get(__response__, 'cidr'),
         cloud_vm_cluster_id=pulumi.get(__response__, 'cloud_vm_cluster_id'),
         create_time=pulumi.get(__response__, 'create_time'),
+        deletion_protection=pulumi.get(__response__, 'deletion_protection'),
         display_name=pulumi.get(__response__, 'display_name'),
         effective_labels=pulumi.get(__response__, 'effective_labels'),
         exadata_infrastructure=pulumi.get(__response__, 'exadata_infrastructure'),

@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.IntegrationConnectors.Inputs
         public Input<bool>? BooleanValue { get; set; }
 
         /// <summary>
-        /// Encription key value of configVariable.
+        /// Encryption key value of configVariable.
         /// Structure is documented below.
         /// </summary>
         [Input("encryptionKeyValue")]

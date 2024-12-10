@@ -4,6 +4,7 @@
 package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.container.outputs.ClusterNodePoolAutoConfigLinuxNodeConfig;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolAutoConfigNetworkTags;
 import com.pulumi.gcp.container.outputs.ClusterNodePoolAutoConfigNodeKubeletConfig;
 import java.lang.String;
@@ -14,6 +15,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterNodePoolAutoConfig {
+    /**
+     * @return Linux system configuration for the cluster&#39;s automatically provisioned node pools. Only `cgroup_mode` field is supported in `node_pool_auto_config`. Structure is documented below.
+     * 
+     */
+    private @Nullable ClusterNodePoolAutoConfigLinuxNodeConfig linuxNodeConfig;
     /**
      * @return The network tag config for the cluster&#39;s automatically provisioned node pools. Structure is documented below.
      * 
@@ -32,6 +38,13 @@ public final class ClusterNodePoolAutoConfig {
     private @Nullable Map<String,String> resourceManagerTags;
 
     private ClusterNodePoolAutoConfig() {}
+    /**
+     * @return Linux system configuration for the cluster&#39;s automatically provisioned node pools. Only `cgroup_mode` field is supported in `node_pool_auto_config`. Structure is documented below.
+     * 
+     */
+    public Optional<ClusterNodePoolAutoConfigLinuxNodeConfig> linuxNodeConfig() {
+        return Optional.ofNullable(this.linuxNodeConfig);
+    }
     /**
      * @return The network tag config for the cluster&#39;s automatically provisioned node pools. Structure is documented below.
      * 
@@ -64,17 +77,25 @@ public final class ClusterNodePoolAutoConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable ClusterNodePoolAutoConfigLinuxNodeConfig linuxNodeConfig;
         private @Nullable ClusterNodePoolAutoConfigNetworkTags networkTags;
         private @Nullable ClusterNodePoolAutoConfigNodeKubeletConfig nodeKubeletConfig;
         private @Nullable Map<String,String> resourceManagerTags;
         public Builder() {}
         public Builder(ClusterNodePoolAutoConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.linuxNodeConfig = defaults.linuxNodeConfig;
     	      this.networkTags = defaults.networkTags;
     	      this.nodeKubeletConfig = defaults.nodeKubeletConfig;
     	      this.resourceManagerTags = defaults.resourceManagerTags;
         }
 
+        @CustomType.Setter
+        public Builder linuxNodeConfig(@Nullable ClusterNodePoolAutoConfigLinuxNodeConfig linuxNodeConfig) {
+
+            this.linuxNodeConfig = linuxNodeConfig;
+            return this;
+        }
         @CustomType.Setter
         public Builder networkTags(@Nullable ClusterNodePoolAutoConfigNetworkTags networkTags) {
 
@@ -95,6 +116,7 @@ public final class ClusterNodePoolAutoConfig {
         }
         public ClusterNodePoolAutoConfig build() {
             final var _resultValue = new ClusterNodePoolAutoConfig();
+            _resultValue.linuxNodeConfig = linuxNodeConfig;
             _resultValue.networkTags = networkTags;
             _resultValue.nodeKubeletConfig = nodeKubeletConfig;
             _resultValue.resourceManagerTags = resourceManagerTags;

@@ -14,6 +14,76 @@ namespace Pulumi.Gcp.Firebaserules
     /// * [Get started with Firebase Security Rules](https://firebase.google.com/docs/rules/get-started)
     /// ## Example Usage
     /// 
+    /// ### Firestore_release
+    /// Creates a Firebase Rules Release to the default Cloud Firestore instance
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var firestore = new Gcp.Firebaserules.Ruleset("firestore", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Source = new Gcp.Firebaserules.Inputs.RulesetSourceArgs
+    ///         {
+    ///             Files = new[]
+    ///             {
+    ///                 new Gcp.Firebaserules.Inputs.RulesetSourceFileArgs
+    ///                 {
+    ///                     Content = "service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }",
+    ///                     Name = "firestore.rules",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var primary = new Gcp.Firebaserules.Release("primary", new()
+    ///     {
+    ///         Name = "cloud.firestore",
+    ///         Project = "my-project-name",
+    ///         RulesetName = firestore.Name.Apply(name =&gt; $"projects/my-project-name/rulesets/{name}"),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Firestore_release_additional
+    /// Creates a Firebase Rules Release to an additional Cloud Firestore instance
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var firestore = new Gcp.Firebaserules.Ruleset("firestore", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Source = new Gcp.Firebaserules.Inputs.RulesetSourceArgs
+    ///         {
+    ///             Files = new[]
+    ///             {
+    ///                 new Gcp.Firebaserules.Inputs.RulesetSourceFileArgs
+    ///                 {
+    ///                     Content = "service cloud.firestore {match /databases/{database}/documents { match /{document=**} { allow read, write: if false; } } }",
+    ///                     Name = "firestore.rules",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var primary = new Gcp.Firebaserules.Release("primary", new()
+    ///     {
+    ///         Name = "cloud.firestore/database",
+    ///         Project = "my-project-name",
+    ///         RulesetName = firestore.Name.Apply(name =&gt; $"projects/my-project-name/rulesets/{name}"),
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ## Import
     /// 
     /// Release can be imported using any of these accepted formats:

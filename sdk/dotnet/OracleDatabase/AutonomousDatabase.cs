@@ -53,6 +53,7 @@ namespace Pulumi.Gcp.OracleDatabase
     ///             DbWorkload = "OLTP",
     ///             LicenseType = "LICENSE_INCLUDED",
     ///         },
+    ///         DeletionProtection = true,
     ///     });
     /// 
     /// });
@@ -113,6 +114,7 @@ namespace Pulumi.Gcp.OracleDatabase
     ///             PrivateEndpointIp = "10.5.0.11",
     ///             PrivateEndpointLabel = "testhost",
     ///         },
+    ///         DeletionProtection = true,
     ///     });
     /// 
     /// });
@@ -179,6 +181,9 @@ namespace Pulumi.Gcp.OracleDatabase
         /// </summary>
         [Output("database")]
         public Output<string> Database { get; private set; } = null!;
+
+        [Output("deletionProtection")]
+        public Output<bool?> DeletionProtection { get; private set; } = null!;
 
         /// <summary>
         /// The display name for the Autonomous Database. The name does not have to be unique within your project.
@@ -324,6 +329,9 @@ namespace Pulumi.Gcp.OracleDatabase
         [Input("database", required: true)]
         public Input<string> Database { get; set; } = null!;
 
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
+
         /// <summary>
         /// The display name for the Autonomous Database. The name does not have to be unique within your project.
         /// </summary>
@@ -409,6 +417,9 @@ namespace Pulumi.Gcp.OracleDatabase
         /// </summary>
         [Input("database")]
         public Input<string>? Database { get; set; }
+
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
         /// The display name for the Autonomous Database. The name does not have to be unique within your project.

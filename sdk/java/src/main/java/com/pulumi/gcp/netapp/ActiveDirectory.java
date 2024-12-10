@@ -242,14 +242,14 @@ public class ActiveDirectory extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.encryptDcConnections);
     }
     /**
-     * Hostname of the Active Directory server used as Kerberos Key Distribution Center. Only requried for volumes using kerberized NFSv4.1
+     * Hostname of the Active Directory server used as Kerberos Key Distribution Center. Only required for volumes using kerberized NFSv4.1
      * 
      */
     @Export(name="kdcHostname", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> kdcHostname;
 
     /**
-     * @return Hostname of the Active Directory server used as Kerberos Key Distribution Center. Only requried for volumes using kerberized NFSv4.1
+     * @return Hostname of the Active Directory server used as Kerberos Key Distribution Center. Only required for volumes using kerberized NFSv4.1
      * 
      */
     public Output<Optional<String>> kdcHostname() {

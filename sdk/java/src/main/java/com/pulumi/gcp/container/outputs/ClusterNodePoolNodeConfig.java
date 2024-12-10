@@ -162,6 +162,14 @@ public final class ClusterNodePoolNodeConfig {
      */
     private @Nullable Integer localSsdCount;
     /**
+     * @return Possible Local SSD encryption modes:
+     * Accepted values are:
+     * * `STANDARD_ENCRYPTION`: The given node will be encrypted using keys managed by Google infrastructure and the keys wll be deleted when the node is deleted.
+     * * `EPHEMERAL_KEY_ENCRYPTION`: The given node will opt-in for using ephemeral key for encrypting Local SSDs. The Local SSDs will not be able to recover data in case of node crash.
+     * 
+     */
+    private @Nullable String localSsdEncryptionMode;
+    /**
      * @return Parameter for specifying the type of logging agent used in a node pool. This will override any cluster-wide default value. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
      * 
      */
@@ -460,6 +468,16 @@ public final class ClusterNodePoolNodeConfig {
         return Optional.ofNullable(this.localSsdCount);
     }
     /**
+     * @return Possible Local SSD encryption modes:
+     * Accepted values are:
+     * * `STANDARD_ENCRYPTION`: The given node will be encrypted using keys managed by Google infrastructure and the keys wll be deleted when the node is deleted.
+     * * `EPHEMERAL_KEY_ENCRYPTION`: The given node will opt-in for using ephemeral key for encrypting Local SSDs. The Local SSDs will not be able to recover data in case of node crash.
+     * 
+     */
+    public Optional<String> localSsdEncryptionMode() {
+        return Optional.ofNullable(this.localSsdEncryptionMode);
+    }
+    /**
      * @return Parameter for specifying the type of logging agent used in a node pool. This will override any cluster-wide default value. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
      * 
      */
@@ -659,6 +677,7 @@ public final class ClusterNodePoolNodeConfig {
         private @Nullable ClusterNodePoolNodeConfigLinuxNodeConfig linuxNodeConfig;
         private @Nullable ClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig localNvmeSsdBlockConfig;
         private @Nullable Integer localSsdCount;
+        private @Nullable String localSsdEncryptionMode;
         private @Nullable String loggingVariant;
         private @Nullable String machineType;
         private @Nullable Map<String,String> metadata;
@@ -703,6 +722,7 @@ public final class ClusterNodePoolNodeConfig {
     	      this.linuxNodeConfig = defaults.linuxNodeConfig;
     	      this.localNvmeSsdBlockConfig = defaults.localNvmeSsdBlockConfig;
     	      this.localSsdCount = defaults.localSsdCount;
+    	      this.localSsdEncryptionMode = defaults.localSsdEncryptionMode;
     	      this.loggingVariant = defaults.loggingVariant;
     	      this.machineType = defaults.machineType;
     	      this.metadata = defaults.metadata;
@@ -855,6 +875,12 @@ public final class ClusterNodePoolNodeConfig {
         public Builder localSsdCount(@Nullable Integer localSsdCount) {
 
             this.localSsdCount = localSsdCount;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder localSsdEncryptionMode(@Nullable String localSsdEncryptionMode) {
+
+            this.localSsdEncryptionMode = localSsdEncryptionMode;
             return this;
         }
         @CustomType.Setter
@@ -1015,6 +1041,7 @@ public final class ClusterNodePoolNodeConfig {
             _resultValue.linuxNodeConfig = linuxNodeConfig;
             _resultValue.localNvmeSsdBlockConfig = localNvmeSsdBlockConfig;
             _resultValue.localSsdCount = localSsdCount;
+            _resultValue.localSsdEncryptionMode = localSsdEncryptionMode;
             _resultValue.loggingVariant = loggingVariant;
             _resultValue.machineType = machineType;
             _resultValue.metadata = metadata;

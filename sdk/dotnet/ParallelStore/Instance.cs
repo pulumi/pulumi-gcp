@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.ParallelStore
 {
     /// <summary>
+    /// A Parallelstore Instance.
+    /// 
     /// ## Example Usage
     /// 
     /// ### Parallelstore Instance Basic

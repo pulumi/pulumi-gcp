@@ -18,6 +18,16 @@ public final class GetInstanceAdvancedMachineFeature {
      */
     private Boolean enableNestedVirtualization;
     /**
+     * @return Whether to enable UEFI networking for the instance.
+     * 
+     */
+    private Boolean enableUefiNetworking;
+    /**
+     * @return The PMU is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are &#34;STANDARD&#34;, &#34;ENHANCED&#34;, and &#34;ARCHITECTURAL&#34;.
+     * 
+     */
+    private String performanceMonitoringUnit;
+    /**
      * @return The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
      * 
      */
@@ -40,6 +50,20 @@ public final class GetInstanceAdvancedMachineFeature {
      */
     public Boolean enableNestedVirtualization() {
         return this.enableNestedVirtualization;
+    }
+    /**
+     * @return Whether to enable UEFI networking for the instance.
+     * 
+     */
+    public Boolean enableUefiNetworking() {
+        return this.enableUefiNetworking;
+    }
+    /**
+     * @return The PMU is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are &#34;STANDARD&#34;, &#34;ENHANCED&#34;, and &#34;ARCHITECTURAL&#34;.
+     * 
+     */
+    public String performanceMonitoringUnit() {
+        return this.performanceMonitoringUnit;
     }
     /**
      * @return The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
@@ -73,6 +97,8 @@ public final class GetInstanceAdvancedMachineFeature {
     @CustomType.Builder
     public static final class Builder {
         private Boolean enableNestedVirtualization;
+        private Boolean enableUefiNetworking;
+        private String performanceMonitoringUnit;
         private Integer threadsPerCore;
         private String turboMode;
         private Integer visibleCoreCount;
@@ -80,6 +106,8 @@ public final class GetInstanceAdvancedMachineFeature {
         public Builder(GetInstanceAdvancedMachineFeature defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enableNestedVirtualization = defaults.enableNestedVirtualization;
+    	      this.enableUefiNetworking = defaults.enableUefiNetworking;
+    	      this.performanceMonitoringUnit = defaults.performanceMonitoringUnit;
     	      this.threadsPerCore = defaults.threadsPerCore;
     	      this.turboMode = defaults.turboMode;
     	      this.visibleCoreCount = defaults.visibleCoreCount;
@@ -91,6 +119,22 @@ public final class GetInstanceAdvancedMachineFeature {
               throw new MissingRequiredPropertyException("GetInstanceAdvancedMachineFeature", "enableNestedVirtualization");
             }
             this.enableNestedVirtualization = enableNestedVirtualization;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder enableUefiNetworking(Boolean enableUefiNetworking) {
+            if (enableUefiNetworking == null) {
+              throw new MissingRequiredPropertyException("GetInstanceAdvancedMachineFeature", "enableUefiNetworking");
+            }
+            this.enableUefiNetworking = enableUefiNetworking;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder performanceMonitoringUnit(String performanceMonitoringUnit) {
+            if (performanceMonitoringUnit == null) {
+              throw new MissingRequiredPropertyException("GetInstanceAdvancedMachineFeature", "performanceMonitoringUnit");
+            }
+            this.performanceMonitoringUnit = performanceMonitoringUnit;
             return this;
         }
         @CustomType.Setter
@@ -120,6 +164,8 @@ public final class GetInstanceAdvancedMachineFeature {
         public GetInstanceAdvancedMachineFeature build() {
             final var _resultValue = new GetInstanceAdvancedMachineFeature();
             _resultValue.enableNestedVirtualization = enableNestedVirtualization;
+            _resultValue.enableUefiNetworking = enableUefiNetworking;
+            _resultValue.performanceMonitoringUnit = performanceMonitoringUnit;
             _resultValue.threadsPerCore = threadsPerCore;
             _resultValue.turboMode = turboMode;
             _resultValue.visibleCoreCount = visibleCoreCount;

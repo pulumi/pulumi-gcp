@@ -244,6 +244,8 @@ type RegionNetworkEndpoint struct {
 	// IPv4 address external endpoint.
 	// This can only be specified when networkEndpointType of the NEG is INTERNET_IP_PORT.
 	IpAddress pulumi.StringPtrOutput `pulumi:"ipAddress"`
+	// The unique identifier number for the resource. This identifier is defined by the server.
+	NetworkEndpointId pulumi.IntOutput `pulumi:"networkEndpointId"`
 	// Port number of network endpoint.
 	Port pulumi.IntOutput `pulumi:"port"`
 	// The ID of the project in which the resource belongs.
@@ -304,6 +306,8 @@ type regionNetworkEndpointState struct {
 	// IPv4 address external endpoint.
 	// This can only be specified when networkEndpointType of the NEG is INTERNET_IP_PORT.
 	IpAddress *string `pulumi:"ipAddress"`
+	// The unique identifier number for the resource. This identifier is defined by the server.
+	NetworkEndpointId *int `pulumi:"networkEndpointId"`
 	// Port number of network endpoint.
 	Port *int `pulumi:"port"`
 	// The ID of the project in which the resource belongs.
@@ -329,6 +333,8 @@ type RegionNetworkEndpointState struct {
 	// IPv4 address external endpoint.
 	// This can only be specified when networkEndpointType of the NEG is INTERNET_IP_PORT.
 	IpAddress pulumi.StringPtrInput
+	// The unique identifier number for the resource. This identifier is defined by the server.
+	NetworkEndpointId pulumi.IntPtrInput
 	// Port number of network endpoint.
 	Port pulumi.IntPtrInput
 	// The ID of the project in which the resource belongs.
@@ -505,6 +511,11 @@ func (o RegionNetworkEndpointOutput) Instance() pulumi.StringPtrOutput {
 // This can only be specified when networkEndpointType of the NEG is INTERNET_IP_PORT.
 func (o RegionNetworkEndpointOutput) IpAddress() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RegionNetworkEndpoint) pulumi.StringPtrOutput { return v.IpAddress }).(pulumi.StringPtrOutput)
+}
+
+// The unique identifier number for the resource. This identifier is defined by the server.
+func (o RegionNetworkEndpointOutput) NetworkEndpointId() pulumi.IntOutput {
+	return o.ApplyT(func(v *RegionNetworkEndpoint) pulumi.IntOutput { return v.NetworkEndpointId }).(pulumi.IntOutput)
 }
 
 // Port number of network endpoint.

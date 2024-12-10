@@ -17,6 +17,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * A Parallelstore Instance.
+ * 
  * ## Example Usage
  * 
  * ### Parallelstore Instance Basic

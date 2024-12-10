@@ -34,14 +34,14 @@ public final class VolumeExportPolicyRuleArgs extends com.pulumi.resources.Resou
     }
 
     /**
-     * Defines the client ingress specification (allowed clients) as a comma seperated list with IPv4 CIDRs or IPv4 host addresses.
+     * Defines the client ingress specification (allowed clients) as a comma separated list with IPv4 CIDRs or IPv4 host addresses.
      * 
      */
     @Import(name="allowedClients")
     private @Nullable Output<String> allowedClients;
 
     /**
-     * @return Defines the client ingress specification (allowed clients) as a comma seperated list with IPv4 CIDRs or IPv4 host addresses.
+     * @return Defines the client ingress specification (allowed clients) as a comma separated list with IPv4 CIDRs or IPv4 host addresses.
      * 
      */
     public Optional<Output<String>> allowedClients() {
@@ -241,7 +241,7 @@ public final class VolumeExportPolicyRuleArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param allowedClients Defines the client ingress specification (allowed clients) as a comma seperated list with IPv4 CIDRs or IPv4 host addresses.
+         * @param allowedClients Defines the client ingress specification (allowed clients) as a comma separated list with IPv4 CIDRs or IPv4 host addresses.
          * 
          * @return builder
          * 
@@ -252,7 +252,7 @@ public final class VolumeExportPolicyRuleArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param allowedClients Defines the client ingress specification (allowed clients) as a comma seperated list with IPv4 CIDRs or IPv4 host addresses.
+         * @param allowedClients Defines the client ingress specification (allowed clients) as a comma separated list with IPv4 CIDRs or IPv4 host addresses.
          * 
          * @return builder
          * 

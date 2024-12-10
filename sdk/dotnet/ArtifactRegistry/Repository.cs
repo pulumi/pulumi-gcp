@@ -681,6 +681,107 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// });
     /// ```
+    /// ### Artifact Registry Repository Remote Common Repository With Artifact Registry Uri
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var upstreamRepo = new Gcp.ArtifactRegistry.Repository("upstream_repo", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         RepositoryId = "example-upstream-repo",
+    ///         Description = "example upstream repository",
+    ///         Format = "DOCKER",
+    ///     });
+    /// 
+    ///     var my_repo = new Gcp.ArtifactRegistry.Repository("my-repo", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         RepositoryId = "example-common-remote",
+    ///         Description = "example remote common repository with docker upstream",
+    ///         Format = "DOCKER",
+    ///         Mode = "REMOTE_REPOSITORY",
+    ///         RemoteRepositoryConfig = new Gcp.ArtifactRegistry.Inputs.RepositoryRemoteRepositoryConfigArgs
+    ///         {
+    ///             Description = "pull-through cache of another Artifact Registry repository by URL",
+    ///             CommonRepository = new Gcp.ArtifactRegistry.Inputs.RepositoryRemoteRepositoryConfigCommonRepositoryArgs
+    ///             {
+    ///                 Uri = "https://us-central1-docker.pkg.dev//example-upstream-repo",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Artifact Registry Repository Remote Common Repository With Custom Upstream
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var example_remote_secret = new Gcp.SecretManager.Secret("example-remote-secret", new()
+    ///     {
+    ///         SecretId = "example-secret",
+    ///         Replication = new Gcp.SecretManager.Inputs.SecretReplicationArgs
+    ///         {
+    ///             Auto = null,
+    ///         },
+    ///     });
+    /// 
+    ///     var example_remote_secretVersion = new Gcp.SecretManager.SecretVersion("example-remote-secret_version", new()
+    ///     {
+    ///         Secret = example_remote_secret.Id,
+    ///         SecretData = "remote-password",
+    ///     });
+    /// 
+    ///     var secret_access = new Gcp.SecretManager.SecretIamMember("secret-access", new()
+    ///     {
+    ///         SecretId = example_remote_secret.Id,
+    ///         Role = "roles/secretmanager.secretAccessor",
+    ///         Member = $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-artifactregistry.iam.gserviceaccount.com",
+    ///     });
+    /// 
+    ///     var my_repo = new Gcp.ArtifactRegistry.Repository("my-repo", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         RepositoryId = "example-docker-custom-remote",
+    ///         Description = "example remote custom docker repository with credentials",
+    ///         Format = "DOCKER",
+    ///         Mode = "REMOTE_REPOSITORY",
+    ///         RemoteRepositoryConfig = new Gcp.ArtifactRegistry.Inputs.RepositoryRemoteRepositoryConfigArgs
+    ///         {
+    ///             Description = "custom common docker remote with credentials",
+    ///             DisableUpstreamValidation = true,
+    ///             CommonRepository = new Gcp.ArtifactRegistry.Inputs.RepositoryRemoteRepositoryConfigCommonRepositoryArgs
+    ///             {
+    ///                 Uri = "https://registry-1.docker.io",
+    ///             },
+    ///             UpstreamCredentials = new Gcp.ArtifactRegistry.Inputs.RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs
+    ///             {
+    ///                 UsernamePasswordCredentials = new Gcp.ArtifactRegistry.Inputs.RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs
+    ///                 {
+    ///                     Username = "remote-username",
+    ///                     PasswordSecretVersion = example_remote_secretVersion.Name,
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 

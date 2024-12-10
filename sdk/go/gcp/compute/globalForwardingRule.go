@@ -679,6 +679,8 @@ type GlobalForwardingRule struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
+	// The unique identifier number for the resource. This identifier is defined by the server.
+	ForwardingRuleId pulumi.IntOutput `pulumi:"forwardingRuleId"`
 	// IP address for which this forwarding rule accepts traffic. When a client
 	// sends traffic to this IP address, the forwarding rule directs the traffic
 	// to the referenced `target`.
@@ -882,6 +884,8 @@ type globalForwardingRuleState struct {
 	Description *string `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
+	// The unique identifier number for the resource. This identifier is defined by the server.
+	ForwardingRuleId *int `pulumi:"forwardingRuleId"`
 	// IP address for which this forwarding rule accepts traffic. When a client
 	// sends traffic to this IP address, the forwarding rule directs the traffic
 	// to the referenced `target`.
@@ -1048,6 +1052,8 @@ type GlobalForwardingRuleState struct {
 	Description pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
+	// The unique identifier number for the resource. This identifier is defined by the server.
+	ForwardingRuleId pulumi.IntPtrInput
 	// IP address for which this forwarding rule accepts traffic. When a client
 	// sends traffic to this IP address, the forwarding rule directs the traffic
 	// to the referenced `target`.
@@ -1615,6 +1621,11 @@ func (o GlobalForwardingRuleOutput) Description() pulumi.StringPtrOutput {
 // All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o GlobalForwardingRuleOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *GlobalForwardingRule) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
+// The unique identifier number for the resource. This identifier is defined by the server.
+func (o GlobalForwardingRuleOutput) ForwardingRuleId() pulumi.IntOutput {
+	return o.ApplyT(func(v *GlobalForwardingRule) pulumi.IntOutput { return v.ForwardingRuleId }).(pulumi.IntOutput)
 }
 
 // IP address for which this forwarding rule accepts traffic. When a client

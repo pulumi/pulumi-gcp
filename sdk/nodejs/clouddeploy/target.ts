@@ -173,6 +173,10 @@ export class Target extends pulumi.CustomResource {
      */
     public readonly anthosCluster!: pulumi.Output<outputs.clouddeploy.TargetAnthosCluster | undefined>;
     /**
+     * Optional. Map of entity IDs to their associated entities. Associated entities allows specifying places other than the deployment target for specific features. For example, the Gateway API canary can be configured to deploy the HTTPRoute to a different cluster(s) than the deployment cluster using associated entities. An entity ID must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
+     */
+    public readonly associatedEntities!: pulumi.Output<outputs.clouddeploy.TargetAssociatedEntity[] | undefined>;
+    /**
      * Output only. Time at which the `Target` was created.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
@@ -272,6 +276,7 @@ export class Target extends pulumi.CustomResource {
             const state = argsOrState as TargetState | undefined;
             resourceInputs["annotations"] = state ? state.annotations : undefined;
             resourceInputs["anthosCluster"] = state ? state.anthosCluster : undefined;
+            resourceInputs["associatedEntities"] = state ? state.associatedEntities : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["customTarget"] = state ? state.customTarget : undefined;
             resourceInputs["deployParameters"] = state ? state.deployParameters : undefined;
@@ -299,6 +304,7 @@ export class Target extends pulumi.CustomResource {
             }
             resourceInputs["annotations"] = args ? args.annotations : undefined;
             resourceInputs["anthosCluster"] = args ? args.anthosCluster : undefined;
+            resourceInputs["associatedEntities"] = args ? args.associatedEntities : undefined;
             resourceInputs["customTarget"] = args ? args.customTarget : undefined;
             resourceInputs["deployParameters"] = args ? args.deployParameters : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
@@ -342,6 +348,10 @@ export interface TargetState {
      * Information specifying an Anthos Cluster.
      */
     anthosCluster?: pulumi.Input<inputs.clouddeploy.TargetAnthosCluster>;
+    /**
+     * Optional. Map of entity IDs to their associated entities. Associated entities allows specifying places other than the deployment target for specific features. For example, the Gateway API canary can be configured to deploy the HTTPRoute to a different cluster(s) than the deployment cluster using associated entities. An entity ID must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
+     */
+    associatedEntities?: pulumi.Input<pulumi.Input<inputs.clouddeploy.TargetAssociatedEntity>[]>;
     /**
      * Output only. Time at which the `Target` was created.
      */
@@ -443,6 +453,10 @@ export interface TargetArgs {
      * Information specifying an Anthos Cluster.
      */
     anthosCluster?: pulumi.Input<inputs.clouddeploy.TargetAnthosCluster>;
+    /**
+     * Optional. Map of entity IDs to their associated entities. Associated entities allows specifying places other than the deployment target for specific features. For example, the Gateway API canary can be configured to deploy the HTTPRoute to a different cluster(s) than the deployment cluster using associated entities. An entity ID must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
+     */
+    associatedEntities?: pulumi.Input<pulumi.Input<inputs.clouddeploy.TargetAssociatedEntity>[]>;
     /**
      * Optional. Information specifying a Custom Target.
      */

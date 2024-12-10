@@ -22,7 +22,7 @@ public final class ConnectionConfigVariable {
      */
     private @Nullable Boolean booleanValue;
     /**
-     * @return Encription key value of configVariable.
+     * @return Encryption key value of configVariable.
      * Structure is documented below.
      * 
      */
@@ -58,7 +58,7 @@ public final class ConnectionConfigVariable {
         return Optional.ofNullable(this.booleanValue);
     }
     /**
-     * @return Encription key value of configVariable.
+     * @return Encryption key value of configVariable.
      * Structure is documented below.
      * 
      */

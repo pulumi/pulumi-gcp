@@ -6,6 +6,7 @@ package com.pulumi.gcp.oracledatabase.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.oracledatabase.outputs.GetCloudExadataInfrastructuresCloudExadataInfrastructureProperty;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -26,6 +27,7 @@ public final class GetCloudExadataInfrastructuresCloudExadataInfrastructure {
      * 
      */
     private String createTime;
+    private Boolean deletionProtection;
     /**
      * @return User friendly name for this resource.
      * 
@@ -99,6 +101,9 @@ public final class GetCloudExadataInfrastructuresCloudExadataInfrastructure {
      */
     public String createTime() {
         return this.createTime;
+    }
+    public Boolean deletionProtection() {
+        return this.deletionProtection;
     }
     /**
      * @return User friendly name for this resource.
@@ -187,6 +192,7 @@ public final class GetCloudExadataInfrastructuresCloudExadataInfrastructure {
     public static final class Builder {
         private String cloudExadataInfrastructureId;
         private String createTime;
+        private Boolean deletionProtection;
         private String displayName;
         private Map<String,String> effectiveLabels;
         private String entitlementId;
@@ -202,6 +208,7 @@ public final class GetCloudExadataInfrastructuresCloudExadataInfrastructure {
     	      Objects.requireNonNull(defaults);
     	      this.cloudExadataInfrastructureId = defaults.cloudExadataInfrastructureId;
     	      this.createTime = defaults.createTime;
+    	      this.deletionProtection = defaults.deletionProtection;
     	      this.displayName = defaults.displayName;
     	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.entitlementId = defaults.entitlementId;
@@ -228,6 +235,14 @@ public final class GetCloudExadataInfrastructuresCloudExadataInfrastructure {
               throw new MissingRequiredPropertyException("GetCloudExadataInfrastructuresCloudExadataInfrastructure", "createTime");
             }
             this.createTime = createTime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionProtection(Boolean deletionProtection) {
+            if (deletionProtection == null) {
+              throw new MissingRequiredPropertyException("GetCloudExadataInfrastructuresCloudExadataInfrastructure", "deletionProtection");
+            }
+            this.deletionProtection = deletionProtection;
             return this;
         }
         @CustomType.Setter
@@ -317,6 +332,7 @@ public final class GetCloudExadataInfrastructuresCloudExadataInfrastructure {
             final var _resultValue = new GetCloudExadataInfrastructuresCloudExadataInfrastructure();
             _resultValue.cloudExadataInfrastructureId = cloudExadataInfrastructureId;
             _resultValue.createTime = createTime;
+            _resultValue.deletionProtection = deletionProtection;
             _resultValue.displayName = displayName;
             _resultValue.effectiveLabels = effectiveLabels;
             _resultValue.entitlementId = entitlementId;

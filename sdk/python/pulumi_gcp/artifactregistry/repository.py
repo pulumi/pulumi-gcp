@@ -1143,6 +1143,70 @@ class Repository(pulumi.CustomResource):
                 },
             })
         ```
+        ### Artifact Registry Repository Remote Common Repository With Artifact Registry Uri
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        upstream_repo = gcp.artifactregistry.Repository("upstream_repo",
+            location="us-central1",
+            repository_id="example-upstream-repo",
+            description="example upstream repository",
+            format="DOCKER")
+        my_repo = gcp.artifactregistry.Repository("my-repo",
+            location="us-central1",
+            repository_id="example-common-remote",
+            description="example remote common repository with docker upstream",
+            format="DOCKER",
+            mode="REMOTE_REPOSITORY",
+            remote_repository_config={
+                "description": "pull-through cache of another Artifact Registry repository by URL",
+                "common_repository": {
+                    "uri": "https://us-central1-docker.pkg.dev//example-upstream-repo",
+                },
+            })
+        ```
+        ### Artifact Registry Repository Remote Common Repository With Custom Upstream
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        example_remote_secret = gcp.secretmanager.Secret("example-remote-secret",
+            secret_id="example-secret",
+            replication={
+                "auto": {},
+            })
+        example_remote_secret_version = gcp.secretmanager.SecretVersion("example-remote-secret_version",
+            secret=example_remote_secret.id,
+            secret_data="remote-password")
+        secret_access = gcp.secretmanager.SecretIamMember("secret-access",
+            secret_id=example_remote_secret.id,
+            role="roles/secretmanager.secretAccessor",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com")
+        my_repo = gcp.artifactregistry.Repository("my-repo",
+            location="us-central1",
+            repository_id="example-docker-custom-remote",
+            description="example remote custom docker repository with credentials",
+            format="DOCKER",
+            mode="REMOTE_REPOSITORY",
+            remote_repository_config={
+                "description": "custom common docker remote with credentials",
+                "disable_upstream_validation": True,
+                "common_repository": {
+                    "uri": "https://registry-1.docker.io",
+                },
+                "upstream_credentials": {
+                    "username_password_credentials": {
+                        "username": "remote-username",
+                        "password_secret_version": example_remote_secret_version.name,
+                    },
+                },
+            })
+        ```
 
         ## Import
 
@@ -1660,6 +1724,70 @@ class Repository(pulumi.CustomResource):
                 "description": "pull-through cache of another Artifact Registry repository",
                 "common_repository": {
                     "uri": upstream_repo.id,
+                },
+            })
+        ```
+        ### Artifact Registry Repository Remote Common Repository With Artifact Registry Uri
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        upstream_repo = gcp.artifactregistry.Repository("upstream_repo",
+            location="us-central1",
+            repository_id="example-upstream-repo",
+            description="example upstream repository",
+            format="DOCKER")
+        my_repo = gcp.artifactregistry.Repository("my-repo",
+            location="us-central1",
+            repository_id="example-common-remote",
+            description="example remote common repository with docker upstream",
+            format="DOCKER",
+            mode="REMOTE_REPOSITORY",
+            remote_repository_config={
+                "description": "pull-through cache of another Artifact Registry repository by URL",
+                "common_repository": {
+                    "uri": "https://us-central1-docker.pkg.dev//example-upstream-repo",
+                },
+            })
+        ```
+        ### Artifact Registry Repository Remote Common Repository With Custom Upstream
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        example_remote_secret = gcp.secretmanager.Secret("example-remote-secret",
+            secret_id="example-secret",
+            replication={
+                "auto": {},
+            })
+        example_remote_secret_version = gcp.secretmanager.SecretVersion("example-remote-secret_version",
+            secret=example_remote_secret.id,
+            secret_data="remote-password")
+        secret_access = gcp.secretmanager.SecretIamMember("secret-access",
+            secret_id=example_remote_secret.id,
+            role="roles/secretmanager.secretAccessor",
+            member=f"serviceAccount:service-{project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com")
+        my_repo = gcp.artifactregistry.Repository("my-repo",
+            location="us-central1",
+            repository_id="example-docker-custom-remote",
+            description="example remote custom docker repository with credentials",
+            format="DOCKER",
+            mode="REMOTE_REPOSITORY",
+            remote_repository_config={
+                "description": "custom common docker remote with credentials",
+                "disable_upstream_validation": True,
+                "common_repository": {
+                    "uri": "https://registry-1.docker.io",
+                },
+                "upstream_credentials": {
+                    "username_password_credentials": {
+                        "username": "remote-username",
+                        "password_secret_version": example_remote_secret_version.name,
+                    },
                 },
             })
         ```

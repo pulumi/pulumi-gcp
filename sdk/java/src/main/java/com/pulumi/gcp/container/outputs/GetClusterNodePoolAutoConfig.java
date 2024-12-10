@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.container.outputs.GetClusterNodePoolAutoConfigLinuxNodeConfig;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolAutoConfigNetworkTag;
 import com.pulumi.gcp.container.outputs.GetClusterNodePoolAutoConfigNodeKubeletConfig;
 import java.lang.String;
@@ -14,6 +15,11 @@ import java.util.Objects;
 
 @CustomType
 public final class GetClusterNodePoolAutoConfig {
+    /**
+     * @return Linux node configuration options.
+     * 
+     */
+    private List<GetClusterNodePoolAutoConfigLinuxNodeConfig> linuxNodeConfigs;
     /**
      * @return Collection of Compute Engine network tags that can be applied to a node&#39;s underlying VM instance.
      * 
@@ -31,6 +37,13 @@ public final class GetClusterNodePoolAutoConfig {
     private Map<String,String> resourceManagerTags;
 
     private GetClusterNodePoolAutoConfig() {}
+    /**
+     * @return Linux node configuration options.
+     * 
+     */
+    public List<GetClusterNodePoolAutoConfigLinuxNodeConfig> linuxNodeConfigs() {
+        return this.linuxNodeConfigs;
+    }
     /**
      * @return Collection of Compute Engine network tags that can be applied to a node&#39;s underlying VM instance.
      * 
@@ -62,17 +75,30 @@ public final class GetClusterNodePoolAutoConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<GetClusterNodePoolAutoConfigLinuxNodeConfig> linuxNodeConfigs;
         private List<GetClusterNodePoolAutoConfigNetworkTag> networkTags;
         private List<GetClusterNodePoolAutoConfigNodeKubeletConfig> nodeKubeletConfigs;
         private Map<String,String> resourceManagerTags;
         public Builder() {}
         public Builder(GetClusterNodePoolAutoConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.linuxNodeConfigs = defaults.linuxNodeConfigs;
     	      this.networkTags = defaults.networkTags;
     	      this.nodeKubeletConfigs = defaults.nodeKubeletConfigs;
     	      this.resourceManagerTags = defaults.resourceManagerTags;
         }
 
+        @CustomType.Setter
+        public Builder linuxNodeConfigs(List<GetClusterNodePoolAutoConfigLinuxNodeConfig> linuxNodeConfigs) {
+            if (linuxNodeConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodePoolAutoConfig", "linuxNodeConfigs");
+            }
+            this.linuxNodeConfigs = linuxNodeConfigs;
+            return this;
+        }
+        public Builder linuxNodeConfigs(GetClusterNodePoolAutoConfigLinuxNodeConfig... linuxNodeConfigs) {
+            return linuxNodeConfigs(List.of(linuxNodeConfigs));
+        }
         @CustomType.Setter
         public Builder networkTags(List<GetClusterNodePoolAutoConfigNetworkTag> networkTags) {
             if (networkTags == null) {
@@ -105,6 +131,7 @@ public final class GetClusterNodePoolAutoConfig {
         }
         public GetClusterNodePoolAutoConfig build() {
             final var _resultValue = new GetClusterNodePoolAutoConfig();
+            _resultValue.linuxNodeConfigs = linuxNodeConfigs;
             _resultValue.networkTags = networkTags;
             _resultValue.nodeKubeletConfigs = nodeKubeletConfigs;
             _resultValue.resourceManagerTags = resourceManagerTags;

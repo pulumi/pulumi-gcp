@@ -5,6 +5,7 @@ package com.pulumi.gcp.monitoring.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -24,10 +25,9 @@ public final class AlertPolicyConditionConditionPrometheusQueryLanguage {
      * This field is optional. If this field is not empty, then it must be a
      * valid Prometheus label name.
      * 
-     * ***
-     * 
      */
     private @Nullable String alertRule;
+    private @Nullable Boolean disableMetricValidation;
     /**
      * @return Alerts are considered firing once their PromQL expression evaluated
      * to be &#34;true&#34; for this long. Alerts whose PromQL expression was not
@@ -86,11 +86,12 @@ public final class AlertPolicyConditionConditionPrometheusQueryLanguage {
      * This field is optional. If this field is not empty, then it must be a
      * valid Prometheus label name.
      * 
-     * ***
-     * 
      */
     public Optional<String> alertRule() {
         return Optional.ofNullable(this.alertRule);
+    }
+    public Optional<Boolean> disableMetricValidation() {
+        return Optional.ofNullable(this.disableMetricValidation);
     }
     /**
      * @return Alerts are considered firing once their PromQL expression evaluated
@@ -158,6 +159,7 @@ public final class AlertPolicyConditionConditionPrometheusQueryLanguage {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable String alertRule;
+        private @Nullable Boolean disableMetricValidation;
         private @Nullable String duration;
         private @Nullable String evaluationInterval;
         private @Nullable Map<String,String> labels;
@@ -167,6 +169,7 @@ public final class AlertPolicyConditionConditionPrometheusQueryLanguage {
         public Builder(AlertPolicyConditionConditionPrometheusQueryLanguage defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.alertRule = defaults.alertRule;
+    	      this.disableMetricValidation = defaults.disableMetricValidation;
     	      this.duration = defaults.duration;
     	      this.evaluationInterval = defaults.evaluationInterval;
     	      this.labels = defaults.labels;
@@ -178,6 +181,12 @@ public final class AlertPolicyConditionConditionPrometheusQueryLanguage {
         public Builder alertRule(@Nullable String alertRule) {
 
             this.alertRule = alertRule;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder disableMetricValidation(@Nullable Boolean disableMetricValidation) {
+
+            this.disableMetricValidation = disableMetricValidation;
             return this;
         }
         @CustomType.Setter
@@ -215,6 +224,7 @@ public final class AlertPolicyConditionConditionPrometheusQueryLanguage {
         public AlertPolicyConditionConditionPrometheusQueryLanguage build() {
             final var _resultValue = new AlertPolicyConditionConditionPrometheusQueryLanguage();
             _resultValue.alertRule = alertRule;
+            _resultValue.disableMetricValidation = disableMetricValidation;
             _resultValue.duration = duration;
             _resultValue.evaluationInterval = evaluationInterval;
             _resultValue.labels = labels;

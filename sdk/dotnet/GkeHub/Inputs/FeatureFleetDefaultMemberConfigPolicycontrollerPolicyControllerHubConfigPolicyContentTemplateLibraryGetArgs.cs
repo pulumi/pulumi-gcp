@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.GkeHub.Inputs
     {
         /// <summary>
         /// Configures the manner in which the template library is installed on the cluster.
-        /// Possible values are: `INSTALATION_UNSPECIFIED`, `NOT_INSTALLED`, `ALL`.
+        /// Possible values are: `INSTALLATION_UNSPECIFIED`, `NOT_INSTALLED`, `ALL`.
         /// </summary>
         [Input("installation")]
         public Input<string>? Installation { get; set; }

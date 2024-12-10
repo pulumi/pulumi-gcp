@@ -724,6 +724,8 @@ class Instance(pulumi.CustomResource):
                  reserved_ip_range: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        A Parallelstore Instance.
+
         ## Example Usage
 
         ### Parallelstore Instance Basic
@@ -853,6 +855,8 @@ class Instance(pulumi.CustomResource):
                  args: InstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A Parallelstore Instance.
+
         ## Example Usage
 
         ### Parallelstore Instance Basic

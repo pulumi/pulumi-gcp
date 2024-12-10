@@ -97,7 +97,7 @@ public final class SearchEngineArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore:
      * If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
-     * Default value: &#34;GENERIC&#34; Possible values: [&#34;GENERIC&#34;, &#34;MEDIA&#34;]
+     * Default value: &#34;GENERIC&#34; Possible values: [&#34;GENERIC&#34;, &#34;MEDIA&#34;, &#34;HEALTHCARE_FHIR&#34;]
      * 
      */
     @Import(name="industryVertical")
@@ -106,7 +106,7 @@ public final class SearchEngineArgs extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore:
      * If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
-     * Default value: &#34;GENERIC&#34; Possible values: [&#34;GENERIC&#34;, &#34;MEDIA&#34;]
+     * Default value: &#34;GENERIC&#34; Possible values: [&#34;GENERIC&#34;, &#34;MEDIA&#34;, &#34;HEALTHCARE_FHIR&#34;]
      * 
      */
     public Optional<Output<String>> industryVertical() {
@@ -302,7 +302,7 @@ public final class SearchEngineArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param industryVertical The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore:
          * If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
-         * Default value: &#34;GENERIC&#34; Possible values: [&#34;GENERIC&#34;, &#34;MEDIA&#34;]
+         * Default value: &#34;GENERIC&#34; Possible values: [&#34;GENERIC&#34;, &#34;MEDIA&#34;, &#34;HEALTHCARE_FHIR&#34;]
          * 
          * @return builder
          * 
@@ -315,7 +315,7 @@ public final class SearchEngineArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param industryVertical The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore:
          * If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
-         * Default value: &#34;GENERIC&#34; Possible values: [&#34;GENERIC&#34;, &#34;MEDIA&#34;]
+         * Default value: &#34;GENERIC&#34; Possible values: [&#34;GENERIC&#34;, &#34;MEDIA&#34;, &#34;HEALTHCARE_FHIR&#34;]
          * 
          * @return builder
          * 

@@ -39,6 +39,8 @@ __all__ = [
     'BatchPysparkBatchArgsDict',
     'BatchRuntimeConfigArgs',
     'BatchRuntimeConfigArgsDict',
+    'BatchRuntimeConfigAutotuningConfigArgs',
+    'BatchRuntimeConfigAutotuningConfigArgsDict',
     'BatchRuntimeInfoArgs',
     'BatchRuntimeInfoArgsDict',
     'BatchRuntimeInfoApproximateUsageArgs',
@@ -77,6 +79,8 @@ __all__ = [
     'ClusterClusterConfigEndpointConfigArgsDict',
     'ClusterClusterConfigGceClusterConfigArgs',
     'ClusterClusterConfigGceClusterConfigArgsDict',
+    'ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigArgs',
+    'ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigArgsDict',
     'ClusterClusterConfigGceClusterConfigNodeGroupAffinityArgs',
     'ClusterClusterConfigGceClusterConfigNodeGroupAffinityArgsDict',
     'ClusterClusterConfigGceClusterConfigReservationAffinityArgs',
@@ -105,6 +109,8 @@ __all__ = [
     'ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgsDict',
     'ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs',
     'ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgsDict',
+    'ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs',
+    'ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgsDict',
     'ClusterClusterConfigSecurityConfigArgs',
     'ClusterClusterConfigSecurityConfigArgsDict',
     'ClusterClusterConfigSecurityConfigKerberosConfigArgs',
@@ -1367,6 +1373,15 @@ class BatchPysparkBatchArgs:
 
 if not MYPY:
     class BatchRuntimeConfigArgsDict(TypedDict):
+        autotuning_config: NotRequired[pulumi.Input['BatchRuntimeConfigAutotuningConfigArgsDict']]
+        """
+        Optional. Autotuning configuration of the workload.
+        Structure is documented below.
+        """
+        cohort: NotRequired[pulumi.Input[str]]
+        """
+        Optional. Cohort identifier. Identifies families of the workloads having the same shape, e.g. daily ETL jobs.
+        """
         container_image: NotRequired[pulumi.Input[str]]
         """
         Optional custom container image for the job runtime environment. If not specified, a default container image will be used.
@@ -1390,17 +1405,26 @@ elif False:
 @pulumi.input_type
 class BatchRuntimeConfigArgs:
     def __init__(__self__, *,
+                 autotuning_config: Optional[pulumi.Input['BatchRuntimeConfigAutotuningConfigArgs']] = None,
+                 cohort: Optional[pulumi.Input[str]] = None,
                  container_image: Optional[pulumi.Input[str]] = None,
                  effective_properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  properties: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  version: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input['BatchRuntimeConfigAutotuningConfigArgs'] autotuning_config: Optional. Autotuning configuration of the workload.
+               Structure is documented below.
+        :param pulumi.Input[str] cohort: Optional. Cohort identifier. Identifies families of the workloads having the same shape, e.g. daily ETL jobs.
         :param pulumi.Input[str] container_image: Optional custom container image for the job runtime environment. If not specified, a default container image will be used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_properties: (Output)
                A mapping of property names to values, which are used to configure workload execution.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] properties: A mapping of property names to values, which are used to configure workload execution.
         :param pulumi.Input[str] version: Version of the batch runtime.
         """
+        if autotuning_config is not None:
+            pulumi.set(__self__, "autotuning_config", autotuning_config)
+        if cohort is not None:
+            pulumi.set(__self__, "cohort", cohort)
         if container_image is not None:
             pulumi.set(__self__, "container_image", container_image)
         if effective_properties is not None:
@@ -1409,6 +1433,31 @@ class BatchRuntimeConfigArgs:
             pulumi.set(__self__, "properties", properties)
         if version is not None:
             pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="autotuningConfig")
+    def autotuning_config(self) -> Optional[pulumi.Input['BatchRuntimeConfigAutotuningConfigArgs']]:
+        """
+        Optional. Autotuning configuration of the workload.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "autotuning_config")
+
+    @autotuning_config.setter
+    def autotuning_config(self, value: Optional[pulumi.Input['BatchRuntimeConfigAutotuningConfigArgs']]):
+        pulumi.set(self, "autotuning_config", value)
+
+    @property
+    @pulumi.getter
+    def cohort(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Cohort identifier. Identifies families of the workloads having the same shape, e.g. daily ETL jobs.
+        """
+        return pulumi.get(self, "cohort")
+
+    @cohort.setter
+    def cohort(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cohort", value)
 
     @property
     @pulumi.getter(name="containerImage")
@@ -1458,6 +1507,41 @@ class BatchRuntimeConfigArgs:
     @version.setter
     def version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "version", value)
+
+
+if not MYPY:
+    class BatchRuntimeConfigAutotuningConfigArgsDict(TypedDict):
+        scenarios: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Optional. Scenarios for which tunings are applied.
+        Each value may be one of: `SCALING`, `BROADCAST_HASH_JOIN`, `MEMORY`.
+        """
+elif False:
+    BatchRuntimeConfigAutotuningConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class BatchRuntimeConfigAutotuningConfigArgs:
+    def __init__(__self__, *,
+                 scenarios: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] scenarios: Optional. Scenarios for which tunings are applied.
+               Each value may be one of: `SCALING`, `BROADCAST_HASH_JOIN`, `MEMORY`.
+        """
+        if scenarios is not None:
+            pulumi.set(__self__, "scenarios", scenarios)
+
+    @property
+    @pulumi.getter
+    def scenarios(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. Scenarios for which tunings are applied.
+        Each value may be one of: `SCALING`, `BROADCAST_HASH_JOIN`, `MEMORY`.
+        """
+        return pulumi.get(self, "scenarios")
+
+    @scenarios.setter
+    def scenarios(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "scenarios", value)
 
 
 if not MYPY:
@@ -3390,6 +3474,10 @@ class ClusterClusterConfigEndpointConfigArgs:
 
 if not MYPY:
     class ClusterClusterConfigGceClusterConfigArgsDict(TypedDict):
+        confidential_instance_config: NotRequired[pulumi.Input['ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigArgsDict']]
+        """
+        Confidential Instance Config for clusters using [Confidential VMs](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/confidential-compute)
+        """
         internal_ip_only: NotRequired[pulumi.Input[bool]]
         """
         By default, clusters are not restricted to internal IP addresses,
@@ -3462,6 +3550,7 @@ elif False:
 @pulumi.input_type
 class ClusterClusterConfigGceClusterConfigArgs:
     def __init__(__self__, *,
+                 confidential_instance_config: Optional[pulumi.Input['ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigArgs']] = None,
                  internal_ip_only: Optional[pulumi.Input[bool]] = None,
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  network: Optional[pulumi.Input[str]] = None,
@@ -3474,6 +3563,7 @@ class ClusterClusterConfigGceClusterConfigArgs:
                  tags: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
+        :param pulumi.Input['ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigArgs'] confidential_instance_config: Confidential Instance Config for clusters using [Confidential VMs](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/confidential-compute)
         :param pulumi.Input[bool] internal_ip_only: By default, clusters are not restricted to internal IP addresses,
                and will have ephemeral external IP addresses assigned to each instance. If set to true, all
                instances in the cluster will only have internal IP addresses. Note: Private Google Access
@@ -3508,6 +3598,8 @@ class ClusterClusterConfigGceClusterConfigArgs:
                which computing resources are available for use with other configs such as
                `cluster_config.master_config.machine_type` and `cluster_config.worker_config.machine_type`.
         """
+        if confidential_instance_config is not None:
+            pulumi.set(__self__, "confidential_instance_config", confidential_instance_config)
         if internal_ip_only is not None:
             pulumi.set(__self__, "internal_ip_only", internal_ip_only)
         if metadata is not None:
@@ -3530,6 +3622,18 @@ class ClusterClusterConfigGceClusterConfigArgs:
             pulumi.set(__self__, "tags", tags)
         if zone is not None:
             pulumi.set(__self__, "zone", zone)
+
+    @property
+    @pulumi.getter(name="confidentialInstanceConfig")
+    def confidential_instance_config(self) -> Optional[pulumi.Input['ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigArgs']]:
+        """
+        Confidential Instance Config for clusters using [Confidential VMs](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/confidential-compute)
+        """
+        return pulumi.get(self, "confidential_instance_config")
+
+    @confidential_instance_config.setter
+    def confidential_instance_config(self, value: Optional[pulumi.Input['ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigArgs']]):
+        pulumi.set(self, "confidential_instance_config", value)
 
     @property
     @pulumi.getter(name="internalIpOnly")
@@ -3684,6 +3788,38 @@ class ClusterClusterConfigGceClusterConfigArgs:
     @zone.setter
     def zone(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "zone", value)
+
+
+if not MYPY:
+    class ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigArgsDict(TypedDict):
+        enable_confidential_compute: NotRequired[pulumi.Input[bool]]
+        """
+        Defines whether the instance should have confidential compute enabled.
+        """
+elif False:
+    ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterClusterConfigGceClusterConfigConfidentialInstanceConfigArgs:
+    def __init__(__self__, *,
+                 enable_confidential_compute: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] enable_confidential_compute: Defines whether the instance should have confidential compute enabled.
+        """
+        if enable_confidential_compute is not None:
+            pulumi.set(__self__, "enable_confidential_compute", enable_confidential_compute)
+
+    @property
+    @pulumi.getter(name="enableConfidentialCompute")
+    def enable_confidential_compute(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Defines whether the instance should have confidential compute enabled.
+        """
+        return pulumi.get(self, "enable_confidential_compute")
+
+    @enable_confidential_compute.setter
+    def enable_confidential_compute(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_confidential_compute", value)
 
 
 if not MYPY:
@@ -4676,6 +4812,10 @@ if not MYPY:
         """
         A list of instance selection results in the group.
         """
+        provisioning_model_mix: NotRequired[pulumi.Input['ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgsDict']]
+        """
+        Defines how Dataproc should create VMs with a mixture of provisioning models.
+        """
 elif False:
     ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -4683,15 +4823,19 @@ elif False:
 class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyArgs:
     def __init__(__self__, *,
                  instance_selection_lists: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs']]]] = None,
-                 instance_selection_results: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs']]]] = None):
+                 instance_selection_results: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs']]]] = None,
+                 provisioning_model_mix: Optional[pulumi.Input['ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs']] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionListArgs']]] instance_selection_lists: List of instance selection options that the group will use when creating new VMs.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs']]] instance_selection_results: A list of instance selection results in the group.
+        :param pulumi.Input['ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs'] provisioning_model_mix: Defines how Dataproc should create VMs with a mixture of provisioning models.
         """
         if instance_selection_lists is not None:
             pulumi.set(__self__, "instance_selection_lists", instance_selection_lists)
         if instance_selection_results is not None:
             pulumi.set(__self__, "instance_selection_results", instance_selection_results)
+        if provisioning_model_mix is not None:
+            pulumi.set(__self__, "provisioning_model_mix", provisioning_model_mix)
 
     @property
     @pulumi.getter(name="instanceSelectionLists")
@@ -4716,6 +4860,18 @@ class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyArgs:
     @instance_selection_results.setter
     def instance_selection_results(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResultArgs']]]]):
         pulumi.set(self, "instance_selection_results", value)
+
+    @property
+    @pulumi.getter(name="provisioningModelMix")
+    def provisioning_model_mix(self) -> Optional[pulumi.Input['ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs']]:
+        """
+        Defines how Dataproc should create VMs with a mixture of provisioning models.
+        """
+        return pulumi.get(self, "provisioning_model_mix")
+
+    @provisioning_model_mix.setter
+    def provisioning_model_mix(self, value: Optional[pulumi.Input['ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs']]):
+        pulumi.set(self, "provisioning_model_mix", value)
 
 
 if not MYPY:
@@ -4826,6 +4982,58 @@ class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstan
     @vm_count.setter
     def vm_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "vm_count", value)
+
+
+if not MYPY:
+    class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgsDict(TypedDict):
+        standard_capacity_base: NotRequired[pulumi.Input[int]]
+        """
+        The base capacity that will always use Standard VMs to avoid risk of more preemption than the minimum capacity you need.
+        """
+        standard_capacity_percent_above_base: NotRequired[pulumi.Input[int]]
+        """
+        The percentage of target capacity that should use Standard VM. The remaining percentage will use Spot VMs.
+        """
+elif False:
+    ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMixArgs:
+    def __init__(__self__, *,
+                 standard_capacity_base: Optional[pulumi.Input[int]] = None,
+                 standard_capacity_percent_above_base: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] standard_capacity_base: The base capacity that will always use Standard VMs to avoid risk of more preemption than the minimum capacity you need.
+        :param pulumi.Input[int] standard_capacity_percent_above_base: The percentage of target capacity that should use Standard VM. The remaining percentage will use Spot VMs.
+        """
+        if standard_capacity_base is not None:
+            pulumi.set(__self__, "standard_capacity_base", standard_capacity_base)
+        if standard_capacity_percent_above_base is not None:
+            pulumi.set(__self__, "standard_capacity_percent_above_base", standard_capacity_percent_above_base)
+
+    @property
+    @pulumi.getter(name="standardCapacityBase")
+    def standard_capacity_base(self) -> Optional[pulumi.Input[int]]:
+        """
+        The base capacity that will always use Standard VMs to avoid risk of more preemption than the minimum capacity you need.
+        """
+        return pulumi.get(self, "standard_capacity_base")
+
+    @standard_capacity_base.setter
+    def standard_capacity_base(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "standard_capacity_base", value)
+
+    @property
+    @pulumi.getter(name="standardCapacityPercentAboveBase")
+    def standard_capacity_percent_above_base(self) -> Optional[pulumi.Input[int]]:
+        """
+        The percentage of target capacity that should use Standard VM. The remaining percentage will use Spot VMs.
+        """
+        return pulumi.get(self, "standard_capacity_percent_above_base")
+
+    @standard_capacity_percent_above_base.setter
+    def standard_capacity_percent_above_base(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "standard_capacity_percent_above_base", value)
 
 
 if not MYPY:

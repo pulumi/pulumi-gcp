@@ -16,6 +16,12 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'ClusterCrossClusterReplicationConfig',
+    'ClusterCrossClusterReplicationConfigMembership',
+    'ClusterCrossClusterReplicationConfigMembershipPrimaryCluster',
+    'ClusterCrossClusterReplicationConfigMembershipSecondaryCluster',
+    'ClusterCrossClusterReplicationConfigPrimaryCluster',
+    'ClusterCrossClusterReplicationConfigSecondaryCluster',
     'ClusterDiscoveryEndpoint',
     'ClusterDiscoveryEndpointPscConfig',
     'ClusterMaintenancePolicy',
@@ -45,6 +51,302 @@ __all__ = [
     'GetInstancePersistenceConfigResult',
     'GetInstanceServerCaCertResult',
 ]
+
+@pulumi.output_type
+class ClusterCrossClusterReplicationConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "clusterRole":
+            suggest = "cluster_role"
+        elif key == "primaryCluster":
+            suggest = "primary_cluster"
+        elif key == "secondaryClusters":
+            suggest = "secondary_clusters"
+        elif key == "updateTime":
+            suggest = "update_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterCrossClusterReplicationConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterCrossClusterReplicationConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterCrossClusterReplicationConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 cluster_role: Optional[str] = None,
+                 memberships: Optional[Sequence['outputs.ClusterCrossClusterReplicationConfigMembership']] = None,
+                 primary_cluster: Optional['outputs.ClusterCrossClusterReplicationConfigPrimaryCluster'] = None,
+                 secondary_clusters: Optional[Sequence['outputs.ClusterCrossClusterReplicationConfigSecondaryCluster']] = None,
+                 update_time: Optional[str] = None):
+        """
+        :param str cluster_role: The role of the cluster in cross cluster replication. Supported values are:
+               1. `CLUSTER_ROLE_UNSPECIFIED`: This is an independent cluster that has never participated in cross cluster replication. It allows both reads and writes.
+               1. `NONE`: This is an independent cluster that previously participated in cross cluster replication(either as a `PRIMARY` or `SECONDARY` cluster). It allows both reads and writes.
+               1. `PRIMARY`: This cluster serves as the replication source for secondary clusters that are replicating from it. Any data written to it is automatically replicated to its secondary clusters. It allows both reads and writes.
+               1. `SECONDARY`: This cluster replicates data from the primary cluster. It allows only reads.
+               Possible values are: `CLUSTER_ROLE_UNSPECIFIED`, `NONE`, `PRIMARY`, `SECONDARY`.
+        :param Sequence['ClusterCrossClusterReplicationConfigMembershipArgs'] memberships: (Output)
+               An output only view of all the member clusters participating in cross cluster replication. This field is populated for all the member clusters irrespective of their cluster role.
+               Structure is documented below.
+        :param 'ClusterCrossClusterReplicationConfigPrimaryClusterArgs' primary_cluster: Details of the primary cluster that is used as the replication source for this secondary cluster. This is allowed to be set only for clusters whose cluster role is of type `SECONDARY`.
+               Structure is documented below.
+        :param Sequence['ClusterCrossClusterReplicationConfigSecondaryClusterArgs'] secondary_clusters: List of secondary clusters that are replicating from this primary cluster. This is allowed to be set only for clusters whose cluster role is of type `PRIMARY`.
+               Structure is documented below.
+        :param str update_time: (Output)
+               The last time cross cluster replication config was updated.
+        """
+        if cluster_role is not None:
+            pulumi.set(__self__, "cluster_role", cluster_role)
+        if memberships is not None:
+            pulumi.set(__self__, "memberships", memberships)
+        if primary_cluster is not None:
+            pulumi.set(__self__, "primary_cluster", primary_cluster)
+        if secondary_clusters is not None:
+            pulumi.set(__self__, "secondary_clusters", secondary_clusters)
+        if update_time is not None:
+            pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter(name="clusterRole")
+    def cluster_role(self) -> Optional[str]:
+        """
+        The role of the cluster in cross cluster replication. Supported values are:
+        1. `CLUSTER_ROLE_UNSPECIFIED`: This is an independent cluster that has never participated in cross cluster replication. It allows both reads and writes.
+        1. `NONE`: This is an independent cluster that previously participated in cross cluster replication(either as a `PRIMARY` or `SECONDARY` cluster). It allows both reads and writes.
+        1. `PRIMARY`: This cluster serves as the replication source for secondary clusters that are replicating from it. Any data written to it is automatically replicated to its secondary clusters. It allows both reads and writes.
+        1. `SECONDARY`: This cluster replicates data from the primary cluster. It allows only reads.
+        Possible values are: `CLUSTER_ROLE_UNSPECIFIED`, `NONE`, `PRIMARY`, `SECONDARY`.
+        """
+        return pulumi.get(self, "cluster_role")
+
+    @property
+    @pulumi.getter
+    def memberships(self) -> Optional[Sequence['outputs.ClusterCrossClusterReplicationConfigMembership']]:
+        """
+        (Output)
+        An output only view of all the member clusters participating in cross cluster replication. This field is populated for all the member clusters irrespective of their cluster role.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "memberships")
+
+    @property
+    @pulumi.getter(name="primaryCluster")
+    def primary_cluster(self) -> Optional['outputs.ClusterCrossClusterReplicationConfigPrimaryCluster']:
+        """
+        Details of the primary cluster that is used as the replication source for this secondary cluster. This is allowed to be set only for clusters whose cluster role is of type `SECONDARY`.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "primary_cluster")
+
+    @property
+    @pulumi.getter(name="secondaryClusters")
+    def secondary_clusters(self) -> Optional[Sequence['outputs.ClusterCrossClusterReplicationConfigSecondaryCluster']]:
+        """
+        List of secondary clusters that are replicating from this primary cluster. This is allowed to be set only for clusters whose cluster role is of type `PRIMARY`.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "secondary_clusters")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> Optional[str]:
+        """
+        (Output)
+        The last time cross cluster replication config was updated.
+        """
+        return pulumi.get(self, "update_time")
+
+
+@pulumi.output_type
+class ClusterCrossClusterReplicationConfigMembership(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "primaryClusters":
+            suggest = "primary_clusters"
+        elif key == "secondaryClusters":
+            suggest = "secondary_clusters"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ClusterCrossClusterReplicationConfigMembership. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ClusterCrossClusterReplicationConfigMembership.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ClusterCrossClusterReplicationConfigMembership.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 primary_clusters: Optional[Sequence['outputs.ClusterCrossClusterReplicationConfigMembershipPrimaryCluster']] = None,
+                 secondary_clusters: Optional[Sequence['outputs.ClusterCrossClusterReplicationConfigMembershipSecondaryCluster']] = None):
+        """
+        :param Sequence['ClusterCrossClusterReplicationConfigMembershipPrimaryClusterArgs'] primary_clusters: Details of the primary cluster that is used as the replication source for all the secondary clusters.
+        :param Sequence['ClusterCrossClusterReplicationConfigMembershipSecondaryClusterArgs'] secondary_clusters: List of secondary clusters that are replicating from the primary cluster.
+        """
+        if primary_clusters is not None:
+            pulumi.set(__self__, "primary_clusters", primary_clusters)
+        if secondary_clusters is not None:
+            pulumi.set(__self__, "secondary_clusters", secondary_clusters)
+
+    @property
+    @pulumi.getter(name="primaryClusters")
+    def primary_clusters(self) -> Optional[Sequence['outputs.ClusterCrossClusterReplicationConfigMembershipPrimaryCluster']]:
+        """
+        Details of the primary cluster that is used as the replication source for all the secondary clusters.
+        """
+        return pulumi.get(self, "primary_clusters")
+
+    @property
+    @pulumi.getter(name="secondaryClusters")
+    def secondary_clusters(self) -> Optional[Sequence['outputs.ClusterCrossClusterReplicationConfigMembershipSecondaryCluster']]:
+        """
+        List of secondary clusters that are replicating from the primary cluster.
+        """
+        return pulumi.get(self, "secondary_clusters")
+
+
+@pulumi.output_type
+class ClusterCrossClusterReplicationConfigMembershipPrimaryCluster(dict):
+    def __init__(__self__, *,
+                 cluster: Optional[str] = None,
+                 uid: Optional[str] = None):
+        """
+        :param str cluster: The full resource path of the primary cluster in the format: projects/{project}/locations/{region}/clusters/{cluster-id}
+        :param str uid: (Output)
+               The unique id of the primary cluster.
+        """
+        if cluster is not None:
+            pulumi.set(__self__, "cluster", cluster)
+        if uid is not None:
+            pulumi.set(__self__, "uid", uid)
+
+    @property
+    @pulumi.getter
+    def cluster(self) -> Optional[str]:
+        """
+        The full resource path of the primary cluster in the format: projects/{project}/locations/{region}/clusters/{cluster-id}
+        """
+        return pulumi.get(self, "cluster")
+
+    @property
+    @pulumi.getter
+    def uid(self) -> Optional[str]:
+        """
+        (Output)
+        The unique id of the primary cluster.
+        """
+        return pulumi.get(self, "uid")
+
+
+@pulumi.output_type
+class ClusterCrossClusterReplicationConfigMembershipSecondaryCluster(dict):
+    def __init__(__self__, *,
+                 cluster: Optional[str] = None,
+                 uid: Optional[str] = None):
+        """
+        :param str cluster: (Output)
+               The full resource path of the secondary cluster in the format: projects/{project}/locations/{region}/clusters/{cluster-id}
+        :param str uid: (Output)
+               The unique id of the secondary cluster.
+        """
+        if cluster is not None:
+            pulumi.set(__self__, "cluster", cluster)
+        if uid is not None:
+            pulumi.set(__self__, "uid", uid)
+
+    @property
+    @pulumi.getter
+    def cluster(self) -> Optional[str]:
+        """
+        (Output)
+        The full resource path of the secondary cluster in the format: projects/{project}/locations/{region}/clusters/{cluster-id}
+        """
+        return pulumi.get(self, "cluster")
+
+    @property
+    @pulumi.getter
+    def uid(self) -> Optional[str]:
+        """
+        (Output)
+        The unique id of the secondary cluster.
+        """
+        return pulumi.get(self, "uid")
+
+
+@pulumi.output_type
+class ClusterCrossClusterReplicationConfigPrimaryCluster(dict):
+    def __init__(__self__, *,
+                 cluster: Optional[str] = None,
+                 uid: Optional[str] = None):
+        """
+        :param str cluster: The full resource path of the primary cluster in the format: projects/{project}/locations/{region}/clusters/{cluster-id}
+        :param str uid: (Output)
+               The unique id of the primary cluster.
+        """
+        if cluster is not None:
+            pulumi.set(__self__, "cluster", cluster)
+        if uid is not None:
+            pulumi.set(__self__, "uid", uid)
+
+    @property
+    @pulumi.getter
+    def cluster(self) -> Optional[str]:
+        """
+        The full resource path of the primary cluster in the format: projects/{project}/locations/{region}/clusters/{cluster-id}
+        """
+        return pulumi.get(self, "cluster")
+
+    @property
+    @pulumi.getter
+    def uid(self) -> Optional[str]:
+        """
+        (Output)
+        The unique id of the primary cluster.
+        """
+        return pulumi.get(self, "uid")
+
+
+@pulumi.output_type
+class ClusterCrossClusterReplicationConfigSecondaryCluster(dict):
+    def __init__(__self__, *,
+                 cluster: Optional[str] = None,
+                 uid: Optional[str] = None):
+        """
+        :param str cluster: (Output)
+               The full resource path of the secondary cluster in the format: projects/{project}/locations/{region}/clusters/{cluster-id}
+        :param str uid: (Output)
+               The unique id of the secondary cluster.
+        """
+        if cluster is not None:
+            pulumi.set(__self__, "cluster", cluster)
+        if uid is not None:
+            pulumi.set(__self__, "uid", uid)
+
+    @property
+    @pulumi.getter
+    def cluster(self) -> Optional[str]:
+        """
+        (Output)
+        The full resource path of the secondary cluster in the format: projects/{project}/locations/{region}/clusters/{cluster-id}
+        """
+        return pulumi.get(self, "cluster")
+
+    @property
+    @pulumi.getter
+    def uid(self) -> Optional[str]:
+        """
+        (Output)
+        The unique id of the secondary cluster.
+        """
+        return pulumi.get(self, "uid")
+
 
 @pulumi.output_type
 class ClusterDiscoveryEndpoint(dict):
@@ -537,7 +839,7 @@ class ClusterPersistenceConfigAofConfig(dict):
                  append_fsync: Optional[str] = None):
         """
         :param str append_fsync: Optional. Available fsync modes.
-               - NO - Do not explicilty call fsync(). Rely on OS defaults.
+               - NO - Do not explicitly call fsync(). Rely on OS defaults.
                - EVERYSEC - Call fsync() once per second in a background thread. A balance between performance and durability.
                - ALWAYS - Call fsync() for earch write command.
                Possible values are: `APPEND_FSYNC_UNSPECIFIED`, `NO`, `EVERYSEC`, `ALWAYS`.
@@ -550,7 +852,7 @@ class ClusterPersistenceConfigAofConfig(dict):
     def append_fsync(self) -> Optional[str]:
         """
         Optional. Available fsync modes.
-        - NO - Do not explicilty call fsync(). Rely on OS defaults.
+        - NO - Do not explicitly call fsync(). Rely on OS defaults.
         - EVERYSEC - Call fsync() once per second in a background thread. A balance between performance and durability.
         - ALWAYS - Call fsync() for earch write command.
         Possible values are: `APPEND_FSYNC_UNSPECIFIED`, `NO`, `EVERYSEC`, `ALWAYS`.

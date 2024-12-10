@@ -5,6 +5,7 @@ package com.pulumi.gcp.redis.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.redis.inputs.ClusterCrossClusterReplicationConfigArgs;
 import com.pulumi.gcp.redis.inputs.ClusterDiscoveryEndpointArgs;
 import com.pulumi.gcp.redis.inputs.ClusterMaintenancePolicyArgs;
 import com.pulumi.gcp.redis.inputs.ClusterMaintenanceScheduleArgs;
@@ -64,6 +65,21 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<String>> createTime() {
         return Optional.ofNullable(this.createTime);
+    }
+
+    /**
+     * Cross cluster replication config
+     * 
+     */
+    @Import(name="crossClusterReplicationConfig")
+    private @Nullable Output<ClusterCrossClusterReplicationConfigArgs> crossClusterReplicationConfig;
+
+    /**
+     * @return Cross cluster replication config
+     * 
+     */
+    public Optional<Output<ClusterCrossClusterReplicationConfigArgs>> crossClusterReplicationConfig() {
+        return Optional.ofNullable(this.crossClusterReplicationConfig);
     }
 
     /**
@@ -410,6 +426,7 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
     private ClusterState(ClusterState $) {
         this.authorizationMode = $.authorizationMode;
         this.createTime = $.createTime;
+        this.crossClusterReplicationConfig = $.crossClusterReplicationConfig;
         this.deletionProtectionEnabled = $.deletionProtectionEnabled;
         this.discoveryEndpoints = $.discoveryEndpoints;
         this.maintenancePolicy = $.maintenancePolicy;
@@ -499,6 +516,27 @@ public final class ClusterState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder createTime(String createTime) {
             return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param crossClusterReplicationConfig Cross cluster replication config
+         * 
+         * @return builder
+         * 
+         */
+        public Builder crossClusterReplicationConfig(@Nullable Output<ClusterCrossClusterReplicationConfigArgs> crossClusterReplicationConfig) {
+            $.crossClusterReplicationConfig = crossClusterReplicationConfig;
+            return this;
+        }
+
+        /**
+         * @param crossClusterReplicationConfig Cross cluster replication config
+         * 
+         * @return builder
+         * 
+         */
+        public Builder crossClusterReplicationConfig(ClusterCrossClusterReplicationConfigArgs crossClusterReplicationConfig) {
+            return crossClusterReplicationConfig(Output.of(crossClusterReplicationConfig));
         }
 
         /**

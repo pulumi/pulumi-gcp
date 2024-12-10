@@ -172,7 +172,7 @@ export class AppGroup extends pulumi.CustomResource {
      */
     public readonly attributes!: pulumi.Output<outputs.apigee.AppGroupAttribute[] | undefined>;
     /**
-     * Channel identifier identifies the owner maintaing this grouping.
+     * Channel identifier identifies the owner maintaining this grouping.
      */
     public readonly channelId!: pulumi.Output<string | undefined>;
     /**
@@ -273,7 +273,7 @@ export interface AppGroupState {
      */
     attributes?: pulumi.Input<pulumi.Input<inputs.apigee.AppGroupAttribute>[]>;
     /**
-     * Channel identifier identifies the owner maintaing this grouping.
+     * Channel identifier identifies the owner maintaining this grouping.
      */
     channelId?: pulumi.Input<string>;
     /**
@@ -325,7 +325,7 @@ export interface AppGroupArgs {
      */
     attributes?: pulumi.Input<pulumi.Input<inputs.apigee.AppGroupAttribute>[]>;
     /**
-     * Channel identifier identifies the owner maintaing this grouping.
+     * Channel identifier identifies the owner maintaining this grouping.
      */
     channelId?: pulumi.Input<string>;
     /**

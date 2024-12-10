@@ -475,6 +475,76 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Artifact Registry Repository Remote Common Repository With Artifact Registry Uri
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const upstreamRepo = new gcp.artifactregistry.Repository("upstream_repo", {
+ *     location: "us-central1",
+ *     repositoryId: "example-upstream-repo",
+ *     description: "example upstream repository",
+ *     format: "DOCKER",
+ * });
+ * const my_repo = new gcp.artifactregistry.Repository("my-repo", {
+ *     location: "us-central1",
+ *     repositoryId: "example-common-remote",
+ *     description: "example remote common repository with docker upstream",
+ *     format: "DOCKER",
+ *     mode: "REMOTE_REPOSITORY",
+ *     remoteRepositoryConfig: {
+ *         description: "pull-through cache of another Artifact Registry repository by URL",
+ *         commonRepository: {
+ *             uri: "https://us-central1-docker.pkg.dev//example-upstream-repo",
+ *         },
+ *     },
+ * });
+ * ```
+ * ### Artifact Registry Repository Remote Common Repository With Custom Upstream
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const example_remote_secret = new gcp.secretmanager.Secret("example-remote-secret", {
+ *     secretId: "example-secret",
+ *     replication: {
+ *         auto: {},
+ *     },
+ * });
+ * const example_remote_secretVersion = new gcp.secretmanager.SecretVersion("example-remote-secret_version", {
+ *     secret: example_remote_secret.id,
+ *     secretData: "remote-password",
+ * });
+ * const secret_access = new gcp.secretmanager.SecretIamMember("secret-access", {
+ *     secretId: example_remote_secret.id,
+ *     role: "roles/secretmanager.secretAccessor",
+ *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-artifactregistry.iam.gserviceaccount.com`),
+ * });
+ * const my_repo = new gcp.artifactregistry.Repository("my-repo", {
+ *     location: "us-central1",
+ *     repositoryId: "example-docker-custom-remote",
+ *     description: "example remote custom docker repository with credentials",
+ *     format: "DOCKER",
+ *     mode: "REMOTE_REPOSITORY",
+ *     remoteRepositoryConfig: {
+ *         description: "custom common docker remote with credentials",
+ *         disableUpstreamValidation: true,
+ *         commonRepository: {
+ *             uri: "https://registry-1.docker.io",
+ *         },
+ *         upstreamCredentials: {
+ *             usernamePasswordCredentials: {
+ *                 username: "remote-username",
+ *                 passwordSecretVersion: example_remote_secretVersion.name,
+ *             },
+ *         },
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *

@@ -11,6 +11,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Provides access to Kubernetes Secret configuration for a given project, region and Composer Environment.
+//
 // ## Example Usage
 //
 // ```go

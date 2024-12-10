@@ -206,6 +206,10 @@ export class InstanceGroupManager extends pulumi.CustomResource {
      */
     public /*out*/ readonly instanceGroup!: pulumi.Output<string>;
     /**
+     * The unique identifier number for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly instanceGroupManagerId!: pulumi.Output<number>;
+    /**
      * The instance lifecycle policy for this managed instance group.
      */
     public readonly instanceLifecyclePolicy!: pulumi.Output<outputs.compute.InstanceGroupManagerInstanceLifecyclePolicy>;
@@ -336,6 +340,7 @@ export class InstanceGroupManager extends pulumi.CustomResource {
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["fingerprint"] = state ? state.fingerprint : undefined;
             resourceInputs["instanceGroup"] = state ? state.instanceGroup : undefined;
+            resourceInputs["instanceGroupManagerId"] = state ? state.instanceGroupManagerId : undefined;
             resourceInputs["instanceLifecyclePolicy"] = state ? state.instanceLifecyclePolicy : undefined;
             resourceInputs["listManagedInstancesResults"] = state ? state.listManagedInstancesResults : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -392,6 +397,7 @@ export class InstanceGroupManager extends pulumi.CustomResource {
             resourceInputs["creationTimestamp"] = undefined /*out*/;
             resourceInputs["fingerprint"] = undefined /*out*/;
             resourceInputs["instanceGroup"] = undefined /*out*/;
+            resourceInputs["instanceGroupManagerId"] = undefined /*out*/;
             resourceInputs["operation"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["statuses"] = undefined /*out*/;
@@ -442,6 +448,10 @@ export interface InstanceGroupManagerState {
      * The full URL of the instance group created by the manager.
      */
     instanceGroup?: pulumi.Input<string>;
+    /**
+     * The unique identifier number for the resource. This identifier is defined by the server.
+     */
+    instanceGroupManagerId?: pulumi.Input<number>;
     /**
      * The instance lifecycle policy for this managed instance group.
      */

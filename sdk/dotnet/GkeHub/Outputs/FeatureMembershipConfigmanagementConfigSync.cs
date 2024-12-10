@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.GkeHub.Outputs
         /// </summary>
         public readonly Outputs.FeatureMembershipConfigmanagementConfigSyncGit? Git;
         /// <summary>
-        /// The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA.
+        /// Deprecated: If Workload Identity Federation for GKE is enabled, Google Cloud Service Account is no longer needed for exporting Config Sync metrics: https://cloud.google.com/kubernetes-engine/enterprise/config-sync/docs/how-to/monitor-config-sync-cloud-monitoring#custom-monitoring.
         /// </summary>
         public readonly string? MetricsGcpServiceAccountEmail;
         /// <summary>
@@ -32,13 +32,17 @@ namespace Pulumi.Gcp.GkeHub.Outputs
         /// </summary>
         public readonly Outputs.FeatureMembershipConfigmanagementConfigSyncOci? Oci;
         /// <summary>
-        /// Supported from Config Sync versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to "false", disables the Config Sync admission webhook and does not prevent drifts.
+        /// Supported from Config Sync versions 1.10.0 onwards. Set to `true` to enable the Config Sync admission webhook to prevent drifts. If set to `false`, disables the Config Sync admission webhook and does not prevent drifts.
         /// </summary>
         public readonly bool? PreventDrift;
         /// <summary>
         /// Specifies whether the Config Sync Repo is in "hierarchical" or "unstructured" mode.
         /// </summary>
         public readonly string? SourceFormat;
+        /// <summary>
+        /// Set to `true` to stop syncing configurations for a single cluster. This field is only available on clusters using Config Sync [auto-upgrades](http://cloud/kubernetes-engine/enterprise/config-sync/docs/how-to/upgrade-config-sync#auto-upgrade-config) or on Config Sync version 1.20.0 or later. Defaults: `false`.
+        /// </summary>
+        public readonly bool? StopSyncing;
 
         [OutputConstructor]
         private FeatureMembershipConfigmanagementConfigSync(
@@ -52,7 +56,9 @@ namespace Pulumi.Gcp.GkeHub.Outputs
 
             bool? preventDrift,
 
-            string? sourceFormat)
+            string? sourceFormat,
+
+            bool? stopSyncing)
         {
             Enabled = enabled;
             Git = git;
@@ -60,6 +66,7 @@ namespace Pulumi.Gcp.GkeHub.Outputs
             Oci = oci;
             PreventDrift = preventDrift;
             SourceFormat = sourceFormat;
+            StopSyncing = stopSyncing;
         }
     }
 }

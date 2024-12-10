@@ -22,11 +22,12 @@ namespace Pulumi.Gcp.Monitoring.Inputs
         /// in the future.
         /// This field is optional. If this field is not empty, then it must be a
         /// valid Prometheus label name.
-        /// 
-        /// - - -
         /// </summary>
         [Input("alertRule")]
         public Input<string>? AlertRule { get; set; }
+
+        [Input("disableMetricValidation")]
+        public Input<bool>? DisableMetricValidation { get; set; }
 
         /// <summary>
         /// Alerts are considered firing once their PromQL expression evaluated

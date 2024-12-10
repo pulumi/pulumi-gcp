@@ -24,6 +24,7 @@ class ClusterArgs:
                  psc_configs: pulumi.Input[Sequence[pulumi.Input['ClusterPscConfigArgs']]],
                  shard_count: pulumi.Input[int],
                  authorization_mode: Optional[pulumi.Input[str]] = None,
+                 cross_cluster_replication_config: Optional[pulumi.Input['ClusterCrossClusterReplicationConfigArgs']] = None,
                  deletion_protection_enabled: Optional[pulumi.Input[bool]] = None,
                  maintenance_policy: Optional[pulumi.Input['ClusterMaintenancePolicyArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -45,6 +46,7 @@ class ClusterArgs:
         :param pulumi.Input[str] authorization_mode: Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
                Default value: "AUTH_MODE_DISABLED" Possible values: ["AUTH_MODE_UNSPECIFIED", "AUTH_MODE_IAM_AUTH",
                "AUTH_MODE_DISABLED"]
+        :param pulumi.Input['ClusterCrossClusterReplicationConfigArgs'] cross_cluster_replication_config: Cross cluster replication config
         :param pulumi.Input[bool] deletion_protection_enabled: Optional. Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster
                operation will fail. Default value is true.
         :param pulumi.Input['ClusterMaintenancePolicyArgs'] maintenance_policy: Maintenance policy for a cluster
@@ -67,6 +69,8 @@ class ClusterArgs:
         pulumi.set(__self__, "shard_count", shard_count)
         if authorization_mode is not None:
             pulumi.set(__self__, "authorization_mode", authorization_mode)
+        if cross_cluster_replication_config is not None:
+            pulumi.set(__self__, "cross_cluster_replication_config", cross_cluster_replication_config)
         if deletion_protection_enabled is not None:
             pulumi.set(__self__, "deletion_protection_enabled", deletion_protection_enabled)
         if maintenance_policy is not None:
@@ -130,6 +134,18 @@ class ClusterArgs:
     @authorization_mode.setter
     def authorization_mode(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "authorization_mode", value)
+
+    @property
+    @pulumi.getter(name="crossClusterReplicationConfig")
+    def cross_cluster_replication_config(self) -> Optional[pulumi.Input['ClusterCrossClusterReplicationConfigArgs']]:
+        """
+        Cross cluster replication config
+        """
+        return pulumi.get(self, "cross_cluster_replication_config")
+
+    @cross_cluster_replication_config.setter
+    def cross_cluster_replication_config(self, value: Optional[pulumi.Input['ClusterCrossClusterReplicationConfigArgs']]):
+        pulumi.set(self, "cross_cluster_replication_config", value)
 
     @property
     @pulumi.getter(name="deletionProtectionEnabled")
@@ -273,6 +289,7 @@ class _ClusterState:
     def __init__(__self__, *,
                  authorization_mode: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
+                 cross_cluster_replication_config: Optional[pulumi.Input['ClusterCrossClusterReplicationConfigArgs']] = None,
                  deletion_protection_enabled: Optional[pulumi.Input[bool]] = None,
                  discovery_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterDiscoveryEndpointArgs']]]] = None,
                  maintenance_policy: Optional[pulumi.Input['ClusterMaintenancePolicyArgs']] = None,
@@ -302,6 +319,7 @@ class _ClusterState:
         :param pulumi.Input[str] create_time: The timestamp associated with the cluster creation request. A timestamp in
                RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional
                digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param pulumi.Input['ClusterCrossClusterReplicationConfigArgs'] cross_cluster_replication_config: Cross cluster replication config
         :param pulumi.Input[bool] deletion_protection_enabled: Optional. Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster
                operation will fail. Default value is true.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterDiscoveryEndpointArgs']]] discovery_endpoints: Output only. Endpoints created on each given network,
@@ -343,6 +361,8 @@ class _ClusterState:
             pulumi.set(__self__, "authorization_mode", authorization_mode)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if cross_cluster_replication_config is not None:
+            pulumi.set(__self__, "cross_cluster_replication_config", cross_cluster_replication_config)
         if deletion_protection_enabled is not None:
             pulumi.set(__self__, "deletion_protection_enabled", deletion_protection_enabled)
         if discovery_endpoints is not None:
@@ -413,6 +433,18 @@ class _ClusterState:
     @create_time.setter
     def create_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter(name="crossClusterReplicationConfig")
+    def cross_cluster_replication_config(self) -> Optional[pulumi.Input['ClusterCrossClusterReplicationConfigArgs']]:
+        """
+        Cross cluster replication config
+        """
+        return pulumi.get(self, "cross_cluster_replication_config")
+
+    @cross_cluster_replication_config.setter
+    def cross_cluster_replication_config(self, value: Optional[pulumi.Input['ClusterCrossClusterReplicationConfigArgs']]):
+        pulumi.set(self, "cross_cluster_replication_config", value)
 
     @property
     @pulumi.getter(name="deletionProtectionEnabled")
@@ -686,6 +718,7 @@ class Cluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  authorization_mode: Optional[pulumi.Input[str]] = None,
+                 cross_cluster_replication_config: Optional[pulumi.Input[Union['ClusterCrossClusterReplicationConfigArgs', 'ClusterCrossClusterReplicationConfigArgsDict']]] = None,
                  deletion_protection_enabled: Optional[pulumi.Input[bool]] = None,
                  maintenance_policy: Optional[pulumi.Input[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -701,14 +734,6 @@ class Cluster(pulumi.CustomResource):
                  zone_distribution_config: Optional[pulumi.Input[Union['ClusterZoneDistributionConfigArgs', 'ClusterZoneDistributionConfigArgsDict']]] = None,
                  __props__=None):
         """
-        A Google Cloud Redis Cluster instance.
-
-        To get more information about Cluster, see:
-
-        * [API documentation](https://cloud.google.com/memorystore/docs/cluster/reference/rest/v1/projects.locations.clusters)
-        * How-to Guides
-            * [Official Documentation](https://cloud.google.com/memorystore/docs/cluster/)
-
         ## Example Usage
 
         ### Redis Cluster Ha
@@ -812,6 +837,126 @@ class Cluster(pulumi.CustomResource):
             },
             deletion_protection_enabled=True,
             opts = pulumi.ResourceOptions(depends_on=[default]))
+        ```
+        ### Redis Cluster Secondary
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        producer_net = gcp.compute.Network("producer_net",
+            name="mynetwork",
+            auto_create_subnetworks=False)
+        primary_cluster_producer_subnet = gcp.compute.Subnetwork("primary_cluster_producer_subnet",
+            name="mysubnet-primary-cluster",
+            ip_cidr_range="10.0.1.0/29",
+            region="us-east1",
+            network=producer_net.id)
+        primary_cluster_region_scp = gcp.networkconnectivity.ServiceConnectionPolicy("primary_cluster_region_scp",
+            name="mypolicy-primary-cluster",
+            location="us-east1",
+            service_class="gcp-memorystore-redis",
+            description="Primary cluster service connection policy",
+            network=producer_net.id,
+            psc_config={
+                "subnetworks": [primary_cluster_producer_subnet.id],
+            })
+        # Primary cluster
+        primary_cluster = gcp.redis.Cluster("primary_cluster",
+            name="my-primary-cluster",
+            region="us-east1",
+            psc_configs=[{
+                "network": producer_net.id,
+            }],
+            authorization_mode="AUTH_MODE_DISABLED",
+            transit_encryption_mode="TRANSIT_ENCRYPTION_MODE_DISABLED",
+            shard_count=3,
+            redis_configs={
+                "maxmemory-policy": "volatile-ttl",
+            },
+            node_type="REDIS_HIGHMEM_MEDIUM",
+            persistence_config={
+                "mode": "RDB",
+                "rdb_config": {
+                    "rdb_snapshot_period": "ONE_HOUR",
+                    "rdb_snapshot_start_time": "2024-10-02T15:01:23Z",
+                },
+            },
+            zone_distribution_config={
+                "mode": "MULTI_ZONE",
+            },
+            replica_count=1,
+            maintenance_policy={
+                "weekly_maintenance_windows": [{
+                    "day": "MONDAY",
+                    "start_time": {
+                        "hours": 1,
+                        "minutes": 0,
+                        "seconds": 0,
+                        "nanos": 0,
+                    },
+                }],
+            },
+            deletion_protection_enabled=True,
+            opts = pulumi.ResourceOptions(depends_on=[primary_cluster_region_scp]))
+        secondary_cluster_producer_subnet = gcp.compute.Subnetwork("secondary_cluster_producer_subnet",
+            name="mysubnet-secondary-cluster",
+            ip_cidr_range="10.0.2.0/29",
+            region="europe-west1",
+            network=producer_net.id)
+        secondary_cluster_region_scp = gcp.networkconnectivity.ServiceConnectionPolicy("secondary_cluster_region_scp",
+            name="mypolicy-secondary-cluster",
+            location="europe-west1",
+            service_class="gcp-memorystore-redis",
+            description="Secondary cluster service connection policy",
+            network=producer_net.id,
+            psc_config={
+                "subnetworks": [secondary_cluster_producer_subnet.id],
+            })
+        # Secondary cluster
+        secondary_cluster = gcp.redis.Cluster("secondary_cluster",
+            name="my-secondary-cluster",
+            region="europe-west1",
+            psc_configs=[{
+                "network": producer_net.id,
+            }],
+            authorization_mode="AUTH_MODE_DISABLED",
+            transit_encryption_mode="TRANSIT_ENCRYPTION_MODE_DISABLED",
+            shard_count=3,
+            redis_configs={
+                "maxmemory-policy": "volatile-ttl",
+            },
+            node_type="REDIS_HIGHMEM_MEDIUM",
+            persistence_config={
+                "mode": "RDB",
+                "rdb_config": {
+                    "rdb_snapshot_period": "ONE_HOUR",
+                    "rdb_snapshot_start_time": "2024-10-02T15:01:23Z",
+                },
+            },
+            zone_distribution_config={
+                "mode": "MULTI_ZONE",
+            },
+            replica_count=2,
+            maintenance_policy={
+                "weekly_maintenance_windows": [{
+                    "day": "WEDNESDAY",
+                    "start_time": {
+                        "hours": 1,
+                        "minutes": 0,
+                        "seconds": 0,
+                        "nanos": 0,
+                    },
+                }],
+            },
+            deletion_protection_enabled=True,
+            cross_cluster_replication_config={
+                "cluster_role": "SECONDARY",
+                "primary_cluster": {
+                    "cluster": primary_cluster.id,
+                },
+            },
+            opts = pulumi.ResourceOptions(depends_on=[secondary_cluster_region_scp]))
         ```
         ### Redis Cluster Rdb
 
@@ -970,6 +1115,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] authorization_mode: Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
                Default value: "AUTH_MODE_DISABLED" Possible values: ["AUTH_MODE_UNSPECIFIED", "AUTH_MODE_IAM_AUTH",
                "AUTH_MODE_DISABLED"]
+        :param pulumi.Input[Union['ClusterCrossClusterReplicationConfigArgs', 'ClusterCrossClusterReplicationConfigArgsDict']] cross_cluster_replication_config: Cross cluster replication config
         :param pulumi.Input[bool] deletion_protection_enabled: Optional. Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster
                operation will fail. Default value is true.
         :param pulumi.Input[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict']] maintenance_policy: Maintenance policy for a cluster
@@ -1000,14 +1146,6 @@ class Cluster(pulumi.CustomResource):
                  args: ClusterArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        A Google Cloud Redis Cluster instance.
-
-        To get more information about Cluster, see:
-
-        * [API documentation](https://cloud.google.com/memorystore/docs/cluster/reference/rest/v1/projects.locations.clusters)
-        * How-to Guides
-            * [Official Documentation](https://cloud.google.com/memorystore/docs/cluster/)
-
         ## Example Usage
 
         ### Redis Cluster Ha
@@ -1111,6 +1249,126 @@ class Cluster(pulumi.CustomResource):
             },
             deletion_protection_enabled=True,
             opts = pulumi.ResourceOptions(depends_on=[default]))
+        ```
+        ### Redis Cluster Secondary
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        producer_net = gcp.compute.Network("producer_net",
+            name="mynetwork",
+            auto_create_subnetworks=False)
+        primary_cluster_producer_subnet = gcp.compute.Subnetwork("primary_cluster_producer_subnet",
+            name="mysubnet-primary-cluster",
+            ip_cidr_range="10.0.1.0/29",
+            region="us-east1",
+            network=producer_net.id)
+        primary_cluster_region_scp = gcp.networkconnectivity.ServiceConnectionPolicy("primary_cluster_region_scp",
+            name="mypolicy-primary-cluster",
+            location="us-east1",
+            service_class="gcp-memorystore-redis",
+            description="Primary cluster service connection policy",
+            network=producer_net.id,
+            psc_config={
+                "subnetworks": [primary_cluster_producer_subnet.id],
+            })
+        # Primary cluster
+        primary_cluster = gcp.redis.Cluster("primary_cluster",
+            name="my-primary-cluster",
+            region="us-east1",
+            psc_configs=[{
+                "network": producer_net.id,
+            }],
+            authorization_mode="AUTH_MODE_DISABLED",
+            transit_encryption_mode="TRANSIT_ENCRYPTION_MODE_DISABLED",
+            shard_count=3,
+            redis_configs={
+                "maxmemory-policy": "volatile-ttl",
+            },
+            node_type="REDIS_HIGHMEM_MEDIUM",
+            persistence_config={
+                "mode": "RDB",
+                "rdb_config": {
+                    "rdb_snapshot_period": "ONE_HOUR",
+                    "rdb_snapshot_start_time": "2024-10-02T15:01:23Z",
+                },
+            },
+            zone_distribution_config={
+                "mode": "MULTI_ZONE",
+            },
+            replica_count=1,
+            maintenance_policy={
+                "weekly_maintenance_windows": [{
+                    "day": "MONDAY",
+                    "start_time": {
+                        "hours": 1,
+                        "minutes": 0,
+                        "seconds": 0,
+                        "nanos": 0,
+                    },
+                }],
+            },
+            deletion_protection_enabled=True,
+            opts = pulumi.ResourceOptions(depends_on=[primary_cluster_region_scp]))
+        secondary_cluster_producer_subnet = gcp.compute.Subnetwork("secondary_cluster_producer_subnet",
+            name="mysubnet-secondary-cluster",
+            ip_cidr_range="10.0.2.0/29",
+            region="europe-west1",
+            network=producer_net.id)
+        secondary_cluster_region_scp = gcp.networkconnectivity.ServiceConnectionPolicy("secondary_cluster_region_scp",
+            name="mypolicy-secondary-cluster",
+            location="europe-west1",
+            service_class="gcp-memorystore-redis",
+            description="Secondary cluster service connection policy",
+            network=producer_net.id,
+            psc_config={
+                "subnetworks": [secondary_cluster_producer_subnet.id],
+            })
+        # Secondary cluster
+        secondary_cluster = gcp.redis.Cluster("secondary_cluster",
+            name="my-secondary-cluster",
+            region="europe-west1",
+            psc_configs=[{
+                "network": producer_net.id,
+            }],
+            authorization_mode="AUTH_MODE_DISABLED",
+            transit_encryption_mode="TRANSIT_ENCRYPTION_MODE_DISABLED",
+            shard_count=3,
+            redis_configs={
+                "maxmemory-policy": "volatile-ttl",
+            },
+            node_type="REDIS_HIGHMEM_MEDIUM",
+            persistence_config={
+                "mode": "RDB",
+                "rdb_config": {
+                    "rdb_snapshot_period": "ONE_HOUR",
+                    "rdb_snapshot_start_time": "2024-10-02T15:01:23Z",
+                },
+            },
+            zone_distribution_config={
+                "mode": "MULTI_ZONE",
+            },
+            replica_count=2,
+            maintenance_policy={
+                "weekly_maintenance_windows": [{
+                    "day": "WEDNESDAY",
+                    "start_time": {
+                        "hours": 1,
+                        "minutes": 0,
+                        "seconds": 0,
+                        "nanos": 0,
+                    },
+                }],
+            },
+            deletion_protection_enabled=True,
+            cross_cluster_replication_config={
+                "cluster_role": "SECONDARY",
+                "primary_cluster": {
+                    "cluster": primary_cluster.id,
+                },
+            },
+            opts = pulumi.ResourceOptions(depends_on=[secondary_cluster_region_scp]))
         ```
         ### Redis Cluster Rdb
 
@@ -1280,6 +1538,7 @@ class Cluster(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  authorization_mode: Optional[pulumi.Input[str]] = None,
+                 cross_cluster_replication_config: Optional[pulumi.Input[Union['ClusterCrossClusterReplicationConfigArgs', 'ClusterCrossClusterReplicationConfigArgsDict']]] = None,
                  deletion_protection_enabled: Optional[pulumi.Input[bool]] = None,
                  maintenance_policy: Optional[pulumi.Input[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict']]] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -1303,6 +1562,7 @@ class Cluster(pulumi.CustomResource):
             __props__ = ClusterArgs.__new__(ClusterArgs)
 
             __props__.__dict__["authorization_mode"] = authorization_mode
+            __props__.__dict__["cross_cluster_replication_config"] = cross_cluster_replication_config
             __props__.__dict__["deletion_protection_enabled"] = deletion_protection_enabled
             __props__.__dict__["maintenance_policy"] = maintenance_policy
             __props__.__dict__["name"] = name
@@ -1341,6 +1601,7 @@ class Cluster(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             authorization_mode: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
+            cross_cluster_replication_config: Optional[pulumi.Input[Union['ClusterCrossClusterReplicationConfigArgs', 'ClusterCrossClusterReplicationConfigArgsDict']]] = None,
             deletion_protection_enabled: Optional[pulumi.Input[bool]] = None,
             discovery_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterDiscoveryEndpointArgs', 'ClusterDiscoveryEndpointArgsDict']]]]] = None,
             maintenance_policy: Optional[pulumi.Input[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict']]] = None,
@@ -1375,6 +1636,7 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: The timestamp associated with the cluster creation request. A timestamp in
                RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional
                digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param pulumi.Input[Union['ClusterCrossClusterReplicationConfigArgs', 'ClusterCrossClusterReplicationConfigArgsDict']] cross_cluster_replication_config: Cross cluster replication config
         :param pulumi.Input[bool] deletion_protection_enabled: Optional. Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster
                operation will fail. Default value is true.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterDiscoveryEndpointArgs', 'ClusterDiscoveryEndpointArgsDict']]]] discovery_endpoints: Output only. Endpoints created on each given network,
@@ -1418,6 +1680,7 @@ class Cluster(pulumi.CustomResource):
 
         __props__.__dict__["authorization_mode"] = authorization_mode
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["cross_cluster_replication_config"] = cross_cluster_replication_config
         __props__.__dict__["deletion_protection_enabled"] = deletion_protection_enabled
         __props__.__dict__["discovery_endpoints"] = discovery_endpoints
         __props__.__dict__["maintenance_policy"] = maintenance_policy
@@ -1460,6 +1723,14 @@ class Cluster(pulumi.CustomResource):
         digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="crossClusterReplicationConfig")
+    def cross_cluster_replication_config(self) -> pulumi.Output['outputs.ClusterCrossClusterReplicationConfig']:
+        """
+        Cross cluster replication config
+        """
+        return pulumi.get(self, "cross_cluster_replication_config")
 
     @property
     @pulumi.getter(name="deletionProtectionEnabled")

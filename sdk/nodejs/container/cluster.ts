@@ -311,6 +311,13 @@ export class Cluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly endpoint!: pulumi.Output<string>;
     /**
+     * Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
+     *
+     *
+     * <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
+     */
+    public readonly enterpriseConfig!: pulumi.Output<outputs.container.ClusterEnterpriseConfig>;
+    /**
      * Fleet configuration for the cluster. Structure is documented below.
      */
     public readonly fleet!: pulumi.Output<outputs.container.ClusterFleet | undefined>;
@@ -616,8 +623,6 @@ export class Cluster extends pulumi.CustomResource {
     public readonly verticalPodAutoscaling!: pulumi.Output<outputs.container.ClusterVerticalPodAutoscaling>;
     /**
      * Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
-     *
-     * <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
      */
     public readonly workloadAltsConfig!: pulumi.Output<outputs.container.ClusterWorkloadAltsConfig>;
     /**
@@ -670,6 +675,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["enableShieldedNodes"] = state ? state.enableShieldedNodes : undefined;
             resourceInputs["enableTpu"] = state ? state.enableTpu : undefined;
             resourceInputs["endpoint"] = state ? state.endpoint : undefined;
+            resourceInputs["enterpriseConfig"] = state ? state.enterpriseConfig : undefined;
             resourceInputs["fleet"] = state ? state.fleet : undefined;
             resourceInputs["gatewayApiConfig"] = state ? state.gatewayApiConfig : undefined;
             resourceInputs["identityServiceConfig"] = state ? state.identityServiceConfig : undefined;
@@ -751,6 +757,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["enableMultiNetworking"] = args ? args.enableMultiNetworking : undefined;
             resourceInputs["enableShieldedNodes"] = args ? args.enableShieldedNodes : undefined;
             resourceInputs["enableTpu"] = args ? args.enableTpu : undefined;
+            resourceInputs["enterpriseConfig"] = args ? args.enterpriseConfig : undefined;
             resourceInputs["fleet"] = args ? args.fleet : undefined;
             resourceInputs["gatewayApiConfig"] = args ? args.gatewayApiConfig : undefined;
             resourceInputs["identityServiceConfig"] = args ? args.identityServiceConfig : undefined;
@@ -964,6 +971,13 @@ export interface ClusterState {
      * The IP address of this cluster's Kubernetes master.
      */
     endpoint?: pulumi.Input<string>;
+    /**
+     * Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
+     *
+     *
+     * <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
+     */
+    enterpriseConfig?: pulumi.Input<inputs.container.ClusterEnterpriseConfig>;
     /**
      * Fleet configuration for the cluster. Structure is documented below.
      */
@@ -1270,8 +1284,6 @@ export interface ClusterState {
     verticalPodAutoscaling?: pulumi.Input<inputs.container.ClusterVerticalPodAutoscaling>;
     /**
      * Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
-     *
-     * <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
      */
     workloadAltsConfig?: pulumi.Input<inputs.container.ClusterWorkloadAltsConfig>;
     /**
@@ -1426,6 +1438,13 @@ export interface ClusterArgs {
      * See the [official documentation](https://cloud.google.com/tpu/docs/kubernetes-engine-setup).
      */
     enableTpu?: pulumi.Input<boolean>;
+    /**
+     * Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
+     *
+     *
+     * <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
+     */
+    enterpriseConfig?: pulumi.Input<inputs.container.ClusterEnterpriseConfig>;
     /**
      * Fleet configuration for the cluster. Structure is documented below.
      */
@@ -1700,8 +1719,6 @@ export interface ClusterArgs {
     verticalPodAutoscaling?: pulumi.Input<inputs.container.ClusterVerticalPodAutoscaling>;
     /**
      * Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
-     *
-     * <a name="nestedDefaultSnatStatus"></a>The `defaultSnatStatus` block supports
      */
     workloadAltsConfig?: pulumi.Input<inputs.container.ClusterWorkloadAltsConfig>;
     /**

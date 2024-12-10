@@ -33,6 +33,36 @@ public final class RegionInstanceTemplateAdvancedMachineFeaturesArgs extends com
     }
 
     /**
+     * Whether to enable UEFI networking for instance creation.
+     * 
+     */
+    @Import(name="enableUefiNetworking")
+    private @Nullable Output<Boolean> enableUefiNetworking;
+
+    /**
+     * @return Whether to enable UEFI networking for instance creation.
+     * 
+     */
+    public Optional<Output<Boolean>> enableUefiNetworking() {
+        return Optional.ofNullable(this.enableUefiNetworking);
+    }
+
+    /**
+     * [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+     * 
+     */
+    @Import(name="performanceMonitoringUnit")
+    private @Nullable Output<String> performanceMonitoringUnit;
+
+    /**
+     * @return [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+     * 
+     */
+    public Optional<Output<String>> performanceMonitoringUnit() {
+        return Optional.ofNullable(this.performanceMonitoringUnit);
+    }
+
+    /**
      * The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
      * 
      */
@@ -81,6 +111,8 @@ public final class RegionInstanceTemplateAdvancedMachineFeaturesArgs extends com
 
     private RegionInstanceTemplateAdvancedMachineFeaturesArgs(RegionInstanceTemplateAdvancedMachineFeaturesArgs $) {
         this.enableNestedVirtualization = $.enableNestedVirtualization;
+        this.enableUefiNetworking = $.enableUefiNetworking;
+        this.performanceMonitoringUnit = $.performanceMonitoringUnit;
         this.threadsPerCore = $.threadsPerCore;
         this.turboMode = $.turboMode;
         this.visibleCoreCount = $.visibleCoreCount;
@@ -123,6 +155,48 @@ public final class RegionInstanceTemplateAdvancedMachineFeaturesArgs extends com
          */
         public Builder enableNestedVirtualization(Boolean enableNestedVirtualization) {
             return enableNestedVirtualization(Output.of(enableNestedVirtualization));
+        }
+
+        /**
+         * @param enableUefiNetworking Whether to enable UEFI networking for instance creation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableUefiNetworking(@Nullable Output<Boolean> enableUefiNetworking) {
+            $.enableUefiNetworking = enableUefiNetworking;
+            return this;
+        }
+
+        /**
+         * @param enableUefiNetworking Whether to enable UEFI networking for instance creation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enableUefiNetworking(Boolean enableUefiNetworking) {
+            return enableUefiNetworking(Output.of(enableUefiNetworking));
+        }
+
+        /**
+         * @param performanceMonitoringUnit [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder performanceMonitoringUnit(@Nullable Output<String> performanceMonitoringUnit) {
+            $.performanceMonitoringUnit = performanceMonitoringUnit;
+            return this;
+        }
+
+        /**
+         * @param performanceMonitoringUnit [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder performanceMonitoringUnit(String performanceMonitoringUnit) {
+            return performanceMonitoringUnit(Output.of(performanceMonitoringUnit));
         }
 
         /**

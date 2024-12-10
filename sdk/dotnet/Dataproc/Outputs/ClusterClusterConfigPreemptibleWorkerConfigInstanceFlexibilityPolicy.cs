@@ -21,15 +21,22 @@ namespace Pulumi.Gcp.Dataproc.Outputs
         /// A list of instance selection results in the group.
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult> InstanceSelectionResults;
+        /// <summary>
+        /// Defines how Dataproc should create VMs with a mixture of provisioning models.
+        /// </summary>
+        public readonly Outputs.ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix? ProvisioningModelMix;
 
         [OutputConstructor]
         private ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicy(
             ImmutableArray<Outputs.ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionList> instanceSelectionLists,
 
-            ImmutableArray<Outputs.ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult> instanceSelectionResults)
+            ImmutableArray<Outputs.ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyInstanceSelectionResult> instanceSelectionResults,
+
+            Outputs.ClusterClusterConfigPreemptibleWorkerConfigInstanceFlexibilityPolicyProvisioningModelMix? provisioningModelMix)
         {
             InstanceSelectionLists = instanceSelectionLists;
             InstanceSelectionResults = instanceSelectionResults;
+            ProvisioningModelMix = provisioningModelMix;
         }
     }
 }

@@ -846,6 +846,44 @@ class Batch(pulumi.CustomResource):
                 "args": ["https://storage.googleapis.com/terraform-batches/flights.csv"],
             })
         ```
+        ### Dataproc Batch Autotuning
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example_batch_autotuning = gcp.dataproc.Batch("example_batch_autotuning",
+            batch_id="tf-test-batch_16511",
+            location="us-central1",
+            labels={
+                "batch_test": "terraform",
+            },
+            runtime_config={
+                "version": "2.2",
+                "properties": {
+                    "spark.dynamicAllocation.enabled": "false",
+                    "spark.executor.instances": "2",
+                },
+                "cohort": "tf-dataproc-batch-example",
+                "autotuning_config": {
+                    "scenarios": [
+                        "SCALING",
+                        "MEMORY",
+                    ],
+                },
+            },
+            environment_config={
+                "execution_config": {
+                    "subnetwork_uri": "default",
+                    "ttl": "3600s",
+                },
+            },
+            spark_batch={
+                "main_class": "org.apache.spark.examples.SparkPi",
+                "args": ["10"],
+                "jar_file_uris": ["file:///usr/lib/spark/examples/jars/spark-examples.jar"],
+            })
+        ```
 
         ## Import
 
@@ -1129,6 +1167,44 @@ class Batch(pulumi.CustomResource):
             spark_r_batch={
                 "main_r_file_uri": "https://storage.googleapis.com/terraform-batches/spark-r-flights.r",
                 "args": ["https://storage.googleapis.com/terraform-batches/flights.csv"],
+            })
+        ```
+        ### Dataproc Batch Autotuning
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example_batch_autotuning = gcp.dataproc.Batch("example_batch_autotuning",
+            batch_id="tf-test-batch_16511",
+            location="us-central1",
+            labels={
+                "batch_test": "terraform",
+            },
+            runtime_config={
+                "version": "2.2",
+                "properties": {
+                    "spark.dynamicAllocation.enabled": "false",
+                    "spark.executor.instances": "2",
+                },
+                "cohort": "tf-dataproc-batch-example",
+                "autotuning_config": {
+                    "scenarios": [
+                        "SCALING",
+                        "MEMORY",
+                    ],
+                },
+            },
+            environment_config={
+                "execution_config": {
+                    "subnetwork_uri": "default",
+                    "ttl": "3600s",
+                },
+            },
+            spark_batch={
+                "main_class": "org.apache.spark.examples.SparkPi",
+                "args": ["10"],
+                "jar_file_uris": ["file:///usr/lib/spark/examples/jars/spark-examples.jar"],
             })
         ```
 

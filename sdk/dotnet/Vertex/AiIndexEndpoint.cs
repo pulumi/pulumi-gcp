@@ -105,7 +105,7 @@ namespace Pulumi.Gcp.Vertex
     ///             EnablePrivateServiceConnect = true,
     ///             ProjectAllowlists = new[]
     ///             {
-    ///                 project.Apply(getProjectResult =&gt; getProjectResult.Number),
+    ///                 project.Apply(getProjectResult =&gt; getProjectResult.Name),
     ///             },
     ///         },
     ///     });

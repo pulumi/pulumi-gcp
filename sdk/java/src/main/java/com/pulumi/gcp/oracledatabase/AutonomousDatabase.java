@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.oracledatabase.AutonomousDatabaseArgs;
 import com.pulumi.gcp.oracledatabase.inputs.AutonomousDatabaseState;
 import com.pulumi.gcp.oracledatabase.outputs.AutonomousDatabaseProperties;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -76,6 +77,7 @@ import javax.annotation.Nullable;
  *                 .dbWorkload("OLTP")
  *                 .licenseType("LICENSE_INCLUDED")
  *                 .build())
+ *             .deletionProtection("true")
  *             .build());
  * 
  *     }
@@ -147,6 +149,7 @@ import javax.annotation.Nullable;
  *                 .privateEndpointIp("10.5.0.11")
  *                 .privateEndpointLabel("testhost")
  *                 .build())
+ *             .deletionProtection("true")
  *             .build());
  * 
  *     }}{@code
@@ -261,6 +264,12 @@ public class AutonomousDatabase extends com.pulumi.resources.CustomResource {
      */
     public Output<String> database() {
         return this.database;
+    }
+    @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> deletionProtection;
+
+    public Output<Optional<Boolean>> deletionProtection() {
+        return Codegen.optional(this.deletionProtection);
     }
     /**
      * The display name for the Autonomous Database. The name does not have to be unique within your project.

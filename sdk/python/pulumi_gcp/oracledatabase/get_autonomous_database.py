@@ -27,7 +27,7 @@ class GetAutonomousDatabaseResult:
     """
     A collection of values returned by getAutonomousDatabase.
     """
-    def __init__(__self__, admin_password=None, autonomous_database_id=None, cidr=None, create_time=None, database=None, display_name=None, effective_labels=None, entitlement_id=None, id=None, labels=None, location=None, name=None, network=None, project=None, properties=None, pulumi_labels=None):
+    def __init__(__self__, admin_password=None, autonomous_database_id=None, cidr=None, create_time=None, database=None, deletion_protection=None, display_name=None, effective_labels=None, entitlement_id=None, id=None, labels=None, location=None, name=None, network=None, project=None, properties=None, pulumi_labels=None):
         if admin_password and not isinstance(admin_password, str):
             raise TypeError("Expected argument 'admin_password' to be a str")
         pulumi.set(__self__, "admin_password", admin_password)
@@ -43,6 +43,9 @@ class GetAutonomousDatabaseResult:
         if database and not isinstance(database, str):
             raise TypeError("Expected argument 'database' to be a str")
         pulumi.set(__self__, "database", database)
+        if deletion_protection and not isinstance(deletion_protection, bool):
+            raise TypeError("Expected argument 'deletion_protection' to be a bool")
+        pulumi.set(__self__, "deletion_protection", deletion_protection)
         if display_name and not isinstance(display_name, str):
             raise TypeError("Expected argument 'display_name' to be a str")
         pulumi.set(__self__, "display_name", display_name)
@@ -101,6 +104,11 @@ class GetAutonomousDatabaseResult:
     @pulumi.getter
     def database(self) -> str:
         return pulumi.get(self, "database")
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> bool:
+        return pulumi.get(self, "deletion_protection")
 
     @property
     @pulumi.getter(name="displayName")
@@ -172,6 +180,7 @@ class AwaitableGetAutonomousDatabaseResult(GetAutonomousDatabaseResult):
             cidr=self.cidr,
             create_time=self.create_time,
             database=self.database,
+            deletion_protection=self.deletion_protection,
             display_name=self.display_name,
             effective_labels=self.effective_labels,
             entitlement_id=self.entitlement_id,
@@ -226,6 +235,7 @@ def get_autonomous_database(autonomous_database_id: Optional[str] = None,
         cidr=pulumi.get(__ret__, 'cidr'),
         create_time=pulumi.get(__ret__, 'create_time'),
         database=pulumi.get(__ret__, 'database'),
+        deletion_protection=pulumi.get(__ret__, 'deletion_protection'),
         display_name=pulumi.get(__ret__, 'display_name'),
         effective_labels=pulumi.get(__ret__, 'effective_labels'),
         entitlement_id=pulumi.get(__ret__, 'entitlement_id'),
@@ -277,6 +287,7 @@ def get_autonomous_database_output(autonomous_database_id: Optional[pulumi.Input
         cidr=pulumi.get(__response__, 'cidr'),
         create_time=pulumi.get(__response__, 'create_time'),
         database=pulumi.get(__response__, 'database'),
+        deletion_protection=pulumi.get(__response__, 'deletion_protection'),
         display_name=pulumi.get(__response__, 'display_name'),
         effective_labels=pulumi.get(__response__, 'effective_labels'),
         entitlement_id=pulumi.get(__response__, 'entitlement_id'),

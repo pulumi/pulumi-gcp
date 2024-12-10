@@ -221,6 +221,14 @@ export class Network extends pulumi.CustomResource {
      */
     public readonly networkFirewallPolicyEnforcementOrder!: pulumi.Output<string | undefined>;
     /**
+     * A full or partial URL of the network profile to apply to this network.
+     * This field can be set only at resource creation time. For example, the
+     * following are valid URLs:
+     * * https://www.googleapis.com/compute/beta/projects/{projectId}/global/networkProfiles/{network_profile_name}
+     * * projects/{projectId}/global/networkProfiles/{network_profile_name}
+     */
+    public readonly networkProfile!: pulumi.Output<string | undefined>;
+    /**
      * The unique identifier for the resource. This identifier is defined by the server.
      */
     public /*out*/ readonly numericId!: pulumi.Output<string>;
@@ -268,6 +276,7 @@ export class Network extends pulumi.CustomResource {
             resourceInputs["mtu"] = state ? state.mtu : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["networkFirewallPolicyEnforcementOrder"] = state ? state.networkFirewallPolicyEnforcementOrder : undefined;
+            resourceInputs["networkProfile"] = state ? state.networkProfile : undefined;
             resourceInputs["numericId"] = state ? state.numericId : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["routingMode"] = state ? state.routingMode : undefined;
@@ -285,6 +294,7 @@ export class Network extends pulumi.CustomResource {
             resourceInputs["mtu"] = args ? args.mtu : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["networkFirewallPolicyEnforcementOrder"] = args ? args.networkFirewallPolicyEnforcementOrder : undefined;
+            resourceInputs["networkProfile"] = args ? args.networkProfile : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["routingMode"] = args ? args.routingMode : undefined;
             resourceInputs["gatewayIpv4"] = undefined /*out*/;
@@ -378,6 +388,14 @@ export interface NetworkState {
      * Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
      */
     networkFirewallPolicyEnforcementOrder?: pulumi.Input<string>;
+    /**
+     * A full or partial URL of the network profile to apply to this network.
+     * This field can be set only at resource creation time. For example, the
+     * following are valid URLs:
+     * * https://www.googleapis.com/compute/beta/projects/{projectId}/global/networkProfiles/{network_profile_name}
+     * * projects/{projectId}/global/networkProfiles/{network_profile_name}
+     */
+    networkProfile?: pulumi.Input<string>;
     /**
      * The unique identifier for the resource. This identifier is defined by the server.
      */
@@ -479,6 +497,14 @@ export interface NetworkArgs {
      * Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
      */
     networkFirewallPolicyEnforcementOrder?: pulumi.Input<string>;
+    /**
+     * A full or partial URL of the network profile to apply to this network.
+     * This field can be set only at resource creation time. For example, the
+     * following are valid URLs:
+     * * https://www.googleapis.com/compute/beta/projects/{projectId}/global/networkProfiles/{network_profile_name}
+     * * projects/{projectId}/global/networkProfiles/{network_profile_name}
+     */
+    networkProfile?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

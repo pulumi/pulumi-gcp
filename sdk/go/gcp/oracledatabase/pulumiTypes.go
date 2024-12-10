@@ -8400,7 +8400,8 @@ type GetAutonomousDatabasesAutonomousDatabase struct {
 	// The name of the Autonomous Database. The database name must be unique in
 	// the project. The name must begin with a letter and can
 	// contain a maximum of 30 alphanumeric characters.
-	Database string `pulumi:"database"`
+	Database           string `pulumi:"database"`
+	DeletionProtection bool   `pulumi:"deletionProtection"`
 	// The display name for the Autonomous Database. The name does not have to
 	// be unique within your project.
 	DisplayName     string            `pulumi:"displayName"`
@@ -8459,7 +8460,8 @@ type GetAutonomousDatabasesAutonomousDatabaseArgs struct {
 	// The name of the Autonomous Database. The database name must be unique in
 	// the project. The name must begin with a letter and can
 	// contain a maximum of 30 alphanumeric characters.
-	Database pulumi.StringInput `pulumi:"database"`
+	Database           pulumi.StringInput `pulumi:"database"`
+	DeletionProtection pulumi.BoolInput   `pulumi:"deletionProtection"`
 	// The display name for the Autonomous Database. The name does not have to
 	// be unique within your project.
 	DisplayName     pulumi.StringInput    `pulumi:"displayName"`
@@ -8571,6 +8573,10 @@ func (o GetAutonomousDatabasesAutonomousDatabaseOutput) CreateTime() pulumi.Stri
 // contain a maximum of 30 alphanumeric characters.
 func (o GetAutonomousDatabasesAutonomousDatabaseOutput) Database() pulumi.StringOutput {
 	return o.ApplyT(func(v GetAutonomousDatabasesAutonomousDatabase) string { return v.Database }).(pulumi.StringOutput)
+}
+
+func (o GetAutonomousDatabasesAutonomousDatabaseOutput) DeletionProtection() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetAutonomousDatabasesAutonomousDatabase) bool { return v.DeletionProtection }).(pulumi.BoolOutput)
 }
 
 // The display name for the Autonomous Database. The name does not have to
@@ -11988,7 +11994,8 @@ type GetCloudExadataInfrastructuresCloudExadataInfrastructure struct {
 	// a letter or a number.
 	CloudExadataInfrastructureId string `pulumi:"cloudExadataInfrastructureId"`
 	// The date and time that the Exadata Infrastructure was created.
-	CreateTime string `pulumi:"createTime"`
+	CreateTime         string `pulumi:"createTime"`
+	DeletionProtection bool   `pulumi:"deletionProtection"`
 	// User friendly name for this resource.
 	DisplayName     string            `pulumi:"displayName"`
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
@@ -12037,7 +12044,8 @@ type GetCloudExadataInfrastructuresCloudExadataInfrastructureArgs struct {
 	// a letter or a number.
 	CloudExadataInfrastructureId pulumi.StringInput `pulumi:"cloudExadataInfrastructureId"`
 	// The date and time that the Exadata Infrastructure was created.
-	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	CreateTime         pulumi.StringInput `pulumi:"createTime"`
+	DeletionProtection pulumi.BoolInput   `pulumi:"deletionProtection"`
 	// User friendly name for this resource.
 	DisplayName     pulumi.StringInput    `pulumi:"displayName"`
 	EffectiveLabels pulumi.StringMapInput `pulumi:"effectiveLabels"`
@@ -12132,6 +12140,10 @@ func (o GetCloudExadataInfrastructuresCloudExadataInfrastructureOutput) CloudExa
 // The date and time that the Exadata Infrastructure was created.
 func (o GetCloudExadataInfrastructuresCloudExadataInfrastructureOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCloudExadataInfrastructuresCloudExadataInfrastructure) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+func (o GetCloudExadataInfrastructuresCloudExadataInfrastructureOutput) DeletionProtection() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCloudExadataInfrastructuresCloudExadataInfrastructure) bool { return v.DeletionProtection }).(pulumi.BoolOutput)
 }
 
 // User friendly name for this resource.
@@ -13686,7 +13698,8 @@ type GetCloudVmClustersCloudVmCluster struct {
 	// a letter or a number.
 	CloudVmClusterId string `pulumi:"cloudVmClusterId"`
 	// The date and time that the VM cluster was created.
-	CreateTime string `pulumi:"createTime"`
+	CreateTime         string `pulumi:"createTime"`
+	DeletionProtection bool   `pulumi:"deletionProtection"`
 	// User friendly name for this resource.
 	DisplayName     string            `pulumi:"displayName"`
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
@@ -13744,7 +13757,8 @@ type GetCloudVmClustersCloudVmClusterArgs struct {
 	// a letter or a number.
 	CloudVmClusterId pulumi.StringInput `pulumi:"cloudVmClusterId"`
 	// The date and time that the VM cluster was created.
-	CreateTime pulumi.StringInput `pulumi:"createTime"`
+	CreateTime         pulumi.StringInput `pulumi:"createTime"`
+	DeletionProtection pulumi.BoolInput   `pulumi:"deletionProtection"`
 	// User friendly name for this resource.
 	DisplayName     pulumi.StringInput    `pulumi:"displayName"`
 	EffectiveLabels pulumi.StringMapInput `pulumi:"effectiveLabels"`
@@ -13852,6 +13866,10 @@ func (o GetCloudVmClustersCloudVmClusterOutput) CloudVmClusterId() pulumi.String
 // The date and time that the VM cluster was created.
 func (o GetCloudVmClustersCloudVmClusterOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v GetCloudVmClustersCloudVmCluster) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+func (o GetCloudVmClustersCloudVmClusterOutput) DeletionProtection() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetCloudVmClustersCloudVmCluster) bool { return v.DeletionProtection }).(pulumi.BoolOutput)
 }
 
 // User friendly name for this resource.

@@ -316,7 +316,7 @@ func (o ConnectionAuthConfigPtrOutput) UserPassword() ConnectionAuthConfigUserPa
 type ConnectionAuthConfigAdditionalVariable struct {
 	// Boolean Value of configVariable.
 	BooleanValue *bool `pulumi:"booleanValue"`
-	// Encription key value of configVariable.
+	// Encryption key value of configVariable.
 	// Structure is documented below.
 	EncryptionKeyValue *ConnectionAuthConfigAdditionalVariableEncryptionKeyValue `pulumi:"encryptionKeyValue"`
 	// Integer Value of configVariable.
@@ -344,7 +344,7 @@ type ConnectionAuthConfigAdditionalVariableInput interface {
 type ConnectionAuthConfigAdditionalVariableArgs struct {
 	// Boolean Value of configVariable.
 	BooleanValue pulumi.BoolPtrInput `pulumi:"booleanValue"`
-	// Encription key value of configVariable.
+	// Encryption key value of configVariable.
 	// Structure is documented below.
 	EncryptionKeyValue ConnectionAuthConfigAdditionalVariableEncryptionKeyValuePtrInput `pulumi:"encryptionKeyValue"`
 	// Integer Value of configVariable.
@@ -414,7 +414,7 @@ func (o ConnectionAuthConfigAdditionalVariableOutput) BooleanValue() pulumi.Bool
 	return o.ApplyT(func(v ConnectionAuthConfigAdditionalVariable) *bool { return v.BooleanValue }).(pulumi.BoolPtrOutput)
 }
 
-// Encription key value of configVariable.
+// Encryption key value of configVariable.
 // Structure is documented below.
 func (o ConnectionAuthConfigAdditionalVariableOutput) EncryptionKeyValue() ConnectionAuthConfigAdditionalVariableEncryptionKeyValuePtrOutput {
 	return o.ApplyT(func(v ConnectionAuthConfigAdditionalVariable) *ConnectionAuthConfigAdditionalVariableEncryptionKeyValue {
@@ -2717,7 +2717,7 @@ func (o ConnectionAuthConfigUserPasswordPasswordPtrOutput) SecretVersion() pulum
 type ConnectionConfigVariable struct {
 	// Boolean Value of configVariable
 	BooleanValue *bool `pulumi:"booleanValue"`
-	// Encription key value of configVariable.
+	// Encryption key value of configVariable.
 	// Structure is documented below.
 	EncryptionKeyValue *ConnectionConfigVariableEncryptionKeyValue `pulumi:"encryptionKeyValue"`
 	// Integer Value of configVariable
@@ -2745,7 +2745,7 @@ type ConnectionConfigVariableInput interface {
 type ConnectionConfigVariableArgs struct {
 	// Boolean Value of configVariable
 	BooleanValue pulumi.BoolPtrInput `pulumi:"booleanValue"`
-	// Encription key value of configVariable.
+	// Encryption key value of configVariable.
 	// Structure is documented below.
 	EncryptionKeyValue ConnectionConfigVariableEncryptionKeyValuePtrInput `pulumi:"encryptionKeyValue"`
 	// Integer Value of configVariable
@@ -2815,7 +2815,7 @@ func (o ConnectionConfigVariableOutput) BooleanValue() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v ConnectionConfigVariable) *bool { return v.BooleanValue }).(pulumi.BoolPtrOutput)
 }
 
-// Encription key value of configVariable.
+// Encryption key value of configVariable.
 // Structure is documented below.
 func (o ConnectionConfigVariableOutput) EncryptionKeyValue() ConnectionConfigVariableEncryptionKeyValuePtrOutput {
 	return o.ApplyT(func(v ConnectionConfigVariable) *ConnectionConfigVariableEncryptionKeyValue {
@@ -3706,7 +3706,7 @@ func (o ConnectionEventingConfigPtrOutput) RegistrationDestinationConfig() Conne
 type ConnectionEventingConfigAdditionalVariable struct {
 	// Boolean Value of configVariable.
 	BooleanValue *bool `pulumi:"booleanValue"`
-	// Encription key value of configVariable.
+	// Encryption key value of configVariable.
 	// Structure is documented below.
 	EncryptionKeyValue *ConnectionEventingConfigAdditionalVariableEncryptionKeyValue `pulumi:"encryptionKeyValue"`
 	// Integer Value of configVariable.
@@ -3734,7 +3734,7 @@ type ConnectionEventingConfigAdditionalVariableInput interface {
 type ConnectionEventingConfigAdditionalVariableArgs struct {
 	// Boolean Value of configVariable.
 	BooleanValue pulumi.BoolPtrInput `pulumi:"booleanValue"`
-	// Encription key value of configVariable.
+	// Encryption key value of configVariable.
 	// Structure is documented below.
 	EncryptionKeyValue ConnectionEventingConfigAdditionalVariableEncryptionKeyValuePtrInput `pulumi:"encryptionKeyValue"`
 	// Integer Value of configVariable.
@@ -3804,7 +3804,7 @@ func (o ConnectionEventingConfigAdditionalVariableOutput) BooleanValue() pulumi.
 	return o.ApplyT(func(v ConnectionEventingConfigAdditionalVariable) *bool { return v.BooleanValue }).(pulumi.BoolPtrOutput)
 }
 
-// Encription key value of configVariable.
+// Encryption key value of configVariable.
 // Structure is documented below.
 func (o ConnectionEventingConfigAdditionalVariableOutput) EncryptionKeyValue() ConnectionEventingConfigAdditionalVariableEncryptionKeyValuePtrOutput {
 	return o.ApplyT(func(v ConnectionEventingConfigAdditionalVariable) *ConnectionEventingConfigAdditionalVariableEncryptionKeyValue {
@@ -4373,7 +4373,7 @@ func (o ConnectionEventingConfigAuthConfigPtrOutput) UserPassword() ConnectionEv
 type ConnectionEventingConfigAuthConfigAdditionalVariable struct {
 	// Boolean Value of configVariable.
 	BooleanValue *bool `pulumi:"booleanValue"`
-	// Encription key value of configVariable.
+	// Encryption key value of configVariable.
 	// Structure is documented below.
 	EncryptionKeyValue *ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValue `pulumi:"encryptionKeyValue"`
 	// Integer Value of configVariable.
@@ -4401,7 +4401,7 @@ type ConnectionEventingConfigAuthConfigAdditionalVariableInput interface {
 type ConnectionEventingConfigAuthConfigAdditionalVariableArgs struct {
 	// Boolean Value of configVariable.
 	BooleanValue pulumi.BoolPtrInput `pulumi:"booleanValue"`
-	// Encription key value of configVariable.
+	// Encryption key value of configVariable.
 	// Structure is documented below.
 	EncryptionKeyValue ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValuePtrInput `pulumi:"encryptionKeyValue"`
 	// Integer Value of configVariable.
@@ -4471,7 +4471,7 @@ func (o ConnectionEventingConfigAuthConfigAdditionalVariableOutput) BooleanValue
 	return o.ApplyT(func(v ConnectionEventingConfigAuthConfigAdditionalVariable) *bool { return v.BooleanValue }).(pulumi.BoolPtrOutput)
 }
 
-// Encription key value of configVariable.
+// Encryption key value of configVariable.
 // Structure is documented below.
 func (o ConnectionEventingConfigAuthConfigAdditionalVariableOutput) EncryptionKeyValue() ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValuePtrOutput {
 	return o.ApplyT(func(v ConnectionEventingConfigAuthConfigAdditionalVariable) *ConnectionEventingConfigAuthConfigAdditionalVariableEncryptionKeyValue {
@@ -6430,7 +6430,7 @@ func (o ConnectionSslConfigPtrOutput) UseSsl() pulumi.BoolPtrOutput {
 type ConnectionSslConfigAdditionalVariable struct {
 	// Boolean Value of configVariable.
 	BooleanValue *bool `pulumi:"booleanValue"`
-	// Encription key value of configVariable.
+	// Encryption key value of configVariable.
 	// Structure is documented below.
 	EncryptionKeyValue *ConnectionSslConfigAdditionalVariableEncryptionKeyValue `pulumi:"encryptionKeyValue"`
 	// Integer Value of configVariable.
@@ -6458,7 +6458,7 @@ type ConnectionSslConfigAdditionalVariableInput interface {
 type ConnectionSslConfigAdditionalVariableArgs struct {
 	// Boolean Value of configVariable.
 	BooleanValue pulumi.BoolPtrInput `pulumi:"booleanValue"`
-	// Encription key value of configVariable.
+	// Encryption key value of configVariable.
 	// Structure is documented below.
 	EncryptionKeyValue ConnectionSslConfigAdditionalVariableEncryptionKeyValuePtrInput `pulumi:"encryptionKeyValue"`
 	// Integer Value of configVariable.
@@ -6528,7 +6528,7 @@ func (o ConnectionSslConfigAdditionalVariableOutput) BooleanValue() pulumi.BoolP
 	return o.ApplyT(func(v ConnectionSslConfigAdditionalVariable) *bool { return v.BooleanValue }).(pulumi.BoolPtrOutput)
 }
 
-// Encription key value of configVariable.
+// Encryption key value of configVariable.
 // Structure is documented below.
 func (o ConnectionSslConfigAdditionalVariableOutput) EncryptionKeyValue() ConnectionSslConfigAdditionalVariableEncryptionKeyValuePtrOutput {
 	return o.ApplyT(func(v ConnectionSslConfigAdditionalVariable) *ConnectionSslConfigAdditionalVariableEncryptionKeyValue {

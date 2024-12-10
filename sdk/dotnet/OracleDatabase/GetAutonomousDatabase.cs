@@ -164,6 +164,7 @@ namespace Pulumi.Gcp.OracleDatabase
         public readonly string Cidr;
         public readonly string CreateTime;
         public readonly string Database;
+        public readonly bool DeletionProtection;
         public readonly string DisplayName;
         public readonly ImmutableDictionary<string, string> EffectiveLabels;
         public readonly string EntitlementId;
@@ -190,6 +191,8 @@ namespace Pulumi.Gcp.OracleDatabase
             string createTime,
 
             string database,
+
+            bool deletionProtection,
 
             string displayName,
 
@@ -218,6 +221,7 @@ namespace Pulumi.Gcp.OracleDatabase
             Cidr = cidr;
             CreateTime = createTime;
             Database = database;
+            DeletionProtection = deletionProtection;
             DisplayName = displayName;
             EffectiveLabels = effectiveLabels;
             EntitlementId = entitlementId;

@@ -24,6 +24,7 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
         /// The date and time that the Exadata Infrastructure was created.
         /// </summary>
         public readonly string CreateTime;
+        public readonly bool DeletionProtection;
         /// <summary>
         /// User friendly name for this resource.
         /// </summary>
@@ -77,6 +78,8 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
 
             string createTime,
 
+            bool deletionProtection,
+
             string displayName,
 
             ImmutableDictionary<string, string> effectiveLabels,
@@ -99,6 +102,7 @@ namespace Pulumi.Gcp.OracleDatabase.Outputs
         {
             CloudExadataInfrastructureId = cloudExadataInfrastructureId;
             CreateTime = createTime;
+            DeletionProtection = deletionProtection;
             DisplayName = displayName;
             EffectiveLabels = effectiveLabels;
             EntitlementId = entitlementId;

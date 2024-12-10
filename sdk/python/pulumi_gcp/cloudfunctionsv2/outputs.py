@@ -1040,7 +1040,7 @@ class FunctionServiceConfigSecretEnvironmentVariable(dict):
                  version: str):
         """
         :param str key: Name of the environment variable.
-        :param str project_id: Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+        :param str project_id: Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
         :param str secret: Name of the secret in secret manager (not the full resource name).
         :param str version: Version of the secret (version number or the string 'latest'). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new instances start.
         """
@@ -1061,7 +1061,7 @@ class FunctionServiceConfigSecretEnvironmentVariable(dict):
     @pulumi.getter(name="projectId")
     def project_id(self) -> str:
         """
-        Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+        Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
         """
         return pulumi.get(self, "project_id")
 
@@ -1110,7 +1110,7 @@ class FunctionServiceConfigSecretVolume(dict):
                  versions: Optional[Sequence['outputs.FunctionServiceConfigSecretVolumeVersion']] = None):
         """
         :param str mount_path: The path within the container to mount the secret volume. For example, setting the mountPath as /etc/secrets would mount the secret value files under the /etc/secrets directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount path: /etc/secrets
-        :param str project_id: Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+        :param str project_id: Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
         :param str secret: Name of the secret in secret manager (not the full resource name).
         :param Sequence['FunctionServiceConfigSecretVolumeVersionArgs'] versions: List of secret versions to mount for this secret. If empty, the latest version of the secret will be made available in a file named after the secret under the mount point.'
                Structure is documented below.
@@ -1133,7 +1133,7 @@ class FunctionServiceConfigSecretVolume(dict):
     @pulumi.getter(name="projectId")
     def project_id(self) -> str:
         """
-        Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+        Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
         """
         return pulumi.get(self, "project_id")
 
@@ -1865,7 +1865,7 @@ class GetFunctionServiceConfigSecretEnvironmentVariableResult(dict):
                  version: str):
         """
         :param str key: Name of the environment variable.
-        :param str project_id: Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+        :param str project_id: Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
         :param str secret: Name of the secret in secret manager (not the full resource name).
         :param str version: Version of the secret (version number or the string 'latest'). It is recommended to use a numeric version for secret environment variables as any updates to the secret value is not reflected until new instances start.
         """
@@ -1886,7 +1886,7 @@ class GetFunctionServiceConfigSecretEnvironmentVariableResult(dict):
     @pulumi.getter(name="projectId")
     def project_id(self) -> str:
         """
-        Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+        Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
         """
         return pulumi.get(self, "project_id")
 
@@ -1916,7 +1916,7 @@ class GetFunctionServiceConfigSecretVolumeResult(dict):
                  versions: Sequence['outputs.GetFunctionServiceConfigSecretVolumeVersionResult']):
         """
         :param str mount_path: The path within the container to mount the secret volume. For example, setting the mountPath as /etc/secrets would mount the secret value files under the /etc/secrets directory. This directory will also be completely shadowed and unavailable to mount any other secrets. Recommended mount path: /etc/secrets
-        :param str project_id: Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+        :param str project_id: Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
         :param str secret: Name of the secret in secret manager (not the full resource name).
         :param Sequence['GetFunctionServiceConfigSecretVolumeVersionArgs'] versions: List of secret versions to mount for this secret. If empty, the latest version of the secret will be made available in a file named after the secret under the mount point.'
         """
@@ -1937,7 +1937,7 @@ class GetFunctionServiceConfigSecretVolumeResult(dict):
     @pulumi.getter(name="projectId")
     def project_id(self) -> str:
         """
-        Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
+        Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function's project assuming that the secret exists in the same project as of the function.
         """
         return pulumi.get(self, "project_id")
 

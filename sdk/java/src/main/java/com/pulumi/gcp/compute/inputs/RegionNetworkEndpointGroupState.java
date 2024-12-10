@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.compute.inputs.RegionNetworkEndpointGroupAppEngineArgs;
 import com.pulumi.gcp.compute.inputs.RegionNetworkEndpointGroupCloudFunctionArgs;
 import com.pulumi.gcp.compute.inputs.RegionNetworkEndpointGroupCloudRunArgs;
+import com.pulumi.gcp.compute.inputs.RegionNetworkEndpointGroupPscDataArgs;
 import com.pulumi.gcp.compute.inputs.RegionNetworkEndpointGroupServerlessDeploymentArgs;
 import java.lang.String;
 import java.util.Objects;
@@ -176,6 +177,23 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
     }
 
     /**
+     * This field is only used for PSC NEGs.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="pscData")
+    private @Nullable Output<RegionNetworkEndpointGroupPscDataArgs> pscData;
+
+    /**
+     * @return This field is only used for PSC NEGs.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<RegionNetworkEndpointGroupPscDataArgs>> pscData() {
+        return Optional.ofNullable(this.pscData);
+    }
+
+    /**
      * This field is only used for PSC and INTERNET NEGs.
      * The target service url used to set up private service connection to
      * a Google API or a PSC Producer Service Attachment.
@@ -275,6 +293,7 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
         this.network = $.network;
         this.networkEndpointType = $.networkEndpointType;
         this.project = $.project;
+        this.pscData = $.pscData;
         this.pscTargetService = $.pscTargetService;
         this.region = $.region;
         this.selfLink = $.selfLink;
@@ -502,6 +521,29 @@ public final class RegionNetworkEndpointGroupState extends com.pulumi.resources.
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param pscData This field is only used for PSC NEGs.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pscData(@Nullable Output<RegionNetworkEndpointGroupPscDataArgs> pscData) {
+            $.pscData = pscData;
+            return this;
+        }
+
+        /**
+         * @param pscData This field is only used for PSC NEGs.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pscData(RegionNetworkEndpointGroupPscDataArgs pscData) {
+            return pscData(Output.of(pscData));
         }
 
         /**

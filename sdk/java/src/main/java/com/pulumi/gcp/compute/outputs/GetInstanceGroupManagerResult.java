@@ -39,6 +39,7 @@ public final class GetInstanceGroupManagerResult {
      */
     private String id;
     private String instanceGroup;
+    private Integer instanceGroupManagerId;
     private List<GetInstanceGroupManagerInstanceLifecyclePolicy> instanceLifecyclePolicies;
     private String listManagedInstancesResults;
     private @Nullable String name;
@@ -90,6 +91,9 @@ public final class GetInstanceGroupManagerResult {
     }
     public String instanceGroup() {
         return this.instanceGroup;
+    }
+    public Integer instanceGroupManagerId() {
+        return this.instanceGroupManagerId;
     }
     public List<GetInstanceGroupManagerInstanceLifecyclePolicy> instanceLifecyclePolicies() {
         return this.instanceLifecyclePolicies;
@@ -175,6 +179,7 @@ public final class GetInstanceGroupManagerResult {
         private String fingerprint;
         private String id;
         private String instanceGroup;
+        private Integer instanceGroupManagerId;
         private List<GetInstanceGroupManagerInstanceLifecyclePolicy> instanceLifecyclePolicies;
         private String listManagedInstancesResults;
         private @Nullable String name;
@@ -208,6 +213,7 @@ public final class GetInstanceGroupManagerResult {
     	      this.fingerprint = defaults.fingerprint;
     	      this.id = defaults.id;
     	      this.instanceGroup = defaults.instanceGroup;
+    	      this.instanceGroupManagerId = defaults.instanceGroupManagerId;
     	      this.instanceLifecyclePolicies = defaults.instanceLifecyclePolicies;
     	      this.listManagedInstancesResults = defaults.listManagedInstancesResults;
     	      this.name = defaults.name;
@@ -300,6 +306,14 @@ public final class GetInstanceGroupManagerResult {
               throw new MissingRequiredPropertyException("GetInstanceGroupManagerResult", "instanceGroup");
             }
             this.instanceGroup = instanceGroup;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder instanceGroupManagerId(Integer instanceGroupManagerId) {
+            if (instanceGroupManagerId == null) {
+              throw new MissingRequiredPropertyException("GetInstanceGroupManagerResult", "instanceGroupManagerId");
+            }
+            this.instanceGroupManagerId = instanceGroupManagerId;
             return this;
         }
         @CustomType.Setter
@@ -513,6 +527,7 @@ public final class GetInstanceGroupManagerResult {
             _resultValue.fingerprint = fingerprint;
             _resultValue.id = id;
             _resultValue.instanceGroup = instanceGroup;
+            _resultValue.instanceGroupManagerId = instanceGroupManagerId;
             _resultValue.instanceLifecyclePolicies = instanceLifecyclePolicies;
             _resultValue.listManagedInstancesResults = listManagedInstancesResults;
             _resultValue.name = name;

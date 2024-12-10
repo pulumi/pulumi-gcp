@@ -33,7 +33,7 @@ public final class GetForwardingRulesArgs extends com.pulumi.resources.InvokeArg
     /**
      * The region you want to get the forwarding rules from.
      * 
-     * These arguments must be set in either the provider or the resouce in order for the information to be queried.
+     * These arguments must be set in either the provider or the resource in order for the information to be queried.
      * 
      */
     @Import(name="region")
@@ -42,7 +42,7 @@ public final class GetForwardingRulesArgs extends com.pulumi.resources.InvokeArg
     /**
      * @return The region you want to get the forwarding rules from.
      * 
-     * These arguments must be set in either the provider or the resouce in order for the information to be queried.
+     * These arguments must be set in either the provider or the resource in order for the information to be queried.
      * 
      */
     public Optional<Output<String>> region() {
@@ -98,7 +98,7 @@ public final class GetForwardingRulesArgs extends com.pulumi.resources.InvokeArg
         /**
          * @param region The region you want to get the forwarding rules from.
          * 
-         * These arguments must be set in either the provider or the resouce in order for the information to be queried.
+         * These arguments must be set in either the provider or the resource in order for the information to be queried.
          * 
          * @return builder
          * 
@@ -111,7 +111,7 @@ public final class GetForwardingRulesArgs extends com.pulumi.resources.InvokeArg
         /**
          * @param region The region you want to get the forwarding rules from.
          * 
-         * These arguments must be set in either the provider or the resouce in order for the information to be queried.
+         * These arguments must be set in either the provider or the resource in order for the information to be queried.
          * 
          * @return builder
          * 

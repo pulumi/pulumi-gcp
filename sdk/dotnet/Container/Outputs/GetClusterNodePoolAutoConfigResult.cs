@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.Container.Outputs
     public sealed class GetClusterNodePoolAutoConfigResult
     {
         /// <summary>
+        /// Linux node configuration options.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetClusterNodePoolAutoConfigLinuxNodeConfigResult> LinuxNodeConfigs;
+        /// <summary>
         /// Collection of Compute Engine network tags that can be applied to a node's underlying VM instance.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetClusterNodePoolAutoConfigNetworkTagResult> NetworkTags;
@@ -28,12 +32,15 @@ namespace Pulumi.Gcp.Container.Outputs
 
         [OutputConstructor]
         private GetClusterNodePoolAutoConfigResult(
+            ImmutableArray<Outputs.GetClusterNodePoolAutoConfigLinuxNodeConfigResult> linuxNodeConfigs,
+
             ImmutableArray<Outputs.GetClusterNodePoolAutoConfigNetworkTagResult> networkTags,
 
             ImmutableArray<Outputs.GetClusterNodePoolAutoConfigNodeKubeletConfigResult> nodeKubeletConfigs,
 
             ImmutableDictionary<string, string> resourceManagerTags)
         {
+            LinuxNodeConfigs = linuxNodeConfigs;
             NetworkTags = networkTags;
             NodeKubeletConfigs = nodeKubeletConfigs;
             ResourceManagerTags = resourceManagerTags;

@@ -99,7 +99,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The region you want to get the forwarding rules from.
         /// 
-        /// These arguments must be set in either the provider or the resouce in order for the information to be queried.
+        /// These arguments must be set in either the provider or the resource in order for the information to be queried.
         /// </summary>
         [Input("region")]
         public string? Region { get; set; }
@@ -121,7 +121,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The region you want to get the forwarding rules from.
         /// 
-        /// These arguments must be set in either the provider or the resouce in order for the information to be queried.
+        /// These arguments must be set in either the provider or the resource in order for the information to be queried.
         /// </summary>
         [Input("region")]
         public Input<string>? Region { get; set; }

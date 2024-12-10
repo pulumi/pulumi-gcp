@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 public final class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary {
     /**
      * @return Configures the manner in which the template library is installed on the cluster.
-     * Possible values are: `INSTALATION_UNSPECIFIED`, `NOT_INSTALLED`, `ALL`.
+     * Possible values are: `INSTALLATION_UNSPECIFIED`, `NOT_INSTALLED`, `ALL`.
      * 
      */
     private @Nullable String installation;
@@ -21,7 +21,7 @@ public final class FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControll
     private FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary() {}
     /**
      * @return Configures the manner in which the template library is installed on the cluster.
-     * Possible values are: `INSTALATION_UNSPECIFIED`, `NOT_INSTALLED`, `ALL`.
+     * Possible values are: `INSTALLATION_UNSPECIFIED`, `NOT_INSTALLED`, `ALL`.
      * 
      */
     public Optional<String> installation() {

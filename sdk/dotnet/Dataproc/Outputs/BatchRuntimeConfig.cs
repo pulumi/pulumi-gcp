@@ -14,6 +14,15 @@ namespace Pulumi.Gcp.Dataproc.Outputs
     public sealed class BatchRuntimeConfig
     {
         /// <summary>
+        /// Optional. Autotuning configuration of the workload.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.BatchRuntimeConfigAutotuningConfig? AutotuningConfig;
+        /// <summary>
+        /// Optional. Cohort identifier. Identifies families of the workloads having the same shape, e.g. daily ETL jobs.
+        /// </summary>
+        public readonly string? Cohort;
+        /// <summary>
         /// Optional custom container image for the job runtime environment. If not specified, a default container image will be used.
         /// </summary>
         public readonly string? ContainerImage;
@@ -33,6 +42,10 @@ namespace Pulumi.Gcp.Dataproc.Outputs
 
         [OutputConstructor]
         private BatchRuntimeConfig(
+            Outputs.BatchRuntimeConfigAutotuningConfig? autotuningConfig,
+
+            string? cohort,
+
             string? containerImage,
 
             ImmutableDictionary<string, string>? effectiveProperties,
@@ -41,6 +54,8 @@ namespace Pulumi.Gcp.Dataproc.Outputs
 
             string? version)
         {
+            AutotuningConfig = autotuningConfig;
+            Cohort = cohort;
             ContainerImage = containerImage;
             EffectiveProperties = effectiveProperties;
             Properties = properties;
