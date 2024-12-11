@@ -585,6 +585,14 @@ Object.defineProperty(exports, "dialogflowCxCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const disableGlobalProjectWarning: boolean;
+Object.defineProperty(exports, "disableGlobalProjectWarning", {
+    get() {
+        return __config.getObject<boolean>("disableGlobalProjectWarning") ?? (utilities.getEnvBoolean("PULUMI_GCP_DISABLE_GLOBAL_PROJECT_WARNING") || false);
+    },
+    enumerable: true,
+});
+
 export declare const disableGooglePartnerName: boolean | undefined;
 Object.defineProperty(exports, "disableGooglePartnerName", {
     get() {

@@ -536,6 +536,13 @@ namespace Pulumi.Gcp
             set => _dialogflowCxCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<bool?> _disableGlobalProjectWarning = new __Value<bool?>(() => __config.GetBoolean("disableGlobalProjectWarning") ?? Utilities.GetEnvBoolean("PULUMI_GCP_DISABLE_GLOBAL_PROJECT_WARNING") ?? false);
+        public static bool? DisableGlobalProjectWarning
+        {
+            get => _disableGlobalProjectWarning.Get();
+            set => _disableGlobalProjectWarning.Set(value);
+        }
+
         private static readonly __Value<bool?> _disableGooglePartnerName = new __Value<bool?>(() => __config.GetBoolean("disableGooglePartnerName"));
         public static bool? DisableGooglePartnerName
         {

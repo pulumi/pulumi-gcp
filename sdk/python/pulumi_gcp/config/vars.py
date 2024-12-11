@@ -310,6 +310,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('dialogflowCxCustomEndpoint')
 
     @property
+    def disable_global_project_warning(self) -> bool:
+        return __config__.get_bool('disableGlobalProjectWarning') or (_utilities.get_env_bool('PULUMI_GCP_DISABLE_GLOBAL_PROJECT_WARNING') or False)
+
+    @property
     def disable_google_partner_name(self) -> Optional[bool]:
         return __config__.get_bool('disableGooglePartnerName')
 

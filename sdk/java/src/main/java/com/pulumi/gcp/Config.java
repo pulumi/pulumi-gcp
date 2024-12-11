@@ -231,6 +231,9 @@ public final class Config {
     public Optional<String> dialogflowCxCustomEndpoint() {
         return Codegen.stringProp("dialogflowCxCustomEndpoint").config(config).get();
     }
+    public Optional<Boolean> disableGlobalProjectWarning() {
+        return Codegen.booleanProp("disableGlobalProjectWarning").config(config).env("PULUMI_GCP_DISABLE_GLOBAL_PROJECT_WARNING").def(false).get();
+    }
     public Optional<Boolean> disableGooglePartnerName() {
         return Codegen.booleanProp("disableGooglePartnerName").config(config).get();
     }

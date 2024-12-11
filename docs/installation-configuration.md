@@ -20,9 +20,9 @@ To provision resources with the Pulumi Google Cloud Provider, you need to have G
 
 Pulumi can authenticate to Google Cloud via several methods:
 
-- Google Cloud CLI
-- OpenID Connect (OIDC)
-- Service account
+* Google Cloud CLI
+* OpenID Connect (OIDC)
+* Service account
 
 ## Configuration
 
@@ -95,3 +95,4 @@ Use `pulumi config set gcp:<option>` or pass options to the [constructor of `new
 | `accessToken` | Optional | A temporary OAuth 2.0 access token obtained from the Google Authorization server, i.e. the `Authorization: Bearer` token used to authenticate HTTP requests to GCP APIs. Alternative to `credentials`. Ignores the `scopes` field. |
 | `scopes` | Optional | List of OAuth 2.0 [scopes](https://developers.google.com/identity/protocols/oauth2/scopes) requested when generating an access token using the service account key specified in `credentials`. Defaults: `https://www.googleapis.com/auth/cloud-platform` and `https://www.googleapis.com/auth/userinfo.email` |
 | `impersonateServiceAccount` | Optional | Setting to impersonate a [Google service account](https://cloud.google.com/iam/docs/create-short-lived-credentials-direct) If you authenticate as a service account, Google Cloud derives your quota project and permissions from that service account rather than your primary authentication method. A valid primary authentication mechanism must be provided for the impersonation call, and your primary identity must have the `roles/iam.serviceAccountTokenCreator` role on the service account you are impersonating. This can also be specified by setting the `GOOGLE_IMPERSONATE_SERVICE_ACCOUNT` environment variable. |
+| `disableGlobalProjectWarning` | Optional | Boolean setting to disable the warning when the Google global `project` is not set |
