@@ -319,6 +319,13 @@ bin/%/$(PROVIDER) bin/%/$(PROVIDER).exe:
 		export CGO_ENABLED=0 && \
 		go build -o "${WORKING_DIR}/$@" $(PULUMI_PROVIDER_BUILD_PARALLELISM) -ldflags "$(LDFLAGS)" "$(PROJECT)/$(PROVIDER_PATH)/cmd/$(PROVIDER)"
 
+provider-linux-amd64: bin/linux-amd64/$(PROVIDER)
+provider-linux-arm64: bin/linux-arm64/$(PROVIDER)
+provider-darwin-amd64: bin/darwin-amd64/$(PROVIDER)
+provider-darwin-arm64: bin/darwin-arm64/$(PROVIDER)
+provider-windows-amd64: bin/windows-amd64/$(PROVIDER).exe
+.PHONY: provider-linux-amd64 provider-linux-arm64 provider-darwin-amd64 provider-darwin-arm64 provider-windows-amd64
+
 bin/$(PROVIDER)-v$(VERSION_GENERIC)-linux-amd64.tar.gz: bin/linux-amd64/$(PROVIDER)
 bin/$(PROVIDER)-v$(VERSION_GENERIC)-linux-arm64.tar.gz: bin/linux-arm64/$(PROVIDER)
 bin/$(PROVIDER)-v$(VERSION_GENERIC)-darwin-amd64.tar.gz: bin/darwin-amd64/$(PROVIDER)
