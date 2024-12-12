@@ -16,6 +16,9 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
 
         public static Output<GetBackupResult> Invoke(GetBackupInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetBackupResult>("gcp:backupdisasterrecovery/getBackup:getBackup", args ?? new GetBackupInvokeArgs(), options.WithDefaults());
+
+        public static Output<GetBackupResult> Invoke(GetBackupInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetBackupResult>("gcp:backupdisasterrecovery/getBackup:getBackup", args ?? new GetBackupInvokeArgs(), options.WithDefaults());
     }
 
 

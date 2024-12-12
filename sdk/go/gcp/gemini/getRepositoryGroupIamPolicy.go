@@ -50,21 +50,11 @@ type LookupRepositoryGroupIamPolicyResult struct {
 }
 
 func LookupRepositoryGroupIamPolicyOutput(ctx *pulumi.Context, args LookupRepositoryGroupIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupRepositoryGroupIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupRepositoryGroupIamPolicyResultOutput, error) {
 			args := v.(LookupRepositoryGroupIamPolicyArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupRepositoryGroupIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:gemini/getRepositoryGroupIamPolicy:getRepositoryGroupIamPolicy", args, &rv, "", opts...)
-			if err != nil {
-				return LookupRepositoryGroupIamPolicyResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupRepositoryGroupIamPolicyResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupRepositoryGroupIamPolicyResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gcp:gemini/getRepositoryGroupIamPolicy:getRepositoryGroupIamPolicy", args, LookupRepositoryGroupIamPolicyResultOutput{}, options).(LookupRepositoryGroupIamPolicyResultOutput), nil
 		}).(LookupRepositoryGroupIamPolicyResultOutput)
 }
 

@@ -16,6 +16,9 @@ namespace Pulumi.Gcp.Gemini
 
         public static Output<GetRepositoryGroupIamPolicyResult> Invoke(GetRepositoryGroupIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRepositoryGroupIamPolicyResult>("gcp:gemini/getRepositoryGroupIamPolicy:getRepositoryGroupIamPolicy", args ?? new GetRepositoryGroupIamPolicyInvokeArgs(), options.WithDefaults());
+
+        public static Output<GetRepositoryGroupIamPolicyResult> Invoke(GetRepositoryGroupIamPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRepositoryGroupIamPolicyResult>("gcp:gemini/getRepositoryGroupIamPolicy:getRepositoryGroupIamPolicy", args ?? new GetRepositoryGroupIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

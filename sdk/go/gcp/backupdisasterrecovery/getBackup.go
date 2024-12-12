@@ -42,21 +42,11 @@ type GetBackupResult struct {
 }
 
 func GetBackupOutput(ctx *pulumi.Context, args GetBackupOutputArgs, opts ...pulumi.InvokeOption) GetBackupResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetBackupResultOutput, error) {
 			args := v.(GetBackupArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetBackupResult
-			secret, err := ctx.InvokePackageRaw("gcp:backupdisasterrecovery/getBackup:getBackup", args, &rv, "", opts...)
-			if err != nil {
-				return GetBackupResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetBackupResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetBackupResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gcp:backupdisasterrecovery/getBackup:getBackup", args, GetBackupResultOutput{}, options).(GetBackupResultOutput), nil
 		}).(GetBackupResultOutput)
 }
 

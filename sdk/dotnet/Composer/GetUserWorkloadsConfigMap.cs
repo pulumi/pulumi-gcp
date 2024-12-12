@@ -116,6 +116,8 @@ namespace Pulumi.Gcp.Composer
             => global::Pulumi.Deployment.Instance.Invoke<GetUserWorkloadsConfigMapResult>("gcp:composer/getUserWorkloadsConfigMap:getUserWorkloadsConfigMap", args ?? new GetUserWorkloadsConfigMapInvokeArgs(), options.WithDefaults());
 
         /// <summary>
+        /// Provides access to Kubernetes ConfigMap configuration for a given project, region and Composer Environment.
+        /// 
         /// ## Example Usage
         /// 
         /// ```csharp

@@ -1632,7 +1632,7 @@ public final class ServiceaccountFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      * ### Service Account Impersonation.
-     *   `gcp.serviceaccount.getAccountAccessToken` will use background impersonated credentials provided by `gcp.serviceaccount.getAccountAccessToken`.
+     *   `gcp.serviceaccount.getAccountIdToken` will use background impersonated credentials provided by `gcp.serviceaccount.getAccountAccessToken`.
      * 
      *   Note: to use the following, you must grant `target_service_account` the
      *   `roles/iam.serviceAccountTokenCreator` role on itself.

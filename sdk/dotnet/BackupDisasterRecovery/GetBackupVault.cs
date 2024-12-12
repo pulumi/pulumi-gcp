@@ -60,6 +60,31 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         /// </summary>
         public static Output<GetBackupVaultResult> Invoke(GetBackupVaultInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetBackupVaultResult>("gcp:backupdisasterrecovery/getBackupVault:getBackupVault", args ?? new GetBackupVaultInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// A Backup and DRBackupVault.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_backup_vault = Gcp.BackupDisasterRecovery.GetBackupVault.Invoke(new()
+        ///     {
+        ///         Location = "us-central1",
+        ///         BackupVaultId = "bv-1",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetBackupVaultResult> Invoke(GetBackupVaultInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetBackupVaultResult>("gcp:backupdisasterrecovery/getBackupVault:getBackupVault", args ?? new GetBackupVaultInvokeArgs(), options.WithDefaults());
     }
 
 

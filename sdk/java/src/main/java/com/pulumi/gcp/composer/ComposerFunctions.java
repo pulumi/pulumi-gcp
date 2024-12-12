@@ -920,6 +920,8 @@ public final class ComposerFunctions {
         return Deployment.getInstance().invoke("gcp:composer/getUserWorkloadsConfigMap:getUserWorkloadsConfigMap", TypeShape.of(GetUserWorkloadsConfigMapResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Provides access to Kubernetes ConfigMap configuration for a given project, region and Composer Environment.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;
@@ -1274,6 +1276,8 @@ public final class ComposerFunctions {
         return Deployment.getInstance().invoke("gcp:composer/getUserWorkloadsSecret:getUserWorkloadsSecret", TypeShape.of(GetUserWorkloadsSecretResult.class), args, Utilities.withVersion(options));
     }
     /**
+     * Provides access to Kubernetes Secret configuration for a given project, region and Composer Environment.
+     * 
      * ## Example Usage
      * 
      * &lt;!--Start PulumiCodeChooser --&gt;

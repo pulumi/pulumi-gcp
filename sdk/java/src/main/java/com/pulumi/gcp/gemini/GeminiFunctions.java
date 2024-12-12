@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.gemini.inputs.GetRepositoryGroupIamPolicyArgs;
 import com.pulumi.gcp.gemini.inputs.GetRepositoryGroupIamPolicyPlainArgs;
@@ -21,6 +22,9 @@ public final class GeminiFunctions {
         return getRepositoryGroupIamPolicyPlain(args, InvokeOptions.Empty);
     }
     public static Output<GetRepositoryGroupIamPolicyResult> getRepositoryGroupIamPolicy(GetRepositoryGroupIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:gemini/getRepositoryGroupIamPolicy:getRepositoryGroupIamPolicy", TypeShape.of(GetRepositoryGroupIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetRepositoryGroupIamPolicyResult> getRepositoryGroupIamPolicy(GetRepositoryGroupIamPolicyArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:gemini/getRepositoryGroupIamPolicy:getRepositoryGroupIamPolicy", TypeShape.of(GetRepositoryGroupIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     public static CompletableFuture<GetRepositoryGroupIamPolicyResult> getRepositoryGroupIamPolicyPlain(GetRepositoryGroupIamPolicyPlainArgs args, InvokeOptions options) {
