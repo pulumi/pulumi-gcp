@@ -138,7 +138,7 @@ jobs:
       run: |
         cd provider && go test -v -count=1 -cover -timeout 2h -tags=${{ matrix.language }} -parallel 4 .
     - name: Run tests
-      run: cd examples && go test -count=1 -cover -timeout 2h -tags=${{ matrix.language }} -parallel 4 .
+      run: cd examples && go test -v -count=1 -cover -timeout 2h -tags=${{ matrix.language }} -parallel 4 .
     strategy:
       fail-fast: false
       matrix:
