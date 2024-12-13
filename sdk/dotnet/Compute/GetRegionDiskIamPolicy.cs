@@ -64,6 +64,33 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public static Output<GetRegionDiskIamPolicyResult> Invoke(GetRegionDiskIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRegionDiskIamPolicyResult>("gcp:compute/getRegionDiskIamPolicy:getRegionDiskIamPolicy", args ?? new GetRegionDiskIamPolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves the current IAM policy data for regiondisk
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.Compute.GetRegionDiskIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = regiondisk.Project,
+        ///         Region = regiondisk.Region,
+        ///         Name = regiondisk.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetRegionDiskIamPolicyResult> Invoke(GetRegionDiskIamPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRegionDiskIamPolicyResult>("gcp:compute/getRegionDiskIamPolicy:getRegionDiskIamPolicy", args ?? new GetRegionDiskIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

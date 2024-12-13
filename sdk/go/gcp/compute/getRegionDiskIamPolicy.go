@@ -78,21 +78,11 @@ type LookupRegionDiskIamPolicyResult struct {
 }
 
 func LookupRegionDiskIamPolicyOutput(ctx *pulumi.Context, args LookupRegionDiskIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupRegionDiskIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupRegionDiskIamPolicyResultOutput, error) {
 			args := v.(LookupRegionDiskIamPolicyArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupRegionDiskIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:compute/getRegionDiskIamPolicy:getRegionDiskIamPolicy", args, &rv, "", opts...)
-			if err != nil {
-				return LookupRegionDiskIamPolicyResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupRegionDiskIamPolicyResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupRegionDiskIamPolicyResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gcp:compute/getRegionDiskIamPolicy:getRegionDiskIamPolicy", args, LookupRegionDiskIamPolicyResultOutput{}, options).(LookupRegionDiskIamPolicyResultOutput), nil
 		}).(LookupRegionDiskIamPolicyResultOutput)
 }
 

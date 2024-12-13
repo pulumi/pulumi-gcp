@@ -58,6 +58,30 @@ namespace Pulumi.Gcp.Healthcare
         /// </summary>
         public static Output<GetFhirStoreIamPolicyResult> Invoke(GetFhirStoreIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFhirStoreIamPolicyResult>("gcp:healthcare/getFhirStoreIamPolicy:getFhirStoreIamPolicy", args ?? new GetFhirStoreIamPolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves the current IAM policy data for a Google Cloud Healthcare FHIR store.
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = Gcp.Healthcare.GetFhirStoreIamPolicy.Invoke(new()
+        ///     {
+        ///         FhirStoreId = fhirStore.Id,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetFhirStoreIamPolicyResult> Invoke(GetFhirStoreIamPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetFhirStoreIamPolicyResult>("gcp:healthcare/getFhirStoreIamPolicy:getFhirStoreIamPolicy", args ?? new GetFhirStoreIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

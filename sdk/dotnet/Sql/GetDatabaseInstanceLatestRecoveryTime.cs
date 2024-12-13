@@ -74,6 +74,38 @@ namespace Pulumi.Gcp.Sql
         /// </summary>
         public static Output<GetDatabaseInstanceLatestRecoveryTimeResult> Invoke(GetDatabaseInstanceLatestRecoveryTimeInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseInstanceLatestRecoveryTimeResult>("gcp:sql/getDatabaseInstanceLatestRecoveryTime:getDatabaseInstanceLatestRecoveryTime", args ?? new GetDatabaseInstanceLatestRecoveryTimeInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get Latest Recovery Time for a given instance. For more information see the
+        /// [official documentation](https://cloud.google.com/sql/)
+        /// and
+        /// [API](https://cloud.google.com/sql/docs/postgres/backup-recovery/pitr#get-the-latest-recovery-time).
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = Gcp.Sql.GetDatabaseInstanceLatestRecoveryTime.Invoke(new()
+        ///     {
+        ///         Instance = "sample-instance",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["latestRecoveryTime"] = @default,
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDatabaseInstanceLatestRecoveryTimeResult> Invoke(GetDatabaseInstanceLatestRecoveryTimeInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseInstanceLatestRecoveryTimeResult>("gcp:sql/getDatabaseInstanceLatestRecoveryTime:getDatabaseInstanceLatestRecoveryTime", args ?? new GetDatabaseInstanceLatestRecoveryTimeInvokeArgs(), options.WithDefaults());
     }
 
 

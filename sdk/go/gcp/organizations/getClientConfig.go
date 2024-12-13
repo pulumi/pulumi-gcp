@@ -62,18 +62,8 @@ type GetClientConfigResult struct {
 
 func GetClientConfigOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetClientConfigResultOutput {
 	return pulumi.ToOutput(0).ApplyT(func(int) (GetClientConfigResultOutput, error) {
-		opts = internal.PkgInvokeDefaultOpts(opts)
-		var rv GetClientConfigResult
-		secret, err := ctx.InvokePackageRaw("gcp:organizations/getClientConfig:getClientConfig", nil, &rv, "", opts...)
-		if err != nil {
-			return GetClientConfigResultOutput{}, err
-		}
-
-		output := pulumi.ToOutput(rv).(GetClientConfigResultOutput)
-		if secret {
-			return pulumi.ToSecret(output).(GetClientConfigResultOutput), nil
-		}
-		return output, nil
+		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+		return ctx.InvokeOutput("gcp:organizations/getClientConfig:getClientConfig", nil, GetClientConfigResultOutput{}, options).(GetClientConfigResultOutput), nil
 	}).(GetClientConfigResultOutput)
 }
 

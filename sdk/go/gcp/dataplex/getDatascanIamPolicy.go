@@ -78,21 +78,11 @@ type LookupDatascanIamPolicyResult struct {
 }
 
 func LookupDatascanIamPolicyOutput(ctx *pulumi.Context, args LookupDatascanIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupDatascanIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupDatascanIamPolicyResultOutput, error) {
 			args := v.(LookupDatascanIamPolicyArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupDatascanIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:dataplex/getDatascanIamPolicy:getDatascanIamPolicy", args, &rv, "", opts...)
-			if err != nil {
-				return LookupDatascanIamPolicyResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupDatascanIamPolicyResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupDatascanIamPolicyResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gcp:dataplex/getDatascanIamPolicy:getDatascanIamPolicy", args, LookupDatascanIamPolicyResultOutput{}, options).(LookupDatascanIamPolicyResultOutput), nil
 		}).(LookupDatascanIamPolicyResultOutput)
 }
 

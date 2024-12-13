@@ -60,6 +60,31 @@ namespace Pulumi.Gcp.SecurityCenter
         /// </summary>
         public static Output<GetSourceIamPolicyResult> Invoke(GetSourceIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSourceIamPolicyResult>("gcp:securitycenter/getSourceIamPolicy:getSourceIamPolicy", args ?? new GetSourceIamPolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves the current IAM policy data for source
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.SecurityCenter.GetSourceIamPolicy.Invoke(new()
+        ///     {
+        ///         Source = customSource.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetSourceIamPolicyResult> Invoke(GetSourceIamPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetSourceIamPolicyResult>("gcp:securitycenter/getSourceIamPolicy:getSourceIamPolicy", args ?? new GetSourceIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

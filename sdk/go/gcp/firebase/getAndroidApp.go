@@ -59,21 +59,11 @@ type LookupAndroidAppResult struct {
 }
 
 func LookupAndroidAppOutput(ctx *pulumi.Context, args LookupAndroidAppOutputArgs, opts ...pulumi.InvokeOption) LookupAndroidAppResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAndroidAppResultOutput, error) {
 			args := v.(LookupAndroidAppArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupAndroidAppResult
-			secret, err := ctx.InvokePackageRaw("gcp:firebase/getAndroidApp:getAndroidApp", args, &rv, "", opts...)
-			if err != nil {
-				return LookupAndroidAppResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupAndroidAppResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupAndroidAppResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gcp:firebase/getAndroidApp:getAndroidApp", args, LookupAndroidAppResultOutput{}, options).(LookupAndroidAppResultOutput), nil
 		}).(LookupAndroidAppResultOutput)
 }
 

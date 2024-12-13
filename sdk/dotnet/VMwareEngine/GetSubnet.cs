@@ -66,6 +66,34 @@ namespace Pulumi.Gcp.VMwareEngine
         /// </summary>
         public static Output<GetSubnetResult> Invoke(GetSubnetInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSubnetResult>("gcp:vmwareengine/getSubnet:getSubnet", args ?? new GetSubnetInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get details about a subnet. Management subnets support only read operations and should be configured through this data source. User defined subnets can be configured using the resource as well as the datasource.
+        /// 
+        /// To get more information about private cloud subnet, see:
+        /// * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds.subnets)
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var mySubnet = Gcp.VMwareEngine.GetSubnet.Invoke(new()
+        ///     {
+        ///         Name = "service-1",
+        ///         Parent = "project/my-project/locations/us-west1-a/privateClouds/my-cloud",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetSubnetResult> Invoke(GetSubnetInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetSubnetResult>("gcp:vmwareengine/getSubnet:getSubnet", args ?? new GetSubnetInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -122,6 +122,62 @@ namespace Pulumi.Gcp.SiteVerification
         /// </summary>
         public static Output<GetTokenResult> Invoke(GetTokenInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTokenResult>("gcp:siteverification/getToken:getToken", args ?? new GetTokenInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// A verification token is used to demonstrate ownership of a website or domain.
+        /// 
+        /// 
+        /// To get more information about Token, see:
+        /// 
+        /// * [API documentation](https://developers.google.com/site-verification/v1)
+        /// * How-to Guides
+        ///     * [Getting Started](https://developers.google.com/site-verification/v1/getting_started)
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### Site Verification Via Site META Tag
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Gcp.SiteVerification.GetToken.Invoke(new()
+        ///     {
+        ///         Type = "SITE",
+        ///         Identifier = "https://www.example.com",
+        ///         VerificationMethod = "META",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ### Site Verification Via DNS TXT Record
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Gcp.SiteVerification.GetToken.Invoke(new()
+        ///     {
+        ///         Type = "INET_DOMAIN",
+        ///         Identifier = "www.example.com",
+        ///         VerificationMethod = "DNS_TXT",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetTokenResult> Invoke(GetTokenInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetTokenResult>("gcp:siteverification/getToken:getToken", args ?? new GetTokenInvokeArgs(), options.WithDefaults());
     }
 
 

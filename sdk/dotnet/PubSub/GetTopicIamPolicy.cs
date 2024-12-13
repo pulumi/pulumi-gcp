@@ -62,6 +62,32 @@ namespace Pulumi.Gcp.PubSub
         /// </summary>
         public static Output<GetTopicIamPolicyResult> Invoke(GetTopicIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTopicIamPolicyResult>("gcp:pubsub/getTopicIamPolicy:getTopicIamPolicy", args ?? new GetTopicIamPolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves the current IAM policy data for topic
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.PubSub.GetTopicIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = example.Project,
+        ///         Topic = example.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetTopicIamPolicyResult> Invoke(GetTopicIamPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetTopicIamPolicyResult>("gcp:pubsub/getTopicIamPolicy:getTopicIamPolicy", args ?? new GetTopicIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

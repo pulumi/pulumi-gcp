@@ -72,6 +72,37 @@ namespace Pulumi.Gcp.Kms
         /// </summary>
         public static Output<GetKMSKeyRingResult> Invoke(GetKMSKeyRingInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKMSKeyRingResult>("gcp:kms/getKMSKeyRing:getKMSKeyRing", args ?? new GetKMSKeyRingInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Provides access to Google Cloud Platform KMS KeyRing. For more information see
+        /// [the official documentation](https://cloud.google.com/kms/docs/object-hierarchy#key_ring)
+        /// and
+        /// [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings).
+        /// 
+        /// A KeyRing is a grouping of CryptoKeys for organizational purposes. A KeyRing belongs to a Google Cloud Platform Project
+        /// and resides in a specific location.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myKeyRing = Gcp.Kms.GetKMSKeyRing.Invoke(new()
+        ///     {
+        ///         Name = "my-key-ring",
+        ///         Location = "us-central1",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetKMSKeyRingResult> Invoke(GetKMSKeyRingInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetKMSKeyRingResult>("gcp:kms/getKMSKeyRing:getKMSKeyRing", args ?? new GetKMSKeyRingInvokeArgs(), options.WithDefaults());
     }
 
 

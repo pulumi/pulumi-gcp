@@ -166,21 +166,11 @@ type GetKMSSecretAsymmetricResult struct {
 }
 
 func GetKMSSecretAsymmetricOutput(ctx *pulumi.Context, args GetKMSSecretAsymmetricOutputArgs, opts ...pulumi.InvokeOption) GetKMSSecretAsymmetricResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetKMSSecretAsymmetricResultOutput, error) {
 			args := v.(GetKMSSecretAsymmetricArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetKMSSecretAsymmetricResult
-			secret, err := ctx.InvokePackageRaw("gcp:kms/getKMSSecretAsymmetric:getKMSSecretAsymmetric", args, &rv, "", opts...)
-			if err != nil {
-				return GetKMSSecretAsymmetricResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetKMSSecretAsymmetricResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetKMSSecretAsymmetricResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gcp:kms/getKMSSecretAsymmetric:getKMSSecretAsymmetric", args, GetKMSSecretAsymmetricResultOutput{}, options).(GetKMSSecretAsymmetricResultOutput), nil
 		}).(GetKMSSecretAsymmetricResultOutput)
 }
 

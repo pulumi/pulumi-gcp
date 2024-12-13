@@ -62,6 +62,32 @@ namespace Pulumi.Gcp.CloudQuota
         /// </summary>
         public static Output<GetSQuotaInfoResult> Invoke(GetSQuotaInfoInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSQuotaInfoResult>("gcp:cloudquota/getSQuotaInfo:getSQuotaInfo", args ?? new GetSQuotaInfoInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Provides information about a particular quota for a given project, folder or organization.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myQuotaInfo = Gcp.CloudQuota.GetSQuotaInfo.Invoke(new()
+        ///     {
+        ///         Parent = "projects/my-project",
+        ///         Service = "compute.googleapis.com",
+        ///         QuotaId = "CPUS-per-project-region",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetSQuotaInfoResult> Invoke(GetSQuotaInfoInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetSQuotaInfoResult>("gcp:cloudquota/getSQuotaInfo:getSQuotaInfo", args ?? new GetSQuotaInfoInvokeArgs(), options.WithDefaults());
     }
 
 

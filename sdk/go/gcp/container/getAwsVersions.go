@@ -72,21 +72,11 @@ type GetAwsVersionsResult struct {
 }
 
 func GetAwsVersionsOutput(ctx *pulumi.Context, args GetAwsVersionsOutputArgs, opts ...pulumi.InvokeOption) GetAwsVersionsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetAwsVersionsResultOutput, error) {
 			args := v.(GetAwsVersionsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetAwsVersionsResult
-			secret, err := ctx.InvokePackageRaw("gcp:container/getAwsVersions:getAwsVersions", args, &rv, "", opts...)
-			if err != nil {
-				return GetAwsVersionsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetAwsVersionsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetAwsVersionsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gcp:container/getAwsVersions:getAwsVersions", args, GetAwsVersionsResultOutput{}, options).(GetAwsVersionsResultOutput), nil
 		}).(GetAwsVersionsResultOutput)
 }
 

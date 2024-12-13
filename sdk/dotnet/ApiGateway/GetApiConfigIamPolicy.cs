@@ -16,6 +16,9 @@ namespace Pulumi.Gcp.ApiGateway
 
         public static Output<GetApiConfigIamPolicyResult> Invoke(GetApiConfigIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetApiConfigIamPolicyResult>("gcp:apigateway/getApiConfigIamPolicy:getApiConfigIamPolicy", args ?? new GetApiConfigIamPolicyInvokeArgs(), options.WithDefaults());
+
+        public static Output<GetApiConfigIamPolicyResult> Invoke(GetApiConfigIamPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetApiConfigIamPolicyResult>("gcp:apigateway/getApiConfigIamPolicy:getApiConfigIamPolicy", args ?? new GetApiConfigIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

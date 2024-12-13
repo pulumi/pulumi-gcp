@@ -102,21 +102,11 @@ type LookupRegionInstanceGroupManagerResult struct {
 }
 
 func LookupRegionInstanceGroupManagerOutput(ctx *pulumi.Context, args LookupRegionInstanceGroupManagerOutputArgs, opts ...pulumi.InvokeOption) LookupRegionInstanceGroupManagerResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupRegionInstanceGroupManagerResultOutput, error) {
 			args := v.(LookupRegionInstanceGroupManagerArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupRegionInstanceGroupManagerResult
-			secret, err := ctx.InvokePackageRaw("gcp:compute/getRegionInstanceGroupManager:getRegionInstanceGroupManager", args, &rv, "", opts...)
-			if err != nil {
-				return LookupRegionInstanceGroupManagerResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupRegionInstanceGroupManagerResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupRegionInstanceGroupManagerResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gcp:compute/getRegionInstanceGroupManager:getRegionInstanceGroupManager", args, LookupRegionInstanceGroupManagerResultOutput{}, options).(LookupRegionInstanceGroupManagerResultOutput), nil
 		}).(LookupRegionInstanceGroupManagerResultOutput)
 }
 

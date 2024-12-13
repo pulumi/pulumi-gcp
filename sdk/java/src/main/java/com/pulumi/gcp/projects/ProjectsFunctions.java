@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.projects.inputs.GetIamPolicyArgs;
 import com.pulumi.gcp.projects.inputs.GetIamPolicyPlainArgs;
@@ -188,6 +189,48 @@ public final class ProjectsFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetIamPolicyResult> getIamPolicy(GetIamPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:projects/getIamPolicy:getIamPolicy", TypeShape.of(GetIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for a project.
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.projects.ProjectsFunctions;
+     * import com.pulumi.gcp.projects.inputs.GetIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ProjectsFunctions.getIamPolicy(GetIamPolicyArgs.builder()
+     *             .project("myproject")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetIamPolicyResult> getIamPolicyPlain(GetIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:projects/getIamPolicy:getIamPolicy", TypeShape.of(GetIamPolicyResult.class), args, Utilities.withVersion(options));
     }
@@ -327,6 +370,52 @@ public final class ProjectsFunctions {
      * 
      */
     public static Output<GetOrganizationPolicyResult> getOrganizationPolicy(GetOrganizationPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:projects/getOrganizationPolicy:getOrganizationPolicy", TypeShape.of(GetOrganizationPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Allows management of Organization policies for a Google Project. For more information see
+     * [the official
+     * documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.projects.ProjectsFunctions;
+     * import com.pulumi.gcp.projects.inputs.GetOrganizationPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ProjectsFunctions.getOrganizationPolicy(GetOrganizationPolicyArgs.builder()
+     *             .project("project-id")
+     *             .constraint("constraints/serviceuser.services")
+     *             .build());
+     * 
+     *         ctx.export("version", policy.applyValue(getOrganizationPolicyResult -> getOrganizationPolicyResult.version()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetOrganizationPolicyResult> getOrganizationPolicy(GetOrganizationPolicyArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:projects/getOrganizationPolicy:getOrganizationPolicy", TypeShape.of(GetOrganizationPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -580,6 +669,58 @@ public final class ProjectsFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetProjectResult> getProject(GetProjectArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:projects/getProject:getProject", TypeShape.of(GetProjectResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieve information about a set of projects based on a filter. See the
+     * [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/list)
+     * for more details.
+     * 
+     * ## Example Usage
+     * 
+     * ### Searching For Projects About To Be Deleted In An Org
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.projects.ProjectsFunctions;
+     * import com.pulumi.gcp.projects.inputs.GetProjectArgs;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-org-projects = ProjectsFunctions.getProject(GetProjectArgs.builder()
+     *             .filter("parent.id:012345678910 lifecycleState:DELETE_REQUESTED")
+     *             .build());
+     * 
+     *         final var deletion-candidate = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+     *             .projectId(my_org_projects.projects()[0].projectId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetProjectResult> getProjectPlain(GetProjectPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:projects/getProject:getProject", TypeShape.of(GetProjectResult.class), args, Utilities.withVersion(options));
     }
@@ -743,6 +884,60 @@ public final class ProjectsFunctions {
      * 
      */
     public static Output<GetProjectServiceResult> getProjectService(GetProjectServiceArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:projects/getProjectService:getProjectService", TypeShape.of(GetProjectServiceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Verify the API service for the Google Cloud Platform project to see if it is enabled or not.
+     * 
+     * For a list of services available, visit the [API library page](https://console.cloud.google.com/apis/library)
+     * or run `gcloud services list --available`.
+     * 
+     * This datasource requires the [Service Usage API](https://console.cloud.google.com/apis/library/serviceusage.googleapis.com)
+     * to use.
+     * 
+     * To get more information about `gcp.projects.Service`, see:
+     * 
+     * * [API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1/services)
+     * * How-to Guides
+     *     * [Enabling and Disabling Services](https://cloud.google.com/service-usage/docs/enable-disable)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.projects.ProjectsFunctions;
+     * import com.pulumi.gcp.projects.inputs.GetProjectServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-project-service = ProjectsFunctions.getProjectService(GetProjectServiceArgs.builder()
+     *             .service("my-project-service")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetProjectServiceResult> getProjectService(GetProjectServiceArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:projects/getProjectService:getProjectService", TypeShape.of(GetProjectServiceResult.class), args, Utilities.withVersion(options));
     }
     /**

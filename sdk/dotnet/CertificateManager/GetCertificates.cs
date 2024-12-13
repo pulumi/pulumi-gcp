@@ -88,6 +88,45 @@ namespace Pulumi.Gcp.CertificateManager
         /// </summary>
         public static Output<GetCertificatesResult> Invoke(GetCertificatesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCertificatesResult>("gcp:certificatemanager/getCertificates:getCertificates", args ?? new GetCertificatesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// List all certificates within Google Certificate Manager for a given project, region or filter.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = Gcp.CertificateManager.GetCertificates.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ### With A Filter
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = Gcp.CertificateManager.GetCertificates.Invoke(new()
+        ///     {
+        ///         Filter = "name:projects/PROJECT_ID/locations/REGION/certificates/certificate-name-*",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetCertificatesResult> Invoke(GetCertificatesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetCertificatesResult>("gcp:certificatemanager/getCertificates:getCertificates", args ?? new GetCertificatesInvokeArgs(), options.WithDefaults());
     }
 
 

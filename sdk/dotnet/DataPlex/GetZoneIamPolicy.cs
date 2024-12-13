@@ -66,6 +66,34 @@ namespace Pulumi.Gcp.DataPlex
         /// </summary>
         public static Output<GetZoneIamPolicyResult> Invoke(GetZoneIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetZoneIamPolicyResult>("gcp:dataplex/getZoneIamPolicy:getZoneIamPolicy", args ?? new GetZoneIamPolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves the current IAM policy data for zone
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.DataPlex.GetZoneIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = example.Project,
+        ///         Location = example.Location,
+        ///         Lake = example.Lake,
+        ///         DataplexZone = example.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetZoneIamPolicyResult> Invoke(GetZoneIamPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetZoneIamPolicyResult>("gcp:dataplex/getZoneIamPolicy:getZoneIamPolicy", args ?? new GetZoneIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

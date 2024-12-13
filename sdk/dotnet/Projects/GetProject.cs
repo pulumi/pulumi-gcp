@@ -76,6 +76,39 @@ namespace Pulumi.Gcp.Projects
         /// </summary>
         public static Output<GetProjectResult> Invoke(GetProjectInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectResult>("gcp:projects/getProject:getProject", args ?? new GetProjectInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieve information about a set of projects based on a filter. See the
+        /// [REST API](https://cloud.google.com/resource-manager/reference/rest/v1/projects/list)
+        /// for more details.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### Searching For Projects About To Be Deleted In An Org
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_org_projects = Gcp.Projects.GetProject.Invoke(new()
+        ///     {
+        ///         Filter = "parent.id:012345678910 lifecycleState:DELETE_REQUESTED",
+        ///     });
+        /// 
+        ///     var deletion_candidate = Gcp.Organizations.GetProject.Invoke(new()
+        ///     {
+        ///         ProjectId = my_org_projects.Apply(getProjectResult =&gt; getProjectResult.Projects[0]?.ProjectId),
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetProjectResult> Invoke(GetProjectInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetProjectResult>("gcp:projects/getProject:getProject", args ?? new GetProjectInvokeArgs(), options.WithDefaults());
     }
 
 

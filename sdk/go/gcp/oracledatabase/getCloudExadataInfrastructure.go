@@ -84,21 +84,11 @@ type LookupCloudExadataInfrastructureResult struct {
 }
 
 func LookupCloudExadataInfrastructureOutput(ctx *pulumi.Context, args LookupCloudExadataInfrastructureOutputArgs, opts ...pulumi.InvokeOption) LookupCloudExadataInfrastructureResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupCloudExadataInfrastructureResultOutput, error) {
 			args := v.(LookupCloudExadataInfrastructureArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupCloudExadataInfrastructureResult
-			secret, err := ctx.InvokePackageRaw("gcp:oracledatabase/getCloudExadataInfrastructure:getCloudExadataInfrastructure", args, &rv, "", opts...)
-			if err != nil {
-				return LookupCloudExadataInfrastructureResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupCloudExadataInfrastructureResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupCloudExadataInfrastructureResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gcp:oracledatabase/getCloudExadataInfrastructure:getCloudExadataInfrastructure", args, LookupCloudExadataInfrastructureResultOutput{}, options).(LookupCloudExadataInfrastructureResultOutput), nil
 		}).(LookupCloudExadataInfrastructureResultOutput)
 }
 

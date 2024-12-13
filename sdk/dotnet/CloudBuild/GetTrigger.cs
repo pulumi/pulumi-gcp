@@ -70,6 +70,36 @@ namespace Pulumi.Gcp.CloudBuild
         /// </summary>
         public static Output<GetTriggerResult> Invoke(GetTriggerInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTriggerResult>("gcp:cloudbuild/getTrigger:getTrigger", args ?? new GetTriggerInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// To get more information about Cloudbuild Trigger, see:
+        /// 
+        /// * [API documentation](https://cloud.google.com/build/docs/api/reference/rest/v1/projects.triggers)
+        /// * How-to Guides
+        ///     * [Official Documentation](https://cloud.google.com/build/docs/automating-builds/create-manage-triggers)
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var name = Gcp.CloudBuild.GetTrigger.Invoke(new()
+        ///     {
+        ///         Project = "your-project-id",
+        ///         TriggerId = filename_trigger.TriggerId,
+        ///         Location = "location of trigger build",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetTriggerResult> Invoke(GetTriggerInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetTriggerResult>("gcp:cloudbuild/getTrigger:getTrigger", args ?? new GetTriggerInvokeArgs(), options.WithDefaults());
     }
 
 

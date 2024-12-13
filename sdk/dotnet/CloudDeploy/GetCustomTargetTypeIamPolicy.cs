@@ -64,6 +64,33 @@ namespace Pulumi.Gcp.CloudDeploy
         /// </summary>
         public static Output<GetCustomTargetTypeIamPolicyResult> Invoke(GetCustomTargetTypeIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCustomTargetTypeIamPolicyResult>("gcp:clouddeploy/getCustomTargetTypeIamPolicy:getCustomTargetTypeIamPolicy", args ?? new GetCustomTargetTypeIamPolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves the current IAM policy data for customtargettype
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.CloudDeploy.GetCustomTargetTypeIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = custom_target_type.Project,
+        ///         Location = custom_target_type.Location,
+        ///         Name = custom_target_type.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetCustomTargetTypeIamPolicyResult> Invoke(GetCustomTargetTypeIamPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetCustomTargetTypeIamPolicyResult>("gcp:clouddeploy/getCustomTargetTypeIamPolicy:getCustomTargetTypeIamPolicy", args ?? new GetCustomTargetTypeIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

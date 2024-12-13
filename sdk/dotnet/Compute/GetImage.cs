@@ -84,6 +84,43 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public static Output<GetImageResult> Invoke(GetImageInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetImageResult>("gcp:compute/getImage:getImage", args ?? new GetImageInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get information about a Google Compute Image. Check that your service account has the `compute.imageUser` role if you want to share [custom images](https://cloud.google.com/compute/docs/images/sharing-images-across-projects) from another project. If you want to use [public images][pubimg], do not forget to specify the dedicated project. For more information see
+        /// [the official documentation](https://cloud.google.com/compute/docs/images) and its [API](https://cloud.google.com/compute/docs/reference/latest/images).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myImage = Gcp.Compute.GetImage.Invoke(new()
+        ///     {
+        ///         Family = "debian-11",
+        ///         Project = "debian-cloud",
+        ///     });
+        /// 
+        ///     var @default = new Gcp.Compute.Instance("default", new()
+        ///     {
+        ///         BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
+        ///         {
+        ///             InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
+        ///             {
+        ///                 Image = myImage.Apply(getImageResult =&gt; getImageResult.SelfLink),
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetImageResult> Invoke(GetImageInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetImageResult>("gcp:compute/getImage:getImage", args ?? new GetImageInvokeArgs(), options.WithDefaults());
     }
 
 

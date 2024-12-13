@@ -80,6 +80,41 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public static Output<GetRegionInstanceTemplateResult> Invoke(GetRegionInstanceTemplateInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRegionInstanceTemplateResult>("gcp:compute/getRegionInstanceTemplate:getRegionInstanceTemplate", args ?? new GetRegionInstanceTemplateInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get information about a VM instance template resource within GCE. For more information see
+        /// [the official documentation](https://cloud.google.com/compute/docs/instance-templates)
+        /// and
+        /// [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionInstanceTemplates).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     // by name
+        ///     var generic = Gcp.Compute.GetRegionInstanceTemplate.Invoke(new()
+        ///     {
+        ///         Name = "generic-tpl-20200107",
+        ///     });
+        /// 
+        ///     // using a filter
+        ///     var generic_regex = Gcp.Compute.GetRegionInstanceTemplate.Invoke(new()
+        ///     {
+        ///         Filter = "name != generic-tpl-20200107",
+        ///         MostRecent = true,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetRegionInstanceTemplateResult> Invoke(GetRegionInstanceTemplateInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRegionInstanceTemplateResult>("gcp:compute/getRegionInstanceTemplate:getRegionInstanceTemplate", args ?? new GetRegionInstanceTemplateInvokeArgs(), options.WithDefaults());
     }
 
 

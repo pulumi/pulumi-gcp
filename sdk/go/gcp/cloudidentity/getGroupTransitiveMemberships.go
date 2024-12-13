@@ -35,21 +35,11 @@ type GetGroupTransitiveMembershipsResult struct {
 }
 
 func GetGroupTransitiveMembershipsOutput(ctx *pulumi.Context, args GetGroupTransitiveMembershipsOutputArgs, opts ...pulumi.InvokeOption) GetGroupTransitiveMembershipsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetGroupTransitiveMembershipsResultOutput, error) {
 			args := v.(GetGroupTransitiveMembershipsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetGroupTransitiveMembershipsResult
-			secret, err := ctx.InvokePackageRaw("gcp:cloudidentity/getGroupTransitiveMemberships:getGroupTransitiveMemberships", args, &rv, "", opts...)
-			if err != nil {
-				return GetGroupTransitiveMembershipsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetGroupTransitiveMembershipsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetGroupTransitiveMembershipsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gcp:cloudidentity/getGroupTransitiveMemberships:getGroupTransitiveMemberships", args, GetGroupTransitiveMembershipsResultOutput{}, options).(GetGroupTransitiveMembershipsResultOutput), nil
 		}).(GetGroupTransitiveMembershipsResultOutput)
 }
 

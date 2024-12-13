@@ -66,6 +66,34 @@ namespace Pulumi.Gcp.OracleDatabase
         /// </summary>
         public static Output<GetCloudExadataInfrastructureResult> Invoke(GetCloudExadataInfrastructureInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCloudExadataInfrastructureResult>("gcp:oracledatabase/getCloudExadataInfrastructure:getCloudExadataInfrastructure", args ?? new GetCloudExadataInfrastructureInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get information about an ExadataInfrastructure.
+        /// 
+        /// For more information see the
+        /// [API](https://cloud.google.com/oracle/database/docs/reference/rest/v1/projects.locations.cloudExadataInfrastructures).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_instance = Gcp.OracleDatabase.GetCloudExadataInfrastructure.Invoke(new()
+        ///     {
+        ///         Location = "us-east4",
+        ///         CloudExadataInfrastructureId = "exadata-id",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetCloudExadataInfrastructureResult> Invoke(GetCloudExadataInfrastructureInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetCloudExadataInfrastructureResult>("gcp:oracledatabase/getCloudExadataInfrastructure:getCloudExadataInfrastructure", args ?? new GetCloudExadataInfrastructureInvokeArgs(), options.WithDefaults());
     }
 
 

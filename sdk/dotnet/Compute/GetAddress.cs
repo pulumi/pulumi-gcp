@@ -96,6 +96,49 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public static Output<GetAddressResult> Invoke(GetAddressInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAddressResult>("gcp:compute/getAddress:getAddress", args ?? new GetAddressInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get the IP address from a static address. For more information see
+        /// the official [API](https://cloud.google.com/compute/docs/reference/latest/addresses/get) documentation.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myAddress = Gcp.Compute.GetAddress.Invoke(new()
+        ///     {
+        ///         Name = "foobar",
+        ///     });
+        /// 
+        ///     var prod = new Gcp.Dns.ManagedZone("prod", new()
+        ///     {
+        ///         Name = "prod-zone",
+        ///         DnsName = "prod.mydomain.com.",
+        ///     });
+        /// 
+        ///     var frontend = new Gcp.Dns.RecordSet("frontend", new()
+        ///     {
+        ///         Name = prod.DnsName.Apply(dnsName =&gt; $"frontend.{dnsName}"),
+        ///         Type = "A",
+        ///         Ttl = 300,
+        ///         ManagedZone = prod.Name,
+        ///         Rrdatas = new[]
+        ///         {
+        ///             myAddress.Apply(getAddressResult =&gt; getAddressResult.Address),
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAddressResult> Invoke(GetAddressInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAddressResult>("gcp:compute/getAddress:getAddress", args ?? new GetAddressInvokeArgs(), options.WithDefaults());
     }
 
 

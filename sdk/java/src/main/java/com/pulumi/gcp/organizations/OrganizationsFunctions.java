@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.organizations.inputs.GetActiveFolderArgs;
 import com.pulumi.gcp.organizations.inputs.GetActiveFolderPlainArgs;
@@ -162,6 +163,49 @@ public final class OrganizationsFunctions {
      * 
      */
     public static Output<GetActiveFolderResult> getActiveFolder(GetActiveFolderArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:organizations/getActiveFolder:getActiveFolder", TypeShape.of(GetActiveFolderResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get an active folder within GCP by `display_name` and `parent`.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetActiveFolderArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var department1 = OrganizationsFunctions.getActiveFolder(GetActiveFolderArgs.builder()
+     *             .displayName("Department 1")
+     *             .parent("organizations/1234567")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetActiveFolderResult> getActiveFolder(GetActiveFolderArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:organizations/getActiveFolder:getActiveFolder", TypeShape.of(GetActiveFolderResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -455,6 +499,56 @@ public final class OrganizationsFunctions {
      * 
      */
     public static Output<GetBillingAccountResult> getBillingAccount(GetBillingAccountArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:organizations/getBillingAccount:getBillingAccount", TypeShape.of(GetBillingAccountResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about a Google Billing Account.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetBillingAccountArgs;
+     * import com.pulumi.gcp.organizations.Project;
+     * import com.pulumi.gcp.organizations.ProjectArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var acct = OrganizationsFunctions.getBillingAccount(GetBillingAccountArgs.builder()
+     *             .displayName("My Billing Account")
+     *             .open(true)
+     *             .build());
+     * 
+     *         var myProject = new Project("myProject", ProjectArgs.builder()
+     *             .name("My Project")
+     *             .projectId("your-project-id")
+     *             .orgId("1234567")
+     *             .billingAccount(acct.applyValue(getBillingAccountResult -> getBillingAccountResult.id()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetBillingAccountResult> getBillingAccount(GetBillingAccountArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:organizations/getBillingAccount:getBillingAccount", TypeShape.of(GetBillingAccountResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -966,6 +1060,83 @@ public final class OrganizationsFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetClientConfigResult> getClientConfig(InvokeArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:organizations/getClientConfig:getClientConfig", TypeShape.of(GetClientConfigResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var current = OrganizationsFunctions.getClientConfig();
+     * 
+     *         ctx.export("project", current.applyValue(getClientConfigResult -> getClientConfigResult.project()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ### Configure Kubernetes Provider With OAuth2 Access Token
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.container.ContainerFunctions;
+     * import com.pulumi.gcp.container.inputs.GetClusterArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = OrganizationsFunctions.getClientConfig();
+     * 
+     *         final var myCluster = ContainerFunctions.getCluster(GetClusterArgs.builder()
+     *             .name("my-cluster")
+     *             .zone("us-east1-a")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetClientConfigResult> getClientConfigPlain(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:organizations/getClientConfig:getClientConfig", TypeShape.of(GetClientConfigResult.class), args, Utilities.withVersion(options));
     }
@@ -1308,6 +1479,63 @@ public final class OrganizationsFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetClientOpenIdUserInfoResult> getClientOpenIdUserInfo(InvokeArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:organizations/getClientOpenIdUserInfo:getClientOpenIdUserInfo", TypeShape.of(GetClientOpenIdUserInfoResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get OpenID userinfo about the credentials used with the Google provider,
+     * specifically the email.
+     * 
+     * This datasource enables you to export the email of the account you&#39;ve
+     * authenticated the provider with; this can be used alongside
+     * `data.google_client_config`&#39;s `access_token` to perform OpenID Connect
+     * authentication with GKE and configure an RBAC role for the email used.
+     * 
+     * &gt; This resource will only work as expected if the provider is configured to
+     * use the `https://www.googleapis.com/auth/userinfo.email` scope! You will
+     * receive an error otherwise. The provider uses this scope by default.
+     * 
+     * ## Example Usage
+     * 
+     * ### Exporting An Email
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var me = OrganizationsFunctions.getClientOpenIdUserInfo();
+     * 
+     *         ctx.export("my-email", me.applyValue(getClientOpenIdUserInfoResult -> getClientOpenIdUserInfoResult.email()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ### OpenID Connect W/ Kubernetes Provider + RBAC IAM Role
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetClientOpenIdUserInfoResult> getClientOpenIdUserInfoPlain(InvokeArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:organizations/getClientOpenIdUserInfo:getClientOpenIdUserInfo", TypeShape.of(GetClientOpenIdUserInfoResult.class), args, Utilities.withVersion(options));
     }
@@ -1450,6 +1678,53 @@ public final class OrganizationsFunctions {
      * 
      */
     public static Output<GetFolderResult> getFolder(GetFolderArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:organizations/getFolder:getFolder", TypeShape.of(GetFolderResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about a Google Cloud Folder.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetFolderArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myFolder1 = OrganizationsFunctions.getFolder(GetFolderArgs.builder()
+     *             .folder("folders/12345")
+     *             .lookupOrganization(true)
+     *             .build());
+     * 
+     *         final var myFolder2 = OrganizationsFunctions.getFolder(GetFolderArgs.builder()
+     *             .folder("folders/23456")
+     *             .build());
+     * 
+     *         ctx.export("myFolder1Organization", myFolder1.applyValue(getFolderResult -> getFolderResult.organization()));
+     *         ctx.export("myFolder2Parent", myFolder2.applyValue(getFolderResult -> getFolderResult.parent()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetFolderResult> getFolder(GetFolderArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:organizations/getFolder:getFolder", TypeShape.of(GetFolderResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1700,6 +1975,57 @@ public final class OrganizationsFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetFoldersResult> getFolders(GetFoldersArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:organizations/getFolders:getFolders", TypeShape.of(GetFoldersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieve information about a set of folders based on a parent ID. See the
+     * [REST API](https://cloud.google.com/resource-manager/reference/rest/v3/folders/list)
+     * for more details.
+     * 
+     * ## Example Usage
+     * 
+     * ### Searching For Folders At The Root Of An Org
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetFoldersArgs;
+     * import com.pulumi.gcp.organizations.inputs.GetFolderArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-org-folders = OrganizationsFunctions.getFolders(GetFoldersArgs.builder()
+     *             .parentId(String.format("organizations/%s", organizationId))
+     *             .build());
+     * 
+     *         final var first-folder = OrganizationsFunctions.getFolder(GetFolderArgs.builder()
+     *             .folder(my_org_folders.folders()[0].name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetFoldersResult> getFoldersPlain(GetFoldersPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:organizations/getFolders:getFolders", TypeShape.of(GetFoldersResult.class), args, Utilities.withVersion(options));
     }
@@ -1751,6 +2077,16 @@ public final class OrganizationsFunctions {
      * 
      */
     public static Output<GetIAMPolicyResult> getIAMPolicy(GetIAMPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:organizations/getIAMPolicy:getIAMPolicy", TypeShape.of(GetIAMPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Generates an IAM policy document that may be referenced by and applied to
+     * other Google Cloud Platform IAM resources, such as the `gcp.projects.IAMPolicy` resource.
+     * 
+     * **Note:** Please review the documentation of the resource that you will be using the datasource with. Some resources such as `gcp.projects.IAMPolicy` and others have limitations in their API methods which are noted on their respective page.
+     * 
+     */
+    public static Output<GetIAMPolicyResult> getIAMPolicy(GetIAMPolicyArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:organizations/getIAMPolicy:getIAMPolicy", TypeShape.of(GetIAMPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -2042,6 +2378,53 @@ public final class OrganizationsFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetOrganizationResult> getOrganization(GetOrganizationArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:organizations/getOrganization:getOrganization", TypeShape.of(GetOrganizationResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a Google Cloud Organization. Note that you must have the `roles/resourcemanager.organizationViewer` role (or equivalent permissions) at the organization level to use this datasource.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetOrganizationArgs;
+     * import com.pulumi.gcp.organizations.Folder;
+     * import com.pulumi.gcp.organizations.FolderArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var org = OrganizationsFunctions.getOrganization(GetOrganizationArgs.builder()
+     *             .domain("example.com")
+     *             .build());
+     * 
+     *         var sales = new Folder("sales", FolderArgs.builder()
+     *             .displayName("Sales")
+     *             .parent(org.applyValue(getOrganizationResult -> getOrganizationResult.name()))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetOrganizationResult> getOrganizationPlain(GetOrganizationPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:organizations/getOrganization:getOrganization", TypeShape.of(GetOrganizationResult.class), args, Utilities.withVersion(options));
     }
@@ -2258,6 +2641,49 @@ public final class OrganizationsFunctions {
      * 
      */
     public static Output<GetProjectResult> getProject(GetProjectArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:organizations/getProject:getProject", TypeShape.of(GetProjectResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get project details.
+     * For more information see
+     * [API](https://cloud.google.com/resource-manager/reference/rest/v1/projects#Project)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var project = OrganizationsFunctions.getProject();
+     * 
+     *         ctx.export("projectNumber", project.applyValue(getProjectResult -> getProjectResult.number()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetProjectResult> getProject(GetProjectArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:organizations/getProject:getProject", TypeShape.of(GetProjectResult.class), args, Utilities.withVersion(options));
     }
     /**

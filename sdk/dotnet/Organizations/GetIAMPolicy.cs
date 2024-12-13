@@ -28,6 +28,15 @@ namespace Pulumi.Gcp.Organizations
         /// </summary>
         public static Output<GetIAMPolicyResult> Invoke(GetIAMPolicyInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetIAMPolicyResult>("gcp:organizations/getIAMPolicy:getIAMPolicy", args ?? new GetIAMPolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Generates an IAM policy document that may be referenced by and applied to
+        /// other Google Cloud Platform IAM resources, such as the `gcp.projects.IAMPolicy` resource.
+        /// 
+        /// **Note:** Please review the documentation of the resource that you will be using the datasource with. Some resources such as `gcp.projects.IAMPolicy` and others have limitations in their API methods which are noted on their respective page.
+        /// </summary>
+        public static Output<GetIAMPolicyResult> Invoke(GetIAMPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetIAMPolicyResult>("gcp:organizations/getIAMPolicy:getIAMPolicy", args ?? new GetIAMPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -22,6 +22,12 @@ namespace Pulumi.Gcp.Firebase
         /// </summary>
         public static Output<GetWebAppResult> Invoke(GetWebAppInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetWebAppResult>("gcp:firebase/getWebApp:getWebApp", args ?? new GetWebAppInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// A Google Cloud Firebase web application instance
+        /// </summary>
+        public static Output<GetWebAppResult> Invoke(GetWebAppInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetWebAppResult>("gcp:firebase/getWebApp:getWebApp", args ?? new GetWebAppInvokeArgs(), options.WithDefaults());
     }
 
 

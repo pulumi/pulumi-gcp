@@ -60,6 +60,31 @@ namespace Pulumi.Gcp.DataCatalog
         /// </summary>
         public static Output<GetTaxonomyIamPolicyResult> Invoke(GetTaxonomyIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTaxonomyIamPolicyResult>("gcp:datacatalog/getTaxonomyIamPolicy:getTaxonomyIamPolicy", args ?? new GetTaxonomyIamPolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves the current IAM policy data for taxonomy
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.DataCatalog.GetTaxonomyIamPolicy.Invoke(new()
+        ///     {
+        ///         Taxonomy = basicTaxonomy.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetTaxonomyIamPolicyResult> Invoke(GetTaxonomyIamPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetTaxonomyIamPolicyResult>("gcp:datacatalog/getTaxonomyIamPolicy:getTaxonomyIamPolicy", args ?? new GetTaxonomyIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

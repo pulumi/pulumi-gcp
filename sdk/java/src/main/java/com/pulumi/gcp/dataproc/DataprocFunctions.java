@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.dataproc.inputs.GetAutoscalingPolicyIamPolicyArgs;
 import com.pulumi.gcp.dataproc.inputs.GetAutoscalingPolicyIamPolicyPlainArgs;
@@ -159,6 +160,50 @@ public final class DataprocFunctions {
      * 
      */
     public static Output<GetAutoscalingPolicyIamPolicyResult> getAutoscalingPolicyIamPolicy(GetAutoscalingPolicyIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:dataproc/getAutoscalingPolicyIamPolicy:getAutoscalingPolicyIamPolicy", TypeShape.of(GetAutoscalingPolicyIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for autoscalingpolicy
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dataproc.DataprocFunctions;
+     * import com.pulumi.gcp.dataproc.inputs.GetAutoscalingPolicyIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = DataprocFunctions.getAutoscalingPolicyIamPolicy(GetAutoscalingPolicyIamPolicyArgs.builder()
+     *             .project(basic.project())
+     *             .location(basic.location())
+     *             .policyId(basic.policyId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAutoscalingPolicyIamPolicyResult> getAutoscalingPolicyIamPolicy(GetAutoscalingPolicyIamPolicyArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:dataproc/getAutoscalingPolicyIamPolicy:getAutoscalingPolicyIamPolicy", TypeShape.of(GetAutoscalingPolicyIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -374,6 +419,49 @@ public final class DataprocFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetClusterIamPolicyResult> getClusterIamPolicy(GetClusterIamPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:dataproc/getClusterIamPolicy:getClusterIamPolicy", TypeShape.of(GetClusterIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for a Dataproc cluster.
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dataproc.DataprocFunctions;
+     * import com.pulumi.gcp.dataproc.inputs.GetClusterIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = DataprocFunctions.getClusterIamPolicy(GetClusterIamPolicyArgs.builder()
+     *             .cluster(cluster.name())
+     *             .region("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetClusterIamPolicyResult> getClusterIamPolicyPlain(GetClusterIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:dataproc/getClusterIamPolicy:getClusterIamPolicy", TypeShape.of(GetClusterIamPolicyResult.class), args, Utilities.withVersion(options));
     }
@@ -504,6 +592,49 @@ public final class DataprocFunctions {
      * 
      */
     public static Output<GetJobIamPolicyResult> getJobIamPolicy(GetJobIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:dataproc/getJobIamPolicy:getJobIamPolicy", TypeShape.of(GetJobIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for a Dataproc job.
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dataproc.DataprocFunctions;
+     * import com.pulumi.gcp.dataproc.inputs.GetJobIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = DataprocFunctions.getJobIamPolicy(GetJobIamPolicyArgs.builder()
+     *             .jobId(pyspark.reference()[0].jobId())
+     *             .region("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetJobIamPolicyResult> getJobIamPolicy(GetJobIamPolicyArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:dataproc/getJobIamPolicy:getJobIamPolicy", TypeShape.of(GetJobIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -722,6 +853,50 @@ public final class DataprocFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetMetastoreFederationIamPolicyResult> getMetastoreFederationIamPolicy(GetMetastoreFederationIamPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:dataproc/getMetastoreFederationIamPolicy:getMetastoreFederationIamPolicy", TypeShape.of(GetMetastoreFederationIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for federation
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dataproc.DataprocFunctions;
+     * import com.pulumi.gcp.dataproc.inputs.GetMetastoreFederationIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = DataprocFunctions.getMetastoreFederationIamPolicy(GetMetastoreFederationIamPolicyArgs.builder()
+     *             .project(default_.project())
+     *             .location(default_.location())
+     *             .federationId(default_.federationId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetMetastoreFederationIamPolicyResult> getMetastoreFederationIamPolicyPlain(GetMetastoreFederationIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:dataproc/getMetastoreFederationIamPolicy:getMetastoreFederationIamPolicy", TypeShape.of(GetMetastoreFederationIamPolicyResult.class), args, Utilities.withVersion(options));
     }
@@ -852,6 +1027,49 @@ public final class DataprocFunctions {
      * 
      */
     public static Output<GetMetastoreServiceResult> getMetastoreService(GetMetastoreServiceArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:dataproc/getMetastoreService:getMetastoreService", TypeShape.of(GetMetastoreServiceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get a Dataproc Metastore service from Google Cloud by its id and location.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dataproc.DataprocFunctions;
+     * import com.pulumi.gcp.dataproc.inputs.GetMetastoreServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = DataprocFunctions.getMetastoreService(GetMetastoreServiceArgs.builder()
+     *             .serviceId("foo-bar")
+     *             .location("global")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetMetastoreServiceResult> getMetastoreService(GetMetastoreServiceArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:dataproc/getMetastoreService:getMetastoreService", TypeShape.of(GetMetastoreServiceResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1027,6 +1245,50 @@ public final class DataprocFunctions {
      * 
      */
     public static Output<GetMetastoreServiceIamPolicyResult> getMetastoreServiceIamPolicy(GetMetastoreServiceIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:dataproc/getMetastoreServiceIamPolicy:getMetastoreServiceIamPolicy", TypeShape.of(GetMetastoreServiceIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for service
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.dataproc.DataprocFunctions;
+     * import com.pulumi.gcp.dataproc.inputs.GetMetastoreServiceIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = DataprocFunctions.getMetastoreServiceIamPolicy(GetMetastoreServiceIamPolicyArgs.builder()
+     *             .project(default_.project())
+     *             .location(default_.location())
+     *             .serviceId(default_.serviceId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetMetastoreServiceIamPolicyResult> getMetastoreServiceIamPolicy(GetMetastoreServiceIamPolicyArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:dataproc/getMetastoreServiceIamPolicy:getMetastoreServiceIamPolicy", TypeShape.of(GetMetastoreServiceIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**

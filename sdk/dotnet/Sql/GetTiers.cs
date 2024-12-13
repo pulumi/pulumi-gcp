@@ -84,6 +84,43 @@ namespace Pulumi.Gcp.Sql
         /// </summary>
         public static Output<GetTiersResult> Invoke(GetTiersInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTiersResult>("gcp:sql/getTiers:getTiers", args ?? new GetTiersInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get all available machine types (tiers) for a project, for example, db-custom-1-3840. For more information see the
+        /// [official documentation](https://cloud.google.com/sql/)
+        /// and
+        /// [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/tiers/list).
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var tiers = Gcp.Sql.GetTiers.Invoke(new()
+        ///     {
+        ///         Project = "sample-project",
+        ///     });
+        /// 
+        ///     var allAvailableTiers = .Select(v =&gt; 
+        ///     {
+        ///         return v.Tier;
+        ///     }).ToList();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["avaialbleTiers"] = allAvailableTiers,
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetTiersResult> Invoke(GetTiersInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetTiersResult>("gcp:sql/getTiers:getTiers", args ?? new GetTiersInvokeArgs(), options.WithDefaults());
     }
 
 

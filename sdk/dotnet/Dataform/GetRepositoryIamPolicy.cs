@@ -16,6 +16,9 @@ namespace Pulumi.Gcp.Dataform
 
         public static Output<GetRepositoryIamPolicyResult> Invoke(GetRepositoryIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRepositoryIamPolicyResult>("gcp:dataform/getRepositoryIamPolicy:getRepositoryIamPolicy", args ?? new GetRepositoryIamPolicyInvokeArgs(), options.WithDefaults());
+
+        public static Output<GetRepositoryIamPolicyResult> Invoke(GetRepositoryIamPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRepositoryIamPolicyResult>("gcp:dataform/getRepositoryIamPolicy:getRepositoryIamPolicy", args ?? new GetRepositoryIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

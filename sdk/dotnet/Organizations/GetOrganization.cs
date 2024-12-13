@@ -66,6 +66,34 @@ namespace Pulumi.Gcp.Organizations
         /// </summary>
         public static Output<GetOrganizationResult> Invoke(GetOrganizationInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationResult>("gcp:organizations/getOrganization:getOrganization", args ?? new GetOrganizationInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get information about a Google Cloud Organization. Note that you must have the `roles/resourcemanager.organizationViewer` role (or equivalent permissions) at the organization level to use this datasource.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var org = Gcp.Organizations.GetOrganization.Invoke(new()
+        ///     {
+        ///         Domain = "example.com",
+        ///     });
+        /// 
+        ///     var sales = new Gcp.Organizations.Folder("sales", new()
+        ///     {
+        ///         DisplayName = "Sales",
+        ///         Parent = org.Apply(getOrganizationResult =&gt; getOrganizationResult.Name),
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetOrganizationResult> Invoke(GetOrganizationInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationResult>("gcp:organizations/getOrganization:getOrganization", args ?? new GetOrganizationInvokeArgs(), options.WithDefaults());
     }
 
 

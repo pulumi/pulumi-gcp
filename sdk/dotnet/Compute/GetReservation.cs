@@ -58,6 +58,30 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public static Output<GetReservationResult> Invoke(GetReservationInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetReservationResult>("gcp:compute/getReservation:getReservation", args ?? new GetReservationInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Provides access to available Google Compute Reservation Resources for a given project.
+        /// See more about [Reservations of Compute Engine resources](https://cloud.google.com/compute/docs/instances/reservations-overview) in the upstream docs.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var reservation = Gcp.Compute.GetReservation.Invoke(new()
+        ///     {
+        ///         Name = "gce-reservation",
+        ///         Zone = "us-central1-a",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetReservationResult> Invoke(GetReservationInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetReservationResult>("gcp:compute/getReservation:getReservation", args ?? new GetReservationInvokeArgs(), options.WithDefaults());
     }
 
 

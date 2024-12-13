@@ -60,6 +60,31 @@ namespace Pulumi.Gcp.DataCatalog
         /// </summary>
         public static Output<GetEntryGroupIamPolicyResult> Invoke(GetEntryGroupIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEntryGroupIamPolicyResult>("gcp:datacatalog/getEntryGroupIamPolicy:getEntryGroupIamPolicy", args ?? new GetEntryGroupIamPolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves the current IAM policy data for entrygroup
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.DataCatalog.GetEntryGroupIamPolicy.Invoke(new()
+        ///     {
+        ///         EntryGroup = basicEntryGroup.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetEntryGroupIamPolicyResult> Invoke(GetEntryGroupIamPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetEntryGroupIamPolicyResult>("gcp:datacatalog/getEntryGroupIamPolicy:getEntryGroupIamPolicy", args ?? new GetEntryGroupIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

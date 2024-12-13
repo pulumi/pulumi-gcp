@@ -64,6 +64,33 @@ namespace Pulumi.Gcp.CloudRunV2
         /// </summary>
         public static Output<GetServiceResult> Invoke(GetServiceInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServiceResult>("gcp:cloudrunv2/getService:getService", args ?? new GetServiceInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get information about a Google Cloud Run v2 Service. For more information see
+        /// the [official documentation](https://cloud.google.com/run/docs/)
+        /// and [API](https://cloud.google.com/run/docs/apis).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myService = Gcp.CloudRunV2.GetService.Invoke(new()
+        ///     {
+        ///         Name = "my-service",
+        ///         Location = "us-central1",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetServiceResult> Invoke(GetServiceInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetServiceResult>("gcp:cloudrunv2/getService:getService", args ?? new GetServiceInvokeArgs(), options.WithDefaults());
     }
 
 

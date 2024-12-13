@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.cloudbuild.inputs.GetTriggerArgs;
 import com.pulumi.gcp.cloudbuild.inputs.GetTriggerPlainArgs;
@@ -156,6 +157,54 @@ public final class CloudbuildFunctions {
      * 
      */
     public static Output<GetTriggerResult> getTrigger(GetTriggerArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:cloudbuild/getTrigger:getTrigger", TypeShape.of(GetTriggerResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * To get more information about Cloudbuild Trigger, see:
+     * 
+     * * [API documentation](https://cloud.google.com/build/docs/api/reference/rest/v1/projects.triggers)
+     * * How-to Guides
+     *     * [Official Documentation](https://cloud.google.com/build/docs/automating-builds/create-manage-triggers)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudbuild.CloudbuildFunctions;
+     * import com.pulumi.gcp.cloudbuild.inputs.GetTriggerArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var name = CloudbuildFunctions.getTrigger(GetTriggerArgs.builder()
+     *             .project("your-project-id")
+     *             .triggerId(filename_trigger.triggerId())
+     *             .location("location of trigger build")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetTriggerResult> getTrigger(GetTriggerArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:cloudbuild/getTrigger:getTrigger", TypeShape.of(GetTriggerResult.class), args, Utilities.withVersion(options));
     }
     /**

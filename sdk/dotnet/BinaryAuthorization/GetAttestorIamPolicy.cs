@@ -62,6 +62,32 @@ namespace Pulumi.Gcp.BinaryAuthorization
         /// </summary>
         public static Output<GetAttestorIamPolicyResult> Invoke(GetAttestorIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAttestorIamPolicyResult>("gcp:binaryauthorization/getAttestorIamPolicy:getAttestorIamPolicy", args ?? new GetAttestorIamPolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves the current IAM policy data for attestor
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.BinaryAuthorization.GetAttestorIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = attestor.Project,
+        ///         Attestor = attestor.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAttestorIamPolicyResult> Invoke(GetAttestorIamPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAttestorIamPolicyResult>("gcp:binaryauthorization/getAttestorIamPolicy:getAttestorIamPolicy", args ?? new GetAttestorIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

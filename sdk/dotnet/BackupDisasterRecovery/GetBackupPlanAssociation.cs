@@ -56,6 +56,29 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         /// </summary>
         public static Output<GetBackupPlanAssociationResult> Invoke(GetBackupPlanAssociationInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetBackupPlanAssociationResult>("gcp:backupdisasterrecovery/getBackupPlanAssociation:getBackupPlanAssociation", args ?? new GetBackupPlanAssociationInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_backupplan_association = Gcp.BackupDisasterRecovery.GetBackupPlanAssociation.Invoke(new()
+        ///     {
+        ///         Location = "us-central1",
+        ///         BackupPlanAssociationId = "bpa-id",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetBackupPlanAssociationResult> Invoke(GetBackupPlanAssociationInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetBackupPlanAssociationResult>("gcp:backupdisasterrecovery/getBackupPlanAssociation:getBackupPlanAssociation", args ?? new GetBackupPlanAssociationInvokeArgs(), options.WithDefaults());
     }
 
 

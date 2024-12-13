@@ -16,6 +16,9 @@ namespace Pulumi.Gcp.Compute
 
         public static Output<GetRegionBackendServiceIamPolicyResult> Invoke(GetRegionBackendServiceIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRegionBackendServiceIamPolicyResult>("gcp:compute/getRegionBackendServiceIamPolicy:getRegionBackendServiceIamPolicy", args ?? new GetRegionBackendServiceIamPolicyInvokeArgs(), options.WithDefaults());
+
+        public static Output<GetRegionBackendServiceIamPolicyResult> Invoke(GetRegionBackendServiceIamPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRegionBackendServiceIamPolicyResult>("gcp:compute/getRegionBackendServiceIamPolicy:getRegionBackendServiceIamPolicy", args ?? new GetRegionBackendServiceIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

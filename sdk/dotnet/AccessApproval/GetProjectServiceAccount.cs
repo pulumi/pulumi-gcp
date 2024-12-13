@@ -84,6 +84,43 @@ namespace Pulumi.Gcp.AccessApproval
         /// </summary>
         public static Output<GetProjectServiceAccountResult> Invoke(GetProjectServiceAccountInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectServiceAccountResult>("gcp:accessapproval/getProjectServiceAccount:getProjectServiceAccount", args ?? new GetProjectServiceAccountInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get the email address of a project's Access Approval service account.
+        /// 
+        /// Each Google Cloud project has a unique service account used by Access Approval.
+        /// When using Access Approval with a
+        /// [custom signing key](https://cloud.google.com/cloud-provider-access-management/access-approval/docs/review-approve-access-requests-custom-keys),
+        /// this account needs to be granted the `cloudkms.signerVerifier` IAM role on the
+        /// Cloud KMS key used to sign approvals.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var serviceAccount = Gcp.AccessApproval.GetProjectServiceAccount.Invoke(new()
+        ///     {
+        ///         ProjectId = "my-project",
+        ///     });
+        /// 
+        ///     var iam = new Gcp.Kms.CryptoKeyIAMMember("iam", new()
+        ///     {
+        ///         CryptoKeyId = cryptoKey.Id,
+        ///         Role = "roles/cloudkms.signerVerifier",
+        ///         Member = $"serviceAccount:{serviceAccount.Apply(getProjectServiceAccountResult =&gt; getProjectServiceAccountResult.AccountEmail)}",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetProjectServiceAccountResult> Invoke(GetProjectServiceAccountInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetProjectServiceAccountResult>("gcp:accessapproval/getProjectServiceAccount:getProjectServiceAccount", args ?? new GetProjectServiceAccountInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -150,6 +150,76 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public static Output<GetNetblockIPRangesResult> Invoke(GetNetblockIPRangesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNetblockIPRangesResult>("gcp:compute/getNetblockIPRanges:getNetblockIPRanges", args ?? new GetNetblockIPRangesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get the IP addresses from different special IP ranges on Google Cloud Platform.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### Cloud Ranges
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var netblock = Gcp.Compute.GetNetblockIPRanges.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cidrBlocks"] = netblock.Apply(getNetblockIPRangesResult =&gt; getNetblockIPRangesResult.CidrBlocks),
+        ///         ["cidrBlocksIpv4"] = netblock.Apply(getNetblockIPRangesResult =&gt; getNetblockIPRangesResult.CidrBlocksIpv4s),
+        ///         ["cidrBlocksIpv6"] = netblock.Apply(getNetblockIPRangesResult =&gt; getNetblockIPRangesResult.CidrBlocksIpv6s),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// ### Allow Health Checks
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var legacy_hcs = Gcp.Compute.GetNetblockIPRanges.Invoke(new()
+        ///     {
+        ///         RangeType = "legacy-health-checkers",
+        ///     });
+        /// 
+        ///     var @default = new Gcp.Compute.Network("default", new()
+        ///     {
+        ///         Name = "test-network",
+        ///     });
+        /// 
+        ///     var allow_hcs = new Gcp.Compute.Firewall("allow-hcs", new()
+        ///     {
+        ///         Name = "allow-hcs",
+        ///         Network = @default.Name,
+        ///         Allows = new[]
+        ///         {
+        ///             new Gcp.Compute.Inputs.FirewallAllowArgs
+        ///             {
+        ///                 Protocol = "tcp",
+        ///                 Ports = new[]
+        ///                 {
+        ///                     "80",
+        ///                 },
+        ///             },
+        ///         },
+        ///         SourceRanges = legacy_hcs.Apply(legacy_hcs =&gt; legacy_hcs.Apply(getNetblockIPRangesResult =&gt; getNetblockIPRangesResult.CidrBlocksIpv4s)),
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetNetblockIPRangesResult> Invoke(GetNetblockIPRangesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetNetblockIPRangesResult>("gcp:compute/getNetblockIPRanges:getNetblockIPRanges", args ?? new GetNetblockIPRangesInvokeArgs(), options.WithDefaults());
     }
 
 

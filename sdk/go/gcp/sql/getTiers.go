@@ -41,21 +41,11 @@ type GetTiersResult struct {
 }
 
 func GetTiersOutput(ctx *pulumi.Context, args GetTiersOutputArgs, opts ...pulumi.InvokeOption) GetTiersResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetTiersResultOutput, error) {
 			args := v.(GetTiersArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetTiersResult
-			secret, err := ctx.InvokePackageRaw("gcp:sql/getTiers:getTiers", args, &rv, "", opts...)
-			if err != nil {
-				return GetTiersResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetTiersResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetTiersResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gcp:sql/getTiers:getTiers", args, GetTiersResultOutput{}, options).(GetTiersResultOutput), nil
 		}).(GetTiersResultOutput)
 }
 

@@ -62,6 +62,32 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public static Output<GetSnapshotIamPolicyResult> Invoke(GetSnapshotIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSnapshotIamPolicyResult>("gcp:compute/getSnapshotIamPolicy:getSnapshotIamPolicy", args ?? new GetSnapshotIamPolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves the current IAM policy data for snapshot
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.Compute.GetSnapshotIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = snapshot.Project,
+        ///         Name = snapshot.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetSnapshotIamPolicyResult> Invoke(GetSnapshotIamPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetSnapshotIamPolicyResult>("gcp:compute/getSnapshotIamPolicy:getSnapshotIamPolicy", args ?? new GetSnapshotIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

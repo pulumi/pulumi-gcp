@@ -76,21 +76,11 @@ type LookupAppEngineServiceIamPolicyResult struct {
 }
 
 func LookupAppEngineServiceIamPolicyOutput(ctx *pulumi.Context, args LookupAppEngineServiceIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupAppEngineServiceIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAppEngineServiceIamPolicyResultOutput, error) {
 			args := v.(LookupAppEngineServiceIamPolicyArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupAppEngineServiceIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:iap/getAppEngineServiceIamPolicy:getAppEngineServiceIamPolicy", args, &rv, "", opts...)
-			if err != nil {
-				return LookupAppEngineServiceIamPolicyResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupAppEngineServiceIamPolicyResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupAppEngineServiceIamPolicyResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gcp:iap/getAppEngineServiceIamPolicy:getAppEngineServiceIamPolicy", args, LookupAppEngineServiceIamPolicyResultOutput{}, options).(LookupAppEngineServiceIamPolicyResultOutput), nil
 		}).(LookupAppEngineServiceIamPolicyResultOutput)
 }
 

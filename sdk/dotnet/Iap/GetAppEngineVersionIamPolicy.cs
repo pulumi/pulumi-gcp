@@ -66,6 +66,34 @@ namespace Pulumi.Gcp.Iap
         /// </summary>
         public static Output<GetAppEngineVersionIamPolicyResult> Invoke(GetAppEngineVersionIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAppEngineVersionIamPolicyResult>("gcp:iap/getAppEngineVersionIamPolicy:getAppEngineVersionIamPolicy", args ?? new GetAppEngineVersionIamPolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves the current IAM policy data for appengineversion
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.Iap.GetAppEngineVersionIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = version.Project,
+        ///         AppId = version.Project,
+        ///         Service = version.Service,
+        ///         VersionId = version.VersionId,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAppEngineVersionIamPolicyResult> Invoke(GetAppEngineVersionIamPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAppEngineVersionIamPolicyResult>("gcp:iap/getAppEngineVersionIamPolicy:getAppEngineVersionIamPolicy", args ?? new GetAppEngineVersionIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

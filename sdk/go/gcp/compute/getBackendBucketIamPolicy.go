@@ -44,21 +44,11 @@ type LookupBackendBucketIamPolicyResult struct {
 }
 
 func LookupBackendBucketIamPolicyOutput(ctx *pulumi.Context, args LookupBackendBucketIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupBackendBucketIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupBackendBucketIamPolicyResultOutput, error) {
 			args := v.(LookupBackendBucketIamPolicyArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupBackendBucketIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:compute/getBackendBucketIamPolicy:getBackendBucketIamPolicy", args, &rv, "", opts...)
-			if err != nil {
-				return LookupBackendBucketIamPolicyResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupBackendBucketIamPolicyResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupBackendBucketIamPolicyResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gcp:compute/getBackendBucketIamPolicy:getBackendBucketIamPolicy", args, LookupBackendBucketIamPolicyResultOutput{}, options).(LookupBackendBucketIamPolicyResultOutput), nil
 		}).(LookupBackendBucketIamPolicyResultOutput)
 }
 

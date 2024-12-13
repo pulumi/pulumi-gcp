@@ -77,21 +77,11 @@ type LookupBackendBucketResult struct {
 }
 
 func LookupBackendBucketOutput(ctx *pulumi.Context, args LookupBackendBucketOutputArgs, opts ...pulumi.InvokeOption) LookupBackendBucketResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupBackendBucketResultOutput, error) {
 			args := v.(LookupBackendBucketArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupBackendBucketResult
-			secret, err := ctx.InvokePackageRaw("gcp:compute/getBackendBucket:getBackendBucket", args, &rv, "", opts...)
-			if err != nil {
-				return LookupBackendBucketResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupBackendBucketResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupBackendBucketResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gcp:compute/getBackendBucket:getBackendBucket", args, LookupBackendBucketResultOutput{}, options).(LookupBackendBucketResultOutput), nil
 		}).(LookupBackendBucketResultOutput)
 }
 

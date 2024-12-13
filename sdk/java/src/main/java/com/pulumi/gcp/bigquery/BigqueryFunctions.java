@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.bigquery.inputs.GetConnectionIamPolicyArgs;
 import com.pulumi.gcp.bigquery.inputs.GetConnectionIamPolicyPlainArgs;
@@ -159,6 +160,50 @@ public final class BigqueryFunctions {
      * 
      */
     public static Output<GetConnectionIamPolicyResult> getConnectionIamPolicy(GetConnectionIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:bigquery/getConnectionIamPolicy:getConnectionIamPolicy", TypeShape.of(GetConnectionIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for connection
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.bigquery.BigqueryFunctions;
+     * import com.pulumi.gcp.bigquery.inputs.GetConnectionIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = BigqueryFunctions.getConnectionIamPolicy(GetConnectionIamPolicyArgs.builder()
+     *             .project(connection.project())
+     *             .location(connection.location())
+     *             .connectionId(connection.connectionId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetConnectionIamPolicyResult> getConnectionIamPolicy(GetConnectionIamPolicyArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:bigquery/getConnectionIamPolicy:getConnectionIamPolicy", TypeShape.of(GetConnectionIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -382,6 +427,51 @@ public final class BigqueryFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetDatasetResult> getDataset(GetDatasetArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:bigquery/getDataset:getDataset", TypeShape.of(GetDatasetResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a BigQuery dataset. For more information see
+     * the [official documentation](https://cloud.google.com/bigquery/docs)
+     * and [API](https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.bigquery.BigqueryFunctions;
+     * import com.pulumi.gcp.bigquery.inputs.GetDatasetArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var dataset = BigqueryFunctions.getDataset(GetDatasetArgs.builder()
+     *             .datasetId("my-bq-dataset")
+     *             .project("my-project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetDatasetResult> getDatasetPlain(GetDatasetPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:bigquery/getDataset:getDataset", TypeShape.of(GetDatasetResult.class), args, Utilities.withVersion(options));
     }
@@ -509,6 +599,48 @@ public final class BigqueryFunctions {
      * 
      */
     public static Output<GetDatasetIamPolicyResult> getDatasetIamPolicy(GetDatasetIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:bigquery/getDatasetIamPolicy:getDatasetIamPolicy", TypeShape.of(GetDatasetIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for a BigQuery dataset.
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.bigquery.BigqueryFunctions;
+     * import com.pulumi.gcp.bigquery.inputs.GetDatasetIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = BigqueryFunctions.getDatasetIamPolicy(GetDatasetIamPolicyArgs.builder()
+     *             .datasetId(dataset.datasetId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDatasetIamPolicyResult> getDatasetIamPolicy(GetDatasetIamPolicyArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:bigquery/getDatasetIamPolicy:getDatasetIamPolicy", TypeShape.of(GetDatasetIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -886,6 +1018,62 @@ public final class BigqueryFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetDefaultServiceAccountResult> getDefaultServiceAccount(GetDefaultServiceAccountArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:bigquery/getDefaultServiceAccount:getDefaultServiceAccount", TypeShape.of(GetDefaultServiceAccountResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get the email address of a project&#39;s unique BigQuery service account.
+     * 
+     * Each Google Cloud project has a unique service account used by BigQuery. When using
+     * BigQuery with [customer-managed encryption keys](https://cloud.google.com/bigquery/docs/customer-managed-encryption),
+     * this account needs to be granted the
+     * `cloudkms.cryptoKeyEncrypterDecrypter` IAM role on the customer-managed Cloud KMS key used to protect the data.
+     * 
+     * For more information see
+     * [the API reference](https://cloud.google.com/bigquery/docs/reference/rest/v2/projects/getServiceAccount).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.bigquery.BigqueryFunctions;
+     * import com.pulumi.gcp.bigquery.inputs.GetDefaultServiceAccountArgs;
+     * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
+     * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var bqSa = BigqueryFunctions.getDefaultServiceAccount();
+     * 
+     *         var keySaUser = new CryptoKeyIAMMember("keySaUser", CryptoKeyIAMMemberArgs.builder()
+     *             .cryptoKeyId(key.id())
+     *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
+     *             .member(String.format("serviceAccount:%s", bqSa.applyValue(getDefaultServiceAccountResult -> getDefaultServiceAccountResult.email())))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetDefaultServiceAccountResult> getDefaultServiceAccountPlain(GetDefaultServiceAccountPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:bigquery/getDefaultServiceAccount:getDefaultServiceAccount", TypeShape.of(GetDefaultServiceAccountResult.class), args, Utilities.withVersion(options));
     }
@@ -1019,6 +1207,50 @@ public final class BigqueryFunctions {
      * 
      */
     public static Output<GetTableIamPolicyResult> getTableIamPolicy(GetTableIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:bigquery/getTableIamPolicy:getTableIamPolicy", TypeShape.of(GetTableIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for table
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.bigquery.BigqueryFunctions;
+     * import com.pulumi.gcp.bigquery.inputs.GetTableIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = BigqueryFunctions.getTableIamPolicy(GetTableIamPolicyArgs.builder()
+     *             .project(test.project())
+     *             .datasetId(test.datasetId())
+     *             .tableId(test.tableId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetTableIamPolicyResult> getTableIamPolicy(GetTableIamPolicyArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:bigquery/getTableIamPolicy:getTableIamPolicy", TypeShape.of(GetTableIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1198,6 +1430,51 @@ public final class BigqueryFunctions {
      * 
      */
     public static Output<GetTablesResult> getTables(GetTablesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:bigquery/getTables:getTables", TypeShape.of(GetTablesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get a list of tables in a BigQuery dataset. For more information see
+     * the [official documentation](https://cloud.google.com/bigquery/docs)
+     * and [API](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.bigquery.BigqueryFunctions;
+     * import com.pulumi.gcp.bigquery.inputs.GetTablesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var tables = BigqueryFunctions.getTables(GetTablesArgs.builder()
+     *             .datasetId("my-bq-dataset")
+     *             .project("my-project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetTablesResult> getTables(GetTablesArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:bigquery/getTables:getTables", TypeShape.of(GetTablesResult.class), args, Utilities.withVersion(options));
     }
     /**

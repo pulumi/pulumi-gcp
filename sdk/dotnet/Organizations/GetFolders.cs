@@ -76,6 +76,39 @@ namespace Pulumi.Gcp.Organizations
         /// </summary>
         public static Output<GetFoldersResult> Invoke(GetFoldersInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFoldersResult>("gcp:organizations/getFolders:getFolders", args ?? new GetFoldersInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieve information about a set of folders based on a parent ID. See the
+        /// [REST API](https://cloud.google.com/resource-manager/reference/rest/v3/folders/list)
+        /// for more details.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### Searching For Folders At The Root Of An Org
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_org_folders = Gcp.Organizations.GetFolders.Invoke(new()
+        ///     {
+        ///         ParentId = $"organizations/{organizationId}",
+        ///     });
+        /// 
+        ///     var first_folder = Gcp.Organizations.GetFolder.Invoke(new()
+        ///     {
+        ///         Folder = my_org_folders.Apply(getFoldersResult =&gt; getFoldersResult.Folders[0]?.Name),
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetFoldersResult> Invoke(GetFoldersInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetFoldersResult>("gcp:organizations/getFolders:getFolders", args ?? new GetFoldersInvokeArgs(), options.WithDefaults());
     }
 
 

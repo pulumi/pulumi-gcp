@@ -16,6 +16,9 @@ namespace Pulumi.Gcp.Firebase
 
         public static Output<GetAndroidAppConfigResult> Invoke(GetAndroidAppConfigInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAndroidAppConfigResult>("gcp:firebase/getAndroidAppConfig:getAndroidAppConfig", args ?? new GetAndroidAppConfigInvokeArgs(), options.WithDefaults());
+
+        public static Output<GetAndroidAppConfigResult> Invoke(GetAndroidAppConfigInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAndroidAppConfigResult>("gcp:firebase/getAndroidAppConfig:getAndroidAppConfig", args ?? new GetAndroidAppConfigInvokeArgs(), options.WithDefaults());
     }
 
 

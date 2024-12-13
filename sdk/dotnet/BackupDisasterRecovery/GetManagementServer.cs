@@ -54,6 +54,28 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
         /// </summary>
         public static Output<GetManagementServerResult> Invoke(GetManagementServerInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetManagementServerResult>("gcp:backupdisasterrecovery/getManagementServer:getManagementServer", args ?? new GetManagementServerInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_backup_dr_management_server = Gcp.BackupDisasterRecovery.GetManagementServer.Invoke(new()
+        ///     {
+        ///         Location = "us-central1",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetManagementServerResult> Invoke(GetManagementServerInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetManagementServerResult>("gcp:backupdisasterrecovery/getManagementServer:getManagementServer", args ?? new GetManagementServerInvokeArgs(), options.WithDefaults());
     }
 
 

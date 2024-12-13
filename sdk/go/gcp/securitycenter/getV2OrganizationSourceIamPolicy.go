@@ -69,21 +69,11 @@ type LookupV2OrganizationSourceIamPolicyResult struct {
 }
 
 func LookupV2OrganizationSourceIamPolicyOutput(ctx *pulumi.Context, args LookupV2OrganizationSourceIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupV2OrganizationSourceIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupV2OrganizationSourceIamPolicyResultOutput, error) {
 			args := v.(LookupV2OrganizationSourceIamPolicyArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupV2OrganizationSourceIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:securitycenter/getV2OrganizationSourceIamPolicy:getV2OrganizationSourceIamPolicy", args, &rv, "", opts...)
-			if err != nil {
-				return LookupV2OrganizationSourceIamPolicyResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupV2OrganizationSourceIamPolicyResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupV2OrganizationSourceIamPolicyResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gcp:securitycenter/getV2OrganizationSourceIamPolicy:getV2OrganizationSourceIamPolicy", args, LookupV2OrganizationSourceIamPolicyResultOutput{}, options).(LookupV2OrganizationSourceIamPolicyResultOutput), nil
 		}).(LookupV2OrganizationSourceIamPolicyResultOutput)
 }
 

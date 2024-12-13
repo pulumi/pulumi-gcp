@@ -82,6 +82,42 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public static Output<GetDiskResult> Invoke(GetDiskInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDiskResult>("gcp:compute/getDisk:getDisk", args ?? new GetDiskInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get information about a Google Compute Persistent disks.
+        /// 
+        /// [the official documentation](https://cloud.google.com/compute/docs/disks) and its [API](https://cloud.google.com/compute/docs/reference/latest/disks).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var persistent_boot_disk = Gcp.Compute.GetDisk.Invoke(new()
+        ///     {
+        ///         Name = "persistent-boot-disk",
+        ///         Project = "example",
+        ///     });
+        /// 
+        ///     var @default = new Gcp.Compute.Instance("default", new()
+        ///     {
+        ///         BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
+        ///         {
+        ///             Source = persistent_boot_disk.Apply(persistent_boot_disk =&gt; persistent_boot_disk.Apply(getDiskResult =&gt; getDiskResult.SelfLink)),
+        ///             AutoDelete = false,
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDiskResult> Invoke(GetDiskInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDiskResult>("gcp:compute/getDisk:getDisk", args ?? new GetDiskInvokeArgs(), options.WithDefaults());
     }
 
 

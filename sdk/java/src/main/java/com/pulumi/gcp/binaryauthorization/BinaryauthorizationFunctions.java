@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.binaryauthorization.inputs.GetAttestorIamPolicyArgs;
 import com.pulumi.gcp.binaryauthorization.inputs.GetAttestorIamPolicyPlainArgs;
@@ -141,6 +142,49 @@ public final class BinaryauthorizationFunctions {
      * 
      */
     public static Output<GetAttestorIamPolicyResult> getAttestorIamPolicy(GetAttestorIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:binaryauthorization/getAttestorIamPolicy:getAttestorIamPolicy", TypeShape.of(GetAttestorIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for attestor
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.binaryauthorization.BinaryauthorizationFunctions;
+     * import com.pulumi.gcp.binaryauthorization.inputs.GetAttestorIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = BinaryauthorizationFunctions.getAttestorIamPolicy(GetAttestorIamPolicyArgs.builder()
+     *             .project(attestor.project())
+     *             .attestor(attestor.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAttestorIamPolicyResult> getAttestorIamPolicy(GetAttestorIamPolicyArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:binaryauthorization/getAttestorIamPolicy:getAttestorIamPolicy", TypeShape.of(GetAttestorIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**

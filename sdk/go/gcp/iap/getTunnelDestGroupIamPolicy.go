@@ -78,21 +78,11 @@ type LookupTunnelDestGroupIamPolicyResult struct {
 }
 
 func LookupTunnelDestGroupIamPolicyOutput(ctx *pulumi.Context, args LookupTunnelDestGroupIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupTunnelDestGroupIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupTunnelDestGroupIamPolicyResultOutput, error) {
 			args := v.(LookupTunnelDestGroupIamPolicyArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupTunnelDestGroupIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:iap/getTunnelDestGroupIamPolicy:getTunnelDestGroupIamPolicy", args, &rv, "", opts...)
-			if err != nil {
-				return LookupTunnelDestGroupIamPolicyResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupTunnelDestGroupIamPolicyResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupTunnelDestGroupIamPolicyResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gcp:iap/getTunnelDestGroupIamPolicy:getTunnelDestGroupIamPolicy", args, LookupTunnelDestGroupIamPolicyResultOutput{}, options).(LookupTunnelDestGroupIamPolicyResultOutput), nil
 		}).(LookupTunnelDestGroupIamPolicyResultOutput)
 }
 

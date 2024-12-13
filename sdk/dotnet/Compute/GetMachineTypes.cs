@@ -38,6 +38,20 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public static Output<GetMachineTypesResult> Invoke(GetMachineTypesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMachineTypesResult>("gcp:compute/getMachineTypes:getMachineTypes", args ?? new GetMachineTypesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Provides access to available Google Compute machine types in a zone for a given project.
+        /// See more about [machine type availability](https://cloud.google.com/compute/docs/regions-zones#available) in the upstream docs.
+        /// 
+        /// To get more information about machine types, see:
+        /// 
+        /// * [API Documentation](https://cloud.google.com/compute/docs/reference/rest/v1/machineTypes/list)
+        /// * [Comparison Guide](https://cloud.google.com/compute/docs/machine-resource)
+        /// 
+        /// ## Example Usage
+        /// </summary>
+        public static Output<GetMachineTypesResult> Invoke(GetMachineTypesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetMachineTypesResult>("gcp:compute/getMachineTypes:getMachineTypes", args ?? new GetMachineTypesInvokeArgs(), options.WithDefaults());
     }
 
 

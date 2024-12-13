@@ -58,6 +58,30 @@ namespace Pulumi.Gcp.Healthcare
         /// </summary>
         public static Output<GetHl7V2StoreIamPolicyResult> Invoke(GetHl7V2StoreIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetHl7V2StoreIamPolicyResult>("gcp:healthcare/getHl7V2StoreIamPolicy:getHl7V2StoreIamPolicy", args ?? new GetHl7V2StoreIamPolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves the current IAM policy data for a Google Cloud Healthcare HL7v2 store.
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = Gcp.Healthcare.GetHl7V2StoreIamPolicy.Invoke(new()
+        ///     {
+        ///         Hl7V2StoreId = hl7V2Store.Id,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetHl7V2StoreIamPolicyResult> Invoke(GetHl7V2StoreIamPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetHl7V2StoreIamPolicyResult>("gcp:healthcare/getHl7V2StoreIamPolicy:getHl7V2StoreIamPolicy", args ?? new GetHl7V2StoreIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

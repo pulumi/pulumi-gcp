@@ -64,6 +64,33 @@ namespace Pulumi.Gcp.GkeHub
         /// </summary>
         public static Output<GetMembershipIamPolicyResult> Invoke(GetMembershipIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMembershipIamPolicyResult>("gcp:gkehub/getMembershipIamPolicy:getMembershipIamPolicy", args ?? new GetMembershipIamPolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves the current IAM policy data for membership
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.GkeHub.GetMembershipIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = membership.Project,
+        ///         Location = membership.Location,
+        ///         MembershipId = membership.MembershipId,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetMembershipIamPolicyResult> Invoke(GetMembershipIamPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetMembershipIamPolicyResult>("gcp:gkehub/getMembershipIamPolicy:getMembershipIamPolicy", args ?? new GetMembershipIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

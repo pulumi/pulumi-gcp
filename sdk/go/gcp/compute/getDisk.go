@@ -147,21 +147,11 @@ type LookupDiskResult struct {
 }
 
 func LookupDiskOutput(ctx *pulumi.Context, args LookupDiskOutputArgs, opts ...pulumi.InvokeOption) LookupDiskResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupDiskResultOutput, error) {
 			args := v.(LookupDiskArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupDiskResult
-			secret, err := ctx.InvokePackageRaw("gcp:compute/getDisk:getDisk", args, &rv, "", opts...)
-			if err != nil {
-				return LookupDiskResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupDiskResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupDiskResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gcp:compute/getDisk:getDisk", args, LookupDiskResultOutput{}, options).(LookupDiskResultOutput), nil
 		}).(LookupDiskResultOutput)
 }
 

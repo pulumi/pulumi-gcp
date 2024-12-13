@@ -66,6 +66,34 @@ namespace Pulumi.Gcp.OracleDatabase
         /// </summary>
         public static Output<GetCloudVmClusterResult> Invoke(GetCloudVmClusterInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCloudVmClusterResult>("gcp:oracledatabase/getCloudVmCluster:getCloudVmCluster", args ?? new GetCloudVmClusterInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get information about a CloudVmCluster.
+        /// 
+        /// For more information see the
+        /// [API](https://cloud.google.com/oracle/database/docs/reference/rest/v1/projects.locations.cloudVmClusters).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_vmcluster = Gcp.OracleDatabase.GetCloudVmCluster.Invoke(new()
+        ///     {
+        ///         Location = "us-east4",
+        ///         CloudVmClusterId = "vmcluster-id",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetCloudVmClusterResult> Invoke(GetCloudVmClusterInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetCloudVmClusterResult>("gcp:oracledatabase/getCloudVmCluster:getCloudVmCluster", args ?? new GetCloudVmClusterInvokeArgs(), options.WithDefaults());
     }
 
 

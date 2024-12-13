@@ -70,6 +70,36 @@ namespace Pulumi.Gcp.Datastream
         /// </summary>
         public static Output<GetStaticIpsResult> Invoke(GetStaticIpsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetStaticIpsResult>("gcp:datastream/getStaticIps:getStaticIps", args ?? new GetStaticIpsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Returns the list of IP addresses that Datastream connects from. For more information see
+        /// the [official documentation](https://cloud.google.com/datastream/docs/ip-allowlists-and-regions).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var datastreamIps = Gcp.Datastream.GetStaticIps.Invoke(new()
+        ///     {
+        ///         Location = "us-west1",
+        ///         Project = "my-project",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["ipList"] = datastreamIps.Apply(getStaticIpsResult =&gt; getStaticIpsResult.StaticIps),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetStaticIpsResult> Invoke(GetStaticIpsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetStaticIpsResult>("gcp:datastream/getStaticIps:getStaticIps", args ?? new GetStaticIpsInvokeArgs(), options.WithDefaults());
     }
 
 

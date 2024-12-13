@@ -79,18 +79,8 @@ type GetLBIPRangesResult struct {
 
 func GetLBIPRangesOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetLBIPRangesResultOutput {
 	return pulumi.ToOutput(0).ApplyT(func(int) (GetLBIPRangesResultOutput, error) {
-		opts = internal.PkgInvokeDefaultOpts(opts)
-		var rv GetLBIPRangesResult
-		secret, err := ctx.InvokePackageRaw("gcp:compute/getLBIPRanges:getLBIPRanges", nil, &rv, "", opts...)
-		if err != nil {
-			return GetLBIPRangesResultOutput{}, err
-		}
-
-		output := pulumi.ToOutput(rv).(GetLBIPRangesResultOutput)
-		if secret {
-			return pulumi.ToSecret(output).(GetLBIPRangesResultOutput), nil
-		}
-		return output, nil
+		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+		return ctx.InvokeOutput("gcp:compute/getLBIPRanges:getLBIPRanges", nil, GetLBIPRangesResultOutput{}, options).(GetLBIPRangesResultOutput), nil
 	}).(GetLBIPRangesResultOutput)
 }
 

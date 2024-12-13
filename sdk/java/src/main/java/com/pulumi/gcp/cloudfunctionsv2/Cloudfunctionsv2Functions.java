@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.cloudfunctionsv2.inputs.GetFunctionArgs;
 import com.pulumi.gcp.cloudfunctionsv2.inputs.GetFunctionIamPolicyArgs;
@@ -194,6 +195,51 @@ public final class Cloudfunctionsv2Functions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetFunctionResult> getFunction(GetFunctionArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:cloudfunctionsv2/getFunction:getFunction", TypeShape.of(GetFunctionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a Google Cloud Function (2nd gen). For more information see:
+     * 
+     * * [API documentation](https://cloud.google.com/functions/docs/reference/rest/v2beta/projects.locations.functions).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudfunctionsv2.Cloudfunctionsv2Functions;
+     * import com.pulumi.gcp.cloudfunctionsv2.inputs.GetFunctionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-function = Cloudfunctionsv2Functions.getFunction(GetFunctionArgs.builder()
+     *             .name("function")
+     *             .location("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetFunctionResult> getFunctionPlain(GetFunctionPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:cloudfunctionsv2/getFunction:getFunction", TypeShape.of(GetFunctionResult.class), args, Utilities.withVersion(options));
     }
@@ -327,6 +373,50 @@ public final class Cloudfunctionsv2Functions {
      * 
      */
     public static Output<GetFunctionIamPolicyResult> getFunctionIamPolicy(GetFunctionIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:cloudfunctionsv2/getFunctionIamPolicy:getFunctionIamPolicy", TypeShape.of(GetFunctionIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for function
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudfunctionsv2.Cloudfunctionsv2Functions;
+     * import com.pulumi.gcp.cloudfunctionsv2.inputs.GetFunctionIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = Cloudfunctionsv2Functions.getFunctionIamPolicy(GetFunctionIamPolicyArgs.builder()
+     *             .project(function.project())
+     *             .location(function.location())
+     *             .cloudFunction(function.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetFunctionIamPolicyResult> getFunctionIamPolicy(GetFunctionIamPolicyArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:cloudfunctionsv2/getFunctionIamPolicy:getFunctionIamPolicy", TypeShape.of(GetFunctionIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**

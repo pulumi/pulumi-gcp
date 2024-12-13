@@ -68,6 +68,35 @@ namespace Pulumi.Gcp.CloudIdentity
         /// </summary>
         public static Output<GetGroupLookupResult> Invoke(GetGroupLookupInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGroupLookupResult>("gcp:cloudidentity/getGroupLookup:getGroupLookup", args ?? new GetGroupLookupInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to look up the resource name of a Cloud Identity Group by its [EntityKey](https://cloud.google.com/identity/docs/reference/rest/v1/EntityKey), i.e. the group's email.
+        /// 
+        /// https://cloud.google.com/identity/docs/concepts/overview#groups
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @group = Gcp.CloudIdentity.GetGroupLookup.Invoke(new()
+        ///     {
+        ///         GroupKey = new Gcp.CloudIdentity.Inputs.GetGroupLookupGroupKeyInputArgs
+        ///         {
+        ///             Id = "my-group@example.com",
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetGroupLookupResult> Invoke(GetGroupLookupInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetGroupLookupResult>("gcp:cloudidentity/getGroupLookup:getGroupLookup", args ?? new GetGroupLookupInvokeArgs(), options.WithDefaults());
     }
 
 

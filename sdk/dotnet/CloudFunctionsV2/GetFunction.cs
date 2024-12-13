@@ -64,6 +64,33 @@ namespace Pulumi.Gcp.CloudFunctionsV2
         /// </summary>
         public static Output<GetFunctionResult> Invoke(GetFunctionInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFunctionResult>("gcp:cloudfunctionsv2/getFunction:getFunction", args ?? new GetFunctionInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get information about a Google Cloud Function (2nd gen). For more information see:
+        /// 
+        /// * [API documentation](https://cloud.google.com/functions/docs/reference/rest/v2beta/projects.locations.functions).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_function = Gcp.CloudFunctionsV2.GetFunction.Invoke(new()
+        ///     {
+        ///         Name = "function",
+        ///         Location = "us-central1",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetFunctionResult> Invoke(GetFunctionInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetFunctionResult>("gcp:cloudfunctionsv2/getFunction:getFunction", args ?? new GetFunctionInvokeArgs(), options.WithDefaults());
     }
 
 

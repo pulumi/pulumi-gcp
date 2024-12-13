@@ -66,6 +66,34 @@ namespace Pulumi.Gcp.OracleDatabase
         /// </summary>
         public static Output<GetAutonomousDatabaseResult> Invoke(GetAutonomousDatabaseInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAutonomousDatabaseResult>("gcp:oracledatabase/getAutonomousDatabase:getAutonomousDatabase", args ?? new GetAutonomousDatabaseInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get information about an AutonomousDatabase.
+        /// 
+        /// For more information see the
+        /// [API](https://cloud.google.com/oracle/database/docs/reference/rest/v1/projects.locations.autonomousDatabases).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_instance = Gcp.OracleDatabase.GetAutonomousDatabase.Invoke(new()
+        ///     {
+        ///         Location = "us-east4",
+        ///         AutonomousDatabaseId = "autonomous_database_id",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAutonomousDatabaseResult> Invoke(GetAutonomousDatabaseInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAutonomousDatabaseResult>("gcp:oracledatabase/getAutonomousDatabase:getAutonomousDatabase", args ?? new GetAutonomousDatabaseInvokeArgs(), options.WithDefaults());
     }
 
 

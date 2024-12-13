@@ -40,21 +40,11 @@ type LookupNamespaceIamPolicyResult struct {
 }
 
 func LookupNamespaceIamPolicyOutput(ctx *pulumi.Context, args LookupNamespaceIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupNamespaceIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupNamespaceIamPolicyResultOutput, error) {
 			args := v.(LookupNamespaceIamPolicyArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupNamespaceIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:servicedirectory/getNamespaceIamPolicy:getNamespaceIamPolicy", args, &rv, "", opts...)
-			if err != nil {
-				return LookupNamespaceIamPolicyResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupNamespaceIamPolicyResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupNamespaceIamPolicyResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gcp:servicedirectory/getNamespaceIamPolicy:getNamespaceIamPolicy", args, LookupNamespaceIamPolicyResultOutput{}, options).(LookupNamespaceIamPolicyResultOutput), nil
 		}).(LookupNamespaceIamPolicyResultOutput)
 }
 

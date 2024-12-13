@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.servicedirectory.inputs.GetNamespaceIamPolicyArgs;
 import com.pulumi.gcp.servicedirectory.inputs.GetNamespaceIamPolicyPlainArgs;
@@ -26,6 +27,9 @@ public final class ServicedirectoryFunctions {
     public static Output<GetNamespaceIamPolicyResult> getNamespaceIamPolicy(GetNamespaceIamPolicyArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:servicedirectory/getNamespaceIamPolicy:getNamespaceIamPolicy", TypeShape.of(GetNamespaceIamPolicyResult.class), args, Utilities.withVersion(options));
     }
+    public static Output<GetNamespaceIamPolicyResult> getNamespaceIamPolicy(GetNamespaceIamPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:servicedirectory/getNamespaceIamPolicy:getNamespaceIamPolicy", TypeShape.of(GetNamespaceIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
     public static CompletableFuture<GetNamespaceIamPolicyResult> getNamespaceIamPolicyPlain(GetNamespaceIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:servicedirectory/getNamespaceIamPolicy:getNamespaceIamPolicy", TypeShape.of(GetNamespaceIamPolicyResult.class), args, Utilities.withVersion(options));
     }
@@ -36,6 +40,9 @@ public final class ServicedirectoryFunctions {
         return getServiceIamPolicyPlain(args, InvokeOptions.Empty);
     }
     public static Output<GetServiceIamPolicyResult> getServiceIamPolicy(GetServiceIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:servicedirectory/getServiceIamPolicy:getServiceIamPolicy", TypeShape.of(GetServiceIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetServiceIamPolicyResult> getServiceIamPolicy(GetServiceIamPolicyArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:servicedirectory/getServiceIamPolicy:getServiceIamPolicy", TypeShape.of(GetServiceIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     public static CompletableFuture<GetServiceIamPolicyResult> getServiceIamPolicyPlain(GetServiceIamPolicyPlainArgs args, InvokeOptions options) {

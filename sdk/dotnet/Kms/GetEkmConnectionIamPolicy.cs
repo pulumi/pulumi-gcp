@@ -64,6 +64,33 @@ namespace Pulumi.Gcp.Kms
         /// </summary>
         public static Output<GetEkmConnectionIamPolicyResult> Invoke(GetEkmConnectionIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEkmConnectionIamPolicyResult>("gcp:kms/getEkmConnectionIamPolicy:getEkmConnectionIamPolicy", args ?? new GetEkmConnectionIamPolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves the current IAM policy data for ekmconnection
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.Kms.GetEkmConnectionIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = example_ekmconnection.Project,
+        ///         Location = example_ekmconnection.Location,
+        ///         Name = example_ekmconnection.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetEkmConnectionIamPolicyResult> Invoke(GetEkmConnectionIamPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetEkmConnectionIamPolicyResult>("gcp:kms/getEkmConnectionIamPolicy:getEkmConnectionIamPolicy", args ?? new GetEkmConnectionIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

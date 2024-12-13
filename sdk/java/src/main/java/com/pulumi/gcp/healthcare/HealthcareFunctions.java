@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.healthcare.inputs.GetConsentStoreIamPolicyArgs;
 import com.pulumi.gcp.healthcare.inputs.GetConsentStoreIamPolicyPlainArgs;
@@ -153,6 +154,49 @@ public final class HealthcareFunctions {
      * 
      */
     public static Output<GetConsentStoreIamPolicyResult> getConsentStoreIamPolicy(GetConsentStoreIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:healthcare/getConsentStoreIamPolicy:getConsentStoreIamPolicy", TypeShape.of(GetConsentStoreIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for consentstore
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.healthcare.HealthcareFunctions;
+     * import com.pulumi.gcp.healthcare.inputs.GetConsentStoreIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = HealthcareFunctions.getConsentStoreIamPolicy(GetConsentStoreIamPolicyArgs.builder()
+     *             .dataset(my_consent.dataset())
+     *             .consentStoreId(my_consent.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetConsentStoreIamPolicyResult> getConsentStoreIamPolicy(GetConsentStoreIamPolicyArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:healthcare/getConsentStoreIamPolicy:getConsentStoreIamPolicy", TypeShape.of(GetConsentStoreIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -363,6 +407,48 @@ public final class HealthcareFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetDatasetIamPolicyResult> getDatasetIamPolicy(GetDatasetIamPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:healthcare/getDatasetIamPolicy:getDatasetIamPolicy", TypeShape.of(GetDatasetIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for a Google Cloud Healthcare dataset.
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.healthcare.HealthcareFunctions;
+     * import com.pulumi.gcp.healthcare.inputs.GetDatasetIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = HealthcareFunctions.getDatasetIamPolicy(GetDatasetIamPolicyArgs.builder()
+     *             .datasetId(dataset.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetDatasetIamPolicyResult> getDatasetIamPolicyPlain(GetDatasetIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:healthcare/getDatasetIamPolicy:getDatasetIamPolicy", TypeShape.of(GetDatasetIamPolicyResult.class), args, Utilities.withVersion(options));
     }
@@ -490,6 +576,48 @@ public final class HealthcareFunctions {
      * 
      */
     public static Output<GetDicomStoreIamPolicyResult> getDicomStoreIamPolicy(GetDicomStoreIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:healthcare/getDicomStoreIamPolicy:getDicomStoreIamPolicy", TypeShape.of(GetDicomStoreIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for a Google Cloud Healthcare DICOM store.
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.healthcare.HealthcareFunctions;
+     * import com.pulumi.gcp.healthcare.inputs.GetDicomStoreIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = HealthcareFunctions.getDicomStoreIamPolicy(GetDicomStoreIamPolicyArgs.builder()
+     *             .dicomStoreId(dicomStore.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDicomStoreIamPolicyResult> getDicomStoreIamPolicy(GetDicomStoreIamPolicyArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:healthcare/getDicomStoreIamPolicy:getDicomStoreIamPolicy", TypeShape.of(GetDicomStoreIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -699,6 +827,48 @@ public final class HealthcareFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetFhirStoreIamPolicyResult> getFhirStoreIamPolicy(GetFhirStoreIamPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:healthcare/getFhirStoreIamPolicy:getFhirStoreIamPolicy", TypeShape.of(GetFhirStoreIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for a Google Cloud Healthcare FHIR store.
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.healthcare.HealthcareFunctions;
+     * import com.pulumi.gcp.healthcare.inputs.GetFhirStoreIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = HealthcareFunctions.getFhirStoreIamPolicy(GetFhirStoreIamPolicyArgs.builder()
+     *             .fhirStoreId(fhirStore.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetFhirStoreIamPolicyResult> getFhirStoreIamPolicyPlain(GetFhirStoreIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:healthcare/getFhirStoreIamPolicy:getFhirStoreIamPolicy", TypeShape.of(GetFhirStoreIamPolicyResult.class), args, Utilities.withVersion(options));
     }
@@ -826,6 +996,48 @@ public final class HealthcareFunctions {
      * 
      */
     public static Output<GetHl7V2StoreIamPolicyResult> getHl7V2StoreIamPolicy(GetHl7V2StoreIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:healthcare/getHl7V2StoreIamPolicy:getHl7V2StoreIamPolicy", TypeShape.of(GetHl7V2StoreIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for a Google Cloud Healthcare HL7v2 store.
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.healthcare.HealthcareFunctions;
+     * import com.pulumi.gcp.healthcare.inputs.GetHl7V2StoreIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = HealthcareFunctions.getHl7V2StoreIamPolicy(GetHl7V2StoreIamPolicyArgs.builder()
+     *             .hl7V2StoreId(hl7V2Store.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetHl7V2StoreIamPolicyResult> getHl7V2StoreIamPolicy(GetHl7V2StoreIamPolicyArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:healthcare/getHl7V2StoreIamPolicy:getHl7V2StoreIamPolicy", TypeShape.of(GetHl7V2StoreIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**

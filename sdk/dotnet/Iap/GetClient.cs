@@ -70,6 +70,36 @@ namespace Pulumi.Gcp.Iap
         /// </summary>
         public static Output<GetClientResult> Invoke(GetClientInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetClientResult>("gcp:iap/getClient:getClient", args ?? new GetClientInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get info about a Google Cloud IAP Client.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var project = Gcp.Organizations.GetProject.Invoke(new()
+        ///     {
+        ///         ProjectId = "foobar",
+        ///     });
+        /// 
+        ///     var projectClient = Gcp.Iap.GetClient.Invoke(new()
+        ///     {
+        ///         Brand = $"projects/{project.Apply(getProjectResult =&gt; getProjectResult.Number)}/brands/[BRAND_NUMBER]",
+        ///         ClientId = apps.Googleusercontent.Com,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetClientResult> Invoke(GetClientInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetClientResult>("gcp:iap/getClient:getClient", args ?? new GetClientInvokeArgs(), options.WithDefaults());
     }
 
 

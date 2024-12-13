@@ -70,6 +70,36 @@ namespace Pulumi.Gcp.CertificateAuthority
         /// </summary>
         public static Output<GetAuthorityResult> Invoke(GetAuthorityInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAuthorityResult>("gcp:certificateauthority/getAuthority:getAuthority", args ?? new GetAuthorityInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get info about a Google CAS Certificate Authority.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = Gcp.CertificateAuthority.GetAuthority.Invoke(new()
+        ///     {
+        ///         Location = "us-west1",
+        ///         Pool = "pool-name",
+        ///         CertificateAuthorityId = "ca-id",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["csr"] = @default.Apply(@default =&gt; @default.Apply(getAuthorityResult =&gt; getAuthorityResult.PemCsr)),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAuthorityResult> Invoke(GetAuthorityInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAuthorityResult>("gcp:certificateauthority/getAuthority:getAuthority", args ?? new GetAuthorityInvokeArgs(), options.WithDefaults());
     }
 
 

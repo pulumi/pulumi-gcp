@@ -141,21 +141,11 @@ type LookupInstanceTemplateResult struct {
 }
 
 func LookupInstanceTemplateOutput(ctx *pulumi.Context, args LookupInstanceTemplateOutputArgs, opts ...pulumi.InvokeOption) LookupInstanceTemplateResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupInstanceTemplateResultOutput, error) {
 			args := v.(LookupInstanceTemplateArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupInstanceTemplateResult
-			secret, err := ctx.InvokePackageRaw("gcp:compute/getInstanceTemplate:getInstanceTemplate", args, &rv, "", opts...)
-			if err != nil {
-				return LookupInstanceTemplateResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupInstanceTemplateResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupInstanceTemplateResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gcp:compute/getInstanceTemplate:getInstanceTemplate", args, LookupInstanceTemplateResultOutput{}, options).(LookupInstanceTemplateResultOutput), nil
 		}).(LookupInstanceTemplateResultOutput)
 }
 

@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.sql.inputs.GetBackupRunArgs;
 import com.pulumi.gcp.sql.inputs.GetBackupRunPlainArgs;
@@ -204,6 +205,49 @@ public final class SqlFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetBackupRunResult> getBackupRun(GetBackupRunArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:sql/getBackupRun:getBackupRun", TypeShape.of(GetBackupRunResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about a Cloud SQL instance backup run.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.sql.SqlFunctions;
+     * import com.pulumi.gcp.sql.inputs.GetBackupRunArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var backup = SqlFunctions.getBackupRun(GetBackupRunArgs.builder()
+     *             .instance(main.name())
+     *             .mostRecent(true)
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetBackupRunResult> getBackupRunPlain(GetBackupRunPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:sql/getBackupRun:getBackupRun", TypeShape.of(GetBackupRunResult.class), args, Utilities.withVersion(options));
     }
@@ -235,6 +279,16 @@ public final class SqlFunctions {
      * 
      */
     public static Output<GetCaCertsResult> getCaCerts(GetCaCertsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:sql/getCaCerts:getCaCerts", TypeShape.of(GetCaCertsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get all of the trusted Certificate Authorities (CAs) for the specified SQL database instance. For more information see the
+     * [official documentation](https://cloud.google.com/sql/)
+     * and
+     * [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/instances/listServerCas).
+     * 
+     */
+    public static Output<GetCaCertsResult> getCaCerts(GetCaCertsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:sql/getCaCerts:getCaCerts", TypeShape.of(GetCaCertsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -374,6 +428,49 @@ public final class SqlFunctions {
      * 
      */
     public static Output<GetDatabaseResult> getDatabase(GetDatabaseArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:sql/getDatabase:getDatabase", TypeShape.of(GetDatabaseResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about a database in a Cloud SQL instance.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.sql.SqlFunctions;
+     * import com.pulumi.gcp.sql.inputs.GetDatabaseArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var qa = SqlFunctions.getDatabase(GetDatabaseArgs.builder()
+     *             .name("test-sql-database")
+     *             .instance(main.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDatabaseResult> getDatabase(GetDatabaseArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:sql/getDatabase:getDatabase", TypeShape.of(GetDatabaseResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -584,6 +681,48 @@ public final class SqlFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetDatabaseInstanceResult> getDatabaseInstance(GetDatabaseInstanceArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:sql/getDatabaseInstance:getDatabaseInstance", TypeShape.of(GetDatabaseInstanceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about a Cloud SQL instance.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.sql.SqlFunctions;
+     * import com.pulumi.gcp.sql.inputs.GetDatabaseInstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var qa = SqlFunctions.getDatabaseInstance(GetDatabaseInstanceArgs.builder()
+     *             .name("test-sql-instance")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetDatabaseInstanceResult> getDatabaseInstancePlain(GetDatabaseInstancePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:sql/getDatabaseInstance:getDatabaseInstance", TypeShape.of(GetDatabaseInstanceResult.class), args, Utilities.withVersion(options));
     }
@@ -723,6 +862,52 @@ public final class SqlFunctions {
      * 
      */
     public static Output<GetDatabaseInstanceLatestRecoveryTimeResult> getDatabaseInstanceLatestRecoveryTime(GetDatabaseInstanceLatestRecoveryTimeArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:sql/getDatabaseInstanceLatestRecoveryTime:getDatabaseInstanceLatestRecoveryTime", TypeShape.of(GetDatabaseInstanceLatestRecoveryTimeResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get Latest Recovery Time for a given instance. For more information see the
+     * [official documentation](https://cloud.google.com/sql/)
+     * and
+     * [API](https://cloud.google.com/sql/docs/postgres/backup-recovery/pitr#get-the-latest-recovery-time).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.sql.SqlFunctions;
+     * import com.pulumi.gcp.sql.inputs.GetDatabaseInstanceLatestRecoveryTimeArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = SqlFunctions.getDatabaseInstanceLatestRecoveryTime(GetDatabaseInstanceLatestRecoveryTimeArgs.builder()
+     *             .instance("sample-instance")
+     *             .build());
+     * 
+     *         ctx.export("latestRecoveryTime", default_);
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDatabaseInstanceLatestRecoveryTimeResult> getDatabaseInstanceLatestRecoveryTime(GetDatabaseInstanceLatestRecoveryTimeArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:sql/getDatabaseInstanceLatestRecoveryTime:getDatabaseInstanceLatestRecoveryTime", TypeShape.of(GetDatabaseInstanceLatestRecoveryTimeResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1020,6 +1205,48 @@ public final class SqlFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetDatabaseInstancesResult> getDatabaseInstances(GetDatabaseInstancesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:sql/getDatabaseInstances:getDatabaseInstances", TypeShape.of(GetDatabaseInstancesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about a list of Cloud SQL instances in a project. You can also apply some filters over this list to get a more filtered list of Cloud SQL instances.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.sql.SqlFunctions;
+     * import com.pulumi.gcp.sql.inputs.GetDatabaseInstancesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var qa = SqlFunctions.getDatabaseInstances(GetDatabaseInstancesArgs.builder()
+     *             .project("test-project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetDatabaseInstancesResult> getDatabaseInstancesPlain(GetDatabaseInstancesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:sql/getDatabaseInstances:getDatabaseInstances", TypeShape.of(GetDatabaseInstancesResult.class), args, Utilities.withVersion(options));
     }
@@ -1184,6 +1411,47 @@ public final class SqlFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetDatabasesResult> getDatabases(GetDatabasesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:sql/getDatabases:getDatabases", TypeShape.of(GetDatabasesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about a list of databases in a Cloud SQL instance.
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.sql.SqlFunctions;
+     * import com.pulumi.gcp.sql.inputs.GetDatabasesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var qa = SqlFunctions.getDatabases(GetDatabasesArgs.builder()
+     *             .instance(main.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetDatabasesResult> getDatabasesPlain(GetDatabasesPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:sql/getDatabases:getDatabases", TypeShape.of(GetDatabasesResult.class), args, Utilities.withVersion(options));
     }
@@ -1260,6 +1528,21 @@ public final class SqlFunctions {
      * 
      */
     public static Output<GetTiersResult> getTiers(GetTiersArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:sql/getTiers:getTiers", TypeShape.of(GetTiersResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get all available machine types (tiers) for a project, for example, db-custom-1-3840. For more information see the
+     * [official documentation](https://cloud.google.com/sql/)
+     * and
+     * [API](https://cloud.google.com/sql/docs/mysql/admin-api/rest/v1beta4/tiers/list).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetTiersResult> getTiers(GetTiersArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:sql/getTiers:getTiers", TypeShape.of(GetTiersResult.class), args, Utilities.withVersion(options));
     }
     /**

@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.datacatalog.inputs.GetEntryGroupIamPolicyArgs;
 import com.pulumi.gcp.datacatalog.inputs.GetEntryGroupIamPolicyPlainArgs;
@@ -147,6 +148,48 @@ public final class DatacatalogFunctions {
      * 
      */
     public static Output<GetEntryGroupIamPolicyResult> getEntryGroupIamPolicy(GetEntryGroupIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:datacatalog/getEntryGroupIamPolicy:getEntryGroupIamPolicy", TypeShape.of(GetEntryGroupIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for entrygroup
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.datacatalog.DatacatalogFunctions;
+     * import com.pulumi.gcp.datacatalog.inputs.GetEntryGroupIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = DatacatalogFunctions.getEntryGroupIamPolicy(GetEntryGroupIamPolicyArgs.builder()
+     *             .entryGroup(basicEntryGroup.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetEntryGroupIamPolicyResult> getEntryGroupIamPolicy(GetEntryGroupIamPolicyArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:datacatalog/getEntryGroupIamPolicy:getEntryGroupIamPolicy", TypeShape.of(GetEntryGroupIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -356,6 +399,48 @@ public final class DatacatalogFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetPolicyTagIamPolicyResult> getPolicyTagIamPolicy(GetPolicyTagIamPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:datacatalog/getPolicyTagIamPolicy:getPolicyTagIamPolicy", TypeShape.of(GetPolicyTagIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for policytag
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.datacatalog.DatacatalogFunctions;
+     * import com.pulumi.gcp.datacatalog.inputs.GetPolicyTagIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = DatacatalogFunctions.getPolicyTagIamPolicy(GetPolicyTagIamPolicyArgs.builder()
+     *             .policyTag(basicPolicyTag.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetPolicyTagIamPolicyResult> getPolicyTagIamPolicyPlain(GetPolicyTagIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:datacatalog/getPolicyTagIamPolicy:getPolicyTagIamPolicy", TypeShape.of(GetPolicyTagIamPolicyResult.class), args, Utilities.withVersion(options));
     }
@@ -524,6 +609,48 @@ public final class DatacatalogFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetTagTemplateIamPolicyResult> getTagTemplateIamPolicy(GetTagTemplateIamPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:datacatalog/getTagTemplateIamPolicy:getTagTemplateIamPolicy", TypeShape.of(GetTagTemplateIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for tagtemplate
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.datacatalog.DatacatalogFunctions;
+     * import com.pulumi.gcp.datacatalog.inputs.GetTagTemplateIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = DatacatalogFunctions.getTagTemplateIamPolicy(GetTagTemplateIamPolicyArgs.builder()
+     *             .tagTemplate(basicTagTemplate.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetTagTemplateIamPolicyResult> getTagTemplateIamPolicyPlain(GetTagTemplateIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:datacatalog/getTagTemplateIamPolicy:getTagTemplateIamPolicy", TypeShape.of(GetTagTemplateIamPolicyResult.class), args, Utilities.withVersion(options));
     }
@@ -651,6 +778,48 @@ public final class DatacatalogFunctions {
      * 
      */
     public static Output<GetTaxonomyIamPolicyResult> getTaxonomyIamPolicy(GetTaxonomyIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:datacatalog/getTaxonomyIamPolicy:getTaxonomyIamPolicy", TypeShape.of(GetTaxonomyIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for taxonomy
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.datacatalog.DatacatalogFunctions;
+     * import com.pulumi.gcp.datacatalog.inputs.GetTaxonomyIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = DatacatalogFunctions.getTaxonomyIamPolicy(GetTaxonomyIamPolicyArgs.builder()
+     *             .taxonomy(basicTaxonomy.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetTaxonomyIamPolicyResult> getTaxonomyIamPolicy(GetTaxonomyIamPolicyArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:datacatalog/getTaxonomyIamPolicy:getTaxonomyIamPolicy", TypeShape.of(GetTaxonomyIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**

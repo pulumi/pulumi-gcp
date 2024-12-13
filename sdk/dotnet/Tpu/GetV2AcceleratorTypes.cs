@@ -104,6 +104,53 @@ namespace Pulumi.Gcp.Tpu
         /// </summary>
         public static Output<GetV2AcceleratorTypesResult> Invoke(GetV2AcceleratorTypesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetV2AcceleratorTypesResult>("gcp:tpu/getV2AcceleratorTypes:getV2AcceleratorTypes", args ?? new GetV2AcceleratorTypesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get accelerator types available for a project. For more information see the [official documentation](https://cloud.google.com/tpu/docs/) and [API](https://cloud.google.com/tpu/docs/reference/rest/v2/projects.locations.acceleratorTypes).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var available = Gcp.Tpu.GetV2AcceleratorTypes.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// 
+        /// ### Configure Basic TPU VM With Available Type
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var available = Gcp.Tpu.GetV2AcceleratorTypes.Invoke();
+        /// 
+        ///     var availableGetV2RuntimeVersions = Gcp.Tpu.GetV2RuntimeVersions.Invoke();
+        /// 
+        ///     var tpu = new Gcp.Tpu.V2Vm("tpu", new()
+        ///     {
+        ///         Name = "test-tpu",
+        ///         Zone = "us-central1-b",
+        ///         RuntimeVersion = availableGetV2RuntimeVersions.Apply(getV2RuntimeVersionsResult =&gt; getV2RuntimeVersionsResult.Versions[0]),
+        ///         AcceleratorType = available.Apply(getV2AcceleratorTypesResult =&gt; getV2AcceleratorTypesResult.Types[0]),
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetV2AcceleratorTypesResult> Invoke(GetV2AcceleratorTypesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetV2AcceleratorTypesResult>("gcp:tpu/getV2AcceleratorTypes:getV2AcceleratorTypes", args ?? new GetV2AcceleratorTypesInvokeArgs(), options.WithDefaults());
     }
 
 

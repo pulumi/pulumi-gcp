@@ -64,6 +64,33 @@ namespace Pulumi.Gcp.DataPlex
         /// </summary>
         public static Output<GetAspectTypeIamPolicyResult> Invoke(GetAspectTypeIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAspectTypeIamPolicyResult>("gcp:dataplex/getAspectTypeIamPolicy:getAspectTypeIamPolicy", args ?? new GetAspectTypeIamPolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves the current IAM policy data for aspecttype
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.DataPlex.GetAspectTypeIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = testAspectTypeBasic.Project,
+        ///         Location = testAspectTypeBasic.Location,
+        ///         AspectTypeId = testAspectTypeBasic.AspectTypeId,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAspectTypeIamPolicyResult> Invoke(GetAspectTypeIamPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAspectTypeIamPolicyResult>("gcp:dataplex/getAspectTypeIamPolicy:getAspectTypeIamPolicy", args ?? new GetAspectTypeIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -66,6 +66,34 @@ namespace Pulumi.Gcp.Storage
         /// </summary>
         public static Output<GetBucketsResult> Invoke(GetBucketsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetBucketsResult>("gcp:storage/getBuckets:getBuckets", args ?? new GetBucketsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Gets a list of existing GCS buckets.
+        /// See [the official documentation](https://cloud.google.com/storage/docs/introduction)
+        /// and [API](https://cloud.google.com/storage/docs/json_api/v1/buckets/list).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Example GCS buckets.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Gcp.Storage.GetBuckets.Invoke(new()
+        ///     {
+        ///         Project = "example-project",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetBucketsResult> Invoke(GetBucketsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetBucketsResult>("gcp:storage/getBuckets:getBuckets", args ?? new GetBucketsInvokeArgs(), options.WithDefaults());
     }
 
 

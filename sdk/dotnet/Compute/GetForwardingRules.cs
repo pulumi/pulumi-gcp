@@ -60,6 +60,31 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public static Output<GetForwardingRulesResult> Invoke(GetForwardingRulesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetForwardingRulesResult>("gcp:compute/getForwardingRules:getForwardingRules", args ?? new GetForwardingRulesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// List all networks in a specified Google Cloud project.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_forwarding_rules = Gcp.Compute.GetForwardingRules.Invoke(new()
+        ///     {
+        ///         Project = "my-cloud-project",
+        ///         Region = "us-central1",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetForwardingRulesResult> Invoke(GetForwardingRulesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetForwardingRulesResult>("gcp:compute/getForwardingRules:getForwardingRules", args ?? new GetForwardingRulesInvokeArgs(), options.WithDefaults());
     }
 
 

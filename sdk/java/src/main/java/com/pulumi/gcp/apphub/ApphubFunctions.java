@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.apphub.inputs.GetApplicationArgs;
 import com.pulumi.gcp.apphub.inputs.GetApplicationPlainArgs;
@@ -150,6 +151,50 @@ public final class ApphubFunctions {
      * 
      */
     public static Output<GetApplicationResult> getApplication(GetApplicationArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:apphub/getApplication:getApplication", TypeShape.of(GetApplicationResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Application is a functional grouping of Services and Workloads that helps achieve a desired end-to-end business functionality. Services and Workloads are owned by the Application.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.apphub.ApphubFunctions;
+     * import com.pulumi.gcp.apphub.inputs.GetApplicationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var application = ApphubFunctions.getApplication(GetApplicationArgs.builder()
+     *             .project("project-id")
+     *             .applicationId("application")
+     *             .location("location")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetApplicationResult> getApplication(GetApplicationArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:apphub/getApplication:getApplication", TypeShape.of(GetApplicationResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -365,6 +410,49 @@ public final class ApphubFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetDiscoveredServiceResult> getDiscoveredService(GetDiscoveredServiceArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:apphub/getDiscoveredService:getDiscoveredService", TypeShape.of(GetDiscoveredServiceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a discovered service from its uri.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.apphub.ApphubFunctions;
+     * import com.pulumi.gcp.apphub.inputs.GetDiscoveredServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-service = ApphubFunctions.getDiscoveredService(GetDiscoveredServiceArgs.builder()
+     *             .location("my-location")
+     *             .serviceUri("my-service-uri")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetDiscoveredServiceResult> getDiscoveredServicePlain(GetDiscoveredServicePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:apphub/getDiscoveredService:getDiscoveredService", TypeShape.of(GetDiscoveredServiceResult.class), args, Utilities.withVersion(options));
     }
@@ -495,6 +583,49 @@ public final class ApphubFunctions {
      * 
      */
     public static Output<GetDiscoveredWorkloadResult> getDiscoveredWorkload(GetDiscoveredWorkloadArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:apphub/getDiscoveredWorkload:getDiscoveredWorkload", TypeShape.of(GetDiscoveredWorkloadResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a discovered workload from its uri.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.apphub.ApphubFunctions;
+     * import com.pulumi.gcp.apphub.inputs.GetDiscoveredWorkloadArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-workload = ApphubFunctions.getDiscoveredWorkload(GetDiscoveredWorkloadArgs.builder()
+     *             .location("us-central1")
+     *             .workloadUri("my-workload-uri")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDiscoveredWorkloadResult> getDiscoveredWorkload(GetDiscoveredWorkloadArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:apphub/getDiscoveredWorkload:getDiscoveredWorkload", TypeShape.of(GetDiscoveredWorkloadResult.class), args, Utilities.withVersion(options));
     }
     /**

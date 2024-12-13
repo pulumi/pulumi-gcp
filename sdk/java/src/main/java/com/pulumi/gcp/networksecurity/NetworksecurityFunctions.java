@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.networksecurity.inputs.GetAddressGroupIamPolicyArgs;
 import com.pulumi.gcp.networksecurity.inputs.GetAddressGroupIamPolicyPlainArgs;
@@ -33,6 +34,13 @@ public final class NetworksecurityFunctions {
      * 
      */
     public static Output<GetAddressGroupIamPolicyResult> getAddressGroupIamPolicy(GetAddressGroupIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:networksecurity/getAddressGroupIamPolicy:getAddressGroupIamPolicy", TypeShape.of(GetAddressGroupIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for projectaddressgroup
+     * 
+     */
+    public static Output<GetAddressGroupIamPolicyResult> getAddressGroupIamPolicy(GetAddressGroupIamPolicyArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:networksecurity/getAddressGroupIamPolicy:getAddressGroupIamPolicy", TypeShape.of(GetAddressGroupIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**

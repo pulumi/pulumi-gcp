@@ -71,21 +71,11 @@ type GetActiveFolderResult struct {
 }
 
 func GetActiveFolderOutput(ctx *pulumi.Context, args GetActiveFolderOutputArgs, opts ...pulumi.InvokeOption) GetActiveFolderResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetActiveFolderResultOutput, error) {
 			args := v.(GetActiveFolderArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetActiveFolderResult
-			secret, err := ctx.InvokePackageRaw("gcp:organizations/getActiveFolder:getActiveFolder", args, &rv, "", opts...)
-			if err != nil {
-				return GetActiveFolderResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetActiveFolderResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetActiveFolderResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gcp:organizations/getActiveFolder:getActiveFolder", args, GetActiveFolderResultOutput{}, options).(GetActiveFolderResultOutput), nil
 		}).(GetActiveFolderResultOutput)
 }
 

@@ -64,6 +64,33 @@ namespace Pulumi.Gcp.CloudRun
         /// </summary>
         public static Output<GetLocationsResult> Invoke(GetLocationsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetLocationsResult>("gcp:cloudrun/getLocations:getLocations", args ?? new GetLocationsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get Cloud Run locations available for a project. 
+        /// 
+        /// To get more information about Cloud Run, see:
+        /// 
+        /// * [API documentation](https://cloud.google.com/run/docs/reference/rest/v1/projects.locations)
+        /// * How-to Guides
+        ///     * [Official Documentation](https://cloud.google.com/run/docs/)
+        ///     
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var available = Gcp.CloudRun.GetLocations.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetLocationsResult> Invoke(GetLocationsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetLocationsResult>("gcp:cloudrun/getLocations:getLocations", args ?? new GetLocationsInvokeArgs(), options.WithDefaults());
     }
 
 

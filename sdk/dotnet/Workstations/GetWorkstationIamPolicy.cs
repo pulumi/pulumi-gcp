@@ -16,6 +16,9 @@ namespace Pulumi.Gcp.Workstations
 
         public static Output<GetWorkstationIamPolicyResult> Invoke(GetWorkstationIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetWorkstationIamPolicyResult>("gcp:workstations/getWorkstationIamPolicy:getWorkstationIamPolicy", args ?? new GetWorkstationIamPolicyInvokeArgs(), options.WithDefaults());
+
+        public static Output<GetWorkstationIamPolicyResult> Invoke(GetWorkstationIamPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetWorkstationIamPolicyResult>("gcp:workstations/getWorkstationIamPolicy:getWorkstationIamPolicy", args ?? new GetWorkstationIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

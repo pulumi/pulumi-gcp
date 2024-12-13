@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.vertex.inputs.GetAiEndpointIamPolicyArgs;
 import com.pulumi.gcp.vertex.inputs.GetAiEndpointIamPolicyPlainArgs;
@@ -32,6 +33,9 @@ public final class VertexFunctions {
     public static Output<GetAiEndpointIamPolicyResult> getAiEndpointIamPolicy(GetAiEndpointIamPolicyArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:vertex/getAiEndpointIamPolicy:getAiEndpointIamPolicy", TypeShape.of(GetAiEndpointIamPolicyResult.class), args, Utilities.withVersion(options));
     }
+    public static Output<GetAiEndpointIamPolicyResult> getAiEndpointIamPolicy(GetAiEndpointIamPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:vertex/getAiEndpointIamPolicy:getAiEndpointIamPolicy", TypeShape.of(GetAiEndpointIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
     public static CompletableFuture<GetAiEndpointIamPolicyResult> getAiEndpointIamPolicyPlain(GetAiEndpointIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:vertex/getAiEndpointIamPolicy:getAiEndpointIamPolicy", TypeShape.of(GetAiEndpointIamPolicyResult.class), args, Utilities.withVersion(options));
     }
@@ -44,6 +48,9 @@ public final class VertexFunctions {
     public static Output<GetAiFeaturestoreEntitytypeIamPolicyResult> getAiFeaturestoreEntitytypeIamPolicy(GetAiFeaturestoreEntitytypeIamPolicyArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:vertex/getAiFeaturestoreEntitytypeIamPolicy:getAiFeaturestoreEntitytypeIamPolicy", TypeShape.of(GetAiFeaturestoreEntitytypeIamPolicyResult.class), args, Utilities.withVersion(options));
     }
+    public static Output<GetAiFeaturestoreEntitytypeIamPolicyResult> getAiFeaturestoreEntitytypeIamPolicy(GetAiFeaturestoreEntitytypeIamPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:vertex/getAiFeaturestoreEntitytypeIamPolicy:getAiFeaturestoreEntitytypeIamPolicy", TypeShape.of(GetAiFeaturestoreEntitytypeIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
     public static CompletableFuture<GetAiFeaturestoreEntitytypeIamPolicyResult> getAiFeaturestoreEntitytypeIamPolicyPlain(GetAiFeaturestoreEntitytypeIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:vertex/getAiFeaturestoreEntitytypeIamPolicy:getAiFeaturestoreEntitytypeIamPolicy", TypeShape.of(GetAiFeaturestoreEntitytypeIamPolicyResult.class), args, Utilities.withVersion(options));
     }
@@ -54,6 +61,9 @@ public final class VertexFunctions {
         return getAiFeaturestoreIamPolicyPlain(args, InvokeOptions.Empty);
     }
     public static Output<GetAiFeaturestoreIamPolicyResult> getAiFeaturestoreIamPolicy(GetAiFeaturestoreIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:vertex/getAiFeaturestoreIamPolicy:getAiFeaturestoreIamPolicy", TypeShape.of(GetAiFeaturestoreIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetAiFeaturestoreIamPolicyResult> getAiFeaturestoreIamPolicy(GetAiFeaturestoreIamPolicyArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:vertex/getAiFeaturestoreIamPolicy:getAiFeaturestoreIamPolicy", TypeShape.of(GetAiFeaturestoreIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     public static CompletableFuture<GetAiFeaturestoreIamPolicyResult> getAiFeaturestoreIamPolicyPlain(GetAiFeaturestoreIamPolicyPlainArgs args, InvokeOptions options) {
@@ -78,6 +88,13 @@ public final class VertexFunctions {
      * 
      */
     public static Output<GetAiIndexResult> getAiIndex(GetAiIndexArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:vertex/getAiIndex:getAiIndex", TypeShape.of(GetAiIndexResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * A representation of a collection of database items organized in a way that allows for approximate nearest neighbor (a.k.a ANN) algorithms search.
+     * 
+     */
+    public static Output<GetAiIndexResult> getAiIndex(GetAiIndexArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:vertex/getAiIndex:getAiIndex", TypeShape.of(GetAiIndexResult.class), args, Utilities.withVersion(options));
     }
     /**

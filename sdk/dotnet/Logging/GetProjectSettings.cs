@@ -72,6 +72,37 @@ namespace Pulumi.Gcp.Logging
         /// </summary>
         public static Output<GetProjectSettingsResult> Invoke(GetProjectSettingsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectSettingsResult>("gcp:logging/getProjectSettings:getProjectSettings", args ?? new GetProjectSettingsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Describes the settings associated with a project.
+        /// 
+        /// To get more information about LoggingProjectSettings, see:
+        /// 
+        /// * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects/getSettings)
+        /// * [Configure default settings for organizations and folders](https://cloud.google.com/logging/docs/default-settings).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### Logging Project Settings Basic
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var settings = Gcp.Logging.GetProjectSettings.Invoke(new()
+        ///     {
+        ///         Project = "my-project-name",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetProjectSettingsResult> Invoke(GetProjectSettingsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetProjectSettingsResult>("gcp:logging/getProjectSettings:getProjectSettings", args ?? new GetProjectSettingsInvokeArgs(), options.WithDefaults());
     }
 
 

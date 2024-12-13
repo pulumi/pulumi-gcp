@@ -66,6 +66,34 @@ namespace Pulumi.Gcp.VMwareEngine
         /// </summary>
         public static Output<GetExternalAddressResult> Invoke(GetExternalAddressInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetExternalAddressResult>("gcp:vmwareengine/getExternalAddress:getExternalAddress", args ?? new GetExternalAddressInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get details about a external address resource.
+        /// 
+        /// To get more information about external address, see:
+        /// * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds.externalAddresses)
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myExternalAddress = Gcp.VMwareEngine.GetExternalAddress.Invoke(new()
+        ///     {
+        ///         Name = "my-external-address",
+        ///         Parent = "project/my-project/locations/us-west1-a/privateClouds/my-cloud",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetExternalAddressResult> Invoke(GetExternalAddressInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetExternalAddressResult>("gcp:vmwareengine/getExternalAddress:getExternalAddress", args ?? new GetExternalAddressInvokeArgs(), options.WithDefaults());
     }
 
 

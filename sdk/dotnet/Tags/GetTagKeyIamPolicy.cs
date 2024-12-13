@@ -60,6 +60,31 @@ namespace Pulumi.Gcp.Tags
         /// </summary>
         public static Output<GetTagKeyIamPolicyResult> Invoke(GetTagKeyIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTagKeyIamPolicyResult>("gcp:tags/getTagKeyIamPolicy:getTagKeyIamPolicy", args ?? new GetTagKeyIamPolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves the current IAM policy data for tagkey
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.Tags.GetTagKeyIamPolicy.Invoke(new()
+        ///     {
+        ///         TagKey = key.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetTagKeyIamPolicyResult> Invoke(GetTagKeyIamPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetTagKeyIamPolicyResult>("gcp:tags/getTagKeyIamPolicy:getTagKeyIamPolicy", args ?? new GetTagKeyIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

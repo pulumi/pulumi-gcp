@@ -62,6 +62,32 @@ namespace Pulumi.Gcp.Apphub
         /// </summary>
         public static Output<GetDiscoveredWorkloadResult> Invoke(GetDiscoveredWorkloadInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDiscoveredWorkloadResult>("gcp:apphub/getDiscoveredWorkload:getDiscoveredWorkload", args ?? new GetDiscoveredWorkloadInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get information about a discovered workload from its uri.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_workload = Gcp.Apphub.GetDiscoveredWorkload.Invoke(new()
+        ///     {
+        ///         Location = "us-central1",
+        ///         WorkloadUri = "my-workload-uri",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDiscoveredWorkloadResult> Invoke(GetDiscoveredWorkloadInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDiscoveredWorkloadResult>("gcp:apphub/getDiscoveredWorkload:getDiscoveredWorkload", args ?? new GetDiscoveredWorkloadInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -60,6 +60,31 @@ namespace Pulumi.Gcp.AccessContextManager
         /// </summary>
         public static Output<GetAccessPolicyIamPolicyResult> Invoke(GetAccessPolicyIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccessPolicyIamPolicyResult>("gcp:accesscontextmanager/getAccessPolicyIamPolicy:getAccessPolicyIamPolicy", args ?? new GetAccessPolicyIamPolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves the current IAM policy data for accesspolicy
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.AccessContextManager.GetAccessPolicyIamPolicy.Invoke(new()
+        ///     {
+        ///         Name = access_policy.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAccessPolicyIamPolicyResult> Invoke(GetAccessPolicyIamPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAccessPolicyIamPolicyResult>("gcp:accesscontextmanager/getAccessPolicyIamPolicy:getAccessPolicyIamPolicy", args ?? new GetAccessPolicyIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

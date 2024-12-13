@@ -72,21 +72,11 @@ type LookupTableIamPolicyResult struct {
 }
 
 func LookupTableIamPolicyOutput(ctx *pulumi.Context, args LookupTableIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupTableIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupTableIamPolicyResultOutput, error) {
 			args := v.(LookupTableIamPolicyArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupTableIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:bigtable/getTableIamPolicy:getTableIamPolicy", args, &rv, "", opts...)
-			if err != nil {
-				return LookupTableIamPolicyResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupTableIamPolicyResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupTableIamPolicyResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gcp:bigtable/getTableIamPolicy:getTableIamPolicy", args, LookupTableIamPolicyResultOutput{}, options).(LookupTableIamPolicyResultOutput), nil
 		}).(LookupTableIamPolicyResultOutput)
 }
 

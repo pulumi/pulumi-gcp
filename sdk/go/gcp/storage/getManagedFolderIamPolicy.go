@@ -38,21 +38,11 @@ type LookupManagedFolderIamPolicyResult struct {
 }
 
 func LookupManagedFolderIamPolicyOutput(ctx *pulumi.Context, args LookupManagedFolderIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupManagedFolderIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupManagedFolderIamPolicyResultOutput, error) {
 			args := v.(LookupManagedFolderIamPolicyArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupManagedFolderIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:storage/getManagedFolderIamPolicy:getManagedFolderIamPolicy", args, &rv, "", opts...)
-			if err != nil {
-				return LookupManagedFolderIamPolicyResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupManagedFolderIamPolicyResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupManagedFolderIamPolicyResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gcp:storage/getManagedFolderIamPolicy:getManagedFolderIamPolicy", args, LookupManagedFolderIamPolicyResultOutput{}, options).(LookupManagedFolderIamPolicyResultOutput), nil
 		}).(LookupManagedFolderIamPolicyResultOutput)
 }
 

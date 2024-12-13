@@ -66,6 +66,34 @@ namespace Pulumi.Gcp.ServiceAccount
         /// </summary>
         public static Output<GetSResult> Invoke(GetSInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSResult>("gcp:serviceaccount/getS:getS", args ?? new GetSInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Gets a list of all service accounts from a project.
+        /// See [the official documentation](https://cloud.google.com/iam/docs/service-account-overview)
+        /// and [API](https://cloud.google.com/iam/docs/reference/rest/v1/projects.serviceAccounts).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Example service accounts.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var example = Gcp.ServiceAccount.GetS.Invoke(new()
+        ///     {
+        ///         Project = "example-project",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetSResult> Invoke(GetSInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetSResult>("gcp:serviceaccount/getS:getS", args ?? new GetSInvokeArgs(), options.WithDefaults());
     }
 
 
