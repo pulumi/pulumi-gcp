@@ -72,21 +72,11 @@ type GetWebTypeAppEngineIamPolicyResult struct {
 }
 
 func GetWebTypeAppEngineIamPolicyOutput(ctx *pulumi.Context, args GetWebTypeAppEngineIamPolicyOutputArgs, opts ...pulumi.InvokeOption) GetWebTypeAppEngineIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetWebTypeAppEngineIamPolicyResultOutput, error) {
 			args := v.(GetWebTypeAppEngineIamPolicyArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetWebTypeAppEngineIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:iap/getWebTypeAppEngineIamPolicy:getWebTypeAppEngineIamPolicy", args, &rv, "", opts...)
-			if err != nil {
-				return GetWebTypeAppEngineIamPolicyResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetWebTypeAppEngineIamPolicyResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetWebTypeAppEngineIamPolicyResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gcp:iap/getWebTypeAppEngineIamPolicy:getWebTypeAppEngineIamPolicy", args, GetWebTypeAppEngineIamPolicyResultOutput{}, options).(GetWebTypeAppEngineIamPolicyResultOutput), nil
 		}).(GetWebTypeAppEngineIamPolicyResultOutput)
 }
 

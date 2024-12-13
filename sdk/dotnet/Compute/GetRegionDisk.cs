@@ -26,6 +26,14 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public static Output<GetRegionDiskResult> Invoke(GetRegionDiskInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRegionDiskResult>("gcp:compute/getRegionDisk:getRegionDisk", args ?? new GetRegionDiskInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get information about a Google Compute Regional Persistent disks.
+        /// 
+        /// [the official documentation](https://cloud.google.com/compute/docs/disks) and its [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionDisks).
+        /// </summary>
+        public static Output<GetRegionDiskResult> Invoke(GetRegionDiskInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRegionDiskResult>("gcp:compute/getRegionDisk:getRegionDisk", args ?? new GetRegionDiskInvokeArgs(), options.WithDefaults());
     }
 
 

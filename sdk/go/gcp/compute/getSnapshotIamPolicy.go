@@ -72,21 +72,11 @@ type LookupSnapshotIamPolicyResult struct {
 }
 
 func LookupSnapshotIamPolicyOutput(ctx *pulumi.Context, args LookupSnapshotIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupSnapshotIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupSnapshotIamPolicyResultOutput, error) {
 			args := v.(LookupSnapshotIamPolicyArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupSnapshotIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:compute/getSnapshotIamPolicy:getSnapshotIamPolicy", args, &rv, "", opts...)
-			if err != nil {
-				return LookupSnapshotIamPolicyResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupSnapshotIamPolicyResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupSnapshotIamPolicyResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gcp:compute/getSnapshotIamPolicy:getSnapshotIamPolicy", args, LookupSnapshotIamPolicyResultOutput{}, options).(LookupSnapshotIamPolicyResultOutput), nil
 		}).(LookupSnapshotIamPolicyResultOutput)
 }
 

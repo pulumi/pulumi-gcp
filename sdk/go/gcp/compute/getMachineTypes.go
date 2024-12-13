@@ -52,21 +52,11 @@ type GetMachineTypesResult struct {
 }
 
 func GetMachineTypesOutput(ctx *pulumi.Context, args GetMachineTypesOutputArgs, opts ...pulumi.InvokeOption) GetMachineTypesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetMachineTypesResultOutput, error) {
 			args := v.(GetMachineTypesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetMachineTypesResult
-			secret, err := ctx.InvokePackageRaw("gcp:compute/getMachineTypes:getMachineTypes", args, &rv, "", opts...)
-			if err != nil {
-				return GetMachineTypesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetMachineTypesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetMachineTypesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gcp:compute/getMachineTypes:getMachineTypes", args, GetMachineTypesResultOutput{}, options).(GetMachineTypesResultOutput), nil
 		}).(GetMachineTypesResultOutput)
 }
 

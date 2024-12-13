@@ -42,21 +42,11 @@ type LookupPeeredDnsDomainResult struct {
 }
 
 func LookupPeeredDnsDomainOutput(ctx *pulumi.Context, args LookupPeeredDnsDomainOutputArgs, opts ...pulumi.InvokeOption) LookupPeeredDnsDomainResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupPeeredDnsDomainResultOutput, error) {
 			args := v.(LookupPeeredDnsDomainArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupPeeredDnsDomainResult
-			secret, err := ctx.InvokePackageRaw("gcp:servicenetworking/getPeeredDnsDomain:getPeeredDnsDomain", args, &rv, "", opts...)
-			if err != nil {
-				return LookupPeeredDnsDomainResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupPeeredDnsDomainResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupPeeredDnsDomainResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gcp:servicenetworking/getPeeredDnsDomain:getPeeredDnsDomain", args, LookupPeeredDnsDomainResultOutput{}, options).(LookupPeeredDnsDomainResultOutput), nil
 		}).(LookupPeeredDnsDomainResultOutput)
 }
 

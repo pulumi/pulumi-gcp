@@ -16,6 +16,9 @@ namespace Pulumi.Gcp.CloudIdentity
 
         public static Output<GetGroupTransitiveMembershipsResult> Invoke(GetGroupTransitiveMembershipsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetGroupTransitiveMembershipsResult>("gcp:cloudidentity/getGroupTransitiveMemberships:getGroupTransitiveMemberships", args ?? new GetGroupTransitiveMembershipsInvokeArgs(), options.WithDefaults());
+
+        public static Output<GetGroupTransitiveMembershipsResult> Invoke(GetGroupTransitiveMembershipsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetGroupTransitiveMembershipsResult>("gcp:cloudidentity/getGroupTransitiveMemberships:getGroupTransitiveMemberships", args ?? new GetGroupTransitiveMembershipsInvokeArgs(), options.WithDefaults());
     }
 
 

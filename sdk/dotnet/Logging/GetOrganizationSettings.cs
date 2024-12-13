@@ -72,6 +72,37 @@ namespace Pulumi.Gcp.Logging
         /// </summary>
         public static Output<GetOrganizationSettingsResult> Invoke(GetOrganizationSettingsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationSettingsResult>("gcp:logging/getOrganizationSettings:getOrganizationSettings", args ?? new GetOrganizationSettingsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Describes the settings associated with a organization.
+        /// 
+        /// To get more information about LoggingOrganizationSettings, see:
+        /// 
+        /// * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/organizations/getSettings)
+        /// * [Configure default settings for organizations and folders](https://cloud.google.com/logging/docs/default-settings).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### Logging Organization Settings Basic
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var settings = Gcp.Logging.GetOrganizationSettings.Invoke(new()
+        ///     {
+        ///         Organization = "my-organization-name",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetOrganizationSettingsResult> Invoke(GetOrganizationSettingsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationSettingsResult>("gcp:logging/getOrganizationSettings:getOrganizationSettings", args ?? new GetOrganizationSettingsInvokeArgs(), options.WithDefaults());
     }
 
 

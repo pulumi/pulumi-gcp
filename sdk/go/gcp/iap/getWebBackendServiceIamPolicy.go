@@ -72,21 +72,11 @@ type LookupWebBackendServiceIamPolicyResult struct {
 }
 
 func LookupWebBackendServiceIamPolicyOutput(ctx *pulumi.Context, args LookupWebBackendServiceIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupWebBackendServiceIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupWebBackendServiceIamPolicyResultOutput, error) {
 			args := v.(LookupWebBackendServiceIamPolicyArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupWebBackendServiceIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:iap/getWebBackendServiceIamPolicy:getWebBackendServiceIamPolicy", args, &rv, "", opts...)
-			if err != nil {
-				return LookupWebBackendServiceIamPolicyResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupWebBackendServiceIamPolicyResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupWebBackendServiceIamPolicyResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gcp:iap/getWebBackendServiceIamPolicy:getWebBackendServiceIamPolicy", args, LookupWebBackendServiceIamPolicyResultOutput{}, options).(LookupWebBackendServiceIamPolicyResultOutput), nil
 		}).(LookupWebBackendServiceIamPolicyResultOutput)
 }
 

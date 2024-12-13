@@ -88,6 +88,45 @@ namespace Pulumi.Gcp.Kms
         /// </summary>
         public static Output<GetCryptoKeyLatestVersionResult> Invoke(GetCryptoKeyLatestVersionInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCryptoKeyLatestVersionResult>("gcp:kms/getCryptoKeyLatestVersion:getCryptoKeyLatestVersion", args ?? new GetCryptoKeyLatestVersionInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Provides access to the latest Google Cloud Platform KMS CryptoKeyVersion in a CryptoKey. For more information see
+        /// [the official documentation](https://cloud.google.com/kms/docs/object-hierarchy#key_version)
+        /// and
+        /// [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myKeyRing = Gcp.Kms.GetKMSKeyRing.Invoke(new()
+        ///     {
+        ///         Name = "my-key-ring",
+        ///         Location = "us-central1",
+        ///     });
+        /// 
+        ///     var myCryptoKey = Gcp.Kms.GetKMSCryptoKey.Invoke(new()
+        ///     {
+        ///         Name = "my-crypto-key",
+        ///         KeyRing = myKeyRing.Apply(getKMSKeyRingResult =&gt; getKMSKeyRingResult.Id),
+        ///     });
+        /// 
+        ///     var myCryptoKeyLatestVersion = Gcp.Kms.GetCryptoKeyLatestVersion.Invoke(new()
+        ///     {
+        ///         CryptoKey = myKey.Id,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetCryptoKeyLatestVersionResult> Invoke(GetCryptoKeyLatestVersionInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetCryptoKeyLatestVersionResult>("gcp:kms/getCryptoKeyLatestVersion:getCryptoKeyLatestVersion", args ?? new GetCryptoKeyLatestVersionInvokeArgs(), options.WithDefaults());
     }
 
 

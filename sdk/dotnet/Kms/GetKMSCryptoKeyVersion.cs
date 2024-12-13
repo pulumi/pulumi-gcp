@@ -92,6 +92,47 @@ namespace Pulumi.Gcp.Kms
         /// </summary>
         public static Output<GetKMSCryptoKeyVersionResult> Invoke(GetKMSCryptoKeyVersionInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKMSCryptoKeyVersionResult>("gcp:kms/getKMSCryptoKeyVersion:getKMSCryptoKeyVersion", args ?? new GetKMSCryptoKeyVersionInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Provides access to a Google Cloud Platform KMS CryptoKeyVersion. For more information see
+        /// [the official documentation](https://cloud.google.com/kms/docs/object-hierarchy#key_version)
+        /// and
+        /// [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys.cryptoKeyVersions).
+        /// 
+        /// A CryptoKeyVersion represents an individual cryptographic key, and the associated key material.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myKeyRing = Gcp.Kms.GetKMSKeyRing.Invoke(new()
+        ///     {
+        ///         Name = "my-key-ring",
+        ///         Location = "us-central1",
+        ///     });
+        /// 
+        ///     var myCryptoKey = Gcp.Kms.GetKMSCryptoKey.Invoke(new()
+        ///     {
+        ///         Name = "my-crypto-key",
+        ///         KeyRing = myKeyRing.Apply(getKMSKeyRingResult =&gt; getKMSKeyRingResult.Id),
+        ///     });
+        /// 
+        ///     var myCryptoKeyVersion = Gcp.Kms.GetKMSCryptoKeyVersion.Invoke(new()
+        ///     {
+        ///         CryptoKey = myKey.Id,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetKMSCryptoKeyVersionResult> Invoke(GetKMSCryptoKeyVersionInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetKMSCryptoKeyVersionResult>("gcp:kms/getKMSCryptoKeyVersion:getKMSCryptoKeyVersion", args ?? new GetKMSCryptoKeyVersionInvokeArgs(), options.WithDefaults());
     }
 
 

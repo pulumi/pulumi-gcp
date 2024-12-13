@@ -124,6 +124,63 @@ namespace Pulumi.Gcp.ArtifactRegistry
         /// </summary>
         public static Output<GetLocationsResult> Invoke(GetLocationsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetLocationsResult>("gcp:artifactregistry/getLocations:getLocations", args ?? new GetLocationsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get Artifact Registry locations available for a project. 
+        /// 
+        /// To get more information about Artifact Registry, see:
+        /// 
+        /// * [API documentation](https://cloud.google.com/artifact-registry/docs/reference/rest/v1/projects.locations/list)
+        /// * How-to Guides
+        ///     * [Official Documentation](https://cloud.google.com/artifact-registry/docs/overview)
+        ///     
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var available = Gcp.ArtifactRegistry.GetLocations.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// 
+        /// ### Multi-Regional Artifact Registry Deployment
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var available = Gcp.ArtifactRegistry.GetLocations.Invoke();
+        /// 
+        ///     var repoOne = new Gcp.ArtifactRegistry.Repository("repo_one", new()
+        ///     {
+        ///         Location = available.Apply(getLocationsResult =&gt; getLocationsResult.Locations[0]),
+        ///         RepositoryId = "repo-one",
+        ///         Format = "apt",
+        ///     });
+        /// 
+        ///     var repoTwo = new Gcp.ArtifactRegistry.Repository("repo_two", new()
+        ///     {
+        ///         Location = available.Apply(getLocationsResult =&gt; getLocationsResult.Locations[1]),
+        ///         RepositoryId = "repo-two",
+        ///         Format = "apt",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetLocationsResult> Invoke(GetLocationsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetLocationsResult>("gcp:artifactregistry/getLocations:getLocations", args ?? new GetLocationsInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -66,6 +66,34 @@ namespace Pulumi.Gcp.SourceRepo
         /// </summary>
         public static Output<GetRepositoryResult> Invoke(GetRepositoryInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRepositoryResult>("gcp:sourcerepo/getRepository:getRepository", args ?? new GetRepositoryInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get infomation about an existing Google Cloud Source Repository.
+        /// For more information see [the official documentation](https://cloud.google.com/source-repositories)
+        /// and
+        /// [API](https://cloud.google.com/source-repositories/docs/reference/rest/v1/projects.repos).
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_repo = Gcp.SourceRepo.GetRepository.Invoke(new()
+        ///     {
+        ///         Name = "my-repository",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetRepositoryResult> Invoke(GetRepositoryInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRepositoryResult>("gcp:sourcerepo/getRepository:getRepository", args ?? new GetRepositoryInvokeArgs(), options.WithDefaults());
     }
 
 

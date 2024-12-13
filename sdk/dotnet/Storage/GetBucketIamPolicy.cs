@@ -60,6 +60,31 @@ namespace Pulumi.Gcp.Storage
         /// </summary>
         public static Output<GetBucketIamPolicyResult> Invoke(GetBucketIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetBucketIamPolicyResult>("gcp:storage/getBucketIamPolicy:getBucketIamPolicy", args ?? new GetBucketIamPolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves the current IAM policy data for bucket
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.Storage.GetBucketIamPolicy.Invoke(new()
+        ///     {
+        ///         Bucket = @default.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetBucketIamPolicyResult> Invoke(GetBucketIamPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetBucketIamPolicyResult>("gcp:storage/getBucketIamPolicy:getBucketIamPolicy", args ?? new GetBucketIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

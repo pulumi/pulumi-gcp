@@ -135,21 +135,11 @@ type GetAppEngineServiceResult struct {
 }
 
 func GetAppEngineServiceOutput(ctx *pulumi.Context, args GetAppEngineServiceOutputArgs, opts ...pulumi.InvokeOption) GetAppEngineServiceResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetAppEngineServiceResultOutput, error) {
 			args := v.(GetAppEngineServiceArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetAppEngineServiceResult
-			secret, err := ctx.InvokePackageRaw("gcp:monitoring/getAppEngineService:getAppEngineService", args, &rv, "", opts...)
-			if err != nil {
-				return GetAppEngineServiceResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetAppEngineServiceResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetAppEngineServiceResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gcp:monitoring/getAppEngineService:getAppEngineService", args, GetAppEngineServiceResultOutput{}, options).(GetAppEngineServiceResultOutput), nil
 		}).(GetAppEngineServiceResultOutput)
 }
 

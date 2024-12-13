@@ -62,6 +62,32 @@ namespace Pulumi.Gcp.Apigee
         /// </summary>
         public static Output<GetEnvironmentIamPolicyResult> Invoke(GetEnvironmentIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEnvironmentIamPolicyResult>("gcp:apigee/getEnvironmentIamPolicy:getEnvironmentIamPolicy", args ?? new GetEnvironmentIamPolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves the current IAM policy data for environment
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.Apigee.GetEnvironmentIamPolicy.Invoke(new()
+        ///     {
+        ///         OrgId = apigeeEnvironment.OrgId,
+        ///         EnvId = apigeeEnvironment.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetEnvironmentIamPolicyResult> Invoke(GetEnvironmentIamPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetEnvironmentIamPolicyResult>("gcp:apigee/getEnvironmentIamPolicy:getEnvironmentIamPolicy", args ?? new GetEnvironmentIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

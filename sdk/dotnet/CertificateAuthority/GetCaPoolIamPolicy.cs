@@ -60,6 +60,31 @@ namespace Pulumi.Gcp.CertificateAuthority
         /// </summary>
         public static Output<GetCaPoolIamPolicyResult> Invoke(GetCaPoolIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCaPoolIamPolicyResult>("gcp:certificateauthority/getCaPoolIamPolicy:getCaPoolIamPolicy", args ?? new GetCaPoolIamPolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves the current IAM policy data for capool
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.CertificateAuthority.GetCaPoolIamPolicy.Invoke(new()
+        ///     {
+        ///         CaPool = @default.Id,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetCaPoolIamPolicyResult> Invoke(GetCaPoolIamPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetCaPoolIamPolicyResult>("gcp:certificateauthority/getCaPoolIamPolicy:getCaPoolIamPolicy", args ?? new GetCaPoolIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

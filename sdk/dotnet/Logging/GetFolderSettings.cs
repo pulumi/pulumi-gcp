@@ -72,6 +72,37 @@ namespace Pulumi.Gcp.Logging
         /// </summary>
         public static Output<GetFolderSettingsResult> Invoke(GetFolderSettingsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFolderSettingsResult>("gcp:logging/getFolderSettings:getFolderSettings", args ?? new GetFolderSettingsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Describes the settings associated with a folder.
+        /// 
+        /// To get more information about LoggingFolderSettings, see:
+        /// 
+        /// * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/folders/getSettings)
+        /// * [Configure default settings for organizations and folders](https://cloud.google.com/logging/docs/default-settings).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### Logging Folder Settings Basic
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var settings = Gcp.Logging.GetFolderSettings.Invoke(new()
+        ///     {
+        ///         Folder = "my-folder-name",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetFolderSettingsResult> Invoke(GetFolderSettingsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetFolderSettingsResult>("gcp:logging/getFolderSettings:getFolderSettings", args ?? new GetFolderSettingsInvokeArgs(), options.WithDefaults());
     }
 
 

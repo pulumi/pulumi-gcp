@@ -70,6 +70,36 @@ namespace Pulumi.Gcp.Logging
         /// </summary>
         public static Output<GetSinkResult> Invoke(GetSinkInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSinkResult>("gcp:logging/getSink:getSink", args ?? new GetSinkInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get a project, folder, organization or billing account logging sink details.
+        /// To get more information about Service, see:
+        /// 
+        /// [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/sinks)
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### Retrieve Project Logging Sink Basic
+        /// 
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var project_sink = Gcp.Logging.GetSink.Invoke(new()
+        ///     {
+        ///         Id = "projects/0123456789/sinks/my-sink-name",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetSinkResult> Invoke(GetSinkInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetSinkResult>("gcp:logging/getSink:getSink", args ?? new GetSinkInvokeArgs(), options.WithDefaults());
     }
 
 

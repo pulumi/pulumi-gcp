@@ -74,6 +74,38 @@ namespace Pulumi.Gcp.PrivilegedAccessManager
         /// </summary>
         public static Output<GetEntitlementResult> Invoke(GetEntitlementInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEntitlementResult>("gcp:privilegedaccessmanager/getEntitlement:getEntitlement", args ?? new GetEntitlementInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get information about a Google Cloud Privileged Access Manager Entitlement.
+        /// 
+        /// To get more information about Privileged Access Manager, see:
+        /// 
+        /// * [API Documentation](https://cloud.google.com/iam/docs/reference/pam/rest)
+        /// * How-to guides
+        ///   * [Official documentation](https://cloud.google.com/iam/docs/pam-overview)
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_entitlement = Gcp.PrivilegedAccessManager.GetEntitlement.Invoke(new()
+        ///     {
+        ///         Parent = "projects/my-project",
+        ///         Location = "global",
+        ///         EntitlementId = "my-entitlement",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetEntitlementResult> Invoke(GetEntitlementInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetEntitlementResult>("gcp:privilegedaccessmanager/getEntitlement:getEntitlement", args ?? new GetEntitlementInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -50,21 +50,11 @@ type LookupMembershipBindingResult struct {
 }
 
 func LookupMembershipBindingOutput(ctx *pulumi.Context, args LookupMembershipBindingOutputArgs, opts ...pulumi.InvokeOption) LookupMembershipBindingResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupMembershipBindingResultOutput, error) {
 			args := v.(LookupMembershipBindingArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupMembershipBindingResult
-			secret, err := ctx.InvokePackageRaw("gcp:gkehub/getMembershipBinding:getMembershipBinding", args, &rv, "", opts...)
-			if err != nil {
-				return LookupMembershipBindingResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupMembershipBindingResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupMembershipBindingResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gcp:gkehub/getMembershipBinding:getMembershipBinding", args, LookupMembershipBindingResultOutput{}, options).(LookupMembershipBindingResultOutput), nil
 		}).(LookupMembershipBindingResultOutput)
 }
 

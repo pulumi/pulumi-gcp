@@ -226,6 +226,114 @@ namespace Pulumi.Gcp.Kms
         /// </summary>
         public static Output<GetKMSSecretCiphertextResult> Invoke(GetKMSSecretCiphertextInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKMSSecretCiphertextResult>("gcp:kms/getKMSSecretCiphertext:getKMSSecretCiphertext", args ?? new GetKMSSecretCiphertextInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// !&gt; **Warning:** This data source is deprecated. Use the `gcp.kms.SecretCiphertext` **resource** instead.
+        /// 
+        /// This data source allows you to encrypt data with Google Cloud KMS and use the
+        /// ciphertext within your resource definitions.
+        /// 
+        /// For more information see
+        /// [the official documentation](https://cloud.google.com/kms/docs/encrypt-decrypt).
+        /// 
+        /// &gt; **NOTE:** Using this data source will allow you to conceal secret data within your
+        /// resource definitions, but it does not take care of protecting that data in the
+        /// logging output, plan output, or state output.  Please take care to secure your secret
+        /// data outside of resource definitions.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// First, create a KMS KeyRing and CryptoKey using the resource definitions:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myKeyRing = new Gcp.Kms.KeyRing("my_key_ring", new()
+        ///     {
+        ///         Project = "my-project",
+        ///         Name = "my-key-ring",
+        ///         Location = "us-central1",
+        ///     });
+        /// 
+        ///     var myCryptoKey = new Gcp.Kms.CryptoKey("my_crypto_key", new()
+        ///     {
+        ///         Name = "my-crypto-key",
+        ///         KeyRing = myKeyRing.Id,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// Next, encrypt some sensitive information and use the encrypted data in your resource definitions:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myPassword = Gcp.Kms.GetKMSSecretCiphertext.Invoke(new()
+        ///     {
+        ///         CryptoKey = myCryptoKey.Id,
+        ///         Plaintext = "my-secret-password",
+        ///     });
+        /// 
+        ///     var instance = new Gcp.Compute.Instance("instance", new()
+        ///     {
+        ///         NetworkInterfaces = new[]
+        ///         {
+        ///             new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
+        ///             {
+        ///                 AccessConfigs = new[]
+        ///                 {
+        ///                     null,
+        ///                 },
+        ///                 Network = "default",
+        ///             },
+        ///         },
+        ///         Name = "test",
+        ///         MachineType = "e2-medium",
+        ///         Zone = "us-central1-a",
+        ///         BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
+        ///         {
+        ///             InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
+        ///             {
+        ///                 Image = "debian-cloud/debian-11",
+        ///             },
+        ///         },
+        ///         Metadata = 
+        ///         {
+        ///             { "password", myPassword.Apply(getKMSSecretCiphertextResult =&gt; getKMSSecretCiphertextResult.Ciphertext) },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// The resulting instance can then access the encrypted password from its metadata
+        /// and decrypt it, e.g. using the [Cloud SDK](https://cloud.google.com/sdk/gcloud/reference/kms/decrypt)):
+        /// 
+        /// ```bash
+        /// $ curl -H "Metadata-Flavor: Google" http://metadata.google.internal/computeMetadata/v1/instance/attributes/password \
+        /// &gt; | base64 -d | gcloud kms decrypt \
+        /// &gt; --project my-project \
+        /// &gt; --location us-central1 \
+        /// &gt; --keyring my-key-ring \
+        /// &gt; --key my-crypto-key \
+        /// &gt; --plaintext-file - \
+        /// &gt; --ciphertext-file - \
+        /// my-secret-password
+        /// ```
+        /// </summary>
+        public static Output<GetKMSSecretCiphertextResult> Invoke(GetKMSSecretCiphertextInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetKMSSecretCiphertextResult>("gcp:kms/getKMSSecretCiphertext:getKMSSecretCiphertext", args ?? new GetKMSSecretCiphertextInvokeArgs(), options.WithDefaults());
     }
 
 

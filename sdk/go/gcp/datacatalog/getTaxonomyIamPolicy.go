@@ -73,21 +73,11 @@ type LookupTaxonomyIamPolicyResult struct {
 }
 
 func LookupTaxonomyIamPolicyOutput(ctx *pulumi.Context, args LookupTaxonomyIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupTaxonomyIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupTaxonomyIamPolicyResultOutput, error) {
 			args := v.(LookupTaxonomyIamPolicyArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupTaxonomyIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:datacatalog/getTaxonomyIamPolicy:getTaxonomyIamPolicy", args, &rv, "", opts...)
-			if err != nil {
-				return LookupTaxonomyIamPolicyResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupTaxonomyIamPolicyResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupTaxonomyIamPolicyResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gcp:datacatalog/getTaxonomyIamPolicy:getTaxonomyIamPolicy", args, LookupTaxonomyIamPolicyResultOutput{}, options).(LookupTaxonomyIamPolicyResultOutput), nil
 		}).(LookupTaxonomyIamPolicyResultOutput)
 }
 

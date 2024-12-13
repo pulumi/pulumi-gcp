@@ -22,6 +22,12 @@ namespace Pulumi.Gcp.Vertex
         /// </summary>
         public static Output<GetAiIndexResult> Invoke(GetAiIndexInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAiIndexResult>("gcp:vertex/getAiIndex:getAiIndex", args ?? new GetAiIndexInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// A representation of a collection of database items organized in a way that allows for approximate nearest neighbor (a.k.a ANN) algorithms search.
+        /// </summary>
+        public static Output<GetAiIndexResult> Invoke(GetAiIndexInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAiIndexResult>("gcp:vertex/getAiIndex:getAiIndex", args ?? new GetAiIndexInvokeArgs(), options.WithDefaults());
     }
 
 

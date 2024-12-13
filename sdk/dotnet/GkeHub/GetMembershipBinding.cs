@@ -16,6 +16,9 @@ namespace Pulumi.Gcp.GkeHub
 
         public static Output<GetMembershipBindingResult> Invoke(GetMembershipBindingInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMembershipBindingResult>("gcp:gkehub/getMembershipBinding:getMembershipBinding", args ?? new GetMembershipBindingInvokeArgs(), options.WithDefaults());
+
+        public static Output<GetMembershipBindingResult> Invoke(GetMembershipBindingInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetMembershipBindingResult>("gcp:gkehub/getMembershipBinding:getMembershipBinding", args ?? new GetMembershipBindingInvokeArgs(), options.WithDefaults());
     }
 
 

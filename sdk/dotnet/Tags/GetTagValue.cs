@@ -60,6 +60,31 @@ namespace Pulumi.Gcp.Tags
         /// </summary>
         public static Output<GetTagValueResult> Invoke(GetTagValueInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTagValueResult>("gcp:tags/getTagValue:getTagValue", args ?? new GetTagValueInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get a tag value by `parent` key and `short_name`.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var environmentProdTagValue = Gcp.Tags.GetTagValue.Invoke(new()
+        ///     {
+        ///         Parent = "tagKeys/56789",
+        ///         ShortName = "production",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetTagValueResult> Invoke(GetTagValueInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetTagValueResult>("gcp:tags/getTagValue:getTagValue", args ?? new GetTagValueInvokeArgs(), options.WithDefaults());
     }
 
 

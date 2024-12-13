@@ -62,6 +62,32 @@ namespace Pulumi.Gcp.SecretManager
         /// </summary>
         public static Output<GetSecretIamPolicyResult> Invoke(GetSecretIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSecretIamPolicyResult>("gcp:secretmanager/getSecretIamPolicy:getSecretIamPolicy", args ?? new GetSecretIamPolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves the current IAM policy data for secret
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.SecretManager.GetSecretIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = secret_basic.Project,
+        ///         SecretId = secret_basic.SecretId,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetSecretIamPolicyResult> Invoke(GetSecretIamPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetSecretIamPolicyResult>("gcp:secretmanager/getSecretIamPolicy:getSecretIamPolicy", args ?? new GetSecretIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

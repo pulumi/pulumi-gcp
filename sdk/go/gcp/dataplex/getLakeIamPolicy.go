@@ -75,21 +75,11 @@ type LookupLakeIamPolicyResult struct {
 }
 
 func LookupLakeIamPolicyOutput(ctx *pulumi.Context, args LookupLakeIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupLakeIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupLakeIamPolicyResultOutput, error) {
 			args := v.(LookupLakeIamPolicyArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupLakeIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:dataplex/getLakeIamPolicy:getLakeIamPolicy", args, &rv, "", opts...)
-			if err != nil {
-				return LookupLakeIamPolicyResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupLakeIamPolicyResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupLakeIamPolicyResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gcp:dataplex/getLakeIamPolicy:getLakeIamPolicy", args, LookupLakeIamPolicyResultOutput{}, options).(LookupLakeIamPolicyResultOutput), nil
 		}).(LookupLakeIamPolicyResultOutput)
 }
 

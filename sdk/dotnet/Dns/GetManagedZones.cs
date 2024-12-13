@@ -62,6 +62,32 @@ namespace Pulumi.Gcp.Dns
         /// </summary>
         public static Output<GetManagedZonesResult> Invoke(GetManagedZonesInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetManagedZonesResult>("gcp:dns/getManagedZones:getManagedZones", args ?? new GetManagedZonesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Provides access to a list of zones within Google Cloud DNS.
+        /// For more information see
+        /// [the official documentation](https://cloud.google.com/dns/zones/)
+        /// and
+        /// [API](https://cloud.google.com/dns/api/v1/managedZones).
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var zones = Gcp.Dns.GetManagedZones.Invoke(new()
+        ///     {
+        ///         Project = "my-project-id",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetManagedZonesResult> Invoke(GetManagedZonesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetManagedZonesResult>("gcp:dns/getManagedZones:getManagedZones", args ?? new GetManagedZonesInvokeArgs(), options.WithDefaults());
     }
 
 

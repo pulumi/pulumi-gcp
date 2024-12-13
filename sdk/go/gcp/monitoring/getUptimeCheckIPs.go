@@ -58,18 +58,8 @@ type GetUptimeCheckIPsResult struct {
 
 func GetUptimeCheckIPsOutput(ctx *pulumi.Context, opts ...pulumi.InvokeOption) GetUptimeCheckIPsResultOutput {
 	return pulumi.ToOutput(0).ApplyT(func(int) (GetUptimeCheckIPsResultOutput, error) {
-		opts = internal.PkgInvokeDefaultOpts(opts)
-		var rv GetUptimeCheckIPsResult
-		secret, err := ctx.InvokePackageRaw("gcp:monitoring/getUptimeCheckIPs:getUptimeCheckIPs", nil, &rv, "", opts...)
-		if err != nil {
-			return GetUptimeCheckIPsResultOutput{}, err
-		}
-
-		output := pulumi.ToOutput(rv).(GetUptimeCheckIPsResultOutput)
-		if secret {
-			return pulumi.ToSecret(output).(GetUptimeCheckIPsResultOutput), nil
-		}
-		return output, nil
+		options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+		return ctx.InvokeOutput("gcp:monitoring/getUptimeCheckIPs:getUptimeCheckIPs", nil, GetUptimeCheckIPsResultOutput{}, options).(GetUptimeCheckIPsResultOutput), nil
 	}).(GetUptimeCheckIPsResultOutput)
 }
 

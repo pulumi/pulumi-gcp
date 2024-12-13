@@ -58,6 +58,30 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public static Output<GetHealthCheckResult> Invoke(GetHealthCheckInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetHealthCheckResult>("gcp:compute/getHealthCheck:getHealthCheck", args ?? new GetHealthCheckInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get information about a HealthCheck.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var healthCheck = Gcp.Compute.GetHealthCheck.Invoke(new()
+        ///     {
+        ///         Name = "my-hc",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetHealthCheckResult> Invoke(GetHealthCheckInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetHealthCheckResult>("gcp:compute/getHealthCheck:getHealthCheck", args ?? new GetHealthCheckInvokeArgs(), options.WithDefaults());
     }
 
 

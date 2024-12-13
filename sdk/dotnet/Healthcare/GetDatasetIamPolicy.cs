@@ -58,6 +58,30 @@ namespace Pulumi.Gcp.Healthcare
         /// </summary>
         public static Output<GetDatasetIamPolicyResult> Invoke(GetDatasetIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatasetIamPolicyResult>("gcp:healthcare/getDatasetIamPolicy:getDatasetIamPolicy", args ?? new GetDatasetIamPolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves the current IAM policy data for a Google Cloud Healthcare dataset.
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = Gcp.Healthcare.GetDatasetIamPolicy.Invoke(new()
+        ///     {
+        ///         DatasetId = dataset.Id,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDatasetIamPolicyResult> Invoke(GetDatasetIamPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDatasetIamPolicyResult>("gcp:healthcare/getDatasetIamPolicy:getDatasetIamPolicy", args ?? new GetDatasetIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

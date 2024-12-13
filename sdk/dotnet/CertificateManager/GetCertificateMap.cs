@@ -58,6 +58,30 @@ namespace Pulumi.Gcp.CertificateManager
         /// </summary>
         public static Output<GetCertificateMapResult> Invoke(GetCertificateMapInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCertificateMapResult>("gcp:certificatemanager/getCertificateMap:getCertificateMap", args ?? new GetCertificateMapInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get info about a Google Certificate Manager Certificate Map resource.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = Gcp.CertificateManager.GetCertificateMap.Invoke(new()
+        ///     {
+        ///         Name = "cert-map",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetCertificateMapResult> Invoke(GetCertificateMapInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetCertificateMapResult>("gcp:certificatemanager/getCertificateMap:getCertificateMap", args ?? new GetCertificateMapInvokeArgs(), options.WithDefaults());
     }
 
 

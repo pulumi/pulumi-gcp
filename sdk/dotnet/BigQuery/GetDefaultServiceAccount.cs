@@ -82,6 +82,42 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         public static Output<GetDefaultServiceAccountResult> Invoke(GetDefaultServiceAccountInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDefaultServiceAccountResult>("gcp:bigquery/getDefaultServiceAccount:getDefaultServiceAccount", args ?? new GetDefaultServiceAccountInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get the email address of a project's unique BigQuery service account.
+        /// 
+        /// Each Google Cloud project has a unique service account used by BigQuery. When using
+        /// BigQuery with [customer-managed encryption keys](https://cloud.google.com/bigquery/docs/customer-managed-encryption),
+        /// this account needs to be granted the
+        /// `cloudkms.cryptoKeyEncrypterDecrypter` IAM role on the customer-managed Cloud KMS key used to protect the data.
+        /// 
+        /// For more information see
+        /// [the API reference](https://cloud.google.com/bigquery/docs/reference/rest/v2/projects/getServiceAccount).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var bqSa = Gcp.BigQuery.GetDefaultServiceAccount.Invoke();
+        /// 
+        ///     var keySaUser = new Gcp.Kms.CryptoKeyIAMMember("key_sa_user", new()
+        ///     {
+        ///         CryptoKeyId = key.Id,
+        ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
+        ///         Member = $"serviceAccount:{bqSa.Apply(getDefaultServiceAccountResult =&gt; getDefaultServiceAccountResult.Email)}",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDefaultServiceAccountResult> Invoke(GetDefaultServiceAccountInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDefaultServiceAccountResult>("gcp:bigquery/getDefaultServiceAccount:getDefaultServiceAccount", args ?? new GetDefaultServiceAccountInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.cloudbuildv2.inputs.GetConnectionIamPolicyArgs;
 import com.pulumi.gcp.cloudbuildv2.inputs.GetConnectionIamPolicyPlainArgs;
@@ -144,6 +145,50 @@ public final class Cloudbuildv2Functions {
      * 
      */
     public static Output<GetConnectionIamPolicyResult> getConnectionIamPolicy(GetConnectionIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:cloudbuildv2/getConnectionIamPolicy:getConnectionIamPolicy", TypeShape.of(GetConnectionIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for connection
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudbuildv2.Cloudbuildv2Functions;
+     * import com.pulumi.gcp.cloudbuildv2.inputs.GetConnectionIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = Cloudbuildv2Functions.getConnectionIamPolicy(GetConnectionIamPolicyArgs.builder()
+     *             .project(my_connection.project())
+     *             .location(my_connection.location())
+     *             .name(my_connection.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetConnectionIamPolicyResult> getConnectionIamPolicy(GetConnectionIamPolicyArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:cloudbuildv2/getConnectionIamPolicy:getConnectionIamPolicy", TypeShape.of(GetConnectionIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**

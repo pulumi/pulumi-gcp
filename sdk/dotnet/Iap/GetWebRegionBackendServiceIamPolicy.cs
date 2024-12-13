@@ -64,6 +64,33 @@ namespace Pulumi.Gcp.Iap
         /// </summary>
         public static Output<GetWebRegionBackendServiceIamPolicyResult> Invoke(GetWebRegionBackendServiceIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetWebRegionBackendServiceIamPolicyResult>("gcp:iap/getWebRegionBackendServiceIamPolicy:getWebRegionBackendServiceIamPolicy", args ?? new GetWebRegionBackendServiceIamPolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves the current IAM policy data for webregionbackendservice
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.Iap.GetWebRegionBackendServiceIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = @default.Project,
+        ///         Region = @default.Region,
+        ///         WebRegionBackendService = @default.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetWebRegionBackendServiceIamPolicyResult> Invoke(GetWebRegionBackendServiceIamPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetWebRegionBackendServiceIamPolicyResult>("gcp:iap/getWebRegionBackendServiceIamPolicy:getWebRegionBackendServiceIamPolicy", args ?? new GetWebRegionBackendServiceIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

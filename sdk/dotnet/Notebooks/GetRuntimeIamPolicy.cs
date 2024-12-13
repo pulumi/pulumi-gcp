@@ -64,6 +64,33 @@ namespace Pulumi.Gcp.Notebooks
         /// </summary>
         public static Output<GetRuntimeIamPolicyResult> Invoke(GetRuntimeIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRuntimeIamPolicyResult>("gcp:notebooks/getRuntimeIamPolicy:getRuntimeIamPolicy", args ?? new GetRuntimeIamPolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves the current IAM policy data for runtime
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.Notebooks.GetRuntimeIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = runtime.Project,
+        ///         Location = runtime.Location,
+        ///         RuntimeName = runtime.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetRuntimeIamPolicyResult> Invoke(GetRuntimeIamPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRuntimeIamPolicyResult>("gcp:notebooks/getRuntimeIamPolicy:getRuntimeIamPolicy", args ?? new GetRuntimeIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

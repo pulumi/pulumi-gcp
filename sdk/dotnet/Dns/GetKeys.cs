@@ -106,6 +106,54 @@ namespace Pulumi.Gcp.Dns
         /// </summary>
         public static Output<GetKeysResult> Invoke(GetKeysInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKeysResult>("gcp:dns/getKeys:getKeys", args ?? new GetKeysInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get the DNSKEY and DS records of DNSSEC-signed managed zones.
+        /// 
+        /// For more information see the
+        /// [official documentation](https://cloud.google.com/dns/docs/dnskeys/)
+        /// and [API](https://cloud.google.com/dns/docs/reference/v1/dnsKeys).
+        /// 
+        /// &gt; A gcp.dns.ManagedZone resource must have DNSSEC enabled in order
+        /// to contain any DNSKEYs. Queries to managed zones without this setting
+        /// enabled will result in a 404 error as the collection of DNSKEYs does
+        /// not exist in the DNS API.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = new Gcp.Dns.ManagedZone("foo", new()
+        ///     {
+        ///         Name = "foobar",
+        ///         DnsName = "foo.bar.",
+        ///         DnssecConfig = new Gcp.Dns.Inputs.ManagedZoneDnssecConfigArgs
+        ///         {
+        ///             State = "on",
+        ///             NonExistence = "nsec3",
+        ///         },
+        ///     });
+        /// 
+        ///     var fooDnsKeys = Gcp.Dns.GetKeys.Invoke(new()
+        ///     {
+        ///         ManagedZone = foo.Id,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["fooDnsDsRecord"] = fooDnsKeys.Apply(getKeysResult =&gt; getKeysResult.KeySigningKeys[0]?.DsRecord),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetKeysResult> Invoke(GetKeysInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetKeysResult>("gcp:dns/getKeys:getKeys", args ?? new GetKeysInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -84,6 +84,43 @@ namespace Pulumi.Gcp.Projects
         /// </summary>
         public static Output<GetProjectServiceResult> Invoke(GetProjectServiceInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectServiceResult>("gcp:projects/getProjectService:getProjectService", args ?? new GetProjectServiceInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Verify the API service for the Google Cloud Platform project to see if it is enabled or not.
+        /// 
+        /// For a list of services available, visit the [API library page](https://console.cloud.google.com/apis/library)
+        /// or run `gcloud services list --available`.
+        /// 
+        /// This datasource requires the [Service Usage API](https://console.cloud.google.com/apis/library/serviceusage.googleapis.com)
+        /// to use.
+        /// 
+        /// 
+        /// To get more information about `gcp.projects.Service`, see:
+        /// 
+        /// * [API documentation](https://cloud.google.com/service-usage/docs/reference/rest/v1/services)
+        /// * How-to Guides
+        ///     * [Enabling and Disabling Services](https://cloud.google.com/service-usage/docs/enable-disable)
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_project_service = Gcp.Projects.GetProjectService.Invoke(new()
+        ///     {
+        ///         Service = "my-project-service",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetProjectServiceResult> Invoke(GetProjectServiceInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetProjectServiceResult>("gcp:projects/getProjectService:getProjectService", args ?? new GetProjectServiceInvokeArgs(), options.WithDefaults());
     }
 
 

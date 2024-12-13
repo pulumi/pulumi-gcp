@@ -82,6 +82,42 @@ namespace Pulumi.Gcp.Storage
         /// </summary>
         public static Output<GetBucketObjectContentResult> Invoke(GetBucketObjectContentInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetBucketObjectContentResult>("gcp:storage/getBucketObjectContent:getBucketObjectContent", args ?? new GetBucketObjectContentInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Gets an existing object content inside an existing bucket in Google Cloud Storage service (GCS).
+        /// See [the official documentation](https://cloud.google.com/storage/docs/key-terms#objects)
+        /// and
+        /// [API](https://cloud.google.com/storage/docs/json_api/v1/objects).
+        /// 
+        /// &gt; **Warning:** The object content will be saved in the state, and visiable to everyone who has access to the state file.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Example file object  stored within a folder.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var key = Gcp.Storage.GetBucketObjectContent.Invoke(new()
+        ///     {
+        ///         Name = "encryptedkey",
+        ///         Bucket = "keystore",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["encrypted"] = key.Apply(getBucketObjectContentResult =&gt; getBucketObjectContentResult.Content),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetBucketObjectContentResult> Invoke(GetBucketObjectContentInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetBucketObjectContentResult>("gcp:storage/getBucketObjectContent:getBucketObjectContent", args ?? new GetBucketObjectContentInvokeArgs(), options.WithDefaults());
     }
 
 

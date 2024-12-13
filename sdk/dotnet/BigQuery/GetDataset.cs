@@ -64,6 +64,33 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         public static Output<GetDatasetResult> Invoke(GetDatasetInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatasetResult>("gcp:bigquery/getDataset:getDataset", args ?? new GetDatasetInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get information about a BigQuery dataset. For more information see
+        /// the [official documentation](https://cloud.google.com/bigquery/docs)
+        /// and [API](https://cloud.google.com/bigquery/docs/reference/rest/v2/datasets).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var dataset = Gcp.BigQuery.GetDataset.Invoke(new()
+        ///     {
+        ///         DatasetId = "my-bq-dataset",
+        ///         Project = "my-project",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDatasetResult> Invoke(GetDatasetInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDatasetResult>("gcp:bigquery/getDataset:getDataset", args ?? new GetDatasetInvokeArgs(), options.WithDefaults());
     }
 
 

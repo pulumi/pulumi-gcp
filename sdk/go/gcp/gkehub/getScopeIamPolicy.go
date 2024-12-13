@@ -71,21 +71,11 @@ type LookupScopeIamPolicyResult struct {
 }
 
 func LookupScopeIamPolicyOutput(ctx *pulumi.Context, args LookupScopeIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupScopeIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupScopeIamPolicyResultOutput, error) {
 			args := v.(LookupScopeIamPolicyArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupScopeIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:gkehub/getScopeIamPolicy:getScopeIamPolicy", args, &rv, "", opts...)
-			if err != nil {
-				return LookupScopeIamPolicyResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupScopeIamPolicyResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupScopeIamPolicyResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gcp:gkehub/getScopeIamPolicy:getScopeIamPolicy", args, LookupScopeIamPolicyResultOutput{}, options).(LookupScopeIamPolicyResultOutput), nil
 		}).(LookupScopeIamPolicyResultOutput)
 }
 

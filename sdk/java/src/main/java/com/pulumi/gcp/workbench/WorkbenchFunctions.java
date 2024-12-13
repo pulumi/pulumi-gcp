@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.workbench.inputs.GetInstanceIamPolicyArgs;
 import com.pulumi.gcp.workbench.inputs.GetInstanceIamPolicyPlainArgs;
@@ -144,6 +145,50 @@ public final class WorkbenchFunctions {
      * 
      */
     public static Output<GetInstanceIamPolicyResult> getInstanceIamPolicy(GetInstanceIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:workbench/getInstanceIamPolicy:getInstanceIamPolicy", TypeShape.of(GetInstanceIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for instance
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.workbench.WorkbenchFunctions;
+     * import com.pulumi.gcp.workbench.inputs.GetInstanceIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = WorkbenchFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
+     *             .project(instance.project())
+     *             .location(instance.location())
+     *             .name(instance.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetInstanceIamPolicyResult> getInstanceIamPolicy(GetInstanceIamPolicyArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:workbench/getInstanceIamPolicy:getInstanceIamPolicy", TypeShape.of(GetInstanceIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**

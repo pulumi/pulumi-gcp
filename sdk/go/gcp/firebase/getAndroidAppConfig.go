@@ -37,21 +37,11 @@ type GetAndroidAppConfigResult struct {
 }
 
 func GetAndroidAppConfigOutput(ctx *pulumi.Context, args GetAndroidAppConfigOutputArgs, opts ...pulumi.InvokeOption) GetAndroidAppConfigResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetAndroidAppConfigResultOutput, error) {
 			args := v.(GetAndroidAppConfigArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetAndroidAppConfigResult
-			secret, err := ctx.InvokePackageRaw("gcp:firebase/getAndroidAppConfig:getAndroidAppConfig", args, &rv, "", opts...)
-			if err != nil {
-				return GetAndroidAppConfigResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetAndroidAppConfigResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetAndroidAppConfigResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gcp:firebase/getAndroidAppConfig:getAndroidAppConfig", args, GetAndroidAppConfigResultOutput{}, options).(GetAndroidAppConfigResultOutput), nil
 		}).(GetAndroidAppConfigResultOutput)
 }
 

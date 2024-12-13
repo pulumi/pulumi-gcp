@@ -86,6 +86,44 @@ namespace Pulumi.Gcp.Dns
         /// </summary>
         public static Output<GetManagedZoneResult> Invoke(GetManagedZoneInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetManagedZoneResult>("gcp:dns/getManagedZone:getManagedZone", args ?? new GetManagedZoneInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Provides access to a zone's attributes within Google Cloud DNS.
+        /// For more information see
+        /// [the official documentation](https://cloud.google.com/dns/zones/)
+        /// and
+        /// [API](https://cloud.google.com/dns/api/v1/managedZones).
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var envDnsZone = Gcp.Dns.GetManagedZone.Invoke(new()
+        ///     {
+        ///         Name = "qa-zone",
+        ///     });
+        /// 
+        ///     var dns = new Gcp.Dns.RecordSet("dns", new()
+        ///     {
+        ///         Name = $"my-address.{envDnsZone.Apply(getManagedZoneResult =&gt; getManagedZoneResult.DnsName)}",
+        ///         Type = "TXT",
+        ///         Ttl = 300,
+        ///         ManagedZone = envDnsZone.Apply(getManagedZoneResult =&gt; getManagedZoneResult.Name),
+        ///         Rrdatas = new[]
+        ///         {
+        ///             "test",
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetManagedZoneResult> Invoke(GetManagedZoneInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetManagedZoneResult>("gcp:dns/getManagedZone:getManagedZone", args ?? new GetManagedZoneInvokeArgs(), options.WithDefaults());
     }
 
 

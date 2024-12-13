@@ -64,6 +64,33 @@ namespace Pulumi.Gcp.SecretManager
         /// </summary>
         public static Output<GetRegionalSecretIamPolicyResult> Invoke(GetRegionalSecretIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRegionalSecretIamPolicyResult>("gcp:secretmanager/getRegionalSecretIamPolicy:getRegionalSecretIamPolicy", args ?? new GetRegionalSecretIamPolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves the current IAM policy data for regionalsecret
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.SecretManager.GetRegionalSecretIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = regional_secret_basic.Project,
+        ///         Location = regional_secret_basic.Location,
+        ///         SecretId = regional_secret_basic.SecretId,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetRegionalSecretIamPolicyResult> Invoke(GetRegionalSecretIamPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRegionalSecretIamPolicyResult>("gcp:secretmanager/getRegionalSecretIamPolicy:getRegionalSecretIamPolicy", args ?? new GetRegionalSecretIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

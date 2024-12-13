@@ -22,6 +22,12 @@ namespace Pulumi.Gcp.Endpoints
         /// </summary>
         public static Output<GetServiceConsumersIamPolicyResult> Invoke(GetServiceConsumersIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServiceConsumersIamPolicyResult>("gcp:endpoints/getServiceConsumersIamPolicy:getServiceConsumersIamPolicy", args ?? new GetServiceConsumersIamPolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves the current IAM policy data for serviceconsumers
+        /// </summary>
+        public static Output<GetServiceConsumersIamPolicyResult> Invoke(GetServiceConsumersIamPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetServiceConsumersIamPolicyResult>("gcp:endpoints/getServiceConsumersIamPolicy:getServiceConsumersIamPolicy", args ?? new GetServiceConsumersIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

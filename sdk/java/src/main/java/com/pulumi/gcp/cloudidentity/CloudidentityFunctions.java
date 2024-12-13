@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.cloudidentity.inputs.GetGroupLookupArgs;
 import com.pulumi.gcp.cloudidentity.inputs.GetGroupLookupPlainArgs;
@@ -162,6 +163,53 @@ public final class CloudidentityFunctions {
      * 
      */
     public static Output<GetGroupLookupResult> getGroupLookup(GetGroupLookupArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:cloudidentity/getGroupLookup:getGroupLookup", TypeShape.of(GetGroupLookupResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to look up the resource name of a Cloud Identity Group by its [EntityKey](https://cloud.google.com/identity/docs/reference/rest/v1/EntityKey), i.e. the group&#39;s email.
+     * 
+     * https://cloud.google.com/identity/docs/concepts/overview#groups
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudidentity.CloudidentityFunctions;
+     * import com.pulumi.gcp.cloudidentity.inputs.GetGroupLookupArgs;
+     * import com.pulumi.gcp.cloudidentity.inputs.GetGroupLookupGroupKeyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App }{{@code
+     *     public static void main(String[] args) }{{@code
+     *         Pulumi.run(App::stack);
+     *     }}{@code
+     * 
+     *     public static void stack(Context ctx) }{{@code
+     *         final var group = CloudidentityFunctions.getGroupLookup(GetGroupLookupArgs.builder()
+     *             .groupKey(GetGroupLookupGroupKeyArgs.builder()
+     *                 .id("my-group}{@literal @}{@code example.com")
+     *                 .build())
+     *             .build());
+     * 
+     *     }}{@code
+     * }}{@code
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetGroupLookupResult> getGroupLookup(GetGroupLookupArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:cloudidentity/getGroupLookup:getGroupLookup", TypeShape.of(GetGroupLookupResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -408,6 +456,56 @@ public final class CloudidentityFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetGroupMembershipsResult> getGroupMemberships(GetGroupMembershipsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:cloudidentity/getGroupMemberships:getGroupMemberships", TypeShape.of(GetGroupMembershipsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get list of the Cloud Identity Group Memberships within a given Group.
+     * 
+     * https://cloud.google.com/identity/docs/concepts/overview#memberships
+     * 
+     * To get more information about GroupMembership, see:
+     * 
+     * * [API documentation](https://cloud.google.com/identity/docs/reference/rest/v1/groups.memberships)
+     * * How-to Guides
+     *     * [Official Documentation](https://cloud.google.com/identity/docs/how-to/memberships-google-groups)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudidentity.CloudidentityFunctions;
+     * import com.pulumi.gcp.cloudidentity.inputs.GetGroupMembershipsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var members = CloudidentityFunctions.getGroupMemberships(GetGroupMembershipsArgs.builder()
+     *             .group("groups/123eab45c6defghi")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetGroupMembershipsResult> getGroupMembershipsPlain(GetGroupMembershipsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:cloudidentity/getGroupMemberships:getGroupMemberships", TypeShape.of(GetGroupMembershipsResult.class), args, Utilities.withVersion(options));
     }
@@ -418,6 +516,9 @@ public final class CloudidentityFunctions {
         return getGroupTransitiveMembershipsPlain(args, InvokeOptions.Empty);
     }
     public static Output<GetGroupTransitiveMembershipsResult> getGroupTransitiveMemberships(GetGroupTransitiveMembershipsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:cloudidentity/getGroupTransitiveMemberships:getGroupTransitiveMemberships", TypeShape.of(GetGroupTransitiveMembershipsResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGroupTransitiveMembershipsResult> getGroupTransitiveMemberships(GetGroupTransitiveMembershipsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:cloudidentity/getGroupTransitiveMemberships:getGroupTransitiveMemberships", TypeShape.of(GetGroupTransitiveMembershipsResult.class), args, Utilities.withVersion(options));
     }
     public static CompletableFuture<GetGroupTransitiveMembershipsResult> getGroupTransitiveMembershipsPlain(GetGroupTransitiveMembershipsPlainArgs args, InvokeOptions options) {
@@ -553,6 +654,50 @@ public final class CloudidentityFunctions {
      * 
      */
     public static Output<GetGroupsResult> getGroups(GetGroupsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:cloudidentity/getGroups:getGroups", TypeShape.of(GetGroupsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get list of the Cloud Identity Groups under a customer or namespace.
+     * 
+     * https://cloud.google.com/identity/docs/concepts/overview#groups
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudidentity.CloudidentityFunctions;
+     * import com.pulumi.gcp.cloudidentity.inputs.GetGroupsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var groups = CloudidentityFunctions.getGroups(GetGroupsArgs.builder()
+     *             .parent("customers/A01b123xz")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetGroupsResult> getGroups(GetGroupsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:cloudidentity/getGroups:getGroups", TypeShape.of(GetGroupsResult.class), args, Utilities.withVersion(options));
     }
     /**

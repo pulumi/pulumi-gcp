@@ -16,6 +16,9 @@ namespace Pulumi.Gcp.Kms
 
         public static Output<GetKeyRingsResult> Invoke(GetKeyRingsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKeyRingsResult>("gcp:kms/getKeyRings:getKeyRings", args ?? new GetKeyRingsInvokeArgs(), options.WithDefaults());
+
+        public static Output<GetKeyRingsResult> Invoke(GetKeyRingsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetKeyRingsResult>("gcp:kms/getKeyRings:getKeyRings", args ?? new GetKeyRingsInvokeArgs(), options.WithDefaults());
     }
 
 

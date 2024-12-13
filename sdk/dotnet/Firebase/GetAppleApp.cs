@@ -16,6 +16,9 @@ namespace Pulumi.Gcp.Firebase
 
         public static Output<GetAppleAppResult> Invoke(GetAppleAppInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAppleAppResult>("gcp:firebase/getAppleApp:getAppleApp", args ?? new GetAppleAppInvokeArgs(), options.WithDefaults());
+
+        public static Output<GetAppleAppResult> Invoke(GetAppleAppInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAppleAppResult>("gcp:firebase/getAppleApp:getAppleApp", args ?? new GetAppleAppInvokeArgs(), options.WithDefaults());
     }
 
 

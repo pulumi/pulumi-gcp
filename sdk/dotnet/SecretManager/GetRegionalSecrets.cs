@@ -58,6 +58,30 @@ namespace Pulumi.Gcp.SecretManager
         /// </summary>
         public static Output<GetRegionalSecretsResult> Invoke(GetRegionalSecretsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRegionalSecretsResult>("gcp:secretmanager/getRegionalSecrets:getRegionalSecrets", args ?? new GetRegionalSecretsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to list the Secret Manager Regional Secrets.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var secrets = Gcp.SecretManager.GetRegionalSecrets.Invoke(new()
+        ///     {
+        ///         Location = "us-central1",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetRegionalSecretsResult> Invoke(GetRegionalSecretsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRegionalSecretsResult>("gcp:secretmanager/getRegionalSecrets:getRegionalSecrets", args ?? new GetRegionalSecretsInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -72,6 +72,37 @@ namespace Pulumi.Gcp.Folder
         /// </summary>
         public static Output<GetOrganizationPolicyResult> Invoke(GetOrganizationPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationPolicyResult>("gcp:folder/getOrganizationPolicy:getOrganizationPolicy", args ?? new GetOrganizationPolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Allows management of Organization policies for a Google Folder. For more information see
+        /// [the official
+        /// documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.Folder.GetOrganizationPolicy.Invoke(new()
+        ///     {
+        ///         Folder = "folders/folderid",
+        ///         Constraint = "constraints/compute.trustedImageProjects",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["version"] = policy.Apply(getOrganizationPolicyResult =&gt; getOrganizationPolicyResult.Version),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetOrganizationPolicyResult> Invoke(GetOrganizationPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetOrganizationPolicyResult>("gcp:folder/getOrganizationPolicy:getOrganizationPolicy", args ?? new GetOrganizationPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

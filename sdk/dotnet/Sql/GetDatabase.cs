@@ -60,6 +60,31 @@ namespace Pulumi.Gcp.Sql
         /// </summary>
         public static Output<GetDatabaseResult> Invoke(GetDatabaseInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseResult>("gcp:sql/getDatabase:getDatabase", args ?? new GetDatabaseInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get information about a database in a Cloud SQL instance.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var qa = Gcp.Sql.GetDatabase.Invoke(new()
+        ///     {
+        ///         Name = "test-sql-database",
+        ///         Instance = main.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDatabaseResult> Invoke(GetDatabaseInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseResult>("gcp:sql/getDatabase:getDatabase", args ?? new GetDatabaseInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -58,6 +58,30 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public static Output<GetForwardingRuleResult> Invoke(GetForwardingRuleInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetForwardingRuleResult>("gcp:compute/getForwardingRule:getForwardingRule", args ?? new GetForwardingRuleInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get a forwarding rule within GCE from its name.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_forwarding_rule = Gcp.Compute.GetForwardingRule.Invoke(new()
+        ///     {
+        ///         Name = "forwarding-rule-us-east1",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetForwardingRuleResult> Invoke(GetForwardingRuleInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetForwardingRuleResult>("gcp:compute/getForwardingRule:getForwardingRule", args ?? new GetForwardingRuleInvokeArgs(), options.WithDefaults());
     }
 
 

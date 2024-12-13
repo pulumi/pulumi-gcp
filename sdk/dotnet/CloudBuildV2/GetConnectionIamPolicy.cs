@@ -64,6 +64,33 @@ namespace Pulumi.Gcp.CloudBuildV2
         /// </summary>
         public static Output<GetConnectionIamPolicyResult> Invoke(GetConnectionIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetConnectionIamPolicyResult>("gcp:cloudbuildv2/getConnectionIamPolicy:getConnectionIamPolicy", args ?? new GetConnectionIamPolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves the current IAM policy data for connection
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.CloudBuildV2.GetConnectionIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = my_connection.Project,
+        ///         Location = my_connection.Location,
+        ///         Name = my_connection.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetConnectionIamPolicyResult> Invoke(GetConnectionIamPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetConnectionIamPolicyResult>("gcp:cloudbuildv2/getConnectionIamPolicy:getConnectionIamPolicy", args ?? new GetConnectionIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

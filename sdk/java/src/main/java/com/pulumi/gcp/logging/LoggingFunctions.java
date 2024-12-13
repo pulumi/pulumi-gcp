@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.logging.inputs.GetFolderSettingsArgs;
 import com.pulumi.gcp.logging.inputs.GetFolderSettingsPlainArgs;
@@ -174,6 +175,55 @@ public final class LoggingFunctions {
      * 
      */
     public static Output<GetFolderSettingsResult> getFolderSettings(GetFolderSettingsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:logging/getFolderSettings:getFolderSettings", TypeShape.of(GetFolderSettingsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Describes the settings associated with a folder.
+     * 
+     * To get more information about LoggingFolderSettings, see:
+     * 
+     * * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/folders/getSettings)
+     * * [Configure default settings for organizations and folders](https://cloud.google.com/logging/docs/default-settings).
+     * 
+     * ## Example Usage
+     * 
+     * ### Logging Folder Settings Basic
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.logging.LoggingFunctions;
+     * import com.pulumi.gcp.logging.inputs.GetFolderSettingsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var settings = LoggingFunctions.getFolderSettings(GetFolderSettingsArgs.builder()
+     *             .folder("my-folder-name")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetFolderSettingsResult> getFolderSettings(GetFolderSettingsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:logging/getFolderSettings:getFolderSettings", TypeShape.of(GetFolderSettingsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -402,6 +452,51 @@ public final class LoggingFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetLogViewIamPolicyResult> getLogViewIamPolicy(GetLogViewIamPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:logging/getLogViewIamPolicy:getLogViewIamPolicy", TypeShape.of(GetLogViewIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for logview
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.logging.LoggingFunctions;
+     * import com.pulumi.gcp.logging.inputs.GetLogViewIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = LoggingFunctions.getLogViewIamPolicy(GetLogViewIamPolicyArgs.builder()
+     *             .parent(loggingLogView.parent())
+     *             .location(loggingLogView.location())
+     *             .bucket(loggingLogView.bucket())
+     *             .name(loggingLogView.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetLogViewIamPolicyResult> getLogViewIamPolicyPlain(GetLogViewIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:logging/getLogViewIamPolicy:getLogViewIamPolicy", TypeShape.of(GetLogViewIamPolicyResult.class), args, Utilities.withVersion(options));
     }
@@ -550,6 +645,55 @@ public final class LoggingFunctions {
      * 
      */
     public static Output<GetOrganizationSettingsResult> getOrganizationSettings(GetOrganizationSettingsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:logging/getOrganizationSettings:getOrganizationSettings", TypeShape.of(GetOrganizationSettingsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Describes the settings associated with a organization.
+     * 
+     * To get more information about LoggingOrganizationSettings, see:
+     * 
+     * * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/organizations/getSettings)
+     * * [Configure default settings for organizations and folders](https://cloud.google.com/logging/docs/default-settings).
+     * 
+     * ## Example Usage
+     * 
+     * ### Logging Organization Settings Basic
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.logging.LoggingFunctions;
+     * import com.pulumi.gcp.logging.inputs.GetOrganizationSettingsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var settings = LoggingFunctions.getOrganizationSettings(GetOrganizationSettingsArgs.builder()
+     *             .organization("my-organization-name")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetOrganizationSettingsResult> getOrganizationSettings(GetOrganizationSettingsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:logging/getOrganizationSettings:getOrganizationSettings", TypeShape.of(GetOrganizationSettingsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -794,6 +938,55 @@ public final class LoggingFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetProjectCmekSettingsResult> getProjectCmekSettings(GetProjectCmekSettingsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:logging/getProjectCmekSettings:getProjectCmekSettings", TypeShape.of(GetProjectCmekSettingsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Describes the customer-managed encryption key (CMEK) settings associated with a project.
+     * 
+     * To get more information about Service, see:
+     * 
+     * * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects/getCmekSettings)
+     * * [Enable CMEK](https://cloud.google.com/logging/docs/routing/managed-encryption-storage#enable).
+     * 
+     * ## Example Usage
+     * 
+     * ### Logging Project Cmek Settings Basic
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.logging.LoggingFunctions;
+     * import com.pulumi.gcp.logging.inputs.GetProjectCmekSettingsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var cmekSettings = LoggingFunctions.getProjectCmekSettings(GetProjectCmekSettingsArgs.builder()
+     *             .project("my-project-name")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetProjectCmekSettingsResult> getProjectCmekSettingsPlain(GetProjectCmekSettingsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:logging/getProjectCmekSettings:getProjectCmekSettings", TypeShape.of(GetProjectCmekSettingsResult.class), args, Utilities.withVersion(options));
     }
@@ -990,6 +1183,55 @@ public final class LoggingFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetProjectSettingsResult> getProjectSettings(GetProjectSettingsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:logging/getProjectSettings:getProjectSettings", TypeShape.of(GetProjectSettingsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Describes the settings associated with a project.
+     * 
+     * To get more information about LoggingProjectSettings, see:
+     * 
+     * * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects/getSettings)
+     * * [Configure default settings for organizations and folders](https://cloud.google.com/logging/docs/default-settings).
+     * 
+     * ## Example Usage
+     * 
+     * ### Logging Project Settings Basic
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.logging.LoggingFunctions;
+     * import com.pulumi.gcp.logging.inputs.GetProjectSettingsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var settings = LoggingFunctions.getProjectSettings(GetProjectSettingsArgs.builder()
+     *             .project("my-project-name")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetProjectSettingsResult> getProjectSettingsPlain(GetProjectSettingsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:logging/getProjectSettings:getProjectSettings", TypeShape.of(GetProjectSettingsResult.class), args, Utilities.withVersion(options));
     }
@@ -1132,6 +1374,53 @@ public final class LoggingFunctions {
      * 
      */
     public static Output<GetSinkResult> getSink(GetSinkArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:logging/getSink:getSink", TypeShape.of(GetSinkResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get a project, folder, organization or billing account logging sink details.
+     * To get more information about Service, see:
+     * 
+     * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/sinks)
+     * 
+     * ## Example Usage
+     * 
+     * ### Retrieve Project Logging Sink Basic
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.logging.LoggingFunctions;
+     * import com.pulumi.gcp.logging.inputs.GetSinkArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var project-sink = LoggingFunctions.getSink(GetSinkArgs.builder()
+     *             .id("projects/0123456789/sinks/my-sink-name")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSinkResult> getSink(GetSinkArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:logging/getSink:getSink", TypeShape.of(GetSinkResult.class), args, Utilities.withVersion(options));
     }
     /**

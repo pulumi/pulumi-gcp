@@ -64,6 +64,33 @@ namespace Pulumi.Gcp.VMwareEngine
         /// </summary>
         public static Output<GetNetworkPeeringResult> Invoke(GetNetworkPeeringInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNetworkPeeringResult>("gcp:vmwareengine/getNetworkPeering:getNetworkPeering", args ?? new GetNetworkPeeringInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get details about a network peering resource.
+        /// 
+        /// To get more information about network peering, see:
+        /// * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.networkPeerings)
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myNetworkPeering = Gcp.VMwareEngine.GetNetworkPeering.Invoke(new()
+        ///     {
+        ///         Name = "my-network-peering",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetNetworkPeeringResult> Invoke(GetNetworkPeeringInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetNetworkPeeringResult>("gcp:vmwareengine/getNetworkPeering:getNetworkPeering", args ?? new GetNetworkPeeringInvokeArgs(), options.WithDefaults());
     }
 
 

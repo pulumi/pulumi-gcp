@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.backupdisasterrecovery.inputs.GetBackupPlanArgs;
 import com.pulumi.gcp.backupdisasterrecovery.inputs.GetBackupPlanAssociationArgs;
@@ -30,6 +31,9 @@ public final class BackupdisasterrecoveryFunctions {
         return getBackupPlanPlain(args, InvokeOptions.Empty);
     }
     public static Output<GetBackupPlanResult> getBackupPlan(GetBackupPlanArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:backupdisasterrecovery/getBackupPlan:getBackupPlan", TypeShape.of(GetBackupPlanResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetBackupPlanResult> getBackupPlan(GetBackupPlanArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:backupdisasterrecovery/getBackupPlan:getBackupPlan", TypeShape.of(GetBackupPlanResult.class), args, Utilities.withVersion(options));
     }
     public static CompletableFuture<GetBackupPlanResult> getBackupPlanPlain(GetBackupPlanPlainArgs args, InvokeOptions options) {
@@ -196,6 +200,47 @@ public final class BackupdisasterrecoveryFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetBackupPlanAssociationResult> getBackupPlanAssociation(GetBackupPlanAssociationArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:backupdisasterrecovery/getBackupPlanAssociation:getBackupPlanAssociation", TypeShape.of(GetBackupPlanAssociationResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.backupdisasterrecovery.BackupdisasterrecoveryFunctions;
+     * import com.pulumi.gcp.backupdisasterrecovery.inputs.GetBackupPlanAssociationArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-backupplan-association = BackupdisasterrecoveryFunctions.getBackupPlanAssociation(GetBackupPlanAssociationArgs.builder()
+     *             .location("us-central1")
+     *             .backupPlanAssociationId("bpa-id")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetBackupPlanAssociationResult> getBackupPlanAssociationPlain(GetBackupPlanAssociationPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:backupdisasterrecovery/getBackupPlanAssociation:getBackupPlanAssociation", TypeShape.of(GetBackupPlanAssociationResult.class), args, Utilities.withVersion(options));
     }
@@ -206,6 +251,9 @@ public final class BackupdisasterrecoveryFunctions {
         return getDataSourcePlain(args, InvokeOptions.Empty);
     }
     public static Output<GetDataSourceResult> getDataSource(GetDataSourceArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:backupdisasterrecovery/getDataSource:getDataSource", TypeShape.of(GetDataSourceResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetDataSourceResult> getDataSource(GetDataSourceArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:backupdisasterrecovery/getDataSource:getDataSource", TypeShape.of(GetDataSourceResult.class), args, Utilities.withVersion(options));
     }
     public static CompletableFuture<GetDataSourceResult> getDataSourcePlain(GetDataSourcePlainArgs args, InvokeOptions options) {
@@ -329,6 +377,46 @@ public final class BackupdisasterrecoveryFunctions {
      * 
      */
     public static Output<GetManagementServerResult> getManagementServer(GetManagementServerArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:backupdisasterrecovery/getManagementServer:getManagementServer", TypeShape.of(GetManagementServerResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.backupdisasterrecovery.BackupdisasterrecoveryFunctions;
+     * import com.pulumi.gcp.backupdisasterrecovery.inputs.GetManagementServerArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-backup-dr-management-server = BackupdisasterrecoveryFunctions.getManagementServer(GetManagementServerArgs.builder()
+     *             .location("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetManagementServerResult> getManagementServer(GetManagementServerArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:backupdisasterrecovery/getManagementServer:getManagementServer", TypeShape.of(GetManagementServerResult.class), args, Utilities.withVersion(options));
     }
     /**

@@ -68,6 +68,35 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         public static Output<GetAttachedVersionsResult> Invoke(GetAttachedVersionsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAttachedVersionsResult>("gcp:container/getAttachedVersions:getAttachedVersions", args ?? new GetAttachedVersionsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Provides access to available platform versions in a location for a given project.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var uswest = Gcp.Container.GetAttachedVersions.Invoke(new()
+        ///     {
+        ///         Location = "us-west1",
+        ///         Project = "my-project",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstAvailableVersion"] = versions.ValidVersions[0],
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAttachedVersionsResult> Invoke(GetAttachedVersionsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAttachedVersionsResult>("gcp:container/getAttachedVersions:getAttachedVersions", args ?? new GetAttachedVersionsInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -62,6 +62,32 @@ namespace Pulumi.Gcp.Spanner
         /// </summary>
         public static Output<GetDatabaseIamPolicyResult> Invoke(GetDatabaseIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseIamPolicyResult>("gcp:spanner/getDatabaseIamPolicy:getDatabaseIamPolicy", args ?? new GetDatabaseIamPolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves the current IAM policy data for a Spanner database.
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = Gcp.Spanner.GetDatabaseIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = database.Project,
+        ///         Database = database.Name,
+        ///         Instance = database.Instance,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDatabaseIamPolicyResult> Invoke(GetDatabaseIamPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseIamPolicyResult>("gcp:spanner/getDatabaseIamPolicy:getDatabaseIamPolicy", args ?? new GetDatabaseIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -154,6 +154,78 @@ namespace Pulumi.Gcp.ServiceAccount
         /// </summary>
         public static Output<GetAccountAccessTokenResult> Invoke(GetAccountAccessTokenInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountAccessTokenResult>("gcp:serviceaccount/getAccountAccessToken:getAccountAccessToken", args ?? new GetAccountAccessTokenInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides a google `oauth2` `access_token` for a different service account than the one initially running the script.
+        /// 
+        /// For more information see
+        /// [the official documentation](https://cloud.google.com/iam/docs/creating-short-lived-service-account-credentials) as well as [iamcredentials.generateAccessToken()](https://cloud.google.com/iam/credentials/reference/rest/v1/projects.serviceAccounts/generateAccessToken)
+        /// 
+        /// ## Example Usage
+        /// 
+        /// To allow `service_A` to impersonate `service_B`, grant the [Service Account Token Creator](https://cloud.google.com/iam/docs/service-accounts#the_service_account_token_creator_role) on B to A. 
+        /// 
+        /// In the IAM policy below, `service_A` is given the Token Creator role impersonate `service_B`
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var token_creator_iam = new Gcp.ServiceAccount.IAMBinding("token-creator-iam", new()
+        ///     {
+        ///         ServiceAccountId = "projects/-/serviceAccounts/service_B@projectB.iam.gserviceaccount.com",
+        ///         Role = "roles/iam.serviceAccountTokenCreator",
+        ///         Members = new[]
+        ///         {
+        ///             "serviceAccount:service_A@projectA.iam.gserviceaccount.com",
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// Once the IAM permissions are set, you can apply the new token to a provider bootstrapped with it.  Any resources that references the aliased provider will run as the new identity.
+        /// 
+        /// In the example below, `gcp.organizations.Project` will run as `service_B`.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @default = Gcp.Organizations.GetClientConfig.Invoke();
+        /// 
+        ///     var defaultGetAccountAccessToken = Gcp.ServiceAccount.GetAccountAccessToken.Invoke(new()
+        ///     {
+        ///         TargetServiceAccount = "service_B@projectB.iam.gserviceaccount.com",
+        ///         Scopes = new[]
+        ///         {
+        ///             "userinfo-email",
+        ///             "cloud-platform",
+        ///         },
+        ///         Lifetime = "300s",
+        ///     });
+        /// 
+        ///     var me = Gcp.Organizations.GetClientOpenIdUserInfo.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["target-email"] = me.Apply(getClientOpenIdUserInfoResult =&gt; getClientOpenIdUserInfoResult.Email),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// &gt; *Note*: the generated token is non-refreshable and can have a maximum `lifetime` of `3600` seconds.
+        /// </summary>
+        public static Output<GetAccountAccessTokenResult> Invoke(GetAccountAccessTokenInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAccountAccessTokenResult>("gcp:serviceaccount/getAccountAccessToken:getAccountAccessToken", args ?? new GetAccountAccessTokenInvokeArgs(), options.WithDefaults());
     }
 
 

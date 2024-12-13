@@ -70,6 +70,36 @@ namespace Pulumi.Gcp.Filestore
         /// </summary>
         public static Output<GetInstanceResult> Invoke(GetInstanceInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstanceResult>("gcp:filestore/getInstance:getInstance", args ?? new GetInstanceInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get info about a Google Cloud Filestore instance.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myInstance = Gcp.Filestore.GetInstance.Invoke(new()
+        ///     {
+        ///         Name = "my-filestore-instance",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["instanceIpAddresses"] = myInstance.Apply(getInstanceResult =&gt; getInstanceResult.Networks?.IpAddresses),
+        ///         ["instanceConnectMode"] = myInstance.Apply(getInstanceResult =&gt; getInstanceResult.Networks?.ConnectMode),
+        ///         ["instanceFileShareName"] = myInstance.Apply(getInstanceResult =&gt; getInstanceResult.FileShares?.Name),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetInstanceResult> Invoke(GetInstanceInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetInstanceResult>("gcp:filestore/getInstance:getInstance", args ?? new GetInstanceInvokeArgs(), options.WithDefaults());
     }
 
 

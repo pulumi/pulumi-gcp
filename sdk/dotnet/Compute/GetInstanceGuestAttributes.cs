@@ -120,6 +120,61 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public static Output<GetInstanceGuestAttributesResult> Invoke(GetInstanceGuestAttributesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstanceGuestAttributesResult>("gcp:compute/getInstanceGuestAttributes:getInstanceGuestAttributes", args ?? new GetInstanceGuestAttributesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get information about a VM instance resource within GCE. For more information see
+        /// [the official documentation](https://cloud.google.com/compute/docs/instances)
+        /// and
+        /// [API](https://cloud.google.com/compute/docs/reference/latest/instances).
+        /// 
+        /// Get information about VM's guest attrubutes. For more information see [the official documentation](https://cloud.google.com/compute/docs/metadata/manage-guest-attributes)
+        /// and
+        /// [API](https://cloud.google.com/compute/docs/reference/rest/v1/instances/getGuestAttributes).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### Get All Attributes From A Single Namespace
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var appserverGa = Gcp.Compute.GetInstanceGuestAttributes.Invoke(new()
+        ///     {
+        ///         Name = "primary-application-server",
+        ///         Zone = "us-central1-a",
+        ///         QueryPath = "variables/",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// ### Get A Specific Variable
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var appserverGa = Gcp.Compute.GetInstanceGuestAttributes.Invoke(new()
+        ///     {
+        ///         Name = "primary-application-server",
+        ///         Zone = "us-central1-a",
+        ///         VariableKey = "variables/key1",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetInstanceGuestAttributesResult> Invoke(GetInstanceGuestAttributesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetInstanceGuestAttributesResult>("gcp:compute/getInstanceGuestAttributes:getInstanceGuestAttributes", args ?? new GetInstanceGuestAttributesInvokeArgs(), options.WithDefaults());
     }
 
 

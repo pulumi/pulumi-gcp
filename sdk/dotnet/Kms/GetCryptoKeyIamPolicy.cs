@@ -58,6 +58,30 @@ namespace Pulumi.Gcp.Kms
         /// </summary>
         public static Output<GetCryptoKeyIamPolicyResult> Invoke(GetCryptoKeyIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCryptoKeyIamPolicyResult>("gcp:kms/getCryptoKeyIamPolicy:getCryptoKeyIamPolicy", args ?? new GetCryptoKeyIamPolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves the current IAM policy data for a Google Cloud KMS crypto key.
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = Gcp.Kms.GetCryptoKeyIamPolicy.Invoke(new()
+        ///     {
+        ///         CryptoKeyId = cryptoKey.Id,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetCryptoKeyIamPolicyResult> Invoke(GetCryptoKeyIamPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetCryptoKeyIamPolicyResult>("gcp:kms/getCryptoKeyIamPolicy:getCryptoKeyIamPolicy", args ?? new GetCryptoKeyIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

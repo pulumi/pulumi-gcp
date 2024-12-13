@@ -16,6 +16,9 @@ namespace Pulumi.Gcp.ServiceDirectory
 
         public static Output<GetNamespaceIamPolicyResult> Invoke(GetNamespaceIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNamespaceIamPolicyResult>("gcp:servicedirectory/getNamespaceIamPolicy:getNamespaceIamPolicy", args ?? new GetNamespaceIamPolicyInvokeArgs(), options.WithDefaults());
+
+        public static Output<GetNamespaceIamPolicyResult> Invoke(GetNamespaceIamPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetNamespaceIamPolicyResult>("gcp:servicedirectory/getNamespaceIamPolicy:getNamespaceIamPolicy", args ?? new GetNamespaceIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

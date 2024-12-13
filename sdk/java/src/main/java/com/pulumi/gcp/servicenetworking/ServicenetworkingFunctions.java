@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.servicenetworking.inputs.GetPeeredDnsDomainArgs;
 import com.pulumi.gcp.servicenetworking.inputs.GetPeeredDnsDomainPlainArgs;
@@ -21,6 +22,9 @@ public final class ServicenetworkingFunctions {
         return getPeeredDnsDomainPlain(args, InvokeOptions.Empty);
     }
     public static Output<GetPeeredDnsDomainResult> getPeeredDnsDomain(GetPeeredDnsDomainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:servicenetworking/getPeeredDnsDomain:getPeeredDnsDomain", TypeShape.of(GetPeeredDnsDomainResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetPeeredDnsDomainResult> getPeeredDnsDomain(GetPeeredDnsDomainArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:servicenetworking/getPeeredDnsDomain:getPeeredDnsDomain", TypeShape.of(GetPeeredDnsDomainResult.class), args, Utilities.withVersion(options));
     }
     public static CompletableFuture<GetPeeredDnsDomainResult> getPeeredDnsDomainPlain(GetPeeredDnsDomainPlainArgs args, InvokeOptions options) {

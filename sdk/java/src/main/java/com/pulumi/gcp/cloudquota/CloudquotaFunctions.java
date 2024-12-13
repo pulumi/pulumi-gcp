@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.cloudquota.inputs.GetSQuotaInfoArgs;
 import com.pulumi.gcp.cloudquota.inputs.GetSQuotaInfoPlainArgs;
@@ -190,6 +191,50 @@ public final class CloudquotaFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetSQuotaInfoResult> getSQuotaInfo(GetSQuotaInfoArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:cloudquota/getSQuotaInfo:getSQuotaInfo", TypeShape.of(GetSQuotaInfoResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about a particular quota for a given project, folder or organization.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudquota.CloudquotaFunctions;
+     * import com.pulumi.gcp.cloudquota.inputs.GetSQuotaInfoArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myQuotaInfo = CloudquotaFunctions.getSQuotaInfo(GetSQuotaInfoArgs.builder()
+     *             .parent("projects/my-project")
+     *             .service("compute.googleapis.com")
+     *             .quotaId("CPUS-per-project-region")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetSQuotaInfoResult> getSQuotaInfoPlain(GetSQuotaInfoPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:cloudquota/getSQuotaInfo:getSQuotaInfo", TypeShape.of(GetSQuotaInfoResult.class), args, Utilities.withVersion(options));
     }
@@ -320,6 +365,49 @@ public final class CloudquotaFunctions {
      * 
      */
     public static Output<GetSQuotaInfosResult> getSQuotaInfos(GetSQuotaInfosArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:cloudquota/getSQuotaInfos:getSQuotaInfos", TypeShape.of(GetSQuotaInfosResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Provides information about all quotas for a given project, folder or organization.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudquota.CloudquotaFunctions;
+     * import com.pulumi.gcp.cloudquota.inputs.GetSQuotaInfosArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myQuotaInfos = CloudquotaFunctions.getSQuotaInfos(GetSQuotaInfosArgs.builder()
+     *             .parent("projects/my-project")
+     *             .service("compute.googleapis.com")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSQuotaInfosResult> getSQuotaInfos(GetSQuotaInfosArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:cloudquota/getSQuotaInfos:getSQuotaInfos", TypeShape.of(GetSQuotaInfosResult.class), args, Utilities.withVersion(options));
     }
     /**

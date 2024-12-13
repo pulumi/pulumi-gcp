@@ -68,6 +68,35 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         public static Output<GetAzureVersionsResult> Invoke(GetAzureVersionsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAzureVersionsResult>("gcp:container/getAzureVersions:getAzureVersions", args ?? new GetAzureVersionsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Provides access to available Kubernetes versions in a location for a given project.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var central1b = Gcp.Container.GetAzureVersions.Invoke(new()
+        ///     {
+        ///         Location = "us-west1",
+        ///         Project = "my-project",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["firstAvailableVersion"] = versions.ValidVersions[0],
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAzureVersionsResult> Invoke(GetAzureVersionsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAzureVersionsResult>("gcp:container/getAzureVersions:getAzureVersions", args ?? new GetAzureVersionsInvokeArgs(), options.WithDefaults());
     }
 
 

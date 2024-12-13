@@ -64,6 +64,33 @@ namespace Pulumi.Gcp.DataPlex
         /// </summary>
         public static Output<GetEntryGroupIamPolicyResult> Invoke(GetEntryGroupIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEntryGroupIamPolicyResult>("gcp:dataplex/getEntryGroupIamPolicy:getEntryGroupIamPolicy", args ?? new GetEntryGroupIamPolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves the current IAM policy data for entrygroup
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.DataPlex.GetEntryGroupIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = testEntryGroupBasic.Project,
+        ///         Location = testEntryGroupBasic.Location,
+        ///         EntryGroupId = testEntryGroupBasic.EntryGroupId,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetEntryGroupIamPolicyResult> Invoke(GetEntryGroupIamPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetEntryGroupIamPolicyResult>("gcp:dataplex/getEntryGroupIamPolicy:getEntryGroupIamPolicy", args ?? new GetEntryGroupIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

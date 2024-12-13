@@ -66,6 +66,34 @@ namespace Pulumi.Gcp.VMwareEngine
         /// </summary>
         public static Output<GetNetworkPolicyResult> Invoke(GetNetworkPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNetworkPolicyResult>("gcp:vmwareengine/getNetworkPolicy:getNetworkPolicy", args ?? new GetNetworkPolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get details about a network policy resource.
+        /// 
+        /// To get more information about network policy, see:
+        /// * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.networkPolicies)
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myNetworkPolicy = Gcp.VMwareEngine.GetNetworkPolicy.Invoke(new()
+        ///     {
+        ///         Name = "my-network-policy",
+        ///         Location = "us-central1",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetNetworkPolicyResult> Invoke(GetNetworkPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetNetworkPolicyResult>("gcp:vmwareengine/getNetworkPolicy:getNetworkPolicy", args ?? new GetNetworkPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

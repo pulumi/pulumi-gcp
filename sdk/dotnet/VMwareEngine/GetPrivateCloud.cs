@@ -66,6 +66,34 @@ namespace Pulumi.Gcp.VMwareEngine
         /// </summary>
         public static Output<GetPrivateCloudResult> Invoke(GetPrivateCloudInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPrivateCloudResult>("gcp:vmwareengine/getPrivateCloud:getPrivateCloud", args ?? new GetPrivateCloudInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get details about a private cloud resource.
+        /// 
+        /// To get more information about private cloud, see:
+        /// * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.privateClouds)
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myPc = Gcp.VMwareEngine.GetPrivateCloud.Invoke(new()
+        ///     {
+        ///         Name = "my-pc",
+        ///         Location = "us-central1-a",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetPrivateCloudResult> Invoke(GetPrivateCloudInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetPrivateCloudResult>("gcp:vmwareengine/getPrivateCloud:getPrivateCloud", args ?? new GetPrivateCloudInvokeArgs(), options.WithDefaults());
     }
 
 

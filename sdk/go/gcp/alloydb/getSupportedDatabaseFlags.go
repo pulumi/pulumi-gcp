@@ -67,21 +67,11 @@ type GetSupportedDatabaseFlagsResult struct {
 }
 
 func GetSupportedDatabaseFlagsOutput(ctx *pulumi.Context, args GetSupportedDatabaseFlagsOutputArgs, opts ...pulumi.InvokeOption) GetSupportedDatabaseFlagsResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetSupportedDatabaseFlagsResultOutput, error) {
 			args := v.(GetSupportedDatabaseFlagsArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetSupportedDatabaseFlagsResult
-			secret, err := ctx.InvokePackageRaw("gcp:alloydb/getSupportedDatabaseFlags:getSupportedDatabaseFlags", args, &rv, "", opts...)
-			if err != nil {
-				return GetSupportedDatabaseFlagsResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetSupportedDatabaseFlagsResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetSupportedDatabaseFlagsResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gcp:alloydb/getSupportedDatabaseFlags:getSupportedDatabaseFlags", args, GetSupportedDatabaseFlagsResultOutput{}, options).(GetSupportedDatabaseFlagsResultOutput), nil
 		}).(GetSupportedDatabaseFlagsResultOutput)
 }
 

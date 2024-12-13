@@ -60,6 +60,31 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public static Output<GetSubnetworkResult> Invoke(GetSubnetworkInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSubnetworkResult>("gcp:compute/getSubnetwork:getSubnetwork", args ?? new GetSubnetworkInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get a subnetwork within GCE from its name and region.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_subnetwork = Gcp.Compute.GetSubnetwork.Invoke(new()
+        ///     {
+        ///         Name = "default-us-east1",
+        ///         Region = "us-east1",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetSubnetworkResult> Invoke(GetSubnetworkInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetSubnetworkResult>("gcp:compute/getSubnetwork:getSubnetwork", args ?? new GetSubnetworkInvokeArgs(), options.WithDefaults());
     }
 
 

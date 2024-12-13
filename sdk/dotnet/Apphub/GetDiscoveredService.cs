@@ -62,6 +62,32 @@ namespace Pulumi.Gcp.Apphub
         /// </summary>
         public static Output<GetDiscoveredServiceResult> Invoke(GetDiscoveredServiceInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDiscoveredServiceResult>("gcp:apphub/getDiscoveredService:getDiscoveredService", args ?? new GetDiscoveredServiceInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get information about a discovered service from its uri.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_service = Gcp.Apphub.GetDiscoveredService.Invoke(new()
+        ///     {
+        ///         Location = "my-location",
+        ///         ServiceUri = "my-service-uri",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDiscoveredServiceResult> Invoke(GetDiscoveredServiceInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDiscoveredServiceResult>("gcp:apphub/getDiscoveredService:getDiscoveredService", args ?? new GetDiscoveredServiceInvokeArgs(), options.WithDefaults());
     }
 
 

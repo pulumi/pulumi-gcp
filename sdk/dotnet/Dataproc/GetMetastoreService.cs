@@ -60,6 +60,31 @@ namespace Pulumi.Gcp.Dataproc
         /// </summary>
         public static Output<GetMetastoreServiceResult> Invoke(GetMetastoreServiceInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMetastoreServiceResult>("gcp:dataproc/getMetastoreService:getMetastoreService", args ?? new GetMetastoreServiceInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get a Dataproc Metastore service from Google Cloud by its id and location.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = Gcp.Dataproc.GetMetastoreService.Invoke(new()
+        ///     {
+        ///         ServiceId = "foo-bar",
+        ///         Location = "global",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetMetastoreServiceResult> Invoke(GetMetastoreServiceInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetMetastoreServiceResult>("gcp:dataproc/getMetastoreService:getMetastoreService", args ?? new GetMetastoreServiceInvokeArgs(), options.WithDefaults());
     }
 
 

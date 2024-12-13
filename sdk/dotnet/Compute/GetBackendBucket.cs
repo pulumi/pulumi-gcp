@@ -58,6 +58,30 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public static Output<GetBackendBucketResult> Invoke(GetBackendBucketInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetBackendBucketResult>("gcp:compute/getBackendBucket:getBackendBucket", args ?? new GetBackendBucketInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get information about a BackendBucket.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_backend_bucket = Gcp.Compute.GetBackendBucket.Invoke(new()
+        ///     {
+        ///         Name = "my-backend",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetBackendBucketResult> Invoke(GetBackendBucketInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetBackendBucketResult>("gcp:compute/getBackendBucket:getBackendBucket", args ?? new GetBackendBucketInvokeArgs(), options.WithDefaults());
     }
 
 

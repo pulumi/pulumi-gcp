@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.storage.inputs.GetBucketArgs;
 import com.pulumi.gcp.storage.inputs.GetBucketIamPolicyArgs;
@@ -221,6 +222,51 @@ public final class StorageFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetBucketResult> getBucket(GetBucketArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:storage/getBucket:getBucket", TypeShape.of(GetBucketResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets an existing bucket in Google Cloud Storage service (GCS).
+     * See [the official documentation](https://cloud.google.com/storage/docs/key-terms#buckets)
+     * and
+     * [API](https://cloud.google.com/storage/docs/json_api/v1/buckets).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetBucketArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-bucket = StorageFunctions.getBucket(GetBucketArgs.builder()
+     *             .name("my-bucket")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetBucketResult> getBucketPlain(GetBucketPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:storage/getBucket:getBucket", TypeShape.of(GetBucketResult.class), args, Utilities.withVersion(options));
     }
@@ -348,6 +394,48 @@ public final class StorageFunctions {
      * 
      */
     public static Output<GetBucketIamPolicyResult> getBucketIamPolicy(GetBucketIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:storage/getBucketIamPolicy:getBucketIamPolicy", TypeShape.of(GetBucketIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for bucket
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetBucketIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = StorageFunctions.getBucketIamPolicy(GetBucketIamPolicyArgs.builder()
+     *             .bucket(default_.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetBucketIamPolicyResult> getBucketIamPolicy(GetBucketIamPolicyArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:storage/getBucketIamPolicy:getBucketIamPolicy", TypeShape.of(GetBucketIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -677,6 +765,54 @@ public final class StorageFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetBucketObjectResult> getBucketObject(GetBucketObjectArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:storage/getBucketObject:getBucketObject", TypeShape.of(GetBucketObjectResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets an existing object inside an existing bucket in Google Cloud Storage service (GCS).
+     * See [the official documentation](https://cloud.google.com/storage/docs/key-terms#objects)
+     * and
+     * [API](https://cloud.google.com/storage/docs/json_api/v1/objects).
+     * 
+     * ## Example Usage
+     * 
+     * Example picture stored within a folder.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetBucketObjectArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var picture = StorageFunctions.getBucketObject(GetBucketObjectArgs.builder()
+     *             .name("folder/butterfly01.jpg")
+     *             .bucket("image-store")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetBucketObjectResult> getBucketObjectPlain(GetBucketObjectPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:storage/getBucketObject:getBucketObject", TypeShape.of(GetBucketObjectResult.class), args, Utilities.withVersion(options));
     }
@@ -881,6 +1017,57 @@ public final class StorageFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetBucketObjectContentResult> getBucketObjectContent(GetBucketObjectContentArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:storage/getBucketObjectContent:getBucketObjectContent", TypeShape.of(GetBucketObjectContentResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets an existing object content inside an existing bucket in Google Cloud Storage service (GCS).
+     * See [the official documentation](https://cloud.google.com/storage/docs/key-terms#objects)
+     * and
+     * [API](https://cloud.google.com/storage/docs/json_api/v1/objects).
+     * 
+     * &gt; **Warning:** The object content will be saved in the state, and visiable to everyone who has access to the state file.
+     * 
+     * ## Example Usage
+     * 
+     * Example file object  stored within a folder.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetBucketObjectContentArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var key = StorageFunctions.getBucketObjectContent(GetBucketObjectContentArgs.builder()
+     *             .name("encryptedkey")
+     *             .bucket("keystore")
+     *             .build());
+     * 
+     *         ctx.export("encrypted", key.applyValue(getBucketObjectContentResult -> getBucketObjectContentResult.content()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetBucketObjectContentResult> getBucketObjectContentPlain(GetBucketObjectContentPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:storage/getBucketObjectContent:getBucketObjectContent", TypeShape.of(GetBucketObjectContentResult.class), args, Utilities.withVersion(options));
     }
@@ -1020,6 +1207,52 @@ public final class StorageFunctions {
      * 
      */
     public static Output<GetBucketObjectsResult> getBucketObjects(GetBucketObjectsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:storage/getBucketObjects:getBucketObjects", TypeShape.of(GetBucketObjectsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets existing objects inside an existing bucket in Google Cloud Storage service (GCS).
+     * See [the official documentation](https://cloud.google.com/storage/docs/key-terms#objects)
+     * and [API](https://cloud.google.com/storage/docs/json_api/v1/objects/list).
+     * 
+     * ## Example Usage
+     * 
+     * Example files stored within a bucket.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetBucketObjectsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var files = StorageFunctions.getBucketObjects(GetBucketObjectsArgs.builder()
+     *             .bucket("file-store")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetBucketObjectsResult> getBucketObjects(GetBucketObjectsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:storage/getBucketObjects:getBucketObjects", TypeShape.of(GetBucketObjectsResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1341,6 +1574,52 @@ public final class StorageFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetBucketsResult> getBuckets(GetBucketsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:storage/getBuckets:getBuckets", TypeShape.of(GetBucketsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets a list of existing GCS buckets.
+     * See [the official documentation](https://cloud.google.com/storage/docs/introduction)
+     * and [API](https://cloud.google.com/storage/docs/json_api/v1/buckets/list).
+     * 
+     * ## Example Usage
+     * 
+     * Example GCS buckets.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetBucketsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = StorageFunctions.getBuckets(GetBucketsArgs.builder()
+     *             .project("example-project")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetBucketsResult> getBucketsPlain(GetBucketsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:storage/getBuckets:getBuckets", TypeShape.of(GetBucketsResult.class), args, Utilities.withVersion(options));
     }
@@ -1351,6 +1630,9 @@ public final class StorageFunctions {
         return getManagedFolderIamPolicyPlain(args, InvokeOptions.Empty);
     }
     public static Output<GetManagedFolderIamPolicyResult> getManagedFolderIamPolicy(GetManagedFolderIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:storage/getManagedFolderIamPolicy:getManagedFolderIamPolicy", TypeShape.of(GetManagedFolderIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetManagedFolderIamPolicyResult> getManagedFolderIamPolicy(GetManagedFolderIamPolicyArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:storage/getManagedFolderIamPolicy:getManagedFolderIamPolicy", TypeShape.of(GetManagedFolderIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     public static CompletableFuture<GetManagedFolderIamPolicyResult> getManagedFolderIamPolicyPlain(GetManagedFolderIamPolicyPlainArgs args, InvokeOptions options) {
@@ -1636,6 +1918,100 @@ public final class StorageFunctions {
      * 
      */
     public static Output<GetObjectSignedUrlResult> getObjectSignedUrl(GetObjectSignedUrlArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:storage/getObjectSignedUrl:getObjectSignedUrl", TypeShape.of(GetObjectSignedUrlResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * The Google Cloud storage signed URL data source generates a signed URL for a given storage object. Signed URLs provide a way to give time-limited read or write access to anyone in possession of the URL, regardless of whether they have a Google account.
+     * 
+     * For more info about signed URL&#39;s is available [here](https://cloud.google.com/storage/docs/access-control/signed-urls).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetObjectSignedUrlArgs;
+     * import com.pulumi.gcp.compute.Instance;
+     * import com.pulumi.gcp.compute.InstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var artifact = StorageFunctions.getObjectSignedUrl(GetObjectSignedUrlArgs.builder()
+     *             .bucket("install_binaries")
+     *             .path("path/to/install_file.bin")
+     *             .build());
+     * 
+     *         var vm = new Instance("vm", InstanceArgs.builder()
+     *             .name("vm")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ## Full Example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetObjectSignedUrlArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var getUrl = StorageFunctions.getObjectSignedUrl(GetObjectSignedUrlArgs.builder()
+     *             .bucket("fried_chicken")
+     *             .path("path/to/file")
+     *             .contentMd5("pRviqwS4c4OTJRTe03FD1w==")
+     *             .contentType("text/plain")
+     *             .duration("2d")
+     *             .credentials(StdFunctions.file(FileArgs.builder()
+     *                 .input("path/to/credentials.json")
+     *                 .build()).result())
+     *             .extensionHeaders(Map.of("x-goog-if-generation-match", 1))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetObjectSignedUrlResult> getObjectSignedUrl(GetObjectSignedUrlArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:storage/getObjectSignedUrl:getObjectSignedUrl", TypeShape.of(GetObjectSignedUrlResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -2545,6 +2921,142 @@ public final class StorageFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetProjectServiceAccountResult> getProjectServiceAccount(GetProjectServiceAccountArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:storage/getProjectServiceAccount:getProjectServiceAccount", TypeShape.of(GetProjectServiceAccountResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get the email address of a project&#39;s unique [automatic Google Cloud Storage service account](https://cloud.google.com/storage/docs/projects#service-accounts).
+     * 
+     * For each Google Cloud project, Google maintains a unique service account which
+     * is used as the identity for various Google Cloud Storage operations, including
+     * operations involving
+     * [customer-managed encryption keys](https://cloud.google.com/storage/docs/encryption/customer-managed-keys)
+     * and those involving
+     * [storage notifications to pub/sub](https://cloud.google.com/storage/docs/gsutil/commands/notification).
+     * This automatic Google service account requires access to the relevant Cloud KMS keys or pub/sub topics, respectively, in order for Cloud Storage to use
+     * these customer-managed resources.
+     * 
+     * The service account has a well-known, documented naming format which is parameterised on the numeric Google project ID.
+     * However, as noted in [the docs](https://cloud.google.com/storage/docs/projects#service-accounts), it is only created when certain relevant actions occur which
+     * presuppose its existence.
+     * These actions include calling a [Cloud Storage API endpoint](https://cloud.google.com/storage/docs/json_api/v1/projects/serviceAccount/get) to yield the
+     * service account&#39;s identity, or performing some operations in the UI which must use the service account&#39;s identity, such as attempting to list Cloud KMS keys
+     * on the bucket creation page.
+     * 
+     * Use of this data source calls the relevant API endpoint to obtain the service account&#39;s identity and thus ensures it exists prior to any API operations
+     * which demand its existence, such as specifying it in Cloud IAM policy.
+     * Always prefer to use this data source over interpolating the project ID into the well-known format for this service account, as the latter approach may cause
+     * provider update errors in cases where the service account does not yet exist.
+     * 
+     * &gt;  When you write provider code which uses features depending on this service account *and* your provider code adds the service account in IAM policy on other resources,
+     *    you must take care for race conditions between the establishment of the IAM policy and creation of the relevant Cloud Storage resource.
+     *    Cloud Storage APIs will require permissions on resources such as pub/sub topics or Cloud KMS keys to exist *before* the attempt to utilise them in a
+     *    bucket configuration, otherwise the API calls will fail.
+     *    You may need to use `depends_on` to create an explicit dependency between the IAM policy resource and the Cloud Storage resource which depends on it.
+     *    See the examples here and in the `gcp.storage.Notification` resource.
+     * 
+     * For more information see
+     * [the API reference](https://cloud.google.com/storage/docs/json_api/v1/projects/serviceAccount).
+     * 
+     * ## Example Usage
+     * 
+     * ### Pub/Sub Notifications
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetProjectServiceAccountArgs;
+     * import com.pulumi.gcp.pubsub.TopicIAMBinding;
+     * import com.pulumi.gcp.pubsub.TopicIAMBindingArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
+     * 
+     *         var binding = new TopicIAMBinding("binding", TopicIAMBindingArgs.builder()
+     *             .topic(topic.name())
+     *             .role("roles/pubsub.publisher")
+     *             .members(String.format("serviceAccount:%s", gcsAccount.applyValue(getProjectServiceAccountResult -> getProjectServiceAccountResult.emailAddress())))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * ### Cloud KMS Keys
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetProjectServiceAccountArgs;
+     * import com.pulumi.gcp.kms.CryptoKeyIAMBinding;
+     * import com.pulumi.gcp.kms.CryptoKeyIAMBindingArgs;
+     * import com.pulumi.gcp.storage.Bucket;
+     * import com.pulumi.gcp.storage.BucketArgs;
+     * import com.pulumi.gcp.storage.inputs.BucketEncryptionArgs;
+     * import com.pulumi.resources.CustomResourceOptions;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var gcsAccount = StorageFunctions.getProjectServiceAccount();
+     * 
+     *         var binding = new CryptoKeyIAMBinding("binding", CryptoKeyIAMBindingArgs.builder()
+     *             .cryptoKeyId("your-crypto-key-id")
+     *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
+     *             .members(String.format("serviceAccount:%s", gcsAccount.applyValue(getProjectServiceAccountResult -> getProjectServiceAccountResult.emailAddress())))
+     *             .build());
+     * 
+     *         var bucket = new Bucket("bucket", BucketArgs.builder()
+     *             .name("kms-protected-bucket")
+     *             .location("US")
+     *             .encryption(BucketEncryptionArgs.builder()
+     *                 .defaultKmsKeyName("your-crypto-key-id")
+     *                 .build())
+     *             .build(), CustomResourceOptions.builder()
+     *                 .dependsOn(binding)
+     *                 .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetProjectServiceAccountResult> getProjectServiceAccountPlain(GetProjectServiceAccountPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:storage/getProjectServiceAccount:getProjectServiceAccount", TypeShape.of(GetProjectServiceAccountResult.class), args, Utilities.withVersion(options));
     }
@@ -2751,6 +3263,47 @@ public final class StorageFunctions {
      * 
      */
     public static Output<GetTransferProjectServiceAccountResult> getTransferProjectServiceAccount(GetTransferProjectServiceAccountArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:storage/getTransferProjectServiceAccount:getTransferProjectServiceAccount", TypeShape.of(GetTransferProjectServiceAccountResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve Storage Transfer service account for this project
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetTransferProjectServiceAccountArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = StorageFunctions.getTransferProjectServiceAccount();
+     * 
+     *         ctx.export("defaultAccount", default_.email());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetTransferProjectServiceAccountResult> getTransferProjectServiceAccount(GetTransferProjectServiceAccountArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:storage/getTransferProjectServiceAccount:getTransferProjectServiceAccount", TypeShape.of(GetTransferProjectServiceAccountResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -3017,6 +3570,51 @@ public final class StorageFunctions {
      */
     @Deprecated /* gcp.storage.getTransferProjectServieAccount has been deprecated in favor of gcp.storage.getTransferProjectServiceAccount */
     public static Output<GetTransferProjectServieAccountResult> getTransferProjectServieAccount(GetTransferProjectServieAccountArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:storage/getTransferProjectServieAccount:getTransferProjectServieAccount", TypeShape.of(GetTransferProjectServieAccountResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to retrieve Storage Transfer service account for this project
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.storage.StorageFunctions;
+     * import com.pulumi.gcp.storage.inputs.GetTransferProjectServiceAccountArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = StorageFunctions.getTransferProjectServiceAccount();
+     * 
+     *         ctx.export("defaultAccount", default_.email());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     * @deprecated
+     * gcp.storage.getTransferProjectServieAccount has been deprecated in favor of gcp.storage.getTransferProjectServiceAccount
+     * 
+     */
+    @Deprecated /* gcp.storage.getTransferProjectServieAccount has been deprecated in favor of gcp.storage.getTransferProjectServiceAccount */
+    public static Output<GetTransferProjectServieAccountResult> getTransferProjectServieAccount(GetTransferProjectServieAccountArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:storage/getTransferProjectServieAccount:getTransferProjectServieAccount", TypeShape.of(GetTransferProjectServieAccountResult.class), args, Utilities.withVersion(options));
     }
     /**

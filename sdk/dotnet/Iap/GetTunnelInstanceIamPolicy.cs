@@ -64,6 +64,33 @@ namespace Pulumi.Gcp.Iap
         /// </summary>
         public static Output<GetTunnelInstanceIamPolicyResult> Invoke(GetTunnelInstanceIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTunnelInstanceIamPolicyResult>("gcp:iap/getTunnelInstanceIamPolicy:getTunnelInstanceIamPolicy", args ?? new GetTunnelInstanceIamPolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves the current IAM policy data for tunnelinstance
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.Iap.GetTunnelInstanceIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = tunnelvm.Project,
+        ///         Zone = tunnelvm.Zone,
+        ///         Instance = tunnelvm.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetTunnelInstanceIamPolicyResult> Invoke(GetTunnelInstanceIamPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetTunnelInstanceIamPolicyResult>("gcp:iap/getTunnelInstanceIamPolicy:getTunnelInstanceIamPolicy", args ?? new GetTunnelInstanceIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

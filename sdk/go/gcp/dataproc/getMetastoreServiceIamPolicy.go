@@ -79,21 +79,11 @@ type LookupMetastoreServiceIamPolicyResult struct {
 }
 
 func LookupMetastoreServiceIamPolicyOutput(ctx *pulumi.Context, args LookupMetastoreServiceIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupMetastoreServiceIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupMetastoreServiceIamPolicyResultOutput, error) {
 			args := v.(LookupMetastoreServiceIamPolicyArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupMetastoreServiceIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:dataproc/getMetastoreServiceIamPolicy:getMetastoreServiceIamPolicy", args, &rv, "", opts...)
-			if err != nil {
-				return LookupMetastoreServiceIamPolicyResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupMetastoreServiceIamPolicyResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupMetastoreServiceIamPolicyResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gcp:dataproc/getMetastoreServiceIamPolicy:getMetastoreServiceIamPolicy", args, LookupMetastoreServiceIamPolicyResultOutput{}, options).(LookupMetastoreServiceIamPolicyResultOutput), nil
 		}).(LookupMetastoreServiceIamPolicyResultOutput)
 }
 

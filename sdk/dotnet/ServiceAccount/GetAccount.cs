@@ -140,6 +140,71 @@ namespace Pulumi.Gcp.ServiceAccount
         /// </summary>
         public static Output<GetAccountResult> Invoke(GetAccountInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountResult>("gcp:serviceaccount/getAccount:getAccount", args ?? new GetAccountInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get the service account from a project. For more information see
+        /// the official [API](https://cloud.google.com/compute/docs/access/service-accounts) documentation.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var objectViewer = Gcp.ServiceAccount.GetAccount.Invoke(new()
+        ///     {
+        ///         AccountId = "object-viewer",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// 
+        /// ### Save Key In Kubernetes Secret
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// using Kubernetes = Pulumi.Kubernetes;
+        /// using Std = Pulumi.Std;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myaccount = Gcp.ServiceAccount.GetAccount.Invoke(new()
+        ///     {
+        ///         AccountId = "myaccount-id",
+        ///     });
+        /// 
+        ///     var mykey = new Gcp.ServiceAccount.Key("mykey", new()
+        ///     {
+        ///         ServiceAccountId = myaccount.Apply(getAccountResult =&gt; getAccountResult.Name),
+        ///     });
+        /// 
+        ///     var google_application_credentials = new Kubernetes.Core.V1.Secret("google-application-credentials", new()
+        ///     {
+        ///         Metadata = new Kubernetes.Types.Inputs.Meta.V1.ObjectMetaArgs
+        ///         {
+        ///             Name = "google-application-credentials",
+        ///         },
+        ///         Data = 
+        ///         {
+        ///             { "json", Std.Base64decode.Invoke(new()
+        ///             {
+        ///                 Input = mykey.PrivateKey,
+        ///             }).Apply(invoke =&gt; invoke.Result) },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAccountResult> Invoke(GetAccountInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAccountResult>("gcp:serviceaccount/getAccount:getAccount", args ?? new GetAccountInvokeArgs(), options.WithDefaults());
     }
 
 

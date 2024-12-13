@@ -60,6 +60,31 @@ namespace Pulumi.Gcp.DataCatalog
         /// </summary>
         public static Output<GetPolicyTagIamPolicyResult> Invoke(GetPolicyTagIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPolicyTagIamPolicyResult>("gcp:datacatalog/getPolicyTagIamPolicy:getPolicyTagIamPolicy", args ?? new GetPolicyTagIamPolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves the current IAM policy data for policytag
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.DataCatalog.GetPolicyTagIamPolicy.Invoke(new()
+        ///     {
+        ///         PolicyTag = basicPolicyTag.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetPolicyTagIamPolicyResult> Invoke(GetPolicyTagIamPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetPolicyTagIamPolicyResult>("gcp:datacatalog/getPolicyTagIamPolicy:getPolicyTagIamPolicy", args ?? new GetPolicyTagIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

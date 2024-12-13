@@ -74,6 +74,38 @@ namespace Pulumi.Gcp.Logging
         /// </summary>
         public static Output<GetProjectCmekSettingsResult> Invoke(GetProjectCmekSettingsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectCmekSettingsResult>("gcp:logging/getProjectCmekSettings:getProjectCmekSettings", args ?? new GetProjectCmekSettingsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Describes the customer-managed encryption key (CMEK) settings associated with a project.
+        /// 
+        /// To get more information about Service, see:
+        /// 
+        /// * [API documentation](https://cloud.google.com/logging/docs/reference/v2/rest/v2/projects/getCmekSettings)
+        /// * [Enable CMEK](https://cloud.google.com/logging/docs/routing/managed-encryption-storage#enable).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### Logging Project Cmek Settings Basic
+        /// 
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var cmekSettings = Gcp.Logging.GetProjectCmekSettings.Invoke(new()
+        ///     {
+        ///         Project = "my-project-name",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetProjectCmekSettingsResult> Invoke(GetProjectCmekSettingsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetProjectCmekSettingsResult>("gcp:logging/getProjectCmekSettings:getProjectCmekSettings", args ?? new GetProjectCmekSettingsInvokeArgs(), options.WithDefaults());
     }
 
 

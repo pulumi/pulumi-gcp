@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.bigquerydatapolicy.inputs.GetIamPolicyArgs;
 import com.pulumi.gcp.bigquerydatapolicy.inputs.GetIamPolicyPlainArgs;
@@ -144,6 +145,50 @@ public final class BigquerydatapolicyFunctions {
      * 
      */
     public static Output<GetIamPolicyResult> getIamPolicy(GetIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:bigquerydatapolicy/getIamPolicy:getIamPolicy", TypeShape.of(GetIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for datapolicy
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.bigquerydatapolicy.BigquerydatapolicyFunctions;
+     * import com.pulumi.gcp.bigquerydatapolicy.inputs.GetIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = BigquerydatapolicyFunctions.getIamPolicy(GetIamPolicyArgs.builder()
+     *             .project(dataPolicy.project())
+     *             .location(dataPolicy.location())
+     *             .dataPolicyId(dataPolicy.dataPolicyId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetIamPolicyResult> getIamPolicy(GetIamPolicyArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:bigquerydatapolicy/getIamPolicy:getIamPolicy", TypeShape.of(GetIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**

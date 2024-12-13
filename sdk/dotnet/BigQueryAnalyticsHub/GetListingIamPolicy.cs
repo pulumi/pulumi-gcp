@@ -66,6 +66,34 @@ namespace Pulumi.Gcp.BigQueryAnalyticsHub
         /// </summary>
         public static Output<GetListingIamPolicyResult> Invoke(GetListingIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetListingIamPolicyResult>("gcp:bigqueryanalyticshub/getListingIamPolicy:getListingIamPolicy", args ?? new GetListingIamPolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves the current IAM policy data for listing
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.BigQueryAnalyticsHub.GetListingIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = listing.Project,
+        ///         Location = listing.Location,
+        ///         DataExchangeId = listing.DataExchangeId,
+        ///         ListingId = listing.ListingId,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetListingIamPolicyResult> Invoke(GetListingIamPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetListingIamPolicyResult>("gcp:bigqueryanalyticshub/getListingIamPolicy:getListingIamPolicy", args ?? new GetListingIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

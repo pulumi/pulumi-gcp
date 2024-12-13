@@ -62,6 +62,32 @@ namespace Pulumi.Gcp.GkeHub
         /// </summary>
         public static Output<GetScopeIamPolicyResult> Invoke(GetScopeIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetScopeIamPolicyResult>("gcp:gkehub/getScopeIamPolicy:getScopeIamPolicy", args ?? new GetScopeIamPolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves the current IAM policy data for scope
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.GkeHub.GetScopeIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = scope.Project,
+        ///         ScopeId = scope.ScopeId,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetScopeIamPolicyResult> Invoke(GetScopeIamPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetScopeIamPolicyResult>("gcp:gkehub/getScopeIamPolicy:getScopeIamPolicy", args ?? new GetScopeIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

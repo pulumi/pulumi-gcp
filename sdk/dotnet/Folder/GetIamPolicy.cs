@@ -58,6 +58,30 @@ namespace Pulumi.Gcp.Folder
         /// </summary>
         public static Output<GetIamPolicyResult> Invoke(GetIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetIamPolicyResult>("gcp:folder/getIamPolicy:getIamPolicy", args ?? new GetIamPolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves the current IAM policy data for a folder.
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var test = Gcp.Folder.GetIamPolicy.Invoke(new()
+        ///     {
+        ///         Folder = permissiontest.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetIamPolicyResult> Invoke(GetIamPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetIamPolicyResult>("gcp:folder/getIamPolicy:getIamPolicy", args ?? new GetIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

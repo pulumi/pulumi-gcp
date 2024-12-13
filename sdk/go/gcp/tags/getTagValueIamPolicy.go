@@ -67,21 +67,11 @@ type LookupTagValueIamPolicyResult struct {
 }
 
 func LookupTagValueIamPolicyOutput(ctx *pulumi.Context, args LookupTagValueIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupTagValueIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupTagValueIamPolicyResultOutput, error) {
 			args := v.(LookupTagValueIamPolicyArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupTagValueIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:tags/getTagValueIamPolicy:getTagValueIamPolicy", args, &rv, "", opts...)
-			if err != nil {
-				return LookupTagValueIamPolicyResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupTagValueIamPolicyResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupTagValueIamPolicyResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gcp:tags/getTagValueIamPolicy:getTagValueIamPolicy", args, LookupTagValueIamPolicyResultOutput{}, options).(LookupTagValueIamPolicyResultOutput), nil
 		}).(LookupTagValueIamPolicyResultOutput)
 }
 

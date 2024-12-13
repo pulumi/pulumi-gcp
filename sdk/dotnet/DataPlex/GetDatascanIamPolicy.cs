@@ -64,6 +64,33 @@ namespace Pulumi.Gcp.DataPlex
         /// </summary>
         public static Output<GetDatascanIamPolicyResult> Invoke(GetDatascanIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatascanIamPolicyResult>("gcp:dataplex/getDatascanIamPolicy:getDatascanIamPolicy", args ?? new GetDatascanIamPolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves the current IAM policy data for datascan
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.DataPlex.GetDatascanIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = basicProfile.Project,
+        ///         Location = basicProfile.Location,
+        ///         DataScanId = basicProfile.DataScanId,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDatascanIamPolicyResult> Invoke(GetDatascanIamPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDatascanIamPolicyResult>("gcp:dataplex/getDatascanIamPolicy:getDatascanIamPolicy", args ?? new GetDatascanIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

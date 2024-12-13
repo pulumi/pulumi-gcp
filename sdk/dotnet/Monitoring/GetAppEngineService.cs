@@ -174,6 +174,88 @@ namespace Pulumi.Gcp.Monitoring
         /// </summary>
         public static Output<GetAppEngineServiceResult> Invoke(GetAppEngineServiceInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAppEngineServiceResult>("gcp:monitoring/getAppEngineService:getAppEngineService", args ?? new GetAppEngineServiceInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// A Monitoring Service is the root resource under which operational aspects of a
+        /// generic service are accessible. A service is some discrete, autonomous, and
+        /// network-accessible unit, designed to solve an individual concern
+        /// 
+        /// An App Engine monitoring service is automatically created by GCP to monitor
+        /// App Engine services.
+        /// 
+        /// 
+        /// To get more information about Service, see:
+        /// 
+        /// * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/services)
+        /// * How-to Guides
+        ///     * [Service Monitoring](https://cloud.google.com/monitoring/service-monitoring)
+        ///     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### Monitoring App Engine Service
+        /// 
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
+        ///     {
+        ///         Name = "appengine-static-content",
+        ///         Location = "US",
+        ///     });
+        /// 
+        ///     var @object = new Gcp.Storage.BucketObject("object", new()
+        ///     {
+        ///         Name = "hello-world.zip",
+        ///         Bucket = bucket.Name,
+        ///         Source = new FileAsset("./test-fixtures/hello-world.zip"),
+        ///     });
+        /// 
+        ///     var myapp = new Gcp.AppEngine.StandardAppVersion("myapp", new()
+        ///     {
+        ///         VersionId = "v1",
+        ///         Service = "myapp",
+        ///         Runtime = "nodejs20",
+        ///         Entrypoint = new Gcp.AppEngine.Inputs.StandardAppVersionEntrypointArgs
+        ///         {
+        ///             Shell = "node ./app.js",
+        ///         },
+        ///         Deployment = new Gcp.AppEngine.Inputs.StandardAppVersionDeploymentArgs
+        ///         {
+        ///             Zip = new Gcp.AppEngine.Inputs.StandardAppVersionDeploymentZipArgs
+        ///             {
+        ///                 SourceUrl = Output.Tuple(bucket.Name, @object.Name).Apply(values =&gt;
+        ///                 {
+        ///                     var bucketName = values.Item1;
+        ///                     var objectName = values.Item2;
+        ///                     return $"https://storage.googleapis.com/{bucketName}/{objectName}";
+        ///                 }),
+        ///             },
+        ///         },
+        ///         EnvVariables = 
+        ///         {
+        ///             { "port", "8080" },
+        ///         },
+        ///         DeleteServiceOnDestroy = false,
+        ///     });
+        /// 
+        ///     // Monitors the default AppEngine service
+        ///     var srv = Gcp.Monitoring.GetAppEngineService.Invoke(new()
+        ///     {
+        ///         ModuleId = myapp.Service,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAppEngineServiceResult> Invoke(GetAppEngineServiceInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAppEngineServiceResult>("gcp:monitoring/getAppEngineService:getAppEngineService", args ?? new GetAppEngineServiceInvokeArgs(), options.WithDefaults());
     }
 
 

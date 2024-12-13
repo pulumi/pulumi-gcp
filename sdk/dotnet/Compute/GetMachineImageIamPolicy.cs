@@ -16,6 +16,9 @@ namespace Pulumi.Gcp.Compute
 
         public static Output<GetMachineImageIamPolicyResult> Invoke(GetMachineImageIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetMachineImageIamPolicyResult>("gcp:compute/getMachineImageIamPolicy:getMachineImageIamPolicy", args ?? new GetMachineImageIamPolicyInvokeArgs(), options.WithDefaults());
+
+        public static Output<GetMachineImageIamPolicyResult> Invoke(GetMachineImageIamPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetMachineImageIamPolicyResult>("gcp:compute/getMachineImageIamPolicy:getMachineImageIamPolicy", args ?? new GetMachineImageIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

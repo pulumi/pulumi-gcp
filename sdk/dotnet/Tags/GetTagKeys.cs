@@ -88,6 +88,45 @@ namespace Pulumi.Gcp.Tags
         /// </summary>
         public static Output<GetTagKeysResult> Invoke(GetTagKeysInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTagKeysResult>("gcp:tags/getTagKeys:getTagKeys", args ?? new GetTagKeysInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get tag keys by org or project `parent`.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var environmentTagKey = Gcp.Tags.GetTagKeys.Invoke(new()
+        ///     {
+        ///         Parent = "organizations/12345",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var environmentTagKey = Gcp.Tags.GetTagKeys.Invoke(new()
+        ///     {
+        ///         Parent = "projects/abc",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetTagKeysResult> Invoke(GetTagKeysInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetTagKeysResult>("gcp:tags/getTagKeys:getTagKeys", args ?? new GetTagKeysInvokeArgs(), options.WithDefaults());
     }
 
 

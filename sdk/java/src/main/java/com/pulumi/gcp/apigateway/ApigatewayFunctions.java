@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.apigateway.inputs.GetApiConfigIamPolicyArgs;
 import com.pulumi.gcp.apigateway.inputs.GetApiConfigIamPolicyPlainArgs;
@@ -29,6 +30,9 @@ public final class ApigatewayFunctions {
     public static Output<GetApiConfigIamPolicyResult> getApiConfigIamPolicy(GetApiConfigIamPolicyArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:apigateway/getApiConfigIamPolicy:getApiConfigIamPolicy", TypeShape.of(GetApiConfigIamPolicyResult.class), args, Utilities.withVersion(options));
     }
+    public static Output<GetApiConfigIamPolicyResult> getApiConfigIamPolicy(GetApiConfigIamPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:apigateway/getApiConfigIamPolicy:getApiConfigIamPolicy", TypeShape.of(GetApiConfigIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
     public static CompletableFuture<GetApiConfigIamPolicyResult> getApiConfigIamPolicyPlain(GetApiConfigIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:apigateway/getApiConfigIamPolicy:getApiConfigIamPolicy", TypeShape.of(GetApiConfigIamPolicyResult.class), args, Utilities.withVersion(options));
     }
@@ -41,6 +45,9 @@ public final class ApigatewayFunctions {
     public static Output<GetApiIamPolicyResult> getApiIamPolicy(GetApiIamPolicyArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:apigateway/getApiIamPolicy:getApiIamPolicy", TypeShape.of(GetApiIamPolicyResult.class), args, Utilities.withVersion(options));
     }
+    public static Output<GetApiIamPolicyResult> getApiIamPolicy(GetApiIamPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:apigateway/getApiIamPolicy:getApiIamPolicy", TypeShape.of(GetApiIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
     public static CompletableFuture<GetApiIamPolicyResult> getApiIamPolicyPlain(GetApiIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:apigateway/getApiIamPolicy:getApiIamPolicy", TypeShape.of(GetApiIamPolicyResult.class), args, Utilities.withVersion(options));
     }
@@ -51,6 +58,9 @@ public final class ApigatewayFunctions {
         return getGatewayIamPolicyPlain(args, InvokeOptions.Empty);
     }
     public static Output<GetGatewayIamPolicyResult> getGatewayIamPolicy(GetGatewayIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:apigateway/getGatewayIamPolicy:getGatewayIamPolicy", TypeShape.of(GetGatewayIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetGatewayIamPolicyResult> getGatewayIamPolicy(GetGatewayIamPolicyArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:apigateway/getGatewayIamPolicy:getGatewayIamPolicy", TypeShape.of(GetGatewayIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     public static CompletableFuture<GetGatewayIamPolicyResult> getGatewayIamPolicyPlain(GetGatewayIamPolicyPlainArgs args, InvokeOptions options) {

@@ -84,6 +84,43 @@ namespace Pulumi.Gcp.Kms
         /// </summary>
         public static Output<GetKMSCryptoKeyResult> Invoke(GetKMSCryptoKeyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKMSCryptoKeyResult>("gcp:kms/getKMSCryptoKey:getKMSCryptoKey", args ?? new GetKMSCryptoKeyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Provides access to a Google Cloud Platform KMS CryptoKey. For more information see
+        /// [the official documentation](https://cloud.google.com/kms/docs/object-hierarchy#key)
+        /// and
+        /// [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys).
+        /// 
+        /// A CryptoKey is an interface to key material which can be used to encrypt and decrypt data. A CryptoKey belongs to a
+        /// Google Cloud KMS KeyRing.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myKeyRing = Gcp.Kms.GetKMSKeyRing.Invoke(new()
+        ///     {
+        ///         Name = "my-key-ring",
+        ///         Location = "us-central1",
+        ///     });
+        /// 
+        ///     var myCryptoKey = Gcp.Kms.GetKMSCryptoKey.Invoke(new()
+        ///     {
+        ///         Name = "my-crypto-key",
+        ///         KeyRing = myKeyRing.Apply(getKMSKeyRingResult =&gt; getKMSKeyRingResult.Id),
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetKMSCryptoKeyResult> Invoke(GetKMSCryptoKeyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetKMSCryptoKeyResult>("gcp:kms/getKMSCryptoKey:getKMSCryptoKey", args ?? new GetKMSCryptoKeyInvokeArgs(), options.WithDefaults());
     }
 
 

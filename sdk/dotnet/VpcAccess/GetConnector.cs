@@ -90,6 +90,46 @@ namespace Pulumi.Gcp.VpcAccess
         /// </summary>
         public static Output<GetConnectorResult> Invoke(GetConnectorInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetConnectorResult>("gcp:vpcaccess/getConnector:getConnector", args ?? new GetConnectorInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get a Serverless VPC Access connector.
+        /// 
+        /// To get more information about Connector, see:
+        /// 
+        /// * [API documentation](https://cloud.google.com/vpc/docs/reference/vpcaccess/rest/v1/projects.locations.connectors)
+        /// * How-to Guides
+        ///     * [Configuring Serverless VPC Access](https://cloud.google.com/vpc/docs/configure-serverless-vpc-access)
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var sample = Gcp.VpcAccess.GetConnector.Invoke(new()
+        ///     {
+        ///         Name = "vpc-con",
+        ///     });
+        /// 
+        ///     var connector = new Gcp.VpcAccess.Connector("connector", new()
+        ///     {
+        ///         Name = "vpc-con",
+        ///         IpCidrRange = "10.8.0.0/28",
+        ///         Network = "default",
+        ///         Region = "us-central1",
+        ///         MinInstances = 2,
+        ///         MaxInstances = 3,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetConnectorResult> Invoke(GetConnectorInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetConnectorResult>("gcp:vpcaccess/getConnector:getConnector", args ?? new GetConnectorInvokeArgs(), options.WithDefaults());
     }
 
 

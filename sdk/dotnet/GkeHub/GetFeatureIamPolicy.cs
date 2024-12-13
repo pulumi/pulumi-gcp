@@ -64,6 +64,33 @@ namespace Pulumi.Gcp.GkeHub
         /// </summary>
         public static Output<GetFeatureIamPolicyResult> Invoke(GetFeatureIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFeatureIamPolicyResult>("gcp:gkehub/getFeatureIamPolicy:getFeatureIamPolicy", args ?? new GetFeatureIamPolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves the current IAM policy data for feature
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.GkeHub.GetFeatureIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = feature.Project,
+        ///         Location = feature.Location,
+        ///         Name = feature.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetFeatureIamPolicyResult> Invoke(GetFeatureIamPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetFeatureIamPolicyResult>("gcp:gkehub/getFeatureIamPolicy:getFeatureIamPolicy", args ?? new GetFeatureIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -52,21 +52,11 @@ type GetDataSourceResult struct {
 }
 
 func GetDataSourceOutput(ctx *pulumi.Context, args GetDataSourceOutputArgs, opts ...pulumi.InvokeOption) GetDataSourceResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetDataSourceResultOutput, error) {
 			args := v.(GetDataSourceArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetDataSourceResult
-			secret, err := ctx.InvokePackageRaw("gcp:backupdisasterrecovery/getDataSource:getDataSource", args, &rv, "", opts...)
-			if err != nil {
-				return GetDataSourceResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetDataSourceResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetDataSourceResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gcp:backupdisasterrecovery/getDataSource:getDataSource", args, GetDataSourceResultOutput{}, options).(GetDataSourceResultOutput), nil
 		}).(GetDataSourceResultOutput)
 }
 

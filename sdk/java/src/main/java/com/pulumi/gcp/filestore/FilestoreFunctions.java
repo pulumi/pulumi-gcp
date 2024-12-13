@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.filestore.inputs.GetInstanceArgs;
 import com.pulumi.gcp.filestore.inputs.GetInstancePlainArgs;
@@ -147,6 +148,51 @@ public final class FilestoreFunctions {
      * 
      */
     public static Output<GetInstanceResult> getInstance(GetInstanceArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:filestore/getInstance:getInstance", TypeShape.of(GetInstanceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get info about a Google Cloud Filestore instance.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.filestore.FilestoreFunctions;
+     * import com.pulumi.gcp.filestore.inputs.GetInstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myInstance = FilestoreFunctions.getInstance(GetInstanceArgs.builder()
+     *             .name("my-filestore-instance")
+     *             .build());
+     * 
+     *         ctx.export("instanceIpAddresses", myInstance.applyValue(getInstanceResult -> getInstanceResult.networks().ipAddresses()));
+     *         ctx.export("instanceConnectMode", myInstance.applyValue(getInstanceResult -> getInstanceResult.networks().connectMode()));
+     *         ctx.export("instanceFileShareName", myInstance.applyValue(getInstanceResult -> getInstanceResult.fileShares().name()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetInstanceResult> getInstance(GetInstanceArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:filestore/getInstance:getInstance", TypeShape.of(GetInstanceResult.class), args, Utilities.withVersion(options));
     }
     /**
