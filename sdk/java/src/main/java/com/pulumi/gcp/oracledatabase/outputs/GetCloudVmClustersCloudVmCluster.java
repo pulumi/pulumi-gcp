@@ -6,6 +6,7 @@ package com.pulumi.gcp.oracledatabase.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.oracledatabase.outputs.GetCloudVmClustersCloudVmClusterProperty;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -36,6 +37,7 @@ public final class GetCloudVmClustersCloudVmCluster {
      * 
      */
     private String createTime;
+    private Boolean deletionProtection;
     /**
      * @return User friendly name for this resource.
      * 
@@ -131,6 +133,9 @@ public final class GetCloudVmClustersCloudVmCluster {
      */
     public String createTime() {
         return this.createTime;
+    }
+    public Boolean deletionProtection() {
+        return this.deletionProtection;
     }
     /**
      * @return User friendly name for this resource.
@@ -231,6 +236,7 @@ public final class GetCloudVmClustersCloudVmCluster {
         private String cidr;
         private String cloudVmClusterId;
         private String createTime;
+        private Boolean deletionProtection;
         private String displayName;
         private Map<String,String> effectiveLabels;
         private String exadataInfrastructure;
@@ -249,6 +255,7 @@ public final class GetCloudVmClustersCloudVmCluster {
     	      this.cidr = defaults.cidr;
     	      this.cloudVmClusterId = defaults.cloudVmClusterId;
     	      this.createTime = defaults.createTime;
+    	      this.deletionProtection = defaults.deletionProtection;
     	      this.displayName = defaults.displayName;
     	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.exadataInfrastructure = defaults.exadataInfrastructure;
@@ -292,6 +299,14 @@ public final class GetCloudVmClustersCloudVmCluster {
               throw new MissingRequiredPropertyException("GetCloudVmClustersCloudVmCluster", "createTime");
             }
             this.createTime = createTime;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionProtection(Boolean deletionProtection) {
+            if (deletionProtection == null) {
+              throw new MissingRequiredPropertyException("GetCloudVmClustersCloudVmCluster", "deletionProtection");
+            }
+            this.deletionProtection = deletionProtection;
             return this;
         }
         @CustomType.Setter
@@ -391,6 +406,7 @@ public final class GetCloudVmClustersCloudVmCluster {
             _resultValue.cidr = cidr;
             _resultValue.cloudVmClusterId = cloudVmClusterId;
             _resultValue.createTime = createTime;
+            _resultValue.deletionProtection = deletionProtection;
             _resultValue.displayName = displayName;
             _resultValue.effectiveLabels = effectiveLabels;
             _resultValue.exadataInfrastructure = exadataInfrastructure;

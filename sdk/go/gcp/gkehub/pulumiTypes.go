@@ -2982,7 +2982,7 @@ func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig
 
 type FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary struct {
 	// Configures the manner in which the template library is installed on the cluster.
-	// Possible values are: `INSTALATION_UNSPECIFIED`, `NOT_INSTALLED`, `ALL`.
+	// Possible values are: `INSTALLATION_UNSPECIFIED`, `NOT_INSTALLED`, `ALL`.
 	Installation *string `pulumi:"installation"`
 }
 
@@ -2999,7 +2999,7 @@ type FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPol
 
 type FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs struct {
 	// Configures the manner in which the template library is installed on the cluster.
-	// Possible values are: `INSTALATION_UNSPECIFIED`, `NOT_INSTALLED`, `ALL`.
+	// Possible values are: `INSTALLATION_UNSPECIFIED`, `NOT_INSTALLED`, `ALL`.
 	Installation pulumi.StringPtrInput `pulumi:"installation"`
 }
 
@@ -3081,7 +3081,7 @@ func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig
 }
 
 // Configures the manner in which the template library is installed on the cluster.
-// Possible values are: `INSTALATION_UNSPECIFIED`, `NOT_INSTALLED`, `ALL`.
+// Possible values are: `INSTALLATION_UNSPECIFIED`, `NOT_INSTALLED`, `ALL`.
 func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutput) Installation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary) *string {
 		return v.Installation
@@ -3113,7 +3113,7 @@ func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig
 }
 
 // Configures the manner in which the template library is installed on the cluster.
-// Possible values are: `INSTALATION_UNSPECIFIED`, `NOT_INSTALLED`, `ALL`.
+// Possible values are: `INSTALLATION_UNSPECIFIED`, `NOT_INSTALLED`, `ALL`.
 func (o FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryPtrOutput) Installation() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary) *string {
 		if v == nil {
@@ -3863,16 +3863,18 @@ type FeatureMembershipConfigmanagementConfigSync struct {
 	Enabled *bool `pulumi:"enabled"`
 	// (Optional) Structure is documented below.
 	Git *FeatureMembershipConfigmanagementConfigSyncGit `pulumi:"git"`
-	// The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA.
+	// Deprecated: If Workload Identity Federation for GKE is enabled, Google Cloud Service Account is no longer needed for exporting Config Sync metrics: https://cloud.google.com/kubernetes-engine/enterprise/config-sync/docs/how-to/monitor-config-sync-cloud-monitoring#custom-monitoring.
 	MetricsGcpServiceAccountEmail *string `pulumi:"metricsGcpServiceAccountEmail"`
 	// (Optional) Supported from Config Sync versions 1.12.0 onwards. Structure is documented below.
 	//
 	// Use either `git` or `oci` config option.
 	Oci *FeatureMembershipConfigmanagementConfigSyncOci `pulumi:"oci"`
-	// Supported from Config Sync versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to "false", disables the Config Sync admission webhook and does not prevent drifts.
+	// Supported from Config Sync versions 1.10.0 onwards. Set to `true` to enable the Config Sync admission webhook to prevent drifts. If set to `false`, disables the Config Sync admission webhook and does not prevent drifts.
 	PreventDrift *bool `pulumi:"preventDrift"`
 	// Specifies whether the Config Sync Repo is in "hierarchical" or "unstructured" mode.
 	SourceFormat *string `pulumi:"sourceFormat"`
+	// Set to `true` to stop syncing configurations for a single cluster. This field is only available on clusters using Config Sync [auto-upgrades](http://cloud/kubernetes-engine/enterprise/config-sync/docs/how-to/upgrade-config-sync#auto-upgrade-config) or on Config Sync version 1.20.0 or later. Defaults: `false`.
+	StopSyncing *bool `pulumi:"stopSyncing"`
 }
 
 // FeatureMembershipConfigmanagementConfigSyncInput is an input type that accepts FeatureMembershipConfigmanagementConfigSyncArgs and FeatureMembershipConfigmanagementConfigSyncOutput values.
@@ -3891,16 +3893,18 @@ type FeatureMembershipConfigmanagementConfigSyncArgs struct {
 	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
 	// (Optional) Structure is documented below.
 	Git FeatureMembershipConfigmanagementConfigSyncGitPtrInput `pulumi:"git"`
-	// The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA.
+	// Deprecated: If Workload Identity Federation for GKE is enabled, Google Cloud Service Account is no longer needed for exporting Config Sync metrics: https://cloud.google.com/kubernetes-engine/enterprise/config-sync/docs/how-to/monitor-config-sync-cloud-monitoring#custom-monitoring.
 	MetricsGcpServiceAccountEmail pulumi.StringPtrInput `pulumi:"metricsGcpServiceAccountEmail"`
 	// (Optional) Supported from Config Sync versions 1.12.0 onwards. Structure is documented below.
 	//
 	// Use either `git` or `oci` config option.
 	Oci FeatureMembershipConfigmanagementConfigSyncOciPtrInput `pulumi:"oci"`
-	// Supported from Config Sync versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to "false", disables the Config Sync admission webhook and does not prevent drifts.
+	// Supported from Config Sync versions 1.10.0 onwards. Set to `true` to enable the Config Sync admission webhook to prevent drifts. If set to `false`, disables the Config Sync admission webhook and does not prevent drifts.
 	PreventDrift pulumi.BoolPtrInput `pulumi:"preventDrift"`
 	// Specifies whether the Config Sync Repo is in "hierarchical" or "unstructured" mode.
 	SourceFormat pulumi.StringPtrInput `pulumi:"sourceFormat"`
+	// Set to `true` to stop syncing configurations for a single cluster. This field is only available on clusters using Config Sync [auto-upgrades](http://cloud/kubernetes-engine/enterprise/config-sync/docs/how-to/upgrade-config-sync#auto-upgrade-config) or on Config Sync version 1.20.0 or later. Defaults: `false`.
+	StopSyncing pulumi.BoolPtrInput `pulumi:"stopSyncing"`
 }
 
 func (FeatureMembershipConfigmanagementConfigSyncArgs) ElementType() reflect.Type {
@@ -3992,7 +3996,7 @@ func (o FeatureMembershipConfigmanagementConfigSyncOutput) Git() FeatureMembersh
 	}).(FeatureMembershipConfigmanagementConfigSyncGitPtrOutput)
 }
 
-// The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA.
+// Deprecated: If Workload Identity Federation for GKE is enabled, Google Cloud Service Account is no longer needed for exporting Config Sync metrics: https://cloud.google.com/kubernetes-engine/enterprise/config-sync/docs/how-to/monitor-config-sync-cloud-monitoring#custom-monitoring.
 func (o FeatureMembershipConfigmanagementConfigSyncOutput) MetricsGcpServiceAccountEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FeatureMembershipConfigmanagementConfigSync) *string { return v.MetricsGcpServiceAccountEmail }).(pulumi.StringPtrOutput)
 }
@@ -4006,7 +4010,7 @@ func (o FeatureMembershipConfigmanagementConfigSyncOutput) Oci() FeatureMembersh
 	}).(FeatureMembershipConfigmanagementConfigSyncOciPtrOutput)
 }
 
-// Supported from Config Sync versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to "false", disables the Config Sync admission webhook and does not prevent drifts.
+// Supported from Config Sync versions 1.10.0 onwards. Set to `true` to enable the Config Sync admission webhook to prevent drifts. If set to `false`, disables the Config Sync admission webhook and does not prevent drifts.
 func (o FeatureMembershipConfigmanagementConfigSyncOutput) PreventDrift() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v FeatureMembershipConfigmanagementConfigSync) *bool { return v.PreventDrift }).(pulumi.BoolPtrOutput)
 }
@@ -4014,6 +4018,11 @@ func (o FeatureMembershipConfigmanagementConfigSyncOutput) PreventDrift() pulumi
 // Specifies whether the Config Sync Repo is in "hierarchical" or "unstructured" mode.
 func (o FeatureMembershipConfigmanagementConfigSyncOutput) SourceFormat() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v FeatureMembershipConfigmanagementConfigSync) *string { return v.SourceFormat }).(pulumi.StringPtrOutput)
+}
+
+// Set to `true` to stop syncing configurations for a single cluster. This field is only available on clusters using Config Sync [auto-upgrades](http://cloud/kubernetes-engine/enterprise/config-sync/docs/how-to/upgrade-config-sync#auto-upgrade-config) or on Config Sync version 1.20.0 or later. Defaults: `false`.
+func (o FeatureMembershipConfigmanagementConfigSyncOutput) StopSyncing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v FeatureMembershipConfigmanagementConfigSync) *bool { return v.StopSyncing }).(pulumi.BoolPtrOutput)
 }
 
 type FeatureMembershipConfigmanagementConfigSyncPtrOutput struct{ *pulumi.OutputState }
@@ -4060,7 +4069,7 @@ func (o FeatureMembershipConfigmanagementConfigSyncPtrOutput) Git() FeatureMembe
 	}).(FeatureMembershipConfigmanagementConfigSyncGitPtrOutput)
 }
 
-// The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA.
+// Deprecated: If Workload Identity Federation for GKE is enabled, Google Cloud Service Account is no longer needed for exporting Config Sync metrics: https://cloud.google.com/kubernetes-engine/enterprise/config-sync/docs/how-to/monitor-config-sync-cloud-monitoring#custom-monitoring.
 func (o FeatureMembershipConfigmanagementConfigSyncPtrOutput) MetricsGcpServiceAccountEmail() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *FeatureMembershipConfigmanagementConfigSync) *string {
 		if v == nil {
@@ -4082,7 +4091,7 @@ func (o FeatureMembershipConfigmanagementConfigSyncPtrOutput) Oci() FeatureMembe
 	}).(FeatureMembershipConfigmanagementConfigSyncOciPtrOutput)
 }
 
-// Supported from Config Sync versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to "false", disables the Config Sync admission webhook and does not prevent drifts.
+// Supported from Config Sync versions 1.10.0 onwards. Set to `true` to enable the Config Sync admission webhook to prevent drifts. If set to `false`, disables the Config Sync admission webhook and does not prevent drifts.
 func (o FeatureMembershipConfigmanagementConfigSyncPtrOutput) PreventDrift() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *FeatureMembershipConfigmanagementConfigSync) *bool {
 		if v == nil {
@@ -4100,6 +4109,16 @@ func (o FeatureMembershipConfigmanagementConfigSyncPtrOutput) SourceFormat() pul
 		}
 		return v.SourceFormat
 	}).(pulumi.StringPtrOutput)
+}
+
+// Set to `true` to stop syncing configurations for a single cluster. This field is only available on clusters using Config Sync [auto-upgrades](http://cloud/kubernetes-engine/enterprise/config-sync/docs/how-to/upgrade-config-sync#auto-upgrade-config) or on Config Sync version 1.20.0 or later. Defaults: `false`.
+func (o FeatureMembershipConfigmanagementConfigSyncPtrOutput) StopSyncing() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *FeatureMembershipConfigmanagementConfigSync) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.StopSyncing
+	}).(pulumi.BoolPtrOutput)
 }
 
 type FeatureMembershipConfigmanagementConfigSyncGit struct {

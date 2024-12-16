@@ -14,6 +14,10 @@ namespace Pulumi.Gcp.Dataproc.Outputs
     public sealed class ClusterClusterConfigGceClusterConfig
     {
         /// <summary>
+        /// Confidential Instance Config for clusters using [Confidential VMs](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/confidential-compute)
+        /// </summary>
+        public readonly Outputs.ClusterClusterConfigGceClusterConfigConfidentialInstanceConfig? ConfidentialInstanceConfig;
+        /// <summary>
         /// By default, clusters are not restricted to internal IP addresses,
         /// and will have ephemeral external IP addresses assigned to each instance. If set to true, all
         /// instances in the cluster will only have internal IP addresses. Note: Private Google Access
@@ -82,6 +86,8 @@ namespace Pulumi.Gcp.Dataproc.Outputs
 
         [OutputConstructor]
         private ClusterClusterConfigGceClusterConfig(
+            Outputs.ClusterClusterConfigGceClusterConfigConfidentialInstanceConfig? confidentialInstanceConfig,
+
             bool? internalIpOnly,
 
             ImmutableDictionary<string, string>? metadata,
@@ -104,6 +110,7 @@ namespace Pulumi.Gcp.Dataproc.Outputs
 
             string? zone)
         {
+            ConfidentialInstanceConfig = confidentialInstanceConfig;
             InternalIpOnly = internalIpOnly;
             Metadata = metadata;
             Network = network;

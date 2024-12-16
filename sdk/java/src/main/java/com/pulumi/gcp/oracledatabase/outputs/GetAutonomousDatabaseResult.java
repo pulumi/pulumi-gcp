@@ -6,6 +6,7 @@ package com.pulumi.gcp.oracledatabase.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.oracledatabase.outputs.GetAutonomousDatabaseProperty;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -20,6 +21,7 @@ public final class GetAutonomousDatabaseResult {
     private String cidr;
     private String createTime;
     private String database;
+    private Boolean deletionProtection;
     private String displayName;
     private Map<String,String> effectiveLabels;
     private String entitlementId;
@@ -51,6 +53,9 @@ public final class GetAutonomousDatabaseResult {
     }
     public String database() {
         return this.database;
+    }
+    public Boolean deletionProtection() {
+        return this.deletionProtection;
     }
     public String displayName() {
         return this.displayName;
@@ -104,6 +109,7 @@ public final class GetAutonomousDatabaseResult {
         private String cidr;
         private String createTime;
         private String database;
+        private Boolean deletionProtection;
         private String displayName;
         private Map<String,String> effectiveLabels;
         private String entitlementId;
@@ -123,6 +129,7 @@ public final class GetAutonomousDatabaseResult {
     	      this.cidr = defaults.cidr;
     	      this.createTime = defaults.createTime;
     	      this.database = defaults.database;
+    	      this.deletionProtection = defaults.deletionProtection;
     	      this.displayName = defaults.displayName;
     	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.entitlementId = defaults.entitlementId;
@@ -174,6 +181,14 @@ public final class GetAutonomousDatabaseResult {
               throw new MissingRequiredPropertyException("GetAutonomousDatabaseResult", "database");
             }
             this.database = database;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionProtection(Boolean deletionProtection) {
+            if (deletionProtection == null) {
+              throw new MissingRequiredPropertyException("GetAutonomousDatabaseResult", "deletionProtection");
+            }
+            this.deletionProtection = deletionProtection;
             return this;
         }
         @CustomType.Setter
@@ -272,6 +287,7 @@ public final class GetAutonomousDatabaseResult {
             _resultValue.cidr = cidr;
             _resultValue.createTime = createTime;
             _resultValue.database = database;
+            _resultValue.deletionProtection = deletionProtection;
             _resultValue.displayName = displayName;
             _resultValue.effectiveLabels = effectiveLabels;
             _resultValue.entitlementId = entitlementId;

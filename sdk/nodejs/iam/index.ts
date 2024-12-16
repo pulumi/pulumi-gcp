@@ -50,6 +50,11 @@ export type PrincipalAccessBoundaryPolicy = import("./principalAccessBoundaryPol
 export const PrincipalAccessBoundaryPolicy: typeof import("./principalAccessBoundaryPolicy").PrincipalAccessBoundaryPolicy = null as any;
 utilities.lazyLoad(exports, ["PrincipalAccessBoundaryPolicy"], () => require("./principalAccessBoundaryPolicy"));
 
+export { ProjectsPolicyBindingArgs, ProjectsPolicyBindingState } from "./projectsPolicyBinding";
+export type ProjectsPolicyBinding = import("./projectsPolicyBinding").ProjectsPolicyBinding;
+export const ProjectsPolicyBinding: typeof import("./projectsPolicyBinding").ProjectsPolicyBinding = null as any;
+utilities.lazyLoad(exports, ["ProjectsPolicyBinding"], () => require("./projectsPolicyBinding"));
+
 export { WorkforcePoolArgs, WorkforcePoolState } from "./workforcePool";
 export type WorkforcePool = import("./workforcePool").WorkforcePool;
 export const WorkforcePool: typeof import("./workforcePool").WorkforcePool = null as any;
@@ -85,6 +90,8 @@ const _module = {
                 return new OrganizationsPolicyBinding(name, <any>undefined, { urn })
             case "gcp:iam/principalAccessBoundaryPolicy:PrincipalAccessBoundaryPolicy":
                 return new PrincipalAccessBoundaryPolicy(name, <any>undefined, { urn })
+            case "gcp:iam/projectsPolicyBinding:ProjectsPolicyBinding":
+                return new ProjectsPolicyBinding(name, <any>undefined, { urn })
             case "gcp:iam/workforcePool:WorkforcePool":
                 return new WorkforcePool(name, <any>undefined, { urn })
             case "gcp:iam/workforcePoolProvider:WorkforcePoolProvider":
@@ -103,6 +110,7 @@ pulumi.runtime.registerResourceModule("gcp", "iam/denyPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "iam/foldersPolicyBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "iam/organizationsPolicyBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "iam/principalAccessBoundaryPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "iam/projectsPolicyBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "iam/workforcePool", _module)
 pulumi.runtime.registerResourceModule("gcp", "iam/workforcePoolProvider", _module)
 pulumi.runtime.registerResourceModule("gcp", "iam/workloadIdentityPool", _module)

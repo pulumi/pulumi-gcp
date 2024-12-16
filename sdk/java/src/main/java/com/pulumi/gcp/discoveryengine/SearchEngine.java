@@ -195,7 +195,7 @@ public class SearchEngine extends com.pulumi.resources.CustomResource {
     /**
      * The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore:
      * If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
-     * Default value: &#34;GENERIC&#34; Possible values: [&#34;GENERIC&#34;, &#34;MEDIA&#34;]
+     * Default value: &#34;GENERIC&#34; Possible values: [&#34;GENERIC&#34;, &#34;MEDIA&#34;, &#34;HEALTHCARE_FHIR&#34;]
      * 
      */
     @Export(name="industryVertical", refs={String.class}, tree="[0]")
@@ -204,7 +204,7 @@ public class SearchEngine extends com.pulumi.resources.CustomResource {
     /**
      * @return The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore:
      * If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
-     * Default value: &#34;GENERIC&#34; Possible values: [&#34;GENERIC&#34;, &#34;MEDIA&#34;]
+     * Default value: &#34;GENERIC&#34; Possible values: [&#34;GENERIC&#34;, &#34;MEDIA&#34;, &#34;HEALTHCARE_FHIR&#34;]
      * 
      */
     public Output<Optional<String>> industryVertical() {

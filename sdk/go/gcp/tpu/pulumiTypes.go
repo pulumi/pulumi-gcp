@@ -262,11 +262,339 @@ func (o NodeSchedulingConfigPtrOutput) Preemptible() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+type V2QueuedResourceTpu struct {
+	// The TPU node(s) being requested.
+	// Structure is documented below.
+	NodeSpecs []V2QueuedResourceTpuNodeSpec `pulumi:"nodeSpecs"`
+}
+
+// V2QueuedResourceTpuInput is an input type that accepts V2QueuedResourceTpuArgs and V2QueuedResourceTpuOutput values.
+// You can construct a concrete instance of `V2QueuedResourceTpuInput` via:
+//
+//	V2QueuedResourceTpuArgs{...}
+type V2QueuedResourceTpuInput interface {
+	pulumi.Input
+
+	ToV2QueuedResourceTpuOutput() V2QueuedResourceTpuOutput
+	ToV2QueuedResourceTpuOutputWithContext(context.Context) V2QueuedResourceTpuOutput
+}
+
+type V2QueuedResourceTpuArgs struct {
+	// The TPU node(s) being requested.
+	// Structure is documented below.
+	NodeSpecs V2QueuedResourceTpuNodeSpecArrayInput `pulumi:"nodeSpecs"`
+}
+
+func (V2QueuedResourceTpuArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2QueuedResourceTpu)(nil)).Elem()
+}
+
+func (i V2QueuedResourceTpuArgs) ToV2QueuedResourceTpuOutput() V2QueuedResourceTpuOutput {
+	return i.ToV2QueuedResourceTpuOutputWithContext(context.Background())
+}
+
+func (i V2QueuedResourceTpuArgs) ToV2QueuedResourceTpuOutputWithContext(ctx context.Context) V2QueuedResourceTpuOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2QueuedResourceTpuOutput)
+}
+
+func (i V2QueuedResourceTpuArgs) ToV2QueuedResourceTpuPtrOutput() V2QueuedResourceTpuPtrOutput {
+	return i.ToV2QueuedResourceTpuPtrOutputWithContext(context.Background())
+}
+
+func (i V2QueuedResourceTpuArgs) ToV2QueuedResourceTpuPtrOutputWithContext(ctx context.Context) V2QueuedResourceTpuPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2QueuedResourceTpuOutput).ToV2QueuedResourceTpuPtrOutputWithContext(ctx)
+}
+
+// V2QueuedResourceTpuPtrInput is an input type that accepts V2QueuedResourceTpuArgs, V2QueuedResourceTpuPtr and V2QueuedResourceTpuPtrOutput values.
+// You can construct a concrete instance of `V2QueuedResourceTpuPtrInput` via:
+//
+//	        V2QueuedResourceTpuArgs{...}
+//
+//	or:
+//
+//	        nil
+type V2QueuedResourceTpuPtrInput interface {
+	pulumi.Input
+
+	ToV2QueuedResourceTpuPtrOutput() V2QueuedResourceTpuPtrOutput
+	ToV2QueuedResourceTpuPtrOutputWithContext(context.Context) V2QueuedResourceTpuPtrOutput
+}
+
+type v2queuedResourceTpuPtrType V2QueuedResourceTpuArgs
+
+func V2QueuedResourceTpuPtr(v *V2QueuedResourceTpuArgs) V2QueuedResourceTpuPtrInput {
+	return (*v2queuedResourceTpuPtrType)(v)
+}
+
+func (*v2queuedResourceTpuPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2QueuedResourceTpu)(nil)).Elem()
+}
+
+func (i *v2queuedResourceTpuPtrType) ToV2QueuedResourceTpuPtrOutput() V2QueuedResourceTpuPtrOutput {
+	return i.ToV2QueuedResourceTpuPtrOutputWithContext(context.Background())
+}
+
+func (i *v2queuedResourceTpuPtrType) ToV2QueuedResourceTpuPtrOutputWithContext(ctx context.Context) V2QueuedResourceTpuPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2QueuedResourceTpuPtrOutput)
+}
+
+type V2QueuedResourceTpuOutput struct{ *pulumi.OutputState }
+
+func (V2QueuedResourceTpuOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2QueuedResourceTpu)(nil)).Elem()
+}
+
+func (o V2QueuedResourceTpuOutput) ToV2QueuedResourceTpuOutput() V2QueuedResourceTpuOutput {
+	return o
+}
+
+func (o V2QueuedResourceTpuOutput) ToV2QueuedResourceTpuOutputWithContext(ctx context.Context) V2QueuedResourceTpuOutput {
+	return o
+}
+
+func (o V2QueuedResourceTpuOutput) ToV2QueuedResourceTpuPtrOutput() V2QueuedResourceTpuPtrOutput {
+	return o.ToV2QueuedResourceTpuPtrOutputWithContext(context.Background())
+}
+
+func (o V2QueuedResourceTpuOutput) ToV2QueuedResourceTpuPtrOutputWithContext(ctx context.Context) V2QueuedResourceTpuPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v V2QueuedResourceTpu) *V2QueuedResourceTpu {
+		return &v
+	}).(V2QueuedResourceTpuPtrOutput)
+}
+
+// The TPU node(s) being requested.
+// Structure is documented below.
+func (o V2QueuedResourceTpuOutput) NodeSpecs() V2QueuedResourceTpuNodeSpecArrayOutput {
+	return o.ApplyT(func(v V2QueuedResourceTpu) []V2QueuedResourceTpuNodeSpec { return v.NodeSpecs }).(V2QueuedResourceTpuNodeSpecArrayOutput)
+}
+
+type V2QueuedResourceTpuPtrOutput struct{ *pulumi.OutputState }
+
+func (V2QueuedResourceTpuPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**V2QueuedResourceTpu)(nil)).Elem()
+}
+
+func (o V2QueuedResourceTpuPtrOutput) ToV2QueuedResourceTpuPtrOutput() V2QueuedResourceTpuPtrOutput {
+	return o
+}
+
+func (o V2QueuedResourceTpuPtrOutput) ToV2QueuedResourceTpuPtrOutputWithContext(ctx context.Context) V2QueuedResourceTpuPtrOutput {
+	return o
+}
+
+func (o V2QueuedResourceTpuPtrOutput) Elem() V2QueuedResourceTpuOutput {
+	return o.ApplyT(func(v *V2QueuedResourceTpu) V2QueuedResourceTpu {
+		if v != nil {
+			return *v
+		}
+		var ret V2QueuedResourceTpu
+		return ret
+	}).(V2QueuedResourceTpuOutput)
+}
+
+// The TPU node(s) being requested.
+// Structure is documented below.
+func (o V2QueuedResourceTpuPtrOutput) NodeSpecs() V2QueuedResourceTpuNodeSpecArrayOutput {
+	return o.ApplyT(func(v *V2QueuedResourceTpu) []V2QueuedResourceTpuNodeSpec {
+		if v == nil {
+			return nil
+		}
+		return v.NodeSpecs
+	}).(V2QueuedResourceTpuNodeSpecArrayOutput)
+}
+
+type V2QueuedResourceTpuNodeSpec struct {
+	// The node.
+	// Structure is documented below.
+	Node V2QueuedResourceTpuNodeSpecNode `pulumi:"node"`
+	// Unqualified node identifier used to identify the node in the project once provisioned.
+	NodeId *string `pulumi:"nodeId"`
+	// The parent resource name.
+	Parent string `pulumi:"parent"`
+}
+
+// V2QueuedResourceTpuNodeSpecInput is an input type that accepts V2QueuedResourceTpuNodeSpecArgs and V2QueuedResourceTpuNodeSpecOutput values.
+// You can construct a concrete instance of `V2QueuedResourceTpuNodeSpecInput` via:
+//
+//	V2QueuedResourceTpuNodeSpecArgs{...}
+type V2QueuedResourceTpuNodeSpecInput interface {
+	pulumi.Input
+
+	ToV2QueuedResourceTpuNodeSpecOutput() V2QueuedResourceTpuNodeSpecOutput
+	ToV2QueuedResourceTpuNodeSpecOutputWithContext(context.Context) V2QueuedResourceTpuNodeSpecOutput
+}
+
+type V2QueuedResourceTpuNodeSpecArgs struct {
+	// The node.
+	// Structure is documented below.
+	Node V2QueuedResourceTpuNodeSpecNodeInput `pulumi:"node"`
+	// Unqualified node identifier used to identify the node in the project once provisioned.
+	NodeId pulumi.StringPtrInput `pulumi:"nodeId"`
+	// The parent resource name.
+	Parent pulumi.StringInput `pulumi:"parent"`
+}
+
+func (V2QueuedResourceTpuNodeSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2QueuedResourceTpuNodeSpec)(nil)).Elem()
+}
+
+func (i V2QueuedResourceTpuNodeSpecArgs) ToV2QueuedResourceTpuNodeSpecOutput() V2QueuedResourceTpuNodeSpecOutput {
+	return i.ToV2QueuedResourceTpuNodeSpecOutputWithContext(context.Background())
+}
+
+func (i V2QueuedResourceTpuNodeSpecArgs) ToV2QueuedResourceTpuNodeSpecOutputWithContext(ctx context.Context) V2QueuedResourceTpuNodeSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2QueuedResourceTpuNodeSpecOutput)
+}
+
+// V2QueuedResourceTpuNodeSpecArrayInput is an input type that accepts V2QueuedResourceTpuNodeSpecArray and V2QueuedResourceTpuNodeSpecArrayOutput values.
+// You can construct a concrete instance of `V2QueuedResourceTpuNodeSpecArrayInput` via:
+//
+//	V2QueuedResourceTpuNodeSpecArray{ V2QueuedResourceTpuNodeSpecArgs{...} }
+type V2QueuedResourceTpuNodeSpecArrayInput interface {
+	pulumi.Input
+
+	ToV2QueuedResourceTpuNodeSpecArrayOutput() V2QueuedResourceTpuNodeSpecArrayOutput
+	ToV2QueuedResourceTpuNodeSpecArrayOutputWithContext(context.Context) V2QueuedResourceTpuNodeSpecArrayOutput
+}
+
+type V2QueuedResourceTpuNodeSpecArray []V2QueuedResourceTpuNodeSpecInput
+
+func (V2QueuedResourceTpuNodeSpecArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]V2QueuedResourceTpuNodeSpec)(nil)).Elem()
+}
+
+func (i V2QueuedResourceTpuNodeSpecArray) ToV2QueuedResourceTpuNodeSpecArrayOutput() V2QueuedResourceTpuNodeSpecArrayOutput {
+	return i.ToV2QueuedResourceTpuNodeSpecArrayOutputWithContext(context.Background())
+}
+
+func (i V2QueuedResourceTpuNodeSpecArray) ToV2QueuedResourceTpuNodeSpecArrayOutputWithContext(ctx context.Context) V2QueuedResourceTpuNodeSpecArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2QueuedResourceTpuNodeSpecArrayOutput)
+}
+
+type V2QueuedResourceTpuNodeSpecOutput struct{ *pulumi.OutputState }
+
+func (V2QueuedResourceTpuNodeSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2QueuedResourceTpuNodeSpec)(nil)).Elem()
+}
+
+func (o V2QueuedResourceTpuNodeSpecOutput) ToV2QueuedResourceTpuNodeSpecOutput() V2QueuedResourceTpuNodeSpecOutput {
+	return o
+}
+
+func (o V2QueuedResourceTpuNodeSpecOutput) ToV2QueuedResourceTpuNodeSpecOutputWithContext(ctx context.Context) V2QueuedResourceTpuNodeSpecOutput {
+	return o
+}
+
+// The node.
+// Structure is documented below.
+func (o V2QueuedResourceTpuNodeSpecOutput) Node() V2QueuedResourceTpuNodeSpecNodeOutput {
+	return o.ApplyT(func(v V2QueuedResourceTpuNodeSpec) V2QueuedResourceTpuNodeSpecNode { return v.Node }).(V2QueuedResourceTpuNodeSpecNodeOutput)
+}
+
+// Unqualified node identifier used to identify the node in the project once provisioned.
+func (o V2QueuedResourceTpuNodeSpecOutput) NodeId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2QueuedResourceTpuNodeSpec) *string { return v.NodeId }).(pulumi.StringPtrOutput)
+}
+
+// The parent resource name.
+func (o V2QueuedResourceTpuNodeSpecOutput) Parent() pulumi.StringOutput {
+	return o.ApplyT(func(v V2QueuedResourceTpuNodeSpec) string { return v.Parent }).(pulumi.StringOutput)
+}
+
+type V2QueuedResourceTpuNodeSpecArrayOutput struct{ *pulumi.OutputState }
+
+func (V2QueuedResourceTpuNodeSpecArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]V2QueuedResourceTpuNodeSpec)(nil)).Elem()
+}
+
+func (o V2QueuedResourceTpuNodeSpecArrayOutput) ToV2QueuedResourceTpuNodeSpecArrayOutput() V2QueuedResourceTpuNodeSpecArrayOutput {
+	return o
+}
+
+func (o V2QueuedResourceTpuNodeSpecArrayOutput) ToV2QueuedResourceTpuNodeSpecArrayOutputWithContext(ctx context.Context) V2QueuedResourceTpuNodeSpecArrayOutput {
+	return o
+}
+
+func (o V2QueuedResourceTpuNodeSpecArrayOutput) Index(i pulumi.IntInput) V2QueuedResourceTpuNodeSpecOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) V2QueuedResourceTpuNodeSpec {
+		return vs[0].([]V2QueuedResourceTpuNodeSpec)[vs[1].(int)]
+	}).(V2QueuedResourceTpuNodeSpecOutput)
+}
+
+type V2QueuedResourceTpuNodeSpecNode struct {
+	// TPU accelerator type for the TPU. If not specified, this defaults to 'v2-8'.
+	AcceleratorType *string `pulumi:"acceleratorType"`
+	// Text description of the TPU.
+	Description *string `pulumi:"description"`
+	// Runtime version for the TPU.
+	RuntimeVersion string `pulumi:"runtimeVersion"`
+}
+
+// V2QueuedResourceTpuNodeSpecNodeInput is an input type that accepts V2QueuedResourceTpuNodeSpecNodeArgs and V2QueuedResourceTpuNodeSpecNodeOutput values.
+// You can construct a concrete instance of `V2QueuedResourceTpuNodeSpecNodeInput` via:
+//
+//	V2QueuedResourceTpuNodeSpecNodeArgs{...}
+type V2QueuedResourceTpuNodeSpecNodeInput interface {
+	pulumi.Input
+
+	ToV2QueuedResourceTpuNodeSpecNodeOutput() V2QueuedResourceTpuNodeSpecNodeOutput
+	ToV2QueuedResourceTpuNodeSpecNodeOutputWithContext(context.Context) V2QueuedResourceTpuNodeSpecNodeOutput
+}
+
+type V2QueuedResourceTpuNodeSpecNodeArgs struct {
+	// TPU accelerator type for the TPU. If not specified, this defaults to 'v2-8'.
+	AcceleratorType pulumi.StringPtrInput `pulumi:"acceleratorType"`
+	// Text description of the TPU.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Runtime version for the TPU.
+	RuntimeVersion pulumi.StringInput `pulumi:"runtimeVersion"`
+}
+
+func (V2QueuedResourceTpuNodeSpecNodeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2QueuedResourceTpuNodeSpecNode)(nil)).Elem()
+}
+
+func (i V2QueuedResourceTpuNodeSpecNodeArgs) ToV2QueuedResourceTpuNodeSpecNodeOutput() V2QueuedResourceTpuNodeSpecNodeOutput {
+	return i.ToV2QueuedResourceTpuNodeSpecNodeOutputWithContext(context.Background())
+}
+
+func (i V2QueuedResourceTpuNodeSpecNodeArgs) ToV2QueuedResourceTpuNodeSpecNodeOutputWithContext(ctx context.Context) V2QueuedResourceTpuNodeSpecNodeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(V2QueuedResourceTpuNodeSpecNodeOutput)
+}
+
+type V2QueuedResourceTpuNodeSpecNodeOutput struct{ *pulumi.OutputState }
+
+func (V2QueuedResourceTpuNodeSpecNodeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*V2QueuedResourceTpuNodeSpecNode)(nil)).Elem()
+}
+
+func (o V2QueuedResourceTpuNodeSpecNodeOutput) ToV2QueuedResourceTpuNodeSpecNodeOutput() V2QueuedResourceTpuNodeSpecNodeOutput {
+	return o
+}
+
+func (o V2QueuedResourceTpuNodeSpecNodeOutput) ToV2QueuedResourceTpuNodeSpecNodeOutputWithContext(ctx context.Context) V2QueuedResourceTpuNodeSpecNodeOutput {
+	return o
+}
+
+// TPU accelerator type for the TPU. If not specified, this defaults to 'v2-8'.
+func (o V2QueuedResourceTpuNodeSpecNodeOutput) AcceleratorType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2QueuedResourceTpuNodeSpecNode) *string { return v.AcceleratorType }).(pulumi.StringPtrOutput)
+}
+
+// Text description of the TPU.
+func (o V2QueuedResourceTpuNodeSpecNodeOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v V2QueuedResourceTpuNodeSpecNode) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Runtime version for the TPU.
+func (o V2QueuedResourceTpuNodeSpecNodeOutput) RuntimeVersion() pulumi.StringOutput {
+	return o.ApplyT(func(v V2QueuedResourceTpuNodeSpecNode) string { return v.RuntimeVersion }).(pulumi.StringOutput)
+}
+
 type V2VmAcceleratorConfig struct {
 	// Topology of TPU in chips.
 	Topology string `pulumi:"topology"`
-	// Type of TPU.
-	// Possible values are: `V2`, `V3`, `V4`, `V5P`.
+	// Type of TPU. Please select one of the allowed types: https://cloud.google.com/tpu/docs/reference/rest/v2/AcceleratorConfig#Type
 	Type string `pulumi:"type"`
 }
 
@@ -284,8 +612,7 @@ type V2VmAcceleratorConfigInput interface {
 type V2VmAcceleratorConfigArgs struct {
 	// Topology of TPU in chips.
 	Topology pulumi.StringInput `pulumi:"topology"`
-	// Type of TPU.
-	// Possible values are: `V2`, `V3`, `V4`, `V5P`.
+	// Type of TPU. Please select one of the allowed types: https://cloud.google.com/tpu/docs/reference/rest/v2/AcceleratorConfig#Type
 	Type pulumi.StringInput `pulumi:"type"`
 }
 
@@ -371,8 +698,7 @@ func (o V2VmAcceleratorConfigOutput) Topology() pulumi.StringOutput {
 	return o.ApplyT(func(v V2VmAcceleratorConfig) string { return v.Topology }).(pulumi.StringOutput)
 }
 
-// Type of TPU.
-// Possible values are: `V2`, `V3`, `V4`, `V5P`.
+// Type of TPU. Please select one of the allowed types: https://cloud.google.com/tpu/docs/reference/rest/v2/AcceleratorConfig#Type
 func (o V2VmAcceleratorConfigOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v V2VmAcceleratorConfig) string { return v.Type }).(pulumi.StringOutput)
 }
@@ -411,8 +737,7 @@ func (o V2VmAcceleratorConfigPtrOutput) Topology() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Type of TPU.
-// Possible values are: `V2`, `V3`, `V4`, `V5P`.
+// Type of TPU. Please select one of the allowed types: https://cloud.google.com/tpu/docs/reference/rest/v2/AcceleratorConfig#Type
 func (o V2VmAcceleratorConfigPtrOutput) Type() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *V2VmAcceleratorConfig) *string {
 		if v == nil {
@@ -1587,6 +1912,11 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeNetworkEndpointArrayInput)(nil)).Elem(), NodeNetworkEndpointArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeSchedulingConfigInput)(nil)).Elem(), NodeSchedulingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*NodeSchedulingConfigPtrInput)(nil)).Elem(), NodeSchedulingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2QueuedResourceTpuInput)(nil)).Elem(), V2QueuedResourceTpuArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2QueuedResourceTpuPtrInput)(nil)).Elem(), V2QueuedResourceTpuArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2QueuedResourceTpuNodeSpecInput)(nil)).Elem(), V2QueuedResourceTpuNodeSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2QueuedResourceTpuNodeSpecArrayInput)(nil)).Elem(), V2QueuedResourceTpuNodeSpecArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*V2QueuedResourceTpuNodeSpecNodeInput)(nil)).Elem(), V2QueuedResourceTpuNodeSpecNodeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*V2VmAcceleratorConfigInput)(nil)).Elem(), V2VmAcceleratorConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*V2VmAcceleratorConfigPtrInput)(nil)).Elem(), V2VmAcceleratorConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*V2VmDataDiskInput)(nil)).Elem(), V2VmDataDiskArgs{})
@@ -1609,6 +1939,11 @@ func init() {
 	pulumi.RegisterOutputType(NodeNetworkEndpointArrayOutput{})
 	pulumi.RegisterOutputType(NodeSchedulingConfigOutput{})
 	pulumi.RegisterOutputType(NodeSchedulingConfigPtrOutput{})
+	pulumi.RegisterOutputType(V2QueuedResourceTpuOutput{})
+	pulumi.RegisterOutputType(V2QueuedResourceTpuPtrOutput{})
+	pulumi.RegisterOutputType(V2QueuedResourceTpuNodeSpecOutput{})
+	pulumi.RegisterOutputType(V2QueuedResourceTpuNodeSpecArrayOutput{})
+	pulumi.RegisterOutputType(V2QueuedResourceTpuNodeSpecNodeOutput{})
 	pulumi.RegisterOutputType(V2VmAcceleratorConfigOutput{})
 	pulumi.RegisterOutputType(V2VmAcceleratorConfigPtrOutput{})
 	pulumi.RegisterOutputType(V2VmDataDiskOutput{})

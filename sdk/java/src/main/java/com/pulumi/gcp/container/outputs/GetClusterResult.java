@@ -17,6 +17,7 @@ import com.pulumi.gcp.container.outputs.GetClusterDatabaseEncryption;
 import com.pulumi.gcp.container.outputs.GetClusterDefaultSnatStatus;
 import com.pulumi.gcp.container.outputs.GetClusterDnsConfig;
 import com.pulumi.gcp.container.outputs.GetClusterEnableK8sBetaApi;
+import com.pulumi.gcp.container.outputs.GetClusterEnterpriseConfig;
 import com.pulumi.gcp.container.outputs.GetClusterFleet;
 import com.pulumi.gcp.container.outputs.GetClusterGatewayApiConfig;
 import com.pulumi.gcp.container.outputs.GetClusterIdentityServiceConfig;
@@ -87,6 +88,7 @@ public final class GetClusterResult {
     private Boolean enableShieldedNodes;
     private Boolean enableTpu;
     private String endpoint;
+    private List<GetClusterEnterpriseConfig> enterpriseConfigs;
     private List<GetClusterFleet> fleets;
     private List<GetClusterGatewayApiConfig> gatewayApiConfigs;
     /**
@@ -234,6 +236,9 @@ public final class GetClusterResult {
     }
     public String endpoint() {
         return this.endpoint;
+    }
+    public List<GetClusterEnterpriseConfig> enterpriseConfigs() {
+        return this.enterpriseConfigs;
     }
     public List<GetClusterFleet> fleets() {
         return this.fleets;
@@ -435,6 +440,7 @@ public final class GetClusterResult {
         private Boolean enableShieldedNodes;
         private Boolean enableTpu;
         private String endpoint;
+        private List<GetClusterEnterpriseConfig> enterpriseConfigs;
         private List<GetClusterFleet> fleets;
         private List<GetClusterGatewayApiConfig> gatewayApiConfigs;
         private String id;
@@ -520,6 +526,7 @@ public final class GetClusterResult {
     	      this.enableShieldedNodes = defaults.enableShieldedNodes;
     	      this.enableTpu = defaults.enableTpu;
     	      this.endpoint = defaults.endpoint;
+    	      this.enterpriseConfigs = defaults.enterpriseConfigs;
     	      this.fleets = defaults.fleets;
     	      this.gatewayApiConfigs = defaults.gatewayApiConfigs;
     	      this.id = defaults.id;
@@ -849,6 +856,17 @@ public final class GetClusterResult {
             }
             this.endpoint = endpoint;
             return this;
+        }
+        @CustomType.Setter
+        public Builder enterpriseConfigs(List<GetClusterEnterpriseConfig> enterpriseConfigs) {
+            if (enterpriseConfigs == null) {
+              throw new MissingRequiredPropertyException("GetClusterResult", "enterpriseConfigs");
+            }
+            this.enterpriseConfigs = enterpriseConfigs;
+            return this;
+        }
+        public Builder enterpriseConfigs(GetClusterEnterpriseConfig... enterpriseConfigs) {
+            return enterpriseConfigs(List.of(enterpriseConfigs));
         }
         @CustomType.Setter
         public Builder fleets(List<GetClusterFleet> fleets) {
@@ -1384,6 +1402,7 @@ public final class GetClusterResult {
             _resultValue.enableShieldedNodes = enableShieldedNodes;
             _resultValue.enableTpu = enableTpu;
             _resultValue.endpoint = endpoint;
+            _resultValue.enterpriseConfigs = enterpriseConfigs;
             _resultValue.fleets = fleets;
             _resultValue.gatewayApiConfigs = gatewayApiConfigs;
             _resultValue.id = id;

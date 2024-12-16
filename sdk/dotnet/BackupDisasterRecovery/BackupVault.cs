@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.BackupDisasterRecovery
 {
     /// <summary>
+    /// Container to store and organize immutable and indelible backups.
+    /// 
     /// ## Example Usage
     /// 
     /// ### Backup Dr Backup Vault Full
@@ -28,15 +30,15 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
     ///         BackupVaultId = "backup-vault-test",
     ///         Description = "This is a second backup vault built by Terraform.",
     ///         BackupMinimumEnforcedRetentionDuration = "100000s",
-    ///         Labels = 
-    ///         {
-    ///             { "foo", "bar1" },
-    ///             { "bar", "baz1" },
-    ///         },
     ///         Annotations = 
     ///         {
     ///             { "annotations1", "bar1" },
     ///             { "annotations2", "baz1" },
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "foo", "bar1" },
+    ///             { "bar", "baz1" },
     ///         },
     ///         ForceUpdate = true,
     ///         AccessRestriction = "WITHIN_ORGANIZATION",

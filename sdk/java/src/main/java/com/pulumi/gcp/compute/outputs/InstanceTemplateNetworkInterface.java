@@ -80,7 +80,7 @@ public final class InstanceTemplateNetworkInterface {
      */
     private @Nullable String networkIp;
     /**
-     * @return The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET.
+     * @return The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET. In the beta provider the additional values of MRDMA and IRDMA are supported.
      * 
      */
     private @Nullable String nicType;
@@ -193,7 +193,7 @@ public final class InstanceTemplateNetworkInterface {
         return Optional.ofNullable(this.networkIp);
     }
     /**
-     * @return The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET.
+     * @return The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET. In the beta provider the additional values of MRDMA and IRDMA are supported.
      * 
      */
     public Optional<String> nicType() {

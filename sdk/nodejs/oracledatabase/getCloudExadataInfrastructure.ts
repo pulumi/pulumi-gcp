@@ -60,6 +60,7 @@ export interface GetCloudExadataInfrastructureArgs {
 export interface GetCloudExadataInfrastructureResult {
     readonly cloudExadataInfrastructureId: string;
     readonly createTime: string;
+    readonly deletionProtection: boolean;
     readonly displayName: string;
     readonly effectiveLabels: {[key: string]: string};
     readonly entitlementId: string;

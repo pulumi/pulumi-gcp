@@ -84,6 +84,7 @@ export interface GetRegionNetworkEndpointGroupResult {
      */
     readonly networkEndpointType: string;
     readonly project?: string;
+    readonly pscDatas: outputs.compute.GetRegionNetworkEndpointGroupPscData[];
     /**
      * The target service url used to set up private service connection to a Google API or a PSC Producer Service Attachment.
      */

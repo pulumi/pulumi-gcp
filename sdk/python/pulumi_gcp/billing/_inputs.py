@@ -471,7 +471,7 @@ if not MYPY:
         Optional. If creditTypesTreatment is INCLUDE_SPECIFIED_CREDITS,
         this is a list of credit types to be subtracted from gross cost to determine the spend for threshold calculations. See a list of acceptable credit type values.
         If creditTypesTreatment is not INCLUDE_SPECIFIED_CREDITS, this field must be empty.
-        **Note:** If the field has a value in the config and needs to be removed, the field has to be an emtpy array in the config.
+        **Note:** If the field has a value in the config and needs to be removed, the field has to be an empty array in the config.
         """
         credit_types_treatment: NotRequired[pulumi.Input[str]]
         """
@@ -524,7 +524,7 @@ if not MYPY:
         the parent account, usage from the parent account will be included.
         If the field is omitted, the report will include usage from the parent
         account and all subaccounts, if they exist.
-        **Note:** If the field has a value in the config and needs to be removed, the field has to be an emtpy array in the config.
+        **Note:** If the field has a value in the config and needs to be removed, the field has to be an empty array in the config.
         """
 elif False:
     BudgetBudgetFilterArgsDict: TypeAlias = Mapping[str, Any]
@@ -550,7 +550,7 @@ class BudgetBudgetFilterArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] credit_types: Optional. If creditTypesTreatment is INCLUDE_SPECIFIED_CREDITS,
                this is a list of credit types to be subtracted from gross cost to determine the spend for threshold calculations. See a list of acceptable credit type values.
                If creditTypesTreatment is not INCLUDE_SPECIFIED_CREDITS, this field must be empty.
-               **Note:** If the field has a value in the config and needs to be removed, the field has to be an emtpy array in the config.
+               **Note:** If the field has a value in the config and needs to be removed, the field has to be an empty array in the config.
         :param pulumi.Input[str] credit_types_treatment: Specifies how credits should be treated when determining spend
                for threshold calculations.
                Default value is `INCLUDE_ALL_CREDITS`.
@@ -582,7 +582,7 @@ class BudgetBudgetFilterArgs:
                the parent account, usage from the parent account will be included.
                If the field is omitted, the report will include usage from the parent
                account and all subaccounts, if they exist.
-               **Note:** If the field has a value in the config and needs to be removed, the field has to be an emtpy array in the config.
+               **Note:** If the field has a value in the config and needs to be removed, the field has to be an empty array in the config.
         """
         if calendar_period is not None:
             pulumi.set(__self__, "calendar_period", calendar_period)
@@ -626,7 +626,7 @@ class BudgetBudgetFilterArgs:
         Optional. If creditTypesTreatment is INCLUDE_SPECIFIED_CREDITS,
         this is a list of credit types to be subtracted from gross cost to determine the spend for threshold calculations. See a list of acceptable credit type values.
         If creditTypesTreatment is not INCLUDE_SPECIFIED_CREDITS, this field must be empty.
-        **Note:** If the field has a value in the config and needs to be removed, the field has to be an emtpy array in the config.
+        **Note:** If the field has a value in the config and needs to be removed, the field has to be an empty array in the config.
         """
         return pulumi.get(self, "credit_types")
 
@@ -735,7 +735,7 @@ class BudgetBudgetFilterArgs:
         the parent account, usage from the parent account will be included.
         If the field is omitted, the report will include usage from the parent
         account and all subaccounts, if they exist.
-        **Note:** If the field has a value in the config and needs to be removed, the field has to be an emtpy array in the config.
+        **Note:** If the field has a value in the config and needs to be removed, the field has to be an empty array in the config.
         """
         return pulumi.get(self, "subaccounts")
 

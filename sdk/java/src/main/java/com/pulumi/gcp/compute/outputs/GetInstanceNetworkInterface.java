@@ -67,7 +67,7 @@ public final class GetInstanceNetworkInterface {
      */
     private String networkIp;
     /**
-     * @return The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, IDPF
+     * @return The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, IDPF, MRDMA, and IRDMA
      * 
      */
     private String nicType;
@@ -170,7 +170,7 @@ public final class GetInstanceNetworkInterface {
         return this.networkIp;
     }
     /**
-     * @return The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, IDPF
+     * @return The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, IDPF, MRDMA, and IRDMA
      * 
      */
     public String nicType() {

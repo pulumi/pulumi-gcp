@@ -68,7 +68,7 @@ public final class InstanceFromMachineImageNetworkInterface {
      */
     private @Nullable String networkIp;
     /**
-     * @return The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, IDPF
+     * @return The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, IDPF, MRDMA, and IRDMA
      * 
      */
     private @Nullable String nicType;
@@ -171,7 +171,7 @@ public final class InstanceFromMachineImageNetworkInterface {
         return Optional.ofNullable(this.networkIp);
     }
     /**
-     * @return The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, IDPF
+     * @return The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, IDPF, MRDMA, and IRDMA
      * 
      */
     public Optional<String> nicType() {

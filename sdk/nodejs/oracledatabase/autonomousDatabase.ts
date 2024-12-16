@@ -42,6 +42,7 @@ import * as utilities from "../utilities";
  *         dbWorkload: "OLTP",
  *         licenseType: "LICENSE_INCLUDED",
  *     },
+ *     deletionProtection: true,
  * });
  * ```
  * ### Oracledatabase Autonomous Database Full
@@ -87,6 +88,7 @@ import * as utilities from "../utilities";
  *         privateEndpointIp: "10.5.0.11",
  *         privateEndpointLabel: "testhost",
  *     },
+ *     deletionProtection: true,
  * });
  * ```
  *
@@ -167,6 +169,7 @@ export class AutonomousDatabase extends pulumi.CustomResource {
      * contain a maximum of 30 alphanumeric characters.
      */
     public readonly database!: pulumi.Output<string>;
+    public readonly deletionProtection!: pulumi.Output<boolean | undefined>;
     /**
      * The display name for the Autonomous Database. The name does not have to be unique within your project.
      */
@@ -230,6 +233,7 @@ export class AutonomousDatabase extends pulumi.CustomResource {
             resourceInputs["cidr"] = state ? state.cidr : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["database"] = state ? state.database : undefined;
+            resourceInputs["deletionProtection"] = state ? state.deletionProtection : undefined;
             resourceInputs["displayName"] = state ? state.displayName : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["entitlementId"] = state ? state.entitlementId : undefined;
@@ -264,6 +268,7 @@ export class AutonomousDatabase extends pulumi.CustomResource {
             resourceInputs["autonomousDatabaseId"] = args ? args.autonomousDatabaseId : undefined;
             resourceInputs["cidr"] = args ? args.cidr : undefined;
             resourceInputs["database"] = args ? args.database : undefined;
+            resourceInputs["deletionProtection"] = args ? args.deletionProtection : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
@@ -312,6 +317,7 @@ export interface AutonomousDatabaseState {
      * contain a maximum of 30 alphanumeric characters.
      */
     database?: pulumi.Input<string>;
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * The display name for the Autonomous Database. The name does not have to be unique within your project.
      */
@@ -383,6 +389,7 @@ export interface AutonomousDatabaseArgs {
      * contain a maximum of 30 alphanumeric characters.
      */
     database: pulumi.Input<string>;
+    deletionProtection?: pulumi.Input<boolean>;
     /**
      * The display name for the Autonomous Database. The name does not have to be unique within your project.
      */

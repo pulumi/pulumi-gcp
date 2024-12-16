@@ -657,6 +657,8 @@ __all__ = [
     'RegionNetworkEndpointGroupCloudFunctionArgsDict',
     'RegionNetworkEndpointGroupCloudRunArgs',
     'RegionNetworkEndpointGroupCloudRunArgsDict',
+    'RegionNetworkEndpointGroupPscDataArgs',
+    'RegionNetworkEndpointGroupPscDataArgsDict',
     'RegionNetworkEndpointGroupServerlessDeploymentArgs',
     'RegionNetworkEndpointGroupServerlessDeploymentArgsDict',
     'RegionNetworkFirewallPolicyRuleMatchArgs',
@@ -1007,6 +1009,10 @@ __all__ = [
     'SecurityPolicyAdaptiveProtectionConfigAutoDeployConfigArgsDict',
     'SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs',
     'SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgsDict',
+    'SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArgs',
+    'SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArgsDict',
+    'SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArgs',
+    'SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArgsDict',
     'SecurityPolicyAdvancedOptionsConfigArgs',
     'SecurityPolicyAdvancedOptionsConfigArgsDict',
     'SecurityPolicyAdvancedOptionsConfigJsonCustomConfigArgs',
@@ -9987,6 +9993,14 @@ if not MYPY:
         """
         Defines whether the instance should have nested virtualization  enabled. Defaults to false.
         """
+        enable_uefi_networking: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to enable UEFI networking for instance creation.
+        """
+        performance_monitoring_unit: NotRequired[pulumi.Input[str]]
+        """
+        [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+        """
         threads_per_core: NotRequired[pulumi.Input[int]]
         """
         The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
@@ -10006,17 +10020,25 @@ elif False:
 class InstanceAdvancedMachineFeaturesArgs:
     def __init__(__self__, *,
                  enable_nested_virtualization: Optional[pulumi.Input[bool]] = None,
+                 enable_uefi_networking: Optional[pulumi.Input[bool]] = None,
+                 performance_monitoring_unit: Optional[pulumi.Input[str]] = None,
                  threads_per_core: Optional[pulumi.Input[int]] = None,
                  turbo_mode: Optional[pulumi.Input[str]] = None,
                  visible_core_count: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[bool] enable_nested_virtualization: Defines whether the instance should have nested virtualization  enabled. Defaults to false.
+        :param pulumi.Input[bool] enable_uefi_networking: Whether to enable UEFI networking for instance creation.
+        :param pulumi.Input[str] performance_monitoring_unit: [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
         :param pulumi.Input[int] threads_per_core: The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
         :param pulumi.Input[str] turbo_mode: Turbo frequency mode to use for the instance. Supported modes are currently either `ALL_CORE_MAX` or unset (default).
         :param pulumi.Input[int] visible_core_count: The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
         """
         if enable_nested_virtualization is not None:
             pulumi.set(__self__, "enable_nested_virtualization", enable_nested_virtualization)
+        if enable_uefi_networking is not None:
+            pulumi.set(__self__, "enable_uefi_networking", enable_uefi_networking)
+        if performance_monitoring_unit is not None:
+            pulumi.set(__self__, "performance_monitoring_unit", performance_monitoring_unit)
         if threads_per_core is not None:
             pulumi.set(__self__, "threads_per_core", threads_per_core)
         if turbo_mode is not None:
@@ -10035,6 +10057,30 @@ class InstanceAdvancedMachineFeaturesArgs:
     @enable_nested_virtualization.setter
     def enable_nested_virtualization(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_nested_virtualization", value)
+
+    @property
+    @pulumi.getter(name="enableUefiNetworking")
+    def enable_uefi_networking(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable UEFI networking for instance creation.
+        """
+        return pulumi.get(self, "enable_uefi_networking")
+
+    @enable_uefi_networking.setter
+    def enable_uefi_networking(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_uefi_networking", value)
+
+    @property
+    @pulumi.getter(name="performanceMonitoringUnit")
+    def performance_monitoring_unit(self) -> Optional[pulumi.Input[str]]:
+        """
+        [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+        """
+        return pulumi.get(self, "performance_monitoring_unit")
+
+    @performance_monitoring_unit.setter
+    def performance_monitoring_unit(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "performance_monitoring_unit", value)
 
     @property
     @pulumi.getter(name="threadsPerCore")
@@ -10533,10 +10579,12 @@ if not MYPY:
         """
         storage_pool: NotRequired[pulumi.Input[str]]
         """
-        The URL of the storage pool in which the new disk is created.
+        The URL or the name of the storage pool in which the new disk is created.
         For example:
         * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
         * /projects/{project}/zones/{zone}/storagePools/{storagePool}
+        * /zones/{zone}/storagePools/{storagePool}
+        * /{storagePool}
         """
         type: NotRequired[pulumi.Input[str]]
         """
@@ -10590,10 +10638,12 @@ class InstanceBootDiskInitializeParamsArgs:
         :param pulumi.Input[str] resource_policies: A list of self_links of resource policies to attach to the instance's boot disk. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
         :param pulumi.Input[int] size: The size of the image in gigabytes. If not specified, it
                will inherit the size of its base image.
-        :param pulumi.Input[str] storage_pool: The URL of the storage pool in which the new disk is created.
+        :param pulumi.Input[str] storage_pool: The URL or the name of the storage pool in which the new disk is created.
                For example:
                * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
                * /projects/{project}/zones/{zone}/storagePools/{storagePool}
+               * /zones/{zone}/storagePools/{storagePool}
+               * /{storagePool}
         :param pulumi.Input[str] type: The GCE disk type. Such as pd-standard, pd-balanced or pd-ssd.
         """
         if enable_confidential_compute is not None:
@@ -10740,10 +10790,12 @@ class InstanceBootDiskInitializeParamsArgs:
     @pulumi.getter(name="storagePool")
     def storage_pool(self) -> Optional[pulumi.Input[str]]:
         """
-        The URL of the storage pool in which the new disk is created.
+        The URL or the name of the storage pool in which the new disk is created.
         For example:
         * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
         * /projects/{project}/zones/{zone}/storagePools/{storagePool}
+        * /zones/{zone}/storagePools/{storagePool}
+        * /{storagePool}
         """
         return pulumi.get(self, "storage_pool")
 
@@ -10822,6 +10874,14 @@ if not MYPY:
         """
         Whether to enable nested virtualization or not.
         """
+        enable_uefi_networking: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to enable UEFI networking for the instance.
+        """
+        performance_monitoring_unit: NotRequired[pulumi.Input[str]]
+        """
+        The PMU is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are "STANDARD", "ENHANCED", and "ARCHITECTURAL".
+        """
         threads_per_core: NotRequired[pulumi.Input[int]]
         """
         The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
@@ -10841,17 +10901,25 @@ elif False:
 class InstanceFromMachineImageAdvancedMachineFeaturesArgs:
     def __init__(__self__, *,
                  enable_nested_virtualization: Optional[pulumi.Input[bool]] = None,
+                 enable_uefi_networking: Optional[pulumi.Input[bool]] = None,
+                 performance_monitoring_unit: Optional[pulumi.Input[str]] = None,
                  threads_per_core: Optional[pulumi.Input[int]] = None,
                  turbo_mode: Optional[pulumi.Input[str]] = None,
                  visible_core_count: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[bool] enable_nested_virtualization: Whether to enable nested virtualization or not.
+        :param pulumi.Input[bool] enable_uefi_networking: Whether to enable UEFI networking for the instance.
+        :param pulumi.Input[str] performance_monitoring_unit: The PMU is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are "STANDARD", "ENHANCED", and "ARCHITECTURAL".
         :param pulumi.Input[int] threads_per_core: The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
         :param pulumi.Input[str] turbo_mode: Turbo frequency mode to use for the instance. Currently supported modes is "ALL_CORE_MAX".
         :param pulumi.Input[int] visible_core_count: The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance\\'s nominal CPU count and the underlying platform\\'s SMT width.
         """
         if enable_nested_virtualization is not None:
             pulumi.set(__self__, "enable_nested_virtualization", enable_nested_virtualization)
+        if enable_uefi_networking is not None:
+            pulumi.set(__self__, "enable_uefi_networking", enable_uefi_networking)
+        if performance_monitoring_unit is not None:
+            pulumi.set(__self__, "performance_monitoring_unit", performance_monitoring_unit)
         if threads_per_core is not None:
             pulumi.set(__self__, "threads_per_core", threads_per_core)
         if turbo_mode is not None:
@@ -10870,6 +10938,30 @@ class InstanceFromMachineImageAdvancedMachineFeaturesArgs:
     @enable_nested_virtualization.setter
     def enable_nested_virtualization(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_nested_virtualization", value)
+
+    @property
+    @pulumi.getter(name="enableUefiNetworking")
+    def enable_uefi_networking(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable UEFI networking for the instance.
+        """
+        return pulumi.get(self, "enable_uefi_networking")
+
+    @enable_uefi_networking.setter
+    def enable_uefi_networking(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_uefi_networking", value)
+
+    @property
+    @pulumi.getter(name="performanceMonitoringUnit")
+    def performance_monitoring_unit(self) -> Optional[pulumi.Input[str]]:
+        """
+        The PMU is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are "STANDARD", "ENHANCED", and "ARCHITECTURAL".
+        """
+        return pulumi.get(self, "performance_monitoring_unit")
+
+    @performance_monitoring_unit.setter
+    def performance_monitoring_unit(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "performance_monitoring_unit", value)
 
     @property
     @pulumi.getter(name="threadsPerCore")
@@ -11599,7 +11691,7 @@ if not MYPY:
         """
         nic_type: NotRequired[pulumi.Input[str]]
         """
-        The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, IDPF
+        The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, IDPF, MRDMA, and IRDMA
         """
         queue_count: NotRequired[pulumi.Input[int]]
         """
@@ -11655,7 +11747,7 @@ class InstanceFromMachineImageNetworkInterfaceArgs:
         :param pulumi.Input[str] network: The name or self_link of the network attached to this interface.
         :param pulumi.Input[str] network_attachment: The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
         :param pulumi.Input[str] network_ip: The private IP address assigned to the instance.
-        :param pulumi.Input[str] nic_type: The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, IDPF
+        :param pulumi.Input[str] nic_type: The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, IDPF, MRDMA, and IRDMA
         :param pulumi.Input[int] queue_count: The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
         :param pulumi.Input[str] security_policy: A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
         :param pulumi.Input[str] stack_type: The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
@@ -11820,7 +11912,7 @@ class InstanceFromMachineImageNetworkInterfaceArgs:
     @pulumi.getter(name="nicType")
     def nic_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, IDPF
+        The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, IDPF, MRDMA, and IRDMA
         """
         return pulumi.get(self, "nic_type")
 
@@ -12988,6 +13080,14 @@ if not MYPY:
         """
         Whether to enable nested virtualization or not.
         """
+        enable_uefi_networking: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to enable UEFI networking for the instance.
+        """
+        performance_monitoring_unit: NotRequired[pulumi.Input[str]]
+        """
+        The PMU is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are "STANDARD", "ENHANCED", and "ARCHITECTURAL".
+        """
         threads_per_core: NotRequired[pulumi.Input[int]]
         """
         The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
@@ -13007,17 +13107,25 @@ elif False:
 class InstanceFromTemplateAdvancedMachineFeaturesArgs:
     def __init__(__self__, *,
                  enable_nested_virtualization: Optional[pulumi.Input[bool]] = None,
+                 enable_uefi_networking: Optional[pulumi.Input[bool]] = None,
+                 performance_monitoring_unit: Optional[pulumi.Input[str]] = None,
                  threads_per_core: Optional[pulumi.Input[int]] = None,
                  turbo_mode: Optional[pulumi.Input[str]] = None,
                  visible_core_count: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[bool] enable_nested_virtualization: Whether to enable nested virtualization or not.
+        :param pulumi.Input[bool] enable_uefi_networking: Whether to enable UEFI networking for the instance.
+        :param pulumi.Input[str] performance_monitoring_unit: The PMU is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are "STANDARD", "ENHANCED", and "ARCHITECTURAL".
         :param pulumi.Input[int] threads_per_core: The number of threads per physical core. To disable simultaneous multithreading (SMT) set this to 1. If unset, the maximum number of threads supported per core by the underlying processor is assumed.
         :param pulumi.Input[str] turbo_mode: Turbo frequency mode to use for the instance. Currently supported modes is "ALL_CORE_MAX".
         :param pulumi.Input[int] visible_core_count: The number of physical cores to expose to an instance. Multiply by the number of threads per core to compute the total number of virtual CPUs to expose to the instance. If unset, the number of cores is inferred from the instance\\'s nominal CPU count and the underlying platform\\'s SMT width.
         """
         if enable_nested_virtualization is not None:
             pulumi.set(__self__, "enable_nested_virtualization", enable_nested_virtualization)
+        if enable_uefi_networking is not None:
+            pulumi.set(__self__, "enable_uefi_networking", enable_uefi_networking)
+        if performance_monitoring_unit is not None:
+            pulumi.set(__self__, "performance_monitoring_unit", performance_monitoring_unit)
         if threads_per_core is not None:
             pulumi.set(__self__, "threads_per_core", threads_per_core)
         if turbo_mode is not None:
@@ -13036,6 +13144,30 @@ class InstanceFromTemplateAdvancedMachineFeaturesArgs:
     @enable_nested_virtualization.setter
     def enable_nested_virtualization(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_nested_virtualization", value)
+
+    @property
+    @pulumi.getter(name="enableUefiNetworking")
+    def enable_uefi_networking(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable UEFI networking for the instance.
+        """
+        return pulumi.get(self, "enable_uefi_networking")
+
+    @enable_uefi_networking.setter
+    def enable_uefi_networking(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_uefi_networking", value)
+
+    @property
+    @pulumi.getter(name="performanceMonitoringUnit")
+    def performance_monitoring_unit(self) -> Optional[pulumi.Input[str]]:
+        """
+        The PMU is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are "STANDARD", "ENHANCED", and "ARCHITECTURAL".
+        """
+        return pulumi.get(self, "performance_monitoring_unit")
+
+    @performance_monitoring_unit.setter
+    def performance_monitoring_unit(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "performance_monitoring_unit", value)
 
     @property
     @pulumi.getter(name="threadsPerCore")
@@ -13765,7 +13897,7 @@ if not MYPY:
         """
         nic_type: NotRequired[pulumi.Input[str]]
         """
-        The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, IDPF
+        The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, IDPF, MRDMA, and IRDMA
         """
         queue_count: NotRequired[pulumi.Input[int]]
         """
@@ -13821,7 +13953,7 @@ class InstanceFromTemplateNetworkInterfaceArgs:
         :param pulumi.Input[str] network: The name or self_link of the network attached to this interface.
         :param pulumi.Input[str] network_attachment: The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
         :param pulumi.Input[str] network_ip: The private IP address assigned to the instance.
-        :param pulumi.Input[str] nic_type: The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, IDPF
+        :param pulumi.Input[str] nic_type: The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, IDPF, MRDMA, and IRDMA
         :param pulumi.Input[int] queue_count: The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
         :param pulumi.Input[str] security_policy: A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
         :param pulumi.Input[str] stack_type: The stack type for this network interface to identify whether the IPv6 feature is enabled or not. If not specified, IPV4_ONLY will be used.
@@ -13986,7 +14118,7 @@ class InstanceFromTemplateNetworkInterfaceArgs:
     @pulumi.getter(name="nicType")
     def nic_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, IDPF
+        The type of vNIC to be used on this interface. Possible values:GVNIC, VIRTIO_NET, IDPF, MRDMA, and IRDMA
         """
         return pulumi.get(self, "nic_type")
 
@@ -16523,7 +16655,7 @@ if not MYPY:
         """
         nic_type: NotRequired[pulumi.Input[str]]
         """
-        The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, IDPF.
+        The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, IDPF. In the beta provider the additional values of MRDMA and IRDMA are supported.
         """
         queue_count: NotRequired[pulumi.Input[int]]
         """
@@ -16596,7 +16728,7 @@ class InstanceNetworkInterfaceArgs:
         :param pulumi.Input[str] network_attachment: The URL of the network attachment that this interface should connect to in the following format: `projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}`.
         :param pulumi.Input[str] network_ip: The private IP address to assign to the instance. If
                empty, the address will be automatically assigned.
-        :param pulumi.Input[str] nic_type: The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, IDPF.
+        :param pulumi.Input[str] nic_type: The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, IDPF. In the beta provider the additional values of MRDMA and IRDMA are supported.
         :param pulumi.Input[int] queue_count: The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
         :param pulumi.Input[str] security_policy: A full or partial URL to a security policy to add to this instance. If this field is set to an empty string it will remove the associated security policy.
         :param pulumi.Input[str] stack_type: The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6 or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
@@ -16778,7 +16910,7 @@ class InstanceNetworkInterfaceArgs:
     @pulumi.getter(name="nicType")
     def nic_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, IDPF.
+        The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET, IDPF. In the beta provider the additional values of MRDMA and IRDMA are supported.
         """
         return pulumi.get(self, "nic_type")
 
@@ -18113,6 +18245,14 @@ if not MYPY:
         """
         Defines whether the instance should have nested virtualization enabled. Defaults to false.
         """
+        enable_uefi_networking: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to enable UEFI networking for instance creation.
+        """
+        performance_monitoring_unit: NotRequired[pulumi.Input[str]]
+        """
+        [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+        """
         threads_per_core: NotRequired[pulumi.Input[int]]
         """
         The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
@@ -18132,17 +18272,25 @@ elif False:
 class InstanceTemplateAdvancedMachineFeaturesArgs:
     def __init__(__self__, *,
                  enable_nested_virtualization: Optional[pulumi.Input[bool]] = None,
+                 enable_uefi_networking: Optional[pulumi.Input[bool]] = None,
+                 performance_monitoring_unit: Optional[pulumi.Input[str]] = None,
                  threads_per_core: Optional[pulumi.Input[int]] = None,
                  turbo_mode: Optional[pulumi.Input[str]] = None,
                  visible_core_count: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[bool] enable_nested_virtualization: Defines whether the instance should have nested virtualization enabled. Defaults to false.
+        :param pulumi.Input[bool] enable_uefi_networking: Whether to enable UEFI networking for instance creation.
+        :param pulumi.Input[str] performance_monitoring_unit: [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
         :param pulumi.Input[int] threads_per_core: The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
         :param pulumi.Input[str] turbo_mode: Turbo frequency mode to use for the instance. Supported modes are currently either `ALL_CORE_MAX` or unset (default).
         :param pulumi.Input[int] visible_core_count: The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
         """
         if enable_nested_virtualization is not None:
             pulumi.set(__self__, "enable_nested_virtualization", enable_nested_virtualization)
+        if enable_uefi_networking is not None:
+            pulumi.set(__self__, "enable_uefi_networking", enable_uefi_networking)
+        if performance_monitoring_unit is not None:
+            pulumi.set(__self__, "performance_monitoring_unit", performance_monitoring_unit)
         if threads_per_core is not None:
             pulumi.set(__self__, "threads_per_core", threads_per_core)
         if turbo_mode is not None:
@@ -18161,6 +18309,30 @@ class InstanceTemplateAdvancedMachineFeaturesArgs:
     @enable_nested_virtualization.setter
     def enable_nested_virtualization(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_nested_virtualization", value)
+
+    @property
+    @pulumi.getter(name="enableUefiNetworking")
+    def enable_uefi_networking(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable UEFI networking for instance creation.
+        """
+        return pulumi.get(self, "enable_uefi_networking")
+
+    @enable_uefi_networking.setter
+    def enable_uefi_networking(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_uefi_networking", value)
+
+    @property
+    @pulumi.getter(name="performanceMonitoringUnit")
+    def performance_monitoring_unit(self) -> Optional[pulumi.Input[str]]:
+        """
+        [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+        """
+        return pulumi.get(self, "performance_monitoring_unit")
+
+    @performance_monitoring_unit.setter
+    def performance_monitoring_unit(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "performance_monitoring_unit", value)
 
     @property
     @pulumi.getter(name="threadsPerCore")
@@ -19050,7 +19222,7 @@ if not MYPY:
         """
         nic_type: NotRequired[pulumi.Input[str]]
         """
-        The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET.
+        The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET. In the beta provider the additional values of MRDMA and IRDMA are supported.
         """
         queue_count: NotRequired[pulumi.Input[int]]
         """
@@ -19116,7 +19288,7 @@ class InstanceTemplateNetworkInterfaceArgs:
         :param pulumi.Input[str] network_attachment: The URL of the network attachment that this interface should connect to in the following format: projects/{projectNumber}/regions/{region_name}/networkAttachments/{network_attachment_name}.
         :param pulumi.Input[str] network_ip: The private IP address to assign to the instance. If
                empty, the address will be automatically assigned.
-        :param pulumi.Input[str] nic_type: The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET.
+        :param pulumi.Input[str] nic_type: The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET. In the beta provider the additional values of MRDMA and IRDMA are supported.
         :param pulumi.Input[int] queue_count: The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
         :param pulumi.Input[str] stack_type: The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6 or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
         :param pulumi.Input[str] subnetwork: the name of the subnetwork to attach this interface
@@ -19293,7 +19465,7 @@ class InstanceTemplateNetworkInterfaceArgs:
     @pulumi.getter(name="nicType")
     def nic_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET.
+        The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET. In the beta provider the additional values of MRDMA and IRDMA are supported.
         """
         return pulumi.get(self, "nic_type")
 
@@ -31678,6 +31850,14 @@ if not MYPY:
         """
         Defines whether the instance should have nested virtualization enabled. Defaults to false.
         """
+        enable_uefi_networking: NotRequired[pulumi.Input[bool]]
+        """
+        Whether to enable UEFI networking for instance creation.
+        """
+        performance_monitoring_unit: NotRequired[pulumi.Input[str]]
+        """
+        [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+        """
         threads_per_core: NotRequired[pulumi.Input[int]]
         """
         The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
@@ -31697,17 +31877,25 @@ elif False:
 class RegionInstanceTemplateAdvancedMachineFeaturesArgs:
     def __init__(__self__, *,
                  enable_nested_virtualization: Optional[pulumi.Input[bool]] = None,
+                 enable_uefi_networking: Optional[pulumi.Input[bool]] = None,
+                 performance_monitoring_unit: Optional[pulumi.Input[str]] = None,
                  threads_per_core: Optional[pulumi.Input[int]] = None,
                  turbo_mode: Optional[pulumi.Input[str]] = None,
                  visible_core_count: Optional[pulumi.Input[int]] = None):
         """
         :param pulumi.Input[bool] enable_nested_virtualization: Defines whether the instance should have nested virtualization enabled. Defaults to false.
+        :param pulumi.Input[bool] enable_uefi_networking: Whether to enable UEFI networking for instance creation.
+        :param pulumi.Input[str] performance_monitoring_unit: [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
         :param pulumi.Input[int] threads_per_core: The number of threads per physical core. To disable [simultaneous multithreading (SMT)](https://cloud.google.com/compute/docs/instances/disabling-smt) set this to 1.
         :param pulumi.Input[str] turbo_mode: Turbo frequency mode to use for the instance. Supported modes are currently either `ALL_CORE_MAX` or unset (default).
         :param pulumi.Input[int] visible_core_count: The number of physical cores to expose to an instance. [visible cores info (VC)](https://cloud.google.com/compute/docs/instances/customize-visible-cores).
         """
         if enable_nested_virtualization is not None:
             pulumi.set(__self__, "enable_nested_virtualization", enable_nested_virtualization)
+        if enable_uefi_networking is not None:
+            pulumi.set(__self__, "enable_uefi_networking", enable_uefi_networking)
+        if performance_monitoring_unit is not None:
+            pulumi.set(__self__, "performance_monitoring_unit", performance_monitoring_unit)
         if threads_per_core is not None:
             pulumi.set(__self__, "threads_per_core", threads_per_core)
         if turbo_mode is not None:
@@ -31726,6 +31914,30 @@ class RegionInstanceTemplateAdvancedMachineFeaturesArgs:
     @enable_nested_virtualization.setter
     def enable_nested_virtualization(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "enable_nested_virtualization", value)
+
+    @property
+    @pulumi.getter(name="enableUefiNetworking")
+    def enable_uefi_networking(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Whether to enable UEFI networking for instance creation.
+        """
+        return pulumi.get(self, "enable_uefi_networking")
+
+    @enable_uefi_networking.setter
+    def enable_uefi_networking(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_uefi_networking", value)
+
+    @property
+    @pulumi.getter(name="performanceMonitoringUnit")
+    def performance_monitoring_unit(self) -> Optional[pulumi.Input[str]]:
+        """
+        [The PMU](https://cloud.google.com/compute/docs/pmu-overview) is a hardware component within the CPU core that monitors how the processor runs code. Valid values for the level of PMU are `STANDARD`, `ENHANCED`, and `ARCHITECTURAL`.
+        """
+        return pulumi.get(self, "performance_monitoring_unit")
+
+    @performance_monitoring_unit.setter
+    def performance_monitoring_unit(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "performance_monitoring_unit", value)
 
     @property
     @pulumi.getter(name="threadsPerCore")
@@ -32602,7 +32814,7 @@ if not MYPY:
         """
         nic_type: NotRequired[pulumi.Input[str]]
         """
-        The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET.
+        The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET. In the beta provider the additional values of MRDMA and IRDMA are supported.
         """
         queue_count: NotRequired[pulumi.Input[int]]
         """
@@ -32659,7 +32871,7 @@ class RegionInstanceTemplateNetworkInterfaceArgs:
                `subnetwork` for custom subnetted networks.
         :param pulumi.Input[str] network_ip: The private IP address to assign to the instance. If
                empty, the address will be automatically assigned.
-        :param pulumi.Input[str] nic_type: The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET.
+        :param pulumi.Input[str] nic_type: The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET. In the beta provider the additional values of MRDMA and IRDMA are supported.
         :param pulumi.Input[int] queue_count: The networking queue count that's specified by users for the network interface. Both Rx and Tx queues will be set to this number. It will be empty if not specified.
         :param pulumi.Input[str] stack_type: The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6 or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
         :param pulumi.Input[str] subnetwork: the name of the subnetwork to attach this interface
@@ -32813,7 +33025,7 @@ class RegionInstanceTemplateNetworkInterfaceArgs:
     @pulumi.getter(name="nicType")
     def nic_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET.
+        The type of vNIC to be used on this interface. Possible values: GVNIC, VIRTIO_NET. In the beta provider the additional values of MRDMA and IRDMA are supported.
         """
         return pulumi.get(self, "nic_type")
 
@@ -34227,6 +34439,47 @@ class RegionNetworkEndpointGroupCloudRunArgs:
     @url_mask.setter
     def url_mask(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "url_mask", value)
+
+
+if not MYPY:
+    class RegionNetworkEndpointGroupPscDataArgsDict(TypedDict):
+        producer_port: NotRequired[pulumi.Input[str]]
+        """
+        The PSC producer port to use when consumer PSC NEG connects to a producer. If
+        this flag isn't specified for a PSC NEG with endpoint type
+        private-service-connect, then PSC NEG will be connected to a first port in the
+        available PSC producer port range.
+        """
+elif False:
+    RegionNetworkEndpointGroupPscDataArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RegionNetworkEndpointGroupPscDataArgs:
+    def __init__(__self__, *,
+                 producer_port: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] producer_port: The PSC producer port to use when consumer PSC NEG connects to a producer. If
+               this flag isn't specified for a PSC NEG with endpoint type
+               private-service-connect, then PSC NEG will be connected to a first port in the
+               available PSC producer port range.
+        """
+        if producer_port is not None:
+            pulumi.set(__self__, "producer_port", producer_port)
+
+    @property
+    @pulumi.getter(name="producerPort")
+    def producer_port(self) -> Optional[pulumi.Input[str]]:
+        """
+        The PSC producer port to use when consumer PSC NEG connects to a producer. If
+        this flag isn't specified for a PSC NEG with endpoint type
+        private-service-connect, then PSC NEG will be connected to a first port in the
+        available PSC producer port range.
+        """
+        return pulumi.get(self, "producer_port")
+
+    @producer_port.setter
+    def producer_port(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "producer_port", value)
 
 
 if not MYPY:
@@ -50750,6 +51003,10 @@ if not MYPY:
         """
         Rule visibility. Supported values include: "STANDARD", "PREMIUM".
         """
+        threshold_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArgsDict']]]]
+        """
+        Configuration options for layer7 adaptive protection for various customizable thresholds.
+        """
 elif False:
     SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgsDict: TypeAlias = Mapping[str, Any]
 
@@ -50757,15 +51014,19 @@ elif False:
 class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs:
     def __init__(__self__, *,
                  enable: Optional[pulumi.Input[bool]] = None,
-                 rule_visibility: Optional[pulumi.Input[str]] = None):
+                 rule_visibility: Optional[pulumi.Input[str]] = None,
+                 threshold_configs: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArgs']]]] = None):
         """
         :param pulumi.Input[bool] enable: If set to true, enables CAAP for L7 DDoS detection.
         :param pulumi.Input[str] rule_visibility: Rule visibility. Supported values include: "STANDARD", "PREMIUM".
+        :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArgs']]] threshold_configs: Configuration options for layer7 adaptive protection for various customizable thresholds.
         """
         if enable is not None:
             pulumi.set(__self__, "enable", enable)
         if rule_visibility is not None:
             pulumi.set(__self__, "rule_visibility", rule_visibility)
+        if threshold_configs is not None:
+            pulumi.set(__self__, "threshold_configs", threshold_configs)
 
     @property
     @pulumi.getter
@@ -50790,6 +51051,286 @@ class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs:
     @rule_visibility.setter
     def rule_visibility(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "rule_visibility", value)
+
+    @property
+    @pulumi.getter(name="thresholdConfigs")
+    def threshold_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArgs']]]]:
+        """
+        Configuration options for layer7 adaptive protection for various customizable thresholds.
+        """
+        return pulumi.get(self, "threshold_configs")
+
+    @threshold_configs.setter
+    def threshold_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArgs']]]]):
+        pulumi.set(self, "threshold_configs", value)
+
+
+if not MYPY:
+    class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArgsDict(TypedDict):
+        name: pulumi.Input[str]
+        """
+        The name of config. The name must be 1-63 characters long, and comply with RFC1035. The name must be unique within the security policy.
+        """
+        auto_deploy_confidence_threshold: NotRequired[pulumi.Input[float]]
+        """
+        Confidence threshold above which Adaptive Protection's auto-deploy takes actions.
+        """
+        auto_deploy_expiration_sec: NotRequired[pulumi.Input[int]]
+        """
+        Duration over which Adaptive Protection's auto-deployed actions last.
+        """
+        auto_deploy_impacted_baseline_threshold: NotRequired[pulumi.Input[float]]
+        """
+        Impacted baseline threshold below which Adaptive Protection's auto-deploy takes actions.
+        """
+        auto_deploy_load_threshold: NotRequired[pulumi.Input[float]]
+        """
+        Load threshold above which Adaptive Protection automatically deploy threshold based on the backend load threshold and detect a new rule during an alerted attack.
+        """
+        detection_absolute_qps: NotRequired[pulumi.Input[float]]
+        """
+        Detection threshold based on absolute QPS.
+        """
+        detection_load_threshold: NotRequired[pulumi.Input[float]]
+        """
+        Detection threshold based on the backend service's load.
+        """
+        detection_relative_to_baseline_qps: NotRequired[pulumi.Input[float]]
+        """
+        Detection threshold based on QPS relative to the average of baseline traffic.
+        """
+        traffic_granularity_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArgsDict']]]]
+        """
+        Configuration options for enabling Adaptive Protection to work on the specified service granularity. Structure is documented below.
+        """
+elif False:
+    SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArgs:
+    def __init__(__self__, *,
+                 name: pulumi.Input[str],
+                 auto_deploy_confidence_threshold: Optional[pulumi.Input[float]] = None,
+                 auto_deploy_expiration_sec: Optional[pulumi.Input[int]] = None,
+                 auto_deploy_impacted_baseline_threshold: Optional[pulumi.Input[float]] = None,
+                 auto_deploy_load_threshold: Optional[pulumi.Input[float]] = None,
+                 detection_absolute_qps: Optional[pulumi.Input[float]] = None,
+                 detection_load_threshold: Optional[pulumi.Input[float]] = None,
+                 detection_relative_to_baseline_qps: Optional[pulumi.Input[float]] = None,
+                 traffic_granularity_configs: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArgs']]]] = None):
+        """
+        :param pulumi.Input[str] name: The name of config. The name must be 1-63 characters long, and comply with RFC1035. The name must be unique within the security policy.
+        :param pulumi.Input[float] auto_deploy_confidence_threshold: Confidence threshold above which Adaptive Protection's auto-deploy takes actions.
+        :param pulumi.Input[int] auto_deploy_expiration_sec: Duration over which Adaptive Protection's auto-deployed actions last.
+        :param pulumi.Input[float] auto_deploy_impacted_baseline_threshold: Impacted baseline threshold below which Adaptive Protection's auto-deploy takes actions.
+        :param pulumi.Input[float] auto_deploy_load_threshold: Load threshold above which Adaptive Protection automatically deploy threshold based on the backend load threshold and detect a new rule during an alerted attack.
+        :param pulumi.Input[float] detection_absolute_qps: Detection threshold based on absolute QPS.
+        :param pulumi.Input[float] detection_load_threshold: Detection threshold based on the backend service's load.
+        :param pulumi.Input[float] detection_relative_to_baseline_qps: Detection threshold based on QPS relative to the average of baseline traffic.
+        :param pulumi.Input[Sequence[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArgs']]] traffic_granularity_configs: Configuration options for enabling Adaptive Protection to work on the specified service granularity. Structure is documented below.
+        """
+        pulumi.set(__self__, "name", name)
+        if auto_deploy_confidence_threshold is not None:
+            pulumi.set(__self__, "auto_deploy_confidence_threshold", auto_deploy_confidence_threshold)
+        if auto_deploy_expiration_sec is not None:
+            pulumi.set(__self__, "auto_deploy_expiration_sec", auto_deploy_expiration_sec)
+        if auto_deploy_impacted_baseline_threshold is not None:
+            pulumi.set(__self__, "auto_deploy_impacted_baseline_threshold", auto_deploy_impacted_baseline_threshold)
+        if auto_deploy_load_threshold is not None:
+            pulumi.set(__self__, "auto_deploy_load_threshold", auto_deploy_load_threshold)
+        if detection_absolute_qps is not None:
+            pulumi.set(__self__, "detection_absolute_qps", detection_absolute_qps)
+        if detection_load_threshold is not None:
+            pulumi.set(__self__, "detection_load_threshold", detection_load_threshold)
+        if detection_relative_to_baseline_qps is not None:
+            pulumi.set(__self__, "detection_relative_to_baseline_qps", detection_relative_to_baseline_qps)
+        if traffic_granularity_configs is not None:
+            pulumi.set(__self__, "traffic_granularity_configs", traffic_granularity_configs)
+
+    @property
+    @pulumi.getter
+    def name(self) -> pulumi.Input[str]:
+        """
+        The name of config. The name must be 1-63 characters long, and comply with RFC1035. The name must be unique within the security policy.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: pulumi.Input[str]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="autoDeployConfidenceThreshold")
+    def auto_deploy_confidence_threshold(self) -> Optional[pulumi.Input[float]]:
+        """
+        Confidence threshold above which Adaptive Protection's auto-deploy takes actions.
+        """
+        return pulumi.get(self, "auto_deploy_confidence_threshold")
+
+    @auto_deploy_confidence_threshold.setter
+    def auto_deploy_confidence_threshold(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "auto_deploy_confidence_threshold", value)
+
+    @property
+    @pulumi.getter(name="autoDeployExpirationSec")
+    def auto_deploy_expiration_sec(self) -> Optional[pulumi.Input[int]]:
+        """
+        Duration over which Adaptive Protection's auto-deployed actions last.
+        """
+        return pulumi.get(self, "auto_deploy_expiration_sec")
+
+    @auto_deploy_expiration_sec.setter
+    def auto_deploy_expiration_sec(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "auto_deploy_expiration_sec", value)
+
+    @property
+    @pulumi.getter(name="autoDeployImpactedBaselineThreshold")
+    def auto_deploy_impacted_baseline_threshold(self) -> Optional[pulumi.Input[float]]:
+        """
+        Impacted baseline threshold below which Adaptive Protection's auto-deploy takes actions.
+        """
+        return pulumi.get(self, "auto_deploy_impacted_baseline_threshold")
+
+    @auto_deploy_impacted_baseline_threshold.setter
+    def auto_deploy_impacted_baseline_threshold(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "auto_deploy_impacted_baseline_threshold", value)
+
+    @property
+    @pulumi.getter(name="autoDeployLoadThreshold")
+    def auto_deploy_load_threshold(self) -> Optional[pulumi.Input[float]]:
+        """
+        Load threshold above which Adaptive Protection automatically deploy threshold based on the backend load threshold and detect a new rule during an alerted attack.
+        """
+        return pulumi.get(self, "auto_deploy_load_threshold")
+
+    @auto_deploy_load_threshold.setter
+    def auto_deploy_load_threshold(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "auto_deploy_load_threshold", value)
+
+    @property
+    @pulumi.getter(name="detectionAbsoluteQps")
+    def detection_absolute_qps(self) -> Optional[pulumi.Input[float]]:
+        """
+        Detection threshold based on absolute QPS.
+        """
+        return pulumi.get(self, "detection_absolute_qps")
+
+    @detection_absolute_qps.setter
+    def detection_absolute_qps(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "detection_absolute_qps", value)
+
+    @property
+    @pulumi.getter(name="detectionLoadThreshold")
+    def detection_load_threshold(self) -> Optional[pulumi.Input[float]]:
+        """
+        Detection threshold based on the backend service's load.
+        """
+        return pulumi.get(self, "detection_load_threshold")
+
+    @detection_load_threshold.setter
+    def detection_load_threshold(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "detection_load_threshold", value)
+
+    @property
+    @pulumi.getter(name="detectionRelativeToBaselineQps")
+    def detection_relative_to_baseline_qps(self) -> Optional[pulumi.Input[float]]:
+        """
+        Detection threshold based on QPS relative to the average of baseline traffic.
+        """
+        return pulumi.get(self, "detection_relative_to_baseline_qps")
+
+    @detection_relative_to_baseline_qps.setter
+    def detection_relative_to_baseline_qps(self, value: Optional[pulumi.Input[float]]):
+        pulumi.set(self, "detection_relative_to_baseline_qps", value)
+
+    @property
+    @pulumi.getter(name="trafficGranularityConfigs")
+    def traffic_granularity_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArgs']]]]:
+        """
+        Configuration options for enabling Adaptive Protection to work on the specified service granularity. Structure is documented below.
+        """
+        return pulumi.get(self, "traffic_granularity_configs")
+
+    @traffic_granularity_configs.setter
+    def traffic_granularity_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArgs']]]]):
+        pulumi.set(self, "traffic_granularity_configs", value)
+
+
+if not MYPY:
+    class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArgsDict(TypedDict):
+        type: pulumi.Input[str]
+        """
+        The type of this configuration, a granular traffic unit can be one of the following:
+        * `HTTP_HEADER_HOST`
+        * `HTTP_PATH`
+        """
+        enable_each_unique_value: NotRequired[pulumi.Input[bool]]
+        """
+        If enabled, traffic matching each unique value for the specified type constitutes a separate traffic unit. It can only be set to true if value is empty.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        Requests that match this value constitute a granular traffic unit.
+        """
+elif False:
+    SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArgs:
+    def __init__(__self__, *,
+                 type: pulumi.Input[str],
+                 enable_each_unique_value: Optional[pulumi.Input[bool]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] type: The type of this configuration, a granular traffic unit can be one of the following:
+               * `HTTP_HEADER_HOST`
+               * `HTTP_PATH`
+        :param pulumi.Input[bool] enable_each_unique_value: If enabled, traffic matching each unique value for the specified type constitutes a separate traffic unit. It can only be set to true if value is empty.
+        :param pulumi.Input[str] value: Requests that match this value constitute a granular traffic unit.
+        """
+        pulumi.set(__self__, "type", type)
+        if enable_each_unique_value is not None:
+            pulumi.set(__self__, "enable_each_unique_value", enable_each_unique_value)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> pulumi.Input[str]:
+        """
+        The type of this configuration, a granular traffic unit can be one of the following:
+        * `HTTP_HEADER_HOST`
+        * `HTTP_PATH`
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: pulumi.Input[str]):
+        pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="enableEachUniqueValue")
+    def enable_each_unique_value(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If enabled, traffic matching each unique value for the specified type constitutes a separate traffic unit. It can only be set to true if value is empty.
+        """
+        return pulumi.get(self, "enable_each_unique_value")
+
+    @enable_each_unique_value.setter
+    def enable_each_unique_value(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_each_unique_value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        Requests that match this value constitute a granular traffic unit.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
 
 
 if not MYPY:
@@ -55729,7 +56270,7 @@ if not MYPY:
         """
         default_custom_error_response_policy: NotRequired[pulumi.Input['URLMapPathMatcherDefaultCustomErrorResponsePolicyArgsDict']]
         """
-        defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error.
+        defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendService or BackendBucket responds with an error.
         This policy takes effect at the PathMatcher level and applies only when no policy has been defined for the error code at lower levels like RouteRule and PathRule within this PathMatcher. If an error code does not have a policy defined in defaultCustomErrorResponsePolicy, then a policy defined for the error code in UrlMap.defaultCustomErrorResponsePolicy takes effect.
         For example, consider a UrlMap with the following configuration:
         UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors
@@ -55808,7 +56349,7 @@ class URLMapPathMatcherArgs:
                  route_rules: Optional[pulumi.Input[Sequence[pulumi.Input['URLMapPathMatcherRouteRuleArgs']]]] = None):
         """
         :param pulumi.Input[str] name: The name to which this PathMatcher is referred by the HostRule.
-        :param pulumi.Input['URLMapPathMatcherDefaultCustomErrorResponsePolicyArgs'] default_custom_error_response_policy: defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error.
+        :param pulumi.Input['URLMapPathMatcherDefaultCustomErrorResponsePolicyArgs'] default_custom_error_response_policy: defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendService or BackendBucket responds with an error.
                This policy takes effect at the PathMatcher level and applies only when no policy has been defined for the error code at lower levels like RouteRule and PathRule within this PathMatcher. If an error code does not have a policy defined in defaultCustomErrorResponsePolicy, then a policy defined for the error code in UrlMap.defaultCustomErrorResponsePolicy takes effect.
                For example, consider a UrlMap with the following configuration:
                UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors
@@ -55883,7 +56424,7 @@ class URLMapPathMatcherArgs:
     @pulumi.getter(name="defaultCustomErrorResponsePolicy")
     def default_custom_error_response_policy(self) -> Optional[pulumi.Input['URLMapPathMatcherDefaultCustomErrorResponsePolicyArgs']]:
         """
-        defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error.
+        defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendService or BackendBucket responds with an error.
         This policy takes effect at the PathMatcher level and applies only when no policy has been defined for the error code at lower levels like RouteRule and PathRule within this PathMatcher. If an error code does not have a policy defined in defaultCustomErrorResponsePolicy, then a policy defined for the error code in UrlMap.defaultCustomErrorResponsePolicy takes effect.
         For example, consider a UrlMap with the following configuration:
         UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors
@@ -57969,7 +58510,7 @@ if not MYPY:
         """
         custom_error_response_policy: NotRequired[pulumi.Input['URLMapPathMatcherPathRuleCustomErrorResponsePolicyArgsDict']]
         """
-        customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error.
+        customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendService or BackendBucket responds with an error.
         If a policy for an error code is not configured for the PathRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect.
         For example, consider a UrlMap with the following configuration:
         UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors
@@ -58015,7 +58556,7 @@ class URLMapPathMatcherPathRuleArgs:
                \\* is allowed is at the end following a /. The string fed to the path matcher
                does not include any text after the first ? or #, and those chars are not
                allowed here.
-        :param pulumi.Input['URLMapPathMatcherPathRuleCustomErrorResponsePolicyArgs'] custom_error_response_policy: customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error.
+        :param pulumi.Input['URLMapPathMatcherPathRuleCustomErrorResponsePolicyArgs'] custom_error_response_policy: customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendService or BackendBucket responds with an error.
                If a policy for an error code is not configured for the PathRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect.
                For example, consider a UrlMap with the following configuration:
                UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors
@@ -58065,7 +58606,7 @@ class URLMapPathMatcherPathRuleArgs:
     @pulumi.getter(name="customErrorResponsePolicy")
     def custom_error_response_policy(self) -> Optional[pulumi.Input['URLMapPathMatcherPathRuleCustomErrorResponsePolicyArgs']]:
         """
-        customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error.
+        customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendService or BackendBucket responds with an error.
         If a policy for an error code is not configured for the PathRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect.
         For example, consider a UrlMap with the following configuration:
         UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors

@@ -22,6 +22,7 @@ export function getNetwork(args: GetNetworkArgs, opts?: pulumi.InvokeOptions): P
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:compute/getNetwork:getNetwork", {
         "name": args.name,
+        "networkProfile": args.networkProfile,
         "project": args.project,
     }, opts);
 }
@@ -37,6 +38,10 @@ export interface GetNetworkArgs {
      * - - -
      */
     name: string;
+    /**
+     * Beta A full or partial URL of the network profile to apply to this network.
+     */
+    networkProfile?: string;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
@@ -65,6 +70,14 @@ export interface GetNetworkResult {
      */
     readonly internalIpv6Range: string;
     readonly name: string;
+    /**
+     * Beta A full or partial URL of the network profile to apply to this network.
+     */
+    readonly networkProfile?: string;
+    /**
+     * The numeric unique identifier for the resource.
+     */
+    readonly numericId: string;
     readonly project?: string;
     /**
      * The URI of the resource.
@@ -93,6 +106,7 @@ export function getNetworkOutput(args: GetNetworkOutputArgs, opts?: pulumi.Invok
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:compute/getNetwork:getNetwork", {
         "name": args.name,
+        "networkProfile": args.networkProfile,
         "project": args.project,
     }, opts);
 }
@@ -108,6 +122,10 @@ export interface GetNetworkOutputArgs {
      * - - -
      */
     name: pulumi.Input<string>;
+    /**
+     * Beta A full or partial URL of the network profile to apply to this network.
+     */
+    networkProfile?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.

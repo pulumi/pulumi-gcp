@@ -12,6 +12,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A policy binding to a folder
+//
+// To get more information about FoldersPolicyBinding, see:
+//
+// * [API documentation](https://cloud.google.com/iam/docs/reference/rest/v3/folders.locations.policyBindings)
+// * How-to Guides
+//   - [Apply a policy binding](https://cloud.google.com/iam/docs/principal-access-boundary-policies-create#create_binding)
+//
 // ## Example Usage
 //
 // ### Iam Folders Policy Binding

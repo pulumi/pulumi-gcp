@@ -122,7 +122,7 @@ type ActiveDirectory struct {
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
 	// If enabled, traffic between the SMB server to Domain Controller (DC) will be encrypted.
 	EncryptDcConnections pulumi.BoolPtrOutput `pulumi:"encryptDcConnections"`
-	// Hostname of the Active Directory server used as Kerberos Key Distribution Center. Only requried for volumes using kerberized NFSv4.1
+	// Hostname of the Active Directory server used as Kerberos Key Distribution Center. Only required for volumes using kerberized NFSv4.1
 	KdcHostname pulumi.StringPtrOutput `pulumi:"kdcHostname"`
 	// IP address of the Active Directory server used as Kerberos Key Distribution Center.
 	KdcIp pulumi.StringPtrOutput `pulumi:"kdcIp"`
@@ -244,7 +244,7 @@ type activeDirectoryState struct {
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
 	// If enabled, traffic between the SMB server to Domain Controller (DC) will be encrypted.
 	EncryptDcConnections *bool `pulumi:"encryptDcConnections"`
-	// Hostname of the Active Directory server used as Kerberos Key Distribution Center. Only requried for volumes using kerberized NFSv4.1
+	// Hostname of the Active Directory server used as Kerberos Key Distribution Center. Only required for volumes using kerberized NFSv4.1
 	KdcHostname *string `pulumi:"kdcHostname"`
 	// IP address of the Active Directory server used as Kerberos Key Distribution Center.
 	KdcIp *string `pulumi:"kdcIp"`
@@ -310,7 +310,7 @@ type ActiveDirectoryState struct {
 	EffectiveLabels pulumi.StringMapInput
 	// If enabled, traffic between the SMB server to Domain Controller (DC) will be encrypted.
 	EncryptDcConnections pulumi.BoolPtrInput
-	// Hostname of the Active Directory server used as Kerberos Key Distribution Center. Only requried for volumes using kerberized NFSv4.1
+	// Hostname of the Active Directory server used as Kerberos Key Distribution Center. Only required for volumes using kerberized NFSv4.1
 	KdcHostname pulumi.StringPtrInput
 	// IP address of the Active Directory server used as Kerberos Key Distribution Center.
 	KdcIp pulumi.StringPtrInput
@@ -376,7 +376,7 @@ type activeDirectoryArgs struct {
 	Domain string `pulumi:"domain"`
 	// If enabled, traffic between the SMB server to Domain Controller (DC) will be encrypted.
 	EncryptDcConnections *bool `pulumi:"encryptDcConnections"`
-	// Hostname of the Active Directory server used as Kerberos Key Distribution Center. Only requried for volumes using kerberized NFSv4.1
+	// Hostname of the Active Directory server used as Kerberos Key Distribution Center. Only required for volumes using kerberized NFSv4.1
 	KdcHostname *string `pulumi:"kdcHostname"`
 	// IP address of the Active Directory server used as Kerberos Key Distribution Center.
 	KdcIp *string `pulumi:"kdcIp"`
@@ -432,7 +432,7 @@ type ActiveDirectoryArgs struct {
 	Domain pulumi.StringInput
 	// If enabled, traffic between the SMB server to Domain Controller (DC) will be encrypted.
 	EncryptDcConnections pulumi.BoolPtrInput
-	// Hostname of the Active Directory server used as Kerberos Key Distribution Center. Only requried for volumes using kerberized NFSv4.1
+	// Hostname of the Active Directory server used as Kerberos Key Distribution Center. Only required for volumes using kerberized NFSv4.1
 	KdcHostname pulumi.StringPtrInput
 	// IP address of the Active Directory server used as Kerberos Key Distribution Center.
 	KdcIp pulumi.StringPtrInput
@@ -604,7 +604,7 @@ func (o ActiveDirectoryOutput) EncryptDcConnections() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ActiveDirectory) pulumi.BoolPtrOutput { return v.EncryptDcConnections }).(pulumi.BoolPtrOutput)
 }
 
-// Hostname of the Active Directory server used as Kerberos Key Distribution Center. Only requried for volumes using kerberized NFSv4.1
+// Hostname of the Active Directory server used as Kerberos Key Distribution Center. Only required for volumes using kerberized NFSv4.1
 func (o ActiveDirectoryOutput) KdcHostname() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ActiveDirectory) pulumi.StringPtrOutput { return v.KdcHostname }).(pulumi.StringPtrOutput)
 }

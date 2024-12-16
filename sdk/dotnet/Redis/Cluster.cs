@@ -10,14 +10,6 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Redis
 {
     /// <summary>
-    /// A Google Cloud Redis Cluster instance.
-    /// 
-    /// To get more information about Cluster, see:
-    /// 
-    /// * [API documentation](https://cloud.google.com/memorystore/docs/cluster/reference/rest/v1/projects.locations.clusters)
-    /// * How-to Guides
-    ///     * [Official Documentation](https://cloud.google.com/memorystore/docs/cluster/)
-    /// 
     /// ## Example Usage
     /// 
     /// ### Redis Cluster Ha
@@ -192,6 +184,200 @@ namespace Pulumi.Gcp.Redis
     ///         DependsOn =
     ///         {
     ///             @default,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Redis Cluster Secondary
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var producerNet = new Gcp.Compute.Network("producer_net", new()
+    ///     {
+    ///         Name = "mynetwork",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var primaryClusterProducerSubnet = new Gcp.Compute.Subnetwork("primary_cluster_producer_subnet", new()
+    ///     {
+    ///         Name = "mysubnet-primary-cluster",
+    ///         IpCidrRange = "10.0.1.0/29",
+    ///         Region = "us-east1",
+    ///         Network = producerNet.Id,
+    ///     });
+    /// 
+    ///     var primaryClusterRegionScp = new Gcp.NetworkConnectivity.ServiceConnectionPolicy("primary_cluster_region_scp", new()
+    ///     {
+    ///         Name = "mypolicy-primary-cluster",
+    ///         Location = "us-east1",
+    ///         ServiceClass = "gcp-memorystore-redis",
+    ///         Description = "Primary cluster service connection policy",
+    ///         Network = producerNet.Id,
+    ///         PscConfig = new Gcp.NetworkConnectivity.Inputs.ServiceConnectionPolicyPscConfigArgs
+    ///         {
+    ///             Subnetworks = new[]
+    ///             {
+    ///                 primaryClusterProducerSubnet.Id,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     // Primary cluster
+    ///     var primaryCluster = new Gcp.Redis.Cluster("primary_cluster", new()
+    ///     {
+    ///         Name = "my-primary-cluster",
+    ///         Region = "us-east1",
+    ///         PscConfigs = new[]
+    ///         {
+    ///             new Gcp.Redis.Inputs.ClusterPscConfigArgs
+    ///             {
+    ///                 Network = producerNet.Id,
+    ///             },
+    ///         },
+    ///         AuthorizationMode = "AUTH_MODE_DISABLED",
+    ///         TransitEncryptionMode = "TRANSIT_ENCRYPTION_MODE_DISABLED",
+    ///         ShardCount = 3,
+    ///         RedisConfigs = 
+    ///         {
+    ///             { "maxmemory-policy", "volatile-ttl" },
+    ///         },
+    ///         NodeType = "REDIS_HIGHMEM_MEDIUM",
+    ///         PersistenceConfig = new Gcp.Redis.Inputs.ClusterPersistenceConfigArgs
+    ///         {
+    ///             Mode = "RDB",
+    ///             RdbConfig = new Gcp.Redis.Inputs.ClusterPersistenceConfigRdbConfigArgs
+    ///             {
+    ///                 RdbSnapshotPeriod = "ONE_HOUR",
+    ///                 RdbSnapshotStartTime = "2024-10-02T15:01:23Z",
+    ///             },
+    ///         },
+    ///         ZoneDistributionConfig = new Gcp.Redis.Inputs.ClusterZoneDistributionConfigArgs
+    ///         {
+    ///             Mode = "MULTI_ZONE",
+    ///         },
+    ///         ReplicaCount = 1,
+    ///         MaintenancePolicy = new Gcp.Redis.Inputs.ClusterMaintenancePolicyArgs
+    ///         {
+    ///             WeeklyMaintenanceWindows = new[]
+    ///             {
+    ///                 new Gcp.Redis.Inputs.ClusterMaintenancePolicyWeeklyMaintenanceWindowArgs
+    ///                 {
+    ///                     Day = "MONDAY",
+    ///                     StartTime = new Gcp.Redis.Inputs.ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs
+    ///                     {
+    ///                         Hours = 1,
+    ///                         Minutes = 0,
+    ///                         Seconds = 0,
+    ///                         Nanos = 0,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         DeletionProtectionEnabled = true,
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             primaryClusterRegionScp,
+    ///         },
+    ///     });
+    /// 
+    ///     var secondaryClusterProducerSubnet = new Gcp.Compute.Subnetwork("secondary_cluster_producer_subnet", new()
+    ///     {
+    ///         Name = "mysubnet-secondary-cluster",
+    ///         IpCidrRange = "10.0.2.0/29",
+    ///         Region = "europe-west1",
+    ///         Network = producerNet.Id,
+    ///     });
+    /// 
+    ///     var secondaryClusterRegionScp = new Gcp.NetworkConnectivity.ServiceConnectionPolicy("secondary_cluster_region_scp", new()
+    ///     {
+    ///         Name = "mypolicy-secondary-cluster",
+    ///         Location = "europe-west1",
+    ///         ServiceClass = "gcp-memorystore-redis",
+    ///         Description = "Secondary cluster service connection policy",
+    ///         Network = producerNet.Id,
+    ///         PscConfig = new Gcp.NetworkConnectivity.Inputs.ServiceConnectionPolicyPscConfigArgs
+    ///         {
+    ///             Subnetworks = new[]
+    ///             {
+    ///                 secondaryClusterProducerSubnet.Id,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     // Secondary cluster
+    ///     var secondaryCluster = new Gcp.Redis.Cluster("secondary_cluster", new()
+    ///     {
+    ///         Name = "my-secondary-cluster",
+    ///         Region = "europe-west1",
+    ///         PscConfigs = new[]
+    ///         {
+    ///             new Gcp.Redis.Inputs.ClusterPscConfigArgs
+    ///             {
+    ///                 Network = producerNet.Id,
+    ///             },
+    ///         },
+    ///         AuthorizationMode = "AUTH_MODE_DISABLED",
+    ///         TransitEncryptionMode = "TRANSIT_ENCRYPTION_MODE_DISABLED",
+    ///         ShardCount = 3,
+    ///         RedisConfigs = 
+    ///         {
+    ///             { "maxmemory-policy", "volatile-ttl" },
+    ///         },
+    ///         NodeType = "REDIS_HIGHMEM_MEDIUM",
+    ///         PersistenceConfig = new Gcp.Redis.Inputs.ClusterPersistenceConfigArgs
+    ///         {
+    ///             Mode = "RDB",
+    ///             RdbConfig = new Gcp.Redis.Inputs.ClusterPersistenceConfigRdbConfigArgs
+    ///             {
+    ///                 RdbSnapshotPeriod = "ONE_HOUR",
+    ///                 RdbSnapshotStartTime = "2024-10-02T15:01:23Z",
+    ///             },
+    ///         },
+    ///         ZoneDistributionConfig = new Gcp.Redis.Inputs.ClusterZoneDistributionConfigArgs
+    ///         {
+    ///             Mode = "MULTI_ZONE",
+    ///         },
+    ///         ReplicaCount = 2,
+    ///         MaintenancePolicy = new Gcp.Redis.Inputs.ClusterMaintenancePolicyArgs
+    ///         {
+    ///             WeeklyMaintenanceWindows = new[]
+    ///             {
+    ///                 new Gcp.Redis.Inputs.ClusterMaintenancePolicyWeeklyMaintenanceWindowArgs
+    ///                 {
+    ///                     Day = "WEDNESDAY",
+    ///                     StartTime = new Gcp.Redis.Inputs.ClusterMaintenancePolicyWeeklyMaintenanceWindowStartTimeArgs
+    ///                     {
+    ///                         Hours = 1,
+    ///                         Minutes = 0,
+    ///                         Seconds = 0,
+    ///                         Nanos = 0,
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///         DeletionProtectionEnabled = true,
+    ///         CrossClusterReplicationConfig = new Gcp.Redis.Inputs.ClusterCrossClusterReplicationConfigArgs
+    ///         {
+    ///             ClusterRole = "SECONDARY",
+    ///             PrimaryCluster = new Gcp.Redis.Inputs.ClusterCrossClusterReplicationConfigPrimaryClusterArgs
+    ///             {
+    ///                 Cluster = primaryCluster.Id,
+    ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             secondaryClusterRegionScp,
     ///         },
     ///     });
     /// 
@@ -449,6 +635,12 @@ namespace Pulumi.Gcp.Redis
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
+        /// Cross cluster replication config
+        /// </summary>
+        [Output("crossClusterReplicationConfig")]
+        public Output<Outputs.ClusterCrossClusterReplicationConfig> CrossClusterReplicationConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster
         /// operation will fail. Default value is true.
         /// </summary>
@@ -642,6 +834,12 @@ namespace Pulumi.Gcp.Redis
         public Input<string>? AuthorizationMode { get; set; }
 
         /// <summary>
+        /// Cross cluster replication config
+        /// </summary>
+        [Input("crossClusterReplicationConfig")]
+        public Input<Inputs.ClusterCrossClusterReplicationConfigArgs>? CrossClusterReplicationConfig { get; set; }
+
+        /// <summary>
         /// Optional. Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster
         /// operation will fail. Default value is true.
         /// </summary>
@@ -761,6 +959,12 @@ namespace Pulumi.Gcp.Redis
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// Cross cluster replication config
+        /// </summary>
+        [Input("crossClusterReplicationConfig")]
+        public Input<Inputs.ClusterCrossClusterReplicationConfigGetArgs>? CrossClusterReplicationConfig { get; set; }
 
         /// <summary>
         /// Optional. Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster

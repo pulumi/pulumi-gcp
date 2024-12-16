@@ -122,7 +122,7 @@ def get_account_id_token(delegates: Optional[Sequence[str]] = None,
     ```
 
     ### Service Account Impersonation.
-      `serviceaccount_get_account_access_token` will use background impersonated credentials provided by `serviceaccount_get_account_access_token`.
+      `serviceaccount_get_account_id_token` will use background impersonated credentials provided by `serviceaccount_get_account_access_token`.
 
       Note: to use the following, you must grant `target_service_account` the
       `roles/iam.serviceAccountTokenCreator` role on itself.
@@ -208,7 +208,7 @@ def get_account_id_token_output(delegates: Optional[pulumi.Input[Optional[Sequen
     ```
 
     ### Service Account Impersonation.
-      `serviceaccount_get_account_access_token` will use background impersonated credentials provided by `serviceaccount_get_account_access_token`.
+      `serviceaccount_get_account_id_token` will use background impersonated credentials provided by `serviceaccount_get_account_access_token`.
 
       Note: to use the following, you must grant `target_service_account` the
       `roles/iam.serviceAccountTokenCreator` role on itself.

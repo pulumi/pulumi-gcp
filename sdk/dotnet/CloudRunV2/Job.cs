@@ -615,7 +615,7 @@ namespace Pulumi.Gcp.CloudRunV2
         public Output<int> ExecutionCount { get; private set; } = null!;
 
         /// <summary>
-        /// For a deleted resource, the time after which it will be permamently deleted.
+        /// For a deleted resource, the time after which it will be permanently deleted.
         /// </summary>
         [Output("expireTime")]
         public Output<string> ExpireTime { get; private set; } = null!;
@@ -1013,7 +1013,7 @@ namespace Pulumi.Gcp.CloudRunV2
         public Input<int>? ExecutionCount { get; set; }
 
         /// <summary>
-        /// For a deleted resource, the time after which it will be permamently deleted.
+        /// For a deleted resource, the time after which it will be permanently deleted.
         /// </summary>
         [Input("expireTime")]
         public Input<string>? ExpireTime { get; set; }

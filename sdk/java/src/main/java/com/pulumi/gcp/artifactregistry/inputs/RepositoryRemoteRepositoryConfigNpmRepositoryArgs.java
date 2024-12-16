@@ -17,7 +17,7 @@ public final class RepositoryRemoteRepositoryConfigNpmRepositoryArgs extends com
     public static final RepositoryRemoteRepositoryConfigNpmRepositoryArgs Empty = new RepositoryRemoteRepositoryConfigNpmRepositoryArgs();
 
     /**
-     * Settings for a remote repository with a custom uri.
+     * [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
      * Structure is documented below.
      * 
      */
@@ -25,7 +25,7 @@ public final class RepositoryRemoteRepositoryConfigNpmRepositoryArgs extends com
     private @Nullable Output<RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs> customRepository;
 
     /**
-     * @return Settings for a remote repository with a custom uri.
+     * @return [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
      * Structure is documented below.
      * 
      */
@@ -78,7 +78,7 @@ public final class RepositoryRemoteRepositoryConfigNpmRepositoryArgs extends com
         }
 
         /**
-         * @param customRepository Settings for a remote repository with a custom uri.
+         * @param customRepository [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
          * Structure is documented below.
          * 
          * @return builder
@@ -90,7 +90,7 @@ public final class RepositoryRemoteRepositoryConfigNpmRepositoryArgs extends com
         }
 
         /**
-         * @param customRepository Settings for a remote repository with a custom uri.
+         * @param customRepository [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
          * Structure is documented below.
          * 
          * @return builder

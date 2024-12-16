@@ -35,7 +35,7 @@ public final class GetAccountKeyPlainArgs extends com.pulumi.resources.InvokeArg
     }
 
     /**
-     * The ID of the project that the service account will be created in.
+     * The ID of the project that the service account is present in.
      * Defaults to the provider project configuration.
      * 
      */
@@ -43,7 +43,7 @@ public final class GetAccountKeyPlainArgs extends com.pulumi.resources.InvokeArg
     private @Nullable String project;
 
     /**
-     * @return The ID of the project that the service account will be created in.
+     * @return The ID of the project that the service account is present in.
      * Defaults to the provider project configuration.
      * 
      */
@@ -106,7 +106,7 @@ public final class GetAccountKeyPlainArgs extends com.pulumi.resources.InvokeArg
         }
 
         /**
-         * @param project The ID of the project that the service account will be created in.
+         * @param project The ID of the project that the service account is present in.
          * Defaults to the provider project configuration.
          * 
          * @return builder

@@ -266,14 +266,14 @@ public class AppGroup extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.attributes);
     }
     /**
-     * Channel identifier identifies the owner maintaing this grouping.
+     * Channel identifier identifies the owner maintaining this grouping.
      * 
      */
     @Export(name="channelId", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> channelId;
 
     /**
-     * @return Channel identifier identifies the owner maintaing this grouping.
+     * @return Channel identifier identifies the owner maintaining this grouping.
      * 
      */
     public Output<Optional<String>> channelId() {

@@ -36,6 +36,21 @@ public final class GetNetworkArgs extends com.pulumi.resources.InvokeArgs {
     }
 
     /**
+     * Beta A full or partial URL of the network profile to apply to this network.
+     * 
+     */
+    @Import(name="networkProfile")
+    private @Nullable Output<String> networkProfile;
+
+    /**
+     * @return Beta A full or partial URL of the network profile to apply to this network.
+     * 
+     */
+    public Optional<Output<String>> networkProfile() {
+        return Optional.ofNullable(this.networkProfile);
+    }
+
+    /**
      * The ID of the project in which the resource belongs. If it
      * is not provided, the provider project is used.
      * 
@@ -56,6 +71,7 @@ public final class GetNetworkArgs extends com.pulumi.resources.InvokeArgs {
 
     private GetNetworkArgs(GetNetworkArgs $) {
         this.name = $.name;
+        this.networkProfile = $.networkProfile;
         this.project = $.project;
     }
 
@@ -100,6 +116,27 @@ public final class GetNetworkArgs extends com.pulumi.resources.InvokeArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param networkProfile Beta A full or partial URL of the network profile to apply to this network.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkProfile(@Nullable Output<String> networkProfile) {
+            $.networkProfile = networkProfile;
+            return this;
+        }
+
+        /**
+         * @param networkProfile Beta A full or partial URL of the network profile to apply to this network.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkProfile(String networkProfile) {
+            return networkProfile(Output.of(networkProfile));
         }
 
         /**

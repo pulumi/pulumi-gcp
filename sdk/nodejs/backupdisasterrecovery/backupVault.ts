@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * Container to store and organize immutable and indelible backups.
+ *
  * ## Example Usage
  *
  * ### Backup Dr Backup Vault Full
@@ -18,13 +20,13 @@ import * as utilities from "../utilities";
  *     backupVaultId: "backup-vault-test",
  *     description: "This is a second backup vault built by Terraform.",
  *     backupMinimumEnforcedRetentionDuration: "100000s",
- *     labels: {
- *         foo: "bar1",
- *         bar: "baz1",
- *     },
  *     annotations: {
  *         annotations1: "bar1",
  *         annotations2: "baz1",
+ *     },
+ *     labels: {
+ *         foo: "bar1",
+ *         bar: "baz1",
  *     },
  *     forceUpdate: true,
  *     accessRestriction: "WITHIN_ORGANIZATION",

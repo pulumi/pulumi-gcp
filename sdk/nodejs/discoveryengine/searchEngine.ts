@@ -121,7 +121,7 @@ export class SearchEngine extends pulumi.CustomResource {
     /**
      * The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore:
      * If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
-     * Default value: "GENERIC" Possible values: ["GENERIC", "MEDIA"]
+     * Default value: "GENERIC" Possible values: ["GENERIC", "MEDIA", "HEALTHCARE_FHIR"]
      */
     public readonly industryVertical!: pulumi.Output<string | undefined>;
     /**
@@ -240,7 +240,7 @@ export interface SearchEngineState {
     /**
      * The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore:
      * If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
-     * Default value: "GENERIC" Possible values: ["GENERIC", "MEDIA"]
+     * Default value: "GENERIC" Possible values: ["GENERIC", "MEDIA", "HEALTHCARE_FHIR"]
      */
     industryVertical?: pulumi.Input<string>;
     /**
@@ -293,7 +293,7 @@ export interface SearchEngineArgs {
     /**
      * The industry vertical that the engine registers. The restriction of the Engine industry vertical is based on DataStore:
      * If unspecified, default to GENERIC. Vertical on Engine has to match vertical of the DataStore liniked to the engine.
-     * Default value: "GENERIC" Possible values: ["GENERIC", "MEDIA"]
+     * Default value: "GENERIC" Possible values: ["GENERIC", "MEDIA", "HEALTHCARE_FHIR"]
      */
     industryVertical?: pulumi.Input<string>;
     /**

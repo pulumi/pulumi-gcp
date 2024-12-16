@@ -364,9 +364,13 @@ import (
 //				Region:              pulumi.String("europe-west4"),
 //				LoadBalancingScheme: pulumi.String("INTERNAL"),
 //				BackendService:      defaultRegionBackendService.ID(),
-//				AllPorts:            pulumi.Bool(true),
-//				Network:             _default.Name,
-//				Subnetwork:          defaultSubnetwork.Name,
+//				Ports: pulumi.StringArray{
+//					pulumi.String("80"),
+//					pulumi.String("88"),
+//					pulumi.String("443"),
+//				},
+//				Network:    _default.Name,
+//				Subnetwork: defaultSubnetwork.Name,
 //			})
 //			if err != nil {
 //				return err
@@ -390,8 +394,11 @@ import (
 //				Region:              pulumi.String("europe-west4"),
 //				NetworkEndpointType: pulumi.String("PRIVATE_SERVICE_CONNECT"),
 //				PscTargetService:    defaultServiceAttachment.SelfLink,
-//				Network:             _default.SelfLink,
-//				Subnetwork:          defaultSubnetwork.SelfLink,
+//				PscData: &compute.RegionNetworkEndpointGroupPscDataArgs{
+//					ProducerPort: pulumi.String("88"),
+//				},
+//				Network:    _default.SelfLink,
+//				Subnetwork: defaultSubnetwork.SelfLink,
 //			})
 //			if err != nil {
 //				return err
@@ -580,6 +587,9 @@ type RegionNetworkEndpointGroup struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// This field is only used for PSC NEGs.
+	// Structure is documented below.
+	PscData RegionNetworkEndpointGroupPscDataPtrOutput `pulumi:"pscData"`
 	// This field is only used for PSC and INTERNET NEGs.
 	// The target service url used to set up private service connection to
 	// a Google API or a PSC Producer Service Attachment.
@@ -666,6 +676,9 @@ type regionNetworkEndpointGroupState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// This field is only used for PSC NEGs.
+	// Structure is documented below.
+	PscData *RegionNetworkEndpointGroupPscData `pulumi:"pscData"`
 	// This field is only used for PSC and INTERNET NEGs.
 	// The target service url used to set up private service connection to
 	// a Google API or a PSC Producer Service Attachment.
@@ -720,6 +733,9 @@ type RegionNetworkEndpointGroupState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// This field is only used for PSC NEGs.
+	// Structure is documented below.
+	PscData RegionNetworkEndpointGroupPscDataPtrInput
 	// This field is only used for PSC and INTERNET NEGs.
 	// The target service url used to set up private service connection to
 	// a Google API or a PSC Producer Service Attachment.
@@ -778,6 +794,9 @@ type regionNetworkEndpointGroupArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// This field is only used for PSC NEGs.
+	// Structure is documented below.
+	PscData *RegionNetworkEndpointGroupPscData `pulumi:"pscData"`
 	// This field is only used for PSC and INTERNET NEGs.
 	// The target service url used to set up private service connection to
 	// a Google API or a PSC Producer Service Attachment.
@@ -831,6 +850,9 @@ type RegionNetworkEndpointGroupArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// This field is only used for PSC NEGs.
+	// Structure is documented below.
+	PscData RegionNetworkEndpointGroupPscDataPtrInput
 	// This field is only used for PSC and INTERNET NEGs.
 	// The target service url used to set up private service connection to
 	// a Google API or a PSC Producer Service Attachment.
@@ -993,6 +1015,12 @@ func (o RegionNetworkEndpointGroupOutput) NetworkEndpointType() pulumi.StringPtr
 // If it is not provided, the provider project is used.
 func (o RegionNetworkEndpointGroupOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionNetworkEndpointGroup) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
+}
+
+// This field is only used for PSC NEGs.
+// Structure is documented below.
+func (o RegionNetworkEndpointGroupOutput) PscData() RegionNetworkEndpointGroupPscDataPtrOutput {
+	return o.ApplyT(func(v *RegionNetworkEndpointGroup) RegionNetworkEndpointGroupPscDataPtrOutput { return v.PscData }).(RegionNetworkEndpointGroupPscDataPtrOutput)
 }
 
 // This field is only used for PSC and INTERNET NEGs.

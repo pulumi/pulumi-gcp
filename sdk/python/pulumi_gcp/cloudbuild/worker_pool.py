@@ -26,6 +26,7 @@ class WorkerPoolArgs:
                  display_name: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input['WorkerPoolNetworkConfigArgs']] = None,
+                 private_service_connect: Optional[pulumi.Input['WorkerPoolPrivateServiceConnectArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  worker_config: Optional[pulumi.Input['WorkerPoolWorkerConfigArgs']] = None):
         """
@@ -40,6 +41,7 @@ class WorkerPoolArgs:
                
                - - -
         :param pulumi.Input['WorkerPoolNetworkConfigArgs'] network_config: Network configuration for the `WorkerPool`. Structure is documented below.
+        :param pulumi.Input['WorkerPoolPrivateServiceConnectArgs'] private_service_connect: Private Service Connect configuration for the pool.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input['WorkerPoolWorkerConfigArgs'] worker_config: Configuration to be used for a creating workers in the `WorkerPool`. Structure is documented below.
         """
@@ -52,6 +54,8 @@ class WorkerPoolArgs:
             pulumi.set(__self__, "name", name)
         if network_config is not None:
             pulumi.set(__self__, "network_config", network_config)
+        if private_service_connect is not None:
+            pulumi.set(__self__, "private_service_connect", private_service_connect)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if worker_config is not None:
@@ -123,6 +127,18 @@ class WorkerPoolArgs:
         pulumi.set(self, "network_config", value)
 
     @property
+    @pulumi.getter(name="privateServiceConnect")
+    def private_service_connect(self) -> Optional[pulumi.Input['WorkerPoolPrivateServiceConnectArgs']]:
+        """
+        Private Service Connect configuration for the pool.
+        """
+        return pulumi.get(self, "private_service_connect")
+
+    @private_service_connect.setter
+    def private_service_connect(self, value: Optional[pulumi.Input['WorkerPoolPrivateServiceConnectArgs']]):
+        pulumi.set(self, "private_service_connect", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
@@ -158,6 +174,7 @@ class _WorkerPoolState:
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input['WorkerPoolNetworkConfigArgs']] = None,
+                 private_service_connect: Optional[pulumi.Input['WorkerPoolPrivateServiceConnectArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  uid: Optional[pulumi.Input[str]] = None,
@@ -177,6 +194,7 @@ class _WorkerPoolState:
                
                - - -
         :param pulumi.Input['WorkerPoolNetworkConfigArgs'] network_config: Network configuration for the `WorkerPool`. Structure is documented below.
+        :param pulumi.Input['WorkerPoolPrivateServiceConnectArgs'] private_service_connect: Private Service Connect configuration for the pool.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] state: Output only. WorkerPool state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
         :param pulumi.Input[str] uid: Output only. A unique identifier for the `WorkerPool`.
@@ -199,6 +217,8 @@ class _WorkerPoolState:
             pulumi.set(__self__, "name", name)
         if network_config is not None:
             pulumi.set(__self__, "network_config", network_config)
+        if private_service_connect is not None:
+            pulumi.set(__self__, "private_service_connect", private_service_connect)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if state is not None:
@@ -309,6 +329,18 @@ class _WorkerPoolState:
         pulumi.set(self, "network_config", value)
 
     @property
+    @pulumi.getter(name="privateServiceConnect")
+    def private_service_connect(self) -> Optional[pulumi.Input['WorkerPoolPrivateServiceConnectArgs']]:
+        """
+        Private Service Connect configuration for the pool.
+        """
+        return pulumi.get(self, "private_service_connect")
+
+    @private_service_connect.setter
+    def private_service_connect(self, value: Optional[pulumi.Input['WorkerPoolPrivateServiceConnectArgs']]):
+        pulumi.set(self, "private_service_connect", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
@@ -379,6 +411,7 @@ class WorkerPool(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input[Union['WorkerPoolNetworkConfigArgs', 'WorkerPoolNetworkConfigArgsDict']]] = None,
+                 private_service_connect: Optional[pulumi.Input[Union['WorkerPoolPrivateServiceConnectArgs', 'WorkerPoolPrivateServiceConnectArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  worker_config: Optional[pulumi.Input[Union['WorkerPoolWorkerConfigArgs', 'WorkerPoolWorkerConfigArgsDict']]] = None,
                  __props__=None):
@@ -476,6 +509,7 @@ class WorkerPool(pulumi.CustomResource):
                
                - - -
         :param pulumi.Input[Union['WorkerPoolNetworkConfigArgs', 'WorkerPoolNetworkConfigArgsDict']] network_config: Network configuration for the `WorkerPool`. Structure is documented below.
+        :param pulumi.Input[Union['WorkerPoolPrivateServiceConnectArgs', 'WorkerPoolPrivateServiceConnectArgsDict']] private_service_connect: Private Service Connect configuration for the pool.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[Union['WorkerPoolWorkerConfigArgs', 'WorkerPoolWorkerConfigArgsDict']] worker_config: Configuration to be used for a creating workers in the `WorkerPool`. Structure is documented below.
         """
@@ -587,6 +621,7 @@ class WorkerPool(pulumi.CustomResource):
                  location: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input[Union['WorkerPoolNetworkConfigArgs', 'WorkerPoolNetworkConfigArgsDict']]] = None,
+                 private_service_connect: Optional[pulumi.Input[Union['WorkerPoolPrivateServiceConnectArgs', 'WorkerPoolPrivateServiceConnectArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  worker_config: Optional[pulumi.Input[Union['WorkerPoolWorkerConfigArgs', 'WorkerPoolWorkerConfigArgsDict']]] = None,
                  __props__=None):
@@ -605,6 +640,7 @@ class WorkerPool(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["name"] = name
             __props__.__dict__["network_config"] = network_config
+            __props__.__dict__["private_service_connect"] = private_service_connect
             __props__.__dict__["project"] = project
             __props__.__dict__["worker_config"] = worker_config
             __props__.__dict__["create_time"] = None
@@ -631,6 +667,7 @@ class WorkerPool(pulumi.CustomResource):
             location: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network_config: Optional[pulumi.Input[Union['WorkerPoolNetworkConfigArgs', 'WorkerPoolNetworkConfigArgsDict']]] = None,
+            private_service_connect: Optional[pulumi.Input[Union['WorkerPoolPrivateServiceConnectArgs', 'WorkerPoolPrivateServiceConnectArgsDict']]] = None,
             project: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None,
             uid: Optional[pulumi.Input[str]] = None,
@@ -655,6 +692,7 @@ class WorkerPool(pulumi.CustomResource):
                
                - - -
         :param pulumi.Input[Union['WorkerPoolNetworkConfigArgs', 'WorkerPoolNetworkConfigArgsDict']] network_config: Network configuration for the `WorkerPool`. Structure is documented below.
+        :param pulumi.Input[Union['WorkerPoolPrivateServiceConnectArgs', 'WorkerPoolPrivateServiceConnectArgsDict']] private_service_connect: Private Service Connect configuration for the pool.
         :param pulumi.Input[str] project: The project for the resource
         :param pulumi.Input[str] state: Output only. WorkerPool state. Possible values: STATE_UNSPECIFIED, PENDING, APPROVED, REJECTED, CANCELLED
         :param pulumi.Input[str] uid: Output only. A unique identifier for the `WorkerPool`.
@@ -673,6 +711,7 @@ class WorkerPool(pulumi.CustomResource):
         __props__.__dict__["location"] = location
         __props__.__dict__["name"] = name
         __props__.__dict__["network_config"] = network_config
+        __props__.__dict__["private_service_connect"] = private_service_connect
         __props__.__dict__["project"] = project
         __props__.__dict__["state"] = state
         __props__.__dict__["uid"] = uid
@@ -745,6 +784,14 @@ class WorkerPool(pulumi.CustomResource):
         Network configuration for the `WorkerPool`. Structure is documented below.
         """
         return pulumi.get(self, "network_config")
+
+    @property
+    @pulumi.getter(name="privateServiceConnect")
+    def private_service_connect(self) -> pulumi.Output[Optional['outputs.WorkerPoolPrivateServiceConnect']]:
+        """
+        Private Service Connect configuration for the pool.
+        """
+        return pulumi.get(self, "private_service_connect")
 
     @property
     @pulumi.getter

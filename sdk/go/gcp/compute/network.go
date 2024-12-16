@@ -267,6 +267,12 @@ type Network struct {
 	// Default value is `AFTER_CLASSIC_FIREWALL`.
 	// Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
 	NetworkFirewallPolicyEnforcementOrder pulumi.StringPtrOutput `pulumi:"networkFirewallPolicyEnforcementOrder"`
+	// A full or partial URL of the network profile to apply to this network.
+	// This field can be set only at resource creation time. For example, the
+	// following are valid URLs:
+	// * https://www.googleapis.com/compute/beta/projects/{projectId}/global/networkProfiles/{network_profile_name}
+	// * projects/{projectId}/global/networkProfiles/{network_profile_name}
+	NetworkProfile pulumi.StringPtrOutput `pulumi:"networkProfile"`
 	// The unique identifier for the resource. This identifier is defined by the server.
 	NumericId pulumi.StringOutput `pulumi:"numericId"`
 	// The ID of the project in which the resource belongs.
@@ -366,6 +372,12 @@ type networkState struct {
 	// Default value is `AFTER_CLASSIC_FIREWALL`.
 	// Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
 	NetworkFirewallPolicyEnforcementOrder *string `pulumi:"networkFirewallPolicyEnforcementOrder"`
+	// A full or partial URL of the network profile to apply to this network.
+	// This field can be set only at resource creation time. For example, the
+	// following are valid URLs:
+	// * https://www.googleapis.com/compute/beta/projects/{projectId}/global/networkProfiles/{network_profile_name}
+	// * projects/{projectId}/global/networkProfiles/{network_profile_name}
+	NetworkProfile *string `pulumi:"networkProfile"`
 	// The unique identifier for the resource. This identifier is defined by the server.
 	NumericId *string `pulumi:"numericId"`
 	// The ID of the project in which the resource belongs.
@@ -436,6 +448,12 @@ type NetworkState struct {
 	// Default value is `AFTER_CLASSIC_FIREWALL`.
 	// Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
 	NetworkFirewallPolicyEnforcementOrder pulumi.StringPtrInput
+	// A full or partial URL of the network profile to apply to this network.
+	// This field can be set only at resource creation time. For example, the
+	// following are valid URLs:
+	// * https://www.googleapis.com/compute/beta/projects/{projectId}/global/networkProfiles/{network_profile_name}
+	// * projects/{projectId}/global/networkProfiles/{network_profile_name}
+	NetworkProfile pulumi.StringPtrInput
 	// The unique identifier for the resource. This identifier is defined by the server.
 	NumericId pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
@@ -507,6 +525,12 @@ type networkArgs struct {
 	// Default value is `AFTER_CLASSIC_FIREWALL`.
 	// Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
 	NetworkFirewallPolicyEnforcementOrder *string `pulumi:"networkFirewallPolicyEnforcementOrder"`
+	// A full or partial URL of the network profile to apply to this network.
+	// This field can be set only at resource creation time. For example, the
+	// following are valid URLs:
+	// * https://www.googleapis.com/compute/beta/projects/{projectId}/global/networkProfiles/{network_profile_name}
+	// * projects/{projectId}/global/networkProfiles/{network_profile_name}
+	NetworkProfile *string `pulumi:"networkProfile"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -571,6 +595,12 @@ type NetworkArgs struct {
 	// Default value is `AFTER_CLASSIC_FIREWALL`.
 	// Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
 	NetworkFirewallPolicyEnforcementOrder pulumi.StringPtrInput
+	// A full or partial URL of the network profile to apply to this network.
+	// This field can be set only at resource creation time. For example, the
+	// following are valid URLs:
+	// * https://www.googleapis.com/compute/beta/projects/{projectId}/global/networkProfiles/{network_profile_name}
+	// * projects/{projectId}/global/networkProfiles/{network_profile_name}
+	NetworkProfile pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -757,6 +787,15 @@ func (o NetworkOutput) Name() pulumi.StringOutput {
 // Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
 func (o NetworkOutput) NetworkFirewallPolicyEnforcementOrder() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringPtrOutput { return v.NetworkFirewallPolicyEnforcementOrder }).(pulumi.StringPtrOutput)
+}
+
+// A full or partial URL of the network profile to apply to this network.
+// This field can be set only at resource creation time. For example, the
+// following are valid URLs:
+// * https://www.googleapis.com/compute/beta/projects/{projectId}/global/networkProfiles/{network_profile_name}
+// * projects/{projectId}/global/networkProfiles/{network_profile_name}
+func (o NetworkOutput) NetworkProfile() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Network) pulumi.StringPtrOutput { return v.NetworkProfile }).(pulumi.StringPtrOutput)
 }
 
 // The unique identifier for the resource. This identifier is defined by the server.

@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.GkeHub.Outputs
     {
         /// <summary>
         /// Configures the manner in which the template library is installed on the cluster.
-        /// Possible values are: `INSTALATION_UNSPECIFIED`, `NOT_INSTALLED`, `ALL`.
+        /// Possible values are: `INSTALLATION_UNSPECIFIED`, `NOT_INSTALLED`, `ALL`.
         /// </summary>
         public readonly string? Installation;
 

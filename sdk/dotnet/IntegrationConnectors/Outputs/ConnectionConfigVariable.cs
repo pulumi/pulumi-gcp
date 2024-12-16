@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.IntegrationConnectors.Outputs
         /// </summary>
         public readonly bool? BooleanValue;
         /// <summary>
-        /// Encription key value of configVariable.
+        /// Encryption key value of configVariable.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.ConnectionConfigVariableEncryptionKeyValue? EncryptionKeyValue;

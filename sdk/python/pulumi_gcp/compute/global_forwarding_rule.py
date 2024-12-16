@@ -532,6 +532,7 @@ class _GlobalForwardingRuleState:
                  base_forwarding_rule: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 forwarding_rule_id: Optional[pulumi.Input[int]] = None,
                  ip_address: Optional[pulumi.Input[str]] = None,
                  ip_protocol: Optional[pulumi.Input[str]] = None,
                  ip_version: Optional[pulumi.Input[str]] = None,
@@ -559,6 +560,7 @@ class _GlobalForwardingRuleState:
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[int] forwarding_rule_id: The unique identifier number for the resource. This identifier is defined by the server.
         :param pulumi.Input[str] ip_address: IP address for which this forwarding rule accepts traffic. When a client
                sends traffic to this IP address, the forwarding rule directs the traffic
                to the referenced `target`.
@@ -703,6 +705,8 @@ class _GlobalForwardingRuleState:
             pulumi.set(__self__, "description", description)
         if effective_labels is not None:
             pulumi.set(__self__, "effective_labels", effective_labels)
+        if forwarding_rule_id is not None:
+            pulumi.set(__self__, "forwarding_rule_id", forwarding_rule_id)
         if ip_address is not None:
             pulumi.set(__self__, "ip_address", ip_address)
         if ip_protocol is not None:
@@ -792,6 +796,18 @@ class _GlobalForwardingRuleState:
     @effective_labels.setter
     def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "effective_labels", value)
+
+    @property
+    @pulumi.getter(name="forwardingRuleId")
+    def forwarding_rule_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The unique identifier number for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "forwarding_rule_id")
+
+    @forwarding_rule_id.setter
+    def forwarding_rule_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "forwarding_rule_id", value)
 
     @property
     @pulumi.getter(name="ipAddress")
@@ -2120,6 +2136,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
             __props__.__dict__["target"] = target
             __props__.__dict__["base_forwarding_rule"] = None
             __props__.__dict__["effective_labels"] = None
+            __props__.__dict__["forwarding_rule_id"] = None
             __props__.__dict__["label_fingerprint"] = None
             __props__.__dict__["psc_connection_id"] = None
             __props__.__dict__["psc_connection_status"] = None
@@ -2141,6 +2158,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
             base_forwarding_rule: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            forwarding_rule_id: Optional[pulumi.Input[int]] = None,
             ip_address: Optional[pulumi.Input[str]] = None,
             ip_protocol: Optional[pulumi.Input[str]] = None,
             ip_version: Optional[pulumi.Input[str]] = None,
@@ -2173,6 +2191,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
         :param pulumi.Input[str] description: An optional description of this resource. Provide this property when
                you create the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[int] forwarding_rule_id: The unique identifier number for the resource. This identifier is defined by the server.
         :param pulumi.Input[str] ip_address: IP address for which this forwarding rule accepts traffic. When a client
                sends traffic to this IP address, the forwarding rule directs the traffic
                to the referenced `target`.
@@ -2317,6 +2336,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
         __props__.__dict__["base_forwarding_rule"] = base_forwarding_rule
         __props__.__dict__["description"] = description
         __props__.__dict__["effective_labels"] = effective_labels
+        __props__.__dict__["forwarding_rule_id"] = forwarding_rule_id
         __props__.__dict__["ip_address"] = ip_address
         __props__.__dict__["ip_protocol"] = ip_protocol
         __props__.__dict__["ip_version"] = ip_version
@@ -2371,6 +2391,14 @@ class GlobalForwardingRule(pulumi.CustomResource):
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
+
+    @property
+    @pulumi.getter(name="forwardingRuleId")
+    def forwarding_rule_id(self) -> pulumi.Output[int]:
+        """
+        The unique identifier number for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "forwarding_rule_id")
 
     @property
     @pulumi.getter(name="ipAddress")

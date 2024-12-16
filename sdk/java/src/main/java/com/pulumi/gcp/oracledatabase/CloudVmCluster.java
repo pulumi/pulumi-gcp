@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.oracledatabase.CloudVmClusterArgs;
 import com.pulumi.gcp.oracledatabase.inputs.CloudVmClusterState;
 import com.pulumi.gcp.oracledatabase.outputs.CloudVmClusterProperties;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -69,6 +70,7 @@ import javax.annotation.Nullable;
  *                 .computeCount("2")
  *                 .storageCount("3")
  *                 .build())
+ *             .deletionProtection("true")
  *             .build());
  * 
  *         final var default = ComputeFunctions.getNetwork(GetNetworkArgs.builder()
@@ -92,6 +94,7 @@ import javax.annotation.Nullable;
  *                 .giVersion("19.0.0.0")
  *                 .hostnamePrefix("hostname1")
  *                 .build())
+ *             .deletionProtection("true")
  *             .build());
  * 
  *     }}{@code
@@ -144,6 +147,7 @@ import javax.annotation.Nullable;
  *                 .computeCount("2")
  *                 .storageCount("3")
  *                 .build())
+ *             .deletionProtection("true")
  *             .build());
  * 
  *         final var default = ComputeFunctions.getNetwork(GetNetworkArgs.builder()
@@ -194,6 +198,7 @@ import javax.annotation.Nullable;
  *                     .build())
  *                 .memorySizeGb(60)
  *                 .build())
+ *             .deletionProtection("true")
  *             .build());
  * 
  *     }}{@code
@@ -294,6 +299,12 @@ public class CloudVmCluster extends com.pulumi.resources.CustomResource {
      */
     public Output<String> createTime() {
         return this.createTime;
+    }
+    @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> deletionProtection;
+
+    public Output<Optional<Boolean>> deletionProtection() {
+        return Codegen.optional(this.deletionProtection);
     }
     /**
      * User friendly name for this resource.

@@ -5,8 +5,10 @@ package com.pulumi.gcp.compute.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.compute.inputs.SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -46,11 +48,27 @@ public final class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig
         return Optional.ofNullable(this.ruleVisibility);
     }
 
+    /**
+     * Configuration options for layer7 adaptive protection for various customizable thresholds.
+     * 
+     */
+    @Import(name="thresholdConfigs")
+    private @Nullable Output<List<SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArgs>> thresholdConfigs;
+
+    /**
+     * @return Configuration options for layer7 adaptive protection for various customizable thresholds.
+     * 
+     */
+    public Optional<Output<List<SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArgs>>> thresholdConfigs() {
+        return Optional.ofNullable(this.thresholdConfigs);
+    }
+
     private SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs() {}
 
     private SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs $) {
         this.enable = $.enable;
         this.ruleVisibility = $.ruleVisibility;
+        this.thresholdConfigs = $.thresholdConfigs;
     }
 
     public static Builder builder() {
@@ -111,6 +129,37 @@ public final class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig
          */
         public Builder ruleVisibility(String ruleVisibility) {
             return ruleVisibility(Output.of(ruleVisibility));
+        }
+
+        /**
+         * @param thresholdConfigs Configuration options for layer7 adaptive protection for various customizable thresholds.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder thresholdConfigs(@Nullable Output<List<SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArgs>> thresholdConfigs) {
+            $.thresholdConfigs = thresholdConfigs;
+            return this;
+        }
+
+        /**
+         * @param thresholdConfigs Configuration options for layer7 adaptive protection for various customizable thresholds.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder thresholdConfigs(List<SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArgs> thresholdConfigs) {
+            return thresholdConfigs(Output.of(thresholdConfigs));
+        }
+
+        /**
+         * @param thresholdConfigs Configuration options for layer7 adaptive protection for various customizable thresholds.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder thresholdConfigs(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArgs... thresholdConfigs) {
+            return thresholdConfigs(List.of(thresholdConfigs));
         }
 
         public SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs build() {

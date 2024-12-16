@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.Netapp.Outputs
         /// </summary>
         public readonly string? AccessType;
         /// <summary>
-        /// Defines the client ingress specification (allowed clients) as a comma seperated list with IPv4 CIDRs or IPv4 host addresses.
+        /// Defines the client ingress specification (allowed clients) as a comma separated list with IPv4 CIDRs or IPv4 host addresses.
         /// </summary>
         public readonly string? AllowedClients;
         /// <summary>

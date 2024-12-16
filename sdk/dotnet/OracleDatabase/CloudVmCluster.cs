@@ -42,6 +42,7 @@ namespace Pulumi.Gcp.OracleDatabase
     ///             ComputeCount = 2,
     ///             StorageCount = 3,
     ///         },
+    ///         DeletionProtection = true,
     ///     });
     /// 
     ///     var @default = Gcp.Compute.GetNetwork.Invoke(new()
@@ -71,6 +72,7 @@ namespace Pulumi.Gcp.OracleDatabase
     ///             GiVersion = "19.0.0.0",
     ///             HostnamePrefix = "hostname1",
     ///         },
+    ///         DeletionProtection = true,
     ///     });
     /// 
     /// });
@@ -97,6 +99,7 @@ namespace Pulumi.Gcp.OracleDatabase
     ///             ComputeCount = 2,
     ///             StorageCount = 3,
     ///         },
+    ///         DeletionProtection = true,
     ///     });
     /// 
     ///     var @default = Gcp.Compute.GetNetwork.Invoke(new()
@@ -161,6 +164,7 @@ namespace Pulumi.Gcp.OracleDatabase
     ///             },
     ///             MemorySizeGb = 60,
     ///         },
+    ///         DeletionProtection = true,
     ///     });
     /// 
     /// });
@@ -222,6 +226,9 @@ namespace Pulumi.Gcp.OracleDatabase
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
+
+        [Output("deletionProtection")]
+        public Output<bool?> DeletionProtection { get; private set; } = null!;
 
         /// <summary>
         /// User friendly name for this resource.
@@ -374,6 +381,9 @@ namespace Pulumi.Gcp.OracleDatabase
         [Input("cloudVmClusterId", required: true)]
         public Input<string> CloudVmClusterId { get; set; } = null!;
 
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
+
         /// <summary>
         /// User friendly name for this resource.
         /// </summary>
@@ -466,6 +476,9 @@ namespace Pulumi.Gcp.OracleDatabase
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
+
+        [Input("deletionProtection")]
+        public Input<bool>? DeletionProtection { get; set; }
 
         /// <summary>
         /// User friendly name for this resource.

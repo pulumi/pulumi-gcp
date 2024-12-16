@@ -30,6 +30,7 @@ class NetworkArgs:
                  mtu: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_firewall_policy_enforcement_order: Optional[pulumi.Input[str]] = None,
+                 network_profile: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  routing_mode: Optional[pulumi.Input[str]] = None):
         """
@@ -74,6 +75,11 @@ class NetworkArgs:
         :param pulumi.Input[str] network_firewall_policy_enforcement_order: Set the order that Firewall Rules and Firewall Policies are evaluated.
                Default value is `AFTER_CLASSIC_FIREWALL`.
                Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
+        :param pulumi.Input[str] network_profile: A full or partial URL of the network profile to apply to this network.
+               This field can be set only at resource creation time. For example, the
+               following are valid URLs:
+               * https://www.googleapis.com/compute/beta/projects/{projectId}/global/networkProfiles/{network_profile_name}
+               * projects/{projectId}/global/networkProfiles/{network_profile_name}
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] routing_mode: The network-wide routing mode to use. If set to `REGIONAL`, this
@@ -105,6 +111,8 @@ class NetworkArgs:
             pulumi.set(__self__, "name", name)
         if network_firewall_policy_enforcement_order is not None:
             pulumi.set(__self__, "network_firewall_policy_enforcement_order", network_firewall_policy_enforcement_order)
+        if network_profile is not None:
+            pulumi.set(__self__, "network_profile", network_profile)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if routing_mode is not None:
@@ -272,6 +280,22 @@ class NetworkArgs:
         pulumi.set(self, "network_firewall_policy_enforcement_order", value)
 
     @property
+    @pulumi.getter(name="networkProfile")
+    def network_profile(self) -> Optional[pulumi.Input[str]]:
+        """
+        A full or partial URL of the network profile to apply to this network.
+        This field can be set only at resource creation time. For example, the
+        following are valid URLs:
+        * https://www.googleapis.com/compute/beta/projects/{projectId}/global/networkProfiles/{network_profile_name}
+        * projects/{projectId}/global/networkProfiles/{network_profile_name}
+        """
+        return pulumi.get(self, "network_profile")
+
+    @network_profile.setter
+    def network_profile(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_profile", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
@@ -317,6 +341,7 @@ class _NetworkState:
                  mtu: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_firewall_policy_enforcement_order: Optional[pulumi.Input[str]] = None,
+                 network_profile: Optional[pulumi.Input[str]] = None,
                  numeric_id: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  routing_mode: Optional[pulumi.Input[str]] = None,
@@ -365,6 +390,11 @@ class _NetworkState:
         :param pulumi.Input[str] network_firewall_policy_enforcement_order: Set the order that Firewall Rules and Firewall Policies are evaluated.
                Default value is `AFTER_CLASSIC_FIREWALL`.
                Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
+        :param pulumi.Input[str] network_profile: A full or partial URL of the network profile to apply to this network.
+               This field can be set only at resource creation time. For example, the
+               following are valid URLs:
+               * https://www.googleapis.com/compute/beta/projects/{projectId}/global/networkProfiles/{network_profile_name}
+               * projects/{projectId}/global/networkProfiles/{network_profile_name}
         :param pulumi.Input[str] numeric_id: The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -400,6 +430,8 @@ class _NetworkState:
             pulumi.set(__self__, "name", name)
         if network_firewall_policy_enforcement_order is not None:
             pulumi.set(__self__, "network_firewall_policy_enforcement_order", network_firewall_policy_enforcement_order)
+        if network_profile is not None:
+            pulumi.set(__self__, "network_profile", network_profile)
         if numeric_id is not None:
             pulumi.set(__self__, "numeric_id", numeric_id)
         if project is not None:
@@ -584,6 +616,22 @@ class _NetworkState:
         pulumi.set(self, "network_firewall_policy_enforcement_order", value)
 
     @property
+    @pulumi.getter(name="networkProfile")
+    def network_profile(self) -> Optional[pulumi.Input[str]]:
+        """
+        A full or partial URL of the network profile to apply to this network.
+        This field can be set only at resource creation time. For example, the
+        following are valid URLs:
+        * https://www.googleapis.com/compute/beta/projects/{projectId}/global/networkProfiles/{network_profile_name}
+        * projects/{projectId}/global/networkProfiles/{network_profile_name}
+        """
+        return pulumi.get(self, "network_profile")
+
+    @network_profile.setter
+    def network_profile(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_profile", value)
+
+    @property
     @pulumi.getter(name="numericId")
     def numeric_id(self) -> Optional[pulumi.Input[str]]:
         """
@@ -654,6 +702,7 @@ class Network(pulumi.CustomResource):
                  mtu: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_firewall_policy_enforcement_order: Optional[pulumi.Input[str]] = None,
+                 network_profile: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  routing_mode: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -804,6 +853,11 @@ class Network(pulumi.CustomResource):
         :param pulumi.Input[str] network_firewall_policy_enforcement_order: Set the order that Firewall Rules and Firewall Policies are evaluated.
                Default value is `AFTER_CLASSIC_FIREWALL`.
                Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
+        :param pulumi.Input[str] network_profile: A full or partial URL of the network profile to apply to this network.
+               This field can be set only at resource creation time. For example, the
+               following are valid URLs:
+               * https://www.googleapis.com/compute/beta/projects/{projectId}/global/networkProfiles/{network_profile_name}
+               * projects/{projectId}/global/networkProfiles/{network_profile_name}
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] routing_mode: The network-wide routing mode to use. If set to `REGIONAL`, this
@@ -950,6 +1004,7 @@ class Network(pulumi.CustomResource):
                  mtu: Optional[pulumi.Input[int]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_firewall_policy_enforcement_order: Optional[pulumi.Input[str]] = None,
+                 network_profile: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  routing_mode: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -972,6 +1027,7 @@ class Network(pulumi.CustomResource):
             __props__.__dict__["mtu"] = mtu
             __props__.__dict__["name"] = name
             __props__.__dict__["network_firewall_policy_enforcement_order"] = network_firewall_policy_enforcement_order
+            __props__.__dict__["network_profile"] = network_profile
             __props__.__dict__["project"] = project
             __props__.__dict__["routing_mode"] = routing_mode
             __props__.__dict__["gateway_ipv4"] = None
@@ -999,6 +1055,7 @@ class Network(pulumi.CustomResource):
             mtu: Optional[pulumi.Input[int]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network_firewall_policy_enforcement_order: Optional[pulumi.Input[str]] = None,
+            network_profile: Optional[pulumi.Input[str]] = None,
             numeric_id: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             routing_mode: Optional[pulumi.Input[str]] = None,
@@ -1052,6 +1109,11 @@ class Network(pulumi.CustomResource):
         :param pulumi.Input[str] network_firewall_policy_enforcement_order: Set the order that Firewall Rules and Firewall Policies are evaluated.
                Default value is `AFTER_CLASSIC_FIREWALL`.
                Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
+        :param pulumi.Input[str] network_profile: A full or partial URL of the network profile to apply to this network.
+               This field can be set only at resource creation time. For example, the
+               following are valid URLs:
+               * https://www.googleapis.com/compute/beta/projects/{projectId}/global/networkProfiles/{network_profile_name}
+               * projects/{projectId}/global/networkProfiles/{network_profile_name}
         :param pulumi.Input[str] numeric_id: The unique identifier for the resource. This identifier is defined by the server.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -1079,6 +1141,7 @@ class Network(pulumi.CustomResource):
         __props__.__dict__["mtu"] = mtu
         __props__.__dict__["name"] = name
         __props__.__dict__["network_firewall_policy_enforcement_order"] = network_firewall_policy_enforcement_order
+        __props__.__dict__["network_profile"] = network_profile
         __props__.__dict__["numeric_id"] = numeric_id
         __props__.__dict__["project"] = project
         __props__.__dict__["routing_mode"] = routing_mode
@@ -1210,6 +1273,18 @@ class Network(pulumi.CustomResource):
         Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
         """
         return pulumi.get(self, "network_firewall_policy_enforcement_order")
+
+    @property
+    @pulumi.getter(name="networkProfile")
+    def network_profile(self) -> pulumi.Output[Optional[str]]:
+        """
+        A full or partial URL of the network profile to apply to this network.
+        This field can be set only at resource creation time. For example, the
+        following are valid URLs:
+        * https://www.googleapis.com/compute/beta/projects/{projectId}/global/networkProfiles/{network_profile_name}
+        * projects/{projectId}/global/networkProfiles/{network_profile_name}
+        """
+        return pulumi.get(self, "network_profile")
 
     @property
     @pulumi.getter(name="numericId")

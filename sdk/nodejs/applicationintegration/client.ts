@@ -31,6 +31,7 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
+ * import * as std from "@pulumi/std";
  *
  * const testProject = gcp.organizations.getProject({});
  * const keyring = new gcp.kms.KeyRing("keyring", {
@@ -53,9 +54,15 @@ import * as utilities from "../utilities";
  *     runAsServiceAccount: serviceAccount.email,
  *     cloudKmsConfig: {
  *         kmsLocation: "us-east1",
- *         kmsRing: keyring.id,
- *         key: cryptokey.id,
- *         keyVersion: testKey.id,
+ *         kmsRing: std.basenameOutput({
+ *             input: keyring.id,
+ *         }).apply(invoke => invoke.result),
+ *         key: std.basenameOutput({
+ *             input: cryptokey.id,
+ *         }).apply(invoke => invoke.result),
+ *         keyVersion: std.basenameOutput({
+ *             input: testKey.id,
+ *         }).apply(invoke => invoke.result),
  *         kmsProjectId: testProject.then(testProject => testProject.projectId),
  *     },
  * });

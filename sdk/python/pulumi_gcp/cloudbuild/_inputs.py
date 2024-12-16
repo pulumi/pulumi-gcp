@@ -85,6 +85,8 @@ __all__ = [
     'TriggerWebhookConfigArgsDict',
     'WorkerPoolNetworkConfigArgs',
     'WorkerPoolNetworkConfigArgsDict',
+    'WorkerPoolPrivateServiceConnectArgs',
+    'WorkerPoolPrivateServiceConnectArgsDict',
     'WorkerPoolWorkerConfigArgs',
     'WorkerPoolWorkerConfigArgsDict',
 ]
@@ -3955,6 +3957,57 @@ class WorkerPoolNetworkConfigArgs:
     @peered_network_ip_range.setter
     def peered_network_ip_range(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "peered_network_ip_range", value)
+
+
+if not MYPY:
+    class WorkerPoolPrivateServiceConnectArgsDict(TypedDict):
+        network_attachment: pulumi.Input[str]
+        """
+        Required. Immutable. The network attachment that the worker network interface is connected to. Must be in the format `projects/{project}/regions/{region}/networkAttachments/{networkAttachment}`. The region of network attachment must be the same as the worker pool. See [Network Attachments](https://cloud.google.com/vpc/docs/about-network-attachments)
+        """
+        route_all_traffic: NotRequired[pulumi.Input[bool]]
+        """
+        Immutable. Route all traffic through PSC interface. Enable this if you want full control of traffic in the private pool. Configure Cloud NAT for the subnet of network attachment if you need to access public Internet. If false, Only route private IPs, e.g. 10.0.0.0/8, 172.16.0.0/12, and 192.168.0.0/16 through PSC interface.
+        """
+elif False:
+    WorkerPoolPrivateServiceConnectArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class WorkerPoolPrivateServiceConnectArgs:
+    def __init__(__self__, *,
+                 network_attachment: pulumi.Input[str],
+                 route_all_traffic: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[str] network_attachment: Required. Immutable. The network attachment that the worker network interface is connected to. Must be in the format `projects/{project}/regions/{region}/networkAttachments/{networkAttachment}`. The region of network attachment must be the same as the worker pool. See [Network Attachments](https://cloud.google.com/vpc/docs/about-network-attachments)
+        :param pulumi.Input[bool] route_all_traffic: Immutable. Route all traffic through PSC interface. Enable this if you want full control of traffic in the private pool. Configure Cloud NAT for the subnet of network attachment if you need to access public Internet. If false, Only route private IPs, e.g. 10.0.0.0/8, 172.16.0.0/12, and 192.168.0.0/16 through PSC interface.
+        """
+        pulumi.set(__self__, "network_attachment", network_attachment)
+        if route_all_traffic is not None:
+            pulumi.set(__self__, "route_all_traffic", route_all_traffic)
+
+    @property
+    @pulumi.getter(name="networkAttachment")
+    def network_attachment(self) -> pulumi.Input[str]:
+        """
+        Required. Immutable. The network attachment that the worker network interface is connected to. Must be in the format `projects/{project}/regions/{region}/networkAttachments/{networkAttachment}`. The region of network attachment must be the same as the worker pool. See [Network Attachments](https://cloud.google.com/vpc/docs/about-network-attachments)
+        """
+        return pulumi.get(self, "network_attachment")
+
+    @network_attachment.setter
+    def network_attachment(self, value: pulumi.Input[str]):
+        pulumi.set(self, "network_attachment", value)
+
+    @property
+    @pulumi.getter(name="routeAllTraffic")
+    def route_all_traffic(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Immutable. Route all traffic through PSC interface. Enable this if you want full control of traffic in the private pool. Configure Cloud NAT for the subnet of network attachment if you need to access public Internet. If false, Only route private IPs, e.g. 10.0.0.0/8, 172.16.0.0/12, and 192.168.0.0/16 through PSC interface.
+        """
+        return pulumi.get(self, "route_all_traffic")
+
+    @route_all_traffic.setter
+    def route_all_traffic(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "route_all_traffic", value)
 
 
 if not MYPY:

@@ -397,7 +397,7 @@ index 67ad0b8ea..285ef9cd8 100644
 -See [google_runtimeconfig_variable](https://registry.terraform.io/providers/hashicorp/google/latest/docs/resources/runtimeconfig_variable#argument-reference) resource for details of the available attributes.
 +See google_runtimeconfig_variable resource for details of the available attributes.
 diff --git a/website/docs/d/service_account_id_token.html.markdown b/website/docs/d/service_account_id_token.html.markdown
-index 733ba1cc4..13605b227 100644
+index 845f692d3..8b602f986 100644
 --- a/website/docs/d/service_account_id_token.html.markdown
 +++ b/website/docs/d/service_account_id_token.html.markdown
 @@ -12,7 +12,7 @@ For more information see
@@ -413,8 +413,8 @@ index 733ba1cc4..13605b227 100644
    ```
  
  ## Example Usage - Service Account Impersonation.
--  `google_service_account_access_token` will use background impersonated credentials provided by [google_service_account_access_token](https://registry.terraform.io/providers/hashicorp/google/latest/docs/data-sources/service_account_access_token).
-+  `google_service_account_access_token` will use background impersonated credentials provided by `google_service_account_access_token`.
+-  `google_service_account_id_token` will use background impersonated credentials provided by [google_service_account_access_token](https://registry.terraform.io/providers/hashicorp/google/latest/docs/data-sources/service_account_access_token).
++  `google_service_account_id_token` will use background impersonated credentials provided by `google_service_account_access_token`.
  
    Note: to use the following, you must grant `target_service_account` the
    `roles/iam.serviceAccountTokenCreator` role on itself.

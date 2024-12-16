@@ -664,6 +664,12 @@ namespace Pulumi.Gcp.Compute
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier number for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("forwardingRuleId")]
+        public Output<int> ForwardingRuleId { get; private set; } = null!;
+
+        /// <summary>
         /// IP address for which this forwarding rule accepts traffic. When a client
         /// sends traffic to this IP address, the forwarding rule directs the traffic
         /// to the referenced `target`.
@@ -1225,6 +1231,12 @@ namespace Pulumi.Gcp.Compute
                 _effectiveLabels = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }
+
+        /// <summary>
+        /// The unique identifier number for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Input("forwardingRuleId")]
+        public Input<int>? ForwardingRuleId { get; set; }
 
         /// <summary>
         /// IP address for which this forwarding rule accepts traffic. When a client

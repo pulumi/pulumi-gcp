@@ -808,6 +808,8 @@ class BackupVault(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        Container to store and organize immutable and indelible backups.
+
         ## Example Usage
 
         ### Backup Dr Backup Vault Full
@@ -821,13 +823,13 @@ class BackupVault(pulumi.CustomResource):
             backup_vault_id="backup-vault-test",
             description="This is a second backup vault built by Terraform.",
             backup_minimum_enforced_retention_duration="100000s",
-            labels={
-                "foo": "bar1",
-                "bar": "baz1",
-            },
             annotations={
                 "annotations1": "bar1",
                 "annotations2": "baz1",
+            },
+            labels={
+                "foo": "bar1",
+                "bar": "baz1",
             },
             force_update=True,
             access_restriction="WITHIN_ORGANIZATION",
@@ -905,6 +907,8 @@ class BackupVault(pulumi.CustomResource):
                  args: BackupVaultArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Container to store and organize immutable and indelible backups.
+
         ## Example Usage
 
         ### Backup Dr Backup Vault Full
@@ -918,13 +922,13 @@ class BackupVault(pulumi.CustomResource):
             backup_vault_id="backup-vault-test",
             description="This is a second backup vault built by Terraform.",
             backup_minimum_enforced_retention_duration="100000s",
-            labels={
-                "foo": "bar1",
-                "bar": "baz1",
-            },
             annotations={
                 "annotations1": "bar1",
                 "annotations2": "baz1",
+            },
+            labels={
+                "foo": "bar1",
+                "bar": "baz1",
             },
             force_update=True,
             access_restriction="WITHIN_ORGANIZATION",

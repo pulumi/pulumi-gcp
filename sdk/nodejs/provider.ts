@@ -113,6 +113,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly firebaseStorageCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly firebaserulesCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly firestoreCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly geminiCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly gkeBackupCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly gkeHub2CustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly gkeHubCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -301,6 +302,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["firebaseStorageCustomEndpoint"] = args ? args.firebaseStorageCustomEndpoint : undefined;
             resourceInputs["firebaserulesCustomEndpoint"] = args ? args.firebaserulesCustomEndpoint : undefined;
             resourceInputs["firestoreCustomEndpoint"] = args ? args.firestoreCustomEndpoint : undefined;
+            resourceInputs["geminiCustomEndpoint"] = args ? args.geminiCustomEndpoint : undefined;
             resourceInputs["gkeBackupCustomEndpoint"] = args ? args.gkeBackupCustomEndpoint : undefined;
             resourceInputs["gkeHub2CustomEndpoint"] = args ? args.gkeHub2CustomEndpoint : undefined;
             resourceInputs["gkeHubCustomEndpoint"] = args ? args.gkeHubCustomEndpoint : undefined;
@@ -492,6 +494,7 @@ export interface ProviderArgs {
     firebaseStorageCustomEndpoint?: pulumi.Input<string>;
     firebaserulesCustomEndpoint?: pulumi.Input<string>;
     firestoreCustomEndpoint?: pulumi.Input<string>;
+    geminiCustomEndpoint?: pulumi.Input<string>;
     gkeBackupCustomEndpoint?: pulumi.Input<string>;
     gkeHub2CustomEndpoint?: pulumi.Input<string>;
     gkeHubCustomEndpoint?: pulumi.Input<string>;

@@ -142,6 +142,11 @@ public final class NodePoolNodeConfig {
      */
     private @Nullable Integer localSsdCount;
     /**
+     * @return LocalSsdEncryptionMode specified the method used for encrypting the local SSDs attached to the node.
+     * 
+     */
+    private @Nullable String localSsdEncryptionMode;
+    /**
      * @return Type of logging agent that is used as the default value for node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT.
      * 
      */
@@ -394,6 +399,13 @@ public final class NodePoolNodeConfig {
         return Optional.ofNullable(this.localSsdCount);
     }
     /**
+     * @return LocalSsdEncryptionMode specified the method used for encrypting the local SSDs attached to the node.
+     * 
+     */
+    public Optional<String> localSsdEncryptionMode() {
+        return Optional.ofNullable(this.localSsdEncryptionMode);
+    }
+    /**
      * @return Type of logging agent that is used as the default value for node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT.
      * 
      */
@@ -567,6 +579,7 @@ public final class NodePoolNodeConfig {
         private @Nullable NodePoolNodeConfigLinuxNodeConfig linuxNodeConfig;
         private @Nullable NodePoolNodeConfigLocalNvmeSsdBlockConfig localNvmeSsdBlockConfig;
         private @Nullable Integer localSsdCount;
+        private @Nullable String localSsdEncryptionMode;
         private @Nullable String loggingVariant;
         private @Nullable String machineType;
         private @Nullable Map<String,String> metadata;
@@ -611,6 +624,7 @@ public final class NodePoolNodeConfig {
     	      this.linuxNodeConfig = defaults.linuxNodeConfig;
     	      this.localNvmeSsdBlockConfig = defaults.localNvmeSsdBlockConfig;
     	      this.localSsdCount = defaults.localSsdCount;
+    	      this.localSsdEncryptionMode = defaults.localSsdEncryptionMode;
     	      this.loggingVariant = defaults.loggingVariant;
     	      this.machineType = defaults.machineType;
     	      this.metadata = defaults.metadata;
@@ -763,6 +777,12 @@ public final class NodePoolNodeConfig {
         public Builder localSsdCount(@Nullable Integer localSsdCount) {
 
             this.localSsdCount = localSsdCount;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder localSsdEncryptionMode(@Nullable String localSsdEncryptionMode) {
+
+            this.localSsdEncryptionMode = localSsdEncryptionMode;
             return this;
         }
         @CustomType.Setter
@@ -923,6 +943,7 @@ public final class NodePoolNodeConfig {
             _resultValue.linuxNodeConfig = linuxNodeConfig;
             _resultValue.localNvmeSsdBlockConfig = localNvmeSsdBlockConfig;
             _resultValue.localSsdCount = localSsdCount;
+            _resultValue.localSsdEncryptionMode = localSsdEncryptionMode;
             _resultValue.loggingVariant = loggingVariant;
             _resultValue.machineType = machineType;
             _resultValue.metadata = metadata;

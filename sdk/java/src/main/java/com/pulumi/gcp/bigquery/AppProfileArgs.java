@@ -156,6 +156,29 @@ public final class AppProfileArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Must be used with multi-cluster routing. If true, then this app profile will use row affinity sticky routing. With row
+     * affinity, Bigtable will route single row key requests based on the row key, rather than randomly. Instead, each row key
+     * will be assigned to a cluster by Cloud Bigtable, and will stick to that cluster. Choosing this option improves
+     * read-your-writes consistency for most requests under most circumstances, without sacrificing availability. Consistency
+     * is not guaranteed, as requests may still fail over between clusters in the event of errors or latency.
+     * 
+     */
+    @Import(name="rowAffinity")
+    private @Nullable Output<Boolean> rowAffinity;
+
+    /**
+     * @return Must be used with multi-cluster routing. If true, then this app profile will use row affinity sticky routing. With row
+     * affinity, Bigtable will route single row key requests based on the row key, rather than randomly. Instead, each row key
+     * will be assigned to a cluster by Cloud Bigtable, and will stick to that cluster. Choosing this option improves
+     * read-your-writes consistency for most requests under most circumstances, without sacrificing availability. Consistency
+     * is not guaranteed, as requests may still fail over between clusters in the event of errors or latency.
+     * 
+     */
+    public Optional<Output<Boolean>> rowAffinity() {
+        return Optional.ofNullable(this.rowAffinity);
+    }
+
+    /**
      * Use a single-cluster routing policy.
      * Structure is documented below.
      * 
@@ -200,6 +223,7 @@ public final class AppProfileArgs extends com.pulumi.resources.ResourceArgs {
         this.multiClusterRoutingClusterIds = $.multiClusterRoutingClusterIds;
         this.multiClusterRoutingUseAny = $.multiClusterRoutingUseAny;
         this.project = $.project;
+        this.rowAffinity = $.rowAffinity;
         this.singleClusterRouting = $.singleClusterRouting;
         this.standardIsolation = $.standardIsolation;
     }
@@ -413,6 +437,35 @@ public final class AppProfileArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder project(String project) {
             return project(Output.of(project));
+        }
+
+        /**
+         * @param rowAffinity Must be used with multi-cluster routing. If true, then this app profile will use row affinity sticky routing. With row
+         * affinity, Bigtable will route single row key requests based on the row key, rather than randomly. Instead, each row key
+         * will be assigned to a cluster by Cloud Bigtable, and will stick to that cluster. Choosing this option improves
+         * read-your-writes consistency for most requests under most circumstances, without sacrificing availability. Consistency
+         * is not guaranteed, as requests may still fail over between clusters in the event of errors or latency.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rowAffinity(@Nullable Output<Boolean> rowAffinity) {
+            $.rowAffinity = rowAffinity;
+            return this;
+        }
+
+        /**
+         * @param rowAffinity Must be used with multi-cluster routing. If true, then this app profile will use row affinity sticky routing. With row
+         * affinity, Bigtable will route single row key requests based on the row key, rather than randomly. Instead, each row key
+         * will be assigned to a cluster by Cloud Bigtable, and will stick to that cluster. Choosing this option improves
+         * read-your-writes consistency for most requests under most circumstances, without sacrificing availability. Consistency
+         * is not guaranteed, as requests may still fail over between clusters in the event of errors or latency.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder rowAffinity(Boolean rowAffinity) {
+            return rowAffinity(Output.of(rowAffinity));
         }
 
         /**

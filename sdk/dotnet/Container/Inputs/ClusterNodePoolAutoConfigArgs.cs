@@ -13,6 +13,12 @@ namespace Pulumi.Gcp.Container.Inputs
     public sealed class ClusterNodePoolAutoConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Linux system configuration for the cluster's automatically provisioned node pools. Only `cgroup_mode` field is supported in `node_pool_auto_config`. Structure is documented below.
+        /// </summary>
+        [Input("linuxNodeConfig")]
+        public Input<Inputs.ClusterNodePoolAutoConfigLinuxNodeConfigArgs>? LinuxNodeConfig { get; set; }
+
+        /// <summary>
         /// The network tag config for the cluster's automatically provisioned node pools. Structure is documented below.
         /// </summary>
         [Input("networkTags")]

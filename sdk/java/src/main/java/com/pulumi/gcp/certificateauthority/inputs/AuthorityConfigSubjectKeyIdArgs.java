@@ -16,7 +16,7 @@ public final class AuthorityConfigSubjectKeyIdArgs extends com.pulumi.resources.
     public static final AuthorityConfigSubjectKeyIdArgs Empty = new AuthorityConfigSubjectKeyIdArgs();
 
     /**
-     * The value of the KeyId in lowercase hexidecimal.
+     * The value of the KeyId in lowercase hexadecimal.
      * 
      * &lt;a name=&#34;nested_x509_config&#34;&gt;&lt;/a&gt;The `x509_config` block supports:
      * 
@@ -25,7 +25,7 @@ public final class AuthorityConfigSubjectKeyIdArgs extends com.pulumi.resources.
     private @Nullable Output<String> keyId;
 
     /**
-     * @return The value of the KeyId in lowercase hexidecimal.
+     * @return The value of the KeyId in lowercase hexadecimal.
      * 
      * &lt;a name=&#34;nested_x509_config&#34;&gt;&lt;/a&gt;The `x509_config` block supports:
      * 
@@ -59,7 +59,7 @@ public final class AuthorityConfigSubjectKeyIdArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param keyId The value of the KeyId in lowercase hexidecimal.
+         * @param keyId The value of the KeyId in lowercase hexadecimal.
          * 
          * &lt;a name=&#34;nested_x509_config&#34;&gt;&lt;/a&gt;The `x509_config` block supports:
          * 
@@ -72,7 +72,7 @@ public final class AuthorityConfigSubjectKeyIdArgs extends com.pulumi.resources.
         }
 
         /**
-         * @param keyId The value of the KeyId in lowercase hexidecimal.
+         * @param keyId The value of the KeyId in lowercase hexadecimal.
          * 
          * &lt;a name=&#34;nested_x509_config&#34;&gt;&lt;/a&gt;The `x509_config` block supports:
          * 

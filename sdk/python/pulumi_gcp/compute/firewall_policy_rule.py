@@ -524,6 +524,12 @@ class FirewallPolicyRule(pulumi.CustomResource):
                  tls_inspect: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
+        Represents a rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (allow or deny).
+
+        To get more information about FirewallPolicyRule, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/firewallPolicies/addRule)
+
         ## Example Usage
 
         ### Firewall Policy Rule
@@ -628,6 +634,12 @@ class FirewallPolicyRule(pulumi.CustomResource):
                  args: FirewallPolicyRuleArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Represents a rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (allow or deny).
+
+        To get more information about FirewallPolicyRule, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/firewallPolicies/addRule)
+
         ## Example Usage
 
         ### Firewall Policy Rule

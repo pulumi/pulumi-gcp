@@ -6,6 +6,7 @@ package com.pulumi.gcp.oracledatabase.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.oracledatabase.outputs.GetAutonomousDatabasesAutonomousDatabaseProperty;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -43,6 +44,7 @@ public final class GetAutonomousDatabasesAutonomousDatabase {
      * 
      */
     private String database;
+    private Boolean deletionProtection;
     /**
      * @return The display name for the Autonomous Database. The name does not have to
      * be unique within your project.
@@ -142,6 +144,9 @@ public final class GetAutonomousDatabasesAutonomousDatabase {
     public String database() {
         return this.database;
     }
+    public Boolean deletionProtection() {
+        return this.deletionProtection;
+    }
     /**
      * @return The display name for the Autonomous Database. The name does not have to
      * be unique within your project.
@@ -234,6 +239,7 @@ public final class GetAutonomousDatabasesAutonomousDatabase {
         private String cidr;
         private String createTime;
         private String database;
+        private Boolean deletionProtection;
         private String displayName;
         private Map<String,String> effectiveLabels;
         private String entitlementId;
@@ -252,6 +258,7 @@ public final class GetAutonomousDatabasesAutonomousDatabase {
     	      this.cidr = defaults.cidr;
     	      this.createTime = defaults.createTime;
     	      this.database = defaults.database;
+    	      this.deletionProtection = defaults.deletionProtection;
     	      this.displayName = defaults.displayName;
     	      this.effectiveLabels = defaults.effectiveLabels;
     	      this.entitlementId = defaults.entitlementId;
@@ -302,6 +309,14 @@ public final class GetAutonomousDatabasesAutonomousDatabase {
               throw new MissingRequiredPropertyException("GetAutonomousDatabasesAutonomousDatabase", "database");
             }
             this.database = database;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder deletionProtection(Boolean deletionProtection) {
+            if (deletionProtection == null) {
+              throw new MissingRequiredPropertyException("GetAutonomousDatabasesAutonomousDatabase", "deletionProtection");
+            }
+            this.deletionProtection = deletionProtection;
             return this;
         }
         @CustomType.Setter
@@ -394,6 +409,7 @@ public final class GetAutonomousDatabasesAutonomousDatabase {
             _resultValue.cidr = cidr;
             _resultValue.createTime = createTime;
             _resultValue.database = database;
+            _resultValue.deletionProtection = deletionProtection;
             _resultValue.displayName = displayName;
             _resultValue.effectiveLabels = effectiveLabels;
             _resultValue.entitlementId = entitlementId;

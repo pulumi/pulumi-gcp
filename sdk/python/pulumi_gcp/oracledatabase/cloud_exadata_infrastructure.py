@@ -23,6 +23,7 @@ class CloudExadataInfrastructureArgs:
     def __init__(__self__, *,
                  cloud_exadata_infrastructure_id: pulumi.Input[str],
                  location: pulumi.Input[str],
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  gcp_oracle_zone: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -50,6 +51,8 @@ class CloudExadataInfrastructureArgs:
         """
         pulumi.set(__self__, "cloud_exadata_infrastructure_id", cloud_exadata_infrastructure_id)
         pulumi.set(__self__, "location", location)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if gcp_oracle_zone is not None:
@@ -90,6 +93,15 @@ class CloudExadataInfrastructureArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deletion_protection", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -161,6 +173,7 @@ class _CloudExadataInfrastructureState:
     def __init__(__self__, *,
                  cloud_exadata_infrastructure_id: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  entitlement_id: Optional[pulumi.Input[str]] = None,
@@ -203,6 +216,8 @@ class _CloudExadataInfrastructureState:
             pulumi.set(__self__, "cloud_exadata_infrastructure_id", cloud_exadata_infrastructure_id)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if deletion_protection is not None:
+            pulumi.set(__self__, "deletion_protection", deletion_protection)
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
         if effective_labels is not None:
@@ -253,6 +268,15 @@ class _CloudExadataInfrastructureState:
     @create_time.setter
     def create_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> Optional[pulumi.Input[bool]]:
+        return pulumi.get(self, "deletion_protection")
+
+    @deletion_protection.setter
+    def deletion_protection(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "deletion_protection", value)
 
     @property
     @pulumi.getter(name="displayName")
@@ -388,6 +412,7 @@ class CloudExadataInfrastructure(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cloud_exadata_infrastructure_id: Optional[pulumi.Input[str]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  gcp_oracle_zone: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -421,7 +446,8 @@ class CloudExadataInfrastructure(pulumi.CustomResource):
                 "shape": "Exadata.X9M",
                 "compute_count": 2,
                 "storage_count": 3,
-            })
+            },
+            deletion_protection=True)
         ```
         ### Oracledatabase Cloud Exadata Infrastructure Full
 
@@ -462,7 +488,8 @@ class CloudExadataInfrastructure(pulumi.CustomResource):
             },
             labels={
                 "label-one": "value-one",
-            })
+            },
+            deletion_protection=True)
         ```
 
         ## Import
@@ -541,7 +568,8 @@ class CloudExadataInfrastructure(pulumi.CustomResource):
                 "shape": "Exadata.X9M",
                 "compute_count": 2,
                 "storage_count": 3,
-            })
+            },
+            deletion_protection=True)
         ```
         ### Oracledatabase Cloud Exadata Infrastructure Full
 
@@ -582,7 +610,8 @@ class CloudExadataInfrastructure(pulumi.CustomResource):
             },
             labels={
                 "label-one": "value-one",
-            })
+            },
+            deletion_protection=True)
         ```
 
         ## Import
@@ -625,6 +654,7 @@ class CloudExadataInfrastructure(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  cloud_exadata_infrastructure_id: Optional[pulumi.Input[str]] = None,
+                 deletion_protection: Optional[pulumi.Input[bool]] = None,
                  display_name: Optional[pulumi.Input[str]] = None,
                  gcp_oracle_zone: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -643,6 +673,7 @@ class CloudExadataInfrastructure(pulumi.CustomResource):
             if cloud_exadata_infrastructure_id is None and not opts.urn:
                 raise TypeError("Missing required property 'cloud_exadata_infrastructure_id'")
             __props__.__dict__["cloud_exadata_infrastructure_id"] = cloud_exadata_infrastructure_id
+            __props__.__dict__["deletion_protection"] = deletion_protection
             __props__.__dict__["display_name"] = display_name
             __props__.__dict__["gcp_oracle_zone"] = gcp_oracle_zone
             __props__.__dict__["labels"] = labels
@@ -670,6 +701,7 @@ class CloudExadataInfrastructure(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             cloud_exadata_infrastructure_id: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
+            deletion_protection: Optional[pulumi.Input[bool]] = None,
             display_name: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             entitlement_id: Optional[pulumi.Input[str]] = None,
@@ -719,6 +751,7 @@ class CloudExadataInfrastructure(pulumi.CustomResource):
 
         __props__.__dict__["cloud_exadata_infrastructure_id"] = cloud_exadata_infrastructure_id
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["deletion_protection"] = deletion_protection
         __props__.__dict__["display_name"] = display_name
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["entitlement_id"] = entitlement_id
@@ -752,6 +785,11 @@ class CloudExadataInfrastructure(pulumi.CustomResource):
         The date and time that the Exadata Infrastructure was created.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="deletionProtection")
+    def deletion_protection(self) -> pulumi.Output[Optional[bool]]:
+        return pulumi.get(self, "deletion_protection")
 
     @property
     @pulumi.getter(name="displayName")

@@ -30,14 +30,14 @@ public final class FunctionServiceConfigSecretEnvironmentVariableArgs extends co
     }
 
     /**
-     * Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function&#39;s project assuming that the secret exists in the same project as of the function.
+     * Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function&#39;s project assuming that the secret exists in the same project as of the function.
      * 
      */
     @Import(name="projectId", required=true)
     private Output<String> projectId;
 
     /**
-     * @return Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function&#39;s project assuming that the secret exists in the same project as of the function.
+     * @return Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function&#39;s project assuming that the secret exists in the same project as of the function.
      * 
      */
     public Output<String> projectId() {
@@ -123,7 +123,7 @@ public final class FunctionServiceConfigSecretEnvironmentVariableArgs extends co
         }
 
         /**
-         * @param projectId Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function&#39;s project assuming that the secret exists in the same project as of the function.
+         * @param projectId Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function&#39;s project assuming that the secret exists in the same project as of the function.
          * 
          * @return builder
          * 
@@ -134,7 +134,7 @@ public final class FunctionServiceConfigSecretEnvironmentVariableArgs extends co
         }
 
         /**
-         * @param projectId Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function&#39;s project assuming that the secret exists in the same project as of the function.
+         * @param projectId Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function&#39;s project assuming that the secret exists in the same project as of the function.
          * 
          * @return builder
          * 

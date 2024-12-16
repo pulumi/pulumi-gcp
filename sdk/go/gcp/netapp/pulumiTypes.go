@@ -337,7 +337,7 @@ type VolumeExportPolicyRule struct {
 	// Defines the access type for clients matching the `allowedClients` specification.
 	// Possible values are: `READ_ONLY`, `READ_WRITE`, `READ_NONE`.
 	AccessType *string `pulumi:"accessType"`
-	// Defines the client ingress specification (allowed clients) as a comma seperated list with IPv4 CIDRs or IPv4 host addresses.
+	// Defines the client ingress specification (allowed clients) as a comma separated list with IPv4 CIDRs or IPv4 host addresses.
 	AllowedClients *string `pulumi:"allowedClients"`
 	// If enabled, the root user (UID = 0) of the specified clients doesn't get mapped to nobody (UID = 65534). This is also known as no_root_squash.
 	HasRootAccess *string `pulumi:"hasRootAccess"`
@@ -374,7 +374,7 @@ type VolumeExportPolicyRuleArgs struct {
 	// Defines the access type for clients matching the `allowedClients` specification.
 	// Possible values are: `READ_ONLY`, `READ_WRITE`, `READ_NONE`.
 	AccessType pulumi.StringPtrInput `pulumi:"accessType"`
-	// Defines the client ingress specification (allowed clients) as a comma seperated list with IPv4 CIDRs or IPv4 host addresses.
+	// Defines the client ingress specification (allowed clients) as a comma separated list with IPv4 CIDRs or IPv4 host addresses.
 	AllowedClients pulumi.StringPtrInput `pulumi:"allowedClients"`
 	// If enabled, the root user (UID = 0) of the specified clients doesn't get mapped to nobody (UID = 65534). This is also known as no_root_squash.
 	HasRootAccess pulumi.StringPtrInput `pulumi:"hasRootAccess"`
@@ -453,7 +453,7 @@ func (o VolumeExportPolicyRuleOutput) AccessType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VolumeExportPolicyRule) *string { return v.AccessType }).(pulumi.StringPtrOutput)
 }
 
-// Defines the client ingress specification (allowed clients) as a comma seperated list with IPv4 CIDRs or IPv4 host addresses.
+// Defines the client ingress specification (allowed clients) as a comma separated list with IPv4 CIDRs or IPv4 host addresses.
 func (o VolumeExportPolicyRuleOutput) AllowedClients() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VolumeExportPolicyRule) *string { return v.AllowedClients }).(pulumi.StringPtrOutput)
 }

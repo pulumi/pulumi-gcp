@@ -23,10 +23,9 @@ namespace Pulumi.Gcp.Monitoring.Outputs
         /// in the future.
         /// This field is optional. If this field is not empty, then it must be a
         /// valid Prometheus label name.
-        /// 
-        /// - - -
         /// </summary>
         public readonly string? AlertRule;
+        public readonly bool? DisableMetricValidation;
         /// <summary>
         /// Alerts are considered firing once their PromQL expression evaluated
         /// to be "true" for this long. Alerts whose PromQL expression was not
@@ -72,6 +71,8 @@ namespace Pulumi.Gcp.Monitoring.Outputs
         private AlertPolicyConditionConditionPrometheusQueryLanguage(
             string? alertRule,
 
+            bool? disableMetricValidation,
+
             string? duration,
 
             string? evaluationInterval,
@@ -83,6 +84,7 @@ namespace Pulumi.Gcp.Monitoring.Outputs
             string? ruleGroup)
         {
             AlertRule = alertRule;
+            DisableMetricValidation = disableMetricValidation;
             Duration = duration;
             EvaluationInterval = evaluationInterval;
             Labels = labels;

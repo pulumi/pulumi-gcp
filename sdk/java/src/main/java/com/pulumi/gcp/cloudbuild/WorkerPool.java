@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.cloudbuild.WorkerPoolArgs;
 import com.pulumi.gcp.cloudbuild.inputs.WorkerPoolState;
 import com.pulumi.gcp.cloudbuild.outputs.WorkerPoolNetworkConfig;
+import com.pulumi.gcp.cloudbuild.outputs.WorkerPoolPrivateServiceConnect;
 import com.pulumi.gcp.cloudbuild.outputs.WorkerPoolWorkerConfig;
 import java.lang.String;
 import java.util.Map;
@@ -286,6 +287,20 @@ public class WorkerPool extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<WorkerPoolNetworkConfig>> networkConfig() {
         return Codegen.optional(this.networkConfig);
+    }
+    /**
+     * Private Service Connect configuration for the pool.
+     * 
+     */
+    @Export(name="privateServiceConnect", refs={WorkerPoolPrivateServiceConnect.class}, tree="[0]")
+    private Output</* @Nullable */ WorkerPoolPrivateServiceConnect> privateServiceConnect;
+
+    /**
+     * @return Private Service Connect configuration for the pool.
+     * 
+     */
+    public Output<Optional<WorkerPoolPrivateServiceConnect>> privateServiceConnect() {
+        return Codegen.optional(this.privateServiceConnect);
     }
     /**
      * The project for the resource

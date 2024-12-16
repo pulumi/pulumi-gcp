@@ -10,6 +10,9 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Composer
 {
     /// <summary>
+    /// User workloads Secret used by Airflow tasks that run with Kubernetes Executor or KubernetesPodOperator.
+    /// Intended for Composer 3 Environments.
+    /// 
     /// ## Example Usage
     /// 
     /// ```csharp

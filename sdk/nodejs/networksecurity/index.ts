@@ -60,6 +60,26 @@ export const getAddressGroupIamPolicy: typeof import("./getAddressGroupIamPolicy
 export const getAddressGroupIamPolicyOutput: typeof import("./getAddressGroupIamPolicy").getAddressGroupIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getAddressGroupIamPolicy","getAddressGroupIamPolicyOutput"], () => require("./getAddressGroupIamPolicy"));
 
+export { MirroringDeploymentArgs, MirroringDeploymentState } from "./mirroringDeployment";
+export type MirroringDeployment = import("./mirroringDeployment").MirroringDeployment;
+export const MirroringDeployment: typeof import("./mirroringDeployment").MirroringDeployment = null as any;
+utilities.lazyLoad(exports, ["MirroringDeployment"], () => require("./mirroringDeployment"));
+
+export { MirroringDeploymentGroupArgs, MirroringDeploymentGroupState } from "./mirroringDeploymentGroup";
+export type MirroringDeploymentGroup = import("./mirroringDeploymentGroup").MirroringDeploymentGroup;
+export const MirroringDeploymentGroup: typeof import("./mirroringDeploymentGroup").MirroringDeploymentGroup = null as any;
+utilities.lazyLoad(exports, ["MirroringDeploymentGroup"], () => require("./mirroringDeploymentGroup"));
+
+export { MirroringEndpointGroupArgs, MirroringEndpointGroupState } from "./mirroringEndpointGroup";
+export type MirroringEndpointGroup = import("./mirroringEndpointGroup").MirroringEndpointGroup;
+export const MirroringEndpointGroup: typeof import("./mirroringEndpointGroup").MirroringEndpointGroup = null as any;
+utilities.lazyLoad(exports, ["MirroringEndpointGroup"], () => require("./mirroringEndpointGroup"));
+
+export { MirroringEndpointGroupAssociationArgs, MirroringEndpointGroupAssociationState } from "./mirroringEndpointGroupAssociation";
+export type MirroringEndpointGroupAssociation = import("./mirroringEndpointGroupAssociation").MirroringEndpointGroupAssociation;
+export const MirroringEndpointGroupAssociation: typeof import("./mirroringEndpointGroupAssociation").MirroringEndpointGroupAssociation = null as any;
+utilities.lazyLoad(exports, ["MirroringEndpointGroupAssociation"], () => require("./mirroringEndpointGroupAssociation"));
+
 export { SecurityProfileArgs, SecurityProfileState } from "./securityProfile";
 export type SecurityProfile = import("./securityProfile").SecurityProfile;
 export const SecurityProfile: typeof import("./securityProfile").SecurityProfile = null as any;
@@ -110,6 +130,14 @@ const _module = {
                 return new GatewaySecurityPolicy(name, <any>undefined, { urn })
             case "gcp:networksecurity/gatewaySecurityPolicyRule:GatewaySecurityPolicyRule":
                 return new GatewaySecurityPolicyRule(name, <any>undefined, { urn })
+            case "gcp:networksecurity/mirroringDeployment:MirroringDeployment":
+                return new MirroringDeployment(name, <any>undefined, { urn })
+            case "gcp:networksecurity/mirroringDeploymentGroup:MirroringDeploymentGroup":
+                return new MirroringDeploymentGroup(name, <any>undefined, { urn })
+            case "gcp:networksecurity/mirroringEndpointGroup:MirroringEndpointGroup":
+                return new MirroringEndpointGroup(name, <any>undefined, { urn })
+            case "gcp:networksecurity/mirroringEndpointGroupAssociation:MirroringEndpointGroupAssociation":
+                return new MirroringEndpointGroupAssociation(name, <any>undefined, { urn })
             case "gcp:networksecurity/securityProfile:SecurityProfile":
                 return new SecurityProfile(name, <any>undefined, { urn })
             case "gcp:networksecurity/securityProfileGroup:SecurityProfileGroup":
@@ -135,6 +163,10 @@ pulumi.runtime.registerResourceModule("gcp", "networksecurity/firewallEndpoint",
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/firewallEndpointAssociation", _module)
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/gatewaySecurityPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/gatewaySecurityPolicyRule", _module)
+pulumi.runtime.registerResourceModule("gcp", "networksecurity/mirroringDeployment", _module)
+pulumi.runtime.registerResourceModule("gcp", "networksecurity/mirroringDeploymentGroup", _module)
+pulumi.runtime.registerResourceModule("gcp", "networksecurity/mirroringEndpointGroup", _module)
+pulumi.runtime.registerResourceModule("gcp", "networksecurity/mirroringEndpointGroupAssociation", _module)
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/securityProfile", _module)
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/securityProfileGroup", _module)
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/serverTlsPolicy", _module)

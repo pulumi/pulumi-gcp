@@ -4,8 +4,10 @@
 package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.compute.outputs.SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig;
 import java.lang.Boolean;
 import java.lang.String;
+import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -22,6 +24,11 @@ public final class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig
      * 
      */
     private @Nullable String ruleVisibility;
+    /**
+     * @return Configuration options for layer7 adaptive protection for various customizable thresholds.
+     * 
+     */
+    private @Nullable List<SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig> thresholdConfigs;
 
     private SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig() {}
     /**
@@ -38,6 +45,13 @@ public final class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig
     public Optional<String> ruleVisibility() {
         return Optional.ofNullable(this.ruleVisibility);
     }
+    /**
+     * @return Configuration options for layer7 adaptive protection for various customizable thresholds.
+     * 
+     */
+    public List<SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig> thresholdConfigs() {
+        return this.thresholdConfigs == null ? List.of() : this.thresholdConfigs;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -50,11 +64,13 @@ public final class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig
     public static final class Builder {
         private @Nullable Boolean enable;
         private @Nullable String ruleVisibility;
+        private @Nullable List<SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig> thresholdConfigs;
         public Builder() {}
         public Builder(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.enable = defaults.enable;
     	      this.ruleVisibility = defaults.ruleVisibility;
+    	      this.thresholdConfigs = defaults.thresholdConfigs;
         }
 
         @CustomType.Setter
@@ -69,10 +85,20 @@ public final class SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig
             this.ruleVisibility = ruleVisibility;
             return this;
         }
+        @CustomType.Setter
+        public Builder thresholdConfigs(@Nullable List<SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig> thresholdConfigs) {
+
+            this.thresholdConfigs = thresholdConfigs;
+            return this;
+        }
+        public Builder thresholdConfigs(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig... thresholdConfigs) {
+            return thresholdConfigs(List.of(thresholdConfigs));
+        }
         public SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig build() {
             final var _resultValue = new SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig();
             _resultValue.enable = enable;
             _resultValue.ruleVisibility = ruleVisibility;
+            _resultValue.thresholdConfigs = thresholdConfigs;
             return _resultValue;
         }
     }

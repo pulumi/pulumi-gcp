@@ -90,6 +90,21 @@ public final class RegionHealthCheckState extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * The unique identifier number for the resource. This identifier is defined by the server.
+     * 
+     */
+    @Import(name="healthCheckId")
+    private @Nullable Output<Integer> healthCheckId;
+
+    /**
+     * @return The unique identifier number for the resource. This identifier is defined by the server.
+     * 
+     */
+    public Optional<Output<Integer>> healthCheckId() {
+        return Optional.ofNullable(this.healthCheckId);
+    }
+
+    /**
      * A so-far unhealthy instance will be marked healthy after this many
      * consecutive successes. The default value is 2.
      * 
@@ -346,6 +361,7 @@ public final class RegionHealthCheckState extends com.pulumi.resources.ResourceA
         this.creationTimestamp = $.creationTimestamp;
         this.description = $.description;
         this.grpcHealthCheck = $.grpcHealthCheck;
+        this.healthCheckId = $.healthCheckId;
         this.healthyThreshold = $.healthyThreshold;
         this.http2HealthCheck = $.http2HealthCheck;
         this.httpHealthCheck = $.httpHealthCheck;
@@ -468,6 +484,27 @@ public final class RegionHealthCheckState extends com.pulumi.resources.ResourceA
          */
         public Builder grpcHealthCheck(RegionHealthCheckGrpcHealthCheckArgs grpcHealthCheck) {
             return grpcHealthCheck(Output.of(grpcHealthCheck));
+        }
+
+        /**
+         * @param healthCheckId The unique identifier number for the resource. This identifier is defined by the server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder healthCheckId(@Nullable Output<Integer> healthCheckId) {
+            $.healthCheckId = healthCheckId;
+            return this;
+        }
+
+        /**
+         * @param healthCheckId The unique identifier number for the resource. This identifier is defined by the server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder healthCheckId(Integer healthCheckId) {
+            return healthCheckId(Output.of(healthCheckId));
         }
 
         /**

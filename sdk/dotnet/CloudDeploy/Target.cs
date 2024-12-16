@@ -197,6 +197,12 @@ namespace Pulumi.Gcp.CloudDeploy
         public Output<Outputs.TargetAnthosCluster?> AnthosCluster { get; private set; } = null!;
 
         /// <summary>
+        /// Optional. Map of entity IDs to their associated entities. Associated entities allows specifying places other than the deployment target for specific features. For example, the Gateway API canary can be configured to deploy the HTTPRoute to a different cluster(s) than the deployment cluster using associated entities. An entity ID must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
+        /// </summary>
+        [Output("associatedEntities")]
+        public Output<ImmutableArray<Outputs.TargetAssociatedEntity>> AssociatedEntities { get; private set; } = null!;
+
+        /// <summary>
         /// Output only. Time at which the `Target` was created.
         /// </summary>
         [Output("createTime")]
@@ -392,6 +398,18 @@ namespace Pulumi.Gcp.CloudDeploy
         [Input("anthosCluster")]
         public Input<Inputs.TargetAnthosClusterArgs>? AnthosCluster { get; set; }
 
+        [Input("associatedEntities")]
+        private InputList<Inputs.TargetAssociatedEntityArgs>? _associatedEntities;
+
+        /// <summary>
+        /// Optional. Map of entity IDs to their associated entities. Associated entities allows specifying places other than the deployment target for specific features. For example, the Gateway API canary can be configured to deploy the HTTPRoute to a different cluster(s) than the deployment cluster using associated entities. An entity ID must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
+        /// </summary>
+        public InputList<Inputs.TargetAssociatedEntityArgs> AssociatedEntities
+        {
+            get => _associatedEntities ?? (_associatedEntities = new InputList<Inputs.TargetAssociatedEntityArgs>());
+            set => _associatedEntities = value;
+        }
+
         /// <summary>
         /// Optional. Information specifying a Custom Target.
         /// </summary>
@@ -517,6 +535,18 @@ namespace Pulumi.Gcp.CloudDeploy
         /// </summary>
         [Input("anthosCluster")]
         public Input<Inputs.TargetAnthosClusterGetArgs>? AnthosCluster { get; set; }
+
+        [Input("associatedEntities")]
+        private InputList<Inputs.TargetAssociatedEntityGetArgs>? _associatedEntities;
+
+        /// <summary>
+        /// Optional. Map of entity IDs to their associated entities. Associated entities allows specifying places other than the deployment target for specific features. For example, the Gateway API canary can be configured to deploy the HTTPRoute to a different cluster(s) than the deployment cluster using associated entities. An entity ID must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
+        /// </summary>
+        public InputList<Inputs.TargetAssociatedEntityGetArgs> AssociatedEntities
+        {
+            get => _associatedEntities ?? (_associatedEntities = new InputList<Inputs.TargetAssociatedEntityGetArgs>());
+            set => _associatedEntities = value;
+        }
 
         /// <summary>
         /// Output only. Time at which the `Target` was created.

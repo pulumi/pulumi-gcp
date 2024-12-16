@@ -388,6 +388,15 @@ namespace Pulumi.Gcp.Container
         public Output<string> Endpoint { get; private set; } = null!;
 
         /// <summary>
+        /// Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
+        /// 
+        /// 
+        /// &lt;a name="nested_default_snat_status"&gt;&lt;/a&gt;The `default_snat_status` block supports
+        /// </summary>
+        [Output("enterpriseConfig")]
+        public Output<Outputs.ClusterEnterpriseConfig> EnterpriseConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Fleet configuration for the cluster. Structure is documented below.
         /// </summary>
         [Output("fleet")]
@@ -791,8 +800,6 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
-        /// 
-        /// &lt;a name="nested_default_snat_status"&gt;&lt;/a&gt;The `default_snat_status` block supports
         /// </summary>
         [Output("workloadAltsConfig")]
         public Output<Outputs.ClusterWorkloadAltsConfig> WorkloadAltsConfig { get; private set; } = null!;
@@ -1051,6 +1058,15 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("enableTpu")]
         public Input<bool>? EnableTpu { get; set; }
+
+        /// <summary>
+        /// Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
+        /// 
+        /// 
+        /// &lt;a name="nested_default_snat_status"&gt;&lt;/a&gt;The `default_snat_status` block supports
+        /// </summary>
+        [Input("enterpriseConfig")]
+        public Input<Inputs.ClusterEnterpriseConfigArgs>? EnterpriseConfig { get; set; }
 
         /// <summary>
         /// Fleet configuration for the cluster. Structure is documented below.
@@ -1428,8 +1444,6 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
-        /// 
-        /// &lt;a name="nested_default_snat_status"&gt;&lt;/a&gt;The `default_snat_status` block supports
         /// </summary>
         [Input("workloadAltsConfig")]
         public Input<Inputs.ClusterWorkloadAltsConfigArgs>? WorkloadAltsConfig { get; set; }
@@ -1667,6 +1681,15 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         [Input("endpoint")]
         public Input<string>? Endpoint { get; set; }
+
+        /// <summary>
+        /// Configuration for [Enterprise edition].(https://cloud.google.com/kubernetes-engine/enterprise/docs/concepts/gke-editions). Structure is documented below.
+        /// 
+        /// 
+        /// &lt;a name="nested_default_snat_status"&gt;&lt;/a&gt;The `default_snat_status` block supports
+        /// </summary>
+        [Input("enterpriseConfig")]
+        public Input<Inputs.ClusterEnterpriseConfigGetArgs>? EnterpriseConfig { get; set; }
 
         /// <summary>
         /// Fleet configuration for the cluster. Structure is documented below.
@@ -2100,8 +2123,6 @@ namespace Pulumi.Gcp.Container
 
         /// <summary>
         /// Configuration for [direct-path (via ALTS) with workload identity.](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1beta1/projects.locations.clusters#workloadaltsconfig). Structure is documented below.
-        /// 
-        /// &lt;a name="nested_default_snat_status"&gt;&lt;/a&gt;The `default_snat_status` block supports
         /// </summary>
         [Input("workloadAltsConfig")]
         public Input<Inputs.ClusterWorkloadAltsConfigGetArgs>? WorkloadAltsConfig { get; set; }

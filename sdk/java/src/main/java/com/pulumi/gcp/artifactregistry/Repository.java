@@ -941,6 +941,148 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Artifact Registry Repository Remote Common Repository With Artifact Registry Uri
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.artifactregistry.Repository;
+ * import com.pulumi.gcp.artifactregistry.RepositoryArgs;
+ * import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigArgs;
+ * import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigCommonRepositoryArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         final var project = OrganizationsFunctions.getProject();
+ * 
+ *         var upstreamRepo = new Repository("upstreamRepo", RepositoryArgs.builder()
+ *             .location("us-central1")
+ *             .repositoryId("example-upstream-repo")
+ *             .description("example upstream repository")
+ *             .format("DOCKER")
+ *             .build());
+ * 
+ *         var my_repo = new Repository("my-repo", RepositoryArgs.builder()
+ *             .location("us-central1")
+ *             .repositoryId("example-common-remote")
+ *             .description("example remote common repository with docker upstream")
+ *             .format("DOCKER")
+ *             .mode("REMOTE_REPOSITORY")
+ *             .remoteRepositoryConfig(RepositoryRemoteRepositoryConfigArgs.builder()
+ *                 .description("pull-through cache of another Artifact Registry repository by URL")
+ *                 .commonRepository(RepositoryRemoteRepositoryConfigCommonRepositoryArgs.builder()
+ *                     .uri("https://us-central1-docker.pkg.dev//example-upstream-repo")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Artifact Registry Repository Remote Common Repository With Custom Upstream
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+ * import com.pulumi.gcp.secretmanager.Secret;
+ * import com.pulumi.gcp.secretmanager.SecretArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationAutoArgs;
+ * import com.pulumi.gcp.secretmanager.SecretVersion;
+ * import com.pulumi.gcp.secretmanager.SecretVersionArgs;
+ * import com.pulumi.gcp.secretmanager.SecretIamMember;
+ * import com.pulumi.gcp.secretmanager.SecretIamMemberArgs;
+ * import com.pulumi.gcp.artifactregistry.Repository;
+ * import com.pulumi.gcp.artifactregistry.RepositoryArgs;
+ * import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigArgs;
+ * import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigCommonRepositoryArgs;
+ * import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs;
+ * import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         final var project = OrganizationsFunctions.getProject();
+ * 
+ *         var example_remote_secret = new Secret("example-remote-secret", SecretArgs.builder()
+ *             .secretId("example-secret")
+ *             .replication(SecretReplicationArgs.builder()
+ *                 .auto()
+ *                 .build())
+ *             .build());
+ * 
+ *         var example_remote_secretVersion = new SecretVersion("example-remote-secretVersion", SecretVersionArgs.builder()
+ *             .secret(example_remote_secret.id())
+ *             .secretData("remote-password")
+ *             .build());
+ * 
+ *         var secret_access = new SecretIamMember("secret-access", SecretIamMemberArgs.builder()
+ *             .secretId(example_remote_secret.id())
+ *             .role("roles/secretmanager.secretAccessor")
+ *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-artifactregistry.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
+ *             .build());
+ * 
+ *         var my_repo = new Repository("my-repo", RepositoryArgs.builder()
+ *             .location("us-central1")
+ *             .repositoryId("example-docker-custom-remote")
+ *             .description("example remote custom docker repository with credentials")
+ *             .format("DOCKER")
+ *             .mode("REMOTE_REPOSITORY")
+ *             .remoteRepositoryConfig(RepositoryRemoteRepositoryConfigArgs.builder()
+ *                 .description("custom common docker remote with credentials")
+ *                 .disableUpstreamValidation(true)
+ *                 .commonRepository(RepositoryRemoteRepositoryConfigCommonRepositoryArgs.builder()
+ *                     .uri("https://registry-1.docker.io")
+ *                     .build())
+ *                 .upstreamCredentials(RepositoryRemoteRepositoryConfigUpstreamCredentialsArgs.builder()
+ *                     .usernamePasswordCredentials(RepositoryRemoteRepositoryConfigUpstreamCredentialsUsernamePasswordCredentialsArgs.builder()
+ *                         .username("remote-username")
+ *                         .passwordSecretVersion(example_remote_secretVersion.name())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 

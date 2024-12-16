@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataproc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.dataproc.outputs.ClusterClusterConfigGceClusterConfigConfidentialInstanceConfig;
 import com.pulumi.gcp.dataproc.outputs.ClusterClusterConfigGceClusterConfigNodeGroupAffinity;
 import com.pulumi.gcp.dataproc.outputs.ClusterClusterConfigGceClusterConfigReservationAffinity;
 import com.pulumi.gcp.dataproc.outputs.ClusterClusterConfigGceClusterConfigShieldedInstanceConfig;
@@ -17,6 +18,11 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class ClusterClusterConfigGceClusterConfig {
+    /**
+     * @return Confidential Instance Config for clusters using [Confidential VMs](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/confidential-compute)
+     * 
+     */
+    private @Nullable ClusterClusterConfigGceClusterConfigConfidentialInstanceConfig confidentialInstanceConfig;
     /**
      * @return By default, clusters are not restricted to internal IP addresses,
      * and will have ephemeral external IP addresses assigned to each instance. If set to true, all
@@ -96,6 +102,13 @@ public final class ClusterClusterConfigGceClusterConfig {
     private @Nullable String zone;
 
     private ClusterClusterConfigGceClusterConfig() {}
+    /**
+     * @return Confidential Instance Config for clusters using [Confidential VMs](https://cloud.google.com/dataproc/docs/concepts/configuring-clusters/confidential-compute)
+     * 
+     */
+    public Optional<ClusterClusterConfigGceClusterConfigConfidentialInstanceConfig> confidentialInstanceConfig() {
+        return Optional.ofNullable(this.confidentialInstanceConfig);
+    }
     /**
      * @return By default, clusters are not restricted to internal IP addresses,
      * and will have ephemeral external IP addresses assigned to each instance. If set to true, all
@@ -205,6 +218,7 @@ public final class ClusterClusterConfigGceClusterConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable ClusterClusterConfigGceClusterConfigConfidentialInstanceConfig confidentialInstanceConfig;
         private @Nullable Boolean internalIpOnly;
         private @Nullable Map<String,String> metadata;
         private @Nullable String network;
@@ -219,6 +233,7 @@ public final class ClusterClusterConfigGceClusterConfig {
         public Builder() {}
         public Builder(ClusterClusterConfigGceClusterConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.confidentialInstanceConfig = defaults.confidentialInstanceConfig;
     	      this.internalIpOnly = defaults.internalIpOnly;
     	      this.metadata = defaults.metadata;
     	      this.network = defaults.network;
@@ -232,6 +247,12 @@ public final class ClusterClusterConfigGceClusterConfig {
     	      this.zone = defaults.zone;
         }
 
+        @CustomType.Setter
+        public Builder confidentialInstanceConfig(@Nullable ClusterClusterConfigGceClusterConfigConfidentialInstanceConfig confidentialInstanceConfig) {
+
+            this.confidentialInstanceConfig = confidentialInstanceConfig;
+            return this;
+        }
         @CustomType.Setter
         public Builder internalIpOnly(@Nullable Boolean internalIpOnly) {
 
@@ -306,6 +327,7 @@ public final class ClusterClusterConfigGceClusterConfig {
         }
         public ClusterClusterConfigGceClusterConfig build() {
             final var _resultValue = new ClusterClusterConfigGceClusterConfig();
+            _resultValue.confidentialInstanceConfig = confidentialInstanceConfig;
             _resultValue.internalIpOnly = internalIpOnly;
             _resultValue.metadata = metadata;
             _resultValue.network = network;

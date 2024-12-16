@@ -30,7 +30,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			myBackupVault, err := backupdisasterrecovery.NewBackupVault(ctx, "my_backup_vault", &backupdisasterrecovery.BackupVaultArgs{
 //				Location:                               pulumi.String("us-central1"),
-//				BackupVaultId:                          pulumi.String("bv-bp-test"),
+//				BackupVaultId:                          pulumi.String("backup-vault-simple-test"),
 //				BackupMinimumEnforcedRetentionDuration: pulumi.String("100000s"),
 //			})
 //			if err != nil {

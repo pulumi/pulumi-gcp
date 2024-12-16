@@ -80,6 +80,7 @@ type LookupInstanceGroupManagerResult struct {
 	// The provider-assigned unique ID for this managed resource.
 	Id                          string                                           `pulumi:"id"`
 	InstanceGroup               string                                           `pulumi:"instanceGroup"`
+	InstanceGroupManagerId      int                                              `pulumi:"instanceGroupManagerId"`
 	InstanceLifecyclePolicies   []GetInstanceGroupManagerInstanceLifecyclePolicy `pulumi:"instanceLifecyclePolicies"`
 	ListManagedInstancesResults string                                           `pulumi:"listManagedInstancesResults"`
 	Name                        *string                                          `pulumi:"name"`
@@ -179,6 +180,10 @@ func (o LookupInstanceGroupManagerResultOutput) Id() pulumi.StringOutput {
 
 func (o LookupInstanceGroupManagerResultOutput) InstanceGroup() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupInstanceGroupManagerResult) string { return v.InstanceGroup }).(pulumi.StringOutput)
+}
+
+func (o LookupInstanceGroupManagerResultOutput) InstanceGroupManagerId() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupInstanceGroupManagerResult) int { return v.InstanceGroupManagerId }).(pulumi.IntOutput)
 }
 
 func (o LookupInstanceGroupManagerResultOutput) InstanceLifecyclePolicies() GetInstanceGroupManagerInstanceLifecyclePolicyArrayOutput {

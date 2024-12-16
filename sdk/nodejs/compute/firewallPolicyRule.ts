@@ -7,6 +7,12 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Represents a rule that describes one or more match conditions along with the action to be taken when traffic matches this condition (allow or deny).
+ *
+ * To get more information about FirewallPolicyRule, see:
+ *
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/firewallPolicies/addRule)
+ *
  * ## Example Usage
  *
  * ### Firewall Policy Rule

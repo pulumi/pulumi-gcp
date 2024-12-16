@@ -6945,6 +6945,162 @@ func (o WorkerPoolNetworkConfigPtrOutput) PeeredNetworkIpRange() pulumi.StringPt
 	}).(pulumi.StringPtrOutput)
 }
 
+type WorkerPoolPrivateServiceConnect struct {
+	// Required. Immutable. The network attachment that the worker network interface is connected to. Must be in the format `projects/{project}/regions/{region}/networkAttachments/{networkAttachment}`. The region of network attachment must be the same as the worker pool. See [Network Attachments](https://cloud.google.com/vpc/docs/about-network-attachments)
+	NetworkAttachment string `pulumi:"networkAttachment"`
+	// Immutable. Route all traffic through PSC interface. Enable this if you want full control of traffic in the private pool. Configure Cloud NAT for the subnet of network attachment if you need to access public Internet. If false, Only route private IPs, e.g. 10.0.0.0/8, 172.16.0.0/12, and 192.168.0.0/16 through PSC interface.
+	RouteAllTraffic *bool `pulumi:"routeAllTraffic"`
+}
+
+// WorkerPoolPrivateServiceConnectInput is an input type that accepts WorkerPoolPrivateServiceConnectArgs and WorkerPoolPrivateServiceConnectOutput values.
+// You can construct a concrete instance of `WorkerPoolPrivateServiceConnectInput` via:
+//
+//	WorkerPoolPrivateServiceConnectArgs{...}
+type WorkerPoolPrivateServiceConnectInput interface {
+	pulumi.Input
+
+	ToWorkerPoolPrivateServiceConnectOutput() WorkerPoolPrivateServiceConnectOutput
+	ToWorkerPoolPrivateServiceConnectOutputWithContext(context.Context) WorkerPoolPrivateServiceConnectOutput
+}
+
+type WorkerPoolPrivateServiceConnectArgs struct {
+	// Required. Immutable. The network attachment that the worker network interface is connected to. Must be in the format `projects/{project}/regions/{region}/networkAttachments/{networkAttachment}`. The region of network attachment must be the same as the worker pool. See [Network Attachments](https://cloud.google.com/vpc/docs/about-network-attachments)
+	NetworkAttachment pulumi.StringInput `pulumi:"networkAttachment"`
+	// Immutable. Route all traffic through PSC interface. Enable this if you want full control of traffic in the private pool. Configure Cloud NAT for the subnet of network attachment if you need to access public Internet. If false, Only route private IPs, e.g. 10.0.0.0/8, 172.16.0.0/12, and 192.168.0.0/16 through PSC interface.
+	RouteAllTraffic pulumi.BoolPtrInput `pulumi:"routeAllTraffic"`
+}
+
+func (WorkerPoolPrivateServiceConnectArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerPoolPrivateServiceConnect)(nil)).Elem()
+}
+
+func (i WorkerPoolPrivateServiceConnectArgs) ToWorkerPoolPrivateServiceConnectOutput() WorkerPoolPrivateServiceConnectOutput {
+	return i.ToWorkerPoolPrivateServiceConnectOutputWithContext(context.Background())
+}
+
+func (i WorkerPoolPrivateServiceConnectArgs) ToWorkerPoolPrivateServiceConnectOutputWithContext(ctx context.Context) WorkerPoolPrivateServiceConnectOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolPrivateServiceConnectOutput)
+}
+
+func (i WorkerPoolPrivateServiceConnectArgs) ToWorkerPoolPrivateServiceConnectPtrOutput() WorkerPoolPrivateServiceConnectPtrOutput {
+	return i.ToWorkerPoolPrivateServiceConnectPtrOutputWithContext(context.Background())
+}
+
+func (i WorkerPoolPrivateServiceConnectArgs) ToWorkerPoolPrivateServiceConnectPtrOutputWithContext(ctx context.Context) WorkerPoolPrivateServiceConnectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolPrivateServiceConnectOutput).ToWorkerPoolPrivateServiceConnectPtrOutputWithContext(ctx)
+}
+
+// WorkerPoolPrivateServiceConnectPtrInput is an input type that accepts WorkerPoolPrivateServiceConnectArgs, WorkerPoolPrivateServiceConnectPtr and WorkerPoolPrivateServiceConnectPtrOutput values.
+// You can construct a concrete instance of `WorkerPoolPrivateServiceConnectPtrInput` via:
+//
+//	        WorkerPoolPrivateServiceConnectArgs{...}
+//
+//	or:
+//
+//	        nil
+type WorkerPoolPrivateServiceConnectPtrInput interface {
+	pulumi.Input
+
+	ToWorkerPoolPrivateServiceConnectPtrOutput() WorkerPoolPrivateServiceConnectPtrOutput
+	ToWorkerPoolPrivateServiceConnectPtrOutputWithContext(context.Context) WorkerPoolPrivateServiceConnectPtrOutput
+}
+
+type workerPoolPrivateServiceConnectPtrType WorkerPoolPrivateServiceConnectArgs
+
+func WorkerPoolPrivateServiceConnectPtr(v *WorkerPoolPrivateServiceConnectArgs) WorkerPoolPrivateServiceConnectPtrInput {
+	return (*workerPoolPrivateServiceConnectPtrType)(v)
+}
+
+func (*workerPoolPrivateServiceConnectPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkerPoolPrivateServiceConnect)(nil)).Elem()
+}
+
+func (i *workerPoolPrivateServiceConnectPtrType) ToWorkerPoolPrivateServiceConnectPtrOutput() WorkerPoolPrivateServiceConnectPtrOutput {
+	return i.ToWorkerPoolPrivateServiceConnectPtrOutputWithContext(context.Background())
+}
+
+func (i *workerPoolPrivateServiceConnectPtrType) ToWorkerPoolPrivateServiceConnectPtrOutputWithContext(ctx context.Context) WorkerPoolPrivateServiceConnectPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(WorkerPoolPrivateServiceConnectPtrOutput)
+}
+
+type WorkerPoolPrivateServiceConnectOutput struct{ *pulumi.OutputState }
+
+func (WorkerPoolPrivateServiceConnectOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*WorkerPoolPrivateServiceConnect)(nil)).Elem()
+}
+
+func (o WorkerPoolPrivateServiceConnectOutput) ToWorkerPoolPrivateServiceConnectOutput() WorkerPoolPrivateServiceConnectOutput {
+	return o
+}
+
+func (o WorkerPoolPrivateServiceConnectOutput) ToWorkerPoolPrivateServiceConnectOutputWithContext(ctx context.Context) WorkerPoolPrivateServiceConnectOutput {
+	return o
+}
+
+func (o WorkerPoolPrivateServiceConnectOutput) ToWorkerPoolPrivateServiceConnectPtrOutput() WorkerPoolPrivateServiceConnectPtrOutput {
+	return o.ToWorkerPoolPrivateServiceConnectPtrOutputWithContext(context.Background())
+}
+
+func (o WorkerPoolPrivateServiceConnectOutput) ToWorkerPoolPrivateServiceConnectPtrOutputWithContext(ctx context.Context) WorkerPoolPrivateServiceConnectPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v WorkerPoolPrivateServiceConnect) *WorkerPoolPrivateServiceConnect {
+		return &v
+	}).(WorkerPoolPrivateServiceConnectPtrOutput)
+}
+
+// Required. Immutable. The network attachment that the worker network interface is connected to. Must be in the format `projects/{project}/regions/{region}/networkAttachments/{networkAttachment}`. The region of network attachment must be the same as the worker pool. See [Network Attachments](https://cloud.google.com/vpc/docs/about-network-attachments)
+func (o WorkerPoolPrivateServiceConnectOutput) NetworkAttachment() pulumi.StringOutput {
+	return o.ApplyT(func(v WorkerPoolPrivateServiceConnect) string { return v.NetworkAttachment }).(pulumi.StringOutput)
+}
+
+// Immutable. Route all traffic through PSC interface. Enable this if you want full control of traffic in the private pool. Configure Cloud NAT for the subnet of network attachment if you need to access public Internet. If false, Only route private IPs, e.g. 10.0.0.0/8, 172.16.0.0/12, and 192.168.0.0/16 through PSC interface.
+func (o WorkerPoolPrivateServiceConnectOutput) RouteAllTraffic() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v WorkerPoolPrivateServiceConnect) *bool { return v.RouteAllTraffic }).(pulumi.BoolPtrOutput)
+}
+
+type WorkerPoolPrivateServiceConnectPtrOutput struct{ *pulumi.OutputState }
+
+func (WorkerPoolPrivateServiceConnectPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**WorkerPoolPrivateServiceConnect)(nil)).Elem()
+}
+
+func (o WorkerPoolPrivateServiceConnectPtrOutput) ToWorkerPoolPrivateServiceConnectPtrOutput() WorkerPoolPrivateServiceConnectPtrOutput {
+	return o
+}
+
+func (o WorkerPoolPrivateServiceConnectPtrOutput) ToWorkerPoolPrivateServiceConnectPtrOutputWithContext(ctx context.Context) WorkerPoolPrivateServiceConnectPtrOutput {
+	return o
+}
+
+func (o WorkerPoolPrivateServiceConnectPtrOutput) Elem() WorkerPoolPrivateServiceConnectOutput {
+	return o.ApplyT(func(v *WorkerPoolPrivateServiceConnect) WorkerPoolPrivateServiceConnect {
+		if v != nil {
+			return *v
+		}
+		var ret WorkerPoolPrivateServiceConnect
+		return ret
+	}).(WorkerPoolPrivateServiceConnectOutput)
+}
+
+// Required. Immutable. The network attachment that the worker network interface is connected to. Must be in the format `projects/{project}/regions/{region}/networkAttachments/{networkAttachment}`. The region of network attachment must be the same as the worker pool. See [Network Attachments](https://cloud.google.com/vpc/docs/about-network-attachments)
+func (o WorkerPoolPrivateServiceConnectPtrOutput) NetworkAttachment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *WorkerPoolPrivateServiceConnect) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.NetworkAttachment
+	}).(pulumi.StringPtrOutput)
+}
+
+// Immutable. Route all traffic through PSC interface. Enable this if you want full control of traffic in the private pool. Configure Cloud NAT for the subnet of network attachment if you need to access public Internet. If false, Only route private IPs, e.g. 10.0.0.0/8, 172.16.0.0/12, and 192.168.0.0/16 through PSC interface.
+func (o WorkerPoolPrivateServiceConnectPtrOutput) RouteAllTraffic() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *WorkerPoolPrivateServiceConnect) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.RouteAllTraffic
+	}).(pulumi.BoolPtrOutput)
+}
+
 type WorkerPoolWorkerConfig struct {
 	// Size of the disk attached to the worker, in GB. See [diskSizeGb](https://cloud.google.com/build/docs/private-pools/private-pool-config-file-schema#disksizegb). Specify a value of up to 1000. If `0` is specified, Cloud Build will use a standard disk size.
 	DiskSizeGb *int `pulumi:"diskSizeGb"`
@@ -11854,6 +12010,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TriggerWebhookConfigPtrInput)(nil)).Elem(), TriggerWebhookConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolNetworkConfigInput)(nil)).Elem(), WorkerPoolNetworkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolNetworkConfigPtrInput)(nil)).Elem(), WorkerPoolNetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolPrivateServiceConnectInput)(nil)).Elem(), WorkerPoolPrivateServiceConnectArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolPrivateServiceConnectPtrInput)(nil)).Elem(), WorkerPoolPrivateServiceConnectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolWorkerConfigInput)(nil)).Elem(), WorkerPoolWorkerConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WorkerPoolWorkerConfigPtrInput)(nil)).Elem(), WorkerPoolWorkerConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTriggerApprovalConfigInput)(nil)).Elem(), GetTriggerApprovalConfigArgs{})
@@ -11990,6 +12148,8 @@ func init() {
 	pulumi.RegisterOutputType(TriggerWebhookConfigPtrOutput{})
 	pulumi.RegisterOutputType(WorkerPoolNetworkConfigOutput{})
 	pulumi.RegisterOutputType(WorkerPoolNetworkConfigPtrOutput{})
+	pulumi.RegisterOutputType(WorkerPoolPrivateServiceConnectOutput{})
+	pulumi.RegisterOutputType(WorkerPoolPrivateServiceConnectPtrOutput{})
 	pulumi.RegisterOutputType(WorkerPoolWorkerConfigOutput{})
 	pulumi.RegisterOutputType(WorkerPoolWorkerConfigPtrOutput{})
 	pulumi.RegisterOutputType(GetTriggerApprovalConfigOutput{})

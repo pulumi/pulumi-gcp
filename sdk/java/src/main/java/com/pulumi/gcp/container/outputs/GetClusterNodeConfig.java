@@ -141,6 +141,11 @@ public final class GetClusterNodeConfig {
      */
     private Integer localSsdCount;
     /**
+     * @return LocalSsdEncryptionMode specified the method used for encrypting the local SSDs attached to the node.
+     * 
+     */
+    private String localSsdEncryptionMode;
+    /**
      * @return Type of logging agent that is used as the default value for node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT.
      * 
      */
@@ -390,6 +395,13 @@ public final class GetClusterNodeConfig {
         return this.localSsdCount;
     }
     /**
+     * @return LocalSsdEncryptionMode specified the method used for encrypting the local SSDs attached to the node.
+     * 
+     */
+    public String localSsdEncryptionMode() {
+        return this.localSsdEncryptionMode;
+    }
+    /**
      * @return Type of logging agent that is used as the default value for node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT.
      * 
      */
@@ -560,6 +572,7 @@ public final class GetClusterNodeConfig {
         private List<GetClusterNodeConfigLinuxNodeConfig> linuxNodeConfigs;
         private List<GetClusterNodeConfigLocalNvmeSsdBlockConfig> localNvmeSsdBlockConfigs;
         private Integer localSsdCount;
+        private String localSsdEncryptionMode;
         private String loggingVariant;
         private String machineType;
         private Map<String,String> metadata;
@@ -604,6 +617,7 @@ public final class GetClusterNodeConfig {
     	      this.linuxNodeConfigs = defaults.linuxNodeConfigs;
     	      this.localNvmeSsdBlockConfigs = defaults.localNvmeSsdBlockConfigs;
     	      this.localSsdCount = defaults.localSsdCount;
+    	      this.localSsdEncryptionMode = defaults.localSsdEncryptionMode;
     	      this.loggingVariant = defaults.loggingVariant;
     	      this.machineType = defaults.machineType;
     	      this.metadata = defaults.metadata;
@@ -837,6 +851,14 @@ public final class GetClusterNodeConfig {
             return this;
         }
         @CustomType.Setter
+        public Builder localSsdEncryptionMode(String localSsdEncryptionMode) {
+            if (localSsdEncryptionMode == null) {
+              throw new MissingRequiredPropertyException("GetClusterNodeConfig", "localSsdEncryptionMode");
+            }
+            this.localSsdEncryptionMode = localSsdEncryptionMode;
+            return this;
+        }
+        @CustomType.Setter
         public Builder loggingVariant(String loggingVariant) {
             if (loggingVariant == null) {
               throw new MissingRequiredPropertyException("GetClusterNodeConfig", "loggingVariant");
@@ -1049,6 +1071,7 @@ public final class GetClusterNodeConfig {
             _resultValue.linuxNodeConfigs = linuxNodeConfigs;
             _resultValue.localNvmeSsdBlockConfigs = localNvmeSsdBlockConfigs;
             _resultValue.localSsdCount = localSsdCount;
+            _resultValue.localSsdEncryptionMode = localSsdEncryptionMode;
             _resultValue.loggingVariant = loggingVariant;
             _resultValue.machineType = machineType;
             _resultValue.metadata = metadata;

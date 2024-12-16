@@ -761,7 +761,7 @@ export class URLMap extends pulumi.CustomResource {
      */
     public /*out*/ readonly creationTimestamp!: pulumi.Output<string>;
     /**
-     * defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error.
+     * defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendService or BackendBucket responds with an error.
      * This policy takes effect at the PathMatcher level and applies only when no policy has been defined for the error code at lower levels like RouteRule and PathRule within this PathMatcher. If an error code does not have a policy defined in defaultCustomErrorResponsePolicy, then a policy defined for the error code in UrlMap.defaultCustomErrorResponsePolicy takes effect.
      * For example, consider a UrlMap with the following configuration:
      * UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors
@@ -912,7 +912,7 @@ export interface URLMapState {
      */
     creationTimestamp?: pulumi.Input<string>;
     /**
-     * defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error.
+     * defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendService or BackendBucket responds with an error.
      * This policy takes effect at the PathMatcher level and applies only when no policy has been defined for the error code at lower levels like RouteRule and PathRule within this PathMatcher. If an error code does not have a policy defined in defaultCustomErrorResponsePolicy, then a policy defined for the error code in UrlMap.defaultCustomErrorResponsePolicy takes effect.
      * For example, consider a UrlMap with the following configuration:
      * UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors
@@ -1009,7 +1009,7 @@ export interface URLMapState {
  */
 export interface URLMapArgs {
     /**
-     * defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error.
+     * defaultCustomErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendService or BackendBucket responds with an error.
      * This policy takes effect at the PathMatcher level and applies only when no policy has been defined for the error code at lower levels like RouteRule and PathRule within this PathMatcher. If an error code does not have a policy defined in defaultCustomErrorResponsePolicy, then a policy defined for the error code in UrlMap.defaultCustomErrorResponsePolicy takes effect.
      * For example, consider a UrlMap with the following configuration:
      * UrlMap.defaultCustomErrorResponsePolicy is configured with policies for 5xx and 4xx errors

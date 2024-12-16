@@ -11,14 +11,14 @@ import java.util.Objects;
 @CustomType
 public final class GetAuthorityConfigSubjectKeyId {
     /**
-     * @return The value of the KeyId in lowercase hexidecimal.
+     * @return The value of the KeyId in lowercase hexadecimal.
      * 
      */
     private String keyId;
 
     private GetAuthorityConfigSubjectKeyId() {}
     /**
-     * @return The value of the KeyId in lowercase hexidecimal.
+     * @return The value of the KeyId in lowercase hexadecimal.
      * 
      */
     public String keyId() {

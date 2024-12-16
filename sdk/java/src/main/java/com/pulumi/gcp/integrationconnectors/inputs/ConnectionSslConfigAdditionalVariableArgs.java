@@ -36,7 +36,7 @@ public final class ConnectionSslConfigAdditionalVariableArgs extends com.pulumi.
     }
 
     /**
-     * Encription key value of configVariable.
+     * Encryption key value of configVariable.
      * Structure is documented below.
      * 
      */
@@ -44,7 +44,7 @@ public final class ConnectionSslConfigAdditionalVariableArgs extends com.pulumi.
     private @Nullable Output<ConnectionSslConfigAdditionalVariableEncryptionKeyValueArgs> encryptionKeyValue;
 
     /**
-     * @return Encription key value of configVariable.
+     * @return Encryption key value of configVariable.
      * Structure is documented below.
      * 
      */
@@ -165,7 +165,7 @@ public final class ConnectionSslConfigAdditionalVariableArgs extends com.pulumi.
         }
 
         /**
-         * @param encryptionKeyValue Encription key value of configVariable.
+         * @param encryptionKeyValue Encryption key value of configVariable.
          * Structure is documented below.
          * 
          * @return builder
@@ -177,7 +177,7 @@ public final class ConnectionSslConfigAdditionalVariableArgs extends com.pulumi.
         }
 
         /**
-         * @param encryptionKeyValue Encription key value of configVariable.
+         * @param encryptionKeyValue Encryption key value of configVariable.
          * Structure is documented below.
          * 
          * @return builder

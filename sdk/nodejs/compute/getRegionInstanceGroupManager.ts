@@ -73,6 +73,7 @@ export interface GetRegionInstanceGroupManagerResult {
     readonly id: string;
     readonly instanceFlexibilityPolicies: outputs.compute.GetRegionInstanceGroupManagerInstanceFlexibilityPolicy[];
     readonly instanceGroup: string;
+    readonly instanceGroupManagerId: number;
     readonly instanceLifecyclePolicies: outputs.compute.GetRegionInstanceGroupManagerInstanceLifecyclePolicy[];
     readonly listManagedInstancesResults: string;
     readonly name?: string;

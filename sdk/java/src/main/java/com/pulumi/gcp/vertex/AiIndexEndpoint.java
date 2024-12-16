@@ -133,7 +133,7 @@ import javax.annotation.Nullable;
  *             .labels(Map.of("label-one", "value-one"))
  *             .privateServiceConnectConfig(AiIndexEndpointPrivateServiceConnectConfigArgs.builder()
  *                 .enablePrivateServiceConnect(true)
- *                 .projectAllowlists(project.applyValue(getProjectResult -> getProjectResult.number()))
+ *                 .projectAllowlists(project.applyValue(getProjectResult -> getProjectResult.name()))
  *                 .build())
  *             .build());
  * 

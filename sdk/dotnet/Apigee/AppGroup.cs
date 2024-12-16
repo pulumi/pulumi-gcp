@@ -219,7 +219,7 @@ namespace Pulumi.Gcp.Apigee
         public Output<ImmutableArray<Outputs.AppGroupAttribute>> Attributes { get; private set; } = null!;
 
         /// <summary>
-        /// Channel identifier identifies the owner maintaing this grouping.
+        /// Channel identifier identifies the owner maintaining this grouping.
         /// </summary>
         [Output("channelId")]
         public Output<string?> ChannelId { get; private set; } = null!;
@@ -337,7 +337,7 @@ namespace Pulumi.Gcp.Apigee
         }
 
         /// <summary>
-        /// Channel identifier identifies the owner maintaing this grouping.
+        /// Channel identifier identifies the owner maintaining this grouping.
         /// </summary>
         [Input("channelId")]
         public Input<string>? ChannelId { get; set; }
@@ -405,7 +405,7 @@ namespace Pulumi.Gcp.Apigee
         }
 
         /// <summary>
-        /// Channel identifier identifies the owner maintaing this grouping.
+        /// Channel identifier identifies the owner maintaining this grouping.
         /// </summary>
         [Input("channelId")]
         public Input<string>? ChannelId { get; set; }

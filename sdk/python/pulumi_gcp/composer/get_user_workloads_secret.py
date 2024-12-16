@@ -100,6 +100,8 @@ def get_user_workloads_secret(environment: Optional[str] = None,
                               region: Optional[str] = None,
                               opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetUserWorkloadsSecretResult:
     """
+    Provides access to Kubernetes Secret configuration for a given project, region and Composer Environment.
+
     ## Example Usage
 
     ```python
@@ -154,6 +156,8 @@ def get_user_workloads_secret_output(environment: Optional[pulumi.Input[str]] = 
                                      region: Optional[pulumi.Input[Optional[str]]] = None,
                                      opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetUserWorkloadsSecretResult]:
     """
+    Provides access to Kubernetes Secret configuration for a given project, region and Composer Environment.
+
     ## Example Usage
 
     ```python

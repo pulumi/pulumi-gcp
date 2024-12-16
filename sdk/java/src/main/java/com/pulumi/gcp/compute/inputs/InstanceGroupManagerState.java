@@ -154,6 +154,21 @@ public final class InstanceGroupManagerState extends com.pulumi.resources.Resour
     }
 
     /**
+     * The unique identifier number for the resource. This identifier is defined by the server.
+     * 
+     */
+    @Import(name="instanceGroupManagerId")
+    private @Nullable Output<Integer> instanceGroupManagerId;
+
+    /**
+     * @return The unique identifier number for the resource. This identifier is defined by the server.
+     * 
+     */
+    public Optional<Output<Integer>> instanceGroupManagerId() {
+        return Optional.ofNullable(this.instanceGroupManagerId);
+    }
+
+    /**
      * The instance lifecycle policy for this managed instance group.
      * 
      */
@@ -535,6 +550,7 @@ public final class InstanceGroupManagerState extends com.pulumi.resources.Resour
         this.description = $.description;
         this.fingerprint = $.fingerprint;
         this.instanceGroup = $.instanceGroup;
+        this.instanceGroupManagerId = $.instanceGroupManagerId;
         this.instanceLifecyclePolicy = $.instanceLifecyclePolicy;
         this.listManagedInstancesResults = $.listManagedInstancesResults;
         this.name = $.name;
@@ -740,6 +756,27 @@ public final class InstanceGroupManagerState extends com.pulumi.resources.Resour
          */
         public Builder instanceGroup(String instanceGroup) {
             return instanceGroup(Output.of(instanceGroup));
+        }
+
+        /**
+         * @param instanceGroupManagerId The unique identifier number for the resource. This identifier is defined by the server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceGroupManagerId(@Nullable Output<Integer> instanceGroupManagerId) {
+            $.instanceGroupManagerId = instanceGroupManagerId;
+            return this;
+        }
+
+        /**
+         * @param instanceGroupManagerId The unique identifier number for the resource. This identifier is defined by the server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder instanceGroupManagerId(Integer instanceGroupManagerId) {
+            return instanceGroupManagerId(Output.of(instanceGroupManagerId));
         }
 
         /**

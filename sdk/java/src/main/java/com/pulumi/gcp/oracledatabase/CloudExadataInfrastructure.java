@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.oracledatabase.CloudExadataInfrastructureArgs;
 import com.pulumi.gcp.oracledatabase.inputs.CloudExadataInfrastructureState;
 import com.pulumi.gcp.oracledatabase.outputs.CloudExadataInfrastructureProperties;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -64,6 +65,7 @@ import javax.annotation.Nullable;
  *                 .computeCount("2")
  *                 .storageCount("3")
  *                 .build())
+ *             .deletionProtection("true")
  *             .build());
  * 
  *     }
@@ -129,6 +131,7 @@ import javax.annotation.Nullable;
  *                 .totalStorageSizeGb("196608")
  *                 .build())
  *             .labels(Map.of("label-one", "value-one"))
+ *             .deletionProtection("true")
  *             .build());
  * 
  *     }}{@code
@@ -201,6 +204,12 @@ public class CloudExadataInfrastructure extends com.pulumi.resources.CustomResou
      */
     public Output<String> createTime() {
         return this.createTime;
+    }
+    @Export(name="deletionProtection", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> deletionProtection;
+
+    public Output<Optional<Boolean>> deletionProtection() {
+        return Codegen.optional(this.deletionProtection);
     }
     /**
      * User friendly name for this resource.

@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.clouddeploy.inputs.TargetAnthosClusterArgs;
+import com.pulumi.gcp.clouddeploy.inputs.TargetAssociatedEntityArgs;
 import com.pulumi.gcp.clouddeploy.inputs.TargetCustomTargetArgs;
 import com.pulumi.gcp.clouddeploy.inputs.TargetExecutionConfigArgs;
 import com.pulumi.gcp.clouddeploy.inputs.TargetGkeArgs;
@@ -59,6 +60,21 @@ public final class TargetArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<TargetAnthosClusterArgs>> anthosCluster() {
         return Optional.ofNullable(this.anthosCluster);
+    }
+
+    /**
+     * Optional. Map of entity IDs to their associated entities. Associated entities allows specifying places other than the deployment target for specific features. For example, the Gateway API canary can be configured to deploy the HTTPRoute to a different cluster(s) than the deployment cluster using associated entities. An entity ID must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
+     * 
+     */
+    @Import(name="associatedEntities")
+    private @Nullable Output<List<TargetAssociatedEntityArgs>> associatedEntities;
+
+    /**
+     * @return Optional. Map of entity IDs to their associated entities. Associated entities allows specifying places other than the deployment target for specific features. For example, the Gateway API canary can be configured to deploy the HTTPRoute to a different cluster(s) than the deployment cluster using associated entities. An entity ID must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
+     * 
+     */
+    public Optional<Output<List<TargetAssociatedEntityArgs>>> associatedEntities() {
+        return Optional.ofNullable(this.associatedEntities);
     }
 
     /**
@@ -256,6 +272,7 @@ public final class TargetArgs extends com.pulumi.resources.ResourceArgs {
     private TargetArgs(TargetArgs $) {
         this.annotations = $.annotations;
         this.anthosCluster = $.anthosCluster;
+        this.associatedEntities = $.associatedEntities;
         this.customTarget = $.customTarget;
         this.deployParameters = $.deployParameters;
         this.description = $.description;
@@ -334,6 +351,37 @@ public final class TargetArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder anthosCluster(TargetAnthosClusterArgs anthosCluster) {
             return anthosCluster(Output.of(anthosCluster));
+        }
+
+        /**
+         * @param associatedEntities Optional. Map of entity IDs to their associated entities. Associated entities allows specifying places other than the deployment target for specific features. For example, the Gateway API canary can be configured to deploy the HTTPRoute to a different cluster(s) than the deployment cluster using associated entities. An entity ID must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder associatedEntities(@Nullable Output<List<TargetAssociatedEntityArgs>> associatedEntities) {
+            $.associatedEntities = associatedEntities;
+            return this;
+        }
+
+        /**
+         * @param associatedEntities Optional. Map of entity IDs to their associated entities. Associated entities allows specifying places other than the deployment target for specific features. For example, the Gateway API canary can be configured to deploy the HTTPRoute to a different cluster(s) than the deployment cluster using associated entities. An entity ID must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder associatedEntities(List<TargetAssociatedEntityArgs> associatedEntities) {
+            return associatedEntities(Output.of(associatedEntities));
+        }
+
+        /**
+         * @param associatedEntities Optional. Map of entity IDs to their associated entities. Associated entities allows specifying places other than the deployment target for specific features. For example, the Gateway API canary can be configured to deploy the HTTPRoute to a different cluster(s) than the deployment cluster using associated entities. An entity ID must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder associatedEntities(TargetAssociatedEntityArgs... associatedEntities) {
+            return associatedEntities(List.of(associatedEntities));
         }
 
         /**

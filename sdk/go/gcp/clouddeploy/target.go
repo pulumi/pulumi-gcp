@@ -196,6 +196,8 @@ type Target struct {
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// Information specifying an Anthos Cluster.
 	AnthosCluster TargetAnthosClusterPtrOutput `pulumi:"anthosCluster"`
+	// Optional. Map of entity IDs to their associated entities. Associated entities allows specifying places other than the deployment target for specific features. For example, the Gateway API canary can be configured to deploy the HTTPRoute to a different cluster(s) than the deployment cluster using associated entities. An entity ID must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
+	AssociatedEntities TargetAssociatedEntityArrayOutput `pulumi:"associatedEntities"`
 	// Output only. Time at which the `Target` was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Optional. Information specifying a Custom Target.
@@ -287,6 +289,8 @@ type targetState struct {
 	Annotations map[string]string `pulumi:"annotations"`
 	// Information specifying an Anthos Cluster.
 	AnthosCluster *TargetAnthosCluster `pulumi:"anthosCluster"`
+	// Optional. Map of entity IDs to their associated entities. Associated entities allows specifying places other than the deployment target for specific features. For example, the Gateway API canary can be configured to deploy the HTTPRoute to a different cluster(s) than the deployment cluster using associated entities. An entity ID must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
+	AssociatedEntities []TargetAssociatedEntity `pulumi:"associatedEntities"`
 	// Output only. Time at which the `Target` was created.
 	CreateTime *string `pulumi:"createTime"`
 	// Optional. Information specifying a Custom Target.
@@ -341,6 +345,8 @@ type TargetState struct {
 	Annotations pulumi.StringMapInput
 	// Information specifying an Anthos Cluster.
 	AnthosCluster TargetAnthosClusterPtrInput
+	// Optional. Map of entity IDs to their associated entities. Associated entities allows specifying places other than the deployment target for specific features. For example, the Gateway API canary can be configured to deploy the HTTPRoute to a different cluster(s) than the deployment cluster using associated entities. An entity ID must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
+	AssociatedEntities TargetAssociatedEntityArrayInput
 	// Output only. Time at which the `Target` was created.
 	CreateTime pulumi.StringPtrInput
 	// Optional. Information specifying a Custom Target.
@@ -399,6 +405,8 @@ type targetArgs struct {
 	Annotations map[string]string `pulumi:"annotations"`
 	// Information specifying an Anthos Cluster.
 	AnthosCluster *TargetAnthosCluster `pulumi:"anthosCluster"`
+	// Optional. Map of entity IDs to their associated entities. Associated entities allows specifying places other than the deployment target for specific features. For example, the Gateway API canary can be configured to deploy the HTTPRoute to a different cluster(s) than the deployment cluster using associated entities. An entity ID must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
+	AssociatedEntities []TargetAssociatedEntity `pulumi:"associatedEntities"`
 	// Optional. Information specifying a Custom Target.
 	CustomTarget *TargetCustomTarget `pulumi:"customTarget"`
 	// Optional. The deploy parameters to use for this target.
@@ -439,6 +447,8 @@ type TargetArgs struct {
 	Annotations pulumi.StringMapInput
 	// Information specifying an Anthos Cluster.
 	AnthosCluster TargetAnthosClusterPtrInput
+	// Optional. Map of entity IDs to their associated entities. Associated entities allows specifying places other than the deployment target for specific features. For example, the Gateway API canary can be configured to deploy the HTTPRoute to a different cluster(s) than the deployment cluster using associated entities. An entity ID must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
+	AssociatedEntities TargetAssociatedEntityArrayInput
 	// Optional. Information specifying a Custom Target.
 	CustomTarget TargetCustomTargetPtrInput
 	// Optional. The deploy parameters to use for this target.
@@ -568,6 +578,11 @@ func (o TargetOutput) Annotations() pulumi.StringMapOutput {
 // Information specifying an Anthos Cluster.
 func (o TargetOutput) AnthosCluster() TargetAnthosClusterPtrOutput {
 	return o.ApplyT(func(v *Target) TargetAnthosClusterPtrOutput { return v.AnthosCluster }).(TargetAnthosClusterPtrOutput)
+}
+
+// Optional. Map of entity IDs to their associated entities. Associated entities allows specifying places other than the deployment target for specific features. For example, the Gateway API canary can be configured to deploy the HTTPRoute to a different cluster(s) than the deployment cluster using associated entities. An entity ID must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
+func (o TargetOutput) AssociatedEntities() TargetAssociatedEntityArrayOutput {
+	return o.ApplyT(func(v *Target) TargetAssociatedEntityArrayOutput { return v.AssociatedEntities }).(TargetAssociatedEntityArrayOutput)
 }
 
 // Output only. Time at which the `Target` was created.

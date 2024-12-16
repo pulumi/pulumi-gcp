@@ -16,14 +16,14 @@ public final class CertificateConfigSubjectKeyIdArgs extends com.pulumi.resource
     public static final CertificateConfigSubjectKeyIdArgs Empty = new CertificateConfigSubjectKeyIdArgs();
 
     /**
-     * The value of the KeyId in lowercase hexidecimal.
+     * The value of the KeyId in lowercase hexadecimal.
      * 
      */
     @Import(name="keyId")
     private @Nullable Output<String> keyId;
 
     /**
-     * @return The value of the KeyId in lowercase hexidecimal.
+     * @return The value of the KeyId in lowercase hexadecimal.
      * 
      */
     public Optional<Output<String>> keyId() {
@@ -55,7 +55,7 @@ public final class CertificateConfigSubjectKeyIdArgs extends com.pulumi.resource
         }
 
         /**
-         * @param keyId The value of the KeyId in lowercase hexidecimal.
+         * @param keyId The value of the KeyId in lowercase hexadecimal.
          * 
          * @return builder
          * 
@@ -66,7 +66,7 @@ public final class CertificateConfigSubjectKeyIdArgs extends com.pulumi.resource
         }
 
         /**
-         * @param keyId The value of the KeyId in lowercase hexidecimal.
+         * @param keyId The value of the KeyId in lowercase hexadecimal.
          * 
          * @return builder
          * 

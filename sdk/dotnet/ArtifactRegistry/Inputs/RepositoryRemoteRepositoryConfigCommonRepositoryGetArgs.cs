@@ -13,7 +13,10 @@ namespace Pulumi.Gcp.ArtifactRegistry.Inputs
     public sealed class RepositoryRemoteRepositoryConfigCommonRepositoryGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Specific uri to the Artifact Registory repository, e.g. `projects/UPSTREAM_PROJECT_ID/locations/REGION/repositories/UPSTREAM_REPOSITORY`
+        /// One of:
+        /// a. Artifact Registry Repository resource, e.g. `projects/UPSTREAM_PROJECT_ID/locations/REGION/repositories/UPSTREAM_REPOSITORY`
+        /// b. URI to the registry, e.g. `"https://registry-1.docker.io"`
+        /// c. URI to Artifact Registry Repository, e.g. `"https://REGION-docker.pkg.dev/UPSTREAM_PROJECT_ID/UPSTREAM_REPOSITORY"`
         /// </summary>
         [Input("uri", required: true)]
         public Input<string> Uri { get; set; } = null!;

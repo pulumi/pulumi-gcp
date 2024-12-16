@@ -27,7 +27,7 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaults {
      */
     private @Nullable Integer diskSize;
     /**
-     * @return Type of the disk attached to each node (e.g. &#39;pd-standard&#39;, &#39;pd-ssd&#39; or &#39;pd-balanced&#39;). Defaults to `pd-standard`
+     * @return Type of the disk attached to each node (e.g. &#39;pd-standard&#39;, &#39;pd-ssd&#39;, &#39;pd-balanced&#39;, or &#39;hyperdisk-balanced&#39;). Defaults to `hyperdisk-balanced` if `hyperdisk-balanced` is supported and `pd-balanced` is not supported for the machine type; otherwise defaults to `pd-balanced`.
      * 
      */
     private @Nullable String diskType;
@@ -87,7 +87,7 @@ public final class ClusterClusterAutoscalingAutoProvisioningDefaults {
         return Optional.ofNullable(this.diskSize);
     }
     /**
-     * @return Type of the disk attached to each node (e.g. &#39;pd-standard&#39;, &#39;pd-ssd&#39; or &#39;pd-balanced&#39;). Defaults to `pd-standard`
+     * @return Type of the disk attached to each node (e.g. &#39;pd-standard&#39;, &#39;pd-ssd&#39;, &#39;pd-balanced&#39;, or &#39;hyperdisk-balanced&#39;). Defaults to `hyperdisk-balanced` if `hyperdisk-balanced` is supported and `pd-balanced` is not supported for the machine type; otherwise defaults to `pd-balanced`.
      * 
      */
     public Optional<String> diskType() {

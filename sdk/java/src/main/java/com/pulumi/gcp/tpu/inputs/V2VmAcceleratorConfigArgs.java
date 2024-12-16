@@ -30,16 +30,14 @@ public final class V2VmAcceleratorConfigArgs extends com.pulumi.resources.Resour
     }
 
     /**
-     * Type of TPU.
-     * Possible values are: `V2`, `V3`, `V4`, `V5P`.
+     * Type of TPU. Please select one of the allowed types: https://cloud.google.com/tpu/docs/reference/rest/v2/AcceleratorConfig#Type
      * 
      */
     @Import(name="type", required=true)
     private Output<String> type;
 
     /**
-     * @return Type of TPU.
-     * Possible values are: `V2`, `V3`, `V4`, `V5P`.
+     * @return Type of TPU. Please select one of the allowed types: https://cloud.google.com/tpu/docs/reference/rest/v2/AcceleratorConfig#Type
      * 
      */
     public Output<String> type() {
@@ -93,8 +91,7 @@ public final class V2VmAcceleratorConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param type Type of TPU.
-         * Possible values are: `V2`, `V3`, `V4`, `V5P`.
+         * @param type Type of TPU. Please select one of the allowed types: https://cloud.google.com/tpu/docs/reference/rest/v2/AcceleratorConfig#Type
          * 
          * @return builder
          * 
@@ -105,8 +102,7 @@ public final class V2VmAcceleratorConfigArgs extends com.pulumi.resources.Resour
         }
 
         /**
-         * @param type Type of TPU.
-         * Possible values are: `V2`, `V3`, `V4`, `V5P`.
+         * @param type Type of TPU. Please select one of the allowed types: https://cloud.google.com/tpu/docs/reference/rest/v2/AcceleratorConfig#Type
          * 
          * @return builder
          * 

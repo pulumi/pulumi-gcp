@@ -49,14 +49,14 @@ public final class FeatureMembershipConfigmanagementConfigSyncArgs extends com.p
     }
 
     /**
-     * The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA.
+     * Deprecated: If Workload Identity Federation for GKE is enabled, Google Cloud Service Account is no longer needed for exporting Config Sync metrics: https://cloud.google.com/kubernetes-engine/enterprise/config-sync/docs/how-to/monitor-config-sync-cloud-monitoring#custom-monitoring.
      * 
      */
     @Import(name="metricsGcpServiceAccountEmail")
     private @Nullable Output<String> metricsGcpServiceAccountEmail;
 
     /**
-     * @return The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA.
+     * @return Deprecated: If Workload Identity Federation for GKE is enabled, Google Cloud Service Account is no longer needed for exporting Config Sync metrics: https://cloud.google.com/kubernetes-engine/enterprise/config-sync/docs/how-to/monitor-config-sync-cloud-monitoring#custom-monitoring.
      * 
      */
     public Optional<Output<String>> metricsGcpServiceAccountEmail() {
@@ -83,14 +83,14 @@ public final class FeatureMembershipConfigmanagementConfigSyncArgs extends com.p
     }
 
     /**
-     * Supported from Config Sync versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to &#34;false&#34;, disables the Config Sync admission webhook and does not prevent drifts.
+     * Supported from Config Sync versions 1.10.0 onwards. Set to `true` to enable the Config Sync admission webhook to prevent drifts. If set to `false`, disables the Config Sync admission webhook and does not prevent drifts.
      * 
      */
     @Import(name="preventDrift")
     private @Nullable Output<Boolean> preventDrift;
 
     /**
-     * @return Supported from Config Sync versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to &#34;false&#34;, disables the Config Sync admission webhook and does not prevent drifts.
+     * @return Supported from Config Sync versions 1.10.0 onwards. Set to `true` to enable the Config Sync admission webhook to prevent drifts. If set to `false`, disables the Config Sync admission webhook and does not prevent drifts.
      * 
      */
     public Optional<Output<Boolean>> preventDrift() {
@@ -112,6 +112,21 @@ public final class FeatureMembershipConfigmanagementConfigSyncArgs extends com.p
         return Optional.ofNullable(this.sourceFormat);
     }
 
+    /**
+     * Set to `true` to stop syncing configurations for a single cluster. This field is only available on clusters using Config Sync [auto-upgrades](http://cloud/kubernetes-engine/enterprise/config-sync/docs/how-to/upgrade-config-sync#auto-upgrade-config) or on Config Sync version 1.20.0 or later. Defaults: `false`.
+     * 
+     */
+    @Import(name="stopSyncing")
+    private @Nullable Output<Boolean> stopSyncing;
+
+    /**
+     * @return Set to `true` to stop syncing configurations for a single cluster. This field is only available on clusters using Config Sync [auto-upgrades](http://cloud/kubernetes-engine/enterprise/config-sync/docs/how-to/upgrade-config-sync#auto-upgrade-config) or on Config Sync version 1.20.0 or later. Defaults: `false`.
+     * 
+     */
+    public Optional<Output<Boolean>> stopSyncing() {
+        return Optional.ofNullable(this.stopSyncing);
+    }
+
     private FeatureMembershipConfigmanagementConfigSyncArgs() {}
 
     private FeatureMembershipConfigmanagementConfigSyncArgs(FeatureMembershipConfigmanagementConfigSyncArgs $) {
@@ -121,6 +136,7 @@ public final class FeatureMembershipConfigmanagementConfigSyncArgs extends com.p
         this.oci = $.oci;
         this.preventDrift = $.preventDrift;
         this.sourceFormat = $.sourceFormat;
+        this.stopSyncing = $.stopSyncing;
     }
 
     public static Builder builder() {
@@ -184,7 +200,7 @@ public final class FeatureMembershipConfigmanagementConfigSyncArgs extends com.p
         }
 
         /**
-         * @param metricsGcpServiceAccountEmail The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA.
+         * @param metricsGcpServiceAccountEmail Deprecated: If Workload Identity Federation for GKE is enabled, Google Cloud Service Account is no longer needed for exporting Config Sync metrics: https://cloud.google.com/kubernetes-engine/enterprise/config-sync/docs/how-to/monitor-config-sync-cloud-monitoring#custom-monitoring.
          * 
          * @return builder
          * 
@@ -195,7 +211,7 @@ public final class FeatureMembershipConfigmanagementConfigSyncArgs extends com.p
         }
 
         /**
-         * @param metricsGcpServiceAccountEmail The Email of the Google Cloud Service Account (GSA) used for exporting Config Sync metrics to Cloud Monitoring. The GSA should have the Monitoring Metric Writer(roles/monitoring.metricWriter) IAM role. The Kubernetes ServiceAccount `default` in the namespace `config-management-monitoring` should be bound to the GSA.
+         * @param metricsGcpServiceAccountEmail Deprecated: If Workload Identity Federation for GKE is enabled, Google Cloud Service Account is no longer needed for exporting Config Sync metrics: https://cloud.google.com/kubernetes-engine/enterprise/config-sync/docs/how-to/monitor-config-sync-cloud-monitoring#custom-monitoring.
          * 
          * @return builder
          * 
@@ -230,7 +246,7 @@ public final class FeatureMembershipConfigmanagementConfigSyncArgs extends com.p
         }
 
         /**
-         * @param preventDrift Supported from Config Sync versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to &#34;false&#34;, disables the Config Sync admission webhook and does not prevent drifts.
+         * @param preventDrift Supported from Config Sync versions 1.10.0 onwards. Set to `true` to enable the Config Sync admission webhook to prevent drifts. If set to `false`, disables the Config Sync admission webhook and does not prevent drifts.
          * 
          * @return builder
          * 
@@ -241,7 +257,7 @@ public final class FeatureMembershipConfigmanagementConfigSyncArgs extends com.p
         }
 
         /**
-         * @param preventDrift Supported from Config Sync versions 1.10.0 onwards. Set to true to enable the Config Sync admission webhook to prevent drifts. If set to &#34;false&#34;, disables the Config Sync admission webhook and does not prevent drifts.
+         * @param preventDrift Supported from Config Sync versions 1.10.0 onwards. Set to `true` to enable the Config Sync admission webhook to prevent drifts. If set to `false`, disables the Config Sync admission webhook and does not prevent drifts.
          * 
          * @return builder
          * 
@@ -269,6 +285,27 @@ public final class FeatureMembershipConfigmanagementConfigSyncArgs extends com.p
          */
         public Builder sourceFormat(String sourceFormat) {
             return sourceFormat(Output.of(sourceFormat));
+        }
+
+        /**
+         * @param stopSyncing Set to `true` to stop syncing configurations for a single cluster. This field is only available on clusters using Config Sync [auto-upgrades](http://cloud/kubernetes-engine/enterprise/config-sync/docs/how-to/upgrade-config-sync#auto-upgrade-config) or on Config Sync version 1.20.0 or later. Defaults: `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stopSyncing(@Nullable Output<Boolean> stopSyncing) {
+            $.stopSyncing = stopSyncing;
+            return this;
+        }
+
+        /**
+         * @param stopSyncing Set to `true` to stop syncing configurations for a single cluster. This field is only available on clusters using Config Sync [auto-upgrades](http://cloud/kubernetes-engine/enterprise/config-sync/docs/how-to/upgrade-config-sync#auto-upgrade-config) or on Config Sync version 1.20.0 or later. Defaults: `false`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder stopSyncing(Boolean stopSyncing) {
+            return stopSyncing(Output.of(stopSyncing));
         }
 
         public FeatureMembershipConfigmanagementConfigSyncArgs build() {

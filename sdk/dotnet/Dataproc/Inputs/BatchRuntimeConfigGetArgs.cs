@@ -13,6 +13,19 @@ namespace Pulumi.Gcp.Dataproc.Inputs
     public sealed class BatchRuntimeConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Optional. Autotuning configuration of the workload.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("autotuningConfig")]
+        public Input<Inputs.BatchRuntimeConfigAutotuningConfigGetArgs>? AutotuningConfig { get; set; }
+
+        /// <summary>
+        /// Optional. Cohort identifier. Identifies families of the workloads having the same shape, e.g. daily ETL jobs.
+        /// </summary>
+        [Input("cohort")]
+        public Input<string>? Cohort { get; set; }
+
+        /// <summary>
         /// Optional custom container image for the job runtime environment. If not specified, a default container image will be used.
         /// </summary>
         [Input("containerImage")]

@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.ArtifactRegistry.Outputs
     public sealed class RepositoryRemoteRepositoryConfigNpmRepository
     {
         /// <summary>
-        /// Settings for a remote repository with a custom uri.
+        /// [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepository? CustomRepository;

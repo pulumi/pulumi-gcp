@@ -26,6 +26,10 @@ namespace Pulumi.Gcp.CloudDeploy.Outputs
         /// </summary>
         public readonly string? PodSelectorLabel;
         /// <summary>
+        /// Optional. Route destinations allow configuring the Gateway API HTTPRoute to be deployed to additional clusters. This option is available for multi-cluster service mesh set ups that require the route to exist in the clusters that call the service. If unspecified, the HTTPRoute will only be deployed to the Target cluster.
+        /// </summary>
+        public readonly Outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinations? RouteDestinations;
+        /// <summary>
         /// Optional. The time to wait for route updates to propagate. The maximum configurable time is 3 hours, in seconds format. If unspecified, there is no wait time.
         /// </summary>
         public readonly string? RouteUpdateWaitTime;
@@ -46,6 +50,8 @@ namespace Pulumi.Gcp.CloudDeploy.Outputs
 
             string? podSelectorLabel,
 
+            Outputs.DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinations? routeDestinations,
+
             string? routeUpdateWaitTime,
 
             string service,
@@ -55,6 +61,7 @@ namespace Pulumi.Gcp.CloudDeploy.Outputs
             Deployment = deployment;
             HttpRoute = httpRoute;
             PodSelectorLabel = podSelectorLabel;
+            RouteDestinations = routeDestinations;
             RouteUpdateWaitTime = routeUpdateWaitTime;
             Service = service;
             StableCutbackDuration = stableCutbackDuration;

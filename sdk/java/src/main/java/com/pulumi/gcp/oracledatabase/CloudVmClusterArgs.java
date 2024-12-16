@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.oracledatabase.inputs.CloudVmClusterPropertiesArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -71,6 +72,13 @@ public final class CloudVmClusterArgs extends com.pulumi.resources.ResourceArgs 
      */
     public Output<String> cloudVmClusterId() {
         return this.cloudVmClusterId;
+    }
+
+    @Import(name="deletionProtection")
+    private @Nullable Output<Boolean> deletionProtection;
+
+    public Optional<Output<Boolean>> deletionProtection() {
+        return Optional.ofNullable(this.deletionProtection);
     }
 
     /**
@@ -198,6 +206,7 @@ public final class CloudVmClusterArgs extends com.pulumi.resources.ResourceArgs 
         this.backupSubnetCidr = $.backupSubnetCidr;
         this.cidr = $.cidr;
         this.cloudVmClusterId = $.cloudVmClusterId;
+        this.deletionProtection = $.deletionProtection;
         this.displayName = $.displayName;
         this.exadataInfrastructure = $.exadataInfrastructure;
         this.labels = $.labels;
@@ -296,6 +305,15 @@ public final class CloudVmClusterArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder cloudVmClusterId(String cloudVmClusterId) {
             return cloudVmClusterId(Output.of(cloudVmClusterId));
+        }
+
+        public Builder deletionProtection(@Nullable Output<Boolean> deletionProtection) {
+            $.deletionProtection = deletionProtection;
+            return this;
+        }
+
+        public Builder deletionProtection(Boolean deletionProtection) {
+            return deletionProtection(Output.of(deletionProtection));
         }
 
         /**

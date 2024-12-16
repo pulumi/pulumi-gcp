@@ -5,6 +5,7 @@ package com.pulumi.gcp.container.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.container.inputs.ClusterNodePoolAutoConfigLinuxNodeConfigArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolAutoConfigNetworkTagsArgs;
 import com.pulumi.gcp.container.inputs.ClusterNodePoolAutoConfigNodeKubeletConfigArgs;
 import java.lang.String;
@@ -17,6 +18,21 @@ import javax.annotation.Nullable;
 public final class ClusterNodePoolAutoConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final ClusterNodePoolAutoConfigArgs Empty = new ClusterNodePoolAutoConfigArgs();
+
+    /**
+     * Linux system configuration for the cluster&#39;s automatically provisioned node pools. Only `cgroup_mode` field is supported in `node_pool_auto_config`. Structure is documented below.
+     * 
+     */
+    @Import(name="linuxNodeConfig")
+    private @Nullable Output<ClusterNodePoolAutoConfigLinuxNodeConfigArgs> linuxNodeConfig;
+
+    /**
+     * @return Linux system configuration for the cluster&#39;s automatically provisioned node pools. Only `cgroup_mode` field is supported in `node_pool_auto_config`. Structure is documented below.
+     * 
+     */
+    public Optional<Output<ClusterNodePoolAutoConfigLinuxNodeConfigArgs>> linuxNodeConfig() {
+        return Optional.ofNullable(this.linuxNodeConfig);
+    }
 
     /**
      * The network tag config for the cluster&#39;s automatically provisioned node pools. Structure is documented below.
@@ -68,6 +84,7 @@ public final class ClusterNodePoolAutoConfigArgs extends com.pulumi.resources.Re
     private ClusterNodePoolAutoConfigArgs() {}
 
     private ClusterNodePoolAutoConfigArgs(ClusterNodePoolAutoConfigArgs $) {
+        this.linuxNodeConfig = $.linuxNodeConfig;
         this.networkTags = $.networkTags;
         this.nodeKubeletConfig = $.nodeKubeletConfig;
         this.resourceManagerTags = $.resourceManagerTags;
@@ -89,6 +106,27 @@ public final class ClusterNodePoolAutoConfigArgs extends com.pulumi.resources.Re
 
         public Builder(ClusterNodePoolAutoConfigArgs defaults) {
             $ = new ClusterNodePoolAutoConfigArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param linuxNodeConfig Linux system configuration for the cluster&#39;s automatically provisioned node pools. Only `cgroup_mode` field is supported in `node_pool_auto_config`. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder linuxNodeConfig(@Nullable Output<ClusterNodePoolAutoConfigLinuxNodeConfigArgs> linuxNodeConfig) {
+            $.linuxNodeConfig = linuxNodeConfig;
+            return this;
+        }
+
+        /**
+         * @param linuxNodeConfig Linux system configuration for the cluster&#39;s automatically provisioned node pools. Only `cgroup_mode` field is supported in `node_pool_auto_config`. Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder linuxNodeConfig(ClusterNodePoolAutoConfigLinuxNodeConfigArgs linuxNodeConfig) {
+            return linuxNodeConfig(Output.of(linuxNodeConfig));
         }
 
         /**

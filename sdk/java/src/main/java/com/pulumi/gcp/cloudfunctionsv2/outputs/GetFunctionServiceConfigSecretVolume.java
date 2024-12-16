@@ -18,7 +18,7 @@ public final class GetFunctionServiceConfigSecretVolume {
      */
     private String mountPath;
     /**
-     * @return Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function&#39;s project assuming that the secret exists in the same project as of the function.
+     * @return Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function&#39;s project assuming that the secret exists in the same project as of the function.
      * 
      */
     private String projectId;
@@ -42,7 +42,7 @@ public final class GetFunctionServiceConfigSecretVolume {
         return this.mountPath;
     }
     /**
-     * @return Project identifier (preferrably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function&#39;s project assuming that the secret exists in the same project as of the function.
+     * @return Project identifier (preferably project number but can also be the project ID) of the project that contains the secret. If not set, it will be populated with the function&#39;s project assuming that the secret exists in the same project as of the function.
      * 
      */
     public String projectId() {

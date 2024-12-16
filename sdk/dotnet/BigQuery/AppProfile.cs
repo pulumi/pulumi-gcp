@@ -298,6 +298,16 @@ namespace Pulumi.Gcp.BigQuery
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// Must be used with multi-cluster routing. If true, then this app profile will use row affinity sticky routing. With row
+        /// affinity, Bigtable will route single row key requests based on the row key, rather than randomly. Instead, each row key
+        /// will be assigned to a cluster by Cloud Bigtable, and will stick to that cluster. Choosing this option improves
+        /// read-your-writes consistency for most requests under most circumstances, without sacrificing availability. Consistency
+        /// is not guaranteed, as requests may still fail over between clusters in the event of errors or latency.
+        /// </summary>
+        [Output("rowAffinity")]
+        public Output<bool?> RowAffinity { get; private set; } = null!;
+
+        /// <summary>
         /// Use a single-cluster routing policy.
         /// Structure is documented below.
         /// </summary>
@@ -420,6 +430,16 @@ namespace Pulumi.Gcp.BigQuery
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// Must be used with multi-cluster routing. If true, then this app profile will use row affinity sticky routing. With row
+        /// affinity, Bigtable will route single row key requests based on the row key, rather than randomly. Instead, each row key
+        /// will be assigned to a cluster by Cloud Bigtable, and will stick to that cluster. Choosing this option improves
+        /// read-your-writes consistency for most requests under most circumstances, without sacrificing availability. Consistency
+        /// is not guaranteed, as requests may still fail over between clusters in the event of errors or latency.
+        /// </summary>
+        [Input("rowAffinity")]
+        public Input<bool>? RowAffinity { get; set; }
+
+        /// <summary>
         /// Use a single-cluster routing policy.
         /// Structure is documented below.
         /// </summary>
@@ -508,6 +528,16 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Must be used with multi-cluster routing. If true, then this app profile will use row affinity sticky routing. With row
+        /// affinity, Bigtable will route single row key requests based on the row key, rather than randomly. Instead, each row key
+        /// will be assigned to a cluster by Cloud Bigtable, and will stick to that cluster. Choosing this option improves
+        /// read-your-writes consistency for most requests under most circumstances, without sacrificing availability. Consistency
+        /// is not guaranteed, as requests may still fail over between clusters in the event of errors or latency.
+        /// </summary>
+        [Input("rowAffinity")]
+        public Input<bool>? RowAffinity { get; set; }
 
         /// <summary>
         /// Use a single-cluster routing policy.

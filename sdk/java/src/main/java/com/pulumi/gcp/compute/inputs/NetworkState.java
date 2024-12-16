@@ -256,6 +256,29 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * A full or partial URL of the network profile to apply to this network.
+     * This field can be set only at resource creation time. For example, the
+     * following are valid URLs:
+     * * https://www.googleapis.com/compute/beta/projects/{projectId}/global/networkProfiles/{network_profile_name}
+     * * projects/{projectId}/global/networkProfiles/{network_profile_name}
+     * 
+     */
+    @Import(name="networkProfile")
+    private @Nullable Output<String> networkProfile;
+
+    /**
+     * @return A full or partial URL of the network profile to apply to this network.
+     * This field can be set only at resource creation time. For example, the
+     * following are valid URLs:
+     * * https://www.googleapis.com/compute/beta/projects/{projectId}/global/networkProfiles/{network_profile_name}
+     * * projects/{projectId}/global/networkProfiles/{network_profile_name}
+     * 
+     */
+    public Optional<Output<String>> networkProfile() {
+        return Optional.ofNullable(this.networkProfile);
+    }
+
+    /**
      * The unique identifier for the resource. This identifier is defined by the server.
      * 
      */
@@ -342,6 +365,7 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         this.mtu = $.mtu;
         this.name = $.name;
         this.networkFirewallPolicyEnforcementOrder = $.networkFirewallPolicyEnforcementOrder;
+        this.networkProfile = $.networkProfile;
         this.numericId = $.numericId;
         this.project = $.project;
         this.routingMode = $.routingMode;
@@ -674,6 +698,35 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder networkFirewallPolicyEnforcementOrder(String networkFirewallPolicyEnforcementOrder) {
             return networkFirewallPolicyEnforcementOrder(Output.of(networkFirewallPolicyEnforcementOrder));
+        }
+
+        /**
+         * @param networkProfile A full or partial URL of the network profile to apply to this network.
+         * This field can be set only at resource creation time. For example, the
+         * following are valid URLs:
+         * * https://www.googleapis.com/compute/beta/projects/{projectId}/global/networkProfiles/{network_profile_name}
+         * * projects/{projectId}/global/networkProfiles/{network_profile_name}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkProfile(@Nullable Output<String> networkProfile) {
+            $.networkProfile = networkProfile;
+            return this;
+        }
+
+        /**
+         * @param networkProfile A full or partial URL of the network profile to apply to this network.
+         * This field can be set only at resource creation time. For example, the
+         * following are valid URLs:
+         * * https://www.googleapis.com/compute/beta/projects/{projectId}/global/networkProfiles/{network_profile_name}
+         * * projects/{projectId}/global/networkProfiles/{network_profile_name}
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkProfile(String networkProfile) {
+            return networkProfile(Output.of(networkProfile));
         }
 
         /**

@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.ArtifactRegistry.Inputs
     public sealed class RepositoryRemoteRepositoryConfigMavenRepositoryGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Settings for a remote repository with a custom uri.
+        /// [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
         /// Structure is documented below.
         /// </summary>
         [Input("customRepository")]

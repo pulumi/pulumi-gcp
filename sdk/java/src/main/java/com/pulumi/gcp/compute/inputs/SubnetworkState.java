@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.compute.inputs.SubnetworkLogConfigArgs;
 import com.pulumi.gcp.compute.inputs.SubnetworkSecondaryIpRangeArgs;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -489,6 +490,21 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.stackType);
     }
 
+    /**
+     * The unique identifier number for the resource. This identifier is defined by the server.
+     * 
+     */
+    @Import(name="subnetworkId")
+    private @Nullable Output<Integer> subnetworkId;
+
+    /**
+     * @return The unique identifier number for the resource. This identifier is defined by the server.
+     * 
+     */
+    public Optional<Output<Integer>> subnetworkId() {
+        return Optional.ofNullable(this.subnetworkId);
+    }
+
     private SubnetworkState() {}
 
     private SubnetworkState(SubnetworkState $) {
@@ -516,6 +532,7 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
         this.selfLink = $.selfLink;
         this.sendSecondaryIpRangeIfEmpty = $.sendSecondaryIpRangeIfEmpty;
         this.stackType = $.stackType;
+        this.subnetworkId = $.subnetworkId;
     }
 
     public static Builder builder() {
@@ -1162,6 +1179,27 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder stackType(String stackType) {
             return stackType(Output.of(stackType));
+        }
+
+        /**
+         * @param subnetworkId The unique identifier number for the resource. This identifier is defined by the server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subnetworkId(@Nullable Output<Integer> subnetworkId) {
+            $.subnetworkId = subnetworkId;
+            return this;
+        }
+
+        /**
+         * @param subnetworkId The unique identifier number for the resource. This identifier is defined by the server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder subnetworkId(Integer subnetworkId) {
+            return subnetworkId(Output.of(subnetworkId));
         }
 
         public SubnetworkState build() {

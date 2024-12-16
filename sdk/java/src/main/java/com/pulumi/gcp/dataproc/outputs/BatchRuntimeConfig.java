@@ -4,6 +4,7 @@
 package com.pulumi.gcp.dataproc.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.dataproc.outputs.BatchRuntimeConfigAutotuningConfig;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -12,6 +13,17 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class BatchRuntimeConfig {
+    /**
+     * @return Optional. Autotuning configuration of the workload.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable BatchRuntimeConfigAutotuningConfig autotuningConfig;
+    /**
+     * @return Optional. Cohort identifier. Identifies families of the workloads having the same shape, e.g. daily ETL jobs.
+     * 
+     */
+    private @Nullable String cohort;
     /**
      * @return Optional custom container image for the job runtime environment. If not specified, a default container image will be used.
      * 
@@ -35,6 +47,21 @@ public final class BatchRuntimeConfig {
     private @Nullable String version;
 
     private BatchRuntimeConfig() {}
+    /**
+     * @return Optional. Autotuning configuration of the workload.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<BatchRuntimeConfigAutotuningConfig> autotuningConfig() {
+        return Optional.ofNullable(this.autotuningConfig);
+    }
+    /**
+     * @return Optional. Cohort identifier. Identifies families of the workloads having the same shape, e.g. daily ETL jobs.
+     * 
+     */
+    public Optional<String> cohort() {
+        return Optional.ofNullable(this.cohort);
+    }
     /**
      * @return Optional custom container image for the job runtime environment. If not specified, a default container image will be used.
      * 
@@ -74,6 +101,8 @@ public final class BatchRuntimeConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable BatchRuntimeConfigAutotuningConfig autotuningConfig;
+        private @Nullable String cohort;
         private @Nullable String containerImage;
         private @Nullable Map<String,String> effectiveProperties;
         private @Nullable Map<String,String> properties;
@@ -81,12 +110,26 @@ public final class BatchRuntimeConfig {
         public Builder() {}
         public Builder(BatchRuntimeConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.autotuningConfig = defaults.autotuningConfig;
+    	      this.cohort = defaults.cohort;
     	      this.containerImage = defaults.containerImage;
     	      this.effectiveProperties = defaults.effectiveProperties;
     	      this.properties = defaults.properties;
     	      this.version = defaults.version;
         }
 
+        @CustomType.Setter
+        public Builder autotuningConfig(@Nullable BatchRuntimeConfigAutotuningConfig autotuningConfig) {
+
+            this.autotuningConfig = autotuningConfig;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder cohort(@Nullable String cohort) {
+
+            this.cohort = cohort;
+            return this;
+        }
         @CustomType.Setter
         public Builder containerImage(@Nullable String containerImage) {
 
@@ -113,6 +156,8 @@ public final class BatchRuntimeConfig {
         }
         public BatchRuntimeConfig build() {
             final var _resultValue = new BatchRuntimeConfig();
+            _resultValue.autotuningConfig = autotuningConfig;
+            _resultValue.cohort = cohort;
             _resultValue.containerImage = containerImage;
             _resultValue.effectiveProperties = effectiveProperties;
             _resultValue.properties = properties;

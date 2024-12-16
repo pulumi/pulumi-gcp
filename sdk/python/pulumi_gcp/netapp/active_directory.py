@@ -54,7 +54,7 @@ class ActiveDirectoryArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] backup_operators: Domain user/group accounts to be added to the Backup Operators group of the SMB service. The Backup Operators group allows members to backup and restore files regardless of whether they have read or write access to the files. Comma-separated list.
         :param pulumi.Input[str] description: An optional description of this resource.
         :param pulumi.Input[bool] encrypt_dc_connections: If enabled, traffic between the SMB server to Domain Controller (DC) will be encrypted.
-        :param pulumi.Input[str] kdc_hostname: Hostname of the Active Directory server used as Kerberos Key Distribution Center. Only requried for volumes using kerberized NFSv4.1
+        :param pulumi.Input[str] kdc_hostname: Hostname of the Active Directory server used as Kerberos Key Distribution Center. Only required for volumes using kerberized NFSv4.1
         :param pulumi.Input[str] kdc_ip: IP address of the Active Directory server used as Kerberos Key Distribution Center.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
                
@@ -247,7 +247,7 @@ class ActiveDirectoryArgs:
     @pulumi.getter(name="kdcHostname")
     def kdc_hostname(self) -> Optional[pulumi.Input[str]]:
         """
-        Hostname of the Active Directory server used as Kerberos Key Distribution Center. Only requried for volumes using kerberized NFSv4.1
+        Hostname of the Active Directory server used as Kerberos Key Distribution Center. Only required for volumes using kerberized NFSv4.1
         """
         return pulumi.get(self, "kdc_hostname")
 
@@ -414,7 +414,7 @@ class _ActiveDirectoryState:
         :param pulumi.Input[str] domain: Fully qualified domain name for the Active Directory domain.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[bool] encrypt_dc_connections: If enabled, traffic between the SMB server to Domain Controller (DC) will be encrypted.
-        :param pulumi.Input[str] kdc_hostname: Hostname of the Active Directory server used as Kerberos Key Distribution Center. Only requried for volumes using kerberized NFSv4.1
+        :param pulumi.Input[str] kdc_hostname: Hostname of the Active Directory server used as Kerberos Key Distribution Center. Only required for volumes using kerberized NFSv4.1
         :param pulumi.Input[str] kdc_ip: IP address of the Active Directory server used as Kerberos Key Distribution Center.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
                
@@ -609,7 +609,7 @@ class _ActiveDirectoryState:
     @pulumi.getter(name="kdcHostname")
     def kdc_hostname(self) -> Optional[pulumi.Input[str]]:
         """
-        Hostname of the Active Directory server used as Kerberos Key Distribution Center. Only requried for volumes using kerberized NFSv4.1
+        Hostname of the Active Directory server used as Kerberos Key Distribution Center. Only required for volumes using kerberized NFSv4.1
         """
         return pulumi.get(self, "kdc_hostname")
 
@@ -931,7 +931,7 @@ class ActiveDirectory(pulumi.CustomResource):
         :param pulumi.Input[str] dns: Comma separated list of DNS server IP addresses for the Active Directory domain.
         :param pulumi.Input[str] domain: Fully qualified domain name for the Active Directory domain.
         :param pulumi.Input[bool] encrypt_dc_connections: If enabled, traffic between the SMB server to Domain Controller (DC) will be encrypted.
-        :param pulumi.Input[str] kdc_hostname: Hostname of the Active Directory server used as Kerberos Key Distribution Center. Only requried for volumes using kerberized NFSv4.1
+        :param pulumi.Input[str] kdc_hostname: Hostname of the Active Directory server used as Kerberos Key Distribution Center. Only required for volumes using kerberized NFSv4.1
         :param pulumi.Input[str] kdc_ip: IP address of the Active Directory server used as Kerberos Key Distribution Center.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
                
@@ -1175,7 +1175,7 @@ class ActiveDirectory(pulumi.CustomResource):
         :param pulumi.Input[str] domain: Fully qualified domain name for the Active Directory domain.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[bool] encrypt_dc_connections: If enabled, traffic between the SMB server to Domain Controller (DC) will be encrypted.
-        :param pulumi.Input[str] kdc_hostname: Hostname of the Active Directory server used as Kerberos Key Distribution Center. Only requried for volumes using kerberized NFSv4.1
+        :param pulumi.Input[str] kdc_hostname: Hostname of the Active Directory server used as Kerberos Key Distribution Center. Only required for volumes using kerberized NFSv4.1
         :param pulumi.Input[str] kdc_ip: IP address of the Active Directory server used as Kerberos Key Distribution Center.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels as key value pairs. Example: `{ "owner": "Bob", "department": "finance", "purpose": "testing" }`.
                
@@ -1313,7 +1313,7 @@ class ActiveDirectory(pulumi.CustomResource):
     @pulumi.getter(name="kdcHostname")
     def kdc_hostname(self) -> pulumi.Output[Optional[str]]:
         """
-        Hostname of the Active Directory server used as Kerberos Key Distribution Center. Only requried for volumes using kerberized NFSv4.1
+        Hostname of the Active Directory server used as Kerberos Key Distribution Center. Only required for volumes using kerberized NFSv4.1
         """
         return pulumi.get(self, "kdc_hostname")
 

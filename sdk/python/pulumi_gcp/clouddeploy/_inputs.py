@@ -83,6 +83,8 @@ __all__ = [
     'DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesArgsDict',
     'DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshArgs',
     'DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshArgsDict',
+    'DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsArgs',
+    'DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsArgsDict',
     'DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingArgs',
     'DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesServiceNetworkingArgsDict',
     'DeliveryPipelineSerialPipelineStageStrategyStandardArgs',
@@ -93,6 +95,12 @@ __all__ = [
     'DeliveryPipelineSerialPipelineStageStrategyStandardPredeployArgsDict',
     'TargetAnthosClusterArgs',
     'TargetAnthosClusterArgsDict',
+    'TargetAssociatedEntityArgs',
+    'TargetAssociatedEntityArgsDict',
+    'TargetAssociatedEntityAnthosClusterArgs',
+    'TargetAssociatedEntityAnthosClusterArgsDict',
+    'TargetAssociatedEntityGkeClusterArgs',
+    'TargetAssociatedEntityGkeClusterArgsDict',
     'TargetCustomTargetArgs',
     'TargetCustomTargetArgsDict',
     'TargetExecutionConfigArgs',
@@ -2126,6 +2134,10 @@ if not MYPY:
         """
         Optional. The label to use when selecting Pods for the Deployment and Service resources. This label must already be present in both resources.
         """
+        route_destinations: NotRequired[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsArgsDict']]
+        """
+        Optional. Route destinations allow configuring the Gateway API HTTPRoute to be deployed to additional clusters. This option is available for multi-cluster service mesh set ups that require the route to exist in the clusters that call the service. If unspecified, the HTTPRoute will only be deployed to the Target cluster.
+        """
         route_update_wait_time: NotRequired[pulumi.Input[str]]
         """
         Optional. The time to wait for route updates to propagate. The maximum configurable time is 3 hours, in seconds format. If unspecified, there is no wait time.
@@ -2144,6 +2156,7 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGa
                  http_route: pulumi.Input[str],
                  service: pulumi.Input[str],
                  pod_selector_label: Optional[pulumi.Input[str]] = None,
+                 route_destinations: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsArgs']] = None,
                  route_update_wait_time: Optional[pulumi.Input[str]] = None,
                  stable_cutback_duration: Optional[pulumi.Input[str]] = None):
         """
@@ -2151,6 +2164,7 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGa
         :param pulumi.Input[str] http_route: Required. Name of the Gateway API HTTPRoute.
         :param pulumi.Input[str] service: Required. Name of the Kubernetes Service.
         :param pulumi.Input[str] pod_selector_label: Optional. The label to use when selecting Pods for the Deployment and Service resources. This label must already be present in both resources.
+        :param pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsArgs'] route_destinations: Optional. Route destinations allow configuring the Gateway API HTTPRoute to be deployed to additional clusters. This option is available for multi-cluster service mesh set ups that require the route to exist in the clusters that call the service. If unspecified, the HTTPRoute will only be deployed to the Target cluster.
         :param pulumi.Input[str] route_update_wait_time: Optional. The time to wait for route updates to propagate. The maximum configurable time is 3 hours, in seconds format. If unspecified, there is no wait time.
         :param pulumi.Input[str] stable_cutback_duration: Optional. The amount of time to migrate traffic back from the canary Service to the original Service during the stable phase deployment. If specified, must be between 15s and 3600s. If unspecified, there is no cutback time.
         """
@@ -2159,6 +2173,8 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGa
         pulumi.set(__self__, "service", service)
         if pod_selector_label is not None:
             pulumi.set(__self__, "pod_selector_label", pod_selector_label)
+        if route_destinations is not None:
+            pulumi.set(__self__, "route_destinations", route_destinations)
         if route_update_wait_time is not None:
             pulumi.set(__self__, "route_update_wait_time", route_update_wait_time)
         if stable_cutback_duration is not None:
@@ -2213,6 +2229,18 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGa
         pulumi.set(self, "pod_selector_label", value)
 
     @property
+    @pulumi.getter(name="routeDestinations")
+    def route_destinations(self) -> Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsArgs']]:
+        """
+        Optional. Route destinations allow configuring the Gateway API HTTPRoute to be deployed to additional clusters. This option is available for multi-cluster service mesh set ups that require the route to exist in the clusters that call the service. If unspecified, the HTTPRoute will only be deployed to the Target cluster.
+        """
+        return pulumi.get(self, "route_destinations")
+
+    @route_destinations.setter
+    def route_destinations(self, value: Optional[pulumi.Input['DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsArgs']]):
+        pulumi.set(self, "route_destinations", value)
+
+    @property
     @pulumi.getter(name="routeUpdateWaitTime")
     def route_update_wait_time(self) -> Optional[pulumi.Input[str]]:
         """
@@ -2235,6 +2263,57 @@ class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGa
     @stable_cutback_duration.setter
     def stable_cutback_duration(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "stable_cutback_duration", value)
+
+
+if not MYPY:
+    class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsArgsDict(TypedDict):
+        destination_ids: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        Required. The clusters where the Gateway API HTTPRoute resource will be deployed to. Valid entries include the associated entities IDs configured in the Target resource and "@self" to include the Target cluster.
+        """
+        propagate_service: NotRequired[pulumi.Input[bool]]
+        """
+        Optional. Whether to propagate the Kubernetes Service to the route destination clusters. The Service will always be deployed to the Target cluster even if the HTTPRoute is not. This option may be used to facilitiate successful DNS lookup in the route destination clusters. Can only be set to true if destinations are specified.
+        """
+elif False:
+    DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DeliveryPipelineSerialPipelineStageStrategyCanaryRuntimeConfigKubernetesGatewayServiceMeshRouteDestinationsArgs:
+    def __init__(__self__, *,
+                 destination_ids: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 propagate_service: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] destination_ids: Required. The clusters where the Gateway API HTTPRoute resource will be deployed to. Valid entries include the associated entities IDs configured in the Target resource and "@self" to include the Target cluster.
+        :param pulumi.Input[bool] propagate_service: Optional. Whether to propagate the Kubernetes Service to the route destination clusters. The Service will always be deployed to the Target cluster even if the HTTPRoute is not. This option may be used to facilitiate successful DNS lookup in the route destination clusters. Can only be set to true if destinations are specified.
+        """
+        pulumi.set(__self__, "destination_ids", destination_ids)
+        if propagate_service is not None:
+            pulumi.set(__self__, "propagate_service", propagate_service)
+
+    @property
+    @pulumi.getter(name="destinationIds")
+    def destination_ids(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        Required. The clusters where the Gateway API HTTPRoute resource will be deployed to. Valid entries include the associated entities IDs configured in the Target resource and "@self" to include the Target cluster.
+        """
+        return pulumi.get(self, "destination_ids")
+
+    @destination_ids.setter
+    def destination_ids(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "destination_ids", value)
+
+    @property
+    @pulumi.getter(name="propagateService")
+    def propagate_service(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. Whether to propagate the Kubernetes Service to the route destination clusters. The Service will always be deployed to the Target cluster even if the HTTPRoute is not. This option may be used to facilitiate successful DNS lookup in the route destination clusters. Can only be set to true if destinations are specified.
+        """
+        return pulumi.get(self, "propagate_service")
+
+    @propagate_service.setter
+    def propagate_service(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "propagate_service", value)
 
 
 if not MYPY:
@@ -2493,6 +2572,181 @@ class TargetAnthosClusterArgs:
     @membership.setter
     def membership(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "membership", value)
+
+
+if not MYPY:
+    class TargetAssociatedEntityArgsDict(TypedDict):
+        entity_id: pulumi.Input[str]
+        """
+        The name for the key in the map for which this object is mapped to in the API
+        """
+        anthos_clusters: NotRequired[pulumi.Input[Sequence[pulumi.Input['TargetAssociatedEntityAnthosClusterArgsDict']]]]
+        """
+        Optional. Information specifying Anthos clusters as associated entities.
+        """
+        gke_clusters: NotRequired[pulumi.Input[Sequence[pulumi.Input['TargetAssociatedEntityGkeClusterArgsDict']]]]
+        """
+        Optional. Information specifying GKE clusters as associated entities.
+        """
+elif False:
+    TargetAssociatedEntityArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TargetAssociatedEntityArgs:
+    def __init__(__self__, *,
+                 entity_id: pulumi.Input[str],
+                 anthos_clusters: Optional[pulumi.Input[Sequence[pulumi.Input['TargetAssociatedEntityAnthosClusterArgs']]]] = None,
+                 gke_clusters: Optional[pulumi.Input[Sequence[pulumi.Input['TargetAssociatedEntityGkeClusterArgs']]]] = None):
+        """
+        :param pulumi.Input[str] entity_id: The name for the key in the map for which this object is mapped to in the API
+        :param pulumi.Input[Sequence[pulumi.Input['TargetAssociatedEntityAnthosClusterArgs']]] anthos_clusters: Optional. Information specifying Anthos clusters as associated entities.
+        :param pulumi.Input[Sequence[pulumi.Input['TargetAssociatedEntityGkeClusterArgs']]] gke_clusters: Optional. Information specifying GKE clusters as associated entities.
+        """
+        pulumi.set(__self__, "entity_id", entity_id)
+        if anthos_clusters is not None:
+            pulumi.set(__self__, "anthos_clusters", anthos_clusters)
+        if gke_clusters is not None:
+            pulumi.set(__self__, "gke_clusters", gke_clusters)
+
+    @property
+    @pulumi.getter(name="entityId")
+    def entity_id(self) -> pulumi.Input[str]:
+        """
+        The name for the key in the map for which this object is mapped to in the API
+        """
+        return pulumi.get(self, "entity_id")
+
+    @entity_id.setter
+    def entity_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "entity_id", value)
+
+    @property
+    @pulumi.getter(name="anthosClusters")
+    def anthos_clusters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TargetAssociatedEntityAnthosClusterArgs']]]]:
+        """
+        Optional. Information specifying Anthos clusters as associated entities.
+        """
+        return pulumi.get(self, "anthos_clusters")
+
+    @anthos_clusters.setter
+    def anthos_clusters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TargetAssociatedEntityAnthosClusterArgs']]]]):
+        pulumi.set(self, "anthos_clusters", value)
+
+    @property
+    @pulumi.getter(name="gkeClusters")
+    def gke_clusters(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TargetAssociatedEntityGkeClusterArgs']]]]:
+        """
+        Optional. Information specifying GKE clusters as associated entities.
+        """
+        return pulumi.get(self, "gke_clusters")
+
+    @gke_clusters.setter
+    def gke_clusters(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TargetAssociatedEntityGkeClusterArgs']]]]):
+        pulumi.set(self, "gke_clusters", value)
+
+
+if not MYPY:
+    class TargetAssociatedEntityAnthosClusterArgsDict(TypedDict):
+        membership: NotRequired[pulumi.Input[str]]
+        """
+        Optional. Membership of the GKE Hub-registered cluster to which to apply the Skaffold configuration. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.
+        """
+elif False:
+    TargetAssociatedEntityAnthosClusterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TargetAssociatedEntityAnthosClusterArgs:
+    def __init__(__self__, *,
+                 membership: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] membership: Optional. Membership of the GKE Hub-registered cluster to which to apply the Skaffold configuration. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.
+        """
+        if membership is not None:
+            pulumi.set(__self__, "membership", membership)
+
+    @property
+    @pulumi.getter
+    def membership(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Membership of the GKE Hub-registered cluster to which to apply the Skaffold configuration. Format is `projects/{project}/locations/{location}/memberships/{membership_name}`.
+        """
+        return pulumi.get(self, "membership")
+
+    @membership.setter
+    def membership(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "membership", value)
+
+
+if not MYPY:
+    class TargetAssociatedEntityGkeClusterArgsDict(TypedDict):
+        cluster: NotRequired[pulumi.Input[str]]
+        """
+        Optional. Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}`.
+        """
+        internal_ip: NotRequired[pulumi.Input[bool]]
+        """
+        Optional. If true, `cluster` is accessed using the private IP address of the control plane endpoint. Otherwise, the default IP address of the control plane endpoint is used. The default IP address is the private IP address for clusters with private control-plane endpoints and the public IP address otherwise. Only specify this option when `cluster` is a [private GKE cluster](https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept).
+        """
+        proxy_url: NotRequired[pulumi.Input[str]]
+        """
+        Optional. If set, used to configure a [proxy](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#proxy) to the Kubernetes server.
+        """
+elif False:
+    TargetAssociatedEntityGkeClusterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TargetAssociatedEntityGkeClusterArgs:
+    def __init__(__self__, *,
+                 cluster: Optional[pulumi.Input[str]] = None,
+                 internal_ip: Optional[pulumi.Input[bool]] = None,
+                 proxy_url: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] cluster: Optional. Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}`.
+        :param pulumi.Input[bool] internal_ip: Optional. If true, `cluster` is accessed using the private IP address of the control plane endpoint. Otherwise, the default IP address of the control plane endpoint is used. The default IP address is the private IP address for clusters with private control-plane endpoints and the public IP address otherwise. Only specify this option when `cluster` is a [private GKE cluster](https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept).
+        :param pulumi.Input[str] proxy_url: Optional. If set, used to configure a [proxy](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#proxy) to the Kubernetes server.
+        """
+        if cluster is not None:
+            pulumi.set(__self__, "cluster", cluster)
+        if internal_ip is not None:
+            pulumi.set(__self__, "internal_ip", internal_ip)
+        if proxy_url is not None:
+            pulumi.set(__self__, "proxy_url", proxy_url)
+
+    @property
+    @pulumi.getter
+    def cluster(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Information specifying a GKE Cluster. Format is `projects/{project_id}/locations/{location_id}/clusters/{cluster_id}`.
+        """
+        return pulumi.get(self, "cluster")
+
+    @cluster.setter
+    def cluster(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster", value)
+
+    @property
+    @pulumi.getter(name="internalIp")
+    def internal_ip(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Optional. If true, `cluster` is accessed using the private IP address of the control plane endpoint. Otherwise, the default IP address of the control plane endpoint is used. The default IP address is the private IP address for clusters with private control-plane endpoints and the public IP address otherwise. Only specify this option when `cluster` is a [private GKE cluster](https://cloud.google.com/kubernetes-engine/docs/concepts/private-cluster-concept).
+        """
+        return pulumi.get(self, "internal_ip")
+
+    @internal_ip.setter
+    def internal_ip(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "internal_ip", value)
+
+    @property
+    @pulumi.getter(name="proxyUrl")
+    def proxy_url(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. If set, used to configure a [proxy](https://kubernetes.io/docs/concepts/configuration/organize-cluster-access-kubeconfig/#proxy) to the Kubernetes server.
+        """
+        return pulumi.get(self, "proxy_url")
+
+    @proxy_url.setter
+    def proxy_url(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "proxy_url", value)
 
 
 if not MYPY:

@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.compute.inputs.GlobalForwardingRuleMetadataFilterArgs;
 import com.pulumi.gcp.compute.inputs.GlobalForwardingRuleServiceDirectoryRegistrationsArgs;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -80,6 +81,21 @@ public final class GlobalForwardingRuleState extends com.pulumi.resources.Resour
      */
     public Optional<Output<Map<String,String>>> effectiveLabels() {
         return Optional.ofNullable(this.effectiveLabels);
+    }
+
+    /**
+     * The unique identifier number for the resource. This identifier is defined by the server.
+     * 
+     */
+    @Import(name="forwardingRuleId")
+    private @Nullable Output<Integer> forwardingRuleId;
+
+    /**
+     * @return The unique identifier number for the resource. This identifier is defined by the server.
+     * 
+     */
+    public Optional<Output<Integer>> forwardingRuleId() {
+        return Optional.ofNullable(this.forwardingRuleId);
     }
 
     /**
@@ -617,6 +633,7 @@ public final class GlobalForwardingRuleState extends com.pulumi.resources.Resour
         this.baseForwardingRule = $.baseForwardingRule;
         this.description = $.description;
         this.effectiveLabels = $.effectiveLabels;
+        this.forwardingRuleId = $.forwardingRuleId;
         this.ipAddress = $.ipAddress;
         this.ipProtocol = $.ipProtocol;
         this.ipVersion = $.ipVersion;
@@ -741,6 +758,27 @@ public final class GlobalForwardingRuleState extends com.pulumi.resources.Resour
          */
         public Builder effectiveLabels(Map<String,String> effectiveLabels) {
             return effectiveLabels(Output.of(effectiveLabels));
+        }
+
+        /**
+         * @param forwardingRuleId The unique identifier number for the resource. This identifier is defined by the server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forwardingRuleId(@Nullable Output<Integer> forwardingRuleId) {
+            $.forwardingRuleId = forwardingRuleId;
+            return this;
+        }
+
+        /**
+         * @param forwardingRuleId The unique identifier number for the resource. This identifier is defined by the server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forwardingRuleId(Integer forwardingRuleId) {
+            return forwardingRuleId(Output.of(forwardingRuleId));
         }
 
         /**

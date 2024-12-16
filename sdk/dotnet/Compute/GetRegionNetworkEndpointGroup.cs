@@ -198,6 +198,7 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public readonly string NetworkEndpointType;
         public readonly string? Project;
+        public readonly ImmutableArray<Outputs.GetRegionNetworkEndpointGroupPscDataResult> PscDatas;
         /// <summary>
         /// The target service url used to set up private service connection to a Google API or a PSC Producer Service Attachment.
         /// </summary>
@@ -230,6 +231,8 @@ namespace Pulumi.Gcp.Compute
 
             string? project,
 
+            ImmutableArray<Outputs.GetRegionNetworkEndpointGroupPscDataResult> pscDatas,
+
             string pscTargetService,
 
             string? region,
@@ -249,6 +252,7 @@ namespace Pulumi.Gcp.Compute
             Network = network;
             NetworkEndpointType = networkEndpointType;
             Project = project;
+            PscDatas = pscDatas;
             PscTargetService = pscTargetService;
             Region = region;
             SelfLink = selfLink;

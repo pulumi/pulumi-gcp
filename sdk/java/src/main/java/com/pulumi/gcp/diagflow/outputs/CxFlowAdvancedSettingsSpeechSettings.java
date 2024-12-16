@@ -32,7 +32,7 @@ public final class CxFlowAdvancedSettingsSpeechSettings {
      */
     private @Nullable String noSpeechTimeout;
     /**
-     * @return Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+     * @return Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
      * 
      */
     private @Nullable Boolean useTimeoutBasedEndpointing;
@@ -62,7 +62,7 @@ public final class CxFlowAdvancedSettingsSpeechSettings {
         return Optional.ofNullable(this.noSpeechTimeout);
     }
     /**
-     * @return Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+     * @return Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
      * 
      */
     public Optional<Boolean> useTimeoutBasedEndpointing() {

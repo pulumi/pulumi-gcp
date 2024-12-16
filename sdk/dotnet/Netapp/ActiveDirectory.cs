@@ -154,7 +154,7 @@ namespace Pulumi.Gcp.Netapp
         public Output<bool?> EncryptDcConnections { get; private set; } = null!;
 
         /// <summary>
-        /// Hostname of the Active Directory server used as Kerberos Key Distribution Center. Only requried for volumes using kerberized NFSv4.1
+        /// Hostname of the Active Directory server used as Kerberos Key Distribution Center. Only required for volumes using kerberized NFSv4.1
         /// </summary>
         [Output("kdcHostname")]
         public Output<string?> KdcHostname { get; private set; } = null!;
@@ -372,7 +372,7 @@ namespace Pulumi.Gcp.Netapp
         public Input<bool>? EncryptDcConnections { get; set; }
 
         /// <summary>
-        /// Hostname of the Active Directory server used as Kerberos Key Distribution Center. Only requried for volumes using kerberized NFSv4.1
+        /// Hostname of the Active Directory server used as Kerberos Key Distribution Center. Only required for volumes using kerberized NFSv4.1
         /// </summary>
         [Input("kdcHostname")]
         public Input<string>? KdcHostname { get; set; }
@@ -570,7 +570,7 @@ namespace Pulumi.Gcp.Netapp
         public Input<bool>? EncryptDcConnections { get; set; }
 
         /// <summary>
-        /// Hostname of the Active Directory server used as Kerberos Key Distribution Center. Only requried for volumes using kerberized NFSv4.1
+        /// Hostname of the Active Directory server used as Kerberos Key Distribution Center. Only required for volumes using kerberized NFSv4.1
         /// </summary>
         [Input("kdcHostname")]
         public Input<string>? KdcHostname { get; set; }

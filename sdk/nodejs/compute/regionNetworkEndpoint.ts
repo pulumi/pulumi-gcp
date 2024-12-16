@@ -194,6 +194,10 @@ export class RegionNetworkEndpoint extends pulumi.CustomResource {
      */
     public readonly ipAddress!: pulumi.Output<string | undefined>;
     /**
+     * The unique identifier number for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly networkEndpointId!: pulumi.Output<number>;
+    /**
      * Port number of network endpoint.
      */
     public readonly port!: pulumi.Output<number>;
@@ -231,6 +235,7 @@ export class RegionNetworkEndpoint extends pulumi.CustomResource {
             resourceInputs["fqdn"] = state ? state.fqdn : undefined;
             resourceInputs["instance"] = state ? state.instance : undefined;
             resourceInputs["ipAddress"] = state ? state.ipAddress : undefined;
+            resourceInputs["networkEndpointId"] = state ? state.networkEndpointId : undefined;
             resourceInputs["port"] = state ? state.port : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["region"] = state ? state.region : undefined;
@@ -251,6 +256,7 @@ export class RegionNetworkEndpoint extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["regionNetworkEndpointGroup"] = args ? args.regionNetworkEndpointGroup : undefined;
+            resourceInputs["networkEndpointId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(RegionNetworkEndpoint.__pulumiType, name, resourceInputs, opts);
@@ -280,6 +286,10 @@ export interface RegionNetworkEndpointState {
      * This can only be specified when networkEndpointType of the NEG is INTERNET_IP_PORT.
      */
     ipAddress?: pulumi.Input<string>;
+    /**
+     * The unique identifier number for the resource. This identifier is defined by the server.
+     */
+    networkEndpointId?: pulumi.Input<number>;
     /**
      * Port number of network endpoint.
      */

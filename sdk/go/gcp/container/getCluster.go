@@ -98,6 +98,7 @@ type LookupClusterResult struct {
 	EnableShieldedNodes                  bool                                    `pulumi:"enableShieldedNodes"`
 	EnableTpu                            bool                                    `pulumi:"enableTpu"`
 	Endpoint                             string                                  `pulumi:"endpoint"`
+	EnterpriseConfigs                    []GetClusterEnterpriseConfig            `pulumi:"enterpriseConfigs"`
 	Fleets                               []GetClusterFleet                       `pulumi:"fleets"`
 	GatewayApiConfigs                    []GetClusterGatewayApiConfig            `pulumi:"gatewayApiConfigs"`
 	// The provider-assigned unique ID for this managed resource.
@@ -314,6 +315,10 @@ func (o LookupClusterResultOutput) EnableTpu() pulumi.BoolOutput {
 
 func (o LookupClusterResultOutput) Endpoint() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupClusterResult) string { return v.Endpoint }).(pulumi.StringOutput)
+}
+
+func (o LookupClusterResultOutput) EnterpriseConfigs() GetClusterEnterpriseConfigArrayOutput {
+	return o.ApplyT(func(v LookupClusterResult) []GetClusterEnterpriseConfig { return v.EnterpriseConfigs }).(GetClusterEnterpriseConfigArrayOutput)
 }
 
 func (o LookupClusterResultOutput) Fleets() GetClusterFleetArrayOutput {

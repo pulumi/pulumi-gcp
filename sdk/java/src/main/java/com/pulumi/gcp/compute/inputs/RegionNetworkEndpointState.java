@@ -83,6 +83,21 @@ public final class RegionNetworkEndpointState extends com.pulumi.resources.Resou
     }
 
     /**
+     * The unique identifier number for the resource. This identifier is defined by the server.
+     * 
+     */
+    @Import(name="networkEndpointId")
+    private @Nullable Output<Integer> networkEndpointId;
+
+    /**
+     * @return The unique identifier number for the resource. This identifier is defined by the server.
+     * 
+     */
+    public Optional<Output<Integer>> networkEndpointId() {
+        return Optional.ofNullable(this.networkEndpointId);
+    }
+
+    /**
      * Port number of network endpoint.
      * 
      */
@@ -155,6 +170,7 @@ public final class RegionNetworkEndpointState extends com.pulumi.resources.Resou
         this.fqdn = $.fqdn;
         this.instance = $.instance;
         this.ipAddress = $.ipAddress;
+        this.networkEndpointId = $.networkEndpointId;
         this.port = $.port;
         this.project = $.project;
         this.region = $.region;
@@ -267,6 +283,27 @@ public final class RegionNetworkEndpointState extends com.pulumi.resources.Resou
          */
         public Builder ipAddress(String ipAddress) {
             return ipAddress(Output.of(ipAddress));
+        }
+
+        /**
+         * @param networkEndpointId The unique identifier number for the resource. This identifier is defined by the server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkEndpointId(@Nullable Output<Integer> networkEndpointId) {
+            $.networkEndpointId = networkEndpointId;
+            return this;
+        }
+
+        /**
+         * @param networkEndpointId The unique identifier number for the resource. This identifier is defined by the server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkEndpointId(Integer networkEndpointId) {
+            return networkEndpointId(Output.of(networkEndpointId));
         }
 
         /**

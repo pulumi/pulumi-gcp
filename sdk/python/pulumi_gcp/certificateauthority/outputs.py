@@ -529,7 +529,7 @@ class AuthorityConfigSubjectKeyId(dict):
     def __init__(__self__, *,
                  key_id: Optional[str] = None):
         """
-        :param str key_id: The value of the KeyId in lowercase hexidecimal.
+        :param str key_id: The value of the KeyId in lowercase hexadecimal.
                
                <a name="nested_x509_config"></a>The `x509_config` block supports:
         """
@@ -540,7 +540,7 @@ class AuthorityConfigSubjectKeyId(dict):
     @pulumi.getter(name="keyId")
     def key_id(self) -> Optional[str]:
         """
-        The value of the KeyId in lowercase hexidecimal.
+        The value of the KeyId in lowercase hexadecimal.
 
         <a name="nested_x509_config"></a>The `x509_config` block supports:
         """
@@ -3778,7 +3778,7 @@ class CertificateCertificateDescriptionSubjectKeyId(dict):
     def __init__(__self__, *,
                  key_id: Optional[str] = None):
         """
-        :param str key_id: The value of the KeyId in lowercase hexidecimal.
+        :param str key_id: The value of the KeyId in lowercase hexadecimal.
         """
         if key_id is not None:
             pulumi.set(__self__, "key_id", key_id)
@@ -3787,7 +3787,7 @@ class CertificateCertificateDescriptionSubjectKeyId(dict):
     @pulumi.getter(name="keyId")
     def key_id(self) -> Optional[str]:
         """
-        The value of the KeyId in lowercase hexidecimal.
+        The value of the KeyId in lowercase hexadecimal.
         """
         return pulumi.get(self, "key_id")
 
@@ -5060,7 +5060,7 @@ class CertificateConfigSubjectKeyId(dict):
     def __init__(__self__, *,
                  key_id: Optional[str] = None):
         """
-        :param str key_id: The value of the KeyId in lowercase hexidecimal.
+        :param str key_id: The value of the KeyId in lowercase hexadecimal.
         """
         if key_id is not None:
             pulumi.set(__self__, "key_id", key_id)
@@ -5069,7 +5069,7 @@ class CertificateConfigSubjectKeyId(dict):
     @pulumi.getter(name="keyId")
     def key_id(self) -> Optional[str]:
         """
-        The value of the KeyId in lowercase hexidecimal.
+        The value of the KeyId in lowercase hexadecimal.
         """
         return pulumi.get(self, "key_id")
 
@@ -7196,7 +7196,7 @@ class GetAuthorityConfigSubjectKeyIdResult(dict):
     def __init__(__self__, *,
                  key_id: str):
         """
-        :param str key_id: The value of the KeyId in lowercase hexidecimal.
+        :param str key_id: The value of the KeyId in lowercase hexadecimal.
         """
         pulumi.set(__self__, "key_id", key_id)
 
@@ -7204,7 +7204,7 @@ class GetAuthorityConfigSubjectKeyIdResult(dict):
     @pulumi.getter(name="keyId")
     def key_id(self) -> str:
         """
-        The value of the KeyId in lowercase hexidecimal.
+        The value of the KeyId in lowercase hexadecimal.
         """
         return pulumi.get(self, "key_id")
 

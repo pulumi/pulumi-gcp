@@ -21,7 +21,7 @@ public final class URLMapPathMatcherPathRuleArgs extends com.pulumi.resources.Re
     public static final URLMapPathMatcherPathRuleArgs Empty = new URLMapPathMatcherPathRuleArgs();
 
     /**
-     * customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error.
+     * customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendService or BackendBucket responds with an error.
      * If a policy for an error code is not configured for the PathRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect.
      * For example, consider a UrlMap with the following configuration:
      * UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors
@@ -35,7 +35,7 @@ public final class URLMapPathMatcherPathRuleArgs extends com.pulumi.resources.Re
     private @Nullable Output<URLMapPathMatcherPathRuleCustomErrorResponsePolicyArgs> customErrorResponsePolicy;
 
     /**
-     * @return customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error.
+     * @return customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendService or BackendBucket responds with an error.
      * If a policy for an error code is not configured for the PathRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect.
      * For example, consider a UrlMap with the following configuration:
      * UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors
@@ -162,7 +162,7 @@ public final class URLMapPathMatcherPathRuleArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param customErrorResponsePolicy customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error.
+         * @param customErrorResponsePolicy customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendService or BackendBucket responds with an error.
          * If a policy for an error code is not configured for the PathRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect.
          * For example, consider a UrlMap with the following configuration:
          * UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors
@@ -180,7 +180,7 @@ public final class URLMapPathMatcherPathRuleArgs extends com.pulumi.resources.Re
         }
 
         /**
-         * @param customErrorResponsePolicy customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error.
+         * @param customErrorResponsePolicy customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendService or BackendBucket responds with an error.
          * If a policy for an error code is not configured for the PathRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect.
          * For example, consider a UrlMap with the following configuration:
          * UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors

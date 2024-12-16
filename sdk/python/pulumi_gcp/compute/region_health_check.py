@@ -321,6 +321,7 @@ class _RegionHealthCheckState:
                  creation_timestamp: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  grpc_health_check: Optional[pulumi.Input['RegionHealthCheckGrpcHealthCheckArgs']] = None,
+                 health_check_id: Optional[pulumi.Input[int]] = None,
                  healthy_threshold: Optional[pulumi.Input[int]] = None,
                  http2_health_check: Optional[pulumi.Input['RegionHealthCheckHttp2HealthCheckArgs']] = None,
                  http_health_check: Optional[pulumi.Input['RegionHealthCheckHttpHealthCheckArgs']] = None,
@@ -344,6 +345,7 @@ class _RegionHealthCheckState:
                you create the resource.
         :param pulumi.Input['RegionHealthCheckGrpcHealthCheckArgs'] grpc_health_check: A nested object resource.
                Structure is documented below.
+        :param pulumi.Input[int] health_check_id: The unique identifier number for the resource. This identifier is defined by the server.
         :param pulumi.Input[int] healthy_threshold: A so-far unhealthy instance will be marked healthy after this many
                consecutive successes. The default value is 2.
         :param pulumi.Input['RegionHealthCheckHttp2HealthCheckArgs'] http2_health_check: A nested object resource.
@@ -388,6 +390,8 @@ class _RegionHealthCheckState:
             pulumi.set(__self__, "description", description)
         if grpc_health_check is not None:
             pulumi.set(__self__, "grpc_health_check", grpc_health_check)
+        if health_check_id is not None:
+            pulumi.set(__self__, "health_check_id", health_check_id)
         if healthy_threshold is not None:
             pulumi.set(__self__, "healthy_threshold", healthy_threshold)
         if http2_health_check is not None:
@@ -467,6 +471,18 @@ class _RegionHealthCheckState:
     @grpc_health_check.setter
     def grpc_health_check(self, value: Optional[pulumi.Input['RegionHealthCheckGrpcHealthCheckArgs']]):
         pulumi.set(self, "grpc_health_check", value)
+
+    @property
+    @pulumi.getter(name="healthCheckId")
+    def health_check_id(self) -> Optional[pulumi.Input[int]]:
+        """
+        The unique identifier number for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "health_check_id")
+
+    @health_check_id.setter
+    def health_check_id(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "health_check_id", value)
 
     @property
     @pulumi.getter(name="healthyThreshold")
@@ -1336,6 +1352,7 @@ class RegionHealthCheck(pulumi.CustomResource):
             __props__.__dict__["timeout_sec"] = timeout_sec
             __props__.__dict__["unhealthy_threshold"] = unhealthy_threshold
             __props__.__dict__["creation_timestamp"] = None
+            __props__.__dict__["health_check_id"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["type"] = None
         super(RegionHealthCheck, __self__).__init__(
@@ -1352,6 +1369,7 @@ class RegionHealthCheck(pulumi.CustomResource):
             creation_timestamp: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             grpc_health_check: Optional[pulumi.Input[Union['RegionHealthCheckGrpcHealthCheckArgs', 'RegionHealthCheckGrpcHealthCheckArgsDict']]] = None,
+            health_check_id: Optional[pulumi.Input[int]] = None,
             healthy_threshold: Optional[pulumi.Input[int]] = None,
             http2_health_check: Optional[pulumi.Input[Union['RegionHealthCheckHttp2HealthCheckArgs', 'RegionHealthCheckHttp2HealthCheckArgsDict']]] = None,
             http_health_check: Optional[pulumi.Input[Union['RegionHealthCheckHttpHealthCheckArgs', 'RegionHealthCheckHttpHealthCheckArgsDict']]] = None,
@@ -1380,6 +1398,7 @@ class RegionHealthCheck(pulumi.CustomResource):
                you create the resource.
         :param pulumi.Input[Union['RegionHealthCheckGrpcHealthCheckArgs', 'RegionHealthCheckGrpcHealthCheckArgsDict']] grpc_health_check: A nested object resource.
                Structure is documented below.
+        :param pulumi.Input[int] health_check_id: The unique identifier number for the resource. This identifier is defined by the server.
         :param pulumi.Input[int] healthy_threshold: A so-far unhealthy instance will be marked healthy after this many
                consecutive successes. The default value is 2.
         :param pulumi.Input[Union['RegionHealthCheckHttp2HealthCheckArgs', 'RegionHealthCheckHttp2HealthCheckArgsDict']] http2_health_check: A nested object resource.
@@ -1424,6 +1443,7 @@ class RegionHealthCheck(pulumi.CustomResource):
         __props__.__dict__["creation_timestamp"] = creation_timestamp
         __props__.__dict__["description"] = description
         __props__.__dict__["grpc_health_check"] = grpc_health_check
+        __props__.__dict__["health_check_id"] = health_check_id
         __props__.__dict__["healthy_threshold"] = healthy_threshold
         __props__.__dict__["http2_health_check"] = http2_health_check
         __props__.__dict__["http_health_check"] = http_health_check
@@ -1474,6 +1494,14 @@ class RegionHealthCheck(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "grpc_health_check")
+
+    @property
+    @pulumi.getter(name="healthCheckId")
+    def health_check_id(self) -> pulumi.Output[int]:
+        """
+        The unique identifier number for the resource. This identifier is defined by the server.
+        """
+        return pulumi.get(self, "health_check_id")
 
     @property
     @pulumi.getter(name="healthyThreshold")

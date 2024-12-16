@@ -249,6 +249,7 @@ class Client(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
+        import pulumi_std as std
 
         test_project = gcp.organizations.get_project()
         keyring = gcp.kms.KeyRing("keyring",
@@ -268,9 +269,9 @@ class Client(pulumi.CustomResource):
             run_as_service_account=service_account.email,
             cloud_kms_config={
                 "kms_location": "us-east1",
-                "kms_ring": keyring.id,
-                "key": cryptokey.id,
-                "key_version": test_key.id,
+                "kms_ring": std.basename_output(input=keyring.id).apply(lambda invoke: invoke.result),
+                "key": std.basename_output(input=cryptokey.id).apply(lambda invoke: invoke.result),
+                "key_version": std.basename_output(input=test_key.id).apply(lambda invoke: invoke.result),
                 "kms_project_id": test_project.project_id,
             })
         ```
@@ -343,6 +344,7 @@ class Client(pulumi.CustomResource):
         ```python
         import pulumi
         import pulumi_gcp as gcp
+        import pulumi_std as std
 
         test_project = gcp.organizations.get_project()
         keyring = gcp.kms.KeyRing("keyring",
@@ -362,9 +364,9 @@ class Client(pulumi.CustomResource):
             run_as_service_account=service_account.email,
             cloud_kms_config={
                 "kms_location": "us-east1",
-                "kms_ring": keyring.id,
-                "key": cryptokey.id,
-                "key_version": test_key.id,
+                "kms_ring": std.basename_output(input=keyring.id).apply(lambda invoke: invoke.result),
+                "key": std.basename_output(input=cryptokey.id).apply(lambda invoke: invoke.result),
+                "key_version": std.basename_output(input=test_key.id).apply(lambda invoke: invoke.result),
                 "kms_project_id": test_project.project_id,
             })
         ```

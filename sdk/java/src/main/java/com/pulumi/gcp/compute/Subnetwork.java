@@ -13,6 +13,7 @@ import com.pulumi.gcp.compute.inputs.SubnetworkState;
 import com.pulumi.gcp.compute.outputs.SubnetworkLogConfig;
 import com.pulumi.gcp.compute.outputs.SubnetworkSecondaryIpRange;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Optional;
@@ -978,6 +979,20 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
      */
     public Output<String> stackType() {
         return this.stackType;
+    }
+    /**
+     * The unique identifier number for the resource. This identifier is defined by the server.
+     * 
+     */
+    @Export(name="subnetworkId", refs={Integer.class}, tree="[0]")
+    private Output<Integer> subnetworkId;
+
+    /**
+     * @return The unique identifier number for the resource. This identifier is defined by the server.
+     * 
+     */
+    public Output<Integer> subnetworkId() {
+        return this.subnetworkId;
     }
 
     /**

@@ -65,6 +65,7 @@ type LookupGlobalForwardingRuleResult struct {
 	BaseForwardingRule   string            `pulumi:"baseForwardingRule"`
 	Description          string            `pulumi:"description"`
 	EffectiveLabels      map[string]string `pulumi:"effectiveLabels"`
+	ForwardingRuleId     int               `pulumi:"forwardingRuleId"`
 	// The provider-assigned unique ID for this managed resource.
 	Id                            string                                                `pulumi:"id"`
 	IpAddress                     string                                                `pulumi:"ipAddress"`
@@ -142,6 +143,10 @@ func (o LookupGlobalForwardingRuleResultOutput) Description() pulumi.StringOutpu
 
 func (o LookupGlobalForwardingRuleResultOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupGlobalForwardingRuleResult) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
+func (o LookupGlobalForwardingRuleResultOutput) ForwardingRuleId() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupGlobalForwardingRuleResult) int { return v.ForwardingRuleId }).(pulumi.IntOutput)
 }
 
 // The provider-assigned unique ID for this managed resource.

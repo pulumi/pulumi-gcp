@@ -157,6 +157,12 @@ namespace Pulumi.Gcp.Container.Inputs
         public Input<int>? LocalSsdCount { get; set; }
 
         /// <summary>
+        /// LocalSsdEncryptionMode specified the method used for encrypting the local SSDs attached to the node.
+        /// </summary>
+        [Input("localSsdEncryptionMode")]
+        public Input<string>? LocalSsdEncryptionMode { get; set; }
+
+        /// <summary>
         /// Type of logging agent that is used as the default value for node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT.
         /// </summary>
         [Input("loggingVariant")]

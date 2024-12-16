@@ -43,6 +43,7 @@ public final class GetRegionInstanceGroupManagerResult {
     private String id;
     private List<GetRegionInstanceGroupManagerInstanceFlexibilityPolicy> instanceFlexibilityPolicies;
     private String instanceGroup;
+    private Integer instanceGroupManagerId;
     private List<GetRegionInstanceGroupManagerInstanceLifecyclePolicy> instanceLifecyclePolicies;
     private String listManagedInstancesResults;
     private @Nullable String name;
@@ -102,6 +103,9 @@ public final class GetRegionInstanceGroupManagerResult {
     }
     public String instanceGroup() {
         return this.instanceGroup;
+    }
+    public Integer instanceGroupManagerId() {
+        return this.instanceGroupManagerId;
     }
     public List<GetRegionInstanceGroupManagerInstanceLifecyclePolicy> instanceLifecyclePolicies() {
         return this.instanceLifecyclePolicies;
@@ -187,6 +191,7 @@ public final class GetRegionInstanceGroupManagerResult {
         private String id;
         private List<GetRegionInstanceGroupManagerInstanceFlexibilityPolicy> instanceFlexibilityPolicies;
         private String instanceGroup;
+        private Integer instanceGroupManagerId;
         private List<GetRegionInstanceGroupManagerInstanceLifecyclePolicy> instanceLifecyclePolicies;
         private String listManagedInstancesResults;
         private @Nullable String name;
@@ -222,6 +227,7 @@ public final class GetRegionInstanceGroupManagerResult {
     	      this.id = defaults.id;
     	      this.instanceFlexibilityPolicies = defaults.instanceFlexibilityPolicies;
     	      this.instanceGroup = defaults.instanceGroup;
+    	      this.instanceGroupManagerId = defaults.instanceGroupManagerId;
     	      this.instanceLifecyclePolicies = defaults.instanceLifecyclePolicies;
     	      this.listManagedInstancesResults = defaults.listManagedInstancesResults;
     	      this.name = defaults.name;
@@ -343,6 +349,14 @@ public final class GetRegionInstanceGroupManagerResult {
               throw new MissingRequiredPropertyException("GetRegionInstanceGroupManagerResult", "instanceGroup");
             }
             this.instanceGroup = instanceGroup;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder instanceGroupManagerId(Integer instanceGroupManagerId) {
+            if (instanceGroupManagerId == null) {
+              throw new MissingRequiredPropertyException("GetRegionInstanceGroupManagerResult", "instanceGroupManagerId");
+            }
+            this.instanceGroupManagerId = instanceGroupManagerId;
             return this;
         }
         @CustomType.Setter
@@ -551,6 +565,7 @@ public final class GetRegionInstanceGroupManagerResult {
             _resultValue.id = id;
             _resultValue.instanceFlexibilityPolicies = instanceFlexibilityPolicies;
             _resultValue.instanceGroup = instanceGroup;
+            _resultValue.instanceGroupManagerId = instanceGroupManagerId;
             _resultValue.instanceLifecyclePolicies = instanceLifecyclePolicies;
             _resultValue.listManagedInstancesResults = listManagedInstancesResults;
             _resultValue.name = name;

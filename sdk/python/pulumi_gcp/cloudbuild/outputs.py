@@ -51,6 +51,7 @@ __all__ = [
     'TriggerTriggerTemplate',
     'TriggerWebhookConfig',
     'WorkerPoolNetworkConfig',
+    'WorkerPoolPrivateServiceConnect',
     'WorkerPoolWorkerConfig',
     'GetTriggerApprovalConfigResult',
     'GetTriggerBitbucketServerTriggerConfigResult',
@@ -3006,6 +3007,55 @@ class WorkerPoolNetworkConfig(dict):
         Immutable. Subnet IP range within the peered network. This is specified in CIDR notation with a slash and the subnet prefix size. You can optionally specify an IP address before the subnet prefix value. e.g. `192.168.0.0/29` would specify an IP range starting at 192.168.0.0 with a prefix size of 29 bits. `/16` would specify a prefix size of 16 bits, with an automatically determined IP within the peered VPC. If unspecified, a value of `/24` will be used.
         """
         return pulumi.get(self, "peered_network_ip_range")
+
+
+@pulumi.output_type
+class WorkerPoolPrivateServiceConnect(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "networkAttachment":
+            suggest = "network_attachment"
+        elif key == "routeAllTraffic":
+            suggest = "route_all_traffic"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in WorkerPoolPrivateServiceConnect. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        WorkerPoolPrivateServiceConnect.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        WorkerPoolPrivateServiceConnect.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 network_attachment: str,
+                 route_all_traffic: Optional[bool] = None):
+        """
+        :param str network_attachment: Required. Immutable. The network attachment that the worker network interface is connected to. Must be in the format `projects/{project}/regions/{region}/networkAttachments/{networkAttachment}`. The region of network attachment must be the same as the worker pool. See [Network Attachments](https://cloud.google.com/vpc/docs/about-network-attachments)
+        :param bool route_all_traffic: Immutable. Route all traffic through PSC interface. Enable this if you want full control of traffic in the private pool. Configure Cloud NAT for the subnet of network attachment if you need to access public Internet. If false, Only route private IPs, e.g. 10.0.0.0/8, 172.16.0.0/12, and 192.168.0.0/16 through PSC interface.
+        """
+        pulumi.set(__self__, "network_attachment", network_attachment)
+        if route_all_traffic is not None:
+            pulumi.set(__self__, "route_all_traffic", route_all_traffic)
+
+    @property
+    @pulumi.getter(name="networkAttachment")
+    def network_attachment(self) -> str:
+        """
+        Required. Immutable. The network attachment that the worker network interface is connected to. Must be in the format `projects/{project}/regions/{region}/networkAttachments/{networkAttachment}`. The region of network attachment must be the same as the worker pool. See [Network Attachments](https://cloud.google.com/vpc/docs/about-network-attachments)
+        """
+        return pulumi.get(self, "network_attachment")
+
+    @property
+    @pulumi.getter(name="routeAllTraffic")
+    def route_all_traffic(self) -> Optional[bool]:
+        """
+        Immutable. Route all traffic through PSC interface. Enable this if you want full control of traffic in the private pool. Configure Cloud NAT for the subnet of network attachment if you need to access public Internet. If false, Only route private IPs, e.g. 10.0.0.0/8, 172.16.0.0/12, and 192.168.0.0/16 through PSC interface.
+        """
+        return pulumi.get(self, "route_all_traffic")
 
 
 @pulumi.output_type

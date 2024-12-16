@@ -163,7 +163,7 @@ if not MYPY:
         """
         allowed_clients: NotRequired[pulumi.Input[str]]
         """
-        Defines the client ingress specification (allowed clients) as a comma seperated list with IPv4 CIDRs or IPv4 host addresses.
+        Defines the client ingress specification (allowed clients) as a comma separated list with IPv4 CIDRs or IPv4 host addresses.
         """
         has_root_access: NotRequired[pulumi.Input[str]]
         """
@@ -221,7 +221,7 @@ class VolumeExportPolicyRuleArgs:
         """
         :param pulumi.Input[str] access_type: Defines the access type for clients matching the `allowedClients` specification.
                Possible values are: `READ_ONLY`, `READ_WRITE`, `READ_NONE`.
-        :param pulumi.Input[str] allowed_clients: Defines the client ingress specification (allowed clients) as a comma seperated list with IPv4 CIDRs or IPv4 host addresses.
+        :param pulumi.Input[str] allowed_clients: Defines the client ingress specification (allowed clients) as a comma separated list with IPv4 CIDRs or IPv4 host addresses.
         :param pulumi.Input[str] has_root_access: If enabled, the root user (UID = 0) of the specified clients doesn't get mapped to nobody (UID = 65534). This is also known as no_root_squash.
         :param pulumi.Input[bool] kerberos5_read_only: If enabled (true) the rule defines a read only access for clients matching the 'allowedClients' specification. It enables nfs clients to mount using 'authentication' kerberos security mode.
         :param pulumi.Input[bool] kerberos5_read_write: If enabled (true) the rule defines read and write access for clients matching the 'allowedClients' specification. It enables nfs clients to mount using 'authentication' kerberos security mode. The 'kerberos5ReadOnly' value is ignored if this is enabled.
@@ -272,7 +272,7 @@ class VolumeExportPolicyRuleArgs:
     @pulumi.getter(name="allowedClients")
     def allowed_clients(self) -> Optional[pulumi.Input[str]]:
         """
-        Defines the client ingress specification (allowed clients) as a comma seperated list with IPv4 CIDRs or IPv4 host addresses.
+        Defines the client ingress specification (allowed clients) as a comma separated list with IPv4 CIDRs or IPv4 host addresses.
         """
         return pulumi.get(self, "allowed_clients")
 

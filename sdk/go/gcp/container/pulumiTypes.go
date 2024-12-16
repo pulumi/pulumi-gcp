@@ -14273,7 +14273,7 @@ type ClusterClusterAutoscalingAutoProvisioningDefaults struct {
 	BootDiskKmsKey *string `pulumi:"bootDiskKmsKey"`
 	// Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. Defaults to `100`
 	DiskSize *int `pulumi:"diskSize"`
-	// Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced'). Defaults to `pd-standard`
+	// Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd', 'pd-balanced', or 'hyperdisk-balanced'). Defaults to `hyperdisk-balanced` if `hyperdisk-balanced` is supported and `pd-balanced` is not supported for the machine type; otherwise defaults to `pd-balanced`.
 	DiskType *string `pulumi:"diskType"`
 	// The default image type used by NAP once a new node pool is being created. Please note that according to the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning#default-image-type) the value must be one of the [COS_CONTAINERD, COS, UBUNTU_CONTAINERD, UBUNTU]. __NOTE__ : COS AND UBUNTU are deprecated as of `GKE 1.24`
 	ImageType *string `pulumi:"imageType"`
@@ -14311,7 +14311,7 @@ type ClusterClusterAutoscalingAutoProvisioningDefaultsArgs struct {
 	BootDiskKmsKey pulumi.StringPtrInput `pulumi:"bootDiskKmsKey"`
 	// Size of the disk attached to each node, specified in GB. The smallest allowed disk size is 10GB. Defaults to `100`
 	DiskSize pulumi.IntPtrInput `pulumi:"diskSize"`
-	// Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced'). Defaults to `pd-standard`
+	// Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd', 'pd-balanced', or 'hyperdisk-balanced'). Defaults to `hyperdisk-balanced` if `hyperdisk-balanced` is supported and `pd-balanced` is not supported for the machine type; otherwise defaults to `pd-balanced`.
 	DiskType pulumi.StringPtrInput `pulumi:"diskType"`
 	// The default image type used by NAP once a new node pool is being created. Please note that according to the [official documentation](https://cloud.google.com/kubernetes-engine/docs/how-to/node-auto-provisioning#default-image-type) the value must be one of the [COS_CONTAINERD, COS, UBUNTU_CONTAINERD, UBUNTU]. __NOTE__ : COS AND UBUNTU are deprecated as of `GKE 1.24`
 	ImageType pulumi.StringPtrInput `pulumi:"imageType"`
@@ -14420,7 +14420,7 @@ func (o ClusterClusterAutoscalingAutoProvisioningDefaultsOutput) DiskSize() pulu
 	return o.ApplyT(func(v ClusterClusterAutoscalingAutoProvisioningDefaults) *int { return v.DiskSize }).(pulumi.IntPtrOutput)
 }
 
-// Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced'). Defaults to `pd-standard`
+// Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd', 'pd-balanced', or 'hyperdisk-balanced'). Defaults to `hyperdisk-balanced` if `hyperdisk-balanced` is supported and `pd-balanced` is not supported for the machine type; otherwise defaults to `pd-balanced`.
 func (o ClusterClusterAutoscalingAutoProvisioningDefaultsOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ClusterClusterAutoscalingAutoProvisioningDefaults) *string { return v.DiskType }).(pulumi.StringPtrOutput)
 }
@@ -14514,7 +14514,7 @@ func (o ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput) DiskSize() p
 	}).(pulumi.IntPtrOutput)
 }
 
-// Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd' or 'pd-balanced'). Defaults to `pd-standard`
+// Type of the disk attached to each node (e.g. 'pd-standard', 'pd-ssd', 'pd-balanced', or 'hyperdisk-balanced'). Defaults to `hyperdisk-balanced` if `hyperdisk-balanced` is supported and `pd-balanced` is not supported for the machine type; otherwise defaults to `pd-balanced`.
 func (o ClusterClusterAutoscalingAutoProvisioningDefaultsPtrOutput) DiskType() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ClusterClusterAutoscalingAutoProvisioningDefaults) *string {
 		if v == nil {
@@ -17079,6 +17079,162 @@ func (o ClusterEnableK8sBetaApisPtrOutput) EnabledApis() pulumi.StringArrayOutpu
 		}
 		return v.EnabledApis
 	}).(pulumi.StringArrayOutput)
+}
+
+type ClusterEnterpriseConfig struct {
+	// The effective tier of the cluster.
+	ClusterTier *string `pulumi:"clusterTier"`
+	// Sets the tier of the cluster. Available options include `STANDARD` and `ENTERPRISE`.
+	DesiredTier *string `pulumi:"desiredTier"`
+}
+
+// ClusterEnterpriseConfigInput is an input type that accepts ClusterEnterpriseConfigArgs and ClusterEnterpriseConfigOutput values.
+// You can construct a concrete instance of `ClusterEnterpriseConfigInput` via:
+//
+//	ClusterEnterpriseConfigArgs{...}
+type ClusterEnterpriseConfigInput interface {
+	pulumi.Input
+
+	ToClusterEnterpriseConfigOutput() ClusterEnterpriseConfigOutput
+	ToClusterEnterpriseConfigOutputWithContext(context.Context) ClusterEnterpriseConfigOutput
+}
+
+type ClusterEnterpriseConfigArgs struct {
+	// The effective tier of the cluster.
+	ClusterTier pulumi.StringPtrInput `pulumi:"clusterTier"`
+	// Sets the tier of the cluster. Available options include `STANDARD` and `ENTERPRISE`.
+	DesiredTier pulumi.StringPtrInput `pulumi:"desiredTier"`
+}
+
+func (ClusterEnterpriseConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterEnterpriseConfig)(nil)).Elem()
+}
+
+func (i ClusterEnterpriseConfigArgs) ToClusterEnterpriseConfigOutput() ClusterEnterpriseConfigOutput {
+	return i.ToClusterEnterpriseConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterEnterpriseConfigArgs) ToClusterEnterpriseConfigOutputWithContext(ctx context.Context) ClusterEnterpriseConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterEnterpriseConfigOutput)
+}
+
+func (i ClusterEnterpriseConfigArgs) ToClusterEnterpriseConfigPtrOutput() ClusterEnterpriseConfigPtrOutput {
+	return i.ToClusterEnterpriseConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterEnterpriseConfigArgs) ToClusterEnterpriseConfigPtrOutputWithContext(ctx context.Context) ClusterEnterpriseConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterEnterpriseConfigOutput).ToClusterEnterpriseConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterEnterpriseConfigPtrInput is an input type that accepts ClusterEnterpriseConfigArgs, ClusterEnterpriseConfigPtr and ClusterEnterpriseConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterEnterpriseConfigPtrInput` via:
+//
+//	        ClusterEnterpriseConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterEnterpriseConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterEnterpriseConfigPtrOutput() ClusterEnterpriseConfigPtrOutput
+	ToClusterEnterpriseConfigPtrOutputWithContext(context.Context) ClusterEnterpriseConfigPtrOutput
+}
+
+type clusterEnterpriseConfigPtrType ClusterEnterpriseConfigArgs
+
+func ClusterEnterpriseConfigPtr(v *ClusterEnterpriseConfigArgs) ClusterEnterpriseConfigPtrInput {
+	return (*clusterEnterpriseConfigPtrType)(v)
+}
+
+func (*clusterEnterpriseConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterEnterpriseConfig)(nil)).Elem()
+}
+
+func (i *clusterEnterpriseConfigPtrType) ToClusterEnterpriseConfigPtrOutput() ClusterEnterpriseConfigPtrOutput {
+	return i.ToClusterEnterpriseConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterEnterpriseConfigPtrType) ToClusterEnterpriseConfigPtrOutputWithContext(ctx context.Context) ClusterEnterpriseConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterEnterpriseConfigPtrOutput)
+}
+
+type ClusterEnterpriseConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterEnterpriseConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterEnterpriseConfig)(nil)).Elem()
+}
+
+func (o ClusterEnterpriseConfigOutput) ToClusterEnterpriseConfigOutput() ClusterEnterpriseConfigOutput {
+	return o
+}
+
+func (o ClusterEnterpriseConfigOutput) ToClusterEnterpriseConfigOutputWithContext(ctx context.Context) ClusterEnterpriseConfigOutput {
+	return o
+}
+
+func (o ClusterEnterpriseConfigOutput) ToClusterEnterpriseConfigPtrOutput() ClusterEnterpriseConfigPtrOutput {
+	return o.ToClusterEnterpriseConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterEnterpriseConfigOutput) ToClusterEnterpriseConfigPtrOutputWithContext(ctx context.Context) ClusterEnterpriseConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterEnterpriseConfig) *ClusterEnterpriseConfig {
+		return &v
+	}).(ClusterEnterpriseConfigPtrOutput)
+}
+
+// The effective tier of the cluster.
+func (o ClusterEnterpriseConfigOutput) ClusterTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterEnterpriseConfig) *string { return v.ClusterTier }).(pulumi.StringPtrOutput)
+}
+
+// Sets the tier of the cluster. Available options include `STANDARD` and `ENTERPRISE`.
+func (o ClusterEnterpriseConfigOutput) DesiredTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterEnterpriseConfig) *string { return v.DesiredTier }).(pulumi.StringPtrOutput)
+}
+
+type ClusterEnterpriseConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterEnterpriseConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterEnterpriseConfig)(nil)).Elem()
+}
+
+func (o ClusterEnterpriseConfigPtrOutput) ToClusterEnterpriseConfigPtrOutput() ClusterEnterpriseConfigPtrOutput {
+	return o
+}
+
+func (o ClusterEnterpriseConfigPtrOutput) ToClusterEnterpriseConfigPtrOutputWithContext(ctx context.Context) ClusterEnterpriseConfigPtrOutput {
+	return o
+}
+
+func (o ClusterEnterpriseConfigPtrOutput) Elem() ClusterEnterpriseConfigOutput {
+	return o.ApplyT(func(v *ClusterEnterpriseConfig) ClusterEnterpriseConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterEnterpriseConfig
+		return ret
+	}).(ClusterEnterpriseConfigOutput)
+}
+
+// The effective tier of the cluster.
+func (o ClusterEnterpriseConfigPtrOutput) ClusterTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterEnterpriseConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterTier
+	}).(pulumi.StringPtrOutput)
+}
+
+// Sets the tier of the cluster. Available options include `STANDARD` and `ENTERPRISE`.
+func (o ClusterEnterpriseConfigPtrOutput) DesiredTier() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterEnterpriseConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DesiredTier
+	}).(pulumi.StringPtrOutput)
 }
 
 type ClusterFleet struct {
@@ -20605,6 +20761,11 @@ type ClusterNodeConfig struct {
 	// The amount of local SSD disks that will be
 	// attached to each cluster node. Defaults to 0.
 	LocalSsdCount *int `pulumi:"localSsdCount"`
+	// Possible Local SSD encryption modes:
+	// Accepted values are:
+	// * `STANDARD_ENCRYPTION`: The given node will be encrypted using keys managed by Google infrastructure and the keys wll be deleted when the node is deleted.
+	// * `EPHEMERAL_KEY_ENCRYPTION`: The given node will opt-in for using ephemeral key for encrypting Local SSDs. The Local SSDs will not be able to recover data in case of node crash.
+	LocalSsdEncryptionMode *string `pulumi:"localSsdEncryptionMode"`
 	// Parameter for specifying the type of logging agent used in a node pool. This will override any cluster-wide default value. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
 	LoggingVariant *string `pulumi:"loggingVariant"`
 	// The name of a Google Compute Engine machine type.
@@ -20750,6 +20911,11 @@ type ClusterNodeConfigArgs struct {
 	// The amount of local SSD disks that will be
 	// attached to each cluster node. Defaults to 0.
 	LocalSsdCount pulumi.IntPtrInput `pulumi:"localSsdCount"`
+	// Possible Local SSD encryption modes:
+	// Accepted values are:
+	// * `STANDARD_ENCRYPTION`: The given node will be encrypted using keys managed by Google infrastructure and the keys wll be deleted when the node is deleted.
+	// * `EPHEMERAL_KEY_ENCRYPTION`: The given node will opt-in for using ephemeral key for encrypting Local SSDs. The Local SSDs will not be able to recover data in case of node crash.
+	LocalSsdEncryptionMode pulumi.StringPtrInput `pulumi:"localSsdEncryptionMode"`
 	// Parameter for specifying the type of logging agent used in a node pool. This will override any cluster-wide default value. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
 	LoggingVariant pulumi.StringPtrInput `pulumi:"loggingVariant"`
 	// The name of a Google Compute Engine machine type.
@@ -21023,6 +21189,14 @@ func (o ClusterNodeConfigOutput) LocalNvmeSsdBlockConfig() ClusterNodeConfigLoca
 // attached to each cluster node. Defaults to 0.
 func (o ClusterNodeConfigOutput) LocalSsdCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterNodeConfig) *int { return v.LocalSsdCount }).(pulumi.IntPtrOutput)
+}
+
+// Possible Local SSD encryption modes:
+// Accepted values are:
+// * `STANDARD_ENCRYPTION`: The given node will be encrypted using keys managed by Google infrastructure and the keys wll be deleted when the node is deleted.
+// * `EPHEMERAL_KEY_ENCRYPTION`: The given node will opt-in for using ephemeral key for encrypting Local SSDs. The Local SSDs will not be able to recover data in case of node crash.
+func (o ClusterNodeConfigOutput) LocalSsdEncryptionMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodeConfig) *string { return v.LocalSsdEncryptionMode }).(pulumi.StringPtrOutput)
 }
 
 // Parameter for specifying the type of logging agent used in a node pool. This will override any cluster-wide default value. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
@@ -21406,6 +21580,19 @@ func (o ClusterNodeConfigPtrOutput) LocalSsdCount() pulumi.IntPtrOutput {
 		}
 		return v.LocalSsdCount
 	}).(pulumi.IntPtrOutput)
+}
+
+// Possible Local SSD encryption modes:
+// Accepted values are:
+// * `STANDARD_ENCRYPTION`: The given node will be encrypted using keys managed by Google infrastructure and the keys wll be deleted when the node is deleted.
+// * `EPHEMERAL_KEY_ENCRYPTION`: The given node will opt-in for using ephemeral key for encrypting Local SSDs. The Local SSDs will not be able to recover data in case of node crash.
+func (o ClusterNodeConfigPtrOutput) LocalSsdEncryptionMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNodeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LocalSsdEncryptionMode
+	}).(pulumi.StringPtrOutput)
 }
 
 // Parameter for specifying the type of logging agent used in a node pool. This will override any cluster-wide default value. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
@@ -25988,6 +26175,8 @@ func (o ClusterNodePoolArrayOutput) Index(i pulumi.IntInput) ClusterNodePoolOutp
 }
 
 type ClusterNodePoolAutoConfig struct {
+	// Linux system configuration for the cluster's automatically provisioned node pools. Only `cgroupMode` field is supported in `nodePoolAutoConfig`. Structure is documented below.
+	LinuxNodeConfig *ClusterNodePoolAutoConfigLinuxNodeConfig `pulumi:"linuxNodeConfig"`
 	// The network tag config for the cluster's automatically provisioned node pools. Structure is documented below.
 	NetworkTags *ClusterNodePoolAutoConfigNetworkTags `pulumi:"networkTags"`
 	// Kubelet configuration for Autopilot clusters. Currently, only `insecureKubeletReadonlyPortEnabled` is supported here.
@@ -26009,6 +26198,8 @@ type ClusterNodePoolAutoConfigInput interface {
 }
 
 type ClusterNodePoolAutoConfigArgs struct {
+	// Linux system configuration for the cluster's automatically provisioned node pools. Only `cgroupMode` field is supported in `nodePoolAutoConfig`. Structure is documented below.
+	LinuxNodeConfig ClusterNodePoolAutoConfigLinuxNodeConfigPtrInput `pulumi:"linuxNodeConfig"`
 	// The network tag config for the cluster's automatically provisioned node pools. Structure is documented below.
 	NetworkTags ClusterNodePoolAutoConfigNetworkTagsPtrInput `pulumi:"networkTags"`
 	// Kubelet configuration for Autopilot clusters. Currently, only `insecureKubeletReadonlyPortEnabled` is supported here.
@@ -26095,6 +26286,11 @@ func (o ClusterNodePoolAutoConfigOutput) ToClusterNodePoolAutoConfigPtrOutputWit
 	}).(ClusterNodePoolAutoConfigPtrOutput)
 }
 
+// Linux system configuration for the cluster's automatically provisioned node pools. Only `cgroupMode` field is supported in `nodePoolAutoConfig`. Structure is documented below.
+func (o ClusterNodePoolAutoConfigOutput) LinuxNodeConfig() ClusterNodePoolAutoConfigLinuxNodeConfigPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolAutoConfig) *ClusterNodePoolAutoConfigLinuxNodeConfig { return v.LinuxNodeConfig }).(ClusterNodePoolAutoConfigLinuxNodeConfigPtrOutput)
+}
+
 // The network tag config for the cluster's automatically provisioned node pools. Structure is documented below.
 func (o ClusterNodePoolAutoConfigOutput) NetworkTags() ClusterNodePoolAutoConfigNetworkTagsPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolAutoConfig) *ClusterNodePoolAutoConfigNetworkTags { return v.NetworkTags }).(ClusterNodePoolAutoConfigNetworkTagsPtrOutput)
@@ -26137,6 +26333,16 @@ func (o ClusterNodePoolAutoConfigPtrOutput) Elem() ClusterNodePoolAutoConfigOutp
 	}).(ClusterNodePoolAutoConfigOutput)
 }
 
+// Linux system configuration for the cluster's automatically provisioned node pools. Only `cgroupMode` field is supported in `nodePoolAutoConfig`. Structure is documented below.
+func (o ClusterNodePoolAutoConfigPtrOutput) LinuxNodeConfig() ClusterNodePoolAutoConfigLinuxNodeConfigPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolAutoConfig) *ClusterNodePoolAutoConfigLinuxNodeConfig {
+		if v == nil {
+			return nil
+		}
+		return v.LinuxNodeConfig
+	}).(ClusterNodePoolAutoConfigLinuxNodeConfigPtrOutput)
+}
+
 // The network tag config for the cluster's automatically provisioned node pools. Structure is documented below.
 func (o ClusterNodePoolAutoConfigPtrOutput) NetworkTags() ClusterNodePoolAutoConfigNetworkTagsPtrOutput {
 	return o.ApplyT(func(v *ClusterNodePoolAutoConfig) *ClusterNodePoolAutoConfigNetworkTags {
@@ -26166,6 +26372,159 @@ func (o ClusterNodePoolAutoConfigPtrOutput) ResourceManagerTags() pulumi.StringM
 		}
 		return v.ResourceManagerTags
 	}).(pulumi.StringMapOutput)
+}
+
+type ClusterNodePoolAutoConfigLinuxNodeConfig struct {
+	// Possible cgroup modes that can be used.
+	// Accepted values are:
+	// * `CGROUP_MODE_UNSPECIFIED`: CGROUP_MODE_UNSPECIFIED is when unspecified cgroup configuration is used. The default for the GKE node OS image will be used.
+	// * `CGROUP_MODE_V1`: CGROUP_MODE_V1 specifies to use cgroupv1 for the cgroup configuration on the node image.
+	// * `CGROUP_MODE_V2`: CGROUP_MODE_V2 specifies to use cgroupv2 for the cgroup configuration on the node image.
+	CgroupMode *string `pulumi:"cgroupMode"`
+}
+
+// ClusterNodePoolAutoConfigLinuxNodeConfigInput is an input type that accepts ClusterNodePoolAutoConfigLinuxNodeConfigArgs and ClusterNodePoolAutoConfigLinuxNodeConfigOutput values.
+// You can construct a concrete instance of `ClusterNodePoolAutoConfigLinuxNodeConfigInput` via:
+//
+//	ClusterNodePoolAutoConfigLinuxNodeConfigArgs{...}
+type ClusterNodePoolAutoConfigLinuxNodeConfigInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolAutoConfigLinuxNodeConfigOutput() ClusterNodePoolAutoConfigLinuxNodeConfigOutput
+	ToClusterNodePoolAutoConfigLinuxNodeConfigOutputWithContext(context.Context) ClusterNodePoolAutoConfigLinuxNodeConfigOutput
+}
+
+type ClusterNodePoolAutoConfigLinuxNodeConfigArgs struct {
+	// Possible cgroup modes that can be used.
+	// Accepted values are:
+	// * `CGROUP_MODE_UNSPECIFIED`: CGROUP_MODE_UNSPECIFIED is when unspecified cgroup configuration is used. The default for the GKE node OS image will be used.
+	// * `CGROUP_MODE_V1`: CGROUP_MODE_V1 specifies to use cgroupv1 for the cgroup configuration on the node image.
+	// * `CGROUP_MODE_V2`: CGROUP_MODE_V2 specifies to use cgroupv2 for the cgroup configuration on the node image.
+	CgroupMode pulumi.StringPtrInput `pulumi:"cgroupMode"`
+}
+
+func (ClusterNodePoolAutoConfigLinuxNodeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolAutoConfigLinuxNodeConfig)(nil)).Elem()
+}
+
+func (i ClusterNodePoolAutoConfigLinuxNodeConfigArgs) ToClusterNodePoolAutoConfigLinuxNodeConfigOutput() ClusterNodePoolAutoConfigLinuxNodeConfigOutput {
+	return i.ToClusterNodePoolAutoConfigLinuxNodeConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolAutoConfigLinuxNodeConfigArgs) ToClusterNodePoolAutoConfigLinuxNodeConfigOutputWithContext(ctx context.Context) ClusterNodePoolAutoConfigLinuxNodeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolAutoConfigLinuxNodeConfigOutput)
+}
+
+func (i ClusterNodePoolAutoConfigLinuxNodeConfigArgs) ToClusterNodePoolAutoConfigLinuxNodeConfigPtrOutput() ClusterNodePoolAutoConfigLinuxNodeConfigPtrOutput {
+	return i.ToClusterNodePoolAutoConfigLinuxNodeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterNodePoolAutoConfigLinuxNodeConfigArgs) ToClusterNodePoolAutoConfigLinuxNodeConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolAutoConfigLinuxNodeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolAutoConfigLinuxNodeConfigOutput).ToClusterNodePoolAutoConfigLinuxNodeConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterNodePoolAutoConfigLinuxNodeConfigPtrInput is an input type that accepts ClusterNodePoolAutoConfigLinuxNodeConfigArgs, ClusterNodePoolAutoConfigLinuxNodeConfigPtr and ClusterNodePoolAutoConfigLinuxNodeConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterNodePoolAutoConfigLinuxNodeConfigPtrInput` via:
+//
+//	        ClusterNodePoolAutoConfigLinuxNodeConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterNodePoolAutoConfigLinuxNodeConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterNodePoolAutoConfigLinuxNodeConfigPtrOutput() ClusterNodePoolAutoConfigLinuxNodeConfigPtrOutput
+	ToClusterNodePoolAutoConfigLinuxNodeConfigPtrOutputWithContext(context.Context) ClusterNodePoolAutoConfigLinuxNodeConfigPtrOutput
+}
+
+type clusterNodePoolAutoConfigLinuxNodeConfigPtrType ClusterNodePoolAutoConfigLinuxNodeConfigArgs
+
+func ClusterNodePoolAutoConfigLinuxNodeConfigPtr(v *ClusterNodePoolAutoConfigLinuxNodeConfigArgs) ClusterNodePoolAutoConfigLinuxNodeConfigPtrInput {
+	return (*clusterNodePoolAutoConfigLinuxNodeConfigPtrType)(v)
+}
+
+func (*clusterNodePoolAutoConfigLinuxNodeConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolAutoConfigLinuxNodeConfig)(nil)).Elem()
+}
+
+func (i *clusterNodePoolAutoConfigLinuxNodeConfigPtrType) ToClusterNodePoolAutoConfigLinuxNodeConfigPtrOutput() ClusterNodePoolAutoConfigLinuxNodeConfigPtrOutput {
+	return i.ToClusterNodePoolAutoConfigLinuxNodeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterNodePoolAutoConfigLinuxNodeConfigPtrType) ToClusterNodePoolAutoConfigLinuxNodeConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolAutoConfigLinuxNodeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterNodePoolAutoConfigLinuxNodeConfigPtrOutput)
+}
+
+type ClusterNodePoolAutoConfigLinuxNodeConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolAutoConfigLinuxNodeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterNodePoolAutoConfigLinuxNodeConfig)(nil)).Elem()
+}
+
+func (o ClusterNodePoolAutoConfigLinuxNodeConfigOutput) ToClusterNodePoolAutoConfigLinuxNodeConfigOutput() ClusterNodePoolAutoConfigLinuxNodeConfigOutput {
+	return o
+}
+
+func (o ClusterNodePoolAutoConfigLinuxNodeConfigOutput) ToClusterNodePoolAutoConfigLinuxNodeConfigOutputWithContext(ctx context.Context) ClusterNodePoolAutoConfigLinuxNodeConfigOutput {
+	return o
+}
+
+func (o ClusterNodePoolAutoConfigLinuxNodeConfigOutput) ToClusterNodePoolAutoConfigLinuxNodeConfigPtrOutput() ClusterNodePoolAutoConfigLinuxNodeConfigPtrOutput {
+	return o.ToClusterNodePoolAutoConfigLinuxNodeConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterNodePoolAutoConfigLinuxNodeConfigOutput) ToClusterNodePoolAutoConfigLinuxNodeConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolAutoConfigLinuxNodeConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterNodePoolAutoConfigLinuxNodeConfig) *ClusterNodePoolAutoConfigLinuxNodeConfig {
+		return &v
+	}).(ClusterNodePoolAutoConfigLinuxNodeConfigPtrOutput)
+}
+
+// Possible cgroup modes that can be used.
+// Accepted values are:
+// * `CGROUP_MODE_UNSPECIFIED`: CGROUP_MODE_UNSPECIFIED is when unspecified cgroup configuration is used. The default for the GKE node OS image will be used.
+// * `CGROUP_MODE_V1`: CGROUP_MODE_V1 specifies to use cgroupv1 for the cgroup configuration on the node image.
+// * `CGROUP_MODE_V2`: CGROUP_MODE_V2 specifies to use cgroupv2 for the cgroup configuration on the node image.
+func (o ClusterNodePoolAutoConfigLinuxNodeConfigOutput) CgroupMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolAutoConfigLinuxNodeConfig) *string { return v.CgroupMode }).(pulumi.StringPtrOutput)
+}
+
+type ClusterNodePoolAutoConfigLinuxNodeConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterNodePoolAutoConfigLinuxNodeConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterNodePoolAutoConfigLinuxNodeConfig)(nil)).Elem()
+}
+
+func (o ClusterNodePoolAutoConfigLinuxNodeConfigPtrOutput) ToClusterNodePoolAutoConfigLinuxNodeConfigPtrOutput() ClusterNodePoolAutoConfigLinuxNodeConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolAutoConfigLinuxNodeConfigPtrOutput) ToClusterNodePoolAutoConfigLinuxNodeConfigPtrOutputWithContext(ctx context.Context) ClusterNodePoolAutoConfigLinuxNodeConfigPtrOutput {
+	return o
+}
+
+func (o ClusterNodePoolAutoConfigLinuxNodeConfigPtrOutput) Elem() ClusterNodePoolAutoConfigLinuxNodeConfigOutput {
+	return o.ApplyT(func(v *ClusterNodePoolAutoConfigLinuxNodeConfig) ClusterNodePoolAutoConfigLinuxNodeConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterNodePoolAutoConfigLinuxNodeConfig
+		return ret
+	}).(ClusterNodePoolAutoConfigLinuxNodeConfigOutput)
+}
+
+// Possible cgroup modes that can be used.
+// Accepted values are:
+// * `CGROUP_MODE_UNSPECIFIED`: CGROUP_MODE_UNSPECIFIED is when unspecified cgroup configuration is used. The default for the GKE node OS image will be used.
+// * `CGROUP_MODE_V1`: CGROUP_MODE_V1 specifies to use cgroupv1 for the cgroup configuration on the node image.
+// * `CGROUP_MODE_V2`: CGROUP_MODE_V2 specifies to use cgroupv2 for the cgroup configuration on the node image.
+func (o ClusterNodePoolAutoConfigLinuxNodeConfigPtrOutput) CgroupMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolAutoConfigLinuxNodeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CgroupMode
+	}).(pulumi.StringPtrOutput)
 }
 
 type ClusterNodePoolAutoConfigNetworkTags struct {
@@ -28614,6 +28973,11 @@ type ClusterNodePoolNodeConfig struct {
 	// The amount of local SSD disks that will be
 	// attached to each cluster node. Defaults to 0.
 	LocalSsdCount *int `pulumi:"localSsdCount"`
+	// Possible Local SSD encryption modes:
+	// Accepted values are:
+	// * `STANDARD_ENCRYPTION`: The given node will be encrypted using keys managed by Google infrastructure and the keys wll be deleted when the node is deleted.
+	// * `EPHEMERAL_KEY_ENCRYPTION`: The given node will opt-in for using ephemeral key for encrypting Local SSDs. The Local SSDs will not be able to recover data in case of node crash.
+	LocalSsdEncryptionMode *string `pulumi:"localSsdEncryptionMode"`
 	// Parameter for specifying the type of logging agent used in a node pool. This will override any cluster-wide default value. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
 	LoggingVariant *string `pulumi:"loggingVariant"`
 	// The name of a Google Compute Engine machine type.
@@ -28759,6 +29123,11 @@ type ClusterNodePoolNodeConfigArgs struct {
 	// The amount of local SSD disks that will be
 	// attached to each cluster node. Defaults to 0.
 	LocalSsdCount pulumi.IntPtrInput `pulumi:"localSsdCount"`
+	// Possible Local SSD encryption modes:
+	// Accepted values are:
+	// * `STANDARD_ENCRYPTION`: The given node will be encrypted using keys managed by Google infrastructure and the keys wll be deleted when the node is deleted.
+	// * `EPHEMERAL_KEY_ENCRYPTION`: The given node will opt-in for using ephemeral key for encrypting Local SSDs. The Local SSDs will not be able to recover data in case of node crash.
+	LocalSsdEncryptionMode pulumi.StringPtrInput `pulumi:"localSsdEncryptionMode"`
 	// Parameter for specifying the type of logging agent used in a node pool. This will override any cluster-wide default value. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
 	LoggingVariant pulumi.StringPtrInput `pulumi:"loggingVariant"`
 	// The name of a Google Compute Engine machine type.
@@ -29046,6 +29415,14 @@ func (o ClusterNodePoolNodeConfigOutput) LocalNvmeSsdBlockConfig() ClusterNodePo
 // attached to each cluster node. Defaults to 0.
 func (o ClusterNodePoolNodeConfigOutput) LocalSsdCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *int { return v.LocalSsdCount }).(pulumi.IntPtrOutput)
+}
+
+// Possible Local SSD encryption modes:
+// Accepted values are:
+// * `STANDARD_ENCRYPTION`: The given node will be encrypted using keys managed by Google infrastructure and the keys wll be deleted when the node is deleted.
+// * `EPHEMERAL_KEY_ENCRYPTION`: The given node will opt-in for using ephemeral key for encrypting Local SSDs. The Local SSDs will not be able to recover data in case of node crash.
+func (o ClusterNodePoolNodeConfigOutput) LocalSsdEncryptionMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterNodePoolNodeConfig) *string { return v.LocalSsdEncryptionMode }).(pulumi.StringPtrOutput)
 }
 
 // Parameter for specifying the type of logging agent used in a node pool. This will override any cluster-wide default value. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
@@ -29439,6 +29816,19 @@ func (o ClusterNodePoolNodeConfigPtrOutput) LocalSsdCount() pulumi.IntPtrOutput 
 		}
 		return v.LocalSsdCount
 	}).(pulumi.IntPtrOutput)
+}
+
+// Possible Local SSD encryption modes:
+// Accepted values are:
+// * `STANDARD_ENCRYPTION`: The given node will be encrypted using keys managed by Google infrastructure and the keys wll be deleted when the node is deleted.
+// * `EPHEMERAL_KEY_ENCRYPTION`: The given node will opt-in for using ephemeral key for encrypting Local SSDs. The Local SSDs will not be able to recover data in case of node crash.
+func (o ClusterNodePoolNodeConfigPtrOutput) LocalSsdEncryptionMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterNodePoolNodeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LocalSsdEncryptionMode
+	}).(pulumi.StringPtrOutput)
 }
 
 // Parameter for specifying the type of logging agent used in a node pool. This will override any cluster-wide default value. Valid values include DEFAULT and MAX_THROUGHPUT. See [Increasing logging agent throughput](https://cloud.google.com/stackdriver/docs/solutions/gke/managing-logs#throughput) for more information.
@@ -38965,6 +39355,8 @@ type NodePoolNodeConfig struct {
 	LocalNvmeSsdBlockConfig *NodePoolNodeConfigLocalNvmeSsdBlockConfig `pulumi:"localNvmeSsdBlockConfig"`
 	// The number of local SSD disks to be attached to the node.
 	LocalSsdCount *int `pulumi:"localSsdCount"`
+	// LocalSsdEncryptionMode specified the method used for encrypting the local SSDs attached to the node.
+	LocalSsdEncryptionMode *string `pulumi:"localSsdEncryptionMode"`
 	// Type of logging agent that is used as the default value for node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT.
 	LoggingVariant *string `pulumi:"loggingVariant"`
 	// The name of a Google Compute Engine machine type.
@@ -39064,6 +39456,8 @@ type NodePoolNodeConfigArgs struct {
 	LocalNvmeSsdBlockConfig NodePoolNodeConfigLocalNvmeSsdBlockConfigPtrInput `pulumi:"localNvmeSsdBlockConfig"`
 	// The number of local SSD disks to be attached to the node.
 	LocalSsdCount pulumi.IntPtrInput `pulumi:"localSsdCount"`
+	// LocalSsdEncryptionMode specified the method used for encrypting the local SSDs attached to the node.
+	LocalSsdEncryptionMode pulumi.StringPtrInput `pulumi:"localSsdEncryptionMode"`
 	// Type of logging agent that is used as the default value for node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT.
 	LoggingVariant pulumi.StringPtrInput `pulumi:"loggingVariant"`
 	// The name of a Google Compute Engine machine type.
@@ -39295,6 +39689,11 @@ func (o NodePoolNodeConfigOutput) LocalNvmeSsdBlockConfig() NodePoolNodeConfigLo
 // The number of local SSD disks to be attached to the node.
 func (o NodePoolNodeConfigOutput) LocalSsdCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v NodePoolNodeConfig) *int { return v.LocalSsdCount }).(pulumi.IntPtrOutput)
+}
+
+// LocalSsdEncryptionMode specified the method used for encrypting the local SSDs attached to the node.
+func (o NodePoolNodeConfigOutput) LocalSsdEncryptionMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v NodePoolNodeConfig) *string { return v.LocalSsdEncryptionMode }).(pulumi.StringPtrOutput)
 }
 
 // Type of logging agent that is used as the default value for node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT.
@@ -39632,6 +40031,16 @@ func (o NodePoolNodeConfigPtrOutput) LocalSsdCount() pulumi.IntPtrOutput {
 		}
 		return v.LocalSsdCount
 	}).(pulumi.IntPtrOutput)
+}
+
+// LocalSsdEncryptionMode specified the method used for encrypting the local SSDs attached to the node.
+func (o NodePoolNodeConfigPtrOutput) LocalSsdEncryptionMode() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *NodePoolNodeConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LocalSsdEncryptionMode
+	}).(pulumi.StringPtrOutput)
 }
 
 // Type of logging agent that is used as the default value for node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT.
@@ -48780,6 +49189,112 @@ func (o GetClusterEnableK8sBetaApiArrayOutput) Index(i pulumi.IntInput) GetClust
 	}).(GetClusterEnableK8sBetaApiOutput)
 }
 
+type GetClusterEnterpriseConfig struct {
+	// Indicates the effective cluster tier. Available options include STANDARD and ENTERPRISE.
+	ClusterTier string `pulumi:"clusterTier"`
+	// Indicates the desired cluster tier. Available options include STANDARD and ENTERPRISE.
+	DesiredTier string `pulumi:"desiredTier"`
+}
+
+// GetClusterEnterpriseConfigInput is an input type that accepts GetClusterEnterpriseConfigArgs and GetClusterEnterpriseConfigOutput values.
+// You can construct a concrete instance of `GetClusterEnterpriseConfigInput` via:
+//
+//	GetClusterEnterpriseConfigArgs{...}
+type GetClusterEnterpriseConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterEnterpriseConfigOutput() GetClusterEnterpriseConfigOutput
+	ToGetClusterEnterpriseConfigOutputWithContext(context.Context) GetClusterEnterpriseConfigOutput
+}
+
+type GetClusterEnterpriseConfigArgs struct {
+	// Indicates the effective cluster tier. Available options include STANDARD and ENTERPRISE.
+	ClusterTier pulumi.StringInput `pulumi:"clusterTier"`
+	// Indicates the desired cluster tier. Available options include STANDARD and ENTERPRISE.
+	DesiredTier pulumi.StringInput `pulumi:"desiredTier"`
+}
+
+func (GetClusterEnterpriseConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterEnterpriseConfig)(nil)).Elem()
+}
+
+func (i GetClusterEnterpriseConfigArgs) ToGetClusterEnterpriseConfigOutput() GetClusterEnterpriseConfigOutput {
+	return i.ToGetClusterEnterpriseConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterEnterpriseConfigArgs) ToGetClusterEnterpriseConfigOutputWithContext(ctx context.Context) GetClusterEnterpriseConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterEnterpriseConfigOutput)
+}
+
+// GetClusterEnterpriseConfigArrayInput is an input type that accepts GetClusterEnterpriseConfigArray and GetClusterEnterpriseConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterEnterpriseConfigArrayInput` via:
+//
+//	GetClusterEnterpriseConfigArray{ GetClusterEnterpriseConfigArgs{...} }
+type GetClusterEnterpriseConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterEnterpriseConfigArrayOutput() GetClusterEnterpriseConfigArrayOutput
+	ToGetClusterEnterpriseConfigArrayOutputWithContext(context.Context) GetClusterEnterpriseConfigArrayOutput
+}
+
+type GetClusterEnterpriseConfigArray []GetClusterEnterpriseConfigInput
+
+func (GetClusterEnterpriseConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterEnterpriseConfig)(nil)).Elem()
+}
+
+func (i GetClusterEnterpriseConfigArray) ToGetClusterEnterpriseConfigArrayOutput() GetClusterEnterpriseConfigArrayOutput {
+	return i.ToGetClusterEnterpriseConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterEnterpriseConfigArray) ToGetClusterEnterpriseConfigArrayOutputWithContext(ctx context.Context) GetClusterEnterpriseConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterEnterpriseConfigArrayOutput)
+}
+
+type GetClusterEnterpriseConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterEnterpriseConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterEnterpriseConfig)(nil)).Elem()
+}
+
+func (o GetClusterEnterpriseConfigOutput) ToGetClusterEnterpriseConfigOutput() GetClusterEnterpriseConfigOutput {
+	return o
+}
+
+func (o GetClusterEnterpriseConfigOutput) ToGetClusterEnterpriseConfigOutputWithContext(ctx context.Context) GetClusterEnterpriseConfigOutput {
+	return o
+}
+
+// Indicates the effective cluster tier. Available options include STANDARD and ENTERPRISE.
+func (o GetClusterEnterpriseConfigOutput) ClusterTier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterEnterpriseConfig) string { return v.ClusterTier }).(pulumi.StringOutput)
+}
+
+// Indicates the desired cluster tier. Available options include STANDARD and ENTERPRISE.
+func (o GetClusterEnterpriseConfigOutput) DesiredTier() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterEnterpriseConfig) string { return v.DesiredTier }).(pulumi.StringOutput)
+}
+
+type GetClusterEnterpriseConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterEnterpriseConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterEnterpriseConfig)(nil)).Elem()
+}
+
+func (o GetClusterEnterpriseConfigArrayOutput) ToGetClusterEnterpriseConfigArrayOutput() GetClusterEnterpriseConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterEnterpriseConfigArrayOutput) ToGetClusterEnterpriseConfigArrayOutputWithContext(ctx context.Context) GetClusterEnterpriseConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterEnterpriseConfigArrayOutput) Index(i pulumi.IntInput) GetClusterEnterpriseConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterEnterpriseConfig {
+		return vs[0].([]GetClusterEnterpriseConfig)[vs[1].(int)]
+	}).(GetClusterEnterpriseConfigOutput)
+}
+
 type GetClusterFleet struct {
 	// Full resource name of the registered fleet membership of the cluster.
 	Membership string `pulumi:"membership"`
@@ -51108,6 +51623,8 @@ type GetClusterNodeConfig struct {
 	LocalNvmeSsdBlockConfigs []GetClusterNodeConfigLocalNvmeSsdBlockConfig `pulumi:"localNvmeSsdBlockConfigs"`
 	// The number of local SSD disks to be attached to the node.
 	LocalSsdCount int `pulumi:"localSsdCount"`
+	// LocalSsdEncryptionMode specified the method used for encrypting the local SSDs attached to the node.
+	LocalSsdEncryptionMode string `pulumi:"localSsdEncryptionMode"`
 	// Type of logging agent that is used as the default value for node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT.
 	LoggingVariant string `pulumi:"loggingVariant"`
 	// The name of a Google Compute Engine machine type.
@@ -51204,6 +51721,8 @@ type GetClusterNodeConfigArgs struct {
 	LocalNvmeSsdBlockConfigs GetClusterNodeConfigLocalNvmeSsdBlockConfigArrayInput `pulumi:"localNvmeSsdBlockConfigs"`
 	// The number of local SSD disks to be attached to the node.
 	LocalSsdCount pulumi.IntInput `pulumi:"localSsdCount"`
+	// LocalSsdEncryptionMode specified the method used for encrypting the local SSDs attached to the node.
+	LocalSsdEncryptionMode pulumi.StringInput `pulumi:"localSsdEncryptionMode"`
 	// Type of logging agent that is used as the default value for node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT.
 	LoggingVariant pulumi.StringInput `pulumi:"loggingVariant"`
 	// The name of a Google Compute Engine machine type.
@@ -51410,6 +51929,11 @@ func (o GetClusterNodeConfigOutput) LocalNvmeSsdBlockConfigs() GetClusterNodeCon
 // The number of local SSD disks to be attached to the node.
 func (o GetClusterNodeConfigOutput) LocalSsdCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetClusterNodeConfig) int { return v.LocalSsdCount }).(pulumi.IntOutput)
+}
+
+// LocalSsdEncryptionMode specified the method used for encrypting the local SSDs attached to the node.
+func (o GetClusterNodeConfigOutput) LocalSsdEncryptionMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodeConfig) string { return v.LocalSsdEncryptionMode }).(pulumi.StringOutput)
 }
 
 // Type of logging agent that is used as the default value for node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT.
@@ -54727,6 +55251,8 @@ func (o GetClusterNodePoolArrayOutput) Index(i pulumi.IntInput) GetClusterNodePo
 }
 
 type GetClusterNodePoolAutoConfig struct {
+	// Linux node configuration options.
+	LinuxNodeConfigs []GetClusterNodePoolAutoConfigLinuxNodeConfig `pulumi:"linuxNodeConfigs"`
 	// Collection of Compute Engine network tags that can be applied to a node's underlying VM instance.
 	NetworkTags []GetClusterNodePoolAutoConfigNetworkTag `pulumi:"networkTags"`
 	// Node kubelet configs.
@@ -54747,6 +55273,8 @@ type GetClusterNodePoolAutoConfigInput interface {
 }
 
 type GetClusterNodePoolAutoConfigArgs struct {
+	// Linux node configuration options.
+	LinuxNodeConfigs GetClusterNodePoolAutoConfigLinuxNodeConfigArrayInput `pulumi:"linuxNodeConfigs"`
 	// Collection of Compute Engine network tags that can be applied to a node's underlying VM instance.
 	NetworkTags GetClusterNodePoolAutoConfigNetworkTagArrayInput `pulumi:"networkTags"`
 	// Node kubelet configs.
@@ -54806,6 +55334,13 @@ func (o GetClusterNodePoolAutoConfigOutput) ToGetClusterNodePoolAutoConfigOutput
 	return o
 }
 
+// Linux node configuration options.
+func (o GetClusterNodePoolAutoConfigOutput) LinuxNodeConfigs() GetClusterNodePoolAutoConfigLinuxNodeConfigArrayOutput {
+	return o.ApplyT(func(v GetClusterNodePoolAutoConfig) []GetClusterNodePoolAutoConfigLinuxNodeConfig {
+		return v.LinuxNodeConfigs
+	}).(GetClusterNodePoolAutoConfigLinuxNodeConfigArrayOutput)
+}
+
 // Collection of Compute Engine network tags that can be applied to a node's underlying VM instance.
 func (o GetClusterNodePoolAutoConfigOutput) NetworkTags() GetClusterNodePoolAutoConfigNetworkTagArrayOutput {
 	return o.ApplyT(func(v GetClusterNodePoolAutoConfig) []GetClusterNodePoolAutoConfigNetworkTag { return v.NetworkTags }).(GetClusterNodePoolAutoConfigNetworkTagArrayOutput)
@@ -54841,6 +55376,103 @@ func (o GetClusterNodePoolAutoConfigArrayOutput) Index(i pulumi.IntInput) GetClu
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolAutoConfig {
 		return vs[0].([]GetClusterNodePoolAutoConfig)[vs[1].(int)]
 	}).(GetClusterNodePoolAutoConfigOutput)
+}
+
+type GetClusterNodePoolAutoConfigLinuxNodeConfig struct {
+	// cgroupMode specifies the cgroup mode to be used on the node.
+	CgroupMode string `pulumi:"cgroupMode"`
+}
+
+// GetClusterNodePoolAutoConfigLinuxNodeConfigInput is an input type that accepts GetClusterNodePoolAutoConfigLinuxNodeConfigArgs and GetClusterNodePoolAutoConfigLinuxNodeConfigOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolAutoConfigLinuxNodeConfigInput` via:
+//
+//	GetClusterNodePoolAutoConfigLinuxNodeConfigArgs{...}
+type GetClusterNodePoolAutoConfigLinuxNodeConfigInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolAutoConfigLinuxNodeConfigOutput() GetClusterNodePoolAutoConfigLinuxNodeConfigOutput
+	ToGetClusterNodePoolAutoConfigLinuxNodeConfigOutputWithContext(context.Context) GetClusterNodePoolAutoConfigLinuxNodeConfigOutput
+}
+
+type GetClusterNodePoolAutoConfigLinuxNodeConfigArgs struct {
+	// cgroupMode specifies the cgroup mode to be used on the node.
+	CgroupMode pulumi.StringInput `pulumi:"cgroupMode"`
+}
+
+func (GetClusterNodePoolAutoConfigLinuxNodeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolAutoConfigLinuxNodeConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolAutoConfigLinuxNodeConfigArgs) ToGetClusterNodePoolAutoConfigLinuxNodeConfigOutput() GetClusterNodePoolAutoConfigLinuxNodeConfigOutput {
+	return i.ToGetClusterNodePoolAutoConfigLinuxNodeConfigOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolAutoConfigLinuxNodeConfigArgs) ToGetClusterNodePoolAutoConfigLinuxNodeConfigOutputWithContext(ctx context.Context) GetClusterNodePoolAutoConfigLinuxNodeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolAutoConfigLinuxNodeConfigOutput)
+}
+
+// GetClusterNodePoolAutoConfigLinuxNodeConfigArrayInput is an input type that accepts GetClusterNodePoolAutoConfigLinuxNodeConfigArray and GetClusterNodePoolAutoConfigLinuxNodeConfigArrayOutput values.
+// You can construct a concrete instance of `GetClusterNodePoolAutoConfigLinuxNodeConfigArrayInput` via:
+//
+//	GetClusterNodePoolAutoConfigLinuxNodeConfigArray{ GetClusterNodePoolAutoConfigLinuxNodeConfigArgs{...} }
+type GetClusterNodePoolAutoConfigLinuxNodeConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetClusterNodePoolAutoConfigLinuxNodeConfigArrayOutput() GetClusterNodePoolAutoConfigLinuxNodeConfigArrayOutput
+	ToGetClusterNodePoolAutoConfigLinuxNodeConfigArrayOutputWithContext(context.Context) GetClusterNodePoolAutoConfigLinuxNodeConfigArrayOutput
+}
+
+type GetClusterNodePoolAutoConfigLinuxNodeConfigArray []GetClusterNodePoolAutoConfigLinuxNodeConfigInput
+
+func (GetClusterNodePoolAutoConfigLinuxNodeConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolAutoConfigLinuxNodeConfig)(nil)).Elem()
+}
+
+func (i GetClusterNodePoolAutoConfigLinuxNodeConfigArray) ToGetClusterNodePoolAutoConfigLinuxNodeConfigArrayOutput() GetClusterNodePoolAutoConfigLinuxNodeConfigArrayOutput {
+	return i.ToGetClusterNodePoolAutoConfigLinuxNodeConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetClusterNodePoolAutoConfigLinuxNodeConfigArray) ToGetClusterNodePoolAutoConfigLinuxNodeConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolAutoConfigLinuxNodeConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetClusterNodePoolAutoConfigLinuxNodeConfigArrayOutput)
+}
+
+type GetClusterNodePoolAutoConfigLinuxNodeConfigOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolAutoConfigLinuxNodeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetClusterNodePoolAutoConfigLinuxNodeConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolAutoConfigLinuxNodeConfigOutput) ToGetClusterNodePoolAutoConfigLinuxNodeConfigOutput() GetClusterNodePoolAutoConfigLinuxNodeConfigOutput {
+	return o
+}
+
+func (o GetClusterNodePoolAutoConfigLinuxNodeConfigOutput) ToGetClusterNodePoolAutoConfigLinuxNodeConfigOutputWithContext(ctx context.Context) GetClusterNodePoolAutoConfigLinuxNodeConfigOutput {
+	return o
+}
+
+// cgroupMode specifies the cgroup mode to be used on the node.
+func (o GetClusterNodePoolAutoConfigLinuxNodeConfigOutput) CgroupMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolAutoConfigLinuxNodeConfig) string { return v.CgroupMode }).(pulumi.StringOutput)
+}
+
+type GetClusterNodePoolAutoConfigLinuxNodeConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetClusterNodePoolAutoConfigLinuxNodeConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetClusterNodePoolAutoConfigLinuxNodeConfig)(nil)).Elem()
+}
+
+func (o GetClusterNodePoolAutoConfigLinuxNodeConfigArrayOutput) ToGetClusterNodePoolAutoConfigLinuxNodeConfigArrayOutput() GetClusterNodePoolAutoConfigLinuxNodeConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolAutoConfigLinuxNodeConfigArrayOutput) ToGetClusterNodePoolAutoConfigLinuxNodeConfigArrayOutputWithContext(ctx context.Context) GetClusterNodePoolAutoConfigLinuxNodeConfigArrayOutput {
+	return o
+}
+
+func (o GetClusterNodePoolAutoConfigLinuxNodeConfigArrayOutput) Index(i pulumi.IntInput) GetClusterNodePoolAutoConfigLinuxNodeConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetClusterNodePoolAutoConfigLinuxNodeConfig {
+		return vs[0].([]GetClusterNodePoolAutoConfigLinuxNodeConfig)[vs[1].(int)]
+	}).(GetClusterNodePoolAutoConfigLinuxNodeConfigOutput)
 }
 
 type GetClusterNodePoolAutoConfigNetworkTag struct {
@@ -56645,6 +57277,8 @@ type GetClusterNodePoolNodeConfig struct {
 	LocalNvmeSsdBlockConfigs []GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfig `pulumi:"localNvmeSsdBlockConfigs"`
 	// The number of local SSD disks to be attached to the node.
 	LocalSsdCount int `pulumi:"localSsdCount"`
+	// LocalSsdEncryptionMode specified the method used for encrypting the local SSDs attached to the node.
+	LocalSsdEncryptionMode string `pulumi:"localSsdEncryptionMode"`
 	// Type of logging agent that is used as the default value for node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT.
 	LoggingVariant string `pulumi:"loggingVariant"`
 	// The name of a Google Compute Engine machine type.
@@ -56741,6 +57375,8 @@ type GetClusterNodePoolNodeConfigArgs struct {
 	LocalNvmeSsdBlockConfigs GetClusterNodePoolNodeConfigLocalNvmeSsdBlockConfigArrayInput `pulumi:"localNvmeSsdBlockConfigs"`
 	// The number of local SSD disks to be attached to the node.
 	LocalSsdCount pulumi.IntInput `pulumi:"localSsdCount"`
+	// LocalSsdEncryptionMode specified the method used for encrypting the local SSDs attached to the node.
+	LocalSsdEncryptionMode pulumi.StringInput `pulumi:"localSsdEncryptionMode"`
 	// Type of logging agent that is used as the default value for node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT.
 	LoggingVariant pulumi.StringInput `pulumi:"loggingVariant"`
 	// The name of a Google Compute Engine machine type.
@@ -56959,6 +57595,11 @@ func (o GetClusterNodePoolNodeConfigOutput) LocalNvmeSsdBlockConfigs() GetCluste
 // The number of local SSD disks to be attached to the node.
 func (o GetClusterNodePoolNodeConfigOutput) LocalSsdCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) int { return v.LocalSsdCount }).(pulumi.IntOutput)
+}
+
+// LocalSsdEncryptionMode specified the method used for encrypting the local SSDs attached to the node.
+func (o GetClusterNodePoolNodeConfigOutput) LocalSsdEncryptionMode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetClusterNodePoolNodeConfig) string { return v.LocalSsdEncryptionMode }).(pulumi.StringOutput)
 }
 
 // Type of logging agent that is used as the default value for node pools in the cluster. Valid values include DEFAULT and MAX_THROUGHPUT.
@@ -62902,6 +63543,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterDnsConfigPtrInput)(nil)).Elem(), ClusterDnsConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterEnableK8sBetaApisInput)(nil)).Elem(), ClusterEnableK8sBetaApisArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterEnableK8sBetaApisPtrInput)(nil)).Elem(), ClusterEnableK8sBetaApisArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterEnterpriseConfigInput)(nil)).Elem(), ClusterEnterpriseConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterEnterpriseConfigPtrInput)(nil)).Elem(), ClusterEnterpriseConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterFleetInput)(nil)).Elem(), ClusterFleetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterFleetPtrInput)(nil)).Elem(), ClusterFleetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterGatewayApiConfigInput)(nil)).Elem(), ClusterGatewayApiConfigArgs{})
@@ -63005,6 +63648,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolArrayInput)(nil)).Elem(), ClusterNodePoolArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolAutoConfigInput)(nil)).Elem(), ClusterNodePoolAutoConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolAutoConfigPtrInput)(nil)).Elem(), ClusterNodePoolAutoConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolAutoConfigLinuxNodeConfigInput)(nil)).Elem(), ClusterNodePoolAutoConfigLinuxNodeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolAutoConfigLinuxNodeConfigPtrInput)(nil)).Elem(), ClusterNodePoolAutoConfigLinuxNodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolAutoConfigNetworkTagsInput)(nil)).Elem(), ClusterNodePoolAutoConfigNetworkTagsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolAutoConfigNetworkTagsPtrInput)(nil)).Elem(), ClusterNodePoolAutoConfigNetworkTagsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterNodePoolAutoConfigNodeKubeletConfigInput)(nil)).Elem(), ClusterNodePoolAutoConfigNodeKubeletConfigArgs{})
@@ -63298,6 +63943,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterDnsConfigArrayInput)(nil)).Elem(), GetClusterDnsConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterEnableK8sBetaApiInput)(nil)).Elem(), GetClusterEnableK8sBetaApiArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterEnableK8sBetaApiArrayInput)(nil)).Elem(), GetClusterEnableK8sBetaApiArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterEnterpriseConfigInput)(nil)).Elem(), GetClusterEnterpriseConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterEnterpriseConfigArrayInput)(nil)).Elem(), GetClusterEnterpriseConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterFleetInput)(nil)).Elem(), GetClusterFleetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterFleetArrayInput)(nil)).Elem(), GetClusterFleetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterGatewayApiConfigInput)(nil)).Elem(), GetClusterGatewayApiConfigArgs{})
@@ -63402,6 +64049,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolArrayInput)(nil)).Elem(), GetClusterNodePoolArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolAutoConfigInput)(nil)).Elem(), GetClusterNodePoolAutoConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolAutoConfigArrayInput)(nil)).Elem(), GetClusterNodePoolAutoConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolAutoConfigLinuxNodeConfigInput)(nil)).Elem(), GetClusterNodePoolAutoConfigLinuxNodeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolAutoConfigLinuxNodeConfigArrayInput)(nil)).Elem(), GetClusterNodePoolAutoConfigLinuxNodeConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolAutoConfigNetworkTagInput)(nil)).Elem(), GetClusterNodePoolAutoConfigNetworkTagArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolAutoConfigNetworkTagArrayInput)(nil)).Elem(), GetClusterNodePoolAutoConfigNetworkTagArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetClusterNodePoolAutoConfigNodeKubeletConfigInput)(nil)).Elem(), GetClusterNodePoolAutoConfigNodeKubeletConfigArgs{})
@@ -63754,6 +64403,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterDnsConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterEnableK8sBetaApisOutput{})
 	pulumi.RegisterOutputType(ClusterEnableK8sBetaApisPtrOutput{})
+	pulumi.RegisterOutputType(ClusterEnterpriseConfigOutput{})
+	pulumi.RegisterOutputType(ClusterEnterpriseConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterFleetOutput{})
 	pulumi.RegisterOutputType(ClusterFleetPtrOutput{})
 	pulumi.RegisterOutputType(ClusterGatewayApiConfigOutput{})
@@ -63857,6 +64508,8 @@ func init() {
 	pulumi.RegisterOutputType(ClusterNodePoolArrayOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolAutoConfigOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolAutoConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolAutoConfigLinuxNodeConfigOutput{})
+	pulumi.RegisterOutputType(ClusterNodePoolAutoConfigLinuxNodeConfigPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolAutoConfigNetworkTagsOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolAutoConfigNetworkTagsPtrOutput{})
 	pulumi.RegisterOutputType(ClusterNodePoolAutoConfigNodeKubeletConfigOutput{})
@@ -64150,6 +64803,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterDnsConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterEnableK8sBetaApiOutput{})
 	pulumi.RegisterOutputType(GetClusterEnableK8sBetaApiArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterEnterpriseConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterEnterpriseConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterFleetOutput{})
 	pulumi.RegisterOutputType(GetClusterFleetArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterGatewayApiConfigOutput{})
@@ -64254,6 +64909,8 @@ func init() {
 	pulumi.RegisterOutputType(GetClusterNodePoolArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolAutoConfigOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolAutoConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolAutoConfigLinuxNodeConfigOutput{})
+	pulumi.RegisterOutputType(GetClusterNodePoolAutoConfigLinuxNodeConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolAutoConfigNetworkTagOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolAutoConfigNetworkTagArrayOutput{})
 	pulumi.RegisterOutputType(GetClusterNodePoolAutoConfigNodeKubeletConfigOutput{})

@@ -24,6 +24,7 @@ class TargetArgs:
                  location: pulumi.Input[str],
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  anthos_cluster: Optional[pulumi.Input['TargetAnthosClusterArgs']] = None,
+                 associated_entities: Optional[pulumi.Input[Sequence[pulumi.Input['TargetAssociatedEntityArgs']]]] = None,
                  custom_target: Optional[pulumi.Input['TargetCustomTargetArgs']] = None,
                  deploy_parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -43,6 +44,7 @@ class TargetArgs:
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input['TargetAnthosClusterArgs'] anthos_cluster: Information specifying an Anthos Cluster.
+        :param pulumi.Input[Sequence[pulumi.Input['TargetAssociatedEntityArgs']]] associated_entities: Optional. Map of entity IDs to their associated entities. Associated entities allows specifying places other than the deployment target for specific features. For example, the Gateway API canary can be configured to deploy the HTTPRoute to a different cluster(s) than the deployment cluster using associated entities. An entity ID must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
         :param pulumi.Input['TargetCustomTargetArgs'] custom_target: Optional. Information specifying a Custom Target.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] deploy_parameters: Optional. The deploy parameters to use for this target.
         :param pulumi.Input[str] description: Optional. Description of the `Target`. Max length is 255 characters.
@@ -67,6 +69,8 @@ class TargetArgs:
             pulumi.set(__self__, "annotations", annotations)
         if anthos_cluster is not None:
             pulumi.set(__self__, "anthos_cluster", anthos_cluster)
+        if associated_entities is not None:
+            pulumi.set(__self__, "associated_entities", associated_entities)
         if custom_target is not None:
             pulumi.set(__self__, "custom_target", custom_target)
         if deploy_parameters is not None:
@@ -128,6 +132,18 @@ class TargetArgs:
     @anthos_cluster.setter
     def anthos_cluster(self, value: Optional[pulumi.Input['TargetAnthosClusterArgs']]):
         pulumi.set(self, "anthos_cluster", value)
+
+    @property
+    @pulumi.getter(name="associatedEntities")
+    def associated_entities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TargetAssociatedEntityArgs']]]]:
+        """
+        Optional. Map of entity IDs to their associated entities. Associated entities allows specifying places other than the deployment target for specific features. For example, the Gateway API canary can be configured to deploy the HTTPRoute to a different cluster(s) than the deployment cluster using associated entities. An entity ID must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
+        """
+        return pulumi.get(self, "associated_entities")
+
+    @associated_entities.setter
+    def associated_entities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TargetAssociatedEntityArgs']]]]):
+        pulumi.set(self, "associated_entities", value)
 
     @property
     @pulumi.getter(name="customTarget")
@@ -274,6 +290,7 @@ class _TargetState:
     def __init__(__self__, *,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  anthos_cluster: Optional[pulumi.Input['TargetAnthosClusterArgs']] = None,
+                 associated_entities: Optional[pulumi.Input[Sequence[pulumi.Input['TargetAssociatedEntityArgs']]]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  custom_target: Optional[pulumi.Input['TargetCustomTargetArgs']] = None,
                  deploy_parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -301,6 +318,7 @@ class _TargetState:
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input['TargetAnthosClusterArgs'] anthos_cluster: Information specifying an Anthos Cluster.
+        :param pulumi.Input[Sequence[pulumi.Input['TargetAssociatedEntityArgs']]] associated_entities: Optional. Map of entity IDs to their associated entities. Associated entities allows specifying places other than the deployment target for specific features. For example, the Gateway API canary can be configured to deploy the HTTPRoute to a different cluster(s) than the deployment cluster using associated entities. An entity ID must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
         :param pulumi.Input[str] create_time: Output only. Time at which the `Target` was created.
         :param pulumi.Input['TargetCustomTargetArgs'] custom_target: Optional. Information specifying a Custom Target.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] deploy_parameters: Optional. The deploy parameters to use for this target.
@@ -332,6 +350,8 @@ class _TargetState:
             pulumi.set(__self__, "annotations", annotations)
         if anthos_cluster is not None:
             pulumi.set(__self__, "anthos_cluster", anthos_cluster)
+        if associated_entities is not None:
+            pulumi.set(__self__, "associated_entities", associated_entities)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
         if custom_target is not None:
@@ -399,6 +419,18 @@ class _TargetState:
     @anthos_cluster.setter
     def anthos_cluster(self, value: Optional[pulumi.Input['TargetAnthosClusterArgs']]):
         pulumi.set(self, "anthos_cluster", value)
+
+    @property
+    @pulumi.getter(name="associatedEntities")
+    def associated_entities(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['TargetAssociatedEntityArgs']]]]:
+        """
+        Optional. Map of entity IDs to their associated entities. Associated entities allows specifying places other than the deployment target for specific features. For example, the Gateway API canary can be configured to deploy the HTTPRoute to a different cluster(s) than the deployment cluster using associated entities. An entity ID must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
+        """
+        return pulumi.get(self, "associated_entities")
+
+    @associated_entities.setter
+    def associated_entities(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['TargetAssociatedEntityArgs']]]]):
+        pulumi.set(self, "associated_entities", value)
 
     @property
     @pulumi.getter(name="createTime")
@@ -652,6 +684,7 @@ class Target(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  anthos_cluster: Optional[pulumi.Input[Union['TargetAnthosClusterArgs', 'TargetAnthosClusterArgsDict']]] = None,
+                 associated_entities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TargetAssociatedEntityArgs', 'TargetAssociatedEntityArgsDict']]]]] = None,
                  custom_target: Optional[pulumi.Input[Union['TargetCustomTargetArgs', 'TargetCustomTargetArgsDict']]] = None,
                  deploy_parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -796,6 +829,7 @@ class Target(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[Union['TargetAnthosClusterArgs', 'TargetAnthosClusterArgsDict']] anthos_cluster: Information specifying an Anthos Cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TargetAssociatedEntityArgs', 'TargetAssociatedEntityArgsDict']]]] associated_entities: Optional. Map of entity IDs to their associated entities. Associated entities allows specifying places other than the deployment target for specific features. For example, the Gateway API canary can be configured to deploy the HTTPRoute to a different cluster(s) than the deployment cluster using associated entities. An entity ID must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
         :param pulumi.Input[Union['TargetCustomTargetArgs', 'TargetCustomTargetArgsDict']] custom_target: Optional. Information specifying a Custom Target.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] deploy_parameters: Optional. The deploy parameters to use for this target.
         :param pulumi.Input[str] description: Optional. Description of the `Target`. Max length is 255 characters.
@@ -963,6 +997,7 @@ class Target(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  anthos_cluster: Optional[pulumi.Input[Union['TargetAnthosClusterArgs', 'TargetAnthosClusterArgsDict']]] = None,
+                 associated_entities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TargetAssociatedEntityArgs', 'TargetAssociatedEntityArgsDict']]]]] = None,
                  custom_target: Optional[pulumi.Input[Union['TargetCustomTargetArgs', 'TargetCustomTargetArgsDict']]] = None,
                  deploy_parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  description: Optional[pulumi.Input[str]] = None,
@@ -986,6 +1021,7 @@ class Target(pulumi.CustomResource):
 
             __props__.__dict__["annotations"] = annotations
             __props__.__dict__["anthos_cluster"] = anthos_cluster
+            __props__.__dict__["associated_entities"] = associated_entities
             __props__.__dict__["custom_target"] = custom_target
             __props__.__dict__["deploy_parameters"] = deploy_parameters
             __props__.__dict__["description"] = description
@@ -1022,6 +1058,7 @@ class Target(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             anthos_cluster: Optional[pulumi.Input[Union['TargetAnthosClusterArgs', 'TargetAnthosClusterArgsDict']]] = None,
+            associated_entities: Optional[pulumi.Input[Sequence[pulumi.Input[Union['TargetAssociatedEntityArgs', 'TargetAssociatedEntityArgsDict']]]]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             custom_target: Optional[pulumi.Input[Union['TargetCustomTargetArgs', 'TargetCustomTargetArgsDict']]] = None,
             deploy_parameters: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1054,6 +1091,7 @@ class Target(pulumi.CustomResource):
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         :param pulumi.Input[Union['TargetAnthosClusterArgs', 'TargetAnthosClusterArgsDict']] anthos_cluster: Information specifying an Anthos Cluster.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['TargetAssociatedEntityArgs', 'TargetAssociatedEntityArgsDict']]]] associated_entities: Optional. Map of entity IDs to their associated entities. Associated entities allows specifying places other than the deployment target for specific features. For example, the Gateway API canary can be configured to deploy the HTTPRoute to a different cluster(s) than the deployment cluster using associated entities. An entity ID must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
         :param pulumi.Input[str] create_time: Output only. Time at which the `Target` was created.
         :param pulumi.Input[Union['TargetCustomTargetArgs', 'TargetCustomTargetArgsDict']] custom_target: Optional. Information specifying a Custom Target.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] deploy_parameters: Optional. The deploy parameters to use for this target.
@@ -1087,6 +1125,7 @@ class Target(pulumi.CustomResource):
 
         __props__.__dict__["annotations"] = annotations
         __props__.__dict__["anthos_cluster"] = anthos_cluster
+        __props__.__dict__["associated_entities"] = associated_entities
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["custom_target"] = custom_target
         __props__.__dict__["deploy_parameters"] = deploy_parameters
@@ -1127,6 +1166,14 @@ class Target(pulumi.CustomResource):
         Information specifying an Anthos Cluster.
         """
         return pulumi.get(self, "anthos_cluster")
+
+    @property
+    @pulumi.getter(name="associatedEntities")
+    def associated_entities(self) -> pulumi.Output[Optional[Sequence['outputs.TargetAssociatedEntity']]]:
+        """
+        Optional. Map of entity IDs to their associated entities. Associated entities allows specifying places other than the deployment target for specific features. For example, the Gateway API canary can be configured to deploy the HTTPRoute to a different cluster(s) than the deployment cluster using associated entities. An entity ID must consist of lower-case letters, numbers, and hyphens, start with a letter and end with a letter or a number, and have a max length of 63 characters. In other words, it must match the following regex: `^a-z?$`.
+        """
+        return pulumi.get(self, "associated_entities")
 
     @property
     @pulumi.getter(name="createTime")

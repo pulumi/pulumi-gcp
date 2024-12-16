@@ -462,10 +462,12 @@ namespace Pulumi.Gcp.Compute
         public Output<string> SourceSnapshotId { get; private set; } = null!;
 
         /// <summary>
-        /// The URL of the storage pool in which the new disk is created.
+        /// The URL or the name of the storage pool in which the new disk is created.
         /// For example:
         /// * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
         /// * /projects/{project}/zones/{zone}/storagePools/{storagePool}
+        /// * /zones/{zone}/storagePools/{storagePool}
+        /// * /{storagePool}
         /// </summary>
         [Output("storagePool")]
         public Output<string?> StoragePool { get; private set; } = null!;
@@ -780,10 +782,12 @@ namespace Pulumi.Gcp.Compute
         public Input<Inputs.DiskSourceSnapshotEncryptionKeyArgs>? SourceSnapshotEncryptionKey { get; set; }
 
         /// <summary>
-        /// The URL of the storage pool in which the new disk is created.
+        /// The URL or the name of the storage pool in which the new disk is created.
         /// For example:
         /// * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
         /// * /projects/{project}/zones/{zone}/storagePools/{storagePool}
+        /// * /zones/{zone}/storagePools/{storagePool}
+        /// * /{storagePool}
         /// </summary>
         [Input("storagePool")]
         public Input<string>? StoragePool { get; set; }
@@ -1147,10 +1151,12 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? SourceSnapshotId { get; set; }
 
         /// <summary>
-        /// The URL of the storage pool in which the new disk is created.
+        /// The URL or the name of the storage pool in which the new disk is created.
         /// For example:
         /// * https://www.googleapis.com/compute/v1/projects/{project}/zones/{zone}/storagePools/{storagePool}
         /// * /projects/{project}/zones/{zone}/storagePools/{storagePool}
+        /// * /zones/{zone}/storagePools/{storagePool}
+        /// * /{storagePool}
         /// </summary>
         [Input("storagePool")]
         public Input<string>? StoragePool { get; set; }

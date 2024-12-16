@@ -181,7 +181,7 @@ type Volume struct {
 	// Use NTFS to use NTFS ACLs for file permissions. Can only be set for volumes which use SMB together with NFS as protocol.
 	// Possible values are: `NTFS`, `UNIX`.
 	SecurityStyle pulumi.StringOutput `pulumi:"securityStyle"`
-	// Service level of the volume. Inherited from storage pool. Supported values are : PREMIUM, EXTERME, STANDARD, FLEX.
+	// Service level of the volume. Inherited from storage pool. Supported values are : PREMIUM, EXTREME, STANDARD, FLEX.
 	ServiceLevel pulumi.StringOutput `pulumi:"serviceLevel"`
 	// Share name (SMB) or export path (NFS) of the volume. Needs to be unique per location.
 	ShareName pulumi.StringOutput `pulumi:"shareName"`
@@ -198,7 +198,7 @@ type Volume struct {
 	State pulumi.StringOutput `pulumi:"state"`
 	// State details of the volume.
 	StateDetails pulumi.StringOutput `pulumi:"stateDetails"`
-	// Name of the storage pool to create the volume in. Pool needs enough spare capacity to accomodate the volume.
+	// Name of the storage pool to create the volume in. Pool needs enough spare capacity to accommodate the volume.
 	StoragePool pulumi.StringOutput `pulumi:"storagePool"`
 	// Tiering policy for the volume.
 	// Structure is documented below.
@@ -338,7 +338,7 @@ type volumeState struct {
 	// Use NTFS to use NTFS ACLs for file permissions. Can only be set for volumes which use SMB together with NFS as protocol.
 	// Possible values are: `NTFS`, `UNIX`.
 	SecurityStyle *string `pulumi:"securityStyle"`
-	// Service level of the volume. Inherited from storage pool. Supported values are : PREMIUM, EXTERME, STANDARD, FLEX.
+	// Service level of the volume. Inherited from storage pool. Supported values are : PREMIUM, EXTREME, STANDARD, FLEX.
 	ServiceLevel *string `pulumi:"serviceLevel"`
 	// Share name (SMB) or export path (NFS) of the volume. Needs to be unique per location.
 	ShareName *string `pulumi:"shareName"`
@@ -355,7 +355,7 @@ type volumeState struct {
 	State *string `pulumi:"state"`
 	// State details of the volume.
 	StateDetails *string `pulumi:"stateDetails"`
-	// Name of the storage pool to create the volume in. Pool needs enough spare capacity to accomodate the volume.
+	// Name of the storage pool to create the volume in. Pool needs enough spare capacity to accommodate the volume.
 	StoragePool *string `pulumi:"storagePool"`
 	// Tiering policy for the volume.
 	// Structure is documented below.
@@ -446,7 +446,7 @@ type VolumeState struct {
 	// Use NTFS to use NTFS ACLs for file permissions. Can only be set for volumes which use SMB together with NFS as protocol.
 	// Possible values are: `NTFS`, `UNIX`.
 	SecurityStyle pulumi.StringPtrInput
-	// Service level of the volume. Inherited from storage pool. Supported values are : PREMIUM, EXTERME, STANDARD, FLEX.
+	// Service level of the volume. Inherited from storage pool. Supported values are : PREMIUM, EXTREME, STANDARD, FLEX.
 	ServiceLevel pulumi.StringPtrInput
 	// Share name (SMB) or export path (NFS) of the volume. Needs to be unique per location.
 	ShareName pulumi.StringPtrInput
@@ -463,7 +463,7 @@ type VolumeState struct {
 	State pulumi.StringPtrInput
 	// State details of the volume.
 	StateDetails pulumi.StringPtrInput
-	// Name of the storage pool to create the volume in. Pool needs enough spare capacity to accomodate the volume.
+	// Name of the storage pool to create the volume in. Pool needs enough spare capacity to accommodate the volume.
 	StoragePool pulumi.StringPtrInput
 	// Tiering policy for the volume.
 	// Structure is documented below.
@@ -541,7 +541,7 @@ type volumeArgs struct {
 	// To disable automatic snapshot creation you have to remove the whole snapshotPolicy block.
 	// Structure is documented below.
 	SnapshotPolicy *VolumeSnapshotPolicy `pulumi:"snapshotPolicy"`
-	// Name of the storage pool to create the volume in. Pool needs enough spare capacity to accomodate the volume.
+	// Name of the storage pool to create the volume in. Pool needs enough spare capacity to accommodate the volume.
 	StoragePool string `pulumi:"storagePool"`
 	// Tiering policy for the volume.
 	// Structure is documented below.
@@ -612,7 +612,7 @@ type VolumeArgs struct {
 	// To disable automatic snapshot creation you have to remove the whole snapshotPolicy block.
 	// Structure is documented below.
 	SnapshotPolicy VolumeSnapshotPolicyPtrInput
-	// Name of the storage pool to create the volume in. Pool needs enough spare capacity to accomodate the volume.
+	// Name of the storage pool to create the volume in. Pool needs enough spare capacity to accommodate the volume.
 	StoragePool pulumi.StringInput
 	// Tiering policy for the volume.
 	// Structure is documented below.
@@ -872,7 +872,7 @@ func (o VolumeOutput) SecurityStyle() pulumi.StringOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.SecurityStyle }).(pulumi.StringOutput)
 }
 
-// Service level of the volume. Inherited from storage pool. Supported values are : PREMIUM, EXTERME, STANDARD, FLEX.
+// Service level of the volume. Inherited from storage pool. Supported values are : PREMIUM, EXTREME, STANDARD, FLEX.
 func (o VolumeOutput) ServiceLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.ServiceLevel }).(pulumi.StringOutput)
 }
@@ -910,7 +910,7 @@ func (o VolumeOutput) StateDetails() pulumi.StringOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.StateDetails }).(pulumi.StringOutput)
 }
 
-// Name of the storage pool to create the volume in. Pool needs enough spare capacity to accomodate the volume.
+// Name of the storage pool to create the volume in. Pool needs enough spare capacity to accommodate the volume.
 func (o VolumeOutput) StoragePool() pulumi.StringOutput {
 	return o.ApplyT(func(v *Volume) pulumi.StringOutput { return v.StoragePool }).(pulumi.StringOutput)
 }

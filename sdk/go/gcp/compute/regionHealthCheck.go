@@ -508,6 +508,8 @@ type RegionHealthCheck struct {
 	// A nested object resource.
 	// Structure is documented below.
 	GrpcHealthCheck RegionHealthCheckGrpcHealthCheckPtrOutput `pulumi:"grpcHealthCheck"`
+	// The unique identifier number for the resource. This identifier is defined by the server.
+	HealthCheckId pulumi.IntOutput `pulumi:"healthCheckId"`
 	// A so-far unhealthy instance will be marked healthy after this many
 	// consecutive successes. The default value is 2.
 	HealthyThreshold pulumi.IntPtrOutput `pulumi:"healthyThreshold"`
@@ -599,6 +601,8 @@ type regionHealthCheckState struct {
 	// A nested object resource.
 	// Structure is documented below.
 	GrpcHealthCheck *RegionHealthCheckGrpcHealthCheck `pulumi:"grpcHealthCheck"`
+	// The unique identifier number for the resource. This identifier is defined by the server.
+	HealthCheckId *int `pulumi:"healthCheckId"`
 	// A so-far unhealthy instance will be marked healthy after this many
 	// consecutive successes. The default value is 2.
 	HealthyThreshold *int `pulumi:"healthyThreshold"`
@@ -661,6 +665,8 @@ type RegionHealthCheckState struct {
 	// A nested object resource.
 	// Structure is documented below.
 	GrpcHealthCheck RegionHealthCheckGrpcHealthCheckPtrInput
+	// The unique identifier number for the resource. This identifier is defined by the server.
+	HealthCheckId pulumi.IntPtrInput
 	// A so-far unhealthy instance will be marked healthy after this many
 	// consecutive successes. The default value is 2.
 	HealthyThreshold pulumi.IntPtrInput
@@ -936,6 +942,11 @@ func (o RegionHealthCheckOutput) Description() pulumi.StringPtrOutput {
 // Structure is documented below.
 func (o RegionHealthCheckOutput) GrpcHealthCheck() RegionHealthCheckGrpcHealthCheckPtrOutput {
 	return o.ApplyT(func(v *RegionHealthCheck) RegionHealthCheckGrpcHealthCheckPtrOutput { return v.GrpcHealthCheck }).(RegionHealthCheckGrpcHealthCheckPtrOutput)
+}
+
+// The unique identifier number for the resource. This identifier is defined by the server.
+func (o RegionHealthCheckOutput) HealthCheckId() pulumi.IntOutput {
+	return o.ApplyT(func(v *RegionHealthCheck) pulumi.IntOutput { return v.HealthCheckId }).(pulumi.IntOutput)
 }
 
 // A so-far unhealthy instance will be marked healthy after this many

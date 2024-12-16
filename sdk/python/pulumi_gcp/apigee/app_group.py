@@ -37,7 +37,7 @@ class AppGroupArgs:
                - - -
         :param pulumi.Input[Sequence[pulumi.Input['AppGroupAttributeArgs']]] attributes: A list of attributes
                Structure is documented below.
-        :param pulumi.Input[str] channel_id: Channel identifier identifies the owner maintaing this grouping.
+        :param pulumi.Input[str] channel_id: Channel identifier identifies the owner maintaining this grouping.
         :param pulumi.Input[str] channel_uri: A reference to the associated storefront/marketplace.
         :param pulumi.Input[str] display_name: App group name displayed in the UI
         :param pulumi.Input[str] name: Name of the AppGroup. Characters you can use in the name are restricted to: A-Z0-9._-$ %.
@@ -91,7 +91,7 @@ class AppGroupArgs:
     @pulumi.getter(name="channelId")
     def channel_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Channel identifier identifies the owner maintaing this grouping.
+        Channel identifier identifies the owner maintaining this grouping.
         """
         return pulumi.get(self, "channel_id")
 
@@ -168,7 +168,7 @@ class _AppGroupState:
         :param pulumi.Input[str] app_group_id: Internal identifier that cannot be edited
         :param pulumi.Input[Sequence[pulumi.Input['AppGroupAttributeArgs']]] attributes: A list of attributes
                Structure is documented below.
-        :param pulumi.Input[str] channel_id: Channel identifier identifies the owner maintaing this grouping.
+        :param pulumi.Input[str] channel_id: Channel identifier identifies the owner maintaining this grouping.
         :param pulumi.Input[str] channel_uri: A reference to the associated storefront/marketplace.
         :param pulumi.Input[str] created_at: Created time as milliseconds since epoch.
         :param pulumi.Input[str] display_name: App group name displayed in the UI
@@ -235,7 +235,7 @@ class _AppGroupState:
     @pulumi.getter(name="channelId")
     def channel_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Channel identifier identifies the owner maintaing this grouping.
+        Channel identifier identifies the owner maintaining this grouping.
         """
         return pulumi.get(self, "channel_id")
 
@@ -476,7 +476,7 @@ class AppGroup(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Sequence[pulumi.Input[Union['AppGroupAttributeArgs', 'AppGroupAttributeArgsDict']]]] attributes: A list of attributes
                Structure is documented below.
-        :param pulumi.Input[str] channel_id: Channel identifier identifies the owner maintaing this grouping.
+        :param pulumi.Input[str] channel_id: Channel identifier identifies the owner maintaining this grouping.
         :param pulumi.Input[str] channel_uri: A reference to the associated storefront/marketplace.
         :param pulumi.Input[str] display_name: App group name displayed in the UI
         :param pulumi.Input[str] name: Name of the AppGroup. Characters you can use in the name are restricted to: A-Z0-9._-$ %.
@@ -683,7 +683,7 @@ class AppGroup(pulumi.CustomResource):
         :param pulumi.Input[str] app_group_id: Internal identifier that cannot be edited
         :param pulumi.Input[Sequence[pulumi.Input[Union['AppGroupAttributeArgs', 'AppGroupAttributeArgsDict']]]] attributes: A list of attributes
                Structure is documented below.
-        :param pulumi.Input[str] channel_id: Channel identifier identifies the owner maintaing this grouping.
+        :param pulumi.Input[str] channel_id: Channel identifier identifies the owner maintaining this grouping.
         :param pulumi.Input[str] channel_uri: A reference to the associated storefront/marketplace.
         :param pulumi.Input[str] created_at: Created time as milliseconds since epoch.
         :param pulumi.Input[str] display_name: App group name displayed in the UI
@@ -736,7 +736,7 @@ class AppGroup(pulumi.CustomResource):
     @pulumi.getter(name="channelId")
     def channel_id(self) -> pulumi.Output[Optional[str]]:
         """
-        Channel identifier identifies the owner maintaing this grouping.
+        Channel identifier identifies the owner maintaining this grouping.
         """
         return pulumi.get(self, "channel_id")
 

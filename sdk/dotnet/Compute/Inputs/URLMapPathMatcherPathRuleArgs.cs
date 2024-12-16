@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.Compute.Inputs
     public sealed class URLMapPathMatcherPathRuleArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendServiceor BackendBucket responds with an error.
+        /// customErrorResponsePolicy specifies how the Load Balancer returns error responses when BackendService or BackendBucket responds with an error.
         /// If a policy for an error code is not configured for the PathRule, a policy for the error code configured in pathMatcher.defaultCustomErrorResponsePolicy is applied. If one is not specified in pathMatcher.defaultCustomErrorResponsePolicy, the policy configured in UrlMap.defaultCustomErrorResponsePolicy takes effect.
         /// For example, consider a UrlMap with the following configuration:
         /// UrlMap.defaultCustomErrorResponsePolicy are configured with policies for 5xx and 4xx errors

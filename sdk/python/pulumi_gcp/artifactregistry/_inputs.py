@@ -880,7 +880,10 @@ if not MYPY:
     class RepositoryRemoteRepositoryConfigCommonRepositoryArgsDict(TypedDict):
         uri: pulumi.Input[str]
         """
-        Specific uri to the Artifact Registory repository, e.g. `projects/UPSTREAM_PROJECT_ID/locations/REGION/repositories/UPSTREAM_REPOSITORY`
+        One of:
+        a. Artifact Registry Repository resource, e.g. `projects/UPSTREAM_PROJECT_ID/locations/REGION/repositories/UPSTREAM_REPOSITORY`
+        b. URI to the registry, e.g. `"https://registry-1.docker.io"`
+        c. URI to Artifact Registry Repository, e.g. `"https://REGION-docker.pkg.dev/UPSTREAM_PROJECT_ID/UPSTREAM_REPOSITORY"`
         """
 elif False:
     RepositoryRemoteRepositoryConfigCommonRepositoryArgsDict: TypeAlias = Mapping[str, Any]
@@ -890,7 +893,10 @@ class RepositoryRemoteRepositoryConfigCommonRepositoryArgs:
     def __init__(__self__, *,
                  uri: pulumi.Input[str]):
         """
-        :param pulumi.Input[str] uri: Specific uri to the Artifact Registory repository, e.g. `projects/UPSTREAM_PROJECT_ID/locations/REGION/repositories/UPSTREAM_REPOSITORY`
+        :param pulumi.Input[str] uri: One of:
+               a. Artifact Registry Repository resource, e.g. `projects/UPSTREAM_PROJECT_ID/locations/REGION/repositories/UPSTREAM_REPOSITORY`
+               b. URI to the registry, e.g. `"https://registry-1.docker.io"`
+               c. URI to Artifact Registry Repository, e.g. `"https://REGION-docker.pkg.dev/UPSTREAM_PROJECT_ID/UPSTREAM_REPOSITORY"`
         """
         pulumi.set(__self__, "uri", uri)
 
@@ -898,7 +904,10 @@ class RepositoryRemoteRepositoryConfigCommonRepositoryArgs:
     @pulumi.getter
     def uri(self) -> pulumi.Input[str]:
         """
-        Specific uri to the Artifact Registory repository, e.g. `projects/UPSTREAM_PROJECT_ID/locations/REGION/repositories/UPSTREAM_REPOSITORY`
+        One of:
+        a. Artifact Registry Repository resource, e.g. `projects/UPSTREAM_PROJECT_ID/locations/REGION/repositories/UPSTREAM_REPOSITORY`
+        b. URI to the registry, e.g. `"https://registry-1.docker.io"`
+        c. URI to Artifact Registry Repository, e.g. `"https://REGION-docker.pkg.dev/UPSTREAM_PROJECT_ID/UPSTREAM_REPOSITORY"`
         """
         return pulumi.get(self, "uri")
 
@@ -911,7 +920,7 @@ if not MYPY:
     class RepositoryRemoteRepositoryConfigDockerRepositoryArgsDict(TypedDict):
         custom_repository: NotRequired[pulumi.Input['RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgsDict']]
         """
-        Settings for a remote repository with a custom uri.
+        [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
         Structure is documented below.
         """
         public_repository: NotRequired[pulumi.Input[str]]
@@ -929,7 +938,7 @@ class RepositoryRemoteRepositoryConfigDockerRepositoryArgs:
                  custom_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs']] = None,
                  public_repository: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input['RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs'] custom_repository: Settings for a remote repository with a custom uri.
+        :param pulumi.Input['RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs'] custom_repository: [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
                Structure is documented below.
         :param pulumi.Input[str] public_repository: Address of the remote repository.
                Default value is `DOCKER_HUB`.
@@ -944,7 +953,7 @@ class RepositoryRemoteRepositoryConfigDockerRepositoryArgs:
     @pulumi.getter(name="customRepository")
     def custom_repository(self) -> Optional[pulumi.Input['RepositoryRemoteRepositoryConfigDockerRepositoryCustomRepositoryArgs']]:
         """
-        Settings for a remote repository with a custom uri.
+        [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
         Structure is documented below.
         """
         return pulumi.get(self, "custom_repository")
@@ -1004,7 +1013,7 @@ if not MYPY:
     class RepositoryRemoteRepositoryConfigMavenRepositoryArgsDict(TypedDict):
         custom_repository: NotRequired[pulumi.Input['RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgsDict']]
         """
-        Settings for a remote repository with a custom uri.
+        [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
         Structure is documented below.
         """
         public_repository: NotRequired[pulumi.Input[str]]
@@ -1022,7 +1031,7 @@ class RepositoryRemoteRepositoryConfigMavenRepositoryArgs:
                  custom_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs']] = None,
                  public_repository: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input['RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs'] custom_repository: Settings for a remote repository with a custom uri.
+        :param pulumi.Input['RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs'] custom_repository: [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
                Structure is documented below.
         :param pulumi.Input[str] public_repository: Address of the remote repository.
                Default value is `MAVEN_CENTRAL`.
@@ -1037,7 +1046,7 @@ class RepositoryRemoteRepositoryConfigMavenRepositoryArgs:
     @pulumi.getter(name="customRepository")
     def custom_repository(self) -> Optional[pulumi.Input['RepositoryRemoteRepositoryConfigMavenRepositoryCustomRepositoryArgs']]:
         """
-        Settings for a remote repository with a custom uri.
+        [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
         Structure is documented below.
         """
         return pulumi.get(self, "custom_repository")
@@ -1097,7 +1106,7 @@ if not MYPY:
     class RepositoryRemoteRepositoryConfigNpmRepositoryArgsDict(TypedDict):
         custom_repository: NotRequired[pulumi.Input['RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgsDict']]
         """
-        Settings for a remote repository with a custom uri.
+        [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
         Structure is documented below.
         """
         public_repository: NotRequired[pulumi.Input[str]]
@@ -1115,7 +1124,7 @@ class RepositoryRemoteRepositoryConfigNpmRepositoryArgs:
                  custom_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs']] = None,
                  public_repository: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input['RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs'] custom_repository: Settings for a remote repository with a custom uri.
+        :param pulumi.Input['RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs'] custom_repository: [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
                Structure is documented below.
         :param pulumi.Input[str] public_repository: Address of the remote repository.
                Default value is `NPMJS`.
@@ -1130,7 +1139,7 @@ class RepositoryRemoteRepositoryConfigNpmRepositoryArgs:
     @pulumi.getter(name="customRepository")
     def custom_repository(self) -> Optional[pulumi.Input['RepositoryRemoteRepositoryConfigNpmRepositoryCustomRepositoryArgs']]:
         """
-        Settings for a remote repository with a custom uri.
+        [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
         Structure is documented below.
         """
         return pulumi.get(self, "custom_repository")
@@ -1190,7 +1199,7 @@ if not MYPY:
     class RepositoryRemoteRepositoryConfigPythonRepositoryArgsDict(TypedDict):
         custom_repository: NotRequired[pulumi.Input['RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgsDict']]
         """
-        Settings for a remote repository with a custom uri.
+        [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
         Structure is documented below.
         """
         public_repository: NotRequired[pulumi.Input[str]]
@@ -1208,7 +1217,7 @@ class RepositoryRemoteRepositoryConfigPythonRepositoryArgs:
                  custom_repository: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs']] = None,
                  public_repository: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input['RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs'] custom_repository: Settings for a remote repository with a custom uri.
+        :param pulumi.Input['RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs'] custom_repository: [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
                Structure is documented below.
         :param pulumi.Input[str] public_repository: Address of the remote repository.
                Default value is `PYPI`.
@@ -1223,7 +1232,7 @@ class RepositoryRemoteRepositoryConfigPythonRepositoryArgs:
     @pulumi.getter(name="customRepository")
     def custom_repository(self) -> Optional[pulumi.Input['RepositoryRemoteRepositoryConfigPythonRepositoryCustomRepositoryArgs']]:
         """
-        Settings for a remote repository with a custom uri.
+        [Deprecated, please use commonRepository instead] Settings for a remote repository with a custom uri.
         Structure is documented below.
         """
         return pulumi.get(self, "custom_repository")

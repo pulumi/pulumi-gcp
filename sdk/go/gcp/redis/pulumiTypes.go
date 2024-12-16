@@ -13,6 +13,868 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type ClusterCrossClusterReplicationConfig struct {
+	// The role of the cluster in cross cluster replication. Supported values are:
+	// 1. `CLUSTER_ROLE_UNSPECIFIED`: This is an independent cluster that has never participated in cross cluster replication. It allows both reads and writes.
+	// 2. `NONE`: This is an independent cluster that previously participated in cross cluster replication(either as a `PRIMARY` or `SECONDARY` cluster). It allows both reads and writes.
+	// 3. `PRIMARY`: This cluster serves as the replication source for secondary clusters that are replicating from it. Any data written to it is automatically replicated to its secondary clusters. It allows both reads and writes.
+	// 4. `SECONDARY`: This cluster replicates data from the primary cluster. It allows only reads.
+	//    Possible values are: `CLUSTER_ROLE_UNSPECIFIED`, `NONE`, `PRIMARY`, `SECONDARY`.
+	ClusterRole *string `pulumi:"clusterRole"`
+	// (Output)
+	// An output only view of all the member clusters participating in cross cluster replication. This field is populated for all the member clusters irrespective of their cluster role.
+	// Structure is documented below.
+	Memberships []ClusterCrossClusterReplicationConfigMembership `pulumi:"memberships"`
+	// Details of the primary cluster that is used as the replication source for this secondary cluster. This is allowed to be set only for clusters whose cluster role is of type `SECONDARY`.
+	// Structure is documented below.
+	PrimaryCluster *ClusterCrossClusterReplicationConfigPrimaryCluster `pulumi:"primaryCluster"`
+	// List of secondary clusters that are replicating from this primary cluster. This is allowed to be set only for clusters whose cluster role is of type `PRIMARY`.
+	// Structure is documented below.
+	SecondaryClusters []ClusterCrossClusterReplicationConfigSecondaryCluster `pulumi:"secondaryClusters"`
+	// (Output)
+	// The last time cross cluster replication config was updated.
+	UpdateTime *string `pulumi:"updateTime"`
+}
+
+// ClusterCrossClusterReplicationConfigInput is an input type that accepts ClusterCrossClusterReplicationConfigArgs and ClusterCrossClusterReplicationConfigOutput values.
+// You can construct a concrete instance of `ClusterCrossClusterReplicationConfigInput` via:
+//
+//	ClusterCrossClusterReplicationConfigArgs{...}
+type ClusterCrossClusterReplicationConfigInput interface {
+	pulumi.Input
+
+	ToClusterCrossClusterReplicationConfigOutput() ClusterCrossClusterReplicationConfigOutput
+	ToClusterCrossClusterReplicationConfigOutputWithContext(context.Context) ClusterCrossClusterReplicationConfigOutput
+}
+
+type ClusterCrossClusterReplicationConfigArgs struct {
+	// The role of the cluster in cross cluster replication. Supported values are:
+	// 1. `CLUSTER_ROLE_UNSPECIFIED`: This is an independent cluster that has never participated in cross cluster replication. It allows both reads and writes.
+	// 2. `NONE`: This is an independent cluster that previously participated in cross cluster replication(either as a `PRIMARY` or `SECONDARY` cluster). It allows both reads and writes.
+	// 3. `PRIMARY`: This cluster serves as the replication source for secondary clusters that are replicating from it. Any data written to it is automatically replicated to its secondary clusters. It allows both reads and writes.
+	// 4. `SECONDARY`: This cluster replicates data from the primary cluster. It allows only reads.
+	//    Possible values are: `CLUSTER_ROLE_UNSPECIFIED`, `NONE`, `PRIMARY`, `SECONDARY`.
+	ClusterRole pulumi.StringPtrInput `pulumi:"clusterRole"`
+	// (Output)
+	// An output only view of all the member clusters participating in cross cluster replication. This field is populated for all the member clusters irrespective of their cluster role.
+	// Structure is documented below.
+	Memberships ClusterCrossClusterReplicationConfigMembershipArrayInput `pulumi:"memberships"`
+	// Details of the primary cluster that is used as the replication source for this secondary cluster. This is allowed to be set only for clusters whose cluster role is of type `SECONDARY`.
+	// Structure is documented below.
+	PrimaryCluster ClusterCrossClusterReplicationConfigPrimaryClusterPtrInput `pulumi:"primaryCluster"`
+	// List of secondary clusters that are replicating from this primary cluster. This is allowed to be set only for clusters whose cluster role is of type `PRIMARY`.
+	// Structure is documented below.
+	SecondaryClusters ClusterCrossClusterReplicationConfigSecondaryClusterArrayInput `pulumi:"secondaryClusters"`
+	// (Output)
+	// The last time cross cluster replication config was updated.
+	UpdateTime pulumi.StringPtrInput `pulumi:"updateTime"`
+}
+
+func (ClusterCrossClusterReplicationConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterCrossClusterReplicationConfig)(nil)).Elem()
+}
+
+func (i ClusterCrossClusterReplicationConfigArgs) ToClusterCrossClusterReplicationConfigOutput() ClusterCrossClusterReplicationConfigOutput {
+	return i.ToClusterCrossClusterReplicationConfigOutputWithContext(context.Background())
+}
+
+func (i ClusterCrossClusterReplicationConfigArgs) ToClusterCrossClusterReplicationConfigOutputWithContext(ctx context.Context) ClusterCrossClusterReplicationConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterCrossClusterReplicationConfigOutput)
+}
+
+func (i ClusterCrossClusterReplicationConfigArgs) ToClusterCrossClusterReplicationConfigPtrOutput() ClusterCrossClusterReplicationConfigPtrOutput {
+	return i.ToClusterCrossClusterReplicationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterCrossClusterReplicationConfigArgs) ToClusterCrossClusterReplicationConfigPtrOutputWithContext(ctx context.Context) ClusterCrossClusterReplicationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterCrossClusterReplicationConfigOutput).ToClusterCrossClusterReplicationConfigPtrOutputWithContext(ctx)
+}
+
+// ClusterCrossClusterReplicationConfigPtrInput is an input type that accepts ClusterCrossClusterReplicationConfigArgs, ClusterCrossClusterReplicationConfigPtr and ClusterCrossClusterReplicationConfigPtrOutput values.
+// You can construct a concrete instance of `ClusterCrossClusterReplicationConfigPtrInput` via:
+//
+//	        ClusterCrossClusterReplicationConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterCrossClusterReplicationConfigPtrInput interface {
+	pulumi.Input
+
+	ToClusterCrossClusterReplicationConfigPtrOutput() ClusterCrossClusterReplicationConfigPtrOutput
+	ToClusterCrossClusterReplicationConfigPtrOutputWithContext(context.Context) ClusterCrossClusterReplicationConfigPtrOutput
+}
+
+type clusterCrossClusterReplicationConfigPtrType ClusterCrossClusterReplicationConfigArgs
+
+func ClusterCrossClusterReplicationConfigPtr(v *ClusterCrossClusterReplicationConfigArgs) ClusterCrossClusterReplicationConfigPtrInput {
+	return (*clusterCrossClusterReplicationConfigPtrType)(v)
+}
+
+func (*clusterCrossClusterReplicationConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterCrossClusterReplicationConfig)(nil)).Elem()
+}
+
+func (i *clusterCrossClusterReplicationConfigPtrType) ToClusterCrossClusterReplicationConfigPtrOutput() ClusterCrossClusterReplicationConfigPtrOutput {
+	return i.ToClusterCrossClusterReplicationConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterCrossClusterReplicationConfigPtrType) ToClusterCrossClusterReplicationConfigPtrOutputWithContext(ctx context.Context) ClusterCrossClusterReplicationConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterCrossClusterReplicationConfigPtrOutput)
+}
+
+type ClusterCrossClusterReplicationConfigOutput struct{ *pulumi.OutputState }
+
+func (ClusterCrossClusterReplicationConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterCrossClusterReplicationConfig)(nil)).Elem()
+}
+
+func (o ClusterCrossClusterReplicationConfigOutput) ToClusterCrossClusterReplicationConfigOutput() ClusterCrossClusterReplicationConfigOutput {
+	return o
+}
+
+func (o ClusterCrossClusterReplicationConfigOutput) ToClusterCrossClusterReplicationConfigOutputWithContext(ctx context.Context) ClusterCrossClusterReplicationConfigOutput {
+	return o
+}
+
+func (o ClusterCrossClusterReplicationConfigOutput) ToClusterCrossClusterReplicationConfigPtrOutput() ClusterCrossClusterReplicationConfigPtrOutput {
+	return o.ToClusterCrossClusterReplicationConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterCrossClusterReplicationConfigOutput) ToClusterCrossClusterReplicationConfigPtrOutputWithContext(ctx context.Context) ClusterCrossClusterReplicationConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterCrossClusterReplicationConfig) *ClusterCrossClusterReplicationConfig {
+		return &v
+	}).(ClusterCrossClusterReplicationConfigPtrOutput)
+}
+
+// The role of the cluster in cross cluster replication. Supported values are:
+//  1. `CLUSTER_ROLE_UNSPECIFIED`: This is an independent cluster that has never participated in cross cluster replication. It allows both reads and writes.
+//  2. `NONE`: This is an independent cluster that previously participated in cross cluster replication(either as a `PRIMARY` or `SECONDARY` cluster). It allows both reads and writes.
+//  3. `PRIMARY`: This cluster serves as the replication source for secondary clusters that are replicating from it. Any data written to it is automatically replicated to its secondary clusters. It allows both reads and writes.
+//  4. `SECONDARY`: This cluster replicates data from the primary cluster. It allows only reads.
+//     Possible values are: `CLUSTER_ROLE_UNSPECIFIED`, `NONE`, `PRIMARY`, `SECONDARY`.
+func (o ClusterCrossClusterReplicationConfigOutput) ClusterRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterCrossClusterReplicationConfig) *string { return v.ClusterRole }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// An output only view of all the member clusters participating in cross cluster replication. This field is populated for all the member clusters irrespective of their cluster role.
+// Structure is documented below.
+func (o ClusterCrossClusterReplicationConfigOutput) Memberships() ClusterCrossClusterReplicationConfigMembershipArrayOutput {
+	return o.ApplyT(func(v ClusterCrossClusterReplicationConfig) []ClusterCrossClusterReplicationConfigMembership {
+		return v.Memberships
+	}).(ClusterCrossClusterReplicationConfigMembershipArrayOutput)
+}
+
+// Details of the primary cluster that is used as the replication source for this secondary cluster. This is allowed to be set only for clusters whose cluster role is of type `SECONDARY`.
+// Structure is documented below.
+func (o ClusterCrossClusterReplicationConfigOutput) PrimaryCluster() ClusterCrossClusterReplicationConfigPrimaryClusterPtrOutput {
+	return o.ApplyT(func(v ClusterCrossClusterReplicationConfig) *ClusterCrossClusterReplicationConfigPrimaryCluster {
+		return v.PrimaryCluster
+	}).(ClusterCrossClusterReplicationConfigPrimaryClusterPtrOutput)
+}
+
+// List of secondary clusters that are replicating from this primary cluster. This is allowed to be set only for clusters whose cluster role is of type `PRIMARY`.
+// Structure is documented below.
+func (o ClusterCrossClusterReplicationConfigOutput) SecondaryClusters() ClusterCrossClusterReplicationConfigSecondaryClusterArrayOutput {
+	return o.ApplyT(func(v ClusterCrossClusterReplicationConfig) []ClusterCrossClusterReplicationConfigSecondaryCluster {
+		return v.SecondaryClusters
+	}).(ClusterCrossClusterReplicationConfigSecondaryClusterArrayOutput)
+}
+
+// (Output)
+// The last time cross cluster replication config was updated.
+func (o ClusterCrossClusterReplicationConfigOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterCrossClusterReplicationConfig) *string { return v.UpdateTime }).(pulumi.StringPtrOutput)
+}
+
+type ClusterCrossClusterReplicationConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterCrossClusterReplicationConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterCrossClusterReplicationConfig)(nil)).Elem()
+}
+
+func (o ClusterCrossClusterReplicationConfigPtrOutput) ToClusterCrossClusterReplicationConfigPtrOutput() ClusterCrossClusterReplicationConfigPtrOutput {
+	return o
+}
+
+func (o ClusterCrossClusterReplicationConfigPtrOutput) ToClusterCrossClusterReplicationConfigPtrOutputWithContext(ctx context.Context) ClusterCrossClusterReplicationConfigPtrOutput {
+	return o
+}
+
+func (o ClusterCrossClusterReplicationConfigPtrOutput) Elem() ClusterCrossClusterReplicationConfigOutput {
+	return o.ApplyT(func(v *ClusterCrossClusterReplicationConfig) ClusterCrossClusterReplicationConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterCrossClusterReplicationConfig
+		return ret
+	}).(ClusterCrossClusterReplicationConfigOutput)
+}
+
+// The role of the cluster in cross cluster replication. Supported values are:
+//  1. `CLUSTER_ROLE_UNSPECIFIED`: This is an independent cluster that has never participated in cross cluster replication. It allows both reads and writes.
+//  2. `NONE`: This is an independent cluster that previously participated in cross cluster replication(either as a `PRIMARY` or `SECONDARY` cluster). It allows both reads and writes.
+//  3. `PRIMARY`: This cluster serves as the replication source for secondary clusters that are replicating from it. Any data written to it is automatically replicated to its secondary clusters. It allows both reads and writes.
+//  4. `SECONDARY`: This cluster replicates data from the primary cluster. It allows only reads.
+//     Possible values are: `CLUSTER_ROLE_UNSPECIFIED`, `NONE`, `PRIMARY`, `SECONDARY`.
+func (o ClusterCrossClusterReplicationConfigPtrOutput) ClusterRole() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterCrossClusterReplicationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClusterRole
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// An output only view of all the member clusters participating in cross cluster replication. This field is populated for all the member clusters irrespective of their cluster role.
+// Structure is documented below.
+func (o ClusterCrossClusterReplicationConfigPtrOutput) Memberships() ClusterCrossClusterReplicationConfigMembershipArrayOutput {
+	return o.ApplyT(func(v *ClusterCrossClusterReplicationConfig) []ClusterCrossClusterReplicationConfigMembership {
+		if v == nil {
+			return nil
+		}
+		return v.Memberships
+	}).(ClusterCrossClusterReplicationConfigMembershipArrayOutput)
+}
+
+// Details of the primary cluster that is used as the replication source for this secondary cluster. This is allowed to be set only for clusters whose cluster role is of type `SECONDARY`.
+// Structure is documented below.
+func (o ClusterCrossClusterReplicationConfigPtrOutput) PrimaryCluster() ClusterCrossClusterReplicationConfigPrimaryClusterPtrOutput {
+	return o.ApplyT(func(v *ClusterCrossClusterReplicationConfig) *ClusterCrossClusterReplicationConfigPrimaryCluster {
+		if v == nil {
+			return nil
+		}
+		return v.PrimaryCluster
+	}).(ClusterCrossClusterReplicationConfigPrimaryClusterPtrOutput)
+}
+
+// List of secondary clusters that are replicating from this primary cluster. This is allowed to be set only for clusters whose cluster role is of type `PRIMARY`.
+// Structure is documented below.
+func (o ClusterCrossClusterReplicationConfigPtrOutput) SecondaryClusters() ClusterCrossClusterReplicationConfigSecondaryClusterArrayOutput {
+	return o.ApplyT(func(v *ClusterCrossClusterReplicationConfig) []ClusterCrossClusterReplicationConfigSecondaryCluster {
+		if v == nil {
+			return nil
+		}
+		return v.SecondaryClusters
+	}).(ClusterCrossClusterReplicationConfigSecondaryClusterArrayOutput)
+}
+
+// (Output)
+// The last time cross cluster replication config was updated.
+func (o ClusterCrossClusterReplicationConfigPtrOutput) UpdateTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterCrossClusterReplicationConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.UpdateTime
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterCrossClusterReplicationConfigMembership struct {
+	// Details of the primary cluster that is used as the replication source for all the secondary clusters.
+	PrimaryClusters []ClusterCrossClusterReplicationConfigMembershipPrimaryCluster `pulumi:"primaryClusters"`
+	// List of secondary clusters that are replicating from the primary cluster.
+	SecondaryClusters []ClusterCrossClusterReplicationConfigMembershipSecondaryCluster `pulumi:"secondaryClusters"`
+}
+
+// ClusterCrossClusterReplicationConfigMembershipInput is an input type that accepts ClusterCrossClusterReplicationConfigMembershipArgs and ClusterCrossClusterReplicationConfigMembershipOutput values.
+// You can construct a concrete instance of `ClusterCrossClusterReplicationConfigMembershipInput` via:
+//
+//	ClusterCrossClusterReplicationConfigMembershipArgs{...}
+type ClusterCrossClusterReplicationConfigMembershipInput interface {
+	pulumi.Input
+
+	ToClusterCrossClusterReplicationConfigMembershipOutput() ClusterCrossClusterReplicationConfigMembershipOutput
+	ToClusterCrossClusterReplicationConfigMembershipOutputWithContext(context.Context) ClusterCrossClusterReplicationConfigMembershipOutput
+}
+
+type ClusterCrossClusterReplicationConfigMembershipArgs struct {
+	// Details of the primary cluster that is used as the replication source for all the secondary clusters.
+	PrimaryClusters ClusterCrossClusterReplicationConfigMembershipPrimaryClusterArrayInput `pulumi:"primaryClusters"`
+	// List of secondary clusters that are replicating from the primary cluster.
+	SecondaryClusters ClusterCrossClusterReplicationConfigMembershipSecondaryClusterArrayInput `pulumi:"secondaryClusters"`
+}
+
+func (ClusterCrossClusterReplicationConfigMembershipArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterCrossClusterReplicationConfigMembership)(nil)).Elem()
+}
+
+func (i ClusterCrossClusterReplicationConfigMembershipArgs) ToClusterCrossClusterReplicationConfigMembershipOutput() ClusterCrossClusterReplicationConfigMembershipOutput {
+	return i.ToClusterCrossClusterReplicationConfigMembershipOutputWithContext(context.Background())
+}
+
+func (i ClusterCrossClusterReplicationConfigMembershipArgs) ToClusterCrossClusterReplicationConfigMembershipOutputWithContext(ctx context.Context) ClusterCrossClusterReplicationConfigMembershipOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterCrossClusterReplicationConfigMembershipOutput)
+}
+
+// ClusterCrossClusterReplicationConfigMembershipArrayInput is an input type that accepts ClusterCrossClusterReplicationConfigMembershipArray and ClusterCrossClusterReplicationConfigMembershipArrayOutput values.
+// You can construct a concrete instance of `ClusterCrossClusterReplicationConfigMembershipArrayInput` via:
+//
+//	ClusterCrossClusterReplicationConfigMembershipArray{ ClusterCrossClusterReplicationConfigMembershipArgs{...} }
+type ClusterCrossClusterReplicationConfigMembershipArrayInput interface {
+	pulumi.Input
+
+	ToClusterCrossClusterReplicationConfigMembershipArrayOutput() ClusterCrossClusterReplicationConfigMembershipArrayOutput
+	ToClusterCrossClusterReplicationConfigMembershipArrayOutputWithContext(context.Context) ClusterCrossClusterReplicationConfigMembershipArrayOutput
+}
+
+type ClusterCrossClusterReplicationConfigMembershipArray []ClusterCrossClusterReplicationConfigMembershipInput
+
+func (ClusterCrossClusterReplicationConfigMembershipArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterCrossClusterReplicationConfigMembership)(nil)).Elem()
+}
+
+func (i ClusterCrossClusterReplicationConfigMembershipArray) ToClusterCrossClusterReplicationConfigMembershipArrayOutput() ClusterCrossClusterReplicationConfigMembershipArrayOutput {
+	return i.ToClusterCrossClusterReplicationConfigMembershipArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterCrossClusterReplicationConfigMembershipArray) ToClusterCrossClusterReplicationConfigMembershipArrayOutputWithContext(ctx context.Context) ClusterCrossClusterReplicationConfigMembershipArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterCrossClusterReplicationConfigMembershipArrayOutput)
+}
+
+type ClusterCrossClusterReplicationConfigMembershipOutput struct{ *pulumi.OutputState }
+
+func (ClusterCrossClusterReplicationConfigMembershipOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterCrossClusterReplicationConfigMembership)(nil)).Elem()
+}
+
+func (o ClusterCrossClusterReplicationConfigMembershipOutput) ToClusterCrossClusterReplicationConfigMembershipOutput() ClusterCrossClusterReplicationConfigMembershipOutput {
+	return o
+}
+
+func (o ClusterCrossClusterReplicationConfigMembershipOutput) ToClusterCrossClusterReplicationConfigMembershipOutputWithContext(ctx context.Context) ClusterCrossClusterReplicationConfigMembershipOutput {
+	return o
+}
+
+// Details of the primary cluster that is used as the replication source for all the secondary clusters.
+func (o ClusterCrossClusterReplicationConfigMembershipOutput) PrimaryClusters() ClusterCrossClusterReplicationConfigMembershipPrimaryClusterArrayOutput {
+	return o.ApplyT(func(v ClusterCrossClusterReplicationConfigMembership) []ClusterCrossClusterReplicationConfigMembershipPrimaryCluster {
+		return v.PrimaryClusters
+	}).(ClusterCrossClusterReplicationConfigMembershipPrimaryClusterArrayOutput)
+}
+
+// List of secondary clusters that are replicating from the primary cluster.
+func (o ClusterCrossClusterReplicationConfigMembershipOutput) SecondaryClusters() ClusterCrossClusterReplicationConfigMembershipSecondaryClusterArrayOutput {
+	return o.ApplyT(func(v ClusterCrossClusterReplicationConfigMembership) []ClusterCrossClusterReplicationConfigMembershipSecondaryCluster {
+		return v.SecondaryClusters
+	}).(ClusterCrossClusterReplicationConfigMembershipSecondaryClusterArrayOutput)
+}
+
+type ClusterCrossClusterReplicationConfigMembershipArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterCrossClusterReplicationConfigMembershipArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterCrossClusterReplicationConfigMembership)(nil)).Elem()
+}
+
+func (o ClusterCrossClusterReplicationConfigMembershipArrayOutput) ToClusterCrossClusterReplicationConfigMembershipArrayOutput() ClusterCrossClusterReplicationConfigMembershipArrayOutput {
+	return o
+}
+
+func (o ClusterCrossClusterReplicationConfigMembershipArrayOutput) ToClusterCrossClusterReplicationConfigMembershipArrayOutputWithContext(ctx context.Context) ClusterCrossClusterReplicationConfigMembershipArrayOutput {
+	return o
+}
+
+func (o ClusterCrossClusterReplicationConfigMembershipArrayOutput) Index(i pulumi.IntInput) ClusterCrossClusterReplicationConfigMembershipOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterCrossClusterReplicationConfigMembership {
+		return vs[0].([]ClusterCrossClusterReplicationConfigMembership)[vs[1].(int)]
+	}).(ClusterCrossClusterReplicationConfigMembershipOutput)
+}
+
+type ClusterCrossClusterReplicationConfigMembershipPrimaryCluster struct {
+	// The full resource path of the primary cluster in the format: projects/{project}/locations/{region}/clusters/{cluster-id}
+	Cluster *string `pulumi:"cluster"`
+	// (Output)
+	// The unique id of the primary cluster.
+	Uid *string `pulumi:"uid"`
+}
+
+// ClusterCrossClusterReplicationConfigMembershipPrimaryClusterInput is an input type that accepts ClusterCrossClusterReplicationConfigMembershipPrimaryClusterArgs and ClusterCrossClusterReplicationConfigMembershipPrimaryClusterOutput values.
+// You can construct a concrete instance of `ClusterCrossClusterReplicationConfigMembershipPrimaryClusterInput` via:
+//
+//	ClusterCrossClusterReplicationConfigMembershipPrimaryClusterArgs{...}
+type ClusterCrossClusterReplicationConfigMembershipPrimaryClusterInput interface {
+	pulumi.Input
+
+	ToClusterCrossClusterReplicationConfigMembershipPrimaryClusterOutput() ClusterCrossClusterReplicationConfigMembershipPrimaryClusterOutput
+	ToClusterCrossClusterReplicationConfigMembershipPrimaryClusterOutputWithContext(context.Context) ClusterCrossClusterReplicationConfigMembershipPrimaryClusterOutput
+}
+
+type ClusterCrossClusterReplicationConfigMembershipPrimaryClusterArgs struct {
+	// The full resource path of the primary cluster in the format: projects/{project}/locations/{region}/clusters/{cluster-id}
+	Cluster pulumi.StringPtrInput `pulumi:"cluster"`
+	// (Output)
+	// The unique id of the primary cluster.
+	Uid pulumi.StringPtrInput `pulumi:"uid"`
+}
+
+func (ClusterCrossClusterReplicationConfigMembershipPrimaryClusterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterCrossClusterReplicationConfigMembershipPrimaryCluster)(nil)).Elem()
+}
+
+func (i ClusterCrossClusterReplicationConfigMembershipPrimaryClusterArgs) ToClusterCrossClusterReplicationConfigMembershipPrimaryClusterOutput() ClusterCrossClusterReplicationConfigMembershipPrimaryClusterOutput {
+	return i.ToClusterCrossClusterReplicationConfigMembershipPrimaryClusterOutputWithContext(context.Background())
+}
+
+func (i ClusterCrossClusterReplicationConfigMembershipPrimaryClusterArgs) ToClusterCrossClusterReplicationConfigMembershipPrimaryClusterOutputWithContext(ctx context.Context) ClusterCrossClusterReplicationConfigMembershipPrimaryClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterCrossClusterReplicationConfigMembershipPrimaryClusterOutput)
+}
+
+// ClusterCrossClusterReplicationConfigMembershipPrimaryClusterArrayInput is an input type that accepts ClusterCrossClusterReplicationConfigMembershipPrimaryClusterArray and ClusterCrossClusterReplicationConfigMembershipPrimaryClusterArrayOutput values.
+// You can construct a concrete instance of `ClusterCrossClusterReplicationConfigMembershipPrimaryClusterArrayInput` via:
+//
+//	ClusterCrossClusterReplicationConfigMembershipPrimaryClusterArray{ ClusterCrossClusterReplicationConfigMembershipPrimaryClusterArgs{...} }
+type ClusterCrossClusterReplicationConfigMembershipPrimaryClusterArrayInput interface {
+	pulumi.Input
+
+	ToClusterCrossClusterReplicationConfigMembershipPrimaryClusterArrayOutput() ClusterCrossClusterReplicationConfigMembershipPrimaryClusterArrayOutput
+	ToClusterCrossClusterReplicationConfigMembershipPrimaryClusterArrayOutputWithContext(context.Context) ClusterCrossClusterReplicationConfigMembershipPrimaryClusterArrayOutput
+}
+
+type ClusterCrossClusterReplicationConfigMembershipPrimaryClusterArray []ClusterCrossClusterReplicationConfigMembershipPrimaryClusterInput
+
+func (ClusterCrossClusterReplicationConfigMembershipPrimaryClusterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterCrossClusterReplicationConfigMembershipPrimaryCluster)(nil)).Elem()
+}
+
+func (i ClusterCrossClusterReplicationConfigMembershipPrimaryClusterArray) ToClusterCrossClusterReplicationConfigMembershipPrimaryClusterArrayOutput() ClusterCrossClusterReplicationConfigMembershipPrimaryClusterArrayOutput {
+	return i.ToClusterCrossClusterReplicationConfigMembershipPrimaryClusterArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterCrossClusterReplicationConfigMembershipPrimaryClusterArray) ToClusterCrossClusterReplicationConfigMembershipPrimaryClusterArrayOutputWithContext(ctx context.Context) ClusterCrossClusterReplicationConfigMembershipPrimaryClusterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterCrossClusterReplicationConfigMembershipPrimaryClusterArrayOutput)
+}
+
+type ClusterCrossClusterReplicationConfigMembershipPrimaryClusterOutput struct{ *pulumi.OutputState }
+
+func (ClusterCrossClusterReplicationConfigMembershipPrimaryClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterCrossClusterReplicationConfigMembershipPrimaryCluster)(nil)).Elem()
+}
+
+func (o ClusterCrossClusterReplicationConfigMembershipPrimaryClusterOutput) ToClusterCrossClusterReplicationConfigMembershipPrimaryClusterOutput() ClusterCrossClusterReplicationConfigMembershipPrimaryClusterOutput {
+	return o
+}
+
+func (o ClusterCrossClusterReplicationConfigMembershipPrimaryClusterOutput) ToClusterCrossClusterReplicationConfigMembershipPrimaryClusterOutputWithContext(ctx context.Context) ClusterCrossClusterReplicationConfigMembershipPrimaryClusterOutput {
+	return o
+}
+
+// The full resource path of the primary cluster in the format: projects/{project}/locations/{region}/clusters/{cluster-id}
+func (o ClusterCrossClusterReplicationConfigMembershipPrimaryClusterOutput) Cluster() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterCrossClusterReplicationConfigMembershipPrimaryCluster) *string { return v.Cluster }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The unique id of the primary cluster.
+func (o ClusterCrossClusterReplicationConfigMembershipPrimaryClusterOutput) Uid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterCrossClusterReplicationConfigMembershipPrimaryCluster) *string { return v.Uid }).(pulumi.StringPtrOutput)
+}
+
+type ClusterCrossClusterReplicationConfigMembershipPrimaryClusterArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterCrossClusterReplicationConfigMembershipPrimaryClusterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterCrossClusterReplicationConfigMembershipPrimaryCluster)(nil)).Elem()
+}
+
+func (o ClusterCrossClusterReplicationConfigMembershipPrimaryClusterArrayOutput) ToClusterCrossClusterReplicationConfigMembershipPrimaryClusterArrayOutput() ClusterCrossClusterReplicationConfigMembershipPrimaryClusterArrayOutput {
+	return o
+}
+
+func (o ClusterCrossClusterReplicationConfigMembershipPrimaryClusterArrayOutput) ToClusterCrossClusterReplicationConfigMembershipPrimaryClusterArrayOutputWithContext(ctx context.Context) ClusterCrossClusterReplicationConfigMembershipPrimaryClusterArrayOutput {
+	return o
+}
+
+func (o ClusterCrossClusterReplicationConfigMembershipPrimaryClusterArrayOutput) Index(i pulumi.IntInput) ClusterCrossClusterReplicationConfigMembershipPrimaryClusterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterCrossClusterReplicationConfigMembershipPrimaryCluster {
+		return vs[0].([]ClusterCrossClusterReplicationConfigMembershipPrimaryCluster)[vs[1].(int)]
+	}).(ClusterCrossClusterReplicationConfigMembershipPrimaryClusterOutput)
+}
+
+type ClusterCrossClusterReplicationConfigMembershipSecondaryCluster struct {
+	// (Output)
+	// The full resource path of the secondary cluster in the format: projects/{project}/locations/{region}/clusters/{cluster-id}
+	Cluster *string `pulumi:"cluster"`
+	// (Output)
+	// The unique id of the secondary cluster.
+	Uid *string `pulumi:"uid"`
+}
+
+// ClusterCrossClusterReplicationConfigMembershipSecondaryClusterInput is an input type that accepts ClusterCrossClusterReplicationConfigMembershipSecondaryClusterArgs and ClusterCrossClusterReplicationConfigMembershipSecondaryClusterOutput values.
+// You can construct a concrete instance of `ClusterCrossClusterReplicationConfigMembershipSecondaryClusterInput` via:
+//
+//	ClusterCrossClusterReplicationConfigMembershipSecondaryClusterArgs{...}
+type ClusterCrossClusterReplicationConfigMembershipSecondaryClusterInput interface {
+	pulumi.Input
+
+	ToClusterCrossClusterReplicationConfigMembershipSecondaryClusterOutput() ClusterCrossClusterReplicationConfigMembershipSecondaryClusterOutput
+	ToClusterCrossClusterReplicationConfigMembershipSecondaryClusterOutputWithContext(context.Context) ClusterCrossClusterReplicationConfigMembershipSecondaryClusterOutput
+}
+
+type ClusterCrossClusterReplicationConfigMembershipSecondaryClusterArgs struct {
+	// (Output)
+	// The full resource path of the secondary cluster in the format: projects/{project}/locations/{region}/clusters/{cluster-id}
+	Cluster pulumi.StringPtrInput `pulumi:"cluster"`
+	// (Output)
+	// The unique id of the secondary cluster.
+	Uid pulumi.StringPtrInput `pulumi:"uid"`
+}
+
+func (ClusterCrossClusterReplicationConfigMembershipSecondaryClusterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterCrossClusterReplicationConfigMembershipSecondaryCluster)(nil)).Elem()
+}
+
+func (i ClusterCrossClusterReplicationConfigMembershipSecondaryClusterArgs) ToClusterCrossClusterReplicationConfigMembershipSecondaryClusterOutput() ClusterCrossClusterReplicationConfigMembershipSecondaryClusterOutput {
+	return i.ToClusterCrossClusterReplicationConfigMembershipSecondaryClusterOutputWithContext(context.Background())
+}
+
+func (i ClusterCrossClusterReplicationConfigMembershipSecondaryClusterArgs) ToClusterCrossClusterReplicationConfigMembershipSecondaryClusterOutputWithContext(ctx context.Context) ClusterCrossClusterReplicationConfigMembershipSecondaryClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterCrossClusterReplicationConfigMembershipSecondaryClusterOutput)
+}
+
+// ClusterCrossClusterReplicationConfigMembershipSecondaryClusterArrayInput is an input type that accepts ClusterCrossClusterReplicationConfigMembershipSecondaryClusterArray and ClusterCrossClusterReplicationConfigMembershipSecondaryClusterArrayOutput values.
+// You can construct a concrete instance of `ClusterCrossClusterReplicationConfigMembershipSecondaryClusterArrayInput` via:
+//
+//	ClusterCrossClusterReplicationConfigMembershipSecondaryClusterArray{ ClusterCrossClusterReplicationConfigMembershipSecondaryClusterArgs{...} }
+type ClusterCrossClusterReplicationConfigMembershipSecondaryClusterArrayInput interface {
+	pulumi.Input
+
+	ToClusterCrossClusterReplicationConfigMembershipSecondaryClusterArrayOutput() ClusterCrossClusterReplicationConfigMembershipSecondaryClusterArrayOutput
+	ToClusterCrossClusterReplicationConfigMembershipSecondaryClusterArrayOutputWithContext(context.Context) ClusterCrossClusterReplicationConfigMembershipSecondaryClusterArrayOutput
+}
+
+type ClusterCrossClusterReplicationConfigMembershipSecondaryClusterArray []ClusterCrossClusterReplicationConfigMembershipSecondaryClusterInput
+
+func (ClusterCrossClusterReplicationConfigMembershipSecondaryClusterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterCrossClusterReplicationConfigMembershipSecondaryCluster)(nil)).Elem()
+}
+
+func (i ClusterCrossClusterReplicationConfigMembershipSecondaryClusterArray) ToClusterCrossClusterReplicationConfigMembershipSecondaryClusterArrayOutput() ClusterCrossClusterReplicationConfigMembershipSecondaryClusterArrayOutput {
+	return i.ToClusterCrossClusterReplicationConfigMembershipSecondaryClusterArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterCrossClusterReplicationConfigMembershipSecondaryClusterArray) ToClusterCrossClusterReplicationConfigMembershipSecondaryClusterArrayOutputWithContext(ctx context.Context) ClusterCrossClusterReplicationConfigMembershipSecondaryClusterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterCrossClusterReplicationConfigMembershipSecondaryClusterArrayOutput)
+}
+
+type ClusterCrossClusterReplicationConfigMembershipSecondaryClusterOutput struct{ *pulumi.OutputState }
+
+func (ClusterCrossClusterReplicationConfigMembershipSecondaryClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterCrossClusterReplicationConfigMembershipSecondaryCluster)(nil)).Elem()
+}
+
+func (o ClusterCrossClusterReplicationConfigMembershipSecondaryClusterOutput) ToClusterCrossClusterReplicationConfigMembershipSecondaryClusterOutput() ClusterCrossClusterReplicationConfigMembershipSecondaryClusterOutput {
+	return o
+}
+
+func (o ClusterCrossClusterReplicationConfigMembershipSecondaryClusterOutput) ToClusterCrossClusterReplicationConfigMembershipSecondaryClusterOutputWithContext(ctx context.Context) ClusterCrossClusterReplicationConfigMembershipSecondaryClusterOutput {
+	return o
+}
+
+// (Output)
+// The full resource path of the secondary cluster in the format: projects/{project}/locations/{region}/clusters/{cluster-id}
+func (o ClusterCrossClusterReplicationConfigMembershipSecondaryClusterOutput) Cluster() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterCrossClusterReplicationConfigMembershipSecondaryCluster) *string { return v.Cluster }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The unique id of the secondary cluster.
+func (o ClusterCrossClusterReplicationConfigMembershipSecondaryClusterOutput) Uid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterCrossClusterReplicationConfigMembershipSecondaryCluster) *string { return v.Uid }).(pulumi.StringPtrOutput)
+}
+
+type ClusterCrossClusterReplicationConfigMembershipSecondaryClusterArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterCrossClusterReplicationConfigMembershipSecondaryClusterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterCrossClusterReplicationConfigMembershipSecondaryCluster)(nil)).Elem()
+}
+
+func (o ClusterCrossClusterReplicationConfigMembershipSecondaryClusterArrayOutput) ToClusterCrossClusterReplicationConfigMembershipSecondaryClusterArrayOutput() ClusterCrossClusterReplicationConfigMembershipSecondaryClusterArrayOutput {
+	return o
+}
+
+func (o ClusterCrossClusterReplicationConfigMembershipSecondaryClusterArrayOutput) ToClusterCrossClusterReplicationConfigMembershipSecondaryClusterArrayOutputWithContext(ctx context.Context) ClusterCrossClusterReplicationConfigMembershipSecondaryClusterArrayOutput {
+	return o
+}
+
+func (o ClusterCrossClusterReplicationConfigMembershipSecondaryClusterArrayOutput) Index(i pulumi.IntInput) ClusterCrossClusterReplicationConfigMembershipSecondaryClusterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterCrossClusterReplicationConfigMembershipSecondaryCluster {
+		return vs[0].([]ClusterCrossClusterReplicationConfigMembershipSecondaryCluster)[vs[1].(int)]
+	}).(ClusterCrossClusterReplicationConfigMembershipSecondaryClusterOutput)
+}
+
+type ClusterCrossClusterReplicationConfigPrimaryCluster struct {
+	// The full resource path of the primary cluster in the format: projects/{project}/locations/{region}/clusters/{cluster-id}
+	Cluster *string `pulumi:"cluster"`
+	// (Output)
+	// The unique id of the primary cluster.
+	Uid *string `pulumi:"uid"`
+}
+
+// ClusterCrossClusterReplicationConfigPrimaryClusterInput is an input type that accepts ClusterCrossClusterReplicationConfigPrimaryClusterArgs and ClusterCrossClusterReplicationConfigPrimaryClusterOutput values.
+// You can construct a concrete instance of `ClusterCrossClusterReplicationConfigPrimaryClusterInput` via:
+//
+//	ClusterCrossClusterReplicationConfigPrimaryClusterArgs{...}
+type ClusterCrossClusterReplicationConfigPrimaryClusterInput interface {
+	pulumi.Input
+
+	ToClusterCrossClusterReplicationConfigPrimaryClusterOutput() ClusterCrossClusterReplicationConfigPrimaryClusterOutput
+	ToClusterCrossClusterReplicationConfigPrimaryClusterOutputWithContext(context.Context) ClusterCrossClusterReplicationConfigPrimaryClusterOutput
+}
+
+type ClusterCrossClusterReplicationConfigPrimaryClusterArgs struct {
+	// The full resource path of the primary cluster in the format: projects/{project}/locations/{region}/clusters/{cluster-id}
+	Cluster pulumi.StringPtrInput `pulumi:"cluster"`
+	// (Output)
+	// The unique id of the primary cluster.
+	Uid pulumi.StringPtrInput `pulumi:"uid"`
+}
+
+func (ClusterCrossClusterReplicationConfigPrimaryClusterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterCrossClusterReplicationConfigPrimaryCluster)(nil)).Elem()
+}
+
+func (i ClusterCrossClusterReplicationConfigPrimaryClusterArgs) ToClusterCrossClusterReplicationConfigPrimaryClusterOutput() ClusterCrossClusterReplicationConfigPrimaryClusterOutput {
+	return i.ToClusterCrossClusterReplicationConfigPrimaryClusterOutputWithContext(context.Background())
+}
+
+func (i ClusterCrossClusterReplicationConfigPrimaryClusterArgs) ToClusterCrossClusterReplicationConfigPrimaryClusterOutputWithContext(ctx context.Context) ClusterCrossClusterReplicationConfigPrimaryClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterCrossClusterReplicationConfigPrimaryClusterOutput)
+}
+
+func (i ClusterCrossClusterReplicationConfigPrimaryClusterArgs) ToClusterCrossClusterReplicationConfigPrimaryClusterPtrOutput() ClusterCrossClusterReplicationConfigPrimaryClusterPtrOutput {
+	return i.ToClusterCrossClusterReplicationConfigPrimaryClusterPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterCrossClusterReplicationConfigPrimaryClusterArgs) ToClusterCrossClusterReplicationConfigPrimaryClusterPtrOutputWithContext(ctx context.Context) ClusterCrossClusterReplicationConfigPrimaryClusterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterCrossClusterReplicationConfigPrimaryClusterOutput).ToClusterCrossClusterReplicationConfigPrimaryClusterPtrOutputWithContext(ctx)
+}
+
+// ClusterCrossClusterReplicationConfigPrimaryClusterPtrInput is an input type that accepts ClusterCrossClusterReplicationConfigPrimaryClusterArgs, ClusterCrossClusterReplicationConfigPrimaryClusterPtr and ClusterCrossClusterReplicationConfigPrimaryClusterPtrOutput values.
+// You can construct a concrete instance of `ClusterCrossClusterReplicationConfigPrimaryClusterPtrInput` via:
+//
+//	        ClusterCrossClusterReplicationConfigPrimaryClusterArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterCrossClusterReplicationConfigPrimaryClusterPtrInput interface {
+	pulumi.Input
+
+	ToClusterCrossClusterReplicationConfigPrimaryClusterPtrOutput() ClusterCrossClusterReplicationConfigPrimaryClusterPtrOutput
+	ToClusterCrossClusterReplicationConfigPrimaryClusterPtrOutputWithContext(context.Context) ClusterCrossClusterReplicationConfigPrimaryClusterPtrOutput
+}
+
+type clusterCrossClusterReplicationConfigPrimaryClusterPtrType ClusterCrossClusterReplicationConfigPrimaryClusterArgs
+
+func ClusterCrossClusterReplicationConfigPrimaryClusterPtr(v *ClusterCrossClusterReplicationConfigPrimaryClusterArgs) ClusterCrossClusterReplicationConfigPrimaryClusterPtrInput {
+	return (*clusterCrossClusterReplicationConfigPrimaryClusterPtrType)(v)
+}
+
+func (*clusterCrossClusterReplicationConfigPrimaryClusterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterCrossClusterReplicationConfigPrimaryCluster)(nil)).Elem()
+}
+
+func (i *clusterCrossClusterReplicationConfigPrimaryClusterPtrType) ToClusterCrossClusterReplicationConfigPrimaryClusterPtrOutput() ClusterCrossClusterReplicationConfigPrimaryClusterPtrOutput {
+	return i.ToClusterCrossClusterReplicationConfigPrimaryClusterPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterCrossClusterReplicationConfigPrimaryClusterPtrType) ToClusterCrossClusterReplicationConfigPrimaryClusterPtrOutputWithContext(ctx context.Context) ClusterCrossClusterReplicationConfigPrimaryClusterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterCrossClusterReplicationConfigPrimaryClusterPtrOutput)
+}
+
+type ClusterCrossClusterReplicationConfigPrimaryClusterOutput struct{ *pulumi.OutputState }
+
+func (ClusterCrossClusterReplicationConfigPrimaryClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterCrossClusterReplicationConfigPrimaryCluster)(nil)).Elem()
+}
+
+func (o ClusterCrossClusterReplicationConfigPrimaryClusterOutput) ToClusterCrossClusterReplicationConfigPrimaryClusterOutput() ClusterCrossClusterReplicationConfigPrimaryClusterOutput {
+	return o
+}
+
+func (o ClusterCrossClusterReplicationConfigPrimaryClusterOutput) ToClusterCrossClusterReplicationConfigPrimaryClusterOutputWithContext(ctx context.Context) ClusterCrossClusterReplicationConfigPrimaryClusterOutput {
+	return o
+}
+
+func (o ClusterCrossClusterReplicationConfigPrimaryClusterOutput) ToClusterCrossClusterReplicationConfigPrimaryClusterPtrOutput() ClusterCrossClusterReplicationConfigPrimaryClusterPtrOutput {
+	return o.ToClusterCrossClusterReplicationConfigPrimaryClusterPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterCrossClusterReplicationConfigPrimaryClusterOutput) ToClusterCrossClusterReplicationConfigPrimaryClusterPtrOutputWithContext(ctx context.Context) ClusterCrossClusterReplicationConfigPrimaryClusterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterCrossClusterReplicationConfigPrimaryCluster) *ClusterCrossClusterReplicationConfigPrimaryCluster {
+		return &v
+	}).(ClusterCrossClusterReplicationConfigPrimaryClusterPtrOutput)
+}
+
+// The full resource path of the primary cluster in the format: projects/{project}/locations/{region}/clusters/{cluster-id}
+func (o ClusterCrossClusterReplicationConfigPrimaryClusterOutput) Cluster() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterCrossClusterReplicationConfigPrimaryCluster) *string { return v.Cluster }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The unique id of the primary cluster.
+func (o ClusterCrossClusterReplicationConfigPrimaryClusterOutput) Uid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterCrossClusterReplicationConfigPrimaryCluster) *string { return v.Uid }).(pulumi.StringPtrOutput)
+}
+
+type ClusterCrossClusterReplicationConfigPrimaryClusterPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterCrossClusterReplicationConfigPrimaryClusterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterCrossClusterReplicationConfigPrimaryCluster)(nil)).Elem()
+}
+
+func (o ClusterCrossClusterReplicationConfigPrimaryClusterPtrOutput) ToClusterCrossClusterReplicationConfigPrimaryClusterPtrOutput() ClusterCrossClusterReplicationConfigPrimaryClusterPtrOutput {
+	return o
+}
+
+func (o ClusterCrossClusterReplicationConfigPrimaryClusterPtrOutput) ToClusterCrossClusterReplicationConfigPrimaryClusterPtrOutputWithContext(ctx context.Context) ClusterCrossClusterReplicationConfigPrimaryClusterPtrOutput {
+	return o
+}
+
+func (o ClusterCrossClusterReplicationConfigPrimaryClusterPtrOutput) Elem() ClusterCrossClusterReplicationConfigPrimaryClusterOutput {
+	return o.ApplyT(func(v *ClusterCrossClusterReplicationConfigPrimaryCluster) ClusterCrossClusterReplicationConfigPrimaryCluster {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterCrossClusterReplicationConfigPrimaryCluster
+		return ret
+	}).(ClusterCrossClusterReplicationConfigPrimaryClusterOutput)
+}
+
+// The full resource path of the primary cluster in the format: projects/{project}/locations/{region}/clusters/{cluster-id}
+func (o ClusterCrossClusterReplicationConfigPrimaryClusterPtrOutput) Cluster() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterCrossClusterReplicationConfigPrimaryCluster) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Cluster
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The unique id of the primary cluster.
+func (o ClusterCrossClusterReplicationConfigPrimaryClusterPtrOutput) Uid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterCrossClusterReplicationConfigPrimaryCluster) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Uid
+	}).(pulumi.StringPtrOutput)
+}
+
+type ClusterCrossClusterReplicationConfigSecondaryCluster struct {
+	// (Output)
+	// The full resource path of the secondary cluster in the format: projects/{project}/locations/{region}/clusters/{cluster-id}
+	Cluster *string `pulumi:"cluster"`
+	// (Output)
+	// The unique id of the secondary cluster.
+	Uid *string `pulumi:"uid"`
+}
+
+// ClusterCrossClusterReplicationConfigSecondaryClusterInput is an input type that accepts ClusterCrossClusterReplicationConfigSecondaryClusterArgs and ClusterCrossClusterReplicationConfigSecondaryClusterOutput values.
+// You can construct a concrete instance of `ClusterCrossClusterReplicationConfigSecondaryClusterInput` via:
+//
+//	ClusterCrossClusterReplicationConfigSecondaryClusterArgs{...}
+type ClusterCrossClusterReplicationConfigSecondaryClusterInput interface {
+	pulumi.Input
+
+	ToClusterCrossClusterReplicationConfigSecondaryClusterOutput() ClusterCrossClusterReplicationConfigSecondaryClusterOutput
+	ToClusterCrossClusterReplicationConfigSecondaryClusterOutputWithContext(context.Context) ClusterCrossClusterReplicationConfigSecondaryClusterOutput
+}
+
+type ClusterCrossClusterReplicationConfigSecondaryClusterArgs struct {
+	// (Output)
+	// The full resource path of the secondary cluster in the format: projects/{project}/locations/{region}/clusters/{cluster-id}
+	Cluster pulumi.StringPtrInput `pulumi:"cluster"`
+	// (Output)
+	// The unique id of the secondary cluster.
+	Uid pulumi.StringPtrInput `pulumi:"uid"`
+}
+
+func (ClusterCrossClusterReplicationConfigSecondaryClusterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterCrossClusterReplicationConfigSecondaryCluster)(nil)).Elem()
+}
+
+func (i ClusterCrossClusterReplicationConfigSecondaryClusterArgs) ToClusterCrossClusterReplicationConfigSecondaryClusterOutput() ClusterCrossClusterReplicationConfigSecondaryClusterOutput {
+	return i.ToClusterCrossClusterReplicationConfigSecondaryClusterOutputWithContext(context.Background())
+}
+
+func (i ClusterCrossClusterReplicationConfigSecondaryClusterArgs) ToClusterCrossClusterReplicationConfigSecondaryClusterOutputWithContext(ctx context.Context) ClusterCrossClusterReplicationConfigSecondaryClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterCrossClusterReplicationConfigSecondaryClusterOutput)
+}
+
+// ClusterCrossClusterReplicationConfigSecondaryClusterArrayInput is an input type that accepts ClusterCrossClusterReplicationConfigSecondaryClusterArray and ClusterCrossClusterReplicationConfigSecondaryClusterArrayOutput values.
+// You can construct a concrete instance of `ClusterCrossClusterReplicationConfigSecondaryClusterArrayInput` via:
+//
+//	ClusterCrossClusterReplicationConfigSecondaryClusterArray{ ClusterCrossClusterReplicationConfigSecondaryClusterArgs{...} }
+type ClusterCrossClusterReplicationConfigSecondaryClusterArrayInput interface {
+	pulumi.Input
+
+	ToClusterCrossClusterReplicationConfigSecondaryClusterArrayOutput() ClusterCrossClusterReplicationConfigSecondaryClusterArrayOutput
+	ToClusterCrossClusterReplicationConfigSecondaryClusterArrayOutputWithContext(context.Context) ClusterCrossClusterReplicationConfigSecondaryClusterArrayOutput
+}
+
+type ClusterCrossClusterReplicationConfigSecondaryClusterArray []ClusterCrossClusterReplicationConfigSecondaryClusterInput
+
+func (ClusterCrossClusterReplicationConfigSecondaryClusterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterCrossClusterReplicationConfigSecondaryCluster)(nil)).Elem()
+}
+
+func (i ClusterCrossClusterReplicationConfigSecondaryClusterArray) ToClusterCrossClusterReplicationConfigSecondaryClusterArrayOutput() ClusterCrossClusterReplicationConfigSecondaryClusterArrayOutput {
+	return i.ToClusterCrossClusterReplicationConfigSecondaryClusterArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterCrossClusterReplicationConfigSecondaryClusterArray) ToClusterCrossClusterReplicationConfigSecondaryClusterArrayOutputWithContext(ctx context.Context) ClusterCrossClusterReplicationConfigSecondaryClusterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterCrossClusterReplicationConfigSecondaryClusterArrayOutput)
+}
+
+type ClusterCrossClusterReplicationConfigSecondaryClusterOutput struct{ *pulumi.OutputState }
+
+func (ClusterCrossClusterReplicationConfigSecondaryClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterCrossClusterReplicationConfigSecondaryCluster)(nil)).Elem()
+}
+
+func (o ClusterCrossClusterReplicationConfigSecondaryClusterOutput) ToClusterCrossClusterReplicationConfigSecondaryClusterOutput() ClusterCrossClusterReplicationConfigSecondaryClusterOutput {
+	return o
+}
+
+func (o ClusterCrossClusterReplicationConfigSecondaryClusterOutput) ToClusterCrossClusterReplicationConfigSecondaryClusterOutputWithContext(ctx context.Context) ClusterCrossClusterReplicationConfigSecondaryClusterOutput {
+	return o
+}
+
+// (Output)
+// The full resource path of the secondary cluster in the format: projects/{project}/locations/{region}/clusters/{cluster-id}
+func (o ClusterCrossClusterReplicationConfigSecondaryClusterOutput) Cluster() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterCrossClusterReplicationConfigSecondaryCluster) *string { return v.Cluster }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The unique id of the secondary cluster.
+func (o ClusterCrossClusterReplicationConfigSecondaryClusterOutput) Uid() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterCrossClusterReplicationConfigSecondaryCluster) *string { return v.Uid }).(pulumi.StringPtrOutput)
+}
+
+type ClusterCrossClusterReplicationConfigSecondaryClusterArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterCrossClusterReplicationConfigSecondaryClusterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterCrossClusterReplicationConfigSecondaryCluster)(nil)).Elem()
+}
+
+func (o ClusterCrossClusterReplicationConfigSecondaryClusterArrayOutput) ToClusterCrossClusterReplicationConfigSecondaryClusterArrayOutput() ClusterCrossClusterReplicationConfigSecondaryClusterArrayOutput {
+	return o
+}
+
+func (o ClusterCrossClusterReplicationConfigSecondaryClusterArrayOutput) ToClusterCrossClusterReplicationConfigSecondaryClusterArrayOutputWithContext(ctx context.Context) ClusterCrossClusterReplicationConfigSecondaryClusterArrayOutput {
+	return o
+}
+
+func (o ClusterCrossClusterReplicationConfigSecondaryClusterArrayOutput) Index(i pulumi.IntInput) ClusterCrossClusterReplicationConfigSecondaryClusterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterCrossClusterReplicationConfigSecondaryCluster {
+		return vs[0].([]ClusterCrossClusterReplicationConfigSecondaryCluster)[vs[1].(int)]
+	}).(ClusterCrossClusterReplicationConfigSecondaryClusterOutput)
+}
+
 type ClusterDiscoveryEndpoint struct {
 	// Output only. The IP allocated on the consumer network for the PSC forwarding rule.
 	Address *string `pulumi:"address"`
@@ -1074,7 +1936,7 @@ func (o ClusterPersistenceConfigPtrOutput) RdbConfig() ClusterPersistenceConfigR
 
 type ClusterPersistenceConfigAofConfig struct {
 	// Optional. Available fsync modes.
-	// - NO - Do not explicilty call fsync(). Rely on OS defaults.
+	// - NO - Do not explicitly call fsync(). Rely on OS defaults.
 	// - EVERYSEC - Call fsync() once per second in a background thread. A balance between performance and durability.
 	// - ALWAYS - Call fsync() for earch write command.
 	//   Possible values are: `APPEND_FSYNC_UNSPECIFIED`, `NO`, `EVERYSEC`, `ALWAYS`.
@@ -1094,7 +1956,7 @@ type ClusterPersistenceConfigAofConfigInput interface {
 
 type ClusterPersistenceConfigAofConfigArgs struct {
 	// Optional. Available fsync modes.
-	// - NO - Do not explicilty call fsync(). Rely on OS defaults.
+	// - NO - Do not explicitly call fsync(). Rely on OS defaults.
 	// - EVERYSEC - Call fsync() once per second in a background thread. A balance between performance and durability.
 	// - ALWAYS - Call fsync() for earch write command.
 	//   Possible values are: `APPEND_FSYNC_UNSPECIFIED`, `NO`, `EVERYSEC`, `ALWAYS`.
@@ -1179,7 +2041,7 @@ func (o ClusterPersistenceConfigAofConfigOutput) ToClusterPersistenceConfigAofCo
 }
 
 // Optional. Available fsync modes.
-//   - NO - Do not explicilty call fsync(). Rely on OS defaults.
+//   - NO - Do not explicitly call fsync(). Rely on OS defaults.
 //   - EVERYSEC - Call fsync() once per second in a background thread. A balance between performance and durability.
 //   - ALWAYS - Call fsync() for earch write command.
 //     Possible values are: `APPEND_FSYNC_UNSPECIFIED`, `NO`, `EVERYSEC`, `ALWAYS`.
@@ -1212,7 +2074,7 @@ func (o ClusterPersistenceConfigAofConfigPtrOutput) Elem() ClusterPersistenceCon
 }
 
 // Optional. Available fsync modes.
-//   - NO - Do not explicilty call fsync(). Rely on OS defaults.
+//   - NO - Do not explicitly call fsync(). Rely on OS defaults.
 //   - EVERYSEC - Call fsync() once per second in a background thread. A balance between performance and durability.
 //   - ALWAYS - Call fsync() for earch write command.
 //     Possible values are: `APPEND_FSYNC_UNSPECIFIED`, `NO`, `EVERYSEC`, `ALWAYS`.
@@ -4203,6 +5065,18 @@ func (o GetInstanceServerCaCertArrayOutput) Index(i pulumi.IntInput) GetInstance
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterCrossClusterReplicationConfigInput)(nil)).Elem(), ClusterCrossClusterReplicationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterCrossClusterReplicationConfigPtrInput)(nil)).Elem(), ClusterCrossClusterReplicationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterCrossClusterReplicationConfigMembershipInput)(nil)).Elem(), ClusterCrossClusterReplicationConfigMembershipArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterCrossClusterReplicationConfigMembershipArrayInput)(nil)).Elem(), ClusterCrossClusterReplicationConfigMembershipArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterCrossClusterReplicationConfigMembershipPrimaryClusterInput)(nil)).Elem(), ClusterCrossClusterReplicationConfigMembershipPrimaryClusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterCrossClusterReplicationConfigMembershipPrimaryClusterArrayInput)(nil)).Elem(), ClusterCrossClusterReplicationConfigMembershipPrimaryClusterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterCrossClusterReplicationConfigMembershipSecondaryClusterInput)(nil)).Elem(), ClusterCrossClusterReplicationConfigMembershipSecondaryClusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterCrossClusterReplicationConfigMembershipSecondaryClusterArrayInput)(nil)).Elem(), ClusterCrossClusterReplicationConfigMembershipSecondaryClusterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterCrossClusterReplicationConfigPrimaryClusterInput)(nil)).Elem(), ClusterCrossClusterReplicationConfigPrimaryClusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterCrossClusterReplicationConfigPrimaryClusterPtrInput)(nil)).Elem(), ClusterCrossClusterReplicationConfigPrimaryClusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterCrossClusterReplicationConfigSecondaryClusterInput)(nil)).Elem(), ClusterCrossClusterReplicationConfigSecondaryClusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterCrossClusterReplicationConfigSecondaryClusterArrayInput)(nil)).Elem(), ClusterCrossClusterReplicationConfigSecondaryClusterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterDiscoveryEndpointInput)(nil)).Elem(), ClusterDiscoveryEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterDiscoveryEndpointArrayInput)(nil)).Elem(), ClusterDiscoveryEndpointArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterDiscoveryEndpointPscConfigInput)(nil)).Elem(), ClusterDiscoveryEndpointPscConfigArgs{})
@@ -4257,6 +5131,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstancePersistenceConfigArrayInput)(nil)).Elem(), GetInstancePersistenceConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceServerCaCertInput)(nil)).Elem(), GetInstanceServerCaCertArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetInstanceServerCaCertArrayInput)(nil)).Elem(), GetInstanceServerCaCertArray{})
+	pulumi.RegisterOutputType(ClusterCrossClusterReplicationConfigOutput{})
+	pulumi.RegisterOutputType(ClusterCrossClusterReplicationConfigPtrOutput{})
+	pulumi.RegisterOutputType(ClusterCrossClusterReplicationConfigMembershipOutput{})
+	pulumi.RegisterOutputType(ClusterCrossClusterReplicationConfigMembershipArrayOutput{})
+	pulumi.RegisterOutputType(ClusterCrossClusterReplicationConfigMembershipPrimaryClusterOutput{})
+	pulumi.RegisterOutputType(ClusterCrossClusterReplicationConfigMembershipPrimaryClusterArrayOutput{})
+	pulumi.RegisterOutputType(ClusterCrossClusterReplicationConfigMembershipSecondaryClusterOutput{})
+	pulumi.RegisterOutputType(ClusterCrossClusterReplicationConfigMembershipSecondaryClusterArrayOutput{})
+	pulumi.RegisterOutputType(ClusterCrossClusterReplicationConfigPrimaryClusterOutput{})
+	pulumi.RegisterOutputType(ClusterCrossClusterReplicationConfigPrimaryClusterPtrOutput{})
+	pulumi.RegisterOutputType(ClusterCrossClusterReplicationConfigSecondaryClusterOutput{})
+	pulumi.RegisterOutputType(ClusterCrossClusterReplicationConfigSecondaryClusterArrayOutput{})
 	pulumi.RegisterOutputType(ClusterDiscoveryEndpointOutput{})
 	pulumi.RegisterOutputType(ClusterDiscoveryEndpointArrayOutput{})
 	pulumi.RegisterOutputType(ClusterDiscoveryEndpointPscConfigOutput{})
