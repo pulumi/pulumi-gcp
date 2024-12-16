@@ -342,7 +342,8 @@ func TestBucketBooleanLabel(t *testing.T) {
 	      "sendsOldInputsToDelete": true
 	    },
 	    "response": {
-	      "supportsPreview": true
+	      "supportsPreview": true,
+	      "supportsAutonamingConfiguration": true
 	    }
 	  },
 	  {
@@ -448,54 +449,55 @@ func TestNodePoolGpuAcceleratorPanic(t *testing.T) {
 			  "sendsOldInputsToDelete": true
 			},
 			"response": {
-			  "supportsPreview": true
+			  "supportsPreview": true,
+			  "supportsAutonamingConfiguration": true
 			}
 		},
 		{
-		"method": "/pulumirpc.ResourceProvider/Create",
-		"request": {
-			"urn": "urn:pulumi:dev::gcp_node_pool::gcp:container/nodePool:NodePool::gpu-node-pool",
-			"properties": {
-				"__defaults": [
-					"name"
-				],
-				"cluster": "04da6b54-80e4-46f7-96ec-b56ff0331ba9",
-				"initialNodeCount": 1,
-				"name": "gpu-node-pool-c90bfc0",
-				"nodeConfig": {
+			"method": "/pulumirpc.ResourceProvider/Create",
+			"request": {
+				"urn": "urn:pulumi:dev::gcp_node_pool::gcp:container/nodePool:NodePool::gpu-node-pool",
+				"properties": {
 					"__defaults": [
-						"preemptible",
-						"spot"
+						"name"
 					],
-					"diskSizeGb": 50,
-					"guestAccelerators": [
-						{
-							"__defaults": [],
-							"count": 1,
-							"type": "nvidia-tesla-t4"
-						}
-					],
-					"machineType": "n1-highmem-8",
-					"oauthScopes": [
-						"https://www.googleapis.com/auth/cloud-platform"
-					],
-					"preemptible": false,
-					"resourceManagerTags": {},
-					"spot": false
-				}
+					"cluster": "04da6b54-80e4-46f7-96ec-b56ff0331ba9",
+					"initialNodeCount": 1,
+					"name": "gpu-node-pool-c90bfc0",
+					"nodeConfig": {
+						"__defaults": [
+							"preemptible",
+							"spot"
+						],
+						"diskSizeGb": 50,
+						"guestAccelerators": [
+							{
+								"__defaults": [],
+								"count": 1,
+								"type": "nvidia-tesla-t4"
+							}
+						],
+						"machineType": "n1-highmem-8",
+						"oauthScopes": [
+							"https://www.googleapis.com/auth/cloud-platform"
+						],
+						"preemptible": false,
+						"resourceManagerTags": {},
+						"spot": false
+					}
+				},
+				"preview": true
 			},
-			"preview": true
-		},
-		"response": {
-			"properties": "*"
-		},
-		"metadata": {
-			"kind": "resource",
-			"mode": "client",
-			"name": "gcp"
+			"response": {
+				"properties": "*"
+			},
+			"metadata": {
+				"kind": "resource",
+				"mode": "client",
+				"name": "gcp"
+			}
 		}
-	}]`,
-	)
+	]`)
 }
 
 func TestOrganizationsProjectAutoNaming(t *testing.T) {
@@ -589,7 +591,8 @@ func TestRegress1488(t *testing.T) {
 	    "sendsOldInputsToDelete": true
 	  },
 	  "response": {
-	    "supportsPreview": true
+	    "supportsPreview": true,
+	    "supportsAutonamingConfiguration": true
 	  }
 	},
 	{
@@ -699,7 +702,8 @@ func TestCloudrunServiceDiffNoErrorLabelsDuplicate(t *testing.T) {
 			"sendsOldInputsToDelete": true
 		},
 		"response": {
-			"supportsPreview": true
+			"supportsPreview": true,
+			"supportsAutonamingConfiguration": true
 		}
 	},
 	{
