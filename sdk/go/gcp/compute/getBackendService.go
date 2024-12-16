@@ -120,21 +120,11 @@ type LookupBackendServiceResult struct {
 }
 
 func LookupBackendServiceOutput(ctx *pulumi.Context, args LookupBackendServiceOutputArgs, opts ...pulumi.InvokeOption) LookupBackendServiceResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupBackendServiceResultOutput, error) {
 			args := v.(LookupBackendServiceArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupBackendServiceResult
-			secret, err := ctx.InvokePackageRaw("gcp:compute/getBackendService:getBackendService", args, &rv, "", opts...)
-			if err != nil {
-				return LookupBackendServiceResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupBackendServiceResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupBackendServiceResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gcp:compute/getBackendService:getBackendService", args, LookupBackendServiceResultOutput{}, options).(LookupBackendServiceResultOutput), nil
 		}).(LookupBackendServiceResultOutput)
 }
 

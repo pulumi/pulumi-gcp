@@ -72,21 +72,11 @@ type GetManagedZoneIamPolicyResult struct {
 }
 
 func GetManagedZoneIamPolicyOutput(ctx *pulumi.Context, args GetManagedZoneIamPolicyOutputArgs, opts ...pulumi.InvokeOption) GetManagedZoneIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetManagedZoneIamPolicyResultOutput, error) {
 			args := v.(GetManagedZoneIamPolicyArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetManagedZoneIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:dns/getManagedZoneIamPolicy:getManagedZoneIamPolicy", args, &rv, "", opts...)
-			if err != nil {
-				return GetManagedZoneIamPolicyResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetManagedZoneIamPolicyResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetManagedZoneIamPolicyResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gcp:dns/getManagedZoneIamPolicy:getManagedZoneIamPolicy", args, GetManagedZoneIamPolicyResultOutput{}, options).(GetManagedZoneIamPolicyResultOutput), nil
 		}).(GetManagedZoneIamPolicyResultOutput)
 }
 

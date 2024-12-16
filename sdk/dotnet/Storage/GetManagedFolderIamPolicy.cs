@@ -16,6 +16,9 @@ namespace Pulumi.Gcp.Storage
 
         public static Output<GetManagedFolderIamPolicyResult> Invoke(GetManagedFolderIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetManagedFolderIamPolicyResult>("gcp:storage/getManagedFolderIamPolicy:getManagedFolderIamPolicy", args ?? new GetManagedFolderIamPolicyInvokeArgs(), options.WithDefaults());
+
+        public static Output<GetManagedFolderIamPolicyResult> Invoke(GetManagedFolderIamPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetManagedFolderIamPolicyResult>("gcp:storage/getManagedFolderIamPolicy:getManagedFolderIamPolicy", args ?? new GetManagedFolderIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

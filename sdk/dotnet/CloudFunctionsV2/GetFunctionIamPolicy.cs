@@ -64,6 +64,33 @@ namespace Pulumi.Gcp.CloudFunctionsV2
         /// </summary>
         public static Output<GetFunctionIamPolicyResult> Invoke(GetFunctionIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetFunctionIamPolicyResult>("gcp:cloudfunctionsv2/getFunctionIamPolicy:getFunctionIamPolicy", args ?? new GetFunctionIamPolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves the current IAM policy data for function
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.CloudFunctionsV2.GetFunctionIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = function.Project,
+        ///         Location = function.Location,
+        ///         CloudFunction = function.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetFunctionIamPolicyResult> Invoke(GetFunctionIamPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetFunctionIamPolicyResult>("gcp:cloudfunctionsv2/getFunctionIamPolicy:getFunctionIamPolicy", args ?? new GetFunctionIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -81,21 +81,11 @@ type LookupExternalAccessRuleResult struct {
 }
 
 func LookupExternalAccessRuleOutput(ctx *pulumi.Context, args LookupExternalAccessRuleOutputArgs, opts ...pulumi.InvokeOption) LookupExternalAccessRuleResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupExternalAccessRuleResultOutput, error) {
 			args := v.(LookupExternalAccessRuleArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupExternalAccessRuleResult
-			secret, err := ctx.InvokePackageRaw("gcp:vmwareengine/getExternalAccessRule:getExternalAccessRule", args, &rv, "", opts...)
-			if err != nil {
-				return LookupExternalAccessRuleResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupExternalAccessRuleResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupExternalAccessRuleResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gcp:vmwareengine/getExternalAccessRule:getExternalAccessRule", args, LookupExternalAccessRuleResultOutput{}, options).(LookupExternalAccessRuleResultOutput), nil
 		}).(LookupExternalAccessRuleResultOutput)
 }
 

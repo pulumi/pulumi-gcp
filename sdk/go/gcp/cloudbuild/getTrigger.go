@@ -98,21 +98,11 @@ type LookupTriggerResult struct {
 }
 
 func LookupTriggerOutput(ctx *pulumi.Context, args LookupTriggerOutputArgs, opts ...pulumi.InvokeOption) LookupTriggerResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupTriggerResultOutput, error) {
 			args := v.(LookupTriggerArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupTriggerResult
-			secret, err := ctx.InvokePackageRaw("gcp:cloudbuild/getTrigger:getTrigger", args, &rv, "", opts...)
-			if err != nil {
-				return LookupTriggerResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupTriggerResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupTriggerResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gcp:cloudbuild/getTrigger:getTrigger", args, LookupTriggerResultOutput{}, options).(LookupTriggerResultOutput), nil
 		}).(LookupTriggerResultOutput)
 }
 

@@ -50,21 +50,11 @@ type LookupIAMPolicyResult struct {
 }
 
 func LookupIAMPolicyOutput(ctx *pulumi.Context, args LookupIAMPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupIAMPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupIAMPolicyResultOutput, error) {
 			args := v.(LookupIAMPolicyArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupIAMPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:organizations/getIAMPolicy:getIAMPolicy", args, &rv, "", opts...)
-			if err != nil {
-				return LookupIAMPolicyResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupIAMPolicyResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupIAMPolicyResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gcp:organizations/getIAMPolicy:getIAMPolicy", args, LookupIAMPolicyResultOutput{}, options).(LookupIAMPolicyResultOutput), nil
 		}).(LookupIAMPolicyResultOutput)
 }
 

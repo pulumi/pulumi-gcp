@@ -58,6 +58,30 @@ namespace Pulumi.Gcp.Beyondcorp
         /// </summary>
         public static Output<GetAppConnectionResult> Invoke(GetAppConnectionInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAppConnectionResult>("gcp:beyondcorp/getAppConnection:getAppConnection", args ?? new GetAppConnectionInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get information about a Google BeyondCorp App Connection.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_beyondcorp_app_connection = Gcp.Beyondcorp.GetAppConnection.Invoke(new()
+        ///     {
+        ///         Name = "my-beyondcorp-app-connection",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAppConnectionResult> Invoke(GetAppConnectionInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAppConnectionResult>("gcp:beyondcorp/getAppConnection:getAppConnection", args ?? new GetAppConnectionInvokeArgs(), options.WithDefaults());
     }
 
 

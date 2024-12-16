@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.firebase.inputs.GetAndroidAppArgs;
 import com.pulumi.gcp.firebase.inputs.GetAndroidAppConfigArgs;
@@ -41,6 +42,9 @@ public final class FirebaseFunctions {
     public static Output<GetAndroidAppResult> getAndroidApp(GetAndroidAppArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:firebase/getAndroidApp:getAndroidApp", TypeShape.of(GetAndroidAppResult.class), args, Utilities.withVersion(options));
     }
+    public static Output<GetAndroidAppResult> getAndroidApp(GetAndroidAppArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:firebase/getAndroidApp:getAndroidApp", TypeShape.of(GetAndroidAppResult.class), args, Utilities.withVersion(options));
+    }
     public static CompletableFuture<GetAndroidAppResult> getAndroidAppPlain(GetAndroidAppPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:firebase/getAndroidApp:getAndroidApp", TypeShape.of(GetAndroidAppResult.class), args, Utilities.withVersion(options));
     }
@@ -51,6 +55,9 @@ public final class FirebaseFunctions {
         return getAndroidAppConfigPlain(args, InvokeOptions.Empty);
     }
     public static Output<GetAndroidAppConfigResult> getAndroidAppConfig(GetAndroidAppConfigArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:firebase/getAndroidAppConfig:getAndroidAppConfig", TypeShape.of(GetAndroidAppConfigResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetAndroidAppConfigResult> getAndroidAppConfig(GetAndroidAppConfigArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:firebase/getAndroidAppConfig:getAndroidAppConfig", TypeShape.of(GetAndroidAppConfigResult.class), args, Utilities.withVersion(options));
     }
     public static CompletableFuture<GetAndroidAppConfigResult> getAndroidAppConfigPlain(GetAndroidAppConfigPlainArgs args, InvokeOptions options) {
@@ -65,6 +72,9 @@ public final class FirebaseFunctions {
     public static Output<GetAppleAppResult> getAppleApp(GetAppleAppArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:firebase/getAppleApp:getAppleApp", TypeShape.of(GetAppleAppResult.class), args, Utilities.withVersion(options));
     }
+    public static Output<GetAppleAppResult> getAppleApp(GetAppleAppArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:firebase/getAppleApp:getAppleApp", TypeShape.of(GetAppleAppResult.class), args, Utilities.withVersion(options));
+    }
     public static CompletableFuture<GetAppleAppResult> getAppleAppPlain(GetAppleAppPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:firebase/getAppleApp:getAppleApp", TypeShape.of(GetAppleAppResult.class), args, Utilities.withVersion(options));
     }
@@ -77,6 +87,9 @@ public final class FirebaseFunctions {
     public static Output<GetAppleAppConfigResult> getAppleAppConfig(GetAppleAppConfigArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:firebase/getAppleAppConfig:getAppleAppConfig", TypeShape.of(GetAppleAppConfigResult.class), args, Utilities.withVersion(options));
     }
+    public static Output<GetAppleAppConfigResult> getAppleAppConfig(GetAppleAppConfigArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:firebase/getAppleAppConfig:getAppleAppConfig", TypeShape.of(GetAppleAppConfigResult.class), args, Utilities.withVersion(options));
+    }
     public static CompletableFuture<GetAppleAppConfigResult> getAppleAppConfigPlain(GetAppleAppConfigPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:firebase/getAppleAppConfig:getAppleAppConfig", TypeShape.of(GetAppleAppConfigResult.class), args, Utilities.withVersion(options));
     }
@@ -87,6 +100,9 @@ public final class FirebaseFunctions {
         return getHostingChannelPlain(args, InvokeOptions.Empty);
     }
     public static Output<GetHostingChannelResult> getHostingChannel(GetHostingChannelArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:firebase/getHostingChannel:getHostingChannel", TypeShape.of(GetHostingChannelResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetHostingChannelResult> getHostingChannel(GetHostingChannelArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:firebase/getHostingChannel:getHostingChannel", TypeShape.of(GetHostingChannelResult.class), args, Utilities.withVersion(options));
     }
     public static CompletableFuture<GetHostingChannelResult> getHostingChannelPlain(GetHostingChannelPlainArgs args, InvokeOptions options) {
@@ -111,6 +127,13 @@ public final class FirebaseFunctions {
      * 
      */
     public static Output<GetWebAppResult> getWebApp(GetWebAppArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:firebase/getWebApp:getWebApp", TypeShape.of(GetWebAppResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * A Google Cloud Firebase web application instance
+     * 
+     */
+    public static Output<GetWebAppResult> getWebApp(GetWebAppArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:firebase/getWebApp:getWebApp", TypeShape.of(GetWebAppResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -157,6 +180,19 @@ public final class FirebaseFunctions {
      * 
      */
     public static Output<GetWebAppConfigResult> getWebAppConfig(GetWebAppConfigArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:firebase/getWebAppConfig:getWebAppConfig", TypeShape.of(GetWebAppConfigResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * A Google Cloud Firebase web application configuration
+     * 
+     * To get more information about WebApp, see:
+     * 
+     * * [API documentation](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.webApps)
+     * * How-to Guides
+     *     * [Official Documentation](https://firebase.google.com/)
+     * 
+     */
+    public static Output<GetWebAppConfigResult> getWebAppConfig(GetWebAppConfigArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:firebase/getWebAppConfig:getWebAppConfig", TypeShape.of(GetWebAppConfigResult.class), args, Utilities.withVersion(options));
     }
     /**

@@ -64,6 +64,33 @@ namespace Pulumi.Gcp.CloudRun
         /// </summary>
         public static Output<GetServiceIamPolicyResult> Invoke(GetServiceIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServiceIamPolicyResult>("gcp:cloudrun/getServiceIamPolicy:getServiceIamPolicy", args ?? new GetServiceIamPolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves the current IAM policy data for service
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.CloudRun.GetServiceIamPolicy.Invoke(new()
+        ///     {
+        ///         Location = @default.Location,
+        ///         Project = @default.Project,
+        ///         Service = @default.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetServiceIamPolicyResult> Invoke(GetServiceIamPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetServiceIamPolicyResult>("gcp:cloudrun/getServiceIamPolicy:getServiceIamPolicy", args ?? new GetServiceIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

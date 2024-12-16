@@ -64,6 +64,33 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public static Output<GetRegionInstanceGroupManagerResult> Invoke(GetRegionInstanceGroupManagerInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRegionInstanceGroupManagerResult>("gcp:compute/getRegionInstanceGroupManager:getRegionInstanceGroupManager", args ?? new GetRegionInstanceGroupManagerInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get a Compute Region Instance Group Manager within GCE.
+        /// For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups)
+        /// and [API](https://cloud.google.com/compute/docs/reference/rest/v1/regionInstanceGroupManagers)
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var rigm = Gcp.Compute.GetRegionInstanceGroupManager.Invoke(new()
+        ///     {
+        ///         Name = "my-igm",
+        ///         Region = "us-central1",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetRegionInstanceGroupManagerResult> Invoke(GetRegionInstanceGroupManagerInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRegionInstanceGroupManagerResult>("gcp:compute/getRegionInstanceGroupManager:getRegionInstanceGroupManager", args ?? new GetRegionInstanceGroupManagerInvokeArgs(), options.WithDefaults());
     }
 
 

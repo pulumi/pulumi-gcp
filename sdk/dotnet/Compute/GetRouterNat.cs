@@ -68,6 +68,35 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public static Output<GetRouterNatResult> Invoke(GetRouterNatInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRouterNatResult>("gcp:compute/getRouterNat:getRouterNat", args ?? new GetRouterNatInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// To get more information about Snapshot, see:
+        /// 
+        /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/routers)
+        /// * How-to Guides
+        ///     * [Official Documentation](https://cloud.google.com/router/docs/)
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = Gcp.Compute.GetRouterNat.Invoke(new()
+        ///     {
+        ///         Name = "my-nat",
+        ///         Router = "my-router",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetRouterNatResult> Invoke(GetRouterNatInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRouterNatResult>("gcp:compute/getRouterNat:getRouterNat", args ?? new GetRouterNatInvokeArgs(), options.WithDefaults());
     }
 
 

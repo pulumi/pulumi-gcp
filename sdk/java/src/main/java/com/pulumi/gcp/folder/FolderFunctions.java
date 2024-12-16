@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.folder.inputs.GetIamPolicyArgs;
 import com.pulumi.gcp.folder.inputs.GetIamPolicyPlainArgs;
@@ -141,6 +142,48 @@ public final class FolderFunctions {
      * 
      */
     public static Output<GetIamPolicyResult> getIamPolicy(GetIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:folder/getIamPolicy:getIamPolicy", TypeShape.of(GetIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for a folder.
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.folder.FolderFunctions;
+     * import com.pulumi.gcp.folder.inputs.GetIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var test = FolderFunctions.getIamPolicy(GetIamPolicyArgs.builder()
+     *             .folder(permissiontest.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetIamPolicyResult> getIamPolicy(GetIamPolicyArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:folder/getIamPolicy:getIamPolicy", TypeShape.of(GetIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -321,6 +364,52 @@ public final class FolderFunctions {
      * 
      */
     public static Output<GetOrganizationPolicyResult> getOrganizationPolicy(GetOrganizationPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:folder/getOrganizationPolicy:getOrganizationPolicy", TypeShape.of(GetOrganizationPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Allows management of Organization policies for a Google Folder. For more information see
+     * [the official
+     * documentation](https://cloud.google.com/resource-manager/docs/organization-policy/overview)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.folder.FolderFunctions;
+     * import com.pulumi.gcp.folder.inputs.GetOrganizationPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = FolderFunctions.getOrganizationPolicy(GetOrganizationPolicyArgs.builder()
+     *             .folder("folders/folderid")
+     *             .constraint("constraints/compute.trustedImageProjects")
+     *             .build());
+     * 
+     *         ctx.export("version", policy.applyValue(getOrganizationPolicyResult -> getOrganizationPolicyResult.version()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetOrganizationPolicyResult> getOrganizationPolicy(GetOrganizationPolicyArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:folder/getOrganizationPolicy:getOrganizationPolicy", TypeShape.of(GetOrganizationPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**

@@ -59,6 +59,30 @@ namespace Pulumi.Gcp.Monitoring
         /// </summary>
         public static Output<GetSecretVersionResult> Invoke(GetSecretVersionInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSecretVersionResult>("gcp:monitoring/getSecretVersion:getSecretVersion", args ?? new GetSecretVersionInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get the value and metadata from a Secret Manager secret version. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.secrets.versions). If you don't need the metadata (i.e., if you want to use a more limited role to access the secret version only), see also the gcp.secretmanager.getSecretVersionAccess datasource.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var basic = Gcp.SecretManager.GetSecretVersion.Invoke(new()
+        ///     {
+        ///         Secret = "my-secret",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetSecretVersionResult> Invoke(GetSecretVersionInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetSecretVersionResult>("gcp:monitoring/getSecretVersion:getSecretVersion", args ?? new GetSecretVersionInvokeArgs(), options.WithDefaults());
     }
 
 

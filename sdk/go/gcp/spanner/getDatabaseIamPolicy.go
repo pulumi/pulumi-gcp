@@ -75,21 +75,11 @@ type GetDatabaseIamPolicyResult struct {
 }
 
 func GetDatabaseIamPolicyOutput(ctx *pulumi.Context, args GetDatabaseIamPolicyOutputArgs, opts ...pulumi.InvokeOption) GetDatabaseIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetDatabaseIamPolicyResultOutput, error) {
 			args := v.(GetDatabaseIamPolicyArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetDatabaseIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:spanner/getDatabaseIamPolicy:getDatabaseIamPolicy", args, &rv, "", opts...)
-			if err != nil {
-				return GetDatabaseIamPolicyResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetDatabaseIamPolicyResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetDatabaseIamPolicyResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gcp:spanner/getDatabaseIamPolicy:getDatabaseIamPolicy", args, GetDatabaseIamPolicyResultOutput{}, options).(GetDatabaseIamPolicyResultOutput), nil
 		}).(GetDatabaseIamPolicyResultOutput)
 }
 

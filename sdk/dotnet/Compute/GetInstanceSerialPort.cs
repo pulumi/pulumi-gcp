@@ -214,6 +214,108 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public static Output<GetInstanceSerialPortResult> Invoke(GetInstanceSerialPortInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstanceSerialPortResult>("gcp:compute/getInstanceSerialPort:getInstanceSerialPort", args ?? new GetInstanceSerialPortInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get the serial port output from a Compute Instance. For more information see
+        /// the official [API](https://cloud.google.com/compute/docs/instances/viewing-serial-port-output) documentation.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var serial = Gcp.Compute.GetInstanceSerialPort.Invoke(new()
+        ///     {
+        ///         Instance = "my-instance",
+        ///         Zone = "us-central1-a",
+        ///         Port = 1,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["serialOut"] = serial.Apply(getInstanceSerialPortResult =&gt; getInstanceSerialPortResult.Contents),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// Using the serial port output to generate a windows password, derived from the [official guide](https://cloud.google.com/compute/docs/instances/windows/automate-pw-generation):
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using System.Text.Json;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var windows = new Gcp.Compute.Instance("windows", new()
+        ///     {
+        ///         NetworkInterfaces = new[]
+        ///         {
+        ///             new Gcp.Compute.Inputs.InstanceNetworkInterfaceArgs
+        ///             {
+        ///                 AccessConfigs = new[]
+        ///                 {
+        ///                     null,
+        ///                 },
+        ///                 Network = "default",
+        ///             },
+        ///         },
+        ///         Name = "windows-instance",
+        ///         MachineType = "e2-medium",
+        ///         Zone = "us-central1-a",
+        ///         BootDisk = new Gcp.Compute.Inputs.InstanceBootDiskArgs
+        ///         {
+        ///             InitializeParams = new Gcp.Compute.Inputs.InstanceBootDiskInitializeParamsArgs
+        ///             {
+        ///                 Image = "windows-cloud/windows-2019",
+        ///             },
+        ///         },
+        ///         Metadata = 
+        ///         {
+        ///             { "serial-port-logging-enable", "TRUE" },
+        ///             { "windows-keys", JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+        ///             {
+        ///                 ["email"] = "example.user@example.com",
+        ///                 ["expireOn"] = "2020-04-14T01:37:19Z",
+        ///                 ["exponent"] = "AQAB",
+        ///                 ["modulus"] = "wgsquN4IBNPqIUnu+h/5Za1kujb2YRhX1vCQVQAkBwnWigcCqOBVfRa5JoZfx6KIvEXjWqa77jPvlsxM4WPqnDIM2qiK36up3SKkYwFjff6F2ni/ry8vrwXCX3sGZ1hbIHlK0O012HpA3ISeEswVZmX2X67naOvJXfY5v0hGPWqCADao+xVxrmxsZD4IWnKl1UaZzI5lhAzr8fw6utHwx1EZ/MSgsEki6tujcZfN+GUDRnmJGQSnPTXmsf7Q4DKreTZk49cuyB3prV91S0x3DYjCUpSXrkVy1Ha5XicGD/q+ystuFsJnrrhbNXJbpSjM6sjo/aduAkZJl4FmOt0R7Q==",
+        ///                 ["userName"] = "example-user",
+        ///             }) },
+        ///         },
+        ///         ServiceAccount = new Gcp.Compute.Inputs.InstanceServiceAccountArgs
+        ///         {
+        ///             Scopes = new[]
+        ///             {
+        ///                 "userinfo-email",
+        ///                 "compute-ro",
+        ///                 "storage-ro",
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     var serial = Gcp.Compute.GetInstanceSerialPort.Invoke(new()
+        ///     {
+        ///         Instance = windows.Name,
+        ///         Zone = windows.Zone,
+        ///         Port = 4,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["serialOut"] = serial.Apply(getInstanceSerialPortResult =&gt; getInstanceSerialPortResult.Contents),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetInstanceSerialPortResult> Invoke(GetInstanceSerialPortInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetInstanceSerialPortResult>("gcp:compute/getInstanceSerialPort:getInstanceSerialPort", args ?? new GetInstanceSerialPortInvokeArgs(), options.WithDefaults());
     }
 
 

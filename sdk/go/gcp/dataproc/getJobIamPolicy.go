@@ -71,21 +71,11 @@ type GetJobIamPolicyResult struct {
 }
 
 func GetJobIamPolicyOutput(ctx *pulumi.Context, args GetJobIamPolicyOutputArgs, opts ...pulumi.InvokeOption) GetJobIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetJobIamPolicyResultOutput, error) {
 			args := v.(GetJobIamPolicyArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetJobIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:dataproc/getJobIamPolicy:getJobIamPolicy", args, &rv, "", opts...)
-			if err != nil {
-				return GetJobIamPolicyResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetJobIamPolicyResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetJobIamPolicyResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gcp:dataproc/getJobIamPolicy:getJobIamPolicy", args, GetJobIamPolicyResultOutput{}, options).(GetJobIamPolicyResultOutput), nil
 		}).(GetJobIamPolicyResultOutput)
 }
 

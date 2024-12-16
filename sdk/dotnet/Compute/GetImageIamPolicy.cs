@@ -62,6 +62,32 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public static Output<GetImageIamPolicyResult> Invoke(GetImageIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetImageIamPolicyResult>("gcp:compute/getImageIamPolicy:getImageIamPolicy", args ?? new GetImageIamPolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves the current IAM policy data for image
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.Compute.GetImageIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = example.Project,
+        ///         Image = example.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetImageIamPolicyResult> Invoke(GetImageIamPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetImageIamPolicyResult>("gcp:compute/getImageIamPolicy:getImageIamPolicy", args ?? new GetImageIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

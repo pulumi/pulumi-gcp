@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.workstations.inputs.GetWorkstationConfigIamPolicyArgs;
 import com.pulumi.gcp.workstations.inputs.GetWorkstationConfigIamPolicyPlainArgs;
@@ -26,6 +27,9 @@ public final class WorkstationsFunctions {
     public static Output<GetWorkstationConfigIamPolicyResult> getWorkstationConfigIamPolicy(GetWorkstationConfigIamPolicyArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:workstations/getWorkstationConfigIamPolicy:getWorkstationConfigIamPolicy", TypeShape.of(GetWorkstationConfigIamPolicyResult.class), args, Utilities.withVersion(options));
     }
+    public static Output<GetWorkstationConfigIamPolicyResult> getWorkstationConfigIamPolicy(GetWorkstationConfigIamPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:workstations/getWorkstationConfigIamPolicy:getWorkstationConfigIamPolicy", TypeShape.of(GetWorkstationConfigIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
     public static CompletableFuture<GetWorkstationConfigIamPolicyResult> getWorkstationConfigIamPolicyPlain(GetWorkstationConfigIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:workstations/getWorkstationConfigIamPolicy:getWorkstationConfigIamPolicy", TypeShape.of(GetWorkstationConfigIamPolicyResult.class), args, Utilities.withVersion(options));
     }
@@ -36,6 +40,9 @@ public final class WorkstationsFunctions {
         return getWorkstationIamPolicyPlain(args, InvokeOptions.Empty);
     }
     public static Output<GetWorkstationIamPolicyResult> getWorkstationIamPolicy(GetWorkstationIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:workstations/getWorkstationIamPolicy:getWorkstationIamPolicy", TypeShape.of(GetWorkstationIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetWorkstationIamPolicyResult> getWorkstationIamPolicy(GetWorkstationIamPolicyArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:workstations/getWorkstationIamPolicy:getWorkstationIamPolicy", TypeShape.of(GetWorkstationIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     public static CompletableFuture<GetWorkstationIamPolicyResult> getWorkstationIamPolicyPlain(GetWorkstationIamPolicyPlainArgs args, InvokeOptions options) {

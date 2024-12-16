@@ -64,6 +64,33 @@ namespace Pulumi.Gcp.DataPlex
         /// </summary>
         public static Output<GetLakeIamPolicyResult> Invoke(GetLakeIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetLakeIamPolicyResult>("gcp:dataplex/getLakeIamPolicy:getLakeIamPolicy", args ?? new GetLakeIamPolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves the current IAM policy data for lake
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.DataPlex.GetLakeIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = example.Project,
+        ///         Location = example.Location,
+        ///         Lake = example.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetLakeIamPolicyResult> Invoke(GetLakeIamPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetLakeIamPolicyResult>("gcp:dataplex/getLakeIamPolicy:getLakeIamPolicy", args ?? new GetLakeIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

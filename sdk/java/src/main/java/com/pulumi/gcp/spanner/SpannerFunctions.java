@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.spanner.inputs.GetDatabaseArgs;
 import com.pulumi.gcp.spanner.inputs.GetDatabaseIamPolicyArgs;
@@ -150,6 +151,49 @@ public final class SpannerFunctions {
      * 
      */
     public static Output<GetDatabaseResult> getDatabase(GetDatabaseArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:spanner/getDatabase:getDatabase", TypeShape.of(GetDatabaseResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get a spanner database from Google Cloud by its name and instance name.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.spanner.SpannerFunctions;
+     * import com.pulumi.gcp.spanner.inputs.GetDatabaseArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = SpannerFunctions.getDatabase(GetDatabaseArgs.builder()
+     *             .name("foo")
+     *             .instance(instance.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetDatabaseResult> getDatabase(GetDatabaseArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:spanner/getDatabase:getDatabase", TypeShape.of(GetDatabaseResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -368,6 +412,50 @@ public final class SpannerFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetDatabaseIamPolicyResult> getDatabaseIamPolicy(GetDatabaseIamPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:spanner/getDatabaseIamPolicy:getDatabaseIamPolicy", TypeShape.of(GetDatabaseIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for a Spanner database.
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.spanner.SpannerFunctions;
+     * import com.pulumi.gcp.spanner.inputs.GetDatabaseIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = SpannerFunctions.getDatabaseIamPolicy(GetDatabaseIamPolicyArgs.builder()
+     *             .project(database.project())
+     *             .database(database.name())
+     *             .instance(database.instance())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetDatabaseIamPolicyResult> getDatabaseIamPolicyPlain(GetDatabaseIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:spanner/getDatabaseIamPolicy:getDatabaseIamPolicy", TypeShape.of(GetDatabaseIamPolicyResult.class), args, Utilities.withVersion(options));
     }
@@ -495,6 +583,48 @@ public final class SpannerFunctions {
      * 
      */
     public static Output<GetInstanceResult> getInstance(GetInstanceArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:spanner/getInstance:getInstance", TypeShape.of(GetInstanceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get a spanner instance from Google Cloud by its name.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.spanner.SpannerFunctions;
+     * import com.pulumi.gcp.spanner.inputs.GetInstanceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = SpannerFunctions.getInstance(GetInstanceArgs.builder()
+     *             .name("bar")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetInstanceResult> getInstance(GetInstanceArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:spanner/getInstance:getInstance", TypeShape.of(GetInstanceResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -666,6 +796,49 @@ public final class SpannerFunctions {
      * 
      */
     public static Output<GetInstanceIamPolicyResult> getInstanceIamPolicy(GetInstanceIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:spanner/getInstanceIamPolicy:getInstanceIamPolicy", TypeShape.of(GetInstanceIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for a Spanner instance.
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.spanner.SpannerFunctions;
+     * import com.pulumi.gcp.spanner.inputs.GetInstanceIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = SpannerFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
+     *             .project(instance.project())
+     *             .instance(instance.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetInstanceIamPolicyResult> getInstanceIamPolicy(GetInstanceIamPolicyArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:spanner/getInstanceIamPolicy:getInstanceIamPolicy", TypeShape.of(GetInstanceIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**

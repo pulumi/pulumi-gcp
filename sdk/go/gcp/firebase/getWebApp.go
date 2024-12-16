@@ -51,21 +51,11 @@ type LookupWebAppResult struct {
 }
 
 func LookupWebAppOutput(ctx *pulumi.Context, args LookupWebAppOutputArgs, opts ...pulumi.InvokeOption) LookupWebAppResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupWebAppResultOutput, error) {
 			args := v.(LookupWebAppArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupWebAppResult
-			secret, err := ctx.InvokePackageRaw("gcp:firebase/getWebApp:getWebApp", args, &rv, "", opts...)
-			if err != nil {
-				return LookupWebAppResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupWebAppResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupWebAppResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gcp:firebase/getWebApp:getWebApp", args, LookupWebAppResultOutput{}, options).(LookupWebAppResultOutput), nil
 		}).(LookupWebAppResultOutput)
 }
 

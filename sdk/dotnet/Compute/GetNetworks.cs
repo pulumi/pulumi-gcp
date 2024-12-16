@@ -58,6 +58,30 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public static Output<GetNetworksResult> Invoke(GetNetworksInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNetworksResult>("gcp:compute/getNetworks:getNetworks", args ?? new GetNetworksInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// List all networks in a specified Google Cloud project.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_networks = Gcp.Compute.GetNetworks.Invoke(new()
+        ///     {
+        ///         Project = "my-cloud-project",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetNetworksResult> Invoke(GetNetworksInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetNetworksResult>("gcp:compute/getNetworks:getNetworks", args ?? new GetNetworksInvokeArgs(), options.WithDefaults());
     }
 
 

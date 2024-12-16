@@ -64,6 +64,33 @@ namespace Pulumi.Gcp.Apphub
         /// </summary>
         public static Output<GetApplicationResult> Invoke(GetApplicationInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetApplicationResult>("gcp:apphub/getApplication:getApplication", args ?? new GetApplicationInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Application is a functional grouping of Services and Workloads that helps achieve a desired end-to-end business functionality. Services and Workloads are owned by the Application.
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var application = Gcp.Apphub.GetApplication.Invoke(new()
+        ///     {
+        ///         Project = "project-id",
+        ///         ApplicationId = "application",
+        ///         Location = "location",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetApplicationResult> Invoke(GetApplicationInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetApplicationResult>("gcp:apphub/getApplication:getApplication", args ?? new GetApplicationInvokeArgs(), options.WithDefaults());
     }
 
 

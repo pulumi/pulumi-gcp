@@ -66,6 +66,34 @@ namespace Pulumi.Gcp.Logging
         /// </summary>
         public static Output<GetLogViewIamPolicyResult> Invoke(GetLogViewIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetLogViewIamPolicyResult>("gcp:logging/getLogViewIamPolicy:getLogViewIamPolicy", args ?? new GetLogViewIamPolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves the current IAM policy data for logview
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.Logging.GetLogViewIamPolicy.Invoke(new()
+        ///     {
+        ///         Parent = loggingLogView.Parent,
+        ///         Location = loggingLogView.Location,
+        ///         Bucket = loggingLogView.Bucket,
+        ///         Name = loggingLogView.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetLogViewIamPolicyResult> Invoke(GetLogViewIamPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetLogViewIamPolicyResult>("gcp:logging/getLogViewIamPolicy:getLogViewIamPolicy", args ?? new GetLogViewIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

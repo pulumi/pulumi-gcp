@@ -64,6 +64,33 @@ namespace Pulumi.Gcp.ArtifactRegistry
         /// </summary>
         public static Output<GetRepositoryResult> Invoke(GetRepositoryInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRepositoryResult>("gcp:artifactregistry/getRepository:getRepository", args ?? new GetRepositoryInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get information about a Google Artifact Registry Repository. For more information see
+        /// the [official documentation](https://cloud.google.com/artifact-registry/docs/)
+        /// and [API](https://cloud.google.com/artifact-registry/docs/apis).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_repo = Gcp.ArtifactRegistry.GetRepository.Invoke(new()
+        ///     {
+        ///         Location = "us-central1",
+        ///         RepositoryId = "my-repository",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetRepositoryResult> Invoke(GetRepositoryInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRepositoryResult>("gcp:artifactregistry/getRepository:getRepository", args ?? new GetRepositoryInvokeArgs(), options.WithDefaults());
     }
 
 

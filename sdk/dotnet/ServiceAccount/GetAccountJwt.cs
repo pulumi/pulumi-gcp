@@ -84,6 +84,43 @@ namespace Pulumi.Gcp.ServiceAccount
         /// </summary>
         public static Output<GetAccountJwtResult> Invoke(GetAccountJwtInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountJwtResult>("gcp:serviceaccount/getAccountJwt:getAccountJwt", args ?? new GetAccountJwtInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides a [self-signed JWT](https://cloud.google.com/iam/docs/create-short-lived-credentials-direct#sa-credentials-jwt).  Tokens issued from this data source are typically used to call external services that accept JWTs for authentication.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Note: in order to use the following, the caller must have _at least_ `roles/iam.serviceAccountTokenCreator` on the `target_service_account`.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using System.Text.Json;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = Gcp.ServiceAccount.GetAccountJwt.Invoke(new()
+        ///     {
+        ///         TargetServiceAccount = "impersonated-account@project.iam.gserviceaccount.com",
+        ///         Payload = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
+        ///         {
+        ///             ["foo"] = "bar",
+        ///             ["sub"] = "subject",
+        ///         }),
+        ///         ExpiresIn = 60,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["jwt"] = foo.Apply(getAccountJwtResult =&gt; getAccountJwtResult.Jwt),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAccountJwtResult> Invoke(GetAccountJwtInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAccountJwtResult>("gcp:serviceaccount/getAccountJwt:getAccountJwt", args ?? new GetAccountJwtInvokeArgs(), options.WithDefaults());
     }
 
 

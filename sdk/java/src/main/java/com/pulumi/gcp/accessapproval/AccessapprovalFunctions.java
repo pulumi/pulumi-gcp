@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.accessapproval.inputs.GetFolderServiceAccountArgs;
 import com.pulumi.gcp.accessapproval.inputs.GetFolderServiceAccountPlainArgs;
@@ -186,6 +187,62 @@ public final class AccessapprovalFunctions {
      * 
      */
     public static Output<GetFolderServiceAccountResult> getFolderServiceAccount(GetFolderServiceAccountArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:accessapproval/getFolderServiceAccount:getFolderServiceAccount", TypeShape.of(GetFolderServiceAccountResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get the email address of a folder&#39;s Access Approval service account.
+     * 
+     * Each Google Cloud folder has a unique service account used by Access Approval.
+     * When using Access Approval with a
+     * [custom signing key](https://cloud.google.com/cloud-provider-access-management/access-approval/docs/review-approve-access-requests-custom-keys),
+     * this account needs to be granted the `cloudkms.signerVerifier` IAM role on the
+     * Cloud KMS key used to sign approvals.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.accessapproval.AccessapprovalFunctions;
+     * import com.pulumi.gcp.accessapproval.inputs.GetFolderServiceAccountArgs;
+     * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
+     * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var serviceAccount = AccessapprovalFunctions.getFolderServiceAccount(GetFolderServiceAccountArgs.builder()
+     *             .folderId("my-folder")
+     *             .build());
+     * 
+     *         var iam = new CryptoKeyIAMMember("iam", CryptoKeyIAMMemberArgs.builder()
+     *             .cryptoKeyId(cryptoKey.id())
+     *             .role("roles/cloudkms.signerVerifier")
+     *             .member(String.format("serviceAccount:%s", serviceAccount.applyValue(getFolderServiceAccountResult -> getFolderServiceAccountResult.accountEmail())))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetFolderServiceAccountResult> getFolderServiceAccount(GetFolderServiceAccountArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:accessapproval/getFolderServiceAccount:getFolderServiceAccount", TypeShape.of(GetFolderServiceAccountResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -465,6 +522,62 @@ public final class AccessapprovalFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetOrganizationServiceAccountResult> getOrganizationServiceAccount(GetOrganizationServiceAccountArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:accessapproval/getOrganizationServiceAccount:getOrganizationServiceAccount", TypeShape.of(GetOrganizationServiceAccountResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get the email address of an organization&#39;s Access Approval service account.
+     * 
+     * Each Google Cloud organization has a unique service account used by Access Approval.
+     * When using Access Approval with a
+     * [custom signing key](https://cloud.google.com/cloud-provider-access-management/access-approval/docs/review-approve-access-requests-custom-keys),
+     * this account needs to be granted the `cloudkms.signerVerifier` IAM role on the
+     * Cloud KMS key used to sign approvals.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.accessapproval.AccessapprovalFunctions;
+     * import com.pulumi.gcp.accessapproval.inputs.GetOrganizationServiceAccountArgs;
+     * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
+     * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var serviceAccount = AccessapprovalFunctions.getOrganizationServiceAccount(GetOrganizationServiceAccountArgs.builder()
+     *             .organizationId("my-organization")
+     *             .build());
+     * 
+     *         var iam = new CryptoKeyIAMMember("iam", CryptoKeyIAMMemberArgs.builder()
+     *             .cryptoKeyId(cryptoKey.id())
+     *             .role("roles/cloudkms.signerVerifier")
+     *             .member(String.format("serviceAccount:%s", serviceAccount.applyValue(getOrganizationServiceAccountResult -> getOrganizationServiceAccountResult.accountEmail())))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetOrganizationServiceAccountResult> getOrganizationServiceAccountPlain(GetOrganizationServiceAccountPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:accessapproval/getOrganizationServiceAccount:getOrganizationServiceAccount", TypeShape.of(GetOrganizationServiceAccountResult.class), args, Utilities.withVersion(options));
     }
@@ -634,6 +747,62 @@ public final class AccessapprovalFunctions {
      * 
      */
     public static Output<GetProjectServiceAccountResult> getProjectServiceAccount(GetProjectServiceAccountArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:accessapproval/getProjectServiceAccount:getProjectServiceAccount", TypeShape.of(GetProjectServiceAccountResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get the email address of a project&#39;s Access Approval service account.
+     * 
+     * Each Google Cloud project has a unique service account used by Access Approval.
+     * When using Access Approval with a
+     * [custom signing key](https://cloud.google.com/cloud-provider-access-management/access-approval/docs/review-approve-access-requests-custom-keys),
+     * this account needs to be granted the `cloudkms.signerVerifier` IAM role on the
+     * Cloud KMS key used to sign approvals.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.accessapproval.AccessapprovalFunctions;
+     * import com.pulumi.gcp.accessapproval.inputs.GetProjectServiceAccountArgs;
+     * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
+     * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var serviceAccount = AccessapprovalFunctions.getProjectServiceAccount(GetProjectServiceAccountArgs.builder()
+     *             .projectId("my-project")
+     *             .build());
+     * 
+     *         var iam = new CryptoKeyIAMMember("iam", CryptoKeyIAMMemberArgs.builder()
+     *             .cryptoKeyId(cryptoKey.id())
+     *             .role("roles/cloudkms.signerVerifier")
+     *             .member(String.format("serviceAccount:%s", serviceAccount.applyValue(getProjectServiceAccountResult -> getProjectServiceAccountResult.accountEmail())))
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetProjectServiceAccountResult> getProjectServiceAccount(GetProjectServiceAccountArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:accessapproval/getProjectServiceAccount:getProjectServiceAccount", TypeShape.of(GetProjectServiceAccountResult.class), args, Utilities.withVersion(options));
     }
     /**

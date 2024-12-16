@@ -60,6 +60,31 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public static Output<GetRouterResult> Invoke(GetRouterInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRouterResult>("gcp:compute/getRouter:getRouter", args ?? new GetRouterInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get a router within GCE from its name and VPC.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_router = Gcp.Compute.GetRouter.Invoke(new()
+        ///     {
+        ///         Name = "myrouter-us-east1",
+        ///         Network = "my-network",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetRouterResult> Invoke(GetRouterInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRouterResult>("gcp:compute/getRouter:getRouter", args ?? new GetRouterInvokeArgs(), options.WithDefaults());
     }
 
 

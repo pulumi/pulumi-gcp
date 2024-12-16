@@ -110,21 +110,11 @@ type GetClusterIstioServiceResult struct {
 }
 
 func GetClusterIstioServiceOutput(ctx *pulumi.Context, args GetClusterIstioServiceOutputArgs, opts ...pulumi.InvokeOption) GetClusterIstioServiceResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetClusterIstioServiceResultOutput, error) {
 			args := v.(GetClusterIstioServiceArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetClusterIstioServiceResult
-			secret, err := ctx.InvokePackageRaw("gcp:monitoring/getClusterIstioService:getClusterIstioService", args, &rv, "", opts...)
-			if err != nil {
-				return GetClusterIstioServiceResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetClusterIstioServiceResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetClusterIstioServiceResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gcp:monitoring/getClusterIstioService:getClusterIstioService", args, GetClusterIstioServiceResultOutput{}, options).(GetClusterIstioServiceResultOutput), nil
 		}).(GetClusterIstioServiceResultOutput)
 }
 

@@ -104,6 +104,53 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         public static Output<GetEngineVersionsResult> Invoke(GetEngineVersionsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetEngineVersionsResult>("gcp:container/getEngineVersions:getEngineVersions", args ?? new GetEngineVersionsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Provides access to available Google Kubernetes Engine versions in a zone or region for a given project.
+        /// 
+        /// To get more information about GKE versions, see:
+        ///   * [The API reference](https://cloud.google.com/kubernetes-engine/docs/reference/rest/v1/projects.locations/getServerConfig)
+        /// 
+        /// &gt; If you are using the `gcp.container.getEngineVersions` datasource with a
+        /// regional cluster, ensure that you have provided a region as the `location` to
+        /// the datasource. A region can have a different set of supported versions than
+        /// its component zones, and not all zones in a region are guaranteed to
+        /// support the same version.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var central1b = Gcp.Container.GetEngineVersions.Invoke(new()
+        ///     {
+        ///         Location = "us-central1-b",
+        ///         VersionPrefix = "1.12.",
+        ///     });
+        /// 
+        ///     var foo = new Gcp.Container.Cluster("foo", new()
+        ///     {
+        ///         Name = "test-cluster",
+        ///         Location = "us-central1-b",
+        ///         NodeVersion = central1b.Apply(getEngineVersionsResult =&gt; getEngineVersionsResult.LatestNodeVersion),
+        ///         InitialNodeCount = 1,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["stableChannelDefaultVersion"] = central1b.Apply(getEngineVersionsResult =&gt; getEngineVersionsResult.ReleaseChannelDefaultVersion?.STABLE),
+        ///         ["stableChannelLatestVersion"] = central1b.Apply(getEngineVersionsResult =&gt; getEngineVersionsResult.ReleaseChannelLatestVersion?.STABLE),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetEngineVersionsResult> Invoke(GetEngineVersionsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetEngineVersionsResult>("gcp:container/getEngineVersions:getEngineVersions", args ?? new GetEngineVersionsInvokeArgs(), options.WithDefaults());
     }
 
 

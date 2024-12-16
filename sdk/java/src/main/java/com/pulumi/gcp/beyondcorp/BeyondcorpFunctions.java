@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.beyondcorp.inputs.GetAppConnectionArgs;
 import com.pulumi.gcp.beyondcorp.inputs.GetAppConnectionPlainArgs;
@@ -144,6 +145,48 @@ public final class BeyondcorpFunctions {
      * 
      */
     public static Output<GetAppConnectionResult> getAppConnection(GetAppConnectionArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:beyondcorp/getAppConnection:getAppConnection", TypeShape.of(GetAppConnectionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a Google BeyondCorp App Connection.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.beyondcorp.BeyondcorpFunctions;
+     * import com.pulumi.gcp.beyondcorp.inputs.GetAppConnectionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-beyondcorp-app-connection = BeyondcorpFunctions.getAppConnection(GetAppConnectionArgs.builder()
+     *             .name("my-beyondcorp-app-connection")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAppConnectionResult> getAppConnection(GetAppConnectionArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:beyondcorp/getAppConnection:getAppConnection", TypeShape.of(GetAppConnectionResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -353,6 +396,48 @@ public final class BeyondcorpFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetAppConnectorResult> getAppConnector(GetAppConnectorArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:beyondcorp/getAppConnector:getAppConnector", TypeShape.of(GetAppConnectorResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a Google BeyondCorp App Connector.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.beyondcorp.BeyondcorpFunctions;
+     * import com.pulumi.gcp.beyondcorp.inputs.GetAppConnectorArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-beyondcorp-app-connector = BeyondcorpFunctions.getAppConnector(GetAppConnectorArgs.builder()
+     *             .name("my-beyondcorp-app-connector")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetAppConnectorResult> getAppConnectorPlain(GetAppConnectorPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:beyondcorp/getAppConnector:getAppConnector", TypeShape.of(GetAppConnectorResult.class), args, Utilities.withVersion(options));
     }
@@ -480,6 +565,48 @@ public final class BeyondcorpFunctions {
      * 
      */
     public static Output<GetAppGatewayResult> getAppGateway(GetAppGatewayArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:beyondcorp/getAppGateway:getAppGateway", TypeShape.of(GetAppGatewayResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a Google BeyondCorp App Gateway.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.beyondcorp.BeyondcorpFunctions;
+     * import com.pulumi.gcp.beyondcorp.inputs.GetAppGatewayArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-beyondcorp-app-gateway = BeyondcorpFunctions.getAppGateway(GetAppGatewayArgs.builder()
+     *             .name("my-beyondcorp-app-gateway")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAppGatewayResult> getAppGateway(GetAppGatewayArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:beyondcorp/getAppGateway:getAppGateway", TypeShape.of(GetAppGatewayResult.class), args, Utilities.withVersion(options));
     }
     /**

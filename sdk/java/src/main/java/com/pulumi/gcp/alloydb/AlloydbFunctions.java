@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.alloydb.inputs.GetLocationsArgs;
 import com.pulumi.gcp.alloydb.inputs.GetLocationsPlainArgs;
@@ -254,6 +255,46 @@ public final class AlloydbFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetLocationsResult> getLocations(GetLocationsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:alloydb/getLocations:getLocations", TypeShape.of(GetLocationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about the available locations. For more details refer the [API docs](https://cloud.google.com/alloydb/docs/reference/rest/v1/projects.locations).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.alloydb.AlloydbFunctions;
+     * import com.pulumi.gcp.alloydb.inputs.GetLocationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var qa = AlloydbFunctions.getLocations();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetLocationsResult> getLocationsPlain(GetLocationsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:alloydb/getLocations:getLocations", TypeShape.of(GetLocationsResult.class), args, Utilities.withVersion(options));
     }
@@ -381,6 +422,48 @@ public final class AlloydbFunctions {
      * 
      */
     public static Output<GetSupportedDatabaseFlagsResult> getSupportedDatabaseFlags(GetSupportedDatabaseFlagsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:alloydb/getSupportedDatabaseFlags:getSupportedDatabaseFlags", TypeShape.of(GetSupportedDatabaseFlagsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about the supported alloydb database flags in a location.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.alloydb.AlloydbFunctions;
+     * import com.pulumi.gcp.alloydb.inputs.GetSupportedDatabaseFlagsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var qa = AlloydbFunctions.getSupportedDatabaseFlags(GetSupportedDatabaseFlagsArgs.builder()
+     *             .location("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSupportedDatabaseFlagsResult> getSupportedDatabaseFlags(GetSupportedDatabaseFlagsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:alloydb/getSupportedDatabaseFlags:getSupportedDatabaseFlags", TypeShape.of(GetSupportedDatabaseFlagsResult.class), args, Utilities.withVersion(options));
     }
     /**

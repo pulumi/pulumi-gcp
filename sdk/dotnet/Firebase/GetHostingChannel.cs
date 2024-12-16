@@ -16,6 +16,9 @@ namespace Pulumi.Gcp.Firebase
 
         public static Output<GetHostingChannelResult> Invoke(GetHostingChannelInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetHostingChannelResult>("gcp:firebase/getHostingChannel:getHostingChannel", args ?? new GetHostingChannelInvokeArgs(), options.WithDefaults());
+
+        public static Output<GetHostingChannelResult> Invoke(GetHostingChannelInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetHostingChannelResult>("gcp:firebase/getHostingChannel:getHostingChannel", args ?? new GetHostingChannelInvokeArgs(), options.WithDefaults());
     }
 
 

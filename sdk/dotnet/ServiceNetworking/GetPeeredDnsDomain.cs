@@ -16,6 +16,9 @@ namespace Pulumi.Gcp.ServiceNetworking
 
         public static Output<GetPeeredDnsDomainResult> Invoke(GetPeeredDnsDomainInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetPeeredDnsDomainResult>("gcp:servicenetworking/getPeeredDnsDomain:getPeeredDnsDomain", args ?? new GetPeeredDnsDomainInvokeArgs(), options.WithDefaults());
+
+        public static Output<GetPeeredDnsDomainResult> Invoke(GetPeeredDnsDomainInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetPeeredDnsDomainResult>("gcp:servicenetworking/getPeeredDnsDomain:getPeeredDnsDomain", args ?? new GetPeeredDnsDomainInvokeArgs(), options.WithDefaults());
     }
 
 

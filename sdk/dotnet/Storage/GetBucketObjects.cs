@@ -66,6 +66,34 @@ namespace Pulumi.Gcp.Storage
         /// </summary>
         public static Output<GetBucketObjectsResult> Invoke(GetBucketObjectsInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetBucketObjectsResult>("gcp:storage/getBucketObjects:getBucketObjects", args ?? new GetBucketObjectsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Gets existing objects inside an existing bucket in Google Cloud Storage service (GCS).
+        /// See [the official documentation](https://cloud.google.com/storage/docs/key-terms#objects)
+        /// and [API](https://cloud.google.com/storage/docs/json_api/v1/objects/list).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// Example files stored within a bucket.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var files = Gcp.Storage.GetBucketObjects.Invoke(new()
+        ///     {
+        ///         Bucket = "file-store",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetBucketObjectsResult> Invoke(GetBucketObjectsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetBucketObjectsResult>("gcp:storage/getBucketObjects:getBucketObjects", args ?? new GetBucketObjectsInvokeArgs(), options.WithDefaults());
     }
 
 

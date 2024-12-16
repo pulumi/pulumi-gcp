@@ -294,6 +294,148 @@ namespace Pulumi.Gcp.Kms
         /// </summary>
         public static Output<GetKMSSecretAsymmetricResult> Invoke(GetKMSSecretAsymmetricInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKMSSecretAsymmetricResult>("gcp:kms/getKMSSecretAsymmetric:getKMSSecretAsymmetric", args ?? new GetKMSSecretAsymmetricInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// First, create a KMS KeyRing and CryptoKey using the resource definitions:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myKeyRing = new Gcp.Kms.KeyRing("my_key_ring", new()
+        ///     {
+        ///         Project = "my-project",
+        ///         Name = "my-key-ring",
+        ///         Location = "us-central1",
+        ///     });
+        /// 
+        ///     var myCryptoKeyCryptoKey = new Gcp.Kms.CryptoKey("my_crypto_key", new()
+        ///     {
+        ///         Name = "my-crypto-key",
+        ///         KeyRing = myKeyRing.Id,
+        ///         Purpose = "ASYMMETRIC_DECRYPT",
+        ///         VersionTemplate = new Gcp.Kms.Inputs.CryptoKeyVersionTemplateArgs
+        ///         {
+        ///             Algorithm = "RSA_DECRYPT_OAEP_4096_SHA256",
+        ///         },
+        ///     });
+        /// 
+        ///     var myCryptoKey = Gcp.Kms.GetKMSCryptoKeyVersion.Invoke(new()
+        ///     {
+        ///         CryptoKey = myCryptoKeyCryptoKey.Id,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// Next, use the [Cloud SDK](https://cloud.google.com/kms/docs/encrypt-decrypt-rsa#kms-encrypt-asymmetric-cli) to encrypt 
+        /// some sensitive information:
+        /// 
+        /// ```bash
+        /// ## get the public key to encrypt the secret with
+        /// $ gcloud kms keys versions get-public-key 1 \
+        ///   --project my-project \
+        ///   --location us-central1 \
+        ///   --keyring my-key-ring \
+        ///   --key my-crypto-key \
+        ///   --output-file public-key.pem
+        /// 
+        /// ## encrypt secret with the public key
+        /// $ echo -n my-secret-password | \
+        ///   openssl pkeyutl -in - \
+        ///     -encrypt \
+        ///     -pubin \
+        ///     -inkey public-key.pem \
+        ///     -pkeyopt rsa_padding_mode:oaep \
+        ///     -pkeyopt rsa_oaep_md:sha256 \
+        ///     -pkeyopt rsa_mgf1_md:sha256 &gt; \
+        ///   my-secret-password.enc
+        ///   
+        /// ## base64 encode the ciphertext  
+        /// $ openssl base64 -in my-secret-password.enc
+        /// M7nUoba9EGVTu2LjNjBKGdGVBYjyS/i/AY+4yQMQF0Qf/RfUfX31Jw6+VO9OuThq
+        /// ylu/7ihX9XD4bM7yYdXnMv9p1OHQUlorSBSbb/J6n1W9UJhcp6um8Tw8/Isx4f75
+        /// 4PskYS6f8Y2ItliGt1/A9iR5BTgGtJBwOxMlgoX2Ggq+Nh4E5SbdoaE5o6CO1nBx
+        /// eIPsPEebQ6qC4JehQM3IGuV/lrm58+hZhaXAqNzX1cEYyAt5GYqJIVCiI585SUYs
+        /// wRToGyTgaN+zthF0HP9IWlR4Am4LmJ/1OcePTnYw11CkU8wNRbDzVAzogwNH+rXr
+        /// LTmf7hxVjBm6bBSVSNFcBKAXFlllubSfIeZ5hgzGqn54OmSf6odO12L5JxllddHc
+        /// yAd54vWKs2kJtnsKV2V4ZdkI0w6y1TeI67baFZDNGo6qsCpFMPnvv7d46Pg2VOp1
+        /// J6Ivner0NnNHE4MzNmpZRk8WXMwqq4P/gTiT7F/aCX6oFCUQ4AWPQhJYh2dkcOmL
+        /// IP+47Veb10aFn61F1CJwpmOOiGNXKdDT1vK8CMnnwhm825K0q/q9Zqpzc1+1ae1z
+        /// mSqol1zCoa88CuSN6nTLQlVnN/dzfrGbc0boJPaM0iGhHtSzHk4SWg84LhiJB1q9
+        /// A9XFJmOVdkvRY9nnz/iVLAdd0Q3vFtLqCdUYsNN2yh4=
+        /// 
+        /// ## optionally calculate the CRC32 of the ciphertext
+        /// $ go get github.com/binxio/crc32 
+        /// $ $GOPATH/bin/crc32 -polynomial castagnoli &lt; my-secret-password.enc
+        /// 12c59e54
+        /// ```
+        /// 
+        /// Finally, reference the encrypted ciphertext in your resource definitions:
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// using Random = Pulumi.Random;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var sqlUserPassword = Gcp.Kms.GetKMSSecretAsymmetric.Invoke(new()
+        ///     {
+        ///         CryptoKeyVersion = myCryptoKey.Id,
+        ///         Crc32 = "12c59e54",
+        ///         Ciphertext = @"    M7nUoba9EGVTu2LjNjBKGdGVBYjyS/i/AY+4yQMQF0Qf/RfUfX31Jw6+VO9OuThq
+        ///     ylu/7ihX9XD4bM7yYdXnMv9p1OHQUlorSBSbb/J6n1W9UJhcp6um8Tw8/Isx4f75
+        ///     4PskYS6f8Y2ItliGt1/A9iR5BTgGtJBwOxMlgoX2Ggq+Nh4E5SbdoaE5o6CO1nBx
+        ///     eIPsPEebQ6qC4JehQM3IGuV/lrm58+hZhaXAqNzX1cEYyAt5GYqJIVCiI585SUYs
+        ///     wRToGyTgaN+zthF0HP9IWlR4Am4LmJ/1OcePTnYw11CkU8wNRbDzVAzogwNH+rXr
+        ///     LTmf7hxVjBm6bBSVSNFcBKAXFlllubSfIeZ5hgzGqn54OmSf6odO12L5JxllddHc
+        ///     yAd54vWKs2kJtnsKV2V4ZdkI0w6y1TeI67baFZDNGo6qsCpFMPnvv7d46Pg2VOp1
+        ///     J6Ivner0NnNHE4MzNmpZRk8WXMwqq4P/gTiT7F/aCX6oFCUQ4AWPQhJYh2dkcOmL
+        ///     IP+47Veb10aFn61F1CJwpmOOiGNXKdDT1vK8CMnnwhm825K0q/q9Zqpzc1+1ae1z
+        ///     mSqol1zCoa88CuSN6nTLQlVnN/dzfrGbc0boJPaM0iGhHtSzHk4SWg84LhiJB1q9
+        ///     A9XFJmOVdkvRY9nnz/iVLAdd0Q3vFtLqCdUYsNN2yh4=
+        /// ",
+        ///     });
+        /// 
+        ///     var dbNameSuffix = new Random.RandomId("db_name_suffix", new()
+        ///     {
+        ///         ByteLength = 4,
+        ///     });
+        /// 
+        ///     var main = new Gcp.Sql.DatabaseInstance("main", new()
+        ///     {
+        ///         Name = dbNameSuffix.Hex.Apply(hex =&gt; $"main-instance-{hex}"),
+        ///         DatabaseVersion = "MYSQL_5_7",
+        ///         Settings = new Gcp.Sql.Inputs.DatabaseInstanceSettingsArgs
+        ///         {
+        ///             Tier = "db-f1-micro",
+        ///         },
+        ///     });
+        /// 
+        ///     var users = new Gcp.Sql.User("users", new()
+        ///     {
+        ///         Name = "me",
+        ///         Instance = main.Name,
+        ///         Host = "me.com",
+        ///         Password = sqlUserPasswordGoogleKmsSecret.Plaintext,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// This will result in a Cloud SQL user being created with password `my-secret-password`.
+        /// </summary>
+        public static Output<GetKMSSecretAsymmetricResult> Invoke(GetKMSSecretAsymmetricInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetKMSSecretAsymmetricResult>("gcp:kms/getKMSSecretAsymmetric:getKMSSecretAsymmetric", args ?? new GetKMSSecretAsymmetricInvokeArgs(), options.WithDefaults());
     }
 
 

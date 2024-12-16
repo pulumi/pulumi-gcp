@@ -87,21 +87,11 @@ type LookupCloudVmClusterResult struct {
 }
 
 func LookupCloudVmClusterOutput(ctx *pulumi.Context, args LookupCloudVmClusterOutputArgs, opts ...pulumi.InvokeOption) LookupCloudVmClusterResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupCloudVmClusterResultOutput, error) {
 			args := v.(LookupCloudVmClusterArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupCloudVmClusterResult
-			secret, err := ctx.InvokePackageRaw("gcp:oracledatabase/getCloudVmCluster:getCloudVmCluster", args, &rv, "", opts...)
-			if err != nil {
-				return LookupCloudVmClusterResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupCloudVmClusterResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupCloudVmClusterResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gcp:oracledatabase/getCloudVmCluster:getCloudVmCluster", args, LookupCloudVmClusterResultOutput{}, options).(LookupCloudVmClusterResultOutput), nil
 		}).(LookupCloudVmClusterResultOutput)
 }
 

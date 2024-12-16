@@ -16,6 +16,9 @@ namespace Pulumi.Gcp.RuntimeConfig
 
         public static Output<GetConfigIamPolicyResult> Invoke(GetConfigIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetConfigIamPolicyResult>("gcp:runtimeconfig/getConfigIamPolicy:getConfigIamPolicy", args ?? new GetConfigIamPolicyInvokeArgs(), options.WithDefaults());
+
+        public static Output<GetConfigIamPolicyResult> Invoke(GetConfigIamPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetConfigIamPolicyResult>("gcp:runtimeconfig/getConfigIamPolicy:getConfigIamPolicy", args ?? new GetConfigIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

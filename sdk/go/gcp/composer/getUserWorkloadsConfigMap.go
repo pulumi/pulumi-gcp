@@ -96,21 +96,11 @@ type LookupUserWorkloadsConfigMapResult struct {
 }
 
 func LookupUserWorkloadsConfigMapOutput(ctx *pulumi.Context, args LookupUserWorkloadsConfigMapOutputArgs, opts ...pulumi.InvokeOption) LookupUserWorkloadsConfigMapResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupUserWorkloadsConfigMapResultOutput, error) {
 			args := v.(LookupUserWorkloadsConfigMapArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupUserWorkloadsConfigMapResult
-			secret, err := ctx.InvokePackageRaw("gcp:composer/getUserWorkloadsConfigMap:getUserWorkloadsConfigMap", args, &rv, "", opts...)
-			if err != nil {
-				return LookupUserWorkloadsConfigMapResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupUserWorkloadsConfigMapResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupUserWorkloadsConfigMapResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gcp:composer/getUserWorkloadsConfigMap:getUserWorkloadsConfigMap", args, LookupUserWorkloadsConfigMapResultOutput{}, options).(LookupUserWorkloadsConfigMapResultOutput), nil
 		}).(LookupUserWorkloadsConfigMapResultOutput)
 }
 

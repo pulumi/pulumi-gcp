@@ -78,6 +78,40 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public static Output<GetSecurityPolicyResult> Invoke(GetSecurityPolicyInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSecurityPolicyResult>("gcp:compute/getSecurityPolicy:getSecurityPolicy", args ?? new GetSecurityPolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// To get more information about Google Compute Security Policy, see:
+        /// 
+        /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/securityPolicies)
+        /// * How-to Guides
+        ///     * [Official Documentation](https://cloud.google.com/armor/docs/configure-security-policies)
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var sp1 = Gcp.Compute.GetSecurityPolicy.Invoke(new()
+        ///     {
+        ///         Name = "my-policy",
+        ///         Project = "my-project",
+        ///     });
+        /// 
+        ///     var sp2 = Gcp.Compute.GetSecurityPolicy.Invoke(new()
+        ///     {
+        ///         SelfLink = "https://www.googleapis.com/compute/v1/projects/my-project/global/securityPolicies/my-policy",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetSecurityPolicyResult> Invoke(GetSecurityPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetSecurityPolicyResult>("gcp:compute/getSecurityPolicy:getSecurityPolicy", args ?? new GetSecurityPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

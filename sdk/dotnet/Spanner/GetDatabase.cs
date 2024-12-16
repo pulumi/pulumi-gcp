@@ -60,6 +60,31 @@ namespace Pulumi.Gcp.Spanner
         /// </summary>
         public static Output<GetDatabaseResult> Invoke(GetDatabaseInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseResult>("gcp:spanner/getDatabase:getDatabase", args ?? new GetDatabaseInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get a spanner database from Google Cloud by its name and instance name.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = Gcp.Spanner.GetDatabase.Invoke(new()
+        ///     {
+        ///         Name = "foo",
+        ///         Instance = instance.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDatabaseResult> Invoke(GetDatabaseInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDatabaseResult>("gcp:spanner/getDatabase:getDatabase", args ?? new GetDatabaseInvokeArgs(), options.WithDefaults());
     }
 
 

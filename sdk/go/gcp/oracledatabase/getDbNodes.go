@@ -114,21 +114,11 @@ type GetDbNodesResult struct {
 }
 
 func GetDbNodesOutput(ctx *pulumi.Context, args GetDbNodesOutputArgs, opts ...pulumi.InvokeOption) GetDbNodesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetDbNodesResultOutput, error) {
 			args := v.(GetDbNodesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetDbNodesResult
-			secret, err := ctx.InvokePackageRaw("gcp:oracledatabase/getDbNodes:getDbNodes", args, &rv, "", opts...)
-			if err != nil {
-				return GetDbNodesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetDbNodesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetDbNodesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gcp:oracledatabase/getDbNodes:getDbNodes", args, GetDbNodesResultOutput{}, options).(GetDbNodesResultOutput), nil
 		}).(GetDbNodesResultOutput)
 }
 

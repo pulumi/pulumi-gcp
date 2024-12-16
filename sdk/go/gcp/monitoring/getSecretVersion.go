@@ -87,21 +87,11 @@ type GetSecretVersionResult struct {
 }
 
 func GetSecretVersionOutput(ctx *pulumi.Context, args GetSecretVersionOutputArgs, opts ...pulumi.InvokeOption) GetSecretVersionResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetSecretVersionResultOutput, error) {
 			args := v.(GetSecretVersionArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetSecretVersionResult
-			secret, err := ctx.InvokePackageRaw("gcp:monitoring/getSecretVersion:getSecretVersion", args, &rv, "", opts...)
-			if err != nil {
-				return GetSecretVersionResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetSecretVersionResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetSecretVersionResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gcp:monitoring/getSecretVersion:getSecretVersion", args, GetSecretVersionResultOutput{}, options).(GetSecretVersionResultOutput), nil
 		}).(GetSecretVersionResultOutput)
 }
 

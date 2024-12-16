@@ -76,6 +76,39 @@ namespace Pulumi.Gcp.AccessContextManager
         /// </summary>
         public static Output<GetAccessPolicyResult> Invoke(GetAccessPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccessPolicyResult>("gcp:accesscontextmanager/getAccessPolicy:getAccessPolicy", args ?? new GetAccessPolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get information about an Access Context Manager AccessPolicy.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy_org = Gcp.AccessContextManager.GetAccessPolicy.Invoke(new()
+        ///     {
+        ///         Parent = "organizations/1234567",
+        ///     });
+        /// 
+        ///     var policy_scoped = Gcp.AccessContextManager.GetAccessPolicy.Invoke(new()
+        ///     {
+        ///         Parent = "organizations/1234567",
+        ///         Scopes = new[]
+        ///         {
+        ///             "projects/1234567",
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAccessPolicyResult> Invoke(GetAccessPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAccessPolicyResult>("gcp:accesscontextmanager/getAccessPolicy:getAccessPolicy", args ?? new GetAccessPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

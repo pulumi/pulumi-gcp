@@ -56,6 +56,29 @@ namespace Pulumi.Gcp.Organizations
         /// </summary>
         public static Output<GetClientConfigResult> Invoke(InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetClientConfigResult>("gcp:organizations/getClientConfig:getClientConfig", InvokeArgs.Empty, options.WithDefaults());
+
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var current = Gcp.Organizations.GetClientConfig.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["project"] = current.Apply(getClientConfigResult =&gt; getClientConfigResult.Project),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetClientConfigResult> Invoke(InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetClientConfigResult>("gcp:organizations/getClientConfig:getClientConfig", InvokeArgs.Empty, options.WithDefaults());
     }
 
 

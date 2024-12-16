@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.bigtable.inputs.GetInstanceIamPolicyArgs;
 import com.pulumi.gcp.bigtable.inputs.GetInstanceIamPolicyPlainArgs;
@@ -182,6 +183,48 @@ public final class BigtableFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetInstanceIamPolicyResult> getInstanceIamPolicy(GetInstanceIamPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:bigtable/getInstanceIamPolicy:getInstanceIamPolicy", TypeShape.of(GetInstanceIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for a Bigtable instance.
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.bigtable.BigtableFunctions;
+     * import com.pulumi.gcp.bigtable.inputs.GetInstanceIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = BigtableFunctions.getInstanceIamPolicy(GetInstanceIamPolicyArgs.builder()
+     *             .instance(instance.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetInstanceIamPolicyResult> getInstanceIamPolicyPlain(GetInstanceIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:bigtable/getInstanceIamPolicy:getInstanceIamPolicy", TypeShape.of(GetInstanceIamPolicyResult.class), args, Utilities.withVersion(options));
     }
@@ -312,6 +355,49 @@ public final class BigtableFunctions {
      * 
      */
     public static Output<GetTableIamPolicyResult> getTableIamPolicy(GetTableIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:bigtable/getTableIamPolicy:getTableIamPolicy", TypeShape.of(GetTableIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for a Bigtable Table.
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.bigtable.BigtableFunctions;
+     * import com.pulumi.gcp.bigtable.inputs.GetTableIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = BigtableFunctions.getTableIamPolicy(GetTableIamPolicyArgs.builder()
+     *             .instance(instance.name())
+     *             .table(table.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetTableIamPolicyResult> getTableIamPolicy(GetTableIamPolicyArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:bigtable/getTableIamPolicy:getTableIamPolicy", TypeShape.of(GetTableIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**

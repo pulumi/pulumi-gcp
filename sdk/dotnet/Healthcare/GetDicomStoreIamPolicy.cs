@@ -58,6 +58,30 @@ namespace Pulumi.Gcp.Healthcare
         /// </summary>
         public static Output<GetDicomStoreIamPolicyResult> Invoke(GetDicomStoreIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDicomStoreIamPolicyResult>("gcp:healthcare/getDicomStoreIamPolicy:getDicomStoreIamPolicy", args ?? new GetDicomStoreIamPolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves the current IAM policy data for a Google Cloud Healthcare DICOM store.
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = Gcp.Healthcare.GetDicomStoreIamPolicy.Invoke(new()
+        ///     {
+        ///         DicomStoreId = dicomStore.Id,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDicomStoreIamPolicyResult> Invoke(GetDicomStoreIamPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDicomStoreIamPolicyResult>("gcp:healthcare/getDicomStoreIamPolicy:getDicomStoreIamPolicy", args ?? new GetDicomStoreIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

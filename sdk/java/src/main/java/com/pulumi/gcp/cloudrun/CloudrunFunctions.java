@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.cloudrun.inputs.GetLocationsArgs;
 import com.pulumi.gcp.cloudrun.inputs.GetLocationsPlainArgs;
@@ -293,6 +294,52 @@ public final class CloudrunFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetLocationsResult> getLocations(GetLocationsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:cloudrun/getLocations:getLocations", TypeShape.of(GetLocationsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get Cloud Run locations available for a project.
+     * 
+     * To get more information about Cloud Run, see:
+     * 
+     * * [API documentation](https://cloud.google.com/run/docs/reference/rest/v1/projects.locations)
+     * * How-to Guides
+     *     * [Official Documentation](https://cloud.google.com/run/docs/)
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudrun.CloudrunFunctions;
+     * import com.pulumi.gcp.cloudrun.inputs.GetLocationsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var available = CloudrunFunctions.getLocations();
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetLocationsResult> getLocationsPlain(GetLocationsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:cloudrun/getLocations:getLocations", TypeShape.of(GetLocationsResult.class), args, Utilities.withVersion(options));
     }
@@ -473,6 +520,51 @@ public final class CloudrunFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetServiceResult> getService(GetServiceArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:cloudrun/getService:getService", TypeShape.of(GetServiceResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a Google Cloud Run Service. For more information see
+     * the [official documentation](https://cloud.google.com/run/docs/)
+     * and [API](https://cloud.google.com/run/docs/apis).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudrun.CloudrunFunctions;
+     * import com.pulumi.gcp.cloudrun.inputs.GetServiceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var run-service = CloudrunFunctions.getService(GetServiceArgs.builder()
+     *             .name("my-service")
+     *             .location("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetServiceResult> getServicePlain(GetServicePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:cloudrun/getService:getService", TypeShape.of(GetServiceResult.class), args, Utilities.withVersion(options));
     }
@@ -606,6 +698,50 @@ public final class CloudrunFunctions {
      * 
      */
     public static Output<GetServiceIamPolicyResult> getServiceIamPolicy(GetServiceIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:cloudrun/getServiceIamPolicy:getServiceIamPolicy", TypeShape.of(GetServiceIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for service
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.cloudrun.CloudrunFunctions;
+     * import com.pulumi.gcp.cloudrun.inputs.GetServiceIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = CloudrunFunctions.getServiceIamPolicy(GetServiceIamPolicyArgs.builder()
+     *             .location(default_.location())
+     *             .project(default_.project())
+     *             .service(default_.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetServiceIamPolicyResult> getServiceIamPolicy(GetServiceIamPolicyArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:cloudrun/getServiceIamPolicy:getServiceIamPolicy", TypeShape.of(GetServiceIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**

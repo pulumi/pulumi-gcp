@@ -60,6 +60,31 @@ namespace Pulumi.Gcp.CertificateAuthority
         /// </summary>
         public static Output<GetCertificateTemplateIamPolicyResult> Invoke(GetCertificateTemplateIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCertificateTemplateIamPolicyResult>("gcp:certificateauthority/getCertificateTemplateIamPolicy:getCertificateTemplateIamPolicy", args ?? new GetCertificateTemplateIamPolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves the current IAM policy data for certificatetemplate
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.CertificateAuthority.GetCertificateTemplateIamPolicy.Invoke(new()
+        ///     {
+        ///         CertificateTemplate = @default.Id,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetCertificateTemplateIamPolicyResult> Invoke(GetCertificateTemplateIamPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetCertificateTemplateIamPolicyResult>("gcp:certificateauthority/getCertificateTemplateIamPolicy:getCertificateTemplateIamPolicy", args ?? new GetCertificateTemplateIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

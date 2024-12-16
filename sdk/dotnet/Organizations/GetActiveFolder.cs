@@ -60,6 +60,31 @@ namespace Pulumi.Gcp.Organizations
         /// </summary>
         public static Output<GetActiveFolderResult> Invoke(GetActiveFolderInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetActiveFolderResult>("gcp:organizations/getActiveFolder:getActiveFolder", args ?? new GetActiveFolderInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get an active folder within GCP by `display_name` and `parent`.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var department1 = Gcp.Organizations.GetActiveFolder.Invoke(new()
+        ///     {
+        ///         DisplayName = "Department 1",
+        ///         Parent = "organizations/1234567",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetActiveFolderResult> Invoke(GetActiveFolderInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetActiveFolderResult>("gcp:organizations/getActiveFolder:getActiveFolder", args ?? new GetActiveFolderInvokeArgs(), options.WithDefaults());
     }
 
 

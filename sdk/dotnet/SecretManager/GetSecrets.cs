@@ -52,6 +52,27 @@ namespace Pulumi.Gcp.SecretManager
         /// </summary>
         public static Output<GetSecretsResult> Invoke(GetSecretsInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSecretsResult>("gcp:secretmanager/getSecrets:getSecrets", args ?? new GetSecretsInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to list the Secret Manager Secrets
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var secrets = Gcp.SecretManager.GetSecrets.Invoke();
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetSecretsResult> Invoke(GetSecretsInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetSecretsResult>("gcp:secretmanager/getSecrets:getSecrets", args ?? new GetSecretsInvokeArgs(), options.WithDefaults());
     }
 
 

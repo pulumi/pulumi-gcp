@@ -58,6 +58,30 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public static Output<GetVPNGatewayResult> Invoke(GetVPNGatewayInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetVPNGatewayResult>("gcp:compute/getVPNGateway:getVPNGateway", args ?? new GetVPNGatewayInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get a VPN gateway within GCE from its name.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_vpn_gateway = Gcp.Compute.GetVPNGateway.Invoke(new()
+        ///     {
+        ///         Name = "vpn-gateway-us-east1",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetVPNGatewayResult> Invoke(GetVPNGatewayInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetVPNGatewayResult>("gcp:compute/getVPNGateway:getVPNGateway", args ?? new GetVPNGatewayInvokeArgs(), options.WithDefaults());
     }
 
 

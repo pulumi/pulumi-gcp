@@ -22,6 +22,12 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// </summary>
         public static Output<GetAddressGroupIamPolicyResult> Invoke(GetAddressGroupIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAddressGroupIamPolicyResult>("gcp:networksecurity/getAddressGroupIamPolicy:getAddressGroupIamPolicy", args ?? new GetAddressGroupIamPolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves the current IAM policy data for projectaddressgroup
+        /// </summary>
+        public static Output<GetAddressGroupIamPolicyResult> Invoke(GetAddressGroupIamPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAddressGroupIamPolicyResult>("gcp:networksecurity/getAddressGroupIamPolicy:getAddressGroupIamPolicy", args ?? new GetAddressGroupIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

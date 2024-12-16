@@ -83,21 +83,11 @@ type LookupAutoscalingPolicyIamPolicyResult struct {
 }
 
 func LookupAutoscalingPolicyIamPolicyOutput(ctx *pulumi.Context, args LookupAutoscalingPolicyIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupAutoscalingPolicyIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupAutoscalingPolicyIamPolicyResultOutput, error) {
 			args := v.(LookupAutoscalingPolicyIamPolicyArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupAutoscalingPolicyIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:dataproc/getAutoscalingPolicyIamPolicy:getAutoscalingPolicyIamPolicy", args, &rv, "", opts...)
-			if err != nil {
-				return LookupAutoscalingPolicyIamPolicyResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupAutoscalingPolicyIamPolicyResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupAutoscalingPolicyIamPolicyResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gcp:dataproc/getAutoscalingPolicyIamPolicy:getAutoscalingPolicyIamPolicy", args, LookupAutoscalingPolicyIamPolicyResultOutput{}, options).(LookupAutoscalingPolicyIamPolicyResultOutput), nil
 		}).(LookupAutoscalingPolicyIamPolicyResultOutput)
 }
 

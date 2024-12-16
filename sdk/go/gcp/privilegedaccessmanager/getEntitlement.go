@@ -87,21 +87,11 @@ type LookupEntitlementResult struct {
 }
 
 func LookupEntitlementOutput(ctx *pulumi.Context, args LookupEntitlementOutputArgs, opts ...pulumi.InvokeOption) LookupEntitlementResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupEntitlementResultOutput, error) {
 			args := v.(LookupEntitlementArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupEntitlementResult
-			secret, err := ctx.InvokePackageRaw("gcp:privilegedaccessmanager/getEntitlement:getEntitlement", args, &rv, "", opts...)
-			if err != nil {
-				return LookupEntitlementResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupEntitlementResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupEntitlementResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gcp:privilegedaccessmanager/getEntitlement:getEntitlement", args, LookupEntitlementResultOutput{}, options).(LookupEntitlementResultOutput), nil
 		}).(LookupEntitlementResultOutput)
 }
 

@@ -165,21 +165,11 @@ type LookupRegionInstanceTemplateResult struct {
 }
 
 func LookupRegionInstanceTemplateOutput(ctx *pulumi.Context, args LookupRegionInstanceTemplateOutputArgs, opts ...pulumi.InvokeOption) LookupRegionInstanceTemplateResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupRegionInstanceTemplateResultOutput, error) {
 			args := v.(LookupRegionInstanceTemplateArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupRegionInstanceTemplateResult
-			secret, err := ctx.InvokePackageRaw("gcp:compute/getRegionInstanceTemplate:getRegionInstanceTemplate", args, &rv, "", opts...)
-			if err != nil {
-				return LookupRegionInstanceTemplateResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupRegionInstanceTemplateResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupRegionInstanceTemplateResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gcp:compute/getRegionInstanceTemplate:getRegionInstanceTemplate", args, LookupRegionInstanceTemplateResultOutput{}, options).(LookupRegionInstanceTemplateResultOutput), nil
 		}).(LookupRegionInstanceTemplateResultOutput)
 }
 

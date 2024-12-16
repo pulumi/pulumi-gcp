@@ -64,6 +64,33 @@ namespace Pulumi.Gcp.CloudRunV2
         /// </summary>
         public static Output<GetJobResult> Invoke(GetJobInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetJobResult>("gcp:cloudrunv2/getJob:getJob", args ?? new GetJobInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get information about a Google Cloud Run v2 Job. For more information see
+        /// the [official documentation](https://cloud.google.com/run/docs/)
+        /// and [API](https://cloud.google.com/run/docs/apis).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myJob = Gcp.CloudRunV2.GetJob.Invoke(new()
+        ///     {
+        ///         Name = "my-job",
+        ///         Location = "us-central1",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetJobResult> Invoke(GetJobInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetJobResult>("gcp:cloudrunv2/getJob:getJob", args ?? new GetJobInvokeArgs(), options.WithDefaults());
     }
 
 

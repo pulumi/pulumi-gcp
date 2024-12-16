@@ -60,6 +60,31 @@ namespace Pulumi.Gcp.BigTable
         /// </summary>
         public static Output<GetTableIamPolicyResult> Invoke(GetTableIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTableIamPolicyResult>("gcp:bigtable/getTableIamPolicy:getTableIamPolicy", args ?? new GetTableIamPolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves the current IAM policy data for a Bigtable Table.
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.BigTable.GetTableIamPolicy.Invoke(new()
+        ///     {
+        ///         Instance = instance.Name,
+        ///         Table = table.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetTableIamPolicyResult> Invoke(GetTableIamPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetTableIamPolicyResult>("gcp:bigtable/getTableIamPolicy:getTableIamPolicy", args ?? new GetTableIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

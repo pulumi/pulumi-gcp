@@ -60,6 +60,31 @@ namespace Pulumi.Gcp.SecretManager
         /// </summary>
         public static Output<GetRegionalSecretVersionAccessResult> Invoke(GetRegionalSecretVersionAccessInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRegionalSecretVersionAccessResult>("gcp:secretmanager/getRegionalSecretVersionAccess:getRegionalSecretVersionAccess", args ?? new GetRegionalSecretVersionAccessInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get the value from a Secret Manager regional secret version. This is similar to the gcp.secretmanager.RegionalSecretVersion datasource, but it only requires the [Secret Manager Secret Accessor](https://cloud.google.com/secret-manager/docs/access-control#secretmanager.secretAccessor) role. For more information see the [official documentation](https://cloud.google.com/secret-manager/docs/regional-secrets-overview) and [API](https://cloud.google.com/secret-manager/docs/reference/rest/v1/projects.locations.secrets.versions/access).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var latest = Gcp.SecretManager.GetRegionalSecretVersionAccess.Invoke(new()
+        ///     {
+        ///         Secret = "my-secret",
+        ///         Location = "us-central1",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetRegionalSecretVersionAccessResult> Invoke(GetRegionalSecretVersionAccessInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRegionalSecretVersionAccessResult>("gcp:secretmanager/getRegionalSecretVersionAccess:getRegionalSecretVersionAccess", args ?? new GetRegionalSecretVersionAccessInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -64,6 +64,33 @@ namespace Pulumi.Gcp.SecureSourceManager
         /// </summary>
         public static Output<GetRepositoryIamPolicyResult> Invoke(GetRepositoryIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRepositoryIamPolicyResult>("gcp:securesourcemanager/getRepositoryIamPolicy:getRepositoryIamPolicy", args ?? new GetRepositoryIamPolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves the current IAM policy data for repository
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.SecureSourceManager.GetRepositoryIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = @default.Project,
+        ///         Location = @default.Location,
+        ///         RepositoryId = @default.RepositoryId,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetRepositoryIamPolicyResult> Invoke(GetRepositoryIamPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRepositoryIamPolicyResult>("gcp:securesourcemanager/getRepositoryIamPolicy:getRepositoryIamPolicy", args ?? new GetRepositoryIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

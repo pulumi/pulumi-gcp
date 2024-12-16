@@ -228,6 +228,115 @@ namespace Pulumi.Gcp.ServiceAccount
         /// </summary>
         public static Output<GetAccountIdTokenResult> Invoke(GetAccountIdTokenInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAccountIdTokenResult>("gcp:serviceaccount/getAccountIdToken:getAccountIdToken", args ?? new GetAccountIdTokenInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source provides a Google OpenID Connect (`oidc`) `id_token`.  Tokens issued from this data source are typically used to call external services that accept OIDC tokens for authentication (e.g. [Google Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service)).
+        /// 
+        /// For more information see
+        /// [OpenID Connect](https://openid.net/specs/openid-connect-core-1_0.html#IDToken).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### ServiceAccount JSON Credential File.
+        ///   `gcp.serviceaccount.getAccountIdToken` will use the configured provider credentials
+        /// 
+        ///   ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var oidc = Gcp.ServiceAccount.GetAccountIdToken.Invoke(new()
+        ///     {
+        ///         TargetAudience = "https://foo.bar/",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["oidcToken"] = oidc.Apply(getAccountIdTokenResult =&gt; getAccountIdTokenResult.IdToken),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// ### Service Account Impersonation.
+        ///   `gcp.serviceaccount.getAccountAccessToken` will use background impersonated credentials provided by `gcp.serviceaccount.getAccountAccessToken`.
+        /// 
+        ///   Note: to use the following, you must grant `target_service_account` the
+        ///   `roles/iam.serviceAccountTokenCreator` role on itself.
+        /// 
+        ///   ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var impersonated = Gcp.ServiceAccount.GetAccountAccessToken.Invoke(new()
+        ///     {
+        ///         TargetServiceAccount = "impersonated-account@project.iam.gserviceaccount.com",
+        ///         Delegates = new() { },
+        ///         Scopes = new[]
+        ///         {
+        ///             "userinfo-email",
+        ///             "cloud-platform",
+        ///         },
+        ///         Lifetime = "300s",
+        ///     });
+        /// 
+        ///     var oidc = Gcp.ServiceAccount.GetAccountIdToken.Invoke(new()
+        ///     {
+        ///         TargetServiceAccount = "impersonated-account@project.iam.gserviceaccount.com",
+        ///         Delegates = new() { },
+        ///         IncludeEmail = true,
+        ///         TargetAudience = "https://foo.bar/",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["oidcToken"] = oidc.Apply(getAccountIdTokenResult =&gt; getAccountIdTokenResult.IdToken),
+        ///     };
+        /// });
+        /// ```
+        /// 
+        /// ### Invoking Cloud Run Endpoint
+        /// 
+        ///   The following configuration will invoke [Cloud Run](https://cloud.google.com/run/docs/authenticating/service-to-service) endpoint where the service account for the provider has been granted `roles/run.invoker` role previously.
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// using Http = Pulumi.Http;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var oidc = Gcp.ServiceAccount.GetAccountIdToken.Invoke(new()
+        ///     {
+        ///         TargetAudience = "https://your.cloud.run.app/",
+        ///     });
+        /// 
+        ///     var cloudrun = Http.GetHttp.Invoke(new()
+        ///     {
+        ///         Url = "https://your.cloud.run.app/",
+        ///         RequestHeaders = 
+        ///         {
+        ///             { "Authorization", $"Bearer {oidc.Apply(getAccountIdTokenResult =&gt; getAccountIdTokenResult.IdToken)}" },
+        ///         },
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["cloudRunResponse"] = cloudrun.Apply(getHttpResult =&gt; getHttpResult.Body),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetAccountIdTokenResult> Invoke(GetAccountIdTokenInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAccountIdTokenResult>("gcp:serviceaccount/getAccountIdToken:getAccountIdToken", args ?? new GetAccountIdTokenInvokeArgs(), options.WithDefaults());
     }
 
 

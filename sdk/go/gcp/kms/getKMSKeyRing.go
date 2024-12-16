@@ -80,21 +80,11 @@ type GetKMSKeyRingResult struct {
 }
 
 func GetKMSKeyRingOutput(ctx *pulumi.Context, args GetKMSKeyRingOutputArgs, opts ...pulumi.InvokeOption) GetKMSKeyRingResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetKMSKeyRingResultOutput, error) {
 			args := v.(GetKMSKeyRingArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetKMSKeyRingResult
-			secret, err := ctx.InvokePackageRaw("gcp:kms/getKMSKeyRing:getKMSKeyRing", args, &rv, "", opts...)
-			if err != nil {
-				return GetKMSKeyRingResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetKMSKeyRingResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetKMSKeyRingResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gcp:kms/getKMSKeyRing:getKMSKeyRing", args, GetKMSKeyRingResultOutput{}, options).(GetKMSKeyRingResultOutput), nil
 		}).(GetKMSKeyRingResultOutput)
 }
 

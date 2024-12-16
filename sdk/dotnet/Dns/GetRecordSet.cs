@@ -80,6 +80,41 @@ namespace Pulumi.Gcp.Dns
         /// </summary>
         public static Output<GetRecordSetResult> Invoke(GetRecordSetInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRecordSetResult>("gcp:dns/getRecordSet:getRecordSet", args ?? new GetRecordSetInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get a DNS record set within Google Cloud DNS
+        /// For more information see
+        /// [the official documentation](https://cloud.google.com/dns/docs/records)
+        /// and
+        /// [API](https://cloud.google.com/dns/docs/reference/v1/resourceRecordSets)
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var sample = Gcp.Dns.GetManagedZone.Invoke(new()
+        ///     {
+        ///         Name = "sample-zone",
+        ///     });
+        /// 
+        ///     var rs = Gcp.Dns.GetRecordSet.Invoke(new()
+        ///     {
+        ///         ManagedZone = sample.Apply(getManagedZoneResult =&gt; getManagedZoneResult.Name),
+        ///         Name = $"my-record.{sample.Apply(getManagedZoneResult =&gt; getManagedZoneResult.DnsName)}",
+        ///         Type = "A",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetRecordSetResult> Invoke(GetRecordSetInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRecordSetResult>("gcp:dns/getRecordSet:getRecordSet", args ?? new GetRecordSetInvokeArgs(), options.WithDefaults());
     }
 
 

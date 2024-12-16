@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.pubsub.inputs.GetSchemaIamPolicyArgs;
 import com.pulumi.gcp.pubsub.inputs.GetSchemaIamPolicyPlainArgs;
@@ -153,6 +154,49 @@ public final class PubsubFunctions {
      * 
      */
     public static Output<GetSchemaIamPolicyResult> getSchemaIamPolicy(GetSchemaIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:pubsub/getSchemaIamPolicy:getSchemaIamPolicy", TypeShape.of(GetSchemaIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for schema
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.pubsub.PubsubFunctions;
+     * import com.pulumi.gcp.pubsub.inputs.GetSchemaIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = PubsubFunctions.getSchemaIamPolicy(GetSchemaIamPolicyArgs.builder()
+     *             .project(example.project())
+     *             .schema(example.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSchemaIamPolicyResult> getSchemaIamPolicy(GetSchemaIamPolicyArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:pubsub/getSchemaIamPolicy:getSchemaIamPolicy", TypeShape.of(GetSchemaIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -371,6 +415,50 @@ public final class PubsubFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetSubscriptionResult> getSubscription(GetSubscriptionArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:pubsub/getSubscription:getSubscription", TypeShape.of(GetSubscriptionResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a Google Cloud Pub/Sub Subscription. For more information see
+     * the [official documentation](https://cloud.google.com/pubsub/docs/)
+     * and [API](https://cloud.google.com/pubsub/docs/apis).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.pubsub.PubsubFunctions;
+     * import com.pulumi.gcp.pubsub.inputs.GetSubscriptionArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-pubsub-subscription = PubsubFunctions.getSubscription(GetSubscriptionArgs.builder()
+     *             .name("my-pubsub-subscription")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetSubscriptionResult> getSubscriptionPlain(GetSubscriptionPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:pubsub/getSubscription:getSubscription", TypeShape.of(GetSubscriptionResult.class), args, Utilities.withVersion(options));
     }
@@ -498,6 +586,48 @@ public final class PubsubFunctions {
      * 
      */
     public static Output<GetSubscriptionIamPolicyResult> getSubscriptionIamPolicy(GetSubscriptionIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:pubsub/getSubscriptionIamPolicy:getSubscriptionIamPolicy", TypeShape.of(GetSubscriptionIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for a Pubsub subscription.
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.pubsub.PubsubFunctions;
+     * import com.pulumi.gcp.pubsub.inputs.GetSubscriptionIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = PubsubFunctions.getSubscriptionIamPolicy(GetSubscriptionIamPolicyArgs.builder()
+     *             .subscription(subscription.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSubscriptionIamPolicyResult> getSubscriptionIamPolicy(GetSubscriptionIamPolicyArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:pubsub/getSubscriptionIamPolicy:getSubscriptionIamPolicy", TypeShape.of(GetSubscriptionIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -715,6 +845,50 @@ public final class PubsubFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetTopicResult> getTopic(GetTopicArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:pubsub/getTopic:getTopic", TypeShape.of(GetTopicResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about a Google Cloud Pub/Sub Topic. For more information see
+     * the [official documentation](https://cloud.google.com/pubsub/docs/)
+     * and [API](https://cloud.google.com/pubsub/docs/apis).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.pubsub.PubsubFunctions;
+     * import com.pulumi.gcp.pubsub.inputs.GetTopicArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var my-pubsub-topic = PubsubFunctions.getTopic(GetTopicArgs.builder()
+     *             .name("my-pubsub-topic")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetTopicResult> getTopicPlain(GetTopicPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:pubsub/getTopic:getTopic", TypeShape.of(GetTopicResult.class), args, Utilities.withVersion(options));
     }
@@ -845,6 +1019,49 @@ public final class PubsubFunctions {
      * 
      */
     public static Output<GetTopicIamPolicyResult> getTopicIamPolicy(GetTopicIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:pubsub/getTopicIamPolicy:getTopicIamPolicy", TypeShape.of(GetTopicIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for topic
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.pubsub.PubsubFunctions;
+     * import com.pulumi.gcp.pubsub.inputs.GetTopicIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = PubsubFunctions.getTopicIamPolicy(GetTopicIamPolicyArgs.builder()
+     *             .project(example.project())
+     *             .topic(example.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetTopicIamPolicyResult> getTopicIamPolicy(GetTopicIamPolicyArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:pubsub/getTopicIamPolicy:getTopicIamPolicy", TypeShape.of(GetTopicIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**

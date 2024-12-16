@@ -64,6 +64,33 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         public static Output<GetTablesResult> Invoke(GetTablesInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTablesResult>("gcp:bigquery/getTables:getTables", args ?? new GetTablesInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get a list of tables in a BigQuery dataset. For more information see
+        /// the [official documentation](https://cloud.google.com/bigquery/docs)
+        /// and [API](https://cloud.google.com/bigquery/docs/reference/rest/v2/tables).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var tables = Gcp.BigQuery.GetTables.Invoke(new()
+        ///     {
+        ///         DatasetId = "my-bq-dataset",
+        ///         Project = "my-project",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetTablesResult> Invoke(GetTablesInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetTablesResult>("gcp:bigquery/getTables:getTables", args ?? new GetTablesInvokeArgs(), options.WithDefaults());
     }
 
 

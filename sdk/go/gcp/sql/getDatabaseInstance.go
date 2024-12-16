@@ -89,21 +89,11 @@ type LookupDatabaseInstanceResult struct {
 }
 
 func LookupDatabaseInstanceOutput(ctx *pulumi.Context, args LookupDatabaseInstanceOutputArgs, opts ...pulumi.InvokeOption) LookupDatabaseInstanceResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupDatabaseInstanceResultOutput, error) {
 			args := v.(LookupDatabaseInstanceArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupDatabaseInstanceResult
-			secret, err := ctx.InvokePackageRaw("gcp:sql/getDatabaseInstance:getDatabaseInstance", args, &rv, "", opts...)
-			if err != nil {
-				return LookupDatabaseInstanceResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupDatabaseInstanceResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupDatabaseInstanceResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gcp:sql/getDatabaseInstance:getDatabaseInstance", args, LookupDatabaseInstanceResultOutput{}, options).(LookupDatabaseInstanceResultOutput), nil
 		}).(LookupDatabaseInstanceResultOutput)
 }
 

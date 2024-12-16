@@ -64,6 +64,33 @@ namespace Pulumi.Gcp.CloudDeploy
         /// </summary>
         public static Output<GetDeliveryPipelineIamPolicyResult> Invoke(GetDeliveryPipelineIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetDeliveryPipelineIamPolicyResult>("gcp:clouddeploy/getDeliveryPipelineIamPolicy:getDeliveryPipelineIamPolicy", args ?? new GetDeliveryPipelineIamPolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves the current IAM policy data for deliverypipeline
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.CloudDeploy.GetDeliveryPipelineIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = @default.Project,
+        ///         Location = @default.Location,
+        ///         Name = @default.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetDeliveryPipelineIamPolicyResult> Invoke(GetDeliveryPipelineIamPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetDeliveryPipelineIamPolicyResult>("gcp:clouddeploy/getDeliveryPipelineIamPolicy:getDeliveryPipelineIamPolicy", args ?? new GetDeliveryPipelineIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

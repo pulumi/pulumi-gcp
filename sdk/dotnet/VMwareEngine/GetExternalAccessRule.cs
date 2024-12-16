@@ -66,6 +66,34 @@ namespace Pulumi.Gcp.VMwareEngine
         /// </summary>
         public static Output<GetExternalAccessRuleResult> Invoke(GetExternalAccessRuleInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetExternalAccessRuleResult>("gcp:vmwareengine/getExternalAccessRule:getExternalAccessRule", args ?? new GetExternalAccessRuleInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get details about a external access rule resource.
+        /// 
+        /// To get more information about external address, see:
+        /// * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.networkPolicies.externalAccessRules)
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myExternalAccessRule = Gcp.VMwareEngine.GetExternalAccessRule.Invoke(new()
+        ///     {
+        ///         Name = "my-external-access-rule",
+        ///         Parent = "project/my-project/locations/us-west1-a/networkPolicies/my-network-policy",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetExternalAccessRuleResult> Invoke(GetExternalAccessRuleInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetExternalAccessRuleResult>("gcp:vmwareengine/getExternalAccessRule:getExternalAccessRule", args ?? new GetExternalAccessRuleInvokeArgs(), options.WithDefaults());
     }
 
 

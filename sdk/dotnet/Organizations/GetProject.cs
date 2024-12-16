@@ -64,6 +64,33 @@ namespace Pulumi.Gcp.Organizations
         /// </summary>
         public static Output<GetProjectResult> Invoke(GetProjectInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetProjectResult>("gcp:organizations/getProject:getProject", args ?? new GetProjectInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get project details.
+        /// For more information see
+        /// [API](https://cloud.google.com/resource-manager/reference/rest/v1/projects#Project)
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var project = Gcp.Organizations.GetProject.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["projectNumber"] = project.Apply(getProjectResult =&gt; getProjectResult.Number),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetProjectResult> Invoke(GetProjectInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetProjectResult>("gcp:organizations/getProject:getProject", args ?? new GetProjectInvokeArgs(), options.WithDefaults());
     }
 
 

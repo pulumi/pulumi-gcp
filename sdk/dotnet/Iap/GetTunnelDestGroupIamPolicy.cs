@@ -64,6 +64,33 @@ namespace Pulumi.Gcp.Iap
         /// </summary>
         public static Output<GetTunnelDestGroupIamPolicyResult> Invoke(GetTunnelDestGroupIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetTunnelDestGroupIamPolicyResult>("gcp:iap/getTunnelDestGroupIamPolicy:getTunnelDestGroupIamPolicy", args ?? new GetTunnelDestGroupIamPolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves the current IAM policy data for tunneldestgroup
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.Iap.GetTunnelDestGroupIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = destGroup.Project,
+        ///         Region = destGroup.Region,
+        ///         DestGroup = destGroup.GroupName,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetTunnelDestGroupIamPolicyResult> Invoke(GetTunnelDestGroupIamPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetTunnelDestGroupIamPolicyResult>("gcp:iap/getTunnelDestGroupIamPolicy:getTunnelDestGroupIamPolicy", args ?? new GetTunnelDestGroupIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

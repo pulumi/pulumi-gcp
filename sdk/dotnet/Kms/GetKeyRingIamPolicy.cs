@@ -58,6 +58,30 @@ namespace Pulumi.Gcp.Kms
         /// </summary>
         public static Output<GetKeyRingIamPolicyResult> Invoke(GetKeyRingIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetKeyRingIamPolicyResult>("gcp:kms/getKeyRingIamPolicy:getKeyRingIamPolicy", args ?? new GetKeyRingIamPolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves the current IAM policy data for a Google Cloud KMS key ring.
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var testKeyRingIamPolicy = Gcp.Kms.GetKeyRingIamPolicy.Invoke(new()
+        ///     {
+        ///         KeyRingId = "{project_id}/{location_name}/{key_ring_name}",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetKeyRingIamPolicyResult> Invoke(GetKeyRingIamPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetKeyRingIamPolicyResult>("gcp:kms/getKeyRingIamPolicy:getKeyRingIamPolicy", args ?? new GetKeyRingIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

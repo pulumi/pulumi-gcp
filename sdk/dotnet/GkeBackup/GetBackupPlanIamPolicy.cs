@@ -64,6 +64,33 @@ namespace Pulumi.Gcp.GkeBackup
         /// </summary>
         public static Output<GetBackupPlanIamPolicyResult> Invoke(GetBackupPlanIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetBackupPlanIamPolicyResult>("gcp:gkebackup/getBackupPlanIamPolicy:getBackupPlanIamPolicy", args ?? new GetBackupPlanIamPolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves the current IAM policy data for backupplan
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.GkeBackup.GetBackupPlanIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = basic.Project,
+        ///         Location = basic.Location,
+        ///         Name = basic.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetBackupPlanIamPolicyResult> Invoke(GetBackupPlanIamPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetBackupPlanIamPolicyResult>("gcp:gkebackup/getBackupPlanIamPolicy:getBackupPlanIamPolicy", args ?? new GetBackupPlanIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

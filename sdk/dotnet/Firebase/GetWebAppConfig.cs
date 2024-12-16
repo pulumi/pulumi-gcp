@@ -34,6 +34,18 @@ namespace Pulumi.Gcp.Firebase
         /// </summary>
         public static Output<GetWebAppConfigResult> Invoke(GetWebAppConfigInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetWebAppConfigResult>("gcp:firebase/getWebAppConfig:getWebAppConfig", args ?? new GetWebAppConfigInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// A Google Cloud Firebase web application configuration
+        /// 
+        /// To get more information about WebApp, see:
+        /// 
+        /// * [API documentation](https://firebase.google.com/docs/projects/api/reference/rest/v1beta1/projects.webApps)
+        /// * How-to Guides
+        ///     * [Official Documentation](https://firebase.google.com/)
+        /// </summary>
+        public static Output<GetWebAppConfigResult> Invoke(GetWebAppConfigInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetWebAppConfigResult>("gcp:firebase/getWebAppConfig:getWebAppConfig", args ?? new GetWebAppConfigInvokeArgs(), options.WithDefaults());
     }
 
 

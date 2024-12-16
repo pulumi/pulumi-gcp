@@ -60,6 +60,31 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public static Output<GetRegionInstanceGroupResult> Invoke(GetRegionInstanceGroupInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRegionInstanceGroupResult>("gcp:compute/getRegionInstanceGroup:getRegionInstanceGroup", args ?? new GetRegionInstanceGroupInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get a Compute Region Instance Group within GCE.
+        /// For more information, see [the official documentation](https://cloud.google.com/compute/docs/instance-groups/distributing-instances-with-regional-instance-groups) and [API](https://cloud.google.com/compute/docs/reference/latest/regionInstanceGroups).
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var @group = Gcp.Compute.GetRegionInstanceGroup.Invoke(new()
+        ///     {
+        ///         Name = "instance-group-name",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// 
+        /// The most common use of this datasource will be to fetch information about the instances inside regional managed instance groups, for instance:
+        /// </summary>
+        public static Output<GetRegionInstanceGroupResult> Invoke(GetRegionInstanceGroupInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRegionInstanceGroupResult>("gcp:compute/getRegionInstanceGroup:getRegionInstanceGroup", args ?? new GetRegionInstanceGroupInvokeArgs(), options.WithDefaults());
     }
 
 

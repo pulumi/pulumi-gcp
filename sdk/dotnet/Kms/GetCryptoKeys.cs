@@ -34,6 +34,18 @@ namespace Pulumi.Gcp.Kms
         /// </summary>
         public static Output<GetCryptoKeysResult> Invoke(GetCryptoKeysInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetCryptoKeysResult>("gcp:kms/getCryptoKeys:getCryptoKeys", args ?? new GetCryptoKeysInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Provides access to all Google Cloud Platform KMS CryptoKeys in a given KeyRing. For more information see
+        /// [the official documentation](https://cloud.google.com/kms/docs/object-hierarchy#key)
+        /// and
+        /// [API](https://cloud.google.com/kms/docs/reference/rest/v1/projects.locations.keyRings.cryptoKeys).
+        /// 
+        /// A CryptoKey is an interface to key material which can be used to encrypt and decrypt data. A CryptoKey belongs to a
+        /// Google Cloud KMS KeyRing.
+        /// </summary>
+        public static Output<GetCryptoKeysResult> Invoke(GetCryptoKeysInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetCryptoKeysResult>("gcp:kms/getCryptoKeys:getCryptoKeys", args ?? new GetCryptoKeysInvokeArgs(), options.WithDefaults());
     }
 
 

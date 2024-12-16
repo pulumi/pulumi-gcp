@@ -150,6 +150,76 @@ namespace Pulumi.Gcp.Monitoring
         /// </summary>
         public static Output<GetNotificationChannelResult> Invoke(GetNotificationChannelInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNotificationChannelResult>("gcp:monitoring/getNotificationChannel:getNotificationChannel", args ?? new GetNotificationChannelInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// A NotificationChannel is a medium through which an alert is delivered
+        /// when a policy violation is detected. Examples of channels include email, SMS,
+        /// and third-party messaging applications. Fields containing sensitive information
+        /// like authentication tokens or contact info are only partially populated on retrieval.
+        /// 
+        /// 
+        /// To get more information about NotificationChannel, see:
+        /// 
+        /// * [API documentation](https://cloud.google.com/monitoring/api/ref_v3/rest/v3/projects.notificationChannels)
+        /// * How-to Guides
+        ///     * [Notification Options](https://cloud.google.com/monitoring/support/notification-options)
+        ///     * [Monitoring API Documentation](https://cloud.google.com/monitoring/api/v3/)
+        /// 
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ### Notification Channel Basic
+        /// 
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var basic = Gcp.Monitoring.GetNotificationChannel.Invoke(new()
+        ///     {
+        ///         DisplayName = "Test Notification Channel",
+        ///     });
+        /// 
+        ///     var alertPolicy = new Gcp.Monitoring.AlertPolicy("alert_policy", new()
+        ///     {
+        ///         DisplayName = "My Alert Policy",
+        ///         NotificationChannels = new[]
+        ///         {
+        ///             basic.Apply(getNotificationChannelResult =&gt; getNotificationChannelResult.Name),
+        ///         },
+        ///         Combiner = "OR",
+        ///         Conditions = new[]
+        ///         {
+        ///             new Gcp.Monitoring.Inputs.AlertPolicyConditionArgs
+        ///             {
+        ///                 DisplayName = "test condition",
+        ///                 ConditionThreshold = new Gcp.Monitoring.Inputs.AlertPolicyConditionConditionThresholdArgs
+        ///                 {
+        ///                     Filter = "metric.type=\"compute.googleapis.com/instance/disk/write_bytes_count\" AND resource.type=\"gce_instance\"",
+        ///                     Duration = "60s",
+        ///                     Comparison = "COMPARISON_GT",
+        ///                     Aggregations = new[]
+        ///                     {
+        ///                         new Gcp.Monitoring.Inputs.AlertPolicyConditionConditionThresholdAggregationArgs
+        ///                         {
+        ///                             AlignmentPeriod = "60s",
+        ///                             PerSeriesAligner = "ALIGN_RATE",
+        ///                         },
+        ///                     },
+        ///                 },
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetNotificationChannelResult> Invoke(GetNotificationChannelInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetNotificationChannelResult>("gcp:monitoring/getNotificationChannel:getNotificationChannel", args ?? new GetNotificationChannelInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -66,6 +66,34 @@ namespace Pulumi.Gcp.VMwareEngine
         /// </summary>
         public static Output<GetNetworkResult> Invoke(GetNetworkInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetNetworkResult>("gcp:vmwareengine/getNetwork:getNetwork", args ?? new GetNetworkInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Use this data source to get details about a VMwareEngine network resource.
+        /// 
+        /// To get more information about VMwareEngine Network, see:
+        /// * [API documentation](https://cloud.google.com/vmware-engine/docs/reference/rest/v1/projects.locations.vmwareEngineNetworks)
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myNw = Gcp.VMwareEngine.GetNetwork.Invoke(new()
+        ///     {
+        ///         Name = "us-central1-default",
+        ///         Location = "us-central1",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetNetworkResult> Invoke(GetNetworkInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetNetworkResult>("gcp:vmwareengine/getNetwork:getNetwork", args ?? new GetNetworkInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -74,6 +74,38 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         public static Output<GetClusterResult> Invoke(GetClusterInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetClusterResult>("gcp:container/getCluster:getCluster", args ?? new GetClusterInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get info about a GKE cluster from its name and location.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var myCluster = Gcp.Container.GetCluster.Invoke(new()
+        ///     {
+        ///         Name = "my-cluster",
+        ///         Location = "us-east1-a",
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["endpoint"] = myCluster.Apply(getClusterResult =&gt; getClusterResult.Endpoint),
+        ///         ["instanceGroupUrls"] = myCluster.Apply(getClusterResult =&gt; getClusterResult.NodePools[0]?.InstanceGroupUrls),
+        ///         ["nodeConfig"] = myCluster.Apply(getClusterResult =&gt; getClusterResult.NodeConfigs),
+        ///         ["nodePools"] = myCluster.Apply(getClusterResult =&gt; getClusterResult.NodePools),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetClusterResult> Invoke(GetClusterInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetClusterResult>("gcp:container/getCluster:getCluster", args ?? new GetClusterInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -60,6 +60,31 @@ namespace Pulumi.Gcp.Dataproc
         /// </summary>
         public static Output<GetClusterIamPolicyResult> Invoke(GetClusterIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetClusterIamPolicyResult>("gcp:dataproc/getClusterIamPolicy:getClusterIamPolicy", args ?? new GetClusterIamPolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves the current IAM policy data for a Dataproc cluster.
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.Dataproc.GetClusterIamPolicy.Invoke(new()
+        ///     {
+        ///         Cluster = cluster.Name,
+        ///         Region = "us-central1",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetClusterIamPolicyResult> Invoke(GetClusterIamPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetClusterIamPolicyResult>("gcp:dataproc/getClusterIamPolicy:getClusterIamPolicy", args ?? new GetClusterIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

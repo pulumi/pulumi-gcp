@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.dataform.inputs.GetRepositoryIamPolicyArgs;
 import com.pulumi.gcp.dataform.inputs.GetRepositoryIamPolicyPlainArgs;
@@ -21,6 +22,9 @@ public final class DataformFunctions {
         return getRepositoryIamPolicyPlain(args, InvokeOptions.Empty);
     }
     public static Output<GetRepositoryIamPolicyResult> getRepositoryIamPolicy(GetRepositoryIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:dataform/getRepositoryIamPolicy:getRepositoryIamPolicy", TypeShape.of(GetRepositoryIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetRepositoryIamPolicyResult> getRepositoryIamPolicy(GetRepositoryIamPolicyArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:dataform/getRepositoryIamPolicy:getRepositoryIamPolicy", TypeShape.of(GetRepositoryIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     public static CompletableFuture<GetRepositoryIamPolicyResult> getRepositoryIamPolicyPlain(GetRepositoryIamPolicyPlainArgs args, InvokeOptions options) {

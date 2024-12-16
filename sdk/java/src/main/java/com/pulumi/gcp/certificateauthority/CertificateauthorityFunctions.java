@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.certificateauthority.inputs.GetAuthorityArgs;
 import com.pulumi.gcp.certificateauthority.inputs.GetAuthorityPlainArgs;
@@ -287,6 +288,51 @@ public final class CertificateauthorityFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetAuthorityResult> getAuthority(GetAuthorityArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:certificateauthority/getAuthority:getAuthority", TypeShape.of(GetAuthorityResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get info about a Google CAS Certificate Authority.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.certificateauthority.CertificateauthorityFunctions;
+     * import com.pulumi.gcp.certificateauthority.inputs.GetAuthorityArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var default = CertificateauthorityFunctions.getAuthority(GetAuthorityArgs.builder()
+     *             .location("us-west1")
+     *             .pool("pool-name")
+     *             .certificateAuthorityId("ca-id")
+     *             .build());
+     * 
+     *         ctx.export("csr", default_.pemCsr());
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetAuthorityResult> getAuthorityPlain(GetAuthorityPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:certificateauthority/getAuthority:getAuthority", TypeShape.of(GetAuthorityResult.class), args, Utilities.withVersion(options));
     }
@@ -455,6 +501,48 @@ public final class CertificateauthorityFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetCaPoolIamPolicyResult> getCaPoolIamPolicy(GetCaPoolIamPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:certificateauthority/getCaPoolIamPolicy:getCaPoolIamPolicy", TypeShape.of(GetCaPoolIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for capool
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.certificateauthority.CertificateauthorityFunctions;
+     * import com.pulumi.gcp.certificateauthority.inputs.GetCaPoolIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = CertificateauthorityFunctions.getCaPoolIamPolicy(GetCaPoolIamPolicyArgs.builder()
+     *             .caPool(default_.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetCaPoolIamPolicyResult> getCaPoolIamPolicyPlain(GetCaPoolIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:certificateauthority/getCaPoolIamPolicy:getCaPoolIamPolicy", TypeShape.of(GetCaPoolIamPolicyResult.class), args, Utilities.withVersion(options));
     }
@@ -582,6 +670,48 @@ public final class CertificateauthorityFunctions {
      * 
      */
     public static Output<GetCertificateTemplateIamPolicyResult> getCertificateTemplateIamPolicy(GetCertificateTemplateIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:certificateauthority/getCertificateTemplateIamPolicy:getCertificateTemplateIamPolicy", TypeShape.of(GetCertificateTemplateIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for certificatetemplate
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.certificateauthority.CertificateauthorityFunctions;
+     * import com.pulumi.gcp.certificateauthority.inputs.GetCertificateTemplateIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = CertificateauthorityFunctions.getCertificateTemplateIamPolicy(GetCertificateTemplateIamPolicyArgs.builder()
+     *             .certificateTemplate(default_.id())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetCertificateTemplateIamPolicyResult> getCertificateTemplateIamPolicy(GetCertificateTemplateIamPolicyArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:certificateauthority/getCertificateTemplateIamPolicy:getCertificateTemplateIamPolicy", TypeShape.of(GetCertificateTemplateIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**

@@ -66,6 +66,34 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public static Output<GetInstanceResult> Invoke(GetInstanceInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetInstanceResult>("gcp:compute/getInstance:getInstance", args ?? new GetInstanceInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get information about a VM instance resource within GCE. For more information see
+        /// [the official documentation](https://cloud.google.com/compute/docs/instances)
+        /// and
+        /// [API](https://cloud.google.com/compute/docs/reference/latest/instances).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var appserver = Gcp.Compute.GetInstance.Invoke(new()
+        ///     {
+        ///         Name = "primary-application-server",
+        ///         Zone = "us-central1-a",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetInstanceResult> Invoke(GetInstanceInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetInstanceResult>("gcp:compute/getInstance:getInstance", args ?? new GetInstanceInvokeArgs(), options.WithDefaults());
     }
 
 

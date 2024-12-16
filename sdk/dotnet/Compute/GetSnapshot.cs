@@ -82,6 +82,42 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public static Output<GetSnapshotResult> Invoke(GetSnapshotInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSnapshotResult>("gcp:compute/getSnapshot:getSnapshot", args ?? new GetSnapshotInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// To get more information about Snapshot, see:
+        /// 
+        /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/snapshots)
+        /// * How-to Guides
+        ///     * [Official Documentation](https://cloud.google.com/compute/docs/disks/create-snapshots)
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     //by name 
+        ///     var snapshot = Gcp.Compute.GetSnapshot.Invoke(new()
+        ///     {
+        ///         Name = "my-snapshot",
+        ///     });
+        /// 
+        ///     // using a filter
+        ///     var latest_snapshot = Gcp.Compute.GetSnapshot.Invoke(new()
+        ///     {
+        ///         Filter = "name != my-snapshot",
+        ///         MostRecent = true,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetSnapshotResult> Invoke(GetSnapshotInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetSnapshotResult>("gcp:compute/getSnapshot:getSnapshot", args ?? new GetSnapshotInvokeArgs(), options.WithDefaults());
     }
 
 

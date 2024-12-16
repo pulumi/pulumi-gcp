@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.bigqueryanalyticshub.inputs.GetDataExchangeIamPolicyArgs;
 import com.pulumi.gcp.bigqueryanalyticshub.inputs.GetDataExchangeIamPolicyPlainArgs;
@@ -190,6 +191,50 @@ public final class BigqueryanalyticshubFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetDataExchangeIamPolicyResult> getDataExchangeIamPolicy(GetDataExchangeIamPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:bigqueryanalyticshub/getDataExchangeIamPolicy:getDataExchangeIamPolicy", TypeShape.of(GetDataExchangeIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for dataexchange
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.bigqueryanalyticshub.BigqueryanalyticshubFunctions;
+     * import com.pulumi.gcp.bigqueryanalyticshub.inputs.GetDataExchangeIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = BigqueryanalyticshubFunctions.getDataExchangeIamPolicy(GetDataExchangeIamPolicyArgs.builder()
+     *             .project(dataExchange.project())
+     *             .location(dataExchange.location())
+     *             .dataExchangeId(dataExchange.dataExchangeId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetDataExchangeIamPolicyResult> getDataExchangeIamPolicyPlain(GetDataExchangeIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:bigqueryanalyticshub/getDataExchangeIamPolicy:getDataExchangeIamPolicy", TypeShape.of(GetDataExchangeIamPolicyResult.class), args, Utilities.withVersion(options));
     }
@@ -326,6 +371,51 @@ public final class BigqueryanalyticshubFunctions {
      * 
      */
     public static Output<GetListingIamPolicyResult> getListingIamPolicy(GetListingIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:bigqueryanalyticshub/getListingIamPolicy:getListingIamPolicy", TypeShape.of(GetListingIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for listing
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.bigqueryanalyticshub.BigqueryanalyticshubFunctions;
+     * import com.pulumi.gcp.bigqueryanalyticshub.inputs.GetListingIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = BigqueryanalyticshubFunctions.getListingIamPolicy(GetListingIamPolicyArgs.builder()
+     *             .project(listing.project())
+     *             .location(listing.location())
+     *             .dataExchangeId(listing.dataExchangeId())
+     *             .listingId(listing.listingId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetListingIamPolicyResult> getListingIamPolicy(GetListingIamPolicyArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:bigqueryanalyticshub/getListingIamPolicy:getListingIamPolicy", TypeShape.of(GetListingIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**

@@ -66,6 +66,34 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public static Output<GetSubnetworksResult> Invoke(GetSubnetworksInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSubnetworksResult>("gcp:compute/getSubnetworks:getSubnetworks", args ?? new GetSubnetworksInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get subnetworks within GCE.
+        /// See [the official documentation](https://cloud.google.com/vpc/docs/subnets)
+        /// and [API](https://cloud.google.com/compute/docs/reference/rest/v1/subnetworks/list).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_subnetworks = Gcp.Compute.GetSubnetworks.Invoke(new()
+        ///     {
+        ///         Filter = "ipCidrRange eq 192.168.178.0/24",
+        ///         Project = "my-project",
+        ///         Region = "us-east1",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetSubnetworksResult> Invoke(GetSubnetworksInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetSubnetworksResult>("gcp:compute/getSubnetworks:getSubnetworks", args ?? new GetSubnetworksInvokeArgs(), options.WithDefaults());
     }
 
 

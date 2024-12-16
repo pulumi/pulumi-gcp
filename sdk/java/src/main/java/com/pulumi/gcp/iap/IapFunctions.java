@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.iap.inputs.GetAppEngineServiceIamPolicyArgs;
 import com.pulumi.gcp.iap.inputs.GetAppEngineServiceIamPolicyPlainArgs;
@@ -217,6 +218,50 @@ public final class IapFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetAppEngineServiceIamPolicyResult> getAppEngineServiceIamPolicy(GetAppEngineServiceIamPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:iap/getAppEngineServiceIamPolicy:getAppEngineServiceIamPolicy", TypeShape.of(GetAppEngineServiceIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for appengineservice
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iap.IapFunctions;
+     * import com.pulumi.gcp.iap.inputs.GetAppEngineServiceIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = IapFunctions.getAppEngineServiceIamPolicy(GetAppEngineServiceIamPolicyArgs.builder()
+     *             .project(version.project())
+     *             .appId(version.project())
+     *             .service(version.service())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetAppEngineServiceIamPolicyResult> getAppEngineServiceIamPolicyPlain(GetAppEngineServiceIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:iap/getAppEngineServiceIamPolicy:getAppEngineServiceIamPolicy", TypeShape.of(GetAppEngineServiceIamPolicyResult.class), args, Utilities.withVersion(options));
     }
@@ -353,6 +398,51 @@ public final class IapFunctions {
      * 
      */
     public static Output<GetAppEngineVersionIamPolicyResult> getAppEngineVersionIamPolicy(GetAppEngineVersionIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:iap/getAppEngineVersionIamPolicy:getAppEngineVersionIamPolicy", TypeShape.of(GetAppEngineVersionIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for appengineversion
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iap.IapFunctions;
+     * import com.pulumi.gcp.iap.inputs.GetAppEngineVersionIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = IapFunctions.getAppEngineVersionIamPolicy(GetAppEngineVersionIamPolicyArgs.builder()
+     *             .project(version.project())
+     *             .appId(version.project())
+     *             .service(version.service())
+     *             .versionId(version.versionId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAppEngineVersionIamPolicyResult> getAppEngineVersionIamPolicy(GetAppEngineVersionIamPolicyArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:iap/getAppEngineVersionIamPolicy:getAppEngineVersionIamPolicy", TypeShape.of(GetAppEngineVersionIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -593,6 +683,55 @@ public final class IapFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetClientResult> getClient(GetClientArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:iap/getClient:getClient", TypeShape.of(GetClientResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get info about a Google Cloud IAP Client.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
+     * import com.pulumi.gcp.iap.IapFunctions;
+     * import com.pulumi.gcp.iap.inputs.GetClientArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
+     *             .projectId("foobar")
+     *             .build());
+     * 
+     *         final var projectClient = IapFunctions.getClient(GetClientArgs.builder()
+     *             .brand(String.format("projects/%s/brands/[BRAND_NUMBER]", project.applyValue(getProjectResult -> getProjectResult.number())))
+     *             .clientId(apps.googleusercontent().com())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetClientResult> getClientPlain(GetClientPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:iap/getClient:getClient", TypeShape.of(GetClientResult.class), args, Utilities.withVersion(options));
     }
@@ -726,6 +865,50 @@ public final class IapFunctions {
      * 
      */
     public static Output<GetTunnelDestGroupIamPolicyResult> getTunnelDestGroupIamPolicy(GetTunnelDestGroupIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:iap/getTunnelDestGroupIamPolicy:getTunnelDestGroupIamPolicy", TypeShape.of(GetTunnelDestGroupIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for tunneldestgroup
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iap.IapFunctions;
+     * import com.pulumi.gcp.iap.inputs.GetTunnelDestGroupIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = IapFunctions.getTunnelDestGroupIamPolicy(GetTunnelDestGroupIamPolicyArgs.builder()
+     *             .project(destGroup.project())
+     *             .region(destGroup.region())
+     *             .destGroup(destGroup.groupName())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetTunnelDestGroupIamPolicyResult> getTunnelDestGroupIamPolicy(GetTunnelDestGroupIamPolicyArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:iap/getTunnelDestGroupIamPolicy:getTunnelDestGroupIamPolicy", TypeShape.of(GetTunnelDestGroupIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1021,6 +1204,48 @@ public final class IapFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetTunnelIamPolicyResult> getTunnelIamPolicy(GetTunnelIamPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:iap/getTunnelIamPolicy:getTunnelIamPolicy", TypeShape.of(GetTunnelIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for tunnel
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iap.IapFunctions;
+     * import com.pulumi.gcp.iap.inputs.GetTunnelIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = IapFunctions.getTunnelIamPolicy(GetTunnelIamPolicyArgs.builder()
+     *             .project(projectService.project())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetTunnelIamPolicyResult> getTunnelIamPolicyPlain(GetTunnelIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:iap/getTunnelIamPolicy:getTunnelIamPolicy", TypeShape.of(GetTunnelIamPolicyResult.class), args, Utilities.withVersion(options));
     }
@@ -1197,6 +1422,50 @@ public final class IapFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetTunnelInstanceIamPolicyResult> getTunnelInstanceIamPolicy(GetTunnelInstanceIamPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:iap/getTunnelInstanceIamPolicy:getTunnelInstanceIamPolicy", TypeShape.of(GetTunnelInstanceIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for tunnelinstance
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iap.IapFunctions;
+     * import com.pulumi.gcp.iap.inputs.GetTunnelInstanceIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = IapFunctions.getTunnelInstanceIamPolicy(GetTunnelInstanceIamPolicyArgs.builder()
+     *             .project(tunnelvm.project())
+     *             .zone(tunnelvm.zone())
+     *             .instance(tunnelvm.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetTunnelInstanceIamPolicyResult> getTunnelInstanceIamPolicyPlain(GetTunnelInstanceIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:iap/getTunnelInstanceIamPolicy:getTunnelInstanceIamPolicy", TypeShape.of(GetTunnelInstanceIamPolicyResult.class), args, Utilities.withVersion(options));
     }
@@ -1327,6 +1596,49 @@ public final class IapFunctions {
      * 
      */
     public static Output<GetWebBackendServiceIamPolicyResult> getWebBackendServiceIamPolicy(GetWebBackendServiceIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:iap/getWebBackendServiceIamPolicy:getWebBackendServiceIamPolicy", TypeShape.of(GetWebBackendServiceIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for webbackendservice
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iap.IapFunctions;
+     * import com.pulumi.gcp.iap.inputs.GetWebBackendServiceIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = IapFunctions.getWebBackendServiceIamPolicy(GetWebBackendServiceIamPolicyArgs.builder()
+     *             .project(default_.project())
+     *             .webBackendService(default_.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetWebBackendServiceIamPolicyResult> getWebBackendServiceIamPolicy(GetWebBackendServiceIamPolicyArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:iap/getWebBackendServiceIamPolicy:getWebBackendServiceIamPolicy", TypeShape.of(GetWebBackendServiceIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -1621,6 +1933,48 @@ public final class IapFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetWebIamPolicyResult> getWebIamPolicy(GetWebIamPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:iap/getWebIamPolicy:getWebIamPolicy", TypeShape.of(GetWebIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for web
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iap.IapFunctions;
+     * import com.pulumi.gcp.iap.inputs.GetWebIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = IapFunctions.getWebIamPolicy(GetWebIamPolicyArgs.builder()
+     *             .project(projectService.project())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetWebIamPolicyResult> getWebIamPolicyPlain(GetWebIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:iap/getWebIamPolicy:getWebIamPolicy", TypeShape.of(GetWebIamPolicyResult.class), args, Utilities.withVersion(options));
     }
@@ -1797,6 +2151,50 @@ public final class IapFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetWebRegionBackendServiceIamPolicyResult> getWebRegionBackendServiceIamPolicy(GetWebRegionBackendServiceIamPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:iap/getWebRegionBackendServiceIamPolicy:getWebRegionBackendServiceIamPolicy", TypeShape.of(GetWebRegionBackendServiceIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for webregionbackendservice
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iap.IapFunctions;
+     * import com.pulumi.gcp.iap.inputs.GetWebRegionBackendServiceIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = IapFunctions.getWebRegionBackendServiceIamPolicy(GetWebRegionBackendServiceIamPolicyArgs.builder()
+     *             .project(default_.project())
+     *             .region(default_.region())
+     *             .webRegionBackendService(default_.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetWebRegionBackendServiceIamPolicyResult> getWebRegionBackendServiceIamPolicyPlain(GetWebRegionBackendServiceIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:iap/getWebRegionBackendServiceIamPolicy:getWebRegionBackendServiceIamPolicy", TypeShape.of(GetWebRegionBackendServiceIamPolicyResult.class), args, Utilities.withVersion(options));
     }
@@ -1927,6 +2325,49 @@ public final class IapFunctions {
      * 
      */
     public static Output<GetWebTypeAppEngineIamPolicyResult> getWebTypeAppEngineIamPolicy(GetWebTypeAppEngineIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:iap/getWebTypeAppEngineIamPolicy:getWebTypeAppEngineIamPolicy", TypeShape.of(GetWebTypeAppEngineIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for webtypeappengine
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iap.IapFunctions;
+     * import com.pulumi.gcp.iap.inputs.GetWebTypeAppEngineIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = IapFunctions.getWebTypeAppEngineIamPolicy(GetWebTypeAppEngineIamPolicyArgs.builder()
+     *             .project(app.project())
+     *             .appId(app.appId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetWebTypeAppEngineIamPolicyResult> getWebTypeAppEngineIamPolicy(GetWebTypeAppEngineIamPolicyArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:iap/getWebTypeAppEngineIamPolicy:getWebTypeAppEngineIamPolicy", TypeShape.of(GetWebTypeAppEngineIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -2180,6 +2621,48 @@ public final class IapFunctions {
      * 
      */
     public static Output<GetWebTypeComputeIamPolicyResult> getWebTypeComputeIamPolicy(GetWebTypeComputeIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:iap/getWebTypeComputeIamPolicy:getWebTypeComputeIamPolicy", TypeShape.of(GetWebTypeComputeIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for webtypecompute
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iap.IapFunctions;
+     * import com.pulumi.gcp.iap.inputs.GetWebTypeComputeIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = IapFunctions.getWebTypeComputeIamPolicy(GetWebTypeComputeIamPolicyArgs.builder()
+     *             .project(projectService.project())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetWebTypeComputeIamPolicyResult> getWebTypeComputeIamPolicy(GetWebTypeComputeIamPolicyArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:iap/getWebTypeComputeIamPolicy:getWebTypeComputeIamPolicy", TypeShape.of(GetWebTypeComputeIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**

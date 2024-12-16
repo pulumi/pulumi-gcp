@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.iam.inputs.GetRuleArgs;
 import com.pulumi.gcp.iam.inputs.GetRulePlainArgs;
@@ -144,6 +145,47 @@ public final class IamFunctions {
      * 
      */
     public static Output<GetRuleResult> getRule(GetRuleArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:iam/getRule:getRule", TypeShape.of(GetRuleResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Use this data source to get information about a Google IAM Role.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iam.IamFunctions;
+     * import com.pulumi.gcp.iam.inputs.GetRuleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var roleinfo = IamFunctions.getRule(GetRuleArgs.builder()
+     *             .name("roles/compute.viewer")
+     *             .build());
+     * 
+     *         ctx.export("theRolePermissions", roleinfo.applyValue(getRuleResult -> getRuleResult.includedPermissions()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetRuleResult> getRule(GetRuleArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:iam/getRule:getRule", TypeShape.of(GetRuleResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -372,6 +414,53 @@ public final class IamFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetTestablePermissionsResult> getTestablePermissions(GetTestablePermissionsArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:iam/getTestablePermissions:getTestablePermissions", TypeShape.of(GetTestablePermissionsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieve a list of testable permissions for a resource. Testable permissions mean the permissions that user can add or remove in a role at a given resource. The resource can be referenced either via the full resource name or via a URI.
+     * 
+     * ## Example Usage
+     * 
+     * Retrieve all the supported permissions able to be set on `my-project` that are in either GA or BETA. This is useful for dynamically constructing custom roles.
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iam.IamFunctions;
+     * import com.pulumi.gcp.iam.inputs.GetTestablePermissionsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var perms = IamFunctions.getTestablePermissions(GetTestablePermissionsArgs.builder()
+     *             .fullResourceName("//cloudresourcemanager.googleapis.com/projects/my-project")
+     *             .stages(            
+     *                 "GA",
+     *                 "BETA")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetTestablePermissionsResult> getTestablePermissionsPlain(GetTestablePermissionsPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:iam/getTestablePermissions:getTestablePermissions", TypeShape.of(GetTestablePermissionsResult.class), args, Utilities.withVersion(options));
     }
@@ -499,6 +588,48 @@ public final class IamFunctions {
      * 
      */
     public static Output<GetWorkloadIdentityPoolResult> getWorkloadIdentityPool(GetWorkloadIdentityPoolArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:iam/getWorkloadIdentityPool:getWorkloadIdentityPool", TypeShape.of(GetWorkloadIdentityPoolResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get a IAM workload identity pool from Google Cloud by its id.
+     * &gt; **Note:** The following resource requires the Beta IAM role `roles/iam.workloadIdentityPoolAdmin` in order to succeed. `OWNER` and `EDITOR` roles do not include the necessary permissions.
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iam.IamFunctions;
+     * import com.pulumi.gcp.iam.inputs.GetWorkloadIdentityPoolArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = IamFunctions.getWorkloadIdentityPool(GetWorkloadIdentityPoolArgs.builder()
+     *             .workloadIdentityPoolId("foo-pool")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetWorkloadIdentityPoolResult> getWorkloadIdentityPool(GetWorkloadIdentityPoolArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:iam/getWorkloadIdentityPool:getWorkloadIdentityPool", TypeShape.of(GetWorkloadIdentityPoolResult.class), args, Utilities.withVersion(options));
     }
     /**
@@ -670,6 +801,49 @@ public final class IamFunctions {
      * 
      */
     public static Output<GetWorkloadIdentityPoolProviderResult> getWorkloadIdentityPoolProvider(GetWorkloadIdentityPoolProviderArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:iam/getWorkloadIdentityPoolProvider:getWorkloadIdentityPoolProvider", TypeShape.of(GetWorkloadIdentityPoolProviderResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get a IAM workload identity provider from Google Cloud by its id.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.iam.IamFunctions;
+     * import com.pulumi.gcp.iam.inputs.GetWorkloadIdentityPoolProviderArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = IamFunctions.getWorkloadIdentityPoolProvider(GetWorkloadIdentityPoolProviderArgs.builder()
+     *             .workloadIdentityPoolId("foo-pool")
+     *             .workloadIdentityPoolProviderId("bar-provider")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetWorkloadIdentityPoolProviderResult> getWorkloadIdentityPoolProvider(GetWorkloadIdentityPoolProviderArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:iam/getWorkloadIdentityPoolProvider:getWorkloadIdentityPoolProvider", TypeShape.of(GetWorkloadIdentityPoolProviderResult.class), args, Utilities.withVersion(options));
     }
     /**

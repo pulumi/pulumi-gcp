@@ -16,6 +16,9 @@ namespace Pulumi.Gcp.Vertex
 
         public static Output<GetAiEndpointIamPolicyResult> Invoke(GetAiEndpointIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAiEndpointIamPolicyResult>("gcp:vertex/getAiEndpointIamPolicy:getAiEndpointIamPolicy", args ?? new GetAiEndpointIamPolicyInvokeArgs(), options.WithDefaults());
+
+        public static Output<GetAiEndpointIamPolicyResult> Invoke(GetAiEndpointIamPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAiEndpointIamPolicyResult>("gcp:vertex/getAiEndpointIamPolicy:getAiEndpointIamPolicy", args ?? new GetAiEndpointIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

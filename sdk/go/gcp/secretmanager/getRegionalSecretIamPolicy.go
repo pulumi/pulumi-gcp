@@ -78,21 +78,11 @@ type LookupRegionalSecretIamPolicyResult struct {
 }
 
 func LookupRegionalSecretIamPolicyOutput(ctx *pulumi.Context, args LookupRegionalSecretIamPolicyOutputArgs, opts ...pulumi.InvokeOption) LookupRegionalSecretIamPolicyResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupRegionalSecretIamPolicyResultOutput, error) {
 			args := v.(LookupRegionalSecretIamPolicyArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupRegionalSecretIamPolicyResult
-			secret, err := ctx.InvokePackageRaw("gcp:secretmanager/getRegionalSecretIamPolicy:getRegionalSecretIamPolicy", args, &rv, "", opts...)
-			if err != nil {
-				return LookupRegionalSecretIamPolicyResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupRegionalSecretIamPolicyResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupRegionalSecretIamPolicyResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gcp:secretmanager/getRegionalSecretIamPolicy:getRegionalSecretIamPolicy", args, LookupRegionalSecretIamPolicyResultOutput{}, options).(LookupRegionalSecretIamPolicyResultOutput), nil
 		}).(LookupRegionalSecretIamPolicyResultOutput)
 }
 

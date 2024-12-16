@@ -64,6 +64,33 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public static Output<GetSubnetworkIamPolicyResult> Invoke(GetSubnetworkIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetSubnetworkIamPolicyResult>("gcp:compute/getSubnetworkIamPolicy:getSubnetworkIamPolicy", args ?? new GetSubnetworkIamPolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves the current IAM policy data for subnetwork
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.Compute.GetSubnetworkIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = network_with_private_secondary_ip_ranges.Project,
+        ///         Region = network_with_private_secondary_ip_ranges.Region,
+        ///         Subnetwork = network_with_private_secondary_ip_ranges.Name,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetSubnetworkIamPolicyResult> Invoke(GetSubnetworkIamPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetSubnetworkIamPolicyResult>("gcp:compute/getSubnetworkIamPolicy:getSubnetworkIamPolicy", args ?? new GetSubnetworkIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

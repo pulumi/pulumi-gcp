@@ -136,21 +136,11 @@ type LookupSearchAllResourcesResult struct {
 }
 
 func LookupSearchAllResourcesOutput(ctx *pulumi.Context, args LookupSearchAllResourcesOutputArgs, opts ...pulumi.InvokeOption) LookupSearchAllResourcesResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupSearchAllResourcesResultOutput, error) {
 			args := v.(LookupSearchAllResourcesArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupSearchAllResourcesResult
-			secret, err := ctx.InvokePackageRaw("gcp:cloudasset/getSearchAllResources:getSearchAllResources", args, &rv, "", opts...)
-			if err != nil {
-				return LookupSearchAllResourcesResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupSearchAllResourcesResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupSearchAllResourcesResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gcp:cloudasset/getSearchAllResources:getSearchAllResources", args, LookupSearchAllResourcesResultOutput{}, options).(LookupSearchAllResourcesResultOutput), nil
 		}).(LookupSearchAllResourcesResultOutput)
 }
 

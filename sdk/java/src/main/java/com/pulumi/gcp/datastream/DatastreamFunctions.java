@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.datastream.inputs.GetStaticIpsArgs;
 import com.pulumi.gcp.datastream.inputs.GetStaticIpsPlainArgs;
@@ -147,6 +148,51 @@ public final class DatastreamFunctions {
      * 
      */
     public static Output<GetStaticIpsResult> getStaticIps(GetStaticIpsArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:datastream/getStaticIps:getStaticIps", TypeShape.of(GetStaticIpsResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Returns the list of IP addresses that Datastream connects from. For more information see
+     * the [official documentation](https://cloud.google.com/datastream/docs/ip-allowlists-and-regions).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.datastream.DatastreamFunctions;
+     * import com.pulumi.gcp.datastream.inputs.GetStaticIpsArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var datastreamIps = DatastreamFunctions.getStaticIps(GetStaticIpsArgs.builder()
+     *             .location("us-west1")
+     *             .project("my-project")
+     *             .build());
+     * 
+     *         ctx.export("ipList", datastreamIps.applyValue(getStaticIpsResult -> getStaticIpsResult.staticIps()));
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetStaticIpsResult> getStaticIps(GetStaticIpsArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:datastream/getStaticIps:getStaticIps", TypeShape.of(GetStaticIpsResult.class), args, Utilities.withVersion(options));
     }
     /**

@@ -83,21 +83,11 @@ type GetRegionInstanceGroupResult struct {
 }
 
 func GetRegionInstanceGroupOutput(ctx *pulumi.Context, args GetRegionInstanceGroupOutputArgs, opts ...pulumi.InvokeOption) GetRegionInstanceGroupResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (GetRegionInstanceGroupResultOutput, error) {
 			args := v.(GetRegionInstanceGroupArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv GetRegionInstanceGroupResult
-			secret, err := ctx.InvokePackageRaw("gcp:compute/getRegionInstanceGroup:getRegionInstanceGroup", args, &rv, "", opts...)
-			if err != nil {
-				return GetRegionInstanceGroupResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(GetRegionInstanceGroupResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(GetRegionInstanceGroupResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gcp:compute/getRegionInstanceGroup:getRegionInstanceGroup", args, GetRegionInstanceGroupResultOutput{}, options).(GetRegionInstanceGroupResultOutput), nil
 		}).(GetRegionInstanceGroupResultOutput)
 }
 

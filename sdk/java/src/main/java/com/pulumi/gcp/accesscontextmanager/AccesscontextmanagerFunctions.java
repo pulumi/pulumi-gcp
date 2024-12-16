@@ -7,6 +7,7 @@ import com.pulumi.core.Output;
 import com.pulumi.core.TypeShape;
 import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
+import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.accesscontextmanager.inputs.GetAccessPolicyArgs;
 import com.pulumi.gcp.accesscontextmanager.inputs.GetAccessPolicyIamPolicyArgs;
@@ -202,6 +203,53 @@ public final class AccesscontextmanagerFunctions {
      * &lt;!--End PulumiCodeChooser --&gt;
      * 
      */
+    public static Output<GetAccessPolicyResult> getAccessPolicy(GetAccessPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:accesscontextmanager/getAccessPolicy:getAccessPolicy", TypeShape.of(GetAccessPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Get information about an Access Context Manager AccessPolicy.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.accesscontextmanager.AccesscontextmanagerFunctions;
+     * import com.pulumi.gcp.accesscontextmanager.inputs.GetAccessPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy-org = AccesscontextmanagerFunctions.getAccessPolicy(GetAccessPolicyArgs.builder()
+     *             .parent("organizations/1234567")
+     *             .build());
+     * 
+     *         final var policy-scoped = AccesscontextmanagerFunctions.getAccessPolicy(GetAccessPolicyArgs.builder()
+     *             .parent("organizations/1234567")
+     *             .scopes("projects/1234567")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetAccessPolicyResult> getAccessPolicyPlain(GetAccessPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:accesscontextmanager/getAccessPolicy:getAccessPolicy", TypeShape.of(GetAccessPolicyResult.class), args, Utilities.withVersion(options));
     }
@@ -329,6 +377,48 @@ public final class AccesscontextmanagerFunctions {
      * 
      */
     public static Output<GetAccessPolicyIamPolicyResult> getAccessPolicyIamPolicy(GetAccessPolicyIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:accesscontextmanager/getAccessPolicyIamPolicy:getAccessPolicyIamPolicy", TypeShape.of(GetAccessPolicyIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for accesspolicy
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.accesscontextmanager.AccesscontextmanagerFunctions;
+     * import com.pulumi.gcp.accesscontextmanager.inputs.GetAccessPolicyIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = AccesscontextmanagerFunctions.getAccessPolicyIamPolicy(GetAccessPolicyIamPolicyArgs.builder()
+     *             .name(access_policy.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAccessPolicyIamPolicyResult> getAccessPolicyIamPolicy(GetAccessPolicyIamPolicyArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:accesscontextmanager/getAccessPolicyIamPolicy:getAccessPolicyIamPolicy", TypeShape.of(GetAccessPolicyIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**

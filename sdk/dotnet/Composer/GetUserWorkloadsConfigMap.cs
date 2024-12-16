@@ -110,6 +110,56 @@ namespace Pulumi.Gcp.Composer
         /// </summary>
         public static Output<GetUserWorkloadsConfigMapResult> Invoke(GetUserWorkloadsConfigMapInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetUserWorkloadsConfigMapResult>("gcp:composer/getUserWorkloadsConfigMap:getUserWorkloadsConfigMap", args ?? new GetUserWorkloadsConfigMapInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var exampleEnvironment = new Gcp.Composer.Environment("example", new()
+        ///     {
+        ///         Name = "example-environment",
+        ///         Config = new Gcp.Composer.Inputs.EnvironmentConfigArgs
+        ///         {
+        ///             SoftwareConfig = new Gcp.Composer.Inputs.EnvironmentConfigSoftwareConfigArgs
+        ///             {
+        ///                 ImageVersion = "composer-3-airflow-2",
+        ///             },
+        ///         },
+        ///     });
+        /// 
+        ///     var exampleUserWorkloadsConfigMap = new Gcp.Composer.UserWorkloadsConfigMap("example", new()
+        ///     {
+        ///         Environment = exampleEnvironment.Name,
+        ///         Name = "example-config-map",
+        ///         Data = 
+        ///         {
+        ///             { "db_host", "dbhost:5432" },
+        ///             { "api_host", "apihost:443" },
+        ///         },
+        ///     });
+        /// 
+        ///     var example = Gcp.Composer.GetUserWorkloadsConfigMap.Invoke(new()
+        ///     {
+        ///         Environment = exampleEnvironment.Name,
+        ///         Name = googleComposerUserWorkloadsConfigMap.Example.Name,
+        ///     });
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["debug"] = example,
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetUserWorkloadsConfigMapResult> Invoke(GetUserWorkloadsConfigMapInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetUserWorkloadsConfigMapResult>("gcp:composer/getUserWorkloadsConfigMap:getUserWorkloadsConfigMap", args ?? new GetUserWorkloadsConfigMapInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -16,6 +16,9 @@ namespace Pulumi.Gcp.Vertex
 
         public static Output<GetAiFeaturestoreEntitytypeIamPolicyResult> Invoke(GetAiFeaturestoreEntitytypeIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetAiFeaturestoreEntitytypeIamPolicyResult>("gcp:vertex/getAiFeaturestoreEntitytypeIamPolicy:getAiFeaturestoreEntitytypeIamPolicy", args ?? new GetAiFeaturestoreEntitytypeIamPolicyInvokeArgs(), options.WithDefaults());
+
+        public static Output<GetAiFeaturestoreEntitytypeIamPolicyResult> Invoke(GetAiFeaturestoreEntitytypeIamPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetAiFeaturestoreEntitytypeIamPolicyResult>("gcp:vertex/getAiFeaturestoreEntitytypeIamPolicy:getAiFeaturestoreEntitytypeIamPolicy", args ?? new GetAiFeaturestoreEntitytypeIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

@@ -46,21 +46,11 @@ type LookupHostingChannelResult struct {
 }
 
 func LookupHostingChannelOutput(ctx *pulumi.Context, args LookupHostingChannelOutputArgs, opts ...pulumi.InvokeOption) LookupHostingChannelResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupHostingChannelResultOutput, error) {
 			args := v.(LookupHostingChannelArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupHostingChannelResult
-			secret, err := ctx.InvokePackageRaw("gcp:firebase/getHostingChannel:getHostingChannel", args, &rv, "", opts...)
-			if err != nil {
-				return LookupHostingChannelResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupHostingChannelResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupHostingChannelResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gcp:firebase/getHostingChannel:getHostingChannel", args, LookupHostingChannelResultOutput{}, options).(LookupHostingChannelResultOutput), nil
 		}).(LookupHostingChannelResultOutput)
 }
 

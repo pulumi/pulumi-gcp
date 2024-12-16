@@ -60,6 +60,31 @@ namespace Pulumi.Gcp.Endpoints
         /// </summary>
         public static Output<GetServiceIamPolicyResult> Invoke(GetServiceIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetServiceIamPolicyResult>("gcp:endpoints/getServiceIamPolicy:getServiceIamPolicy", args ?? new GetServiceIamPolicyInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Retrieves the current IAM policy data for service
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.Endpoints.GetServiceIamPolicy.Invoke(new()
+        ///     {
+        ///         ServiceName = endpointsService.ServiceName,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetServiceIamPolicyResult> Invoke(GetServiceIamPolicyInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetServiceIamPolicyResult>("gcp:endpoints/getServiceIamPolicy:getServiceIamPolicy", args ?? new GetServiceIamPolicyInvokeArgs(), options.WithDefaults());
     }
 
 

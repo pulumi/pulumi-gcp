@@ -64,6 +64,33 @@ namespace Pulumi.Gcp.Container
         /// </summary>
         public static Output<GetRegistryRepositoryResult> Invoke(GetRegistryRepositoryInvokeArgs? args = null, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRegistryRepositoryResult>("gcp:container/getRegistryRepository:getRegistryRepository", args ?? new GetRegistryRepositoryInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// This data source fetches the project name, and provides the appropriate URLs to use for container registry for this project.
+        /// 
+        /// The URLs are computed entirely offline - as long as the project exists, they will be valid, but this data source does not contact Google Container Registry (GCR) at any point.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = Gcp.Container.GetRegistryRepository.Invoke();
+        /// 
+        ///     return new Dictionary&lt;string, object?&gt;
+        ///     {
+        ///         ["gcrLocation"] = foo.Apply(getRegistryRepositoryResult =&gt; getRegistryRepositoryResult.RepositoryUrl),
+        ///     };
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<GetRegistryRepositoryResult> Invoke(GetRegistryRepositoryInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<GetRegistryRepositoryResult>("gcp:container/getRegistryRepository:getRegistryRepository", args ?? new GetRegistryRepositoryInvokeArgs(), options.WithDefaults());
     }
 
 

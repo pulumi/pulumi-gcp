@@ -69,6 +69,35 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public static Output<RouterStatusResult> Invoke(RouterStatusInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<RouterStatusResult>("gcp:compute/routerStatus:RouterStatus", args ?? new RouterStatusInvokeArgs(), options.WithDefaults());
+
+        /// <summary>
+        /// Get a Cloud Router's status within GCE from its name and region. This data source exposes the
+        /// routes learned by a Cloud Router via BGP peers.
+        /// 
+        /// For more information see [the official documentation](https://cloud.google.com/network-connectivity/docs/router/how-to/viewing-router-details)
+        /// and
+        /// [API](https://cloud.google.com/compute/docs/reference/rest/v1/routers/getRouterStatus).
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var my_router = Gcp.Compute.GetRouterStatus.Invoke(new()
+        ///     {
+        ///         Name = "myrouter",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
+        public static Output<RouterStatusResult> Invoke(RouterStatusInvokeArgs args, InvokeOutputOptions options)
+            => global::Pulumi.Deployment.Instance.Invoke<RouterStatusResult>("gcp:compute/routerStatus:RouterStatus", args ?? new RouterStatusInvokeArgs(), options.WithDefaults());
     }
 
 

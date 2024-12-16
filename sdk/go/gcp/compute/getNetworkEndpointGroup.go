@@ -94,21 +94,11 @@ type LookupNetworkEndpointGroupResult struct {
 }
 
 func LookupNetworkEndpointGroupOutput(ctx *pulumi.Context, args LookupNetworkEndpointGroupOutputArgs, opts ...pulumi.InvokeOption) LookupNetworkEndpointGroupResultOutput {
-	return pulumi.ToOutputWithContext(context.Background(), args).
+	return pulumi.ToOutputWithContext(ctx.Context(), args).
 		ApplyT(func(v interface{}) (LookupNetworkEndpointGroupResultOutput, error) {
 			args := v.(LookupNetworkEndpointGroupArgs)
-			opts = internal.PkgInvokeDefaultOpts(opts)
-			var rv LookupNetworkEndpointGroupResult
-			secret, err := ctx.InvokePackageRaw("gcp:compute/getNetworkEndpointGroup:getNetworkEndpointGroup", args, &rv, "", opts...)
-			if err != nil {
-				return LookupNetworkEndpointGroupResultOutput{}, err
-			}
-
-			output := pulumi.ToOutput(rv).(LookupNetworkEndpointGroupResultOutput)
-			if secret {
-				return pulumi.ToSecret(output).(LookupNetworkEndpointGroupResultOutput), nil
-			}
-			return output, nil
+			options := pulumi.InvokeOutputOptions{InvokeOptions: internal.PkgInvokeDefaultOpts(opts)}
+			return ctx.InvokeOutput("gcp:compute/getNetworkEndpointGroup:getNetworkEndpointGroup", args, LookupNetworkEndpointGroupResultOutput{}, options).(LookupNetworkEndpointGroupResultOutput), nil
 		}).(LookupNetworkEndpointGroupResultOutput)
 }
 
