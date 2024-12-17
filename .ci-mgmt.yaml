@@ -33,9 +33,6 @@ plugins:
 goBuildParallelism: 2
 actions:
   preTest:
-    - name: make upstream
-      run: |
-        make upstream
     - name: Run provider tests
       run: |
         cd provider && go test -v -count=1 -cover -timeout 2h -tags=${{ matrix.language }} -parallel 4 .

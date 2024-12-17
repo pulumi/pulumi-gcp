@@ -97,9 +97,6 @@ jobs:
       with:
         token: ${{ secrets.GITHUB_TOKEN }}
         version: v2.5.0
-    - name: make upstream
-      run: |
-        make upstream
     - name: Run provider tests
       run: |
         cd provider && go test -v -count=1 -cover -timeout 2h -tags=${{ matrix.language }} -parallel 4 .
