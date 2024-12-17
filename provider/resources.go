@@ -482,6 +482,7 @@ func Provider() tfbridge.ProviderInfo {
 	prov := tfbridge.ProviderInfo{
 		P:                p,
 		Name:             "google-beta",
+		DisplayName:      "Google Cloud Classic",
 		ResourcePrefix:   "google",
 		GitHubOrg:        "hashicorp",
 		Description:      "A Pulumi package for creating and managing Google Cloud Platform resources.",
