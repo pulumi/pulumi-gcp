@@ -15,8 +15,6 @@ namespace Pulumi.Gcp.Storage.Outputs
     {
         /// <summary>
         /// Root directory path to the filesystem.
-        /// 
-        /// &lt;a name="nested_aws_s3_data_source"&gt;&lt;/a&gt;The `aws_s3_data_source` block supports:
         /// </summary>
         public readonly string RootDirectory;
 

@@ -14,6 +14,12 @@ namespace Pulumi.Gcp.Firebase.Outputs
     public sealed class HostingVersionConfig
     {
         /// <summary>
+        /// An array of objects, where each object specifies a URL pattern that, if matched to the request URL path,
+        /// triggers Hosting to apply the specified custom response headers.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.HostingVersionConfigHeader> Headers;
+        /// <summary>
         /// An array of objects (called redirect rules), where each rule specifies a URL pattern that, if matched to the request URL path,
         /// triggers Hosting to respond with a redirect to the specified destination path.
         /// Structure is documented below.
@@ -28,10 +34,13 @@ namespace Pulumi.Gcp.Firebase.Outputs
 
         [OutputConstructor]
         private HostingVersionConfig(
+            ImmutableArray<Outputs.HostingVersionConfigHeader> headers,
+
             ImmutableArray<Outputs.HostingVersionConfigRedirect> redirects,
 
             ImmutableArray<Outputs.HostingVersionConfigRewrite> rewrites)
         {
+            Headers = headers;
             Redirects = redirects;
             Rewrites = rewrites;
         }

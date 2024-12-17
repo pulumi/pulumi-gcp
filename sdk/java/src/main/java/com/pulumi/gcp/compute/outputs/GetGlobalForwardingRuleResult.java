@@ -37,6 +37,7 @@ public final class GetGlobalForwardingRuleResult {
     private List<GetGlobalForwardingRuleMetadataFilter> metadataFilters;
     private String name;
     private String network;
+    private String networkTier;
     private Boolean noAutomateDnsZone;
     private String portRange;
     private @Nullable String project;
@@ -99,6 +100,9 @@ public final class GetGlobalForwardingRuleResult {
     public String network() {
         return this.network;
     }
+    public String networkTier() {
+        return this.networkTier;
+    }
     public Boolean noAutomateDnsZone() {
         return this.noAutomateDnsZone;
     }
@@ -157,6 +161,7 @@ public final class GetGlobalForwardingRuleResult {
         private List<GetGlobalForwardingRuleMetadataFilter> metadataFilters;
         private String name;
         private String network;
+        private String networkTier;
         private Boolean noAutomateDnsZone;
         private String portRange;
         private @Nullable String project;
@@ -186,6 +191,7 @@ public final class GetGlobalForwardingRuleResult {
     	      this.metadataFilters = defaults.metadataFilters;
     	      this.name = defaults.name;
     	      this.network = defaults.network;
+    	      this.networkTier = defaults.networkTier;
     	      this.noAutomateDnsZone = defaults.noAutomateDnsZone;
     	      this.portRange = defaults.portRange;
     	      this.project = defaults.project;
@@ -323,6 +329,14 @@ public final class GetGlobalForwardingRuleResult {
             return this;
         }
         @CustomType.Setter
+        public Builder networkTier(String networkTier) {
+            if (networkTier == null) {
+              throw new MissingRequiredPropertyException("GetGlobalForwardingRuleResult", "networkTier");
+            }
+            this.networkTier = networkTier;
+            return this;
+        }
+        @CustomType.Setter
         public Builder noAutomateDnsZone(Boolean noAutomateDnsZone) {
             if (noAutomateDnsZone == null) {
               throw new MissingRequiredPropertyException("GetGlobalForwardingRuleResult", "noAutomateDnsZone");
@@ -431,6 +445,7 @@ public final class GetGlobalForwardingRuleResult {
             _resultValue.metadataFilters = metadataFilters;
             _resultValue.name = name;
             _resultValue.network = network;
+            _resultValue.networkTier = networkTier;
             _resultValue.noAutomateDnsZone = noAutomateDnsZone;
             _resultValue.portRange = portRange;
             _resultValue.project = project;

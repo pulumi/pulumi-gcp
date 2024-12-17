@@ -41,11 +41,11 @@ class RepositoryArgs:
                can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
                You can only create alpha formats if you are a member of the
                [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
+        :param pulumi.Input[str] repository_id: The last part of the repository name, for example:
+               "repo1"
                
                
                - - -
-        :param pulumi.Input[str] repository_id: The last part of the repository name, for example:
-               "repo1"
         :param pulumi.Input[Sequence[pulumi.Input['RepositoryCleanupPolicyArgs']]] cleanup_policies: Cleanup policies for this repository. Cleanup policies indicate when
                certain package versions can be automatically deleted.
                Map keys are policy IDs supplied by users during policy creation. They must
@@ -68,7 +68,12 @@ class RepositoryArgs:
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[str] location: The name of the location this repository is located in.
+        :param pulumi.Input[str] location: The name of the repository's location. In addition to specific regions,
+               special values for multi-region locations are `asia`, `europe`, and `us`.
+               See [here](https://cloud.google.com/artifact-registry/docs/repositories/repo-locations),
+               or use the
+               artifactregistry_get_locations
+               data source for possible values.
         :param pulumi.Input['RepositoryMavenConfigArgs'] maven_config: MavenRepositoryConfig is maven related repository details.
                Provides additional configuration details for repositories of the maven
                format type.
@@ -118,9 +123,6 @@ class RepositoryArgs:
         can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
         You can only create alpha formats if you are a member of the
         [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
-
-
-        - - -
         """
         return pulumi.get(self, "format")
 
@@ -134,6 +136,9 @@ class RepositoryArgs:
         """
         The last part of the repository name, for example:
         "repo1"
+
+
+        - - -
         """
         return pulumi.get(self, "repository_id")
 
@@ -233,7 +238,12 @@ class RepositoryArgs:
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the location this repository is located in.
+        The name of the repository's location. In addition to specific regions,
+        special values for multi-region locations are `asia`, `europe`, and `us`.
+        See [here](https://cloud.google.com/artifact-registry/docs/repositories/repo-locations),
+        or use the
+        artifactregistry_get_locations
+        data source for possible values.
         """
         return pulumi.get(self, "location")
 
@@ -350,9 +360,6 @@ class _RepositoryState:
                can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
                You can only create alpha formats if you are a member of the
                [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
-               
-               
-               - - -
         :param pulumi.Input[str] kms_key_name: The Cloud KMS resource name of the customer managed encryption key that’s
                used to encrypt the contents of the Repository. Has the form:
                `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`.
@@ -365,7 +372,12 @@ class _RepositoryState:
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[str] location: The name of the location this repository is located in.
+        :param pulumi.Input[str] location: The name of the repository's location. In addition to specific regions,
+               special values for multi-region locations are `asia`, `europe`, and `us`.
+               See [here](https://cloud.google.com/artifact-registry/docs/repositories/repo-locations),
+               or use the
+               artifactregistry_get_locations
+               data source for possible values.
         :param pulumi.Input['RepositoryMavenConfigArgs'] maven_config: MavenRepositoryConfig is maven related repository details.
                Provides additional configuration details for repositories of the maven
                format type.
@@ -383,6 +395,9 @@ class _RepositoryState:
                Structure is documented below.
         :param pulumi.Input[str] repository_id: The last part of the repository name, for example:
                "repo1"
+               
+               
+               - - -
         :param pulumi.Input[str] update_time: The time when the repository was last updated.
         :param pulumi.Input['RepositoryVirtualRepositoryConfigArgs'] virtual_repository_config: Configuration specific for a Virtual Repository.
                Structure is documented below.
@@ -512,9 +527,6 @@ class _RepositoryState:
         can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
         You can only create alpha formats if you are a member of the
         [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
-
-
-        - - -
         """
         return pulumi.get(self, "format")
 
@@ -560,7 +572,12 @@ class _RepositoryState:
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the location this repository is located in.
+        The name of the repository's location. In addition to specific regions,
+        special values for multi-region locations are `asia`, `europe`, and `us`.
+        See [here](https://cloud.google.com/artifact-registry/docs/repositories/repo-locations),
+        or use the
+        artifactregistry_get_locations
+        data source for possible values.
         """
         return pulumi.get(self, "location")
 
@@ -655,6 +672,9 @@ class _RepositoryState:
         """
         The last part of the repository name, for example:
         "repo1"
+
+
+        - - -
         """
         return pulumi.get(self, "repository_id")
 
@@ -731,6 +751,18 @@ class Repository(pulumi.CustomResource):
             description="example docker repository",
             format="DOCKER")
         ```
+        ### Artifact Registry Repository Multi Region
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_repo = gcp.artifactregistry.Repository("my-repo",
+            repository_id="my-repository",
+            description="example docker repository",
+            location="us",
+            format="DOCKER")
+        ```
         ### Artifact Registry Repository Docker
 
         ```python
@@ -1218,8 +1250,6 @@ class Repository(pulumi.CustomResource):
 
         * `{{location}}/{{repository_id}}`
 
-        * `{{repository_id}}`
-
         When using the `pulumi import` command, Repository can be imported using one of the formats above. For example:
 
         ```sh
@@ -1232,10 +1262,6 @@ class Repository(pulumi.CustomResource):
 
         ```sh
         $ pulumi import gcp:artifactregistry/repository:Repository default {{location}}/{{repository_id}}
-        ```
-
-        ```sh
-        $ pulumi import gcp:artifactregistry/repository:Repository default {{repository_id}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -1254,9 +1280,6 @@ class Repository(pulumi.CustomResource):
                can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
                You can only create alpha formats if you are a member of the
                [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
-               
-               
-               - - -
         :param pulumi.Input[str] kms_key_name: The Cloud KMS resource name of the customer managed encryption key that’s
                used to encrypt the contents of the Repository. Has the form:
                `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`.
@@ -1269,7 +1292,12 @@ class Repository(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[str] location: The name of the location this repository is located in.
+        :param pulumi.Input[str] location: The name of the repository's location. In addition to specific regions,
+               special values for multi-region locations are `asia`, `europe`, and `us`.
+               See [here](https://cloud.google.com/artifact-registry/docs/repositories/repo-locations),
+               or use the
+               artifactregistry_get_locations
+               data source for possible values.
         :param pulumi.Input[Union['RepositoryMavenConfigArgs', 'RepositoryMavenConfigArgsDict']] maven_config: MavenRepositoryConfig is maven related repository details.
                Provides additional configuration details for repositories of the maven
                format type.
@@ -1283,6 +1311,9 @@ class Repository(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] repository_id: The last part of the repository name, for example:
                "repo1"
+               
+               
+               - - -
         :param pulumi.Input[Union['RepositoryVirtualRepositoryConfigArgs', 'RepositoryVirtualRepositoryConfigArgsDict']] virtual_repository_config: Configuration specific for a Virtual Repository.
                Structure is documented below.
         """
@@ -1315,6 +1346,18 @@ class Repository(pulumi.CustomResource):
             description="example docker repository",
             format="DOCKER")
         ```
+        ### Artifact Registry Repository Multi Region
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_repo = gcp.artifactregistry.Repository("my-repo",
+            repository_id="my-repository",
+            description="example docker repository",
+            location="us",
+            format="DOCKER")
+        ```
         ### Artifact Registry Repository Docker
 
         ```python
@@ -1802,8 +1845,6 @@ class Repository(pulumi.CustomResource):
 
         * `{{location}}/{{repository_id}}`
 
-        * `{{repository_id}}`
-
         When using the `pulumi import` command, Repository can be imported using one of the formats above. For example:
 
         ```sh
@@ -1816,10 +1857,6 @@ class Repository(pulumi.CustomResource):
 
         ```sh
         $ pulumi import gcp:artifactregistry/repository:Repository default {{location}}/{{repository_id}}
-        ```
-
-        ```sh
-        $ pulumi import gcp:artifactregistry/repository:Repository default {{repository_id}}
         ```
 
         :param str resource_name: The name of the resource.
@@ -1937,9 +1974,6 @@ class Repository(pulumi.CustomResource):
                can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
                You can only create alpha formats if you are a member of the
                [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
-               
-               
-               - - -
         :param pulumi.Input[str] kms_key_name: The Cloud KMS resource name of the customer managed encryption key that’s
                used to encrypt the contents of the Repository. Has the form:
                `projects/my-project/locations/my-region/keyRings/my-kr/cryptoKeys/my-key`.
@@ -1952,7 +1986,12 @@ class Repository(pulumi.CustomResource):
                
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[str] location: The name of the location this repository is located in.
+        :param pulumi.Input[str] location: The name of the repository's location. In addition to specific regions,
+               special values for multi-region locations are `asia`, `europe`, and `us`.
+               See [here](https://cloud.google.com/artifact-registry/docs/repositories/repo-locations),
+               or use the
+               artifactregistry_get_locations
+               data source for possible values.
         :param pulumi.Input[Union['RepositoryMavenConfigArgs', 'RepositoryMavenConfigArgsDict']] maven_config: MavenRepositoryConfig is maven related repository details.
                Provides additional configuration details for repositories of the maven
                format type.
@@ -1970,6 +2009,9 @@ class Repository(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] repository_id: The last part of the repository name, for example:
                "repo1"
+               
+               
+               - - -
         :param pulumi.Input[str] update_time: The time when the repository was last updated.
         :param pulumi.Input[Union['RepositoryVirtualRepositoryConfigArgs', 'RepositoryVirtualRepositoryConfigArgsDict']] virtual_repository_config: Configuration specific for a Virtual Repository.
                Structure is documented below.
@@ -2061,9 +2103,6 @@ class Repository(pulumi.CustomResource):
         can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
         You can only create alpha formats if you are a member of the
         [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
-
-
-        - - -
         """
         return pulumi.get(self, "format")
 
@@ -2097,7 +2136,12 @@ class Repository(pulumi.CustomResource):
     @pulumi.getter
     def location(self) -> pulumi.Output[str]:
         """
-        The name of the location this repository is located in.
+        The name of the repository's location. In addition to specific regions,
+        special values for multi-region locations are `asia`, `europe`, and `us`.
+        See [here](https://cloud.google.com/artifact-registry/docs/repositories/repo-locations),
+        or use the
+        artifactregistry_get_locations
+        data source for possible values.
         """
         return pulumi.get(self, "location")
 
@@ -2164,6 +2208,9 @@ class Repository(pulumi.CustomResource):
         """
         The last part of the repository name, for example:
         "repo1"
+
+
+        - - -
         """
         return pulumi.get(self, "repository_id")
 

@@ -637,7 +637,7 @@ class ConfigQuota(dict):
     def __init__(__self__, *,
                  sign_up_quota_config: Optional['outputs.ConfigQuotaSignUpQuotaConfig'] = None):
         """
-        :param 'ConfigQuotaSignUpQuotaConfigArgs' sign_up_quota_config: Quota for the Signup endpoint, if overwritten. Signup quota is measured in sign ups per project per hour per IP.
+        :param 'ConfigQuotaSignUpQuotaConfigArgs' sign_up_quota_config: Quota for the Signup endpoint, if overwritten. Signup quota is measured in sign ups per project per hour per IP. None of quota, startTime, or quotaDuration can be skipped.
                Structure is documented below.
         """
         if sign_up_quota_config is not None:
@@ -647,7 +647,7 @@ class ConfigQuota(dict):
     @pulumi.getter(name="signUpQuotaConfig")
     def sign_up_quota_config(self) -> Optional['outputs.ConfigQuotaSignUpQuotaConfig']:
         """
-        Quota for the Signup endpoint, if overwritten. Signup quota is measured in sign ups per project per hour per IP.
+        Quota for the Signup endpoint, if overwritten. Signup quota is measured in sign ups per project per hour per IP. None of quota, startTime, or quotaDuration can be skipped.
         Structure is documented below.
         """
         return pulumi.get(self, "sign_up_quota_config")
@@ -679,7 +679,7 @@ class ConfigQuotaSignUpQuotaConfig(dict):
                  quota_duration: Optional[str] = None,
                  start_time: Optional[str] = None):
         """
-        :param int quota: A sign up APIs quota that customers can override temporarily.
+        :param int quota: A sign up APIs quota that customers can override temporarily. Value can be in between 1 and 1000.
         :param str quota_duration: How long this quota will be active for. It is measurred in seconds, e.g., Example: "9.615s".
         :param str start_time: When this quota will take affect.
         """
@@ -694,7 +694,7 @@ class ConfigQuotaSignUpQuotaConfig(dict):
     @pulumi.getter
     def quota(self) -> Optional[int]:
         """
-        A sign up APIs quota that customers can override temporarily.
+        A sign up APIs quota that customers can override temporarily. Value can be in between 1 and 1000.
         """
         return pulumi.get(self, "quota")
 

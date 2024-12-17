@@ -17,7 +17,7 @@ public final class ProjectCloudArmorTierState extends com.pulumi.resources.Resou
 
     /**
      * Managed protection tier to be set.
-     * Possible values are: `CA_STANDARD`, `CA_ENTERPRISE_PAYGO`.
+     * Possible values are: `CA_STANDARD`, `CA_ENTERPRISE_PAYGO`, `CA_ENTERPRISE_ANNUAL`.
      * 
      * ***
      * 
@@ -27,7 +27,7 @@ public final class ProjectCloudArmorTierState extends com.pulumi.resources.Resou
 
     /**
      * @return Managed protection tier to be set.
-     * Possible values are: `CA_STANDARD`, `CA_ENTERPRISE_PAYGO`.
+     * Possible values are: `CA_STANDARD`, `CA_ENTERPRISE_PAYGO`, `CA_ENTERPRISE_ANNUAL`.
      * 
      * ***
      * 
@@ -80,7 +80,7 @@ public final class ProjectCloudArmorTierState extends com.pulumi.resources.Resou
 
         /**
          * @param cloudArmorTier Managed protection tier to be set.
-         * Possible values are: `CA_STANDARD`, `CA_ENTERPRISE_PAYGO`.
+         * Possible values are: `CA_STANDARD`, `CA_ENTERPRISE_PAYGO`, `CA_ENTERPRISE_ANNUAL`.
          * 
          * ***
          * 
@@ -94,7 +94,7 @@ public final class ProjectCloudArmorTierState extends com.pulumi.resources.Resou
 
         /**
          * @param cloudArmorTier Managed protection tier to be set.
-         * Possible values are: `CA_STANDARD`, `CA_ENTERPRISE_PAYGO`.
+         * Possible values are: `CA_STANDARD`, `CA_ENTERPRISE_PAYGO`, `CA_ENTERPRISE_ANNUAL`.
          * 
          * ***
          * 

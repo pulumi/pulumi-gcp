@@ -106,7 +106,7 @@ import (
 //				Quota: &identityplatform.ConfigQuotaArgs{
 //					SignUpQuotaConfig: &identityplatform.ConfigQuotaSignUpQuotaConfigArgs{
 //						Quota:         pulumi.Int(1000),
-//						StartTime:     pulumi.String(""),
+//						StartTime:     pulumi.String("2014-10-02T15:01:23Z"),
 //						QuotaDuration: pulumi.String("7200s"),
 //					},
 //				},

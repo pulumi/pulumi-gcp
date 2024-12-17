@@ -24,7 +24,7 @@ class ProjectCloudArmorTierArgs:
         """
         The set of arguments for constructing a ProjectCloudArmorTier resource.
         :param pulumi.Input[str] cloud_armor_tier: Managed protection tier to be set.
-               Possible values are: `CA_STANDARD`, `CA_ENTERPRISE_PAYGO`.
+               Possible values are: `CA_STANDARD`, `CA_ENTERPRISE_PAYGO`, `CA_ENTERPRISE_ANNUAL`.
                
                
                - - -
@@ -40,7 +40,7 @@ class ProjectCloudArmorTierArgs:
     def cloud_armor_tier(self) -> pulumi.Input[str]:
         """
         Managed protection tier to be set.
-        Possible values are: `CA_STANDARD`, `CA_ENTERPRISE_PAYGO`.
+        Possible values are: `CA_STANDARD`, `CA_ENTERPRISE_PAYGO`, `CA_ENTERPRISE_ANNUAL`.
 
 
         - - -
@@ -73,7 +73,7 @@ class _ProjectCloudArmorTierState:
         """
         Input properties used for looking up and filtering ProjectCloudArmorTier resources.
         :param pulumi.Input[str] cloud_armor_tier: Managed protection tier to be set.
-               Possible values are: `CA_STANDARD`, `CA_ENTERPRISE_PAYGO`.
+               Possible values are: `CA_STANDARD`, `CA_ENTERPRISE_PAYGO`, `CA_ENTERPRISE_ANNUAL`.
                
                
                - - -
@@ -90,7 +90,7 @@ class _ProjectCloudArmorTierState:
     def cloud_armor_tier(self) -> Optional[pulumi.Input[str]]:
         """
         Managed protection tier to be set.
-        Possible values are: `CA_STANDARD`, `CA_ENTERPRISE_PAYGO`.
+        Possible values are: `CA_STANDARD`, `CA_ENTERPRISE_PAYGO`, `CA_ENTERPRISE_ANNUAL`.
 
 
         - - -
@@ -184,7 +184,7 @@ class ProjectCloudArmorTier(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cloud_armor_tier: Managed protection tier to be set.
-               Possible values are: `CA_STANDARD`, `CA_ENTERPRISE_PAYGO`.
+               Possible values are: `CA_STANDARD`, `CA_ENTERPRISE_PAYGO`, `CA_ENTERPRISE_ANNUAL`.
                
                
                - - -
@@ -305,7 +305,7 @@ class ProjectCloudArmorTier(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] cloud_armor_tier: Managed protection tier to be set.
-               Possible values are: `CA_STANDARD`, `CA_ENTERPRISE_PAYGO`.
+               Possible values are: `CA_STANDARD`, `CA_ENTERPRISE_PAYGO`, `CA_ENTERPRISE_ANNUAL`.
                
                
                - - -
@@ -325,7 +325,7 @@ class ProjectCloudArmorTier(pulumi.CustomResource):
     def cloud_armor_tier(self) -> pulumi.Output[str]:
         """
         Managed protection tier to be set.
-        Possible values are: `CA_STANDARD`, `CA_ENTERPRISE_PAYGO`.
+        Possible values are: `CA_STANDARD`, `CA_ENTERPRISE_PAYGO`, `CA_ENTERPRISE_ANNUAL`.
 
 
         - - -

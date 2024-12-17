@@ -27,7 +27,7 @@ class GetGlobalForwardingRuleResult:
     """
     A collection of values returned by getGlobalForwardingRule.
     """
-    def __init__(__self__, allow_psc_global_access=None, base_forwarding_rule=None, description=None, effective_labels=None, forwarding_rule_id=None, id=None, ip_address=None, ip_protocol=None, ip_version=None, label_fingerprint=None, labels=None, load_balancing_scheme=None, metadata_filters=None, name=None, network=None, no_automate_dns_zone=None, port_range=None, project=None, psc_connection_id=None, psc_connection_status=None, pulumi_labels=None, self_link=None, service_directory_registrations=None, source_ip_ranges=None, subnetwork=None, target=None):
+    def __init__(__self__, allow_psc_global_access=None, base_forwarding_rule=None, description=None, effective_labels=None, forwarding_rule_id=None, id=None, ip_address=None, ip_protocol=None, ip_version=None, label_fingerprint=None, labels=None, load_balancing_scheme=None, metadata_filters=None, name=None, network=None, network_tier=None, no_automate_dns_zone=None, port_range=None, project=None, psc_connection_id=None, psc_connection_status=None, pulumi_labels=None, self_link=None, service_directory_registrations=None, source_ip_ranges=None, subnetwork=None, target=None):
         if allow_psc_global_access and not isinstance(allow_psc_global_access, bool):
             raise TypeError("Expected argument 'allow_psc_global_access' to be a bool")
         pulumi.set(__self__, "allow_psc_global_access", allow_psc_global_access)
@@ -73,6 +73,9 @@ class GetGlobalForwardingRuleResult:
         if network and not isinstance(network, str):
             raise TypeError("Expected argument 'network' to be a str")
         pulumi.set(__self__, "network", network)
+        if network_tier and not isinstance(network_tier, str):
+            raise TypeError("Expected argument 'network_tier' to be a str")
+        pulumi.set(__self__, "network_tier", network_tier)
         if no_automate_dns_zone and not isinstance(no_automate_dns_zone, bool):
             raise TypeError("Expected argument 'no_automate_dns_zone' to be a bool")
         pulumi.set(__self__, "no_automate_dns_zone", no_automate_dns_zone)
@@ -186,6 +189,11 @@ class GetGlobalForwardingRuleResult:
         return pulumi.get(self, "network")
 
     @property
+    @pulumi.getter(name="networkTier")
+    def network_tier(self) -> str:
+        return pulumi.get(self, "network_tier")
+
+    @property
     @pulumi.getter(name="noAutomateDnsZone")
     def no_automate_dns_zone(self) -> bool:
         return pulumi.get(self, "no_automate_dns_zone")
@@ -262,6 +270,7 @@ class AwaitableGetGlobalForwardingRuleResult(GetGlobalForwardingRuleResult):
             metadata_filters=self.metadata_filters,
             name=self.name,
             network=self.network,
+            network_tier=self.network_tier,
             no_automate_dns_zone=self.no_automate_dns_zone,
             port_range=self.port_range,
             project=self.project,
@@ -319,6 +328,7 @@ def get_global_forwarding_rule(name: Optional[str] = None,
         metadata_filters=pulumi.get(__ret__, 'metadata_filters'),
         name=pulumi.get(__ret__, 'name'),
         network=pulumi.get(__ret__, 'network'),
+        network_tier=pulumi.get(__ret__, 'network_tier'),
         no_automate_dns_zone=pulumi.get(__ret__, 'no_automate_dns_zone'),
         port_range=pulumi.get(__ret__, 'port_range'),
         project=pulumi.get(__ret__, 'project'),
@@ -373,6 +383,7 @@ def get_global_forwarding_rule_output(name: Optional[pulumi.Input[str]] = None,
         metadata_filters=pulumi.get(__response__, 'metadata_filters'),
         name=pulumi.get(__response__, 'name'),
         network=pulumi.get(__response__, 'network'),
+        network_tier=pulumi.get(__response__, 'network_tier'),
         no_automate_dns_zone=pulumi.get(__response__, 'no_automate_dns_zone'),
         port_range=pulumi.get(__response__, 'port_range'),
         project=pulumi.get(__response__, 'project'),

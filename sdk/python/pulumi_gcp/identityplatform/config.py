@@ -531,7 +531,7 @@ class Config(pulumi.CustomResource):
             quota={
                 "sign_up_quota_config": {
                     "quota": 1000,
-                    "start_time": "",
+                    "start_time": "2014-10-02T15:01:23Z",
                     "quota_duration": "7200s",
                 },
             },
@@ -671,7 +671,7 @@ class Config(pulumi.CustomResource):
             quota={
                 "sign_up_quota_config": {
                     "quota": 1000,
-                    "start_time": "",
+                    "start_time": "2014-10-02T15:01:23Z",
                     "quota_duration": "7200s",
                 },
             },

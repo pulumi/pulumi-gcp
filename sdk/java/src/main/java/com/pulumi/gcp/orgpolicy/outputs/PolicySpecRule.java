@@ -35,6 +35,11 @@ public final class PolicySpecRule {
      */
     private @Nullable String enforce;
     /**
+     * @return Optional. Required for Managed Constraints if parameters defined in constraints. Pass parameter values when policy enforcement is enabled. Ensure that parameter value types match those defined in the constraint definition. For example: { \&#34;allowedLocations\&#34; : [\&#34;us-east1\&#34;, \&#34;us-west1\&#34;], \&#34;allowAll\&#34; : true }
+     * 
+     */
+    private @Nullable String parameters;
+    /**
      * @return List of values to be used for this policy rule. This field can be set only in policies for list constraints.
      * Structure is documented below.
      * 
@@ -72,6 +77,13 @@ public final class PolicySpecRule {
         return Optional.ofNullable(this.enforce);
     }
     /**
+     * @return Optional. Required for Managed Constraints if parameters defined in constraints. Pass parameter values when policy enforcement is enabled. Ensure that parameter value types match those defined in the constraint definition. For example: { \&#34;allowedLocations\&#34; : [\&#34;us-east1\&#34;, \&#34;us-west1\&#34;], \&#34;allowAll\&#34; : true }
+     * 
+     */
+    public Optional<String> parameters() {
+        return Optional.ofNullable(this.parameters);
+    }
+    /**
      * @return List of values to be used for this policy rule. This field can be set only in policies for list constraints.
      * Structure is documented below.
      * 
@@ -93,6 +105,7 @@ public final class PolicySpecRule {
         private @Nullable PolicySpecRuleCondition condition;
         private @Nullable String denyAll;
         private @Nullable String enforce;
+        private @Nullable String parameters;
         private @Nullable PolicySpecRuleValues values;
         public Builder() {}
         public Builder(PolicySpecRule defaults) {
@@ -101,6 +114,7 @@ public final class PolicySpecRule {
     	      this.condition = defaults.condition;
     	      this.denyAll = defaults.denyAll;
     	      this.enforce = defaults.enforce;
+    	      this.parameters = defaults.parameters;
     	      this.values = defaults.values;
         }
 
@@ -129,6 +143,12 @@ public final class PolicySpecRule {
             return this;
         }
         @CustomType.Setter
+        public Builder parameters(@Nullable String parameters) {
+
+            this.parameters = parameters;
+            return this;
+        }
+        @CustomType.Setter
         public Builder values(@Nullable PolicySpecRuleValues values) {
 
             this.values = values;
@@ -140,6 +160,7 @@ public final class PolicySpecRule {
             _resultValue.condition = condition;
             _resultValue.denyAll = denyAll;
             _resultValue.enforce = enforce;
+            _resultValue.parameters = parameters;
             _resultValue.values = values;
             return _resultValue;
         }

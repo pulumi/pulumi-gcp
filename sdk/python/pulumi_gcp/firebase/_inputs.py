@@ -55,6 +55,8 @@ __all__ = [
     'HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArgsDict',
     'HostingVersionConfigArgs',
     'HostingVersionConfigArgsDict',
+    'HostingVersionConfigHeaderArgs',
+    'HostingVersionConfigHeaderArgsDict',
     'HostingVersionConfigRedirectArgs',
     'HostingVersionConfigRedirectArgsDict',
     'HostingVersionConfigRewriteArgs',
@@ -1694,6 +1696,12 @@ class HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArgs:
 
 if not MYPY:
     class HostingVersionConfigArgsDict(TypedDict):
+        headers: NotRequired[pulumi.Input[Sequence[pulumi.Input['HostingVersionConfigHeaderArgsDict']]]]
+        """
+        An array of objects, where each object specifies a URL pattern that, if matched to the request URL path,
+        triggers Hosting to apply the specified custom response headers.
+        Structure is documented below.
+        """
         redirects: NotRequired[pulumi.Input[Sequence[pulumi.Input['HostingVersionConfigRedirectArgsDict']]]]
         """
         An array of objects (called redirect rules), where each rule specifies a URL pattern that, if matched to the request URL path,
@@ -1712,9 +1720,13 @@ elif False:
 @pulumi.input_type
 class HostingVersionConfigArgs:
     def __init__(__self__, *,
+                 headers: Optional[pulumi.Input[Sequence[pulumi.Input['HostingVersionConfigHeaderArgs']]]] = None,
                  redirects: Optional[pulumi.Input[Sequence[pulumi.Input['HostingVersionConfigRedirectArgs']]]] = None,
                  rewrites: Optional[pulumi.Input[Sequence[pulumi.Input['HostingVersionConfigRewriteArgs']]]] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input['HostingVersionConfigHeaderArgs']]] headers: An array of objects, where each object specifies a URL pattern that, if matched to the request URL path,
+               triggers Hosting to apply the specified custom response headers.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['HostingVersionConfigRedirectArgs']]] redirects: An array of objects (called redirect rules), where each rule specifies a URL pattern that, if matched to the request URL path,
                triggers Hosting to respond with a redirect to the specified destination path.
                Structure is documented below.
@@ -1722,10 +1734,26 @@ class HostingVersionConfigArgs:
                request URL path, triggers Hosting to respond as if the service were given the specified destination URL.
                Structure is documented below.
         """
+        if headers is not None:
+            pulumi.set(__self__, "headers", headers)
         if redirects is not None:
             pulumi.set(__self__, "redirects", redirects)
         if rewrites is not None:
             pulumi.set(__self__, "rewrites", rewrites)
+
+    @property
+    @pulumi.getter
+    def headers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['HostingVersionConfigHeaderArgs']]]]:
+        """
+        An array of objects, where each object specifies a URL pattern that, if matched to the request URL path,
+        triggers Hosting to apply the specified custom response headers.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "headers")
+
+    @headers.setter
+    def headers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HostingVersionConfigHeaderArgs']]]]):
+        pulumi.set(self, "headers", value)
 
     @property
     @pulumi.getter
@@ -1754,6 +1782,77 @@ class HostingVersionConfigArgs:
     @rewrites.setter
     def rewrites(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['HostingVersionConfigRewriteArgs']]]]):
         pulumi.set(self, "rewrites", value)
+
+
+if not MYPY:
+    class HostingVersionConfigHeaderArgsDict(TypedDict):
+        headers: pulumi.Input[Mapping[str, pulumi.Input[str]]]
+        """
+        The additional headers to add to the response. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        """
+        glob: NotRequired[pulumi.Input[str]]
+        """
+        The user-supplied glob to match against the request URL path.
+        """
+        regex: NotRequired[pulumi.Input[str]]
+        """
+        The user-supplied RE2 regular expression to match against the request URL path.
+        """
+elif False:
+    HostingVersionConfigHeaderArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class HostingVersionConfigHeaderArgs:
+    def __init__(__self__, *,
+                 headers: pulumi.Input[Mapping[str, pulumi.Input[str]]],
+                 glob: Optional[pulumi.Input[str]] = None,
+                 regex: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] headers: The additional headers to add to the response. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        :param pulumi.Input[str] glob: The user-supplied glob to match against the request URL path.
+        :param pulumi.Input[str] regex: The user-supplied RE2 regular expression to match against the request URL path.
+        """
+        pulumi.set(__self__, "headers", headers)
+        if glob is not None:
+            pulumi.set(__self__, "glob", glob)
+        if regex is not None:
+            pulumi.set(__self__, "regex", regex)
+
+    @property
+    @pulumi.getter
+    def headers(self) -> pulumi.Input[Mapping[str, pulumi.Input[str]]]:
+        """
+        The additional headers to add to the response. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        """
+        return pulumi.get(self, "headers")
+
+    @headers.setter
+    def headers(self, value: pulumi.Input[Mapping[str, pulumi.Input[str]]]):
+        pulumi.set(self, "headers", value)
+
+    @property
+    @pulumi.getter
+    def glob(self) -> Optional[pulumi.Input[str]]:
+        """
+        The user-supplied glob to match against the request URL path.
+        """
+        return pulumi.get(self, "glob")
+
+    @glob.setter
+    def glob(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "glob", value)
+
+    @property
+    @pulumi.getter
+    def regex(self) -> Optional[pulumi.Input[str]]:
+        """
+        The user-supplied RE2 regular expression to match against the request URL path.
+        """
+        return pulumi.get(self, "regex")
+
+    @regex.setter
+    def regex(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "regex", value)
 
 
 if not MYPY:

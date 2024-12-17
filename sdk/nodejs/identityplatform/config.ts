@@ -84,7 +84,7 @@ import * as utilities from "../utilities";
  *     quota: {
  *         signUpQuotaConfig: {
  *             quota: 1000,
- *             startTime: "",
+ *             startTime: "2014-10-02T15:01:23Z",
  *             quotaDuration: "7200s",
  *         },
  *     },

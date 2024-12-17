@@ -354,6 +354,8 @@ class V2VmNetworkConfig(dict):
             suggest = "can_ip_forward"
         elif key == "enableExternalIps":
             suggest = "enable_external_ips"
+        elif key == "queueCount":
+            suggest = "queue_count"
 
         if suggest:
             pulumi.log.warn(f"Key '{key}' not found in V2VmNetworkConfig. Access the value via the '{suggest}' property getter instead.")
@@ -370,6 +372,7 @@ class V2VmNetworkConfig(dict):
                  can_ip_forward: Optional[bool] = None,
                  enable_external_ips: Optional[bool] = None,
                  network: Optional[str] = None,
+                 queue_count: Optional[int] = None,
                  subnetwork: Optional[str] = None):
         """
         :param bool can_ip_forward: Allows the TPU node to send and receive packets with non-matching destination or source
@@ -377,13 +380,10 @@ class V2VmNetworkConfig(dict):
         :param bool enable_external_ips: Indicates that external IP addresses would be associated with the TPU workers. If set to
                false, the specified subnetwork or network should have Private Google Access enabled.
         :param str network: The name of the network for the TPU node. It must be a preexisting Google Compute Engine
-               network. If both network and subnetwork are specified, the given subnetwork must belong
-               to the given network. If network is not specified, it will be looked up from the
-               subnetwork if one is provided, or otherwise use "default".
+               network. If none is provided, "default" will be used.
+        :param int queue_count: Specifies networking queue count for TPU VM instance's network interface.
         :param str subnetwork: The name of the subnetwork for the TPU node. It must be a preexisting Google Compute
-               Engine subnetwork. If both network and subnetwork are specified, the given subnetwork
-               must belong to the given network. If subnetwork is not specified, the subnetwork with the
-               same name as the network will be used.
+               Engine subnetwork. If none is provided, "default" will be used.
         """
         if can_ip_forward is not None:
             pulumi.set(__self__, "can_ip_forward", can_ip_forward)
@@ -391,6 +391,8 @@ class V2VmNetworkConfig(dict):
             pulumi.set(__self__, "enable_external_ips", enable_external_ips)
         if network is not None:
             pulumi.set(__self__, "network", network)
+        if queue_count is not None:
+            pulumi.set(__self__, "queue_count", queue_count)
         if subnetwork is not None:
             pulumi.set(__self__, "subnetwork", subnetwork)
 
@@ -417,20 +419,24 @@ class V2VmNetworkConfig(dict):
     def network(self) -> Optional[str]:
         """
         The name of the network for the TPU node. It must be a preexisting Google Compute Engine
-        network. If both network and subnetwork are specified, the given subnetwork must belong
-        to the given network. If network is not specified, it will be looked up from the
-        subnetwork if one is provided, or otherwise use "default".
+        network. If none is provided, "default" will be used.
         """
         return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter(name="queueCount")
+    def queue_count(self) -> Optional[int]:
+        """
+        Specifies networking queue count for TPU VM instance's network interface.
+        """
+        return pulumi.get(self, "queue_count")
 
     @property
     @pulumi.getter
     def subnetwork(self) -> Optional[str]:
         """
         The name of the subnetwork for the TPU node. It must be a preexisting Google Compute
-        Engine subnetwork. If both network and subnetwork are specified, the given subnetwork
-        must belong to the given network. If subnetwork is not specified, the subnetwork with the
-        same name as the network will be used.
+        Engine subnetwork. If none is provided, "default" will be used.
         """
         return pulumi.get(self, "subnetwork")
 

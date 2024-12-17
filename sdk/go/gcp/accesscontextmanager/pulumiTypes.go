@@ -11603,11 +11603,6 @@ type ServicePerimetersServicePerimeter struct {
 	// Description of the ServicePerimeter and its use. Does not affect
 	// behavior.
 	Description *string `pulumi:"description"`
-	// (Output)
-	// An opaque identifier for the current version of the ServicePerimeter. This
-	// identifier does not follow any specific format. If an etag is not provided, the
-	// operation will be performed as if a valid etag is provided.
-	Etag *string `pulumi:"etag"`
 	// Resource name for the ServicePerimeter. The shortName component must
 	// begin with a letter and only include alphanumeric and '_'.
 	// Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
@@ -11675,11 +11670,6 @@ type ServicePerimetersServicePerimeterArgs struct {
 	// Description of the ServicePerimeter and its use. Does not affect
 	// behavior.
 	Description pulumi.StringPtrInput `pulumi:"description"`
-	// (Output)
-	// An opaque identifier for the current version of the ServicePerimeter. This
-	// identifier does not follow any specific format. If an etag is not provided, the
-	// operation will be performed as if a valid etag is provided.
-	Etag pulumi.StringPtrInput `pulumi:"etag"`
 	// Resource name for the ServicePerimeter. The shortName component must
 	// begin with a letter and only include alphanumeric and '_'.
 	// Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
@@ -11790,14 +11780,6 @@ func (o ServicePerimetersServicePerimeterOutput) CreateTime() pulumi.StringPtrOu
 // behavior.
 func (o ServicePerimetersServicePerimeterOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ServicePerimetersServicePerimeter) *string { return v.Description }).(pulumi.StringPtrOutput)
-}
-
-// (Output)
-// An opaque identifier for the current version of the ServicePerimeter. This
-// identifier does not follow any specific format. If an etag is not provided, the
-// operation will be performed as if a valid etag is provided.
-func (o ServicePerimetersServicePerimeterOutput) Etag() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v ServicePerimetersServicePerimeter) *string { return v.Etag }).(pulumi.StringPtrOutput)
 }
 
 // Resource name for the ServicePerimeter. The shortName component must

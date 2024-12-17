@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.IdentityPlatform.Inputs
     public sealed class ConfigQuotaArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Quota for the Signup endpoint, if overwritten. Signup quota is measured in sign ups per project per hour per IP.
+        /// Quota for the Signup endpoint, if overwritten. Signup quota is measured in sign ups per project per hour per IP. None of quota, startTime, or quotaDuration can be skipped.
         /// Structure is documented below.
         /// </summary>
         [Input("signUpQuotaConfig")]

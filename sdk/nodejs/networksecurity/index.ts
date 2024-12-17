@@ -30,6 +30,11 @@ export type AuthorizationPolicy = import("./authorizationPolicy").AuthorizationP
 export const AuthorizationPolicy: typeof import("./authorizationPolicy").AuthorizationPolicy = null as any;
 utilities.lazyLoad(exports, ["AuthorizationPolicy"], () => require("./authorizationPolicy"));
 
+export { AuthzPolicyArgs, AuthzPolicyState } from "./authzPolicy";
+export type AuthzPolicy = import("./authzPolicy").AuthzPolicy;
+export const AuthzPolicy: typeof import("./authzPolicy").AuthzPolicy = null as any;
+utilities.lazyLoad(exports, ["AuthzPolicy"], () => require("./authzPolicy"));
+
 export { ClientTlsPolicyArgs, ClientTlsPolicyState } from "./clientTlsPolicy";
 export type ClientTlsPolicy = import("./clientTlsPolicy").ClientTlsPolicy;
 export const ClientTlsPolicy: typeof import("./clientTlsPolicy").ClientTlsPolicy = null as any;
@@ -59,6 +64,16 @@ export { GetAddressGroupIamPolicyArgs, GetAddressGroupIamPolicyResult, GetAddres
 export const getAddressGroupIamPolicy: typeof import("./getAddressGroupIamPolicy").getAddressGroupIamPolicy = null as any;
 export const getAddressGroupIamPolicyOutput: typeof import("./getAddressGroupIamPolicy").getAddressGroupIamPolicyOutput = null as any;
 utilities.lazyLoad(exports, ["getAddressGroupIamPolicy","getAddressGroupIamPolicyOutput"], () => require("./getAddressGroupIamPolicy"));
+
+export { InterceptDeploymentArgs, InterceptDeploymentState } from "./interceptDeployment";
+export type InterceptDeployment = import("./interceptDeployment").InterceptDeployment;
+export const InterceptDeployment: typeof import("./interceptDeployment").InterceptDeployment = null as any;
+utilities.lazyLoad(exports, ["InterceptDeployment"], () => require("./interceptDeployment"));
+
+export { InterceptDeploymentGroupArgs, InterceptDeploymentGroupState } from "./interceptDeploymentGroup";
+export type InterceptDeploymentGroup = import("./interceptDeploymentGroup").InterceptDeploymentGroup;
+export const InterceptDeploymentGroup: typeof import("./interceptDeploymentGroup").InterceptDeploymentGroup = null as any;
+utilities.lazyLoad(exports, ["InterceptDeploymentGroup"], () => require("./interceptDeploymentGroup"));
 
 export { MirroringDeploymentArgs, MirroringDeploymentState } from "./mirroringDeployment";
 export type MirroringDeployment = import("./mirroringDeployment").MirroringDeployment;
@@ -120,6 +135,8 @@ const _module = {
                 return new AddressGroupIamPolicy(name, <any>undefined, { urn })
             case "gcp:networksecurity/authorizationPolicy:AuthorizationPolicy":
                 return new AuthorizationPolicy(name, <any>undefined, { urn })
+            case "gcp:networksecurity/authzPolicy:AuthzPolicy":
+                return new AuthzPolicy(name, <any>undefined, { urn })
             case "gcp:networksecurity/clientTlsPolicy:ClientTlsPolicy":
                 return new ClientTlsPolicy(name, <any>undefined, { urn })
             case "gcp:networksecurity/firewallEndpoint:FirewallEndpoint":
@@ -130,6 +147,10 @@ const _module = {
                 return new GatewaySecurityPolicy(name, <any>undefined, { urn })
             case "gcp:networksecurity/gatewaySecurityPolicyRule:GatewaySecurityPolicyRule":
                 return new GatewaySecurityPolicyRule(name, <any>undefined, { urn })
+            case "gcp:networksecurity/interceptDeployment:InterceptDeployment":
+                return new InterceptDeployment(name, <any>undefined, { urn })
+            case "gcp:networksecurity/interceptDeploymentGroup:InterceptDeploymentGroup":
+                return new InterceptDeploymentGroup(name, <any>undefined, { urn })
             case "gcp:networksecurity/mirroringDeployment:MirroringDeployment":
                 return new MirroringDeployment(name, <any>undefined, { urn })
             case "gcp:networksecurity/mirroringDeploymentGroup:MirroringDeploymentGroup":
@@ -158,11 +179,14 @@ pulumi.runtime.registerResourceModule("gcp", "networksecurity/addressGroupIamBin
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/addressGroupIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/addressGroupIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/authorizationPolicy", _module)
+pulumi.runtime.registerResourceModule("gcp", "networksecurity/authzPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/clientTlsPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/firewallEndpoint", _module)
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/firewallEndpointAssociation", _module)
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/gatewaySecurityPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/gatewaySecurityPolicyRule", _module)
+pulumi.runtime.registerResourceModule("gcp", "networksecurity/interceptDeployment", _module)
+pulumi.runtime.registerResourceModule("gcp", "networksecurity/interceptDeploymentGroup", _module)
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/mirroringDeployment", _module)
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/mirroringDeploymentGroup", _module)
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/mirroringEndpointGroup", _module)

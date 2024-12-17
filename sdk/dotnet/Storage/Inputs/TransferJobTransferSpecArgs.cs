@@ -37,6 +37,12 @@ namespace Pulumi.Gcp.Storage.Inputs
         public Input<Inputs.TransferJobTransferSpecGcsDataSourceArgs>? GcsDataSource { get; set; }
 
         /// <summary>
+        /// An HDFS data source. Structure documented below.
+        /// </summary>
+        [Input("hdfsDataSource")]
+        public Input<Inputs.TransferJobTransferSpecHdfsDataSourceArgs>? HdfsDataSource { get; set; }
+
+        /// <summary>
         /// A HTTP URL data source. Structure documented below.
         /// </summary>
         [Input("httpDataSource")]

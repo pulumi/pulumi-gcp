@@ -67,6 +67,7 @@ export interface GetGlobalForwardingRuleResult {
     readonly metadataFilters: outputs.compute.GetGlobalForwardingRuleMetadataFilter[];
     readonly name: string;
     readonly network: string;
+    readonly networkTier: string;
     readonly noAutomateDnsZone: boolean;
     readonly portRange: string;
     readonly project?: string;

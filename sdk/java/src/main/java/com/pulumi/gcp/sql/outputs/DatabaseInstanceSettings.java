@@ -53,7 +53,7 @@ public final class DatabaseInstanceSettings {
      */
     private @Nullable String collation;
     /**
-     * @return Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
+     * @return Control the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections, can be `REQUIRED` or `NOT_REQUIRED`. If enabled, all the direct connections are rejected.
      * 
      */
     private @Nullable String connectorEnforcement;
@@ -185,7 +185,7 @@ public final class DatabaseInstanceSettings {
         return Optional.ofNullable(this.collation);
     }
     /**
-     * @return Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
+     * @return Control the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections, can be `REQUIRED` or `NOT_REQUIRED`. If enabled, all the direct connections are rejected.
      * 
      */
     public Optional<String> connectorEnforcement() {

@@ -12,6 +12,20 @@ namespace Pulumi.Gcp.Firebase.Inputs
 
     public sealed class HostingVersionConfigArgs : global::Pulumi.ResourceArgs
     {
+        [Input("headers")]
+        private InputList<Inputs.HostingVersionConfigHeaderArgs>? _headers;
+
+        /// <summary>
+        /// An array of objects, where each object specifies a URL pattern that, if matched to the request URL path,
+        /// triggers Hosting to apply the specified custom response headers.
+        /// Structure is documented below.
+        /// </summary>
+        public InputList<Inputs.HostingVersionConfigHeaderArgs> Headers
+        {
+            get => _headers ?? (_headers = new InputList<Inputs.HostingVersionConfigHeaderArgs>());
+            set => _headers = value;
+        }
+
         [Input("redirects")]
         private InputList<Inputs.HostingVersionConfigRedirectArgs>? _redirects;
 

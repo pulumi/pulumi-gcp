@@ -5,6 +5,7 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .authz_extension import *
 from .edge_cache_keyset import *
 from .edge_cache_origin import *
 from .edge_cache_service import *

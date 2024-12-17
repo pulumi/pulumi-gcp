@@ -357,14 +357,6 @@ namespace Pulumi.Gcp.AccessContextManager
         public Output<string?> Description { get; private set; } = null!;
 
         /// <summary>
-        /// An opaque identifier for the current version of the ServicePerimeter. This
-        /// identifier does not follow any specific format. If an etag is not provided, the
-        /// operation will be performed as if a valid etag is provided.
-        /// </summary>
-        [Output("etag")]
-        public Output<string> Etag { get; private set; } = null!;
-
-        /// <summary>
         /// Resource name for the ServicePerimeter. The short_name component must
         /// begin with a letter and only include alphanumeric and '_'.
         /// Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
@@ -599,14 +591,6 @@ namespace Pulumi.Gcp.AccessContextManager
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
-
-        /// <summary>
-        /// An opaque identifier for the current version of the ServicePerimeter. This
-        /// identifier does not follow any specific format. If an etag is not provided, the
-        /// operation will be performed as if a valid etag is provided.
-        /// </summary>
-        [Input("etag")]
-        public Input<string>? Etag { get; set; }
 
         /// <summary>
         /// Resource name for the ServicePerimeter. The short_name component must

@@ -323,6 +323,7 @@ namespace Pulumi.Gcp.Compute
     ///         Target = defaultTargetHttpProxy.Id,
     ///         PortRange = "80",
     ///         LoadBalancingScheme = "EXTERNAL_MANAGED",
+    ///         NetworkTier = "PREMIUM",
     ///     });
     /// 
     /// });
@@ -802,6 +803,21 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Network { get; private set; } = null!;
 
         /// <summary>
+        /// This signifies the networking tier used for configuring
+        /// this load balancer and can only take the following values:
+        /// `PREMIUM`, `STANDARD`.
+        /// For regional ForwardingRule, the valid values are `PREMIUM` and
+        /// `STANDARD`. For GlobalForwardingRule, the valid value is
+        /// `PREMIUM`.
+        /// If this field is not specified, it is assumed to be `PREMIUM`.
+        /// If `IPAddress` is specified, this value must be equal to the
+        /// networkTier of the Address.
+        /// Possible values are: `PREMIUM`, `STANDARD`.
+        /// </summary>
+        [Output("networkTier")]
+        public Output<string> NetworkTier { get; private set; } = null!;
+
+        /// <summary>
         /// This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
         /// </summary>
         [Output("noAutomateDnsZone")]
@@ -1106,6 +1122,21 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Network { get; set; }
 
         /// <summary>
+        /// This signifies the networking tier used for configuring
+        /// this load balancer and can only take the following values:
+        /// `PREMIUM`, `STANDARD`.
+        /// For regional ForwardingRule, the valid values are `PREMIUM` and
+        /// `STANDARD`. For GlobalForwardingRule, the valid value is
+        /// `PREMIUM`.
+        /// If this field is not specified, it is assumed to be `PREMIUM`.
+        /// If `IPAddress` is specified, this value must be equal to the
+        /// networkTier of the Address.
+        /// Possible values are: `PREMIUM`, `STANDARD`.
+        /// </summary>
+        [Input("networkTier")]
+        public Input<string>? NetworkTier { get; set; }
+
+        /// <summary>
         /// This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
         /// </summary>
         [Input("noAutomateDnsZone")]
@@ -1381,6 +1412,21 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("network")]
         public Input<string>? Network { get; set; }
+
+        /// <summary>
+        /// This signifies the networking tier used for configuring
+        /// this load balancer and can only take the following values:
+        /// `PREMIUM`, `STANDARD`.
+        /// For regional ForwardingRule, the valid values are `PREMIUM` and
+        /// `STANDARD`. For GlobalForwardingRule, the valid value is
+        /// `PREMIUM`.
+        /// If this field is not specified, it is assumed to be `PREMIUM`.
+        /// If `IPAddress` is specified, this value must be equal to the
+        /// networkTier of the Address.
+        /// Possible values are: `PREMIUM`, `STANDARD`.
+        /// </summary>
+        [Input("networkTier")]
+        public Input<string>? NetworkTier { get; set; }
 
         /// <summary>
         /// This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.

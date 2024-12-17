@@ -212,8 +212,12 @@ export class RepositoryIamMember extends pulumi.CustomResource {
      */
     public /*out*/ readonly etag!: pulumi.Output<string>;
     /**
-     * The name of the location this repository is located in.
-     * Used to find the parent resource to bind the IAM policy to. If not specified,
+     * The name of the repository's location. In addition to specific regions,
+     * special values for multi-region locations are `asia`, `europe`, and `us`.
+     * See [here](https://cloud.google.com/artifact-registry/docs/repositories/repo-locations),
+     * or use the
+     * gcp.artifactregistry.getLocations
+     * data source for possible values. Used to find the parent resource to bind the IAM policy to. If not specified,
      * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
      * location is specified, it is taken from the provider configuration.
      */
@@ -302,8 +306,12 @@ export interface RepositoryIamMemberState {
      */
     etag?: pulumi.Input<string>;
     /**
-     * The name of the location this repository is located in.
-     * Used to find the parent resource to bind the IAM policy to. If not specified,
+     * The name of the repository's location. In addition to specific regions,
+     * special values for multi-region locations are `asia`, `europe`, and `us`.
+     * See [here](https://cloud.google.com/artifact-registry/docs/repositories/repo-locations),
+     * or use the
+     * gcp.artifactregistry.getLocations
+     * data source for possible values. Used to find the parent resource to bind the IAM policy to. If not specified,
      * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
      * location is specified, it is taken from the provider configuration.
      */
@@ -345,8 +353,12 @@ export interface RepositoryIamMemberState {
 export interface RepositoryIamMemberArgs {
     condition?: pulumi.Input<inputs.artifactregistry.RepositoryIamMemberCondition>;
     /**
-     * The name of the location this repository is located in.
-     * Used to find the parent resource to bind the IAM policy to. If not specified,
+     * The name of the repository's location. In addition to specific regions,
+     * special values for multi-region locations are `asia`, `europe`, and `us`.
+     * See [here](https://cloud.google.com/artifact-registry/docs/repositories/repo-locations),
+     * or use the
+     * gcp.artifactregistry.getLocations
+     * data source for possible values. Used to find the parent resource to bind the IAM policy to. If not specified,
      * the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
      * location is specified, it is taken from the provider configuration.
      */
