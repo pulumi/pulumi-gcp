@@ -181,6 +181,54 @@ class HostingVersion(pulumi.CustomResource):
             version_name=default_hosting_version.name,
             message="Redirect to Google")
         ```
+        ### Firebasehosting Version Headers
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.firebase.HostingSite("default",
+            project="my-project-name",
+            site_id="site-id")
+        default_hosting_version = gcp.firebase.HostingVersion("default",
+            site_id=default.site_id,
+            config={
+                "headers": [{
+                    "glob": "/headers/**",
+                    "headers": {
+                        "my-header": "my-value",
+                    },
+                }],
+            })
+        default_hosting_release = gcp.firebase.HostingRelease("default",
+            site_id=default.site_id,
+            version_name=default_hosting_version.name,
+            message="With custom headers")
+        ```
+        ### Firebasehosting Version Headers Regex
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.firebase.HostingSite("default",
+            project="my-project-name",
+            site_id="site-id")
+        default_hosting_version = gcp.firebase.HostingVersion("default",
+            site_id=default.site_id,
+            config={
+                "headers": [{
+                    "regex": "^~/headers$",
+                    "headers": {
+                        "my-header": "my-value",
+                    },
+                }],
+            })
+        default_hosting_release = gcp.firebase.HostingRelease("default",
+            site_id=default.site_id,
+            version_name=default_hosting_version.name,
+            message="With custom headers")
+        ```
         ### Firebasehosting Version Path
 
         ```python
@@ -339,6 +387,54 @@ class HostingVersion(pulumi.CustomResource):
             site_id=default.site_id,
             version_name=default_hosting_version.name,
             message="Redirect to Google")
+        ```
+        ### Firebasehosting Version Headers
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.firebase.HostingSite("default",
+            project="my-project-name",
+            site_id="site-id")
+        default_hosting_version = gcp.firebase.HostingVersion("default",
+            site_id=default.site_id,
+            config={
+                "headers": [{
+                    "glob": "/headers/**",
+                    "headers": {
+                        "my-header": "my-value",
+                    },
+                }],
+            })
+        default_hosting_release = gcp.firebase.HostingRelease("default",
+            site_id=default.site_id,
+            version_name=default_hosting_version.name,
+            message="With custom headers")
+        ```
+        ### Firebasehosting Version Headers Regex
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.firebase.HostingSite("default",
+            project="my-project-name",
+            site_id="site-id")
+        default_hosting_version = gcp.firebase.HostingVersion("default",
+            site_id=default.site_id,
+            config={
+                "headers": [{
+                    "regex": "^~/headers$",
+                    "headers": {
+                        "my-header": "my-value",
+                    },
+                }],
+            })
+        default_hosting_release = gcp.firebase.HostingRelease("default",
+            site_id=default.site_id,
+            version_name=default_hosting_version.name,
+            message="With custom headers")
         ```
         ### Firebasehosting Version Path
 

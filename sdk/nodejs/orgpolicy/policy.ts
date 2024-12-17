@@ -31,8 +31,8 @@ import * as utilities from "../utilities";
  *     deletionPolicy: "DELETE",
  * });
  * const primary = new gcp.orgpolicy.Policy("primary", {
- *     name: pulumi.interpolate`projects/${basic.name}/policies/iam.disableServiceAccountKeyUpload`,
- *     parent: pulumi.interpolate`projects/${basic.name}`,
+ *     name: pulumi.interpolate`projects/${basic.projectId}/policies/iam.disableServiceAccountKeyUpload`,
+ *     parent: pulumi.interpolate`projects/${basic.projectId}`,
  *     spec: {
  *         rules: [{
  *             enforce: "FALSE",
@@ -89,8 +89,8 @@ import * as utilities from "../utilities";
  *     deletionPolicy: "DELETE",
  * });
  * const primary = new gcp.orgpolicy.Policy("primary", {
- *     name: pulumi.interpolate`projects/${basic.name}/policies/gcp.resourceLocations`,
- *     parent: pulumi.interpolate`projects/${basic.name}`,
+ *     name: pulumi.interpolate`projects/${basic.projectId}/policies/gcp.resourceLocations`,
+ *     parent: pulumi.interpolate`projects/${basic.projectId}`,
  *     spec: {
  *         rules: [
  *             {
@@ -141,6 +141,35 @@ import * as utilities from "../utilities";
  *         reset: false,
  *         rules: [{
  *             enforce: "FALSE",
+ *         }],
+ *     },
+ * });
+ * ```
+ * ### Org Policy Policy Parameters Enforce
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const basic = new gcp.organizations.Project("basic", {
+ *     projectId: "id",
+ *     name: "id",
+ *     orgId: "123456789",
+ *     deletionPolicy: "DELETE",
+ * });
+ * const primary = new gcp.orgpolicy.Policy("primary", {
+ *     name: pulumi.interpolate`projects/${basic.name}/policies/compute.managed.restrictDiskCreation`,
+ *     parent: pulumi.interpolate`projects/${basic.name}`,
+ *     spec: {
+ *         rules: [{
+ *             enforce: "TRUE",
+ *             parameters: JSON.stringify({
+ *                 isSizeLimitCheck: true,
+ *                 allowedDiskTypes: [
+ *                     "pd-ssd",
+ *                     "pd-standard",
+ *                 ],
+ *             }),
  *         }],
  *     },
  * });

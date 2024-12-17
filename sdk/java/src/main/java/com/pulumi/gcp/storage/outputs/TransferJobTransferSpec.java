@@ -8,6 +8,7 @@ import com.pulumi.gcp.storage.outputs.TransferJobTransferSpecAwsS3DataSource;
 import com.pulumi.gcp.storage.outputs.TransferJobTransferSpecAzureBlobStorageDataSource;
 import com.pulumi.gcp.storage.outputs.TransferJobTransferSpecGcsDataSink;
 import com.pulumi.gcp.storage.outputs.TransferJobTransferSpecGcsDataSource;
+import com.pulumi.gcp.storage.outputs.TransferJobTransferSpecHdfsDataSource;
 import com.pulumi.gcp.storage.outputs.TransferJobTransferSpecHttpDataSource;
 import com.pulumi.gcp.storage.outputs.TransferJobTransferSpecObjectConditions;
 import com.pulumi.gcp.storage.outputs.TransferJobTransferSpecPosixDataSink;
@@ -40,6 +41,11 @@ public final class TransferJobTransferSpec {
      * 
      */
     private @Nullable TransferJobTransferSpecGcsDataSource gcsDataSource;
+    /**
+     * @return An HDFS data source. Structure documented below.
+     * 
+     */
+    private @Nullable TransferJobTransferSpecHdfsDataSource hdfsDataSource;
     /**
      * @return A HTTP URL data source. Structure documented below.
      * 
@@ -106,6 +112,13 @@ public final class TransferJobTransferSpec {
         return Optional.ofNullable(this.gcsDataSource);
     }
     /**
+     * @return An HDFS data source. Structure documented below.
+     * 
+     */
+    public Optional<TransferJobTransferSpecHdfsDataSource> hdfsDataSource() {
+        return Optional.ofNullable(this.hdfsDataSource);
+    }
+    /**
      * @return A HTTP URL data source. Structure documented below.
      * 
      */
@@ -168,6 +181,7 @@ public final class TransferJobTransferSpec {
         private @Nullable TransferJobTransferSpecAzureBlobStorageDataSource azureBlobStorageDataSource;
         private @Nullable TransferJobTransferSpecGcsDataSink gcsDataSink;
         private @Nullable TransferJobTransferSpecGcsDataSource gcsDataSource;
+        private @Nullable TransferJobTransferSpecHdfsDataSource hdfsDataSource;
         private @Nullable TransferJobTransferSpecHttpDataSource httpDataSource;
         private @Nullable TransferJobTransferSpecObjectConditions objectConditions;
         private @Nullable TransferJobTransferSpecPosixDataSink posixDataSink;
@@ -182,6 +196,7 @@ public final class TransferJobTransferSpec {
     	      this.azureBlobStorageDataSource = defaults.azureBlobStorageDataSource;
     	      this.gcsDataSink = defaults.gcsDataSink;
     	      this.gcsDataSource = defaults.gcsDataSource;
+    	      this.hdfsDataSource = defaults.hdfsDataSource;
     	      this.httpDataSource = defaults.httpDataSource;
     	      this.objectConditions = defaults.objectConditions;
     	      this.posixDataSink = defaults.posixDataSink;
@@ -213,6 +228,12 @@ public final class TransferJobTransferSpec {
         public Builder gcsDataSource(@Nullable TransferJobTransferSpecGcsDataSource gcsDataSource) {
 
             this.gcsDataSource = gcsDataSource;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder hdfsDataSource(@Nullable TransferJobTransferSpecHdfsDataSource hdfsDataSource) {
+
+            this.hdfsDataSource = hdfsDataSource;
             return this;
         }
         @CustomType.Setter
@@ -263,6 +284,7 @@ public final class TransferJobTransferSpec {
             _resultValue.azureBlobStorageDataSource = azureBlobStorageDataSource;
             _resultValue.gcsDataSink = gcsDataSink;
             _resultValue.gcsDataSource = gcsDataSource;
+            _resultValue.hdfsDataSource = hdfsDataSource;
             _resultValue.httpDataSource = httpDataSource;
             _resultValue.objectConditions = objectConditions;
             _resultValue.posixDataSink = posixDataSink;

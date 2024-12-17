@@ -71,6 +71,7 @@ import * as utilities from "../utilities";
  *         enableExternalIps: true,
  *         network: network.id,
  *         subnetwork: subnet.id,
+ *         queueCount: 32,
  *     },
  *     schedulingConfig: {
  *         preemptible: true,
@@ -225,6 +226,12 @@ export class V2Vm extends pulumi.CustomResource {
      */
     public readonly networkConfig!: pulumi.Output<outputs.tpu.V2VmNetworkConfig>;
     /**
+     * Repeated network configurations for the TPU node. This field is used to specify multiple
+     * network configs for the TPU node.
+     * Structure is documented below.
+     */
+    public readonly networkConfigs!: pulumi.Output<outputs.tpu.V2VmNetworkConfig[] | undefined>;
+    /**
      * The network endpoints where TPU workers can be accessed and sent work. It is recommended that
      * runtime clients of the node reach out to the 0th entry in this map first.
      * Structure is documented below.
@@ -312,6 +319,7 @@ export class V2Vm extends pulumi.CustomResource {
             resourceInputs["multisliceNode"] = state ? state.multisliceNode : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["networkConfig"] = state ? state.networkConfig : undefined;
+            resourceInputs["networkConfigs"] = state ? state.networkConfigs : undefined;
             resourceInputs["networkEndpoints"] = state ? state.networkEndpoints : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
@@ -338,6 +346,7 @@ export class V2Vm extends pulumi.CustomResource {
             resourceInputs["metadata"] = args ? args.metadata : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["networkConfig"] = args ? args.networkConfig : undefined;
+            resourceInputs["networkConfigs"] = args ? args.networkConfigs : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["runtimeVersion"] = args ? args.runtimeVersion : undefined;
             resourceInputs["schedulingConfig"] = args ? args.schedulingConfig : undefined;
@@ -435,6 +444,12 @@ export interface V2VmState {
      * Structure is documented below.
      */
     networkConfig?: pulumi.Input<inputs.tpu.V2VmNetworkConfig>;
+    /**
+     * Repeated network configurations for the TPU node. This field is used to specify multiple
+     * network configs for the TPU node.
+     * Structure is documented below.
+     */
+    networkConfigs?: pulumi.Input<pulumi.Input<inputs.tpu.V2VmNetworkConfig>[]>;
     /**
      * The network endpoints where TPU workers can be accessed and sent work. It is recommended that
      * runtime clients of the node reach out to the 0th entry in this map first.
@@ -549,6 +564,12 @@ export interface V2VmArgs {
      * Structure is documented below.
      */
     networkConfig?: pulumi.Input<inputs.tpu.V2VmNetworkConfig>;
+    /**
+     * Repeated network configurations for the TPU node. This field is used to specify multiple
+     * network configs for the TPU node.
+     * Structure is documented below.
+     */
+    networkConfigs?: pulumi.Input<pulumi.Input<inputs.tpu.V2VmNetworkConfig>[]>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

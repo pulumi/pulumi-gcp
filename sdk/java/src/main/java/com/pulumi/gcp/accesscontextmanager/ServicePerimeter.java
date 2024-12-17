@@ -357,24 +357,6 @@ public class ServicePerimeter extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * An opaque identifier for the current version of the ServicePerimeter. This
-     * identifier does not follow any specific format. If an etag is not provided, the
-     * operation will be performed as if a valid etag is provided.
-     * 
-     */
-    @Export(name="etag", refs={String.class}, tree="[0]")
-    private Output<String> etag;
-
-    /**
-     * @return An opaque identifier for the current version of the ServicePerimeter. This
-     * identifier does not follow any specific format. If an etag is not provided, the
-     * operation will be performed as if a valid etag is provided.
-     * 
-     */
-    public Output<String> etag() {
-        return this.etag;
-    }
-    /**
      * Resource name for the ServicePerimeter. The short_name component must
      * begin with a letter and only include alphanumeric and &#39;_&#39;.
      * Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}

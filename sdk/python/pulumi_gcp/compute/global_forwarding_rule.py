@@ -32,6 +32,7 @@ class GlobalForwardingRuleArgs:
                  metadata_filters: Optional[pulumi.Input[Sequence[pulumi.Input['GlobalForwardingRuleMetadataFilterArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
+                 network_tier: Optional[pulumi.Input[str]] = None,
                  no_automate_dns_zone: Optional[pulumi.Input[bool]] = None,
                  port_range: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -141,6 +142,16 @@ class GlobalForwardingRuleArgs:
                be used.
                For Private Service Connect forwarding rules that forward traffic to Google
                APIs, a network must be provided.
+        :param pulumi.Input[str] network_tier: This signifies the networking tier used for configuring
+               this load balancer and can only take the following values:
+               `PREMIUM`, `STANDARD`.
+               For regional ForwardingRule, the valid values are `PREMIUM` and
+               `STANDARD`. For GlobalForwardingRule, the valid value is
+               `PREMIUM`.
+               If this field is not specified, it is assumed to be `PREMIUM`.
+               If `IPAddress` is specified, this value must be equal to the
+               networkTier of the Address.
+               Possible values are: `PREMIUM`, `STANDARD`.
         :param pulumi.Input[bool] no_automate_dns_zone: This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
         :param pulumi.Input[str] port_range: The `portRange` field has the following limitations:
                * It requires that the forwarding rule `IPProtocol` be TCP, UDP, or SCTP,
@@ -193,6 +204,8 @@ class GlobalForwardingRuleArgs:
             pulumi.set(__self__, "name", name)
         if network is not None:
             pulumi.set(__self__, "network", network)
+        if network_tier is not None:
+            pulumi.set(__self__, "network_tier", network_tier)
         if no_automate_dns_zone is not None:
             pulumi.set(__self__, "no_automate_dns_zone", no_automate_dns_zone)
         if port_range is not None:
@@ -429,6 +442,27 @@ class GlobalForwardingRuleArgs:
         pulumi.set(self, "network", value)
 
     @property
+    @pulumi.getter(name="networkTier")
+    def network_tier(self) -> Optional[pulumi.Input[str]]:
+        """
+        This signifies the networking tier used for configuring
+        this load balancer and can only take the following values:
+        `PREMIUM`, `STANDARD`.
+        For regional ForwardingRule, the valid values are `PREMIUM` and
+        `STANDARD`. For GlobalForwardingRule, the valid value is
+        `PREMIUM`.
+        If this field is not specified, it is assumed to be `PREMIUM`.
+        If `IPAddress` is specified, this value must be equal to the
+        networkTier of the Address.
+        Possible values are: `PREMIUM`, `STANDARD`.
+        """
+        return pulumi.get(self, "network_tier")
+
+    @network_tier.setter
+    def network_tier(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_tier", value)
+
+    @property
     @pulumi.getter(name="noAutomateDnsZone")
     def no_automate_dns_zone(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -542,6 +576,7 @@ class _GlobalForwardingRuleState:
                  metadata_filters: Optional[pulumi.Input[Sequence[pulumi.Input['GlobalForwardingRuleMetadataFilterArgs']]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
+                 network_tier: Optional[pulumi.Input[str]] = None,
                  no_automate_dns_zone: Optional[pulumi.Input[bool]] = None,
                  port_range: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -648,6 +683,16 @@ class _GlobalForwardingRuleState:
                be used.
                For Private Service Connect forwarding rules that forward traffic to Google
                APIs, a network must be provided.
+        :param pulumi.Input[str] network_tier: This signifies the networking tier used for configuring
+               this load balancer and can only take the following values:
+               `PREMIUM`, `STANDARD`.
+               For regional ForwardingRule, the valid values are `PREMIUM` and
+               `STANDARD`. For GlobalForwardingRule, the valid value is
+               `PREMIUM`.
+               If this field is not specified, it is assumed to be `PREMIUM`.
+               If `IPAddress` is specified, this value must be equal to the
+               networkTier of the Address.
+               Possible values are: `PREMIUM`, `STANDARD`.
         :param pulumi.Input[bool] no_automate_dns_zone: This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
         :param pulumi.Input[str] port_range: The `portRange` field has the following limitations:
                * It requires that the forwarding rule `IPProtocol` be TCP, UDP, or SCTP,
@@ -725,6 +770,8 @@ class _GlobalForwardingRuleState:
             pulumi.set(__self__, "name", name)
         if network is not None:
             pulumi.set(__self__, "network", network)
+        if network_tier is not None:
+            pulumi.set(__self__, "network_tier", network_tier)
         if no_automate_dns_zone is not None:
             pulumi.set(__self__, "no_automate_dns_zone", no_automate_dns_zone)
         if port_range is not None:
@@ -996,6 +1043,27 @@ class _GlobalForwardingRuleState:
         pulumi.set(self, "network", value)
 
     @property
+    @pulumi.getter(name="networkTier")
+    def network_tier(self) -> Optional[pulumi.Input[str]]:
+        """
+        This signifies the networking tier used for configuring
+        this load balancer and can only take the following values:
+        `PREMIUM`, `STANDARD`.
+        For regional ForwardingRule, the valid values are `PREMIUM` and
+        `STANDARD`. For GlobalForwardingRule, the valid value is
+        `PREMIUM`.
+        If this field is not specified, it is assumed to be `PREMIUM`.
+        If `IPAddress` is specified, this value must be equal to the
+        networkTier of the Address.
+        Possible values are: `PREMIUM`, `STANDARD`.
+        """
+        return pulumi.get(self, "network_tier")
+
+    @network_tier.setter
+    def network_tier(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "network_tier", value)
+
+    @property
     @pulumi.getter(name="noAutomateDnsZone")
     def no_automate_dns_zone(self) -> Optional[pulumi.Input[bool]]:
         """
@@ -1180,6 +1248,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
                  metadata_filters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GlobalForwardingRuleMetadataFilterArgs', 'GlobalForwardingRuleMetadataFilterArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
+                 network_tier: Optional[pulumi.Input[str]] = None,
                  no_automate_dns_zone: Optional[pulumi.Input[bool]] = None,
                  port_range: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -1358,7 +1427,8 @@ class GlobalForwardingRule(pulumi.CustomResource):
             name="global-rule",
             target=default_target_http_proxy.id,
             port_range="80",
-            load_balancing_scheme="EXTERNAL_MANAGED")
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            network_tier="PREMIUM")
         ```
         ### Global Forwarding Rule Hybrid
 
@@ -1651,6 +1721,16 @@ class GlobalForwardingRule(pulumi.CustomResource):
                be used.
                For Private Service Connect forwarding rules that forward traffic to Google
                APIs, a network must be provided.
+        :param pulumi.Input[str] network_tier: This signifies the networking tier used for configuring
+               this load balancer and can only take the following values:
+               `PREMIUM`, `STANDARD`.
+               For regional ForwardingRule, the valid values are `PREMIUM` and
+               `STANDARD`. For GlobalForwardingRule, the valid value is
+               `PREMIUM`.
+               If this field is not specified, it is assumed to be `PREMIUM`.
+               If `IPAddress` is specified, this value must be equal to the
+               networkTier of the Address.
+               Possible values are: `PREMIUM`, `STANDARD`.
         :param pulumi.Input[bool] no_automate_dns_zone: This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
         :param pulumi.Input[str] port_range: The `portRange` field has the following limitations:
                * It requires that the forwarding rule `IPProtocol` be TCP, UDP, or SCTP,
@@ -1871,7 +1951,8 @@ class GlobalForwardingRule(pulumi.CustomResource):
             name="global-rule",
             target=default_target_http_proxy.id,
             port_range="80",
-            load_balancing_scheme="EXTERNAL_MANAGED")
+            load_balancing_scheme="EXTERNAL_MANAGED",
+            network_tier="PREMIUM")
         ```
         ### Global Forwarding Rule Hybrid
 
@@ -2099,6 +2180,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
                  metadata_filters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GlobalForwardingRuleMetadataFilterArgs', 'GlobalForwardingRuleMetadataFilterArgsDict']]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network: Optional[pulumi.Input[str]] = None,
+                 network_tier: Optional[pulumi.Input[str]] = None,
                  no_automate_dns_zone: Optional[pulumi.Input[bool]] = None,
                  port_range: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -2125,6 +2207,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
             __props__.__dict__["metadata_filters"] = metadata_filters
             __props__.__dict__["name"] = name
             __props__.__dict__["network"] = network
+            __props__.__dict__["network_tier"] = network_tier
             __props__.__dict__["no_automate_dns_zone"] = no_automate_dns_zone
             __props__.__dict__["port_range"] = port_range
             __props__.__dict__["project"] = project
@@ -2168,6 +2251,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
             metadata_filters: Optional[pulumi.Input[Sequence[pulumi.Input[Union['GlobalForwardingRuleMetadataFilterArgs', 'GlobalForwardingRuleMetadataFilterArgsDict']]]]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network: Optional[pulumi.Input[str]] = None,
+            network_tier: Optional[pulumi.Input[str]] = None,
             no_automate_dns_zone: Optional[pulumi.Input[bool]] = None,
             port_range: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
@@ -2279,6 +2363,16 @@ class GlobalForwardingRule(pulumi.CustomResource):
                be used.
                For Private Service Connect forwarding rules that forward traffic to Google
                APIs, a network must be provided.
+        :param pulumi.Input[str] network_tier: This signifies the networking tier used for configuring
+               this load balancer and can only take the following values:
+               `PREMIUM`, `STANDARD`.
+               For regional ForwardingRule, the valid values are `PREMIUM` and
+               `STANDARD`. For GlobalForwardingRule, the valid value is
+               `PREMIUM`.
+               If this field is not specified, it is assumed to be `PREMIUM`.
+               If `IPAddress` is specified, this value must be equal to the
+               networkTier of the Address.
+               Possible values are: `PREMIUM`, `STANDARD`.
         :param pulumi.Input[bool] no_automate_dns_zone: This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
         :param pulumi.Input[str] port_range: The `portRange` field has the following limitations:
                * It requires that the forwarding rule `IPProtocol` be TCP, UDP, or SCTP,
@@ -2346,6 +2440,7 @@ class GlobalForwardingRule(pulumi.CustomResource):
         __props__.__dict__["metadata_filters"] = metadata_filters
         __props__.__dict__["name"] = name
         __props__.__dict__["network"] = network
+        __props__.__dict__["network_tier"] = network_tier
         __props__.__dict__["no_automate_dns_zone"] = no_automate_dns_zone
         __props__.__dict__["port_range"] = port_range
         __props__.__dict__["project"] = project
@@ -2549,6 +2644,23 @@ class GlobalForwardingRule(pulumi.CustomResource):
         APIs, a network must be provided.
         """
         return pulumi.get(self, "network")
+
+    @property
+    @pulumi.getter(name="networkTier")
+    def network_tier(self) -> pulumi.Output[str]:
+        """
+        This signifies the networking tier used for configuring
+        this load balancer and can only take the following values:
+        `PREMIUM`, `STANDARD`.
+        For regional ForwardingRule, the valid values are `PREMIUM` and
+        `STANDARD`. For GlobalForwardingRule, the valid value is
+        `PREMIUM`.
+        If this field is not specified, it is assumed to be `PREMIUM`.
+        If `IPAddress` is specified, this value must be equal to the
+        networkTier of the Address.
+        Possible values are: `PREMIUM`, `STANDARD`.
+        """
+        return pulumi.get(self, "network_tier")
 
     @property
     @pulumi.getter(name="noAutomateDnsZone")

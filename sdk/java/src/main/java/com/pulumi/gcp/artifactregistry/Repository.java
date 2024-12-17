@@ -70,6 +70,43 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Artifact Registry Repository Multi Region
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.artifactregistry.Repository;
+ * import com.pulumi.gcp.artifactregistry.RepositoryArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var my_repo = new Repository("my-repo", RepositoryArgs.builder()
+ *             .repositoryId("my-repository")
+ *             .description("example docker repository")
+ *             .location("us")
+ *             .format("DOCKER")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Artifact Registry Repository Docker
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -1094,8 +1131,6 @@ import javax.annotation.Nullable;
  * 
  * * `{{location}}/{{repository_id}}`
  * 
- * * `{{repository_id}}`
- * 
  * When using the `pulumi import` command, Repository can be imported using one of the formats above. For example:
  * 
  * ```sh
@@ -1108,10 +1143,6 @@ import javax.annotation.Nullable;
  * 
  * ```sh
  * $ pulumi import gcp:artifactregistry/repository:Repository default {{location}}/{{repository_id}}
- * ```
- * 
- * ```sh
- * $ pulumi import gcp:artifactregistry/repository:Repository default {{repository_id}}
  * ```
  * 
  */
@@ -1219,8 +1250,6 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * You can only create alpha formats if you are a member of the
      * [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
      * 
-     * ***
-     * 
      */
     @Export(name="format", refs={String.class}, tree="[0]")
     private Output<String> format;
@@ -1230,8 +1259,6 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
      * You can only create alpha formats if you are a member of the
      * [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
-     * 
-     * ***
      * 
      */
     public Output<String> format() {
@@ -1286,14 +1313,24 @@ public class Repository extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.labels);
     }
     /**
-     * The name of the location this repository is located in.
+     * The name of the repository&#39;s location. In addition to specific regions,
+     * special values for multi-region locations are `asia`, `europe`, and `us`.
+     * See [here](https://cloud.google.com/artifact-registry/docs/repositories/repo-locations),
+     * or use the
+     * gcp.artifactregistry.getLocations
+     * data source for possible values.
      * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
-     * @return The name of the location this repository is located in.
+     * @return The name of the repository&#39;s location. In addition to specific regions,
+     * special values for multi-region locations are `asia`, `europe`, and `us`.
+     * See [here](https://cloud.google.com/artifact-registry/docs/repositories/repo-locations),
+     * or use the
+     * gcp.artifactregistry.getLocations
+     * data source for possible values.
      * 
      */
     public Output<String> location() {
@@ -1405,6 +1442,8 @@ public class Repository extends com.pulumi.resources.CustomResource {
      * The last part of the repository name, for example:
      * &#34;repo1&#34;
      * 
+     * ***
+     * 
      */
     @Export(name="repositoryId", refs={String.class}, tree="[0]")
     private Output<String> repositoryId;
@@ -1412,6 +1451,8 @@ public class Repository extends com.pulumi.resources.CustomResource {
     /**
      * @return The last part of the repository name, for example:
      * &#34;repo1&#34;
+     * 
+     * ***
      * 
      */
     public Output<String> repositoryId() {

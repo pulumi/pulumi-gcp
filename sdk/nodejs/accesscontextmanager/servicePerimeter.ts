@@ -257,12 +257,6 @@ export class ServicePerimeter extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * An opaque identifier for the current version of the ServicePerimeter. This
-     * identifier does not follow any specific format. If an etag is not provided, the
-     * operation will be performed as if a valid etag is provided.
-     */
-    public /*out*/ readonly etag!: pulumi.Output<string>;
-    /**
      * Resource name for the ServicePerimeter. The shortName component must
      * begin with a letter and only include alphanumeric and '_'.
      * Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
@@ -346,7 +340,6 @@ export class ServicePerimeter extends pulumi.CustomResource {
             const state = argsOrState as ServicePerimeterState | undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
-            resourceInputs["etag"] = state ? state.etag : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["parent"] = state ? state.parent : undefined;
             resourceInputs["perimeterType"] = state ? state.perimeterType : undefined;
@@ -372,7 +365,6 @@ export class ServicePerimeter extends pulumi.CustomResource {
             resourceInputs["title"] = args ? args.title : undefined;
             resourceInputs["useExplicitDryRunSpec"] = args ? args.useExplicitDryRunSpec : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
-            resourceInputs["etag"] = undefined /*out*/;
             resourceInputs["updateTime"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -393,12 +385,6 @@ export interface ServicePerimeterState {
      * behavior.
      */
     description?: pulumi.Input<string>;
-    /**
-     * An opaque identifier for the current version of the ServicePerimeter. This
-     * identifier does not follow any specific format. If an etag is not provided, the
-     * operation will be performed as if a valid etag is provided.
-     */
-    etag?: pulumi.Input<string>;
     /**
      * Resource name for the ServicePerimeter. The shortName component must
      * begin with a letter and only include alphanumeric and '_'.

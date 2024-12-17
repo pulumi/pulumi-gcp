@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.IdentityPlatform.Outputs
     public sealed class ConfigQuotaSignUpQuotaConfig
     {
         /// <summary>
-        /// A sign up APIs quota that customers can override temporarily.
+        /// A sign up APIs quota that customers can override temporarily. Value can be in between 1 and 1000.
         /// </summary>
         public readonly int? Quota;
         /// <summary>

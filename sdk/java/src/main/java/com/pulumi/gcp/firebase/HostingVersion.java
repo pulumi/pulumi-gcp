@@ -75,6 +75,118 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Firebasehosting Version Headers
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.firebase.HostingSite;
+ * import com.pulumi.gcp.firebase.HostingSiteArgs;
+ * import com.pulumi.gcp.firebase.HostingVersion;
+ * import com.pulumi.gcp.firebase.HostingVersionArgs;
+ * import com.pulumi.gcp.firebase.inputs.HostingVersionConfigArgs;
+ * import com.pulumi.gcp.firebase.HostingRelease;
+ * import com.pulumi.gcp.firebase.HostingReleaseArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new HostingSite("default", HostingSiteArgs.builder()
+ *             .project("my-project-name")
+ *             .siteId("site-id")
+ *             .build());
+ * 
+ *         var defaultHostingVersion = new HostingVersion("defaultHostingVersion", HostingVersionArgs.builder()
+ *             .siteId(default_.siteId())
+ *             .config(HostingVersionConfigArgs.builder()
+ *                 .headers(HostingVersionConfigHeaderArgs.builder()
+ *                     .glob("/headers/**")
+ *                     .headers(Map.of("my-header", "my-value"))
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var defaultHostingRelease = new HostingRelease("defaultHostingRelease", HostingReleaseArgs.builder()
+ *             .siteId(default_.siteId())
+ *             .versionName(defaultHostingVersion.name())
+ *             .message("With custom headers")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Firebasehosting Version Headers Regex
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.firebase.HostingSite;
+ * import com.pulumi.gcp.firebase.HostingSiteArgs;
+ * import com.pulumi.gcp.firebase.HostingVersion;
+ * import com.pulumi.gcp.firebase.HostingVersionArgs;
+ * import com.pulumi.gcp.firebase.inputs.HostingVersionConfigArgs;
+ * import com.pulumi.gcp.firebase.HostingRelease;
+ * import com.pulumi.gcp.firebase.HostingReleaseArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new HostingSite("default", HostingSiteArgs.builder()
+ *             .project("my-project-name")
+ *             .siteId("site-id")
+ *             .build());
+ * 
+ *         var defaultHostingVersion = new HostingVersion("defaultHostingVersion", HostingVersionArgs.builder()
+ *             .siteId(default_.siteId())
+ *             .config(HostingVersionConfigArgs.builder()
+ *                 .headers(HostingVersionConfigHeaderArgs.builder()
+ *                     .regex("^~/headers$")
+ *                     .headers(Map.of("my-header", "my-value"))
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var defaultHostingRelease = new HostingRelease("defaultHostingRelease", HostingReleaseArgs.builder()
+ *             .siteId(default_.siteId())
+ *             .versionName(defaultHostingVersion.name())
+ *             .message("With custom headers")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Firebasehosting Version Path
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;

@@ -298,8 +298,12 @@ type RepositoryIamMember struct {
 	Condition RepositoryIamMemberConditionPtrOutput `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringOutput `pulumi:"etag"`
-	// The name of the location this repository is located in.
-	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// The name of the repository's location. In addition to specific regions,
+	// special values for multi-region locations are `asia`, `europe`, and `us`.
+	// See [here](https://cloud.google.com/artifact-registry/docs/repositories/repo-locations),
+	// or use the
+	// artifactregistry.getLocations
+	// data source for possible values. Used to find the parent resource to bind the IAM policy to. If not specified,
 	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
 	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringOutput `pulumi:"location"`
@@ -368,8 +372,12 @@ type repositoryIamMemberState struct {
 	Condition *RepositoryIamMemberCondition `pulumi:"condition"`
 	// (Computed) The etag of the IAM policy.
 	Etag *string `pulumi:"etag"`
-	// The name of the location this repository is located in.
-	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// The name of the repository's location. In addition to specific regions,
+	// special values for multi-region locations are `asia`, `europe`, and `us`.
+	// See [here](https://cloud.google.com/artifact-registry/docs/repositories/repo-locations),
+	// or use the
+	// artifactregistry.getLocations
+	// data source for possible values. Used to find the parent resource to bind the IAM policy to. If not specified,
 	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
 	// location is specified, it is taken from the provider configuration.
 	Location *string `pulumi:"location"`
@@ -400,8 +408,12 @@ type RepositoryIamMemberState struct {
 	Condition RepositoryIamMemberConditionPtrInput
 	// (Computed) The etag of the IAM policy.
 	Etag pulumi.StringPtrInput
-	// The name of the location this repository is located in.
-	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// The name of the repository's location. In addition to specific regions,
+	// special values for multi-region locations are `asia`, `europe`, and `us`.
+	// See [here](https://cloud.google.com/artifact-registry/docs/repositories/repo-locations),
+	// or use the
+	// artifactregistry.getLocations
+	// data source for possible values. Used to find the parent resource to bind the IAM policy to. If not specified,
 	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
 	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringPtrInput
@@ -434,8 +446,12 @@ func (RepositoryIamMemberState) ElementType() reflect.Type {
 
 type repositoryIamMemberArgs struct {
 	Condition *RepositoryIamMemberCondition `pulumi:"condition"`
-	// The name of the location this repository is located in.
-	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// The name of the repository's location. In addition to specific regions,
+	// special values for multi-region locations are `asia`, `europe`, and `us`.
+	// See [here](https://cloud.google.com/artifact-registry/docs/repositories/repo-locations),
+	// or use the
+	// artifactregistry.getLocations
+	// data source for possible values. Used to find the parent resource to bind the IAM policy to. If not specified,
 	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
 	// location is specified, it is taken from the provider configuration.
 	Location *string `pulumi:"location"`
@@ -465,8 +481,12 @@ type repositoryIamMemberArgs struct {
 // The set of arguments for constructing a RepositoryIamMember resource.
 type RepositoryIamMemberArgs struct {
 	Condition RepositoryIamMemberConditionPtrInput
-	// The name of the location this repository is located in.
-	// Used to find the parent resource to bind the IAM policy to. If not specified,
+	// The name of the repository's location. In addition to specific regions,
+	// special values for multi-region locations are `asia`, `europe`, and `us`.
+	// See [here](https://cloud.google.com/artifact-registry/docs/repositories/repo-locations),
+	// or use the
+	// artifactregistry.getLocations
+	// data source for possible values. Used to find the parent resource to bind the IAM policy to. If not specified,
 	// the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
 	// location is specified, it is taken from the provider configuration.
 	Location pulumi.StringPtrInput
@@ -589,8 +609,12 @@ func (o RepositoryIamMemberOutput) Etag() pulumi.StringOutput {
 	return o.ApplyT(func(v *RepositoryIamMember) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
-// The name of the location this repository is located in.
-// Used to find the parent resource to bind the IAM policy to. If not specified,
+// The name of the repository's location. In addition to specific regions,
+// special values for multi-region locations are `asia`, `europe`, and `us`.
+// See [here](https://cloud.google.com/artifact-registry/docs/repositories/repo-locations),
+// or use the
+// artifactregistry.getLocations
+// data source for possible values. Used to find the parent resource to bind the IAM policy to. If not specified,
 // the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
 // location is specified, it is taken from the provider configuration.
 func (o RepositoryIamMemberOutput) Location() pulumi.StringOutput {

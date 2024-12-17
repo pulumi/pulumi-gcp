@@ -194,6 +194,7 @@ import * as utilities from "../utilities";
  *     target: defaultTargetHttpProxy.id,
  *     portRange: "80",
  *     loadBalancingScheme: "EXTERNAL_MANAGED",
+ *     networkTier: "PREMIUM",
  * });
  * ```
  * ### Global Forwarding Rule Hybrid
@@ -579,6 +580,19 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
      */
     public readonly network!: pulumi.Output<string>;
     /**
+     * This signifies the networking tier used for configuring
+     * this load balancer and can only take the following values:
+     * `PREMIUM`, `STANDARD`.
+     * For regional ForwardingRule, the valid values are `PREMIUM` and
+     * `STANDARD`. For GlobalForwardingRule, the valid value is
+     * `PREMIUM`.
+     * If this field is not specified, it is assumed to be `PREMIUM`.
+     * If `IPAddress` is specified, this value must be equal to the
+     * networkTier of the Address.
+     * Possible values are: `PREMIUM`, `STANDARD`.
+     */
+    public readonly networkTier!: pulumi.Output<string>;
+    /**
      * This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
      */
     public readonly noAutomateDnsZone!: pulumi.Output<boolean | undefined>;
@@ -687,6 +701,7 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
             resourceInputs["metadataFilters"] = state ? state.metadataFilters : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["network"] = state ? state.network : undefined;
+            resourceInputs["networkTier"] = state ? state.networkTier : undefined;
             resourceInputs["noAutomateDnsZone"] = state ? state.noAutomateDnsZone : undefined;
             resourceInputs["portRange"] = state ? state.portRange : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
@@ -713,6 +728,7 @@ export class GlobalForwardingRule extends pulumi.CustomResource {
             resourceInputs["metadataFilters"] = args ? args.metadataFilters : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["network"] = args ? args.network : undefined;
+            resourceInputs["networkTier"] = args ? args.networkTier : undefined;
             resourceInputs["noAutomateDnsZone"] = args ? args.noAutomateDnsZone : undefined;
             resourceInputs["portRange"] = args ? args.portRange : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
@@ -875,6 +891,19 @@ export interface GlobalForwardingRuleState {
      * APIs, a network must be provided.
      */
     network?: pulumi.Input<string>;
+    /**
+     * This signifies the networking tier used for configuring
+     * this load balancer and can only take the following values:
+     * `PREMIUM`, `STANDARD`.
+     * For regional ForwardingRule, the valid values are `PREMIUM` and
+     * `STANDARD`. For GlobalForwardingRule, the valid value is
+     * `PREMIUM`.
+     * If this field is not specified, it is assumed to be `PREMIUM`.
+     * If `IPAddress` is specified, this value must be equal to the
+     * networkTier of the Address.
+     * Possible values are: `PREMIUM`, `STANDARD`.
+     */
+    networkTier?: pulumi.Input<string>;
     /**
      * This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
      */
@@ -1080,6 +1109,19 @@ export interface GlobalForwardingRuleArgs {
      * APIs, a network must be provided.
      */
     network?: pulumi.Input<string>;
+    /**
+     * This signifies the networking tier used for configuring
+     * this load balancer and can only take the following values:
+     * `PREMIUM`, `STANDARD`.
+     * For regional ForwardingRule, the valid values are `PREMIUM` and
+     * `STANDARD`. For GlobalForwardingRule, the valid value is
+     * `PREMIUM`.
+     * If this field is not specified, it is assumed to be `PREMIUM`.
+     * If `IPAddress` is specified, this value must be equal to the
+     * networkTier of the Address.
+     * Possible values are: `PREMIUM`, `STANDARD`.
+     */
+    networkTier?: pulumi.Input<string>;
     /**
      * This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
      */

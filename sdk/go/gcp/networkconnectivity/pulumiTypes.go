@@ -2312,9 +2312,9 @@ func (o SpokeLinkedRouterApplianceInstancesPtrOutput) SiteToSiteDataTransfer() p
 
 type SpokeLinkedRouterApplianceInstancesInstance struct {
 	// The IP address on the VM to use for peering.
-	IpAddress *string `pulumi:"ipAddress"`
+	IpAddress string `pulumi:"ipAddress"`
 	// The URI of the virtual machine resource
-	VirtualMachine *string `pulumi:"virtualMachine"`
+	VirtualMachine string `pulumi:"virtualMachine"`
 }
 
 // SpokeLinkedRouterApplianceInstancesInstanceInput is an input type that accepts SpokeLinkedRouterApplianceInstancesInstanceArgs and SpokeLinkedRouterApplianceInstancesInstanceOutput values.
@@ -2330,9 +2330,9 @@ type SpokeLinkedRouterApplianceInstancesInstanceInput interface {
 
 type SpokeLinkedRouterApplianceInstancesInstanceArgs struct {
 	// The IP address on the VM to use for peering.
-	IpAddress pulumi.StringPtrInput `pulumi:"ipAddress"`
+	IpAddress pulumi.StringInput `pulumi:"ipAddress"`
 	// The URI of the virtual machine resource
-	VirtualMachine pulumi.StringPtrInput `pulumi:"virtualMachine"`
+	VirtualMachine pulumi.StringInput `pulumi:"virtualMachine"`
 }
 
 func (SpokeLinkedRouterApplianceInstancesInstanceArgs) ElementType() reflect.Type {
@@ -2387,13 +2387,13 @@ func (o SpokeLinkedRouterApplianceInstancesInstanceOutput) ToSpokeLinkedRouterAp
 }
 
 // The IP address on the VM to use for peering.
-func (o SpokeLinkedRouterApplianceInstancesInstanceOutput) IpAddress() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SpokeLinkedRouterApplianceInstancesInstance) *string { return v.IpAddress }).(pulumi.StringPtrOutput)
+func (o SpokeLinkedRouterApplianceInstancesInstanceOutput) IpAddress() pulumi.StringOutput {
+	return o.ApplyT(func(v SpokeLinkedRouterApplianceInstancesInstance) string { return v.IpAddress }).(pulumi.StringOutput)
 }
 
 // The URI of the virtual machine resource
-func (o SpokeLinkedRouterApplianceInstancesInstanceOutput) VirtualMachine() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v SpokeLinkedRouterApplianceInstancesInstance) *string { return v.VirtualMachine }).(pulumi.StringPtrOutput)
+func (o SpokeLinkedRouterApplianceInstancesInstanceOutput) VirtualMachine() pulumi.StringOutput {
+	return o.ApplyT(func(v SpokeLinkedRouterApplianceInstancesInstance) string { return v.VirtualMachine }).(pulumi.StringOutput)
 }
 
 type SpokeLinkedRouterApplianceInstancesInstanceArrayOutput struct{ *pulumi.OutputState }

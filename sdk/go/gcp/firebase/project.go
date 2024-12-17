@@ -11,7 +11,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// A Google Cloud Firebase instance. This enables Firebase resources on a given google project.
+// A Google Cloud Firebase instance. This enables Firebase resources on a given Google Project.
 // Since a FirebaseProject is actually also a GCP Project, a FirebaseProject uses underlying GCP
 // identifiers (most importantly, the projectId) as its own for easy interop with GCP APIs.
 // Once Firebase has been added to a Google Project it cannot be removed.
@@ -92,7 +92,7 @@ type Project struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// The number of the google project that firebase is enabled on.
+	// The number of the Google Project that Firebase is enabled on.
 	ProjectNumber pulumi.StringOutput `pulumi:"projectNumber"`
 }
 
@@ -131,7 +131,7 @@ type projectState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The number of the google project that firebase is enabled on.
+	// The number of the Google Project that Firebase is enabled on.
 	ProjectNumber *string `pulumi:"projectNumber"`
 }
 
@@ -141,7 +141,7 @@ type ProjectState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The number of the google project that firebase is enabled on.
+	// The number of the Google Project that Firebase is enabled on.
 	ProjectNumber pulumi.StringPtrInput
 }
 
@@ -260,7 +260,7 @@ func (o ProjectOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// The number of the google project that firebase is enabled on.
+// The number of the Google Project that Firebase is enabled on.
 func (o ProjectOutput) ProjectNumber() pulumi.StringOutput {
 	return o.ApplyT(func(v *Project) pulumi.StringOutput { return v.ProjectNumber }).(pulumi.StringOutput)
 }

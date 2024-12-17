@@ -164,6 +164,7 @@ import javax.annotation.Nullable;
  *                 .enableExternalIps(true)
  *                 .network(network.id())
  *                 .subnetwork(subnet.id())
+ *                 .queueCount(32)
  *                 .build())
  *             .schedulingConfig(V2VmSchedulingConfigArgs.builder()
  *                 .preemptible(true)
@@ -444,6 +445,24 @@ public class V2Vm extends com.pulumi.resources.CustomResource {
      */
     public Output<V2VmNetworkConfig> networkConfig() {
         return this.networkConfig;
+    }
+    /**
+     * Repeated network configurations for the TPU node. This field is used to specify multiple
+     * network configs for the TPU node.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="networkConfigs", refs={List.class,V2VmNetworkConfig.class}, tree="[0,1]")
+    private Output</* @Nullable */ List<V2VmNetworkConfig>> networkConfigs;
+
+    /**
+     * @return Repeated network configurations for the TPU node. This field is used to specify multiple
+     * network configs for the TPU node.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<List<V2VmNetworkConfig>>> networkConfigs() {
+        return Codegen.optional(this.networkConfigs);
     }
     /**
      * The network endpoints where TPU workers can be accessed and sent work. It is recommended that

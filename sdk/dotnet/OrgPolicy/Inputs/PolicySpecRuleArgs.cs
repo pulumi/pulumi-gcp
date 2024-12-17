@@ -38,6 +38,12 @@ namespace Pulumi.Gcp.OrgPolicy.Inputs
         public Input<string>? Enforce { get; set; }
 
         /// <summary>
+        /// Optional. Required for Managed Constraints if parameters defined in constraints. Pass parameter values when policy enforcement is enabled. Ensure that parameter value types match those defined in the constraint definition. For example: { \"allowedLocations\" : [\"us-east1\", \"us-west1\"], \"allowAll\" : true }
+        /// </summary>
+        [Input("parameters")]
+        public Input<string>? Parameters { get; set; }
+
+        /// <summary>
         /// List of values to be used for this policy rule. This field can be set only in policies for list constraints.
         /// Structure is documented below.
         /// </summary>

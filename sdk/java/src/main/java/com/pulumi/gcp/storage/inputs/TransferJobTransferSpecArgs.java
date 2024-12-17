@@ -9,6 +9,7 @@ import com.pulumi.gcp.storage.inputs.TransferJobTransferSpecAwsS3DataSourceArgs;
 import com.pulumi.gcp.storage.inputs.TransferJobTransferSpecAzureBlobStorageDataSourceArgs;
 import com.pulumi.gcp.storage.inputs.TransferJobTransferSpecGcsDataSinkArgs;
 import com.pulumi.gcp.storage.inputs.TransferJobTransferSpecGcsDataSourceArgs;
+import com.pulumi.gcp.storage.inputs.TransferJobTransferSpecHdfsDataSourceArgs;
 import com.pulumi.gcp.storage.inputs.TransferJobTransferSpecHttpDataSourceArgs;
 import com.pulumi.gcp.storage.inputs.TransferJobTransferSpecObjectConditionsArgs;
 import com.pulumi.gcp.storage.inputs.TransferJobTransferSpecPosixDataSinkArgs;
@@ -82,6 +83,21 @@ public final class TransferJobTransferSpecArgs extends com.pulumi.resources.Reso
      */
     public Optional<Output<TransferJobTransferSpecGcsDataSourceArgs>> gcsDataSource() {
         return Optional.ofNullable(this.gcsDataSource);
+    }
+
+    /**
+     * An HDFS data source. Structure documented below.
+     * 
+     */
+    @Import(name="hdfsDataSource")
+    private @Nullable Output<TransferJobTransferSpecHdfsDataSourceArgs> hdfsDataSource;
+
+    /**
+     * @return An HDFS data source. Structure documented below.
+     * 
+     */
+    public Optional<Output<TransferJobTransferSpecHdfsDataSourceArgs>> hdfsDataSource() {
+        return Optional.ofNullable(this.hdfsDataSource);
     }
 
     /**
@@ -196,6 +212,7 @@ public final class TransferJobTransferSpecArgs extends com.pulumi.resources.Reso
         this.azureBlobStorageDataSource = $.azureBlobStorageDataSource;
         this.gcsDataSink = $.gcsDataSink;
         this.gcsDataSource = $.gcsDataSource;
+        this.hdfsDataSource = $.hdfsDataSource;
         this.httpDataSource = $.httpDataSource;
         this.objectConditions = $.objectConditions;
         this.posixDataSink = $.posixDataSink;
@@ -305,6 +322,27 @@ public final class TransferJobTransferSpecArgs extends com.pulumi.resources.Reso
          */
         public Builder gcsDataSource(TransferJobTransferSpecGcsDataSourceArgs gcsDataSource) {
             return gcsDataSource(Output.of(gcsDataSource));
+        }
+
+        /**
+         * @param hdfsDataSource An HDFS data source. Structure documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hdfsDataSource(@Nullable Output<TransferJobTransferSpecHdfsDataSourceArgs> hdfsDataSource) {
+            $.hdfsDataSource = hdfsDataSource;
+            return this;
+        }
+
+        /**
+         * @param hdfsDataSource An HDFS data source. Structure documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder hdfsDataSource(TransferJobTransferSpecHdfsDataSourceArgs hdfsDataSource) {
+            return hdfsDataSource(Output.of(hdfsDataSource));
         }
 
         /**

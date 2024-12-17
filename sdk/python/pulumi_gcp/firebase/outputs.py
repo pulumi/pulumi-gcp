@@ -36,6 +36,7 @@ __all__ = [
     'HostingCustomDomainRequiredDnsUpdateDiscovered',
     'HostingCustomDomainRequiredDnsUpdateDiscoveredRecord',
     'HostingVersionConfig',
+    'HostingVersionConfigHeader',
     'HostingVersionConfigRedirect',
     'HostingVersionConfigRewrite',
     'HostingVersionConfigRewriteRun',
@@ -1308,9 +1309,13 @@ class HostingCustomDomainRequiredDnsUpdateDiscoveredRecord(dict):
 @pulumi.output_type
 class HostingVersionConfig(dict):
     def __init__(__self__, *,
+                 headers: Optional[Sequence['outputs.HostingVersionConfigHeader']] = None,
                  redirects: Optional[Sequence['outputs.HostingVersionConfigRedirect']] = None,
                  rewrites: Optional[Sequence['outputs.HostingVersionConfigRewrite']] = None):
         """
+        :param Sequence['HostingVersionConfigHeaderArgs'] headers: An array of objects, where each object specifies a URL pattern that, if matched to the request URL path,
+               triggers Hosting to apply the specified custom response headers.
+               Structure is documented below.
         :param Sequence['HostingVersionConfigRedirectArgs'] redirects: An array of objects (called redirect rules), where each rule specifies a URL pattern that, if matched to the request URL path,
                triggers Hosting to respond with a redirect to the specified destination path.
                Structure is documented below.
@@ -1318,10 +1323,22 @@ class HostingVersionConfig(dict):
                request URL path, triggers Hosting to respond as if the service were given the specified destination URL.
                Structure is documented below.
         """
+        if headers is not None:
+            pulumi.set(__self__, "headers", headers)
         if redirects is not None:
             pulumi.set(__self__, "redirects", redirects)
         if rewrites is not None:
             pulumi.set(__self__, "rewrites", rewrites)
+
+    @property
+    @pulumi.getter
+    def headers(self) -> Optional[Sequence['outputs.HostingVersionConfigHeader']]:
+        """
+        An array of objects, where each object specifies a URL pattern that, if matched to the request URL path,
+        triggers Hosting to apply the specified custom response headers.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "headers")
 
     @property
     @pulumi.getter
@@ -1342,6 +1359,48 @@ class HostingVersionConfig(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "rewrites")
+
+
+@pulumi.output_type
+class HostingVersionConfigHeader(dict):
+    def __init__(__self__, *,
+                 headers: Mapping[str, str],
+                 glob: Optional[str] = None,
+                 regex: Optional[str] = None):
+        """
+        :param Mapping[str, str] headers: The additional headers to add to the response. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        :param str glob: The user-supplied glob to match against the request URL path.
+        :param str regex: The user-supplied RE2 regular expression to match against the request URL path.
+        """
+        pulumi.set(__self__, "headers", headers)
+        if glob is not None:
+            pulumi.set(__self__, "glob", glob)
+        if regex is not None:
+            pulumi.set(__self__, "regex", regex)
+
+    @property
+    @pulumi.getter
+    def headers(self) -> Mapping[str, str]:
+        """
+        The additional headers to add to the response. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
+        """
+        return pulumi.get(self, "headers")
+
+    @property
+    @pulumi.getter
+    def glob(self) -> Optional[str]:
+        """
+        The user-supplied glob to match against the request URL path.
+        """
+        return pulumi.get(self, "glob")
+
+    @property
+    @pulumi.getter
+    def regex(self) -> Optional[str]:
+        """
+        The user-supplied RE2 regular expression to match against the request URL path.
+        """
+        return pulumi.get(self, "regex")
 
 
 @pulumi.output_type

@@ -40,6 +40,26 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// });
     /// ```
+    /// ### Artifact Registry Repository Multi Region
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var my_repo = new Gcp.ArtifactRegistry.Repository("my-repo", new()
+    ///     {
+    ///         RepositoryId = "my-repository",
+    ///         Description = "example docker repository",
+    ///         Location = "us",
+    ///         Format = "DOCKER",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Artifact Registry Repository Docker
     /// 
     /// ```csharp
@@ -793,8 +813,6 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// * `{{location}}/{{repository_id}}`
     /// 
-    /// * `{{repository_id}}`
-    /// 
     /// When using the `pulumi import` command, Repository can be imported using one of the formats above. For example:
     /// 
     /// ```sh
@@ -807,10 +825,6 @@ namespace Pulumi.Gcp.ArtifactRegistry
     /// 
     /// ```sh
     /// $ pulumi import gcp:artifactregistry/repository:Repository default {{location}}/{{repository_id}}
-    /// ```
-    /// 
-    /// ```sh
-    /// $ pulumi import gcp:artifactregistry/repository:Repository default {{repository_id}}
     /// ```
     /// </summary>
     [GcpResourceType("gcp:artifactregistry/repository:Repository")]
@@ -863,9 +877,6 @@ namespace Pulumi.Gcp.ArtifactRegistry
         /// can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
         /// You can only create alpha formats if you are a member of the
         /// [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("format")]
         public Output<string> Format { get; private set; } = null!;
@@ -893,7 +904,12 @@ namespace Pulumi.Gcp.ArtifactRegistry
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// The name of the location this repository is located in.
+        /// The name of the repository's location. In addition to specific regions,
+        /// special values for multi-region locations are `asia`, `europe`, and `us`.
+        /// See [here](https://cloud.google.com/artifact-registry/docs/repositories/repo-locations),
+        /// or use the
+        /// gcp.artifactregistry.getLocations
+        /// data source for possible values.
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -946,6 +962,9 @@ namespace Pulumi.Gcp.ArtifactRegistry
         /// <summary>
         /// The last part of the repository name, for example:
         /// "repo1"
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("repositoryId")]
         public Output<string> RepositoryId { get; private set; } = null!;
@@ -1055,9 +1074,6 @@ namespace Pulumi.Gcp.ArtifactRegistry
         /// can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
         /// You can only create alpha formats if you are a member of the
         /// [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("format", required: true)]
         public Input<string> Format { get; set; } = null!;
@@ -1091,7 +1107,12 @@ namespace Pulumi.Gcp.ArtifactRegistry
         }
 
         /// <summary>
-        /// The name of the location this repository is located in.
+        /// The name of the repository's location. In addition to specific regions,
+        /// special values for multi-region locations are `asia`, `europe`, and `us`.
+        /// See [here](https://cloud.google.com/artifact-registry/docs/repositories/repo-locations),
+        /// or use the
+        /// gcp.artifactregistry.getLocations
+        /// data source for possible values.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
@@ -1130,6 +1151,9 @@ namespace Pulumi.Gcp.ArtifactRegistry
         /// <summary>
         /// The last part of the repository name, for example:
         /// "repo1"
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("repositoryId", required: true)]
         public Input<string> RepositoryId { get; set; } = null!;
@@ -1212,9 +1236,6 @@ namespace Pulumi.Gcp.ArtifactRegistry
         /// can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
         /// You can only create alpha formats if you are a member of the
         /// [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("format")]
         public Input<string>? Format { get; set; }
@@ -1248,7 +1269,12 @@ namespace Pulumi.Gcp.ArtifactRegistry
         }
 
         /// <summary>
-        /// The name of the location this repository is located in.
+        /// The name of the repository's location. In addition to specific regions,
+        /// special values for multi-region locations are `asia`, `europe`, and `us`.
+        /// See [here](https://cloud.google.com/artifact-registry/docs/repositories/repo-locations),
+        /// or use the
+        /// gcp.artifactregistry.getLocations
+        /// data source for possible values.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
@@ -1311,6 +1337,9 @@ namespace Pulumi.Gcp.ArtifactRegistry
         /// <summary>
         /// The last part of the repository name, for example:
         /// "repo1"
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("repositoryId")]
         public Input<string>? RepositoryId { get; set; }

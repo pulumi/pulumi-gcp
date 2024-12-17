@@ -50,6 +50,34 @@ import (
 //	}
 //
 // ```
+// ### Artifact Registry Repository Multi Region
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/artifactregistry"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := artifactregistry.NewRepository(ctx, "my-repo", &artifactregistry.RepositoryArgs{
+//				RepositoryId: pulumi.String("my-repository"),
+//				Description:  pulumi.String("example docker repository"),
+//				Location:     pulumi.String("us"),
+//				Format:       pulumi.String("DOCKER"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Artifact Registry Repository Docker
 //
 // ```go
@@ -925,8 +953,6 @@ import (
 //
 // * `{{location}}/{{repository_id}}`
 //
-// * `{{repository_id}}`
-//
 // When using the `pulumi import` command, Repository can be imported using one of the formats above. For example:
 //
 // ```sh
@@ -939,10 +965,6 @@ import (
 //
 // ```sh
 // $ pulumi import gcp:artifactregistry/repository:Repository default {{location}}/{{repository_id}}
-// ```
-//
-// ```sh
-// $ pulumi import gcp:artifactregistry/repository:Repository default {{repository_id}}
 // ```
 type Repository struct {
 	pulumi.CustomResourceState
@@ -969,8 +991,6 @@ type Repository struct {
 	// can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
 	// You can only create alpha formats if you are a member of the
 	// [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
-	//
-	// ***
 	Format pulumi.StringOutput `pulumi:"format"`
 	// The Cloud KMS resource name of the customer managed encryption key that’s
 	// used to encrypt the contents of the Repository. Has the form:
@@ -986,7 +1006,12 @@ type Repository struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
-	// The name of the location this repository is located in.
+	// The name of the repository's location. In addition to specific regions,
+	// special values for multi-region locations are `asia`, `europe`, and `us`.
+	// See [here](https://cloud.google.com/artifact-registry/docs/repositories/repo-locations),
+	// or use the
+	// artifactregistry.getLocations
+	// data source for possible values.
 	Location pulumi.StringOutput `pulumi:"location"`
 	// MavenRepositoryConfig is maven related repository details.
 	// Provides additional configuration details for repositories of the maven
@@ -1011,6 +1036,8 @@ type Repository struct {
 	RemoteRepositoryConfig RepositoryRemoteRepositoryConfigPtrOutput `pulumi:"remoteRepositoryConfig"`
 	// The last part of the repository name, for example:
 	// "repo1"
+	//
+	// ***
 	RepositoryId pulumi.StringOutput `pulumi:"repositoryId"`
 	// The time when the repository was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -1082,8 +1109,6 @@ type repositoryState struct {
 	// can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
 	// You can only create alpha formats if you are a member of the
 	// [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
-	//
-	// ***
 	Format *string `pulumi:"format"`
 	// The Cloud KMS resource name of the customer managed encryption key that’s
 	// used to encrypt the contents of the Repository. Has the form:
@@ -1099,7 +1124,12 @@ type repositoryState struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
-	// The name of the location this repository is located in.
+	// The name of the repository's location. In addition to specific regions,
+	// special values for multi-region locations are `asia`, `europe`, and `us`.
+	// See [here](https://cloud.google.com/artifact-registry/docs/repositories/repo-locations),
+	// or use the
+	// artifactregistry.getLocations
+	// data source for possible values.
 	Location *string `pulumi:"location"`
 	// MavenRepositoryConfig is maven related repository details.
 	// Provides additional configuration details for repositories of the maven
@@ -1124,6 +1154,8 @@ type repositoryState struct {
 	RemoteRepositoryConfig *RepositoryRemoteRepositoryConfig `pulumi:"remoteRepositoryConfig"`
 	// The last part of the repository name, for example:
 	// "repo1"
+	//
+	// ***
 	RepositoryId *string `pulumi:"repositoryId"`
 	// The time when the repository was last updated.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -1155,8 +1187,6 @@ type RepositoryState struct {
 	// can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
 	// You can only create alpha formats if you are a member of the
 	// [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
-	//
-	// ***
 	Format pulumi.StringPtrInput
 	// The Cloud KMS resource name of the customer managed encryption key that’s
 	// used to encrypt the contents of the Repository. Has the form:
@@ -1172,7 +1202,12 @@ type RepositoryState struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
-	// The name of the location this repository is located in.
+	// The name of the repository's location. In addition to specific regions,
+	// special values for multi-region locations are `asia`, `europe`, and `us`.
+	// See [here](https://cloud.google.com/artifact-registry/docs/repositories/repo-locations),
+	// or use the
+	// artifactregistry.getLocations
+	// data source for possible values.
 	Location pulumi.StringPtrInput
 	// MavenRepositoryConfig is maven related repository details.
 	// Provides additional configuration details for repositories of the maven
@@ -1197,6 +1232,8 @@ type RepositoryState struct {
 	RemoteRepositoryConfig RepositoryRemoteRepositoryConfigPtrInput
 	// The last part of the repository name, for example:
 	// "repo1"
+	//
+	// ***
 	RepositoryId pulumi.StringPtrInput
 	// The time when the repository was last updated.
 	UpdateTime pulumi.StringPtrInput
@@ -1228,8 +1265,6 @@ type repositoryArgs struct {
 	// can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
 	// You can only create alpha formats if you are a member of the
 	// [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
-	//
-	// ***
 	Format string `pulumi:"format"`
 	// The Cloud KMS resource name of the customer managed encryption key that’s
 	// used to encrypt the contents of the Repository. Has the form:
@@ -1245,7 +1280,12 @@ type repositoryArgs struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
-	// The name of the location this repository is located in.
+	// The name of the repository's location. In addition to specific regions,
+	// special values for multi-region locations are `asia`, `europe`, and `us`.
+	// See [here](https://cloud.google.com/artifact-registry/docs/repositories/repo-locations),
+	// or use the
+	// artifactregistry.getLocations
+	// data source for possible values.
 	Location *string `pulumi:"location"`
 	// MavenRepositoryConfig is maven related repository details.
 	// Provides additional configuration details for repositories of the maven
@@ -1264,6 +1304,8 @@ type repositoryArgs struct {
 	RemoteRepositoryConfig *RepositoryRemoteRepositoryConfig `pulumi:"remoteRepositoryConfig"`
 	// The last part of the repository name, for example:
 	// "repo1"
+	//
+	// ***
 	RepositoryId string `pulumi:"repositoryId"`
 	// Configuration specific for a Virtual Repository.
 	// Structure is documented below.
@@ -1290,8 +1332,6 @@ type RepositoryArgs struct {
 	// can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
 	// You can only create alpha formats if you are a member of the
 	// [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
-	//
-	// ***
 	Format pulumi.StringInput
 	// The Cloud KMS resource name of the customer managed encryption key that’s
 	// used to encrypt the contents of the Repository. Has the form:
@@ -1307,7 +1347,12 @@ type RepositoryArgs struct {
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
 	// Please refer to the field `effectiveLabels` for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
-	// The name of the location this repository is located in.
+	// The name of the repository's location. In addition to specific regions,
+	// special values for multi-region locations are `asia`, `europe`, and `us`.
+	// See [here](https://cloud.google.com/artifact-registry/docs/repositories/repo-locations),
+	// or use the
+	// artifactregistry.getLocations
+	// data source for possible values.
 	Location pulumi.StringPtrInput
 	// MavenRepositoryConfig is maven related repository details.
 	// Provides additional configuration details for repositories of the maven
@@ -1326,6 +1371,8 @@ type RepositoryArgs struct {
 	RemoteRepositoryConfig RepositoryRemoteRepositoryConfigPtrInput
 	// The last part of the repository name, for example:
 	// "repo1"
+	//
+	// ***
 	RepositoryId pulumi.StringInput
 	// Configuration specific for a Virtual Repository.
 	// Structure is documented below.
@@ -1459,8 +1506,6 @@ func (o RepositoryOutput) EffectiveLabels() pulumi.StringMapOutput {
 // can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
 // You can only create alpha formats if you are a member of the
 // [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
-//
-// ***
 func (o RepositoryOutput) Format() pulumi.StringOutput {
 	return o.ApplyT(func(v *Repository) pulumi.StringOutput { return v.Format }).(pulumi.StringOutput)
 }
@@ -1485,7 +1530,12 @@ func (o RepositoryOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Repository) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
 }
 
-// The name of the location this repository is located in.
+// The name of the repository's location. In addition to specific regions,
+// special values for multi-region locations are `asia`, `europe`, and `us`.
+// See [here](https://cloud.google.com/artifact-registry/docs/repositories/repo-locations),
+// or use the
+// artifactregistry.getLocations
+// data source for possible values.
 func (o RepositoryOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *Repository) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
@@ -1531,6 +1581,8 @@ func (o RepositoryOutput) RemoteRepositoryConfig() RepositoryRemoteRepositoryCon
 
 // The last part of the repository name, for example:
 // "repo1"
+//
+// ***
 func (o RepositoryOutput) RepositoryId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Repository) pulumi.StringOutput { return v.RepositoryId }).(pulumi.StringOutput)
 }

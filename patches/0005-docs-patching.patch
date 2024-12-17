@@ -1581,7 +1581,7 @@ index f18c91533..924ad4cc0 100644
  <div class = "oics-button" style="float: right; margin: 0 0 -15px">
    <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_image=gcr.io%2Fcloudshell-images%2Fcloudshell%3Alatest&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md&cloudshell_working_dir=vpn_tunnel_basic&open_in_editor=main.tf" target="_blank">
 diff --git a/website/docs/r/container_cluster.html.markdown b/website/docs/r/container_cluster.html.markdown
-index 1407d6340..bccdf8ed6 100644
+index b69680f24..9f39e369e 100644
 --- a/website/docs/r/container_cluster.html.markdown
 +++ b/website/docs/r/container_cluster.html.markdown
 @@ -13,15 +13,12 @@ To get more information about GKE clusters, see:
@@ -1984,7 +1984,7 @@ index 98421f823..dfd01911a 100644
  * `zone` - (Optional) The zone in which the created job should run. If it is not provided, the provider zone is used.
  * `region` - (Optional) The region in which the created job should run.
 diff --git a/website/docs/r/dataproc_cluster.html.markdown b/website/docs/r/dataproc_cluster.html.markdown
-index fcfb4bdbf..fa1cc53be 100644
+index 28e215e4e..34636c6b7 100644
 --- a/website/docs/r/dataproc_cluster.html.markdown
 +++ b/website/docs/r/dataproc_cluster.html.markdown
 @@ -146,7 +146,7 @@ resource "google_dataproc_cluster" "accelerated_cluster" {
@@ -2135,7 +2135,7 @@ index c4477a93e..8ca08942a 100644
  * `enable_inbound_forwarding` -
    (Optional)
 diff --git a/website/docs/r/firebase_project.html.markdown b/website/docs/r/firebase_project.html.markdown
-index ee2473892..55ff70854 100644
+index 0c766edb5..5180b6f21 100644
 --- a/website/docs/r/firebase_project.html.markdown
 +++ b/website/docs/r/firebase_project.html.markdown
 @@ -24,9 +24,6 @@ Since a FirebaseProject is actually also a GCP Project, a FirebaseProject uses u
@@ -3558,7 +3558,7 @@ index b6e4a06bd..a775c628e 100644
  
  <a name="nested_encryption_config"></a>The `encryption_config` block supports:
 diff --git a/website/docs/r/sql_database_instance.html.markdown b/website/docs/r/sql_database_instance.html.markdown
-index 5c70a7a4c..97dd2c486 100644
+index edcfd4544..c645159d5 100644
 --- a/website/docs/r/sql_database_instance.html.markdown
 +++ b/website/docs/r/sql_database_instance.html.markdown
 @@ -10,12 +10,12 @@ Creates a new Google SQL Database Instance. For more information, see the [offic

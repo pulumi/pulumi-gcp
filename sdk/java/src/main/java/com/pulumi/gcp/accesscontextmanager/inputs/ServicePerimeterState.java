@@ -51,25 +51,6 @@ public final class ServicePerimeterState extends com.pulumi.resources.ResourceAr
     }
 
     /**
-     * An opaque identifier for the current version of the ServicePerimeter. This
-     * identifier does not follow any specific format. If an etag is not provided, the
-     * operation will be performed as if a valid etag is provided.
-     * 
-     */
-    @Import(name="etag")
-    private @Nullable Output<String> etag;
-
-    /**
-     * @return An opaque identifier for the current version of the ServicePerimeter. This
-     * identifier does not follow any specific format. If an etag is not provided, the
-     * operation will be performed as if a valid etag is provided.
-     * 
-     */
-    public Optional<Output<String>> etag() {
-        return Optional.ofNullable(this.etag);
-    }
-
-    /**
      * Resource name for the ServicePerimeter. The short_name component must
      * begin with a letter and only include alphanumeric and &#39;_&#39;.
      * Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
@@ -264,7 +245,6 @@ public final class ServicePerimeterState extends com.pulumi.resources.ResourceAr
     private ServicePerimeterState(ServicePerimeterState $) {
         this.createTime = $.createTime;
         this.description = $.description;
-        this.etag = $.etag;
         this.name = $.name;
         this.parent = $.parent;
         this.perimeterType = $.perimeterType;
@@ -335,31 +315,6 @@ public final class ServicePerimeterState extends com.pulumi.resources.ResourceAr
          */
         public Builder description(String description) {
             return description(Output.of(description));
-        }
-
-        /**
-         * @param etag An opaque identifier for the current version of the ServicePerimeter. This
-         * identifier does not follow any specific format. If an etag is not provided, the
-         * operation will be performed as if a valid etag is provided.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder etag(@Nullable Output<String> etag) {
-            $.etag = etag;
-            return this;
-        }
-
-        /**
-         * @param etag An opaque identifier for the current version of the ServicePerimeter. This
-         * identifier does not follow any specific format. If an etag is not provided, the
-         * operation will be performed as if a valid etag is provided.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder etag(String etag) {
-            return etag(Output.of(etag));
         }
 
         /**

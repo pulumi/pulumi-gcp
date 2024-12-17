@@ -261,6 +261,25 @@ public final class V2VmState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Repeated network configurations for the TPU node. This field is used to specify multiple
+     * network configs for the TPU node.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="networkConfigs")
+    private @Nullable Output<List<V2VmNetworkConfigArgs>> networkConfigs;
+
+    /**
+     * @return Repeated network configurations for the TPU node. This field is used to specify multiple
+     * network configs for the TPU node.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<List<V2VmNetworkConfigArgs>>> networkConfigs() {
+        return Optional.ofNullable(this.networkConfigs);
+    }
+
+    /**
      * The network endpoints where TPU workers can be accessed and sent work. It is recommended that
      * runtime clients of the node reach out to the 0th entry in this map first.
      * Structure is documented below.
@@ -479,6 +498,7 @@ public final class V2VmState extends com.pulumi.resources.ResourceArgs {
         this.multisliceNode = $.multisliceNode;
         this.name = $.name;
         this.networkConfig = $.networkConfig;
+        this.networkConfigs = $.networkConfigs;
         this.networkEndpoints = $.networkEndpoints;
         this.project = $.project;
         this.pulumiLabels = $.pulumiLabels;
@@ -838,6 +858,43 @@ public final class V2VmState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder networkConfig(V2VmNetworkConfigArgs networkConfig) {
             return networkConfig(Output.of(networkConfig));
+        }
+
+        /**
+         * @param networkConfigs Repeated network configurations for the TPU node. This field is used to specify multiple
+         * network configs for the TPU node.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkConfigs(@Nullable Output<List<V2VmNetworkConfigArgs>> networkConfigs) {
+            $.networkConfigs = networkConfigs;
+            return this;
+        }
+
+        /**
+         * @param networkConfigs Repeated network configurations for the TPU node. This field is used to specify multiple
+         * network configs for the TPU node.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkConfigs(List<V2VmNetworkConfigArgs> networkConfigs) {
+            return networkConfigs(Output.of(networkConfigs));
+        }
+
+        /**
+         * @param networkConfigs Repeated network configurations for the TPU node. This field is used to specify multiple
+         * network configs for the TPU node.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkConfigs(V2VmNetworkConfigArgs... networkConfigs) {
+            return networkConfigs(List.of(networkConfigs));
         }
 
         /**

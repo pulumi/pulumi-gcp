@@ -99,6 +99,8 @@ __all__ = [
     'TransferJobTransferSpecGcsDataSinkArgsDict',
     'TransferJobTransferSpecGcsDataSourceArgs',
     'TransferJobTransferSpecGcsDataSourceArgsDict',
+    'TransferJobTransferSpecHdfsDataSourceArgs',
+    'TransferJobTransferSpecHdfsDataSourceArgsDict',
     'TransferJobTransferSpecHttpDataSourceArgs',
     'TransferJobTransferSpecHttpDataSourceArgsDict',
     'TransferJobTransferSpecObjectConditionsArgs',
@@ -2517,6 +2519,10 @@ if not MYPY:
         """
         A Google Cloud Storage data source. Structure documented below.
         """
+        hdfs_data_source: NotRequired[pulumi.Input['TransferJobTransferSpecHdfsDataSourceArgsDict']]
+        """
+        An HDFS data source. Structure documented below.
+        """
         http_data_source: NotRequired[pulumi.Input['TransferJobTransferSpecHttpDataSourceArgsDict']]
         """
         A HTTP URL data source. Structure documented below.
@@ -2555,6 +2561,7 @@ class TransferJobTransferSpecArgs:
                  azure_blob_storage_data_source: Optional[pulumi.Input['TransferJobTransferSpecAzureBlobStorageDataSourceArgs']] = None,
                  gcs_data_sink: Optional[pulumi.Input['TransferJobTransferSpecGcsDataSinkArgs']] = None,
                  gcs_data_source: Optional[pulumi.Input['TransferJobTransferSpecGcsDataSourceArgs']] = None,
+                 hdfs_data_source: Optional[pulumi.Input['TransferJobTransferSpecHdfsDataSourceArgs']] = None,
                  http_data_source: Optional[pulumi.Input['TransferJobTransferSpecHttpDataSourceArgs']] = None,
                  object_conditions: Optional[pulumi.Input['TransferJobTransferSpecObjectConditionsArgs']] = None,
                  posix_data_sink: Optional[pulumi.Input['TransferJobTransferSpecPosixDataSinkArgs']] = None,
@@ -2567,6 +2574,7 @@ class TransferJobTransferSpecArgs:
         :param pulumi.Input['TransferJobTransferSpecAzureBlobStorageDataSourceArgs'] azure_blob_storage_data_source: An Azure Blob Storage data source. Structure documented below.
         :param pulumi.Input['TransferJobTransferSpecGcsDataSinkArgs'] gcs_data_sink: A Google Cloud Storage data sink. Structure documented below.
         :param pulumi.Input['TransferJobTransferSpecGcsDataSourceArgs'] gcs_data_source: A Google Cloud Storage data source. Structure documented below.
+        :param pulumi.Input['TransferJobTransferSpecHdfsDataSourceArgs'] hdfs_data_source: An HDFS data source. Structure documented below.
         :param pulumi.Input['TransferJobTransferSpecHttpDataSourceArgs'] http_data_source: A HTTP URL data source. Structure documented below.
         :param pulumi.Input['TransferJobTransferSpecObjectConditionsArgs'] object_conditions: Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' `last_modification_time` do not exclude objects in a data sink. Structure documented below.
         :param pulumi.Input['TransferJobTransferSpecPosixDataSinkArgs'] posix_data_sink: A POSIX data sink. Structure documented below.
@@ -2583,6 +2591,8 @@ class TransferJobTransferSpecArgs:
             pulumi.set(__self__, "gcs_data_sink", gcs_data_sink)
         if gcs_data_source is not None:
             pulumi.set(__self__, "gcs_data_source", gcs_data_source)
+        if hdfs_data_source is not None:
+            pulumi.set(__self__, "hdfs_data_source", hdfs_data_source)
         if http_data_source is not None:
             pulumi.set(__self__, "http_data_source", http_data_source)
         if object_conditions is not None:
@@ -2645,6 +2655,18 @@ class TransferJobTransferSpecArgs:
     @gcs_data_source.setter
     def gcs_data_source(self, value: Optional[pulumi.Input['TransferJobTransferSpecGcsDataSourceArgs']]):
         pulumi.set(self, "gcs_data_source", value)
+
+    @property
+    @pulumi.getter(name="hdfsDataSource")
+    def hdfs_data_source(self) -> Optional[pulumi.Input['TransferJobTransferSpecHdfsDataSourceArgs']]:
+        """
+        An HDFS data source. Structure documented below.
+        """
+        return pulumi.get(self, "hdfs_data_source")
+
+    @hdfs_data_source.setter
+    def hdfs_data_source(self, value: Optional[pulumi.Input['TransferJobTransferSpecHdfsDataSourceArgs']]):
+        pulumi.set(self, "hdfs_data_source", value)
 
     @property
     @pulumi.getter(name="httpDataSource")
@@ -3122,6 +3144,37 @@ class TransferJobTransferSpecGcsDataSourceArgs:
 
 
 if not MYPY:
+    class TransferJobTransferSpecHdfsDataSourceArgsDict(TypedDict):
+        path: pulumi.Input[str]
+        """
+        Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+        """
+elif False:
+    TransferJobTransferSpecHdfsDataSourceArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TransferJobTransferSpecHdfsDataSourceArgs:
+    def __init__(__self__, *,
+                 path: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] path: Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+        """
+        pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter
+    def path(self) -> pulumi.Input[str]:
+        """
+        Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+        """
+        return pulumi.get(self, "path")
+
+    @path.setter
+    def path(self, value: pulumi.Input[str]):
+        pulumi.set(self, "path", value)
+
+
+if not MYPY:
     class TransferJobTransferSpecHttpDataSourceArgsDict(TypedDict):
         list_url: pulumi.Input[str]
         """
@@ -3320,8 +3373,6 @@ if not MYPY:
         root_directory: pulumi.Input[str]
         """
         Root directory path to the filesystem.
-
-        <a name="nested_aws_s3_data_source"></a>The `aws_s3_data_source` block supports:
         """
 elif False:
     TransferJobTransferSpecPosixDataSourceArgsDict: TypeAlias = Mapping[str, Any]
@@ -3332,8 +3383,6 @@ class TransferJobTransferSpecPosixDataSourceArgs:
                  root_directory: pulumi.Input[str]):
         """
         :param pulumi.Input[str] root_directory: Root directory path to the filesystem.
-               
-               <a name="nested_aws_s3_data_source"></a>The `aws_s3_data_source` block supports:
         """
         pulumi.set(__self__, "root_directory", root_directory)
 
@@ -3342,8 +3391,6 @@ class TransferJobTransferSpecPosixDataSourceArgs:
     def root_directory(self) -> pulumi.Input[str]:
         """
         Root directory path to the filesystem.
-
-        <a name="nested_aws_s3_data_source"></a>The `aws_s3_data_source` block supports:
         """
         return pulumi.get(self, "root_directory")
 

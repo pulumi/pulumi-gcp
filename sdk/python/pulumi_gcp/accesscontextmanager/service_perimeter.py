@@ -231,7 +231,6 @@ class _ServicePerimeterState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
-                 etag: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  parent: Optional[pulumi.Input[str]] = None,
                  perimeter_type: Optional[pulumi.Input[str]] = None,
@@ -245,9 +244,6 @@ class _ServicePerimeterState:
         :param pulumi.Input[str] create_time: Time the AccessPolicy was created in UTC.
         :param pulumi.Input[str] description: Description of the ServicePerimeter and its use. Does not affect
                behavior.
-        :param pulumi.Input[str] etag: An opaque identifier for the current version of the ServicePerimeter. This
-               identifier does not follow any specific format. If an etag is not provided, the
-               operation will be performed as if a valid etag is provided.
         :param pulumi.Input[str] name: Resource name for the ServicePerimeter. The short_name component must
                begin with a letter and only include alphanumeric and '_'.
                Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
@@ -297,8 +293,6 @@ class _ServicePerimeterState:
             pulumi.set(__self__, "create_time", create_time)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if etag is not None:
-            pulumi.set(__self__, "etag", etag)
         if name is not None:
             pulumi.set(__self__, "name", name)
         if parent is not None:
@@ -340,20 +334,6 @@ class _ServicePerimeterState:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter
-    def etag(self) -> Optional[pulumi.Input[str]]:
-        """
-        An opaque identifier for the current version of the ServicePerimeter. This
-        identifier does not follow any specific format. If an etag is not provided, the
-        operation will be performed as if a valid etag is provided.
-        """
-        return pulumi.get(self, "etag")
-
-    @etag.setter
-    def etag(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "etag", value)
 
     @property
     @pulumi.getter
@@ -1009,7 +989,6 @@ class ServicePerimeter(pulumi.CustomResource):
             __props__.__dict__["title"] = title
             __props__.__dict__["use_explicit_dry_run_spec"] = use_explicit_dry_run_spec
             __props__.__dict__["create_time"] = None
-            __props__.__dict__["etag"] = None
             __props__.__dict__["update_time"] = None
         super(ServicePerimeter, __self__).__init__(
             'gcp:accesscontextmanager/servicePerimeter:ServicePerimeter',
@@ -1023,7 +1002,6 @@ class ServicePerimeter(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
-            etag: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             parent: Optional[pulumi.Input[str]] = None,
             perimeter_type: Optional[pulumi.Input[str]] = None,
@@ -1042,9 +1020,6 @@ class ServicePerimeter(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: Time the AccessPolicy was created in UTC.
         :param pulumi.Input[str] description: Description of the ServicePerimeter and its use. Does not affect
                behavior.
-        :param pulumi.Input[str] etag: An opaque identifier for the current version of the ServicePerimeter. This
-               identifier does not follow any specific format. If an etag is not provided, the
-               operation will be performed as if a valid etag is provided.
         :param pulumi.Input[str] name: Resource name for the ServicePerimeter. The short_name component must
                begin with a letter and only include alphanumeric and '_'.
                Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
@@ -1096,7 +1071,6 @@ class ServicePerimeter(pulumi.CustomResource):
 
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
-        __props__.__dict__["etag"] = etag
         __props__.__dict__["name"] = name
         __props__.__dict__["parent"] = parent
         __props__.__dict__["perimeter_type"] = perimeter_type
@@ -1123,16 +1097,6 @@ class ServicePerimeter(pulumi.CustomResource):
         behavior.
         """
         return pulumi.get(self, "description")
-
-    @property
-    @pulumi.getter
-    def etag(self) -> pulumi.Output[str]:
-        """
-        An opaque identifier for the current version of the ServicePerimeter. This
-        identifier does not follow any specific format. If an etag is not provided, the
-        operation will be performed as if a valid etag is provided.
-        """
-        return pulumi.get(self, "etag")
 
     @property
     @pulumi.getter

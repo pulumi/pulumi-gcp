@@ -31,6 +31,7 @@ class V2VmArgs:
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input['V2VmNetworkConfigArgs']] = None,
+                 network_configs: Optional[pulumi.Input[Sequence[pulumi.Input['V2VmNetworkConfigArgs']]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  scheduling_config: Optional[pulumi.Input['V2VmSchedulingConfigArgs']] = None,
                  service_account: Optional[pulumi.Input['V2VmServiceAccountArgs']] = None,
@@ -64,6 +65,9 @@ class V2VmArgs:
         :param pulumi.Input[str] name: The immutable name of the TPU.
         :param pulumi.Input['V2VmNetworkConfigArgs'] network_config: Network configurations for the TPU node.
                Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['V2VmNetworkConfigArgs']]] network_configs: Repeated network configurations for the TPU node. This field is used to specify multiple
+               network configs for the TPU node.
+               Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input['V2VmSchedulingConfigArgs'] scheduling_config: The scheduling options for this node.
@@ -95,6 +99,8 @@ class V2VmArgs:
             pulumi.set(__self__, "name", name)
         if network_config is not None:
             pulumi.set(__self__, "network_config", network_config)
+        if network_configs is not None:
+            pulumi.set(__self__, "network_configs", network_configs)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if scheduling_config is not None:
@@ -244,6 +250,20 @@ class V2VmArgs:
         pulumi.set(self, "network_config", value)
 
     @property
+    @pulumi.getter(name="networkConfigs")
+    def network_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['V2VmNetworkConfigArgs']]]]:
+        """
+        Repeated network configurations for the TPU node. This field is used to specify multiple
+        network configs for the TPU node.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "network_configs")
+
+    @network_configs.setter
+    def network_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['V2VmNetworkConfigArgs']]]]):
+        pulumi.set(self, "network_configs", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
@@ -338,6 +358,7 @@ class _V2VmState:
                  multislice_node: Optional[pulumi.Input[bool]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input['V2VmNetworkConfigArgs']] = None,
+                 network_configs: Optional[pulumi.Input[Sequence[pulumi.Input['V2VmNetworkConfigArgs']]]] = None,
                  network_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input['V2VmNetworkEndpointArgs']]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -377,6 +398,9 @@ class _V2VmState:
         :param pulumi.Input[bool] multislice_node: Whether the Node belongs to a Multislice group.
         :param pulumi.Input[str] name: The immutable name of the TPU.
         :param pulumi.Input['V2VmNetworkConfigArgs'] network_config: Network configurations for the TPU node.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['V2VmNetworkConfigArgs']]] network_configs: Repeated network configurations for the TPU node. This field is used to specify multiple
+               network configs for the TPU node.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['V2VmNetworkEndpointArgs']]] network_endpoints: The network endpoints where TPU workers can be accessed and sent work. It is recommended that
                runtime clients of the node reach out to the 0th entry in this map first.
@@ -431,6 +455,8 @@ class _V2VmState:
             pulumi.set(__self__, "name", name)
         if network_config is not None:
             pulumi.set(__self__, "network_config", network_config)
+        if network_configs is not None:
+            pulumi.set(__self__, "network_configs", network_configs)
         if network_endpoints is not None:
             pulumi.set(__self__, "network_endpoints", network_endpoints)
         if project is not None:
@@ -637,6 +663,20 @@ class _V2VmState:
         pulumi.set(self, "network_config", value)
 
     @property
+    @pulumi.getter(name="networkConfigs")
+    def network_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['V2VmNetworkConfigArgs']]]]:
+        """
+        Repeated network configurations for the TPU node. This field is used to specify multiple
+        network configs for the TPU node.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "network_configs")
+
+    @network_configs.setter
+    def network_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['V2VmNetworkConfigArgs']]]]):
+        pulumi.set(self, "network_configs", value)
+
+    @property
     @pulumi.getter(name="networkEndpoints")
     def network_endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['V2VmNetworkEndpointArgs']]]]:
         """
@@ -807,6 +847,7 @@ class V2Vm(pulumi.CustomResource):
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input[Union['V2VmNetworkConfigArgs', 'V2VmNetworkConfigArgsDict']]] = None,
+                 network_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['V2VmNetworkConfigArgs', 'V2VmNetworkConfigArgsDict']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  runtime_version: Optional[pulumi.Input[str]] = None,
                  scheduling_config: Optional[pulumi.Input[Union['V2VmSchedulingConfigArgs', 'V2VmSchedulingConfigArgsDict']]] = None,
@@ -874,6 +915,7 @@ class V2Vm(pulumi.CustomResource):
                 "enable_external_ips": True,
                 "network": network.id,
                 "subnetwork": subnet.id,
+                "queue_count": 32,
             },
             scheduling_config={
                 "preemptible": True,
@@ -951,6 +993,9 @@ class V2Vm(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] metadata: Custom metadata to apply to the TPU Node. Can set startup-script and shutdown-script.
         :param pulumi.Input[str] name: The immutable name of the TPU.
         :param pulumi.Input[Union['V2VmNetworkConfigArgs', 'V2VmNetworkConfigArgsDict']] network_config: Network configurations for the TPU node.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['V2VmNetworkConfigArgs', 'V2VmNetworkConfigArgsDict']]]] network_configs: Repeated network configurations for the TPU node. This field is used to specify multiple
+               network configs for the TPU node.
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
@@ -1033,6 +1078,7 @@ class V2Vm(pulumi.CustomResource):
                 "enable_external_ips": True,
                 "network": network.id,
                 "subnetwork": subnet.id,
+                "queue_count": 32,
             },
             scheduling_config={
                 "preemptible": True,
@@ -1112,6 +1158,7 @@ class V2Vm(pulumi.CustomResource):
                  metadata: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  network_config: Optional[pulumi.Input[Union['V2VmNetworkConfigArgs', 'V2VmNetworkConfigArgsDict']]] = None,
+                 network_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['V2VmNetworkConfigArgs', 'V2VmNetworkConfigArgsDict']]]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  runtime_version: Optional[pulumi.Input[str]] = None,
                  scheduling_config: Optional[pulumi.Input[Union['V2VmSchedulingConfigArgs', 'V2VmSchedulingConfigArgsDict']]] = None,
@@ -1137,6 +1184,7 @@ class V2Vm(pulumi.CustomResource):
             __props__.__dict__["metadata"] = metadata
             __props__.__dict__["name"] = name
             __props__.__dict__["network_config"] = network_config
+            __props__.__dict__["network_configs"] = network_configs
             __props__.__dict__["project"] = project
             if runtime_version is None and not opts.urn:
                 raise TypeError("Missing required property 'runtime_version'")
@@ -1182,6 +1230,7 @@ class V2Vm(pulumi.CustomResource):
             multislice_node: Optional[pulumi.Input[bool]] = None,
             name: Optional[pulumi.Input[str]] = None,
             network_config: Optional[pulumi.Input[Union['V2VmNetworkConfigArgs', 'V2VmNetworkConfigArgsDict']]] = None,
+            network_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['V2VmNetworkConfigArgs', 'V2VmNetworkConfigArgsDict']]]]] = None,
             network_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[Union['V2VmNetworkEndpointArgs', 'V2VmNetworkEndpointArgsDict']]]]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1227,6 +1276,9 @@ class V2Vm(pulumi.CustomResource):
         :param pulumi.Input[str] name: The immutable name of the TPU.
         :param pulumi.Input[Union['V2VmNetworkConfigArgs', 'V2VmNetworkConfigArgsDict']] network_config: Network configurations for the TPU node.
                Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['V2VmNetworkConfigArgs', 'V2VmNetworkConfigArgsDict']]]] network_configs: Repeated network configurations for the TPU node. This field is used to specify multiple
+               network configs for the TPU node.
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['V2VmNetworkEndpointArgs', 'V2VmNetworkEndpointArgsDict']]]] network_endpoints: The network endpoints where TPU workers can be accessed and sent work. It is recommended that
                runtime clients of the node reach out to the 0th entry in this map first.
                Structure is documented below.
@@ -1270,6 +1322,7 @@ class V2Vm(pulumi.CustomResource):
         __props__.__dict__["multislice_node"] = multislice_node
         __props__.__dict__["name"] = name
         __props__.__dict__["network_config"] = network_config
+        __props__.__dict__["network_configs"] = network_configs
         __props__.__dict__["network_endpoints"] = network_endpoints
         __props__.__dict__["project"] = project
         __props__.__dict__["pulumi_labels"] = pulumi_labels
@@ -1407,6 +1460,16 @@ class V2Vm(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "network_config")
+
+    @property
+    @pulumi.getter(name="networkConfigs")
+    def network_configs(self) -> pulumi.Output[Optional[Sequence['outputs.V2VmNetworkConfig']]]:
+        """
+        Repeated network configurations for the TPU node. This field is used to specify multiple
+        network configs for the TPU node.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "network_configs")
 
     @property
     @pulumi.getter(name="networkEndpoints")

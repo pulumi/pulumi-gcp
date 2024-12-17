@@ -30,6 +30,10 @@ namespace Pulumi.Gcp.Storage.Outputs
         /// </summary>
         public readonly Outputs.TransferJobTransferSpecGcsDataSource? GcsDataSource;
         /// <summary>
+        /// An HDFS data source. Structure documented below.
+        /// </summary>
+        public readonly Outputs.TransferJobTransferSpecHdfsDataSource? HdfsDataSource;
+        /// <summary>
         /// A HTTP URL data source. Structure documented below.
         /// </summary>
         public readonly Outputs.TransferJobTransferSpecHttpDataSource? HttpDataSource;
@@ -68,6 +72,8 @@ namespace Pulumi.Gcp.Storage.Outputs
 
             Outputs.TransferJobTransferSpecGcsDataSource? gcsDataSource,
 
+            Outputs.TransferJobTransferSpecHdfsDataSource? hdfsDataSource,
+
             Outputs.TransferJobTransferSpecHttpDataSource? httpDataSource,
 
             Outputs.TransferJobTransferSpecObjectConditions? objectConditions,
@@ -86,6 +92,7 @@ namespace Pulumi.Gcp.Storage.Outputs
             AzureBlobStorageDataSource = azureBlobStorageDataSource;
             GcsDataSink = gcsDataSink;
             GcsDataSource = gcsDataSource;
+            HdfsDataSource = hdfsDataSource;
             HttpDataSource = httpDataSource;
             ObjectConditions = objectConditions;
             PosixDataSink = posixDataSink;

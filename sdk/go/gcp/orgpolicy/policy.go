@@ -50,11 +50,11 @@ import (
 //				return err
 //			}
 //			_, err = orgpolicy.NewPolicy(ctx, "primary", &orgpolicy.PolicyArgs{
-//				Name: basic.Name.ApplyT(func(name string) (string, error) {
-//					return fmt.Sprintf("projects/%v/policies/iam.disableServiceAccountKeyUpload", name), nil
+//				Name: basic.ProjectId.ApplyT(func(projectId string) (string, error) {
+//					return fmt.Sprintf("projects/%v/policies/iam.disableServiceAccountKeyUpload", projectId), nil
 //				}).(pulumi.StringOutput),
-//				Parent: basic.Name.ApplyT(func(name string) (string, error) {
-//					return fmt.Sprintf("projects/%v", name), nil
+//				Parent: basic.ProjectId.ApplyT(func(projectId string) (string, error) {
+//					return fmt.Sprintf("projects/%v", projectId), nil
 //				}).(pulumi.StringOutput),
 //				Spec: &orgpolicy.PolicySpecArgs{
 //					Rules: orgpolicy.PolicySpecRuleArray{
@@ -175,11 +175,11 @@ import (
 //				return err
 //			}
 //			_, err = orgpolicy.NewPolicy(ctx, "primary", &orgpolicy.PolicyArgs{
-//				Name: basic.Name.ApplyT(func(name string) (string, error) {
-//					return fmt.Sprintf("projects/%v/policies/gcp.resourceLocations", name), nil
+//				Name: basic.ProjectId.ApplyT(func(projectId string) (string, error) {
+//					return fmt.Sprintf("projects/%v/policies/gcp.resourceLocations", projectId), nil
 //				}).(pulumi.StringOutput),
-//				Parent: basic.Name.ApplyT(func(name string) (string, error) {
-//					return fmt.Sprintf("projects/%v", name), nil
+//				Parent: basic.ProjectId.ApplyT(func(projectId string) (string, error) {
+//					return fmt.Sprintf("projects/%v", projectId), nil
 //				}).(pulumi.StringOutput),
 //				Spec: &orgpolicy.PolicySpecArgs{
 //					Rules: orgpolicy.PolicySpecRuleArray{
@@ -264,6 +264,68 @@ import (
 //					Rules: orgpolicy.PolicyDryRunSpecRuleArray{
 //						&orgpolicy.PolicyDryRunSpecRuleArgs{
 //							Enforce: pulumi.String("FALSE"),
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Org Policy Policy Parameters Enforce
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"encoding/json"
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/orgpolicy"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			basic, err := organizations.NewProject(ctx, "basic", &organizations.ProjectArgs{
+//				ProjectId:      pulumi.String("id"),
+//				Name:           pulumi.String("id"),
+//				OrgId:          pulumi.String("123456789"),
+//				DeletionPolicy: pulumi.String("DELETE"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			tmpJSON0, err := json.Marshal(map[string]interface{}{
+//				"isSizeLimitCheck": true,
+//				"allowedDiskTypes": []string{
+//					"pd-ssd",
+//					"pd-standard",
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			json0 := string(tmpJSON0)
+//			_, err = orgpolicy.NewPolicy(ctx, "primary", &orgpolicy.PolicyArgs{
+//				Name: basic.Name.ApplyT(func(name string) (string, error) {
+//					return fmt.Sprintf("projects/%v/policies/compute.managed.restrictDiskCreation", name), nil
+//				}).(pulumi.StringOutput),
+//				Parent: basic.Name.ApplyT(func(name string) (string, error) {
+//					return fmt.Sprintf("projects/%v", name), nil
+//				}).(pulumi.StringOutput),
+//				Spec: &orgpolicy.PolicySpecArgs{
+//					Rules: orgpolicy.PolicySpecRuleArray{
+//						&orgpolicy.PolicySpecRuleArgs{
+//							Enforce:    pulumi.String("TRUE"),
+//							Parameters: pulumi.String(json0),
 //						},
 //					},
 //				},

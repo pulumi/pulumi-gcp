@@ -4683,7 +4683,6 @@ class ServicePerimetersServicePerimeter(dict):
                  title: str,
                  create_time: Optional[str] = None,
                  description: Optional[str] = None,
-                 etag: Optional[str] = None,
                  perimeter_type: Optional[str] = None,
                  spec: Optional['outputs.ServicePerimetersServicePerimeterSpec'] = None,
                  status: Optional['outputs.ServicePerimetersServicePerimeterStatus'] = None,
@@ -4698,10 +4697,6 @@ class ServicePerimetersServicePerimeter(dict):
                Time the AccessPolicy was created in UTC.
         :param str description: Description of the ServicePerimeter and its use. Does not affect
                behavior.
-        :param str etag: (Output)
-               An opaque identifier for the current version of the ServicePerimeter. This
-               identifier does not follow any specific format. If an etag is not provided, the
-               operation will be performed as if a valid etag is provided.
         :param str perimeter_type: Specifies the type of the Perimeter. There are two types: regular and
                bridge. Regular Service Perimeter contains resources, access levels,
                and restricted services. Every resource can be in at most
@@ -4745,8 +4740,6 @@ class ServicePerimetersServicePerimeter(dict):
             pulumi.set(__self__, "create_time", create_time)
         if description is not None:
             pulumi.set(__self__, "description", description)
-        if etag is not None:
-            pulumi.set(__self__, "etag", etag)
         if perimeter_type is not None:
             pulumi.set(__self__, "perimeter_type", perimeter_type)
         if spec is not None:
@@ -4793,17 +4786,6 @@ class ServicePerimetersServicePerimeter(dict):
         behavior.
         """
         return pulumi.get(self, "description")
-
-    @property
-    @pulumi.getter
-    def etag(self) -> Optional[str]:
-        """
-        (Output)
-        An opaque identifier for the current version of the ServicePerimeter. This
-        identifier does not follow any specific format. If an etag is not provided, the
-        operation will be performed as if a valid etag is provided.
-        """
-        return pulumi.get(self, "etag")
 
     @property
     @pulumi.getter(name="perimeterType")

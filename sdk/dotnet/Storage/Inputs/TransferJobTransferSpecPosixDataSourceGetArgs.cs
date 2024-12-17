@@ -14,8 +14,6 @@ namespace Pulumi.Gcp.Storage.Inputs
     {
         /// <summary>
         /// Root directory path to the filesystem.
-        /// 
-        /// &lt;a name="nested_aws_s3_data_source"&gt;&lt;/a&gt;The `aws_s3_data_source` block supports:
         /// </summary>
         [Input("rootDirectory", required: true)]
         public Input<string> RootDirectory { get; set; } = null!;

@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.IdentityPlatform.Outputs
     public sealed class ConfigQuota
     {
         /// <summary>
-        /// Quota for the Signup endpoint, if overwritten. Signup quota is measured in sign ups per project per hour per IP.
+        /// Quota for the Signup endpoint, if overwritten. Signup quota is measured in sign ups per project per hour per IP. None of quota, startTime, or quotaDuration can be skipped.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.ConfigQuotaSignUpQuotaConfig? SignUpQuotaConfig;

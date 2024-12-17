@@ -16,7 +16,7 @@ public final class ConfigQuotaArgs extends com.pulumi.resources.ResourceArgs {
     public static final ConfigQuotaArgs Empty = new ConfigQuotaArgs();
 
     /**
-     * Quota for the Signup endpoint, if overwritten. Signup quota is measured in sign ups per project per hour per IP.
+     * Quota for the Signup endpoint, if overwritten. Signup quota is measured in sign ups per project per hour per IP. None of quota, startTime, or quotaDuration can be skipped.
      * Structure is documented below.
      * 
      */
@@ -24,7 +24,7 @@ public final class ConfigQuotaArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<ConfigQuotaSignUpQuotaConfigArgs> signUpQuotaConfig;
 
     /**
-     * @return Quota for the Signup endpoint, if overwritten. Signup quota is measured in sign ups per project per hour per IP.
+     * @return Quota for the Signup endpoint, if overwritten. Signup quota is measured in sign ups per project per hour per IP. None of quota, startTime, or quotaDuration can be skipped.
      * Structure is documented below.
      * 
      */
@@ -57,7 +57,7 @@ public final class ConfigQuotaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param signUpQuotaConfig Quota for the Signup endpoint, if overwritten. Signup quota is measured in sign ups per project per hour per IP.
+         * @param signUpQuotaConfig Quota for the Signup endpoint, if overwritten. Signup quota is measured in sign ups per project per hour per IP. None of quota, startTime, or quotaDuration can be skipped.
          * Structure is documented below.
          * 
          * @return builder
@@ -69,7 +69,7 @@ public final class ConfigQuotaArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param signUpQuotaConfig Quota for the Signup endpoint, if overwritten. Signup quota is measured in sign ups per project per hour per IP.
+         * @param signUpQuotaConfig Quota for the Signup endpoint, if overwritten. Signup quota is measured in sign ups per project per hour per IP. None of quota, startTime, or quotaDuration can be skipped.
          * Structure is documented below.
          * 
          * @return builder

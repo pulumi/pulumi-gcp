@@ -6,6 +6,7 @@ package com.pulumi.gcp.tpu.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -52,9 +53,7 @@ public final class V2VmNetworkConfigArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * The name of the network for the TPU node. It must be a preexisting Google Compute Engine
-     * network. If both network and subnetwork are specified, the given subnetwork must belong
-     * to the given network. If network is not specified, it will be looked up from the
-     * subnetwork if one is provided, or otherwise use &#34;default&#34;.
+     * network. If none is provided, &#34;default&#34; will be used.
      * 
      */
     @Import(name="network")
@@ -62,9 +61,7 @@ public final class V2VmNetworkConfigArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * @return The name of the network for the TPU node. It must be a preexisting Google Compute Engine
-     * network. If both network and subnetwork are specified, the given subnetwork must belong
-     * to the given network. If network is not specified, it will be looked up from the
-     * subnetwork if one is provided, or otherwise use &#34;default&#34;.
+     * network. If none is provided, &#34;default&#34; will be used.
      * 
      */
     public Optional<Output<String>> network() {
@@ -72,10 +69,23 @@ public final class V2VmNetworkConfigArgs extends com.pulumi.resources.ResourceAr
     }
 
     /**
+     * Specifies networking queue count for TPU VM instance&#39;s network interface.
+     * 
+     */
+    @Import(name="queueCount")
+    private @Nullable Output<Integer> queueCount;
+
+    /**
+     * @return Specifies networking queue count for TPU VM instance&#39;s network interface.
+     * 
+     */
+    public Optional<Output<Integer>> queueCount() {
+        return Optional.ofNullable(this.queueCount);
+    }
+
+    /**
      * The name of the subnetwork for the TPU node. It must be a preexisting Google Compute
-     * Engine subnetwork. If both network and subnetwork are specified, the given subnetwork
-     * must belong to the given network. If subnetwork is not specified, the subnetwork with the
-     * same name as the network will be used.
+     * Engine subnetwork. If none is provided, &#34;default&#34; will be used.
      * 
      */
     @Import(name="subnetwork")
@@ -83,9 +93,7 @@ public final class V2VmNetworkConfigArgs extends com.pulumi.resources.ResourceAr
 
     /**
      * @return The name of the subnetwork for the TPU node. It must be a preexisting Google Compute
-     * Engine subnetwork. If both network and subnetwork are specified, the given subnetwork
-     * must belong to the given network. If subnetwork is not specified, the subnetwork with the
-     * same name as the network will be used.
+     * Engine subnetwork. If none is provided, &#34;default&#34; will be used.
      * 
      */
     public Optional<Output<String>> subnetwork() {
@@ -98,6 +106,7 @@ public final class V2VmNetworkConfigArgs extends com.pulumi.resources.ResourceAr
         this.canIpForward = $.canIpForward;
         this.enableExternalIps = $.enableExternalIps;
         this.network = $.network;
+        this.queueCount = $.queueCount;
         this.subnetwork = $.subnetwork;
     }
 
@@ -167,9 +176,7 @@ public final class V2VmNetworkConfigArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param network The name of the network for the TPU node. It must be a preexisting Google Compute Engine
-         * network. If both network and subnetwork are specified, the given subnetwork must belong
-         * to the given network. If network is not specified, it will be looked up from the
-         * subnetwork if one is provided, or otherwise use &#34;default&#34;.
+         * network. If none is provided, &#34;default&#34; will be used.
          * 
          * @return builder
          * 
@@ -181,9 +188,7 @@ public final class V2VmNetworkConfigArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param network The name of the network for the TPU node. It must be a preexisting Google Compute Engine
-         * network. If both network and subnetwork are specified, the given subnetwork must belong
-         * to the given network. If network is not specified, it will be looked up from the
-         * subnetwork if one is provided, or otherwise use &#34;default&#34;.
+         * network. If none is provided, &#34;default&#34; will be used.
          * 
          * @return builder
          * 
@@ -193,10 +198,29 @@ public final class V2VmNetworkConfigArgs extends com.pulumi.resources.ResourceAr
         }
 
         /**
+         * @param queueCount Specifies networking queue count for TPU VM instance&#39;s network interface.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder queueCount(@Nullable Output<Integer> queueCount) {
+            $.queueCount = queueCount;
+            return this;
+        }
+
+        /**
+         * @param queueCount Specifies networking queue count for TPU VM instance&#39;s network interface.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder queueCount(Integer queueCount) {
+            return queueCount(Output.of(queueCount));
+        }
+
+        /**
          * @param subnetwork The name of the subnetwork for the TPU node. It must be a preexisting Google Compute
-         * Engine subnetwork. If both network and subnetwork are specified, the given subnetwork
-         * must belong to the given network. If subnetwork is not specified, the subnetwork with the
-         * same name as the network will be used.
+         * Engine subnetwork. If none is provided, &#34;default&#34; will be used.
          * 
          * @return builder
          * 
@@ -208,9 +232,7 @@ public final class V2VmNetworkConfigArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param subnetwork The name of the subnetwork for the TPU node. It must be a preexisting Google Compute
-         * Engine subnetwork. If both network and subnetwork are specified, the given subnetwork
-         * must belong to the given network. If subnetwork is not specified, the subnetwork with the
-         * same name as the network will be used.
+         * Engine subnetwork. If none is provided, &#34;default&#34; will be used.
          * 
          * @return builder
          * 

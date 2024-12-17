@@ -80,6 +80,21 @@ public final class PolicySpecRuleArgs extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
+     * Optional. Required for Managed Constraints if parameters defined in constraints. Pass parameter values when policy enforcement is enabled. Ensure that parameter value types match those defined in the constraint definition. For example: { \&#34;allowedLocations\&#34; : [\&#34;us-east1\&#34;, \&#34;us-west1\&#34;], \&#34;allowAll\&#34; : true }
+     * 
+     */
+    @Import(name="parameters")
+    private @Nullable Output<String> parameters;
+
+    /**
+     * @return Optional. Required for Managed Constraints if parameters defined in constraints. Pass parameter values when policy enforcement is enabled. Ensure that parameter value types match those defined in the constraint definition. For example: { \&#34;allowedLocations\&#34; : [\&#34;us-east1\&#34;, \&#34;us-west1\&#34;], \&#34;allowAll\&#34; : true }
+     * 
+     */
+    public Optional<Output<String>> parameters() {
+        return Optional.ofNullable(this.parameters);
+    }
+
+    /**
      * List of values to be used for this policy rule. This field can be set only in policies for list constraints.
      * Structure is documented below.
      * 
@@ -103,6 +118,7 @@ public final class PolicySpecRuleArgs extends com.pulumi.resources.ResourceArgs 
         this.condition = $.condition;
         this.denyAll = $.denyAll;
         this.enforce = $.enforce;
+        this.parameters = $.parameters;
         this.values = $.values;
     }
 
@@ -208,6 +224,27 @@ public final class PolicySpecRuleArgs extends com.pulumi.resources.ResourceArgs 
          */
         public Builder enforce(String enforce) {
             return enforce(Output.of(enforce));
+        }
+
+        /**
+         * @param parameters Optional. Required for Managed Constraints if parameters defined in constraints. Pass parameter values when policy enforcement is enabled. Ensure that parameter value types match those defined in the constraint definition. For example: { \&#34;allowedLocations\&#34; : [\&#34;us-east1\&#34;, \&#34;us-west1\&#34;], \&#34;allowAll\&#34; : true }
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parameters(@Nullable Output<String> parameters) {
+            $.parameters = parameters;
+            return this;
+        }
+
+        /**
+         * @param parameters Optional. Required for Managed Constraints if parameters defined in constraints. Pass parameter values when policy enforcement is enabled. Ensure that parameter value types match those defined in the constraint definition. For example: { \&#34;allowedLocations\&#34; : [\&#34;us-east1\&#34;, \&#34;us-west1\&#34;], \&#34;allowAll\&#34; : true }
+         * 
+         * @return builder
+         * 
+         */
+        public Builder parameters(String parameters) {
+            return parameters(Output.of(parameters));
         }
 
         /**

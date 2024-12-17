@@ -17,16 +17,12 @@ public final class TransferJobTransferSpecPosixDataSourceArgs extends com.pulumi
     /**
      * Root directory path to the filesystem.
      * 
-     * &lt;a name=&#34;nested_aws_s3_data_source&#34;&gt;&lt;/a&gt;The `aws_s3_data_source` block supports:
-     * 
      */
     @Import(name="rootDirectory", required=true)
     private Output<String> rootDirectory;
 
     /**
      * @return Root directory path to the filesystem.
-     * 
-     * &lt;a name=&#34;nested_aws_s3_data_source&#34;&gt;&lt;/a&gt;The `aws_s3_data_source` block supports:
      * 
      */
     public Output<String> rootDirectory() {
@@ -60,8 +56,6 @@ public final class TransferJobTransferSpecPosixDataSourceArgs extends com.pulumi
         /**
          * @param rootDirectory Root directory path to the filesystem.
          * 
-         * &lt;a name=&#34;nested_aws_s3_data_source&#34;&gt;&lt;/a&gt;The `aws_s3_data_source` block supports:
-         * 
          * @return builder
          * 
          */
@@ -72,8 +66,6 @@ public final class TransferJobTransferSpecPosixDataSourceArgs extends com.pulumi
 
         /**
          * @param rootDirectory Root directory path to the filesystem.
-         * 
-         * &lt;a name=&#34;nested_aws_s3_data_source&#34;&gt;&lt;/a&gt;The `aws_s3_data_source` block supports:
          * 
          * @return builder
          * 

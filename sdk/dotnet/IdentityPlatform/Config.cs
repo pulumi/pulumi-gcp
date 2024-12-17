@@ -113,7 +113,7 @@ namespace Pulumi.Gcp.IdentityPlatform
     ///             SignUpQuotaConfig = new Gcp.IdentityPlatform.Inputs.ConfigQuotaSignUpQuotaConfigArgs
     ///             {
     ///                 Quota = 1000,
-    ///                 StartTime = "",
+    ///                 StartTime = "2014-10-02T15:01:23Z",
     ///                 QuotaDuration = "7200s",
     ///             },
     ///         },
