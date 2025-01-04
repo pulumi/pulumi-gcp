@@ -321,7 +321,6 @@ import (
 //				Target:              defaultTargetHttpProxy.ID(),
 //				PortRange:           pulumi.String("80"),
 //				LoadBalancingScheme: pulumi.String("EXTERNAL_MANAGED"),
-//				NetworkTier:         pulumi.String("PREMIUM"),
 //			})
 //			if err != nil {
 //				return err
@@ -778,17 +777,6 @@ type GlobalForwardingRule struct {
 	// For Private Service Connect forwarding rules that forward traffic to Google
 	// APIs, a network must be provided.
 	Network pulumi.StringOutput `pulumi:"network"`
-	// This signifies the networking tier used for configuring
-	// this load balancer and can only take the following values:
-	// `PREMIUM`, `STANDARD`.
-	// For regional ForwardingRule, the valid values are `PREMIUM` and
-	// `STANDARD`. For GlobalForwardingRule, the valid value is
-	// `PREMIUM`.
-	// If this field is not specified, it is assumed to be `PREMIUM`.
-	// If `IPAddress` is specified, this value must be equal to the
-	// networkTier of the Address.
-	// Possible values are: `PREMIUM`, `STANDARD`.
-	NetworkTier pulumi.StringOutput `pulumi:"networkTier"`
 	// This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
 	NoAutomateDnsZone pulumi.BoolPtrOutput `pulumi:"noAutomateDnsZone"`
 	// The `portRange` field has the following limitations:
@@ -994,17 +982,6 @@ type globalForwardingRuleState struct {
 	// For Private Service Connect forwarding rules that forward traffic to Google
 	// APIs, a network must be provided.
 	Network *string `pulumi:"network"`
-	// This signifies the networking tier used for configuring
-	// this load balancer and can only take the following values:
-	// `PREMIUM`, `STANDARD`.
-	// For regional ForwardingRule, the valid values are `PREMIUM` and
-	// `STANDARD`. For GlobalForwardingRule, the valid value is
-	// `PREMIUM`.
-	// If this field is not specified, it is assumed to be `PREMIUM`.
-	// If `IPAddress` is specified, this value must be equal to the
-	// networkTier of the Address.
-	// Possible values are: `PREMIUM`, `STANDARD`.
-	NetworkTier *string `pulumi:"networkTier"`
 	// This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
 	NoAutomateDnsZone *bool `pulumi:"noAutomateDnsZone"`
 	// The `portRange` field has the following limitations:
@@ -1173,17 +1150,6 @@ type GlobalForwardingRuleState struct {
 	// For Private Service Connect forwarding rules that forward traffic to Google
 	// APIs, a network must be provided.
 	Network pulumi.StringPtrInput
-	// This signifies the networking tier used for configuring
-	// this load balancer and can only take the following values:
-	// `PREMIUM`, `STANDARD`.
-	// For regional ForwardingRule, the valid values are `PREMIUM` and
-	// `STANDARD`. For GlobalForwardingRule, the valid value is
-	// `PREMIUM`.
-	// If this field is not specified, it is assumed to be `PREMIUM`.
-	// If `IPAddress` is specified, this value must be equal to the
-	// networkTier of the Address.
-	// Possible values are: `PREMIUM`, `STANDARD`.
-	NetworkTier pulumi.StringPtrInput
 	// This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
 	NoAutomateDnsZone pulumi.BoolPtrInput
 	// The `portRange` field has the following limitations:
@@ -1347,17 +1313,6 @@ type globalForwardingRuleArgs struct {
 	// For Private Service Connect forwarding rules that forward traffic to Google
 	// APIs, a network must be provided.
 	Network *string `pulumi:"network"`
-	// This signifies the networking tier used for configuring
-	// this load balancer and can only take the following values:
-	// `PREMIUM`, `STANDARD`.
-	// For regional ForwardingRule, the valid values are `PREMIUM` and
-	// `STANDARD`. For GlobalForwardingRule, the valid value is
-	// `PREMIUM`.
-	// If this field is not specified, it is assumed to be `PREMIUM`.
-	// If `IPAddress` is specified, this value must be equal to the
-	// networkTier of the Address.
-	// Possible values are: `PREMIUM`, `STANDARD`.
-	NetworkTier *string `pulumi:"networkTier"`
 	// This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
 	NoAutomateDnsZone *bool `pulumi:"noAutomateDnsZone"`
 	// The `portRange` field has the following limitations:
@@ -1509,17 +1464,6 @@ type GlobalForwardingRuleArgs struct {
 	// For Private Service Connect forwarding rules that forward traffic to Google
 	// APIs, a network must be provided.
 	Network pulumi.StringPtrInput
-	// This signifies the networking tier used for configuring
-	// this load balancer and can only take the following values:
-	// `PREMIUM`, `STANDARD`.
-	// For regional ForwardingRule, the valid values are `PREMIUM` and
-	// `STANDARD`. For GlobalForwardingRule, the valid value is
-	// `PREMIUM`.
-	// If this field is not specified, it is assumed to be `PREMIUM`.
-	// If `IPAddress` is specified, this value must be equal to the
-	// networkTier of the Address.
-	// Possible values are: `PREMIUM`, `STANDARD`.
-	NetworkTier pulumi.StringPtrInput
 	// This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
 	NoAutomateDnsZone pulumi.BoolPtrInput
 	// The `portRange` field has the following limitations:
@@ -1805,20 +1749,6 @@ func (o GlobalForwardingRuleOutput) Name() pulumi.StringOutput {
 // APIs, a network must be provided.
 func (o GlobalForwardingRuleOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v *GlobalForwardingRule) pulumi.StringOutput { return v.Network }).(pulumi.StringOutput)
-}
-
-// This signifies the networking tier used for configuring
-// this load balancer and can only take the following values:
-// `PREMIUM`, `STANDARD`.
-// For regional ForwardingRule, the valid values are `PREMIUM` and
-// `STANDARD`. For GlobalForwardingRule, the valid value is
-// `PREMIUM`.
-// If this field is not specified, it is assumed to be `PREMIUM`.
-// If `IPAddress` is specified, this value must be equal to the
-// networkTier of the Address.
-// Possible values are: `PREMIUM`, `STANDARD`.
-func (o GlobalForwardingRuleOutput) NetworkTier() pulumi.StringOutput {
-	return o.ApplyT(func(v *GlobalForwardingRule) pulumi.StringOutput { return v.NetworkTier }).(pulumi.StringOutput)
 }
 
 // This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.

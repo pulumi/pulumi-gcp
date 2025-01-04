@@ -38,7 +38,6 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * import * as time from "@pulumi/time";
  *
  * const _default = new gcp.organizations.Project("default", {
  *     projectId: "rtdb-project",
@@ -49,21 +48,10 @@ import * as utilities from "../utilities";
  *         firebase: "enabled",
  *     },
  * });
- * const firebase = new gcp.projects.Service("firebase", {
- *     project: _default.projectId,
- *     service: "firebase.googleapis.com",
- *     disableOnDestroy: false,
- * });
- * const defaultProject = new gcp.firebase.Project("default", {project: _default.projectId}, {
- *     dependsOn: [firebase],
- * });
+ * const defaultProject = new gcp.firebase.Project("default", {project: _default.projectId});
  * const firebaseDatabase = new gcp.projects.Service("firebase_database", {
  *     project: defaultProject.project,
  *     service: "firebasedatabase.googleapis.com",
- *     disableOnDestroy: false,
- * });
- * const wait60Seconds = new time.index.Sleep("wait_60_seconds", {createDuration: "60s"}, {
- *     dependsOn: [firebaseDatabase],
  * });
  * const defaultDatabaseInstance = new gcp.firebase.DatabaseInstance("default", {
  *     project: defaultProject.project,
@@ -71,7 +59,7 @@ import * as utilities from "../utilities";
  *     instanceId: "rtdb-project-default-rtdb",
  *     type: "DEFAULT_DATABASE",
  * }, {
- *     dependsOn: [wait60Seconds],
+ *     dependsOn: [firebaseDatabase],
  * });
  * ```
  *

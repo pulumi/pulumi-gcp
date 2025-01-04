@@ -48,14 +48,14 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The number of the Google Project that Firebase is enabled on.
+     * The number of the google project that firebase is enabled on.
      * 
      */
     @Import(name="projectNumber")
     private @Nullable Output<String> projectNumber;
 
     /**
-     * @return The number of the Google Project that Firebase is enabled on.
+     * @return The number of the google project that firebase is enabled on.
      * 
      */
     public Optional<Output<String>> projectNumber() {
@@ -133,7 +133,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectNumber The number of the Google Project that Firebase is enabled on.
+         * @param projectNumber The number of the google project that firebase is enabled on.
          * 
          * @return builder
          * 
@@ -144,7 +144,7 @@ public final class ProjectState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param projectNumber The number of the Google Project that Firebase is enabled on.
+         * @param projectNumber The number of the google project that firebase is enabled on.
          * 
          * @return builder
          * 

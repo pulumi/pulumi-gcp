@@ -231,8 +231,8 @@ class Policy(pulumi.CustomResource):
             org_id="123456789",
             deletion_policy="DELETE")
         primary = gcp.orgpolicy.Policy("primary",
-            name=basic.project_id.apply(lambda project_id: f"projects/{project_id}/policies/iam.disableServiceAccountKeyUpload"),
-            parent=basic.project_id.apply(lambda project_id: f"projects/{project_id}"),
+            name=basic.name.apply(lambda name: f"projects/{name}/policies/iam.disableServiceAccountKeyUpload"),
+            parent=basic.name.apply(lambda name: f"projects/{name}"),
             spec={
                 "rules": [{
                     "enforce": "FALSE",
@@ -284,8 +284,8 @@ class Policy(pulumi.CustomResource):
             org_id="123456789",
             deletion_policy="DELETE")
         primary = gcp.orgpolicy.Policy("primary",
-            name=basic.project_id.apply(lambda project_id: f"projects/{project_id}/policies/gcp.resourceLocations"),
-            parent=basic.project_id.apply(lambda project_id: f"projects/{project_id}"),
+            name=basic.name.apply(lambda name: f"projects/{name}/policies/gcp.resourceLocations"),
+            parent=basic.name.apply(lambda name: f"projects/{name}"),
             spec={
                 "rules": [
                     {
@@ -334,34 +334,6 @@ class Policy(pulumi.CustomResource):
                 "reset": False,
                 "rules": [{
                     "enforce": "FALSE",
-                }],
-            })
-        ```
-        ### Org Policy Policy Parameters Enforce
-
-        ```python
-        import pulumi
-        import json
-        import pulumi_gcp as gcp
-
-        basic = gcp.organizations.Project("basic",
-            project_id="id",
-            name="id",
-            org_id="123456789",
-            deletion_policy="DELETE")
-        primary = gcp.orgpolicy.Policy("primary",
-            name=basic.name.apply(lambda name: f"projects/{name}/policies/compute.managed.restrictDiskCreation"),
-            parent=basic.name.apply(lambda name: f"projects/{name}"),
-            spec={
-                "rules": [{
-                    "enforce": "TRUE",
-                    "parameters": json.dumps({
-                        "isSizeLimitCheck": True,
-                        "allowedDiskTypes": [
-                            "pd-ssd",
-                            "pd-standard",
-                        ],
-                    }),
                 }],
             })
         ```
@@ -420,8 +392,8 @@ class Policy(pulumi.CustomResource):
             org_id="123456789",
             deletion_policy="DELETE")
         primary = gcp.orgpolicy.Policy("primary",
-            name=basic.project_id.apply(lambda project_id: f"projects/{project_id}/policies/iam.disableServiceAccountKeyUpload"),
-            parent=basic.project_id.apply(lambda project_id: f"projects/{project_id}"),
+            name=basic.name.apply(lambda name: f"projects/{name}/policies/iam.disableServiceAccountKeyUpload"),
+            parent=basic.name.apply(lambda name: f"projects/{name}"),
             spec={
                 "rules": [{
                     "enforce": "FALSE",
@@ -473,8 +445,8 @@ class Policy(pulumi.CustomResource):
             org_id="123456789",
             deletion_policy="DELETE")
         primary = gcp.orgpolicy.Policy("primary",
-            name=basic.project_id.apply(lambda project_id: f"projects/{project_id}/policies/gcp.resourceLocations"),
-            parent=basic.project_id.apply(lambda project_id: f"projects/{project_id}"),
+            name=basic.name.apply(lambda name: f"projects/{name}/policies/gcp.resourceLocations"),
+            parent=basic.name.apply(lambda name: f"projects/{name}"),
             spec={
                 "rules": [
                     {
@@ -523,34 +495,6 @@ class Policy(pulumi.CustomResource):
                 "reset": False,
                 "rules": [{
                     "enforce": "FALSE",
-                }],
-            })
-        ```
-        ### Org Policy Policy Parameters Enforce
-
-        ```python
-        import pulumi
-        import json
-        import pulumi_gcp as gcp
-
-        basic = gcp.organizations.Project("basic",
-            project_id="id",
-            name="id",
-            org_id="123456789",
-            deletion_policy="DELETE")
-        primary = gcp.orgpolicy.Policy("primary",
-            name=basic.name.apply(lambda name: f"projects/{name}/policies/compute.managed.restrictDiskCreation"),
-            parent=basic.name.apply(lambda name: f"projects/{name}"),
-            spec={
-                "rules": [{
-                    "enforce": "TRUE",
-                    "parameters": json.dumps({
-                        "isSizeLimitCheck": True,
-                        "allowedDiskTypes": [
-                            "pd-ssd",
-                            "pd-standard",
-                        ],
-                    }),
                 }],
             })
         ```

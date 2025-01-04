@@ -64,8 +64,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var primary = new Policy("primary", PolicyArgs.builder()
- *             .name(basic.projectId().applyValue(projectId -> String.format("projects/%s/policies/iam.disableServiceAccountKeyUpload", projectId)))
- *             .parent(basic.projectId().applyValue(projectId -> String.format("projects/%s", projectId)))
+ *             .name(basic.name().applyValue(name -> String.format("projects/%s/policies/iam.disableServiceAccountKeyUpload", name)))
+ *             .parent(basic.name().applyValue(name -> String.format("projects/%s", name)))
  *             .spec(PolicySpecArgs.builder()
  *                 .rules(PolicySpecRuleArgs.builder()
  *                     .enforce("FALSE")
@@ -203,8 +203,8 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var primary = new Policy("primary", PolicyArgs.builder()
- *             .name(basic.projectId().applyValue(projectId -> String.format("projects/%s/policies/gcp.resourceLocations", projectId)))
- *             .parent(basic.projectId().applyValue(projectId -> String.format("projects/%s", projectId)))
+ *             .name(basic.name().applyValue(name -> String.format("projects/%s/policies/gcp.resourceLocations", name)))
+ *             .parent(basic.name().applyValue(name -> String.format("projects/%s", name)))
  *             .spec(PolicySpecArgs.builder()
  *                 .rules(                
  *                     PolicySpecRuleArgs.builder()
@@ -283,65 +283,6 @@ import javax.annotation.Nullable;
  *                 .reset(false)
  *                 .rules(PolicyDryRunSpecRuleArgs.builder()
  *                     .enforce("FALSE")
- *                     .build())
- *                 .build())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * ### Org Policy Policy Parameters Enforce
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.organizations.Project;
- * import com.pulumi.gcp.organizations.ProjectArgs;
- * import com.pulumi.gcp.orgpolicy.Policy;
- * import com.pulumi.gcp.orgpolicy.PolicyArgs;
- * import com.pulumi.gcp.orgpolicy.inputs.PolicySpecArgs;
- * import static com.pulumi.codegen.internal.Serialization.*;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var basic = new Project("basic", ProjectArgs.builder()
- *             .projectId("id")
- *             .name("id")
- *             .orgId("123456789")
- *             .deletionPolicy("DELETE")
- *             .build());
- * 
- *         var primary = new Policy("primary", PolicyArgs.builder()
- *             .name(basic.name().applyValue(name -> String.format("projects/%s/policies/compute.managed.restrictDiskCreation", name)))
- *             .parent(basic.name().applyValue(name -> String.format("projects/%s", name)))
- *             .spec(PolicySpecArgs.builder()
- *                 .rules(PolicySpecRuleArgs.builder()
- *                     .enforce("TRUE")
- *                     .parameters(serializeJson(
- *                         jsonObject(
- *                             jsonProperty("isSizeLimitCheck", true),
- *                             jsonProperty("allowedDiskTypes", jsonArray(
- *                                 "pd-ssd", 
- *                                 "pd-standard"
- *                             ))
- *                         )))
  *                     .build())
  *                 .build())
  *             .build());

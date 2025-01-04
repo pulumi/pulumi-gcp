@@ -354,6 +354,10 @@ type ServicePerimeter struct {
 	// Description of the ServicePerimeter and its use. Does not affect
 	// behavior.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
+	// An opaque identifier for the current version of the ServicePerimeter. This
+	// identifier does not follow any specific format. If an etag is not provided, the
+	// operation will be performed as if a valid etag is provided.
+	Etag pulumi.StringOutput `pulumi:"etag"`
 	// Resource name for the ServicePerimeter. The shortName component must
 	// begin with a letter and only include alphanumeric and '_'.
 	// Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
@@ -448,6 +452,10 @@ type servicePerimeterState struct {
 	// Description of the ServicePerimeter and its use. Does not affect
 	// behavior.
 	Description *string `pulumi:"description"`
+	// An opaque identifier for the current version of the ServicePerimeter. This
+	// identifier does not follow any specific format. If an etag is not provided, the
+	// operation will be performed as if a valid etag is provided.
+	Etag *string `pulumi:"etag"`
 	// Resource name for the ServicePerimeter. The shortName component must
 	// begin with a letter and only include alphanumeric and '_'.
 	// Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
@@ -507,6 +515,10 @@ type ServicePerimeterState struct {
 	// Description of the ServicePerimeter and its use. Does not affect
 	// behavior.
 	Description pulumi.StringPtrInput
+	// An opaque identifier for the current version of the ServicePerimeter. This
+	// identifier does not follow any specific format. If an etag is not provided, the
+	// operation will be performed as if a valid etag is provided.
+	Etag pulumi.StringPtrInput
 	// Resource name for the ServicePerimeter. The shortName component must
 	// begin with a letter and only include alphanumeric and '_'.
 	// Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
@@ -771,6 +783,13 @@ func (o ServicePerimeterOutput) CreateTime() pulumi.StringOutput {
 // behavior.
 func (o ServicePerimeterOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ServicePerimeter) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// An opaque identifier for the current version of the ServicePerimeter. This
+// identifier does not follow any specific format. If an etag is not provided, the
+// operation will be performed as if a valid etag is provided.
+func (o ServicePerimeterOutput) Etag() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServicePerimeter) pulumi.StringOutput { return v.Etag }).(pulumi.StringOutput)
 }
 
 // Resource name for the ServicePerimeter. The shortName component must

@@ -28,6 +28,14 @@ public final class ServicePerimetersServicePerimeter {
      */
     private @Nullable String description;
     /**
+     * @return (Output)
+     * An opaque identifier for the current version of the ServicePerimeter. This
+     * identifier does not follow any specific format. If an etag is not provided, the
+     * operation will be performed as if a valid etag is provided.
+     * 
+     */
+    private @Nullable String etag;
+    /**
      * @return Resource name for the ServicePerimeter. The short_name component must
      * begin with a letter and only include alphanumeric and &#39;_&#39;.
      * Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
@@ -112,6 +120,16 @@ public final class ServicePerimetersServicePerimeter {
      */
     public Optional<String> description() {
         return Optional.ofNullable(this.description);
+    }
+    /**
+     * @return (Output)
+     * An opaque identifier for the current version of the ServicePerimeter. This
+     * identifier does not follow any specific format. If an etag is not provided, the
+     * operation will be performed as if a valid etag is provided.
+     * 
+     */
+    public Optional<String> etag() {
+        return Optional.ofNullable(this.etag);
     }
     /**
      * @return Resource name for the ServicePerimeter. The short_name component must
@@ -207,6 +225,7 @@ public final class ServicePerimetersServicePerimeter {
     public static final class Builder {
         private @Nullable String createTime;
         private @Nullable String description;
+        private @Nullable String etag;
         private String name;
         private @Nullable String perimeterType;
         private @Nullable ServicePerimetersServicePerimeterSpec spec;
@@ -219,6 +238,7 @@ public final class ServicePerimetersServicePerimeter {
     	      Objects.requireNonNull(defaults);
     	      this.createTime = defaults.createTime;
     	      this.description = defaults.description;
+    	      this.etag = defaults.etag;
     	      this.name = defaults.name;
     	      this.perimeterType = defaults.perimeterType;
     	      this.spec = defaults.spec;
@@ -238,6 +258,12 @@ public final class ServicePerimetersServicePerimeter {
         public Builder description(@Nullable String description) {
 
             this.description = description;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder etag(@Nullable String etag) {
+
+            this.etag = etag;
             return this;
         }
         @CustomType.Setter
@@ -290,6 +316,7 @@ public final class ServicePerimetersServicePerimeter {
             final var _resultValue = new ServicePerimetersServicePerimeter();
             _resultValue.createTime = createTime;
             _resultValue.description = description;
+            _resultValue.etag = etag;
             _resultValue.name = name;
             _resultValue.perimeterType = perimeterType;
             _resultValue.spec = spec;

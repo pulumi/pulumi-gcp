@@ -6054,6 +6054,13 @@ if not MYPY:
         Description of the ServicePerimeter and its use. Does not affect
         behavior.
         """
+        etag: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        An opaque identifier for the current version of the ServicePerimeter. This
+        identifier does not follow any specific format. If an etag is not provided, the
+        operation will be performed as if a valid etag is provided.
+        """
         perimeter_type: NotRequired[pulumi.Input[str]]
         """
         Specifies the type of the Perimeter. There are two types: regular and
@@ -6115,6 +6122,7 @@ class ServicePerimetersServicePerimeterArgs:
                  title: pulumi.Input[str],
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 etag: Optional[pulumi.Input[str]] = None,
                  perimeter_type: Optional[pulumi.Input[str]] = None,
                  spec: Optional[pulumi.Input['ServicePerimetersServicePerimeterSpecArgs']] = None,
                  status: Optional[pulumi.Input['ServicePerimetersServicePerimeterStatusArgs']] = None,
@@ -6129,6 +6137,10 @@ class ServicePerimetersServicePerimeterArgs:
                Time the AccessPolicy was created in UTC.
         :param pulumi.Input[str] description: Description of the ServicePerimeter and its use. Does not affect
                behavior.
+        :param pulumi.Input[str] etag: (Output)
+               An opaque identifier for the current version of the ServicePerimeter. This
+               identifier does not follow any specific format. If an etag is not provided, the
+               operation will be performed as if a valid etag is provided.
         :param pulumi.Input[str] perimeter_type: Specifies the type of the Perimeter. There are two types: regular and
                bridge. Regular Service Perimeter contains resources, access levels,
                and restricted services. Every resource can be in at most
@@ -6172,6 +6184,8 @@ class ServicePerimetersServicePerimeterArgs:
             pulumi.set(__self__, "create_time", create_time)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if etag is not None:
+            pulumi.set(__self__, "etag", etag)
         if perimeter_type is not None:
             pulumi.set(__self__, "perimeter_type", perimeter_type)
         if spec is not None:
@@ -6234,6 +6248,21 @@ class ServicePerimetersServicePerimeterArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def etag(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        An opaque identifier for the current version of the ServicePerimeter. This
+        identifier does not follow any specific format. If an etag is not provided, the
+        operation will be performed as if a valid etag is provided.
+        """
+        return pulumi.get(self, "etag")
+
+    @etag.setter
+    def etag(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "etag", value)
 
     @property
     @pulumi.getter(name="perimeterType")

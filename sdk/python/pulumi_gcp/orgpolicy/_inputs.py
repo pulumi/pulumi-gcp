@@ -175,10 +175,6 @@ if not MYPY:
         """
         If `"TRUE"`, then the `Policy` is enforced. If `"FALSE"`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
         """
-        parameters: NotRequired[pulumi.Input[str]]
-        """
-        Optional. Required for Managed Constraints if parameters defined in constraints. Pass parameter values when policy enforcement is enabled. Ensure that parameter value types match those defined in the constraint definition. For example: { \\"allowedLocations\\" : [\\"us-east1\\", \\"us-west1\\"], \\"allowAll\\" : true }
-        """
         values: NotRequired[pulumi.Input['PolicyDryRunSpecRuleValuesArgsDict']]
         """
         List of values to be used for this policy rule. This field can be set only in policies for list constraints.
@@ -194,7 +190,6 @@ class PolicyDryRunSpecRuleArgs:
                  condition: Optional[pulumi.Input['PolicyDryRunSpecRuleConditionArgs']] = None,
                  deny_all: Optional[pulumi.Input[str]] = None,
                  enforce: Optional[pulumi.Input[str]] = None,
-                 parameters: Optional[pulumi.Input[str]] = None,
                  values: Optional[pulumi.Input['PolicyDryRunSpecRuleValuesArgs']] = None):
         """
         :param pulumi.Input[str] allow_all: Setting this to `"TRUE"` means that all values are allowed. This field can be set only in Policies for list constraints.
@@ -202,7 +197,6 @@ class PolicyDryRunSpecRuleArgs:
                Structure is documented below.
         :param pulumi.Input[str] deny_all: Setting this to `"TRUE"` means that all values are denied. This field can be set only in Policies for list constraints.
         :param pulumi.Input[str] enforce: If `"TRUE"`, then the `Policy` is enforced. If `"FALSE"`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
-        :param pulumi.Input[str] parameters: Optional. Required for Managed Constraints if parameters defined in constraints. Pass parameter values when policy enforcement is enabled. Ensure that parameter value types match those defined in the constraint definition. For example: { \\"allowedLocations\\" : [\\"us-east1\\", \\"us-west1\\"], \\"allowAll\\" : true }
         :param pulumi.Input['PolicyDryRunSpecRuleValuesArgs'] values: List of values to be used for this policy rule. This field can be set only in policies for list constraints.
                Structure is documented below.
         """
@@ -214,8 +208,6 @@ class PolicyDryRunSpecRuleArgs:
             pulumi.set(__self__, "deny_all", deny_all)
         if enforce is not None:
             pulumi.set(__self__, "enforce", enforce)
-        if parameters is not None:
-            pulumi.set(__self__, "parameters", parameters)
         if values is not None:
             pulumi.set(__self__, "values", values)
 
@@ -267,18 +259,6 @@ class PolicyDryRunSpecRuleArgs:
     @enforce.setter
     def enforce(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "enforce", value)
-
-    @property
-    @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[str]]:
-        """
-        Optional. Required for Managed Constraints if parameters defined in constraints. Pass parameter values when policy enforcement is enabled. Ensure that parameter value types match those defined in the constraint definition. For example: { \\"allowedLocations\\" : [\\"us-east1\\", \\"us-west1\\"], \\"allowAll\\" : true }
-        """
-        return pulumi.get(self, "parameters")
-
-    @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "parameters", value)
 
     @property
     @pulumi.getter
@@ -578,10 +558,6 @@ if not MYPY:
         """
         If `"TRUE"`, then the `Policy` is enforced. If `"FALSE"`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
         """
-        parameters: NotRequired[pulumi.Input[str]]
-        """
-        Optional. Required for Managed Constraints if parameters defined in constraints. Pass parameter values when policy enforcement is enabled. Ensure that parameter value types match those defined in the constraint definition. For example: { \\"allowedLocations\\" : [\\"us-east1\\", \\"us-west1\\"], \\"allowAll\\" : true }
-        """
         values: NotRequired[pulumi.Input['PolicySpecRuleValuesArgsDict']]
         """
         List of values to be used for this policy rule. This field can be set only in policies for list constraints.
@@ -597,7 +573,6 @@ class PolicySpecRuleArgs:
                  condition: Optional[pulumi.Input['PolicySpecRuleConditionArgs']] = None,
                  deny_all: Optional[pulumi.Input[str]] = None,
                  enforce: Optional[pulumi.Input[str]] = None,
-                 parameters: Optional[pulumi.Input[str]] = None,
                  values: Optional[pulumi.Input['PolicySpecRuleValuesArgs']] = None):
         """
         :param pulumi.Input[str] allow_all: Setting this to `"TRUE"` means that all values are allowed. This field can be set only in Policies for list constraints.
@@ -605,7 +580,6 @@ class PolicySpecRuleArgs:
                Structure is documented below.
         :param pulumi.Input[str] deny_all: Setting this to `"TRUE"` means that all values are denied. This field can be set only in Policies for list constraints.
         :param pulumi.Input[str] enforce: If `"TRUE"`, then the `Policy` is enforced. If `"FALSE"`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
-        :param pulumi.Input[str] parameters: Optional. Required for Managed Constraints if parameters defined in constraints. Pass parameter values when policy enforcement is enabled. Ensure that parameter value types match those defined in the constraint definition. For example: { \\"allowedLocations\\" : [\\"us-east1\\", \\"us-west1\\"], \\"allowAll\\" : true }
         :param pulumi.Input['PolicySpecRuleValuesArgs'] values: List of values to be used for this policy rule. This field can be set only in policies for list constraints.
                Structure is documented below.
         """
@@ -617,8 +591,6 @@ class PolicySpecRuleArgs:
             pulumi.set(__self__, "deny_all", deny_all)
         if enforce is not None:
             pulumi.set(__self__, "enforce", enforce)
-        if parameters is not None:
-            pulumi.set(__self__, "parameters", parameters)
         if values is not None:
             pulumi.set(__self__, "values", values)
 
@@ -670,18 +642,6 @@ class PolicySpecRuleArgs:
     @enforce.setter
     def enforce(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "enforce", value)
-
-    @property
-    @pulumi.getter
-    def parameters(self) -> Optional[pulumi.Input[str]]:
-        """
-        Optional. Required for Managed Constraints if parameters defined in constraints. Pass parameter values when policy enforcement is enabled. Ensure that parameter value types match those defined in the constraint definition. For example: { \\"allowedLocations\\" : [\\"us-east1\\", \\"us-west1\\"], \\"allowAll\\" : true }
-        """
-        return pulumi.get(self, "parameters")
-
-    @parameters.setter
-    def parameters(self, value: Optional[pulumi.Input[str]]):
-        pulumi.set(self, "parameters", value)
 
     @property
     @pulumi.getter

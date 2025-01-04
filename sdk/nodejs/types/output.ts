@@ -1384,6 +1384,13 @@ export namespace accesscontextmanager {
          */
         description?: string;
         /**
+         * (Output)
+         * An opaque identifier for the current version of the ServicePerimeter. This
+         * identifier does not follow any specific format. If an etag is not provided, the
+         * operation will be performed as if a valid etag is provided.
+         */
+        etag: string;
+        /**
          * Resource name for the ServicePerimeter. The shortName component must
          * begin with a letter and only include alphanumeric and '_'.
          * Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
@@ -64498,12 +64505,6 @@ export namespace firebase {
 
     export interface HostingVersionConfig {
         /**
-         * An array of objects, where each object specifies a URL pattern that, if matched to the request URL path,
-         * triggers Hosting to apply the specified custom response headers.
-         * Structure is documented below.
-         */
-        headers?: outputs.firebase.HostingVersionConfigHeader[];
-        /**
          * An array of objects (called redirect rules), where each rule specifies a URL pattern that, if matched to the request URL path,
          * triggers Hosting to respond with a redirect to the specified destination path.
          * Structure is documented below.
@@ -64515,21 +64516,6 @@ export namespace firebase {
          * Structure is documented below.
          */
         rewrites?: outputs.firebase.HostingVersionConfigRewrite[];
-    }
-
-    export interface HostingVersionConfigHeader {
-        /**
-         * The user-supplied glob to match against the request URL path.
-         */
-        glob?: string;
-        /**
-         * The additional headers to add to the response. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-         */
-        headers: {[key: string]: string};
-        /**
-         * The user-supplied RE2 regular expression to match against the request URL path.
-         */
-        regex?: string;
     }
 
     export interface HostingVersionConfigRedirect {
@@ -70278,7 +70264,7 @@ export namespace identityplatform {
 
     export interface ConfigQuota {
         /**
-         * Quota for the Signup endpoint, if overwritten. Signup quota is measured in sign ups per project per hour per IP. None of quota, startTime, or quotaDuration can be skipped.
+         * Quota for the Signup endpoint, if overwritten. Signup quota is measured in sign ups per project per hour per IP.
          * Structure is documented below.
          */
         signUpQuotaConfig?: outputs.identityplatform.ConfigQuotaSignUpQuotaConfig;
@@ -70286,7 +70272,7 @@ export namespace identityplatform {
 
     export interface ConfigQuotaSignUpQuotaConfig {
         /**
-         * A sign up APIs quota that customers can override temporarily. Value can be in between 1 and 1000.
+         * A sign up APIs quota that customers can override temporarily.
          */
         quota?: number;
         /**
@@ -75021,11 +75007,11 @@ export namespace networkconnectivity {
         /**
          * The IP address on the VM to use for peering.
          */
-        ipAddress: string;
+        ipAddress?: string;
         /**
          * The URI of the virtual machine resource
          */
-        virtualMachine: string;
+        virtualMachine?: string;
     }
 
     export interface SpokeLinkedVpcNetwork {
@@ -75211,420 +75197,6 @@ export namespace networksecurity {
         principals?: string[];
     }
 
-    export interface AuthzPolicyCustomProvider {
-        /**
-         * Delegate authorization decision to user authored Service Extension. Only one of cloudIap or authzExtension can be specified.
-         * Structure is documented below.
-         */
-        authzExtension?: outputs.networksecurity.AuthzPolicyCustomProviderAuthzExtension;
-        /**
-         * Delegates authorization decisions to Cloud IAP. Applicable only for managed load balancers. Enabling Cloud IAP at the AuthzPolicy level is not compatible with Cloud IAP settings in the BackendService. Enabling IAP in both places will result in request failure. Ensure that IAP is enabled in either the AuthzPolicy or the BackendService but not in both places.
-         * Structure is documented below.
-         */
-        cloudIap?: outputs.networksecurity.AuthzPolicyCustomProviderCloudIap;
-    }
-
-    export interface AuthzPolicyCustomProviderAuthzExtension {
-        /**
-         * A list of references to authorization extensions that will be invoked for requests matching this policy. Limited to 1 custom provider.
-         */
-        resources: string[];
-    }
-
-    export interface AuthzPolicyCustomProviderCloudIap {
-        /**
-         * Enable Cloud IAP at the AuthzPolicy level.
-         */
-        enabled: boolean;
-    }
-
-    export interface AuthzPolicyHttpRule {
-        /**
-         * Describes properties of one or more sources of a request.
-         * Structure is documented below.
-         */
-        from?: outputs.networksecurity.AuthzPolicyHttpRuleFrom;
-        /**
-         * Describes properties of one or more targets of a request
-         * Structure is documented below.
-         */
-        to?: outputs.networksecurity.AuthzPolicyHttpRuleTo;
-        /**
-         * CEL expression that describes the conditions to be satisfied for the action. The result of the CEL expression is ANDed with the from and to. Refer to the CEL language reference for a list of available attributes.
-         */
-        when?: string;
-    }
-
-    export interface AuthzPolicyHttpRuleFrom {
-        /**
-         * Describes the properties of a request's sources. At least one of sources or notSources must be specified. Limited to 5 sources. A match occurs when ANY source (in sources or notSources) matches the request. Within a single source, the match follows AND semantics across fields and OR semantics within a single field, i.e. a match occurs when ANY principal matches AND ANY ipBlocks match.
-         * Structure is documented below.
-         */
-        notSources?: outputs.networksecurity.AuthzPolicyHttpRuleFromNotSource[];
-        /**
-         * Describes the properties of a request's sources. At least one of sources or notSources must be specified. Limited to 5 sources. A match occurs when ANY source (in sources or notSources) matches the request. Within a single source, the match follows AND semantics across fields and OR semantics within a single field, i.e. a match occurs when ANY principal matches AND ANY ipBlocks match.
-         * Structure is documented below.
-         */
-        sources?: outputs.networksecurity.AuthzPolicyHttpRuleFromSource[];
-    }
-
-    export interface AuthzPolicyHttpRuleFromNotSource {
-        /**
-         * A list of identities derived from the client's certificate. This field will not match on a request unless mutual TLS is enabled for the Forwarding rule or Gateway. Each identity is a string whose value is matched against the URI SAN, or DNS SAN or the subject field in the client's certificate. The match can be exact, prefix, suffix or a substring match. One of exact, prefix, suffix or contains must be specified.
-         * Limited to 5 principals.
-         * Structure is documented below.
-         */
-        principals?: outputs.networksecurity.AuthzPolicyHttpRuleFromNotSourcePrincipal[];
-        /**
-         * A list of resources to match against the resource of the source VM of a request.
-         * Limited to 5 resources.
-         * Structure is documented below.
-         */
-        resources?: outputs.networksecurity.AuthzPolicyHttpRuleFromNotSourceResource[];
-    }
-
-    export interface AuthzPolicyHttpRuleFromNotSourcePrincipal {
-        /**
-         * The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
-         * Examples:
-         * * abc matches the value xyz.abc.def
-         */
-        contains?: string;
-        /**
-         * The input string must match exactly the string specified here.
-         * Examples:
-         * * abc only matches the value abc.
-         */
-        exact?: string;
-        /**
-         * If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
-         */
-        ignoreCase?: boolean;
-        /**
-         * The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
-         * Examples:
-         * * abc matches the value abc.xyz
-         */
-        prefix?: string;
-        /**
-         * The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
-         * Examples:
-         * * abc matches the value xyz.abc
-         */
-        suffix?: string;
-    }
-
-    export interface AuthzPolicyHttpRuleFromNotSourceResource {
-        /**
-         * An IAM service account to match against the source service account of the VM sending the request.
-         * Structure is documented below.
-         */
-        iamServiceAccount?: outputs.networksecurity.AuthzPolicyHttpRuleFromNotSourceResourceIamServiceAccount;
-        /**
-         * A list of resource tag value permanent IDs to match against the resource manager tags value associated with the source VM of a request.
-         * Structure is documented below.
-         */
-        tagValueIdSet?: outputs.networksecurity.AuthzPolicyHttpRuleFromNotSourceResourceTagValueIdSet;
-    }
-
-    export interface AuthzPolicyHttpRuleFromNotSourceResourceIamServiceAccount {
-        /**
-         * The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
-         * Examples:
-         * * abc matches the value xyz.abc.def
-         */
-        contains?: string;
-        /**
-         * The input string must match exactly the string specified here.
-         * Examples:
-         * * abc only matches the value abc.
-         */
-        exact?: string;
-        /**
-         * If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
-         */
-        ignoreCase?: boolean;
-        /**
-         * The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
-         * Examples:
-         * * abc matches the value abc.xyz
-         */
-        prefix?: string;
-        /**
-         * The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
-         * Examples:
-         * * abc matches the value xyz.abc
-         */
-        suffix?: string;
-    }
-
-    export interface AuthzPolicyHttpRuleFromNotSourceResourceTagValueIdSet {
-        /**
-         * A list of resource tag value permanent IDs to match against the resource manager tags value associated with the source VM of a request. The match follows AND semantics which means all the ids must match.
-         * Limited to 5 matches.
-         */
-        ids?: string[];
-    }
-
-    export interface AuthzPolicyHttpRuleFromSource {
-        /**
-         * A list of identities derived from the client's certificate. This field will not match on a request unless mutual TLS is enabled for the Forwarding rule or Gateway. Each identity is a string whose value is matched against the URI SAN, or DNS SAN or the subject field in the client's certificate. The match can be exact, prefix, suffix or a substring match. One of exact, prefix, suffix or contains must be specified.
-         * Limited to 5 principals.
-         * Structure is documented below.
-         */
-        principals?: outputs.networksecurity.AuthzPolicyHttpRuleFromSourcePrincipal[];
-        /**
-         * A list of resources to match against the resource of the source VM of a request.
-         * Limited to 5 resources.
-         * Structure is documented below.
-         */
-        resources?: outputs.networksecurity.AuthzPolicyHttpRuleFromSourceResource[];
-    }
-
-    export interface AuthzPolicyHttpRuleFromSourcePrincipal {
-        /**
-         * The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
-         * Examples:
-         * * abc matches the value xyz.abc.def
-         */
-        contains?: string;
-        /**
-         * The input string must match exactly the string specified here.
-         * Examples:
-         * * abc only matches the value abc.
-         */
-        exact?: string;
-        /**
-         * If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
-         */
-        ignoreCase?: boolean;
-        /**
-         * The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
-         * Examples:
-         * * abc matches the value abc.xyz
-         */
-        prefix?: string;
-        /**
-         * The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
-         * Examples:
-         * * abc matches the value xyz.abc
-         */
-        suffix?: string;
-    }
-
-    export interface AuthzPolicyHttpRuleFromSourceResource {
-        /**
-         * An IAM service account to match against the source service account of the VM sending the request.
-         * Structure is documented below.
-         */
-        iamServiceAccount?: outputs.networksecurity.AuthzPolicyHttpRuleFromSourceResourceIamServiceAccount;
-        /**
-         * A list of resource tag value permanent IDs to match against the resource manager tags value associated with the source VM of a request.
-         * Structure is documented below.
-         */
-        tagValueIdSet?: outputs.networksecurity.AuthzPolicyHttpRuleFromSourceResourceTagValueIdSet;
-    }
-
-    export interface AuthzPolicyHttpRuleFromSourceResourceIamServiceAccount {
-        /**
-         * The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
-         * Examples:
-         * * abc matches the value xyz.abc.def
-         */
-        contains?: string;
-        /**
-         * The input string must match exactly the string specified here.
-         * Examples:
-         * * abc only matches the value abc.
-         */
-        exact?: string;
-        /**
-         * If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
-         */
-        ignoreCase?: boolean;
-        /**
-         * The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
-         * Examples:
-         * * abc matches the value abc.xyz
-         */
-        prefix?: string;
-        /**
-         * The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
-         * Examples:
-         * * abc matches the value xyz.abc
-         */
-        suffix?: string;
-    }
-
-    export interface AuthzPolicyHttpRuleFromSourceResourceTagValueIdSet {
-        /**
-         * A list of resource tag value permanent IDs to match against the resource manager tags value associated with the source VM of a request. The match follows AND semantics which means all the ids must match.
-         * Limited to 5 matches.
-         */
-        ids?: string[];
-    }
-
-    export interface AuthzPolicyHttpRuleTo {
-        /**
-         * Describes properties of one or more targets of a request. At least one of operations or notOperations must be specified. Limited to 5 operations. A match occurs when ANY operation (in operations or notOperations) matches. Within an operation, the match follows AND semantics across fields and OR semantics within a field, i.e. a match occurs when ANY path matches AND ANY header matches and ANY method matches.
-         * Structure is documented below.
-         */
-        operations?: outputs.networksecurity.AuthzPolicyHttpRuleToOperation[];
-    }
-
-    export interface AuthzPolicyHttpRuleToOperation {
-        /**
-         * A list of headers to match against in http header.
-         * Structure is documented below.
-         */
-        headerSet?: outputs.networksecurity.AuthzPolicyHttpRuleToOperationHeaderSet;
-        /**
-         * A list of HTTP Hosts to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
-         * Limited to 5 matches.
-         * Structure is documented below.
-         */
-        hosts?: outputs.networksecurity.AuthzPolicyHttpRuleToOperationHost[];
-        /**
-         * A list of HTTP methods to match against. Each entry must be a valid HTTP method name (GET, PUT, POST, HEAD, PATCH, DELETE, OPTIONS). It only allows exact match and is always case sensitive.
-         */
-        methods?: string[];
-        /**
-         * A list of paths to match against. The match can be one of exact, prefix, suffix, or contains (substring match). Matches are always case sensitive unless the ignoreCase is set.
-         * Limited to 5 matches.
-         * Note that this path match includes the query parameters. For gRPC services, this should be a fully-qualified name of the form /package.service/method.
-         * Structure is documented below.
-         */
-        paths?: outputs.networksecurity.AuthzPolicyHttpRuleToOperationPath[];
-    }
-
-    export interface AuthzPolicyHttpRuleToOperationHeaderSet {
-        /**
-         * A list of headers to match against in http header. The match can be one of exact, prefix, suffix, or contains (substring match). The match follows AND semantics which means all the headers must match. Matches are always case sensitive unless the ignoreCase is set. Limited to 5 matches.
-         * Structure is documented below.
-         */
-        headers?: outputs.networksecurity.AuthzPolicyHttpRuleToOperationHeaderSetHeader[];
-    }
-
-    export interface AuthzPolicyHttpRuleToOperationHeaderSetHeader {
-        /**
-         * Specifies the name of the header in the request.
-         */
-        name?: string;
-        /**
-         * Specifies how the header match will be performed.
-         * Structure is documented below.
-         */
-        value?: outputs.networksecurity.AuthzPolicyHttpRuleToOperationHeaderSetHeaderValue;
-    }
-
-    export interface AuthzPolicyHttpRuleToOperationHeaderSetHeaderValue {
-        /**
-         * The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
-         * Examples:
-         * * abc matches the value xyz.abc.def
-         */
-        contains?: string;
-        /**
-         * The input string must match exactly the string specified here.
-         * Examples:
-         * * abc only matches the value abc.
-         */
-        exact?: string;
-        /**
-         * If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
-         */
-        ignoreCase?: boolean;
-        /**
-         * The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
-         * Examples:
-         * * abc matches the value abc.xyz
-         */
-        prefix?: string;
-        /**
-         * The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
-         * Examples:
-         * * abc matches the value xyz.abc
-         */
-        suffix?: string;
-    }
-
-    export interface AuthzPolicyHttpRuleToOperationHost {
-        /**
-         * The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
-         * Examples:
-         * * abc matches the value xyz.abc.def
-         */
-        contains?: string;
-        /**
-         * The input string must match exactly the string specified here.
-         * Examples:
-         * * abc only matches the value abc.
-         */
-        exact?: string;
-        /**
-         * If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
-         */
-        ignoreCase?: boolean;
-        /**
-         * The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
-         * Examples:
-         * * abc matches the value abc.xyz
-         */
-        prefix?: string;
-        /**
-         * The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
-         * Examples:
-         * * abc matches the value xyz.abc
-         */
-        suffix?: string;
-    }
-
-    export interface AuthzPolicyHttpRuleToOperationPath {
-        /**
-         * The input string must have the substring specified here. Note: empty contains match is not allowed, please use regex instead.
-         * Examples:
-         * * abc matches the value xyz.abc.def
-         */
-        contains?: string;
-        /**
-         * The input string must match exactly the string specified here.
-         * Examples:
-         * * abc only matches the value abc.
-         */
-        exact?: string;
-        /**
-         * If true, indicates the exact/prefix/suffix/contains matching should be case insensitive. For example, the matcher data will match both input string Data and data if set to true.
-         */
-        ignoreCase?: boolean;
-        /**
-         * The input string must have the prefix specified here. Note: empty prefix is not allowed, please use regex instead.
-         * Examples:
-         * * abc matches the value abc.xyz
-         */
-        prefix?: string;
-        /**
-         * The input string must have the suffix specified here. Note: empty prefix is not allowed, please use regex instead.
-         * Examples:
-         * * abc matches the value xyz.abc
-         */
-        suffix?: string;
-    }
-
-    export interface AuthzPolicyTarget {
-        /**
-         * All gateways and forwarding rules referenced by this policy and extensions must share the same load balancing scheme.
-         * For more information, refer to [Backend services overview](https://cloud.google.com/load-balancing/docs/backend-service).
-         * Possible values are: `INTERNAL_MANAGED`, `EXTERNAL_MANAGED`, `INTERNAL_SELF_MANAGED`.
-         */
-        loadBalancingScheme: string;
-        /**
-         * A list of references to the Forwarding Rules on which this policy will be applied.
-         *
-         * - - -
-         */
-        resources?: string[];
-    }
-
     export interface ClientTlsPolicyClientCertificate {
         /**
          * The certificate provider instance specification that will be passed to the data plane, which will be used to load necessary credential information.
@@ -75677,14 +75249,6 @@ export namespace networksecurity {
          * The target URI of the gRPC endpoint. Only UDS path is supported, and should start with "unix:".
          */
         targetUri: string;
-    }
-
-    export interface InterceptDeploymentGroupConnectedEndpointGroup {
-        /**
-         * (Output)
-         * Output only. A connected intercept endpoint group.
-         */
-        name: string;
     }
 
     export interface MirroringDeploymentGroupConnectedEndpointGroup {
@@ -81581,10 +81145,6 @@ export namespace orgpolicy {
          */
         enforce?: string;
         /**
-         * Optional. Required for Managed Constraints if parameters defined in constraints. Pass parameter values when policy enforcement is enabled. Ensure that parameter value types match those defined in the constraint definition. For example: { \"allowedLocations\" : [\"us-east1\", \"us-west1\"], \"allowAll\" : true }
-         */
-        parameters?: string;
-        /**
          * List of values to be used for this policy rule. This field can be set only in policies for list constraints.
          * Structure is documented below.
          */
@@ -81665,10 +81225,6 @@ export namespace orgpolicy {
          * If `"TRUE"`, then the `Policy` is enforced. If `"FALSE"`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
          */
         enforce?: string;
-        /**
-         * Optional. Required for Managed Constraints if parameters defined in constraints. Pass parameter values when policy enforcement is enabled. Ensure that parameter value types match those defined in the constraint definition. For example: { \"allowedLocations\" : [\"us-east1\", \"us-west1\"], \"allowAll\" : true }
-         */
-        parameters?: string;
         /**
          * List of values to be used for this policy rule. This field can be set only in policies for list constraints.
          * Structure is documented below.
@@ -88270,7 +87826,7 @@ export namespace sql {
          */
         collation?: string;
         /**
-         * Control the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections, can be `REQUIRED` or `NOT_REQUIRED`. If enabled, all the direct connections are rejected.
+         * Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
          */
         connectorEnforcement: string;
         /**
@@ -90567,10 +90123,6 @@ export namespace storage {
          */
         gcsDataSource?: outputs.storage.TransferJobTransferSpecGcsDataSource;
         /**
-         * An HDFS data source. Structure documented below.
-         */
-        hdfsDataSource?: outputs.storage.TransferJobTransferSpecHdfsDataSource;
-        /**
          * A HTTP URL data source. Structure documented below.
          */
         httpDataSource?: outputs.storage.TransferJobTransferSpecHttpDataSource;
@@ -90684,13 +90236,6 @@ export namespace storage {
         path: string;
     }
 
-    export interface TransferJobTransferSpecHdfsDataSource {
-        /**
-         * Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
-         */
-        path: string;
-    }
-
     export interface TransferJobTransferSpecHttpDataSource {
         /**
          * The URL that points to the file that stores the object list entries. This file must allow public access. Currently, only URLs with HTTP and HTTPS schemes are supported.
@@ -90735,6 +90280,8 @@ export namespace storage {
     export interface TransferJobTransferSpecPosixDataSource {
         /**
          * Root directory path to the filesystem.
+         *
+         * <a name="nestedAwsS3DataSource"></a>The `awsS3DataSource` block supports:
          */
         rootDirectory: string;
     }
@@ -90961,16 +90508,16 @@ export namespace tpu {
         enableExternalIps?: boolean;
         /**
          * The name of the network for the TPU node. It must be a preexisting Google Compute Engine
-         * network. If none is provided, "default" will be used.
+         * network. If both network and subnetwork are specified, the given subnetwork must belong
+         * to the given network. If network is not specified, it will be looked up from the
+         * subnetwork if one is provided, or otherwise use "default".
          */
         network: string;
         /**
-         * Specifies networking queue count for TPU VM instance's network interface.
-         */
-        queueCount?: number;
-        /**
          * The name of the subnetwork for the TPU node. It must be a preexisting Google Compute
-         * Engine subnetwork. If none is provided, "default" will be used.
+         * Engine subnetwork. If both network and subnetwork are specified, the given subnetwork
+         * must belong to the given network. If subnetwork is not specified, the subnetwork with the
+         * same name as the network will be used.
          */
         subnetwork: string;
     }

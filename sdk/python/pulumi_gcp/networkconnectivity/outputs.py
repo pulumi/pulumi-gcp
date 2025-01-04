@@ -823,18 +823,20 @@ class SpokeLinkedRouterApplianceInstancesInstance(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 ip_address: str,
-                 virtual_machine: str):
+                 ip_address: Optional[str] = None,
+                 virtual_machine: Optional[str] = None):
         """
         :param str ip_address: The IP address on the VM to use for peering.
         :param str virtual_machine: The URI of the virtual machine resource
         """
-        pulumi.set(__self__, "ip_address", ip_address)
-        pulumi.set(__self__, "virtual_machine", virtual_machine)
+        if ip_address is not None:
+            pulumi.set(__self__, "ip_address", ip_address)
+        if virtual_machine is not None:
+            pulumi.set(__self__, "virtual_machine", virtual_machine)
 
     @property
     @pulumi.getter(name="ipAddress")
-    def ip_address(self) -> str:
+    def ip_address(self) -> Optional[str]:
         """
         The IP address on the VM to use for peering.
         """
@@ -842,7 +844,7 @@ class SpokeLinkedRouterApplianceInstancesInstance(dict):
 
     @property
     @pulumi.getter(name="virtualMachine")
-    def virtual_machine(self) -> str:
+    def virtual_machine(self) -> Optional[str]:
         """
         The URI of the virtual machine resource
         """

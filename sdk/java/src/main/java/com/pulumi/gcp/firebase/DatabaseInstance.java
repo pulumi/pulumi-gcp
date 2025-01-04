@@ -103,12 +103,10 @@ import javax.annotation.Nullable;
  * import com.pulumi.core.Output;
  * import com.pulumi.gcp.organizations.Project;
  * import com.pulumi.gcp.organizations.ProjectArgs;
- * import com.pulumi.gcp.projects.Service;
- * import com.pulumi.gcp.projects.ServiceArgs;
  * import com.pulumi.gcp.firebase.Project;
  * import com.pulumi.gcp.firebase.ProjectArgs;
- * import com.pulumi.time.sleep;
- * import com.pulumi.time.SleepArgs;
+ * import com.pulumi.gcp.projects.Service;
+ * import com.pulumi.gcp.projects.ServiceArgs;
  * import com.pulumi.gcp.firebase.DatabaseInstance;
  * import com.pulumi.gcp.firebase.DatabaseInstanceArgs;
  * import com.pulumi.resources.CustomResourceOptions;
@@ -133,29 +131,14 @@ import javax.annotation.Nullable;
  *             .labels(Map.of("firebase", "enabled"))
  *             .build());
  * 
- *         var firebase = new Service("firebase", ServiceArgs.builder()
- *             .project(default_.projectId())
- *             .service("firebase.googleapis.com")
- *             .disableOnDestroy(false)
- *             .build());
- * 
  *         var defaultProject = new Project("defaultProject", ProjectArgs.builder()
  *             .project(default_.projectId())
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(firebase)
- *                 .build());
+ *             .build());
  * 
  *         var firebaseDatabase = new Service("firebaseDatabase", ServiceArgs.builder()
  *             .project(defaultProject.project())
  *             .service("firebasedatabase.googleapis.com")
- *             .disableOnDestroy(false)
  *             .build());
- * 
- *         var wait60Seconds = new Sleep("wait60Seconds", SleepArgs.builder()
- *             .createDuration("60s")
- *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(firebaseDatabase)
- *                 .build());
  * 
  *         var defaultDatabaseInstance = new DatabaseInstance("defaultDatabaseInstance", DatabaseInstanceArgs.builder()
  *             .project(defaultProject.project())
@@ -163,7 +146,7 @@ import javax.annotation.Nullable;
  *             .instanceId("rtdb-project-default-rtdb")
  *             .type("DEFAULT_DATABASE")
  *             .build(), CustomResourceOptions.builder()
- *                 .dependsOn(wait60Seconds)
+ *                 .dependsOn(firebaseDatabase)
  *                 .build());
  * 
  *     }

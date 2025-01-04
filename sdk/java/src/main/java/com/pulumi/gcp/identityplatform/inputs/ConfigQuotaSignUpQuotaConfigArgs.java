@@ -17,14 +17,14 @@ public final class ConfigQuotaSignUpQuotaConfigArgs extends com.pulumi.resources
     public static final ConfigQuotaSignUpQuotaConfigArgs Empty = new ConfigQuotaSignUpQuotaConfigArgs();
 
     /**
-     * A sign up APIs quota that customers can override temporarily. Value can be in between 1 and 1000.
+     * A sign up APIs quota that customers can override temporarily.
      * 
      */
     @Import(name="quota")
     private @Nullable Output<Integer> quota;
 
     /**
-     * @return A sign up APIs quota that customers can override temporarily. Value can be in between 1 and 1000.
+     * @return A sign up APIs quota that customers can override temporarily.
      * 
      */
     public Optional<Output<Integer>> quota() {
@@ -88,7 +88,7 @@ public final class ConfigQuotaSignUpQuotaConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param quota A sign up APIs quota that customers can override temporarily. Value can be in between 1 and 1000.
+         * @param quota A sign up APIs quota that customers can override temporarily.
          * 
          * @return builder
          * 
@@ -99,7 +99,7 @@ public final class ConfigQuotaSignUpQuotaConfigArgs extends com.pulumi.resources
         }
 
         /**
-         * @param quota A sign up APIs quota that customers can override temporarily. Value can be in between 1 and 1000.
+         * @param quota A sign up APIs quota that customers can override temporarily.
          * 
          * @return builder
          * 

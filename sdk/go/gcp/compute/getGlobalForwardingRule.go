@@ -77,7 +77,6 @@ type LookupGlobalForwardingRuleResult struct {
 	MetadataFilters               []GetGlobalForwardingRuleMetadataFilter               `pulumi:"metadataFilters"`
 	Name                          string                                                `pulumi:"name"`
 	Network                       string                                                `pulumi:"network"`
-	NetworkTier                   string                                                `pulumi:"networkTier"`
 	NoAutomateDnsZone             bool                                                  `pulumi:"noAutomateDnsZone"`
 	PortRange                     string                                                `pulumi:"portRange"`
 	Project                       *string                                               `pulumi:"project"`
@@ -191,10 +190,6 @@ func (o LookupGlobalForwardingRuleResultOutput) Name() pulumi.StringOutput {
 
 func (o LookupGlobalForwardingRuleResultOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupGlobalForwardingRuleResult) string { return v.Network }).(pulumi.StringOutput)
-}
-
-func (o LookupGlobalForwardingRuleResultOutput) NetworkTier() pulumi.StringOutput {
-	return o.ApplyT(func(v LookupGlobalForwardingRuleResult) string { return v.NetworkTier }).(pulumi.StringOutput)
 }
 
 func (o LookupGlobalForwardingRuleResultOutput) NoAutomateDnsZone() pulumi.BoolOutput {

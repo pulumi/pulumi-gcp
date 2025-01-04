@@ -443,16 +443,16 @@ if not MYPY:
         network: NotRequired[pulumi.Input[str]]
         """
         The name of the network for the TPU node. It must be a preexisting Google Compute Engine
-        network. If none is provided, "default" will be used.
-        """
-        queue_count: NotRequired[pulumi.Input[int]]
-        """
-        Specifies networking queue count for TPU VM instance's network interface.
+        network. If both network and subnetwork are specified, the given subnetwork must belong
+        to the given network. If network is not specified, it will be looked up from the
+        subnetwork if one is provided, or otherwise use "default".
         """
         subnetwork: NotRequired[pulumi.Input[str]]
         """
         The name of the subnetwork for the TPU node. It must be a preexisting Google Compute
-        Engine subnetwork. If none is provided, "default" will be used.
+        Engine subnetwork. If both network and subnetwork are specified, the given subnetwork
+        must belong to the given network. If subnetwork is not specified, the subnetwork with the
+        same name as the network will be used.
         """
 elif False:
     V2VmNetworkConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -463,7 +463,6 @@ class V2VmNetworkConfigArgs:
                  can_ip_forward: Optional[pulumi.Input[bool]] = None,
                  enable_external_ips: Optional[pulumi.Input[bool]] = None,
                  network: Optional[pulumi.Input[str]] = None,
-                 queue_count: Optional[pulumi.Input[int]] = None,
                  subnetwork: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[bool] can_ip_forward: Allows the TPU node to send and receive packets with non-matching destination or source
@@ -471,10 +470,13 @@ class V2VmNetworkConfigArgs:
         :param pulumi.Input[bool] enable_external_ips: Indicates that external IP addresses would be associated with the TPU workers. If set to
                false, the specified subnetwork or network should have Private Google Access enabled.
         :param pulumi.Input[str] network: The name of the network for the TPU node. It must be a preexisting Google Compute Engine
-               network. If none is provided, "default" will be used.
-        :param pulumi.Input[int] queue_count: Specifies networking queue count for TPU VM instance's network interface.
+               network. If both network and subnetwork are specified, the given subnetwork must belong
+               to the given network. If network is not specified, it will be looked up from the
+               subnetwork if one is provided, or otherwise use "default".
         :param pulumi.Input[str] subnetwork: The name of the subnetwork for the TPU node. It must be a preexisting Google Compute
-               Engine subnetwork. If none is provided, "default" will be used.
+               Engine subnetwork. If both network and subnetwork are specified, the given subnetwork
+               must belong to the given network. If subnetwork is not specified, the subnetwork with the
+               same name as the network will be used.
         """
         if can_ip_forward is not None:
             pulumi.set(__self__, "can_ip_forward", can_ip_forward)
@@ -482,8 +484,6 @@ class V2VmNetworkConfigArgs:
             pulumi.set(__self__, "enable_external_ips", enable_external_ips)
         if network is not None:
             pulumi.set(__self__, "network", network)
-        if queue_count is not None:
-            pulumi.set(__self__, "queue_count", queue_count)
         if subnetwork is not None:
             pulumi.set(__self__, "subnetwork", subnetwork)
 
@@ -518,7 +518,9 @@ class V2VmNetworkConfigArgs:
     def network(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the network for the TPU node. It must be a preexisting Google Compute Engine
-        network. If none is provided, "default" will be used.
+        network. If both network and subnetwork are specified, the given subnetwork must belong
+        to the given network. If network is not specified, it will be looked up from the
+        subnetwork if one is provided, or otherwise use "default".
         """
         return pulumi.get(self, "network")
 
@@ -527,23 +529,13 @@ class V2VmNetworkConfigArgs:
         pulumi.set(self, "network", value)
 
     @property
-    @pulumi.getter(name="queueCount")
-    def queue_count(self) -> Optional[pulumi.Input[int]]:
-        """
-        Specifies networking queue count for TPU VM instance's network interface.
-        """
-        return pulumi.get(self, "queue_count")
-
-    @queue_count.setter
-    def queue_count(self, value: Optional[pulumi.Input[int]]):
-        pulumi.set(self, "queue_count", value)
-
-    @property
     @pulumi.getter
     def subnetwork(self) -> Optional[pulumi.Input[str]]:
         """
         The name of the subnetwork for the TPU node. It must be a preexisting Google Compute
-        Engine subnetwork. If none is provided, "default" will be used.
+        Engine subnetwork. If both network and subnetwork are specified, the given subnetwork
+        must belong to the given network. If subnetwork is not specified, the subnetwork with the
+        same name as the network will be used.
         """
         return pulumi.get(self, "subnetwork")
 

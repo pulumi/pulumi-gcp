@@ -5,7 +5,6 @@ package com.pulumi.gcp.tpu.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import java.lang.Boolean;
-import java.lang.Integer;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -27,18 +26,17 @@ public final class V2VmNetworkConfig {
     private @Nullable Boolean enableExternalIps;
     /**
      * @return The name of the network for the TPU node. It must be a preexisting Google Compute Engine
-     * network. If none is provided, &#34;default&#34; will be used.
+     * network. If both network and subnetwork are specified, the given subnetwork must belong
+     * to the given network. If network is not specified, it will be looked up from the
+     * subnetwork if one is provided, or otherwise use &#34;default&#34;.
      * 
      */
     private @Nullable String network;
     /**
-     * @return Specifies networking queue count for TPU VM instance&#39;s network interface.
-     * 
-     */
-    private @Nullable Integer queueCount;
-    /**
      * @return The name of the subnetwork for the TPU node. It must be a preexisting Google Compute
-     * Engine subnetwork. If none is provided, &#34;default&#34; will be used.
+     * Engine subnetwork. If both network and subnetwork are specified, the given subnetwork
+     * must belong to the given network. If subnetwork is not specified, the subnetwork with the
+     * same name as the network will be used.
      * 
      */
     private @Nullable String subnetwork;
@@ -62,22 +60,19 @@ public final class V2VmNetworkConfig {
     }
     /**
      * @return The name of the network for the TPU node. It must be a preexisting Google Compute Engine
-     * network. If none is provided, &#34;default&#34; will be used.
+     * network. If both network and subnetwork are specified, the given subnetwork must belong
+     * to the given network. If network is not specified, it will be looked up from the
+     * subnetwork if one is provided, or otherwise use &#34;default&#34;.
      * 
      */
     public Optional<String> network() {
         return Optional.ofNullable(this.network);
     }
     /**
-     * @return Specifies networking queue count for TPU VM instance&#39;s network interface.
-     * 
-     */
-    public Optional<Integer> queueCount() {
-        return Optional.ofNullable(this.queueCount);
-    }
-    /**
      * @return The name of the subnetwork for the TPU node. It must be a preexisting Google Compute
-     * Engine subnetwork. If none is provided, &#34;default&#34; will be used.
+     * Engine subnetwork. If both network and subnetwork are specified, the given subnetwork
+     * must belong to the given network. If subnetwork is not specified, the subnetwork with the
+     * same name as the network will be used.
      * 
      */
     public Optional<String> subnetwork() {
@@ -96,7 +91,6 @@ public final class V2VmNetworkConfig {
         private @Nullable Boolean canIpForward;
         private @Nullable Boolean enableExternalIps;
         private @Nullable String network;
-        private @Nullable Integer queueCount;
         private @Nullable String subnetwork;
         public Builder() {}
         public Builder(V2VmNetworkConfig defaults) {
@@ -104,7 +98,6 @@ public final class V2VmNetworkConfig {
     	      this.canIpForward = defaults.canIpForward;
     	      this.enableExternalIps = defaults.enableExternalIps;
     	      this.network = defaults.network;
-    	      this.queueCount = defaults.queueCount;
     	      this.subnetwork = defaults.subnetwork;
         }
 
@@ -127,12 +120,6 @@ public final class V2VmNetworkConfig {
             return this;
         }
         @CustomType.Setter
-        public Builder queueCount(@Nullable Integer queueCount) {
-
-            this.queueCount = queueCount;
-            return this;
-        }
-        @CustomType.Setter
         public Builder subnetwork(@Nullable String subnetwork) {
 
             this.subnetwork = subnetwork;
@@ -143,7 +130,6 @@ public final class V2VmNetworkConfig {
             _resultValue.canIpForward = canIpForward;
             _resultValue.enableExternalIps = enableExternalIps;
             _resultValue.network = network;
-            _resultValue.queueCount = queueCount;
             _resultValue.subnetwork = subnetwork;
             return _resultValue;
         }

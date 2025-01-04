@@ -137,7 +137,7 @@ import javax.annotation.Nullable;
 public class ProjectCloudArmorTier extends com.pulumi.resources.CustomResource {
     /**
      * Managed protection tier to be set.
-     * Possible values are: `CA_STANDARD`, `CA_ENTERPRISE_PAYGO`, `CA_ENTERPRISE_ANNUAL`.
+     * Possible values are: `CA_STANDARD`, `CA_ENTERPRISE_PAYGO`.
      * 
      * ***
      * 
@@ -147,7 +147,7 @@ public class ProjectCloudArmorTier extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Managed protection tier to be set.
-     * Possible values are: `CA_STANDARD`, `CA_ENTERPRISE_PAYGO`, `CA_ENTERPRISE_ANNUAL`.
+     * Possible values are: `CA_STANDARD`, `CA_ENTERPRISE_PAYGO`.
      * 
      * ***
      * 

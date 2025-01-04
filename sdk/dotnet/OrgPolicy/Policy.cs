@@ -41,8 +41,8 @@ namespace Pulumi.Gcp.OrgPolicy
     /// 
     ///     var primary = new Gcp.OrgPolicy.Policy("primary", new()
     ///     {
-    ///         Name = basic.ProjectId.Apply(projectId =&gt; $"projects/{projectId}/policies/iam.disableServiceAccountKeyUpload"),
-    ///         Parent = basic.ProjectId.Apply(projectId =&gt; $"projects/{projectId}"),
+    ///         Name = basic.Name.Apply(name =&gt; $"projects/{name}/policies/iam.disableServiceAccountKeyUpload"),
+    ///         Parent = basic.Name.Apply(name =&gt; $"projects/{name}"),
     ///         Spec = new Gcp.OrgPolicy.Inputs.PolicySpecArgs
     ///         {
     ///             Rules = new[]
@@ -135,8 +135,8 @@ namespace Pulumi.Gcp.OrgPolicy
     /// 
     ///     var primary = new Gcp.OrgPolicy.Policy("primary", new()
     ///     {
-    ///         Name = basic.ProjectId.Apply(projectId =&gt; $"projects/{projectId}/policies/gcp.resourceLocations"),
-    ///         Parent = basic.ProjectId.Apply(projectId =&gt; $"projects/{projectId}"),
+    ///         Name = basic.Name.Apply(name =&gt; $"projects/{name}/policies/gcp.resourceLocations"),
+    ///         Parent = basic.Name.Apply(name =&gt; $"projects/{name}"),
     ///         Spec = new Gcp.OrgPolicy.Inputs.PolicySpecArgs
     ///         {
     ///             Rules = new[]
@@ -223,52 +223,6 @@ namespace Pulumi.Gcp.OrgPolicy
     ///                 new Gcp.OrgPolicy.Inputs.PolicyDryRunSpecRuleArgs
     ///                 {
     ///                     Enforce = "FALSE",
-    ///                 },
-    ///             },
-    ///         },
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// ### Org Policy Policy Parameters Enforce
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using System.Text.Json;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var basic = new Gcp.Organizations.Project("basic", new()
-    ///     {
-    ///         ProjectId = "id",
-    ///         Name = "id",
-    ///         OrgId = "123456789",
-    ///         DeletionPolicy = "DELETE",
-    ///     });
-    /// 
-    ///     var primary = new Gcp.OrgPolicy.Policy("primary", new()
-    ///     {
-    ///         Name = basic.Name.Apply(name =&gt; $"projects/{name}/policies/compute.managed.restrictDiskCreation"),
-    ///         Parent = basic.Name.Apply(name =&gt; $"projects/{name}"),
-    ///         Spec = new Gcp.OrgPolicy.Inputs.PolicySpecArgs
-    ///         {
-    ///             Rules = new[]
-    ///             {
-    ///                 new Gcp.OrgPolicy.Inputs.PolicySpecRuleArgs
-    ///                 {
-    ///                     Enforce = "TRUE",
-    ///                     Parameters = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
-    ///                     {
-    ///                         ["isSizeLimitCheck"] = true,
-    ///                         ["allowedDiskTypes"] = new[]
-    ///                         {
-    ///                             "pd-ssd",
-    ///                             "pd-standard",
-    ///                         },
-    ///                     }),
     ///                 },
     ///             },
     ///         },

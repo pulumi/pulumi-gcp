@@ -131,6 +131,8 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
      * You can only create alpha formats if you are a member of the
      * [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
      * 
+     * ***
+     * 
      */
     @Import(name="format")
     private @Nullable Output<String> format;
@@ -140,6 +142,8 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
      * can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
      * You can only create alpha formats if you are a member of the
      * [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> format() {
@@ -197,24 +201,14 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the repository&#39;s location. In addition to specific regions,
-     * special values for multi-region locations are `asia`, `europe`, and `us`.
-     * See [here](https://cloud.google.com/artifact-registry/docs/repositories/repo-locations),
-     * or use the
-     * gcp.artifactregistry.getLocations
-     * data source for possible values.
+     * The name of the location this repository is located in.
      * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
-     * @return The name of the repository&#39;s location. In addition to specific regions,
-     * special values for multi-region locations are `asia`, `europe`, and `us`.
-     * See [here](https://cloud.google.com/artifact-registry/docs/repositories/repo-locations),
-     * or use the
-     * gcp.artifactregistry.getLocations
-     * data source for possible values.
+     * @return The name of the location this repository is located in.
      * 
      */
     public Optional<Output<String>> location() {
@@ -333,8 +327,6 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
      * The last part of the repository name, for example:
      * &#34;repo1&#34;
      * 
-     * ***
-     * 
      */
     @Import(name="repositoryId")
     private @Nullable Output<String> repositoryId;
@@ -342,8 +334,6 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The last part of the repository name, for example:
      * &#34;repo1&#34;
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> repositoryId() {
@@ -582,6 +572,8 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
          * You can only create alpha formats if you are a member of the
          * [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -595,6 +587,8 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
          * can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
          * You can only create alpha formats if you are a member of the
          * [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
+         * 
+         * ***
          * 
          * @return builder
          * 
@@ -666,12 +660,7 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param location The name of the repository&#39;s location. In addition to specific regions,
-         * special values for multi-region locations are `asia`, `europe`, and `us`.
-         * See [here](https://cloud.google.com/artifact-registry/docs/repositories/repo-locations),
-         * or use the
-         * gcp.artifactregistry.getLocations
-         * data source for possible values.
+         * @param location The name of the location this repository is located in.
          * 
          * @return builder
          * 
@@ -682,12 +671,7 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param location The name of the repository&#39;s location. In addition to specific regions,
-         * special values for multi-region locations are `asia`, `europe`, and `us`.
-         * See [here](https://cloud.google.com/artifact-registry/docs/repositories/repo-locations),
-         * or use the
-         * gcp.artifactregistry.getLocations
-         * data source for possible values.
+         * @param location The name of the location this repository is located in.
          * 
          * @return builder
          * 
@@ -844,8 +828,6 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
          * @param repositoryId The last part of the repository name, for example:
          * &#34;repo1&#34;
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -857,8 +839,6 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param repositoryId The last part of the repository name, for example:
          * &#34;repo1&#34;
-         * 
-         * ***
          * 
          * @return builder
          * 

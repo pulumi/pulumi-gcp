@@ -25,16 +25,16 @@ namespace Pulumi.Gcp.Tpu.Outputs
         public readonly bool? EnableExternalIps;
         /// <summary>
         /// The name of the network for the TPU node. It must be a preexisting Google Compute Engine
-        /// network. If none is provided, "default" will be used.
+        /// network. If both network and subnetwork are specified, the given subnetwork must belong
+        /// to the given network. If network is not specified, it will be looked up from the
+        /// subnetwork if one is provided, or otherwise use "default".
         /// </summary>
         public readonly string? Network;
         /// <summary>
-        /// Specifies networking queue count for TPU VM instance's network interface.
-        /// </summary>
-        public readonly int? QueueCount;
-        /// <summary>
         /// The name of the subnetwork for the TPU node. It must be a preexisting Google Compute
-        /// Engine subnetwork. If none is provided, "default" will be used.
+        /// Engine subnetwork. If both network and subnetwork are specified, the given subnetwork
+        /// must belong to the given network. If subnetwork is not specified, the subnetwork with the
+        /// same name as the network will be used.
         /// </summary>
         public readonly string? Subnetwork;
 
@@ -46,14 +46,11 @@ namespace Pulumi.Gcp.Tpu.Outputs
 
             string? network,
 
-            int? queueCount,
-
             string? subnetwork)
         {
             CanIpForward = canIpForward;
             EnableExternalIps = enableExternalIps;
             Network = network;
-            QueueCount = queueCount;
             Subnetwork = subnetwork;
         }
     }

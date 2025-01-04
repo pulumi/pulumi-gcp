@@ -107,7 +107,6 @@ namespace Pulumi.Gcp.Tpu
     ///             EnableExternalIps = true,
     ///             Network = network.Id,
     ///             Subnetwork = subnet.Id,
-    ///             QueueCount = 32,
     ///         },
     ///         SchedulingConfig = new Gcp.Tpu.Inputs.V2VmSchedulingConfigArgs
     ///         {
@@ -284,14 +283,6 @@ namespace Pulumi.Gcp.Tpu
         /// </summary>
         [Output("networkConfig")]
         public Output<Outputs.V2VmNetworkConfig> NetworkConfig { get; private set; } = null!;
-
-        /// <summary>
-        /// Repeated network configurations for the TPU node. This field is used to specify multiple
-        /// network configs for the TPU node.
-        /// Structure is documented below.
-        /// </summary>
-        [Output("networkConfigs")]
-        public Output<ImmutableArray<Outputs.V2VmNetworkConfig>> NetworkConfigs { get; private set; } = null!;
 
         /// <summary>
         /// The network endpoints where TPU workers can be accessed and sent work. It is recommended that
@@ -512,20 +503,6 @@ namespace Pulumi.Gcp.Tpu
         [Input("networkConfig")]
         public Input<Inputs.V2VmNetworkConfigArgs>? NetworkConfig { get; set; }
 
-        [Input("networkConfigs")]
-        private InputList<Inputs.V2VmNetworkConfigArgs>? _networkConfigs;
-
-        /// <summary>
-        /// Repeated network configurations for the TPU node. This field is used to specify multiple
-        /// network configs for the TPU node.
-        /// Structure is documented below.
-        /// </summary>
-        public InputList<Inputs.V2VmNetworkConfigArgs> NetworkConfigs
-        {
-            get => _networkConfigs ?? (_networkConfigs = new InputList<Inputs.V2VmNetworkConfigArgs>());
-            set => _networkConfigs = value;
-        }
-
         /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
@@ -713,20 +690,6 @@ namespace Pulumi.Gcp.Tpu
         /// </summary>
         [Input("networkConfig")]
         public Input<Inputs.V2VmNetworkConfigGetArgs>? NetworkConfig { get; set; }
-
-        [Input("networkConfigs")]
-        private InputList<Inputs.V2VmNetworkConfigGetArgs>? _networkConfigs;
-
-        /// <summary>
-        /// Repeated network configurations for the TPU node. This field is used to specify multiple
-        /// network configs for the TPU node.
-        /// Structure is documented below.
-        /// </summary>
-        public InputList<Inputs.V2VmNetworkConfigGetArgs> NetworkConfigs
-        {
-            get => _networkConfigs ?? (_networkConfigs = new InputList<Inputs.V2VmNetworkConfigGetArgs>());
-            set => _networkConfigs = value;
-        }
 
         [Input("networkEndpoints")]
         private InputList<Inputs.V2VmNetworkEndpointGetArgs>? _networkEndpoints;

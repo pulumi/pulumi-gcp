@@ -14,7 +14,7 @@ import java.lang.String;
 import javax.annotation.Nullable;
 
 /**
- * A Google Cloud Firebase instance. This enables Firebase resources on a given Google Project.
+ * A Google Cloud Firebase instance. This enables Firebase resources on a given google project.
  * Since a FirebaseProject is actually also a GCP Project, a FirebaseProject uses underlying GCP
  * identifiers (most importantly, the projectId) as its own for easy interop with GCP APIs.
  * Once Firebase has been added to a Google Project it cannot be removed.
@@ -128,14 +128,14 @@ public class Project extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * The number of the Google Project that Firebase is enabled on.
+     * The number of the google project that firebase is enabled on.
      * 
      */
     @Export(name="projectNumber", refs={String.class}, tree="[0]")
     private Output<String> projectNumber;
 
     /**
-     * @return The number of the Google Project that Firebase is enabled on.
+     * @return The number of the google project that firebase is enabled on.
      * 
      */
     public Output<String> projectNumber() {

@@ -120,12 +120,8 @@ def get_repository_iam_policy(location: Optional[str] = None,
     ```
 
 
-    :param str location: The name of the repository's location. In addition to specific regions,
-           special values for multi-region locations are `asia`, `europe`, and `us`.
-           See [here](https://cloud.google.com/artifact-registry/docs/repositories/repo-locations),
-           or use the
-           artifactregistry_get_locations
-           data source for possible values. Used to find the parent resource to bind the IAM policy to. If not specified,
+    :param str location: The name of the location this repository is located in.
+           Used to find the parent resource to bind the IAM policy to. If not specified,
            the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
            location is specified, it is taken from the provider configuration.
     :param str project: The ID of the project in which the resource belongs.
@@ -165,12 +161,8 @@ def get_repository_iam_policy_output(location: Optional[pulumi.Input[Optional[st
     ```
 
 
-    :param str location: The name of the repository's location. In addition to specific regions,
-           special values for multi-region locations are `asia`, `europe`, and `us`.
-           See [here](https://cloud.google.com/artifact-registry/docs/repositories/repo-locations),
-           or use the
-           artifactregistry_get_locations
-           data source for possible values. Used to find the parent resource to bind the IAM policy to. If not specified,
+    :param str location: The name of the location this repository is located in.
+           Used to find the parent resource to bind the IAM policy to. If not specified,
            the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
            location is specified, it is taken from the provider configuration.
     :param str project: The ID of the project in which the resource belongs.

@@ -5,7 +5,7 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
- * A Google Cloud Firebase instance. This enables Firebase resources on a given Google Project.
+ * A Google Cloud Firebase instance. This enables Firebase resources on a given google project.
  * Since a FirebaseProject is actually also a GCP Project, a FirebaseProject uses underlying GCP
  * identifiers (most importantly, the projectId) as its own for easy interop with GCP APIs.
  * Once Firebase has been added to a Google Project it cannot be removed.
@@ -96,7 +96,7 @@ export class Project extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * The number of the Google Project that Firebase is enabled on.
+     * The number of the google project that firebase is enabled on.
      */
     public /*out*/ readonly projectNumber!: pulumi.Output<string>;
 
@@ -141,7 +141,7 @@ export interface ProjectState {
      */
     project?: pulumi.Input<string>;
     /**
-     * The number of the Google Project that Firebase is enabled on.
+     * The number of the google project that firebase is enabled on.
      */
     projectNumber?: pulumi.Input<string>;
 }

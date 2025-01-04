@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ConfigQuota {
     /**
-     * @return Quota for the Signup endpoint, if overwritten. Signup quota is measured in sign ups per project per hour per IP. None of quota, startTime, or quotaDuration can be skipped.
+     * @return Quota for the Signup endpoint, if overwritten. Signup quota is measured in sign ups per project per hour per IP.
      * Structure is documented below.
      * 
      */
@@ -20,7 +20,7 @@ public final class ConfigQuota {
 
     private ConfigQuota() {}
     /**
-     * @return Quota for the Signup endpoint, if overwritten. Signup quota is measured in sign ups per project per hour per IP. None of quota, startTime, or quotaDuration can be skipped.
+     * @return Quota for the Signup endpoint, if overwritten. Signup quota is measured in sign ups per project per hour per IP.
      * Structure is documented below.
      * 
      */

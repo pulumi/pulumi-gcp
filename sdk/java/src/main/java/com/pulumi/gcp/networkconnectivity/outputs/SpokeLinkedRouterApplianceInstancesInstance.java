@@ -4,9 +4,10 @@
 package com.pulumi.gcp.networkconnectivity.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class SpokeLinkedRouterApplianceInstancesInstance {
@@ -14,27 +15,27 @@ public final class SpokeLinkedRouterApplianceInstancesInstance {
      * @return The IP address on the VM to use for peering.
      * 
      */
-    private String ipAddress;
+    private @Nullable String ipAddress;
     /**
      * @return The URI of the virtual machine resource
      * 
      */
-    private String virtualMachine;
+    private @Nullable String virtualMachine;
 
     private SpokeLinkedRouterApplianceInstancesInstance() {}
     /**
      * @return The IP address on the VM to use for peering.
      * 
      */
-    public String ipAddress() {
-        return this.ipAddress;
+    public Optional<String> ipAddress() {
+        return Optional.ofNullable(this.ipAddress);
     }
     /**
      * @return The URI of the virtual machine resource
      * 
      */
-    public String virtualMachine() {
-        return this.virtualMachine;
+    public Optional<String> virtualMachine() {
+        return Optional.ofNullable(this.virtualMachine);
     }
 
     public static Builder builder() {
@@ -46,8 +47,8 @@ public final class SpokeLinkedRouterApplianceInstancesInstance {
     }
     @CustomType.Builder
     public static final class Builder {
-        private String ipAddress;
-        private String virtualMachine;
+        private @Nullable String ipAddress;
+        private @Nullable String virtualMachine;
         public Builder() {}
         public Builder(SpokeLinkedRouterApplianceInstancesInstance defaults) {
     	      Objects.requireNonNull(defaults);
@@ -56,18 +57,14 @@ public final class SpokeLinkedRouterApplianceInstancesInstance {
         }
 
         @CustomType.Setter
-        public Builder ipAddress(String ipAddress) {
-            if (ipAddress == null) {
-              throw new MissingRequiredPropertyException("SpokeLinkedRouterApplianceInstancesInstance", "ipAddress");
-            }
+        public Builder ipAddress(@Nullable String ipAddress) {
+
             this.ipAddress = ipAddress;
             return this;
         }
         @CustomType.Setter
-        public Builder virtualMachine(String virtualMachine) {
-            if (virtualMachine == null) {
-              throw new MissingRequiredPropertyException("SpokeLinkedRouterApplianceInstancesInstance", "virtualMachine");
-            }
+        public Builder virtualMachine(@Nullable String virtualMachine) {
+
             this.virtualMachine = virtualMachine;
             return this;
         }

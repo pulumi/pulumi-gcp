@@ -2861,10 +2861,6 @@ func (o HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArrayOutput) Index(i
 }
 
 type HostingVersionConfig struct {
-	// An array of objects, where each object specifies a URL pattern that, if matched to the request URL path,
-	// triggers Hosting to apply the specified custom response headers.
-	// Structure is documented below.
-	Headers []HostingVersionConfigHeader `pulumi:"headers"`
 	// An array of objects (called redirect rules), where each rule specifies a URL pattern that, if matched to the request URL path,
 	// triggers Hosting to respond with a redirect to the specified destination path.
 	// Structure is documented below.
@@ -2887,10 +2883,6 @@ type HostingVersionConfigInput interface {
 }
 
 type HostingVersionConfigArgs struct {
-	// An array of objects, where each object specifies a URL pattern that, if matched to the request URL path,
-	// triggers Hosting to apply the specified custom response headers.
-	// Structure is documented below.
-	Headers HostingVersionConfigHeaderArrayInput `pulumi:"headers"`
 	// An array of objects (called redirect rules), where each rule specifies a URL pattern that, if matched to the request URL path,
 	// triggers Hosting to respond with a redirect to the specified destination path.
 	// Structure is documented below.
@@ -2978,13 +2970,6 @@ func (o HostingVersionConfigOutput) ToHostingVersionConfigPtrOutputWithContext(c
 	}).(HostingVersionConfigPtrOutput)
 }
 
-// An array of objects, where each object specifies a URL pattern that, if matched to the request URL path,
-// triggers Hosting to apply the specified custom response headers.
-// Structure is documented below.
-func (o HostingVersionConfigOutput) Headers() HostingVersionConfigHeaderArrayOutput {
-	return o.ApplyT(func(v HostingVersionConfig) []HostingVersionConfigHeader { return v.Headers }).(HostingVersionConfigHeaderArrayOutput)
-}
-
 // An array of objects (called redirect rules), where each rule specifies a URL pattern that, if matched to the request URL path,
 // triggers Hosting to respond with a redirect to the specified destination path.
 // Structure is documented below.
@@ -3023,18 +3008,6 @@ func (o HostingVersionConfigPtrOutput) Elem() HostingVersionConfigOutput {
 	}).(HostingVersionConfigOutput)
 }
 
-// An array of objects, where each object specifies a URL pattern that, if matched to the request URL path,
-// triggers Hosting to apply the specified custom response headers.
-// Structure is documented below.
-func (o HostingVersionConfigPtrOutput) Headers() HostingVersionConfigHeaderArrayOutput {
-	return o.ApplyT(func(v *HostingVersionConfig) []HostingVersionConfigHeader {
-		if v == nil {
-			return nil
-		}
-		return v.Headers
-	}).(HostingVersionConfigHeaderArrayOutput)
-}
-
 // An array of objects (called redirect rules), where each rule specifies a URL pattern that, if matched to the request URL path,
 // triggers Hosting to respond with a redirect to the specified destination path.
 // Structure is documented below.
@@ -3057,121 +3030,6 @@ func (o HostingVersionConfigPtrOutput) Rewrites() HostingVersionConfigRewriteArr
 		}
 		return v.Rewrites
 	}).(HostingVersionConfigRewriteArrayOutput)
-}
-
-type HostingVersionConfigHeader struct {
-	// The user-supplied glob to match against the request URL path.
-	Glob *string `pulumi:"glob"`
-	// The additional headers to add to the response. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-	Headers map[string]string `pulumi:"headers"`
-	// The user-supplied RE2 regular expression to match against the request URL path.
-	Regex *string `pulumi:"regex"`
-}
-
-// HostingVersionConfigHeaderInput is an input type that accepts HostingVersionConfigHeaderArgs and HostingVersionConfigHeaderOutput values.
-// You can construct a concrete instance of `HostingVersionConfigHeaderInput` via:
-//
-//	HostingVersionConfigHeaderArgs{...}
-type HostingVersionConfigHeaderInput interface {
-	pulumi.Input
-
-	ToHostingVersionConfigHeaderOutput() HostingVersionConfigHeaderOutput
-	ToHostingVersionConfigHeaderOutputWithContext(context.Context) HostingVersionConfigHeaderOutput
-}
-
-type HostingVersionConfigHeaderArgs struct {
-	// The user-supplied glob to match against the request URL path.
-	Glob pulumi.StringPtrInput `pulumi:"glob"`
-	// The additional headers to add to the response. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-	Headers pulumi.StringMapInput `pulumi:"headers"`
-	// The user-supplied RE2 regular expression to match against the request URL path.
-	Regex pulumi.StringPtrInput `pulumi:"regex"`
-}
-
-func (HostingVersionConfigHeaderArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*HostingVersionConfigHeader)(nil)).Elem()
-}
-
-func (i HostingVersionConfigHeaderArgs) ToHostingVersionConfigHeaderOutput() HostingVersionConfigHeaderOutput {
-	return i.ToHostingVersionConfigHeaderOutputWithContext(context.Background())
-}
-
-func (i HostingVersionConfigHeaderArgs) ToHostingVersionConfigHeaderOutputWithContext(ctx context.Context) HostingVersionConfigHeaderOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HostingVersionConfigHeaderOutput)
-}
-
-// HostingVersionConfigHeaderArrayInput is an input type that accepts HostingVersionConfigHeaderArray and HostingVersionConfigHeaderArrayOutput values.
-// You can construct a concrete instance of `HostingVersionConfigHeaderArrayInput` via:
-//
-//	HostingVersionConfigHeaderArray{ HostingVersionConfigHeaderArgs{...} }
-type HostingVersionConfigHeaderArrayInput interface {
-	pulumi.Input
-
-	ToHostingVersionConfigHeaderArrayOutput() HostingVersionConfigHeaderArrayOutput
-	ToHostingVersionConfigHeaderArrayOutputWithContext(context.Context) HostingVersionConfigHeaderArrayOutput
-}
-
-type HostingVersionConfigHeaderArray []HostingVersionConfigHeaderInput
-
-func (HostingVersionConfigHeaderArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]HostingVersionConfigHeader)(nil)).Elem()
-}
-
-func (i HostingVersionConfigHeaderArray) ToHostingVersionConfigHeaderArrayOutput() HostingVersionConfigHeaderArrayOutput {
-	return i.ToHostingVersionConfigHeaderArrayOutputWithContext(context.Background())
-}
-
-func (i HostingVersionConfigHeaderArray) ToHostingVersionConfigHeaderArrayOutputWithContext(ctx context.Context) HostingVersionConfigHeaderArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(HostingVersionConfigHeaderArrayOutput)
-}
-
-type HostingVersionConfigHeaderOutput struct{ *pulumi.OutputState }
-
-func (HostingVersionConfigHeaderOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*HostingVersionConfigHeader)(nil)).Elem()
-}
-
-func (o HostingVersionConfigHeaderOutput) ToHostingVersionConfigHeaderOutput() HostingVersionConfigHeaderOutput {
-	return o
-}
-
-func (o HostingVersionConfigHeaderOutput) ToHostingVersionConfigHeaderOutputWithContext(ctx context.Context) HostingVersionConfigHeaderOutput {
-	return o
-}
-
-// The user-supplied glob to match against the request URL path.
-func (o HostingVersionConfigHeaderOutput) Glob() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v HostingVersionConfigHeader) *string { return v.Glob }).(pulumi.StringPtrOutput)
-}
-
-// The additional headers to add to the response. Example: { "name": "wrench", "mass": "1.3kg", "count": "3" }.
-func (o HostingVersionConfigHeaderOutput) Headers() pulumi.StringMapOutput {
-	return o.ApplyT(func(v HostingVersionConfigHeader) map[string]string { return v.Headers }).(pulumi.StringMapOutput)
-}
-
-// The user-supplied RE2 regular expression to match against the request URL path.
-func (o HostingVersionConfigHeaderOutput) Regex() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v HostingVersionConfigHeader) *string { return v.Regex }).(pulumi.StringPtrOutput)
-}
-
-type HostingVersionConfigHeaderArrayOutput struct{ *pulumi.OutputState }
-
-func (HostingVersionConfigHeaderArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]HostingVersionConfigHeader)(nil)).Elem()
-}
-
-func (o HostingVersionConfigHeaderArrayOutput) ToHostingVersionConfigHeaderArrayOutput() HostingVersionConfigHeaderArrayOutput {
-	return o
-}
-
-func (o HostingVersionConfigHeaderArrayOutput) ToHostingVersionConfigHeaderArrayOutputWithContext(ctx context.Context) HostingVersionConfigHeaderArrayOutput {
-	return o
-}
-
-func (o HostingVersionConfigHeaderArrayOutput) Index(i pulumi.IntInput) HostingVersionConfigHeaderOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) HostingVersionConfigHeader {
-		return vs[0].([]HostingVersionConfigHeader)[vs[1].(int)]
-	}).(HostingVersionConfigHeaderOutput)
 }
 
 type HostingVersionConfigRedirect struct {
@@ -3637,8 +3495,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArrayInput)(nil)).Elem(), HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HostingVersionConfigInput)(nil)).Elem(), HostingVersionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HostingVersionConfigPtrInput)(nil)).Elem(), HostingVersionConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*HostingVersionConfigHeaderInput)(nil)).Elem(), HostingVersionConfigHeaderArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*HostingVersionConfigHeaderArrayInput)(nil)).Elem(), HostingVersionConfigHeaderArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HostingVersionConfigRedirectInput)(nil)).Elem(), HostingVersionConfigRedirectArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HostingVersionConfigRedirectArrayInput)(nil)).Elem(), HostingVersionConfigRedirectArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*HostingVersionConfigRewriteInput)(nil)).Elem(), HostingVersionConfigRewriteArgs{})
@@ -3685,8 +3541,6 @@ func init() {
 	pulumi.RegisterOutputType(HostingCustomDomainRequiredDnsUpdateDiscoveredRecordArrayOutput{})
 	pulumi.RegisterOutputType(HostingVersionConfigOutput{})
 	pulumi.RegisterOutputType(HostingVersionConfigPtrOutput{})
-	pulumi.RegisterOutputType(HostingVersionConfigHeaderOutput{})
-	pulumi.RegisterOutputType(HostingVersionConfigHeaderArrayOutput{})
 	pulumi.RegisterOutputType(HostingVersionConfigRedirectOutput{})
 	pulumi.RegisterOutputType(HostingVersionConfigRedirectArrayOutput{})
 	pulumi.RegisterOutputType(HostingVersionConfigRewriteOutput{})
