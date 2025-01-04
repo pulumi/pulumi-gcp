@@ -3,7 +3,7 @@
 PACK := gcp
 ORG := pulumi
 PROJECT := github.com/$(ORG)/pulumi-$(PACK)
-PROVIDER_PATH := provider/v8
+PROVIDER_PATH := v8/provider
 VERSION_PATH := $(PROVIDER_PATH)/pkg/version.Version
 TFGEN := pulumi-tfgen-$(PACK)
 PROVIDER := pulumi-resource-$(PACK)
@@ -255,7 +255,7 @@ tfgen_no_deps: .make/schema
 	(cd provider && VERSION=$(VERSION_GENERIC) go generate cmd/$(PROVIDER)/main.go)
 	@touch $@
 tfgen_build_only: bin/$(TFGEN)
-bin/$(TFGEN): provider/*.go provider/go.* .make/upstream
+bin/$(TFGEN): provider/*.go go.* .make/upstream
 	(cd provider && go build $(PULUMI_PROVIDER_BUILD_PARALLELISM) -o $(WORKING_DIR)/bin/$(TFGEN) -ldflags "$(LDFLAGS_PROJ_VERSION) $(LDFLAGS_EXTRAS)" $(PROJECT)/$(PROVIDER_PATH)/cmd/$(TFGEN))
 .PHONY: tfgen schema tfgen_no_deps tfgen_build_only
 
@@ -282,7 +282,7 @@ ci-mgmt: .ci-mgmt.yaml
 .PHONY: ci-mgmt
 
 # Because some codegen depends on the version of the CLI used, we install a local CLI
-# version pinned to the same version as `provider/go.mod`.
+# version pinned to the same version as `go.mod`.
 #
 # This logic compares the version of .pulumi/bin/pulumi already installed. If it matches
 # the desired version, we just print. Otherwise we (re)install pulumi at the desired
@@ -297,7 +297,7 @@ ci-mgmt: .ci-mgmt.yaml
 	fi
 
 # Compute the version of Pulumi to use by inspecting the Go dependencies of the provider.
-.pulumi/version: provider/go.mod
+.pulumi/version: $(wildcard go.mod provider/go.mod) # go.mod can exist in either of these places.
 	cd provider && go list -f "{{slice .Version 1}}" -m github.com/pulumi/pulumi/pkg/v3 | tee ../$@
 
 # Start debug server for tfgen
