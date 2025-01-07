@@ -141,14 +141,14 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * An arbitrary description for the Conection.
+     * An arbitrary description for the Connection.
      * 
      */
     @Import(name="description")
     private @Nullable Output<String> description;
 
     /**
-     * @return An arbitrary description for the Conection.
+     * @return An arbitrary description for the Connection.
      * 
      */
     public Optional<Output<String>> description() {
@@ -718,7 +718,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description An arbitrary description for the Conection.
+         * @param description An arbitrary description for the Connection.
          * 
          * @return builder
          * 
@@ -729,7 +729,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param description An arbitrary description for the Conection.
+         * @param description An arbitrary description for the Connection.
          * 
          * @return builder
          * 

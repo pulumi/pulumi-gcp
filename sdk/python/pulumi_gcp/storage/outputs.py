@@ -47,6 +47,11 @@ __all__ = [
     'TransferAgentPoolBandwidthLimit',
     'TransferJobEventStream',
     'TransferJobNotificationConfig',
+    'TransferJobReplicationSpec',
+    'TransferJobReplicationSpecGcsDataSink',
+    'TransferJobReplicationSpecGcsDataSource',
+    'TransferJobReplicationSpecObjectConditions',
+    'TransferJobReplicationSpecTransferOptions',
     'TransferJobSchedule',
     'TransferJobScheduleScheduleEndDate',
     'TransferJobScheduleScheduleStartDate',
@@ -1720,6 +1725,364 @@ class TransferJobNotificationConfig(dict):
         Event types for which a notification is desired. If empty, send notifications for all event types. The valid types are "TRANSFER_OPERATION_SUCCESS", "TRANSFER_OPERATION_FAILED", "TRANSFER_OPERATION_ABORTED".
         """
         return pulumi.get(self, "event_types")
+
+
+@pulumi.output_type
+class TransferJobReplicationSpec(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "gcsDataSink":
+            suggest = "gcs_data_sink"
+        elif key == "gcsDataSource":
+            suggest = "gcs_data_source"
+        elif key == "objectConditions":
+            suggest = "object_conditions"
+        elif key == "transferOptions":
+            suggest = "transfer_options"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TransferJobReplicationSpec. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TransferJobReplicationSpec.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TransferJobReplicationSpec.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 gcs_data_sink: Optional['outputs.TransferJobReplicationSpecGcsDataSink'] = None,
+                 gcs_data_source: Optional['outputs.TransferJobReplicationSpecGcsDataSource'] = None,
+                 object_conditions: Optional['outputs.TransferJobReplicationSpecObjectConditions'] = None,
+                 transfer_options: Optional['outputs.TransferJobReplicationSpecTransferOptions'] = None):
+        """
+        :param 'TransferJobReplicationSpecGcsDataSinkArgs' gcs_data_sink: A Google Cloud Storage data sink. Structure documented below.
+        :param 'TransferJobReplicationSpecGcsDataSourceArgs' gcs_data_source: A Google Cloud Storage data source. Structure documented below.
+        :param 'TransferJobReplicationSpecObjectConditionsArgs' object_conditions: Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' `last_modification_time` do not exclude objects in a data sink. Structure documented below.
+        :param 'TransferJobReplicationSpecTransferOptionsArgs' transfer_options: Characteristics of how to treat files from datasource and sink during job. If the option `delete_objects_unique_in_sink` is true, object conditions based on objects' `last_modification_time` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
+        """
+        if gcs_data_sink is not None:
+            pulumi.set(__self__, "gcs_data_sink", gcs_data_sink)
+        if gcs_data_source is not None:
+            pulumi.set(__self__, "gcs_data_source", gcs_data_source)
+        if object_conditions is not None:
+            pulumi.set(__self__, "object_conditions", object_conditions)
+        if transfer_options is not None:
+            pulumi.set(__self__, "transfer_options", transfer_options)
+
+    @property
+    @pulumi.getter(name="gcsDataSink")
+    def gcs_data_sink(self) -> Optional['outputs.TransferJobReplicationSpecGcsDataSink']:
+        """
+        A Google Cloud Storage data sink. Structure documented below.
+        """
+        return pulumi.get(self, "gcs_data_sink")
+
+    @property
+    @pulumi.getter(name="gcsDataSource")
+    def gcs_data_source(self) -> Optional['outputs.TransferJobReplicationSpecGcsDataSource']:
+        """
+        A Google Cloud Storage data source. Structure documented below.
+        """
+        return pulumi.get(self, "gcs_data_source")
+
+    @property
+    @pulumi.getter(name="objectConditions")
+    def object_conditions(self) -> Optional['outputs.TransferJobReplicationSpecObjectConditions']:
+        """
+        Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' `last_modification_time` do not exclude objects in a data sink. Structure documented below.
+        """
+        return pulumi.get(self, "object_conditions")
+
+    @property
+    @pulumi.getter(name="transferOptions")
+    def transfer_options(self) -> Optional['outputs.TransferJobReplicationSpecTransferOptions']:
+        """
+        Characteristics of how to treat files from datasource and sink during job. If the option `delete_objects_unique_in_sink` is true, object conditions based on objects' `last_modification_time` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
+        """
+        return pulumi.get(self, "transfer_options")
+
+
+@pulumi.output_type
+class TransferJobReplicationSpecGcsDataSink(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bucketName":
+            suggest = "bucket_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TransferJobReplicationSpecGcsDataSink. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TransferJobReplicationSpecGcsDataSink.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TransferJobReplicationSpecGcsDataSink.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 bucket_name: str,
+                 path: Optional[str] = None):
+        """
+        :param str bucket_name: Google Cloud Storage bucket name.
+        :param str path: Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+        """
+        pulumi.set(__self__, "bucket_name", bucket_name)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter(name="bucketName")
+    def bucket_name(self) -> str:
+        """
+        Google Cloud Storage bucket name.
+        """
+        return pulumi.get(self, "bucket_name")
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[str]:
+        """
+        Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+        """
+        return pulumi.get(self, "path")
+
+
+@pulumi.output_type
+class TransferJobReplicationSpecGcsDataSource(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "bucketName":
+            suggest = "bucket_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TransferJobReplicationSpecGcsDataSource. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TransferJobReplicationSpecGcsDataSource.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TransferJobReplicationSpecGcsDataSource.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 bucket_name: str,
+                 path: Optional[str] = None):
+        """
+        :param str bucket_name: Google Cloud Storage bucket name.
+        :param str path: Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+        """
+        pulumi.set(__self__, "bucket_name", bucket_name)
+        if path is not None:
+            pulumi.set(__self__, "path", path)
+
+    @property
+    @pulumi.getter(name="bucketName")
+    def bucket_name(self) -> str:
+        """
+        Google Cloud Storage bucket name.
+        """
+        return pulumi.get(self, "bucket_name")
+
+    @property
+    @pulumi.getter
+    def path(self) -> Optional[str]:
+        """
+        Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+        """
+        return pulumi.get(self, "path")
+
+
+@pulumi.output_type
+class TransferJobReplicationSpecObjectConditions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "excludePrefixes":
+            suggest = "exclude_prefixes"
+        elif key == "includePrefixes":
+            suggest = "include_prefixes"
+        elif key == "lastModifiedBefore":
+            suggest = "last_modified_before"
+        elif key == "lastModifiedSince":
+            suggest = "last_modified_since"
+        elif key == "maxTimeElapsedSinceLastModification":
+            suggest = "max_time_elapsed_since_last_modification"
+        elif key == "minTimeElapsedSinceLastModification":
+            suggest = "min_time_elapsed_since_last_modification"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TransferJobReplicationSpecObjectConditions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TransferJobReplicationSpecObjectConditions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TransferJobReplicationSpecObjectConditions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 exclude_prefixes: Optional[Sequence[str]] = None,
+                 include_prefixes: Optional[Sequence[str]] = None,
+                 last_modified_before: Optional[str] = None,
+                 last_modified_since: Optional[str] = None,
+                 max_time_elapsed_since_last_modification: Optional[str] = None,
+                 min_time_elapsed_since_last_modification: Optional[str] = None):
+        """
+        :param Sequence[str] exclude_prefixes: `exclude_prefixes` must follow the requirements described for `include_prefixes`. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
+        :param Sequence[str] include_prefixes: If `include_prefixes` is specified, objects that satisfy the object conditions must have names that start with one of the `include_prefixes` and that do not start with any of the `exclude_prefixes`. If `include_prefixes` is not specified, all objects except those that have names starting with one of the `exclude_prefixes` must satisfy the object conditions. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
+        :param str last_modified_before: If specified, only objects with a "last modification time" before this timestamp and objects that don't have a "last modification time" are transferred. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param str last_modified_since: If specified, only objects with a "last modification time" on or after this timestamp and objects that don't have a "last modification time" are transferred. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        :param str max_time_elapsed_since_last_modification: A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        :param str min_time_elapsed_since_last_modification: A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        """
+        if exclude_prefixes is not None:
+            pulumi.set(__self__, "exclude_prefixes", exclude_prefixes)
+        if include_prefixes is not None:
+            pulumi.set(__self__, "include_prefixes", include_prefixes)
+        if last_modified_before is not None:
+            pulumi.set(__self__, "last_modified_before", last_modified_before)
+        if last_modified_since is not None:
+            pulumi.set(__self__, "last_modified_since", last_modified_since)
+        if max_time_elapsed_since_last_modification is not None:
+            pulumi.set(__self__, "max_time_elapsed_since_last_modification", max_time_elapsed_since_last_modification)
+        if min_time_elapsed_since_last_modification is not None:
+            pulumi.set(__self__, "min_time_elapsed_since_last_modification", min_time_elapsed_since_last_modification)
+
+    @property
+    @pulumi.getter(name="excludePrefixes")
+    def exclude_prefixes(self) -> Optional[Sequence[str]]:
+        """
+        `exclude_prefixes` must follow the requirements described for `include_prefixes`. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
+        """
+        return pulumi.get(self, "exclude_prefixes")
+
+    @property
+    @pulumi.getter(name="includePrefixes")
+    def include_prefixes(self) -> Optional[Sequence[str]]:
+        """
+        If `include_prefixes` is specified, objects that satisfy the object conditions must have names that start with one of the `include_prefixes` and that do not start with any of the `exclude_prefixes`. If `include_prefixes` is not specified, all objects except those that have names starting with one of the `exclude_prefixes` must satisfy the object conditions. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
+        """
+        return pulumi.get(self, "include_prefixes")
+
+    @property
+    @pulumi.getter(name="lastModifiedBefore")
+    def last_modified_before(self) -> Optional[str]:
+        """
+        If specified, only objects with a "last modification time" before this timestamp and objects that don't have a "last modification time" are transferred. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "last_modified_before")
+
+    @property
+    @pulumi.getter(name="lastModifiedSince")
+    def last_modified_since(self) -> Optional[str]:
+        """
+        If specified, only objects with a "last modification time" on or after this timestamp and objects that don't have a "last modification time" are transferred. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+        """
+        return pulumi.get(self, "last_modified_since")
+
+    @property
+    @pulumi.getter(name="maxTimeElapsedSinceLastModification")
+    def max_time_elapsed_since_last_modification(self) -> Optional[str]:
+        """
+        A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        """
+        return pulumi.get(self, "max_time_elapsed_since_last_modification")
+
+    @property
+    @pulumi.getter(name="minTimeElapsedSinceLastModification")
+    def min_time_elapsed_since_last_modification(self) -> Optional[str]:
+        """
+        A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+        """
+        return pulumi.get(self, "min_time_elapsed_since_last_modification")
+
+
+@pulumi.output_type
+class TransferJobReplicationSpecTransferOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "deleteObjectsFromSourceAfterTransfer":
+            suggest = "delete_objects_from_source_after_transfer"
+        elif key == "deleteObjectsUniqueInSink":
+            suggest = "delete_objects_unique_in_sink"
+        elif key == "overwriteObjectsAlreadyExistingInSink":
+            suggest = "overwrite_objects_already_existing_in_sink"
+        elif key == "overwriteWhen":
+            suggest = "overwrite_when"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TransferJobReplicationSpecTransferOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TransferJobReplicationSpecTransferOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TransferJobReplicationSpecTransferOptions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 delete_objects_from_source_after_transfer: Optional[bool] = None,
+                 delete_objects_unique_in_sink: Optional[bool] = None,
+                 overwrite_objects_already_existing_in_sink: Optional[bool] = None,
+                 overwrite_when: Optional[str] = None):
+        """
+        :param bool delete_objects_from_source_after_transfer: Whether objects should be deleted from the source after they are transferred to the sink. Note that this option and `delete_objects_unique_in_sink` are mutually exclusive.
+        :param bool delete_objects_unique_in_sink: Whether objects that exist only in the sink should be deleted. Note that this option and
+               `delete_objects_from_source_after_transfer` are mutually exclusive.
+        :param bool overwrite_objects_already_existing_in_sink: Whether overwriting objects that already exist in the sink is allowed.
+        :param str overwrite_when: When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by `overwrite_objects_already_existing_in_sink`. Possible values: ALWAYS, DIFFERENT, NEVER.
+        """
+        if delete_objects_from_source_after_transfer is not None:
+            pulumi.set(__self__, "delete_objects_from_source_after_transfer", delete_objects_from_source_after_transfer)
+        if delete_objects_unique_in_sink is not None:
+            pulumi.set(__self__, "delete_objects_unique_in_sink", delete_objects_unique_in_sink)
+        if overwrite_objects_already_existing_in_sink is not None:
+            pulumi.set(__self__, "overwrite_objects_already_existing_in_sink", overwrite_objects_already_existing_in_sink)
+        if overwrite_when is not None:
+            pulumi.set(__self__, "overwrite_when", overwrite_when)
+
+    @property
+    @pulumi.getter(name="deleteObjectsFromSourceAfterTransfer")
+    def delete_objects_from_source_after_transfer(self) -> Optional[bool]:
+        """
+        Whether objects should be deleted from the source after they are transferred to the sink. Note that this option and `delete_objects_unique_in_sink` are mutually exclusive.
+        """
+        return pulumi.get(self, "delete_objects_from_source_after_transfer")
+
+    @property
+    @pulumi.getter(name="deleteObjectsUniqueInSink")
+    def delete_objects_unique_in_sink(self) -> Optional[bool]:
+        """
+        Whether objects that exist only in the sink should be deleted. Note that this option and
+        `delete_objects_from_source_after_transfer` are mutually exclusive.
+        """
+        return pulumi.get(self, "delete_objects_unique_in_sink")
+
+    @property
+    @pulumi.getter(name="overwriteObjectsAlreadyExistingInSink")
+    def overwrite_objects_already_existing_in_sink(self) -> Optional[bool]:
+        """
+        Whether overwriting objects that already exist in the sink is allowed.
+        """
+        return pulumi.get(self, "overwrite_objects_already_existing_in_sink")
+
+    @property
+    @pulumi.getter(name="overwriteWhen")
+    def overwrite_when(self) -> Optional[str]:
+        """
+        When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by `overwrite_objects_already_existing_in_sink`. Possible values: ALWAYS, DIFFERENT, NEVER.
+        """
+        return pulumi.get(self, "overwrite_when")
 
 
 @pulumi.output_type

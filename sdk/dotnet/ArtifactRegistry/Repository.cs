@@ -733,8 +733,14 @@ namespace Pulumi.Gcp.ArtifactRegistry
     ///             Description = "pull-through cache of another Artifact Registry repository by URL",
     ///             CommonRepository = new Gcp.ArtifactRegistry.Inputs.RepositoryRemoteRepositoryConfigCommonRepositoryArgs
     ///             {
-    ///                 Uri = "https://us-central1-docker.pkg.dev//example-upstream-repo",
+    ///                 Uri = $"https://us-central1-docker.pkg.dev/{project.Apply(getProjectResult =&gt; getProjectResult.ProjectId)}/example-upstream-repo",
     ///             },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             upstreamRepo,
     ///         },
     ///     });
     /// 
@@ -797,6 +803,30 @@ namespace Pulumi.Gcp.ArtifactRegistry
     ///                     PasswordSecretVersion = example_remote_secretVersion.Name,
     ///                 },
     ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Artifact Registry Repository Vulnerability Scanning
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var my_repo = new Gcp.ArtifactRegistry.Repository("my-repo", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         RepositoryId = "my-repository",
+    ///         Description = "example docker repository with vulnerability scanning config",
+    ///         Format = "DOCKER",
+    ///         VulnerabilityScanningConfig = new Gcp.ArtifactRegistry.Inputs.RepositoryVulnerabilityScanningConfigArgs
+    ///         {
+    ///             EnablementConfig = "INHERITED",
     ///         },
     ///     });
     /// 
@@ -982,6 +1012,13 @@ namespace Pulumi.Gcp.ArtifactRegistry
         [Output("virtualRepositoryConfig")]
         public Output<Outputs.RepositoryVirtualRepositoryConfig?> VirtualRepositoryConfig { get; private set; } = null!;
 
+        /// <summary>
+        /// Configuration for vulnerability scanning of artifacts stored in this repository.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("vulnerabilityScanningConfig")]
+        public Output<Outputs.RepositoryVulnerabilityScanningConfig> VulnerabilityScanningConfig { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Repository resource with the given unique name, arguments, and options.
@@ -1164,6 +1201,13 @@ namespace Pulumi.Gcp.ArtifactRegistry
         /// </summary>
         [Input("virtualRepositoryConfig")]
         public Input<Inputs.RepositoryVirtualRepositoryConfigArgs>? VirtualRepositoryConfig { get; set; }
+
+        /// <summary>
+        /// Configuration for vulnerability scanning of artifacts stored in this repository.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("vulnerabilityScanningConfig")]
+        public Input<Inputs.RepositoryVulnerabilityScanningConfigArgs>? VulnerabilityScanningConfig { get; set; }
 
         public RepositoryArgs()
         {
@@ -1356,6 +1400,13 @@ namespace Pulumi.Gcp.ArtifactRegistry
         /// </summary>
         [Input("virtualRepositoryConfig")]
         public Input<Inputs.RepositoryVirtualRepositoryConfigGetArgs>? VirtualRepositoryConfig { get; set; }
+
+        /// <summary>
+        /// Configuration for vulnerability scanning of artifacts stored in this repository.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("vulnerabilityScanningConfig")]
+        public Input<Inputs.RepositoryVulnerabilityScanningConfigGetArgs>? VulnerabilityScanningConfig { get; set; }
 
         public RepositoryState()
         {

@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.Compute.Outputs
     {
         /// <summary>
         /// (Output)
-        /// [Output Only] The array of errors encountered while processing this operation.
+        /// The array of errors encountered while processing this operation.
         /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ResizeRequestStatusLastAttemptErrorError> Errors;

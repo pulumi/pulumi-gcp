@@ -12,6 +12,7 @@ import com.pulumi.gcp.bigquery.TableArgs;
 import com.pulumi.gcp.bigquery.inputs.TableState;
 import com.pulumi.gcp.bigquery.outputs.TableBiglakeConfiguration;
 import com.pulumi.gcp.bigquery.outputs.TableEncryptionConfiguration;
+import com.pulumi.gcp.bigquery.outputs.TableExternalCatalogTableOptions;
 import com.pulumi.gcp.bigquery.outputs.TableExternalDataConfiguration;
 import com.pulumi.gcp.bigquery.outputs.TableMaterializedView;
 import com.pulumi.gcp.bigquery.outputs.TableRangePartitioning;
@@ -333,6 +334,20 @@ public class Table extends com.pulumi.resources.CustomResource {
      */
     public Output<Integer> expirationTime() {
         return this.expirationTime;
+    }
+    /**
+     * Options defining open source compatible table.
+     * 
+     */
+    @Export(name="externalCatalogTableOptions", refs={TableExternalCatalogTableOptions.class}, tree="[0]")
+    private Output</* @Nullable */ TableExternalCatalogTableOptions> externalCatalogTableOptions;
+
+    /**
+     * @return Options defining open source compatible table.
+     * 
+     */
+    public Output<Optional<TableExternalCatalogTableOptions>> externalCatalogTableOptions() {
+        return Codegen.optional(this.externalCatalogTableOptions);
     }
     /**
      * Describes the data format,

@@ -15,10 +15,15 @@ import javax.annotation.Nullable;
 
 /**
  * Allows associating hierarchical firewall policies with the target where they are applied. This allows creating policies and rules in a different location than they are applied.
+ * For more information on applying hierarchical firewall policies see the [official documentation](https://cloud.google.com/firewall/docs/firewall-policies#managing_hierarchical_firewall_policy_resources)
  * 
- * For more information on applying hierarchical firewall policies see the [official documentation](https://cloud.google.com/vpc/docs/firewall-policies#managing_hierarchical_firewall_policy_resources)
+ * To get more information about FirewallPolicyAssociation, see:
+ * 
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/firewallPolicies/addAssociation)
  * 
  * ## Example Usage
+ * 
+ * ### Firewall Policy Association
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -28,6 +33,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.Folder;
+ * import com.pulumi.gcp.organizations.FolderArgs;
  * import com.pulumi.gcp.compute.FirewallPolicy;
  * import com.pulumi.gcp.compute.FirewallPolicyArgs;
  * import com.pulumi.gcp.compute.FirewallPolicyAssociation;
@@ -45,14 +52,20 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var default_ = new FirewallPolicy("default", FirewallPolicyArgs.builder()
- *             .parent("organizations/12345")
+ *         var folder = new Folder("folder", FolderArgs.builder()
+ *             .displayName("my-folder")
+ *             .parent("organizations/123456789")
+ *             .deletionProtection(false)
+ *             .build());
+ * 
+ *         var policy = new FirewallPolicy("policy", FirewallPolicyArgs.builder()
+ *             .parent("organizations/123456789")
  *             .shortName("my-policy")
  *             .description("Example Resource")
  *             .build());
  * 
- *         var defaultFirewallPolicyAssociation = new FirewallPolicyAssociation("defaultFirewallPolicyAssociation", FirewallPolicyAssociationArgs.builder()
- *             .firewallPolicy(default_.id())
+ *         var default_ = new FirewallPolicyAssociation("default", FirewallPolicyAssociationArgs.builder()
+ *             .firewallPolicy(policy.id())
  *             .attachmentTarget(folder.name())
  *             .name("my-association")
  *             .build());
@@ -99,14 +112,18 @@ public class FirewallPolicyAssociation extends com.pulumi.resources.CustomResour
         return this.attachmentTarget;
     }
     /**
-     * The firewall policy ID of the association.
+     * The firewall policy of the resource.
+     * 
+     * ***
      * 
      */
     @Export(name="firewallPolicy", refs={String.class}, tree="[0]")
     private Output<String> firewallPolicy;
 
     /**
-     * @return The firewall policy ID of the association.
+     * @return The firewall policy of the resource.
+     * 
+     * ***
      * 
      */
     public Output<String> firewallPolicy() {
@@ -115,16 +132,12 @@ public class FirewallPolicyAssociation extends com.pulumi.resources.CustomResour
     /**
      * The name for an association.
      * 
-     * ***
-     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
      * @return The name for an association.
-     * 
-     * ***
      * 
      */
     public Output<String> name() {

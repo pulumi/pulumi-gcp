@@ -29,6 +29,7 @@ class TableArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  encryption_configuration: Optional[pulumi.Input['TableEncryptionConfigurationArgs']] = None,
                  expiration_time: Optional[pulumi.Input[int]] = None,
+                 external_catalog_table_options: Optional[pulumi.Input['TableExternalCatalogTableOptionsArgs']] = None,
                  external_data_configuration: Optional[pulumi.Input['TableExternalDataConfigurationArgs']] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -63,6 +64,7 @@ class TableArgs:
                milliseconds since the epoch. If not present, the table will persist
                indefinitely. Expired tables will be deleted and their storage
                reclaimed.
+        :param pulumi.Input['TableExternalCatalogTableOptionsArgs'] external_catalog_table_options: Options defining open source compatible table.
         :param pulumi.Input['TableExternalDataConfigurationArgs'] external_data_configuration: Describes the data format,
                location, and other properties of a table stored outside of BigQuery.
                By defining these properties, the data source can then be queried as
@@ -116,6 +118,8 @@ class TableArgs:
             pulumi.set(__self__, "encryption_configuration", encryption_configuration)
         if expiration_time is not None:
             pulumi.set(__self__, "expiration_time", expiration_time)
+        if external_catalog_table_options is not None:
+            pulumi.set(__self__, "external_catalog_table_options", external_catalog_table_options)
         if external_data_configuration is not None:
             pulumi.set(__self__, "external_data_configuration", external_data_configuration)
         if friendly_name is not None:
@@ -250,6 +254,18 @@ class TableArgs:
     @expiration_time.setter
     def expiration_time(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "expiration_time", value)
+
+    @property
+    @pulumi.getter(name="externalCatalogTableOptions")
+    def external_catalog_table_options(self) -> Optional[pulumi.Input['TableExternalCatalogTableOptionsArgs']]:
+        """
+        Options defining open source compatible table.
+        """
+        return pulumi.get(self, "external_catalog_table_options")
+
+    @external_catalog_table_options.setter
+    def external_catalog_table_options(self, value: Optional[pulumi.Input['TableExternalCatalogTableOptionsArgs']]):
+        pulumi.set(self, "external_catalog_table_options", value)
 
     @property
     @pulumi.getter(name="externalDataConfiguration")
@@ -457,6 +473,7 @@ class _TableState:
                  encryption_configuration: Optional[pulumi.Input['TableEncryptionConfigurationArgs']] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  expiration_time: Optional[pulumi.Input[int]] = None,
+                 external_catalog_table_options: Optional[pulumi.Input['TableExternalCatalogTableOptionsArgs']] = None,
                  external_data_configuration: Optional[pulumi.Input['TableExternalDataConfigurationArgs']] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -516,6 +533,7 @@ class _TableState:
                milliseconds since the epoch. If not present, the table will persist
                indefinitely. Expired tables will be deleted and their storage
                reclaimed.
+        :param pulumi.Input['TableExternalCatalogTableOptionsArgs'] external_catalog_table_options: Options defining open source compatible table.
         :param pulumi.Input['TableExternalDataConfigurationArgs'] external_data_configuration: Describes the data format,
                location, and other properties of a table stored outside of BigQuery.
                By defining these properties, the data source can then be queried as
@@ -585,6 +603,8 @@ class _TableState:
             pulumi.set(__self__, "etag", etag)
         if expiration_time is not None:
             pulumi.set(__self__, "expiration_time", expiration_time)
+        if external_catalog_table_options is not None:
+            pulumi.set(__self__, "external_catalog_table_options", external_catalog_table_options)
         if external_data_configuration is not None:
             pulumi.set(__self__, "external_data_configuration", external_data_configuration)
         if friendly_name is not None:
@@ -775,6 +795,18 @@ class _TableState:
     @expiration_time.setter
     def expiration_time(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "expiration_time", value)
+
+    @property
+    @pulumi.getter(name="externalCatalogTableOptions")
+    def external_catalog_table_options(self) -> Optional[pulumi.Input['TableExternalCatalogTableOptionsArgs']]:
+        """
+        Options defining open source compatible table.
+        """
+        return pulumi.get(self, "external_catalog_table_options")
+
+    @external_catalog_table_options.setter
+    def external_catalog_table_options(self, value: Optional[pulumi.Input['TableExternalCatalogTableOptionsArgs']]):
+        pulumi.set(self, "external_catalog_table_options", value)
 
     @property
     @pulumi.getter(name="externalDataConfiguration")
@@ -1090,6 +1122,7 @@ class Table(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  encryption_configuration: Optional[pulumi.Input[Union['TableEncryptionConfigurationArgs', 'TableEncryptionConfigurationArgsDict']]] = None,
                  expiration_time: Optional[pulumi.Input[int]] = None,
+                 external_catalog_table_options: Optional[pulumi.Input[Union['TableExternalCatalogTableOptionsArgs', 'TableExternalCatalogTableOptionsArgsDict']]] = None,
                  external_data_configuration: Optional[pulumi.Input[Union['TableExternalDataConfigurationArgs', 'TableExternalDataConfigurationArgsDict']]] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1209,6 +1242,7 @@ class Table(pulumi.CustomResource):
                milliseconds since the epoch. If not present, the table will persist
                indefinitely. Expired tables will be deleted and their storage
                reclaimed.
+        :param pulumi.Input[Union['TableExternalCatalogTableOptionsArgs', 'TableExternalCatalogTableOptionsArgsDict']] external_catalog_table_options: Options defining open source compatible table.
         :param pulumi.Input[Union['TableExternalDataConfigurationArgs', 'TableExternalDataConfigurationArgsDict']] external_data_configuration: Describes the data format,
                location, and other properties of a table stored outside of BigQuery.
                By defining these properties, the data source can then be queried as
@@ -1363,6 +1397,7 @@ class Table(pulumi.CustomResource):
                  description: Optional[pulumi.Input[str]] = None,
                  encryption_configuration: Optional[pulumi.Input[Union['TableEncryptionConfigurationArgs', 'TableEncryptionConfigurationArgsDict']]] = None,
                  expiration_time: Optional[pulumi.Input[int]] = None,
+                 external_catalog_table_options: Optional[pulumi.Input[Union['TableExternalCatalogTableOptionsArgs', 'TableExternalCatalogTableOptionsArgsDict']]] = None,
                  external_data_configuration: Optional[pulumi.Input[Union['TableExternalDataConfigurationArgs', 'TableExternalDataConfigurationArgsDict']]] = None,
                  friendly_name: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1396,6 +1431,7 @@ class Table(pulumi.CustomResource):
             __props__.__dict__["description"] = description
             __props__.__dict__["encryption_configuration"] = encryption_configuration
             __props__.__dict__["expiration_time"] = expiration_time
+            __props__.__dict__["external_catalog_table_options"] = external_catalog_table_options
             __props__.__dict__["external_data_configuration"] = external_data_configuration
             __props__.__dict__["friendly_name"] = friendly_name
             __props__.__dict__["labels"] = labels
@@ -1446,6 +1482,7 @@ class Table(pulumi.CustomResource):
             encryption_configuration: Optional[pulumi.Input[Union['TableEncryptionConfigurationArgs', 'TableEncryptionConfigurationArgsDict']]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             expiration_time: Optional[pulumi.Input[int]] = None,
+            external_catalog_table_options: Optional[pulumi.Input[Union['TableExternalCatalogTableOptionsArgs', 'TableExternalCatalogTableOptionsArgsDict']]] = None,
             external_data_configuration: Optional[pulumi.Input[Union['TableExternalDataConfigurationArgs', 'TableExternalDataConfigurationArgsDict']]] = None,
             friendly_name: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1510,6 +1547,7 @@ class Table(pulumi.CustomResource):
                milliseconds since the epoch. If not present, the table will persist
                indefinitely. Expired tables will be deleted and their storage
                reclaimed.
+        :param pulumi.Input[Union['TableExternalCatalogTableOptionsArgs', 'TableExternalCatalogTableOptionsArgsDict']] external_catalog_table_options: Options defining open source compatible table.
         :param pulumi.Input[Union['TableExternalDataConfigurationArgs', 'TableExternalDataConfigurationArgsDict']] external_data_configuration: Describes the data format,
                location, and other properties of a table stored outside of BigQuery.
                By defining these properties, the data source can then be queried as
@@ -1573,6 +1611,7 @@ class Table(pulumi.CustomResource):
         __props__.__dict__["encryption_configuration"] = encryption_configuration
         __props__.__dict__["etag"] = etag
         __props__.__dict__["expiration_time"] = expiration_time
+        __props__.__dict__["external_catalog_table_options"] = external_catalog_table_options
         __props__.__dict__["external_data_configuration"] = external_data_configuration
         __props__.__dict__["friendly_name"] = friendly_name
         __props__.__dict__["labels"] = labels
@@ -1701,6 +1740,14 @@ class Table(pulumi.CustomResource):
         reclaimed.
         """
         return pulumi.get(self, "expiration_time")
+
+    @property
+    @pulumi.getter(name="externalCatalogTableOptions")
+    def external_catalog_table_options(self) -> pulumi.Output[Optional['outputs.TableExternalCatalogTableOptions']]:
+        """
+        Options defining open source compatible table.
+        """
+        return pulumi.get(self, "external_catalog_table_options")
 
     @property
     @pulumi.getter(name="externalDataConfiguration")

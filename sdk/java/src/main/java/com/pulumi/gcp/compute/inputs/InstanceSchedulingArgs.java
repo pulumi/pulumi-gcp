@@ -42,6 +42,21 @@ public final class InstanceSchedulingArgs extends com.pulumi.resources.ResourceA
     }
 
     /**
+     * Specifies the availability domain to place the instance in. The value must be a number between 1 and the number of availability domains specified in the spread placement policy attached to the instance.
+     * 
+     */
+    @Import(name="availabilityDomain")
+    private @Nullable Output<Integer> availabilityDomain;
+
+    /**
+     * @return Specifies the availability domain to place the instance in. The value must be a number between 1 and the number of availability domains specified in the spread placement policy attached to the instance.
+     * 
+     */
+    public Optional<Output<Integer>> availabilityDomain() {
+        return Optional.ofNullable(this.availabilityDomain);
+    }
+
+    /**
      * Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
      * 
      */
@@ -238,6 +253,7 @@ public final class InstanceSchedulingArgs extends com.pulumi.resources.ResourceA
 
     private InstanceSchedulingArgs(InstanceSchedulingArgs $) {
         this.automaticRestart = $.automaticRestart;
+        this.availabilityDomain = $.availabilityDomain;
         this.hostErrorTimeoutSeconds = $.hostErrorTimeoutSeconds;
         this.instanceTerminationAction = $.instanceTerminationAction;
         this.localSsdRecoveryTimeout = $.localSsdRecoveryTimeout;
@@ -292,6 +308,27 @@ public final class InstanceSchedulingArgs extends com.pulumi.resources.ResourceA
          */
         public Builder automaticRestart(Boolean automaticRestart) {
             return automaticRestart(Output.of(automaticRestart));
+        }
+
+        /**
+         * @param availabilityDomain Specifies the availability domain to place the instance in. The value must be a number between 1 and the number of availability domains specified in the spread placement policy attached to the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder availabilityDomain(@Nullable Output<Integer> availabilityDomain) {
+            $.availabilityDomain = availabilityDomain;
+            return this;
+        }
+
+        /**
+         * @param availabilityDomain Specifies the availability domain to place the instance in. The value must be a number between 1 and the number of availability domains specified in the spread placement policy attached to the instance.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder availabilityDomain(Integer availabilityDomain) {
+            return availabilityDomain(Output.of(availabilityDomain));
         }
 
         /**

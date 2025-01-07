@@ -18,7 +18,7 @@ public final class ResizeRequestStatusErrorErrorErrorDetailHelpArgs extends com.
 
     /**
      * (Output)
-     * [Output Only]
+     * A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -27,7 +27,7 @@ public final class ResizeRequestStatusErrorErrorErrorDetailHelpArgs extends com.
 
     /**
      * @return (Output)
-     * [Output Only]
+     * A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -61,7 +61,7 @@ public final class ResizeRequestStatusErrorErrorErrorDetailHelpArgs extends com.
 
         /**
          * @param links (Output)
-         * [Output Only]
+         * A nested object resource.
          * Structure is documented below.
          * 
          * @return builder
@@ -74,7 +74,7 @@ public final class ResizeRequestStatusErrorErrorErrorDetailHelpArgs extends com.
 
         /**
          * @param links (Output)
-         * [Output Only]
+         * A nested object resource.
          * Structure is documented below.
          * 
          * @return builder
@@ -86,7 +86,7 @@ public final class ResizeRequestStatusErrorErrorErrorDetailHelpArgs extends com.
 
         /**
          * @param links (Output)
-         * [Output Only]
+         * A nested object resource.
          * Structure is documented below.
          * 
          * @return builder

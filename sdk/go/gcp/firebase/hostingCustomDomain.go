@@ -280,7 +280,7 @@ type HostingCustomDomain struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
-	// if true, indicates that Hosting's systems are attmepting to
+	// if true, indicates that Hosting's systems are attempting to
 	// make the `CustomDomain`'s state match your preferred state. This is most
 	// frequently `true` when initially provisioning a `CustomDomain` or when creating
 	// a new SSL certificate to match an updated `certPreference`
@@ -428,7 +428,7 @@ type hostingCustomDomainState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// if true, indicates that Hosting's systems are attmepting to
+	// if true, indicates that Hosting's systems are attempting to
 	// make the `CustomDomain`'s state match your preferred state. This is most
 	// frequently `true` when initially provisioning a `CustomDomain` or when creating
 	// a new SSL certificate to match an updated `certPreference`
@@ -541,7 +541,7 @@ type HostingCustomDomainState struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// if true, indicates that Hosting's systems are attmepting to
+	// if true, indicates that Hosting's systems are attempting to
 	// make the `CustomDomain`'s state match your preferred state. This is most
 	// frequently `true` when initially provisioning a `CustomDomain` or when creating
 	// a new SSL certificate to match an updated `certPreference`
@@ -827,7 +827,7 @@ func (o HostingCustomDomainOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *HostingCustomDomain) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
-// if true, indicates that Hosting's systems are attmepting to
+// if true, indicates that Hosting's systems are attempting to
 // make the `CustomDomain`'s state match your preferred state. This is most
 // frequently `true` when initially provisioning a `CustomDomain` or when creating
 // a new SSL certificate to match an updated `certPreference`

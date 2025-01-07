@@ -269,6 +269,12 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> NetworkFirewallPolicyEnforcementOrder { get; private set; } = null!;
 
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Output("networkId")]
+        public Output<string> NetworkId { get; private set; } = null!;
+
+        /// <summary>
         /// A full or partial URL of the network profile to apply to this network.
         /// This field can be set only at resource creation time. For example, the
         /// following are valid URLs:
@@ -279,6 +285,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string?> NetworkProfile { get; private set; } = null!;
 
         /// <summary>
+        /// (Deprecated)
         /// The unique identifier for the resource. This identifier is defined by the server.
         /// </summary>
         [Output("numericId")]
@@ -588,6 +595,12 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? NetworkFirewallPolicyEnforcementOrder { get; set; }
 
         /// <summary>
+        /// The unique identifier for the resource. This identifier is defined by the server.
+        /// </summary>
+        [Input("networkId")]
+        public Input<string>? NetworkId { get; set; }
+
+        /// <summary>
         /// A full or partial URL of the network profile to apply to this network.
         /// This field can be set only at resource creation time. For example, the
         /// following are valid URLs:
@@ -598,6 +611,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? NetworkProfile { get; set; }
 
         /// <summary>
+        /// (Deprecated)
         /// The unique identifier for the resource. This identifier is defined by the server.
         /// </summary>
         [Input("numericId")]

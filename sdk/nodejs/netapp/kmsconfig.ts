@@ -23,18 +23,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const keyring = new gcp.kms.KeyRing("keyring", {
- *     name: "key-ring",
- *     location: "us-central1",
- * });
- * const cryptoKey = new gcp.kms.CryptoKey("crypto_key", {
- *     name: "crypto-name",
- *     keyRing: keyring.id,
- * });
  * const kmsConfig = new gcp.netapp.Kmsconfig("kmsConfig", {
  *     name: "kms-test",
  *     description: "this is a test description",
- *     cryptoKeyName: cryptoKey.id,
+ *     cryptoKeyName: "crypto-name",
  *     location: "us-central1",
  * });
  * ```

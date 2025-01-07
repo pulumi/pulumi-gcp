@@ -598,7 +598,7 @@ class AccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork(dict):
                  vpc_ip_subnetworks: Optional[Sequence[str]] = None):
         """
         :param str network: Required. Network name to be allowed by this Access Level. Networks of foreign organizations requires `compute.network.get` permission to be granted to caller.
-        :param Sequence[str] vpc_ip_subnetworks: CIDR block IP subnetwork specification. Must be IPv4.
+        :param Sequence[str] vpc_ip_subnetworks: A list of CIDR block IP subnetwork specification. Must be IPv4.
         """
         pulumi.set(__self__, "network", network)
         if vpc_ip_subnetworks is not None:
@@ -616,7 +616,7 @@ class AccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork(dict):
     @pulumi.getter(name="vpcIpSubnetworks")
     def vpc_ip_subnetworks(self) -> Optional[Sequence[str]]:
         """
-        CIDR block IP subnetwork specification. Must be IPv4.
+        A list of CIDR block IP subnetwork specification. Must be IPv4.
         """
         return pulumi.get(self, "vpc_ip_subnetworks")
 

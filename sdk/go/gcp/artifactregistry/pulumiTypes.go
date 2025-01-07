@@ -4097,6 +4097,193 @@ func (o RepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput) Index(i pulu
 	}).(RepositoryVirtualRepositoryConfigUpstreamPolicyOutput)
 }
 
+type RepositoryVulnerabilityScanningConfig struct {
+	// This configures whether vulnerability scanning is automatically performed for artifacts pushed to this repository.
+	// Possible values are: `INHERITED`, `DISABLED`.
+	EnablementConfig *string `pulumi:"enablementConfig"`
+	// (Output)
+	// This field returns whether scanning is active for this repository.
+	EnablementState *string `pulumi:"enablementState"`
+	// (Output)
+	// This provides an explanation for the state of scanning on this repository.
+	EnablementStateReason *string `pulumi:"enablementStateReason"`
+}
+
+// RepositoryVulnerabilityScanningConfigInput is an input type that accepts RepositoryVulnerabilityScanningConfigArgs and RepositoryVulnerabilityScanningConfigOutput values.
+// You can construct a concrete instance of `RepositoryVulnerabilityScanningConfigInput` via:
+//
+//	RepositoryVulnerabilityScanningConfigArgs{...}
+type RepositoryVulnerabilityScanningConfigInput interface {
+	pulumi.Input
+
+	ToRepositoryVulnerabilityScanningConfigOutput() RepositoryVulnerabilityScanningConfigOutput
+	ToRepositoryVulnerabilityScanningConfigOutputWithContext(context.Context) RepositoryVulnerabilityScanningConfigOutput
+}
+
+type RepositoryVulnerabilityScanningConfigArgs struct {
+	// This configures whether vulnerability scanning is automatically performed for artifacts pushed to this repository.
+	// Possible values are: `INHERITED`, `DISABLED`.
+	EnablementConfig pulumi.StringPtrInput `pulumi:"enablementConfig"`
+	// (Output)
+	// This field returns whether scanning is active for this repository.
+	EnablementState pulumi.StringPtrInput `pulumi:"enablementState"`
+	// (Output)
+	// This provides an explanation for the state of scanning on this repository.
+	EnablementStateReason pulumi.StringPtrInput `pulumi:"enablementStateReason"`
+}
+
+func (RepositoryVulnerabilityScanningConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryVulnerabilityScanningConfig)(nil)).Elem()
+}
+
+func (i RepositoryVulnerabilityScanningConfigArgs) ToRepositoryVulnerabilityScanningConfigOutput() RepositoryVulnerabilityScanningConfigOutput {
+	return i.ToRepositoryVulnerabilityScanningConfigOutputWithContext(context.Background())
+}
+
+func (i RepositoryVulnerabilityScanningConfigArgs) ToRepositoryVulnerabilityScanningConfigOutputWithContext(ctx context.Context) RepositoryVulnerabilityScanningConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryVulnerabilityScanningConfigOutput)
+}
+
+func (i RepositoryVulnerabilityScanningConfigArgs) ToRepositoryVulnerabilityScanningConfigPtrOutput() RepositoryVulnerabilityScanningConfigPtrOutput {
+	return i.ToRepositoryVulnerabilityScanningConfigPtrOutputWithContext(context.Background())
+}
+
+func (i RepositoryVulnerabilityScanningConfigArgs) ToRepositoryVulnerabilityScanningConfigPtrOutputWithContext(ctx context.Context) RepositoryVulnerabilityScanningConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryVulnerabilityScanningConfigOutput).ToRepositoryVulnerabilityScanningConfigPtrOutputWithContext(ctx)
+}
+
+// RepositoryVulnerabilityScanningConfigPtrInput is an input type that accepts RepositoryVulnerabilityScanningConfigArgs, RepositoryVulnerabilityScanningConfigPtr and RepositoryVulnerabilityScanningConfigPtrOutput values.
+// You can construct a concrete instance of `RepositoryVulnerabilityScanningConfigPtrInput` via:
+//
+//	        RepositoryVulnerabilityScanningConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type RepositoryVulnerabilityScanningConfigPtrInput interface {
+	pulumi.Input
+
+	ToRepositoryVulnerabilityScanningConfigPtrOutput() RepositoryVulnerabilityScanningConfigPtrOutput
+	ToRepositoryVulnerabilityScanningConfigPtrOutputWithContext(context.Context) RepositoryVulnerabilityScanningConfigPtrOutput
+}
+
+type repositoryVulnerabilityScanningConfigPtrType RepositoryVulnerabilityScanningConfigArgs
+
+func RepositoryVulnerabilityScanningConfigPtr(v *RepositoryVulnerabilityScanningConfigArgs) RepositoryVulnerabilityScanningConfigPtrInput {
+	return (*repositoryVulnerabilityScanningConfigPtrType)(v)
+}
+
+func (*repositoryVulnerabilityScanningConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryVulnerabilityScanningConfig)(nil)).Elem()
+}
+
+func (i *repositoryVulnerabilityScanningConfigPtrType) ToRepositoryVulnerabilityScanningConfigPtrOutput() RepositoryVulnerabilityScanningConfigPtrOutput {
+	return i.ToRepositoryVulnerabilityScanningConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *repositoryVulnerabilityScanningConfigPtrType) ToRepositoryVulnerabilityScanningConfigPtrOutputWithContext(ctx context.Context) RepositoryVulnerabilityScanningConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RepositoryVulnerabilityScanningConfigPtrOutput)
+}
+
+type RepositoryVulnerabilityScanningConfigOutput struct{ *pulumi.OutputState }
+
+func (RepositoryVulnerabilityScanningConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RepositoryVulnerabilityScanningConfig)(nil)).Elem()
+}
+
+func (o RepositoryVulnerabilityScanningConfigOutput) ToRepositoryVulnerabilityScanningConfigOutput() RepositoryVulnerabilityScanningConfigOutput {
+	return o
+}
+
+func (o RepositoryVulnerabilityScanningConfigOutput) ToRepositoryVulnerabilityScanningConfigOutputWithContext(ctx context.Context) RepositoryVulnerabilityScanningConfigOutput {
+	return o
+}
+
+func (o RepositoryVulnerabilityScanningConfigOutput) ToRepositoryVulnerabilityScanningConfigPtrOutput() RepositoryVulnerabilityScanningConfigPtrOutput {
+	return o.ToRepositoryVulnerabilityScanningConfigPtrOutputWithContext(context.Background())
+}
+
+func (o RepositoryVulnerabilityScanningConfigOutput) ToRepositoryVulnerabilityScanningConfigPtrOutputWithContext(ctx context.Context) RepositoryVulnerabilityScanningConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RepositoryVulnerabilityScanningConfig) *RepositoryVulnerabilityScanningConfig {
+		return &v
+	}).(RepositoryVulnerabilityScanningConfigPtrOutput)
+}
+
+// This configures whether vulnerability scanning is automatically performed for artifacts pushed to this repository.
+// Possible values are: `INHERITED`, `DISABLED`.
+func (o RepositoryVulnerabilityScanningConfigOutput) EnablementConfig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RepositoryVulnerabilityScanningConfig) *string { return v.EnablementConfig }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// This field returns whether scanning is active for this repository.
+func (o RepositoryVulnerabilityScanningConfigOutput) EnablementState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RepositoryVulnerabilityScanningConfig) *string { return v.EnablementState }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// This provides an explanation for the state of scanning on this repository.
+func (o RepositoryVulnerabilityScanningConfigOutput) EnablementStateReason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RepositoryVulnerabilityScanningConfig) *string { return v.EnablementStateReason }).(pulumi.StringPtrOutput)
+}
+
+type RepositoryVulnerabilityScanningConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (RepositoryVulnerabilityScanningConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RepositoryVulnerabilityScanningConfig)(nil)).Elem()
+}
+
+func (o RepositoryVulnerabilityScanningConfigPtrOutput) ToRepositoryVulnerabilityScanningConfigPtrOutput() RepositoryVulnerabilityScanningConfigPtrOutput {
+	return o
+}
+
+func (o RepositoryVulnerabilityScanningConfigPtrOutput) ToRepositoryVulnerabilityScanningConfigPtrOutputWithContext(ctx context.Context) RepositoryVulnerabilityScanningConfigPtrOutput {
+	return o
+}
+
+func (o RepositoryVulnerabilityScanningConfigPtrOutput) Elem() RepositoryVulnerabilityScanningConfigOutput {
+	return o.ApplyT(func(v *RepositoryVulnerabilityScanningConfig) RepositoryVulnerabilityScanningConfig {
+		if v != nil {
+			return *v
+		}
+		var ret RepositoryVulnerabilityScanningConfig
+		return ret
+	}).(RepositoryVulnerabilityScanningConfigOutput)
+}
+
+// This configures whether vulnerability scanning is automatically performed for artifacts pushed to this repository.
+// Possible values are: `INHERITED`, `DISABLED`.
+func (o RepositoryVulnerabilityScanningConfigPtrOutput) EnablementConfig() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepositoryVulnerabilityScanningConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EnablementConfig
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// This field returns whether scanning is active for this repository.
+func (o RepositoryVulnerabilityScanningConfigPtrOutput) EnablementState() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepositoryVulnerabilityScanningConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EnablementState
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// This provides an explanation for the state of scanning on this repository.
+func (o RepositoryVulnerabilityScanningConfigPtrOutput) EnablementStateReason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RepositoryVulnerabilityScanningConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EnablementStateReason
+	}).(pulumi.StringPtrOutput)
+}
+
 type GetRepositoryCleanupPolicy struct {
 	// Policy action. Possible values: ["DELETE", "KEEP"]
 	Action string `pulumi:"action"`
@@ -6653,6 +6840,121 @@ func (o GetRepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput) Index(i p
 	}).(GetRepositoryVirtualRepositoryConfigUpstreamPolicyOutput)
 }
 
+type GetRepositoryVulnerabilityScanningConfig struct {
+	// This configures whether vulnerability scanning is automatically performed for artifacts pushed to this repository. Possible values: ["INHERITED", "DISABLED"]
+	EnablementConfig string `pulumi:"enablementConfig"`
+	// This field returns whether scanning is active for this repository.
+	EnablementState string `pulumi:"enablementState"`
+	// This provides an explanation for the state of scanning on this repository.
+	EnablementStateReason string `pulumi:"enablementStateReason"`
+}
+
+// GetRepositoryVulnerabilityScanningConfigInput is an input type that accepts GetRepositoryVulnerabilityScanningConfigArgs and GetRepositoryVulnerabilityScanningConfigOutput values.
+// You can construct a concrete instance of `GetRepositoryVulnerabilityScanningConfigInput` via:
+//
+//	GetRepositoryVulnerabilityScanningConfigArgs{...}
+type GetRepositoryVulnerabilityScanningConfigInput interface {
+	pulumi.Input
+
+	ToGetRepositoryVulnerabilityScanningConfigOutput() GetRepositoryVulnerabilityScanningConfigOutput
+	ToGetRepositoryVulnerabilityScanningConfigOutputWithContext(context.Context) GetRepositoryVulnerabilityScanningConfigOutput
+}
+
+type GetRepositoryVulnerabilityScanningConfigArgs struct {
+	// This configures whether vulnerability scanning is automatically performed for artifacts pushed to this repository. Possible values: ["INHERITED", "DISABLED"]
+	EnablementConfig pulumi.StringInput `pulumi:"enablementConfig"`
+	// This field returns whether scanning is active for this repository.
+	EnablementState pulumi.StringInput `pulumi:"enablementState"`
+	// This provides an explanation for the state of scanning on this repository.
+	EnablementStateReason pulumi.StringInput `pulumi:"enablementStateReason"`
+}
+
+func (GetRepositoryVulnerabilityScanningConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRepositoryVulnerabilityScanningConfig)(nil)).Elem()
+}
+
+func (i GetRepositoryVulnerabilityScanningConfigArgs) ToGetRepositoryVulnerabilityScanningConfigOutput() GetRepositoryVulnerabilityScanningConfigOutput {
+	return i.ToGetRepositoryVulnerabilityScanningConfigOutputWithContext(context.Background())
+}
+
+func (i GetRepositoryVulnerabilityScanningConfigArgs) ToGetRepositoryVulnerabilityScanningConfigOutputWithContext(ctx context.Context) GetRepositoryVulnerabilityScanningConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryVulnerabilityScanningConfigOutput)
+}
+
+// GetRepositoryVulnerabilityScanningConfigArrayInput is an input type that accepts GetRepositoryVulnerabilityScanningConfigArray and GetRepositoryVulnerabilityScanningConfigArrayOutput values.
+// You can construct a concrete instance of `GetRepositoryVulnerabilityScanningConfigArrayInput` via:
+//
+//	GetRepositoryVulnerabilityScanningConfigArray{ GetRepositoryVulnerabilityScanningConfigArgs{...} }
+type GetRepositoryVulnerabilityScanningConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetRepositoryVulnerabilityScanningConfigArrayOutput() GetRepositoryVulnerabilityScanningConfigArrayOutput
+	ToGetRepositoryVulnerabilityScanningConfigArrayOutputWithContext(context.Context) GetRepositoryVulnerabilityScanningConfigArrayOutput
+}
+
+type GetRepositoryVulnerabilityScanningConfigArray []GetRepositoryVulnerabilityScanningConfigInput
+
+func (GetRepositoryVulnerabilityScanningConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRepositoryVulnerabilityScanningConfig)(nil)).Elem()
+}
+
+func (i GetRepositoryVulnerabilityScanningConfigArray) ToGetRepositoryVulnerabilityScanningConfigArrayOutput() GetRepositoryVulnerabilityScanningConfigArrayOutput {
+	return i.ToGetRepositoryVulnerabilityScanningConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetRepositoryVulnerabilityScanningConfigArray) ToGetRepositoryVulnerabilityScanningConfigArrayOutputWithContext(ctx context.Context) GetRepositoryVulnerabilityScanningConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRepositoryVulnerabilityScanningConfigArrayOutput)
+}
+
+type GetRepositoryVulnerabilityScanningConfigOutput struct{ *pulumi.OutputState }
+
+func (GetRepositoryVulnerabilityScanningConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRepositoryVulnerabilityScanningConfig)(nil)).Elem()
+}
+
+func (o GetRepositoryVulnerabilityScanningConfigOutput) ToGetRepositoryVulnerabilityScanningConfigOutput() GetRepositoryVulnerabilityScanningConfigOutput {
+	return o
+}
+
+func (o GetRepositoryVulnerabilityScanningConfigOutput) ToGetRepositoryVulnerabilityScanningConfigOutputWithContext(ctx context.Context) GetRepositoryVulnerabilityScanningConfigOutput {
+	return o
+}
+
+// This configures whether vulnerability scanning is automatically performed for artifacts pushed to this repository. Possible values: ["INHERITED", "DISABLED"]
+func (o GetRepositoryVulnerabilityScanningConfigOutput) EnablementConfig() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRepositoryVulnerabilityScanningConfig) string { return v.EnablementConfig }).(pulumi.StringOutput)
+}
+
+// This field returns whether scanning is active for this repository.
+func (o GetRepositoryVulnerabilityScanningConfigOutput) EnablementState() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRepositoryVulnerabilityScanningConfig) string { return v.EnablementState }).(pulumi.StringOutput)
+}
+
+// This provides an explanation for the state of scanning on this repository.
+func (o GetRepositoryVulnerabilityScanningConfigOutput) EnablementStateReason() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRepositoryVulnerabilityScanningConfig) string { return v.EnablementStateReason }).(pulumi.StringOutput)
+}
+
+type GetRepositoryVulnerabilityScanningConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRepositoryVulnerabilityScanningConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRepositoryVulnerabilityScanningConfig)(nil)).Elem()
+}
+
+func (o GetRepositoryVulnerabilityScanningConfigArrayOutput) ToGetRepositoryVulnerabilityScanningConfigArrayOutput() GetRepositoryVulnerabilityScanningConfigArrayOutput {
+	return o
+}
+
+func (o GetRepositoryVulnerabilityScanningConfigArrayOutput) ToGetRepositoryVulnerabilityScanningConfigArrayOutputWithContext(ctx context.Context) GetRepositoryVulnerabilityScanningConfigArrayOutput {
+	return o
+}
+
+func (o GetRepositoryVulnerabilityScanningConfigArrayOutput) Index(i pulumi.IntInput) GetRepositoryVulnerabilityScanningConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRepositoryVulnerabilityScanningConfig {
+		return vs[0].([]GetRepositoryVulnerabilityScanningConfig)[vs[1].(int)]
+	}).(GetRepositoryVulnerabilityScanningConfigOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryCleanupPolicyInput)(nil)).Elem(), RepositoryCleanupPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryCleanupPolicyArrayInput)(nil)).Elem(), RepositoryCleanupPolicyArray{})
@@ -6704,6 +7006,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryVirtualRepositoryConfigPtrInput)(nil)).Elem(), RepositoryVirtualRepositoryConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryVirtualRepositoryConfigUpstreamPolicyInput)(nil)).Elem(), RepositoryVirtualRepositoryConfigUpstreamPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryVirtualRepositoryConfigUpstreamPolicyArrayInput)(nil)).Elem(), RepositoryVirtualRepositoryConfigUpstreamPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryVulnerabilityScanningConfigInput)(nil)).Elem(), RepositoryVulnerabilityScanningConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RepositoryVulnerabilityScanningConfigPtrInput)(nil)).Elem(), RepositoryVulnerabilityScanningConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryCleanupPolicyInput)(nil)).Elem(), GetRepositoryCleanupPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryCleanupPolicyArrayInput)(nil)).Elem(), GetRepositoryCleanupPolicyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryCleanupPolicyConditionInput)(nil)).Elem(), GetRepositoryCleanupPolicyConditionArgs{})
@@ -6750,6 +7054,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryVirtualRepositoryConfigArrayInput)(nil)).Elem(), GetRepositoryVirtualRepositoryConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryVirtualRepositoryConfigUpstreamPolicyInput)(nil)).Elem(), GetRepositoryVirtualRepositoryConfigUpstreamPolicyArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryVirtualRepositoryConfigUpstreamPolicyArrayInput)(nil)).Elem(), GetRepositoryVirtualRepositoryConfigUpstreamPolicyArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryVulnerabilityScanningConfigInput)(nil)).Elem(), GetRepositoryVulnerabilityScanningConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRepositoryVulnerabilityScanningConfigArrayInput)(nil)).Elem(), GetRepositoryVulnerabilityScanningConfigArray{})
 	pulumi.RegisterOutputType(RepositoryCleanupPolicyOutput{})
 	pulumi.RegisterOutputType(RepositoryCleanupPolicyArrayOutput{})
 	pulumi.RegisterOutputType(RepositoryCleanupPolicyConditionOutput{})
@@ -6800,6 +7106,8 @@ func init() {
 	pulumi.RegisterOutputType(RepositoryVirtualRepositoryConfigPtrOutput{})
 	pulumi.RegisterOutputType(RepositoryVirtualRepositoryConfigUpstreamPolicyOutput{})
 	pulumi.RegisterOutputType(RepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput{})
+	pulumi.RegisterOutputType(RepositoryVulnerabilityScanningConfigOutput{})
+	pulumi.RegisterOutputType(RepositoryVulnerabilityScanningConfigPtrOutput{})
 	pulumi.RegisterOutputType(GetRepositoryCleanupPolicyOutput{})
 	pulumi.RegisterOutputType(GetRepositoryCleanupPolicyArrayOutput{})
 	pulumi.RegisterOutputType(GetRepositoryCleanupPolicyConditionOutput{})
@@ -6846,4 +7154,6 @@ func init() {
 	pulumi.RegisterOutputType(GetRepositoryVirtualRepositoryConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetRepositoryVirtualRepositoryConfigUpstreamPolicyOutput{})
 	pulumi.RegisterOutputType(GetRepositoryVirtualRepositoryConfigUpstreamPolicyArrayOutput{})
+	pulumi.RegisterOutputType(GetRepositoryVulnerabilityScanningConfigOutput{})
+	pulumi.RegisterOutputType(GetRepositoryVulnerabilityScanningConfigArrayOutput{})
 }

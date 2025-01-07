@@ -103,6 +103,10 @@ export interface GetSubnetworkResult {
      */
     readonly secondaryIpRanges: outputs.compute.GetSubnetworkSecondaryIpRange[];
     readonly selfLink: string;
+    /**
+     * The numeric ID of the resource.
+     */
+    readonly subnetworkId: number;
 }
 /**
  * Get a subnetwork within GCE from its name and region.

@@ -14,6 +14,11 @@ namespace Pulumi.Gcp.BigQuery.Outputs
     public sealed class GetDatasetAccessResult
     {
         /// <summary>
+        /// Condition for the binding. If CEL expression in this field is true, this
+        /// access binding will be considered.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetDatasetAccessConditionResult> Conditions;
+        /// <summary>
         /// Grants all resources of particular types in a particular dataset read access to the current dataset.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetDatasetAccessDatasetResult> Datasets;
@@ -71,6 +76,8 @@ namespace Pulumi.Gcp.BigQuery.Outputs
 
         [OutputConstructor]
         private GetDatasetAccessResult(
+            ImmutableArray<Outputs.GetDatasetAccessConditionResult> conditions,
+
             ImmutableArray<Outputs.GetDatasetAccessDatasetResult> datasets,
 
             string domain,
@@ -89,6 +96,7 @@ namespace Pulumi.Gcp.BigQuery.Outputs
 
             ImmutableArray<Outputs.GetDatasetAccessViewResult> views)
         {
+            Conditions = conditions;
             Datasets = datasets;
             Domain = domain;
             GroupByEmail = groupByEmail;

@@ -798,15 +798,15 @@ public class RegionNetworkEndpointGroup extends com.pulumi.resources.CustomResou
      * 
      */
     @Export(name="pscData", refs={RegionNetworkEndpointGroupPscData.class}, tree="[0]")
-    private Output</* @Nullable */ RegionNetworkEndpointGroupPscData> pscData;
+    private Output<RegionNetworkEndpointGroupPscData> pscData;
 
     /**
      * @return This field is only used for PSC NEGs.
      * Structure is documented below.
      * 
      */
-    public Output<Optional<RegionNetworkEndpointGroupPscData>> pscData() {
-        return Codegen.optional(this.pscData);
+    public Output<RegionNetworkEndpointGroupPscData> pscData() {
+        return this.pscData;
     }
     /**
      * This field is only used for PSC and INTERNET NEGs.

@@ -47,6 +47,10 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &InterceptDeployment{}
 	case "gcp:networksecurity/interceptDeploymentGroup:InterceptDeploymentGroup":
 		r = &InterceptDeploymentGroup{}
+	case "gcp:networksecurity/interceptEndpointGroup:InterceptEndpointGroup":
+		r = &InterceptEndpointGroup{}
+	case "gcp:networksecurity/interceptEndpointGroupAssociation:InterceptEndpointGroupAssociation":
+		r = &InterceptEndpointGroupAssociation{}
 	case "gcp:networksecurity/mirroringDeployment:MirroringDeployment":
 		r = &MirroringDeployment{}
 	case "gcp:networksecurity/mirroringDeploymentGroup:MirroringDeploymentGroup":
@@ -141,6 +145,16 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"networksecurity/interceptDeploymentGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"networksecurity/interceptEndpointGroup",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"networksecurity/interceptEndpointGroupAssociation",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

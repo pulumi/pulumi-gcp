@@ -50,9 +50,7 @@ public final class ResizeRequestState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * The name of the managed instance group. The name should conform to RFC1035 or be a resource ID.
-     * Authorization requires the following IAM permission on the specified resource instanceGroupManager:
-     * *compute.instanceGroupManagers.update
+     * The reference of the instance group manager this ResizeRequest is a part of.
      * 
      * ***
      * 
@@ -61,9 +59,7 @@ public final class ResizeRequestState extends com.pulumi.resources.ResourceArgs 
     private @Nullable Output<String> instanceGroupManager;
 
     /**
-     * @return The name of the managed instance group. The name should conform to RFC1035 or be a resource ID.
-     * Authorization requires the following IAM permission on the specified resource instanceGroupManager:
-     * *compute.instanceGroupManagers.update
+     * @return The reference of the instance group manager this ResizeRequest is a part of.
      * 
      * ***
      * 
@@ -137,14 +133,14 @@ public final class ResizeRequestState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * [Output only] Current state of the request.
+     * Current state of the request.
      * 
      */
     @Import(name="state")
     private @Nullable Output<String> state;
 
     /**
-     * @return [Output only] Current state of the request.
+     * @return Current state of the request.
      * 
      */
     public Optional<Output<String>> state() {
@@ -152,7 +148,7 @@ public final class ResizeRequestState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * [Output only] Status of the request.
+     * Status of the request.
      * Structure is documented below.
      * 
      */
@@ -160,7 +156,7 @@ public final class ResizeRequestState extends com.pulumi.resources.ResourceArgs 
     private @Nullable Output<List<ResizeRequestStatusArgs>> statuses;
 
     /**
-     * @return [Output only] Status of the request.
+     * @return Status of the request.
      * Structure is documented below.
      * 
      */
@@ -169,14 +165,14 @@ public final class ResizeRequestState extends com.pulumi.resources.ResourceArgs 
     }
 
     /**
-     * Name of the compute zone scoping this request. Name should conform to RFC1035.
+     * The reference of the compute zone scoping this request.
      * 
      */
     @Import(name="zone")
     private @Nullable Output<String> zone;
 
     /**
-     * @return Name of the compute zone scoping this request. Name should conform to RFC1035.
+     * @return The reference of the compute zone scoping this request.
      * 
      */
     public Optional<Output<String>> zone() {
@@ -259,9 +255,7 @@ public final class ResizeRequestState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param instanceGroupManager The name of the managed instance group. The name should conform to RFC1035 or be a resource ID.
-         * Authorization requires the following IAM permission on the specified resource instanceGroupManager:
-         * *compute.instanceGroupManagers.update
+         * @param instanceGroupManager The reference of the instance group manager this ResizeRequest is a part of.
          * 
          * ***
          * 
@@ -274,9 +268,7 @@ public final class ResizeRequestState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param instanceGroupManager The name of the managed instance group. The name should conform to RFC1035 or be a resource ID.
-         * Authorization requires the following IAM permission on the specified resource instanceGroupManager:
-         * *compute.instanceGroupManagers.update
+         * @param instanceGroupManager The reference of the instance group manager this ResizeRequest is a part of.
          * 
          * ***
          * 
@@ -376,7 +368,7 @@ public final class ResizeRequestState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param state [Output only] Current state of the request.
+         * @param state Current state of the request.
          * 
          * @return builder
          * 
@@ -387,7 +379,7 @@ public final class ResizeRequestState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param state [Output only] Current state of the request.
+         * @param state Current state of the request.
          * 
          * @return builder
          * 
@@ -397,7 +389,7 @@ public final class ResizeRequestState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param statuses [Output only] Status of the request.
+         * @param statuses Status of the request.
          * Structure is documented below.
          * 
          * @return builder
@@ -409,7 +401,7 @@ public final class ResizeRequestState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param statuses [Output only] Status of the request.
+         * @param statuses Status of the request.
          * Structure is documented below.
          * 
          * @return builder
@@ -420,7 +412,7 @@ public final class ResizeRequestState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param statuses [Output only] Status of the request.
+         * @param statuses Status of the request.
          * Structure is documented below.
          * 
          * @return builder
@@ -431,7 +423,7 @@ public final class ResizeRequestState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param zone Name of the compute zone scoping this request. Name should conform to RFC1035.
+         * @param zone The reference of the compute zone scoping this request.
          * 
          * @return builder
          * 
@@ -442,7 +434,7 @@ public final class ResizeRequestState extends com.pulumi.resources.ResourceArgs 
         }
 
         /**
-         * @param zone Name of the compute zone scoping this request. Name should conform to RFC1035.
+         * @param zone The reference of the compute zone scoping this request.
          * 
          * @return builder
          * 

@@ -349,16 +349,10 @@ class Kmsconfig(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        keyring = gcp.kms.KeyRing("keyring",
-            name="key-ring",
-            location="us-central1")
-        crypto_key = gcp.kms.CryptoKey("crypto_key",
-            name="crypto-name",
-            key_ring=keyring.id)
         kms_config = gcp.netapp.Kmsconfig("kmsConfig",
             name="kms-test",
             description="this is a test description",
-            crypto_key_name=crypto_key.id,
+            crypto_key_name="crypto-name",
             location="us-central1")
         ```
 
@@ -427,16 +421,10 @@ class Kmsconfig(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        keyring = gcp.kms.KeyRing("keyring",
-            name="key-ring",
-            location="us-central1")
-        crypto_key = gcp.kms.CryptoKey("crypto_key",
-            name="crypto-name",
-            key_ring=keyring.id)
         kms_config = gcp.netapp.Kmsconfig("kmsConfig",
             name="kms-test",
             description="this is a test description",
-            crypto_key_name=crypto_key.id,
+            crypto_key_name="crypto-name",
             location="us-central1")
         ```
 

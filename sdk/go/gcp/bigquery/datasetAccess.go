@@ -252,6 +252,10 @@ type DatasetAccess struct {
 	// Grants all resources of particular types in a particular dataset read access to the current dataset.
 	// Structure is documented below.
 	AuthorizedDataset DatasetAccessAuthorizedDatasetPtrOutput `pulumi:"authorizedDataset"`
+	// Condition for the binding. If CEL expression in this field is true, this
+	// access binding will be considered.
+	// Structure is documented below.
+	Condition DatasetAccessConditionPtrOutput `pulumi:"condition"`
 	// A unique ID for this dataset, without the project name. The ID
 	// must contain only letters (a-z, A-Z), numbers (0-9), or
 	// underscores (_). The maximum length is 1,024 characters.
@@ -340,6 +344,10 @@ type datasetAccessState struct {
 	// Grants all resources of particular types in a particular dataset read access to the current dataset.
 	// Structure is documented below.
 	AuthorizedDataset *DatasetAccessAuthorizedDataset `pulumi:"authorizedDataset"`
+	// Condition for the binding. If CEL expression in this field is true, this
+	// access binding will be considered.
+	// Structure is documented below.
+	Condition *DatasetAccessCondition `pulumi:"condition"`
 	// A unique ID for this dataset, without the project name. The ID
 	// must contain only letters (a-z, A-Z), numbers (0-9), or
 	// underscores (_). The maximum length is 1,024 characters.
@@ -396,6 +404,10 @@ type DatasetAccessState struct {
 	// Grants all resources of particular types in a particular dataset read access to the current dataset.
 	// Structure is documented below.
 	AuthorizedDataset DatasetAccessAuthorizedDatasetPtrInput
+	// Condition for the binding. If CEL expression in this field is true, this
+	// access binding will be considered.
+	// Structure is documented below.
+	Condition DatasetAccessConditionPtrInput
 	// A unique ID for this dataset, without the project name. The ID
 	// must contain only letters (a-z, A-Z), numbers (0-9), or
 	// underscores (_). The maximum length is 1,024 characters.
@@ -453,6 +465,10 @@ type datasetAccessArgs struct {
 	// Grants all resources of particular types in a particular dataset read access to the current dataset.
 	// Structure is documented below.
 	AuthorizedDataset *DatasetAccessAuthorizedDataset `pulumi:"authorizedDataset"`
+	// Condition for the binding. If CEL expression in this field is true, this
+	// access binding will be considered.
+	// Structure is documented below.
+	Condition *DatasetAccessCondition `pulumi:"condition"`
 	// A unique ID for this dataset, without the project name. The ID
 	// must contain only letters (a-z, A-Z), numbers (0-9), or
 	// underscores (_). The maximum length is 1,024 characters.
@@ -507,6 +523,10 @@ type DatasetAccessArgs struct {
 	// Grants all resources of particular types in a particular dataset read access to the current dataset.
 	// Structure is documented below.
 	AuthorizedDataset DatasetAccessAuthorizedDatasetPtrInput
+	// Condition for the binding. If CEL expression in this field is true, this
+	// access binding will be considered.
+	// Structure is documented below.
+	Condition DatasetAccessConditionPtrInput
 	// A unique ID for this dataset, without the project name. The ID
 	// must contain only letters (a-z, A-Z), numbers (0-9), or
 	// underscores (_). The maximum length is 1,024 characters.
@@ -653,6 +673,13 @@ func (o DatasetAccessOutput) ApiUpdatedMember() pulumi.BoolOutput {
 // Structure is documented below.
 func (o DatasetAccessOutput) AuthorizedDataset() DatasetAccessAuthorizedDatasetPtrOutput {
 	return o.ApplyT(func(v *DatasetAccess) DatasetAccessAuthorizedDatasetPtrOutput { return v.AuthorizedDataset }).(DatasetAccessAuthorizedDatasetPtrOutput)
+}
+
+// Condition for the binding. If CEL expression in this field is true, this
+// access binding will be considered.
+// Structure is documented below.
+func (o DatasetAccessOutput) Condition() DatasetAccessConditionPtrOutput {
+	return o.ApplyT(func(v *DatasetAccess) DatasetAccessConditionPtrOutput { return v.Condition }).(DatasetAccessConditionPtrOutput)
 }
 
 // A unique ID for this dataset, without the project name. The ID

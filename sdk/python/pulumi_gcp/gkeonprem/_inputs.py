@@ -261,6 +261,68 @@ __all__ = [
     'VMwareNodePoolStatusArgsDict',
     'VMwareNodePoolStatusConditionArgs',
     'VMwareNodePoolStatusConditionArgsDict',
+    'VmwareAdminClusterAddonNodeArgs',
+    'VmwareAdminClusterAddonNodeArgsDict',
+    'VmwareAdminClusterAddonNodeAutoResizeConfigArgs',
+    'VmwareAdminClusterAddonNodeAutoResizeConfigArgsDict',
+    'VmwareAdminClusterAntiAffinityGroupsArgs',
+    'VmwareAdminClusterAntiAffinityGroupsArgsDict',
+    'VmwareAdminClusterAuthorizationArgs',
+    'VmwareAdminClusterAuthorizationArgsDict',
+    'VmwareAdminClusterAuthorizationViewerUserArgs',
+    'VmwareAdminClusterAuthorizationViewerUserArgsDict',
+    'VmwareAdminClusterAutoRepairConfigArgs',
+    'VmwareAdminClusterAutoRepairConfigArgsDict',
+    'VmwareAdminClusterControlPlaneNodeArgs',
+    'VmwareAdminClusterControlPlaneNodeArgsDict',
+    'VmwareAdminClusterFleetArgs',
+    'VmwareAdminClusterFleetArgsDict',
+    'VmwareAdminClusterLoadBalancerArgs',
+    'VmwareAdminClusterLoadBalancerArgsDict',
+    'VmwareAdminClusterLoadBalancerF5ConfigArgs',
+    'VmwareAdminClusterLoadBalancerF5ConfigArgsDict',
+    'VmwareAdminClusterLoadBalancerManualLbConfigArgs',
+    'VmwareAdminClusterLoadBalancerManualLbConfigArgsDict',
+    'VmwareAdminClusterLoadBalancerMetalLbConfigArgs',
+    'VmwareAdminClusterLoadBalancerMetalLbConfigArgsDict',
+    'VmwareAdminClusterLoadBalancerVipConfigArgs',
+    'VmwareAdminClusterLoadBalancerVipConfigArgsDict',
+    'VmwareAdminClusterNetworkConfigArgs',
+    'VmwareAdminClusterNetworkConfigArgsDict',
+    'VmwareAdminClusterNetworkConfigDhcpIpConfigArgs',
+    'VmwareAdminClusterNetworkConfigDhcpIpConfigArgsDict',
+    'VmwareAdminClusterNetworkConfigHaControlPlaneConfigArgs',
+    'VmwareAdminClusterNetworkConfigHaControlPlaneConfigArgsDict',
+    'VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockArgs',
+    'VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockArgsDict',
+    'VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpArgs',
+    'VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpArgsDict',
+    'VmwareAdminClusterNetworkConfigHostConfigArgs',
+    'VmwareAdminClusterNetworkConfigHostConfigArgsDict',
+    'VmwareAdminClusterNetworkConfigStaticIpConfigArgs',
+    'VmwareAdminClusterNetworkConfigStaticIpConfigArgsDict',
+    'VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockArgs',
+    'VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockArgsDict',
+    'VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpArgs',
+    'VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpArgsDict',
+    'VmwareAdminClusterPlatformConfigArgs',
+    'VmwareAdminClusterPlatformConfigArgsDict',
+    'VmwareAdminClusterPlatformConfigBundleArgs',
+    'VmwareAdminClusterPlatformConfigBundleArgsDict',
+    'VmwareAdminClusterPlatformConfigBundleStatusArgs',
+    'VmwareAdminClusterPlatformConfigBundleStatusArgsDict',
+    'VmwareAdminClusterPlatformConfigBundleStatusConditionArgs',
+    'VmwareAdminClusterPlatformConfigBundleStatusConditionArgsDict',
+    'VmwareAdminClusterPlatformConfigStatusArgs',
+    'VmwareAdminClusterPlatformConfigStatusArgsDict',
+    'VmwareAdminClusterPlatformConfigStatusConditionArgs',
+    'VmwareAdminClusterPlatformConfigStatusConditionArgsDict',
+    'VmwareAdminClusterStatusArgs',
+    'VmwareAdminClusterStatusArgsDict',
+    'VmwareAdminClusterStatusConditionArgs',
+    'VmwareAdminClusterStatusConditionArgsDict',
+    'VmwareAdminClusterVcenterArgs',
+    'VmwareAdminClusterVcenterArgsDict',
 ]
 
 MYPY = False
@@ -8670,5 +8732,2307 @@ class VMwareNodePoolStatusConditionArgs:
     @type.setter
     def type(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "type", value)
+
+
+if not MYPY:
+    class VmwareAdminClusterAddonNodeArgsDict(TypedDict):
+        auto_resize_config: NotRequired[pulumi.Input['VmwareAdminClusterAddonNodeAutoResizeConfigArgsDict']]
+        """
+        Specifies auto resize config.
+        Structure is documented below.
+        """
+elif False:
+    VmwareAdminClusterAddonNodeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class VmwareAdminClusterAddonNodeArgs:
+    def __init__(__self__, *,
+                 auto_resize_config: Optional[pulumi.Input['VmwareAdminClusterAddonNodeAutoResizeConfigArgs']] = None):
+        """
+        :param pulumi.Input['VmwareAdminClusterAddonNodeAutoResizeConfigArgs'] auto_resize_config: Specifies auto resize config.
+               Structure is documented below.
+        """
+        if auto_resize_config is not None:
+            pulumi.set(__self__, "auto_resize_config", auto_resize_config)
+
+    @property
+    @pulumi.getter(name="autoResizeConfig")
+    def auto_resize_config(self) -> Optional[pulumi.Input['VmwareAdminClusterAddonNodeAutoResizeConfigArgs']]:
+        """
+        Specifies auto resize config.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "auto_resize_config")
+
+    @auto_resize_config.setter
+    def auto_resize_config(self, value: Optional[pulumi.Input['VmwareAdminClusterAddonNodeAutoResizeConfigArgs']]):
+        pulumi.set(self, "auto_resize_config", value)
+
+
+if not MYPY:
+    class VmwareAdminClusterAddonNodeAutoResizeConfigArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        Whether to enable controle plane node auto resizing.
+        """
+elif False:
+    VmwareAdminClusterAddonNodeAutoResizeConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class VmwareAdminClusterAddonNodeAutoResizeConfigArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool]):
+        """
+        :param pulumi.Input[bool] enabled: Whether to enable controle plane node auto resizing.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        """
+        Whether to enable controle plane node auto resizing.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
+
+if not MYPY:
+    class VmwareAdminClusterAntiAffinityGroupsArgsDict(TypedDict):
+        aag_config_disabled: pulumi.Input[bool]
+        """
+        Spread nodes across at least three physical hosts (requires at least three
+        hosts).
+        Enabled by default.
+        """
+elif False:
+    VmwareAdminClusterAntiAffinityGroupsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class VmwareAdminClusterAntiAffinityGroupsArgs:
+    def __init__(__self__, *,
+                 aag_config_disabled: pulumi.Input[bool]):
+        """
+        :param pulumi.Input[bool] aag_config_disabled: Spread nodes across at least three physical hosts (requires at least three
+               hosts).
+               Enabled by default.
+        """
+        pulumi.set(__self__, "aag_config_disabled", aag_config_disabled)
+
+    @property
+    @pulumi.getter(name="aagConfigDisabled")
+    def aag_config_disabled(self) -> pulumi.Input[bool]:
+        """
+        Spread nodes across at least three physical hosts (requires at least three
+        hosts).
+        Enabled by default.
+        """
+        return pulumi.get(self, "aag_config_disabled")
+
+    @aag_config_disabled.setter
+    def aag_config_disabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "aag_config_disabled", value)
+
+
+if not MYPY:
+    class VmwareAdminClusterAuthorizationArgsDict(TypedDict):
+        viewer_users: NotRequired[pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterAuthorizationViewerUserArgsDict']]]]
+        """
+        Users that will be granted the cluster-admin role on the cluster, providing
+        full access to the cluster.
+        Structure is documented below.
+        """
+elif False:
+    VmwareAdminClusterAuthorizationArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class VmwareAdminClusterAuthorizationArgs:
+    def __init__(__self__, *,
+                 viewer_users: Optional[pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterAuthorizationViewerUserArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterAuthorizationViewerUserArgs']]] viewer_users: Users that will be granted the cluster-admin role on the cluster, providing
+               full access to the cluster.
+               Structure is documented below.
+        """
+        if viewer_users is not None:
+            pulumi.set(__self__, "viewer_users", viewer_users)
+
+    @property
+    @pulumi.getter(name="viewerUsers")
+    def viewer_users(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterAuthorizationViewerUserArgs']]]]:
+        """
+        Users that will be granted the cluster-admin role on the cluster, providing
+        full access to the cluster.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "viewer_users")
+
+    @viewer_users.setter
+    def viewer_users(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterAuthorizationViewerUserArgs']]]]):
+        pulumi.set(self, "viewer_users", value)
+
+
+if not MYPY:
+    class VmwareAdminClusterAuthorizationViewerUserArgsDict(TypedDict):
+        username: pulumi.Input[str]
+        """
+        The name of the user, e.g. `my-gcp-id@gmail.com`.
+        """
+elif False:
+    VmwareAdminClusterAuthorizationViewerUserArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class VmwareAdminClusterAuthorizationViewerUserArgs:
+    def __init__(__self__, *,
+                 username: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] username: The name of the user, e.g. `my-gcp-id@gmail.com`.
+        """
+        pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter
+    def username(self) -> pulumi.Input[str]:
+        """
+        The name of the user, e.g. `my-gcp-id@gmail.com`.
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: pulumi.Input[str]):
+        pulumi.set(self, "username", value)
+
+
+if not MYPY:
+    class VmwareAdminClusterAutoRepairConfigArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        Whether auto repair is enabled.
+        """
+elif False:
+    VmwareAdminClusterAutoRepairConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class VmwareAdminClusterAutoRepairConfigArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool]):
+        """
+        :param pulumi.Input[bool] enabled: Whether auto repair is enabled.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        """
+        Whether auto repair is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
+
+if not MYPY:
+    class VmwareAdminClusterControlPlaneNodeArgsDict(TypedDict):
+        cpus: NotRequired[pulumi.Input[int]]
+        """
+        The number of vCPUs for the control-plane node of the admin cluster.
+        """
+        memory: NotRequired[pulumi.Input[int]]
+        """
+        The number of mebibytes of memory for the control-plane node of the admin cluster.
+        """
+        replicas: NotRequired[pulumi.Input[int]]
+        """
+        The number of control plane nodes for this VMware admin cluster.
+        """
+elif False:
+    VmwareAdminClusterControlPlaneNodeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class VmwareAdminClusterControlPlaneNodeArgs:
+    def __init__(__self__, *,
+                 cpus: Optional[pulumi.Input[int]] = None,
+                 memory: Optional[pulumi.Input[int]] = None,
+                 replicas: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] cpus: The number of vCPUs for the control-plane node of the admin cluster.
+        :param pulumi.Input[int] memory: The number of mebibytes of memory for the control-plane node of the admin cluster.
+        :param pulumi.Input[int] replicas: The number of control plane nodes for this VMware admin cluster.
+        """
+        if cpus is not None:
+            pulumi.set(__self__, "cpus", cpus)
+        if memory is not None:
+            pulumi.set(__self__, "memory", memory)
+        if replicas is not None:
+            pulumi.set(__self__, "replicas", replicas)
+
+    @property
+    @pulumi.getter
+    def cpus(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of vCPUs for the control-plane node of the admin cluster.
+        """
+        return pulumi.get(self, "cpus")
+
+    @cpus.setter
+    def cpus(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "cpus", value)
+
+    @property
+    @pulumi.getter
+    def memory(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of mebibytes of memory for the control-plane node of the admin cluster.
+        """
+        return pulumi.get(self, "memory")
+
+    @memory.setter
+    def memory(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "memory", value)
+
+    @property
+    @pulumi.getter
+    def replicas(self) -> Optional[pulumi.Input[int]]:
+        """
+        The number of control plane nodes for this VMware admin cluster.
+        """
+        return pulumi.get(self, "replicas")
+
+    @replicas.setter
+    def replicas(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "replicas", value)
+
+
+if not MYPY:
+    class VmwareAdminClusterFleetArgsDict(TypedDict):
+        membership: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The name of the managed Fleet Membership resource associated to this cluster.
+        Membership names are formatted as
+        `projects/<project-number>/locations/<location>/memberships/<cluster-id>`.
+        """
+elif False:
+    VmwareAdminClusterFleetArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class VmwareAdminClusterFleetArgs:
+    def __init__(__self__, *,
+                 membership: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] membership: (Output)
+               The name of the managed Fleet Membership resource associated to this cluster.
+               Membership names are formatted as
+               `projects/<project-number>/locations/<location>/memberships/<cluster-id>`.
+        """
+        if membership is not None:
+            pulumi.set(__self__, "membership", membership)
+
+    @property
+    @pulumi.getter
+    def membership(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The name of the managed Fleet Membership resource associated to this cluster.
+        Membership names are formatted as
+        `projects/<project-number>/locations/<location>/memberships/<cluster-id>`.
+        """
+        return pulumi.get(self, "membership")
+
+    @membership.setter
+    def membership(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "membership", value)
+
+
+if not MYPY:
+    class VmwareAdminClusterLoadBalancerArgsDict(TypedDict):
+        vip_config: pulumi.Input['VmwareAdminClusterLoadBalancerVipConfigArgsDict']
+        """
+        Specified the VMware Load Balancer Config
+        Structure is documented below.
+        """
+        f5_config: NotRequired[pulumi.Input['VmwareAdminClusterLoadBalancerF5ConfigArgsDict']]
+        """
+        Configuration for F5 Big IP typed load balancers.
+        Structure is documented below.
+        """
+        manual_lb_config: NotRequired[pulumi.Input['VmwareAdminClusterLoadBalancerManualLbConfigArgsDict']]
+        """
+        Manually configured load balancers.
+        Structure is documented below.
+        """
+        metal_lb_config: NotRequired[pulumi.Input['VmwareAdminClusterLoadBalancerMetalLbConfigArgsDict']]
+        """
+        Metal LB load balancers.
+        Structure is documented below.
+        """
+elif False:
+    VmwareAdminClusterLoadBalancerArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class VmwareAdminClusterLoadBalancerArgs:
+    def __init__(__self__, *,
+                 vip_config: pulumi.Input['VmwareAdminClusterLoadBalancerVipConfigArgs'],
+                 f5_config: Optional[pulumi.Input['VmwareAdminClusterLoadBalancerF5ConfigArgs']] = None,
+                 manual_lb_config: Optional[pulumi.Input['VmwareAdminClusterLoadBalancerManualLbConfigArgs']] = None,
+                 metal_lb_config: Optional[pulumi.Input['VmwareAdminClusterLoadBalancerMetalLbConfigArgs']] = None):
+        """
+        :param pulumi.Input['VmwareAdminClusterLoadBalancerVipConfigArgs'] vip_config: Specified the VMware Load Balancer Config
+               Structure is documented below.
+        :param pulumi.Input['VmwareAdminClusterLoadBalancerF5ConfigArgs'] f5_config: Configuration for F5 Big IP typed load balancers.
+               Structure is documented below.
+        :param pulumi.Input['VmwareAdminClusterLoadBalancerManualLbConfigArgs'] manual_lb_config: Manually configured load balancers.
+               Structure is documented below.
+        :param pulumi.Input['VmwareAdminClusterLoadBalancerMetalLbConfigArgs'] metal_lb_config: Metal LB load balancers.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "vip_config", vip_config)
+        if f5_config is not None:
+            pulumi.set(__self__, "f5_config", f5_config)
+        if manual_lb_config is not None:
+            pulumi.set(__self__, "manual_lb_config", manual_lb_config)
+        if metal_lb_config is not None:
+            pulumi.set(__self__, "metal_lb_config", metal_lb_config)
+
+    @property
+    @pulumi.getter(name="vipConfig")
+    def vip_config(self) -> pulumi.Input['VmwareAdminClusterLoadBalancerVipConfigArgs']:
+        """
+        Specified the VMware Load Balancer Config
+        Structure is documented below.
+        """
+        return pulumi.get(self, "vip_config")
+
+    @vip_config.setter
+    def vip_config(self, value: pulumi.Input['VmwareAdminClusterLoadBalancerVipConfigArgs']):
+        pulumi.set(self, "vip_config", value)
+
+    @property
+    @pulumi.getter(name="f5Config")
+    def f5_config(self) -> Optional[pulumi.Input['VmwareAdminClusterLoadBalancerF5ConfigArgs']]:
+        """
+        Configuration for F5 Big IP typed load balancers.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "f5_config")
+
+    @f5_config.setter
+    def f5_config(self, value: Optional[pulumi.Input['VmwareAdminClusterLoadBalancerF5ConfigArgs']]):
+        pulumi.set(self, "f5_config", value)
+
+    @property
+    @pulumi.getter(name="manualLbConfig")
+    def manual_lb_config(self) -> Optional[pulumi.Input['VmwareAdminClusterLoadBalancerManualLbConfigArgs']]:
+        """
+        Manually configured load balancers.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "manual_lb_config")
+
+    @manual_lb_config.setter
+    def manual_lb_config(self, value: Optional[pulumi.Input['VmwareAdminClusterLoadBalancerManualLbConfigArgs']]):
+        pulumi.set(self, "manual_lb_config", value)
+
+    @property
+    @pulumi.getter(name="metalLbConfig")
+    def metal_lb_config(self) -> Optional[pulumi.Input['VmwareAdminClusterLoadBalancerMetalLbConfigArgs']]:
+        """
+        Metal LB load balancers.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "metal_lb_config")
+
+    @metal_lb_config.setter
+    def metal_lb_config(self, value: Optional[pulumi.Input['VmwareAdminClusterLoadBalancerMetalLbConfigArgs']]):
+        pulumi.set(self, "metal_lb_config", value)
+
+
+if not MYPY:
+    class VmwareAdminClusterLoadBalancerF5ConfigArgsDict(TypedDict):
+        address: NotRequired[pulumi.Input[str]]
+        """
+        The load balancer's IP address.
+        """
+        partition: NotRequired[pulumi.Input[str]]
+        """
+        he preexisting partition to be used by the load balancer. T
+        his partition is usually created for the admin cluster for example:
+        'my-f5-admin-partition'.
+        """
+        snat_pool: NotRequired[pulumi.Input[str]]
+        """
+        The pool name. Only necessary, if using SNAT.
+        """
+elif False:
+    VmwareAdminClusterLoadBalancerF5ConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class VmwareAdminClusterLoadBalancerF5ConfigArgs:
+    def __init__(__self__, *,
+                 address: Optional[pulumi.Input[str]] = None,
+                 partition: Optional[pulumi.Input[str]] = None,
+                 snat_pool: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] address: The load balancer's IP address.
+        :param pulumi.Input[str] partition: he preexisting partition to be used by the load balancer. T
+               his partition is usually created for the admin cluster for example:
+               'my-f5-admin-partition'.
+        :param pulumi.Input[str] snat_pool: The pool name. Only necessary, if using SNAT.
+        """
+        if address is not None:
+            pulumi.set(__self__, "address", address)
+        if partition is not None:
+            pulumi.set(__self__, "partition", partition)
+        if snat_pool is not None:
+            pulumi.set(__self__, "snat_pool", snat_pool)
+
+    @property
+    @pulumi.getter
+    def address(self) -> Optional[pulumi.Input[str]]:
+        """
+        The load balancer's IP address.
+        """
+        return pulumi.get(self, "address")
+
+    @address.setter
+    def address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "address", value)
+
+    @property
+    @pulumi.getter
+    def partition(self) -> Optional[pulumi.Input[str]]:
+        """
+        he preexisting partition to be used by the load balancer. T
+        his partition is usually created for the admin cluster for example:
+        'my-f5-admin-partition'.
+        """
+        return pulumi.get(self, "partition")
+
+    @partition.setter
+    def partition(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "partition", value)
+
+    @property
+    @pulumi.getter(name="snatPool")
+    def snat_pool(self) -> Optional[pulumi.Input[str]]:
+        """
+        The pool name. Only necessary, if using SNAT.
+        """
+        return pulumi.get(self, "snat_pool")
+
+    @snat_pool.setter
+    def snat_pool(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "snat_pool", value)
+
+
+if not MYPY:
+    class VmwareAdminClusterLoadBalancerManualLbConfigArgsDict(TypedDict):
+        addons_node_port: NotRequired[pulumi.Input[int]]
+        """
+        NodePort for add-ons server in the admin cluster.
+        """
+        control_plane_node_port: NotRequired[pulumi.Input[int]]
+        """
+        NodePort for control plane service. The Kubernetes API server in the admin
+        cluster is implemented as a Service of type NodePort (ex. 30968).
+        """
+        ingress_http_node_port: NotRequired[pulumi.Input[int]]
+        """
+        NodePort for ingress service's http. The ingress service in the admin
+        cluster is implemented as a Service of type NodePort (ex. 32527).
+        """
+        ingress_https_node_port: NotRequired[pulumi.Input[int]]
+        """
+        NodePort for ingress service's https. The ingress service in the admin
+        cluster is implemented as a Service of type NodePort (ex. 30139).
+        """
+        konnectivity_server_node_port: NotRequired[pulumi.Input[int]]
+        """
+        NodePort for konnectivity server service running as a sidecar in each
+        kube-apiserver pod (ex. 30564).
+        """
+elif False:
+    VmwareAdminClusterLoadBalancerManualLbConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class VmwareAdminClusterLoadBalancerManualLbConfigArgs:
+    def __init__(__self__, *,
+                 addons_node_port: Optional[pulumi.Input[int]] = None,
+                 control_plane_node_port: Optional[pulumi.Input[int]] = None,
+                 ingress_http_node_port: Optional[pulumi.Input[int]] = None,
+                 ingress_https_node_port: Optional[pulumi.Input[int]] = None,
+                 konnectivity_server_node_port: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] addons_node_port: NodePort for add-ons server in the admin cluster.
+        :param pulumi.Input[int] control_plane_node_port: NodePort for control plane service. The Kubernetes API server in the admin
+               cluster is implemented as a Service of type NodePort (ex. 30968).
+        :param pulumi.Input[int] ingress_http_node_port: NodePort for ingress service's http. The ingress service in the admin
+               cluster is implemented as a Service of type NodePort (ex. 32527).
+        :param pulumi.Input[int] ingress_https_node_port: NodePort for ingress service's https. The ingress service in the admin
+               cluster is implemented as a Service of type NodePort (ex. 30139).
+        :param pulumi.Input[int] konnectivity_server_node_port: NodePort for konnectivity server service running as a sidecar in each
+               kube-apiserver pod (ex. 30564).
+        """
+        if addons_node_port is not None:
+            pulumi.set(__self__, "addons_node_port", addons_node_port)
+        if control_plane_node_port is not None:
+            pulumi.set(__self__, "control_plane_node_port", control_plane_node_port)
+        if ingress_http_node_port is not None:
+            pulumi.set(__self__, "ingress_http_node_port", ingress_http_node_port)
+        if ingress_https_node_port is not None:
+            pulumi.set(__self__, "ingress_https_node_port", ingress_https_node_port)
+        if konnectivity_server_node_port is not None:
+            pulumi.set(__self__, "konnectivity_server_node_port", konnectivity_server_node_port)
+
+    @property
+    @pulumi.getter(name="addonsNodePort")
+    def addons_node_port(self) -> Optional[pulumi.Input[int]]:
+        """
+        NodePort for add-ons server in the admin cluster.
+        """
+        return pulumi.get(self, "addons_node_port")
+
+    @addons_node_port.setter
+    def addons_node_port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "addons_node_port", value)
+
+    @property
+    @pulumi.getter(name="controlPlaneNodePort")
+    def control_plane_node_port(self) -> Optional[pulumi.Input[int]]:
+        """
+        NodePort for control plane service. The Kubernetes API server in the admin
+        cluster is implemented as a Service of type NodePort (ex. 30968).
+        """
+        return pulumi.get(self, "control_plane_node_port")
+
+    @control_plane_node_port.setter
+    def control_plane_node_port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "control_plane_node_port", value)
+
+    @property
+    @pulumi.getter(name="ingressHttpNodePort")
+    def ingress_http_node_port(self) -> Optional[pulumi.Input[int]]:
+        """
+        NodePort for ingress service's http. The ingress service in the admin
+        cluster is implemented as a Service of type NodePort (ex. 32527).
+        """
+        return pulumi.get(self, "ingress_http_node_port")
+
+    @ingress_http_node_port.setter
+    def ingress_http_node_port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ingress_http_node_port", value)
+
+    @property
+    @pulumi.getter(name="ingressHttpsNodePort")
+    def ingress_https_node_port(self) -> Optional[pulumi.Input[int]]:
+        """
+        NodePort for ingress service's https. The ingress service in the admin
+        cluster is implemented as a Service of type NodePort (ex. 30139).
+        """
+        return pulumi.get(self, "ingress_https_node_port")
+
+    @ingress_https_node_port.setter
+    def ingress_https_node_port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "ingress_https_node_port", value)
+
+    @property
+    @pulumi.getter(name="konnectivityServerNodePort")
+    def konnectivity_server_node_port(self) -> Optional[pulumi.Input[int]]:
+        """
+        NodePort for konnectivity server service running as a sidecar in each
+        kube-apiserver pod (ex. 30564).
+        """
+        return pulumi.get(self, "konnectivity_server_node_port")
+
+    @konnectivity_server_node_port.setter
+    def konnectivity_server_node_port(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "konnectivity_server_node_port", value)
+
+
+if not MYPY:
+    class VmwareAdminClusterLoadBalancerMetalLbConfigArgsDict(TypedDict):
+        enabled: NotRequired[pulumi.Input[bool]]
+        """
+        Metal LB is enabled.
+        """
+elif False:
+    VmwareAdminClusterLoadBalancerMetalLbConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class VmwareAdminClusterLoadBalancerMetalLbConfigArgs:
+    def __init__(__self__, *,
+                 enabled: Optional[pulumi.Input[bool]] = None):
+        """
+        :param pulumi.Input[bool] enabled: Metal LB is enabled.
+        """
+        if enabled is not None:
+            pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Metal LB is enabled.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enabled", value)
+
+
+if not MYPY:
+    class VmwareAdminClusterLoadBalancerVipConfigArgsDict(TypedDict):
+        control_plane_vip: pulumi.Input[str]
+        """
+        The VIP which you previously set aside for the Kubernetes
+        API of this VMware Admin Cluster.
+        """
+        addons_vip: NotRequired[pulumi.Input[str]]
+        """
+        The VIP to configure the load balancer for add-ons.
+
+        <a name="nested_f5_config"></a>The `f5_config` block supports:
+        """
+elif False:
+    VmwareAdminClusterLoadBalancerVipConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class VmwareAdminClusterLoadBalancerVipConfigArgs:
+    def __init__(__self__, *,
+                 control_plane_vip: pulumi.Input[str],
+                 addons_vip: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] control_plane_vip: The VIP which you previously set aside for the Kubernetes
+               API of this VMware Admin Cluster.
+        :param pulumi.Input[str] addons_vip: The VIP to configure the load balancer for add-ons.
+               
+               <a name="nested_f5_config"></a>The `f5_config` block supports:
+        """
+        pulumi.set(__self__, "control_plane_vip", control_plane_vip)
+        if addons_vip is not None:
+            pulumi.set(__self__, "addons_vip", addons_vip)
+
+    @property
+    @pulumi.getter(name="controlPlaneVip")
+    def control_plane_vip(self) -> pulumi.Input[str]:
+        """
+        The VIP which you previously set aside for the Kubernetes
+        API of this VMware Admin Cluster.
+        """
+        return pulumi.get(self, "control_plane_vip")
+
+    @control_plane_vip.setter
+    def control_plane_vip(self, value: pulumi.Input[str]):
+        pulumi.set(self, "control_plane_vip", value)
+
+    @property
+    @pulumi.getter(name="addonsVip")
+    def addons_vip(self) -> Optional[pulumi.Input[str]]:
+        """
+        The VIP to configure the load balancer for add-ons.
+
+        <a name="nested_f5_config"></a>The `f5_config` block supports:
+        """
+        return pulumi.get(self, "addons_vip")
+
+    @addons_vip.setter
+    def addons_vip(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "addons_vip", value)
+
+
+if not MYPY:
+    class VmwareAdminClusterNetworkConfigArgsDict(TypedDict):
+        pod_address_cidr_blocks: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges.
+        Only a single range is supported. This field cannot be changed after creation.
+        """
+        service_address_cidr_blocks: pulumi.Input[Sequence[pulumi.Input[str]]]
+        """
+        All services in the cluster are assigned an RFC1918 IPv4 address
+        from these ranges. Only a single range is supported.. This field
+        cannot be changed after creation.
+        """
+        dhcp_ip_config: NotRequired[pulumi.Input['VmwareAdminClusterNetworkConfigDhcpIpConfigArgsDict']]
+        """
+        Configuration settings for a DHCP IP configuration.
+        Structure is documented below.
+        """
+        ha_control_plane_config: NotRequired[pulumi.Input['VmwareAdminClusterNetworkConfigHaControlPlaneConfigArgsDict']]
+        """
+        Configuration for HA admin cluster control plane.
+        Structure is documented below.
+        """
+        host_config: NotRequired[pulumi.Input['VmwareAdminClusterNetworkConfigHostConfigArgsDict']]
+        """
+        Represents common network settings irrespective of the host's IP address.
+        Structure is documented below.
+        """
+        static_ip_config: NotRequired[pulumi.Input['VmwareAdminClusterNetworkConfigStaticIpConfigArgsDict']]
+        """
+        Configuration settings for a static IP configuration.
+        Structure is documented below.
+        """
+        vcenter_network: NotRequired[pulumi.Input[str]]
+        """
+        vcenter_network specifies vCenter network name.
+        """
+elif False:
+    VmwareAdminClusterNetworkConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class VmwareAdminClusterNetworkConfigArgs:
+    def __init__(__self__, *,
+                 pod_address_cidr_blocks: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 service_address_cidr_blocks: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 dhcp_ip_config: Optional[pulumi.Input['VmwareAdminClusterNetworkConfigDhcpIpConfigArgs']] = None,
+                 ha_control_plane_config: Optional[pulumi.Input['VmwareAdminClusterNetworkConfigHaControlPlaneConfigArgs']] = None,
+                 host_config: Optional[pulumi.Input['VmwareAdminClusterNetworkConfigHostConfigArgs']] = None,
+                 static_ip_config: Optional[pulumi.Input['VmwareAdminClusterNetworkConfigStaticIpConfigArgs']] = None,
+                 vcenter_network: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] pod_address_cidr_blocks: All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges.
+               Only a single range is supported. This field cannot be changed after creation.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] service_address_cidr_blocks: All services in the cluster are assigned an RFC1918 IPv4 address
+               from these ranges. Only a single range is supported.. This field
+               cannot be changed after creation.
+        :param pulumi.Input['VmwareAdminClusterNetworkConfigDhcpIpConfigArgs'] dhcp_ip_config: Configuration settings for a DHCP IP configuration.
+               Structure is documented below.
+        :param pulumi.Input['VmwareAdminClusterNetworkConfigHaControlPlaneConfigArgs'] ha_control_plane_config: Configuration for HA admin cluster control plane.
+               Structure is documented below.
+        :param pulumi.Input['VmwareAdminClusterNetworkConfigHostConfigArgs'] host_config: Represents common network settings irrespective of the host's IP address.
+               Structure is documented below.
+        :param pulumi.Input['VmwareAdminClusterNetworkConfigStaticIpConfigArgs'] static_ip_config: Configuration settings for a static IP configuration.
+               Structure is documented below.
+        :param pulumi.Input[str] vcenter_network: vcenter_network specifies vCenter network name.
+        """
+        pulumi.set(__self__, "pod_address_cidr_blocks", pod_address_cidr_blocks)
+        pulumi.set(__self__, "service_address_cidr_blocks", service_address_cidr_blocks)
+        if dhcp_ip_config is not None:
+            pulumi.set(__self__, "dhcp_ip_config", dhcp_ip_config)
+        if ha_control_plane_config is not None:
+            pulumi.set(__self__, "ha_control_plane_config", ha_control_plane_config)
+        if host_config is not None:
+            pulumi.set(__self__, "host_config", host_config)
+        if static_ip_config is not None:
+            pulumi.set(__self__, "static_ip_config", static_ip_config)
+        if vcenter_network is not None:
+            pulumi.set(__self__, "vcenter_network", vcenter_network)
+
+    @property
+    @pulumi.getter(name="podAddressCidrBlocks")
+    def pod_address_cidr_blocks(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges.
+        Only a single range is supported. This field cannot be changed after creation.
+        """
+        return pulumi.get(self, "pod_address_cidr_blocks")
+
+    @pod_address_cidr_blocks.setter
+    def pod_address_cidr_blocks(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "pod_address_cidr_blocks", value)
+
+    @property
+    @pulumi.getter(name="serviceAddressCidrBlocks")
+    def service_address_cidr_blocks(self) -> pulumi.Input[Sequence[pulumi.Input[str]]]:
+        """
+        All services in the cluster are assigned an RFC1918 IPv4 address
+        from these ranges. Only a single range is supported.. This field
+        cannot be changed after creation.
+        """
+        return pulumi.get(self, "service_address_cidr_blocks")
+
+    @service_address_cidr_blocks.setter
+    def service_address_cidr_blocks(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
+        pulumi.set(self, "service_address_cidr_blocks", value)
+
+    @property
+    @pulumi.getter(name="dhcpIpConfig")
+    def dhcp_ip_config(self) -> Optional[pulumi.Input['VmwareAdminClusterNetworkConfigDhcpIpConfigArgs']]:
+        """
+        Configuration settings for a DHCP IP configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "dhcp_ip_config")
+
+    @dhcp_ip_config.setter
+    def dhcp_ip_config(self, value: Optional[pulumi.Input['VmwareAdminClusterNetworkConfigDhcpIpConfigArgs']]):
+        pulumi.set(self, "dhcp_ip_config", value)
+
+    @property
+    @pulumi.getter(name="haControlPlaneConfig")
+    def ha_control_plane_config(self) -> Optional[pulumi.Input['VmwareAdminClusterNetworkConfigHaControlPlaneConfigArgs']]:
+        """
+        Configuration for HA admin cluster control plane.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "ha_control_plane_config")
+
+    @ha_control_plane_config.setter
+    def ha_control_plane_config(self, value: Optional[pulumi.Input['VmwareAdminClusterNetworkConfigHaControlPlaneConfigArgs']]):
+        pulumi.set(self, "ha_control_plane_config", value)
+
+    @property
+    @pulumi.getter(name="hostConfig")
+    def host_config(self) -> Optional[pulumi.Input['VmwareAdminClusterNetworkConfigHostConfigArgs']]:
+        """
+        Represents common network settings irrespective of the host's IP address.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "host_config")
+
+    @host_config.setter
+    def host_config(self, value: Optional[pulumi.Input['VmwareAdminClusterNetworkConfigHostConfigArgs']]):
+        pulumi.set(self, "host_config", value)
+
+    @property
+    @pulumi.getter(name="staticIpConfig")
+    def static_ip_config(self) -> Optional[pulumi.Input['VmwareAdminClusterNetworkConfigStaticIpConfigArgs']]:
+        """
+        Configuration settings for a static IP configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "static_ip_config")
+
+    @static_ip_config.setter
+    def static_ip_config(self, value: Optional[pulumi.Input['VmwareAdminClusterNetworkConfigStaticIpConfigArgs']]):
+        pulumi.set(self, "static_ip_config", value)
+
+    @property
+    @pulumi.getter(name="vcenterNetwork")
+    def vcenter_network(self) -> Optional[pulumi.Input[str]]:
+        """
+        vcenter_network specifies vCenter network name.
+        """
+        return pulumi.get(self, "vcenter_network")
+
+    @vcenter_network.setter
+    def vcenter_network(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "vcenter_network", value)
+
+
+if not MYPY:
+    class VmwareAdminClusterNetworkConfigDhcpIpConfigArgsDict(TypedDict):
+        enabled: pulumi.Input[bool]
+        """
+        enabled is a flag to mark if DHCP IP allocation is
+        used for VMware admin clusters.
+        """
+elif False:
+    VmwareAdminClusterNetworkConfigDhcpIpConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class VmwareAdminClusterNetworkConfigDhcpIpConfigArgs:
+    def __init__(__self__, *,
+                 enabled: pulumi.Input[bool]):
+        """
+        :param pulumi.Input[bool] enabled: enabled is a flag to mark if DHCP IP allocation is
+               used for VMware admin clusters.
+        """
+        pulumi.set(__self__, "enabled", enabled)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> pulumi.Input[bool]:
+        """
+        enabled is a flag to mark if DHCP IP allocation is
+        used for VMware admin clusters.
+        """
+        return pulumi.get(self, "enabled")
+
+    @enabled.setter
+    def enabled(self, value: pulumi.Input[bool]):
+        pulumi.set(self, "enabled", value)
+
+
+if not MYPY:
+    class VmwareAdminClusterNetworkConfigHaControlPlaneConfigArgsDict(TypedDict):
+        control_plane_ip_block: NotRequired[pulumi.Input['VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockArgsDict']]
+        """
+        Static IP addresses for the control plane nodes.
+        Structure is documented below.
+        """
+elif False:
+    VmwareAdminClusterNetworkConfigHaControlPlaneConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class VmwareAdminClusterNetworkConfigHaControlPlaneConfigArgs:
+    def __init__(__self__, *,
+                 control_plane_ip_block: Optional[pulumi.Input['VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockArgs']] = None):
+        """
+        :param pulumi.Input['VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockArgs'] control_plane_ip_block: Static IP addresses for the control plane nodes.
+               Structure is documented below.
+        """
+        if control_plane_ip_block is not None:
+            pulumi.set(__self__, "control_plane_ip_block", control_plane_ip_block)
+
+    @property
+    @pulumi.getter(name="controlPlaneIpBlock")
+    def control_plane_ip_block(self) -> Optional[pulumi.Input['VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockArgs']]:
+        """
+        Static IP addresses for the control plane nodes.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "control_plane_ip_block")
+
+    @control_plane_ip_block.setter
+    def control_plane_ip_block(self, value: Optional[pulumi.Input['VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockArgs']]):
+        pulumi.set(self, "control_plane_ip_block", value)
+
+
+if not MYPY:
+    class VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockArgsDict(TypedDict):
+        gateway: pulumi.Input[str]
+        """
+        The network gateway used by the VMware Admin Cluster.
+        """
+        ips: pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpArgsDict']]]
+        """
+        The node's network configurations used by the VMware Admin Cluster.
+        Structure is documented below.
+        """
+        netmask: pulumi.Input[str]
+        """
+        The netmask used by the VMware Admin Cluster.
+        """
+elif False:
+    VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockArgs:
+    def __init__(__self__, *,
+                 gateway: pulumi.Input[str],
+                 ips: pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpArgs']]],
+                 netmask: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] gateway: The network gateway used by the VMware Admin Cluster.
+        :param pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpArgs']]] ips: The node's network configurations used by the VMware Admin Cluster.
+               Structure is documented below.
+        :param pulumi.Input[str] netmask: The netmask used by the VMware Admin Cluster.
+        """
+        pulumi.set(__self__, "gateway", gateway)
+        pulumi.set(__self__, "ips", ips)
+        pulumi.set(__self__, "netmask", netmask)
+
+    @property
+    @pulumi.getter
+    def gateway(self) -> pulumi.Input[str]:
+        """
+        The network gateway used by the VMware Admin Cluster.
+        """
+        return pulumi.get(self, "gateway")
+
+    @gateway.setter
+    def gateway(self, value: pulumi.Input[str]):
+        pulumi.set(self, "gateway", value)
+
+    @property
+    @pulumi.getter
+    def ips(self) -> pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpArgs']]]:
+        """
+        The node's network configurations used by the VMware Admin Cluster.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "ips")
+
+    @ips.setter
+    def ips(self, value: pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpArgs']]]):
+        pulumi.set(self, "ips", value)
+
+    @property
+    @pulumi.getter
+    def netmask(self) -> pulumi.Input[str]:
+        """
+        The netmask used by the VMware Admin Cluster.
+        """
+        return pulumi.get(self, "netmask")
+
+    @netmask.setter
+    def netmask(self, value: pulumi.Input[str]):
+        pulumi.set(self, "netmask", value)
+
+
+if not MYPY:
+    class VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpArgsDict(TypedDict):
+        ip: pulumi.Input[str]
+        """
+        IP could be an IP address (like 1.2.3.4) or a CIDR (like 1.2.3.0/24).
+        """
+        hostname: NotRequired[pulumi.Input[str]]
+        """
+        Hostname of the machine. VM's name will be used if this field is empty.
+
+        - - -
+        """
+elif False:
+    VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpArgs:
+    def __init__(__self__, *,
+                 ip: pulumi.Input[str],
+                 hostname: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] ip: IP could be an IP address (like 1.2.3.4) or a CIDR (like 1.2.3.0/24).
+        :param pulumi.Input[str] hostname: Hostname of the machine. VM's name will be used if this field is empty.
+               
+               - - -
+        """
+        pulumi.set(__self__, "ip", ip)
+        if hostname is not None:
+            pulumi.set(__self__, "hostname", hostname)
+
+    @property
+    @pulumi.getter
+    def ip(self) -> pulumi.Input[str]:
+        """
+        IP could be an IP address (like 1.2.3.4) or a CIDR (like 1.2.3.0/24).
+        """
+        return pulumi.get(self, "ip")
+
+    @ip.setter
+    def ip(self, value: pulumi.Input[str]):
+        pulumi.set(self, "ip", value)
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> Optional[pulumi.Input[str]]:
+        """
+        Hostname of the machine. VM's name will be used if this field is empty.
+
+        - - -
+        """
+        return pulumi.get(self, "hostname")
+
+    @hostname.setter
+    def hostname(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "hostname", value)
+
+
+if not MYPY:
+    class VmwareAdminClusterNetworkConfigHostConfigArgsDict(TypedDict):
+        dns_search_domains: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        DNS search domains.
+        """
+        dns_servers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        DNS servers.
+        """
+        ntp_servers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        NTP servers.
+        """
+elif False:
+    VmwareAdminClusterNetworkConfigHostConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class VmwareAdminClusterNetworkConfigHostConfigArgs:
+    def __init__(__self__, *,
+                 dns_search_domains: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 dns_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 ntp_servers: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_search_domains: DNS search domains.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_servers: DNS servers.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] ntp_servers: NTP servers.
+        """
+        if dns_search_domains is not None:
+            pulumi.set(__self__, "dns_search_domains", dns_search_domains)
+        if dns_servers is not None:
+            pulumi.set(__self__, "dns_servers", dns_servers)
+        if ntp_servers is not None:
+            pulumi.set(__self__, "ntp_servers", ntp_servers)
+
+    @property
+    @pulumi.getter(name="dnsSearchDomains")
+    def dns_search_domains(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        DNS search domains.
+        """
+        return pulumi.get(self, "dns_search_domains")
+
+    @dns_search_domains.setter
+    def dns_search_domains(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "dns_search_domains", value)
+
+    @property
+    @pulumi.getter(name="dnsServers")
+    def dns_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        DNS servers.
+        """
+        return pulumi.get(self, "dns_servers")
+
+    @dns_servers.setter
+    def dns_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "dns_servers", value)
+
+    @property
+    @pulumi.getter(name="ntpServers")
+    def ntp_servers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        NTP servers.
+        """
+        return pulumi.get(self, "ntp_servers")
+
+    @ntp_servers.setter
+    def ntp_servers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "ntp_servers", value)
+
+
+if not MYPY:
+    class VmwareAdminClusterNetworkConfigStaticIpConfigArgsDict(TypedDict):
+        ip_blocks: NotRequired[pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockArgsDict']]]]
+        """
+        Represents the configuration values for static IP allocation to nodes.
+        Structure is documented below.
+        """
+elif False:
+    VmwareAdminClusterNetworkConfigStaticIpConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class VmwareAdminClusterNetworkConfigStaticIpConfigArgs:
+    def __init__(__self__, *,
+                 ip_blocks: Optional[pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockArgs']]] ip_blocks: Represents the configuration values for static IP allocation to nodes.
+               Structure is documented below.
+        """
+        if ip_blocks is not None:
+            pulumi.set(__self__, "ip_blocks", ip_blocks)
+
+    @property
+    @pulumi.getter(name="ipBlocks")
+    def ip_blocks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockArgs']]]]:
+        """
+        Represents the configuration values for static IP allocation to nodes.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "ip_blocks")
+
+    @ip_blocks.setter
+    def ip_blocks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockArgs']]]]):
+        pulumi.set(self, "ip_blocks", value)
+
+
+if not MYPY:
+    class VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockArgsDict(TypedDict):
+        gateway: pulumi.Input[str]
+        """
+        The network gateway used by the VMware Admin Cluster.
+        """
+        ips: pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpArgsDict']]]
+        """
+        The node's network configurations used by the VMware Admin Cluster.
+        Structure is documented below.
+        """
+        netmask: pulumi.Input[str]
+        """
+        The netmask used by the VMware Admin Cluster.
+        """
+elif False:
+    VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockArgs:
+    def __init__(__self__, *,
+                 gateway: pulumi.Input[str],
+                 ips: pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpArgs']]],
+                 netmask: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] gateway: The network gateway used by the VMware Admin Cluster.
+        :param pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpArgs']]] ips: The node's network configurations used by the VMware Admin Cluster.
+               Structure is documented below.
+        :param pulumi.Input[str] netmask: The netmask used by the VMware Admin Cluster.
+        """
+        pulumi.set(__self__, "gateway", gateway)
+        pulumi.set(__self__, "ips", ips)
+        pulumi.set(__self__, "netmask", netmask)
+
+    @property
+    @pulumi.getter
+    def gateway(self) -> pulumi.Input[str]:
+        """
+        The network gateway used by the VMware Admin Cluster.
+        """
+        return pulumi.get(self, "gateway")
+
+    @gateway.setter
+    def gateway(self, value: pulumi.Input[str]):
+        pulumi.set(self, "gateway", value)
+
+    @property
+    @pulumi.getter
+    def ips(self) -> pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpArgs']]]:
+        """
+        The node's network configurations used by the VMware Admin Cluster.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "ips")
+
+    @ips.setter
+    def ips(self, value: pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpArgs']]]):
+        pulumi.set(self, "ips", value)
+
+    @property
+    @pulumi.getter
+    def netmask(self) -> pulumi.Input[str]:
+        """
+        The netmask used by the VMware Admin Cluster.
+        """
+        return pulumi.get(self, "netmask")
+
+    @netmask.setter
+    def netmask(self, value: pulumi.Input[str]):
+        pulumi.set(self, "netmask", value)
+
+
+if not MYPY:
+    class VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpArgsDict(TypedDict):
+        ip: pulumi.Input[str]
+        """
+        IP could be an IP address (like 1.2.3.4) or a CIDR (like 1.2.3.0/24).
+        """
+        hostname: NotRequired[pulumi.Input[str]]
+        """
+        Hostname of the machine. VM's name will be used if this field is empty.
+
+        - - -
+        """
+elif False:
+    VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpArgs:
+    def __init__(__self__, *,
+                 ip: pulumi.Input[str],
+                 hostname: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] ip: IP could be an IP address (like 1.2.3.4) or a CIDR (like 1.2.3.0/24).
+        :param pulumi.Input[str] hostname: Hostname of the machine. VM's name will be used if this field is empty.
+               
+               - - -
+        """
+        pulumi.set(__self__, "ip", ip)
+        if hostname is not None:
+            pulumi.set(__self__, "hostname", hostname)
+
+    @property
+    @pulumi.getter
+    def ip(self) -> pulumi.Input[str]:
+        """
+        IP could be an IP address (like 1.2.3.4) or a CIDR (like 1.2.3.0/24).
+        """
+        return pulumi.get(self, "ip")
+
+    @ip.setter
+    def ip(self, value: pulumi.Input[str]):
+        pulumi.set(self, "ip", value)
+
+    @property
+    @pulumi.getter
+    def hostname(self) -> Optional[pulumi.Input[str]]:
+        """
+        Hostname of the machine. VM's name will be used if this field is empty.
+
+        - - -
+        """
+        return pulumi.get(self, "hostname")
+
+    @hostname.setter
+    def hostname(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "hostname", value)
+
+
+if not MYPY:
+    class VmwareAdminClusterPlatformConfigArgsDict(TypedDict):
+        bundles: NotRequired[pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigBundleArgsDict']]]]
+        """
+        (Output)
+        The list of bundles installed in the admin cluster.
+        Structure is documented below.
+        """
+        platform_version: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The platform version e.g. 1.13.2.
+        """
+        required_platform_version: NotRequired[pulumi.Input[str]]
+        """
+        The required platform version e.g. 1.13.1.
+        If the current platform version is lower than the target version,
+        the platform version will be updated to the target version.
+        If the target version is not installed in the platform
+        (bundle versions), download the target version bundle.
+        """
+        statuses: NotRequired[pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigStatusArgsDict']]]]
+        """
+        (Output)
+        ResourceStatus representing detailed cluster state.
+        Structure is documented below.
+
+
+        <a name="nested_status"></a>The `status` block contains:
+        """
+elif False:
+    VmwareAdminClusterPlatformConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class VmwareAdminClusterPlatformConfigArgs:
+    def __init__(__self__, *,
+                 bundles: Optional[pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigBundleArgs']]]] = None,
+                 platform_version: Optional[pulumi.Input[str]] = None,
+                 required_platform_version: Optional[pulumi.Input[str]] = None,
+                 statuses: Optional[pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigStatusArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigBundleArgs']]] bundles: (Output)
+               The list of bundles installed in the admin cluster.
+               Structure is documented below.
+        :param pulumi.Input[str] platform_version: (Output)
+               The platform version e.g. 1.13.2.
+        :param pulumi.Input[str] required_platform_version: The required platform version e.g. 1.13.1.
+               If the current platform version is lower than the target version,
+               the platform version will be updated to the target version.
+               If the target version is not installed in the platform
+               (bundle versions), download the target version bundle.
+        :param pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigStatusArgs']]] statuses: (Output)
+               ResourceStatus representing detailed cluster state.
+               Structure is documented below.
+               
+               
+               <a name="nested_status"></a>The `status` block contains:
+        """
+        if bundles is not None:
+            pulumi.set(__self__, "bundles", bundles)
+        if platform_version is not None:
+            pulumi.set(__self__, "platform_version", platform_version)
+        if required_platform_version is not None:
+            pulumi.set(__self__, "required_platform_version", required_platform_version)
+        if statuses is not None:
+            pulumi.set(__self__, "statuses", statuses)
+
+    @property
+    @pulumi.getter
+    def bundles(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigBundleArgs']]]]:
+        """
+        (Output)
+        The list of bundles installed in the admin cluster.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "bundles")
+
+    @bundles.setter
+    def bundles(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigBundleArgs']]]]):
+        pulumi.set(self, "bundles", value)
+
+    @property
+    @pulumi.getter(name="platformVersion")
+    def platform_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The platform version e.g. 1.13.2.
+        """
+        return pulumi.get(self, "platform_version")
+
+    @platform_version.setter
+    def platform_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "platform_version", value)
+
+    @property
+    @pulumi.getter(name="requiredPlatformVersion")
+    def required_platform_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The required platform version e.g. 1.13.1.
+        If the current platform version is lower than the target version,
+        the platform version will be updated to the target version.
+        If the target version is not installed in the platform
+        (bundle versions), download the target version bundle.
+        """
+        return pulumi.get(self, "required_platform_version")
+
+    @required_platform_version.setter
+    def required_platform_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "required_platform_version", value)
+
+    @property
+    @pulumi.getter
+    def statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigStatusArgs']]]]:
+        """
+        (Output)
+        ResourceStatus representing detailed cluster state.
+        Structure is documented below.
+
+
+        <a name="nested_status"></a>The `status` block contains:
+        """
+        return pulumi.get(self, "statuses")
+
+    @statuses.setter
+    def statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigStatusArgs']]]]):
+        pulumi.set(self, "statuses", value)
+
+
+if not MYPY:
+    class VmwareAdminClusterPlatformConfigBundleArgsDict(TypedDict):
+        statuses: NotRequired[pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigBundleStatusArgsDict']]]]
+        """
+        ResourceStatus representing detailed cluster state.
+        Structure is documented below.
+        """
+        version: NotRequired[pulumi.Input[str]]
+        """
+        The version of the bundle.
+        """
+elif False:
+    VmwareAdminClusterPlatformConfigBundleArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class VmwareAdminClusterPlatformConfigBundleArgs:
+    def __init__(__self__, *,
+                 statuses: Optional[pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigBundleStatusArgs']]]] = None,
+                 version: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigBundleStatusArgs']]] statuses: ResourceStatus representing detailed cluster state.
+               Structure is documented below.
+        :param pulumi.Input[str] version: The version of the bundle.
+        """
+        if statuses is not None:
+            pulumi.set(__self__, "statuses", statuses)
+        if version is not None:
+            pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigBundleStatusArgs']]]]:
+        """
+        ResourceStatus representing detailed cluster state.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "statuses")
+
+    @statuses.setter
+    def statuses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigBundleStatusArgs']]]]):
+        pulumi.set(self, "statuses", value)
+
+    @property
+    @pulumi.getter
+    def version(self) -> Optional[pulumi.Input[str]]:
+        """
+        The version of the bundle.
+        """
+        return pulumi.get(self, "version")
+
+    @version.setter
+    def version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "version", value)
+
+
+if not MYPY:
+    class VmwareAdminClusterPlatformConfigBundleStatusArgsDict(TypedDict):
+        conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigBundleStatusConditionArgsDict']]]]
+        """
+        (Output)
+        ResourceConditions provide a standard mechanism for higher-level status reporting from admin cluster controller.
+        Structure is documented below.
+        """
+        error_message: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Human-friendly representation of the error message from the admin cluster
+        controller. The error message can be temporary as the admin cluster
+        controller creates a cluster or node pool. If the error message persists
+        for a longer period of time, it can be used to surface error message to
+        indicate real problems requiring user intervention.
+        """
+elif False:
+    VmwareAdminClusterPlatformConfigBundleStatusArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class VmwareAdminClusterPlatformConfigBundleStatusArgs:
+    def __init__(__self__, *,
+                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigBundleStatusConditionArgs']]]] = None,
+                 error_message: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigBundleStatusConditionArgs']]] conditions: (Output)
+               ResourceConditions provide a standard mechanism for higher-level status reporting from admin cluster controller.
+               Structure is documented below.
+        :param pulumi.Input[str] error_message: (Output)
+               Human-friendly representation of the error message from the admin cluster
+               controller. The error message can be temporary as the admin cluster
+               controller creates a cluster or node pool. If the error message persists
+               for a longer period of time, it can be used to surface error message to
+               indicate real problems requiring user intervention.
+        """
+        if conditions is not None:
+            pulumi.set(__self__, "conditions", conditions)
+        if error_message is not None:
+            pulumi.set(__self__, "error_message", error_message)
+
+    @property
+    @pulumi.getter
+    def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigBundleStatusConditionArgs']]]]:
+        """
+        (Output)
+        ResourceConditions provide a standard mechanism for higher-level status reporting from admin cluster controller.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "conditions")
+
+    @conditions.setter
+    def conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigBundleStatusConditionArgs']]]]):
+        pulumi.set(self, "conditions", value)
+
+    @property
+    @pulumi.getter(name="errorMessage")
+    def error_message(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Human-friendly representation of the error message from the admin cluster
+        controller. The error message can be temporary as the admin cluster
+        controller creates a cluster or node pool. If the error message persists
+        for a longer period of time, it can be used to surface error message to
+        indicate real problems requiring user intervention.
+        """
+        return pulumi.get(self, "error_message")
+
+    @error_message.setter
+    def error_message(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "error_message", value)
+
+
+if not MYPY:
+    class VmwareAdminClusterPlatformConfigBundleStatusConditionArgsDict(TypedDict):
+        last_transition_time: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Last time the condition transit from one status to another.
+        """
+        message: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Human-readable message indicating details about last transition.
+        """
+        reason: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Machine-readable message indicating details about last transition.
+        """
+        state: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The lifecycle state of the condition.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Type of the condition.
+        (e.g., ClusterRunning, NodePoolRunning or ServerSidePreflightReady)
+        """
+elif False:
+    VmwareAdminClusterPlatformConfigBundleStatusConditionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class VmwareAdminClusterPlatformConfigBundleStatusConditionArgs:
+    def __init__(__self__, *,
+                 last_transition_time: Optional[pulumi.Input[str]] = None,
+                 message: Optional[pulumi.Input[str]] = None,
+                 reason: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] last_transition_time: (Output)
+               Last time the condition transit from one status to another.
+        :param pulumi.Input[str] message: (Output)
+               Human-readable message indicating details about last transition.
+        :param pulumi.Input[str] reason: (Output)
+               Machine-readable message indicating details about last transition.
+        :param pulumi.Input[str] state: (Output)
+               The lifecycle state of the condition.
+        :param pulumi.Input[str] type: (Output)
+               Type of the condition.
+               (e.g., ClusterRunning, NodePoolRunning or ServerSidePreflightReady)
+        """
+        if last_transition_time is not None:
+            pulumi.set(__self__, "last_transition_time", last_transition_time)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+        if reason is not None:
+            pulumi.set(__self__, "reason", reason)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="lastTransitionTime")
+    def last_transition_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Last time the condition transit from one status to another.
+        """
+        return pulumi.get(self, "last_transition_time")
+
+    @last_transition_time.setter
+    def last_transition_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "last_transition_time", value)
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Human-readable message indicating details about last transition.
+        """
+        return pulumi.get(self, "message")
+
+    @message.setter
+    def message(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "message", value)
+
+    @property
+    @pulumi.getter
+    def reason(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Machine-readable message indicating details about last transition.
+        """
+        return pulumi.get(self, "reason")
+
+    @reason.setter
+    def reason(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "reason", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The lifecycle state of the condition.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Type of the condition.
+        (e.g., ClusterRunning, NodePoolRunning or ServerSidePreflightReady)
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+
+if not MYPY:
+    class VmwareAdminClusterPlatformConfigStatusArgsDict(TypedDict):
+        conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigStatusConditionArgsDict']]]]
+        """
+        (Output)
+        ResourceConditions provide a standard mechanism for higher-level status reporting from admin cluster controller.
+        Structure is documented below.
+        """
+        error_message: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Human-friendly representation of the error message from the admin cluster
+        controller. The error message can be temporary as the admin cluster
+        controller creates a cluster or node pool. If the error message persists
+        for a longer period of time, it can be used to surface error message to
+        indicate real problems requiring user intervention.
+        """
+elif False:
+    VmwareAdminClusterPlatformConfigStatusArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class VmwareAdminClusterPlatformConfigStatusArgs:
+    def __init__(__self__, *,
+                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigStatusConditionArgs']]]] = None,
+                 error_message: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigStatusConditionArgs']]] conditions: (Output)
+               ResourceConditions provide a standard mechanism for higher-level status reporting from admin cluster controller.
+               Structure is documented below.
+        :param pulumi.Input[str] error_message: (Output)
+               Human-friendly representation of the error message from the admin cluster
+               controller. The error message can be temporary as the admin cluster
+               controller creates a cluster or node pool. If the error message persists
+               for a longer period of time, it can be used to surface error message to
+               indicate real problems requiring user intervention.
+        """
+        if conditions is not None:
+            pulumi.set(__self__, "conditions", conditions)
+        if error_message is not None:
+            pulumi.set(__self__, "error_message", error_message)
+
+    @property
+    @pulumi.getter
+    def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigStatusConditionArgs']]]]:
+        """
+        (Output)
+        ResourceConditions provide a standard mechanism for higher-level status reporting from admin cluster controller.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "conditions")
+
+    @conditions.setter
+    def conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterPlatformConfigStatusConditionArgs']]]]):
+        pulumi.set(self, "conditions", value)
+
+    @property
+    @pulumi.getter(name="errorMessage")
+    def error_message(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Human-friendly representation of the error message from the admin cluster
+        controller. The error message can be temporary as the admin cluster
+        controller creates a cluster or node pool. If the error message persists
+        for a longer period of time, it can be used to surface error message to
+        indicate real problems requiring user intervention.
+        """
+        return pulumi.get(self, "error_message")
+
+    @error_message.setter
+    def error_message(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "error_message", value)
+
+
+if not MYPY:
+    class VmwareAdminClusterPlatformConfigStatusConditionArgsDict(TypedDict):
+        last_transition_time: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Last time the condition transit from one status to another.
+        """
+        message: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Human-readable message indicating details about last transition.
+        """
+        reason: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Machine-readable message indicating details about last transition.
+        """
+        state: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The lifecycle state of the condition.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Type of the condition.
+        (e.g., ClusterRunning, NodePoolRunning or ServerSidePreflightReady)
+        """
+elif False:
+    VmwareAdminClusterPlatformConfigStatusConditionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class VmwareAdminClusterPlatformConfigStatusConditionArgs:
+    def __init__(__self__, *,
+                 last_transition_time: Optional[pulumi.Input[str]] = None,
+                 message: Optional[pulumi.Input[str]] = None,
+                 reason: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] last_transition_time: (Output)
+               Last time the condition transit from one status to another.
+        :param pulumi.Input[str] message: (Output)
+               Human-readable message indicating details about last transition.
+        :param pulumi.Input[str] reason: (Output)
+               Machine-readable message indicating details about last transition.
+        :param pulumi.Input[str] state: (Output)
+               The lifecycle state of the condition.
+        :param pulumi.Input[str] type: (Output)
+               Type of the condition.
+               (e.g., ClusterRunning, NodePoolRunning or ServerSidePreflightReady)
+        """
+        if last_transition_time is not None:
+            pulumi.set(__self__, "last_transition_time", last_transition_time)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+        if reason is not None:
+            pulumi.set(__self__, "reason", reason)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="lastTransitionTime")
+    def last_transition_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Last time the condition transit from one status to another.
+        """
+        return pulumi.get(self, "last_transition_time")
+
+    @last_transition_time.setter
+    def last_transition_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "last_transition_time", value)
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Human-readable message indicating details about last transition.
+        """
+        return pulumi.get(self, "message")
+
+    @message.setter
+    def message(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "message", value)
+
+    @property
+    @pulumi.getter
+    def reason(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Machine-readable message indicating details about last transition.
+        """
+        return pulumi.get(self, "reason")
+
+    @reason.setter
+    def reason(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "reason", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The lifecycle state of the condition.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Type of the condition.
+        (e.g., ClusterRunning, NodePoolRunning or ServerSidePreflightReady)
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+
+if not MYPY:
+    class VmwareAdminClusterStatusArgsDict(TypedDict):
+        conditions: NotRequired[pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterStatusConditionArgsDict']]]]
+        """
+        (Output)
+        ResourceConditions provide a standard mechanism for higher-level status reporting from admin cluster controller.
+        Structure is documented below.
+        """
+        error_message: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Human-friendly representation of the error message from the admin cluster
+        controller. The error message can be temporary as the admin cluster
+        controller creates a cluster or node pool. If the error message persists
+        for a longer period of time, it can be used to surface error message to
+        indicate real problems requiring user intervention.
+        """
+elif False:
+    VmwareAdminClusterStatusArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class VmwareAdminClusterStatusArgs:
+    def __init__(__self__, *,
+                 conditions: Optional[pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterStatusConditionArgs']]]] = None,
+                 error_message: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterStatusConditionArgs']]] conditions: (Output)
+               ResourceConditions provide a standard mechanism for higher-level status reporting from admin cluster controller.
+               Structure is documented below.
+        :param pulumi.Input[str] error_message: (Output)
+               Human-friendly representation of the error message from the admin cluster
+               controller. The error message can be temporary as the admin cluster
+               controller creates a cluster or node pool. If the error message persists
+               for a longer period of time, it can be used to surface error message to
+               indicate real problems requiring user intervention.
+        """
+        if conditions is not None:
+            pulumi.set(__self__, "conditions", conditions)
+        if error_message is not None:
+            pulumi.set(__self__, "error_message", error_message)
+
+    @property
+    @pulumi.getter
+    def conditions(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterStatusConditionArgs']]]]:
+        """
+        (Output)
+        ResourceConditions provide a standard mechanism for higher-level status reporting from admin cluster controller.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "conditions")
+
+    @conditions.setter
+    def conditions(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['VmwareAdminClusterStatusConditionArgs']]]]):
+        pulumi.set(self, "conditions", value)
+
+    @property
+    @pulumi.getter(name="errorMessage")
+    def error_message(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Human-friendly representation of the error message from the admin cluster
+        controller. The error message can be temporary as the admin cluster
+        controller creates a cluster or node pool. If the error message persists
+        for a longer period of time, it can be used to surface error message to
+        indicate real problems requiring user intervention.
+        """
+        return pulumi.get(self, "error_message")
+
+    @error_message.setter
+    def error_message(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "error_message", value)
+
+
+if not MYPY:
+    class VmwareAdminClusterStatusConditionArgsDict(TypedDict):
+        last_transition_time: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Last time the condition transit from one status to another.
+        """
+        message: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Human-readable message indicating details about last transition.
+        """
+        reason: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Machine-readable message indicating details about last transition.
+        """
+        state: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The lifecycle state of the condition.
+        """
+        type: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Type of the condition.
+        (e.g., ClusterRunning, NodePoolRunning or ServerSidePreflightReady)
+        """
+elif False:
+    VmwareAdminClusterStatusConditionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class VmwareAdminClusterStatusConditionArgs:
+    def __init__(__self__, *,
+                 last_transition_time: Optional[pulumi.Input[str]] = None,
+                 message: Optional[pulumi.Input[str]] = None,
+                 reason: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None,
+                 type: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] last_transition_time: (Output)
+               Last time the condition transit from one status to another.
+        :param pulumi.Input[str] message: (Output)
+               Human-readable message indicating details about last transition.
+        :param pulumi.Input[str] reason: (Output)
+               Machine-readable message indicating details about last transition.
+        :param pulumi.Input[str] state: (Output)
+               The lifecycle state of the condition.
+        :param pulumi.Input[str] type: (Output)
+               Type of the condition.
+               (e.g., ClusterRunning, NodePoolRunning or ServerSidePreflightReady)
+        """
+        if last_transition_time is not None:
+            pulumi.set(__self__, "last_transition_time", last_transition_time)
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+        if reason is not None:
+            pulumi.set(__self__, "reason", reason)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+        if type is not None:
+            pulumi.set(__self__, "type", type)
+
+    @property
+    @pulumi.getter(name="lastTransitionTime")
+    def last_transition_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Last time the condition transit from one status to another.
+        """
+        return pulumi.get(self, "last_transition_time")
+
+    @last_transition_time.setter
+    def last_transition_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "last_transition_time", value)
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Human-readable message indicating details about last transition.
+        """
+        return pulumi.get(self, "message")
+
+    @message.setter
+    def message(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "message", value)
+
+    @property
+    @pulumi.getter
+    def reason(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Machine-readable message indicating details about last transition.
+        """
+        return pulumi.get(self, "reason")
+
+    @reason.setter
+    def reason(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "reason", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The lifecycle state of the condition.
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
+
+    @property
+    @pulumi.getter
+    def type(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Type of the condition.
+        (e.g., ClusterRunning, NodePoolRunning or ServerSidePreflightReady)
+        """
+        return pulumi.get(self, "type")
+
+    @type.setter
+    def type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "type", value)
+
+
+if not MYPY:
+    class VmwareAdminClusterVcenterArgsDict(TypedDict):
+        address: NotRequired[pulumi.Input[str]]
+        """
+        The vCenter IP address.
+        """
+        ca_cert_data: NotRequired[pulumi.Input[str]]
+        """
+        Contains the vCenter CA certificate public key for SSL verification.
+        """
+        cluster: NotRequired[pulumi.Input[str]]
+        """
+        The name of the vCenter cluster for the admin cluster.
+        """
+        data_disk: NotRequired[pulumi.Input[str]]
+        """
+        The name of the virtual machine disk (VMDK) for the admin cluster.
+        """
+        datacenter: NotRequired[pulumi.Input[str]]
+        """
+        The name of the vCenter datacenter for the admin cluster.
+        """
+        datastore: NotRequired[pulumi.Input[str]]
+        """
+        The name of the vCenter datastore for the admin cluster.
+        """
+        folder: NotRequired[pulumi.Input[str]]
+        """
+        The name of the vCenter folder for the admin cluster.
+        """
+        resource_pool: NotRequired[pulumi.Input[str]]
+        """
+        The name of the vCenter resource pool for the admin cluster.
+        """
+        storage_policy_name: NotRequired[pulumi.Input[str]]
+        """
+        The name of the vCenter storage policy for the user cluster.
+        """
+elif False:
+    VmwareAdminClusterVcenterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class VmwareAdminClusterVcenterArgs:
+    def __init__(__self__, *,
+                 address: Optional[pulumi.Input[str]] = None,
+                 ca_cert_data: Optional[pulumi.Input[str]] = None,
+                 cluster: Optional[pulumi.Input[str]] = None,
+                 data_disk: Optional[pulumi.Input[str]] = None,
+                 datacenter: Optional[pulumi.Input[str]] = None,
+                 datastore: Optional[pulumi.Input[str]] = None,
+                 folder: Optional[pulumi.Input[str]] = None,
+                 resource_pool: Optional[pulumi.Input[str]] = None,
+                 storage_policy_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] address: The vCenter IP address.
+        :param pulumi.Input[str] ca_cert_data: Contains the vCenter CA certificate public key for SSL verification.
+        :param pulumi.Input[str] cluster: The name of the vCenter cluster for the admin cluster.
+        :param pulumi.Input[str] data_disk: The name of the virtual machine disk (VMDK) for the admin cluster.
+        :param pulumi.Input[str] datacenter: The name of the vCenter datacenter for the admin cluster.
+        :param pulumi.Input[str] datastore: The name of the vCenter datastore for the admin cluster.
+        :param pulumi.Input[str] folder: The name of the vCenter folder for the admin cluster.
+        :param pulumi.Input[str] resource_pool: The name of the vCenter resource pool for the admin cluster.
+        :param pulumi.Input[str] storage_policy_name: The name of the vCenter storage policy for the user cluster.
+        """
+        if address is not None:
+            pulumi.set(__self__, "address", address)
+        if ca_cert_data is not None:
+            pulumi.set(__self__, "ca_cert_data", ca_cert_data)
+        if cluster is not None:
+            pulumi.set(__self__, "cluster", cluster)
+        if data_disk is not None:
+            pulumi.set(__self__, "data_disk", data_disk)
+        if datacenter is not None:
+            pulumi.set(__self__, "datacenter", datacenter)
+        if datastore is not None:
+            pulumi.set(__self__, "datastore", datastore)
+        if folder is not None:
+            pulumi.set(__self__, "folder", folder)
+        if resource_pool is not None:
+            pulumi.set(__self__, "resource_pool", resource_pool)
+        if storage_policy_name is not None:
+            pulumi.set(__self__, "storage_policy_name", storage_policy_name)
+
+    @property
+    @pulumi.getter
+    def address(self) -> Optional[pulumi.Input[str]]:
+        """
+        The vCenter IP address.
+        """
+        return pulumi.get(self, "address")
+
+    @address.setter
+    def address(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "address", value)
+
+    @property
+    @pulumi.getter(name="caCertData")
+    def ca_cert_data(self) -> Optional[pulumi.Input[str]]:
+        """
+        Contains the vCenter CA certificate public key for SSL verification.
+        """
+        return pulumi.get(self, "ca_cert_data")
+
+    @ca_cert_data.setter
+    def ca_cert_data(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ca_cert_data", value)
+
+    @property
+    @pulumi.getter
+    def cluster(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the vCenter cluster for the admin cluster.
+        """
+        return pulumi.get(self, "cluster")
+
+    @cluster.setter
+    def cluster(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "cluster", value)
+
+    @property
+    @pulumi.getter(name="dataDisk")
+    def data_disk(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the virtual machine disk (VMDK) for the admin cluster.
+        """
+        return pulumi.get(self, "data_disk")
+
+    @data_disk.setter
+    def data_disk(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "data_disk", value)
+
+    @property
+    @pulumi.getter
+    def datacenter(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the vCenter datacenter for the admin cluster.
+        """
+        return pulumi.get(self, "datacenter")
+
+    @datacenter.setter
+    def datacenter(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "datacenter", value)
+
+    @property
+    @pulumi.getter
+    def datastore(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the vCenter datastore for the admin cluster.
+        """
+        return pulumi.get(self, "datastore")
+
+    @datastore.setter
+    def datastore(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "datastore", value)
+
+    @property
+    @pulumi.getter
+    def folder(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the vCenter folder for the admin cluster.
+        """
+        return pulumi.get(self, "folder")
+
+    @folder.setter
+    def folder(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "folder", value)
+
+    @property
+    @pulumi.getter(name="resourcePool")
+    def resource_pool(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the vCenter resource pool for the admin cluster.
+        """
+        return pulumi.get(self, "resource_pool")
+
+    @resource_pool.setter
+    def resource_pool(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_pool", value)
+
+    @property
+    @pulumi.getter(name="storagePolicyName")
+    def storage_policy_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the vCenter storage policy for the user cluster.
+        """
+        return pulumi.get(self, "storage_policy_name")
+
+    @storage_policy_name.setter
+    def storage_policy_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "storage_policy_name", value)
 
 

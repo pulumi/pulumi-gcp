@@ -2868,39 +2868,27 @@ class AiIndexMetadata(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 contents_delta_uri: str,
                  config: Optional['outputs.AiIndexMetadataConfig'] = None,
+                 contents_delta_uri: Optional[str] = None,
                  is_complete_overwrite: Optional[bool] = None):
         """
+        :param 'AiIndexMetadataConfigArgs' config: The configuration of the Matching Engine Index.
+               Structure is documented below.
         :param str contents_delta_uri: Allows inserting, updating  or deleting the contents of the Matching Engine Index.
                The string must be a valid Cloud Storage directory path. If this
                field is set when calling IndexService.UpdateIndex, then no other
                Index field can be also updated as part of the same call.
                The expected structure and format of the files this URI points to is
                described at https://cloud.google.com/vertex-ai/docs/matching-engine/using-matching-engine#input-data-format
-        :param 'AiIndexMetadataConfigArgs' config: The configuration of the Matching Engine Index.
-               Structure is documented below.
         :param bool is_complete_overwrite: If this field is set together with contentsDeltaUri when calling IndexService.UpdateIndex,
                then existing content of the Index will be replaced by the data from the contentsDeltaUri.
         """
-        pulumi.set(__self__, "contents_delta_uri", contents_delta_uri)
         if config is not None:
             pulumi.set(__self__, "config", config)
+        if contents_delta_uri is not None:
+            pulumi.set(__self__, "contents_delta_uri", contents_delta_uri)
         if is_complete_overwrite is not None:
             pulumi.set(__self__, "is_complete_overwrite", is_complete_overwrite)
-
-    @property
-    @pulumi.getter(name="contentsDeltaUri")
-    def contents_delta_uri(self) -> str:
-        """
-        Allows inserting, updating  or deleting the contents of the Matching Engine Index.
-        The string must be a valid Cloud Storage directory path. If this
-        field is set when calling IndexService.UpdateIndex, then no other
-        Index field can be also updated as part of the same call.
-        The expected structure and format of the files this URI points to is
-        described at https://cloud.google.com/vertex-ai/docs/matching-engine/using-matching-engine#input-data-format
-        """
-        return pulumi.get(self, "contents_delta_uri")
 
     @property
     @pulumi.getter
@@ -2910,6 +2898,19 @@ class AiIndexMetadata(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "config")
+
+    @property
+    @pulumi.getter(name="contentsDeltaUri")
+    def contents_delta_uri(self) -> Optional[str]:
+        """
+        Allows inserting, updating  or deleting the contents of the Matching Engine Index.
+        The string must be a valid Cloud Storage directory path. If this
+        field is set when calling IndexService.UpdateIndex, then no other
+        Index field can be also updated as part of the same call.
+        The expected structure and format of the files this URI points to is
+        described at https://cloud.google.com/vertex-ai/docs/matching-engine/using-matching-engine#input-data-format
+        """
+        return pulumi.get(self, "contents_delta_uri")
 
     @property
     @pulumi.getter(name="isCompleteOverwrite")

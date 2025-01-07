@@ -34,9 +34,7 @@ public final class ResizeRequestArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The name of the managed instance group. The name should conform to RFC1035 or be a resource ID.
-     * Authorization requires the following IAM permission on the specified resource instanceGroupManager:
-     * *compute.instanceGroupManagers.update
+     * The reference of the instance group manager this ResizeRequest is a part of.
      * 
      * ***
      * 
@@ -45,9 +43,7 @@ public final class ResizeRequestArgs extends com.pulumi.resources.ResourceArgs {
     private Output<String> instanceGroupManager;
 
     /**
-     * @return The name of the managed instance group. The name should conform to RFC1035 or be a resource ID.
-     * Authorization requires the following IAM permission on the specified resource instanceGroupManager:
-     * *compute.instanceGroupManagers.update
+     * @return The reference of the instance group manager this ResizeRequest is a part of.
      * 
      * ***
      * 
@@ -121,14 +117,14 @@ public final class ResizeRequestArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Name of the compute zone scoping this request. Name should conform to RFC1035.
+     * The reference of the compute zone scoping this request.
      * 
      */
     @Import(name="zone", required=true)
     private Output<String> zone;
 
     /**
-     * @return Name of the compute zone scoping this request. Name should conform to RFC1035.
+     * @return The reference of the compute zone scoping this request.
      * 
      */
     public Output<String> zone() {
@@ -187,9 +183,7 @@ public final class ResizeRequestArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceGroupManager The name of the managed instance group. The name should conform to RFC1035 or be a resource ID.
-         * Authorization requires the following IAM permission on the specified resource instanceGroupManager:
-         * *compute.instanceGroupManagers.update
+         * @param instanceGroupManager The reference of the instance group manager this ResizeRequest is a part of.
          * 
          * ***
          * 
@@ -202,9 +196,7 @@ public final class ResizeRequestArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param instanceGroupManager The name of the managed instance group. The name should conform to RFC1035 or be a resource ID.
-         * Authorization requires the following IAM permission on the specified resource instanceGroupManager:
-         * *compute.instanceGroupManagers.update
+         * @param instanceGroupManager The reference of the instance group manager this ResizeRequest is a part of.
          * 
          * ***
          * 
@@ -304,7 +296,7 @@ public final class ResizeRequestArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zone Name of the compute zone scoping this request. Name should conform to RFC1035.
+         * @param zone The reference of the compute zone scoping this request.
          * 
          * @return builder
          * 
@@ -315,7 +307,7 @@ public final class ResizeRequestArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param zone Name of the compute zone scoping this request. Name should conform to RFC1035.
+         * @param zone The reference of the compute zone scoping this request.
          * 
          * @return builder
          * 

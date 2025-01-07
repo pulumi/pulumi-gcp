@@ -453,20 +453,6 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			keyRing, err := kms.NewKeyRing(ctx, "key_ring", &kms.KeyRingArgs{
-//				Name:     pulumi.String("example-keyring"),
-//				Location: pulumi.String("global"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			cryptoKey, err := kms.NewCryptoKey(ctx, "crypto_key", &kms.CryptoKeyArgs{
-//				Name:    pulumi.String("example-key"),
-//				KeyRing: keyRing.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
 //			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{
 //				ProjectId: pulumi.StringRef("my-project-name"),
 //			}, nil)
@@ -474,7 +460,7 @@ import (
 //				return err
 //			}
 //			encryptRole, err := kms.NewCryptoKeyIAMMember(ctx, "encrypt_role", &kms.CryptoKeyIAMMemberArgs{
-//				CryptoKeyId: cryptoKey.ID(),
+//				CryptoKeyId: pulumi.String("example-key"),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
 //				Member:      pulumi.Sprintf("serviceAccount:bq-%v@bigquery-encryption.iam.gserviceaccount.com", project.Number),
 //			})
@@ -506,7 +492,7 @@ import (
 // `),
 //
 //				EncryptionConfiguration: &bigquery.TableEncryptionConfigurationArgs{
-//					KmsKeyName: cryptoKey.ID(),
+//					KmsKeyName: pulumi.String("example-key"),
 //				},
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				encryptRole,
@@ -535,7 +521,7 @@ import (
 //						TableId:   dest.TableId,
 //					},
 //					DestinationEncryptionConfiguration: &bigquery.JobCopyDestinationEncryptionConfigurationArgs{
-//						KmsKeyName: cryptoKey.ID(),
+//						KmsKeyName: pulumi.String("example-key"),
 //					},
 //				},
 //			}, pulumi.DependsOn([]pulumi.Resource{

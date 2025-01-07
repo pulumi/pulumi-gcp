@@ -9,7 +9,31 @@ import * as utilities from "../utilities";
 /**
  * ## Example Usage
  *
- * ### Developer Connect Connection Basic
+ * ### Developer Connect Connection New
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * // Setup permissions. Only needed once per project
+ * const devconnect_p4sa = new gcp.projects.ServiceIdentity("devconnect-p4sa", {service: "developerconnect.googleapis.com"});
+ * const devconnect_secret = new gcp.projects.IAMMember("devconnect-secret", {
+ *     project: "my-project-name",
+ *     role: "roles/secretmanager.admin",
+ *     member: devconnect_p4sa.member,
+ * });
+ * const my_connection = new gcp.developerconnect.Connection("my-connection", {
+ *     location: "us-central1",
+ *     connectionId: "tf-test-connection-new",
+ *     githubConfig: {
+ *         githubApp: "FIREBASE",
+ *     },
+ * }, {
+ *     dependsOn: [devconnect_secret],
+ * });
+ * export const nextSteps = my_connection.installationStates;
+ * ```
+ * ### Developer Connect Connection Existing Credentials
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -17,16 +41,17 @@ import * as utilities from "../utilities";
  *
  * const my_connection = new gcp.developerconnect.Connection("my-connection", {
  *     location: "us-central1",
- *     connectionId: "tf-test-connection",
+ *     connectionId: "tf-test-connection-cred",
  *     githubConfig: {
  *         githubApp: "DEVELOPER_CONNECT",
  *         authorizerCredential: {
- *             oauthTokenSecretVersion: "projects/devconnect-terraform-creds/secrets/tf-test-do-not-change-github-oauthtoken-e0b9e7/versions/1",
+ *             oauthTokenSecretVersion: "projects/your-project/secrets/your-secret-id/versions/latest",
  *         },
  *     },
  * });
+ * export const nextSteps = my_connection.installationStates;
  * ```
- * ### Developer Connect Connection Github Doc
+ * ### Developer Connect Connection Existing Installation
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
@@ -45,15 +70,16 @@ import * as utilities from "../utilities";
  *         input: "my-github-token.txt",
  *     }).then(invoke => invoke.result),
  * });
- * const p4sa-secretAccessor = gcp.organizations.getIAMPolicy({
+ * const devconnect_p4sa = new gcp.projects.ServiceIdentity("devconnect-p4sa", {service: "developerconnect.googleapis.com"});
+ * const p4sa-secretAccessor = gcp.organizations.getIAMPolicyOutput({
  *     bindings: [{
  *         role: "roles/secretmanager.secretAccessor",
- *         members: ["serviceAccount:service-123456789@gcp-sa-devconnect.iam.gserviceaccount.com"],
+ *         members: [devconnect_p4sa.member],
  *     }],
  * });
  * const policy = new gcp.secretmanager.SecretIamPolicy("policy", {
  *     secretId: github_token_secret.secretId,
- *     policyData: p4sa_secretAccessor.then(p4sa_secretAccessor => p4sa_secretAccessor.policyData),
+ *     policyData: p4sa_secretAccessor.apply(p4sa_secretAccessor => p4sa_secretAccessor.policyData),
  * });
  * const my_connection = new gcp.developerconnect.Connection("my-connection", {
  *     location: "us-central1",

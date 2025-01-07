@@ -112,7 +112,7 @@ namespace Pulumi.Gcp.OracleDatabase
     ///                 },
     ///             },
     ///             PrivateEndpointIp = "10.5.0.11",
-    ///             PrivateEndpointLabel = "testhost",
+    ///             PrivateEndpointLabel = "myendpoint",
     ///         },
     ///         DeletionProtection = true,
     ///     });

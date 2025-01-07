@@ -389,7 +389,7 @@ type Connection struct {
 	ConnectorVersionLaunchStage pulumi.StringOutput `pulumi:"connectorVersionLaunchStage"`
 	// Time the Namespace was created in UTC.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
-	// An arbitrary description for the Conection.
+	// An arbitrary description for the Connection.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Define the Connectors target endpoint.
 	// Structure is documented below.
@@ -509,7 +509,7 @@ type connectionState struct {
 	ConnectorVersionLaunchStage *string `pulumi:"connectorVersionLaunchStage"`
 	// Time the Namespace was created in UTC.
 	CreateTime *string `pulumi:"createTime"`
-	// An arbitrary description for the Conection.
+	// An arbitrary description for the Connection.
 	Description *string `pulumi:"description"`
 	// Define the Connectors target endpoint.
 	// Structure is documented below.
@@ -589,7 +589,7 @@ type ConnectionState struct {
 	ConnectorVersionLaunchStage pulumi.StringPtrInput
 	// Time the Namespace was created in UTC.
 	CreateTime pulumi.StringPtrInput
-	// An arbitrary description for the Conection.
+	// An arbitrary description for the Connection.
 	Description pulumi.StringPtrInput
 	// Define the Connectors target endpoint.
 	// Structure is documented below.
@@ -664,7 +664,7 @@ type connectionArgs struct {
 	ConfigVariables []ConnectionConfigVariable `pulumi:"configVariables"`
 	// connectorVersion of the Connector.
 	ConnectorVersion string `pulumi:"connectorVersion"`
-	// An arbitrary description for the Conection.
+	// An arbitrary description for the Connection.
 	Description *string `pulumi:"description"`
 	// Define the Connectors target endpoint.
 	// Structure is documented below.
@@ -717,7 +717,7 @@ type ConnectionArgs struct {
 	ConfigVariables ConnectionConfigVariableArrayInput
 	// connectorVersion of the Connector.
 	ConnectorVersion pulumi.StringInput
-	// An arbitrary description for the Conection.
+	// An arbitrary description for the Connection.
 	Description pulumi.StringPtrInput
 	// Define the Connectors target endpoint.
 	// Structure is documented below.
@@ -887,7 +887,7 @@ func (o ConnectionOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
-// An arbitrary description for the Conection.
+// An arbitrary description for the Connection.
 func (o ConnectionOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Connection) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }

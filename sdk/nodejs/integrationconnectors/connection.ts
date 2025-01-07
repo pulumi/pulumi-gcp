@@ -365,7 +365,7 @@ export class Connection extends pulumi.CustomResource {
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
-     * An arbitrary description for the Conection.
+     * An arbitrary description for the Connection.
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
@@ -589,7 +589,7 @@ export interface ConnectionState {
      */
     createTime?: pulumi.Input<string>;
     /**
-     * An arbitrary description for the Conection.
+     * An arbitrary description for the Connection.
      */
     description?: pulumi.Input<string>;
     /**
@@ -712,7 +712,7 @@ export interface ConnectionArgs {
      */
     connectorVersion: pulumi.Input<string>;
     /**
-     * An arbitrary description for the Conection.
+     * An arbitrary description for the Connection.
      */
     description?: pulumi.Input<string>;
     /**

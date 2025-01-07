@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.AccessContextManager.Inputs
         private InputList<string>? _vpcIpSubnetworks;
 
         /// <summary>
-        /// CIDR block IP subnetwork specification. Must be IPv4.
+        /// A list of CIDR block IP subnetwork specification. Must be IPv4.
         /// </summary>
         public InputList<string> VpcIpSubnetworks
         {

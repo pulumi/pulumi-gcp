@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 public final class ResizeRequestStatusLastAttemptErrorErrorErrorDetailHelp {
     /**
      * @return (Output)
-     * [Output Only]
+     * A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -22,7 +22,7 @@ public final class ResizeRequestStatusLastAttemptErrorErrorErrorDetailHelp {
     private ResizeRequestStatusLastAttemptErrorErrorErrorDetailHelp() {}
     /**
      * @return (Output)
-     * [Output Only]
+     * A nested object resource.
      * Structure is documented below.
      * 
      */

@@ -11,13 +11,13 @@ import * as utilities from "../utilities";
  *
  * Resize Requests are the Managed Instance Group implementation of Dynamic Workload Scheduler Flex Start.
  *
- * With Dynamic Workload Scheduler in Flex Start mode, you submit a GPU capacity request for your AI/ML jobs by indicating how many you need, a duration, and your preferred region. Dynamic Workload Scheduler intelligently persists the request; once the capacity becomes available, it automatically provisions your VMs enabling your workloads to run continuously for the entire duration of the capacity allocation.
+ * With Dynamic Workload Scheduler in Flex Start mode, you submit a GPU capacity request for your AI/ML jobs by indicating how many you need, a duration, and your preferred zone. Dynamic Workload Scheduler intelligently persists the request; once the capacity becomes available, it automatically provisions your VMs enabling your workloads to run continuously for the entire duration of the capacity allocation.
  *
  * To get more information about ResizeRequest, see:
  *
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagerResizeRequests)
  * * How-to Guides
- *     * [QUICKSTART_TITLE](https://cloud.google.com/compute/docs/instance-groups/create-resize-requests-mig)
+ *     * [About resize requests in a MIG](https://cloud.google.com/compute/docs/instance-groups/about-resize-requests-mig)
  *
  * ## Example Usage
  *
@@ -153,9 +153,7 @@ export class ResizeRequest extends pulumi.CustomResource {
      */
     public readonly description!: pulumi.Output<string | undefined>;
     /**
-     * The name of the managed instance group. The name should conform to RFC1035 or be a resource ID.
-     * Authorization requires the following IAM permission on the specified resource instanceGroupManager:
-     * *compute.instanceGroupManagers.update
+     * The reference of the instance group manager this ResizeRequest is a part of.
      *
      *
      * - - -
@@ -180,16 +178,16 @@ export class ResizeRequest extends pulumi.CustomResource {
      */
     public readonly resizeBy!: pulumi.Output<number>;
     /**
-     * [Output only] Current state of the request.
+     * Current state of the request.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
-     * [Output only] Status of the request.
+     * Status of the request.
      * Structure is documented below.
      */
     public /*out*/ readonly statuses!: pulumi.Output<outputs.compute.ResizeRequestStatus[]>;
     /**
-     * Name of the compute zone scoping this request. Name should conform to RFC1035.
+     * The reference of the compute zone scoping this request.
      */
     public readonly zone!: pulumi.Output<string>;
 
@@ -256,9 +254,7 @@ export interface ResizeRequestState {
      */
     description?: pulumi.Input<string>;
     /**
-     * The name of the managed instance group. The name should conform to RFC1035 or be a resource ID.
-     * Authorization requires the following IAM permission on the specified resource instanceGroupManager:
-     * *compute.instanceGroupManagers.update
+     * The reference of the instance group manager this ResizeRequest is a part of.
      *
      *
      * - - -
@@ -283,16 +279,16 @@ export interface ResizeRequestState {
      */
     resizeBy?: pulumi.Input<number>;
     /**
-     * [Output only] Current state of the request.
+     * Current state of the request.
      */
     state?: pulumi.Input<string>;
     /**
-     * [Output only] Status of the request.
+     * Status of the request.
      * Structure is documented below.
      */
     statuses?: pulumi.Input<pulumi.Input<inputs.compute.ResizeRequestStatus>[]>;
     /**
-     * Name of the compute zone scoping this request. Name should conform to RFC1035.
+     * The reference of the compute zone scoping this request.
      */
     zone?: pulumi.Input<string>;
 }
@@ -306,9 +302,7 @@ export interface ResizeRequestArgs {
      */
     description?: pulumi.Input<string>;
     /**
-     * The name of the managed instance group. The name should conform to RFC1035 or be a resource ID.
-     * Authorization requires the following IAM permission on the specified resource instanceGroupManager:
-     * *compute.instanceGroupManagers.update
+     * The reference of the instance group manager this ResizeRequest is a part of.
      *
      *
      * - - -
@@ -333,7 +327,7 @@ export interface ResizeRequestArgs {
      */
     resizeBy: pulumi.Input<number>;
     /**
-     * Name of the compute zone scoping this request. Name should conform to RFC1035.
+     * The reference of the compute zone scoping this request.
      */
     zone: pulumi.Input<string>;
 }

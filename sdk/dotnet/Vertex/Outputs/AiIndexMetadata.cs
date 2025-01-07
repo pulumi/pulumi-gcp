@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.Vertex.Outputs
         /// The expected structure and format of the files this URI points to is
         /// described at https://cloud.google.com/vertex-ai/docs/matching-engine/using-matching-engine#input-data-format
         /// </summary>
-        public readonly string ContentsDeltaUri;
+        public readonly string? ContentsDeltaUri;
         /// <summary>
         /// If this field is set together with contentsDeltaUri when calling IndexService.UpdateIndex,
         /// then existing content of the Index will be replaced by the data from the contentsDeltaUri.
@@ -37,7 +37,7 @@ namespace Pulumi.Gcp.Vertex.Outputs
         private AiIndexMetadata(
             Outputs.AiIndexMetadataConfig? config,
 
-            string contentsDeltaUri,
+            string? contentsDeltaUri,
 
             bool? isCompleteOverwrite)
         {

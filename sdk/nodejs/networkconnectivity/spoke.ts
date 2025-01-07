@@ -55,6 +55,50 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Network Connectivity Spoke Linked Vpc Network Group
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const network = new gcp.compute.Network("network", {
+ *     name: "net-spoke",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const basicHub = new gcp.networkconnectivity.Hub("basic_hub", {
+ *     name: "hub1-spoke",
+ *     description: "A sample hub",
+ *     labels: {
+ *         "label-two": "value-one",
+ *     },
+ * });
+ * const defaultGroup = new gcp.networkconnectivity.Group("default_group", {
+ *     hub: basicHub.id,
+ *     name: "default",
+ *     description: "A sample hub group",
+ * });
+ * const primary = new gcp.networkconnectivity.Spoke("primary", {
+ *     name: "group-spoke1",
+ *     location: "global",
+ *     description: "A sample spoke with a linked VPC",
+ *     labels: {
+ *         "label-one": "value-one",
+ *     },
+ *     hub: basicHub.id,
+ *     linkedVpcNetwork: {
+ *         excludeExportRanges: [
+ *             "198.51.100.0/24",
+ *             "10.10.0.0/16",
+ *         ],
+ *         includeExportRanges: [
+ *             "198.51.100.0/23",
+ *             "10.0.0.0/8",
+ *         ],
+ *         uri: network.selfLink,
+ *     },
+ *     group: defaultGroup.id,
+ * });
+ * ```
  * ### Network Connectivity Spoke Router Appliance Basic
  *
  * ```typescript
@@ -338,6 +382,44 @@ import * as utilities from "../utilities";
  *     dependsOn: [linkedVpcSpoke],
  * });
  * ```
+ * ### Network Connectivity Spoke Center Group
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const network = new gcp.compute.Network("network", {
+ *     name: "tf-net",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const starHub = new gcp.networkconnectivity.Hub("star_hub", {
+ *     name: "hub-basic",
+ *     presetTopology: "STAR",
+ * });
+ * const centerGroup = new gcp.networkconnectivity.Group("center_group", {
+ *     name: "center",
+ *     hub: starHub.id,
+ *     autoAccept: {
+ *         autoAcceptProjects: [
+ *             "foo_13293",
+ *             "bar_40289",
+ *         ],
+ *     },
+ * });
+ * const primary = new gcp.networkconnectivity.Spoke("primary", {
+ *     name: "vpc-spoke",
+ *     location: "global",
+ *     description: "A sample spoke",
+ *     labels: {
+ *         "label-one": "value-one",
+ *     },
+ *     hub: starHub.id,
+ *     group: centerGroup.id,
+ *     linkedVpcNetwork: {
+ *         uri: network.selfLink,
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -403,6 +485,10 @@ export class Spoke extends pulumi.CustomResource {
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
+    /**
+     * The name of the group that this spoke is associated with.
+     */
+    public readonly group!: pulumi.Output<string>;
     /**
      * Immutable. The URI of the hub that this spoke is attached to.
      */
@@ -488,6 +574,7 @@ export class Spoke extends pulumi.CustomResource {
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
+            resourceInputs["group"] = state ? state.group : undefined;
             resourceInputs["hub"] = state ? state.hub : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["linkedInterconnectAttachments"] = state ? state.linkedInterconnectAttachments : undefined;
@@ -511,6 +598,7 @@ export class Spoke extends pulumi.CustomResource {
                 throw new Error("Missing required property 'location'");
             }
             resourceInputs["description"] = args ? args.description : undefined;
+            resourceInputs["group"] = args ? args.group : undefined;
             resourceInputs["hub"] = args ? args.hub : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["linkedInterconnectAttachments"] = args ? args.linkedInterconnectAttachments : undefined;
@@ -551,6 +639,10 @@ export interface SpokeState {
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * The name of the group that this spoke is associated with.
+     */
+    group?: pulumi.Input<string>;
     /**
      * Immutable. The URI of the hub that this spoke is attached to.
      */
@@ -629,6 +721,10 @@ export interface SpokeArgs {
      * An optional description of the spoke.
      */
     description?: pulumi.Input<string>;
+    /**
+     * The name of the group that this spoke is associated with.
+     */
+    group?: pulumi.Input<string>;
     /**
      * Immutable. The URI of the hub that this spoke is attached to.
      */

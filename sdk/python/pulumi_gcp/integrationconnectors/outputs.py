@@ -2088,7 +2088,7 @@ class ConnectionEventingRuntimeDataStatus(dict):
                  description: Optional[str] = None,
                  state: Optional[str] = None):
         """
-        :param str description: An arbitrary description for the Conection.
+        :param str description: An arbitrary description for the Connection.
         :param str state: (Output)
                State of the Eventing
         """
@@ -2101,7 +2101,7 @@ class ConnectionEventingRuntimeDataStatus(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         """
-        An arbitrary description for the Conection.
+        An arbitrary description for the Connection.
         """
         return pulumi.get(self, "description")
 
@@ -2733,7 +2733,7 @@ class ConnectionStatus(dict):
                  state: Optional[str] = None,
                  status: Optional[str] = None):
         """
-        :param str description: An arbitrary description for the Conection.
+        :param str description: An arbitrary description for the Connection.
         :param str state: (Output)
                State of the Eventing
         :param str status: (Output)
@@ -2751,7 +2751,7 @@ class ConnectionStatus(dict):
     @pulumi.getter
     def description(self) -> Optional[str]:
         """
-        An arbitrary description for the Conection.
+        An arbitrary description for the Connection.
         """
         return pulumi.get(self, "description")
 

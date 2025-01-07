@@ -408,18 +408,6 @@ namespace Pulumi.Gcp.BigQuery
     ///         Location = "US",
     ///     });
     /// 
-    ///     var keyRing = new Gcp.Kms.KeyRing("key_ring", new()
-    ///     {
-    ///         Name = "example-keyring",
-    ///         Location = "global",
-    ///     });
-    /// 
-    ///     var cryptoKey = new Gcp.Kms.CryptoKey("crypto_key", new()
-    ///     {
-    ///         Name = "example-key",
-    ///         KeyRing = keyRing.Id,
-    ///     });
-    /// 
     ///     var project = Gcp.Organizations.GetProject.Invoke(new()
     ///     {
     ///         ProjectId = "my-project-name",
@@ -427,7 +415,7 @@ namespace Pulumi.Gcp.BigQuery
     /// 
     ///     var encryptRole = new Gcp.Kms.CryptoKeyIAMMember("encrypt_role", new()
     ///     {
-    ///         CryptoKeyId = cryptoKey.Id,
+    ///         CryptoKeyId = "example-key",
     ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
     ///         Member = $"serviceAccount:bq-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@bigquery-encryption.iam.gserviceaccount.com",
     ///     });
@@ -457,7 +445,7 @@ namespace Pulumi.Gcp.BigQuery
     /// ",
     ///         EncryptionConfiguration = new Gcp.BigQuery.Inputs.TableEncryptionConfigurationArgs
     ///         {
-    ///             KmsKeyName = cryptoKey.Id,
+    ///             KmsKeyName = "example-key",
     ///         },
     ///     }, new CustomResourceOptions
     ///     {
@@ -495,7 +483,7 @@ namespace Pulumi.Gcp.BigQuery
     ///             },
     ///             DestinationEncryptionConfiguration = new Gcp.BigQuery.Inputs.JobCopyDestinationEncryptionConfigurationArgs
     ///             {
-    ///                 KmsKeyName = cryptoKey.Id,
+    ///                 KmsKeyName = "example-key",
     ///             },
     ///         },
     ///     }, new CustomResourceOptions

@@ -71,11 +71,17 @@ export interface GetNetworkResult {
     readonly internalIpv6Range: string;
     readonly name: string;
     /**
+     * The numeric unique identifier for the resource.
+     */
+    readonly networkId: number;
+    /**
      * Beta A full or partial URL of the network profile to apply to this network.
      */
     readonly networkProfile?: string;
     /**
-     * The numeric unique identifier for the resource.
+     * (Deprecated) The numeric unique identifier for the resource. `numericId` is deprecated and will be removed in a future major release. Use `networkId` instead.
+     *
+     * @deprecated `numericId` is deprecated and will be removed in a future major release. Use `networkId` instead.
      */
     readonly numericId: string;
     readonly project?: string;

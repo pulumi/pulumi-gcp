@@ -312,6 +312,22 @@ public class Workstation extends com.pulumi.resources.CustomResource {
         return this.pulumiLabels;
     }
     /**
+     * Full resource name of the source workstation from which the workstation&#39;s persistent
+     * directories will be cloned from during creation.
+     * 
+     */
+    @Export(name="sourceWorkstation", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> sourceWorkstation;
+
+    /**
+     * @return Full resource name of the source workstation from which the workstation&#39;s persistent
+     * directories will be cloned from during creation.
+     * 
+     */
+    public Output<Optional<String>> sourceWorkstation() {
+        return Codegen.optional(this.sourceWorkstation);
+    }
+    /**
      * Current state of the workstation.
      * 
      */

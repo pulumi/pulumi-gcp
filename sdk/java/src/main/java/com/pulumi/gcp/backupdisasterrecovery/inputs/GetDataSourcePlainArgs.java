@@ -13,30 +13,62 @@ public final class GetDataSourcePlainArgs extends com.pulumi.resources.InvokeArg
 
     public static final GetDataSourcePlainArgs Empty = new GetDataSourcePlainArgs();
 
+    /**
+     * The ID of the Backup Vault in which the Data Source belongs.
+     * 
+     */
     @Import(name="backupVaultId", required=true)
     private String backupVaultId;
 
+    /**
+     * @return The ID of the Backup Vault in which the Data Source belongs.
+     * 
+     */
     public String backupVaultId() {
         return this.backupVaultId;
     }
 
+    /**
+     * The ID of the Data Source.
+     * 
+     */
     @Import(name="dataSourceId", required=true)
     private String dataSourceId;
 
+    /**
+     * @return The ID of the Data Source.
+     * 
+     */
     public String dataSourceId() {
         return this.dataSourceId;
     }
 
+    /**
+     * The location in which the Data Source belongs.
+     * 
+     */
     @Import(name="location", required=true)
     private String location;
 
+    /**
+     * @return The location in which the Data Source belongs.
+     * 
+     */
     public String location() {
         return this.location;
     }
 
+    /**
+     * The Google Cloud Project in which the Data Source belongs.
+     * 
+     */
     @Import(name="project", required=true)
     private String project;
 
+    /**
+     * @return The Google Cloud Project in which the Data Source belongs.
+     * 
+     */
     public String project() {
         return this.project;
     }
@@ -68,21 +100,45 @@ public final class GetDataSourcePlainArgs extends com.pulumi.resources.InvokeArg
             $ = new GetDataSourcePlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param backupVaultId The ID of the Backup Vault in which the Data Source belongs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder backupVaultId(String backupVaultId) {
             $.backupVaultId = backupVaultId;
             return this;
         }
 
+        /**
+         * @param dataSourceId The ID of the Data Source.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dataSourceId(String dataSourceId) {
             $.dataSourceId = dataSourceId;
             return this;
         }
 
+        /**
+         * @param location The location in which the Data Source belongs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder location(String location) {
             $.location = location;
             return this;
         }
 
+        /**
+         * @param project The Google Cloud Project in which the Data Source belongs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             $.project = project;
             return this;

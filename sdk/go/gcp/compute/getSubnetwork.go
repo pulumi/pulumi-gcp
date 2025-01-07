@@ -92,6 +92,8 @@ type LookupSubnetworkResult struct {
 	// VM instances contained in this subnetwork. Structure is documented below.
 	SecondaryIpRanges []GetSubnetworkSecondaryIpRange `pulumi:"secondaryIpRanges"`
 	SelfLink          string                          `pulumi:"selfLink"`
+	// The numeric ID of the resource.
+	SubnetworkId int `pulumi:"subnetworkId"`
 }
 
 func LookupSubnetworkOutput(ctx *pulumi.Context, args LookupSubnetworkOutputArgs, opts ...pulumi.InvokeOption) LookupSubnetworkResultOutput {
@@ -197,6 +199,11 @@ func (o LookupSubnetworkResultOutput) SecondaryIpRanges() GetSubnetworkSecondary
 
 func (o LookupSubnetworkResultOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupSubnetworkResult) string { return v.SelfLink }).(pulumi.StringOutput)
+}
+
+// The numeric ID of the resource.
+func (o LookupSubnetworkResultOutput) SubnetworkId() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupSubnetworkResult) int { return v.SubnetworkId }).(pulumi.IntOutput)
 }
 
 func init() {

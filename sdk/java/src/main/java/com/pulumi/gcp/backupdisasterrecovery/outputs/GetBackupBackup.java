@@ -16,17 +16,17 @@ public final class GetBackupBackup {
      */
     private String backupId;
     /**
-     * @return Name of the Backup Vault associated with Backup.
+     * @return The ID of the Backup Vault of the Data Source in which the Backup belongs.
      * 
      */
     private String backupVaultId;
     /**
-     * @return Name of the Data Source associated with Backup.
+     * @return The ID of the Data Source in which the Backup belongs.
      * 
      */
     private String dataSourceId;
     /**
-     * @return Location of the resource.
+     * @return The location in which the Backup belongs.
      * 
      */
     private String location;
@@ -45,21 +45,21 @@ public final class GetBackupBackup {
         return this.backupId;
     }
     /**
-     * @return Name of the Backup Vault associated with Backup.
+     * @return The ID of the Backup Vault of the Data Source in which the Backup belongs.
      * 
      */
     public String backupVaultId() {
         return this.backupVaultId;
     }
     /**
-     * @return Name of the Data Source associated with Backup.
+     * @return The ID of the Data Source in which the Backup belongs.
      * 
      */
     public String dataSourceId() {
         return this.dataSourceId;
     }
     /**
-     * @return Location of the resource.
+     * @return The location in which the Backup belongs.
      * 
      */
     public String location() {

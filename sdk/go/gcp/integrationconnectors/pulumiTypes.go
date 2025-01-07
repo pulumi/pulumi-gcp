@@ -5524,7 +5524,7 @@ func (o ConnectionEventingRuntimeDataArrayOutput) Index(i pulumi.IntInput) Conne
 }
 
 type ConnectionEventingRuntimeDataStatus struct {
-	// An arbitrary description for the Conection.
+	// An arbitrary description for the Connection.
 	Description *string `pulumi:"description"`
 	// (Output)
 	// State of the Eventing
@@ -5543,7 +5543,7 @@ type ConnectionEventingRuntimeDataStatusInput interface {
 }
 
 type ConnectionEventingRuntimeDataStatusArgs struct {
-	// An arbitrary description for the Conection.
+	// An arbitrary description for the Connection.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// (Output)
 	// State of the Eventing
@@ -5601,7 +5601,7 @@ func (o ConnectionEventingRuntimeDataStatusOutput) ToConnectionEventingRuntimeDa
 	return o
 }
 
-// An arbitrary description for the Conection.
+// An arbitrary description for the Connection.
 func (o ConnectionEventingRuntimeDataStatusOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionEventingRuntimeDataStatus) *string { return v.Description }).(pulumi.StringPtrOutput)
 }
@@ -7433,7 +7433,7 @@ func (o ConnectionSslConfigPrivateServerCertificatePtrOutput) SecretVersion() pu
 }
 
 type ConnectionStatus struct {
-	// An arbitrary description for the Conection.
+	// An arbitrary description for the Connection.
 	Description *string `pulumi:"description"`
 	// (Output)
 	// State of the Eventing
@@ -7456,7 +7456,7 @@ type ConnectionStatusInput interface {
 }
 
 type ConnectionStatusArgs struct {
-	// An arbitrary description for the Conection.
+	// An arbitrary description for the Connection.
 	Description pulumi.StringPtrInput `pulumi:"description"`
 	// (Output)
 	// State of the Eventing
@@ -7518,7 +7518,7 @@ func (o ConnectionStatusOutput) ToConnectionStatusOutputWithContext(ctx context.
 	return o
 }
 
-// An arbitrary description for the Conection.
+// An arbitrary description for the Connection.
 func (o ConnectionStatusOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionStatus) *string { return v.Description }).(pulumi.StringPtrOutput)
 }

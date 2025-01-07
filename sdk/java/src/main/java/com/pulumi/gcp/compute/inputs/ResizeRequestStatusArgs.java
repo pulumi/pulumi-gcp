@@ -19,7 +19,7 @@ public final class ResizeRequestStatusArgs extends com.pulumi.resources.Resource
 
     /**
      * (Output)
-     * [Output only] Fatal errors encountered during the queueing or provisioning phases of the ResizeRequest that caused the transition to the FAILED state. Contrary to the lastAttempt errors, this field is final and errors are never removed from here, as the ResizeRequest is not going to retry.
+     * Fatal errors encountered during the queueing or provisioning phases of the ResizeRequest that caused the transition to the FAILED state. Contrary to the lastAttempt errors, this field is final and errors are never removed from here, as the ResizeRequest is not going to retry.
      * Structure is documented below.
      * 
      */
@@ -28,7 +28,7 @@ public final class ResizeRequestStatusArgs extends com.pulumi.resources.Resource
 
     /**
      * @return (Output)
-     * [Output only] Fatal errors encountered during the queueing or provisioning phases of the ResizeRequest that caused the transition to the FAILED state. Contrary to the lastAttempt errors, this field is final and errors are never removed from here, as the ResizeRequest is not going to retry.
+     * Fatal errors encountered during the queueing or provisioning phases of the ResizeRequest that caused the transition to the FAILED state. Contrary to the lastAttempt errors, this field is final and errors are never removed from here, as the ResizeRequest is not going to retry.
      * Structure is documented below.
      * 
      */
@@ -38,7 +38,7 @@ public final class ResizeRequestStatusArgs extends com.pulumi.resources.Resource
 
     /**
      * (Output)
-     * [Output only] Information about the last attempt to fulfill the request. The value is temporary since the ResizeRequest can retry, as long as it&#39;s still active and the last attempt value can either be cleared or replaced with a different error. Since ResizeRequest retries infrequently, the value may be stale and no longer show an active problem. The value is cleared when ResizeRequest transitions to the final state (becomes inactive). If the final state is FAILED the error describing it will be storred in the &#34;error&#34; field only.
+     * Information about the last attempt to fulfill the request. The value is temporary since the ResizeRequest can retry, as long as it&#39;s still active and the last attempt value can either be cleared or replaced with a different error. Since ResizeRequest retries infrequently, the value may be stale and no longer show an active problem. The value is cleared when ResizeRequest transitions to the final state (becomes inactive). If the final state is FAILED the error describing it will be storred in the &#34;error&#34; field only.
      * Structure is documented below.
      * 
      */
@@ -47,7 +47,7 @@ public final class ResizeRequestStatusArgs extends com.pulumi.resources.Resource
 
     /**
      * @return (Output)
-     * [Output only] Information about the last attempt to fulfill the request. The value is temporary since the ResizeRequest can retry, as long as it&#39;s still active and the last attempt value can either be cleared or replaced with a different error. Since ResizeRequest retries infrequently, the value may be stale and no longer show an active problem. The value is cleared when ResizeRequest transitions to the final state (becomes inactive). If the final state is FAILED the error describing it will be storred in the &#34;error&#34; field only.
+     * Information about the last attempt to fulfill the request. The value is temporary since the ResizeRequest can retry, as long as it&#39;s still active and the last attempt value can either be cleared or replaced with a different error. Since ResizeRequest retries infrequently, the value may be stale and no longer show an active problem. The value is cleared when ResizeRequest transitions to the final state (becomes inactive). If the final state is FAILED the error describing it will be storred in the &#34;error&#34; field only.
      * Structure is documented below.
      * 
      */
@@ -82,7 +82,7 @@ public final class ResizeRequestStatusArgs extends com.pulumi.resources.Resource
 
         /**
          * @param errors (Output)
-         * [Output only] Fatal errors encountered during the queueing or provisioning phases of the ResizeRequest that caused the transition to the FAILED state. Contrary to the lastAttempt errors, this field is final and errors are never removed from here, as the ResizeRequest is not going to retry.
+         * Fatal errors encountered during the queueing or provisioning phases of the ResizeRequest that caused the transition to the FAILED state. Contrary to the lastAttempt errors, this field is final and errors are never removed from here, as the ResizeRequest is not going to retry.
          * Structure is documented below.
          * 
          * @return builder
@@ -95,7 +95,7 @@ public final class ResizeRequestStatusArgs extends com.pulumi.resources.Resource
 
         /**
          * @param errors (Output)
-         * [Output only] Fatal errors encountered during the queueing or provisioning phases of the ResizeRequest that caused the transition to the FAILED state. Contrary to the lastAttempt errors, this field is final and errors are never removed from here, as the ResizeRequest is not going to retry.
+         * Fatal errors encountered during the queueing or provisioning phases of the ResizeRequest that caused the transition to the FAILED state. Contrary to the lastAttempt errors, this field is final and errors are never removed from here, as the ResizeRequest is not going to retry.
          * Structure is documented below.
          * 
          * @return builder
@@ -107,7 +107,7 @@ public final class ResizeRequestStatusArgs extends com.pulumi.resources.Resource
 
         /**
          * @param errors (Output)
-         * [Output only] Fatal errors encountered during the queueing or provisioning phases of the ResizeRequest that caused the transition to the FAILED state. Contrary to the lastAttempt errors, this field is final and errors are never removed from here, as the ResizeRequest is not going to retry.
+         * Fatal errors encountered during the queueing or provisioning phases of the ResizeRequest that caused the transition to the FAILED state. Contrary to the lastAttempt errors, this field is final and errors are never removed from here, as the ResizeRequest is not going to retry.
          * Structure is documented below.
          * 
          * @return builder
@@ -119,7 +119,7 @@ public final class ResizeRequestStatusArgs extends com.pulumi.resources.Resource
 
         /**
          * @param lastAttempts (Output)
-         * [Output only] Information about the last attempt to fulfill the request. The value is temporary since the ResizeRequest can retry, as long as it&#39;s still active and the last attempt value can either be cleared or replaced with a different error. Since ResizeRequest retries infrequently, the value may be stale and no longer show an active problem. The value is cleared when ResizeRequest transitions to the final state (becomes inactive). If the final state is FAILED the error describing it will be storred in the &#34;error&#34; field only.
+         * Information about the last attempt to fulfill the request. The value is temporary since the ResizeRequest can retry, as long as it&#39;s still active and the last attempt value can either be cleared or replaced with a different error. Since ResizeRequest retries infrequently, the value may be stale and no longer show an active problem. The value is cleared when ResizeRequest transitions to the final state (becomes inactive). If the final state is FAILED the error describing it will be storred in the &#34;error&#34; field only.
          * Structure is documented below.
          * 
          * @return builder
@@ -132,7 +132,7 @@ public final class ResizeRequestStatusArgs extends com.pulumi.resources.Resource
 
         /**
          * @param lastAttempts (Output)
-         * [Output only] Information about the last attempt to fulfill the request. The value is temporary since the ResizeRequest can retry, as long as it&#39;s still active and the last attempt value can either be cleared or replaced with a different error. Since ResizeRequest retries infrequently, the value may be stale and no longer show an active problem. The value is cleared when ResizeRequest transitions to the final state (becomes inactive). If the final state is FAILED the error describing it will be storred in the &#34;error&#34; field only.
+         * Information about the last attempt to fulfill the request. The value is temporary since the ResizeRequest can retry, as long as it&#39;s still active and the last attempt value can either be cleared or replaced with a different error. Since ResizeRequest retries infrequently, the value may be stale and no longer show an active problem. The value is cleared when ResizeRequest transitions to the final state (becomes inactive). If the final state is FAILED the error describing it will be storred in the &#34;error&#34; field only.
          * Structure is documented below.
          * 
          * @return builder
@@ -144,7 +144,7 @@ public final class ResizeRequestStatusArgs extends com.pulumi.resources.Resource
 
         /**
          * @param lastAttempts (Output)
-         * [Output only] Information about the last attempt to fulfill the request. The value is temporary since the ResizeRequest can retry, as long as it&#39;s still active and the last attempt value can either be cleared or replaced with a different error. Since ResizeRequest retries infrequently, the value may be stale and no longer show an active problem. The value is cleared when ResizeRequest transitions to the final state (becomes inactive). If the final state is FAILED the error describing it will be storred in the &#34;error&#34; field only.
+         * Information about the last attempt to fulfill the request. The value is temporary since the ResizeRequest can retry, as long as it&#39;s still active and the last attempt value can either be cleared or replaced with a different error. Since ResizeRequest retries infrequently, the value may be stale and no longer show an active problem. The value is cleared when ResizeRequest transitions to the final state (becomes inactive). If the final state is FAILED the error describing it will be storred in the &#34;error&#34; field only.
          * Structure is documented below.
          * 
          * @return builder

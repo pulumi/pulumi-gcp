@@ -138,6 +138,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('certificateManagerCustomEndpoint')
 
     @property
+    def chronicle_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('chronicleCustomEndpoint')
+
+    @property
     def cloud_asset_custom_endpoint(self) -> Optional[str]:
         return __config__.get('cloudAssetCustomEndpoint')
 

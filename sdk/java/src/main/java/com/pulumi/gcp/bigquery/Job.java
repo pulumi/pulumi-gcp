@@ -441,10 +441,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.bigquery.DatasetArgs;
  * import com.pulumi.gcp.bigquery.Table;
  * import com.pulumi.gcp.bigquery.TableArgs;
- * import com.pulumi.gcp.kms.KeyRing;
- * import com.pulumi.gcp.kms.KeyRingArgs;
- * import com.pulumi.gcp.kms.CryptoKey;
- * import com.pulumi.gcp.kms.CryptoKeyArgs;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
  * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
@@ -517,22 +513,12 @@ import javax.annotation.Nullable;
  *             .location("US")
  *             .build());
  * 
- *         var keyRing = new KeyRing("keyRing", KeyRingArgs.builder()
- *             .name("example-keyring")
- *             .location("global")
- *             .build());
- * 
- *         var cryptoKey = new CryptoKey("cryptoKey", CryptoKeyArgs.builder()
- *             .name("example-key")
- *             .keyRing(keyRing.id())
- *             .build());
- * 
  *         final var project = OrganizationsFunctions.getProject(GetProjectArgs.builder()
  *             .projectId("my-project-name")
  *             .build());
  * 
  *         var encryptRole = new CryptoKeyIAMMember("encryptRole", CryptoKeyIAMMemberArgs.builder()
- *             .cryptoKeyId(cryptoKey.id())
+ *             .cryptoKeyId("example-key")
  *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
  *             .member(String.format("serviceAccount:bq-%s}{@literal @}{@code bigquery-encryption.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
@@ -561,7 +547,7 @@ import javax.annotation.Nullable;
  * ]
  *             """)
  *             .encryptionConfiguration(TableEncryptionConfigurationArgs.builder()
- *                 .kmsKeyName(cryptoKey.id())
+ *                 .kmsKeyName("example-key")
  *                 .build())
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(encryptRole)
@@ -587,7 +573,7 @@ import javax.annotation.Nullable;
  *                     .tableId(dest.tableId())
  *                     .build())
  *                 .destinationEncryptionConfiguration(JobCopyDestinationEncryptionConfigurationArgs.builder()
- *                     .kmsKeyName(cryptoKey.id())
+ *                     .kmsKeyName("example-key")
  *                     .build())
  *                 .build())
  *             .build(), CustomResourceOptions.builder()

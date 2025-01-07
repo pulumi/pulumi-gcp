@@ -148,7 +148,7 @@ export namespace accesscontextmanager {
          */
         network: string;
         /**
-         * CIDR block IP subnetwork specification. Must be IPv4.
+         * A list of CIDR block IP subnetwork specification. Must be IPv4.
          */
         vpcIpSubnetworks?: string[];
     }
@@ -4971,6 +4971,21 @@ export namespace artifactregistry {
         repository: string;
     }
 
+    export interface GetRepositoryVulnerabilityScanningConfig {
+        /**
+         * This configures whether vulnerability scanning is automatically performed for artifacts pushed to this repository. Possible values: ["INHERITED", "DISABLED"]
+         */
+        enablementConfig: string;
+        /**
+         * This field returns whether scanning is active for this repository.
+         */
+        enablementState: string;
+        /**
+         * This provides an explanation for the state of scanning on this repository.
+         */
+        enablementStateReason: string;
+    }
+
     export interface RepositoryCleanupPolicy {
         /**
          * Policy action.
@@ -5299,6 +5314,24 @@ export namespace artifactregistry {
         repository?: string;
     }
 
+    export interface RepositoryVulnerabilityScanningConfig {
+        /**
+         * This configures whether vulnerability scanning is automatically performed for artifacts pushed to this repository.
+         * Possible values are: `INHERITED`, `DISABLED`.
+         */
+        enablementConfig?: string;
+        /**
+         * (Output)
+         * This field returns whether scanning is active for this repository.
+         */
+        enablementState: string;
+        /**
+         * (Output)
+         * This provides an explanation for the state of scanning on this repository.
+         */
+        enablementStateReason: string;
+    }
+
 }
 
 export namespace assuredworkloads {
@@ -5524,15 +5557,15 @@ export namespace backupdisasterrecovery {
          */
         backupId: string;
         /**
-         * Name of the Backup Vault associated with Backup.
+         * The ID of the Backup Vault of the Data Source in which the Backup belongs.
          */
         backupVaultId: string;
         /**
-         * Name of the Data Source associated with Backup.
+         * The ID of the Data Source in which the Backup belongs.
          */
         dataSourceId: string;
         /**
-         * Location of the resource.
+         * The location in which the Backup belongs.
          */
         location: string;
         /**
@@ -5756,7 +5789,7 @@ export namespace backupdisasterrecovery {
          */
         gcpResourcename: string;
         /**
-         * Location of the resource: <region>/<zone>/"global"/"unspecified".
+         * The location in which the Data Source belongs.
          */
         location: string;
         /**
@@ -6286,6 +6319,12 @@ export namespace bigquery {
 
     export interface DatasetAccess {
         /**
+         * Condition for the binding. If CEL expression in this field is true, this
+         * access binding will be considered.
+         * Structure is documented below.
+         */
+        condition?: outputs.bigquery.DatasetAccessCondition;
+        /**
          * Grants all resources of particular types in a particular dataset read access to the current dataset.
          * Structure is documented below.
          */
@@ -6367,6 +6406,28 @@ export namespace bigquery {
          * The ID of the project containing this table.
          */
         projectId: string;
+    }
+
+    export interface DatasetAccessCondition {
+        /**
+         * Description of the expression. This is a longer text which describes the expression,
+         * e.g. when hovered over it in a UI.
+         */
+        description?: string;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: string;
+        /**
+         * String indicating the location of the expression for error reporting, e.g. a file
+         * name and a position in the file.
+         */
+        location?: string;
+        /**
+         * Title for the expression, i.e. a short string describing its purpose.
+         * This can be used e.g. in UIs which allow to enter the expression.
+         */
+        title?: string;
     }
 
     export interface DatasetAccessDataset {
@@ -6475,6 +6536,11 @@ export namespace bigquery {
 
     export interface GetDatasetAccess {
         /**
+         * Condition for the binding. If CEL expression in this field is true, this
+         * access binding will be considered.
+         */
+        conditions: outputs.bigquery.GetDatasetAccessCondition[];
+        /**
          * Grants all resources of particular types in a particular dataset read access to the current dataset.
          */
         datasets: outputs.bigquery.GetDatasetAccessDataset[];
@@ -6529,6 +6595,28 @@ export namespace bigquery {
          * needs to be granted again via an update operation.
          */
         views: outputs.bigquery.GetDatasetAccessView[];
+    }
+
+    export interface GetDatasetAccessCondition {
+        /**
+         * Description of the expression. This is a longer text which describes the expression,
+         * e.g. when hovered over it in a UI.
+         */
+        description: string;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: string;
+        /**
+         * String indicating the location of the expression for error reporting, e.g. a file
+         * name and a position in the file.
+         */
+        location: string;
+        /**
+         * Title for the expression, i.e. a short string describing its purpose.
+         * This can be used e.g. in UIs which allow to enter the expression.
+         */
+        title: string;
     }
 
     export interface GetDatasetAccessDataset {
@@ -7390,6 +7478,55 @@ export namespace bigquery {
          * The self link or full name of the kms key version used to encrypt this table.
          */
         kmsKeyVersion: string;
+    }
+
+    export interface TableExternalCatalogTableOptions {
+        /**
+         * The connection specifying the credentials to be used to read external storage, such as Azure Blob, Cloud Storage, or S3. The connection is needed to read the open source table from BigQuery Engine. The connectionId can have the form <project_id>.<location_id>.<connection_id> or projects/<project_id>/locations/<location_id>/connections/<connection_id>.
+         */
+        connectionId?: string;
+        /**
+         * A map of key value pairs defining the parameters and properties of the open source table. Corresponds with hive meta store table parameters. Maximum size of 4Mib.
+         */
+        parameters?: {[key: string]: string};
+        /**
+         * A storage descriptor containing information about the physical storage of this table.
+         */
+        storageDescriptor?: outputs.bigquery.TableExternalCatalogTableOptionsStorageDescriptor;
+    }
+
+    export interface TableExternalCatalogTableOptionsStorageDescriptor {
+        /**
+         * Specifies the fully qualified class name of the InputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcInputFormat"). The maximum length is 128 characters.
+         */
+        inputFormat?: string;
+        /**
+         * The physical location of the table (e.g. 'gs://spark-dataproc-data/pangea-data/case_sensitive/' or 'gs://spark-dataproc-data/pangea-data/*'). The maximum length is 2056 bytes.
+         */
+        locationUri?: string;
+        /**
+         * Specifies the fully qualified class name of the OutputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat"). The maximum length is 128 characters.
+         */
+        outputFormat?: string;
+        /**
+         * Serializer and deserializer information.
+         */
+        serdeInfo?: outputs.bigquery.TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo;
+    }
+
+    export interface TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo {
+        /**
+         * Name of the SerDe. The maximum length is 256 characters.
+         */
+        name?: string;
+        /**
+         * Key-value pairs that define the initialization parameters for the serialization library. Maximum size 10 Kib.
+         */
+        parameters?: {[key: string]: string};
+        /**
+         * Specifies a fully-qualified class name of the serialization library that is responsible for the translation of data between table representation and the underlying low-level input and output format structures. The maximum length is 256 characters.
+         */
+        serializationLibrary: string;
     }
 
     export interface TableExternalDataConfiguration {
@@ -11296,6 +11433,41 @@ export namespace certificatemanager {
          * **Note**: This property is sensitive and will not be displayed in the plan.
          */
         pemCertificate?: string;
+    }
+
+}
+
+export namespace chronicle {
+    export interface WatchlistEntityCount {
+        /**
+         * (Output)
+         * Output only. Count of asset type entities in the watchlist.
+         */
+        asset: number;
+        /**
+         * (Output)
+         * Output only. Count of user type entities in the watchlist.
+         */
+        user: number;
+    }
+
+    export interface WatchlistEntityPopulationMechanism {
+        /**
+         * Entities are added manually.
+         *
+         * - - -
+         */
+        manual: outputs.chronicle.WatchlistEntityPopulationMechanismManual;
+    }
+
+    export interface WatchlistEntityPopulationMechanismManual {
+    }
+
+    export interface WatchlistWatchlistUserPreferences {
+        /**
+         * Optional. Whether the watchlist is pinned on the dashboard.
+         */
+        pinned?: boolean;
     }
 
 }
@@ -18485,11 +18657,12 @@ export namespace cloudrunv2 {
 
     export interface GetServiceTemplateScaling {
         /**
-         * Maximum number of serving instances that this resource should have.
+         * Maximum number of serving instances that this resource should have. Must not be less than minimum instance count. If absent, Cloud Run will calculate
+         * a default value based on the project's available container instances quota in the region and specified instance size.
          */
         maxInstanceCount: number;
         /**
-         * Minimum number of serving instances that this resource should have.
+         * Minimum number of serving instances that this resource should have. Defaults to 0. Must not be greater than maximum instance count.
          */
         minInstanceCount: number;
     }
@@ -19649,7 +19822,8 @@ export namespace cloudrunv2 {
 
     export interface ServiceTemplateScaling {
         /**
-         * Maximum number of serving instances that this resource should have.
+         * Maximum number of serving instances that this resource should have. Must not be less than minimum instance count. If absent, Cloud Run will calculate
+         * a default value based on the project's available container instances quota in the region and specified instance size.
          */
         maxInstanceCount?: number;
         /**
@@ -20425,9 +20599,24 @@ export namespace composer {
 
     export interface EnvironmentConfigDataRetentionConfig {
         /**
+         * Optional. The configuration setting for database retention.
+         */
+        airflowMetadataRetentionConfigs: outputs.composer.EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfig[];
+        /**
          * Optional. The configuration setting for Task Logs.
          */
-        taskLogsRetentionConfigs: outputs.composer.EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig[];
+        taskLogsRetentionConfigs?: outputs.composer.EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig[];
+    }
+
+    export interface EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfig {
+        /**
+         * How many days data should be retained for. This field is supported for Cloud Composer environments in composer 3 and newer.
+         */
+        retentionDays: number;
+        /**
+         * Whether database retention is enabled or not. This field is supported for Cloud Composer environments in composer 3 and newer.
+         */
+        retentionMode: string;
     }
 
     export interface EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig {
@@ -20905,9 +21094,24 @@ export namespace composer {
 
     export interface GetEnvironmentConfigDataRetentionConfig {
         /**
+         * Optional. The configuration setting for database retention.
+         */
+        airflowMetadataRetentionConfigs: outputs.composer.GetEnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfig[];
+        /**
          * Optional. The configuration setting for Task Logs.
          */
         taskLogsRetentionConfigs: outputs.composer.GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig[];
+    }
+
+    export interface GetEnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfig {
+        /**
+         * How many days data should be retained for. This field is supported for Cloud Composer environments in composer 3 and newer.
+         */
+        retentionDays: number;
+        /**
+         * Whether database retention is enabled or not. This field is supported for Cloud Composer environments in composer 3 and newer.
+         */
+        retentionMode: string;
     }
 
     export interface GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig {
@@ -25016,6 +25220,10 @@ export namespace compute {
          */
         automaticRestart: boolean;
         /**
+         * Specifies the availability domain, which this instance should be scheduled on.
+         */
+        availabilityDomain: number;
+        /**
          * Beta Time in seconds for host error detection.
          */
         hostErrorTimeoutSeconds: number;
@@ -25522,6 +25730,10 @@ export namespace compute {
          * terminated by a user). This defaults to true.
          */
         automaticRestart: boolean;
+        /**
+         * Specifies the availability domain, which this instance should be scheduled on.
+         */
+        availabilityDomain: number;
         /**
          * Beta Time in seconds for host error detection.
          */
@@ -26414,6 +26626,10 @@ export namespace compute {
          * terminated by a user). This defaults to true.
          */
         automaticRestart: boolean;
+        /**
+         * Specifies the availability domain, which this instance should be scheduled on.
+         */
+        availabilityDomain: number;
         /**
          * Beta Time in seconds for host error detection.
          */
@@ -28367,7 +28583,7 @@ export namespace compute {
          */
         resourceManagerTags?: {[key: string]: string};
         /**
-         * A list of selfLinks of resource policies to attach to the instance's boot disk. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+         * A list of selfLinks of resource policies to attach to the instance's boot disk. Modifying this list will cause the instance to recreate, so any external values are not set until the user specifies this field. Currently a max of 1 resource policy is supported.
          */
         resourcePolicies: string;
         /**
@@ -28729,6 +28945,10 @@ export namespace compute {
          * Specifies if the instance should be restarted if it was terminated by Compute Engine (not a user).
          */
         automaticRestart: boolean;
+        /**
+         * Specifies the availability domain, which this instance should be scheduled on.
+         */
+        availabilityDomain: number;
         /**
          * Specify the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
          */
@@ -29187,6 +29407,10 @@ export namespace compute {
          * Specifies if the instance should be restarted if it was terminated by Compute Engine (not a user).
          */
         automaticRestart: boolean;
+        /**
+         * Specifies the availability domain, which this instance should be scheduled on.
+         */
+        availabilityDomain: number;
         /**
          * Specify the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
          */
@@ -29803,6 +30027,10 @@ export namespace compute {
          */
         automaticRestart?: boolean;
         /**
+         * Specifies the availability domain to place the instance in. The value must be a number between 1 and the number of availability domains specified in the spread placement policy attached to the instance.
+         */
+        availabilityDomain?: number;
+        /**
          * Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
          */
         hostErrorTimeoutSeconds?: number;
@@ -30355,6 +30583,10 @@ export namespace compute {
          * terminated by a user). This defaults to true.
          */
         automaticRestart?: boolean;
+        /**
+         * Specifies the availability domain to place the instance in. The value must be a number between 1 and the number of availability domains specified in the spread placement policy attached to the instance.
+         */
+        availabilityDomain?: number;
         /**
          * Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
          */
@@ -33493,6 +33725,10 @@ export namespace compute {
          * terminated by a user). This defaults to true.
          */
         automaticRestart?: boolean;
+        /**
+         * Specifies the availability domain to place the instance in. The value must be a number between 1 and the number of availability domains specified in the spread placement policy attached to the instance.
+         */
+        availabilityDomain?: number;
         /**
          * Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
          */
@@ -36730,7 +36966,7 @@ export namespace compute {
          */
         nanos?: number;
         /**
-         * Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive. Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+         * Span of time at a resolution of a second. Must be from 600 to 604800 inclusive. Note: minimum and maximum allowed range for requestedRunDuration is 10 minutes (600 seconds) and 7 days(604800 seconds) correspondingly.
          */
         seconds: string;
     }
@@ -36738,13 +36974,13 @@ export namespace compute {
     export interface ResizeRequestStatus {
         /**
          * (Output)
-         * [Output only] Fatal errors encountered during the queueing or provisioning phases of the ResizeRequest that caused the transition to the FAILED state. Contrary to the lastAttempt errors, this field is final and errors are never removed from here, as the ResizeRequest is not going to retry.
+         * Fatal errors encountered during the queueing or provisioning phases of the ResizeRequest that caused the transition to the FAILED state. Contrary to the lastAttempt errors, this field is final and errors are never removed from here, as the ResizeRequest is not going to retry.
          * Structure is documented below.
          */
         errors: outputs.compute.ResizeRequestStatusError[];
         /**
          * (Output)
-         * [Output only] Information about the last attempt to fulfill the request. The value is temporary since the ResizeRequest can retry, as long as it's still active and the last attempt value can either be cleared or replaced with a different error. Since ResizeRequest retries infrequently, the value may be stale and no longer show an active problem. The value is cleared when ResizeRequest transitions to the final state (becomes inactive). If the final state is FAILED the error describing it will be storred in the "error" field only.
+         * Information about the last attempt to fulfill the request. The value is temporary since the ResizeRequest can retry, as long as it's still active and the last attempt value can either be cleared or replaced with a different error. Since ResizeRequest retries infrequently, the value may be stale and no longer show an active problem. The value is cleared when ResizeRequest transitions to the final state (becomes inactive). If the final state is FAILED the error describing it will be storred in the "error" field only.
          * Structure is documented below.
          */
         lastAttempts: outputs.compute.ResizeRequestStatusLastAttempt[];
@@ -36753,7 +36989,7 @@ export namespace compute {
     export interface ResizeRequestStatusError {
         /**
          * (Output)
-         * [Output Only] The array of errors encountered while processing this operation.
+         * The array of errors encountered while processing this operation.
          * Structure is documented below.
          */
         errors: outputs.compute.ResizeRequestStatusErrorError[];
@@ -36762,18 +36998,18 @@ export namespace compute {
     export interface ResizeRequestStatusErrorError {
         /**
          * (Output)
-         * [Output Only] The error type identifier for this error.
+         * The error type identifier for this error.
          */
         code: string;
         /**
          * (Output)
-         * [Output Only] An optional list of messages that contain the error details. There is a set of defined message types to use for providing details.The syntax depends on the error code. For example, QuotaExceededInfo will have details when the error code is QUOTA_EXCEEDED.
+         * An array of messages that contain the error details. There is a set of defined message types to use for providing details.The syntax depends on the error code. For example, QuotaExceededInfo will have details when the error code is QUOTA_EXCEEDED.
          * Structure is documented below.
          */
         errorDetails: outputs.compute.ResizeRequestStatusErrorErrorErrorDetail[];
         /**
          * (Output)
-         * Output Only] Indicates the field in the request that caused the error. This property is optional.
+         * Indicates the field in the request that caused the error. This property is optional.
          */
         location: string;
         /**
@@ -36786,25 +37022,25 @@ export namespace compute {
     export interface ResizeRequestStatusErrorErrorErrorDetail {
         /**
          * (Output)
-         * [Output Only]
+         * A nested object resource.
          * Structure is documented below.
          */
         errorInfos: outputs.compute.ResizeRequestStatusErrorErrorErrorDetailErrorInfo[];
         /**
          * (Output)
-         * [Output Only]
+         * A nested object resource.
          * Structure is documented below.
          */
         helps: outputs.compute.ResizeRequestStatusErrorErrorErrorDetailHelp[];
         /**
          * (Output)
-         * [Output Only]
+         * A nested object resource.
          * Structure is documented below.
          */
         localizedMessages: outputs.compute.ResizeRequestStatusErrorErrorErrorDetailLocalizedMessage[];
         /**
          * (Output)
-         * [Output Only]
+         * A nested object resource.
          * Structure is documented below.
          */
         quotaInfos: outputs.compute.ResizeRequestStatusErrorErrorErrorDetailQuotaInfo[];
@@ -36813,18 +37049,17 @@ export namespace compute {
     export interface ResizeRequestStatusErrorErrorErrorDetailErrorInfo {
         /**
          * (Output)
-         * The logical grouping to which the "reason" belongs. The error domain is typically the registered service name of the tool or product that generates the error. Example: "pubsub.googleapis.com". If the error is generated by some common infrastructure, the error domain must be a globally unique value that identifies the infrastructure. For Google API infrastructure, the error domain is "googleapis.com".
+         * The logical grouping to which the "reason" belongs. The error domain is typically the registered service name of the tool or product that generates the error. Example: "pubsub.googleapis.com".
          */
         domain: string;
         /**
          * (Output)
          * Additional structured details about this error.
-         * Keys must match /[a-z][a-zA-Z0-9-_]+/ but should ideally be lowerCamelCase. Also they must be limited to 64 characters in length. When identifying the current value of an exceeded limit, the units should be contained in the key, not the value. For example, rather than {"instanceLimit": "100/request"}, should be returned as, {"instanceLimitPerRequest": "100"}, if the client exceeds the number of instances that can be created in a single (batch) request.
          */
         metadatas: {[key: string]: string};
         /**
          * (Output)
-         * The reason of the error. This is a constant value that identifies the proximate cause of the error. Error reasons are unique within a particular domain of errors. This should be at most 63 characters and match a regular expression of [A-Z][A-Z0-9_]+[A-Z0-9], which represents UPPER_SNAKE_CASE.
+         * The reason of the error. This is a constant value that identifies the proximate cause of the error. Error reasons are unique within a particular domain of errors.
          */
         reason: string;
     }
@@ -36832,7 +37067,7 @@ export namespace compute {
     export interface ResizeRequestStatusErrorErrorErrorDetailHelp {
         /**
          * (Output)
-         * [Output Only]
+         * A nested object resource.
          * Structure is documented below.
          */
         links: outputs.compute.ResizeRequestStatusErrorErrorErrorDetailHelpLink[];
@@ -36899,7 +37134,7 @@ export namespace compute {
     export interface ResizeRequestStatusLastAttempt {
         /**
          * (Output)
-         * [Output only] Fatal errors encountered during the queueing or provisioning phases of the ResizeRequest that caused the transition to the FAILED state. Contrary to the lastAttempt errors, this field is final and errors are never removed from here, as the ResizeRequest is not going to retry.
+         * Fatal errors encountered during the queueing or provisioning phases of the ResizeRequest that caused the transition to the FAILED state. Contrary to the lastAttempt errors, this field is final and errors are never removed from here, as the ResizeRequest is not going to retry.
          * Structure is documented below.
          */
         errors: outputs.compute.ResizeRequestStatusLastAttemptError[];
@@ -36908,7 +37143,7 @@ export namespace compute {
     export interface ResizeRequestStatusLastAttemptError {
         /**
          * (Output)
-         * [Output Only] The array of errors encountered while processing this operation.
+         * The array of errors encountered while processing this operation.
          * Structure is documented below.
          */
         errors: outputs.compute.ResizeRequestStatusLastAttemptErrorError[];
@@ -36917,18 +37152,18 @@ export namespace compute {
     export interface ResizeRequestStatusLastAttemptErrorError {
         /**
          * (Output)
-         * [Output Only] The error type identifier for this error.
+         * The error type identifier for this error.
          */
         code: string;
         /**
          * (Output)
-         * [Output Only] An optional list of messages that contain the error details. There is a set of defined message types to use for providing details.The syntax depends on the error code. For example, QuotaExceededInfo will have details when the error code is QUOTA_EXCEEDED.
+         * An array of messages that contain the error details. There is a set of defined message types to use for providing details.The syntax depends on the error code. For example, QuotaExceededInfo will have details when the error code is QUOTA_EXCEEDED.
          * Structure is documented below.
          */
         errorDetails: outputs.compute.ResizeRequestStatusLastAttemptErrorErrorErrorDetail[];
         /**
          * (Output)
-         * Output Only] Indicates the field in the request that caused the error. This property is optional.
+         * Indicates the field in the request that caused the error. This property is optional.
          */
         location: string;
         /**
@@ -36941,25 +37176,25 @@ export namespace compute {
     export interface ResizeRequestStatusLastAttemptErrorErrorErrorDetail {
         /**
          * (Output)
-         * [Output Only]
+         * A nested object resource.
          * Structure is documented below.
          */
         errorInfos: outputs.compute.ResizeRequestStatusLastAttemptErrorErrorErrorDetailErrorInfo[];
         /**
          * (Output)
-         * [Output Only]
+         * A nested object resource.
          * Structure is documented below.
          */
         helps: outputs.compute.ResizeRequestStatusLastAttemptErrorErrorErrorDetailHelp[];
         /**
          * (Output)
-         * [Output Only]
+         * A nested object resource.
          * Structure is documented below.
          */
         localizedMessages: outputs.compute.ResizeRequestStatusLastAttemptErrorErrorErrorDetailLocalizedMessage[];
         /**
          * (Output)
-         * [Output Only]
+         * A nested object resource.
          * Structure is documented below.
          */
         quotaInfos: outputs.compute.ResizeRequestStatusLastAttemptErrorErrorErrorDetailQuotaInfo[];
@@ -36968,18 +37203,17 @@ export namespace compute {
     export interface ResizeRequestStatusLastAttemptErrorErrorErrorDetailErrorInfo {
         /**
          * (Output)
-         * The logical grouping to which the "reason" belongs. The error domain is typically the registered service name of the tool or product that generates the error. Example: "pubsub.googleapis.com". If the error is generated by some common infrastructure, the error domain must be a globally unique value that identifies the infrastructure. For Google API infrastructure, the error domain is "googleapis.com".
+         * The logical grouping to which the "reason" belongs. The error domain is typically the registered service name of the tool or product that generates the error. Example: "pubsub.googleapis.com".
          */
         domain: string;
         /**
          * (Output)
          * Additional structured details about this error.
-         * Keys must match /[a-z][a-zA-Z0-9-_]+/ but should ideally be lowerCamelCase. Also they must be limited to 64 characters in length. When identifying the current value of an exceeded limit, the units should be contained in the key, not the value. For example, rather than {"instanceLimit": "100/request"}, should be returned as, {"instanceLimitPerRequest": "100"}, if the client exceeds the number of instances that can be created in a single (batch) request.
          */
         metadatas: {[key: string]: string};
         /**
          * (Output)
-         * The reason of the error. This is a constant value that identifies the proximate cause of the error. Error reasons are unique within a particular domain of errors. This should be at most 63 characters and match a regular expression of [A-Z][A-Z0-9_]+[A-Z0-9], which represents UPPER_SNAKE_CASE.
+         * The reason of the error. This is a constant value that identifies the proximate cause of the error. Error reasons are unique within a particular domain of errors.
          */
         reason: string;
     }
@@ -36987,7 +37221,7 @@ export namespace compute {
     export interface ResizeRequestStatusLastAttemptErrorErrorErrorDetailHelp {
         /**
          * (Output)
-         * [Output Only]
+         * A nested object resource.
          * Structure is documented below.
          */
         links: outputs.compute.ResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpLink[];
@@ -59183,10 +59417,18 @@ export namespace datastream {
 
     export interface StreamSourceConfigMysqlSourceConfig {
         /**
+         * CDC reader reads from binary logs replication cdc method.
+         */
+        binaryLogPosition?: outputs.datastream.StreamSourceConfigMysqlSourceConfigBinaryLogPosition;
+        /**
          * MySQL objects to exclude from the stream.
          * Structure is documented below.
          */
         excludeObjects?: outputs.datastream.StreamSourceConfigMysqlSourceConfigExcludeObjects;
+        /**
+         * CDC reader reads from gtid based replication.
+         */
+        gtid?: outputs.datastream.StreamSourceConfigMysqlSourceConfigGtid;
         /**
          * MySQL objects to retrieve from the source.
          * Structure is documented below.
@@ -59202,6 +59444,9 @@ export namespace datastream {
          * If not set (or set to 0), the system's default value will be used.
          */
         maxConcurrentCdcTasks: number;
+    }
+
+    export interface StreamSourceConfigMysqlSourceConfigBinaryLogPosition {
     }
 
     export interface StreamSourceConfigMysqlSourceConfigExcludeObjects {
@@ -59267,6 +59512,9 @@ export namespace datastream {
          * Whether or not the column represents a primary key.
          */
         primaryKey?: boolean;
+    }
+
+    export interface StreamSourceConfigMysqlSourceConfigGtid {
     }
 
     export interface StreamSourceConfigMysqlSourceConfigIncludeObjects {
@@ -59939,13 +60187,13 @@ export namespace developerconnect {
         /**
          * Optional. GitHub App installation id.
          */
-        appInstallationId?: string;
+        appInstallationId: string;
         /**
          * Represents an OAuth token of the account that authorized the Connection,and
          * associated metadata.
          * Structure is documented below.
          */
-        authorizerCredential?: outputs.developerconnect.ConnectionGithubConfigAuthorizerCredential;
+        authorizerCredential: outputs.developerconnect.ConnectionGithubConfigAuthorizerCredential;
         /**
          * Required. Immutable. The GitHub Application that was installed to
          * the GitHub user or organization.
@@ -60092,7 +60340,7 @@ export namespace diagflow {
          */
         noSpeechTimeout?: string;
         /**
-         * Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+         * Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
          */
         useTimeoutBasedEndpointing?: boolean;
     }
@@ -64660,7 +64908,7 @@ export namespace firestore {
          * Cloud KMS multi-region europe. See https://cloud.google.com/kms/docs/locations.
          * This value should be the KMS key resource ID in the format of
          * `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
-         * How to retrive this resource ID is listed at
+         * How to retrieve this resource ID is listed at
          * https://cloud.google.com/kms/docs/getting-resource-ids#getting_the_id_for_a_key_and_version.
          */
         kmsKeyName: string;
@@ -66466,6 +66714,425 @@ export namespace gkehub {
          * Describes the state of a Fleet resource.
          */
         code: string;
+    }
+
+    export interface GetFeatureFleetDefaultMemberConfig {
+        /**
+         * Config Management spec
+         */
+        configmanagements: outputs.gkehub.GetFeatureFleetDefaultMemberConfigConfigmanagement[];
+        /**
+         * Service Mesh spec
+         */
+        meshes: outputs.gkehub.GetFeatureFleetDefaultMemberConfigMesh[];
+        /**
+         * Policy Controller spec
+         */
+        policycontrollers: outputs.gkehub.GetFeatureFleetDefaultMemberConfigPolicycontroller[];
+    }
+
+    export interface GetFeatureFleetDefaultMemberConfigConfigmanagement {
+        /**
+         * ConfigSync configuration for the cluster
+         */
+        configSyncs: outputs.gkehub.GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSync[];
+        /**
+         * Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades. Possible values: ["MANAGEMENT_UNSPECIFIED", "MANAGEMENT_AUTOMATIC", "MANAGEMENT_MANUAL"]
+         */
+        management: string;
+        /**
+         * Version of Config Sync installed
+         */
+        version: string;
+    }
+
+    export interface GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSync {
+        /**
+         * Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
+         */
+        enabled: boolean;
+        /**
+         * Git repo configuration for the cluster
+         */
+        gits: outputs.gkehub.GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit[];
+        /**
+         * OCI repo configuration for the cluster
+         */
+        ocis: outputs.gkehub.GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci[];
+        /**
+         * Set to true to enable the Config Sync admission webhook to prevent drifts. If set to 'false', disables the Config Sync admission webhook and does not prevent drifts.
+         */
+        preventDrift: boolean;
+        /**
+         * Specifies whether the Config Sync Repo is in hierarchical or unstructured mode
+         */
+        sourceFormat: string;
+    }
+
+    export interface GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit {
+        /**
+         * The Google Cloud Service Account Email used for auth when secretType is gcpServiceAccount
+         */
+        gcpServiceAccountEmail: string;
+        /**
+         * URL for the HTTPS Proxy to be used when communicating with the Git repo
+         */
+        httpsProxy: string;
+        /**
+         * The path within the Git repository that represents the top level of the repo to sync
+         */
+        policyDir: string;
+        /**
+         * Type of secret configured for access to the Git repo
+         */
+        secretType: string;
+        /**
+         * The branch of the repository to sync from. Default: master
+         */
+        syncBranch: string;
+        /**
+         * The URL of the Git repository to use as the source of truth
+         */
+        syncRepo: string;
+        /**
+         * Git revision (tag or hash) to check out. Default HEAD
+         */
+        syncRev: string;
+        /**
+         * Period in seconds between consecutive syncs. Default: 15
+         */
+        syncWaitSecs: string;
+    }
+
+    export interface GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci {
+        /**
+         * The Google Cloud Service Account Email used for auth when secretType is gcpServiceAccount
+         */
+        gcpServiceAccountEmail: string;
+        /**
+         * The absolute path of the directory that contains the local resources. Default: the root directory of the image
+         */
+        policyDir: string;
+        /**
+         * Type of secret configured for access to the Git repo
+         */
+        secretType: string;
+        /**
+         * The OCI image repository URL for the package to sync from
+         */
+        syncRepo: string;
+        /**
+         * Period in seconds between consecutive syncs. Default: 15
+         */
+        syncWaitSecs: string;
+        /**
+         * Version of Config Sync installed
+         */
+        version: string;
+    }
+
+    export interface GetFeatureFleetDefaultMemberConfigMesh {
+        /**
+         * Whether to automatically manage Service Mesh Possible values: ["MANAGEMENT_UNSPECIFIED", "MANAGEMENT_AUTOMATIC", "MANAGEMENT_MANUAL"]
+         */
+        management: string;
+    }
+
+    export interface GetFeatureFleetDefaultMemberConfigPolicycontroller {
+        /**
+         * Configuration of Policy Controller
+         */
+        policyControllerHubConfigs: outputs.gkehub.GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig[];
+        /**
+         * Configures the version of Policy Controller
+         */
+        version: string;
+    }
+
+    export interface GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig {
+        /**
+         * Interval for Policy Controller Audit scans (in seconds). When set to 0, this disables audit functionality altogether.
+         */
+        auditIntervalSeconds: number;
+        /**
+         * The maximum number of audit violations to be stored in a constraint. If not set, the internal default of 20 will be used.
+         */
+        constraintViolationLimit: number;
+        /**
+         * Map of deployment configs to deployments ("admission", "audit", "mutation").
+         */
+        deploymentConfigs: outputs.gkehub.GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig[];
+        /**
+         * The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
+         */
+        exemptableNamespaces: string[];
+        /**
+         * Configures the mode of the Policy Controller installation Possible values: ["INSTALL_SPEC_UNSPECIFIED", "INSTALL_SPEC_NOT_INSTALLED", "INSTALL_SPEC_ENABLED", "INSTALL_SPEC_SUSPENDED", "INSTALL_SPEC_DETACHED"]
+         */
+        installSpec: string;
+        /**
+         * Logs all denies and dry run failures.
+         */
+        logDeniesEnabled: boolean;
+        /**
+         * Monitoring specifies the configuration of monitoring Policy Controller.
+         */
+        monitorings: outputs.gkehub.GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoring[];
+        /**
+         * Enables the ability to mutate resources using Policy Controller.
+         */
+        mutationEnabled: boolean;
+        /**
+         * Specifies the desired policy content on the cluster.
+         */
+        policyContents: outputs.gkehub.GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContent[];
+        /**
+         * Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
+         */
+        referentialRulesEnabled: boolean;
+    }
+
+    export interface GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig {
+        component: string;
+        /**
+         * Container resource requirements.
+         */
+        containerResources: outputs.gkehub.GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResource[];
+        /**
+         * Pod affinity configuration. Possible values: ["AFFINITY_UNSPECIFIED", "NO_AFFINITY", "ANTI_AFFINITY"]
+         */
+        podAffinity: string;
+        /**
+         * Pod tolerations of node taints.
+         */
+        podTolerations: outputs.gkehub.GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration[];
+        /**
+         * Pod replica count.
+         */
+        replicaCount: number;
+    }
+
+    export interface GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResource {
+        /**
+         * Limits describes the maximum amount of compute resources allowed for use by the running container.
+         */
+        limits: outputs.gkehub.GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimit[];
+        /**
+         * Requests describes the amount of compute resources reserved for the container by the kube-scheduler.
+         */
+        requests: outputs.gkehub.GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequest[];
+    }
+
+    export interface GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimit {
+        /**
+         * CPU requirement expressed in Kubernetes resource units.
+         */
+        cpu: string;
+        /**
+         * Memory requirement expressed in Kubernetes resource units.
+         */
+        memory: string;
+    }
+
+    export interface GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequest {
+        /**
+         * CPU requirement expressed in Kubernetes resource units.
+         */
+        cpu: string;
+        /**
+         * Memory requirement expressed in Kubernetes resource units.
+         */
+        memory: string;
+    }
+
+    export interface GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration {
+        /**
+         * Matches a taint effect.
+         */
+        effect: string;
+        /**
+         * Matches a taint key (not necessarily unique).
+         */
+        key: string;
+        /**
+         * Matches a taint operator.
+         */
+        operator: string;
+        /**
+         * Matches a taint value.
+         */
+        value: string;
+    }
+
+    export interface GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoring {
+        /**
+         * Specifies the list of backends Policy Controller will export to. An empty list would effectively disable metrics export. Possible values: ["MONITORING_BACKEND_UNSPECIFIED", "PROMETHEUS", "CLOUD_MONITORING"]
+         */
+        backends: string[];
+    }
+
+    export interface GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContent {
+        /**
+         * Configures which bundles to install and their corresponding install specs.
+         */
+        bundles: outputs.gkehub.GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundle[];
+        /**
+         * Configures the installation of the Template Library.
+         */
+        templateLibraries: outputs.gkehub.GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary[];
+    }
+
+    export interface GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundle {
+        bundle: string;
+        /**
+         * The set of namespaces to be exempted from the bundle.
+         */
+        exemptedNamespaces: string[];
+    }
+
+    export interface GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary {
+        /**
+         * Configures the manner in which the template library is installed on the cluster. Possible values: ["INSTALLATION_UNSPECIFIED", "NOT_INSTALLED", "ALL"]
+         */
+        installation: string;
+    }
+
+    export interface GetFeatureResourceState {
+        /**
+         * Whether this Feature has outstanding resources that need to be cleaned up before it can be disabled.
+         */
+        hasResources: boolean;
+        /**
+         * The current state of the Feature resource in the Hub API.
+         */
+        state: string;
+    }
+
+    export interface GetFeatureSpec {
+        /**
+         * Clusterupgrade feature spec.
+         */
+        clusterupgrades: outputs.gkehub.GetFeatureSpecClusterupgrade[];
+        /**
+         * Fleet Observability feature spec.
+         */
+        fleetobservabilities: outputs.gkehub.GetFeatureSpecFleetobservability[];
+        /**
+         * Multicluster Ingress-specific spec.
+         */
+        multiclusteringresses: outputs.gkehub.GetFeatureSpecMulticlusteringress[];
+    }
+
+    export interface GetFeatureSpecClusterupgrade {
+        /**
+         * Configuration overrides for individual upgrades.
+         */
+        gkeUpgradeOverrides: outputs.gkehub.GetFeatureSpecClusterupgradeGkeUpgradeOverride[];
+        /**
+         * Post conditions to override for the specified upgrade.
+         */
+        postConditions: outputs.gkehub.GetFeatureSpecClusterupgradePostCondition[];
+        /**
+         * Specified if other fleet should be considered as a source of upgrades. Currently, at most one upstream fleet is allowed. The fleet name should be either fleet project number or id.
+         */
+        upstreamFleets: string[];
+    }
+
+    export interface GetFeatureSpecClusterupgradeGkeUpgradeOverride {
+        /**
+         * Post conditions to override for the specified upgrade.
+         */
+        postConditions: outputs.gkehub.GetFeatureSpecClusterupgradeGkeUpgradeOverridePostCondition[];
+        /**
+         * Which upgrade to override.
+         */
+        upgrades: outputs.gkehub.GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgrade[];
+    }
+
+    export interface GetFeatureSpecClusterupgradeGkeUpgradeOverridePostCondition {
+        /**
+         * Amount of time to "soak" after a rollout has been finished before marking it COMPLETE. Cannot exceed 30 days.
+         */
+        soaking: string;
+    }
+
+    export interface GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgrade {
+        /**
+         * Name of the upgrade, e.g., "k8sControlPlane". It should be a valid upgrade name. It must not exceet 99 characters.
+         */
+        name: string;
+        /**
+         * Version of the upgrade, e.g., "1.22.1-gke.100". It should be a valid version. It must not exceet 99 characters.
+         */
+        version: string;
+    }
+
+    export interface GetFeatureSpecClusterupgradePostCondition {
+        /**
+         * Amount of time to "soak" after a rollout has been finished before marking it COMPLETE. Cannot exceed 30 days.
+         */
+        soaking: string;
+    }
+
+    export interface GetFeatureSpecFleetobservability {
+        /**
+         * Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
+         */
+        loggingConfigs: outputs.gkehub.GetFeatureSpecFleetobservabilityLoggingConfig[];
+    }
+
+    export interface GetFeatureSpecFleetobservabilityLoggingConfig {
+        /**
+         * Specified if applying the default routing config to logs not specified in other configs.
+         */
+        defaultConfigs: outputs.gkehub.GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfig[];
+        /**
+         * Specified if applying the routing config to all logs for all fleet scopes.
+         */
+        fleetScopeLogsConfigs: outputs.gkehub.GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig[];
+    }
+
+    export interface GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfig {
+        /**
+         * Specified if fleet logging feature is enabled. Possible values: ["MODE_UNSPECIFIED", "COPY", "MOVE"]
+         */
+        mode: string;
+    }
+
+    export interface GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig {
+        /**
+         * Specified if fleet logging feature is enabled. Possible values: ["MODE_UNSPECIFIED", "COPY", "MOVE"]
+         */
+        mode: string;
+    }
+
+    export interface GetFeatureSpecMulticlusteringress {
+        /**
+         * Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: 'projects/foo-proj/locations/global/memberships/bar'
+         */
+        configMembership: string;
+    }
+
+    export interface GetFeatureState {
+        /**
+         * Output only. The "running state" of the Feature in this Hub.
+         */
+        states: outputs.gkehub.GetFeatureStateState[];
+    }
+
+    export interface GetFeatureStateState {
+        /**
+         * The high-level, machine-readable status of this Feature.
+         */
+        code: string;
+        /**
+         * A human-readable description of the current status.
+         */
+        description: string;
+        /**
+         * The time this status and any related Feature-specific details were updated. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
+         */
+        updateTime: string;
     }
 
     export interface GetMembershipBindingState {
@@ -68500,6 +69167,524 @@ export namespace gkeonprem {
          * (e.g., ClusterRunning, NodePoolRunning or ServerSidePreflightReady)
          */
         type: string;
+    }
+
+    export interface VmwareAdminClusterAddonNode {
+        /**
+         * Specifies auto resize config.
+         * Structure is documented below.
+         */
+        autoResizeConfig: outputs.gkeonprem.VmwareAdminClusterAddonNodeAutoResizeConfig;
+    }
+
+    export interface VmwareAdminClusterAddonNodeAutoResizeConfig {
+        /**
+         * Whether to enable controle plane node auto resizing.
+         */
+        enabled: boolean;
+    }
+
+    export interface VmwareAdminClusterAntiAffinityGroups {
+        /**
+         * Spread nodes across at least three physical hosts (requires at least three
+         * hosts).
+         * Enabled by default.
+         */
+        aagConfigDisabled: boolean;
+    }
+
+    export interface VmwareAdminClusterAuthorization {
+        /**
+         * Users that will be granted the cluster-admin role on the cluster, providing
+         * full access to the cluster.
+         * Structure is documented below.
+         */
+        viewerUsers?: outputs.gkeonprem.VmwareAdminClusterAuthorizationViewerUser[];
+    }
+
+    export interface VmwareAdminClusterAuthorizationViewerUser {
+        /**
+         * The name of the user, e.g. `my-gcp-id@gmail.com`.
+         */
+        username: string;
+    }
+
+    export interface VmwareAdminClusterAutoRepairConfig {
+        /**
+         * Whether auto repair is enabled.
+         */
+        enabled: boolean;
+    }
+
+    export interface VmwareAdminClusterControlPlaneNode {
+        /**
+         * The number of vCPUs for the control-plane node of the admin cluster.
+         */
+        cpus?: number;
+        /**
+         * The number of mebibytes of memory for the control-plane node of the admin cluster.
+         */
+        memory?: number;
+        /**
+         * The number of control plane nodes for this VMware admin cluster.
+         */
+        replicas?: number;
+    }
+
+    export interface VmwareAdminClusterFleet {
+        /**
+         * (Output)
+         * The name of the managed Fleet Membership resource associated to this cluster.
+         * Membership names are formatted as
+         * `projects/<project-number>/locations/<location>/memberships/<cluster-id>`.
+         */
+        membership: string;
+    }
+
+    export interface VmwareAdminClusterLoadBalancer {
+        /**
+         * Configuration for F5 Big IP typed load balancers.
+         * Structure is documented below.
+         */
+        f5Config?: outputs.gkeonprem.VmwareAdminClusterLoadBalancerF5Config;
+        /**
+         * Manually configured load balancers.
+         * Structure is documented below.
+         */
+        manualLbConfig?: outputs.gkeonprem.VmwareAdminClusterLoadBalancerManualLbConfig;
+        /**
+         * Metal LB load balancers.
+         * Structure is documented below.
+         */
+        metalLbConfig?: outputs.gkeonprem.VmwareAdminClusterLoadBalancerMetalLbConfig;
+        /**
+         * Specified the VMware Load Balancer Config
+         * Structure is documented below.
+         */
+        vipConfig: outputs.gkeonprem.VmwareAdminClusterLoadBalancerVipConfig;
+    }
+
+    export interface VmwareAdminClusterLoadBalancerF5Config {
+        /**
+         * The load balancer's IP address.
+         */
+        address?: string;
+        /**
+         * he preexisting partition to be used by the load balancer. T
+         * his partition is usually created for the admin cluster for example:
+         * 'my-f5-admin-partition'.
+         */
+        partition?: string;
+        /**
+         * The pool name. Only necessary, if using SNAT.
+         */
+        snatPool?: string;
+    }
+
+    export interface VmwareAdminClusterLoadBalancerManualLbConfig {
+        /**
+         * NodePort for add-ons server in the admin cluster.
+         */
+        addonsNodePort: number;
+        /**
+         * NodePort for control plane service. The Kubernetes API server in the admin
+         * cluster is implemented as a Service of type NodePort (ex. 30968).
+         */
+        controlPlaneNodePort: number;
+        /**
+         * NodePort for ingress service's http. The ingress service in the admin
+         * cluster is implemented as a Service of type NodePort (ex. 32527).
+         */
+        ingressHttpNodePort: number;
+        /**
+         * NodePort for ingress service's https. The ingress service in the admin
+         * cluster is implemented as a Service of type NodePort (ex. 30139).
+         */
+        ingressHttpsNodePort: number;
+        /**
+         * NodePort for konnectivity server service running as a sidecar in each
+         * kube-apiserver pod (ex. 30564).
+         */
+        konnectivityServerNodePort: number;
+    }
+
+    export interface VmwareAdminClusterLoadBalancerMetalLbConfig {
+        /**
+         * Metal LB is enabled.
+         */
+        enabled?: boolean;
+    }
+
+    export interface VmwareAdminClusterLoadBalancerVipConfig {
+        /**
+         * The VIP to configure the load balancer for add-ons.
+         *
+         * <a name="nestedF5Config"></a>The `f5Config` block supports:
+         */
+        addonsVip?: string;
+        /**
+         * The VIP which you previously set aside for the Kubernetes
+         * API of this VMware Admin Cluster.
+         */
+        controlPlaneVip: string;
+    }
+
+    export interface VmwareAdminClusterNetworkConfig {
+        /**
+         * Configuration settings for a DHCP IP configuration.
+         * Structure is documented below.
+         */
+        dhcpIpConfig: outputs.gkeonprem.VmwareAdminClusterNetworkConfigDhcpIpConfig;
+        /**
+         * Configuration for HA admin cluster control plane.
+         * Structure is documented below.
+         */
+        haControlPlaneConfig?: outputs.gkeonprem.VmwareAdminClusterNetworkConfigHaControlPlaneConfig;
+        /**
+         * Represents common network settings irrespective of the host's IP address.
+         * Structure is documented below.
+         */
+        hostConfig: outputs.gkeonprem.VmwareAdminClusterNetworkConfigHostConfig;
+        /**
+         * All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges.
+         * Only a single range is supported. This field cannot be changed after creation.
+         */
+        podAddressCidrBlocks: string[];
+        /**
+         * All services in the cluster are assigned an RFC1918 IPv4 address
+         * from these ranges. Only a single range is supported.. This field
+         * cannot be changed after creation.
+         */
+        serviceAddressCidrBlocks: string[];
+        /**
+         * Configuration settings for a static IP configuration.
+         * Structure is documented below.
+         */
+        staticIpConfig?: outputs.gkeonprem.VmwareAdminClusterNetworkConfigStaticIpConfig;
+        /**
+         * vcenter_network specifies vCenter network name.
+         */
+        vcenterNetwork?: string;
+    }
+
+    export interface VmwareAdminClusterNetworkConfigDhcpIpConfig {
+        /**
+         * enabled is a flag to mark if DHCP IP allocation is
+         * used for VMware admin clusters.
+         */
+        enabled: boolean;
+    }
+
+    export interface VmwareAdminClusterNetworkConfigHaControlPlaneConfig {
+        /**
+         * Static IP addresses for the control plane nodes.
+         * Structure is documented below.
+         */
+        controlPlaneIpBlock?: outputs.gkeonprem.VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlock;
+    }
+
+    export interface VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlock {
+        /**
+         * The network gateway used by the VMware Admin Cluster.
+         */
+        gateway: string;
+        /**
+         * The node's network configurations used by the VMware Admin Cluster.
+         * Structure is documented below.
+         */
+        ips: outputs.gkeonprem.VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIp[];
+        /**
+         * The netmask used by the VMware Admin Cluster.
+         */
+        netmask: string;
+    }
+
+    export interface VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIp {
+        /**
+         * Hostname of the machine. VM's name will be used if this field is empty.
+         *
+         * - - -
+         */
+        hostname: string;
+        /**
+         * IP could be an IP address (like 1.2.3.4) or a CIDR (like 1.2.3.0/24).
+         */
+        ip: string;
+    }
+
+    export interface VmwareAdminClusterNetworkConfigHostConfig {
+        /**
+         * DNS search domains.
+         */
+        dnsSearchDomains?: string[];
+        /**
+         * DNS servers.
+         */
+        dnsServers?: string[];
+        /**
+         * NTP servers.
+         */
+        ntpServers?: string[];
+    }
+
+    export interface VmwareAdminClusterNetworkConfigStaticIpConfig {
+        /**
+         * Represents the configuration values for static IP allocation to nodes.
+         * Structure is documented below.
+         */
+        ipBlocks?: outputs.gkeonprem.VmwareAdminClusterNetworkConfigStaticIpConfigIpBlock[];
+    }
+
+    export interface VmwareAdminClusterNetworkConfigStaticIpConfigIpBlock {
+        /**
+         * The network gateway used by the VMware Admin Cluster.
+         */
+        gateway: string;
+        /**
+         * The node's network configurations used by the VMware Admin Cluster.
+         * Structure is documented below.
+         */
+        ips: outputs.gkeonprem.VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIp[];
+        /**
+         * The netmask used by the VMware Admin Cluster.
+         */
+        netmask: string;
+    }
+
+    export interface VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIp {
+        /**
+         * Hostname of the machine. VM's name will be used if this field is empty.
+         *
+         * - - -
+         */
+        hostname: string;
+        /**
+         * IP could be an IP address (like 1.2.3.4) or a CIDR (like 1.2.3.0/24).
+         */
+        ip: string;
+    }
+
+    export interface VmwareAdminClusterPlatformConfig {
+        /**
+         * (Output)
+         * The list of bundles installed in the admin cluster.
+         * Structure is documented below.
+         */
+        bundles: outputs.gkeonprem.VmwareAdminClusterPlatformConfigBundle[];
+        /**
+         * (Output)
+         * The platform version e.g. 1.13.2.
+         */
+        platformVersion: string;
+        /**
+         * The required platform version e.g. 1.13.1.
+         * If the current platform version is lower than the target version,
+         * the platform version will be updated to the target version.
+         * If the target version is not installed in the platform
+         * (bundle versions), download the target version bundle.
+         */
+        requiredPlatformVersion?: string;
+        /**
+         * (Output)
+         * ResourceStatus representing detailed cluster state.
+         * Structure is documented below.
+         *
+         *
+         * <a name="nestedStatus"></a>The `status` block contains:
+         */
+        statuses: outputs.gkeonprem.VmwareAdminClusterPlatformConfigStatus[];
+    }
+
+    export interface VmwareAdminClusterPlatformConfigBundle {
+        /**
+         * ResourceStatus representing detailed cluster state.
+         * Structure is documented below.
+         */
+        statuses: outputs.gkeonprem.VmwareAdminClusterPlatformConfigBundleStatus[];
+        /**
+         * The version of the bundle.
+         */
+        version: string;
+    }
+
+    export interface VmwareAdminClusterPlatformConfigBundleStatus {
+        /**
+         * (Output)
+         * ResourceConditions provide a standard mechanism for higher-level status reporting from admin cluster controller.
+         * Structure is documented below.
+         */
+        conditions: outputs.gkeonprem.VmwareAdminClusterPlatformConfigBundleStatusCondition[];
+        /**
+         * (Output)
+         * Human-friendly representation of the error message from the admin cluster
+         * controller. The error message can be temporary as the admin cluster
+         * controller creates a cluster or node pool. If the error message persists
+         * for a longer period of time, it can be used to surface error message to
+         * indicate real problems requiring user intervention.
+         */
+        errorMessage: string;
+    }
+
+    export interface VmwareAdminClusterPlatformConfigBundleStatusCondition {
+        /**
+         * (Output)
+         * Last time the condition transit from one status to another.
+         */
+        lastTransitionTime: string;
+        /**
+         * (Output)
+         * Human-readable message indicating details about last transition.
+         */
+        message: string;
+        /**
+         * (Output)
+         * Machine-readable message indicating details about last transition.
+         */
+        reason: string;
+        /**
+         * (Output)
+         * The lifecycle state of the condition.
+         */
+        state: string;
+        /**
+         * (Output)
+         * Type of the condition.
+         * (e.g., ClusterRunning, NodePoolRunning or ServerSidePreflightReady)
+         */
+        type: string;
+    }
+
+    export interface VmwareAdminClusterPlatformConfigStatus {
+        /**
+         * (Output)
+         * ResourceConditions provide a standard mechanism for higher-level status reporting from admin cluster controller.
+         * Structure is documented below.
+         */
+        conditions: outputs.gkeonprem.VmwareAdminClusterPlatformConfigStatusCondition[];
+        /**
+         * (Output)
+         * Human-friendly representation of the error message from the admin cluster
+         * controller. The error message can be temporary as the admin cluster
+         * controller creates a cluster or node pool. If the error message persists
+         * for a longer period of time, it can be used to surface error message to
+         * indicate real problems requiring user intervention.
+         */
+        errorMessage: string;
+    }
+
+    export interface VmwareAdminClusterPlatformConfigStatusCondition {
+        /**
+         * (Output)
+         * Last time the condition transit from one status to another.
+         */
+        lastTransitionTime: string;
+        /**
+         * (Output)
+         * Human-readable message indicating details about last transition.
+         */
+        message: string;
+        /**
+         * (Output)
+         * Machine-readable message indicating details about last transition.
+         */
+        reason: string;
+        /**
+         * (Output)
+         * The lifecycle state of the condition.
+         */
+        state: string;
+        /**
+         * (Output)
+         * Type of the condition.
+         * (e.g., ClusterRunning, NodePoolRunning or ServerSidePreflightReady)
+         */
+        type: string;
+    }
+
+    export interface VmwareAdminClusterStatus {
+        /**
+         * (Output)
+         * ResourceConditions provide a standard mechanism for higher-level status reporting from admin cluster controller.
+         * Structure is documented below.
+         */
+        conditions: outputs.gkeonprem.VmwareAdminClusterStatusCondition[];
+        /**
+         * (Output)
+         * Human-friendly representation of the error message from the admin cluster
+         * controller. The error message can be temporary as the admin cluster
+         * controller creates a cluster or node pool. If the error message persists
+         * for a longer period of time, it can be used to surface error message to
+         * indicate real problems requiring user intervention.
+         */
+        errorMessage: string;
+    }
+
+    export interface VmwareAdminClusterStatusCondition {
+        /**
+         * (Output)
+         * Last time the condition transit from one status to another.
+         */
+        lastTransitionTime: string;
+        /**
+         * (Output)
+         * Human-readable message indicating details about last transition.
+         */
+        message: string;
+        /**
+         * (Output)
+         * Machine-readable message indicating details about last transition.
+         */
+        reason: string;
+        /**
+         * (Output)
+         * The lifecycle state of the condition.
+         */
+        state: string;
+        /**
+         * (Output)
+         * Type of the condition.
+         * (e.g., ClusterRunning, NodePoolRunning or ServerSidePreflightReady)
+         */
+        type: string;
+    }
+
+    export interface VmwareAdminClusterVcenter {
+        /**
+         * The vCenter IP address.
+         */
+        address?: string;
+        /**
+         * Contains the vCenter CA certificate public key for SSL verification.
+         */
+        caCertData?: string;
+        /**
+         * The name of the vCenter cluster for the admin cluster.
+         */
+        cluster?: string;
+        /**
+         * The name of the virtual machine disk (VMDK) for the admin cluster.
+         */
+        dataDisk?: string;
+        /**
+         * The name of the vCenter datacenter for the admin cluster.
+         */
+        datacenter?: string;
+        /**
+         * The name of the vCenter datastore for the admin cluster.
+         */
+        datastore?: string;
+        /**
+         * The name of the vCenter folder for the admin cluster.
+         */
+        folder?: string;
+        /**
+         * The name of the vCenter resource pool for the admin cluster.
+         */
+        resourcePool?: string;
+        /**
+         * The name of the vCenter storage policy for the user cluster.
+         */
+        storagePolicyName?: string;
     }
 
 }
@@ -71051,7 +72236,7 @@ export namespace integrationconnectors {
 
     export interface ConnectionEventingRuntimeDataStatus {
         /**
-         * An arbitrary description for the Conection.
+         * An arbitrary description for the Connection.
          */
         description: string;
         /**
@@ -71222,7 +72407,7 @@ export namespace integrationconnectors {
 
     export interface ConnectionStatus {
         /**
-         * An arbitrary description for the Conection.
+         * An arbitrary description for the Connection.
          */
         description: string;
         /**
@@ -75685,6 +76870,25 @@ export namespace networksecurity {
          * Output only. A connected intercept endpoint group.
          */
         name: string;
+    }
+
+    export interface InterceptEndpointGroupAssociationLocationsDetail {
+        /**
+         * The location of the Intercept Endpoint Group Association, currently restricted to `global`.
+         *
+         *
+         * - - -
+         */
+        location: string;
+        /**
+         * (Output)
+         * The association state in this location.
+         * Possible values:
+         * STATE_UNSPECIFIED
+         * ACTIVE
+         * OUT_OF_SYNC
+         */
+        state: string;
     }
 
     export interface MirroringDeploymentGroupConnectedEndpointGroup {
@@ -90481,6 +91685,94 @@ export namespace storage {
         pubsubTopic: string;
     }
 
+    export interface TransferJobReplicationSpec {
+        /**
+         * A Google Cloud Storage data sink. Structure documented below.
+         */
+        gcsDataSink?: outputs.storage.TransferJobReplicationSpecGcsDataSink;
+        /**
+         * A Google Cloud Storage data source. Structure documented below.
+         */
+        gcsDataSource?: outputs.storage.TransferJobReplicationSpecGcsDataSource;
+        /**
+         * Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' `lastModificationTime` do not exclude objects in a data sink. Structure documented below.
+         */
+        objectConditions?: outputs.storage.TransferJobReplicationSpecObjectConditions;
+        /**
+         * Characteristics of how to treat files from datasource and sink during job. If the option `deleteObjectsUniqueInSink` is true, object conditions based on objects' `lastModificationTime` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
+         */
+        transferOptions?: outputs.storage.TransferJobReplicationSpecTransferOptions;
+    }
+
+    export interface TransferJobReplicationSpecGcsDataSink {
+        /**
+         * Google Cloud Storage bucket name.
+         */
+        bucketName: string;
+        /**
+         * Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+         */
+        path: string;
+    }
+
+    export interface TransferJobReplicationSpecGcsDataSource {
+        /**
+         * Google Cloud Storage bucket name.
+         */
+        bucketName: string;
+        /**
+         * Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+         */
+        path: string;
+    }
+
+    export interface TransferJobReplicationSpecObjectConditions {
+        /**
+         * `excludePrefixes` must follow the requirements described for `includePrefixes`. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
+         */
+        excludePrefixes?: string[];
+        /**
+         * If `includePrefixes` is specified, objects that satisfy the object conditions must have names that start with one of the `includePrefixes` and that do not start with any of the `excludePrefixes`. If `includePrefixes` is not specified, all objects except those that have names starting with one of the `excludePrefixes` must satisfy the object conditions. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
+         */
+        includePrefixes?: string[];
+        /**
+         * If specified, only objects with a "last modification time" before this timestamp and objects that don't have a "last modification time" are transferred. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+         */
+        lastModifiedBefore?: string;
+        /**
+         * If specified, only objects with a "last modification time" on or after this timestamp and objects that don't have a "last modification time" are transferred. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+         */
+        lastModifiedSince?: string;
+        /**
+         * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+         */
+        maxTimeElapsedSinceLastModification?: string;
+        /**
+         * A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+         */
+        minTimeElapsedSinceLastModification?: string;
+    }
+
+    export interface TransferJobReplicationSpecTransferOptions {
+        /**
+         * Whether objects should be deleted from the source after they are transferred to the sink. Note that this option and `deleteObjectsUniqueInSink` are mutually exclusive.
+         */
+        deleteObjectsFromSourceAfterTransfer?: boolean;
+        /**
+         * Whether objects that exist only in the sink should be deleted. Note that this option and
+         * `deleteObjectsFromSourceAfterTransfer` are mutually exclusive.
+         */
+        deleteObjectsUniqueInSink?: boolean;
+        /**
+         * Whether overwriting objects that already exist in the sink is allowed.
+         */
+        overwriteObjectsAlreadyExistingInSink?: boolean;
+        /**
+         * When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by `overwriteObjectsAlreadyExistingInSink`. Possible values: ALWAYS, DIFFERENT, NEVER.
+         */
+        overwriteWhen?: string;
+    }
+
     export interface TransferJobSchedule {
         /**
          * Interval between the start of each scheduled transfer. If unspecified, the default value is 24 hours. This value may not be less than 1 hour. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
@@ -92610,7 +93902,7 @@ export namespace vertex {
          * The expected structure and format of the files this URI points to is
          * described at https://cloud.google.com/vertex-ai/docs/matching-engine/using-matching-engine#input-data-format
          */
-        contentsDeltaUri: string;
+        contentsDeltaUri?: string;
         /**
          * If this field is set together with contentsDeltaUri when calling IndexService.UpdateIndex,
          * then existing content of the Index will be replaced by the data from the contentsDeltaUri.

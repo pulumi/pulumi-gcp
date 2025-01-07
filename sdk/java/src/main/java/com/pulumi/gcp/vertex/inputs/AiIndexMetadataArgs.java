@@ -5,7 +5,6 @@ package com.pulumi.gcp.vertex.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.vertex.inputs.AiIndexMetadataConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -44,8 +43,8 @@ public final class AiIndexMetadataArgs extends com.pulumi.resources.ResourceArgs
      * described at https://cloud.google.com/vertex-ai/docs/matching-engine/using-matching-engine#input-data-format
      * 
      */
-    @Import(name="contentsDeltaUri", required=true)
-    private Output<String> contentsDeltaUri;
+    @Import(name="contentsDeltaUri")
+    private @Nullable Output<String> contentsDeltaUri;
 
     /**
      * @return Allows inserting, updating  or deleting the contents of the Matching Engine Index.
@@ -56,8 +55,8 @@ public final class AiIndexMetadataArgs extends com.pulumi.resources.ResourceArgs
      * described at https://cloud.google.com/vertex-ai/docs/matching-engine/using-matching-engine#input-data-format
      * 
      */
-    public Output<String> contentsDeltaUri() {
-        return this.contentsDeltaUri;
+    public Optional<Output<String>> contentsDeltaUri() {
+        return Optional.ofNullable(this.contentsDeltaUri);
     }
 
     /**
@@ -137,7 +136,7 @@ public final class AiIndexMetadataArgs extends com.pulumi.resources.ResourceArgs
          * @return builder
          * 
          */
-        public Builder contentsDeltaUri(Output<String> contentsDeltaUri) {
+        public Builder contentsDeltaUri(@Nullable Output<String> contentsDeltaUri) {
             $.contentsDeltaUri = contentsDeltaUri;
             return this;
         }
@@ -181,9 +180,6 @@ public final class AiIndexMetadataArgs extends com.pulumi.resources.ResourceArgs
         }
 
         public AiIndexMetadataArgs build() {
-            if ($.contentsDeltaUri == null) {
-                throw new MissingRequiredPropertyException("AiIndexMetadataArgs", "contentsDeltaUri");
-            }
             return $;
         }
     }

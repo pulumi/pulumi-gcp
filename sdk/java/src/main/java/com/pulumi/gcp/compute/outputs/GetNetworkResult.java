@@ -5,6 +5,7 @@ package com.pulumi.gcp.compute.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -35,14 +36,23 @@ public final class GetNetworkResult {
     private String internalIpv6Range;
     private String name;
     /**
+     * @return The numeric unique identifier for the resource.
+     * 
+     */
+    private Integer networkId;
+    /**
      * @return Beta A full or partial URL of the network profile to apply to this network.
      * 
      */
     private @Nullable String networkProfile;
     /**
-     * @return The numeric unique identifier for the resource.
+     * @return (Deprecated) The numeric unique identifier for the resource. `numeric_id` is deprecated and will be removed in a future major release. Use `network_id` instead.
+     * 
+     * @deprecated
+     * `numeric_id` is deprecated and will be removed in a future major release. Use `network_id` instead.
      * 
      */
+    @Deprecated /* `numeric_id` is deprecated and will be removed in a future major release. Use `network_id` instead. */
     private String numericId;
     private @Nullable String project;
     /**
@@ -89,6 +99,13 @@ public final class GetNetworkResult {
         return this.name;
     }
     /**
+     * @return The numeric unique identifier for the resource.
+     * 
+     */
+    public Integer networkId() {
+        return this.networkId;
+    }
+    /**
      * @return Beta A full or partial URL of the network profile to apply to this network.
      * 
      */
@@ -96,9 +113,13 @@ public final class GetNetworkResult {
         return Optional.ofNullable(this.networkProfile);
     }
     /**
-     * @return The numeric unique identifier for the resource.
+     * @return (Deprecated) The numeric unique identifier for the resource. `numeric_id` is deprecated and will be removed in a future major release. Use `network_id` instead.
+     * 
+     * @deprecated
+     * `numeric_id` is deprecated and will be removed in a future major release. Use `network_id` instead.
      * 
      */
+    @Deprecated /* `numeric_id` is deprecated and will be removed in a future major release. Use `network_id` instead. */
     public String numericId() {
         return this.numericId;
     }
@@ -134,6 +155,7 @@ public final class GetNetworkResult {
         private String id;
         private String internalIpv6Range;
         private String name;
+        private Integer networkId;
         private @Nullable String networkProfile;
         private String numericId;
         private @Nullable String project;
@@ -147,6 +169,7 @@ public final class GetNetworkResult {
     	      this.id = defaults.id;
     	      this.internalIpv6Range = defaults.internalIpv6Range;
     	      this.name = defaults.name;
+    	      this.networkId = defaults.networkId;
     	      this.networkProfile = defaults.networkProfile;
     	      this.numericId = defaults.numericId;
     	      this.project = defaults.project;
@@ -195,6 +218,14 @@ public final class GetNetworkResult {
             return this;
         }
         @CustomType.Setter
+        public Builder networkId(Integer networkId) {
+            if (networkId == null) {
+              throw new MissingRequiredPropertyException("GetNetworkResult", "networkId");
+            }
+            this.networkId = networkId;
+            return this;
+        }
+        @CustomType.Setter
         public Builder networkProfile(@Nullable String networkProfile) {
 
             this.networkProfile = networkProfile;
@@ -240,6 +271,7 @@ public final class GetNetworkResult {
             _resultValue.id = id;
             _resultValue.internalIpv6Range = internalIpv6Range;
             _resultValue.name = name;
+            _resultValue.networkId = networkId;
             _resultValue.networkProfile = networkProfile;
             _resultValue.numericId = numericId;
             _resultValue.project = project;

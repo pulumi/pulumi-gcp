@@ -27,7 +27,7 @@ class GetSubnetworkResult:
     """
     A collection of values returned by getSubnetwork.
     """
-    def __init__(__self__, description=None, gateway_address=None, id=None, internal_ipv6_prefix=None, ip_cidr_range=None, name=None, network=None, private_ip_google_access=None, project=None, region=None, secondary_ip_ranges=None, self_link=None):
+    def __init__(__self__, description=None, gateway_address=None, id=None, internal_ipv6_prefix=None, ip_cidr_range=None, name=None, network=None, private_ip_google_access=None, project=None, region=None, secondary_ip_ranges=None, self_link=None, subnetwork_id=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -64,6 +64,9 @@ class GetSubnetworkResult:
         if self_link and not isinstance(self_link, str):
             raise TypeError("Expected argument 'self_link' to be a str")
         pulumi.set(__self__, "self_link", self_link)
+        if subnetwork_id and not isinstance(subnetwork_id, int):
+            raise TypeError("Expected argument 'subnetwork_id' to be a int")
+        pulumi.set(__self__, "subnetwork_id", subnetwork_id)
 
     @property
     @pulumi.getter
@@ -154,6 +157,14 @@ class GetSubnetworkResult:
     def self_link(self) -> str:
         return pulumi.get(self, "self_link")
 
+    @property
+    @pulumi.getter(name="subnetworkId")
+    def subnetwork_id(self) -> int:
+        """
+        The numeric ID of the resource.
+        """
+        return pulumi.get(self, "subnetwork_id")
+
 
 class AwaitableGetSubnetworkResult(GetSubnetworkResult):
     # pylint: disable=using-constant-test
@@ -172,7 +183,8 @@ class AwaitableGetSubnetworkResult(GetSubnetworkResult):
             project=self.project,
             region=self.region,
             secondary_ip_ranges=self.secondary_ip_ranges,
-            self_link=self.self_link)
+            self_link=self.self_link,
+            subnetwork_id=self.subnetwork_id)
 
 
 def get_subnetwork(name: Optional[str] = None,
@@ -223,7 +235,8 @@ def get_subnetwork(name: Optional[str] = None,
         project=pulumi.get(__ret__, 'project'),
         region=pulumi.get(__ret__, 'region'),
         secondary_ip_ranges=pulumi.get(__ret__, 'secondary_ip_ranges'),
-        self_link=pulumi.get(__ret__, 'self_link'))
+        self_link=pulumi.get(__ret__, 'self_link'),
+        subnetwork_id=pulumi.get(__ret__, 'subnetwork_id'))
 def get_subnetwork_output(name: Optional[pulumi.Input[Optional[str]]] = None,
                           project: Optional[pulumi.Input[Optional[str]]] = None,
                           region: Optional[pulumi.Input[Optional[str]]] = None,
@@ -271,4 +284,5 @@ def get_subnetwork_output(name: Optional[pulumi.Input[Optional[str]]] = None,
         project=pulumi.get(__response__, 'project'),
         region=pulumi.get(__response__, 'region'),
         secondary_ip_ranges=pulumi.get(__response__, 'secondary_ip_ranges'),
-        self_link=pulumi.get(__response__, 'self_link')))
+        self_link=pulumi.get(__response__, 'self_link'),
+        subnetwork_id=pulumi.get(__response__, 'subnetwork_id')))

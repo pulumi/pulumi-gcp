@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.NetworkManagement
 {
     /// <summary>
+    /// VPC Flow Logs Config is a resource that lets you configure Flow Logs for VPC, Interconnect attachments or VPN Tunnels.
+    /// 
     /// ## Example Usage
     /// 
     /// ### Network Management Vpc Flow Logs Config Interconnect Full

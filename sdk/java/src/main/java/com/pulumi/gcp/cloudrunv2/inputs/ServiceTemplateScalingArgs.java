@@ -16,14 +16,16 @@ public final class ServiceTemplateScalingArgs extends com.pulumi.resources.Resou
     public static final ServiceTemplateScalingArgs Empty = new ServiceTemplateScalingArgs();
 
     /**
-     * Maximum number of serving instances that this resource should have.
+     * Maximum number of serving instances that this resource should have. Must not be less than minimum instance count. If absent, Cloud Run will calculate
+     * a default value based on the project&#39;s available container instances quota in the region and specified instance size.
      * 
      */
     @Import(name="maxInstanceCount")
     private @Nullable Output<Integer> maxInstanceCount;
 
     /**
-     * @return Maximum number of serving instances that this resource should have.
+     * @return Maximum number of serving instances that this resource should have. Must not be less than minimum instance count. If absent, Cloud Run will calculate
+     * a default value based on the project&#39;s available container instances quota in the region and specified instance size.
      * 
      */
     public Optional<Output<Integer>> maxInstanceCount() {
@@ -71,7 +73,8 @@ public final class ServiceTemplateScalingArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param maxInstanceCount Maximum number of serving instances that this resource should have.
+         * @param maxInstanceCount Maximum number of serving instances that this resource should have. Must not be less than minimum instance count. If absent, Cloud Run will calculate
+         * a default value based on the project&#39;s available container instances quota in the region and specified instance size.
          * 
          * @return builder
          * 
@@ -82,7 +85,8 @@ public final class ServiceTemplateScalingArgs extends com.pulumi.resources.Resou
         }
 
         /**
-         * @param maxInstanceCount Maximum number of serving instances that this resource should have.
+         * @param maxInstanceCount Maximum number of serving instances that this resource should have. Must not be less than minimum instance count. If absent, Cloud Run will calculate
+         * a default value based on the project&#39;s available container instances quota in the region and specified instance size.
          * 
          * @return builder
          * 

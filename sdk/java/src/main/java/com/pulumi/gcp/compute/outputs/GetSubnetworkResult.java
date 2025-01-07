@@ -7,6 +7,7 @@ import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.compute.outputs.GetSubnetworkSecondaryIpRange;
 import java.lang.Boolean;
+import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -64,6 +65,11 @@ public final class GetSubnetworkResult {
      */
     private List<GetSubnetworkSecondaryIpRange> secondaryIpRanges;
     private String selfLink;
+    /**
+     * @return The numeric ID of the resource.
+     * 
+     */
+    private Integer subnetworkId;
 
     private GetSubnetworkResult() {}
     /**
@@ -139,6 +145,13 @@ public final class GetSubnetworkResult {
     public String selfLink() {
         return this.selfLink;
     }
+    /**
+     * @return The numeric ID of the resource.
+     * 
+     */
+    public Integer subnetworkId() {
+        return this.subnetworkId;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -161,6 +174,7 @@ public final class GetSubnetworkResult {
         private String region;
         private List<GetSubnetworkSecondaryIpRange> secondaryIpRanges;
         private String selfLink;
+        private Integer subnetworkId;
         public Builder() {}
         public Builder(GetSubnetworkResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -176,6 +190,7 @@ public final class GetSubnetworkResult {
     	      this.region = defaults.region;
     	      this.secondaryIpRanges = defaults.secondaryIpRanges;
     	      this.selfLink = defaults.selfLink;
+    	      this.subnetworkId = defaults.subnetworkId;
         }
 
         @CustomType.Setter
@@ -275,6 +290,14 @@ public final class GetSubnetworkResult {
             this.selfLink = selfLink;
             return this;
         }
+        @CustomType.Setter
+        public Builder subnetworkId(Integer subnetworkId) {
+            if (subnetworkId == null) {
+              throw new MissingRequiredPropertyException("GetSubnetworkResult", "subnetworkId");
+            }
+            this.subnetworkId = subnetworkId;
+            return this;
+        }
         public GetSubnetworkResult build() {
             final var _resultValue = new GetSubnetworkResult();
             _resultValue.description = description;
@@ -289,6 +312,7 @@ public final class GetSubnetworkResult {
             _resultValue.region = region;
             _resultValue.secondaryIpRanges = secondaryIpRanges;
             _resultValue.selfLink = selfLink;
+            _resultValue.subnetworkId = subnetworkId;
             return _resultValue;
         }
     }

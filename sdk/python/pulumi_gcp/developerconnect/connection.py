@@ -535,7 +535,28 @@ class Connection(pulumi.CustomResource):
         """
         ## Example Usage
 
-        ### Developer Connect Connection Basic
+        ### Developer Connect Connection New
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        # Setup permissions. Only needed once per project
+        devconnect_p4sa = gcp.projects.ServiceIdentity("devconnect-p4sa", service="developerconnect.googleapis.com")
+        devconnect_secret = gcp.projects.IAMMember("devconnect-secret",
+            project="my-project-name",
+            role="roles/secretmanager.admin",
+            member=devconnect_p4sa.member)
+        my_connection = gcp.developerconnect.Connection("my-connection",
+            location="us-central1",
+            connection_id="tf-test-connection-new",
+            github_config={
+                "github_app": "FIREBASE",
+            },
+            opts = pulumi.ResourceOptions(depends_on=[devconnect_secret]))
+        pulumi.export("nextSteps", my_connection.installation_states)
+        ```
+        ### Developer Connect Connection Existing Credentials
 
         ```python
         import pulumi
@@ -543,15 +564,16 @@ class Connection(pulumi.CustomResource):
 
         my_connection = gcp.developerconnect.Connection("my-connection",
             location="us-central1",
-            connection_id="tf-test-connection",
+            connection_id="tf-test-connection-cred",
             github_config={
                 "github_app": "DEVELOPER_CONNECT",
                 "authorizer_credential": {
-                    "oauth_token_secret_version": "projects/devconnect-terraform-creds/secrets/tf-test-do-not-change-github-oauthtoken-e0b9e7/versions/1",
+                    "oauth_token_secret_version": "projects/your-project/secrets/your-secret-id/versions/latest",
                 },
             })
+        pulumi.export("nextSteps", my_connection.installation_states)
         ```
-        ### Developer Connect Connection Github Doc
+        ### Developer Connect Connection Existing Installation
 
         ```python
         import pulumi
@@ -566,9 +588,10 @@ class Connection(pulumi.CustomResource):
         github_token_secret_version = gcp.secretmanager.SecretVersion("github-token-secret-version",
             secret=github_token_secret.id,
             secret_data=std.file(input="my-github-token.txt").result)
-        p4sa_secret_accessor = gcp.organizations.get_iam_policy(bindings=[{
+        devconnect_p4sa = gcp.projects.ServiceIdentity("devconnect-p4sa", service="developerconnect.googleapis.com")
+        p4sa_secret_accessor = gcp.organizations.get_iam_policy_output(bindings=[{
             "role": "roles/secretmanager.secretAccessor",
-            "members": ["serviceAccount:service-123456789@gcp-sa-devconnect.iam.gserviceaccount.com"],
+            "members": [devconnect_p4sa.member],
         }])
         policy = gcp.secretmanager.SecretIamPolicy("policy",
             secret_id=github_token_secret.secret_id,
@@ -645,7 +668,28 @@ class Connection(pulumi.CustomResource):
         """
         ## Example Usage
 
-        ### Developer Connect Connection Basic
+        ### Developer Connect Connection New
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        # Setup permissions. Only needed once per project
+        devconnect_p4sa = gcp.projects.ServiceIdentity("devconnect-p4sa", service="developerconnect.googleapis.com")
+        devconnect_secret = gcp.projects.IAMMember("devconnect-secret",
+            project="my-project-name",
+            role="roles/secretmanager.admin",
+            member=devconnect_p4sa.member)
+        my_connection = gcp.developerconnect.Connection("my-connection",
+            location="us-central1",
+            connection_id="tf-test-connection-new",
+            github_config={
+                "github_app": "FIREBASE",
+            },
+            opts = pulumi.ResourceOptions(depends_on=[devconnect_secret]))
+        pulumi.export("nextSteps", my_connection.installation_states)
+        ```
+        ### Developer Connect Connection Existing Credentials
 
         ```python
         import pulumi
@@ -653,15 +697,16 @@ class Connection(pulumi.CustomResource):
 
         my_connection = gcp.developerconnect.Connection("my-connection",
             location="us-central1",
-            connection_id="tf-test-connection",
+            connection_id="tf-test-connection-cred",
             github_config={
                 "github_app": "DEVELOPER_CONNECT",
                 "authorizer_credential": {
-                    "oauth_token_secret_version": "projects/devconnect-terraform-creds/secrets/tf-test-do-not-change-github-oauthtoken-e0b9e7/versions/1",
+                    "oauth_token_secret_version": "projects/your-project/secrets/your-secret-id/versions/latest",
                 },
             })
+        pulumi.export("nextSteps", my_connection.installation_states)
         ```
-        ### Developer Connect Connection Github Doc
+        ### Developer Connect Connection Existing Installation
 
         ```python
         import pulumi
@@ -676,9 +721,10 @@ class Connection(pulumi.CustomResource):
         github_token_secret_version = gcp.secretmanager.SecretVersion("github-token-secret-version",
             secret=github_token_secret.id,
             secret_data=std.file(input="my-github-token.txt").result)
-        p4sa_secret_accessor = gcp.organizations.get_iam_policy(bindings=[{
+        devconnect_p4sa = gcp.projects.ServiceIdentity("devconnect-p4sa", service="developerconnect.googleapis.com")
+        p4sa_secret_accessor = gcp.organizations.get_iam_policy_output(bindings=[{
             "role": "roles/secretmanager.secretAccessor",
-            "members": ["serviceAccount:service-123456789@gcp-sa-devconnect.iam.gserviceaccount.com"],
+            "members": [devconnect_p4sa.member],
         }])
         policy = gcp.secretmanager.SecretIamPolicy("policy",
             secret_id=github_token_secret.secret_id,

@@ -110,10 +110,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.storage.inputs.GetProjectServiceAccountArgs;
  * import com.pulumi.gcp.storage.Bucket;
  * import com.pulumi.gcp.storage.BucketArgs;
- * import com.pulumi.gcp.kms.KeyRing;
- * import com.pulumi.gcp.kms.KeyRingArgs;
- * import com.pulumi.gcp.kms.CryptoKey;
- * import com.pulumi.gcp.kms.CryptoKeyArgs;
  * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
  * import com.pulumi.gcp.kms.CryptoKeyIAMMemberArgs;
  * import com.pulumi.gcp.dataproc.MetastoreService;
@@ -161,19 +157,8 @@ import javax.annotation.Nullable;
  *             .forceDestroy(true)
  *             .build());
  * 
- *         var keyRing = new KeyRing("keyRing", KeyRingArgs.builder()
- *             .name("example-keyring")
- *             .location("us-central1")
- *             .build());
- * 
- *         var cryptoKey = new CryptoKey("cryptoKey", CryptoKeyArgs.builder()
- *             .name("example-key")
- *             .keyRing(keyRing.id())
- *             .purpose("ENCRYPT_DECRYPT")
- *             .build());
- * 
  *         var cryptoKeyMember1 = new CryptoKeyIAMMember("cryptoKeyMember1", CryptoKeyIAMMemberArgs.builder()
- *             .cryptoKeyId(cryptoKey.id())
+ *             .cryptoKeyId("example-key")
  *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
  *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code dataproc-accounts.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
@@ -233,7 +218,7 @@ import javax.annotation.Nullable;
  *                 .executionConfig(BatchEnvironmentConfigExecutionConfigArgs.builder()
  *                     .ttl("3600s")
  *                     .networkTags("tag1")
- *                     .kmsKey(cryptoKey.id())
+ *                     .kmsKey("example-key")
  *                     .networkUri("default")
  *                     .serviceAccount(String.format("%s-compute}{@literal @}{@code developer.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *                     .stagingBucket(bucket.name())

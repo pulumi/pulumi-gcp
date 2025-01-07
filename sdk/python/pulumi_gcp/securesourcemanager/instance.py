@@ -471,21 +471,15 @@ class Instance(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        key_ring = gcp.kms.KeyRing("key_ring",
-            name="my-keyring",
-            location="us-central1")
-        crypto_key = gcp.kms.CryptoKey("crypto_key",
-            name="my-key",
-            key_ring=key_ring.id)
         project = gcp.organizations.get_project()
         crypto_key_binding = gcp.kms.CryptoKeyIAMMember("crypto_key_binding",
-            crypto_key_id=crypto_key.id,
+            crypto_key_id="my-key",
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:service-{project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com")
         default = gcp.securesourcemanager.Instance("default",
             location="us-central1",
             instance_id="my-instance",
-            kms_key=crypto_key.id,
+            kms_key="my-key",
             opts = pulumi.ResourceOptions(depends_on=[crypto_key_binding]))
         ```
         ### Secure Source Manager Instance Private
@@ -917,21 +911,15 @@ class Instance(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        key_ring = gcp.kms.KeyRing("key_ring",
-            name="my-keyring",
-            location="us-central1")
-        crypto_key = gcp.kms.CryptoKey("crypto_key",
-            name="my-key",
-            key_ring=key_ring.id)
         project = gcp.organizations.get_project()
         crypto_key_binding = gcp.kms.CryptoKeyIAMMember("crypto_key_binding",
-            crypto_key_id=crypto_key.id,
+            crypto_key_id="my-key",
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:service-{project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com")
         default = gcp.securesourcemanager.Instance("default",
             location="us-central1",
             instance_id="my-instance",
-            kms_key=crypto_key.id,
+            kms_key="my-key",
             opts = pulumi.ResourceOptions(depends_on=[crypto_key_binding]))
         ```
         ### Secure Source Manager Instance Private

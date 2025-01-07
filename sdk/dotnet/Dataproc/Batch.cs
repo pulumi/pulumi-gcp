@@ -97,22 +97,9 @@ namespace Pulumi.Gcp.Dataproc
     ///         ForceDestroy = true,
     ///     });
     /// 
-    ///     var keyRing = new Gcp.Kms.KeyRing("key_ring", new()
-    ///     {
-    ///         Name = "example-keyring",
-    ///         Location = "us-central1",
-    ///     });
-    /// 
-    ///     var cryptoKey = new Gcp.Kms.CryptoKey("crypto_key", new()
-    ///     {
-    ///         Name = "example-key",
-    ///         KeyRing = keyRing.Id,
-    ///         Purpose = "ENCRYPT_DECRYPT",
-    ///     });
-    /// 
     ///     var cryptoKeyMember1 = new Gcp.Kms.CryptoKeyIAMMember("crypto_key_member_1", new()
     ///     {
-    ///         CryptoKeyId = cryptoKey.Id,
+    ///         CryptoKeyId = "example-key",
     ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
     ///         Member = $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@dataproc-accounts.iam.gserviceaccount.com",
     ///     });
@@ -194,7 +181,7 @@ namespace Pulumi.Gcp.Dataproc
     ///                 {
     ///                     "tag1",
     ///                 },
-    ///                 KmsKey = cryptoKey.Id,
+    ///                 KmsKey = "example-key",
     ///                 NetworkUri = "default",
     ///                 ServiceAccount = $"{project.Apply(getProjectResult =&gt; getProjectResult.Number)}-compute@developer.gserviceaccount.com",
     ///                 StagingBucket = bucket.Name,

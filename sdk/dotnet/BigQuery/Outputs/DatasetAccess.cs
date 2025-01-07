@@ -14,6 +14,12 @@ namespace Pulumi.Gcp.BigQuery.Outputs
     public sealed class DatasetAccess
     {
         /// <summary>
+        /// Condition for the binding. If CEL expression in this field is true, this
+        /// access binding will be considered.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.DatasetAccessCondition? Condition;
+        /// <summary>
         /// Grants all resources of particular types in a particular dataset read access to the current dataset.
         /// Structure is documented below.
         /// </summary>
@@ -74,6 +80,8 @@ namespace Pulumi.Gcp.BigQuery.Outputs
 
         [OutputConstructor]
         private DatasetAccess(
+            Outputs.DatasetAccessCondition? condition,
+
             Outputs.DatasetAccessDataset? dataset,
 
             string? domain,
@@ -92,6 +100,7 @@ namespace Pulumi.Gcp.BigQuery.Outputs
 
             Outputs.DatasetAccessView? view)
         {
+            Condition = condition;
             Dataset = dataset;
             Domain = domain;
             GroupByEmail = groupByEmail;

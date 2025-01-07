@@ -209,6 +209,23 @@ public final class WorkstationState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Full resource name of the source workstation from which the workstation&#39;s persistent
+     * directories will be cloned from during creation.
+     * 
+     */
+    @Import(name="sourceWorkstation")
+    private @Nullable Output<String> sourceWorkstation;
+
+    /**
+     * @return Full resource name of the source workstation from which the workstation&#39;s persistent
+     * directories will be cloned from during creation.
+     * 
+     */
+    public Optional<Output<String>> sourceWorkstation() {
+        return Optional.ofNullable(this.sourceWorkstation);
+    }
+
+    /**
      * Current state of the workstation.
      * 
      */
@@ -298,6 +315,7 @@ public final class WorkstationState extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.project = $.project;
         this.pulumiLabels = $.pulumiLabels;
+        this.sourceWorkstation = $.sourceWorkstation;
         this.state = $.state;
         this.uid = $.uid;
         this.workstationClusterId = $.workstationClusterId;
@@ -581,6 +599,29 @@ public final class WorkstationState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder pulumiLabels(Map<String,String> pulumiLabels) {
             return pulumiLabels(Output.of(pulumiLabels));
+        }
+
+        /**
+         * @param sourceWorkstation Full resource name of the source workstation from which the workstation&#39;s persistent
+         * directories will be cloned from during creation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceWorkstation(@Nullable Output<String> sourceWorkstation) {
+            $.sourceWorkstation = sourceWorkstation;
+            return this;
+        }
+
+        /**
+         * @param sourceWorkstation Full resource name of the source workstation from which the workstation&#39;s persistent
+         * directories will be cloned from during creation.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder sourceWorkstation(String sourceWorkstation) {
+            return sourceWorkstation(Output.of(sourceWorkstation));
         }
 
         /**

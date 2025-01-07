@@ -52,23 +52,11 @@ namespace Pulumi.Gcp.SecureSourceManager
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var keyRing = new Gcp.Kms.KeyRing("key_ring", new()
-    ///     {
-    ///         Name = "my-keyring",
-    ///         Location = "us-central1",
-    ///     });
-    /// 
-    ///     var cryptoKey = new Gcp.Kms.CryptoKey("crypto_key", new()
-    ///     {
-    ///         Name = "my-key",
-    ///         KeyRing = keyRing.Id,
-    ///     });
-    /// 
     ///     var project = Gcp.Organizations.GetProject.Invoke();
     /// 
     ///     var cryptoKeyBinding = new Gcp.Kms.CryptoKeyIAMMember("crypto_key_binding", new()
     ///     {
-    ///         CryptoKeyId = cryptoKey.Id,
+    ///         CryptoKeyId = "my-key",
     ///         Role = "roles/cloudkms.cryptoKeyEncrypterDecrypter",
     ///         Member = $"serviceAccount:service-{project.Apply(getProjectResult =&gt; getProjectResult.Number)}@gcp-sa-sourcemanager.iam.gserviceaccount.com",
     ///     });
@@ -77,7 +65,7 @@ namespace Pulumi.Gcp.SecureSourceManager
     ///     {
     ///         Location = "us-central1",
     ///         InstanceId = "my-instance",
-    ///         KmsKey = cryptoKey.Id,
+    ///         KmsKey = "my-key",
     ///     }, new CustomResourceOptions
     ///     {
     ///         DependsOn =

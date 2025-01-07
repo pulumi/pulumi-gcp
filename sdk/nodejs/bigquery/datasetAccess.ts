@@ -157,6 +157,12 @@ export class DatasetAccess extends pulumi.CustomResource {
      */
     public readonly authorizedDataset!: pulumi.Output<outputs.bigquery.DatasetAccessAuthorizedDataset | undefined>;
     /**
+     * Condition for the binding. If CEL expression in this field is true, this
+     * access binding will be considered.
+     * Structure is documented below.
+     */
+    public readonly condition!: pulumi.Output<outputs.bigquery.DatasetAccessCondition | undefined>;
+    /**
      * A unique ID for this dataset, without the project name. The ID
      * must contain only letters (a-z, A-Z), numbers (0-9), or
      * underscores (_). The maximum length is 1,024 characters.
@@ -240,6 +246,7 @@ export class DatasetAccess extends pulumi.CustomResource {
             const state = argsOrState as DatasetAccessState | undefined;
             resourceInputs["apiUpdatedMember"] = state ? state.apiUpdatedMember : undefined;
             resourceInputs["authorizedDataset"] = state ? state.authorizedDataset : undefined;
+            resourceInputs["condition"] = state ? state.condition : undefined;
             resourceInputs["datasetId"] = state ? state.datasetId : undefined;
             resourceInputs["domain"] = state ? state.domain : undefined;
             resourceInputs["groupByEmail"] = state ? state.groupByEmail : undefined;
@@ -256,6 +263,7 @@ export class DatasetAccess extends pulumi.CustomResource {
                 throw new Error("Missing required property 'datasetId'");
             }
             resourceInputs["authorizedDataset"] = args ? args.authorizedDataset : undefined;
+            resourceInputs["condition"] = args ? args.condition : undefined;
             resourceInputs["datasetId"] = args ? args.datasetId : undefined;
             resourceInputs["domain"] = args ? args.domain : undefined;
             resourceInputs["groupByEmail"] = args ? args.groupByEmail : undefined;
@@ -287,6 +295,12 @@ export interface DatasetAccessState {
      * Structure is documented below.
      */
     authorizedDataset?: pulumi.Input<inputs.bigquery.DatasetAccessAuthorizedDataset>;
+    /**
+     * Condition for the binding. If CEL expression in this field is true, this
+     * access binding will be considered.
+     * Structure is documented below.
+     */
+    condition?: pulumi.Input<inputs.bigquery.DatasetAccessCondition>;
     /**
      * A unique ID for this dataset, without the project name. The ID
      * must contain only letters (a-z, A-Z), numbers (0-9), or
@@ -366,6 +380,12 @@ export interface DatasetAccessArgs {
      * Structure is documented below.
      */
     authorizedDataset?: pulumi.Input<inputs.bigquery.DatasetAccessAuthorizedDataset>;
+    /**
+     * Condition for the binding. If CEL expression in this field is true, this
+     * access binding will be considered.
+     * Structure is documented below.
+     */
+    condition?: pulumi.Input<inputs.bigquery.DatasetAccessCondition>;
     /**
      * A unique ID for this dataset, without the project name. The ID
      * must contain only letters (a-z, A-Z), numbers (0-9), or

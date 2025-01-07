@@ -672,15 +672,8 @@ class Batch(pulumi.CustomResource):
             name="dataproc-bucket",
             location="US",
             force_destroy=True)
-        key_ring = gcp.kms.KeyRing("key_ring",
-            name="example-keyring",
-            location="us-central1")
-        crypto_key = gcp.kms.CryptoKey("crypto_key",
-            name="example-key",
-            key_ring=key_ring.id,
-            purpose="ENCRYPT_DECRYPT")
         crypto_key_member1 = gcp.kms.CryptoKeyIAMMember("crypto_key_member_1",
-            crypto_key_id=crypto_key.id,
+            crypto_key_id="example-key",
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:service-{project.number}@dataproc-accounts.iam.gserviceaccount.com")
         ms = gcp.dataproc.MetastoreService("ms",
@@ -736,7 +729,7 @@ class Batch(pulumi.CustomResource):
                 "execution_config": {
                     "ttl": "3600s",
                     "network_tags": ["tag1"],
-                    "kms_key": crypto_key.id,
+                    "kms_key": "example-key",
                     "network_uri": "default",
                     "service_account": f"{project.number}-compute@developer.gserviceaccount.com",
                     "staging_bucket": bucket.name,
@@ -995,15 +988,8 @@ class Batch(pulumi.CustomResource):
             name="dataproc-bucket",
             location="US",
             force_destroy=True)
-        key_ring = gcp.kms.KeyRing("key_ring",
-            name="example-keyring",
-            location="us-central1")
-        crypto_key = gcp.kms.CryptoKey("crypto_key",
-            name="example-key",
-            key_ring=key_ring.id,
-            purpose="ENCRYPT_DECRYPT")
         crypto_key_member1 = gcp.kms.CryptoKeyIAMMember("crypto_key_member_1",
-            crypto_key_id=crypto_key.id,
+            crypto_key_id="example-key",
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:service-{project.number}@dataproc-accounts.iam.gserviceaccount.com")
         ms = gcp.dataproc.MetastoreService("ms",
@@ -1059,7 +1045,7 @@ class Batch(pulumi.CustomResource):
                 "execution_config": {
                     "ttl": "3600s",
                     "network_tags": ["tag1"],
-                    "kms_key": crypto_key.id,
+                    "kms_key": "example-key",
                     "network_uri": "default",
                     "service_account": f"{project.number}-compute@developer.gserviceaccount.com",
                     "staging_bucket": bucket.name,

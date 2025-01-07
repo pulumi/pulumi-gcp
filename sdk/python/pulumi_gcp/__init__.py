@@ -56,6 +56,8 @@ if typing.TYPE_CHECKING:
     certificateauthority = __certificateauthority
     import pulumi_gcp.certificatemanager as __certificatemanager
     certificatemanager = __certificatemanager
+    import pulumi_gcp.chronicle as __chronicle
+    chronicle = __chronicle
     import pulumi_gcp.cloudasset as __cloudasset
     cloudasset = __cloudasset
     import pulumi_gcp.cloudbuild as __cloudbuild
@@ -284,6 +286,7 @@ else:
     blockchainnodeengine = _utilities.lazy_import('pulumi_gcp.blockchainnodeengine')
     certificateauthority = _utilities.lazy_import('pulumi_gcp.certificateauthority')
     certificatemanager = _utilities.lazy_import('pulumi_gcp.certificatemanager')
+    chronicle = _utilities.lazy_import('pulumi_gcp.chronicle')
     cloudasset = _utilities.lazy_import('pulumi_gcp.cloudasset')
     cloudbuild = _utilities.lazy_import('pulumi_gcp.cloudbuild')
     cloudbuildv2 = _utilities.lazy_import('pulumi_gcp.cloudbuildv2')
@@ -1716,6 +1719,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.certificatemanager",
   "classes": {
    "gcp:certificatemanager/trustConfig:TrustConfig": "TrustConfig"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "chronicle/watchlist",
+  "fqn": "pulumi_gcp.chronicle",
+  "classes": {
+   "gcp:chronicle/watchlist:Watchlist": "Watchlist"
   }
  },
  {
@@ -5232,6 +5243,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "gkeonprem/vmwareAdminCluster",
+  "fqn": "pulumi_gcp.gkeonprem",
+  "classes": {
+   "gcp:gkeonprem/vmwareAdminCluster:VmwareAdminCluster": "VmwareAdminCluster"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "healthcare/consentStore",
   "fqn": "pulumi_gcp.healthcare",
   "classes": {
@@ -6540,6 +6559,22 @@ _utilities.register(
   "fqn": "pulumi_gcp.networksecurity",
   "classes": {
    "gcp:networksecurity/interceptDeploymentGroup:InterceptDeploymentGroup": "InterceptDeploymentGroup"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "networksecurity/interceptEndpointGroup",
+  "fqn": "pulumi_gcp.networksecurity",
+  "classes": {
+   "gcp:networksecurity/interceptEndpointGroup:InterceptEndpointGroup": "InterceptEndpointGroup"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "networksecurity/interceptEndpointGroupAssociation",
+  "fqn": "pulumi_gcp.networksecurity",
+  "classes": {
+   "gcp:networksecurity/interceptEndpointGroupAssociation:InterceptEndpointGroupAssociation": "InterceptEndpointGroupAssociation"
   }
  },
  {
@@ -8108,6 +8143,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.storage",
   "classes": {
    "gcp:storage/defaultObjectAccessControl:DefaultObjectAccessControl": "DefaultObjectAccessControl"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "storage/folder",
+  "fqn": "pulumi_gcp.storage",
+  "classes": {
+   "gcp:storage/folder:Folder": "Folder"
   }
  },
  {

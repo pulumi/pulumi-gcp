@@ -11,10 +11,15 @@ namespace Pulumi.Gcp.Compute
 {
     /// <summary>
     /// Allows associating hierarchical firewall policies with the target where they are applied. This allows creating policies and rules in a different location than they are applied.
+    /// For more information on applying hierarchical firewall policies see the [official documentation](https://cloud.google.com/firewall/docs/firewall-policies#managing_hierarchical_firewall_policy_resources)
     /// 
-    /// For more information on applying hierarchical firewall policies see the [official documentation](https://cloud.google.com/vpc/docs/firewall-policies#managing_hierarchical_firewall_policy_resources)
+    /// To get more information about FirewallPolicyAssociation, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/firewallPolicies/addAssociation)
     /// 
     /// ## Example Usage
+    /// 
+    /// ### Firewall Policy Association
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -24,16 +29,23 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var @default = new Gcp.Compute.FirewallPolicy("default", new()
+    ///     var folder = new Gcp.Organizations.Folder("folder", new()
     ///     {
-    ///         Parent = "organizations/12345",
+    ///         DisplayName = "my-folder",
+    ///         Parent = "organizations/123456789",
+    ///         DeletionProtection = false,
+    ///     });
+    /// 
+    ///     var policy = new Gcp.Compute.FirewallPolicy("policy", new()
+    ///     {
+    ///         Parent = "organizations/123456789",
     ///         ShortName = "my-policy",
     ///         Description = "Example Resource",
     ///     });
     /// 
-    ///     var defaultFirewallPolicyAssociation = new Gcp.Compute.FirewallPolicyAssociation("default", new()
+    ///     var @default = new Gcp.Compute.FirewallPolicyAssociation("default", new()
     ///     {
-    ///         FirewallPolicy = @default.Id,
+    ///         FirewallPolicy = policy.Id,
     ///         AttachmentTarget = folder.Name,
     ///         Name = "my-association",
     ///     });
@@ -69,17 +81,16 @@ namespace Pulumi.Gcp.Compute
         public Output<string> AttachmentTarget { get; private set; } = null!;
 
         /// <summary>
-        /// The firewall policy ID of the association.
+        /// The firewall policy of the resource.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Output("firewallPolicy")]
         public Output<string> FirewallPolicy { get; private set; } = null!;
 
         /// <summary>
         /// The name for an association.
-        /// 
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -143,17 +154,16 @@ namespace Pulumi.Gcp.Compute
         public Input<string> AttachmentTarget { get; set; } = null!;
 
         /// <summary>
-        /// The firewall policy ID of the association.
+        /// The firewall policy of the resource.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("firewallPolicy", required: true)]
         public Input<string> FirewallPolicy { get; set; } = null!;
 
         /// <summary>
         /// The name for an association.
-        /// 
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -173,17 +183,16 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? AttachmentTarget { get; set; }
 
         /// <summary>
-        /// The firewall policy ID of the association.
+        /// The firewall policy of the resource.
+        /// 
+        /// 
+        /// - - -
         /// </summary>
         [Input("firewallPolicy")]
         public Input<string>? FirewallPolicy { get; set; }
 
         /// <summary>
         /// The name for an association.
-        /// 
-        /// 
-        /// 
-        /// - - -
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }

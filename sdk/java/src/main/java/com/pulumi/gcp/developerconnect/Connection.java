@@ -22,7 +22,65 @@ import javax.annotation.Nullable;
 /**
  * ## Example Usage
  * 
- * ### Developer Connect Connection Basic
+ * ### Developer Connect Connection New
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.projects.ServiceIdentity;
+ * import com.pulumi.gcp.projects.ServiceIdentityArgs;
+ * import com.pulumi.gcp.projects.IAMMember;
+ * import com.pulumi.gcp.projects.IAMMemberArgs;
+ * import com.pulumi.gcp.developerconnect.Connection;
+ * import com.pulumi.gcp.developerconnect.ConnectionArgs;
+ * import com.pulumi.gcp.developerconnect.inputs.ConnectionGithubConfigArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         // Setup permissions. Only needed once per project
+ *         var devconnect_p4sa = new ServiceIdentity("devconnect-p4sa", ServiceIdentityArgs.builder()
+ *             .service("developerconnect.googleapis.com")
+ *             .build());
+ * 
+ *         var devconnect_secret = new IAMMember("devconnect-secret", IAMMemberArgs.builder()
+ *             .project("my-project-name")
+ *             .role("roles/secretmanager.admin")
+ *             .member(devconnect_p4sa.member())
+ *             .build());
+ * 
+ *         var my_connection = new Connection("my-connection", ConnectionArgs.builder()
+ *             .location("us-central1")
+ *             .connectionId("tf-test-connection-new")
+ *             .githubConfig(ConnectionGithubConfigArgs.builder()
+ *                 .githubApp("FIREBASE")
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(devconnect_secret)
+ *                 .build());
+ * 
+ *         ctx.export("nextSteps", my_connection.installationStates());
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Developer Connect Connection Existing Credentials
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -51,21 +109,22 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var my_connection = new Connection("my-connection", ConnectionArgs.builder()
  *             .location("us-central1")
- *             .connectionId("tf-test-connection")
+ *             .connectionId("tf-test-connection-cred")
  *             .githubConfig(ConnectionGithubConfigArgs.builder()
  *                 .githubApp("DEVELOPER_CONNECT")
  *                 .authorizerCredential(ConnectionGithubConfigAuthorizerCredentialArgs.builder()
- *                     .oauthTokenSecretVersion("projects/devconnect-terraform-creds/secrets/tf-test-do-not-change-github-oauthtoken-e0b9e7/versions/1")
+ *                     .oauthTokenSecretVersion("projects/your-project/secrets/your-secret-id/versions/latest")
  *                     .build())
  *                 .build())
  *             .build());
  * 
+ *         ctx.export("nextSteps", my_connection.installationStates());
  *     }
  * }
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Developer Connect Connection Github Doc
+ * ### Developer Connect Connection Existing Installation
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
@@ -81,6 +140,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationAutoArgs;
  * import com.pulumi.gcp.secretmanager.SecretVersion;
  * import com.pulumi.gcp.secretmanager.SecretVersionArgs;
+ * import com.pulumi.gcp.projects.ServiceIdentity;
+ * import com.pulumi.gcp.projects.ServiceIdentityArgs;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
  * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
  * import com.pulumi.gcp.secretmanager.SecretIamPolicy;
@@ -96,12 +157,12 @@ import javax.annotation.Nullable;
  * import java.nio.file.Files;
  * import java.nio.file.Paths;
  * 
- * public class App }{{@code
- *     public static void main(String[] args) }{{@code
+ * public class App {
+ *     public static void main(String[] args) {
  *         Pulumi.run(App::stack);
- *     }}{@code
+ *     }
  * 
- *     public static void stack(Context ctx) }{{@code
+ *     public static void stack(Context ctx) {
  *         var github_token_secret = new Secret("github-token-secret", SecretArgs.builder()
  *             .secretId("github-token-secret")
  *             .replication(SecretReplicationArgs.builder()
@@ -116,16 +177,20 @@ import javax.annotation.Nullable;
  *                 .build()).result())
  *             .build());
  * 
+ *         var devconnect_p4sa = new ServiceIdentity("devconnect-p4sa", ServiceIdentityArgs.builder()
+ *             .service("developerconnect.googleapis.com")
+ *             .build());
+ * 
  *         final var p4sa-secretAccessor = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
  *             .bindings(GetIAMPolicyBindingArgs.builder()
  *                 .role("roles/secretmanager.secretAccessor")
- *                 .members("serviceAccount:service-123456789}{@literal @}{@code gcp-sa-devconnect.iam.gserviceaccount.com")
+ *                 .members(devconnect_p4sa.member())
  *                 .build())
  *             .build());
  * 
  *         var policy = new SecretIamPolicy("policy", SecretIamPolicyArgs.builder()
  *             .secretId(github_token_secret.secretId())
- *             .policyData(p4sa_secretAccessor.policyData())
+ *             .policyData(p4sa_secretAccessor.applyValue(p4sa_secretAccessor -> p4sa_secretAccessor.policyData()))
  *             .build());
  * 
  *         var my_connection = new Connection("my-connection", ConnectionArgs.builder()
@@ -140,8 +205,8 @@ import javax.annotation.Nullable;
  *                 .build())
  *             .build());
  * 
- *     }}{@code
- * }}{@code
+ *     }
+ * }
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;

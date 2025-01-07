@@ -38,6 +38,21 @@ public final class InstanceFromMachineImageSchedulingArgs extends com.pulumi.res
     }
 
     /**
+     * Specifies the availability domain, which this instance should be scheduled on.
+     * 
+     */
+    @Import(name="availabilityDomain")
+    private @Nullable Output<Integer> availabilityDomain;
+
+    /**
+     * @return Specifies the availability domain, which this instance should be scheduled on.
+     * 
+     */
+    public Optional<Output<Integer>> availabilityDomain() {
+        return Optional.ofNullable(this.availabilityDomain);
+    }
+
+    /**
      * Specify the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
      * 
      */
@@ -204,6 +219,7 @@ public final class InstanceFromMachineImageSchedulingArgs extends com.pulumi.res
 
     private InstanceFromMachineImageSchedulingArgs(InstanceFromMachineImageSchedulingArgs $) {
         this.automaticRestart = $.automaticRestart;
+        this.availabilityDomain = $.availabilityDomain;
         this.hostErrorTimeoutSeconds = $.hostErrorTimeoutSeconds;
         this.instanceTerminationAction = $.instanceTerminationAction;
         this.localSsdRecoveryTimeout = $.localSsdRecoveryTimeout;
@@ -254,6 +270,27 @@ public final class InstanceFromMachineImageSchedulingArgs extends com.pulumi.res
          */
         public Builder automaticRestart(Boolean automaticRestart) {
             return automaticRestart(Output.of(automaticRestart));
+        }
+
+        /**
+         * @param availabilityDomain Specifies the availability domain, which this instance should be scheduled on.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder availabilityDomain(@Nullable Output<Integer> availabilityDomain) {
+            $.availabilityDomain = availabilityDomain;
+            return this;
+        }
+
+        /**
+         * @param availabilityDomain Specifies the availability domain, which this instance should be scheduled on.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder availabilityDomain(Integer availabilityDomain) {
+            return availabilityDomain(Output.of(availabilityDomain));
         }
 
         /**

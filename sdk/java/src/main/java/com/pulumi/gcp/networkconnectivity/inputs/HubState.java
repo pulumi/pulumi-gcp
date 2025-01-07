@@ -118,6 +118,23 @@ public final class HubState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Optional. The topology implemented in this hub. Currently, this field is only used when policyMode = PRESET. The available preset topologies are MESH and STAR. If presetTopology is unspecified and policyMode = PRESET, the presetTopology defaults to MESH. When policyMode = CUSTOM, the presetTopology is set to PRESET_TOPOLOGY_UNSPECIFIED.
+     * Possible values are: `MESH`, `STAR`.
+     * 
+     */
+    @Import(name="presetTopology")
+    private @Nullable Output<String> presetTopology;
+
+    /**
+     * @return Optional. The topology implemented in this hub. Currently, this field is only used when policyMode = PRESET. The available preset topologies are MESH and STAR. If presetTopology is unspecified and policyMode = PRESET, the presetTopology defaults to MESH. When policyMode = CUSTOM, the presetTopology is set to PRESET_TOPOLOGY_UNSPECIFIED.
+     * Possible values are: `MESH`, `STAR`.
+     * 
+     */
+    public Optional<Output<String>> presetTopology() {
+        return Optional.ofNullable(this.presetTopology);
+    }
+
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
@@ -222,6 +239,7 @@ public final class HubState extends com.pulumi.resources.ResourceArgs {
         this.exportPsc = $.exportPsc;
         this.labels = $.labels;
         this.name = $.name;
+        this.presetTopology = $.presetTopology;
         this.project = $.project;
         this.pulumiLabels = $.pulumiLabels;
         this.routingVpcs = $.routingVpcs;
@@ -380,6 +398,29 @@ public final class HubState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param presetTopology Optional. The topology implemented in this hub. Currently, this field is only used when policyMode = PRESET. The available preset topologies are MESH and STAR. If presetTopology is unspecified and policyMode = PRESET, the presetTopology defaults to MESH. When policyMode = CUSTOM, the presetTopology is set to PRESET_TOPOLOGY_UNSPECIFIED.
+         * Possible values are: `MESH`, `STAR`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder presetTopology(@Nullable Output<String> presetTopology) {
+            $.presetTopology = presetTopology;
+            return this;
+        }
+
+        /**
+         * @param presetTopology Optional. The topology implemented in this hub. Currently, this field is only used when policyMode = PRESET. The available preset topologies are MESH and STAR. If presetTopology is unspecified and policyMode = PRESET, the presetTopology defaults to MESH. When policyMode = CUSTOM, the presetTopology is set to PRESET_TOPOLOGY_UNSPECIFIED.
+         * Possible values are: `MESH`, `STAR`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder presetTopology(String presetTopology) {
+            return presetTopology(Output.of(presetTopology));
         }
 
         /**

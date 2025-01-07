@@ -19,6 +19,8 @@ from .gateway_security_policy_rule import *
 from .get_address_group_iam_policy import *
 from .intercept_deployment import *
 from .intercept_deployment_group import *
+from .intercept_endpoint_group import *
+from .intercept_endpoint_group_association import *
 from .mirroring_deployment import *
 from .mirroring_deployment_group import *
 from .mirroring_endpoint_group import *

@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.storage.inputs.TransferJobEventStreamArgs;
 import com.pulumi.gcp.storage.inputs.TransferJobNotificationConfigArgs;
+import com.pulumi.gcp.storage.inputs.TransferJobReplicationSpecArgs;
 import com.pulumi.gcp.storage.inputs.TransferJobScheduleArgs;
 import com.pulumi.gcp.storage.inputs.TransferJobTransferSpecArgs;
 import java.lang.String;
@@ -98,6 +99,25 @@ public final class TransferJobArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Replication specification. Structure documented below. User should not configure `schedule`, `event_stream` with this argument. One of `transfer_spec`, or `replication_spec` must be specified.
+     * 
+     * ***
+     * 
+     */
+    @Import(name="replicationSpec")
+    private @Nullable Output<TransferJobReplicationSpecArgs> replicationSpec;
+
+    /**
+     * @return Replication specification. Structure documented below. User should not configure `schedule`, `event_stream` with this argument. One of `transfer_spec`, or `replication_spec` must be specified.
+     * 
+     * ***
+     * 
+     */
+    public Optional<Output<TransferJobReplicationSpecArgs>> replicationSpec() {
+        return Optional.ofNullable(this.replicationSpec);
+    }
+
+    /**
      * Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `event_stream` must be set.
      * 
      */
@@ -128,22 +148,18 @@ public final class TransferJobArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Transfer specification. Structure documented below.
-     * 
-     * ***
+     * Transfer specification. Structure documented below. One of `transfer_spec`, or `replication_spec` can be specified.
      * 
      */
-    @Import(name="transferSpec", required=true)
-    private Output<TransferJobTransferSpecArgs> transferSpec;
+    @Import(name="transferSpec")
+    private @Nullable Output<TransferJobTransferSpecArgs> transferSpec;
 
     /**
-     * @return Transfer specification. Structure documented below.
-     * 
-     * ***
+     * @return Transfer specification. Structure documented below. One of `transfer_spec`, or `replication_spec` can be specified.
      * 
      */
-    public Output<TransferJobTransferSpecArgs> transferSpec() {
-        return this.transferSpec;
+    public Optional<Output<TransferJobTransferSpecArgs>> transferSpec() {
+        return Optional.ofNullable(this.transferSpec);
     }
 
     private TransferJobArgs() {}
@@ -154,6 +170,7 @@ public final class TransferJobArgs extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.notificationConfig = $.notificationConfig;
         this.project = $.project;
+        this.replicationSpec = $.replicationSpec;
         this.schedule = $.schedule;
         this.status = $.status;
         this.transferSpec = $.transferSpec;
@@ -285,6 +302,31 @@ public final class TransferJobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param replicationSpec Replication specification. Structure documented below. User should not configure `schedule`, `event_stream` with this argument. One of `transfer_spec`, or `replication_spec` must be specified.
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replicationSpec(@Nullable Output<TransferJobReplicationSpecArgs> replicationSpec) {
+            $.replicationSpec = replicationSpec;
+            return this;
+        }
+
+        /**
+         * @param replicationSpec Replication specification. Structure documented below. User should not configure `schedule`, `event_stream` with this argument. One of `transfer_spec`, or `replication_spec` must be specified.
+         * 
+         * ***
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replicationSpec(TransferJobReplicationSpecArgs replicationSpec) {
+            return replicationSpec(Output.of(replicationSpec));
+        }
+
+        /**
          * @param schedule Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `event_stream` must be set.
          * 
          * @return builder
@@ -327,22 +369,18 @@ public final class TransferJobArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param transferSpec Transfer specification. Structure documented below.
-         * 
-         * ***
+         * @param transferSpec Transfer specification. Structure documented below. One of `transfer_spec`, or `replication_spec` can be specified.
          * 
          * @return builder
          * 
          */
-        public Builder transferSpec(Output<TransferJobTransferSpecArgs> transferSpec) {
+        public Builder transferSpec(@Nullable Output<TransferJobTransferSpecArgs> transferSpec) {
             $.transferSpec = transferSpec;
             return this;
         }
 
         /**
-         * @param transferSpec Transfer specification. Structure documented below.
-         * 
-         * ***
+         * @param transferSpec Transfer specification. Structure documented below. One of `transfer_spec`, or `replication_spec` can be specified.
          * 
          * @return builder
          * 
@@ -354,9 +392,6 @@ public final class TransferJobArgs extends com.pulumi.resources.ResourceArgs {
         public TransferJobArgs build() {
             if ($.description == null) {
                 throw new MissingRequiredPropertyException("TransferJobArgs", "description");
-            }
-            if ($.transferSpec == null) {
-                throw new MissingRequiredPropertyException("TransferJobArgs", "transferSpec");
             }
             return $;
         }

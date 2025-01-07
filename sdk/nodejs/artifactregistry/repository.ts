@@ -510,9 +510,11 @@ import * as utilities from "../utilities";
  *     remoteRepositoryConfig: {
  *         description: "pull-through cache of another Artifact Registry repository by URL",
  *         commonRepository: {
- *             uri: "https://us-central1-docker.pkg.dev//example-upstream-repo",
+ *             uri: project.then(project => `https://us-central1-docker.pkg.dev/${project.projectId}/example-upstream-repo`),
  *         },
  *     },
+ * }, {
+ *     dependsOn: [upstreamRepo],
  * });
  * ```
  * ### Artifact Registry Repository Remote Common Repository With Custom Upstream
@@ -555,6 +557,22 @@ import * as utilities from "../utilities";
  *                 passwordSecretVersion: example_remote_secretVersion.name,
  *             },
  *         },
+ *     },
+ * });
+ * ```
+ * ### Artifact Registry Repository Vulnerability Scanning
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const my_repo = new gcp.artifactregistry.Repository("my-repo", {
+ *     location: "us-central1",
+ *     repositoryId: "my-repository",
+ *     description: "example docker repository with vulnerability scanning config",
+ *     format: "DOCKER",
+ *     vulnerabilityScanningConfig: {
+ *         enablementConfig: "INHERITED",
  *     },
  * });
  * ```
@@ -725,6 +743,11 @@ export class Repository extends pulumi.CustomResource {
      * Structure is documented below.
      */
     public readonly virtualRepositoryConfig!: pulumi.Output<outputs.artifactregistry.RepositoryVirtualRepositoryConfig | undefined>;
+    /**
+     * Configuration for vulnerability scanning of artifacts stored in this repository.
+     * Structure is documented below.
+     */
+    public readonly vulnerabilityScanningConfig!: pulumi.Output<outputs.artifactregistry.RepositoryVulnerabilityScanningConfig>;
 
     /**
      * Create a Repository resource with the given unique name, arguments, and options.
@@ -758,6 +781,7 @@ export class Repository extends pulumi.CustomResource {
             resourceInputs["repositoryId"] = state ? state.repositoryId : undefined;
             resourceInputs["updateTime"] = state ? state.updateTime : undefined;
             resourceInputs["virtualRepositoryConfig"] = state ? state.virtualRepositoryConfig : undefined;
+            resourceInputs["vulnerabilityScanningConfig"] = state ? state.vulnerabilityScanningConfig : undefined;
         } else {
             const args = argsOrState as RepositoryArgs | undefined;
             if ((!args || args.format === undefined) && !opts.urn) {
@@ -780,6 +804,7 @@ export class Repository extends pulumi.CustomResource {
             resourceInputs["remoteRepositoryConfig"] = args ? args.remoteRepositoryConfig : undefined;
             resourceInputs["repositoryId"] = args ? args.repositoryId : undefined;
             resourceInputs["virtualRepositoryConfig"] = args ? args.virtualRepositoryConfig : undefined;
+            resourceInputs["vulnerabilityScanningConfig"] = args ? args.vulnerabilityScanningConfig : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
             resourceInputs["name"] = undefined /*out*/;
@@ -911,6 +936,11 @@ export interface RepositoryState {
      * Structure is documented below.
      */
     virtualRepositoryConfig?: pulumi.Input<inputs.artifactregistry.RepositoryVirtualRepositoryConfig>;
+    /**
+     * Configuration for vulnerability scanning of artifacts stored in this repository.
+     * Structure is documented below.
+     */
+    vulnerabilityScanningConfig?: pulumi.Input<inputs.artifactregistry.RepositoryVulnerabilityScanningConfig>;
 }
 
 /**
@@ -1009,4 +1039,9 @@ export interface RepositoryArgs {
      * Structure is documented below.
      */
     virtualRepositoryConfig?: pulumi.Input<inputs.artifactregistry.RepositoryVirtualRepositoryConfig>;
+    /**
+     * Configuration for vulnerability scanning of artifacts stored in this repository.
+     * Structure is documented below.
+     */
+    vulnerabilityScanningConfig?: pulumi.Input<inputs.artifactregistry.RepositoryVulnerabilityScanningConfig>;
 }

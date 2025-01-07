@@ -23,13 +23,13 @@ import javax.annotation.Nullable;
  * 
  * Resize Requests are the Managed Instance Group implementation of Dynamic Workload Scheduler Flex Start.
  * 
- * With Dynamic Workload Scheduler in Flex Start mode, you submit a GPU capacity request for your AI/ML jobs by indicating how many you need, a duration, and your preferred region. Dynamic Workload Scheduler intelligently persists the request; once the capacity becomes available, it automatically provisions your VMs enabling your workloads to run continuously for the entire duration of the capacity allocation.
+ * With Dynamic Workload Scheduler in Flex Start mode, you submit a GPU capacity request for your AI/ML jobs by indicating how many you need, a duration, and your preferred zone. Dynamic Workload Scheduler intelligently persists the request; once the capacity becomes available, it automatically provisions your VMs enabling your workloads to run continuously for the entire duration of the capacity allocation.
  * 
  * To get more information about ResizeRequest, see:
  * 
  * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagerResizeRequests)
  * * How-to Guides
- *     * [QUICKSTART_TITLE](https://cloud.google.com/compute/docs/instance-groups/create-resize-requests-mig)
+ *     * [About resize requests in a MIG](https://cloud.google.com/compute/docs/instance-groups/about-resize-requests-mig)
  * 
  * ## Example Usage
  * 
@@ -199,9 +199,7 @@ public class ResizeRequest extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.description);
     }
     /**
-     * The name of the managed instance group. The name should conform to RFC1035 or be a resource ID.
-     * Authorization requires the following IAM permission on the specified resource instanceGroupManager:
-     * *compute.instanceGroupManagers.update
+     * The reference of the instance group manager this ResizeRequest is a part of.
      * 
      * ***
      * 
@@ -210,9 +208,7 @@ public class ResizeRequest extends com.pulumi.resources.CustomResource {
     private Output<String> instanceGroupManager;
 
     /**
-     * @return The name of the managed instance group. The name should conform to RFC1035 or be a resource ID.
-     * Authorization requires the following IAM permission on the specified resource instanceGroupManager:
-     * *compute.instanceGroupManagers.update
+     * @return The reference of the instance group manager this ResizeRequest is a part of.
      * 
      * ***
      * 
@@ -281,21 +277,21 @@ public class ResizeRequest extends com.pulumi.resources.CustomResource {
         return this.resizeBy;
     }
     /**
-     * [Output only] Current state of the request.
+     * Current state of the request.
      * 
      */
     @Export(name="state", refs={String.class}, tree="[0]")
     private Output<String> state;
 
     /**
-     * @return [Output only] Current state of the request.
+     * @return Current state of the request.
      * 
      */
     public Output<String> state() {
         return this.state;
     }
     /**
-     * [Output only] Status of the request.
+     * Status of the request.
      * Structure is documented below.
      * 
      */
@@ -303,7 +299,7 @@ public class ResizeRequest extends com.pulumi.resources.CustomResource {
     private Output<List<ResizeRequestStatus>> statuses;
 
     /**
-     * @return [Output only] Status of the request.
+     * @return Status of the request.
      * Structure is documented below.
      * 
      */
@@ -311,14 +307,14 @@ public class ResizeRequest extends com.pulumi.resources.CustomResource {
         return this.statuses;
     }
     /**
-     * Name of the compute zone scoping this request. Name should conform to RFC1035.
+     * The reference of the compute zone scoping this request.
      * 
      */
     @Export(name="zone", refs={String.class}, tree="[0]")
     private Output<String> zone;
 
     /**
-     * @return Name of the compute zone scoping this request. Name should conform to RFC1035.
+     * @return The reference of the compute zone scoping this request.
      * 
      */
     public Output<String> zone() {

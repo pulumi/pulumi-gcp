@@ -87,6 +87,8 @@ __all__ = [
     'ClientTlsPolicyServerValidationCaGrpcEndpointArgsDict',
     'InterceptDeploymentGroupConnectedEndpointGroupArgs',
     'InterceptDeploymentGroupConnectedEndpointGroupArgsDict',
+    'InterceptEndpointGroupAssociationLocationsDetailArgs',
+    'InterceptEndpointGroupAssociationLocationsDetailArgsDict',
     'MirroringDeploymentGroupConnectedEndpointGroupArgs',
     'MirroringDeploymentGroupConnectedEndpointGroupArgsDict',
     'MirroringEndpointGroupAssociationLocationsDetailArgs',
@@ -2569,6 +2571,82 @@ class InterceptDeploymentGroupConnectedEndpointGroupArgs:
     @name.setter
     def name(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "name", value)
+
+
+if not MYPY:
+    class InterceptEndpointGroupAssociationLocationsDetailArgsDict(TypedDict):
+        location: NotRequired[pulumi.Input[str]]
+        """
+        The location of the Intercept Endpoint Group Association, currently restricted to `global`.
+
+
+        - - -
+        """
+        state: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The association state in this location.
+        Possible values:
+        STATE_UNSPECIFIED
+        ACTIVE
+        OUT_OF_SYNC
+        """
+elif False:
+    InterceptEndpointGroupAssociationLocationsDetailArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InterceptEndpointGroupAssociationLocationsDetailArgs:
+    def __init__(__self__, *,
+                 location: Optional[pulumi.Input[str]] = None,
+                 state: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] location: The location of the Intercept Endpoint Group Association, currently restricted to `global`.
+               
+               
+               - - -
+        :param pulumi.Input[str] state: (Output)
+               The association state in this location.
+               Possible values:
+               STATE_UNSPECIFIED
+               ACTIVE
+               OUT_OF_SYNC
+        """
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The location of the Intercept Endpoint Group Association, currently restricted to `global`.
+
+
+        - - -
+        """
+        return pulumi.get(self, "location")
+
+    @location.setter
+    def location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The association state in this location.
+        Possible values:
+        STATE_UNSPECIFIED
+        ACTIVE
+        OUT_OF_SYNC
+        """
+        return pulumi.get(self, "state")
+
+    @state.setter
+    def state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "state", value)
 
 
 if not MYPY:

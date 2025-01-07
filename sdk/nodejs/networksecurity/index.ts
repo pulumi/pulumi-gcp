@@ -75,6 +75,16 @@ export type InterceptDeploymentGroup = import("./interceptDeploymentGroup").Inte
 export const InterceptDeploymentGroup: typeof import("./interceptDeploymentGroup").InterceptDeploymentGroup = null as any;
 utilities.lazyLoad(exports, ["InterceptDeploymentGroup"], () => require("./interceptDeploymentGroup"));
 
+export { InterceptEndpointGroupArgs, InterceptEndpointGroupState } from "./interceptEndpointGroup";
+export type InterceptEndpointGroup = import("./interceptEndpointGroup").InterceptEndpointGroup;
+export const InterceptEndpointGroup: typeof import("./interceptEndpointGroup").InterceptEndpointGroup = null as any;
+utilities.lazyLoad(exports, ["InterceptEndpointGroup"], () => require("./interceptEndpointGroup"));
+
+export { InterceptEndpointGroupAssociationArgs, InterceptEndpointGroupAssociationState } from "./interceptEndpointGroupAssociation";
+export type InterceptEndpointGroupAssociation = import("./interceptEndpointGroupAssociation").InterceptEndpointGroupAssociation;
+export const InterceptEndpointGroupAssociation: typeof import("./interceptEndpointGroupAssociation").InterceptEndpointGroupAssociation = null as any;
+utilities.lazyLoad(exports, ["InterceptEndpointGroupAssociation"], () => require("./interceptEndpointGroupAssociation"));
+
 export { MirroringDeploymentArgs, MirroringDeploymentState } from "./mirroringDeployment";
 export type MirroringDeployment = import("./mirroringDeployment").MirroringDeployment;
 export const MirroringDeployment: typeof import("./mirroringDeployment").MirroringDeployment = null as any;
@@ -151,6 +161,10 @@ const _module = {
                 return new InterceptDeployment(name, <any>undefined, { urn })
             case "gcp:networksecurity/interceptDeploymentGroup:InterceptDeploymentGroup":
                 return new InterceptDeploymentGroup(name, <any>undefined, { urn })
+            case "gcp:networksecurity/interceptEndpointGroup:InterceptEndpointGroup":
+                return new InterceptEndpointGroup(name, <any>undefined, { urn })
+            case "gcp:networksecurity/interceptEndpointGroupAssociation:InterceptEndpointGroupAssociation":
+                return new InterceptEndpointGroupAssociation(name, <any>undefined, { urn })
             case "gcp:networksecurity/mirroringDeployment:MirroringDeployment":
                 return new MirroringDeployment(name, <any>undefined, { urn })
             case "gcp:networksecurity/mirroringDeploymentGroup:MirroringDeploymentGroup":
@@ -187,6 +201,8 @@ pulumi.runtime.registerResourceModule("gcp", "networksecurity/gatewaySecurityPol
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/gatewaySecurityPolicyRule", _module)
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/interceptDeployment", _module)
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/interceptDeploymentGroup", _module)
+pulumi.runtime.registerResourceModule("gcp", "networksecurity/interceptEndpointGroup", _module)
+pulumi.runtime.registerResourceModule("gcp", "networksecurity/interceptEndpointGroupAssociation", _module)
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/mirroringDeployment", _module)
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/mirroringDeploymentGroup", _module)
 pulumi.runtime.registerResourceModule("gcp", "networksecurity/mirroringEndpointGroup", _module)

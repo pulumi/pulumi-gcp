@@ -6,6 +6,23 @@ import * as inputs from "../types/input";
 import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
+/**
+ * A Backup and DR Backup.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const foo = gcp.backupdisasterrecovery.getBackup({
+ *     location: "us-central1",
+ *     project: "project-test",
+ *     dataSourceId: "ds-test",
+ *     backupVaultId: "bv-test",
+ * });
+ * ```
+ */
 export function getBackup(args: GetBackupArgs, opts?: pulumi.InvokeOptions): Promise<GetBackupResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:backupdisasterrecovery/getBackup:getBackup", {
@@ -20,9 +37,21 @@ export function getBackup(args: GetBackupArgs, opts?: pulumi.InvokeOptions): Pro
  * A collection of arguments for invoking getBackup.
  */
 export interface GetBackupArgs {
+    /**
+     * The ID of the Backup Vault of the Data Source in which the Backup belongs.
+     */
     backupVaultId: string;
+    /**
+     * The ID of the Data Source in which the Backup belongs.
+     */
     dataSourceId: string;
+    /**
+     * The location in which the Backup belongs.
+     */
     location: string;
+    /**
+     * The Google Cloud Project in which the Backup belongs.
+     */
     project: string;
 }
 
@@ -41,6 +70,23 @@ export interface GetBackupResult {
     readonly name: string;
     readonly project: string;
 }
+/**
+ * A Backup and DR Backup.
+ *
+ * ## Example Usage
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const foo = gcp.backupdisasterrecovery.getBackup({
+ *     location: "us-central1",
+ *     project: "project-test",
+ *     dataSourceId: "ds-test",
+ *     backupVaultId: "bv-test",
+ * });
+ * ```
+ */
 export function getBackupOutput(args: GetBackupOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetBackupResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:backupdisasterrecovery/getBackup:getBackup", {
@@ -55,8 +101,20 @@ export function getBackupOutput(args: GetBackupOutputArgs, opts?: pulumi.InvokeO
  * A collection of arguments for invoking getBackup.
  */
 export interface GetBackupOutputArgs {
+    /**
+     * The ID of the Backup Vault of the Data Source in which the Backup belongs.
+     */
     backupVaultId: pulumi.Input<string>;
+    /**
+     * The ID of the Data Source in which the Backup belongs.
+     */
     dataSourceId: pulumi.Input<string>;
+    /**
+     * The location in which the Backup belongs.
+     */
     location: pulumi.Input<string>;
+    /**
+     * The Google Cloud Project in which the Backup belongs.
+     */
     project: pulumi.Input<string>;
 }

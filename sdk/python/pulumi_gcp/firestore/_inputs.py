@@ -97,7 +97,7 @@ if not MYPY:
         Cloud KMS multi-region europe. See https://cloud.google.com/kms/docs/locations.
         This value should be the KMS key resource ID in the format of
         `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
-        How to retrive this resource ID is listed at
+        How to retrieve this resource ID is listed at
         https://cloud.google.com/kms/docs/getting-resource-ids#getting_the_id_for_a_key_and_version.
         """
         active_key_versions: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
@@ -127,7 +127,7 @@ class DatabaseCmekConfigArgs:
                Cloud KMS multi-region europe. See https://cloud.google.com/kms/docs/locations.
                This value should be the KMS key resource ID in the format of
                `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
-               How to retrive this resource ID is listed at
+               How to retrieve this resource ID is listed at
                https://cloud.google.com/kms/docs/getting-resource-ids#getting_the_id_for_a_key_and_version.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] active_key_versions: (Output)
                Currently in-use KMS key versions (https://cloud.google.com/kms/docs/resource-hierarchy#key_versions).
@@ -153,7 +153,7 @@ class DatabaseCmekConfigArgs:
         Cloud KMS multi-region europe. See https://cloud.google.com/kms/docs/locations.
         This value should be the KMS key resource ID in the format of
         `projects/{project_id}/locations/{kms_location}/keyRings/{key_ring}/cryptoKeys/{crypto_key}`.
-        How to retrive this resource ID is listed at
+        How to retrieve this resource ID is listed at
         https://cloud.google.com/kms/docs/getting-resource-ids#getting_the_id_for_a_key_and_version.
         """
         return pulumi.get(self, "kms_key_name")

@@ -199,6 +199,13 @@ namespace Pulumi.Gcp.Workstations
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
+        /// Full resource name of the source workstation from which the workstation's persistent
+        /// directories will be cloned from during creation.
+        /// </summary>
+        [Output("sourceWorkstation")]
+        public Output<string?> SourceWorkstation { get; private set; } = null!;
+
+        /// <summary>
         /// Current state of the workstation.
         /// </summary>
         [Output("state")]
@@ -340,6 +347,13 @@ namespace Pulumi.Gcp.Workstations
         /// </summary>
         [Input("project")]
         public Input<string>? Project { get; set; }
+
+        /// <summary>
+        /// Full resource name of the source workstation from which the workstation's persistent
+        /// directories will be cloned from during creation.
+        /// </summary>
+        [Input("sourceWorkstation")]
+        public Input<string>? SourceWorkstation { get; set; }
 
         /// <summary>
         /// The ID of the parent workstation cluster.
@@ -489,6 +503,13 @@ namespace Pulumi.Gcp.Workstations
                 _pulumiLabels = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }
+
+        /// <summary>
+        /// Full resource name of the source workstation from which the workstation's persistent
+        /// directories will be cloned from during creation.
+        /// </summary>
+        [Input("sourceWorkstation")]
+        public Input<string>? SourceWorkstation { get; set; }
 
         /// <summary>
         /// Current state of the workstation.

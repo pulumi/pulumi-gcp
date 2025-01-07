@@ -14,7 +14,55 @@ import (
 
 // ## Example Usage
 //
-// ### Developer Connect Connection Basic
+// ### Developer Connect Connection New
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/developerconnect"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/projects"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			// Setup permissions. Only needed once per project
+//			_, err := projects.NewServiceIdentity(ctx, "devconnect-p4sa", &projects.ServiceIdentityArgs{
+//				Service: pulumi.String("developerconnect.googleapis.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = projects.NewIAMMember(ctx, "devconnect-secret", &projects.IAMMemberArgs{
+//				Project: pulumi.String("my-project-name"),
+//				Role:    pulumi.String("roles/secretmanager.admin"),
+//				Member:  devconnect_p4sa.Member,
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = developerconnect.NewConnection(ctx, "my-connection", &developerconnect.ConnectionArgs{
+//				Location:     pulumi.String("us-central1"),
+//				ConnectionId: pulumi.String("tf-test-connection-new"),
+//				GithubConfig: &developerconnect.ConnectionGithubConfigArgs{
+//					GithubApp: pulumi.String("FIREBASE"),
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				devconnect_secret,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			ctx.Export("nextSteps", my_connection.InstallationStates)
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Developer Connect Connection Existing Credentials
 //
 // ```go
 // package main
@@ -30,23 +78,24 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := developerconnect.NewConnection(ctx, "my-connection", &developerconnect.ConnectionArgs{
 //				Location:     pulumi.String("us-central1"),
-//				ConnectionId: pulumi.String("tf-test-connection"),
+//				ConnectionId: pulumi.String("tf-test-connection-cred"),
 //				GithubConfig: &developerconnect.ConnectionGithubConfigArgs{
 //					GithubApp: pulumi.String("DEVELOPER_CONNECT"),
 //					AuthorizerCredential: &developerconnect.ConnectionGithubConfigAuthorizerCredentialArgs{
-//						OauthTokenSecretVersion: pulumi.String("projects/devconnect-terraform-creds/secrets/tf-test-do-not-change-github-oauthtoken-e0b9e7/versions/1"),
+//						OauthTokenSecretVersion: pulumi.String("projects/your-project/secrets/your-secret-id/versions/latest"),
 //					},
 //				},
 //			})
 //			if err != nil {
 //				return err
 //			}
+//			ctx.Export("nextSteps", my_connection.InstallationStates)
 //			return nil
 //		})
 //	}
 //
 // ```
-// ### Developer Connect Connection Github Doc
+// ### Developer Connect Connection Existing Installation
 //
 // ```go
 // package main
@@ -55,6 +104,7 @@ import (
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/developerconnect"
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/projects"
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/secretmanager"
 //	"github.com/pulumi/pulumi-std/sdk/go/std"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -85,22 +135,27 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			p4sa_secretAccessor, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
-//				Bindings: []organizations.GetIAMPolicyBinding{
-//					{
-//						Role: "roles/secretmanager.secretAccessor",
-//						Members: []string{
-//							"serviceAccount:service-123456789@gcp-sa-devconnect.iam.gserviceaccount.com",
+//			_, err = projects.NewServiceIdentity(ctx, "devconnect-p4sa", &projects.ServiceIdentityArgs{
+//				Service: pulumi.String("developerconnect.googleapis.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			p4sa_secretAccessor := organizations.LookupIAMPolicyOutput(ctx, organizations.GetIAMPolicyOutputArgs{
+//				Bindings: organizations.GetIAMPolicyBindingArray{
+//					&organizations.GetIAMPolicyBindingArgs{
+//						Role: pulumi.String("roles/secretmanager.secretAccessor"),
+//						Members: pulumi.StringArray{
+//							devconnect_p4sa.Member,
 //						},
 //					},
 //				},
 //			}, nil)
-//			if err != nil {
-//				return err
-//			}
 //			_, err = secretmanager.NewSecretIamPolicy(ctx, "policy", &secretmanager.SecretIamPolicyArgs{
-//				SecretId:   github_token_secret.SecretId,
-//				PolicyData: pulumi.String(p4sa_secretAccessor.PolicyData),
+//				SecretId: github_token_secret.SecretId,
+//				PolicyData: pulumi.String(p4sa_secretAccessor.ApplyT(func(p4sa_secretAccessor organizations.GetIAMPolicyResult) (*string, error) {
+//					return &p4sa_secretAccessor.PolicyData, nil
+//				}).(pulumi.StringPtrOutput)),
 //			})
 //			if err != nil {
 //				return err

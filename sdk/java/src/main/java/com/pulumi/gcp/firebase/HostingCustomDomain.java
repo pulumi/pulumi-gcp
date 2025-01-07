@@ -525,7 +525,7 @@ public class HostingCustomDomain extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
-     * if true, indicates that Hosting&#39;s systems are attmepting to
+     * if true, indicates that Hosting&#39;s systems are attempting to
      * make the `CustomDomain`&#39;s state match your preferred state. This is most
      * frequently `true` when initially provisioning a `CustomDomain` or when creating
      * a new SSL certificate to match an updated `cert_preference`
@@ -535,7 +535,7 @@ public class HostingCustomDomain extends com.pulumi.resources.CustomResource {
     private Output<Boolean> reconciling;
 
     /**
-     * @return if true, indicates that Hosting&#39;s systems are attmepting to
+     * @return if true, indicates that Hosting&#39;s systems are attempting to
      * make the `CustomDomain`&#39;s state match your preferred state. This is most
      * frequently `true` when initially provisioning a `CustomDomain` or when creating
      * a new SSL certificate to match an updated `cert_preference`

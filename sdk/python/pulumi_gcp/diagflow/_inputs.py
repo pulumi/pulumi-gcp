@@ -627,7 +627,7 @@ if not MYPY:
         """
         use_timeout_based_endpointing: NotRequired[pulumi.Input[bool]]
         """
-        Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+        Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
         """
 elif False:
     CxAgentAdvancedSettingsSpeechSettingsArgsDict: TypeAlias = Mapping[str, Any]
@@ -645,7 +645,7 @@ class CxAgentAdvancedSettingsSpeechSettingsArgs:
                An object containing a list of **"key": value** pairs. Example: **{ "name": "wrench", "mass": "1.3kg", "count": "3" }**.
         :param pulumi.Input[str] no_speech_timeout: Timeout before detecting no speech.
                A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
-        :param pulumi.Input[bool] use_timeout_based_endpointing: Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+        :param pulumi.Input[bool] use_timeout_based_endpointing: Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
         """
         if endpointer_sensitivity is not None:
             pulumi.set(__self__, "endpointer_sensitivity", endpointer_sensitivity)
@@ -698,7 +698,7 @@ class CxAgentAdvancedSettingsSpeechSettingsArgs:
     @pulumi.getter(name="useTimeoutBasedEndpointing")
     def use_timeout_based_endpointing(self) -> Optional[pulumi.Input[bool]]:
         """
-        Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+        Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
         """
         return pulumi.get(self, "use_timeout_based_endpointing")
 

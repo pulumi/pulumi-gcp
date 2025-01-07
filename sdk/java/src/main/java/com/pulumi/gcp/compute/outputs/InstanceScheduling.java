@@ -26,6 +26,11 @@ public final class InstanceScheduling {
      */
     private @Nullable Boolean automaticRestart;
     /**
+     * @return Specifies the availability domain to place the instance in. The value must be a number between 1 and the number of availability domains specified in the spread placement policy attached to the instance.
+     * 
+     */
+    private @Nullable Integer availabilityDomain;
+    /**
      * @return Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
      * 
      */
@@ -104,6 +109,13 @@ public final class InstanceScheduling {
      */
     public Optional<Boolean> automaticRestart() {
         return Optional.ofNullable(this.automaticRestart);
+    }
+    /**
+     * @return Specifies the availability domain to place the instance in. The value must be a number between 1 and the number of availability domains specified in the spread placement policy attached to the instance.
+     * 
+     */
+    public Optional<Integer> availabilityDomain() {
+        return Optional.ofNullable(this.availabilityDomain);
     }
     /**
      * @return Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
@@ -207,6 +219,7 @@ public final class InstanceScheduling {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable Boolean automaticRestart;
+        private @Nullable Integer availabilityDomain;
         private @Nullable Integer hostErrorTimeoutSeconds;
         private @Nullable String instanceTerminationAction;
         private @Nullable InstanceSchedulingLocalSsdRecoveryTimeout localSsdRecoveryTimeout;
@@ -222,6 +235,7 @@ public final class InstanceScheduling {
         public Builder(InstanceScheduling defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.automaticRestart = defaults.automaticRestart;
+    	      this.availabilityDomain = defaults.availabilityDomain;
     	      this.hostErrorTimeoutSeconds = defaults.hostErrorTimeoutSeconds;
     	      this.instanceTerminationAction = defaults.instanceTerminationAction;
     	      this.localSsdRecoveryTimeout = defaults.localSsdRecoveryTimeout;
@@ -239,6 +253,12 @@ public final class InstanceScheduling {
         public Builder automaticRestart(@Nullable Boolean automaticRestart) {
 
             this.automaticRestart = automaticRestart;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder availabilityDomain(@Nullable Integer availabilityDomain) {
+
+            this.availabilityDomain = availabilityDomain;
             return this;
         }
         @CustomType.Setter
@@ -313,6 +333,7 @@ public final class InstanceScheduling {
         public InstanceScheduling build() {
             final var _resultValue = new InstanceScheduling();
             _resultValue.automaticRestart = automaticRestart;
+            _resultValue.availabilityDomain = availabilityDomain;
             _resultValue.hostErrorTimeoutSeconds = hostErrorTimeoutSeconds;
             _resultValue.instanceTerminationAction = instanceTerminationAction;
             _resultValue.localSsdRecoveryTimeout = localSsdRecoveryTimeout;

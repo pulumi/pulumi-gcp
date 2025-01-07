@@ -4,7 +4,9 @@
 package com.pulumi.gcp.datastream.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.datastream.outputs.StreamSourceConfigMysqlSourceConfigBinaryLogPosition;
 import com.pulumi.gcp.datastream.outputs.StreamSourceConfigMysqlSourceConfigExcludeObjects;
+import com.pulumi.gcp.datastream.outputs.StreamSourceConfigMysqlSourceConfigGtid;
 import com.pulumi.gcp.datastream.outputs.StreamSourceConfigMysqlSourceConfigIncludeObjects;
 import java.lang.Integer;
 import java.util.Objects;
@@ -14,11 +16,21 @@ import javax.annotation.Nullable;
 @CustomType
 public final class StreamSourceConfigMysqlSourceConfig {
     /**
+     * @return CDC reader reads from binary logs replication cdc method.
+     * 
+     */
+    private @Nullable StreamSourceConfigMysqlSourceConfigBinaryLogPosition binaryLogPosition;
+    /**
      * @return MySQL objects to exclude from the stream.
      * Structure is documented below.
      * 
      */
     private @Nullable StreamSourceConfigMysqlSourceConfigExcludeObjects excludeObjects;
+    /**
+     * @return CDC reader reads from gtid based replication.
+     * 
+     */
+    private @Nullable StreamSourceConfigMysqlSourceConfigGtid gtid;
     /**
      * @return MySQL objects to retrieve from the source.
      * Structure is documented below.
@@ -40,12 +52,26 @@ public final class StreamSourceConfigMysqlSourceConfig {
 
     private StreamSourceConfigMysqlSourceConfig() {}
     /**
+     * @return CDC reader reads from binary logs replication cdc method.
+     * 
+     */
+    public Optional<StreamSourceConfigMysqlSourceConfigBinaryLogPosition> binaryLogPosition() {
+        return Optional.ofNullable(this.binaryLogPosition);
+    }
+    /**
      * @return MySQL objects to exclude from the stream.
      * Structure is documented below.
      * 
      */
     public Optional<StreamSourceConfigMysqlSourceConfigExcludeObjects> excludeObjects() {
         return Optional.ofNullable(this.excludeObjects);
+    }
+    /**
+     * @return CDC reader reads from gtid based replication.
+     * 
+     */
+    public Optional<StreamSourceConfigMysqlSourceConfigGtid> gtid() {
+        return Optional.ofNullable(this.gtid);
     }
     /**
      * @return MySQL objects to retrieve from the source.
@@ -81,23 +107,39 @@ public final class StreamSourceConfigMysqlSourceConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable StreamSourceConfigMysqlSourceConfigBinaryLogPosition binaryLogPosition;
         private @Nullable StreamSourceConfigMysqlSourceConfigExcludeObjects excludeObjects;
+        private @Nullable StreamSourceConfigMysqlSourceConfigGtid gtid;
         private @Nullable StreamSourceConfigMysqlSourceConfigIncludeObjects includeObjects;
         private @Nullable Integer maxConcurrentBackfillTasks;
         private @Nullable Integer maxConcurrentCdcTasks;
         public Builder() {}
         public Builder(StreamSourceConfigMysqlSourceConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.binaryLogPosition = defaults.binaryLogPosition;
     	      this.excludeObjects = defaults.excludeObjects;
+    	      this.gtid = defaults.gtid;
     	      this.includeObjects = defaults.includeObjects;
     	      this.maxConcurrentBackfillTasks = defaults.maxConcurrentBackfillTasks;
     	      this.maxConcurrentCdcTasks = defaults.maxConcurrentCdcTasks;
         }
 
         @CustomType.Setter
+        public Builder binaryLogPosition(@Nullable StreamSourceConfigMysqlSourceConfigBinaryLogPosition binaryLogPosition) {
+
+            this.binaryLogPosition = binaryLogPosition;
+            return this;
+        }
+        @CustomType.Setter
         public Builder excludeObjects(@Nullable StreamSourceConfigMysqlSourceConfigExcludeObjects excludeObjects) {
 
             this.excludeObjects = excludeObjects;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder gtid(@Nullable StreamSourceConfigMysqlSourceConfigGtid gtid) {
+
+            this.gtid = gtid;
             return this;
         }
         @CustomType.Setter
@@ -120,7 +162,9 @@ public final class StreamSourceConfigMysqlSourceConfig {
         }
         public StreamSourceConfigMysqlSourceConfig build() {
             final var _resultValue = new StreamSourceConfigMysqlSourceConfig();
+            _resultValue.binaryLogPosition = binaryLogPosition;
             _resultValue.excludeObjects = excludeObjects;
+            _resultValue.gtid = gtid;
             _resultValue.includeObjects = includeObjects;
             _resultValue.maxConcurrentBackfillTasks = maxConcurrentBackfillTasks;
             _resultValue.maxConcurrentCdcTasks = maxConcurrentCdcTasks;

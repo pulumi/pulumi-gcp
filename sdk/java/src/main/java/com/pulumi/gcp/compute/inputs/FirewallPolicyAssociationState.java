@@ -31,14 +31,18 @@ public final class FirewallPolicyAssociationState extends com.pulumi.resources.R
     }
 
     /**
-     * The firewall policy ID of the association.
+     * The firewall policy of the resource.
+     * 
+     * ***
      * 
      */
     @Import(name="firewallPolicy")
     private @Nullable Output<String> firewallPolicy;
 
     /**
-     * @return The firewall policy ID of the association.
+     * @return The firewall policy of the resource.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> firewallPolicy() {
@@ -48,16 +52,12 @@ public final class FirewallPolicyAssociationState extends com.pulumi.resources.R
     /**
      * The name for an association.
      * 
-     * ***
-     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
      * @return The name for an association.
-     * 
-     * ***
      * 
      */
     public Optional<Output<String>> name() {
@@ -128,7 +128,9 @@ public final class FirewallPolicyAssociationState extends com.pulumi.resources.R
         }
 
         /**
-         * @param firewallPolicy The firewall policy ID of the association.
+         * @param firewallPolicy The firewall policy of the resource.
+         * 
+         * ***
          * 
          * @return builder
          * 
@@ -139,7 +141,9 @@ public final class FirewallPolicyAssociationState extends com.pulumi.resources.R
         }
 
         /**
-         * @param firewallPolicy The firewall policy ID of the association.
+         * @param firewallPolicy The firewall policy of the resource.
+         * 
+         * ***
          * 
          * @return builder
          * 
@@ -151,8 +155,6 @@ public final class FirewallPolicyAssociationState extends com.pulumi.resources.R
         /**
          * @param name The name for an association.
          * 
-         * ***
-         * 
          * @return builder
          * 
          */
@@ -163,8 +165,6 @@ public final class FirewallPolicyAssociationState extends com.pulumi.resources.R
 
         /**
          * @param name The name for an association.
-         * 
-         * ***
          * 
          * @return builder
          * 

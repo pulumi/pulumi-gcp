@@ -1071,11 +1071,11 @@ func (o ManagementServerNetworkArrayOutput) Index(i pulumi.IntInput) ManagementS
 type GetBackupBackup struct {
 	// Id of the requesting object, Backup.
 	BackupId string `pulumi:"backupId"`
-	// Name of the Backup Vault associated with Backup.
+	// The ID of the Backup Vault of the Data Source in which the Backup belongs.
 	BackupVaultId string `pulumi:"backupVaultId"`
-	// Name of the Data Source associated with Backup.
+	// The ID of the Data Source in which the Backup belongs.
 	DataSourceId string `pulumi:"dataSourceId"`
-	// Location of the resource.
+	// The location in which the Backup belongs.
 	Location string `pulumi:"location"`
 	// Name of the resource.
 	Name string `pulumi:"name"`
@@ -1095,11 +1095,11 @@ type GetBackupBackupInput interface {
 type GetBackupBackupArgs struct {
 	// Id of the requesting object, Backup.
 	BackupId pulumi.StringInput `pulumi:"backupId"`
-	// Name of the Backup Vault associated with Backup.
+	// The ID of the Backup Vault of the Data Source in which the Backup belongs.
 	BackupVaultId pulumi.StringInput `pulumi:"backupVaultId"`
-	// Name of the Data Source associated with Backup.
+	// The ID of the Data Source in which the Backup belongs.
 	DataSourceId pulumi.StringInput `pulumi:"dataSourceId"`
-	// Location of the resource.
+	// The location in which the Backup belongs.
 	Location pulumi.StringInput `pulumi:"location"`
 	// Name of the resource.
 	Name pulumi.StringInput `pulumi:"name"`
@@ -1161,17 +1161,17 @@ func (o GetBackupBackupOutput) BackupId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackupBackup) string { return v.BackupId }).(pulumi.StringOutput)
 }
 
-// Name of the Backup Vault associated with Backup.
+// The ID of the Backup Vault of the Data Source in which the Backup belongs.
 func (o GetBackupBackupOutput) BackupVaultId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackupBackup) string { return v.BackupVaultId }).(pulumi.StringOutput)
 }
 
-// Name of the Data Source associated with Backup.
+// The ID of the Data Source in which the Backup belongs.
 func (o GetBackupBackupOutput) DataSourceId() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackupBackup) string { return v.DataSourceId }).(pulumi.StringOutput)
 }
 
-// Location of the resource.
+// The location in which the Backup belongs.
 func (o GetBackupBackupOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v GetBackupBackup) string { return v.Location }).(pulumi.StringOutput)
 }
@@ -2492,7 +2492,7 @@ type GetDataSourceDataSourceGcpResource struct {
 	ComputeInstanceDataSourceProperties []GetDataSourceDataSourceGcpResourceComputeInstanceDataSourceProperty `pulumi:"computeInstanceDataSourceProperties"`
 	// Full resource pathname URL of the source Google Cloud resource.
 	GcpResourcename string `pulumi:"gcpResourcename"`
-	// Location of the resource: <region>/<zone>/"global"/"unspecified".
+	// The location in which the Data Source belongs.
 	Location string `pulumi:"location"`
 	// The type of the Google Cloud resource. Use the Unified Resource Type,
 	// 						eg. compute.googleapis.com/Instance.
@@ -2515,7 +2515,7 @@ type GetDataSourceDataSourceGcpResourceArgs struct {
 	ComputeInstanceDataSourceProperties GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyArrayInput `pulumi:"computeInstanceDataSourceProperties"`
 	// Full resource pathname URL of the source Google Cloud resource.
 	GcpResourcename pulumi.StringInput `pulumi:"gcpResourcename"`
-	// Location of the resource: <region>/<zone>/"global"/"unspecified".
+	// The location in which the Data Source belongs.
 	Location pulumi.StringInput `pulumi:"location"`
 	// The type of the Google Cloud resource. Use the Unified Resource Type,
 	// 						eg. compute.googleapis.com/Instance.
@@ -2585,7 +2585,7 @@ func (o GetDataSourceDataSourceGcpResourceOutput) GcpResourcename() pulumi.Strin
 	return o.ApplyT(func(v GetDataSourceDataSourceGcpResource) string { return v.GcpResourcename }).(pulumi.StringOutput)
 }
 
-// Location of the resource: <region>/<zone>/"global"/"unspecified".
+// The location in which the Data Source belongs.
 func (o GetDataSourceDataSourceGcpResourceOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDataSourceDataSourceGcpResource) string { return v.Location }).(pulumi.StringOutput)
 }

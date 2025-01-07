@@ -5,10 +5,12 @@ package com.pulumi.gcp.composer.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.composer.inputs.EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfigArgs;
 import com.pulumi.gcp.composer.inputs.EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArgs;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class EnvironmentConfigDataRetentionConfigArgs extends com.pulumi.resources.ResourceArgs {
@@ -16,23 +18,39 @@ public final class EnvironmentConfigDataRetentionConfigArgs extends com.pulumi.r
     public static final EnvironmentConfigDataRetentionConfigArgs Empty = new EnvironmentConfigDataRetentionConfigArgs();
 
     /**
+     * Optional. The configuration setting for database retention.
+     * 
+     */
+    @Import(name="airflowMetadataRetentionConfigs")
+    private @Nullable Output<List<EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfigArgs>> airflowMetadataRetentionConfigs;
+
+    /**
+     * @return Optional. The configuration setting for database retention.
+     * 
+     */
+    public Optional<Output<List<EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfigArgs>>> airflowMetadataRetentionConfigs() {
+        return Optional.ofNullable(this.airflowMetadataRetentionConfigs);
+    }
+
+    /**
      * Optional. The configuration setting for Task Logs.
      * 
      */
-    @Import(name="taskLogsRetentionConfigs", required=true)
-    private Output<List<EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArgs>> taskLogsRetentionConfigs;
+    @Import(name="taskLogsRetentionConfigs")
+    private @Nullable Output<List<EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArgs>> taskLogsRetentionConfigs;
 
     /**
      * @return Optional. The configuration setting for Task Logs.
      * 
      */
-    public Output<List<EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArgs>> taskLogsRetentionConfigs() {
-        return this.taskLogsRetentionConfigs;
+    public Optional<Output<List<EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArgs>>> taskLogsRetentionConfigs() {
+        return Optional.ofNullable(this.taskLogsRetentionConfigs);
     }
 
     private EnvironmentConfigDataRetentionConfigArgs() {}
 
     private EnvironmentConfigDataRetentionConfigArgs(EnvironmentConfigDataRetentionConfigArgs $) {
+        this.airflowMetadataRetentionConfigs = $.airflowMetadataRetentionConfigs;
         this.taskLogsRetentionConfigs = $.taskLogsRetentionConfigs;
     }
 
@@ -55,12 +73,43 @@ public final class EnvironmentConfigDataRetentionConfigArgs extends com.pulumi.r
         }
 
         /**
+         * @param airflowMetadataRetentionConfigs Optional. The configuration setting for database retention.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder airflowMetadataRetentionConfigs(@Nullable Output<List<EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfigArgs>> airflowMetadataRetentionConfigs) {
+            $.airflowMetadataRetentionConfigs = airflowMetadataRetentionConfigs;
+            return this;
+        }
+
+        /**
+         * @param airflowMetadataRetentionConfigs Optional. The configuration setting for database retention.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder airflowMetadataRetentionConfigs(List<EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfigArgs> airflowMetadataRetentionConfigs) {
+            return airflowMetadataRetentionConfigs(Output.of(airflowMetadataRetentionConfigs));
+        }
+
+        /**
+         * @param airflowMetadataRetentionConfigs Optional. The configuration setting for database retention.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder airflowMetadataRetentionConfigs(EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfigArgs... airflowMetadataRetentionConfigs) {
+            return airflowMetadataRetentionConfigs(List.of(airflowMetadataRetentionConfigs));
+        }
+
+        /**
          * @param taskLogsRetentionConfigs Optional. The configuration setting for Task Logs.
          * 
          * @return builder
          * 
          */
-        public Builder taskLogsRetentionConfigs(Output<List<EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArgs>> taskLogsRetentionConfigs) {
+        public Builder taskLogsRetentionConfigs(@Nullable Output<List<EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArgs>> taskLogsRetentionConfigs) {
             $.taskLogsRetentionConfigs = taskLogsRetentionConfigs;
             return this;
         }
@@ -86,9 +135,6 @@ public final class EnvironmentConfigDataRetentionConfigArgs extends com.pulumi.r
         }
 
         public EnvironmentConfigDataRetentionConfigArgs build() {
-            if ($.taskLogsRetentionConfigs == null) {
-                throw new MissingRequiredPropertyException("EnvironmentConfigDataRetentionConfigArgs", "taskLogsRetentionConfigs");
-            }
             return $;
         }
     }

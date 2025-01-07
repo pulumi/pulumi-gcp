@@ -12,7 +12,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ConnectionEventingRuntimeDataStatus {
     /**
-     * @return An arbitrary description for the Conection.
+     * @return An arbitrary description for the Connection.
      * 
      */
     private @Nullable String description;
@@ -25,7 +25,7 @@ public final class ConnectionEventingRuntimeDataStatus {
 
     private ConnectionEventingRuntimeDataStatus() {}
     /**
-     * @return An arbitrary description for the Conection.
+     * @return An arbitrary description for the Connection.
      * 
      */
     public Optional<String> description() {

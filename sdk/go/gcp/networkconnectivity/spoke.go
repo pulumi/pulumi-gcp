@@ -82,6 +82,75 @@ import (
 //	}
 //
 // ```
+// ### Network Connectivity Spoke Linked Vpc Network Group
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/networkconnectivity"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
+//				Name:                  pulumi.String("net-spoke"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			basicHub, err := networkconnectivity.NewHub(ctx, "basic_hub", &networkconnectivity.HubArgs{
+//				Name:        pulumi.String("hub1-spoke"),
+//				Description: pulumi.String("A sample hub"),
+//				Labels: pulumi.StringMap{
+//					"label-two": pulumi.String("value-one"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultGroup, err := networkconnectivity.NewGroup(ctx, "default_group", &networkconnectivity.GroupArgs{
+//				Hub:         basicHub.ID(),
+//				Name:        pulumi.String("default"),
+//				Description: pulumi.String("A sample hub group"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networkconnectivity.NewSpoke(ctx, "primary", &networkconnectivity.SpokeArgs{
+//				Name:        pulumi.String("group-spoke1"),
+//				Location:    pulumi.String("global"),
+//				Description: pulumi.String("A sample spoke with a linked VPC"),
+//				Labels: pulumi.StringMap{
+//					"label-one": pulumi.String("value-one"),
+//				},
+//				Hub: basicHub.ID(),
+//				LinkedVpcNetwork: &networkconnectivity.SpokeLinkedVpcNetworkArgs{
+//					ExcludeExportRanges: pulumi.StringArray{
+//						pulumi.String("198.51.100.0/24"),
+//						pulumi.String("10.10.0.0/16"),
+//					},
+//					IncludeExportRanges: pulumi.StringArray{
+//						pulumi.String("198.51.100.0/23"),
+//						pulumi.String("10.0.0.0/8"),
+//					},
+//					Uri: network.SelfLink,
+//				},
+//				Group: defaultGroup.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Network Connectivity Spoke Router Appliance Basic
 //
 // ```go
@@ -538,6 +607,69 @@ import (
 //	}
 //
 // ```
+// ### Network Connectivity Spoke Center Group
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/networkconnectivity"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
+//				Name:                  pulumi.String("tf-net"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			starHub, err := networkconnectivity.NewHub(ctx, "star_hub", &networkconnectivity.HubArgs{
+//				Name:           pulumi.String("hub-basic"),
+//				PresetTopology: pulumi.String("STAR"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			centerGroup, err := networkconnectivity.NewGroup(ctx, "center_group", &networkconnectivity.GroupArgs{
+//				Name: pulumi.String("center"),
+//				Hub:  starHub.ID(),
+//				AutoAccept: &networkconnectivity.GroupAutoAcceptArgs{
+//					AutoAcceptProjects: pulumi.StringArray{
+//						pulumi.String("foo_13293"),
+//						pulumi.String("bar_40289"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networkconnectivity.NewSpoke(ctx, "primary", &networkconnectivity.SpokeArgs{
+//				Name:        pulumi.String("vpc-spoke"),
+//				Location:    pulumi.String("global"),
+//				Description: pulumi.String("A sample spoke"),
+//				Labels: pulumi.StringMap{
+//					"label-one": pulumi.String("value-one"),
+//				},
+//				Hub:   starHub.ID(),
+//				Group: centerGroup.ID(),
+//				LinkedVpcNetwork: &networkconnectivity.SpokeLinkedVpcNetworkArgs{
+//					Uri: network.SelfLink,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -571,6 +703,8 @@ type Spoke struct {
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
+	// The name of the group that this spoke is associated with.
+	Group pulumi.StringOutput `pulumi:"group"`
 	// Immutable. The URI of the hub that this spoke is attached to.
 	Hub pulumi.StringOutput `pulumi:"hub"`
 	// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
@@ -659,6 +793,8 @@ type spokeState struct {
 	Description *string `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
+	// The name of the group that this spoke is associated with.
+	Group *string `pulumi:"group"`
 	// Immutable. The URI of the hub that this spoke is attached to.
 	Hub *string `pulumi:"hub"`
 	// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
@@ -707,6 +843,8 @@ type SpokeState struct {
 	Description pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
+	// The name of the group that this spoke is associated with.
+	Group pulumi.StringPtrInput
 	// Immutable. The URI of the hub that this spoke is attached to.
 	Hub pulumi.StringPtrInput
 	// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
@@ -755,6 +893,8 @@ func (SpokeState) ElementType() reflect.Type {
 type spokeArgs struct {
 	// An optional description of the spoke.
 	Description *string `pulumi:"description"`
+	// The name of the group that this spoke is associated with.
+	Group *string `pulumi:"group"`
 	// Immutable. The URI of the hub that this spoke is attached to.
 	Hub string `pulumi:"hub"`
 	// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
@@ -791,6 +931,8 @@ type spokeArgs struct {
 type SpokeArgs struct {
 	// An optional description of the spoke.
 	Description pulumi.StringPtrInput
+	// The name of the group that this spoke is associated with.
+	Group pulumi.StringPtrInput
 	// Immutable. The URI of the hub that this spoke is attached to.
 	Hub pulumi.StringInput
 	// Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
@@ -923,6 +1065,11 @@ func (o SpokeOutput) Description() pulumi.StringPtrOutput {
 // All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o SpokeOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Spoke) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
+// The name of the group that this spoke is associated with.
+func (o SpokeOutput) Group() pulumi.StringOutput {
+	return o.ApplyT(func(v *Spoke) pulumi.StringOutput { return v.Group }).(pulumi.StringOutput)
 }
 
 // Immutable. The URI of the hub that this spoke is attached to.

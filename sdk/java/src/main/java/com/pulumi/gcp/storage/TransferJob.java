@@ -12,6 +12,7 @@ import com.pulumi.gcp.storage.TransferJobArgs;
 import com.pulumi.gcp.storage.inputs.TransferJobState;
 import com.pulumi.gcp.storage.outputs.TransferJobEventStream;
 import com.pulumi.gcp.storage.outputs.TransferJobNotificationConfig;
+import com.pulumi.gcp.storage.outputs.TransferJobReplicationSpec;
 import com.pulumi.gcp.storage.outputs.TransferJobSchedule;
 import com.pulumi.gcp.storage.outputs.TransferJobTransferSpec;
 import java.lang.String;
@@ -297,6 +298,24 @@ public class TransferJob extends com.pulumi.resources.CustomResource {
         return this.project;
     }
     /**
+     * Replication specification. Structure documented below. User should not configure `schedule`, `event_stream` with this argument. One of `transfer_spec`, or `replication_spec` must be specified.
+     * 
+     * ***
+     * 
+     */
+    @Export(name="replicationSpec", refs={TransferJobReplicationSpec.class}, tree="[0]")
+    private Output</* @Nullable */ TransferJobReplicationSpec> replicationSpec;
+
+    /**
+     * @return Replication specification. Structure documented below. User should not configure `schedule`, `event_stream` with this argument. One of `transfer_spec`, or `replication_spec` must be specified.
+     * 
+     * ***
+     * 
+     */
+    public Output<Optional<TransferJobReplicationSpec>> replicationSpec() {
+        return Codegen.optional(this.replicationSpec);
+    }
+    /**
      * Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `event_stream` must be set.
      * 
      */
@@ -325,22 +344,18 @@ public class TransferJob extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.status);
     }
     /**
-     * Transfer specification. Structure documented below.
-     * 
-     * ***
+     * Transfer specification. Structure documented below. One of `transfer_spec`, or `replication_spec` can be specified.
      * 
      */
     @Export(name="transferSpec", refs={TransferJobTransferSpec.class}, tree="[0]")
-    private Output<TransferJobTransferSpec> transferSpec;
+    private Output</* @Nullable */ TransferJobTransferSpec> transferSpec;
 
     /**
-     * @return Transfer specification. Structure documented below.
-     * 
-     * ***
+     * @return Transfer specification. Structure documented below. One of `transfer_spec`, or `replication_spec` can be specified.
      * 
      */
-    public Output<TransferJobTransferSpec> transferSpec() {
-        return this.transferSpec;
+    public Output<Optional<TransferJobTransferSpec>> transferSpec() {
+        return Codegen.optional(this.transferSpec);
     }
 
     /**

@@ -76,10 +76,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.kms.KeyRing;
- * import com.pulumi.gcp.kms.KeyRingArgs;
- * import com.pulumi.gcp.kms.CryptoKey;
- * import com.pulumi.gcp.kms.CryptoKeyArgs;
  * import com.pulumi.gcp.organizations.OrganizationsFunctions;
  * import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
  * import com.pulumi.gcp.kms.CryptoKeyIAMMember;
@@ -100,20 +96,10 @@ import javax.annotation.Nullable;
  *     }}{@code
  * 
  *     public static void stack(Context ctx) }{{@code
- *         var keyRing = new KeyRing("keyRing", KeyRingArgs.builder()
- *             .name("my-keyring")
- *             .location("us-central1")
- *             .build());
- * 
- *         var cryptoKey = new CryptoKey("cryptoKey", CryptoKeyArgs.builder()
- *             .name("my-key")
- *             .keyRing(keyRing.id())
- *             .build());
- * 
  *         final var project = OrganizationsFunctions.getProject();
  * 
  *         var cryptoKeyBinding = new CryptoKeyIAMMember("cryptoKeyBinding", CryptoKeyIAMMemberArgs.builder()
- *             .cryptoKeyId(cryptoKey.id())
+ *             .cryptoKeyId("my-key")
  *             .role("roles/cloudkms.cryptoKeyEncrypterDecrypter")
  *             .member(String.format("serviceAccount:service-%s}{@literal @}{@code gcp-sa-sourcemanager.iam.gserviceaccount.com", project.applyValue(getProjectResult -> getProjectResult.number())))
  *             .build());
@@ -121,7 +107,7 @@ import javax.annotation.Nullable;
  *         var default_ = new Instance("default", InstanceArgs.builder()
  *             .location("us-central1")
  *             .instanceId("my-instance")
- *             .kmsKey(cryptoKey.id())
+ *             .kmsKey("my-key")
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(cryptoKeyBinding)
  *                 .build());

@@ -235,6 +235,13 @@ namespace Pulumi.Gcp
             set => _certificateManagerCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _chronicleCustomEndpoint = new __Value<string?>(() => __config.Get("chronicleCustomEndpoint"));
+        public static string? ChronicleCustomEndpoint
+        {
+            get => _chronicleCustomEndpoint.Get();
+            set => _chronicleCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _cloudAssetCustomEndpoint = new __Value<string?>(() => __config.Get("cloudAssetCustomEndpoint"));
         public static string? CloudAssetCustomEndpoint
         {

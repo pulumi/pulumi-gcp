@@ -30,18 +30,228 @@ import com.pulumi.gcp.backupdisasterrecovery.outputs.GetManagementServerResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class BackupdisasterrecoveryFunctions {
+    /**
+     * A Backup and DR Backup.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.backupdisasterrecovery.BackupdisasterrecoveryFunctions;
+     * import com.pulumi.gcp.backupdisasterrecovery.inputs.GetBackupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = BackupdisasterrecoveryFunctions.getBackup(GetBackupArgs.builder()
+     *             .location("us-central1")
+     *             .project("project-test")
+     *             .dataSourceId("ds-test")
+     *             .backupVaultId("bv-test")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetBackupResult> getBackup(GetBackupArgs args) {
         return getBackup(args, InvokeOptions.Empty);
     }
+    /**
+     * A Backup and DR Backup.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.backupdisasterrecovery.BackupdisasterrecoveryFunctions;
+     * import com.pulumi.gcp.backupdisasterrecovery.inputs.GetBackupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = BackupdisasterrecoveryFunctions.getBackup(GetBackupArgs.builder()
+     *             .location("us-central1")
+     *             .project("project-test")
+     *             .dataSourceId("ds-test")
+     *             .backupVaultId("bv-test")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetBackupResult> getBackupPlain(GetBackupPlainArgs args) {
         return getBackupPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * A Backup and DR Backup.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.backupdisasterrecovery.BackupdisasterrecoveryFunctions;
+     * import com.pulumi.gcp.backupdisasterrecovery.inputs.GetBackupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = BackupdisasterrecoveryFunctions.getBackup(GetBackupArgs.builder()
+     *             .location("us-central1")
+     *             .project("project-test")
+     *             .dataSourceId("ds-test")
+     *             .backupVaultId("bv-test")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetBackupResult> getBackup(GetBackupArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:backupdisasterrecovery/getBackup:getBackup", TypeShape.of(GetBackupResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * A Backup and DR Backup.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.backupdisasterrecovery.BackupdisasterrecoveryFunctions;
+     * import com.pulumi.gcp.backupdisasterrecovery.inputs.GetBackupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = BackupdisasterrecoveryFunctions.getBackup(GetBackupArgs.builder()
+     *             .location("us-central1")
+     *             .project("project-test")
+     *             .dataSourceId("ds-test")
+     *             .backupVaultId("bv-test")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetBackupResult> getBackup(GetBackupArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:backupdisasterrecovery/getBackup:getBackup", TypeShape.of(GetBackupResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * A Backup and DR Backup.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.backupdisasterrecovery.BackupdisasterrecoveryFunctions;
+     * import com.pulumi.gcp.backupdisasterrecovery.inputs.GetBackupArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = BackupdisasterrecoveryFunctions.getBackup(GetBackupArgs.builder()
+     *             .location("us-central1")
+     *             .project("project-test")
+     *             .dataSourceId("ds-test")
+     *             .backupVaultId("bv-test")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetBackupResult> getBackupPlain(GetBackupPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:backupdisasterrecovery/getBackup:getBackup", TypeShape.of(GetBackupResult.class), args, Utilities.withVersion(options));
     }
@@ -480,18 +690,228 @@ public final class BackupdisasterrecoveryFunctions {
     public static CompletableFuture<GetBackupVaultResult> getBackupVaultPlain(GetBackupVaultPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:backupdisasterrecovery/getBackupVault:getBackupVault", TypeShape.of(GetBackupVaultResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * A Backup and DR Data Source.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.backupdisasterrecovery.BackupdisasterrecoveryFunctions;
+     * import com.pulumi.gcp.backupdisasterrecovery.inputs.GetDataSourceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = BackupdisasterrecoveryFunctions.getDataSource(GetDataSourceArgs.builder()
+     *             .location("us-central1")
+     *             .project("project-test")
+     *             .dataSourceId("ds-test")
+     *             .backupVaultId("bv-test")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetDataSourceResult> getDataSource(GetDataSourceArgs args) {
         return getDataSource(args, InvokeOptions.Empty);
     }
+    /**
+     * A Backup and DR Data Source.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.backupdisasterrecovery.BackupdisasterrecoveryFunctions;
+     * import com.pulumi.gcp.backupdisasterrecovery.inputs.GetDataSourceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = BackupdisasterrecoveryFunctions.getDataSource(GetDataSourceArgs.builder()
+     *             .location("us-central1")
+     *             .project("project-test")
+     *             .dataSourceId("ds-test")
+     *             .backupVaultId("bv-test")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetDataSourceResult> getDataSourcePlain(GetDataSourcePlainArgs args) {
         return getDataSourcePlain(args, InvokeOptions.Empty);
     }
+    /**
+     * A Backup and DR Data Source.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.backupdisasterrecovery.BackupdisasterrecoveryFunctions;
+     * import com.pulumi.gcp.backupdisasterrecovery.inputs.GetDataSourceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = BackupdisasterrecoveryFunctions.getDataSource(GetDataSourceArgs.builder()
+     *             .location("us-central1")
+     *             .project("project-test")
+     *             .dataSourceId("ds-test")
+     *             .backupVaultId("bv-test")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetDataSourceResult> getDataSource(GetDataSourceArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:backupdisasterrecovery/getDataSource:getDataSource", TypeShape.of(GetDataSourceResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * A Backup and DR Data Source.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.backupdisasterrecovery.BackupdisasterrecoveryFunctions;
+     * import com.pulumi.gcp.backupdisasterrecovery.inputs.GetDataSourceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = BackupdisasterrecoveryFunctions.getDataSource(GetDataSourceArgs.builder()
+     *             .location("us-central1")
+     *             .project("project-test")
+     *             .dataSourceId("ds-test")
+     *             .backupVaultId("bv-test")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetDataSourceResult> getDataSource(GetDataSourceArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:backupdisasterrecovery/getDataSource:getDataSource", TypeShape.of(GetDataSourceResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * A Backup and DR Data Source.
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.backupdisasterrecovery.BackupdisasterrecoveryFunctions;
+     * import com.pulumi.gcp.backupdisasterrecovery.inputs.GetDataSourceArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var foo = BackupdisasterrecoveryFunctions.getDataSource(GetDataSourceArgs.builder()
+     *             .location("us-central1")
+     *             .project("project-test")
+     *             .dataSourceId("ds-test")
+     *             .backupVaultId("bv-test")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetDataSourceResult> getDataSourcePlain(GetDataSourcePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:backupdisasterrecovery/getDataSource:getDataSource", TypeShape.of(GetDataSourceResult.class), args, Utilities.withVersion(options));
     }

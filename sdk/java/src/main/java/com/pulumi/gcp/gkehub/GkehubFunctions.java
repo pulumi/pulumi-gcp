@@ -9,8 +9,10 @@ import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.gcp.Utilities;
+import com.pulumi.gcp.gkehub.inputs.GetFeatureArgs;
 import com.pulumi.gcp.gkehub.inputs.GetFeatureIamPolicyArgs;
 import com.pulumi.gcp.gkehub.inputs.GetFeatureIamPolicyPlainArgs;
+import com.pulumi.gcp.gkehub.inputs.GetFeaturePlainArgs;
 import com.pulumi.gcp.gkehub.inputs.GetMembershipBindingArgs;
 import com.pulumi.gcp.gkehub.inputs.GetMembershipBindingPlainArgs;
 import com.pulumi.gcp.gkehub.inputs.GetMembershipIamPolicyArgs;
@@ -18,12 +20,28 @@ import com.pulumi.gcp.gkehub.inputs.GetMembershipIamPolicyPlainArgs;
 import com.pulumi.gcp.gkehub.inputs.GetScopeIamPolicyArgs;
 import com.pulumi.gcp.gkehub.inputs.GetScopeIamPolicyPlainArgs;
 import com.pulumi.gcp.gkehub.outputs.GetFeatureIamPolicyResult;
+import com.pulumi.gcp.gkehub.outputs.GetFeatureResult;
 import com.pulumi.gcp.gkehub.outputs.GetMembershipBindingResult;
 import com.pulumi.gcp.gkehub.outputs.GetMembershipIamPolicyResult;
 import com.pulumi.gcp.gkehub.outputs.GetScopeIamPolicyResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class GkehubFunctions {
+    public static Output<GetFeatureResult> getFeature(GetFeatureArgs args) {
+        return getFeature(args, InvokeOptions.Empty);
+    }
+    public static CompletableFuture<GetFeatureResult> getFeaturePlain(GetFeaturePlainArgs args) {
+        return getFeaturePlain(args, InvokeOptions.Empty);
+    }
+    public static Output<GetFeatureResult> getFeature(GetFeatureArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:gkehub/getFeature:getFeature", TypeShape.of(GetFeatureResult.class), args, Utilities.withVersion(options));
+    }
+    public static Output<GetFeatureResult> getFeature(GetFeatureArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:gkehub/getFeature:getFeature", TypeShape.of(GetFeatureResult.class), args, Utilities.withVersion(options));
+    }
+    public static CompletableFuture<GetFeatureResult> getFeaturePlain(GetFeaturePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:gkehub/getFeature:getFeature", TypeShape.of(GetFeatureResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * Retrieves the current IAM policy data for feature
      * 

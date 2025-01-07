@@ -17,7 +17,7 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         /// <summary>
         /// (Output)
-        /// [Output Only]
+        /// A nested object resource.
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.ResizeRequestStatusErrorErrorErrorDetailErrorInfoArgs> ErrorInfos
@@ -31,7 +31,7 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         /// <summary>
         /// (Output)
-        /// [Output Only]
+        /// A nested object resource.
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.ResizeRequestStatusErrorErrorErrorDetailHelpArgs> Helps
@@ -45,7 +45,7 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         /// <summary>
         /// (Output)
-        /// [Output Only]
+        /// A nested object resource.
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.ResizeRequestStatusErrorErrorErrorDetailLocalizedMessageArgs> LocalizedMessages
@@ -59,7 +59,7 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         /// <summary>
         /// (Output)
-        /// [Output Only]
+        /// A nested object resource.
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.ResizeRequestStatusErrorErrorErrorDetailQuotaInfoArgs> QuotaInfos

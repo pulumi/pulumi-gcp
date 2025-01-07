@@ -97,6 +97,8 @@ __all__ = [
     'StreamSourceConfigArgsDict',
     'StreamSourceConfigMysqlSourceConfigArgs',
     'StreamSourceConfigMysqlSourceConfigArgsDict',
+    'StreamSourceConfigMysqlSourceConfigBinaryLogPositionArgs',
+    'StreamSourceConfigMysqlSourceConfigBinaryLogPositionArgsDict',
     'StreamSourceConfigMysqlSourceConfigExcludeObjectsArgs',
     'StreamSourceConfigMysqlSourceConfigExcludeObjectsArgsDict',
     'StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArgs',
@@ -105,6 +107,8 @@ __all__ = [
     'StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArgsDict',
     'StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs',
     'StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgsDict',
+    'StreamSourceConfigMysqlSourceConfigGtidArgs',
+    'StreamSourceConfigMysqlSourceConfigGtidArgsDict',
     'StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs',
     'StreamSourceConfigMysqlSourceConfigIncludeObjectsArgsDict',
     'StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArgs',
@@ -3284,10 +3288,18 @@ class StreamSourceConfigArgs:
 
 if not MYPY:
     class StreamSourceConfigMysqlSourceConfigArgsDict(TypedDict):
+        binary_log_position: NotRequired[pulumi.Input['StreamSourceConfigMysqlSourceConfigBinaryLogPositionArgsDict']]
+        """
+        CDC reader reads from binary logs replication cdc method.
+        """
         exclude_objects: NotRequired[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsArgsDict']]
         """
         MySQL objects to exclude from the stream.
         Structure is documented below.
+        """
+        gtid: NotRequired[pulumi.Input['StreamSourceConfigMysqlSourceConfigGtidArgsDict']]
+        """
+        CDC reader reads from gtid based replication.
         """
         include_objects: NotRequired[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsArgsDict']]
         """
@@ -3310,13 +3322,17 @@ elif False:
 @pulumi.input_type
 class StreamSourceConfigMysqlSourceConfigArgs:
     def __init__(__self__, *,
+                 binary_log_position: Optional[pulumi.Input['StreamSourceConfigMysqlSourceConfigBinaryLogPositionArgs']] = None,
                  exclude_objects: Optional[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsArgs']] = None,
+                 gtid: Optional[pulumi.Input['StreamSourceConfigMysqlSourceConfigGtidArgs']] = None,
                  include_objects: Optional[pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs']] = None,
                  max_concurrent_backfill_tasks: Optional[pulumi.Input[int]] = None,
                  max_concurrent_cdc_tasks: Optional[pulumi.Input[int]] = None):
         """
+        :param pulumi.Input['StreamSourceConfigMysqlSourceConfigBinaryLogPositionArgs'] binary_log_position: CDC reader reads from binary logs replication cdc method.
         :param pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsArgs'] exclude_objects: MySQL objects to exclude from the stream.
                Structure is documented below.
+        :param pulumi.Input['StreamSourceConfigMysqlSourceConfigGtidArgs'] gtid: CDC reader reads from gtid based replication.
         :param pulumi.Input['StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs'] include_objects: MySQL objects to retrieve from the source.
                Structure is documented below.
         :param pulumi.Input[int] max_concurrent_backfill_tasks: Maximum number of concurrent backfill tasks. The number should be non negative.
@@ -3324,14 +3340,30 @@ class StreamSourceConfigMysqlSourceConfigArgs:
         :param pulumi.Input[int] max_concurrent_cdc_tasks: Maximum number of concurrent CDC tasks. The number should be non negative.
                If not set (or set to 0), the system's default value will be used.
         """
+        if binary_log_position is not None:
+            pulumi.set(__self__, "binary_log_position", binary_log_position)
         if exclude_objects is not None:
             pulumi.set(__self__, "exclude_objects", exclude_objects)
+        if gtid is not None:
+            pulumi.set(__self__, "gtid", gtid)
         if include_objects is not None:
             pulumi.set(__self__, "include_objects", include_objects)
         if max_concurrent_backfill_tasks is not None:
             pulumi.set(__self__, "max_concurrent_backfill_tasks", max_concurrent_backfill_tasks)
         if max_concurrent_cdc_tasks is not None:
             pulumi.set(__self__, "max_concurrent_cdc_tasks", max_concurrent_cdc_tasks)
+
+    @property
+    @pulumi.getter(name="binaryLogPosition")
+    def binary_log_position(self) -> Optional[pulumi.Input['StreamSourceConfigMysqlSourceConfigBinaryLogPositionArgs']]:
+        """
+        CDC reader reads from binary logs replication cdc method.
+        """
+        return pulumi.get(self, "binary_log_position")
+
+    @binary_log_position.setter
+    def binary_log_position(self, value: Optional[pulumi.Input['StreamSourceConfigMysqlSourceConfigBinaryLogPositionArgs']]):
+        pulumi.set(self, "binary_log_position", value)
 
     @property
     @pulumi.getter(name="excludeObjects")
@@ -3345,6 +3377,18 @@ class StreamSourceConfigMysqlSourceConfigArgs:
     @exclude_objects.setter
     def exclude_objects(self, value: Optional[pulumi.Input['StreamSourceConfigMysqlSourceConfigExcludeObjectsArgs']]):
         pulumi.set(self, "exclude_objects", value)
+
+    @property
+    @pulumi.getter
+    def gtid(self) -> Optional[pulumi.Input['StreamSourceConfigMysqlSourceConfigGtidArgs']]:
+        """
+        CDC reader reads from gtid based replication.
+        """
+        return pulumi.get(self, "gtid")
+
+    @gtid.setter
+    def gtid(self, value: Optional[pulumi.Input['StreamSourceConfigMysqlSourceConfigGtidArgs']]):
+        pulumi.set(self, "gtid", value)
 
     @property
     @pulumi.getter(name="includeObjects")
@@ -3384,6 +3428,18 @@ class StreamSourceConfigMysqlSourceConfigArgs:
     @max_concurrent_cdc_tasks.setter
     def max_concurrent_cdc_tasks(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "max_concurrent_cdc_tasks", value)
+
+
+if not MYPY:
+    class StreamSourceConfigMysqlSourceConfigBinaryLogPositionArgsDict(TypedDict):
+        pass
+elif False:
+    StreamSourceConfigMysqlSourceConfigBinaryLogPositionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class StreamSourceConfigMysqlSourceConfigBinaryLogPositionArgs:
+    def __init__(__self__):
+        pass
 
 
 if not MYPY:
@@ -3684,6 +3740,18 @@ class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMy
     @primary_key.setter
     def primary_key(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "primary_key", value)
+
+
+if not MYPY:
+    class StreamSourceConfigMysqlSourceConfigGtidArgsDict(TypedDict):
+        pass
+elif False:
+    StreamSourceConfigMysqlSourceConfigGtidArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class StreamSourceConfigMysqlSourceConfigGtidArgs:
+    def __init__(__self__):
+        pass
 
 
 if not MYPY:

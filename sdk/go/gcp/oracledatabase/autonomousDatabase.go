@@ -124,7 +124,7 @@ import (
 //						},
 //					},
 //					PrivateEndpointIp:    pulumi.String("10.5.0.11"),
-//					PrivateEndpointLabel: pulumi.String("testhost"),
+//					PrivateEndpointLabel: pulumi.String("myendpoint"),
 //				},
 //				DeletionProtection: pulumi.Bool(true),
 //			})

@@ -221,6 +221,10 @@ export class Network extends pulumi.CustomResource {
      */
     public readonly networkFirewallPolicyEnforcementOrder!: pulumi.Output<string | undefined>;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    public /*out*/ readonly networkId!: pulumi.Output<string>;
+    /**
      * A full or partial URL of the network profile to apply to this network.
      * This field can be set only at resource creation time. For example, the
      * following are valid URLs:
@@ -229,7 +233,10 @@ export class Network extends pulumi.CustomResource {
      */
     public readonly networkProfile!: pulumi.Output<string | undefined>;
     /**
+     * (Deprecated)
      * The unique identifier for the resource. This identifier is defined by the server.
+     *
+     * @deprecated `numericId` is deprecated and will be removed in a future major release. Use `networkId` instead.
      */
     public /*out*/ readonly numericId!: pulumi.Output<string>;
     /**
@@ -276,6 +283,7 @@ export class Network extends pulumi.CustomResource {
             resourceInputs["mtu"] = state ? state.mtu : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["networkFirewallPolicyEnforcementOrder"] = state ? state.networkFirewallPolicyEnforcementOrder : undefined;
+            resourceInputs["networkId"] = state ? state.networkId : undefined;
             resourceInputs["networkProfile"] = state ? state.networkProfile : undefined;
             resourceInputs["numericId"] = state ? state.numericId : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
@@ -298,6 +306,7 @@ export class Network extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["routingMode"] = args ? args.routingMode : undefined;
             resourceInputs["gatewayIpv4"] = undefined /*out*/;
+            resourceInputs["networkId"] = undefined /*out*/;
             resourceInputs["numericId"] = undefined /*out*/;
             resourceInputs["selfLink"] = undefined /*out*/;
         }
@@ -389,6 +398,10 @@ export interface NetworkState {
      */
     networkFirewallPolicyEnforcementOrder?: pulumi.Input<string>;
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     */
+    networkId?: pulumi.Input<string>;
+    /**
      * A full or partial URL of the network profile to apply to this network.
      * This field can be set only at resource creation time. For example, the
      * following are valid URLs:
@@ -397,7 +410,10 @@ export interface NetworkState {
      */
     networkProfile?: pulumi.Input<string>;
     /**
+     * (Deprecated)
      * The unique identifier for the resource. This identifier is defined by the server.
+     *
+     * @deprecated `numericId` is deprecated and will be removed in a future major release. Use `networkId` instead.
      */
     numericId?: pulumi.Input<string>;
     /**

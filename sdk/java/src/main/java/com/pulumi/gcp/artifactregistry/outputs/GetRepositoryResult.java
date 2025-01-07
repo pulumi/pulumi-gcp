@@ -10,6 +10,7 @@ import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryDockerConfig;
 import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryMavenConfig;
 import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryRemoteRepositoryConfig;
 import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryVirtualRepositoryConfig;
+import com.pulumi.gcp.artifactregistry.outputs.GetRepositoryVulnerabilityScanningConfig;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -44,6 +45,7 @@ public final class GetRepositoryResult {
     private String repositoryId;
     private String updateTime;
     private List<GetRepositoryVirtualRepositoryConfig> virtualRepositoryConfigs;
+    private List<GetRepositoryVulnerabilityScanningConfig> vulnerabilityScanningConfigs;
 
     private GetRepositoryResult() {}
     public List<GetRepositoryCleanupPolicy> cleanupPolicies() {
@@ -110,6 +112,9 @@ public final class GetRepositoryResult {
     public List<GetRepositoryVirtualRepositoryConfig> virtualRepositoryConfigs() {
         return this.virtualRepositoryConfigs;
     }
+    public List<GetRepositoryVulnerabilityScanningConfig> vulnerabilityScanningConfigs() {
+        return this.vulnerabilityScanningConfigs;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -140,6 +145,7 @@ public final class GetRepositoryResult {
         private String repositoryId;
         private String updateTime;
         private List<GetRepositoryVirtualRepositoryConfig> virtualRepositoryConfigs;
+        private List<GetRepositoryVulnerabilityScanningConfig> vulnerabilityScanningConfigs;
         public Builder() {}
         public Builder(GetRepositoryResult defaults) {
     	      Objects.requireNonNull(defaults);
@@ -163,6 +169,7 @@ public final class GetRepositoryResult {
     	      this.repositoryId = defaults.repositoryId;
     	      this.updateTime = defaults.updateTime;
     	      this.virtualRepositoryConfigs = defaults.virtualRepositoryConfigs;
+    	      this.vulnerabilityScanningConfigs = defaults.vulnerabilityScanningConfigs;
         }
 
         @CustomType.Setter
@@ -338,6 +345,17 @@ public final class GetRepositoryResult {
         public Builder virtualRepositoryConfigs(GetRepositoryVirtualRepositoryConfig... virtualRepositoryConfigs) {
             return virtualRepositoryConfigs(List.of(virtualRepositoryConfigs));
         }
+        @CustomType.Setter
+        public Builder vulnerabilityScanningConfigs(List<GetRepositoryVulnerabilityScanningConfig> vulnerabilityScanningConfigs) {
+            if (vulnerabilityScanningConfigs == null) {
+              throw new MissingRequiredPropertyException("GetRepositoryResult", "vulnerabilityScanningConfigs");
+            }
+            this.vulnerabilityScanningConfigs = vulnerabilityScanningConfigs;
+            return this;
+        }
+        public Builder vulnerabilityScanningConfigs(GetRepositoryVulnerabilityScanningConfig... vulnerabilityScanningConfigs) {
+            return vulnerabilityScanningConfigs(List.of(vulnerabilityScanningConfigs));
+        }
         public GetRepositoryResult build() {
             final var _resultValue = new GetRepositoryResult();
             _resultValue.cleanupPolicies = cleanupPolicies;
@@ -360,6 +378,7 @@ public final class GetRepositoryResult {
             _resultValue.repositoryId = repositoryId;
             _resultValue.updateTime = updateTime;
             _resultValue.virtualRepositoryConfigs = virtualRepositoryConfigs;
+            _resultValue.vulnerabilityScanningConfigs = vulnerabilityScanningConfigs;
             return _resultValue;
         }
     }

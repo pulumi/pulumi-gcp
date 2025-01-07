@@ -21,7 +21,7 @@ public final class ResizeRequestStatusErrorErrorErrorDetailArgs extends com.pulu
 
     /**
      * (Output)
-     * [Output Only]
+     * A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -30,7 +30,7 @@ public final class ResizeRequestStatusErrorErrorErrorDetailArgs extends com.pulu
 
     /**
      * @return (Output)
-     * [Output Only]
+     * A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -40,7 +40,7 @@ public final class ResizeRequestStatusErrorErrorErrorDetailArgs extends com.pulu
 
     /**
      * (Output)
-     * [Output Only]
+     * A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -49,7 +49,7 @@ public final class ResizeRequestStatusErrorErrorErrorDetailArgs extends com.pulu
 
     /**
      * @return (Output)
-     * [Output Only]
+     * A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -59,7 +59,7 @@ public final class ResizeRequestStatusErrorErrorErrorDetailArgs extends com.pulu
 
     /**
      * (Output)
-     * [Output Only]
+     * A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -68,7 +68,7 @@ public final class ResizeRequestStatusErrorErrorErrorDetailArgs extends com.pulu
 
     /**
      * @return (Output)
-     * [Output Only]
+     * A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -78,7 +78,7 @@ public final class ResizeRequestStatusErrorErrorErrorDetailArgs extends com.pulu
 
     /**
      * (Output)
-     * [Output Only]
+     * A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -87,7 +87,7 @@ public final class ResizeRequestStatusErrorErrorErrorDetailArgs extends com.pulu
 
     /**
      * @return (Output)
-     * [Output Only]
+     * A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -124,7 +124,7 @@ public final class ResizeRequestStatusErrorErrorErrorDetailArgs extends com.pulu
 
         /**
          * @param errorInfos (Output)
-         * [Output Only]
+         * A nested object resource.
          * Structure is documented below.
          * 
          * @return builder
@@ -137,7 +137,7 @@ public final class ResizeRequestStatusErrorErrorErrorDetailArgs extends com.pulu
 
         /**
          * @param errorInfos (Output)
-         * [Output Only]
+         * A nested object resource.
          * Structure is documented below.
          * 
          * @return builder
@@ -149,7 +149,7 @@ public final class ResizeRequestStatusErrorErrorErrorDetailArgs extends com.pulu
 
         /**
          * @param errorInfos (Output)
-         * [Output Only]
+         * A nested object resource.
          * Structure is documented below.
          * 
          * @return builder
@@ -161,7 +161,7 @@ public final class ResizeRequestStatusErrorErrorErrorDetailArgs extends com.pulu
 
         /**
          * @param helps (Output)
-         * [Output Only]
+         * A nested object resource.
          * Structure is documented below.
          * 
          * @return builder
@@ -174,7 +174,7 @@ public final class ResizeRequestStatusErrorErrorErrorDetailArgs extends com.pulu
 
         /**
          * @param helps (Output)
-         * [Output Only]
+         * A nested object resource.
          * Structure is documented below.
          * 
          * @return builder
@@ -186,7 +186,7 @@ public final class ResizeRequestStatusErrorErrorErrorDetailArgs extends com.pulu
 
         /**
          * @param helps (Output)
-         * [Output Only]
+         * A nested object resource.
          * Structure is documented below.
          * 
          * @return builder
@@ -198,7 +198,7 @@ public final class ResizeRequestStatusErrorErrorErrorDetailArgs extends com.pulu
 
         /**
          * @param localizedMessages (Output)
-         * [Output Only]
+         * A nested object resource.
          * Structure is documented below.
          * 
          * @return builder
@@ -211,7 +211,7 @@ public final class ResizeRequestStatusErrorErrorErrorDetailArgs extends com.pulu
 
         /**
          * @param localizedMessages (Output)
-         * [Output Only]
+         * A nested object resource.
          * Structure is documented below.
          * 
          * @return builder
@@ -223,7 +223,7 @@ public final class ResizeRequestStatusErrorErrorErrorDetailArgs extends com.pulu
 
         /**
          * @param localizedMessages (Output)
-         * [Output Only]
+         * A nested object resource.
          * Structure is documented below.
          * 
          * @return builder
@@ -235,7 +235,7 @@ public final class ResizeRequestStatusErrorErrorErrorDetailArgs extends com.pulu
 
         /**
          * @param quotaInfos (Output)
-         * [Output Only]
+         * A nested object resource.
          * Structure is documented below.
          * 
          * @return builder
@@ -248,7 +248,7 @@ public final class ResizeRequestStatusErrorErrorErrorDetailArgs extends com.pulu
 
         /**
          * @param quotaInfos (Output)
-         * [Output Only]
+         * A nested object resource.
          * Structure is documented below.
          * 
          * @return builder
@@ -260,7 +260,7 @@ public final class ResizeRequestStatusErrorErrorErrorDetailArgs extends com.pulu
 
         /**
          * @param quotaInfos (Output)
-         * [Output Only]
+         * A nested object resource.
          * Structure is documented below.
          * 
          * @return builder

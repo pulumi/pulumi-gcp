@@ -922,7 +922,7 @@ func (o AccessLevelBasicConditionVpcNetworkSourceArrayOutput) Index(i pulumi.Int
 type AccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork struct {
 	// Required. Network name to be allowed by this Access Level. Networks of foreign organizations requires `compute.network.get` permission to be granted to caller.
 	Network string `pulumi:"network"`
-	// CIDR block IP subnetwork specification. Must be IPv4.
+	// A list of CIDR block IP subnetwork specification. Must be IPv4.
 	VpcIpSubnetworks []string `pulumi:"vpcIpSubnetworks"`
 }
 
@@ -940,7 +940,7 @@ type AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkInput interface {
 type AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArgs struct {
 	// Required. Network name to be allowed by this Access Level. Networks of foreign organizations requires `compute.network.get` permission to be granted to caller.
 	Network pulumi.StringInput `pulumi:"network"`
-	// CIDR block IP subnetwork specification. Must be IPv4.
+	// A list of CIDR block IP subnetwork specification. Must be IPv4.
 	VpcIpSubnetworks pulumi.StringArrayInput `pulumi:"vpcIpSubnetworks"`
 }
 
@@ -1026,7 +1026,7 @@ func (o AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkOutput) Network() 
 	return o.ApplyT(func(v AccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork) string { return v.Network }).(pulumi.StringOutput)
 }
 
-// CIDR block IP subnetwork specification. Must be IPv4.
+// A list of CIDR block IP subnetwork specification. Must be IPv4.
 func (o AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkOutput) VpcIpSubnetworks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v AccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork) []string { return v.VpcIpSubnetworks }).(pulumi.StringArrayOutput)
 }
@@ -1065,7 +1065,7 @@ func (o AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutput) Network
 	}).(pulumi.StringPtrOutput)
 }
 
-// CIDR block IP subnetwork specification. Must be IPv4.
+// A list of CIDR block IP subnetwork specification. Must be IPv4.
 func (o AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkPtrOutput) VpcIpSubnetworks() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *AccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork) []string {
 		if v == nil {

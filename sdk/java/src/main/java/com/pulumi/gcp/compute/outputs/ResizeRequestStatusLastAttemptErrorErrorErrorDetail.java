@@ -16,28 +16,28 @@ import javax.annotation.Nullable;
 public final class ResizeRequestStatusLastAttemptErrorErrorErrorDetail {
     /**
      * @return (Output)
-     * [Output Only]
+     * A nested object resource.
      * Structure is documented below.
      * 
      */
     private @Nullable List<ResizeRequestStatusLastAttemptErrorErrorErrorDetailErrorInfo> errorInfos;
     /**
      * @return (Output)
-     * [Output Only]
+     * A nested object resource.
      * Structure is documented below.
      * 
      */
     private @Nullable List<ResizeRequestStatusLastAttemptErrorErrorErrorDetailHelp> helps;
     /**
      * @return (Output)
-     * [Output Only]
+     * A nested object resource.
      * Structure is documented below.
      * 
      */
     private @Nullable List<ResizeRequestStatusLastAttemptErrorErrorErrorDetailLocalizedMessage> localizedMessages;
     /**
      * @return (Output)
-     * [Output Only]
+     * A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -46,7 +46,7 @@ public final class ResizeRequestStatusLastAttemptErrorErrorErrorDetail {
     private ResizeRequestStatusLastAttemptErrorErrorErrorDetail() {}
     /**
      * @return (Output)
-     * [Output Only]
+     * A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -55,7 +55,7 @@ public final class ResizeRequestStatusLastAttemptErrorErrorErrorDetail {
     }
     /**
      * @return (Output)
-     * [Output Only]
+     * A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -64,7 +64,7 @@ public final class ResizeRequestStatusLastAttemptErrorErrorErrorDetail {
     }
     /**
      * @return (Output)
-     * [Output Only]
+     * A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -73,7 +73,7 @@ public final class ResizeRequestStatusLastAttemptErrorErrorErrorDetail {
     }
     /**
      * @return (Output)
-     * [Output Only]
+     * A nested object resource.
      * Structure is documented below.
      * 
      */

@@ -18949,6 +18949,4920 @@ func (o VMwareNodePoolStatusConditionArrayOutput) Index(i pulumi.IntInput) VMwar
 	}).(VMwareNodePoolStatusConditionOutput)
 }
 
+type VmwareAdminClusterAddonNode struct {
+	// Specifies auto resize config.
+	// Structure is documented below.
+	AutoResizeConfig *VmwareAdminClusterAddonNodeAutoResizeConfig `pulumi:"autoResizeConfig"`
+}
+
+// VmwareAdminClusterAddonNodeInput is an input type that accepts VmwareAdminClusterAddonNodeArgs and VmwareAdminClusterAddonNodeOutput values.
+// You can construct a concrete instance of `VmwareAdminClusterAddonNodeInput` via:
+//
+//	VmwareAdminClusterAddonNodeArgs{...}
+type VmwareAdminClusterAddonNodeInput interface {
+	pulumi.Input
+
+	ToVmwareAdminClusterAddonNodeOutput() VmwareAdminClusterAddonNodeOutput
+	ToVmwareAdminClusterAddonNodeOutputWithContext(context.Context) VmwareAdminClusterAddonNodeOutput
+}
+
+type VmwareAdminClusterAddonNodeArgs struct {
+	// Specifies auto resize config.
+	// Structure is documented below.
+	AutoResizeConfig VmwareAdminClusterAddonNodeAutoResizeConfigPtrInput `pulumi:"autoResizeConfig"`
+}
+
+func (VmwareAdminClusterAddonNodeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareAdminClusterAddonNode)(nil)).Elem()
+}
+
+func (i VmwareAdminClusterAddonNodeArgs) ToVmwareAdminClusterAddonNodeOutput() VmwareAdminClusterAddonNodeOutput {
+	return i.ToVmwareAdminClusterAddonNodeOutputWithContext(context.Background())
+}
+
+func (i VmwareAdminClusterAddonNodeArgs) ToVmwareAdminClusterAddonNodeOutputWithContext(ctx context.Context) VmwareAdminClusterAddonNodeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterAddonNodeOutput)
+}
+
+func (i VmwareAdminClusterAddonNodeArgs) ToVmwareAdminClusterAddonNodePtrOutput() VmwareAdminClusterAddonNodePtrOutput {
+	return i.ToVmwareAdminClusterAddonNodePtrOutputWithContext(context.Background())
+}
+
+func (i VmwareAdminClusterAddonNodeArgs) ToVmwareAdminClusterAddonNodePtrOutputWithContext(ctx context.Context) VmwareAdminClusterAddonNodePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterAddonNodeOutput).ToVmwareAdminClusterAddonNodePtrOutputWithContext(ctx)
+}
+
+// VmwareAdminClusterAddonNodePtrInput is an input type that accepts VmwareAdminClusterAddonNodeArgs, VmwareAdminClusterAddonNodePtr and VmwareAdminClusterAddonNodePtrOutput values.
+// You can construct a concrete instance of `VmwareAdminClusterAddonNodePtrInput` via:
+//
+//	        VmwareAdminClusterAddonNodeArgs{...}
+//
+//	or:
+//
+//	        nil
+type VmwareAdminClusterAddonNodePtrInput interface {
+	pulumi.Input
+
+	ToVmwareAdminClusterAddonNodePtrOutput() VmwareAdminClusterAddonNodePtrOutput
+	ToVmwareAdminClusterAddonNodePtrOutputWithContext(context.Context) VmwareAdminClusterAddonNodePtrOutput
+}
+
+type vmwareAdminClusterAddonNodePtrType VmwareAdminClusterAddonNodeArgs
+
+func VmwareAdminClusterAddonNodePtr(v *VmwareAdminClusterAddonNodeArgs) VmwareAdminClusterAddonNodePtrInput {
+	return (*vmwareAdminClusterAddonNodePtrType)(v)
+}
+
+func (*vmwareAdminClusterAddonNodePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmwareAdminClusterAddonNode)(nil)).Elem()
+}
+
+func (i *vmwareAdminClusterAddonNodePtrType) ToVmwareAdminClusterAddonNodePtrOutput() VmwareAdminClusterAddonNodePtrOutput {
+	return i.ToVmwareAdminClusterAddonNodePtrOutputWithContext(context.Background())
+}
+
+func (i *vmwareAdminClusterAddonNodePtrType) ToVmwareAdminClusterAddonNodePtrOutputWithContext(ctx context.Context) VmwareAdminClusterAddonNodePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterAddonNodePtrOutput)
+}
+
+type VmwareAdminClusterAddonNodeOutput struct{ *pulumi.OutputState }
+
+func (VmwareAdminClusterAddonNodeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareAdminClusterAddonNode)(nil)).Elem()
+}
+
+func (o VmwareAdminClusterAddonNodeOutput) ToVmwareAdminClusterAddonNodeOutput() VmwareAdminClusterAddonNodeOutput {
+	return o
+}
+
+func (o VmwareAdminClusterAddonNodeOutput) ToVmwareAdminClusterAddonNodeOutputWithContext(ctx context.Context) VmwareAdminClusterAddonNodeOutput {
+	return o
+}
+
+func (o VmwareAdminClusterAddonNodeOutput) ToVmwareAdminClusterAddonNodePtrOutput() VmwareAdminClusterAddonNodePtrOutput {
+	return o.ToVmwareAdminClusterAddonNodePtrOutputWithContext(context.Background())
+}
+
+func (o VmwareAdminClusterAddonNodeOutput) ToVmwareAdminClusterAddonNodePtrOutputWithContext(ctx context.Context) VmwareAdminClusterAddonNodePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmwareAdminClusterAddonNode) *VmwareAdminClusterAddonNode {
+		return &v
+	}).(VmwareAdminClusterAddonNodePtrOutput)
+}
+
+// Specifies auto resize config.
+// Structure is documented below.
+func (o VmwareAdminClusterAddonNodeOutput) AutoResizeConfig() VmwareAdminClusterAddonNodeAutoResizeConfigPtrOutput {
+	return o.ApplyT(func(v VmwareAdminClusterAddonNode) *VmwareAdminClusterAddonNodeAutoResizeConfig {
+		return v.AutoResizeConfig
+	}).(VmwareAdminClusterAddonNodeAutoResizeConfigPtrOutput)
+}
+
+type VmwareAdminClusterAddonNodePtrOutput struct{ *pulumi.OutputState }
+
+func (VmwareAdminClusterAddonNodePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmwareAdminClusterAddonNode)(nil)).Elem()
+}
+
+func (o VmwareAdminClusterAddonNodePtrOutput) ToVmwareAdminClusterAddonNodePtrOutput() VmwareAdminClusterAddonNodePtrOutput {
+	return o
+}
+
+func (o VmwareAdminClusterAddonNodePtrOutput) ToVmwareAdminClusterAddonNodePtrOutputWithContext(ctx context.Context) VmwareAdminClusterAddonNodePtrOutput {
+	return o
+}
+
+func (o VmwareAdminClusterAddonNodePtrOutput) Elem() VmwareAdminClusterAddonNodeOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterAddonNode) VmwareAdminClusterAddonNode {
+		if v != nil {
+			return *v
+		}
+		var ret VmwareAdminClusterAddonNode
+		return ret
+	}).(VmwareAdminClusterAddonNodeOutput)
+}
+
+// Specifies auto resize config.
+// Structure is documented below.
+func (o VmwareAdminClusterAddonNodePtrOutput) AutoResizeConfig() VmwareAdminClusterAddonNodeAutoResizeConfigPtrOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterAddonNode) *VmwareAdminClusterAddonNodeAutoResizeConfig {
+		if v == nil {
+			return nil
+		}
+		return v.AutoResizeConfig
+	}).(VmwareAdminClusterAddonNodeAutoResizeConfigPtrOutput)
+}
+
+type VmwareAdminClusterAddonNodeAutoResizeConfig struct {
+	// Whether to enable controle plane node auto resizing.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// VmwareAdminClusterAddonNodeAutoResizeConfigInput is an input type that accepts VmwareAdminClusterAddonNodeAutoResizeConfigArgs and VmwareAdminClusterAddonNodeAutoResizeConfigOutput values.
+// You can construct a concrete instance of `VmwareAdminClusterAddonNodeAutoResizeConfigInput` via:
+//
+//	VmwareAdminClusterAddonNodeAutoResizeConfigArgs{...}
+type VmwareAdminClusterAddonNodeAutoResizeConfigInput interface {
+	pulumi.Input
+
+	ToVmwareAdminClusterAddonNodeAutoResizeConfigOutput() VmwareAdminClusterAddonNodeAutoResizeConfigOutput
+	ToVmwareAdminClusterAddonNodeAutoResizeConfigOutputWithContext(context.Context) VmwareAdminClusterAddonNodeAutoResizeConfigOutput
+}
+
+type VmwareAdminClusterAddonNodeAutoResizeConfigArgs struct {
+	// Whether to enable controle plane node auto resizing.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (VmwareAdminClusterAddonNodeAutoResizeConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareAdminClusterAddonNodeAutoResizeConfig)(nil)).Elem()
+}
+
+func (i VmwareAdminClusterAddonNodeAutoResizeConfigArgs) ToVmwareAdminClusterAddonNodeAutoResizeConfigOutput() VmwareAdminClusterAddonNodeAutoResizeConfigOutput {
+	return i.ToVmwareAdminClusterAddonNodeAutoResizeConfigOutputWithContext(context.Background())
+}
+
+func (i VmwareAdminClusterAddonNodeAutoResizeConfigArgs) ToVmwareAdminClusterAddonNodeAutoResizeConfigOutputWithContext(ctx context.Context) VmwareAdminClusterAddonNodeAutoResizeConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterAddonNodeAutoResizeConfigOutput)
+}
+
+func (i VmwareAdminClusterAddonNodeAutoResizeConfigArgs) ToVmwareAdminClusterAddonNodeAutoResizeConfigPtrOutput() VmwareAdminClusterAddonNodeAutoResizeConfigPtrOutput {
+	return i.ToVmwareAdminClusterAddonNodeAutoResizeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i VmwareAdminClusterAddonNodeAutoResizeConfigArgs) ToVmwareAdminClusterAddonNodeAutoResizeConfigPtrOutputWithContext(ctx context.Context) VmwareAdminClusterAddonNodeAutoResizeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterAddonNodeAutoResizeConfigOutput).ToVmwareAdminClusterAddonNodeAutoResizeConfigPtrOutputWithContext(ctx)
+}
+
+// VmwareAdminClusterAddonNodeAutoResizeConfigPtrInput is an input type that accepts VmwareAdminClusterAddonNodeAutoResizeConfigArgs, VmwareAdminClusterAddonNodeAutoResizeConfigPtr and VmwareAdminClusterAddonNodeAutoResizeConfigPtrOutput values.
+// You can construct a concrete instance of `VmwareAdminClusterAddonNodeAutoResizeConfigPtrInput` via:
+//
+//	        VmwareAdminClusterAddonNodeAutoResizeConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type VmwareAdminClusterAddonNodeAutoResizeConfigPtrInput interface {
+	pulumi.Input
+
+	ToVmwareAdminClusterAddonNodeAutoResizeConfigPtrOutput() VmwareAdminClusterAddonNodeAutoResizeConfigPtrOutput
+	ToVmwareAdminClusterAddonNodeAutoResizeConfigPtrOutputWithContext(context.Context) VmwareAdminClusterAddonNodeAutoResizeConfigPtrOutput
+}
+
+type vmwareAdminClusterAddonNodeAutoResizeConfigPtrType VmwareAdminClusterAddonNodeAutoResizeConfigArgs
+
+func VmwareAdminClusterAddonNodeAutoResizeConfigPtr(v *VmwareAdminClusterAddonNodeAutoResizeConfigArgs) VmwareAdminClusterAddonNodeAutoResizeConfigPtrInput {
+	return (*vmwareAdminClusterAddonNodeAutoResizeConfigPtrType)(v)
+}
+
+func (*vmwareAdminClusterAddonNodeAutoResizeConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmwareAdminClusterAddonNodeAutoResizeConfig)(nil)).Elem()
+}
+
+func (i *vmwareAdminClusterAddonNodeAutoResizeConfigPtrType) ToVmwareAdminClusterAddonNodeAutoResizeConfigPtrOutput() VmwareAdminClusterAddonNodeAutoResizeConfigPtrOutput {
+	return i.ToVmwareAdminClusterAddonNodeAutoResizeConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *vmwareAdminClusterAddonNodeAutoResizeConfigPtrType) ToVmwareAdminClusterAddonNodeAutoResizeConfigPtrOutputWithContext(ctx context.Context) VmwareAdminClusterAddonNodeAutoResizeConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterAddonNodeAutoResizeConfigPtrOutput)
+}
+
+type VmwareAdminClusterAddonNodeAutoResizeConfigOutput struct{ *pulumi.OutputState }
+
+func (VmwareAdminClusterAddonNodeAutoResizeConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareAdminClusterAddonNodeAutoResizeConfig)(nil)).Elem()
+}
+
+func (o VmwareAdminClusterAddonNodeAutoResizeConfigOutput) ToVmwareAdminClusterAddonNodeAutoResizeConfigOutput() VmwareAdminClusterAddonNodeAutoResizeConfigOutput {
+	return o
+}
+
+func (o VmwareAdminClusterAddonNodeAutoResizeConfigOutput) ToVmwareAdminClusterAddonNodeAutoResizeConfigOutputWithContext(ctx context.Context) VmwareAdminClusterAddonNodeAutoResizeConfigOutput {
+	return o
+}
+
+func (o VmwareAdminClusterAddonNodeAutoResizeConfigOutput) ToVmwareAdminClusterAddonNodeAutoResizeConfigPtrOutput() VmwareAdminClusterAddonNodeAutoResizeConfigPtrOutput {
+	return o.ToVmwareAdminClusterAddonNodeAutoResizeConfigPtrOutputWithContext(context.Background())
+}
+
+func (o VmwareAdminClusterAddonNodeAutoResizeConfigOutput) ToVmwareAdminClusterAddonNodeAutoResizeConfigPtrOutputWithContext(ctx context.Context) VmwareAdminClusterAddonNodeAutoResizeConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmwareAdminClusterAddonNodeAutoResizeConfig) *VmwareAdminClusterAddonNodeAutoResizeConfig {
+		return &v
+	}).(VmwareAdminClusterAddonNodeAutoResizeConfigPtrOutput)
+}
+
+// Whether to enable controle plane node auto resizing.
+func (o VmwareAdminClusterAddonNodeAutoResizeConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v VmwareAdminClusterAddonNodeAutoResizeConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type VmwareAdminClusterAddonNodeAutoResizeConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (VmwareAdminClusterAddonNodeAutoResizeConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmwareAdminClusterAddonNodeAutoResizeConfig)(nil)).Elem()
+}
+
+func (o VmwareAdminClusterAddonNodeAutoResizeConfigPtrOutput) ToVmwareAdminClusterAddonNodeAutoResizeConfigPtrOutput() VmwareAdminClusterAddonNodeAutoResizeConfigPtrOutput {
+	return o
+}
+
+func (o VmwareAdminClusterAddonNodeAutoResizeConfigPtrOutput) ToVmwareAdminClusterAddonNodeAutoResizeConfigPtrOutputWithContext(ctx context.Context) VmwareAdminClusterAddonNodeAutoResizeConfigPtrOutput {
+	return o
+}
+
+func (o VmwareAdminClusterAddonNodeAutoResizeConfigPtrOutput) Elem() VmwareAdminClusterAddonNodeAutoResizeConfigOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterAddonNodeAutoResizeConfig) VmwareAdminClusterAddonNodeAutoResizeConfig {
+		if v != nil {
+			return *v
+		}
+		var ret VmwareAdminClusterAddonNodeAutoResizeConfig
+		return ret
+	}).(VmwareAdminClusterAddonNodeAutoResizeConfigOutput)
+}
+
+// Whether to enable controle plane node auto resizing.
+func (o VmwareAdminClusterAddonNodeAutoResizeConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterAddonNodeAutoResizeConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type VmwareAdminClusterAntiAffinityGroups struct {
+	// Spread nodes across at least three physical hosts (requires at least three
+	// hosts).
+	// Enabled by default.
+	AagConfigDisabled bool `pulumi:"aagConfigDisabled"`
+}
+
+// VmwareAdminClusterAntiAffinityGroupsInput is an input type that accepts VmwareAdminClusterAntiAffinityGroupsArgs and VmwareAdminClusterAntiAffinityGroupsOutput values.
+// You can construct a concrete instance of `VmwareAdminClusterAntiAffinityGroupsInput` via:
+//
+//	VmwareAdminClusterAntiAffinityGroupsArgs{...}
+type VmwareAdminClusterAntiAffinityGroupsInput interface {
+	pulumi.Input
+
+	ToVmwareAdminClusterAntiAffinityGroupsOutput() VmwareAdminClusterAntiAffinityGroupsOutput
+	ToVmwareAdminClusterAntiAffinityGroupsOutputWithContext(context.Context) VmwareAdminClusterAntiAffinityGroupsOutput
+}
+
+type VmwareAdminClusterAntiAffinityGroupsArgs struct {
+	// Spread nodes across at least three physical hosts (requires at least three
+	// hosts).
+	// Enabled by default.
+	AagConfigDisabled pulumi.BoolInput `pulumi:"aagConfigDisabled"`
+}
+
+func (VmwareAdminClusterAntiAffinityGroupsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareAdminClusterAntiAffinityGroups)(nil)).Elem()
+}
+
+func (i VmwareAdminClusterAntiAffinityGroupsArgs) ToVmwareAdminClusterAntiAffinityGroupsOutput() VmwareAdminClusterAntiAffinityGroupsOutput {
+	return i.ToVmwareAdminClusterAntiAffinityGroupsOutputWithContext(context.Background())
+}
+
+func (i VmwareAdminClusterAntiAffinityGroupsArgs) ToVmwareAdminClusterAntiAffinityGroupsOutputWithContext(ctx context.Context) VmwareAdminClusterAntiAffinityGroupsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterAntiAffinityGroupsOutput)
+}
+
+func (i VmwareAdminClusterAntiAffinityGroupsArgs) ToVmwareAdminClusterAntiAffinityGroupsPtrOutput() VmwareAdminClusterAntiAffinityGroupsPtrOutput {
+	return i.ToVmwareAdminClusterAntiAffinityGroupsPtrOutputWithContext(context.Background())
+}
+
+func (i VmwareAdminClusterAntiAffinityGroupsArgs) ToVmwareAdminClusterAntiAffinityGroupsPtrOutputWithContext(ctx context.Context) VmwareAdminClusterAntiAffinityGroupsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterAntiAffinityGroupsOutput).ToVmwareAdminClusterAntiAffinityGroupsPtrOutputWithContext(ctx)
+}
+
+// VmwareAdminClusterAntiAffinityGroupsPtrInput is an input type that accepts VmwareAdminClusterAntiAffinityGroupsArgs, VmwareAdminClusterAntiAffinityGroupsPtr and VmwareAdminClusterAntiAffinityGroupsPtrOutput values.
+// You can construct a concrete instance of `VmwareAdminClusterAntiAffinityGroupsPtrInput` via:
+//
+//	        VmwareAdminClusterAntiAffinityGroupsArgs{...}
+//
+//	or:
+//
+//	        nil
+type VmwareAdminClusterAntiAffinityGroupsPtrInput interface {
+	pulumi.Input
+
+	ToVmwareAdminClusterAntiAffinityGroupsPtrOutput() VmwareAdminClusterAntiAffinityGroupsPtrOutput
+	ToVmwareAdminClusterAntiAffinityGroupsPtrOutputWithContext(context.Context) VmwareAdminClusterAntiAffinityGroupsPtrOutput
+}
+
+type vmwareAdminClusterAntiAffinityGroupsPtrType VmwareAdminClusterAntiAffinityGroupsArgs
+
+func VmwareAdminClusterAntiAffinityGroupsPtr(v *VmwareAdminClusterAntiAffinityGroupsArgs) VmwareAdminClusterAntiAffinityGroupsPtrInput {
+	return (*vmwareAdminClusterAntiAffinityGroupsPtrType)(v)
+}
+
+func (*vmwareAdminClusterAntiAffinityGroupsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmwareAdminClusterAntiAffinityGroups)(nil)).Elem()
+}
+
+func (i *vmwareAdminClusterAntiAffinityGroupsPtrType) ToVmwareAdminClusterAntiAffinityGroupsPtrOutput() VmwareAdminClusterAntiAffinityGroupsPtrOutput {
+	return i.ToVmwareAdminClusterAntiAffinityGroupsPtrOutputWithContext(context.Background())
+}
+
+func (i *vmwareAdminClusterAntiAffinityGroupsPtrType) ToVmwareAdminClusterAntiAffinityGroupsPtrOutputWithContext(ctx context.Context) VmwareAdminClusterAntiAffinityGroupsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterAntiAffinityGroupsPtrOutput)
+}
+
+type VmwareAdminClusterAntiAffinityGroupsOutput struct{ *pulumi.OutputState }
+
+func (VmwareAdminClusterAntiAffinityGroupsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareAdminClusterAntiAffinityGroups)(nil)).Elem()
+}
+
+func (o VmwareAdminClusterAntiAffinityGroupsOutput) ToVmwareAdminClusterAntiAffinityGroupsOutput() VmwareAdminClusterAntiAffinityGroupsOutput {
+	return o
+}
+
+func (o VmwareAdminClusterAntiAffinityGroupsOutput) ToVmwareAdminClusterAntiAffinityGroupsOutputWithContext(ctx context.Context) VmwareAdminClusterAntiAffinityGroupsOutput {
+	return o
+}
+
+func (o VmwareAdminClusterAntiAffinityGroupsOutput) ToVmwareAdminClusterAntiAffinityGroupsPtrOutput() VmwareAdminClusterAntiAffinityGroupsPtrOutput {
+	return o.ToVmwareAdminClusterAntiAffinityGroupsPtrOutputWithContext(context.Background())
+}
+
+func (o VmwareAdminClusterAntiAffinityGroupsOutput) ToVmwareAdminClusterAntiAffinityGroupsPtrOutputWithContext(ctx context.Context) VmwareAdminClusterAntiAffinityGroupsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmwareAdminClusterAntiAffinityGroups) *VmwareAdminClusterAntiAffinityGroups {
+		return &v
+	}).(VmwareAdminClusterAntiAffinityGroupsPtrOutput)
+}
+
+// Spread nodes across at least three physical hosts (requires at least three
+// hosts).
+// Enabled by default.
+func (o VmwareAdminClusterAntiAffinityGroupsOutput) AagConfigDisabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v VmwareAdminClusterAntiAffinityGroups) bool { return v.AagConfigDisabled }).(pulumi.BoolOutput)
+}
+
+type VmwareAdminClusterAntiAffinityGroupsPtrOutput struct{ *pulumi.OutputState }
+
+func (VmwareAdminClusterAntiAffinityGroupsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmwareAdminClusterAntiAffinityGroups)(nil)).Elem()
+}
+
+func (o VmwareAdminClusterAntiAffinityGroupsPtrOutput) ToVmwareAdminClusterAntiAffinityGroupsPtrOutput() VmwareAdminClusterAntiAffinityGroupsPtrOutput {
+	return o
+}
+
+func (o VmwareAdminClusterAntiAffinityGroupsPtrOutput) ToVmwareAdminClusterAntiAffinityGroupsPtrOutputWithContext(ctx context.Context) VmwareAdminClusterAntiAffinityGroupsPtrOutput {
+	return o
+}
+
+func (o VmwareAdminClusterAntiAffinityGroupsPtrOutput) Elem() VmwareAdminClusterAntiAffinityGroupsOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterAntiAffinityGroups) VmwareAdminClusterAntiAffinityGroups {
+		if v != nil {
+			return *v
+		}
+		var ret VmwareAdminClusterAntiAffinityGroups
+		return ret
+	}).(VmwareAdminClusterAntiAffinityGroupsOutput)
+}
+
+// Spread nodes across at least three physical hosts (requires at least three
+// hosts).
+// Enabled by default.
+func (o VmwareAdminClusterAntiAffinityGroupsPtrOutput) AagConfigDisabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterAntiAffinityGroups) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.AagConfigDisabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type VmwareAdminClusterAuthorization struct {
+	// Users that will be granted the cluster-admin role on the cluster, providing
+	// full access to the cluster.
+	// Structure is documented below.
+	ViewerUsers []VmwareAdminClusterAuthorizationViewerUser `pulumi:"viewerUsers"`
+}
+
+// VmwareAdminClusterAuthorizationInput is an input type that accepts VmwareAdminClusterAuthorizationArgs and VmwareAdminClusterAuthorizationOutput values.
+// You can construct a concrete instance of `VmwareAdminClusterAuthorizationInput` via:
+//
+//	VmwareAdminClusterAuthorizationArgs{...}
+type VmwareAdminClusterAuthorizationInput interface {
+	pulumi.Input
+
+	ToVmwareAdminClusterAuthorizationOutput() VmwareAdminClusterAuthorizationOutput
+	ToVmwareAdminClusterAuthorizationOutputWithContext(context.Context) VmwareAdminClusterAuthorizationOutput
+}
+
+type VmwareAdminClusterAuthorizationArgs struct {
+	// Users that will be granted the cluster-admin role on the cluster, providing
+	// full access to the cluster.
+	// Structure is documented below.
+	ViewerUsers VmwareAdminClusterAuthorizationViewerUserArrayInput `pulumi:"viewerUsers"`
+}
+
+func (VmwareAdminClusterAuthorizationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareAdminClusterAuthorization)(nil)).Elem()
+}
+
+func (i VmwareAdminClusterAuthorizationArgs) ToVmwareAdminClusterAuthorizationOutput() VmwareAdminClusterAuthorizationOutput {
+	return i.ToVmwareAdminClusterAuthorizationOutputWithContext(context.Background())
+}
+
+func (i VmwareAdminClusterAuthorizationArgs) ToVmwareAdminClusterAuthorizationOutputWithContext(ctx context.Context) VmwareAdminClusterAuthorizationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterAuthorizationOutput)
+}
+
+func (i VmwareAdminClusterAuthorizationArgs) ToVmwareAdminClusterAuthorizationPtrOutput() VmwareAdminClusterAuthorizationPtrOutput {
+	return i.ToVmwareAdminClusterAuthorizationPtrOutputWithContext(context.Background())
+}
+
+func (i VmwareAdminClusterAuthorizationArgs) ToVmwareAdminClusterAuthorizationPtrOutputWithContext(ctx context.Context) VmwareAdminClusterAuthorizationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterAuthorizationOutput).ToVmwareAdminClusterAuthorizationPtrOutputWithContext(ctx)
+}
+
+// VmwareAdminClusterAuthorizationPtrInput is an input type that accepts VmwareAdminClusterAuthorizationArgs, VmwareAdminClusterAuthorizationPtr and VmwareAdminClusterAuthorizationPtrOutput values.
+// You can construct a concrete instance of `VmwareAdminClusterAuthorizationPtrInput` via:
+//
+//	        VmwareAdminClusterAuthorizationArgs{...}
+//
+//	or:
+//
+//	        nil
+type VmwareAdminClusterAuthorizationPtrInput interface {
+	pulumi.Input
+
+	ToVmwareAdminClusterAuthorizationPtrOutput() VmwareAdminClusterAuthorizationPtrOutput
+	ToVmwareAdminClusterAuthorizationPtrOutputWithContext(context.Context) VmwareAdminClusterAuthorizationPtrOutput
+}
+
+type vmwareAdminClusterAuthorizationPtrType VmwareAdminClusterAuthorizationArgs
+
+func VmwareAdminClusterAuthorizationPtr(v *VmwareAdminClusterAuthorizationArgs) VmwareAdminClusterAuthorizationPtrInput {
+	return (*vmwareAdminClusterAuthorizationPtrType)(v)
+}
+
+func (*vmwareAdminClusterAuthorizationPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmwareAdminClusterAuthorization)(nil)).Elem()
+}
+
+func (i *vmwareAdminClusterAuthorizationPtrType) ToVmwareAdminClusterAuthorizationPtrOutput() VmwareAdminClusterAuthorizationPtrOutput {
+	return i.ToVmwareAdminClusterAuthorizationPtrOutputWithContext(context.Background())
+}
+
+func (i *vmwareAdminClusterAuthorizationPtrType) ToVmwareAdminClusterAuthorizationPtrOutputWithContext(ctx context.Context) VmwareAdminClusterAuthorizationPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterAuthorizationPtrOutput)
+}
+
+type VmwareAdminClusterAuthorizationOutput struct{ *pulumi.OutputState }
+
+func (VmwareAdminClusterAuthorizationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareAdminClusterAuthorization)(nil)).Elem()
+}
+
+func (o VmwareAdminClusterAuthorizationOutput) ToVmwareAdminClusterAuthorizationOutput() VmwareAdminClusterAuthorizationOutput {
+	return o
+}
+
+func (o VmwareAdminClusterAuthorizationOutput) ToVmwareAdminClusterAuthorizationOutputWithContext(ctx context.Context) VmwareAdminClusterAuthorizationOutput {
+	return o
+}
+
+func (o VmwareAdminClusterAuthorizationOutput) ToVmwareAdminClusterAuthorizationPtrOutput() VmwareAdminClusterAuthorizationPtrOutput {
+	return o.ToVmwareAdminClusterAuthorizationPtrOutputWithContext(context.Background())
+}
+
+func (o VmwareAdminClusterAuthorizationOutput) ToVmwareAdminClusterAuthorizationPtrOutputWithContext(ctx context.Context) VmwareAdminClusterAuthorizationPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmwareAdminClusterAuthorization) *VmwareAdminClusterAuthorization {
+		return &v
+	}).(VmwareAdminClusterAuthorizationPtrOutput)
+}
+
+// Users that will be granted the cluster-admin role on the cluster, providing
+// full access to the cluster.
+// Structure is documented below.
+func (o VmwareAdminClusterAuthorizationOutput) ViewerUsers() VmwareAdminClusterAuthorizationViewerUserArrayOutput {
+	return o.ApplyT(func(v VmwareAdminClusterAuthorization) []VmwareAdminClusterAuthorizationViewerUser {
+		return v.ViewerUsers
+	}).(VmwareAdminClusterAuthorizationViewerUserArrayOutput)
+}
+
+type VmwareAdminClusterAuthorizationPtrOutput struct{ *pulumi.OutputState }
+
+func (VmwareAdminClusterAuthorizationPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmwareAdminClusterAuthorization)(nil)).Elem()
+}
+
+func (o VmwareAdminClusterAuthorizationPtrOutput) ToVmwareAdminClusterAuthorizationPtrOutput() VmwareAdminClusterAuthorizationPtrOutput {
+	return o
+}
+
+func (o VmwareAdminClusterAuthorizationPtrOutput) ToVmwareAdminClusterAuthorizationPtrOutputWithContext(ctx context.Context) VmwareAdminClusterAuthorizationPtrOutput {
+	return o
+}
+
+func (o VmwareAdminClusterAuthorizationPtrOutput) Elem() VmwareAdminClusterAuthorizationOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterAuthorization) VmwareAdminClusterAuthorization {
+		if v != nil {
+			return *v
+		}
+		var ret VmwareAdminClusterAuthorization
+		return ret
+	}).(VmwareAdminClusterAuthorizationOutput)
+}
+
+// Users that will be granted the cluster-admin role on the cluster, providing
+// full access to the cluster.
+// Structure is documented below.
+func (o VmwareAdminClusterAuthorizationPtrOutput) ViewerUsers() VmwareAdminClusterAuthorizationViewerUserArrayOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterAuthorization) []VmwareAdminClusterAuthorizationViewerUser {
+		if v == nil {
+			return nil
+		}
+		return v.ViewerUsers
+	}).(VmwareAdminClusterAuthorizationViewerUserArrayOutput)
+}
+
+type VmwareAdminClusterAuthorizationViewerUser struct {
+	// The name of the user, e.g. `my-gcp-id@gmail.com`.
+	Username string `pulumi:"username"`
+}
+
+// VmwareAdminClusterAuthorizationViewerUserInput is an input type that accepts VmwareAdminClusterAuthorizationViewerUserArgs and VmwareAdminClusterAuthorizationViewerUserOutput values.
+// You can construct a concrete instance of `VmwareAdminClusterAuthorizationViewerUserInput` via:
+//
+//	VmwareAdminClusterAuthorizationViewerUserArgs{...}
+type VmwareAdminClusterAuthorizationViewerUserInput interface {
+	pulumi.Input
+
+	ToVmwareAdminClusterAuthorizationViewerUserOutput() VmwareAdminClusterAuthorizationViewerUserOutput
+	ToVmwareAdminClusterAuthorizationViewerUserOutputWithContext(context.Context) VmwareAdminClusterAuthorizationViewerUserOutput
+}
+
+type VmwareAdminClusterAuthorizationViewerUserArgs struct {
+	// The name of the user, e.g. `my-gcp-id@gmail.com`.
+	Username pulumi.StringInput `pulumi:"username"`
+}
+
+func (VmwareAdminClusterAuthorizationViewerUserArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareAdminClusterAuthorizationViewerUser)(nil)).Elem()
+}
+
+func (i VmwareAdminClusterAuthorizationViewerUserArgs) ToVmwareAdminClusterAuthorizationViewerUserOutput() VmwareAdminClusterAuthorizationViewerUserOutput {
+	return i.ToVmwareAdminClusterAuthorizationViewerUserOutputWithContext(context.Background())
+}
+
+func (i VmwareAdminClusterAuthorizationViewerUserArgs) ToVmwareAdminClusterAuthorizationViewerUserOutputWithContext(ctx context.Context) VmwareAdminClusterAuthorizationViewerUserOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterAuthorizationViewerUserOutput)
+}
+
+// VmwareAdminClusterAuthorizationViewerUserArrayInput is an input type that accepts VmwareAdminClusterAuthorizationViewerUserArray and VmwareAdminClusterAuthorizationViewerUserArrayOutput values.
+// You can construct a concrete instance of `VmwareAdminClusterAuthorizationViewerUserArrayInput` via:
+//
+//	VmwareAdminClusterAuthorizationViewerUserArray{ VmwareAdminClusterAuthorizationViewerUserArgs{...} }
+type VmwareAdminClusterAuthorizationViewerUserArrayInput interface {
+	pulumi.Input
+
+	ToVmwareAdminClusterAuthorizationViewerUserArrayOutput() VmwareAdminClusterAuthorizationViewerUserArrayOutput
+	ToVmwareAdminClusterAuthorizationViewerUserArrayOutputWithContext(context.Context) VmwareAdminClusterAuthorizationViewerUserArrayOutput
+}
+
+type VmwareAdminClusterAuthorizationViewerUserArray []VmwareAdminClusterAuthorizationViewerUserInput
+
+func (VmwareAdminClusterAuthorizationViewerUserArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VmwareAdminClusterAuthorizationViewerUser)(nil)).Elem()
+}
+
+func (i VmwareAdminClusterAuthorizationViewerUserArray) ToVmwareAdminClusterAuthorizationViewerUserArrayOutput() VmwareAdminClusterAuthorizationViewerUserArrayOutput {
+	return i.ToVmwareAdminClusterAuthorizationViewerUserArrayOutputWithContext(context.Background())
+}
+
+func (i VmwareAdminClusterAuthorizationViewerUserArray) ToVmwareAdminClusterAuthorizationViewerUserArrayOutputWithContext(ctx context.Context) VmwareAdminClusterAuthorizationViewerUserArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterAuthorizationViewerUserArrayOutput)
+}
+
+type VmwareAdminClusterAuthorizationViewerUserOutput struct{ *pulumi.OutputState }
+
+func (VmwareAdminClusterAuthorizationViewerUserOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareAdminClusterAuthorizationViewerUser)(nil)).Elem()
+}
+
+func (o VmwareAdminClusterAuthorizationViewerUserOutput) ToVmwareAdminClusterAuthorizationViewerUserOutput() VmwareAdminClusterAuthorizationViewerUserOutput {
+	return o
+}
+
+func (o VmwareAdminClusterAuthorizationViewerUserOutput) ToVmwareAdminClusterAuthorizationViewerUserOutputWithContext(ctx context.Context) VmwareAdminClusterAuthorizationViewerUserOutput {
+	return o
+}
+
+// The name of the user, e.g. `my-gcp-id@gmail.com`.
+func (o VmwareAdminClusterAuthorizationViewerUserOutput) Username() pulumi.StringOutput {
+	return o.ApplyT(func(v VmwareAdminClusterAuthorizationViewerUser) string { return v.Username }).(pulumi.StringOutput)
+}
+
+type VmwareAdminClusterAuthorizationViewerUserArrayOutput struct{ *pulumi.OutputState }
+
+func (VmwareAdminClusterAuthorizationViewerUserArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VmwareAdminClusterAuthorizationViewerUser)(nil)).Elem()
+}
+
+func (o VmwareAdminClusterAuthorizationViewerUserArrayOutput) ToVmwareAdminClusterAuthorizationViewerUserArrayOutput() VmwareAdminClusterAuthorizationViewerUserArrayOutput {
+	return o
+}
+
+func (o VmwareAdminClusterAuthorizationViewerUserArrayOutput) ToVmwareAdminClusterAuthorizationViewerUserArrayOutputWithContext(ctx context.Context) VmwareAdminClusterAuthorizationViewerUserArrayOutput {
+	return o
+}
+
+func (o VmwareAdminClusterAuthorizationViewerUserArrayOutput) Index(i pulumi.IntInput) VmwareAdminClusterAuthorizationViewerUserOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VmwareAdminClusterAuthorizationViewerUser {
+		return vs[0].([]VmwareAdminClusterAuthorizationViewerUser)[vs[1].(int)]
+	}).(VmwareAdminClusterAuthorizationViewerUserOutput)
+}
+
+type VmwareAdminClusterAutoRepairConfig struct {
+	// Whether auto repair is enabled.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// VmwareAdminClusterAutoRepairConfigInput is an input type that accepts VmwareAdminClusterAutoRepairConfigArgs and VmwareAdminClusterAutoRepairConfigOutput values.
+// You can construct a concrete instance of `VmwareAdminClusterAutoRepairConfigInput` via:
+//
+//	VmwareAdminClusterAutoRepairConfigArgs{...}
+type VmwareAdminClusterAutoRepairConfigInput interface {
+	pulumi.Input
+
+	ToVmwareAdminClusterAutoRepairConfigOutput() VmwareAdminClusterAutoRepairConfigOutput
+	ToVmwareAdminClusterAutoRepairConfigOutputWithContext(context.Context) VmwareAdminClusterAutoRepairConfigOutput
+}
+
+type VmwareAdminClusterAutoRepairConfigArgs struct {
+	// Whether auto repair is enabled.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (VmwareAdminClusterAutoRepairConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareAdminClusterAutoRepairConfig)(nil)).Elem()
+}
+
+func (i VmwareAdminClusterAutoRepairConfigArgs) ToVmwareAdminClusterAutoRepairConfigOutput() VmwareAdminClusterAutoRepairConfigOutput {
+	return i.ToVmwareAdminClusterAutoRepairConfigOutputWithContext(context.Background())
+}
+
+func (i VmwareAdminClusterAutoRepairConfigArgs) ToVmwareAdminClusterAutoRepairConfigOutputWithContext(ctx context.Context) VmwareAdminClusterAutoRepairConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterAutoRepairConfigOutput)
+}
+
+func (i VmwareAdminClusterAutoRepairConfigArgs) ToVmwareAdminClusterAutoRepairConfigPtrOutput() VmwareAdminClusterAutoRepairConfigPtrOutput {
+	return i.ToVmwareAdminClusterAutoRepairConfigPtrOutputWithContext(context.Background())
+}
+
+func (i VmwareAdminClusterAutoRepairConfigArgs) ToVmwareAdminClusterAutoRepairConfigPtrOutputWithContext(ctx context.Context) VmwareAdminClusterAutoRepairConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterAutoRepairConfigOutput).ToVmwareAdminClusterAutoRepairConfigPtrOutputWithContext(ctx)
+}
+
+// VmwareAdminClusterAutoRepairConfigPtrInput is an input type that accepts VmwareAdminClusterAutoRepairConfigArgs, VmwareAdminClusterAutoRepairConfigPtr and VmwareAdminClusterAutoRepairConfigPtrOutput values.
+// You can construct a concrete instance of `VmwareAdminClusterAutoRepairConfigPtrInput` via:
+//
+//	        VmwareAdminClusterAutoRepairConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type VmwareAdminClusterAutoRepairConfigPtrInput interface {
+	pulumi.Input
+
+	ToVmwareAdminClusterAutoRepairConfigPtrOutput() VmwareAdminClusterAutoRepairConfigPtrOutput
+	ToVmwareAdminClusterAutoRepairConfigPtrOutputWithContext(context.Context) VmwareAdminClusterAutoRepairConfigPtrOutput
+}
+
+type vmwareAdminClusterAutoRepairConfigPtrType VmwareAdminClusterAutoRepairConfigArgs
+
+func VmwareAdminClusterAutoRepairConfigPtr(v *VmwareAdminClusterAutoRepairConfigArgs) VmwareAdminClusterAutoRepairConfigPtrInput {
+	return (*vmwareAdminClusterAutoRepairConfigPtrType)(v)
+}
+
+func (*vmwareAdminClusterAutoRepairConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmwareAdminClusterAutoRepairConfig)(nil)).Elem()
+}
+
+func (i *vmwareAdminClusterAutoRepairConfigPtrType) ToVmwareAdminClusterAutoRepairConfigPtrOutput() VmwareAdminClusterAutoRepairConfigPtrOutput {
+	return i.ToVmwareAdminClusterAutoRepairConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *vmwareAdminClusterAutoRepairConfigPtrType) ToVmwareAdminClusterAutoRepairConfigPtrOutputWithContext(ctx context.Context) VmwareAdminClusterAutoRepairConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterAutoRepairConfigPtrOutput)
+}
+
+type VmwareAdminClusterAutoRepairConfigOutput struct{ *pulumi.OutputState }
+
+func (VmwareAdminClusterAutoRepairConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareAdminClusterAutoRepairConfig)(nil)).Elem()
+}
+
+func (o VmwareAdminClusterAutoRepairConfigOutput) ToVmwareAdminClusterAutoRepairConfigOutput() VmwareAdminClusterAutoRepairConfigOutput {
+	return o
+}
+
+func (o VmwareAdminClusterAutoRepairConfigOutput) ToVmwareAdminClusterAutoRepairConfigOutputWithContext(ctx context.Context) VmwareAdminClusterAutoRepairConfigOutput {
+	return o
+}
+
+func (o VmwareAdminClusterAutoRepairConfigOutput) ToVmwareAdminClusterAutoRepairConfigPtrOutput() VmwareAdminClusterAutoRepairConfigPtrOutput {
+	return o.ToVmwareAdminClusterAutoRepairConfigPtrOutputWithContext(context.Background())
+}
+
+func (o VmwareAdminClusterAutoRepairConfigOutput) ToVmwareAdminClusterAutoRepairConfigPtrOutputWithContext(ctx context.Context) VmwareAdminClusterAutoRepairConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmwareAdminClusterAutoRepairConfig) *VmwareAdminClusterAutoRepairConfig {
+		return &v
+	}).(VmwareAdminClusterAutoRepairConfigPtrOutput)
+}
+
+// Whether auto repair is enabled.
+func (o VmwareAdminClusterAutoRepairConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v VmwareAdminClusterAutoRepairConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type VmwareAdminClusterAutoRepairConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (VmwareAdminClusterAutoRepairConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmwareAdminClusterAutoRepairConfig)(nil)).Elem()
+}
+
+func (o VmwareAdminClusterAutoRepairConfigPtrOutput) ToVmwareAdminClusterAutoRepairConfigPtrOutput() VmwareAdminClusterAutoRepairConfigPtrOutput {
+	return o
+}
+
+func (o VmwareAdminClusterAutoRepairConfigPtrOutput) ToVmwareAdminClusterAutoRepairConfigPtrOutputWithContext(ctx context.Context) VmwareAdminClusterAutoRepairConfigPtrOutput {
+	return o
+}
+
+func (o VmwareAdminClusterAutoRepairConfigPtrOutput) Elem() VmwareAdminClusterAutoRepairConfigOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterAutoRepairConfig) VmwareAdminClusterAutoRepairConfig {
+		if v != nil {
+			return *v
+		}
+		var ret VmwareAdminClusterAutoRepairConfig
+		return ret
+	}).(VmwareAdminClusterAutoRepairConfigOutput)
+}
+
+// Whether auto repair is enabled.
+func (o VmwareAdminClusterAutoRepairConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterAutoRepairConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type VmwareAdminClusterControlPlaneNode struct {
+	// The number of vCPUs for the control-plane node of the admin cluster.
+	Cpus *int `pulumi:"cpus"`
+	// The number of mebibytes of memory for the control-plane node of the admin cluster.
+	Memory *int `pulumi:"memory"`
+	// The number of control plane nodes for this VMware admin cluster.
+	Replicas *int `pulumi:"replicas"`
+}
+
+// VmwareAdminClusterControlPlaneNodeInput is an input type that accepts VmwareAdminClusterControlPlaneNodeArgs and VmwareAdminClusterControlPlaneNodeOutput values.
+// You can construct a concrete instance of `VmwareAdminClusterControlPlaneNodeInput` via:
+//
+//	VmwareAdminClusterControlPlaneNodeArgs{...}
+type VmwareAdminClusterControlPlaneNodeInput interface {
+	pulumi.Input
+
+	ToVmwareAdminClusterControlPlaneNodeOutput() VmwareAdminClusterControlPlaneNodeOutput
+	ToVmwareAdminClusterControlPlaneNodeOutputWithContext(context.Context) VmwareAdminClusterControlPlaneNodeOutput
+}
+
+type VmwareAdminClusterControlPlaneNodeArgs struct {
+	// The number of vCPUs for the control-plane node of the admin cluster.
+	Cpus pulumi.IntPtrInput `pulumi:"cpus"`
+	// The number of mebibytes of memory for the control-plane node of the admin cluster.
+	Memory pulumi.IntPtrInput `pulumi:"memory"`
+	// The number of control plane nodes for this VMware admin cluster.
+	Replicas pulumi.IntPtrInput `pulumi:"replicas"`
+}
+
+func (VmwareAdminClusterControlPlaneNodeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareAdminClusterControlPlaneNode)(nil)).Elem()
+}
+
+func (i VmwareAdminClusterControlPlaneNodeArgs) ToVmwareAdminClusterControlPlaneNodeOutput() VmwareAdminClusterControlPlaneNodeOutput {
+	return i.ToVmwareAdminClusterControlPlaneNodeOutputWithContext(context.Background())
+}
+
+func (i VmwareAdminClusterControlPlaneNodeArgs) ToVmwareAdminClusterControlPlaneNodeOutputWithContext(ctx context.Context) VmwareAdminClusterControlPlaneNodeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterControlPlaneNodeOutput)
+}
+
+func (i VmwareAdminClusterControlPlaneNodeArgs) ToVmwareAdminClusterControlPlaneNodePtrOutput() VmwareAdminClusterControlPlaneNodePtrOutput {
+	return i.ToVmwareAdminClusterControlPlaneNodePtrOutputWithContext(context.Background())
+}
+
+func (i VmwareAdminClusterControlPlaneNodeArgs) ToVmwareAdminClusterControlPlaneNodePtrOutputWithContext(ctx context.Context) VmwareAdminClusterControlPlaneNodePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterControlPlaneNodeOutput).ToVmwareAdminClusterControlPlaneNodePtrOutputWithContext(ctx)
+}
+
+// VmwareAdminClusterControlPlaneNodePtrInput is an input type that accepts VmwareAdminClusterControlPlaneNodeArgs, VmwareAdminClusterControlPlaneNodePtr and VmwareAdminClusterControlPlaneNodePtrOutput values.
+// You can construct a concrete instance of `VmwareAdminClusterControlPlaneNodePtrInput` via:
+//
+//	        VmwareAdminClusterControlPlaneNodeArgs{...}
+//
+//	or:
+//
+//	        nil
+type VmwareAdminClusterControlPlaneNodePtrInput interface {
+	pulumi.Input
+
+	ToVmwareAdminClusterControlPlaneNodePtrOutput() VmwareAdminClusterControlPlaneNodePtrOutput
+	ToVmwareAdminClusterControlPlaneNodePtrOutputWithContext(context.Context) VmwareAdminClusterControlPlaneNodePtrOutput
+}
+
+type vmwareAdminClusterControlPlaneNodePtrType VmwareAdminClusterControlPlaneNodeArgs
+
+func VmwareAdminClusterControlPlaneNodePtr(v *VmwareAdminClusterControlPlaneNodeArgs) VmwareAdminClusterControlPlaneNodePtrInput {
+	return (*vmwareAdminClusterControlPlaneNodePtrType)(v)
+}
+
+func (*vmwareAdminClusterControlPlaneNodePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmwareAdminClusterControlPlaneNode)(nil)).Elem()
+}
+
+func (i *vmwareAdminClusterControlPlaneNodePtrType) ToVmwareAdminClusterControlPlaneNodePtrOutput() VmwareAdminClusterControlPlaneNodePtrOutput {
+	return i.ToVmwareAdminClusterControlPlaneNodePtrOutputWithContext(context.Background())
+}
+
+func (i *vmwareAdminClusterControlPlaneNodePtrType) ToVmwareAdminClusterControlPlaneNodePtrOutputWithContext(ctx context.Context) VmwareAdminClusterControlPlaneNodePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterControlPlaneNodePtrOutput)
+}
+
+type VmwareAdminClusterControlPlaneNodeOutput struct{ *pulumi.OutputState }
+
+func (VmwareAdminClusterControlPlaneNodeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareAdminClusterControlPlaneNode)(nil)).Elem()
+}
+
+func (o VmwareAdminClusterControlPlaneNodeOutput) ToVmwareAdminClusterControlPlaneNodeOutput() VmwareAdminClusterControlPlaneNodeOutput {
+	return o
+}
+
+func (o VmwareAdminClusterControlPlaneNodeOutput) ToVmwareAdminClusterControlPlaneNodeOutputWithContext(ctx context.Context) VmwareAdminClusterControlPlaneNodeOutput {
+	return o
+}
+
+func (o VmwareAdminClusterControlPlaneNodeOutput) ToVmwareAdminClusterControlPlaneNodePtrOutput() VmwareAdminClusterControlPlaneNodePtrOutput {
+	return o.ToVmwareAdminClusterControlPlaneNodePtrOutputWithContext(context.Background())
+}
+
+func (o VmwareAdminClusterControlPlaneNodeOutput) ToVmwareAdminClusterControlPlaneNodePtrOutputWithContext(ctx context.Context) VmwareAdminClusterControlPlaneNodePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmwareAdminClusterControlPlaneNode) *VmwareAdminClusterControlPlaneNode {
+		return &v
+	}).(VmwareAdminClusterControlPlaneNodePtrOutput)
+}
+
+// The number of vCPUs for the control-plane node of the admin cluster.
+func (o VmwareAdminClusterControlPlaneNodeOutput) Cpus() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VmwareAdminClusterControlPlaneNode) *int { return v.Cpus }).(pulumi.IntPtrOutput)
+}
+
+// The number of mebibytes of memory for the control-plane node of the admin cluster.
+func (o VmwareAdminClusterControlPlaneNodeOutput) Memory() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VmwareAdminClusterControlPlaneNode) *int { return v.Memory }).(pulumi.IntPtrOutput)
+}
+
+// The number of control plane nodes for this VMware admin cluster.
+func (o VmwareAdminClusterControlPlaneNodeOutput) Replicas() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VmwareAdminClusterControlPlaneNode) *int { return v.Replicas }).(pulumi.IntPtrOutput)
+}
+
+type VmwareAdminClusterControlPlaneNodePtrOutput struct{ *pulumi.OutputState }
+
+func (VmwareAdminClusterControlPlaneNodePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmwareAdminClusterControlPlaneNode)(nil)).Elem()
+}
+
+func (o VmwareAdminClusterControlPlaneNodePtrOutput) ToVmwareAdminClusterControlPlaneNodePtrOutput() VmwareAdminClusterControlPlaneNodePtrOutput {
+	return o
+}
+
+func (o VmwareAdminClusterControlPlaneNodePtrOutput) ToVmwareAdminClusterControlPlaneNodePtrOutputWithContext(ctx context.Context) VmwareAdminClusterControlPlaneNodePtrOutput {
+	return o
+}
+
+func (o VmwareAdminClusterControlPlaneNodePtrOutput) Elem() VmwareAdminClusterControlPlaneNodeOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterControlPlaneNode) VmwareAdminClusterControlPlaneNode {
+		if v != nil {
+			return *v
+		}
+		var ret VmwareAdminClusterControlPlaneNode
+		return ret
+	}).(VmwareAdminClusterControlPlaneNodeOutput)
+}
+
+// The number of vCPUs for the control-plane node of the admin cluster.
+func (o VmwareAdminClusterControlPlaneNodePtrOutput) Cpus() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterControlPlaneNode) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Cpus
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of mebibytes of memory for the control-plane node of the admin cluster.
+func (o VmwareAdminClusterControlPlaneNodePtrOutput) Memory() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterControlPlaneNode) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Memory
+	}).(pulumi.IntPtrOutput)
+}
+
+// The number of control plane nodes for this VMware admin cluster.
+func (o VmwareAdminClusterControlPlaneNodePtrOutput) Replicas() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterControlPlaneNode) *int {
+		if v == nil {
+			return nil
+		}
+		return v.Replicas
+	}).(pulumi.IntPtrOutput)
+}
+
+type VmwareAdminClusterFleet struct {
+	// (Output)
+	// The name of the managed Fleet Membership resource associated to this cluster.
+	// Membership names are formatted as
+	// `projects/<project-number>/locations/<location>/memberships/<cluster-id>`.
+	Membership *string `pulumi:"membership"`
+}
+
+// VmwareAdminClusterFleetInput is an input type that accepts VmwareAdminClusterFleetArgs and VmwareAdminClusterFleetOutput values.
+// You can construct a concrete instance of `VmwareAdminClusterFleetInput` via:
+//
+//	VmwareAdminClusterFleetArgs{...}
+type VmwareAdminClusterFleetInput interface {
+	pulumi.Input
+
+	ToVmwareAdminClusterFleetOutput() VmwareAdminClusterFleetOutput
+	ToVmwareAdminClusterFleetOutputWithContext(context.Context) VmwareAdminClusterFleetOutput
+}
+
+type VmwareAdminClusterFleetArgs struct {
+	// (Output)
+	// The name of the managed Fleet Membership resource associated to this cluster.
+	// Membership names are formatted as
+	// `projects/<project-number>/locations/<location>/memberships/<cluster-id>`.
+	Membership pulumi.StringPtrInput `pulumi:"membership"`
+}
+
+func (VmwareAdminClusterFleetArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareAdminClusterFleet)(nil)).Elem()
+}
+
+func (i VmwareAdminClusterFleetArgs) ToVmwareAdminClusterFleetOutput() VmwareAdminClusterFleetOutput {
+	return i.ToVmwareAdminClusterFleetOutputWithContext(context.Background())
+}
+
+func (i VmwareAdminClusterFleetArgs) ToVmwareAdminClusterFleetOutputWithContext(ctx context.Context) VmwareAdminClusterFleetOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterFleetOutput)
+}
+
+// VmwareAdminClusterFleetArrayInput is an input type that accepts VmwareAdminClusterFleetArray and VmwareAdminClusterFleetArrayOutput values.
+// You can construct a concrete instance of `VmwareAdminClusterFleetArrayInput` via:
+//
+//	VmwareAdminClusterFleetArray{ VmwareAdminClusterFleetArgs{...} }
+type VmwareAdminClusterFleetArrayInput interface {
+	pulumi.Input
+
+	ToVmwareAdminClusterFleetArrayOutput() VmwareAdminClusterFleetArrayOutput
+	ToVmwareAdminClusterFleetArrayOutputWithContext(context.Context) VmwareAdminClusterFleetArrayOutput
+}
+
+type VmwareAdminClusterFleetArray []VmwareAdminClusterFleetInput
+
+func (VmwareAdminClusterFleetArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VmwareAdminClusterFleet)(nil)).Elem()
+}
+
+func (i VmwareAdminClusterFleetArray) ToVmwareAdminClusterFleetArrayOutput() VmwareAdminClusterFleetArrayOutput {
+	return i.ToVmwareAdminClusterFleetArrayOutputWithContext(context.Background())
+}
+
+func (i VmwareAdminClusterFleetArray) ToVmwareAdminClusterFleetArrayOutputWithContext(ctx context.Context) VmwareAdminClusterFleetArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterFleetArrayOutput)
+}
+
+type VmwareAdminClusterFleetOutput struct{ *pulumi.OutputState }
+
+func (VmwareAdminClusterFleetOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareAdminClusterFleet)(nil)).Elem()
+}
+
+func (o VmwareAdminClusterFleetOutput) ToVmwareAdminClusterFleetOutput() VmwareAdminClusterFleetOutput {
+	return o
+}
+
+func (o VmwareAdminClusterFleetOutput) ToVmwareAdminClusterFleetOutputWithContext(ctx context.Context) VmwareAdminClusterFleetOutput {
+	return o
+}
+
+// (Output)
+// The name of the managed Fleet Membership resource associated to this cluster.
+// Membership names are formatted as
+// `projects/<project-number>/locations/<location>/memberships/<cluster-id>`.
+func (o VmwareAdminClusterFleetOutput) Membership() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmwareAdminClusterFleet) *string { return v.Membership }).(pulumi.StringPtrOutput)
+}
+
+type VmwareAdminClusterFleetArrayOutput struct{ *pulumi.OutputState }
+
+func (VmwareAdminClusterFleetArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VmwareAdminClusterFleet)(nil)).Elem()
+}
+
+func (o VmwareAdminClusterFleetArrayOutput) ToVmwareAdminClusterFleetArrayOutput() VmwareAdminClusterFleetArrayOutput {
+	return o
+}
+
+func (o VmwareAdminClusterFleetArrayOutput) ToVmwareAdminClusterFleetArrayOutputWithContext(ctx context.Context) VmwareAdminClusterFleetArrayOutput {
+	return o
+}
+
+func (o VmwareAdminClusterFleetArrayOutput) Index(i pulumi.IntInput) VmwareAdminClusterFleetOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VmwareAdminClusterFleet {
+		return vs[0].([]VmwareAdminClusterFleet)[vs[1].(int)]
+	}).(VmwareAdminClusterFleetOutput)
+}
+
+type VmwareAdminClusterLoadBalancer struct {
+	// Configuration for F5 Big IP typed load balancers.
+	// Structure is documented below.
+	F5Config *VmwareAdminClusterLoadBalancerF5Config `pulumi:"f5Config"`
+	// Manually configured load balancers.
+	// Structure is documented below.
+	ManualLbConfig *VmwareAdminClusterLoadBalancerManualLbConfig `pulumi:"manualLbConfig"`
+	// Metal LB load balancers.
+	// Structure is documented below.
+	MetalLbConfig *VmwareAdminClusterLoadBalancerMetalLbConfig `pulumi:"metalLbConfig"`
+	// Specified the VMware Load Balancer Config
+	// Structure is documented below.
+	VipConfig VmwareAdminClusterLoadBalancerVipConfig `pulumi:"vipConfig"`
+}
+
+// VmwareAdminClusterLoadBalancerInput is an input type that accepts VmwareAdminClusterLoadBalancerArgs and VmwareAdminClusterLoadBalancerOutput values.
+// You can construct a concrete instance of `VmwareAdminClusterLoadBalancerInput` via:
+//
+//	VmwareAdminClusterLoadBalancerArgs{...}
+type VmwareAdminClusterLoadBalancerInput interface {
+	pulumi.Input
+
+	ToVmwareAdminClusterLoadBalancerOutput() VmwareAdminClusterLoadBalancerOutput
+	ToVmwareAdminClusterLoadBalancerOutputWithContext(context.Context) VmwareAdminClusterLoadBalancerOutput
+}
+
+type VmwareAdminClusterLoadBalancerArgs struct {
+	// Configuration for F5 Big IP typed load balancers.
+	// Structure is documented below.
+	F5Config VmwareAdminClusterLoadBalancerF5ConfigPtrInput `pulumi:"f5Config"`
+	// Manually configured load balancers.
+	// Structure is documented below.
+	ManualLbConfig VmwareAdminClusterLoadBalancerManualLbConfigPtrInput `pulumi:"manualLbConfig"`
+	// Metal LB load balancers.
+	// Structure is documented below.
+	MetalLbConfig VmwareAdminClusterLoadBalancerMetalLbConfigPtrInput `pulumi:"metalLbConfig"`
+	// Specified the VMware Load Balancer Config
+	// Structure is documented below.
+	VipConfig VmwareAdminClusterLoadBalancerVipConfigInput `pulumi:"vipConfig"`
+}
+
+func (VmwareAdminClusterLoadBalancerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareAdminClusterLoadBalancer)(nil)).Elem()
+}
+
+func (i VmwareAdminClusterLoadBalancerArgs) ToVmwareAdminClusterLoadBalancerOutput() VmwareAdminClusterLoadBalancerOutput {
+	return i.ToVmwareAdminClusterLoadBalancerOutputWithContext(context.Background())
+}
+
+func (i VmwareAdminClusterLoadBalancerArgs) ToVmwareAdminClusterLoadBalancerOutputWithContext(ctx context.Context) VmwareAdminClusterLoadBalancerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterLoadBalancerOutput)
+}
+
+func (i VmwareAdminClusterLoadBalancerArgs) ToVmwareAdminClusterLoadBalancerPtrOutput() VmwareAdminClusterLoadBalancerPtrOutput {
+	return i.ToVmwareAdminClusterLoadBalancerPtrOutputWithContext(context.Background())
+}
+
+func (i VmwareAdminClusterLoadBalancerArgs) ToVmwareAdminClusterLoadBalancerPtrOutputWithContext(ctx context.Context) VmwareAdminClusterLoadBalancerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterLoadBalancerOutput).ToVmwareAdminClusterLoadBalancerPtrOutputWithContext(ctx)
+}
+
+// VmwareAdminClusterLoadBalancerPtrInput is an input type that accepts VmwareAdminClusterLoadBalancerArgs, VmwareAdminClusterLoadBalancerPtr and VmwareAdminClusterLoadBalancerPtrOutput values.
+// You can construct a concrete instance of `VmwareAdminClusterLoadBalancerPtrInput` via:
+//
+//	        VmwareAdminClusterLoadBalancerArgs{...}
+//
+//	or:
+//
+//	        nil
+type VmwareAdminClusterLoadBalancerPtrInput interface {
+	pulumi.Input
+
+	ToVmwareAdminClusterLoadBalancerPtrOutput() VmwareAdminClusterLoadBalancerPtrOutput
+	ToVmwareAdminClusterLoadBalancerPtrOutputWithContext(context.Context) VmwareAdminClusterLoadBalancerPtrOutput
+}
+
+type vmwareAdminClusterLoadBalancerPtrType VmwareAdminClusterLoadBalancerArgs
+
+func VmwareAdminClusterLoadBalancerPtr(v *VmwareAdminClusterLoadBalancerArgs) VmwareAdminClusterLoadBalancerPtrInput {
+	return (*vmwareAdminClusterLoadBalancerPtrType)(v)
+}
+
+func (*vmwareAdminClusterLoadBalancerPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmwareAdminClusterLoadBalancer)(nil)).Elem()
+}
+
+func (i *vmwareAdminClusterLoadBalancerPtrType) ToVmwareAdminClusterLoadBalancerPtrOutput() VmwareAdminClusterLoadBalancerPtrOutput {
+	return i.ToVmwareAdminClusterLoadBalancerPtrOutputWithContext(context.Background())
+}
+
+func (i *vmwareAdminClusterLoadBalancerPtrType) ToVmwareAdminClusterLoadBalancerPtrOutputWithContext(ctx context.Context) VmwareAdminClusterLoadBalancerPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterLoadBalancerPtrOutput)
+}
+
+type VmwareAdminClusterLoadBalancerOutput struct{ *pulumi.OutputState }
+
+func (VmwareAdminClusterLoadBalancerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareAdminClusterLoadBalancer)(nil)).Elem()
+}
+
+func (o VmwareAdminClusterLoadBalancerOutput) ToVmwareAdminClusterLoadBalancerOutput() VmwareAdminClusterLoadBalancerOutput {
+	return o
+}
+
+func (o VmwareAdminClusterLoadBalancerOutput) ToVmwareAdminClusterLoadBalancerOutputWithContext(ctx context.Context) VmwareAdminClusterLoadBalancerOutput {
+	return o
+}
+
+func (o VmwareAdminClusterLoadBalancerOutput) ToVmwareAdminClusterLoadBalancerPtrOutput() VmwareAdminClusterLoadBalancerPtrOutput {
+	return o.ToVmwareAdminClusterLoadBalancerPtrOutputWithContext(context.Background())
+}
+
+func (o VmwareAdminClusterLoadBalancerOutput) ToVmwareAdminClusterLoadBalancerPtrOutputWithContext(ctx context.Context) VmwareAdminClusterLoadBalancerPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmwareAdminClusterLoadBalancer) *VmwareAdminClusterLoadBalancer {
+		return &v
+	}).(VmwareAdminClusterLoadBalancerPtrOutput)
+}
+
+// Configuration for F5 Big IP typed load balancers.
+// Structure is documented below.
+func (o VmwareAdminClusterLoadBalancerOutput) F5Config() VmwareAdminClusterLoadBalancerF5ConfigPtrOutput {
+	return o.ApplyT(func(v VmwareAdminClusterLoadBalancer) *VmwareAdminClusterLoadBalancerF5Config { return v.F5Config }).(VmwareAdminClusterLoadBalancerF5ConfigPtrOutput)
+}
+
+// Manually configured load balancers.
+// Structure is documented below.
+func (o VmwareAdminClusterLoadBalancerOutput) ManualLbConfig() VmwareAdminClusterLoadBalancerManualLbConfigPtrOutput {
+	return o.ApplyT(func(v VmwareAdminClusterLoadBalancer) *VmwareAdminClusterLoadBalancerManualLbConfig {
+		return v.ManualLbConfig
+	}).(VmwareAdminClusterLoadBalancerManualLbConfigPtrOutput)
+}
+
+// Metal LB load balancers.
+// Structure is documented below.
+func (o VmwareAdminClusterLoadBalancerOutput) MetalLbConfig() VmwareAdminClusterLoadBalancerMetalLbConfigPtrOutput {
+	return o.ApplyT(func(v VmwareAdminClusterLoadBalancer) *VmwareAdminClusterLoadBalancerMetalLbConfig {
+		return v.MetalLbConfig
+	}).(VmwareAdminClusterLoadBalancerMetalLbConfigPtrOutput)
+}
+
+// Specified the VMware Load Balancer Config
+// Structure is documented below.
+func (o VmwareAdminClusterLoadBalancerOutput) VipConfig() VmwareAdminClusterLoadBalancerVipConfigOutput {
+	return o.ApplyT(func(v VmwareAdminClusterLoadBalancer) VmwareAdminClusterLoadBalancerVipConfig { return v.VipConfig }).(VmwareAdminClusterLoadBalancerVipConfigOutput)
+}
+
+type VmwareAdminClusterLoadBalancerPtrOutput struct{ *pulumi.OutputState }
+
+func (VmwareAdminClusterLoadBalancerPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmwareAdminClusterLoadBalancer)(nil)).Elem()
+}
+
+func (o VmwareAdminClusterLoadBalancerPtrOutput) ToVmwareAdminClusterLoadBalancerPtrOutput() VmwareAdminClusterLoadBalancerPtrOutput {
+	return o
+}
+
+func (o VmwareAdminClusterLoadBalancerPtrOutput) ToVmwareAdminClusterLoadBalancerPtrOutputWithContext(ctx context.Context) VmwareAdminClusterLoadBalancerPtrOutput {
+	return o
+}
+
+func (o VmwareAdminClusterLoadBalancerPtrOutput) Elem() VmwareAdminClusterLoadBalancerOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterLoadBalancer) VmwareAdminClusterLoadBalancer {
+		if v != nil {
+			return *v
+		}
+		var ret VmwareAdminClusterLoadBalancer
+		return ret
+	}).(VmwareAdminClusterLoadBalancerOutput)
+}
+
+// Configuration for F5 Big IP typed load balancers.
+// Structure is documented below.
+func (o VmwareAdminClusterLoadBalancerPtrOutput) F5Config() VmwareAdminClusterLoadBalancerF5ConfigPtrOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterLoadBalancer) *VmwareAdminClusterLoadBalancerF5Config {
+		if v == nil {
+			return nil
+		}
+		return v.F5Config
+	}).(VmwareAdminClusterLoadBalancerF5ConfigPtrOutput)
+}
+
+// Manually configured load balancers.
+// Structure is documented below.
+func (o VmwareAdminClusterLoadBalancerPtrOutput) ManualLbConfig() VmwareAdminClusterLoadBalancerManualLbConfigPtrOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterLoadBalancer) *VmwareAdminClusterLoadBalancerManualLbConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ManualLbConfig
+	}).(VmwareAdminClusterLoadBalancerManualLbConfigPtrOutput)
+}
+
+// Metal LB load balancers.
+// Structure is documented below.
+func (o VmwareAdminClusterLoadBalancerPtrOutput) MetalLbConfig() VmwareAdminClusterLoadBalancerMetalLbConfigPtrOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterLoadBalancer) *VmwareAdminClusterLoadBalancerMetalLbConfig {
+		if v == nil {
+			return nil
+		}
+		return v.MetalLbConfig
+	}).(VmwareAdminClusterLoadBalancerMetalLbConfigPtrOutput)
+}
+
+// Specified the VMware Load Balancer Config
+// Structure is documented below.
+func (o VmwareAdminClusterLoadBalancerPtrOutput) VipConfig() VmwareAdminClusterLoadBalancerVipConfigPtrOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterLoadBalancer) *VmwareAdminClusterLoadBalancerVipConfig {
+		if v == nil {
+			return nil
+		}
+		return &v.VipConfig
+	}).(VmwareAdminClusterLoadBalancerVipConfigPtrOutput)
+}
+
+type VmwareAdminClusterLoadBalancerF5Config struct {
+	// The load balancer's IP address.
+	Address *string `pulumi:"address"`
+	// he preexisting partition to be used by the load balancer. T
+	// his partition is usually created for the admin cluster for example:
+	// 'my-f5-admin-partition'.
+	Partition *string `pulumi:"partition"`
+	// The pool name. Only necessary, if using SNAT.
+	SnatPool *string `pulumi:"snatPool"`
+}
+
+// VmwareAdminClusterLoadBalancerF5ConfigInput is an input type that accepts VmwareAdminClusterLoadBalancerF5ConfigArgs and VmwareAdminClusterLoadBalancerF5ConfigOutput values.
+// You can construct a concrete instance of `VmwareAdminClusterLoadBalancerF5ConfigInput` via:
+//
+//	VmwareAdminClusterLoadBalancerF5ConfigArgs{...}
+type VmwareAdminClusterLoadBalancerF5ConfigInput interface {
+	pulumi.Input
+
+	ToVmwareAdminClusterLoadBalancerF5ConfigOutput() VmwareAdminClusterLoadBalancerF5ConfigOutput
+	ToVmwareAdminClusterLoadBalancerF5ConfigOutputWithContext(context.Context) VmwareAdminClusterLoadBalancerF5ConfigOutput
+}
+
+type VmwareAdminClusterLoadBalancerF5ConfigArgs struct {
+	// The load balancer's IP address.
+	Address pulumi.StringPtrInput `pulumi:"address"`
+	// he preexisting partition to be used by the load balancer. T
+	// his partition is usually created for the admin cluster for example:
+	// 'my-f5-admin-partition'.
+	Partition pulumi.StringPtrInput `pulumi:"partition"`
+	// The pool name. Only necessary, if using SNAT.
+	SnatPool pulumi.StringPtrInput `pulumi:"snatPool"`
+}
+
+func (VmwareAdminClusterLoadBalancerF5ConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareAdminClusterLoadBalancerF5Config)(nil)).Elem()
+}
+
+func (i VmwareAdminClusterLoadBalancerF5ConfigArgs) ToVmwareAdminClusterLoadBalancerF5ConfigOutput() VmwareAdminClusterLoadBalancerF5ConfigOutput {
+	return i.ToVmwareAdminClusterLoadBalancerF5ConfigOutputWithContext(context.Background())
+}
+
+func (i VmwareAdminClusterLoadBalancerF5ConfigArgs) ToVmwareAdminClusterLoadBalancerF5ConfigOutputWithContext(ctx context.Context) VmwareAdminClusterLoadBalancerF5ConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterLoadBalancerF5ConfigOutput)
+}
+
+func (i VmwareAdminClusterLoadBalancerF5ConfigArgs) ToVmwareAdminClusterLoadBalancerF5ConfigPtrOutput() VmwareAdminClusterLoadBalancerF5ConfigPtrOutput {
+	return i.ToVmwareAdminClusterLoadBalancerF5ConfigPtrOutputWithContext(context.Background())
+}
+
+func (i VmwareAdminClusterLoadBalancerF5ConfigArgs) ToVmwareAdminClusterLoadBalancerF5ConfigPtrOutputWithContext(ctx context.Context) VmwareAdminClusterLoadBalancerF5ConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterLoadBalancerF5ConfigOutput).ToVmwareAdminClusterLoadBalancerF5ConfigPtrOutputWithContext(ctx)
+}
+
+// VmwareAdminClusterLoadBalancerF5ConfigPtrInput is an input type that accepts VmwareAdminClusterLoadBalancerF5ConfigArgs, VmwareAdminClusterLoadBalancerF5ConfigPtr and VmwareAdminClusterLoadBalancerF5ConfigPtrOutput values.
+// You can construct a concrete instance of `VmwareAdminClusterLoadBalancerF5ConfigPtrInput` via:
+//
+//	        VmwareAdminClusterLoadBalancerF5ConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type VmwareAdminClusterLoadBalancerF5ConfigPtrInput interface {
+	pulumi.Input
+
+	ToVmwareAdminClusterLoadBalancerF5ConfigPtrOutput() VmwareAdminClusterLoadBalancerF5ConfigPtrOutput
+	ToVmwareAdminClusterLoadBalancerF5ConfigPtrOutputWithContext(context.Context) VmwareAdminClusterLoadBalancerF5ConfigPtrOutput
+}
+
+type vmwareAdminClusterLoadBalancerF5ConfigPtrType VmwareAdminClusterLoadBalancerF5ConfigArgs
+
+func VmwareAdminClusterLoadBalancerF5ConfigPtr(v *VmwareAdminClusterLoadBalancerF5ConfigArgs) VmwareAdminClusterLoadBalancerF5ConfigPtrInput {
+	return (*vmwareAdminClusterLoadBalancerF5ConfigPtrType)(v)
+}
+
+func (*vmwareAdminClusterLoadBalancerF5ConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmwareAdminClusterLoadBalancerF5Config)(nil)).Elem()
+}
+
+func (i *vmwareAdminClusterLoadBalancerF5ConfigPtrType) ToVmwareAdminClusterLoadBalancerF5ConfigPtrOutput() VmwareAdminClusterLoadBalancerF5ConfigPtrOutput {
+	return i.ToVmwareAdminClusterLoadBalancerF5ConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *vmwareAdminClusterLoadBalancerF5ConfigPtrType) ToVmwareAdminClusterLoadBalancerF5ConfigPtrOutputWithContext(ctx context.Context) VmwareAdminClusterLoadBalancerF5ConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterLoadBalancerF5ConfigPtrOutput)
+}
+
+type VmwareAdminClusterLoadBalancerF5ConfigOutput struct{ *pulumi.OutputState }
+
+func (VmwareAdminClusterLoadBalancerF5ConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareAdminClusterLoadBalancerF5Config)(nil)).Elem()
+}
+
+func (o VmwareAdminClusterLoadBalancerF5ConfigOutput) ToVmwareAdminClusterLoadBalancerF5ConfigOutput() VmwareAdminClusterLoadBalancerF5ConfigOutput {
+	return o
+}
+
+func (o VmwareAdminClusterLoadBalancerF5ConfigOutput) ToVmwareAdminClusterLoadBalancerF5ConfigOutputWithContext(ctx context.Context) VmwareAdminClusterLoadBalancerF5ConfigOutput {
+	return o
+}
+
+func (o VmwareAdminClusterLoadBalancerF5ConfigOutput) ToVmwareAdminClusterLoadBalancerF5ConfigPtrOutput() VmwareAdminClusterLoadBalancerF5ConfigPtrOutput {
+	return o.ToVmwareAdminClusterLoadBalancerF5ConfigPtrOutputWithContext(context.Background())
+}
+
+func (o VmwareAdminClusterLoadBalancerF5ConfigOutput) ToVmwareAdminClusterLoadBalancerF5ConfigPtrOutputWithContext(ctx context.Context) VmwareAdminClusterLoadBalancerF5ConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmwareAdminClusterLoadBalancerF5Config) *VmwareAdminClusterLoadBalancerF5Config {
+		return &v
+	}).(VmwareAdminClusterLoadBalancerF5ConfigPtrOutput)
+}
+
+// The load balancer's IP address.
+func (o VmwareAdminClusterLoadBalancerF5ConfigOutput) Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmwareAdminClusterLoadBalancerF5Config) *string { return v.Address }).(pulumi.StringPtrOutput)
+}
+
+// he preexisting partition to be used by the load balancer. T
+// his partition is usually created for the admin cluster for example:
+// 'my-f5-admin-partition'.
+func (o VmwareAdminClusterLoadBalancerF5ConfigOutput) Partition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmwareAdminClusterLoadBalancerF5Config) *string { return v.Partition }).(pulumi.StringPtrOutput)
+}
+
+// The pool name. Only necessary, if using SNAT.
+func (o VmwareAdminClusterLoadBalancerF5ConfigOutput) SnatPool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmwareAdminClusterLoadBalancerF5Config) *string { return v.SnatPool }).(pulumi.StringPtrOutput)
+}
+
+type VmwareAdminClusterLoadBalancerF5ConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (VmwareAdminClusterLoadBalancerF5ConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmwareAdminClusterLoadBalancerF5Config)(nil)).Elem()
+}
+
+func (o VmwareAdminClusterLoadBalancerF5ConfigPtrOutput) ToVmwareAdminClusterLoadBalancerF5ConfigPtrOutput() VmwareAdminClusterLoadBalancerF5ConfigPtrOutput {
+	return o
+}
+
+func (o VmwareAdminClusterLoadBalancerF5ConfigPtrOutput) ToVmwareAdminClusterLoadBalancerF5ConfigPtrOutputWithContext(ctx context.Context) VmwareAdminClusterLoadBalancerF5ConfigPtrOutput {
+	return o
+}
+
+func (o VmwareAdminClusterLoadBalancerF5ConfigPtrOutput) Elem() VmwareAdminClusterLoadBalancerF5ConfigOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterLoadBalancerF5Config) VmwareAdminClusterLoadBalancerF5Config {
+		if v != nil {
+			return *v
+		}
+		var ret VmwareAdminClusterLoadBalancerF5Config
+		return ret
+	}).(VmwareAdminClusterLoadBalancerF5ConfigOutput)
+}
+
+// The load balancer's IP address.
+func (o VmwareAdminClusterLoadBalancerF5ConfigPtrOutput) Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterLoadBalancerF5Config) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Address
+	}).(pulumi.StringPtrOutput)
+}
+
+// he preexisting partition to be used by the load balancer. T
+// his partition is usually created for the admin cluster for example:
+// 'my-f5-admin-partition'.
+func (o VmwareAdminClusterLoadBalancerF5ConfigPtrOutput) Partition() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterLoadBalancerF5Config) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Partition
+	}).(pulumi.StringPtrOutput)
+}
+
+// The pool name. Only necessary, if using SNAT.
+func (o VmwareAdminClusterLoadBalancerF5ConfigPtrOutput) SnatPool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterLoadBalancerF5Config) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SnatPool
+	}).(pulumi.StringPtrOutput)
+}
+
+type VmwareAdminClusterLoadBalancerManualLbConfig struct {
+	// NodePort for add-ons server in the admin cluster.
+	AddonsNodePort *int `pulumi:"addonsNodePort"`
+	// NodePort for control plane service. The Kubernetes API server in the admin
+	// cluster is implemented as a Service of type NodePort (ex. 30968).
+	ControlPlaneNodePort *int `pulumi:"controlPlaneNodePort"`
+	// NodePort for ingress service's http. The ingress service in the admin
+	// cluster is implemented as a Service of type NodePort (ex. 32527).
+	IngressHttpNodePort *int `pulumi:"ingressHttpNodePort"`
+	// NodePort for ingress service's https. The ingress service in the admin
+	// cluster is implemented as a Service of type NodePort (ex. 30139).
+	IngressHttpsNodePort *int `pulumi:"ingressHttpsNodePort"`
+	// NodePort for konnectivity server service running as a sidecar in each
+	// kube-apiserver pod (ex. 30564).
+	KonnectivityServerNodePort *int `pulumi:"konnectivityServerNodePort"`
+}
+
+// VmwareAdminClusterLoadBalancerManualLbConfigInput is an input type that accepts VmwareAdminClusterLoadBalancerManualLbConfigArgs and VmwareAdminClusterLoadBalancerManualLbConfigOutput values.
+// You can construct a concrete instance of `VmwareAdminClusterLoadBalancerManualLbConfigInput` via:
+//
+//	VmwareAdminClusterLoadBalancerManualLbConfigArgs{...}
+type VmwareAdminClusterLoadBalancerManualLbConfigInput interface {
+	pulumi.Input
+
+	ToVmwareAdminClusterLoadBalancerManualLbConfigOutput() VmwareAdminClusterLoadBalancerManualLbConfigOutput
+	ToVmwareAdminClusterLoadBalancerManualLbConfigOutputWithContext(context.Context) VmwareAdminClusterLoadBalancerManualLbConfigOutput
+}
+
+type VmwareAdminClusterLoadBalancerManualLbConfigArgs struct {
+	// NodePort for add-ons server in the admin cluster.
+	AddonsNodePort pulumi.IntPtrInput `pulumi:"addonsNodePort"`
+	// NodePort for control plane service. The Kubernetes API server in the admin
+	// cluster is implemented as a Service of type NodePort (ex. 30968).
+	ControlPlaneNodePort pulumi.IntPtrInput `pulumi:"controlPlaneNodePort"`
+	// NodePort for ingress service's http. The ingress service in the admin
+	// cluster is implemented as a Service of type NodePort (ex. 32527).
+	IngressHttpNodePort pulumi.IntPtrInput `pulumi:"ingressHttpNodePort"`
+	// NodePort for ingress service's https. The ingress service in the admin
+	// cluster is implemented as a Service of type NodePort (ex. 30139).
+	IngressHttpsNodePort pulumi.IntPtrInput `pulumi:"ingressHttpsNodePort"`
+	// NodePort for konnectivity server service running as a sidecar in each
+	// kube-apiserver pod (ex. 30564).
+	KonnectivityServerNodePort pulumi.IntPtrInput `pulumi:"konnectivityServerNodePort"`
+}
+
+func (VmwareAdminClusterLoadBalancerManualLbConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareAdminClusterLoadBalancerManualLbConfig)(nil)).Elem()
+}
+
+func (i VmwareAdminClusterLoadBalancerManualLbConfigArgs) ToVmwareAdminClusterLoadBalancerManualLbConfigOutput() VmwareAdminClusterLoadBalancerManualLbConfigOutput {
+	return i.ToVmwareAdminClusterLoadBalancerManualLbConfigOutputWithContext(context.Background())
+}
+
+func (i VmwareAdminClusterLoadBalancerManualLbConfigArgs) ToVmwareAdminClusterLoadBalancerManualLbConfigOutputWithContext(ctx context.Context) VmwareAdminClusterLoadBalancerManualLbConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterLoadBalancerManualLbConfigOutput)
+}
+
+func (i VmwareAdminClusterLoadBalancerManualLbConfigArgs) ToVmwareAdminClusterLoadBalancerManualLbConfigPtrOutput() VmwareAdminClusterLoadBalancerManualLbConfigPtrOutput {
+	return i.ToVmwareAdminClusterLoadBalancerManualLbConfigPtrOutputWithContext(context.Background())
+}
+
+func (i VmwareAdminClusterLoadBalancerManualLbConfigArgs) ToVmwareAdminClusterLoadBalancerManualLbConfigPtrOutputWithContext(ctx context.Context) VmwareAdminClusterLoadBalancerManualLbConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterLoadBalancerManualLbConfigOutput).ToVmwareAdminClusterLoadBalancerManualLbConfigPtrOutputWithContext(ctx)
+}
+
+// VmwareAdminClusterLoadBalancerManualLbConfigPtrInput is an input type that accepts VmwareAdminClusterLoadBalancerManualLbConfigArgs, VmwareAdminClusterLoadBalancerManualLbConfigPtr and VmwareAdminClusterLoadBalancerManualLbConfigPtrOutput values.
+// You can construct a concrete instance of `VmwareAdminClusterLoadBalancerManualLbConfigPtrInput` via:
+//
+//	        VmwareAdminClusterLoadBalancerManualLbConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type VmwareAdminClusterLoadBalancerManualLbConfigPtrInput interface {
+	pulumi.Input
+
+	ToVmwareAdminClusterLoadBalancerManualLbConfigPtrOutput() VmwareAdminClusterLoadBalancerManualLbConfigPtrOutput
+	ToVmwareAdminClusterLoadBalancerManualLbConfigPtrOutputWithContext(context.Context) VmwareAdminClusterLoadBalancerManualLbConfigPtrOutput
+}
+
+type vmwareAdminClusterLoadBalancerManualLbConfigPtrType VmwareAdminClusterLoadBalancerManualLbConfigArgs
+
+func VmwareAdminClusterLoadBalancerManualLbConfigPtr(v *VmwareAdminClusterLoadBalancerManualLbConfigArgs) VmwareAdminClusterLoadBalancerManualLbConfigPtrInput {
+	return (*vmwareAdminClusterLoadBalancerManualLbConfigPtrType)(v)
+}
+
+func (*vmwareAdminClusterLoadBalancerManualLbConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmwareAdminClusterLoadBalancerManualLbConfig)(nil)).Elem()
+}
+
+func (i *vmwareAdminClusterLoadBalancerManualLbConfigPtrType) ToVmwareAdminClusterLoadBalancerManualLbConfigPtrOutput() VmwareAdminClusterLoadBalancerManualLbConfigPtrOutput {
+	return i.ToVmwareAdminClusterLoadBalancerManualLbConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *vmwareAdminClusterLoadBalancerManualLbConfigPtrType) ToVmwareAdminClusterLoadBalancerManualLbConfigPtrOutputWithContext(ctx context.Context) VmwareAdminClusterLoadBalancerManualLbConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterLoadBalancerManualLbConfigPtrOutput)
+}
+
+type VmwareAdminClusterLoadBalancerManualLbConfigOutput struct{ *pulumi.OutputState }
+
+func (VmwareAdminClusterLoadBalancerManualLbConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareAdminClusterLoadBalancerManualLbConfig)(nil)).Elem()
+}
+
+func (o VmwareAdminClusterLoadBalancerManualLbConfigOutput) ToVmwareAdminClusterLoadBalancerManualLbConfigOutput() VmwareAdminClusterLoadBalancerManualLbConfigOutput {
+	return o
+}
+
+func (o VmwareAdminClusterLoadBalancerManualLbConfigOutput) ToVmwareAdminClusterLoadBalancerManualLbConfigOutputWithContext(ctx context.Context) VmwareAdminClusterLoadBalancerManualLbConfigOutput {
+	return o
+}
+
+func (o VmwareAdminClusterLoadBalancerManualLbConfigOutput) ToVmwareAdminClusterLoadBalancerManualLbConfigPtrOutput() VmwareAdminClusterLoadBalancerManualLbConfigPtrOutput {
+	return o.ToVmwareAdminClusterLoadBalancerManualLbConfigPtrOutputWithContext(context.Background())
+}
+
+func (o VmwareAdminClusterLoadBalancerManualLbConfigOutput) ToVmwareAdminClusterLoadBalancerManualLbConfigPtrOutputWithContext(ctx context.Context) VmwareAdminClusterLoadBalancerManualLbConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmwareAdminClusterLoadBalancerManualLbConfig) *VmwareAdminClusterLoadBalancerManualLbConfig {
+		return &v
+	}).(VmwareAdminClusterLoadBalancerManualLbConfigPtrOutput)
+}
+
+// NodePort for add-ons server in the admin cluster.
+func (o VmwareAdminClusterLoadBalancerManualLbConfigOutput) AddonsNodePort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VmwareAdminClusterLoadBalancerManualLbConfig) *int { return v.AddonsNodePort }).(pulumi.IntPtrOutput)
+}
+
+// NodePort for control plane service. The Kubernetes API server in the admin
+// cluster is implemented as a Service of type NodePort (ex. 30968).
+func (o VmwareAdminClusterLoadBalancerManualLbConfigOutput) ControlPlaneNodePort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VmwareAdminClusterLoadBalancerManualLbConfig) *int { return v.ControlPlaneNodePort }).(pulumi.IntPtrOutput)
+}
+
+// NodePort for ingress service's http. The ingress service in the admin
+// cluster is implemented as a Service of type NodePort (ex. 32527).
+func (o VmwareAdminClusterLoadBalancerManualLbConfigOutput) IngressHttpNodePort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VmwareAdminClusterLoadBalancerManualLbConfig) *int { return v.IngressHttpNodePort }).(pulumi.IntPtrOutput)
+}
+
+// NodePort for ingress service's https. The ingress service in the admin
+// cluster is implemented as a Service of type NodePort (ex. 30139).
+func (o VmwareAdminClusterLoadBalancerManualLbConfigOutput) IngressHttpsNodePort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VmwareAdminClusterLoadBalancerManualLbConfig) *int { return v.IngressHttpsNodePort }).(pulumi.IntPtrOutput)
+}
+
+// NodePort for konnectivity server service running as a sidecar in each
+// kube-apiserver pod (ex. 30564).
+func (o VmwareAdminClusterLoadBalancerManualLbConfigOutput) KonnectivityServerNodePort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v VmwareAdminClusterLoadBalancerManualLbConfig) *int { return v.KonnectivityServerNodePort }).(pulumi.IntPtrOutput)
+}
+
+type VmwareAdminClusterLoadBalancerManualLbConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (VmwareAdminClusterLoadBalancerManualLbConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmwareAdminClusterLoadBalancerManualLbConfig)(nil)).Elem()
+}
+
+func (o VmwareAdminClusterLoadBalancerManualLbConfigPtrOutput) ToVmwareAdminClusterLoadBalancerManualLbConfigPtrOutput() VmwareAdminClusterLoadBalancerManualLbConfigPtrOutput {
+	return o
+}
+
+func (o VmwareAdminClusterLoadBalancerManualLbConfigPtrOutput) ToVmwareAdminClusterLoadBalancerManualLbConfigPtrOutputWithContext(ctx context.Context) VmwareAdminClusterLoadBalancerManualLbConfigPtrOutput {
+	return o
+}
+
+func (o VmwareAdminClusterLoadBalancerManualLbConfigPtrOutput) Elem() VmwareAdminClusterLoadBalancerManualLbConfigOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterLoadBalancerManualLbConfig) VmwareAdminClusterLoadBalancerManualLbConfig {
+		if v != nil {
+			return *v
+		}
+		var ret VmwareAdminClusterLoadBalancerManualLbConfig
+		return ret
+	}).(VmwareAdminClusterLoadBalancerManualLbConfigOutput)
+}
+
+// NodePort for add-ons server in the admin cluster.
+func (o VmwareAdminClusterLoadBalancerManualLbConfigPtrOutput) AddonsNodePort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterLoadBalancerManualLbConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.AddonsNodePort
+	}).(pulumi.IntPtrOutput)
+}
+
+// NodePort for control plane service. The Kubernetes API server in the admin
+// cluster is implemented as a Service of type NodePort (ex. 30968).
+func (o VmwareAdminClusterLoadBalancerManualLbConfigPtrOutput) ControlPlaneNodePort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterLoadBalancerManualLbConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.ControlPlaneNodePort
+	}).(pulumi.IntPtrOutput)
+}
+
+// NodePort for ingress service's http. The ingress service in the admin
+// cluster is implemented as a Service of type NodePort (ex. 32527).
+func (o VmwareAdminClusterLoadBalancerManualLbConfigPtrOutput) IngressHttpNodePort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterLoadBalancerManualLbConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.IngressHttpNodePort
+	}).(pulumi.IntPtrOutput)
+}
+
+// NodePort for ingress service's https. The ingress service in the admin
+// cluster is implemented as a Service of type NodePort (ex. 30139).
+func (o VmwareAdminClusterLoadBalancerManualLbConfigPtrOutput) IngressHttpsNodePort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterLoadBalancerManualLbConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.IngressHttpsNodePort
+	}).(pulumi.IntPtrOutput)
+}
+
+// NodePort for konnectivity server service running as a sidecar in each
+// kube-apiserver pod (ex. 30564).
+func (o VmwareAdminClusterLoadBalancerManualLbConfigPtrOutput) KonnectivityServerNodePort() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterLoadBalancerManualLbConfig) *int {
+		if v == nil {
+			return nil
+		}
+		return v.KonnectivityServerNodePort
+	}).(pulumi.IntPtrOutput)
+}
+
+type VmwareAdminClusterLoadBalancerMetalLbConfig struct {
+	// Metal LB is enabled.
+	Enabled *bool `pulumi:"enabled"`
+}
+
+// VmwareAdminClusterLoadBalancerMetalLbConfigInput is an input type that accepts VmwareAdminClusterLoadBalancerMetalLbConfigArgs and VmwareAdminClusterLoadBalancerMetalLbConfigOutput values.
+// You can construct a concrete instance of `VmwareAdminClusterLoadBalancerMetalLbConfigInput` via:
+//
+//	VmwareAdminClusterLoadBalancerMetalLbConfigArgs{...}
+type VmwareAdminClusterLoadBalancerMetalLbConfigInput interface {
+	pulumi.Input
+
+	ToVmwareAdminClusterLoadBalancerMetalLbConfigOutput() VmwareAdminClusterLoadBalancerMetalLbConfigOutput
+	ToVmwareAdminClusterLoadBalancerMetalLbConfigOutputWithContext(context.Context) VmwareAdminClusterLoadBalancerMetalLbConfigOutput
+}
+
+type VmwareAdminClusterLoadBalancerMetalLbConfigArgs struct {
+	// Metal LB is enabled.
+	Enabled pulumi.BoolPtrInput `pulumi:"enabled"`
+}
+
+func (VmwareAdminClusterLoadBalancerMetalLbConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareAdminClusterLoadBalancerMetalLbConfig)(nil)).Elem()
+}
+
+func (i VmwareAdminClusterLoadBalancerMetalLbConfigArgs) ToVmwareAdminClusterLoadBalancerMetalLbConfigOutput() VmwareAdminClusterLoadBalancerMetalLbConfigOutput {
+	return i.ToVmwareAdminClusterLoadBalancerMetalLbConfigOutputWithContext(context.Background())
+}
+
+func (i VmwareAdminClusterLoadBalancerMetalLbConfigArgs) ToVmwareAdminClusterLoadBalancerMetalLbConfigOutputWithContext(ctx context.Context) VmwareAdminClusterLoadBalancerMetalLbConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterLoadBalancerMetalLbConfigOutput)
+}
+
+func (i VmwareAdminClusterLoadBalancerMetalLbConfigArgs) ToVmwareAdminClusterLoadBalancerMetalLbConfigPtrOutput() VmwareAdminClusterLoadBalancerMetalLbConfigPtrOutput {
+	return i.ToVmwareAdminClusterLoadBalancerMetalLbConfigPtrOutputWithContext(context.Background())
+}
+
+func (i VmwareAdminClusterLoadBalancerMetalLbConfigArgs) ToVmwareAdminClusterLoadBalancerMetalLbConfigPtrOutputWithContext(ctx context.Context) VmwareAdminClusterLoadBalancerMetalLbConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterLoadBalancerMetalLbConfigOutput).ToVmwareAdminClusterLoadBalancerMetalLbConfigPtrOutputWithContext(ctx)
+}
+
+// VmwareAdminClusterLoadBalancerMetalLbConfigPtrInput is an input type that accepts VmwareAdminClusterLoadBalancerMetalLbConfigArgs, VmwareAdminClusterLoadBalancerMetalLbConfigPtr and VmwareAdminClusterLoadBalancerMetalLbConfigPtrOutput values.
+// You can construct a concrete instance of `VmwareAdminClusterLoadBalancerMetalLbConfigPtrInput` via:
+//
+//	        VmwareAdminClusterLoadBalancerMetalLbConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type VmwareAdminClusterLoadBalancerMetalLbConfigPtrInput interface {
+	pulumi.Input
+
+	ToVmwareAdminClusterLoadBalancerMetalLbConfigPtrOutput() VmwareAdminClusterLoadBalancerMetalLbConfigPtrOutput
+	ToVmwareAdminClusterLoadBalancerMetalLbConfigPtrOutputWithContext(context.Context) VmwareAdminClusterLoadBalancerMetalLbConfigPtrOutput
+}
+
+type vmwareAdminClusterLoadBalancerMetalLbConfigPtrType VmwareAdminClusterLoadBalancerMetalLbConfigArgs
+
+func VmwareAdminClusterLoadBalancerMetalLbConfigPtr(v *VmwareAdminClusterLoadBalancerMetalLbConfigArgs) VmwareAdminClusterLoadBalancerMetalLbConfigPtrInput {
+	return (*vmwareAdminClusterLoadBalancerMetalLbConfigPtrType)(v)
+}
+
+func (*vmwareAdminClusterLoadBalancerMetalLbConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmwareAdminClusterLoadBalancerMetalLbConfig)(nil)).Elem()
+}
+
+func (i *vmwareAdminClusterLoadBalancerMetalLbConfigPtrType) ToVmwareAdminClusterLoadBalancerMetalLbConfigPtrOutput() VmwareAdminClusterLoadBalancerMetalLbConfigPtrOutput {
+	return i.ToVmwareAdminClusterLoadBalancerMetalLbConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *vmwareAdminClusterLoadBalancerMetalLbConfigPtrType) ToVmwareAdminClusterLoadBalancerMetalLbConfigPtrOutputWithContext(ctx context.Context) VmwareAdminClusterLoadBalancerMetalLbConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterLoadBalancerMetalLbConfigPtrOutput)
+}
+
+type VmwareAdminClusterLoadBalancerMetalLbConfigOutput struct{ *pulumi.OutputState }
+
+func (VmwareAdminClusterLoadBalancerMetalLbConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareAdminClusterLoadBalancerMetalLbConfig)(nil)).Elem()
+}
+
+func (o VmwareAdminClusterLoadBalancerMetalLbConfigOutput) ToVmwareAdminClusterLoadBalancerMetalLbConfigOutput() VmwareAdminClusterLoadBalancerMetalLbConfigOutput {
+	return o
+}
+
+func (o VmwareAdminClusterLoadBalancerMetalLbConfigOutput) ToVmwareAdminClusterLoadBalancerMetalLbConfigOutputWithContext(ctx context.Context) VmwareAdminClusterLoadBalancerMetalLbConfigOutput {
+	return o
+}
+
+func (o VmwareAdminClusterLoadBalancerMetalLbConfigOutput) ToVmwareAdminClusterLoadBalancerMetalLbConfigPtrOutput() VmwareAdminClusterLoadBalancerMetalLbConfigPtrOutput {
+	return o.ToVmwareAdminClusterLoadBalancerMetalLbConfigPtrOutputWithContext(context.Background())
+}
+
+func (o VmwareAdminClusterLoadBalancerMetalLbConfigOutput) ToVmwareAdminClusterLoadBalancerMetalLbConfigPtrOutputWithContext(ctx context.Context) VmwareAdminClusterLoadBalancerMetalLbConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmwareAdminClusterLoadBalancerMetalLbConfig) *VmwareAdminClusterLoadBalancerMetalLbConfig {
+		return &v
+	}).(VmwareAdminClusterLoadBalancerMetalLbConfigPtrOutput)
+}
+
+// Metal LB is enabled.
+func (o VmwareAdminClusterLoadBalancerMetalLbConfigOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v VmwareAdminClusterLoadBalancerMetalLbConfig) *bool { return v.Enabled }).(pulumi.BoolPtrOutput)
+}
+
+type VmwareAdminClusterLoadBalancerMetalLbConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (VmwareAdminClusterLoadBalancerMetalLbConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmwareAdminClusterLoadBalancerMetalLbConfig)(nil)).Elem()
+}
+
+func (o VmwareAdminClusterLoadBalancerMetalLbConfigPtrOutput) ToVmwareAdminClusterLoadBalancerMetalLbConfigPtrOutput() VmwareAdminClusterLoadBalancerMetalLbConfigPtrOutput {
+	return o
+}
+
+func (o VmwareAdminClusterLoadBalancerMetalLbConfigPtrOutput) ToVmwareAdminClusterLoadBalancerMetalLbConfigPtrOutputWithContext(ctx context.Context) VmwareAdminClusterLoadBalancerMetalLbConfigPtrOutput {
+	return o
+}
+
+func (o VmwareAdminClusterLoadBalancerMetalLbConfigPtrOutput) Elem() VmwareAdminClusterLoadBalancerMetalLbConfigOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterLoadBalancerMetalLbConfig) VmwareAdminClusterLoadBalancerMetalLbConfig {
+		if v != nil {
+			return *v
+		}
+		var ret VmwareAdminClusterLoadBalancerMetalLbConfig
+		return ret
+	}).(VmwareAdminClusterLoadBalancerMetalLbConfigOutput)
+}
+
+// Metal LB is enabled.
+func (o VmwareAdminClusterLoadBalancerMetalLbConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterLoadBalancerMetalLbConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type VmwareAdminClusterLoadBalancerVipConfig struct {
+	// The VIP to configure the load balancer for add-ons.
+	//
+	// <a name="nestedF5Config"></a>The `f5Config` block supports:
+	AddonsVip *string `pulumi:"addonsVip"`
+	// The VIP which you previously set aside for the Kubernetes
+	// API of this VMware Admin Cluster.
+	ControlPlaneVip string `pulumi:"controlPlaneVip"`
+}
+
+// VmwareAdminClusterLoadBalancerVipConfigInput is an input type that accepts VmwareAdminClusterLoadBalancerVipConfigArgs and VmwareAdminClusterLoadBalancerVipConfigOutput values.
+// You can construct a concrete instance of `VmwareAdminClusterLoadBalancerVipConfigInput` via:
+//
+//	VmwareAdminClusterLoadBalancerVipConfigArgs{...}
+type VmwareAdminClusterLoadBalancerVipConfigInput interface {
+	pulumi.Input
+
+	ToVmwareAdminClusterLoadBalancerVipConfigOutput() VmwareAdminClusterLoadBalancerVipConfigOutput
+	ToVmwareAdminClusterLoadBalancerVipConfigOutputWithContext(context.Context) VmwareAdminClusterLoadBalancerVipConfigOutput
+}
+
+type VmwareAdminClusterLoadBalancerVipConfigArgs struct {
+	// The VIP to configure the load balancer for add-ons.
+	//
+	// <a name="nestedF5Config"></a>The `f5Config` block supports:
+	AddonsVip pulumi.StringPtrInput `pulumi:"addonsVip"`
+	// The VIP which you previously set aside for the Kubernetes
+	// API of this VMware Admin Cluster.
+	ControlPlaneVip pulumi.StringInput `pulumi:"controlPlaneVip"`
+}
+
+func (VmwareAdminClusterLoadBalancerVipConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareAdminClusterLoadBalancerVipConfig)(nil)).Elem()
+}
+
+func (i VmwareAdminClusterLoadBalancerVipConfigArgs) ToVmwareAdminClusterLoadBalancerVipConfigOutput() VmwareAdminClusterLoadBalancerVipConfigOutput {
+	return i.ToVmwareAdminClusterLoadBalancerVipConfigOutputWithContext(context.Background())
+}
+
+func (i VmwareAdminClusterLoadBalancerVipConfigArgs) ToVmwareAdminClusterLoadBalancerVipConfigOutputWithContext(ctx context.Context) VmwareAdminClusterLoadBalancerVipConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterLoadBalancerVipConfigOutput)
+}
+
+func (i VmwareAdminClusterLoadBalancerVipConfigArgs) ToVmwareAdminClusterLoadBalancerVipConfigPtrOutput() VmwareAdminClusterLoadBalancerVipConfigPtrOutput {
+	return i.ToVmwareAdminClusterLoadBalancerVipConfigPtrOutputWithContext(context.Background())
+}
+
+func (i VmwareAdminClusterLoadBalancerVipConfigArgs) ToVmwareAdminClusterLoadBalancerVipConfigPtrOutputWithContext(ctx context.Context) VmwareAdminClusterLoadBalancerVipConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterLoadBalancerVipConfigOutput).ToVmwareAdminClusterLoadBalancerVipConfigPtrOutputWithContext(ctx)
+}
+
+// VmwareAdminClusterLoadBalancerVipConfigPtrInput is an input type that accepts VmwareAdminClusterLoadBalancerVipConfigArgs, VmwareAdminClusterLoadBalancerVipConfigPtr and VmwareAdminClusterLoadBalancerVipConfigPtrOutput values.
+// You can construct a concrete instance of `VmwareAdminClusterLoadBalancerVipConfigPtrInput` via:
+//
+//	        VmwareAdminClusterLoadBalancerVipConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type VmwareAdminClusterLoadBalancerVipConfigPtrInput interface {
+	pulumi.Input
+
+	ToVmwareAdminClusterLoadBalancerVipConfigPtrOutput() VmwareAdminClusterLoadBalancerVipConfigPtrOutput
+	ToVmwareAdminClusterLoadBalancerVipConfigPtrOutputWithContext(context.Context) VmwareAdminClusterLoadBalancerVipConfigPtrOutput
+}
+
+type vmwareAdminClusterLoadBalancerVipConfigPtrType VmwareAdminClusterLoadBalancerVipConfigArgs
+
+func VmwareAdminClusterLoadBalancerVipConfigPtr(v *VmwareAdminClusterLoadBalancerVipConfigArgs) VmwareAdminClusterLoadBalancerVipConfigPtrInput {
+	return (*vmwareAdminClusterLoadBalancerVipConfigPtrType)(v)
+}
+
+func (*vmwareAdminClusterLoadBalancerVipConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmwareAdminClusterLoadBalancerVipConfig)(nil)).Elem()
+}
+
+func (i *vmwareAdminClusterLoadBalancerVipConfigPtrType) ToVmwareAdminClusterLoadBalancerVipConfigPtrOutput() VmwareAdminClusterLoadBalancerVipConfigPtrOutput {
+	return i.ToVmwareAdminClusterLoadBalancerVipConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *vmwareAdminClusterLoadBalancerVipConfigPtrType) ToVmwareAdminClusterLoadBalancerVipConfigPtrOutputWithContext(ctx context.Context) VmwareAdminClusterLoadBalancerVipConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterLoadBalancerVipConfigPtrOutput)
+}
+
+type VmwareAdminClusterLoadBalancerVipConfigOutput struct{ *pulumi.OutputState }
+
+func (VmwareAdminClusterLoadBalancerVipConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareAdminClusterLoadBalancerVipConfig)(nil)).Elem()
+}
+
+func (o VmwareAdminClusterLoadBalancerVipConfigOutput) ToVmwareAdminClusterLoadBalancerVipConfigOutput() VmwareAdminClusterLoadBalancerVipConfigOutput {
+	return o
+}
+
+func (o VmwareAdminClusterLoadBalancerVipConfigOutput) ToVmwareAdminClusterLoadBalancerVipConfigOutputWithContext(ctx context.Context) VmwareAdminClusterLoadBalancerVipConfigOutput {
+	return o
+}
+
+func (o VmwareAdminClusterLoadBalancerVipConfigOutput) ToVmwareAdminClusterLoadBalancerVipConfigPtrOutput() VmwareAdminClusterLoadBalancerVipConfigPtrOutput {
+	return o.ToVmwareAdminClusterLoadBalancerVipConfigPtrOutputWithContext(context.Background())
+}
+
+func (o VmwareAdminClusterLoadBalancerVipConfigOutput) ToVmwareAdminClusterLoadBalancerVipConfigPtrOutputWithContext(ctx context.Context) VmwareAdminClusterLoadBalancerVipConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmwareAdminClusterLoadBalancerVipConfig) *VmwareAdminClusterLoadBalancerVipConfig {
+		return &v
+	}).(VmwareAdminClusterLoadBalancerVipConfigPtrOutput)
+}
+
+// The VIP to configure the load balancer for add-ons.
+//
+// <a name="nestedF5Config"></a>The `f5Config` block supports:
+func (o VmwareAdminClusterLoadBalancerVipConfigOutput) AddonsVip() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmwareAdminClusterLoadBalancerVipConfig) *string { return v.AddonsVip }).(pulumi.StringPtrOutput)
+}
+
+// The VIP which you previously set aside for the Kubernetes
+// API of this VMware Admin Cluster.
+func (o VmwareAdminClusterLoadBalancerVipConfigOutput) ControlPlaneVip() pulumi.StringOutput {
+	return o.ApplyT(func(v VmwareAdminClusterLoadBalancerVipConfig) string { return v.ControlPlaneVip }).(pulumi.StringOutput)
+}
+
+type VmwareAdminClusterLoadBalancerVipConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (VmwareAdminClusterLoadBalancerVipConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmwareAdminClusterLoadBalancerVipConfig)(nil)).Elem()
+}
+
+func (o VmwareAdminClusterLoadBalancerVipConfigPtrOutput) ToVmwareAdminClusterLoadBalancerVipConfigPtrOutput() VmwareAdminClusterLoadBalancerVipConfigPtrOutput {
+	return o
+}
+
+func (o VmwareAdminClusterLoadBalancerVipConfigPtrOutput) ToVmwareAdminClusterLoadBalancerVipConfigPtrOutputWithContext(ctx context.Context) VmwareAdminClusterLoadBalancerVipConfigPtrOutput {
+	return o
+}
+
+func (o VmwareAdminClusterLoadBalancerVipConfigPtrOutput) Elem() VmwareAdminClusterLoadBalancerVipConfigOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterLoadBalancerVipConfig) VmwareAdminClusterLoadBalancerVipConfig {
+		if v != nil {
+			return *v
+		}
+		var ret VmwareAdminClusterLoadBalancerVipConfig
+		return ret
+	}).(VmwareAdminClusterLoadBalancerVipConfigOutput)
+}
+
+// The VIP to configure the load balancer for add-ons.
+//
+// <a name="nestedF5Config"></a>The `f5Config` block supports:
+func (o VmwareAdminClusterLoadBalancerVipConfigPtrOutput) AddonsVip() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterLoadBalancerVipConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.AddonsVip
+	}).(pulumi.StringPtrOutput)
+}
+
+// The VIP which you previously set aside for the Kubernetes
+// API of this VMware Admin Cluster.
+func (o VmwareAdminClusterLoadBalancerVipConfigPtrOutput) ControlPlaneVip() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterLoadBalancerVipConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ControlPlaneVip
+	}).(pulumi.StringPtrOutput)
+}
+
+type VmwareAdminClusterNetworkConfig struct {
+	// Configuration settings for a DHCP IP configuration.
+	// Structure is documented below.
+	DhcpIpConfig *VmwareAdminClusterNetworkConfigDhcpIpConfig `pulumi:"dhcpIpConfig"`
+	// Configuration for HA admin cluster control plane.
+	// Structure is documented below.
+	HaControlPlaneConfig *VmwareAdminClusterNetworkConfigHaControlPlaneConfig `pulumi:"haControlPlaneConfig"`
+	// Represents common network settings irrespective of the host's IP address.
+	// Structure is documented below.
+	HostConfig *VmwareAdminClusterNetworkConfigHostConfig `pulumi:"hostConfig"`
+	// All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges.
+	// Only a single range is supported. This field cannot be changed after creation.
+	PodAddressCidrBlocks []string `pulumi:"podAddressCidrBlocks"`
+	// All services in the cluster are assigned an RFC1918 IPv4 address
+	// from these ranges. Only a single range is supported.. This field
+	// cannot be changed after creation.
+	ServiceAddressCidrBlocks []string `pulumi:"serviceAddressCidrBlocks"`
+	// Configuration settings for a static IP configuration.
+	// Structure is documented below.
+	StaticIpConfig *VmwareAdminClusterNetworkConfigStaticIpConfig `pulumi:"staticIpConfig"`
+	// vcenter_network specifies vCenter network name.
+	VcenterNetwork *string `pulumi:"vcenterNetwork"`
+}
+
+// VmwareAdminClusterNetworkConfigInput is an input type that accepts VmwareAdminClusterNetworkConfigArgs and VmwareAdminClusterNetworkConfigOutput values.
+// You can construct a concrete instance of `VmwareAdminClusterNetworkConfigInput` via:
+//
+//	VmwareAdminClusterNetworkConfigArgs{...}
+type VmwareAdminClusterNetworkConfigInput interface {
+	pulumi.Input
+
+	ToVmwareAdminClusterNetworkConfigOutput() VmwareAdminClusterNetworkConfigOutput
+	ToVmwareAdminClusterNetworkConfigOutputWithContext(context.Context) VmwareAdminClusterNetworkConfigOutput
+}
+
+type VmwareAdminClusterNetworkConfigArgs struct {
+	// Configuration settings for a DHCP IP configuration.
+	// Structure is documented below.
+	DhcpIpConfig VmwareAdminClusterNetworkConfigDhcpIpConfigPtrInput `pulumi:"dhcpIpConfig"`
+	// Configuration for HA admin cluster control plane.
+	// Structure is documented below.
+	HaControlPlaneConfig VmwareAdminClusterNetworkConfigHaControlPlaneConfigPtrInput `pulumi:"haControlPlaneConfig"`
+	// Represents common network settings irrespective of the host's IP address.
+	// Structure is documented below.
+	HostConfig VmwareAdminClusterNetworkConfigHostConfigPtrInput `pulumi:"hostConfig"`
+	// All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges.
+	// Only a single range is supported. This field cannot be changed after creation.
+	PodAddressCidrBlocks pulumi.StringArrayInput `pulumi:"podAddressCidrBlocks"`
+	// All services in the cluster are assigned an RFC1918 IPv4 address
+	// from these ranges. Only a single range is supported.. This field
+	// cannot be changed after creation.
+	ServiceAddressCidrBlocks pulumi.StringArrayInput `pulumi:"serviceAddressCidrBlocks"`
+	// Configuration settings for a static IP configuration.
+	// Structure is documented below.
+	StaticIpConfig VmwareAdminClusterNetworkConfigStaticIpConfigPtrInput `pulumi:"staticIpConfig"`
+	// vcenter_network specifies vCenter network name.
+	VcenterNetwork pulumi.StringPtrInput `pulumi:"vcenterNetwork"`
+}
+
+func (VmwareAdminClusterNetworkConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareAdminClusterNetworkConfig)(nil)).Elem()
+}
+
+func (i VmwareAdminClusterNetworkConfigArgs) ToVmwareAdminClusterNetworkConfigOutput() VmwareAdminClusterNetworkConfigOutput {
+	return i.ToVmwareAdminClusterNetworkConfigOutputWithContext(context.Background())
+}
+
+func (i VmwareAdminClusterNetworkConfigArgs) ToVmwareAdminClusterNetworkConfigOutputWithContext(ctx context.Context) VmwareAdminClusterNetworkConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterNetworkConfigOutput)
+}
+
+func (i VmwareAdminClusterNetworkConfigArgs) ToVmwareAdminClusterNetworkConfigPtrOutput() VmwareAdminClusterNetworkConfigPtrOutput {
+	return i.ToVmwareAdminClusterNetworkConfigPtrOutputWithContext(context.Background())
+}
+
+func (i VmwareAdminClusterNetworkConfigArgs) ToVmwareAdminClusterNetworkConfigPtrOutputWithContext(ctx context.Context) VmwareAdminClusterNetworkConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterNetworkConfigOutput).ToVmwareAdminClusterNetworkConfigPtrOutputWithContext(ctx)
+}
+
+// VmwareAdminClusterNetworkConfigPtrInput is an input type that accepts VmwareAdminClusterNetworkConfigArgs, VmwareAdminClusterNetworkConfigPtr and VmwareAdminClusterNetworkConfigPtrOutput values.
+// You can construct a concrete instance of `VmwareAdminClusterNetworkConfigPtrInput` via:
+//
+//	        VmwareAdminClusterNetworkConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type VmwareAdminClusterNetworkConfigPtrInput interface {
+	pulumi.Input
+
+	ToVmwareAdminClusterNetworkConfigPtrOutput() VmwareAdminClusterNetworkConfigPtrOutput
+	ToVmwareAdminClusterNetworkConfigPtrOutputWithContext(context.Context) VmwareAdminClusterNetworkConfigPtrOutput
+}
+
+type vmwareAdminClusterNetworkConfigPtrType VmwareAdminClusterNetworkConfigArgs
+
+func VmwareAdminClusterNetworkConfigPtr(v *VmwareAdminClusterNetworkConfigArgs) VmwareAdminClusterNetworkConfigPtrInput {
+	return (*vmwareAdminClusterNetworkConfigPtrType)(v)
+}
+
+func (*vmwareAdminClusterNetworkConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmwareAdminClusterNetworkConfig)(nil)).Elem()
+}
+
+func (i *vmwareAdminClusterNetworkConfigPtrType) ToVmwareAdminClusterNetworkConfigPtrOutput() VmwareAdminClusterNetworkConfigPtrOutput {
+	return i.ToVmwareAdminClusterNetworkConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *vmwareAdminClusterNetworkConfigPtrType) ToVmwareAdminClusterNetworkConfigPtrOutputWithContext(ctx context.Context) VmwareAdminClusterNetworkConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterNetworkConfigPtrOutput)
+}
+
+type VmwareAdminClusterNetworkConfigOutput struct{ *pulumi.OutputState }
+
+func (VmwareAdminClusterNetworkConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareAdminClusterNetworkConfig)(nil)).Elem()
+}
+
+func (o VmwareAdminClusterNetworkConfigOutput) ToVmwareAdminClusterNetworkConfigOutput() VmwareAdminClusterNetworkConfigOutput {
+	return o
+}
+
+func (o VmwareAdminClusterNetworkConfigOutput) ToVmwareAdminClusterNetworkConfigOutputWithContext(ctx context.Context) VmwareAdminClusterNetworkConfigOutput {
+	return o
+}
+
+func (o VmwareAdminClusterNetworkConfigOutput) ToVmwareAdminClusterNetworkConfigPtrOutput() VmwareAdminClusterNetworkConfigPtrOutput {
+	return o.ToVmwareAdminClusterNetworkConfigPtrOutputWithContext(context.Background())
+}
+
+func (o VmwareAdminClusterNetworkConfigOutput) ToVmwareAdminClusterNetworkConfigPtrOutputWithContext(ctx context.Context) VmwareAdminClusterNetworkConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmwareAdminClusterNetworkConfig) *VmwareAdminClusterNetworkConfig {
+		return &v
+	}).(VmwareAdminClusterNetworkConfigPtrOutput)
+}
+
+// Configuration settings for a DHCP IP configuration.
+// Structure is documented below.
+func (o VmwareAdminClusterNetworkConfigOutput) DhcpIpConfig() VmwareAdminClusterNetworkConfigDhcpIpConfigPtrOutput {
+	return o.ApplyT(func(v VmwareAdminClusterNetworkConfig) *VmwareAdminClusterNetworkConfigDhcpIpConfig {
+		return v.DhcpIpConfig
+	}).(VmwareAdminClusterNetworkConfigDhcpIpConfigPtrOutput)
+}
+
+// Configuration for HA admin cluster control plane.
+// Structure is documented below.
+func (o VmwareAdminClusterNetworkConfigOutput) HaControlPlaneConfig() VmwareAdminClusterNetworkConfigHaControlPlaneConfigPtrOutput {
+	return o.ApplyT(func(v VmwareAdminClusterNetworkConfig) *VmwareAdminClusterNetworkConfigHaControlPlaneConfig {
+		return v.HaControlPlaneConfig
+	}).(VmwareAdminClusterNetworkConfigHaControlPlaneConfigPtrOutput)
+}
+
+// Represents common network settings irrespective of the host's IP address.
+// Structure is documented below.
+func (o VmwareAdminClusterNetworkConfigOutput) HostConfig() VmwareAdminClusterNetworkConfigHostConfigPtrOutput {
+	return o.ApplyT(func(v VmwareAdminClusterNetworkConfig) *VmwareAdminClusterNetworkConfigHostConfig {
+		return v.HostConfig
+	}).(VmwareAdminClusterNetworkConfigHostConfigPtrOutput)
+}
+
+// All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges.
+// Only a single range is supported. This field cannot be changed after creation.
+func (o VmwareAdminClusterNetworkConfigOutput) PodAddressCidrBlocks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VmwareAdminClusterNetworkConfig) []string { return v.PodAddressCidrBlocks }).(pulumi.StringArrayOutput)
+}
+
+// All services in the cluster are assigned an RFC1918 IPv4 address
+// from these ranges. Only a single range is supported.. This field
+// cannot be changed after creation.
+func (o VmwareAdminClusterNetworkConfigOutput) ServiceAddressCidrBlocks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VmwareAdminClusterNetworkConfig) []string { return v.ServiceAddressCidrBlocks }).(pulumi.StringArrayOutput)
+}
+
+// Configuration settings for a static IP configuration.
+// Structure is documented below.
+func (o VmwareAdminClusterNetworkConfigOutput) StaticIpConfig() VmwareAdminClusterNetworkConfigStaticIpConfigPtrOutput {
+	return o.ApplyT(func(v VmwareAdminClusterNetworkConfig) *VmwareAdminClusterNetworkConfigStaticIpConfig {
+		return v.StaticIpConfig
+	}).(VmwareAdminClusterNetworkConfigStaticIpConfigPtrOutput)
+}
+
+// vcenter_network specifies vCenter network name.
+func (o VmwareAdminClusterNetworkConfigOutput) VcenterNetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmwareAdminClusterNetworkConfig) *string { return v.VcenterNetwork }).(pulumi.StringPtrOutput)
+}
+
+type VmwareAdminClusterNetworkConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (VmwareAdminClusterNetworkConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmwareAdminClusterNetworkConfig)(nil)).Elem()
+}
+
+func (o VmwareAdminClusterNetworkConfigPtrOutput) ToVmwareAdminClusterNetworkConfigPtrOutput() VmwareAdminClusterNetworkConfigPtrOutput {
+	return o
+}
+
+func (o VmwareAdminClusterNetworkConfigPtrOutput) ToVmwareAdminClusterNetworkConfigPtrOutputWithContext(ctx context.Context) VmwareAdminClusterNetworkConfigPtrOutput {
+	return o
+}
+
+func (o VmwareAdminClusterNetworkConfigPtrOutput) Elem() VmwareAdminClusterNetworkConfigOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterNetworkConfig) VmwareAdminClusterNetworkConfig {
+		if v != nil {
+			return *v
+		}
+		var ret VmwareAdminClusterNetworkConfig
+		return ret
+	}).(VmwareAdminClusterNetworkConfigOutput)
+}
+
+// Configuration settings for a DHCP IP configuration.
+// Structure is documented below.
+func (o VmwareAdminClusterNetworkConfigPtrOutput) DhcpIpConfig() VmwareAdminClusterNetworkConfigDhcpIpConfigPtrOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterNetworkConfig) *VmwareAdminClusterNetworkConfigDhcpIpConfig {
+		if v == nil {
+			return nil
+		}
+		return v.DhcpIpConfig
+	}).(VmwareAdminClusterNetworkConfigDhcpIpConfigPtrOutput)
+}
+
+// Configuration for HA admin cluster control plane.
+// Structure is documented below.
+func (o VmwareAdminClusterNetworkConfigPtrOutput) HaControlPlaneConfig() VmwareAdminClusterNetworkConfigHaControlPlaneConfigPtrOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterNetworkConfig) *VmwareAdminClusterNetworkConfigHaControlPlaneConfig {
+		if v == nil {
+			return nil
+		}
+		return v.HaControlPlaneConfig
+	}).(VmwareAdminClusterNetworkConfigHaControlPlaneConfigPtrOutput)
+}
+
+// Represents common network settings irrespective of the host's IP address.
+// Structure is documented below.
+func (o VmwareAdminClusterNetworkConfigPtrOutput) HostConfig() VmwareAdminClusterNetworkConfigHostConfigPtrOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterNetworkConfig) *VmwareAdminClusterNetworkConfigHostConfig {
+		if v == nil {
+			return nil
+		}
+		return v.HostConfig
+	}).(VmwareAdminClusterNetworkConfigHostConfigPtrOutput)
+}
+
+// All pods in the cluster are assigned an RFC1918 IPv4 address from these ranges.
+// Only a single range is supported. This field cannot be changed after creation.
+func (o VmwareAdminClusterNetworkConfigPtrOutput) PodAddressCidrBlocks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterNetworkConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.PodAddressCidrBlocks
+	}).(pulumi.StringArrayOutput)
+}
+
+// All services in the cluster are assigned an RFC1918 IPv4 address
+// from these ranges. Only a single range is supported.. This field
+// cannot be changed after creation.
+func (o VmwareAdminClusterNetworkConfigPtrOutput) ServiceAddressCidrBlocks() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterNetworkConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAddressCidrBlocks
+	}).(pulumi.StringArrayOutput)
+}
+
+// Configuration settings for a static IP configuration.
+// Structure is documented below.
+func (o VmwareAdminClusterNetworkConfigPtrOutput) StaticIpConfig() VmwareAdminClusterNetworkConfigStaticIpConfigPtrOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterNetworkConfig) *VmwareAdminClusterNetworkConfigStaticIpConfig {
+		if v == nil {
+			return nil
+		}
+		return v.StaticIpConfig
+	}).(VmwareAdminClusterNetworkConfigStaticIpConfigPtrOutput)
+}
+
+// vcenter_network specifies vCenter network name.
+func (o VmwareAdminClusterNetworkConfigPtrOutput) VcenterNetwork() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterNetworkConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.VcenterNetwork
+	}).(pulumi.StringPtrOutput)
+}
+
+type VmwareAdminClusterNetworkConfigDhcpIpConfig struct {
+	// enabled is a flag to mark if DHCP IP allocation is
+	// used for VMware admin clusters.
+	Enabled bool `pulumi:"enabled"`
+}
+
+// VmwareAdminClusterNetworkConfigDhcpIpConfigInput is an input type that accepts VmwareAdminClusterNetworkConfigDhcpIpConfigArgs and VmwareAdminClusterNetworkConfigDhcpIpConfigOutput values.
+// You can construct a concrete instance of `VmwareAdminClusterNetworkConfigDhcpIpConfigInput` via:
+//
+//	VmwareAdminClusterNetworkConfigDhcpIpConfigArgs{...}
+type VmwareAdminClusterNetworkConfigDhcpIpConfigInput interface {
+	pulumi.Input
+
+	ToVmwareAdminClusterNetworkConfigDhcpIpConfigOutput() VmwareAdminClusterNetworkConfigDhcpIpConfigOutput
+	ToVmwareAdminClusterNetworkConfigDhcpIpConfigOutputWithContext(context.Context) VmwareAdminClusterNetworkConfigDhcpIpConfigOutput
+}
+
+type VmwareAdminClusterNetworkConfigDhcpIpConfigArgs struct {
+	// enabled is a flag to mark if DHCP IP allocation is
+	// used for VMware admin clusters.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+}
+
+func (VmwareAdminClusterNetworkConfigDhcpIpConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareAdminClusterNetworkConfigDhcpIpConfig)(nil)).Elem()
+}
+
+func (i VmwareAdminClusterNetworkConfigDhcpIpConfigArgs) ToVmwareAdminClusterNetworkConfigDhcpIpConfigOutput() VmwareAdminClusterNetworkConfigDhcpIpConfigOutput {
+	return i.ToVmwareAdminClusterNetworkConfigDhcpIpConfigOutputWithContext(context.Background())
+}
+
+func (i VmwareAdminClusterNetworkConfigDhcpIpConfigArgs) ToVmwareAdminClusterNetworkConfigDhcpIpConfigOutputWithContext(ctx context.Context) VmwareAdminClusterNetworkConfigDhcpIpConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterNetworkConfigDhcpIpConfigOutput)
+}
+
+func (i VmwareAdminClusterNetworkConfigDhcpIpConfigArgs) ToVmwareAdminClusterNetworkConfigDhcpIpConfigPtrOutput() VmwareAdminClusterNetworkConfigDhcpIpConfigPtrOutput {
+	return i.ToVmwareAdminClusterNetworkConfigDhcpIpConfigPtrOutputWithContext(context.Background())
+}
+
+func (i VmwareAdminClusterNetworkConfigDhcpIpConfigArgs) ToVmwareAdminClusterNetworkConfigDhcpIpConfigPtrOutputWithContext(ctx context.Context) VmwareAdminClusterNetworkConfigDhcpIpConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterNetworkConfigDhcpIpConfigOutput).ToVmwareAdminClusterNetworkConfigDhcpIpConfigPtrOutputWithContext(ctx)
+}
+
+// VmwareAdminClusterNetworkConfigDhcpIpConfigPtrInput is an input type that accepts VmwareAdminClusterNetworkConfigDhcpIpConfigArgs, VmwareAdminClusterNetworkConfigDhcpIpConfigPtr and VmwareAdminClusterNetworkConfigDhcpIpConfigPtrOutput values.
+// You can construct a concrete instance of `VmwareAdminClusterNetworkConfigDhcpIpConfigPtrInput` via:
+//
+//	        VmwareAdminClusterNetworkConfigDhcpIpConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type VmwareAdminClusterNetworkConfigDhcpIpConfigPtrInput interface {
+	pulumi.Input
+
+	ToVmwareAdminClusterNetworkConfigDhcpIpConfigPtrOutput() VmwareAdminClusterNetworkConfigDhcpIpConfigPtrOutput
+	ToVmwareAdminClusterNetworkConfigDhcpIpConfigPtrOutputWithContext(context.Context) VmwareAdminClusterNetworkConfigDhcpIpConfigPtrOutput
+}
+
+type vmwareAdminClusterNetworkConfigDhcpIpConfigPtrType VmwareAdminClusterNetworkConfigDhcpIpConfigArgs
+
+func VmwareAdminClusterNetworkConfigDhcpIpConfigPtr(v *VmwareAdminClusterNetworkConfigDhcpIpConfigArgs) VmwareAdminClusterNetworkConfigDhcpIpConfigPtrInput {
+	return (*vmwareAdminClusterNetworkConfigDhcpIpConfigPtrType)(v)
+}
+
+func (*vmwareAdminClusterNetworkConfigDhcpIpConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmwareAdminClusterNetworkConfigDhcpIpConfig)(nil)).Elem()
+}
+
+func (i *vmwareAdminClusterNetworkConfigDhcpIpConfigPtrType) ToVmwareAdminClusterNetworkConfigDhcpIpConfigPtrOutput() VmwareAdminClusterNetworkConfigDhcpIpConfigPtrOutput {
+	return i.ToVmwareAdminClusterNetworkConfigDhcpIpConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *vmwareAdminClusterNetworkConfigDhcpIpConfigPtrType) ToVmwareAdminClusterNetworkConfigDhcpIpConfigPtrOutputWithContext(ctx context.Context) VmwareAdminClusterNetworkConfigDhcpIpConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterNetworkConfigDhcpIpConfigPtrOutput)
+}
+
+type VmwareAdminClusterNetworkConfigDhcpIpConfigOutput struct{ *pulumi.OutputState }
+
+func (VmwareAdminClusterNetworkConfigDhcpIpConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareAdminClusterNetworkConfigDhcpIpConfig)(nil)).Elem()
+}
+
+func (o VmwareAdminClusterNetworkConfigDhcpIpConfigOutput) ToVmwareAdminClusterNetworkConfigDhcpIpConfigOutput() VmwareAdminClusterNetworkConfigDhcpIpConfigOutput {
+	return o
+}
+
+func (o VmwareAdminClusterNetworkConfigDhcpIpConfigOutput) ToVmwareAdminClusterNetworkConfigDhcpIpConfigOutputWithContext(ctx context.Context) VmwareAdminClusterNetworkConfigDhcpIpConfigOutput {
+	return o
+}
+
+func (o VmwareAdminClusterNetworkConfigDhcpIpConfigOutput) ToVmwareAdminClusterNetworkConfigDhcpIpConfigPtrOutput() VmwareAdminClusterNetworkConfigDhcpIpConfigPtrOutput {
+	return o.ToVmwareAdminClusterNetworkConfigDhcpIpConfigPtrOutputWithContext(context.Background())
+}
+
+func (o VmwareAdminClusterNetworkConfigDhcpIpConfigOutput) ToVmwareAdminClusterNetworkConfigDhcpIpConfigPtrOutputWithContext(ctx context.Context) VmwareAdminClusterNetworkConfigDhcpIpConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmwareAdminClusterNetworkConfigDhcpIpConfig) *VmwareAdminClusterNetworkConfigDhcpIpConfig {
+		return &v
+	}).(VmwareAdminClusterNetworkConfigDhcpIpConfigPtrOutput)
+}
+
+// enabled is a flag to mark if DHCP IP allocation is
+// used for VMware admin clusters.
+func (o VmwareAdminClusterNetworkConfigDhcpIpConfigOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v VmwareAdminClusterNetworkConfigDhcpIpConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+type VmwareAdminClusterNetworkConfigDhcpIpConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (VmwareAdminClusterNetworkConfigDhcpIpConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmwareAdminClusterNetworkConfigDhcpIpConfig)(nil)).Elem()
+}
+
+func (o VmwareAdminClusterNetworkConfigDhcpIpConfigPtrOutput) ToVmwareAdminClusterNetworkConfigDhcpIpConfigPtrOutput() VmwareAdminClusterNetworkConfigDhcpIpConfigPtrOutput {
+	return o
+}
+
+func (o VmwareAdminClusterNetworkConfigDhcpIpConfigPtrOutput) ToVmwareAdminClusterNetworkConfigDhcpIpConfigPtrOutputWithContext(ctx context.Context) VmwareAdminClusterNetworkConfigDhcpIpConfigPtrOutput {
+	return o
+}
+
+func (o VmwareAdminClusterNetworkConfigDhcpIpConfigPtrOutput) Elem() VmwareAdminClusterNetworkConfigDhcpIpConfigOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterNetworkConfigDhcpIpConfig) VmwareAdminClusterNetworkConfigDhcpIpConfig {
+		if v != nil {
+			return *v
+		}
+		var ret VmwareAdminClusterNetworkConfigDhcpIpConfig
+		return ret
+	}).(VmwareAdminClusterNetworkConfigDhcpIpConfigOutput)
+}
+
+// enabled is a flag to mark if DHCP IP allocation is
+// used for VMware admin clusters.
+func (o VmwareAdminClusterNetworkConfigDhcpIpConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterNetworkConfigDhcpIpConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return &v.Enabled
+	}).(pulumi.BoolPtrOutput)
+}
+
+type VmwareAdminClusterNetworkConfigHaControlPlaneConfig struct {
+	// Static IP addresses for the control plane nodes.
+	// Structure is documented below.
+	ControlPlaneIpBlock *VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlock `pulumi:"controlPlaneIpBlock"`
+}
+
+// VmwareAdminClusterNetworkConfigHaControlPlaneConfigInput is an input type that accepts VmwareAdminClusterNetworkConfigHaControlPlaneConfigArgs and VmwareAdminClusterNetworkConfigHaControlPlaneConfigOutput values.
+// You can construct a concrete instance of `VmwareAdminClusterNetworkConfigHaControlPlaneConfigInput` via:
+//
+//	VmwareAdminClusterNetworkConfigHaControlPlaneConfigArgs{...}
+type VmwareAdminClusterNetworkConfigHaControlPlaneConfigInput interface {
+	pulumi.Input
+
+	ToVmwareAdminClusterNetworkConfigHaControlPlaneConfigOutput() VmwareAdminClusterNetworkConfigHaControlPlaneConfigOutput
+	ToVmwareAdminClusterNetworkConfigHaControlPlaneConfigOutputWithContext(context.Context) VmwareAdminClusterNetworkConfigHaControlPlaneConfigOutput
+}
+
+type VmwareAdminClusterNetworkConfigHaControlPlaneConfigArgs struct {
+	// Static IP addresses for the control plane nodes.
+	// Structure is documented below.
+	ControlPlaneIpBlock VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockPtrInput `pulumi:"controlPlaneIpBlock"`
+}
+
+func (VmwareAdminClusterNetworkConfigHaControlPlaneConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareAdminClusterNetworkConfigHaControlPlaneConfig)(nil)).Elem()
+}
+
+func (i VmwareAdminClusterNetworkConfigHaControlPlaneConfigArgs) ToVmwareAdminClusterNetworkConfigHaControlPlaneConfigOutput() VmwareAdminClusterNetworkConfigHaControlPlaneConfigOutput {
+	return i.ToVmwareAdminClusterNetworkConfigHaControlPlaneConfigOutputWithContext(context.Background())
+}
+
+func (i VmwareAdminClusterNetworkConfigHaControlPlaneConfigArgs) ToVmwareAdminClusterNetworkConfigHaControlPlaneConfigOutputWithContext(ctx context.Context) VmwareAdminClusterNetworkConfigHaControlPlaneConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterNetworkConfigHaControlPlaneConfigOutput)
+}
+
+func (i VmwareAdminClusterNetworkConfigHaControlPlaneConfigArgs) ToVmwareAdminClusterNetworkConfigHaControlPlaneConfigPtrOutput() VmwareAdminClusterNetworkConfigHaControlPlaneConfigPtrOutput {
+	return i.ToVmwareAdminClusterNetworkConfigHaControlPlaneConfigPtrOutputWithContext(context.Background())
+}
+
+func (i VmwareAdminClusterNetworkConfigHaControlPlaneConfigArgs) ToVmwareAdminClusterNetworkConfigHaControlPlaneConfigPtrOutputWithContext(ctx context.Context) VmwareAdminClusterNetworkConfigHaControlPlaneConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterNetworkConfigHaControlPlaneConfigOutput).ToVmwareAdminClusterNetworkConfigHaControlPlaneConfigPtrOutputWithContext(ctx)
+}
+
+// VmwareAdminClusterNetworkConfigHaControlPlaneConfigPtrInput is an input type that accepts VmwareAdminClusterNetworkConfigHaControlPlaneConfigArgs, VmwareAdminClusterNetworkConfigHaControlPlaneConfigPtr and VmwareAdminClusterNetworkConfigHaControlPlaneConfigPtrOutput values.
+// You can construct a concrete instance of `VmwareAdminClusterNetworkConfigHaControlPlaneConfigPtrInput` via:
+//
+//	        VmwareAdminClusterNetworkConfigHaControlPlaneConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type VmwareAdminClusterNetworkConfigHaControlPlaneConfigPtrInput interface {
+	pulumi.Input
+
+	ToVmwareAdminClusterNetworkConfigHaControlPlaneConfigPtrOutput() VmwareAdminClusterNetworkConfigHaControlPlaneConfigPtrOutput
+	ToVmwareAdminClusterNetworkConfigHaControlPlaneConfigPtrOutputWithContext(context.Context) VmwareAdminClusterNetworkConfigHaControlPlaneConfigPtrOutput
+}
+
+type vmwareAdminClusterNetworkConfigHaControlPlaneConfigPtrType VmwareAdminClusterNetworkConfigHaControlPlaneConfigArgs
+
+func VmwareAdminClusterNetworkConfigHaControlPlaneConfigPtr(v *VmwareAdminClusterNetworkConfigHaControlPlaneConfigArgs) VmwareAdminClusterNetworkConfigHaControlPlaneConfigPtrInput {
+	return (*vmwareAdminClusterNetworkConfigHaControlPlaneConfigPtrType)(v)
+}
+
+func (*vmwareAdminClusterNetworkConfigHaControlPlaneConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmwareAdminClusterNetworkConfigHaControlPlaneConfig)(nil)).Elem()
+}
+
+func (i *vmwareAdminClusterNetworkConfigHaControlPlaneConfigPtrType) ToVmwareAdminClusterNetworkConfigHaControlPlaneConfigPtrOutput() VmwareAdminClusterNetworkConfigHaControlPlaneConfigPtrOutput {
+	return i.ToVmwareAdminClusterNetworkConfigHaControlPlaneConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *vmwareAdminClusterNetworkConfigHaControlPlaneConfigPtrType) ToVmwareAdminClusterNetworkConfigHaControlPlaneConfigPtrOutputWithContext(ctx context.Context) VmwareAdminClusterNetworkConfigHaControlPlaneConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterNetworkConfigHaControlPlaneConfigPtrOutput)
+}
+
+type VmwareAdminClusterNetworkConfigHaControlPlaneConfigOutput struct{ *pulumi.OutputState }
+
+func (VmwareAdminClusterNetworkConfigHaControlPlaneConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareAdminClusterNetworkConfigHaControlPlaneConfig)(nil)).Elem()
+}
+
+func (o VmwareAdminClusterNetworkConfigHaControlPlaneConfigOutput) ToVmwareAdminClusterNetworkConfigHaControlPlaneConfigOutput() VmwareAdminClusterNetworkConfigHaControlPlaneConfigOutput {
+	return o
+}
+
+func (o VmwareAdminClusterNetworkConfigHaControlPlaneConfigOutput) ToVmwareAdminClusterNetworkConfigHaControlPlaneConfigOutputWithContext(ctx context.Context) VmwareAdminClusterNetworkConfigHaControlPlaneConfigOutput {
+	return o
+}
+
+func (o VmwareAdminClusterNetworkConfigHaControlPlaneConfigOutput) ToVmwareAdminClusterNetworkConfigHaControlPlaneConfigPtrOutput() VmwareAdminClusterNetworkConfigHaControlPlaneConfigPtrOutput {
+	return o.ToVmwareAdminClusterNetworkConfigHaControlPlaneConfigPtrOutputWithContext(context.Background())
+}
+
+func (o VmwareAdminClusterNetworkConfigHaControlPlaneConfigOutput) ToVmwareAdminClusterNetworkConfigHaControlPlaneConfigPtrOutputWithContext(ctx context.Context) VmwareAdminClusterNetworkConfigHaControlPlaneConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmwareAdminClusterNetworkConfigHaControlPlaneConfig) *VmwareAdminClusterNetworkConfigHaControlPlaneConfig {
+		return &v
+	}).(VmwareAdminClusterNetworkConfigHaControlPlaneConfigPtrOutput)
+}
+
+// Static IP addresses for the control plane nodes.
+// Structure is documented below.
+func (o VmwareAdminClusterNetworkConfigHaControlPlaneConfigOutput) ControlPlaneIpBlock() VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockPtrOutput {
+	return o.ApplyT(func(v VmwareAdminClusterNetworkConfigHaControlPlaneConfig) *VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlock {
+		return v.ControlPlaneIpBlock
+	}).(VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockPtrOutput)
+}
+
+type VmwareAdminClusterNetworkConfigHaControlPlaneConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (VmwareAdminClusterNetworkConfigHaControlPlaneConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmwareAdminClusterNetworkConfigHaControlPlaneConfig)(nil)).Elem()
+}
+
+func (o VmwareAdminClusterNetworkConfigHaControlPlaneConfigPtrOutput) ToVmwareAdminClusterNetworkConfigHaControlPlaneConfigPtrOutput() VmwareAdminClusterNetworkConfigHaControlPlaneConfigPtrOutput {
+	return o
+}
+
+func (o VmwareAdminClusterNetworkConfigHaControlPlaneConfigPtrOutput) ToVmwareAdminClusterNetworkConfigHaControlPlaneConfigPtrOutputWithContext(ctx context.Context) VmwareAdminClusterNetworkConfigHaControlPlaneConfigPtrOutput {
+	return o
+}
+
+func (o VmwareAdminClusterNetworkConfigHaControlPlaneConfigPtrOutput) Elem() VmwareAdminClusterNetworkConfigHaControlPlaneConfigOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterNetworkConfigHaControlPlaneConfig) VmwareAdminClusterNetworkConfigHaControlPlaneConfig {
+		if v != nil {
+			return *v
+		}
+		var ret VmwareAdminClusterNetworkConfigHaControlPlaneConfig
+		return ret
+	}).(VmwareAdminClusterNetworkConfigHaControlPlaneConfigOutput)
+}
+
+// Static IP addresses for the control plane nodes.
+// Structure is documented below.
+func (o VmwareAdminClusterNetworkConfigHaControlPlaneConfigPtrOutput) ControlPlaneIpBlock() VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockPtrOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterNetworkConfigHaControlPlaneConfig) *VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlock {
+		if v == nil {
+			return nil
+		}
+		return v.ControlPlaneIpBlock
+	}).(VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockPtrOutput)
+}
+
+type VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlock struct {
+	// The network gateway used by the VMware Admin Cluster.
+	Gateway string `pulumi:"gateway"`
+	// The node's network configurations used by the VMware Admin Cluster.
+	// Structure is documented below.
+	Ips []VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIp `pulumi:"ips"`
+	// The netmask used by the VMware Admin Cluster.
+	Netmask string `pulumi:"netmask"`
+}
+
+// VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockInput is an input type that accepts VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockArgs and VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockOutput values.
+// You can construct a concrete instance of `VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockInput` via:
+//
+//	VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockArgs{...}
+type VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockInput interface {
+	pulumi.Input
+
+	ToVmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockOutput() VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockOutput
+	ToVmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockOutputWithContext(context.Context) VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockOutput
+}
+
+type VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockArgs struct {
+	// The network gateway used by the VMware Admin Cluster.
+	Gateway pulumi.StringInput `pulumi:"gateway"`
+	// The node's network configurations used by the VMware Admin Cluster.
+	// Structure is documented below.
+	Ips VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpArrayInput `pulumi:"ips"`
+	// The netmask used by the VMware Admin Cluster.
+	Netmask pulumi.StringInput `pulumi:"netmask"`
+}
+
+func (VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlock)(nil)).Elem()
+}
+
+func (i VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockArgs) ToVmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockOutput() VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockOutput {
+	return i.ToVmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockOutputWithContext(context.Background())
+}
+
+func (i VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockArgs) ToVmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockOutputWithContext(ctx context.Context) VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockOutput)
+}
+
+func (i VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockArgs) ToVmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockPtrOutput() VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockPtrOutput {
+	return i.ToVmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockPtrOutputWithContext(context.Background())
+}
+
+func (i VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockArgs) ToVmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockPtrOutputWithContext(ctx context.Context) VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockOutput).ToVmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockPtrOutputWithContext(ctx)
+}
+
+// VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockPtrInput is an input type that accepts VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockArgs, VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockPtr and VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockPtrOutput values.
+// You can construct a concrete instance of `VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockPtrInput` via:
+//
+//	        VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockArgs{...}
+//
+//	or:
+//
+//	        nil
+type VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockPtrInput interface {
+	pulumi.Input
+
+	ToVmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockPtrOutput() VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockPtrOutput
+	ToVmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockPtrOutputWithContext(context.Context) VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockPtrOutput
+}
+
+type vmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockPtrType VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockArgs
+
+func VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockPtr(v *VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockArgs) VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockPtrInput {
+	return (*vmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockPtrType)(v)
+}
+
+func (*vmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlock)(nil)).Elem()
+}
+
+func (i *vmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockPtrType) ToVmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockPtrOutput() VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockPtrOutput {
+	return i.ToVmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockPtrOutputWithContext(context.Background())
+}
+
+func (i *vmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockPtrType) ToVmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockPtrOutputWithContext(ctx context.Context) VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockPtrOutput)
+}
+
+type VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockOutput struct{ *pulumi.OutputState }
+
+func (VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlock)(nil)).Elem()
+}
+
+func (o VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockOutput) ToVmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockOutput() VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockOutput {
+	return o
+}
+
+func (o VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockOutput) ToVmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockOutputWithContext(ctx context.Context) VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockOutput {
+	return o
+}
+
+func (o VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockOutput) ToVmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockPtrOutput() VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockPtrOutput {
+	return o.ToVmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockPtrOutputWithContext(context.Background())
+}
+
+func (o VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockOutput) ToVmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockPtrOutputWithContext(ctx context.Context) VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlock) *VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlock {
+		return &v
+	}).(VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockPtrOutput)
+}
+
+// The network gateway used by the VMware Admin Cluster.
+func (o VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockOutput) Gateway() pulumi.StringOutput {
+	return o.ApplyT(func(v VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlock) string {
+		return v.Gateway
+	}).(pulumi.StringOutput)
+}
+
+// The node's network configurations used by the VMware Admin Cluster.
+// Structure is documented below.
+func (o VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockOutput) Ips() VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpArrayOutput {
+	return o.ApplyT(func(v VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlock) []VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIp {
+		return v.Ips
+	}).(VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpArrayOutput)
+}
+
+// The netmask used by the VMware Admin Cluster.
+func (o VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockOutput) Netmask() pulumi.StringOutput {
+	return o.ApplyT(func(v VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlock) string {
+		return v.Netmask
+	}).(pulumi.StringOutput)
+}
+
+type VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockPtrOutput struct{ *pulumi.OutputState }
+
+func (VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlock)(nil)).Elem()
+}
+
+func (o VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockPtrOutput) ToVmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockPtrOutput() VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockPtrOutput {
+	return o
+}
+
+func (o VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockPtrOutput) ToVmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockPtrOutputWithContext(ctx context.Context) VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockPtrOutput {
+	return o
+}
+
+func (o VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockPtrOutput) Elem() VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlock) VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlock {
+		if v != nil {
+			return *v
+		}
+		var ret VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlock
+		return ret
+	}).(VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockOutput)
+}
+
+// The network gateway used by the VMware Admin Cluster.
+func (o VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockPtrOutput) Gateway() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlock) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Gateway
+	}).(pulumi.StringPtrOutput)
+}
+
+// The node's network configurations used by the VMware Admin Cluster.
+// Structure is documented below.
+func (o VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockPtrOutput) Ips() VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpArrayOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlock) []VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIp {
+		if v == nil {
+			return nil
+		}
+		return v.Ips
+	}).(VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpArrayOutput)
+}
+
+// The netmask used by the VMware Admin Cluster.
+func (o VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockPtrOutput) Netmask() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlock) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Netmask
+	}).(pulumi.StringPtrOutput)
+}
+
+type VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIp struct {
+	// Hostname of the machine. VM's name will be used if this field is empty.
+	//
+	// ***
+	Hostname *string `pulumi:"hostname"`
+	// IP could be an IP address (like 1.2.3.4) or a CIDR (like 1.2.3.0/24).
+	Ip string `pulumi:"ip"`
+}
+
+// VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpInput is an input type that accepts VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpArgs and VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpOutput values.
+// You can construct a concrete instance of `VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpInput` via:
+//
+//	VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpArgs{...}
+type VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpInput interface {
+	pulumi.Input
+
+	ToVmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpOutput() VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpOutput
+	ToVmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpOutputWithContext(context.Context) VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpOutput
+}
+
+type VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpArgs struct {
+	// Hostname of the machine. VM's name will be used if this field is empty.
+	//
+	// ***
+	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
+	// IP could be an IP address (like 1.2.3.4) or a CIDR (like 1.2.3.0/24).
+	Ip pulumi.StringInput `pulumi:"ip"`
+}
+
+func (VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIp)(nil)).Elem()
+}
+
+func (i VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpArgs) ToVmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpOutput() VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpOutput {
+	return i.ToVmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpOutputWithContext(context.Background())
+}
+
+func (i VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpArgs) ToVmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpOutputWithContext(ctx context.Context) VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpOutput)
+}
+
+// VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpArrayInput is an input type that accepts VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpArray and VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpArrayOutput values.
+// You can construct a concrete instance of `VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpArrayInput` via:
+//
+//	VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpArray{ VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpArgs{...} }
+type VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpArrayInput interface {
+	pulumi.Input
+
+	ToVmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpArrayOutput() VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpArrayOutput
+	ToVmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpArrayOutputWithContext(context.Context) VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpArrayOutput
+}
+
+type VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpArray []VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpInput
+
+func (VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIp)(nil)).Elem()
+}
+
+func (i VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpArray) ToVmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpArrayOutput() VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpArrayOutput {
+	return i.ToVmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpArrayOutputWithContext(context.Background())
+}
+
+func (i VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpArray) ToVmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpArrayOutputWithContext(ctx context.Context) VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpArrayOutput)
+}
+
+type VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpOutput struct{ *pulumi.OutputState }
+
+func (VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIp)(nil)).Elem()
+}
+
+func (o VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpOutput) ToVmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpOutput() VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpOutput {
+	return o
+}
+
+func (o VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpOutput) ToVmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpOutputWithContext(ctx context.Context) VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpOutput {
+	return o
+}
+
+// Hostname of the machine. VM's name will be used if this field is empty.
+//
+// ***
+func (o VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIp) *string {
+		return v.Hostname
+	}).(pulumi.StringPtrOutput)
+}
+
+// IP could be an IP address (like 1.2.3.4) or a CIDR (like 1.2.3.0/24).
+func (o VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpOutput) Ip() pulumi.StringOutput {
+	return o.ApplyT(func(v VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIp) string { return v.Ip }).(pulumi.StringOutput)
+}
+
+type VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpArrayOutput struct{ *pulumi.OutputState }
+
+func (VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIp)(nil)).Elem()
+}
+
+func (o VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpArrayOutput) ToVmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpArrayOutput() VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpArrayOutput {
+	return o
+}
+
+func (o VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpArrayOutput) ToVmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpArrayOutputWithContext(ctx context.Context) VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpArrayOutput {
+	return o
+}
+
+func (o VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpArrayOutput) Index(i pulumi.IntInput) VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIp {
+		return vs[0].([]VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIp)[vs[1].(int)]
+	}).(VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpOutput)
+}
+
+type VmwareAdminClusterNetworkConfigHostConfig struct {
+	// DNS search domains.
+	DnsSearchDomains []string `pulumi:"dnsSearchDomains"`
+	// DNS servers.
+	DnsServers []string `pulumi:"dnsServers"`
+	// NTP servers.
+	NtpServers []string `pulumi:"ntpServers"`
+}
+
+// VmwareAdminClusterNetworkConfigHostConfigInput is an input type that accepts VmwareAdminClusterNetworkConfigHostConfigArgs and VmwareAdminClusterNetworkConfigHostConfigOutput values.
+// You can construct a concrete instance of `VmwareAdminClusterNetworkConfigHostConfigInput` via:
+//
+//	VmwareAdminClusterNetworkConfigHostConfigArgs{...}
+type VmwareAdminClusterNetworkConfigHostConfigInput interface {
+	pulumi.Input
+
+	ToVmwareAdminClusterNetworkConfigHostConfigOutput() VmwareAdminClusterNetworkConfigHostConfigOutput
+	ToVmwareAdminClusterNetworkConfigHostConfigOutputWithContext(context.Context) VmwareAdminClusterNetworkConfigHostConfigOutput
+}
+
+type VmwareAdminClusterNetworkConfigHostConfigArgs struct {
+	// DNS search domains.
+	DnsSearchDomains pulumi.StringArrayInput `pulumi:"dnsSearchDomains"`
+	// DNS servers.
+	DnsServers pulumi.StringArrayInput `pulumi:"dnsServers"`
+	// NTP servers.
+	NtpServers pulumi.StringArrayInput `pulumi:"ntpServers"`
+}
+
+func (VmwareAdminClusterNetworkConfigHostConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareAdminClusterNetworkConfigHostConfig)(nil)).Elem()
+}
+
+func (i VmwareAdminClusterNetworkConfigHostConfigArgs) ToVmwareAdminClusterNetworkConfigHostConfigOutput() VmwareAdminClusterNetworkConfigHostConfigOutput {
+	return i.ToVmwareAdminClusterNetworkConfigHostConfigOutputWithContext(context.Background())
+}
+
+func (i VmwareAdminClusterNetworkConfigHostConfigArgs) ToVmwareAdminClusterNetworkConfigHostConfigOutputWithContext(ctx context.Context) VmwareAdminClusterNetworkConfigHostConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterNetworkConfigHostConfigOutput)
+}
+
+func (i VmwareAdminClusterNetworkConfigHostConfigArgs) ToVmwareAdminClusterNetworkConfigHostConfigPtrOutput() VmwareAdminClusterNetworkConfigHostConfigPtrOutput {
+	return i.ToVmwareAdminClusterNetworkConfigHostConfigPtrOutputWithContext(context.Background())
+}
+
+func (i VmwareAdminClusterNetworkConfigHostConfigArgs) ToVmwareAdminClusterNetworkConfigHostConfigPtrOutputWithContext(ctx context.Context) VmwareAdminClusterNetworkConfigHostConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterNetworkConfigHostConfigOutput).ToVmwareAdminClusterNetworkConfigHostConfigPtrOutputWithContext(ctx)
+}
+
+// VmwareAdminClusterNetworkConfigHostConfigPtrInput is an input type that accepts VmwareAdminClusterNetworkConfigHostConfigArgs, VmwareAdminClusterNetworkConfigHostConfigPtr and VmwareAdminClusterNetworkConfigHostConfigPtrOutput values.
+// You can construct a concrete instance of `VmwareAdminClusterNetworkConfigHostConfigPtrInput` via:
+//
+//	        VmwareAdminClusterNetworkConfigHostConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type VmwareAdminClusterNetworkConfigHostConfigPtrInput interface {
+	pulumi.Input
+
+	ToVmwareAdminClusterNetworkConfigHostConfigPtrOutput() VmwareAdminClusterNetworkConfigHostConfigPtrOutput
+	ToVmwareAdminClusterNetworkConfigHostConfigPtrOutputWithContext(context.Context) VmwareAdminClusterNetworkConfigHostConfigPtrOutput
+}
+
+type vmwareAdminClusterNetworkConfigHostConfigPtrType VmwareAdminClusterNetworkConfigHostConfigArgs
+
+func VmwareAdminClusterNetworkConfigHostConfigPtr(v *VmwareAdminClusterNetworkConfigHostConfigArgs) VmwareAdminClusterNetworkConfigHostConfigPtrInput {
+	return (*vmwareAdminClusterNetworkConfigHostConfigPtrType)(v)
+}
+
+func (*vmwareAdminClusterNetworkConfigHostConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmwareAdminClusterNetworkConfigHostConfig)(nil)).Elem()
+}
+
+func (i *vmwareAdminClusterNetworkConfigHostConfigPtrType) ToVmwareAdminClusterNetworkConfigHostConfigPtrOutput() VmwareAdminClusterNetworkConfigHostConfigPtrOutput {
+	return i.ToVmwareAdminClusterNetworkConfigHostConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *vmwareAdminClusterNetworkConfigHostConfigPtrType) ToVmwareAdminClusterNetworkConfigHostConfigPtrOutputWithContext(ctx context.Context) VmwareAdminClusterNetworkConfigHostConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterNetworkConfigHostConfigPtrOutput)
+}
+
+type VmwareAdminClusterNetworkConfigHostConfigOutput struct{ *pulumi.OutputState }
+
+func (VmwareAdminClusterNetworkConfigHostConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareAdminClusterNetworkConfigHostConfig)(nil)).Elem()
+}
+
+func (o VmwareAdminClusterNetworkConfigHostConfigOutput) ToVmwareAdminClusterNetworkConfigHostConfigOutput() VmwareAdminClusterNetworkConfigHostConfigOutput {
+	return o
+}
+
+func (o VmwareAdminClusterNetworkConfigHostConfigOutput) ToVmwareAdminClusterNetworkConfigHostConfigOutputWithContext(ctx context.Context) VmwareAdminClusterNetworkConfigHostConfigOutput {
+	return o
+}
+
+func (o VmwareAdminClusterNetworkConfigHostConfigOutput) ToVmwareAdminClusterNetworkConfigHostConfigPtrOutput() VmwareAdminClusterNetworkConfigHostConfigPtrOutput {
+	return o.ToVmwareAdminClusterNetworkConfigHostConfigPtrOutputWithContext(context.Background())
+}
+
+func (o VmwareAdminClusterNetworkConfigHostConfigOutput) ToVmwareAdminClusterNetworkConfigHostConfigPtrOutputWithContext(ctx context.Context) VmwareAdminClusterNetworkConfigHostConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmwareAdminClusterNetworkConfigHostConfig) *VmwareAdminClusterNetworkConfigHostConfig {
+		return &v
+	}).(VmwareAdminClusterNetworkConfigHostConfigPtrOutput)
+}
+
+// DNS search domains.
+func (o VmwareAdminClusterNetworkConfigHostConfigOutput) DnsSearchDomains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VmwareAdminClusterNetworkConfigHostConfig) []string { return v.DnsSearchDomains }).(pulumi.StringArrayOutput)
+}
+
+// DNS servers.
+func (o VmwareAdminClusterNetworkConfigHostConfigOutput) DnsServers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VmwareAdminClusterNetworkConfigHostConfig) []string { return v.DnsServers }).(pulumi.StringArrayOutput)
+}
+
+// NTP servers.
+func (o VmwareAdminClusterNetworkConfigHostConfigOutput) NtpServers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v VmwareAdminClusterNetworkConfigHostConfig) []string { return v.NtpServers }).(pulumi.StringArrayOutput)
+}
+
+type VmwareAdminClusterNetworkConfigHostConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (VmwareAdminClusterNetworkConfigHostConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmwareAdminClusterNetworkConfigHostConfig)(nil)).Elem()
+}
+
+func (o VmwareAdminClusterNetworkConfigHostConfigPtrOutput) ToVmwareAdminClusterNetworkConfigHostConfigPtrOutput() VmwareAdminClusterNetworkConfigHostConfigPtrOutput {
+	return o
+}
+
+func (o VmwareAdminClusterNetworkConfigHostConfigPtrOutput) ToVmwareAdminClusterNetworkConfigHostConfigPtrOutputWithContext(ctx context.Context) VmwareAdminClusterNetworkConfigHostConfigPtrOutput {
+	return o
+}
+
+func (o VmwareAdminClusterNetworkConfigHostConfigPtrOutput) Elem() VmwareAdminClusterNetworkConfigHostConfigOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterNetworkConfigHostConfig) VmwareAdminClusterNetworkConfigHostConfig {
+		if v != nil {
+			return *v
+		}
+		var ret VmwareAdminClusterNetworkConfigHostConfig
+		return ret
+	}).(VmwareAdminClusterNetworkConfigHostConfigOutput)
+}
+
+// DNS search domains.
+func (o VmwareAdminClusterNetworkConfigHostConfigPtrOutput) DnsSearchDomains() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterNetworkConfigHostConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DnsSearchDomains
+	}).(pulumi.StringArrayOutput)
+}
+
+// DNS servers.
+func (o VmwareAdminClusterNetworkConfigHostConfigPtrOutput) DnsServers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterNetworkConfigHostConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.DnsServers
+	}).(pulumi.StringArrayOutput)
+}
+
+// NTP servers.
+func (o VmwareAdminClusterNetworkConfigHostConfigPtrOutput) NtpServers() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterNetworkConfigHostConfig) []string {
+		if v == nil {
+			return nil
+		}
+		return v.NtpServers
+	}).(pulumi.StringArrayOutput)
+}
+
+type VmwareAdminClusterNetworkConfigStaticIpConfig struct {
+	// Represents the configuration values for static IP allocation to nodes.
+	// Structure is documented below.
+	IpBlocks []VmwareAdminClusterNetworkConfigStaticIpConfigIpBlock `pulumi:"ipBlocks"`
+}
+
+// VmwareAdminClusterNetworkConfigStaticIpConfigInput is an input type that accepts VmwareAdminClusterNetworkConfigStaticIpConfigArgs and VmwareAdminClusterNetworkConfigStaticIpConfigOutput values.
+// You can construct a concrete instance of `VmwareAdminClusterNetworkConfigStaticIpConfigInput` via:
+//
+//	VmwareAdminClusterNetworkConfigStaticIpConfigArgs{...}
+type VmwareAdminClusterNetworkConfigStaticIpConfigInput interface {
+	pulumi.Input
+
+	ToVmwareAdminClusterNetworkConfigStaticIpConfigOutput() VmwareAdminClusterNetworkConfigStaticIpConfigOutput
+	ToVmwareAdminClusterNetworkConfigStaticIpConfigOutputWithContext(context.Context) VmwareAdminClusterNetworkConfigStaticIpConfigOutput
+}
+
+type VmwareAdminClusterNetworkConfigStaticIpConfigArgs struct {
+	// Represents the configuration values for static IP allocation to nodes.
+	// Structure is documented below.
+	IpBlocks VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockArrayInput `pulumi:"ipBlocks"`
+}
+
+func (VmwareAdminClusterNetworkConfigStaticIpConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareAdminClusterNetworkConfigStaticIpConfig)(nil)).Elem()
+}
+
+func (i VmwareAdminClusterNetworkConfigStaticIpConfigArgs) ToVmwareAdminClusterNetworkConfigStaticIpConfigOutput() VmwareAdminClusterNetworkConfigStaticIpConfigOutput {
+	return i.ToVmwareAdminClusterNetworkConfigStaticIpConfigOutputWithContext(context.Background())
+}
+
+func (i VmwareAdminClusterNetworkConfigStaticIpConfigArgs) ToVmwareAdminClusterNetworkConfigStaticIpConfigOutputWithContext(ctx context.Context) VmwareAdminClusterNetworkConfigStaticIpConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterNetworkConfigStaticIpConfigOutput)
+}
+
+func (i VmwareAdminClusterNetworkConfigStaticIpConfigArgs) ToVmwareAdminClusterNetworkConfigStaticIpConfigPtrOutput() VmwareAdminClusterNetworkConfigStaticIpConfigPtrOutput {
+	return i.ToVmwareAdminClusterNetworkConfigStaticIpConfigPtrOutputWithContext(context.Background())
+}
+
+func (i VmwareAdminClusterNetworkConfigStaticIpConfigArgs) ToVmwareAdminClusterNetworkConfigStaticIpConfigPtrOutputWithContext(ctx context.Context) VmwareAdminClusterNetworkConfigStaticIpConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterNetworkConfigStaticIpConfigOutput).ToVmwareAdminClusterNetworkConfigStaticIpConfigPtrOutputWithContext(ctx)
+}
+
+// VmwareAdminClusterNetworkConfigStaticIpConfigPtrInput is an input type that accepts VmwareAdminClusterNetworkConfigStaticIpConfigArgs, VmwareAdminClusterNetworkConfigStaticIpConfigPtr and VmwareAdminClusterNetworkConfigStaticIpConfigPtrOutput values.
+// You can construct a concrete instance of `VmwareAdminClusterNetworkConfigStaticIpConfigPtrInput` via:
+//
+//	        VmwareAdminClusterNetworkConfigStaticIpConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type VmwareAdminClusterNetworkConfigStaticIpConfigPtrInput interface {
+	pulumi.Input
+
+	ToVmwareAdminClusterNetworkConfigStaticIpConfigPtrOutput() VmwareAdminClusterNetworkConfigStaticIpConfigPtrOutput
+	ToVmwareAdminClusterNetworkConfigStaticIpConfigPtrOutputWithContext(context.Context) VmwareAdminClusterNetworkConfigStaticIpConfigPtrOutput
+}
+
+type vmwareAdminClusterNetworkConfigStaticIpConfigPtrType VmwareAdminClusterNetworkConfigStaticIpConfigArgs
+
+func VmwareAdminClusterNetworkConfigStaticIpConfigPtr(v *VmwareAdminClusterNetworkConfigStaticIpConfigArgs) VmwareAdminClusterNetworkConfigStaticIpConfigPtrInput {
+	return (*vmwareAdminClusterNetworkConfigStaticIpConfigPtrType)(v)
+}
+
+func (*vmwareAdminClusterNetworkConfigStaticIpConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmwareAdminClusterNetworkConfigStaticIpConfig)(nil)).Elem()
+}
+
+func (i *vmwareAdminClusterNetworkConfigStaticIpConfigPtrType) ToVmwareAdminClusterNetworkConfigStaticIpConfigPtrOutput() VmwareAdminClusterNetworkConfigStaticIpConfigPtrOutput {
+	return i.ToVmwareAdminClusterNetworkConfigStaticIpConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *vmwareAdminClusterNetworkConfigStaticIpConfigPtrType) ToVmwareAdminClusterNetworkConfigStaticIpConfigPtrOutputWithContext(ctx context.Context) VmwareAdminClusterNetworkConfigStaticIpConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterNetworkConfigStaticIpConfigPtrOutput)
+}
+
+type VmwareAdminClusterNetworkConfigStaticIpConfigOutput struct{ *pulumi.OutputState }
+
+func (VmwareAdminClusterNetworkConfigStaticIpConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareAdminClusterNetworkConfigStaticIpConfig)(nil)).Elem()
+}
+
+func (o VmwareAdminClusterNetworkConfigStaticIpConfigOutput) ToVmwareAdminClusterNetworkConfigStaticIpConfigOutput() VmwareAdminClusterNetworkConfigStaticIpConfigOutput {
+	return o
+}
+
+func (o VmwareAdminClusterNetworkConfigStaticIpConfigOutput) ToVmwareAdminClusterNetworkConfigStaticIpConfigOutputWithContext(ctx context.Context) VmwareAdminClusterNetworkConfigStaticIpConfigOutput {
+	return o
+}
+
+func (o VmwareAdminClusterNetworkConfigStaticIpConfigOutput) ToVmwareAdminClusterNetworkConfigStaticIpConfigPtrOutput() VmwareAdminClusterNetworkConfigStaticIpConfigPtrOutput {
+	return o.ToVmwareAdminClusterNetworkConfigStaticIpConfigPtrOutputWithContext(context.Background())
+}
+
+func (o VmwareAdminClusterNetworkConfigStaticIpConfigOutput) ToVmwareAdminClusterNetworkConfigStaticIpConfigPtrOutputWithContext(ctx context.Context) VmwareAdminClusterNetworkConfigStaticIpConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmwareAdminClusterNetworkConfigStaticIpConfig) *VmwareAdminClusterNetworkConfigStaticIpConfig {
+		return &v
+	}).(VmwareAdminClusterNetworkConfigStaticIpConfigPtrOutput)
+}
+
+// Represents the configuration values for static IP allocation to nodes.
+// Structure is documented below.
+func (o VmwareAdminClusterNetworkConfigStaticIpConfigOutput) IpBlocks() VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockArrayOutput {
+	return o.ApplyT(func(v VmwareAdminClusterNetworkConfigStaticIpConfig) []VmwareAdminClusterNetworkConfigStaticIpConfigIpBlock {
+		return v.IpBlocks
+	}).(VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockArrayOutput)
+}
+
+type VmwareAdminClusterNetworkConfigStaticIpConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (VmwareAdminClusterNetworkConfigStaticIpConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmwareAdminClusterNetworkConfigStaticIpConfig)(nil)).Elem()
+}
+
+func (o VmwareAdminClusterNetworkConfigStaticIpConfigPtrOutput) ToVmwareAdminClusterNetworkConfigStaticIpConfigPtrOutput() VmwareAdminClusterNetworkConfigStaticIpConfigPtrOutput {
+	return o
+}
+
+func (o VmwareAdminClusterNetworkConfigStaticIpConfigPtrOutput) ToVmwareAdminClusterNetworkConfigStaticIpConfigPtrOutputWithContext(ctx context.Context) VmwareAdminClusterNetworkConfigStaticIpConfigPtrOutput {
+	return o
+}
+
+func (o VmwareAdminClusterNetworkConfigStaticIpConfigPtrOutput) Elem() VmwareAdminClusterNetworkConfigStaticIpConfigOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterNetworkConfigStaticIpConfig) VmwareAdminClusterNetworkConfigStaticIpConfig {
+		if v != nil {
+			return *v
+		}
+		var ret VmwareAdminClusterNetworkConfigStaticIpConfig
+		return ret
+	}).(VmwareAdminClusterNetworkConfigStaticIpConfigOutput)
+}
+
+// Represents the configuration values for static IP allocation to nodes.
+// Structure is documented below.
+func (o VmwareAdminClusterNetworkConfigStaticIpConfigPtrOutput) IpBlocks() VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockArrayOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterNetworkConfigStaticIpConfig) []VmwareAdminClusterNetworkConfigStaticIpConfigIpBlock {
+		if v == nil {
+			return nil
+		}
+		return v.IpBlocks
+	}).(VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockArrayOutput)
+}
+
+type VmwareAdminClusterNetworkConfigStaticIpConfigIpBlock struct {
+	// The network gateway used by the VMware Admin Cluster.
+	Gateway string `pulumi:"gateway"`
+	// The node's network configurations used by the VMware Admin Cluster.
+	// Structure is documented below.
+	Ips []VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIp `pulumi:"ips"`
+	// The netmask used by the VMware Admin Cluster.
+	Netmask string `pulumi:"netmask"`
+}
+
+// VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockInput is an input type that accepts VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockArgs and VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockOutput values.
+// You can construct a concrete instance of `VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockInput` via:
+//
+//	VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockArgs{...}
+type VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockInput interface {
+	pulumi.Input
+
+	ToVmwareAdminClusterNetworkConfigStaticIpConfigIpBlockOutput() VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockOutput
+	ToVmwareAdminClusterNetworkConfigStaticIpConfigIpBlockOutputWithContext(context.Context) VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockOutput
+}
+
+type VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockArgs struct {
+	// The network gateway used by the VMware Admin Cluster.
+	Gateway pulumi.StringInput `pulumi:"gateway"`
+	// The node's network configurations used by the VMware Admin Cluster.
+	// Structure is documented below.
+	Ips VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpArrayInput `pulumi:"ips"`
+	// The netmask used by the VMware Admin Cluster.
+	Netmask pulumi.StringInput `pulumi:"netmask"`
+}
+
+func (VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareAdminClusterNetworkConfigStaticIpConfigIpBlock)(nil)).Elem()
+}
+
+func (i VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockArgs) ToVmwareAdminClusterNetworkConfigStaticIpConfigIpBlockOutput() VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockOutput {
+	return i.ToVmwareAdminClusterNetworkConfigStaticIpConfigIpBlockOutputWithContext(context.Background())
+}
+
+func (i VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockArgs) ToVmwareAdminClusterNetworkConfigStaticIpConfigIpBlockOutputWithContext(ctx context.Context) VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockOutput)
+}
+
+// VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockArrayInput is an input type that accepts VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockArray and VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockArrayOutput values.
+// You can construct a concrete instance of `VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockArrayInput` via:
+//
+//	VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockArray{ VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockArgs{...} }
+type VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockArrayInput interface {
+	pulumi.Input
+
+	ToVmwareAdminClusterNetworkConfigStaticIpConfigIpBlockArrayOutput() VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockArrayOutput
+	ToVmwareAdminClusterNetworkConfigStaticIpConfigIpBlockArrayOutputWithContext(context.Context) VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockArrayOutput
+}
+
+type VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockArray []VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockInput
+
+func (VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VmwareAdminClusterNetworkConfigStaticIpConfigIpBlock)(nil)).Elem()
+}
+
+func (i VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockArray) ToVmwareAdminClusterNetworkConfigStaticIpConfigIpBlockArrayOutput() VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockArrayOutput {
+	return i.ToVmwareAdminClusterNetworkConfigStaticIpConfigIpBlockArrayOutputWithContext(context.Background())
+}
+
+func (i VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockArray) ToVmwareAdminClusterNetworkConfigStaticIpConfigIpBlockArrayOutputWithContext(ctx context.Context) VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockArrayOutput)
+}
+
+type VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockOutput struct{ *pulumi.OutputState }
+
+func (VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareAdminClusterNetworkConfigStaticIpConfigIpBlock)(nil)).Elem()
+}
+
+func (o VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockOutput) ToVmwareAdminClusterNetworkConfigStaticIpConfigIpBlockOutput() VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockOutput {
+	return o
+}
+
+func (o VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockOutput) ToVmwareAdminClusterNetworkConfigStaticIpConfigIpBlockOutputWithContext(ctx context.Context) VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockOutput {
+	return o
+}
+
+// The network gateway used by the VMware Admin Cluster.
+func (o VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockOutput) Gateway() pulumi.StringOutput {
+	return o.ApplyT(func(v VmwareAdminClusterNetworkConfigStaticIpConfigIpBlock) string { return v.Gateway }).(pulumi.StringOutput)
+}
+
+// The node's network configurations used by the VMware Admin Cluster.
+// Structure is documented below.
+func (o VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockOutput) Ips() VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpArrayOutput {
+	return o.ApplyT(func(v VmwareAdminClusterNetworkConfigStaticIpConfigIpBlock) []VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIp {
+		return v.Ips
+	}).(VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpArrayOutput)
+}
+
+// The netmask used by the VMware Admin Cluster.
+func (o VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockOutput) Netmask() pulumi.StringOutput {
+	return o.ApplyT(func(v VmwareAdminClusterNetworkConfigStaticIpConfigIpBlock) string { return v.Netmask }).(pulumi.StringOutput)
+}
+
+type VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockArrayOutput struct{ *pulumi.OutputState }
+
+func (VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VmwareAdminClusterNetworkConfigStaticIpConfigIpBlock)(nil)).Elem()
+}
+
+func (o VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockArrayOutput) ToVmwareAdminClusterNetworkConfigStaticIpConfigIpBlockArrayOutput() VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockArrayOutput {
+	return o
+}
+
+func (o VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockArrayOutput) ToVmwareAdminClusterNetworkConfigStaticIpConfigIpBlockArrayOutputWithContext(ctx context.Context) VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockArrayOutput {
+	return o
+}
+
+func (o VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockArrayOutput) Index(i pulumi.IntInput) VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VmwareAdminClusterNetworkConfigStaticIpConfigIpBlock {
+		return vs[0].([]VmwareAdminClusterNetworkConfigStaticIpConfigIpBlock)[vs[1].(int)]
+	}).(VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockOutput)
+}
+
+type VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIp struct {
+	// Hostname of the machine. VM's name will be used if this field is empty.
+	//
+	// ***
+	Hostname *string `pulumi:"hostname"`
+	// IP could be an IP address (like 1.2.3.4) or a CIDR (like 1.2.3.0/24).
+	Ip string `pulumi:"ip"`
+}
+
+// VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpInput is an input type that accepts VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpArgs and VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpOutput values.
+// You can construct a concrete instance of `VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpInput` via:
+//
+//	VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpArgs{...}
+type VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpInput interface {
+	pulumi.Input
+
+	ToVmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpOutput() VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpOutput
+	ToVmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpOutputWithContext(context.Context) VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpOutput
+}
+
+type VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpArgs struct {
+	// Hostname of the machine. VM's name will be used if this field is empty.
+	//
+	// ***
+	Hostname pulumi.StringPtrInput `pulumi:"hostname"`
+	// IP could be an IP address (like 1.2.3.4) or a CIDR (like 1.2.3.0/24).
+	Ip pulumi.StringInput `pulumi:"ip"`
+}
+
+func (VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIp)(nil)).Elem()
+}
+
+func (i VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpArgs) ToVmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpOutput() VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpOutput {
+	return i.ToVmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpOutputWithContext(context.Background())
+}
+
+func (i VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpArgs) ToVmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpOutputWithContext(ctx context.Context) VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpOutput)
+}
+
+// VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpArrayInput is an input type that accepts VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpArray and VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpArrayOutput values.
+// You can construct a concrete instance of `VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpArrayInput` via:
+//
+//	VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpArray{ VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpArgs{...} }
+type VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpArrayInput interface {
+	pulumi.Input
+
+	ToVmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpArrayOutput() VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpArrayOutput
+	ToVmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpArrayOutputWithContext(context.Context) VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpArrayOutput
+}
+
+type VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpArray []VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpInput
+
+func (VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIp)(nil)).Elem()
+}
+
+func (i VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpArray) ToVmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpArrayOutput() VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpArrayOutput {
+	return i.ToVmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpArrayOutputWithContext(context.Background())
+}
+
+func (i VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpArray) ToVmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpArrayOutputWithContext(ctx context.Context) VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpArrayOutput)
+}
+
+type VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpOutput struct{ *pulumi.OutputState }
+
+func (VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIp)(nil)).Elem()
+}
+
+func (o VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpOutput) ToVmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpOutput() VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpOutput {
+	return o
+}
+
+func (o VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpOutput) ToVmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpOutputWithContext(ctx context.Context) VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpOutput {
+	return o
+}
+
+// Hostname of the machine. VM's name will be used if this field is empty.
+//
+// ***
+func (o VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpOutput) Hostname() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIp) *string { return v.Hostname }).(pulumi.StringPtrOutput)
+}
+
+// IP could be an IP address (like 1.2.3.4) or a CIDR (like 1.2.3.0/24).
+func (o VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpOutput) Ip() pulumi.StringOutput {
+	return o.ApplyT(func(v VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIp) string { return v.Ip }).(pulumi.StringOutput)
+}
+
+type VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpArrayOutput struct{ *pulumi.OutputState }
+
+func (VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIp)(nil)).Elem()
+}
+
+func (o VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpArrayOutput) ToVmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpArrayOutput() VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpArrayOutput {
+	return o
+}
+
+func (o VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpArrayOutput) ToVmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpArrayOutputWithContext(ctx context.Context) VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpArrayOutput {
+	return o
+}
+
+func (o VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpArrayOutput) Index(i pulumi.IntInput) VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIp {
+		return vs[0].([]VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIp)[vs[1].(int)]
+	}).(VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpOutput)
+}
+
+type VmwareAdminClusterPlatformConfig struct {
+	// (Output)
+	// The list of bundles installed in the admin cluster.
+	// Structure is documented below.
+	Bundles []VmwareAdminClusterPlatformConfigBundle `pulumi:"bundles"`
+	// (Output)
+	// The platform version e.g. 1.13.2.
+	PlatformVersion *string `pulumi:"platformVersion"`
+	// The required platform version e.g. 1.13.1.
+	// If the current platform version is lower than the target version,
+	// the platform version will be updated to the target version.
+	// If the target version is not installed in the platform
+	// (bundle versions), download the target version bundle.
+	RequiredPlatformVersion *string `pulumi:"requiredPlatformVersion"`
+	// (Output)
+	// ResourceStatus representing detailed cluster state.
+	// Structure is documented below.
+	//
+	// <a name="nestedStatus"></a>The `status` block contains:
+	Statuses []VmwareAdminClusterPlatformConfigStatus `pulumi:"statuses"`
+}
+
+// VmwareAdminClusterPlatformConfigInput is an input type that accepts VmwareAdminClusterPlatformConfigArgs and VmwareAdminClusterPlatformConfigOutput values.
+// You can construct a concrete instance of `VmwareAdminClusterPlatformConfigInput` via:
+//
+//	VmwareAdminClusterPlatformConfigArgs{...}
+type VmwareAdminClusterPlatformConfigInput interface {
+	pulumi.Input
+
+	ToVmwareAdminClusterPlatformConfigOutput() VmwareAdminClusterPlatformConfigOutput
+	ToVmwareAdminClusterPlatformConfigOutputWithContext(context.Context) VmwareAdminClusterPlatformConfigOutput
+}
+
+type VmwareAdminClusterPlatformConfigArgs struct {
+	// (Output)
+	// The list of bundles installed in the admin cluster.
+	// Structure is documented below.
+	Bundles VmwareAdminClusterPlatformConfigBundleArrayInput `pulumi:"bundles"`
+	// (Output)
+	// The platform version e.g. 1.13.2.
+	PlatformVersion pulumi.StringPtrInput `pulumi:"platformVersion"`
+	// The required platform version e.g. 1.13.1.
+	// If the current platform version is lower than the target version,
+	// the platform version will be updated to the target version.
+	// If the target version is not installed in the platform
+	// (bundle versions), download the target version bundle.
+	RequiredPlatformVersion pulumi.StringPtrInput `pulumi:"requiredPlatformVersion"`
+	// (Output)
+	// ResourceStatus representing detailed cluster state.
+	// Structure is documented below.
+	//
+	// <a name="nestedStatus"></a>The `status` block contains:
+	Statuses VmwareAdminClusterPlatformConfigStatusArrayInput `pulumi:"statuses"`
+}
+
+func (VmwareAdminClusterPlatformConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareAdminClusterPlatformConfig)(nil)).Elem()
+}
+
+func (i VmwareAdminClusterPlatformConfigArgs) ToVmwareAdminClusterPlatformConfigOutput() VmwareAdminClusterPlatformConfigOutput {
+	return i.ToVmwareAdminClusterPlatformConfigOutputWithContext(context.Background())
+}
+
+func (i VmwareAdminClusterPlatformConfigArgs) ToVmwareAdminClusterPlatformConfigOutputWithContext(ctx context.Context) VmwareAdminClusterPlatformConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterPlatformConfigOutput)
+}
+
+func (i VmwareAdminClusterPlatformConfigArgs) ToVmwareAdminClusterPlatformConfigPtrOutput() VmwareAdminClusterPlatformConfigPtrOutput {
+	return i.ToVmwareAdminClusterPlatformConfigPtrOutputWithContext(context.Background())
+}
+
+func (i VmwareAdminClusterPlatformConfigArgs) ToVmwareAdminClusterPlatformConfigPtrOutputWithContext(ctx context.Context) VmwareAdminClusterPlatformConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterPlatformConfigOutput).ToVmwareAdminClusterPlatformConfigPtrOutputWithContext(ctx)
+}
+
+// VmwareAdminClusterPlatformConfigPtrInput is an input type that accepts VmwareAdminClusterPlatformConfigArgs, VmwareAdminClusterPlatformConfigPtr and VmwareAdminClusterPlatformConfigPtrOutput values.
+// You can construct a concrete instance of `VmwareAdminClusterPlatformConfigPtrInput` via:
+//
+//	        VmwareAdminClusterPlatformConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type VmwareAdminClusterPlatformConfigPtrInput interface {
+	pulumi.Input
+
+	ToVmwareAdminClusterPlatformConfigPtrOutput() VmwareAdminClusterPlatformConfigPtrOutput
+	ToVmwareAdminClusterPlatformConfigPtrOutputWithContext(context.Context) VmwareAdminClusterPlatformConfigPtrOutput
+}
+
+type vmwareAdminClusterPlatformConfigPtrType VmwareAdminClusterPlatformConfigArgs
+
+func VmwareAdminClusterPlatformConfigPtr(v *VmwareAdminClusterPlatformConfigArgs) VmwareAdminClusterPlatformConfigPtrInput {
+	return (*vmwareAdminClusterPlatformConfigPtrType)(v)
+}
+
+func (*vmwareAdminClusterPlatformConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmwareAdminClusterPlatformConfig)(nil)).Elem()
+}
+
+func (i *vmwareAdminClusterPlatformConfigPtrType) ToVmwareAdminClusterPlatformConfigPtrOutput() VmwareAdminClusterPlatformConfigPtrOutput {
+	return i.ToVmwareAdminClusterPlatformConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *vmwareAdminClusterPlatformConfigPtrType) ToVmwareAdminClusterPlatformConfigPtrOutputWithContext(ctx context.Context) VmwareAdminClusterPlatformConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterPlatformConfigPtrOutput)
+}
+
+type VmwareAdminClusterPlatformConfigOutput struct{ *pulumi.OutputState }
+
+func (VmwareAdminClusterPlatformConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareAdminClusterPlatformConfig)(nil)).Elem()
+}
+
+func (o VmwareAdminClusterPlatformConfigOutput) ToVmwareAdminClusterPlatformConfigOutput() VmwareAdminClusterPlatformConfigOutput {
+	return o
+}
+
+func (o VmwareAdminClusterPlatformConfigOutput) ToVmwareAdminClusterPlatformConfigOutputWithContext(ctx context.Context) VmwareAdminClusterPlatformConfigOutput {
+	return o
+}
+
+func (o VmwareAdminClusterPlatformConfigOutput) ToVmwareAdminClusterPlatformConfigPtrOutput() VmwareAdminClusterPlatformConfigPtrOutput {
+	return o.ToVmwareAdminClusterPlatformConfigPtrOutputWithContext(context.Background())
+}
+
+func (o VmwareAdminClusterPlatformConfigOutput) ToVmwareAdminClusterPlatformConfigPtrOutputWithContext(ctx context.Context) VmwareAdminClusterPlatformConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmwareAdminClusterPlatformConfig) *VmwareAdminClusterPlatformConfig {
+		return &v
+	}).(VmwareAdminClusterPlatformConfigPtrOutput)
+}
+
+// (Output)
+// The list of bundles installed in the admin cluster.
+// Structure is documented below.
+func (o VmwareAdminClusterPlatformConfigOutput) Bundles() VmwareAdminClusterPlatformConfigBundleArrayOutput {
+	return o.ApplyT(func(v VmwareAdminClusterPlatformConfig) []VmwareAdminClusterPlatformConfigBundle { return v.Bundles }).(VmwareAdminClusterPlatformConfigBundleArrayOutput)
+}
+
+// (Output)
+// The platform version e.g. 1.13.2.
+func (o VmwareAdminClusterPlatformConfigOutput) PlatformVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmwareAdminClusterPlatformConfig) *string { return v.PlatformVersion }).(pulumi.StringPtrOutput)
+}
+
+// The required platform version e.g. 1.13.1.
+// If the current platform version is lower than the target version,
+// the platform version will be updated to the target version.
+// If the target version is not installed in the platform
+// (bundle versions), download the target version bundle.
+func (o VmwareAdminClusterPlatformConfigOutput) RequiredPlatformVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmwareAdminClusterPlatformConfig) *string { return v.RequiredPlatformVersion }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// ResourceStatus representing detailed cluster state.
+// Structure is documented below.
+//
+// <a name="nestedStatus"></a>The `status` block contains:
+func (o VmwareAdminClusterPlatformConfigOutput) Statuses() VmwareAdminClusterPlatformConfigStatusArrayOutput {
+	return o.ApplyT(func(v VmwareAdminClusterPlatformConfig) []VmwareAdminClusterPlatformConfigStatus { return v.Statuses }).(VmwareAdminClusterPlatformConfigStatusArrayOutput)
+}
+
+type VmwareAdminClusterPlatformConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (VmwareAdminClusterPlatformConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmwareAdminClusterPlatformConfig)(nil)).Elem()
+}
+
+func (o VmwareAdminClusterPlatformConfigPtrOutput) ToVmwareAdminClusterPlatformConfigPtrOutput() VmwareAdminClusterPlatformConfigPtrOutput {
+	return o
+}
+
+func (o VmwareAdminClusterPlatformConfigPtrOutput) ToVmwareAdminClusterPlatformConfigPtrOutputWithContext(ctx context.Context) VmwareAdminClusterPlatformConfigPtrOutput {
+	return o
+}
+
+func (o VmwareAdminClusterPlatformConfigPtrOutput) Elem() VmwareAdminClusterPlatformConfigOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterPlatformConfig) VmwareAdminClusterPlatformConfig {
+		if v != nil {
+			return *v
+		}
+		var ret VmwareAdminClusterPlatformConfig
+		return ret
+	}).(VmwareAdminClusterPlatformConfigOutput)
+}
+
+// (Output)
+// The list of bundles installed in the admin cluster.
+// Structure is documented below.
+func (o VmwareAdminClusterPlatformConfigPtrOutput) Bundles() VmwareAdminClusterPlatformConfigBundleArrayOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterPlatformConfig) []VmwareAdminClusterPlatformConfigBundle {
+		if v == nil {
+			return nil
+		}
+		return v.Bundles
+	}).(VmwareAdminClusterPlatformConfigBundleArrayOutput)
+}
+
+// (Output)
+// The platform version e.g. 1.13.2.
+func (o VmwareAdminClusterPlatformConfigPtrOutput) PlatformVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterPlatformConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PlatformVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// The required platform version e.g. 1.13.1.
+// If the current platform version is lower than the target version,
+// the platform version will be updated to the target version.
+// If the target version is not installed in the platform
+// (bundle versions), download the target version bundle.
+func (o VmwareAdminClusterPlatformConfigPtrOutput) RequiredPlatformVersion() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterPlatformConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RequiredPlatformVersion
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// ResourceStatus representing detailed cluster state.
+// Structure is documented below.
+//
+// <a name="nestedStatus"></a>The `status` block contains:
+func (o VmwareAdminClusterPlatformConfigPtrOutput) Statuses() VmwareAdminClusterPlatformConfigStatusArrayOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterPlatformConfig) []VmwareAdminClusterPlatformConfigStatus {
+		if v == nil {
+			return nil
+		}
+		return v.Statuses
+	}).(VmwareAdminClusterPlatformConfigStatusArrayOutput)
+}
+
+type VmwareAdminClusterPlatformConfigBundle struct {
+	// ResourceStatus representing detailed cluster state.
+	// Structure is documented below.
+	Statuses []VmwareAdminClusterPlatformConfigBundleStatus `pulumi:"statuses"`
+	// The version of the bundle.
+	Version *string `pulumi:"version"`
+}
+
+// VmwareAdminClusterPlatformConfigBundleInput is an input type that accepts VmwareAdminClusterPlatformConfigBundleArgs and VmwareAdminClusterPlatformConfigBundleOutput values.
+// You can construct a concrete instance of `VmwareAdminClusterPlatformConfigBundleInput` via:
+//
+//	VmwareAdminClusterPlatformConfigBundleArgs{...}
+type VmwareAdminClusterPlatformConfigBundleInput interface {
+	pulumi.Input
+
+	ToVmwareAdminClusterPlatformConfigBundleOutput() VmwareAdminClusterPlatformConfigBundleOutput
+	ToVmwareAdminClusterPlatformConfigBundleOutputWithContext(context.Context) VmwareAdminClusterPlatformConfigBundleOutput
+}
+
+type VmwareAdminClusterPlatformConfigBundleArgs struct {
+	// ResourceStatus representing detailed cluster state.
+	// Structure is documented below.
+	Statuses VmwareAdminClusterPlatformConfigBundleStatusArrayInput `pulumi:"statuses"`
+	// The version of the bundle.
+	Version pulumi.StringPtrInput `pulumi:"version"`
+}
+
+func (VmwareAdminClusterPlatformConfigBundleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareAdminClusterPlatformConfigBundle)(nil)).Elem()
+}
+
+func (i VmwareAdminClusterPlatformConfigBundleArgs) ToVmwareAdminClusterPlatformConfigBundleOutput() VmwareAdminClusterPlatformConfigBundleOutput {
+	return i.ToVmwareAdminClusterPlatformConfigBundleOutputWithContext(context.Background())
+}
+
+func (i VmwareAdminClusterPlatformConfigBundleArgs) ToVmwareAdminClusterPlatformConfigBundleOutputWithContext(ctx context.Context) VmwareAdminClusterPlatformConfigBundleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterPlatformConfigBundleOutput)
+}
+
+// VmwareAdminClusterPlatformConfigBundleArrayInput is an input type that accepts VmwareAdminClusterPlatformConfigBundleArray and VmwareAdminClusterPlatformConfigBundleArrayOutput values.
+// You can construct a concrete instance of `VmwareAdminClusterPlatformConfigBundleArrayInput` via:
+//
+//	VmwareAdminClusterPlatformConfigBundleArray{ VmwareAdminClusterPlatformConfigBundleArgs{...} }
+type VmwareAdminClusterPlatformConfigBundleArrayInput interface {
+	pulumi.Input
+
+	ToVmwareAdminClusterPlatformConfigBundleArrayOutput() VmwareAdminClusterPlatformConfigBundleArrayOutput
+	ToVmwareAdminClusterPlatformConfigBundleArrayOutputWithContext(context.Context) VmwareAdminClusterPlatformConfigBundleArrayOutput
+}
+
+type VmwareAdminClusterPlatformConfigBundleArray []VmwareAdminClusterPlatformConfigBundleInput
+
+func (VmwareAdminClusterPlatformConfigBundleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VmwareAdminClusterPlatformConfigBundle)(nil)).Elem()
+}
+
+func (i VmwareAdminClusterPlatformConfigBundleArray) ToVmwareAdminClusterPlatformConfigBundleArrayOutput() VmwareAdminClusterPlatformConfigBundleArrayOutput {
+	return i.ToVmwareAdminClusterPlatformConfigBundleArrayOutputWithContext(context.Background())
+}
+
+func (i VmwareAdminClusterPlatformConfigBundleArray) ToVmwareAdminClusterPlatformConfigBundleArrayOutputWithContext(ctx context.Context) VmwareAdminClusterPlatformConfigBundleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterPlatformConfigBundleArrayOutput)
+}
+
+type VmwareAdminClusterPlatformConfigBundleOutput struct{ *pulumi.OutputState }
+
+func (VmwareAdminClusterPlatformConfigBundleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareAdminClusterPlatformConfigBundle)(nil)).Elem()
+}
+
+func (o VmwareAdminClusterPlatformConfigBundleOutput) ToVmwareAdminClusterPlatformConfigBundleOutput() VmwareAdminClusterPlatformConfigBundleOutput {
+	return o
+}
+
+func (o VmwareAdminClusterPlatformConfigBundleOutput) ToVmwareAdminClusterPlatformConfigBundleOutputWithContext(ctx context.Context) VmwareAdminClusterPlatformConfigBundleOutput {
+	return o
+}
+
+// ResourceStatus representing detailed cluster state.
+// Structure is documented below.
+func (o VmwareAdminClusterPlatformConfigBundleOutput) Statuses() VmwareAdminClusterPlatformConfigBundleStatusArrayOutput {
+	return o.ApplyT(func(v VmwareAdminClusterPlatformConfigBundle) []VmwareAdminClusterPlatformConfigBundleStatus {
+		return v.Statuses
+	}).(VmwareAdminClusterPlatformConfigBundleStatusArrayOutput)
+}
+
+// The version of the bundle.
+func (o VmwareAdminClusterPlatformConfigBundleOutput) Version() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmwareAdminClusterPlatformConfigBundle) *string { return v.Version }).(pulumi.StringPtrOutput)
+}
+
+type VmwareAdminClusterPlatformConfigBundleArrayOutput struct{ *pulumi.OutputState }
+
+func (VmwareAdminClusterPlatformConfigBundleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VmwareAdminClusterPlatformConfigBundle)(nil)).Elem()
+}
+
+func (o VmwareAdminClusterPlatformConfigBundleArrayOutput) ToVmwareAdminClusterPlatformConfigBundleArrayOutput() VmwareAdminClusterPlatformConfigBundleArrayOutput {
+	return o
+}
+
+func (o VmwareAdminClusterPlatformConfigBundleArrayOutput) ToVmwareAdminClusterPlatformConfigBundleArrayOutputWithContext(ctx context.Context) VmwareAdminClusterPlatformConfigBundleArrayOutput {
+	return o
+}
+
+func (o VmwareAdminClusterPlatformConfigBundleArrayOutput) Index(i pulumi.IntInput) VmwareAdminClusterPlatformConfigBundleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VmwareAdminClusterPlatformConfigBundle {
+		return vs[0].([]VmwareAdminClusterPlatformConfigBundle)[vs[1].(int)]
+	}).(VmwareAdminClusterPlatformConfigBundleOutput)
+}
+
+type VmwareAdminClusterPlatformConfigBundleStatus struct {
+	// (Output)
+	// ResourceConditions provide a standard mechanism for higher-level status reporting from admin cluster controller.
+	// Structure is documented below.
+	Conditions []VmwareAdminClusterPlatformConfigBundleStatusCondition `pulumi:"conditions"`
+	// (Output)
+	// Human-friendly representation of the error message from the admin cluster
+	// controller. The error message can be temporary as the admin cluster
+	// controller creates a cluster or node pool. If the error message persists
+	// for a longer period of time, it can be used to surface error message to
+	// indicate real problems requiring user intervention.
+	ErrorMessage *string `pulumi:"errorMessage"`
+}
+
+// VmwareAdminClusterPlatformConfigBundleStatusInput is an input type that accepts VmwareAdminClusterPlatformConfigBundleStatusArgs and VmwareAdminClusterPlatformConfigBundleStatusOutput values.
+// You can construct a concrete instance of `VmwareAdminClusterPlatformConfigBundleStatusInput` via:
+//
+//	VmwareAdminClusterPlatformConfigBundleStatusArgs{...}
+type VmwareAdminClusterPlatformConfigBundleStatusInput interface {
+	pulumi.Input
+
+	ToVmwareAdminClusterPlatformConfigBundleStatusOutput() VmwareAdminClusterPlatformConfigBundleStatusOutput
+	ToVmwareAdminClusterPlatformConfigBundleStatusOutputWithContext(context.Context) VmwareAdminClusterPlatformConfigBundleStatusOutput
+}
+
+type VmwareAdminClusterPlatformConfigBundleStatusArgs struct {
+	// (Output)
+	// ResourceConditions provide a standard mechanism for higher-level status reporting from admin cluster controller.
+	// Structure is documented below.
+	Conditions VmwareAdminClusterPlatformConfigBundleStatusConditionArrayInput `pulumi:"conditions"`
+	// (Output)
+	// Human-friendly representation of the error message from the admin cluster
+	// controller. The error message can be temporary as the admin cluster
+	// controller creates a cluster or node pool. If the error message persists
+	// for a longer period of time, it can be used to surface error message to
+	// indicate real problems requiring user intervention.
+	ErrorMessage pulumi.StringPtrInput `pulumi:"errorMessage"`
+}
+
+func (VmwareAdminClusterPlatformConfigBundleStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareAdminClusterPlatformConfigBundleStatus)(nil)).Elem()
+}
+
+func (i VmwareAdminClusterPlatformConfigBundleStatusArgs) ToVmwareAdminClusterPlatformConfigBundleStatusOutput() VmwareAdminClusterPlatformConfigBundleStatusOutput {
+	return i.ToVmwareAdminClusterPlatformConfigBundleStatusOutputWithContext(context.Background())
+}
+
+func (i VmwareAdminClusterPlatformConfigBundleStatusArgs) ToVmwareAdminClusterPlatformConfigBundleStatusOutputWithContext(ctx context.Context) VmwareAdminClusterPlatformConfigBundleStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterPlatformConfigBundleStatusOutput)
+}
+
+// VmwareAdminClusterPlatformConfigBundleStatusArrayInput is an input type that accepts VmwareAdminClusterPlatformConfigBundleStatusArray and VmwareAdminClusterPlatformConfigBundleStatusArrayOutput values.
+// You can construct a concrete instance of `VmwareAdminClusterPlatformConfigBundleStatusArrayInput` via:
+//
+//	VmwareAdminClusterPlatformConfigBundleStatusArray{ VmwareAdminClusterPlatformConfigBundleStatusArgs{...} }
+type VmwareAdminClusterPlatformConfigBundleStatusArrayInput interface {
+	pulumi.Input
+
+	ToVmwareAdminClusterPlatformConfigBundleStatusArrayOutput() VmwareAdminClusterPlatformConfigBundleStatusArrayOutput
+	ToVmwareAdminClusterPlatformConfigBundleStatusArrayOutputWithContext(context.Context) VmwareAdminClusterPlatformConfigBundleStatusArrayOutput
+}
+
+type VmwareAdminClusterPlatformConfigBundleStatusArray []VmwareAdminClusterPlatformConfigBundleStatusInput
+
+func (VmwareAdminClusterPlatformConfigBundleStatusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VmwareAdminClusterPlatformConfigBundleStatus)(nil)).Elem()
+}
+
+func (i VmwareAdminClusterPlatformConfigBundleStatusArray) ToVmwareAdminClusterPlatformConfigBundleStatusArrayOutput() VmwareAdminClusterPlatformConfigBundleStatusArrayOutput {
+	return i.ToVmwareAdminClusterPlatformConfigBundleStatusArrayOutputWithContext(context.Background())
+}
+
+func (i VmwareAdminClusterPlatformConfigBundleStatusArray) ToVmwareAdminClusterPlatformConfigBundleStatusArrayOutputWithContext(ctx context.Context) VmwareAdminClusterPlatformConfigBundleStatusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterPlatformConfigBundleStatusArrayOutput)
+}
+
+type VmwareAdminClusterPlatformConfigBundleStatusOutput struct{ *pulumi.OutputState }
+
+func (VmwareAdminClusterPlatformConfigBundleStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareAdminClusterPlatformConfigBundleStatus)(nil)).Elem()
+}
+
+func (o VmwareAdminClusterPlatformConfigBundleStatusOutput) ToVmwareAdminClusterPlatformConfigBundleStatusOutput() VmwareAdminClusterPlatformConfigBundleStatusOutput {
+	return o
+}
+
+func (o VmwareAdminClusterPlatformConfigBundleStatusOutput) ToVmwareAdminClusterPlatformConfigBundleStatusOutputWithContext(ctx context.Context) VmwareAdminClusterPlatformConfigBundleStatusOutput {
+	return o
+}
+
+// (Output)
+// ResourceConditions provide a standard mechanism for higher-level status reporting from admin cluster controller.
+// Structure is documented below.
+func (o VmwareAdminClusterPlatformConfigBundleStatusOutput) Conditions() VmwareAdminClusterPlatformConfigBundleStatusConditionArrayOutput {
+	return o.ApplyT(func(v VmwareAdminClusterPlatformConfigBundleStatus) []VmwareAdminClusterPlatformConfigBundleStatusCondition {
+		return v.Conditions
+	}).(VmwareAdminClusterPlatformConfigBundleStatusConditionArrayOutput)
+}
+
+// (Output)
+// Human-friendly representation of the error message from the admin cluster
+// controller. The error message can be temporary as the admin cluster
+// controller creates a cluster or node pool. If the error message persists
+// for a longer period of time, it can be used to surface error message to
+// indicate real problems requiring user intervention.
+func (o VmwareAdminClusterPlatformConfigBundleStatusOutput) ErrorMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmwareAdminClusterPlatformConfigBundleStatus) *string { return v.ErrorMessage }).(pulumi.StringPtrOutput)
+}
+
+type VmwareAdminClusterPlatformConfigBundleStatusArrayOutput struct{ *pulumi.OutputState }
+
+func (VmwareAdminClusterPlatformConfigBundleStatusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VmwareAdminClusterPlatformConfigBundleStatus)(nil)).Elem()
+}
+
+func (o VmwareAdminClusterPlatformConfigBundleStatusArrayOutput) ToVmwareAdminClusterPlatformConfigBundleStatusArrayOutput() VmwareAdminClusterPlatformConfigBundleStatusArrayOutput {
+	return o
+}
+
+func (o VmwareAdminClusterPlatformConfigBundleStatusArrayOutput) ToVmwareAdminClusterPlatformConfigBundleStatusArrayOutputWithContext(ctx context.Context) VmwareAdminClusterPlatformConfigBundleStatusArrayOutput {
+	return o
+}
+
+func (o VmwareAdminClusterPlatformConfigBundleStatusArrayOutput) Index(i pulumi.IntInput) VmwareAdminClusterPlatformConfigBundleStatusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VmwareAdminClusterPlatformConfigBundleStatus {
+		return vs[0].([]VmwareAdminClusterPlatformConfigBundleStatus)[vs[1].(int)]
+	}).(VmwareAdminClusterPlatformConfigBundleStatusOutput)
+}
+
+type VmwareAdminClusterPlatformConfigBundleStatusCondition struct {
+	// (Output)
+	// Last time the condition transit from one status to another.
+	LastTransitionTime *string `pulumi:"lastTransitionTime"`
+	// (Output)
+	// Human-readable message indicating details about last transition.
+	Message *string `pulumi:"message"`
+	// (Output)
+	// Machine-readable message indicating details about last transition.
+	Reason *string `pulumi:"reason"`
+	// (Output)
+	// The lifecycle state of the condition.
+	State *string `pulumi:"state"`
+	// (Output)
+	// Type of the condition.
+	// (e.g., ClusterRunning, NodePoolRunning or ServerSidePreflightReady)
+	Type *string `pulumi:"type"`
+}
+
+// VmwareAdminClusterPlatformConfigBundleStatusConditionInput is an input type that accepts VmwareAdminClusterPlatformConfigBundleStatusConditionArgs and VmwareAdminClusterPlatformConfigBundleStatusConditionOutput values.
+// You can construct a concrete instance of `VmwareAdminClusterPlatformConfigBundleStatusConditionInput` via:
+//
+//	VmwareAdminClusterPlatformConfigBundleStatusConditionArgs{...}
+type VmwareAdminClusterPlatformConfigBundleStatusConditionInput interface {
+	pulumi.Input
+
+	ToVmwareAdminClusterPlatformConfigBundleStatusConditionOutput() VmwareAdminClusterPlatformConfigBundleStatusConditionOutput
+	ToVmwareAdminClusterPlatformConfigBundleStatusConditionOutputWithContext(context.Context) VmwareAdminClusterPlatformConfigBundleStatusConditionOutput
+}
+
+type VmwareAdminClusterPlatformConfigBundleStatusConditionArgs struct {
+	// (Output)
+	// Last time the condition transit from one status to another.
+	LastTransitionTime pulumi.StringPtrInput `pulumi:"lastTransitionTime"`
+	// (Output)
+	// Human-readable message indicating details about last transition.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+	// (Output)
+	// Machine-readable message indicating details about last transition.
+	Reason pulumi.StringPtrInput `pulumi:"reason"`
+	// (Output)
+	// The lifecycle state of the condition.
+	State pulumi.StringPtrInput `pulumi:"state"`
+	// (Output)
+	// Type of the condition.
+	// (e.g., ClusterRunning, NodePoolRunning or ServerSidePreflightReady)
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (VmwareAdminClusterPlatformConfigBundleStatusConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareAdminClusterPlatformConfigBundleStatusCondition)(nil)).Elem()
+}
+
+func (i VmwareAdminClusterPlatformConfigBundleStatusConditionArgs) ToVmwareAdminClusterPlatformConfigBundleStatusConditionOutput() VmwareAdminClusterPlatformConfigBundleStatusConditionOutput {
+	return i.ToVmwareAdminClusterPlatformConfigBundleStatusConditionOutputWithContext(context.Background())
+}
+
+func (i VmwareAdminClusterPlatformConfigBundleStatusConditionArgs) ToVmwareAdminClusterPlatformConfigBundleStatusConditionOutputWithContext(ctx context.Context) VmwareAdminClusterPlatformConfigBundleStatusConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterPlatformConfigBundleStatusConditionOutput)
+}
+
+// VmwareAdminClusterPlatformConfigBundleStatusConditionArrayInput is an input type that accepts VmwareAdminClusterPlatformConfigBundleStatusConditionArray and VmwareAdminClusterPlatformConfigBundleStatusConditionArrayOutput values.
+// You can construct a concrete instance of `VmwareAdminClusterPlatformConfigBundleStatusConditionArrayInput` via:
+//
+//	VmwareAdminClusterPlatformConfigBundleStatusConditionArray{ VmwareAdminClusterPlatformConfigBundleStatusConditionArgs{...} }
+type VmwareAdminClusterPlatformConfigBundleStatusConditionArrayInput interface {
+	pulumi.Input
+
+	ToVmwareAdminClusterPlatformConfigBundleStatusConditionArrayOutput() VmwareAdminClusterPlatformConfigBundleStatusConditionArrayOutput
+	ToVmwareAdminClusterPlatformConfigBundleStatusConditionArrayOutputWithContext(context.Context) VmwareAdminClusterPlatformConfigBundleStatusConditionArrayOutput
+}
+
+type VmwareAdminClusterPlatformConfigBundleStatusConditionArray []VmwareAdminClusterPlatformConfigBundleStatusConditionInput
+
+func (VmwareAdminClusterPlatformConfigBundleStatusConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VmwareAdminClusterPlatformConfigBundleStatusCondition)(nil)).Elem()
+}
+
+func (i VmwareAdminClusterPlatformConfigBundleStatusConditionArray) ToVmwareAdminClusterPlatformConfigBundleStatusConditionArrayOutput() VmwareAdminClusterPlatformConfigBundleStatusConditionArrayOutput {
+	return i.ToVmwareAdminClusterPlatformConfigBundleStatusConditionArrayOutputWithContext(context.Background())
+}
+
+func (i VmwareAdminClusterPlatformConfigBundleStatusConditionArray) ToVmwareAdminClusterPlatformConfigBundleStatusConditionArrayOutputWithContext(ctx context.Context) VmwareAdminClusterPlatformConfigBundleStatusConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterPlatformConfigBundleStatusConditionArrayOutput)
+}
+
+type VmwareAdminClusterPlatformConfigBundleStatusConditionOutput struct{ *pulumi.OutputState }
+
+func (VmwareAdminClusterPlatformConfigBundleStatusConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareAdminClusterPlatformConfigBundleStatusCondition)(nil)).Elem()
+}
+
+func (o VmwareAdminClusterPlatformConfigBundleStatusConditionOutput) ToVmwareAdminClusterPlatformConfigBundleStatusConditionOutput() VmwareAdminClusterPlatformConfigBundleStatusConditionOutput {
+	return o
+}
+
+func (o VmwareAdminClusterPlatformConfigBundleStatusConditionOutput) ToVmwareAdminClusterPlatformConfigBundleStatusConditionOutputWithContext(ctx context.Context) VmwareAdminClusterPlatformConfigBundleStatusConditionOutput {
+	return o
+}
+
+// (Output)
+// Last time the condition transit from one status to another.
+func (o VmwareAdminClusterPlatformConfigBundleStatusConditionOutput) LastTransitionTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmwareAdminClusterPlatformConfigBundleStatusCondition) *string { return v.LastTransitionTime }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Human-readable message indicating details about last transition.
+func (o VmwareAdminClusterPlatformConfigBundleStatusConditionOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmwareAdminClusterPlatformConfigBundleStatusCondition) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Machine-readable message indicating details about last transition.
+func (o VmwareAdminClusterPlatformConfigBundleStatusConditionOutput) Reason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmwareAdminClusterPlatformConfigBundleStatusCondition) *string { return v.Reason }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The lifecycle state of the condition.
+func (o VmwareAdminClusterPlatformConfigBundleStatusConditionOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmwareAdminClusterPlatformConfigBundleStatusCondition) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Type of the condition.
+// (e.g., ClusterRunning, NodePoolRunning or ServerSidePreflightReady)
+func (o VmwareAdminClusterPlatformConfigBundleStatusConditionOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmwareAdminClusterPlatformConfigBundleStatusCondition) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type VmwareAdminClusterPlatformConfigBundleStatusConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (VmwareAdminClusterPlatformConfigBundleStatusConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VmwareAdminClusterPlatformConfigBundleStatusCondition)(nil)).Elem()
+}
+
+func (o VmwareAdminClusterPlatformConfigBundleStatusConditionArrayOutput) ToVmwareAdminClusterPlatformConfigBundleStatusConditionArrayOutput() VmwareAdminClusterPlatformConfigBundleStatusConditionArrayOutput {
+	return o
+}
+
+func (o VmwareAdminClusterPlatformConfigBundleStatusConditionArrayOutput) ToVmwareAdminClusterPlatformConfigBundleStatusConditionArrayOutputWithContext(ctx context.Context) VmwareAdminClusterPlatformConfigBundleStatusConditionArrayOutput {
+	return o
+}
+
+func (o VmwareAdminClusterPlatformConfigBundleStatusConditionArrayOutput) Index(i pulumi.IntInput) VmwareAdminClusterPlatformConfigBundleStatusConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VmwareAdminClusterPlatformConfigBundleStatusCondition {
+		return vs[0].([]VmwareAdminClusterPlatformConfigBundleStatusCondition)[vs[1].(int)]
+	}).(VmwareAdminClusterPlatformConfigBundleStatusConditionOutput)
+}
+
+type VmwareAdminClusterPlatformConfigStatus struct {
+	// (Output)
+	// ResourceConditions provide a standard mechanism for higher-level status reporting from admin cluster controller.
+	// Structure is documented below.
+	Conditions []VmwareAdminClusterPlatformConfigStatusCondition `pulumi:"conditions"`
+	// (Output)
+	// Human-friendly representation of the error message from the admin cluster
+	// controller. The error message can be temporary as the admin cluster
+	// controller creates a cluster or node pool. If the error message persists
+	// for a longer period of time, it can be used to surface error message to
+	// indicate real problems requiring user intervention.
+	ErrorMessage *string `pulumi:"errorMessage"`
+}
+
+// VmwareAdminClusterPlatformConfigStatusInput is an input type that accepts VmwareAdminClusterPlatformConfigStatusArgs and VmwareAdminClusterPlatformConfigStatusOutput values.
+// You can construct a concrete instance of `VmwareAdminClusterPlatformConfigStatusInput` via:
+//
+//	VmwareAdminClusterPlatformConfigStatusArgs{...}
+type VmwareAdminClusterPlatformConfigStatusInput interface {
+	pulumi.Input
+
+	ToVmwareAdminClusterPlatformConfigStatusOutput() VmwareAdminClusterPlatformConfigStatusOutput
+	ToVmwareAdminClusterPlatformConfigStatusOutputWithContext(context.Context) VmwareAdminClusterPlatformConfigStatusOutput
+}
+
+type VmwareAdminClusterPlatformConfigStatusArgs struct {
+	// (Output)
+	// ResourceConditions provide a standard mechanism for higher-level status reporting from admin cluster controller.
+	// Structure is documented below.
+	Conditions VmwareAdminClusterPlatformConfigStatusConditionArrayInput `pulumi:"conditions"`
+	// (Output)
+	// Human-friendly representation of the error message from the admin cluster
+	// controller. The error message can be temporary as the admin cluster
+	// controller creates a cluster or node pool. If the error message persists
+	// for a longer period of time, it can be used to surface error message to
+	// indicate real problems requiring user intervention.
+	ErrorMessage pulumi.StringPtrInput `pulumi:"errorMessage"`
+}
+
+func (VmwareAdminClusterPlatformConfigStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareAdminClusterPlatformConfigStatus)(nil)).Elem()
+}
+
+func (i VmwareAdminClusterPlatformConfigStatusArgs) ToVmwareAdminClusterPlatformConfigStatusOutput() VmwareAdminClusterPlatformConfigStatusOutput {
+	return i.ToVmwareAdminClusterPlatformConfigStatusOutputWithContext(context.Background())
+}
+
+func (i VmwareAdminClusterPlatformConfigStatusArgs) ToVmwareAdminClusterPlatformConfigStatusOutputWithContext(ctx context.Context) VmwareAdminClusterPlatformConfigStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterPlatformConfigStatusOutput)
+}
+
+// VmwareAdminClusterPlatformConfigStatusArrayInput is an input type that accepts VmwareAdminClusterPlatformConfigStatusArray and VmwareAdminClusterPlatformConfigStatusArrayOutput values.
+// You can construct a concrete instance of `VmwareAdminClusterPlatformConfigStatusArrayInput` via:
+//
+//	VmwareAdminClusterPlatformConfigStatusArray{ VmwareAdminClusterPlatformConfigStatusArgs{...} }
+type VmwareAdminClusterPlatformConfigStatusArrayInput interface {
+	pulumi.Input
+
+	ToVmwareAdminClusterPlatformConfigStatusArrayOutput() VmwareAdminClusterPlatformConfigStatusArrayOutput
+	ToVmwareAdminClusterPlatformConfigStatusArrayOutputWithContext(context.Context) VmwareAdminClusterPlatformConfigStatusArrayOutput
+}
+
+type VmwareAdminClusterPlatformConfigStatusArray []VmwareAdminClusterPlatformConfigStatusInput
+
+func (VmwareAdminClusterPlatformConfigStatusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VmwareAdminClusterPlatformConfigStatus)(nil)).Elem()
+}
+
+func (i VmwareAdminClusterPlatformConfigStatusArray) ToVmwareAdminClusterPlatformConfigStatusArrayOutput() VmwareAdminClusterPlatformConfigStatusArrayOutput {
+	return i.ToVmwareAdminClusterPlatformConfigStatusArrayOutputWithContext(context.Background())
+}
+
+func (i VmwareAdminClusterPlatformConfigStatusArray) ToVmwareAdminClusterPlatformConfigStatusArrayOutputWithContext(ctx context.Context) VmwareAdminClusterPlatformConfigStatusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterPlatformConfigStatusArrayOutput)
+}
+
+type VmwareAdminClusterPlatformConfigStatusOutput struct{ *pulumi.OutputState }
+
+func (VmwareAdminClusterPlatformConfigStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareAdminClusterPlatformConfigStatus)(nil)).Elem()
+}
+
+func (o VmwareAdminClusterPlatformConfigStatusOutput) ToVmwareAdminClusterPlatformConfigStatusOutput() VmwareAdminClusterPlatformConfigStatusOutput {
+	return o
+}
+
+func (o VmwareAdminClusterPlatformConfigStatusOutput) ToVmwareAdminClusterPlatformConfigStatusOutputWithContext(ctx context.Context) VmwareAdminClusterPlatformConfigStatusOutput {
+	return o
+}
+
+// (Output)
+// ResourceConditions provide a standard mechanism for higher-level status reporting from admin cluster controller.
+// Structure is documented below.
+func (o VmwareAdminClusterPlatformConfigStatusOutput) Conditions() VmwareAdminClusterPlatformConfigStatusConditionArrayOutput {
+	return o.ApplyT(func(v VmwareAdminClusterPlatformConfigStatus) []VmwareAdminClusterPlatformConfigStatusCondition {
+		return v.Conditions
+	}).(VmwareAdminClusterPlatformConfigStatusConditionArrayOutput)
+}
+
+// (Output)
+// Human-friendly representation of the error message from the admin cluster
+// controller. The error message can be temporary as the admin cluster
+// controller creates a cluster or node pool. If the error message persists
+// for a longer period of time, it can be used to surface error message to
+// indicate real problems requiring user intervention.
+func (o VmwareAdminClusterPlatformConfigStatusOutput) ErrorMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmwareAdminClusterPlatformConfigStatus) *string { return v.ErrorMessage }).(pulumi.StringPtrOutput)
+}
+
+type VmwareAdminClusterPlatformConfigStatusArrayOutput struct{ *pulumi.OutputState }
+
+func (VmwareAdminClusterPlatformConfigStatusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VmwareAdminClusterPlatformConfigStatus)(nil)).Elem()
+}
+
+func (o VmwareAdminClusterPlatformConfigStatusArrayOutput) ToVmwareAdminClusterPlatformConfigStatusArrayOutput() VmwareAdminClusterPlatformConfigStatusArrayOutput {
+	return o
+}
+
+func (o VmwareAdminClusterPlatformConfigStatusArrayOutput) ToVmwareAdminClusterPlatformConfigStatusArrayOutputWithContext(ctx context.Context) VmwareAdminClusterPlatformConfigStatusArrayOutput {
+	return o
+}
+
+func (o VmwareAdminClusterPlatformConfigStatusArrayOutput) Index(i pulumi.IntInput) VmwareAdminClusterPlatformConfigStatusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VmwareAdminClusterPlatformConfigStatus {
+		return vs[0].([]VmwareAdminClusterPlatformConfigStatus)[vs[1].(int)]
+	}).(VmwareAdminClusterPlatformConfigStatusOutput)
+}
+
+type VmwareAdminClusterPlatformConfigStatusCondition struct {
+	// (Output)
+	// Last time the condition transit from one status to another.
+	LastTransitionTime *string `pulumi:"lastTransitionTime"`
+	// (Output)
+	// Human-readable message indicating details about last transition.
+	Message *string `pulumi:"message"`
+	// (Output)
+	// Machine-readable message indicating details about last transition.
+	Reason *string `pulumi:"reason"`
+	// (Output)
+	// The lifecycle state of the condition.
+	State *string `pulumi:"state"`
+	// (Output)
+	// Type of the condition.
+	// (e.g., ClusterRunning, NodePoolRunning or ServerSidePreflightReady)
+	Type *string `pulumi:"type"`
+}
+
+// VmwareAdminClusterPlatformConfigStatusConditionInput is an input type that accepts VmwareAdminClusterPlatformConfigStatusConditionArgs and VmwareAdminClusterPlatformConfigStatusConditionOutput values.
+// You can construct a concrete instance of `VmwareAdminClusterPlatformConfigStatusConditionInput` via:
+//
+//	VmwareAdminClusterPlatformConfigStatusConditionArgs{...}
+type VmwareAdminClusterPlatformConfigStatusConditionInput interface {
+	pulumi.Input
+
+	ToVmwareAdminClusterPlatformConfigStatusConditionOutput() VmwareAdminClusterPlatformConfigStatusConditionOutput
+	ToVmwareAdminClusterPlatformConfigStatusConditionOutputWithContext(context.Context) VmwareAdminClusterPlatformConfigStatusConditionOutput
+}
+
+type VmwareAdminClusterPlatformConfigStatusConditionArgs struct {
+	// (Output)
+	// Last time the condition transit from one status to another.
+	LastTransitionTime pulumi.StringPtrInput `pulumi:"lastTransitionTime"`
+	// (Output)
+	// Human-readable message indicating details about last transition.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+	// (Output)
+	// Machine-readable message indicating details about last transition.
+	Reason pulumi.StringPtrInput `pulumi:"reason"`
+	// (Output)
+	// The lifecycle state of the condition.
+	State pulumi.StringPtrInput `pulumi:"state"`
+	// (Output)
+	// Type of the condition.
+	// (e.g., ClusterRunning, NodePoolRunning or ServerSidePreflightReady)
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (VmwareAdminClusterPlatformConfigStatusConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareAdminClusterPlatformConfigStatusCondition)(nil)).Elem()
+}
+
+func (i VmwareAdminClusterPlatformConfigStatusConditionArgs) ToVmwareAdminClusterPlatformConfigStatusConditionOutput() VmwareAdminClusterPlatformConfigStatusConditionOutput {
+	return i.ToVmwareAdminClusterPlatformConfigStatusConditionOutputWithContext(context.Background())
+}
+
+func (i VmwareAdminClusterPlatformConfigStatusConditionArgs) ToVmwareAdminClusterPlatformConfigStatusConditionOutputWithContext(ctx context.Context) VmwareAdminClusterPlatformConfigStatusConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterPlatformConfigStatusConditionOutput)
+}
+
+// VmwareAdminClusterPlatformConfigStatusConditionArrayInput is an input type that accepts VmwareAdminClusterPlatformConfigStatusConditionArray and VmwareAdminClusterPlatformConfigStatusConditionArrayOutput values.
+// You can construct a concrete instance of `VmwareAdminClusterPlatformConfigStatusConditionArrayInput` via:
+//
+//	VmwareAdminClusterPlatformConfigStatusConditionArray{ VmwareAdminClusterPlatformConfigStatusConditionArgs{...} }
+type VmwareAdminClusterPlatformConfigStatusConditionArrayInput interface {
+	pulumi.Input
+
+	ToVmwareAdminClusterPlatformConfigStatusConditionArrayOutput() VmwareAdminClusterPlatformConfigStatusConditionArrayOutput
+	ToVmwareAdminClusterPlatformConfigStatusConditionArrayOutputWithContext(context.Context) VmwareAdminClusterPlatformConfigStatusConditionArrayOutput
+}
+
+type VmwareAdminClusterPlatformConfigStatusConditionArray []VmwareAdminClusterPlatformConfigStatusConditionInput
+
+func (VmwareAdminClusterPlatformConfigStatusConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VmwareAdminClusterPlatformConfigStatusCondition)(nil)).Elem()
+}
+
+func (i VmwareAdminClusterPlatformConfigStatusConditionArray) ToVmwareAdminClusterPlatformConfigStatusConditionArrayOutput() VmwareAdminClusterPlatformConfigStatusConditionArrayOutput {
+	return i.ToVmwareAdminClusterPlatformConfigStatusConditionArrayOutputWithContext(context.Background())
+}
+
+func (i VmwareAdminClusterPlatformConfigStatusConditionArray) ToVmwareAdminClusterPlatformConfigStatusConditionArrayOutputWithContext(ctx context.Context) VmwareAdminClusterPlatformConfigStatusConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterPlatformConfigStatusConditionArrayOutput)
+}
+
+type VmwareAdminClusterPlatformConfigStatusConditionOutput struct{ *pulumi.OutputState }
+
+func (VmwareAdminClusterPlatformConfigStatusConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareAdminClusterPlatformConfigStatusCondition)(nil)).Elem()
+}
+
+func (o VmwareAdminClusterPlatformConfigStatusConditionOutput) ToVmwareAdminClusterPlatformConfigStatusConditionOutput() VmwareAdminClusterPlatformConfigStatusConditionOutput {
+	return o
+}
+
+func (o VmwareAdminClusterPlatformConfigStatusConditionOutput) ToVmwareAdminClusterPlatformConfigStatusConditionOutputWithContext(ctx context.Context) VmwareAdminClusterPlatformConfigStatusConditionOutput {
+	return o
+}
+
+// (Output)
+// Last time the condition transit from one status to another.
+func (o VmwareAdminClusterPlatformConfigStatusConditionOutput) LastTransitionTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmwareAdminClusterPlatformConfigStatusCondition) *string { return v.LastTransitionTime }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Human-readable message indicating details about last transition.
+func (o VmwareAdminClusterPlatformConfigStatusConditionOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmwareAdminClusterPlatformConfigStatusCondition) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Machine-readable message indicating details about last transition.
+func (o VmwareAdminClusterPlatformConfigStatusConditionOutput) Reason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmwareAdminClusterPlatformConfigStatusCondition) *string { return v.Reason }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The lifecycle state of the condition.
+func (o VmwareAdminClusterPlatformConfigStatusConditionOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmwareAdminClusterPlatformConfigStatusCondition) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Type of the condition.
+// (e.g., ClusterRunning, NodePoolRunning or ServerSidePreflightReady)
+func (o VmwareAdminClusterPlatformConfigStatusConditionOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmwareAdminClusterPlatformConfigStatusCondition) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type VmwareAdminClusterPlatformConfigStatusConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (VmwareAdminClusterPlatformConfigStatusConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VmwareAdminClusterPlatformConfigStatusCondition)(nil)).Elem()
+}
+
+func (o VmwareAdminClusterPlatformConfigStatusConditionArrayOutput) ToVmwareAdminClusterPlatformConfigStatusConditionArrayOutput() VmwareAdminClusterPlatformConfigStatusConditionArrayOutput {
+	return o
+}
+
+func (o VmwareAdminClusterPlatformConfigStatusConditionArrayOutput) ToVmwareAdminClusterPlatformConfigStatusConditionArrayOutputWithContext(ctx context.Context) VmwareAdminClusterPlatformConfigStatusConditionArrayOutput {
+	return o
+}
+
+func (o VmwareAdminClusterPlatformConfigStatusConditionArrayOutput) Index(i pulumi.IntInput) VmwareAdminClusterPlatformConfigStatusConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VmwareAdminClusterPlatformConfigStatusCondition {
+		return vs[0].([]VmwareAdminClusterPlatformConfigStatusCondition)[vs[1].(int)]
+	}).(VmwareAdminClusterPlatformConfigStatusConditionOutput)
+}
+
+type VmwareAdminClusterStatus struct {
+	// (Output)
+	// ResourceConditions provide a standard mechanism for higher-level status reporting from admin cluster controller.
+	// Structure is documented below.
+	Conditions []VmwareAdminClusterStatusCondition `pulumi:"conditions"`
+	// (Output)
+	// Human-friendly representation of the error message from the admin cluster
+	// controller. The error message can be temporary as the admin cluster
+	// controller creates a cluster or node pool. If the error message persists
+	// for a longer period of time, it can be used to surface error message to
+	// indicate real problems requiring user intervention.
+	ErrorMessage *string `pulumi:"errorMessage"`
+}
+
+// VmwareAdminClusterStatusInput is an input type that accepts VmwareAdminClusterStatusArgs and VmwareAdminClusterStatusOutput values.
+// You can construct a concrete instance of `VmwareAdminClusterStatusInput` via:
+//
+//	VmwareAdminClusterStatusArgs{...}
+type VmwareAdminClusterStatusInput interface {
+	pulumi.Input
+
+	ToVmwareAdminClusterStatusOutput() VmwareAdminClusterStatusOutput
+	ToVmwareAdminClusterStatusOutputWithContext(context.Context) VmwareAdminClusterStatusOutput
+}
+
+type VmwareAdminClusterStatusArgs struct {
+	// (Output)
+	// ResourceConditions provide a standard mechanism for higher-level status reporting from admin cluster controller.
+	// Structure is documented below.
+	Conditions VmwareAdminClusterStatusConditionArrayInput `pulumi:"conditions"`
+	// (Output)
+	// Human-friendly representation of the error message from the admin cluster
+	// controller. The error message can be temporary as the admin cluster
+	// controller creates a cluster or node pool. If the error message persists
+	// for a longer period of time, it can be used to surface error message to
+	// indicate real problems requiring user intervention.
+	ErrorMessage pulumi.StringPtrInput `pulumi:"errorMessage"`
+}
+
+func (VmwareAdminClusterStatusArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareAdminClusterStatus)(nil)).Elem()
+}
+
+func (i VmwareAdminClusterStatusArgs) ToVmwareAdminClusterStatusOutput() VmwareAdminClusterStatusOutput {
+	return i.ToVmwareAdminClusterStatusOutputWithContext(context.Background())
+}
+
+func (i VmwareAdminClusterStatusArgs) ToVmwareAdminClusterStatusOutputWithContext(ctx context.Context) VmwareAdminClusterStatusOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterStatusOutput)
+}
+
+// VmwareAdminClusterStatusArrayInput is an input type that accepts VmwareAdminClusterStatusArray and VmwareAdminClusterStatusArrayOutput values.
+// You can construct a concrete instance of `VmwareAdminClusterStatusArrayInput` via:
+//
+//	VmwareAdminClusterStatusArray{ VmwareAdminClusterStatusArgs{...} }
+type VmwareAdminClusterStatusArrayInput interface {
+	pulumi.Input
+
+	ToVmwareAdminClusterStatusArrayOutput() VmwareAdminClusterStatusArrayOutput
+	ToVmwareAdminClusterStatusArrayOutputWithContext(context.Context) VmwareAdminClusterStatusArrayOutput
+}
+
+type VmwareAdminClusterStatusArray []VmwareAdminClusterStatusInput
+
+func (VmwareAdminClusterStatusArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VmwareAdminClusterStatus)(nil)).Elem()
+}
+
+func (i VmwareAdminClusterStatusArray) ToVmwareAdminClusterStatusArrayOutput() VmwareAdminClusterStatusArrayOutput {
+	return i.ToVmwareAdminClusterStatusArrayOutputWithContext(context.Background())
+}
+
+func (i VmwareAdminClusterStatusArray) ToVmwareAdminClusterStatusArrayOutputWithContext(ctx context.Context) VmwareAdminClusterStatusArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterStatusArrayOutput)
+}
+
+type VmwareAdminClusterStatusOutput struct{ *pulumi.OutputState }
+
+func (VmwareAdminClusterStatusOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareAdminClusterStatus)(nil)).Elem()
+}
+
+func (o VmwareAdminClusterStatusOutput) ToVmwareAdminClusterStatusOutput() VmwareAdminClusterStatusOutput {
+	return o
+}
+
+func (o VmwareAdminClusterStatusOutput) ToVmwareAdminClusterStatusOutputWithContext(ctx context.Context) VmwareAdminClusterStatusOutput {
+	return o
+}
+
+// (Output)
+// ResourceConditions provide a standard mechanism for higher-level status reporting from admin cluster controller.
+// Structure is documented below.
+func (o VmwareAdminClusterStatusOutput) Conditions() VmwareAdminClusterStatusConditionArrayOutput {
+	return o.ApplyT(func(v VmwareAdminClusterStatus) []VmwareAdminClusterStatusCondition { return v.Conditions }).(VmwareAdminClusterStatusConditionArrayOutput)
+}
+
+// (Output)
+// Human-friendly representation of the error message from the admin cluster
+// controller. The error message can be temporary as the admin cluster
+// controller creates a cluster or node pool. If the error message persists
+// for a longer period of time, it can be used to surface error message to
+// indicate real problems requiring user intervention.
+func (o VmwareAdminClusterStatusOutput) ErrorMessage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmwareAdminClusterStatus) *string { return v.ErrorMessage }).(pulumi.StringPtrOutput)
+}
+
+type VmwareAdminClusterStatusArrayOutput struct{ *pulumi.OutputState }
+
+func (VmwareAdminClusterStatusArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VmwareAdminClusterStatus)(nil)).Elem()
+}
+
+func (o VmwareAdminClusterStatusArrayOutput) ToVmwareAdminClusterStatusArrayOutput() VmwareAdminClusterStatusArrayOutput {
+	return o
+}
+
+func (o VmwareAdminClusterStatusArrayOutput) ToVmwareAdminClusterStatusArrayOutputWithContext(ctx context.Context) VmwareAdminClusterStatusArrayOutput {
+	return o
+}
+
+func (o VmwareAdminClusterStatusArrayOutput) Index(i pulumi.IntInput) VmwareAdminClusterStatusOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VmwareAdminClusterStatus {
+		return vs[0].([]VmwareAdminClusterStatus)[vs[1].(int)]
+	}).(VmwareAdminClusterStatusOutput)
+}
+
+type VmwareAdminClusterStatusCondition struct {
+	// (Output)
+	// Last time the condition transit from one status to another.
+	LastTransitionTime *string `pulumi:"lastTransitionTime"`
+	// (Output)
+	// Human-readable message indicating details about last transition.
+	Message *string `pulumi:"message"`
+	// (Output)
+	// Machine-readable message indicating details about last transition.
+	Reason *string `pulumi:"reason"`
+	// (Output)
+	// The lifecycle state of the condition.
+	State *string `pulumi:"state"`
+	// (Output)
+	// Type of the condition.
+	// (e.g., ClusterRunning, NodePoolRunning or ServerSidePreflightReady)
+	Type *string `pulumi:"type"`
+}
+
+// VmwareAdminClusterStatusConditionInput is an input type that accepts VmwareAdminClusterStatusConditionArgs and VmwareAdminClusterStatusConditionOutput values.
+// You can construct a concrete instance of `VmwareAdminClusterStatusConditionInput` via:
+//
+//	VmwareAdminClusterStatusConditionArgs{...}
+type VmwareAdminClusterStatusConditionInput interface {
+	pulumi.Input
+
+	ToVmwareAdminClusterStatusConditionOutput() VmwareAdminClusterStatusConditionOutput
+	ToVmwareAdminClusterStatusConditionOutputWithContext(context.Context) VmwareAdminClusterStatusConditionOutput
+}
+
+type VmwareAdminClusterStatusConditionArgs struct {
+	// (Output)
+	// Last time the condition transit from one status to another.
+	LastTransitionTime pulumi.StringPtrInput `pulumi:"lastTransitionTime"`
+	// (Output)
+	// Human-readable message indicating details about last transition.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+	// (Output)
+	// Machine-readable message indicating details about last transition.
+	Reason pulumi.StringPtrInput `pulumi:"reason"`
+	// (Output)
+	// The lifecycle state of the condition.
+	State pulumi.StringPtrInput `pulumi:"state"`
+	// (Output)
+	// Type of the condition.
+	// (e.g., ClusterRunning, NodePoolRunning or ServerSidePreflightReady)
+	Type pulumi.StringPtrInput `pulumi:"type"`
+}
+
+func (VmwareAdminClusterStatusConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareAdminClusterStatusCondition)(nil)).Elem()
+}
+
+func (i VmwareAdminClusterStatusConditionArgs) ToVmwareAdminClusterStatusConditionOutput() VmwareAdminClusterStatusConditionOutput {
+	return i.ToVmwareAdminClusterStatusConditionOutputWithContext(context.Background())
+}
+
+func (i VmwareAdminClusterStatusConditionArgs) ToVmwareAdminClusterStatusConditionOutputWithContext(ctx context.Context) VmwareAdminClusterStatusConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterStatusConditionOutput)
+}
+
+// VmwareAdminClusterStatusConditionArrayInput is an input type that accepts VmwareAdminClusterStatusConditionArray and VmwareAdminClusterStatusConditionArrayOutput values.
+// You can construct a concrete instance of `VmwareAdminClusterStatusConditionArrayInput` via:
+//
+//	VmwareAdminClusterStatusConditionArray{ VmwareAdminClusterStatusConditionArgs{...} }
+type VmwareAdminClusterStatusConditionArrayInput interface {
+	pulumi.Input
+
+	ToVmwareAdminClusterStatusConditionArrayOutput() VmwareAdminClusterStatusConditionArrayOutput
+	ToVmwareAdminClusterStatusConditionArrayOutputWithContext(context.Context) VmwareAdminClusterStatusConditionArrayOutput
+}
+
+type VmwareAdminClusterStatusConditionArray []VmwareAdminClusterStatusConditionInput
+
+func (VmwareAdminClusterStatusConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VmwareAdminClusterStatusCondition)(nil)).Elem()
+}
+
+func (i VmwareAdminClusterStatusConditionArray) ToVmwareAdminClusterStatusConditionArrayOutput() VmwareAdminClusterStatusConditionArrayOutput {
+	return i.ToVmwareAdminClusterStatusConditionArrayOutputWithContext(context.Background())
+}
+
+func (i VmwareAdminClusterStatusConditionArray) ToVmwareAdminClusterStatusConditionArrayOutputWithContext(ctx context.Context) VmwareAdminClusterStatusConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterStatusConditionArrayOutput)
+}
+
+type VmwareAdminClusterStatusConditionOutput struct{ *pulumi.OutputState }
+
+func (VmwareAdminClusterStatusConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareAdminClusterStatusCondition)(nil)).Elem()
+}
+
+func (o VmwareAdminClusterStatusConditionOutput) ToVmwareAdminClusterStatusConditionOutput() VmwareAdminClusterStatusConditionOutput {
+	return o
+}
+
+func (o VmwareAdminClusterStatusConditionOutput) ToVmwareAdminClusterStatusConditionOutputWithContext(ctx context.Context) VmwareAdminClusterStatusConditionOutput {
+	return o
+}
+
+// (Output)
+// Last time the condition transit from one status to another.
+func (o VmwareAdminClusterStatusConditionOutput) LastTransitionTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmwareAdminClusterStatusCondition) *string { return v.LastTransitionTime }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Human-readable message indicating details about last transition.
+func (o VmwareAdminClusterStatusConditionOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmwareAdminClusterStatusCondition) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Machine-readable message indicating details about last transition.
+func (o VmwareAdminClusterStatusConditionOutput) Reason() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmwareAdminClusterStatusCondition) *string { return v.Reason }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The lifecycle state of the condition.
+func (o VmwareAdminClusterStatusConditionOutput) State() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmwareAdminClusterStatusCondition) *string { return v.State }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Type of the condition.
+// (e.g., ClusterRunning, NodePoolRunning or ServerSidePreflightReady)
+func (o VmwareAdminClusterStatusConditionOutput) Type() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmwareAdminClusterStatusCondition) *string { return v.Type }).(pulumi.StringPtrOutput)
+}
+
+type VmwareAdminClusterStatusConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (VmwareAdminClusterStatusConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]VmwareAdminClusterStatusCondition)(nil)).Elem()
+}
+
+func (o VmwareAdminClusterStatusConditionArrayOutput) ToVmwareAdminClusterStatusConditionArrayOutput() VmwareAdminClusterStatusConditionArrayOutput {
+	return o
+}
+
+func (o VmwareAdminClusterStatusConditionArrayOutput) ToVmwareAdminClusterStatusConditionArrayOutputWithContext(ctx context.Context) VmwareAdminClusterStatusConditionArrayOutput {
+	return o
+}
+
+func (o VmwareAdminClusterStatusConditionArrayOutput) Index(i pulumi.IntInput) VmwareAdminClusterStatusConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) VmwareAdminClusterStatusCondition {
+		return vs[0].([]VmwareAdminClusterStatusCondition)[vs[1].(int)]
+	}).(VmwareAdminClusterStatusConditionOutput)
+}
+
+type VmwareAdminClusterVcenter struct {
+	// The vCenter IP address.
+	Address *string `pulumi:"address"`
+	// Contains the vCenter CA certificate public key for SSL verification.
+	CaCertData *string `pulumi:"caCertData"`
+	// The name of the vCenter cluster for the admin cluster.
+	Cluster *string `pulumi:"cluster"`
+	// The name of the virtual machine disk (VMDK) for the admin cluster.
+	DataDisk *string `pulumi:"dataDisk"`
+	// The name of the vCenter datacenter for the admin cluster.
+	Datacenter *string `pulumi:"datacenter"`
+	// The name of the vCenter datastore for the admin cluster.
+	Datastore *string `pulumi:"datastore"`
+	// The name of the vCenter folder for the admin cluster.
+	Folder *string `pulumi:"folder"`
+	// The name of the vCenter resource pool for the admin cluster.
+	ResourcePool *string `pulumi:"resourcePool"`
+	// The name of the vCenter storage policy for the user cluster.
+	StoragePolicyName *string `pulumi:"storagePolicyName"`
+}
+
+// VmwareAdminClusterVcenterInput is an input type that accepts VmwareAdminClusterVcenterArgs and VmwareAdminClusterVcenterOutput values.
+// You can construct a concrete instance of `VmwareAdminClusterVcenterInput` via:
+//
+//	VmwareAdminClusterVcenterArgs{...}
+type VmwareAdminClusterVcenterInput interface {
+	pulumi.Input
+
+	ToVmwareAdminClusterVcenterOutput() VmwareAdminClusterVcenterOutput
+	ToVmwareAdminClusterVcenterOutputWithContext(context.Context) VmwareAdminClusterVcenterOutput
+}
+
+type VmwareAdminClusterVcenterArgs struct {
+	// The vCenter IP address.
+	Address pulumi.StringPtrInput `pulumi:"address"`
+	// Contains the vCenter CA certificate public key for SSL verification.
+	CaCertData pulumi.StringPtrInput `pulumi:"caCertData"`
+	// The name of the vCenter cluster for the admin cluster.
+	Cluster pulumi.StringPtrInput `pulumi:"cluster"`
+	// The name of the virtual machine disk (VMDK) for the admin cluster.
+	DataDisk pulumi.StringPtrInput `pulumi:"dataDisk"`
+	// The name of the vCenter datacenter for the admin cluster.
+	Datacenter pulumi.StringPtrInput `pulumi:"datacenter"`
+	// The name of the vCenter datastore for the admin cluster.
+	Datastore pulumi.StringPtrInput `pulumi:"datastore"`
+	// The name of the vCenter folder for the admin cluster.
+	Folder pulumi.StringPtrInput `pulumi:"folder"`
+	// The name of the vCenter resource pool for the admin cluster.
+	ResourcePool pulumi.StringPtrInput `pulumi:"resourcePool"`
+	// The name of the vCenter storage policy for the user cluster.
+	StoragePolicyName pulumi.StringPtrInput `pulumi:"storagePolicyName"`
+}
+
+func (VmwareAdminClusterVcenterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareAdminClusterVcenter)(nil)).Elem()
+}
+
+func (i VmwareAdminClusterVcenterArgs) ToVmwareAdminClusterVcenterOutput() VmwareAdminClusterVcenterOutput {
+	return i.ToVmwareAdminClusterVcenterOutputWithContext(context.Background())
+}
+
+func (i VmwareAdminClusterVcenterArgs) ToVmwareAdminClusterVcenterOutputWithContext(ctx context.Context) VmwareAdminClusterVcenterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterVcenterOutput)
+}
+
+func (i VmwareAdminClusterVcenterArgs) ToVmwareAdminClusterVcenterPtrOutput() VmwareAdminClusterVcenterPtrOutput {
+	return i.ToVmwareAdminClusterVcenterPtrOutputWithContext(context.Background())
+}
+
+func (i VmwareAdminClusterVcenterArgs) ToVmwareAdminClusterVcenterPtrOutputWithContext(ctx context.Context) VmwareAdminClusterVcenterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterVcenterOutput).ToVmwareAdminClusterVcenterPtrOutputWithContext(ctx)
+}
+
+// VmwareAdminClusterVcenterPtrInput is an input type that accepts VmwareAdminClusterVcenterArgs, VmwareAdminClusterVcenterPtr and VmwareAdminClusterVcenterPtrOutput values.
+// You can construct a concrete instance of `VmwareAdminClusterVcenterPtrInput` via:
+//
+//	        VmwareAdminClusterVcenterArgs{...}
+//
+//	or:
+//
+//	        nil
+type VmwareAdminClusterVcenterPtrInput interface {
+	pulumi.Input
+
+	ToVmwareAdminClusterVcenterPtrOutput() VmwareAdminClusterVcenterPtrOutput
+	ToVmwareAdminClusterVcenterPtrOutputWithContext(context.Context) VmwareAdminClusterVcenterPtrOutput
+}
+
+type vmwareAdminClusterVcenterPtrType VmwareAdminClusterVcenterArgs
+
+func VmwareAdminClusterVcenterPtr(v *VmwareAdminClusterVcenterArgs) VmwareAdminClusterVcenterPtrInput {
+	return (*vmwareAdminClusterVcenterPtrType)(v)
+}
+
+func (*vmwareAdminClusterVcenterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmwareAdminClusterVcenter)(nil)).Elem()
+}
+
+func (i *vmwareAdminClusterVcenterPtrType) ToVmwareAdminClusterVcenterPtrOutput() VmwareAdminClusterVcenterPtrOutput {
+	return i.ToVmwareAdminClusterVcenterPtrOutputWithContext(context.Background())
+}
+
+func (i *vmwareAdminClusterVcenterPtrType) ToVmwareAdminClusterVcenterPtrOutputWithContext(ctx context.Context) VmwareAdminClusterVcenterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(VmwareAdminClusterVcenterPtrOutput)
+}
+
+type VmwareAdminClusterVcenterOutput struct{ *pulumi.OutputState }
+
+func (VmwareAdminClusterVcenterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*VmwareAdminClusterVcenter)(nil)).Elem()
+}
+
+func (o VmwareAdminClusterVcenterOutput) ToVmwareAdminClusterVcenterOutput() VmwareAdminClusterVcenterOutput {
+	return o
+}
+
+func (o VmwareAdminClusterVcenterOutput) ToVmwareAdminClusterVcenterOutputWithContext(ctx context.Context) VmwareAdminClusterVcenterOutput {
+	return o
+}
+
+func (o VmwareAdminClusterVcenterOutput) ToVmwareAdminClusterVcenterPtrOutput() VmwareAdminClusterVcenterPtrOutput {
+	return o.ToVmwareAdminClusterVcenterPtrOutputWithContext(context.Background())
+}
+
+func (o VmwareAdminClusterVcenterOutput) ToVmwareAdminClusterVcenterPtrOutputWithContext(ctx context.Context) VmwareAdminClusterVcenterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v VmwareAdminClusterVcenter) *VmwareAdminClusterVcenter {
+		return &v
+	}).(VmwareAdminClusterVcenterPtrOutput)
+}
+
+// The vCenter IP address.
+func (o VmwareAdminClusterVcenterOutput) Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmwareAdminClusterVcenter) *string { return v.Address }).(pulumi.StringPtrOutput)
+}
+
+// Contains the vCenter CA certificate public key for SSL verification.
+func (o VmwareAdminClusterVcenterOutput) CaCertData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmwareAdminClusterVcenter) *string { return v.CaCertData }).(pulumi.StringPtrOutput)
+}
+
+// The name of the vCenter cluster for the admin cluster.
+func (o VmwareAdminClusterVcenterOutput) Cluster() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmwareAdminClusterVcenter) *string { return v.Cluster }).(pulumi.StringPtrOutput)
+}
+
+// The name of the virtual machine disk (VMDK) for the admin cluster.
+func (o VmwareAdminClusterVcenterOutput) DataDisk() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmwareAdminClusterVcenter) *string { return v.DataDisk }).(pulumi.StringPtrOutput)
+}
+
+// The name of the vCenter datacenter for the admin cluster.
+func (o VmwareAdminClusterVcenterOutput) Datacenter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmwareAdminClusterVcenter) *string { return v.Datacenter }).(pulumi.StringPtrOutput)
+}
+
+// The name of the vCenter datastore for the admin cluster.
+func (o VmwareAdminClusterVcenterOutput) Datastore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmwareAdminClusterVcenter) *string { return v.Datastore }).(pulumi.StringPtrOutput)
+}
+
+// The name of the vCenter folder for the admin cluster.
+func (o VmwareAdminClusterVcenterOutput) Folder() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmwareAdminClusterVcenter) *string { return v.Folder }).(pulumi.StringPtrOutput)
+}
+
+// The name of the vCenter resource pool for the admin cluster.
+func (o VmwareAdminClusterVcenterOutput) ResourcePool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmwareAdminClusterVcenter) *string { return v.ResourcePool }).(pulumi.StringPtrOutput)
+}
+
+// The name of the vCenter storage policy for the user cluster.
+func (o VmwareAdminClusterVcenterOutput) StoragePolicyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v VmwareAdminClusterVcenter) *string { return v.StoragePolicyName }).(pulumi.StringPtrOutput)
+}
+
+type VmwareAdminClusterVcenterPtrOutput struct{ *pulumi.OutputState }
+
+func (VmwareAdminClusterVcenterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**VmwareAdminClusterVcenter)(nil)).Elem()
+}
+
+func (o VmwareAdminClusterVcenterPtrOutput) ToVmwareAdminClusterVcenterPtrOutput() VmwareAdminClusterVcenterPtrOutput {
+	return o
+}
+
+func (o VmwareAdminClusterVcenterPtrOutput) ToVmwareAdminClusterVcenterPtrOutputWithContext(ctx context.Context) VmwareAdminClusterVcenterPtrOutput {
+	return o
+}
+
+func (o VmwareAdminClusterVcenterPtrOutput) Elem() VmwareAdminClusterVcenterOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterVcenter) VmwareAdminClusterVcenter {
+		if v != nil {
+			return *v
+		}
+		var ret VmwareAdminClusterVcenter
+		return ret
+	}).(VmwareAdminClusterVcenterOutput)
+}
+
+// The vCenter IP address.
+func (o VmwareAdminClusterVcenterPtrOutput) Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterVcenter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Address
+	}).(pulumi.StringPtrOutput)
+}
+
+// Contains the vCenter CA certificate public key for SSL verification.
+func (o VmwareAdminClusterVcenterPtrOutput) CaCertData() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterVcenter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.CaCertData
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the vCenter cluster for the admin cluster.
+func (o VmwareAdminClusterVcenterPtrOutput) Cluster() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterVcenter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Cluster
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the virtual machine disk (VMDK) for the admin cluster.
+func (o VmwareAdminClusterVcenterPtrOutput) DataDisk() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterVcenter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.DataDisk
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the vCenter datacenter for the admin cluster.
+func (o VmwareAdminClusterVcenterPtrOutput) Datacenter() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterVcenter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Datacenter
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the vCenter datastore for the admin cluster.
+func (o VmwareAdminClusterVcenterPtrOutput) Datastore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterVcenter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Datastore
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the vCenter folder for the admin cluster.
+func (o VmwareAdminClusterVcenterPtrOutput) Folder() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterVcenter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Folder
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the vCenter resource pool for the admin cluster.
+func (o VmwareAdminClusterVcenterPtrOutput) ResourcePool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterVcenter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourcePool
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the vCenter storage policy for the user cluster.
+func (o VmwareAdminClusterVcenterPtrOutput) StoragePolicyName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *VmwareAdminClusterVcenter) *string {
+		if v == nil {
+			return nil
+		}
+		return v.StoragePolicyName
+	}).(pulumi.StringPtrOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterClusterOperationsInput)(nil)).Elem(), BareMetalAdminClusterClusterOperationsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*BareMetalAdminClusterClusterOperationsPtrInput)(nil)).Elem(), BareMetalAdminClusterClusterOperationsArgs{})
@@ -19196,6 +24110,68 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*VMwareNodePoolStatusArrayInput)(nil)).Elem(), VMwareNodePoolStatusArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VMwareNodePoolStatusConditionInput)(nil)).Elem(), VMwareNodePoolStatusConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*VMwareNodePoolStatusConditionArrayInput)(nil)).Elem(), VMwareNodePoolStatusConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterAddonNodeInput)(nil)).Elem(), VmwareAdminClusterAddonNodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterAddonNodePtrInput)(nil)).Elem(), VmwareAdminClusterAddonNodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterAddonNodeAutoResizeConfigInput)(nil)).Elem(), VmwareAdminClusterAddonNodeAutoResizeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterAddonNodeAutoResizeConfigPtrInput)(nil)).Elem(), VmwareAdminClusterAddonNodeAutoResizeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterAntiAffinityGroupsInput)(nil)).Elem(), VmwareAdminClusterAntiAffinityGroupsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterAntiAffinityGroupsPtrInput)(nil)).Elem(), VmwareAdminClusterAntiAffinityGroupsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterAuthorizationInput)(nil)).Elem(), VmwareAdminClusterAuthorizationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterAuthorizationPtrInput)(nil)).Elem(), VmwareAdminClusterAuthorizationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterAuthorizationViewerUserInput)(nil)).Elem(), VmwareAdminClusterAuthorizationViewerUserArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterAuthorizationViewerUserArrayInput)(nil)).Elem(), VmwareAdminClusterAuthorizationViewerUserArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterAutoRepairConfigInput)(nil)).Elem(), VmwareAdminClusterAutoRepairConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterAutoRepairConfigPtrInput)(nil)).Elem(), VmwareAdminClusterAutoRepairConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterControlPlaneNodeInput)(nil)).Elem(), VmwareAdminClusterControlPlaneNodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterControlPlaneNodePtrInput)(nil)).Elem(), VmwareAdminClusterControlPlaneNodeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterFleetInput)(nil)).Elem(), VmwareAdminClusterFleetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterFleetArrayInput)(nil)).Elem(), VmwareAdminClusterFleetArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterLoadBalancerInput)(nil)).Elem(), VmwareAdminClusterLoadBalancerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterLoadBalancerPtrInput)(nil)).Elem(), VmwareAdminClusterLoadBalancerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterLoadBalancerF5ConfigInput)(nil)).Elem(), VmwareAdminClusterLoadBalancerF5ConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterLoadBalancerF5ConfigPtrInput)(nil)).Elem(), VmwareAdminClusterLoadBalancerF5ConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterLoadBalancerManualLbConfigInput)(nil)).Elem(), VmwareAdminClusterLoadBalancerManualLbConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterLoadBalancerManualLbConfigPtrInput)(nil)).Elem(), VmwareAdminClusterLoadBalancerManualLbConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterLoadBalancerMetalLbConfigInput)(nil)).Elem(), VmwareAdminClusterLoadBalancerMetalLbConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterLoadBalancerMetalLbConfigPtrInput)(nil)).Elem(), VmwareAdminClusterLoadBalancerMetalLbConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterLoadBalancerVipConfigInput)(nil)).Elem(), VmwareAdminClusterLoadBalancerVipConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterLoadBalancerVipConfigPtrInput)(nil)).Elem(), VmwareAdminClusterLoadBalancerVipConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterNetworkConfigInput)(nil)).Elem(), VmwareAdminClusterNetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterNetworkConfigPtrInput)(nil)).Elem(), VmwareAdminClusterNetworkConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterNetworkConfigDhcpIpConfigInput)(nil)).Elem(), VmwareAdminClusterNetworkConfigDhcpIpConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterNetworkConfigDhcpIpConfigPtrInput)(nil)).Elem(), VmwareAdminClusterNetworkConfigDhcpIpConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterNetworkConfigHaControlPlaneConfigInput)(nil)).Elem(), VmwareAdminClusterNetworkConfigHaControlPlaneConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterNetworkConfigHaControlPlaneConfigPtrInput)(nil)).Elem(), VmwareAdminClusterNetworkConfigHaControlPlaneConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockInput)(nil)).Elem(), VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockPtrInput)(nil)).Elem(), VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpInput)(nil)).Elem(), VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpArrayInput)(nil)).Elem(), VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterNetworkConfigHostConfigInput)(nil)).Elem(), VmwareAdminClusterNetworkConfigHostConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterNetworkConfigHostConfigPtrInput)(nil)).Elem(), VmwareAdminClusterNetworkConfigHostConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterNetworkConfigStaticIpConfigInput)(nil)).Elem(), VmwareAdminClusterNetworkConfigStaticIpConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterNetworkConfigStaticIpConfigPtrInput)(nil)).Elem(), VmwareAdminClusterNetworkConfigStaticIpConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockInput)(nil)).Elem(), VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockArrayInput)(nil)).Elem(), VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpInput)(nil)).Elem(), VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpArrayInput)(nil)).Elem(), VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterPlatformConfigInput)(nil)).Elem(), VmwareAdminClusterPlatformConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterPlatformConfigPtrInput)(nil)).Elem(), VmwareAdminClusterPlatformConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterPlatformConfigBundleInput)(nil)).Elem(), VmwareAdminClusterPlatformConfigBundleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterPlatformConfigBundleArrayInput)(nil)).Elem(), VmwareAdminClusterPlatformConfigBundleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterPlatformConfigBundleStatusInput)(nil)).Elem(), VmwareAdminClusterPlatformConfigBundleStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterPlatformConfigBundleStatusArrayInput)(nil)).Elem(), VmwareAdminClusterPlatformConfigBundleStatusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterPlatformConfigBundleStatusConditionInput)(nil)).Elem(), VmwareAdminClusterPlatformConfigBundleStatusConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterPlatformConfigBundleStatusConditionArrayInput)(nil)).Elem(), VmwareAdminClusterPlatformConfigBundleStatusConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterPlatformConfigStatusInput)(nil)).Elem(), VmwareAdminClusterPlatformConfigStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterPlatformConfigStatusArrayInput)(nil)).Elem(), VmwareAdminClusterPlatformConfigStatusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterPlatformConfigStatusConditionInput)(nil)).Elem(), VmwareAdminClusterPlatformConfigStatusConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterPlatformConfigStatusConditionArrayInput)(nil)).Elem(), VmwareAdminClusterPlatformConfigStatusConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterStatusInput)(nil)).Elem(), VmwareAdminClusterStatusArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterStatusArrayInput)(nil)).Elem(), VmwareAdminClusterStatusArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterStatusConditionInput)(nil)).Elem(), VmwareAdminClusterStatusConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterStatusConditionArrayInput)(nil)).Elem(), VmwareAdminClusterStatusConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterVcenterInput)(nil)).Elem(), VmwareAdminClusterVcenterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*VmwareAdminClusterVcenterPtrInput)(nil)).Elem(), VmwareAdminClusterVcenterArgs{})
 	pulumi.RegisterOutputType(BareMetalAdminClusterClusterOperationsOutput{})
 	pulumi.RegisterOutputType(BareMetalAdminClusterClusterOperationsPtrOutput{})
 	pulumi.RegisterOutputType(BareMetalAdminClusterControlPlaneOutput{})
@@ -19442,4 +24418,66 @@ func init() {
 	pulumi.RegisterOutputType(VMwareNodePoolStatusArrayOutput{})
 	pulumi.RegisterOutputType(VMwareNodePoolStatusConditionOutput{})
 	pulumi.RegisterOutputType(VMwareNodePoolStatusConditionArrayOutput{})
+	pulumi.RegisterOutputType(VmwareAdminClusterAddonNodeOutput{})
+	pulumi.RegisterOutputType(VmwareAdminClusterAddonNodePtrOutput{})
+	pulumi.RegisterOutputType(VmwareAdminClusterAddonNodeAutoResizeConfigOutput{})
+	pulumi.RegisterOutputType(VmwareAdminClusterAddonNodeAutoResizeConfigPtrOutput{})
+	pulumi.RegisterOutputType(VmwareAdminClusterAntiAffinityGroupsOutput{})
+	pulumi.RegisterOutputType(VmwareAdminClusterAntiAffinityGroupsPtrOutput{})
+	pulumi.RegisterOutputType(VmwareAdminClusterAuthorizationOutput{})
+	pulumi.RegisterOutputType(VmwareAdminClusterAuthorizationPtrOutput{})
+	pulumi.RegisterOutputType(VmwareAdminClusterAuthorizationViewerUserOutput{})
+	pulumi.RegisterOutputType(VmwareAdminClusterAuthorizationViewerUserArrayOutput{})
+	pulumi.RegisterOutputType(VmwareAdminClusterAutoRepairConfigOutput{})
+	pulumi.RegisterOutputType(VmwareAdminClusterAutoRepairConfigPtrOutput{})
+	pulumi.RegisterOutputType(VmwareAdminClusterControlPlaneNodeOutput{})
+	pulumi.RegisterOutputType(VmwareAdminClusterControlPlaneNodePtrOutput{})
+	pulumi.RegisterOutputType(VmwareAdminClusterFleetOutput{})
+	pulumi.RegisterOutputType(VmwareAdminClusterFleetArrayOutput{})
+	pulumi.RegisterOutputType(VmwareAdminClusterLoadBalancerOutput{})
+	pulumi.RegisterOutputType(VmwareAdminClusterLoadBalancerPtrOutput{})
+	pulumi.RegisterOutputType(VmwareAdminClusterLoadBalancerF5ConfigOutput{})
+	pulumi.RegisterOutputType(VmwareAdminClusterLoadBalancerF5ConfigPtrOutput{})
+	pulumi.RegisterOutputType(VmwareAdminClusterLoadBalancerManualLbConfigOutput{})
+	pulumi.RegisterOutputType(VmwareAdminClusterLoadBalancerManualLbConfigPtrOutput{})
+	pulumi.RegisterOutputType(VmwareAdminClusterLoadBalancerMetalLbConfigOutput{})
+	pulumi.RegisterOutputType(VmwareAdminClusterLoadBalancerMetalLbConfigPtrOutput{})
+	pulumi.RegisterOutputType(VmwareAdminClusterLoadBalancerVipConfigOutput{})
+	pulumi.RegisterOutputType(VmwareAdminClusterLoadBalancerVipConfigPtrOutput{})
+	pulumi.RegisterOutputType(VmwareAdminClusterNetworkConfigOutput{})
+	pulumi.RegisterOutputType(VmwareAdminClusterNetworkConfigPtrOutput{})
+	pulumi.RegisterOutputType(VmwareAdminClusterNetworkConfigDhcpIpConfigOutput{})
+	pulumi.RegisterOutputType(VmwareAdminClusterNetworkConfigDhcpIpConfigPtrOutput{})
+	pulumi.RegisterOutputType(VmwareAdminClusterNetworkConfigHaControlPlaneConfigOutput{})
+	pulumi.RegisterOutputType(VmwareAdminClusterNetworkConfigHaControlPlaneConfigPtrOutput{})
+	pulumi.RegisterOutputType(VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockOutput{})
+	pulumi.RegisterOutputType(VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockPtrOutput{})
+	pulumi.RegisterOutputType(VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpOutput{})
+	pulumi.RegisterOutputType(VmwareAdminClusterNetworkConfigHaControlPlaneConfigControlPlaneIpBlockIpArrayOutput{})
+	pulumi.RegisterOutputType(VmwareAdminClusterNetworkConfigHostConfigOutput{})
+	pulumi.RegisterOutputType(VmwareAdminClusterNetworkConfigHostConfigPtrOutput{})
+	pulumi.RegisterOutputType(VmwareAdminClusterNetworkConfigStaticIpConfigOutput{})
+	pulumi.RegisterOutputType(VmwareAdminClusterNetworkConfigStaticIpConfigPtrOutput{})
+	pulumi.RegisterOutputType(VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockOutput{})
+	pulumi.RegisterOutputType(VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockArrayOutput{})
+	pulumi.RegisterOutputType(VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpOutput{})
+	pulumi.RegisterOutputType(VmwareAdminClusterNetworkConfigStaticIpConfigIpBlockIpArrayOutput{})
+	pulumi.RegisterOutputType(VmwareAdminClusterPlatformConfigOutput{})
+	pulumi.RegisterOutputType(VmwareAdminClusterPlatformConfigPtrOutput{})
+	pulumi.RegisterOutputType(VmwareAdminClusterPlatformConfigBundleOutput{})
+	pulumi.RegisterOutputType(VmwareAdminClusterPlatformConfigBundleArrayOutput{})
+	pulumi.RegisterOutputType(VmwareAdminClusterPlatformConfigBundleStatusOutput{})
+	pulumi.RegisterOutputType(VmwareAdminClusterPlatformConfigBundleStatusArrayOutput{})
+	pulumi.RegisterOutputType(VmwareAdminClusterPlatformConfigBundleStatusConditionOutput{})
+	pulumi.RegisterOutputType(VmwareAdminClusterPlatformConfigBundleStatusConditionArrayOutput{})
+	pulumi.RegisterOutputType(VmwareAdminClusterPlatformConfigStatusOutput{})
+	pulumi.RegisterOutputType(VmwareAdminClusterPlatformConfigStatusArrayOutput{})
+	pulumi.RegisterOutputType(VmwareAdminClusterPlatformConfigStatusConditionOutput{})
+	pulumi.RegisterOutputType(VmwareAdminClusterPlatformConfigStatusConditionArrayOutput{})
+	pulumi.RegisterOutputType(VmwareAdminClusterStatusOutput{})
+	pulumi.RegisterOutputType(VmwareAdminClusterStatusArrayOutput{})
+	pulumi.RegisterOutputType(VmwareAdminClusterStatusConditionOutput{})
+	pulumi.RegisterOutputType(VmwareAdminClusterStatusConditionArrayOutput{})
+	pulumi.RegisterOutputType(VmwareAdminClusterVcenterOutput{})
+	pulumi.RegisterOutputType(VmwareAdminClusterVcenterPtrOutput{})
 }

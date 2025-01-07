@@ -179,6 +179,13 @@ export class Backup extends pulumi.CustomResource {
      * The size of the storage used by the backup. As backups share storage, this number is expected to change with backup creation/deletion.
      */
     public /*out*/ readonly storageBytes!: pulumi.Output<string>;
+    /**
+     * A map of resource manager tags.
+     * Resource manager tag keys and values have the same definition as resource manager tags.
+     * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+     * The field is ignored (both PUT & PATCH) when empty.
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
 
     /**
      * Create a Backup resource with the given unique name, arguments, and options.
@@ -209,6 +216,7 @@ export class Backup extends pulumi.CustomResource {
             resourceInputs["sourceInstanceTier"] = state ? state.sourceInstanceTier : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["storageBytes"] = state ? state.storageBytes : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
         } else {
             const args = argsOrState as BackupArgs | undefined;
             if ((!args || args.location === undefined) && !opts.urn) {
@@ -227,6 +235,7 @@ export class Backup extends pulumi.CustomResource {
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["sourceFileShare"] = args ? args.sourceFileShare : undefined;
             resourceInputs["sourceInstance"] = args ? args.sourceInstance : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["capacityGb"] = undefined /*out*/;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["downloadBytes"] = undefined /*out*/;
@@ -326,6 +335,13 @@ export interface BackupState {
      * The size of the storage used by the backup. As backups share storage, this number is expected to change with backup creation/deletion.
      */
     storageBytes?: pulumi.Input<string>;
+    /**
+     * A map of resource manager tags.
+     * Resource manager tag keys and values have the same definition as resource manager tags.
+     * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+     * The field is ignored (both PUT & PATCH) when empty.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }
 
 /**
@@ -373,4 +389,11 @@ export interface BackupArgs {
      * The resource name of the source Cloud Filestore instance, in the format projects/{projectId}/locations/{locationId}/instances/{instanceId}, used to create this backup.
      */
     sourceInstance: pulumi.Input<string>;
+    /**
+     * A map of resource manager tags.
+     * Resource manager tag keys and values have the same definition as resource manager tags.
+     * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+     * The field is ignored (both PUT & PATCH) when empty.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
 }

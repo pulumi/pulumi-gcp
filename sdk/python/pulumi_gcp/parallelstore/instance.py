@@ -22,6 +22,7 @@ class InstanceArgs:
                  capacity_gib: pulumi.Input[str],
                  instance_id: pulumi.Input[str],
                  location: pulumi.Input[str],
+                 deployment_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  directory_stripe_level: Optional[pulumi.Input[str]] = None,
                  file_stripe_level: Optional[pulumi.Input[str]] = None,
@@ -42,6 +43,11 @@ class InstanceArgs:
                
                - - -
         :param pulumi.Input[str] location: Part of `parent`. See documentation of `projectsId`.
+        :param pulumi.Input[str] deployment_type: Parallelstore Instance deployment type.
+               Possible values:
+               DEPLOYMENT_TYPE_UNSPECIFIED
+               SCRATCH
+               PERSISTENT
         :param pulumi.Input[str] description: The description of the instance. 2048 characters or less.
         :param pulumi.Input[str] directory_stripe_level: Stripe level for directories.
                MIN when directory has a small number of files.
@@ -92,6 +98,8 @@ class InstanceArgs:
         pulumi.set(__self__, "capacity_gib", capacity_gib)
         pulumi.set(__self__, "instance_id", instance_id)
         pulumi.set(__self__, "location", location)
+        if deployment_type is not None:
+            pulumi.set(__self__, "deployment_type", deployment_type)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if directory_stripe_level is not None:
@@ -150,6 +158,22 @@ class InstanceArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter(name="deploymentType")
+    def deployment_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Parallelstore Instance deployment type.
+        Possible values:
+        DEPLOYMENT_TYPE_UNSPECIFIED
+        SCRATCH
+        PERSISTENT
+        """
+        return pulumi.get(self, "deployment_type")
+
+    @deployment_type.setter
+    def deployment_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deployment_type", value)
 
     @property
     @pulumi.getter
@@ -282,6 +306,7 @@ class _InstanceState:
                  capacity_gib: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  daos_version: Optional[pulumi.Input[str]] = None,
+                 deployment_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  directory_stripe_level: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -304,6 +329,11 @@ class _InstanceState:
         :param pulumi.Input[str] capacity_gib: Required. Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
         :param pulumi.Input[str] create_time: The time when the instance was created.
         :param pulumi.Input[str] daos_version: The version of DAOS software running in the instance.
+        :param pulumi.Input[str] deployment_type: Parallelstore Instance deployment type.
+               Possible values:
+               DEPLOYMENT_TYPE_UNSPECIFIED
+               SCRATCH
+               PERSISTENT
         :param pulumi.Input[str] description: The description of the instance. 2048 characters or less.
         :param pulumi.Input[str] directory_stripe_level: Stripe level for directories.
                MIN when directory has a small number of files.
@@ -387,6 +417,8 @@ class _InstanceState:
             pulumi.set(__self__, "create_time", create_time)
         if daos_version is not None:
             pulumi.set(__self__, "daos_version", daos_version)
+        if deployment_type is not None:
+            pulumi.set(__self__, "deployment_type", deployment_type)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if directory_stripe_level is not None:
@@ -466,6 +498,22 @@ class _InstanceState:
     @daos_version.setter
     def daos_version(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "daos_version", value)
+
+    @property
+    @pulumi.getter(name="deploymentType")
+    def deployment_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        Parallelstore Instance deployment type.
+        Possible values:
+        DEPLOYMENT_TYPE_UNSPECIFIED
+        SCRATCH
+        PERSISTENT
+        """
+        return pulumi.get(self, "deployment_type")
+
+    @deployment_type.setter
+    def deployment_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "deployment_type", value)
 
     @property
     @pulumi.getter
@@ -713,6 +761,7 @@ class Instance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  capacity_gib: Optional[pulumi.Input[str]] = None,
+                 deployment_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  directory_stripe_level: Optional[pulumi.Input[str]] = None,
                  file_stripe_level: Optional[pulumi.Input[str]] = None,
@@ -728,6 +777,42 @@ class Instance(pulumi.CustomResource):
 
         ## Example Usage
 
+        ### Parallelstore Instance Basic Beta
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network = gcp.compute.Network("network",
+            name="network",
+            auto_create_subnetworks=True,
+            mtu=8896)
+        # Create an IP address
+        private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
+            name="address",
+            purpose="VPC_PEERING",
+            address_type="INTERNAL",
+            prefix_length=24,
+            network=network.id)
+        # Create a private connection
+        default = gcp.servicenetworking.Connection("default",
+            network=network.id,
+            service="servicenetworking.googleapis.com",
+            reserved_peering_ranges=[private_ip_alloc.name])
+        instance = gcp.parallelstore.Instance("instance",
+            instance_id="instance",
+            location="us-central1-a",
+            description="test instance",
+            capacity_gib="12000",
+            network=network.name,
+            file_stripe_level="FILE_STRIPE_LEVEL_MIN",
+            directory_stripe_level="DIRECTORY_STRIPE_LEVEL_MIN",
+            deployment_type="SCRATCH",
+            labels={
+                "test": "value",
+            },
+            opts = pulumi.ResourceOptions(depends_on=[default]))
+        ```
         ### Parallelstore Instance Basic
 
         ```python
@@ -758,6 +843,7 @@ class Instance(pulumi.CustomResource):
             network=network.name,
             file_stripe_level="FILE_STRIPE_LEVEL_MIN",
             directory_stripe_level="DIRECTORY_STRIPE_LEVEL_MIN",
+            deployment_type="SCRATCH",
             labels={
                 "test": "value",
             },
@@ -791,6 +877,11 @@ class Instance(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] capacity_gib: Required. Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
+        :param pulumi.Input[str] deployment_type: Parallelstore Instance deployment type.
+               Possible values:
+               DEPLOYMENT_TYPE_UNSPECIFIED
+               SCRATCH
+               PERSISTENT
         :param pulumi.Input[str] description: The description of the instance. 2048 characters or less.
         :param pulumi.Input[str] directory_stripe_level: Stripe level for directories.
                MIN when directory has a small number of files.
@@ -859,6 +950,42 @@ class Instance(pulumi.CustomResource):
 
         ## Example Usage
 
+        ### Parallelstore Instance Basic Beta
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network = gcp.compute.Network("network",
+            name="network",
+            auto_create_subnetworks=True,
+            mtu=8896)
+        # Create an IP address
+        private_ip_alloc = gcp.compute.GlobalAddress("private_ip_alloc",
+            name="address",
+            purpose="VPC_PEERING",
+            address_type="INTERNAL",
+            prefix_length=24,
+            network=network.id)
+        # Create a private connection
+        default = gcp.servicenetworking.Connection("default",
+            network=network.id,
+            service="servicenetworking.googleapis.com",
+            reserved_peering_ranges=[private_ip_alloc.name])
+        instance = gcp.parallelstore.Instance("instance",
+            instance_id="instance",
+            location="us-central1-a",
+            description="test instance",
+            capacity_gib="12000",
+            network=network.name,
+            file_stripe_level="FILE_STRIPE_LEVEL_MIN",
+            directory_stripe_level="DIRECTORY_STRIPE_LEVEL_MIN",
+            deployment_type="SCRATCH",
+            labels={
+                "test": "value",
+            },
+            opts = pulumi.ResourceOptions(depends_on=[default]))
+        ```
         ### Parallelstore Instance Basic
 
         ```python
@@ -889,6 +1016,7 @@ class Instance(pulumi.CustomResource):
             network=network.name,
             file_stripe_level="FILE_STRIPE_LEVEL_MIN",
             directory_stripe_level="DIRECTORY_STRIPE_LEVEL_MIN",
+            deployment_type="SCRATCH",
             labels={
                 "test": "value",
             },
@@ -935,6 +1063,7 @@ class Instance(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  capacity_gib: Optional[pulumi.Input[str]] = None,
+                 deployment_type: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  directory_stripe_level: Optional[pulumi.Input[str]] = None,
                  file_stripe_level: Optional[pulumi.Input[str]] = None,
@@ -956,6 +1085,7 @@ class Instance(pulumi.CustomResource):
             if capacity_gib is None and not opts.urn:
                 raise TypeError("Missing required property 'capacity_gib'")
             __props__.__dict__["capacity_gib"] = capacity_gib
+            __props__.__dict__["deployment_type"] = deployment_type
             __props__.__dict__["description"] = description
             __props__.__dict__["directory_stripe_level"] = directory_stripe_level
             __props__.__dict__["file_stripe_level"] = file_stripe_level
@@ -994,6 +1124,7 @@ class Instance(pulumi.CustomResource):
             capacity_gib: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             daos_version: Optional[pulumi.Input[str]] = None,
+            deployment_type: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             directory_stripe_level: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
@@ -1021,6 +1152,11 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] capacity_gib: Required. Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
         :param pulumi.Input[str] create_time: The time when the instance was created.
         :param pulumi.Input[str] daos_version: The version of DAOS software running in the instance.
+        :param pulumi.Input[str] deployment_type: Parallelstore Instance deployment type.
+               Possible values:
+               DEPLOYMENT_TYPE_UNSPECIFIED
+               SCRATCH
+               PERSISTENT
         :param pulumi.Input[str] description: The description of the instance. 2048 characters or less.
         :param pulumi.Input[str] directory_stripe_level: Stripe level for directories.
                MIN when directory has a small number of files.
@@ -1104,6 +1240,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["capacity_gib"] = capacity_gib
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["daos_version"] = daos_version
+        __props__.__dict__["deployment_type"] = deployment_type
         __props__.__dict__["description"] = description
         __props__.__dict__["directory_stripe_level"] = directory_stripe_level
         __props__.__dict__["effective_labels"] = effective_labels
@@ -1153,6 +1290,18 @@ class Instance(pulumi.CustomResource):
         The version of DAOS software running in the instance.
         """
         return pulumi.get(self, "daos_version")
+
+    @property
+    @pulumi.getter(name="deploymentType")
+    def deployment_type(self) -> pulumi.Output[Optional[str]]:
+        """
+        Parallelstore Instance deployment type.
+        Possible values:
+        DEPLOYMENT_TYPE_UNSPECIFIED
+        SCRATCH
+        PERSISTENT
+        """
+        return pulumi.get(self, "deployment_type")
 
     @property
     @pulumi.getter

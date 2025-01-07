@@ -86,7 +86,7 @@ import * as utilities from "../utilities";
  *             email: "xyz@example.com",
  *         }],
  *         privateEndpointIp: "10.5.0.11",
- *         privateEndpointLabel: "testhost",
+ *         privateEndpointLabel: "myendpoint",
  *     },
  *     deletionProtection: true,
  * });

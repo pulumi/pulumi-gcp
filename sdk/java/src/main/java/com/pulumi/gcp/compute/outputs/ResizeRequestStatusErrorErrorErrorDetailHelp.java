@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 public final class ResizeRequestStatusErrorErrorErrorDetailHelp {
     /**
      * @return (Output)
-     * [Output Only]
+     * A nested object resource.
      * Structure is documented below.
      * 
      */
@@ -22,7 +22,7 @@ public final class ResizeRequestStatusErrorErrorErrorDetailHelp {
     private ResizeRequestStatusErrorErrorErrorDetailHelp() {}
     /**
      * @return (Output)
-     * [Output Only]
+     * A nested object resource.
      * Structure is documented below.
      * 
      */

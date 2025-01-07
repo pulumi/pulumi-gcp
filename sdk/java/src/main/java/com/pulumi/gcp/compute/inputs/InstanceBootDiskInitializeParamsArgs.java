@@ -153,14 +153,14 @@ public final class InstanceBootDiskInitializeParamsArgs extends com.pulumi.resou
     }
 
     /**
-     * A list of self_links of resource policies to attach to the instance&#39;s boot disk. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+     * A list of self_links of resource policies to attach to the instance&#39;s boot disk. Modifying this list will cause the instance to recreate, so any external values are not set until the user specifies this field. Currently a max of 1 resource policy is supported.
      * 
      */
     @Import(name="resourcePolicies")
     private @Nullable Output<String> resourcePolicies;
 
     /**
-     * @return A list of self_links of resource policies to attach to the instance&#39;s boot disk. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+     * @return A list of self_links of resource policies to attach to the instance&#39;s boot disk. Modifying this list will cause the instance to recreate, so any external values are not set until the user specifies this field. Currently a max of 1 resource policy is supported.
      * 
      */
     public Optional<Output<String>> resourcePolicies() {
@@ -428,7 +428,7 @@ public final class InstanceBootDiskInitializeParamsArgs extends com.pulumi.resou
         }
 
         /**
-         * @param resourcePolicies A list of self_links of resource policies to attach to the instance&#39;s boot disk. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+         * @param resourcePolicies A list of self_links of resource policies to attach to the instance&#39;s boot disk. Modifying this list will cause the instance to recreate, so any external values are not set until the user specifies this field. Currently a max of 1 resource policy is supported.
          * 
          * @return builder
          * 
@@ -439,7 +439,7 @@ public final class InstanceBootDiskInitializeParamsArgs extends com.pulumi.resou
         }
 
         /**
-         * @param resourcePolicies A list of self_links of resource policies to attach to the instance&#39;s boot disk. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+         * @param resourcePolicies A list of self_links of resource policies to attach to the instance&#39;s boot disk. Modifying this list will cause the instance to recreate, so any external values are not set until the user specifies this field. Currently a max of 1 resource policy is supported.
          * 
          * @return builder
          * 

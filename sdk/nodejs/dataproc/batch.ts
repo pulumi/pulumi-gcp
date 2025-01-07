@@ -64,17 +64,8 @@ import * as utilities from "../utilities";
  *     location: "US",
  *     forceDestroy: true,
  * });
- * const keyRing = new gcp.kms.KeyRing("key_ring", {
- *     name: "example-keyring",
- *     location: "us-central1",
- * });
- * const cryptoKey = new gcp.kms.CryptoKey("crypto_key", {
- *     name: "example-key",
- *     keyRing: keyRing.id,
- *     purpose: "ENCRYPT_DECRYPT",
- * });
  * const cryptoKeyMember1 = new gcp.kms.CryptoKeyIAMMember("crypto_key_member_1", {
- *     cryptoKeyId: cryptoKey.id,
+ *     cryptoKeyId: "example-key",
  *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
  *     member: project.then(project => `serviceAccount:service-${project.number}@dataproc-accounts.iam.gserviceaccount.com`),
  * });
@@ -133,7 +124,7 @@ import * as utilities from "../utilities";
  *         executionConfig: {
  *             ttl: "3600s",
  *             networkTags: ["tag1"],
- *             kmsKey: cryptoKey.id,
+ *             kmsKey: "example-key",
  *             networkUri: "default",
  *             serviceAccount: project.then(project => `${project.number}-compute@developer.gserviceaccount.com`),
  *             stagingBucket: bucket.name,

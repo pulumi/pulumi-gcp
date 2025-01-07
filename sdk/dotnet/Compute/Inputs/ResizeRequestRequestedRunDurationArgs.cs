@@ -19,7 +19,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<int>? Nanos { get; set; }
 
         /// <summary>
-        /// Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive. Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+        /// Span of time at a resolution of a second. Must be from 600 to 604800 inclusive. Note: minimum and maximum allowed range for requestedRunDuration is 10 minutes (600 seconds) and 7 days(604800 seconds) correspondingly.
         /// </summary>
         [Input("seconds", required: true)]
         public Input<string> Seconds { get; set; } = null!;

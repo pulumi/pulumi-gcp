@@ -12,7 +12,19 @@ namespace Pulumi.Gcp.Composer.Inputs
 
     public sealed class EnvironmentConfigDataRetentionConfigGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("taskLogsRetentionConfigs", required: true)]
+        [Input("airflowMetadataRetentionConfigs")]
+        private InputList<Inputs.EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfigGetArgs>? _airflowMetadataRetentionConfigs;
+
+        /// <summary>
+        /// Optional. The configuration setting for database retention.
+        /// </summary>
+        public InputList<Inputs.EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfigGetArgs> AirflowMetadataRetentionConfigs
+        {
+            get => _airflowMetadataRetentionConfigs ?? (_airflowMetadataRetentionConfigs = new InputList<Inputs.EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfigGetArgs>());
+            set => _airflowMetadataRetentionConfigs = value;
+        }
+
+        [Input("taskLogsRetentionConfigs")]
         private InputList<Inputs.EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigGetArgs>? _taskLogsRetentionConfigs;
 
         /// <summary>

@@ -20,6 +20,11 @@ export type BareMetalNodePool = import("./bareMetalNodePool").BareMetalNodePool;
 export const BareMetalNodePool: typeof import("./bareMetalNodePool").BareMetalNodePool = null as any;
 utilities.lazyLoad(exports, ["BareMetalNodePool"], () => require("./bareMetalNodePool"));
 
+export { VmwareAdminClusterArgs, VmwareAdminClusterState } from "./vmwareAdminCluster";
+export type VmwareAdminCluster = import("./vmwareAdminCluster").VmwareAdminCluster;
+export const VmwareAdminCluster: typeof import("./vmwareAdminCluster").VmwareAdminCluster = null as any;
+utilities.lazyLoad(exports, ["VmwareAdminCluster"], () => require("./vmwareAdminCluster"));
+
 export { VMwareClusterArgs, VMwareClusterState } from "./vmwareCluster";
 export type VMwareCluster = import("./vmwareCluster").VMwareCluster;
 export const VMwareCluster: typeof import("./vmwareCluster").VMwareCluster = null as any;
@@ -45,6 +50,8 @@ const _module = {
                 return new VMwareCluster(name, <any>undefined, { urn })
             case "gcp:gkeonprem/vMwareNodePool:VMwareNodePool":
                 return new VMwareNodePool(name, <any>undefined, { urn })
+            case "gcp:gkeonprem/vmwareAdminCluster:VmwareAdminCluster":
+                return new VmwareAdminCluster(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -55,3 +62,4 @@ pulumi.runtime.registerResourceModule("gcp", "gkeonprem/bareMetalCluster", _modu
 pulumi.runtime.registerResourceModule("gcp", "gkeonprem/bareMetalNodePool", _module)
 pulumi.runtime.registerResourceModule("gcp", "gkeonprem/vMwareCluster", _module)
 pulumi.runtime.registerResourceModule("gcp", "gkeonprem/vMwareNodePool", _module)
+pulumi.runtime.registerResourceModule("gcp", "gkeonprem/vmwareAdminCluster", _module)

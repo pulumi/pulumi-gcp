@@ -158,6 +158,9 @@ type Workstation struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
+	// Full resource name of the source workstation from which the workstation's persistent
+	// directories will be cloned from during creation.
+	SourceWorkstation pulumi.StringPtrOutput `pulumi:"sourceWorkstation"`
 	// Current state of the workstation.
 	State pulumi.StringOutput `pulumi:"state"`
 	// A system-assigned unique identified for this resource.
@@ -250,6 +253,9 @@ type workstationState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	// Full resource name of the source workstation from which the workstation's persistent
+	// directories will be cloned from during creation.
+	SourceWorkstation *string `pulumi:"sourceWorkstation"`
 	// Current state of the workstation.
 	State *string `pulumi:"state"`
 	// A system-assigned unique identified for this resource.
@@ -296,6 +302,9 @@ type WorkstationState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
+	// Full resource name of the source workstation from which the workstation's persistent
+	// directories will be cloned from during creation.
+	SourceWorkstation pulumi.StringPtrInput
 	// Current state of the workstation.
 	State pulumi.StringPtrInput
 	// A system-assigned unique identified for this resource.
@@ -332,6 +341,9 @@ type workstationArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Full resource name of the source workstation from which the workstation's persistent
+	// directories will be cloned from during creation.
+	SourceWorkstation *string `pulumi:"sourceWorkstation"`
 	// The ID of the parent workstation cluster.
 	WorkstationClusterId string `pulumi:"workstationClusterId"`
 	// The ID of the parent workstation cluster config.
@@ -361,6 +373,9 @@ type WorkstationArgs struct {
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Full resource name of the source workstation from which the workstation's persistent
+	// directories will be cloned from during creation.
+	SourceWorkstation pulumi.StringPtrInput
 	// The ID of the parent workstation cluster.
 	WorkstationClusterId pulumi.StringInput
 	// The ID of the parent workstation cluster config.
@@ -523,6 +538,12 @@ func (o WorkstationOutput) Project() pulumi.StringOutput {
 // and default labels configured on the provider.
 func (o WorkstationOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Workstation) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
+// Full resource name of the source workstation from which the workstation's persistent
+// directories will be cloned from during creation.
+func (o WorkstationOutput) SourceWorkstation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Workstation) pulumi.StringPtrOutput { return v.SourceWorkstation }).(pulumi.StringPtrOutput)
 }
 
 // Current state of the workstation.

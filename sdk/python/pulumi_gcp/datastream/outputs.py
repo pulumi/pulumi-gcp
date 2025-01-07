@@ -57,10 +57,12 @@ __all__ = [
     'StreamDestinationConfigGcsDestinationConfigJsonFileFormat',
     'StreamSourceConfig',
     'StreamSourceConfigMysqlSourceConfig',
+    'StreamSourceConfigMysqlSourceConfigBinaryLogPosition',
     'StreamSourceConfigMysqlSourceConfigExcludeObjects',
     'StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabase',
     'StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable',
     'StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn',
+    'StreamSourceConfigMysqlSourceConfigGtid',
     'StreamSourceConfigMysqlSourceConfigIncludeObjects',
     'StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabase',
     'StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseMysqlTable',
@@ -2490,7 +2492,9 @@ class StreamSourceConfigMysqlSourceConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "excludeObjects":
+        if key == "binaryLogPosition":
+            suggest = "binary_log_position"
+        elif key == "excludeObjects":
             suggest = "exclude_objects"
         elif key == "includeObjects":
             suggest = "include_objects"
@@ -2511,13 +2515,17 @@ class StreamSourceConfigMysqlSourceConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 binary_log_position: Optional['outputs.StreamSourceConfigMysqlSourceConfigBinaryLogPosition'] = None,
                  exclude_objects: Optional['outputs.StreamSourceConfigMysqlSourceConfigExcludeObjects'] = None,
+                 gtid: Optional['outputs.StreamSourceConfigMysqlSourceConfigGtid'] = None,
                  include_objects: Optional['outputs.StreamSourceConfigMysqlSourceConfigIncludeObjects'] = None,
                  max_concurrent_backfill_tasks: Optional[int] = None,
                  max_concurrent_cdc_tasks: Optional[int] = None):
         """
+        :param 'StreamSourceConfigMysqlSourceConfigBinaryLogPositionArgs' binary_log_position: CDC reader reads from binary logs replication cdc method.
         :param 'StreamSourceConfigMysqlSourceConfigExcludeObjectsArgs' exclude_objects: MySQL objects to exclude from the stream.
                Structure is documented below.
+        :param 'StreamSourceConfigMysqlSourceConfigGtidArgs' gtid: CDC reader reads from gtid based replication.
         :param 'StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs' include_objects: MySQL objects to retrieve from the source.
                Structure is documented below.
         :param int max_concurrent_backfill_tasks: Maximum number of concurrent backfill tasks. The number should be non negative.
@@ -2525,14 +2533,26 @@ class StreamSourceConfigMysqlSourceConfig(dict):
         :param int max_concurrent_cdc_tasks: Maximum number of concurrent CDC tasks. The number should be non negative.
                If not set (or set to 0), the system's default value will be used.
         """
+        if binary_log_position is not None:
+            pulumi.set(__self__, "binary_log_position", binary_log_position)
         if exclude_objects is not None:
             pulumi.set(__self__, "exclude_objects", exclude_objects)
+        if gtid is not None:
+            pulumi.set(__self__, "gtid", gtid)
         if include_objects is not None:
             pulumi.set(__self__, "include_objects", include_objects)
         if max_concurrent_backfill_tasks is not None:
             pulumi.set(__self__, "max_concurrent_backfill_tasks", max_concurrent_backfill_tasks)
         if max_concurrent_cdc_tasks is not None:
             pulumi.set(__self__, "max_concurrent_cdc_tasks", max_concurrent_cdc_tasks)
+
+    @property
+    @pulumi.getter(name="binaryLogPosition")
+    def binary_log_position(self) -> Optional['outputs.StreamSourceConfigMysqlSourceConfigBinaryLogPosition']:
+        """
+        CDC reader reads from binary logs replication cdc method.
+        """
+        return pulumi.get(self, "binary_log_position")
 
     @property
     @pulumi.getter(name="excludeObjects")
@@ -2542,6 +2562,14 @@ class StreamSourceConfigMysqlSourceConfig(dict):
         Structure is documented below.
         """
         return pulumi.get(self, "exclude_objects")
+
+    @property
+    @pulumi.getter
+    def gtid(self) -> Optional['outputs.StreamSourceConfigMysqlSourceConfigGtid']:
+        """
+        CDC reader reads from gtid based replication.
+        """
+        return pulumi.get(self, "gtid")
 
     @property
     @pulumi.getter(name="includeObjects")
@@ -2569,6 +2597,12 @@ class StreamSourceConfigMysqlSourceConfig(dict):
         If not set (or set to 0), the system's default value will be used.
         """
         return pulumi.get(self, "max_concurrent_cdc_tasks")
+
+
+@pulumi.output_type
+class StreamSourceConfigMysqlSourceConfigBinaryLogPosition(dict):
+    def __init__(__self__):
+        pass
 
 
 @pulumi.output_type
@@ -2820,6 +2854,12 @@ class StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMy
         Whether or not the column represents a primary key.
         """
         return pulumi.get(self, "primary_key")
+
+
+@pulumi.output_type
+class StreamSourceConfigMysqlSourceConfigGtid(dict):
+    def __init__(__self__):
+        pass
 
 
 @pulumi.output_type

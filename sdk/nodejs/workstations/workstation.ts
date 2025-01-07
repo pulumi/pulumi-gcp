@@ -173,6 +173,11 @@ export class Workstation extends pulumi.CustomResource {
      */
     public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
+     * Full resource name of the source workstation from which the workstation's persistent
+     * directories will be cloned from during creation.
+     */
+    public readonly sourceWorkstation!: pulumi.Output<string | undefined>;
+    /**
      * Current state of the workstation.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
@@ -218,6 +223,7 @@ export class Workstation extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
+            resourceInputs["sourceWorkstation"] = state ? state.sourceWorkstation : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["uid"] = state ? state.uid : undefined;
             resourceInputs["workstationClusterId"] = state ? state.workstationClusterId : undefined;
@@ -243,6 +249,7 @@ export class Workstation extends pulumi.CustomResource {
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["sourceWorkstation"] = args ? args.sourceWorkstation : undefined;
             resourceInputs["workstationClusterId"] = args ? args.workstationClusterId : undefined;
             resourceInputs["workstationConfigId"] = args ? args.workstationConfigId : undefined;
             resourceInputs["workstationId"] = args ? args.workstationId : undefined;
@@ -323,6 +330,11 @@ export interface WorkstationState {
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * Full resource name of the source workstation from which the workstation's persistent
+     * directories will be cloned from during creation.
+     */
+    sourceWorkstation?: pulumi.Input<string>;
+    /**
      * Current state of the workstation.
      */
     state?: pulumi.Input<string>;
@@ -380,6 +392,11 @@ export interface WorkstationArgs {
      * If it is not provided, the provider project is used.
      */
     project?: pulumi.Input<string>;
+    /**
+     * Full resource name of the source workstation from which the workstation's persistent
+     * directories will be cloned from during creation.
+     */
+    sourceWorkstation?: pulumi.Input<string>;
     /**
      * The ID of the parent workstation cluster.
      */

@@ -74,19 +74,20 @@ type LookupRepositoryResult struct {
 	EffectiveLabels     map[string]string            `pulumi:"effectiveLabels"`
 	Format              string                       `pulumi:"format"`
 	// The provider-assigned unique ID for this managed resource.
-	Id                       string                                 `pulumi:"id"`
-	KmsKeyName               string                                 `pulumi:"kmsKeyName"`
-	Labels                   map[string]string                      `pulumi:"labels"`
-	Location                 string                                 `pulumi:"location"`
-	MavenConfigs             []GetRepositoryMavenConfig             `pulumi:"mavenConfigs"`
-	Mode                     string                                 `pulumi:"mode"`
-	Name                     string                                 `pulumi:"name"`
-	Project                  *string                                `pulumi:"project"`
-	PulumiLabels             map[string]string                      `pulumi:"pulumiLabels"`
-	RemoteRepositoryConfigs  []GetRepositoryRemoteRepositoryConfig  `pulumi:"remoteRepositoryConfigs"`
-	RepositoryId             string                                 `pulumi:"repositoryId"`
-	UpdateTime               string                                 `pulumi:"updateTime"`
-	VirtualRepositoryConfigs []GetRepositoryVirtualRepositoryConfig `pulumi:"virtualRepositoryConfigs"`
+	Id                           string                                     `pulumi:"id"`
+	KmsKeyName                   string                                     `pulumi:"kmsKeyName"`
+	Labels                       map[string]string                          `pulumi:"labels"`
+	Location                     string                                     `pulumi:"location"`
+	MavenConfigs                 []GetRepositoryMavenConfig                 `pulumi:"mavenConfigs"`
+	Mode                         string                                     `pulumi:"mode"`
+	Name                         string                                     `pulumi:"name"`
+	Project                      *string                                    `pulumi:"project"`
+	PulumiLabels                 map[string]string                          `pulumi:"pulumiLabels"`
+	RemoteRepositoryConfigs      []GetRepositoryRemoteRepositoryConfig      `pulumi:"remoteRepositoryConfigs"`
+	RepositoryId                 string                                     `pulumi:"repositoryId"`
+	UpdateTime                   string                                     `pulumi:"updateTime"`
+	VirtualRepositoryConfigs     []GetRepositoryVirtualRepositoryConfig     `pulumi:"virtualRepositoryConfigs"`
+	VulnerabilityScanningConfigs []GetRepositoryVulnerabilityScanningConfig `pulumi:"vulnerabilityScanningConfigs"`
 }
 
 func LookupRepositoryOutput(ctx *pulumi.Context, args LookupRepositoryOutputArgs, opts ...pulumi.InvokeOption) LookupRepositoryResultOutput {
@@ -211,6 +212,12 @@ func (o LookupRepositoryResultOutput) VirtualRepositoryConfigs() GetRepositoryVi
 	return o.ApplyT(func(v LookupRepositoryResult) []GetRepositoryVirtualRepositoryConfig {
 		return v.VirtualRepositoryConfigs
 	}).(GetRepositoryVirtualRepositoryConfigArrayOutput)
+}
+
+func (o LookupRepositoryResultOutput) VulnerabilityScanningConfigs() GetRepositoryVulnerabilityScanningConfigArrayOutput {
+	return o.ApplyT(func(v LookupRepositoryResult) []GetRepositoryVulnerabilityScanningConfig {
+		return v.VulnerabilityScanningConfigs
+	}).(GetRepositoryVulnerabilityScanningConfigArrayOutput)
 }
 
 func init() {

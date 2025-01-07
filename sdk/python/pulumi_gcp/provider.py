@@ -49,6 +49,7 @@ class ProviderArgs:
                  binary_authorization_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  blockchain_node_engine_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  certificate_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 chronicle_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_asset_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_billing_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_build_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -261,6 +262,8 @@ class ProviderArgs:
             pulumi.set(__self__, "blockchain_node_engine_custom_endpoint", blockchain_node_engine_custom_endpoint)
         if certificate_manager_custom_endpoint is not None:
             pulumi.set(__self__, "certificate_manager_custom_endpoint", certificate_manager_custom_endpoint)
+        if chronicle_custom_endpoint is not None:
+            pulumi.set(__self__, "chronicle_custom_endpoint", chronicle_custom_endpoint)
         if cloud_asset_custom_endpoint is not None:
             pulumi.set(__self__, "cloud_asset_custom_endpoint", cloud_asset_custom_endpoint)
         if cloud_billing_custom_endpoint is not None:
@@ -830,6 +833,15 @@ class ProviderArgs:
     @certificate_manager_custom_endpoint.setter
     def certificate_manager_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "certificate_manager_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="chronicleCustomEndpoint")
+    def chronicle_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "chronicle_custom_endpoint")
+
+    @chronicle_custom_endpoint.setter
+    def chronicle_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "chronicle_custom_endpoint", value)
 
     @property
     @pulumi.getter(name="cloudAssetCustomEndpoint")
@@ -2225,6 +2237,7 @@ class Provider(pulumi.ProviderResource):
                  binary_authorization_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  blockchain_node_engine_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  certificate_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 chronicle_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_asset_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_billing_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_build_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2442,6 +2455,7 @@ class Provider(pulumi.ProviderResource):
                  binary_authorization_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  blockchain_node_engine_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  certificate_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 chronicle_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_asset_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_billing_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloud_build_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2631,6 +2645,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["binary_authorization_custom_endpoint"] = binary_authorization_custom_endpoint
             __props__.__dict__["blockchain_node_engine_custom_endpoint"] = blockchain_node_engine_custom_endpoint
             __props__.__dict__["certificate_manager_custom_endpoint"] = certificate_manager_custom_endpoint
+            __props__.__dict__["chronicle_custom_endpoint"] = chronicle_custom_endpoint
             __props__.__dict__["cloud_asset_custom_endpoint"] = cloud_asset_custom_endpoint
             __props__.__dict__["cloud_billing_custom_endpoint"] = cloud_billing_custom_endpoint
             __props__.__dict__["cloud_build_custom_endpoint"] = cloud_build_custom_endpoint
@@ -2930,6 +2945,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="certificateManagerCustomEndpoint")
     def certificate_manager_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "certificate_manager_custom_endpoint")
+
+    @property
+    @pulumi.getter(name="chronicleCustomEndpoint")
+    def chronicle_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "chronicle_custom_endpoint")
 
     @property
     @pulumi.getter(name="cloudAssetCustomEndpoint")

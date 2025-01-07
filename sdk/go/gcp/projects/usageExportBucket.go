@@ -12,27 +12,17 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Allows creation and management of a Google Cloud Platform project.
+// Sets up a usage export bucket for a particular project.  A usage export bucket
+// is a pre-configured GCS bucket which is set up to receive daily and monthly
+// reports of the GCE resources used.
 //
-// Projects created with this resource must be associated with an Organization.
-// See the [Organization documentation](https://cloud.google.com/resource-manager/docs/quickstarts) for more details.
+// For more information see the [Docs](https://cloud.google.com/compute/docs/usage-export)
+// and for further details, the
+// [API Documentation](https://cloud.google.com/compute/docs/reference/rest/beta/projects/setUsageExportBucket).
 //
-// The user or service account that is running this provider when creating a `organizations.Project`
-// resource must have `roles/resourcemanager.projectCreator` on the specified organization. See the
-// [Access Control for Organizations Using IAM](https://cloud.google.com/resource-manager/docs/access-control-org)
-// doc for more information.
-//
-// > This resource reads the specified billing account on every pulumi up and plan operation so you must have permissions on the specified billing account.
-//
-// > It is recommended to use the `constraints/compute.skipDefaultNetworkCreation` [constraint](https://www.terraform.io/docs/providers/google/r/google_organization_policy.html) to remove the default network instead of setting `autoCreateNetwork` to false, when possible.
-//
-// > It may take a while for the attached tag bindings to be deleted after the project is scheduled to be deleted.
-//
-// To get more information about projects, see:
-//
-// * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v1/projects)
-// * How-to Guides
-//   - [Creating and managing projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects)
+// > **Note:** You should specify only one of these per project.  If there are two or more
+// they will fight over which bucket the reports should be stored in.  It is
+// safe to have multiple resources with the same backing bucket.
 //
 // ## Example Usage
 //
@@ -41,83 +31,16 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/projects"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := organizations.NewProject(ctx, "my_project", &organizations.ProjectArgs{
-//				Name:      pulumi.String("My Project"),
-//				ProjectId: pulumi.String("your-project-id"),
-//				OrgId:     pulumi.String("1234567"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// # To create a project under a specific folder
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			department1, err := organizations.NewFolder(ctx, "department1", &organizations.FolderArgs{
-//				DisplayName: pulumi.String("Department 1"),
-//				Parent:      pulumi.String("organizations/1234567"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = organizations.NewProject(ctx, "my_project-in-a-folder", &organizations.ProjectArgs{
-//				Name:      pulumi.String("My Project"),
-//				ProjectId: pulumi.String("your-project-id"),
-//				FolderId:  department1.Name,
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			return nil
-//		})
-//	}
-//
-// ```
-//
-// # To create a project with a tag
-//
-// ```go
-// package main
-//
-// import (
-//
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
-//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
-//
-// )
-//
-//	func main() {
-//		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := organizations.NewProject(ctx, "my_project", &organizations.ProjectArgs{
-//				Name:      pulumi.String("My Project"),
-//				ProjectId: pulumi.String("your-project-id"),
-//				OrgId:     pulumi.String("1234567"),
-//				Tags: pulumi.StringMap{
-//					"1234567/env": pulumi.String("staging"),
-//				},
+//			_, err := projects.NewUsageExportBucket(ctx, "usage_export", &projects.UsageExportBucketArgs{
+//				Project:    pulumi.String("development-project"),
+//				BucketName: pulumi.String("usage-tracking-bucket"),
 //			})
 //			if err != nil {
 //				return err
@@ -130,11 +53,11 @@ import (
 //
 // ## Import
 //
-// Projects can be imported using the `project_id`, e.g.
+// A project's Usage Export Bucket can be imported using this format:
 //
 // * `{{project_id}}`
 //
-// When using the `pulumi import` command, Projects can be imported using one of the formats above. For example:
+// When using the `pulumi import` command, NAME_HERE can be imported using one of the formats above. For example:
 //
 // ```sh
 // $ pulumi import gcp:projects/usageExportBucket:UsageExportBucket default {{project_id}}
@@ -143,6 +66,8 @@ type UsageExportBucket struct {
 	pulumi.CustomResourceState
 
 	// The bucket to store reports in.
+	//
+	// ***
 	BucketName pulumi.StringOutput `pulumi:"bucketName"`
 	// A prefix for the reports, for instance, the project name.
 	Prefix pulumi.StringPtrOutput `pulumi:"prefix"`
@@ -184,6 +109,8 @@ func GetUsageExportBucket(ctx *pulumi.Context,
 // Input properties used for looking up and filtering UsageExportBucket resources.
 type usageExportBucketState struct {
 	// The bucket to store reports in.
+	//
+	// ***
 	BucketName *string `pulumi:"bucketName"`
 	// A prefix for the reports, for instance, the project name.
 	Prefix *string `pulumi:"prefix"`
@@ -193,6 +120,8 @@ type usageExportBucketState struct {
 
 type UsageExportBucketState struct {
 	// The bucket to store reports in.
+	//
+	// ***
 	BucketName pulumi.StringPtrInput
 	// A prefix for the reports, for instance, the project name.
 	Prefix pulumi.StringPtrInput
@@ -206,6 +135,8 @@ func (UsageExportBucketState) ElementType() reflect.Type {
 
 type usageExportBucketArgs struct {
 	// The bucket to store reports in.
+	//
+	// ***
 	BucketName string `pulumi:"bucketName"`
 	// A prefix for the reports, for instance, the project name.
 	Prefix *string `pulumi:"prefix"`
@@ -216,6 +147,8 @@ type usageExportBucketArgs struct {
 // The set of arguments for constructing a UsageExportBucket resource.
 type UsageExportBucketArgs struct {
 	// The bucket to store reports in.
+	//
+	// ***
 	BucketName pulumi.StringInput
 	// A prefix for the reports, for instance, the project name.
 	Prefix pulumi.StringPtrInput
@@ -311,6 +244,8 @@ func (o UsageExportBucketOutput) ToUsageExportBucketOutputWithContext(ctx contex
 }
 
 // The bucket to store reports in.
+//
+// ***
 func (o UsageExportBucketOutput) BucketName() pulumi.StringOutput {
 	return o.ApplyT(func(v *UsageExportBucket) pulumi.StringOutput { return v.BucketName }).(pulumi.StringOutput)
 }

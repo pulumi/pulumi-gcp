@@ -179,6 +179,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
         public readonly string RepositoryId;
         public readonly string UpdateTime;
         public readonly ImmutableArray<Outputs.GetRepositoryVirtualRepositoryConfigResult> VirtualRepositoryConfigs;
+        public readonly ImmutableArray<Outputs.GetRepositoryVulnerabilityScanningConfigResult> VulnerabilityScanningConfigs;
 
         [OutputConstructor]
         private GetRepositoryResult(
@@ -220,7 +221,9 @@ namespace Pulumi.Gcp.ArtifactRegistry
 
             string updateTime,
 
-            ImmutableArray<Outputs.GetRepositoryVirtualRepositoryConfigResult> virtualRepositoryConfigs)
+            ImmutableArray<Outputs.GetRepositoryVirtualRepositoryConfigResult> virtualRepositoryConfigs,
+
+            ImmutableArray<Outputs.GetRepositoryVulnerabilityScanningConfigResult> vulnerabilityScanningConfigs)
         {
             CleanupPolicies = cleanupPolicies;
             CleanupPolicyDryRun = cleanupPolicyDryRun;
@@ -242,6 +245,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
             RepositoryId = repositoryId;
             UpdateTime = updateTime;
             VirtualRepositoryConfigs = virtualRepositoryConfigs;
+            VulnerabilityScanningConfigs = vulnerabilityScanningConfigs;
         }
     }
 }

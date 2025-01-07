@@ -24,6 +24,11 @@ public final class GetInstanceScheduling {
      */
     private Boolean automaticRestart;
     /**
+     * @return Specifies the availability domain, which this instance should be scheduled on.
+     * 
+     */
+    private Integer availabilityDomain;
+    /**
      * @return Beta Time in seconds for host error detection.
      * 
      */
@@ -88,6 +93,13 @@ public final class GetInstanceScheduling {
      */
     public Boolean automaticRestart() {
         return this.automaticRestart;
+    }
+    /**
+     * @return Specifies the availability domain, which this instance should be scheduled on.
+     * 
+     */
+    public Integer availabilityDomain() {
+        return this.availabilityDomain;
     }
     /**
      * @return Beta Time in seconds for host error detection.
@@ -178,6 +190,7 @@ public final class GetInstanceScheduling {
     @CustomType.Builder
     public static final class Builder {
         private Boolean automaticRestart;
+        private Integer availabilityDomain;
         private Integer hostErrorTimeoutSeconds;
         private String instanceTerminationAction;
         private List<GetInstanceSchedulingLocalSsdRecoveryTimeout> localSsdRecoveryTimeouts;
@@ -193,6 +206,7 @@ public final class GetInstanceScheduling {
         public Builder(GetInstanceScheduling defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.automaticRestart = defaults.automaticRestart;
+    	      this.availabilityDomain = defaults.availabilityDomain;
     	      this.hostErrorTimeoutSeconds = defaults.hostErrorTimeoutSeconds;
     	      this.instanceTerminationAction = defaults.instanceTerminationAction;
     	      this.localSsdRecoveryTimeouts = defaults.localSsdRecoveryTimeouts;
@@ -212,6 +226,14 @@ public final class GetInstanceScheduling {
               throw new MissingRequiredPropertyException("GetInstanceScheduling", "automaticRestart");
             }
             this.automaticRestart = automaticRestart;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder availabilityDomain(Integer availabilityDomain) {
+            if (availabilityDomain == null) {
+              throw new MissingRequiredPropertyException("GetInstanceScheduling", "availabilityDomain");
+            }
+            this.availabilityDomain = availabilityDomain;
             return this;
         }
         @CustomType.Setter
@@ -317,6 +339,7 @@ public final class GetInstanceScheduling {
         public GetInstanceScheduling build() {
             final var _resultValue = new GetInstanceScheduling();
             _resultValue.automaticRestart = automaticRestart;
+            _resultValue.availabilityDomain = availabilityDomain;
             _resultValue.hostErrorTimeoutSeconds = hostErrorTimeoutSeconds;
             _resultValue.instanceTerminationAction = instanceTerminationAction;
             _resultValue.localSsdRecoveryTimeouts = localSsdRecoveryTimeouts;

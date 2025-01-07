@@ -34822,6 +34822,8 @@ type GetInstanceScheduling struct {
 	// Specifies if the instance should be
 	// restarted if it was terminated by Compute Engine (not a user).
 	AutomaticRestart bool `pulumi:"automaticRestart"`
+	// Specifies the availability domain, which this instance should be scheduled on.
+	AvailabilityDomain int `pulumi:"availabilityDomain"`
 	// Beta Time in seconds for host error detection.
 	HostErrorTimeoutSeconds int `pulumi:"hostErrorTimeoutSeconds"`
 	// Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
@@ -34865,6 +34867,8 @@ type GetInstanceSchedulingArgs struct {
 	// Specifies if the instance should be
 	// restarted if it was terminated by Compute Engine (not a user).
 	AutomaticRestart pulumi.BoolInput `pulumi:"automaticRestart"`
+	// Specifies the availability domain, which this instance should be scheduled on.
+	AvailabilityDomain pulumi.IntInput `pulumi:"availabilityDomain"`
 	// Beta Time in seconds for host error detection.
 	HostErrorTimeoutSeconds pulumi.IntInput `pulumi:"hostErrorTimeoutSeconds"`
 	// Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
@@ -34948,6 +34952,11 @@ func (o GetInstanceSchedulingOutput) ToGetInstanceSchedulingOutputWithContext(ct
 // restarted if it was terminated by Compute Engine (not a user).
 func (o GetInstanceSchedulingOutput) AutomaticRestart() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetInstanceScheduling) bool { return v.AutomaticRestart }).(pulumi.BoolOutput)
+}
+
+// Specifies the availability domain, which this instance should be scheduled on.
+func (o GetInstanceSchedulingOutput) AvailabilityDomain() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceScheduling) int { return v.AvailabilityDomain }).(pulumi.IntOutput)
 }
 
 // Beta Time in seconds for host error detection.
@@ -37844,6 +37853,8 @@ type GetInstanceTemplateScheduling struct {
 	// automatically restarted if it is terminated by Compute Engine (not
 	// terminated by a user). This defaults to true.
 	AutomaticRestart bool `pulumi:"automaticRestart"`
+	// Specifies the availability domain, which this instance should be scheduled on.
+	AvailabilityDomain int `pulumi:"availabilityDomain"`
 	// Beta Time in seconds for host error detection.
 	HostErrorTimeoutSeconds int `pulumi:"hostErrorTimeoutSeconds"`
 	// Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
@@ -37894,6 +37905,8 @@ type GetInstanceTemplateSchedulingArgs struct {
 	// automatically restarted if it is terminated by Compute Engine (not
 	// terminated by a user). This defaults to true.
 	AutomaticRestart pulumi.BoolInput `pulumi:"automaticRestart"`
+	// Specifies the availability domain, which this instance should be scheduled on.
+	AvailabilityDomain pulumi.IntInput `pulumi:"availabilityDomain"`
 	// Beta Time in seconds for host error detection.
 	HostErrorTimeoutSeconds pulumi.IntInput `pulumi:"hostErrorTimeoutSeconds"`
 	// Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
@@ -37984,6 +37997,11 @@ func (o GetInstanceTemplateSchedulingOutput) ToGetInstanceTemplateSchedulingOutp
 // terminated by a user). This defaults to true.
 func (o GetInstanceTemplateSchedulingOutput) AutomaticRestart() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetInstanceTemplateScheduling) bool { return v.AutomaticRestart }).(pulumi.BoolOutput)
+}
+
+// Specifies the availability domain, which this instance should be scheduled on.
+func (o GetInstanceTemplateSchedulingOutput) AvailabilityDomain() pulumi.IntOutput {
+	return o.ApplyT(func(v GetInstanceTemplateScheduling) int { return v.AvailabilityDomain }).(pulumi.IntOutput)
 }
 
 // Beta Time in seconds for host error detection.
@@ -44029,6 +44047,8 @@ type GetRegionInstanceTemplateScheduling struct {
 	// automatically restarted if it is terminated by Compute Engine (not
 	// terminated by a user). This defaults to true.
 	AutomaticRestart bool `pulumi:"automaticRestart"`
+	// Specifies the availability domain, which this instance should be scheduled on.
+	AvailabilityDomain int `pulumi:"availabilityDomain"`
 	// Beta Time in seconds for host error detection.
 	HostErrorTimeoutSeconds int `pulumi:"hostErrorTimeoutSeconds"`
 	// Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
@@ -44079,6 +44099,8 @@ type GetRegionInstanceTemplateSchedulingArgs struct {
 	// automatically restarted if it is terminated by Compute Engine (not
 	// terminated by a user). This defaults to true.
 	AutomaticRestart pulumi.BoolInput `pulumi:"automaticRestart"`
+	// Specifies the availability domain, which this instance should be scheduled on.
+	AvailabilityDomain pulumi.IntInput `pulumi:"availabilityDomain"`
 	// Beta Time in seconds for host error detection.
 	HostErrorTimeoutSeconds pulumi.IntInput `pulumi:"hostErrorTimeoutSeconds"`
 	// Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
@@ -44169,6 +44191,11 @@ func (o GetRegionInstanceTemplateSchedulingOutput) ToGetRegionInstanceTemplateSc
 // terminated by a user). This defaults to true.
 func (o GetRegionInstanceTemplateSchedulingOutput) AutomaticRestart() pulumi.BoolOutput {
 	return o.ApplyT(func(v GetRegionInstanceTemplateScheduling) bool { return v.AutomaticRestart }).(pulumi.BoolOutput)
+}
+
+// Specifies the availability domain, which this instance should be scheduled on.
+func (o GetRegionInstanceTemplateSchedulingOutput) AvailabilityDomain() pulumi.IntOutput {
+	return o.ApplyT(func(v GetRegionInstanceTemplateScheduling) int { return v.AvailabilityDomain }).(pulumi.IntOutput)
 }
 
 // Beta Time in seconds for host error detection.

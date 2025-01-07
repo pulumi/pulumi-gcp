@@ -74,6 +74,68 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// 
     /// });
     /// ```
+    /// ### Network Connectivity Spoke Linked Vpc Network Group
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var network = new Gcp.Compute.Network("network", new()
+    ///     {
+    ///         Name = "net-spoke",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var basicHub = new Gcp.NetworkConnectivity.Hub("basic_hub", new()
+    ///     {
+    ///         Name = "hub1-spoke",
+    ///         Description = "A sample hub",
+    ///         Labels = 
+    ///         {
+    ///             { "label-two", "value-one" },
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultGroup = new Gcp.NetworkConnectivity.Group("default_group", new()
+    ///     {
+    ///         Hub = basicHub.Id,
+    ///         Name = "default",
+    ///         Description = "A sample hub group",
+    ///     });
+    /// 
+    ///     var primary = new Gcp.NetworkConnectivity.Spoke("primary", new()
+    ///     {
+    ///         Name = "group-spoke1",
+    ///         Location = "global",
+    ///         Description = "A sample spoke with a linked VPC",
+    ///         Labels = 
+    ///         {
+    ///             { "label-one", "value-one" },
+    ///         },
+    ///         Hub = basicHub.Id,
+    ///         LinkedVpcNetwork = new Gcp.NetworkConnectivity.Inputs.SpokeLinkedVpcNetworkArgs
+    ///         {
+    ///             ExcludeExportRanges = new[]
+    ///             {
+    ///                 "198.51.100.0/24",
+    ///                 "10.10.0.0/16",
+    ///             },
+    ///             IncludeExportRanges = new[]
+    ///             {
+    ///                 "198.51.100.0/23",
+    ///                 "10.0.0.0/8",
+    ///             },
+    ///             Uri = network.SelfLink,
+    ///         },
+    ///         Group = defaultGroup.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Network Connectivity Spoke Router Appliance Basic
     /// 
     /// ```csharp
@@ -502,6 +564,61 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// 
     /// });
     /// ```
+    /// ### Network Connectivity Spoke Center Group
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var network = new Gcp.Compute.Network("network", new()
+    ///     {
+    ///         Name = "tf-net",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var starHub = new Gcp.NetworkConnectivity.Hub("star_hub", new()
+    ///     {
+    ///         Name = "hub-basic",
+    ///         PresetTopology = "STAR",
+    ///     });
+    /// 
+    ///     var centerGroup = new Gcp.NetworkConnectivity.Group("center_group", new()
+    ///     {
+    ///         Name = "center",
+    ///         Hub = starHub.Id,
+    ///         AutoAccept = new Gcp.NetworkConnectivity.Inputs.GroupAutoAcceptArgs
+    ///         {
+    ///             AutoAcceptProjects = new[]
+    ///             {
+    ///                 "foo_13293",
+    ///                 "bar_40289",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var primary = new Gcp.NetworkConnectivity.Spoke("primary", new()
+    ///     {
+    ///         Name = "vpc-spoke",
+    ///         Location = "global",
+    ///         Description = "A sample spoke",
+    ///         Labels = 
+    ///         {
+    ///             { "label-one", "value-one" },
+    ///         },
+    ///         Hub = starHub.Id,
+    ///         Group = centerGroup.Id,
+    ///         LinkedVpcNetwork = new Gcp.NetworkConnectivity.Inputs.SpokeLinkedVpcNetworkArgs
+    ///         {
+    ///             Uri = network.SelfLink,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -547,6 +664,12 @@ namespace Pulumi.Gcp.NetworkConnectivity
         /// </summary>
         [Output("effectiveLabels")]
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
+
+        /// <summary>
+        /// The name of the group that this spoke is associated with.
+        /// </summary>
+        [Output("group")]
+        public Output<string> Group { get; private set; } = null!;
 
         /// <summary>
         /// Immutable. The URI of the hub that this spoke is attached to.
@@ -702,6 +825,12 @@ namespace Pulumi.Gcp.NetworkConnectivity
         public Input<string>? Description { get; set; }
 
         /// <summary>
+        /// The name of the group that this spoke is associated with.
+        /// </summary>
+        [Input("group")]
+        public Input<string>? Group { get; set; }
+
+        /// <summary>
         /// Immutable. The URI of the hub that this spoke is attached to.
         /// </summary>
         [Input("hub", required: true)]
@@ -813,6 +942,12 @@ namespace Pulumi.Gcp.NetworkConnectivity
                 _effectiveLabels = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }
+
+        /// <summary>
+        /// The name of the group that this spoke is associated with.
+        /// </summary>
+        [Input("group")]
+        public Input<string>? Group { get; set; }
 
         /// <summary>
         /// Immutable. The URI of the hub that this spoke is attached to.

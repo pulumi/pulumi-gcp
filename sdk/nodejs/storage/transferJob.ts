@@ -178,6 +178,12 @@ export class TransferJob extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
+     * Replication specification. Structure documented below. User should not configure `schedule`, `eventStream` with this argument. One of `transferSpec`, or `replicationSpec` must be specified.
+     *
+     * - - -
+     */
+    public readonly replicationSpec!: pulumi.Output<outputs.storage.TransferJobReplicationSpec | undefined>;
+    /**
      * Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `eventStream` must be set.
      */
     public readonly schedule!: pulumi.Output<outputs.storage.TransferJobSchedule | undefined>;
@@ -186,11 +192,9 @@ export class TransferJob extends pulumi.CustomResource {
      */
     public readonly status!: pulumi.Output<string | undefined>;
     /**
-     * Transfer specification. Structure documented below.
-     *
-     * - - -
+     * Transfer specification. Structure documented below. One of `transferSpec`, or `replicationSpec` can be specified.
      */
-    public readonly transferSpec!: pulumi.Output<outputs.storage.TransferJobTransferSpec>;
+    public readonly transferSpec!: pulumi.Output<outputs.storage.TransferJobTransferSpec | undefined>;
 
     /**
      * Create a TransferJob resource with the given unique name, arguments, and options.
@@ -213,6 +217,7 @@ export class TransferJob extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["notificationConfig"] = state ? state.notificationConfig : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
+            resourceInputs["replicationSpec"] = state ? state.replicationSpec : undefined;
             resourceInputs["schedule"] = state ? state.schedule : undefined;
             resourceInputs["status"] = state ? state.status : undefined;
             resourceInputs["transferSpec"] = state ? state.transferSpec : undefined;
@@ -221,14 +226,12 @@ export class TransferJob extends pulumi.CustomResource {
             if ((!args || args.description === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'description'");
             }
-            if ((!args || args.transferSpec === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'transferSpec'");
-            }
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["eventStream"] = args ? args.eventStream : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["notificationConfig"] = args ? args.notificationConfig : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
+            resourceInputs["replicationSpec"] = args ? args.replicationSpec : undefined;
             resourceInputs["schedule"] = args ? args.schedule : undefined;
             resourceInputs["status"] = args ? args.status : undefined;
             resourceInputs["transferSpec"] = args ? args.transferSpec : undefined;
@@ -279,6 +282,12 @@ export interface TransferJobState {
      */
     project?: pulumi.Input<string>;
     /**
+     * Replication specification. Structure documented below. User should not configure `schedule`, `eventStream` with this argument. One of `transferSpec`, or `replicationSpec` must be specified.
+     *
+     * - - -
+     */
+    replicationSpec?: pulumi.Input<inputs.storage.TransferJobReplicationSpec>;
+    /**
      * Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `eventStream` must be set.
      */
     schedule?: pulumi.Input<inputs.storage.TransferJobSchedule>;
@@ -287,9 +296,7 @@ export interface TransferJobState {
      */
     status?: pulumi.Input<string>;
     /**
-     * Transfer specification. Structure documented below.
-     *
-     * - - -
+     * Transfer specification. Structure documented below. One of `transferSpec`, or `replicationSpec` can be specified.
      */
     transferSpec?: pulumi.Input<inputs.storage.TransferJobTransferSpec>;
 }
@@ -320,6 +327,12 @@ export interface TransferJobArgs {
      */
     project?: pulumi.Input<string>;
     /**
+     * Replication specification. Structure documented below. User should not configure `schedule`, `eventStream` with this argument. One of `transferSpec`, or `replicationSpec` must be specified.
+     *
+     * - - -
+     */
+    replicationSpec?: pulumi.Input<inputs.storage.TransferJobReplicationSpec>;
+    /**
      * Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `eventStream` must be set.
      */
     schedule?: pulumi.Input<inputs.storage.TransferJobSchedule>;
@@ -328,9 +341,7 @@ export interface TransferJobArgs {
      */
     status?: pulumi.Input<string>;
     /**
-     * Transfer specification. Structure documented below.
-     *
-     * - - -
+     * Transfer specification. Structure documented below. One of `transferSpec`, or `replicationSpec` can be specified.
      */
-    transferSpec: pulumi.Input<inputs.storage.TransferJobTransferSpec>;
+    transferSpec?: pulumi.Input<inputs.storage.TransferJobTransferSpec>;
 }

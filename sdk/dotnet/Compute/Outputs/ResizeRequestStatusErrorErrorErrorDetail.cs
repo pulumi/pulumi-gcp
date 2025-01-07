@@ -15,25 +15,25 @@ namespace Pulumi.Gcp.Compute.Outputs
     {
         /// <summary>
         /// (Output)
-        /// [Output Only]
+        /// A nested object resource.
         /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ResizeRequestStatusErrorErrorErrorDetailErrorInfo> ErrorInfos;
         /// <summary>
         /// (Output)
-        /// [Output Only]
+        /// A nested object resource.
         /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ResizeRequestStatusErrorErrorErrorDetailHelp> Helps;
         /// <summary>
         /// (Output)
-        /// [Output Only]
+        /// A nested object resource.
         /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ResizeRequestStatusErrorErrorErrorDetailLocalizedMessage> LocalizedMessages;
         /// <summary>
         /// (Output)
-        /// [Output Only]
+        /// A nested object resource.
         /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ResizeRequestStatusErrorErrorErrorDetailQuotaInfo> QuotaInfos;

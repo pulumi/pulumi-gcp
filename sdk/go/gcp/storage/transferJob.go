@@ -175,14 +175,16 @@ type TransferJob struct {
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
+	// Replication specification. Structure documented below. User should not configure `schedule`, `eventStream` with this argument. One of `transferSpec`, or `replicationSpec` must be specified.
+	//
+	// ***
+	ReplicationSpec TransferJobReplicationSpecPtrOutput `pulumi:"replicationSpec"`
 	// Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `eventStream` must be set.
 	Schedule TransferJobSchedulePtrOutput `pulumi:"schedule"`
 	// Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
 	Status pulumi.StringPtrOutput `pulumi:"status"`
-	// Transfer specification. Structure documented below.
-	//
-	// ***
-	TransferSpec TransferJobTransferSpecOutput `pulumi:"transferSpec"`
+	// Transfer specification. Structure documented below. One of `transferSpec`, or `replicationSpec` can be specified.
+	TransferSpec TransferJobTransferSpecPtrOutput `pulumi:"transferSpec"`
 }
 
 // NewTransferJob registers a new resource with the given unique name, arguments, and options.
@@ -194,9 +196,6 @@ func NewTransferJob(ctx *pulumi.Context,
 
 	if args.Description == nil {
 		return nil, errors.New("invalid value for required argument 'Description'")
-	}
-	if args.TransferSpec == nil {
-		return nil, errors.New("invalid value for required argument 'TransferSpec'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource TransferJob
@@ -238,13 +237,15 @@ type transferJobState struct {
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Replication specification. Structure documented below. User should not configure `schedule`, `eventStream` with this argument. One of `transferSpec`, or `replicationSpec` must be specified.
+	//
+	// ***
+	ReplicationSpec *TransferJobReplicationSpec `pulumi:"replicationSpec"`
 	// Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `eventStream` must be set.
 	Schedule *TransferJobSchedule `pulumi:"schedule"`
 	// Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
 	Status *string `pulumi:"status"`
-	// Transfer specification. Structure documented below.
-	//
-	// ***
+	// Transfer specification. Structure documented below. One of `transferSpec`, or `replicationSpec` can be specified.
 	TransferSpec *TransferJobTransferSpec `pulumi:"transferSpec"`
 }
 
@@ -266,13 +267,15 @@ type TransferJobState struct {
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Replication specification. Structure documented below. User should not configure `schedule`, `eventStream` with this argument. One of `transferSpec`, or `replicationSpec` must be specified.
+	//
+	// ***
+	ReplicationSpec TransferJobReplicationSpecPtrInput
 	// Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `eventStream` must be set.
 	Schedule TransferJobSchedulePtrInput
 	// Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
 	Status pulumi.StringPtrInput
-	// Transfer specification. Structure documented below.
-	//
-	// ***
+	// Transfer specification. Structure documented below. One of `transferSpec`, or `replicationSpec` can be specified.
 	TransferSpec TransferJobTransferSpecPtrInput
 }
 
@@ -292,14 +295,16 @@ type transferJobArgs struct {
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
+	// Replication specification. Structure documented below. User should not configure `schedule`, `eventStream` with this argument. One of `transferSpec`, or `replicationSpec` must be specified.
+	//
+	// ***
+	ReplicationSpec *TransferJobReplicationSpec `pulumi:"replicationSpec"`
 	// Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `eventStream` must be set.
 	Schedule *TransferJobSchedule `pulumi:"schedule"`
 	// Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
 	Status *string `pulumi:"status"`
-	// Transfer specification. Structure documented below.
-	//
-	// ***
-	TransferSpec TransferJobTransferSpec `pulumi:"transferSpec"`
+	// Transfer specification. Structure documented below. One of `transferSpec`, or `replicationSpec` can be specified.
+	TransferSpec *TransferJobTransferSpec `pulumi:"transferSpec"`
 }
 
 // The set of arguments for constructing a TransferJob resource.
@@ -315,14 +320,16 @@ type TransferJobArgs struct {
 	// The project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
+	// Replication specification. Structure documented below. User should not configure `schedule`, `eventStream` with this argument. One of `transferSpec`, or `replicationSpec` must be specified.
+	//
+	// ***
+	ReplicationSpec TransferJobReplicationSpecPtrInput
 	// Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `eventStream` must be set.
 	Schedule TransferJobSchedulePtrInput
 	// Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
 	Status pulumi.StringPtrInput
-	// Transfer specification. Structure documented below.
-	//
-	// ***
-	TransferSpec TransferJobTransferSpecInput
+	// Transfer specification. Structure documented below. One of `transferSpec`, or `replicationSpec` can be specified.
+	TransferSpec TransferJobTransferSpecPtrInput
 }
 
 func (TransferJobArgs) ElementType() reflect.Type {
@@ -453,6 +460,13 @@ func (o TransferJobOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *TransferJob) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
 
+// Replication specification. Structure documented below. User should not configure `schedule`, `eventStream` with this argument. One of `transferSpec`, or `replicationSpec` must be specified.
+//
+// ***
+func (o TransferJobOutput) ReplicationSpec() TransferJobReplicationSpecPtrOutput {
+	return o.ApplyT(func(v *TransferJob) TransferJobReplicationSpecPtrOutput { return v.ReplicationSpec }).(TransferJobReplicationSpecPtrOutput)
+}
+
 // Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `eventStream` must be set.
 func (o TransferJobOutput) Schedule() TransferJobSchedulePtrOutput {
 	return o.ApplyT(func(v *TransferJob) TransferJobSchedulePtrOutput { return v.Schedule }).(TransferJobSchedulePtrOutput)
@@ -463,11 +477,9 @@ func (o TransferJobOutput) Status() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TransferJob) pulumi.StringPtrOutput { return v.Status }).(pulumi.StringPtrOutput)
 }
 
-// Transfer specification. Structure documented below.
-//
-// ***
-func (o TransferJobOutput) TransferSpec() TransferJobTransferSpecOutput {
-	return o.ApplyT(func(v *TransferJob) TransferJobTransferSpecOutput { return v.TransferSpec }).(TransferJobTransferSpecOutput)
+// Transfer specification. Structure documented below. One of `transferSpec`, or `replicationSpec` can be specified.
+func (o TransferJobOutput) TransferSpec() TransferJobTransferSpecPtrOutput {
+	return o.ApplyT(func(v *TransferJob) TransferJobTransferSpecPtrOutput { return v.TransferSpec }).(TransferJobTransferSpecPtrOutput)
 }
 
 type TransferJobArrayOutput struct{ *pulumi.OutputState }

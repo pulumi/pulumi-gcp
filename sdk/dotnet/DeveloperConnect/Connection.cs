@@ -12,7 +12,52 @@ namespace Pulumi.Gcp.DeveloperConnect
     /// <summary>
     /// ## Example Usage
     /// 
-    /// ### Developer Connect Connection Basic
+    /// ### Developer Connect Connection New
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     // Setup permissions. Only needed once per project
+    ///     var devconnect_p4sa = new Gcp.Projects.ServiceIdentity("devconnect-p4sa", new()
+    ///     {
+    ///         Service = "developerconnect.googleapis.com",
+    ///     });
+    /// 
+    ///     var devconnect_secret = new Gcp.Projects.IAMMember("devconnect-secret", new()
+    ///     {
+    ///         Project = "my-project-name",
+    ///         Role = "roles/secretmanager.admin",
+    ///         Member = devconnect_p4sa.Member,
+    ///     });
+    /// 
+    ///     var my_connection = new Gcp.DeveloperConnect.Connection("my-connection", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         ConnectionId = "tf-test-connection-new",
+    ///         GithubConfig = new Gcp.DeveloperConnect.Inputs.ConnectionGithubConfigArgs
+    ///         {
+    ///             GithubApp = "FIREBASE",
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             devconnect_secret,
+    ///         },
+    ///     });
+    /// 
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["nextSteps"] = my_connection.InstallationStates,
+    ///     };
+    /// });
+    /// ```
+    /// ### Developer Connect Connection Existing Credentials
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -25,20 +70,24 @@ namespace Pulumi.Gcp.DeveloperConnect
     ///     var my_connection = new Gcp.DeveloperConnect.Connection("my-connection", new()
     ///     {
     ///         Location = "us-central1",
-    ///         ConnectionId = "tf-test-connection",
+    ///         ConnectionId = "tf-test-connection-cred",
     ///         GithubConfig = new Gcp.DeveloperConnect.Inputs.ConnectionGithubConfigArgs
     ///         {
     ///             GithubApp = "DEVELOPER_CONNECT",
     ///             AuthorizerCredential = new Gcp.DeveloperConnect.Inputs.ConnectionGithubConfigAuthorizerCredentialArgs
     ///             {
-    ///                 OauthTokenSecretVersion = "projects/devconnect-terraform-creds/secrets/tf-test-do-not-change-github-oauthtoken-e0b9e7/versions/1",
+    ///                 OauthTokenSecretVersion = "projects/your-project/secrets/your-secret-id/versions/latest",
     ///             },
     ///         },
     ///     });
     /// 
+    ///     return new Dictionary&lt;string, object?&gt;
+    ///     {
+    ///         ["nextSteps"] = my_connection.InstallationStates,
+    ///     };
     /// });
     /// ```
-    /// ### Developer Connect Connection Github Doc
+    /// ### Developer Connect Connection Existing Installation
     /// 
     /// ```csharp
     /// using System.Collections.Generic;
@@ -67,6 +116,11 @@ namespace Pulumi.Gcp.DeveloperConnect
     ///         }).Apply(invoke =&gt; invoke.Result),
     ///     });
     /// 
+    ///     var devconnect_p4sa = new Gcp.Projects.ServiceIdentity("devconnect-p4sa", new()
+    ///     {
+    ///         Service = "developerconnect.googleapis.com",
+    ///     });
+    /// 
     ///     var p4sa_secretAccessor = Gcp.Organizations.GetIAMPolicy.Invoke(new()
     ///     {
     ///         Bindings = new[]
@@ -76,7 +130,7 @@ namespace Pulumi.Gcp.DeveloperConnect
     ///                 Role = "roles/secretmanager.secretAccessor",
     ///                 Members = new[]
     ///                 {
-    ///                     "serviceAccount:service-123456789@gcp-sa-devconnect.iam.gserviceaccount.com",
+    ///                     devconnect_p4sa.Member,
     ///                 },
     ///             },
     ///         },

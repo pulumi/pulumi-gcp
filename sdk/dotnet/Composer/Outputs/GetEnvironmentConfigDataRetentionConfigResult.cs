@@ -14,13 +14,21 @@ namespace Pulumi.Gcp.Composer.Outputs
     public sealed class GetEnvironmentConfigDataRetentionConfigResult
     {
         /// <summary>
+        /// Optional. The configuration setting for database retention.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetEnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfigResult> AirflowMetadataRetentionConfigs;
+        /// <summary>
         /// Optional. The configuration setting for Task Logs.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigResult> TaskLogsRetentionConfigs;
 
         [OutputConstructor]
-        private GetEnvironmentConfigDataRetentionConfigResult(ImmutableArray<Outputs.GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigResult> taskLogsRetentionConfigs)
+        private GetEnvironmentConfigDataRetentionConfigResult(
+            ImmutableArray<Outputs.GetEnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfigResult> airflowMetadataRetentionConfigs,
+
+            ImmutableArray<Outputs.GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigResult> taskLogsRetentionConfigs)
         {
+            AirflowMetadataRetentionConfigs = airflowMetadataRetentionConfigs;
             TaskLogsRetentionConfigs = taskLogsRetentionConfigs;
         }
     }

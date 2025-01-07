@@ -23,6 +23,7 @@ class DatasetAccessInitArgs:
     def __init__(__self__, *,
                  dataset_id: pulumi.Input[str],
                  authorized_dataset: Optional[pulumi.Input['DatasetAccessAuthorizedDatasetArgs']] = None,
+                 condition: Optional[pulumi.Input['DatasetAccessConditionArgs']] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  group_by_email: Optional[pulumi.Input[str]] = None,
                  iam_member: Optional[pulumi.Input[str]] = None,
@@ -41,6 +42,9 @@ class DatasetAccessInitArgs:
                
                - - -
         :param pulumi.Input['DatasetAccessAuthorizedDatasetArgs'] authorized_dataset: Grants all resources of particular types in a particular dataset read access to the current dataset.
+               Structure is documented below.
+        :param pulumi.Input['DatasetAccessConditionArgs'] condition: Condition for the binding. If CEL expression in this field is true, this
+               access binding will be considered.
                Structure is documented below.
         :param pulumi.Input[str] domain: A domain to grant access to. Any users signed in with the
                domain specified will be granted the specified access
@@ -78,6 +82,8 @@ class DatasetAccessInitArgs:
         pulumi.set(__self__, "dataset_id", dataset_id)
         if authorized_dataset is not None:
             pulumi.set(__self__, "authorized_dataset", authorized_dataset)
+        if condition is not None:
+            pulumi.set(__self__, "condition", condition)
         if domain is not None:
             pulumi.set(__self__, "domain", domain)
         if group_by_email is not None:
@@ -126,6 +132,20 @@ class DatasetAccessInitArgs:
     @authorized_dataset.setter
     def authorized_dataset(self, value: Optional[pulumi.Input['DatasetAccessAuthorizedDatasetArgs']]):
         pulumi.set(self, "authorized_dataset", value)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> Optional[pulumi.Input['DatasetAccessConditionArgs']]:
+        """
+        Condition for the binding. If CEL expression in this field is true, this
+        access binding will be considered.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "condition")
+
+    @condition.setter
+    def condition(self, value: Optional[pulumi.Input['DatasetAccessConditionArgs']]):
+        pulumi.set(self, "condition", value)
 
     @property
     @pulumi.getter
@@ -264,6 +284,7 @@ class _DatasetAccessState:
     def __init__(__self__, *,
                  api_updated_member: Optional[pulumi.Input[bool]] = None,
                  authorized_dataset: Optional[pulumi.Input['DatasetAccessAuthorizedDatasetArgs']] = None,
+                 condition: Optional[pulumi.Input['DatasetAccessConditionArgs']] = None,
                  dataset_id: Optional[pulumi.Input[str]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  group_by_email: Optional[pulumi.Input[str]] = None,
@@ -279,6 +300,9 @@ class _DatasetAccessState:
         :param pulumi.Input[bool] api_updated_member: If true, represents that that the iam_member in the config was translated to a different member type by the API, and is
                stored in state as a different member type
         :param pulumi.Input['DatasetAccessAuthorizedDatasetArgs'] authorized_dataset: Grants all resources of particular types in a particular dataset read access to the current dataset.
+               Structure is documented below.
+        :param pulumi.Input['DatasetAccessConditionArgs'] condition: Condition for the binding. If CEL expression in this field is true, this
+               access binding will be considered.
                Structure is documented below.
         :param pulumi.Input[str] dataset_id: A unique ID for this dataset, without the project name. The ID
                must contain only letters (a-z, A-Z), numbers (0-9), or
@@ -323,6 +347,8 @@ class _DatasetAccessState:
             pulumi.set(__self__, "api_updated_member", api_updated_member)
         if authorized_dataset is not None:
             pulumi.set(__self__, "authorized_dataset", authorized_dataset)
+        if condition is not None:
+            pulumi.set(__self__, "condition", condition)
         if dataset_id is not None:
             pulumi.set(__self__, "dataset_id", dataset_id)
         if domain is not None:
@@ -369,6 +395,20 @@ class _DatasetAccessState:
     @authorized_dataset.setter
     def authorized_dataset(self, value: Optional[pulumi.Input['DatasetAccessAuthorizedDatasetArgs']]):
         pulumi.set(self, "authorized_dataset", value)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> Optional[pulumi.Input['DatasetAccessConditionArgs']]:
+        """
+        Condition for the binding. If CEL expression in this field is true, this
+        access binding will be considered.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "condition")
+
+    @condition.setter
+    def condition(self, value: Optional[pulumi.Input['DatasetAccessConditionArgs']]):
+        pulumi.set(self, "condition", value)
 
     @property
     @pulumi.getter(name="datasetId")
@@ -525,6 +565,7 @@ class DatasetAccess(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  authorized_dataset: Optional[pulumi.Input[Union['DatasetAccessAuthorizedDatasetArgs', 'DatasetAccessAuthorizedDatasetArgsDict']]] = None,
+                 condition: Optional[pulumi.Input[Union['DatasetAccessConditionArgs', 'DatasetAccessConditionArgsDict']]] = None,
                  dataset_id: Optional[pulumi.Input[str]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  group_by_email: Optional[pulumi.Input[str]] = None,
@@ -644,6 +685,9 @@ class DatasetAccess(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Union['DatasetAccessAuthorizedDatasetArgs', 'DatasetAccessAuthorizedDatasetArgsDict']] authorized_dataset: Grants all resources of particular types in a particular dataset read access to the current dataset.
+               Structure is documented below.
+        :param pulumi.Input[Union['DatasetAccessConditionArgs', 'DatasetAccessConditionArgsDict']] condition: Condition for the binding. If CEL expression in this field is true, this
+               access binding will be considered.
                Structure is documented below.
         :param pulumi.Input[str] dataset_id: A unique ID for this dataset, without the project name. The ID
                must contain only letters (a-z, A-Z), numbers (0-9), or
@@ -811,6 +855,7 @@ class DatasetAccess(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  authorized_dataset: Optional[pulumi.Input[Union['DatasetAccessAuthorizedDatasetArgs', 'DatasetAccessAuthorizedDatasetArgsDict']]] = None,
+                 condition: Optional[pulumi.Input[Union['DatasetAccessConditionArgs', 'DatasetAccessConditionArgsDict']]] = None,
                  dataset_id: Optional[pulumi.Input[str]] = None,
                  domain: Optional[pulumi.Input[str]] = None,
                  group_by_email: Optional[pulumi.Input[str]] = None,
@@ -831,6 +876,7 @@ class DatasetAccess(pulumi.CustomResource):
             __props__ = DatasetAccessInitArgs.__new__(DatasetAccessInitArgs)
 
             __props__.__dict__["authorized_dataset"] = authorized_dataset
+            __props__.__dict__["condition"] = condition
             if dataset_id is None and not opts.urn:
                 raise TypeError("Missing required property 'dataset_id'")
             __props__.__dict__["dataset_id"] = dataset_id
@@ -856,6 +902,7 @@ class DatasetAccess(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             api_updated_member: Optional[pulumi.Input[bool]] = None,
             authorized_dataset: Optional[pulumi.Input[Union['DatasetAccessAuthorizedDatasetArgs', 'DatasetAccessAuthorizedDatasetArgsDict']]] = None,
+            condition: Optional[pulumi.Input[Union['DatasetAccessConditionArgs', 'DatasetAccessConditionArgsDict']]] = None,
             dataset_id: Optional[pulumi.Input[str]] = None,
             domain: Optional[pulumi.Input[str]] = None,
             group_by_email: Optional[pulumi.Input[str]] = None,
@@ -876,6 +923,9 @@ class DatasetAccess(pulumi.CustomResource):
         :param pulumi.Input[bool] api_updated_member: If true, represents that that the iam_member in the config was translated to a different member type by the API, and is
                stored in state as a different member type
         :param pulumi.Input[Union['DatasetAccessAuthorizedDatasetArgs', 'DatasetAccessAuthorizedDatasetArgsDict']] authorized_dataset: Grants all resources of particular types in a particular dataset read access to the current dataset.
+               Structure is documented below.
+        :param pulumi.Input[Union['DatasetAccessConditionArgs', 'DatasetAccessConditionArgsDict']] condition: Condition for the binding. If CEL expression in this field is true, this
+               access binding will be considered.
                Structure is documented below.
         :param pulumi.Input[str] dataset_id: A unique ID for this dataset, without the project name. The ID
                must contain only letters (a-z, A-Z), numbers (0-9), or
@@ -922,6 +972,7 @@ class DatasetAccess(pulumi.CustomResource):
 
         __props__.__dict__["api_updated_member"] = api_updated_member
         __props__.__dict__["authorized_dataset"] = authorized_dataset
+        __props__.__dict__["condition"] = condition
         __props__.__dict__["dataset_id"] = dataset_id
         __props__.__dict__["domain"] = domain
         __props__.__dict__["group_by_email"] = group_by_email
@@ -951,6 +1002,16 @@ class DatasetAccess(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "authorized_dataset")
+
+    @property
+    @pulumi.getter
+    def condition(self) -> pulumi.Output[Optional['outputs.DatasetAccessCondition']]:
+        """
+        Condition for the binding. If CEL expression in this field is true, this
+        access binding will be considered.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "condition")
 
     @property
     @pulumi.getter(name="datasetId")

@@ -147,7 +147,7 @@ import javax.annotation.Nullable;
  *                     .email("xyz}{@literal @}{@code example.com")
  *                     .build())
  *                 .privateEndpointIp("10.5.0.11")
- *                 .privateEndpointLabel("testhost")
+ *                 .privateEndpointLabel("myendpoint")
  *                 .build())
  *             .deletionProtection("true")
  *             .build());

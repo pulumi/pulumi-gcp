@@ -18,6 +18,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly bool? AutomaticRestart;
         /// <summary>
+        /// Specifies the availability domain, which this instance should be scheduled on.
+        /// </summary>
+        public readonly int? AvailabilityDomain;
+        /// <summary>
         /// Specify the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
         /// </summary>
         public readonly int? HostErrorTimeoutSeconds;
@@ -66,6 +70,8 @@ namespace Pulumi.Gcp.Compute.Outputs
         private InstanceFromMachineImageScheduling(
             bool? automaticRestart,
 
+            int? availabilityDomain,
+
             int? hostErrorTimeoutSeconds,
 
             string? instanceTerminationAction,
@@ -89,6 +95,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             string? provisioningModel)
         {
             AutomaticRestart = automaticRestart;
+            AvailabilityDomain = availabilityDomain;
             HostErrorTimeoutSeconds = hostErrorTimeoutSeconds;
             InstanceTerminationAction = instanceTerminationAction;
             LocalSsdRecoveryTimeout = localSsdRecoveryTimeout;

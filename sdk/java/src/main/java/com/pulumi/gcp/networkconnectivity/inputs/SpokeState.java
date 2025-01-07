@@ -67,6 +67,21 @@ public final class SpokeState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The name of the group that this spoke is associated with.
+     * 
+     */
+    @Import(name="group")
+    private @Nullable Output<String> group;
+
+    /**
+     * @return The name of the group that this spoke is associated with.
+     * 
+     */
+    public Optional<Output<String>> group() {
+        return Optional.ofNullable(this.group);
+    }
+
+    /**
      * Immutable. The URI of the hub that this spoke is attached to.
      * 
      */
@@ -304,6 +319,7 @@ public final class SpokeState extends com.pulumi.resources.ResourceArgs {
         this.createTime = $.createTime;
         this.description = $.description;
         this.effectiveLabels = $.effectiveLabels;
+        this.group = $.group;
         this.hub = $.hub;
         this.labels = $.labels;
         this.linkedInterconnectAttachments = $.linkedInterconnectAttachments;
@@ -399,6 +415,27 @@ public final class SpokeState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder effectiveLabels(Map<String,String> effectiveLabels) {
             return effectiveLabels(Output.of(effectiveLabels));
+        }
+
+        /**
+         * @param group The name of the group that this spoke is associated with.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder group(@Nullable Output<String> group) {
+            $.group = group;
+            return this;
+        }
+
+        /**
+         * @param group The name of the group that this spoke is associated with.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder group(String group) {
+            return group(Output.of(group));
         }
 
         /**

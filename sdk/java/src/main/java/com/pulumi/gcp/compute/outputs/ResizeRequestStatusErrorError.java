@@ -15,20 +15,20 @@ import javax.annotation.Nullable;
 public final class ResizeRequestStatusErrorError {
     /**
      * @return (Output)
-     * [Output Only] The error type identifier for this error.
+     * The error type identifier for this error.
      * 
      */
     private @Nullable String code;
     /**
      * @return (Output)
-     * [Output Only] An optional list of messages that contain the error details. There is a set of defined message types to use for providing details.The syntax depends on the error code. For example, QuotaExceededInfo will have details when the error code is QUOTA_EXCEEDED.
+     * An array of messages that contain the error details. There is a set of defined message types to use for providing details.The syntax depends on the error code. For example, QuotaExceededInfo will have details when the error code is QUOTA_EXCEEDED.
      * Structure is documented below.
      * 
      */
     private @Nullable List<ResizeRequestStatusErrorErrorErrorDetail> errorDetails;
     /**
      * @return (Output)
-     * Output Only] Indicates the field in the request that caused the error. This property is optional.
+     * Indicates the field in the request that caused the error. This property is optional.
      * 
      */
     private @Nullable String location;
@@ -42,7 +42,7 @@ public final class ResizeRequestStatusErrorError {
     private ResizeRequestStatusErrorError() {}
     /**
      * @return (Output)
-     * [Output Only] The error type identifier for this error.
+     * The error type identifier for this error.
      * 
      */
     public Optional<String> code() {
@@ -50,7 +50,7 @@ public final class ResizeRequestStatusErrorError {
     }
     /**
      * @return (Output)
-     * [Output Only] An optional list of messages that contain the error details. There is a set of defined message types to use for providing details.The syntax depends on the error code. For example, QuotaExceededInfo will have details when the error code is QUOTA_EXCEEDED.
+     * An array of messages that contain the error details. There is a set of defined message types to use for providing details.The syntax depends on the error code. For example, QuotaExceededInfo will have details when the error code is QUOTA_EXCEEDED.
      * Structure is documented below.
      * 
      */
@@ -59,7 +59,7 @@ public final class ResizeRequestStatusErrorError {
     }
     /**
      * @return (Output)
-     * Output Only] Indicates the field in the request that caused the error. This property is optional.
+     * Indicates the field in the request that caused the error. This property is optional.
      * 
      */
     public Optional<String> location() {

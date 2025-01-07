@@ -14,10 +14,18 @@ namespace Pulumi.Gcp.Datastream.Outputs
     public sealed class StreamSourceConfigMysqlSourceConfig
     {
         /// <summary>
+        /// CDC reader reads from binary logs replication cdc method.
+        /// </summary>
+        public readonly Outputs.StreamSourceConfigMysqlSourceConfigBinaryLogPosition? BinaryLogPosition;
+        /// <summary>
         /// MySQL objects to exclude from the stream.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.StreamSourceConfigMysqlSourceConfigExcludeObjects? ExcludeObjects;
+        /// <summary>
+        /// CDC reader reads from gtid based replication.
+        /// </summary>
+        public readonly Outputs.StreamSourceConfigMysqlSourceConfigGtid? Gtid;
         /// <summary>
         /// MySQL objects to retrieve from the source.
         /// Structure is documented below.
@@ -36,7 +44,11 @@ namespace Pulumi.Gcp.Datastream.Outputs
 
         [OutputConstructor]
         private StreamSourceConfigMysqlSourceConfig(
+            Outputs.StreamSourceConfigMysqlSourceConfigBinaryLogPosition? binaryLogPosition,
+
             Outputs.StreamSourceConfigMysqlSourceConfigExcludeObjects? excludeObjects,
+
+            Outputs.StreamSourceConfigMysqlSourceConfigGtid? gtid,
 
             Outputs.StreamSourceConfigMysqlSourceConfigIncludeObjects? includeObjects,
 
@@ -44,7 +56,9 @@ namespace Pulumi.Gcp.Datastream.Outputs
 
             int? maxConcurrentCdcTasks)
         {
+            BinaryLogPosition = binaryLogPosition;
             ExcludeObjects = excludeObjects;
+            Gtid = gtid;
             IncludeObjects = includeObjects;
             MaxConcurrentBackfillTasks = maxConcurrentBackfillTasks;
             MaxConcurrentCdcTasks = maxConcurrentCdcTasks;
