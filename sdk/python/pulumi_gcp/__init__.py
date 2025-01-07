@@ -6480,14 +6480,6 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
-  "mod": "networksecurity/authzPolicy",
-  "fqn": "pulumi_gcp.networksecurity",
-  "classes": {
-   "gcp:networksecurity/authzPolicy:AuthzPolicy": "AuthzPolicy"
-  }
- },
- {
-  "pkg": "gcp",
   "mod": "networksecurity/clientTlsPolicy",
   "fqn": "pulumi_gcp.networksecurity",
   "classes": {
@@ -6524,22 +6516,6 @@ _utilities.register(
   "fqn": "pulumi_gcp.networksecurity",
   "classes": {
    "gcp:networksecurity/gatewaySecurityPolicyRule:GatewaySecurityPolicyRule": "GatewaySecurityPolicyRule"
-  }
- },
- {
-  "pkg": "gcp",
-  "mod": "networksecurity/interceptDeployment",
-  "fqn": "pulumi_gcp.networksecurity",
-  "classes": {
-   "gcp:networksecurity/interceptDeployment:InterceptDeployment": "InterceptDeployment"
-  }
- },
- {
-  "pkg": "gcp",
-  "mod": "networksecurity/interceptDeploymentGroup",
-  "fqn": "pulumi_gcp.networksecurity",
-  "classes": {
-   "gcp:networksecurity/interceptDeploymentGroup:InterceptDeploymentGroup": "InterceptDeploymentGroup"
   }
  },
  {
@@ -6612,14 +6588,6 @@ _utilities.register(
   "fqn": "pulumi_gcp.networksecurity",
   "classes": {
    "gcp:networksecurity/urlList:UrlList": "UrlList"
-  }
- },
- {
-  "pkg": "gcp",
-  "mod": "networkservices/authzExtension",
-  "fqn": "pulumi_gcp.networkservices",
-  "classes": {
-   "gcp:networkservices/authzExtension:AuthzExtension": "AuthzExtension"
   }
  },
  {

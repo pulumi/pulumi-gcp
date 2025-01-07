@@ -873,12 +873,14 @@ type V2VmNetworkConfig struct {
 	// false, the specified subnetwork or network should have Private Google Access enabled.
 	EnableExternalIps *bool `pulumi:"enableExternalIps"`
 	// The name of the network for the TPU node. It must be a preexisting Google Compute Engine
-	// network. If none is provided, "default" will be used.
+	// network. If both network and subnetwork are specified, the given subnetwork must belong
+	// to the given network. If network is not specified, it will be looked up from the
+	// subnetwork if one is provided, or otherwise use "default".
 	Network *string `pulumi:"network"`
-	// Specifies networking queue count for TPU VM instance's network interface.
-	QueueCount *int `pulumi:"queueCount"`
 	// The name of the subnetwork for the TPU node. It must be a preexisting Google Compute
-	// Engine subnetwork. If none is provided, "default" will be used.
+	// Engine subnetwork. If both network and subnetwork are specified, the given subnetwork
+	// must belong to the given network. If subnetwork is not specified, the subnetwork with the
+	// same name as the network will be used.
 	Subnetwork *string `pulumi:"subnetwork"`
 }
 
@@ -901,12 +903,14 @@ type V2VmNetworkConfigArgs struct {
 	// false, the specified subnetwork or network should have Private Google Access enabled.
 	EnableExternalIps pulumi.BoolPtrInput `pulumi:"enableExternalIps"`
 	// The name of the network for the TPU node. It must be a preexisting Google Compute Engine
-	// network. If none is provided, "default" will be used.
+	// network. If both network and subnetwork are specified, the given subnetwork must belong
+	// to the given network. If network is not specified, it will be looked up from the
+	// subnetwork if one is provided, or otherwise use "default".
 	Network pulumi.StringPtrInput `pulumi:"network"`
-	// Specifies networking queue count for TPU VM instance's network interface.
-	QueueCount pulumi.IntPtrInput `pulumi:"queueCount"`
 	// The name of the subnetwork for the TPU node. It must be a preexisting Google Compute
-	// Engine subnetwork. If none is provided, "default" will be used.
+	// Engine subnetwork. If both network and subnetwork are specified, the given subnetwork
+	// must belong to the given network. If subnetwork is not specified, the subnetwork with the
+	// same name as the network will be used.
 	Subnetwork pulumi.StringPtrInput `pulumi:"subnetwork"`
 }
 
@@ -963,31 +967,6 @@ func (i *v2vmNetworkConfigPtrType) ToV2VmNetworkConfigPtrOutputWithContext(ctx c
 	return pulumi.ToOutputWithContext(ctx, i).(V2VmNetworkConfigPtrOutput)
 }
 
-// V2VmNetworkConfigArrayInput is an input type that accepts V2VmNetworkConfigArray and V2VmNetworkConfigArrayOutput values.
-// You can construct a concrete instance of `V2VmNetworkConfigArrayInput` via:
-//
-//	V2VmNetworkConfigArray{ V2VmNetworkConfigArgs{...} }
-type V2VmNetworkConfigArrayInput interface {
-	pulumi.Input
-
-	ToV2VmNetworkConfigArrayOutput() V2VmNetworkConfigArrayOutput
-	ToV2VmNetworkConfigArrayOutputWithContext(context.Context) V2VmNetworkConfigArrayOutput
-}
-
-type V2VmNetworkConfigArray []V2VmNetworkConfigInput
-
-func (V2VmNetworkConfigArray) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]V2VmNetworkConfig)(nil)).Elem()
-}
-
-func (i V2VmNetworkConfigArray) ToV2VmNetworkConfigArrayOutput() V2VmNetworkConfigArrayOutput {
-	return i.ToV2VmNetworkConfigArrayOutputWithContext(context.Background())
-}
-
-func (i V2VmNetworkConfigArray) ToV2VmNetworkConfigArrayOutputWithContext(ctx context.Context) V2VmNetworkConfigArrayOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(V2VmNetworkConfigArrayOutput)
-}
-
 type V2VmNetworkConfigOutput struct{ *pulumi.OutputState }
 
 func (V2VmNetworkConfigOutput) ElementType() reflect.Type {
@@ -1025,18 +1004,17 @@ func (o V2VmNetworkConfigOutput) EnableExternalIps() pulumi.BoolPtrOutput {
 }
 
 // The name of the network for the TPU node. It must be a preexisting Google Compute Engine
-// network. If none is provided, "default" will be used.
+// network. If both network and subnetwork are specified, the given subnetwork must belong
+// to the given network. If network is not specified, it will be looked up from the
+// subnetwork if one is provided, or otherwise use "default".
 func (o V2VmNetworkConfigOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v V2VmNetworkConfig) *string { return v.Network }).(pulumi.StringPtrOutput)
 }
 
-// Specifies networking queue count for TPU VM instance's network interface.
-func (o V2VmNetworkConfigOutput) QueueCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v V2VmNetworkConfig) *int { return v.QueueCount }).(pulumi.IntPtrOutput)
-}
-
 // The name of the subnetwork for the TPU node. It must be a preexisting Google Compute
-// Engine subnetwork. If none is provided, "default" will be used.
+// Engine subnetwork. If both network and subnetwork are specified, the given subnetwork
+// must belong to the given network. If subnetwork is not specified, the subnetwork with the
+// same name as the network will be used.
 func (o V2VmNetworkConfigOutput) Subnetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v V2VmNetworkConfig) *string { return v.Subnetwork }).(pulumi.StringPtrOutput)
 }
@@ -1088,7 +1066,9 @@ func (o V2VmNetworkConfigPtrOutput) EnableExternalIps() pulumi.BoolPtrOutput {
 }
 
 // The name of the network for the TPU node. It must be a preexisting Google Compute Engine
-// network. If none is provided, "default" will be used.
+// network. If both network and subnetwork are specified, the given subnetwork must belong
+// to the given network. If network is not specified, it will be looked up from the
+// subnetwork if one is provided, or otherwise use "default".
 func (o V2VmNetworkConfigPtrOutput) Network() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *V2VmNetworkConfig) *string {
 		if v == nil {
@@ -1098,18 +1078,10 @@ func (o V2VmNetworkConfigPtrOutput) Network() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
-// Specifies networking queue count for TPU VM instance's network interface.
-func (o V2VmNetworkConfigPtrOutput) QueueCount() pulumi.IntPtrOutput {
-	return o.ApplyT(func(v *V2VmNetworkConfig) *int {
-		if v == nil {
-			return nil
-		}
-		return v.QueueCount
-	}).(pulumi.IntPtrOutput)
-}
-
 // The name of the subnetwork for the TPU node. It must be a preexisting Google Compute
-// Engine subnetwork. If none is provided, "default" will be used.
+// Engine subnetwork. If both network and subnetwork are specified, the given subnetwork
+// must belong to the given network. If subnetwork is not specified, the subnetwork with the
+// same name as the network will be used.
 func (o V2VmNetworkConfigPtrOutput) Subnetwork() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *V2VmNetworkConfig) *string {
 		if v == nil {
@@ -1117,26 +1089,6 @@ func (o V2VmNetworkConfigPtrOutput) Subnetwork() pulumi.StringPtrOutput {
 		}
 		return v.Subnetwork
 	}).(pulumi.StringPtrOutput)
-}
-
-type V2VmNetworkConfigArrayOutput struct{ *pulumi.OutputState }
-
-func (V2VmNetworkConfigArrayOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*[]V2VmNetworkConfig)(nil)).Elem()
-}
-
-func (o V2VmNetworkConfigArrayOutput) ToV2VmNetworkConfigArrayOutput() V2VmNetworkConfigArrayOutput {
-	return o
-}
-
-func (o V2VmNetworkConfigArrayOutput) ToV2VmNetworkConfigArrayOutputWithContext(ctx context.Context) V2VmNetworkConfigArrayOutput {
-	return o
-}
-
-func (o V2VmNetworkConfigArrayOutput) Index(i pulumi.IntInput) V2VmNetworkConfigOutput {
-	return pulumi.All(o, i).ApplyT(func(vs []interface{}) V2VmNetworkConfig {
-		return vs[0].([]V2VmNetworkConfig)[vs[1].(int)]
-	}).(V2VmNetworkConfigOutput)
 }
 
 type V2VmNetworkEndpoint struct {
@@ -1971,7 +1923,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*V2VmDataDiskArrayInput)(nil)).Elem(), V2VmDataDiskArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*V2VmNetworkConfigInput)(nil)).Elem(), V2VmNetworkConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*V2VmNetworkConfigPtrInput)(nil)).Elem(), V2VmNetworkConfigArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*V2VmNetworkConfigArrayInput)(nil)).Elem(), V2VmNetworkConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*V2VmNetworkEndpointInput)(nil)).Elem(), V2VmNetworkEndpointArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*V2VmNetworkEndpointArrayInput)(nil)).Elem(), V2VmNetworkEndpointArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*V2VmNetworkEndpointAccessConfigInput)(nil)).Elem(), V2VmNetworkEndpointAccessConfigArgs{})
@@ -1999,7 +1950,6 @@ func init() {
 	pulumi.RegisterOutputType(V2VmDataDiskArrayOutput{})
 	pulumi.RegisterOutputType(V2VmNetworkConfigOutput{})
 	pulumi.RegisterOutputType(V2VmNetworkConfigPtrOutput{})
-	pulumi.RegisterOutputType(V2VmNetworkConfigArrayOutput{})
 	pulumi.RegisterOutputType(V2VmNetworkEndpointOutput{})
 	pulumi.RegisterOutputType(V2VmNetworkEndpointArrayOutput{})
 	pulumi.RegisterOutputType(V2VmNetworkEndpointAccessConfigOutput{})

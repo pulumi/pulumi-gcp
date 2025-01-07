@@ -35,7 +35,7 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly string? Collation;
         /// <summary>
-        /// Control the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections, can be `REQUIRED` or `NOT_REQUIRED`. If enabled, all the direct connections are rejected.
+        /// Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
         /// </summary>
         public readonly string? ConnectorEnforcement;
         /// <summary>

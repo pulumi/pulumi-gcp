@@ -248,8 +248,6 @@ type PolicyDryRunSpecRule struct {
 	DenyAll *string `pulumi:"denyAll"`
 	// If `"TRUE"`, then the `Policy` is enforced. If `"FALSE"`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
 	Enforce *string `pulumi:"enforce"`
-	// Optional. Required for Managed Constraints if parameters defined in constraints. Pass parameter values when policy enforcement is enabled. Ensure that parameter value types match those defined in the constraint definition. For example: { \"allowedLocations\" : [\"us-east1\", \"us-west1\"], \"allowAll\" : true }
-	Parameters *string `pulumi:"parameters"`
 	// List of values to be used for this policy rule. This field can be set only in policies for list constraints.
 	// Structure is documented below.
 	Values *PolicyDryRunSpecRuleValues `pulumi:"values"`
@@ -276,8 +274,6 @@ type PolicyDryRunSpecRuleArgs struct {
 	DenyAll pulumi.StringPtrInput `pulumi:"denyAll"`
 	// If `"TRUE"`, then the `Policy` is enforced. If `"FALSE"`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
 	Enforce pulumi.StringPtrInput `pulumi:"enforce"`
-	// Optional. Required for Managed Constraints if parameters defined in constraints. Pass parameter values when policy enforcement is enabled. Ensure that parameter value types match those defined in the constraint definition. For example: { \"allowedLocations\" : [\"us-east1\", \"us-west1\"], \"allowAll\" : true }
-	Parameters pulumi.StringPtrInput `pulumi:"parameters"`
 	// List of values to be used for this policy rule. This field can be set only in policies for list constraints.
 	// Structure is documented below.
 	Values PolicyDryRunSpecRuleValuesPtrInput `pulumi:"values"`
@@ -353,11 +349,6 @@ func (o PolicyDryRunSpecRuleOutput) DenyAll() pulumi.StringPtrOutput {
 // If `"TRUE"`, then the `Policy` is enforced. If `"FALSE"`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
 func (o PolicyDryRunSpecRuleOutput) Enforce() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PolicyDryRunSpecRule) *string { return v.Enforce }).(pulumi.StringPtrOutput)
-}
-
-// Optional. Required for Managed Constraints if parameters defined in constraints. Pass parameter values when policy enforcement is enabled. Ensure that parameter value types match those defined in the constraint definition. For example: { \"allowedLocations\" : [\"us-east1\", \"us-west1\"], \"allowAll\" : true }
-func (o PolicyDryRunSpecRuleOutput) Parameters() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PolicyDryRunSpecRule) *string { return v.Parameters }).(pulumi.StringPtrOutput)
 }
 
 // List of values to be used for this policy rule. This field can be set only in policies for list constraints.
@@ -971,8 +962,6 @@ type PolicySpecRule struct {
 	DenyAll *string `pulumi:"denyAll"`
 	// If `"TRUE"`, then the `Policy` is enforced. If `"FALSE"`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
 	Enforce *string `pulumi:"enforce"`
-	// Optional. Required for Managed Constraints if parameters defined in constraints. Pass parameter values when policy enforcement is enabled. Ensure that parameter value types match those defined in the constraint definition. For example: { \"allowedLocations\" : [\"us-east1\", \"us-west1\"], \"allowAll\" : true }
-	Parameters *string `pulumi:"parameters"`
 	// List of values to be used for this policy rule. This field can be set only in policies for list constraints.
 	// Structure is documented below.
 	Values *PolicySpecRuleValues `pulumi:"values"`
@@ -999,8 +988,6 @@ type PolicySpecRuleArgs struct {
 	DenyAll pulumi.StringPtrInput `pulumi:"denyAll"`
 	// If `"TRUE"`, then the `Policy` is enforced. If `"FALSE"`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
 	Enforce pulumi.StringPtrInput `pulumi:"enforce"`
-	// Optional. Required for Managed Constraints if parameters defined in constraints. Pass parameter values when policy enforcement is enabled. Ensure that parameter value types match those defined in the constraint definition. For example: { \"allowedLocations\" : [\"us-east1\", \"us-west1\"], \"allowAll\" : true }
-	Parameters pulumi.StringPtrInput `pulumi:"parameters"`
 	// List of values to be used for this policy rule. This field can be set only in policies for list constraints.
 	// Structure is documented below.
 	Values PolicySpecRuleValuesPtrInput `pulumi:"values"`
@@ -1076,11 +1063,6 @@ func (o PolicySpecRuleOutput) DenyAll() pulumi.StringPtrOutput {
 // If `"TRUE"`, then the `Policy` is enforced. If `"FALSE"`, then any configuration is acceptable. This field can be set only in Policies for boolean constraints.
 func (o PolicySpecRuleOutput) Enforce() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v PolicySpecRule) *string { return v.Enforce }).(pulumi.StringPtrOutput)
-}
-
-// Optional. Required for Managed Constraints if parameters defined in constraints. Pass parameter values when policy enforcement is enabled. Ensure that parameter value types match those defined in the constraint definition. For example: { \"allowedLocations\" : [\"us-east1\", \"us-west1\"], \"allowAll\" : true }
-func (o PolicySpecRuleOutput) Parameters() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v PolicySpecRule) *string { return v.Parameters }).(pulumi.StringPtrOutput)
 }
 
 // List of values to be used for this policy rule. This field can be set only in policies for list constraints.

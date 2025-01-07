@@ -13,12 +13,16 @@ public final class TransferJobTransferSpecPosixDataSource {
     /**
      * @return Root directory path to the filesystem.
      * 
+     * &lt;a name=&#34;nested_aws_s3_data_source&#34;&gt;&lt;/a&gt;The `aws_s3_data_source` block supports:
+     * 
      */
     private String rootDirectory;
 
     private TransferJobTransferSpecPosixDataSource() {}
     /**
      * @return Root directory path to the filesystem.
+     * 
+     * &lt;a name=&#34;nested_aws_s3_data_source&#34;&gt;&lt;/a&gt;The `aws_s3_data_source` block supports:
      * 
      */
     public String rootDirectory() {

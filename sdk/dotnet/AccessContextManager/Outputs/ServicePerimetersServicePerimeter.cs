@@ -24,6 +24,13 @@ namespace Pulumi.Gcp.AccessContextManager.Outputs
         /// </summary>
         public readonly string? Description;
         /// <summary>
+        /// (Output)
+        /// An opaque identifier for the current version of the ServicePerimeter. This
+        /// identifier does not follow any specific format. If an etag is not provided, the
+        /// operation will be performed as if a valid etag is provided.
+        /// </summary>
+        public readonly string? Etag;
+        /// <summary>
         /// Resource name for the ServicePerimeter. The short_name component must
         /// begin with a letter and only include alphanumeric and '_'.
         /// Format: accessPolicies/{policy_id}/servicePerimeters/{short_name}
@@ -91,6 +98,8 @@ namespace Pulumi.Gcp.AccessContextManager.Outputs
 
             string? description,
 
+            string? etag,
+
             string name,
 
             string? perimeterType,
@@ -107,6 +116,7 @@ namespace Pulumi.Gcp.AccessContextManager.Outputs
         {
             CreateTime = createTime;
             Description = description;
+            Etag = etag;
             Name = name;
             PerimeterType = perimeterType;
             Spec = spec;

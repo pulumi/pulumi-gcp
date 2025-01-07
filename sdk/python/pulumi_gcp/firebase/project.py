@@ -53,7 +53,7 @@ class _ProjectState:
         :param pulumi.Input[str] display_name: The GCP project display name
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] project_number: The number of the Google Project that Firebase is enabled on.
+        :param pulumi.Input[str] project_number: The number of the google project that firebase is enabled on.
         """
         if display_name is not None:
             pulumi.set(__self__, "display_name", display_name)
@@ -91,7 +91,7 @@ class _ProjectState:
     @pulumi.getter(name="projectNumber")
     def project_number(self) -> Optional[pulumi.Input[str]]:
         """
-        The number of the Google Project that Firebase is enabled on.
+        The number of the google project that firebase is enabled on.
         """
         return pulumi.get(self, "project_number")
 
@@ -108,7 +108,7 @@ class Project(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        A Google Cloud Firebase instance. This enables Firebase resources on a given Google Project.
+        A Google Cloud Firebase instance. This enables Firebase resources on a given google project.
         Since a FirebaseProject is actually also a GCP Project, a FirebaseProject uses underlying GCP
         identifiers (most importantly, the projectId) as its own for easy interop with GCP APIs.
         Once Firebase has been added to a Google Project it cannot be removed.
@@ -172,7 +172,7 @@ class Project(pulumi.CustomResource):
                  args: Optional[ProjectArgs] = None,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        A Google Cloud Firebase instance. This enables Firebase resources on a given Google Project.
+        A Google Cloud Firebase instance. This enables Firebase resources on a given google project.
         Since a FirebaseProject is actually also a GCP Project, a FirebaseProject uses underlying GCP
         identifiers (most importantly, the projectId) as its own for easy interop with GCP APIs.
         Once Firebase has been added to a Google Project it cannot be removed.
@@ -275,7 +275,7 @@ class Project(pulumi.CustomResource):
         :param pulumi.Input[str] display_name: The GCP project display name
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
-        :param pulumi.Input[str] project_number: The number of the Google Project that Firebase is enabled on.
+        :param pulumi.Input[str] project_number: The number of the google project that firebase is enabled on.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -307,7 +307,7 @@ class Project(pulumi.CustomResource):
     @pulumi.getter(name="projectNumber")
     def project_number(self) -> pulumi.Output[str]:
         """
-        The number of the Google Project that Firebase is enabled on.
+        The number of the google project that firebase is enabled on.
         """
         return pulumi.get(self, "project_number")
 

@@ -772,7 +772,7 @@ if not MYPY:
         """
         connector_enforcement: NotRequired[pulumi.Input[str]]
         """
-        Control the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections, can be `REQUIRED` or `NOT_REQUIRED`. If enabled, all the direct connections are rejected.
+        Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
         """
         data_cache_config: NotRequired[pulumi.Input['DatabaseInstanceSettingsDataCacheConfigArgsDict']]
         """
@@ -889,7 +889,7 @@ class DatabaseInstanceSettingsArgs:
                For Postgres and SQL Server instances, ensure that `settings.backup_configuration.point_in_time_recovery_enabled`
                is set to `true`. Defaults to `ZONAL`.
         :param pulumi.Input[str] collation: The name of server instance collation.
-        :param pulumi.Input[str] connector_enforcement: Control the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections, can be `REQUIRED` or `NOT_REQUIRED`. If enabled, all the direct connections are rejected.
+        :param pulumi.Input[str] connector_enforcement: Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
         :param pulumi.Input['DatabaseInstanceSettingsDataCacheConfigArgs'] data_cache_config: Data cache configurations.
         :param pulumi.Input[bool] deletion_protection_enabled: Configuration to protect against accidental instance deletion.
         :param pulumi.Input[bool] disk_autoresize: Enables auto-resizing of the storage size. Defaults to `true`. Note that if `disk_size` is set, future `pulumi up` calls will attempt to delete the instance in order to resize the disk to the value specified in disk_size if it has been resized. To avoid this, ensure that `lifecycle.ignore_changes` is applied to `disk_size`.
@@ -1052,7 +1052,7 @@ class DatabaseInstanceSettingsArgs:
     @pulumi.getter(name="connectorEnforcement")
     def connector_enforcement(self) -> Optional[pulumi.Input[str]]:
         """
-        Control the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections, can be `REQUIRED` or `NOT_REQUIRED`. If enabled, all the direct connections are rejected.
+        Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
         """
         return pulumi.get(self, "connector_enforcement")
 

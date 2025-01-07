@@ -10,7 +10,7 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Firebase
 {
     /// <summary>
-    /// A Google Cloud Firebase instance. This enables Firebase resources on a given Google Project.
+    /// A Google Cloud Firebase instance. This enables Firebase resources on a given google project.
     /// Since a FirebaseProject is actually also a GCP Project, a FirebaseProject uses underlying GCP
     /// identifiers (most importantly, the projectId) as its own for easy interop with GCP APIs.
     /// Once Firebase has been added to a Google Project it cannot be removed.
@@ -92,7 +92,7 @@ namespace Pulumi.Gcp.Firebase
         public Output<string> ProjectID { get; private set; } = null!;
 
         /// <summary>
-        /// The number of the Google Project that Firebase is enabled on.
+        /// The number of the google project that firebase is enabled on.
         /// </summary>
         [Output("projectNumber")]
         public Output<string> ProjectNumber { get; private set; } = null!;
@@ -172,7 +172,7 @@ namespace Pulumi.Gcp.Firebase
         public Input<string>? ProjectID { get; set; }
 
         /// <summary>
-        /// The number of the Google Project that Firebase is enabled on.
+        /// The number of the google project that firebase is enabled on.
         /// </summary>
         [Input("projectNumber")]
         public Input<string>? ProjectNumber { get; set; }

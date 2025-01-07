@@ -5,11 +5,6 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
-export { AuthzExtensionArgs, AuthzExtensionState } from "./authzExtension";
-export type AuthzExtension = import("./authzExtension").AuthzExtension;
-export const AuthzExtension: typeof import("./authzExtension").AuthzExtension = null as any;
-utilities.lazyLoad(exports, ["AuthzExtension"], () => require("./authzExtension"));
-
 export { EdgeCacheKeysetArgs, EdgeCacheKeysetState } from "./edgeCacheKeyset";
 export type EdgeCacheKeyset = import("./edgeCacheKeyset").EdgeCacheKeyset;
 export const EdgeCacheKeyset: typeof import("./edgeCacheKeyset").EdgeCacheKeyset = null as any;
@@ -85,8 +80,6 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
-            case "gcp:networkservices/authzExtension:AuthzExtension":
-                return new AuthzExtension(name, <any>undefined, { urn })
             case "gcp:networkservices/edgeCacheKeyset:EdgeCacheKeyset":
                 return new EdgeCacheKeyset(name, <any>undefined, { urn })
             case "gcp:networkservices/edgeCacheOrigin:EdgeCacheOrigin":
@@ -120,7 +113,6 @@ const _module = {
         }
     },
 };
-pulumi.runtime.registerResourceModule("gcp", "networkservices/authzExtension", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkservices/edgeCacheKeyset", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkservices/edgeCacheOrigin", _module)
 pulumi.runtime.registerResourceModule("gcp", "networkservices/edgeCacheService", _module)

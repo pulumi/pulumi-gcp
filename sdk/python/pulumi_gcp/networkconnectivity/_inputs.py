@@ -1096,11 +1096,11 @@ class SpokeLinkedRouterApplianceInstancesArgs:
 
 if not MYPY:
     class SpokeLinkedRouterApplianceInstancesInstanceArgsDict(TypedDict):
-        ip_address: pulumi.Input[str]
+        ip_address: NotRequired[pulumi.Input[str]]
         """
         The IP address on the VM to use for peering.
         """
-        virtual_machine: pulumi.Input[str]
+        virtual_machine: NotRequired[pulumi.Input[str]]
         """
         The URI of the virtual machine resource
         """
@@ -1110,37 +1110,39 @@ elif False:
 @pulumi.input_type
 class SpokeLinkedRouterApplianceInstancesInstanceArgs:
     def __init__(__self__, *,
-                 ip_address: pulumi.Input[str],
-                 virtual_machine: pulumi.Input[str]):
+                 ip_address: Optional[pulumi.Input[str]] = None,
+                 virtual_machine: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] ip_address: The IP address on the VM to use for peering.
         :param pulumi.Input[str] virtual_machine: The URI of the virtual machine resource
         """
-        pulumi.set(__self__, "ip_address", ip_address)
-        pulumi.set(__self__, "virtual_machine", virtual_machine)
+        if ip_address is not None:
+            pulumi.set(__self__, "ip_address", ip_address)
+        if virtual_machine is not None:
+            pulumi.set(__self__, "virtual_machine", virtual_machine)
 
     @property
     @pulumi.getter(name="ipAddress")
-    def ip_address(self) -> pulumi.Input[str]:
+    def ip_address(self) -> Optional[pulumi.Input[str]]:
         """
         The IP address on the VM to use for peering.
         """
         return pulumi.get(self, "ip_address")
 
     @ip_address.setter
-    def ip_address(self, value: pulumi.Input[str]):
+    def ip_address(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ip_address", value)
 
     @property
     @pulumi.getter(name="virtualMachine")
-    def virtual_machine(self) -> pulumi.Input[str]:
+    def virtual_machine(self) -> Optional[pulumi.Input[str]]:
         """
         The URI of the virtual machine resource
         """
         return pulumi.get(self, "virtual_machine")
 
     @virtual_machine.setter
-    def virtual_machine(self, value: pulumi.Input[str]):
+    def virtual_machine(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "virtual_machine", value)
 
 

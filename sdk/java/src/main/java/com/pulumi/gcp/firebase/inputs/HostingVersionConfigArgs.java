@@ -5,7 +5,6 @@ package com.pulumi.gcp.firebase.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.gcp.firebase.inputs.HostingVersionConfigHeaderArgs;
 import com.pulumi.gcp.firebase.inputs.HostingVersionConfigRedirectArgs;
 import com.pulumi.gcp.firebase.inputs.HostingVersionConfigRewriteArgs;
 import java.util.List;
@@ -17,25 +16,6 @@ import javax.annotation.Nullable;
 public final class HostingVersionConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final HostingVersionConfigArgs Empty = new HostingVersionConfigArgs();
-
-    /**
-     * An array of objects, where each object specifies a URL pattern that, if matched to the request URL path,
-     * triggers Hosting to apply the specified custom response headers.
-     * Structure is documented below.
-     * 
-     */
-    @Import(name="headers")
-    private @Nullable Output<List<HostingVersionConfigHeaderArgs>> headers;
-
-    /**
-     * @return An array of objects, where each object specifies a URL pattern that, if matched to the request URL path,
-     * triggers Hosting to apply the specified custom response headers.
-     * Structure is documented below.
-     * 
-     */
-    public Optional<Output<List<HostingVersionConfigHeaderArgs>>> headers() {
-        return Optional.ofNullable(this.headers);
-    }
 
     /**
      * An array of objects (called redirect rules), where each rule specifies a URL pattern that, if matched to the request URL path,
@@ -78,7 +58,6 @@ public final class HostingVersionConfigArgs extends com.pulumi.resources.Resourc
     private HostingVersionConfigArgs() {}
 
     private HostingVersionConfigArgs(HostingVersionConfigArgs $) {
-        this.headers = $.headers;
         this.redirects = $.redirects;
         this.rewrites = $.rewrites;
     }
@@ -99,43 +78,6 @@ public final class HostingVersionConfigArgs extends com.pulumi.resources.Resourc
 
         public Builder(HostingVersionConfigArgs defaults) {
             $ = new HostingVersionConfigArgs(Objects.requireNonNull(defaults));
-        }
-
-        /**
-         * @param headers An array of objects, where each object specifies a URL pattern that, if matched to the request URL path,
-         * triggers Hosting to apply the specified custom response headers.
-         * Structure is documented below.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder headers(@Nullable Output<List<HostingVersionConfigHeaderArgs>> headers) {
-            $.headers = headers;
-            return this;
-        }
-
-        /**
-         * @param headers An array of objects, where each object specifies a URL pattern that, if matched to the request URL path,
-         * triggers Hosting to apply the specified custom response headers.
-         * Structure is documented below.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder headers(List<HostingVersionConfigHeaderArgs> headers) {
-            return headers(Output.of(headers));
-        }
-
-        /**
-         * @param headers An array of objects, where each object specifies a URL pattern that, if matched to the request URL path,
-         * triggers Hosting to apply the specified custom response headers.
-         * Structure is documented below.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder headers(HostingVersionConfigHeaderArgs... headers) {
-            return headers(List.of(headers));
         }
 
         /**

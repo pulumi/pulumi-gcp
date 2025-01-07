@@ -328,39 +328,6 @@ public final class GlobalForwardingRuleArgs extends com.pulumi.resources.Resourc
     }
 
     /**
-     * This signifies the networking tier used for configuring
-     * this load balancer and can only take the following values:
-     * `PREMIUM`, `STANDARD`.
-     * For regional ForwardingRule, the valid values are `PREMIUM` and
-     * `STANDARD`. For GlobalForwardingRule, the valid value is
-     * `PREMIUM`.
-     * If this field is not specified, it is assumed to be `PREMIUM`.
-     * If `IPAddress` is specified, this value must be equal to the
-     * networkTier of the Address.
-     * Possible values are: `PREMIUM`, `STANDARD`.
-     * 
-     */
-    @Import(name="networkTier")
-    private @Nullable Output<String> networkTier;
-
-    /**
-     * @return This signifies the networking tier used for configuring
-     * this load balancer and can only take the following values:
-     * `PREMIUM`, `STANDARD`.
-     * For regional ForwardingRule, the valid values are `PREMIUM` and
-     * `STANDARD`. For GlobalForwardingRule, the valid value is
-     * `PREMIUM`.
-     * If this field is not specified, it is assumed to be `PREMIUM`.
-     * If `IPAddress` is specified, this value must be equal to the
-     * networkTier of the Address.
-     * Possible values are: `PREMIUM`, `STANDARD`.
-     * 
-     */
-    public Optional<Output<String>> networkTier() {
-        return Optional.ofNullable(this.networkTier);
-    }
-
-    /**
      * This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.
      * 
      */
@@ -548,7 +515,6 @@ public final class GlobalForwardingRuleArgs extends com.pulumi.resources.Resourc
         this.metadataFilters = $.metadataFilters;
         this.name = $.name;
         this.network = $.network;
-        this.networkTier = $.networkTier;
         this.noAutomateDnsZone = $.noAutomateDnsZone;
         this.portRange = $.portRange;
         this.project = $.project;
@@ -964,45 +930,6 @@ public final class GlobalForwardingRuleArgs extends com.pulumi.resources.Resourc
          */
         public Builder network(String network) {
             return network(Output.of(network));
-        }
-
-        /**
-         * @param networkTier This signifies the networking tier used for configuring
-         * this load balancer and can only take the following values:
-         * `PREMIUM`, `STANDARD`.
-         * For regional ForwardingRule, the valid values are `PREMIUM` and
-         * `STANDARD`. For GlobalForwardingRule, the valid value is
-         * `PREMIUM`.
-         * If this field is not specified, it is assumed to be `PREMIUM`.
-         * If `IPAddress` is specified, this value must be equal to the
-         * networkTier of the Address.
-         * Possible values are: `PREMIUM`, `STANDARD`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder networkTier(@Nullable Output<String> networkTier) {
-            $.networkTier = networkTier;
-            return this;
-        }
-
-        /**
-         * @param networkTier This signifies the networking tier used for configuring
-         * this load balancer and can only take the following values:
-         * `PREMIUM`, `STANDARD`.
-         * For regional ForwardingRule, the valid values are `PREMIUM` and
-         * `STANDARD`. For GlobalForwardingRule, the valid value is
-         * `PREMIUM`.
-         * If this field is not specified, it is assumed to be `PREMIUM`.
-         * If `IPAddress` is specified, this value must be equal to the
-         * networkTier of the Address.
-         * Possible values are: `PREMIUM`, `STANDARD`.
-         * 
-         * @return builder
-         * 
-         */
-        public Builder networkTier(String networkTier) {
-            return networkTier(Output.of(networkTier));
         }
 
         /**

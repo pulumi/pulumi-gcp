@@ -31,8 +31,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AddressGroupIamPolicy{}
 	case "gcp:networksecurity/authorizationPolicy:AuthorizationPolicy":
 		r = &AuthorizationPolicy{}
-	case "gcp:networksecurity/authzPolicy:AuthzPolicy":
-		r = &AuthzPolicy{}
 	case "gcp:networksecurity/clientTlsPolicy:ClientTlsPolicy":
 		r = &ClientTlsPolicy{}
 	case "gcp:networksecurity/firewallEndpoint:FirewallEndpoint":
@@ -43,10 +41,6 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &GatewaySecurityPolicy{}
 	case "gcp:networksecurity/gatewaySecurityPolicyRule:GatewaySecurityPolicyRule":
 		r = &GatewaySecurityPolicyRule{}
-	case "gcp:networksecurity/interceptDeployment:InterceptDeployment":
-		r = &InterceptDeployment{}
-	case "gcp:networksecurity/interceptDeploymentGroup:InterceptDeploymentGroup":
-		r = &InterceptDeploymentGroup{}
 	case "gcp:networksecurity/mirroringDeployment:MirroringDeployment":
 		r = &MirroringDeployment{}
 	case "gcp:networksecurity/mirroringDeploymentGroup:MirroringDeploymentGroup":
@@ -105,11 +99,6 @@ func init() {
 	)
 	pulumi.RegisterResourceModule(
 		"gcp",
-		"networksecurity/authzPolicy",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"gcp",
 		"networksecurity/clientTlsPolicy",
 		&module{version},
 	)
@@ -131,16 +120,6 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"networksecurity/gatewaySecurityPolicyRule",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"gcp",
-		"networksecurity/interceptDeployment",
-		&module{version},
-	)
-	pulumi.RegisterResourceModule(
-		"gcp",
-		"networksecurity/interceptDeploymentGroup",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

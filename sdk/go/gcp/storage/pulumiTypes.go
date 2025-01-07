@@ -5582,8 +5582,6 @@ type TransferJobTransferSpec struct {
 	GcsDataSink *TransferJobTransferSpecGcsDataSink `pulumi:"gcsDataSink"`
 	// A Google Cloud Storage data source. Structure documented below.
 	GcsDataSource *TransferJobTransferSpecGcsDataSource `pulumi:"gcsDataSource"`
-	// An HDFS data source. Structure documented below.
-	HdfsDataSource *TransferJobTransferSpecHdfsDataSource `pulumi:"hdfsDataSource"`
 	// A HTTP URL data source. Structure documented below.
 	HttpDataSource *TransferJobTransferSpecHttpDataSource `pulumi:"httpDataSource"`
 	// Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' `lastModificationTime` do not exclude objects in a data sink. Structure documented below.
@@ -5620,8 +5618,6 @@ type TransferJobTransferSpecArgs struct {
 	GcsDataSink TransferJobTransferSpecGcsDataSinkPtrInput `pulumi:"gcsDataSink"`
 	// A Google Cloud Storage data source. Structure documented below.
 	GcsDataSource TransferJobTransferSpecGcsDataSourcePtrInput `pulumi:"gcsDataSource"`
-	// An HDFS data source. Structure documented below.
-	HdfsDataSource TransferJobTransferSpecHdfsDataSourcePtrInput `pulumi:"hdfsDataSource"`
 	// A HTTP URL data source. Structure documented below.
 	HttpDataSource TransferJobTransferSpecHttpDataSourcePtrInput `pulumi:"httpDataSource"`
 	// Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' `lastModificationTime` do not exclude objects in a data sink. Structure documented below.
@@ -5737,11 +5733,6 @@ func (o TransferJobTransferSpecOutput) GcsDataSource() TransferJobTransferSpecGc
 	return o.ApplyT(func(v TransferJobTransferSpec) *TransferJobTransferSpecGcsDataSource { return v.GcsDataSource }).(TransferJobTransferSpecGcsDataSourcePtrOutput)
 }
 
-// An HDFS data source. Structure documented below.
-func (o TransferJobTransferSpecOutput) HdfsDataSource() TransferJobTransferSpecHdfsDataSourcePtrOutput {
-	return o.ApplyT(func(v TransferJobTransferSpec) *TransferJobTransferSpecHdfsDataSource { return v.HdfsDataSource }).(TransferJobTransferSpecHdfsDataSourcePtrOutput)
-}
-
 // A HTTP URL data source. Structure documented below.
 func (o TransferJobTransferSpecOutput) HttpDataSource() TransferJobTransferSpecHttpDataSourcePtrOutput {
 	return o.ApplyT(func(v TransferJobTransferSpec) *TransferJobTransferSpecHttpDataSource { return v.HttpDataSource }).(TransferJobTransferSpecHttpDataSourcePtrOutput)
@@ -5839,16 +5830,6 @@ func (o TransferJobTransferSpecPtrOutput) GcsDataSource() TransferJobTransferSpe
 		}
 		return v.GcsDataSource
 	}).(TransferJobTransferSpecGcsDataSourcePtrOutput)
-}
-
-// An HDFS data source. Structure documented below.
-func (o TransferJobTransferSpecPtrOutput) HdfsDataSource() TransferJobTransferSpecHdfsDataSourcePtrOutput {
-	return o.ApplyT(func(v *TransferJobTransferSpec) *TransferJobTransferSpecHdfsDataSource {
-		if v == nil {
-			return nil
-		}
-		return v.HdfsDataSource
-	}).(TransferJobTransferSpecHdfsDataSourcePtrOutput)
 }
 
 // A HTTP URL data source. Structure documented below.
@@ -6945,143 +6926,6 @@ func (o TransferJobTransferSpecGcsDataSourcePtrOutput) Path() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
-type TransferJobTransferSpecHdfsDataSource struct {
-	// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
-	Path string `pulumi:"path"`
-}
-
-// TransferJobTransferSpecHdfsDataSourceInput is an input type that accepts TransferJobTransferSpecHdfsDataSourceArgs and TransferJobTransferSpecHdfsDataSourceOutput values.
-// You can construct a concrete instance of `TransferJobTransferSpecHdfsDataSourceInput` via:
-//
-//	TransferJobTransferSpecHdfsDataSourceArgs{...}
-type TransferJobTransferSpecHdfsDataSourceInput interface {
-	pulumi.Input
-
-	ToTransferJobTransferSpecHdfsDataSourceOutput() TransferJobTransferSpecHdfsDataSourceOutput
-	ToTransferJobTransferSpecHdfsDataSourceOutputWithContext(context.Context) TransferJobTransferSpecHdfsDataSourceOutput
-}
-
-type TransferJobTransferSpecHdfsDataSourceArgs struct {
-	// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
-	Path pulumi.StringInput `pulumi:"path"`
-}
-
-func (TransferJobTransferSpecHdfsDataSourceArgs) ElementType() reflect.Type {
-	return reflect.TypeOf((*TransferJobTransferSpecHdfsDataSource)(nil)).Elem()
-}
-
-func (i TransferJobTransferSpecHdfsDataSourceArgs) ToTransferJobTransferSpecHdfsDataSourceOutput() TransferJobTransferSpecHdfsDataSourceOutput {
-	return i.ToTransferJobTransferSpecHdfsDataSourceOutputWithContext(context.Background())
-}
-
-func (i TransferJobTransferSpecHdfsDataSourceArgs) ToTransferJobTransferSpecHdfsDataSourceOutputWithContext(ctx context.Context) TransferJobTransferSpecHdfsDataSourceOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TransferJobTransferSpecHdfsDataSourceOutput)
-}
-
-func (i TransferJobTransferSpecHdfsDataSourceArgs) ToTransferJobTransferSpecHdfsDataSourcePtrOutput() TransferJobTransferSpecHdfsDataSourcePtrOutput {
-	return i.ToTransferJobTransferSpecHdfsDataSourcePtrOutputWithContext(context.Background())
-}
-
-func (i TransferJobTransferSpecHdfsDataSourceArgs) ToTransferJobTransferSpecHdfsDataSourcePtrOutputWithContext(ctx context.Context) TransferJobTransferSpecHdfsDataSourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TransferJobTransferSpecHdfsDataSourceOutput).ToTransferJobTransferSpecHdfsDataSourcePtrOutputWithContext(ctx)
-}
-
-// TransferJobTransferSpecHdfsDataSourcePtrInput is an input type that accepts TransferJobTransferSpecHdfsDataSourceArgs, TransferJobTransferSpecHdfsDataSourcePtr and TransferJobTransferSpecHdfsDataSourcePtrOutput values.
-// You can construct a concrete instance of `TransferJobTransferSpecHdfsDataSourcePtrInput` via:
-//
-//	        TransferJobTransferSpecHdfsDataSourceArgs{...}
-//
-//	or:
-//
-//	        nil
-type TransferJobTransferSpecHdfsDataSourcePtrInput interface {
-	pulumi.Input
-
-	ToTransferJobTransferSpecHdfsDataSourcePtrOutput() TransferJobTransferSpecHdfsDataSourcePtrOutput
-	ToTransferJobTransferSpecHdfsDataSourcePtrOutputWithContext(context.Context) TransferJobTransferSpecHdfsDataSourcePtrOutput
-}
-
-type transferJobTransferSpecHdfsDataSourcePtrType TransferJobTransferSpecHdfsDataSourceArgs
-
-func TransferJobTransferSpecHdfsDataSourcePtr(v *TransferJobTransferSpecHdfsDataSourceArgs) TransferJobTransferSpecHdfsDataSourcePtrInput {
-	return (*transferJobTransferSpecHdfsDataSourcePtrType)(v)
-}
-
-func (*transferJobTransferSpecHdfsDataSourcePtrType) ElementType() reflect.Type {
-	return reflect.TypeOf((**TransferJobTransferSpecHdfsDataSource)(nil)).Elem()
-}
-
-func (i *transferJobTransferSpecHdfsDataSourcePtrType) ToTransferJobTransferSpecHdfsDataSourcePtrOutput() TransferJobTransferSpecHdfsDataSourcePtrOutput {
-	return i.ToTransferJobTransferSpecHdfsDataSourcePtrOutputWithContext(context.Background())
-}
-
-func (i *transferJobTransferSpecHdfsDataSourcePtrType) ToTransferJobTransferSpecHdfsDataSourcePtrOutputWithContext(ctx context.Context) TransferJobTransferSpecHdfsDataSourcePtrOutput {
-	return pulumi.ToOutputWithContext(ctx, i).(TransferJobTransferSpecHdfsDataSourcePtrOutput)
-}
-
-type TransferJobTransferSpecHdfsDataSourceOutput struct{ *pulumi.OutputState }
-
-func (TransferJobTransferSpecHdfsDataSourceOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((*TransferJobTransferSpecHdfsDataSource)(nil)).Elem()
-}
-
-func (o TransferJobTransferSpecHdfsDataSourceOutput) ToTransferJobTransferSpecHdfsDataSourceOutput() TransferJobTransferSpecHdfsDataSourceOutput {
-	return o
-}
-
-func (o TransferJobTransferSpecHdfsDataSourceOutput) ToTransferJobTransferSpecHdfsDataSourceOutputWithContext(ctx context.Context) TransferJobTransferSpecHdfsDataSourceOutput {
-	return o
-}
-
-func (o TransferJobTransferSpecHdfsDataSourceOutput) ToTransferJobTransferSpecHdfsDataSourcePtrOutput() TransferJobTransferSpecHdfsDataSourcePtrOutput {
-	return o.ToTransferJobTransferSpecHdfsDataSourcePtrOutputWithContext(context.Background())
-}
-
-func (o TransferJobTransferSpecHdfsDataSourceOutput) ToTransferJobTransferSpecHdfsDataSourcePtrOutputWithContext(ctx context.Context) TransferJobTransferSpecHdfsDataSourcePtrOutput {
-	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransferJobTransferSpecHdfsDataSource) *TransferJobTransferSpecHdfsDataSource {
-		return &v
-	}).(TransferJobTransferSpecHdfsDataSourcePtrOutput)
-}
-
-// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
-func (o TransferJobTransferSpecHdfsDataSourceOutput) Path() pulumi.StringOutput {
-	return o.ApplyT(func(v TransferJobTransferSpecHdfsDataSource) string { return v.Path }).(pulumi.StringOutput)
-}
-
-type TransferJobTransferSpecHdfsDataSourcePtrOutput struct{ *pulumi.OutputState }
-
-func (TransferJobTransferSpecHdfsDataSourcePtrOutput) ElementType() reflect.Type {
-	return reflect.TypeOf((**TransferJobTransferSpecHdfsDataSource)(nil)).Elem()
-}
-
-func (o TransferJobTransferSpecHdfsDataSourcePtrOutput) ToTransferJobTransferSpecHdfsDataSourcePtrOutput() TransferJobTransferSpecHdfsDataSourcePtrOutput {
-	return o
-}
-
-func (o TransferJobTransferSpecHdfsDataSourcePtrOutput) ToTransferJobTransferSpecHdfsDataSourcePtrOutputWithContext(ctx context.Context) TransferJobTransferSpecHdfsDataSourcePtrOutput {
-	return o
-}
-
-func (o TransferJobTransferSpecHdfsDataSourcePtrOutput) Elem() TransferJobTransferSpecHdfsDataSourceOutput {
-	return o.ApplyT(func(v *TransferJobTransferSpecHdfsDataSource) TransferJobTransferSpecHdfsDataSource {
-		if v != nil {
-			return *v
-		}
-		var ret TransferJobTransferSpecHdfsDataSource
-		return ret
-	}).(TransferJobTransferSpecHdfsDataSourceOutput)
-}
-
-// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
-func (o TransferJobTransferSpecHdfsDataSourcePtrOutput) Path() pulumi.StringPtrOutput {
-	return o.ApplyT(func(v *TransferJobTransferSpecHdfsDataSource) *string {
-		if v == nil {
-			return nil
-		}
-		return &v.Path
-	}).(pulumi.StringPtrOutput)
-}
-
 type TransferJobTransferSpecHttpDataSource struct {
 	// The URL that points to the file that stores the object list entries. This file must allow public access. Currently, only URLs with HTTP and HTTPS schemes are supported.
 	ListUrl string `pulumi:"listUrl"`
@@ -7590,6 +7434,8 @@ func (o TransferJobTransferSpecPosixDataSinkPtrOutput) RootDirectory() pulumi.St
 
 type TransferJobTransferSpecPosixDataSource struct {
 	// Root directory path to the filesystem.
+	//
+	// <a name="nestedAwsS3DataSource"></a>The `awsS3DataSource` block supports:
 	RootDirectory string `pulumi:"rootDirectory"`
 }
 
@@ -7606,6 +7452,8 @@ type TransferJobTransferSpecPosixDataSourceInput interface {
 
 type TransferJobTransferSpecPosixDataSourceArgs struct {
 	// Root directory path to the filesystem.
+	//
+	// <a name="nestedAwsS3DataSource"></a>The `awsS3DataSource` block supports:
 	RootDirectory pulumi.StringInput `pulumi:"rootDirectory"`
 }
 
@@ -7687,6 +7535,8 @@ func (o TransferJobTransferSpecPosixDataSourceOutput) ToTransferJobTransferSpecP
 }
 
 // Root directory path to the filesystem.
+//
+// <a name="nestedAwsS3DataSource"></a>The `awsS3DataSource` block supports:
 func (o TransferJobTransferSpecPosixDataSourceOutput) RootDirectory() pulumi.StringOutput {
 	return o.ApplyT(func(v TransferJobTransferSpecPosixDataSource) string { return v.RootDirectory }).(pulumi.StringOutput)
 }
@@ -7716,6 +7566,8 @@ func (o TransferJobTransferSpecPosixDataSourcePtrOutput) Elem() TransferJobTrans
 }
 
 // Root directory path to the filesystem.
+//
+// <a name="nestedAwsS3DataSource"></a>The `awsS3DataSource` block supports:
 func (o TransferJobTransferSpecPosixDataSourcePtrOutput) RootDirectory() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *TransferJobTransferSpecPosixDataSource) *string {
 		if v == nil {
@@ -10177,8 +10029,6 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobTransferSpecGcsDataSinkPtrInput)(nil)).Elem(), TransferJobTransferSpecGcsDataSinkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobTransferSpecGcsDataSourceInput)(nil)).Elem(), TransferJobTransferSpecGcsDataSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobTransferSpecGcsDataSourcePtrInput)(nil)).Elem(), TransferJobTransferSpecGcsDataSourceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobTransferSpecHdfsDataSourceInput)(nil)).Elem(), TransferJobTransferSpecHdfsDataSourceArgs{})
-	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobTransferSpecHdfsDataSourcePtrInput)(nil)).Elem(), TransferJobTransferSpecHdfsDataSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobTransferSpecHttpDataSourceInput)(nil)).Elem(), TransferJobTransferSpecHttpDataSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobTransferSpecHttpDataSourcePtrInput)(nil)).Elem(), TransferJobTransferSpecHttpDataSourceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobTransferSpecObjectConditionsInput)(nil)).Elem(), TransferJobTransferSpecObjectConditionsArgs{})
@@ -10309,8 +10159,6 @@ func init() {
 	pulumi.RegisterOutputType(TransferJobTransferSpecGcsDataSinkPtrOutput{})
 	pulumi.RegisterOutputType(TransferJobTransferSpecGcsDataSourceOutput{})
 	pulumi.RegisterOutputType(TransferJobTransferSpecGcsDataSourcePtrOutput{})
-	pulumi.RegisterOutputType(TransferJobTransferSpecHdfsDataSourceOutput{})
-	pulumi.RegisterOutputType(TransferJobTransferSpecHdfsDataSourcePtrOutput{})
 	pulumi.RegisterOutputType(TransferJobTransferSpecHttpDataSourceOutput{})
 	pulumi.RegisterOutputType(TransferJobTransferSpecHttpDataSourcePtrOutput{})
 	pulumi.RegisterOutputType(TransferJobTransferSpecObjectConditionsOutput{})

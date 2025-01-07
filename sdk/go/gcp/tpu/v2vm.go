@@ -127,7 +127,6 @@ import (
 //					EnableExternalIps: pulumi.Bool(true),
 //					Network:           network.ID(),
 //					Subnetwork:        subnet.ID(),
-//					QueueCount:        pulumi.Int(32),
 //				},
 //				SchedulingConfig: &tpu.V2VmSchedulingConfigArgs{
 //					Preemptible: pulumi.Bool(true),
@@ -240,10 +239,6 @@ type V2Vm struct {
 	// Network configurations for the TPU node.
 	// Structure is documented below.
 	NetworkConfig V2VmNetworkConfigOutput `pulumi:"networkConfig"`
-	// Repeated network configurations for the TPU node. This field is used to specify multiple
-	// network configs for the TPU node.
-	// Structure is documented below.
-	NetworkConfigs V2VmNetworkConfigArrayOutput `pulumi:"networkConfigs"`
 	// The network endpoints where TPU workers can be accessed and sent work. It is recommended that
 	// runtime clients of the node reach out to the 0th entry in this map first.
 	// Structure is documented below.
@@ -359,10 +354,6 @@ type v2vmState struct {
 	// Network configurations for the TPU node.
 	// Structure is documented below.
 	NetworkConfig *V2VmNetworkConfig `pulumi:"networkConfig"`
-	// Repeated network configurations for the TPU node. This field is used to specify multiple
-	// network configs for the TPU node.
-	// Structure is documented below.
-	NetworkConfigs []V2VmNetworkConfig `pulumi:"networkConfigs"`
 	// The network endpoints where TPU workers can be accessed and sent work. It is recommended that
 	// runtime clients of the node reach out to the 0th entry in this map first.
 	// Structure is documented below.
@@ -441,10 +432,6 @@ type V2VmState struct {
 	// Network configurations for the TPU node.
 	// Structure is documented below.
 	NetworkConfig V2VmNetworkConfigPtrInput
-	// Repeated network configurations for the TPU node. This field is used to specify multiple
-	// network configs for the TPU node.
-	// Structure is documented below.
-	NetworkConfigs V2VmNetworkConfigArrayInput
 	// The network endpoints where TPU workers can be accessed and sent work. It is recommended that
 	// runtime clients of the node reach out to the 0th entry in this map first.
 	// Structure is documented below.
@@ -517,10 +504,6 @@ type v2vmArgs struct {
 	// Network configurations for the TPU node.
 	// Structure is documented below.
 	NetworkConfig *V2VmNetworkConfig `pulumi:"networkConfig"`
-	// Repeated network configurations for the TPU node. This field is used to specify multiple
-	// network configs for the TPU node.
-	// Structure is documented below.
-	NetworkConfigs []V2VmNetworkConfig `pulumi:"networkConfigs"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -576,10 +559,6 @@ type V2VmArgs struct {
 	// Network configurations for the TPU node.
 	// Structure is documented below.
 	NetworkConfig V2VmNetworkConfigPtrInput
-	// Repeated network configurations for the TPU node. This field is used to specify multiple
-	// network configs for the TPU node.
-	// Structure is documented below.
-	NetworkConfigs V2VmNetworkConfigArrayInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -770,13 +749,6 @@ func (o V2VmOutput) Name() pulumi.StringOutput {
 // Structure is documented below.
 func (o V2VmOutput) NetworkConfig() V2VmNetworkConfigOutput {
 	return o.ApplyT(func(v *V2Vm) V2VmNetworkConfigOutput { return v.NetworkConfig }).(V2VmNetworkConfigOutput)
-}
-
-// Repeated network configurations for the TPU node. This field is used to specify multiple
-// network configs for the TPU node.
-// Structure is documented below.
-func (o V2VmOutput) NetworkConfigs() V2VmNetworkConfigArrayOutput {
-	return o.ApplyT(func(v *V2Vm) V2VmNetworkConfigArrayOutput { return v.NetworkConfigs }).(V2VmNetworkConfigArrayOutput)
 }
 
 // The network endpoints where TPU workers can be accessed and sent work. It is recommended that

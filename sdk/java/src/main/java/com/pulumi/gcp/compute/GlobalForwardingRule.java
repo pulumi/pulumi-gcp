@@ -329,7 +329,6 @@ import javax.annotation.Nullable;
  *             .target(defaultTargetHttpProxy.id())
  *             .portRange("80")
  *             .loadBalancingScheme("EXTERNAL_MANAGED")
- *             .networkTier("PREMIUM")
  *             .build());
  * 
  *     }
@@ -1036,38 +1035,6 @@ public class GlobalForwardingRule extends com.pulumi.resources.CustomResource {
      */
     public Output<String> network() {
         return this.network;
-    }
-    /**
-     * This signifies the networking tier used for configuring
-     * this load balancer and can only take the following values:
-     * `PREMIUM`, `STANDARD`.
-     * For regional ForwardingRule, the valid values are `PREMIUM` and
-     * `STANDARD`. For GlobalForwardingRule, the valid value is
-     * `PREMIUM`.
-     * If this field is not specified, it is assumed to be `PREMIUM`.
-     * If `IPAddress` is specified, this value must be equal to the
-     * networkTier of the Address.
-     * Possible values are: `PREMIUM`, `STANDARD`.
-     * 
-     */
-    @Export(name="networkTier", refs={String.class}, tree="[0]")
-    private Output<String> networkTier;
-
-    /**
-     * @return This signifies the networking tier used for configuring
-     * this load balancer and can only take the following values:
-     * `PREMIUM`, `STANDARD`.
-     * For regional ForwardingRule, the valid values are `PREMIUM` and
-     * `STANDARD`. For GlobalForwardingRule, the valid value is
-     * `PREMIUM`.
-     * If this field is not specified, it is assumed to be `PREMIUM`.
-     * If `IPAddress` is specified, this value must be equal to the
-     * networkTier of the Address.
-     * Possible values are: `PREMIUM`, `STANDARD`.
-     * 
-     */
-    public Output<String> networkTier() {
-        return this.networkTier;
     }
     /**
      * This is used in PSC consumer ForwardingRule to control whether it should try to auto-generate a DNS zone or not. Non-PSC forwarding rules do not use this field.

@@ -30,19 +30,6 @@ import * as utilities from "../utilities";
  *     format: "DOCKER",
  * });
  * ```
- * ### Artifact Registry Repository Multi Region
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const my_repo = new gcp.artifactregistry.Repository("my-repo", {
- *     repositoryId: "my-repository",
- *     description: "example docker repository",
- *     location: "us",
- *     format: "DOCKER",
- * });
- * ```
  * ### Artifact Registry Repository Docker
  *
  * ```typescript
@@ -569,6 +556,8 @@ import * as utilities from "../utilities";
  *
  * * `{{location}}/{{repository_id}}`
  *
+ * * `{{repository_id}}`
+ *
  * When using the `pulumi import` command, Repository can be imported using one of the formats above. For example:
  *
  * ```sh
@@ -581,6 +570,10 @@ import * as utilities from "../utilities";
  *
  * ```sh
  * $ pulumi import gcp:artifactregistry/repository:Repository default {{location}}/{{repository_id}}
+ * ```
+ *
+ * ```sh
+ * $ pulumi import gcp:artifactregistry/repository:Repository default {{repository_id}}
  * ```
  */
 export class Repository extends pulumi.CustomResource {
@@ -646,6 +639,9 @@ export class Repository extends pulumi.CustomResource {
      * can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
      * You can only create alpha formats if you are a member of the
      * [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
+     *
+     *
+     * - - -
      */
     public readonly format!: pulumi.Output<string>;
     /**
@@ -667,12 +663,7 @@ export class Repository extends pulumi.CustomResource {
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
     /**
-     * The name of the repository's location. In addition to specific regions,
-     * special values for multi-region locations are `asia`, `europe`, and `us`.
-     * See [here](https://cloud.google.com/artifact-registry/docs/repositories/repo-locations),
-     * or use the
-     * gcp.artifactregistry.getLocations
-     * data source for possible values.
+     * The name of the location this repository is located in.
      */
     public readonly location!: pulumi.Output<string>;
     /**
@@ -711,9 +702,6 @@ export class Repository extends pulumi.CustomResource {
     /**
      * The last part of the repository name, for example:
      * "repo1"
-     *
-     *
-     * - - -
      */
     public readonly repositoryId!: pulumi.Output<string>;
     /**
@@ -832,6 +820,9 @@ export interface RepositoryState {
      * can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
      * You can only create alpha formats if you are a member of the
      * [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
+     *
+     *
+     * - - -
      */
     format?: pulumi.Input<string>;
     /**
@@ -853,12 +844,7 @@ export interface RepositoryState {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The name of the repository's location. In addition to specific regions,
-     * special values for multi-region locations are `asia`, `europe`, and `us`.
-     * See [here](https://cloud.google.com/artifact-registry/docs/repositories/repo-locations),
-     * or use the
-     * gcp.artifactregistry.getLocations
-     * data source for possible values.
+     * The name of the location this repository is located in.
      */
     location?: pulumi.Input<string>;
     /**
@@ -897,9 +883,6 @@ export interface RepositoryState {
     /**
      * The last part of the repository name, for example:
      * "repo1"
-     *
-     *
-     * - - -
      */
     repositoryId?: pulumi.Input<string>;
     /**
@@ -944,6 +927,9 @@ export interface RepositoryArgs {
      * can be found [here](https://cloud.google.com/artifact-registry/docs/supported-formats).
      * You can only create alpha formats if you are a member of the
      * [alpha user group](https://cloud.google.com/artifact-registry/docs/supported-formats#alpha-access).
+     *
+     *
+     * - - -
      */
     format: pulumi.Input<string>;
     /**
@@ -965,12 +951,7 @@ export interface RepositoryArgs {
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * The name of the repository's location. In addition to specific regions,
-     * special values for multi-region locations are `asia`, `europe`, and `us`.
-     * See [here](https://cloud.google.com/artifact-registry/docs/repositories/repo-locations),
-     * or use the
-     * gcp.artifactregistry.getLocations
-     * data source for possible values.
+     * The name of the location this repository is located in.
      */
     location?: pulumi.Input<string>;
     /**
@@ -999,9 +980,6 @@ export interface RepositoryArgs {
     /**
      * The last part of the repository name, for example:
      * "repo1"
-     *
-     *
-     * - - -
      */
     repositoryId: pulumi.Input<string>;
     /**

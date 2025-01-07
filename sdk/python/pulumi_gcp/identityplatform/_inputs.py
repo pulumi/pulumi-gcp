@@ -718,7 +718,7 @@ if not MYPY:
     class ConfigQuotaArgsDict(TypedDict):
         sign_up_quota_config: NotRequired[pulumi.Input['ConfigQuotaSignUpQuotaConfigArgsDict']]
         """
-        Quota for the Signup endpoint, if overwritten. Signup quota is measured in sign ups per project per hour per IP. None of quota, startTime, or quotaDuration can be skipped.
+        Quota for the Signup endpoint, if overwritten. Signup quota is measured in sign ups per project per hour per IP.
         Structure is documented below.
         """
 elif False:
@@ -729,7 +729,7 @@ class ConfigQuotaArgs:
     def __init__(__self__, *,
                  sign_up_quota_config: Optional[pulumi.Input['ConfigQuotaSignUpQuotaConfigArgs']] = None):
         """
-        :param pulumi.Input['ConfigQuotaSignUpQuotaConfigArgs'] sign_up_quota_config: Quota for the Signup endpoint, if overwritten. Signup quota is measured in sign ups per project per hour per IP. None of quota, startTime, or quotaDuration can be skipped.
+        :param pulumi.Input['ConfigQuotaSignUpQuotaConfigArgs'] sign_up_quota_config: Quota for the Signup endpoint, if overwritten. Signup quota is measured in sign ups per project per hour per IP.
                Structure is documented below.
         """
         if sign_up_quota_config is not None:
@@ -739,7 +739,7 @@ class ConfigQuotaArgs:
     @pulumi.getter(name="signUpQuotaConfig")
     def sign_up_quota_config(self) -> Optional[pulumi.Input['ConfigQuotaSignUpQuotaConfigArgs']]:
         """
-        Quota for the Signup endpoint, if overwritten. Signup quota is measured in sign ups per project per hour per IP. None of quota, startTime, or quotaDuration can be skipped.
+        Quota for the Signup endpoint, if overwritten. Signup quota is measured in sign ups per project per hour per IP.
         Structure is documented below.
         """
         return pulumi.get(self, "sign_up_quota_config")
@@ -753,7 +753,7 @@ if not MYPY:
     class ConfigQuotaSignUpQuotaConfigArgsDict(TypedDict):
         quota: NotRequired[pulumi.Input[int]]
         """
-        A sign up APIs quota that customers can override temporarily. Value can be in between 1 and 1000.
+        A sign up APIs quota that customers can override temporarily.
         """
         quota_duration: NotRequired[pulumi.Input[str]]
         """
@@ -773,7 +773,7 @@ class ConfigQuotaSignUpQuotaConfigArgs:
                  quota_duration: Optional[pulumi.Input[str]] = None,
                  start_time: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[int] quota: A sign up APIs quota that customers can override temporarily. Value can be in between 1 and 1000.
+        :param pulumi.Input[int] quota: A sign up APIs quota that customers can override temporarily.
         :param pulumi.Input[str] quota_duration: How long this quota will be active for. It is measurred in seconds, e.g., Example: "9.615s".
         :param pulumi.Input[str] start_time: When this quota will take affect.
         """
@@ -788,7 +788,7 @@ class ConfigQuotaSignUpQuotaConfigArgs:
     @pulumi.getter
     def quota(self) -> Optional[pulumi.Input[int]]:
         """
-        A sign up APIs quota that customers can override temporarily. Value can be in between 1 and 1000.
+        A sign up APIs quota that customers can override temporarily.
         """
         return pulumi.get(self, "quota")
 

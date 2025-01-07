@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.IdentityPlatform.Inputs
     public sealed class ConfigQuotaSignUpQuotaConfigArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// A sign up APIs quota that customers can override temporarily. Value can be in between 1 and 1000.
+        /// A sign up APIs quota that customers can override temporarily.
         /// </summary>
         [Input("quota")]
         public Input<int>? Quota { get; set; }

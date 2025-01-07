@@ -18255,9 +18255,6 @@
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
-                                "headers": {
-                                    "maxItemsOne": false
-                                },
                                 "redirects": {
                                     "maxItemsOne": false
                                 },
@@ -22714,156 +22711,6 @@
                     }
                 }
             },
-            "google_network_security_authz_policy": {
-                "current": "gcp:networksecurity/authzPolicy:AuthzPolicy",
-                "majorVersion": 8,
-                "fields": {
-                    "custom_provider": {
-                        "maxItemsOne": true,
-                        "elem": {
-                            "fields": {
-                                "authz_extension": {
-                                    "maxItemsOne": true,
-                                    "elem": {
-                                        "fields": {
-                                            "resources": {
-                                                "maxItemsOne": false
-                                            }
-                                        }
-                                    }
-                                },
-                                "cloud_iap": {
-                                    "maxItemsOne": true
-                                }
-                            }
-                        }
-                    },
-                    "http_rules": {
-                        "maxItemsOne": false,
-                        "elem": {
-                            "fields": {
-                                "from": {
-                                    "maxItemsOne": true,
-                                    "elem": {
-                                        "fields": {
-                                            "not_sources": {
-                                                "maxItemsOne": false,
-                                                "elem": {
-                                                    "fields": {
-                                                        "principals": {
-                                                            "maxItemsOne": false
-                                                        },
-                                                        "resources": {
-                                                            "maxItemsOne": false,
-                                                            "elem": {
-                                                                "fields": {
-                                                                    "iam_service_account": {
-                                                                        "maxItemsOne": true
-                                                                    },
-                                                                    "tag_value_id_set": {
-                                                                        "maxItemsOne": true,
-                                                                        "elem": {
-                                                                            "fields": {
-                                                                                "ids": {
-                                                                                    "maxItemsOne": false
-                                                                                }
-                                                                            }
-                                                                        }
-                                                                    }
-                                                                }
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            },
-                                            "sources": {
-                                                "maxItemsOne": false,
-                                                "elem": {
-                                                    "fields": {
-                                                        "principals": {
-                                                            "maxItemsOne": false
-                                                        },
-                                                        "resources": {
-                                                            "maxItemsOne": false,
-                                                            "elem": {
-                                                                "fields": {
-                                                                    "iam_service_account": {
-                                                                        "maxItemsOne": true
-                                                                    },
-                                                                    "tag_value_id_set": {
-                                                                        "maxItemsOne": true,
-                                                                        "elem": {
-                                                                            "fields": {
-                                                                                "ids": {
-                                                                                    "maxItemsOne": false
-                                                                                }
-                                                                            }
-                                                                        }
-                                                                    }
-                                                                }
-                                                            }
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                },
-                                "to": {
-                                    "maxItemsOne": true,
-                                    "elem": {
-                                        "fields": {
-                                            "operations": {
-                                                "maxItemsOne": false,
-                                                "elem": {
-                                                    "fields": {
-                                                        "header_set": {
-                                                            "maxItemsOne": true,
-                                                            "elem": {
-                                                                "fields": {
-                                                                    "headers": {
-                                                                        "maxItemsOne": false,
-                                                                        "elem": {
-                                                                            "fields": {
-                                                                                "value": {
-                                                                                    "maxItemsOne": true
-                                                                                }
-                                                                            }
-                                                                        }
-                                                                    }
-                                                                }
-                                                            }
-                                                        },
-                                                        "hosts": {
-                                                            "maxItemsOne": false
-                                                        },
-                                                        "methods": {
-                                                            "maxItemsOne": false
-                                                        },
-                                                        "paths": {
-                                                            "maxItemsOne": false
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                            }
-                        }
-                    },
-                    "target": {
-                        "maxItemsOne": true,
-                        "elem": {
-                            "fields": {
-                                "resources": {
-                                    "maxItemsOne": false
-                                }
-                            }
-                        }
-                    }
-                }
-            },
             "google_network_security_client_tls_policy": {
                 "current": "gcp:networksecurity/clientTlsPolicy:ClientTlsPolicy",
                 "majorVersion": 8,
@@ -22916,19 +22763,6 @@
             "google_network_security_gateway_security_policy_rule": {
                 "current": "gcp:networksecurity/gatewaySecurityPolicyRule:GatewaySecurityPolicyRule",
                 "majorVersion": 8
-            },
-            "google_network_security_intercept_deployment": {
-                "current": "gcp:networksecurity/interceptDeployment:InterceptDeployment",
-                "majorVersion": 8
-            },
-            "google_network_security_intercept_deployment_group": {
-                "current": "gcp:networksecurity/interceptDeploymentGroup:InterceptDeploymentGroup",
-                "majorVersion": 8,
-                "fields": {
-                    "connected_endpoint_groups": {
-                        "maxItemsOne": false
-                    }
-                }
             },
             "google_network_security_mirroring_deployment": {
                 "current": "gcp:networksecurity/mirroringDeployment:MirroringDeployment",
@@ -23032,15 +22866,6 @@
                 "majorVersion": 8,
                 "fields": {
                     "values": {
-                        "maxItemsOne": false
-                    }
-                }
-            },
-            "google_network_services_authz_extension": {
-                "current": "gcp:networkservices/authzExtension:AuthzExtension",
-                "majorVersion": 8,
-                "fields": {
-                    "forward_headers": {
                         "maxItemsOne": false
                     }
                 }
@@ -27832,9 +27657,6 @@
                                 "gcs_data_source": {
                                     "maxItemsOne": true
                                 },
-                                "hdfs_data_source": {
-                                    "maxItemsOne": true
-                                },
                                 "http_data_source": {
                                     "maxItemsOne": true
                                 },
@@ -27978,9 +27800,6 @@
                     },
                     "network_config": {
                         "maxItemsOne": true
-                    },
-                    "network_configs": {
-                        "maxItemsOne": false
                     },
                     "network_endpoints": {
                         "maxItemsOne": false,
@@ -36590,10 +36409,6 @@
                 "effective_labels",
                 "terraform_labels"
             ],
-            "google_network_security_authz_policy": [
-                "effective_labels",
-                "terraform_labels"
-            ],
             "google_network_security_client_tls_policy": [
                 "effective_labels",
                 "terraform_labels"
@@ -36603,14 +36418,6 @@
                 "terraform_labels"
             ],
             "google_network_security_firewall_endpoint_association": [
-                "effective_labels",
-                "terraform_labels"
-            ],
-            "google_network_security_intercept_deployment": [
-                "effective_labels",
-                "terraform_labels"
-            ],
-            "google_network_security_intercept_deployment_group": [
                 "effective_labels",
                 "terraform_labels"
             ],
@@ -36639,10 +36446,6 @@
                 "terraform_labels"
             ],
             "google_network_security_server_tls_policy": [
-                "effective_labels",
-                "terraform_labels"
-            ],
-            "google_network_services_authz_extension": [
                 "effective_labels",
                 "terraform_labels"
             ],
@@ -37844,14 +37647,11 @@
             "gcp:networksecurity/addressGroupIamMember:AddressGroupIamMember": 0,
             "gcp:networksecurity/addressGroupIamPolicy:AddressGroupIamPolicy": 0,
             "gcp:networksecurity/authorizationPolicy:AuthorizationPolicy": 0,
-            "gcp:networksecurity/authzPolicy:AuthzPolicy": 0,
             "gcp:networksecurity/clientTlsPolicy:ClientTlsPolicy": 0,
             "gcp:networksecurity/firewallEndpoint:FirewallEndpoint": 0,
             "gcp:networksecurity/firewallEndpointAssociation:FirewallEndpointAssociation": 0,
             "gcp:networksecurity/gatewaySecurityPolicy:GatewaySecurityPolicy": 0,
             "gcp:networksecurity/gatewaySecurityPolicyRule:GatewaySecurityPolicyRule": 0,
-            "gcp:networksecurity/interceptDeployment:InterceptDeployment": 0,
-            "gcp:networksecurity/interceptDeploymentGroup:InterceptDeploymentGroup": 0,
             "gcp:networksecurity/mirroringDeployment:MirroringDeployment": 0,
             "gcp:networksecurity/mirroringDeploymentGroup:MirroringDeploymentGroup": 0,
             "gcp:networksecurity/mirroringEndpointGroup:MirroringEndpointGroup": 0,
@@ -37861,7 +37661,6 @@
             "gcp:networksecurity/serverTlsPolicy:ServerTlsPolicy": 0,
             "gcp:networksecurity/tlsInspectionPolicy:TlsInspectionPolicy": 0,
             "gcp:networksecurity/urlList:UrlList": 0,
-            "gcp:networkservices/authzExtension:AuthzExtension": 0,
             "gcp:networkservices/edgeCacheKeyset:EdgeCacheKeyset": 0,
             "gcp:networkservices/edgeCacheOrigin:EdgeCacheOrigin": 0,
             "gcp:networkservices/edgeCacheService:EdgeCacheService": 0,

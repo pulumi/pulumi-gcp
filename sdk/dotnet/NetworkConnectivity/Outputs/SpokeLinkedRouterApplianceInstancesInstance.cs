@@ -16,17 +16,17 @@ namespace Pulumi.Gcp.NetworkConnectivity.Outputs
         /// <summary>
         /// The IP address on the VM to use for peering.
         /// </summary>
-        public readonly string IpAddress;
+        public readonly string? IpAddress;
         /// <summary>
         /// The URI of the virtual machine resource
         /// </summary>
-        public readonly string VirtualMachine;
+        public readonly string? VirtualMachine;
 
         [OutputConstructor]
         private SpokeLinkedRouterApplianceInstancesInstance(
-            string ipAddress,
+            string? ipAddress,
 
-            string virtualMachine)
+            string? virtualMachine)
         {
             IpAddress = ipAddress;
             VirtualMachine = virtualMachine;

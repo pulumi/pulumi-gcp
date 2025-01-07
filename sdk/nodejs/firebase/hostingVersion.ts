@@ -35,60 +35,6 @@ import * as utilities from "../utilities";
  *     message: "Redirect to Google",
  * });
  * ```
- * ### Firebasehosting Version Headers
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const _default = new gcp.firebase.HostingSite("default", {
- *     project: "my-project-name",
- *     siteId: "site-id",
- * });
- * const defaultHostingVersion = new gcp.firebase.HostingVersion("default", {
- *     siteId: _default.siteId,
- *     config: {
- *         headers: [{
- *             glob: "/headers/**",
- *             headers: {
- *                 "my-header": "my-value",
- *             },
- *         }],
- *     },
- * });
- * const defaultHostingRelease = new gcp.firebase.HostingRelease("default", {
- *     siteId: _default.siteId,
- *     versionName: defaultHostingVersion.name,
- *     message: "With custom headers",
- * });
- * ```
- * ### Firebasehosting Version Headers Regex
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const _default = new gcp.firebase.HostingSite("default", {
- *     project: "my-project-name",
- *     siteId: "site-id",
- * });
- * const defaultHostingVersion = new gcp.firebase.HostingVersion("default", {
- *     siteId: _default.siteId,
- *     config: {
- *         headers: [{
- *             regex: "^~/headers$",
- *             headers: {
- *                 "my-header": "my-value",
- *             },
- *         }],
- *     },
- * });
- * const defaultHostingRelease = new gcp.firebase.HostingRelease("default", {
- *     siteId: _default.siteId,
- *     versionName: defaultHostingVersion.name,
- *     message: "With custom headers",
- * });
- * ```
  * ### Firebasehosting Version Path
  *
  * ```typescript

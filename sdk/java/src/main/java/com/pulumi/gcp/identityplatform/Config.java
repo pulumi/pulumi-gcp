@@ -132,7 +132,7 @@ import javax.annotation.Nullable;
  *             .quota(ConfigQuotaArgs.builder()
  *                 .signUpQuotaConfig(ConfigQuotaSignUpQuotaConfigArgs.builder()
  *                     .quota(1000)
- *                     .startTime("2014-10-02T15:01:23Z")
+ *                     .startTime("")
  *                     .quotaDuration("7200s")
  *                     .build())
  *                 .build())

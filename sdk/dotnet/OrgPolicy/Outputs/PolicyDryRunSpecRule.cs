@@ -31,10 +31,6 @@ namespace Pulumi.Gcp.OrgPolicy.Outputs
         /// </summary>
         public readonly string? Enforce;
         /// <summary>
-        /// Optional. Required for Managed Constraints if parameters defined in constraints. Pass parameter values when policy enforcement is enabled. Ensure that parameter value types match those defined in the constraint definition. For example: { \"allowedLocations\" : [\"us-east1\", \"us-west1\"], \"allowAll\" : true }
-        /// </summary>
-        public readonly string? Parameters;
-        /// <summary>
         /// List of values to be used for this policy rule. This field can be set only in policies for list constraints.
         /// Structure is documented below.
         /// </summary>
@@ -50,15 +46,12 @@ namespace Pulumi.Gcp.OrgPolicy.Outputs
 
             string? enforce,
 
-            string? parameters,
-
             Outputs.PolicyDryRunSpecRuleValues? values)
         {
             AllowAll = allowAll;
             Condition = condition;
             DenyAll = denyAll;
             Enforce = enforce;
-            Parameters = parameters;
             Values = values;
         }
     }

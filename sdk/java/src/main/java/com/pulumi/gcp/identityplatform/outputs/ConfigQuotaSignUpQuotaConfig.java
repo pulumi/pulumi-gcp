@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ConfigQuotaSignUpQuotaConfig {
     /**
-     * @return A sign up APIs quota that customers can override temporarily. Value can be in between 1 and 1000.
+     * @return A sign up APIs quota that customers can override temporarily.
      * 
      */
     private @Nullable Integer quota;
@@ -30,7 +30,7 @@ public final class ConfigQuotaSignUpQuotaConfig {
 
     private ConfigQuotaSignUpQuotaConfig() {}
     /**
-     * @return A sign up APIs quota that customers can override temporarily. Value can be in between 1 and 1000.
+     * @return A sign up APIs quota that customers can override temporarily.
      * 
      */
     public Optional<Integer> quota() {

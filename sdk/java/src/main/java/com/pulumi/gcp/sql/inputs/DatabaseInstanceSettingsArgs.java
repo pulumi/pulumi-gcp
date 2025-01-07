@@ -111,14 +111,14 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
     }
 
     /**
-     * Control the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections, can be `REQUIRED` or `NOT_REQUIRED`. If enabled, all the direct connections are rejected.
+     * Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
      * 
      */
     @Import(name="connectorEnforcement")
     private @Nullable Output<String> connectorEnforcement;
 
     /**
-     * @return Control the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections, can be `REQUIRED` or `NOT_REQUIRED`. If enabled, all the direct connections are rejected.
+     * @return Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
      * 
      */
     public Optional<Output<String>> connectorEnforcement() {
@@ -568,7 +568,7 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param connectorEnforcement Control the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections, can be `REQUIRED` or `NOT_REQUIRED`. If enabled, all the direct connections are rejected.
+         * @param connectorEnforcement Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
          * 
          * @return builder
          * 
@@ -579,7 +579,7 @@ public final class DatabaseInstanceSettingsArgs extends com.pulumi.resources.Res
         }
 
         /**
-         * @param connectorEnforcement Control the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections, can be `REQUIRED` or `NOT_REQUIRED`. If enabled, all the direct connections are rejected.
+         * @param connectorEnforcement Enables the enforcement of Cloud SQL Auth Proxy or Cloud SQL connectors for all the connections. If enabled, all the direct connections are rejected.
          * 
          * @return builder
          * 

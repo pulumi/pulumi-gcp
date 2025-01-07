@@ -80,7 +80,6 @@ import (
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/firebase"
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/projects"
-//	"github.com/pulumi/pulumi-time/sdk/go/time"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
@@ -99,35 +98,16 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			firebase, err := projects.NewService(ctx, "firebase", &projects.ServiceArgs{
-//				Project:          _default.ProjectId,
-//				Service:          pulumi.String("firebase.googleapis.com"),
-//				DisableOnDestroy: pulumi.Bool(false),
-//			})
-//			if err != nil {
-//				return err
-//			}
 //			defaultProject, err := firebase.NewProject(ctx, "default", &firebase.ProjectArgs{
 //				Project: _default.ProjectId,
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				firebase,
-//			}))
+//			})
 //			if err != nil {
 //				return err
 //			}
 //			firebaseDatabase, err := projects.NewService(ctx, "firebase_database", &projects.ServiceArgs{
-//				Project:          defaultProject.Project,
-//				Service:          pulumi.String("firebasedatabase.googleapis.com"),
-//				DisableOnDestroy: pulumi.Bool(false),
+//				Project: defaultProject.Project,
+//				Service: pulumi.String("firebasedatabase.googleapis.com"),
 //			})
-//			if err != nil {
-//				return err
-//			}
-//			wait60Seconds, err := time.NewSleep(ctx, "wait_60_seconds", &time.SleepArgs{
-//				CreateDuration: "60s",
-//			}, pulumi.DependsOn([]pulumi.Resource{
-//				firebaseDatabase,
-//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -137,7 +117,7 @@ import (
 //				InstanceId: pulumi.String("rtdb-project-default-rtdb"),
 //				Type:       pulumi.String("DEFAULT_DATABASE"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
-//				wait60Seconds,
+//				firebaseDatabase,
 //			}))
 //			if err != nil {
 //				return err

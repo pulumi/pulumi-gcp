@@ -1704,7 +1704,7 @@ func (o ConfigMultiTenantPtrOutput) DefaultTenantLocation() pulumi.StringPtrOutp
 }
 
 type ConfigQuota struct {
-	// Quota for the Signup endpoint, if overwritten. Signup quota is measured in sign ups per project per hour per IP. None of quota, startTime, or quotaDuration can be skipped.
+	// Quota for the Signup endpoint, if overwritten. Signup quota is measured in sign ups per project per hour per IP.
 	// Structure is documented below.
 	SignUpQuotaConfig *ConfigQuotaSignUpQuotaConfig `pulumi:"signUpQuotaConfig"`
 }
@@ -1721,7 +1721,7 @@ type ConfigQuotaInput interface {
 }
 
 type ConfigQuotaArgs struct {
-	// Quota for the Signup endpoint, if overwritten. Signup quota is measured in sign ups per project per hour per IP. None of quota, startTime, or quotaDuration can be skipped.
+	// Quota for the Signup endpoint, if overwritten. Signup quota is measured in sign ups per project per hour per IP.
 	// Structure is documented below.
 	SignUpQuotaConfig ConfigQuotaSignUpQuotaConfigPtrInput `pulumi:"signUpQuotaConfig"`
 }
@@ -1803,7 +1803,7 @@ func (o ConfigQuotaOutput) ToConfigQuotaPtrOutputWithContext(ctx context.Context
 	}).(ConfigQuotaPtrOutput)
 }
 
-// Quota for the Signup endpoint, if overwritten. Signup quota is measured in sign ups per project per hour per IP. None of quota, startTime, or quotaDuration can be skipped.
+// Quota for the Signup endpoint, if overwritten. Signup quota is measured in sign ups per project per hour per IP.
 // Structure is documented below.
 func (o ConfigQuotaOutput) SignUpQuotaConfig() ConfigQuotaSignUpQuotaConfigPtrOutput {
 	return o.ApplyT(func(v ConfigQuota) *ConfigQuotaSignUpQuotaConfig { return v.SignUpQuotaConfig }).(ConfigQuotaSignUpQuotaConfigPtrOutput)
@@ -1833,7 +1833,7 @@ func (o ConfigQuotaPtrOutput) Elem() ConfigQuotaOutput {
 	}).(ConfigQuotaOutput)
 }
 
-// Quota for the Signup endpoint, if overwritten. Signup quota is measured in sign ups per project per hour per IP. None of quota, startTime, or quotaDuration can be skipped.
+// Quota for the Signup endpoint, if overwritten. Signup quota is measured in sign ups per project per hour per IP.
 // Structure is documented below.
 func (o ConfigQuotaPtrOutput) SignUpQuotaConfig() ConfigQuotaSignUpQuotaConfigPtrOutput {
 	return o.ApplyT(func(v *ConfigQuota) *ConfigQuotaSignUpQuotaConfig {
@@ -1845,7 +1845,7 @@ func (o ConfigQuotaPtrOutput) SignUpQuotaConfig() ConfigQuotaSignUpQuotaConfigPt
 }
 
 type ConfigQuotaSignUpQuotaConfig struct {
-	// A sign up APIs quota that customers can override temporarily. Value can be in between 1 and 1000.
+	// A sign up APIs quota that customers can override temporarily.
 	Quota *int `pulumi:"quota"`
 	// How long this quota will be active for. It is measurred in seconds, e.g., Example: "9.615s".
 	QuotaDuration *string `pulumi:"quotaDuration"`
@@ -1865,7 +1865,7 @@ type ConfigQuotaSignUpQuotaConfigInput interface {
 }
 
 type ConfigQuotaSignUpQuotaConfigArgs struct {
-	// A sign up APIs quota that customers can override temporarily. Value can be in between 1 and 1000.
+	// A sign up APIs quota that customers can override temporarily.
 	Quota pulumi.IntPtrInput `pulumi:"quota"`
 	// How long this quota will be active for. It is measurred in seconds, e.g., Example: "9.615s".
 	QuotaDuration pulumi.StringPtrInput `pulumi:"quotaDuration"`
@@ -1950,7 +1950,7 @@ func (o ConfigQuotaSignUpQuotaConfigOutput) ToConfigQuotaSignUpQuotaConfigPtrOut
 	}).(ConfigQuotaSignUpQuotaConfigPtrOutput)
 }
 
-// A sign up APIs quota that customers can override temporarily. Value can be in between 1 and 1000.
+// A sign up APIs quota that customers can override temporarily.
 func (o ConfigQuotaSignUpQuotaConfigOutput) Quota() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ConfigQuotaSignUpQuotaConfig) *int { return v.Quota }).(pulumi.IntPtrOutput)
 }
@@ -1989,7 +1989,7 @@ func (o ConfigQuotaSignUpQuotaConfigPtrOutput) Elem() ConfigQuotaSignUpQuotaConf
 	}).(ConfigQuotaSignUpQuotaConfigOutput)
 }
 
-// A sign up APIs quota that customers can override temporarily. Value can be in between 1 and 1000.
+// A sign up APIs quota that customers can override temporarily.
 func (o ConfigQuotaSignUpQuotaConfigPtrOutput) Quota() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ConfigQuotaSignUpQuotaConfig) *int {
 		if v == nil {

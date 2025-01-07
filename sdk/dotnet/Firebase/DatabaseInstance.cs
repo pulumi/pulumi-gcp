@@ -59,7 +59,6 @@ namespace Pulumi.Gcp.Firebase
     /// using System.Linq;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
-    /// using Time = Pulumi.Time;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
@@ -75,40 +74,15 @@ namespace Pulumi.Gcp.Firebase
     ///         },
     ///     });
     /// 
-    ///     var firebase = new Gcp.Projects.Service("firebase", new()
-    ///     {
-    ///         Project = @default.ProjectId,
-    ///         ServiceName = "firebase.googleapis.com",
-    ///         DisableOnDestroy = false,
-    ///     });
-    /// 
     ///     var defaultProject = new Gcp.Firebase.Project("default", new()
     ///     {
     ///         ProjectID = @default.ProjectId,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn =
-    ///         {
-    ///             firebase,
-    ///         },
     ///     });
     /// 
     ///     var firebaseDatabase = new Gcp.Projects.Service("firebase_database", new()
     ///     {
     ///         Project = defaultProject.ProjectID,
     ///         ServiceName = "firebasedatabase.googleapis.com",
-    ///         DisableOnDestroy = false,
-    ///     });
-    /// 
-    ///     var wait60Seconds = new Time.Index.Sleep("wait_60_seconds", new()
-    ///     {
-    ///         CreateDuration = "60s",
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn =
-    ///         {
-    ///             firebaseDatabase,
-    ///         },
     ///     });
     /// 
     ///     var defaultDatabaseInstance = new Gcp.Firebase.DatabaseInstance("default", new()
@@ -121,7 +95,7 @@ namespace Pulumi.Gcp.Firebase
     ///     {
     ///         DependsOn =
     ///         {
-    ///             wait60Seconds,
+    ///             firebaseDatabase,
     ///         },
     ///     });
     /// 

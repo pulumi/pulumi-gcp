@@ -15,14 +15,14 @@ namespace Pulumi.Gcp.NetworkConnectivity.Inputs
         /// <summary>
         /// The IP address on the VM to use for peering.
         /// </summary>
-        [Input("ipAddress", required: true)]
-        public Input<string> IpAddress { get; set; } = null!;
+        [Input("ipAddress")]
+        public Input<string>? IpAddress { get; set; }
 
         /// <summary>
         /// The URI of the virtual machine resource
         /// </summary>
-        [Input("virtualMachine", required: true)]
-        public Input<string> VirtualMachine { get; set; } = null!;
+        [Input("virtualMachine")]
+        public Input<string>? VirtualMachine { get; set; }
 
         public SpokeLinkedRouterApplianceInstancesInstanceArgs()
         {

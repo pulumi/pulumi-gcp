@@ -5,9 +5,10 @@ package com.pulumi.gcp.networkconnectivity.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import java.lang.String;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class SpokeLinkedRouterApplianceInstancesInstanceArgs extends com.pulumi.resources.ResourceArgs {
@@ -18,30 +19,30 @@ public final class SpokeLinkedRouterApplianceInstancesInstanceArgs extends com.p
      * The IP address on the VM to use for peering.
      * 
      */
-    @Import(name="ipAddress", required=true)
-    private Output<String> ipAddress;
+    @Import(name="ipAddress")
+    private @Nullable Output<String> ipAddress;
 
     /**
      * @return The IP address on the VM to use for peering.
      * 
      */
-    public Output<String> ipAddress() {
-        return this.ipAddress;
+    public Optional<Output<String>> ipAddress() {
+        return Optional.ofNullable(this.ipAddress);
     }
 
     /**
      * The URI of the virtual machine resource
      * 
      */
-    @Import(name="virtualMachine", required=true)
-    private Output<String> virtualMachine;
+    @Import(name="virtualMachine")
+    private @Nullable Output<String> virtualMachine;
 
     /**
      * @return The URI of the virtual machine resource
      * 
      */
-    public Output<String> virtualMachine() {
-        return this.virtualMachine;
+    public Optional<Output<String>> virtualMachine() {
+        return Optional.ofNullable(this.virtualMachine);
     }
 
     private SpokeLinkedRouterApplianceInstancesInstanceArgs() {}
@@ -75,7 +76,7 @@ public final class SpokeLinkedRouterApplianceInstancesInstanceArgs extends com.p
          * @return builder
          * 
          */
-        public Builder ipAddress(Output<String> ipAddress) {
+        public Builder ipAddress(@Nullable Output<String> ipAddress) {
             $.ipAddress = ipAddress;
             return this;
         }
@@ -96,7 +97,7 @@ public final class SpokeLinkedRouterApplianceInstancesInstanceArgs extends com.p
          * @return builder
          * 
          */
-        public Builder virtualMachine(Output<String> virtualMachine) {
+        public Builder virtualMachine(@Nullable Output<String> virtualMachine) {
             $.virtualMachine = virtualMachine;
             return this;
         }
@@ -112,12 +113,6 @@ public final class SpokeLinkedRouterApplianceInstancesInstanceArgs extends com.p
         }
 
         public SpokeLinkedRouterApplianceInstancesInstanceArgs build() {
-            if ($.ipAddress == null) {
-                throw new MissingRequiredPropertyException("SpokeLinkedRouterApplianceInstancesInstanceArgs", "ipAddress");
-            }
-            if ($.virtualMachine == null) {
-                throw new MissingRequiredPropertyException("SpokeLinkedRouterApplianceInstancesInstanceArgs", "virtualMachine");
-            }
             return $;
         }
     }
