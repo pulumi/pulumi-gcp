@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my-network = gcp.compute.getNetwork({
+ * const my_network = gcp.compute.getNetwork({
  *     name: "default-us-east1",
  * });
  * ```
@@ -97,7 +97,7 @@ export interface GetNetworkResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my-network = gcp.compute.getNetwork({
+ * const my_network = gcp.compute.getNetwork({
  *     name: "default-us-east1",
  * });
  * ```
