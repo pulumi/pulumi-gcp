@@ -80,6 +80,29 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Parallelstore Instance deployment type.
+     * Possible values:
+     * DEPLOYMENT_TYPE_UNSPECIFIED
+     * SCRATCH
+     * PERSISTENT
+     * 
+     */
+    @Import(name="deploymentType")
+    private @Nullable Output<String> deploymentType;
+
+    /**
+     * @return Parallelstore Instance deployment type.
+     * Possible values:
+     * DEPLOYMENT_TYPE_UNSPECIFIED
+     * SCRATCH
+     * PERSISTENT
+     * 
+     */
+    public Optional<Output<String>> deploymentType() {
+        return Optional.ofNullable(this.deploymentType);
+    }
+
+    /**
      * The description of the instance. 2048 characters or less.
      * 
      */
@@ -427,6 +450,7 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
         this.capacityGib = $.capacityGib;
         this.createTime = $.createTime;
         this.daosVersion = $.daosVersion;
+        this.deploymentType = $.deploymentType;
         this.description = $.description;
         this.directoryStripeLevel = $.directoryStripeLevel;
         this.effectiveLabels = $.effectiveLabels;
@@ -557,6 +581,35 @@ public final class InstanceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder daosVersion(String daosVersion) {
             return daosVersion(Output.of(daosVersion));
+        }
+
+        /**
+         * @param deploymentType Parallelstore Instance deployment type.
+         * Possible values:
+         * DEPLOYMENT_TYPE_UNSPECIFIED
+         * SCRATCH
+         * PERSISTENT
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deploymentType(@Nullable Output<String> deploymentType) {
+            $.deploymentType = deploymentType;
+            return this;
+        }
+
+        /**
+         * @param deploymentType Parallelstore Instance deployment type.
+         * Possible values:
+         * DEPLOYMENT_TYPE_UNSPECIFIED
+         * SCRATCH
+         * PERSISTENT
+         * 
+         * @return builder
+         * 
+         */
+        public Builder deploymentType(String deploymentType) {
+            return deploymentType(Output.of(deploymentType));
         }
 
         /**

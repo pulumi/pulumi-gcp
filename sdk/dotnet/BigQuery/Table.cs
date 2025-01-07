@@ -204,6 +204,12 @@ namespace Pulumi.Gcp.BigQuery
         public Output<int> ExpirationTime { get; private set; } = null!;
 
         /// <summary>
+        /// Options defining open source compatible table.
+        /// </summary>
+        [Output("externalCatalogTableOptions")]
+        public Output<Outputs.TableExternalCatalogTableOptions?> ExternalCatalogTableOptions { get; private set; } = null!;
+
+        /// <summary>
         /// Describes the data format,
         /// location, and other properties of a table stored outside of BigQuery.
         /// By defining these properties, the data source can then be queried as
@@ -475,6 +481,12 @@ namespace Pulumi.Gcp.BigQuery
         public Input<int>? ExpirationTime { get; set; }
 
         /// <summary>
+        /// Options defining open source compatible table.
+        /// </summary>
+        [Input("externalCatalogTableOptions")]
+        public Input<Inputs.TableExternalCatalogTableOptionsArgs>? ExternalCatalogTableOptions { get; set; }
+
+        /// <summary>
         /// Describes the data format,
         /// location, and other properties of a table stored outside of BigQuery.
         /// By defining these properties, the data source can then be queried as
@@ -708,6 +720,12 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Input("expirationTime")]
         public Input<int>? ExpirationTime { get; set; }
+
+        /// <summary>
+        /// Options defining open source compatible table.
+        /// </summary>
+        [Input("externalCatalogTableOptions")]
+        public Input<Inputs.TableExternalCatalogTableOptionsGetArgs>? ExternalCatalogTableOptions { get; set; }
 
         /// <summary>
         /// Describes the data format,

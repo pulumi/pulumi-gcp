@@ -22,7 +22,7 @@ namespace Pulumi.Gcp.BackupDisasterRecovery.Outputs
         /// </summary>
         public readonly string GcpResourcename;
         /// <summary>
-        /// Location of the resource: &lt;region&gt;/&lt;zone&gt;/"global"/"unspecified".
+        /// The location in which the Data Source belongs.
         /// </summary>
         public readonly string Location;
         /// <summary>

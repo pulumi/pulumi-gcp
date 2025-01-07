@@ -4,6 +4,7 @@
 package com.pulumi.gcp.bigquery.outputs;
 
 import com.pulumi.core.annotations.CustomType;
+import com.pulumi.gcp.bigquery.outputs.DatasetAccessCondition;
 import com.pulumi.gcp.bigquery.outputs.DatasetAccessDataset;
 import com.pulumi.gcp.bigquery.outputs.DatasetAccessRoutine;
 import com.pulumi.gcp.bigquery.outputs.DatasetAccessView;
@@ -14,6 +15,13 @@ import javax.annotation.Nullable;
 
 @CustomType
 public final class DatasetAccess {
+    /**
+     * @return Condition for the binding. If CEL expression in this field is true, this
+     * access binding will be considered.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable DatasetAccessCondition condition;
     /**
      * @return Grants all resources of particular types in a particular dataset read access to the current dataset.
      * Structure is documented below.
@@ -83,6 +91,15 @@ public final class DatasetAccess {
     private @Nullable DatasetAccessView view;
 
     private DatasetAccess() {}
+    /**
+     * @return Condition for the binding. If CEL expression in this field is true, this
+     * access binding will be considered.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<DatasetAccessCondition> condition() {
+        return Optional.ofNullable(this.condition);
+    }
     /**
      * @return Grants all resources of particular types in a particular dataset read access to the current dataset.
      * Structure is documented below.
@@ -178,6 +195,7 @@ public final class DatasetAccess {
     }
     @CustomType.Builder
     public static final class Builder {
+        private @Nullable DatasetAccessCondition condition;
         private @Nullable DatasetAccessDataset dataset;
         private @Nullable String domain;
         private @Nullable String groupByEmail;
@@ -190,6 +208,7 @@ public final class DatasetAccess {
         public Builder() {}
         public Builder(DatasetAccess defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.condition = defaults.condition;
     	      this.dataset = defaults.dataset;
     	      this.domain = defaults.domain;
     	      this.groupByEmail = defaults.groupByEmail;
@@ -201,6 +220,12 @@ public final class DatasetAccess {
     	      this.view = defaults.view;
         }
 
+        @CustomType.Setter
+        public Builder condition(@Nullable DatasetAccessCondition condition) {
+
+            this.condition = condition;
+            return this;
+        }
         @CustomType.Setter
         public Builder dataset(@Nullable DatasetAccessDataset dataset) {
 
@@ -257,6 +282,7 @@ public final class DatasetAccess {
         }
         public DatasetAccess build() {
             final var _resultValue = new DatasetAccess();
+            _resultValue.condition = condition;
             _resultValue.dataset = dataset;
             _resultValue.domain = domain;
             _resultValue.groupByEmail = groupByEmail;

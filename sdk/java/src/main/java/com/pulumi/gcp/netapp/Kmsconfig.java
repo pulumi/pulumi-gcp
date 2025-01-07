@@ -39,10 +39,6 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.kms.KeyRing;
- * import com.pulumi.gcp.kms.KeyRingArgs;
- * import com.pulumi.gcp.kms.CryptoKey;
- * import com.pulumi.gcp.kms.CryptoKeyArgs;
  * import com.pulumi.gcp.netapp.Kmsconfig;
  * import com.pulumi.gcp.netapp.KmsconfigArgs;
  * import java.util.List;
@@ -58,20 +54,10 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var keyring = new KeyRing("keyring", KeyRingArgs.builder()
- *             .name("key-ring")
- *             .location("us-central1")
- *             .build());
- * 
- *         var cryptoKey = new CryptoKey("cryptoKey", CryptoKeyArgs.builder()
- *             .name("crypto-name")
- *             .keyRing(keyring.id())
- *             .build());
- * 
  *         var kmsConfig = new Kmsconfig("kmsConfig", KmsconfigArgs.builder()
  *             .name("kms-test")
  *             .description("this is a test description")
- *             .cryptoKeyName(cryptoKey.id())
+ *             .cryptoKeyName("crypto-name")
  *             .location("us-central1")
  *             .build());
  * 

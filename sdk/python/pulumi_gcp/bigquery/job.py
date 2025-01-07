@@ -687,15 +687,9 @@ class Job(pulumi.CustomResource):
             friendly_name="test",
             description="This is a test description",
             location="US")
-        key_ring = gcp.kms.KeyRing("key_ring",
-            name="example-keyring",
-            location="global")
-        crypto_key = gcp.kms.CryptoKey("crypto_key",
-            name="example-key",
-            key_ring=key_ring.id)
         project = gcp.organizations.get_project(project_id="my-project-name")
         encrypt_role = gcp.kms.CryptoKeyIAMMember("encrypt_role",
-            crypto_key_id=crypto_key.id,
+            crypto_key_id="example-key",
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:bq-{project.number}@bigquery-encryption.iam.gserviceaccount.com")
         dest = gcp.bigquery.Table("dest",
@@ -721,7 +715,7 @@ class Job(pulumi.CustomResource):
         ]
         \"\"\",
             encryption_configuration={
-                "kms_key_name": crypto_key.id,
+                "kms_key_name": "example-key",
             },
             opts = pulumi.ResourceOptions(depends_on=[encrypt_role]))
         job = gcp.bigquery.Job("job",
@@ -745,7 +739,7 @@ class Job(pulumi.CustomResource):
                     "table_id": dest.table_id,
                 },
                 "destination_encryption_configuration": {
-                    "kms_key_name": crypto_key.id,
+                    "kms_key_name": "example-key",
                 },
             },
             opts = pulumi.ResourceOptions(depends_on=[encrypt_role]))
@@ -1123,15 +1117,9 @@ class Job(pulumi.CustomResource):
             friendly_name="test",
             description="This is a test description",
             location="US")
-        key_ring = gcp.kms.KeyRing("key_ring",
-            name="example-keyring",
-            location="global")
-        crypto_key = gcp.kms.CryptoKey("crypto_key",
-            name="example-key",
-            key_ring=key_ring.id)
         project = gcp.organizations.get_project(project_id="my-project-name")
         encrypt_role = gcp.kms.CryptoKeyIAMMember("encrypt_role",
-            crypto_key_id=crypto_key.id,
+            crypto_key_id="example-key",
             role="roles/cloudkms.cryptoKeyEncrypterDecrypter",
             member=f"serviceAccount:bq-{project.number}@bigquery-encryption.iam.gserviceaccount.com")
         dest = gcp.bigquery.Table("dest",
@@ -1157,7 +1145,7 @@ class Job(pulumi.CustomResource):
         ]
         \"\"\",
             encryption_configuration={
-                "kms_key_name": crypto_key.id,
+                "kms_key_name": "example-key",
             },
             opts = pulumi.ResourceOptions(depends_on=[encrypt_role]))
         job = gcp.bigquery.Job("job",
@@ -1181,7 +1169,7 @@ class Job(pulumi.CustomResource):
                     "table_id": dest.table_id,
                 },
                 "destination_encryption_configuration": {
-                    "kms_key_name": crypto_key.id,
+                    "kms_key_name": "example-key",
                 },
             },
             opts = pulumi.ResourceOptions(depends_on=[encrypt_role]))

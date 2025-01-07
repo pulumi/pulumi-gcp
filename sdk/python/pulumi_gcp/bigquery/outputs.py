@@ -39,6 +39,7 @@ __all__ = [
     'DatasetAccess',
     'DatasetAccessAuthorizedDataset',
     'DatasetAccessAuthorizedDatasetDataset',
+    'DatasetAccessCondition',
     'DatasetAccessDataset',
     'DatasetAccessDatasetDataset',
     'DatasetAccessRoutine',
@@ -77,6 +78,9 @@ __all__ = [
     'RoutineSparkOptions',
     'TableBiglakeConfiguration',
     'TableEncryptionConfiguration',
+    'TableExternalCatalogTableOptions',
+    'TableExternalCatalogTableOptionsStorageDescriptor',
+    'TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo',
     'TableExternalDataConfiguration',
     'TableExternalDataConfigurationAvroOptions',
     'TableExternalDataConfigurationBigtableOptions',
@@ -99,6 +103,7 @@ __all__ = [
     'TableTimePartitioning',
     'TableView',
     'GetDatasetAccessResult',
+    'GetDatasetAccessConditionResult',
     'GetDatasetAccessDatasetResult',
     'GetDatasetAccessDatasetDatasetResult',
     'GetDatasetAccessRoutineResult',
@@ -1174,6 +1179,7 @@ class DatasetAccess(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
+                 condition: Optional['outputs.DatasetAccessCondition'] = None,
                  dataset: Optional['outputs.DatasetAccessDataset'] = None,
                  domain: Optional[str] = None,
                  group_by_email: Optional[str] = None,
@@ -1184,6 +1190,9 @@ class DatasetAccess(dict):
                  user_by_email: Optional[str] = None,
                  view: Optional['outputs.DatasetAccessView'] = None):
         """
+        :param 'DatasetAccessConditionArgs' condition: Condition for the binding. If CEL expression in this field is true, this
+               access binding will be considered.
+               Structure is documented below.
         :param 'DatasetAccessDatasetArgs' dataset: Grants all resources of particular types in a particular dataset read access to the current dataset.
                Structure is documented below.
         :param str domain: A domain to grant access to. Any users signed in with the
@@ -1216,6 +1225,8 @@ class DatasetAccess(dict):
                needs to be granted again via an update operation.
                Structure is documented below.
         """
+        if condition is not None:
+            pulumi.set(__self__, "condition", condition)
         if dataset is not None:
             pulumi.set(__self__, "dataset", dataset)
         if domain is not None:
@@ -1234,6 +1245,16 @@ class DatasetAccess(dict):
             pulumi.set(__self__, "user_by_email", user_by_email)
         if view is not None:
             pulumi.set(__self__, "view", view)
+
+    @property
+    @pulumi.getter
+    def condition(self) -> Optional['outputs.DatasetAccessCondition']:
+        """
+        Condition for the binding. If CEL expression in this field is true, this
+        access binding will be considered.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "condition")
 
     @property
     @pulumi.getter
@@ -1426,6 +1447,66 @@ class DatasetAccessAuthorizedDatasetDataset(dict):
         The ID of the project containing this table.
         """
         return pulumi.get(self, "project_id")
+
+
+@pulumi.output_type
+class DatasetAccessCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 description: Optional[str] = None,
+                 location: Optional[str] = None,
+                 title: Optional[str] = None):
+        """
+        :param str expression: Textual representation of an expression in Common Expression Language syntax.
+        :param str description: Description of the expression. This is a longer text which describes the expression,
+               e.g. when hovered over it in a UI.
+        :param str location: String indicating the location of the expression for error reporting, e.g. a file
+               name and a position in the file.
+        :param str title: Title for the expression, i.e. a short string describing its purpose.
+               This can be used e.g. in UIs which allow to enter the expression.
+        """
+        pulumi.set(__self__, "expression", expression)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if title is not None:
+            pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        """
+        Description of the expression. This is a longer text which describes the expression,
+        e.g. when hovered over it in a UI.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[str]:
+        """
+        String indicating the location of the expression for error reporting, e.g. a file
+        name and a position in the file.
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
+    def title(self) -> Optional[str]:
+        """
+        Title for the expression, i.e. a short string describing its purpose.
+        This can be used e.g. in UIs which allow to enter the expression.
+        """
+        return pulumi.get(self, "title")
 
 
 @pulumi.output_type
@@ -4465,6 +4546,205 @@ class TableEncryptionConfiguration(dict):
 
 
 @pulumi.output_type
+class TableExternalCatalogTableOptions(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "connectionId":
+            suggest = "connection_id"
+        elif key == "storageDescriptor":
+            suggest = "storage_descriptor"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TableExternalCatalogTableOptions. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TableExternalCatalogTableOptions.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TableExternalCatalogTableOptions.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 connection_id: Optional[str] = None,
+                 parameters: Optional[Mapping[str, str]] = None,
+                 storage_descriptor: Optional['outputs.TableExternalCatalogTableOptionsStorageDescriptor'] = None):
+        """
+        :param str connection_id: The connection specifying the credentials to be used to read external storage, such as Azure Blob, Cloud Storage, or S3. The connection is needed to read the open source table from BigQuery Engine. The connection_id can have the form <project_id>.<location_id>.<connection_id> or projects/<project_id>/locations/<location_id>/connections/<connection_id>.
+        :param Mapping[str, str] parameters: A map of key value pairs defining the parameters and properties of the open source table. Corresponds with hive meta store table parameters. Maximum size of 4Mib.
+        :param 'TableExternalCatalogTableOptionsStorageDescriptorArgs' storage_descriptor: A storage descriptor containing information about the physical storage of this table.
+        """
+        if connection_id is not None:
+            pulumi.set(__self__, "connection_id", connection_id)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
+        if storage_descriptor is not None:
+            pulumi.set(__self__, "storage_descriptor", storage_descriptor)
+
+    @property
+    @pulumi.getter(name="connectionId")
+    def connection_id(self) -> Optional[str]:
+        """
+        The connection specifying the credentials to be used to read external storage, such as Azure Blob, Cloud Storage, or S3. The connection is needed to read the open source table from BigQuery Engine. The connection_id can have the form <project_id>.<location_id>.<connection_id> or projects/<project_id>/locations/<location_id>/connections/<connection_id>.
+        """
+        return pulumi.get(self, "connection_id")
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> Optional[Mapping[str, str]]:
+        """
+        A map of key value pairs defining the parameters and properties of the open source table. Corresponds with hive meta store table parameters. Maximum size of 4Mib.
+        """
+        return pulumi.get(self, "parameters")
+
+    @property
+    @pulumi.getter(name="storageDescriptor")
+    def storage_descriptor(self) -> Optional['outputs.TableExternalCatalogTableOptionsStorageDescriptor']:
+        """
+        A storage descriptor containing information about the physical storage of this table.
+        """
+        return pulumi.get(self, "storage_descriptor")
+
+
+@pulumi.output_type
+class TableExternalCatalogTableOptionsStorageDescriptor(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "inputFormat":
+            suggest = "input_format"
+        elif key == "locationUri":
+            suggest = "location_uri"
+        elif key == "outputFormat":
+            suggest = "output_format"
+        elif key == "serdeInfo":
+            suggest = "serde_info"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TableExternalCatalogTableOptionsStorageDescriptor. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TableExternalCatalogTableOptionsStorageDescriptor.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TableExternalCatalogTableOptionsStorageDescriptor.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 input_format: Optional[str] = None,
+                 location_uri: Optional[str] = None,
+                 output_format: Optional[str] = None,
+                 serde_info: Optional['outputs.TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo'] = None):
+        """
+        :param str input_format: Specifies the fully qualified class name of the InputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcInputFormat"). The maximum length is 128 characters.
+        :param str location_uri: The physical location of the table (e.g. 'gs://spark-dataproc-data/pangea-data/case_sensitive/' or 'gs://spark-dataproc-data/pangea-data/*'). The maximum length is 2056 bytes.
+        :param str output_format: Specifies the fully qualified class name of the OutputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat"). The maximum length is 128 characters.
+        :param 'TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoArgs' serde_info: Serializer and deserializer information.
+        """
+        if input_format is not None:
+            pulumi.set(__self__, "input_format", input_format)
+        if location_uri is not None:
+            pulumi.set(__self__, "location_uri", location_uri)
+        if output_format is not None:
+            pulumi.set(__self__, "output_format", output_format)
+        if serde_info is not None:
+            pulumi.set(__self__, "serde_info", serde_info)
+
+    @property
+    @pulumi.getter(name="inputFormat")
+    def input_format(self) -> Optional[str]:
+        """
+        Specifies the fully qualified class name of the InputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcInputFormat"). The maximum length is 128 characters.
+        """
+        return pulumi.get(self, "input_format")
+
+    @property
+    @pulumi.getter(name="locationUri")
+    def location_uri(self) -> Optional[str]:
+        """
+        The physical location of the table (e.g. 'gs://spark-dataproc-data/pangea-data/case_sensitive/' or 'gs://spark-dataproc-data/pangea-data/*'). The maximum length is 2056 bytes.
+        """
+        return pulumi.get(self, "location_uri")
+
+    @property
+    @pulumi.getter(name="outputFormat")
+    def output_format(self) -> Optional[str]:
+        """
+        Specifies the fully qualified class name of the OutputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat"). The maximum length is 128 characters.
+        """
+        return pulumi.get(self, "output_format")
+
+    @property
+    @pulumi.getter(name="serdeInfo")
+    def serde_info(self) -> Optional['outputs.TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo']:
+        """
+        Serializer and deserializer information.
+        """
+        return pulumi.get(self, "serde_info")
+
+
+@pulumi.output_type
+class TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "serializationLibrary":
+            suggest = "serialization_library"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 serialization_library: str,
+                 name: Optional[str] = None,
+                 parameters: Optional[Mapping[str, str]] = None):
+        """
+        :param str serialization_library: Specifies a fully-qualified class name of the serialization library that is responsible for the translation of data between table representation and the underlying low-level input and output format structures. The maximum length is 256 characters.
+        :param str name: Name of the SerDe. The maximum length is 256 characters.
+        :param Mapping[str, str] parameters: Key-value pairs that define the initialization parameters for the serialization library. Maximum size 10 Kib.
+        """
+        pulumi.set(__self__, "serialization_library", serialization_library)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if parameters is not None:
+            pulumi.set(__self__, "parameters", parameters)
+
+    @property
+    @pulumi.getter(name="serializationLibrary")
+    def serialization_library(self) -> str:
+        """
+        Specifies a fully-qualified class name of the serialization library that is responsible for the translation of data between table representation and the underlying low-level input and output format structures. The maximum length is 256 characters.
+        """
+        return pulumi.get(self, "serialization_library")
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        Name of the SerDe. The maximum length is 256 characters.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def parameters(self) -> Optional[Mapping[str, str]]:
+        """
+        Key-value pairs that define the initialization parameters for the serialization library. Maximum size 10 Kib.
+        """
+        return pulumi.get(self, "parameters")
+
+
+@pulumi.output_type
 class TableExternalDataConfiguration(dict):
     @staticmethod
     def __key_warning(key: str):
@@ -6131,6 +6411,7 @@ class TableView(dict):
 @pulumi.output_type
 class GetDatasetAccessResult(dict):
     def __init__(__self__, *,
+                 conditions: Sequence['outputs.GetDatasetAccessConditionResult'],
                  datasets: Sequence['outputs.GetDatasetAccessDatasetResult'],
                  domain: str,
                  group_by_email: str,
@@ -6141,6 +6422,8 @@ class GetDatasetAccessResult(dict):
                  user_by_email: str,
                  views: Sequence['outputs.GetDatasetAccessViewResult']):
         """
+        :param Sequence['GetDatasetAccessConditionArgs'] conditions: Condition for the binding. If CEL expression in this field is true, this
+               access binding will be considered.
         :param Sequence['GetDatasetAccessDatasetArgs'] datasets: Grants all resources of particular types in a particular dataset read access to the current dataset.
         :param str domain: A domain to grant access to. Any users signed in with the
                domain specified will be granted the specified access
@@ -6170,6 +6453,7 @@ class GetDatasetAccessResult(dict):
                set. If that view is updated by any user, access to the view
                needs to be granted again via an update operation.
         """
+        pulumi.set(__self__, "conditions", conditions)
         pulumi.set(__self__, "datasets", datasets)
         pulumi.set(__self__, "domain", domain)
         pulumi.set(__self__, "group_by_email", group_by_email)
@@ -6179,6 +6463,15 @@ class GetDatasetAccessResult(dict):
         pulumi.set(__self__, "special_group", special_group)
         pulumi.set(__self__, "user_by_email", user_by_email)
         pulumi.set(__self__, "views", views)
+
+    @property
+    @pulumi.getter
+    def conditions(self) -> Sequence['outputs.GetDatasetAccessConditionResult']:
+        """
+        Condition for the binding. If CEL expression in this field is true, this
+        access binding will be considered.
+        """
+        return pulumi.get(self, "conditions")
 
     @property
     @pulumi.getter
@@ -6270,6 +6563,63 @@ class GetDatasetAccessResult(dict):
         needs to be granted again via an update operation.
         """
         return pulumi.get(self, "views")
+
+
+@pulumi.output_type
+class GetDatasetAccessConditionResult(dict):
+    def __init__(__self__, *,
+                 description: str,
+                 expression: str,
+                 location: str,
+                 title: str):
+        """
+        :param str description: Description of the expression. This is a longer text which describes the expression,
+               e.g. when hovered over it in a UI.
+        :param str expression: Textual representation of an expression in Common Expression Language syntax.
+        :param str location: String indicating the location of the expression for error reporting, e.g. a file
+               name and a position in the file.
+        :param str title: Title for the expression, i.e. a short string describing its purpose.
+               This can be used e.g. in UIs which allow to enter the expression.
+        """
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "location", location)
+        pulumi.set(__self__, "title", title)
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        Description of the expression. This is a longer text which describes the expression,
+        e.g. when hovered over it in a UI.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def location(self) -> str:
+        """
+        String indicating the location of the expression for error reporting, e.g. a file
+        name and a position in the file.
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        """
+        Title for the expression, i.e. a short string describing its purpose.
+        This can be used e.g. in UIs which allow to enter the expression.
+        """
+        return pulumi.get(self, "title")
 
 
 @pulumi.output_type

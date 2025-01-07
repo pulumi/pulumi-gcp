@@ -19,12 +19,16 @@ public final class UsageExportBucketArgs extends com.pulumi.resources.ResourceAr
     /**
      * The bucket to store reports in.
      * 
+     * ***
+     * 
      */
     @Import(name="bucketName", required=true)
     private Output<String> bucketName;
 
     /**
      * @return The bucket to store reports in.
+     * 
+     * ***
      * 
      */
     public Output<String> bucketName() {
@@ -90,6 +94,8 @@ public final class UsageExportBucketArgs extends com.pulumi.resources.ResourceAr
         /**
          * @param bucketName The bucket to store reports in.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -100,6 +106,8 @@ public final class UsageExportBucketArgs extends com.pulumi.resources.ResourceAr
 
         /**
          * @param bucketName The bucket to store reports in.
+         * 
+         * ***
          * 
          * @return builder
          * 

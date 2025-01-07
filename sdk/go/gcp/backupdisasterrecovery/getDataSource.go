@@ -11,6 +11,36 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A Backup and DR Data Source.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/backupdisasterrecovery"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := backupdisasterrecovery.GetDataSource(ctx, &backupdisasterrecovery.GetDataSourceArgs{
+//				Location:      "us-central1",
+//				Project:       "project-test",
+//				DataSourceId:  "ds-test",
+//				BackupVaultId: "bv-test",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetDataSource(ctx *pulumi.Context, args *GetDataSourceArgs, opts ...pulumi.InvokeOption) (*GetDataSourceResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetDataSourceResult
@@ -23,10 +53,14 @@ func GetDataSource(ctx *pulumi.Context, args *GetDataSourceArgs, opts ...pulumi.
 
 // A collection of arguments for invoking getDataSource.
 type GetDataSourceArgs struct {
+	// The ID of the Backup Vault in which the Data Source belongs.
 	BackupVaultId string `pulumi:"backupVaultId"`
-	DataSourceId  string `pulumi:"dataSourceId"`
-	Location      string `pulumi:"location"`
-	Project       string `pulumi:"project"`
+	// The ID of the Data Source.
+	DataSourceId string `pulumi:"dataSourceId"`
+	// The location in which the Data Source belongs.
+	Location string `pulumi:"location"`
+	// The Google Cloud Project in which the Data Source belongs.
+	Project string `pulumi:"project"`
 }
 
 // A collection of values returned by getDataSource.
@@ -62,10 +96,14 @@ func GetDataSourceOutput(ctx *pulumi.Context, args GetDataSourceOutputArgs, opts
 
 // A collection of arguments for invoking getDataSource.
 type GetDataSourceOutputArgs struct {
+	// The ID of the Backup Vault in which the Data Source belongs.
 	BackupVaultId pulumi.StringInput `pulumi:"backupVaultId"`
-	DataSourceId  pulumi.StringInput `pulumi:"dataSourceId"`
-	Location      pulumi.StringInput `pulumi:"location"`
-	Project       pulumi.StringInput `pulumi:"project"`
+	// The ID of the Data Source.
+	DataSourceId pulumi.StringInput `pulumi:"dataSourceId"`
+	// The location in which the Data Source belongs.
+	Location pulumi.StringInput `pulumi:"location"`
+	// The Google Cloud Project in which the Data Source belongs.
+	Project pulumi.StringInput `pulumi:"project"`
 }
 
 func (GetDataSourceOutputArgs) ElementType() reflect.Type {

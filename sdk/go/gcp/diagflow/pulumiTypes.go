@@ -769,7 +769,7 @@ type CxAgentAdvancedSettingsSpeechSettings struct {
 	// Timeout before detecting no speech.
 	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
 	NoSpeechTimeout *string `pulumi:"noSpeechTimeout"`
-	// Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+	// Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
 	UseTimeoutBasedEndpointing *bool `pulumi:"useTimeoutBasedEndpointing"`
 }
 
@@ -793,7 +793,7 @@ type CxAgentAdvancedSettingsSpeechSettingsArgs struct {
 	// Timeout before detecting no speech.
 	// A duration in seconds with up to nine fractional digits, ending with 's'. Example: "3.5s".
 	NoSpeechTimeout pulumi.StringPtrInput `pulumi:"noSpeechTimeout"`
-	// Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+	// Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
 	UseTimeoutBasedEndpointing pulumi.BoolPtrInput `pulumi:"useTimeoutBasedEndpointing"`
 }
 
@@ -891,7 +891,7 @@ func (o CxAgentAdvancedSettingsSpeechSettingsOutput) NoSpeechTimeout() pulumi.St
 	return o.ApplyT(func(v CxAgentAdvancedSettingsSpeechSettings) *string { return v.NoSpeechTimeout }).(pulumi.StringPtrOutput)
 }
 
-// Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+// Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
 func (o CxAgentAdvancedSettingsSpeechSettingsOutput) UseTimeoutBasedEndpointing() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v CxAgentAdvancedSettingsSpeechSettings) *bool { return v.UseTimeoutBasedEndpointing }).(pulumi.BoolPtrOutput)
 }
@@ -952,7 +952,7 @@ func (o CxAgentAdvancedSettingsSpeechSettingsPtrOutput) NoSpeechTimeout() pulumi
 	}).(pulumi.StringPtrOutput)
 }
 
-// Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+// Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
 func (o CxAgentAdvancedSettingsSpeechSettingsPtrOutput) UseTimeoutBasedEndpointing() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *CxAgentAdvancedSettingsSpeechSettings) *bool {
 		if v == nil {

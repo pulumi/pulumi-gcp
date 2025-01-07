@@ -6,22 +6,32 @@ import * as utilities from "../utilities";
 
 /**
  * Allows associating hierarchical firewall policies with the target where they are applied. This allows creating policies and rules in a different location than they are applied.
+ * For more information on applying hierarchical firewall policies see the [official documentation](https://cloud.google.com/firewall/docs/firewall-policies#managing_hierarchical_firewall_policy_resources)
  *
- * For more information on applying hierarchical firewall policies see the [official documentation](https://cloud.google.com/vpc/docs/firewall-policies#managing_hierarchical_firewall_policy_resources)
+ * To get more information about FirewallPolicyAssociation, see:
+ *
+ * * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/firewallPolicies/addAssociation)
  *
  * ## Example Usage
+ *
+ * ### Firewall Policy Association
  *
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const _default = new gcp.compute.FirewallPolicy("default", {
- *     parent: "organizations/12345",
+ * const folder = new gcp.organizations.Folder("folder", {
+ *     displayName: "my-folder",
+ *     parent: "organizations/123456789",
+ *     deletionProtection: false,
+ * });
+ * const policy = new gcp.compute.FirewallPolicy("policy", {
+ *     parent: "organizations/123456789",
  *     shortName: "my-policy",
  *     description: "Example Resource",
  * });
- * const defaultFirewallPolicyAssociation = new gcp.compute.FirewallPolicyAssociation("default", {
- *     firewallPolicy: _default.id,
+ * const _default = new gcp.compute.FirewallPolicyAssociation("default", {
+ *     firewallPolicy: policy.id,
  *     attachmentTarget: folder.name,
  *     name: "my-association",
  * });
@@ -78,15 +88,14 @@ export class FirewallPolicyAssociation extends pulumi.CustomResource {
      */
     public readonly attachmentTarget!: pulumi.Output<string>;
     /**
-     * The firewall policy ID of the association.
+     * The firewall policy of the resource.
+     *
+     *
+     * - - -
      */
     public readonly firewallPolicy!: pulumi.Output<string>;
     /**
      * The name for an association.
-     *
-     *
-     *
-     * - - -
      */
     public readonly name!: pulumi.Output<string>;
     /**
@@ -138,15 +147,14 @@ export interface FirewallPolicyAssociationState {
      */
     attachmentTarget?: pulumi.Input<string>;
     /**
-     * The firewall policy ID of the association.
+     * The firewall policy of the resource.
+     *
+     *
+     * - - -
      */
     firewallPolicy?: pulumi.Input<string>;
     /**
      * The name for an association.
-     *
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
     /**
@@ -164,15 +172,14 @@ export interface FirewallPolicyAssociationArgs {
      */
     attachmentTarget: pulumi.Input<string>;
     /**
-     * The firewall policy ID of the association.
+     * The firewall policy of the resource.
+     *
+     *
+     * - - -
      */
     firewallPolicy: pulumi.Input<string>;
     /**
      * The name for an association.
-     *
-     *
-     *
-     * - - -
      */
     name?: pulumi.Input<string>;
 }

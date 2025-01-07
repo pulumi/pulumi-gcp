@@ -205,6 +205,10 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         public readonly ImmutableArray<Outputs.GetSubnetworkSecondaryIpRangeResult> SecondaryIpRanges;
         public readonly string SelfLink;
+        /// <summary>
+        /// The numeric ID of the resource.
+        /// </summary>
+        public readonly int SubnetworkId;
 
         [OutputConstructor]
         private GetSubnetworkResult(
@@ -230,7 +234,9 @@ namespace Pulumi.Gcp.Compute
 
             ImmutableArray<Outputs.GetSubnetworkSecondaryIpRangeResult> secondaryIpRanges,
 
-            string selfLink)
+            string selfLink,
+
+            int subnetworkId)
         {
             Description = description;
             GatewayAddress = gatewayAddress;
@@ -244,6 +250,7 @@ namespace Pulumi.Gcp.Compute
             Region = region;
             SecondaryIpRanges = secondaryIpRanges;
             SelfLink = selfLink;
+            SubnetworkId = subnetworkId;
         }
     }
 }

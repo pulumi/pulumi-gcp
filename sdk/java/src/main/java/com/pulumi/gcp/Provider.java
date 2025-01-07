@@ -185,6 +185,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> certificateManagerCustomEndpoint() {
         return Codegen.optional(this.certificateManagerCustomEndpoint);
     }
+    @Export(name="chronicleCustomEndpoint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> chronicleCustomEndpoint;
+
+    public Output<Optional<String>> chronicleCustomEndpoint() {
+        return Codegen.optional(this.chronicleCustomEndpoint);
+    }
     @Export(name="cloudAssetCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> cloudAssetCustomEndpoint;
 

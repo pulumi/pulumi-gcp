@@ -575,9 +575,9 @@ class GetBackupBackupResult(dict):
                  name: str):
         """
         :param str backup_id: Id of the requesting object, Backup.
-        :param str backup_vault_id: Name of the Backup Vault associated with Backup.
-        :param str data_source_id: Name of the Data Source associated with Backup.
-        :param str location: Location of the resource.
+        :param str backup_vault_id: The ID of the Backup Vault of the Data Source in which the Backup belongs.
+        :param str data_source_id: The ID of the Data Source in which the Backup belongs.
+        :param str location: The location in which the Backup belongs.
         :param str name: Name of the resource.
         """
         pulumi.set(__self__, "backup_id", backup_id)
@@ -598,7 +598,7 @@ class GetBackupBackupResult(dict):
     @pulumi.getter(name="backupVaultId")
     def backup_vault_id(self) -> str:
         """
-        Name of the Backup Vault associated with Backup.
+        The ID of the Backup Vault of the Data Source in which the Backup belongs.
         """
         return pulumi.get(self, "backup_vault_id")
 
@@ -606,7 +606,7 @@ class GetBackupBackupResult(dict):
     @pulumi.getter(name="dataSourceId")
     def data_source_id(self) -> str:
         """
-        Name of the Data Source associated with Backup.
+        The ID of the Data Source in which the Backup belongs.
         """
         return pulumi.get(self, "data_source_id")
 
@@ -614,7 +614,7 @@ class GetBackupBackupResult(dict):
     @pulumi.getter
     def location(self) -> str:
         """
-        Location of the resource.
+        The location in which the Backup belongs.
         """
         return pulumi.get(self, "location")
 
@@ -1186,7 +1186,7 @@ class GetDataSourceDataSourceGcpResourceResult(dict):
         """
         :param Sequence['GetDataSourceDataSourceGcpResourceComputeInstanceDataSourcePropertyArgs'] compute_instance_data_source_properties: ComputeInstanceDataSourceProperties has a subset of Compute Instance properties that are useful at the Datasource level.
         :param str gcp_resourcename: Full resource pathname URL of the source Google Cloud resource.
-        :param str location: Location of the resource: <region>/<zone>/"global"/"unspecified".
+        :param str location: The location in which the Data Source belongs.
         :param str type: The type of the Google Cloud resource. Use the Unified Resource Type,
                						eg. compute.googleapis.com/Instance.
         """
@@ -1215,7 +1215,7 @@ class GetDataSourceDataSourceGcpResourceResult(dict):
     @pulumi.getter
     def location(self) -> str:
         """
-        Location of the resource: <region>/<zone>/"global"/"unspecified".
+        The location in which the Data Source belongs.
         """
         return pulumi.get(self, "location")
 

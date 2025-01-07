@@ -209,6 +209,15 @@ namespace Pulumi.Gcp.Filestore
         [Output("storageBytes")]
         public Output<string> StorageBytes { get; private set; } = null!;
 
+        /// <summary>
+        /// A map of resource manager tags.
+        /// Resource manager tag keys and values have the same definition as resource manager tags.
+        /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+        /// The field is ignored (both PUT &amp; PATCH) when empty.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
+
 
         /// <summary>
         /// Create a Backup resource with the given unique name, arguments, and options.
@@ -320,6 +329,21 @@ namespace Pulumi.Gcp.Filestore
         /// </summary>
         [Input("sourceInstance", required: true)]
         public Input<string> SourceInstance { get; set; } = null!;
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A map of resource manager tags.
+        /// Resource manager tag keys and values have the same definition as resource manager tags.
+        /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+        /// The field is ignored (both PUT &amp; PATCH) when empty.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         public BackupArgs()
         {
@@ -464,6 +488,21 @@ namespace Pulumi.Gcp.Filestore
         /// </summary>
         [Input("storageBytes")]
         public Input<string>? StorageBytes { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A map of resource manager tags.
+        /// Resource manager tag keys and values have the same definition as resource manager tags.
+        /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+        /// The field is ignored (both PUT &amp; PATCH) when empty.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         public BackupState()
         {

@@ -160,10 +160,10 @@ index ab54b615d..2ed6376e4 100644
  * `default_expiration` -
    (Optional)
 diff --git a/website/docs/r/bigquery_job.html.markdown b/website/docs/r/bigquery_job.html.markdown
-index 8eeb84614..4d5284637 100644
+index 56f90a480..6777bfca7 100644
 --- a/website/docs/r/bigquery_job.html.markdown
 +++ b/website/docs/r/bigquery_job.html.markdown
-@@ -721,8 +721,8 @@ The following arguments are supported:
+@@ -711,8 +711,8 @@ The following arguments are supported:
  
  * `null_marker` -
    (Optional)
@@ -175,7 +175,7 @@ index 8eeb84614..4d5284637 100644
    an empty value.
  
 diff --git a/website/docs/r/bigquery_table.html.markdown b/website/docs/r/bigquery_table.html.markdown
-index 75c460cc7..294d64298 100644
+index 0a4893bed..6d4b314ce 100644
 --- a/website/docs/r/bigquery_table.html.markdown
 +++ b/website/docs/r/bigquery_table.html.markdown
 @@ -11,7 +11,7 @@ Creates a table resource in a dataset for Google BigQuery. For more information
@@ -200,7 +200,7 @@ index 75c460cc7..294d64298 100644
  
  * `table_constraints` - (Optional) Defines the primary key and foreign keys. 
      Structure is [documented below](#nested_table_constraints).
-@@ -275,8 +273,8 @@ The following arguments are supported:
+@@ -280,8 +278,8 @@ The following arguments are supported:
      CSV file. If your data does not contain quoted sections, set the
      property value to an empty string. If your data contains quoted newline
      characters, you must also set the `allow_quoted_newlines` property to true.
@@ -669,7 +669,7 @@ index df91843c5..40b452e03 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/compute_instance.html.markdown b/website/docs/r/compute_instance.html.markdown
-index acd46bad2..47060bb12 100644
+index a9d0efc64..794b8b8d4 100644
 --- a/website/docs/r/compute_instance.html.markdown
 +++ b/website/docs/r/compute_instance.html.markdown
 @@ -140,7 +140,7 @@ The following arguments are supported:
@@ -825,7 +825,7 @@ index c7a253e6d..fd7c0580c 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/compute_instance_template.html.markdown b/website/docs/r/compute_instance_template.html.markdown
-index 88a604fa4..9c8259586 100644
+index b73f4c095..7b4923115 100644
 --- a/website/docs/r/compute_instance_template.html.markdown
 +++ b/website/docs/r/compute_instance_template.html.markdown
 @@ -183,12 +183,11 @@ resource "google_compute_instance_template" "foobar" {
@@ -3363,7 +3363,7 @@ index fe9f8b04a..f1ca040b9 100644
  
  ~> **Note:** Once created, this resource cannot be updated or destroyed. These
 diff --git a/website/docs/r/redis_instance.html.markdown b/website/docs/r/redis_instance.html.markdown
-index 3399b32cf..4b19f8a4e 100644
+index f4e44aed8..f9ed9e443 100644
 --- a/website/docs/r/redis_instance.html.markdown
 +++ b/website/docs/r/redis_instance.html.markdown
 @@ -66,7 +66,7 @@ resource "google_redis_instance" "cache" {
@@ -3558,7 +3558,7 @@ index b6e4a06bd..a775c628e 100644
  
  <a name="nested_encryption_config"></a>The `encryption_config` block supports:
 diff --git a/website/docs/r/sql_database_instance.html.markdown b/website/docs/r/sql_database_instance.html.markdown
-index edcfd4544..c645159d5 100644
+index f6193b91d..3be112b5e 100644
 --- a/website/docs/r/sql_database_instance.html.markdown
 +++ b/website/docs/r/sql_database_instance.html.markdown
 @@ -10,12 +10,12 @@ Creates a new Google SQL Database Instance. For more information, see the [offic

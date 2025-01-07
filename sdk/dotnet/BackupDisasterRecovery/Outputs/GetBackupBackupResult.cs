@@ -18,15 +18,15 @@ namespace Pulumi.Gcp.BackupDisasterRecovery.Outputs
         /// </summary>
         public readonly string BackupId;
         /// <summary>
-        /// Name of the Backup Vault associated with Backup.
+        /// The ID of the Backup Vault of the Data Source in which the Backup belongs.
         /// </summary>
         public readonly string BackupVaultId;
         /// <summary>
-        /// Name of the Data Source associated with Backup.
+        /// The ID of the Data Source in which the Backup belongs.
         /// </summary>
         public readonly string DataSourceId;
         /// <summary>
-        /// Location of the resource.
+        /// The location in which the Backup belongs.
         /// </summary>
         public readonly string Location;
         /// <summary>

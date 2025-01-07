@@ -220,6 +220,14 @@ namespace Pulumi.Gcp.BigQuery
         public Output<Outputs.DatasetAccessAuthorizedDataset?> AuthorizedDataset { get; private set; } = null!;
 
         /// <summary>
+        /// Condition for the binding. If CEL expression in this field is true, this
+        /// access binding will be considered.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("condition")]
+        public Output<Outputs.DatasetAccessCondition?> Condition { get; private set; } = null!;
+
+        /// <summary>
         /// A unique ID for this dataset, without the project name. The ID
         /// must contain only letters (a-z, A-Z), numbers (0-9), or
         /// underscores (_). The maximum length is 1,024 characters.
@@ -361,6 +369,14 @@ namespace Pulumi.Gcp.BigQuery
         public Input<Inputs.DatasetAccessAuthorizedDatasetArgs>? AuthorizedDataset { get; set; }
 
         /// <summary>
+        /// Condition for the binding. If CEL expression in this field is true, this
+        /// access binding will be considered.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("condition")]
+        public Input<Inputs.DatasetAccessConditionArgs>? Condition { get; set; }
+
+        /// <summary>
         /// A unique ID for this dataset, without the project name. The ID
         /// must contain only letters (a-z, A-Z), numbers (0-9), or
         /// underscores (_). The maximum length is 1,024 characters.
@@ -469,6 +485,14 @@ namespace Pulumi.Gcp.BigQuery
         /// </summary>
         [Input("authorizedDataset")]
         public Input<Inputs.DatasetAccessAuthorizedDatasetGetArgs>? AuthorizedDataset { get; set; }
+
+        /// <summary>
+        /// Condition for the binding. If CEL expression in this field is true, this
+        /// access binding will be considered.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("condition")]
+        public Input<Inputs.DatasetAccessConditionGetArgs>? Condition { get; set; }
 
         /// <summary>
         /// A unique ID for this dataset, without the project name. The ID

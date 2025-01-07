@@ -37,24 +37,16 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const keyRing = new gcp.kms.KeyRing("key_ring", {
- *     name: "my-keyring",
- *     location: "us-central1",
- * });
- * const cryptoKey = new gcp.kms.CryptoKey("crypto_key", {
- *     name: "my-key",
- *     keyRing: keyRing.id,
- * });
  * const project = gcp.organizations.getProject({});
  * const cryptoKeyBinding = new gcp.kms.CryptoKeyIAMMember("crypto_key_binding", {
- *     cryptoKeyId: cryptoKey.id,
+ *     cryptoKeyId: "my-key",
  *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
  *     member: project.then(project => `serviceAccount:service-${project.number}@gcp-sa-sourcemanager.iam.gserviceaccount.com`),
  * });
  * const _default = new gcp.securesourcemanager.Instance("default", {
  *     location: "us-central1",
  *     instanceId: "my-instance",
- *     kmsKey: cryptoKey.id,
+ *     kmsKey: "my-key",
  * }, {
  *     dependsOn: [cryptoKeyBinding],
  * });

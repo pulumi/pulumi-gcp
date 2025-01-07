@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.AccessContextManager.Outputs
         /// </summary>
         public readonly string Network;
         /// <summary>
-        /// CIDR block IP subnetwork specification. Must be IPv4.
+        /// A list of CIDR block IP subnetwork specification. Must be IPv4.
         /// </summary>
         public readonly ImmutableArray<string> VpcIpSubnetworks;
 

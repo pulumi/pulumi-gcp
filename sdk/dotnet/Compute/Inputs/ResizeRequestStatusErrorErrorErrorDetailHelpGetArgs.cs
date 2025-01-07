@@ -17,7 +17,7 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         /// <summary>
         /// (Output)
-        /// [Output Only]
+        /// A nested object resource.
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.ResizeRequestStatusErrorErrorErrorDetailHelpLinkGetArgs> Links

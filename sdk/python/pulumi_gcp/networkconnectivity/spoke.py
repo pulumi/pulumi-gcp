@@ -24,6 +24,7 @@ class SpokeArgs:
                  hub: pulumi.Input[str],
                  location: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
+                 group: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  linked_interconnect_attachments: Optional[pulumi.Input['SpokeLinkedInterconnectAttachmentsArgs']] = None,
                  linked_producer_vpc_network: Optional[pulumi.Input['SpokeLinkedProducerVpcNetworkArgs']] = None,
@@ -40,6 +41,7 @@ class SpokeArgs:
                
                - - -
         :param pulumi.Input[str] description: An optional description of the spoke.
+        :param pulumi.Input[str] group: The name of the group that this spoke is associated with.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -61,6 +63,8 @@ class SpokeArgs:
         pulumi.set(__self__, "location", location)
         if description is not None:
             pulumi.set(__self__, "description", description)
+        if group is not None:
+            pulumi.set(__self__, "group", group)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if linked_interconnect_attachments is not None:
@@ -116,6 +120,18 @@ class SpokeArgs:
     @description.setter
     def description(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "description", value)
+
+    @property
+    @pulumi.getter
+    def group(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the group that this spoke is associated with.
+        """
+        return pulumi.get(self, "group")
+
+    @group.setter
+    def group(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "group", value)
 
     @property
     @pulumi.getter
@@ -228,6 +244,7 @@ class _SpokeState:
                  create_time: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 group: Optional[pulumi.Input[str]] = None,
                  hub: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  linked_interconnect_attachments: Optional[pulumi.Input['SpokeLinkedInterconnectAttachmentsArgs']] = None,
@@ -247,6 +264,7 @@ class _SpokeState:
         :param pulumi.Input[str] create_time: Output only. The time the spoke was created.
         :param pulumi.Input[str] description: An optional description of the spoke.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[str] group: The name of the group that this spoke is associated with.
         :param pulumi.Input[str] hub: Immutable. The URI of the hub that this spoke is attached to.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -280,6 +298,8 @@ class _SpokeState:
             pulumi.set(__self__, "description", description)
         if effective_labels is not None:
             pulumi.set(__self__, "effective_labels", effective_labels)
+        if group is not None:
+            pulumi.set(__self__, "group", group)
         if hub is not None:
             pulumi.set(__self__, "hub", hub)
         if labels is not None:
@@ -344,6 +364,18 @@ class _SpokeState:
     @effective_labels.setter
     def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "effective_labels", value)
+
+    @property
+    @pulumi.getter
+    def group(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the group that this spoke is associated with.
+        """
+        return pulumi.get(self, "group")
+
+    @group.setter
+    def group(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "group", value)
 
     @property
     @pulumi.getter
@@ -532,6 +564,7 @@ class Spoke(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 group: Optional[pulumi.Input[str]] = None,
                  hub: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  linked_interconnect_attachments: Optional[pulumi.Input[Union['SpokeLinkedInterconnectAttachmentsArgs', 'SpokeLinkedInterconnectAttachmentsArgsDict']]] = None,
@@ -588,6 +621,46 @@ class Spoke(pulumi.CustomResource):
                 ],
                 "uri": network.self_link,
             })
+        ```
+        ### Network Connectivity Spoke Linked Vpc Network Group
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network = gcp.compute.Network("network",
+            name="net-spoke",
+            auto_create_subnetworks=False)
+        basic_hub = gcp.networkconnectivity.Hub("basic_hub",
+            name="hub1-spoke",
+            description="A sample hub",
+            labels={
+                "label-two": "value-one",
+            })
+        default_group = gcp.networkconnectivity.Group("default_group",
+            hub=basic_hub.id,
+            name="default",
+            description="A sample hub group")
+        primary = gcp.networkconnectivity.Spoke("primary",
+            name="group-spoke1",
+            location="global",
+            description="A sample spoke with a linked VPC",
+            labels={
+                "label-one": "value-one",
+            },
+            hub=basic_hub.id,
+            linked_vpc_network={
+                "exclude_export_ranges": [
+                    "198.51.100.0/24",
+                    "10.10.0.0/16",
+                ],
+                "include_export_ranges": [
+                    "198.51.100.0/23",
+                    "10.0.0.0/8",
+                ],
+                "uri": network.self_link,
+            },
+            group=default_group.id)
         ```
         ### Network Connectivity Spoke Router Appliance Basic
 
@@ -842,6 +915,40 @@ class Spoke(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[linked_vpc_spoke]))
         ```
+        ### Network Connectivity Spoke Center Group
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network = gcp.compute.Network("network",
+            name="tf-net",
+            auto_create_subnetworks=False)
+        star_hub = gcp.networkconnectivity.Hub("star_hub",
+            name="hub-basic",
+            preset_topology="STAR")
+        center_group = gcp.networkconnectivity.Group("center_group",
+            name="center",
+            hub=star_hub.id,
+            auto_accept={
+                "auto_accept_projects": [
+                    "foo_13293",
+                    "bar_40289",
+                ],
+            })
+        primary = gcp.networkconnectivity.Spoke("primary",
+            name="vpc-spoke",
+            location="global",
+            description="A sample spoke",
+            labels={
+                "label-one": "value-one",
+            },
+            hub=star_hub.id,
+            group=center_group.id,
+            linked_vpc_network={
+                "uri": network.self_link,
+            })
+        ```
 
         ## Import
 
@@ -870,6 +977,7 @@ class Spoke(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description of the spoke.
+        :param pulumi.Input[str] group: The name of the group that this spoke is associated with.
         :param pulumi.Input[str] hub: Immutable. The URI of the hub that this spoke is attached to.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -944,6 +1052,46 @@ class Spoke(pulumi.CustomResource):
                 "uri": network.self_link,
             })
         ```
+        ### Network Connectivity Spoke Linked Vpc Network Group
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network = gcp.compute.Network("network",
+            name="net-spoke",
+            auto_create_subnetworks=False)
+        basic_hub = gcp.networkconnectivity.Hub("basic_hub",
+            name="hub1-spoke",
+            description="A sample hub",
+            labels={
+                "label-two": "value-one",
+            })
+        default_group = gcp.networkconnectivity.Group("default_group",
+            hub=basic_hub.id,
+            name="default",
+            description="A sample hub group")
+        primary = gcp.networkconnectivity.Spoke("primary",
+            name="group-spoke1",
+            location="global",
+            description="A sample spoke with a linked VPC",
+            labels={
+                "label-one": "value-one",
+            },
+            hub=basic_hub.id,
+            linked_vpc_network={
+                "exclude_export_ranges": [
+                    "198.51.100.0/24",
+                    "10.10.0.0/16",
+                ],
+                "include_export_ranges": [
+                    "198.51.100.0/23",
+                    "10.0.0.0/8",
+                ],
+                "uri": network.self_link,
+            },
+            group=default_group.id)
+        ```
         ### Network Connectivity Spoke Router Appliance Basic
 
         ```python
@@ -1197,6 +1345,40 @@ class Spoke(pulumi.CustomResource):
             },
             opts = pulumi.ResourceOptions(depends_on=[linked_vpc_spoke]))
         ```
+        ### Network Connectivity Spoke Center Group
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        network = gcp.compute.Network("network",
+            name="tf-net",
+            auto_create_subnetworks=False)
+        star_hub = gcp.networkconnectivity.Hub("star_hub",
+            name="hub-basic",
+            preset_topology="STAR")
+        center_group = gcp.networkconnectivity.Group("center_group",
+            name="center",
+            hub=star_hub.id,
+            auto_accept={
+                "auto_accept_projects": [
+                    "foo_13293",
+                    "bar_40289",
+                ],
+            })
+        primary = gcp.networkconnectivity.Spoke("primary",
+            name="vpc-spoke",
+            location="global",
+            description="A sample spoke",
+            labels={
+                "label-one": "value-one",
+            },
+            hub=star_hub.id,
+            group=center_group.id,
+            linked_vpc_network={
+                "uri": network.self_link,
+            })
+        ```
 
         ## Import
 
@@ -1238,6 +1420,7 @@ class Spoke(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  description: Optional[pulumi.Input[str]] = None,
+                 group: Optional[pulumi.Input[str]] = None,
                  hub: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  linked_interconnect_attachments: Optional[pulumi.Input[Union['SpokeLinkedInterconnectAttachmentsArgs', 'SpokeLinkedInterconnectAttachmentsArgsDict']]] = None,
@@ -1258,6 +1441,7 @@ class Spoke(pulumi.CustomResource):
             __props__ = SpokeArgs.__new__(SpokeArgs)
 
             __props__.__dict__["description"] = description
+            __props__.__dict__["group"] = group
             if hub is None and not opts.urn:
                 raise TypeError("Missing required property 'hub'")
             __props__.__dict__["hub"] = hub
@@ -1293,6 +1477,7 @@ class Spoke(pulumi.CustomResource):
             create_time: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            group: Optional[pulumi.Input[str]] = None,
             hub: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             linked_interconnect_attachments: Optional[pulumi.Input[Union['SpokeLinkedInterconnectAttachmentsArgs', 'SpokeLinkedInterconnectAttachmentsArgsDict']]] = None,
@@ -1317,6 +1502,7 @@ class Spoke(pulumi.CustomResource):
         :param pulumi.Input[str] create_time: Output only. The time the spoke was created.
         :param pulumi.Input[str] description: An optional description of the spoke.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[str] group: The name of the group that this spoke is associated with.
         :param pulumi.Input[str] hub: Immutable. The URI of the hub that this spoke is attached to.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional labels in key:value format. For more information about labels, see [Requirements for labels](https://cloud.google.com/resource-manager/docs/creating-managing-labels#requirements).
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -1351,6 +1537,7 @@ class Spoke(pulumi.CustomResource):
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["description"] = description
         __props__.__dict__["effective_labels"] = effective_labels
+        __props__.__dict__["group"] = group
         __props__.__dict__["hub"] = hub
         __props__.__dict__["labels"] = labels
         __props__.__dict__["linked_interconnect_attachments"] = linked_interconnect_attachments
@@ -1390,6 +1577,14 @@ class Spoke(pulumi.CustomResource):
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
+
+    @property
+    @pulumi.getter
+    def group(self) -> pulumi.Output[str]:
+        """
+        The name of the group that this spoke is associated with.
+        """
+        return pulumi.get(self, "group")
 
     @property
     @pulumi.getter

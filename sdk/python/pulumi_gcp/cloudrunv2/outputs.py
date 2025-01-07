@@ -3366,7 +3366,8 @@ class ServiceTemplateScaling(dict):
                  max_instance_count: Optional[int] = None,
                  min_instance_count: Optional[int] = None):
         """
-        :param int max_instance_count: Maximum number of serving instances that this resource should have.
+        :param int max_instance_count: Maximum number of serving instances that this resource should have. Must not be less than minimum instance count. If absent, Cloud Run will calculate
+               a default value based on the project's available container instances quota in the region and specified instance size.
         :param int min_instance_count: Minimum number of instances for the service, to be divided among all revisions receiving traffic.
         """
         if max_instance_count is not None:
@@ -3378,7 +3379,8 @@ class ServiceTemplateScaling(dict):
     @pulumi.getter(name="maxInstanceCount")
     def max_instance_count(self) -> Optional[int]:
         """
-        Maximum number of serving instances that this resource should have.
+        Maximum number of serving instances that this resource should have. Must not be less than minimum instance count. If absent, Cloud Run will calculate
+        a default value based on the project's available container instances quota in the region and specified instance size.
         """
         return pulumi.get(self, "max_instance_count")
 
@@ -6442,8 +6444,9 @@ class GetServiceTemplateScalingResult(dict):
                  max_instance_count: int,
                  min_instance_count: int):
         """
-        :param int max_instance_count: Maximum number of serving instances that this resource should have.
-        :param int min_instance_count: Minimum number of serving instances that this resource should have.
+        :param int max_instance_count: Maximum number of serving instances that this resource should have. Must not be less than minimum instance count. If absent, Cloud Run will calculate
+               a default value based on the project's available container instances quota in the region and specified instance size.
+        :param int min_instance_count: Minimum number of serving instances that this resource should have. Defaults to 0. Must not be greater than maximum instance count.
         """
         pulumi.set(__self__, "max_instance_count", max_instance_count)
         pulumi.set(__self__, "min_instance_count", min_instance_count)
@@ -6452,7 +6455,8 @@ class GetServiceTemplateScalingResult(dict):
     @pulumi.getter(name="maxInstanceCount")
     def max_instance_count(self) -> int:
         """
-        Maximum number of serving instances that this resource should have.
+        Maximum number of serving instances that this resource should have. Must not be less than minimum instance count. If absent, Cloud Run will calculate
+        a default value based on the project's available container instances quota in the region and specified instance size.
         """
         return pulumi.get(self, "max_instance_count")
 
@@ -6460,7 +6464,7 @@ class GetServiceTemplateScalingResult(dict):
     @pulumi.getter(name="minInstanceCount")
     def min_instance_count(self) -> int:
         """
-        Minimum number of serving instances that this resource should have.
+        Minimum number of serving instances that this resource should have. Defaults to 0. Must not be greater than maximum instance count.
         """
         return pulumi.get(self, "min_instance_count")
 

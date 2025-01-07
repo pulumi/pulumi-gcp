@@ -43,6 +43,35 @@ import * as utilities from "../utilities";
  *     exportPsc: true,
  * });
  * ```
+ * ### Network Connectivity Hub Mesh Topology
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const primary = new gcp.networkconnectivity.Hub("primary", {
+ *     name: "mesh",
+ *     description: "A sample mesh hub",
+ *     labels: {
+ *         "label-one": "value-one",
+ *     },
+ * });
+ * ```
+ * ### Network Connectivity Hub Star Topology
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const primary = new gcp.networkconnectivity.Hub("primary", {
+ *     name: "star",
+ *     description: "A sample star hub",
+ *     labels: {
+ *         "label-one": "value-one",
+ *     },
+ *     presetTopology: "STAR",
+ * });
+ * ```
  *
  * ## Import
  *
@@ -126,6 +155,11 @@ export class Hub extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * Optional. The topology implemented in this hub. Currently, this field is only used when policyMode = PRESET. The available preset topologies are MESH and STAR. If presetTopology is unspecified and policyMode = PRESET, the presetTopology defaults to MESH. When policyMode = CUSTOM, the presetTopology is set to PRESET_TOPOLOGY_UNSPECIFIED.
+     * Possible values are: `MESH`, `STAR`.
+     */
+    public readonly presetTopology!: pulumi.Output<string>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
@@ -172,6 +206,7 @@ export class Hub extends pulumi.CustomResource {
             resourceInputs["exportPsc"] = state ? state.exportPsc : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["presetTopology"] = state ? state.presetTopology : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
             resourceInputs["routingVpcs"] = state ? state.routingVpcs : undefined;
@@ -184,6 +219,7 @@ export class Hub extends pulumi.CustomResource {
             resourceInputs["exportPsc"] = args ? args.exportPsc : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["presetTopology"] = args ? args.presetTopology : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
             resourceInputs["effectiveLabels"] = undefined /*out*/;
@@ -233,6 +269,11 @@ export interface HubState {
      * - - -
      */
     name?: pulumi.Input<string>;
+    /**
+     * Optional. The topology implemented in this hub. Currently, this field is only used when policyMode = PRESET. The available preset topologies are MESH and STAR. If presetTopology is unspecified and policyMode = PRESET, the presetTopology defaults to MESH. When policyMode = CUSTOM, the presetTopology is set to PRESET_TOPOLOGY_UNSPECIFIED.
+     * Possible values are: `MESH`, `STAR`.
+     */
+    presetTopology?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -287,6 +328,11 @@ export interface HubArgs {
      * - - -
      */
     name?: pulumi.Input<string>;
+    /**
+     * Optional. The topology implemented in this hub. Currently, this field is only used when policyMode = PRESET. The available preset topologies are MESH and STAR. If presetTopology is unspecified and policyMode = PRESET, the presetTopology defaults to MESH. When policyMode = CUSTOM, the presetTopology is set to PRESET_TOPOLOGY_UNSPECIFIED.
+     * Possible values are: `MESH`, `STAR`.
+     */
+    presetTopology?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

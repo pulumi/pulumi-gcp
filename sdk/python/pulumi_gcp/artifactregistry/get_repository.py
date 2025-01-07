@@ -27,7 +27,7 @@ class GetRepositoryResult:
     """
     A collection of values returned by getRepository.
     """
-    def __init__(__self__, cleanup_policies=None, cleanup_policy_dry_run=None, create_time=None, description=None, docker_configs=None, effective_labels=None, format=None, id=None, kms_key_name=None, labels=None, location=None, maven_configs=None, mode=None, name=None, project=None, pulumi_labels=None, remote_repository_configs=None, repository_id=None, update_time=None, virtual_repository_configs=None):
+    def __init__(__self__, cleanup_policies=None, cleanup_policy_dry_run=None, create_time=None, description=None, docker_configs=None, effective_labels=None, format=None, id=None, kms_key_name=None, labels=None, location=None, maven_configs=None, mode=None, name=None, project=None, pulumi_labels=None, remote_repository_configs=None, repository_id=None, update_time=None, virtual_repository_configs=None, vulnerability_scanning_configs=None):
         if cleanup_policies and not isinstance(cleanup_policies, list):
             raise TypeError("Expected argument 'cleanup_policies' to be a list")
         pulumi.set(__self__, "cleanup_policies", cleanup_policies)
@@ -88,6 +88,9 @@ class GetRepositoryResult:
         if virtual_repository_configs and not isinstance(virtual_repository_configs, list):
             raise TypeError("Expected argument 'virtual_repository_configs' to be a list")
         pulumi.set(__self__, "virtual_repository_configs", virtual_repository_configs)
+        if vulnerability_scanning_configs and not isinstance(vulnerability_scanning_configs, list):
+            raise TypeError("Expected argument 'vulnerability_scanning_configs' to be a list")
+        pulumi.set(__self__, "vulnerability_scanning_configs", vulnerability_scanning_configs)
 
     @property
     @pulumi.getter(name="cleanupPolicies")
@@ -192,6 +195,11 @@ class GetRepositoryResult:
     def virtual_repository_configs(self) -> Sequence['outputs.GetRepositoryVirtualRepositoryConfigResult']:
         return pulumi.get(self, "virtual_repository_configs")
 
+    @property
+    @pulumi.getter(name="vulnerabilityScanningConfigs")
+    def vulnerability_scanning_configs(self) -> Sequence['outputs.GetRepositoryVulnerabilityScanningConfigResult']:
+        return pulumi.get(self, "vulnerability_scanning_configs")
+
 
 class AwaitableGetRepositoryResult(GetRepositoryResult):
     # pylint: disable=using-constant-test
@@ -218,7 +226,8 @@ class AwaitableGetRepositoryResult(GetRepositoryResult):
             remote_repository_configs=self.remote_repository_configs,
             repository_id=self.repository_id,
             update_time=self.update_time,
-            virtual_repository_configs=self.virtual_repository_configs)
+            virtual_repository_configs=self.virtual_repository_configs,
+            vulnerability_scanning_configs=self.vulnerability_scanning_configs)
 
 
 def get_repository(location: Optional[str] = None,
@@ -275,7 +284,8 @@ def get_repository(location: Optional[str] = None,
         remote_repository_configs=pulumi.get(__ret__, 'remote_repository_configs'),
         repository_id=pulumi.get(__ret__, 'repository_id'),
         update_time=pulumi.get(__ret__, 'update_time'),
-        virtual_repository_configs=pulumi.get(__ret__, 'virtual_repository_configs'))
+        virtual_repository_configs=pulumi.get(__ret__, 'virtual_repository_configs'),
+        vulnerability_scanning_configs=pulumi.get(__ret__, 'vulnerability_scanning_configs'))
 def get_repository_output(location: Optional[pulumi.Input[str]] = None,
                           project: Optional[pulumi.Input[Optional[str]]] = None,
                           repository_id: Optional[pulumi.Input[str]] = None,
@@ -329,4 +339,5 @@ def get_repository_output(location: Optional[pulumi.Input[str]] = None,
         remote_repository_configs=pulumi.get(__response__, 'remote_repository_configs'),
         repository_id=pulumi.get(__response__, 'repository_id'),
         update_time=pulumi.get(__response__, 'update_time'),
-        virtual_repository_configs=pulumi.get(__response__, 'virtual_repository_configs')))
+        virtual_repository_configs=pulumi.get(__response__, 'virtual_repository_configs'),
+        vulnerability_scanning_configs=pulumi.get(__response__, 'vulnerability_scanning_configs')))

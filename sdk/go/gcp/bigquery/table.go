@@ -170,6 +170,8 @@ type Table struct {
 	// indefinitely. Expired tables will be deleted and their storage
 	// reclaimed.
 	ExpirationTime pulumi.IntOutput `pulumi:"expirationTime"`
+	// Options defining open source compatible table.
+	ExternalCatalogTableOptions TableExternalCatalogTableOptionsPtrOutput `pulumi:"externalCatalogTableOptions"`
 	// Describes the data format,
 	// location, and other properties of a table stored outside of BigQuery.
 	// By defining these properties, the data source can then be queried as
@@ -328,6 +330,8 @@ type tableState struct {
 	// indefinitely. Expired tables will be deleted and their storage
 	// reclaimed.
 	ExpirationTime *int `pulumi:"expirationTime"`
+	// Options defining open source compatible table.
+	ExternalCatalogTableOptions *TableExternalCatalogTableOptions `pulumi:"externalCatalogTableOptions"`
 	// Describes the data format,
 	// location, and other properties of a table stored outside of BigQuery.
 	// By defining these properties, the data source can then be queried as
@@ -446,6 +450,8 @@ type TableState struct {
 	// indefinitely. Expired tables will be deleted and their storage
 	// reclaimed.
 	ExpirationTime pulumi.IntPtrInput
+	// Options defining open source compatible table.
+	ExternalCatalogTableOptions TableExternalCatalogTableOptionsPtrInput
 	// Describes the data format,
 	// location, and other properties of a table stored outside of BigQuery.
 	// By defining these properties, the data source can then be queried as
@@ -547,6 +553,8 @@ type tableArgs struct {
 	// indefinitely. Expired tables will be deleted and their storage
 	// reclaimed.
 	ExpirationTime *int `pulumi:"expirationTime"`
+	// Options defining open source compatible table.
+	ExternalCatalogTableOptions *TableExternalCatalogTableOptions `pulumi:"externalCatalogTableOptions"`
 	// Describes the data format,
 	// location, and other properties of a table stored outside of BigQuery.
 	// By defining these properties, the data source can then be queried as
@@ -629,6 +637,8 @@ type TableArgs struct {
 	// indefinitely. Expired tables will be deleted and their storage
 	// reclaimed.
 	ExpirationTime pulumi.IntPtrInput
+	// Options defining open source compatible table.
+	ExternalCatalogTableOptions TableExternalCatalogTableOptionsPtrInput
 	// Describes the data format,
 	// location, and other properties of a table stored outside of BigQuery.
 	// By defining these properties, the data source can then be queried as
@@ -845,6 +855,11 @@ func (o TableOutput) Etag() pulumi.StringOutput {
 // reclaimed.
 func (o TableOutput) ExpirationTime() pulumi.IntOutput {
 	return o.ApplyT(func(v *Table) pulumi.IntOutput { return v.ExpirationTime }).(pulumi.IntOutput)
+}
+
+// Options defining open source compatible table.
+func (o TableOutput) ExternalCatalogTableOptions() TableExternalCatalogTableOptionsPtrOutput {
+	return o.ApplyT(func(v *Table) TableExternalCatalogTableOptionsPtrOutput { return v.ExternalCatalogTableOptions }).(TableExternalCatalogTableOptionsPtrOutput)
 }
 
 // Describes the data format,

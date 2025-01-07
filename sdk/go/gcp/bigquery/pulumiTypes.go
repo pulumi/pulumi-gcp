@@ -3342,6 +3342,10 @@ func (o DataTransferConfigSensitiveParamsPtrOutput) SecretAccessKey() pulumi.Str
 }
 
 type DatasetAccessType struct {
+	// Condition for the binding. If CEL expression in this field is true, this
+	// access binding will be considered.
+	// Structure is documented below.
+	Condition *DatasetAccessCondition `pulumi:"condition"`
 	// Grants all resources of particular types in a particular dataset read access to the current dataset.
 	// Structure is documented below.
 	Dataset *DatasetAccessDataset `pulumi:"dataset"`
@@ -3396,6 +3400,10 @@ type DatasetAccessTypeInput interface {
 }
 
 type DatasetAccessTypeArgs struct {
+	// Condition for the binding. If CEL expression in this field is true, this
+	// access binding will be considered.
+	// Structure is documented below.
+	Condition DatasetAccessConditionPtrInput `pulumi:"condition"`
 	// Grants all resources of particular types in a particular dataset read access to the current dataset.
 	// Structure is documented below.
 	Dataset DatasetAccessDatasetPtrInput `pulumi:"dataset"`
@@ -3487,6 +3495,13 @@ func (o DatasetAccessTypeOutput) ToDatasetAccessTypeOutput() DatasetAccessTypeOu
 
 func (o DatasetAccessTypeOutput) ToDatasetAccessTypeOutputWithContext(ctx context.Context) DatasetAccessTypeOutput {
 	return o
+}
+
+// Condition for the binding. If CEL expression in this field is true, this
+// access binding will be considered.
+// Structure is documented below.
+func (o DatasetAccessTypeOutput) Condition() DatasetAccessConditionPtrOutput {
+	return o.ApplyT(func(v DatasetAccessType) *DatasetAccessCondition { return v.Condition }).(DatasetAccessConditionPtrOutput)
 }
 
 // Grants all resources of particular types in a particular dataset read access to the current dataset.
@@ -3893,6 +3908,212 @@ func (o DatasetAccessAuthorizedDatasetDatasetPtrOutput) ProjectId() pulumi.Strin
 			return nil
 		}
 		return &v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+type DatasetAccessCondition struct {
+	// Description of the expression. This is a longer text which describes the expression,
+	// e.g. when hovered over it in a UI.
+	Description *string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// String indicating the location of the expression for error reporting, e.g. a file
+	// name and a position in the file.
+	Location *string `pulumi:"location"`
+	// Title for the expression, i.e. a short string describing its purpose.
+	// This can be used e.g. in UIs which allow to enter the expression.
+	Title *string `pulumi:"title"`
+}
+
+// DatasetAccessConditionInput is an input type that accepts DatasetAccessConditionArgs and DatasetAccessConditionOutput values.
+// You can construct a concrete instance of `DatasetAccessConditionInput` via:
+//
+//	DatasetAccessConditionArgs{...}
+type DatasetAccessConditionInput interface {
+	pulumi.Input
+
+	ToDatasetAccessConditionOutput() DatasetAccessConditionOutput
+	ToDatasetAccessConditionOutputWithContext(context.Context) DatasetAccessConditionOutput
+}
+
+type DatasetAccessConditionArgs struct {
+	// Description of the expression. This is a longer text which describes the expression,
+	// e.g. when hovered over it in a UI.
+	Description pulumi.StringPtrInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// String indicating the location of the expression for error reporting, e.g. a file
+	// name and a position in the file.
+	Location pulumi.StringPtrInput `pulumi:"location"`
+	// Title for the expression, i.e. a short string describing its purpose.
+	// This can be used e.g. in UIs which allow to enter the expression.
+	Title pulumi.StringPtrInput `pulumi:"title"`
+}
+
+func (DatasetAccessConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetAccessCondition)(nil)).Elem()
+}
+
+func (i DatasetAccessConditionArgs) ToDatasetAccessConditionOutput() DatasetAccessConditionOutput {
+	return i.ToDatasetAccessConditionOutputWithContext(context.Background())
+}
+
+func (i DatasetAccessConditionArgs) ToDatasetAccessConditionOutputWithContext(ctx context.Context) DatasetAccessConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetAccessConditionOutput)
+}
+
+func (i DatasetAccessConditionArgs) ToDatasetAccessConditionPtrOutput() DatasetAccessConditionPtrOutput {
+	return i.ToDatasetAccessConditionPtrOutputWithContext(context.Background())
+}
+
+func (i DatasetAccessConditionArgs) ToDatasetAccessConditionPtrOutputWithContext(ctx context.Context) DatasetAccessConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetAccessConditionOutput).ToDatasetAccessConditionPtrOutputWithContext(ctx)
+}
+
+// DatasetAccessConditionPtrInput is an input type that accepts DatasetAccessConditionArgs, DatasetAccessConditionPtr and DatasetAccessConditionPtrOutput values.
+// You can construct a concrete instance of `DatasetAccessConditionPtrInput` via:
+//
+//	        DatasetAccessConditionArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatasetAccessConditionPtrInput interface {
+	pulumi.Input
+
+	ToDatasetAccessConditionPtrOutput() DatasetAccessConditionPtrOutput
+	ToDatasetAccessConditionPtrOutputWithContext(context.Context) DatasetAccessConditionPtrOutput
+}
+
+type datasetAccessConditionPtrType DatasetAccessConditionArgs
+
+func DatasetAccessConditionPtr(v *DatasetAccessConditionArgs) DatasetAccessConditionPtrInput {
+	return (*datasetAccessConditionPtrType)(v)
+}
+
+func (*datasetAccessConditionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatasetAccessCondition)(nil)).Elem()
+}
+
+func (i *datasetAccessConditionPtrType) ToDatasetAccessConditionPtrOutput() DatasetAccessConditionPtrOutput {
+	return i.ToDatasetAccessConditionPtrOutputWithContext(context.Background())
+}
+
+func (i *datasetAccessConditionPtrType) ToDatasetAccessConditionPtrOutputWithContext(ctx context.Context) DatasetAccessConditionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatasetAccessConditionPtrOutput)
+}
+
+type DatasetAccessConditionOutput struct{ *pulumi.OutputState }
+
+func (DatasetAccessConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatasetAccessCondition)(nil)).Elem()
+}
+
+func (o DatasetAccessConditionOutput) ToDatasetAccessConditionOutput() DatasetAccessConditionOutput {
+	return o
+}
+
+func (o DatasetAccessConditionOutput) ToDatasetAccessConditionOutputWithContext(ctx context.Context) DatasetAccessConditionOutput {
+	return o
+}
+
+func (o DatasetAccessConditionOutput) ToDatasetAccessConditionPtrOutput() DatasetAccessConditionPtrOutput {
+	return o.ToDatasetAccessConditionPtrOutputWithContext(context.Background())
+}
+
+func (o DatasetAccessConditionOutput) ToDatasetAccessConditionPtrOutputWithContext(ctx context.Context) DatasetAccessConditionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatasetAccessCondition) *DatasetAccessCondition {
+		return &v
+	}).(DatasetAccessConditionPtrOutput)
+}
+
+// Description of the expression. This is a longer text which describes the expression,
+// e.g. when hovered over it in a UI.
+func (o DatasetAccessConditionOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatasetAccessCondition) *string { return v.Description }).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o DatasetAccessConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v DatasetAccessCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// String indicating the location of the expression for error reporting, e.g. a file
+// name and a position in the file.
+func (o DatasetAccessConditionOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatasetAccessCondition) *string { return v.Location }).(pulumi.StringPtrOutput)
+}
+
+// Title for the expression, i.e. a short string describing its purpose.
+// This can be used e.g. in UIs which allow to enter the expression.
+func (o DatasetAccessConditionOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatasetAccessCondition) *string { return v.Title }).(pulumi.StringPtrOutput)
+}
+
+type DatasetAccessConditionPtrOutput struct{ *pulumi.OutputState }
+
+func (DatasetAccessConditionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatasetAccessCondition)(nil)).Elem()
+}
+
+func (o DatasetAccessConditionPtrOutput) ToDatasetAccessConditionPtrOutput() DatasetAccessConditionPtrOutput {
+	return o
+}
+
+func (o DatasetAccessConditionPtrOutput) ToDatasetAccessConditionPtrOutputWithContext(ctx context.Context) DatasetAccessConditionPtrOutput {
+	return o
+}
+
+func (o DatasetAccessConditionPtrOutput) Elem() DatasetAccessConditionOutput {
+	return o.ApplyT(func(v *DatasetAccessCondition) DatasetAccessCondition {
+		if v != nil {
+			return *v
+		}
+		var ret DatasetAccessCondition
+		return ret
+	}).(DatasetAccessConditionOutput)
+}
+
+// Description of the expression. This is a longer text which describes the expression,
+// e.g. when hovered over it in a UI.
+func (o DatasetAccessConditionPtrOutput) Description() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatasetAccessCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Description
+	}).(pulumi.StringPtrOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o DatasetAccessConditionPtrOutput) Expression() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatasetAccessCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Expression
+	}).(pulumi.StringPtrOutput)
+}
+
+// String indicating the location of the expression for error reporting, e.g. a file
+// name and a position in the file.
+func (o DatasetAccessConditionPtrOutput) Location() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatasetAccessCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Location
+	}).(pulumi.StringPtrOutput)
+}
+
+// Title for the expression, i.e. a short string describing its purpose.
+// This can be used e.g. in UIs which allow to enter the expression.
+func (o DatasetAccessConditionPtrOutput) Title() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatasetAccessCondition) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Title
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -11547,6 +11768,558 @@ func (o TableEncryptionConfigurationPtrOutput) KmsKeyVersion() pulumi.StringPtrO
 	}).(pulumi.StringPtrOutput)
 }
 
+type TableExternalCatalogTableOptions struct {
+	// The connection specifying the credentials to be used to read external storage, such as Azure Blob, Cloud Storage, or S3. The connection is needed to read the open source table from BigQuery Engine. The connectionId can have the form <project_id>.<location_id>.<connection_id> or projects/<project_id>/locations/<location_id>/connections/<connection_id>.
+	ConnectionId *string `pulumi:"connectionId"`
+	// A map of key value pairs defining the parameters and properties of the open source table. Corresponds with hive meta store table parameters. Maximum size of 4Mib.
+	Parameters map[string]string `pulumi:"parameters"`
+	// A storage descriptor containing information about the physical storage of this table.
+	StorageDescriptor *TableExternalCatalogTableOptionsStorageDescriptor `pulumi:"storageDescriptor"`
+}
+
+// TableExternalCatalogTableOptionsInput is an input type that accepts TableExternalCatalogTableOptionsArgs and TableExternalCatalogTableOptionsOutput values.
+// You can construct a concrete instance of `TableExternalCatalogTableOptionsInput` via:
+//
+//	TableExternalCatalogTableOptionsArgs{...}
+type TableExternalCatalogTableOptionsInput interface {
+	pulumi.Input
+
+	ToTableExternalCatalogTableOptionsOutput() TableExternalCatalogTableOptionsOutput
+	ToTableExternalCatalogTableOptionsOutputWithContext(context.Context) TableExternalCatalogTableOptionsOutput
+}
+
+type TableExternalCatalogTableOptionsArgs struct {
+	// The connection specifying the credentials to be used to read external storage, such as Azure Blob, Cloud Storage, or S3. The connection is needed to read the open source table from BigQuery Engine. The connectionId can have the form <project_id>.<location_id>.<connection_id> or projects/<project_id>/locations/<location_id>/connections/<connection_id>.
+	ConnectionId pulumi.StringPtrInput `pulumi:"connectionId"`
+	// A map of key value pairs defining the parameters and properties of the open source table. Corresponds with hive meta store table parameters. Maximum size of 4Mib.
+	Parameters pulumi.StringMapInput `pulumi:"parameters"`
+	// A storage descriptor containing information about the physical storage of this table.
+	StorageDescriptor TableExternalCatalogTableOptionsStorageDescriptorPtrInput `pulumi:"storageDescriptor"`
+}
+
+func (TableExternalCatalogTableOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableExternalCatalogTableOptions)(nil)).Elem()
+}
+
+func (i TableExternalCatalogTableOptionsArgs) ToTableExternalCatalogTableOptionsOutput() TableExternalCatalogTableOptionsOutput {
+	return i.ToTableExternalCatalogTableOptionsOutputWithContext(context.Background())
+}
+
+func (i TableExternalCatalogTableOptionsArgs) ToTableExternalCatalogTableOptionsOutputWithContext(ctx context.Context) TableExternalCatalogTableOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableExternalCatalogTableOptionsOutput)
+}
+
+func (i TableExternalCatalogTableOptionsArgs) ToTableExternalCatalogTableOptionsPtrOutput() TableExternalCatalogTableOptionsPtrOutput {
+	return i.ToTableExternalCatalogTableOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i TableExternalCatalogTableOptionsArgs) ToTableExternalCatalogTableOptionsPtrOutputWithContext(ctx context.Context) TableExternalCatalogTableOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableExternalCatalogTableOptionsOutput).ToTableExternalCatalogTableOptionsPtrOutputWithContext(ctx)
+}
+
+// TableExternalCatalogTableOptionsPtrInput is an input type that accepts TableExternalCatalogTableOptionsArgs, TableExternalCatalogTableOptionsPtr and TableExternalCatalogTableOptionsPtrOutput values.
+// You can construct a concrete instance of `TableExternalCatalogTableOptionsPtrInput` via:
+//
+//	        TableExternalCatalogTableOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type TableExternalCatalogTableOptionsPtrInput interface {
+	pulumi.Input
+
+	ToTableExternalCatalogTableOptionsPtrOutput() TableExternalCatalogTableOptionsPtrOutput
+	ToTableExternalCatalogTableOptionsPtrOutputWithContext(context.Context) TableExternalCatalogTableOptionsPtrOutput
+}
+
+type tableExternalCatalogTableOptionsPtrType TableExternalCatalogTableOptionsArgs
+
+func TableExternalCatalogTableOptionsPtr(v *TableExternalCatalogTableOptionsArgs) TableExternalCatalogTableOptionsPtrInput {
+	return (*tableExternalCatalogTableOptionsPtrType)(v)
+}
+
+func (*tableExternalCatalogTableOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableExternalCatalogTableOptions)(nil)).Elem()
+}
+
+func (i *tableExternalCatalogTableOptionsPtrType) ToTableExternalCatalogTableOptionsPtrOutput() TableExternalCatalogTableOptionsPtrOutput {
+	return i.ToTableExternalCatalogTableOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *tableExternalCatalogTableOptionsPtrType) ToTableExternalCatalogTableOptionsPtrOutputWithContext(ctx context.Context) TableExternalCatalogTableOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableExternalCatalogTableOptionsPtrOutput)
+}
+
+type TableExternalCatalogTableOptionsOutput struct{ *pulumi.OutputState }
+
+func (TableExternalCatalogTableOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableExternalCatalogTableOptions)(nil)).Elem()
+}
+
+func (o TableExternalCatalogTableOptionsOutput) ToTableExternalCatalogTableOptionsOutput() TableExternalCatalogTableOptionsOutput {
+	return o
+}
+
+func (o TableExternalCatalogTableOptionsOutput) ToTableExternalCatalogTableOptionsOutputWithContext(ctx context.Context) TableExternalCatalogTableOptionsOutput {
+	return o
+}
+
+func (o TableExternalCatalogTableOptionsOutput) ToTableExternalCatalogTableOptionsPtrOutput() TableExternalCatalogTableOptionsPtrOutput {
+	return o.ToTableExternalCatalogTableOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o TableExternalCatalogTableOptionsOutput) ToTableExternalCatalogTableOptionsPtrOutputWithContext(ctx context.Context) TableExternalCatalogTableOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TableExternalCatalogTableOptions) *TableExternalCatalogTableOptions {
+		return &v
+	}).(TableExternalCatalogTableOptionsPtrOutput)
+}
+
+// The connection specifying the credentials to be used to read external storage, such as Azure Blob, Cloud Storage, or S3. The connection is needed to read the open source table from BigQuery Engine. The connectionId can have the form <project_id>.<location_id>.<connection_id> or projects/<project_id>/locations/<location_id>/connections/<connection_id>.
+func (o TableExternalCatalogTableOptionsOutput) ConnectionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableExternalCatalogTableOptions) *string { return v.ConnectionId }).(pulumi.StringPtrOutput)
+}
+
+// A map of key value pairs defining the parameters and properties of the open source table. Corresponds with hive meta store table parameters. Maximum size of 4Mib.
+func (o TableExternalCatalogTableOptionsOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v TableExternalCatalogTableOptions) map[string]string { return v.Parameters }).(pulumi.StringMapOutput)
+}
+
+// A storage descriptor containing information about the physical storage of this table.
+func (o TableExternalCatalogTableOptionsOutput) StorageDescriptor() TableExternalCatalogTableOptionsStorageDescriptorPtrOutput {
+	return o.ApplyT(func(v TableExternalCatalogTableOptions) *TableExternalCatalogTableOptionsStorageDescriptor {
+		return v.StorageDescriptor
+	}).(TableExternalCatalogTableOptionsStorageDescriptorPtrOutput)
+}
+
+type TableExternalCatalogTableOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (TableExternalCatalogTableOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableExternalCatalogTableOptions)(nil)).Elem()
+}
+
+func (o TableExternalCatalogTableOptionsPtrOutput) ToTableExternalCatalogTableOptionsPtrOutput() TableExternalCatalogTableOptionsPtrOutput {
+	return o
+}
+
+func (o TableExternalCatalogTableOptionsPtrOutput) ToTableExternalCatalogTableOptionsPtrOutputWithContext(ctx context.Context) TableExternalCatalogTableOptionsPtrOutput {
+	return o
+}
+
+func (o TableExternalCatalogTableOptionsPtrOutput) Elem() TableExternalCatalogTableOptionsOutput {
+	return o.ApplyT(func(v *TableExternalCatalogTableOptions) TableExternalCatalogTableOptions {
+		if v != nil {
+			return *v
+		}
+		var ret TableExternalCatalogTableOptions
+		return ret
+	}).(TableExternalCatalogTableOptionsOutput)
+}
+
+// The connection specifying the credentials to be used to read external storage, such as Azure Blob, Cloud Storage, or S3. The connection is needed to read the open source table from BigQuery Engine. The connectionId can have the form <project_id>.<location_id>.<connection_id> or projects/<project_id>/locations/<location_id>/connections/<connection_id>.
+func (o TableExternalCatalogTableOptionsPtrOutput) ConnectionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TableExternalCatalogTableOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectionId
+	}).(pulumi.StringPtrOutput)
+}
+
+// A map of key value pairs defining the parameters and properties of the open source table. Corresponds with hive meta store table parameters. Maximum size of 4Mib.
+func (o TableExternalCatalogTableOptionsPtrOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *TableExternalCatalogTableOptions) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Parameters
+	}).(pulumi.StringMapOutput)
+}
+
+// A storage descriptor containing information about the physical storage of this table.
+func (o TableExternalCatalogTableOptionsPtrOutput) StorageDescriptor() TableExternalCatalogTableOptionsStorageDescriptorPtrOutput {
+	return o.ApplyT(func(v *TableExternalCatalogTableOptions) *TableExternalCatalogTableOptionsStorageDescriptor {
+		if v == nil {
+			return nil
+		}
+		return v.StorageDescriptor
+	}).(TableExternalCatalogTableOptionsStorageDescriptorPtrOutput)
+}
+
+type TableExternalCatalogTableOptionsStorageDescriptor struct {
+	// Specifies the fully qualified class name of the InputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcInputFormat"). The maximum length is 128 characters.
+	InputFormat *string `pulumi:"inputFormat"`
+	// The physical location of the table (e.g. 'gs://spark-dataproc-data/pangea-data/case_sensitive/' or 'gs://spark-dataproc-data/pangea-data/*'). The maximum length is 2056 bytes.
+	LocationUri *string `pulumi:"locationUri"`
+	// Specifies the fully qualified class name of the OutputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat"). The maximum length is 128 characters.
+	OutputFormat *string `pulumi:"outputFormat"`
+	// Serializer and deserializer information.
+	SerdeInfo *TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo `pulumi:"serdeInfo"`
+}
+
+// TableExternalCatalogTableOptionsStorageDescriptorInput is an input type that accepts TableExternalCatalogTableOptionsStorageDescriptorArgs and TableExternalCatalogTableOptionsStorageDescriptorOutput values.
+// You can construct a concrete instance of `TableExternalCatalogTableOptionsStorageDescriptorInput` via:
+//
+//	TableExternalCatalogTableOptionsStorageDescriptorArgs{...}
+type TableExternalCatalogTableOptionsStorageDescriptorInput interface {
+	pulumi.Input
+
+	ToTableExternalCatalogTableOptionsStorageDescriptorOutput() TableExternalCatalogTableOptionsStorageDescriptorOutput
+	ToTableExternalCatalogTableOptionsStorageDescriptorOutputWithContext(context.Context) TableExternalCatalogTableOptionsStorageDescriptorOutput
+}
+
+type TableExternalCatalogTableOptionsStorageDescriptorArgs struct {
+	// Specifies the fully qualified class name of the InputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcInputFormat"). The maximum length is 128 characters.
+	InputFormat pulumi.StringPtrInput `pulumi:"inputFormat"`
+	// The physical location of the table (e.g. 'gs://spark-dataproc-data/pangea-data/case_sensitive/' or 'gs://spark-dataproc-data/pangea-data/*'). The maximum length is 2056 bytes.
+	LocationUri pulumi.StringPtrInput `pulumi:"locationUri"`
+	// Specifies the fully qualified class name of the OutputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat"). The maximum length is 128 characters.
+	OutputFormat pulumi.StringPtrInput `pulumi:"outputFormat"`
+	// Serializer and deserializer information.
+	SerdeInfo TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoPtrInput `pulumi:"serdeInfo"`
+}
+
+func (TableExternalCatalogTableOptionsStorageDescriptorArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableExternalCatalogTableOptionsStorageDescriptor)(nil)).Elem()
+}
+
+func (i TableExternalCatalogTableOptionsStorageDescriptorArgs) ToTableExternalCatalogTableOptionsStorageDescriptorOutput() TableExternalCatalogTableOptionsStorageDescriptorOutput {
+	return i.ToTableExternalCatalogTableOptionsStorageDescriptorOutputWithContext(context.Background())
+}
+
+func (i TableExternalCatalogTableOptionsStorageDescriptorArgs) ToTableExternalCatalogTableOptionsStorageDescriptorOutputWithContext(ctx context.Context) TableExternalCatalogTableOptionsStorageDescriptorOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableExternalCatalogTableOptionsStorageDescriptorOutput)
+}
+
+func (i TableExternalCatalogTableOptionsStorageDescriptorArgs) ToTableExternalCatalogTableOptionsStorageDescriptorPtrOutput() TableExternalCatalogTableOptionsStorageDescriptorPtrOutput {
+	return i.ToTableExternalCatalogTableOptionsStorageDescriptorPtrOutputWithContext(context.Background())
+}
+
+func (i TableExternalCatalogTableOptionsStorageDescriptorArgs) ToTableExternalCatalogTableOptionsStorageDescriptorPtrOutputWithContext(ctx context.Context) TableExternalCatalogTableOptionsStorageDescriptorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableExternalCatalogTableOptionsStorageDescriptorOutput).ToTableExternalCatalogTableOptionsStorageDescriptorPtrOutputWithContext(ctx)
+}
+
+// TableExternalCatalogTableOptionsStorageDescriptorPtrInput is an input type that accepts TableExternalCatalogTableOptionsStorageDescriptorArgs, TableExternalCatalogTableOptionsStorageDescriptorPtr and TableExternalCatalogTableOptionsStorageDescriptorPtrOutput values.
+// You can construct a concrete instance of `TableExternalCatalogTableOptionsStorageDescriptorPtrInput` via:
+//
+//	        TableExternalCatalogTableOptionsStorageDescriptorArgs{...}
+//
+//	or:
+//
+//	        nil
+type TableExternalCatalogTableOptionsStorageDescriptorPtrInput interface {
+	pulumi.Input
+
+	ToTableExternalCatalogTableOptionsStorageDescriptorPtrOutput() TableExternalCatalogTableOptionsStorageDescriptorPtrOutput
+	ToTableExternalCatalogTableOptionsStorageDescriptorPtrOutputWithContext(context.Context) TableExternalCatalogTableOptionsStorageDescriptorPtrOutput
+}
+
+type tableExternalCatalogTableOptionsStorageDescriptorPtrType TableExternalCatalogTableOptionsStorageDescriptorArgs
+
+func TableExternalCatalogTableOptionsStorageDescriptorPtr(v *TableExternalCatalogTableOptionsStorageDescriptorArgs) TableExternalCatalogTableOptionsStorageDescriptorPtrInput {
+	return (*tableExternalCatalogTableOptionsStorageDescriptorPtrType)(v)
+}
+
+func (*tableExternalCatalogTableOptionsStorageDescriptorPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableExternalCatalogTableOptionsStorageDescriptor)(nil)).Elem()
+}
+
+func (i *tableExternalCatalogTableOptionsStorageDescriptorPtrType) ToTableExternalCatalogTableOptionsStorageDescriptorPtrOutput() TableExternalCatalogTableOptionsStorageDescriptorPtrOutput {
+	return i.ToTableExternalCatalogTableOptionsStorageDescriptorPtrOutputWithContext(context.Background())
+}
+
+func (i *tableExternalCatalogTableOptionsStorageDescriptorPtrType) ToTableExternalCatalogTableOptionsStorageDescriptorPtrOutputWithContext(ctx context.Context) TableExternalCatalogTableOptionsStorageDescriptorPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableExternalCatalogTableOptionsStorageDescriptorPtrOutput)
+}
+
+type TableExternalCatalogTableOptionsStorageDescriptorOutput struct{ *pulumi.OutputState }
+
+func (TableExternalCatalogTableOptionsStorageDescriptorOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableExternalCatalogTableOptionsStorageDescriptor)(nil)).Elem()
+}
+
+func (o TableExternalCatalogTableOptionsStorageDescriptorOutput) ToTableExternalCatalogTableOptionsStorageDescriptorOutput() TableExternalCatalogTableOptionsStorageDescriptorOutput {
+	return o
+}
+
+func (o TableExternalCatalogTableOptionsStorageDescriptorOutput) ToTableExternalCatalogTableOptionsStorageDescriptorOutputWithContext(ctx context.Context) TableExternalCatalogTableOptionsStorageDescriptorOutput {
+	return o
+}
+
+func (o TableExternalCatalogTableOptionsStorageDescriptorOutput) ToTableExternalCatalogTableOptionsStorageDescriptorPtrOutput() TableExternalCatalogTableOptionsStorageDescriptorPtrOutput {
+	return o.ToTableExternalCatalogTableOptionsStorageDescriptorPtrOutputWithContext(context.Background())
+}
+
+func (o TableExternalCatalogTableOptionsStorageDescriptorOutput) ToTableExternalCatalogTableOptionsStorageDescriptorPtrOutputWithContext(ctx context.Context) TableExternalCatalogTableOptionsStorageDescriptorPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TableExternalCatalogTableOptionsStorageDescriptor) *TableExternalCatalogTableOptionsStorageDescriptor {
+		return &v
+	}).(TableExternalCatalogTableOptionsStorageDescriptorPtrOutput)
+}
+
+// Specifies the fully qualified class name of the InputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcInputFormat"). The maximum length is 128 characters.
+func (o TableExternalCatalogTableOptionsStorageDescriptorOutput) InputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableExternalCatalogTableOptionsStorageDescriptor) *string { return v.InputFormat }).(pulumi.StringPtrOutput)
+}
+
+// The physical location of the table (e.g. 'gs://spark-dataproc-data/pangea-data/case_sensitive/' or 'gs://spark-dataproc-data/pangea-data/*'). The maximum length is 2056 bytes.
+func (o TableExternalCatalogTableOptionsStorageDescriptorOutput) LocationUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableExternalCatalogTableOptionsStorageDescriptor) *string { return v.LocationUri }).(pulumi.StringPtrOutput)
+}
+
+// Specifies the fully qualified class name of the OutputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat"). The maximum length is 128 characters.
+func (o TableExternalCatalogTableOptionsStorageDescriptorOutput) OutputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableExternalCatalogTableOptionsStorageDescriptor) *string { return v.OutputFormat }).(pulumi.StringPtrOutput)
+}
+
+// Serializer and deserializer information.
+func (o TableExternalCatalogTableOptionsStorageDescriptorOutput) SerdeInfo() TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoPtrOutput {
+	return o.ApplyT(func(v TableExternalCatalogTableOptionsStorageDescriptor) *TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo {
+		return v.SerdeInfo
+	}).(TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoPtrOutput)
+}
+
+type TableExternalCatalogTableOptionsStorageDescriptorPtrOutput struct{ *pulumi.OutputState }
+
+func (TableExternalCatalogTableOptionsStorageDescriptorPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableExternalCatalogTableOptionsStorageDescriptor)(nil)).Elem()
+}
+
+func (o TableExternalCatalogTableOptionsStorageDescriptorPtrOutput) ToTableExternalCatalogTableOptionsStorageDescriptorPtrOutput() TableExternalCatalogTableOptionsStorageDescriptorPtrOutput {
+	return o
+}
+
+func (o TableExternalCatalogTableOptionsStorageDescriptorPtrOutput) ToTableExternalCatalogTableOptionsStorageDescriptorPtrOutputWithContext(ctx context.Context) TableExternalCatalogTableOptionsStorageDescriptorPtrOutput {
+	return o
+}
+
+func (o TableExternalCatalogTableOptionsStorageDescriptorPtrOutput) Elem() TableExternalCatalogTableOptionsStorageDescriptorOutput {
+	return o.ApplyT(func(v *TableExternalCatalogTableOptionsStorageDescriptor) TableExternalCatalogTableOptionsStorageDescriptor {
+		if v != nil {
+			return *v
+		}
+		var ret TableExternalCatalogTableOptionsStorageDescriptor
+		return ret
+	}).(TableExternalCatalogTableOptionsStorageDescriptorOutput)
+}
+
+// Specifies the fully qualified class name of the InputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcInputFormat"). The maximum length is 128 characters.
+func (o TableExternalCatalogTableOptionsStorageDescriptorPtrOutput) InputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TableExternalCatalogTableOptionsStorageDescriptor) *string {
+		if v == nil {
+			return nil
+		}
+		return v.InputFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// The physical location of the table (e.g. 'gs://spark-dataproc-data/pangea-data/case_sensitive/' or 'gs://spark-dataproc-data/pangea-data/*'). The maximum length is 2056 bytes.
+func (o TableExternalCatalogTableOptionsStorageDescriptorPtrOutput) LocationUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TableExternalCatalogTableOptionsStorageDescriptor) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LocationUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// Specifies the fully qualified class name of the OutputFormat (e.g. "org.apache.hadoop.hive.ql.io.orc.OrcOutputFormat"). The maximum length is 128 characters.
+func (o TableExternalCatalogTableOptionsStorageDescriptorPtrOutput) OutputFormat() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TableExternalCatalogTableOptionsStorageDescriptor) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OutputFormat
+	}).(pulumi.StringPtrOutput)
+}
+
+// Serializer and deserializer information.
+func (o TableExternalCatalogTableOptionsStorageDescriptorPtrOutput) SerdeInfo() TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoPtrOutput {
+	return o.ApplyT(func(v *TableExternalCatalogTableOptionsStorageDescriptor) *TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo {
+		if v == nil {
+			return nil
+		}
+		return v.SerdeInfo
+	}).(TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoPtrOutput)
+}
+
+type TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo struct {
+	// Name of the SerDe. The maximum length is 256 characters.
+	Name *string `pulumi:"name"`
+	// Key-value pairs that define the initialization parameters for the serialization library. Maximum size 10 Kib.
+	Parameters map[string]string `pulumi:"parameters"`
+	// Specifies a fully-qualified class name of the serialization library that is responsible for the translation of data between table representation and the underlying low-level input and output format structures. The maximum length is 256 characters.
+	SerializationLibrary string `pulumi:"serializationLibrary"`
+}
+
+// TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoInput is an input type that accepts TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoArgs and TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoOutput values.
+// You can construct a concrete instance of `TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoInput` via:
+//
+//	TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoArgs{...}
+type TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoInput interface {
+	pulumi.Input
+
+	ToTableExternalCatalogTableOptionsStorageDescriptorSerdeInfoOutput() TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoOutput
+	ToTableExternalCatalogTableOptionsStorageDescriptorSerdeInfoOutputWithContext(context.Context) TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoOutput
+}
+
+type TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoArgs struct {
+	// Name of the SerDe. The maximum length is 256 characters.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Key-value pairs that define the initialization parameters for the serialization library. Maximum size 10 Kib.
+	Parameters pulumi.StringMapInput `pulumi:"parameters"`
+	// Specifies a fully-qualified class name of the serialization library that is responsible for the translation of data between table representation and the underlying low-level input and output format structures. The maximum length is 256 characters.
+	SerializationLibrary pulumi.StringInput `pulumi:"serializationLibrary"`
+}
+
+func (TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo)(nil)).Elem()
+}
+
+func (i TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoArgs) ToTableExternalCatalogTableOptionsStorageDescriptorSerdeInfoOutput() TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoOutput {
+	return i.ToTableExternalCatalogTableOptionsStorageDescriptorSerdeInfoOutputWithContext(context.Background())
+}
+
+func (i TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoArgs) ToTableExternalCatalogTableOptionsStorageDescriptorSerdeInfoOutputWithContext(ctx context.Context) TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoOutput)
+}
+
+func (i TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoArgs) ToTableExternalCatalogTableOptionsStorageDescriptorSerdeInfoPtrOutput() TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoPtrOutput {
+	return i.ToTableExternalCatalogTableOptionsStorageDescriptorSerdeInfoPtrOutputWithContext(context.Background())
+}
+
+func (i TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoArgs) ToTableExternalCatalogTableOptionsStorageDescriptorSerdeInfoPtrOutputWithContext(ctx context.Context) TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoOutput).ToTableExternalCatalogTableOptionsStorageDescriptorSerdeInfoPtrOutputWithContext(ctx)
+}
+
+// TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoPtrInput is an input type that accepts TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoArgs, TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoPtr and TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoPtrOutput values.
+// You can construct a concrete instance of `TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoPtrInput` via:
+//
+//	        TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoArgs{...}
+//
+//	or:
+//
+//	        nil
+type TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoPtrInput interface {
+	pulumi.Input
+
+	ToTableExternalCatalogTableOptionsStorageDescriptorSerdeInfoPtrOutput() TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoPtrOutput
+	ToTableExternalCatalogTableOptionsStorageDescriptorSerdeInfoPtrOutputWithContext(context.Context) TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoPtrOutput
+}
+
+type tableExternalCatalogTableOptionsStorageDescriptorSerdeInfoPtrType TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoArgs
+
+func TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoPtr(v *TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoArgs) TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoPtrInput {
+	return (*tableExternalCatalogTableOptionsStorageDescriptorSerdeInfoPtrType)(v)
+}
+
+func (*tableExternalCatalogTableOptionsStorageDescriptorSerdeInfoPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo)(nil)).Elem()
+}
+
+func (i *tableExternalCatalogTableOptionsStorageDescriptorSerdeInfoPtrType) ToTableExternalCatalogTableOptionsStorageDescriptorSerdeInfoPtrOutput() TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoPtrOutput {
+	return i.ToTableExternalCatalogTableOptionsStorageDescriptorSerdeInfoPtrOutputWithContext(context.Background())
+}
+
+func (i *tableExternalCatalogTableOptionsStorageDescriptorSerdeInfoPtrType) ToTableExternalCatalogTableOptionsStorageDescriptorSerdeInfoPtrOutputWithContext(ctx context.Context) TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoPtrOutput)
+}
+
+type TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoOutput struct{ *pulumi.OutputState }
+
+func (TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo)(nil)).Elem()
+}
+
+func (o TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoOutput) ToTableExternalCatalogTableOptionsStorageDescriptorSerdeInfoOutput() TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoOutput {
+	return o
+}
+
+func (o TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoOutput) ToTableExternalCatalogTableOptionsStorageDescriptorSerdeInfoOutputWithContext(ctx context.Context) TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoOutput {
+	return o
+}
+
+func (o TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoOutput) ToTableExternalCatalogTableOptionsStorageDescriptorSerdeInfoPtrOutput() TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoPtrOutput {
+	return o.ToTableExternalCatalogTableOptionsStorageDescriptorSerdeInfoPtrOutputWithContext(context.Background())
+}
+
+func (o TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoOutput) ToTableExternalCatalogTableOptionsStorageDescriptorSerdeInfoPtrOutputWithContext(ctx context.Context) TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo) *TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo {
+		return &v
+	}).(TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoPtrOutput)
+}
+
+// Name of the SerDe. The maximum length is 256 characters.
+func (o TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Key-value pairs that define the initialization parameters for the serialization library. Maximum size 10 Kib.
+func (o TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo) map[string]string {
+		return v.Parameters
+	}).(pulumi.StringMapOutput)
+}
+
+// Specifies a fully-qualified class name of the serialization library that is responsible for the translation of data between table representation and the underlying low-level input and output format structures. The maximum length is 256 characters.
+func (o TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoOutput) SerializationLibrary() pulumi.StringOutput {
+	return o.ApplyT(func(v TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo) string {
+		return v.SerializationLibrary
+	}).(pulumi.StringOutput)
+}
+
+type TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoPtrOutput struct{ *pulumi.OutputState }
+
+func (TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo)(nil)).Elem()
+}
+
+func (o TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoPtrOutput) ToTableExternalCatalogTableOptionsStorageDescriptorSerdeInfoPtrOutput() TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoPtrOutput {
+	return o
+}
+
+func (o TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoPtrOutput) ToTableExternalCatalogTableOptionsStorageDescriptorSerdeInfoPtrOutputWithContext(ctx context.Context) TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoPtrOutput {
+	return o
+}
+
+func (o TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoPtrOutput) Elem() TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoOutput {
+	return o.ApplyT(func(v *TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo) TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo {
+		if v != nil {
+			return *v
+		}
+		var ret TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo
+		return ret
+	}).(TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoOutput)
+}
+
+// Name of the SerDe. The maximum length is 256 characters.
+func (o TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Key-value pairs that define the initialization parameters for the serialization library. Maximum size 10 Kib.
+func (o TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoPtrOutput) Parameters() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.Parameters
+	}).(pulumi.StringMapOutput)
+}
+
+// Specifies a fully-qualified class name of the serialization library that is responsible for the translation of data between table representation and the underlying low-level input and output format structures. The maximum length is 256 characters.
+func (o TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoPtrOutput) SerializationLibrary() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TableExternalCatalogTableOptionsStorageDescriptorSerdeInfo) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.SerializationLibrary
+	}).(pulumi.StringPtrOutput)
+}
+
 type TableExternalDataConfiguration struct {
 	// Let BigQuery try to autodetect the schema
 	// and format of the table.
@@ -15564,6 +16337,9 @@ func (o TableViewPtrOutput) UseLegacySql() pulumi.BoolPtrOutput {
 }
 
 type GetDatasetAccessType struct {
+	// Condition for the binding. If CEL expression in this field is true, this
+	// access binding will be considered.
+	Conditions []GetDatasetAccessCondition `pulumi:"conditions"`
 	// Grants all resources of particular types in a particular dataset read access to the current dataset.
 	Datasets []GetDatasetAccessDataset `pulumi:"datasets"`
 	// A domain to grant access to. Any users signed in with the
@@ -15615,6 +16391,9 @@ type GetDatasetAccessTypeInput interface {
 }
 
 type GetDatasetAccessTypeArgs struct {
+	// Condition for the binding. If CEL expression in this field is true, this
+	// access binding will be considered.
+	Conditions GetDatasetAccessConditionArrayInput `pulumi:"conditions"`
 	// Grants all resources of particular types in a particular dataset read access to the current dataset.
 	Datasets GetDatasetAccessDatasetArrayInput `pulumi:"datasets"`
 	// A domain to grant access to. Any users signed in with the
@@ -15705,6 +16484,12 @@ func (o GetDatasetAccessTypeOutput) ToGetDatasetAccessTypeOutputWithContext(ctx 
 	return o
 }
 
+// Condition for the binding. If CEL expression in this field is true, this
+// access binding will be considered.
+func (o GetDatasetAccessTypeOutput) Conditions() GetDatasetAccessConditionArrayOutput {
+	return o.ApplyT(func(v GetDatasetAccessType) []GetDatasetAccessCondition { return v.Conditions }).(GetDatasetAccessConditionArrayOutput)
+}
+
 // Grants all resources of particular types in a particular dataset read access to the current dataset.
 func (o GetDatasetAccessTypeOutput) Datasets() GetDatasetAccessDatasetArrayOutput {
 	return o.ApplyT(func(v GetDatasetAccessType) []GetDatasetAccessDataset { return v.Datasets }).(GetDatasetAccessDatasetArrayOutput)
@@ -15787,6 +16572,139 @@ func (o GetDatasetAccessTypeArrayOutput) Index(i pulumi.IntInput) GetDatasetAcce
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatasetAccessType {
 		return vs[0].([]GetDatasetAccessType)[vs[1].(int)]
 	}).(GetDatasetAccessTypeOutput)
+}
+
+type GetDatasetAccessCondition struct {
+	// Description of the expression. This is a longer text which describes the expression,
+	// e.g. when hovered over it in a UI.
+	Description string `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression string `pulumi:"expression"`
+	// String indicating the location of the expression for error reporting, e.g. a file
+	// name and a position in the file.
+	Location string `pulumi:"location"`
+	// Title for the expression, i.e. a short string describing its purpose.
+	// This can be used e.g. in UIs which allow to enter the expression.
+	Title string `pulumi:"title"`
+}
+
+// GetDatasetAccessConditionInput is an input type that accepts GetDatasetAccessConditionArgs and GetDatasetAccessConditionOutput values.
+// You can construct a concrete instance of `GetDatasetAccessConditionInput` via:
+//
+//	GetDatasetAccessConditionArgs{...}
+type GetDatasetAccessConditionInput interface {
+	pulumi.Input
+
+	ToGetDatasetAccessConditionOutput() GetDatasetAccessConditionOutput
+	ToGetDatasetAccessConditionOutputWithContext(context.Context) GetDatasetAccessConditionOutput
+}
+
+type GetDatasetAccessConditionArgs struct {
+	// Description of the expression. This is a longer text which describes the expression,
+	// e.g. when hovered over it in a UI.
+	Description pulumi.StringInput `pulumi:"description"`
+	// Textual representation of an expression in Common Expression Language syntax.
+	Expression pulumi.StringInput `pulumi:"expression"`
+	// String indicating the location of the expression for error reporting, e.g. a file
+	// name and a position in the file.
+	Location pulumi.StringInput `pulumi:"location"`
+	// Title for the expression, i.e. a short string describing its purpose.
+	// This can be used e.g. in UIs which allow to enter the expression.
+	Title pulumi.StringInput `pulumi:"title"`
+}
+
+func (GetDatasetAccessConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatasetAccessCondition)(nil)).Elem()
+}
+
+func (i GetDatasetAccessConditionArgs) ToGetDatasetAccessConditionOutput() GetDatasetAccessConditionOutput {
+	return i.ToGetDatasetAccessConditionOutputWithContext(context.Background())
+}
+
+func (i GetDatasetAccessConditionArgs) ToGetDatasetAccessConditionOutputWithContext(ctx context.Context) GetDatasetAccessConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatasetAccessConditionOutput)
+}
+
+// GetDatasetAccessConditionArrayInput is an input type that accepts GetDatasetAccessConditionArray and GetDatasetAccessConditionArrayOutput values.
+// You can construct a concrete instance of `GetDatasetAccessConditionArrayInput` via:
+//
+//	GetDatasetAccessConditionArray{ GetDatasetAccessConditionArgs{...} }
+type GetDatasetAccessConditionArrayInput interface {
+	pulumi.Input
+
+	ToGetDatasetAccessConditionArrayOutput() GetDatasetAccessConditionArrayOutput
+	ToGetDatasetAccessConditionArrayOutputWithContext(context.Context) GetDatasetAccessConditionArrayOutput
+}
+
+type GetDatasetAccessConditionArray []GetDatasetAccessConditionInput
+
+func (GetDatasetAccessConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatasetAccessCondition)(nil)).Elem()
+}
+
+func (i GetDatasetAccessConditionArray) ToGetDatasetAccessConditionArrayOutput() GetDatasetAccessConditionArrayOutput {
+	return i.ToGetDatasetAccessConditionArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatasetAccessConditionArray) ToGetDatasetAccessConditionArrayOutputWithContext(ctx context.Context) GetDatasetAccessConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatasetAccessConditionArrayOutput)
+}
+
+type GetDatasetAccessConditionOutput struct{ *pulumi.OutputState }
+
+func (GetDatasetAccessConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatasetAccessCondition)(nil)).Elem()
+}
+
+func (o GetDatasetAccessConditionOutput) ToGetDatasetAccessConditionOutput() GetDatasetAccessConditionOutput {
+	return o
+}
+
+func (o GetDatasetAccessConditionOutput) ToGetDatasetAccessConditionOutputWithContext(ctx context.Context) GetDatasetAccessConditionOutput {
+	return o
+}
+
+// Description of the expression. This is a longer text which describes the expression,
+// e.g. when hovered over it in a UI.
+func (o GetDatasetAccessConditionOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatasetAccessCondition) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// Textual representation of an expression in Common Expression Language syntax.
+func (o GetDatasetAccessConditionOutput) Expression() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatasetAccessCondition) string { return v.Expression }).(pulumi.StringOutput)
+}
+
+// String indicating the location of the expression for error reporting, e.g. a file
+// name and a position in the file.
+func (o GetDatasetAccessConditionOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatasetAccessCondition) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// Title for the expression, i.e. a short string describing its purpose.
+// This can be used e.g. in UIs which allow to enter the expression.
+func (o GetDatasetAccessConditionOutput) Title() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatasetAccessCondition) string { return v.Title }).(pulumi.StringOutput)
+}
+
+type GetDatasetAccessConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatasetAccessConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatasetAccessCondition)(nil)).Elem()
+}
+
+func (o GetDatasetAccessConditionArrayOutput) ToGetDatasetAccessConditionArrayOutput() GetDatasetAccessConditionArrayOutput {
+	return o
+}
+
+func (o GetDatasetAccessConditionArrayOutput) ToGetDatasetAccessConditionArrayOutputWithContext(ctx context.Context) GetDatasetAccessConditionArrayOutput {
+	return o
+}
+
+func (o GetDatasetAccessConditionArrayOutput) Index(i pulumi.IntInput) GetDatasetAccessConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatasetAccessCondition {
+		return vs[0].([]GetDatasetAccessCondition)[vs[1].(int)]
+	}).(GetDatasetAccessConditionOutput)
 }
 
 type GetDatasetAccessDataset struct {
@@ -16723,6 +17641,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessAuthorizedDatasetPtrInput)(nil)).Elem(), DatasetAccessAuthorizedDatasetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessAuthorizedDatasetDatasetInput)(nil)).Elem(), DatasetAccessAuthorizedDatasetDatasetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessAuthorizedDatasetDatasetPtrInput)(nil)).Elem(), DatasetAccessAuthorizedDatasetDatasetArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessConditionInput)(nil)).Elem(), DatasetAccessConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessConditionPtrInput)(nil)).Elem(), DatasetAccessConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessDatasetInput)(nil)).Elem(), DatasetAccessDatasetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessDatasetPtrInput)(nil)).Elem(), DatasetAccessDatasetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatasetAccessDatasetDatasetInput)(nil)).Elem(), DatasetAccessDatasetDatasetArgs{})
@@ -16799,6 +17719,12 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TableBiglakeConfigurationPtrInput)(nil)).Elem(), TableBiglakeConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableEncryptionConfigurationInput)(nil)).Elem(), TableEncryptionConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableEncryptionConfigurationPtrInput)(nil)).Elem(), TableEncryptionConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableExternalCatalogTableOptionsInput)(nil)).Elem(), TableExternalCatalogTableOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableExternalCatalogTableOptionsPtrInput)(nil)).Elem(), TableExternalCatalogTableOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableExternalCatalogTableOptionsStorageDescriptorInput)(nil)).Elem(), TableExternalCatalogTableOptionsStorageDescriptorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableExternalCatalogTableOptionsStorageDescriptorPtrInput)(nil)).Elem(), TableExternalCatalogTableOptionsStorageDescriptorArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoInput)(nil)).Elem(), TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoPtrInput)(nil)).Elem(), TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableExternalDataConfigurationInput)(nil)).Elem(), TableExternalDataConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableExternalDataConfigurationPtrInput)(nil)).Elem(), TableExternalDataConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TableExternalDataConfigurationAvroOptionsInput)(nil)).Elem(), TableExternalDataConfigurationAvroOptionsArgs{})
@@ -16841,6 +17767,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TableViewPtrInput)(nil)).Elem(), TableViewArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatasetAccessTypeInput)(nil)).Elem(), GetDatasetAccessTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatasetAccessTypeArrayInput)(nil)).Elem(), GetDatasetAccessTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatasetAccessConditionInput)(nil)).Elem(), GetDatasetAccessConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatasetAccessConditionArrayInput)(nil)).Elem(), GetDatasetAccessConditionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatasetAccessDatasetInput)(nil)).Elem(), GetDatasetAccessDatasetArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatasetAccessDatasetArrayInput)(nil)).Elem(), GetDatasetAccessDatasetArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatasetAccessDatasetDatasetInput)(nil)).Elem(), GetDatasetAccessDatasetDatasetArgs{})
@@ -16903,6 +17831,8 @@ func init() {
 	pulumi.RegisterOutputType(DatasetAccessAuthorizedDatasetPtrOutput{})
 	pulumi.RegisterOutputType(DatasetAccessAuthorizedDatasetDatasetOutput{})
 	pulumi.RegisterOutputType(DatasetAccessAuthorizedDatasetDatasetPtrOutput{})
+	pulumi.RegisterOutputType(DatasetAccessConditionOutput{})
+	pulumi.RegisterOutputType(DatasetAccessConditionPtrOutput{})
 	pulumi.RegisterOutputType(DatasetAccessDatasetOutput{})
 	pulumi.RegisterOutputType(DatasetAccessDatasetPtrOutput{})
 	pulumi.RegisterOutputType(DatasetAccessDatasetDatasetOutput{})
@@ -16979,6 +17909,12 @@ func init() {
 	pulumi.RegisterOutputType(TableBiglakeConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(TableEncryptionConfigurationOutput{})
 	pulumi.RegisterOutputType(TableEncryptionConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(TableExternalCatalogTableOptionsOutput{})
+	pulumi.RegisterOutputType(TableExternalCatalogTableOptionsPtrOutput{})
+	pulumi.RegisterOutputType(TableExternalCatalogTableOptionsStorageDescriptorOutput{})
+	pulumi.RegisterOutputType(TableExternalCatalogTableOptionsStorageDescriptorPtrOutput{})
+	pulumi.RegisterOutputType(TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoOutput{})
+	pulumi.RegisterOutputType(TableExternalCatalogTableOptionsStorageDescriptorSerdeInfoPtrOutput{})
 	pulumi.RegisterOutputType(TableExternalDataConfigurationOutput{})
 	pulumi.RegisterOutputType(TableExternalDataConfigurationPtrOutput{})
 	pulumi.RegisterOutputType(TableExternalDataConfigurationAvroOptionsOutput{})
@@ -17021,6 +17957,8 @@ func init() {
 	pulumi.RegisterOutputType(TableViewPtrOutput{})
 	pulumi.RegisterOutputType(GetDatasetAccessTypeOutput{})
 	pulumi.RegisterOutputType(GetDatasetAccessTypeArrayOutput{})
+	pulumi.RegisterOutputType(GetDatasetAccessConditionOutput{})
+	pulumi.RegisterOutputType(GetDatasetAccessConditionArrayOutput{})
 	pulumi.RegisterOutputType(GetDatasetAccessDatasetOutput{})
 	pulumi.RegisterOutputType(GetDatasetAccessDatasetArrayOutput{})
 	pulumi.RegisterOutputType(GetDatasetAccessDatasetDatasetOutput{})

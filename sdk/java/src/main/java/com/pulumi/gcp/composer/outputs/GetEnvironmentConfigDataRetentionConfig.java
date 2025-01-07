@@ -5,6 +5,7 @@ package com.pulumi.gcp.composer.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.composer.outputs.GetEnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfig;
 import com.pulumi.gcp.composer.outputs.GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig;
 import java.util.List;
 import java.util.Objects;
@@ -12,12 +13,24 @@ import java.util.Objects;
 @CustomType
 public final class GetEnvironmentConfigDataRetentionConfig {
     /**
+     * @return Optional. The configuration setting for database retention.
+     * 
+     */
+    private List<GetEnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfig> airflowMetadataRetentionConfigs;
+    /**
      * @return Optional. The configuration setting for Task Logs.
      * 
      */
     private List<GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig> taskLogsRetentionConfigs;
 
     private GetEnvironmentConfigDataRetentionConfig() {}
+    /**
+     * @return Optional. The configuration setting for database retention.
+     * 
+     */
+    public List<GetEnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfig> airflowMetadataRetentionConfigs() {
+        return this.airflowMetadataRetentionConfigs;
+    }
     /**
      * @return Optional. The configuration setting for Task Logs.
      * 
@@ -35,13 +48,26 @@ public final class GetEnvironmentConfigDataRetentionConfig {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<GetEnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfig> airflowMetadataRetentionConfigs;
         private List<GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig> taskLogsRetentionConfigs;
         public Builder() {}
         public Builder(GetEnvironmentConfigDataRetentionConfig defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.airflowMetadataRetentionConfigs = defaults.airflowMetadataRetentionConfigs;
     	      this.taskLogsRetentionConfigs = defaults.taskLogsRetentionConfigs;
         }
 
+        @CustomType.Setter
+        public Builder airflowMetadataRetentionConfigs(List<GetEnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfig> airflowMetadataRetentionConfigs) {
+            if (airflowMetadataRetentionConfigs == null) {
+              throw new MissingRequiredPropertyException("GetEnvironmentConfigDataRetentionConfig", "airflowMetadataRetentionConfigs");
+            }
+            this.airflowMetadataRetentionConfigs = airflowMetadataRetentionConfigs;
+            return this;
+        }
+        public Builder airflowMetadataRetentionConfigs(GetEnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfig... airflowMetadataRetentionConfigs) {
+            return airflowMetadataRetentionConfigs(List.of(airflowMetadataRetentionConfigs));
+        }
         @CustomType.Setter
         public Builder taskLogsRetentionConfigs(List<GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig> taskLogsRetentionConfigs) {
             if (taskLogsRetentionConfigs == null) {
@@ -55,6 +81,7 @@ public final class GetEnvironmentConfigDataRetentionConfig {
         }
         public GetEnvironmentConfigDataRetentionConfig build() {
             final var _resultValue = new GetEnvironmentConfigDataRetentionConfig();
+            _resultValue.airflowMetadataRetentionConfigs = airflowMetadataRetentionConfigs;
             _resultValue.taskLogsRetentionConfigs = taskLogsRetentionConfigs;
             return _resultValue;
         }

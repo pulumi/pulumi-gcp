@@ -52,6 +52,7 @@ __all__ = [
     'ClientTlsPolicyServerValidationCaCertificateProviderInstance',
     'ClientTlsPolicyServerValidationCaGrpcEndpoint',
     'InterceptDeploymentGroupConnectedEndpointGroup',
+    'InterceptEndpointGroupAssociationLocationsDetail',
     'MirroringDeploymentGroupConnectedEndpointGroup',
     'MirroringEndpointGroupAssociationLocationsDetail',
     'SecurityProfileThreatPreventionProfile',
@@ -1947,6 +1948,53 @@ class InterceptDeploymentGroupConnectedEndpointGroup(dict):
         Output only. A connected intercept endpoint group.
         """
         return pulumi.get(self, "name")
+
+
+@pulumi.output_type
+class InterceptEndpointGroupAssociationLocationsDetail(dict):
+    def __init__(__self__, *,
+                 location: Optional[str] = None,
+                 state: Optional[str] = None):
+        """
+        :param str location: The location of the Intercept Endpoint Group Association, currently restricted to `global`.
+               
+               
+               - - -
+        :param str state: (Output)
+               The association state in this location.
+               Possible values:
+               STATE_UNSPECIFIED
+               ACTIVE
+               OUT_OF_SYNC
+        """
+        if location is not None:
+            pulumi.set(__self__, "location", location)
+        if state is not None:
+            pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter
+    def location(self) -> Optional[str]:
+        """
+        The location of the Intercept Endpoint Group Association, currently restricted to `global`.
+
+
+        - - -
+        """
+        return pulumi.get(self, "location")
+
+    @property
+    @pulumi.getter
+    def state(self) -> Optional[str]:
+        """
+        (Output)
+        The association state in this location.
+        Possible values:
+        STATE_UNSPECIFIED
+        ACTIVE
+        OUT_OF_SYNC
+        """
+        return pulumi.get(self, "state")
 
 
 @pulumi.output_type

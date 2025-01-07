@@ -55,6 +55,11 @@ export type EkmConnectionIamPolicy = import("./ekmConnectionIamPolicy").EkmConne
 export const EkmConnectionIamPolicy: typeof import("./ekmConnectionIamPolicy").EkmConnectionIamPolicy = null as any;
 utilities.lazyLoad(exports, ["EkmConnectionIamPolicy"], () => require("./ekmConnectionIamPolicy"));
 
+export { GetAutokeyConfigArgs, GetAutokeyConfigResult, GetAutokeyConfigOutputArgs } from "./getAutokeyConfig";
+export const getAutokeyConfig: typeof import("./getAutokeyConfig").getAutokeyConfig = null as any;
+export const getAutokeyConfigOutput: typeof import("./getAutokeyConfig").getAutokeyConfigOutput = null as any;
+utilities.lazyLoad(exports, ["getAutokeyConfig","getAutokeyConfigOutput"], () => require("./getAutokeyConfig"));
+
 export { GetCryptoKeyIamPolicyArgs, GetCryptoKeyIamPolicyResult, GetCryptoKeyIamPolicyOutputArgs } from "./getCryptoKeyIamPolicy";
 export const getCryptoKeyIamPolicy: typeof import("./getCryptoKeyIamPolicy").getCryptoKeyIamPolicy = null as any;
 export const getCryptoKeyIamPolicyOutput: typeof import("./getCryptoKeyIamPolicy").getCryptoKeyIamPolicyOutput = null as any;
@@ -109,6 +114,11 @@ export { GetKMSSecretCiphertextArgs, GetKMSSecretCiphertextResult, GetKMSSecretC
 export const getKMSSecretCiphertext: typeof import("./getKMSSecretCiphertext").getKMSSecretCiphertext = null as any;
 export const getKMSSecretCiphertextOutput: typeof import("./getKMSSecretCiphertext").getKMSSecretCiphertextOutput = null as any;
 utilities.lazyLoad(exports, ["getKMSSecretCiphertext","getKMSSecretCiphertextOutput"], () => require("./getKMSSecretCiphertext"));
+
+export { GetKeyHandleArgs, GetKeyHandleResult, GetKeyHandleOutputArgs } from "./getKeyHandle";
+export const getKeyHandle: typeof import("./getKeyHandle").getKeyHandle = null as any;
+export const getKeyHandleOutput: typeof import("./getKeyHandle").getKeyHandleOutput = null as any;
+utilities.lazyLoad(exports, ["getKeyHandle","getKeyHandleOutput"], () => require("./getKeyHandle"));
 
 export { GetKeyRingIamPolicyArgs, GetKeyRingIamPolicyResult, GetKeyRingIamPolicyOutputArgs } from "./getKeyRingIamPolicy";
 export const getKeyRingIamPolicy: typeof import("./getKeyRingIamPolicy").getKeyRingIamPolicy = null as any;

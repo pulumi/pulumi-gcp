@@ -33,14 +33,14 @@ public final class ResizeRequestRequestedRunDurationArgs extends com.pulumi.reso
     }
 
     /**
-     * Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive. Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+     * Span of time at a resolution of a second. Must be from 600 to 604800 inclusive. Note: minimum and maximum allowed range for requestedRunDuration is 10 minutes (600 seconds) and 7 days(604800 seconds) correspondingly.
      * 
      */
     @Import(name="seconds", required=true)
     private Output<String> seconds;
 
     /**
-     * @return Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive. Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+     * @return Span of time at a resolution of a second. Must be from 600 to 604800 inclusive. Note: minimum and maximum allowed range for requestedRunDuration is 10 minutes (600 seconds) and 7 days(604800 seconds) correspondingly.
      * 
      */
     public Output<String> seconds() {
@@ -94,7 +94,7 @@ public final class ResizeRequestRequestedRunDurationArgs extends com.pulumi.reso
         }
 
         /**
-         * @param seconds Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive. Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+         * @param seconds Span of time at a resolution of a second. Must be from 600 to 604800 inclusive. Note: minimum and maximum allowed range for requestedRunDuration is 10 minutes (600 seconds) and 7 days(604800 seconds) correspondingly.
          * 
          * @return builder
          * 
@@ -105,7 +105,7 @@ public final class ResizeRequestRequestedRunDurationArgs extends com.pulumi.reso
         }
 
         /**
-         * @param seconds Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive. Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+         * @param seconds Span of time at a resolution of a second. Must be from 600 to 604800 inclusive. Note: minimum and maximum allowed range for requestedRunDuration is 10 minutes (600 seconds) and 7 days(604800 seconds) correspondingly.
          * 
          * @return builder
          * 

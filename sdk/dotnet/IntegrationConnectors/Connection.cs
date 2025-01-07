@@ -460,7 +460,7 @@ namespace Pulumi.Gcp.IntegrationConnectors
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
-        /// An arbitrary description for the Conection.
+        /// An arbitrary description for the Connection.
         /// </summary>
         [Output("description")]
         public Output<string?> Description { get; private set; } = null!;
@@ -682,7 +682,7 @@ namespace Pulumi.Gcp.IntegrationConnectors
         public Input<string> ConnectorVersion { get; set; } = null!;
 
         /// <summary>
-        /// An arbitrary description for the Conection.
+        /// An arbitrary description for the Connection.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }
@@ -857,7 +857,7 @@ namespace Pulumi.Gcp.IntegrationConnectors
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
-        /// An arbitrary description for the Conection.
+        /// An arbitrary description for the Connection.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }

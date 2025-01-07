@@ -50,6 +50,11 @@ export type DefaultObjectAccessControl = import("./defaultObjectAccessControl").
 export const DefaultObjectAccessControl: typeof import("./defaultObjectAccessControl").DefaultObjectAccessControl = null as any;
 utilities.lazyLoad(exports, ["DefaultObjectAccessControl"], () => require("./defaultObjectAccessControl"));
 
+export { FolderArgs, FolderState } from "./folder";
+export type Folder = import("./folder").Folder;
+export const Folder: typeof import("./folder").Folder = null as any;
+utilities.lazyLoad(exports, ["Folder"], () => require("./folder"));
+
 export { GetBucketArgs, GetBucketResult, GetBucketOutputArgs } from "./getBucket";
 export const getBucket: typeof import("./getBucket").getBucket = null as any;
 export const getBucketOutput: typeof import("./getBucket").getBucketOutput = null as any;
@@ -184,6 +189,8 @@ const _module = {
                 return new DefaultObjectACL(name, <any>undefined, { urn })
             case "gcp:storage/defaultObjectAccessControl:DefaultObjectAccessControl":
                 return new DefaultObjectAccessControl(name, <any>undefined, { urn })
+            case "gcp:storage/folder:Folder":
+                return new Folder(name, <any>undefined, { urn })
             case "gcp:storage/hmacKey:HmacKey":
                 return new HmacKey(name, <any>undefined, { urn })
             case "gcp:storage/insightsReportConfig:InsightsReportConfig":
@@ -220,6 +227,7 @@ pulumi.runtime.registerResourceModule("gcp", "storage/bucketIAMPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "storage/bucketObject", _module)
 pulumi.runtime.registerResourceModule("gcp", "storage/defaultObjectACL", _module)
 pulumi.runtime.registerResourceModule("gcp", "storage/defaultObjectAccessControl", _module)
+pulumi.runtime.registerResourceModule("gcp", "storage/folder", _module)
 pulumi.runtime.registerResourceModule("gcp", "storage/hmacKey", _module)
 pulumi.runtime.registerResourceModule("gcp", "storage/insightsReportConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "storage/managedFolder", _module)

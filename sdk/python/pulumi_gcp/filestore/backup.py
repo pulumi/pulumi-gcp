@@ -25,7 +25,8 @@ class BackupArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  name: Optional[pulumi.Input[str]] = None,
-                 project: Optional[pulumi.Input[str]] = None):
+                 project: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         The set of arguments for constructing a Backup resource.
         :param pulumi.Input[str] location: The name of the location of the instance. This can be a region for ENTERPRISE tier instances.
@@ -48,6 +49,10 @@ class BackupArgs:
                character, which cannot be a dash.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of resource manager tags.
+               Resource manager tag keys and values have the same definition as resource manager tags.
+               Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+               The field is ignored (both PUT & PATCH) when empty.
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "source_file_share", source_file_share)
@@ -60,6 +65,8 @@ class BackupArgs:
             pulumi.set(__self__, "name", name)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter
@@ -158,6 +165,21 @@ class BackupArgs:
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
 
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A map of resource manager tags.
+        Resource manager tag keys and values have the same definition as resource manager tags.
+        Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+        The field is ignored (both PUT & PATCH) when empty.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
 
 @pulumi.input_type
 class _BackupState:
@@ -177,7 +199,8 @@ class _BackupState:
                  source_instance: Optional[pulumi.Input[str]] = None,
                  source_instance_tier: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
-                 storage_bytes: Optional[pulumi.Input[str]] = None):
+                 storage_bytes: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None):
         """
         Input properties used for looking up and filtering Backup resources.
         :param pulumi.Input[str] capacity_gb: The amount of bytes needed to allocate a full copy of the snapshot content.
@@ -210,6 +233,10 @@ class _BackupState:
         :param pulumi.Input[str] source_instance_tier: The service tier of the source Cloud Filestore instance that this backup is created from.
         :param pulumi.Input[str] state: The backup state.
         :param pulumi.Input[str] storage_bytes: The size of the storage used by the backup. As backups share storage, this number is expected to change with backup creation/deletion.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of resource manager tags.
+               Resource manager tag keys and values have the same definition as resource manager tags.
+               Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+               The field is ignored (both PUT & PATCH) when empty.
         """
         if capacity_gb is not None:
             pulumi.set(__self__, "capacity_gb", capacity_gb)
@@ -243,6 +270,8 @@ class _BackupState:
             pulumi.set(__self__, "state", state)
         if storage_bytes is not None:
             pulumi.set(__self__, "storage_bytes", storage_bytes)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
 
     @property
     @pulumi.getter(name="capacityGb")
@@ -450,6 +479,21 @@ class _BackupState:
     def storage_bytes(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "storage_bytes", value)
 
+    @property
+    @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A map of resource manager tags.
+        Resource manager tag keys and values have the same definition as resource manager tags.
+        Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+        The field is ignored (both PUT & PATCH) when empty.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
 
 class Backup(pulumi.CustomResource):
     @overload
@@ -463,6 +507,7 @@ class Backup(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  source_file_share: Optional[pulumi.Input[str]] = None,
                  source_instance: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         """
         A Google Cloud Filestore backup.
@@ -553,6 +598,10 @@ class Backup(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] source_file_share: Name of the file share in the source Cloud Filestore instance that the backup is created from.
         :param pulumi.Input[str] source_instance: The resource name of the source Cloud Filestore instance, in the format projects/{projectId}/locations/{locationId}/instances/{instanceId}, used to create this backup.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of resource manager tags.
+               Resource manager tag keys and values have the same definition as resource manager tags.
+               Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+               The field is ignored (both PUT & PATCH) when empty.
         """
         ...
     @overload
@@ -649,6 +698,7 @@ class Backup(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  source_file_share: Optional[pulumi.Input[str]] = None,
                  source_instance: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -671,6 +721,7 @@ class Backup(pulumi.CustomResource):
             if source_instance is None and not opts.urn:
                 raise TypeError("Missing required property 'source_instance'")
             __props__.__dict__["source_instance"] = source_instance
+            __props__.__dict__["tags"] = tags
             __props__.__dict__["capacity_gb"] = None
             __props__.__dict__["create_time"] = None
             __props__.__dict__["download_bytes"] = None
@@ -707,7 +758,8 @@ class Backup(pulumi.CustomResource):
             source_instance: Optional[pulumi.Input[str]] = None,
             source_instance_tier: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None,
-            storage_bytes: Optional[pulumi.Input[str]] = None) -> 'Backup':
+            storage_bytes: Optional[pulumi.Input[str]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None) -> 'Backup':
         """
         Get an existing Backup resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -745,6 +797,10 @@ class Backup(pulumi.CustomResource):
         :param pulumi.Input[str] source_instance_tier: The service tier of the source Cloud Filestore instance that this backup is created from.
         :param pulumi.Input[str] state: The backup state.
         :param pulumi.Input[str] storage_bytes: The size of the storage used by the backup. As backups share storage, this number is expected to change with backup creation/deletion.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of resource manager tags.
+               Resource manager tag keys and values have the same definition as resource manager tags.
+               Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+               The field is ignored (both PUT & PATCH) when empty.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -766,6 +822,7 @@ class Backup(pulumi.CustomResource):
         __props__.__dict__["source_instance_tier"] = source_instance_tier
         __props__.__dict__["state"] = state
         __props__.__dict__["storage_bytes"] = storage_bytes
+        __props__.__dict__["tags"] = tags
         return Backup(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -909,4 +966,15 @@ class Backup(pulumi.CustomResource):
         The size of the storage used by the backup. As backups share storage, this number is expected to change with backup creation/deletion.
         """
         return pulumi.get(self, "storage_bytes")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+        """
+        A map of resource manager tags.
+        Resource manager tag keys and values have the same definition as resource manager tags.
+        Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+        The field is ignored (both PUT & PATCH) when empty.
+        """
+        return pulumi.get(self, "tags")
 

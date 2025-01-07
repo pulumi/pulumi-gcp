@@ -412,7 +412,7 @@ export class RegionNetworkEndpointGroup extends pulumi.CustomResource {
      * This field is only used for PSC NEGs.
      * Structure is documented below.
      */
-    public readonly pscData!: pulumi.Output<outputs.compute.RegionNetworkEndpointGroupPscData | undefined>;
+    public readonly pscData!: pulumi.Output<outputs.compute.RegionNetworkEndpointGroupPscData>;
     /**
      * This field is only used for PSC and INTERNET NEGs.
      * The target service url used to set up private service connection to

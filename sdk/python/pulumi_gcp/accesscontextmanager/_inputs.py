@@ -800,7 +800,7 @@ if not MYPY:
         """
         vpc_ip_subnetworks: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
-        CIDR block IP subnetwork specification. Must be IPv4.
+        A list of CIDR block IP subnetwork specification. Must be IPv4.
         """
 elif False:
     AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArgsDict: TypeAlias = Mapping[str, Any]
@@ -812,7 +812,7 @@ class AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArgs:
                  vpc_ip_subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
         :param pulumi.Input[str] network: Required. Network name to be allowed by this Access Level. Networks of foreign organizations requires `compute.network.get` permission to be granted to caller.
-        :param pulumi.Input[Sequence[pulumi.Input[str]]] vpc_ip_subnetworks: CIDR block IP subnetwork specification. Must be IPv4.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] vpc_ip_subnetworks: A list of CIDR block IP subnetwork specification. Must be IPv4.
         """
         pulumi.set(__self__, "network", network)
         if vpc_ip_subnetworks is not None:
@@ -834,7 +834,7 @@ class AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArgs:
     @pulumi.getter(name="vpcIpSubnetworks")
     def vpc_ip_subnetworks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
         """
-        CIDR block IP subnetwork specification. Must be IPv4.
+        A list of CIDR block IP subnetwork specification. Must be IPv4.
         """
         return pulumi.get(self, "vpc_ip_subnetworks")
 

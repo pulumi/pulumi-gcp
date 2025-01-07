@@ -2519,7 +2519,7 @@ if not MYPY:
     class ConnectionEventingRuntimeDataStatusArgsDict(TypedDict):
         description: NotRequired[pulumi.Input[str]]
         """
-        An arbitrary description for the Conection.
+        An arbitrary description for the Connection.
         """
         state: NotRequired[pulumi.Input[str]]
         """
@@ -2535,7 +2535,7 @@ class ConnectionEventingRuntimeDataStatusArgs:
                  description: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] description: An arbitrary description for the Conection.
+        :param pulumi.Input[str] description: An arbitrary description for the Connection.
         :param pulumi.Input[str] state: (Output)
                State of the Eventing
         """
@@ -2548,7 +2548,7 @@ class ConnectionEventingRuntimeDataStatusArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        An arbitrary description for the Conection.
+        An arbitrary description for the Connection.
         """
         return pulumi.get(self, "description")
 
@@ -3299,7 +3299,7 @@ if not MYPY:
     class ConnectionStatusArgsDict(TypedDict):
         description: NotRequired[pulumi.Input[str]]
         """
-        An arbitrary description for the Conection.
+        An arbitrary description for the Connection.
         """
         state: NotRequired[pulumi.Input[str]]
         """
@@ -3322,7 +3322,7 @@ class ConnectionStatusArgs:
                  state: Optional[pulumi.Input[str]] = None,
                  status: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] description: An arbitrary description for the Conection.
+        :param pulumi.Input[str] description: An arbitrary description for the Connection.
         :param pulumi.Input[str] state: (Output)
                State of the Eventing
         :param pulumi.Input[str] status: (Output)
@@ -3340,7 +3340,7 @@ class ConnectionStatusArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        An arbitrary description for the Conection.
+        An arbitrary description for the Connection.
         """
         return pulumi.get(self, "description")
 

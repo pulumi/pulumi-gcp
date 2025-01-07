@@ -27,7 +27,8 @@ class WorkstationArgs:
                  display_name: Optional[pulumi.Input[str]] = None,
                  env: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
-                 project: Optional[pulumi.Input[str]] = None):
+                 project: Optional[pulumi.Input[str]] = None,
+                 source_workstation: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Workstation resource.
         :param pulumi.Input[str] location: The location where the workstation parent resources reside.
@@ -47,6 +48,8 @@ class WorkstationArgs:
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[str] source_workstation: Full resource name of the source workstation from which the workstation's persistent
+               directories will be cloned from during creation.
         """
         pulumi.set(__self__, "location", location)
         pulumi.set(__self__, "workstation_cluster_id", workstation_cluster_id)
@@ -62,6 +65,8 @@ class WorkstationArgs:
             pulumi.set(__self__, "labels", labels)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if source_workstation is not None:
+            pulumi.set(__self__, "source_workstation", source_workstation)
 
     @property
     @pulumi.getter
@@ -179,6 +184,19 @@ class WorkstationArgs:
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
 
+    @property
+    @pulumi.getter(name="sourceWorkstation")
+    def source_workstation(self) -> Optional[pulumi.Input[str]]:
+        """
+        Full resource name of the source workstation from which the workstation's persistent
+        directories will be cloned from during creation.
+        """
+        return pulumi.get(self, "source_workstation")
+
+    @source_workstation.setter
+    def source_workstation(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_workstation", value)
+
 
 @pulumi.input_type
 class _WorkstationState:
@@ -195,6 +213,7 @@ class _WorkstationState:
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 source_workstation: Optional[pulumi.Input[str]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  uid: Optional[pulumi.Input[str]] = None,
                  workstation_cluster_id: Optional[pulumi.Input[str]] = None,
@@ -224,6 +243,8 @@ class _WorkstationState:
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
+        :param pulumi.Input[str] source_workstation: Full resource name of the source workstation from which the workstation's persistent
+               directories will be cloned from during creation.
         :param pulumi.Input[str] state: Current state of the workstation.
         :param pulumi.Input[str] uid: A system-assigned unique identified for this resource.
         :param pulumi.Input[str] workstation_cluster_id: The ID of the parent workstation cluster.
@@ -254,6 +275,8 @@ class _WorkstationState:
             pulumi.set(__self__, "project", project)
         if pulumi_labels is not None:
             pulumi.set(__self__, "pulumi_labels", pulumi_labels)
+        if source_workstation is not None:
+            pulumi.set(__self__, "source_workstation", source_workstation)
         if state is not None:
             pulumi.set(__self__, "state", state)
         if uid is not None:
@@ -418,6 +441,19 @@ class _WorkstationState:
         pulumi.set(self, "pulumi_labels", value)
 
     @property
+    @pulumi.getter(name="sourceWorkstation")
+    def source_workstation(self) -> Optional[pulumi.Input[str]]:
+        """
+        Full resource name of the source workstation from which the workstation's persistent
+        directories will be cloned from during creation.
+        """
+        return pulumi.get(self, "source_workstation")
+
+    @source_workstation.setter
+    def source_workstation(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_workstation", value)
+
+    @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
@@ -489,6 +525,7 @@ class Workstation(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 source_workstation: Optional[pulumi.Input[str]] = None,
                  workstation_cluster_id: Optional[pulumi.Input[str]] = None,
                  workstation_config_id: Optional[pulumi.Input[str]] = None,
                  workstation_id: Optional[pulumi.Input[str]] = None,
@@ -588,6 +625,8 @@ class Workstation(pulumi.CustomResource):
                - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[str] source_workstation: Full resource name of the source workstation from which the workstation's persistent
+               directories will be cloned from during creation.
         :param pulumi.Input[str] workstation_cluster_id: The ID of the parent workstation cluster.
         :param pulumi.Input[str] workstation_config_id: The ID of the parent workstation cluster config.
         :param pulumi.Input[str] workstation_id: ID to use for the workstation.
@@ -698,6 +737,7 @@ class Workstation(pulumi.CustomResource):
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 source_workstation: Optional[pulumi.Input[str]] = None,
                  workstation_cluster_id: Optional[pulumi.Input[str]] = None,
                  workstation_config_id: Optional[pulumi.Input[str]] = None,
                  workstation_id: Optional[pulumi.Input[str]] = None,
@@ -718,6 +758,7 @@ class Workstation(pulumi.CustomResource):
                 raise TypeError("Missing required property 'location'")
             __props__.__dict__["location"] = location
             __props__.__dict__["project"] = project
+            __props__.__dict__["source_workstation"] = source_workstation
             if workstation_cluster_id is None and not opts.urn:
                 raise TypeError("Missing required property 'workstation_cluster_id'")
             __props__.__dict__["workstation_cluster_id"] = workstation_cluster_id
@@ -759,6 +800,7 @@ class Workstation(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            source_workstation: Optional[pulumi.Input[str]] = None,
             state: Optional[pulumi.Input[str]] = None,
             uid: Optional[pulumi.Input[str]] = None,
             workstation_cluster_id: Optional[pulumi.Input[str]] = None,
@@ -793,6 +835,8 @@ class Workstation(pulumi.CustomResource):
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
+        :param pulumi.Input[str] source_workstation: Full resource name of the source workstation from which the workstation's persistent
+               directories will be cloned from during creation.
         :param pulumi.Input[str] state: Current state of the workstation.
         :param pulumi.Input[str] uid: A system-assigned unique identified for this resource.
         :param pulumi.Input[str] workstation_cluster_id: The ID of the parent workstation cluster.
@@ -815,6 +859,7 @@ class Workstation(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["project"] = project
         __props__.__dict__["pulumi_labels"] = pulumi_labels
+        __props__.__dict__["source_workstation"] = source_workstation
         __props__.__dict__["state"] = state
         __props__.__dict__["uid"] = uid
         __props__.__dict__["workstation_cluster_id"] = workstation_cluster_id
@@ -925,6 +970,15 @@ class Workstation(pulumi.CustomResource):
         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
+
+    @property
+    @pulumi.getter(name="sourceWorkstation")
+    def source_workstation(self) -> pulumi.Output[Optional[str]]:
+        """
+        Full resource name of the source workstation from which the workstation's persistent
+        directories will be cloned from during creation.
+        """
+        return pulumi.get(self, "source_workstation")
 
     @property
     @pulumi.getter

@@ -5,7 +5,9 @@ package com.pulumi.gcp.datastream.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.datastream.inputs.StreamSourceConfigMysqlSourceConfigBinaryLogPositionArgs;
 import com.pulumi.gcp.datastream.inputs.StreamSourceConfigMysqlSourceConfigExcludeObjectsArgs;
+import com.pulumi.gcp.datastream.inputs.StreamSourceConfigMysqlSourceConfigGtidArgs;
 import com.pulumi.gcp.datastream.inputs.StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs;
 import java.lang.Integer;
 import java.util.Objects;
@@ -16,6 +18,21 @@ import javax.annotation.Nullable;
 public final class StreamSourceConfigMysqlSourceConfigArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final StreamSourceConfigMysqlSourceConfigArgs Empty = new StreamSourceConfigMysqlSourceConfigArgs();
+
+    /**
+     * CDC reader reads from binary logs replication cdc method.
+     * 
+     */
+    @Import(name="binaryLogPosition")
+    private @Nullable Output<StreamSourceConfigMysqlSourceConfigBinaryLogPositionArgs> binaryLogPosition;
+
+    /**
+     * @return CDC reader reads from binary logs replication cdc method.
+     * 
+     */
+    public Optional<Output<StreamSourceConfigMysqlSourceConfigBinaryLogPositionArgs>> binaryLogPosition() {
+        return Optional.ofNullable(this.binaryLogPosition);
+    }
 
     /**
      * MySQL objects to exclude from the stream.
@@ -32,6 +49,21 @@ public final class StreamSourceConfigMysqlSourceConfigArgs extends com.pulumi.re
      */
     public Optional<Output<StreamSourceConfigMysqlSourceConfigExcludeObjectsArgs>> excludeObjects() {
         return Optional.ofNullable(this.excludeObjects);
+    }
+
+    /**
+     * CDC reader reads from gtid based replication.
+     * 
+     */
+    @Import(name="gtid")
+    private @Nullable Output<StreamSourceConfigMysqlSourceConfigGtidArgs> gtid;
+
+    /**
+     * @return CDC reader reads from gtid based replication.
+     * 
+     */
+    public Optional<Output<StreamSourceConfigMysqlSourceConfigGtidArgs>> gtid() {
+        return Optional.ofNullable(this.gtid);
     }
 
     /**
@@ -88,7 +120,9 @@ public final class StreamSourceConfigMysqlSourceConfigArgs extends com.pulumi.re
     private StreamSourceConfigMysqlSourceConfigArgs() {}
 
     private StreamSourceConfigMysqlSourceConfigArgs(StreamSourceConfigMysqlSourceConfigArgs $) {
+        this.binaryLogPosition = $.binaryLogPosition;
         this.excludeObjects = $.excludeObjects;
+        this.gtid = $.gtid;
         this.includeObjects = $.includeObjects;
         this.maxConcurrentBackfillTasks = $.maxConcurrentBackfillTasks;
         this.maxConcurrentCdcTasks = $.maxConcurrentCdcTasks;
@@ -113,6 +147,27 @@ public final class StreamSourceConfigMysqlSourceConfigArgs extends com.pulumi.re
         }
 
         /**
+         * @param binaryLogPosition CDC reader reads from binary logs replication cdc method.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder binaryLogPosition(@Nullable Output<StreamSourceConfigMysqlSourceConfigBinaryLogPositionArgs> binaryLogPosition) {
+            $.binaryLogPosition = binaryLogPosition;
+            return this;
+        }
+
+        /**
+         * @param binaryLogPosition CDC reader reads from binary logs replication cdc method.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder binaryLogPosition(StreamSourceConfigMysqlSourceConfigBinaryLogPositionArgs binaryLogPosition) {
+            return binaryLogPosition(Output.of(binaryLogPosition));
+        }
+
+        /**
          * @param excludeObjects MySQL objects to exclude from the stream.
          * Structure is documented below.
          * 
@@ -133,6 +188,27 @@ public final class StreamSourceConfigMysqlSourceConfigArgs extends com.pulumi.re
          */
         public Builder excludeObjects(StreamSourceConfigMysqlSourceConfigExcludeObjectsArgs excludeObjects) {
             return excludeObjects(Output.of(excludeObjects));
+        }
+
+        /**
+         * @param gtid CDC reader reads from gtid based replication.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gtid(@Nullable Output<StreamSourceConfigMysqlSourceConfigGtidArgs> gtid) {
+            $.gtid = gtid;
+            return this;
+        }
+
+        /**
+         * @param gtid CDC reader reads from gtid based replication.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gtid(StreamSourceConfigMysqlSourceConfigGtidArgs gtid) {
+            return gtid(Output.of(gtid));
         }
 
         /**

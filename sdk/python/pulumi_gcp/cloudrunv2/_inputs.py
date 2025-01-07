@@ -4480,7 +4480,8 @@ if not MYPY:
     class ServiceTemplateScalingArgsDict(TypedDict):
         max_instance_count: NotRequired[pulumi.Input[int]]
         """
-        Maximum number of serving instances that this resource should have.
+        Maximum number of serving instances that this resource should have. Must not be less than minimum instance count. If absent, Cloud Run will calculate
+        a default value based on the project's available container instances quota in the region and specified instance size.
         """
         min_instance_count: NotRequired[pulumi.Input[int]]
         """
@@ -4495,7 +4496,8 @@ class ServiceTemplateScalingArgs:
                  max_instance_count: Optional[pulumi.Input[int]] = None,
                  min_instance_count: Optional[pulumi.Input[int]] = None):
         """
-        :param pulumi.Input[int] max_instance_count: Maximum number of serving instances that this resource should have.
+        :param pulumi.Input[int] max_instance_count: Maximum number of serving instances that this resource should have. Must not be less than minimum instance count. If absent, Cloud Run will calculate
+               a default value based on the project's available container instances quota in the region and specified instance size.
         :param pulumi.Input[int] min_instance_count: Minimum number of instances for the service, to be divided among all revisions receiving traffic.
         """
         if max_instance_count is not None:
@@ -4507,7 +4509,8 @@ class ServiceTemplateScalingArgs:
     @pulumi.getter(name="maxInstanceCount")
     def max_instance_count(self) -> Optional[pulumi.Input[int]]:
         """
-        Maximum number of serving instances that this resource should have.
+        Maximum number of serving instances that this resource should have. Must not be less than minimum instance count. If absent, Cloud Run will calculate
+        a default value based on the project's available container instances quota in the region and specified instance size.
         """
         return pulumi.get(self, "max_instance_count")
 

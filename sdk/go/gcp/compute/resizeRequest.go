@@ -16,13 +16,13 @@ import (
 //
 // Resize Requests are the Managed Instance Group implementation of Dynamic Workload Scheduler Flex Start.
 //
-// With Dynamic Workload Scheduler in Flex Start mode, you submit a GPU capacity request for your AI/ML jobs by indicating how many you need, a duration, and your preferred region. Dynamic Workload Scheduler intelligently persists the request; once the capacity becomes available, it automatically provisions your VMs enabling your workloads to run continuously for the entire duration of the capacity allocation.
+// With Dynamic Workload Scheduler in Flex Start mode, you submit a GPU capacity request for your AI/ML jobs by indicating how many you need, a duration, and your preferred zone. Dynamic Workload Scheduler intelligently persists the request; once the capacity becomes available, it automatically provisions your VMs enabling your workloads to run continuously for the entire duration of the capacity allocation.
 //
 // To get more information about ResizeRequest, see:
 //
 // * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagerResizeRequests)
 // * How-to Guides
-//   - [QUICKSTART_TITLE](https://cloud.google.com/compute/docs/instance-groups/create-resize-requests-mig)
+//   - [About resize requests in a MIG](https://cloud.google.com/compute/docs/instance-groups/about-resize-requests-mig)
 //
 // ## Example Usage
 //
@@ -156,9 +156,7 @@ type ResizeRequest struct {
 	CreationTimestamp pulumi.StringOutput `pulumi:"creationTimestamp"`
 	// An optional description of this resize-request.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
-	// The name of the managed instance group. The name should conform to RFC1035 or be a resource ID.
-	// Authorization requires the following IAM permission on the specified resource instanceGroupManager:
-	// *compute.instanceGroupManagers.update
+	// The reference of the instance group manager this ResizeRequest is a part of.
 	//
 	// ***
 	InstanceGroupManager pulumi.StringOutput `pulumi:"instanceGroupManager"`
@@ -172,12 +170,12 @@ type ResizeRequest struct {
 	RequestedRunDuration ResizeRequestRequestedRunDurationPtrOutput `pulumi:"requestedRunDuration"`
 	// The number of instances to be created by this resize request. The group's target size will be increased by this number.
 	ResizeBy pulumi.IntOutput `pulumi:"resizeBy"`
-	// [Output only] Current state of the request.
+	// Current state of the request.
 	State pulumi.StringOutput `pulumi:"state"`
-	// [Output only] Status of the request.
+	// Status of the request.
 	// Structure is documented below.
 	Statuses ResizeRequestStatusArrayOutput `pulumi:"statuses"`
-	// Name of the compute zone scoping this request. Name should conform to RFC1035.
+	// The reference of the compute zone scoping this request.
 	Zone pulumi.StringOutput `pulumi:"zone"`
 }
 
@@ -224,9 +222,7 @@ type resizeRequestState struct {
 	CreationTimestamp *string `pulumi:"creationTimestamp"`
 	// An optional description of this resize-request.
 	Description *string `pulumi:"description"`
-	// The name of the managed instance group. The name should conform to RFC1035 or be a resource ID.
-	// Authorization requires the following IAM permission on the specified resource instanceGroupManager:
-	// *compute.instanceGroupManagers.update
+	// The reference of the instance group manager this ResizeRequest is a part of.
 	//
 	// ***
 	InstanceGroupManager *string `pulumi:"instanceGroupManager"`
@@ -240,12 +236,12 @@ type resizeRequestState struct {
 	RequestedRunDuration *ResizeRequestRequestedRunDuration `pulumi:"requestedRunDuration"`
 	// The number of instances to be created by this resize request. The group's target size will be increased by this number.
 	ResizeBy *int `pulumi:"resizeBy"`
-	// [Output only] Current state of the request.
+	// Current state of the request.
 	State *string `pulumi:"state"`
-	// [Output only] Status of the request.
+	// Status of the request.
 	// Structure is documented below.
 	Statuses []ResizeRequestStatus `pulumi:"statuses"`
-	// Name of the compute zone scoping this request. Name should conform to RFC1035.
+	// The reference of the compute zone scoping this request.
 	Zone *string `pulumi:"zone"`
 }
 
@@ -254,9 +250,7 @@ type ResizeRequestState struct {
 	CreationTimestamp pulumi.StringPtrInput
 	// An optional description of this resize-request.
 	Description pulumi.StringPtrInput
-	// The name of the managed instance group. The name should conform to RFC1035 or be a resource ID.
-	// Authorization requires the following IAM permission on the specified resource instanceGroupManager:
-	// *compute.instanceGroupManagers.update
+	// The reference of the instance group manager this ResizeRequest is a part of.
 	//
 	// ***
 	InstanceGroupManager pulumi.StringPtrInput
@@ -270,12 +264,12 @@ type ResizeRequestState struct {
 	RequestedRunDuration ResizeRequestRequestedRunDurationPtrInput
 	// The number of instances to be created by this resize request. The group's target size will be increased by this number.
 	ResizeBy pulumi.IntPtrInput
-	// [Output only] Current state of the request.
+	// Current state of the request.
 	State pulumi.StringPtrInput
-	// [Output only] Status of the request.
+	// Status of the request.
 	// Structure is documented below.
 	Statuses ResizeRequestStatusArrayInput
-	// Name of the compute zone scoping this request. Name should conform to RFC1035.
+	// The reference of the compute zone scoping this request.
 	Zone pulumi.StringPtrInput
 }
 
@@ -286,9 +280,7 @@ func (ResizeRequestState) ElementType() reflect.Type {
 type resizeRequestArgs struct {
 	// An optional description of this resize-request.
 	Description *string `pulumi:"description"`
-	// The name of the managed instance group. The name should conform to RFC1035 or be a resource ID.
-	// Authorization requires the following IAM permission on the specified resource instanceGroupManager:
-	// *compute.instanceGroupManagers.update
+	// The reference of the instance group manager this ResizeRequest is a part of.
 	//
 	// ***
 	InstanceGroupManager string `pulumi:"instanceGroupManager"`
@@ -302,7 +294,7 @@ type resizeRequestArgs struct {
 	RequestedRunDuration *ResizeRequestRequestedRunDuration `pulumi:"requestedRunDuration"`
 	// The number of instances to be created by this resize request. The group's target size will be increased by this number.
 	ResizeBy int `pulumi:"resizeBy"`
-	// Name of the compute zone scoping this request. Name should conform to RFC1035.
+	// The reference of the compute zone scoping this request.
 	Zone string `pulumi:"zone"`
 }
 
@@ -310,9 +302,7 @@ type resizeRequestArgs struct {
 type ResizeRequestArgs struct {
 	// An optional description of this resize-request.
 	Description pulumi.StringPtrInput
-	// The name of the managed instance group. The name should conform to RFC1035 or be a resource ID.
-	// Authorization requires the following IAM permission on the specified resource instanceGroupManager:
-	// *compute.instanceGroupManagers.update
+	// The reference of the instance group manager this ResizeRequest is a part of.
 	//
 	// ***
 	InstanceGroupManager pulumi.StringInput
@@ -326,7 +316,7 @@ type ResizeRequestArgs struct {
 	RequestedRunDuration ResizeRequestRequestedRunDurationPtrInput
 	// The number of instances to be created by this resize request. The group's target size will be increased by this number.
 	ResizeBy pulumi.IntInput
-	// Name of the compute zone scoping this request. Name should conform to RFC1035.
+	// The reference of the compute zone scoping this request.
 	Zone pulumi.StringInput
 }
 
@@ -427,9 +417,7 @@ func (o ResizeRequestOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ResizeRequest) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
 }
 
-// The name of the managed instance group. The name should conform to RFC1035 or be a resource ID.
-// Authorization requires the following IAM permission on the specified resource instanceGroupManager:
-// *compute.instanceGroupManagers.update
+// The reference of the instance group manager this ResizeRequest is a part of.
 //
 // ***
 func (o ResizeRequestOutput) InstanceGroupManager() pulumi.StringOutput {
@@ -458,18 +446,18 @@ func (o ResizeRequestOutput) ResizeBy() pulumi.IntOutput {
 	return o.ApplyT(func(v *ResizeRequest) pulumi.IntOutput { return v.ResizeBy }).(pulumi.IntOutput)
 }
 
-// [Output only] Current state of the request.
+// Current state of the request.
 func (o ResizeRequestOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResizeRequest) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }
 
-// [Output only] Status of the request.
+// Status of the request.
 // Structure is documented below.
 func (o ResizeRequestOutput) Statuses() ResizeRequestStatusArrayOutput {
 	return o.ApplyT(func(v *ResizeRequest) ResizeRequestStatusArrayOutput { return v.Statuses }).(ResizeRequestStatusArrayOutput)
 }
 
-// Name of the compute zone scoping this request. Name should conform to RFC1035.
+// The reference of the compute zone scoping this request.
 func (o ResizeRequestOutput) Zone() pulumi.StringOutput {
 	return o.ApplyT(func(v *ResizeRequest) pulumi.StringOutput { return v.Zone }).(pulumi.StringOutput)
 }

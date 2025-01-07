@@ -20,6 +20,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly bool? AutomaticRestart;
         /// <summary>
+        /// Specifies the availability domain to place the instance in. The value must be a number between 1 and the number of availability domains specified in the spread placement policy attached to the instance.
+        /// </summary>
+        public readonly int? AvailabilityDomain;
+        /// <summary>
         /// Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
         /// </summary>
         public readonly int? HostErrorTimeoutSeconds;
@@ -81,6 +85,8 @@ namespace Pulumi.Gcp.Compute.Outputs
         private RegionInstanceTemplateScheduling(
             bool? automaticRestart,
 
+            int? availabilityDomain,
+
             int? hostErrorTimeoutSeconds,
 
             string? instanceTerminationAction,
@@ -104,6 +110,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             string? provisioningModel)
         {
             AutomaticRestart = automaticRestart;
+            AvailabilityDomain = availabilityDomain;
             HostErrorTimeoutSeconds = hostErrorTimeoutSeconds;
             InstanceTerminationAction = instanceTerminationAction;
             LocalSsdRecoveryTimeouts = localSsdRecoveryTimeouts;

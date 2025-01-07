@@ -11503,6 +11503,3567 @@ func (o ScopeStateTypeArrayOutput) Index(i pulumi.IntInput) ScopeStateTypeOutput
 	}).(ScopeStateTypeOutput)
 }
 
+type GetFeatureFleetDefaultMemberConfig struct {
+	// Config Management spec
+	Configmanagements []GetFeatureFleetDefaultMemberConfigConfigmanagement `pulumi:"configmanagements"`
+	// Service Mesh spec
+	Meshes []GetFeatureFleetDefaultMemberConfigMesh `pulumi:"meshes"`
+	// Policy Controller spec
+	Policycontrollers []GetFeatureFleetDefaultMemberConfigPolicycontroller `pulumi:"policycontrollers"`
+}
+
+// GetFeatureFleetDefaultMemberConfigInput is an input type that accepts GetFeatureFleetDefaultMemberConfigArgs and GetFeatureFleetDefaultMemberConfigOutput values.
+// You can construct a concrete instance of `GetFeatureFleetDefaultMemberConfigInput` via:
+//
+//	GetFeatureFleetDefaultMemberConfigArgs{...}
+type GetFeatureFleetDefaultMemberConfigInput interface {
+	pulumi.Input
+
+	ToGetFeatureFleetDefaultMemberConfigOutput() GetFeatureFleetDefaultMemberConfigOutput
+	ToGetFeatureFleetDefaultMemberConfigOutputWithContext(context.Context) GetFeatureFleetDefaultMemberConfigOutput
+}
+
+type GetFeatureFleetDefaultMemberConfigArgs struct {
+	// Config Management spec
+	Configmanagements GetFeatureFleetDefaultMemberConfigConfigmanagementArrayInput `pulumi:"configmanagements"`
+	// Service Mesh spec
+	Meshes GetFeatureFleetDefaultMemberConfigMeshArrayInput `pulumi:"meshes"`
+	// Policy Controller spec
+	Policycontrollers GetFeatureFleetDefaultMemberConfigPolicycontrollerArrayInput `pulumi:"policycontrollers"`
+}
+
+func (GetFeatureFleetDefaultMemberConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureFleetDefaultMemberConfig)(nil)).Elem()
+}
+
+func (i GetFeatureFleetDefaultMemberConfigArgs) ToGetFeatureFleetDefaultMemberConfigOutput() GetFeatureFleetDefaultMemberConfigOutput {
+	return i.ToGetFeatureFleetDefaultMemberConfigOutputWithContext(context.Background())
+}
+
+func (i GetFeatureFleetDefaultMemberConfigArgs) ToGetFeatureFleetDefaultMemberConfigOutputWithContext(ctx context.Context) GetFeatureFleetDefaultMemberConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureFleetDefaultMemberConfigOutput)
+}
+
+// GetFeatureFleetDefaultMemberConfigArrayInput is an input type that accepts GetFeatureFleetDefaultMemberConfigArray and GetFeatureFleetDefaultMemberConfigArrayOutput values.
+// You can construct a concrete instance of `GetFeatureFleetDefaultMemberConfigArrayInput` via:
+//
+//	GetFeatureFleetDefaultMemberConfigArray{ GetFeatureFleetDefaultMemberConfigArgs{...} }
+type GetFeatureFleetDefaultMemberConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetFeatureFleetDefaultMemberConfigArrayOutput() GetFeatureFleetDefaultMemberConfigArrayOutput
+	ToGetFeatureFleetDefaultMemberConfigArrayOutputWithContext(context.Context) GetFeatureFleetDefaultMemberConfigArrayOutput
+}
+
+type GetFeatureFleetDefaultMemberConfigArray []GetFeatureFleetDefaultMemberConfigInput
+
+func (GetFeatureFleetDefaultMemberConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFeatureFleetDefaultMemberConfig)(nil)).Elem()
+}
+
+func (i GetFeatureFleetDefaultMemberConfigArray) ToGetFeatureFleetDefaultMemberConfigArrayOutput() GetFeatureFleetDefaultMemberConfigArrayOutput {
+	return i.ToGetFeatureFleetDefaultMemberConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetFeatureFleetDefaultMemberConfigArray) ToGetFeatureFleetDefaultMemberConfigArrayOutputWithContext(ctx context.Context) GetFeatureFleetDefaultMemberConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureFleetDefaultMemberConfigArrayOutput)
+}
+
+type GetFeatureFleetDefaultMemberConfigOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureFleetDefaultMemberConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureFleetDefaultMemberConfig)(nil)).Elem()
+}
+
+func (o GetFeatureFleetDefaultMemberConfigOutput) ToGetFeatureFleetDefaultMemberConfigOutput() GetFeatureFleetDefaultMemberConfigOutput {
+	return o
+}
+
+func (o GetFeatureFleetDefaultMemberConfigOutput) ToGetFeatureFleetDefaultMemberConfigOutputWithContext(ctx context.Context) GetFeatureFleetDefaultMemberConfigOutput {
+	return o
+}
+
+// Config Management spec
+func (o GetFeatureFleetDefaultMemberConfigOutput) Configmanagements() GetFeatureFleetDefaultMemberConfigConfigmanagementArrayOutput {
+	return o.ApplyT(func(v GetFeatureFleetDefaultMemberConfig) []GetFeatureFleetDefaultMemberConfigConfigmanagement {
+		return v.Configmanagements
+	}).(GetFeatureFleetDefaultMemberConfigConfigmanagementArrayOutput)
+}
+
+// Service Mesh spec
+func (o GetFeatureFleetDefaultMemberConfigOutput) Meshes() GetFeatureFleetDefaultMemberConfigMeshArrayOutput {
+	return o.ApplyT(func(v GetFeatureFleetDefaultMemberConfig) []GetFeatureFleetDefaultMemberConfigMesh { return v.Meshes }).(GetFeatureFleetDefaultMemberConfigMeshArrayOutput)
+}
+
+// Policy Controller spec
+func (o GetFeatureFleetDefaultMemberConfigOutput) Policycontrollers() GetFeatureFleetDefaultMemberConfigPolicycontrollerArrayOutput {
+	return o.ApplyT(func(v GetFeatureFleetDefaultMemberConfig) []GetFeatureFleetDefaultMemberConfigPolicycontroller {
+		return v.Policycontrollers
+	}).(GetFeatureFleetDefaultMemberConfigPolicycontrollerArrayOutput)
+}
+
+type GetFeatureFleetDefaultMemberConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureFleetDefaultMemberConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFeatureFleetDefaultMemberConfig)(nil)).Elem()
+}
+
+func (o GetFeatureFleetDefaultMemberConfigArrayOutput) ToGetFeatureFleetDefaultMemberConfigArrayOutput() GetFeatureFleetDefaultMemberConfigArrayOutput {
+	return o
+}
+
+func (o GetFeatureFleetDefaultMemberConfigArrayOutput) ToGetFeatureFleetDefaultMemberConfigArrayOutputWithContext(ctx context.Context) GetFeatureFleetDefaultMemberConfigArrayOutput {
+	return o
+}
+
+func (o GetFeatureFleetDefaultMemberConfigArrayOutput) Index(i pulumi.IntInput) GetFeatureFleetDefaultMemberConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFeatureFleetDefaultMemberConfig {
+		return vs[0].([]GetFeatureFleetDefaultMemberConfig)[vs[1].(int)]
+	}).(GetFeatureFleetDefaultMemberConfigOutput)
+}
+
+type GetFeatureFleetDefaultMemberConfigConfigmanagement struct {
+	// ConfigSync configuration for the cluster
+	ConfigSyncs []GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSync `pulumi:"configSyncs"`
+	// Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades. Possible values: ["MANAGEMENT_UNSPECIFIED", "MANAGEMENT_AUTOMATIC", "MANAGEMENT_MANUAL"]
+	Management string `pulumi:"management"`
+	// Version of Config Sync installed
+	Version string `pulumi:"version"`
+}
+
+// GetFeatureFleetDefaultMemberConfigConfigmanagementInput is an input type that accepts GetFeatureFleetDefaultMemberConfigConfigmanagementArgs and GetFeatureFleetDefaultMemberConfigConfigmanagementOutput values.
+// You can construct a concrete instance of `GetFeatureFleetDefaultMemberConfigConfigmanagementInput` via:
+//
+//	GetFeatureFleetDefaultMemberConfigConfigmanagementArgs{...}
+type GetFeatureFleetDefaultMemberConfigConfigmanagementInput interface {
+	pulumi.Input
+
+	ToGetFeatureFleetDefaultMemberConfigConfigmanagementOutput() GetFeatureFleetDefaultMemberConfigConfigmanagementOutput
+	ToGetFeatureFleetDefaultMemberConfigConfigmanagementOutputWithContext(context.Context) GetFeatureFleetDefaultMemberConfigConfigmanagementOutput
+}
+
+type GetFeatureFleetDefaultMemberConfigConfigmanagementArgs struct {
+	// ConfigSync configuration for the cluster
+	ConfigSyncs GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArrayInput `pulumi:"configSyncs"`
+	// Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades. Possible values: ["MANAGEMENT_UNSPECIFIED", "MANAGEMENT_AUTOMATIC", "MANAGEMENT_MANUAL"]
+	Management pulumi.StringInput `pulumi:"management"`
+	// Version of Config Sync installed
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (GetFeatureFleetDefaultMemberConfigConfigmanagementArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureFleetDefaultMemberConfigConfigmanagement)(nil)).Elem()
+}
+
+func (i GetFeatureFleetDefaultMemberConfigConfigmanagementArgs) ToGetFeatureFleetDefaultMemberConfigConfigmanagementOutput() GetFeatureFleetDefaultMemberConfigConfigmanagementOutput {
+	return i.ToGetFeatureFleetDefaultMemberConfigConfigmanagementOutputWithContext(context.Background())
+}
+
+func (i GetFeatureFleetDefaultMemberConfigConfigmanagementArgs) ToGetFeatureFleetDefaultMemberConfigConfigmanagementOutputWithContext(ctx context.Context) GetFeatureFleetDefaultMemberConfigConfigmanagementOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureFleetDefaultMemberConfigConfigmanagementOutput)
+}
+
+// GetFeatureFleetDefaultMemberConfigConfigmanagementArrayInput is an input type that accepts GetFeatureFleetDefaultMemberConfigConfigmanagementArray and GetFeatureFleetDefaultMemberConfigConfigmanagementArrayOutput values.
+// You can construct a concrete instance of `GetFeatureFleetDefaultMemberConfigConfigmanagementArrayInput` via:
+//
+//	GetFeatureFleetDefaultMemberConfigConfigmanagementArray{ GetFeatureFleetDefaultMemberConfigConfigmanagementArgs{...} }
+type GetFeatureFleetDefaultMemberConfigConfigmanagementArrayInput interface {
+	pulumi.Input
+
+	ToGetFeatureFleetDefaultMemberConfigConfigmanagementArrayOutput() GetFeatureFleetDefaultMemberConfigConfigmanagementArrayOutput
+	ToGetFeatureFleetDefaultMemberConfigConfigmanagementArrayOutputWithContext(context.Context) GetFeatureFleetDefaultMemberConfigConfigmanagementArrayOutput
+}
+
+type GetFeatureFleetDefaultMemberConfigConfigmanagementArray []GetFeatureFleetDefaultMemberConfigConfigmanagementInput
+
+func (GetFeatureFleetDefaultMemberConfigConfigmanagementArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFeatureFleetDefaultMemberConfigConfigmanagement)(nil)).Elem()
+}
+
+func (i GetFeatureFleetDefaultMemberConfigConfigmanagementArray) ToGetFeatureFleetDefaultMemberConfigConfigmanagementArrayOutput() GetFeatureFleetDefaultMemberConfigConfigmanagementArrayOutput {
+	return i.ToGetFeatureFleetDefaultMemberConfigConfigmanagementArrayOutputWithContext(context.Background())
+}
+
+func (i GetFeatureFleetDefaultMemberConfigConfigmanagementArray) ToGetFeatureFleetDefaultMemberConfigConfigmanagementArrayOutputWithContext(ctx context.Context) GetFeatureFleetDefaultMemberConfigConfigmanagementArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureFleetDefaultMemberConfigConfigmanagementArrayOutput)
+}
+
+type GetFeatureFleetDefaultMemberConfigConfigmanagementOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureFleetDefaultMemberConfigConfigmanagementOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureFleetDefaultMemberConfigConfigmanagement)(nil)).Elem()
+}
+
+func (o GetFeatureFleetDefaultMemberConfigConfigmanagementOutput) ToGetFeatureFleetDefaultMemberConfigConfigmanagementOutput() GetFeatureFleetDefaultMemberConfigConfigmanagementOutput {
+	return o
+}
+
+func (o GetFeatureFleetDefaultMemberConfigConfigmanagementOutput) ToGetFeatureFleetDefaultMemberConfigConfigmanagementOutputWithContext(ctx context.Context) GetFeatureFleetDefaultMemberConfigConfigmanagementOutput {
+	return o
+}
+
+// ConfigSync configuration for the cluster
+func (o GetFeatureFleetDefaultMemberConfigConfigmanagementOutput) ConfigSyncs() GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArrayOutput {
+	return o.ApplyT(func(v GetFeatureFleetDefaultMemberConfigConfigmanagement) []GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSync {
+		return v.ConfigSyncs
+	}).(GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArrayOutput)
+}
+
+// Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades. Possible values: ["MANAGEMENT_UNSPECIFIED", "MANAGEMENT_AUTOMATIC", "MANAGEMENT_MANUAL"]
+func (o GetFeatureFleetDefaultMemberConfigConfigmanagementOutput) Management() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFeatureFleetDefaultMemberConfigConfigmanagement) string { return v.Management }).(pulumi.StringOutput)
+}
+
+// Version of Config Sync installed
+func (o GetFeatureFleetDefaultMemberConfigConfigmanagementOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFeatureFleetDefaultMemberConfigConfigmanagement) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type GetFeatureFleetDefaultMemberConfigConfigmanagementArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureFleetDefaultMemberConfigConfigmanagementArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFeatureFleetDefaultMemberConfigConfigmanagement)(nil)).Elem()
+}
+
+func (o GetFeatureFleetDefaultMemberConfigConfigmanagementArrayOutput) ToGetFeatureFleetDefaultMemberConfigConfigmanagementArrayOutput() GetFeatureFleetDefaultMemberConfigConfigmanagementArrayOutput {
+	return o
+}
+
+func (o GetFeatureFleetDefaultMemberConfigConfigmanagementArrayOutput) ToGetFeatureFleetDefaultMemberConfigConfigmanagementArrayOutputWithContext(ctx context.Context) GetFeatureFleetDefaultMemberConfigConfigmanagementArrayOutput {
+	return o
+}
+
+func (o GetFeatureFleetDefaultMemberConfigConfigmanagementArrayOutput) Index(i pulumi.IntInput) GetFeatureFleetDefaultMemberConfigConfigmanagementOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFeatureFleetDefaultMemberConfigConfigmanagement {
+		return vs[0].([]GetFeatureFleetDefaultMemberConfigConfigmanagement)[vs[1].(int)]
+	}).(GetFeatureFleetDefaultMemberConfigConfigmanagementOutput)
+}
+
+type GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSync struct {
+	// Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
+	Enabled bool `pulumi:"enabled"`
+	// Git repo configuration for the cluster
+	Gits []GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit `pulumi:"gits"`
+	// OCI repo configuration for the cluster
+	Ocis []GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci `pulumi:"ocis"`
+	// Set to true to enable the Config Sync admission webhook to prevent drifts. If set to 'false', disables the Config Sync admission webhook and does not prevent drifts.
+	PreventDrift bool `pulumi:"preventDrift"`
+	// Specifies whether the Config Sync Repo is in hierarchical or unstructured mode
+	SourceFormat string `pulumi:"sourceFormat"`
+}
+
+// GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncInput is an input type that accepts GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs and GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutput values.
+// You can construct a concrete instance of `GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncInput` via:
+//
+//	GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs{...}
+type GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncInput interface {
+	pulumi.Input
+
+	ToGetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutput() GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutput
+	ToGetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutputWithContext(context.Context) GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutput
+}
+
+type GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs struct {
+	// Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
+	Enabled pulumi.BoolInput `pulumi:"enabled"`
+	// Git repo configuration for the cluster
+	Gits GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArrayInput `pulumi:"gits"`
+	// OCI repo configuration for the cluster
+	Ocis GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArrayInput `pulumi:"ocis"`
+	// Set to true to enable the Config Sync admission webhook to prevent drifts. If set to 'false', disables the Config Sync admission webhook and does not prevent drifts.
+	PreventDrift pulumi.BoolInput `pulumi:"preventDrift"`
+	// Specifies whether the Config Sync Repo is in hierarchical or unstructured mode
+	SourceFormat pulumi.StringInput `pulumi:"sourceFormat"`
+}
+
+func (GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSync)(nil)).Elem()
+}
+
+func (i GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs) ToGetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutput() GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutput {
+	return i.ToGetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutputWithContext(context.Background())
+}
+
+func (i GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs) ToGetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutputWithContext(ctx context.Context) GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutput)
+}
+
+// GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArrayInput is an input type that accepts GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArray and GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArrayOutput values.
+// You can construct a concrete instance of `GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArrayInput` via:
+//
+//	GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArray{ GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs{...} }
+type GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArrayInput interface {
+	pulumi.Input
+
+	ToGetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArrayOutput() GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArrayOutput
+	ToGetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArrayOutputWithContext(context.Context) GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArrayOutput
+}
+
+type GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArray []GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncInput
+
+func (GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSync)(nil)).Elem()
+}
+
+func (i GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArray) ToGetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArrayOutput() GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArrayOutput {
+	return i.ToGetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArrayOutputWithContext(context.Background())
+}
+
+func (i GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArray) ToGetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArrayOutputWithContext(ctx context.Context) GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArrayOutput)
+}
+
+type GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSync)(nil)).Elem()
+}
+
+func (o GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutput) ToGetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutput() GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutput {
+	return o
+}
+
+func (o GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutput) ToGetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutputWithContext(ctx context.Context) GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutput {
+	return o
+}
+
+// Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
+func (o GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutput) Enabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSync) bool { return v.Enabled }).(pulumi.BoolOutput)
+}
+
+// Git repo configuration for the cluster
+func (o GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutput) Gits() GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArrayOutput {
+	return o.ApplyT(func(v GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSync) []GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit {
+		return v.Gits
+	}).(GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArrayOutput)
+}
+
+// OCI repo configuration for the cluster
+func (o GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutput) Ocis() GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArrayOutput {
+	return o.ApplyT(func(v GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSync) []GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci {
+		return v.Ocis
+	}).(GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArrayOutput)
+}
+
+// Set to true to enable the Config Sync admission webhook to prevent drifts. If set to 'false', disables the Config Sync admission webhook and does not prevent drifts.
+func (o GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutput) PreventDrift() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSync) bool { return v.PreventDrift }).(pulumi.BoolOutput)
+}
+
+// Specifies whether the Config Sync Repo is in hierarchical or unstructured mode
+func (o GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutput) SourceFormat() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSync) string { return v.SourceFormat }).(pulumi.StringOutput)
+}
+
+type GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSync)(nil)).Elem()
+}
+
+func (o GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArrayOutput) ToGetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArrayOutput() GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArrayOutput {
+	return o
+}
+
+func (o GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArrayOutput) ToGetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArrayOutputWithContext(ctx context.Context) GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArrayOutput {
+	return o
+}
+
+func (o GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArrayOutput) Index(i pulumi.IntInput) GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSync {
+		return vs[0].([]GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSync)[vs[1].(int)]
+	}).(GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutput)
+}
+
+type GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit struct {
+	// The Google Cloud Service Account Email used for auth when secretType is gcpServiceAccount
+	GcpServiceAccountEmail string `pulumi:"gcpServiceAccountEmail"`
+	// URL for the HTTPS Proxy to be used when communicating with the Git repo
+	HttpsProxy string `pulumi:"httpsProxy"`
+	// The path within the Git repository that represents the top level of the repo to sync
+	PolicyDir string `pulumi:"policyDir"`
+	// Type of secret configured for access to the Git repo
+	SecretType string `pulumi:"secretType"`
+	// The branch of the repository to sync from. Default: master
+	SyncBranch string `pulumi:"syncBranch"`
+	// The URL of the Git repository to use as the source of truth
+	SyncRepo string `pulumi:"syncRepo"`
+	// Git revision (tag or hash) to check out. Default HEAD
+	SyncRev string `pulumi:"syncRev"`
+	// Period in seconds between consecutive syncs. Default: 15
+	SyncWaitSecs string `pulumi:"syncWaitSecs"`
+}
+
+// GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitInput is an input type that accepts GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs and GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitOutput values.
+// You can construct a concrete instance of `GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitInput` via:
+//
+//	GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs{...}
+type GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitInput interface {
+	pulumi.Input
+
+	ToGetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitOutput() GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitOutput
+	ToGetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitOutputWithContext(context.Context) GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitOutput
+}
+
+type GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs struct {
+	// The Google Cloud Service Account Email used for auth when secretType is gcpServiceAccount
+	GcpServiceAccountEmail pulumi.StringInput `pulumi:"gcpServiceAccountEmail"`
+	// URL for the HTTPS Proxy to be used when communicating with the Git repo
+	HttpsProxy pulumi.StringInput `pulumi:"httpsProxy"`
+	// The path within the Git repository that represents the top level of the repo to sync
+	PolicyDir pulumi.StringInput `pulumi:"policyDir"`
+	// Type of secret configured for access to the Git repo
+	SecretType pulumi.StringInput `pulumi:"secretType"`
+	// The branch of the repository to sync from. Default: master
+	SyncBranch pulumi.StringInput `pulumi:"syncBranch"`
+	// The URL of the Git repository to use as the source of truth
+	SyncRepo pulumi.StringInput `pulumi:"syncRepo"`
+	// Git revision (tag or hash) to check out. Default HEAD
+	SyncRev pulumi.StringInput `pulumi:"syncRev"`
+	// Period in seconds between consecutive syncs. Default: 15
+	SyncWaitSecs pulumi.StringInput `pulumi:"syncWaitSecs"`
+}
+
+func (GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit)(nil)).Elem()
+}
+
+func (i GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs) ToGetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitOutput() GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitOutput {
+	return i.ToGetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitOutputWithContext(context.Background())
+}
+
+func (i GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs) ToGetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitOutputWithContext(ctx context.Context) GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitOutput)
+}
+
+// GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArrayInput is an input type that accepts GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArray and GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArrayOutput values.
+// You can construct a concrete instance of `GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArrayInput` via:
+//
+//	GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArray{ GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs{...} }
+type GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArrayInput interface {
+	pulumi.Input
+
+	ToGetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArrayOutput() GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArrayOutput
+	ToGetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArrayOutputWithContext(context.Context) GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArrayOutput
+}
+
+type GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArray []GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitInput
+
+func (GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit)(nil)).Elem()
+}
+
+func (i GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArray) ToGetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArrayOutput() GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArrayOutput {
+	return i.ToGetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArrayOutputWithContext(context.Background())
+}
+
+func (i GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArray) ToGetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArrayOutputWithContext(ctx context.Context) GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArrayOutput)
+}
+
+type GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit)(nil)).Elem()
+}
+
+func (o GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitOutput) ToGetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitOutput() GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitOutput {
+	return o
+}
+
+func (o GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitOutput) ToGetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitOutputWithContext(ctx context.Context) GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitOutput {
+	return o
+}
+
+// The Google Cloud Service Account Email used for auth when secretType is gcpServiceAccount
+func (o GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitOutput) GcpServiceAccountEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit) string {
+		return v.GcpServiceAccountEmail
+	}).(pulumi.StringOutput)
+}
+
+// URL for the HTTPS Proxy to be used when communicating with the Git repo
+func (o GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitOutput) HttpsProxy() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit) string { return v.HttpsProxy }).(pulumi.StringOutput)
+}
+
+// The path within the Git repository that represents the top level of the repo to sync
+func (o GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitOutput) PolicyDir() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit) string { return v.PolicyDir }).(pulumi.StringOutput)
+}
+
+// Type of secret configured for access to the Git repo
+func (o GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitOutput) SecretType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit) string { return v.SecretType }).(pulumi.StringOutput)
+}
+
+// The branch of the repository to sync from. Default: master
+func (o GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitOutput) SyncBranch() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit) string { return v.SyncBranch }).(pulumi.StringOutput)
+}
+
+// The URL of the Git repository to use as the source of truth
+func (o GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitOutput) SyncRepo() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit) string { return v.SyncRepo }).(pulumi.StringOutput)
+}
+
+// Git revision (tag or hash) to check out. Default HEAD
+func (o GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitOutput) SyncRev() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit) string { return v.SyncRev }).(pulumi.StringOutput)
+}
+
+// Period in seconds between consecutive syncs. Default: 15
+func (o GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitOutput) SyncWaitSecs() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit) string { return v.SyncWaitSecs }).(pulumi.StringOutput)
+}
+
+type GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit)(nil)).Elem()
+}
+
+func (o GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArrayOutput) ToGetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArrayOutput() GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArrayOutput {
+	return o
+}
+
+func (o GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArrayOutput) ToGetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArrayOutputWithContext(ctx context.Context) GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArrayOutput {
+	return o
+}
+
+func (o GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArrayOutput) Index(i pulumi.IntInput) GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit {
+		return vs[0].([]GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGit)[vs[1].(int)]
+	}).(GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitOutput)
+}
+
+type GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci struct {
+	// The Google Cloud Service Account Email used for auth when secretType is gcpServiceAccount
+	GcpServiceAccountEmail string `pulumi:"gcpServiceAccountEmail"`
+	// The absolute path of the directory that contains the local resources. Default: the root directory of the image
+	PolicyDir string `pulumi:"policyDir"`
+	// Type of secret configured for access to the Git repo
+	SecretType string `pulumi:"secretType"`
+	// The OCI image repository URL for the package to sync from
+	SyncRepo string `pulumi:"syncRepo"`
+	// Period in seconds between consecutive syncs. Default: 15
+	SyncWaitSecs string `pulumi:"syncWaitSecs"`
+	// Version of Config Sync installed
+	Version string `pulumi:"version"`
+}
+
+// GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciInput is an input type that accepts GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgs and GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciOutput values.
+// You can construct a concrete instance of `GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciInput` via:
+//
+//	GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgs{...}
+type GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciInput interface {
+	pulumi.Input
+
+	ToGetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciOutput() GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciOutput
+	ToGetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciOutputWithContext(context.Context) GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciOutput
+}
+
+type GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgs struct {
+	// The Google Cloud Service Account Email used for auth when secretType is gcpServiceAccount
+	GcpServiceAccountEmail pulumi.StringInput `pulumi:"gcpServiceAccountEmail"`
+	// The absolute path of the directory that contains the local resources. Default: the root directory of the image
+	PolicyDir pulumi.StringInput `pulumi:"policyDir"`
+	// Type of secret configured for access to the Git repo
+	SecretType pulumi.StringInput `pulumi:"secretType"`
+	// The OCI image repository URL for the package to sync from
+	SyncRepo pulumi.StringInput `pulumi:"syncRepo"`
+	// Period in seconds between consecutive syncs. Default: 15
+	SyncWaitSecs pulumi.StringInput `pulumi:"syncWaitSecs"`
+	// Version of Config Sync installed
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci)(nil)).Elem()
+}
+
+func (i GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgs) ToGetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciOutput() GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciOutput {
+	return i.ToGetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciOutputWithContext(context.Background())
+}
+
+func (i GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgs) ToGetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciOutputWithContext(ctx context.Context) GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciOutput)
+}
+
+// GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArrayInput is an input type that accepts GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArray and GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArrayOutput values.
+// You can construct a concrete instance of `GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArrayInput` via:
+//
+//	GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArray{ GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgs{...} }
+type GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArrayInput interface {
+	pulumi.Input
+
+	ToGetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArrayOutput() GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArrayOutput
+	ToGetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArrayOutputWithContext(context.Context) GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArrayOutput
+}
+
+type GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArray []GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciInput
+
+func (GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci)(nil)).Elem()
+}
+
+func (i GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArray) ToGetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArrayOutput() GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArrayOutput {
+	return i.ToGetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArrayOutputWithContext(context.Background())
+}
+
+func (i GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArray) ToGetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArrayOutputWithContext(ctx context.Context) GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArrayOutput)
+}
+
+type GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci)(nil)).Elem()
+}
+
+func (o GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciOutput) ToGetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciOutput() GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciOutput {
+	return o
+}
+
+func (o GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciOutput) ToGetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciOutputWithContext(ctx context.Context) GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciOutput {
+	return o
+}
+
+// The Google Cloud Service Account Email used for auth when secretType is gcpServiceAccount
+func (o GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciOutput) GcpServiceAccountEmail() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci) string {
+		return v.GcpServiceAccountEmail
+	}).(pulumi.StringOutput)
+}
+
+// The absolute path of the directory that contains the local resources. Default: the root directory of the image
+func (o GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciOutput) PolicyDir() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci) string { return v.PolicyDir }).(pulumi.StringOutput)
+}
+
+// Type of secret configured for access to the Git repo
+func (o GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciOutput) SecretType() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci) string { return v.SecretType }).(pulumi.StringOutput)
+}
+
+// The OCI image repository URL for the package to sync from
+func (o GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciOutput) SyncRepo() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci) string { return v.SyncRepo }).(pulumi.StringOutput)
+}
+
+// Period in seconds between consecutive syncs. Default: 15
+func (o GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciOutput) SyncWaitSecs() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci) string { return v.SyncWaitSecs }).(pulumi.StringOutput)
+}
+
+// Version of Config Sync installed
+func (o GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci)(nil)).Elem()
+}
+
+func (o GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArrayOutput) ToGetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArrayOutput() GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArrayOutput {
+	return o
+}
+
+func (o GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArrayOutput) ToGetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArrayOutputWithContext(ctx context.Context) GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArrayOutput {
+	return o
+}
+
+func (o GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArrayOutput) Index(i pulumi.IntInput) GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci {
+		return vs[0].([]GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOci)[vs[1].(int)]
+	}).(GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciOutput)
+}
+
+type GetFeatureFleetDefaultMemberConfigMesh struct {
+	// Whether to automatically manage Service Mesh Possible values: ["MANAGEMENT_UNSPECIFIED", "MANAGEMENT_AUTOMATIC", "MANAGEMENT_MANUAL"]
+	Management string `pulumi:"management"`
+}
+
+// GetFeatureFleetDefaultMemberConfigMeshInput is an input type that accepts GetFeatureFleetDefaultMemberConfigMeshArgs and GetFeatureFleetDefaultMemberConfigMeshOutput values.
+// You can construct a concrete instance of `GetFeatureFleetDefaultMemberConfigMeshInput` via:
+//
+//	GetFeatureFleetDefaultMemberConfigMeshArgs{...}
+type GetFeatureFleetDefaultMemberConfigMeshInput interface {
+	pulumi.Input
+
+	ToGetFeatureFleetDefaultMemberConfigMeshOutput() GetFeatureFleetDefaultMemberConfigMeshOutput
+	ToGetFeatureFleetDefaultMemberConfigMeshOutputWithContext(context.Context) GetFeatureFleetDefaultMemberConfigMeshOutput
+}
+
+type GetFeatureFleetDefaultMemberConfigMeshArgs struct {
+	// Whether to automatically manage Service Mesh Possible values: ["MANAGEMENT_UNSPECIFIED", "MANAGEMENT_AUTOMATIC", "MANAGEMENT_MANUAL"]
+	Management pulumi.StringInput `pulumi:"management"`
+}
+
+func (GetFeatureFleetDefaultMemberConfigMeshArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureFleetDefaultMemberConfigMesh)(nil)).Elem()
+}
+
+func (i GetFeatureFleetDefaultMemberConfigMeshArgs) ToGetFeatureFleetDefaultMemberConfigMeshOutput() GetFeatureFleetDefaultMemberConfigMeshOutput {
+	return i.ToGetFeatureFleetDefaultMemberConfigMeshOutputWithContext(context.Background())
+}
+
+func (i GetFeatureFleetDefaultMemberConfigMeshArgs) ToGetFeatureFleetDefaultMemberConfigMeshOutputWithContext(ctx context.Context) GetFeatureFleetDefaultMemberConfigMeshOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureFleetDefaultMemberConfigMeshOutput)
+}
+
+// GetFeatureFleetDefaultMemberConfigMeshArrayInput is an input type that accepts GetFeatureFleetDefaultMemberConfigMeshArray and GetFeatureFleetDefaultMemberConfigMeshArrayOutput values.
+// You can construct a concrete instance of `GetFeatureFleetDefaultMemberConfigMeshArrayInput` via:
+//
+//	GetFeatureFleetDefaultMemberConfigMeshArray{ GetFeatureFleetDefaultMemberConfigMeshArgs{...} }
+type GetFeatureFleetDefaultMemberConfigMeshArrayInput interface {
+	pulumi.Input
+
+	ToGetFeatureFleetDefaultMemberConfigMeshArrayOutput() GetFeatureFleetDefaultMemberConfigMeshArrayOutput
+	ToGetFeatureFleetDefaultMemberConfigMeshArrayOutputWithContext(context.Context) GetFeatureFleetDefaultMemberConfigMeshArrayOutput
+}
+
+type GetFeatureFleetDefaultMemberConfigMeshArray []GetFeatureFleetDefaultMemberConfigMeshInput
+
+func (GetFeatureFleetDefaultMemberConfigMeshArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFeatureFleetDefaultMemberConfigMesh)(nil)).Elem()
+}
+
+func (i GetFeatureFleetDefaultMemberConfigMeshArray) ToGetFeatureFleetDefaultMemberConfigMeshArrayOutput() GetFeatureFleetDefaultMemberConfigMeshArrayOutput {
+	return i.ToGetFeatureFleetDefaultMemberConfigMeshArrayOutputWithContext(context.Background())
+}
+
+func (i GetFeatureFleetDefaultMemberConfigMeshArray) ToGetFeatureFleetDefaultMemberConfigMeshArrayOutputWithContext(ctx context.Context) GetFeatureFleetDefaultMemberConfigMeshArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureFleetDefaultMemberConfigMeshArrayOutput)
+}
+
+type GetFeatureFleetDefaultMemberConfigMeshOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureFleetDefaultMemberConfigMeshOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureFleetDefaultMemberConfigMesh)(nil)).Elem()
+}
+
+func (o GetFeatureFleetDefaultMemberConfigMeshOutput) ToGetFeatureFleetDefaultMemberConfigMeshOutput() GetFeatureFleetDefaultMemberConfigMeshOutput {
+	return o
+}
+
+func (o GetFeatureFleetDefaultMemberConfigMeshOutput) ToGetFeatureFleetDefaultMemberConfigMeshOutputWithContext(ctx context.Context) GetFeatureFleetDefaultMemberConfigMeshOutput {
+	return o
+}
+
+// Whether to automatically manage Service Mesh Possible values: ["MANAGEMENT_UNSPECIFIED", "MANAGEMENT_AUTOMATIC", "MANAGEMENT_MANUAL"]
+func (o GetFeatureFleetDefaultMemberConfigMeshOutput) Management() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFeatureFleetDefaultMemberConfigMesh) string { return v.Management }).(pulumi.StringOutput)
+}
+
+type GetFeatureFleetDefaultMemberConfigMeshArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureFleetDefaultMemberConfigMeshArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFeatureFleetDefaultMemberConfigMesh)(nil)).Elem()
+}
+
+func (o GetFeatureFleetDefaultMemberConfigMeshArrayOutput) ToGetFeatureFleetDefaultMemberConfigMeshArrayOutput() GetFeatureFleetDefaultMemberConfigMeshArrayOutput {
+	return o
+}
+
+func (o GetFeatureFleetDefaultMemberConfigMeshArrayOutput) ToGetFeatureFleetDefaultMemberConfigMeshArrayOutputWithContext(ctx context.Context) GetFeatureFleetDefaultMemberConfigMeshArrayOutput {
+	return o
+}
+
+func (o GetFeatureFleetDefaultMemberConfigMeshArrayOutput) Index(i pulumi.IntInput) GetFeatureFleetDefaultMemberConfigMeshOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFeatureFleetDefaultMemberConfigMesh {
+		return vs[0].([]GetFeatureFleetDefaultMemberConfigMesh)[vs[1].(int)]
+	}).(GetFeatureFleetDefaultMemberConfigMeshOutput)
+}
+
+type GetFeatureFleetDefaultMemberConfigPolicycontroller struct {
+	// Configuration of Policy Controller
+	PolicyControllerHubConfigs []GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig `pulumi:"policyControllerHubConfigs"`
+	// Configures the version of Policy Controller
+	Version string `pulumi:"version"`
+}
+
+// GetFeatureFleetDefaultMemberConfigPolicycontrollerInput is an input type that accepts GetFeatureFleetDefaultMemberConfigPolicycontrollerArgs and GetFeatureFleetDefaultMemberConfigPolicycontrollerOutput values.
+// You can construct a concrete instance of `GetFeatureFleetDefaultMemberConfigPolicycontrollerInput` via:
+//
+//	GetFeatureFleetDefaultMemberConfigPolicycontrollerArgs{...}
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerInput interface {
+	pulumi.Input
+
+	ToGetFeatureFleetDefaultMemberConfigPolicycontrollerOutput() GetFeatureFleetDefaultMemberConfigPolicycontrollerOutput
+	ToGetFeatureFleetDefaultMemberConfigPolicycontrollerOutputWithContext(context.Context) GetFeatureFleetDefaultMemberConfigPolicycontrollerOutput
+}
+
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerArgs struct {
+	// Configuration of Policy Controller
+	PolicyControllerHubConfigs GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArrayInput `pulumi:"policyControllerHubConfigs"`
+	// Configures the version of Policy Controller
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (GetFeatureFleetDefaultMemberConfigPolicycontrollerArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureFleetDefaultMemberConfigPolicycontroller)(nil)).Elem()
+}
+
+func (i GetFeatureFleetDefaultMemberConfigPolicycontrollerArgs) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerOutput() GetFeatureFleetDefaultMemberConfigPolicycontrollerOutput {
+	return i.ToGetFeatureFleetDefaultMemberConfigPolicycontrollerOutputWithContext(context.Background())
+}
+
+func (i GetFeatureFleetDefaultMemberConfigPolicycontrollerArgs) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerOutputWithContext(ctx context.Context) GetFeatureFleetDefaultMemberConfigPolicycontrollerOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureFleetDefaultMemberConfigPolicycontrollerOutput)
+}
+
+// GetFeatureFleetDefaultMemberConfigPolicycontrollerArrayInput is an input type that accepts GetFeatureFleetDefaultMemberConfigPolicycontrollerArray and GetFeatureFleetDefaultMemberConfigPolicycontrollerArrayOutput values.
+// You can construct a concrete instance of `GetFeatureFleetDefaultMemberConfigPolicycontrollerArrayInput` via:
+//
+//	GetFeatureFleetDefaultMemberConfigPolicycontrollerArray{ GetFeatureFleetDefaultMemberConfigPolicycontrollerArgs{...} }
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerArrayInput interface {
+	pulumi.Input
+
+	ToGetFeatureFleetDefaultMemberConfigPolicycontrollerArrayOutput() GetFeatureFleetDefaultMemberConfigPolicycontrollerArrayOutput
+	ToGetFeatureFleetDefaultMemberConfigPolicycontrollerArrayOutputWithContext(context.Context) GetFeatureFleetDefaultMemberConfigPolicycontrollerArrayOutput
+}
+
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerArray []GetFeatureFleetDefaultMemberConfigPolicycontrollerInput
+
+func (GetFeatureFleetDefaultMemberConfigPolicycontrollerArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFeatureFleetDefaultMemberConfigPolicycontroller)(nil)).Elem()
+}
+
+func (i GetFeatureFleetDefaultMemberConfigPolicycontrollerArray) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerArrayOutput() GetFeatureFleetDefaultMemberConfigPolicycontrollerArrayOutput {
+	return i.ToGetFeatureFleetDefaultMemberConfigPolicycontrollerArrayOutputWithContext(context.Background())
+}
+
+func (i GetFeatureFleetDefaultMemberConfigPolicycontrollerArray) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerArrayOutputWithContext(ctx context.Context) GetFeatureFleetDefaultMemberConfigPolicycontrollerArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureFleetDefaultMemberConfigPolicycontrollerArrayOutput)
+}
+
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureFleetDefaultMemberConfigPolicycontrollerOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureFleetDefaultMemberConfigPolicycontroller)(nil)).Elem()
+}
+
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerOutput) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerOutput() GetFeatureFleetDefaultMemberConfigPolicycontrollerOutput {
+	return o
+}
+
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerOutput) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerOutputWithContext(ctx context.Context) GetFeatureFleetDefaultMemberConfigPolicycontrollerOutput {
+	return o
+}
+
+// Configuration of Policy Controller
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerOutput) PolicyControllerHubConfigs() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArrayOutput {
+	return o.ApplyT(func(v GetFeatureFleetDefaultMemberConfigPolicycontroller) []GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig {
+		return v.PolicyControllerHubConfigs
+	}).(GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArrayOutput)
+}
+
+// Configures the version of Policy Controller
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFeatureFleetDefaultMemberConfigPolicycontroller) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureFleetDefaultMemberConfigPolicycontrollerArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFeatureFleetDefaultMemberConfigPolicycontroller)(nil)).Elem()
+}
+
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerArrayOutput) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerArrayOutput() GetFeatureFleetDefaultMemberConfigPolicycontrollerArrayOutput {
+	return o
+}
+
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerArrayOutput) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerArrayOutputWithContext(ctx context.Context) GetFeatureFleetDefaultMemberConfigPolicycontrollerArrayOutput {
+	return o
+}
+
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerArrayOutput) Index(i pulumi.IntInput) GetFeatureFleetDefaultMemberConfigPolicycontrollerOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFeatureFleetDefaultMemberConfigPolicycontroller {
+		return vs[0].([]GetFeatureFleetDefaultMemberConfigPolicycontroller)[vs[1].(int)]
+	}).(GetFeatureFleetDefaultMemberConfigPolicycontrollerOutput)
+}
+
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig struct {
+	// Interval for Policy Controller Audit scans (in seconds). When set to 0, this disables audit functionality altogether.
+	AuditIntervalSeconds int `pulumi:"auditIntervalSeconds"`
+	// The maximum number of audit violations to be stored in a constraint. If not set, the internal default of 20 will be used.
+	ConstraintViolationLimit int `pulumi:"constraintViolationLimit"`
+	// Map of deployment configs to deployments ("admission", "audit", "mutation").
+	DeploymentConfigs []GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig `pulumi:"deploymentConfigs"`
+	// The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
+	ExemptableNamespaces []string `pulumi:"exemptableNamespaces"`
+	// Configures the mode of the Policy Controller installation Possible values: ["INSTALL_SPEC_UNSPECIFIED", "INSTALL_SPEC_NOT_INSTALLED", "INSTALL_SPEC_ENABLED", "INSTALL_SPEC_SUSPENDED", "INSTALL_SPEC_DETACHED"]
+	InstallSpec string `pulumi:"installSpec"`
+	// Logs all denies and dry run failures.
+	LogDeniesEnabled bool `pulumi:"logDeniesEnabled"`
+	// Monitoring specifies the configuration of monitoring Policy Controller.
+	Monitorings []GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoring `pulumi:"monitorings"`
+	// Enables the ability to mutate resources using Policy Controller.
+	MutationEnabled bool `pulumi:"mutationEnabled"`
+	// Specifies the desired policy content on the cluster.
+	PolicyContents []GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContent `pulumi:"policyContents"`
+	// Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
+	ReferentialRulesEnabled bool `pulumi:"referentialRulesEnabled"`
+}
+
+// GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigInput is an input type that accepts GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgs and GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutput values.
+// You can construct a concrete instance of `GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigInput` via:
+//
+//	GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgs{...}
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigInput interface {
+	pulumi.Input
+
+	ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutput() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutput
+	ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutputWithContext(context.Context) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutput
+}
+
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgs struct {
+	// Interval for Policy Controller Audit scans (in seconds). When set to 0, this disables audit functionality altogether.
+	AuditIntervalSeconds pulumi.IntInput `pulumi:"auditIntervalSeconds"`
+	// The maximum number of audit violations to be stored in a constraint. If not set, the internal default of 20 will be used.
+	ConstraintViolationLimit pulumi.IntInput `pulumi:"constraintViolationLimit"`
+	// Map of deployment configs to deployments ("admission", "audit", "mutation").
+	DeploymentConfigs GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArrayInput `pulumi:"deploymentConfigs"`
+	// The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
+	ExemptableNamespaces pulumi.StringArrayInput `pulumi:"exemptableNamespaces"`
+	// Configures the mode of the Policy Controller installation Possible values: ["INSTALL_SPEC_UNSPECIFIED", "INSTALL_SPEC_NOT_INSTALLED", "INSTALL_SPEC_ENABLED", "INSTALL_SPEC_SUSPENDED", "INSTALL_SPEC_DETACHED"]
+	InstallSpec pulumi.StringInput `pulumi:"installSpec"`
+	// Logs all denies and dry run failures.
+	LogDeniesEnabled pulumi.BoolInput `pulumi:"logDeniesEnabled"`
+	// Monitoring specifies the configuration of monitoring Policy Controller.
+	Monitorings GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArrayInput `pulumi:"monitorings"`
+	// Enables the ability to mutate resources using Policy Controller.
+	MutationEnabled pulumi.BoolInput `pulumi:"mutationEnabled"`
+	// Specifies the desired policy content on the cluster.
+	PolicyContents GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArrayInput `pulumi:"policyContents"`
+	// Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
+	ReferentialRulesEnabled pulumi.BoolInput `pulumi:"referentialRulesEnabled"`
+}
+
+func (GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig)(nil)).Elem()
+}
+
+func (i GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgs) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutput() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutput {
+	return i.ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutputWithContext(context.Background())
+}
+
+func (i GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgs) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutputWithContext(ctx context.Context) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutput)
+}
+
+// GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArrayInput is an input type that accepts GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArray and GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArrayOutput values.
+// You can construct a concrete instance of `GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArrayInput` via:
+//
+//	GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArray{ GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgs{...} }
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArrayOutput() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArrayOutput
+	ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArrayOutputWithContext(context.Context) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArrayOutput
+}
+
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArray []GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigInput
+
+func (GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig)(nil)).Elem()
+}
+
+func (i GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArray) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArrayOutput() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArrayOutput {
+	return i.ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArray) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArrayOutputWithContext(ctx context.Context) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArrayOutput)
+}
+
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig)(nil)).Elem()
+}
+
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutput) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutput() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutput {
+	return o
+}
+
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutput) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutputWithContext(ctx context.Context) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutput {
+	return o
+}
+
+// Interval for Policy Controller Audit scans (in seconds). When set to 0, this disables audit functionality altogether.
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutput) AuditIntervalSeconds() pulumi.IntOutput {
+	return o.ApplyT(func(v GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig) int {
+		return v.AuditIntervalSeconds
+	}).(pulumi.IntOutput)
+}
+
+// The maximum number of audit violations to be stored in a constraint. If not set, the internal default of 20 will be used.
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutput) ConstraintViolationLimit() pulumi.IntOutput {
+	return o.ApplyT(func(v GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig) int {
+		return v.ConstraintViolationLimit
+	}).(pulumi.IntOutput)
+}
+
+// Map of deployment configs to deployments ("admission", "audit", "mutation").
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutput) DeploymentConfigs() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArrayOutput {
+	return o.ApplyT(func(v GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig) []GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig {
+		return v.DeploymentConfigs
+	}).(GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArrayOutput)
+}
+
+// The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutput) ExemptableNamespaces() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig) []string {
+		return v.ExemptableNamespaces
+	}).(pulumi.StringArrayOutput)
+}
+
+// Configures the mode of the Policy Controller installation Possible values: ["INSTALL_SPEC_UNSPECIFIED", "INSTALL_SPEC_NOT_INSTALLED", "INSTALL_SPEC_ENABLED", "INSTALL_SPEC_SUSPENDED", "INSTALL_SPEC_DETACHED"]
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutput) InstallSpec() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig) string {
+		return v.InstallSpec
+	}).(pulumi.StringOutput)
+}
+
+// Logs all denies and dry run failures.
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutput) LogDeniesEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig) bool {
+		return v.LogDeniesEnabled
+	}).(pulumi.BoolOutput)
+}
+
+// Monitoring specifies the configuration of monitoring Policy Controller.
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutput) Monitorings() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArrayOutput {
+	return o.ApplyT(func(v GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig) []GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoring {
+		return v.Monitorings
+	}).(GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArrayOutput)
+}
+
+// Enables the ability to mutate resources using Policy Controller.
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutput) MutationEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig) bool {
+		return v.MutationEnabled
+	}).(pulumi.BoolOutput)
+}
+
+// Specifies the desired policy content on the cluster.
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutput) PolicyContents() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArrayOutput {
+	return o.ApplyT(func(v GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig) []GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContent {
+		return v.PolicyContents
+	}).(GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArrayOutput)
+}
+
+// Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutput) ReferentialRulesEnabled() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig) bool {
+		return v.ReferentialRulesEnabled
+	}).(pulumi.BoolOutput)
+}
+
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig)(nil)).Elem()
+}
+
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArrayOutput) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArrayOutput() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArrayOutput {
+	return o
+}
+
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArrayOutput) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArrayOutputWithContext(ctx context.Context) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArrayOutput {
+	return o
+}
+
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArrayOutput) Index(i pulumi.IntInput) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig {
+		return vs[0].([]GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfig)[vs[1].(int)]
+	}).(GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutput)
+}
+
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig struct {
+	Component string `pulumi:"component"`
+	// Container resource requirements.
+	ContainerResources []GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResource `pulumi:"containerResources"`
+	// Pod affinity configuration. Possible values: ["AFFINITY_UNSPECIFIED", "NO_AFFINITY", "ANTI_AFFINITY"]
+	PodAffinity string `pulumi:"podAffinity"`
+	// Pod tolerations of node taints.
+	PodTolerations []GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration `pulumi:"podTolerations"`
+	// Pod replica count.
+	ReplicaCount int `pulumi:"replicaCount"`
+}
+
+// GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigInput is an input type that accepts GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs and GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigOutput values.
+// You can construct a concrete instance of `GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigInput` via:
+//
+//	GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs{...}
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigInput interface {
+	pulumi.Input
+
+	ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigOutput() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigOutput
+	ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigOutputWithContext(context.Context) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigOutput
+}
+
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs struct {
+	Component pulumi.StringInput `pulumi:"component"`
+	// Container resource requirements.
+	ContainerResources GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceArrayInput `pulumi:"containerResources"`
+	// Pod affinity configuration. Possible values: ["AFFINITY_UNSPECIFIED", "NO_AFFINITY", "ANTI_AFFINITY"]
+	PodAffinity pulumi.StringInput `pulumi:"podAffinity"`
+	// Pod tolerations of node taints.
+	PodTolerations GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArrayInput `pulumi:"podTolerations"`
+	// Pod replica count.
+	ReplicaCount pulumi.IntInput `pulumi:"replicaCount"`
+}
+
+func (GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig)(nil)).Elem()
+}
+
+func (i GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigOutput() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigOutput {
+	return i.ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigOutputWithContext(context.Background())
+}
+
+func (i GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigOutputWithContext(ctx context.Context) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigOutput)
+}
+
+// GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArrayInput is an input type that accepts GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArray and GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArrayOutput values.
+// You can construct a concrete instance of `GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArrayInput` via:
+//
+//	GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArray{ GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs{...} }
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArrayOutput() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArrayOutput
+	ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArrayOutputWithContext(context.Context) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArrayOutput
+}
+
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArray []GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigInput
+
+func (GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig)(nil)).Elem()
+}
+
+func (i GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArray) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArrayOutput() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArrayOutput {
+	return i.ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArray) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArrayOutputWithContext(ctx context.Context) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArrayOutput)
+}
+
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig)(nil)).Elem()
+}
+
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigOutput) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigOutput() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigOutput {
+	return o
+}
+
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigOutput) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigOutputWithContext(ctx context.Context) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigOutput {
+	return o
+}
+
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigOutput) Component() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig) string {
+		return v.Component
+	}).(pulumi.StringOutput)
+}
+
+// Container resource requirements.
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigOutput) ContainerResources() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceArrayOutput {
+	return o.ApplyT(func(v GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig) []GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResource {
+		return v.ContainerResources
+	}).(GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceArrayOutput)
+}
+
+// Pod affinity configuration. Possible values: ["AFFINITY_UNSPECIFIED", "NO_AFFINITY", "ANTI_AFFINITY"]
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigOutput) PodAffinity() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig) string {
+		return v.PodAffinity
+	}).(pulumi.StringOutput)
+}
+
+// Pod tolerations of node taints.
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigOutput) PodTolerations() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArrayOutput {
+	return o.ApplyT(func(v GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig) []GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration {
+		return v.PodTolerations
+	}).(GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArrayOutput)
+}
+
+// Pod replica count.
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigOutput) ReplicaCount() pulumi.IntOutput {
+	return o.ApplyT(func(v GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig) int {
+		return v.ReplicaCount
+	}).(pulumi.IntOutput)
+}
+
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig)(nil)).Elem()
+}
+
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArrayOutput) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArrayOutput() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArrayOutput {
+	return o
+}
+
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArrayOutput) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArrayOutputWithContext(ctx context.Context) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArrayOutput {
+	return o
+}
+
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArrayOutput) Index(i pulumi.IntInput) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig {
+		return vs[0].([]GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfig)[vs[1].(int)]
+	}).(GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigOutput)
+}
+
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResource struct {
+	// Limits describes the maximum amount of compute resources allowed for use by the running container.
+	Limits []GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimit `pulumi:"limits"`
+	// Requests describes the amount of compute resources reserved for the container by the kube-scheduler.
+	Requests []GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequest `pulumi:"requests"`
+}
+
+// GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceInput is an input type that accepts GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceArgs and GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceOutput values.
+// You can construct a concrete instance of `GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceInput` via:
+//
+//	GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceArgs{...}
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceInput interface {
+	pulumi.Input
+
+	ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceOutput() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceOutput
+	ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceOutputWithContext(context.Context) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceOutput
+}
+
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceArgs struct {
+	// Limits describes the maximum amount of compute resources allowed for use by the running container.
+	Limits GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitArrayInput `pulumi:"limits"`
+	// Requests describes the amount of compute resources reserved for the container by the kube-scheduler.
+	Requests GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestArrayInput `pulumi:"requests"`
+}
+
+func (GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResource)(nil)).Elem()
+}
+
+func (i GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceArgs) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceOutput() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceOutput {
+	return i.ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceOutputWithContext(context.Background())
+}
+
+func (i GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceArgs) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceOutputWithContext(ctx context.Context) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceOutput)
+}
+
+// GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceArrayInput is an input type that accepts GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceArray and GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceArrayOutput values.
+// You can construct a concrete instance of `GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceArrayInput` via:
+//
+//	GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceArray{ GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceArgs{...} }
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceArrayInput interface {
+	pulumi.Input
+
+	ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceArrayOutput() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceArrayOutput
+	ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceArrayOutputWithContext(context.Context) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceArrayOutput
+}
+
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceArray []GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceInput
+
+func (GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResource)(nil)).Elem()
+}
+
+func (i GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceArray) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceArrayOutput() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceArrayOutput {
+	return i.ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceArrayOutputWithContext(context.Background())
+}
+
+func (i GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceArray) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceArrayOutputWithContext(ctx context.Context) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceArrayOutput)
+}
+
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResource)(nil)).Elem()
+}
+
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceOutput) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceOutput() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceOutput {
+	return o
+}
+
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceOutput) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceOutputWithContext(ctx context.Context) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceOutput {
+	return o
+}
+
+// Limits describes the maximum amount of compute resources allowed for use by the running container.
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceOutput) Limits() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitArrayOutput {
+	return o.ApplyT(func(v GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResource) []GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimit {
+		return v.Limits
+	}).(GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitArrayOutput)
+}
+
+// Requests describes the amount of compute resources reserved for the container by the kube-scheduler.
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceOutput) Requests() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestArrayOutput {
+	return o.ApplyT(func(v GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResource) []GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequest {
+		return v.Requests
+	}).(GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestArrayOutput)
+}
+
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResource)(nil)).Elem()
+}
+
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceArrayOutput) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceArrayOutput() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceArrayOutput {
+	return o
+}
+
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceArrayOutput) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceArrayOutputWithContext(ctx context.Context) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceArrayOutput {
+	return o
+}
+
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceArrayOutput) Index(i pulumi.IntInput) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResource {
+		return vs[0].([]GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResource)[vs[1].(int)]
+	}).(GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceOutput)
+}
+
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimit struct {
+	// CPU requirement expressed in Kubernetes resource units.
+	Cpu string `pulumi:"cpu"`
+	// Memory requirement expressed in Kubernetes resource units.
+	Memory string `pulumi:"memory"`
+}
+
+// GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitInput is an input type that accepts GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitArgs and GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitOutput values.
+// You can construct a concrete instance of `GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitInput` via:
+//
+//	GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitArgs{...}
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitInput interface {
+	pulumi.Input
+
+	ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitOutput() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitOutput
+	ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitOutputWithContext(context.Context) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitOutput
+}
+
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitArgs struct {
+	// CPU requirement expressed in Kubernetes resource units.
+	Cpu pulumi.StringInput `pulumi:"cpu"`
+	// Memory requirement expressed in Kubernetes resource units.
+	Memory pulumi.StringInput `pulumi:"memory"`
+}
+
+func (GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimit)(nil)).Elem()
+}
+
+func (i GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitArgs) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitOutput() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitOutput {
+	return i.ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitOutputWithContext(context.Background())
+}
+
+func (i GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitArgs) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitOutputWithContext(ctx context.Context) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitOutput)
+}
+
+// GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitArrayInput is an input type that accepts GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitArray and GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitArrayOutput values.
+// You can construct a concrete instance of `GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitArrayInput` via:
+//
+//	GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitArray{ GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitArgs{...} }
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitArrayInput interface {
+	pulumi.Input
+
+	ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitArrayOutput() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitArrayOutput
+	ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitArrayOutputWithContext(context.Context) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitArrayOutput
+}
+
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitArray []GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitInput
+
+func (GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimit)(nil)).Elem()
+}
+
+func (i GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitArray) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitArrayOutput() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitArrayOutput {
+	return i.ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitArrayOutputWithContext(context.Background())
+}
+
+func (i GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitArray) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitArrayOutputWithContext(ctx context.Context) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitArrayOutput)
+}
+
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimit)(nil)).Elem()
+}
+
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitOutput) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitOutput() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitOutput {
+	return o
+}
+
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitOutput) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitOutputWithContext(ctx context.Context) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitOutput {
+	return o
+}
+
+// CPU requirement expressed in Kubernetes resource units.
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitOutput) Cpu() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimit) string {
+		return v.Cpu
+	}).(pulumi.StringOutput)
+}
+
+// Memory requirement expressed in Kubernetes resource units.
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitOutput) Memory() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimit) string {
+		return v.Memory
+	}).(pulumi.StringOutput)
+}
+
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimit)(nil)).Elem()
+}
+
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitArrayOutput) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitArrayOutput() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitArrayOutput {
+	return o
+}
+
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitArrayOutput) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitArrayOutputWithContext(ctx context.Context) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitArrayOutput {
+	return o
+}
+
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitArrayOutput) Index(i pulumi.IntInput) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimit {
+		return vs[0].([]GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimit)[vs[1].(int)]
+	}).(GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitOutput)
+}
+
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequest struct {
+	// CPU requirement expressed in Kubernetes resource units.
+	Cpu string `pulumi:"cpu"`
+	// Memory requirement expressed in Kubernetes resource units.
+	Memory string `pulumi:"memory"`
+}
+
+// GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestInput is an input type that accepts GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestArgs and GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestOutput values.
+// You can construct a concrete instance of `GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestInput` via:
+//
+//	GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestArgs{...}
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestInput interface {
+	pulumi.Input
+
+	ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestOutput() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestOutput
+	ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestOutputWithContext(context.Context) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestOutput
+}
+
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestArgs struct {
+	// CPU requirement expressed in Kubernetes resource units.
+	Cpu pulumi.StringInput `pulumi:"cpu"`
+	// Memory requirement expressed in Kubernetes resource units.
+	Memory pulumi.StringInput `pulumi:"memory"`
+}
+
+func (GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequest)(nil)).Elem()
+}
+
+func (i GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestArgs) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestOutput() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestOutput {
+	return i.ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestOutputWithContext(context.Background())
+}
+
+func (i GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestArgs) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestOutputWithContext(ctx context.Context) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestOutput)
+}
+
+// GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestArrayInput is an input type that accepts GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestArray and GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestArrayOutput values.
+// You can construct a concrete instance of `GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestArrayInput` via:
+//
+//	GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestArray{ GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestArgs{...} }
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestArrayInput interface {
+	pulumi.Input
+
+	ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestArrayOutput() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestArrayOutput
+	ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestArrayOutputWithContext(context.Context) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestArrayOutput
+}
+
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestArray []GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestInput
+
+func (GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequest)(nil)).Elem()
+}
+
+func (i GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestArray) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestArrayOutput() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestArrayOutput {
+	return i.ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestArrayOutputWithContext(context.Background())
+}
+
+func (i GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestArray) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestArrayOutputWithContext(ctx context.Context) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestArrayOutput)
+}
+
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequest)(nil)).Elem()
+}
+
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestOutput) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestOutput() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestOutput {
+	return o
+}
+
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestOutput) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestOutputWithContext(ctx context.Context) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestOutput {
+	return o
+}
+
+// CPU requirement expressed in Kubernetes resource units.
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestOutput) Cpu() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequest) string {
+		return v.Cpu
+	}).(pulumi.StringOutput)
+}
+
+// Memory requirement expressed in Kubernetes resource units.
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestOutput) Memory() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequest) string {
+		return v.Memory
+	}).(pulumi.StringOutput)
+}
+
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequest)(nil)).Elem()
+}
+
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestArrayOutput) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestArrayOutput() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestArrayOutput {
+	return o
+}
+
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestArrayOutput) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestArrayOutputWithContext(ctx context.Context) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestArrayOutput {
+	return o
+}
+
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestArrayOutput) Index(i pulumi.IntInput) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequest {
+		return vs[0].([]GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequest)[vs[1].(int)]
+	}).(GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestOutput)
+}
+
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration struct {
+	// Matches a taint effect.
+	Effect string `pulumi:"effect"`
+	// Matches a taint key (not necessarily unique).
+	Key string `pulumi:"key"`
+	// Matches a taint operator.
+	Operator string `pulumi:"operator"`
+	// Matches a taint value.
+	Value string `pulumi:"value"`
+}
+
+// GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationInput is an input type that accepts GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArgs and GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationOutput values.
+// You can construct a concrete instance of `GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationInput` via:
+//
+//	GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArgs{...}
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationInput interface {
+	pulumi.Input
+
+	ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationOutput() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationOutput
+	ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationOutputWithContext(context.Context) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationOutput
+}
+
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArgs struct {
+	// Matches a taint effect.
+	Effect pulumi.StringInput `pulumi:"effect"`
+	// Matches a taint key (not necessarily unique).
+	Key pulumi.StringInput `pulumi:"key"`
+	// Matches a taint operator.
+	Operator pulumi.StringInput `pulumi:"operator"`
+	// Matches a taint value.
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration)(nil)).Elem()
+}
+
+func (i GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArgs) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationOutput() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationOutput {
+	return i.ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationOutputWithContext(context.Background())
+}
+
+func (i GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArgs) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationOutputWithContext(ctx context.Context) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationOutput)
+}
+
+// GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArrayInput is an input type that accepts GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArray and GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArrayOutput values.
+// You can construct a concrete instance of `GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArrayInput` via:
+//
+//	GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArray{ GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArgs{...} }
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArrayInput interface {
+	pulumi.Input
+
+	ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArrayOutput() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArrayOutput
+	ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArrayOutputWithContext(context.Context) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArrayOutput
+}
+
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArray []GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationInput
+
+func (GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration)(nil)).Elem()
+}
+
+func (i GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArray) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArrayOutput() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArrayOutput {
+	return i.ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArrayOutputWithContext(context.Background())
+}
+
+func (i GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArray) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArrayOutputWithContext(ctx context.Context) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArrayOutput)
+}
+
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration)(nil)).Elem()
+}
+
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationOutput) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationOutput() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationOutput {
+	return o
+}
+
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationOutput) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationOutputWithContext(ctx context.Context) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationOutput {
+	return o
+}
+
+// Matches a taint effect.
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationOutput) Effect() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration) string {
+		return v.Effect
+	}).(pulumi.StringOutput)
+}
+
+// Matches a taint key (not necessarily unique).
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationOutput) Key() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration) string {
+		return v.Key
+	}).(pulumi.StringOutput)
+}
+
+// Matches a taint operator.
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationOutput) Operator() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration) string {
+		return v.Operator
+	}).(pulumi.StringOutput)
+}
+
+// Matches a taint value.
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration) string {
+		return v.Value
+	}).(pulumi.StringOutput)
+}
+
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration)(nil)).Elem()
+}
+
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArrayOutput) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArrayOutput() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArrayOutput {
+	return o
+}
+
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArrayOutput) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArrayOutputWithContext(ctx context.Context) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArrayOutput {
+	return o
+}
+
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArrayOutput) Index(i pulumi.IntInput) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration {
+		return vs[0].([]GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodToleration)[vs[1].(int)]
+	}).(GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationOutput)
+}
+
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoring struct {
+	// Specifies the list of backends Policy Controller will export to. An empty list would effectively disable metrics export. Possible values: ["MONITORING_BACKEND_UNSPECIFIED", "PROMETHEUS", "CLOUD_MONITORING"]
+	Backends []string `pulumi:"backends"`
+}
+
+// GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringInput is an input type that accepts GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArgs and GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringOutput values.
+// You can construct a concrete instance of `GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringInput` via:
+//
+//	GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArgs{...}
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringInput interface {
+	pulumi.Input
+
+	ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringOutput() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringOutput
+	ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringOutputWithContext(context.Context) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringOutput
+}
+
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArgs struct {
+	// Specifies the list of backends Policy Controller will export to. An empty list would effectively disable metrics export. Possible values: ["MONITORING_BACKEND_UNSPECIFIED", "PROMETHEUS", "CLOUD_MONITORING"]
+	Backends pulumi.StringArrayInput `pulumi:"backends"`
+}
+
+func (GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoring)(nil)).Elem()
+}
+
+func (i GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArgs) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringOutput() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringOutput {
+	return i.ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringOutputWithContext(context.Background())
+}
+
+func (i GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArgs) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringOutputWithContext(ctx context.Context) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringOutput)
+}
+
+// GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArrayInput is an input type that accepts GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArray and GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArrayOutput values.
+// You can construct a concrete instance of `GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArrayInput` via:
+//
+//	GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArray{ GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArgs{...} }
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArrayInput interface {
+	pulumi.Input
+
+	ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArrayOutput() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArrayOutput
+	ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArrayOutputWithContext(context.Context) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArrayOutput
+}
+
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArray []GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringInput
+
+func (GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoring)(nil)).Elem()
+}
+
+func (i GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArray) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArrayOutput() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArrayOutput {
+	return i.ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArrayOutputWithContext(context.Background())
+}
+
+func (i GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArray) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArrayOutputWithContext(ctx context.Context) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArrayOutput)
+}
+
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoring)(nil)).Elem()
+}
+
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringOutput) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringOutput() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringOutput {
+	return o
+}
+
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringOutput) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringOutputWithContext(ctx context.Context) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringOutput {
+	return o
+}
+
+// Specifies the list of backends Policy Controller will export to. An empty list would effectively disable metrics export. Possible values: ["MONITORING_BACKEND_UNSPECIFIED", "PROMETHEUS", "CLOUD_MONITORING"]
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringOutput) Backends() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoring) []string {
+		return v.Backends
+	}).(pulumi.StringArrayOutput)
+}
+
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoring)(nil)).Elem()
+}
+
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArrayOutput) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArrayOutput() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArrayOutput {
+	return o
+}
+
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArrayOutput) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArrayOutputWithContext(ctx context.Context) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArrayOutput {
+	return o
+}
+
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArrayOutput) Index(i pulumi.IntInput) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoring {
+		return vs[0].([]GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoring)[vs[1].(int)]
+	}).(GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringOutput)
+}
+
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContent struct {
+	// Configures which bundles to install and their corresponding install specs.
+	Bundles []GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundle `pulumi:"bundles"`
+	// Configures the installation of the Template Library.
+	TemplateLibraries []GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary `pulumi:"templateLibraries"`
+}
+
+// GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentInput is an input type that accepts GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgs and GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentOutput values.
+// You can construct a concrete instance of `GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentInput` via:
+//
+//	GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgs{...}
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentInput interface {
+	pulumi.Input
+
+	ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentOutput() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentOutput
+	ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentOutputWithContext(context.Context) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentOutput
+}
+
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgs struct {
+	// Configures which bundles to install and their corresponding install specs.
+	Bundles GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArrayInput `pulumi:"bundles"`
+	// Configures the installation of the Template Library.
+	TemplateLibraries GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArrayInput `pulumi:"templateLibraries"`
+}
+
+func (GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContent)(nil)).Elem()
+}
+
+func (i GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgs) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentOutput() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentOutput {
+	return i.ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentOutputWithContext(context.Background())
+}
+
+func (i GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgs) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentOutputWithContext(ctx context.Context) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentOutput)
+}
+
+// GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArrayInput is an input type that accepts GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArray and GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArrayOutput values.
+// You can construct a concrete instance of `GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArrayInput` via:
+//
+//	GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArray{ GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgs{...} }
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArrayInput interface {
+	pulumi.Input
+
+	ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArrayOutput() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArrayOutput
+	ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArrayOutputWithContext(context.Context) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArrayOutput
+}
+
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArray []GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentInput
+
+func (GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContent)(nil)).Elem()
+}
+
+func (i GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArray) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArrayOutput() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArrayOutput {
+	return i.ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArrayOutputWithContext(context.Background())
+}
+
+func (i GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArray) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArrayOutputWithContext(ctx context.Context) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArrayOutput)
+}
+
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContent)(nil)).Elem()
+}
+
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentOutput) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentOutput() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentOutput {
+	return o
+}
+
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentOutput) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentOutputWithContext(ctx context.Context) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentOutput {
+	return o
+}
+
+// Configures which bundles to install and their corresponding install specs.
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentOutput) Bundles() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArrayOutput {
+	return o.ApplyT(func(v GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContent) []GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundle {
+		return v.Bundles
+	}).(GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArrayOutput)
+}
+
+// Configures the installation of the Template Library.
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentOutput) TemplateLibraries() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArrayOutput {
+	return o.ApplyT(func(v GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContent) []GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary {
+		return v.TemplateLibraries
+	}).(GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArrayOutput)
+}
+
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContent)(nil)).Elem()
+}
+
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArrayOutput) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArrayOutput() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArrayOutput {
+	return o
+}
+
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArrayOutput) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArrayOutputWithContext(ctx context.Context) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArrayOutput {
+	return o
+}
+
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArrayOutput) Index(i pulumi.IntInput) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContent {
+		return vs[0].([]GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContent)[vs[1].(int)]
+	}).(GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentOutput)
+}
+
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundle struct {
+	Bundle string `pulumi:"bundle"`
+	// The set of namespaces to be exempted from the bundle.
+	ExemptedNamespaces []string `pulumi:"exemptedNamespaces"`
+}
+
+// GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleInput is an input type that accepts GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs and GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleOutput values.
+// You can construct a concrete instance of `GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleInput` via:
+//
+//	GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs{...}
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleInput interface {
+	pulumi.Input
+
+	ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleOutput() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleOutput
+	ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleOutputWithContext(context.Context) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleOutput
+}
+
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs struct {
+	Bundle pulumi.StringInput `pulumi:"bundle"`
+	// The set of namespaces to be exempted from the bundle.
+	ExemptedNamespaces pulumi.StringArrayInput `pulumi:"exemptedNamespaces"`
+}
+
+func (GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundle)(nil)).Elem()
+}
+
+func (i GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleOutput() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleOutput {
+	return i.ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleOutputWithContext(context.Background())
+}
+
+func (i GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleOutputWithContext(ctx context.Context) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleOutput)
+}
+
+// GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArrayInput is an input type that accepts GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArray and GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArrayOutput values.
+// You can construct a concrete instance of `GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArrayInput` via:
+//
+//	GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArray{ GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs{...} }
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArrayInput interface {
+	pulumi.Input
+
+	ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArrayOutput() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArrayOutput
+	ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArrayOutputWithContext(context.Context) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArrayOutput
+}
+
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArray []GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleInput
+
+func (GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundle)(nil)).Elem()
+}
+
+func (i GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArray) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArrayOutput() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArrayOutput {
+	return i.ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArrayOutputWithContext(context.Background())
+}
+
+func (i GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArray) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArrayOutputWithContext(ctx context.Context) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArrayOutput)
+}
+
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundle)(nil)).Elem()
+}
+
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleOutput) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleOutput() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleOutput {
+	return o
+}
+
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleOutput) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleOutputWithContext(ctx context.Context) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleOutput {
+	return o
+}
+
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleOutput) Bundle() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundle) string {
+		return v.Bundle
+	}).(pulumi.StringOutput)
+}
+
+// The set of namespaces to be exempted from the bundle.
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleOutput) ExemptedNamespaces() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundle) []string {
+		return v.ExemptedNamespaces
+	}).(pulumi.StringArrayOutput)
+}
+
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundle)(nil)).Elem()
+}
+
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArrayOutput) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArrayOutput() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArrayOutput {
+	return o
+}
+
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArrayOutput) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArrayOutputWithContext(ctx context.Context) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArrayOutput {
+	return o
+}
+
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArrayOutput) Index(i pulumi.IntInput) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundle {
+		return vs[0].([]GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundle)[vs[1].(int)]
+	}).(GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleOutput)
+}
+
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary struct {
+	// Configures the manner in which the template library is installed on the cluster. Possible values: ["INSTALLATION_UNSPECIFIED", "NOT_INSTALLED", "ALL"]
+	Installation string `pulumi:"installation"`
+}
+
+// GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryInput is an input type that accepts GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs and GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutput values.
+// You can construct a concrete instance of `GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryInput` via:
+//
+//	GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs{...}
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryInput interface {
+	pulumi.Input
+
+	ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutput() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutput
+	ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutputWithContext(context.Context) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutput
+}
+
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs struct {
+	// Configures the manner in which the template library is installed on the cluster. Possible values: ["INSTALLATION_UNSPECIFIED", "NOT_INSTALLED", "ALL"]
+	Installation pulumi.StringInput `pulumi:"installation"`
+}
+
+func (GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary)(nil)).Elem()
+}
+
+func (i GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutput() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutput {
+	return i.ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutputWithContext(context.Background())
+}
+
+func (i GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutputWithContext(ctx context.Context) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutput)
+}
+
+// GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArrayInput is an input type that accepts GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArray and GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArrayOutput values.
+// You can construct a concrete instance of `GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArrayInput` via:
+//
+//	GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArray{ GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs{...} }
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArrayInput interface {
+	pulumi.Input
+
+	ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArrayOutput() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArrayOutput
+	ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArrayOutputWithContext(context.Context) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArrayOutput
+}
+
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArray []GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryInput
+
+func (GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary)(nil)).Elem()
+}
+
+func (i GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArray) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArrayOutput() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArrayOutput {
+	return i.ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArrayOutputWithContext(context.Background())
+}
+
+func (i GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArray) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArrayOutputWithContext(ctx context.Context) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArrayOutput)
+}
+
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary)(nil)).Elem()
+}
+
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutput) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutput() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutput {
+	return o
+}
+
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutput) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutputWithContext(ctx context.Context) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutput {
+	return o
+}
+
+// Configures the manner in which the template library is installed on the cluster. Possible values: ["INSTALLATION_UNSPECIFIED", "NOT_INSTALLED", "ALL"]
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutput) Installation() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary) string {
+		return v.Installation
+	}).(pulumi.StringOutput)
+}
+
+type GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary)(nil)).Elem()
+}
+
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArrayOutput) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArrayOutput() GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArrayOutput {
+	return o
+}
+
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArrayOutput) ToGetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArrayOutputWithContext(ctx context.Context) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArrayOutput {
+	return o
+}
+
+func (o GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArrayOutput) Index(i pulumi.IntInput) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary {
+		return vs[0].([]GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibrary)[vs[1].(int)]
+	}).(GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutput)
+}
+
+type GetFeatureResourceState struct {
+	// Whether this Feature has outstanding resources that need to be cleaned up before it can be disabled.
+	HasResources bool `pulumi:"hasResources"`
+	// The current state of the Feature resource in the Hub API.
+	State string `pulumi:"state"`
+}
+
+// GetFeatureResourceStateInput is an input type that accepts GetFeatureResourceStateArgs and GetFeatureResourceStateOutput values.
+// You can construct a concrete instance of `GetFeatureResourceStateInput` via:
+//
+//	GetFeatureResourceStateArgs{...}
+type GetFeatureResourceStateInput interface {
+	pulumi.Input
+
+	ToGetFeatureResourceStateOutput() GetFeatureResourceStateOutput
+	ToGetFeatureResourceStateOutputWithContext(context.Context) GetFeatureResourceStateOutput
+}
+
+type GetFeatureResourceStateArgs struct {
+	// Whether this Feature has outstanding resources that need to be cleaned up before it can be disabled.
+	HasResources pulumi.BoolInput `pulumi:"hasResources"`
+	// The current state of the Feature resource in the Hub API.
+	State pulumi.StringInput `pulumi:"state"`
+}
+
+func (GetFeatureResourceStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureResourceState)(nil)).Elem()
+}
+
+func (i GetFeatureResourceStateArgs) ToGetFeatureResourceStateOutput() GetFeatureResourceStateOutput {
+	return i.ToGetFeatureResourceStateOutputWithContext(context.Background())
+}
+
+func (i GetFeatureResourceStateArgs) ToGetFeatureResourceStateOutputWithContext(ctx context.Context) GetFeatureResourceStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureResourceStateOutput)
+}
+
+// GetFeatureResourceStateArrayInput is an input type that accepts GetFeatureResourceStateArray and GetFeatureResourceStateArrayOutput values.
+// You can construct a concrete instance of `GetFeatureResourceStateArrayInput` via:
+//
+//	GetFeatureResourceStateArray{ GetFeatureResourceStateArgs{...} }
+type GetFeatureResourceStateArrayInput interface {
+	pulumi.Input
+
+	ToGetFeatureResourceStateArrayOutput() GetFeatureResourceStateArrayOutput
+	ToGetFeatureResourceStateArrayOutputWithContext(context.Context) GetFeatureResourceStateArrayOutput
+}
+
+type GetFeatureResourceStateArray []GetFeatureResourceStateInput
+
+func (GetFeatureResourceStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFeatureResourceState)(nil)).Elem()
+}
+
+func (i GetFeatureResourceStateArray) ToGetFeatureResourceStateArrayOutput() GetFeatureResourceStateArrayOutput {
+	return i.ToGetFeatureResourceStateArrayOutputWithContext(context.Background())
+}
+
+func (i GetFeatureResourceStateArray) ToGetFeatureResourceStateArrayOutputWithContext(ctx context.Context) GetFeatureResourceStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureResourceStateArrayOutput)
+}
+
+type GetFeatureResourceStateOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureResourceStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureResourceState)(nil)).Elem()
+}
+
+func (o GetFeatureResourceStateOutput) ToGetFeatureResourceStateOutput() GetFeatureResourceStateOutput {
+	return o
+}
+
+func (o GetFeatureResourceStateOutput) ToGetFeatureResourceStateOutputWithContext(ctx context.Context) GetFeatureResourceStateOutput {
+	return o
+}
+
+// Whether this Feature has outstanding resources that need to be cleaned up before it can be disabled.
+func (o GetFeatureResourceStateOutput) HasResources() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetFeatureResourceState) bool { return v.HasResources }).(pulumi.BoolOutput)
+}
+
+// The current state of the Feature resource in the Hub API.
+func (o GetFeatureResourceStateOutput) State() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFeatureResourceState) string { return v.State }).(pulumi.StringOutput)
+}
+
+type GetFeatureResourceStateArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureResourceStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFeatureResourceState)(nil)).Elem()
+}
+
+func (o GetFeatureResourceStateArrayOutput) ToGetFeatureResourceStateArrayOutput() GetFeatureResourceStateArrayOutput {
+	return o
+}
+
+func (o GetFeatureResourceStateArrayOutput) ToGetFeatureResourceStateArrayOutputWithContext(ctx context.Context) GetFeatureResourceStateArrayOutput {
+	return o
+}
+
+func (o GetFeatureResourceStateArrayOutput) Index(i pulumi.IntInput) GetFeatureResourceStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFeatureResourceState {
+		return vs[0].([]GetFeatureResourceState)[vs[1].(int)]
+	}).(GetFeatureResourceStateOutput)
+}
+
+type GetFeatureSpec struct {
+	// Clusterupgrade feature spec.
+	Clusterupgrades []GetFeatureSpecClusterupgrade `pulumi:"clusterupgrades"`
+	// Fleet Observability feature spec.
+	Fleetobservabilities []GetFeatureSpecFleetobservability `pulumi:"fleetobservabilities"`
+	// Multicluster Ingress-specific spec.
+	Multiclusteringresses []GetFeatureSpecMulticlusteringress `pulumi:"multiclusteringresses"`
+}
+
+// GetFeatureSpecInput is an input type that accepts GetFeatureSpecArgs and GetFeatureSpecOutput values.
+// You can construct a concrete instance of `GetFeatureSpecInput` via:
+//
+//	GetFeatureSpecArgs{...}
+type GetFeatureSpecInput interface {
+	pulumi.Input
+
+	ToGetFeatureSpecOutput() GetFeatureSpecOutput
+	ToGetFeatureSpecOutputWithContext(context.Context) GetFeatureSpecOutput
+}
+
+type GetFeatureSpecArgs struct {
+	// Clusterupgrade feature spec.
+	Clusterupgrades GetFeatureSpecClusterupgradeArrayInput `pulumi:"clusterupgrades"`
+	// Fleet Observability feature spec.
+	Fleetobservabilities GetFeatureSpecFleetobservabilityArrayInput `pulumi:"fleetobservabilities"`
+	// Multicluster Ingress-specific spec.
+	Multiclusteringresses GetFeatureSpecMulticlusteringressArrayInput `pulumi:"multiclusteringresses"`
+}
+
+func (GetFeatureSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureSpec)(nil)).Elem()
+}
+
+func (i GetFeatureSpecArgs) ToGetFeatureSpecOutput() GetFeatureSpecOutput {
+	return i.ToGetFeatureSpecOutputWithContext(context.Background())
+}
+
+func (i GetFeatureSpecArgs) ToGetFeatureSpecOutputWithContext(ctx context.Context) GetFeatureSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureSpecOutput)
+}
+
+// GetFeatureSpecArrayInput is an input type that accepts GetFeatureSpecArray and GetFeatureSpecArrayOutput values.
+// You can construct a concrete instance of `GetFeatureSpecArrayInput` via:
+//
+//	GetFeatureSpecArray{ GetFeatureSpecArgs{...} }
+type GetFeatureSpecArrayInput interface {
+	pulumi.Input
+
+	ToGetFeatureSpecArrayOutput() GetFeatureSpecArrayOutput
+	ToGetFeatureSpecArrayOutputWithContext(context.Context) GetFeatureSpecArrayOutput
+}
+
+type GetFeatureSpecArray []GetFeatureSpecInput
+
+func (GetFeatureSpecArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFeatureSpec)(nil)).Elem()
+}
+
+func (i GetFeatureSpecArray) ToGetFeatureSpecArrayOutput() GetFeatureSpecArrayOutput {
+	return i.ToGetFeatureSpecArrayOutputWithContext(context.Background())
+}
+
+func (i GetFeatureSpecArray) ToGetFeatureSpecArrayOutputWithContext(ctx context.Context) GetFeatureSpecArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureSpecArrayOutput)
+}
+
+type GetFeatureSpecOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureSpec)(nil)).Elem()
+}
+
+func (o GetFeatureSpecOutput) ToGetFeatureSpecOutput() GetFeatureSpecOutput {
+	return o
+}
+
+func (o GetFeatureSpecOutput) ToGetFeatureSpecOutputWithContext(ctx context.Context) GetFeatureSpecOutput {
+	return o
+}
+
+// Clusterupgrade feature spec.
+func (o GetFeatureSpecOutput) Clusterupgrades() GetFeatureSpecClusterupgradeArrayOutput {
+	return o.ApplyT(func(v GetFeatureSpec) []GetFeatureSpecClusterupgrade { return v.Clusterupgrades }).(GetFeatureSpecClusterupgradeArrayOutput)
+}
+
+// Fleet Observability feature spec.
+func (o GetFeatureSpecOutput) Fleetobservabilities() GetFeatureSpecFleetobservabilityArrayOutput {
+	return o.ApplyT(func(v GetFeatureSpec) []GetFeatureSpecFleetobservability { return v.Fleetobservabilities }).(GetFeatureSpecFleetobservabilityArrayOutput)
+}
+
+// Multicluster Ingress-specific spec.
+func (o GetFeatureSpecOutput) Multiclusteringresses() GetFeatureSpecMulticlusteringressArrayOutput {
+	return o.ApplyT(func(v GetFeatureSpec) []GetFeatureSpecMulticlusteringress { return v.Multiclusteringresses }).(GetFeatureSpecMulticlusteringressArrayOutput)
+}
+
+type GetFeatureSpecArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureSpecArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFeatureSpec)(nil)).Elem()
+}
+
+func (o GetFeatureSpecArrayOutput) ToGetFeatureSpecArrayOutput() GetFeatureSpecArrayOutput {
+	return o
+}
+
+func (o GetFeatureSpecArrayOutput) ToGetFeatureSpecArrayOutputWithContext(ctx context.Context) GetFeatureSpecArrayOutput {
+	return o
+}
+
+func (o GetFeatureSpecArrayOutput) Index(i pulumi.IntInput) GetFeatureSpecOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFeatureSpec {
+		return vs[0].([]GetFeatureSpec)[vs[1].(int)]
+	}).(GetFeatureSpecOutput)
+}
+
+type GetFeatureSpecClusterupgrade struct {
+	// Configuration overrides for individual upgrades.
+	GkeUpgradeOverrides []GetFeatureSpecClusterupgradeGkeUpgradeOverride `pulumi:"gkeUpgradeOverrides"`
+	// Post conditions to override for the specified upgrade.
+	PostConditions []GetFeatureSpecClusterupgradePostCondition `pulumi:"postConditions"`
+	// Specified if other fleet should be considered as a source of upgrades. Currently, at most one upstream fleet is allowed. The fleet name should be either fleet project number or id.
+	UpstreamFleets []string `pulumi:"upstreamFleets"`
+}
+
+// GetFeatureSpecClusterupgradeInput is an input type that accepts GetFeatureSpecClusterupgradeArgs and GetFeatureSpecClusterupgradeOutput values.
+// You can construct a concrete instance of `GetFeatureSpecClusterupgradeInput` via:
+//
+//	GetFeatureSpecClusterupgradeArgs{...}
+type GetFeatureSpecClusterupgradeInput interface {
+	pulumi.Input
+
+	ToGetFeatureSpecClusterupgradeOutput() GetFeatureSpecClusterupgradeOutput
+	ToGetFeatureSpecClusterupgradeOutputWithContext(context.Context) GetFeatureSpecClusterupgradeOutput
+}
+
+type GetFeatureSpecClusterupgradeArgs struct {
+	// Configuration overrides for individual upgrades.
+	GkeUpgradeOverrides GetFeatureSpecClusterupgradeGkeUpgradeOverrideArrayInput `pulumi:"gkeUpgradeOverrides"`
+	// Post conditions to override for the specified upgrade.
+	PostConditions GetFeatureSpecClusterupgradePostConditionArrayInput `pulumi:"postConditions"`
+	// Specified if other fleet should be considered as a source of upgrades. Currently, at most one upstream fleet is allowed. The fleet name should be either fleet project number or id.
+	UpstreamFleets pulumi.StringArrayInput `pulumi:"upstreamFleets"`
+}
+
+func (GetFeatureSpecClusterupgradeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureSpecClusterupgrade)(nil)).Elem()
+}
+
+func (i GetFeatureSpecClusterupgradeArgs) ToGetFeatureSpecClusterupgradeOutput() GetFeatureSpecClusterupgradeOutput {
+	return i.ToGetFeatureSpecClusterupgradeOutputWithContext(context.Background())
+}
+
+func (i GetFeatureSpecClusterupgradeArgs) ToGetFeatureSpecClusterupgradeOutputWithContext(ctx context.Context) GetFeatureSpecClusterupgradeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureSpecClusterupgradeOutput)
+}
+
+// GetFeatureSpecClusterupgradeArrayInput is an input type that accepts GetFeatureSpecClusterupgradeArray and GetFeatureSpecClusterupgradeArrayOutput values.
+// You can construct a concrete instance of `GetFeatureSpecClusterupgradeArrayInput` via:
+//
+//	GetFeatureSpecClusterupgradeArray{ GetFeatureSpecClusterupgradeArgs{...} }
+type GetFeatureSpecClusterupgradeArrayInput interface {
+	pulumi.Input
+
+	ToGetFeatureSpecClusterupgradeArrayOutput() GetFeatureSpecClusterupgradeArrayOutput
+	ToGetFeatureSpecClusterupgradeArrayOutputWithContext(context.Context) GetFeatureSpecClusterupgradeArrayOutput
+}
+
+type GetFeatureSpecClusterupgradeArray []GetFeatureSpecClusterupgradeInput
+
+func (GetFeatureSpecClusterupgradeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFeatureSpecClusterupgrade)(nil)).Elem()
+}
+
+func (i GetFeatureSpecClusterupgradeArray) ToGetFeatureSpecClusterupgradeArrayOutput() GetFeatureSpecClusterupgradeArrayOutput {
+	return i.ToGetFeatureSpecClusterupgradeArrayOutputWithContext(context.Background())
+}
+
+func (i GetFeatureSpecClusterupgradeArray) ToGetFeatureSpecClusterupgradeArrayOutputWithContext(ctx context.Context) GetFeatureSpecClusterupgradeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureSpecClusterupgradeArrayOutput)
+}
+
+type GetFeatureSpecClusterupgradeOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureSpecClusterupgradeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureSpecClusterupgrade)(nil)).Elem()
+}
+
+func (o GetFeatureSpecClusterupgradeOutput) ToGetFeatureSpecClusterupgradeOutput() GetFeatureSpecClusterupgradeOutput {
+	return o
+}
+
+func (o GetFeatureSpecClusterupgradeOutput) ToGetFeatureSpecClusterupgradeOutputWithContext(ctx context.Context) GetFeatureSpecClusterupgradeOutput {
+	return o
+}
+
+// Configuration overrides for individual upgrades.
+func (o GetFeatureSpecClusterupgradeOutput) GkeUpgradeOverrides() GetFeatureSpecClusterupgradeGkeUpgradeOverrideArrayOutput {
+	return o.ApplyT(func(v GetFeatureSpecClusterupgrade) []GetFeatureSpecClusterupgradeGkeUpgradeOverride {
+		return v.GkeUpgradeOverrides
+	}).(GetFeatureSpecClusterupgradeGkeUpgradeOverrideArrayOutput)
+}
+
+// Post conditions to override for the specified upgrade.
+func (o GetFeatureSpecClusterupgradeOutput) PostConditions() GetFeatureSpecClusterupgradePostConditionArrayOutput {
+	return o.ApplyT(func(v GetFeatureSpecClusterupgrade) []GetFeatureSpecClusterupgradePostCondition {
+		return v.PostConditions
+	}).(GetFeatureSpecClusterupgradePostConditionArrayOutput)
+}
+
+// Specified if other fleet should be considered as a source of upgrades. Currently, at most one upstream fleet is allowed. The fleet name should be either fleet project number or id.
+func (o GetFeatureSpecClusterupgradeOutput) UpstreamFleets() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v GetFeatureSpecClusterupgrade) []string { return v.UpstreamFleets }).(pulumi.StringArrayOutput)
+}
+
+type GetFeatureSpecClusterupgradeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureSpecClusterupgradeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFeatureSpecClusterupgrade)(nil)).Elem()
+}
+
+func (o GetFeatureSpecClusterupgradeArrayOutput) ToGetFeatureSpecClusterupgradeArrayOutput() GetFeatureSpecClusterupgradeArrayOutput {
+	return o
+}
+
+func (o GetFeatureSpecClusterupgradeArrayOutput) ToGetFeatureSpecClusterupgradeArrayOutputWithContext(ctx context.Context) GetFeatureSpecClusterupgradeArrayOutput {
+	return o
+}
+
+func (o GetFeatureSpecClusterupgradeArrayOutput) Index(i pulumi.IntInput) GetFeatureSpecClusterupgradeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFeatureSpecClusterupgrade {
+		return vs[0].([]GetFeatureSpecClusterupgrade)[vs[1].(int)]
+	}).(GetFeatureSpecClusterupgradeOutput)
+}
+
+type GetFeatureSpecClusterupgradeGkeUpgradeOverride struct {
+	// Post conditions to override for the specified upgrade.
+	PostConditions []GetFeatureSpecClusterupgradeGkeUpgradeOverridePostCondition `pulumi:"postConditions"`
+	// Which upgrade to override.
+	Upgrades []GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgrade `pulumi:"upgrades"`
+}
+
+// GetFeatureSpecClusterupgradeGkeUpgradeOverrideInput is an input type that accepts GetFeatureSpecClusterupgradeGkeUpgradeOverrideArgs and GetFeatureSpecClusterupgradeGkeUpgradeOverrideOutput values.
+// You can construct a concrete instance of `GetFeatureSpecClusterupgradeGkeUpgradeOverrideInput` via:
+//
+//	GetFeatureSpecClusterupgradeGkeUpgradeOverrideArgs{...}
+type GetFeatureSpecClusterupgradeGkeUpgradeOverrideInput interface {
+	pulumi.Input
+
+	ToGetFeatureSpecClusterupgradeGkeUpgradeOverrideOutput() GetFeatureSpecClusterupgradeGkeUpgradeOverrideOutput
+	ToGetFeatureSpecClusterupgradeGkeUpgradeOverrideOutputWithContext(context.Context) GetFeatureSpecClusterupgradeGkeUpgradeOverrideOutput
+}
+
+type GetFeatureSpecClusterupgradeGkeUpgradeOverrideArgs struct {
+	// Post conditions to override for the specified upgrade.
+	PostConditions GetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionArrayInput `pulumi:"postConditions"`
+	// Which upgrade to override.
+	Upgrades GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeArrayInput `pulumi:"upgrades"`
+}
+
+func (GetFeatureSpecClusterupgradeGkeUpgradeOverrideArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureSpecClusterupgradeGkeUpgradeOverride)(nil)).Elem()
+}
+
+func (i GetFeatureSpecClusterupgradeGkeUpgradeOverrideArgs) ToGetFeatureSpecClusterupgradeGkeUpgradeOverrideOutput() GetFeatureSpecClusterupgradeGkeUpgradeOverrideOutput {
+	return i.ToGetFeatureSpecClusterupgradeGkeUpgradeOverrideOutputWithContext(context.Background())
+}
+
+func (i GetFeatureSpecClusterupgradeGkeUpgradeOverrideArgs) ToGetFeatureSpecClusterupgradeGkeUpgradeOverrideOutputWithContext(ctx context.Context) GetFeatureSpecClusterupgradeGkeUpgradeOverrideOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureSpecClusterupgradeGkeUpgradeOverrideOutput)
+}
+
+// GetFeatureSpecClusterupgradeGkeUpgradeOverrideArrayInput is an input type that accepts GetFeatureSpecClusterupgradeGkeUpgradeOverrideArray and GetFeatureSpecClusterupgradeGkeUpgradeOverrideArrayOutput values.
+// You can construct a concrete instance of `GetFeatureSpecClusterupgradeGkeUpgradeOverrideArrayInput` via:
+//
+//	GetFeatureSpecClusterupgradeGkeUpgradeOverrideArray{ GetFeatureSpecClusterupgradeGkeUpgradeOverrideArgs{...} }
+type GetFeatureSpecClusterupgradeGkeUpgradeOverrideArrayInput interface {
+	pulumi.Input
+
+	ToGetFeatureSpecClusterupgradeGkeUpgradeOverrideArrayOutput() GetFeatureSpecClusterupgradeGkeUpgradeOverrideArrayOutput
+	ToGetFeatureSpecClusterupgradeGkeUpgradeOverrideArrayOutputWithContext(context.Context) GetFeatureSpecClusterupgradeGkeUpgradeOverrideArrayOutput
+}
+
+type GetFeatureSpecClusterupgradeGkeUpgradeOverrideArray []GetFeatureSpecClusterupgradeGkeUpgradeOverrideInput
+
+func (GetFeatureSpecClusterupgradeGkeUpgradeOverrideArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFeatureSpecClusterupgradeGkeUpgradeOverride)(nil)).Elem()
+}
+
+func (i GetFeatureSpecClusterupgradeGkeUpgradeOverrideArray) ToGetFeatureSpecClusterupgradeGkeUpgradeOverrideArrayOutput() GetFeatureSpecClusterupgradeGkeUpgradeOverrideArrayOutput {
+	return i.ToGetFeatureSpecClusterupgradeGkeUpgradeOverrideArrayOutputWithContext(context.Background())
+}
+
+func (i GetFeatureSpecClusterupgradeGkeUpgradeOverrideArray) ToGetFeatureSpecClusterupgradeGkeUpgradeOverrideArrayOutputWithContext(ctx context.Context) GetFeatureSpecClusterupgradeGkeUpgradeOverrideArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureSpecClusterupgradeGkeUpgradeOverrideArrayOutput)
+}
+
+type GetFeatureSpecClusterupgradeGkeUpgradeOverrideOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureSpecClusterupgradeGkeUpgradeOverrideOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureSpecClusterupgradeGkeUpgradeOverride)(nil)).Elem()
+}
+
+func (o GetFeatureSpecClusterupgradeGkeUpgradeOverrideOutput) ToGetFeatureSpecClusterupgradeGkeUpgradeOverrideOutput() GetFeatureSpecClusterupgradeGkeUpgradeOverrideOutput {
+	return o
+}
+
+func (o GetFeatureSpecClusterupgradeGkeUpgradeOverrideOutput) ToGetFeatureSpecClusterupgradeGkeUpgradeOverrideOutputWithContext(ctx context.Context) GetFeatureSpecClusterupgradeGkeUpgradeOverrideOutput {
+	return o
+}
+
+// Post conditions to override for the specified upgrade.
+func (o GetFeatureSpecClusterupgradeGkeUpgradeOverrideOutput) PostConditions() GetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionArrayOutput {
+	return o.ApplyT(func(v GetFeatureSpecClusterupgradeGkeUpgradeOverride) []GetFeatureSpecClusterupgradeGkeUpgradeOverridePostCondition {
+		return v.PostConditions
+	}).(GetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionArrayOutput)
+}
+
+// Which upgrade to override.
+func (o GetFeatureSpecClusterupgradeGkeUpgradeOverrideOutput) Upgrades() GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeArrayOutput {
+	return o.ApplyT(func(v GetFeatureSpecClusterupgradeGkeUpgradeOverride) []GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgrade {
+		return v.Upgrades
+	}).(GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeArrayOutput)
+}
+
+type GetFeatureSpecClusterupgradeGkeUpgradeOverrideArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureSpecClusterupgradeGkeUpgradeOverrideArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFeatureSpecClusterupgradeGkeUpgradeOverride)(nil)).Elem()
+}
+
+func (o GetFeatureSpecClusterupgradeGkeUpgradeOverrideArrayOutput) ToGetFeatureSpecClusterupgradeGkeUpgradeOverrideArrayOutput() GetFeatureSpecClusterupgradeGkeUpgradeOverrideArrayOutput {
+	return o
+}
+
+func (o GetFeatureSpecClusterupgradeGkeUpgradeOverrideArrayOutput) ToGetFeatureSpecClusterupgradeGkeUpgradeOverrideArrayOutputWithContext(ctx context.Context) GetFeatureSpecClusterupgradeGkeUpgradeOverrideArrayOutput {
+	return o
+}
+
+func (o GetFeatureSpecClusterupgradeGkeUpgradeOverrideArrayOutput) Index(i pulumi.IntInput) GetFeatureSpecClusterupgradeGkeUpgradeOverrideOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFeatureSpecClusterupgradeGkeUpgradeOverride {
+		return vs[0].([]GetFeatureSpecClusterupgradeGkeUpgradeOverride)[vs[1].(int)]
+	}).(GetFeatureSpecClusterupgradeGkeUpgradeOverrideOutput)
+}
+
+type GetFeatureSpecClusterupgradeGkeUpgradeOverridePostCondition struct {
+	// Amount of time to "soak" after a rollout has been finished before marking it COMPLETE. Cannot exceed 30 days.
+	Soaking string `pulumi:"soaking"`
+}
+
+// GetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionInput is an input type that accepts GetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionArgs and GetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionOutput values.
+// You can construct a concrete instance of `GetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionInput` via:
+//
+//	GetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionArgs{...}
+type GetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionInput interface {
+	pulumi.Input
+
+	ToGetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionOutput() GetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionOutput
+	ToGetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionOutputWithContext(context.Context) GetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionOutput
+}
+
+type GetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionArgs struct {
+	// Amount of time to "soak" after a rollout has been finished before marking it COMPLETE. Cannot exceed 30 days.
+	Soaking pulumi.StringInput `pulumi:"soaking"`
+}
+
+func (GetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureSpecClusterupgradeGkeUpgradeOverridePostCondition)(nil)).Elem()
+}
+
+func (i GetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionArgs) ToGetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionOutput() GetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionOutput {
+	return i.ToGetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionOutputWithContext(context.Background())
+}
+
+func (i GetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionArgs) ToGetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionOutputWithContext(ctx context.Context) GetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionOutput)
+}
+
+// GetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionArrayInput is an input type that accepts GetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionArray and GetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionArrayOutput values.
+// You can construct a concrete instance of `GetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionArrayInput` via:
+//
+//	GetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionArray{ GetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionArgs{...} }
+type GetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionArrayInput interface {
+	pulumi.Input
+
+	ToGetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionArrayOutput() GetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionArrayOutput
+	ToGetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionArrayOutputWithContext(context.Context) GetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionArrayOutput
+}
+
+type GetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionArray []GetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionInput
+
+func (GetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFeatureSpecClusterupgradeGkeUpgradeOverridePostCondition)(nil)).Elem()
+}
+
+func (i GetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionArray) ToGetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionArrayOutput() GetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionArrayOutput {
+	return i.ToGetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionArrayOutputWithContext(context.Background())
+}
+
+func (i GetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionArray) ToGetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionArrayOutputWithContext(ctx context.Context) GetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionArrayOutput)
+}
+
+type GetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureSpecClusterupgradeGkeUpgradeOverridePostCondition)(nil)).Elem()
+}
+
+func (o GetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionOutput) ToGetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionOutput() GetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionOutput {
+	return o
+}
+
+func (o GetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionOutput) ToGetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionOutputWithContext(ctx context.Context) GetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionOutput {
+	return o
+}
+
+// Amount of time to "soak" after a rollout has been finished before marking it COMPLETE. Cannot exceed 30 days.
+func (o GetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionOutput) Soaking() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFeatureSpecClusterupgradeGkeUpgradeOverridePostCondition) string { return v.Soaking }).(pulumi.StringOutput)
+}
+
+type GetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFeatureSpecClusterupgradeGkeUpgradeOverridePostCondition)(nil)).Elem()
+}
+
+func (o GetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionArrayOutput) ToGetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionArrayOutput() GetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionArrayOutput {
+	return o
+}
+
+func (o GetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionArrayOutput) ToGetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionArrayOutputWithContext(ctx context.Context) GetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionArrayOutput {
+	return o
+}
+
+func (o GetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionArrayOutput) Index(i pulumi.IntInput) GetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFeatureSpecClusterupgradeGkeUpgradeOverridePostCondition {
+		return vs[0].([]GetFeatureSpecClusterupgradeGkeUpgradeOverridePostCondition)[vs[1].(int)]
+	}).(GetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionOutput)
+}
+
+type GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgrade struct {
+	// Name of the upgrade, e.g., "k8sControlPlane". It should be a valid upgrade name. It must not exceet 99 characters.
+	Name string `pulumi:"name"`
+	// Version of the upgrade, e.g., "1.22.1-gke.100". It should be a valid version. It must not exceet 99 characters.
+	Version string `pulumi:"version"`
+}
+
+// GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeInput is an input type that accepts GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeArgs and GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeOutput values.
+// You can construct a concrete instance of `GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeInput` via:
+//
+//	GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeArgs{...}
+type GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeInput interface {
+	pulumi.Input
+
+	ToGetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeOutput() GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeOutput
+	ToGetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeOutputWithContext(context.Context) GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeOutput
+}
+
+type GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeArgs struct {
+	// Name of the upgrade, e.g., "k8sControlPlane". It should be a valid upgrade name. It must not exceet 99 characters.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Version of the upgrade, e.g., "1.22.1-gke.100". It should be a valid version. It must not exceet 99 characters.
+	Version pulumi.StringInput `pulumi:"version"`
+}
+
+func (GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgrade)(nil)).Elem()
+}
+
+func (i GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeArgs) ToGetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeOutput() GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeOutput {
+	return i.ToGetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeOutputWithContext(context.Background())
+}
+
+func (i GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeArgs) ToGetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeOutputWithContext(ctx context.Context) GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeOutput)
+}
+
+// GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeArrayInput is an input type that accepts GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeArray and GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeArrayOutput values.
+// You can construct a concrete instance of `GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeArrayInput` via:
+//
+//	GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeArray{ GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeArgs{...} }
+type GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeArrayInput interface {
+	pulumi.Input
+
+	ToGetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeArrayOutput() GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeArrayOutput
+	ToGetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeArrayOutputWithContext(context.Context) GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeArrayOutput
+}
+
+type GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeArray []GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeInput
+
+func (GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgrade)(nil)).Elem()
+}
+
+func (i GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeArray) ToGetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeArrayOutput() GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeArrayOutput {
+	return i.ToGetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeArrayOutputWithContext(context.Background())
+}
+
+func (i GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeArray) ToGetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeArrayOutputWithContext(ctx context.Context) GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeArrayOutput)
+}
+
+type GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgrade)(nil)).Elem()
+}
+
+func (o GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeOutput) ToGetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeOutput() GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeOutput {
+	return o
+}
+
+func (o GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeOutput) ToGetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeOutputWithContext(ctx context.Context) GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeOutput {
+	return o
+}
+
+// Name of the upgrade, e.g., "k8sControlPlane". It should be a valid upgrade name. It must not exceet 99 characters.
+func (o GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgrade) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Version of the upgrade, e.g., "1.22.1-gke.100". It should be a valid version. It must not exceet 99 characters.
+func (o GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeOutput) Version() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgrade) string { return v.Version }).(pulumi.StringOutput)
+}
+
+type GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgrade)(nil)).Elem()
+}
+
+func (o GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeArrayOutput) ToGetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeArrayOutput() GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeArrayOutput {
+	return o
+}
+
+func (o GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeArrayOutput) ToGetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeArrayOutputWithContext(ctx context.Context) GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeArrayOutput {
+	return o
+}
+
+func (o GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeArrayOutput) Index(i pulumi.IntInput) GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgrade {
+		return vs[0].([]GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgrade)[vs[1].(int)]
+	}).(GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeOutput)
+}
+
+type GetFeatureSpecClusterupgradePostCondition struct {
+	// Amount of time to "soak" after a rollout has been finished before marking it COMPLETE. Cannot exceed 30 days.
+	Soaking string `pulumi:"soaking"`
+}
+
+// GetFeatureSpecClusterupgradePostConditionInput is an input type that accepts GetFeatureSpecClusterupgradePostConditionArgs and GetFeatureSpecClusterupgradePostConditionOutput values.
+// You can construct a concrete instance of `GetFeatureSpecClusterupgradePostConditionInput` via:
+//
+//	GetFeatureSpecClusterupgradePostConditionArgs{...}
+type GetFeatureSpecClusterupgradePostConditionInput interface {
+	pulumi.Input
+
+	ToGetFeatureSpecClusterupgradePostConditionOutput() GetFeatureSpecClusterupgradePostConditionOutput
+	ToGetFeatureSpecClusterupgradePostConditionOutputWithContext(context.Context) GetFeatureSpecClusterupgradePostConditionOutput
+}
+
+type GetFeatureSpecClusterupgradePostConditionArgs struct {
+	// Amount of time to "soak" after a rollout has been finished before marking it COMPLETE. Cannot exceed 30 days.
+	Soaking pulumi.StringInput `pulumi:"soaking"`
+}
+
+func (GetFeatureSpecClusterupgradePostConditionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureSpecClusterupgradePostCondition)(nil)).Elem()
+}
+
+func (i GetFeatureSpecClusterupgradePostConditionArgs) ToGetFeatureSpecClusterupgradePostConditionOutput() GetFeatureSpecClusterupgradePostConditionOutput {
+	return i.ToGetFeatureSpecClusterupgradePostConditionOutputWithContext(context.Background())
+}
+
+func (i GetFeatureSpecClusterupgradePostConditionArgs) ToGetFeatureSpecClusterupgradePostConditionOutputWithContext(ctx context.Context) GetFeatureSpecClusterupgradePostConditionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureSpecClusterupgradePostConditionOutput)
+}
+
+// GetFeatureSpecClusterupgradePostConditionArrayInput is an input type that accepts GetFeatureSpecClusterupgradePostConditionArray and GetFeatureSpecClusterupgradePostConditionArrayOutput values.
+// You can construct a concrete instance of `GetFeatureSpecClusterupgradePostConditionArrayInput` via:
+//
+//	GetFeatureSpecClusterupgradePostConditionArray{ GetFeatureSpecClusterupgradePostConditionArgs{...} }
+type GetFeatureSpecClusterupgradePostConditionArrayInput interface {
+	pulumi.Input
+
+	ToGetFeatureSpecClusterupgradePostConditionArrayOutput() GetFeatureSpecClusterupgradePostConditionArrayOutput
+	ToGetFeatureSpecClusterupgradePostConditionArrayOutputWithContext(context.Context) GetFeatureSpecClusterupgradePostConditionArrayOutput
+}
+
+type GetFeatureSpecClusterupgradePostConditionArray []GetFeatureSpecClusterupgradePostConditionInput
+
+func (GetFeatureSpecClusterupgradePostConditionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFeatureSpecClusterupgradePostCondition)(nil)).Elem()
+}
+
+func (i GetFeatureSpecClusterupgradePostConditionArray) ToGetFeatureSpecClusterupgradePostConditionArrayOutput() GetFeatureSpecClusterupgradePostConditionArrayOutput {
+	return i.ToGetFeatureSpecClusterupgradePostConditionArrayOutputWithContext(context.Background())
+}
+
+func (i GetFeatureSpecClusterupgradePostConditionArray) ToGetFeatureSpecClusterupgradePostConditionArrayOutputWithContext(ctx context.Context) GetFeatureSpecClusterupgradePostConditionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureSpecClusterupgradePostConditionArrayOutput)
+}
+
+type GetFeatureSpecClusterupgradePostConditionOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureSpecClusterupgradePostConditionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureSpecClusterupgradePostCondition)(nil)).Elem()
+}
+
+func (o GetFeatureSpecClusterupgradePostConditionOutput) ToGetFeatureSpecClusterupgradePostConditionOutput() GetFeatureSpecClusterupgradePostConditionOutput {
+	return o
+}
+
+func (o GetFeatureSpecClusterupgradePostConditionOutput) ToGetFeatureSpecClusterupgradePostConditionOutputWithContext(ctx context.Context) GetFeatureSpecClusterupgradePostConditionOutput {
+	return o
+}
+
+// Amount of time to "soak" after a rollout has been finished before marking it COMPLETE. Cannot exceed 30 days.
+func (o GetFeatureSpecClusterupgradePostConditionOutput) Soaking() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFeatureSpecClusterupgradePostCondition) string { return v.Soaking }).(pulumi.StringOutput)
+}
+
+type GetFeatureSpecClusterupgradePostConditionArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureSpecClusterupgradePostConditionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFeatureSpecClusterupgradePostCondition)(nil)).Elem()
+}
+
+func (o GetFeatureSpecClusterupgradePostConditionArrayOutput) ToGetFeatureSpecClusterupgradePostConditionArrayOutput() GetFeatureSpecClusterupgradePostConditionArrayOutput {
+	return o
+}
+
+func (o GetFeatureSpecClusterupgradePostConditionArrayOutput) ToGetFeatureSpecClusterupgradePostConditionArrayOutputWithContext(ctx context.Context) GetFeatureSpecClusterupgradePostConditionArrayOutput {
+	return o
+}
+
+func (o GetFeatureSpecClusterupgradePostConditionArrayOutput) Index(i pulumi.IntInput) GetFeatureSpecClusterupgradePostConditionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFeatureSpecClusterupgradePostCondition {
+		return vs[0].([]GetFeatureSpecClusterupgradePostCondition)[vs[1].(int)]
+	}).(GetFeatureSpecClusterupgradePostConditionOutput)
+}
+
+type GetFeatureSpecFleetobservability struct {
+	// Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
+	LoggingConfigs []GetFeatureSpecFleetobservabilityLoggingConfig `pulumi:"loggingConfigs"`
+}
+
+// GetFeatureSpecFleetobservabilityInput is an input type that accepts GetFeatureSpecFleetobservabilityArgs and GetFeatureSpecFleetobservabilityOutput values.
+// You can construct a concrete instance of `GetFeatureSpecFleetobservabilityInput` via:
+//
+//	GetFeatureSpecFleetobservabilityArgs{...}
+type GetFeatureSpecFleetobservabilityInput interface {
+	pulumi.Input
+
+	ToGetFeatureSpecFleetobservabilityOutput() GetFeatureSpecFleetobservabilityOutput
+	ToGetFeatureSpecFleetobservabilityOutputWithContext(context.Context) GetFeatureSpecFleetobservabilityOutput
+}
+
+type GetFeatureSpecFleetobservabilityArgs struct {
+	// Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
+	LoggingConfigs GetFeatureSpecFleetobservabilityLoggingConfigArrayInput `pulumi:"loggingConfigs"`
+}
+
+func (GetFeatureSpecFleetobservabilityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureSpecFleetobservability)(nil)).Elem()
+}
+
+func (i GetFeatureSpecFleetobservabilityArgs) ToGetFeatureSpecFleetobservabilityOutput() GetFeatureSpecFleetobservabilityOutput {
+	return i.ToGetFeatureSpecFleetobservabilityOutputWithContext(context.Background())
+}
+
+func (i GetFeatureSpecFleetobservabilityArgs) ToGetFeatureSpecFleetobservabilityOutputWithContext(ctx context.Context) GetFeatureSpecFleetobservabilityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureSpecFleetobservabilityOutput)
+}
+
+// GetFeatureSpecFleetobservabilityArrayInput is an input type that accepts GetFeatureSpecFleetobservabilityArray and GetFeatureSpecFleetobservabilityArrayOutput values.
+// You can construct a concrete instance of `GetFeatureSpecFleetobservabilityArrayInput` via:
+//
+//	GetFeatureSpecFleetobservabilityArray{ GetFeatureSpecFleetobservabilityArgs{...} }
+type GetFeatureSpecFleetobservabilityArrayInput interface {
+	pulumi.Input
+
+	ToGetFeatureSpecFleetobservabilityArrayOutput() GetFeatureSpecFleetobservabilityArrayOutput
+	ToGetFeatureSpecFleetobservabilityArrayOutputWithContext(context.Context) GetFeatureSpecFleetobservabilityArrayOutput
+}
+
+type GetFeatureSpecFleetobservabilityArray []GetFeatureSpecFleetobservabilityInput
+
+func (GetFeatureSpecFleetobservabilityArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFeatureSpecFleetobservability)(nil)).Elem()
+}
+
+func (i GetFeatureSpecFleetobservabilityArray) ToGetFeatureSpecFleetobservabilityArrayOutput() GetFeatureSpecFleetobservabilityArrayOutput {
+	return i.ToGetFeatureSpecFleetobservabilityArrayOutputWithContext(context.Background())
+}
+
+func (i GetFeatureSpecFleetobservabilityArray) ToGetFeatureSpecFleetobservabilityArrayOutputWithContext(ctx context.Context) GetFeatureSpecFleetobservabilityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureSpecFleetobservabilityArrayOutput)
+}
+
+type GetFeatureSpecFleetobservabilityOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureSpecFleetobservabilityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureSpecFleetobservability)(nil)).Elem()
+}
+
+func (o GetFeatureSpecFleetobservabilityOutput) ToGetFeatureSpecFleetobservabilityOutput() GetFeatureSpecFleetobservabilityOutput {
+	return o
+}
+
+func (o GetFeatureSpecFleetobservabilityOutput) ToGetFeatureSpecFleetobservabilityOutputWithContext(ctx context.Context) GetFeatureSpecFleetobservabilityOutput {
+	return o
+}
+
+// Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
+func (o GetFeatureSpecFleetobservabilityOutput) LoggingConfigs() GetFeatureSpecFleetobservabilityLoggingConfigArrayOutput {
+	return o.ApplyT(func(v GetFeatureSpecFleetobservability) []GetFeatureSpecFleetobservabilityLoggingConfig {
+		return v.LoggingConfigs
+	}).(GetFeatureSpecFleetobservabilityLoggingConfigArrayOutput)
+}
+
+type GetFeatureSpecFleetobservabilityArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureSpecFleetobservabilityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFeatureSpecFleetobservability)(nil)).Elem()
+}
+
+func (o GetFeatureSpecFleetobservabilityArrayOutput) ToGetFeatureSpecFleetobservabilityArrayOutput() GetFeatureSpecFleetobservabilityArrayOutput {
+	return o
+}
+
+func (o GetFeatureSpecFleetobservabilityArrayOutput) ToGetFeatureSpecFleetobservabilityArrayOutputWithContext(ctx context.Context) GetFeatureSpecFleetobservabilityArrayOutput {
+	return o
+}
+
+func (o GetFeatureSpecFleetobservabilityArrayOutput) Index(i pulumi.IntInput) GetFeatureSpecFleetobservabilityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFeatureSpecFleetobservability {
+		return vs[0].([]GetFeatureSpecFleetobservability)[vs[1].(int)]
+	}).(GetFeatureSpecFleetobservabilityOutput)
+}
+
+type GetFeatureSpecFleetobservabilityLoggingConfig struct {
+	// Specified if applying the default routing config to logs not specified in other configs.
+	DefaultConfigs []GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfig `pulumi:"defaultConfigs"`
+	// Specified if applying the routing config to all logs for all fleet scopes.
+	FleetScopeLogsConfigs []GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig `pulumi:"fleetScopeLogsConfigs"`
+}
+
+// GetFeatureSpecFleetobservabilityLoggingConfigInput is an input type that accepts GetFeatureSpecFleetobservabilityLoggingConfigArgs and GetFeatureSpecFleetobservabilityLoggingConfigOutput values.
+// You can construct a concrete instance of `GetFeatureSpecFleetobservabilityLoggingConfigInput` via:
+//
+//	GetFeatureSpecFleetobservabilityLoggingConfigArgs{...}
+type GetFeatureSpecFleetobservabilityLoggingConfigInput interface {
+	pulumi.Input
+
+	ToGetFeatureSpecFleetobservabilityLoggingConfigOutput() GetFeatureSpecFleetobservabilityLoggingConfigOutput
+	ToGetFeatureSpecFleetobservabilityLoggingConfigOutputWithContext(context.Context) GetFeatureSpecFleetobservabilityLoggingConfigOutput
+}
+
+type GetFeatureSpecFleetobservabilityLoggingConfigArgs struct {
+	// Specified if applying the default routing config to logs not specified in other configs.
+	DefaultConfigs GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigArrayInput `pulumi:"defaultConfigs"`
+	// Specified if applying the routing config to all logs for all fleet scopes.
+	FleetScopeLogsConfigs GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArrayInput `pulumi:"fleetScopeLogsConfigs"`
+}
+
+func (GetFeatureSpecFleetobservabilityLoggingConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureSpecFleetobservabilityLoggingConfig)(nil)).Elem()
+}
+
+func (i GetFeatureSpecFleetobservabilityLoggingConfigArgs) ToGetFeatureSpecFleetobservabilityLoggingConfigOutput() GetFeatureSpecFleetobservabilityLoggingConfigOutput {
+	return i.ToGetFeatureSpecFleetobservabilityLoggingConfigOutputWithContext(context.Background())
+}
+
+func (i GetFeatureSpecFleetobservabilityLoggingConfigArgs) ToGetFeatureSpecFleetobservabilityLoggingConfigOutputWithContext(ctx context.Context) GetFeatureSpecFleetobservabilityLoggingConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureSpecFleetobservabilityLoggingConfigOutput)
+}
+
+// GetFeatureSpecFleetobservabilityLoggingConfigArrayInput is an input type that accepts GetFeatureSpecFleetobservabilityLoggingConfigArray and GetFeatureSpecFleetobservabilityLoggingConfigArrayOutput values.
+// You can construct a concrete instance of `GetFeatureSpecFleetobservabilityLoggingConfigArrayInput` via:
+//
+//	GetFeatureSpecFleetobservabilityLoggingConfigArray{ GetFeatureSpecFleetobservabilityLoggingConfigArgs{...} }
+type GetFeatureSpecFleetobservabilityLoggingConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetFeatureSpecFleetobservabilityLoggingConfigArrayOutput() GetFeatureSpecFleetobservabilityLoggingConfigArrayOutput
+	ToGetFeatureSpecFleetobservabilityLoggingConfigArrayOutputWithContext(context.Context) GetFeatureSpecFleetobservabilityLoggingConfigArrayOutput
+}
+
+type GetFeatureSpecFleetobservabilityLoggingConfigArray []GetFeatureSpecFleetobservabilityLoggingConfigInput
+
+func (GetFeatureSpecFleetobservabilityLoggingConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFeatureSpecFleetobservabilityLoggingConfig)(nil)).Elem()
+}
+
+func (i GetFeatureSpecFleetobservabilityLoggingConfigArray) ToGetFeatureSpecFleetobservabilityLoggingConfigArrayOutput() GetFeatureSpecFleetobservabilityLoggingConfigArrayOutput {
+	return i.ToGetFeatureSpecFleetobservabilityLoggingConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetFeatureSpecFleetobservabilityLoggingConfigArray) ToGetFeatureSpecFleetobservabilityLoggingConfigArrayOutputWithContext(ctx context.Context) GetFeatureSpecFleetobservabilityLoggingConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureSpecFleetobservabilityLoggingConfigArrayOutput)
+}
+
+type GetFeatureSpecFleetobservabilityLoggingConfigOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureSpecFleetobservabilityLoggingConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureSpecFleetobservabilityLoggingConfig)(nil)).Elem()
+}
+
+func (o GetFeatureSpecFleetobservabilityLoggingConfigOutput) ToGetFeatureSpecFleetobservabilityLoggingConfigOutput() GetFeatureSpecFleetobservabilityLoggingConfigOutput {
+	return o
+}
+
+func (o GetFeatureSpecFleetobservabilityLoggingConfigOutput) ToGetFeatureSpecFleetobservabilityLoggingConfigOutputWithContext(ctx context.Context) GetFeatureSpecFleetobservabilityLoggingConfigOutput {
+	return o
+}
+
+// Specified if applying the default routing config to logs not specified in other configs.
+func (o GetFeatureSpecFleetobservabilityLoggingConfigOutput) DefaultConfigs() GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigArrayOutput {
+	return o.ApplyT(func(v GetFeatureSpecFleetobservabilityLoggingConfig) []GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfig {
+		return v.DefaultConfigs
+	}).(GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigArrayOutput)
+}
+
+// Specified if applying the routing config to all logs for all fleet scopes.
+func (o GetFeatureSpecFleetobservabilityLoggingConfigOutput) FleetScopeLogsConfigs() GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArrayOutput {
+	return o.ApplyT(func(v GetFeatureSpecFleetobservabilityLoggingConfig) []GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig {
+		return v.FleetScopeLogsConfigs
+	}).(GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArrayOutput)
+}
+
+type GetFeatureSpecFleetobservabilityLoggingConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureSpecFleetobservabilityLoggingConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFeatureSpecFleetobservabilityLoggingConfig)(nil)).Elem()
+}
+
+func (o GetFeatureSpecFleetobservabilityLoggingConfigArrayOutput) ToGetFeatureSpecFleetobservabilityLoggingConfigArrayOutput() GetFeatureSpecFleetobservabilityLoggingConfigArrayOutput {
+	return o
+}
+
+func (o GetFeatureSpecFleetobservabilityLoggingConfigArrayOutput) ToGetFeatureSpecFleetobservabilityLoggingConfigArrayOutputWithContext(ctx context.Context) GetFeatureSpecFleetobservabilityLoggingConfigArrayOutput {
+	return o
+}
+
+func (o GetFeatureSpecFleetobservabilityLoggingConfigArrayOutput) Index(i pulumi.IntInput) GetFeatureSpecFleetobservabilityLoggingConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFeatureSpecFleetobservabilityLoggingConfig {
+		return vs[0].([]GetFeatureSpecFleetobservabilityLoggingConfig)[vs[1].(int)]
+	}).(GetFeatureSpecFleetobservabilityLoggingConfigOutput)
+}
+
+type GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfig struct {
+	// Specified if fleet logging feature is enabled. Possible values: ["MODE_UNSPECIFIED", "COPY", "MOVE"]
+	Mode string `pulumi:"mode"`
+}
+
+// GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigInput is an input type that accepts GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs and GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigOutput values.
+// You can construct a concrete instance of `GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigInput` via:
+//
+//	GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs{...}
+type GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigInput interface {
+	pulumi.Input
+
+	ToGetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigOutput() GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigOutput
+	ToGetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigOutputWithContext(context.Context) GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigOutput
+}
+
+type GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs struct {
+	// Specified if fleet logging feature is enabled. Possible values: ["MODE_UNSPECIFIED", "COPY", "MOVE"]
+	Mode pulumi.StringInput `pulumi:"mode"`
+}
+
+func (GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfig)(nil)).Elem()
+}
+
+func (i GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs) ToGetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigOutput() GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigOutput {
+	return i.ToGetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigOutputWithContext(context.Background())
+}
+
+func (i GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs) ToGetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigOutputWithContext(ctx context.Context) GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigOutput)
+}
+
+// GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigArrayInput is an input type that accepts GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigArray and GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigArrayOutput values.
+// You can construct a concrete instance of `GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigArrayInput` via:
+//
+//	GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigArray{ GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs{...} }
+type GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigArrayOutput() GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigArrayOutput
+	ToGetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigArrayOutputWithContext(context.Context) GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigArrayOutput
+}
+
+type GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigArray []GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigInput
+
+func (GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfig)(nil)).Elem()
+}
+
+func (i GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigArray) ToGetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigArrayOutput() GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigArrayOutput {
+	return i.ToGetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigArray) ToGetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigArrayOutputWithContext(ctx context.Context) GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigArrayOutput)
+}
+
+type GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfig)(nil)).Elem()
+}
+
+func (o GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigOutput) ToGetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigOutput() GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigOutput {
+	return o
+}
+
+func (o GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigOutput) ToGetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigOutputWithContext(ctx context.Context) GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigOutput {
+	return o
+}
+
+// Specified if fleet logging feature is enabled. Possible values: ["MODE_UNSPECIFIED", "COPY", "MOVE"]
+func (o GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfig) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+type GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfig)(nil)).Elem()
+}
+
+func (o GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigArrayOutput) ToGetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigArrayOutput() GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigArrayOutput {
+	return o
+}
+
+func (o GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigArrayOutput) ToGetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigArrayOutputWithContext(ctx context.Context) GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigArrayOutput {
+	return o
+}
+
+func (o GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigArrayOutput) Index(i pulumi.IntInput) GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfig {
+		return vs[0].([]GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfig)[vs[1].(int)]
+	}).(GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigOutput)
+}
+
+type GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig struct {
+	// Specified if fleet logging feature is enabled. Possible values: ["MODE_UNSPECIFIED", "COPY", "MOVE"]
+	Mode string `pulumi:"mode"`
+}
+
+// GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigInput is an input type that accepts GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs and GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigOutput values.
+// You can construct a concrete instance of `GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigInput` via:
+//
+//	GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs{...}
+type GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigInput interface {
+	pulumi.Input
+
+	ToGetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigOutput() GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigOutput
+	ToGetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigOutputWithContext(context.Context) GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigOutput
+}
+
+type GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs struct {
+	// Specified if fleet logging feature is enabled. Possible values: ["MODE_UNSPECIFIED", "COPY", "MOVE"]
+	Mode pulumi.StringInput `pulumi:"mode"`
+}
+
+func (GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig)(nil)).Elem()
+}
+
+func (i GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs) ToGetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigOutput() GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigOutput {
+	return i.ToGetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigOutputWithContext(context.Background())
+}
+
+func (i GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs) ToGetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigOutputWithContext(ctx context.Context) GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigOutput)
+}
+
+// GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArrayInput is an input type that accepts GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArray and GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArrayOutput values.
+// You can construct a concrete instance of `GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArrayInput` via:
+//
+//	GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArray{ GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs{...} }
+type GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArrayOutput() GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArrayOutput
+	ToGetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArrayOutputWithContext(context.Context) GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArrayOutput
+}
+
+type GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArray []GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigInput
+
+func (GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig)(nil)).Elem()
+}
+
+func (i GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArray) ToGetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArrayOutput() GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArrayOutput {
+	return i.ToGetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArray) ToGetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArrayOutputWithContext(ctx context.Context) GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArrayOutput)
+}
+
+type GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig)(nil)).Elem()
+}
+
+func (o GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigOutput) ToGetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigOutput() GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigOutput {
+	return o
+}
+
+func (o GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigOutput) ToGetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigOutputWithContext(ctx context.Context) GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigOutput {
+	return o
+}
+
+// Specified if fleet logging feature is enabled. Possible values: ["MODE_UNSPECIFIED", "COPY", "MOVE"]
+func (o GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigOutput) Mode() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig) string { return v.Mode }).(pulumi.StringOutput)
+}
+
+type GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig)(nil)).Elem()
+}
+
+func (o GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArrayOutput) ToGetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArrayOutput() GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArrayOutput {
+	return o
+}
+
+func (o GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArrayOutput) ToGetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArrayOutputWithContext(ctx context.Context) GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArrayOutput {
+	return o
+}
+
+func (o GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArrayOutput) Index(i pulumi.IntInput) GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig {
+		return vs[0].([]GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfig)[vs[1].(int)]
+	}).(GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigOutput)
+}
+
+type GetFeatureSpecMulticlusteringress struct {
+	// Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: 'projects/foo-proj/locations/global/memberships/bar'
+	ConfigMembership string `pulumi:"configMembership"`
+}
+
+// GetFeatureSpecMulticlusteringressInput is an input type that accepts GetFeatureSpecMulticlusteringressArgs and GetFeatureSpecMulticlusteringressOutput values.
+// You can construct a concrete instance of `GetFeatureSpecMulticlusteringressInput` via:
+//
+//	GetFeatureSpecMulticlusteringressArgs{...}
+type GetFeatureSpecMulticlusteringressInput interface {
+	pulumi.Input
+
+	ToGetFeatureSpecMulticlusteringressOutput() GetFeatureSpecMulticlusteringressOutput
+	ToGetFeatureSpecMulticlusteringressOutputWithContext(context.Context) GetFeatureSpecMulticlusteringressOutput
+}
+
+type GetFeatureSpecMulticlusteringressArgs struct {
+	// Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: 'projects/foo-proj/locations/global/memberships/bar'
+	ConfigMembership pulumi.StringInput `pulumi:"configMembership"`
+}
+
+func (GetFeatureSpecMulticlusteringressArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureSpecMulticlusteringress)(nil)).Elem()
+}
+
+func (i GetFeatureSpecMulticlusteringressArgs) ToGetFeatureSpecMulticlusteringressOutput() GetFeatureSpecMulticlusteringressOutput {
+	return i.ToGetFeatureSpecMulticlusteringressOutputWithContext(context.Background())
+}
+
+func (i GetFeatureSpecMulticlusteringressArgs) ToGetFeatureSpecMulticlusteringressOutputWithContext(ctx context.Context) GetFeatureSpecMulticlusteringressOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureSpecMulticlusteringressOutput)
+}
+
+// GetFeatureSpecMulticlusteringressArrayInput is an input type that accepts GetFeatureSpecMulticlusteringressArray and GetFeatureSpecMulticlusteringressArrayOutput values.
+// You can construct a concrete instance of `GetFeatureSpecMulticlusteringressArrayInput` via:
+//
+//	GetFeatureSpecMulticlusteringressArray{ GetFeatureSpecMulticlusteringressArgs{...} }
+type GetFeatureSpecMulticlusteringressArrayInput interface {
+	pulumi.Input
+
+	ToGetFeatureSpecMulticlusteringressArrayOutput() GetFeatureSpecMulticlusteringressArrayOutput
+	ToGetFeatureSpecMulticlusteringressArrayOutputWithContext(context.Context) GetFeatureSpecMulticlusteringressArrayOutput
+}
+
+type GetFeatureSpecMulticlusteringressArray []GetFeatureSpecMulticlusteringressInput
+
+func (GetFeatureSpecMulticlusteringressArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFeatureSpecMulticlusteringress)(nil)).Elem()
+}
+
+func (i GetFeatureSpecMulticlusteringressArray) ToGetFeatureSpecMulticlusteringressArrayOutput() GetFeatureSpecMulticlusteringressArrayOutput {
+	return i.ToGetFeatureSpecMulticlusteringressArrayOutputWithContext(context.Background())
+}
+
+func (i GetFeatureSpecMulticlusteringressArray) ToGetFeatureSpecMulticlusteringressArrayOutputWithContext(ctx context.Context) GetFeatureSpecMulticlusteringressArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureSpecMulticlusteringressArrayOutput)
+}
+
+type GetFeatureSpecMulticlusteringressOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureSpecMulticlusteringressOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureSpecMulticlusteringress)(nil)).Elem()
+}
+
+func (o GetFeatureSpecMulticlusteringressOutput) ToGetFeatureSpecMulticlusteringressOutput() GetFeatureSpecMulticlusteringressOutput {
+	return o
+}
+
+func (o GetFeatureSpecMulticlusteringressOutput) ToGetFeatureSpecMulticlusteringressOutputWithContext(ctx context.Context) GetFeatureSpecMulticlusteringressOutput {
+	return o
+}
+
+// Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: 'projects/foo-proj/locations/global/memberships/bar'
+func (o GetFeatureSpecMulticlusteringressOutput) ConfigMembership() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFeatureSpecMulticlusteringress) string { return v.ConfigMembership }).(pulumi.StringOutput)
+}
+
+type GetFeatureSpecMulticlusteringressArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureSpecMulticlusteringressArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFeatureSpecMulticlusteringress)(nil)).Elem()
+}
+
+func (o GetFeatureSpecMulticlusteringressArrayOutput) ToGetFeatureSpecMulticlusteringressArrayOutput() GetFeatureSpecMulticlusteringressArrayOutput {
+	return o
+}
+
+func (o GetFeatureSpecMulticlusteringressArrayOutput) ToGetFeatureSpecMulticlusteringressArrayOutputWithContext(ctx context.Context) GetFeatureSpecMulticlusteringressArrayOutput {
+	return o
+}
+
+func (o GetFeatureSpecMulticlusteringressArrayOutput) Index(i pulumi.IntInput) GetFeatureSpecMulticlusteringressOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFeatureSpecMulticlusteringress {
+		return vs[0].([]GetFeatureSpecMulticlusteringress)[vs[1].(int)]
+	}).(GetFeatureSpecMulticlusteringressOutput)
+}
+
+type GetFeatureState struct {
+	// Output only. The "running state" of the Feature in this Hub.
+	States []GetFeatureStateState `pulumi:"states"`
+}
+
+// GetFeatureStateInput is an input type that accepts GetFeatureStateArgs and GetFeatureStateOutput values.
+// You can construct a concrete instance of `GetFeatureStateInput` via:
+//
+//	GetFeatureStateArgs{...}
+type GetFeatureStateInput interface {
+	pulumi.Input
+
+	ToGetFeatureStateOutput() GetFeatureStateOutput
+	ToGetFeatureStateOutputWithContext(context.Context) GetFeatureStateOutput
+}
+
+type GetFeatureStateArgs struct {
+	// Output only. The "running state" of the Feature in this Hub.
+	States GetFeatureStateStateArrayInput `pulumi:"states"`
+}
+
+func (GetFeatureStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureState)(nil)).Elem()
+}
+
+func (i GetFeatureStateArgs) ToGetFeatureStateOutput() GetFeatureStateOutput {
+	return i.ToGetFeatureStateOutputWithContext(context.Background())
+}
+
+func (i GetFeatureStateArgs) ToGetFeatureStateOutputWithContext(ctx context.Context) GetFeatureStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureStateOutput)
+}
+
+// GetFeatureStateArrayInput is an input type that accepts GetFeatureStateArray and GetFeatureStateArrayOutput values.
+// You can construct a concrete instance of `GetFeatureStateArrayInput` via:
+//
+//	GetFeatureStateArray{ GetFeatureStateArgs{...} }
+type GetFeatureStateArrayInput interface {
+	pulumi.Input
+
+	ToGetFeatureStateArrayOutput() GetFeatureStateArrayOutput
+	ToGetFeatureStateArrayOutputWithContext(context.Context) GetFeatureStateArrayOutput
+}
+
+type GetFeatureStateArray []GetFeatureStateInput
+
+func (GetFeatureStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFeatureState)(nil)).Elem()
+}
+
+func (i GetFeatureStateArray) ToGetFeatureStateArrayOutput() GetFeatureStateArrayOutput {
+	return i.ToGetFeatureStateArrayOutputWithContext(context.Background())
+}
+
+func (i GetFeatureStateArray) ToGetFeatureStateArrayOutputWithContext(ctx context.Context) GetFeatureStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureStateArrayOutput)
+}
+
+type GetFeatureStateOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureState)(nil)).Elem()
+}
+
+func (o GetFeatureStateOutput) ToGetFeatureStateOutput() GetFeatureStateOutput {
+	return o
+}
+
+func (o GetFeatureStateOutput) ToGetFeatureStateOutputWithContext(ctx context.Context) GetFeatureStateOutput {
+	return o
+}
+
+// Output only. The "running state" of the Feature in this Hub.
+func (o GetFeatureStateOutput) States() GetFeatureStateStateArrayOutput {
+	return o.ApplyT(func(v GetFeatureState) []GetFeatureStateState { return v.States }).(GetFeatureStateStateArrayOutput)
+}
+
+type GetFeatureStateArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFeatureState)(nil)).Elem()
+}
+
+func (o GetFeatureStateArrayOutput) ToGetFeatureStateArrayOutput() GetFeatureStateArrayOutput {
+	return o
+}
+
+func (o GetFeatureStateArrayOutput) ToGetFeatureStateArrayOutputWithContext(ctx context.Context) GetFeatureStateArrayOutput {
+	return o
+}
+
+func (o GetFeatureStateArrayOutput) Index(i pulumi.IntInput) GetFeatureStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFeatureState {
+		return vs[0].([]GetFeatureState)[vs[1].(int)]
+	}).(GetFeatureStateOutput)
+}
+
+type GetFeatureStateState struct {
+	// The high-level, machine-readable status of this Feature.
+	Code string `pulumi:"code"`
+	// A human-readable description of the current status.
+	Description string `pulumi:"description"`
+	// The time this status and any related Feature-specific details were updated. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
+	UpdateTime string `pulumi:"updateTime"`
+}
+
+// GetFeatureStateStateInput is an input type that accepts GetFeatureStateStateArgs and GetFeatureStateStateOutput values.
+// You can construct a concrete instance of `GetFeatureStateStateInput` via:
+//
+//	GetFeatureStateStateArgs{...}
+type GetFeatureStateStateInput interface {
+	pulumi.Input
+
+	ToGetFeatureStateStateOutput() GetFeatureStateStateOutput
+	ToGetFeatureStateStateOutputWithContext(context.Context) GetFeatureStateStateOutput
+}
+
+type GetFeatureStateStateArgs struct {
+	// The high-level, machine-readable status of this Feature.
+	Code pulumi.StringInput `pulumi:"code"`
+	// A human-readable description of the current status.
+	Description pulumi.StringInput `pulumi:"description"`
+	// The time this status and any related Feature-specific details were updated. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
+	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
+}
+
+func (GetFeatureStateStateArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureStateState)(nil)).Elem()
+}
+
+func (i GetFeatureStateStateArgs) ToGetFeatureStateStateOutput() GetFeatureStateStateOutput {
+	return i.ToGetFeatureStateStateOutputWithContext(context.Background())
+}
+
+func (i GetFeatureStateStateArgs) ToGetFeatureStateStateOutputWithContext(ctx context.Context) GetFeatureStateStateOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureStateStateOutput)
+}
+
+// GetFeatureStateStateArrayInput is an input type that accepts GetFeatureStateStateArray and GetFeatureStateStateArrayOutput values.
+// You can construct a concrete instance of `GetFeatureStateStateArrayInput` via:
+//
+//	GetFeatureStateStateArray{ GetFeatureStateStateArgs{...} }
+type GetFeatureStateStateArrayInput interface {
+	pulumi.Input
+
+	ToGetFeatureStateStateArrayOutput() GetFeatureStateStateArrayOutput
+	ToGetFeatureStateStateArrayOutputWithContext(context.Context) GetFeatureStateStateArrayOutput
+}
+
+type GetFeatureStateStateArray []GetFeatureStateStateInput
+
+func (GetFeatureStateStateArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFeatureStateState)(nil)).Elem()
+}
+
+func (i GetFeatureStateStateArray) ToGetFeatureStateStateArrayOutput() GetFeatureStateStateArrayOutput {
+	return i.ToGetFeatureStateStateArrayOutputWithContext(context.Background())
+}
+
+func (i GetFeatureStateStateArray) ToGetFeatureStateStateArrayOutputWithContext(ctx context.Context) GetFeatureStateStateArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetFeatureStateStateArrayOutput)
+}
+
+type GetFeatureStateStateOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureStateStateOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetFeatureStateState)(nil)).Elem()
+}
+
+func (o GetFeatureStateStateOutput) ToGetFeatureStateStateOutput() GetFeatureStateStateOutput {
+	return o
+}
+
+func (o GetFeatureStateStateOutput) ToGetFeatureStateStateOutputWithContext(ctx context.Context) GetFeatureStateStateOutput {
+	return o
+}
+
+// The high-level, machine-readable status of this Feature.
+func (o GetFeatureStateStateOutput) Code() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFeatureStateState) string { return v.Code }).(pulumi.StringOutput)
+}
+
+// A human-readable description of the current status.
+func (o GetFeatureStateStateOutput) Description() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFeatureStateState) string { return v.Description }).(pulumi.StringOutput)
+}
+
+// The time this status and any related Feature-specific details were updated. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
+func (o GetFeatureStateStateOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetFeatureStateState) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+type GetFeatureStateStateArrayOutput struct{ *pulumi.OutputState }
+
+func (GetFeatureStateStateArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetFeatureStateState)(nil)).Elem()
+}
+
+func (o GetFeatureStateStateArrayOutput) ToGetFeatureStateStateArrayOutput() GetFeatureStateStateArrayOutput {
+	return o
+}
+
+func (o GetFeatureStateStateArrayOutput) ToGetFeatureStateStateArrayOutputWithContext(ctx context.Context) GetFeatureStateStateArrayOutput {
+	return o
+}
+
+func (o GetFeatureStateStateArrayOutput) Index(i pulumi.IntInput) GetFeatureStateStateOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetFeatureStateState {
+		return vs[0].([]GetFeatureStateState)[vs[1].(int)]
+	}).(GetFeatureStateStateOutput)
+}
+
 type GetMembershipBindingState struct {
 	// Code describes the state of a MembershipBinding resource.
 	Code string `pulumi:"code"`
@@ -11743,6 +15304,68 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ScopeRbacRoleBindingStateTypeArrayInput)(nil)).Elem(), ScopeRbacRoleBindingStateTypeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScopeStateTypeInput)(nil)).Elem(), ScopeStateTypeArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ScopeStateTypeArrayInput)(nil)).Elem(), ScopeStateTypeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureFleetDefaultMemberConfigInput)(nil)).Elem(), GetFeatureFleetDefaultMemberConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureFleetDefaultMemberConfigArrayInput)(nil)).Elem(), GetFeatureFleetDefaultMemberConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureFleetDefaultMemberConfigConfigmanagementInput)(nil)).Elem(), GetFeatureFleetDefaultMemberConfigConfigmanagementArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureFleetDefaultMemberConfigConfigmanagementArrayInput)(nil)).Elem(), GetFeatureFleetDefaultMemberConfigConfigmanagementArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncInput)(nil)).Elem(), GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArrayInput)(nil)).Elem(), GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitInput)(nil)).Elem(), GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArrayInput)(nil)).Elem(), GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciInput)(nil)).Elem(), GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArrayInput)(nil)).Elem(), GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureFleetDefaultMemberConfigMeshInput)(nil)).Elem(), GetFeatureFleetDefaultMemberConfigMeshArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureFleetDefaultMemberConfigMeshArrayInput)(nil)).Elem(), GetFeatureFleetDefaultMemberConfigMeshArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureFleetDefaultMemberConfigPolicycontrollerInput)(nil)).Elem(), GetFeatureFleetDefaultMemberConfigPolicycontrollerArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureFleetDefaultMemberConfigPolicycontrollerArrayInput)(nil)).Elem(), GetFeatureFleetDefaultMemberConfigPolicycontrollerArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigInput)(nil)).Elem(), GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArrayInput)(nil)).Elem(), GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigInput)(nil)).Elem(), GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArrayInput)(nil)).Elem(), GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceInput)(nil)).Elem(), GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceArrayInput)(nil)).Elem(), GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitInput)(nil)).Elem(), GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitArrayInput)(nil)).Elem(), GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestInput)(nil)).Elem(), GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestArrayInput)(nil)).Elem(), GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationInput)(nil)).Elem(), GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArrayInput)(nil)).Elem(), GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringInput)(nil)).Elem(), GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArrayInput)(nil)).Elem(), GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentInput)(nil)).Elem(), GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArrayInput)(nil)).Elem(), GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleInput)(nil)).Elem(), GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArrayInput)(nil)).Elem(), GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryInput)(nil)).Elem(), GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArrayInput)(nil)).Elem(), GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureResourceStateInput)(nil)).Elem(), GetFeatureResourceStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureResourceStateArrayInput)(nil)).Elem(), GetFeatureResourceStateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureSpecInput)(nil)).Elem(), GetFeatureSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureSpecArrayInput)(nil)).Elem(), GetFeatureSpecArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureSpecClusterupgradeInput)(nil)).Elem(), GetFeatureSpecClusterupgradeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureSpecClusterupgradeArrayInput)(nil)).Elem(), GetFeatureSpecClusterupgradeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureSpecClusterupgradeGkeUpgradeOverrideInput)(nil)).Elem(), GetFeatureSpecClusterupgradeGkeUpgradeOverrideArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureSpecClusterupgradeGkeUpgradeOverrideArrayInput)(nil)).Elem(), GetFeatureSpecClusterupgradeGkeUpgradeOverrideArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionInput)(nil)).Elem(), GetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionArrayInput)(nil)).Elem(), GetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeInput)(nil)).Elem(), GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeArrayInput)(nil)).Elem(), GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureSpecClusterupgradePostConditionInput)(nil)).Elem(), GetFeatureSpecClusterupgradePostConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureSpecClusterupgradePostConditionArrayInput)(nil)).Elem(), GetFeatureSpecClusterupgradePostConditionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureSpecFleetobservabilityInput)(nil)).Elem(), GetFeatureSpecFleetobservabilityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureSpecFleetobservabilityArrayInput)(nil)).Elem(), GetFeatureSpecFleetobservabilityArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureSpecFleetobservabilityLoggingConfigInput)(nil)).Elem(), GetFeatureSpecFleetobservabilityLoggingConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureSpecFleetobservabilityLoggingConfigArrayInput)(nil)).Elem(), GetFeatureSpecFleetobservabilityLoggingConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigInput)(nil)).Elem(), GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigArrayInput)(nil)).Elem(), GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigInput)(nil)).Elem(), GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArrayInput)(nil)).Elem(), GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureSpecMulticlusteringressInput)(nil)).Elem(), GetFeatureSpecMulticlusteringressArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureSpecMulticlusteringressArrayInput)(nil)).Elem(), GetFeatureSpecMulticlusteringressArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureStateInput)(nil)).Elem(), GetFeatureStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureStateArrayInput)(nil)).Elem(), GetFeatureStateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureStateStateInput)(nil)).Elem(), GetFeatureStateStateArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetFeatureStateStateArrayInput)(nil)).Elem(), GetFeatureStateStateArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMembershipBindingStateInput)(nil)).Elem(), GetMembershipBindingStateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetMembershipBindingStateArrayInput)(nil)).Elem(), GetMembershipBindingStateArray{})
 	pulumi.RegisterOutputType(FeatureFleetDefaultMemberConfigOutput{})
@@ -11887,6 +15510,68 @@ func init() {
 	pulumi.RegisterOutputType(ScopeRbacRoleBindingStateTypeArrayOutput{})
 	pulumi.RegisterOutputType(ScopeStateTypeOutput{})
 	pulumi.RegisterOutputType(ScopeStateTypeArrayOutput{})
+	pulumi.RegisterOutputType(GetFeatureFleetDefaultMemberConfigOutput{})
+	pulumi.RegisterOutputType(GetFeatureFleetDefaultMemberConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetFeatureFleetDefaultMemberConfigConfigmanagementOutput{})
+	pulumi.RegisterOutputType(GetFeatureFleetDefaultMemberConfigConfigmanagementArrayOutput{})
+	pulumi.RegisterOutputType(GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOutput{})
+	pulumi.RegisterOutputType(GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArrayOutput{})
+	pulumi.RegisterOutputType(GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitOutput{})
+	pulumi.RegisterOutputType(GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArrayOutput{})
+	pulumi.RegisterOutputType(GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciOutput{})
+	pulumi.RegisterOutputType(GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArrayOutput{})
+	pulumi.RegisterOutputType(GetFeatureFleetDefaultMemberConfigMeshOutput{})
+	pulumi.RegisterOutputType(GetFeatureFleetDefaultMemberConfigMeshArrayOutput{})
+	pulumi.RegisterOutputType(GetFeatureFleetDefaultMemberConfigPolicycontrollerOutput{})
+	pulumi.RegisterOutputType(GetFeatureFleetDefaultMemberConfigPolicycontrollerArrayOutput{})
+	pulumi.RegisterOutputType(GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigOutput{})
+	pulumi.RegisterOutputType(GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigOutput{})
+	pulumi.RegisterOutputType(GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceOutput{})
+	pulumi.RegisterOutputType(GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceArrayOutput{})
+	pulumi.RegisterOutputType(GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitOutput{})
+	pulumi.RegisterOutputType(GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitArrayOutput{})
+	pulumi.RegisterOutputType(GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestOutput{})
+	pulumi.RegisterOutputType(GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestArrayOutput{})
+	pulumi.RegisterOutputType(GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationOutput{})
+	pulumi.RegisterOutputType(GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArrayOutput{})
+	pulumi.RegisterOutputType(GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringOutput{})
+	pulumi.RegisterOutputType(GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArrayOutput{})
+	pulumi.RegisterOutputType(GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentOutput{})
+	pulumi.RegisterOutputType(GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArrayOutput{})
+	pulumi.RegisterOutputType(GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleOutput{})
+	pulumi.RegisterOutputType(GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArrayOutput{})
+	pulumi.RegisterOutputType(GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryOutput{})
+	pulumi.RegisterOutputType(GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArrayOutput{})
+	pulumi.RegisterOutputType(GetFeatureResourceStateOutput{})
+	pulumi.RegisterOutputType(GetFeatureResourceStateArrayOutput{})
+	pulumi.RegisterOutputType(GetFeatureSpecOutput{})
+	pulumi.RegisterOutputType(GetFeatureSpecArrayOutput{})
+	pulumi.RegisterOutputType(GetFeatureSpecClusterupgradeOutput{})
+	pulumi.RegisterOutputType(GetFeatureSpecClusterupgradeArrayOutput{})
+	pulumi.RegisterOutputType(GetFeatureSpecClusterupgradeGkeUpgradeOverrideOutput{})
+	pulumi.RegisterOutputType(GetFeatureSpecClusterupgradeGkeUpgradeOverrideArrayOutput{})
+	pulumi.RegisterOutputType(GetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionOutput{})
+	pulumi.RegisterOutputType(GetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionArrayOutput{})
+	pulumi.RegisterOutputType(GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeOutput{})
+	pulumi.RegisterOutputType(GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeArrayOutput{})
+	pulumi.RegisterOutputType(GetFeatureSpecClusterupgradePostConditionOutput{})
+	pulumi.RegisterOutputType(GetFeatureSpecClusterupgradePostConditionArrayOutput{})
+	pulumi.RegisterOutputType(GetFeatureSpecFleetobservabilityOutput{})
+	pulumi.RegisterOutputType(GetFeatureSpecFleetobservabilityArrayOutput{})
+	pulumi.RegisterOutputType(GetFeatureSpecFleetobservabilityLoggingConfigOutput{})
+	pulumi.RegisterOutputType(GetFeatureSpecFleetobservabilityLoggingConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigOutput{})
+	pulumi.RegisterOutputType(GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigOutput{})
+	pulumi.RegisterOutputType(GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArrayOutput{})
+	pulumi.RegisterOutputType(GetFeatureSpecMulticlusteringressOutput{})
+	pulumi.RegisterOutputType(GetFeatureSpecMulticlusteringressArrayOutput{})
+	pulumi.RegisterOutputType(GetFeatureStateOutput{})
+	pulumi.RegisterOutputType(GetFeatureStateArrayOutput{})
+	pulumi.RegisterOutputType(GetFeatureStateStateOutput{})
+	pulumi.RegisterOutputType(GetFeatureStateStateArrayOutput{})
 	pulumi.RegisterOutputType(GetMembershipBindingStateOutput{})
 	pulumi.RegisterOutputType(GetMembershipBindingStateArrayOutput{})
 }

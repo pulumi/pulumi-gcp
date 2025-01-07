@@ -21,6 +21,79 @@ import javax.annotation.Nullable;
  * 
  * ## Example Usage
  * 
+ * ### Parallelstore Instance Basic Beta
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.GlobalAddress;
+ * import com.pulumi.gcp.compute.GlobalAddressArgs;
+ * import com.pulumi.gcp.servicenetworking.Connection;
+ * import com.pulumi.gcp.servicenetworking.ConnectionArgs;
+ * import com.pulumi.gcp.parallelstore.Instance;
+ * import com.pulumi.gcp.parallelstore.InstanceArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var network = new Network("network", NetworkArgs.builder()
+ *             .name("network")
+ *             .autoCreateSubnetworks(true)
+ *             .mtu(8896)
+ *             .build());
+ * 
+ *         // Create an IP address
+ *         var privateIpAlloc = new GlobalAddress("privateIpAlloc", GlobalAddressArgs.builder()
+ *             .name("address")
+ *             .purpose("VPC_PEERING")
+ *             .addressType("INTERNAL")
+ *             .prefixLength(24)
+ *             .network(network.id())
+ *             .build());
+ * 
+ *         // Create a private connection
+ *         var default_ = new Connection("default", ConnectionArgs.builder()
+ *             .network(network.id())
+ *             .service("servicenetworking.googleapis.com")
+ *             .reservedPeeringRanges(privateIpAlloc.name())
+ *             .build());
+ * 
+ *         var instance = new Instance("instance", InstanceArgs.builder()
+ *             .instanceId("instance")
+ *             .location("us-central1-a")
+ *             .description("test instance")
+ *             .capacityGib(12000)
+ *             .network(network.name())
+ *             .fileStripeLevel("FILE_STRIPE_LEVEL_MIN")
+ *             .directoryStripeLevel("DIRECTORY_STRIPE_LEVEL_MIN")
+ *             .deploymentType("SCRATCH")
+ *             .labels(Map.of("test", "value"))
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(default_)
+ *                 .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Parallelstore Instance Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -83,6 +156,7 @@ import javax.annotation.Nullable;
  *             .network(network.name())
  *             .fileStripeLevel("FILE_STRIPE_LEVEL_MIN")
  *             .directoryStripeLevel("DIRECTORY_STRIPE_LEVEL_MIN")
+ *             .deploymentType("SCRATCH")
  *             .labels(Map.of("test", "value"))
  *             .build(), CustomResourceOptions.builder()
  *                 .dependsOn(default_)
@@ -178,6 +252,28 @@ public class Instance extends com.pulumi.resources.CustomResource {
      */
     public Output<String> daosVersion() {
         return this.daosVersion;
+    }
+    /**
+     * Parallelstore Instance deployment type.
+     * Possible values:
+     * DEPLOYMENT_TYPE_UNSPECIFIED
+     * SCRATCH
+     * PERSISTENT
+     * 
+     */
+    @Export(name="deploymentType", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> deploymentType;
+
+    /**
+     * @return Parallelstore Instance deployment type.
+     * Possible values:
+     * DEPLOYMENT_TYPE_UNSPECIFIED
+     * SCRATCH
+     * PERSISTENT
+     * 
+     */
+    public Output<Optional<String>> deploymentType() {
+        return Codegen.optional(this.deploymentType);
     }
     /**
      * The description of the instance. 2048 characters or less.

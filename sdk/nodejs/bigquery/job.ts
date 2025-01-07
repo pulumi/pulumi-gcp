@@ -284,19 +284,11 @@ import * as utilities from "../utilities";
  *     description: "This is a test description",
  *     location: "US",
  * });
- * const keyRing = new gcp.kms.KeyRing("key_ring", {
- *     name: "example-keyring",
- *     location: "global",
- * });
- * const cryptoKey = new gcp.kms.CryptoKey("crypto_key", {
- *     name: "example-key",
- *     keyRing: keyRing.id,
- * });
  * const project = gcp.organizations.getProject({
  *     projectId: "my-project-name",
  * });
  * const encryptRole = new gcp.kms.CryptoKeyIAMMember("encrypt_role", {
- *     cryptoKeyId: cryptoKey.id,
+ *     cryptoKeyId: "example-key",
  *     role: "roles/cloudkms.cryptoKeyEncrypterDecrypter",
  *     member: project.then(project => `serviceAccount:bq-${project.number}@bigquery-encryption.iam.gserviceaccount.com`),
  * });
@@ -323,7 +315,7 @@ import * as utilities from "../utilities";
  * ]
  * `,
  *     encryptionConfiguration: {
- *         kmsKeyName: cryptoKey.id,
+ *         kmsKeyName: "example-key",
  *     },
  * }, {
  *     dependsOn: [encryptRole],
@@ -349,7 +341,7 @@ import * as utilities from "../utilities";
  *             tableId: dest.tableId,
  *         },
  *         destinationEncryptionConfiguration: {
- *             kmsKeyName: cryptoKey.id,
+ *             kmsKeyName: "example-key",
  *         },
  *     },
  * }, {

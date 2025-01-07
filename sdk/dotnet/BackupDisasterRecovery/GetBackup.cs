@@ -11,12 +11,84 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
 {
     public static class GetBackup
     {
+        /// <summary>
+        /// A Backup and DR Backup.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = Gcp.BackupDisasterRecovery.GetBackup.Invoke(new()
+        ///     {
+        ///         Location = "us-central1",
+        ///         Project = "project-test",
+        ///         DataSourceId = "ds-test",
+        ///         BackupVaultId = "bv-test",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetBackupResult> InvokeAsync(GetBackupArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetBackupResult>("gcp:backupdisasterrecovery/getBackup:getBackup", args ?? new GetBackupArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// A Backup and DR Backup.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = Gcp.BackupDisasterRecovery.GetBackup.Invoke(new()
+        ///     {
+        ///         Location = "us-central1",
+        ///         Project = "project-test",
+        ///         DataSourceId = "ds-test",
+        ///         BackupVaultId = "bv-test",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetBackupResult> Invoke(GetBackupInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetBackupResult>("gcp:backupdisasterrecovery/getBackup:getBackup", args ?? new GetBackupInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// A Backup and DR Backup.
+        /// 
+        /// ## Example Usage
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var foo = Gcp.BackupDisasterRecovery.GetBackup.Invoke(new()
+        ///     {
+        ///         Location = "us-central1",
+        ///         Project = "project-test",
+        ///         DataSourceId = "ds-test",
+        ///         BackupVaultId = "bv-test",
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetBackupResult> Invoke(GetBackupInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetBackupResult>("gcp:backupdisasterrecovery/getBackup:getBackup", args ?? new GetBackupInvokeArgs(), options.WithDefaults());
     }
@@ -24,15 +96,27 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
 
     public sealed class GetBackupArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The ID of the Backup Vault of the Data Source in which the Backup belongs.
+        /// </summary>
         [Input("backupVaultId", required: true)]
         public string BackupVaultId { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of the Data Source in which the Backup belongs.
+        /// </summary>
         [Input("dataSourceId", required: true)]
         public string DataSourceId { get; set; } = null!;
 
+        /// <summary>
+        /// The location in which the Backup belongs.
+        /// </summary>
         [Input("location", required: true)]
         public string Location { get; set; } = null!;
 
+        /// <summary>
+        /// The Google Cloud Project in which the Backup belongs.
+        /// </summary>
         [Input("project", required: true)]
         public string Project { get; set; } = null!;
 
@@ -44,15 +128,27 @@ namespace Pulumi.Gcp.BackupDisasterRecovery
 
     public sealed class GetBackupInvokeArgs : global::Pulumi.InvokeArgs
     {
+        /// <summary>
+        /// The ID of the Backup Vault of the Data Source in which the Backup belongs.
+        /// </summary>
         [Input("backupVaultId", required: true)]
         public Input<string> BackupVaultId { get; set; } = null!;
 
+        /// <summary>
+        /// The ID of the Data Source in which the Backup belongs.
+        /// </summary>
         [Input("dataSourceId", required: true)]
         public Input<string> DataSourceId { get; set; } = null!;
 
+        /// <summary>
+        /// The location in which the Backup belongs.
+        /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
 
+        /// <summary>
+        /// The Google Cloud Project in which the Backup belongs.
+        /// </summary>
         [Input("project", required: true)]
         public Input<string> Project { get; set; } = null!;
 

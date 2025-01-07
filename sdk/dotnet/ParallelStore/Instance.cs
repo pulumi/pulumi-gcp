@@ -14,6 +14,68 @@ namespace Pulumi.Gcp.ParallelStore
     /// 
     /// ## Example Usage
     /// 
+    /// ### Parallelstore Instance Basic Beta
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var network = new Gcp.Compute.Network("network", new()
+    ///     {
+    ///         Name = "network",
+    ///         AutoCreateSubnetworks = true,
+    ///         Mtu = 8896,
+    ///     });
+    /// 
+    ///     // Create an IP address
+    ///     var privateIpAlloc = new Gcp.Compute.GlobalAddress("private_ip_alloc", new()
+    ///     {
+    ///         Name = "address",
+    ///         Purpose = "VPC_PEERING",
+    ///         AddressType = "INTERNAL",
+    ///         PrefixLength = 24,
+    ///         Network = network.Id,
+    ///     });
+    /// 
+    ///     // Create a private connection
+    ///     var @default = new Gcp.ServiceNetworking.Connection("default", new()
+    ///     {
+    ///         Network = network.Id,
+    ///         Service = "servicenetworking.googleapis.com",
+    ///         ReservedPeeringRanges = new[]
+    ///         {
+    ///             privateIpAlloc.Name,
+    ///         },
+    ///     });
+    /// 
+    ///     var instance = new Gcp.ParallelStore.Instance("instance", new()
+    ///     {
+    ///         InstanceId = "instance",
+    ///         Location = "us-central1-a",
+    ///         Description = "test instance",
+    ///         CapacityGib = "12000",
+    ///         Network = network.Name,
+    ///         FileStripeLevel = "FILE_STRIPE_LEVEL_MIN",
+    ///         DirectoryStripeLevel = "DIRECTORY_STRIPE_LEVEL_MIN",
+    ///         DeploymentType = "SCRATCH",
+    ///         Labels = 
+    ///         {
+    ///             { "test", "value" },
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             @default,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Parallelstore Instance Basic
     /// 
     /// ```csharp
@@ -61,6 +123,7 @@ namespace Pulumi.Gcp.ParallelStore
     ///         Network = network.Name,
     ///         FileStripeLevel = "FILE_STRIPE_LEVEL_MIN",
     ///         DirectoryStripeLevel = "DIRECTORY_STRIPE_LEVEL_MIN",
+    ///         DeploymentType = "SCRATCH",
     ///         Labels = 
     ///         {
     ///             { "test", "value" },
@@ -127,6 +190,16 @@ namespace Pulumi.Gcp.ParallelStore
         /// </summary>
         [Output("daosVersion")]
         public Output<string> DaosVersion { get; private set; } = null!;
+
+        /// <summary>
+        /// Parallelstore Instance deployment type.
+        /// Possible values:
+        /// DEPLOYMENT_TYPE_UNSPECIFIED
+        /// SCRATCH
+        /// PERSISTENT
+        /// </summary>
+        [Output("deploymentType")]
+        public Output<string?> DeploymentType { get; private set; } = null!;
 
         /// <summary>
         /// The description of the instance. 2048 characters or less.
@@ -335,6 +408,16 @@ namespace Pulumi.Gcp.ParallelStore
         public Input<string> CapacityGib { get; set; } = null!;
 
         /// <summary>
+        /// Parallelstore Instance deployment type.
+        /// Possible values:
+        /// DEPLOYMENT_TYPE_UNSPECIFIED
+        /// SCRATCH
+        /// PERSISTENT
+        /// </summary>
+        [Input("deploymentType")]
+        public Input<string>? DeploymentType { get; set; }
+
+        /// <summary>
         /// The description of the instance. 2048 characters or less.
         /// </summary>
         [Input("description")]
@@ -479,6 +562,16 @@ namespace Pulumi.Gcp.ParallelStore
         /// </summary>
         [Input("daosVersion")]
         public Input<string>? DaosVersion { get; set; }
+
+        /// <summary>
+        /// Parallelstore Instance deployment type.
+        /// Possible values:
+        /// DEPLOYMENT_TYPE_UNSPECIFIED
+        /// SCRATCH
+        /// PERSISTENT
+        /// </summary>
+        [Input("deploymentType")]
+        public Input<string>? DeploymentType { get; set; }
 
         /// <summary>
         /// The description of the instance. 2048 characters or less.

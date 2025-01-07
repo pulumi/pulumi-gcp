@@ -39,7 +39,7 @@ namespace Pulumi.Gcp.Diagflow.Inputs
         public Input<string>? NoSpeechTimeout { get; set; }
 
         /// <summary>
-        /// Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+        /// Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
         /// </summary>
         [Input("useTimeoutBasedEndpointing")]
         public Input<bool>? UseTimeoutBasedEndpointing { get; set; }

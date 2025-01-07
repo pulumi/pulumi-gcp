@@ -267,13 +267,18 @@ type Network struct {
 	// Default value is `AFTER_CLASSIC_FIREWALL`.
 	// Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
 	NetworkFirewallPolicyEnforcementOrder pulumi.StringPtrOutput `pulumi:"networkFirewallPolicyEnforcementOrder"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	NetworkId pulumi.StringOutput `pulumi:"networkId"`
 	// A full or partial URL of the network profile to apply to this network.
 	// This field can be set only at resource creation time. For example, the
 	// following are valid URLs:
 	// * https://www.googleapis.com/compute/beta/projects/{projectId}/global/networkProfiles/{network_profile_name}
 	// * projects/{projectId}/global/networkProfiles/{network_profile_name}
 	NetworkProfile pulumi.StringPtrOutput `pulumi:"networkProfile"`
+	// (Deprecated)
 	// The unique identifier for the resource. This identifier is defined by the server.
+	//
+	// Deprecated: `numericId` is deprecated and will be removed in a future major release. Use `networkId` instead.
 	NumericId pulumi.StringOutput `pulumi:"numericId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -372,13 +377,18 @@ type networkState struct {
 	// Default value is `AFTER_CLASSIC_FIREWALL`.
 	// Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
 	NetworkFirewallPolicyEnforcementOrder *string `pulumi:"networkFirewallPolicyEnforcementOrder"`
+	// The unique identifier for the resource. This identifier is defined by the server.
+	NetworkId *string `pulumi:"networkId"`
 	// A full or partial URL of the network profile to apply to this network.
 	// This field can be set only at resource creation time. For example, the
 	// following are valid URLs:
 	// * https://www.googleapis.com/compute/beta/projects/{projectId}/global/networkProfiles/{network_profile_name}
 	// * projects/{projectId}/global/networkProfiles/{network_profile_name}
 	NetworkProfile *string `pulumi:"networkProfile"`
+	// (Deprecated)
 	// The unique identifier for the resource. This identifier is defined by the server.
+	//
+	// Deprecated: `numericId` is deprecated and will be removed in a future major release. Use `networkId` instead.
 	NumericId *string `pulumi:"numericId"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -448,13 +458,18 @@ type NetworkState struct {
 	// Default value is `AFTER_CLASSIC_FIREWALL`.
 	// Possible values are: `BEFORE_CLASSIC_FIREWALL`, `AFTER_CLASSIC_FIREWALL`.
 	NetworkFirewallPolicyEnforcementOrder pulumi.StringPtrInput
+	// The unique identifier for the resource. This identifier is defined by the server.
+	NetworkId pulumi.StringPtrInput
 	// A full or partial URL of the network profile to apply to this network.
 	// This field can be set only at resource creation time. For example, the
 	// following are valid URLs:
 	// * https://www.googleapis.com/compute/beta/projects/{projectId}/global/networkProfiles/{network_profile_name}
 	// * projects/{projectId}/global/networkProfiles/{network_profile_name}
 	NetworkProfile pulumi.StringPtrInput
+	// (Deprecated)
 	// The unique identifier for the resource. This identifier is defined by the server.
+	//
+	// Deprecated: `numericId` is deprecated and will be removed in a future major release. Use `networkId` instead.
 	NumericId pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
@@ -789,6 +804,11 @@ func (o NetworkOutput) NetworkFirewallPolicyEnforcementOrder() pulumi.StringPtrO
 	return o.ApplyT(func(v *Network) pulumi.StringPtrOutput { return v.NetworkFirewallPolicyEnforcementOrder }).(pulumi.StringPtrOutput)
 }
 
+// The unique identifier for the resource. This identifier is defined by the server.
+func (o NetworkOutput) NetworkId() pulumi.StringOutput {
+	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.NetworkId }).(pulumi.StringOutput)
+}
+
 // A full or partial URL of the network profile to apply to this network.
 // This field can be set only at resource creation time. For example, the
 // following are valid URLs:
@@ -798,7 +818,10 @@ func (o NetworkOutput) NetworkProfile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringPtrOutput { return v.NetworkProfile }).(pulumi.StringPtrOutput)
 }
 
+// (Deprecated)
 // The unique identifier for the resource. This identifier is defined by the server.
+//
+// Deprecated: `numericId` is deprecated and will be removed in a future major release. Use `networkId` instead.
 func (o NetworkOutput) NumericId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Network) pulumi.StringOutput { return v.NumericId }).(pulumi.StringOutput)
 }

@@ -306,7 +306,7 @@ namespace Pulumi.Gcp.Firebase
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
-        /// if true, indicates that Hosting's systems are attmepting to
+        /// if true, indicates that Hosting's systems are attempting to
         /// make the `CustomDomain`'s state match your preferred state. This is most
         /// frequently `true` when initially provisioning a `CustomDomain` or when creating
         /// a new SSL certificate to match an updated `cert_preference`
@@ -596,7 +596,7 @@ namespace Pulumi.Gcp.Firebase
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// if true, indicates that Hosting's systems are attmepting to
+        /// if true, indicates that Hosting's systems are attempting to
         /// make the `CustomDomain`'s state match your preferred state. This is most
         /// frequently `true` when initially provisioning a `CustomDomain` or when creating
         /// a new SSL certificate to match an updated `cert_preference`

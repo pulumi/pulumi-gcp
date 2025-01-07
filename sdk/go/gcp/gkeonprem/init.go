@@ -31,6 +31,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &VMwareCluster{}
 	case "gcp:gkeonprem/vMwareNodePool:VMwareNodePool":
 		r = &VMwareNodePool{}
+	case "gcp:gkeonprem/vmwareAdminCluster:VmwareAdminCluster":
+		r = &VmwareAdminCluster{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -67,6 +69,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"gkeonprem/vMwareNodePool",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"gkeonprem/vmwareAdminCluster",
 		&module{version},
 	)
 }

@@ -80,6 +80,7 @@ export interface GetRepositoryResult {
     readonly repositoryId: string;
     readonly updateTime: string;
     readonly virtualRepositoryConfigs: outputs.artifactregistry.GetRepositoryVirtualRepositoryConfig[];
+    readonly vulnerabilityScanningConfigs: outputs.artifactregistry.GetRepositoryVulnerabilityScanningConfig[];
 }
 /**
  * Get information about a Google Artifact Registry Repository. For more information see

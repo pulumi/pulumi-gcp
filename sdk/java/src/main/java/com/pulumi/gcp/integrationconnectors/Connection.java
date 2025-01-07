@@ -514,14 +514,14 @@ public class Connection extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
-     * An arbitrary description for the Conection.
+     * An arbitrary description for the Connection.
      * 
      */
     @Export(name="description", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> description;
 
     /**
-     * @return An arbitrary description for the Conection.
+     * @return An arbitrary description for the Connection.
      * 
      */
     public Output<Optional<String>> description() {

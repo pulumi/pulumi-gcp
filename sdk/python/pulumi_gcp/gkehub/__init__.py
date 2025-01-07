@@ -11,6 +11,7 @@ from .feature_iam_member import *
 from .feature_iam_policy import *
 from .feature_membership import *
 from .fleet import *
+from .get_feature import *
 from .get_feature_iam_policy import *
 from .get_membership_binding import *
 from .get_membership_iam_policy import *

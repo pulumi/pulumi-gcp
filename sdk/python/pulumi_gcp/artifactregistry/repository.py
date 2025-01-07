@@ -34,7 +34,8 @@ class RepositoryArgs:
                  mode: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  remote_repository_config: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigArgs']] = None,
-                 virtual_repository_config: Optional[pulumi.Input['RepositoryVirtualRepositoryConfigArgs']] = None):
+                 virtual_repository_config: Optional[pulumi.Input['RepositoryVirtualRepositoryConfigArgs']] = None,
+                 vulnerability_scanning_config: Optional[pulumi.Input['RepositoryVulnerabilityScanningConfigArgs']] = None):
         """
         The set of arguments for constructing a Repository resource.
         :param pulumi.Input[str] format: The format of packages that are stored in the repository. Supported formats
@@ -87,6 +88,8 @@ class RepositoryArgs:
                Structure is documented below.
         :param pulumi.Input['RepositoryVirtualRepositoryConfigArgs'] virtual_repository_config: Configuration specific for a Virtual Repository.
                Structure is documented below.
+        :param pulumi.Input['RepositoryVulnerabilityScanningConfigArgs'] vulnerability_scanning_config: Configuration for vulnerability scanning of artifacts stored in this repository.
+               Structure is documented below.
         """
         pulumi.set(__self__, "format", format)
         pulumi.set(__self__, "repository_id", repository_id)
@@ -114,6 +117,8 @@ class RepositoryArgs:
             pulumi.set(__self__, "remote_repository_config", remote_repository_config)
         if virtual_repository_config is not None:
             pulumi.set(__self__, "virtual_repository_config", virtual_repository_config)
+        if vulnerability_scanning_config is not None:
+            pulumi.set(__self__, "vulnerability_scanning_config", vulnerability_scanning_config)
 
     @property
     @pulumi.getter
@@ -319,6 +324,19 @@ class RepositoryArgs:
     def virtual_repository_config(self, value: Optional[pulumi.Input['RepositoryVirtualRepositoryConfigArgs']]):
         pulumi.set(self, "virtual_repository_config", value)
 
+    @property
+    @pulumi.getter(name="vulnerabilityScanningConfig")
+    def vulnerability_scanning_config(self) -> Optional[pulumi.Input['RepositoryVulnerabilityScanningConfigArgs']]:
+        """
+        Configuration for vulnerability scanning of artifacts stored in this repository.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "vulnerability_scanning_config")
+
+    @vulnerability_scanning_config.setter
+    def vulnerability_scanning_config(self, value: Optional[pulumi.Input['RepositoryVulnerabilityScanningConfigArgs']]):
+        pulumi.set(self, "vulnerability_scanning_config", value)
+
 
 @pulumi.input_type
 class _RepositoryState:
@@ -341,7 +359,8 @@ class _RepositoryState:
                  remote_repository_config: Optional[pulumi.Input['RepositoryRemoteRepositoryConfigArgs']] = None,
                  repository_id: Optional[pulumi.Input[str]] = None,
                  update_time: Optional[pulumi.Input[str]] = None,
-                 virtual_repository_config: Optional[pulumi.Input['RepositoryVirtualRepositoryConfigArgs']] = None):
+                 virtual_repository_config: Optional[pulumi.Input['RepositoryVirtualRepositoryConfigArgs']] = None,
+                 vulnerability_scanning_config: Optional[pulumi.Input['RepositoryVulnerabilityScanningConfigArgs']] = None):
         """
         Input properties used for looking up and filtering Repository resources.
         :param pulumi.Input[Sequence[pulumi.Input['RepositoryCleanupPolicyArgs']]] cleanup_policies: Cleanup policies for this repository. Cleanup policies indicate when
@@ -401,6 +420,8 @@ class _RepositoryState:
         :param pulumi.Input[str] update_time: The time when the repository was last updated.
         :param pulumi.Input['RepositoryVirtualRepositoryConfigArgs'] virtual_repository_config: Configuration specific for a Virtual Repository.
                Structure is documented below.
+        :param pulumi.Input['RepositoryVulnerabilityScanningConfigArgs'] vulnerability_scanning_config: Configuration for vulnerability scanning of artifacts stored in this repository.
+               Structure is documented below.
         """
         if cleanup_policies is not None:
             pulumi.set(__self__, "cleanup_policies", cleanup_policies)
@@ -440,6 +461,8 @@ class _RepositoryState:
             pulumi.set(__self__, "update_time", update_time)
         if virtual_repository_config is not None:
             pulumi.set(__self__, "virtual_repository_config", virtual_repository_config)
+        if vulnerability_scanning_config is not None:
+            pulumi.set(__self__, "vulnerability_scanning_config", vulnerability_scanning_config)
 
     @property
     @pulumi.getter(name="cleanupPolicies")
@@ -707,6 +730,19 @@ class _RepositoryState:
     def virtual_repository_config(self, value: Optional[pulumi.Input['RepositoryVirtualRepositoryConfigArgs']]):
         pulumi.set(self, "virtual_repository_config", value)
 
+    @property
+    @pulumi.getter(name="vulnerabilityScanningConfig")
+    def vulnerability_scanning_config(self) -> Optional[pulumi.Input['RepositoryVulnerabilityScanningConfigArgs']]:
+        """
+        Configuration for vulnerability scanning of artifacts stored in this repository.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "vulnerability_scanning_config")
+
+    @vulnerability_scanning_config.setter
+    def vulnerability_scanning_config(self, value: Optional[pulumi.Input['RepositoryVulnerabilityScanningConfigArgs']]):
+        pulumi.set(self, "vulnerability_scanning_config", value)
+
 
 class Repository(pulumi.CustomResource):
     @overload
@@ -727,6 +763,7 @@ class Repository(pulumi.CustomResource):
                  remote_repository_config: Optional[pulumi.Input[Union['RepositoryRemoteRepositoryConfigArgs', 'RepositoryRemoteRepositoryConfigArgsDict']]] = None,
                  repository_id: Optional[pulumi.Input[str]] = None,
                  virtual_repository_config: Optional[pulumi.Input[Union['RepositoryVirtualRepositoryConfigArgs', 'RepositoryVirtualRepositoryConfigArgsDict']]] = None,
+                 vulnerability_scanning_config: Optional[pulumi.Input[Union['RepositoryVulnerabilityScanningConfigArgs', 'RepositoryVulnerabilityScanningConfigArgsDict']]] = None,
                  __props__=None):
         """
         A repository for storing artifacts
@@ -1196,9 +1233,10 @@ class Repository(pulumi.CustomResource):
             remote_repository_config={
                 "description": "pull-through cache of another Artifact Registry repository by URL",
                 "common_repository": {
-                    "uri": "https://us-central1-docker.pkg.dev//example-upstream-repo",
+                    "uri": f"https://us-central1-docker.pkg.dev/{project.project_id}/example-upstream-repo",
                 },
-            })
+            },
+            opts = pulumi.ResourceOptions(depends_on=[upstream_repo]))
         ```
         ### Artifact Registry Repository Remote Common Repository With Custom Upstream
 
@@ -1237,6 +1275,21 @@ class Repository(pulumi.CustomResource):
                         "password_secret_version": example_remote_secret_version.name,
                     },
                 },
+            })
+        ```
+        ### Artifact Registry Repository Vulnerability Scanning
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_repo = gcp.artifactregistry.Repository("my-repo",
+            location="us-central1",
+            repository_id="my-repository",
+            description="example docker repository with vulnerability scanning config",
+            format="DOCKER",
+            vulnerability_scanning_config={
+                "enablement_config": "INHERITED",
             })
         ```
 
@@ -1315,6 +1368,8 @@ class Repository(pulumi.CustomResource):
                
                - - -
         :param pulumi.Input[Union['RepositoryVirtualRepositoryConfigArgs', 'RepositoryVirtualRepositoryConfigArgsDict']] virtual_repository_config: Configuration specific for a Virtual Repository.
+               Structure is documented below.
+        :param pulumi.Input[Union['RepositoryVulnerabilityScanningConfigArgs', 'RepositoryVulnerabilityScanningConfigArgsDict']] vulnerability_scanning_config: Configuration for vulnerability scanning of artifacts stored in this repository.
                Structure is documented below.
         """
         ...
@@ -1791,9 +1846,10 @@ class Repository(pulumi.CustomResource):
             remote_repository_config={
                 "description": "pull-through cache of another Artifact Registry repository by URL",
                 "common_repository": {
-                    "uri": "https://us-central1-docker.pkg.dev//example-upstream-repo",
+                    "uri": f"https://us-central1-docker.pkg.dev/{project.project_id}/example-upstream-repo",
                 },
-            })
+            },
+            opts = pulumi.ResourceOptions(depends_on=[upstream_repo]))
         ```
         ### Artifact Registry Repository Remote Common Repository With Custom Upstream
 
@@ -1832,6 +1888,21 @@ class Repository(pulumi.CustomResource):
                         "password_secret_version": example_remote_secret_version.name,
                     },
                 },
+            })
+        ```
+        ### Artifact Registry Repository Vulnerability Scanning
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_repo = gcp.artifactregistry.Repository("my-repo",
+            location="us-central1",
+            repository_id="my-repository",
+            description="example docker repository with vulnerability scanning config",
+            format="DOCKER",
+            vulnerability_scanning_config={
+                "enablement_config": "INHERITED",
             })
         ```
 
@@ -1888,6 +1959,7 @@ class Repository(pulumi.CustomResource):
                  remote_repository_config: Optional[pulumi.Input[Union['RepositoryRemoteRepositoryConfigArgs', 'RepositoryRemoteRepositoryConfigArgsDict']]] = None,
                  repository_id: Optional[pulumi.Input[str]] = None,
                  virtual_repository_config: Optional[pulumi.Input[Union['RepositoryVirtualRepositoryConfigArgs', 'RepositoryVirtualRepositoryConfigArgsDict']]] = None,
+                 vulnerability_scanning_config: Optional[pulumi.Input[Union['RepositoryVulnerabilityScanningConfigArgs', 'RepositoryVulnerabilityScanningConfigArgsDict']]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1915,6 +1987,7 @@ class Repository(pulumi.CustomResource):
                 raise TypeError("Missing required property 'repository_id'")
             __props__.__dict__["repository_id"] = repository_id
             __props__.__dict__["virtual_repository_config"] = virtual_repository_config
+            __props__.__dict__["vulnerability_scanning_config"] = vulnerability_scanning_config
             __props__.__dict__["create_time"] = None
             __props__.__dict__["effective_labels"] = None
             __props__.__dict__["name"] = None
@@ -1950,7 +2023,8 @@ class Repository(pulumi.CustomResource):
             remote_repository_config: Optional[pulumi.Input[Union['RepositoryRemoteRepositoryConfigArgs', 'RepositoryRemoteRepositoryConfigArgsDict']]] = None,
             repository_id: Optional[pulumi.Input[str]] = None,
             update_time: Optional[pulumi.Input[str]] = None,
-            virtual_repository_config: Optional[pulumi.Input[Union['RepositoryVirtualRepositoryConfigArgs', 'RepositoryVirtualRepositoryConfigArgsDict']]] = None) -> 'Repository':
+            virtual_repository_config: Optional[pulumi.Input[Union['RepositoryVirtualRepositoryConfigArgs', 'RepositoryVirtualRepositoryConfigArgsDict']]] = None,
+            vulnerability_scanning_config: Optional[pulumi.Input[Union['RepositoryVulnerabilityScanningConfigArgs', 'RepositoryVulnerabilityScanningConfigArgsDict']]] = None) -> 'Repository':
         """
         Get an existing Repository resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -2015,6 +2089,8 @@ class Repository(pulumi.CustomResource):
         :param pulumi.Input[str] update_time: The time when the repository was last updated.
         :param pulumi.Input[Union['RepositoryVirtualRepositoryConfigArgs', 'RepositoryVirtualRepositoryConfigArgsDict']] virtual_repository_config: Configuration specific for a Virtual Repository.
                Structure is documented below.
+        :param pulumi.Input[Union['RepositoryVulnerabilityScanningConfigArgs', 'RepositoryVulnerabilityScanningConfigArgsDict']] vulnerability_scanning_config: Configuration for vulnerability scanning of artifacts stored in this repository.
+               Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -2039,6 +2115,7 @@ class Repository(pulumi.CustomResource):
         __props__.__dict__["repository_id"] = repository_id
         __props__.__dict__["update_time"] = update_time
         __props__.__dict__["virtual_repository_config"] = virtual_repository_config
+        __props__.__dict__["vulnerability_scanning_config"] = vulnerability_scanning_config
         return Repository(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -2230,4 +2307,13 @@ class Repository(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "virtual_repository_config")
+
+    @property
+    @pulumi.getter(name="vulnerabilityScanningConfig")
+    def vulnerability_scanning_config(self) -> pulumi.Output['outputs.RepositoryVulnerabilityScanningConfig']:
+        """
+        Configuration for vulnerability scanning of artifacts stored in this repository.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "vulnerability_scanning_config")
 

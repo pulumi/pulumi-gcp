@@ -13,10 +13,15 @@ import (
 )
 
 // Allows associating hierarchical firewall policies with the target where they are applied. This allows creating policies and rules in a different location than they are applied.
+// For more information on applying hierarchical firewall policies see the [official documentation](https://cloud.google.com/firewall/docs/firewall-policies#managing_hierarchical_firewall_policy_resources)
 //
-// For more information on applying hierarchical firewall policies see the [official documentation](https://cloud.google.com/vpc/docs/firewall-policies#managing_hierarchical_firewall_policy_resources)
+// To get more information about FirewallPolicyAssociation, see:
+//
+// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/firewallPolicies/addAssociation)
 //
 // ## Example Usage
+//
+// ### Firewall Policy Association
 //
 // ```go
 // package main
@@ -24,14 +29,23 @@ import (
 // import (
 //
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
 // )
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewFirewallPolicy(ctx, "default", &compute.FirewallPolicyArgs{
-//				Parent:      pulumi.String("organizations/12345"),
+//			folder, err := organizations.NewFolder(ctx, "folder", &organizations.FolderArgs{
+//				DisplayName:        pulumi.String("my-folder"),
+//				Parent:             pulumi.String("organizations/123456789"),
+//				DeletionProtection: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			policy, err := compute.NewFirewallPolicy(ctx, "policy", &compute.FirewallPolicyArgs{
+//				Parent:      pulumi.String("organizations/123456789"),
 //				ShortName:   pulumi.String("my-policy"),
 //				Description: pulumi.String("Example Resource"),
 //			})
@@ -39,8 +53,8 @@ import (
 //				return err
 //			}
 //			_, err = compute.NewFirewallPolicyAssociation(ctx, "default", &compute.FirewallPolicyAssociationArgs{
-//				FirewallPolicy:   _default.ID(),
-//				AttachmentTarget: pulumi.Any(folder.Name),
+//				FirewallPolicy:   policy.ID(),
+//				AttachmentTarget: folder.Name,
 //				Name:             pulumi.String("my-association"),
 //			})
 //			if err != nil {
@@ -74,11 +88,11 @@ type FirewallPolicyAssociation struct {
 
 	// The target that the firewall policy is attached to.
 	AttachmentTarget pulumi.StringOutput `pulumi:"attachmentTarget"`
-	// The firewall policy ID of the association.
-	FirewallPolicy pulumi.StringOutput `pulumi:"firewallPolicy"`
-	// The name for an association.
+	// The firewall policy of the resource.
 	//
 	// ***
+	FirewallPolicy pulumi.StringOutput `pulumi:"firewallPolicy"`
+	// The name for an association.
 	Name pulumi.StringOutput `pulumi:"name"`
 	// The short name of the firewall policy of the association.
 	ShortName pulumi.StringOutput `pulumi:"shortName"`
@@ -122,11 +136,11 @@ func GetFirewallPolicyAssociation(ctx *pulumi.Context,
 type firewallPolicyAssociationState struct {
 	// The target that the firewall policy is attached to.
 	AttachmentTarget *string `pulumi:"attachmentTarget"`
-	// The firewall policy ID of the association.
-	FirewallPolicy *string `pulumi:"firewallPolicy"`
-	// The name for an association.
+	// The firewall policy of the resource.
 	//
 	// ***
+	FirewallPolicy *string `pulumi:"firewallPolicy"`
+	// The name for an association.
 	Name *string `pulumi:"name"`
 	// The short name of the firewall policy of the association.
 	ShortName *string `pulumi:"shortName"`
@@ -135,11 +149,11 @@ type firewallPolicyAssociationState struct {
 type FirewallPolicyAssociationState struct {
 	// The target that the firewall policy is attached to.
 	AttachmentTarget pulumi.StringPtrInput
-	// The firewall policy ID of the association.
-	FirewallPolicy pulumi.StringPtrInput
-	// The name for an association.
+	// The firewall policy of the resource.
 	//
 	// ***
+	FirewallPolicy pulumi.StringPtrInput
+	// The name for an association.
 	Name pulumi.StringPtrInput
 	// The short name of the firewall policy of the association.
 	ShortName pulumi.StringPtrInput
@@ -152,11 +166,11 @@ func (FirewallPolicyAssociationState) ElementType() reflect.Type {
 type firewallPolicyAssociationArgs struct {
 	// The target that the firewall policy is attached to.
 	AttachmentTarget string `pulumi:"attachmentTarget"`
-	// The firewall policy ID of the association.
-	FirewallPolicy string `pulumi:"firewallPolicy"`
-	// The name for an association.
+	// The firewall policy of the resource.
 	//
 	// ***
+	FirewallPolicy string `pulumi:"firewallPolicy"`
+	// The name for an association.
 	Name *string `pulumi:"name"`
 }
 
@@ -164,11 +178,11 @@ type firewallPolicyAssociationArgs struct {
 type FirewallPolicyAssociationArgs struct {
 	// The target that the firewall policy is attached to.
 	AttachmentTarget pulumi.StringInput
-	// The firewall policy ID of the association.
-	FirewallPolicy pulumi.StringInput
-	// The name for an association.
+	// The firewall policy of the resource.
 	//
 	// ***
+	FirewallPolicy pulumi.StringInput
+	// The name for an association.
 	Name pulumi.StringPtrInput
 }
 
@@ -264,14 +278,14 @@ func (o FirewallPolicyAssociationOutput) AttachmentTarget() pulumi.StringOutput 
 	return o.ApplyT(func(v *FirewallPolicyAssociation) pulumi.StringOutput { return v.AttachmentTarget }).(pulumi.StringOutput)
 }
 
-// The firewall policy ID of the association.
+// The firewall policy of the resource.
+//
+// ***
 func (o FirewallPolicyAssociationOutput) FirewallPolicy() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallPolicyAssociation) pulumi.StringOutput { return v.FirewallPolicy }).(pulumi.StringOutput)
 }
 
 // The name for an association.
-//
-// ***
 func (o FirewallPolicyAssociationOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *FirewallPolicyAssociation) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }

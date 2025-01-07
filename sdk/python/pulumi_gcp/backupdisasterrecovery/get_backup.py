@@ -110,7 +110,25 @@ def get_backup(backup_vault_id: Optional[str] = None,
                project: Optional[str] = None,
                opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetBackupResult:
     """
-    Use this data source to access information about an existing resource.
+    A Backup and DR Backup.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    foo = gcp.backupdisasterrecovery.get_backup(location="us-central1",
+        project="project-test",
+        data_source_id="ds-test",
+        backup_vault_id="bv-test")
+    ```
+
+
+    :param str backup_vault_id: The ID of the Backup Vault of the Data Source in which the Backup belongs.
+    :param str data_source_id: The ID of the Data Source in which the Backup belongs.
+    :param str location: The location in which the Backup belongs.
+    :param str project: The Google Cloud Project in which the Backup belongs.
     """
     __args__ = dict()
     __args__['backupVaultId'] = backup_vault_id
@@ -134,7 +152,25 @@ def get_backup_output(backup_vault_id: Optional[pulumi.Input[str]] = None,
                       project: Optional[pulumi.Input[str]] = None,
                       opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetBackupResult]:
     """
-    Use this data source to access information about an existing resource.
+    A Backup and DR Backup.
+
+    ## Example Usage
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    foo = gcp.backupdisasterrecovery.get_backup(location="us-central1",
+        project="project-test",
+        data_source_id="ds-test",
+        backup_vault_id="bv-test")
+    ```
+
+
+    :param str backup_vault_id: The ID of the Backup Vault of the Data Source in which the Backup belongs.
+    :param str data_source_id: The ID of the Data Source in which the Backup belongs.
+    :param str location: The location in which the Backup belongs.
+    :param str project: The Google Cloud Project in which the Backup belongs.
     """
     __args__ = dict()
     __args__['backupVaultId'] = backup_vault_id

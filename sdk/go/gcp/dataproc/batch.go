@@ -111,23 +111,8 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			keyRing, err := kms.NewKeyRing(ctx, "key_ring", &kms.KeyRingArgs{
-//				Name:     pulumi.String("example-keyring"),
-//				Location: pulumi.String("us-central1"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			cryptoKey, err := kms.NewCryptoKey(ctx, "crypto_key", &kms.CryptoKeyArgs{
-//				Name:    pulumi.String("example-key"),
-//				KeyRing: keyRing.ID(),
-//				Purpose: pulumi.String("ENCRYPT_DECRYPT"),
-//			})
-//			if err != nil {
-//				return err
-//			}
 //			cryptoKeyMember1, err := kms.NewCryptoKeyIAMMember(ctx, "crypto_key_member_1", &kms.CryptoKeyIAMMemberArgs{
-//				CryptoKeyId: cryptoKey.ID(),
+//				CryptoKeyId: pulumi.String("example-key"),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
 //				Member:      pulumi.Sprintf("serviceAccount:service-%v@dataproc-accounts.iam.gserviceaccount.com", project.Number),
 //			})
@@ -199,7 +184,7 @@ import (
 //						NetworkTags: pulumi.StringArray{
 //							pulumi.String("tag1"),
 //						},
-//						KmsKey:         cryptoKey.ID(),
+//						KmsKey:         pulumi.String("example-key"),
 //						NetworkUri:     pulumi.String("default"),
 //						ServiceAccount: pulumi.Sprintf("%v-compute@developer.gserviceaccount.com", project.Number),
 //						StagingBucket:  bucket.Name,

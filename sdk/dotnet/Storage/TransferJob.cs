@@ -212,6 +212,14 @@ namespace Pulumi.Gcp.Storage
         public Output<string> Project { get; private set; } = null!;
 
         /// <summary>
+        /// Replication specification. Structure documented below. User should not configure `schedule`, `event_stream` with this argument. One of `transfer_spec`, or `replication_spec` must be specified.
+        /// 
+        /// - - -
+        /// </summary>
+        [Output("replicationSpec")]
+        public Output<Outputs.TransferJobReplicationSpec?> ReplicationSpec { get; private set; } = null!;
+
+        /// <summary>
         /// Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `event_stream` must be set.
         /// </summary>
         [Output("schedule")]
@@ -224,12 +232,10 @@ namespace Pulumi.Gcp.Storage
         public Output<string?> Status { get; private set; } = null!;
 
         /// <summary>
-        /// Transfer specification. Structure documented below.
-        /// 
-        /// - - -
+        /// Transfer specification. Structure documented below. One of `transfer_spec`, or `replication_spec` can be specified.
         /// </summary>
         [Output("transferSpec")]
-        public Output<Outputs.TransferJobTransferSpec> TransferSpec { get; private set; } = null!;
+        public Output<Outputs.TransferJobTransferSpec?> TransferSpec { get; private set; } = null!;
 
 
         /// <summary>
@@ -309,6 +315,14 @@ namespace Pulumi.Gcp.Storage
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// Replication specification. Structure documented below. User should not configure `schedule`, `event_stream` with this argument. One of `transfer_spec`, or `replication_spec` must be specified.
+        /// 
+        /// - - -
+        /// </summary>
+        [Input("replicationSpec")]
+        public Input<Inputs.TransferJobReplicationSpecArgs>? ReplicationSpec { get; set; }
+
+        /// <summary>
         /// Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `event_stream` must be set.
         /// </summary>
         [Input("schedule")]
@@ -321,12 +335,10 @@ namespace Pulumi.Gcp.Storage
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Transfer specification. Structure documented below.
-        /// 
-        /// - - -
+        /// Transfer specification. Structure documented below. One of `transfer_spec`, or `replication_spec` can be specified.
         /// </summary>
-        [Input("transferSpec", required: true)]
-        public Input<Inputs.TransferJobTransferSpecArgs> TransferSpec { get; set; } = null!;
+        [Input("transferSpec")]
+        public Input<Inputs.TransferJobTransferSpecArgs>? TransferSpec { get; set; }
 
         public TransferJobArgs()
         {
@@ -386,6 +398,14 @@ namespace Pulumi.Gcp.Storage
         public Input<string>? Project { get; set; }
 
         /// <summary>
+        /// Replication specification. Structure documented below. User should not configure `schedule`, `event_stream` with this argument. One of `transfer_spec`, or `replication_spec` must be specified.
+        /// 
+        /// - - -
+        /// </summary>
+        [Input("replicationSpec")]
+        public Input<Inputs.TransferJobReplicationSpecGetArgs>? ReplicationSpec { get; set; }
+
+        /// <summary>
         /// Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `event_stream` must be set.
         /// </summary>
         [Input("schedule")]
@@ -398,9 +418,7 @@ namespace Pulumi.Gcp.Storage
         public Input<string>? Status { get; set; }
 
         /// <summary>
-        /// Transfer specification. Structure documented below.
-        /// 
-        /// - - -
+        /// Transfer specification. Structure documented below. One of `transfer_spec`, or `replication_spec` can be specified.
         /// </summary>
         [Input("transferSpec")]
         public Input<Inputs.TransferJobTransferSpecGetArgs>? TransferSpec { get; set; }

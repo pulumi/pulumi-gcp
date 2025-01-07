@@ -823,6 +823,147 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Datastream Stream Mysql Gtid
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.sql.DatabaseInstance;
+ * import com.pulumi.gcp.sql.DatabaseInstanceArgs;
+ * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
+ * import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsIpConfigurationArgs;
+ * import com.pulumi.gcp.sql.User;
+ * import com.pulumi.gcp.sql.UserArgs;
+ * import com.pulumi.gcp.sql.Database;
+ * import com.pulumi.gcp.sql.DatabaseArgs;
+ * import com.pulumi.gcp.datastream.ConnectionProfile;
+ * import com.pulumi.gcp.datastream.ConnectionProfileArgs;
+ * import com.pulumi.gcp.datastream.inputs.ConnectionProfileMysqlProfileArgs;
+ * import com.pulumi.gcp.datastream.inputs.ConnectionProfileBigqueryProfileArgs;
+ * import com.pulumi.gcp.datastream.Stream;
+ * import com.pulumi.gcp.datastream.StreamArgs;
+ * import com.pulumi.gcp.datastream.inputs.StreamSourceConfigArgs;
+ * import com.pulumi.gcp.datastream.inputs.StreamSourceConfigMysqlSourceConfigArgs;
+ * import com.pulumi.gcp.datastream.inputs.StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs;
+ * import com.pulumi.gcp.datastream.inputs.StreamSourceConfigMysqlSourceConfigGtidArgs;
+ * import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigArgs;
+ * import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigArgs;
+ * import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs;
+ * import com.pulumi.gcp.datastream.inputs.StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs;
+ * import com.pulumi.gcp.datastream.inputs.StreamBackfillNoneArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var instance = new DatabaseInstance("instance", DatabaseInstanceArgs.builder()
+ *             .name("<%= ctx[:vars]['mysql_name'] %>")
+ *             .databaseVersion("MYSQL_8_0")
+ *             .region("us-central1")
+ *             .rootPassword("<%= ctx[:vars]['mysql_root_password'] %>")
+ *             .deletionProtection("<%= ctx[:vars]['deletion_protection'] %>")
+ *             .settings(DatabaseInstanceSettingsArgs.builder()
+ *                 .tier("db-custom-2-4096")
+ *                 .ipConfiguration(DatabaseInstanceSettingsIpConfigurationArgs.builder()
+ *                     .authorizedNetworks(                    
+ *                         DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs.builder()
+ *                             .value("34.71.242.81")
+ *                             .build(),
+ *                         DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs.builder()
+ *                             .value("34.72.28.29")
+ *                             .build(),
+ *                         DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs.builder()
+ *                             .value("34.67.6.157")
+ *                             .build(),
+ *                         DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs.builder()
+ *                             .value("34.67.234.134")
+ *                             .build(),
+ *                         DatabaseInstanceSettingsIpConfigurationAuthorizedNetworkArgs.builder()
+ *                             .value("34.72.239.218")
+ *                             .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *         var user = new User("user", UserArgs.builder()
+ *             .name("<%= ctx[:vars]['database_user'] %>")
+ *             .instance(instance.name())
+ *             .password("<%= ctx[:vars]['database_password'] %>")
+ *             .build());
+ * 
+ *         var db = new Database("db", DatabaseArgs.builder()
+ *             .name("<%= ctx[:vars]['database_name'] %>")
+ *             .instance(instance.name())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(user)
+ *                 .build());
+ * 
+ *         var source = new ConnectionProfile("source", ConnectionProfileArgs.builder()
+ *             .displayName("MySQL Source")
+ *             .location("us-central1")
+ *             .connectionProfileId("<%= ctx[:vars]['source_connection_profile_id'] %>")
+ *             .mysqlProfile(ConnectionProfileMysqlProfileArgs.builder()
+ *                 .hostname(instance.publicIpAddress())
+ *                 .port(1433)
+ *                 .username(user.name())
+ *                 .password(user.password())
+ *                 .database(db.name())
+ *                 .build())
+ *             .build());
+ * 
+ *         var destination = new ConnectionProfile("destination", ConnectionProfileArgs.builder()
+ *             .displayName("BigQuery Destination")
+ *             .location("us-central1")
+ *             .connectionProfileId("<%= ctx[:vars]['destination_connection_profile_id'] %>")
+ *             .bigqueryProfile()
+ *             .build());
+ * 
+ *         var default_ = new Stream("default", StreamArgs.builder()
+ *             .displayName("MySQL to BigQuery")
+ *             .location("us-central1")
+ *             .streamId("<%= ctx[:vars]['stream_id'] %>")
+ *             .sourceConfig(StreamSourceConfigArgs.builder()
+ *                 .sourceConnectionProfile(source.id())
+ *                 .mysqlSourceConfig(StreamSourceConfigMysqlSourceConfigArgs.builder()
+ *                     .includeObjects(StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs.builder()
+ *                         .schemas(%!v(PANIC=Format method: runtime error: invalid memory address or nil pointer dereference))
+ *                         .build())
+ *                     .gtid()
+ *                     .build())
+ *                 .build())
+ *             .destinationConfig(StreamDestinationConfigArgs.builder()
+ *                 .destinationConnectionProfile(destination.id())
+ *                 .bigqueryDestinationConfig(StreamDestinationConfigBigqueryDestinationConfigArgs.builder()
+ *                     .dataFreshness("900s")
+ *                     .sourceHierarchyDatasets(StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsArgs.builder()
+ *                         .datasetTemplate(StreamDestinationConfigBigqueryDestinationConfigSourceHierarchyDatasetsDatasetTemplateArgs.builder()
+ *                             .location("us-central1")
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .backfillNone()
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Datastream Stream Postgresql Bigquery Dataset Id
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;

@@ -5,6 +5,7 @@ package com.pulumi.gcp.bigquery.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.bigquery.inputs.DatasetAccessConditionArgs;
 import com.pulumi.gcp.bigquery.inputs.DatasetAccessDatasetArgs;
 import com.pulumi.gcp.bigquery.inputs.DatasetAccessRoutineArgs;
 import com.pulumi.gcp.bigquery.inputs.DatasetAccessViewArgs;
@@ -17,6 +18,25 @@ import javax.annotation.Nullable;
 public final class DatasetAccessArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final DatasetAccessArgs Empty = new DatasetAccessArgs();
+
+    /**
+     * Condition for the binding. If CEL expression in this field is true, this
+     * access binding will be considered.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="condition")
+    private @Nullable Output<DatasetAccessConditionArgs> condition;
+
+    /**
+     * @return Condition for the binding. If CEL expression in this field is true, this
+     * access binding will be considered.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<DatasetAccessConditionArgs>> condition() {
+        return Optional.ofNullable(this.condition);
+    }
 
     /**
      * Grants all resources of particular types in a particular dataset read access to the current dataset.
@@ -200,6 +220,7 @@ public final class DatasetAccessArgs extends com.pulumi.resources.ResourceArgs {
     private DatasetAccessArgs() {}
 
     private DatasetAccessArgs(DatasetAccessArgs $) {
+        this.condition = $.condition;
         this.dataset = $.dataset;
         this.domain = $.domain;
         this.groupByEmail = $.groupByEmail;
@@ -227,6 +248,31 @@ public final class DatasetAccessArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder(DatasetAccessArgs defaults) {
             $ = new DatasetAccessArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param condition Condition for the binding. If CEL expression in this field is true, this
+         * access binding will be considered.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder condition(@Nullable Output<DatasetAccessConditionArgs> condition) {
+            $.condition = condition;
+            return this;
+        }
+
+        /**
+         * @param condition Condition for the binding. If CEL expression in this field is true, this
+         * access binding will be considered.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder condition(DatasetAccessConditionArgs condition) {
+            return condition(Output.of(condition));
         }
 
         /**

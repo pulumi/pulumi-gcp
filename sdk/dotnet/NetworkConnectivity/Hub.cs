@@ -61,6 +61,51 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// 
     /// });
     /// ```
+    /// ### Network Connectivity Hub Mesh Topology
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var primary = new Gcp.NetworkConnectivity.Hub("primary", new()
+    ///     {
+    ///         Name = "mesh",
+    ///         Description = "A sample mesh hub",
+    ///         Labels = 
+    ///         {
+    ///             { "label-one", "value-one" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Network Connectivity Hub Star Topology
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var primary = new Gcp.NetworkConnectivity.Hub("primary", new()
+    ///     {
+    ///         Name = "star",
+    ///         Description = "A sample star hub",
+    ///         Labels = 
+    ///         {
+    ///             { "label-one", "value-one" },
+    ///         },
+    ///         PresetTopology = "STAR",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -129,6 +174,13 @@ namespace Pulumi.Gcp.NetworkConnectivity
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Optional. The topology implemented in this hub. Currently, this field is only used when policyMode = PRESET. The available preset topologies are MESH and STAR. If presetTopology is unspecified and policyMode = PRESET, the presetTopology defaults to MESH. When policyMode = CUSTOM, the presetTopology is set to PRESET_TOPOLOGY_UNSPECIFIED.
+        /// Possible values are: `MESH`, `STAR`.
+        /// </summary>
+        [Output("presetTopology")]
+        public Output<string> PresetTopology { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -256,6 +308,13 @@ namespace Pulumi.Gcp.NetworkConnectivity
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// Optional. The topology implemented in this hub. Currently, this field is only used when policyMode = PRESET. The available preset topologies are MESH and STAR. If presetTopology is unspecified and policyMode = PRESET, the presetTopology defaults to MESH. When policyMode = CUSTOM, the presetTopology is set to PRESET_TOPOLOGY_UNSPECIFIED.
+        /// Possible values are: `MESH`, `STAR`.
+        /// </summary>
+        [Input("presetTopology")]
+        public Input<string>? PresetTopology { get; set; }
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
@@ -326,6 +385,13 @@ namespace Pulumi.Gcp.NetworkConnectivity
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Optional. The topology implemented in this hub. Currently, this field is only used when policyMode = PRESET. The available preset topologies are MESH and STAR. If presetTopology is unspecified and policyMode = PRESET, the presetTopology defaults to MESH. When policyMode = CUSTOM, the presetTopology is set to PRESET_TOPOLOGY_UNSPECIFIED.
+        /// Possible values are: `MESH`, `STAR`.
+        /// </summary>
+        [Input("presetTopology")]
+        public Input<string>? PresetTopology { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.

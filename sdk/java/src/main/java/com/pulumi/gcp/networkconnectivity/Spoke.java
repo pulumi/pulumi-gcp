@@ -95,6 +95,78 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Network Connectivity Spoke Linked Vpc Network Group
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.networkconnectivity.Hub;
+ * import com.pulumi.gcp.networkconnectivity.HubArgs;
+ * import com.pulumi.gcp.networkconnectivity.Group;
+ * import com.pulumi.gcp.networkconnectivity.GroupArgs;
+ * import com.pulumi.gcp.networkconnectivity.Spoke;
+ * import com.pulumi.gcp.networkconnectivity.SpokeArgs;
+ * import com.pulumi.gcp.networkconnectivity.inputs.SpokeLinkedVpcNetworkArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var network = new Network("network", NetworkArgs.builder()
+ *             .name("net-spoke")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var basicHub = new Hub("basicHub", HubArgs.builder()
+ *             .name("hub1-spoke")
+ *             .description("A sample hub")
+ *             .labels(Map.of("label-two", "value-one"))
+ *             .build());
+ * 
+ *         var defaultGroup = new Group("defaultGroup", GroupArgs.builder()
+ *             .hub(basicHub.id())
+ *             .name("default")
+ *             .description("A sample hub group")
+ *             .build());
+ * 
+ *         var primary = new Spoke("primary", SpokeArgs.builder()
+ *             .name("group-spoke1")
+ *             .location("global")
+ *             .description("A sample spoke with a linked VPC")
+ *             .labels(Map.of("label-one", "value-one"))
+ *             .hub(basicHub.id())
+ *             .linkedVpcNetwork(SpokeLinkedVpcNetworkArgs.builder()
+ *                 .excludeExportRanges(                
+ *                     "198.51.100.0/24",
+ *                     "10.10.0.0/16")
+ *                 .includeExportRanges(                
+ *                     "198.51.100.0/23",
+ *                     "10.0.0.0/8")
+ *                 .uri(network.selfLink())
+ *                 .build())
+ *             .group(defaultGroup.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Network Connectivity Spoke Router Appliance Basic
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -539,6 +611,76 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Network Connectivity Spoke Center Group
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.networkconnectivity.Hub;
+ * import com.pulumi.gcp.networkconnectivity.HubArgs;
+ * import com.pulumi.gcp.networkconnectivity.Group;
+ * import com.pulumi.gcp.networkconnectivity.GroupArgs;
+ * import com.pulumi.gcp.networkconnectivity.inputs.GroupAutoAcceptArgs;
+ * import com.pulumi.gcp.networkconnectivity.Spoke;
+ * import com.pulumi.gcp.networkconnectivity.SpokeArgs;
+ * import com.pulumi.gcp.networkconnectivity.inputs.SpokeLinkedVpcNetworkArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var network = new Network("network", NetworkArgs.builder()
+ *             .name("tf-net")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var starHub = new Hub("starHub", HubArgs.builder()
+ *             .name("hub-basic")
+ *             .presetTopology("STAR")
+ *             .build());
+ * 
+ *         var centerGroup = new Group("centerGroup", GroupArgs.builder()
+ *             .name("center")
+ *             .hub(starHub.id())
+ *             .autoAccept(GroupAutoAcceptArgs.builder()
+ *                 .autoAcceptProjects(                
+ *                     "foo_13293",
+ *                     "bar_40289")
+ *                 .build())
+ *             .build());
+ * 
+ *         var primary = new Spoke("primary", SpokeArgs.builder()
+ *             .name("vpc-spoke")
+ *             .location("global")
+ *             .description("A sample spoke")
+ *             .labels(Map.of("label-one", "value-one"))
+ *             .hub(starHub.id())
+ *             .group(centerGroup.id())
+ *             .linkedVpcNetwork(SpokeLinkedVpcNetworkArgs.builder()
+ *                 .uri(network.selfLink())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -608,6 +750,20 @@ public class Spoke extends com.pulumi.resources.CustomResource {
      */
     public Output<Map<String,String>> effectiveLabels() {
         return this.effectiveLabels;
+    }
+    /**
+     * The name of the group that this spoke is associated with.
+     * 
+     */
+    @Export(name="group", refs={String.class}, tree="[0]")
+    private Output<String> group;
+
+    /**
+     * @return The name of the group that this spoke is associated with.
+     * 
+     */
+    public Output<String> group() {
+        return this.group;
     }
     /**
      * Immutable. The URI of the hub that this spoke is attached to.

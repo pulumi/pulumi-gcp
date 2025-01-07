@@ -22,29 +22,30 @@ __all__ = ['TransferJobArgs', 'TransferJob']
 class TransferJobArgs:
     def __init__(__self__, *,
                  description: pulumi.Input[str],
-                 transfer_spec: pulumi.Input['TransferJobTransferSpecArgs'],
                  event_stream: Optional[pulumi.Input['TransferJobEventStreamArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  notification_config: Optional[pulumi.Input['TransferJobNotificationConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 replication_spec: Optional[pulumi.Input['TransferJobReplicationSpecArgs']] = None,
                  schedule: Optional[pulumi.Input['TransferJobScheduleArgs']] = None,
-                 status: Optional[pulumi.Input[str]] = None):
+                 status: Optional[pulumi.Input[str]] = None,
+                 transfer_spec: Optional[pulumi.Input['TransferJobTransferSpecArgs']] = None):
         """
         The set of arguments for constructing a TransferJob resource.
         :param pulumi.Input[str] description: Unique description to identify the Transfer Job.
-        :param pulumi.Input['TransferJobTransferSpecArgs'] transfer_spec: Transfer specification. Structure documented below.
-               
-               - - -
         :param pulumi.Input['TransferJobEventStreamArgs'] event_stream: Specifies the Event-driven transfer options. Event-driven transfers listen to an event stream to transfer updated files. Structure documented below Either `event_stream` or `schedule` must be set.
         :param pulumi.Input[str] name: The name of the Transfer Job. This name must start with "transferJobs/" prefix and end with a letter or a number, and should be no more than 128 characters ( `transferJobs/^(?!OPI)[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For transfers involving PosixFilesystem, this name must start with transferJobs/OPI specifically ( `transferJobs/OPI^[A-Za-z0-9-._~]*[A-Za-z0-9]$` ). For all other transfer types, this name must not start with transferJobs/OPI. Default the provider will assign a random unique name with `transferJobs/{{name}}` format, where `name` is a numeric value.
         :param pulumi.Input['TransferJobNotificationConfigArgs'] notification_config: Notification configuration. This is not supported for transfers involving PosixFilesystem. Structure documented below.
         :param pulumi.Input[str] project: The project in which the resource belongs. If it
                is not provided, the provider project is used.
+        :param pulumi.Input['TransferJobReplicationSpecArgs'] replication_spec: Replication specification. Structure documented below. User should not configure `schedule`, `event_stream` with this argument. One of `transfer_spec`, or `replication_spec` must be specified.
+               
+               - - -
         :param pulumi.Input['TransferJobScheduleArgs'] schedule: Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `event_stream` must be set.
         :param pulumi.Input[str] status: Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
+        :param pulumi.Input['TransferJobTransferSpecArgs'] transfer_spec: Transfer specification. Structure documented below. One of `transfer_spec`, or `replication_spec` can be specified.
         """
         pulumi.set(__self__, "description", description)
-        pulumi.set(__self__, "transfer_spec", transfer_spec)
         if event_stream is not None:
             pulumi.set(__self__, "event_stream", event_stream)
         if name is not None:
@@ -53,10 +54,14 @@ class TransferJobArgs:
             pulumi.set(__self__, "notification_config", notification_config)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if replication_spec is not None:
+            pulumi.set(__self__, "replication_spec", replication_spec)
         if schedule is not None:
             pulumi.set(__self__, "schedule", schedule)
         if status is not None:
             pulumi.set(__self__, "status", status)
+        if transfer_spec is not None:
+            pulumi.set(__self__, "transfer_spec", transfer_spec)
 
     @property
     @pulumi.getter
@@ -69,20 +74,6 @@ class TransferJobArgs:
     @description.setter
     def description(self, value: pulumi.Input[str]):
         pulumi.set(self, "description", value)
-
-    @property
-    @pulumi.getter(name="transferSpec")
-    def transfer_spec(self) -> pulumi.Input['TransferJobTransferSpecArgs']:
-        """
-        Transfer specification. Structure documented below.
-
-        - - -
-        """
-        return pulumi.get(self, "transfer_spec")
-
-    @transfer_spec.setter
-    def transfer_spec(self, value: pulumi.Input['TransferJobTransferSpecArgs']):
-        pulumi.set(self, "transfer_spec", value)
 
     @property
     @pulumi.getter(name="eventStream")
@@ -134,6 +125,20 @@ class TransferJobArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="replicationSpec")
+    def replication_spec(self) -> Optional[pulumi.Input['TransferJobReplicationSpecArgs']]:
+        """
+        Replication specification. Structure documented below. User should not configure `schedule`, `event_stream` with this argument. One of `transfer_spec`, or `replication_spec` must be specified.
+
+        - - -
+        """
+        return pulumi.get(self, "replication_spec")
+
+    @replication_spec.setter
+    def replication_spec(self, value: Optional[pulumi.Input['TransferJobReplicationSpecArgs']]):
+        pulumi.set(self, "replication_spec", value)
+
+    @property
     @pulumi.getter
     def schedule(self) -> Optional[pulumi.Input['TransferJobScheduleArgs']]:
         """
@@ -157,6 +162,18 @@ class TransferJobArgs:
     def status(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "status", value)
 
+    @property
+    @pulumi.getter(name="transferSpec")
+    def transfer_spec(self) -> Optional[pulumi.Input['TransferJobTransferSpecArgs']]:
+        """
+        Transfer specification. Structure documented below. One of `transfer_spec`, or `replication_spec` can be specified.
+        """
+        return pulumi.get(self, "transfer_spec")
+
+    @transfer_spec.setter
+    def transfer_spec(self, value: Optional[pulumi.Input['TransferJobTransferSpecArgs']]):
+        pulumi.set(self, "transfer_spec", value)
+
 
 @pulumi.input_type
 class _TransferJobState:
@@ -169,6 +186,7 @@ class _TransferJobState:
                  name: Optional[pulumi.Input[str]] = None,
                  notification_config: Optional[pulumi.Input['TransferJobNotificationConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 replication_spec: Optional[pulumi.Input['TransferJobReplicationSpecArgs']] = None,
                  schedule: Optional[pulumi.Input['TransferJobScheduleArgs']] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  transfer_spec: Optional[pulumi.Input['TransferJobTransferSpecArgs']] = None):
@@ -183,11 +201,12 @@ class _TransferJobState:
         :param pulumi.Input['TransferJobNotificationConfigArgs'] notification_config: Notification configuration. This is not supported for transfers involving PosixFilesystem. Structure documented below.
         :param pulumi.Input[str] project: The project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input['TransferJobScheduleArgs'] schedule: Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `event_stream` must be set.
-        :param pulumi.Input[str] status: Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
-        :param pulumi.Input['TransferJobTransferSpecArgs'] transfer_spec: Transfer specification. Structure documented below.
+        :param pulumi.Input['TransferJobReplicationSpecArgs'] replication_spec: Replication specification. Structure documented below. User should not configure `schedule`, `event_stream` with this argument. One of `transfer_spec`, or `replication_spec` must be specified.
                
                - - -
+        :param pulumi.Input['TransferJobScheduleArgs'] schedule: Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `event_stream` must be set.
+        :param pulumi.Input[str] status: Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
+        :param pulumi.Input['TransferJobTransferSpecArgs'] transfer_spec: Transfer specification. Structure documented below. One of `transfer_spec`, or `replication_spec` can be specified.
         """
         if creation_time is not None:
             pulumi.set(__self__, "creation_time", creation_time)
@@ -205,6 +224,8 @@ class _TransferJobState:
             pulumi.set(__self__, "notification_config", notification_config)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if replication_spec is not None:
+            pulumi.set(__self__, "replication_spec", replication_spec)
         if schedule is not None:
             pulumi.set(__self__, "schedule", schedule)
         if status is not None:
@@ -310,6 +331,20 @@ class _TransferJobState:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="replicationSpec")
+    def replication_spec(self) -> Optional[pulumi.Input['TransferJobReplicationSpecArgs']]:
+        """
+        Replication specification. Structure documented below. User should not configure `schedule`, `event_stream` with this argument. One of `transfer_spec`, or `replication_spec` must be specified.
+
+        - - -
+        """
+        return pulumi.get(self, "replication_spec")
+
+    @replication_spec.setter
+    def replication_spec(self, value: Optional[pulumi.Input['TransferJobReplicationSpecArgs']]):
+        pulumi.set(self, "replication_spec", value)
+
+    @property
     @pulumi.getter
     def schedule(self) -> Optional[pulumi.Input['TransferJobScheduleArgs']]:
         """
@@ -337,9 +372,7 @@ class _TransferJobState:
     @pulumi.getter(name="transferSpec")
     def transfer_spec(self) -> Optional[pulumi.Input['TransferJobTransferSpecArgs']]:
         """
-        Transfer specification. Structure documented below.
-
-        - - -
+        Transfer specification. Structure documented below. One of `transfer_spec`, or `replication_spec` can be specified.
         """
         return pulumi.get(self, "transfer_spec")
 
@@ -358,6 +391,7 @@ class TransferJob(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  notification_config: Optional[pulumi.Input[Union['TransferJobNotificationConfigArgs', 'TransferJobNotificationConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 replication_spec: Optional[pulumi.Input[Union['TransferJobReplicationSpecArgs', 'TransferJobReplicationSpecArgsDict']]] = None,
                  schedule: Optional[pulumi.Input[Union['TransferJobScheduleArgs', 'TransferJobScheduleArgsDict']]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  transfer_spec: Optional[pulumi.Input[Union['TransferJobTransferSpecArgs', 'TransferJobTransferSpecArgsDict']]] = None,
@@ -472,11 +506,12 @@ class TransferJob(pulumi.CustomResource):
         :param pulumi.Input[Union['TransferJobNotificationConfigArgs', 'TransferJobNotificationConfigArgsDict']] notification_config: Notification configuration. This is not supported for transfers involving PosixFilesystem. Structure documented below.
         :param pulumi.Input[str] project: The project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[Union['TransferJobScheduleArgs', 'TransferJobScheduleArgsDict']] schedule: Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `event_stream` must be set.
-        :param pulumi.Input[str] status: Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
-        :param pulumi.Input[Union['TransferJobTransferSpecArgs', 'TransferJobTransferSpecArgsDict']] transfer_spec: Transfer specification. Structure documented below.
+        :param pulumi.Input[Union['TransferJobReplicationSpecArgs', 'TransferJobReplicationSpecArgsDict']] replication_spec: Replication specification. Structure documented below. User should not configure `schedule`, `event_stream` with this argument. One of `transfer_spec`, or `replication_spec` must be specified.
                
                - - -
+        :param pulumi.Input[Union['TransferJobScheduleArgs', 'TransferJobScheduleArgsDict']] schedule: Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `event_stream` must be set.
+        :param pulumi.Input[str] status: Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
+        :param pulumi.Input[Union['TransferJobTransferSpecArgs', 'TransferJobTransferSpecArgsDict']] transfer_spec: Transfer specification. Structure documented below. One of `transfer_spec`, or `replication_spec` can be specified.
         """
         ...
     @overload
@@ -606,6 +641,7 @@ class TransferJob(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  notification_config: Optional[pulumi.Input[Union['TransferJobNotificationConfigArgs', 'TransferJobNotificationConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 replication_spec: Optional[pulumi.Input[Union['TransferJobReplicationSpecArgs', 'TransferJobReplicationSpecArgsDict']]] = None,
                  schedule: Optional[pulumi.Input[Union['TransferJobScheduleArgs', 'TransferJobScheduleArgsDict']]] = None,
                  status: Optional[pulumi.Input[str]] = None,
                  transfer_spec: Optional[pulumi.Input[Union['TransferJobTransferSpecArgs', 'TransferJobTransferSpecArgsDict']]] = None,
@@ -625,10 +661,9 @@ class TransferJob(pulumi.CustomResource):
             __props__.__dict__["name"] = name
             __props__.__dict__["notification_config"] = notification_config
             __props__.__dict__["project"] = project
+            __props__.__dict__["replication_spec"] = replication_spec
             __props__.__dict__["schedule"] = schedule
             __props__.__dict__["status"] = status
-            if transfer_spec is None and not opts.urn:
-                raise TypeError("Missing required property 'transfer_spec'")
             __props__.__dict__["transfer_spec"] = transfer_spec
             __props__.__dict__["creation_time"] = None
             __props__.__dict__["deletion_time"] = None
@@ -651,6 +686,7 @@ class TransferJob(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             notification_config: Optional[pulumi.Input[Union['TransferJobNotificationConfigArgs', 'TransferJobNotificationConfigArgsDict']]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            replication_spec: Optional[pulumi.Input[Union['TransferJobReplicationSpecArgs', 'TransferJobReplicationSpecArgsDict']]] = None,
             schedule: Optional[pulumi.Input[Union['TransferJobScheduleArgs', 'TransferJobScheduleArgsDict']]] = None,
             status: Optional[pulumi.Input[str]] = None,
             transfer_spec: Optional[pulumi.Input[Union['TransferJobTransferSpecArgs', 'TransferJobTransferSpecArgsDict']]] = None) -> 'TransferJob':
@@ -670,11 +706,12 @@ class TransferJob(pulumi.CustomResource):
         :param pulumi.Input[Union['TransferJobNotificationConfigArgs', 'TransferJobNotificationConfigArgsDict']] notification_config: Notification configuration. This is not supported for transfers involving PosixFilesystem. Structure documented below.
         :param pulumi.Input[str] project: The project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[Union['TransferJobScheduleArgs', 'TransferJobScheduleArgsDict']] schedule: Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `event_stream` must be set.
-        :param pulumi.Input[str] status: Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
-        :param pulumi.Input[Union['TransferJobTransferSpecArgs', 'TransferJobTransferSpecArgsDict']] transfer_spec: Transfer specification. Structure documented below.
+        :param pulumi.Input[Union['TransferJobReplicationSpecArgs', 'TransferJobReplicationSpecArgsDict']] replication_spec: Replication specification. Structure documented below. User should not configure `schedule`, `event_stream` with this argument. One of `transfer_spec`, or `replication_spec` must be specified.
                
                - - -
+        :param pulumi.Input[Union['TransferJobScheduleArgs', 'TransferJobScheduleArgsDict']] schedule: Schedule specification defining when the Transfer Job should be scheduled to start, end and what time to run. Structure documented below. Either `schedule` or `event_stream` must be set.
+        :param pulumi.Input[str] status: Status of the job. Default: `ENABLED`. **NOTE: The effect of the new job status takes place during a subsequent job run. For example, if you change the job status from ENABLED to DISABLED, and an operation spawned by the transfer is running, the status change would not affect the current operation.**
+        :param pulumi.Input[Union['TransferJobTransferSpecArgs', 'TransferJobTransferSpecArgsDict']] transfer_spec: Transfer specification. Structure documented below. One of `transfer_spec`, or `replication_spec` can be specified.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -688,6 +725,7 @@ class TransferJob(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["notification_config"] = notification_config
         __props__.__dict__["project"] = project
+        __props__.__dict__["replication_spec"] = replication_spec
         __props__.__dict__["schedule"] = schedule
         __props__.__dict__["status"] = status
         __props__.__dict__["transfer_spec"] = transfer_spec
@@ -759,6 +797,16 @@ class TransferJob(pulumi.CustomResource):
         return pulumi.get(self, "project")
 
     @property
+    @pulumi.getter(name="replicationSpec")
+    def replication_spec(self) -> pulumi.Output[Optional['outputs.TransferJobReplicationSpec']]:
+        """
+        Replication specification. Structure documented below. User should not configure `schedule`, `event_stream` with this argument. One of `transfer_spec`, or `replication_spec` must be specified.
+
+        - - -
+        """
+        return pulumi.get(self, "replication_spec")
+
+    @property
     @pulumi.getter
     def schedule(self) -> pulumi.Output[Optional['outputs.TransferJobSchedule']]:
         """
@@ -776,11 +824,9 @@ class TransferJob(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="transferSpec")
-    def transfer_spec(self) -> pulumi.Output['outputs.TransferJobTransferSpec']:
+    def transfer_spec(self) -> pulumi.Output[Optional['outputs.TransferJobTransferSpec']]:
         """
-        Transfer specification. Structure documented below.
-
-        - - -
+        Transfer specification. Structure documented below. One of `transfer_spec`, or `replication_spec` can be specified.
         """
         return pulumi.get(self, "transfer_spec")
 

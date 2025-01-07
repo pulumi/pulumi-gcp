@@ -9,6 +9,8 @@ import com.pulumi.deployment.Deployment;
 import com.pulumi.deployment.InvokeOptions;
 import com.pulumi.deployment.InvokeOutputOptions;
 import com.pulumi.gcp.Utilities;
+import com.pulumi.gcp.kms.inputs.GetAutokeyConfigArgs;
+import com.pulumi.gcp.kms.inputs.GetAutokeyConfigPlainArgs;
 import com.pulumi.gcp.kms.inputs.GetCryptoKeyIamPolicyArgs;
 import com.pulumi.gcp.kms.inputs.GetCryptoKeyIamPolicyPlainArgs;
 import com.pulumi.gcp.kms.inputs.GetCryptoKeyLatestVersionArgs;
@@ -31,10 +33,13 @@ import com.pulumi.gcp.kms.inputs.GetKMSSecretAsymmetricPlainArgs;
 import com.pulumi.gcp.kms.inputs.GetKMSSecretCiphertextArgs;
 import com.pulumi.gcp.kms.inputs.GetKMSSecretCiphertextPlainArgs;
 import com.pulumi.gcp.kms.inputs.GetKMSSecretPlainArgs;
+import com.pulumi.gcp.kms.inputs.GetKeyHandleArgs;
+import com.pulumi.gcp.kms.inputs.GetKeyHandlePlainArgs;
 import com.pulumi.gcp.kms.inputs.GetKeyRingIamPolicyArgs;
 import com.pulumi.gcp.kms.inputs.GetKeyRingIamPolicyPlainArgs;
 import com.pulumi.gcp.kms.inputs.GetKeyRingsArgs;
 import com.pulumi.gcp.kms.inputs.GetKeyRingsPlainArgs;
+import com.pulumi.gcp.kms.outputs.GetAutokeyConfigResult;
 import com.pulumi.gcp.kms.outputs.GetCryptoKeyIamPolicyResult;
 import com.pulumi.gcp.kms.outputs.GetCryptoKeyLatestVersionResult;
 import com.pulumi.gcp.kms.outputs.GetCryptoKeyVersionsResult;
@@ -46,11 +51,212 @@ import com.pulumi.gcp.kms.outputs.GetKMSKeyRingResult;
 import com.pulumi.gcp.kms.outputs.GetKMSSecretAsymmetricResult;
 import com.pulumi.gcp.kms.outputs.GetKMSSecretCiphertextResult;
 import com.pulumi.gcp.kms.outputs.GetKMSSecretResult;
+import com.pulumi.gcp.kms.outputs.GetKeyHandleResult;
 import com.pulumi.gcp.kms.outputs.GetKeyRingIamPolicyResult;
 import com.pulumi.gcp.kms.outputs.GetKeyRingsResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class KmsFunctions {
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.kms.KmsFunctions;
+     * import com.pulumi.gcp.kms.inputs.GetAutokeyConfigArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myAutokeyConfig = KmsFunctions.getAutokeyConfig(GetAutokeyConfigArgs.builder()
+     *             .folder("folders/123")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAutokeyConfigResult> getAutokeyConfig(GetAutokeyConfigArgs args) {
+        return getAutokeyConfig(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.kms.KmsFunctions;
+     * import com.pulumi.gcp.kms.inputs.GetAutokeyConfigArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myAutokeyConfig = KmsFunctions.getAutokeyConfig(GetAutokeyConfigArgs.builder()
+     *             .folder("folders/123")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetAutokeyConfigResult> getAutokeyConfigPlain(GetAutokeyConfigPlainArgs args) {
+        return getAutokeyConfigPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.kms.KmsFunctions;
+     * import com.pulumi.gcp.kms.inputs.GetAutokeyConfigArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myAutokeyConfig = KmsFunctions.getAutokeyConfig(GetAutokeyConfigArgs.builder()
+     *             .folder("folders/123")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAutokeyConfigResult> getAutokeyConfig(GetAutokeyConfigArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:kms/getAutokeyConfig:getAutokeyConfig", TypeShape.of(GetAutokeyConfigResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.kms.KmsFunctions;
+     * import com.pulumi.gcp.kms.inputs.GetAutokeyConfigArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myAutokeyConfig = KmsFunctions.getAutokeyConfig(GetAutokeyConfigArgs.builder()
+     *             .folder("folders/123")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetAutokeyConfigResult> getAutokeyConfig(GetAutokeyConfigArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:kms/getAutokeyConfig:getAutokeyConfig", TypeShape.of(GetAutokeyConfigResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.kms.KmsFunctions;
+     * import com.pulumi.gcp.kms.inputs.GetAutokeyConfigArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myAutokeyConfig = KmsFunctions.getAutokeyConfig(GetAutokeyConfigArgs.builder()
+     *             .folder("folders/123")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetAutokeyConfigResult> getAutokeyConfigPlain(GetAutokeyConfigPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:kms/getAutokeyConfig:getAutokeyConfig", TypeShape.of(GetAutokeyConfigResult.class), args, Utilities.withVersion(options));
+    }
     /**
      * Retrieves the current IAM policy data for a Google Cloud KMS crypto key.
      * 
@@ -3905,6 +4111,211 @@ public final class KmsFunctions {
      */
     public static CompletableFuture<GetKMSSecretCiphertextResult> getKMSSecretCiphertextPlain(GetKMSSecretCiphertextPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:kms/getKMSSecretCiphertext:getKMSSecretCiphertext", TypeShape.of(GetKMSSecretCiphertextResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.kms.KmsFunctions;
+     * import com.pulumi.gcp.kms.inputs.GetKeyHandleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myKeyHandle = KmsFunctions.getKeyHandle(GetKeyHandleArgs.builder()
+     *             .name("eed58b7b-20ad-4da8-ad85-ba78a0d5ab87")
+     *             .location("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetKeyHandleResult> getKeyHandle(GetKeyHandleArgs args) {
+        return getKeyHandle(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.kms.KmsFunctions;
+     * import com.pulumi.gcp.kms.inputs.GetKeyHandleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myKeyHandle = KmsFunctions.getKeyHandle(GetKeyHandleArgs.builder()
+     *             .name("eed58b7b-20ad-4da8-ad85-ba78a0d5ab87")
+     *             .location("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetKeyHandleResult> getKeyHandlePlain(GetKeyHandlePlainArgs args) {
+        return getKeyHandlePlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.kms.KmsFunctions;
+     * import com.pulumi.gcp.kms.inputs.GetKeyHandleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myKeyHandle = KmsFunctions.getKeyHandle(GetKeyHandleArgs.builder()
+     *             .name("eed58b7b-20ad-4da8-ad85-ba78a0d5ab87")
+     *             .location("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetKeyHandleResult> getKeyHandle(GetKeyHandleArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:kms/getKeyHandle:getKeyHandle", TypeShape.of(GetKeyHandleResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.kms.KmsFunctions;
+     * import com.pulumi.gcp.kms.inputs.GetKeyHandleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myKeyHandle = KmsFunctions.getKeyHandle(GetKeyHandleArgs.builder()
+     *             .name("eed58b7b-20ad-4da8-ad85-ba78a0d5ab87")
+     *             .location("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetKeyHandleResult> getKeyHandle(GetKeyHandleArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:kms/getKeyHandle:getKeyHandle", TypeShape.of(GetKeyHandleResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.kms.KmsFunctions;
+     * import com.pulumi.gcp.kms.inputs.GetKeyHandleArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myKeyHandle = KmsFunctions.getKeyHandle(GetKeyHandleArgs.builder()
+     *             .name("eed58b7b-20ad-4da8-ad85-ba78a0d5ab87")
+     *             .location("us-central1")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetKeyHandleResult> getKeyHandlePlain(GetKeyHandlePlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:kms/getKeyHandle:getKeyHandle", TypeShape.of(GetKeyHandleResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Retrieves the current IAM policy data for a Google Cloud KMS key ring.

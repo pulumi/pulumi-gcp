@@ -5,6 +5,7 @@ package com.pulumi.gcp.bigquery.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.bigquery.outputs.GetDatasetAccessCondition;
 import com.pulumi.gcp.bigquery.outputs.GetDatasetAccessDataset;
 import com.pulumi.gcp.bigquery.outputs.GetDatasetAccessRoutine;
 import com.pulumi.gcp.bigquery.outputs.GetDatasetAccessView;
@@ -14,6 +15,12 @@ import java.util.Objects;
 
 @CustomType
 public final class GetDatasetAccess {
+    /**
+     * @return Condition for the binding. If CEL expression in this field is true, this
+     * access binding will be considered.
+     * 
+     */
+    private List<GetDatasetAccessCondition> conditions;
     /**
      * @return Grants all resources of particular types in a particular dataset read access to the current dataset.
      * 
@@ -80,6 +87,14 @@ public final class GetDatasetAccess {
     private List<GetDatasetAccessView> views;
 
     private GetDatasetAccess() {}
+    /**
+     * @return Condition for the binding. If CEL expression in this field is true, this
+     * access binding will be considered.
+     * 
+     */
+    public List<GetDatasetAccessCondition> conditions() {
+        return this.conditions;
+    }
     /**
      * @return Grants all resources of particular types in a particular dataset read access to the current dataset.
      * 
@@ -172,6 +187,7 @@ public final class GetDatasetAccess {
     }
     @CustomType.Builder
     public static final class Builder {
+        private List<GetDatasetAccessCondition> conditions;
         private List<GetDatasetAccessDataset> datasets;
         private String domain;
         private String groupByEmail;
@@ -184,6 +200,7 @@ public final class GetDatasetAccess {
         public Builder() {}
         public Builder(GetDatasetAccess defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.conditions = defaults.conditions;
     	      this.datasets = defaults.datasets;
     	      this.domain = defaults.domain;
     	      this.groupByEmail = defaults.groupByEmail;
@@ -195,6 +212,17 @@ public final class GetDatasetAccess {
     	      this.views = defaults.views;
         }
 
+        @CustomType.Setter
+        public Builder conditions(List<GetDatasetAccessCondition> conditions) {
+            if (conditions == null) {
+              throw new MissingRequiredPropertyException("GetDatasetAccess", "conditions");
+            }
+            this.conditions = conditions;
+            return this;
+        }
+        public Builder conditions(GetDatasetAccessCondition... conditions) {
+            return conditions(List.of(conditions));
+        }
         @CustomType.Setter
         public Builder datasets(List<GetDatasetAccessDataset> datasets) {
             if (datasets == null) {
@@ -278,6 +306,7 @@ public final class GetDatasetAccess {
         }
         public GetDatasetAccess build() {
             final var _resultValue = new GetDatasetAccess();
+            _resultValue.conditions = conditions;
             _resultValue.datasets = datasets;
             _resultValue.domain = domain;
             _resultValue.groupByEmail = groupByEmail;

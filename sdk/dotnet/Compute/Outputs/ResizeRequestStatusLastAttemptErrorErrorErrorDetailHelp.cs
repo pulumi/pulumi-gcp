@@ -15,7 +15,7 @@ namespace Pulumi.Gcp.Compute.Outputs
     {
         /// <summary>
         /// (Output)
-        /// [Output Only]
+        /// A nested object resource.
         /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.ResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpLink> Links;

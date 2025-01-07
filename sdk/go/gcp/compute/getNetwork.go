@@ -72,9 +72,13 @@ type LookupNetworkResult struct {
 	// The ula internal ipv6 range assigned to this network.
 	InternalIpv6Range string `pulumi:"internalIpv6Range"`
 	Name              string `pulumi:"name"`
+	// The numeric unique identifier for the resource.
+	NetworkId int `pulumi:"networkId"`
 	// Beta A full or partial URL of the network profile to apply to this network.
 	NetworkProfile *string `pulumi:"networkProfile"`
-	// The numeric unique identifier for the resource.
+	// (Deprecated) The numeric unique identifier for the resource. `numericId` is deprecated and will be removed in a future major release. Use `networkId` instead.
+	//
+	// Deprecated: `numericId` is deprecated and will be removed in a future major release. Use `networkId` instead.
 	NumericId string  `pulumi:"numericId"`
 	Project   *string `pulumi:"project"`
 	// The URI of the resource.
@@ -148,12 +152,19 @@ func (o LookupNetworkResultOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkResult) string { return v.Name }).(pulumi.StringOutput)
 }
 
+// The numeric unique identifier for the resource.
+func (o LookupNetworkResultOutput) NetworkId() pulumi.IntOutput {
+	return o.ApplyT(func(v LookupNetworkResult) int { return v.NetworkId }).(pulumi.IntOutput)
+}
+
 // Beta A full or partial URL of the network profile to apply to this network.
 func (o LookupNetworkResultOutput) NetworkProfile() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v LookupNetworkResult) *string { return v.NetworkProfile }).(pulumi.StringPtrOutput)
 }
 
-// The numeric unique identifier for the resource.
+// (Deprecated) The numeric unique identifier for the resource. `numericId` is deprecated and will be removed in a future major release. Use `networkId` instead.
+//
+// Deprecated: `numericId` is deprecated and will be removed in a future major release. Use `networkId` instead.
 func (o LookupNetworkResultOutput) NumericId() pulumi.StringOutput {
 	return o.ApplyT(func(v LookupNetworkResult) string { return v.NumericId }).(pulumi.StringOutput)
 }

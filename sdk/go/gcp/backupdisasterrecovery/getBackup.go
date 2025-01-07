@@ -11,6 +11,36 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A Backup and DR Backup.
+//
+// ## Example Usage
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/backupdisasterrecovery"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := backupdisasterrecovery.GetBackup(ctx, &backupdisasterrecovery.GetBackupArgs{
+//				Location:      "us-central1",
+//				Project:       "project-test",
+//				DataSourceId:  "ds-test",
+//				BackupVaultId: "bv-test",
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func GetBackup(ctx *pulumi.Context, args *GetBackupArgs, opts ...pulumi.InvokeOption) (*GetBackupResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv GetBackupResult
@@ -23,10 +53,14 @@ func GetBackup(ctx *pulumi.Context, args *GetBackupArgs, opts ...pulumi.InvokeOp
 
 // A collection of arguments for invoking getBackup.
 type GetBackupArgs struct {
+	// The ID of the Backup Vault of the Data Source in which the Backup belongs.
 	BackupVaultId string `pulumi:"backupVaultId"`
-	DataSourceId  string `pulumi:"dataSourceId"`
-	Location      string `pulumi:"location"`
-	Project       string `pulumi:"project"`
+	// The ID of the Data Source in which the Backup belongs.
+	DataSourceId string `pulumi:"dataSourceId"`
+	// The location in which the Backup belongs.
+	Location string `pulumi:"location"`
+	// The Google Cloud Project in which the Backup belongs.
+	Project string `pulumi:"project"`
 }
 
 // A collection of values returned by getBackup.
@@ -52,10 +86,14 @@ func GetBackupOutput(ctx *pulumi.Context, args GetBackupOutputArgs, opts ...pulu
 
 // A collection of arguments for invoking getBackup.
 type GetBackupOutputArgs struct {
+	// The ID of the Backup Vault of the Data Source in which the Backup belongs.
 	BackupVaultId pulumi.StringInput `pulumi:"backupVaultId"`
-	DataSourceId  pulumi.StringInput `pulumi:"dataSourceId"`
-	Location      pulumi.StringInput `pulumi:"location"`
-	Project       pulumi.StringInput `pulumi:"project"`
+	// The ID of the Data Source in which the Backup belongs.
+	DataSourceId pulumi.StringInput `pulumi:"dataSourceId"`
+	// The location in which the Backup belongs.
+	Location pulumi.StringInput `pulumi:"location"`
+	// The Google Cloud Project in which the Backup belongs.
+	Project pulumi.StringInput `pulumi:"project"`
 }
 
 func (GetBackupOutputArgs) ElementType() reflect.Type {

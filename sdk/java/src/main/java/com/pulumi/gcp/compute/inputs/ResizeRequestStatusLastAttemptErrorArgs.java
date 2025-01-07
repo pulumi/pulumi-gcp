@@ -18,7 +18,7 @@ public final class ResizeRequestStatusLastAttemptErrorArgs extends com.pulumi.re
 
     /**
      * (Output)
-     * [Output Only] The array of errors encountered while processing this operation.
+     * The array of errors encountered while processing this operation.
      * Structure is documented below.
      * 
      */
@@ -27,7 +27,7 @@ public final class ResizeRequestStatusLastAttemptErrorArgs extends com.pulumi.re
 
     /**
      * @return (Output)
-     * [Output Only] The array of errors encountered while processing this operation.
+     * The array of errors encountered while processing this operation.
      * Structure is documented below.
      * 
      */
@@ -61,7 +61,7 @@ public final class ResizeRequestStatusLastAttemptErrorArgs extends com.pulumi.re
 
         /**
          * @param errors (Output)
-         * [Output Only] The array of errors encountered while processing this operation.
+         * The array of errors encountered while processing this operation.
          * Structure is documented below.
          * 
          * @return builder
@@ -74,7 +74,7 @@ public final class ResizeRequestStatusLastAttemptErrorArgs extends com.pulumi.re
 
         /**
          * @param errors (Output)
-         * [Output Only] The array of errors encountered while processing this operation.
+         * The array of errors encountered while processing this operation.
          * Structure is documented below.
          * 
          * @return builder
@@ -86,7 +86,7 @@ public final class ResizeRequestStatusLastAttemptErrorArgs extends com.pulumi.re
 
         /**
          * @param errors (Output)
-         * [Output Only] The array of errors encountered while processing this operation.
+         * The array of errors encountered while processing this operation.
          * Structure is documented below.
          * 
          * @return builder

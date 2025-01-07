@@ -8173,7 +8173,8 @@ func (o ServiceTemplateNodeSelectorPtrOutput) Accelerator() pulumi.StringPtrOutp
 }
 
 type ServiceTemplateScaling struct {
-	// Maximum number of serving instances that this resource should have.
+	// Maximum number of serving instances that this resource should have. Must not be less than minimum instance count. If absent, Cloud Run will calculate
+	// a default value based on the project's available container instances quota in the region and specified instance size.
 	MaxInstanceCount *int `pulumi:"maxInstanceCount"`
 	// Minimum number of instances for the service, to be divided among all revisions receiving traffic.
 	MinInstanceCount *int `pulumi:"minInstanceCount"`
@@ -8191,7 +8192,8 @@ type ServiceTemplateScalingInput interface {
 }
 
 type ServiceTemplateScalingArgs struct {
-	// Maximum number of serving instances that this resource should have.
+	// Maximum number of serving instances that this resource should have. Must not be less than minimum instance count. If absent, Cloud Run will calculate
+	// a default value based on the project's available container instances quota in the region and specified instance size.
 	MaxInstanceCount pulumi.IntPtrInput `pulumi:"maxInstanceCount"`
 	// Minimum number of instances for the service, to be divided among all revisions receiving traffic.
 	MinInstanceCount pulumi.IntPtrInput `pulumi:"minInstanceCount"`
@@ -8274,7 +8276,8 @@ func (o ServiceTemplateScalingOutput) ToServiceTemplateScalingPtrOutputWithConte
 	}).(ServiceTemplateScalingPtrOutput)
 }
 
-// Maximum number of serving instances that this resource should have.
+// Maximum number of serving instances that this resource should have. Must not be less than minimum instance count. If absent, Cloud Run will calculate
+// a default value based on the project's available container instances quota in the region and specified instance size.
 func (o ServiceTemplateScalingOutput) MaxInstanceCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v ServiceTemplateScaling) *int { return v.MaxInstanceCount }).(pulumi.IntPtrOutput)
 }
@@ -8308,7 +8311,8 @@ func (o ServiceTemplateScalingPtrOutput) Elem() ServiceTemplateScalingOutput {
 	}).(ServiceTemplateScalingOutput)
 }
 
-// Maximum number of serving instances that this resource should have.
+// Maximum number of serving instances that this resource should have. Must not be less than minimum instance count. If absent, Cloud Run will calculate
+// a default value based on the project's available container instances quota in the region and specified instance size.
 func (o ServiceTemplateScalingPtrOutput) MaxInstanceCount() pulumi.IntPtrOutput {
 	return o.ApplyT(func(v *ServiceTemplateScaling) *int {
 		if v == nil {
@@ -15900,9 +15904,10 @@ func (o GetServiceTemplateNodeSelectorArrayOutput) Index(i pulumi.IntInput) GetS
 }
 
 type GetServiceTemplateScaling struct {
-	// Maximum number of serving instances that this resource should have.
+	// Maximum number of serving instances that this resource should have. Must not be less than minimum instance count. If absent, Cloud Run will calculate
+	// a default value based on the project's available container instances quota in the region and specified instance size.
 	MaxInstanceCount int `pulumi:"maxInstanceCount"`
-	// Minimum number of serving instances that this resource should have.
+	// Minimum number of serving instances that this resource should have. Defaults to 0. Must not be greater than maximum instance count.
 	MinInstanceCount int `pulumi:"minInstanceCount"`
 }
 
@@ -15918,9 +15923,10 @@ type GetServiceTemplateScalingInput interface {
 }
 
 type GetServiceTemplateScalingArgs struct {
-	// Maximum number of serving instances that this resource should have.
+	// Maximum number of serving instances that this resource should have. Must not be less than minimum instance count. If absent, Cloud Run will calculate
+	// a default value based on the project's available container instances quota in the region and specified instance size.
 	MaxInstanceCount pulumi.IntInput `pulumi:"maxInstanceCount"`
-	// Minimum number of serving instances that this resource should have.
+	// Minimum number of serving instances that this resource should have. Defaults to 0. Must not be greater than maximum instance count.
 	MinInstanceCount pulumi.IntInput `pulumi:"minInstanceCount"`
 }
 
@@ -15975,12 +15981,13 @@ func (o GetServiceTemplateScalingOutput) ToGetServiceTemplateScalingOutputWithCo
 	return o
 }
 
-// Maximum number of serving instances that this resource should have.
+// Maximum number of serving instances that this resource should have. Must not be less than minimum instance count. If absent, Cloud Run will calculate
+// a default value based on the project's available container instances quota in the region and specified instance size.
 func (o GetServiceTemplateScalingOutput) MaxInstanceCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetServiceTemplateScaling) int { return v.MaxInstanceCount }).(pulumi.IntOutput)
 }
 
-// Minimum number of serving instances that this resource should have.
+// Minimum number of serving instances that this resource should have. Defaults to 0. Must not be greater than maximum instance count.
 func (o GetServiceTemplateScalingOutput) MinInstanceCount() pulumi.IntOutput {
 	return o.ApplyT(func(v GetServiceTemplateScaling) int { return v.MinInstanceCount }).(pulumi.IntOutput)
 }

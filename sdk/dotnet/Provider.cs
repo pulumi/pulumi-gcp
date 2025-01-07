@@ -99,6 +99,9 @@ namespace Pulumi.Gcp
         [Output("certificateManagerCustomEndpoint")]
         public Output<string?> CertificateManagerCustomEndpoint { get; private set; } = null!;
 
+        [Output("chronicleCustomEndpoint")]
+        public Output<string?> ChronicleCustomEndpoint { get; private set; } = null!;
+
         [Output("cloudAssetCustomEndpoint")]
         public Output<string?> CloudAssetCustomEndpoint { get; private set; } = null!;
 
@@ -664,6 +667,9 @@ namespace Pulumi.Gcp
 
         [Input("certificateManagerCustomEndpoint")]
         public Input<string>? CertificateManagerCustomEndpoint { get; set; }
+
+        [Input("chronicleCustomEndpoint")]
+        public Input<string>? ChronicleCustomEndpoint { get; set; }
 
         [Input("cloudAssetCustomEndpoint")]
         public Input<string>? CloudAssetCustomEndpoint { get; set; }

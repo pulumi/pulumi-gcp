@@ -502,6 +502,20 @@ public class Network extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.networkFirewallPolicyEnforcementOrder);
     }
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     * 
+     */
+    @Export(name="networkId", refs={String.class}, tree="[0]")
+    private Output<String> networkId;
+
+    /**
+     * @return The unique identifier for the resource. This identifier is defined by the server.
+     * 
+     */
+    public Output<String> networkId() {
+        return this.networkId;
+    }
+    /**
      * A full or partial URL of the network profile to apply to this network.
      * This field can be set only at resource creation time. For example, the
      * following are valid URLs:
@@ -524,14 +538,20 @@ public class Network extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.networkProfile);
     }
     /**
+     * (Deprecated)
      * The unique identifier for the resource. This identifier is defined by the server.
      * 
+     * @deprecated
+     * `numeric_id` is deprecated and will be removed in a future major release. Use `network_id` instead.
+     * 
      */
+    @Deprecated /* `numeric_id` is deprecated and will be removed in a future major release. Use `network_id` instead. */
     @Export(name="numericId", refs={String.class}, tree="[0]")
     private Output<String> numericId;
 
     /**
-     * @return The unique identifier for the resource. This identifier is defined by the server.
+     * @return (Deprecated)
+     * The unique identifier for the resource. This identifier is defined by the server.
      * 
      */
     public Output<String> numericId() {

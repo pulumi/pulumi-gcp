@@ -16,6 +16,75 @@ import (
 //
 // ## Example Usage
 //
+// ### Parallelstore Instance Basic Beta
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/parallelstore"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/servicenetworking"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
+//				Name:                  pulumi.String("network"),
+//				AutoCreateSubnetworks: pulumi.Bool(true),
+//				Mtu:                   pulumi.Int(8896),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Create an IP address
+//			privateIpAlloc, err := compute.NewGlobalAddress(ctx, "private_ip_alloc", &compute.GlobalAddressArgs{
+//				Name:         pulumi.String("address"),
+//				Purpose:      pulumi.String("VPC_PEERING"),
+//				AddressType:  pulumi.String("INTERNAL"),
+//				PrefixLength: pulumi.Int(24),
+//				Network:      network.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			// Create a private connection
+//			_, err = servicenetworking.NewConnection(ctx, "default", &servicenetworking.ConnectionArgs{
+//				Network: network.ID(),
+//				Service: pulumi.String("servicenetworking.googleapis.com"),
+//				ReservedPeeringRanges: pulumi.StringArray{
+//					privateIpAlloc.Name,
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = parallelstore.NewInstance(ctx, "instance", &parallelstore.InstanceArgs{
+//				InstanceId:           pulumi.String("instance"),
+//				Location:             pulumi.String("us-central1-a"),
+//				Description:          pulumi.String("test instance"),
+//				CapacityGib:          pulumi.String("12000"),
+//				Network:              network.Name,
+//				FileStripeLevel:      pulumi.String("FILE_STRIPE_LEVEL_MIN"),
+//				DirectoryStripeLevel: pulumi.String("DIRECTORY_STRIPE_LEVEL_MIN"),
+//				DeploymentType:       pulumi.String("SCRATCH"),
+//				Labels: pulumi.StringMap{
+//					"test": pulumi.String("value"),
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				_default,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Parallelstore Instance Basic
 //
 // ```go
@@ -70,6 +139,7 @@ import (
 //				Network:              network.Name,
 //				FileStripeLevel:      pulumi.String("FILE_STRIPE_LEVEL_MIN"),
 //				DirectoryStripeLevel: pulumi.String("DIRECTORY_STRIPE_LEVEL_MIN"),
+//				DeploymentType:       pulumi.String("SCRATCH"),
 //				Labels: pulumi.StringMap{
 //					"test": pulumi.String("value"),
 //				},
@@ -120,6 +190,12 @@ type Instance struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// The version of DAOS software running in the instance.
 	DaosVersion pulumi.StringOutput `pulumi:"daosVersion"`
+	// Parallelstore Instance deployment type.
+	// Possible values:
+	// DEPLOYMENT_TYPE_UNSPECIFIED
+	// SCRATCH
+	// PERSISTENT
+	DeploymentType pulumi.StringPtrOutput `pulumi:"deploymentType"`
 	// The description of the instance. 2048 characters or less.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// Stripe level for directories.
@@ -263,6 +339,12 @@ type instanceState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// The version of DAOS software running in the instance.
 	DaosVersion *string `pulumi:"daosVersion"`
+	// Parallelstore Instance deployment type.
+	// Possible values:
+	// DEPLOYMENT_TYPE_UNSPECIFIED
+	// SCRATCH
+	// PERSISTENT
+	DeploymentType *string `pulumi:"deploymentType"`
 	// The description of the instance. 2048 characters or less.
 	Description *string `pulumi:"description"`
 	// Stripe level for directories.
@@ -363,6 +445,12 @@ type InstanceState struct {
 	CreateTime pulumi.StringPtrInput
 	// The version of DAOS software running in the instance.
 	DaosVersion pulumi.StringPtrInput
+	// Parallelstore Instance deployment type.
+	// Possible values:
+	// DEPLOYMENT_TYPE_UNSPECIFIED
+	// SCRATCH
+	// PERSISTENT
+	DeploymentType pulumi.StringPtrInput
 	// The description of the instance. 2048 characters or less.
 	Description pulumi.StringPtrInput
 	// Stripe level for directories.
@@ -460,6 +548,12 @@ func (InstanceState) ElementType() reflect.Type {
 type instanceArgs struct {
 	// Required. Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
 	CapacityGib string `pulumi:"capacityGib"`
+	// Parallelstore Instance deployment type.
+	// Possible values:
+	// DEPLOYMENT_TYPE_UNSPECIFIED
+	// SCRATCH
+	// PERSISTENT
+	DeploymentType *string `pulumi:"deploymentType"`
 	// The description of the instance. 2048 characters or less.
 	Description *string `pulumi:"description"`
 	// Stripe level for directories.
@@ -530,6 +624,12 @@ type instanceArgs struct {
 type InstanceArgs struct {
 	// Required. Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
 	CapacityGib pulumi.StringInput
+	// Parallelstore Instance deployment type.
+	// Possible values:
+	// DEPLOYMENT_TYPE_UNSPECIFIED
+	// SCRATCH
+	// PERSISTENT
+	DeploymentType pulumi.StringPtrInput
 	// The description of the instance. 2048 characters or less.
 	Description pulumi.StringPtrInput
 	// Stripe level for directories.
@@ -702,6 +802,15 @@ func (o InstanceOutput) CreateTime() pulumi.StringOutput {
 // The version of DAOS software running in the instance.
 func (o InstanceOutput) DaosVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringOutput { return v.DaosVersion }).(pulumi.StringOutput)
+}
+
+// Parallelstore Instance deployment type.
+// Possible values:
+// DEPLOYMENT_TYPE_UNSPECIFIED
+// SCRATCH
+// PERSISTENT
+func (o InstanceOutput) DeploymentType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringPtrOutput { return v.DeploymentType }).(pulumi.StringPtrOutput)
 }
 
 // The description of the instance. 2048 characters or less.

@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.IntegrationConnectors.Outputs
     public sealed class ConnectionStatus
     {
         /// <summary>
-        /// An arbitrary description for the Conection.
+        /// An arbitrary description for the Connection.
         /// </summary>
         public readonly string? Description;
         /// <summary>

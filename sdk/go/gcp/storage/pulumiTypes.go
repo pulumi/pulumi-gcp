@@ -4835,6 +4835,952 @@ func (o TransferJobNotificationConfigPtrOutput) PubsubTopic() pulumi.StringPtrOu
 	}).(pulumi.StringPtrOutput)
 }
 
+type TransferJobReplicationSpec struct {
+	// A Google Cloud Storage data sink. Structure documented below.
+	GcsDataSink *TransferJobReplicationSpecGcsDataSink `pulumi:"gcsDataSink"`
+	// A Google Cloud Storage data source. Structure documented below.
+	GcsDataSource *TransferJobReplicationSpecGcsDataSource `pulumi:"gcsDataSource"`
+	// Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' `lastModificationTime` do not exclude objects in a data sink. Structure documented below.
+	ObjectConditions *TransferJobReplicationSpecObjectConditions `pulumi:"objectConditions"`
+	// Characteristics of how to treat files from datasource and sink during job. If the option `deleteObjectsUniqueInSink` is true, object conditions based on objects' `lastModificationTime` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
+	TransferOptions *TransferJobReplicationSpecTransferOptions `pulumi:"transferOptions"`
+}
+
+// TransferJobReplicationSpecInput is an input type that accepts TransferJobReplicationSpecArgs and TransferJobReplicationSpecOutput values.
+// You can construct a concrete instance of `TransferJobReplicationSpecInput` via:
+//
+//	TransferJobReplicationSpecArgs{...}
+type TransferJobReplicationSpecInput interface {
+	pulumi.Input
+
+	ToTransferJobReplicationSpecOutput() TransferJobReplicationSpecOutput
+	ToTransferJobReplicationSpecOutputWithContext(context.Context) TransferJobReplicationSpecOutput
+}
+
+type TransferJobReplicationSpecArgs struct {
+	// A Google Cloud Storage data sink. Structure documented below.
+	GcsDataSink TransferJobReplicationSpecGcsDataSinkPtrInput `pulumi:"gcsDataSink"`
+	// A Google Cloud Storage data source. Structure documented below.
+	GcsDataSource TransferJobReplicationSpecGcsDataSourcePtrInput `pulumi:"gcsDataSource"`
+	// Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' `lastModificationTime` do not exclude objects in a data sink. Structure documented below.
+	ObjectConditions TransferJobReplicationSpecObjectConditionsPtrInput `pulumi:"objectConditions"`
+	// Characteristics of how to treat files from datasource and sink during job. If the option `deleteObjectsUniqueInSink` is true, object conditions based on objects' `lastModificationTime` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
+	TransferOptions TransferJobReplicationSpecTransferOptionsPtrInput `pulumi:"transferOptions"`
+}
+
+func (TransferJobReplicationSpecArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransferJobReplicationSpec)(nil)).Elem()
+}
+
+func (i TransferJobReplicationSpecArgs) ToTransferJobReplicationSpecOutput() TransferJobReplicationSpecOutput {
+	return i.ToTransferJobReplicationSpecOutputWithContext(context.Background())
+}
+
+func (i TransferJobReplicationSpecArgs) ToTransferJobReplicationSpecOutputWithContext(ctx context.Context) TransferJobReplicationSpecOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferJobReplicationSpecOutput)
+}
+
+func (i TransferJobReplicationSpecArgs) ToTransferJobReplicationSpecPtrOutput() TransferJobReplicationSpecPtrOutput {
+	return i.ToTransferJobReplicationSpecPtrOutputWithContext(context.Background())
+}
+
+func (i TransferJobReplicationSpecArgs) ToTransferJobReplicationSpecPtrOutputWithContext(ctx context.Context) TransferJobReplicationSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferJobReplicationSpecOutput).ToTransferJobReplicationSpecPtrOutputWithContext(ctx)
+}
+
+// TransferJobReplicationSpecPtrInput is an input type that accepts TransferJobReplicationSpecArgs, TransferJobReplicationSpecPtr and TransferJobReplicationSpecPtrOutput values.
+// You can construct a concrete instance of `TransferJobReplicationSpecPtrInput` via:
+//
+//	        TransferJobReplicationSpecArgs{...}
+//
+//	or:
+//
+//	        nil
+type TransferJobReplicationSpecPtrInput interface {
+	pulumi.Input
+
+	ToTransferJobReplicationSpecPtrOutput() TransferJobReplicationSpecPtrOutput
+	ToTransferJobReplicationSpecPtrOutputWithContext(context.Context) TransferJobReplicationSpecPtrOutput
+}
+
+type transferJobReplicationSpecPtrType TransferJobReplicationSpecArgs
+
+func TransferJobReplicationSpecPtr(v *TransferJobReplicationSpecArgs) TransferJobReplicationSpecPtrInput {
+	return (*transferJobReplicationSpecPtrType)(v)
+}
+
+func (*transferJobReplicationSpecPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransferJobReplicationSpec)(nil)).Elem()
+}
+
+func (i *transferJobReplicationSpecPtrType) ToTransferJobReplicationSpecPtrOutput() TransferJobReplicationSpecPtrOutput {
+	return i.ToTransferJobReplicationSpecPtrOutputWithContext(context.Background())
+}
+
+func (i *transferJobReplicationSpecPtrType) ToTransferJobReplicationSpecPtrOutputWithContext(ctx context.Context) TransferJobReplicationSpecPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferJobReplicationSpecPtrOutput)
+}
+
+type TransferJobReplicationSpecOutput struct{ *pulumi.OutputState }
+
+func (TransferJobReplicationSpecOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransferJobReplicationSpec)(nil)).Elem()
+}
+
+func (o TransferJobReplicationSpecOutput) ToTransferJobReplicationSpecOutput() TransferJobReplicationSpecOutput {
+	return o
+}
+
+func (o TransferJobReplicationSpecOutput) ToTransferJobReplicationSpecOutputWithContext(ctx context.Context) TransferJobReplicationSpecOutput {
+	return o
+}
+
+func (o TransferJobReplicationSpecOutput) ToTransferJobReplicationSpecPtrOutput() TransferJobReplicationSpecPtrOutput {
+	return o.ToTransferJobReplicationSpecPtrOutputWithContext(context.Background())
+}
+
+func (o TransferJobReplicationSpecOutput) ToTransferJobReplicationSpecPtrOutputWithContext(ctx context.Context) TransferJobReplicationSpecPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransferJobReplicationSpec) *TransferJobReplicationSpec {
+		return &v
+	}).(TransferJobReplicationSpecPtrOutput)
+}
+
+// A Google Cloud Storage data sink. Structure documented below.
+func (o TransferJobReplicationSpecOutput) GcsDataSink() TransferJobReplicationSpecGcsDataSinkPtrOutput {
+	return o.ApplyT(func(v TransferJobReplicationSpec) *TransferJobReplicationSpecGcsDataSink { return v.GcsDataSink }).(TransferJobReplicationSpecGcsDataSinkPtrOutput)
+}
+
+// A Google Cloud Storage data source. Structure documented below.
+func (o TransferJobReplicationSpecOutput) GcsDataSource() TransferJobReplicationSpecGcsDataSourcePtrOutput {
+	return o.ApplyT(func(v TransferJobReplicationSpec) *TransferJobReplicationSpecGcsDataSource { return v.GcsDataSource }).(TransferJobReplicationSpecGcsDataSourcePtrOutput)
+}
+
+// Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' `lastModificationTime` do not exclude objects in a data sink. Structure documented below.
+func (o TransferJobReplicationSpecOutput) ObjectConditions() TransferJobReplicationSpecObjectConditionsPtrOutput {
+	return o.ApplyT(func(v TransferJobReplicationSpec) *TransferJobReplicationSpecObjectConditions {
+		return v.ObjectConditions
+	}).(TransferJobReplicationSpecObjectConditionsPtrOutput)
+}
+
+// Characteristics of how to treat files from datasource and sink during job. If the option `deleteObjectsUniqueInSink` is true, object conditions based on objects' `lastModificationTime` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
+func (o TransferJobReplicationSpecOutput) TransferOptions() TransferJobReplicationSpecTransferOptionsPtrOutput {
+	return o.ApplyT(func(v TransferJobReplicationSpec) *TransferJobReplicationSpecTransferOptions {
+		return v.TransferOptions
+	}).(TransferJobReplicationSpecTransferOptionsPtrOutput)
+}
+
+type TransferJobReplicationSpecPtrOutput struct{ *pulumi.OutputState }
+
+func (TransferJobReplicationSpecPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransferJobReplicationSpec)(nil)).Elem()
+}
+
+func (o TransferJobReplicationSpecPtrOutput) ToTransferJobReplicationSpecPtrOutput() TransferJobReplicationSpecPtrOutput {
+	return o
+}
+
+func (o TransferJobReplicationSpecPtrOutput) ToTransferJobReplicationSpecPtrOutputWithContext(ctx context.Context) TransferJobReplicationSpecPtrOutput {
+	return o
+}
+
+func (o TransferJobReplicationSpecPtrOutput) Elem() TransferJobReplicationSpecOutput {
+	return o.ApplyT(func(v *TransferJobReplicationSpec) TransferJobReplicationSpec {
+		if v != nil {
+			return *v
+		}
+		var ret TransferJobReplicationSpec
+		return ret
+	}).(TransferJobReplicationSpecOutput)
+}
+
+// A Google Cloud Storage data sink. Structure documented below.
+func (o TransferJobReplicationSpecPtrOutput) GcsDataSink() TransferJobReplicationSpecGcsDataSinkPtrOutput {
+	return o.ApplyT(func(v *TransferJobReplicationSpec) *TransferJobReplicationSpecGcsDataSink {
+		if v == nil {
+			return nil
+		}
+		return v.GcsDataSink
+	}).(TransferJobReplicationSpecGcsDataSinkPtrOutput)
+}
+
+// A Google Cloud Storage data source. Structure documented below.
+func (o TransferJobReplicationSpecPtrOutput) GcsDataSource() TransferJobReplicationSpecGcsDataSourcePtrOutput {
+	return o.ApplyT(func(v *TransferJobReplicationSpec) *TransferJobReplicationSpecGcsDataSource {
+		if v == nil {
+			return nil
+		}
+		return v.GcsDataSource
+	}).(TransferJobReplicationSpecGcsDataSourcePtrOutput)
+}
+
+// Only objects that satisfy these object conditions are included in the set of data source and data sink objects. Object conditions based on objects' `lastModificationTime` do not exclude objects in a data sink. Structure documented below.
+func (o TransferJobReplicationSpecPtrOutput) ObjectConditions() TransferJobReplicationSpecObjectConditionsPtrOutput {
+	return o.ApplyT(func(v *TransferJobReplicationSpec) *TransferJobReplicationSpecObjectConditions {
+		if v == nil {
+			return nil
+		}
+		return v.ObjectConditions
+	}).(TransferJobReplicationSpecObjectConditionsPtrOutput)
+}
+
+// Characteristics of how to treat files from datasource and sink during job. If the option `deleteObjectsUniqueInSink` is true, object conditions based on objects' `lastModificationTime` are ignored and do not exclude objects in a data source or a data sink. Structure documented below.
+func (o TransferJobReplicationSpecPtrOutput) TransferOptions() TransferJobReplicationSpecTransferOptionsPtrOutput {
+	return o.ApplyT(func(v *TransferJobReplicationSpec) *TransferJobReplicationSpecTransferOptions {
+		if v == nil {
+			return nil
+		}
+		return v.TransferOptions
+	}).(TransferJobReplicationSpecTransferOptionsPtrOutput)
+}
+
+type TransferJobReplicationSpecGcsDataSink struct {
+	// Google Cloud Storage bucket name.
+	BucketName string `pulumi:"bucketName"`
+	// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+	Path *string `pulumi:"path"`
+}
+
+// TransferJobReplicationSpecGcsDataSinkInput is an input type that accepts TransferJobReplicationSpecGcsDataSinkArgs and TransferJobReplicationSpecGcsDataSinkOutput values.
+// You can construct a concrete instance of `TransferJobReplicationSpecGcsDataSinkInput` via:
+//
+//	TransferJobReplicationSpecGcsDataSinkArgs{...}
+type TransferJobReplicationSpecGcsDataSinkInput interface {
+	pulumi.Input
+
+	ToTransferJobReplicationSpecGcsDataSinkOutput() TransferJobReplicationSpecGcsDataSinkOutput
+	ToTransferJobReplicationSpecGcsDataSinkOutputWithContext(context.Context) TransferJobReplicationSpecGcsDataSinkOutput
+}
+
+type TransferJobReplicationSpecGcsDataSinkArgs struct {
+	// Google Cloud Storage bucket name.
+	BucketName pulumi.StringInput `pulumi:"bucketName"`
+	// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+}
+
+func (TransferJobReplicationSpecGcsDataSinkArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransferJobReplicationSpecGcsDataSink)(nil)).Elem()
+}
+
+func (i TransferJobReplicationSpecGcsDataSinkArgs) ToTransferJobReplicationSpecGcsDataSinkOutput() TransferJobReplicationSpecGcsDataSinkOutput {
+	return i.ToTransferJobReplicationSpecGcsDataSinkOutputWithContext(context.Background())
+}
+
+func (i TransferJobReplicationSpecGcsDataSinkArgs) ToTransferJobReplicationSpecGcsDataSinkOutputWithContext(ctx context.Context) TransferJobReplicationSpecGcsDataSinkOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferJobReplicationSpecGcsDataSinkOutput)
+}
+
+func (i TransferJobReplicationSpecGcsDataSinkArgs) ToTransferJobReplicationSpecGcsDataSinkPtrOutput() TransferJobReplicationSpecGcsDataSinkPtrOutput {
+	return i.ToTransferJobReplicationSpecGcsDataSinkPtrOutputWithContext(context.Background())
+}
+
+func (i TransferJobReplicationSpecGcsDataSinkArgs) ToTransferJobReplicationSpecGcsDataSinkPtrOutputWithContext(ctx context.Context) TransferJobReplicationSpecGcsDataSinkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferJobReplicationSpecGcsDataSinkOutput).ToTransferJobReplicationSpecGcsDataSinkPtrOutputWithContext(ctx)
+}
+
+// TransferJobReplicationSpecGcsDataSinkPtrInput is an input type that accepts TransferJobReplicationSpecGcsDataSinkArgs, TransferJobReplicationSpecGcsDataSinkPtr and TransferJobReplicationSpecGcsDataSinkPtrOutput values.
+// You can construct a concrete instance of `TransferJobReplicationSpecGcsDataSinkPtrInput` via:
+//
+//	        TransferJobReplicationSpecGcsDataSinkArgs{...}
+//
+//	or:
+//
+//	        nil
+type TransferJobReplicationSpecGcsDataSinkPtrInput interface {
+	pulumi.Input
+
+	ToTransferJobReplicationSpecGcsDataSinkPtrOutput() TransferJobReplicationSpecGcsDataSinkPtrOutput
+	ToTransferJobReplicationSpecGcsDataSinkPtrOutputWithContext(context.Context) TransferJobReplicationSpecGcsDataSinkPtrOutput
+}
+
+type transferJobReplicationSpecGcsDataSinkPtrType TransferJobReplicationSpecGcsDataSinkArgs
+
+func TransferJobReplicationSpecGcsDataSinkPtr(v *TransferJobReplicationSpecGcsDataSinkArgs) TransferJobReplicationSpecGcsDataSinkPtrInput {
+	return (*transferJobReplicationSpecGcsDataSinkPtrType)(v)
+}
+
+func (*transferJobReplicationSpecGcsDataSinkPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransferJobReplicationSpecGcsDataSink)(nil)).Elem()
+}
+
+func (i *transferJobReplicationSpecGcsDataSinkPtrType) ToTransferJobReplicationSpecGcsDataSinkPtrOutput() TransferJobReplicationSpecGcsDataSinkPtrOutput {
+	return i.ToTransferJobReplicationSpecGcsDataSinkPtrOutputWithContext(context.Background())
+}
+
+func (i *transferJobReplicationSpecGcsDataSinkPtrType) ToTransferJobReplicationSpecGcsDataSinkPtrOutputWithContext(ctx context.Context) TransferJobReplicationSpecGcsDataSinkPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferJobReplicationSpecGcsDataSinkPtrOutput)
+}
+
+type TransferJobReplicationSpecGcsDataSinkOutput struct{ *pulumi.OutputState }
+
+func (TransferJobReplicationSpecGcsDataSinkOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransferJobReplicationSpecGcsDataSink)(nil)).Elem()
+}
+
+func (o TransferJobReplicationSpecGcsDataSinkOutput) ToTransferJobReplicationSpecGcsDataSinkOutput() TransferJobReplicationSpecGcsDataSinkOutput {
+	return o
+}
+
+func (o TransferJobReplicationSpecGcsDataSinkOutput) ToTransferJobReplicationSpecGcsDataSinkOutputWithContext(ctx context.Context) TransferJobReplicationSpecGcsDataSinkOutput {
+	return o
+}
+
+func (o TransferJobReplicationSpecGcsDataSinkOutput) ToTransferJobReplicationSpecGcsDataSinkPtrOutput() TransferJobReplicationSpecGcsDataSinkPtrOutput {
+	return o.ToTransferJobReplicationSpecGcsDataSinkPtrOutputWithContext(context.Background())
+}
+
+func (o TransferJobReplicationSpecGcsDataSinkOutput) ToTransferJobReplicationSpecGcsDataSinkPtrOutputWithContext(ctx context.Context) TransferJobReplicationSpecGcsDataSinkPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransferJobReplicationSpecGcsDataSink) *TransferJobReplicationSpecGcsDataSink {
+		return &v
+	}).(TransferJobReplicationSpecGcsDataSinkPtrOutput)
+}
+
+// Google Cloud Storage bucket name.
+func (o TransferJobReplicationSpecGcsDataSinkOutput) BucketName() pulumi.StringOutput {
+	return o.ApplyT(func(v TransferJobReplicationSpecGcsDataSink) string { return v.BucketName }).(pulumi.StringOutput)
+}
+
+// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+func (o TransferJobReplicationSpecGcsDataSinkOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransferJobReplicationSpecGcsDataSink) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+type TransferJobReplicationSpecGcsDataSinkPtrOutput struct{ *pulumi.OutputState }
+
+func (TransferJobReplicationSpecGcsDataSinkPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransferJobReplicationSpecGcsDataSink)(nil)).Elem()
+}
+
+func (o TransferJobReplicationSpecGcsDataSinkPtrOutput) ToTransferJobReplicationSpecGcsDataSinkPtrOutput() TransferJobReplicationSpecGcsDataSinkPtrOutput {
+	return o
+}
+
+func (o TransferJobReplicationSpecGcsDataSinkPtrOutput) ToTransferJobReplicationSpecGcsDataSinkPtrOutputWithContext(ctx context.Context) TransferJobReplicationSpecGcsDataSinkPtrOutput {
+	return o
+}
+
+func (o TransferJobReplicationSpecGcsDataSinkPtrOutput) Elem() TransferJobReplicationSpecGcsDataSinkOutput {
+	return o.ApplyT(func(v *TransferJobReplicationSpecGcsDataSink) TransferJobReplicationSpecGcsDataSink {
+		if v != nil {
+			return *v
+		}
+		var ret TransferJobReplicationSpecGcsDataSink
+		return ret
+	}).(TransferJobReplicationSpecGcsDataSinkOutput)
+}
+
+// Google Cloud Storage bucket name.
+func (o TransferJobReplicationSpecGcsDataSinkPtrOutput) BucketName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransferJobReplicationSpecGcsDataSink) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BucketName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+func (o TransferJobReplicationSpecGcsDataSinkPtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransferJobReplicationSpecGcsDataSink) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+type TransferJobReplicationSpecGcsDataSource struct {
+	// Google Cloud Storage bucket name.
+	BucketName string `pulumi:"bucketName"`
+	// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+	Path *string `pulumi:"path"`
+}
+
+// TransferJobReplicationSpecGcsDataSourceInput is an input type that accepts TransferJobReplicationSpecGcsDataSourceArgs and TransferJobReplicationSpecGcsDataSourceOutput values.
+// You can construct a concrete instance of `TransferJobReplicationSpecGcsDataSourceInput` via:
+//
+//	TransferJobReplicationSpecGcsDataSourceArgs{...}
+type TransferJobReplicationSpecGcsDataSourceInput interface {
+	pulumi.Input
+
+	ToTransferJobReplicationSpecGcsDataSourceOutput() TransferJobReplicationSpecGcsDataSourceOutput
+	ToTransferJobReplicationSpecGcsDataSourceOutputWithContext(context.Context) TransferJobReplicationSpecGcsDataSourceOutput
+}
+
+type TransferJobReplicationSpecGcsDataSourceArgs struct {
+	// Google Cloud Storage bucket name.
+	BucketName pulumi.StringInput `pulumi:"bucketName"`
+	// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+	Path pulumi.StringPtrInput `pulumi:"path"`
+}
+
+func (TransferJobReplicationSpecGcsDataSourceArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransferJobReplicationSpecGcsDataSource)(nil)).Elem()
+}
+
+func (i TransferJobReplicationSpecGcsDataSourceArgs) ToTransferJobReplicationSpecGcsDataSourceOutput() TransferJobReplicationSpecGcsDataSourceOutput {
+	return i.ToTransferJobReplicationSpecGcsDataSourceOutputWithContext(context.Background())
+}
+
+func (i TransferJobReplicationSpecGcsDataSourceArgs) ToTransferJobReplicationSpecGcsDataSourceOutputWithContext(ctx context.Context) TransferJobReplicationSpecGcsDataSourceOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferJobReplicationSpecGcsDataSourceOutput)
+}
+
+func (i TransferJobReplicationSpecGcsDataSourceArgs) ToTransferJobReplicationSpecGcsDataSourcePtrOutput() TransferJobReplicationSpecGcsDataSourcePtrOutput {
+	return i.ToTransferJobReplicationSpecGcsDataSourcePtrOutputWithContext(context.Background())
+}
+
+func (i TransferJobReplicationSpecGcsDataSourceArgs) ToTransferJobReplicationSpecGcsDataSourcePtrOutputWithContext(ctx context.Context) TransferJobReplicationSpecGcsDataSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferJobReplicationSpecGcsDataSourceOutput).ToTransferJobReplicationSpecGcsDataSourcePtrOutputWithContext(ctx)
+}
+
+// TransferJobReplicationSpecGcsDataSourcePtrInput is an input type that accepts TransferJobReplicationSpecGcsDataSourceArgs, TransferJobReplicationSpecGcsDataSourcePtr and TransferJobReplicationSpecGcsDataSourcePtrOutput values.
+// You can construct a concrete instance of `TransferJobReplicationSpecGcsDataSourcePtrInput` via:
+//
+//	        TransferJobReplicationSpecGcsDataSourceArgs{...}
+//
+//	or:
+//
+//	        nil
+type TransferJobReplicationSpecGcsDataSourcePtrInput interface {
+	pulumi.Input
+
+	ToTransferJobReplicationSpecGcsDataSourcePtrOutput() TransferJobReplicationSpecGcsDataSourcePtrOutput
+	ToTransferJobReplicationSpecGcsDataSourcePtrOutputWithContext(context.Context) TransferJobReplicationSpecGcsDataSourcePtrOutput
+}
+
+type transferJobReplicationSpecGcsDataSourcePtrType TransferJobReplicationSpecGcsDataSourceArgs
+
+func TransferJobReplicationSpecGcsDataSourcePtr(v *TransferJobReplicationSpecGcsDataSourceArgs) TransferJobReplicationSpecGcsDataSourcePtrInput {
+	return (*transferJobReplicationSpecGcsDataSourcePtrType)(v)
+}
+
+func (*transferJobReplicationSpecGcsDataSourcePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransferJobReplicationSpecGcsDataSource)(nil)).Elem()
+}
+
+func (i *transferJobReplicationSpecGcsDataSourcePtrType) ToTransferJobReplicationSpecGcsDataSourcePtrOutput() TransferJobReplicationSpecGcsDataSourcePtrOutput {
+	return i.ToTransferJobReplicationSpecGcsDataSourcePtrOutputWithContext(context.Background())
+}
+
+func (i *transferJobReplicationSpecGcsDataSourcePtrType) ToTransferJobReplicationSpecGcsDataSourcePtrOutputWithContext(ctx context.Context) TransferJobReplicationSpecGcsDataSourcePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferJobReplicationSpecGcsDataSourcePtrOutput)
+}
+
+type TransferJobReplicationSpecGcsDataSourceOutput struct{ *pulumi.OutputState }
+
+func (TransferJobReplicationSpecGcsDataSourceOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransferJobReplicationSpecGcsDataSource)(nil)).Elem()
+}
+
+func (o TransferJobReplicationSpecGcsDataSourceOutput) ToTransferJobReplicationSpecGcsDataSourceOutput() TransferJobReplicationSpecGcsDataSourceOutput {
+	return o
+}
+
+func (o TransferJobReplicationSpecGcsDataSourceOutput) ToTransferJobReplicationSpecGcsDataSourceOutputWithContext(ctx context.Context) TransferJobReplicationSpecGcsDataSourceOutput {
+	return o
+}
+
+func (o TransferJobReplicationSpecGcsDataSourceOutput) ToTransferJobReplicationSpecGcsDataSourcePtrOutput() TransferJobReplicationSpecGcsDataSourcePtrOutput {
+	return o.ToTransferJobReplicationSpecGcsDataSourcePtrOutputWithContext(context.Background())
+}
+
+func (o TransferJobReplicationSpecGcsDataSourceOutput) ToTransferJobReplicationSpecGcsDataSourcePtrOutputWithContext(ctx context.Context) TransferJobReplicationSpecGcsDataSourcePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransferJobReplicationSpecGcsDataSource) *TransferJobReplicationSpecGcsDataSource {
+		return &v
+	}).(TransferJobReplicationSpecGcsDataSourcePtrOutput)
+}
+
+// Google Cloud Storage bucket name.
+func (o TransferJobReplicationSpecGcsDataSourceOutput) BucketName() pulumi.StringOutput {
+	return o.ApplyT(func(v TransferJobReplicationSpecGcsDataSource) string { return v.BucketName }).(pulumi.StringOutput)
+}
+
+// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+func (o TransferJobReplicationSpecGcsDataSourceOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransferJobReplicationSpecGcsDataSource) *string { return v.Path }).(pulumi.StringPtrOutput)
+}
+
+type TransferJobReplicationSpecGcsDataSourcePtrOutput struct{ *pulumi.OutputState }
+
+func (TransferJobReplicationSpecGcsDataSourcePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransferJobReplicationSpecGcsDataSource)(nil)).Elem()
+}
+
+func (o TransferJobReplicationSpecGcsDataSourcePtrOutput) ToTransferJobReplicationSpecGcsDataSourcePtrOutput() TransferJobReplicationSpecGcsDataSourcePtrOutput {
+	return o
+}
+
+func (o TransferJobReplicationSpecGcsDataSourcePtrOutput) ToTransferJobReplicationSpecGcsDataSourcePtrOutputWithContext(ctx context.Context) TransferJobReplicationSpecGcsDataSourcePtrOutput {
+	return o
+}
+
+func (o TransferJobReplicationSpecGcsDataSourcePtrOutput) Elem() TransferJobReplicationSpecGcsDataSourceOutput {
+	return o.ApplyT(func(v *TransferJobReplicationSpecGcsDataSource) TransferJobReplicationSpecGcsDataSource {
+		if v != nil {
+			return *v
+		}
+		var ret TransferJobReplicationSpecGcsDataSource
+		return ret
+	}).(TransferJobReplicationSpecGcsDataSourceOutput)
+}
+
+// Google Cloud Storage bucket name.
+func (o TransferJobReplicationSpecGcsDataSourcePtrOutput) BucketName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransferJobReplicationSpecGcsDataSource) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.BucketName
+	}).(pulumi.StringPtrOutput)
+}
+
+// Root path to transfer objects. Must be an empty string or full path name that ends with a '/'. This field is treated as an object prefix. As such, it should generally not begin with a '/'.
+func (o TransferJobReplicationSpecGcsDataSourcePtrOutput) Path() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransferJobReplicationSpecGcsDataSource) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Path
+	}).(pulumi.StringPtrOutput)
+}
+
+type TransferJobReplicationSpecObjectConditions struct {
+	// `excludePrefixes` must follow the requirements described for `includePrefixes`. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
+	ExcludePrefixes []string `pulumi:"excludePrefixes"`
+	// If `includePrefixes` is specified, objects that satisfy the object conditions must have names that start with one of the `includePrefixes` and that do not start with any of the `excludePrefixes`. If `includePrefixes` is not specified, all objects except those that have names starting with one of the `excludePrefixes` must satisfy the object conditions. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
+	IncludePrefixes []string `pulumi:"includePrefixes"`
+	// If specified, only objects with a "last modification time" before this timestamp and objects that don't have a "last modification time" are transferred. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	LastModifiedBefore *string `pulumi:"lastModifiedBefore"`
+	// If specified, only objects with a "last modification time" on or after this timestamp and objects that don't have a "last modification time" are transferred. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	LastModifiedSince *string `pulumi:"lastModifiedSince"`
+	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+	MaxTimeElapsedSinceLastModification *string `pulumi:"maxTimeElapsedSinceLastModification"`
+	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+	MinTimeElapsedSinceLastModification *string `pulumi:"minTimeElapsedSinceLastModification"`
+}
+
+// TransferJobReplicationSpecObjectConditionsInput is an input type that accepts TransferJobReplicationSpecObjectConditionsArgs and TransferJobReplicationSpecObjectConditionsOutput values.
+// You can construct a concrete instance of `TransferJobReplicationSpecObjectConditionsInput` via:
+//
+//	TransferJobReplicationSpecObjectConditionsArgs{...}
+type TransferJobReplicationSpecObjectConditionsInput interface {
+	pulumi.Input
+
+	ToTransferJobReplicationSpecObjectConditionsOutput() TransferJobReplicationSpecObjectConditionsOutput
+	ToTransferJobReplicationSpecObjectConditionsOutputWithContext(context.Context) TransferJobReplicationSpecObjectConditionsOutput
+}
+
+type TransferJobReplicationSpecObjectConditionsArgs struct {
+	// `excludePrefixes` must follow the requirements described for `includePrefixes`. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
+	ExcludePrefixes pulumi.StringArrayInput `pulumi:"excludePrefixes"`
+	// If `includePrefixes` is specified, objects that satisfy the object conditions must have names that start with one of the `includePrefixes` and that do not start with any of the `excludePrefixes`. If `includePrefixes` is not specified, all objects except those that have names starting with one of the `excludePrefixes` must satisfy the object conditions. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
+	IncludePrefixes pulumi.StringArrayInput `pulumi:"includePrefixes"`
+	// If specified, only objects with a "last modification time" before this timestamp and objects that don't have a "last modification time" are transferred. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	LastModifiedBefore pulumi.StringPtrInput `pulumi:"lastModifiedBefore"`
+	// If specified, only objects with a "last modification time" on or after this timestamp and objects that don't have a "last modification time" are transferred. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+	LastModifiedSince pulumi.StringPtrInput `pulumi:"lastModifiedSince"`
+	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+	MaxTimeElapsedSinceLastModification pulumi.StringPtrInput `pulumi:"maxTimeElapsedSinceLastModification"`
+	// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+	MinTimeElapsedSinceLastModification pulumi.StringPtrInput `pulumi:"minTimeElapsedSinceLastModification"`
+}
+
+func (TransferJobReplicationSpecObjectConditionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransferJobReplicationSpecObjectConditions)(nil)).Elem()
+}
+
+func (i TransferJobReplicationSpecObjectConditionsArgs) ToTransferJobReplicationSpecObjectConditionsOutput() TransferJobReplicationSpecObjectConditionsOutput {
+	return i.ToTransferJobReplicationSpecObjectConditionsOutputWithContext(context.Background())
+}
+
+func (i TransferJobReplicationSpecObjectConditionsArgs) ToTransferJobReplicationSpecObjectConditionsOutputWithContext(ctx context.Context) TransferJobReplicationSpecObjectConditionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferJobReplicationSpecObjectConditionsOutput)
+}
+
+func (i TransferJobReplicationSpecObjectConditionsArgs) ToTransferJobReplicationSpecObjectConditionsPtrOutput() TransferJobReplicationSpecObjectConditionsPtrOutput {
+	return i.ToTransferJobReplicationSpecObjectConditionsPtrOutputWithContext(context.Background())
+}
+
+func (i TransferJobReplicationSpecObjectConditionsArgs) ToTransferJobReplicationSpecObjectConditionsPtrOutputWithContext(ctx context.Context) TransferJobReplicationSpecObjectConditionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferJobReplicationSpecObjectConditionsOutput).ToTransferJobReplicationSpecObjectConditionsPtrOutputWithContext(ctx)
+}
+
+// TransferJobReplicationSpecObjectConditionsPtrInput is an input type that accepts TransferJobReplicationSpecObjectConditionsArgs, TransferJobReplicationSpecObjectConditionsPtr and TransferJobReplicationSpecObjectConditionsPtrOutput values.
+// You can construct a concrete instance of `TransferJobReplicationSpecObjectConditionsPtrInput` via:
+//
+//	        TransferJobReplicationSpecObjectConditionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type TransferJobReplicationSpecObjectConditionsPtrInput interface {
+	pulumi.Input
+
+	ToTransferJobReplicationSpecObjectConditionsPtrOutput() TransferJobReplicationSpecObjectConditionsPtrOutput
+	ToTransferJobReplicationSpecObjectConditionsPtrOutputWithContext(context.Context) TransferJobReplicationSpecObjectConditionsPtrOutput
+}
+
+type transferJobReplicationSpecObjectConditionsPtrType TransferJobReplicationSpecObjectConditionsArgs
+
+func TransferJobReplicationSpecObjectConditionsPtr(v *TransferJobReplicationSpecObjectConditionsArgs) TransferJobReplicationSpecObjectConditionsPtrInput {
+	return (*transferJobReplicationSpecObjectConditionsPtrType)(v)
+}
+
+func (*transferJobReplicationSpecObjectConditionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransferJobReplicationSpecObjectConditions)(nil)).Elem()
+}
+
+func (i *transferJobReplicationSpecObjectConditionsPtrType) ToTransferJobReplicationSpecObjectConditionsPtrOutput() TransferJobReplicationSpecObjectConditionsPtrOutput {
+	return i.ToTransferJobReplicationSpecObjectConditionsPtrOutputWithContext(context.Background())
+}
+
+func (i *transferJobReplicationSpecObjectConditionsPtrType) ToTransferJobReplicationSpecObjectConditionsPtrOutputWithContext(ctx context.Context) TransferJobReplicationSpecObjectConditionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferJobReplicationSpecObjectConditionsPtrOutput)
+}
+
+type TransferJobReplicationSpecObjectConditionsOutput struct{ *pulumi.OutputState }
+
+func (TransferJobReplicationSpecObjectConditionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransferJobReplicationSpecObjectConditions)(nil)).Elem()
+}
+
+func (o TransferJobReplicationSpecObjectConditionsOutput) ToTransferJobReplicationSpecObjectConditionsOutput() TransferJobReplicationSpecObjectConditionsOutput {
+	return o
+}
+
+func (o TransferJobReplicationSpecObjectConditionsOutput) ToTransferJobReplicationSpecObjectConditionsOutputWithContext(ctx context.Context) TransferJobReplicationSpecObjectConditionsOutput {
+	return o
+}
+
+func (o TransferJobReplicationSpecObjectConditionsOutput) ToTransferJobReplicationSpecObjectConditionsPtrOutput() TransferJobReplicationSpecObjectConditionsPtrOutput {
+	return o.ToTransferJobReplicationSpecObjectConditionsPtrOutputWithContext(context.Background())
+}
+
+func (o TransferJobReplicationSpecObjectConditionsOutput) ToTransferJobReplicationSpecObjectConditionsPtrOutputWithContext(ctx context.Context) TransferJobReplicationSpecObjectConditionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransferJobReplicationSpecObjectConditions) *TransferJobReplicationSpecObjectConditions {
+		return &v
+	}).(TransferJobReplicationSpecObjectConditionsPtrOutput)
+}
+
+// `excludePrefixes` must follow the requirements described for `includePrefixes`. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
+func (o TransferJobReplicationSpecObjectConditionsOutput) ExcludePrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TransferJobReplicationSpecObjectConditions) []string { return v.ExcludePrefixes }).(pulumi.StringArrayOutput)
+}
+
+// If `includePrefixes` is specified, objects that satisfy the object conditions must have names that start with one of the `includePrefixes` and that do not start with any of the `excludePrefixes`. If `includePrefixes` is not specified, all objects except those that have names starting with one of the `excludePrefixes` must satisfy the object conditions. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
+func (o TransferJobReplicationSpecObjectConditionsOutput) IncludePrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v TransferJobReplicationSpecObjectConditions) []string { return v.IncludePrefixes }).(pulumi.StringArrayOutput)
+}
+
+// If specified, only objects with a "last modification time" before this timestamp and objects that don't have a "last modification time" are transferred. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+func (o TransferJobReplicationSpecObjectConditionsOutput) LastModifiedBefore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransferJobReplicationSpecObjectConditions) *string { return v.LastModifiedBefore }).(pulumi.StringPtrOutput)
+}
+
+// If specified, only objects with a "last modification time" on or after this timestamp and objects that don't have a "last modification time" are transferred. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+func (o TransferJobReplicationSpecObjectConditionsOutput) LastModifiedSince() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransferJobReplicationSpecObjectConditions) *string { return v.LastModifiedSince }).(pulumi.StringPtrOutput)
+}
+
+// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+func (o TransferJobReplicationSpecObjectConditionsOutput) MaxTimeElapsedSinceLastModification() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransferJobReplicationSpecObjectConditions) *string {
+		return v.MaxTimeElapsedSinceLastModification
+	}).(pulumi.StringPtrOutput)
+}
+
+// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+func (o TransferJobReplicationSpecObjectConditionsOutput) MinTimeElapsedSinceLastModification() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransferJobReplicationSpecObjectConditions) *string {
+		return v.MinTimeElapsedSinceLastModification
+	}).(pulumi.StringPtrOutput)
+}
+
+type TransferJobReplicationSpecObjectConditionsPtrOutput struct{ *pulumi.OutputState }
+
+func (TransferJobReplicationSpecObjectConditionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransferJobReplicationSpecObjectConditions)(nil)).Elem()
+}
+
+func (o TransferJobReplicationSpecObjectConditionsPtrOutput) ToTransferJobReplicationSpecObjectConditionsPtrOutput() TransferJobReplicationSpecObjectConditionsPtrOutput {
+	return o
+}
+
+func (o TransferJobReplicationSpecObjectConditionsPtrOutput) ToTransferJobReplicationSpecObjectConditionsPtrOutputWithContext(ctx context.Context) TransferJobReplicationSpecObjectConditionsPtrOutput {
+	return o
+}
+
+func (o TransferJobReplicationSpecObjectConditionsPtrOutput) Elem() TransferJobReplicationSpecObjectConditionsOutput {
+	return o.ApplyT(func(v *TransferJobReplicationSpecObjectConditions) TransferJobReplicationSpecObjectConditions {
+		if v != nil {
+			return *v
+		}
+		var ret TransferJobReplicationSpecObjectConditions
+		return ret
+	}).(TransferJobReplicationSpecObjectConditionsOutput)
+}
+
+// `excludePrefixes` must follow the requirements described for `includePrefixes`. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
+func (o TransferJobReplicationSpecObjectConditionsPtrOutput) ExcludePrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TransferJobReplicationSpecObjectConditions) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExcludePrefixes
+	}).(pulumi.StringArrayOutput)
+}
+
+// If `includePrefixes` is specified, objects that satisfy the object conditions must have names that start with one of the `includePrefixes` and that do not start with any of the `excludePrefixes`. If `includePrefixes` is not specified, all objects except those that have names starting with one of the `excludePrefixes` must satisfy the object conditions. See [Requirements](https://cloud.google.com/storage-transfer/docs/reference/rest/v1/TransferSpec#ObjectConditions).
+func (o TransferJobReplicationSpecObjectConditionsPtrOutput) IncludePrefixes() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *TransferJobReplicationSpecObjectConditions) []string {
+		if v == nil {
+			return nil
+		}
+		return v.IncludePrefixes
+	}).(pulumi.StringArrayOutput)
+}
+
+// If specified, only objects with a "last modification time" before this timestamp and objects that don't have a "last modification time" are transferred. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+func (o TransferJobReplicationSpecObjectConditionsPtrOutput) LastModifiedBefore() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransferJobReplicationSpecObjectConditions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LastModifiedBefore
+	}).(pulumi.StringPtrOutput)
+}
+
+// If specified, only objects with a "last modification time" on or after this timestamp and objects that don't have a "last modification time" are transferred. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
+func (o TransferJobReplicationSpecObjectConditionsPtrOutput) LastModifiedSince() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransferJobReplicationSpecObjectConditions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.LastModifiedSince
+	}).(pulumi.StringPtrOutput)
+}
+
+// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+func (o TransferJobReplicationSpecObjectConditionsPtrOutput) MaxTimeElapsedSinceLastModification() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransferJobReplicationSpecObjectConditions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MaxTimeElapsedSinceLastModification
+	}).(pulumi.StringPtrOutput)
+}
+
+// A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
+func (o TransferJobReplicationSpecObjectConditionsPtrOutput) MinTimeElapsedSinceLastModification() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransferJobReplicationSpecObjectConditions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.MinTimeElapsedSinceLastModification
+	}).(pulumi.StringPtrOutput)
+}
+
+type TransferJobReplicationSpecTransferOptions struct {
+	// Whether objects should be deleted from the source after they are transferred to the sink. Note that this option and `deleteObjectsUniqueInSink` are mutually exclusive.
+	DeleteObjectsFromSourceAfterTransfer *bool `pulumi:"deleteObjectsFromSourceAfterTransfer"`
+	// Whether objects that exist only in the sink should be deleted. Note that this option and
+	// `deleteObjectsFromSourceAfterTransfer` are mutually exclusive.
+	DeleteObjectsUniqueInSink *bool `pulumi:"deleteObjectsUniqueInSink"`
+	// Whether overwriting objects that already exist in the sink is allowed.
+	OverwriteObjectsAlreadyExistingInSink *bool `pulumi:"overwriteObjectsAlreadyExistingInSink"`
+	// When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by `overwriteObjectsAlreadyExistingInSink`. Possible values: ALWAYS, DIFFERENT, NEVER.
+	OverwriteWhen *string `pulumi:"overwriteWhen"`
+}
+
+// TransferJobReplicationSpecTransferOptionsInput is an input type that accepts TransferJobReplicationSpecTransferOptionsArgs and TransferJobReplicationSpecTransferOptionsOutput values.
+// You can construct a concrete instance of `TransferJobReplicationSpecTransferOptionsInput` via:
+//
+//	TransferJobReplicationSpecTransferOptionsArgs{...}
+type TransferJobReplicationSpecTransferOptionsInput interface {
+	pulumi.Input
+
+	ToTransferJobReplicationSpecTransferOptionsOutput() TransferJobReplicationSpecTransferOptionsOutput
+	ToTransferJobReplicationSpecTransferOptionsOutputWithContext(context.Context) TransferJobReplicationSpecTransferOptionsOutput
+}
+
+type TransferJobReplicationSpecTransferOptionsArgs struct {
+	// Whether objects should be deleted from the source after they are transferred to the sink. Note that this option and `deleteObjectsUniqueInSink` are mutually exclusive.
+	DeleteObjectsFromSourceAfterTransfer pulumi.BoolPtrInput `pulumi:"deleteObjectsFromSourceAfterTransfer"`
+	// Whether objects that exist only in the sink should be deleted. Note that this option and
+	// `deleteObjectsFromSourceAfterTransfer` are mutually exclusive.
+	DeleteObjectsUniqueInSink pulumi.BoolPtrInput `pulumi:"deleteObjectsUniqueInSink"`
+	// Whether overwriting objects that already exist in the sink is allowed.
+	OverwriteObjectsAlreadyExistingInSink pulumi.BoolPtrInput `pulumi:"overwriteObjectsAlreadyExistingInSink"`
+	// When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by `overwriteObjectsAlreadyExistingInSink`. Possible values: ALWAYS, DIFFERENT, NEVER.
+	OverwriteWhen pulumi.StringPtrInput `pulumi:"overwriteWhen"`
+}
+
+func (TransferJobReplicationSpecTransferOptionsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransferJobReplicationSpecTransferOptions)(nil)).Elem()
+}
+
+func (i TransferJobReplicationSpecTransferOptionsArgs) ToTransferJobReplicationSpecTransferOptionsOutput() TransferJobReplicationSpecTransferOptionsOutput {
+	return i.ToTransferJobReplicationSpecTransferOptionsOutputWithContext(context.Background())
+}
+
+func (i TransferJobReplicationSpecTransferOptionsArgs) ToTransferJobReplicationSpecTransferOptionsOutputWithContext(ctx context.Context) TransferJobReplicationSpecTransferOptionsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferJobReplicationSpecTransferOptionsOutput)
+}
+
+func (i TransferJobReplicationSpecTransferOptionsArgs) ToTransferJobReplicationSpecTransferOptionsPtrOutput() TransferJobReplicationSpecTransferOptionsPtrOutput {
+	return i.ToTransferJobReplicationSpecTransferOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i TransferJobReplicationSpecTransferOptionsArgs) ToTransferJobReplicationSpecTransferOptionsPtrOutputWithContext(ctx context.Context) TransferJobReplicationSpecTransferOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferJobReplicationSpecTransferOptionsOutput).ToTransferJobReplicationSpecTransferOptionsPtrOutputWithContext(ctx)
+}
+
+// TransferJobReplicationSpecTransferOptionsPtrInput is an input type that accepts TransferJobReplicationSpecTransferOptionsArgs, TransferJobReplicationSpecTransferOptionsPtr and TransferJobReplicationSpecTransferOptionsPtrOutput values.
+// You can construct a concrete instance of `TransferJobReplicationSpecTransferOptionsPtrInput` via:
+//
+//	        TransferJobReplicationSpecTransferOptionsArgs{...}
+//
+//	or:
+//
+//	        nil
+type TransferJobReplicationSpecTransferOptionsPtrInput interface {
+	pulumi.Input
+
+	ToTransferJobReplicationSpecTransferOptionsPtrOutput() TransferJobReplicationSpecTransferOptionsPtrOutput
+	ToTransferJobReplicationSpecTransferOptionsPtrOutputWithContext(context.Context) TransferJobReplicationSpecTransferOptionsPtrOutput
+}
+
+type transferJobReplicationSpecTransferOptionsPtrType TransferJobReplicationSpecTransferOptionsArgs
+
+func TransferJobReplicationSpecTransferOptionsPtr(v *TransferJobReplicationSpecTransferOptionsArgs) TransferJobReplicationSpecTransferOptionsPtrInput {
+	return (*transferJobReplicationSpecTransferOptionsPtrType)(v)
+}
+
+func (*transferJobReplicationSpecTransferOptionsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransferJobReplicationSpecTransferOptions)(nil)).Elem()
+}
+
+func (i *transferJobReplicationSpecTransferOptionsPtrType) ToTransferJobReplicationSpecTransferOptionsPtrOutput() TransferJobReplicationSpecTransferOptionsPtrOutput {
+	return i.ToTransferJobReplicationSpecTransferOptionsPtrOutputWithContext(context.Background())
+}
+
+func (i *transferJobReplicationSpecTransferOptionsPtrType) ToTransferJobReplicationSpecTransferOptionsPtrOutputWithContext(ctx context.Context) TransferJobReplicationSpecTransferOptionsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TransferJobReplicationSpecTransferOptionsPtrOutput)
+}
+
+type TransferJobReplicationSpecTransferOptionsOutput struct{ *pulumi.OutputState }
+
+func (TransferJobReplicationSpecTransferOptionsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TransferJobReplicationSpecTransferOptions)(nil)).Elem()
+}
+
+func (o TransferJobReplicationSpecTransferOptionsOutput) ToTransferJobReplicationSpecTransferOptionsOutput() TransferJobReplicationSpecTransferOptionsOutput {
+	return o
+}
+
+func (o TransferJobReplicationSpecTransferOptionsOutput) ToTransferJobReplicationSpecTransferOptionsOutputWithContext(ctx context.Context) TransferJobReplicationSpecTransferOptionsOutput {
+	return o
+}
+
+func (o TransferJobReplicationSpecTransferOptionsOutput) ToTransferJobReplicationSpecTransferOptionsPtrOutput() TransferJobReplicationSpecTransferOptionsPtrOutput {
+	return o.ToTransferJobReplicationSpecTransferOptionsPtrOutputWithContext(context.Background())
+}
+
+func (o TransferJobReplicationSpecTransferOptionsOutput) ToTransferJobReplicationSpecTransferOptionsPtrOutputWithContext(ctx context.Context) TransferJobReplicationSpecTransferOptionsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TransferJobReplicationSpecTransferOptions) *TransferJobReplicationSpecTransferOptions {
+		return &v
+	}).(TransferJobReplicationSpecTransferOptionsPtrOutput)
+}
+
+// Whether objects should be deleted from the source after they are transferred to the sink. Note that this option and `deleteObjectsUniqueInSink` are mutually exclusive.
+func (o TransferJobReplicationSpecTransferOptionsOutput) DeleteObjectsFromSourceAfterTransfer() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TransferJobReplicationSpecTransferOptions) *bool { return v.DeleteObjectsFromSourceAfterTransfer }).(pulumi.BoolPtrOutput)
+}
+
+// Whether objects that exist only in the sink should be deleted. Note that this option and
+// `deleteObjectsFromSourceAfterTransfer` are mutually exclusive.
+func (o TransferJobReplicationSpecTransferOptionsOutput) DeleteObjectsUniqueInSink() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TransferJobReplicationSpecTransferOptions) *bool { return v.DeleteObjectsUniqueInSink }).(pulumi.BoolPtrOutput)
+}
+
+// Whether overwriting objects that already exist in the sink is allowed.
+func (o TransferJobReplicationSpecTransferOptionsOutput) OverwriteObjectsAlreadyExistingInSink() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TransferJobReplicationSpecTransferOptions) *bool {
+		return v.OverwriteObjectsAlreadyExistingInSink
+	}).(pulumi.BoolPtrOutput)
+}
+
+// When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by `overwriteObjectsAlreadyExistingInSink`. Possible values: ALWAYS, DIFFERENT, NEVER.
+func (o TransferJobReplicationSpecTransferOptionsOutput) OverwriteWhen() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TransferJobReplicationSpecTransferOptions) *string { return v.OverwriteWhen }).(pulumi.StringPtrOutput)
+}
+
+type TransferJobReplicationSpecTransferOptionsPtrOutput struct{ *pulumi.OutputState }
+
+func (TransferJobReplicationSpecTransferOptionsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TransferJobReplicationSpecTransferOptions)(nil)).Elem()
+}
+
+func (o TransferJobReplicationSpecTransferOptionsPtrOutput) ToTransferJobReplicationSpecTransferOptionsPtrOutput() TransferJobReplicationSpecTransferOptionsPtrOutput {
+	return o
+}
+
+func (o TransferJobReplicationSpecTransferOptionsPtrOutput) ToTransferJobReplicationSpecTransferOptionsPtrOutputWithContext(ctx context.Context) TransferJobReplicationSpecTransferOptionsPtrOutput {
+	return o
+}
+
+func (o TransferJobReplicationSpecTransferOptionsPtrOutput) Elem() TransferJobReplicationSpecTransferOptionsOutput {
+	return o.ApplyT(func(v *TransferJobReplicationSpecTransferOptions) TransferJobReplicationSpecTransferOptions {
+		if v != nil {
+			return *v
+		}
+		var ret TransferJobReplicationSpecTransferOptions
+		return ret
+	}).(TransferJobReplicationSpecTransferOptionsOutput)
+}
+
+// Whether objects should be deleted from the source after they are transferred to the sink. Note that this option and `deleteObjectsUniqueInSink` are mutually exclusive.
+func (o TransferJobReplicationSpecTransferOptionsPtrOutput) DeleteObjectsFromSourceAfterTransfer() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TransferJobReplicationSpecTransferOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DeleteObjectsFromSourceAfterTransfer
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether objects that exist only in the sink should be deleted. Note that this option and
+// `deleteObjectsFromSourceAfterTransfer` are mutually exclusive.
+func (o TransferJobReplicationSpecTransferOptionsPtrOutput) DeleteObjectsUniqueInSink() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TransferJobReplicationSpecTransferOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DeleteObjectsUniqueInSink
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Whether overwriting objects that already exist in the sink is allowed.
+func (o TransferJobReplicationSpecTransferOptionsPtrOutput) OverwriteObjectsAlreadyExistingInSink() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TransferJobReplicationSpecTransferOptions) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.OverwriteObjectsAlreadyExistingInSink
+	}).(pulumi.BoolPtrOutput)
+}
+
+// When to overwrite objects that already exist in the sink. If not set, overwrite behavior is determined by `overwriteObjectsAlreadyExistingInSink`. Possible values: ALWAYS, DIFFERENT, NEVER.
+func (o TransferJobReplicationSpecTransferOptionsPtrOutput) OverwriteWhen() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TransferJobReplicationSpecTransferOptions) *string {
+		if v == nil {
+			return nil
+		}
+		return v.OverwriteWhen
+	}).(pulumi.StringPtrOutput)
+}
+
 type TransferJobSchedule struct {
 	// Interval between the start of each scheduled transfer. If unspecified, the default value is 24 hours. This value may not be less than 1 hour. A duration in seconds with up to nine fractional digits, terminated by 's'. Example: "3.5s".
 	RepeatInterval *string `pulumi:"repeatInterval"`
@@ -10155,6 +11101,16 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobEventStreamPtrInput)(nil)).Elem(), TransferJobEventStreamArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobNotificationConfigInput)(nil)).Elem(), TransferJobNotificationConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobNotificationConfigPtrInput)(nil)).Elem(), TransferJobNotificationConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobReplicationSpecInput)(nil)).Elem(), TransferJobReplicationSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobReplicationSpecPtrInput)(nil)).Elem(), TransferJobReplicationSpecArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobReplicationSpecGcsDataSinkInput)(nil)).Elem(), TransferJobReplicationSpecGcsDataSinkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobReplicationSpecGcsDataSinkPtrInput)(nil)).Elem(), TransferJobReplicationSpecGcsDataSinkArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobReplicationSpecGcsDataSourceInput)(nil)).Elem(), TransferJobReplicationSpecGcsDataSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobReplicationSpecGcsDataSourcePtrInput)(nil)).Elem(), TransferJobReplicationSpecGcsDataSourceArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobReplicationSpecObjectConditionsInput)(nil)).Elem(), TransferJobReplicationSpecObjectConditionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobReplicationSpecObjectConditionsPtrInput)(nil)).Elem(), TransferJobReplicationSpecObjectConditionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobReplicationSpecTransferOptionsInput)(nil)).Elem(), TransferJobReplicationSpecTransferOptionsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobReplicationSpecTransferOptionsPtrInput)(nil)).Elem(), TransferJobReplicationSpecTransferOptionsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobScheduleInput)(nil)).Elem(), TransferJobScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobSchedulePtrInput)(nil)).Elem(), TransferJobScheduleArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TransferJobScheduleScheduleEndDateInput)(nil)).Elem(), TransferJobScheduleScheduleEndDateArgs{})
@@ -10287,6 +11243,16 @@ func init() {
 	pulumi.RegisterOutputType(TransferJobEventStreamPtrOutput{})
 	pulumi.RegisterOutputType(TransferJobNotificationConfigOutput{})
 	pulumi.RegisterOutputType(TransferJobNotificationConfigPtrOutput{})
+	pulumi.RegisterOutputType(TransferJobReplicationSpecOutput{})
+	pulumi.RegisterOutputType(TransferJobReplicationSpecPtrOutput{})
+	pulumi.RegisterOutputType(TransferJobReplicationSpecGcsDataSinkOutput{})
+	pulumi.RegisterOutputType(TransferJobReplicationSpecGcsDataSinkPtrOutput{})
+	pulumi.RegisterOutputType(TransferJobReplicationSpecGcsDataSourceOutput{})
+	pulumi.RegisterOutputType(TransferJobReplicationSpecGcsDataSourcePtrOutput{})
+	pulumi.RegisterOutputType(TransferJobReplicationSpecObjectConditionsOutput{})
+	pulumi.RegisterOutputType(TransferJobReplicationSpecObjectConditionsPtrOutput{})
+	pulumi.RegisterOutputType(TransferJobReplicationSpecTransferOptionsOutput{})
+	pulumi.RegisterOutputType(TransferJobReplicationSpecTransferOptionsPtrOutput{})
 	pulumi.RegisterOutputType(TransferJobScheduleOutput{})
 	pulumi.RegisterOutputType(TransferJobSchedulePtrOutput{})
 	pulumi.RegisterOutputType(TransferJobScheduleScheduleEndDateOutput{})

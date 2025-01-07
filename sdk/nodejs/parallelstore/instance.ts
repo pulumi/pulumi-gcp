@@ -9,6 +9,47 @@ import * as utilities from "../utilities";
  *
  * ## Example Usage
  *
+ * ### Parallelstore Instance Basic Beta
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const network = new gcp.compute.Network("network", {
+ *     name: "network",
+ *     autoCreateSubnetworks: true,
+ *     mtu: 8896,
+ * });
+ * // Create an IP address
+ * const privateIpAlloc = new gcp.compute.GlobalAddress("private_ip_alloc", {
+ *     name: "address",
+ *     purpose: "VPC_PEERING",
+ *     addressType: "INTERNAL",
+ *     prefixLength: 24,
+ *     network: network.id,
+ * });
+ * // Create a private connection
+ * const _default = new gcp.servicenetworking.Connection("default", {
+ *     network: network.id,
+ *     service: "servicenetworking.googleapis.com",
+ *     reservedPeeringRanges: [privateIpAlloc.name],
+ * });
+ * const instance = new gcp.parallelstore.Instance("instance", {
+ *     instanceId: "instance",
+ *     location: "us-central1-a",
+ *     description: "test instance",
+ *     capacityGib: "12000",
+ *     network: network.name,
+ *     fileStripeLevel: "FILE_STRIPE_LEVEL_MIN",
+ *     directoryStripeLevel: "DIRECTORY_STRIPE_LEVEL_MIN",
+ *     deploymentType: "SCRATCH",
+ *     labels: {
+ *         test: "value",
+ *     },
+ * }, {
+ *     dependsOn: [_default],
+ * });
+ * ```
  * ### Parallelstore Instance Basic
  *
  * ```typescript
@@ -42,6 +83,7 @@ import * as utilities from "../utilities";
  *     network: network.name,
  *     fileStripeLevel: "FILE_STRIPE_LEVEL_MIN",
  *     directoryStripeLevel: "DIRECTORY_STRIPE_LEVEL_MIN",
+ *     deploymentType: "SCRATCH",
  *     labels: {
  *         test: "value",
  *     },
@@ -119,6 +161,14 @@ export class Instance extends pulumi.CustomResource {
      * The version of DAOS software running in the instance.
      */
     public /*out*/ readonly daosVersion!: pulumi.Output<string>;
+    /**
+     * Parallelstore Instance deployment type.
+     * Possible values:
+     * DEPLOYMENT_TYPE_UNSPECIFIED
+     * SCRATCH
+     * PERSISTENT
+     */
+    public readonly deploymentType!: pulumi.Output<string | undefined>;
     /**
      * The description of the instance. 2048 characters or less.
      */
@@ -256,6 +306,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["capacityGib"] = state ? state.capacityGib : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["daosVersion"] = state ? state.daosVersion : undefined;
+            resourceInputs["deploymentType"] = state ? state.deploymentType : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["directoryStripeLevel"] = state ? state.directoryStripeLevel : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
@@ -283,6 +334,7 @@ export class Instance extends pulumi.CustomResource {
                 throw new Error("Missing required property 'location'");
             }
             resourceInputs["capacityGib"] = args ? args.capacityGib : undefined;
+            resourceInputs["deploymentType"] = args ? args.deploymentType : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["directoryStripeLevel"] = args ? args.directoryStripeLevel : undefined;
             resourceInputs["fileStripeLevel"] = args ? args.fileStripeLevel : undefined;
@@ -330,6 +382,14 @@ export interface InstanceState {
      * The version of DAOS software running in the instance.
      */
     daosVersion?: pulumi.Input<string>;
+    /**
+     * Parallelstore Instance deployment type.
+     * Possible values:
+     * DEPLOYMENT_TYPE_UNSPECIFIED
+     * SCRATCH
+     * PERSISTENT
+     */
+    deploymentType?: pulumi.Input<string>;
     /**
      * The description of the instance. 2048 characters or less.
      */
@@ -459,6 +519,14 @@ export interface InstanceArgs {
      * Required. Immutable. Storage capacity of Parallelstore instance in Gibibytes (GiB).
      */
     capacityGib: pulumi.Input<string>;
+    /**
+     * Parallelstore Instance deployment type.
+     * Possible values:
+     * DEPLOYMENT_TYPE_UNSPECIFIED
+     * SCRATCH
+     * PERSISTENT
+     */
+    deploymentType?: pulumi.Input<string>;
     /**
      * The description of the instance. 2048 characters or less.
      */

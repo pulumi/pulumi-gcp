@@ -25,12 +25,11 @@ class FirewallPolicyAssociationArgs:
         """
         The set of arguments for constructing a FirewallPolicyAssociation resource.
         :param pulumi.Input[str] attachment_target: The target that the firewall policy is attached to.
-        :param pulumi.Input[str] firewall_policy: The firewall policy ID of the association.
-        :param pulumi.Input[str] name: The name for an association.
-               
+        :param pulumi.Input[str] firewall_policy: The firewall policy of the resource.
                
                
                - - -
+        :param pulumi.Input[str] name: The name for an association.
         """
         pulumi.set(__self__, "attachment_target", attachment_target)
         pulumi.set(__self__, "firewall_policy", firewall_policy)
@@ -53,7 +52,10 @@ class FirewallPolicyAssociationArgs:
     @pulumi.getter(name="firewallPolicy")
     def firewall_policy(self) -> pulumi.Input[str]:
         """
-        The firewall policy ID of the association.
+        The firewall policy of the resource.
+
+
+        - - -
         """
         return pulumi.get(self, "firewall_policy")
 
@@ -66,10 +68,6 @@ class FirewallPolicyAssociationArgs:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The name for an association.
-
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -88,12 +86,11 @@ class _FirewallPolicyAssociationState:
         """
         Input properties used for looking up and filtering FirewallPolicyAssociation resources.
         :param pulumi.Input[str] attachment_target: The target that the firewall policy is attached to.
-        :param pulumi.Input[str] firewall_policy: The firewall policy ID of the association.
-        :param pulumi.Input[str] name: The name for an association.
-               
+        :param pulumi.Input[str] firewall_policy: The firewall policy of the resource.
                
                
                - - -
+        :param pulumi.Input[str] name: The name for an association.
         :param pulumi.Input[str] short_name: The short name of the firewall policy of the association.
         """
         if attachment_target is not None:
@@ -121,7 +118,10 @@ class _FirewallPolicyAssociationState:
     @pulumi.getter(name="firewallPolicy")
     def firewall_policy(self) -> Optional[pulumi.Input[str]]:
         """
-        The firewall policy ID of the association.
+        The firewall policy of the resource.
+
+
+        - - -
         """
         return pulumi.get(self, "firewall_policy")
 
@@ -134,10 +134,6 @@ class _FirewallPolicyAssociationState:
     def name(self) -> Optional[pulumi.Input[str]]:
         """
         The name for an association.
-
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 
@@ -169,22 +165,31 @@ class FirewallPolicyAssociation(pulumi.CustomResource):
                  __props__=None):
         """
         Allows associating hierarchical firewall policies with the target where they are applied. This allows creating policies and rules in a different location than they are applied.
+        For more information on applying hierarchical firewall policies see the [official documentation](https://cloud.google.com/firewall/docs/firewall-policies#managing_hierarchical_firewall_policy_resources)
 
-        For more information on applying hierarchical firewall policies see the [official documentation](https://cloud.google.com/vpc/docs/firewall-policies#managing_hierarchical_firewall_policy_resources)
+        To get more information about FirewallPolicyAssociation, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/firewallPolicies/addAssociation)
 
         ## Example Usage
+
+        ### Firewall Policy Association
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
-        default = gcp.compute.FirewallPolicy("default",
-            parent="organizations/12345",
+        folder = gcp.organizations.Folder("folder",
+            display_name="my-folder",
+            parent="organizations/123456789",
+            deletion_protection=False)
+        policy = gcp.compute.FirewallPolicy("policy",
+            parent="organizations/123456789",
             short_name="my-policy",
             description="Example Resource")
-        default_firewall_policy_association = gcp.compute.FirewallPolicyAssociation("default",
-            firewall_policy=default.id,
-            attachment_target=folder["name"],
+        default = gcp.compute.FirewallPolicyAssociation("default",
+            firewall_policy=policy.id,
+            attachment_target=folder.name,
             name="my-association")
         ```
 
@@ -209,12 +214,11 @@ class FirewallPolicyAssociation(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] attachment_target: The target that the firewall policy is attached to.
-        :param pulumi.Input[str] firewall_policy: The firewall policy ID of the association.
-        :param pulumi.Input[str] name: The name for an association.
-               
+        :param pulumi.Input[str] firewall_policy: The firewall policy of the resource.
                
                
                - - -
+        :param pulumi.Input[str] name: The name for an association.
         """
         ...
     @overload
@@ -224,22 +228,31 @@ class FirewallPolicyAssociation(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
         Allows associating hierarchical firewall policies with the target where they are applied. This allows creating policies and rules in a different location than they are applied.
+        For more information on applying hierarchical firewall policies see the [official documentation](https://cloud.google.com/firewall/docs/firewall-policies#managing_hierarchical_firewall_policy_resources)
 
-        For more information on applying hierarchical firewall policies see the [official documentation](https://cloud.google.com/vpc/docs/firewall-policies#managing_hierarchical_firewall_policy_resources)
+        To get more information about FirewallPolicyAssociation, see:
+
+        * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/firewallPolicies/addAssociation)
 
         ## Example Usage
+
+        ### Firewall Policy Association
 
         ```python
         import pulumi
         import pulumi_gcp as gcp
 
-        default = gcp.compute.FirewallPolicy("default",
-            parent="organizations/12345",
+        folder = gcp.organizations.Folder("folder",
+            display_name="my-folder",
+            parent="organizations/123456789",
+            deletion_protection=False)
+        policy = gcp.compute.FirewallPolicy("policy",
+            parent="organizations/123456789",
             short_name="my-policy",
             description="Example Resource")
-        default_firewall_policy_association = gcp.compute.FirewallPolicyAssociation("default",
-            firewall_policy=default.id,
-            attachment_target=folder["name"],
+        default = gcp.compute.FirewallPolicyAssociation("default",
+            firewall_policy=policy.id,
+            attachment_target=folder.name,
             name="my-association")
         ```
 
@@ -318,12 +331,11 @@ class FirewallPolicyAssociation(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] attachment_target: The target that the firewall policy is attached to.
-        :param pulumi.Input[str] firewall_policy: The firewall policy ID of the association.
-        :param pulumi.Input[str] name: The name for an association.
-               
+        :param pulumi.Input[str] firewall_policy: The firewall policy of the resource.
                
                
                - - -
+        :param pulumi.Input[str] name: The name for an association.
         :param pulumi.Input[str] short_name: The short name of the firewall policy of the association.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -348,7 +360,10 @@ class FirewallPolicyAssociation(pulumi.CustomResource):
     @pulumi.getter(name="firewallPolicy")
     def firewall_policy(self) -> pulumi.Output[str]:
         """
-        The firewall policy ID of the association.
+        The firewall policy of the resource.
+
+
+        - - -
         """
         return pulumi.get(self, "firewall_policy")
 
@@ -357,10 +372,6 @@ class FirewallPolicyAssociation(pulumi.CustomResource):
     def name(self) -> pulumi.Output[str]:
         """
         The name for an association.
-
-
-
-        - - -
         """
         return pulumi.get(self, "name")
 

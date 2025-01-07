@@ -256,6 +256,21 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The unique identifier for the resource. This identifier is defined by the server.
+     * 
+     */
+    @Import(name="networkId")
+    private @Nullable Output<String> networkId;
+
+    /**
+     * @return The unique identifier for the resource. This identifier is defined by the server.
+     * 
+     */
+    public Optional<Output<String>> networkId() {
+        return Optional.ofNullable(this.networkId);
+    }
+
+    /**
      * A full or partial URL of the network profile to apply to this network.
      * This field can be set only at resource creation time. For example, the
      * following are valid URLs:
@@ -279,16 +294,26 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * (Deprecated)
      * The unique identifier for the resource. This identifier is defined by the server.
      * 
+     * @deprecated
+     * `numeric_id` is deprecated and will be removed in a future major release. Use `network_id` instead.
+     * 
      */
+    @Deprecated /* `numeric_id` is deprecated and will be removed in a future major release. Use `network_id` instead. */
     @Import(name="numericId")
     private @Nullable Output<String> numericId;
 
     /**
-     * @return The unique identifier for the resource. This identifier is defined by the server.
+     * @return (Deprecated)
+     * The unique identifier for the resource. This identifier is defined by the server.
+     * 
+     * @deprecated
+     * `numeric_id` is deprecated and will be removed in a future major release. Use `network_id` instead.
      * 
      */
+    @Deprecated /* `numeric_id` is deprecated and will be removed in a future major release. Use `network_id` instead. */
     public Optional<Output<String>> numericId() {
         return Optional.ofNullable(this.numericId);
     }
@@ -365,6 +390,7 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         this.mtu = $.mtu;
         this.name = $.name;
         this.networkFirewallPolicyEnforcementOrder = $.networkFirewallPolicyEnforcementOrder;
+        this.networkId = $.networkId;
         this.networkProfile = $.networkProfile;
         this.numericId = $.numericId;
         this.project = $.project;
@@ -701,6 +727,27 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param networkId The unique identifier for the resource. This identifier is defined by the server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkId(@Nullable Output<String> networkId) {
+            $.networkId = networkId;
+            return this;
+        }
+
+        /**
+         * @param networkId The unique identifier for the resource. This identifier is defined by the server.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder networkId(String networkId) {
+            return networkId(Output.of(networkId));
+        }
+
+        /**
          * @param networkProfile A full or partial URL of the network profile to apply to this network.
          * This field can be set only at resource creation time. For example, the
          * following are valid URLs:
@@ -730,22 +777,32 @@ public final class NetworkState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param numericId The unique identifier for the resource. This identifier is defined by the server.
+         * @param numericId (Deprecated)
+         * The unique identifier for the resource. This identifier is defined by the server.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `numeric_id` is deprecated and will be removed in a future major release. Use `network_id` instead.
+         * 
          */
+        @Deprecated /* `numeric_id` is deprecated and will be removed in a future major release. Use `network_id` instead. */
         public Builder numericId(@Nullable Output<String> numericId) {
             $.numericId = numericId;
             return this;
         }
 
         /**
-         * @param numericId The unique identifier for the resource. This identifier is defined by the server.
+         * @param numericId (Deprecated)
+         * The unique identifier for the resource. This identifier is defined by the server.
          * 
          * @return builder
          * 
+         * @deprecated
+         * `numeric_id` is deprecated and will be removed in a future major release. Use `network_id` instead.
+         * 
          */
+        @Deprecated /* `numeric_id` is deprecated and will be removed in a future major release. Use `network_id` instead. */
         public Builder numericId(String numericId) {
             return numericId(Output.of(numericId));
         }

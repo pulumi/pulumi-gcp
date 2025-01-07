@@ -69,26 +69,12 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			keyRing, err := kms.NewKeyRing(ctx, "key_ring", &kms.KeyRingArgs{
-//				Name:     pulumi.String("my-keyring"),
-//				Location: pulumi.String("us-central1"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			cryptoKey, err := kms.NewCryptoKey(ctx, "crypto_key", &kms.CryptoKeyArgs{
-//				Name:    pulumi.String("my-key"),
-//				KeyRing: keyRing.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
 //			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
 //			cryptoKeyBinding, err := kms.NewCryptoKeyIAMMember(ctx, "crypto_key_binding", &kms.CryptoKeyIAMMemberArgs{
-//				CryptoKeyId: cryptoKey.ID(),
+//				CryptoKeyId: pulumi.String("my-key"),
 //				Role:        pulumi.String("roles/cloudkms.cryptoKeyEncrypterDecrypter"),
 //				Member:      pulumi.Sprintf("serviceAccount:service-%v@gcp-sa-sourcemanager.iam.gserviceaccount.com", project.Number),
 //			})
@@ -98,7 +84,7 @@ import (
 //			_, err = securesourcemanager.NewInstance(ctx, "default", &securesourcemanager.InstanceArgs{
 //				Location:   pulumi.String("us-central1"),
 //				InstanceId: pulumi.String("my-instance"),
-//				KmsKey:     cryptoKey.ID(),
+//				KmsKey:     pulumi.String("my-key"),
 //			}, pulumi.DependsOn([]pulumi.Resource{
 //				cryptoKeyBinding,
 //			}))

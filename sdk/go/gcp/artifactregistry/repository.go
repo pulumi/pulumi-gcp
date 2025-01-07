@@ -826,6 +826,8 @@ import (
 //
 // import (
 //
+//	"fmt"
+//
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/artifactregistry"
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
@@ -834,11 +836,11 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
+//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
 //			if err != nil {
 //				return err
 //			}
-//			_, err = artifactregistry.NewRepository(ctx, "upstream_repo", &artifactregistry.RepositoryArgs{
+//			upstreamRepo, err := artifactregistry.NewRepository(ctx, "upstream_repo", &artifactregistry.RepositoryArgs{
 //				Location:     pulumi.String("us-central1"),
 //				RepositoryId: pulumi.String("example-upstream-repo"),
 //				Description:  pulumi.String("example upstream repository"),
@@ -856,10 +858,12 @@ import (
 //				RemoteRepositoryConfig: &artifactregistry.RepositoryRemoteRepositoryConfigArgs{
 //					Description: pulumi.String("pull-through cache of another Artifact Registry repository by URL"),
 //					CommonRepository: &artifactregistry.RepositoryRemoteRepositoryConfigCommonRepositoryArgs{
-//						Uri: pulumi.String("https://us-central1-docker.pkg.dev//example-upstream-repo"),
+//						Uri: pulumi.Sprintf("https://us-central1-docker.pkg.dev/%v/example-upstream-repo", project.ProjectId),
 //					},
 //				},
-//			})
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				upstreamRepo,
+//			}))
 //			if err != nil {
 //				return err
 //			}
@@ -932,6 +936,37 @@ import (
 //							PasswordSecretVersion: example_remote_secretVersion.Name,
 //						},
 //					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Artifact Registry Repository Vulnerability Scanning
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/artifactregistry"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := artifactregistry.NewRepository(ctx, "my-repo", &artifactregistry.RepositoryArgs{
+//				Location:     pulumi.String("us-central1"),
+//				RepositoryId: pulumi.String("my-repository"),
+//				Description:  pulumi.String("example docker repository with vulnerability scanning config"),
+//				Format:       pulumi.String("DOCKER"),
+//				VulnerabilityScanningConfig: &artifactregistry.RepositoryVulnerabilityScanningConfigArgs{
+//					EnablementConfig: pulumi.String("INHERITED"),
 //				},
 //			})
 //			if err != nil {
@@ -1044,6 +1079,9 @@ type Repository struct {
 	// Configuration specific for a Virtual Repository.
 	// Structure is documented below.
 	VirtualRepositoryConfig RepositoryVirtualRepositoryConfigPtrOutput `pulumi:"virtualRepositoryConfig"`
+	// Configuration for vulnerability scanning of artifacts stored in this repository.
+	// Structure is documented below.
+	VulnerabilityScanningConfig RepositoryVulnerabilityScanningConfigOutput `pulumi:"vulnerabilityScanningConfig"`
 }
 
 // NewRepository registers a new resource with the given unique name, arguments, and options.
@@ -1162,6 +1200,9 @@ type repositoryState struct {
 	// Configuration specific for a Virtual Repository.
 	// Structure is documented below.
 	VirtualRepositoryConfig *RepositoryVirtualRepositoryConfig `pulumi:"virtualRepositoryConfig"`
+	// Configuration for vulnerability scanning of artifacts stored in this repository.
+	// Structure is documented below.
+	VulnerabilityScanningConfig *RepositoryVulnerabilityScanningConfig `pulumi:"vulnerabilityScanningConfig"`
 }
 
 type RepositoryState struct {
@@ -1240,6 +1281,9 @@ type RepositoryState struct {
 	// Configuration specific for a Virtual Repository.
 	// Structure is documented below.
 	VirtualRepositoryConfig RepositoryVirtualRepositoryConfigPtrInput
+	// Configuration for vulnerability scanning of artifacts stored in this repository.
+	// Structure is documented below.
+	VulnerabilityScanningConfig RepositoryVulnerabilityScanningConfigPtrInput
 }
 
 func (RepositoryState) ElementType() reflect.Type {
@@ -1310,6 +1354,9 @@ type repositoryArgs struct {
 	// Configuration specific for a Virtual Repository.
 	// Structure is documented below.
 	VirtualRepositoryConfig *RepositoryVirtualRepositoryConfig `pulumi:"virtualRepositoryConfig"`
+	// Configuration for vulnerability scanning of artifacts stored in this repository.
+	// Structure is documented below.
+	VulnerabilityScanningConfig *RepositoryVulnerabilityScanningConfig `pulumi:"vulnerabilityScanningConfig"`
 }
 
 // The set of arguments for constructing a Repository resource.
@@ -1377,6 +1424,9 @@ type RepositoryArgs struct {
 	// Configuration specific for a Virtual Repository.
 	// Structure is documented below.
 	VirtualRepositoryConfig RepositoryVirtualRepositoryConfigPtrInput
+	// Configuration for vulnerability scanning of artifacts stored in this repository.
+	// Structure is documented below.
+	VulnerabilityScanningConfig RepositoryVulnerabilityScanningConfigPtrInput
 }
 
 func (RepositoryArgs) ElementType() reflect.Type {
@@ -1596,6 +1646,12 @@ func (o RepositoryOutput) UpdateTime() pulumi.StringOutput {
 // Structure is documented below.
 func (o RepositoryOutput) VirtualRepositoryConfig() RepositoryVirtualRepositoryConfigPtrOutput {
 	return o.ApplyT(func(v *Repository) RepositoryVirtualRepositoryConfigPtrOutput { return v.VirtualRepositoryConfig }).(RepositoryVirtualRepositoryConfigPtrOutput)
+}
+
+// Configuration for vulnerability scanning of artifacts stored in this repository.
+// Structure is documented below.
+func (o RepositoryOutput) VulnerabilityScanningConfig() RepositoryVulnerabilityScanningConfigOutput {
+	return o.ApplyT(func(v *Repository) RepositoryVulnerabilityScanningConfigOutput { return v.VulnerabilityScanningConfig }).(RepositoryVulnerabilityScanningConfigOutput)
 }
 
 type RepositoryArrayOutput struct{ *pulumi.OutputState }

@@ -35,6 +35,11 @@ export type Fleet = import("./fleet").Fleet;
 export const Fleet: typeof import("./fleet").Fleet = null as any;
 utilities.lazyLoad(exports, ["Fleet"], () => require("./fleet"));
 
+export { GetFeatureArgs, GetFeatureResult, GetFeatureOutputArgs } from "./getFeature";
+export const getFeature: typeof import("./getFeature").getFeature = null as any;
+export const getFeatureOutput: typeof import("./getFeature").getFeatureOutput = null as any;
+utilities.lazyLoad(exports, ["getFeature","getFeatureOutput"], () => require("./getFeature"));
+
 export { GetFeatureIamPolicyArgs, GetFeatureIamPolicyResult, GetFeatureIamPolicyOutputArgs } from "./getFeatureIamPolicy";
 export const getFeatureIamPolicy: typeof import("./getFeatureIamPolicy").getFeatureIamPolicy = null as any;
 export const getFeatureIamPolicyOutput: typeof import("./getFeatureIamPolicy").getFeatureIamPolicyOutput = null as any;

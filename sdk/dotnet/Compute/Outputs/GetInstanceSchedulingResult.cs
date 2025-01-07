@@ -19,6 +19,10 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly bool AutomaticRestart;
         /// <summary>
+        /// Specifies the availability domain, which this instance should be scheduled on.
+        /// </summary>
+        public readonly int AvailabilityDomain;
+        /// <summary>
         /// Beta Time in seconds for host error detection.
         /// </summary>
         public readonly int HostErrorTimeoutSeconds;
@@ -69,6 +73,8 @@ namespace Pulumi.Gcp.Compute.Outputs
         private GetInstanceSchedulingResult(
             bool automaticRestart,
 
+            int availabilityDomain,
+
             int hostErrorTimeoutSeconds,
 
             string instanceTerminationAction,
@@ -92,6 +98,7 @@ namespace Pulumi.Gcp.Compute.Outputs
             string provisioningModel)
         {
             AutomaticRestart = automaticRestart;
+            AvailabilityDomain = availabilityDomain;
             HostErrorTimeoutSeconds = hostErrorTimeoutSeconds;
             InstanceTerminationAction = instanceTerminationAction;
             LocalSsdRecoveryTimeouts = localSsdRecoveryTimeouts;

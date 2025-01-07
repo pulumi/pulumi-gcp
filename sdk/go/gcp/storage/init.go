@@ -39,6 +39,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &DefaultObjectACL{}
 	case "gcp:storage/defaultObjectAccessControl:DefaultObjectAccessControl":
 		r = &DefaultObjectAccessControl{}
+	case "gcp:storage/folder:Folder":
+		r = &Folder{}
 	case "gcp:storage/hmacKey:HmacKey":
 		r = &HmacKey{}
 	case "gcp:storage/insightsReportConfig:InsightsReportConfig":
@@ -117,6 +119,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"storage/defaultObjectAccessControl",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"storage/folder",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

@@ -26,7 +26,7 @@ class GetNetworkResult:
     """
     A collection of values returned by getNetwork.
     """
-    def __init__(__self__, description=None, gateway_ipv4=None, id=None, internal_ipv6_range=None, name=None, network_profile=None, numeric_id=None, project=None, self_link=None, subnetworks_self_links=None):
+    def __init__(__self__, description=None, gateway_ipv4=None, id=None, internal_ipv6_range=None, name=None, network_id=None, network_profile=None, numeric_id=None, project=None, self_link=None, subnetworks_self_links=None):
         if description and not isinstance(description, str):
             raise TypeError("Expected argument 'description' to be a str")
         pulumi.set(__self__, "description", description)
@@ -42,6 +42,9 @@ class GetNetworkResult:
         if name and not isinstance(name, str):
             raise TypeError("Expected argument 'name' to be a str")
         pulumi.set(__self__, "name", name)
+        if network_id and not isinstance(network_id, int):
+            raise TypeError("Expected argument 'network_id' to be a int")
+        pulumi.set(__self__, "network_id", network_id)
         if network_profile and not isinstance(network_profile, str):
             raise TypeError("Expected argument 'network_profile' to be a str")
         pulumi.set(__self__, "network_profile", network_profile)
@@ -96,6 +99,14 @@ class GetNetworkResult:
         return pulumi.get(self, "name")
 
     @property
+    @pulumi.getter(name="networkId")
+    def network_id(self) -> int:
+        """
+        The numeric unique identifier for the resource.
+        """
+        return pulumi.get(self, "network_id")
+
+    @property
     @pulumi.getter(name="networkProfile")
     def network_profile(self) -> Optional[str]:
         """
@@ -105,9 +116,10 @@ class GetNetworkResult:
 
     @property
     @pulumi.getter(name="numericId")
+    @_utilities.deprecated("""`numeric_id` is deprecated and will be removed in a future major release. Use `network_id` instead.""")
     def numeric_id(self) -> str:
         """
-        The numeric unique identifier for the resource.
+        (Deprecated) The numeric unique identifier for the resource. `numeric_id` is deprecated and will be removed in a future major release. Use `network_id` instead.
         """
         return pulumi.get(self, "numeric_id")
 
@@ -144,6 +156,7 @@ class AwaitableGetNetworkResult(GetNetworkResult):
             id=self.id,
             internal_ipv6_range=self.internal_ipv6_range,
             name=self.name,
+            network_id=self.network_id,
             network_profile=self.network_profile,
             numeric_id=self.numeric_id,
             project=self.project,
@@ -189,6 +202,7 @@ def get_network(name: Optional[str] = None,
         id=pulumi.get(__ret__, 'id'),
         internal_ipv6_range=pulumi.get(__ret__, 'internal_ipv6_range'),
         name=pulumi.get(__ret__, 'name'),
+        network_id=pulumi.get(__ret__, 'network_id'),
         network_profile=pulumi.get(__ret__, 'network_profile'),
         numeric_id=pulumi.get(__ret__, 'numeric_id'),
         project=pulumi.get(__ret__, 'project'),
@@ -231,6 +245,7 @@ def get_network_output(name: Optional[pulumi.Input[str]] = None,
         id=pulumi.get(__response__, 'id'),
         internal_ipv6_range=pulumi.get(__response__, 'internal_ipv6_range'),
         name=pulumi.get(__response__, 'name'),
+        network_id=pulumi.get(__response__, 'network_id'),
         network_profile=pulumi.get(__response__, 'network_profile'),
         numeric_id=pulumi.get(__response__, 'numeric_id'),
         project=pulumi.get(__response__, 'project'),

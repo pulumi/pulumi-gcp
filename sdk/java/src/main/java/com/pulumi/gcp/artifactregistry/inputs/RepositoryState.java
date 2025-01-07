@@ -10,6 +10,7 @@ import com.pulumi.gcp.artifactregistry.inputs.RepositoryDockerConfigArgs;
 import com.pulumi.gcp.artifactregistry.inputs.RepositoryMavenConfigArgs;
 import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigArgs;
 import com.pulumi.gcp.artifactregistry.inputs.RepositoryVirtualRepositoryConfigArgs;
+import com.pulumi.gcp.artifactregistry.inputs.RepositoryVulnerabilityScanningConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -382,6 +383,23 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.virtualRepositoryConfig);
     }
 
+    /**
+     * Configuration for vulnerability scanning of artifacts stored in this repository.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="vulnerabilityScanningConfig")
+    private @Nullable Output<RepositoryVulnerabilityScanningConfigArgs> vulnerabilityScanningConfig;
+
+    /**
+     * @return Configuration for vulnerability scanning of artifacts stored in this repository.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<RepositoryVulnerabilityScanningConfigArgs>> vulnerabilityScanningConfig() {
+        return Optional.ofNullable(this.vulnerabilityScanningConfig);
+    }
+
     private RepositoryState() {}
 
     private RepositoryState(RepositoryState $) {
@@ -404,6 +422,7 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
         this.repositoryId = $.repositoryId;
         this.updateTime = $.updateTime;
         this.virtualRepositoryConfig = $.virtualRepositoryConfig;
+        this.vulnerabilityScanningConfig = $.vulnerabilityScanningConfig;
     }
 
     public static Builder builder() {
@@ -909,6 +928,29 @@ public final class RepositoryState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder virtualRepositoryConfig(RepositoryVirtualRepositoryConfigArgs virtualRepositoryConfig) {
             return virtualRepositoryConfig(Output.of(virtualRepositoryConfig));
+        }
+
+        /**
+         * @param vulnerabilityScanningConfig Configuration for vulnerability scanning of artifacts stored in this repository.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vulnerabilityScanningConfig(@Nullable Output<RepositoryVulnerabilityScanningConfigArgs> vulnerabilityScanningConfig) {
+            $.vulnerabilityScanningConfig = vulnerabilityScanningConfig;
+            return this;
+        }
+
+        /**
+         * @param vulnerabilityScanningConfig Configuration for vulnerability scanning of artifacts stored in this repository.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder vulnerabilityScanningConfig(RepositoryVulnerabilityScanningConfigArgs vulnerabilityScanningConfig) {
+            return vulnerabilityScanningConfig(Output.of(vulnerabilityScanningConfig));
         }
 
         public RepositoryState build() {

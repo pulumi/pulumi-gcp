@@ -13,30 +13,62 @@ public final class GetBackupPlainArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetBackupPlainArgs Empty = new GetBackupPlainArgs();
 
+    /**
+     * The ID of the Backup Vault of the Data Source in which the Backup belongs.
+     * 
+     */
     @Import(name="backupVaultId", required=true)
     private String backupVaultId;
 
+    /**
+     * @return The ID of the Backup Vault of the Data Source in which the Backup belongs.
+     * 
+     */
     public String backupVaultId() {
         return this.backupVaultId;
     }
 
+    /**
+     * The ID of the Data Source in which the Backup belongs.
+     * 
+     */
     @Import(name="dataSourceId", required=true)
     private String dataSourceId;
 
+    /**
+     * @return The ID of the Data Source in which the Backup belongs.
+     * 
+     */
     public String dataSourceId() {
         return this.dataSourceId;
     }
 
+    /**
+     * The location in which the Backup belongs.
+     * 
+     */
     @Import(name="location", required=true)
     private String location;
 
+    /**
+     * @return The location in which the Backup belongs.
+     * 
+     */
     public String location() {
         return this.location;
     }
 
+    /**
+     * The Google Cloud Project in which the Backup belongs.
+     * 
+     */
     @Import(name="project", required=true)
     private String project;
 
+    /**
+     * @return The Google Cloud Project in which the Backup belongs.
+     * 
+     */
     public String project() {
         return this.project;
     }
@@ -68,21 +100,45 @@ public final class GetBackupPlainArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetBackupPlainArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param backupVaultId The ID of the Backup Vault of the Data Source in which the Backup belongs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder backupVaultId(String backupVaultId) {
             $.backupVaultId = backupVaultId;
             return this;
         }
 
+        /**
+         * @param dataSourceId The ID of the Data Source in which the Backup belongs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dataSourceId(String dataSourceId) {
             $.dataSourceId = dataSourceId;
             return this;
         }
 
+        /**
+         * @param location The location in which the Backup belongs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder location(String location) {
             $.location = location;
             return this;
         }
 
+        /**
+         * @param project The Google Cloud Project in which the Backup belongs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             $.project = project;
             return this;

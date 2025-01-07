@@ -7676,7 +7676,7 @@ class InstanceBootDiskInitializeParams(dict):
                for an update of throughput every 4 hours. To update your hyperdisk more
                frequently, you'll need to manually delete and recreate it.
         :param Mapping[str, str] resource_manager_tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags. Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored (both PUT & PATCH) when empty.
-        :param str resource_policies: A list of self_links of resource policies to attach to the instance's boot disk. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+        :param str resource_policies: A list of self_links of resource policies to attach to the instance's boot disk. Modifying this list will cause the instance to recreate, so any external values are not set until the user specifies this field. Currently a max of 1 resource policy is supported.
         :param int size: The size of the image in gigabytes. If not specified, it
                will inherit the size of its base image.
         :param str storage_pool: The URL or the name of the storage pool in which the new disk is created.
@@ -7782,7 +7782,7 @@ class InstanceBootDiskInitializeParams(dict):
     @pulumi.getter(name="resourcePolicies")
     def resource_policies(self) -> Optional[str]:
         """
-        A list of self_links of resource policies to attach to the instance's boot disk. Modifying this list will cause the instance to recreate. Currently a max of 1 resource policy is supported.
+        A list of self_links of resource policies to attach to the instance's boot disk. Modifying this list will cause the instance to recreate, so any external values are not set until the user specifies this field. Currently a max of 1 resource policy is supported.
         """
         return pulumi.get(self, "resource_policies")
 
@@ -9083,6 +9083,8 @@ class InstanceFromMachineImageScheduling(dict):
         suggest = None
         if key == "automaticRestart":
             suggest = "automatic_restart"
+        elif key == "availabilityDomain":
+            suggest = "availability_domain"
         elif key == "hostErrorTimeoutSeconds":
             suggest = "host_error_timeout_seconds"
         elif key == "instanceTerminationAction":
@@ -9117,6 +9119,7 @@ class InstanceFromMachineImageScheduling(dict):
 
     def __init__(__self__, *,
                  automatic_restart: Optional[bool] = None,
+                 availability_domain: Optional[int] = None,
                  host_error_timeout_seconds: Optional[int] = None,
                  instance_termination_action: Optional[str] = None,
                  local_ssd_recovery_timeout: Optional['outputs.InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeout'] = None,
@@ -9130,6 +9133,7 @@ class InstanceFromMachineImageScheduling(dict):
                  provisioning_model: Optional[str] = None):
         """
         :param bool automatic_restart: Specifies if the instance should be restarted if it was terminated by Compute Engine (not a user).
+        :param int availability_domain: Specifies the availability domain, which this instance should be scheduled on.
         :param int host_error_timeout_seconds: Specify the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
         :param str instance_termination_action: Specifies the action GCE should take when SPOT VM is preempted.
         :param 'InstanceFromMachineImageSchedulingLocalSsdRecoveryTimeoutArgs' local_ssd_recovery_timeout: Specifies the maximum amount of time a Local Ssd Vm should wait while
@@ -9146,6 +9150,8 @@ class InstanceFromMachineImageScheduling(dict):
         """
         if automatic_restart is not None:
             pulumi.set(__self__, "automatic_restart", automatic_restart)
+        if availability_domain is not None:
+            pulumi.set(__self__, "availability_domain", availability_domain)
         if host_error_timeout_seconds is not None:
             pulumi.set(__self__, "host_error_timeout_seconds", host_error_timeout_seconds)
         if instance_termination_action is not None:
@@ -9176,6 +9182,14 @@ class InstanceFromMachineImageScheduling(dict):
         Specifies if the instance should be restarted if it was terminated by Compute Engine (not a user).
         """
         return pulumi.get(self, "automatic_restart")
+
+    @property
+    @pulumi.getter(name="availabilityDomain")
+    def availability_domain(self) -> Optional[int]:
+        """
+        Specifies the availability domain, which this instance should be scheduled on.
+        """
+        return pulumi.get(self, "availability_domain")
 
     @property
     @pulumi.getter(name="hostErrorTimeoutSeconds")
@@ -10773,6 +10787,8 @@ class InstanceFromTemplateScheduling(dict):
         suggest = None
         if key == "automaticRestart":
             suggest = "automatic_restart"
+        elif key == "availabilityDomain":
+            suggest = "availability_domain"
         elif key == "hostErrorTimeoutSeconds":
             suggest = "host_error_timeout_seconds"
         elif key == "instanceTerminationAction":
@@ -10807,6 +10823,7 @@ class InstanceFromTemplateScheduling(dict):
 
     def __init__(__self__, *,
                  automatic_restart: Optional[bool] = None,
+                 availability_domain: Optional[int] = None,
                  host_error_timeout_seconds: Optional[int] = None,
                  instance_termination_action: Optional[str] = None,
                  local_ssd_recovery_timeout: Optional['outputs.InstanceFromTemplateSchedulingLocalSsdRecoveryTimeout'] = None,
@@ -10820,6 +10837,7 @@ class InstanceFromTemplateScheduling(dict):
                  provisioning_model: Optional[str] = None):
         """
         :param bool automatic_restart: Specifies if the instance should be restarted if it was terminated by Compute Engine (not a user).
+        :param int availability_domain: Specifies the availability domain, which this instance should be scheduled on.
         :param int host_error_timeout_seconds: Specify the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
         :param str instance_termination_action: Specifies the action GCE should take when SPOT VM is preempted.
         :param 'InstanceFromTemplateSchedulingLocalSsdRecoveryTimeoutArgs' local_ssd_recovery_timeout: Specifies the maximum amount of time a Local Ssd Vm should wait while
@@ -10836,6 +10854,8 @@ class InstanceFromTemplateScheduling(dict):
         """
         if automatic_restart is not None:
             pulumi.set(__self__, "automatic_restart", automatic_restart)
+        if availability_domain is not None:
+            pulumi.set(__self__, "availability_domain", availability_domain)
         if host_error_timeout_seconds is not None:
             pulumi.set(__self__, "host_error_timeout_seconds", host_error_timeout_seconds)
         if instance_termination_action is not None:
@@ -10866,6 +10886,14 @@ class InstanceFromTemplateScheduling(dict):
         Specifies if the instance should be restarted if it was terminated by Compute Engine (not a user).
         """
         return pulumi.get(self, "automatic_restart")
+
+    @property
+    @pulumi.getter(name="availabilityDomain")
+    def availability_domain(self) -> Optional[int]:
+        """
+        Specifies the availability domain, which this instance should be scheduled on.
+        """
+        return pulumi.get(self, "availability_domain")
 
     @property
     @pulumi.getter(name="hostErrorTimeoutSeconds")
@@ -12986,6 +13014,8 @@ class InstanceScheduling(dict):
         suggest = None
         if key == "automaticRestart":
             suggest = "automatic_restart"
+        elif key == "availabilityDomain":
+            suggest = "availability_domain"
         elif key == "hostErrorTimeoutSeconds":
             suggest = "host_error_timeout_seconds"
         elif key == "instanceTerminationAction":
@@ -13020,6 +13050,7 @@ class InstanceScheduling(dict):
 
     def __init__(__self__, *,
                  automatic_restart: Optional[bool] = None,
+                 availability_domain: Optional[int] = None,
                  host_error_timeout_seconds: Optional[int] = None,
                  instance_termination_action: Optional[str] = None,
                  local_ssd_recovery_timeout: Optional['outputs.InstanceSchedulingLocalSsdRecoveryTimeout'] = None,
@@ -13035,6 +13066,7 @@ class InstanceScheduling(dict):
         :param bool automatic_restart: Specifies if the instance should be
                restarted if it was terminated by Compute Engine (not a user).
                Defaults to true.
+        :param int availability_domain: Specifies the availability domain to place the instance in. The value must be a number between 1 and the number of availability domains specified in the spread placement policy attached to the instance.
         :param int host_error_timeout_seconds: Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
         :param str instance_termination_action: Describe the type of termination action for VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
         :param 'InstanceSchedulingLocalSsdRecoveryTimeoutArgs' local_ssd_recovery_timeout: Specifies the maximum amount of time a Local Ssd Vm should wait while
@@ -13063,6 +13095,8 @@ class InstanceScheduling(dict):
         """
         if automatic_restart is not None:
             pulumi.set(__self__, "automatic_restart", automatic_restart)
+        if availability_domain is not None:
+            pulumi.set(__self__, "availability_domain", availability_domain)
         if host_error_timeout_seconds is not None:
             pulumi.set(__self__, "host_error_timeout_seconds", host_error_timeout_seconds)
         if instance_termination_action is not None:
@@ -13095,6 +13129,14 @@ class InstanceScheduling(dict):
         Defaults to true.
         """
         return pulumi.get(self, "automatic_restart")
+
+    @property
+    @pulumi.getter(name="availabilityDomain")
+    def availability_domain(self) -> Optional[int]:
+        """
+        Specifies the availability domain to place the instance in. The value must be a number between 1 and the number of availability domains specified in the spread placement policy attached to the instance.
+        """
+        return pulumi.get(self, "availability_domain")
 
     @property
     @pulumi.getter(name="hostErrorTimeoutSeconds")
@@ -14845,6 +14887,8 @@ class InstanceTemplateScheduling(dict):
         suggest = None
         if key == "automaticRestart":
             suggest = "automatic_restart"
+        elif key == "availabilityDomain":
+            suggest = "availability_domain"
         elif key == "hostErrorTimeoutSeconds":
             suggest = "host_error_timeout_seconds"
         elif key == "instanceTerminationAction":
@@ -14879,6 +14923,7 @@ class InstanceTemplateScheduling(dict):
 
     def __init__(__self__, *,
                  automatic_restart: Optional[bool] = None,
+                 availability_domain: Optional[int] = None,
                  host_error_timeout_seconds: Optional[int] = None,
                  instance_termination_action: Optional[str] = None,
                  local_ssd_recovery_timeouts: Optional[Sequence['outputs.InstanceTemplateSchedulingLocalSsdRecoveryTimeout']] = None,
@@ -14894,6 +14939,7 @@ class InstanceTemplateScheduling(dict):
         :param bool automatic_restart: Specifies whether the instance should be
                automatically restarted if it is terminated by Compute Engine (not
                terminated by a user). This defaults to true.
+        :param int availability_domain: Specifies the availability domain to place the instance in. The value must be a number between 1 and the number of availability domains specified in the spread placement policy attached to the instance.
         :param int host_error_timeout_seconds: Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
         :param str instance_termination_action: Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
         :param Sequence['InstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs'] local_ssd_recovery_timeouts: Specifies the maximum amount of time a Local Ssd Vm should wait while
@@ -14921,6 +14967,8 @@ class InstanceTemplateScheduling(dict):
         """
         if automatic_restart is not None:
             pulumi.set(__self__, "automatic_restart", automatic_restart)
+        if availability_domain is not None:
+            pulumi.set(__self__, "availability_domain", availability_domain)
         if host_error_timeout_seconds is not None:
             pulumi.set(__self__, "host_error_timeout_seconds", host_error_timeout_seconds)
         if instance_termination_action is not None:
@@ -14953,6 +15001,14 @@ class InstanceTemplateScheduling(dict):
         terminated by a user). This defaults to true.
         """
         return pulumi.get(self, "automatic_restart")
+
+    @property
+    @pulumi.getter(name="availabilityDomain")
+    def availability_domain(self) -> Optional[int]:
+        """
+        Specifies the availability domain to place the instance in. The value must be a number between 1 and the number of availability domains specified in the spread placement policy attached to the instance.
+        """
+        return pulumi.get(self, "availability_domain")
 
     @property
     @pulumi.getter(name="hostErrorTimeoutSeconds")
@@ -24978,6 +25034,8 @@ class RegionInstanceTemplateScheduling(dict):
         suggest = None
         if key == "automaticRestart":
             suggest = "automatic_restart"
+        elif key == "availabilityDomain":
+            suggest = "availability_domain"
         elif key == "hostErrorTimeoutSeconds":
             suggest = "host_error_timeout_seconds"
         elif key == "instanceTerminationAction":
@@ -25012,6 +25070,7 @@ class RegionInstanceTemplateScheduling(dict):
 
     def __init__(__self__, *,
                  automatic_restart: Optional[bool] = None,
+                 availability_domain: Optional[int] = None,
                  host_error_timeout_seconds: Optional[int] = None,
                  instance_termination_action: Optional[str] = None,
                  local_ssd_recovery_timeouts: Optional[Sequence['outputs.RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeout']] = None,
@@ -25027,6 +25086,7 @@ class RegionInstanceTemplateScheduling(dict):
         :param bool automatic_restart: Specifies whether the instance should be
                automatically restarted if it is terminated by Compute Engine (not
                terminated by a user). This defaults to true.
+        :param int availability_domain: Specifies the availability domain to place the instance in. The value must be a number between 1 and the number of availability domains specified in the spread placement policy attached to the instance.
         :param int host_error_timeout_seconds: Specifies the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
         :param str instance_termination_action: Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
         :param Sequence['RegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs'] local_ssd_recovery_timeouts: Specifies the maximum amount of time a Local Ssd Vm should wait while
@@ -25054,6 +25114,8 @@ class RegionInstanceTemplateScheduling(dict):
         """
         if automatic_restart is not None:
             pulumi.set(__self__, "automatic_restart", automatic_restart)
+        if availability_domain is not None:
+            pulumi.set(__self__, "availability_domain", availability_domain)
         if host_error_timeout_seconds is not None:
             pulumi.set(__self__, "host_error_timeout_seconds", host_error_timeout_seconds)
         if instance_termination_action is not None:
@@ -25086,6 +25148,14 @@ class RegionInstanceTemplateScheduling(dict):
         terminated by a user). This defaults to true.
         """
         return pulumi.get(self, "automatic_restart")
+
+    @property
+    @pulumi.getter(name="availabilityDomain")
+    def availability_domain(self) -> Optional[int]:
+        """
+        Specifies the availability domain to place the instance in. The value must be a number between 1 and the number of availability domains specified in the spread placement policy attached to the instance.
+        """
+        return pulumi.get(self, "availability_domain")
 
     @property
     @pulumi.getter(name="hostErrorTimeoutSeconds")
@@ -35396,7 +35466,7 @@ class ResizeRequestRequestedRunDuration(dict):
                  seconds: str,
                  nanos: Optional[int] = None):
         """
-        :param str seconds: Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive. Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+        :param str seconds: Span of time at a resolution of a second. Must be from 600 to 604800 inclusive. Note: minimum and maximum allowed range for requestedRunDuration is 10 minutes (600 seconds) and 7 days(604800 seconds) correspondingly.
         :param int nanos: Span of time that's a fraction of a second at nanosecond resolution. Durations less than one second are represented with a 0 seconds field and a positive nanos field. Must be from 0 to 999,999,999 inclusive.
         """
         pulumi.set(__self__, "seconds", seconds)
@@ -35407,7 +35477,7 @@ class ResizeRequestRequestedRunDuration(dict):
     @pulumi.getter
     def seconds(self) -> str:
         """
-        Span of time at a resolution of a second. Must be from 0 to 315,576,000,000 inclusive. Note: these bounds are computed from: 60 sec/min * 60 min/hr * 24 hr/day * 365.25 days/year * 10000 years
+        Span of time at a resolution of a second. Must be from 600 to 604800 inclusive. Note: minimum and maximum allowed range for requestedRunDuration is 10 minutes (600 seconds) and 7 days(604800 seconds) correspondingly.
         """
         return pulumi.get(self, "seconds")
 
@@ -35444,10 +35514,10 @@ class ResizeRequestStatus(dict):
                  last_attempts: Optional[Sequence['outputs.ResizeRequestStatusLastAttempt']] = None):
         """
         :param Sequence['ResizeRequestStatusErrorArgs'] errors: (Output)
-               [Output only] Fatal errors encountered during the queueing or provisioning phases of the ResizeRequest that caused the transition to the FAILED state. Contrary to the lastAttempt errors, this field is final and errors are never removed from here, as the ResizeRequest is not going to retry.
+               Fatal errors encountered during the queueing or provisioning phases of the ResizeRequest that caused the transition to the FAILED state. Contrary to the lastAttempt errors, this field is final and errors are never removed from here, as the ResizeRequest is not going to retry.
                Structure is documented below.
         :param Sequence['ResizeRequestStatusLastAttemptArgs'] last_attempts: (Output)
-               [Output only] Information about the last attempt to fulfill the request. The value is temporary since the ResizeRequest can retry, as long as it's still active and the last attempt value can either be cleared or replaced with a different error. Since ResizeRequest retries infrequently, the value may be stale and no longer show an active problem. The value is cleared when ResizeRequest transitions to the final state (becomes inactive). If the final state is FAILED the error describing it will be storred in the "error" field only.
+               Information about the last attempt to fulfill the request. The value is temporary since the ResizeRequest can retry, as long as it's still active and the last attempt value can either be cleared or replaced with a different error. Since ResizeRequest retries infrequently, the value may be stale and no longer show an active problem. The value is cleared when ResizeRequest transitions to the final state (becomes inactive). If the final state is FAILED the error describing it will be storred in the "error" field only.
                Structure is documented below.
         """
         if errors is not None:
@@ -35460,7 +35530,7 @@ class ResizeRequestStatus(dict):
     def errors(self) -> Optional[Sequence['outputs.ResizeRequestStatusError']]:
         """
         (Output)
-        [Output only] Fatal errors encountered during the queueing or provisioning phases of the ResizeRequest that caused the transition to the FAILED state. Contrary to the lastAttempt errors, this field is final and errors are never removed from here, as the ResizeRequest is not going to retry.
+        Fatal errors encountered during the queueing or provisioning phases of the ResizeRequest that caused the transition to the FAILED state. Contrary to the lastAttempt errors, this field is final and errors are never removed from here, as the ResizeRequest is not going to retry.
         Structure is documented below.
         """
         return pulumi.get(self, "errors")
@@ -35470,7 +35540,7 @@ class ResizeRequestStatus(dict):
     def last_attempts(self) -> Optional[Sequence['outputs.ResizeRequestStatusLastAttempt']]:
         """
         (Output)
-        [Output only] Information about the last attempt to fulfill the request. The value is temporary since the ResizeRequest can retry, as long as it's still active and the last attempt value can either be cleared or replaced with a different error. Since ResizeRequest retries infrequently, the value may be stale and no longer show an active problem. The value is cleared when ResizeRequest transitions to the final state (becomes inactive). If the final state is FAILED the error describing it will be storred in the "error" field only.
+        Information about the last attempt to fulfill the request. The value is temporary since the ResizeRequest can retry, as long as it's still active and the last attempt value can either be cleared or replaced with a different error. Since ResizeRequest retries infrequently, the value may be stale and no longer show an active problem. The value is cleared when ResizeRequest transitions to the final state (becomes inactive). If the final state is FAILED the error describing it will be storred in the "error" field only.
         Structure is documented below.
         """
         return pulumi.get(self, "last_attempts")
@@ -35482,7 +35552,7 @@ class ResizeRequestStatusError(dict):
                  errors: Optional[Sequence['outputs.ResizeRequestStatusErrorError']] = None):
         """
         :param Sequence['ResizeRequestStatusErrorErrorArgs'] errors: (Output)
-               [Output Only] The array of errors encountered while processing this operation.
+               The array of errors encountered while processing this operation.
                Structure is documented below.
         """
         if errors is not None:
@@ -35493,7 +35563,7 @@ class ResizeRequestStatusError(dict):
     def errors(self) -> Optional[Sequence['outputs.ResizeRequestStatusErrorError']]:
         """
         (Output)
-        [Output Only] The array of errors encountered while processing this operation.
+        The array of errors encountered while processing this operation.
         Structure is documented below.
         """
         return pulumi.get(self, "errors")
@@ -35525,12 +35595,12 @@ class ResizeRequestStatusErrorError(dict):
                  message: Optional[str] = None):
         """
         :param str code: (Output)
-               [Output Only] The error type identifier for this error.
+               The error type identifier for this error.
         :param Sequence['ResizeRequestStatusErrorErrorErrorDetailArgs'] error_details: (Output)
-               [Output Only] An optional list of messages that contain the error details. There is a set of defined message types to use for providing details.The syntax depends on the error code. For example, QuotaExceededInfo will have details when the error code is QUOTA_EXCEEDED.
+               An array of messages that contain the error details. There is a set of defined message types to use for providing details.The syntax depends on the error code. For example, QuotaExceededInfo will have details when the error code is QUOTA_EXCEEDED.
                Structure is documented below.
         :param str location: (Output)
-               Output Only] Indicates the field in the request that caused the error. This property is optional.
+               Indicates the field in the request that caused the error. This property is optional.
         :param str message: (Output)
                The localized error message in the above locale.
         """
@@ -35548,7 +35618,7 @@ class ResizeRequestStatusErrorError(dict):
     def code(self) -> Optional[str]:
         """
         (Output)
-        [Output Only] The error type identifier for this error.
+        The error type identifier for this error.
         """
         return pulumi.get(self, "code")
 
@@ -35557,7 +35627,7 @@ class ResizeRequestStatusErrorError(dict):
     def error_details(self) -> Optional[Sequence['outputs.ResizeRequestStatusErrorErrorErrorDetail']]:
         """
         (Output)
-        [Output Only] An optional list of messages that contain the error details. There is a set of defined message types to use for providing details.The syntax depends on the error code. For example, QuotaExceededInfo will have details when the error code is QUOTA_EXCEEDED.
+        An array of messages that contain the error details. There is a set of defined message types to use for providing details.The syntax depends on the error code. For example, QuotaExceededInfo will have details when the error code is QUOTA_EXCEEDED.
         Structure is documented below.
         """
         return pulumi.get(self, "error_details")
@@ -35567,7 +35637,7 @@ class ResizeRequestStatusErrorError(dict):
     def location(self) -> Optional[str]:
         """
         (Output)
-        Output Only] Indicates the field in the request that caused the error. This property is optional.
+        Indicates the field in the request that caused the error. This property is optional.
         """
         return pulumi.get(self, "location")
 
@@ -35611,16 +35681,16 @@ class ResizeRequestStatusErrorErrorErrorDetail(dict):
                  quota_infos: Optional[Sequence['outputs.ResizeRequestStatusErrorErrorErrorDetailQuotaInfo']] = None):
         """
         :param Sequence['ResizeRequestStatusErrorErrorErrorDetailErrorInfoArgs'] error_infos: (Output)
-               [Output Only]
+               A nested object resource.
                Structure is documented below.
         :param Sequence['ResizeRequestStatusErrorErrorErrorDetailHelpArgs'] helps: (Output)
-               [Output Only]
+               A nested object resource.
                Structure is documented below.
         :param Sequence['ResizeRequestStatusErrorErrorErrorDetailLocalizedMessageArgs'] localized_messages: (Output)
-               [Output Only]
+               A nested object resource.
                Structure is documented below.
         :param Sequence['ResizeRequestStatusErrorErrorErrorDetailQuotaInfoArgs'] quota_infos: (Output)
-               [Output Only]
+               A nested object resource.
                Structure is documented below.
         """
         if error_infos is not None:
@@ -35637,7 +35707,7 @@ class ResizeRequestStatusErrorErrorErrorDetail(dict):
     def error_infos(self) -> Optional[Sequence['outputs.ResizeRequestStatusErrorErrorErrorDetailErrorInfo']]:
         """
         (Output)
-        [Output Only]
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "error_infos")
@@ -35647,7 +35717,7 @@ class ResizeRequestStatusErrorErrorErrorDetail(dict):
     def helps(self) -> Optional[Sequence['outputs.ResizeRequestStatusErrorErrorErrorDetailHelp']]:
         """
         (Output)
-        [Output Only]
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "helps")
@@ -35657,7 +35727,7 @@ class ResizeRequestStatusErrorErrorErrorDetail(dict):
     def localized_messages(self) -> Optional[Sequence['outputs.ResizeRequestStatusErrorErrorErrorDetailLocalizedMessage']]:
         """
         (Output)
-        [Output Only]
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "localized_messages")
@@ -35667,7 +35737,7 @@ class ResizeRequestStatusErrorErrorErrorDetail(dict):
     def quota_infos(self) -> Optional[Sequence['outputs.ResizeRequestStatusErrorErrorErrorDetailQuotaInfo']]:
         """
         (Output)
-        [Output Only]
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "quota_infos")
@@ -35681,12 +35751,11 @@ class ResizeRequestStatusErrorErrorErrorDetailErrorInfo(dict):
                  reason: Optional[str] = None):
         """
         :param str domain: (Output)
-               The logical grouping to which the "reason" belongs. The error domain is typically the registered service name of the tool or product that generates the error. Example: "pubsub.googleapis.com". If the error is generated by some common infrastructure, the error domain must be a globally unique value that identifies the infrastructure. For Google API infrastructure, the error domain is "googleapis.com".
+               The logical grouping to which the "reason" belongs. The error domain is typically the registered service name of the tool or product that generates the error. Example: "pubsub.googleapis.com".
         :param Mapping[str, str] metadatas: (Output)
                Additional structured details about this error.
-               Keys must match /[a-z][a-zA-Z0-9-_]+/ but should ideally be lowerCamelCase. Also they must be limited to 64 characters in length. When identifying the current value of an exceeded limit, the units should be contained in the key, not the value. For example, rather than {"instanceLimit": "100/request"}, should be returned as, {"instanceLimitPerRequest": "100"}, if the client exceeds the number of instances that can be created in a single (batch) request.
         :param str reason: (Output)
-               The reason of the error. This is a constant value that identifies the proximate cause of the error. Error reasons are unique within a particular domain of errors. This should be at most 63 characters and match a regular expression of [A-Z][A-Z0-9_]+[A-Z0-9], which represents UPPER_SNAKE_CASE.
+               The reason of the error. This is a constant value that identifies the proximate cause of the error. Error reasons are unique within a particular domain of errors.
         """
         if domain is not None:
             pulumi.set(__self__, "domain", domain)
@@ -35700,7 +35769,7 @@ class ResizeRequestStatusErrorErrorErrorDetailErrorInfo(dict):
     def domain(self) -> Optional[str]:
         """
         (Output)
-        The logical grouping to which the "reason" belongs. The error domain is typically the registered service name of the tool or product that generates the error. Example: "pubsub.googleapis.com". If the error is generated by some common infrastructure, the error domain must be a globally unique value that identifies the infrastructure. For Google API infrastructure, the error domain is "googleapis.com".
+        The logical grouping to which the "reason" belongs. The error domain is typically the registered service name of the tool or product that generates the error. Example: "pubsub.googleapis.com".
         """
         return pulumi.get(self, "domain")
 
@@ -35710,7 +35779,6 @@ class ResizeRequestStatusErrorErrorErrorDetailErrorInfo(dict):
         """
         (Output)
         Additional structured details about this error.
-        Keys must match /[a-z][a-zA-Z0-9-_]+/ but should ideally be lowerCamelCase. Also they must be limited to 64 characters in length. When identifying the current value of an exceeded limit, the units should be contained in the key, not the value. For example, rather than {"instanceLimit": "100/request"}, should be returned as, {"instanceLimitPerRequest": "100"}, if the client exceeds the number of instances that can be created in a single (batch) request.
         """
         return pulumi.get(self, "metadatas")
 
@@ -35719,7 +35787,7 @@ class ResizeRequestStatusErrorErrorErrorDetailErrorInfo(dict):
     def reason(self) -> Optional[str]:
         """
         (Output)
-        The reason of the error. This is a constant value that identifies the proximate cause of the error. Error reasons are unique within a particular domain of errors. This should be at most 63 characters and match a regular expression of [A-Z][A-Z0-9_]+[A-Z0-9], which represents UPPER_SNAKE_CASE.
+        The reason of the error. This is a constant value that identifies the proximate cause of the error. Error reasons are unique within a particular domain of errors.
         """
         return pulumi.get(self, "reason")
 
@@ -35730,7 +35798,7 @@ class ResizeRequestStatusErrorErrorErrorDetailHelp(dict):
                  links: Optional[Sequence['outputs.ResizeRequestStatusErrorErrorErrorDetailHelpLink']] = None):
         """
         :param Sequence['ResizeRequestStatusErrorErrorErrorDetailHelpLinkArgs'] links: (Output)
-               [Output Only]
+               A nested object resource.
                Structure is documented below.
         """
         if links is not None:
@@ -35741,7 +35809,7 @@ class ResizeRequestStatusErrorErrorErrorDetailHelp(dict):
     def links(self) -> Optional[Sequence['outputs.ResizeRequestStatusErrorErrorErrorDetailHelpLink']]:
         """
         (Output)
-        [Output Only]
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "links")
@@ -35935,7 +36003,7 @@ class ResizeRequestStatusLastAttempt(dict):
                  errors: Optional[Sequence['outputs.ResizeRequestStatusLastAttemptError']] = None):
         """
         :param Sequence['ResizeRequestStatusLastAttemptErrorArgs'] errors: (Output)
-               [Output only] Fatal errors encountered during the queueing or provisioning phases of the ResizeRequest that caused the transition to the FAILED state. Contrary to the lastAttempt errors, this field is final and errors are never removed from here, as the ResizeRequest is not going to retry.
+               Fatal errors encountered during the queueing or provisioning phases of the ResizeRequest that caused the transition to the FAILED state. Contrary to the lastAttempt errors, this field is final and errors are never removed from here, as the ResizeRequest is not going to retry.
                Structure is documented below.
         """
         if errors is not None:
@@ -35946,7 +36014,7 @@ class ResizeRequestStatusLastAttempt(dict):
     def errors(self) -> Optional[Sequence['outputs.ResizeRequestStatusLastAttemptError']]:
         """
         (Output)
-        [Output only] Fatal errors encountered during the queueing or provisioning phases of the ResizeRequest that caused the transition to the FAILED state. Contrary to the lastAttempt errors, this field is final and errors are never removed from here, as the ResizeRequest is not going to retry.
+        Fatal errors encountered during the queueing or provisioning phases of the ResizeRequest that caused the transition to the FAILED state. Contrary to the lastAttempt errors, this field is final and errors are never removed from here, as the ResizeRequest is not going to retry.
         Structure is documented below.
         """
         return pulumi.get(self, "errors")
@@ -35958,7 +36026,7 @@ class ResizeRequestStatusLastAttemptError(dict):
                  errors: Optional[Sequence['outputs.ResizeRequestStatusLastAttemptErrorError']] = None):
         """
         :param Sequence['ResizeRequestStatusLastAttemptErrorErrorArgs'] errors: (Output)
-               [Output Only] The array of errors encountered while processing this operation.
+               The array of errors encountered while processing this operation.
                Structure is documented below.
         """
         if errors is not None:
@@ -35969,7 +36037,7 @@ class ResizeRequestStatusLastAttemptError(dict):
     def errors(self) -> Optional[Sequence['outputs.ResizeRequestStatusLastAttemptErrorError']]:
         """
         (Output)
-        [Output Only] The array of errors encountered while processing this operation.
+        The array of errors encountered while processing this operation.
         Structure is documented below.
         """
         return pulumi.get(self, "errors")
@@ -36001,12 +36069,12 @@ class ResizeRequestStatusLastAttemptErrorError(dict):
                  message: Optional[str] = None):
         """
         :param str code: (Output)
-               [Output Only] The error type identifier for this error.
+               The error type identifier for this error.
         :param Sequence['ResizeRequestStatusLastAttemptErrorErrorErrorDetailArgs'] error_details: (Output)
-               [Output Only] An optional list of messages that contain the error details. There is a set of defined message types to use for providing details.The syntax depends on the error code. For example, QuotaExceededInfo will have details when the error code is QUOTA_EXCEEDED.
+               An array of messages that contain the error details. There is a set of defined message types to use for providing details.The syntax depends on the error code. For example, QuotaExceededInfo will have details when the error code is QUOTA_EXCEEDED.
                Structure is documented below.
         :param str location: (Output)
-               Output Only] Indicates the field in the request that caused the error. This property is optional.
+               Indicates the field in the request that caused the error. This property is optional.
         :param str message: (Output)
                The localized error message in the above locale.
         """
@@ -36024,7 +36092,7 @@ class ResizeRequestStatusLastAttemptErrorError(dict):
     def code(self) -> Optional[str]:
         """
         (Output)
-        [Output Only] The error type identifier for this error.
+        The error type identifier for this error.
         """
         return pulumi.get(self, "code")
 
@@ -36033,7 +36101,7 @@ class ResizeRequestStatusLastAttemptErrorError(dict):
     def error_details(self) -> Optional[Sequence['outputs.ResizeRequestStatusLastAttemptErrorErrorErrorDetail']]:
         """
         (Output)
-        [Output Only] An optional list of messages that contain the error details. There is a set of defined message types to use for providing details.The syntax depends on the error code. For example, QuotaExceededInfo will have details when the error code is QUOTA_EXCEEDED.
+        An array of messages that contain the error details. There is a set of defined message types to use for providing details.The syntax depends on the error code. For example, QuotaExceededInfo will have details when the error code is QUOTA_EXCEEDED.
         Structure is documented below.
         """
         return pulumi.get(self, "error_details")
@@ -36043,7 +36111,7 @@ class ResizeRequestStatusLastAttemptErrorError(dict):
     def location(self) -> Optional[str]:
         """
         (Output)
-        Output Only] Indicates the field in the request that caused the error. This property is optional.
+        Indicates the field in the request that caused the error. This property is optional.
         """
         return pulumi.get(self, "location")
 
@@ -36087,16 +36155,16 @@ class ResizeRequestStatusLastAttemptErrorErrorErrorDetail(dict):
                  quota_infos: Optional[Sequence['outputs.ResizeRequestStatusLastAttemptErrorErrorErrorDetailQuotaInfo']] = None):
         """
         :param Sequence['ResizeRequestStatusLastAttemptErrorErrorErrorDetailErrorInfoArgs'] error_infos: (Output)
-               [Output Only]
+               A nested object resource.
                Structure is documented below.
         :param Sequence['ResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpArgs'] helps: (Output)
-               [Output Only]
+               A nested object resource.
                Structure is documented below.
         :param Sequence['ResizeRequestStatusLastAttemptErrorErrorErrorDetailLocalizedMessageArgs'] localized_messages: (Output)
-               [Output Only]
+               A nested object resource.
                Structure is documented below.
         :param Sequence['ResizeRequestStatusLastAttemptErrorErrorErrorDetailQuotaInfoArgs'] quota_infos: (Output)
-               [Output Only]
+               A nested object resource.
                Structure is documented below.
         """
         if error_infos is not None:
@@ -36113,7 +36181,7 @@ class ResizeRequestStatusLastAttemptErrorErrorErrorDetail(dict):
     def error_infos(self) -> Optional[Sequence['outputs.ResizeRequestStatusLastAttemptErrorErrorErrorDetailErrorInfo']]:
         """
         (Output)
-        [Output Only]
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "error_infos")
@@ -36123,7 +36191,7 @@ class ResizeRequestStatusLastAttemptErrorErrorErrorDetail(dict):
     def helps(self) -> Optional[Sequence['outputs.ResizeRequestStatusLastAttemptErrorErrorErrorDetailHelp']]:
         """
         (Output)
-        [Output Only]
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "helps")
@@ -36133,7 +36201,7 @@ class ResizeRequestStatusLastAttemptErrorErrorErrorDetail(dict):
     def localized_messages(self) -> Optional[Sequence['outputs.ResizeRequestStatusLastAttemptErrorErrorErrorDetailLocalizedMessage']]:
         """
         (Output)
-        [Output Only]
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "localized_messages")
@@ -36143,7 +36211,7 @@ class ResizeRequestStatusLastAttemptErrorErrorErrorDetail(dict):
     def quota_infos(self) -> Optional[Sequence['outputs.ResizeRequestStatusLastAttemptErrorErrorErrorDetailQuotaInfo']]:
         """
         (Output)
-        [Output Only]
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "quota_infos")
@@ -36157,12 +36225,11 @@ class ResizeRequestStatusLastAttemptErrorErrorErrorDetailErrorInfo(dict):
                  reason: Optional[str] = None):
         """
         :param str domain: (Output)
-               The logical grouping to which the "reason" belongs. The error domain is typically the registered service name of the tool or product that generates the error. Example: "pubsub.googleapis.com". If the error is generated by some common infrastructure, the error domain must be a globally unique value that identifies the infrastructure. For Google API infrastructure, the error domain is "googleapis.com".
+               The logical grouping to which the "reason" belongs. The error domain is typically the registered service name of the tool or product that generates the error. Example: "pubsub.googleapis.com".
         :param Mapping[str, str] metadatas: (Output)
                Additional structured details about this error.
-               Keys must match /[a-z][a-zA-Z0-9-_]+/ but should ideally be lowerCamelCase. Also they must be limited to 64 characters in length. When identifying the current value of an exceeded limit, the units should be contained in the key, not the value. For example, rather than {"instanceLimit": "100/request"}, should be returned as, {"instanceLimitPerRequest": "100"}, if the client exceeds the number of instances that can be created in a single (batch) request.
         :param str reason: (Output)
-               The reason of the error. This is a constant value that identifies the proximate cause of the error. Error reasons are unique within a particular domain of errors. This should be at most 63 characters and match a regular expression of [A-Z][A-Z0-9_]+[A-Z0-9], which represents UPPER_SNAKE_CASE.
+               The reason of the error. This is a constant value that identifies the proximate cause of the error. Error reasons are unique within a particular domain of errors.
         """
         if domain is not None:
             pulumi.set(__self__, "domain", domain)
@@ -36176,7 +36243,7 @@ class ResizeRequestStatusLastAttemptErrorErrorErrorDetailErrorInfo(dict):
     def domain(self) -> Optional[str]:
         """
         (Output)
-        The logical grouping to which the "reason" belongs. The error domain is typically the registered service name of the tool or product that generates the error. Example: "pubsub.googleapis.com". If the error is generated by some common infrastructure, the error domain must be a globally unique value that identifies the infrastructure. For Google API infrastructure, the error domain is "googleapis.com".
+        The logical grouping to which the "reason" belongs. The error domain is typically the registered service name of the tool or product that generates the error. Example: "pubsub.googleapis.com".
         """
         return pulumi.get(self, "domain")
 
@@ -36186,7 +36253,6 @@ class ResizeRequestStatusLastAttemptErrorErrorErrorDetailErrorInfo(dict):
         """
         (Output)
         Additional structured details about this error.
-        Keys must match /[a-z][a-zA-Z0-9-_]+/ but should ideally be lowerCamelCase. Also they must be limited to 64 characters in length. When identifying the current value of an exceeded limit, the units should be contained in the key, not the value. For example, rather than {"instanceLimit": "100/request"}, should be returned as, {"instanceLimitPerRequest": "100"}, if the client exceeds the number of instances that can be created in a single (batch) request.
         """
         return pulumi.get(self, "metadatas")
 
@@ -36195,7 +36261,7 @@ class ResizeRequestStatusLastAttemptErrorErrorErrorDetailErrorInfo(dict):
     def reason(self) -> Optional[str]:
         """
         (Output)
-        The reason of the error. This is a constant value that identifies the proximate cause of the error. Error reasons are unique within a particular domain of errors. This should be at most 63 characters and match a regular expression of [A-Z][A-Z0-9_]+[A-Z0-9], which represents UPPER_SNAKE_CASE.
+        The reason of the error. This is a constant value that identifies the proximate cause of the error. Error reasons are unique within a particular domain of errors.
         """
         return pulumi.get(self, "reason")
 
@@ -36206,7 +36272,7 @@ class ResizeRequestStatusLastAttemptErrorErrorErrorDetailHelp(dict):
                  links: Optional[Sequence['outputs.ResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpLink']] = None):
         """
         :param Sequence['ResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpLinkArgs'] links: (Output)
-               [Output Only]
+               A nested object resource.
                Structure is documented below.
         """
         if links is not None:
@@ -36217,7 +36283,7 @@ class ResizeRequestStatusLastAttemptErrorErrorErrorDetailHelp(dict):
     def links(self) -> Optional[Sequence['outputs.ResizeRequestStatusLastAttemptErrorErrorErrorDetailHelpLink']]:
         """
         (Output)
-        [Output Only]
+        A nested object resource.
         Structure is documented below.
         """
         return pulumi.get(self, "links")
@@ -53433,6 +53499,7 @@ class GetInstanceReservationAffinitySpecificReservationResult(dict):
 class GetInstanceSchedulingResult(dict):
     def __init__(__self__, *,
                  automatic_restart: bool,
+                 availability_domain: int,
                  host_error_timeout_seconds: int,
                  instance_termination_action: str,
                  local_ssd_recovery_timeouts: Sequence['outputs.GetInstanceSchedulingLocalSsdRecoveryTimeoutResult'],
@@ -53447,6 +53514,7 @@ class GetInstanceSchedulingResult(dict):
         """
         :param bool automatic_restart: Specifies if the instance should be
                restarted if it was terminated by Compute Engine (not a user).
+        :param int availability_domain: Specifies the availability domain, which this instance should be scheduled on.
         :param int host_error_timeout_seconds: Beta Time in seconds for host error detection.
         :param str instance_termination_action: Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
         :param Sequence['GetInstanceSchedulingLocalSsdRecoveryTimeoutArgs'] local_ssd_recovery_timeouts: Specifies the maximum amount of time a Local Ssd Vm should wait while
@@ -53464,6 +53532,7 @@ class GetInstanceSchedulingResult(dict):
         :param str provisioning_model: Describe the type of preemptible VM.
         """
         pulumi.set(__self__, "automatic_restart", automatic_restart)
+        pulumi.set(__self__, "availability_domain", availability_domain)
         pulumi.set(__self__, "host_error_timeout_seconds", host_error_timeout_seconds)
         pulumi.set(__self__, "instance_termination_action", instance_termination_action)
         pulumi.set(__self__, "local_ssd_recovery_timeouts", local_ssd_recovery_timeouts)
@@ -53484,6 +53553,14 @@ class GetInstanceSchedulingResult(dict):
         restarted if it was terminated by Compute Engine (not a user).
         """
         return pulumi.get(self, "automatic_restart")
+
+    @property
+    @pulumi.getter(name="availabilityDomain")
+    def availability_domain(self) -> int:
+        """
+        Specifies the availability domain, which this instance should be scheduled on.
+        """
+        return pulumi.get(self, "availability_domain")
 
     @property
     @pulumi.getter(name="hostErrorTimeoutSeconds")
@@ -54752,6 +54829,7 @@ class GetInstanceTemplateReservationAffinitySpecificReservationResult(dict):
 class GetInstanceTemplateSchedulingResult(dict):
     def __init__(__self__, *,
                  automatic_restart: bool,
+                 availability_domain: int,
                  host_error_timeout_seconds: int,
                  instance_termination_action: str,
                  local_ssd_recovery_timeouts: Sequence['outputs.GetInstanceTemplateSchedulingLocalSsdRecoveryTimeoutResult'],
@@ -54767,6 +54845,7 @@ class GetInstanceTemplateSchedulingResult(dict):
         :param bool automatic_restart: Specifies whether the instance should be
                automatically restarted if it is terminated by Compute Engine (not
                terminated by a user). This defaults to true.
+        :param int availability_domain: Specifies the availability domain, which this instance should be scheduled on.
         :param int host_error_timeout_seconds: Beta Time in seconds for host error detection.
         :param str instance_termination_action: Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
         :param Sequence['GetInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs'] local_ssd_recovery_timeouts: Specifies the maximum amount of time a Local Ssd Vm should wait while
@@ -54790,6 +54869,7 @@ class GetInstanceTemplateSchedulingResult(dict):
         :param str provisioning_model: Describe the type of preemptible VM.
         """
         pulumi.set(__self__, "automatic_restart", automatic_restart)
+        pulumi.set(__self__, "availability_domain", availability_domain)
         pulumi.set(__self__, "host_error_timeout_seconds", host_error_timeout_seconds)
         pulumi.set(__self__, "instance_termination_action", instance_termination_action)
         pulumi.set(__self__, "local_ssd_recovery_timeouts", local_ssd_recovery_timeouts)
@@ -54811,6 +54891,14 @@ class GetInstanceTemplateSchedulingResult(dict):
         terminated by a user). This defaults to true.
         """
         return pulumi.get(self, "automatic_restart")
+
+    @property
+    @pulumi.getter(name="availabilityDomain")
+    def availability_domain(self) -> int:
+        """
+        Specifies the availability domain, which this instance should be scheduled on.
+        """
+        return pulumi.get(self, "availability_domain")
 
     @property
     @pulumi.getter(name="hostErrorTimeoutSeconds")
@@ -57085,6 +57173,7 @@ class GetRegionInstanceTemplateReservationAffinitySpecificReservationResult(dict
 class GetRegionInstanceTemplateSchedulingResult(dict):
     def __init__(__self__, *,
                  automatic_restart: bool,
+                 availability_domain: int,
                  host_error_timeout_seconds: int,
                  instance_termination_action: str,
                  local_ssd_recovery_timeouts: Sequence['outputs.GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutResult'],
@@ -57100,6 +57189,7 @@ class GetRegionInstanceTemplateSchedulingResult(dict):
         :param bool automatic_restart: Specifies whether the instance should be
                automatically restarted if it is terminated by Compute Engine (not
                terminated by a user). This defaults to true.
+        :param int availability_domain: Specifies the availability domain, which this instance should be scheduled on.
         :param int host_error_timeout_seconds: Beta Time in seconds for host error detection.
         :param str instance_termination_action: Describe the type of termination action for `SPOT` VM. Can be `STOP` or `DELETE`.  Read more on [here](https://cloud.google.com/compute/docs/instances/create-use-spot)
         :param Sequence['GetRegionInstanceTemplateSchedulingLocalSsdRecoveryTimeoutArgs'] local_ssd_recovery_timeouts: Specifies the maximum amount of time a Local Ssd Vm should wait while
@@ -57123,6 +57213,7 @@ class GetRegionInstanceTemplateSchedulingResult(dict):
         :param str provisioning_model: Describe the type of preemptible VM.
         """
         pulumi.set(__self__, "automatic_restart", automatic_restart)
+        pulumi.set(__self__, "availability_domain", availability_domain)
         pulumi.set(__self__, "host_error_timeout_seconds", host_error_timeout_seconds)
         pulumi.set(__self__, "instance_termination_action", instance_termination_action)
         pulumi.set(__self__, "local_ssd_recovery_timeouts", local_ssd_recovery_timeouts)
@@ -57144,6 +57235,14 @@ class GetRegionInstanceTemplateSchedulingResult(dict):
         terminated by a user). This defaults to true.
         """
         return pulumi.get(self, "automatic_restart")
+
+    @property
+    @pulumi.getter(name="availabilityDomain")
+    def availability_domain(self) -> int:
+        """
+        Specifies the availability domain, which this instance should be scheduled on.
+        """
+        return pulumi.get(self, "availability_domain")
 
     @property
     @pulumi.getter(name="hostErrorTimeoutSeconds")

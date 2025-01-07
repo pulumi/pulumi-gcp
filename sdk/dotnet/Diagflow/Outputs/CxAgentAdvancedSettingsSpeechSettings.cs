@@ -28,7 +28,7 @@ namespace Pulumi.Gcp.Diagflow.Outputs
         /// </summary>
         public readonly string? NoSpeechTimeout;
         /// <summary>
-        /// Use timeout based endpointing, interpreting endpointer sensitivy as seconds of timeout value.
+        /// Use timeout based endpointing, interpreting endpointer sensitivity as seconds of timeout value.
         /// </summary>
         public readonly bool? UseTimeoutBasedEndpointing;
 

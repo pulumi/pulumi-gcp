@@ -14,30 +14,62 @@ public final class GetBackupArgs extends com.pulumi.resources.InvokeArgs {
 
     public static final GetBackupArgs Empty = new GetBackupArgs();
 
+    /**
+     * The ID of the Backup Vault of the Data Source in which the Backup belongs.
+     * 
+     */
     @Import(name="backupVaultId", required=true)
     private Output<String> backupVaultId;
 
+    /**
+     * @return The ID of the Backup Vault of the Data Source in which the Backup belongs.
+     * 
+     */
     public Output<String> backupVaultId() {
         return this.backupVaultId;
     }
 
+    /**
+     * The ID of the Data Source in which the Backup belongs.
+     * 
+     */
     @Import(name="dataSourceId", required=true)
     private Output<String> dataSourceId;
 
+    /**
+     * @return The ID of the Data Source in which the Backup belongs.
+     * 
+     */
     public Output<String> dataSourceId() {
         return this.dataSourceId;
     }
 
+    /**
+     * The location in which the Backup belongs.
+     * 
+     */
     @Import(name="location", required=true)
     private Output<String> location;
 
+    /**
+     * @return The location in which the Backup belongs.
+     * 
+     */
     public Output<String> location() {
         return this.location;
     }
 
+    /**
+     * The Google Cloud Project in which the Backup belongs.
+     * 
+     */
     @Import(name="project", required=true)
     private Output<String> project;
 
+    /**
+     * @return The Google Cloud Project in which the Backup belongs.
+     * 
+     */
     public Output<String> project() {
         return this.project;
     }
@@ -69,38 +101,86 @@ public final class GetBackupArgs extends com.pulumi.resources.InvokeArgs {
             $ = new GetBackupArgs(Objects.requireNonNull(defaults));
         }
 
+        /**
+         * @param backupVaultId The ID of the Backup Vault of the Data Source in which the Backup belongs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder backupVaultId(Output<String> backupVaultId) {
             $.backupVaultId = backupVaultId;
             return this;
         }
 
+        /**
+         * @param backupVaultId The ID of the Backup Vault of the Data Source in which the Backup belongs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder backupVaultId(String backupVaultId) {
             return backupVaultId(Output.of(backupVaultId));
         }
 
+        /**
+         * @param dataSourceId The ID of the Data Source in which the Backup belongs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dataSourceId(Output<String> dataSourceId) {
             $.dataSourceId = dataSourceId;
             return this;
         }
 
+        /**
+         * @param dataSourceId The ID of the Data Source in which the Backup belongs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder dataSourceId(String dataSourceId) {
             return dataSourceId(Output.of(dataSourceId));
         }
 
+        /**
+         * @param location The location in which the Backup belongs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder location(Output<String> location) {
             $.location = location;
             return this;
         }
 
+        /**
+         * @param location The location in which the Backup belongs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder location(String location) {
             return location(Output.of(location));
         }
 
+        /**
+         * @param project The Google Cloud Project in which the Backup belongs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project The Google Cloud Project in which the Backup belongs.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
         }

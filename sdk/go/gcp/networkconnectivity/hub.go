@@ -77,6 +77,65 @@ import (
 //	}
 //
 // ```
+// ### Network Connectivity Hub Mesh Topology
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/networkconnectivity"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := networkconnectivity.NewHub(ctx, "primary", &networkconnectivity.HubArgs{
+//				Name:        pulumi.String("mesh"),
+//				Description: pulumi.String("A sample mesh hub"),
+//				Labels: pulumi.StringMap{
+//					"label-one": pulumi.String("value-one"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Network Connectivity Hub Star Topology
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/networkconnectivity"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := networkconnectivity.NewHub(ctx, "primary", &networkconnectivity.HubArgs{
+//				Name:        pulumi.String("star"),
+//				Description: pulumi.String("A sample star hub"),
+//				Labels: pulumi.StringMap{
+//					"label-one": pulumi.String("value-one"),
+//				},
+//				PresetTopology: pulumi.String("STAR"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -120,6 +179,9 @@ type Hub struct {
 	//
 	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Optional. The topology implemented in this hub. Currently, this field is only used when policyMode = PRESET. The available preset topologies are MESH and STAR. If presetTopology is unspecified and policyMode = PRESET, the presetTopology defaults to MESH. When policyMode = CUSTOM, the presetTopology is set to PRESET_TOPOLOGY_UNSPECIFIED.
+	// Possible values are: `MESH`, `STAR`.
+	PresetTopology pulumi.StringOutput `pulumi:"presetTopology"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -188,6 +250,9 @@ type hubState struct {
 	//
 	// ***
 	Name *string `pulumi:"name"`
+	// Optional. The topology implemented in this hub. Currently, this field is only used when policyMode = PRESET. The available preset topologies are MESH and STAR. If presetTopology is unspecified and policyMode = PRESET, the presetTopology defaults to MESH. When policyMode = CUSTOM, the presetTopology is set to PRESET_TOPOLOGY_UNSPECIFIED.
+	// Possible values are: `MESH`, `STAR`.
+	PresetTopology *string `pulumi:"presetTopology"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -222,6 +287,9 @@ type HubState struct {
 	//
 	// ***
 	Name pulumi.StringPtrInput
+	// Optional. The topology implemented in this hub. Currently, this field is only used when policyMode = PRESET. The available preset topologies are MESH and STAR. If presetTopology is unspecified and policyMode = PRESET, the presetTopology defaults to MESH. When policyMode = CUSTOM, the presetTopology is set to PRESET_TOPOLOGY_UNSPECIFIED.
+	// Possible values are: `MESH`, `STAR`.
+	PresetTopology pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -256,6 +324,9 @@ type hubArgs struct {
 	//
 	// ***
 	Name *string `pulumi:"name"`
+	// Optional. The topology implemented in this hub. Currently, this field is only used when policyMode = PRESET. The available preset topologies are MESH and STAR. If presetTopology is unspecified and policyMode = PRESET, the presetTopology defaults to MESH. When policyMode = CUSTOM, the presetTopology is set to PRESET_TOPOLOGY_UNSPECIFIED.
+	// Possible values are: `MESH`, `STAR`.
+	PresetTopology *string `pulumi:"presetTopology"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -275,6 +346,9 @@ type HubArgs struct {
 	//
 	// ***
 	Name pulumi.StringPtrInput
+	// Optional. The topology implemented in this hub. Currently, this field is only used when policyMode = PRESET. The available preset topologies are MESH and STAR. If presetTopology is unspecified and policyMode = PRESET, the presetTopology defaults to MESH. When policyMode = CUSTOM, the presetTopology is set to PRESET_TOPOLOGY_UNSPECIFIED.
+	// Possible values are: `MESH`, `STAR`.
+	PresetTopology pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -399,6 +473,12 @@ func (o HubOutput) Labels() pulumi.StringMapOutput {
 // ***
 func (o HubOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Hub) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Optional. The topology implemented in this hub. Currently, this field is only used when policyMode = PRESET. The available preset topologies are MESH and STAR. If presetTopology is unspecified and policyMode = PRESET, the presetTopology defaults to MESH. When policyMode = CUSTOM, the presetTopology is set to PRESET_TOPOLOGY_UNSPECIFIED.
+// Possible values are: `MESH`, `STAR`.
+func (o HubOutput) PresetTopology() pulumi.StringOutput {
+	return o.ApplyT(func(v *Hub) pulumi.StringOutput { return v.PresetTopology }).(pulumi.StringOutput)
 }
 
 // The ID of the project in which the resource belongs.

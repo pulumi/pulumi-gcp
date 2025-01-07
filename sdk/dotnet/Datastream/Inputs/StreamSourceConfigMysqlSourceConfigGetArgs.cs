@@ -13,11 +13,23 @@ namespace Pulumi.Gcp.Datastream.Inputs
     public sealed class StreamSourceConfigMysqlSourceConfigGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// CDC reader reads from binary logs replication cdc method.
+        /// </summary>
+        [Input("binaryLogPosition")]
+        public Input<Inputs.StreamSourceConfigMysqlSourceConfigBinaryLogPositionGetArgs>? BinaryLogPosition { get; set; }
+
+        /// <summary>
         /// MySQL objects to exclude from the stream.
         /// Structure is documented below.
         /// </summary>
         [Input("excludeObjects")]
         public Input<Inputs.StreamSourceConfigMysqlSourceConfigExcludeObjectsGetArgs>? ExcludeObjects { get; set; }
+
+        /// <summary>
+        /// CDC reader reads from gtid based replication.
+        /// </summary>
+        [Input("gtid")]
+        public Input<Inputs.StreamSourceConfigMysqlSourceConfigGtidGetArgs>? Gtid { get; set; }
 
         /// <summary>
         /// MySQL objects to retrieve from the source.

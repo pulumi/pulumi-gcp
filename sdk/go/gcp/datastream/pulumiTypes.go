@@ -6541,9 +6541,13 @@ func (o StreamSourceConfigPtrOutput) SqlServerSourceConfig() StreamSourceConfigS
 }
 
 type StreamSourceConfigMysqlSourceConfig struct {
+	// CDC reader reads from binary logs replication cdc method.
+	BinaryLogPosition *StreamSourceConfigMysqlSourceConfigBinaryLogPosition `pulumi:"binaryLogPosition"`
 	// MySQL objects to exclude from the stream.
 	// Structure is documented below.
 	ExcludeObjects *StreamSourceConfigMysqlSourceConfigExcludeObjects `pulumi:"excludeObjects"`
+	// CDC reader reads from gtid based replication.
+	Gtid *StreamSourceConfigMysqlSourceConfigGtid `pulumi:"gtid"`
 	// MySQL objects to retrieve from the source.
 	// Structure is documented below.
 	IncludeObjects *StreamSourceConfigMysqlSourceConfigIncludeObjects `pulumi:"includeObjects"`
@@ -6567,9 +6571,13 @@ type StreamSourceConfigMysqlSourceConfigInput interface {
 }
 
 type StreamSourceConfigMysqlSourceConfigArgs struct {
+	// CDC reader reads from binary logs replication cdc method.
+	BinaryLogPosition StreamSourceConfigMysqlSourceConfigBinaryLogPositionPtrInput `pulumi:"binaryLogPosition"`
 	// MySQL objects to exclude from the stream.
 	// Structure is documented below.
 	ExcludeObjects StreamSourceConfigMysqlSourceConfigExcludeObjectsPtrInput `pulumi:"excludeObjects"`
+	// CDC reader reads from gtid based replication.
+	Gtid StreamSourceConfigMysqlSourceConfigGtidPtrInput `pulumi:"gtid"`
 	// MySQL objects to retrieve from the source.
 	// Structure is documented below.
 	IncludeObjects StreamSourceConfigMysqlSourceConfigIncludeObjectsPtrInput `pulumi:"includeObjects"`
@@ -6658,12 +6666,24 @@ func (o StreamSourceConfigMysqlSourceConfigOutput) ToStreamSourceConfigMysqlSour
 	}).(StreamSourceConfigMysqlSourceConfigPtrOutput)
 }
 
+// CDC reader reads from binary logs replication cdc method.
+func (o StreamSourceConfigMysqlSourceConfigOutput) BinaryLogPosition() StreamSourceConfigMysqlSourceConfigBinaryLogPositionPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigMysqlSourceConfig) *StreamSourceConfigMysqlSourceConfigBinaryLogPosition {
+		return v.BinaryLogPosition
+	}).(StreamSourceConfigMysqlSourceConfigBinaryLogPositionPtrOutput)
+}
+
 // MySQL objects to exclude from the stream.
 // Structure is documented below.
 func (o StreamSourceConfigMysqlSourceConfigOutput) ExcludeObjects() StreamSourceConfigMysqlSourceConfigExcludeObjectsPtrOutput {
 	return o.ApplyT(func(v StreamSourceConfigMysqlSourceConfig) *StreamSourceConfigMysqlSourceConfigExcludeObjects {
 		return v.ExcludeObjects
 	}).(StreamSourceConfigMysqlSourceConfigExcludeObjectsPtrOutput)
+}
+
+// CDC reader reads from gtid based replication.
+func (o StreamSourceConfigMysqlSourceConfigOutput) Gtid() StreamSourceConfigMysqlSourceConfigGtidPtrOutput {
+	return o.ApplyT(func(v StreamSourceConfigMysqlSourceConfig) *StreamSourceConfigMysqlSourceConfigGtid { return v.Gtid }).(StreamSourceConfigMysqlSourceConfigGtidPtrOutput)
 }
 
 // MySQL objects to retrieve from the source.
@@ -6710,6 +6730,16 @@ func (o StreamSourceConfigMysqlSourceConfigPtrOutput) Elem() StreamSourceConfigM
 	}).(StreamSourceConfigMysqlSourceConfigOutput)
 }
 
+// CDC reader reads from binary logs replication cdc method.
+func (o StreamSourceConfigMysqlSourceConfigPtrOutput) BinaryLogPosition() StreamSourceConfigMysqlSourceConfigBinaryLogPositionPtrOutput {
+	return o.ApplyT(func(v *StreamSourceConfigMysqlSourceConfig) *StreamSourceConfigMysqlSourceConfigBinaryLogPosition {
+		if v == nil {
+			return nil
+		}
+		return v.BinaryLogPosition
+	}).(StreamSourceConfigMysqlSourceConfigBinaryLogPositionPtrOutput)
+}
+
 // MySQL objects to exclude from the stream.
 // Structure is documented below.
 func (o StreamSourceConfigMysqlSourceConfigPtrOutput) ExcludeObjects() StreamSourceConfigMysqlSourceConfigExcludeObjectsPtrOutput {
@@ -6719,6 +6749,16 @@ func (o StreamSourceConfigMysqlSourceConfigPtrOutput) ExcludeObjects() StreamSou
 		}
 		return v.ExcludeObjects
 	}).(StreamSourceConfigMysqlSourceConfigExcludeObjectsPtrOutput)
+}
+
+// CDC reader reads from gtid based replication.
+func (o StreamSourceConfigMysqlSourceConfigPtrOutput) Gtid() StreamSourceConfigMysqlSourceConfigGtidPtrOutput {
+	return o.ApplyT(func(v *StreamSourceConfigMysqlSourceConfig) *StreamSourceConfigMysqlSourceConfigGtid {
+		if v == nil {
+			return nil
+		}
+		return v.Gtid
+	}).(StreamSourceConfigMysqlSourceConfigGtidPtrOutput)
 }
 
 // MySQL objects to retrieve from the source.
@@ -6752,6 +6792,124 @@ func (o StreamSourceConfigMysqlSourceConfigPtrOutput) MaxConcurrentCdcTasks() pu
 		}
 		return v.MaxConcurrentCdcTasks
 	}).(pulumi.IntPtrOutput)
+}
+
+type StreamSourceConfigMysqlSourceConfigBinaryLogPosition struct {
+}
+
+// StreamSourceConfigMysqlSourceConfigBinaryLogPositionInput is an input type that accepts StreamSourceConfigMysqlSourceConfigBinaryLogPositionArgs and StreamSourceConfigMysqlSourceConfigBinaryLogPositionOutput values.
+// You can construct a concrete instance of `StreamSourceConfigMysqlSourceConfigBinaryLogPositionInput` via:
+//
+//	StreamSourceConfigMysqlSourceConfigBinaryLogPositionArgs{...}
+type StreamSourceConfigMysqlSourceConfigBinaryLogPositionInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigMysqlSourceConfigBinaryLogPositionOutput() StreamSourceConfigMysqlSourceConfigBinaryLogPositionOutput
+	ToStreamSourceConfigMysqlSourceConfigBinaryLogPositionOutputWithContext(context.Context) StreamSourceConfigMysqlSourceConfigBinaryLogPositionOutput
+}
+
+type StreamSourceConfigMysqlSourceConfigBinaryLogPositionArgs struct {
+}
+
+func (StreamSourceConfigMysqlSourceConfigBinaryLogPositionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigMysqlSourceConfigBinaryLogPosition)(nil)).Elem()
+}
+
+func (i StreamSourceConfigMysqlSourceConfigBinaryLogPositionArgs) ToStreamSourceConfigMysqlSourceConfigBinaryLogPositionOutput() StreamSourceConfigMysqlSourceConfigBinaryLogPositionOutput {
+	return i.ToStreamSourceConfigMysqlSourceConfigBinaryLogPositionOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigMysqlSourceConfigBinaryLogPositionArgs) ToStreamSourceConfigMysqlSourceConfigBinaryLogPositionOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigBinaryLogPositionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigMysqlSourceConfigBinaryLogPositionOutput)
+}
+
+func (i StreamSourceConfigMysqlSourceConfigBinaryLogPositionArgs) ToStreamSourceConfigMysqlSourceConfigBinaryLogPositionPtrOutput() StreamSourceConfigMysqlSourceConfigBinaryLogPositionPtrOutput {
+	return i.ToStreamSourceConfigMysqlSourceConfigBinaryLogPositionPtrOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigMysqlSourceConfigBinaryLogPositionArgs) ToStreamSourceConfigMysqlSourceConfigBinaryLogPositionPtrOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigBinaryLogPositionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigMysqlSourceConfigBinaryLogPositionOutput).ToStreamSourceConfigMysqlSourceConfigBinaryLogPositionPtrOutputWithContext(ctx)
+}
+
+// StreamSourceConfigMysqlSourceConfigBinaryLogPositionPtrInput is an input type that accepts StreamSourceConfigMysqlSourceConfigBinaryLogPositionArgs, StreamSourceConfigMysqlSourceConfigBinaryLogPositionPtr and StreamSourceConfigMysqlSourceConfigBinaryLogPositionPtrOutput values.
+// You can construct a concrete instance of `StreamSourceConfigMysqlSourceConfigBinaryLogPositionPtrInput` via:
+//
+//	        StreamSourceConfigMysqlSourceConfigBinaryLogPositionArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamSourceConfigMysqlSourceConfigBinaryLogPositionPtrInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigMysqlSourceConfigBinaryLogPositionPtrOutput() StreamSourceConfigMysqlSourceConfigBinaryLogPositionPtrOutput
+	ToStreamSourceConfigMysqlSourceConfigBinaryLogPositionPtrOutputWithContext(context.Context) StreamSourceConfigMysqlSourceConfigBinaryLogPositionPtrOutput
+}
+
+type streamSourceConfigMysqlSourceConfigBinaryLogPositionPtrType StreamSourceConfigMysqlSourceConfigBinaryLogPositionArgs
+
+func StreamSourceConfigMysqlSourceConfigBinaryLogPositionPtr(v *StreamSourceConfigMysqlSourceConfigBinaryLogPositionArgs) StreamSourceConfigMysqlSourceConfigBinaryLogPositionPtrInput {
+	return (*streamSourceConfigMysqlSourceConfigBinaryLogPositionPtrType)(v)
+}
+
+func (*streamSourceConfigMysqlSourceConfigBinaryLogPositionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSourceConfigMysqlSourceConfigBinaryLogPosition)(nil)).Elem()
+}
+
+func (i *streamSourceConfigMysqlSourceConfigBinaryLogPositionPtrType) ToStreamSourceConfigMysqlSourceConfigBinaryLogPositionPtrOutput() StreamSourceConfigMysqlSourceConfigBinaryLogPositionPtrOutput {
+	return i.ToStreamSourceConfigMysqlSourceConfigBinaryLogPositionPtrOutputWithContext(context.Background())
+}
+
+func (i *streamSourceConfigMysqlSourceConfigBinaryLogPositionPtrType) ToStreamSourceConfigMysqlSourceConfigBinaryLogPositionPtrOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigBinaryLogPositionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigMysqlSourceConfigBinaryLogPositionPtrOutput)
+}
+
+type StreamSourceConfigMysqlSourceConfigBinaryLogPositionOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigMysqlSourceConfigBinaryLogPositionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigMysqlSourceConfigBinaryLogPosition)(nil)).Elem()
+}
+
+func (o StreamSourceConfigMysqlSourceConfigBinaryLogPositionOutput) ToStreamSourceConfigMysqlSourceConfigBinaryLogPositionOutput() StreamSourceConfigMysqlSourceConfigBinaryLogPositionOutput {
+	return o
+}
+
+func (o StreamSourceConfigMysqlSourceConfigBinaryLogPositionOutput) ToStreamSourceConfigMysqlSourceConfigBinaryLogPositionOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigBinaryLogPositionOutput {
+	return o
+}
+
+func (o StreamSourceConfigMysqlSourceConfigBinaryLogPositionOutput) ToStreamSourceConfigMysqlSourceConfigBinaryLogPositionPtrOutput() StreamSourceConfigMysqlSourceConfigBinaryLogPositionPtrOutput {
+	return o.ToStreamSourceConfigMysqlSourceConfigBinaryLogPositionPtrOutputWithContext(context.Background())
+}
+
+func (o StreamSourceConfigMysqlSourceConfigBinaryLogPositionOutput) ToStreamSourceConfigMysqlSourceConfigBinaryLogPositionPtrOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigBinaryLogPositionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamSourceConfigMysqlSourceConfigBinaryLogPosition) *StreamSourceConfigMysqlSourceConfigBinaryLogPosition {
+		return &v
+	}).(StreamSourceConfigMysqlSourceConfigBinaryLogPositionPtrOutput)
+}
+
+type StreamSourceConfigMysqlSourceConfigBinaryLogPositionPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigMysqlSourceConfigBinaryLogPositionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSourceConfigMysqlSourceConfigBinaryLogPosition)(nil)).Elem()
+}
+
+func (o StreamSourceConfigMysqlSourceConfigBinaryLogPositionPtrOutput) ToStreamSourceConfigMysqlSourceConfigBinaryLogPositionPtrOutput() StreamSourceConfigMysqlSourceConfigBinaryLogPositionPtrOutput {
+	return o
+}
+
+func (o StreamSourceConfigMysqlSourceConfigBinaryLogPositionPtrOutput) ToStreamSourceConfigMysqlSourceConfigBinaryLogPositionPtrOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigBinaryLogPositionPtrOutput {
+	return o
+}
+
+func (o StreamSourceConfigMysqlSourceConfigBinaryLogPositionPtrOutput) Elem() StreamSourceConfigMysqlSourceConfigBinaryLogPositionOutput {
+	return o.ApplyT(func(v *StreamSourceConfigMysqlSourceConfigBinaryLogPosition) StreamSourceConfigMysqlSourceConfigBinaryLogPosition {
+		if v != nil {
+			return *v
+		}
+		var ret StreamSourceConfigMysqlSourceConfigBinaryLogPosition
+		return ret
+	}).(StreamSourceConfigMysqlSourceConfigBinaryLogPositionOutput)
 }
 
 type StreamSourceConfigMysqlSourceConfigExcludeObjects struct {
@@ -7290,6 +7448,124 @@ func (o StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTable
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn {
 		return vs[0].([]StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumn)[vs[1].(int)]
 	}).(StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput)
+}
+
+type StreamSourceConfigMysqlSourceConfigGtid struct {
+}
+
+// StreamSourceConfigMysqlSourceConfigGtidInput is an input type that accepts StreamSourceConfigMysqlSourceConfigGtidArgs and StreamSourceConfigMysqlSourceConfigGtidOutput values.
+// You can construct a concrete instance of `StreamSourceConfigMysqlSourceConfigGtidInput` via:
+//
+//	StreamSourceConfigMysqlSourceConfigGtidArgs{...}
+type StreamSourceConfigMysqlSourceConfigGtidInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigMysqlSourceConfigGtidOutput() StreamSourceConfigMysqlSourceConfigGtidOutput
+	ToStreamSourceConfigMysqlSourceConfigGtidOutputWithContext(context.Context) StreamSourceConfigMysqlSourceConfigGtidOutput
+}
+
+type StreamSourceConfigMysqlSourceConfigGtidArgs struct {
+}
+
+func (StreamSourceConfigMysqlSourceConfigGtidArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigMysqlSourceConfigGtid)(nil)).Elem()
+}
+
+func (i StreamSourceConfigMysqlSourceConfigGtidArgs) ToStreamSourceConfigMysqlSourceConfigGtidOutput() StreamSourceConfigMysqlSourceConfigGtidOutput {
+	return i.ToStreamSourceConfigMysqlSourceConfigGtidOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigMysqlSourceConfigGtidArgs) ToStreamSourceConfigMysqlSourceConfigGtidOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigGtidOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigMysqlSourceConfigGtidOutput)
+}
+
+func (i StreamSourceConfigMysqlSourceConfigGtidArgs) ToStreamSourceConfigMysqlSourceConfigGtidPtrOutput() StreamSourceConfigMysqlSourceConfigGtidPtrOutput {
+	return i.ToStreamSourceConfigMysqlSourceConfigGtidPtrOutputWithContext(context.Background())
+}
+
+func (i StreamSourceConfigMysqlSourceConfigGtidArgs) ToStreamSourceConfigMysqlSourceConfigGtidPtrOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigGtidPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigMysqlSourceConfigGtidOutput).ToStreamSourceConfigMysqlSourceConfigGtidPtrOutputWithContext(ctx)
+}
+
+// StreamSourceConfigMysqlSourceConfigGtidPtrInput is an input type that accepts StreamSourceConfigMysqlSourceConfigGtidArgs, StreamSourceConfigMysqlSourceConfigGtidPtr and StreamSourceConfigMysqlSourceConfigGtidPtrOutput values.
+// You can construct a concrete instance of `StreamSourceConfigMysqlSourceConfigGtidPtrInput` via:
+//
+//	        StreamSourceConfigMysqlSourceConfigGtidArgs{...}
+//
+//	or:
+//
+//	        nil
+type StreamSourceConfigMysqlSourceConfigGtidPtrInput interface {
+	pulumi.Input
+
+	ToStreamSourceConfigMysqlSourceConfigGtidPtrOutput() StreamSourceConfigMysqlSourceConfigGtidPtrOutput
+	ToStreamSourceConfigMysqlSourceConfigGtidPtrOutputWithContext(context.Context) StreamSourceConfigMysqlSourceConfigGtidPtrOutput
+}
+
+type streamSourceConfigMysqlSourceConfigGtidPtrType StreamSourceConfigMysqlSourceConfigGtidArgs
+
+func StreamSourceConfigMysqlSourceConfigGtidPtr(v *StreamSourceConfigMysqlSourceConfigGtidArgs) StreamSourceConfigMysqlSourceConfigGtidPtrInput {
+	return (*streamSourceConfigMysqlSourceConfigGtidPtrType)(v)
+}
+
+func (*streamSourceConfigMysqlSourceConfigGtidPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSourceConfigMysqlSourceConfigGtid)(nil)).Elem()
+}
+
+func (i *streamSourceConfigMysqlSourceConfigGtidPtrType) ToStreamSourceConfigMysqlSourceConfigGtidPtrOutput() StreamSourceConfigMysqlSourceConfigGtidPtrOutput {
+	return i.ToStreamSourceConfigMysqlSourceConfigGtidPtrOutputWithContext(context.Background())
+}
+
+func (i *streamSourceConfigMysqlSourceConfigGtidPtrType) ToStreamSourceConfigMysqlSourceConfigGtidPtrOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigGtidPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(StreamSourceConfigMysqlSourceConfigGtidPtrOutput)
+}
+
+type StreamSourceConfigMysqlSourceConfigGtidOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigMysqlSourceConfigGtidOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*StreamSourceConfigMysqlSourceConfigGtid)(nil)).Elem()
+}
+
+func (o StreamSourceConfigMysqlSourceConfigGtidOutput) ToStreamSourceConfigMysqlSourceConfigGtidOutput() StreamSourceConfigMysqlSourceConfigGtidOutput {
+	return o
+}
+
+func (o StreamSourceConfigMysqlSourceConfigGtidOutput) ToStreamSourceConfigMysqlSourceConfigGtidOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigGtidOutput {
+	return o
+}
+
+func (o StreamSourceConfigMysqlSourceConfigGtidOutput) ToStreamSourceConfigMysqlSourceConfigGtidPtrOutput() StreamSourceConfigMysqlSourceConfigGtidPtrOutput {
+	return o.ToStreamSourceConfigMysqlSourceConfigGtidPtrOutputWithContext(context.Background())
+}
+
+func (o StreamSourceConfigMysqlSourceConfigGtidOutput) ToStreamSourceConfigMysqlSourceConfigGtidPtrOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigGtidPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v StreamSourceConfigMysqlSourceConfigGtid) *StreamSourceConfigMysqlSourceConfigGtid {
+		return &v
+	}).(StreamSourceConfigMysqlSourceConfigGtidPtrOutput)
+}
+
+type StreamSourceConfigMysqlSourceConfigGtidPtrOutput struct{ *pulumi.OutputState }
+
+func (StreamSourceConfigMysqlSourceConfigGtidPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**StreamSourceConfigMysqlSourceConfigGtid)(nil)).Elem()
+}
+
+func (o StreamSourceConfigMysqlSourceConfigGtidPtrOutput) ToStreamSourceConfigMysqlSourceConfigGtidPtrOutput() StreamSourceConfigMysqlSourceConfigGtidPtrOutput {
+	return o
+}
+
+func (o StreamSourceConfigMysqlSourceConfigGtidPtrOutput) ToStreamSourceConfigMysqlSourceConfigGtidPtrOutputWithContext(ctx context.Context) StreamSourceConfigMysqlSourceConfigGtidPtrOutput {
+	return o
+}
+
+func (o StreamSourceConfigMysqlSourceConfigGtidPtrOutput) Elem() StreamSourceConfigMysqlSourceConfigGtidOutput {
+	return o.ApplyT(func(v *StreamSourceConfigMysqlSourceConfigGtid) StreamSourceConfigMysqlSourceConfigGtid {
+		if v != nil {
+			return *v
+		}
+		var ret StreamSourceConfigMysqlSourceConfigGtid
+		return ret
+	}).(StreamSourceConfigMysqlSourceConfigGtidOutput)
 }
 
 type StreamSourceConfigMysqlSourceConfigIncludeObjects struct {
@@ -12508,6 +12784,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigPtrInput)(nil)).Elem(), StreamSourceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigMysqlSourceConfigInput)(nil)).Elem(), StreamSourceConfigMysqlSourceConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigMysqlSourceConfigPtrInput)(nil)).Elem(), StreamSourceConfigMysqlSourceConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigMysqlSourceConfigBinaryLogPositionInput)(nil)).Elem(), StreamSourceConfigMysqlSourceConfigBinaryLogPositionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigMysqlSourceConfigBinaryLogPositionPtrInput)(nil)).Elem(), StreamSourceConfigMysqlSourceConfigBinaryLogPositionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigMysqlSourceConfigExcludeObjectsInput)(nil)).Elem(), StreamSourceConfigMysqlSourceConfigExcludeObjectsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigMysqlSourceConfigExcludeObjectsPtrInput)(nil)).Elem(), StreamSourceConfigMysqlSourceConfigExcludeObjectsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseInput)(nil)).Elem(), StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseArgs{})
@@ -12516,6 +12794,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArrayInput)(nil)).Elem(), StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnInput)(nil)).Elem(), StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayInput)(nil)).Elem(), StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigMysqlSourceConfigGtidInput)(nil)).Elem(), StreamSourceConfigMysqlSourceConfigGtidArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigMysqlSourceConfigGtidPtrInput)(nil)).Elem(), StreamSourceConfigMysqlSourceConfigGtidArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigMysqlSourceConfigIncludeObjectsInput)(nil)).Elem(), StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigMysqlSourceConfigIncludeObjectsPtrInput)(nil)).Elem(), StreamSourceConfigMysqlSourceConfigIncludeObjectsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseInput)(nil)).Elem(), StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseArgs{})
@@ -12668,6 +12948,8 @@ func init() {
 	pulumi.RegisterOutputType(StreamSourceConfigPtrOutput{})
 	pulumi.RegisterOutputType(StreamSourceConfigMysqlSourceConfigOutput{})
 	pulumi.RegisterOutputType(StreamSourceConfigMysqlSourceConfigPtrOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigMysqlSourceConfigBinaryLogPositionOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigMysqlSourceConfigBinaryLogPositionPtrOutput{})
 	pulumi.RegisterOutputType(StreamSourceConfigMysqlSourceConfigExcludeObjectsOutput{})
 	pulumi.RegisterOutputType(StreamSourceConfigMysqlSourceConfigExcludeObjectsPtrOutput{})
 	pulumi.RegisterOutputType(StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseOutput{})
@@ -12676,6 +12958,8 @@ func init() {
 	pulumi.RegisterOutputType(StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableArrayOutput{})
 	pulumi.RegisterOutputType(StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnOutput{})
 	pulumi.RegisterOutputType(StreamSourceConfigMysqlSourceConfigExcludeObjectsMysqlDatabaseMysqlTableMysqlColumnArrayOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigMysqlSourceConfigGtidOutput{})
+	pulumi.RegisterOutputType(StreamSourceConfigMysqlSourceConfigGtidPtrOutput{})
 	pulumi.RegisterOutputType(StreamSourceConfigMysqlSourceConfigIncludeObjectsOutput{})
 	pulumi.RegisterOutputType(StreamSourceConfigMysqlSourceConfigIncludeObjectsPtrOutput{})
 	pulumi.RegisterOutputType(StreamSourceConfigMysqlSourceConfigIncludeObjectsMysqlDatabaseOutput{})

@@ -33,14 +33,14 @@ public final class AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArgs ex
     }
 
     /**
-     * CIDR block IP subnetwork specification. Must be IPv4.
+     * A list of CIDR block IP subnetwork specification. Must be IPv4.
      * 
      */
     @Import(name="vpcIpSubnetworks")
     private @Nullable Output<List<String>> vpcIpSubnetworks;
 
     /**
-     * @return CIDR block IP subnetwork specification. Must be IPv4.
+     * @return A list of CIDR block IP subnetwork specification. Must be IPv4.
      * 
      */
     public Optional<Output<List<String>>> vpcIpSubnetworks() {
@@ -94,7 +94,7 @@ public final class AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArgs ex
         }
 
         /**
-         * @param vpcIpSubnetworks CIDR block IP subnetwork specification. Must be IPv4.
+         * @param vpcIpSubnetworks A list of CIDR block IP subnetwork specification. Must be IPv4.
          * 
          * @return builder
          * 
@@ -105,7 +105,7 @@ public final class AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArgs ex
         }
 
         /**
-         * @param vpcIpSubnetworks CIDR block IP subnetwork specification. Must be IPv4.
+         * @param vpcIpSubnetworks A list of CIDR block IP subnetwork specification. Must be IPv4.
          * 
          * @return builder
          * 
@@ -115,7 +115,7 @@ public final class AccessLevelBasicConditionVpcNetworkSourceVpcSubnetworkArgs ex
         }
 
         /**
-         * @param vpcIpSubnetworks CIDR block IP subnetwork specification. Must be IPv4.
+         * @param vpcIpSubnetworks A list of CIDR block IP subnetwork specification. Must be IPv4.
          * 
          * @return builder
          * 

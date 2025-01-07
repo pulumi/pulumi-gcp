@@ -10,27 +10,17 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Projects
 {
     /// <summary>
-    /// Allows creation and management of a Google Cloud Platform project.
+    /// Sets up a usage export bucket for a particular project.  A usage export bucket
+    /// is a pre-configured GCS bucket which is set up to receive daily and monthly
+    /// reports of the GCE resources used.
     /// 
-    /// Projects created with this resource must be associated with an Organization.
-    /// See the [Organization documentation](https://cloud.google.com/resource-manager/docs/quickstarts) for more details.
+    /// For more information see the [Docs](https://cloud.google.com/compute/docs/usage-export)
+    /// and for further details, the
+    /// [API Documentation](https://cloud.google.com/compute/docs/reference/rest/beta/projects/setUsageExportBucket).
     /// 
-    /// The user or service account that is running this provider when creating a `gcp.organizations.Project`
-    /// resource must have `roles/resourcemanager.projectCreator` on the specified organization. See the
-    /// [Access Control for Organizations Using IAM](https://cloud.google.com/resource-manager/docs/access-control-org)
-    /// doc for more information.
-    /// 
-    /// &gt; This resource reads the specified billing account on every pulumi up and plan operation so you must have permissions on the specified billing account.
-    /// 
-    /// &gt; It is recommended to use the `constraints/compute.skipDefaultNetworkCreation` [constraint](https://www.terraform.io/docs/providers/google/r/google_organization_policy.html) to remove the default network instead of setting `auto_create_network` to false, when possible.
-    /// 
-    /// &gt; It may take a while for the attached tag bindings to be deleted after the project is scheduled to be deleted.
-    /// 
-    /// To get more information about projects, see:
-    /// 
-    /// * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v1/projects)
-    /// * How-to Guides
-    ///     * [Creating and managing projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects)
+    /// &gt; **Note:** You should specify only one of these per project.  If there are two or more
+    /// they will fight over which bucket the reports should be stored in.  It is
+    /// safe to have multiple resources with the same backing bucket.
     /// 
     /// ## Example Usage
     /// 
@@ -42,61 +32,10 @@ namespace Pulumi.Gcp.Projects
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
-    ///     var myProject = new Gcp.Organizations.Project("my_project", new()
+    ///     var usageExport = new Gcp.Projects.UsageExportBucket("usage_export", new()
     ///     {
-    ///         Name = "My Project",
-    ///         ProjectId = "your-project-id",
-    ///         OrgId = "1234567",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// To create a project under a specific folder
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var department1 = new Gcp.Organizations.Folder("department1", new()
-    ///     {
-    ///         DisplayName = "Department 1",
-    ///         Parent = "organizations/1234567",
-    ///     });
-    /// 
-    ///     var myProject_in_a_folder = new Gcp.Organizations.Project("my_project-in-a-folder", new()
-    ///     {
-    ///         Name = "My Project",
-    ///         ProjectId = "your-project-id",
-    ///         FolderId = department1.Name,
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
-    /// To create a project with a tag
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var myProject = new Gcp.Organizations.Project("my_project", new()
-    ///     {
-    ///         Name = "My Project",
-    ///         ProjectId = "your-project-id",
-    ///         OrgId = "1234567",
-    ///         Tags = 
-    ///         {
-    ///             { "1234567/env", "staging" },
-    ///         },
+    ///         Project = "development-project",
+    ///         BucketName = "usage-tracking-bucket",
     ///     });
     /// 
     /// });
@@ -104,11 +43,11 @@ namespace Pulumi.Gcp.Projects
     /// 
     /// ## Import
     /// 
-    /// Projects can be imported using the `project_id`, e.g.
+    /// A project's Usage Export Bucket can be imported using this format:
     /// 
     /// * `{{project_id}}`
     /// 
-    /// When using the `pulumi import` command, Projects can be imported using one of the formats above. For example:
+    /// When using the `pulumi import` command, NAME_HERE can be imported using one of the formats above. For example:
     /// 
     /// ```sh
     /// $ pulumi import gcp:projects/usageExportBucket:UsageExportBucket default {{project_id}}
@@ -119,6 +58,8 @@ namespace Pulumi.Gcp.Projects
     {
         /// <summary>
         /// The bucket to store reports in.
+        /// 
+        /// - - -
         /// </summary>
         [Output("bucketName")]
         public Output<string> BucketName { get; private set; } = null!;
@@ -183,6 +124,8 @@ namespace Pulumi.Gcp.Projects
     {
         /// <summary>
         /// The bucket to store reports in.
+        /// 
+        /// - - -
         /// </summary>
         [Input("bucketName", required: true)]
         public Input<string> BucketName { get; set; } = null!;
@@ -209,6 +152,8 @@ namespace Pulumi.Gcp.Projects
     {
         /// <summary>
         /// The bucket to store reports in.
+        /// 
+        /// - - -
         /// </summary>
         [Input("bucketName")]
         public Input<string>? BucketName { get; set; }

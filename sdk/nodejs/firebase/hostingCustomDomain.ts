@@ -262,7 +262,7 @@ export class HostingCustomDomain extends pulumi.CustomResource {
      */
     public readonly project!: pulumi.Output<string>;
     /**
-     * if true, indicates that Hosting's systems are attmepting to
+     * if true, indicates that Hosting's systems are attempting to
      * make the `CustomDomain`'s state match your preferred state. This is most
      * frequently `true` when initially provisioning a `CustomDomain` or when creating
      * a new SSL certificate to match an updated `certPreference`
@@ -475,7 +475,7 @@ export interface HostingCustomDomainState {
      */
     project?: pulumi.Input<string>;
     /**
-     * if true, indicates that Hosting's systems are attmepting to
+     * if true, indicates that Hosting's systems are attempting to
      * make the `CustomDomain`'s state match your preferred state. This is most
      * frequently `true` when initially provisioning a `CustomDomain` or when creating
      * a new SSL certificate to match an updated `certPreference`

@@ -18,12 +18,16 @@ public final class UsageExportBucketState extends com.pulumi.resources.ResourceA
     /**
      * The bucket to store reports in.
      * 
+     * ***
+     * 
      */
     @Import(name="bucketName")
     private @Nullable Output<String> bucketName;
 
     /**
      * @return The bucket to store reports in.
+     * 
+     * ***
      * 
      */
     public Optional<Output<String>> bucketName() {
@@ -89,6 +93,8 @@ public final class UsageExportBucketState extends com.pulumi.resources.ResourceA
         /**
          * @param bucketName The bucket to store reports in.
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -99,6 +105,8 @@ public final class UsageExportBucketState extends com.pulumi.resources.ResourceA
 
         /**
          * @param bucketName The bucket to store reports in.
+         * 
+         * ***
          * 
          * @return builder
          * 

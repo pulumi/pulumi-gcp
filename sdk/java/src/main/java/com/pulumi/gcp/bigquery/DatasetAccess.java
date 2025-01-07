@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.bigquery.DatasetAccessArgs;
 import com.pulumi.gcp.bigquery.inputs.DatasetAccessState;
 import com.pulumi.gcp.bigquery.outputs.DatasetAccessAuthorizedDataset;
+import com.pulumi.gcp.bigquery.outputs.DatasetAccessCondition;
 import com.pulumi.gcp.bigquery.outputs.DatasetAccessRoutine;
 import com.pulumi.gcp.bigquery.outputs.DatasetAccessView;
 import java.lang.Boolean;
@@ -307,6 +308,24 @@ public class DatasetAccess extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<DatasetAccessAuthorizedDataset>> authorizedDataset() {
         return Codegen.optional(this.authorizedDataset);
+    }
+    /**
+     * Condition for the binding. If CEL expression in this field is true, this
+     * access binding will be considered.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="condition", refs={DatasetAccessCondition.class}, tree="[0]")
+    private Output</* @Nullable */ DatasetAccessCondition> condition;
+
+    /**
+     * @return Condition for the binding. If CEL expression in this field is true, this
+     * access binding will be considered.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<DatasetAccessCondition>> condition() {
+        return Codegen.optional(this.condition);
     }
     /**
      * A unique ID for this dataset, without the project name. The ID

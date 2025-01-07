@@ -19,6 +19,12 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<bool>? AutomaticRestart { get; set; }
 
         /// <summary>
+        /// Specifies the availability domain, which this instance should be scheduled on.
+        /// </summary>
+        [Input("availabilityDomain")]
+        public Input<int>? AvailabilityDomain { get; set; }
+
+        /// <summary>
         /// Specify the time in seconds for host error detection, the value must be within the range of [90, 330] with the increment of 30, if unset, the default behavior of host error recovery will be used.
         /// </summary>
         [Input("hostErrorTimeoutSeconds")]

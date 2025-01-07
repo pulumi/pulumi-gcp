@@ -552,7 +552,7 @@ namespace Pulumi.Gcp.Compute
         /// Structure is documented below.
         /// </summary>
         [Output("pscData")]
-        public Output<Outputs.RegionNetworkEndpointGroupPscData?> PscData { get; private set; } = null!;
+        public Output<Outputs.RegionNetworkEndpointGroupPscData> PscData { get; private set; } = null!;
 
         /// <summary>
         /// This field is only used for PSC and INTERNET NEGs.

@@ -23,7 +23,7 @@ public final class GetDataSourceDataSourceGcpResource {
      */
     private String gcpResourcename;
     /**
-     * @return Location of the resource: &lt;region&gt;/&lt;zone&gt;/&#34;global&#34;/&#34;unspecified&#34;.
+     * @return The location in which the Data Source belongs.
      * 
      */
     private String location;
@@ -50,7 +50,7 @@ public final class GetDataSourceDataSourceGcpResource {
         return this.gcpResourcename;
     }
     /**
-     * @return Location of the resource: &lt;region&gt;/&lt;zone&gt;/&#34;global&#34;/&#34;unspecified&#34;.
+     * @return The location in which the Data Source belongs.
      * 
      */
     public String location() {

@@ -31,7 +31,6 @@ import (
 //
 // import (
 //
-//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/kms"
 //	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/netapp"
 //	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 //
@@ -39,24 +38,10 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			keyring, err := kms.NewKeyRing(ctx, "keyring", &kms.KeyRingArgs{
-//				Name:     pulumi.String("key-ring"),
-//				Location: pulumi.String("us-central1"),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			cryptoKey, err := kms.NewCryptoKey(ctx, "crypto_key", &kms.CryptoKeyArgs{
-//				Name:    pulumi.String("crypto-name"),
-//				KeyRing: keyring.ID(),
-//			})
-//			if err != nil {
-//				return err
-//			}
-//			_, err = netapp.NewKmsconfig(ctx, "kmsConfig", &netapp.KmsconfigArgs{
+//			_, err := netapp.NewKmsconfig(ctx, "kmsConfig", &netapp.KmsconfigArgs{
 //				Name:          pulumi.String("kms-test"),
 //				Description:   pulumi.String("this is a test description"),
-//				CryptoKeyName: cryptoKey.ID(),
+//				CryptoKeyName: pulumi.String("crypto-name"),
 //				Location:      pulumi.String("us-central1"),
 //			})
 //			if err != nil {

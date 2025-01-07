@@ -41,6 +41,7 @@ __all__ = [
     'RepositoryRemoteRepositoryConfigYumRepositoryPublicRepository',
     'RepositoryVirtualRepositoryConfig',
     'RepositoryVirtualRepositoryConfigUpstreamPolicy',
+    'RepositoryVulnerabilityScanningConfig',
     'GetRepositoryCleanupPolicyResult',
     'GetRepositoryCleanupPolicyConditionResult',
     'GetRepositoryCleanupPolicyMostRecentVersionResult',
@@ -64,6 +65,7 @@ __all__ = [
     'GetRepositoryRemoteRepositoryConfigYumRepositoryPublicRepositoryResult',
     'GetRepositoryVirtualRepositoryConfigResult',
     'GetRepositoryVirtualRepositoryConfigUpstreamPolicyResult',
+    'GetRepositoryVulnerabilityScanningConfigResult',
 ]
 
 @pulumi.output_type
@@ -1305,6 +1307,76 @@ class RepositoryVirtualRepositoryConfigUpstreamPolicy(dict):
 
 
 @pulumi.output_type
+class RepositoryVulnerabilityScanningConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "enablementConfig":
+            suggest = "enablement_config"
+        elif key == "enablementState":
+            suggest = "enablement_state"
+        elif key == "enablementStateReason":
+            suggest = "enablement_state_reason"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RepositoryVulnerabilityScanningConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RepositoryVulnerabilityScanningConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RepositoryVulnerabilityScanningConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 enablement_config: Optional[str] = None,
+                 enablement_state: Optional[str] = None,
+                 enablement_state_reason: Optional[str] = None):
+        """
+        :param str enablement_config: This configures whether vulnerability scanning is automatically performed for artifacts pushed to this repository.
+               Possible values are: `INHERITED`, `DISABLED`.
+        :param str enablement_state: (Output)
+               This field returns whether scanning is active for this repository.
+        :param str enablement_state_reason: (Output)
+               This provides an explanation for the state of scanning on this repository.
+        """
+        if enablement_config is not None:
+            pulumi.set(__self__, "enablement_config", enablement_config)
+        if enablement_state is not None:
+            pulumi.set(__self__, "enablement_state", enablement_state)
+        if enablement_state_reason is not None:
+            pulumi.set(__self__, "enablement_state_reason", enablement_state_reason)
+
+    @property
+    @pulumi.getter(name="enablementConfig")
+    def enablement_config(self) -> Optional[str]:
+        """
+        This configures whether vulnerability scanning is automatically performed for artifacts pushed to this repository.
+        Possible values are: `INHERITED`, `DISABLED`.
+        """
+        return pulumi.get(self, "enablement_config")
+
+    @property
+    @pulumi.getter(name="enablementState")
+    def enablement_state(self) -> Optional[str]:
+        """
+        (Output)
+        This field returns whether scanning is active for this repository.
+        """
+        return pulumi.get(self, "enablement_state")
+
+    @property
+    @pulumi.getter(name="enablementStateReason")
+    def enablement_state_reason(self) -> Optional[str]:
+        """
+        (Output)
+        This provides an explanation for the state of scanning on this repository.
+        """
+        return pulumi.get(self, "enablement_state_reason")
+
+
+@pulumi.output_type
 class GetRepositoryCleanupPolicyResult(dict):
     def __init__(__self__, *,
                  action: str,
@@ -2040,5 +2112,45 @@ class GetRepositoryVirtualRepositoryConfigUpstreamPolicyResult(dict):
         "projects/p1/locations/us-central1/repository/repo1".
         """
         return pulumi.get(self, "repository")
+
+
+@pulumi.output_type
+class GetRepositoryVulnerabilityScanningConfigResult(dict):
+    def __init__(__self__, *,
+                 enablement_config: str,
+                 enablement_state: str,
+                 enablement_state_reason: str):
+        """
+        :param str enablement_config: This configures whether vulnerability scanning is automatically performed for artifacts pushed to this repository. Possible values: ["INHERITED", "DISABLED"]
+        :param str enablement_state: This field returns whether scanning is active for this repository.
+        :param str enablement_state_reason: This provides an explanation for the state of scanning on this repository.
+        """
+        pulumi.set(__self__, "enablement_config", enablement_config)
+        pulumi.set(__self__, "enablement_state", enablement_state)
+        pulumi.set(__self__, "enablement_state_reason", enablement_state_reason)
+
+    @property
+    @pulumi.getter(name="enablementConfig")
+    def enablement_config(self) -> str:
+        """
+        This configures whether vulnerability scanning is automatically performed for artifacts pushed to this repository. Possible values: ["INHERITED", "DISABLED"]
+        """
+        return pulumi.get(self, "enablement_config")
+
+    @property
+    @pulumi.getter(name="enablementState")
+    def enablement_state(self) -> str:
+        """
+        This field returns whether scanning is active for this repository.
+        """
+        return pulumi.get(self, "enablement_state")
+
+    @property
+    @pulumi.getter(name="enablementStateReason")
+    def enablement_state_reason(self) -> str:
+        """
+        This provides an explanation for the state of scanning on this repository.
+        """
+        return pulumi.get(self, "enablement_state_reason")
 
 

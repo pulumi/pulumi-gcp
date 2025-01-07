@@ -13,7 +13,7 @@ namespace Pulumi.Gcp.IntegrationConnectors.Inputs
     public sealed class ConnectionEventingRuntimeDataStatusGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// An arbitrary description for the Conection.
+        /// An arbitrary description for the Connection.
         /// </summary>
         [Input("description")]
         public Input<string>? Description { get; set; }

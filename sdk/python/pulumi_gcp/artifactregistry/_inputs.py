@@ -65,6 +65,8 @@ __all__ = [
     'RepositoryVirtualRepositoryConfigArgsDict',
     'RepositoryVirtualRepositoryConfigUpstreamPolicyArgs',
     'RepositoryVirtualRepositoryConfigUpstreamPolicyArgsDict',
+    'RepositoryVulnerabilityScanningConfigArgs',
+    'RepositoryVulnerabilityScanningConfigArgsDict',
 ]
 
 MYPY = False
@@ -1580,5 +1582,86 @@ class RepositoryVirtualRepositoryConfigUpstreamPolicyArgs:
     @repository.setter
     def repository(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "repository", value)
+
+
+if not MYPY:
+    class RepositoryVulnerabilityScanningConfigArgsDict(TypedDict):
+        enablement_config: NotRequired[pulumi.Input[str]]
+        """
+        This configures whether vulnerability scanning is automatically performed for artifacts pushed to this repository.
+        Possible values are: `INHERITED`, `DISABLED`.
+        """
+        enablement_state: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        This field returns whether scanning is active for this repository.
+        """
+        enablement_state_reason: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        This provides an explanation for the state of scanning on this repository.
+        """
+elif False:
+    RepositoryVulnerabilityScanningConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RepositoryVulnerabilityScanningConfigArgs:
+    def __init__(__self__, *,
+                 enablement_config: Optional[pulumi.Input[str]] = None,
+                 enablement_state: Optional[pulumi.Input[str]] = None,
+                 enablement_state_reason: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] enablement_config: This configures whether vulnerability scanning is automatically performed for artifacts pushed to this repository.
+               Possible values are: `INHERITED`, `DISABLED`.
+        :param pulumi.Input[str] enablement_state: (Output)
+               This field returns whether scanning is active for this repository.
+        :param pulumi.Input[str] enablement_state_reason: (Output)
+               This provides an explanation for the state of scanning on this repository.
+        """
+        if enablement_config is not None:
+            pulumi.set(__self__, "enablement_config", enablement_config)
+        if enablement_state is not None:
+            pulumi.set(__self__, "enablement_state", enablement_state)
+        if enablement_state_reason is not None:
+            pulumi.set(__self__, "enablement_state_reason", enablement_state_reason)
+
+    @property
+    @pulumi.getter(name="enablementConfig")
+    def enablement_config(self) -> Optional[pulumi.Input[str]]:
+        """
+        This configures whether vulnerability scanning is automatically performed for artifacts pushed to this repository.
+        Possible values are: `INHERITED`, `DISABLED`.
+        """
+        return pulumi.get(self, "enablement_config")
+
+    @enablement_config.setter
+    def enablement_config(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "enablement_config", value)
+
+    @property
+    @pulumi.getter(name="enablementState")
+    def enablement_state(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        This field returns whether scanning is active for this repository.
+        """
+        return pulumi.get(self, "enablement_state")
+
+    @enablement_state.setter
+    def enablement_state(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "enablement_state", value)
+
+    @property
+    @pulumi.getter(name="enablementStateReason")
+    def enablement_state_reason(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        This provides an explanation for the state of scanning on this repository.
+        """
+        return pulumi.get(self, "enablement_state_reason")
+
+    @enablement_state_reason.setter
+    def enablement_state_reason(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "enablement_state_reason", value)
 
 

@@ -187,6 +187,10 @@ export class Table extends pulumi.CustomResource {
      */
     public readonly expirationTime!: pulumi.Output<number>;
     /**
+     * Options defining open source compatible table.
+     */
+    public readonly externalCatalogTableOptions!: pulumi.Output<outputs.bigquery.TableExternalCatalogTableOptions | undefined>;
+    /**
      * Describes the data format,
      * location, and other properties of a table stored outside of BigQuery.
      * By defining these properties, the data source can then be queried as
@@ -327,6 +331,7 @@ export class Table extends pulumi.CustomResource {
             resourceInputs["encryptionConfiguration"] = state ? state.encryptionConfiguration : undefined;
             resourceInputs["etag"] = state ? state.etag : undefined;
             resourceInputs["expirationTime"] = state ? state.expirationTime : undefined;
+            resourceInputs["externalCatalogTableOptions"] = state ? state.externalCatalogTableOptions : undefined;
             resourceInputs["externalDataConfiguration"] = state ? state.externalDataConfiguration : undefined;
             resourceInputs["friendlyName"] = state ? state.friendlyName : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
@@ -365,6 +370,7 @@ export class Table extends pulumi.CustomResource {
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["encryptionConfiguration"] = args ? args.encryptionConfiguration : undefined;
             resourceInputs["expirationTime"] = args ? args.expirationTime : undefined;
+            resourceInputs["externalCatalogTableOptions"] = args ? args.externalCatalogTableOptions : undefined;
             resourceInputs["externalDataConfiguration"] = args ? args.externalDataConfiguration : undefined;
             resourceInputs["friendlyName"] = args ? args.friendlyName : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
@@ -467,6 +473,10 @@ export interface TableState {
      * reclaimed.
      */
     expirationTime?: pulumi.Input<number>;
+    /**
+     * Options defining open source compatible table.
+     */
+    externalCatalogTableOptions?: pulumi.Input<inputs.bigquery.TableExternalCatalogTableOptions>;
     /**
      * Describes the data format,
      * location, and other properties of a table stored outside of BigQuery.
@@ -627,6 +637,10 @@ export interface TableArgs {
      * reclaimed.
      */
     expirationTime?: pulumi.Input<number>;
+    /**
+     * Options defining open source compatible table.
+     */
+    externalCatalogTableOptions?: pulumi.Input<inputs.bigquery.TableExternalCatalogTableOptions>;
     /**
      * Describes the data format,
      * location, and other properties of a table stored outside of BigQuery.

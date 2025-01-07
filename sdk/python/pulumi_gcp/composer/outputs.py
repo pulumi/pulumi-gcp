@@ -18,6 +18,7 @@ from . import outputs
 __all__ = [
     'EnvironmentConfig',
     'EnvironmentConfigDataRetentionConfig',
+    'EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfig',
     'EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig',
     'EnvironmentConfigDatabaseConfig',
     'EnvironmentConfigEncryptionConfig',
@@ -43,6 +44,7 @@ __all__ = [
     'EnvironmentStorageConfig',
     'GetEnvironmentConfigResult',
     'GetEnvironmentConfigDataRetentionConfigResult',
+    'GetEnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfigResult',
     'GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigResult',
     'GetEnvironmentConfigDatabaseConfigResult',
     'GetEnvironmentConfigEncryptionConfigResult',
@@ -386,7 +388,9 @@ class EnvironmentConfigDataRetentionConfig(dict):
     @staticmethod
     def __key_warning(key: str):
         suggest = None
-        if key == "taskLogsRetentionConfigs":
+        if key == "airflowMetadataRetentionConfigs":
+            suggest = "airflow_metadata_retention_configs"
+        elif key == "taskLogsRetentionConfigs":
             suggest = "task_logs_retention_configs"
 
         if suggest:
@@ -401,19 +405,82 @@ class EnvironmentConfigDataRetentionConfig(dict):
         return super().get(key, default)
 
     def __init__(__self__, *,
-                 task_logs_retention_configs: Sequence['outputs.EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig']):
+                 airflow_metadata_retention_configs: Optional[Sequence['outputs.EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfig']] = None,
+                 task_logs_retention_configs: Optional[Sequence['outputs.EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig']] = None):
         """
+        :param Sequence['EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfigArgs'] airflow_metadata_retention_configs: Optional. The configuration setting for database retention.
         :param Sequence['EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArgs'] task_logs_retention_configs: Optional. The configuration setting for Task Logs.
         """
-        pulumi.set(__self__, "task_logs_retention_configs", task_logs_retention_configs)
+        if airflow_metadata_retention_configs is not None:
+            pulumi.set(__self__, "airflow_metadata_retention_configs", airflow_metadata_retention_configs)
+        if task_logs_retention_configs is not None:
+            pulumi.set(__self__, "task_logs_retention_configs", task_logs_retention_configs)
+
+    @property
+    @pulumi.getter(name="airflowMetadataRetentionConfigs")
+    def airflow_metadata_retention_configs(self) -> Optional[Sequence['outputs.EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfig']]:
+        """
+        Optional. The configuration setting for database retention.
+        """
+        return pulumi.get(self, "airflow_metadata_retention_configs")
 
     @property
     @pulumi.getter(name="taskLogsRetentionConfigs")
-    def task_logs_retention_configs(self) -> Sequence['outputs.EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig']:
+    def task_logs_retention_configs(self) -> Optional[Sequence['outputs.EnvironmentConfigDataRetentionConfigTaskLogsRetentionConfig']]:
         """
         Optional. The configuration setting for Task Logs.
         """
         return pulumi.get(self, "task_logs_retention_configs")
+
+
+@pulumi.output_type
+class EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "retentionDays":
+            suggest = "retention_days"
+        elif key == "retentionMode":
+            suggest = "retention_mode"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        EnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 retention_days: Optional[int] = None,
+                 retention_mode: Optional[str] = None):
+        """
+        :param int retention_days: How many days data should be retained for. This field is supported for Cloud Composer environments in composer 3 and newer.
+        :param str retention_mode: Whether database retention is enabled or not. This field is supported for Cloud Composer environments in composer 3 and newer.
+        """
+        if retention_days is not None:
+            pulumi.set(__self__, "retention_days", retention_days)
+        if retention_mode is not None:
+            pulumi.set(__self__, "retention_mode", retention_mode)
+
+    @property
+    @pulumi.getter(name="retentionDays")
+    def retention_days(self) -> Optional[int]:
+        """
+        How many days data should be retained for. This field is supported for Cloud Composer environments in composer 3 and newer.
+        """
+        return pulumi.get(self, "retention_days")
+
+    @property
+    @pulumi.getter(name="retentionMode")
+    def retention_mode(self) -> Optional[str]:
+        """
+        Whether database retention is enabled or not. This field is supported for Cloud Composer environments in composer 3 and newer.
+        """
+        return pulumi.get(self, "retention_mode")
 
 
 @pulumi.output_type
@@ -2169,11 +2236,22 @@ class GetEnvironmentConfigResult(dict):
 @pulumi.output_type
 class GetEnvironmentConfigDataRetentionConfigResult(dict):
     def __init__(__self__, *,
+                 airflow_metadata_retention_configs: Sequence['outputs.GetEnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfigResult'],
                  task_logs_retention_configs: Sequence['outputs.GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigResult']):
         """
+        :param Sequence['GetEnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfigArgs'] airflow_metadata_retention_configs: Optional. The configuration setting for database retention.
         :param Sequence['GetEnvironmentConfigDataRetentionConfigTaskLogsRetentionConfigArgs'] task_logs_retention_configs: Optional. The configuration setting for Task Logs.
         """
+        pulumi.set(__self__, "airflow_metadata_retention_configs", airflow_metadata_retention_configs)
         pulumi.set(__self__, "task_logs_retention_configs", task_logs_retention_configs)
+
+    @property
+    @pulumi.getter(name="airflowMetadataRetentionConfigs")
+    def airflow_metadata_retention_configs(self) -> Sequence['outputs.GetEnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfigResult']:
+        """
+        Optional. The configuration setting for database retention.
+        """
+        return pulumi.get(self, "airflow_metadata_retention_configs")
 
     @property
     @pulumi.getter(name="taskLogsRetentionConfigs")
@@ -2182,6 +2260,35 @@ class GetEnvironmentConfigDataRetentionConfigResult(dict):
         Optional. The configuration setting for Task Logs.
         """
         return pulumi.get(self, "task_logs_retention_configs")
+
+
+@pulumi.output_type
+class GetEnvironmentConfigDataRetentionConfigAirflowMetadataRetentionConfigResult(dict):
+    def __init__(__self__, *,
+                 retention_days: int,
+                 retention_mode: str):
+        """
+        :param int retention_days: How many days data should be retained for. This field is supported for Cloud Composer environments in composer 3 and newer.
+        :param str retention_mode: Whether database retention is enabled or not. This field is supported for Cloud Composer environments in composer 3 and newer.
+        """
+        pulumi.set(__self__, "retention_days", retention_days)
+        pulumi.set(__self__, "retention_mode", retention_mode)
+
+    @property
+    @pulumi.getter(name="retentionDays")
+    def retention_days(self) -> int:
+        """
+        How many days data should be retained for. This field is supported for Cloud Composer environments in composer 3 and newer.
+        """
+        return pulumi.get(self, "retention_days")
+
+    @property
+    @pulumi.getter(name="retentionMode")
+    def retention_mode(self) -> str:
+        """
+        Whether database retention is enabled or not. This field is supported for Cloud Composer environments in composer 3 and newer.
+        """
+        return pulumi.get(self, "retention_mode")
 
 
 @pulumi.output_type

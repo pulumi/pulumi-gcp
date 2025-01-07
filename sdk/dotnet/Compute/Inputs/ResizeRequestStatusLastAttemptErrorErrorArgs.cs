@@ -14,7 +14,7 @@ namespace Pulumi.Gcp.Compute.Inputs
     {
         /// <summary>
         /// (Output)
-        /// [Output Only] The error type identifier for this error.
+        /// The error type identifier for this error.
         /// </summary>
         [Input("code")]
         public Input<string>? Code { get; set; }
@@ -24,7 +24,7 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         /// <summary>
         /// (Output)
-        /// [Output Only] An optional list of messages that contain the error details. There is a set of defined message types to use for providing details.The syntax depends on the error code. For example, QuotaExceededInfo will have details when the error code is QUOTA_EXCEEDED.
+        /// An array of messages that contain the error details. There is a set of defined message types to use for providing details.The syntax depends on the error code. For example, QuotaExceededInfo will have details when the error code is QUOTA_EXCEEDED.
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.ResizeRequestStatusLastAttemptErrorErrorErrorDetailArgs> ErrorDetails
@@ -35,7 +35,7 @@ namespace Pulumi.Gcp.Compute.Inputs
 
         /// <summary>
         /// (Output)
-        /// Output Only] Indicates the field in the request that caused the error. This property is optional.
+        /// Indicates the field in the request that caused the error. This property is optional.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }

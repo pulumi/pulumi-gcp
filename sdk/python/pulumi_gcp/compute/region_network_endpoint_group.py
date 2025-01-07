@@ -1481,7 +1481,7 @@ class RegionNetworkEndpointGroup(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="pscData")
-    def psc_data(self) -> pulumi.Output[Optional['outputs.RegionNetworkEndpointGroupPscData']]:
+    def psc_data(self) -> pulumi.Output['outputs.RegionNetworkEndpointGroupPscData']:
         """
         This field is only used for PSC NEGs.
         Structure is documented below.

@@ -19,7 +19,7 @@ public final class ResizeRequestStatusErrorErrorArgs extends com.pulumi.resource
 
     /**
      * (Output)
-     * [Output Only] The error type identifier for this error.
+     * The error type identifier for this error.
      * 
      */
     @Import(name="code")
@@ -27,7 +27,7 @@ public final class ResizeRequestStatusErrorErrorArgs extends com.pulumi.resource
 
     /**
      * @return (Output)
-     * [Output Only] The error type identifier for this error.
+     * The error type identifier for this error.
      * 
      */
     public Optional<Output<String>> code() {
@@ -36,7 +36,7 @@ public final class ResizeRequestStatusErrorErrorArgs extends com.pulumi.resource
 
     /**
      * (Output)
-     * [Output Only] An optional list of messages that contain the error details. There is a set of defined message types to use for providing details.The syntax depends on the error code. For example, QuotaExceededInfo will have details when the error code is QUOTA_EXCEEDED.
+     * An array of messages that contain the error details. There is a set of defined message types to use for providing details.The syntax depends on the error code. For example, QuotaExceededInfo will have details when the error code is QUOTA_EXCEEDED.
      * Structure is documented below.
      * 
      */
@@ -45,7 +45,7 @@ public final class ResizeRequestStatusErrorErrorArgs extends com.pulumi.resource
 
     /**
      * @return (Output)
-     * [Output Only] An optional list of messages that contain the error details. There is a set of defined message types to use for providing details.The syntax depends on the error code. For example, QuotaExceededInfo will have details when the error code is QUOTA_EXCEEDED.
+     * An array of messages that contain the error details. There is a set of defined message types to use for providing details.The syntax depends on the error code. For example, QuotaExceededInfo will have details when the error code is QUOTA_EXCEEDED.
      * Structure is documented below.
      * 
      */
@@ -55,7 +55,7 @@ public final class ResizeRequestStatusErrorErrorArgs extends com.pulumi.resource
 
     /**
      * (Output)
-     * Output Only] Indicates the field in the request that caused the error. This property is optional.
+     * Indicates the field in the request that caused the error. This property is optional.
      * 
      */
     @Import(name="location")
@@ -63,7 +63,7 @@ public final class ResizeRequestStatusErrorErrorArgs extends com.pulumi.resource
 
     /**
      * @return (Output)
-     * Output Only] Indicates the field in the request that caused the error. This property is optional.
+     * Indicates the field in the request that caused the error. This property is optional.
      * 
      */
     public Optional<Output<String>> location() {
@@ -116,7 +116,7 @@ public final class ResizeRequestStatusErrorErrorArgs extends com.pulumi.resource
 
         /**
          * @param code (Output)
-         * [Output Only] The error type identifier for this error.
+         * The error type identifier for this error.
          * 
          * @return builder
          * 
@@ -128,7 +128,7 @@ public final class ResizeRequestStatusErrorErrorArgs extends com.pulumi.resource
 
         /**
          * @param code (Output)
-         * [Output Only] The error type identifier for this error.
+         * The error type identifier for this error.
          * 
          * @return builder
          * 
@@ -139,7 +139,7 @@ public final class ResizeRequestStatusErrorErrorArgs extends com.pulumi.resource
 
         /**
          * @param errorDetails (Output)
-         * [Output Only] An optional list of messages that contain the error details. There is a set of defined message types to use for providing details.The syntax depends on the error code. For example, QuotaExceededInfo will have details when the error code is QUOTA_EXCEEDED.
+         * An array of messages that contain the error details. There is a set of defined message types to use for providing details.The syntax depends on the error code. For example, QuotaExceededInfo will have details when the error code is QUOTA_EXCEEDED.
          * Structure is documented below.
          * 
          * @return builder
@@ -152,7 +152,7 @@ public final class ResizeRequestStatusErrorErrorArgs extends com.pulumi.resource
 
         /**
          * @param errorDetails (Output)
-         * [Output Only] An optional list of messages that contain the error details. There is a set of defined message types to use for providing details.The syntax depends on the error code. For example, QuotaExceededInfo will have details when the error code is QUOTA_EXCEEDED.
+         * An array of messages that contain the error details. There is a set of defined message types to use for providing details.The syntax depends on the error code. For example, QuotaExceededInfo will have details when the error code is QUOTA_EXCEEDED.
          * Structure is documented below.
          * 
          * @return builder
@@ -164,7 +164,7 @@ public final class ResizeRequestStatusErrorErrorArgs extends com.pulumi.resource
 
         /**
          * @param errorDetails (Output)
-         * [Output Only] An optional list of messages that contain the error details. There is a set of defined message types to use for providing details.The syntax depends on the error code. For example, QuotaExceededInfo will have details when the error code is QUOTA_EXCEEDED.
+         * An array of messages that contain the error details. There is a set of defined message types to use for providing details.The syntax depends on the error code. For example, QuotaExceededInfo will have details when the error code is QUOTA_EXCEEDED.
          * Structure is documented below.
          * 
          * @return builder
@@ -176,7 +176,7 @@ public final class ResizeRequestStatusErrorErrorArgs extends com.pulumi.resource
 
         /**
          * @param location (Output)
-         * Output Only] Indicates the field in the request that caused the error. This property is optional.
+         * Indicates the field in the request that caused the error. This property is optional.
          * 
          * @return builder
          * 
@@ -188,7 +188,7 @@ public final class ResizeRequestStatusErrorErrorArgs extends com.pulumi.resource
 
         /**
          * @param location (Output)
-         * Output Only] Indicates the field in the request that caused the error. This property is optional.
+         * Indicates the field in the request that caused the error. This property is optional.
          * 
          * @return builder
          * 

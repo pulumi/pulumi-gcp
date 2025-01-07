@@ -15,6 +15,7 @@ import com.pulumi.gcp.artifactregistry.outputs.RepositoryDockerConfig;
 import com.pulumi.gcp.artifactregistry.outputs.RepositoryMavenConfig;
 import com.pulumi.gcp.artifactregistry.outputs.RepositoryRemoteRepositoryConfig;
 import com.pulumi.gcp.artifactregistry.outputs.RepositoryVirtualRepositoryConfig;
+import com.pulumi.gcp.artifactregistry.outputs.RepositoryVulnerabilityScanningConfig;
 import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
@@ -994,6 +995,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.artifactregistry.RepositoryArgs;
  * import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigArgs;
  * import com.pulumi.gcp.artifactregistry.inputs.RepositoryRemoteRepositoryConfigCommonRepositoryArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -1025,10 +1027,12 @@ import javax.annotation.Nullable;
  *             .remoteRepositoryConfig(RepositoryRemoteRepositoryConfigArgs.builder()
  *                 .description("pull-through cache of another Artifact Registry repository by URL")
  *                 .commonRepository(RepositoryRemoteRepositoryConfigCommonRepositoryArgs.builder()
- *                     .uri("https://us-central1-docker.pkg.dev//example-upstream-repo")
+ *                     .uri(String.format("https://us-central1-docker.pkg.dev/%s/example-upstream-repo", project.applyValue(getProjectResult -> getProjectResult.projectId())))
  *                     .build())
  *                 .build())
- *             .build());
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(upstreamRepo)
+ *                 .build());
  * 
  *     }
  * }
@@ -1117,6 +1121,47 @@ import javax.annotation.Nullable;
  * 
  *     }}{@code
  * }}{@code
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Artifact Registry Repository Vulnerability Scanning
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.artifactregistry.Repository;
+ * import com.pulumi.gcp.artifactregistry.RepositoryArgs;
+ * import com.pulumi.gcp.artifactregistry.inputs.RepositoryVulnerabilityScanningConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var my_repo = new Repository("my-repo", RepositoryArgs.builder()
+ *             .location("us-central1")
+ *             .repositoryId("my-repository")
+ *             .description("example docker repository with vulnerability scanning config")
+ *             .format("DOCKER")
+ *             .vulnerabilityScanningConfig(RepositoryVulnerabilityScanningConfigArgs.builder()
+ *                 .enablementConfig("INHERITED")
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
@@ -1487,6 +1532,22 @@ public class Repository extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<RepositoryVirtualRepositoryConfig>> virtualRepositoryConfig() {
         return Codegen.optional(this.virtualRepositoryConfig);
+    }
+    /**
+     * Configuration for vulnerability scanning of artifacts stored in this repository.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="vulnerabilityScanningConfig", refs={RepositoryVulnerabilityScanningConfig.class}, tree="[0]")
+    private Output<RepositoryVulnerabilityScanningConfig> vulnerabilityScanningConfig;
+
+    /**
+     * @return Configuration for vulnerability scanning of artifacts stored in this repository.
+     * Structure is documented below.
+     * 
+     */
+    public Output<RepositoryVulnerabilityScanningConfig> vulnerabilityScanningConfig() {
+        return this.vulnerabilityScanningConfig;
     }
 
     /**

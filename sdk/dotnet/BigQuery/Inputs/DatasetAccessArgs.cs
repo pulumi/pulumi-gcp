@@ -13,6 +13,14 @@ namespace Pulumi.Gcp.BigQuery.Inputs
     public sealed class DatasetAccessArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Condition for the binding. If CEL expression in this field is true, this
+        /// access binding will be considered.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("condition")]
+        public Input<Inputs.DatasetAccessConditionArgs>? Condition { get; set; }
+
+        /// <summary>
         /// Grants all resources of particular types in a particular dataset read access to the current dataset.
         /// Structure is documented below.
         /// </summary>

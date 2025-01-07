@@ -167,11 +167,15 @@ namespace Pulumi.Gcp.Compute
         public readonly string InternalIpv6Range;
         public readonly string Name;
         /// <summary>
+        /// The numeric unique identifier for the resource.
+        /// </summary>
+        public readonly int NetworkId;
+        /// <summary>
         /// Beta A full or partial URL of the network profile to apply to this network.
         /// </summary>
         public readonly string? NetworkProfile;
         /// <summary>
-        /// The numeric unique identifier for the resource.
+        /// (Deprecated) The numeric unique identifier for the resource. `numeric_id` is deprecated and will be removed in a future major release. Use `network_id` instead.
         /// </summary>
         public readonly string NumericId;
         public readonly string? Project;
@@ -196,6 +200,8 @@ namespace Pulumi.Gcp.Compute
 
             string name,
 
+            int networkId,
+
             string? networkProfile,
 
             string numericId,
@@ -211,6 +217,7 @@ namespace Pulumi.Gcp.Compute
             Id = id;
             InternalIpv6Range = internalIpv6Range;
             Name = name;
+            NetworkId = networkId;
             NetworkProfile = networkProfile;
             NumericId = numericId;
             Project = project;

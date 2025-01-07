@@ -11,26 +11,28 @@ import java.util.Objects;
 @CustomType
 public final class GetServiceTemplateScaling {
     /**
-     * @return Maximum number of serving instances that this resource should have.
+     * @return Maximum number of serving instances that this resource should have. Must not be less than minimum instance count. If absent, Cloud Run will calculate
+     * a default value based on the project&#39;s available container instances quota in the region and specified instance size.
      * 
      */
     private Integer maxInstanceCount;
     /**
-     * @return Minimum number of serving instances that this resource should have.
+     * @return Minimum number of serving instances that this resource should have. Defaults to 0. Must not be greater than maximum instance count.
      * 
      */
     private Integer minInstanceCount;
 
     private GetServiceTemplateScaling() {}
     /**
-     * @return Maximum number of serving instances that this resource should have.
+     * @return Maximum number of serving instances that this resource should have. Must not be less than minimum instance count. If absent, Cloud Run will calculate
+     * a default value based on the project&#39;s available container instances quota in the region and specified instance size.
      * 
      */
     public Integer maxInstanceCount() {
         return this.maxInstanceCount;
     }
     /**
-     * @return Minimum number of serving instances that this resource should have.
+     * @return Minimum number of serving instances that this resource should have. Defaults to 0. Must not be greater than maximum instance count.
      * 
      */
     public Integer minInstanceCount() {

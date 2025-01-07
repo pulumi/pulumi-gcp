@@ -15,27 +15,17 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Allows creation and management of a Google Cloud Platform project.
+ * Sets up a usage export bucket for a particular project.  A usage export bucket
+ * is a pre-configured GCS bucket which is set up to receive daily and monthly
+ * reports of the GCE resources used.
  * 
- * Projects created with this resource must be associated with an Organization.
- * See the [Organization documentation](https://cloud.google.com/resource-manager/docs/quickstarts) for more details.
+ * For more information see the [Docs](https://cloud.google.com/compute/docs/usage-export)
+ * and for further details, the
+ * [API Documentation](https://cloud.google.com/compute/docs/reference/rest/beta/projects/setUsageExportBucket).
  * 
- * The user or service account that is running this provider when creating a `gcp.organizations.Project`
- * resource must have `roles/resourcemanager.projectCreator` on the specified organization. See the
- * [Access Control for Organizations Using IAM](https://cloud.google.com/resource-manager/docs/access-control-org)
- * doc for more information.
- * 
- * &gt; This resource reads the specified billing account on every pulumi up and plan operation so you must have permissions on the specified billing account.
- * 
- * &gt; It is recommended to use the `constraints/compute.skipDefaultNetworkCreation` [constraint](https://www.terraform.io/docs/providers/google/r/google_organization_policy.html) to remove the default network instead of setting `auto_create_network` to false, when possible.
- * 
- * &gt; It may take a while for the attached tag bindings to be deleted after the project is scheduled to be deleted.
- * 
- * To get more information about projects, see:
- * 
- * * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v1/projects)
- * * How-to Guides
- *     * [Creating and managing projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects)
+ * &gt; **Note:** You should specify only one of these per project.  If there are two or more
+ * they will fight over which bucket the reports should be stored in.  It is
+ * safe to have multiple resources with the same backing bucket.
  * 
  * ## Example Usage
  * 
@@ -47,8 +37,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.Context;
  * import com.pulumi.Pulumi;
  * import com.pulumi.core.Output;
- * import com.pulumi.gcp.organizations.Project;
- * import com.pulumi.gcp.organizations.ProjectArgs;
+ * import com.pulumi.gcp.projects.UsageExportBucket;
+ * import com.pulumi.gcp.projects.UsageExportBucketArgs;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -62,92 +52,9 @@ import javax.annotation.Nullable;
  *     }
  * 
  *     public static void stack(Context ctx) {
- *         var myProject = new Project("myProject", ProjectArgs.builder()
- *             .name("My Project")
- *             .projectId("your-project-id")
- *             .orgId("1234567")
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * To create a project under a specific folder
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.organizations.Folder;
- * import com.pulumi.gcp.organizations.FolderArgs;
- * import com.pulumi.gcp.organizations.Project;
- * import com.pulumi.gcp.organizations.ProjectArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var department1 = new Folder("department1", FolderArgs.builder()
- *             .displayName("Department 1")
- *             .parent("organizations/1234567")
- *             .build());
- * 
- *         var myProject_in_a_folder = new Project("myProject-in-a-folder", ProjectArgs.builder()
- *             .name("My Project")
- *             .projectId("your-project-id")
- *             .folderId(department1.name())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
- * To create a project with a tag
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.organizations.Project;
- * import com.pulumi.gcp.organizations.ProjectArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var myProject = new Project("myProject", ProjectArgs.builder()
- *             .name("My Project")
- *             .projectId("your-project-id")
- *             .orgId("1234567")
- *             .tags(Map.of("1234567/env", "staging"))
+ *         var usageExport = new UsageExportBucket("usageExport", UsageExportBucketArgs.builder()
+ *             .project("development-project")
+ *             .bucketName("usage-tracking-bucket")
  *             .build());
  * 
  *     }
@@ -158,11 +65,11 @@ import javax.annotation.Nullable;
  * 
  * ## Import
  * 
- * Projects can be imported using the `project_id`, e.g.
+ * A project&#39;s Usage Export Bucket can be imported using this format:
  * 
  * * `{{project_id}}`
  * 
- * When using the `pulumi import` command, Projects can be imported using one of the formats above. For example:
+ * When using the `pulumi import` command, NAME_HERE can be imported using one of the formats above. For example:
  * 
  * ```sh
  * $ pulumi import gcp:projects/usageExportBucket:UsageExportBucket default {{project_id}}
@@ -174,12 +81,16 @@ public class UsageExportBucket extends com.pulumi.resources.CustomResource {
     /**
      * The bucket to store reports in.
      * 
+     * ***
+     * 
      */
     @Export(name="bucketName", refs={String.class}, tree="[0]")
     private Output<String> bucketName;
 
     /**
      * @return The bucket to store reports in.
+     * 
+     * ***
      * 
      */
     public Output<String> bucketName() {

@@ -149,6 +149,11 @@ type Backup struct {
 	State pulumi.StringOutput `pulumi:"state"`
 	// The size of the storage used by the backup. As backups share storage, this number is expected to change with backup creation/deletion.
 	StorageBytes pulumi.StringOutput `pulumi:"storageBytes"`
+	// A map of resource manager tags.
+	// Resource manager tag keys and values have the same definition as resource manager tags.
+	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+	// The field is ignored (both PUT & PATCH) when empty.
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 }
 
 // NewBackup registers a new resource with the given unique name, arguments, and options.
@@ -240,6 +245,11 @@ type backupState struct {
 	State *string `pulumi:"state"`
 	// The size of the storage used by the backup. As backups share storage, this number is expected to change with backup creation/deletion.
 	StorageBytes *string `pulumi:"storageBytes"`
+	// A map of resource manager tags.
+	// Resource manager tag keys and values have the same definition as resource manager tags.
+	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+	// The field is ignored (both PUT & PATCH) when empty.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 type BackupState struct {
@@ -288,6 +298,11 @@ type BackupState struct {
 	State pulumi.StringPtrInput
 	// The size of the storage used by the backup. As backups share storage, this number is expected to change with backup creation/deletion.
 	StorageBytes pulumi.StringPtrInput
+	// A map of resource manager tags.
+	// Resource manager tag keys and values have the same definition as resource manager tags.
+	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+	// The field is ignored (both PUT & PATCH) when empty.
+	Tags pulumi.StringMapInput
 }
 
 func (BackupState) ElementType() reflect.Type {
@@ -321,6 +336,11 @@ type backupArgs struct {
 	SourceFileShare string `pulumi:"sourceFileShare"`
 	// The resource name of the source Cloud Filestore instance, in the format projects/{projectId}/locations/{locationId}/instances/{instanceId}, used to create this backup.
 	SourceInstance string `pulumi:"sourceInstance"`
+	// A map of resource manager tags.
+	// Resource manager tag keys and values have the same definition as resource manager tags.
+	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+	// The field is ignored (both PUT & PATCH) when empty.
+	Tags map[string]string `pulumi:"tags"`
 }
 
 // The set of arguments for constructing a Backup resource.
@@ -351,6 +371,11 @@ type BackupArgs struct {
 	SourceFileShare pulumi.StringInput
 	// The resource name of the source Cloud Filestore instance, in the format projects/{projectId}/locations/{locationId}/instances/{instanceId}, used to create this backup.
 	SourceInstance pulumi.StringInput
+	// A map of resource manager tags.
+	// Resource manager tag keys and values have the same definition as resource manager tags.
+	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+	// The field is ignored (both PUT & PATCH) when empty.
+	Tags pulumi.StringMapInput
 }
 
 func (BackupArgs) ElementType() reflect.Type {
@@ -531,6 +556,14 @@ func (o BackupOutput) State() pulumi.StringOutput {
 // The size of the storage used by the backup. As backups share storage, this number is expected to change with backup creation/deletion.
 func (o BackupOutput) StorageBytes() pulumi.StringOutput {
 	return o.ApplyT(func(v *Backup) pulumi.StringOutput { return v.StorageBytes }).(pulumi.StringOutput)
+}
+
+// A map of resource manager tags.
+// Resource manager tag keys and values have the same definition as resource manager tags.
+// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/{tag_value_id}.
+// The field is ignored (both PUT & PATCH) when empty.
+func (o BackupOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Backup) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 type BackupArrayOutput struct{ *pulumi.OutputState }

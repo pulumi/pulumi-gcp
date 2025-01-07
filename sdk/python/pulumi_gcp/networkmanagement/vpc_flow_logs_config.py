@@ -620,6 +620,8 @@ class VpcFlowLogsConfig(pulumi.CustomResource):
                  vpn_tunnel: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        VPC Flow Logs Config is a resource that lets you configure Flow Logs for VPC, Interconnect attachments or VPN Tunnels.
+
         ## Example Usage
 
         ### Network Management Vpc Flow Logs Config Interconnect Full
@@ -848,6 +850,8 @@ class VpcFlowLogsConfig(pulumi.CustomResource):
                  args: VpcFlowLogsConfigArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        VPC Flow Logs Config is a resource that lets you configure Flow Logs for VPC, Interconnect attachments or VPN Tunnels.
+
         ## Example Usage
 
         ### Network Management Vpc Flow Logs Config Interconnect Full

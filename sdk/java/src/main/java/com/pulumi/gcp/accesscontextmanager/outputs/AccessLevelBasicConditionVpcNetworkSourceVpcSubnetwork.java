@@ -18,7 +18,7 @@ public final class AccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork {
      */
     private String network;
     /**
-     * @return CIDR block IP subnetwork specification. Must be IPv4.
+     * @return A list of CIDR block IP subnetwork specification. Must be IPv4.
      * 
      */
     private @Nullable List<String> vpcIpSubnetworks;
@@ -32,7 +32,7 @@ public final class AccessLevelBasicConditionVpcNetworkSourceVpcSubnetwork {
         return this.network;
     }
     /**
-     * @return CIDR block IP subnetwork specification. Must be IPv4.
+     * @return A list of CIDR block IP subnetwork specification. Must be IPv4.
      * 
      */
     public List<String> vpcIpSubnetworks() {

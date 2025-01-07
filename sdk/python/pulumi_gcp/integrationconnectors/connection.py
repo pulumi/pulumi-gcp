@@ -46,7 +46,7 @@ class ConnectionArgs:
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['ConnectionConfigVariableArgs']]] config_variables: Config Variables for the connection.
                Structure is documented below.
-        :param pulumi.Input[str] description: An arbitrary description for the Conection.
+        :param pulumi.Input[str] description: An arbitrary description for the Connection.
         :param pulumi.Input[Sequence[pulumi.Input['ConnectionDestinationConfigArgs']]] destination_configs: Define the Connectors target endpoint.
                Structure is documented below.
         :param pulumi.Input['ConnectionEventingConfigArgs'] eventing_config: Eventing Configuration of a connection
@@ -161,7 +161,7 @@ class ConnectionArgs:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        An arbitrary description for the Conection.
+        An arbitrary description for the Connection.
         """
         return pulumi.get(self, "description")
 
@@ -371,7 +371,7 @@ class _ConnectionState:
                Structure is documented below.
         :param pulumi.Input[str] connector_version_launch_stage: Flag to mark the version indicating the launch stage.
         :param pulumi.Input[str] create_time: Time the Namespace was created in UTC.
-        :param pulumi.Input[str] description: An arbitrary description for the Conection.
+        :param pulumi.Input[str] description: An arbitrary description for the Connection.
         :param pulumi.Input[Sequence[pulumi.Input['ConnectionDestinationConfigArgs']]] destination_configs: Define the Connectors target endpoint.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -560,7 +560,7 @@ class _ConnectionState:
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
-        An arbitrary description for the Conection.
+        An arbitrary description for the Connection.
         """
         return pulumi.get(self, "description")
 
@@ -1151,7 +1151,7 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionConfigVariableArgs', 'ConnectionConfigVariableArgsDict']]]] config_variables: Config Variables for the connection.
                Structure is documented below.
         :param pulumi.Input[str] connector_version: connectorVersion of the Connector.
-        :param pulumi.Input[str] description: An arbitrary description for the Conection.
+        :param pulumi.Input[str] description: An arbitrary description for the Connection.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionDestinationConfigArgs', 'ConnectionDestinationConfigArgsDict']]]] destination_configs: Define the Connectors target endpoint.
                Structure is documented below.
         :param pulumi.Input[Union['ConnectionEventingConfigArgs', 'ConnectionEventingConfigArgsDict']] eventing_config: Eventing Configuration of a connection
@@ -1609,7 +1609,7 @@ class Connection(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] connector_version_launch_stage: Flag to mark the version indicating the launch stage.
         :param pulumi.Input[str] create_time: Time the Namespace was created in UTC.
-        :param pulumi.Input[str] description: An arbitrary description for the Conection.
+        :param pulumi.Input[str] description: An arbitrary description for the Connection.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionDestinationConfigArgs', 'ConnectionDestinationConfigArgsDict']]]] destination_configs: Define the Connectors target endpoint.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -1747,7 +1747,7 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter
     def description(self) -> pulumi.Output[Optional[str]]:
         """
-        An arbitrary description for the Conection.
+        An arbitrary description for the Connection.
         """
         return pulumi.get(self, "description")
 

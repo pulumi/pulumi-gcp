@@ -30,14 +30,12 @@ class ResizeRequestArgs:
                  requested_run_duration: Optional[pulumi.Input['ResizeRequestRequestedRunDurationArgs']] = None):
         """
         The set of arguments for constructing a ResizeRequest resource.
-        :param pulumi.Input[str] instance_group_manager: The name of the managed instance group. The name should conform to RFC1035 or be a resource ID.
-               Authorization requires the following IAM permission on the specified resource instanceGroupManager:
-               *compute.instanceGroupManagers.update
+        :param pulumi.Input[str] instance_group_manager: The reference of the instance group manager this ResizeRequest is a part of.
                
                
                - - -
         :param pulumi.Input[int] resize_by: The number of instances to be created by this resize request. The group's target size will be increased by this number.
-        :param pulumi.Input[str] zone: Name of the compute zone scoping this request. Name should conform to RFC1035.
+        :param pulumi.Input[str] zone: The reference of the compute zone scoping this request.
         :param pulumi.Input[str] description: An optional description of this resize-request.
         :param pulumi.Input[str] name: The name of this resize request. The name must be 1-63 characters long, and comply with RFC1035.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -61,9 +59,7 @@ class ResizeRequestArgs:
     @pulumi.getter(name="instanceGroupManager")
     def instance_group_manager(self) -> pulumi.Input[str]:
         """
-        The name of the managed instance group. The name should conform to RFC1035 or be a resource ID.
-        Authorization requires the following IAM permission on the specified resource instanceGroupManager:
-        *compute.instanceGroupManagers.update
+        The reference of the instance group manager this ResizeRequest is a part of.
 
 
         - - -
@@ -90,7 +86,7 @@ class ResizeRequestArgs:
     @pulumi.getter
     def zone(self) -> pulumi.Input[str]:
         """
-        Name of the compute zone scoping this request. Name should conform to RFC1035.
+        The reference of the compute zone scoping this request.
         """
         return pulumi.get(self, "zone")
 
@@ -166,9 +162,7 @@ class _ResizeRequestState:
         Input properties used for looking up and filtering ResizeRequest resources.
         :param pulumi.Input[str] creation_timestamp: The creation timestamp for this resize request in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resize-request.
-        :param pulumi.Input[str] instance_group_manager: The name of the managed instance group. The name should conform to RFC1035 or be a resource ID.
-               Authorization requires the following IAM permission on the specified resource instanceGroupManager:
-               *compute.instanceGroupManagers.update
+        :param pulumi.Input[str] instance_group_manager: The reference of the instance group manager this ResizeRequest is a part of.
                
                
                - - -
@@ -178,10 +172,10 @@ class _ResizeRequestState:
         :param pulumi.Input['ResizeRequestRequestedRunDurationArgs'] requested_run_duration: Requested run duration for instances that will be created by this request. At the end of the run duration instance will be deleted.
                Structure is documented below.
         :param pulumi.Input[int] resize_by: The number of instances to be created by this resize request. The group's target size will be increased by this number.
-        :param pulumi.Input[str] state: [Output only] Current state of the request.
-        :param pulumi.Input[Sequence[pulumi.Input['ResizeRequestStatusArgs']]] statuses: [Output only] Status of the request.
+        :param pulumi.Input[str] state: Current state of the request.
+        :param pulumi.Input[Sequence[pulumi.Input['ResizeRequestStatusArgs']]] statuses: Status of the request.
                Structure is documented below.
-        :param pulumi.Input[str] zone: Name of the compute zone scoping this request. Name should conform to RFC1035.
+        :param pulumi.Input[str] zone: The reference of the compute zone scoping this request.
         """
         if creation_timestamp is not None:
             pulumi.set(__self__, "creation_timestamp", creation_timestamp)
@@ -232,9 +226,7 @@ class _ResizeRequestState:
     @pulumi.getter(name="instanceGroupManager")
     def instance_group_manager(self) -> Optional[pulumi.Input[str]]:
         """
-        The name of the managed instance group. The name should conform to RFC1035 or be a resource ID.
-        Authorization requires the following IAM permission on the specified resource instanceGroupManager:
-        *compute.instanceGroupManagers.update
+        The reference of the instance group manager this ResizeRequest is a part of.
 
 
         - - -
@@ -299,7 +291,7 @@ class _ResizeRequestState:
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
-        [Output only] Current state of the request.
+        Current state of the request.
         """
         return pulumi.get(self, "state")
 
@@ -311,7 +303,7 @@ class _ResizeRequestState:
     @pulumi.getter
     def statuses(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ResizeRequestStatusArgs']]]]:
         """
-        [Output only] Status of the request.
+        Status of the request.
         Structure is documented below.
         """
         return pulumi.get(self, "statuses")
@@ -324,7 +316,7 @@ class _ResizeRequestState:
     @pulumi.getter
     def zone(self) -> Optional[pulumi.Input[str]]:
         """
-        Name of the compute zone scoping this request. Name should conform to RFC1035.
+        The reference of the compute zone scoping this request.
         """
         return pulumi.get(self, "zone")
 
@@ -351,13 +343,13 @@ class ResizeRequest(pulumi.CustomResource):
 
         Resize Requests are the Managed Instance Group implementation of Dynamic Workload Scheduler Flex Start.
 
-        With Dynamic Workload Scheduler in Flex Start mode, you submit a GPU capacity request for your AI/ML jobs by indicating how many you need, a duration, and your preferred region. Dynamic Workload Scheduler intelligently persists the request; once the capacity becomes available, it automatically provisions your VMs enabling your workloads to run continuously for the entire duration of the capacity allocation.
+        With Dynamic Workload Scheduler in Flex Start mode, you submit a GPU capacity request for your AI/ML jobs by indicating how many you need, a duration, and your preferred zone. Dynamic Workload Scheduler intelligently persists the request; once the capacity becomes available, it automatically provisions your VMs enabling your workloads to run continuously for the entire duration of the capacity allocation.
 
         To get more information about ResizeRequest, see:
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagerResizeRequests)
         * How-to Guides
-            * [QUICKSTART_TITLE](https://cloud.google.com/compute/docs/instance-groups/create-resize-requests-mig)
+            * [About resize requests in a MIG](https://cloud.google.com/compute/docs/instance-groups/about-resize-requests-mig)
 
         ## Example Usage
 
@@ -456,9 +448,7 @@ class ResizeRequest(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] description: An optional description of this resize-request.
-        :param pulumi.Input[str] instance_group_manager: The name of the managed instance group. The name should conform to RFC1035 or be a resource ID.
-               Authorization requires the following IAM permission on the specified resource instanceGroupManager:
-               *compute.instanceGroupManagers.update
+        :param pulumi.Input[str] instance_group_manager: The reference of the instance group manager this ResizeRequest is a part of.
                
                
                - - -
@@ -468,7 +458,7 @@ class ResizeRequest(pulumi.CustomResource):
         :param pulumi.Input[Union['ResizeRequestRequestedRunDurationArgs', 'ResizeRequestRequestedRunDurationArgsDict']] requested_run_duration: Requested run duration for instances that will be created by this request. At the end of the run duration instance will be deleted.
                Structure is documented below.
         :param pulumi.Input[int] resize_by: The number of instances to be created by this resize request. The group's target size will be increased by this number.
-        :param pulumi.Input[str] zone: Name of the compute zone scoping this request. Name should conform to RFC1035.
+        :param pulumi.Input[str] zone: The reference of the compute zone scoping this request.
         """
         ...
     @overload
@@ -481,13 +471,13 @@ class ResizeRequest(pulumi.CustomResource):
 
         Resize Requests are the Managed Instance Group implementation of Dynamic Workload Scheduler Flex Start.
 
-        With Dynamic Workload Scheduler in Flex Start mode, you submit a GPU capacity request for your AI/ML jobs by indicating how many you need, a duration, and your preferred region. Dynamic Workload Scheduler intelligently persists the request; once the capacity becomes available, it automatically provisions your VMs enabling your workloads to run continuously for the entire duration of the capacity allocation.
+        With Dynamic Workload Scheduler in Flex Start mode, you submit a GPU capacity request for your AI/ML jobs by indicating how many you need, a duration, and your preferred zone. Dynamic Workload Scheduler intelligently persists the request; once the capacity becomes available, it automatically provisions your VMs enabling your workloads to run continuously for the entire duration of the capacity allocation.
 
         To get more information about ResizeRequest, see:
 
         * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/instanceGroupManagerResizeRequests)
         * How-to Guides
-            * [QUICKSTART_TITLE](https://cloud.google.com/compute/docs/instance-groups/create-resize-requests-mig)
+            * [About resize requests in a MIG](https://cloud.google.com/compute/docs/instance-groups/about-resize-requests-mig)
 
         ## Example Usage
 
@@ -659,9 +649,7 @@ class ResizeRequest(pulumi.CustomResource):
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] creation_timestamp: The creation timestamp for this resize request in RFC3339 text format.
         :param pulumi.Input[str] description: An optional description of this resize-request.
-        :param pulumi.Input[str] instance_group_manager: The name of the managed instance group. The name should conform to RFC1035 or be a resource ID.
-               Authorization requires the following IAM permission on the specified resource instanceGroupManager:
-               *compute.instanceGroupManagers.update
+        :param pulumi.Input[str] instance_group_manager: The reference of the instance group manager this ResizeRequest is a part of.
                
                
                - - -
@@ -671,10 +659,10 @@ class ResizeRequest(pulumi.CustomResource):
         :param pulumi.Input[Union['ResizeRequestRequestedRunDurationArgs', 'ResizeRequestRequestedRunDurationArgsDict']] requested_run_duration: Requested run duration for instances that will be created by this request. At the end of the run duration instance will be deleted.
                Structure is documented below.
         :param pulumi.Input[int] resize_by: The number of instances to be created by this resize request. The group's target size will be increased by this number.
-        :param pulumi.Input[str] state: [Output only] Current state of the request.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ResizeRequestStatusArgs', 'ResizeRequestStatusArgsDict']]]] statuses: [Output only] Status of the request.
+        :param pulumi.Input[str] state: Current state of the request.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ResizeRequestStatusArgs', 'ResizeRequestStatusArgsDict']]]] statuses: Status of the request.
                Structure is documented below.
-        :param pulumi.Input[str] zone: Name of the compute zone scoping this request. Name should conform to RFC1035.
+        :param pulumi.Input[str] zone: The reference of the compute zone scoping this request.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -712,9 +700,7 @@ class ResizeRequest(pulumi.CustomResource):
     @pulumi.getter(name="instanceGroupManager")
     def instance_group_manager(self) -> pulumi.Output[str]:
         """
-        The name of the managed instance group. The name should conform to RFC1035 or be a resource ID.
-        Authorization requires the following IAM permission on the specified resource instanceGroupManager:
-        *compute.instanceGroupManagers.update
+        The reference of the instance group manager this ResizeRequest is a part of.
 
 
         - - -
@@ -759,7 +745,7 @@ class ResizeRequest(pulumi.CustomResource):
     @pulumi.getter
     def state(self) -> pulumi.Output[str]:
         """
-        [Output only] Current state of the request.
+        Current state of the request.
         """
         return pulumi.get(self, "state")
 
@@ -767,7 +753,7 @@ class ResizeRequest(pulumi.CustomResource):
     @pulumi.getter
     def statuses(self) -> pulumi.Output[Sequence['outputs.ResizeRequestStatus']]:
         """
-        [Output only] Status of the request.
+        Status of the request.
         Structure is documented below.
         """
         return pulumi.get(self, "statuses")
@@ -776,7 +762,7 @@ class ResizeRequest(pulumi.CustomResource):
     @pulumi.getter
     def zone(self) -> pulumi.Output[str]:
         """
-        Name of the compute zone scoping this request. Name should conform to RFC1035.
+        The reference of the compute zone scoping this request.
         """
         return pulumi.get(self, "zone")
 

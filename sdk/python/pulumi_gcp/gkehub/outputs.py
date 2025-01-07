@@ -88,6 +88,37 @@ __all__ = [
     'ScopeRbacRoleBindingRole',
     'ScopeRbacRoleBindingState',
     'ScopeState',
+    'GetFeatureFleetDefaultMemberConfigResult',
+    'GetFeatureFleetDefaultMemberConfigConfigmanagementResult',
+    'GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncResult',
+    'GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitResult',
+    'GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciResult',
+    'GetFeatureFleetDefaultMemberConfigMeshResult',
+    'GetFeatureFleetDefaultMemberConfigPolicycontrollerResult',
+    'GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigResult',
+    'GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigResult',
+    'GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceResult',
+    'GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitResult',
+    'GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestResult',
+    'GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationResult',
+    'GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringResult',
+    'GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentResult',
+    'GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleResult',
+    'GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryResult',
+    'GetFeatureResourceStateResult',
+    'GetFeatureSpecResult',
+    'GetFeatureSpecClusterupgradeResult',
+    'GetFeatureSpecClusterupgradeGkeUpgradeOverrideResult',
+    'GetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionResult',
+    'GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeResult',
+    'GetFeatureSpecClusterupgradePostConditionResult',
+    'GetFeatureSpecFleetobservabilityResult',
+    'GetFeatureSpecFleetobservabilityLoggingConfigResult',
+    'GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigResult',
+    'GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigResult',
+    'GetFeatureSpecMulticlusteringressResult',
+    'GetFeatureStateResult',
+    'GetFeatureStateStateResult',
     'GetMembershipBindingStateResult',
 ]
 
@@ -3655,6 +3686,1128 @@ class ScopeState(dict):
         Code describes the state of a Scope resource.
         """
         return pulumi.get(self, "code")
+
+
+@pulumi.output_type
+class GetFeatureFleetDefaultMemberConfigResult(dict):
+    def __init__(__self__, *,
+                 configmanagements: Sequence['outputs.GetFeatureFleetDefaultMemberConfigConfigmanagementResult'],
+                 meshes: Sequence['outputs.GetFeatureFleetDefaultMemberConfigMeshResult'],
+                 policycontrollers: Sequence['outputs.GetFeatureFleetDefaultMemberConfigPolicycontrollerResult']):
+        """
+        :param Sequence['GetFeatureFleetDefaultMemberConfigConfigmanagementArgs'] configmanagements: Config Management spec
+        :param Sequence['GetFeatureFleetDefaultMemberConfigMeshArgs'] meshes: Service Mesh spec
+        :param Sequence['GetFeatureFleetDefaultMemberConfigPolicycontrollerArgs'] policycontrollers: Policy Controller spec
+        """
+        pulumi.set(__self__, "configmanagements", configmanagements)
+        pulumi.set(__self__, "meshes", meshes)
+        pulumi.set(__self__, "policycontrollers", policycontrollers)
+
+    @property
+    @pulumi.getter
+    def configmanagements(self) -> Sequence['outputs.GetFeatureFleetDefaultMemberConfigConfigmanagementResult']:
+        """
+        Config Management spec
+        """
+        return pulumi.get(self, "configmanagements")
+
+    @property
+    @pulumi.getter
+    def meshes(self) -> Sequence['outputs.GetFeatureFleetDefaultMemberConfigMeshResult']:
+        """
+        Service Mesh spec
+        """
+        return pulumi.get(self, "meshes")
+
+    @property
+    @pulumi.getter
+    def policycontrollers(self) -> Sequence['outputs.GetFeatureFleetDefaultMemberConfigPolicycontrollerResult']:
+        """
+        Policy Controller spec
+        """
+        return pulumi.get(self, "policycontrollers")
+
+
+@pulumi.output_type
+class GetFeatureFleetDefaultMemberConfigConfigmanagementResult(dict):
+    def __init__(__self__, *,
+                 config_syncs: Sequence['outputs.GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncResult'],
+                 management: str,
+                 version: str):
+        """
+        :param Sequence['GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncArgs'] config_syncs: ConfigSync configuration for the cluster
+        :param str management: Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades. Possible values: ["MANAGEMENT_UNSPECIFIED", "MANAGEMENT_AUTOMATIC", "MANAGEMENT_MANUAL"]
+        :param str version: Version of Config Sync installed
+        """
+        pulumi.set(__self__, "config_syncs", config_syncs)
+        pulumi.set(__self__, "management", management)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="configSyncs")
+    def config_syncs(self) -> Sequence['outputs.GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncResult']:
+        """
+        ConfigSync configuration for the cluster
+        """
+        return pulumi.get(self, "config_syncs")
+
+    @property
+    @pulumi.getter
+    def management(self) -> str:
+        """
+        Set this field to MANAGEMENT_AUTOMATIC to enable Config Sync auto-upgrades, and set this field to MANAGEMENT_MANUAL or MANAGEMENT_UNSPECIFIED to disable Config Sync auto-upgrades. Possible values: ["MANAGEMENT_UNSPECIFIED", "MANAGEMENT_AUTOMATIC", "MANAGEMENT_MANUAL"]
+        """
+        return pulumi.get(self, "management")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        Version of Config Sync installed
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncResult(dict):
+    def __init__(__self__, *,
+                 enabled: bool,
+                 gits: Sequence['outputs.GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitResult'],
+                 ocis: Sequence['outputs.GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciResult'],
+                 prevent_drift: bool,
+                 source_format: str):
+        """
+        :param bool enabled: Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
+        :param Sequence['GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitArgs'] gits: Git repo configuration for the cluster
+        :param Sequence['GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciArgs'] ocis: OCI repo configuration for the cluster
+        :param bool prevent_drift: Set to true to enable the Config Sync admission webhook to prevent drifts. If set to 'false', disables the Config Sync admission webhook and does not prevent drifts.
+        :param str source_format: Specifies whether the Config Sync Repo is in hierarchical or unstructured mode
+        """
+        pulumi.set(__self__, "enabled", enabled)
+        pulumi.set(__self__, "gits", gits)
+        pulumi.set(__self__, "ocis", ocis)
+        pulumi.set(__self__, "prevent_drift", prevent_drift)
+        pulumi.set(__self__, "source_format", source_format)
+
+    @property
+    @pulumi.getter
+    def enabled(self) -> bool:
+        """
+        Enables the installation of ConfigSync. If set to true, ConfigSync resources will be created and the other ConfigSync fields will be applied if exist. If set to false, all other ConfigSync fields will be ignored, ConfigSync resources will be deleted. If omitted, ConfigSync resources will be managed depends on the presence of the git or oci field.
+        """
+        return pulumi.get(self, "enabled")
+
+    @property
+    @pulumi.getter
+    def gits(self) -> Sequence['outputs.GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitResult']:
+        """
+        Git repo configuration for the cluster
+        """
+        return pulumi.get(self, "gits")
+
+    @property
+    @pulumi.getter
+    def ocis(self) -> Sequence['outputs.GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciResult']:
+        """
+        OCI repo configuration for the cluster
+        """
+        return pulumi.get(self, "ocis")
+
+    @property
+    @pulumi.getter(name="preventDrift")
+    def prevent_drift(self) -> bool:
+        """
+        Set to true to enable the Config Sync admission webhook to prevent drifts. If set to 'false', disables the Config Sync admission webhook and does not prevent drifts.
+        """
+        return pulumi.get(self, "prevent_drift")
+
+    @property
+    @pulumi.getter(name="sourceFormat")
+    def source_format(self) -> str:
+        """
+        Specifies whether the Config Sync Repo is in hierarchical or unstructured mode
+        """
+        return pulumi.get(self, "source_format")
+
+
+@pulumi.output_type
+class GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncGitResult(dict):
+    def __init__(__self__, *,
+                 gcp_service_account_email: str,
+                 https_proxy: str,
+                 policy_dir: str,
+                 secret_type: str,
+                 sync_branch: str,
+                 sync_repo: str,
+                 sync_rev: str,
+                 sync_wait_secs: str):
+        """
+        :param str gcp_service_account_email: The Google Cloud Service Account Email used for auth when secretType is gcpServiceAccount
+        :param str https_proxy: URL for the HTTPS Proxy to be used when communicating with the Git repo
+        :param str policy_dir: The path within the Git repository that represents the top level of the repo to sync
+        :param str secret_type: Type of secret configured for access to the Git repo
+        :param str sync_branch: The branch of the repository to sync from. Default: master
+        :param str sync_repo: The URL of the Git repository to use as the source of truth
+        :param str sync_rev: Git revision (tag or hash) to check out. Default HEAD
+        :param str sync_wait_secs: Period in seconds between consecutive syncs. Default: 15
+        """
+        pulumi.set(__self__, "gcp_service_account_email", gcp_service_account_email)
+        pulumi.set(__self__, "https_proxy", https_proxy)
+        pulumi.set(__self__, "policy_dir", policy_dir)
+        pulumi.set(__self__, "secret_type", secret_type)
+        pulumi.set(__self__, "sync_branch", sync_branch)
+        pulumi.set(__self__, "sync_repo", sync_repo)
+        pulumi.set(__self__, "sync_rev", sync_rev)
+        pulumi.set(__self__, "sync_wait_secs", sync_wait_secs)
+
+    @property
+    @pulumi.getter(name="gcpServiceAccountEmail")
+    def gcp_service_account_email(self) -> str:
+        """
+        The Google Cloud Service Account Email used for auth when secretType is gcpServiceAccount
+        """
+        return pulumi.get(self, "gcp_service_account_email")
+
+    @property
+    @pulumi.getter(name="httpsProxy")
+    def https_proxy(self) -> str:
+        """
+        URL for the HTTPS Proxy to be used when communicating with the Git repo
+        """
+        return pulumi.get(self, "https_proxy")
+
+    @property
+    @pulumi.getter(name="policyDir")
+    def policy_dir(self) -> str:
+        """
+        The path within the Git repository that represents the top level of the repo to sync
+        """
+        return pulumi.get(self, "policy_dir")
+
+    @property
+    @pulumi.getter(name="secretType")
+    def secret_type(self) -> str:
+        """
+        Type of secret configured for access to the Git repo
+        """
+        return pulumi.get(self, "secret_type")
+
+    @property
+    @pulumi.getter(name="syncBranch")
+    def sync_branch(self) -> str:
+        """
+        The branch of the repository to sync from. Default: master
+        """
+        return pulumi.get(self, "sync_branch")
+
+    @property
+    @pulumi.getter(name="syncRepo")
+    def sync_repo(self) -> str:
+        """
+        The URL of the Git repository to use as the source of truth
+        """
+        return pulumi.get(self, "sync_repo")
+
+    @property
+    @pulumi.getter(name="syncRev")
+    def sync_rev(self) -> str:
+        """
+        Git revision (tag or hash) to check out. Default HEAD
+        """
+        return pulumi.get(self, "sync_rev")
+
+    @property
+    @pulumi.getter(name="syncWaitSecs")
+    def sync_wait_secs(self) -> str:
+        """
+        Period in seconds between consecutive syncs. Default: 15
+        """
+        return pulumi.get(self, "sync_wait_secs")
+
+
+@pulumi.output_type
+class GetFeatureFleetDefaultMemberConfigConfigmanagementConfigSyncOciResult(dict):
+    def __init__(__self__, *,
+                 gcp_service_account_email: str,
+                 policy_dir: str,
+                 secret_type: str,
+                 sync_repo: str,
+                 sync_wait_secs: str,
+                 version: str):
+        """
+        :param str gcp_service_account_email: The Google Cloud Service Account Email used for auth when secretType is gcpServiceAccount
+        :param str policy_dir: The absolute path of the directory that contains the local resources. Default: the root directory of the image
+        :param str secret_type: Type of secret configured for access to the Git repo
+        :param str sync_repo: The OCI image repository URL for the package to sync from
+        :param str sync_wait_secs: Period in seconds between consecutive syncs. Default: 15
+        :param str version: Version of Config Sync installed
+        """
+        pulumi.set(__self__, "gcp_service_account_email", gcp_service_account_email)
+        pulumi.set(__self__, "policy_dir", policy_dir)
+        pulumi.set(__self__, "secret_type", secret_type)
+        pulumi.set(__self__, "sync_repo", sync_repo)
+        pulumi.set(__self__, "sync_wait_secs", sync_wait_secs)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="gcpServiceAccountEmail")
+    def gcp_service_account_email(self) -> str:
+        """
+        The Google Cloud Service Account Email used for auth when secretType is gcpServiceAccount
+        """
+        return pulumi.get(self, "gcp_service_account_email")
+
+    @property
+    @pulumi.getter(name="policyDir")
+    def policy_dir(self) -> str:
+        """
+        The absolute path of the directory that contains the local resources. Default: the root directory of the image
+        """
+        return pulumi.get(self, "policy_dir")
+
+    @property
+    @pulumi.getter(name="secretType")
+    def secret_type(self) -> str:
+        """
+        Type of secret configured for access to the Git repo
+        """
+        return pulumi.get(self, "secret_type")
+
+    @property
+    @pulumi.getter(name="syncRepo")
+    def sync_repo(self) -> str:
+        """
+        The OCI image repository URL for the package to sync from
+        """
+        return pulumi.get(self, "sync_repo")
+
+    @property
+    @pulumi.getter(name="syncWaitSecs")
+    def sync_wait_secs(self) -> str:
+        """
+        Period in seconds between consecutive syncs. Default: 15
+        """
+        return pulumi.get(self, "sync_wait_secs")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        Version of Config Sync installed
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GetFeatureFleetDefaultMemberConfigMeshResult(dict):
+    def __init__(__self__, *,
+                 management: str):
+        """
+        :param str management: Whether to automatically manage Service Mesh Possible values: ["MANAGEMENT_UNSPECIFIED", "MANAGEMENT_AUTOMATIC", "MANAGEMENT_MANUAL"]
+        """
+        pulumi.set(__self__, "management", management)
+
+    @property
+    @pulumi.getter
+    def management(self) -> str:
+        """
+        Whether to automatically manage Service Mesh Possible values: ["MANAGEMENT_UNSPECIFIED", "MANAGEMENT_AUTOMATIC", "MANAGEMENT_MANUAL"]
+        """
+        return pulumi.get(self, "management")
+
+
+@pulumi.output_type
+class GetFeatureFleetDefaultMemberConfigPolicycontrollerResult(dict):
+    def __init__(__self__, *,
+                 policy_controller_hub_configs: Sequence['outputs.GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigResult'],
+                 version: str):
+        """
+        :param Sequence['GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigArgs'] policy_controller_hub_configs: Configuration of Policy Controller
+        :param str version: Configures the version of Policy Controller
+        """
+        pulumi.set(__self__, "policy_controller_hub_configs", policy_controller_hub_configs)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter(name="policyControllerHubConfigs")
+    def policy_controller_hub_configs(self) -> Sequence['outputs.GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigResult']:
+        """
+        Configuration of Policy Controller
+        """
+        return pulumi.get(self, "policy_controller_hub_configs")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        Configures the version of Policy Controller
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigResult(dict):
+    def __init__(__self__, *,
+                 audit_interval_seconds: int,
+                 constraint_violation_limit: int,
+                 deployment_configs: Sequence['outputs.GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigResult'],
+                 exemptable_namespaces: Sequence[str],
+                 install_spec: str,
+                 log_denies_enabled: bool,
+                 monitorings: Sequence['outputs.GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringResult'],
+                 mutation_enabled: bool,
+                 policy_contents: Sequence['outputs.GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentResult'],
+                 referential_rules_enabled: bool):
+        """
+        :param int audit_interval_seconds: Interval for Policy Controller Audit scans (in seconds). When set to 0, this disables audit functionality altogether.
+        :param int constraint_violation_limit: The maximum number of audit violations to be stored in a constraint. If not set, the internal default of 20 will be used.
+        :param Sequence['GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigArgs'] deployment_configs: Map of deployment configs to deployments ("admission", "audit", "mutation").
+        :param Sequence[str] exemptable_namespaces: The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
+        :param str install_spec: Configures the mode of the Policy Controller installation Possible values: ["INSTALL_SPEC_UNSPECIFIED", "INSTALL_SPEC_NOT_INSTALLED", "INSTALL_SPEC_ENABLED", "INSTALL_SPEC_SUSPENDED", "INSTALL_SPEC_DETACHED"]
+        :param bool log_denies_enabled: Logs all denies and dry run failures.
+        :param Sequence['GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringArgs'] monitorings: Monitoring specifies the configuration of monitoring Policy Controller.
+        :param bool mutation_enabled: Enables the ability to mutate resources using Policy Controller.
+        :param Sequence['GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentArgs'] policy_contents: Specifies the desired policy content on the cluster.
+        :param bool referential_rules_enabled: Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
+        """
+        pulumi.set(__self__, "audit_interval_seconds", audit_interval_seconds)
+        pulumi.set(__self__, "constraint_violation_limit", constraint_violation_limit)
+        pulumi.set(__self__, "deployment_configs", deployment_configs)
+        pulumi.set(__self__, "exemptable_namespaces", exemptable_namespaces)
+        pulumi.set(__self__, "install_spec", install_spec)
+        pulumi.set(__self__, "log_denies_enabled", log_denies_enabled)
+        pulumi.set(__self__, "monitorings", monitorings)
+        pulumi.set(__self__, "mutation_enabled", mutation_enabled)
+        pulumi.set(__self__, "policy_contents", policy_contents)
+        pulumi.set(__self__, "referential_rules_enabled", referential_rules_enabled)
+
+    @property
+    @pulumi.getter(name="auditIntervalSeconds")
+    def audit_interval_seconds(self) -> int:
+        """
+        Interval for Policy Controller Audit scans (in seconds). When set to 0, this disables audit functionality altogether.
+        """
+        return pulumi.get(self, "audit_interval_seconds")
+
+    @property
+    @pulumi.getter(name="constraintViolationLimit")
+    def constraint_violation_limit(self) -> int:
+        """
+        The maximum number of audit violations to be stored in a constraint. If not set, the internal default of 20 will be used.
+        """
+        return pulumi.get(self, "constraint_violation_limit")
+
+    @property
+    @pulumi.getter(name="deploymentConfigs")
+    def deployment_configs(self) -> Sequence['outputs.GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigResult']:
+        """
+        Map of deployment configs to deployments ("admission", "audit", "mutation").
+        """
+        return pulumi.get(self, "deployment_configs")
+
+    @property
+    @pulumi.getter(name="exemptableNamespaces")
+    def exemptable_namespaces(self) -> Sequence[str]:
+        """
+        The set of namespaces that are excluded from Policy Controller checks. Namespaces do not need to currently exist on the cluster.
+        """
+        return pulumi.get(self, "exemptable_namespaces")
+
+    @property
+    @pulumi.getter(name="installSpec")
+    def install_spec(self) -> str:
+        """
+        Configures the mode of the Policy Controller installation Possible values: ["INSTALL_SPEC_UNSPECIFIED", "INSTALL_SPEC_NOT_INSTALLED", "INSTALL_SPEC_ENABLED", "INSTALL_SPEC_SUSPENDED", "INSTALL_SPEC_DETACHED"]
+        """
+        return pulumi.get(self, "install_spec")
+
+    @property
+    @pulumi.getter(name="logDeniesEnabled")
+    def log_denies_enabled(self) -> bool:
+        """
+        Logs all denies and dry run failures.
+        """
+        return pulumi.get(self, "log_denies_enabled")
+
+    @property
+    @pulumi.getter
+    def monitorings(self) -> Sequence['outputs.GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringResult']:
+        """
+        Monitoring specifies the configuration of monitoring Policy Controller.
+        """
+        return pulumi.get(self, "monitorings")
+
+    @property
+    @pulumi.getter(name="mutationEnabled")
+    def mutation_enabled(self) -> bool:
+        """
+        Enables the ability to mutate resources using Policy Controller.
+        """
+        return pulumi.get(self, "mutation_enabled")
+
+    @property
+    @pulumi.getter(name="policyContents")
+    def policy_contents(self) -> Sequence['outputs.GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentResult']:
+        """
+        Specifies the desired policy content on the cluster.
+        """
+        return pulumi.get(self, "policy_contents")
+
+    @property
+    @pulumi.getter(name="referentialRulesEnabled")
+    def referential_rules_enabled(self) -> bool:
+        """
+        Enables the ability to use Constraint Templates that reference to objects other than the object currently being evaluated.
+        """
+        return pulumi.get(self, "referential_rules_enabled")
+
+
+@pulumi.output_type
+class GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigResult(dict):
+    def __init__(__self__, *,
+                 component: str,
+                 container_resources: Sequence['outputs.GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceResult'],
+                 pod_affinity: str,
+                 pod_tolerations: Sequence['outputs.GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationResult'],
+                 replica_count: int):
+        """
+        :param Sequence['GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceArgs'] container_resources: Container resource requirements.
+        :param str pod_affinity: Pod affinity configuration. Possible values: ["AFFINITY_UNSPECIFIED", "NO_AFFINITY", "ANTI_AFFINITY"]
+        :param Sequence['GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationArgs'] pod_tolerations: Pod tolerations of node taints.
+        :param int replica_count: Pod replica count.
+        """
+        pulumi.set(__self__, "component", component)
+        pulumi.set(__self__, "container_resources", container_resources)
+        pulumi.set(__self__, "pod_affinity", pod_affinity)
+        pulumi.set(__self__, "pod_tolerations", pod_tolerations)
+        pulumi.set(__self__, "replica_count", replica_count)
+
+    @property
+    @pulumi.getter
+    def component(self) -> str:
+        return pulumi.get(self, "component")
+
+    @property
+    @pulumi.getter(name="containerResources")
+    def container_resources(self) -> Sequence['outputs.GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceResult']:
+        """
+        Container resource requirements.
+        """
+        return pulumi.get(self, "container_resources")
+
+    @property
+    @pulumi.getter(name="podAffinity")
+    def pod_affinity(self) -> str:
+        """
+        Pod affinity configuration. Possible values: ["AFFINITY_UNSPECIFIED", "NO_AFFINITY", "ANTI_AFFINITY"]
+        """
+        return pulumi.get(self, "pod_affinity")
+
+    @property
+    @pulumi.getter(name="podTolerations")
+    def pod_tolerations(self) -> Sequence['outputs.GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationResult']:
+        """
+        Pod tolerations of node taints.
+        """
+        return pulumi.get(self, "pod_tolerations")
+
+    @property
+    @pulumi.getter(name="replicaCount")
+    def replica_count(self) -> int:
+        """
+        Pod replica count.
+        """
+        return pulumi.get(self, "replica_count")
+
+
+@pulumi.output_type
+class GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceResult(dict):
+    def __init__(__self__, *,
+                 limits: Sequence['outputs.GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitResult'],
+                 requests: Sequence['outputs.GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestResult']):
+        """
+        :param Sequence['GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitArgs'] limits: Limits describes the maximum amount of compute resources allowed for use by the running container.
+        :param Sequence['GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestArgs'] requests: Requests describes the amount of compute resources reserved for the container by the kube-scheduler.
+        """
+        pulumi.set(__self__, "limits", limits)
+        pulumi.set(__self__, "requests", requests)
+
+    @property
+    @pulumi.getter
+    def limits(self) -> Sequence['outputs.GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitResult']:
+        """
+        Limits describes the maximum amount of compute resources allowed for use by the running container.
+        """
+        return pulumi.get(self, "limits")
+
+    @property
+    @pulumi.getter
+    def requests(self) -> Sequence['outputs.GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestResult']:
+        """
+        Requests describes the amount of compute resources reserved for the container by the kube-scheduler.
+        """
+        return pulumi.get(self, "requests")
+
+
+@pulumi.output_type
+class GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceLimitResult(dict):
+    def __init__(__self__, *,
+                 cpu: str,
+                 memory: str):
+        """
+        :param str cpu: CPU requirement expressed in Kubernetes resource units.
+        :param str memory: Memory requirement expressed in Kubernetes resource units.
+        """
+        pulumi.set(__self__, "cpu", cpu)
+        pulumi.set(__self__, "memory", memory)
+
+    @property
+    @pulumi.getter
+    def cpu(self) -> str:
+        """
+        CPU requirement expressed in Kubernetes resource units.
+        """
+        return pulumi.get(self, "cpu")
+
+    @property
+    @pulumi.getter
+    def memory(self) -> str:
+        """
+        Memory requirement expressed in Kubernetes resource units.
+        """
+        return pulumi.get(self, "memory")
+
+
+@pulumi.output_type
+class GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigContainerResourceRequestResult(dict):
+    def __init__(__self__, *,
+                 cpu: str,
+                 memory: str):
+        """
+        :param str cpu: CPU requirement expressed in Kubernetes resource units.
+        :param str memory: Memory requirement expressed in Kubernetes resource units.
+        """
+        pulumi.set(__self__, "cpu", cpu)
+        pulumi.set(__self__, "memory", memory)
+
+    @property
+    @pulumi.getter
+    def cpu(self) -> str:
+        """
+        CPU requirement expressed in Kubernetes resource units.
+        """
+        return pulumi.get(self, "cpu")
+
+    @property
+    @pulumi.getter
+    def memory(self) -> str:
+        """
+        Memory requirement expressed in Kubernetes resource units.
+        """
+        return pulumi.get(self, "memory")
+
+
+@pulumi.output_type
+class GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigDeploymentConfigPodTolerationResult(dict):
+    def __init__(__self__, *,
+                 effect: str,
+                 key: str,
+                 operator: str,
+                 value: str):
+        """
+        :param str effect: Matches a taint effect.
+        :param str key: Matches a taint key (not necessarily unique).
+        :param str operator: Matches a taint operator.
+        :param str value: Matches a taint value.
+        """
+        pulumi.set(__self__, "effect", effect)
+        pulumi.set(__self__, "key", key)
+        pulumi.set(__self__, "operator", operator)
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def effect(self) -> str:
+        """
+        Matches a taint effect.
+        """
+        return pulumi.get(self, "effect")
+
+    @property
+    @pulumi.getter
+    def key(self) -> str:
+        """
+        Matches a taint key (not necessarily unique).
+        """
+        return pulumi.get(self, "key")
+
+    @property
+    @pulumi.getter
+    def operator(self) -> str:
+        """
+        Matches a taint operator.
+        """
+        return pulumi.get(self, "operator")
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        Matches a taint value.
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigMonitoringResult(dict):
+    def __init__(__self__, *,
+                 backends: Sequence[str]):
+        """
+        :param Sequence[str] backends: Specifies the list of backends Policy Controller will export to. An empty list would effectively disable metrics export. Possible values: ["MONITORING_BACKEND_UNSPECIFIED", "PROMETHEUS", "CLOUD_MONITORING"]
+        """
+        pulumi.set(__self__, "backends", backends)
+
+    @property
+    @pulumi.getter
+    def backends(self) -> Sequence[str]:
+        """
+        Specifies the list of backends Policy Controller will export to. An empty list would effectively disable metrics export. Possible values: ["MONITORING_BACKEND_UNSPECIFIED", "PROMETHEUS", "CLOUD_MONITORING"]
+        """
+        return pulumi.get(self, "backends")
+
+
+@pulumi.output_type
+class GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentResult(dict):
+    def __init__(__self__, *,
+                 bundles: Sequence['outputs.GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleResult'],
+                 template_libraries: Sequence['outputs.GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryResult']):
+        """
+        :param Sequence['GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleArgs'] bundles: Configures which bundles to install and their corresponding install specs.
+        :param Sequence['GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryArgs'] template_libraries: Configures the installation of the Template Library.
+        """
+        pulumi.set(__self__, "bundles", bundles)
+        pulumi.set(__self__, "template_libraries", template_libraries)
+
+    @property
+    @pulumi.getter
+    def bundles(self) -> Sequence['outputs.GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleResult']:
+        """
+        Configures which bundles to install and their corresponding install specs.
+        """
+        return pulumi.get(self, "bundles")
+
+    @property
+    @pulumi.getter(name="templateLibraries")
+    def template_libraries(self) -> Sequence['outputs.GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryResult']:
+        """
+        Configures the installation of the Template Library.
+        """
+        return pulumi.get(self, "template_libraries")
+
+
+@pulumi.output_type
+class GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentBundleResult(dict):
+    def __init__(__self__, *,
+                 bundle: str,
+                 exempted_namespaces: Sequence[str]):
+        """
+        :param Sequence[str] exempted_namespaces: The set of namespaces to be exempted from the bundle.
+        """
+        pulumi.set(__self__, "bundle", bundle)
+        pulumi.set(__self__, "exempted_namespaces", exempted_namespaces)
+
+    @property
+    @pulumi.getter
+    def bundle(self) -> str:
+        return pulumi.get(self, "bundle")
+
+    @property
+    @pulumi.getter(name="exemptedNamespaces")
+    def exempted_namespaces(self) -> Sequence[str]:
+        """
+        The set of namespaces to be exempted from the bundle.
+        """
+        return pulumi.get(self, "exempted_namespaces")
+
+
+@pulumi.output_type
+class GetFeatureFleetDefaultMemberConfigPolicycontrollerPolicyControllerHubConfigPolicyContentTemplateLibraryResult(dict):
+    def __init__(__self__, *,
+                 installation: str):
+        """
+        :param str installation: Configures the manner in which the template library is installed on the cluster. Possible values: ["INSTALLATION_UNSPECIFIED", "NOT_INSTALLED", "ALL"]
+        """
+        pulumi.set(__self__, "installation", installation)
+
+    @property
+    @pulumi.getter
+    def installation(self) -> str:
+        """
+        Configures the manner in which the template library is installed on the cluster. Possible values: ["INSTALLATION_UNSPECIFIED", "NOT_INSTALLED", "ALL"]
+        """
+        return pulumi.get(self, "installation")
+
+
+@pulumi.output_type
+class GetFeatureResourceStateResult(dict):
+    def __init__(__self__, *,
+                 has_resources: bool,
+                 state: str):
+        """
+        :param bool has_resources: Whether this Feature has outstanding resources that need to be cleaned up before it can be disabled.
+        :param str state: The current state of the Feature resource in the Hub API.
+        """
+        pulumi.set(__self__, "has_resources", has_resources)
+        pulumi.set(__self__, "state", state)
+
+    @property
+    @pulumi.getter(name="hasResources")
+    def has_resources(self) -> bool:
+        """
+        Whether this Feature has outstanding resources that need to be cleaned up before it can be disabled.
+        """
+        return pulumi.get(self, "has_resources")
+
+    @property
+    @pulumi.getter
+    def state(self) -> str:
+        """
+        The current state of the Feature resource in the Hub API.
+        """
+        return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class GetFeatureSpecResult(dict):
+    def __init__(__self__, *,
+                 clusterupgrades: Sequence['outputs.GetFeatureSpecClusterupgradeResult'],
+                 fleetobservabilities: Sequence['outputs.GetFeatureSpecFleetobservabilityResult'],
+                 multiclusteringresses: Sequence['outputs.GetFeatureSpecMulticlusteringressResult']):
+        """
+        :param Sequence['GetFeatureSpecClusterupgradeArgs'] clusterupgrades: Clusterupgrade feature spec.
+        :param Sequence['GetFeatureSpecFleetobservabilityArgs'] fleetobservabilities: Fleet Observability feature spec.
+        :param Sequence['GetFeatureSpecMulticlusteringressArgs'] multiclusteringresses: Multicluster Ingress-specific spec.
+        """
+        pulumi.set(__self__, "clusterupgrades", clusterupgrades)
+        pulumi.set(__self__, "fleetobservabilities", fleetobservabilities)
+        pulumi.set(__self__, "multiclusteringresses", multiclusteringresses)
+
+    @property
+    @pulumi.getter
+    def clusterupgrades(self) -> Sequence['outputs.GetFeatureSpecClusterupgradeResult']:
+        """
+        Clusterupgrade feature spec.
+        """
+        return pulumi.get(self, "clusterupgrades")
+
+    @property
+    @pulumi.getter
+    def fleetobservabilities(self) -> Sequence['outputs.GetFeatureSpecFleetobservabilityResult']:
+        """
+        Fleet Observability feature spec.
+        """
+        return pulumi.get(self, "fleetobservabilities")
+
+    @property
+    @pulumi.getter
+    def multiclusteringresses(self) -> Sequence['outputs.GetFeatureSpecMulticlusteringressResult']:
+        """
+        Multicluster Ingress-specific spec.
+        """
+        return pulumi.get(self, "multiclusteringresses")
+
+
+@pulumi.output_type
+class GetFeatureSpecClusterupgradeResult(dict):
+    def __init__(__self__, *,
+                 gke_upgrade_overrides: Sequence['outputs.GetFeatureSpecClusterupgradeGkeUpgradeOverrideResult'],
+                 post_conditions: Sequence['outputs.GetFeatureSpecClusterupgradePostConditionResult'],
+                 upstream_fleets: Sequence[str]):
+        """
+        :param Sequence['GetFeatureSpecClusterupgradeGkeUpgradeOverrideArgs'] gke_upgrade_overrides: Configuration overrides for individual upgrades.
+        :param Sequence['GetFeatureSpecClusterupgradePostConditionArgs'] post_conditions: Post conditions to override for the specified upgrade.
+        :param Sequence[str] upstream_fleets: Specified if other fleet should be considered as a source of upgrades. Currently, at most one upstream fleet is allowed. The fleet name should be either fleet project number or id.
+        """
+        pulumi.set(__self__, "gke_upgrade_overrides", gke_upgrade_overrides)
+        pulumi.set(__self__, "post_conditions", post_conditions)
+        pulumi.set(__self__, "upstream_fleets", upstream_fleets)
+
+    @property
+    @pulumi.getter(name="gkeUpgradeOverrides")
+    def gke_upgrade_overrides(self) -> Sequence['outputs.GetFeatureSpecClusterupgradeGkeUpgradeOverrideResult']:
+        """
+        Configuration overrides for individual upgrades.
+        """
+        return pulumi.get(self, "gke_upgrade_overrides")
+
+    @property
+    @pulumi.getter(name="postConditions")
+    def post_conditions(self) -> Sequence['outputs.GetFeatureSpecClusterupgradePostConditionResult']:
+        """
+        Post conditions to override for the specified upgrade.
+        """
+        return pulumi.get(self, "post_conditions")
+
+    @property
+    @pulumi.getter(name="upstreamFleets")
+    def upstream_fleets(self) -> Sequence[str]:
+        """
+        Specified if other fleet should be considered as a source of upgrades. Currently, at most one upstream fleet is allowed. The fleet name should be either fleet project number or id.
+        """
+        return pulumi.get(self, "upstream_fleets")
+
+
+@pulumi.output_type
+class GetFeatureSpecClusterupgradeGkeUpgradeOverrideResult(dict):
+    def __init__(__self__, *,
+                 post_conditions: Sequence['outputs.GetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionResult'],
+                 upgrades: Sequence['outputs.GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeResult']):
+        """
+        :param Sequence['GetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionArgs'] post_conditions: Post conditions to override for the specified upgrade.
+        :param Sequence['GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeArgs'] upgrades: Which upgrade to override.
+        """
+        pulumi.set(__self__, "post_conditions", post_conditions)
+        pulumi.set(__self__, "upgrades", upgrades)
+
+    @property
+    @pulumi.getter(name="postConditions")
+    def post_conditions(self) -> Sequence['outputs.GetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionResult']:
+        """
+        Post conditions to override for the specified upgrade.
+        """
+        return pulumi.get(self, "post_conditions")
+
+    @property
+    @pulumi.getter
+    def upgrades(self) -> Sequence['outputs.GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeResult']:
+        """
+        Which upgrade to override.
+        """
+        return pulumi.get(self, "upgrades")
+
+
+@pulumi.output_type
+class GetFeatureSpecClusterupgradeGkeUpgradeOverridePostConditionResult(dict):
+    def __init__(__self__, *,
+                 soaking: str):
+        """
+        :param str soaking: Amount of time to "soak" after a rollout has been finished before marking it COMPLETE. Cannot exceed 30 days.
+        """
+        pulumi.set(__self__, "soaking", soaking)
+
+    @property
+    @pulumi.getter
+    def soaking(self) -> str:
+        """
+        Amount of time to "soak" after a rollout has been finished before marking it COMPLETE. Cannot exceed 30 days.
+        """
+        return pulumi.get(self, "soaking")
+
+
+@pulumi.output_type
+class GetFeatureSpecClusterupgradeGkeUpgradeOverrideUpgradeResult(dict):
+    def __init__(__self__, *,
+                 name: str,
+                 version: str):
+        """
+        :param str name: Name of the upgrade, e.g., "k8s_control_plane". It should be a valid upgrade name. It must not exceet 99 characters.
+        :param str version: Version of the upgrade, e.g., "1.22.1-gke.100". It should be a valid version. It must not exceet 99 characters.
+        """
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "version", version)
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        Name of the upgrade, e.g., "k8s_control_plane". It should be a valid upgrade name. It must not exceet 99 characters.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def version(self) -> str:
+        """
+        Version of the upgrade, e.g., "1.22.1-gke.100". It should be a valid version. It must not exceet 99 characters.
+        """
+        return pulumi.get(self, "version")
+
+
+@pulumi.output_type
+class GetFeatureSpecClusterupgradePostConditionResult(dict):
+    def __init__(__self__, *,
+                 soaking: str):
+        """
+        :param str soaking: Amount of time to "soak" after a rollout has been finished before marking it COMPLETE. Cannot exceed 30 days.
+        """
+        pulumi.set(__self__, "soaking", soaking)
+
+    @property
+    @pulumi.getter
+    def soaking(self) -> str:
+        """
+        Amount of time to "soak" after a rollout has been finished before marking it COMPLETE. Cannot exceed 30 days.
+        """
+        return pulumi.get(self, "soaking")
+
+
+@pulumi.output_type
+class GetFeatureSpecFleetobservabilityResult(dict):
+    def __init__(__self__, *,
+                 logging_configs: Sequence['outputs.GetFeatureSpecFleetobservabilityLoggingConfigResult']):
+        """
+        :param Sequence['GetFeatureSpecFleetobservabilityLoggingConfigArgs'] logging_configs: Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
+        """
+        pulumi.set(__self__, "logging_configs", logging_configs)
+
+    @property
+    @pulumi.getter(name="loggingConfigs")
+    def logging_configs(self) -> Sequence['outputs.GetFeatureSpecFleetobservabilityLoggingConfigResult']:
+        """
+        Specified if fleet logging feature is enabled for the entire fleet. If UNSPECIFIED, fleet logging feature is disabled for the entire fleet.
+        """
+        return pulumi.get(self, "logging_configs")
+
+
+@pulumi.output_type
+class GetFeatureSpecFleetobservabilityLoggingConfigResult(dict):
+    def __init__(__self__, *,
+                 default_configs: Sequence['outputs.GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigResult'],
+                 fleet_scope_logs_configs: Sequence['outputs.GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigResult']):
+        """
+        :param Sequence['GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigArgs'] default_configs: Specified if applying the default routing config to logs not specified in other configs.
+        :param Sequence['GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigArgs'] fleet_scope_logs_configs: Specified if applying the routing config to all logs for all fleet scopes.
+        """
+        pulumi.set(__self__, "default_configs", default_configs)
+        pulumi.set(__self__, "fleet_scope_logs_configs", fleet_scope_logs_configs)
+
+    @property
+    @pulumi.getter(name="defaultConfigs")
+    def default_configs(self) -> Sequence['outputs.GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigResult']:
+        """
+        Specified if applying the default routing config to logs not specified in other configs.
+        """
+        return pulumi.get(self, "default_configs")
+
+    @property
+    @pulumi.getter(name="fleetScopeLogsConfigs")
+    def fleet_scope_logs_configs(self) -> Sequence['outputs.GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigResult']:
+        """
+        Specified if applying the routing config to all logs for all fleet scopes.
+        """
+        return pulumi.get(self, "fleet_scope_logs_configs")
+
+
+@pulumi.output_type
+class GetFeatureSpecFleetobservabilityLoggingConfigDefaultConfigResult(dict):
+    def __init__(__self__, *,
+                 mode: str):
+        """
+        :param str mode: Specified if fleet logging feature is enabled. Possible values: ["MODE_UNSPECIFIED", "COPY", "MOVE"]
+        """
+        pulumi.set(__self__, "mode", mode)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> str:
+        """
+        Specified if fleet logging feature is enabled. Possible values: ["MODE_UNSPECIFIED", "COPY", "MOVE"]
+        """
+        return pulumi.get(self, "mode")
+
+
+@pulumi.output_type
+class GetFeatureSpecFleetobservabilityLoggingConfigFleetScopeLogsConfigResult(dict):
+    def __init__(__self__, *,
+                 mode: str):
+        """
+        :param str mode: Specified if fleet logging feature is enabled. Possible values: ["MODE_UNSPECIFIED", "COPY", "MOVE"]
+        """
+        pulumi.set(__self__, "mode", mode)
+
+    @property
+    @pulumi.getter
+    def mode(self) -> str:
+        """
+        Specified if fleet logging feature is enabled. Possible values: ["MODE_UNSPECIFIED", "COPY", "MOVE"]
+        """
+        return pulumi.get(self, "mode")
+
+
+@pulumi.output_type
+class GetFeatureSpecMulticlusteringressResult(dict):
+    def __init__(__self__, *,
+                 config_membership: str):
+        """
+        :param str config_membership: Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: 'projects/foo-proj/locations/global/memberships/bar'
+        """
+        pulumi.set(__self__, "config_membership", config_membership)
+
+    @property
+    @pulumi.getter(name="configMembership")
+    def config_membership(self) -> str:
+        """
+        Fully-qualified Membership name which hosts the MultiClusterIngress CRD. Example: 'projects/foo-proj/locations/global/memberships/bar'
+        """
+        return pulumi.get(self, "config_membership")
+
+
+@pulumi.output_type
+class GetFeatureStateResult(dict):
+    def __init__(__self__, *,
+                 states: Sequence['outputs.GetFeatureStateStateResult']):
+        """
+        :param Sequence['GetFeatureStateStateArgs'] states: Output only. The "running state" of the Feature in this Hub.
+        """
+        pulumi.set(__self__, "states", states)
+
+    @property
+    @pulumi.getter
+    def states(self) -> Sequence['outputs.GetFeatureStateStateResult']:
+        """
+        Output only. The "running state" of the Feature in this Hub.
+        """
+        return pulumi.get(self, "states")
+
+
+@pulumi.output_type
+class GetFeatureStateStateResult(dict):
+    def __init__(__self__, *,
+                 code: str,
+                 description: str,
+                 update_time: str):
+        """
+        :param str code: The high-level, machine-readable status of this Feature.
+        :param str description: A human-readable description of the current status.
+        :param str update_time: The time this status and any related Feature-specific details were updated. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
+        """
+        pulumi.set(__self__, "code", code)
+        pulumi.set(__self__, "description", description)
+        pulumi.set(__self__, "update_time", update_time)
+
+    @property
+    @pulumi.getter
+    def code(self) -> str:
+        """
+        The high-level, machine-readable status of this Feature.
+        """
+        return pulumi.get(self, "code")
+
+    @property
+    @pulumi.getter
+    def description(self) -> str:
+        """
+        A human-readable description of the current status.
+        """
+        return pulumi.get(self, "description")
+
+    @property
+    @pulumi.getter(name="updateTime")
+    def update_time(self) -> str:
+        """
+        The time this status and any related Feature-specific details were updated. A timestamp in RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z"
+        """
+        return pulumi.get(self, "update_time")
 
 
 @pulumi.output_type

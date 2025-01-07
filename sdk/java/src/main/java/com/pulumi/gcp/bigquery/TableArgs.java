@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.bigquery.inputs.TableBiglakeConfigurationArgs;
 import com.pulumi.gcp.bigquery.inputs.TableEncryptionConfigurationArgs;
+import com.pulumi.gcp.bigquery.inputs.TableExternalCatalogTableOptionsArgs;
 import com.pulumi.gcp.bigquery.inputs.TableExternalDataConfigurationArgs;
 import com.pulumi.gcp.bigquery.inputs.TableMaterializedViewArgs;
 import com.pulumi.gcp.bigquery.inputs.TableRangePartitioningArgs;
@@ -150,6 +151,21 @@ public final class TableArgs extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<Integer>> expirationTime() {
         return Optional.ofNullable(this.expirationTime);
+    }
+
+    /**
+     * Options defining open source compatible table.
+     * 
+     */
+    @Import(name="externalCatalogTableOptions")
+    private @Nullable Output<TableExternalCatalogTableOptionsArgs> externalCatalogTableOptions;
+
+    /**
+     * @return Options defining open source compatible table.
+     * 
+     */
+    public Optional<Output<TableExternalCatalogTableOptionsArgs>> externalCatalogTableOptions() {
+        return Optional.ofNullable(this.externalCatalogTableOptions);
     }
 
     /**
@@ -437,6 +453,7 @@ public final class TableArgs extends com.pulumi.resources.ResourceArgs {
         this.description = $.description;
         this.encryptionConfiguration = $.encryptionConfiguration;
         this.expirationTime = $.expirationTime;
+        this.externalCatalogTableOptions = $.externalCatalogTableOptions;
         this.externalDataConfiguration = $.externalDataConfiguration;
         this.friendlyName = $.friendlyName;
         this.labels = $.labels;
@@ -647,6 +664,27 @@ public final class TableArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder expirationTime(Integer expirationTime) {
             return expirationTime(Output.of(expirationTime));
+        }
+
+        /**
+         * @param externalCatalogTableOptions Options defining open source compatible table.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalCatalogTableOptions(@Nullable Output<TableExternalCatalogTableOptionsArgs> externalCatalogTableOptions) {
+            $.externalCatalogTableOptions = externalCatalogTableOptions;
+            return this;
+        }
+
+        /**
+         * @param externalCatalogTableOptions Options defining open source compatible table.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalCatalogTableOptions(TableExternalCatalogTableOptionsArgs externalCatalogTableOptions) {
+            return externalCatalogTableOptions(Output.of(externalCatalogTableOptions));
         }
 
         /**

@@ -4,7 +4,6 @@
 package com.pulumi.gcp.vertex.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.vertex.outputs.AiIndexMetadataConfig;
 import java.lang.Boolean;
 import java.lang.String;
@@ -29,7 +28,7 @@ public final class AiIndexMetadata {
      * described at https://cloud.google.com/vertex-ai/docs/matching-engine/using-matching-engine#input-data-format
      * 
      */
-    private String contentsDeltaUri;
+    private @Nullable String contentsDeltaUri;
     /**
      * @return If this field is set together with contentsDeltaUri when calling IndexService.UpdateIndex,
      * then existing content of the Index will be replaced by the data from the contentsDeltaUri.
@@ -55,8 +54,8 @@ public final class AiIndexMetadata {
      * described at https://cloud.google.com/vertex-ai/docs/matching-engine/using-matching-engine#input-data-format
      * 
      */
-    public String contentsDeltaUri() {
-        return this.contentsDeltaUri;
+    public Optional<String> contentsDeltaUri() {
+        return Optional.ofNullable(this.contentsDeltaUri);
     }
     /**
      * @return If this field is set together with contentsDeltaUri when calling IndexService.UpdateIndex,
@@ -77,7 +76,7 @@ public final class AiIndexMetadata {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable AiIndexMetadataConfig config;
-        private String contentsDeltaUri;
+        private @Nullable String contentsDeltaUri;
         private @Nullable Boolean isCompleteOverwrite;
         public Builder() {}
         public Builder(AiIndexMetadata defaults) {
@@ -94,10 +93,8 @@ public final class AiIndexMetadata {
             return this;
         }
         @CustomType.Setter
-        public Builder contentsDeltaUri(String contentsDeltaUri) {
-            if (contentsDeltaUri == null) {
-              throw new MissingRequiredPropertyException("AiIndexMetadata", "contentsDeltaUri");
-            }
+        public Builder contentsDeltaUri(@Nullable String contentsDeltaUri) {
+
             this.contentsDeltaUri = contentsDeltaUri;
             return this;
         }

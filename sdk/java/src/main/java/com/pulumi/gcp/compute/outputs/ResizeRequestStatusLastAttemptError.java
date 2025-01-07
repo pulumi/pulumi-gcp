@@ -13,7 +13,7 @@ import javax.annotation.Nullable;
 public final class ResizeRequestStatusLastAttemptError {
     /**
      * @return (Output)
-     * [Output Only] The array of errors encountered while processing this operation.
+     * The array of errors encountered while processing this operation.
      * Structure is documented below.
      * 
      */
@@ -22,7 +22,7 @@ public final class ResizeRequestStatusLastAttemptError {
     private ResizeRequestStatusLastAttemptError() {}
     /**
      * @return (Output)
-     * [Output Only] The array of errors encountered while processing this operation.
+     * The array of errors encountered while processing this operation.
      * Structure is documented below.
      * 
      */

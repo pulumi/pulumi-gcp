@@ -25,6 +25,8 @@ class UsageExportBucketArgs:
         """
         The set of arguments for constructing a UsageExportBucket resource.
         :param pulumi.Input[str] bucket_name: The bucket to store reports in.
+               
+               - - -
         :param pulumi.Input[str] prefix: A prefix for the reports, for instance, the project name.
         :param pulumi.Input[str] project: The project to set the export bucket on. If it is not provided, the provider project is used.
         """
@@ -39,6 +41,8 @@ class UsageExportBucketArgs:
     def bucket_name(self) -> pulumi.Input[str]:
         """
         The bucket to store reports in.
+
+        - - -
         """
         return pulumi.get(self, "bucket_name")
 
@@ -80,6 +84,8 @@ class _UsageExportBucketState:
         """
         Input properties used for looking up and filtering UsageExportBucket resources.
         :param pulumi.Input[str] bucket_name: The bucket to store reports in.
+               
+               - - -
         :param pulumi.Input[str] prefix: A prefix for the reports, for instance, the project name.
         :param pulumi.Input[str] project: The project to set the export bucket on. If it is not provided, the provider project is used.
         """
@@ -95,6 +101,8 @@ class _UsageExportBucketState:
     def bucket_name(self) -> Optional[pulumi.Input[str]]:
         """
         The bucket to store reports in.
+
+        - - -
         """
         return pulumi.get(self, "bucket_name")
 
@@ -137,27 +145,17 @@ class UsageExportBucket(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
-        Allows creation and management of a Google Cloud Platform project.
+        Sets up a usage export bucket for a particular project.  A usage export bucket
+        is a pre-configured GCS bucket which is set up to receive daily and monthly
+        reports of the GCE resources used.
 
-        Projects created with this resource must be associated with an Organization.
-        See the [Organization documentation](https://cloud.google.com/resource-manager/docs/quickstarts) for more details.
+        For more information see the [Docs](https://cloud.google.com/compute/docs/usage-export)
+        and for further details, the
+        [API Documentation](https://cloud.google.com/compute/docs/reference/rest/beta/projects/setUsageExportBucket).
 
-        The user or service account that is running this provider when creating a `organizations.Project`
-        resource must have `roles/resourcemanager.projectCreator` on the specified organization. See the
-        [Access Control for Organizations Using IAM](https://cloud.google.com/resource-manager/docs/access-control-org)
-        doc for more information.
-
-        > This resource reads the specified billing account on every pulumi up and plan operation so you must have permissions on the specified billing account.
-
-        > It is recommended to use the `constraints/compute.skipDefaultNetworkCreation` [constraint](https://www.terraform.io/docs/providers/google/r/google_organization_policy.html) to remove the default network instead of setting `auto_create_network` to false, when possible.
-
-        > It may take a while for the attached tag bindings to be deleted after the project is scheduled to be deleted.
-
-        To get more information about projects, see:
-
-        * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v1/projects)
-        * How-to Guides
-            * [Creating and managing projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects)
+        > **Note:** You should specify only one of these per project.  If there are two or more
+        they will fight over which bucket the reports should be stored in.  It is
+        safe to have multiple resources with the same backing bucket.
 
         ## Example Usage
 
@@ -165,49 +163,18 @@ class UsageExportBucket(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        my_project = gcp.organizations.Project("my_project",
-            name="My Project",
-            project_id="your-project-id",
-            org_id="1234567")
-        ```
-
-        To create a project under a specific folder
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        department1 = gcp.organizations.Folder("department1",
-            display_name="Department 1",
-            parent="organizations/1234567")
-        my_project_in_a_folder = gcp.organizations.Project("my_project-in-a-folder",
-            name="My Project",
-            project_id="your-project-id",
-            folder_id=department1.name)
-        ```
-
-        To create a project with a tag
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        my_project = gcp.organizations.Project("my_project",
-            name="My Project",
-            project_id="your-project-id",
-            org_id="1234567",
-            tags={
-                "1234567/env": "staging",
-            })
+        usage_export = gcp.projects.UsageExportBucket("usage_export",
+            project="development-project",
+            bucket_name="usage-tracking-bucket")
         ```
 
         ## Import
 
-        Projects can be imported using the `project_id`, e.g.
+        A project's Usage Export Bucket can be imported using this format:
 
         * `{{project_id}}`
 
-        When using the `pulumi import` command, Projects can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, NAME_HERE can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:projects/usageExportBucket:UsageExportBucket default {{project_id}}
@@ -216,6 +183,8 @@ class UsageExportBucket(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] bucket_name: The bucket to store reports in.
+               
+               - - -
         :param pulumi.Input[str] prefix: A prefix for the reports, for instance, the project name.
         :param pulumi.Input[str] project: The project to set the export bucket on. If it is not provided, the provider project is used.
         """
@@ -226,27 +195,17 @@ class UsageExportBucket(pulumi.CustomResource):
                  args: UsageExportBucketArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Allows creation and management of a Google Cloud Platform project.
+        Sets up a usage export bucket for a particular project.  A usage export bucket
+        is a pre-configured GCS bucket which is set up to receive daily and monthly
+        reports of the GCE resources used.
 
-        Projects created with this resource must be associated with an Organization.
-        See the [Organization documentation](https://cloud.google.com/resource-manager/docs/quickstarts) for more details.
+        For more information see the [Docs](https://cloud.google.com/compute/docs/usage-export)
+        and for further details, the
+        [API Documentation](https://cloud.google.com/compute/docs/reference/rest/beta/projects/setUsageExportBucket).
 
-        The user or service account that is running this provider when creating a `organizations.Project`
-        resource must have `roles/resourcemanager.projectCreator` on the specified organization. See the
-        [Access Control for Organizations Using IAM](https://cloud.google.com/resource-manager/docs/access-control-org)
-        doc for more information.
-
-        > This resource reads the specified billing account on every pulumi up and plan operation so you must have permissions on the specified billing account.
-
-        > It is recommended to use the `constraints/compute.skipDefaultNetworkCreation` [constraint](https://www.terraform.io/docs/providers/google/r/google_organization_policy.html) to remove the default network instead of setting `auto_create_network` to false, when possible.
-
-        > It may take a while for the attached tag bindings to be deleted after the project is scheduled to be deleted.
-
-        To get more information about projects, see:
-
-        * [API documentation](https://cloud.google.com/resource-manager/reference/rest/v1/projects)
-        * How-to Guides
-            * [Creating and managing projects](https://cloud.google.com/resource-manager/docs/creating-managing-projects)
+        > **Note:** You should specify only one of these per project.  If there are two or more
+        they will fight over which bucket the reports should be stored in.  It is
+        safe to have multiple resources with the same backing bucket.
 
         ## Example Usage
 
@@ -254,49 +213,18 @@ class UsageExportBucket(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        my_project = gcp.organizations.Project("my_project",
-            name="My Project",
-            project_id="your-project-id",
-            org_id="1234567")
-        ```
-
-        To create a project under a specific folder
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        department1 = gcp.organizations.Folder("department1",
-            display_name="Department 1",
-            parent="organizations/1234567")
-        my_project_in_a_folder = gcp.organizations.Project("my_project-in-a-folder",
-            name="My Project",
-            project_id="your-project-id",
-            folder_id=department1.name)
-        ```
-
-        To create a project with a tag
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        my_project = gcp.organizations.Project("my_project",
-            name="My Project",
-            project_id="your-project-id",
-            org_id="1234567",
-            tags={
-                "1234567/env": "staging",
-            })
+        usage_export = gcp.projects.UsageExportBucket("usage_export",
+            project="development-project",
+            bucket_name="usage-tracking-bucket")
         ```
 
         ## Import
 
-        Projects can be imported using the `project_id`, e.g.
+        A project's Usage Export Bucket can be imported using this format:
 
         * `{{project_id}}`
 
-        When using the `pulumi import` command, Projects can be imported using one of the formats above. For example:
+        When using the `pulumi import` command, NAME_HERE can be imported using one of the formats above. For example:
 
         ```sh
         $ pulumi import gcp:projects/usageExportBucket:UsageExportBucket default {{project_id}}
@@ -355,6 +283,8 @@ class UsageExportBucket(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] bucket_name: The bucket to store reports in.
+               
+               - - -
         :param pulumi.Input[str] prefix: A prefix for the reports, for instance, the project name.
         :param pulumi.Input[str] project: The project to set the export bucket on. If it is not provided, the provider project is used.
         """
@@ -372,6 +302,8 @@ class UsageExportBucket(pulumi.CustomResource):
     def bucket_name(self) -> pulumi.Output[str]:
         """
         The bucket to store reports in.
+
+        - - -
         """
         return pulumi.get(self, "bucket_name")
 
