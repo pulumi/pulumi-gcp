@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const persistent-boot-disk = gcp.compute.getDisk({
+ * const persistent_boot_disk = gcp.compute.getDisk({
  *     name: "persistent-boot-disk",
  *     project: "example",
  * });
@@ -180,7 +180,7 @@ export interface GetDiskResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const persistent-boot-disk = gcp.compute.getDisk({
+ * const persistent_boot_disk = gcp.compute.getDisk({
  *     name: "persistent-boot-disk",
  *     project: "example",
  * });
