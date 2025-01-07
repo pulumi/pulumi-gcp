@@ -192,6 +192,7 @@ var moduleMapping = map[string]string{
 	"blockchain_node_engine":          gcpBlockchainNodeEngine,
 	"binary_authorization":            gcpBinaryAuthorization,
 	"certificate_manager":             gcpCertificateManager,
+	"chronicle":                       "Chronicle",
 	"cloud_asset":                     gcpCloudAsset,
 	"cloud_identity":                  gcpCloudIdentity,
 	"cloud_ids":                       gcpCloudIDs,
@@ -2148,7 +2149,7 @@ func Provider() tfbridge.ProviderInfo {
 
 			// gke hub
 			"google_gke_hub_membership":         {Tok: gcpResource(gcpGkeHub, "Membership")},
-			"google_gke_hub_feature":            {Tok: gcpResource(gcpGkeHub, "Feature")},
+			"google_gke_hub_feature":            {Tok: gcpResource(gcpGkeHub, "Feature"), Docs: &info.Doc{AllowMissing: true}},
 			"google_gke_hub_feature_membership": {Tok: gcpResource(gcpGkeHub, "FeatureMembership")},
 
 			// tags
@@ -2741,8 +2742,9 @@ func Provider() tfbridge.ProviderInfo {
 				},
 			},
 
-			"google_kms_key_rings":              {Docs: &tfbridge.DocInfo{AllowMissing: true}},
+			"google_gke_hub_feature":            {Docs: &info.Doc{AllowMissing: true}},
 			"google_gke_hub_membership_binding": {Docs: &tfbridge.DocInfo{AllowMissing: true}},
+			"google_kms_key_rings":              {Docs: &tfbridge.DocInfo{AllowMissing: true}},
 			"google_privileged_access_manager_entitlement": {
 				Docs: &tfbridge.DocInfo{AllowMissing: true},
 			},
