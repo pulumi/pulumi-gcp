@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const default = gcp.certificatemanager.getCertificateMap({
+ * const _default = gcp.certificatemanager.getCertificateMap({
  *     name: "cert-map",
  * });
  * ```
@@ -72,7 +72,7 @@ export interface GetCertificateMapResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const default = gcp.certificatemanager.getCertificateMap({
+ * const _default = gcp.certificatemanager.getCertificateMap({
  *     name: "cert-map",
  * });
  * ```
