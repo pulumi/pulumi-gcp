@@ -103,10 +103,12 @@ func TestRegression794(t *testing.T) {
 
 	t.Cleanup(func() {
 		// Select an empty program to delete the stack.
-		s, err := auto.UpsertStackInlineSource(ctx, stackName, originProject, nil, auto.WorkDir(workdir), auto.EnvVars(map[string]string{
-			"PULUMI_BACKEND_URL":       backendUrl,
-			"PULUMI_CONFIG_PASSPHRASE": configPassphrase,
-		}))
+		s, err := auto.UpsertStackInlineSource(ctx, stackName, originProject,
+			func(*pulumi.Context) error { return nil },
+			auto.WorkDir(workdir), auto.EnvVars(map[string]string{
+				"PULUMI_BACKEND_URL":       backendUrl,
+				"PULUMI_CONFIG_PASSPHRASE": configPassphrase,
+			}))
 		if err != nil {
 			t.Fatalf("failed to select workspace to delete: %v", err)
 		}
