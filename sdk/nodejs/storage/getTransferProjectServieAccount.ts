@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const default = gcp.storage.getTransferProjectServiceAccount({});
+ * const _default = gcp.storage.getTransferProjectServiceAccount({});
  * export const defaultAccount = _default.then(_default => _default.email);
  * ```
  */
@@ -68,7 +68,7 @@ export interface GetTransferProjectServieAccountResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const default = gcp.storage.getTransferProjectServiceAccount({});
+ * const _default = gcp.storage.getTransferProjectServiceAccount({});
  * export const defaultAccount = _default.then(_default => _default.email);
  * ```
  */
