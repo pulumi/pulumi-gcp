@@ -192,7 +192,7 @@ func TestPreConfigureCallbackWarningWhenNoProject(t *testing.T) {
 	expectedLogs := &expectLogs{t, []string{noProjectErr}}
 	defer expectedLogs.assertDone()
 
-	t.Setenv("PULUMI_GCP_DISABLE_GLOBAL_PROJECT_WARNING", "")
+	t.Setenv("GOOGLE_PROJECT", "")
 
 	ctx := testutil.InitLogging(t, context.Background(), expectedLogs)
 	callback := preConfigureCallbackWithLogger(new(atomic.Bool), nil)
