@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my-bucket = gcp.storage.getBucket({
+ * const my_bucket = gcp.storage.getBucket({
  *     name: "my-bucket",
  * });
  * ```
@@ -94,7 +94,7 @@ export interface GetBucketResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my-bucket = gcp.storage.getBucket({
+ * const my_bucket = gcp.storage.getBucket({
  *     name: "my-bucket",
  * });
  * ```

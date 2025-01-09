@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my-backup-dr-management-server = gcp.backupdisasterrecovery.getManagementServer({
+ * const my_backup_dr_management_server = gcp.backupdisasterrecovery.getManagementServer({
  *     location: "us-central1",
  * });
  * ```
@@ -55,7 +55,7 @@ export interface GetManagementServerResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my-backup-dr-management-server = gcp.backupdisasterrecovery.getManagementServer({
+ * const my_backup_dr_management_server = gcp.backupdisasterrecovery.getManagementServer({
  *     location: "us-central1",
  * });
  * ```

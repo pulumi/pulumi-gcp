@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my-forwarding-rule = gcp.compute.getForwardingRule({
+ * const my_forwarding_rule = gcp.compute.getForwardingRule({
  *     name: "forwarding-rule-us-east1",
  * });
  * ```
@@ -105,7 +105,7 @@ export interface GetForwardingRuleResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my-forwarding-rule = gcp.compute.getForwardingRule({
+ * const my_forwarding_rule = gcp.compute.getForwardingRule({
  *     name: "forwarding-rule-us-east1",
  * });
  * ```
