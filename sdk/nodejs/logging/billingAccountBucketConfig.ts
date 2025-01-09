@@ -19,7 +19,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const default = gcp.organizations.getBillingAccount({
+ * const _default = gcp.organizations.getBillingAccount({
  *     billingAccount: "00AA00-000AAA-00AA0A",
  * });
  * const basic = new gcp.logging.BillingAccountBucketConfig("basic", {

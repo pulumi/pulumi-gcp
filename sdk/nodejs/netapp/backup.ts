@@ -34,7 +34,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const default = gcp.compute.getNetwork({
+ * const _default = gcp.compute.getNetwork({
  *     name: "",
  * });
  * const defaultStoragePool = new gcp.netapp.StoragePool("default", {
