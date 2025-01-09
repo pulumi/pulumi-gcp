@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my-vpn-gateway = gcp.compute.getVPNGateway({
+ * const my_vpn_gateway = gcp.compute.getVPNGateway({
  *     name: "vpn-gateway-us-east1",
  * });
  * ```
@@ -86,7 +86,7 @@ export interface GetVPNGatewayResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my-vpn-gateway = gcp.compute.getVPNGateway({
+ * const my_vpn_gateway = gcp.compute.getVPNGateway({
  *     name: "vpn-gateway-us-east1",
  * });
  * ```

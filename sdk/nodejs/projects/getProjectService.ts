@@ -25,7 +25,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my-project-service = gcp.projects.getProjectService({
+ * const my_project_service = gcp.projects.getProjectService({
  *     service: "my-project-service",
  * });
  * ```
@@ -90,7 +90,7 @@ export interface GetProjectServiceResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my-project-service = gcp.projects.getProjectService({
+ * const my_project_service = gcp.projects.getProjectService({
  *     service: "my-project-service",
  * });
  * ```
