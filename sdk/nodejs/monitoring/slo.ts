@@ -30,7 +30,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const default = gcp.monitoring.getAppEngineService({
+ * const _default = gcp.monitoring.getAppEngineService({
  *     moduleId: "default",
  * });
  * const appengSlo = new gcp.monitoring.Slo("appeng_slo", {

@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my-pubsub-subscription = gcp.pubsub.getSubscription({
+ * const my_pubsub_subscription = gcp.pubsub.getSubscription({
  *     name: "my-pubsub-subscription",
  * });
  * ```
@@ -85,7 +85,7 @@ export interface GetSubscriptionResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my-pubsub-subscription = gcp.pubsub.getSubscription({
+ * const my_pubsub_subscription = gcp.pubsub.getSubscription({
  *     name: "my-pubsub-subscription",
  * });
  * ```

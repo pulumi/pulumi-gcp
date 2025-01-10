@@ -88,7 +88,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const default = gcp.compute.getDefaultServiceAccount({});
+ * const _default = gcp.compute.getDefaultServiceAccount({});
  * const sa = new gcp.serviceaccount.Account("sa", {
  *     accountId: "my-service-account",
  *     displayName: "A service account that Jane can use",
@@ -197,7 +197,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const default = gcp.compute.getDefaultServiceAccount({});
+ * const _default = gcp.compute.getDefaultServiceAccount({});
  * const sa = new gcp.serviceaccount.Account("sa", {
  *     accountId: "my-service-account",
  *     displayName: "A service account that Jane can use",
