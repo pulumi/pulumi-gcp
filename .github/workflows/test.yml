@@ -98,8 +98,9 @@ jobs:
         token: ${{ secrets.GITHUB_TOKEN }}
         version: v2.5.0
     - name: Run provider tests
-      run: |
-        cd provider && go test -v -count=1 -cover -timeout 2h -tags=${{ matrix.language }} -parallel 4 .
+      if: matrix.testTarget == 'local'
+      working-directory: provider
+      run: go test -v -count=1 -cover -timeout 2h -tags=${{ matrix.language }} -parallel 4 .
     - name: Run tests
       if: matrix.testTarget == 'local'
       run: cd examples && go test -v -count=1 -cover -timeout 2h -tags=${{ matrix.language }} -skip TestPulumiExamples -parallel 4 .

@@ -5,7 +5,6 @@ package gcp
 import (
 	"context"
 	"fmt"
-	"log"
 	"path"
 	"strings"
 	"sync/atomic"
@@ -29,7 +28,6 @@ import (
 	shimv2 "github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/sdk-v2"
 	"github.com/pulumi/pulumi-terraform-bridge/v3/pkg/tfshim/walk"
 	"github.com/pulumi/pulumi/pkg/v3/resource/provider"
-	"github.com/pulumi/pulumi/sdk/v3/go/common/diag"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/resource"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/tokens"
 	"github.com/pulumi/pulumi/sdk/v3/go/common/util/contract"
@@ -377,24 +375,15 @@ var wrongRegionErr string
 //go:embed errors/no_project.txt
 var noProjectErr string
 
-func logOrPrint(ctx context.Context, host *provider.HostClient, msg string) {
-	// host is unavailable in tests, so we revert to normal logging.
-	if host != nil {
-		// the URN will default to the root stack name which is exactly what we want
-		_ = host.Log(ctx, diag.Warning, "", msg)
-	} else {
-		log.Print(msg)
-	}
-}
-
 // gcpClientOpts is used to pass in options during testing.
-func preConfigureCallbackWithLogger(credentialsValidationRun *atomic.Bool, gcpClientOpts []option.ClientOption) func(
-	ctx context.Context, host *provider.HostClient, vars resource.PropertyMap, c shim.ResourceConfig,
-) error {
-	return func(ctx context.Context, host *provider.HostClient, vars resource.PropertyMap, _ shim.ResourceConfig) error {
+func preConfigureCallbackWithLogger(
+	credentialsValidationRun *atomic.Bool, gcpClientOpts []option.ClientOption,
+) tfbridge.PreConfigureCallbackWithLogger {
+	return func(ctx context.Context, _ *provider.HostClient, vars resource.PropertyMap, _ shim.ResourceConfig) error {
 		if !credentialsValidationRun.CompareAndSwap(false, true) {
 			return nil
 		}
+
 		project := tfbridge.ConfigStringValue(vars, "project", []string{
 			"GOOGLE_PROJECT",
 			"GOOGLE_CLOUD_PROJECT",
@@ -402,7 +391,12 @@ func preConfigureCallbackWithLogger(credentialsValidationRun *atomic.Bool, gcpCl
 			"CLOUDSDK_CORE_PROJECT",
 		})
 		if project == "" {
-			logOrPrint(ctx, host, noProjectErr)
+			if !tfbridge.ConfigBoolValue(
+				vars, "disableGlobalProjectWarning",
+				[]string{"PULUMI_GCP_DISABLE_GLOBAL_PROJECT_WARNING"},
+			) {
+				tfbridge.GetLogger(ctx).Warn(noProjectErr)
+			}
 			return nil
 		}
 
@@ -433,14 +427,6 @@ func preConfigureCallbackWithLogger(credentialsValidationRun *atomic.Bool, gcpCl
 			vars, "skipRegionValidation", []string{"PULUMI_GCP_SKIP_REGION_VALIDATION"},
 		)
 
-		disableGlobalProjectWarning := tfbridge.ConfigBoolValue(
-			vars, "disableGlobalProjectWarning", []string{"PULUMI_GCP_DISABLE_GLOBAL_PROJECT_WARNING"},
-		)
-
-		if disableGlobalProjectWarning {
-			return nil
-		}
-
 		// validate the gcloud config
 		err := config.LoadAndValidate(ctx)
 		if err != nil {
@@ -450,7 +436,7 @@ func preConfigureCallbackWithLogger(credentialsValidationRun *atomic.Bool, gcpCl
 		if !skipRegionValidation && config.Region != "" && config.Project != "" {
 			regionList, err := getRegionsList(ctx, config.Project, gcpClientOpts)
 			if err != nil {
-				logOrPrint(ctx, host, fmt.Sprintf("failed to get regions list: %v", err))
+				tfbridge.GetLogger(ctx).Warn(fmt.Sprintf("failed to get regions list: %v", err))
 				return nil
 			}
 			for _, region := range regionList {
@@ -458,7 +444,7 @@ func preConfigureCallbackWithLogger(credentialsValidationRun *atomic.Bool, gcpCl
 					return nil
 				}
 			}
-			logOrPrint(ctx, host, fmt.Sprintf(wrongRegionErr, config.Region, config.Project))
+			tfbridge.GetLogger(ctx).Warn(fmt.Sprintf(wrongRegionErr, config.Region, config.Project))
 		}
 
 		return nil
