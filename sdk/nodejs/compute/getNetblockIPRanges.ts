@@ -27,7 +27,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const legacy-hcs = gcp.compute.getNetblockIPRanges({
+ * const legacy_hcs = gcp.compute.getNetblockIPRanges({
  *     rangeType: "legacy-health-checkers",
  * });
  * const _default = new gcp.compute.Network("default", {name: "test-network"});
@@ -123,7 +123,7 @@ export interface GetNetblockIPRangesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const legacy-hcs = gcp.compute.getNetblockIPRanges({
+ * const legacy_hcs = gcp.compute.getNetblockIPRanges({
  *     rangeType: "legacy-health-checkers",
  * });
  * const _default = new gcp.compute.Network("default", {name: "test-network"});
