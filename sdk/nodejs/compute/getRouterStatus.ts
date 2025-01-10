@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my-router = gcp.compute.getRouterStatus({
+ * const my_router = gcp.compute.getRouterStatus({
  *     name: "myrouter",
  * });
  * ```
@@ -93,7 +93,7 @@ export interface GetRouterStatusResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my-router = gcp.compute.getRouterStatus({
+ * const my_router = gcp.compute.getRouterStatus({
  *     name: "myrouter",
  * });
  * ```
