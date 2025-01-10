@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my-subnetwork = gcp.compute.getSubnetwork({
+ * const my_subnetwork = gcp.compute.getSubnetwork({
  *     name: "default-us-east1",
  *     region: "us-east1",
  * });
@@ -117,7 +117,7 @@ export interface GetSubnetworkResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my-subnetwork = gcp.compute.getSubnetwork({
+ * const my_subnetwork = gcp.compute.getSubnetwork({
  *     name: "default-us-east1",
  *     region: "us-east1",
  * });
