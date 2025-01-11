@@ -92,11 +92,6 @@ jobs:
         install_components: gke-gcloud-auth-plugin
     - name: Install dependencies
       run: make install_${{ matrix.language}}_sdk
-    - name: Install gotestfmt
-      uses: GoTestTools/gotestfmt-action@v2
-      with:
-        token: ${{ secrets.GITHUB_TOKEN }}
-        version: v2.5.0
     - name: Run provider tests
       if: matrix.testTarget == 'local'
       working-directory: provider
