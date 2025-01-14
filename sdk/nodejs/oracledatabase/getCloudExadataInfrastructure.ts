@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my-instance = gcp.oracledatabase.getCloudExadataInfrastructure({
+ * const my_instance = gcp.oracledatabase.getCloudExadataInfrastructure({
  *     location: "us-east4",
  *     cloudExadataInfrastructureId: "exadata-id",
  * });
@@ -88,7 +88,7 @@ export interface GetCloudExadataInfrastructureResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my-instance = gcp.oracledatabase.getCloudExadataInfrastructure({
+ * const my_instance = gcp.oracledatabase.getCloudExadataInfrastructure({
  *     location: "us-east4",
  *     cloudExadataInfrastructureId: "exadata-id",
  * });
