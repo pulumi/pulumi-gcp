@@ -4,26 +4,39 @@
 package com.pulumi.gcp.dns.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dns.outputs.RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer;
+import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class RecordSetRoutingPolicyPrimaryBackupPrimary {
     /**
+     * @return The Internet IP addresses to be health checked.
+     * 
+     */
+    private @Nullable List<String> externalEndpoints;
+    /**
      * @return The list of internal load balancers to health check.
      * 
      */
-    private List<RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer> internalLoadBalancers;
+    private @Nullable List<RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer> internalLoadBalancers;
 
     private RecordSetRoutingPolicyPrimaryBackupPrimary() {}
+    /**
+     * @return The Internet IP addresses to be health checked.
+     * 
+     */
+    public List<String> externalEndpoints() {
+        return this.externalEndpoints == null ? List.of() : this.externalEndpoints;
+    }
     /**
      * @return The list of internal load balancers to health check.
      * 
      */
     public List<RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer> internalLoadBalancers() {
-        return this.internalLoadBalancers;
+        return this.internalLoadBalancers == null ? List.of() : this.internalLoadBalancers;
     }
 
     public static Builder builder() {
@@ -35,18 +48,27 @@ public final class RecordSetRoutingPolicyPrimaryBackupPrimary {
     }
     @CustomType.Builder
     public static final class Builder {
-        private List<RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer> internalLoadBalancers;
+        private @Nullable List<String> externalEndpoints;
+        private @Nullable List<RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer> internalLoadBalancers;
         public Builder() {}
         public Builder(RecordSetRoutingPolicyPrimaryBackupPrimary defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.externalEndpoints = defaults.externalEndpoints;
     	      this.internalLoadBalancers = defaults.internalLoadBalancers;
         }
 
         @CustomType.Setter
-        public Builder internalLoadBalancers(List<RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer> internalLoadBalancers) {
-            if (internalLoadBalancers == null) {
-              throw new MissingRequiredPropertyException("RecordSetRoutingPolicyPrimaryBackupPrimary", "internalLoadBalancers");
-            }
+        public Builder externalEndpoints(@Nullable List<String> externalEndpoints) {
+
+            this.externalEndpoints = externalEndpoints;
+            return this;
+        }
+        public Builder externalEndpoints(String... externalEndpoints) {
+            return externalEndpoints(List.of(externalEndpoints));
+        }
+        @CustomType.Setter
+        public Builder internalLoadBalancers(@Nullable List<RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer> internalLoadBalancers) {
+
             this.internalLoadBalancers = internalLoadBalancers;
             return this;
         }
@@ -55,6 +77,7 @@ public final class RecordSetRoutingPolicyPrimaryBackupPrimary {
         }
         public RecordSetRoutingPolicyPrimaryBackupPrimary build() {
             final var _resultValue = new RecordSetRoutingPolicyPrimaryBackupPrimary();
+            _resultValue.externalEndpoints = externalEndpoints;
             _resultValue.internalLoadBalancers = internalLoadBalancers;
             return _resultValue;
         }

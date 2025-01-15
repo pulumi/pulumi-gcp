@@ -403,6 +403,82 @@ import (
 //
 // ```
 //
+// ### Public zone failover
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/dns"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewHealthCheck(ctx, "http-health-check", &compute.HealthCheckArgs{
+//				Name:               pulumi.String("http-health-check"),
+//				Description:        pulumi.String("Health check via http"),
+//				TimeoutSec:         pulumi.Int(5),
+//				CheckIntervalSec:   pulumi.Int(30),
+//				HealthyThreshold:   pulumi.Int(4),
+//				UnhealthyThreshold: pulumi.Int(5),
+//				HttpHealthCheck: &compute.HealthCheckHttpHealthCheckArgs{
+//					PortSpecification: pulumi.String("USE_SERVING_PORT"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			prod, err := dns.NewManagedZone(ctx, "prod", &dns.ManagedZoneArgs{
+//				Name:    pulumi.String("prod-zone"),
+//				DnsName: pulumi.String("prod.mydomain.com."),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = dns.NewRecordSet(ctx, "a", &dns.RecordSetArgs{
+//				Name: prod.DnsName.ApplyT(func(dnsName string) (string, error) {
+//					return fmt.Sprintf("backend.%v", dnsName), nil
+//				}).(pulumi.StringOutput),
+//				ManagedZone: prod.Name,
+//				Type:        pulumi.String("A"),
+//				Ttl:         pulumi.Int(300),
+//				RoutingPolicy: &dns.RecordSetRoutingPolicyArgs{
+//					HealthCheck: http_health_check.ID(),
+//					PrimaryBackup: &dns.RecordSetRoutingPolicyPrimaryBackupArgs{
+//						TrickleRatio: pulumi.Float64(0.1),
+//						Primary: &dns.RecordSetRoutingPolicyPrimaryBackupPrimaryArgs{
+//							ExternalEndpoints: pulumi.StringArray{
+//								pulumi.String("10.128.1.1"),
+//							},
+//						},
+//						BackupGeos: dns.RecordSetRoutingPolicyPrimaryBackupBackupGeoArray{
+//							&dns.RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs{
+//								Location: pulumi.String("us-west1"),
+//								HealthCheckedTargets: &dns.RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs{
+//									ExternalEndpoints: pulumi.StringArray{
+//										pulumi.String("10.130.1.1"),
+//									},
+//								},
+//							},
+//						},
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // DNS record sets can be imported using either of these accepted formats:

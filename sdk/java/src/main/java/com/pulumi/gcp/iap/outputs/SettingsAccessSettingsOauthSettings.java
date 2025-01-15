@@ -18,6 +18,7 @@ public final class SettingsAccessSettingsOauthSettings {
      * (https://developers.google.com/identity/protocols/OpenIDConnect#hd-param)
      * Note: IAP does not verify that the id token&#39;s hd claim matches this value
      * since access behavior is managed by IAM policies.
+     * * loginHint setting is not a replacement for access control. Always enforce an appropriate access policy if you want to restrict access to users outside your domain.
      * 
      */
     private @Nullable String loginHint;
@@ -34,6 +35,7 @@ public final class SettingsAccessSettingsOauthSettings {
      * (https://developers.google.com/identity/protocols/OpenIDConnect#hd-param)
      * Note: IAP does not verify that the id token&#39;s hd claim matches this value
      * since access behavior is managed by IAM policies.
+     * * loginHint setting is not a replacement for access control. Always enforce an appropriate access policy if you want to restrict access to users outside your domain.
      * 
      */
     public Optional<String> loginHint() {

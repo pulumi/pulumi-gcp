@@ -12,6 +12,8 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// A git repository link to a parent connection.
+//
 // ## Example Usage
 //
 // ## Import

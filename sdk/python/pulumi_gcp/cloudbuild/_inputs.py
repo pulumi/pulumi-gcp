@@ -1180,7 +1180,7 @@ if not MYPY:
         Structure is documented below.
 
 
-        <a name="nested_timing"></a>The `timing` block contains:
+        <a name="nested_build_artifacts_objects_timing"></a>The `timing` block contains:
         """
 elif False:
     TriggerBuildArtifactsObjectsArgsDict: TypeAlias = Mapping[str, Any]
@@ -1201,7 +1201,7 @@ class TriggerBuildArtifactsObjectsArgs:
                Structure is documented below.
                
                
-               <a name="nested_timing"></a>The `timing` block contains:
+               <a name="nested_build_artifacts_objects_timing"></a>The `timing` block contains:
         """
         if location is not None:
             pulumi.set(__self__, "location", location)
@@ -1245,7 +1245,7 @@ class TriggerBuildArtifactsObjectsArgs:
         Structure is documented below.
 
 
-        <a name="nested_timing"></a>The `timing` block contains:
+        <a name="nested_build_artifacts_objects_timing"></a>The `timing` block contains:
         """
         return pulumi.get(self, "timings")
 

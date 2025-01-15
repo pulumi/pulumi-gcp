@@ -131,7 +131,7 @@ import (
 //
 // ```
 //
-// ### With Standby Policy (`Google-Beta` Provider)
+// ### With Standby Policy (`Google` Provider)
 // ```go
 // package main
 //
@@ -255,7 +255,7 @@ type InstanceGroupManager struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The URL of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
-	// The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
+	// The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
 	StandbyPolicy InstanceGroupManagerStandbyPolicyOutput `pulumi:"standbyPolicy"`
 	// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
 	StatefulDisks InstanceGroupManagerStatefulDiskArrayOutput `pulumi:"statefulDisks"`
@@ -386,7 +386,7 @@ type instanceGroupManagerState struct {
 	Project *string `pulumi:"project"`
 	// The URL of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
-	// The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
+	// The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
 	StandbyPolicy *InstanceGroupManagerStandbyPolicy `pulumi:"standbyPolicy"`
 	// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
 	StatefulDisks []InstanceGroupManagerStatefulDisk `pulumi:"statefulDisks"`
@@ -482,7 +482,7 @@ type InstanceGroupManagerState struct {
 	Project pulumi.StringPtrInput
 	// The URL of the created resource.
 	SelfLink pulumi.StringPtrInput
-	// The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
+	// The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
 	StandbyPolicy InstanceGroupManagerStandbyPolicyPtrInput
 	// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
 	StatefulDisks InstanceGroupManagerStatefulDiskArrayInput
@@ -571,7 +571,7 @@ type instanceGroupManagerArgs struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
-	// The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
+	// The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
 	StandbyPolicy *InstanceGroupManagerStandbyPolicy `pulumi:"standbyPolicy"`
 	// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
 	StatefulDisks []InstanceGroupManagerStatefulDisk `pulumi:"statefulDisks"`
@@ -655,7 +655,7 @@ type InstanceGroupManagerArgs struct {
 	// The ID of the project in which the resource belongs. If it
 	// is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
-	// The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
+	// The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
 	StandbyPolicy InstanceGroupManagerStandbyPolicyPtrInput
 	// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
 	StatefulDisks InstanceGroupManagerStatefulDiskArrayInput
@@ -889,7 +889,7 @@ func (o InstanceGroupManagerOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *InstanceGroupManager) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
 }
 
-// The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
+// The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
 func (o InstanceGroupManagerOutput) StandbyPolicy() InstanceGroupManagerStandbyPolicyOutput {
 	return o.ApplyT(func(v *InstanceGroupManager) InstanceGroupManagerStandbyPolicyOutput { return v.StandbyPolicy }).(InstanceGroupManagerStandbyPolicyOutput)
 }

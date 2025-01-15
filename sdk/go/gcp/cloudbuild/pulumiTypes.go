@@ -1987,7 +1987,7 @@ type TriggerBuildArtifactsObjects struct {
 	// Output only. Stores timing information for pushing all artifact objects.
 	// Structure is documented below.
 	//
-	// <a name="nestedTiming"></a>The `timing` block contains:
+	// <a name="nestedBuildArtifactsObjectsTiming"></a>The `timing` block contains:
 	Timings []TriggerBuildArtifactsObjectsTiming `pulumi:"timings"`
 }
 
@@ -2013,7 +2013,7 @@ type TriggerBuildArtifactsObjectsArgs struct {
 	// Output only. Stores timing information for pushing all artifact objects.
 	// Structure is documented below.
 	//
-	// <a name="nestedTiming"></a>The `timing` block contains:
+	// <a name="nestedBuildArtifactsObjectsTiming"></a>The `timing` block contains:
 	Timings TriggerBuildArtifactsObjectsTimingArrayInput `pulumi:"timings"`
 }
 
@@ -2110,7 +2110,7 @@ func (o TriggerBuildArtifactsObjectsOutput) Paths() pulumi.StringArrayOutput {
 // Output only. Stores timing information for pushing all artifact objects.
 // Structure is documented below.
 //
-// <a name="nestedTiming"></a>The `timing` block contains:
+// <a name="nestedBuildArtifactsObjectsTiming"></a>The `timing` block contains:
 func (o TriggerBuildArtifactsObjectsOutput) Timings() TriggerBuildArtifactsObjectsTimingArrayOutput {
 	return o.ApplyT(func(v TriggerBuildArtifactsObjects) []TriggerBuildArtifactsObjectsTiming { return v.Timings }).(TriggerBuildArtifactsObjectsTimingArrayOutput)
 }
@@ -2165,7 +2165,7 @@ func (o TriggerBuildArtifactsObjectsPtrOutput) Paths() pulumi.StringArrayOutput 
 // Output only. Stores timing information for pushing all artifact objects.
 // Structure is documented below.
 //
-// <a name="nestedTiming"></a>The `timing` block contains:
+// <a name="nestedBuildArtifactsObjectsTiming"></a>The `timing` block contains:
 func (o TriggerBuildArtifactsObjectsPtrOutput) Timings() TriggerBuildArtifactsObjectsTimingArrayOutput {
 	return o.ApplyT(func(v *TriggerBuildArtifactsObjects) []TriggerBuildArtifactsObjectsTiming {
 		if v == nil {

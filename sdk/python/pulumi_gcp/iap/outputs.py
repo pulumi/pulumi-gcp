@@ -291,6 +291,7 @@ class SettingsAccessSettings(dict):
         :param 'SettingsAccessSettingsCorsSettingsArgs' cors_settings: Configuration to allow cross-origin requests via IAP.
                Structure is documented below.
         :param 'SettingsAccessSettingsGcipSettingsArgs' gcip_settings: GCIP claims and endpoint configurations for 3p identity providers.
+               * Enabling gcipSetting significantly changes the way IAP authenticates users. Identity Platform does not support IAM, so IAP will not enforce any IAM policies for requests to your application.
                Structure is documented below.
         :param Sequence[str] identity_sources: Identity sources that IAP can use to authenticate the end user. Only one identity source
                can be configured. The possible values are:
@@ -343,6 +344,7 @@ class SettingsAccessSettings(dict):
     def gcip_settings(self) -> Optional['outputs.SettingsAccessSettingsGcipSettings']:
         """
         GCIP claims and endpoint configurations for 3p identity providers.
+        * Enabling gcipSetting significantly changes the way IAP authenticates users. Identity Platform does not support IAM, so IAP will not enforce any IAM policies for requests to your application.
         Structure is documented below.
         """
         return pulumi.get(self, "gcip_settings")
@@ -549,6 +551,7 @@ class SettingsAccessSettingsOauthSettings(dict):
                (https://developers.google.com/identity/protocols/OpenIDConnect#hd-param)
                Note: IAP does not verify that the id token's hd claim matches this value
                since access behavior is managed by IAM policies.
+               * loginHint setting is not a replacement for access control. Always enforce an appropriate access policy if you want to restrict access to users outside your domain.
         :param Sequence[str] programmatic_clients: List of client ids allowed to use IAP programmatically.
         """
         if login_hint is not None:
@@ -565,6 +568,7 @@ class SettingsAccessSettingsOauthSettings(dict):
         (https://developers.google.com/identity/protocols/OpenIDConnect#hd-param)
         Note: IAP does not verify that the id token's hd claim matches this value
         since access behavior is managed by IAM policies.
+        * loginHint setting is not a replacement for access control. Always enforce an appropriate access policy if you want to restrict access to users outside your domain.
         """
         return pulumi.get(self, "login_hint")
 
@@ -688,7 +692,7 @@ class SettingsAccessSettingsWorkforceIdentitySettings(dict):
                Structure is documented below.
                
                
-               <a name="nested_oauth2"></a>The `oauth2` block supports:
+               <a name="nested_access_settings_workforce_identity_settings_oauth2"></a>The `oauth2` block supports:
         :param str workforce_pools: The workforce pool resources. Only one workforce pool is accepted.
         """
         if oauth2 is not None:
@@ -705,7 +709,7 @@ class SettingsAccessSettingsWorkforceIdentitySettings(dict):
         Structure is documented below.
 
 
-        <a name="nested_oauth2"></a>The `oauth2` block supports:
+        <a name="nested_access_settings_workforce_identity_settings_oauth2"></a>The `oauth2` block supports:
         """
         return pulumi.get(self, "oauth2")
 

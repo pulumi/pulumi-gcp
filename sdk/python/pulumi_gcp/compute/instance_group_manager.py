@@ -80,7 +80,7 @@ class InstanceGroupManagerArgs:
                - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input['InstanceGroupManagerStandbyPolicyArgs'] standby_policy: The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
+        :param pulumi.Input['InstanceGroupManagerStandbyPolicyArgs'] standby_policy: The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
         :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatefulDiskArgs']]] stateful_disks: Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
         :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatefulExternalIpArgs']]] stateful_external_ips: External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatefulInternalIpArgs']]] stateful_internal_ips: Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
@@ -308,7 +308,7 @@ class InstanceGroupManagerArgs:
     @pulumi.getter(name="standbyPolicy")
     def standby_policy(self) -> Optional[pulumi.Input['InstanceGroupManagerStandbyPolicyArgs']]:
         """
-        The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
+        The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
         """
         return pulumi.get(self, "standby_policy")
 
@@ -531,7 +531,7 @@ class _InstanceGroupManagerState:
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URL of the created resource.
-        :param pulumi.Input['InstanceGroupManagerStandbyPolicyArgs'] standby_policy: The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
+        :param pulumi.Input['InstanceGroupManagerStandbyPolicyArgs'] standby_policy: The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
         :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatefulDiskArgs']]] stateful_disks: Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
         :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatefulExternalIpArgs']]] stateful_external_ips: External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['InstanceGroupManagerStatefulInternalIpArgs']]] stateful_internal_ips: Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
@@ -834,7 +834,7 @@ class _InstanceGroupManagerState:
     @pulumi.getter(name="standbyPolicy")
     def standby_policy(self) -> Optional[pulumi.Input['InstanceGroupManagerStandbyPolicyArgs']]:
         """
-        The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
+        The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
         """
         return pulumi.get(self, "standby_policy")
 
@@ -1119,7 +1119,7 @@ class InstanceGroupManager(pulumi.CustomResource):
             ])
         ```
 
-        ### With Standby Policy (`Google-Beta` Provider)
+        ### With Standby Policy (`Google` Provider)
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1204,7 +1204,7 @@ class InstanceGroupManager(pulumi.CustomResource):
                - - -
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
-        :param pulumi.Input[Union['InstanceGroupManagerStandbyPolicyArgs', 'InstanceGroupManagerStandbyPolicyArgsDict']] standby_policy: The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
+        :param pulumi.Input[Union['InstanceGroupManagerStandbyPolicyArgs', 'InstanceGroupManagerStandbyPolicyArgsDict']] standby_policy: The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceGroupManagerStatefulDiskArgs', 'InstanceGroupManagerStatefulDiskArgsDict']]]] stateful_disks: Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceGroupManagerStatefulExternalIpArgs', 'InstanceGroupManagerStatefulExternalIpArgsDict']]]] stateful_external_ips: External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceGroupManagerStatefulInternalIpArgs', 'InstanceGroupManagerStatefulInternalIpArgsDict']]]] stateful_internal_ips: Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
@@ -1315,7 +1315,7 @@ class InstanceGroupManager(pulumi.CustomResource):
             ])
         ```
 
-        ### With Standby Policy (`Google-Beta` Provider)
+        ### With Standby Policy (`Google` Provider)
         ```python
         import pulumi
         import pulumi_gcp as gcp
@@ -1531,7 +1531,7 @@ class InstanceGroupManager(pulumi.CustomResource):
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs. If it
                is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URL of the created resource.
-        :param pulumi.Input[Union['InstanceGroupManagerStandbyPolicyArgs', 'InstanceGroupManagerStandbyPolicyArgsDict']] standby_policy: The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
+        :param pulumi.Input[Union['InstanceGroupManagerStandbyPolicyArgs', 'InstanceGroupManagerStandbyPolicyArgsDict']] standby_policy: The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceGroupManagerStatefulDiskArgs', 'InstanceGroupManagerStatefulDiskArgsDict']]]] stateful_disks: Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs).
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceGroupManagerStatefulExternalIpArgs', 'InstanceGroupManagerStatefulExternalIpArgsDict']]]] stateful_external_ips: External network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['InstanceGroupManagerStatefulInternalIpArgs', 'InstanceGroupManagerStatefulInternalIpArgsDict']]]] stateful_internal_ips: Internal network IPs assigned to the instances that will be preserved on instance delete, update, etc. This map is keyed with the network interface name. Structure is documented below.
@@ -1745,7 +1745,7 @@ class InstanceGroupManager(pulumi.CustomResource):
     @pulumi.getter(name="standbyPolicy")
     def standby_policy(self) -> pulumi.Output['outputs.InstanceGroupManagerStandbyPolicy']:
         """
-        The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
+        The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
         """
         return pulumi.get(self, "standby_policy")
 

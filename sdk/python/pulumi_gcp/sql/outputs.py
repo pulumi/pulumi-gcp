@@ -1480,6 +1480,8 @@ class DatabaseInstanceSettingsIpConfiguration(dict):
             suggest = "psc_configs"
         elif key == "serverCaMode":
             suggest = "server_ca_mode"
+        elif key == "serverCaPool":
+            suggest = "server_ca_pool"
         elif key == "sslMode":
             suggest = "ssl_mode"
 
@@ -1502,6 +1504,7 @@ class DatabaseInstanceSettingsIpConfiguration(dict):
                  private_network: Optional[str] = None,
                  psc_configs: Optional[Sequence['outputs.DatabaseInstanceSettingsIpConfigurationPscConfig']] = None,
                  server_ca_mode: Optional[str] = None,
+                 server_ca_pool: Optional[str] = None,
                  ssl_mode: Optional[str] = None):
         """
         :param str allocated_ip_range: The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
@@ -1516,6 +1519,7 @@ class DatabaseInstanceSettingsIpConfiguration(dict):
                This setting can be updated, but it cannot be removed after it is set.
         :param Sequence['DatabaseInstanceSettingsIpConfigurationPscConfigArgs'] psc_configs: PSC settings for a Cloud SQL instance.
         :param str server_ca_mode: Specify how the server certificate's Certificate Authority is hosted. Supported values are `GOOGLE_MANAGED_INTERNAL_CA` and `GOOGLE_MANAGED_CAS_CA`.
+        :param str server_ca_pool: The resource name of the server CA pool for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `server_ca_mode`.
         :param str ssl_mode: Specify how SSL connection should be enforced in DB connections. Supported values are `ALLOW_UNENCRYPTED_AND_ENCRYPTED`, `ENCRYPTED_ONLY`, and `TRUSTED_CLIENT_CERTIFICATE_REQUIRED` (not supported for SQL Server). See [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1/instances#ipconfiguration) for details.
         """
         if allocated_ip_range is not None:
@@ -1532,6 +1536,8 @@ class DatabaseInstanceSettingsIpConfiguration(dict):
             pulumi.set(__self__, "psc_configs", psc_configs)
         if server_ca_mode is not None:
             pulumi.set(__self__, "server_ca_mode", server_ca_mode)
+        if server_ca_pool is not None:
+            pulumi.set(__self__, "server_ca_pool", server_ca_pool)
         if ssl_mode is not None:
             pulumi.set(__self__, "ssl_mode", ssl_mode)
 
@@ -1593,6 +1599,14 @@ class DatabaseInstanceSettingsIpConfiguration(dict):
         Specify how the server certificate's Certificate Authority is hosted. Supported values are `GOOGLE_MANAGED_INTERNAL_CA` and `GOOGLE_MANAGED_CAS_CA`.
         """
         return pulumi.get(self, "server_ca_mode")
+
+    @property
+    @pulumi.getter(name="serverCaPool")
+    def server_ca_pool(self) -> Optional[str]:
+        """
+        The resource name of the server CA pool for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `server_ca_mode`.
+        """
+        return pulumi.get(self, "server_ca_pool")
 
     @property
     @pulumi.getter(name="sslMode")
@@ -3249,6 +3263,7 @@ class GetDatabaseInstanceSettingIpConfigurationResult(dict):
                  private_network: str,
                  psc_configs: Sequence['outputs.GetDatabaseInstanceSettingIpConfigurationPscConfigResult'],
                  server_ca_mode: str,
+                 server_ca_pool: str,
                  ssl_mode: str):
         """
         :param str allocated_ip_range: The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with RFC 1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
@@ -3257,6 +3272,7 @@ class GetDatabaseInstanceSettingIpConfigurationResult(dict):
         :param str private_network: The VPC network from which the Cloud SQL instance is accessible for private IP. For example, projects/myProject/global/networks/default. Specifying a network enables private IP. At least ipv4_enabled must be enabled or a private_network must be configured. This setting can be updated, but it cannot be removed after it is set.
         :param Sequence['GetDatabaseInstanceSettingIpConfigurationPscConfigArgs'] psc_configs: PSC settings for a Cloud SQL instance.
         :param str server_ca_mode: Specify how the server certificate's Certificate Authority is hosted.
+        :param str server_ca_pool: The resource name of the server CA pool for an instance with "CUSTOMER_MANAGED_CAS_CA" as the "server_ca_mode".
         :param str ssl_mode: Specify how SSL connection should be enforced in DB connections.
         """
         pulumi.set(__self__, "allocated_ip_range", allocated_ip_range)
@@ -3266,6 +3282,7 @@ class GetDatabaseInstanceSettingIpConfigurationResult(dict):
         pulumi.set(__self__, "private_network", private_network)
         pulumi.set(__self__, "psc_configs", psc_configs)
         pulumi.set(__self__, "server_ca_mode", server_ca_mode)
+        pulumi.set(__self__, "server_ca_pool", server_ca_pool)
         pulumi.set(__self__, "ssl_mode", ssl_mode)
 
     @property
@@ -3320,6 +3337,14 @@ class GetDatabaseInstanceSettingIpConfigurationResult(dict):
         Specify how the server certificate's Certificate Authority is hosted.
         """
         return pulumi.get(self, "server_ca_mode")
+
+    @property
+    @pulumi.getter(name="serverCaPool")
+    def server_ca_pool(self) -> str:
+        """
+        The resource name of the server CA pool for an instance with "CUSTOMER_MANAGED_CAS_CA" as the "server_ca_mode".
+        """
+        return pulumi.get(self, "server_ca_pool")
 
     @property
     @pulumi.getter(name="sslMode")
@@ -4814,6 +4839,7 @@ class GetDatabaseInstancesInstanceSettingIpConfigurationResult(dict):
                  private_network: str,
                  psc_configs: Sequence['outputs.GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigResult'],
                  server_ca_mode: str,
+                 server_ca_pool: str,
                  ssl_mode: str):
         """
         :param str allocated_ip_range: The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with RFC 1035. Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
@@ -4822,6 +4848,7 @@ class GetDatabaseInstancesInstanceSettingIpConfigurationResult(dict):
         :param str private_network: The VPC network from which the Cloud SQL instance is accessible for private IP. For example, projects/myProject/global/networks/default. Specifying a network enables private IP. At least ipv4_enabled must be enabled or a private_network must be configured. This setting can be updated, but it cannot be removed after it is set.
         :param Sequence['GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArgs'] psc_configs: PSC settings for a Cloud SQL instance.
         :param str server_ca_mode: Specify how the server certificate's Certificate Authority is hosted.
+        :param str server_ca_pool: The resource name of the server CA pool for an instance with "CUSTOMER_MANAGED_CAS_CA" as the "server_ca_mode".
         :param str ssl_mode: Specify how SSL connection should be enforced in DB connections.
         """
         pulumi.set(__self__, "allocated_ip_range", allocated_ip_range)
@@ -4831,6 +4858,7 @@ class GetDatabaseInstancesInstanceSettingIpConfigurationResult(dict):
         pulumi.set(__self__, "private_network", private_network)
         pulumi.set(__self__, "psc_configs", psc_configs)
         pulumi.set(__self__, "server_ca_mode", server_ca_mode)
+        pulumi.set(__self__, "server_ca_pool", server_ca_pool)
         pulumi.set(__self__, "ssl_mode", ssl_mode)
 
     @property
@@ -4885,6 +4913,14 @@ class GetDatabaseInstancesInstanceSettingIpConfigurationResult(dict):
         Specify how the server certificate's Certificate Authority is hosted.
         """
         return pulumi.get(self, "server_ca_mode")
+
+    @property
+    @pulumi.getter(name="serverCaPool")
+    def server_ca_pool(self) -> str:
+        """
+        The resource name of the server CA pool for an instance with "CUSTOMER_MANAGED_CAS_CA" as the "server_ca_mode".
+        """
+        return pulumi.get(self, "server_ca_pool")
 
     @property
     @pulumi.getter(name="sslMode")

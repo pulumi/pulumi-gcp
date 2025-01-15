@@ -14,7 +14,7 @@ public final class VMwareClusterNetworkConfigHostConfig {
     /**
      * @return DNS search domains.
      * 
-     * &lt;a name=&#34;nested_control_plane_v2_config&#34;&gt;&lt;/a&gt;The `control_plane_v2_config` block supports:
+     * &lt;a name=&#34;nested_network_config_control_plane_v2_config&#34;&gt;&lt;/a&gt;The `control_plane_v2_config` block supports:
      * 
      */
     private @Nullable List<String> dnsSearchDomains;
@@ -33,7 +33,7 @@ public final class VMwareClusterNetworkConfigHostConfig {
     /**
      * @return DNS search domains.
      * 
-     * &lt;a name=&#34;nested_control_plane_v2_config&#34;&gt;&lt;/a&gt;The `control_plane_v2_config` block supports:
+     * &lt;a name=&#34;nested_network_config_control_plane_v2_config&#34;&gt;&lt;/a&gt;The `control_plane_v2_config` block supports:
      * 
      */
     public List<String> dnsSearchDomains() {

@@ -951,7 +951,7 @@ func (o AuthorityConfigSubjectConfigSubjectAltNamePtrOutput) Uris() pulumi.Strin
 type AuthorityConfigSubjectKeyId struct {
 	// The value of the KeyId in lowercase hexadecimal.
 	//
-	// <a name="nestedX509Config"></a>The `x509Config` block supports:
+	// <a name="nestedConfigX509Config"></a>The `x509Config` block supports:
 	KeyId *string `pulumi:"keyId"`
 }
 
@@ -969,7 +969,7 @@ type AuthorityConfigSubjectKeyIdInput interface {
 type AuthorityConfigSubjectKeyIdArgs struct {
 	// The value of the KeyId in lowercase hexadecimal.
 	//
-	// <a name="nestedX509Config"></a>The `x509Config` block supports:
+	// <a name="nestedConfigX509Config"></a>The `x509Config` block supports:
 	KeyId pulumi.StringPtrInput `pulumi:"keyId"`
 }
 
@@ -1052,7 +1052,7 @@ func (o AuthorityConfigSubjectKeyIdOutput) ToAuthorityConfigSubjectKeyIdPtrOutpu
 
 // The value of the KeyId in lowercase hexadecimal.
 //
-// <a name="nestedX509Config"></a>The `x509Config` block supports:
+// <a name="nestedConfigX509Config"></a>The `x509Config` block supports:
 func (o AuthorityConfigSubjectKeyIdOutput) KeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AuthorityConfigSubjectKeyId) *string { return v.KeyId }).(pulumi.StringPtrOutput)
 }
@@ -1083,7 +1083,7 @@ func (o AuthorityConfigSubjectKeyIdPtrOutput) Elem() AuthorityConfigSubjectKeyId
 
 // The value of the KeyId in lowercase hexadecimal.
 //
-// <a name="nestedX509Config"></a>The `x509Config` block supports:
+// <a name="nestedConfigX509Config"></a>The `x509Config` block supports:
 func (o AuthorityConfigSubjectKeyIdPtrOutput) KeyId() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AuthorityConfigSubjectKeyId) *string {
 		if v == nil {
@@ -9989,7 +9989,7 @@ type CertificateConfig struct {
 	// A PublicKey describes a public key.
 	// Structure is documented below.
 	//
-	// <a name="nestedX509Config"></a>The `x509Config` block supports:
+	// <a name="nestedConfigX509Config"></a>The `x509Config` block supports:
 	PublicKey CertificateConfigPublicKey `pulumi:"publicKey"`
 	// Specifies some of the values in a certificate that are related to the subject.
 	// Structure is documented below.
@@ -10017,7 +10017,7 @@ type CertificateConfigArgs struct {
 	// A PublicKey describes a public key.
 	// Structure is documented below.
 	//
-	// <a name="nestedX509Config"></a>The `x509Config` block supports:
+	// <a name="nestedConfigX509Config"></a>The `x509Config` block supports:
 	PublicKey CertificateConfigPublicKeyInput `pulumi:"publicKey"`
 	// Specifies some of the values in a certificate that are related to the subject.
 	// Structure is documented below.
@@ -10110,7 +10110,7 @@ func (o CertificateConfigOutput) ToCertificateConfigPtrOutputWithContext(ctx con
 // A PublicKey describes a public key.
 // Structure is documented below.
 //
-// <a name="nestedX509Config"></a>The `x509Config` block supports:
+// <a name="nestedConfigX509Config"></a>The `x509Config` block supports:
 func (o CertificateConfigOutput) PublicKey() CertificateConfigPublicKeyOutput {
 	return o.ApplyT(func(v CertificateConfig) CertificateConfigPublicKey { return v.PublicKey }).(CertificateConfigPublicKeyOutput)
 }
@@ -10160,7 +10160,7 @@ func (o CertificateConfigPtrOutput) Elem() CertificateConfigOutput {
 // A PublicKey describes a public key.
 // Structure is documented below.
 //
-// <a name="nestedX509Config"></a>The `x509Config` block supports:
+// <a name="nestedConfigX509Config"></a>The `x509Config` block supports:
 func (o CertificateConfigPtrOutput) PublicKey() CertificateConfigPublicKeyPtrOutput {
 	return o.ApplyT(func(v *CertificateConfig) *CertificateConfigPublicKey {
 		if v == nil {

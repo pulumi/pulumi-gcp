@@ -669,7 +669,7 @@ if not MYPY:
         """
         The value of the KeyId in lowercase hexadecimal.
 
-        <a name="nested_x509_config"></a>The `x509_config` block supports:
+        <a name="nested_config_x509_config"></a>The `x509_config` block supports:
         """
 elif False:
     AuthorityConfigSubjectKeyIdArgsDict: TypeAlias = Mapping[str, Any]
@@ -681,7 +681,7 @@ class AuthorityConfigSubjectKeyIdArgs:
         """
         :param pulumi.Input[str] key_id: The value of the KeyId in lowercase hexadecimal.
                
-               <a name="nested_x509_config"></a>The `x509_config` block supports:
+               <a name="nested_config_x509_config"></a>The `x509_config` block supports:
         """
         if key_id is not None:
             pulumi.set(__self__, "key_id", key_id)
@@ -692,7 +692,7 @@ class AuthorityConfigSubjectKeyIdArgs:
         """
         The value of the KeyId in lowercase hexadecimal.
 
-        <a name="nested_x509_config"></a>The `x509_config` block supports:
+        <a name="nested_config_x509_config"></a>The `x509_config` block supports:
         """
         return pulumi.get(self, "key_id")
 
@@ -5774,7 +5774,7 @@ if not MYPY:
         Structure is documented below.
 
 
-        <a name="nested_x509_config"></a>The `x509_config` block supports:
+        <a name="nested_config_x509_config"></a>The `x509_config` block supports:
         """
         subject_config: pulumi.Input['CertificateConfigSubjectConfigArgsDict']
         """
@@ -5806,7 +5806,7 @@ class CertificateConfigArgs:
                Structure is documented below.
                
                
-               <a name="nested_x509_config"></a>The `x509_config` block supports:
+               <a name="nested_config_x509_config"></a>The `x509_config` block supports:
         :param pulumi.Input['CertificateConfigSubjectConfigArgs'] subject_config: Specifies some of the values in a certificate that are related to the subject.
                Structure is documented below.
         :param pulumi.Input['CertificateConfigX509ConfigArgs'] x509_config: Describes how some of the technical X.509 fields in a certificate should be populated.
@@ -5828,7 +5828,7 @@ class CertificateConfigArgs:
         Structure is documented below.
 
 
-        <a name="nested_x509_config"></a>The `x509_config` block supports:
+        <a name="nested_config_x509_config"></a>The `x509_config` block supports:
         """
         return pulumi.get(self, "public_key")
 

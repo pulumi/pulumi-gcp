@@ -21,6 +21,8 @@ __all__ = [
     'AppConnectorPrincipalInfo',
     'AppConnectorPrincipalInfoServiceAccount',
     'AppGatewayAllocatedConnection',
+    'SecurityGatewayHub',
+    'SecurityGatewayHubInternetGateway',
     'GetAppConnectionApplicationEndpointResult',
     'GetAppConnectionGatewayResult',
     'GetAppConnectorPrincipalInfoResult',
@@ -249,6 +251,93 @@ class AppGatewayAllocatedConnection(dict):
         The PSC uri of an allocated connection.
         """
         return pulumi.get(self, "psc_uri")
+
+
+@pulumi.output_type
+class SecurityGatewayHub(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "internetGateway":
+            suggest = "internet_gateway"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecurityGatewayHub. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecurityGatewayHub.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecurityGatewayHub.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 region: str,
+                 internet_gateway: Optional['outputs.SecurityGatewayHubInternetGateway'] = None):
+        """
+        :param str region: The identifier for this object. Format specified above.
+        :param 'SecurityGatewayHubInternetGatewayArgs' internet_gateway: Internet Gateway configuration.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "region", region)
+        if internet_gateway is not None:
+            pulumi.set(__self__, "internet_gateway", internet_gateway)
+
+    @property
+    @pulumi.getter
+    def region(self) -> str:
+        """
+        The identifier for this object. Format specified above.
+        """
+        return pulumi.get(self, "region")
+
+    @property
+    @pulumi.getter(name="internetGateway")
+    def internet_gateway(self) -> Optional['outputs.SecurityGatewayHubInternetGateway']:
+        """
+        Internet Gateway configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "internet_gateway")
+
+
+@pulumi.output_type
+class SecurityGatewayHubInternetGateway(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "assignedIps":
+            suggest = "assigned_ips"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecurityGatewayHubInternetGateway. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecurityGatewayHubInternetGateway.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecurityGatewayHubInternetGateway.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 assigned_ips: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] assigned_ips: (Output)
+               Output only. List of IP addresses assigned to the Cloud NAT.
+        """
+        if assigned_ips is not None:
+            pulumi.set(__self__, "assigned_ips", assigned_ips)
+
+    @property
+    @pulumi.getter(name="assignedIps")
+    def assigned_ips(self) -> Optional[Sequence[str]]:
+        """
+        (Output)
+        Output only. List of IP addresses assigned to the Cloud NAT.
+        """
+        return pulumi.get(self, "assigned_ips")
 
 
 @pulumi.output_type

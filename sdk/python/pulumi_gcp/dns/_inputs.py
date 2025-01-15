@@ -956,6 +956,10 @@ if not MYPY:
         The configuration for Geolocation based routing policy.
         Structure is documented below.
         """
+        health_check: NotRequired[pulumi.Input[str]]
+        """
+        Specifies the health check (used with external endpoints).
+        """
         primary_backup: NotRequired[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupArgsDict']]
         """
         The configuration for a failover policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
@@ -974,12 +978,14 @@ class RecordSetRoutingPolicyArgs:
     def __init__(__self__, *,
                  enable_geo_fencing: Optional[pulumi.Input[bool]] = None,
                  geos: Optional[pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyGeoArgs']]]] = None,
+                 health_check: Optional[pulumi.Input[str]] = None,
                  primary_backup: Optional[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupArgs']] = None,
                  wrrs: Optional[pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyWrrArgs']]]] = None):
         """
         :param pulumi.Input[bool] enable_geo_fencing: Specifies whether to enable fencing for geo queries.
         :param pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyGeoArgs']]] geos: The configuration for Geolocation based routing policy.
                Structure is documented below.
+        :param pulumi.Input[str] health_check: Specifies the health check (used with external endpoints).
         :param pulumi.Input['RecordSetRoutingPolicyPrimaryBackupArgs'] primary_backup: The configuration for a failover policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyWrrArgs']]] wrrs: The configuration for Weighted Round Robin based routing policy.
@@ -989,6 +995,8 @@ class RecordSetRoutingPolicyArgs:
             pulumi.set(__self__, "enable_geo_fencing", enable_geo_fencing)
         if geos is not None:
             pulumi.set(__self__, "geos", geos)
+        if health_check is not None:
+            pulumi.set(__self__, "health_check", health_check)
         if primary_backup is not None:
             pulumi.set(__self__, "primary_backup", primary_backup)
         if wrrs is not None:
@@ -1018,6 +1026,18 @@ class RecordSetRoutingPolicyArgs:
     @geos.setter
     def geos(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyGeoArgs']]]]):
         pulumi.set(self, "geos", value)
+
+    @property
+    @pulumi.getter(name="healthCheck")
+    def health_check(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies the health check (used with external endpoints).
+        """
+        return pulumi.get(self, "health_check")
+
+    @health_check.setter
+    def health_check(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "health_check", value)
 
     @property
     @pulumi.getter(name="primaryBackup")
@@ -1122,7 +1142,11 @@ class RecordSetRoutingPolicyGeoArgs:
 
 if not MYPY:
     class RecordSetRoutingPolicyGeoHealthCheckedTargetsArgsDict(TypedDict):
-        internal_load_balancers: pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArgsDict']]]
+        external_endpoints: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The list of external endpoint addresses to health check.
+        """
+        internal_load_balancers: NotRequired[pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArgsDict']]]]
         """
         The list of internal load balancers to health check.
         Structure is documented below.
@@ -1133,16 +1157,33 @@ elif False:
 @pulumi.input_type
 class RecordSetRoutingPolicyGeoHealthCheckedTargetsArgs:
     def __init__(__self__, *,
-                 internal_load_balancers: pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArgs']]]):
+                 external_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 internal_load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArgs']]]] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] external_endpoints: The list of external endpoint addresses to health check.
         :param pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArgs']]] internal_load_balancers: The list of internal load balancers to health check.
                Structure is documented below.
         """
-        pulumi.set(__self__, "internal_load_balancers", internal_load_balancers)
+        if external_endpoints is not None:
+            pulumi.set(__self__, "external_endpoints", external_endpoints)
+        if internal_load_balancers is not None:
+            pulumi.set(__self__, "internal_load_balancers", internal_load_balancers)
+
+    @property
+    @pulumi.getter(name="externalEndpoints")
+    def external_endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The list of external endpoint addresses to health check.
+        """
+        return pulumi.get(self, "external_endpoints")
+
+    @external_endpoints.setter
+    def external_endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "external_endpoints", value)
 
     @property
     @pulumi.getter(name="internalLoadBalancers")
-    def internal_load_balancers(self) -> pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArgs']]]:
+    def internal_load_balancers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArgs']]]]:
         """
         The list of internal load balancers to health check.
         Structure is documented below.
@@ -1150,7 +1191,7 @@ class RecordSetRoutingPolicyGeoHealthCheckedTargetsArgs:
         return pulumi.get(self, "internal_load_balancers")
 
     @internal_load_balancers.setter
-    def internal_load_balancers(self, value: pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArgs']]]):
+    def internal_load_balancers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArgs']]]]):
         pulumi.set(self, "internal_load_balancers", value)
 
 
@@ -1463,7 +1504,11 @@ class RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs:
 
 if not MYPY:
     class RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgsDict(TypedDict):
-        internal_load_balancers: pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArgsDict']]]
+        external_endpoints: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The list of external endpoint addresses to health check.
+        """
+        internal_load_balancers: NotRequired[pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArgsDict']]]]
         """
         The list of internal load balancers to health check.
         Structure is documented below.
@@ -1474,16 +1519,33 @@ elif False:
 @pulumi.input_type
 class RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs:
     def __init__(__self__, *,
-                 internal_load_balancers: pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArgs']]]):
+                 external_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 internal_load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArgs']]]] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] external_endpoints: The list of external endpoint addresses to health check.
         :param pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArgs']]] internal_load_balancers: The list of internal load balancers to health check.
                Structure is documented below.
         """
-        pulumi.set(__self__, "internal_load_balancers", internal_load_balancers)
+        if external_endpoints is not None:
+            pulumi.set(__self__, "external_endpoints", external_endpoints)
+        if internal_load_balancers is not None:
+            pulumi.set(__self__, "internal_load_balancers", internal_load_balancers)
+
+    @property
+    @pulumi.getter(name="externalEndpoints")
+    def external_endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The list of external endpoint addresses to health check.
+        """
+        return pulumi.get(self, "external_endpoints")
+
+    @external_endpoints.setter
+    def external_endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "external_endpoints", value)
 
     @property
     @pulumi.getter(name="internalLoadBalancers")
-    def internal_load_balancers(self) -> pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArgs']]]:
+    def internal_load_balancers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArgs']]]]:
         """
         The list of internal load balancers to health check.
         Structure is documented below.
@@ -1491,7 +1553,7 @@ class RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs:
         return pulumi.get(self, "internal_load_balancers")
 
     @internal_load_balancers.setter
-    def internal_load_balancers(self, value: pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArgs']]]):
+    def internal_load_balancers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArgs']]]]):
         pulumi.set(self, "internal_load_balancers", value)
 
 
@@ -1644,7 +1706,11 @@ class RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLo
 
 if not MYPY:
     class RecordSetRoutingPolicyPrimaryBackupPrimaryArgsDict(TypedDict):
-        internal_load_balancers: pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgsDict']]]
+        external_endpoints: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The Internet IP addresses to be health checked.
+        """
+        internal_load_balancers: NotRequired[pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgsDict']]]]
         """
         The list of internal load balancers to health check.
         """
@@ -1654,22 +1720,39 @@ elif False:
 @pulumi.input_type
 class RecordSetRoutingPolicyPrimaryBackupPrimaryArgs:
     def __init__(__self__, *,
-                 internal_load_balancers: pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs']]]):
+                 external_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 internal_load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs']]]] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] external_endpoints: The Internet IP addresses to be health checked.
         :param pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs']]] internal_load_balancers: The list of internal load balancers to health check.
         """
-        pulumi.set(__self__, "internal_load_balancers", internal_load_balancers)
+        if external_endpoints is not None:
+            pulumi.set(__self__, "external_endpoints", external_endpoints)
+        if internal_load_balancers is not None:
+            pulumi.set(__self__, "internal_load_balancers", internal_load_balancers)
+
+    @property
+    @pulumi.getter(name="externalEndpoints")
+    def external_endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The Internet IP addresses to be health checked.
+        """
+        return pulumi.get(self, "external_endpoints")
+
+    @external_endpoints.setter
+    def external_endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "external_endpoints", value)
 
     @property
     @pulumi.getter(name="internalLoadBalancers")
-    def internal_load_balancers(self) -> pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs']]]:
+    def internal_load_balancers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs']]]]:
         """
         The list of internal load balancers to health check.
         """
         return pulumi.get(self, "internal_load_balancers")
 
     @internal_load_balancers.setter
-    def internal_load_balancers(self, value: pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs']]]):
+    def internal_load_balancers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArgs']]]]):
         pulumi.set(self, "internal_load_balancers", value)
 
 
@@ -1896,7 +1979,11 @@ class RecordSetRoutingPolicyWrrArgs:
 
 if not MYPY:
     class RecordSetRoutingPolicyWrrHealthCheckedTargetsArgsDict(TypedDict):
-        internal_load_balancers: pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArgsDict']]]
+        external_endpoints: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        The list of external endpoint addresses to health check.
+        """
+        internal_load_balancers: NotRequired[pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArgsDict']]]]
         """
         The list of internal load balancers to health check.
         Structure is documented below.
@@ -1907,16 +1994,33 @@ elif False:
 @pulumi.input_type
 class RecordSetRoutingPolicyWrrHealthCheckedTargetsArgs:
     def __init__(__self__, *,
-                 internal_load_balancers: pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArgs']]]):
+                 external_endpoints: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 internal_load_balancers: Optional[pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArgs']]]] = None):
         """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] external_endpoints: The list of external endpoint addresses to health check.
         :param pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArgs']]] internal_load_balancers: The list of internal load balancers to health check.
                Structure is documented below.
         """
-        pulumi.set(__self__, "internal_load_balancers", internal_load_balancers)
+        if external_endpoints is not None:
+            pulumi.set(__self__, "external_endpoints", external_endpoints)
+        if internal_load_balancers is not None:
+            pulumi.set(__self__, "internal_load_balancers", internal_load_balancers)
+
+    @property
+    @pulumi.getter(name="externalEndpoints")
+    def external_endpoints(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        The list of external endpoint addresses to health check.
+        """
+        return pulumi.get(self, "external_endpoints")
+
+    @external_endpoints.setter
+    def external_endpoints(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "external_endpoints", value)
 
     @property
     @pulumi.getter(name="internalLoadBalancers")
-    def internal_load_balancers(self) -> pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArgs']]]:
+    def internal_load_balancers(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArgs']]]]:
         """
         The list of internal load balancers to health check.
         Structure is documented below.
@@ -1924,7 +2028,7 @@ class RecordSetRoutingPolicyWrrHealthCheckedTargetsArgs:
         return pulumi.get(self, "internal_load_balancers")
 
     @internal_load_balancers.setter
-    def internal_load_balancers(self, value: pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArgs']]]):
+    def internal_load_balancers(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArgs']]]]):
         pulumi.set(self, "internal_load_balancers", value)
 
 

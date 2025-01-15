@@ -9,6 +9,7 @@ import com.pulumi.gcp.dns.inputs.RecordSetRoutingPolicyGeoArgs;
 import com.pulumi.gcp.dns.inputs.RecordSetRoutingPolicyPrimaryBackupArgs;
 import com.pulumi.gcp.dns.inputs.RecordSetRoutingPolicyWrrArgs;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -52,6 +53,21 @@ public final class RecordSetRoutingPolicyArgs extends com.pulumi.resources.Resou
     }
 
     /**
+     * Specifies the health check (used with external endpoints).
+     * 
+     */
+    @Import(name="healthCheck")
+    private @Nullable Output<String> healthCheck;
+
+    /**
+     * @return Specifies the health check (used with external endpoints).
+     * 
+     */
+    public Optional<Output<String>> healthCheck() {
+        return Optional.ofNullable(this.healthCheck);
+    }
+
+    /**
      * The configuration for a failover policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
      * Structure is documented below.
      * 
@@ -90,6 +106,7 @@ public final class RecordSetRoutingPolicyArgs extends com.pulumi.resources.Resou
     private RecordSetRoutingPolicyArgs(RecordSetRoutingPolicyArgs $) {
         this.enableGeoFencing = $.enableGeoFencing;
         this.geos = $.geos;
+        this.healthCheck = $.healthCheck;
         this.primaryBackup = $.primaryBackup;
         this.wrrs = $.wrrs;
     }
@@ -165,6 +182,27 @@ public final class RecordSetRoutingPolicyArgs extends com.pulumi.resources.Resou
          */
         public Builder geos(RecordSetRoutingPolicyGeoArgs... geos) {
             return geos(List.of(geos));
+        }
+
+        /**
+         * @param healthCheck Specifies the health check (used with external endpoints).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder healthCheck(@Nullable Output<String> healthCheck) {
+            $.healthCheck = healthCheck;
+            return this;
+        }
+
+        /**
+         * @param healthCheck Specifies the health check (used with external endpoints).
+         * 
+         * @return builder
+         * 
+         */
+        public Builder healthCheck(String healthCheck) {
+            return healthCheck(Output.of(healthCheck));
         }
 
         /**

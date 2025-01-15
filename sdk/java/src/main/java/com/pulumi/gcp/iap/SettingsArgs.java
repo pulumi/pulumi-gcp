@@ -55,15 +55,15 @@ public final class SettingsArgs extends com.pulumi.resources.ResourceArgs {
      * The resource name of the IAP protected resource. Name can have below resources:
      * * organizations/{organization_id}
      * * folders/{folder_id}
-     * * projects/{projects_id}
-     * * projects/{projects_id}/iap_web
-     * * projects/{projects_id}/iap_web/compute
-     * * projects/{projects_id}/iap_web/compute-{region}
-     * * projects/{projects_id}/iap_web/compute/service/{service_id}
-     * * projects/{projects_id}/iap_web/compute-{region}/service/{service_id}
-     * * projects/{projects_id}/iap_web/appengine-{app_id}
-     * * projects/{projects_id}/iap_web/appengine-{app_id}/service/{service_id}
-     * * projects/{projects_id}/iap_web/appengine-{app_id}/service/{service_id}/version/{version_id}
+     * * projects/{project_id}
+     * * projects/{project_id}/iap_web
+     * * projects/{project_id}/iap_web/compute
+     * * projects/{project_id}/iap_web/compute-{region}
+     * * projects/{project_id}/iap_web/compute/services/{service_id}
+     * * projects/{project_id}/iap_web/compute-{region}/services/{service_id}
+     * * projects/{project_id}/iap_web/appengine-{app_id}
+     * * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}
+     * * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}/version/{version_id}
      * 
      * ***
      * 
@@ -75,15 +75,15 @@ public final class SettingsArgs extends com.pulumi.resources.ResourceArgs {
      * @return The resource name of the IAP protected resource. Name can have below resources:
      * * organizations/{organization_id}
      * * folders/{folder_id}
-     * * projects/{projects_id}
-     * * projects/{projects_id}/iap_web
-     * * projects/{projects_id}/iap_web/compute
-     * * projects/{projects_id}/iap_web/compute-{region}
-     * * projects/{projects_id}/iap_web/compute/service/{service_id}
-     * * projects/{projects_id}/iap_web/compute-{region}/service/{service_id}
-     * * projects/{projects_id}/iap_web/appengine-{app_id}
-     * * projects/{projects_id}/iap_web/appengine-{app_id}/service/{service_id}
-     * * projects/{projects_id}/iap_web/appengine-{app_id}/service/{service_id}/version/{version_id}
+     * * projects/{project_id}
+     * * projects/{project_id}/iap_web
+     * * projects/{project_id}/iap_web/compute
+     * * projects/{project_id}/iap_web/compute-{region}
+     * * projects/{project_id}/iap_web/compute/services/{service_id}
+     * * projects/{project_id}/iap_web/compute-{region}/services/{service_id}
+     * * projects/{project_id}/iap_web/appengine-{app_id}
+     * * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}
+     * * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}/version/{version_id}
      * 
      * ***
      * 
@@ -168,15 +168,15 @@ public final class SettingsArgs extends com.pulumi.resources.ResourceArgs {
          * @param name The resource name of the IAP protected resource. Name can have below resources:
          * * organizations/{organization_id}
          * * folders/{folder_id}
-         * * projects/{projects_id}
-         * * projects/{projects_id}/iap_web
-         * * projects/{projects_id}/iap_web/compute
-         * * projects/{projects_id}/iap_web/compute-{region}
-         * * projects/{projects_id}/iap_web/compute/service/{service_id}
-         * * projects/{projects_id}/iap_web/compute-{region}/service/{service_id}
-         * * projects/{projects_id}/iap_web/appengine-{app_id}
-         * * projects/{projects_id}/iap_web/appengine-{app_id}/service/{service_id}
-         * * projects/{projects_id}/iap_web/appengine-{app_id}/service/{service_id}/version/{version_id}
+         * * projects/{project_id}
+         * * projects/{project_id}/iap_web
+         * * projects/{project_id}/iap_web/compute
+         * * projects/{project_id}/iap_web/compute-{region}
+         * * projects/{project_id}/iap_web/compute/services/{service_id}
+         * * projects/{project_id}/iap_web/compute-{region}/services/{service_id}
+         * * projects/{project_id}/iap_web/appengine-{app_id}
+         * * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}
+         * * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}/version/{version_id}
          * 
          * ***
          * 
@@ -192,15 +192,15 @@ public final class SettingsArgs extends com.pulumi.resources.ResourceArgs {
          * @param name The resource name of the IAP protected resource. Name can have below resources:
          * * organizations/{organization_id}
          * * folders/{folder_id}
-         * * projects/{projects_id}
-         * * projects/{projects_id}/iap_web
-         * * projects/{projects_id}/iap_web/compute
-         * * projects/{projects_id}/iap_web/compute-{region}
-         * * projects/{projects_id}/iap_web/compute/service/{service_id}
-         * * projects/{projects_id}/iap_web/compute-{region}/service/{service_id}
-         * * projects/{projects_id}/iap_web/appengine-{app_id}
-         * * projects/{projects_id}/iap_web/appengine-{app_id}/service/{service_id}
-         * * projects/{projects_id}/iap_web/appengine-{app_id}/service/{service_id}/version/{version_id}
+         * * projects/{project_id}
+         * * projects/{project_id}/iap_web
+         * * projects/{project_id}/iap_web/compute
+         * * projects/{project_id}/iap_web/compute-{region}
+         * * projects/{project_id}/iap_web/compute/services/{service_id}
+         * * projects/{project_id}/iap_web/compute-{region}/services/{service_id}
+         * * projects/{project_id}/iap_web/appengine-{app_id}
+         * * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}
+         * * projects/{project_id}/iap_web/appengine-{app_id}/services/{service_id}/version/{version_id}
          * 
          * ***
          * 

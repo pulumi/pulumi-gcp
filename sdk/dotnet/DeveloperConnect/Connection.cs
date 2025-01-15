@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.DeveloperConnect
 {
     /// <summary>
+    /// A connection for GitHub, GitHub Enterprise, GitLab, and GitLab Enterprise.
+    /// 
     /// ## Example Usage
     /// 
     /// ### Developer Connect Connection New
@@ -159,7 +161,280 @@ namespace Pulumi.Gcp.DeveloperConnect
     /// 
     /// });
     /// ```
+    /// ### Developer Connect Connection Github
     /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var my_connection = new Gcp.DeveloperConnect.Connection("my-connection", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         ConnectionId = "tf-test-connection",
+    ///         GithubConfig = new Gcp.DeveloperConnect.Inputs.ConnectionGithubConfigArgs
+    ///         {
+    ///             GithubApp = "DEVELOPER_CONNECT",
+    ///             AuthorizerCredential = new Gcp.DeveloperConnect.Inputs.ConnectionGithubConfigAuthorizerCredentialArgs
+    ///             {
+    ///                 OauthTokenSecretVersion = "projects/devconnect-terraform-creds/secrets/tf-test-do-not-change-github-oauthtoken-e0b9e7/versions/1",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Developer Connect Connection Github Doc
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var github_token_secret = new Gcp.SecretManager.Secret("github-token-secret", new()
+    ///     {
+    ///         SecretId = "github-token-secret",
+    ///         Replication = new Gcp.SecretManager.Inputs.SecretReplicationArgs
+    ///         {
+    ///             Auto = null,
+    ///         },
+    ///     });
+    /// 
+    ///     var github_token_secret_version = new Gcp.SecretManager.SecretVersion("github-token-secret-version", new()
+    ///     {
+    ///         Secret = github_token_secret.Id,
+    ///         SecretData = Std.File.Invoke(new()
+    ///         {
+    ///             Input = "my-github-token.txt",
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///     });
+    /// 
+    ///     var p4sa_secretAccessor = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     {
+    ///         Bindings = new[]
+    ///         {
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             {
+    ///                 Role = "roles/secretmanager.secretAccessor",
+    ///                 Members = new[]
+    ///                 {
+    ///                     "serviceAccount:service-123456789@gcp-sa-devconnect.iam.gserviceaccount.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var policy = new Gcp.SecretManager.SecretIamPolicy("policy", new()
+    ///     {
+    ///         SecretId = github_token_secret.SecretId,
+    ///         PolicyData = p4sa_secretAccessor.Apply(p4sa_secretAccessor =&gt; p4sa_secretAccessor.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData)),
+    ///     });
+    /// 
+    ///     var my_connection = new Gcp.DeveloperConnect.Connection("my-connection", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         ConnectionId = "my-connection",
+    ///         GithubConfig = new Gcp.DeveloperConnect.Inputs.ConnectionGithubConfigArgs
+    ///         {
+    ///             GithubApp = "DEVELOPER_CONNECT",
+    ///             AppInstallationId = "123123",
+    ///             AuthorizerCredential = new Gcp.DeveloperConnect.Inputs.ConnectionGithubConfigAuthorizerCredentialArgs
+    ///             {
+    ///                 OauthTokenSecretVersion = github_token_secret_version.Id,
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Developer Connect Connection Github Enterprise
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var my_connection = new Gcp.DeveloperConnect.Connection("my-connection", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         ConnectionId = "tf-test-connection",
+    ///         GithubEnterpriseConfig = new Gcp.DeveloperConnect.Inputs.ConnectionGithubEnterpriseConfigArgs
+    ///         {
+    ///             HostUri = "https://ghe.proctor-staging-test.com",
+    ///             AppId = "864434",
+    ///             PrivateKeySecretVersion = "projects/devconnect-terraform-creds/secrets/tf-test-ghe-do-not-change-ghe-private-key-f522d2/versions/latest",
+    ///             WebhookSecretSecretVersion = "projects/devconnect-terraform-creds/secrets/tf-test-ghe-do-not-change-ghe-webhook-secret-3c806f/versions/latest",
+    ///             AppInstallationId = "837537",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Developer Connect Connection Github Enterprise Doc
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// using Std = Pulumi.Std;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var private_key_secret = new Gcp.SecretManager.Secret("private-key-secret", new()
+    ///     {
+    ///         SecretId = "ghe-pk-secret",
+    ///         Replication = new Gcp.SecretManager.Inputs.SecretReplicationArgs
+    ///         {
+    ///             Auto = null,
+    ///         },
+    ///     });
+    /// 
+    ///     var private_key_secret_version = new Gcp.SecretManager.SecretVersion("private-key-secret-version", new()
+    ///     {
+    ///         Secret = private_key_secret.Id,
+    ///         SecretData = Std.File.Invoke(new()
+    ///         {
+    ///             Input = "private-key.pem",
+    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///     });
+    /// 
+    ///     var webhook_secret_secret = new Gcp.SecretManager.Secret("webhook-secret-secret", new()
+    ///     {
+    ///         SecretId = "ghe-token-secret",
+    ///         Replication = new Gcp.SecretManager.Inputs.SecretReplicationArgs
+    ///         {
+    ///             Auto = null,
+    ///         },
+    ///     });
+    /// 
+    ///     var webhook_secret_secret_version = new Gcp.SecretManager.SecretVersion("webhook-secret-secret-version", new()
+    ///     {
+    ///         Secret = webhook_secret_secret.Id,
+    ///         SecretData = "&lt;webhook-secret-data&gt;",
+    ///     });
+    /// 
+    ///     var p4sa_secretAccessor = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     {
+    ///         Bindings = new[]
+    ///         {
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             {
+    ///                 Role = "roles/secretmanager.secretAccessor",
+    ///                 Members = new[]
+    ///                 {
+    ///                     "serviceAccount:service-123456789@gcp-sa-devconnect.iam.gserviceaccount.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var policy_pk = new Gcp.SecretManager.SecretIamPolicy("policy-pk", new()
+    ///     {
+    ///         SecretId = private_key_secret.SecretId,
+    ///         PolicyData = p4sa_secretAccessor.Apply(p4sa_secretAccessor =&gt; p4sa_secretAccessor.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData)),
+    ///     });
+    /// 
+    ///     var policy_whs = new Gcp.SecretManager.SecretIamPolicy("policy-whs", new()
+    ///     {
+    ///         SecretId = webhook_secret_secret.SecretId,
+    ///         PolicyData = p4sa_secretAccessor.Apply(p4sa_secretAccessor =&gt; p4sa_secretAccessor.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData)),
+    ///     });
+    /// 
+    ///     var my_connection = new Gcp.DeveloperConnect.Connection("my-connection", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         ConnectionId = "my-connection",
+    ///         GithubEnterpriseConfig = new Gcp.DeveloperConnect.Inputs.ConnectionGithubEnterpriseConfigArgs
+    ///         {
+    ///             HostUri = "https://ghe.com",
+    ///             PrivateKeySecretVersion = private_key_secret_version.Id,
+    ///             WebhookSecretSecretVersion = webhook_secret_secret_version.Id,
+    ///             AppId = "100",
+    ///             AppInstallationId = "123123",
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             policy_pk,
+    ///             policy_whs,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Developer Connect Connection Gitlab
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var my_connection = new Gcp.DeveloperConnect.Connection("my-connection", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         ConnectionId = "tf-test-connection",
+    ///         GitlabConfig = new Gcp.DeveloperConnect.Inputs.ConnectionGitlabConfigArgs
+    ///         {
+    ///             WebhookSecretSecretVersion = "projects/devconnect-terraform-creds/secrets/gitlab-webhook/versions/latest",
+    ///             ReadAuthorizerCredential = new Gcp.DeveloperConnect.Inputs.ConnectionGitlabConfigReadAuthorizerCredentialArgs
+    ///             {
+    ///                 UserTokenSecretVersion = "projects/devconnect-terraform-creds/secrets/gitlab-read-cred/versions/latest",
+    ///             },
+    ///             AuthorizerCredential = new Gcp.DeveloperConnect.Inputs.ConnectionGitlabConfigAuthorizerCredentialArgs
+    ///             {
+    ///                 UserTokenSecretVersion = "projects/devconnect-terraform-creds/secrets/gitlab-auth-cred/versions/latest",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Developer Connect Connection Gitlab Enterprise
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var my_connection = new Gcp.DeveloperConnect.Connection("my-connection", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         ConnectionId = "tf-test-connection",
+    ///         GitlabEnterpriseConfig = new Gcp.DeveloperConnect.Inputs.ConnectionGitlabEnterpriseConfigArgs
+    ///         {
+    ///             HostUri = "https://gle-us-central1.gcb-test.com",
+    ///             WebhookSecretSecretVersion = "projects/devconnect-terraform-creds/secrets/gitlab-enterprise-webhook/versions/latest",
+    ///             ReadAuthorizerCredential = new Gcp.DeveloperConnect.Inputs.ConnectionGitlabEnterpriseConfigReadAuthorizerCredentialArgs
+    ///             {
+    ///                 UserTokenSecretVersion = "projects/devconnect-terraform-creds/secrets/gitlab-enterprise-read-cred/versions/latest",
+    ///             },
+    ///             AuthorizerCredential = new Gcp.DeveloperConnect.Inputs.ConnectionGitlabEnterpriseConfigAuthorizerCredentialArgs
+    ///             {
+    ///                 UserTokenSecretVersion = "projects/devconnect-terraform-creds/secrets/gitlab-enterprise-auth-cred/versions/latest",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ## Import
     /// 
     /// Connection can be imported using any of these accepted formats:
@@ -189,7 +464,6 @@ namespace Pulumi.Gcp.DeveloperConnect
     {
         /// <summary>
         /// Optional. Allows clients to store small amounts of arbitrary data.
-        /// 
         /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
         /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
@@ -197,8 +471,9 @@ namespace Pulumi.Gcp.DeveloperConnect
         public Output<ImmutableDictionary<string, string>?> Annotations { get; private set; } = null!;
 
         /// <summary>
-        /// Required. Id of the requesting object. If auto-generating Id server-side,
-        /// remove this field and connection_id from the method_signature of Create RPC.
+        /// Required. Id of the requesting object
+        /// If auto-generating Id server-side, remove this field and
+        /// connection_id from the method_signature of Create RPC
         /// 
         /// 
         /// - - -
@@ -213,13 +488,23 @@ namespace Pulumi.Gcp.DeveloperConnect
         public Output<string> CreateTime { get; private set; } = null!;
 
         /// <summary>
+        /// The crypto key configuration. This field is used by the Customer-managed
+        /// encryption keys (CMEK) feature.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("cryptoKeyConfig")]
+        public Output<Outputs.ConnectionCryptoKeyConfig?> CryptoKeyConfig { get; private set; } = null!;
+
+        /// <summary>
         /// Output only. [Output only] Delete timestamp
         /// </summary>
         [Output("deleteTime")]
         public Output<string> DeleteTime { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
+        /// Optional. If disabled is set to true, functionality is disabled for this connection.
+        /// Repository based API methods and webhooks processing for repositories in
+        /// this connection will be disabled.
         /// </summary>
         [Output("disabled")]
         public Output<bool?> Disabled { get; private set; } = null!;
@@ -234,8 +519,8 @@ namespace Pulumi.Gcp.DeveloperConnect
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. This checksum is computed by the server based on the value
-        /// of other fields, and may be sent on update and delete requests to ensure the
+        /// Optional. This checksum is computed by the server based on the value of other
+        /// fields, and may be sent on update and delete requests to ensure the
         /// client has an up-to-date value before proceeding.
         /// </summary>
         [Output("etag")]
@@ -249,8 +534,30 @@ namespace Pulumi.Gcp.DeveloperConnect
         public Output<Outputs.ConnectionGithubConfig?> GithubConfig { get; private set; } = null!;
 
         /// <summary>
-        /// Describes stage and necessary actions to be taken by the user to complete the installation.
-        /// Used for GitHub and GitHub Enterprise based connections.
+        /// Configuration for connections to an instance of GitHub Enterprise.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("githubEnterpriseConfig")]
+        public Output<Outputs.ConnectionGithubEnterpriseConfig?> GithubEnterpriseConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration for connections to gitlab.com.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("gitlabConfig")]
+        public Output<Outputs.ConnectionGitlabConfig?> GitlabConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration for connections to an instance of GitLab Enterprise.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("gitlabEnterpriseConfig")]
+        public Output<Outputs.ConnectionGitlabEnterpriseConfig?> GitlabEnterpriseConfig { get; private set; } = null!;
+
+        /// <summary>
+        /// Describes stage and necessary actions to be taken by the
+        /// user to complete the installation. Used for GitHub and GitHub Enterprise
+        /// based connections.
         /// Structure is documented below.
         /// </summary>
         [Output("installationStates")]
@@ -258,7 +565,6 @@ namespace Pulumi.Gcp.DeveloperConnect
 
         /// <summary>
         /// Optional. Labels as key value pairs
-        /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
@@ -266,9 +572,7 @@ namespace Pulumi.Gcp.DeveloperConnect
         public Output<ImmutableDictionary<string, string>?> Labels { get; private set; } = null!;
 
         /// <summary>
-        /// Resource ID segment making up resource `name`. It identifies the resource
-        /// within its parent collection as described in https://google.aip.dev/122. See documentation
-        /// for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
+        /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         /// </summary>
         [Output("location")]
         public Output<string> Location { get; private set; } = null!;
@@ -295,8 +599,8 @@ namespace Pulumi.Gcp.DeveloperConnect
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. Set to true when the connection is being set up or updated
-        /// in the background.
+        /// Output only. Set to true when the connection is being set up or updated in the
+        /// background.
         /// </summary>
         [Output("reconciling")]
         public Output<bool> Reconciling { get; private set; } = null!;
@@ -369,7 +673,6 @@ namespace Pulumi.Gcp.DeveloperConnect
 
         /// <summary>
         /// Optional. Allows clients to store small amounts of arbitrary data.
-        /// 
         /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
         /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
@@ -380,8 +683,9 @@ namespace Pulumi.Gcp.DeveloperConnect
         }
 
         /// <summary>
-        /// Required. Id of the requesting object. If auto-generating Id server-side,
-        /// remove this field and connection_id from the method_signature of Create RPC.
+        /// Required. Id of the requesting object
+        /// If auto-generating Id server-side, remove this field and
+        /// connection_id from the method_signature of Create RPC
         /// 
         /// 
         /// - - -
@@ -390,14 +694,24 @@ namespace Pulumi.Gcp.DeveloperConnect
         public Input<string> ConnectionId { get; set; } = null!;
 
         /// <summary>
-        /// Optional. If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
+        /// The crypto key configuration. This field is used by the Customer-managed
+        /// encryption keys (CMEK) feature.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("cryptoKeyConfig")]
+        public Input<Inputs.ConnectionCryptoKeyConfigArgs>? CryptoKeyConfig { get; set; }
+
+        /// <summary>
+        /// Optional. If disabled is set to true, functionality is disabled for this connection.
+        /// Repository based API methods and webhooks processing for repositories in
+        /// this connection will be disabled.
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
 
         /// <summary>
-        /// Optional. This checksum is computed by the server based on the value
-        /// of other fields, and may be sent on update and delete requests to ensure the
+        /// Optional. This checksum is computed by the server based on the value of other
+        /// fields, and may be sent on update and delete requests to ensure the
         /// client has an up-to-date value before proceeding.
         /// </summary>
         [Input("etag")]
@@ -410,12 +724,32 @@ namespace Pulumi.Gcp.DeveloperConnect
         [Input("githubConfig")]
         public Input<Inputs.ConnectionGithubConfigArgs>? GithubConfig { get; set; }
 
+        /// <summary>
+        /// Configuration for connections to an instance of GitHub Enterprise.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("githubEnterpriseConfig")]
+        public Input<Inputs.ConnectionGithubEnterpriseConfigArgs>? GithubEnterpriseConfig { get; set; }
+
+        /// <summary>
+        /// Configuration for connections to gitlab.com.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("gitlabConfig")]
+        public Input<Inputs.ConnectionGitlabConfigArgs>? GitlabConfig { get; set; }
+
+        /// <summary>
+        /// Configuration for connections to an instance of GitLab Enterprise.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("gitlabEnterpriseConfig")]
+        public Input<Inputs.ConnectionGitlabEnterpriseConfigArgs>? GitlabEnterpriseConfig { get; set; }
+
         [Input("labels")]
         private InputMap<string>? _labels;
 
         /// <summary>
         /// Optional. Labels as key value pairs
-        /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
@@ -426,9 +760,7 @@ namespace Pulumi.Gcp.DeveloperConnect
         }
 
         /// <summary>
-        /// Resource ID segment making up resource `name`. It identifies the resource
-        /// within its parent collection as described in https://google.aip.dev/122. See documentation
-        /// for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
+        /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         /// </summary>
         [Input("location", required: true)]
         public Input<string> Location { get; set; } = null!;
@@ -453,7 +785,6 @@ namespace Pulumi.Gcp.DeveloperConnect
 
         /// <summary>
         /// Optional. Allows clients to store small amounts of arbitrary data.
-        /// 
         /// **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
         /// Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         /// </summary>
@@ -464,8 +795,9 @@ namespace Pulumi.Gcp.DeveloperConnect
         }
 
         /// <summary>
-        /// Required. Id of the requesting object. If auto-generating Id server-side,
-        /// remove this field and connection_id from the method_signature of Create RPC.
+        /// Required. Id of the requesting object
+        /// If auto-generating Id server-side, remove this field and
+        /// connection_id from the method_signature of Create RPC
         /// 
         /// 
         /// - - -
@@ -480,13 +812,23 @@ namespace Pulumi.Gcp.DeveloperConnect
         public Input<string>? CreateTime { get; set; }
 
         /// <summary>
+        /// The crypto key configuration. This field is used by the Customer-managed
+        /// encryption keys (CMEK) feature.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("cryptoKeyConfig")]
+        public Input<Inputs.ConnectionCryptoKeyConfigGetArgs>? CryptoKeyConfig { get; set; }
+
+        /// <summary>
         /// Output only. [Output only] Delete timestamp
         /// </summary>
         [Input("deleteTime")]
         public Input<string>? DeleteTime { get; set; }
 
         /// <summary>
-        /// Optional. If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
+        /// Optional. If disabled is set to true, functionality is disabled for this connection.
+        /// Repository based API methods and webhooks processing for repositories in
+        /// this connection will be disabled.
         /// </summary>
         [Input("disabled")]
         public Input<bool>? Disabled { get; set; }
@@ -516,8 +858,8 @@ namespace Pulumi.Gcp.DeveloperConnect
         }
 
         /// <summary>
-        /// Optional. This checksum is computed by the server based on the value
-        /// of other fields, and may be sent on update and delete requests to ensure the
+        /// Optional. This checksum is computed by the server based on the value of other
+        /// fields, and may be sent on update and delete requests to ensure the
         /// client has an up-to-date value before proceeding.
         /// </summary>
         [Input("etag")]
@@ -530,12 +872,34 @@ namespace Pulumi.Gcp.DeveloperConnect
         [Input("githubConfig")]
         public Input<Inputs.ConnectionGithubConfigGetArgs>? GithubConfig { get; set; }
 
+        /// <summary>
+        /// Configuration for connections to an instance of GitHub Enterprise.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("githubEnterpriseConfig")]
+        public Input<Inputs.ConnectionGithubEnterpriseConfigGetArgs>? GithubEnterpriseConfig { get; set; }
+
+        /// <summary>
+        /// Configuration for connections to gitlab.com.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("gitlabConfig")]
+        public Input<Inputs.ConnectionGitlabConfigGetArgs>? GitlabConfig { get; set; }
+
+        /// <summary>
+        /// Configuration for connections to an instance of GitLab Enterprise.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("gitlabEnterpriseConfig")]
+        public Input<Inputs.ConnectionGitlabEnterpriseConfigGetArgs>? GitlabEnterpriseConfig { get; set; }
+
         [Input("installationStates")]
         private InputList<Inputs.ConnectionInstallationStateGetArgs>? _installationStates;
 
         /// <summary>
-        /// Describes stage and necessary actions to be taken by the user to complete the installation.
-        /// Used for GitHub and GitHub Enterprise based connections.
+        /// Describes stage and necessary actions to be taken by the
+        /// user to complete the installation. Used for GitHub and GitHub Enterprise
+        /// based connections.
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.ConnectionInstallationStateGetArgs> InstallationStates
@@ -549,7 +913,6 @@ namespace Pulumi.Gcp.DeveloperConnect
 
         /// <summary>
         /// Optional. Labels as key value pairs
-        /// 
         /// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         /// Please refer to the field `effective_labels` for all of the labels present on the resource.
         /// </summary>
@@ -560,9 +923,7 @@ namespace Pulumi.Gcp.DeveloperConnect
         }
 
         /// <summary>
-        /// Resource ID segment making up resource `name`. It identifies the resource
-        /// within its parent collection as described in https://google.aip.dev/122. See documentation
-        /// for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
+        /// Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         /// </summary>
         [Input("location")]
         public Input<string>? Location { get; set; }
@@ -599,8 +960,8 @@ namespace Pulumi.Gcp.DeveloperConnect
         }
 
         /// <summary>
-        /// Output only. Set to true when the connection is being set up or updated
-        /// in the background.
+        /// Output only. Set to true when the connection is being set up or updated in the
+        /// background.
         /// </summary>
         [Input("reconciling")]
         public Input<bool>? Reconciling { get; set; }

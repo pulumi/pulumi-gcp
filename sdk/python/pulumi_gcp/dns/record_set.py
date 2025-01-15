@@ -475,6 +475,47 @@ class RecordSet(pulumi.CustomResource):
             })
         ```
 
+        ### Public zone failover
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        http_health_check = gcp.compute.HealthCheck("http-health-check",
+            name="http-health-check",
+            description="Health check via http",
+            timeout_sec=5,
+            check_interval_sec=30,
+            healthy_threshold=4,
+            unhealthy_threshold=5,
+            http_health_check={
+                "port_specification": "USE_SERVING_PORT",
+            })
+        prod = gcp.dns.ManagedZone("prod",
+            name="prod-zone",
+            dns_name="prod.mydomain.com.")
+        a = gcp.dns.RecordSet("a",
+            name=prod.dns_name.apply(lambda dns_name: f"backend.{dns_name}"),
+            managed_zone=prod.name,
+            type="A",
+            ttl=300,
+            routing_policy={
+                "health_check": http_health_check.id,
+                "primary_backup": {
+                    "trickle_ratio": 0.1,
+                    "primary": {
+                        "external_endpoints": ["10.128.1.1"],
+                    },
+                    "backup_geos": [{
+                        "location": "us-west1",
+                        "health_checked_targets": {
+                            "external_endpoints": ["10.130.1.1"],
+                        },
+                    }],
+                },
+            })
+        ```
+
         ## Import
 
         DNS record sets can be imported using either of these accepted formats:
@@ -709,6 +750,47 @@ class RecordSet(pulumi.CustomResource):
                             "rrdatas": ["10.130.1.1"],
                         },
                     ],
+                },
+            })
+        ```
+
+        ### Public zone failover
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        http_health_check = gcp.compute.HealthCheck("http-health-check",
+            name="http-health-check",
+            description="Health check via http",
+            timeout_sec=5,
+            check_interval_sec=30,
+            healthy_threshold=4,
+            unhealthy_threshold=5,
+            http_health_check={
+                "port_specification": "USE_SERVING_PORT",
+            })
+        prod = gcp.dns.ManagedZone("prod",
+            name="prod-zone",
+            dns_name="prod.mydomain.com.")
+        a = gcp.dns.RecordSet("a",
+            name=prod.dns_name.apply(lambda dns_name: f"backend.{dns_name}"),
+            managed_zone=prod.name,
+            type="A",
+            ttl=300,
+            routing_policy={
+                "health_check": http_health_check.id,
+                "primary_backup": {
+                    "trickle_ratio": 0.1,
+                    "primary": {
+                        "external_endpoints": ["10.128.1.1"],
+                    },
+                    "backup_geos": [{
+                        "location": "us-west1",
+                        "health_checked_targets": {
+                            "external_endpoints": ["10.130.1.1"],
+                        },
+                    }],
                 },
             })
         ```

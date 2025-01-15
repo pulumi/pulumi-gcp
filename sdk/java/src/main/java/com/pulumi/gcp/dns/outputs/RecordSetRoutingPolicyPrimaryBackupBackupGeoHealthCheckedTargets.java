@@ -4,28 +4,41 @@
 package com.pulumi.gcp.dns.outputs;
 
 import com.pulumi.core.annotations.CustomType;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dns.outputs.RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer;
+import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets {
+    /**
+     * @return The list of external endpoint addresses to health check.
+     * 
+     */
+    private @Nullable List<String> externalEndpoints;
     /**
      * @return The list of internal load balancers to health check.
      * Structure is documented below.
      * 
      */
-    private List<RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer> internalLoadBalancers;
+    private @Nullable List<RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer> internalLoadBalancers;
 
     private RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets() {}
+    /**
+     * @return The list of external endpoint addresses to health check.
+     * 
+     */
+    public List<String> externalEndpoints() {
+        return this.externalEndpoints == null ? List.of() : this.externalEndpoints;
+    }
     /**
      * @return The list of internal load balancers to health check.
      * Structure is documented below.
      * 
      */
     public List<RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer> internalLoadBalancers() {
-        return this.internalLoadBalancers;
+        return this.internalLoadBalancers == null ? List.of() : this.internalLoadBalancers;
     }
 
     public static Builder builder() {
@@ -37,18 +50,27 @@ public final class RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTarg
     }
     @CustomType.Builder
     public static final class Builder {
-        private List<RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer> internalLoadBalancers;
+        private @Nullable List<String> externalEndpoints;
+        private @Nullable List<RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer> internalLoadBalancers;
         public Builder() {}
         public Builder(RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets defaults) {
     	      Objects.requireNonNull(defaults);
+    	      this.externalEndpoints = defaults.externalEndpoints;
     	      this.internalLoadBalancers = defaults.internalLoadBalancers;
         }
 
         @CustomType.Setter
-        public Builder internalLoadBalancers(List<RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer> internalLoadBalancers) {
-            if (internalLoadBalancers == null) {
-              throw new MissingRequiredPropertyException("RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets", "internalLoadBalancers");
-            }
+        public Builder externalEndpoints(@Nullable List<String> externalEndpoints) {
+
+            this.externalEndpoints = externalEndpoints;
+            return this;
+        }
+        public Builder externalEndpoints(String... externalEndpoints) {
+            return externalEndpoints(List.of(externalEndpoints));
+        }
+        @CustomType.Setter
+        public Builder internalLoadBalancers(@Nullable List<RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer> internalLoadBalancers) {
+
             this.internalLoadBalancers = internalLoadBalancers;
             return this;
         }
@@ -57,6 +79,7 @@ public final class RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTarg
         }
         public RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets build() {
             final var _resultValue = new RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets();
+            _resultValue.externalEndpoints = externalEndpoints;
             _resultValue.internalLoadBalancers = internalLoadBalancers;
             return _resultValue;
         }

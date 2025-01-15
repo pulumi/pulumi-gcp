@@ -2370,7 +2370,7 @@ if not MYPY:
         The email address used by Oracle to send notifications regarding databases
         and infrastructure.
 
-        <a name="nested_apex_details"></a>The `apex_details` block contains:
+        <a name="nested_properties_apex_details"></a>The `apex_details` block contains:
         """
 elif False:
     AutonomousDatabasePropertiesCustomerContactArgsDict: TypeAlias = Mapping[str, Any]
@@ -2383,7 +2383,7 @@ class AutonomousDatabasePropertiesCustomerContactArgs:
         :param pulumi.Input[str] email: The email address used by Oracle to send notifications regarding databases
                and infrastructure.
                
-               <a name="nested_apex_details"></a>The `apex_details` block contains:
+               <a name="nested_properties_apex_details"></a>The `apex_details` block contains:
         """
         pulumi.set(__self__, "email", email)
 
@@ -2394,7 +2394,7 @@ class AutonomousDatabasePropertiesCustomerContactArgs:
         The email address used by Oracle to send notifications regarding databases
         and infrastructure.
 
-        <a name="nested_apex_details"></a>The `apex_details` block contains:
+        <a name="nested_properties_apex_details"></a>The `apex_details` block contains:
         """
         return pulumi.get(self, "email")
 

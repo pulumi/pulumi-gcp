@@ -335,6 +335,76 @@ namespace Pulumi.Gcp.Dns
     /// });
     /// ```
     /// 
+    /// ### Public zone failover
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var http_health_check = new Gcp.Compute.HealthCheck("http-health-check", new()
+    ///     {
+    ///         Name = "http-health-check",
+    ///         Description = "Health check via http",
+    ///         TimeoutSec = 5,
+    ///         CheckIntervalSec = 30,
+    ///         HealthyThreshold = 4,
+    ///         UnhealthyThreshold = 5,
+    ///         HttpHealthCheck = new Gcp.Compute.Inputs.HealthCheckHttpHealthCheckArgs
+    ///         {
+    ///             PortSpecification = "USE_SERVING_PORT",
+    ///         },
+    ///     });
+    /// 
+    ///     var prod = new Gcp.Dns.ManagedZone("prod", new()
+    ///     {
+    ///         Name = "prod-zone",
+    ///         DnsName = "prod.mydomain.com.",
+    ///     });
+    /// 
+    ///     var a = new Gcp.Dns.RecordSet("a", new()
+    ///     {
+    ///         Name = prod.DnsName.Apply(dnsName =&gt; $"backend.{dnsName}"),
+    ///         ManagedZone = prod.Name,
+    ///         Type = "A",
+    ///         Ttl = 300,
+    ///         RoutingPolicy = new Gcp.Dns.Inputs.RecordSetRoutingPolicyArgs
+    ///         {
+    ///             HealthCheck = http_health_check.Id,
+    ///             PrimaryBackup = new Gcp.Dns.Inputs.RecordSetRoutingPolicyPrimaryBackupArgs
+    ///             {
+    ///                 TrickleRatio = 0.1,
+    ///                 Primary = new Gcp.Dns.Inputs.RecordSetRoutingPolicyPrimaryBackupPrimaryArgs
+    ///                 {
+    ///                     ExternalEndpoints = new[]
+    ///                     {
+    ///                         "10.128.1.1",
+    ///                     },
+    ///                 },
+    ///                 BackupGeos = new[]
+    ///                 {
+    ///                     new Gcp.Dns.Inputs.RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs
+    ///                     {
+    ///                         Location = "us-west1",
+    ///                         HealthCheckedTargets = new Gcp.Dns.Inputs.RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs
+    ///                         {
+    ///                             ExternalEndpoints = new[]
+    ///                             {
+    ///                                 "10.130.1.1",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// DNS record sets can be imported using either of these accepted formats:

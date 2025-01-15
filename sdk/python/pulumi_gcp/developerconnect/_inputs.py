@@ -15,10 +15,30 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'ConnectionCryptoKeyConfigArgs',
+    'ConnectionCryptoKeyConfigArgsDict',
     'ConnectionGithubConfigArgs',
     'ConnectionGithubConfigArgsDict',
     'ConnectionGithubConfigAuthorizerCredentialArgs',
     'ConnectionGithubConfigAuthorizerCredentialArgsDict',
+    'ConnectionGithubEnterpriseConfigArgs',
+    'ConnectionGithubEnterpriseConfigArgsDict',
+    'ConnectionGithubEnterpriseConfigServiceDirectoryConfigArgs',
+    'ConnectionGithubEnterpriseConfigServiceDirectoryConfigArgsDict',
+    'ConnectionGitlabConfigArgs',
+    'ConnectionGitlabConfigArgsDict',
+    'ConnectionGitlabConfigAuthorizerCredentialArgs',
+    'ConnectionGitlabConfigAuthorizerCredentialArgsDict',
+    'ConnectionGitlabConfigReadAuthorizerCredentialArgs',
+    'ConnectionGitlabConfigReadAuthorizerCredentialArgsDict',
+    'ConnectionGitlabEnterpriseConfigArgs',
+    'ConnectionGitlabEnterpriseConfigArgsDict',
+    'ConnectionGitlabEnterpriseConfigAuthorizerCredentialArgs',
+    'ConnectionGitlabEnterpriseConfigAuthorizerCredentialArgsDict',
+    'ConnectionGitlabEnterpriseConfigReadAuthorizerCredentialArgs',
+    'ConnectionGitlabEnterpriseConfigReadAuthorizerCredentialArgsDict',
+    'ConnectionGitlabEnterpriseConfigServiceDirectoryConfigArgs',
+    'ConnectionGitlabEnterpriseConfigServiceDirectoryConfigArgsDict',
     'ConnectionInstallationStateArgs',
     'ConnectionInstallationStateArgsDict',
 ]
@@ -26,15 +46,52 @@ __all__ = [
 MYPY = False
 
 if not MYPY:
+    class ConnectionCryptoKeyConfigArgsDict(TypedDict):
+        key_reference: pulumi.Input[str]
+        """
+        Required. The name of the key which is used to encrypt/decrypt customer data. For key
+        in Cloud KMS, the key should be in the format of
+        `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        """
+elif False:
+    ConnectionCryptoKeyConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ConnectionCryptoKeyConfigArgs:
+    def __init__(__self__, *,
+                 key_reference: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] key_reference: Required. The name of the key which is used to encrypt/decrypt customer data. For key
+               in Cloud KMS, the key should be in the format of
+               `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        """
+        pulumi.set(__self__, "key_reference", key_reference)
+
+    @property
+    @pulumi.getter(name="keyReference")
+    def key_reference(self) -> pulumi.Input[str]:
+        """
+        Required. The name of the key which is used to encrypt/decrypt customer data. For key
+        in Cloud KMS, the key should be in the format of
+        `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
+        """
+        return pulumi.get(self, "key_reference")
+
+    @key_reference.setter
+    def key_reference(self, value: pulumi.Input[str]):
+        pulumi.set(self, "key_reference", value)
+
+
+if not MYPY:
     class ConnectionGithubConfigArgsDict(TypedDict):
         github_app: pulumi.Input[str]
         """
-        Required. Immutable. The GitHub Application that was installed to
-        the GitHub user or organization.
+        Required. Immutable. The GitHub Application that was installed to the GitHub user or
+        organization.
         Possible values:
         GIT_HUB_APP_UNSPECIFIED
         DEVELOPER_CONNECT
-        FIREBASE"
+        FIREBASE
         """
         app_installation_id: NotRequired[pulumi.Input[str]]
         """
@@ -42,15 +99,15 @@ if not MYPY:
         """
         authorizer_credential: NotRequired[pulumi.Input['ConnectionGithubConfigAuthorizerCredentialArgsDict']]
         """
-        Represents an OAuth token of the account that authorized the Connection,and
-        associated metadata.
+        Represents an OAuth token of the account that authorized the Connection,
+        and associated metadata.
         Structure is documented below.
         """
         installation_uri: NotRequired[pulumi.Input[str]]
         """
         (Output)
-        Output only. The URI to navigate to in order to manage the installation
-        associated with this GitHubConfig.
+        Output only. The URI to navigate to in order to manage the installation associated
+        with this GitHubConfig.
         """
 elif False:
     ConnectionGithubConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -63,19 +120,19 @@ class ConnectionGithubConfigArgs:
                  authorizer_credential: Optional[pulumi.Input['ConnectionGithubConfigAuthorizerCredentialArgs']] = None,
                  installation_uri: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] github_app: Required. Immutable. The GitHub Application that was installed to
-               the GitHub user or organization.
+        :param pulumi.Input[str] github_app: Required. Immutable. The GitHub Application that was installed to the GitHub user or
+               organization.
                Possible values:
                GIT_HUB_APP_UNSPECIFIED
                DEVELOPER_CONNECT
-               FIREBASE"
+               FIREBASE
         :param pulumi.Input[str] app_installation_id: Optional. GitHub App installation id.
-        :param pulumi.Input['ConnectionGithubConfigAuthorizerCredentialArgs'] authorizer_credential: Represents an OAuth token of the account that authorized the Connection,and
-               associated metadata.
+        :param pulumi.Input['ConnectionGithubConfigAuthorizerCredentialArgs'] authorizer_credential: Represents an OAuth token of the account that authorized the Connection,
+               and associated metadata.
                Structure is documented below.
         :param pulumi.Input[str] installation_uri: (Output)
-               Output only. The URI to navigate to in order to manage the installation
-               associated with this GitHubConfig.
+               Output only. The URI to navigate to in order to manage the installation associated
+               with this GitHubConfig.
         """
         pulumi.set(__self__, "github_app", github_app)
         if app_installation_id is not None:
@@ -89,12 +146,12 @@ class ConnectionGithubConfigArgs:
     @pulumi.getter(name="githubApp")
     def github_app(self) -> pulumi.Input[str]:
         """
-        Required. Immutable. The GitHub Application that was installed to
-        the GitHub user or organization.
+        Required. Immutable. The GitHub Application that was installed to the GitHub user or
+        organization.
         Possible values:
         GIT_HUB_APP_UNSPECIFIED
         DEVELOPER_CONNECT
-        FIREBASE"
+        FIREBASE
         """
         return pulumi.get(self, "github_app")
 
@@ -118,8 +175,8 @@ class ConnectionGithubConfigArgs:
     @pulumi.getter(name="authorizerCredential")
     def authorizer_credential(self) -> Optional[pulumi.Input['ConnectionGithubConfigAuthorizerCredentialArgs']]:
         """
-        Represents an OAuth token of the account that authorized the Connection,and
-        associated metadata.
+        Represents an OAuth token of the account that authorized the Connection,
+        and associated metadata.
         Structure is documented below.
         """
         return pulumi.get(self, "authorizer_credential")
@@ -133,8 +190,8 @@ class ConnectionGithubConfigArgs:
     def installation_uri(self) -> Optional[pulumi.Input[str]]:
         """
         (Output)
-        Output only. The URI to navigate to in order to manage the installation
-        associated with this GitHubConfig.
+        Output only. The URI to navigate to in order to manage the installation associated
+        with this GitHubConfig.
         """
         return pulumi.get(self, "installation_uri")
 
@@ -147,9 +204,8 @@ if not MYPY:
     class ConnectionGithubConfigAuthorizerCredentialArgsDict(TypedDict):
         oauth_token_secret_version: pulumi.Input[str]
         """
-        Required. A SecretManager resource containing the OAuth token
-        that authorizes the connection.
-        Format: `projects/*/secrets/*/versions/*`.
+        Required. A SecretManager resource containing the OAuth token that authorizes
+        the connection. Format: `projects/*/secrets/*/versions/*`.
         """
         username: NotRequired[pulumi.Input[str]]
         """
@@ -165,9 +221,8 @@ class ConnectionGithubConfigAuthorizerCredentialArgs:
                  oauth_token_secret_version: pulumi.Input[str],
                  username: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] oauth_token_secret_version: Required. A SecretManager resource containing the OAuth token
-               that authorizes the connection.
-               Format: `projects/*/secrets/*/versions/*`.
+        :param pulumi.Input[str] oauth_token_secret_version: Required. A SecretManager resource containing the OAuth token that authorizes
+               the connection. Format: `projects/*/secrets/*/versions/*`.
         :param pulumi.Input[str] username: (Output)
                Output only. The username associated with this token.
         """
@@ -179,9 +234,8 @@ class ConnectionGithubConfigAuthorizerCredentialArgs:
     @pulumi.getter(name="oauthTokenSecretVersion")
     def oauth_token_secret_version(self) -> pulumi.Input[str]:
         """
-        Required. A SecretManager resource containing the OAuth token
-        that authorizes the connection.
-        Format: `projects/*/secrets/*/versions/*`.
+        Required. A SecretManager resource containing the OAuth token that authorizes
+        the connection. Format: `projects/*/secrets/*/versions/*`.
         """
         return pulumi.get(self, "oauth_token_secret_version")
 
@@ -204,16 +258,830 @@ class ConnectionGithubConfigAuthorizerCredentialArgs:
 
 
 if not MYPY:
+    class ConnectionGithubEnterpriseConfigArgsDict(TypedDict):
+        host_uri: pulumi.Input[str]
+        """
+        Required. The URI of the GitHub Enterprise host this connection is for.
+        """
+        app_id: NotRequired[pulumi.Input[str]]
+        """
+        Optional. ID of the GitHub App created from the manifest.
+        """
+        app_installation_id: NotRequired[pulumi.Input[str]]
+        """
+        Optional. ID of the installation of the GitHub App.
+        """
+        app_slug: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Output only. The URL-friendly name of the GitHub App.
+        """
+        installation_uri: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Output only. The URI to navigate to in order to manage the installation associated
+        with this GitHubEnterpriseConfig.
+        """
+        private_key_secret_version: NotRequired[pulumi.Input[str]]
+        """
+        Optional. SecretManager resource containing the private key of the GitHub App,
+        formatted as `projects/*/secrets/*/versions/*`.
+        """
+        server_version: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Output only. GitHub Enterprise version installed at the host_uri.
+        """
+        service_directory_config: NotRequired[pulumi.Input['ConnectionGithubEnterpriseConfigServiceDirectoryConfigArgsDict']]
+        """
+        ServiceDirectoryConfig represents Service Directory configuration for a
+        connection.
+        Structure is documented below.
+        """
+        ssl_ca_certificate: NotRequired[pulumi.Input[str]]
+        """
+        Optional. SSL certificate to use for requests to GitHub Enterprise.
+        """
+        webhook_secret_secret_version: NotRequired[pulumi.Input[str]]
+        """
+        Optional. SecretManager resource containing the webhook secret of the GitHub App,
+        formatted as `projects/*/secrets/*/versions/*`.
+        """
+elif False:
+    ConnectionGithubEnterpriseConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ConnectionGithubEnterpriseConfigArgs:
+    def __init__(__self__, *,
+                 host_uri: pulumi.Input[str],
+                 app_id: Optional[pulumi.Input[str]] = None,
+                 app_installation_id: Optional[pulumi.Input[str]] = None,
+                 app_slug: Optional[pulumi.Input[str]] = None,
+                 installation_uri: Optional[pulumi.Input[str]] = None,
+                 private_key_secret_version: Optional[pulumi.Input[str]] = None,
+                 server_version: Optional[pulumi.Input[str]] = None,
+                 service_directory_config: Optional[pulumi.Input['ConnectionGithubEnterpriseConfigServiceDirectoryConfigArgs']] = None,
+                 ssl_ca_certificate: Optional[pulumi.Input[str]] = None,
+                 webhook_secret_secret_version: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] host_uri: Required. The URI of the GitHub Enterprise host this connection is for.
+        :param pulumi.Input[str] app_id: Optional. ID of the GitHub App created from the manifest.
+        :param pulumi.Input[str] app_installation_id: Optional. ID of the installation of the GitHub App.
+        :param pulumi.Input[str] app_slug: (Output)
+               Output only. The URL-friendly name of the GitHub App.
+        :param pulumi.Input[str] installation_uri: (Output)
+               Output only. The URI to navigate to in order to manage the installation associated
+               with this GitHubEnterpriseConfig.
+        :param pulumi.Input[str] private_key_secret_version: Optional. SecretManager resource containing the private key of the GitHub App,
+               formatted as `projects/*/secrets/*/versions/*`.
+        :param pulumi.Input[str] server_version: (Output)
+               Output only. GitHub Enterprise version installed at the host_uri.
+        :param pulumi.Input['ConnectionGithubEnterpriseConfigServiceDirectoryConfigArgs'] service_directory_config: ServiceDirectoryConfig represents Service Directory configuration for a
+               connection.
+               Structure is documented below.
+        :param pulumi.Input[str] ssl_ca_certificate: Optional. SSL certificate to use for requests to GitHub Enterprise.
+        :param pulumi.Input[str] webhook_secret_secret_version: Optional. SecretManager resource containing the webhook secret of the GitHub App,
+               formatted as `projects/*/secrets/*/versions/*`.
+        """
+        pulumi.set(__self__, "host_uri", host_uri)
+        if app_id is not None:
+            pulumi.set(__self__, "app_id", app_id)
+        if app_installation_id is not None:
+            pulumi.set(__self__, "app_installation_id", app_installation_id)
+        if app_slug is not None:
+            pulumi.set(__self__, "app_slug", app_slug)
+        if installation_uri is not None:
+            pulumi.set(__self__, "installation_uri", installation_uri)
+        if private_key_secret_version is not None:
+            pulumi.set(__self__, "private_key_secret_version", private_key_secret_version)
+        if server_version is not None:
+            pulumi.set(__self__, "server_version", server_version)
+        if service_directory_config is not None:
+            pulumi.set(__self__, "service_directory_config", service_directory_config)
+        if ssl_ca_certificate is not None:
+            pulumi.set(__self__, "ssl_ca_certificate", ssl_ca_certificate)
+        if webhook_secret_secret_version is not None:
+            pulumi.set(__self__, "webhook_secret_secret_version", webhook_secret_secret_version)
+
+    @property
+    @pulumi.getter(name="hostUri")
+    def host_uri(self) -> pulumi.Input[str]:
+        """
+        Required. The URI of the GitHub Enterprise host this connection is for.
+        """
+        return pulumi.get(self, "host_uri")
+
+    @host_uri.setter
+    def host_uri(self, value: pulumi.Input[str]):
+        pulumi.set(self, "host_uri", value)
+
+    @property
+    @pulumi.getter(name="appId")
+    def app_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. ID of the GitHub App created from the manifest.
+        """
+        return pulumi.get(self, "app_id")
+
+    @app_id.setter
+    def app_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "app_id", value)
+
+    @property
+    @pulumi.getter(name="appInstallationId")
+    def app_installation_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. ID of the installation of the GitHub App.
+        """
+        return pulumi.get(self, "app_installation_id")
+
+    @app_installation_id.setter
+    def app_installation_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "app_installation_id", value)
+
+    @property
+    @pulumi.getter(name="appSlug")
+    def app_slug(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Output only. The URL-friendly name of the GitHub App.
+        """
+        return pulumi.get(self, "app_slug")
+
+    @app_slug.setter
+    def app_slug(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "app_slug", value)
+
+    @property
+    @pulumi.getter(name="installationUri")
+    def installation_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Output only. The URI to navigate to in order to manage the installation associated
+        with this GitHubEnterpriseConfig.
+        """
+        return pulumi.get(self, "installation_uri")
+
+    @installation_uri.setter
+    def installation_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "installation_uri", value)
+
+    @property
+    @pulumi.getter(name="privateKeySecretVersion")
+    def private_key_secret_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. SecretManager resource containing the private key of the GitHub App,
+        formatted as `projects/*/secrets/*/versions/*`.
+        """
+        return pulumi.get(self, "private_key_secret_version")
+
+    @private_key_secret_version.setter
+    def private_key_secret_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "private_key_secret_version", value)
+
+    @property
+    @pulumi.getter(name="serverVersion")
+    def server_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Output only. GitHub Enterprise version installed at the host_uri.
+        """
+        return pulumi.get(self, "server_version")
+
+    @server_version.setter
+    def server_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "server_version", value)
+
+    @property
+    @pulumi.getter(name="serviceDirectoryConfig")
+    def service_directory_config(self) -> Optional[pulumi.Input['ConnectionGithubEnterpriseConfigServiceDirectoryConfigArgs']]:
+        """
+        ServiceDirectoryConfig represents Service Directory configuration for a
+        connection.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "service_directory_config")
+
+    @service_directory_config.setter
+    def service_directory_config(self, value: Optional[pulumi.Input['ConnectionGithubEnterpriseConfigServiceDirectoryConfigArgs']]):
+        pulumi.set(self, "service_directory_config", value)
+
+    @property
+    @pulumi.getter(name="sslCaCertificate")
+    def ssl_ca_certificate(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. SSL certificate to use for requests to GitHub Enterprise.
+        """
+        return pulumi.get(self, "ssl_ca_certificate")
+
+    @ssl_ca_certificate.setter
+    def ssl_ca_certificate(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ssl_ca_certificate", value)
+
+    @property
+    @pulumi.getter(name="webhookSecretSecretVersion")
+    def webhook_secret_secret_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. SecretManager resource containing the webhook secret of the GitHub App,
+        formatted as `projects/*/secrets/*/versions/*`.
+        """
+        return pulumi.get(self, "webhook_secret_secret_version")
+
+    @webhook_secret_secret_version.setter
+    def webhook_secret_secret_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "webhook_secret_secret_version", value)
+
+
+if not MYPY:
+    class ConnectionGithubEnterpriseConfigServiceDirectoryConfigArgsDict(TypedDict):
+        service: pulumi.Input[str]
+        """
+        Required. The Service Directory service name.
+        Format:
+        projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
+        """
+elif False:
+    ConnectionGithubEnterpriseConfigServiceDirectoryConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ConnectionGithubEnterpriseConfigServiceDirectoryConfigArgs:
+    def __init__(__self__, *,
+                 service: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] service: Required. The Service Directory service name.
+               Format:
+               projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
+        """
+        pulumi.set(__self__, "service", service)
+
+    @property
+    @pulumi.getter
+    def service(self) -> pulumi.Input[str]:
+        """
+        Required. The Service Directory service name.
+        Format:
+        projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
+        """
+        return pulumi.get(self, "service")
+
+    @service.setter
+    def service(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service", value)
+
+
+if not MYPY:
+    class ConnectionGitlabConfigArgsDict(TypedDict):
+        authorizer_credential: pulumi.Input['ConnectionGitlabConfigAuthorizerCredentialArgsDict']
+        """
+        Represents a personal access token that authorized the Connection,
+        and associated metadata.
+        Structure is documented below.
+        """
+        read_authorizer_credential: pulumi.Input['ConnectionGitlabConfigReadAuthorizerCredentialArgsDict']
+        """
+        Represents a personal access token that authorized the Connection,
+        and associated metadata.
+        Structure is documented below.
+        """
+        webhook_secret_secret_version: pulumi.Input[str]
+        """
+        Required. Immutable. SecretManager resource containing the webhook secret of a GitLab project,
+        formatted as `projects/*/secrets/*/versions/*`. This is used to validate
+        webhooks.
+        """
+elif False:
+    ConnectionGitlabConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ConnectionGitlabConfigArgs:
+    def __init__(__self__, *,
+                 authorizer_credential: pulumi.Input['ConnectionGitlabConfigAuthorizerCredentialArgs'],
+                 read_authorizer_credential: pulumi.Input['ConnectionGitlabConfigReadAuthorizerCredentialArgs'],
+                 webhook_secret_secret_version: pulumi.Input[str]):
+        """
+        :param pulumi.Input['ConnectionGitlabConfigAuthorizerCredentialArgs'] authorizer_credential: Represents a personal access token that authorized the Connection,
+               and associated metadata.
+               Structure is documented below.
+        :param pulumi.Input['ConnectionGitlabConfigReadAuthorizerCredentialArgs'] read_authorizer_credential: Represents a personal access token that authorized the Connection,
+               and associated metadata.
+               Structure is documented below.
+        :param pulumi.Input[str] webhook_secret_secret_version: Required. Immutable. SecretManager resource containing the webhook secret of a GitLab project,
+               formatted as `projects/*/secrets/*/versions/*`. This is used to validate
+               webhooks.
+        """
+        pulumi.set(__self__, "authorizer_credential", authorizer_credential)
+        pulumi.set(__self__, "read_authorizer_credential", read_authorizer_credential)
+        pulumi.set(__self__, "webhook_secret_secret_version", webhook_secret_secret_version)
+
+    @property
+    @pulumi.getter(name="authorizerCredential")
+    def authorizer_credential(self) -> pulumi.Input['ConnectionGitlabConfigAuthorizerCredentialArgs']:
+        """
+        Represents a personal access token that authorized the Connection,
+        and associated metadata.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "authorizer_credential")
+
+    @authorizer_credential.setter
+    def authorizer_credential(self, value: pulumi.Input['ConnectionGitlabConfigAuthorizerCredentialArgs']):
+        pulumi.set(self, "authorizer_credential", value)
+
+    @property
+    @pulumi.getter(name="readAuthorizerCredential")
+    def read_authorizer_credential(self) -> pulumi.Input['ConnectionGitlabConfigReadAuthorizerCredentialArgs']:
+        """
+        Represents a personal access token that authorized the Connection,
+        and associated metadata.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "read_authorizer_credential")
+
+    @read_authorizer_credential.setter
+    def read_authorizer_credential(self, value: pulumi.Input['ConnectionGitlabConfigReadAuthorizerCredentialArgs']):
+        pulumi.set(self, "read_authorizer_credential", value)
+
+    @property
+    @pulumi.getter(name="webhookSecretSecretVersion")
+    def webhook_secret_secret_version(self) -> pulumi.Input[str]:
+        """
+        Required. Immutable. SecretManager resource containing the webhook secret of a GitLab project,
+        formatted as `projects/*/secrets/*/versions/*`. This is used to validate
+        webhooks.
+        """
+        return pulumi.get(self, "webhook_secret_secret_version")
+
+    @webhook_secret_secret_version.setter
+    def webhook_secret_secret_version(self, value: pulumi.Input[str]):
+        pulumi.set(self, "webhook_secret_secret_version", value)
+
+
+if not MYPY:
+    class ConnectionGitlabConfigAuthorizerCredentialArgsDict(TypedDict):
+        user_token_secret_version: pulumi.Input[str]
+        """
+        Required. A SecretManager resource containing the user token that authorizes
+        the Developer Connect connection. Format:
+        `projects/*/secrets/*/versions/*`.
+        """
+        username: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Output only. The username associated with this token.
+        """
+elif False:
+    ConnectionGitlabConfigAuthorizerCredentialArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ConnectionGitlabConfigAuthorizerCredentialArgs:
+    def __init__(__self__, *,
+                 user_token_secret_version: pulumi.Input[str],
+                 username: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] user_token_secret_version: Required. A SecretManager resource containing the user token that authorizes
+               the Developer Connect connection. Format:
+               `projects/*/secrets/*/versions/*`.
+        :param pulumi.Input[str] username: (Output)
+               Output only. The username associated with this token.
+        """
+        pulumi.set(__self__, "user_token_secret_version", user_token_secret_version)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter(name="userTokenSecretVersion")
+    def user_token_secret_version(self) -> pulumi.Input[str]:
+        """
+        Required. A SecretManager resource containing the user token that authorizes
+        the Developer Connect connection. Format:
+        `projects/*/secrets/*/versions/*`.
+        """
+        return pulumi.get(self, "user_token_secret_version")
+
+    @user_token_secret_version.setter
+    def user_token_secret_version(self, value: pulumi.Input[str]):
+        pulumi.set(self, "user_token_secret_version", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Output only. The username associated with this token.
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "username", value)
+
+
+if not MYPY:
+    class ConnectionGitlabConfigReadAuthorizerCredentialArgsDict(TypedDict):
+        user_token_secret_version: pulumi.Input[str]
+        """
+        Required. A SecretManager resource containing the user token that authorizes
+        the Developer Connect connection. Format:
+        `projects/*/secrets/*/versions/*`.
+        """
+        username: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Output only. The username associated with this token.
+        """
+elif False:
+    ConnectionGitlabConfigReadAuthorizerCredentialArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ConnectionGitlabConfigReadAuthorizerCredentialArgs:
+    def __init__(__self__, *,
+                 user_token_secret_version: pulumi.Input[str],
+                 username: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] user_token_secret_version: Required. A SecretManager resource containing the user token that authorizes
+               the Developer Connect connection. Format:
+               `projects/*/secrets/*/versions/*`.
+        :param pulumi.Input[str] username: (Output)
+               Output only. The username associated with this token.
+        """
+        pulumi.set(__self__, "user_token_secret_version", user_token_secret_version)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter(name="userTokenSecretVersion")
+    def user_token_secret_version(self) -> pulumi.Input[str]:
+        """
+        Required. A SecretManager resource containing the user token that authorizes
+        the Developer Connect connection. Format:
+        `projects/*/secrets/*/versions/*`.
+        """
+        return pulumi.get(self, "user_token_secret_version")
+
+    @user_token_secret_version.setter
+    def user_token_secret_version(self, value: pulumi.Input[str]):
+        pulumi.set(self, "user_token_secret_version", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Output only. The username associated with this token.
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "username", value)
+
+
+if not MYPY:
+    class ConnectionGitlabEnterpriseConfigArgsDict(TypedDict):
+        authorizer_credential: pulumi.Input['ConnectionGitlabEnterpriseConfigAuthorizerCredentialArgsDict']
+        """
+        Represents a personal access token that authorized the Connection,
+        and associated metadata.
+        Structure is documented below.
+        """
+        host_uri: pulumi.Input[str]
+        """
+        Required. The URI of the GitLab Enterprise host this connection is for.
+        """
+        read_authorizer_credential: pulumi.Input['ConnectionGitlabEnterpriseConfigReadAuthorizerCredentialArgsDict']
+        """
+        Represents a personal access token that authorized the Connection,
+        and associated metadata.
+        Structure is documented below.
+        """
+        webhook_secret_secret_version: pulumi.Input[str]
+        """
+        Required. Immutable. SecretManager resource containing the webhook secret of a GitLab project,
+        formatted as `projects/*/secrets/*/versions/*`. This is used to validate
+        webhooks.
+        """
+        server_version: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Output only. Version of the GitLab Enterprise server running on the `host_uri`.
+        """
+        service_directory_config: NotRequired[pulumi.Input['ConnectionGitlabEnterpriseConfigServiceDirectoryConfigArgsDict']]
+        """
+        ServiceDirectoryConfig represents Service Directory configuration for a
+        connection.
+        Structure is documented below.
+        """
+        ssl_ca_certificate: NotRequired[pulumi.Input[str]]
+        """
+        Optional. SSL Certificate Authority certificate to use for requests to GitLab
+        Enterprise instance.
+        """
+elif False:
+    ConnectionGitlabEnterpriseConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ConnectionGitlabEnterpriseConfigArgs:
+    def __init__(__self__, *,
+                 authorizer_credential: pulumi.Input['ConnectionGitlabEnterpriseConfigAuthorizerCredentialArgs'],
+                 host_uri: pulumi.Input[str],
+                 read_authorizer_credential: pulumi.Input['ConnectionGitlabEnterpriseConfigReadAuthorizerCredentialArgs'],
+                 webhook_secret_secret_version: pulumi.Input[str],
+                 server_version: Optional[pulumi.Input[str]] = None,
+                 service_directory_config: Optional[pulumi.Input['ConnectionGitlabEnterpriseConfigServiceDirectoryConfigArgs']] = None,
+                 ssl_ca_certificate: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input['ConnectionGitlabEnterpriseConfigAuthorizerCredentialArgs'] authorizer_credential: Represents a personal access token that authorized the Connection,
+               and associated metadata.
+               Structure is documented below.
+        :param pulumi.Input[str] host_uri: Required. The URI of the GitLab Enterprise host this connection is for.
+        :param pulumi.Input['ConnectionGitlabEnterpriseConfigReadAuthorizerCredentialArgs'] read_authorizer_credential: Represents a personal access token that authorized the Connection,
+               and associated metadata.
+               Structure is documented below.
+        :param pulumi.Input[str] webhook_secret_secret_version: Required. Immutable. SecretManager resource containing the webhook secret of a GitLab project,
+               formatted as `projects/*/secrets/*/versions/*`. This is used to validate
+               webhooks.
+        :param pulumi.Input[str] server_version: (Output)
+               Output only. Version of the GitLab Enterprise server running on the `host_uri`.
+        :param pulumi.Input['ConnectionGitlabEnterpriseConfigServiceDirectoryConfigArgs'] service_directory_config: ServiceDirectoryConfig represents Service Directory configuration for a
+               connection.
+               Structure is documented below.
+        :param pulumi.Input[str] ssl_ca_certificate: Optional. SSL Certificate Authority certificate to use for requests to GitLab
+               Enterprise instance.
+        """
+        pulumi.set(__self__, "authorizer_credential", authorizer_credential)
+        pulumi.set(__self__, "host_uri", host_uri)
+        pulumi.set(__self__, "read_authorizer_credential", read_authorizer_credential)
+        pulumi.set(__self__, "webhook_secret_secret_version", webhook_secret_secret_version)
+        if server_version is not None:
+            pulumi.set(__self__, "server_version", server_version)
+        if service_directory_config is not None:
+            pulumi.set(__self__, "service_directory_config", service_directory_config)
+        if ssl_ca_certificate is not None:
+            pulumi.set(__self__, "ssl_ca_certificate", ssl_ca_certificate)
+
+    @property
+    @pulumi.getter(name="authorizerCredential")
+    def authorizer_credential(self) -> pulumi.Input['ConnectionGitlabEnterpriseConfigAuthorizerCredentialArgs']:
+        """
+        Represents a personal access token that authorized the Connection,
+        and associated metadata.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "authorizer_credential")
+
+    @authorizer_credential.setter
+    def authorizer_credential(self, value: pulumi.Input['ConnectionGitlabEnterpriseConfigAuthorizerCredentialArgs']):
+        pulumi.set(self, "authorizer_credential", value)
+
+    @property
+    @pulumi.getter(name="hostUri")
+    def host_uri(self) -> pulumi.Input[str]:
+        """
+        Required. The URI of the GitLab Enterprise host this connection is for.
+        """
+        return pulumi.get(self, "host_uri")
+
+    @host_uri.setter
+    def host_uri(self, value: pulumi.Input[str]):
+        pulumi.set(self, "host_uri", value)
+
+    @property
+    @pulumi.getter(name="readAuthorizerCredential")
+    def read_authorizer_credential(self) -> pulumi.Input['ConnectionGitlabEnterpriseConfigReadAuthorizerCredentialArgs']:
+        """
+        Represents a personal access token that authorized the Connection,
+        and associated metadata.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "read_authorizer_credential")
+
+    @read_authorizer_credential.setter
+    def read_authorizer_credential(self, value: pulumi.Input['ConnectionGitlabEnterpriseConfigReadAuthorizerCredentialArgs']):
+        pulumi.set(self, "read_authorizer_credential", value)
+
+    @property
+    @pulumi.getter(name="webhookSecretSecretVersion")
+    def webhook_secret_secret_version(self) -> pulumi.Input[str]:
+        """
+        Required. Immutable. SecretManager resource containing the webhook secret of a GitLab project,
+        formatted as `projects/*/secrets/*/versions/*`. This is used to validate
+        webhooks.
+        """
+        return pulumi.get(self, "webhook_secret_secret_version")
+
+    @webhook_secret_secret_version.setter
+    def webhook_secret_secret_version(self, value: pulumi.Input[str]):
+        pulumi.set(self, "webhook_secret_secret_version", value)
+
+    @property
+    @pulumi.getter(name="serverVersion")
+    def server_version(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Output only. Version of the GitLab Enterprise server running on the `host_uri`.
+        """
+        return pulumi.get(self, "server_version")
+
+    @server_version.setter
+    def server_version(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "server_version", value)
+
+    @property
+    @pulumi.getter(name="serviceDirectoryConfig")
+    def service_directory_config(self) -> Optional[pulumi.Input['ConnectionGitlabEnterpriseConfigServiceDirectoryConfigArgs']]:
+        """
+        ServiceDirectoryConfig represents Service Directory configuration for a
+        connection.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "service_directory_config")
+
+    @service_directory_config.setter
+    def service_directory_config(self, value: Optional[pulumi.Input['ConnectionGitlabEnterpriseConfigServiceDirectoryConfigArgs']]):
+        pulumi.set(self, "service_directory_config", value)
+
+    @property
+    @pulumi.getter(name="sslCaCertificate")
+    def ssl_ca_certificate(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. SSL Certificate Authority certificate to use for requests to GitLab
+        Enterprise instance.
+        """
+        return pulumi.get(self, "ssl_ca_certificate")
+
+    @ssl_ca_certificate.setter
+    def ssl_ca_certificate(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "ssl_ca_certificate", value)
+
+
+if not MYPY:
+    class ConnectionGitlabEnterpriseConfigAuthorizerCredentialArgsDict(TypedDict):
+        user_token_secret_version: pulumi.Input[str]
+        """
+        Required. A SecretManager resource containing the user token that authorizes
+        the Developer Connect connection. Format:
+        `projects/*/secrets/*/versions/*`.
+        """
+        username: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Output only. The username associated with this token.
+        """
+elif False:
+    ConnectionGitlabEnterpriseConfigAuthorizerCredentialArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ConnectionGitlabEnterpriseConfigAuthorizerCredentialArgs:
+    def __init__(__self__, *,
+                 user_token_secret_version: pulumi.Input[str],
+                 username: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] user_token_secret_version: Required. A SecretManager resource containing the user token that authorizes
+               the Developer Connect connection. Format:
+               `projects/*/secrets/*/versions/*`.
+        :param pulumi.Input[str] username: (Output)
+               Output only. The username associated with this token.
+        """
+        pulumi.set(__self__, "user_token_secret_version", user_token_secret_version)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter(name="userTokenSecretVersion")
+    def user_token_secret_version(self) -> pulumi.Input[str]:
+        """
+        Required. A SecretManager resource containing the user token that authorizes
+        the Developer Connect connection. Format:
+        `projects/*/secrets/*/versions/*`.
+        """
+        return pulumi.get(self, "user_token_secret_version")
+
+    @user_token_secret_version.setter
+    def user_token_secret_version(self, value: pulumi.Input[str]):
+        pulumi.set(self, "user_token_secret_version", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Output only. The username associated with this token.
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "username", value)
+
+
+if not MYPY:
+    class ConnectionGitlabEnterpriseConfigReadAuthorizerCredentialArgsDict(TypedDict):
+        user_token_secret_version: pulumi.Input[str]
+        """
+        Required. A SecretManager resource containing the user token that authorizes
+        the Developer Connect connection. Format:
+        `projects/*/secrets/*/versions/*`.
+        """
+        username: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Output only. The username associated with this token.
+        """
+elif False:
+    ConnectionGitlabEnterpriseConfigReadAuthorizerCredentialArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ConnectionGitlabEnterpriseConfigReadAuthorizerCredentialArgs:
+    def __init__(__self__, *,
+                 user_token_secret_version: pulumi.Input[str],
+                 username: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] user_token_secret_version: Required. A SecretManager resource containing the user token that authorizes
+               the Developer Connect connection. Format:
+               `projects/*/secrets/*/versions/*`.
+        :param pulumi.Input[str] username: (Output)
+               Output only. The username associated with this token.
+        """
+        pulumi.set(__self__, "user_token_secret_version", user_token_secret_version)
+        if username is not None:
+            pulumi.set(__self__, "username", username)
+
+    @property
+    @pulumi.getter(name="userTokenSecretVersion")
+    def user_token_secret_version(self) -> pulumi.Input[str]:
+        """
+        Required. A SecretManager resource containing the user token that authorizes
+        the Developer Connect connection. Format:
+        `projects/*/secrets/*/versions/*`.
+        """
+        return pulumi.get(self, "user_token_secret_version")
+
+    @user_token_secret_version.setter
+    def user_token_secret_version(self, value: pulumi.Input[str]):
+        pulumi.set(self, "user_token_secret_version", value)
+
+    @property
+    @pulumi.getter
+    def username(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Output only. The username associated with this token.
+        """
+        return pulumi.get(self, "username")
+
+    @username.setter
+    def username(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "username", value)
+
+
+if not MYPY:
+    class ConnectionGitlabEnterpriseConfigServiceDirectoryConfigArgsDict(TypedDict):
+        service: pulumi.Input[str]
+        """
+        Required. The Service Directory service name.
+        Format:
+        projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
+        """
+elif False:
+    ConnectionGitlabEnterpriseConfigServiceDirectoryConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ConnectionGitlabEnterpriseConfigServiceDirectoryConfigArgs:
+    def __init__(__self__, *,
+                 service: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] service: Required. The Service Directory service name.
+               Format:
+               projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
+        """
+        pulumi.set(__self__, "service", service)
+
+    @property
+    @pulumi.getter
+    def service(self) -> pulumi.Input[str]:
+        """
+        Required. The Service Directory service name.
+        Format:
+        projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
+        """
+        return pulumi.get(self, "service")
+
+    @service.setter
+    def service(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service", value)
+
+
+if not MYPY:
     class ConnectionInstallationStateArgsDict(TypedDict):
         action_uri: NotRequired[pulumi.Input[str]]
         """
-        Output only. Link to follow for next action. Empty string if the
-        installation is already complete.
+        Output only. Link to follow for next action. Empty string if the installation is already
+        complete.
         """
         message: NotRequired[pulumi.Input[str]]
         """
-        Output only. Message of what the user should do next to continue
-        the installation.Empty string if the installation is already complete.
+        Output only. Message of what the user should do next to continue the installation.
+        Empty string if the installation is already complete.
         """
         stage: NotRequired[pulumi.Input[str]]
         """
@@ -236,10 +1104,10 @@ class ConnectionInstallationStateArgs:
                  message: Optional[pulumi.Input[str]] = None,
                  stage: Optional[pulumi.Input[str]] = None):
         """
-        :param pulumi.Input[str] action_uri: Output only. Link to follow for next action. Empty string if the
-               installation is already complete.
-        :param pulumi.Input[str] message: Output only. Message of what the user should do next to continue
-               the installation.Empty string if the installation is already complete.
+        :param pulumi.Input[str] action_uri: Output only. Link to follow for next action. Empty string if the installation is already
+               complete.
+        :param pulumi.Input[str] message: Output only. Message of what the user should do next to continue the installation.
+               Empty string if the installation is already complete.
         :param pulumi.Input[str] stage: (Output)
                Output only. Current step of the installation process.
                Possible values:
@@ -260,8 +1128,8 @@ class ConnectionInstallationStateArgs:
     @pulumi.getter(name="actionUri")
     def action_uri(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. Link to follow for next action. Empty string if the
-        installation is already complete.
+        Output only. Link to follow for next action. Empty string if the installation is already
+        complete.
         """
         return pulumi.get(self, "action_uri")
 
@@ -273,8 +1141,8 @@ class ConnectionInstallationStateArgs:
     @pulumi.getter
     def message(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. Message of what the user should do next to continue
-        the installation.Empty string if the installation is already complete.
+        Output only. Message of what the user should do next to continue the installation.
+        Empty string if the installation is already complete.
         """
         return pulumi.get(self, "message")
 

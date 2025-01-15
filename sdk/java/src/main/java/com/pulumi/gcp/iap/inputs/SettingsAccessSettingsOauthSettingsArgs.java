@@ -22,6 +22,7 @@ public final class SettingsAccessSettingsOauthSettingsArgs extends com.pulumi.re
      * (https://developers.google.com/identity/protocols/OpenIDConnect#hd-param)
      * Note: IAP does not verify that the id token&#39;s hd claim matches this value
      * since access behavior is managed by IAM policies.
+     * * loginHint setting is not a replacement for access control. Always enforce an appropriate access policy if you want to restrict access to users outside your domain.
      * 
      */
     @Import(name="loginHint")
@@ -33,6 +34,7 @@ public final class SettingsAccessSettingsOauthSettingsArgs extends com.pulumi.re
      * (https://developers.google.com/identity/protocols/OpenIDConnect#hd-param)
      * Note: IAP does not verify that the id token&#39;s hd claim matches this value
      * since access behavior is managed by IAM policies.
+     * * loginHint setting is not a replacement for access control. Always enforce an appropriate access policy if you want to restrict access to users outside your domain.
      * 
      */
     public Optional<Output<String>> loginHint() {
@@ -85,6 +87,7 @@ public final class SettingsAccessSettingsOauthSettingsArgs extends com.pulumi.re
          * (https://developers.google.com/identity/protocols/OpenIDConnect#hd-param)
          * Note: IAP does not verify that the id token&#39;s hd claim matches this value
          * since access behavior is managed by IAM policies.
+         * * loginHint setting is not a replacement for access control. Always enforce an appropriate access policy if you want to restrict access to users outside your domain.
          * 
          * @return builder
          * 
@@ -100,6 +103,7 @@ public final class SettingsAccessSettingsOauthSettingsArgs extends com.pulumi.re
          * (https://developers.google.com/identity/protocols/OpenIDConnect#hd-param)
          * Note: IAP does not verify that the id token&#39;s hd claim matches this value
          * since access behavior is managed by IAM policies.
+         * * loginHint setting is not a replacement for access control. Always enforce an appropriate access policy if you want to restrict access to users outside your domain.
          * 
          * @return builder
          * 

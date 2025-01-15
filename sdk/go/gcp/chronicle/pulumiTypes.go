@@ -13,6 +13,646 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type DataAccessScopeAllowedDataAccessLabel struct {
+	// The asset namespace configured in the forwarder
+	// of the customer's events.
+	AssetNamespace *string `pulumi:"assetNamespace"`
+	// The name of the data access label.
+	DataAccessLabel *string `pulumi:"dataAccessLabel"`
+	// (Output)
+	// Output only. The display name of the label.
+	// Data access label and log types's name
+	// will match the display name of the resource.
+	// The asset namespace will match the namespace itself.
+	// The ingestion key value pair will match the key of the tuple.
+	DisplayName *string `pulumi:"displayName"`
+	// Representation of an ingestion label type.
+	// Structure is documented below.
+	IngestionLabel *DataAccessScopeAllowedDataAccessLabelIngestionLabel `pulumi:"ingestionLabel"`
+	// The name of the log type.
+	LogType *string `pulumi:"logType"`
+}
+
+// DataAccessScopeAllowedDataAccessLabelInput is an input type that accepts DataAccessScopeAllowedDataAccessLabelArgs and DataAccessScopeAllowedDataAccessLabelOutput values.
+// You can construct a concrete instance of `DataAccessScopeAllowedDataAccessLabelInput` via:
+//
+//	DataAccessScopeAllowedDataAccessLabelArgs{...}
+type DataAccessScopeAllowedDataAccessLabelInput interface {
+	pulumi.Input
+
+	ToDataAccessScopeAllowedDataAccessLabelOutput() DataAccessScopeAllowedDataAccessLabelOutput
+	ToDataAccessScopeAllowedDataAccessLabelOutputWithContext(context.Context) DataAccessScopeAllowedDataAccessLabelOutput
+}
+
+type DataAccessScopeAllowedDataAccessLabelArgs struct {
+	// The asset namespace configured in the forwarder
+	// of the customer's events.
+	AssetNamespace pulumi.StringPtrInput `pulumi:"assetNamespace"`
+	// The name of the data access label.
+	DataAccessLabel pulumi.StringPtrInput `pulumi:"dataAccessLabel"`
+	// (Output)
+	// Output only. The display name of the label.
+	// Data access label and log types's name
+	// will match the display name of the resource.
+	// The asset namespace will match the namespace itself.
+	// The ingestion key value pair will match the key of the tuple.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// Representation of an ingestion label type.
+	// Structure is documented below.
+	IngestionLabel DataAccessScopeAllowedDataAccessLabelIngestionLabelPtrInput `pulumi:"ingestionLabel"`
+	// The name of the log type.
+	LogType pulumi.StringPtrInput `pulumi:"logType"`
+}
+
+func (DataAccessScopeAllowedDataAccessLabelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAccessScopeAllowedDataAccessLabel)(nil)).Elem()
+}
+
+func (i DataAccessScopeAllowedDataAccessLabelArgs) ToDataAccessScopeAllowedDataAccessLabelOutput() DataAccessScopeAllowedDataAccessLabelOutput {
+	return i.ToDataAccessScopeAllowedDataAccessLabelOutputWithContext(context.Background())
+}
+
+func (i DataAccessScopeAllowedDataAccessLabelArgs) ToDataAccessScopeAllowedDataAccessLabelOutputWithContext(ctx context.Context) DataAccessScopeAllowedDataAccessLabelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAccessScopeAllowedDataAccessLabelOutput)
+}
+
+// DataAccessScopeAllowedDataAccessLabelArrayInput is an input type that accepts DataAccessScopeAllowedDataAccessLabelArray and DataAccessScopeAllowedDataAccessLabelArrayOutput values.
+// You can construct a concrete instance of `DataAccessScopeAllowedDataAccessLabelArrayInput` via:
+//
+//	DataAccessScopeAllowedDataAccessLabelArray{ DataAccessScopeAllowedDataAccessLabelArgs{...} }
+type DataAccessScopeAllowedDataAccessLabelArrayInput interface {
+	pulumi.Input
+
+	ToDataAccessScopeAllowedDataAccessLabelArrayOutput() DataAccessScopeAllowedDataAccessLabelArrayOutput
+	ToDataAccessScopeAllowedDataAccessLabelArrayOutputWithContext(context.Context) DataAccessScopeAllowedDataAccessLabelArrayOutput
+}
+
+type DataAccessScopeAllowedDataAccessLabelArray []DataAccessScopeAllowedDataAccessLabelInput
+
+func (DataAccessScopeAllowedDataAccessLabelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataAccessScopeAllowedDataAccessLabel)(nil)).Elem()
+}
+
+func (i DataAccessScopeAllowedDataAccessLabelArray) ToDataAccessScopeAllowedDataAccessLabelArrayOutput() DataAccessScopeAllowedDataAccessLabelArrayOutput {
+	return i.ToDataAccessScopeAllowedDataAccessLabelArrayOutputWithContext(context.Background())
+}
+
+func (i DataAccessScopeAllowedDataAccessLabelArray) ToDataAccessScopeAllowedDataAccessLabelArrayOutputWithContext(ctx context.Context) DataAccessScopeAllowedDataAccessLabelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAccessScopeAllowedDataAccessLabelArrayOutput)
+}
+
+type DataAccessScopeAllowedDataAccessLabelOutput struct{ *pulumi.OutputState }
+
+func (DataAccessScopeAllowedDataAccessLabelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAccessScopeAllowedDataAccessLabel)(nil)).Elem()
+}
+
+func (o DataAccessScopeAllowedDataAccessLabelOutput) ToDataAccessScopeAllowedDataAccessLabelOutput() DataAccessScopeAllowedDataAccessLabelOutput {
+	return o
+}
+
+func (o DataAccessScopeAllowedDataAccessLabelOutput) ToDataAccessScopeAllowedDataAccessLabelOutputWithContext(ctx context.Context) DataAccessScopeAllowedDataAccessLabelOutput {
+	return o
+}
+
+// The asset namespace configured in the forwarder
+// of the customer's events.
+func (o DataAccessScopeAllowedDataAccessLabelOutput) AssetNamespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataAccessScopeAllowedDataAccessLabel) *string { return v.AssetNamespace }).(pulumi.StringPtrOutput)
+}
+
+// The name of the data access label.
+func (o DataAccessScopeAllowedDataAccessLabelOutput) DataAccessLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataAccessScopeAllowedDataAccessLabel) *string { return v.DataAccessLabel }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Output only. The display name of the label.
+// Data access label and log types's name
+// will match the display name of the resource.
+// The asset namespace will match the namespace itself.
+// The ingestion key value pair will match the key of the tuple.
+func (o DataAccessScopeAllowedDataAccessLabelOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataAccessScopeAllowedDataAccessLabel) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Representation of an ingestion label type.
+// Structure is documented below.
+func (o DataAccessScopeAllowedDataAccessLabelOutput) IngestionLabel() DataAccessScopeAllowedDataAccessLabelIngestionLabelPtrOutput {
+	return o.ApplyT(func(v DataAccessScopeAllowedDataAccessLabel) *DataAccessScopeAllowedDataAccessLabelIngestionLabel {
+		return v.IngestionLabel
+	}).(DataAccessScopeAllowedDataAccessLabelIngestionLabelPtrOutput)
+}
+
+// The name of the log type.
+func (o DataAccessScopeAllowedDataAccessLabelOutput) LogType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataAccessScopeAllowedDataAccessLabel) *string { return v.LogType }).(pulumi.StringPtrOutput)
+}
+
+type DataAccessScopeAllowedDataAccessLabelArrayOutput struct{ *pulumi.OutputState }
+
+func (DataAccessScopeAllowedDataAccessLabelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataAccessScopeAllowedDataAccessLabel)(nil)).Elem()
+}
+
+func (o DataAccessScopeAllowedDataAccessLabelArrayOutput) ToDataAccessScopeAllowedDataAccessLabelArrayOutput() DataAccessScopeAllowedDataAccessLabelArrayOutput {
+	return o
+}
+
+func (o DataAccessScopeAllowedDataAccessLabelArrayOutput) ToDataAccessScopeAllowedDataAccessLabelArrayOutputWithContext(ctx context.Context) DataAccessScopeAllowedDataAccessLabelArrayOutput {
+	return o
+}
+
+func (o DataAccessScopeAllowedDataAccessLabelArrayOutput) Index(i pulumi.IntInput) DataAccessScopeAllowedDataAccessLabelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataAccessScopeAllowedDataAccessLabel {
+		return vs[0].([]DataAccessScopeAllowedDataAccessLabel)[vs[1].(int)]
+	}).(DataAccessScopeAllowedDataAccessLabelOutput)
+}
+
+type DataAccessScopeAllowedDataAccessLabelIngestionLabel struct {
+	// Required. The key of the ingestion label. Always required.
+	IngestionLabelKey string `pulumi:"ingestionLabelKey"`
+	// Optional. The value of the ingestion label. Optional. An object
+	// with no provided value and some key provided would match
+	// against the given key and ANY value.
+	IngestionLabelValue *string `pulumi:"ingestionLabelValue"`
+}
+
+// DataAccessScopeAllowedDataAccessLabelIngestionLabelInput is an input type that accepts DataAccessScopeAllowedDataAccessLabelIngestionLabelArgs and DataAccessScopeAllowedDataAccessLabelIngestionLabelOutput values.
+// You can construct a concrete instance of `DataAccessScopeAllowedDataAccessLabelIngestionLabelInput` via:
+//
+//	DataAccessScopeAllowedDataAccessLabelIngestionLabelArgs{...}
+type DataAccessScopeAllowedDataAccessLabelIngestionLabelInput interface {
+	pulumi.Input
+
+	ToDataAccessScopeAllowedDataAccessLabelIngestionLabelOutput() DataAccessScopeAllowedDataAccessLabelIngestionLabelOutput
+	ToDataAccessScopeAllowedDataAccessLabelIngestionLabelOutputWithContext(context.Context) DataAccessScopeAllowedDataAccessLabelIngestionLabelOutput
+}
+
+type DataAccessScopeAllowedDataAccessLabelIngestionLabelArgs struct {
+	// Required. The key of the ingestion label. Always required.
+	IngestionLabelKey pulumi.StringInput `pulumi:"ingestionLabelKey"`
+	// Optional. The value of the ingestion label. Optional. An object
+	// with no provided value and some key provided would match
+	// against the given key and ANY value.
+	IngestionLabelValue pulumi.StringPtrInput `pulumi:"ingestionLabelValue"`
+}
+
+func (DataAccessScopeAllowedDataAccessLabelIngestionLabelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAccessScopeAllowedDataAccessLabelIngestionLabel)(nil)).Elem()
+}
+
+func (i DataAccessScopeAllowedDataAccessLabelIngestionLabelArgs) ToDataAccessScopeAllowedDataAccessLabelIngestionLabelOutput() DataAccessScopeAllowedDataAccessLabelIngestionLabelOutput {
+	return i.ToDataAccessScopeAllowedDataAccessLabelIngestionLabelOutputWithContext(context.Background())
+}
+
+func (i DataAccessScopeAllowedDataAccessLabelIngestionLabelArgs) ToDataAccessScopeAllowedDataAccessLabelIngestionLabelOutputWithContext(ctx context.Context) DataAccessScopeAllowedDataAccessLabelIngestionLabelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAccessScopeAllowedDataAccessLabelIngestionLabelOutput)
+}
+
+func (i DataAccessScopeAllowedDataAccessLabelIngestionLabelArgs) ToDataAccessScopeAllowedDataAccessLabelIngestionLabelPtrOutput() DataAccessScopeAllowedDataAccessLabelIngestionLabelPtrOutput {
+	return i.ToDataAccessScopeAllowedDataAccessLabelIngestionLabelPtrOutputWithContext(context.Background())
+}
+
+func (i DataAccessScopeAllowedDataAccessLabelIngestionLabelArgs) ToDataAccessScopeAllowedDataAccessLabelIngestionLabelPtrOutputWithContext(ctx context.Context) DataAccessScopeAllowedDataAccessLabelIngestionLabelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAccessScopeAllowedDataAccessLabelIngestionLabelOutput).ToDataAccessScopeAllowedDataAccessLabelIngestionLabelPtrOutputWithContext(ctx)
+}
+
+// DataAccessScopeAllowedDataAccessLabelIngestionLabelPtrInput is an input type that accepts DataAccessScopeAllowedDataAccessLabelIngestionLabelArgs, DataAccessScopeAllowedDataAccessLabelIngestionLabelPtr and DataAccessScopeAllowedDataAccessLabelIngestionLabelPtrOutput values.
+// You can construct a concrete instance of `DataAccessScopeAllowedDataAccessLabelIngestionLabelPtrInput` via:
+//
+//	        DataAccessScopeAllowedDataAccessLabelIngestionLabelArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataAccessScopeAllowedDataAccessLabelIngestionLabelPtrInput interface {
+	pulumi.Input
+
+	ToDataAccessScopeAllowedDataAccessLabelIngestionLabelPtrOutput() DataAccessScopeAllowedDataAccessLabelIngestionLabelPtrOutput
+	ToDataAccessScopeAllowedDataAccessLabelIngestionLabelPtrOutputWithContext(context.Context) DataAccessScopeAllowedDataAccessLabelIngestionLabelPtrOutput
+}
+
+type dataAccessScopeAllowedDataAccessLabelIngestionLabelPtrType DataAccessScopeAllowedDataAccessLabelIngestionLabelArgs
+
+func DataAccessScopeAllowedDataAccessLabelIngestionLabelPtr(v *DataAccessScopeAllowedDataAccessLabelIngestionLabelArgs) DataAccessScopeAllowedDataAccessLabelIngestionLabelPtrInput {
+	return (*dataAccessScopeAllowedDataAccessLabelIngestionLabelPtrType)(v)
+}
+
+func (*dataAccessScopeAllowedDataAccessLabelIngestionLabelPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataAccessScopeAllowedDataAccessLabelIngestionLabel)(nil)).Elem()
+}
+
+func (i *dataAccessScopeAllowedDataAccessLabelIngestionLabelPtrType) ToDataAccessScopeAllowedDataAccessLabelIngestionLabelPtrOutput() DataAccessScopeAllowedDataAccessLabelIngestionLabelPtrOutput {
+	return i.ToDataAccessScopeAllowedDataAccessLabelIngestionLabelPtrOutputWithContext(context.Background())
+}
+
+func (i *dataAccessScopeAllowedDataAccessLabelIngestionLabelPtrType) ToDataAccessScopeAllowedDataAccessLabelIngestionLabelPtrOutputWithContext(ctx context.Context) DataAccessScopeAllowedDataAccessLabelIngestionLabelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAccessScopeAllowedDataAccessLabelIngestionLabelPtrOutput)
+}
+
+type DataAccessScopeAllowedDataAccessLabelIngestionLabelOutput struct{ *pulumi.OutputState }
+
+func (DataAccessScopeAllowedDataAccessLabelIngestionLabelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAccessScopeAllowedDataAccessLabelIngestionLabel)(nil)).Elem()
+}
+
+func (o DataAccessScopeAllowedDataAccessLabelIngestionLabelOutput) ToDataAccessScopeAllowedDataAccessLabelIngestionLabelOutput() DataAccessScopeAllowedDataAccessLabelIngestionLabelOutput {
+	return o
+}
+
+func (o DataAccessScopeAllowedDataAccessLabelIngestionLabelOutput) ToDataAccessScopeAllowedDataAccessLabelIngestionLabelOutputWithContext(ctx context.Context) DataAccessScopeAllowedDataAccessLabelIngestionLabelOutput {
+	return o
+}
+
+func (o DataAccessScopeAllowedDataAccessLabelIngestionLabelOutput) ToDataAccessScopeAllowedDataAccessLabelIngestionLabelPtrOutput() DataAccessScopeAllowedDataAccessLabelIngestionLabelPtrOutput {
+	return o.ToDataAccessScopeAllowedDataAccessLabelIngestionLabelPtrOutputWithContext(context.Background())
+}
+
+func (o DataAccessScopeAllowedDataAccessLabelIngestionLabelOutput) ToDataAccessScopeAllowedDataAccessLabelIngestionLabelPtrOutputWithContext(ctx context.Context) DataAccessScopeAllowedDataAccessLabelIngestionLabelPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataAccessScopeAllowedDataAccessLabelIngestionLabel) *DataAccessScopeAllowedDataAccessLabelIngestionLabel {
+		return &v
+	}).(DataAccessScopeAllowedDataAccessLabelIngestionLabelPtrOutput)
+}
+
+// Required. The key of the ingestion label. Always required.
+func (o DataAccessScopeAllowedDataAccessLabelIngestionLabelOutput) IngestionLabelKey() pulumi.StringOutput {
+	return o.ApplyT(func(v DataAccessScopeAllowedDataAccessLabelIngestionLabel) string { return v.IngestionLabelKey }).(pulumi.StringOutput)
+}
+
+// Optional. The value of the ingestion label. Optional. An object
+// with no provided value and some key provided would match
+// against the given key and ANY value.
+func (o DataAccessScopeAllowedDataAccessLabelIngestionLabelOutput) IngestionLabelValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataAccessScopeAllowedDataAccessLabelIngestionLabel) *string { return v.IngestionLabelValue }).(pulumi.StringPtrOutput)
+}
+
+type DataAccessScopeAllowedDataAccessLabelIngestionLabelPtrOutput struct{ *pulumi.OutputState }
+
+func (DataAccessScopeAllowedDataAccessLabelIngestionLabelPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataAccessScopeAllowedDataAccessLabelIngestionLabel)(nil)).Elem()
+}
+
+func (o DataAccessScopeAllowedDataAccessLabelIngestionLabelPtrOutput) ToDataAccessScopeAllowedDataAccessLabelIngestionLabelPtrOutput() DataAccessScopeAllowedDataAccessLabelIngestionLabelPtrOutput {
+	return o
+}
+
+func (o DataAccessScopeAllowedDataAccessLabelIngestionLabelPtrOutput) ToDataAccessScopeAllowedDataAccessLabelIngestionLabelPtrOutputWithContext(ctx context.Context) DataAccessScopeAllowedDataAccessLabelIngestionLabelPtrOutput {
+	return o
+}
+
+func (o DataAccessScopeAllowedDataAccessLabelIngestionLabelPtrOutput) Elem() DataAccessScopeAllowedDataAccessLabelIngestionLabelOutput {
+	return o.ApplyT(func(v *DataAccessScopeAllowedDataAccessLabelIngestionLabel) DataAccessScopeAllowedDataAccessLabelIngestionLabel {
+		if v != nil {
+			return *v
+		}
+		var ret DataAccessScopeAllowedDataAccessLabelIngestionLabel
+		return ret
+	}).(DataAccessScopeAllowedDataAccessLabelIngestionLabelOutput)
+}
+
+// Required. The key of the ingestion label. Always required.
+func (o DataAccessScopeAllowedDataAccessLabelIngestionLabelPtrOutput) IngestionLabelKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataAccessScopeAllowedDataAccessLabelIngestionLabel) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IngestionLabelKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The value of the ingestion label. Optional. An object
+// with no provided value and some key provided would match
+// against the given key and ANY value.
+func (o DataAccessScopeAllowedDataAccessLabelIngestionLabelPtrOutput) IngestionLabelValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataAccessScopeAllowedDataAccessLabelIngestionLabel) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IngestionLabelValue
+	}).(pulumi.StringPtrOutput)
+}
+
+type DataAccessScopeDeniedDataAccessLabel struct {
+	// The asset namespace configured in the forwarder
+	// of the customer's events.
+	AssetNamespace *string `pulumi:"assetNamespace"`
+	// The name of the data access label.
+	DataAccessLabel *string `pulumi:"dataAccessLabel"`
+	// (Output)
+	// Output only. The display name of the label.
+	// Data access label and log types's name
+	// will match the display name of the resource.
+	// The asset namespace will match the namespace itself.
+	// The ingestion key value pair will match the key of the tuple.
+	DisplayName *string `pulumi:"displayName"`
+	// Representation of an ingestion label type.
+	// Structure is documented below.
+	IngestionLabel *DataAccessScopeDeniedDataAccessLabelIngestionLabel `pulumi:"ingestionLabel"`
+	// The name of the log type.
+	LogType *string `pulumi:"logType"`
+}
+
+// DataAccessScopeDeniedDataAccessLabelInput is an input type that accepts DataAccessScopeDeniedDataAccessLabelArgs and DataAccessScopeDeniedDataAccessLabelOutput values.
+// You can construct a concrete instance of `DataAccessScopeDeniedDataAccessLabelInput` via:
+//
+//	DataAccessScopeDeniedDataAccessLabelArgs{...}
+type DataAccessScopeDeniedDataAccessLabelInput interface {
+	pulumi.Input
+
+	ToDataAccessScopeDeniedDataAccessLabelOutput() DataAccessScopeDeniedDataAccessLabelOutput
+	ToDataAccessScopeDeniedDataAccessLabelOutputWithContext(context.Context) DataAccessScopeDeniedDataAccessLabelOutput
+}
+
+type DataAccessScopeDeniedDataAccessLabelArgs struct {
+	// The asset namespace configured in the forwarder
+	// of the customer's events.
+	AssetNamespace pulumi.StringPtrInput `pulumi:"assetNamespace"`
+	// The name of the data access label.
+	DataAccessLabel pulumi.StringPtrInput `pulumi:"dataAccessLabel"`
+	// (Output)
+	// Output only. The display name of the label.
+	// Data access label and log types's name
+	// will match the display name of the resource.
+	// The asset namespace will match the namespace itself.
+	// The ingestion key value pair will match the key of the tuple.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+	// Representation of an ingestion label type.
+	// Structure is documented below.
+	IngestionLabel DataAccessScopeDeniedDataAccessLabelIngestionLabelPtrInput `pulumi:"ingestionLabel"`
+	// The name of the log type.
+	LogType pulumi.StringPtrInput `pulumi:"logType"`
+}
+
+func (DataAccessScopeDeniedDataAccessLabelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAccessScopeDeniedDataAccessLabel)(nil)).Elem()
+}
+
+func (i DataAccessScopeDeniedDataAccessLabelArgs) ToDataAccessScopeDeniedDataAccessLabelOutput() DataAccessScopeDeniedDataAccessLabelOutput {
+	return i.ToDataAccessScopeDeniedDataAccessLabelOutputWithContext(context.Background())
+}
+
+func (i DataAccessScopeDeniedDataAccessLabelArgs) ToDataAccessScopeDeniedDataAccessLabelOutputWithContext(ctx context.Context) DataAccessScopeDeniedDataAccessLabelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAccessScopeDeniedDataAccessLabelOutput)
+}
+
+// DataAccessScopeDeniedDataAccessLabelArrayInput is an input type that accepts DataAccessScopeDeniedDataAccessLabelArray and DataAccessScopeDeniedDataAccessLabelArrayOutput values.
+// You can construct a concrete instance of `DataAccessScopeDeniedDataAccessLabelArrayInput` via:
+//
+//	DataAccessScopeDeniedDataAccessLabelArray{ DataAccessScopeDeniedDataAccessLabelArgs{...} }
+type DataAccessScopeDeniedDataAccessLabelArrayInput interface {
+	pulumi.Input
+
+	ToDataAccessScopeDeniedDataAccessLabelArrayOutput() DataAccessScopeDeniedDataAccessLabelArrayOutput
+	ToDataAccessScopeDeniedDataAccessLabelArrayOutputWithContext(context.Context) DataAccessScopeDeniedDataAccessLabelArrayOutput
+}
+
+type DataAccessScopeDeniedDataAccessLabelArray []DataAccessScopeDeniedDataAccessLabelInput
+
+func (DataAccessScopeDeniedDataAccessLabelArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataAccessScopeDeniedDataAccessLabel)(nil)).Elem()
+}
+
+func (i DataAccessScopeDeniedDataAccessLabelArray) ToDataAccessScopeDeniedDataAccessLabelArrayOutput() DataAccessScopeDeniedDataAccessLabelArrayOutput {
+	return i.ToDataAccessScopeDeniedDataAccessLabelArrayOutputWithContext(context.Background())
+}
+
+func (i DataAccessScopeDeniedDataAccessLabelArray) ToDataAccessScopeDeniedDataAccessLabelArrayOutputWithContext(ctx context.Context) DataAccessScopeDeniedDataAccessLabelArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAccessScopeDeniedDataAccessLabelArrayOutput)
+}
+
+type DataAccessScopeDeniedDataAccessLabelOutput struct{ *pulumi.OutputState }
+
+func (DataAccessScopeDeniedDataAccessLabelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAccessScopeDeniedDataAccessLabel)(nil)).Elem()
+}
+
+func (o DataAccessScopeDeniedDataAccessLabelOutput) ToDataAccessScopeDeniedDataAccessLabelOutput() DataAccessScopeDeniedDataAccessLabelOutput {
+	return o
+}
+
+func (o DataAccessScopeDeniedDataAccessLabelOutput) ToDataAccessScopeDeniedDataAccessLabelOutputWithContext(ctx context.Context) DataAccessScopeDeniedDataAccessLabelOutput {
+	return o
+}
+
+// The asset namespace configured in the forwarder
+// of the customer's events.
+func (o DataAccessScopeDeniedDataAccessLabelOutput) AssetNamespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataAccessScopeDeniedDataAccessLabel) *string { return v.AssetNamespace }).(pulumi.StringPtrOutput)
+}
+
+// The name of the data access label.
+func (o DataAccessScopeDeniedDataAccessLabelOutput) DataAccessLabel() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataAccessScopeDeniedDataAccessLabel) *string { return v.DataAccessLabel }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Output only. The display name of the label.
+// Data access label and log types's name
+// will match the display name of the resource.
+// The asset namespace will match the namespace itself.
+// The ingestion key value pair will match the key of the tuple.
+func (o DataAccessScopeDeniedDataAccessLabelOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataAccessScopeDeniedDataAccessLabel) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+// Representation of an ingestion label type.
+// Structure is documented below.
+func (o DataAccessScopeDeniedDataAccessLabelOutput) IngestionLabel() DataAccessScopeDeniedDataAccessLabelIngestionLabelPtrOutput {
+	return o.ApplyT(func(v DataAccessScopeDeniedDataAccessLabel) *DataAccessScopeDeniedDataAccessLabelIngestionLabel {
+		return v.IngestionLabel
+	}).(DataAccessScopeDeniedDataAccessLabelIngestionLabelPtrOutput)
+}
+
+// The name of the log type.
+func (o DataAccessScopeDeniedDataAccessLabelOutput) LogType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataAccessScopeDeniedDataAccessLabel) *string { return v.LogType }).(pulumi.StringPtrOutput)
+}
+
+type DataAccessScopeDeniedDataAccessLabelArrayOutput struct{ *pulumi.OutputState }
+
+func (DataAccessScopeDeniedDataAccessLabelArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]DataAccessScopeDeniedDataAccessLabel)(nil)).Elem()
+}
+
+func (o DataAccessScopeDeniedDataAccessLabelArrayOutput) ToDataAccessScopeDeniedDataAccessLabelArrayOutput() DataAccessScopeDeniedDataAccessLabelArrayOutput {
+	return o
+}
+
+func (o DataAccessScopeDeniedDataAccessLabelArrayOutput) ToDataAccessScopeDeniedDataAccessLabelArrayOutputWithContext(ctx context.Context) DataAccessScopeDeniedDataAccessLabelArrayOutput {
+	return o
+}
+
+func (o DataAccessScopeDeniedDataAccessLabelArrayOutput) Index(i pulumi.IntInput) DataAccessScopeDeniedDataAccessLabelOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) DataAccessScopeDeniedDataAccessLabel {
+		return vs[0].([]DataAccessScopeDeniedDataAccessLabel)[vs[1].(int)]
+	}).(DataAccessScopeDeniedDataAccessLabelOutput)
+}
+
+type DataAccessScopeDeniedDataAccessLabelIngestionLabel struct {
+	// Required. The key of the ingestion label. Always required.
+	IngestionLabelKey string `pulumi:"ingestionLabelKey"`
+	// Optional. The value of the ingestion label. Optional. An object
+	// with no provided value and some key provided would match
+	// against the given key and ANY value.
+	IngestionLabelValue *string `pulumi:"ingestionLabelValue"`
+}
+
+// DataAccessScopeDeniedDataAccessLabelIngestionLabelInput is an input type that accepts DataAccessScopeDeniedDataAccessLabelIngestionLabelArgs and DataAccessScopeDeniedDataAccessLabelIngestionLabelOutput values.
+// You can construct a concrete instance of `DataAccessScopeDeniedDataAccessLabelIngestionLabelInput` via:
+//
+//	DataAccessScopeDeniedDataAccessLabelIngestionLabelArgs{...}
+type DataAccessScopeDeniedDataAccessLabelIngestionLabelInput interface {
+	pulumi.Input
+
+	ToDataAccessScopeDeniedDataAccessLabelIngestionLabelOutput() DataAccessScopeDeniedDataAccessLabelIngestionLabelOutput
+	ToDataAccessScopeDeniedDataAccessLabelIngestionLabelOutputWithContext(context.Context) DataAccessScopeDeniedDataAccessLabelIngestionLabelOutput
+}
+
+type DataAccessScopeDeniedDataAccessLabelIngestionLabelArgs struct {
+	// Required. The key of the ingestion label. Always required.
+	IngestionLabelKey pulumi.StringInput `pulumi:"ingestionLabelKey"`
+	// Optional. The value of the ingestion label. Optional. An object
+	// with no provided value and some key provided would match
+	// against the given key and ANY value.
+	IngestionLabelValue pulumi.StringPtrInput `pulumi:"ingestionLabelValue"`
+}
+
+func (DataAccessScopeDeniedDataAccessLabelIngestionLabelArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAccessScopeDeniedDataAccessLabelIngestionLabel)(nil)).Elem()
+}
+
+func (i DataAccessScopeDeniedDataAccessLabelIngestionLabelArgs) ToDataAccessScopeDeniedDataAccessLabelIngestionLabelOutput() DataAccessScopeDeniedDataAccessLabelIngestionLabelOutput {
+	return i.ToDataAccessScopeDeniedDataAccessLabelIngestionLabelOutputWithContext(context.Background())
+}
+
+func (i DataAccessScopeDeniedDataAccessLabelIngestionLabelArgs) ToDataAccessScopeDeniedDataAccessLabelIngestionLabelOutputWithContext(ctx context.Context) DataAccessScopeDeniedDataAccessLabelIngestionLabelOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAccessScopeDeniedDataAccessLabelIngestionLabelOutput)
+}
+
+func (i DataAccessScopeDeniedDataAccessLabelIngestionLabelArgs) ToDataAccessScopeDeniedDataAccessLabelIngestionLabelPtrOutput() DataAccessScopeDeniedDataAccessLabelIngestionLabelPtrOutput {
+	return i.ToDataAccessScopeDeniedDataAccessLabelIngestionLabelPtrOutputWithContext(context.Background())
+}
+
+func (i DataAccessScopeDeniedDataAccessLabelIngestionLabelArgs) ToDataAccessScopeDeniedDataAccessLabelIngestionLabelPtrOutputWithContext(ctx context.Context) DataAccessScopeDeniedDataAccessLabelIngestionLabelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAccessScopeDeniedDataAccessLabelIngestionLabelOutput).ToDataAccessScopeDeniedDataAccessLabelIngestionLabelPtrOutputWithContext(ctx)
+}
+
+// DataAccessScopeDeniedDataAccessLabelIngestionLabelPtrInput is an input type that accepts DataAccessScopeDeniedDataAccessLabelIngestionLabelArgs, DataAccessScopeDeniedDataAccessLabelIngestionLabelPtr and DataAccessScopeDeniedDataAccessLabelIngestionLabelPtrOutput values.
+// You can construct a concrete instance of `DataAccessScopeDeniedDataAccessLabelIngestionLabelPtrInput` via:
+//
+//	        DataAccessScopeDeniedDataAccessLabelIngestionLabelArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataAccessScopeDeniedDataAccessLabelIngestionLabelPtrInput interface {
+	pulumi.Input
+
+	ToDataAccessScopeDeniedDataAccessLabelIngestionLabelPtrOutput() DataAccessScopeDeniedDataAccessLabelIngestionLabelPtrOutput
+	ToDataAccessScopeDeniedDataAccessLabelIngestionLabelPtrOutputWithContext(context.Context) DataAccessScopeDeniedDataAccessLabelIngestionLabelPtrOutput
+}
+
+type dataAccessScopeDeniedDataAccessLabelIngestionLabelPtrType DataAccessScopeDeniedDataAccessLabelIngestionLabelArgs
+
+func DataAccessScopeDeniedDataAccessLabelIngestionLabelPtr(v *DataAccessScopeDeniedDataAccessLabelIngestionLabelArgs) DataAccessScopeDeniedDataAccessLabelIngestionLabelPtrInput {
+	return (*dataAccessScopeDeniedDataAccessLabelIngestionLabelPtrType)(v)
+}
+
+func (*dataAccessScopeDeniedDataAccessLabelIngestionLabelPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataAccessScopeDeniedDataAccessLabelIngestionLabel)(nil)).Elem()
+}
+
+func (i *dataAccessScopeDeniedDataAccessLabelIngestionLabelPtrType) ToDataAccessScopeDeniedDataAccessLabelIngestionLabelPtrOutput() DataAccessScopeDeniedDataAccessLabelIngestionLabelPtrOutput {
+	return i.ToDataAccessScopeDeniedDataAccessLabelIngestionLabelPtrOutputWithContext(context.Background())
+}
+
+func (i *dataAccessScopeDeniedDataAccessLabelIngestionLabelPtrType) ToDataAccessScopeDeniedDataAccessLabelIngestionLabelPtrOutputWithContext(ctx context.Context) DataAccessScopeDeniedDataAccessLabelIngestionLabelPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataAccessScopeDeniedDataAccessLabelIngestionLabelPtrOutput)
+}
+
+type DataAccessScopeDeniedDataAccessLabelIngestionLabelOutput struct{ *pulumi.OutputState }
+
+func (DataAccessScopeDeniedDataAccessLabelIngestionLabelOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataAccessScopeDeniedDataAccessLabelIngestionLabel)(nil)).Elem()
+}
+
+func (o DataAccessScopeDeniedDataAccessLabelIngestionLabelOutput) ToDataAccessScopeDeniedDataAccessLabelIngestionLabelOutput() DataAccessScopeDeniedDataAccessLabelIngestionLabelOutput {
+	return o
+}
+
+func (o DataAccessScopeDeniedDataAccessLabelIngestionLabelOutput) ToDataAccessScopeDeniedDataAccessLabelIngestionLabelOutputWithContext(ctx context.Context) DataAccessScopeDeniedDataAccessLabelIngestionLabelOutput {
+	return o
+}
+
+func (o DataAccessScopeDeniedDataAccessLabelIngestionLabelOutput) ToDataAccessScopeDeniedDataAccessLabelIngestionLabelPtrOutput() DataAccessScopeDeniedDataAccessLabelIngestionLabelPtrOutput {
+	return o.ToDataAccessScopeDeniedDataAccessLabelIngestionLabelPtrOutputWithContext(context.Background())
+}
+
+func (o DataAccessScopeDeniedDataAccessLabelIngestionLabelOutput) ToDataAccessScopeDeniedDataAccessLabelIngestionLabelPtrOutputWithContext(ctx context.Context) DataAccessScopeDeniedDataAccessLabelIngestionLabelPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataAccessScopeDeniedDataAccessLabelIngestionLabel) *DataAccessScopeDeniedDataAccessLabelIngestionLabel {
+		return &v
+	}).(DataAccessScopeDeniedDataAccessLabelIngestionLabelPtrOutput)
+}
+
+// Required. The key of the ingestion label. Always required.
+func (o DataAccessScopeDeniedDataAccessLabelIngestionLabelOutput) IngestionLabelKey() pulumi.StringOutput {
+	return o.ApplyT(func(v DataAccessScopeDeniedDataAccessLabelIngestionLabel) string { return v.IngestionLabelKey }).(pulumi.StringOutput)
+}
+
+// Optional. The value of the ingestion label. Optional. An object
+// with no provided value and some key provided would match
+// against the given key and ANY value.
+func (o DataAccessScopeDeniedDataAccessLabelIngestionLabelOutput) IngestionLabelValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DataAccessScopeDeniedDataAccessLabelIngestionLabel) *string { return v.IngestionLabelValue }).(pulumi.StringPtrOutput)
+}
+
+type DataAccessScopeDeniedDataAccessLabelIngestionLabelPtrOutput struct{ *pulumi.OutputState }
+
+func (DataAccessScopeDeniedDataAccessLabelIngestionLabelPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataAccessScopeDeniedDataAccessLabelIngestionLabel)(nil)).Elem()
+}
+
+func (o DataAccessScopeDeniedDataAccessLabelIngestionLabelPtrOutput) ToDataAccessScopeDeniedDataAccessLabelIngestionLabelPtrOutput() DataAccessScopeDeniedDataAccessLabelIngestionLabelPtrOutput {
+	return o
+}
+
+func (o DataAccessScopeDeniedDataAccessLabelIngestionLabelPtrOutput) ToDataAccessScopeDeniedDataAccessLabelIngestionLabelPtrOutputWithContext(ctx context.Context) DataAccessScopeDeniedDataAccessLabelIngestionLabelPtrOutput {
+	return o
+}
+
+func (o DataAccessScopeDeniedDataAccessLabelIngestionLabelPtrOutput) Elem() DataAccessScopeDeniedDataAccessLabelIngestionLabelOutput {
+	return o.ApplyT(func(v *DataAccessScopeDeniedDataAccessLabelIngestionLabel) DataAccessScopeDeniedDataAccessLabelIngestionLabel {
+		if v != nil {
+			return *v
+		}
+		var ret DataAccessScopeDeniedDataAccessLabelIngestionLabel
+		return ret
+	}).(DataAccessScopeDeniedDataAccessLabelIngestionLabelOutput)
+}
+
+// Required. The key of the ingestion label. Always required.
+func (o DataAccessScopeDeniedDataAccessLabelIngestionLabelPtrOutput) IngestionLabelKey() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataAccessScopeDeniedDataAccessLabelIngestionLabel) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.IngestionLabelKey
+	}).(pulumi.StringPtrOutput)
+}
+
+// Optional. The value of the ingestion label. Optional. An object
+// with no provided value and some key provided would match
+// against the given key and ANY value.
+func (o DataAccessScopeDeniedDataAccessLabelIngestionLabelPtrOutput) IngestionLabelValue() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DataAccessScopeDeniedDataAccessLabelIngestionLabel) *string {
+		if v == nil {
+			return nil
+		}
+		return v.IngestionLabelValue
+	}).(pulumi.StringPtrOutput)
+}
+
 type WatchlistEntityCount struct {
 	// (Output)
 	// Output only. Count of asset type entities in the watchlist.
@@ -526,6 +1166,14 @@ func (o WatchlistWatchlistUserPreferencesPtrOutput) Pinned() pulumi.BoolPtrOutpu
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAccessScopeAllowedDataAccessLabelInput)(nil)).Elem(), DataAccessScopeAllowedDataAccessLabelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAccessScopeAllowedDataAccessLabelArrayInput)(nil)).Elem(), DataAccessScopeAllowedDataAccessLabelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAccessScopeAllowedDataAccessLabelIngestionLabelInput)(nil)).Elem(), DataAccessScopeAllowedDataAccessLabelIngestionLabelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAccessScopeAllowedDataAccessLabelIngestionLabelPtrInput)(nil)).Elem(), DataAccessScopeAllowedDataAccessLabelIngestionLabelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAccessScopeDeniedDataAccessLabelInput)(nil)).Elem(), DataAccessScopeDeniedDataAccessLabelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAccessScopeDeniedDataAccessLabelArrayInput)(nil)).Elem(), DataAccessScopeDeniedDataAccessLabelArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAccessScopeDeniedDataAccessLabelIngestionLabelInput)(nil)).Elem(), DataAccessScopeDeniedDataAccessLabelIngestionLabelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataAccessScopeDeniedDataAccessLabelIngestionLabelPtrInput)(nil)).Elem(), DataAccessScopeDeniedDataAccessLabelIngestionLabelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WatchlistEntityCountInput)(nil)).Elem(), WatchlistEntityCountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WatchlistEntityCountArrayInput)(nil)).Elem(), WatchlistEntityCountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WatchlistEntityPopulationMechanismInput)(nil)).Elem(), WatchlistEntityPopulationMechanismArgs{})
@@ -534,6 +1182,14 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*WatchlistEntityPopulationMechanismManualPtrInput)(nil)).Elem(), WatchlistEntityPopulationMechanismManualArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WatchlistWatchlistUserPreferencesInput)(nil)).Elem(), WatchlistWatchlistUserPreferencesArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WatchlistWatchlistUserPreferencesPtrInput)(nil)).Elem(), WatchlistWatchlistUserPreferencesArgs{})
+	pulumi.RegisterOutputType(DataAccessScopeAllowedDataAccessLabelOutput{})
+	pulumi.RegisterOutputType(DataAccessScopeAllowedDataAccessLabelArrayOutput{})
+	pulumi.RegisterOutputType(DataAccessScopeAllowedDataAccessLabelIngestionLabelOutput{})
+	pulumi.RegisterOutputType(DataAccessScopeAllowedDataAccessLabelIngestionLabelPtrOutput{})
+	pulumi.RegisterOutputType(DataAccessScopeDeniedDataAccessLabelOutput{})
+	pulumi.RegisterOutputType(DataAccessScopeDeniedDataAccessLabelArrayOutput{})
+	pulumi.RegisterOutputType(DataAccessScopeDeniedDataAccessLabelIngestionLabelOutput{})
+	pulumi.RegisterOutputType(DataAccessScopeDeniedDataAccessLabelIngestionLabelPtrOutput{})
 	pulumi.RegisterOutputType(WatchlistEntityCountOutput{})
 	pulumi.RegisterOutputType(WatchlistEntityCountArrayOutput{})
 	pulumi.RegisterOutputType(WatchlistEntityPopulationMechanismOutput{})

@@ -3743,7 +3743,7 @@ class BackendServiceSecuritySettings(dict):
                Structure is documented below.
                
                
-               <a name="nested_aws_v4_authentication"></a>The `aws_v4_authentication` block supports:
+               <a name="nested_security_settings_aws_v4_authentication"></a>The `aws_v4_authentication` block supports:
         :param str client_tls_policy: ClientTlsPolicy is a resource that specifies how a client should authenticate
                connections to backends of a service. This resource itself does not affect
                configuration unless it is attached to a backend service resource.
@@ -3767,7 +3767,7 @@ class BackendServiceSecuritySettings(dict):
         Structure is documented below.
 
 
-        <a name="nested_aws_v4_authentication"></a>The `aws_v4_authentication` block supports:
+        <a name="nested_security_settings_aws_v4_authentication"></a>The `aws_v4_authentication` block supports:
         """
         return pulumi.get(self, "aws_v4_authentication")
 
@@ -4643,7 +4643,7 @@ class FirewallPolicyRuleMatch(dict):
         :param Sequence[str] src_threat_intelligences: Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
                
                
-               <a name="nested_layer4_configs"></a>The `layer4_configs` block supports:
+               <a name="nested_match_layer4_configs"></a>The `layer4_configs` block supports:
         """
         pulumi.set(__self__, "layer4_configs", layer4_configs)
         if dest_address_groups is not None:
@@ -4755,7 +4755,7 @@ class FirewallPolicyRuleMatch(dict):
         Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
 
 
-        <a name="nested_layer4_configs"></a>The `layer4_configs` block supports:
+        <a name="nested_match_layer4_configs"></a>The `layer4_configs` block supports:
         """
         return pulumi.get(self, "src_threat_intelligences")
 
@@ -5117,7 +5117,7 @@ class FirewallPolicyWithRulesPredefinedRuleMatch(dict):
                Structure is documented below.
                
                
-               <a name="nested_layer4_config"></a>The `layer4_config` block supports:
+               <a name="nested_rule_rule_match_layer4_config"></a>The `layer4_config` block supports:
         :param Sequence[str] src_address_groups: Address groups which should be matched against the traffic source.
                Maximum number of source address groups is 10.
         :param Sequence[str] src_fqdns: Fully Qualified Domain Name (FQDN) which should be matched against
@@ -5209,7 +5209,7 @@ class FirewallPolicyWithRulesPredefinedRuleMatch(dict):
         Structure is documented below.
 
 
-        <a name="nested_layer4_config"></a>The `layer4_config` block supports:
+        <a name="nested_rule_rule_match_layer4_config"></a>The `layer4_config` block supports:
         """
         return pulumi.get(self, "layer4_configs")
 
@@ -5600,7 +5600,7 @@ class FirewallPolicyWithRulesRuleMatch(dict):
                Structure is documented below.
                
                
-               <a name="nested_layer4_config"></a>The `layer4_config` block supports:
+               <a name="nested_rule_rule_match_layer4_config"></a>The `layer4_config` block supports:
         :param Sequence[str] dest_address_groups: Address groups which should be matched against the traffic destination.
                Maximum number of destination address groups is 10.
         :param Sequence[str] dest_fqdns: Fully Qualified Domain Name (FQDN) which should be matched against
@@ -5656,7 +5656,7 @@ class FirewallPolicyWithRulesRuleMatch(dict):
         Structure is documented below.
 
 
-        <a name="nested_layer4_config"></a>The `layer4_config` block supports:
+        <a name="nested_rule_rule_match_layer4_config"></a>The `layer4_config` block supports:
         """
         return pulumi.get(self, "layer4_configs")
 
@@ -16256,7 +16256,7 @@ class NetworkFirewallPolicyRuleMatch(dict):
         :param Sequence[str] src_threat_intelligences: Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
                
                
-               <a name="nested_layer4_configs"></a>The `layer4_configs` block supports:
+               <a name="nested_match_layer4_configs"></a>The `layer4_configs` block supports:
         """
         pulumi.set(__self__, "layer4_configs", layer4_configs)
         if dest_address_groups is not None:
@@ -16379,7 +16379,7 @@ class NetworkFirewallPolicyRuleMatch(dict):
         Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
 
 
-        <a name="nested_layer4_configs"></a>The `layer4_configs` block supports:
+        <a name="nested_match_layer4_configs"></a>The `layer4_configs` block supports:
         """
         return pulumi.get(self, "src_threat_intelligences")
 
@@ -16846,7 +16846,7 @@ class NetworkFirewallPolicyWithRulesPredefinedRuleMatch(dict):
                Structure is documented below.
                
                
-               <a name="nested_layer4_config"></a>The `layer4_config` block supports:
+               <a name="nested_rule_rule_match_layer4_config"></a>The `layer4_config` block supports:
         :param Sequence[str] src_threat_intelligences: Names of Network Threat Intelligence lists.
                The IPs in these lists will be matched against traffic source.
         """
@@ -16981,7 +16981,7 @@ class NetworkFirewallPolicyWithRulesPredefinedRuleMatch(dict):
         Structure is documented below.
 
 
-        <a name="nested_layer4_config"></a>The `layer4_config` block supports:
+        <a name="nested_rule_rule_match_layer4_config"></a>The `layer4_config` block supports:
         """
         return pulumi.get(self, "src_secure_tags")
 
@@ -17463,7 +17463,7 @@ class NetworkFirewallPolicyWithRulesRuleMatch(dict):
                Structure is documented below.
                
                
-               <a name="nested_layer4_config"></a>The `layer4_config` block supports:
+               <a name="nested_rule_rule_match_layer4_config"></a>The `layer4_config` block supports:
         :param Sequence[str] src_threat_intelligences: Names of Network Threat Intelligence lists.
                The IPs in these lists will be matched against traffic source.
         """
@@ -17597,7 +17597,7 @@ class NetworkFirewallPolicyWithRulesRuleMatch(dict):
         Structure is documented below.
 
 
-        <a name="nested_layer4_config"></a>The `layer4_config` block supports:
+        <a name="nested_rule_rule_match_layer4_config"></a>The `layer4_config` block supports:
         """
         return pulumi.get(self, "src_secure_tags")
 
@@ -18293,7 +18293,7 @@ class OrganizationSecurityPolicyRuleMatchConfig(dict):
                Structure is documented below.
                
                
-               <a name="nested_layer4_config"></a>The `layer4_config` block supports:
+               <a name="nested_match_config_layer4_config"></a>The `layer4_config` block supports:
         :param Sequence[str] dest_ip_ranges: Destination IP address range in CIDR format. Required for
                EGRESS rules.
         :param Sequence[str] src_ip_ranges: Source IP address range in CIDR format. Required for
@@ -18313,7 +18313,7 @@ class OrganizationSecurityPolicyRuleMatchConfig(dict):
         Structure is documented below.
 
 
-        <a name="nested_layer4_config"></a>The `layer4_config` block supports:
+        <a name="nested_match_config_layer4_config"></a>The `layer4_config` block supports:
         """
         return pulumi.get(self, "layer4_configs")
 
@@ -25951,7 +25951,7 @@ class RegionNetworkFirewallPolicyRuleMatch(dict):
         :param Sequence[str] src_threat_intelligences: Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
                
                
-               <a name="nested_layer4_configs"></a>The `layer4_configs` block supports:
+               <a name="nested_match_layer4_configs"></a>The `layer4_configs` block supports:
         """
         pulumi.set(__self__, "layer4_configs", layer4_configs)
         if dest_address_groups is not None:
@@ -26074,7 +26074,7 @@ class RegionNetworkFirewallPolicyRuleMatch(dict):
         Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
 
 
-        <a name="nested_layer4_configs"></a>The `layer4_configs` block supports:
+        <a name="nested_match_layer4_configs"></a>The `layer4_configs` block supports:
         """
         return pulumi.get(self, "src_threat_intelligences")
 
@@ -26541,7 +26541,7 @@ class RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatch(dict):
                Structure is documented below.
                
                
-               <a name="nested_layer4_config"></a>The `layer4_config` block supports:
+               <a name="nested_rule_rule_match_layer4_config"></a>The `layer4_config` block supports:
         :param Sequence[str] src_threat_intelligences: Names of Network Threat Intelligence lists.
                The IPs in these lists will be matched against traffic source.
         """
@@ -26676,7 +26676,7 @@ class RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatch(dict):
         Structure is documented below.
 
 
-        <a name="nested_layer4_config"></a>The `layer4_config` block supports:
+        <a name="nested_rule_rule_match_layer4_config"></a>The `layer4_config` block supports:
         """
         return pulumi.get(self, "src_secure_tags")
 
@@ -27158,7 +27158,7 @@ class RegionNetworkFirewallPolicyWithRulesRuleMatch(dict):
                Structure is documented below.
                
                
-               <a name="nested_layer4_config"></a>The `layer4_config` block supports:
+               <a name="nested_rule_rule_match_layer4_config"></a>The `layer4_config` block supports:
         :param Sequence[str] src_threat_intelligences: Names of Network Threat Intelligence lists.
                The IPs in these lists will be matched against traffic source.
         """
@@ -27292,7 +27292,7 @@ class RegionNetworkFirewallPolicyWithRulesRuleMatch(dict):
         Structure is documented below.
 
 
-        <a name="nested_layer4_config"></a>The `layer4_config` block supports:
+        <a name="nested_rule_rule_match_layer4_config"></a>The `layer4_config` block supports:
         """
         return pulumi.get(self, "src_secure_tags")
 

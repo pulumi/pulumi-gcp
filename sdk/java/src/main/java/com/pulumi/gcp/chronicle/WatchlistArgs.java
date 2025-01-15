@@ -123,24 +123,20 @@ public final class WatchlistArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional. The ID to use for the watchlist,
-     * which will become the final component of the watchlist&#39;s resource name.
-     * This value should be 4-63 characters, and valid characters
-     * are /a-z-/.
+     * Optional. The ID to use for the watchlist, which will become the final component of the watchlist&#39;s resource name. This
+     * value should be 4-63 characters, and valid characters are /a-z-/.
      * 
      */
-    @Import(name="watchlistId", required=true)
-    private Output<String> watchlistId;
+    @Import(name="watchlistId")
+    private @Nullable Output<String> watchlistId;
 
     /**
-     * @return Optional. The ID to use for the watchlist,
-     * which will become the final component of the watchlist&#39;s resource name.
-     * This value should be 4-63 characters, and valid characters
-     * are /a-z-/.
+     * @return Optional. The ID to use for the watchlist, which will become the final component of the watchlist&#39;s resource name. This
+     * value should be 4-63 characters, and valid characters are /a-z-/.
      * 
      */
-    public Output<String> watchlistId() {
-        return this.watchlistId;
+    public Optional<Output<String>> watchlistId() {
+        return Optional.ofNullable(this.watchlistId);
     }
 
     /**
@@ -332,24 +328,20 @@ public final class WatchlistArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param watchlistId Optional. The ID to use for the watchlist,
-         * which will become the final component of the watchlist&#39;s resource name.
-         * This value should be 4-63 characters, and valid characters
-         * are /a-z-/.
+         * @param watchlistId Optional. The ID to use for the watchlist, which will become the final component of the watchlist&#39;s resource name. This
+         * value should be 4-63 characters, and valid characters are /a-z-/.
          * 
          * @return builder
          * 
          */
-        public Builder watchlistId(Output<String> watchlistId) {
+        public Builder watchlistId(@Nullable Output<String> watchlistId) {
             $.watchlistId = watchlistId;
             return this;
         }
 
         /**
-         * @param watchlistId Optional. The ID to use for the watchlist,
-         * which will become the final component of the watchlist&#39;s resource name.
-         * This value should be 4-63 characters, and valid characters
-         * are /a-z-/.
+         * @param watchlistId Optional. The ID to use for the watchlist, which will become the final component of the watchlist&#39;s resource name. This
+         * value should be 4-63 characters, and valid characters are /a-z-/.
          * 
          * @return builder
          * 
@@ -391,9 +383,6 @@ public final class WatchlistArgs extends com.pulumi.resources.ResourceArgs {
             }
             if ($.location == null) {
                 throw new MissingRequiredPropertyException("WatchlistArgs", "location");
-            }
-            if ($.watchlistId == null) {
-                throw new MissingRequiredPropertyException("WatchlistArgs", "watchlistId");
             }
             return $;
         }

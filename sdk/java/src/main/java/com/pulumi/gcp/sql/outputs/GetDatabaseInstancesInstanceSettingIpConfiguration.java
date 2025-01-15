@@ -46,6 +46,11 @@ public final class GetDatabaseInstancesInstanceSettingIpConfiguration {
      */
     private String serverCaMode;
     /**
+     * @return The resource name of the server CA pool for an instance with &#34;CUSTOMER_MANAGED_CAS_CA&#34; as the &#34;server_ca_mode&#34;.
+     * 
+     */
+    private String serverCaPool;
+    /**
      * @return Specify how SSL connection should be enforced in DB connections.
      * 
      */
@@ -98,6 +103,13 @@ public final class GetDatabaseInstancesInstanceSettingIpConfiguration {
         return this.serverCaMode;
     }
     /**
+     * @return The resource name of the server CA pool for an instance with &#34;CUSTOMER_MANAGED_CAS_CA&#34; as the &#34;server_ca_mode&#34;.
+     * 
+     */
+    public String serverCaPool() {
+        return this.serverCaPool;
+    }
+    /**
      * @return Specify how SSL connection should be enforced in DB connections.
      * 
      */
@@ -121,6 +133,7 @@ public final class GetDatabaseInstancesInstanceSettingIpConfiguration {
         private String privateNetwork;
         private List<GetDatabaseInstancesInstanceSettingIpConfigurationPscConfig> pscConfigs;
         private String serverCaMode;
+        private String serverCaPool;
         private String sslMode;
         public Builder() {}
         public Builder(GetDatabaseInstancesInstanceSettingIpConfiguration defaults) {
@@ -132,6 +145,7 @@ public final class GetDatabaseInstancesInstanceSettingIpConfiguration {
     	      this.privateNetwork = defaults.privateNetwork;
     	      this.pscConfigs = defaults.pscConfigs;
     	      this.serverCaMode = defaults.serverCaMode;
+    	      this.serverCaPool = defaults.serverCaPool;
     	      this.sslMode = defaults.sslMode;
         }
 
@@ -198,6 +212,14 @@ public final class GetDatabaseInstancesInstanceSettingIpConfiguration {
             return this;
         }
         @CustomType.Setter
+        public Builder serverCaPool(String serverCaPool) {
+            if (serverCaPool == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstanceSettingIpConfiguration", "serverCaPool");
+            }
+            this.serverCaPool = serverCaPool;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sslMode(String sslMode) {
             if (sslMode == null) {
               throw new MissingRequiredPropertyException("GetDatabaseInstancesInstanceSettingIpConfiguration", "sslMode");
@@ -214,6 +236,7 @@ public final class GetDatabaseInstancesInstanceSettingIpConfiguration {
             _resultValue.privateNetwork = privateNetwork;
             _resultValue.pscConfigs = pscConfigs;
             _resultValue.serverCaMode = serverCaMode;
+            _resultValue.serverCaPool = serverCaPool;
             _resultValue.sslMode = sslMode;
             return _resultValue;
         }

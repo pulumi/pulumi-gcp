@@ -19,7 +19,7 @@ public final class VMwareClusterLoadBalancerVipConfig {
     /**
      * @return The VIP which you previously set aside for ingress traffic into this cluster.
      * 
-     * &lt;a name=&#34;nested_f5_config&#34;&gt;&lt;/a&gt;The `f5_config` block supports:
+     * &lt;a name=&#34;nested_load_balancer_f5_config&#34;&gt;&lt;/a&gt;The `f5_config` block supports:
      * 
      */
     private @Nullable String ingressVip;
@@ -35,7 +35,7 @@ public final class VMwareClusterLoadBalancerVipConfig {
     /**
      * @return The VIP which you previously set aside for ingress traffic into this cluster.
      * 
-     * &lt;a name=&#34;nested_f5_config&#34;&gt;&lt;/a&gt;The `f5_config` block supports:
+     * &lt;a name=&#34;nested_load_balancer_f5_config&#34;&gt;&lt;/a&gt;The `f5_config` block supports:
      * 
      */
     public Optional<String> ingressVip() {

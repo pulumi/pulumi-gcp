@@ -10,7 +10,11 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.developerconnect.ConnectionArgs;
 import com.pulumi.gcp.developerconnect.inputs.ConnectionState;
+import com.pulumi.gcp.developerconnect.outputs.ConnectionCryptoKeyConfig;
 import com.pulumi.gcp.developerconnect.outputs.ConnectionGithubConfig;
+import com.pulumi.gcp.developerconnect.outputs.ConnectionGithubEnterpriseConfig;
+import com.pulumi.gcp.developerconnect.outputs.ConnectionGitlabConfig;
+import com.pulumi.gcp.developerconnect.outputs.ConnectionGitlabEnterpriseConfig;
 import com.pulumi.gcp.developerconnect.outputs.ConnectionInstallationState;
 import java.lang.Boolean;
 import java.lang.String;
@@ -20,6 +24,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * A connection for GitHub, GitHub Enterprise, GitLab, and GitLab Enterprise.
+ * 
  * ## Example Usage
  * 
  * ### Developer Connect Connection New
@@ -210,7 +216,368 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Developer Connect Connection Github
  * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.developerconnect.Connection;
+ * import com.pulumi.gcp.developerconnect.ConnectionArgs;
+ * import com.pulumi.gcp.developerconnect.inputs.ConnectionGithubConfigArgs;
+ * import com.pulumi.gcp.developerconnect.inputs.ConnectionGithubConfigAuthorizerCredentialArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var my_connection = new Connection("my-connection", ConnectionArgs.builder()
+ *             .location("us-central1")
+ *             .connectionId("tf-test-connection")
+ *             .githubConfig(ConnectionGithubConfigArgs.builder()
+ *                 .githubApp("DEVELOPER_CONNECT")
+ *                 .authorizerCredential(ConnectionGithubConfigAuthorizerCredentialArgs.builder()
+ *                     .oauthTokenSecretVersion("projects/devconnect-terraform-creds/secrets/tf-test-do-not-change-github-oauthtoken-e0b9e7/versions/1")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Developer Connect Connection Github Doc
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.secretmanager.Secret;
+ * import com.pulumi.gcp.secretmanager.SecretArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationAutoArgs;
+ * import com.pulumi.gcp.secretmanager.SecretVersion;
+ * import com.pulumi.gcp.secretmanager.SecretVersionArgs;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+ * import com.pulumi.gcp.secretmanager.SecretIamPolicy;
+ * import com.pulumi.gcp.secretmanager.SecretIamPolicyArgs;
+ * import com.pulumi.gcp.developerconnect.Connection;
+ * import com.pulumi.gcp.developerconnect.ConnectionArgs;
+ * import com.pulumi.gcp.developerconnect.inputs.ConnectionGithubConfigArgs;
+ * import com.pulumi.gcp.developerconnect.inputs.ConnectionGithubConfigAuthorizerCredentialArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var github_token_secret = new Secret("github-token-secret", SecretArgs.builder()
+ *             .secretId("github-token-secret")
+ *             .replication(SecretReplicationArgs.builder()
+ *                 .auto()
+ *                 .build())
+ *             .build());
+ * 
+ *         var github_token_secret_version = new SecretVersion("github-token-secret-version", SecretVersionArgs.builder()
+ *             .secret(github_token_secret.id())
+ *             .secretData(StdFunctions.file(FileArgs.builder()
+ *                 .input("my-github-token.txt")
+ *                 .build()).result())
+ *             .build());
+ * 
+ *         final var p4sa-secretAccessor = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+ *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *                 .role("roles/secretmanager.secretAccessor")
+ *                 .members("serviceAccount:service-123456789}{@literal @}{@code gcp-sa-devconnect.iam.gserviceaccount.com")
+ *                 .build())
+ *             .build());
+ * 
+ *         var policy = new SecretIamPolicy("policy", SecretIamPolicyArgs.builder()
+ *             .secretId(github_token_secret.secretId())
+ *             .policyData(p4sa_secretAccessor.policyData())
+ *             .build());
+ * 
+ *         var my_connection = new Connection("my-connection", ConnectionArgs.builder()
+ *             .location("us-central1")
+ *             .connectionId("my-connection")
+ *             .githubConfig(ConnectionGithubConfigArgs.builder()
+ *                 .githubApp("DEVELOPER_CONNECT")
+ *                 .appInstallationId(123123)
+ *                 .authorizerCredential(ConnectionGithubConfigAuthorizerCredentialArgs.builder()
+ *                     .oauthTokenSecretVersion(github_token_secret_version.id())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Developer Connect Connection Github Enterprise
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.developerconnect.Connection;
+ * import com.pulumi.gcp.developerconnect.ConnectionArgs;
+ * import com.pulumi.gcp.developerconnect.inputs.ConnectionGithubEnterpriseConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var my_connection = new Connection("my-connection", ConnectionArgs.builder()
+ *             .location("us-central1")
+ *             .connectionId("tf-test-connection")
+ *             .githubEnterpriseConfig(ConnectionGithubEnterpriseConfigArgs.builder()
+ *                 .hostUri("https://ghe.proctor-staging-test.com")
+ *                 .appId(864434)
+ *                 .privateKeySecretVersion("projects/devconnect-terraform-creds/secrets/tf-test-ghe-do-not-change-ghe-private-key-f522d2/versions/latest")
+ *                 .webhookSecretSecretVersion("projects/devconnect-terraform-creds/secrets/tf-test-ghe-do-not-change-ghe-webhook-secret-3c806f/versions/latest")
+ *                 .appInstallationId(837537)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Developer Connect Connection Github Enterprise Doc
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.secretmanager.Secret;
+ * import com.pulumi.gcp.secretmanager.SecretArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationArgs;
+ * import com.pulumi.gcp.secretmanager.inputs.SecretReplicationAutoArgs;
+ * import com.pulumi.gcp.secretmanager.SecretVersion;
+ * import com.pulumi.gcp.secretmanager.SecretVersionArgs;
+ * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+ * import com.pulumi.gcp.organizations.inputs.GetIAMPolicyArgs;
+ * import com.pulumi.gcp.secretmanager.SecretIamPolicy;
+ * import com.pulumi.gcp.secretmanager.SecretIamPolicyArgs;
+ * import com.pulumi.gcp.developerconnect.Connection;
+ * import com.pulumi.gcp.developerconnect.ConnectionArgs;
+ * import com.pulumi.gcp.developerconnect.inputs.ConnectionGithubEnterpriseConfigArgs;
+ * import com.pulumi.resources.CustomResourceOptions;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var private_key_secret = new Secret("private-key-secret", SecretArgs.builder()
+ *             .secretId("ghe-pk-secret")
+ *             .replication(SecretReplicationArgs.builder()
+ *                 .auto()
+ *                 .build())
+ *             .build());
+ * 
+ *         var private_key_secret_version = new SecretVersion("private-key-secret-version", SecretVersionArgs.builder()
+ *             .secret(private_key_secret.id())
+ *             .secretData(StdFunctions.file(FileArgs.builder()
+ *                 .input("private-key.pem")
+ *                 .build()).result())
+ *             .build());
+ * 
+ *         var webhook_secret_secret = new Secret("webhook-secret-secret", SecretArgs.builder()
+ *             .secretId("ghe-token-secret")
+ *             .replication(SecretReplicationArgs.builder()
+ *                 .auto()
+ *                 .build())
+ *             .build());
+ * 
+ *         var webhook_secret_secret_version = new SecretVersion("webhook-secret-secret-version", SecretVersionArgs.builder()
+ *             .secret(webhook_secret_secret.id())
+ *             .secretData("<webhook-secret-data>")
+ *             .build());
+ * 
+ *         final var p4sa-secretAccessor = OrganizationsFunctions.getIAMPolicy(GetIAMPolicyArgs.builder()
+ *             .bindings(GetIAMPolicyBindingArgs.builder()
+ *                 .role("roles/secretmanager.secretAccessor")
+ *                 .members("serviceAccount:service-123456789}{@literal @}{@code gcp-sa-devconnect.iam.gserviceaccount.com")
+ *                 .build())
+ *             .build());
+ * 
+ *         var policy_pk = new SecretIamPolicy("policy-pk", SecretIamPolicyArgs.builder()
+ *             .secretId(private_key_secret.secretId())
+ *             .policyData(p4sa_secretAccessor.policyData())
+ *             .build());
+ * 
+ *         var policy_whs = new SecretIamPolicy("policy-whs", SecretIamPolicyArgs.builder()
+ *             .secretId(webhook_secret_secret.secretId())
+ *             .policyData(p4sa_secretAccessor.policyData())
+ *             .build());
+ * 
+ *         var my_connection = new Connection("my-connection", ConnectionArgs.builder()
+ *             .location("us-central1")
+ *             .connectionId("my-connection")
+ *             .githubEnterpriseConfig(ConnectionGithubEnterpriseConfigArgs.builder()
+ *                 .hostUri("https://ghe.com")
+ *                 .privateKeySecretVersion(private_key_secret_version.id())
+ *                 .webhookSecretSecretVersion(webhook_secret_secret_version.id())
+ *                 .appId(100)
+ *                 .appInstallationId(123123)
+ *                 .build())
+ *             .build(), CustomResourceOptions.builder()
+ *                 .dependsOn(                
+ *                     policy_pk,
+ *                     policy_whs)
+ *                 .build());
+ * 
+ *     }}{@code
+ * }}{@code
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Developer Connect Connection Gitlab
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.developerconnect.Connection;
+ * import com.pulumi.gcp.developerconnect.ConnectionArgs;
+ * import com.pulumi.gcp.developerconnect.inputs.ConnectionGitlabConfigArgs;
+ * import com.pulumi.gcp.developerconnect.inputs.ConnectionGitlabConfigReadAuthorizerCredentialArgs;
+ * import com.pulumi.gcp.developerconnect.inputs.ConnectionGitlabConfigAuthorizerCredentialArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var my_connection = new Connection("my-connection", ConnectionArgs.builder()
+ *             .location("us-central1")
+ *             .connectionId("tf-test-connection")
+ *             .gitlabConfig(ConnectionGitlabConfigArgs.builder()
+ *                 .webhookSecretSecretVersion("projects/devconnect-terraform-creds/secrets/gitlab-webhook/versions/latest")
+ *                 .readAuthorizerCredential(ConnectionGitlabConfigReadAuthorizerCredentialArgs.builder()
+ *                     .userTokenSecretVersion("projects/devconnect-terraform-creds/secrets/gitlab-read-cred/versions/latest")
+ *                     .build())
+ *                 .authorizerCredential(ConnectionGitlabConfigAuthorizerCredentialArgs.builder()
+ *                     .userTokenSecretVersion("projects/devconnect-terraform-creds/secrets/gitlab-auth-cred/versions/latest")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Developer Connect Connection Gitlab Enterprise
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.developerconnect.Connection;
+ * import com.pulumi.gcp.developerconnect.ConnectionArgs;
+ * import com.pulumi.gcp.developerconnect.inputs.ConnectionGitlabEnterpriseConfigArgs;
+ * import com.pulumi.gcp.developerconnect.inputs.ConnectionGitlabEnterpriseConfigReadAuthorizerCredentialArgs;
+ * import com.pulumi.gcp.developerconnect.inputs.ConnectionGitlabEnterpriseConfigAuthorizerCredentialArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var my_connection = new Connection("my-connection", ConnectionArgs.builder()
+ *             .location("us-central1")
+ *             .connectionId("tf-test-connection")
+ *             .gitlabEnterpriseConfig(ConnectionGitlabEnterpriseConfigArgs.builder()
+ *                 .hostUri("https://gle-us-central1.gcb-test.com")
+ *                 .webhookSecretSecretVersion("projects/devconnect-terraform-creds/secrets/gitlab-enterprise-webhook/versions/latest")
+ *                 .readAuthorizerCredential(ConnectionGitlabEnterpriseConfigReadAuthorizerCredentialArgs.builder()
+ *                     .userTokenSecretVersion("projects/devconnect-terraform-creds/secrets/gitlab-enterprise-read-cred/versions/latest")
+ *                     .build())
+ *                 .authorizerCredential(ConnectionGitlabEnterpriseConfigAuthorizerCredentialArgs.builder()
+ *                     .userTokenSecretVersion("projects/devconnect-terraform-creds/secrets/gitlab-enterprise-auth-cred/versions/latest")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ## Import
  * 
  * Connection can be imported using any of these accepted formats:
@@ -240,7 +607,6 @@ import javax.annotation.Nullable;
 public class Connection extends com.pulumi.resources.CustomResource {
     /**
      * Optional. Allows clients to store small amounts of arbitrary data.
-     * 
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
@@ -250,7 +616,6 @@ public class Connection extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Optional. Allows clients to store small amounts of arbitrary data.
-     * 
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
@@ -259,8 +624,9 @@ public class Connection extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.annotations);
     }
     /**
-     * Required. Id of the requesting object. If auto-generating Id server-side,
-     * remove this field and connection_id from the method_signature of Create RPC.
+     * Required. Id of the requesting object
+     * If auto-generating Id server-side, remove this field and
+     * connection_id from the method_signature of Create RPC
      * 
      * ***
      * 
@@ -269,8 +635,9 @@ public class Connection extends com.pulumi.resources.CustomResource {
     private Output<String> connectionId;
 
     /**
-     * @return Required. Id of the requesting object. If auto-generating Id server-side,
-     * remove this field and connection_id from the method_signature of Create RPC.
+     * @return Required. Id of the requesting object
+     * If auto-generating Id server-side, remove this field and
+     * connection_id from the method_signature of Create RPC
      * 
      * ***
      * 
@@ -293,6 +660,24 @@ public class Connection extends com.pulumi.resources.CustomResource {
         return this.createTime;
     }
     /**
+     * The crypto key configuration. This field is used by the Customer-managed
+     * encryption keys (CMEK) feature.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="cryptoKeyConfig", refs={ConnectionCryptoKeyConfig.class}, tree="[0]")
+    private Output</* @Nullable */ ConnectionCryptoKeyConfig> cryptoKeyConfig;
+
+    /**
+     * @return The crypto key configuration. This field is used by the Customer-managed
+     * encryption keys (CMEK) feature.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ConnectionCryptoKeyConfig>> cryptoKeyConfig() {
+        return Codegen.optional(this.cryptoKeyConfig);
+    }
+    /**
      * Output only. [Output only] Delete timestamp
      * 
      */
@@ -307,14 +692,18 @@ public class Connection extends com.pulumi.resources.CustomResource {
         return this.deleteTime;
     }
     /**
-     * Optional. If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
+     * Optional. If disabled is set to true, functionality is disabled for this connection.
+     * Repository based API methods and webhooks processing for repositories in
+     * this connection will be disabled.
      * 
      */
     @Export(name="disabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> disabled;
 
     /**
-     * @return Optional. If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
+     * @return Optional. If disabled is set to true, functionality is disabled for this connection.
+     * Repository based API methods and webhooks processing for repositories in
+     * this connection will be disabled.
      * 
      */
     public Output<Optional<Boolean>> disabled() {
@@ -341,8 +730,8 @@ public class Connection extends com.pulumi.resources.CustomResource {
         return this.effectiveLabels;
     }
     /**
-     * Optional. This checksum is computed by the server based on the value
-     * of other fields, and may be sent on update and delete requests to ensure the
+     * Optional. This checksum is computed by the server based on the value of other
+     * fields, and may be sent on update and delete requests to ensure the
      * client has an up-to-date value before proceeding.
      * 
      */
@@ -350,8 +739,8 @@ public class Connection extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ String> etag;
 
     /**
-     * @return Optional. This checksum is computed by the server based on the value
-     * of other fields, and may be sent on update and delete requests to ensure the
+     * @return Optional. This checksum is computed by the server based on the value of other
+     * fields, and may be sent on update and delete requests to ensure the
      * client has an up-to-date value before proceeding.
      * 
      */
@@ -375,8 +764,57 @@ public class Connection extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.githubConfig);
     }
     /**
-     * Describes stage and necessary actions to be taken by the user to complete the installation.
-     * Used for GitHub and GitHub Enterprise based connections.
+     * Configuration for connections to an instance of GitHub Enterprise.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="githubEnterpriseConfig", refs={ConnectionGithubEnterpriseConfig.class}, tree="[0]")
+    private Output</* @Nullable */ ConnectionGithubEnterpriseConfig> githubEnterpriseConfig;
+
+    /**
+     * @return Configuration for connections to an instance of GitHub Enterprise.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ConnectionGithubEnterpriseConfig>> githubEnterpriseConfig() {
+        return Codegen.optional(this.githubEnterpriseConfig);
+    }
+    /**
+     * Configuration for connections to gitlab.com.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="gitlabConfig", refs={ConnectionGitlabConfig.class}, tree="[0]")
+    private Output</* @Nullable */ ConnectionGitlabConfig> gitlabConfig;
+
+    /**
+     * @return Configuration for connections to gitlab.com.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ConnectionGitlabConfig>> gitlabConfig() {
+        return Codegen.optional(this.gitlabConfig);
+    }
+    /**
+     * Configuration for connections to an instance of GitLab Enterprise.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="gitlabEnterpriseConfig", refs={ConnectionGitlabEnterpriseConfig.class}, tree="[0]")
+    private Output</* @Nullable */ ConnectionGitlabEnterpriseConfig> gitlabEnterpriseConfig;
+
+    /**
+     * @return Configuration for connections to an instance of GitLab Enterprise.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<ConnectionGitlabEnterpriseConfig>> gitlabEnterpriseConfig() {
+        return Codegen.optional(this.gitlabEnterpriseConfig);
+    }
+    /**
+     * Describes stage and necessary actions to be taken by the
+     * user to complete the installation. Used for GitHub and GitHub Enterprise
+     * based connections.
      * Structure is documented below.
      * 
      */
@@ -384,8 +822,9 @@ public class Connection extends com.pulumi.resources.CustomResource {
     private Output<List<ConnectionInstallationState>> installationStates;
 
     /**
-     * @return Describes stage and necessary actions to be taken by the user to complete the installation.
-     * Used for GitHub and GitHub Enterprise based connections.
+     * @return Describes stage and necessary actions to be taken by the
+     * user to complete the installation. Used for GitHub and GitHub Enterprise
+     * based connections.
      * Structure is documented below.
      * 
      */
@@ -394,7 +833,6 @@ public class Connection extends com.pulumi.resources.CustomResource {
     }
     /**
      * Optional. Labels as key value pairs
-     * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
@@ -404,7 +842,6 @@ public class Connection extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Optional. Labels as key value pairs
-     * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
@@ -413,18 +850,14 @@ public class Connection extends com.pulumi.resources.CustomResource {
         return Codegen.optional(this.labels);
     }
     /**
-     * Resource ID segment making up resource `name`. It identifies the resource
-     * within its parent collection as described in https://google.aip.dev/122. See documentation
-     * for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
+     * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      * 
      */
     @Export(name="location", refs={String.class}, tree="[0]")
     private Output<String> location;
 
     /**
-     * @return Resource ID segment making up resource `name`. It identifies the resource
-     * within its parent collection as described in https://google.aip.dev/122. See documentation
-     * for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
+     * @return Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      * 
      */
     public Output<String> location() {
@@ -479,16 +912,16 @@ public class Connection extends com.pulumi.resources.CustomResource {
         return this.pulumiLabels;
     }
     /**
-     * Output only. Set to true when the connection is being set up or updated
-     * in the background.
+     * Output only. Set to true when the connection is being set up or updated in the
+     * background.
      * 
      */
     @Export(name="reconciling", refs={Boolean.class}, tree="[0]")
     private Output<Boolean> reconciling;
 
     /**
-     * @return Output only. Set to true when the connection is being set up or updated
-     * in the background.
+     * @return Output only. Set to true when the connection is being set up or updated in the
+     * background.
      * 
      */
     public Output<Boolean> reconciling() {

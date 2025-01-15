@@ -25,6 +25,10 @@ __all__ = [
     'AppConnectorPrincipalInfoServiceAccountArgsDict',
     'AppGatewayAllocatedConnectionArgs',
     'AppGatewayAllocatedConnectionArgsDict',
+    'SecurityGatewayHubArgs',
+    'SecurityGatewayHubArgsDict',
+    'SecurityGatewayHubInternetGatewayArgs',
+    'SecurityGatewayHubInternetGatewayArgsDict',
 ]
 
 MYPY = False
@@ -309,5 +313,94 @@ class AppGatewayAllocatedConnectionArgs:
     @psc_uri.setter
     def psc_uri(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "psc_uri", value)
+
+
+if not MYPY:
+    class SecurityGatewayHubArgsDict(TypedDict):
+        region: pulumi.Input[str]
+        """
+        The identifier for this object. Format specified above.
+        """
+        internet_gateway: NotRequired[pulumi.Input['SecurityGatewayHubInternetGatewayArgsDict']]
+        """
+        Internet Gateway configuration.
+        Structure is documented below.
+        """
+elif False:
+    SecurityGatewayHubArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SecurityGatewayHubArgs:
+    def __init__(__self__, *,
+                 region: pulumi.Input[str],
+                 internet_gateway: Optional[pulumi.Input['SecurityGatewayHubInternetGatewayArgs']] = None):
+        """
+        :param pulumi.Input[str] region: The identifier for this object. Format specified above.
+        :param pulumi.Input['SecurityGatewayHubInternetGatewayArgs'] internet_gateway: Internet Gateway configuration.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "region", region)
+        if internet_gateway is not None:
+            pulumi.set(__self__, "internet_gateway", internet_gateway)
+
+    @property
+    @pulumi.getter
+    def region(self) -> pulumi.Input[str]:
+        """
+        The identifier for this object. Format specified above.
+        """
+        return pulumi.get(self, "region")
+
+    @region.setter
+    def region(self, value: pulumi.Input[str]):
+        pulumi.set(self, "region", value)
+
+    @property
+    @pulumi.getter(name="internetGateway")
+    def internet_gateway(self) -> Optional[pulumi.Input['SecurityGatewayHubInternetGatewayArgs']]:
+        """
+        Internet Gateway configuration.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "internet_gateway")
+
+    @internet_gateway.setter
+    def internet_gateway(self, value: Optional[pulumi.Input['SecurityGatewayHubInternetGatewayArgs']]):
+        pulumi.set(self, "internet_gateway", value)
+
+
+if not MYPY:
+    class SecurityGatewayHubInternetGatewayArgsDict(TypedDict):
+        assigned_ips: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        (Output)
+        Output only. List of IP addresses assigned to the Cloud NAT.
+        """
+elif False:
+    SecurityGatewayHubInternetGatewayArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SecurityGatewayHubInternetGatewayArgs:
+    def __init__(__self__, *,
+                 assigned_ips: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] assigned_ips: (Output)
+               Output only. List of IP addresses assigned to the Cloud NAT.
+        """
+        if assigned_ips is not None:
+            pulumi.set(__self__, "assigned_ips", assigned_ips)
+
+    @property
+    @pulumi.getter(name="assignedIps")
+    def assigned_ips(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        (Output)
+        Output only. List of IP addresses assigned to the Cloud NAT.
+        """
+        return pulumi.get(self, "assigned_ips")
+
+    @assigned_ips.setter
+    def assigned_ips(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "assigned_ips", value)
 
 

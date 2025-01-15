@@ -785,7 +785,8 @@ type SettingsAccessSettings struct {
 	// Structure is documented below.
 	CorsSettings *SettingsAccessSettingsCorsSettings `pulumi:"corsSettings"`
 	// GCIP claims and endpoint configurations for 3p identity providers.
-	// Structure is documented below.
+	// * Enabling gcipSetting significantly changes the way IAP authenticates users. Identity Platform does not support IAM, so IAP will not enforce any IAM policies for requests to your application.
+	//   Structure is documented below.
 	GcipSettings *SettingsAccessSettingsGcipSettings `pulumi:"gcipSettings"`
 	// Identity sources that IAP can use to authenticate the end user. Only one identity source
 	// can be configured. The possible values are:
@@ -824,7 +825,8 @@ type SettingsAccessSettingsArgs struct {
 	// Structure is documented below.
 	CorsSettings SettingsAccessSettingsCorsSettingsPtrInput `pulumi:"corsSettings"`
 	// GCIP claims and endpoint configurations for 3p identity providers.
-	// Structure is documented below.
+	// * Enabling gcipSetting significantly changes the way IAP authenticates users. Identity Platform does not support IAM, so IAP will not enforce any IAM policies for requests to your application.
+	//   Structure is documented below.
 	GcipSettings SettingsAccessSettingsGcipSettingsPtrInput `pulumi:"gcipSettings"`
 	// Identity sources that IAP can use to authenticate the end user. Only one identity source
 	// can be configured. The possible values are:
@@ -936,7 +938,8 @@ func (o SettingsAccessSettingsOutput) CorsSettings() SettingsAccessSettingsCorsS
 }
 
 // GCIP claims and endpoint configurations for 3p identity providers.
-// Structure is documented below.
+//   - Enabling gcipSetting significantly changes the way IAP authenticates users. Identity Platform does not support IAM, so IAP will not enforce any IAM policies for requests to your application.
+//     Structure is documented below.
 func (o SettingsAccessSettingsOutput) GcipSettings() SettingsAccessSettingsGcipSettingsPtrOutput {
 	return o.ApplyT(func(v SettingsAccessSettings) *SettingsAccessSettingsGcipSettings { return v.GcipSettings }).(SettingsAccessSettingsGcipSettingsPtrOutput)
 }
@@ -1018,7 +1021,8 @@ func (o SettingsAccessSettingsPtrOutput) CorsSettings() SettingsAccessSettingsCo
 }
 
 // GCIP claims and endpoint configurations for 3p identity providers.
-// Structure is documented below.
+//   - Enabling gcipSetting significantly changes the way IAP authenticates users. Identity Platform does not support IAM, so IAP will not enforce any IAM policies for requests to your application.
+//     Structure is documented below.
 func (o SettingsAccessSettingsPtrOutput) GcipSettings() SettingsAccessSettingsGcipSettingsPtrOutput {
 	return o.ApplyT(func(v *SettingsAccessSettings) *SettingsAccessSettingsGcipSettings {
 		if v == nil {
@@ -1559,6 +1563,7 @@ type SettingsAccessSettingsOauthSettings struct {
 	// (https://developers.google.com/identity/protocols/OpenIDConnect#hd-param)
 	// Note: IAP does not verify that the id token's hd claim matches this value
 	// since access behavior is managed by IAM policies.
+	// * loginHint setting is not a replacement for access control. Always enforce an appropriate access policy if you want to restrict access to users outside your domain.
 	LoginHint *string `pulumi:"loginHint"`
 	// List of client ids allowed to use IAP programmatically.
 	ProgrammaticClients []string `pulumi:"programmaticClients"`
@@ -1581,6 +1586,7 @@ type SettingsAccessSettingsOauthSettingsArgs struct {
 	// (https://developers.google.com/identity/protocols/OpenIDConnect#hd-param)
 	// Note: IAP does not verify that the id token's hd claim matches this value
 	// since access behavior is managed by IAM policies.
+	// * loginHint setting is not a replacement for access control. Always enforce an appropriate access policy if you want to restrict access to users outside your domain.
 	LoginHint pulumi.StringPtrInput `pulumi:"loginHint"`
 	// List of client ids allowed to use IAP programmatically.
 	ProgrammaticClients pulumi.StringArrayInput `pulumi:"programmaticClients"`
@@ -1668,6 +1674,7 @@ func (o SettingsAccessSettingsOauthSettingsOutput) ToSettingsAccessSettingsOauth
 // (https://developers.google.com/identity/protocols/OpenIDConnect#hd-param)
 // Note: IAP does not verify that the id token's hd claim matches this value
 // since access behavior is managed by IAM policies.
+// * loginHint setting is not a replacement for access control. Always enforce an appropriate access policy if you want to restrict access to users outside your domain.
 func (o SettingsAccessSettingsOauthSettingsOutput) LoginHint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v SettingsAccessSettingsOauthSettings) *string { return v.LoginHint }).(pulumi.StringPtrOutput)
 }
@@ -1706,6 +1713,7 @@ func (o SettingsAccessSettingsOauthSettingsPtrOutput) Elem() SettingsAccessSetti
 // (https://developers.google.com/identity/protocols/OpenIDConnect#hd-param)
 // Note: IAP does not verify that the id token's hd claim matches this value
 // since access behavior is managed by IAM policies.
+// * loginHint setting is not a replacement for access control. Always enforce an appropriate access policy if you want to restrict access to users outside your domain.
 func (o SettingsAccessSettingsOauthSettingsPtrOutput) LoginHint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SettingsAccessSettingsOauthSettings) *string {
 		if v == nil {
@@ -1953,7 +1961,7 @@ type SettingsAccessSettingsWorkforceIdentitySettings struct {
 	// federation services.
 	// Structure is documented below.
 	//
-	// <a name="nestedOauth2"></a>The `oauth2` block supports:
+	// <a name="nestedAccessSettingsWorkforceIdentitySettingsOauth2"></a>The `oauth2` block supports:
 	Oauth2 *SettingsAccessSettingsWorkforceIdentitySettingsOauth2 `pulumi:"oauth2"`
 	// The workforce pool resources. Only one workforce pool is accepted.
 	WorkforcePools *string `pulumi:"workforcePools"`
@@ -1975,7 +1983,7 @@ type SettingsAccessSettingsWorkforceIdentitySettingsArgs struct {
 	// federation services.
 	// Structure is documented below.
 	//
-	// <a name="nestedOauth2"></a>The `oauth2` block supports:
+	// <a name="nestedAccessSettingsWorkforceIdentitySettingsOauth2"></a>The `oauth2` block supports:
 	Oauth2 SettingsAccessSettingsWorkforceIdentitySettingsOauth2PtrInput `pulumi:"oauth2"`
 	// The workforce pool resources. Only one workforce pool is accepted.
 	WorkforcePools pulumi.StringPtrInput `pulumi:"workforcePools"`
@@ -2062,7 +2070,7 @@ func (o SettingsAccessSettingsWorkforceIdentitySettingsOutput) ToSettingsAccessS
 // federation services.
 // Structure is documented below.
 //
-// <a name="nestedOauth2"></a>The `oauth2` block supports:
+// <a name="nestedAccessSettingsWorkforceIdentitySettingsOauth2"></a>The `oauth2` block supports:
 func (o SettingsAccessSettingsWorkforceIdentitySettingsOutput) Oauth2() SettingsAccessSettingsWorkforceIdentitySettingsOauth2PtrOutput {
 	return o.ApplyT(func(v SettingsAccessSettingsWorkforceIdentitySettings) *SettingsAccessSettingsWorkforceIdentitySettingsOauth2 {
 		return v.Oauth2
@@ -2102,7 +2110,7 @@ func (o SettingsAccessSettingsWorkforceIdentitySettingsPtrOutput) Elem() Setting
 // federation services.
 // Structure is documented below.
 //
-// <a name="nestedOauth2"></a>The `oauth2` block supports:
+// <a name="nestedAccessSettingsWorkforceIdentitySettingsOauth2"></a>The `oauth2` block supports:
 func (o SettingsAccessSettingsWorkforceIdentitySettingsPtrOutput) Oauth2() SettingsAccessSettingsWorkforceIdentitySettingsOauth2PtrOutput {
 	return o.ApplyT(func(v *SettingsAccessSettingsWorkforceIdentitySettings) *SettingsAccessSettingsWorkforceIdentitySettingsOauth2 {
 		if v == nil {

@@ -69,6 +69,12 @@ namespace Pulumi.Gcp.Sql.Inputs
         public Input<string>? ServerCaMode { get; set; }
 
         /// <summary>
+        /// The resource name of the server CA pool for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `server_ca_mode`.
+        /// </summary>
+        [Input("serverCaPool")]
+        public Input<string>? ServerCaPool { get; set; }
+
+        /// <summary>
         /// Specify how SSL connection should be enforced in DB connections. Supported values are `ALLOW_UNENCRYPTED_AND_ENCRYPTED`, `ENCRYPTED_ONLY`, and `TRUSTED_CLIENT_CERTIFICATE_REQUIRED` (not supported for SQL Server). See [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1/instances#ipconfiguration) for details.
         /// </summary>
         [Input("sslMode")]

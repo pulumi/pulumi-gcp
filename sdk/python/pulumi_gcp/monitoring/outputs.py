@@ -4367,7 +4367,7 @@ class UptimeCheckConfigSyntheticMonitor(dict):
                Structure is documented below.
                
                
-               <a name="nested_cloud_function_v2"></a>The `cloud_function_v2` block supports:
+               <a name="nested_synthetic_monitor_cloud_function_v2"></a>The `cloud_function_v2` block supports:
         """
         pulumi.set(__self__, "cloud_function_v2", cloud_function_v2)
 
@@ -4379,7 +4379,7 @@ class UptimeCheckConfigSyntheticMonitor(dict):
         Structure is documented below.
 
 
-        <a name="nested_cloud_function_v2"></a>The `cloud_function_v2` block supports:
+        <a name="nested_synthetic_monitor_cloud_function_v2"></a>The `cloud_function_v2` block supports:
         """
         return pulumi.get(self, "cloud_function_v2")
 

@@ -32,6 +32,12 @@ namespace Pulumi.Gcp.Dns.Inputs
         }
 
         /// <summary>
+        /// Specifies the health check (used with external endpoints).
+        /// </summary>
+        [Input("healthCheck")]
+        public Input<string>? HealthCheck { get; set; }
+
+        /// <summary>
         /// The configuration for a failover policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
         /// Structure is documented below.
         /// </summary>

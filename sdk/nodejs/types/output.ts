@@ -4646,7 +4646,7 @@ export namespace applicationintegration {
         /**
          * Password to be used.
          *
-         * <a name="nestedOauth2AuthorizationCode"></a>The `oauth2AuthorizationCode` block supports:
+         * <a name="nestedDecryptedCredentialOauth2AuthorizationCode"></a>The `oauth2AuthorizationCode` block supports:
          */
         password?: string;
         /**
@@ -5992,6 +5992,26 @@ export namespace beyondcorp {
          * The PSC uri of an allocated connection.
          */
         pscUri: string;
+    }
+
+    export interface SecurityGatewayHub {
+        /**
+         * Internet Gateway configuration.
+         * Structure is documented below.
+         */
+        internetGateway?: outputs.beyondcorp.SecurityGatewayHubInternetGateway;
+        /**
+         * The identifier for this object. Format specified above.
+         */
+        region: string;
+    }
+
+    export interface SecurityGatewayHubInternetGateway {
+        /**
+         * (Output)
+         * Output only. List of IP addresses assigned to the Cloud NAT.
+         */
+        assignedIps: string[];
     }
 
 }
@@ -8831,7 +8851,7 @@ export namespace blockchainnodeengine {
          * Blockchain garbage collection modes. Only applicable when NodeType is FULL or ARCHIVE.
          * Possible values are: `FULL`, `ARCHIVE`.
          *
-         * <a name="nestedAdditionalEndpoints"></a>The `additionalEndpoints` block contains:
+         * <a name="nestedEthereumDetailsAdditionalEndpoints"></a>The `additionalEndpoints` block contains:
          */
         garbageCollectionMode?: string;
     }
@@ -8950,7 +8970,7 @@ export namespace certificateauthority {
         /**
          * The value of the KeyId in lowercase hexadecimal.
          *
-         * <a name="nestedX509Config"></a>The `x509Config` block supports:
+         * <a name="nestedConfigX509Config"></a>The `x509Config` block supports:
          */
         keyId?: string;
     }
@@ -10084,7 +10104,7 @@ export namespace certificateauthority {
          * Structure is documented below.
          *
          *
-         * <a name="nestedX509Config"></a>The `x509Config` block supports:
+         * <a name="nestedConfigX509Config"></a>The `x509Config` block supports:
          */
         publicKey: outputs.certificateauthority.CertificateConfigPublicKey;
         /**
@@ -11085,7 +11105,7 @@ export namespace certificatemanager {
          * Structure is documented below.
          *
          *
-         * <a name="nestedProvisioningIssue"></a>The `provisioningIssue` block contains:
+         * <a name="nestedManagedProvisioningIssue"></a>The `provisioningIssue` block contains:
          */
         authorizationAttemptInfos: outputs.certificatemanager.CertificateManagedAuthorizationAttemptInfo[];
         /**
@@ -11438,6 +11458,92 @@ export namespace certificatemanager {
 }
 
 export namespace chronicle {
+    export interface DataAccessScopeAllowedDataAccessLabel {
+        /**
+         * The asset namespace configured in the forwarder
+         * of the customer's events.
+         */
+        assetNamespace?: string;
+        /**
+         * The name of the data access label.
+         */
+        dataAccessLabel?: string;
+        /**
+         * (Output)
+         * Output only. The display name of the label.
+         * Data access label and log types's name
+         * will match the display name of the resource.
+         * The asset namespace will match the namespace itself.
+         * The ingestion key value pair will match the key of the tuple.
+         */
+        displayName: string;
+        /**
+         * Representation of an ingestion label type.
+         * Structure is documented below.
+         */
+        ingestionLabel?: outputs.chronicle.DataAccessScopeAllowedDataAccessLabelIngestionLabel;
+        /**
+         * The name of the log type.
+         */
+        logType?: string;
+    }
+
+    export interface DataAccessScopeAllowedDataAccessLabelIngestionLabel {
+        /**
+         * Required. The key of the ingestion label. Always required.
+         */
+        ingestionLabelKey: string;
+        /**
+         * Optional. The value of the ingestion label. Optional. An object
+         * with no provided value and some key provided would match
+         * against the given key and ANY value.
+         */
+        ingestionLabelValue?: string;
+    }
+
+    export interface DataAccessScopeDeniedDataAccessLabel {
+        /**
+         * The asset namespace configured in the forwarder
+         * of the customer's events.
+         */
+        assetNamespace?: string;
+        /**
+         * The name of the data access label.
+         */
+        dataAccessLabel?: string;
+        /**
+         * (Output)
+         * Output only. The display name of the label.
+         * Data access label and log types's name
+         * will match the display name of the resource.
+         * The asset namespace will match the namespace itself.
+         * The ingestion key value pair will match the key of the tuple.
+         */
+        displayName: string;
+        /**
+         * Representation of an ingestion label type.
+         * Structure is documented below.
+         */
+        ingestionLabel?: outputs.chronicle.DataAccessScopeDeniedDataAccessLabelIngestionLabel;
+        /**
+         * The name of the log type.
+         */
+        logType?: string;
+    }
+
+    export interface DataAccessScopeDeniedDataAccessLabelIngestionLabel {
+        /**
+         * Required. The key of the ingestion label. Always required.
+         */
+        ingestionLabelKey: string;
+        /**
+         * Optional. The value of the ingestion label. Optional. An object
+         * with no provided value and some key provided would match
+         * against the given key and ANY value.
+         */
+        ingestionLabelValue?: string;
+    }
+
     export interface WatchlistEntityCount {
         /**
          * (Output)
@@ -12802,7 +12908,7 @@ export namespace cloudbuild {
          * Structure is documented below.
          *
          *
-         * <a name="nestedTiming"></a>The `timing` block contains:
+         * <a name="nestedBuildArtifactsObjectsTiming"></a>The `timing` block contains:
          */
         timings: outputs.cloudbuild.TriggerBuildArtifactsObjectsTiming[];
     }
@@ -22442,7 +22548,7 @@ export namespace compute {
          * Structure is documented below.
          *
          *
-         * <a name="nestedAwsV4Authentication"></a>The `awsV4Authentication` block supports:
+         * <a name="nestedSecuritySettingsAwsV4Authentication"></a>The `awsV4Authentication` block supports:
          */
         awsV4Authentication?: outputs.compute.BackendServiceSecuritySettingsAwsV4Authentication;
         /**
@@ -22758,7 +22864,7 @@ export namespace compute {
          * Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
          *
          *
-         * <a name="nestedLayer4Configs"></a>The `layer4Configs` block supports:
+         * <a name="nestedMatchLayer4Configs"></a>The `layer4Configs` block supports:
          */
         srcThreatIntelligences?: string[];
     }
@@ -22890,7 +22996,7 @@ export namespace compute {
          * Structure is documented below.
          *
          *
-         * <a name="nestedLayer4Config"></a>The `layer4Config` block supports:
+         * <a name="nestedRuleRuleMatchLayer4Config"></a>The `layer4Config` block supports:
          */
         layer4Configs: outputs.compute.FirewallPolicyWithRulesPredefinedRuleMatchLayer4Config[];
         /**
@@ -23047,7 +23153,7 @@ export namespace compute {
          * Structure is documented below.
          *
          *
-         * <a name="nestedLayer4Config"></a>The `layer4Config` block supports:
+         * <a name="nestedRuleRuleMatchLayer4Config"></a>The `layer4Config` block supports:
          */
         layer4Configs: outputs.compute.FirewallPolicyWithRulesRuleMatchLayer4Config[];
         /**
@@ -31044,7 +31150,7 @@ export namespace compute {
          * Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
          *
          *
-         * <a name="nestedLayer4Configs"></a>The `layer4Configs` block supports:
+         * <a name="nestedMatchLayer4Configs"></a>The `layer4Configs` block supports:
          */
         srcThreatIntelligences?: string[];
     }
@@ -31241,7 +31347,7 @@ export namespace compute {
          * Structure is documented below.
          *
          *
-         * <a name="nestedLayer4Config"></a>The `layer4Config` block supports:
+         * <a name="nestedRuleRuleMatchLayer4Config"></a>The `layer4Config` block supports:
          */
         srcSecureTags: outputs.compute.NetworkFirewallPolicyWithRulesPredefinedRuleMatchSrcSecureTag[];
         /**
@@ -31447,7 +31553,7 @@ export namespace compute {
          * Structure is documented below.
          *
          *
-         * <a name="nestedLayer4Config"></a>The `layer4Config` block supports:
+         * <a name="nestedRuleRuleMatchLayer4Config"></a>The `layer4Config` block supports:
          */
         srcSecureTags?: outputs.compute.NetworkFirewallPolicyWithRulesRuleMatchSrcSecureTag[];
         /**
@@ -31657,7 +31763,7 @@ export namespace compute {
          * Structure is documented below.
          *
          *
-         * <a name="nestedLayer4Config"></a>The `layer4Config` block supports:
+         * <a name="nestedMatchConfigLayer4Config"></a>The `layer4Config` block supports:
          */
         layer4Configs: outputs.compute.OrganizationSecurityPolicyRuleMatchConfigLayer4Config[];
         /**
@@ -34034,7 +34140,7 @@ export namespace compute {
          * Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
          *
          *
-         * <a name="nestedLayer4Configs"></a>The `layer4Configs` block supports:
+         * <a name="nestedMatchLayer4Configs"></a>The `layer4Configs` block supports:
          */
         srcThreatIntelligences?: string[];
     }
@@ -34231,7 +34337,7 @@ export namespace compute {
          * Structure is documented below.
          *
          *
-         * <a name="nestedLayer4Config"></a>The `layer4Config` block supports:
+         * <a name="nestedRuleRuleMatchLayer4Config"></a>The `layer4Config` block supports:
          */
         srcSecureTags: outputs.compute.RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatchSrcSecureTag[];
         /**
@@ -34437,7 +34543,7 @@ export namespace compute {
          * Structure is documented below.
          *
          *
-         * <a name="nestedLayer4Config"></a>The `layer4Config` block supports:
+         * <a name="nestedRuleRuleMatchLayer4Config"></a>The `layer4Config` block supports:
          */
         srcSecureTags?: outputs.compute.RegionNetworkFirewallPolicyWithRulesRuleMatchSrcSecureTag[];
         /**
@@ -47989,7 +48095,7 @@ export namespace datacatalog {
          * Structure is documented below.
          *
          *
-         * <a name="nestedSampleGcsFileSpecs"></a>The `sampleGcsFileSpecs` block contains:
+         * <a name="nestedGcsFilesetSpecSampleGcsFileSpecs"></a>The `sampleGcsFileSpecs` block contains:
          */
         sampleGcsFileSpecs: outputs.datacatalog.EntryGcsFilesetSpecSampleGcsFileSpec[];
     }
@@ -60183,39 +60289,47 @@ export namespace deploymentmanager {
 }
 
 export namespace developerconnect {
+    export interface ConnectionCryptoKeyConfig {
+        /**
+         * Required. The name of the key which is used to encrypt/decrypt customer data. For key
+         * in Cloud KMS, the key should be in the format of
+         * `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`.
+         */
+        keyReference: string;
+    }
+
     export interface ConnectionGithubConfig {
         /**
          * Optional. GitHub App installation id.
          */
         appInstallationId: string;
         /**
-         * Represents an OAuth token of the account that authorized the Connection,and
-         * associated metadata.
+         * Represents an OAuth token of the account that authorized the Connection,
+         * and associated metadata.
          * Structure is documented below.
          */
         authorizerCredential: outputs.developerconnect.ConnectionGithubConfigAuthorizerCredential;
         /**
-         * Required. Immutable. The GitHub Application that was installed to
-         * the GitHub user or organization.
+         * Required. Immutable. The GitHub Application that was installed to the GitHub user or
+         * organization.
          * Possible values:
          * GIT_HUB_APP_UNSPECIFIED
          * DEVELOPER_CONNECT
-         * FIREBASE"
+         * FIREBASE
          */
         githubApp: string;
         /**
          * (Output)
-         * Output only. The URI to navigate to in order to manage the installation
-         * associated with this GitHubConfig.
+         * Output only. The URI to navigate to in order to manage the installation associated
+         * with this GitHubConfig.
          */
         installationUri: string;
     }
 
     export interface ConnectionGithubConfigAuthorizerCredential {
         /**
-         * Required. A SecretManager resource containing the OAuth token
-         * that authorizes the connection.
-         * Format: `projects/*&#47;secrets/*&#47;versions/*`.
+         * Required. A SecretManager resource containing the OAuth token that authorizes
+         * the connection. Format: `projects/*&#47;secrets/*&#47;versions/*`.
          */
         oauthTokenSecretVersion: string;
         /**
@@ -60225,15 +60339,202 @@ export namespace developerconnect {
         username: string;
     }
 
+    export interface ConnectionGithubEnterpriseConfig {
+        /**
+         * Optional. ID of the GitHub App created from the manifest.
+         */
+        appId?: string;
+        /**
+         * Optional. ID of the installation of the GitHub App.
+         */
+        appInstallationId?: string;
+        /**
+         * (Output)
+         * Output only. The URL-friendly name of the GitHub App.
+         */
+        appSlug: string;
+        /**
+         * Required. The URI of the GitHub Enterprise host this connection is for.
+         */
+        hostUri: string;
+        /**
+         * (Output)
+         * Output only. The URI to navigate to in order to manage the installation associated
+         * with this GitHubEnterpriseConfig.
+         */
+        installationUri: string;
+        /**
+         * Optional. SecretManager resource containing the private key of the GitHub App,
+         * formatted as `projects/*&#47;secrets/*&#47;versions/*`.
+         */
+        privateKeySecretVersion?: string;
+        /**
+         * (Output)
+         * Output only. GitHub Enterprise version installed at the host_uri.
+         */
+        serverVersion: string;
+        /**
+         * ServiceDirectoryConfig represents Service Directory configuration for a
+         * connection.
+         * Structure is documented below.
+         */
+        serviceDirectoryConfig?: outputs.developerconnect.ConnectionGithubEnterpriseConfigServiceDirectoryConfig;
+        /**
+         * Optional. SSL certificate to use for requests to GitHub Enterprise.
+         */
+        sslCaCertificate?: string;
+        /**
+         * Optional. SecretManager resource containing the webhook secret of the GitHub App,
+         * formatted as `projects/*&#47;secrets/*&#47;versions/*`.
+         */
+        webhookSecretSecretVersion?: string;
+    }
+
+    export interface ConnectionGithubEnterpriseConfigServiceDirectoryConfig {
+        /**
+         * Required. The Service Directory service name.
+         * Format:
+         * projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
+         */
+        service: string;
+    }
+
+    export interface ConnectionGitlabConfig {
+        /**
+         * Represents a personal access token that authorized the Connection,
+         * and associated metadata.
+         * Structure is documented below.
+         */
+        authorizerCredential: outputs.developerconnect.ConnectionGitlabConfigAuthorizerCredential;
+        /**
+         * Represents a personal access token that authorized the Connection,
+         * and associated metadata.
+         * Structure is documented below.
+         */
+        readAuthorizerCredential: outputs.developerconnect.ConnectionGitlabConfigReadAuthorizerCredential;
+        /**
+         * Required. Immutable. SecretManager resource containing the webhook secret of a GitLab project,
+         * formatted as `projects/*&#47;secrets/*&#47;versions/*`. This is used to validate
+         * webhooks.
+         */
+        webhookSecretSecretVersion: string;
+    }
+
+    export interface ConnectionGitlabConfigAuthorizerCredential {
+        /**
+         * Required. A SecretManager resource containing the user token that authorizes
+         * the Developer Connect connection. Format:
+         * `projects/*&#47;secrets/*&#47;versions/*`.
+         */
+        userTokenSecretVersion: string;
+        /**
+         * (Output)
+         * Output only. The username associated with this token.
+         */
+        username: string;
+    }
+
+    export interface ConnectionGitlabConfigReadAuthorizerCredential {
+        /**
+         * Required. A SecretManager resource containing the user token that authorizes
+         * the Developer Connect connection. Format:
+         * `projects/*&#47;secrets/*&#47;versions/*`.
+         */
+        userTokenSecretVersion: string;
+        /**
+         * (Output)
+         * Output only. The username associated with this token.
+         */
+        username: string;
+    }
+
+    export interface ConnectionGitlabEnterpriseConfig {
+        /**
+         * Represents a personal access token that authorized the Connection,
+         * and associated metadata.
+         * Structure is documented below.
+         */
+        authorizerCredential: outputs.developerconnect.ConnectionGitlabEnterpriseConfigAuthorizerCredential;
+        /**
+         * Required. The URI of the GitLab Enterprise host this connection is for.
+         */
+        hostUri: string;
+        /**
+         * Represents a personal access token that authorized the Connection,
+         * and associated metadata.
+         * Structure is documented below.
+         */
+        readAuthorizerCredential: outputs.developerconnect.ConnectionGitlabEnterpriseConfigReadAuthorizerCredential;
+        /**
+         * (Output)
+         * Output only. Version of the GitLab Enterprise server running on the `hostUri`.
+         */
+        serverVersion: string;
+        /**
+         * ServiceDirectoryConfig represents Service Directory configuration for a
+         * connection.
+         * Structure is documented below.
+         */
+        serviceDirectoryConfig?: outputs.developerconnect.ConnectionGitlabEnterpriseConfigServiceDirectoryConfig;
+        /**
+         * Optional. SSL Certificate Authority certificate to use for requests to GitLab
+         * Enterprise instance.
+         */
+        sslCaCertificate?: string;
+        /**
+         * Required. Immutable. SecretManager resource containing the webhook secret of a GitLab project,
+         * formatted as `projects/*&#47;secrets/*&#47;versions/*`. This is used to validate
+         * webhooks.
+         */
+        webhookSecretSecretVersion: string;
+    }
+
+    export interface ConnectionGitlabEnterpriseConfigAuthorizerCredential {
+        /**
+         * Required. A SecretManager resource containing the user token that authorizes
+         * the Developer Connect connection. Format:
+         * `projects/*&#47;secrets/*&#47;versions/*`.
+         */
+        userTokenSecretVersion: string;
+        /**
+         * (Output)
+         * Output only. The username associated with this token.
+         */
+        username: string;
+    }
+
+    export interface ConnectionGitlabEnterpriseConfigReadAuthorizerCredential {
+        /**
+         * Required. A SecretManager resource containing the user token that authorizes
+         * the Developer Connect connection. Format:
+         * `projects/*&#47;secrets/*&#47;versions/*`.
+         */
+        userTokenSecretVersion: string;
+        /**
+         * (Output)
+         * Output only. The username associated with this token.
+         */
+        username: string;
+    }
+
+    export interface ConnectionGitlabEnterpriseConfigServiceDirectoryConfig {
+        /**
+         * Required. The Service Directory service name.
+         * Format:
+         * projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
+         */
+        service: string;
+    }
+
     export interface ConnectionInstallationState {
         /**
-         * Output only. Link to follow for next action. Empty string if the
-         * installation is already complete.
+         * Output only. Link to follow for next action. Empty string if the installation is already
+         * complete.
          */
         actionUri?: string;
         /**
-         * Output only. Message of what the user should do next to continue
-         * the installation.Empty string if the installation is already complete.
+         * Output only. Message of what the user should do next to continue the installation.
+         * Empty string if the installation is already complete.
          */
         message?: string;
         /**
@@ -63032,6 +63333,10 @@ export namespace dns {
          */
         geos?: outputs.dns.RecordSetRoutingPolicyGeo[];
         /**
+         * Specifies the health check (used with external endpoints).
+         */
+        healthCheck?: string;
+        /**
          * The configuration for a failover policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
          * Structure is documented below.
          */
@@ -63061,10 +63366,14 @@ export namespace dns {
 
     export interface RecordSetRoutingPolicyGeoHealthCheckedTargets {
         /**
+         * The list of external endpoint addresses to health check.
+         */
+        externalEndpoints?: string[];
+        /**
          * The list of internal load balancers to health check.
          * Structure is documented below.
          */
-        internalLoadBalancers: outputs.dns.RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer[];
+        internalLoadBalancers?: outputs.dns.RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer[];
     }
 
     export interface RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer {
@@ -63133,10 +63442,14 @@ export namespace dns {
 
     export interface RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets {
         /**
+         * The list of external endpoint addresses to health check.
+         */
+        externalEndpoints?: string[];
+        /**
          * The list of internal load balancers to health check.
          * Structure is documented below.
          */
-        internalLoadBalancers: outputs.dns.RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer[];
+        internalLoadBalancers?: outputs.dns.RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer[];
     }
 
     export interface RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer {
@@ -63172,9 +63485,13 @@ export namespace dns {
 
     export interface RecordSetRoutingPolicyPrimaryBackupPrimary {
         /**
+         * The Internet IP addresses to be health checked.
+         */
+        externalEndpoints?: string[];
+        /**
          * The list of internal load balancers to health check.
          */
-        internalLoadBalancers: outputs.dns.RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer[];
+        internalLoadBalancers?: outputs.dns.RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer[];
     }
 
     export interface RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer {
@@ -63226,10 +63543,14 @@ export namespace dns {
 
     export interface RecordSetRoutingPolicyWrrHealthCheckedTargets {
         /**
+         * The list of external endpoint addresses to health check.
+         */
+        externalEndpoints?: string[];
+        /**
          * The list of internal load balancers to health check.
          * Structure is documented below.
          */
-        internalLoadBalancers: outputs.dns.RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer[];
+        internalLoadBalancers?: outputs.dns.RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer[];
     }
 
     export interface RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer {
@@ -63375,7 +63696,7 @@ export namespace edgecontainer {
          * Structure is documented below.
          *
          *
-         * <a name="nestedKmsStatus"></a>The `kmsStatus` block contains:
+         * <a name="nestedControlPlaneEncryptionKmsStatus"></a>The `kmsStatus` block contains:
          */
         kmsStatuses: outputs.edgecontainer.ClusterControlPlaneEncryptionKmsStatus[];
     }
@@ -68576,7 +68897,7 @@ export namespace gkeonprem {
         /**
          * Whether to enable control plane node auto resizing.
          *
-         * <a name="nestedVsphereConfig"></a>The `vsphereConfig` block contains:
+         * <a name="nestedControlPlaneNodeVsphereConfig"></a>The `vsphereConfig` block contains:
          */
         enabled: boolean;
     }
@@ -68723,7 +69044,7 @@ export namespace gkeonprem {
         /**
          * The VIP which you previously set aside for ingress traffic into this cluster.
          *
-         * <a name="nestedF5Config"></a>The `f5Config` block supports:
+         * <a name="nestedLoadBalancerF5Config"></a>The `f5Config` block supports:
          */
         ingressVip?: string;
     }
@@ -68812,7 +69133,7 @@ export namespace gkeonprem {
         /**
          * DNS search domains.
          *
-         * <a name="nestedControlPlaneV2Config"></a>The `controlPlaneV2Config` block supports:
+         * <a name="nestedNetworkConfigControlPlaneV2Config"></a>The `controlPlaneV2Config` block supports:
          */
         dnsSearchDomains?: string[];
         /**
@@ -68987,31 +69308,31 @@ export namespace gkeonprem {
         /**
          * Contains the vCenter CA certificate public key for SSL verification.
          */
-        caCertData?: string;
+        caCertData: string;
         /**
          * The name of the vCenter cluster for the user cluster.
          */
-        cluster?: string;
+        cluster: string;
         /**
          * The name of the vCenter datacenter for the user cluster.
          */
-        datacenter?: string;
+        datacenter: string;
         /**
          * The name of the vCenter datastore for the user cluster.
          */
-        datastore?: string;
+        datastore: string;
         /**
          * The name of the vCenter folder for the user cluster.
          */
-        folder?: string;
+        folder: string;
         /**
          * The name of the vCenter resource pool for the user cluster.
          */
-        resourcePool?: string;
+        resourcePool: string;
         /**
          * The name of the vCenter storage policy for the user cluster.
          */
-        storagePolicyName?: string;
+        storagePolicyName: string;
     }
 
     export interface VMwareNodePoolConfig {
@@ -69319,7 +69640,7 @@ export namespace gkeonprem {
         /**
          * The VIP to configure the load balancer for add-ons.
          *
-         * <a name="nestedF5Config"></a>The `f5Config` block supports:
+         * <a name="nestedLoadBalancerF5Config"></a>The `f5Config` block supports:
          */
         addonsVip?: string;
         /**
@@ -69490,7 +69811,7 @@ export namespace gkeonprem {
          * Structure is documented below.
          *
          *
-         * <a name="nestedStatus"></a>The `status` block contains:
+         * <a name="nestedPlatformConfigBundlesBundlesStatus"></a>The `status` block contains:
          */
         statuses: outputs.gkeonprem.VmwareAdminClusterPlatformConfigStatus[];
     }
@@ -70835,6 +71156,7 @@ export namespace iap {
         corsSettings?: outputs.iap.SettingsAccessSettingsCorsSettings;
         /**
          * GCIP claims and endpoint configurations for 3p identity providers.
+         * * Enabling gcipSetting significantly changes the way IAP authenticates users. Identity Platform does not support IAM, so IAP will not enforce any IAM policies for requests to your application.
          * Structure is documented below.
          */
         gcipSettings?: outputs.iap.SettingsAccessSettingsGcipSettings;
@@ -70907,6 +71229,7 @@ export namespace iap {
          * (https://developers.google.com/identity/protocols/OpenIDConnect#hd-param)
          * Note: IAP does not verify that the id token's hd claim matches this value
          * since access behavior is managed by IAM policies.
+         * * loginHint setting is not a replacement for access control. Always enforce an appropriate access policy if you want to restrict access to users outside your domain.
          */
         loginHint?: string;
         /**
@@ -70949,7 +71272,7 @@ export namespace iap {
          * Structure is documented below.
          *
          *
-         * <a name="nestedOauth2"></a>The `oauth2` block supports:
+         * <a name="nestedAccessSettingsWorkforceIdentitySettingsOauth2"></a>The `oauth2` block supports:
          */
         oauth2?: outputs.iap.SettingsAccessSettingsWorkforceIdentitySettingsOauth2;
         /**
@@ -71516,7 +71839,7 @@ export namespace identityplatform {
         /**
          * Whether anonymous user auth is enabled for the project or not.
          *
-         * <a name="nestedHashConfig"></a>The `hashConfig` block contains:
+         * <a name="nestedSignInHashConfig"></a>The `hashConfig` block contains:
          */
         enabled: boolean;
     }
@@ -71633,7 +71956,7 @@ export namespace identityplatform {
          * Structure is documented below.
          *
          *
-         * <a name="nestedSpCertificates"></a>The `spCertificates` block contains:
+         * <a name="nestedSpConfigSpCertificates"></a>The `spCertificates` block contains:
          */
         spCertificates: outputs.identityplatform.InboundSamlConfigSpConfigSpCertificate[];
         /**
@@ -71687,7 +72010,7 @@ export namespace identityplatform {
          * Structure is documented below.
          *
          *
-         * <a name="nestedSpCertificates"></a>The `spCertificates` block contains:
+         * <a name="nestedSpConfigSpCertificates"></a>The `spCertificates` block contains:
          */
         spCertificates: outputs.identityplatform.TenantInboundSamlConfigSpConfigSpCertificate[];
         /**
@@ -71873,7 +72196,7 @@ export namespace integrationconnectors {
         /**
          * Value for the "aud" claim.
          *
-         * <a name="nestedOauth2ClientCredentials"></a>The `oauth2ClientCredentials` block supports:
+         * <a name="nestedAuthConfigOauth2ClientCredentials"></a>The `oauth2ClientCredentials` block supports:
          */
         audience?: string;
         /**
@@ -71920,7 +72243,7 @@ export namespace integrationconnectors {
          * The resource name of the secret version in the format,
          * format as: projects/*&#47;secrets/*&#47;versions/*.
          *
-         * <a name="nestedOauth2AuthCodeFlow"></a>The `oauth2AuthCodeFlow` block supports:
+         * <a name="nestedAuthConfigOauth2AuthCodeFlow"></a>The `oauth2AuthCodeFlow` block supports:
          */
         secretVersion: string;
     }
@@ -75655,7 +75978,7 @@ export namespace monitoring {
          * Structure is documented below.
          *
          *
-         * <a name="nestedCloudFunctionV2"></a>The `cloudFunctionV2` block supports:
+         * <a name="nestedSyntheticMonitorCloudFunctionV2"></a>The `cloudFunctionV2` block supports:
          */
         cloudFunctionV2: outputs.monitoring.UptimeCheckConfigSyntheticMonitorCloudFunctionV2;
     }
@@ -79655,7 +79978,7 @@ export namespace oracledatabase {
          * The email address used by Oracle to send notifications regarding databases
          * and infrastructure.
          *
-         * <a name="nestedApexDetails"></a>The `apexDetails` block contains:
+         * <a name="nestedPropertiesApexDetails"></a>The `apexDetails` block contains:
          */
         email: string;
     }
@@ -89701,6 +90024,10 @@ export namespace sql {
          */
         serverCaMode: string;
         /**
+         * The resource name of the server CA pool for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `serverCaMode`.
+         */
+        serverCaPool?: string;
+        /**
          * Specify how SSL connection should be enforced in DB connections. Supported values are `ALLOW_UNENCRYPTED_AND_ENCRYPTED`, `ENCRYPTED_ONLY`, and `TRUSTED_CLIENT_CERTIFICATE_REQUIRED` (not supported for SQL Server). See [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1/instances#ipconfiguration) for details.
          */
         sslMode: string;
@@ -90197,6 +90524,10 @@ export namespace sql {
          * Specify how the server certificate's Certificate Authority is hosted.
          */
         serverCaMode: string;
+        /**
+         * The resource name of the server CA pool for an instance with "CUSTOMER_MANAGED_CAS_CA" as the "serverCaMode".
+         */
+        serverCaPool: string;
         /**
          * Specify how SSL connection should be enforced in DB connections.
          */
@@ -90740,6 +91071,10 @@ export namespace sql {
          * Specify how the server certificate's Certificate Authority is hosted.
          */
         serverCaMode: string;
+        /**
+         * The resource name of the server CA pool for an instance with "CUSTOMER_MANAGED_CAS_CA" as the "serverCaMode".
+         */
+        serverCaPool: string;
         /**
          * Specify how SSL connection should be enforced in DB connections.
          */
@@ -92471,7 +92806,7 @@ export namespace transcoder {
          * Structure is documented below.
          *
          *
-         * <a name="nestedH264"></a>The `h264` block supports:
+         * <a name="nestedConfigElementaryStreamsElementaryStreamsVideoStreamH264"></a>The `h264` block supports:
          */
         h264: outputs.transcoder.JobConfigElementaryStreamVideoStreamH264;
     }
@@ -92888,7 +93223,7 @@ export namespace transcoder {
          * Structure is documented below.
          *
          *
-         * <a name="nestedH264"></a>The `h264` block supports:
+         * <a name="nestedConfigElementaryStreamsElementaryStreamsVideoStreamH264"></a>The `h264` block supports:
          */
         h264: outputs.transcoder.JobTemplateConfigElementaryStreamVideoStreamH264;
     }

@@ -11143,7 +11143,7 @@ type UptimeCheckConfigSyntheticMonitor struct {
 	// Target a Synthetic Monitor GCFv2 Instance
 	// Structure is documented below.
 	//
-	// <a name="nestedCloudFunctionV2"></a>The `cloudFunctionV2` block supports:
+	// <a name="nestedSyntheticMonitorCloudFunctionV2"></a>The `cloudFunctionV2` block supports:
 	CloudFunctionV2 UptimeCheckConfigSyntheticMonitorCloudFunctionV2 `pulumi:"cloudFunctionV2"`
 }
 
@@ -11162,7 +11162,7 @@ type UptimeCheckConfigSyntheticMonitorArgs struct {
 	// Target a Synthetic Monitor GCFv2 Instance
 	// Structure is documented below.
 	//
-	// <a name="nestedCloudFunctionV2"></a>The `cloudFunctionV2` block supports:
+	// <a name="nestedSyntheticMonitorCloudFunctionV2"></a>The `cloudFunctionV2` block supports:
 	CloudFunctionV2 UptimeCheckConfigSyntheticMonitorCloudFunctionV2Input `pulumi:"cloudFunctionV2"`
 }
 
@@ -11246,7 +11246,7 @@ func (o UptimeCheckConfigSyntheticMonitorOutput) ToUptimeCheckConfigSyntheticMon
 // Target a Synthetic Monitor GCFv2 Instance
 // Structure is documented below.
 //
-// <a name="nestedCloudFunctionV2"></a>The `cloudFunctionV2` block supports:
+// <a name="nestedSyntheticMonitorCloudFunctionV2"></a>The `cloudFunctionV2` block supports:
 func (o UptimeCheckConfigSyntheticMonitorOutput) CloudFunctionV2() UptimeCheckConfigSyntheticMonitorCloudFunctionV2Output {
 	return o.ApplyT(func(v UptimeCheckConfigSyntheticMonitor) UptimeCheckConfigSyntheticMonitorCloudFunctionV2 {
 		return v.CloudFunctionV2
@@ -11280,7 +11280,7 @@ func (o UptimeCheckConfigSyntheticMonitorPtrOutput) Elem() UptimeCheckConfigSynt
 // Target a Synthetic Monitor GCFv2 Instance
 // Structure is documented below.
 //
-// <a name="nestedCloudFunctionV2"></a>The `cloudFunctionV2` block supports:
+// <a name="nestedSyntheticMonitorCloudFunctionV2"></a>The `cloudFunctionV2` block supports:
 func (o UptimeCheckConfigSyntheticMonitorPtrOutput) CloudFunctionV2() UptimeCheckConfigSyntheticMonitorCloudFunctionV2PtrOutput {
 	return o.ApplyT(func(v *UptimeCheckConfigSyntheticMonitor) *UptimeCheckConfigSyntheticMonitorCloudFunctionV2 {
 		if v == nil {

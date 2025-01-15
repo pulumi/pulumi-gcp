@@ -5,6 +5,8 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * A git repository link to a parent connection.
+ *
  * ## Example Usage
  *
  * ## Import

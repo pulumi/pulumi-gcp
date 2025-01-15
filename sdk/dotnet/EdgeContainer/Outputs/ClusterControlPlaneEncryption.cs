@@ -42,7 +42,7 @@ namespace Pulumi.Gcp.EdgeContainer.Outputs
         /// Structure is documented below.
         /// 
         /// 
-        /// &lt;a name="nested_kms_status"&gt;&lt;/a&gt;The `kms_status` block contains:
+        /// &lt;a name="nested_control_plane_encryption_kms_status"&gt;&lt;/a&gt;The `kms_status` block contains:
         /// </summary>
         public readonly ImmutableArray<Outputs.ClusterControlPlaneEncryptionKmsStatus> KmsStatuses;
 

@@ -16,11 +16,333 @@ from .. import _utilities
 from . import outputs
 
 __all__ = [
+    'DataAccessScopeAllowedDataAccessLabel',
+    'DataAccessScopeAllowedDataAccessLabelIngestionLabel',
+    'DataAccessScopeDeniedDataAccessLabel',
+    'DataAccessScopeDeniedDataAccessLabelIngestionLabel',
     'WatchlistEntityCount',
     'WatchlistEntityPopulationMechanism',
     'WatchlistEntityPopulationMechanismManual',
     'WatchlistWatchlistUserPreferences',
 ]
+
+@pulumi.output_type
+class DataAccessScopeAllowedDataAccessLabel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "assetNamespace":
+            suggest = "asset_namespace"
+        elif key == "dataAccessLabel":
+            suggest = "data_access_label"
+        elif key == "displayName":
+            suggest = "display_name"
+        elif key == "ingestionLabel":
+            suggest = "ingestion_label"
+        elif key == "logType":
+            suggest = "log_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataAccessScopeAllowedDataAccessLabel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataAccessScopeAllowedDataAccessLabel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataAccessScopeAllowedDataAccessLabel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 asset_namespace: Optional[str] = None,
+                 data_access_label: Optional[str] = None,
+                 display_name: Optional[str] = None,
+                 ingestion_label: Optional['outputs.DataAccessScopeAllowedDataAccessLabelIngestionLabel'] = None,
+                 log_type: Optional[str] = None):
+        """
+        :param str asset_namespace: The asset namespace configured in the forwarder
+               of the customer's events.
+        :param str data_access_label: The name of the data access label.
+        :param str display_name: (Output)
+               Output only. The display name of the label.
+               Data access label and log types's name
+               will match the display name of the resource.
+               The asset namespace will match the namespace itself.
+               The ingestion key value pair will match the key of the tuple.
+        :param 'DataAccessScopeAllowedDataAccessLabelIngestionLabelArgs' ingestion_label: Representation of an ingestion label type.
+               Structure is documented below.
+        :param str log_type: The name of the log type.
+        """
+        if asset_namespace is not None:
+            pulumi.set(__self__, "asset_namespace", asset_namespace)
+        if data_access_label is not None:
+            pulumi.set(__self__, "data_access_label", data_access_label)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if ingestion_label is not None:
+            pulumi.set(__self__, "ingestion_label", ingestion_label)
+        if log_type is not None:
+            pulumi.set(__self__, "log_type", log_type)
+
+    @property
+    @pulumi.getter(name="assetNamespace")
+    def asset_namespace(self) -> Optional[str]:
+        """
+        The asset namespace configured in the forwarder
+        of the customer's events.
+        """
+        return pulumi.get(self, "asset_namespace")
+
+    @property
+    @pulumi.getter(name="dataAccessLabel")
+    def data_access_label(self) -> Optional[str]:
+        """
+        The name of the data access label.
+        """
+        return pulumi.get(self, "data_access_label")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[str]:
+        """
+        (Output)
+        Output only. The display name of the label.
+        Data access label and log types's name
+        will match the display name of the resource.
+        The asset namespace will match the namespace itself.
+        The ingestion key value pair will match the key of the tuple.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="ingestionLabel")
+    def ingestion_label(self) -> Optional['outputs.DataAccessScopeAllowedDataAccessLabelIngestionLabel']:
+        """
+        Representation of an ingestion label type.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "ingestion_label")
+
+    @property
+    @pulumi.getter(name="logType")
+    def log_type(self) -> Optional[str]:
+        """
+        The name of the log type.
+        """
+        return pulumi.get(self, "log_type")
+
+
+@pulumi.output_type
+class DataAccessScopeAllowedDataAccessLabelIngestionLabel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ingestionLabelKey":
+            suggest = "ingestion_label_key"
+        elif key == "ingestionLabelValue":
+            suggest = "ingestion_label_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataAccessScopeAllowedDataAccessLabelIngestionLabel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataAccessScopeAllowedDataAccessLabelIngestionLabel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataAccessScopeAllowedDataAccessLabelIngestionLabel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ingestion_label_key: str,
+                 ingestion_label_value: Optional[str] = None):
+        """
+        :param str ingestion_label_key: Required. The key of the ingestion label. Always required.
+        :param str ingestion_label_value: Optional. The value of the ingestion label. Optional. An object
+               with no provided value and some key provided would match
+               against the given key and ANY value.
+        """
+        pulumi.set(__self__, "ingestion_label_key", ingestion_label_key)
+        if ingestion_label_value is not None:
+            pulumi.set(__self__, "ingestion_label_value", ingestion_label_value)
+
+    @property
+    @pulumi.getter(name="ingestionLabelKey")
+    def ingestion_label_key(self) -> str:
+        """
+        Required. The key of the ingestion label. Always required.
+        """
+        return pulumi.get(self, "ingestion_label_key")
+
+    @property
+    @pulumi.getter(name="ingestionLabelValue")
+    def ingestion_label_value(self) -> Optional[str]:
+        """
+        Optional. The value of the ingestion label. Optional. An object
+        with no provided value and some key provided would match
+        against the given key and ANY value.
+        """
+        return pulumi.get(self, "ingestion_label_value")
+
+
+@pulumi.output_type
+class DataAccessScopeDeniedDataAccessLabel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "assetNamespace":
+            suggest = "asset_namespace"
+        elif key == "dataAccessLabel":
+            suggest = "data_access_label"
+        elif key == "displayName":
+            suggest = "display_name"
+        elif key == "ingestionLabel":
+            suggest = "ingestion_label"
+        elif key == "logType":
+            suggest = "log_type"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataAccessScopeDeniedDataAccessLabel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataAccessScopeDeniedDataAccessLabel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataAccessScopeDeniedDataAccessLabel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 asset_namespace: Optional[str] = None,
+                 data_access_label: Optional[str] = None,
+                 display_name: Optional[str] = None,
+                 ingestion_label: Optional['outputs.DataAccessScopeDeniedDataAccessLabelIngestionLabel'] = None,
+                 log_type: Optional[str] = None):
+        """
+        :param str asset_namespace: The asset namespace configured in the forwarder
+               of the customer's events.
+        :param str data_access_label: The name of the data access label.
+        :param str display_name: (Output)
+               Output only. The display name of the label.
+               Data access label and log types's name
+               will match the display name of the resource.
+               The asset namespace will match the namespace itself.
+               The ingestion key value pair will match the key of the tuple.
+        :param 'DataAccessScopeDeniedDataAccessLabelIngestionLabelArgs' ingestion_label: Representation of an ingestion label type.
+               Structure is documented below.
+        :param str log_type: The name of the log type.
+        """
+        if asset_namespace is not None:
+            pulumi.set(__self__, "asset_namespace", asset_namespace)
+        if data_access_label is not None:
+            pulumi.set(__self__, "data_access_label", data_access_label)
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+        if ingestion_label is not None:
+            pulumi.set(__self__, "ingestion_label", ingestion_label)
+        if log_type is not None:
+            pulumi.set(__self__, "log_type", log_type)
+
+    @property
+    @pulumi.getter(name="assetNamespace")
+    def asset_namespace(self) -> Optional[str]:
+        """
+        The asset namespace configured in the forwarder
+        of the customer's events.
+        """
+        return pulumi.get(self, "asset_namespace")
+
+    @property
+    @pulumi.getter(name="dataAccessLabel")
+    def data_access_label(self) -> Optional[str]:
+        """
+        The name of the data access label.
+        """
+        return pulumi.get(self, "data_access_label")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[str]:
+        """
+        (Output)
+        Output only. The display name of the label.
+        Data access label and log types's name
+        will match the display name of the resource.
+        The asset namespace will match the namespace itself.
+        The ingestion key value pair will match the key of the tuple.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="ingestionLabel")
+    def ingestion_label(self) -> Optional['outputs.DataAccessScopeDeniedDataAccessLabelIngestionLabel']:
+        """
+        Representation of an ingestion label type.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "ingestion_label")
+
+    @property
+    @pulumi.getter(name="logType")
+    def log_type(self) -> Optional[str]:
+        """
+        The name of the log type.
+        """
+        return pulumi.get(self, "log_type")
+
+
+@pulumi.output_type
+class DataAccessScopeDeniedDataAccessLabelIngestionLabel(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "ingestionLabelKey":
+            suggest = "ingestion_label_key"
+        elif key == "ingestionLabelValue":
+            suggest = "ingestion_label_value"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataAccessScopeDeniedDataAccessLabelIngestionLabel. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataAccessScopeDeniedDataAccessLabelIngestionLabel.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataAccessScopeDeniedDataAccessLabelIngestionLabel.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 ingestion_label_key: str,
+                 ingestion_label_value: Optional[str] = None):
+        """
+        :param str ingestion_label_key: Required. The key of the ingestion label. Always required.
+        :param str ingestion_label_value: Optional. The value of the ingestion label. Optional. An object
+               with no provided value and some key provided would match
+               against the given key and ANY value.
+        """
+        pulumi.set(__self__, "ingestion_label_key", ingestion_label_key)
+        if ingestion_label_value is not None:
+            pulumi.set(__self__, "ingestion_label_value", ingestion_label_value)
+
+    @property
+    @pulumi.getter(name="ingestionLabelKey")
+    def ingestion_label_key(self) -> str:
+        """
+        Required. The key of the ingestion label. Always required.
+        """
+        return pulumi.get(self, "ingestion_label_key")
+
+    @property
+    @pulumi.getter(name="ingestionLabelValue")
+    def ingestion_label_value(self) -> Optional[str]:
+        """
+        Optional. The value of the ingestion label. Optional. An object
+        with no provided value and some key provided would match
+        against the given key and ANY value.
+        """
+        return pulumi.get(self, "ingestion_label_value")
+
 
 @pulumi.output_type
 class WatchlistEntityCount(dict):

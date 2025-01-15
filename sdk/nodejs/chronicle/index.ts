@@ -5,6 +5,16 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { DataAccessLabelArgs, DataAccessLabelState } from "./dataAccessLabel";
+export type DataAccessLabel = import("./dataAccessLabel").DataAccessLabel;
+export const DataAccessLabel: typeof import("./dataAccessLabel").DataAccessLabel = null as any;
+utilities.lazyLoad(exports, ["DataAccessLabel"], () => require("./dataAccessLabel"));
+
+export { DataAccessScopeArgs, DataAccessScopeState } from "./dataAccessScope";
+export type DataAccessScope = import("./dataAccessScope").DataAccessScope;
+export const DataAccessScope: typeof import("./dataAccessScope").DataAccessScope = null as any;
+utilities.lazyLoad(exports, ["DataAccessScope"], () => require("./dataAccessScope"));
+
 export { WatchlistArgs, WatchlistState } from "./watchlist";
 export type Watchlist = import("./watchlist").Watchlist;
 export const Watchlist: typeof import("./watchlist").Watchlist = null as any;
@@ -15,6 +25,10 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp:chronicle/dataAccessLabel:DataAccessLabel":
+                return new DataAccessLabel(name, <any>undefined, { urn })
+            case "gcp:chronicle/dataAccessScope:DataAccessScope":
+                return new DataAccessScope(name, <any>undefined, { urn })
             case "gcp:chronicle/watchlist:Watchlist":
                 return new Watchlist(name, <any>undefined, { urn })
             default:
@@ -22,4 +36,6 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("gcp", "chronicle/dataAccessLabel", _module)
+pulumi.runtime.registerResourceModule("gcp", "chronicle/dataAccessScope", _module)
 pulumi.runtime.registerResourceModule("gcp", "chronicle/watchlist", _module)

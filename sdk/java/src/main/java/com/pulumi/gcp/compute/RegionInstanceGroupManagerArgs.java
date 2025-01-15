@@ -288,14 +288,14 @@ public final class RegionInstanceGroupManagerArgs extends com.pulumi.resources.R
     }
 
     /**
-     * The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
+     * The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
      * 
      */
     @Import(name="standbyPolicy")
     private @Nullable Output<RegionInstanceGroupManagerStandbyPolicyArgs> standbyPolicy;
 
     /**
-     * @return The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
+     * @return The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
      * 
      */
     public Optional<Output<RegionInstanceGroupManagerStandbyPolicyArgs>> standbyPolicy() {
@@ -899,7 +899,7 @@ public final class RegionInstanceGroupManagerArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param standbyPolicy The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
+         * @param standbyPolicy The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
          * 
          * @return builder
          * 
@@ -910,7 +910,7 @@ public final class RegionInstanceGroupManagerArgs extends com.pulumi.resources.R
         }
 
         /**
-         * @param standbyPolicy The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
+         * @param standbyPolicy The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
          * 
          * @return builder
          * 

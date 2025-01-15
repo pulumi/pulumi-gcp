@@ -1870,6 +1870,10 @@ if not MYPY:
         """
         Specify how the server certificate's Certificate Authority is hosted. Supported values are `GOOGLE_MANAGED_INTERNAL_CA` and `GOOGLE_MANAGED_CAS_CA`.
         """
+        server_ca_pool: NotRequired[pulumi.Input[str]]
+        """
+        The resource name of the server CA pool for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `server_ca_mode`.
+        """
         ssl_mode: NotRequired[pulumi.Input[str]]
         """
         Specify how SSL connection should be enforced in DB connections. Supported values are `ALLOW_UNENCRYPTED_AND_ENCRYPTED`, `ENCRYPTED_ONLY`, and `TRUSTED_CLIENT_CERTIFICATE_REQUIRED` (not supported for SQL Server). See [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1/instances#ipconfiguration) for details.
@@ -1887,6 +1891,7 @@ class DatabaseInstanceSettingsIpConfigurationArgs:
                  private_network: Optional[pulumi.Input[str]] = None,
                  psc_configs: Optional[pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationPscConfigArgs']]]] = None,
                  server_ca_mode: Optional[pulumi.Input[str]] = None,
+                 server_ca_pool: Optional[pulumi.Input[str]] = None,
                  ssl_mode: Optional[pulumi.Input[str]] = None):
         """
         :param pulumi.Input[str] allocated_ip_range: The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://datatracker.ietf.org/doc/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression a-z?.
@@ -1901,6 +1906,7 @@ class DatabaseInstanceSettingsIpConfigurationArgs:
                This setting can be updated, but it cannot be removed after it is set.
         :param pulumi.Input[Sequence[pulumi.Input['DatabaseInstanceSettingsIpConfigurationPscConfigArgs']]] psc_configs: PSC settings for a Cloud SQL instance.
         :param pulumi.Input[str] server_ca_mode: Specify how the server certificate's Certificate Authority is hosted. Supported values are `GOOGLE_MANAGED_INTERNAL_CA` and `GOOGLE_MANAGED_CAS_CA`.
+        :param pulumi.Input[str] server_ca_pool: The resource name of the server CA pool for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `server_ca_mode`.
         :param pulumi.Input[str] ssl_mode: Specify how SSL connection should be enforced in DB connections. Supported values are `ALLOW_UNENCRYPTED_AND_ENCRYPTED`, `ENCRYPTED_ONLY`, and `TRUSTED_CLIENT_CERTIFICATE_REQUIRED` (not supported for SQL Server). See [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1/instances#ipconfiguration) for details.
         """
         if allocated_ip_range is not None:
@@ -1917,6 +1923,8 @@ class DatabaseInstanceSettingsIpConfigurationArgs:
             pulumi.set(__self__, "psc_configs", psc_configs)
         if server_ca_mode is not None:
             pulumi.set(__self__, "server_ca_mode", server_ca_mode)
+        if server_ca_pool is not None:
+            pulumi.set(__self__, "server_ca_pool", server_ca_pool)
         if ssl_mode is not None:
             pulumi.set(__self__, "ssl_mode", ssl_mode)
 
@@ -2006,6 +2014,18 @@ class DatabaseInstanceSettingsIpConfigurationArgs:
     @server_ca_mode.setter
     def server_ca_mode(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "server_ca_mode", value)
+
+    @property
+    @pulumi.getter(name="serverCaPool")
+    def server_ca_pool(self) -> Optional[pulumi.Input[str]]:
+        """
+        The resource name of the server CA pool for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `server_ca_mode`.
+        """
+        return pulumi.get(self, "server_ca_pool")
+
+    @server_ca_pool.setter
+    def server_ca_pool(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "server_ca_pool", value)
 
     @property
     @pulumi.getter(name="sslMode")

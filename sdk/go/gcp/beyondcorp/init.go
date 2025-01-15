@@ -27,6 +27,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 		r = &AppConnector{}
 	case "gcp:beyondcorp/appGateway:AppGateway":
 		r = &AppGateway{}
+	case "gcp:beyondcorp/securityGateway:SecurityGateway":
+		r = &SecurityGateway{}
 	default:
 		return nil, fmt.Errorf("unknown resource type: %s", typ)
 	}
@@ -53,6 +55,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"beyondcorp/appGateway",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"beyondcorp/securityGateway",
 		&module{version},
 	)
 }

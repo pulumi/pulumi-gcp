@@ -157,7 +157,7 @@ class CertificateManaged(dict):
                Structure is documented below.
                
                
-               <a name="nested_provisioning_issue"></a>The `provisioning_issue` block contains:
+               <a name="nested_managed_provisioning_issue"></a>The `provisioning_issue` block contains:
         :param Sequence[str] dns_authorizations: Authorizations that will be used for performing domain authorization. Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
         :param Sequence[str] domains: The domains for which a managed SSL certificate will be generated.
                Wildcard domains are only supported with DNS challenge resolution
@@ -193,7 +193,7 @@ class CertificateManaged(dict):
         Structure is documented below.
 
 
-        <a name="nested_provisioning_issue"></a>The `provisioning_issue` block contains:
+        <a name="nested_managed_provisioning_issue"></a>The `provisioning_issue` block contains:
         """
         return pulumi.get(self, "authorization_attempt_infos")
 

@@ -26,7 +26,36 @@ namespace Pulumi.Gcp.Chronicle
     ///     {
     ///         Location = "us",
     ///         Instance = "00000000-0000-0000-0000-000000000000",
-    ///         WatchlistId = "watchlist-name",
+    ///         WatchlistId = "watchlist-id",
+    ///         Description = "watchlist-description",
+    ///         DisplayName = "watchlist_name",
+    ///         MultiplyingFactor = 1,
+    ///         EntityPopulationMechanism = new Gcp.Chronicle.Inputs.WatchlistEntityPopulationMechanismArgs
+    ///         {
+    ///             Manual = null,
+    ///         },
+    ///         WatchlistUserPreferences = new Gcp.Chronicle.Inputs.WatchlistWatchlistUserPreferencesArgs
+    ///         {
+    ///             Pinned = true,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Chronicle Watchlist Without Id
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Gcp.Chronicle.Watchlist("example", new()
+    ///     {
+    ///         Location = "us",
+    ///         Instance = "00000000-0000-0000-0000-000000000000",
     ///         Description = "watchlist-description",
     ///         DisplayName = "watchlist-name",
     ///         MultiplyingFactor = 1,
@@ -140,10 +169,8 @@ namespace Pulumi.Gcp.Chronicle
         public Output<string> UpdateTime { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. The ID to use for the watchlist,
-        /// which will become the final component of the watchlist's resource name.
-        /// This value should be 4-63 characters, and valid characters
-        /// are /a-z-/.
+        /// Optional. The ID to use for the watchlist, which will become the final component of the watchlist's resource name. This
+        /// value should be 4-63 characters, and valid characters are /a-z-/.
         /// </summary>
         [Output("watchlistId")]
         public Output<string> WatchlistId { get; private set; } = null!;
@@ -243,13 +270,11 @@ namespace Pulumi.Gcp.Chronicle
         public Input<string>? Project { get; set; }
 
         /// <summary>
-        /// Optional. The ID to use for the watchlist,
-        /// which will become the final component of the watchlist's resource name.
-        /// This value should be 4-63 characters, and valid characters
-        /// are /a-z-/.
+        /// Optional. The ID to use for the watchlist, which will become the final component of the watchlist's resource name. This
+        /// value should be 4-63 characters, and valid characters are /a-z-/.
         /// </summary>
-        [Input("watchlistId", required: true)]
-        public Input<string> WatchlistId { get; set; } = null!;
+        [Input("watchlistId")]
+        public Input<string>? WatchlistId { get; set; }
 
         /// <summary>
         /// A collection of user preferences for watchlist UI configuration.
@@ -341,10 +366,8 @@ namespace Pulumi.Gcp.Chronicle
         public Input<string>? UpdateTime { get; set; }
 
         /// <summary>
-        /// Optional. The ID to use for the watchlist,
-        /// which will become the final component of the watchlist's resource name.
-        /// This value should be 4-63 characters, and valid characters
-        /// are /a-z-/.
+        /// Optional. The ID to use for the watchlist, which will become the final component of the watchlist's resource name. This
+        /// value should be 4-63 characters, and valid characters are /a-z-/.
         /// </summary>
         [Input("watchlistId")]
         public Input<string>? WatchlistId { get; set; }

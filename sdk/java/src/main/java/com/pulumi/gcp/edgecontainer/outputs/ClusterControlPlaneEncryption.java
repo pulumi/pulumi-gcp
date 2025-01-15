@@ -44,7 +44,7 @@ public final class ClusterControlPlaneEncryption {
      * If populated, this field contains the error status reported by Cloud KMS.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_kms_status&#34;&gt;&lt;/a&gt;The `kms_status` block contains:
+     * &lt;a name=&#34;nested_control_plane_encryption_kms_status&#34;&gt;&lt;/a&gt;The `kms_status` block contains:
      * 
      */
     private @Nullable List<ClusterControlPlaneEncryptionKmsStatus> kmsStatuses;
@@ -87,7 +87,7 @@ public final class ClusterControlPlaneEncryption {
      * If populated, this field contains the error status reported by Cloud KMS.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_kms_status&#34;&gt;&lt;/a&gt;The `kms_status` block contains:
+     * &lt;a name=&#34;nested_control_plane_encryption_kms_status&#34;&gt;&lt;/a&gt;The `kms_status` block contains:
      * 
      */
     public List<ClusterControlPlaneEncryptionKmsStatus> kmsStatuses() {

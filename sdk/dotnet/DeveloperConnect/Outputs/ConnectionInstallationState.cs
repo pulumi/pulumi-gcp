@@ -14,13 +14,13 @@ namespace Pulumi.Gcp.DeveloperConnect.Outputs
     public sealed class ConnectionInstallationState
     {
         /// <summary>
-        /// Output only. Link to follow for next action. Empty string if the
-        /// installation is already complete.
+        /// Output only. Link to follow for next action. Empty string if the installation is already
+        /// complete.
         /// </summary>
         public readonly string? ActionUri;
         /// <summary>
-        /// Output only. Message of what the user should do next to continue
-        /// the installation.Empty string if the installation is already complete.
+        /// Output only. Message of what the user should do next to continue the installation.
+        /// Empty string if the installation is already complete.
         /// </summary>
         public readonly string? Message;
         /// <summary>

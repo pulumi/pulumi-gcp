@@ -5,7 +5,11 @@ package com.pulumi.gcp.developerconnect.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.developerconnect.inputs.ConnectionCryptoKeyConfigArgs;
 import com.pulumi.gcp.developerconnect.inputs.ConnectionGithubConfigArgs;
+import com.pulumi.gcp.developerconnect.inputs.ConnectionGithubEnterpriseConfigArgs;
+import com.pulumi.gcp.developerconnect.inputs.ConnectionGitlabConfigArgs;
+import com.pulumi.gcp.developerconnect.inputs.ConnectionGitlabEnterpriseConfigArgs;
 import com.pulumi.gcp.developerconnect.inputs.ConnectionInstallationStateArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -22,7 +26,6 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Optional. Allows clients to store small amounts of arbitrary data.
-     * 
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
@@ -32,7 +35,6 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Optional. Allows clients to store small amounts of arbitrary data.
-     * 
      * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
      * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
      * 
@@ -42,8 +44,9 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Required. Id of the requesting object. If auto-generating Id server-side,
-     * remove this field and connection_id from the method_signature of Create RPC.
+     * Required. Id of the requesting object
+     * If auto-generating Id server-side, remove this field and
+     * connection_id from the method_signature of Create RPC
      * 
      * ***
      * 
@@ -52,8 +55,9 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> connectionId;
 
     /**
-     * @return Required. Id of the requesting object. If auto-generating Id server-side,
-     * remove this field and connection_id from the method_signature of Create RPC.
+     * @return Required. Id of the requesting object
+     * If auto-generating Id server-side, remove this field and
+     * connection_id from the method_signature of Create RPC
      * 
      * ***
      * 
@@ -78,6 +82,25 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * The crypto key configuration. This field is used by the Customer-managed
+     * encryption keys (CMEK) feature.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="cryptoKeyConfig")
+    private @Nullable Output<ConnectionCryptoKeyConfigArgs> cryptoKeyConfig;
+
+    /**
+     * @return The crypto key configuration. This field is used by the Customer-managed
+     * encryption keys (CMEK) feature.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ConnectionCryptoKeyConfigArgs>> cryptoKeyConfig() {
+        return Optional.ofNullable(this.cryptoKeyConfig);
+    }
+
+    /**
      * Output only. [Output only] Delete timestamp
      * 
      */
@@ -93,14 +116,18 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional. If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
+     * Optional. If disabled is set to true, functionality is disabled for this connection.
+     * Repository based API methods and webhooks processing for repositories in
+     * this connection will be disabled.
      * 
      */
     @Import(name="disabled")
     private @Nullable Output<Boolean> disabled;
 
     /**
-     * @return Optional. If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
+     * @return Optional. If disabled is set to true, functionality is disabled for this connection.
+     * Repository based API methods and webhooks processing for repositories in
+     * this connection will be disabled.
      * 
      */
     public Optional<Output<Boolean>> disabled() {
@@ -130,8 +157,8 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional. This checksum is computed by the server based on the value
-     * of other fields, and may be sent on update and delete requests to ensure the
+     * Optional. This checksum is computed by the server based on the value of other
+     * fields, and may be sent on update and delete requests to ensure the
      * client has an up-to-date value before proceeding.
      * 
      */
@@ -139,8 +166,8 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<String> etag;
 
     /**
-     * @return Optional. This checksum is computed by the server based on the value
-     * of other fields, and may be sent on update and delete requests to ensure the
+     * @return Optional. This checksum is computed by the server based on the value of other
+     * fields, and may be sent on update and delete requests to ensure the
      * client has an up-to-date value before proceeding.
      * 
      */
@@ -166,8 +193,60 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Describes stage and necessary actions to be taken by the user to complete the installation.
-     * Used for GitHub and GitHub Enterprise based connections.
+     * Configuration for connections to an instance of GitHub Enterprise.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="githubEnterpriseConfig")
+    private @Nullable Output<ConnectionGithubEnterpriseConfigArgs> githubEnterpriseConfig;
+
+    /**
+     * @return Configuration for connections to an instance of GitHub Enterprise.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ConnectionGithubEnterpriseConfigArgs>> githubEnterpriseConfig() {
+        return Optional.ofNullable(this.githubEnterpriseConfig);
+    }
+
+    /**
+     * Configuration for connections to gitlab.com.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="gitlabConfig")
+    private @Nullable Output<ConnectionGitlabConfigArgs> gitlabConfig;
+
+    /**
+     * @return Configuration for connections to gitlab.com.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ConnectionGitlabConfigArgs>> gitlabConfig() {
+        return Optional.ofNullable(this.gitlabConfig);
+    }
+
+    /**
+     * Configuration for connections to an instance of GitLab Enterprise.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="gitlabEnterpriseConfig")
+    private @Nullable Output<ConnectionGitlabEnterpriseConfigArgs> gitlabEnterpriseConfig;
+
+    /**
+     * @return Configuration for connections to an instance of GitLab Enterprise.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<ConnectionGitlabEnterpriseConfigArgs>> gitlabEnterpriseConfig() {
+        return Optional.ofNullable(this.gitlabEnterpriseConfig);
+    }
+
+    /**
+     * Describes stage and necessary actions to be taken by the
+     * user to complete the installation. Used for GitHub and GitHub Enterprise
+     * based connections.
      * Structure is documented below.
      * 
      */
@@ -175,8 +254,9 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<List<ConnectionInstallationStateArgs>> installationStates;
 
     /**
-     * @return Describes stage and necessary actions to be taken by the user to complete the installation.
-     * Used for GitHub and GitHub Enterprise based connections.
+     * @return Describes stage and necessary actions to be taken by the
+     * user to complete the installation. Used for GitHub and GitHub Enterprise
+     * based connections.
      * Structure is documented below.
      * 
      */
@@ -186,7 +266,6 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Optional. Labels as key value pairs
-     * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
@@ -196,7 +275,6 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Optional. Labels as key value pairs
-     * 
      * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
      * Please refer to the field `effective_labels` for all of the labels present on the resource.
      * 
@@ -206,18 +284,14 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Resource ID segment making up resource `name`. It identifies the resource
-     * within its parent collection as described in https://google.aip.dev/122. See documentation
-     * for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
+     * Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      * 
      */
     @Import(name="location")
     private @Nullable Output<String> location;
 
     /**
-     * @return Resource ID segment making up resource `name`. It identifies the resource
-     * within its parent collection as described in https://google.aip.dev/122. See documentation
-     * for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
+     * @return Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
      * 
      */
     public Optional<Output<String>> location() {
@@ -276,16 +350,16 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Output only. Set to true when the connection is being set up or updated
-     * in the background.
+     * Output only. Set to true when the connection is being set up or updated in the
+     * background.
      * 
      */
     @Import(name="reconciling")
     private @Nullable Output<Boolean> reconciling;
 
     /**
-     * @return Output only. Set to true when the connection is being set up or updated
-     * in the background.
+     * @return Output only. Set to true when the connection is being set up or updated in the
+     * background.
      * 
      */
     public Optional<Output<Boolean>> reconciling() {
@@ -328,12 +402,16 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         this.annotations = $.annotations;
         this.connectionId = $.connectionId;
         this.createTime = $.createTime;
+        this.cryptoKeyConfig = $.cryptoKeyConfig;
         this.deleteTime = $.deleteTime;
         this.disabled = $.disabled;
         this.effectiveAnnotations = $.effectiveAnnotations;
         this.effectiveLabels = $.effectiveLabels;
         this.etag = $.etag;
         this.githubConfig = $.githubConfig;
+        this.githubEnterpriseConfig = $.githubEnterpriseConfig;
+        this.gitlabConfig = $.gitlabConfig;
+        this.gitlabEnterpriseConfig = $.gitlabEnterpriseConfig;
         this.installationStates = $.installationStates;
         this.labels = $.labels;
         this.location = $.location;
@@ -365,7 +443,6 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param annotations Optional. Allows clients to store small amounts of arbitrary data.
-         * 
          * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
          * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
          * 
@@ -379,7 +456,6 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param annotations Optional. Allows clients to store small amounts of arbitrary data.
-         * 
          * **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
          * Please refer to the field `effective_annotations` for all of the annotations present on the resource.
          * 
@@ -391,8 +467,9 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectionId Required. Id of the requesting object. If auto-generating Id server-side,
-         * remove this field and connection_id from the method_signature of Create RPC.
+         * @param connectionId Required. Id of the requesting object
+         * If auto-generating Id server-side, remove this field and
+         * connection_id from the method_signature of Create RPC
          * 
          * ***
          * 
@@ -405,8 +482,9 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param connectionId Required. Id of the requesting object. If auto-generating Id server-side,
-         * remove this field and connection_id from the method_signature of Create RPC.
+         * @param connectionId Required. Id of the requesting object
+         * If auto-generating Id server-side, remove this field and
+         * connection_id from the method_signature of Create RPC
          * 
          * ***
          * 
@@ -439,6 +517,31 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param cryptoKeyConfig The crypto key configuration. This field is used by the Customer-managed
+         * encryption keys (CMEK) feature.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cryptoKeyConfig(@Nullable Output<ConnectionCryptoKeyConfigArgs> cryptoKeyConfig) {
+            $.cryptoKeyConfig = cryptoKeyConfig;
+            return this;
+        }
+
+        /**
+         * @param cryptoKeyConfig The crypto key configuration. This field is used by the Customer-managed
+         * encryption keys (CMEK) feature.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder cryptoKeyConfig(ConnectionCryptoKeyConfigArgs cryptoKeyConfig) {
+            return cryptoKeyConfig(Output.of(cryptoKeyConfig));
+        }
+
+        /**
          * @param deleteTime Output only. [Output only] Delete timestamp
          * 
          * @return builder
@@ -460,7 +563,9 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param disabled Optional. If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
+         * @param disabled Optional. If disabled is set to true, functionality is disabled for this connection.
+         * Repository based API methods and webhooks processing for repositories in
+         * this connection will be disabled.
          * 
          * @return builder
          * 
@@ -471,7 +576,9 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param disabled Optional. If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
+         * @param disabled Optional. If disabled is set to true, functionality is disabled for this connection.
+         * Repository based API methods and webhooks processing for repositories in
+         * this connection will be disabled.
          * 
          * @return builder
          * 
@@ -511,8 +618,8 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param etag Optional. This checksum is computed by the server based on the value
-         * of other fields, and may be sent on update and delete requests to ensure the
+         * @param etag Optional. This checksum is computed by the server based on the value of other
+         * fields, and may be sent on update and delete requests to ensure the
          * client has an up-to-date value before proceeding.
          * 
          * @return builder
@@ -524,8 +631,8 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param etag Optional. This checksum is computed by the server based on the value
-         * of other fields, and may be sent on update and delete requests to ensure the
+         * @param etag Optional. This checksum is computed by the server based on the value of other
+         * fields, and may be sent on update and delete requests to ensure the
          * client has an up-to-date value before proceeding.
          * 
          * @return builder
@@ -559,8 +666,78 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param installationStates Describes stage and necessary actions to be taken by the user to complete the installation.
-         * Used for GitHub and GitHub Enterprise based connections.
+         * @param githubEnterpriseConfig Configuration for connections to an instance of GitHub Enterprise.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder githubEnterpriseConfig(@Nullable Output<ConnectionGithubEnterpriseConfigArgs> githubEnterpriseConfig) {
+            $.githubEnterpriseConfig = githubEnterpriseConfig;
+            return this;
+        }
+
+        /**
+         * @param githubEnterpriseConfig Configuration for connections to an instance of GitHub Enterprise.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder githubEnterpriseConfig(ConnectionGithubEnterpriseConfigArgs githubEnterpriseConfig) {
+            return githubEnterpriseConfig(Output.of(githubEnterpriseConfig));
+        }
+
+        /**
+         * @param gitlabConfig Configuration for connections to gitlab.com.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitlabConfig(@Nullable Output<ConnectionGitlabConfigArgs> gitlabConfig) {
+            $.gitlabConfig = gitlabConfig;
+            return this;
+        }
+
+        /**
+         * @param gitlabConfig Configuration for connections to gitlab.com.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitlabConfig(ConnectionGitlabConfigArgs gitlabConfig) {
+            return gitlabConfig(Output.of(gitlabConfig));
+        }
+
+        /**
+         * @param gitlabEnterpriseConfig Configuration for connections to an instance of GitLab Enterprise.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitlabEnterpriseConfig(@Nullable Output<ConnectionGitlabEnterpriseConfigArgs> gitlabEnterpriseConfig) {
+            $.gitlabEnterpriseConfig = gitlabEnterpriseConfig;
+            return this;
+        }
+
+        /**
+         * @param gitlabEnterpriseConfig Configuration for connections to an instance of GitLab Enterprise.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder gitlabEnterpriseConfig(ConnectionGitlabEnterpriseConfigArgs gitlabEnterpriseConfig) {
+            return gitlabEnterpriseConfig(Output.of(gitlabEnterpriseConfig));
+        }
+
+        /**
+         * @param installationStates Describes stage and necessary actions to be taken by the
+         * user to complete the installation. Used for GitHub and GitHub Enterprise
+         * based connections.
          * Structure is documented below.
          * 
          * @return builder
@@ -572,8 +749,9 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param installationStates Describes stage and necessary actions to be taken by the user to complete the installation.
-         * Used for GitHub and GitHub Enterprise based connections.
+         * @param installationStates Describes stage and necessary actions to be taken by the
+         * user to complete the installation. Used for GitHub and GitHub Enterprise
+         * based connections.
          * Structure is documented below.
          * 
          * @return builder
@@ -584,8 +762,9 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param installationStates Describes stage and necessary actions to be taken by the user to complete the installation.
-         * Used for GitHub and GitHub Enterprise based connections.
+         * @param installationStates Describes stage and necessary actions to be taken by the
+         * user to complete the installation. Used for GitHub and GitHub Enterprise
+         * based connections.
          * Structure is documented below.
          * 
          * @return builder
@@ -597,7 +776,6 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param labels Optional. Labels as key value pairs
-         * 
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
          * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
@@ -611,7 +789,6 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param labels Optional. Labels as key value pairs
-         * 
          * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
          * Please refer to the field `effective_labels` for all of the labels present on the resource.
          * 
@@ -623,9 +800,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param location Resource ID segment making up resource `name`. It identifies the resource
-         * within its parent collection as described in https://google.aip.dev/122. See documentation
-         * for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
+         * @param location Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
          * 
          * @return builder
          * 
@@ -636,9 +811,7 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param location Resource ID segment making up resource `name`. It identifies the resource
-         * within its parent collection as described in https://google.aip.dev/122. See documentation
-         * for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
+         * @param location Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
          * 
          * @return builder
          * 
@@ -717,8 +890,8 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param reconciling Output only. Set to true when the connection is being set up or updated
-         * in the background.
+         * @param reconciling Output only. Set to true when the connection is being set up or updated in the
+         * background.
          * 
          * @return builder
          * 
@@ -729,8 +902,8 @@ public final class ConnectionState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param reconciling Output only. Set to true when the connection is being set up or updated
-         * in the background.
+         * @param reconciling Output only. Set to true when the connection is being set up or updated in the
+         * background.
          * 
          * @return builder
          * 

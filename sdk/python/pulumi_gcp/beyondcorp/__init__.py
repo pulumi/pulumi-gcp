@@ -11,5 +11,6 @@ from .app_gateway import *
 from .get_app_connection import *
 from .get_app_connector import *
 from .get_app_gateway import *
+from .security_gateway import *
 from ._inputs import *
 from . import outputs

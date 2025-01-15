@@ -428,7 +428,7 @@ type VMwareCluster struct {
 	// Structure is documented below.
 	ValidationChecks VMwareClusterValidationCheckArrayOutput `pulumi:"validationChecks"`
 	// VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
-	Vcenter VMwareClusterVcenterPtrOutput `pulumi:"vcenter"`
+	Vcenter VMwareClusterVcenterOutput `pulumi:"vcenter"`
 	// Enable VM tracking.
 	VmTrackingEnabled pulumi.BoolOutput `pulumi:"vmTrackingEnabled"`
 }
@@ -1042,8 +1042,8 @@ func (o VMwareClusterOutput) ValidationChecks() VMwareClusterValidationCheckArra
 }
 
 // VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
-func (o VMwareClusterOutput) Vcenter() VMwareClusterVcenterPtrOutput {
-	return o.ApplyT(func(v *VMwareCluster) VMwareClusterVcenterPtrOutput { return v.Vcenter }).(VMwareClusterVcenterPtrOutput)
+func (o VMwareClusterOutput) Vcenter() VMwareClusterVcenterOutput {
+	return o.ApplyT(func(v *VMwareCluster) VMwareClusterVcenterOutput { return v.Vcenter }).(VMwareClusterVcenterOutput)
 }
 
 // Enable VM tracking.

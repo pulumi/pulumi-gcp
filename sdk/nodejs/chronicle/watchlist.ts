@@ -18,7 +18,27 @@ import * as utilities from "../utilities";
  * const example = new gcp.chronicle.Watchlist("example", {
  *     location: "us",
  *     instance: "00000000-0000-0000-0000-000000000000",
- *     watchlistId: "watchlist-name",
+ *     watchlistId: "watchlist-id",
+ *     description: "watchlist-description",
+ *     displayName: "watchlist_name",
+ *     multiplyingFactor: 1,
+ *     entityPopulationMechanism: {
+ *         manual: {},
+ *     },
+ *     watchlistUserPreferences: {
+ *         pinned: true,
+ *     },
+ * });
+ * ```
+ * ### Chronicle Watchlist Without Id
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const example = new gcp.chronicle.Watchlist("example", {
+ *     location: "us",
+ *     instance: "00000000-0000-0000-0000-000000000000",
  *     description: "watchlist-description",
  *     displayName: "watchlist-name",
  *     multiplyingFactor: 1,
@@ -131,10 +151,8 @@ export class Watchlist extends pulumi.CustomResource {
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
     /**
-     * Optional. The ID to use for the watchlist,
-     * which will become the final component of the watchlist's resource name.
-     * This value should be 4-63 characters, and valid characters
-     * are /a-z-/.
+     * Optional. The ID to use for the watchlist, which will become the final component of the watchlist's resource name. This
+     * value should be 4-63 characters, and valid characters are /a-z-/.
      */
     public readonly watchlistId!: pulumi.Output<string>;
     /**
@@ -181,9 +199,6 @@ export class Watchlist extends pulumi.CustomResource {
             }
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
-            }
-            if ((!args || args.watchlistId === undefined) && !opts.urn) {
-                throw new Error("Missing required property 'watchlistId'");
             }
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["displayName"] = args ? args.displayName : undefined;
@@ -256,10 +271,8 @@ export interface WatchlistState {
      */
     updateTime?: pulumi.Input<string>;
     /**
-     * Optional. The ID to use for the watchlist,
-     * which will become the final component of the watchlist's resource name.
-     * This value should be 4-63 characters, and valid characters
-     * are /a-z-/.
+     * Optional. The ID to use for the watchlist, which will become the final component of the watchlist's resource name. This
+     * value should be 4-63 characters, and valid characters are /a-z-/.
      */
     watchlistId?: pulumi.Input<string>;
     /**
@@ -301,12 +314,10 @@ export interface WatchlistArgs {
     multiplyingFactor?: pulumi.Input<number>;
     project?: pulumi.Input<string>;
     /**
-     * Optional. The ID to use for the watchlist,
-     * which will become the final component of the watchlist's resource name.
-     * This value should be 4-63 characters, and valid characters
-     * are /a-z-/.
+     * Optional. The ID to use for the watchlist, which will become the final component of the watchlist's resource name. This
+     * value should be 4-63 characters, and valid characters are /a-z-/.
      */
-    watchlistId: pulumi.Input<string>;
+    watchlistId?: pulumi.Input<string>;
     /**
      * A collection of user preferences for watchlist UI configuration.
      */

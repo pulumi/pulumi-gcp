@@ -2432,6 +2432,8 @@ type RecordSetRoutingPolicy struct {
 	// The configuration for Geolocation based routing policy.
 	// Structure is documented below.
 	Geos []RecordSetRoutingPolicyGeo `pulumi:"geos"`
+	// Specifies the health check (used with external endpoints).
+	HealthCheck *string `pulumi:"healthCheck"`
 	// The configuration for a failover policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
 	// Structure is documented below.
 	PrimaryBackup *RecordSetRoutingPolicyPrimaryBackup `pulumi:"primaryBackup"`
@@ -2457,6 +2459,8 @@ type RecordSetRoutingPolicyArgs struct {
 	// The configuration for Geolocation based routing policy.
 	// Structure is documented below.
 	Geos RecordSetRoutingPolicyGeoArrayInput `pulumi:"geos"`
+	// Specifies the health check (used with external endpoints).
+	HealthCheck pulumi.StringPtrInput `pulumi:"healthCheck"`
 	// The configuration for a failover policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
 	// Structure is documented below.
 	PrimaryBackup RecordSetRoutingPolicyPrimaryBackupPtrInput `pulumi:"primaryBackup"`
@@ -2553,6 +2557,11 @@ func (o RecordSetRoutingPolicyOutput) Geos() RecordSetRoutingPolicyGeoArrayOutpu
 	return o.ApplyT(func(v RecordSetRoutingPolicy) []RecordSetRoutingPolicyGeo { return v.Geos }).(RecordSetRoutingPolicyGeoArrayOutput)
 }
 
+// Specifies the health check (used with external endpoints).
+func (o RecordSetRoutingPolicyOutput) HealthCheck() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RecordSetRoutingPolicy) *string { return v.HealthCheck }).(pulumi.StringPtrOutput)
+}
+
 // The configuration for a failover policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
 // Structure is documented below.
 func (o RecordSetRoutingPolicyOutput) PrimaryBackup() RecordSetRoutingPolicyPrimaryBackupPtrOutput {
@@ -2608,6 +2617,16 @@ func (o RecordSetRoutingPolicyPtrOutput) Geos() RecordSetRoutingPolicyGeoArrayOu
 		}
 		return v.Geos
 	}).(RecordSetRoutingPolicyGeoArrayOutput)
+}
+
+// Specifies the health check (used with external endpoints).
+func (o RecordSetRoutingPolicyPtrOutput) HealthCheck() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RecordSetRoutingPolicy) *string {
+		if v == nil {
+			return nil
+		}
+		return v.HealthCheck
+	}).(pulumi.StringPtrOutput)
 }
 
 // The configuration for a failover policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
@@ -2753,6 +2772,8 @@ func (o RecordSetRoutingPolicyGeoArrayOutput) Index(i pulumi.IntInput) RecordSet
 }
 
 type RecordSetRoutingPolicyGeoHealthCheckedTargets struct {
+	// The list of external endpoint addresses to health check.
+	ExternalEndpoints []string `pulumi:"externalEndpoints"`
 	// The list of internal load balancers to health check.
 	// Structure is documented below.
 	InternalLoadBalancers []RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer `pulumi:"internalLoadBalancers"`
@@ -2770,6 +2791,8 @@ type RecordSetRoutingPolicyGeoHealthCheckedTargetsInput interface {
 }
 
 type RecordSetRoutingPolicyGeoHealthCheckedTargetsArgs struct {
+	// The list of external endpoint addresses to health check.
+	ExternalEndpoints pulumi.StringArrayInput `pulumi:"externalEndpoints"`
 	// The list of internal load balancers to health check.
 	// Structure is documented below.
 	InternalLoadBalancers RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArrayInput `pulumi:"internalLoadBalancers"`
@@ -2852,6 +2875,11 @@ func (o RecordSetRoutingPolicyGeoHealthCheckedTargetsOutput) ToRecordSetRoutingP
 	}).(RecordSetRoutingPolicyGeoHealthCheckedTargetsPtrOutput)
 }
 
+// The list of external endpoint addresses to health check.
+func (o RecordSetRoutingPolicyGeoHealthCheckedTargetsOutput) ExternalEndpoints() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RecordSetRoutingPolicyGeoHealthCheckedTargets) []string { return v.ExternalEndpoints }).(pulumi.StringArrayOutput)
+}
+
 // The list of internal load balancers to health check.
 // Structure is documented below.
 func (o RecordSetRoutingPolicyGeoHealthCheckedTargetsOutput) InternalLoadBalancers() RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancerArrayOutput {
@@ -2882,6 +2910,16 @@ func (o RecordSetRoutingPolicyGeoHealthCheckedTargetsPtrOutput) Elem() RecordSet
 		var ret RecordSetRoutingPolicyGeoHealthCheckedTargets
 		return ret
 	}).(RecordSetRoutingPolicyGeoHealthCheckedTargetsOutput)
+}
+
+// The list of external endpoint addresses to health check.
+func (o RecordSetRoutingPolicyGeoHealthCheckedTargetsPtrOutput) ExternalEndpoints() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RecordSetRoutingPolicyGeoHealthCheckedTargets) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExternalEndpoints
+	}).(pulumi.StringArrayOutput)
 }
 
 // The list of internal load balancers to health check.
@@ -3369,6 +3407,8 @@ func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoArrayOutput) Index(i pulumi.
 }
 
 type RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets struct {
+	// The list of external endpoint addresses to health check.
+	ExternalEndpoints []string `pulumi:"externalEndpoints"`
 	// The list of internal load balancers to health check.
 	// Structure is documented below.
 	InternalLoadBalancers []RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer `pulumi:"internalLoadBalancers"`
@@ -3386,6 +3426,8 @@ type RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInput inter
 }
 
 type RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs struct {
+	// The list of external endpoint addresses to health check.
+	ExternalEndpoints pulumi.StringArrayInput `pulumi:"externalEndpoints"`
 	// The list of internal load balancers to health check.
 	// Structure is documented below.
 	InternalLoadBalancers RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArrayInput `pulumi:"internalLoadBalancers"`
@@ -3468,6 +3510,13 @@ func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsOutput) 
 	}).(RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrOutput)
 }
 
+// The list of external endpoint addresses to health check.
+func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsOutput) ExternalEndpoints() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets) []string {
+		return v.ExternalEndpoints
+	}).(pulumi.StringArrayOutput)
+}
+
 // The list of internal load balancers to health check.
 // Structure is documented below.
 func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsOutput) InternalLoadBalancers() RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArrayOutput {
@@ -3498,6 +3547,16 @@ func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrOutpu
 		var ret RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets
 		return ret
 	}).(RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsOutput)
+}
+
+// The list of external endpoint addresses to health check.
+func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsPtrOutput) ExternalEndpoints() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExternalEndpoints
+	}).(pulumi.StringArrayOutput)
 }
 
 // The list of internal load balancers to health check.
@@ -3677,6 +3736,8 @@ func (o RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternal
 }
 
 type RecordSetRoutingPolicyPrimaryBackupPrimary struct {
+	// The Internet IP addresses to be health checked.
+	ExternalEndpoints []string `pulumi:"externalEndpoints"`
 	// The list of internal load balancers to health check.
 	InternalLoadBalancers []RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer `pulumi:"internalLoadBalancers"`
 }
@@ -3693,6 +3754,8 @@ type RecordSetRoutingPolicyPrimaryBackupPrimaryInput interface {
 }
 
 type RecordSetRoutingPolicyPrimaryBackupPrimaryArgs struct {
+	// The Internet IP addresses to be health checked.
+	ExternalEndpoints pulumi.StringArrayInput `pulumi:"externalEndpoints"`
 	// The list of internal load balancers to health check.
 	InternalLoadBalancers RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArrayInput `pulumi:"internalLoadBalancers"`
 }
@@ -3774,6 +3837,11 @@ func (o RecordSetRoutingPolicyPrimaryBackupPrimaryOutput) ToRecordSetRoutingPoli
 	}).(RecordSetRoutingPolicyPrimaryBackupPrimaryPtrOutput)
 }
 
+// The Internet IP addresses to be health checked.
+func (o RecordSetRoutingPolicyPrimaryBackupPrimaryOutput) ExternalEndpoints() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RecordSetRoutingPolicyPrimaryBackupPrimary) []string { return v.ExternalEndpoints }).(pulumi.StringArrayOutput)
+}
+
 // The list of internal load balancers to health check.
 func (o RecordSetRoutingPolicyPrimaryBackupPrimaryOutput) InternalLoadBalancers() RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerArrayOutput {
 	return o.ApplyT(func(v RecordSetRoutingPolicyPrimaryBackupPrimary) []RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer {
@@ -3803,6 +3871,16 @@ func (o RecordSetRoutingPolicyPrimaryBackupPrimaryPtrOutput) Elem() RecordSetRou
 		var ret RecordSetRoutingPolicyPrimaryBackupPrimary
 		return ret
 	}).(RecordSetRoutingPolicyPrimaryBackupPrimaryOutput)
+}
+
+// The Internet IP addresses to be health checked.
+func (o RecordSetRoutingPolicyPrimaryBackupPrimaryPtrOutput) ExternalEndpoints() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RecordSetRoutingPolicyPrimaryBackupPrimary) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExternalEndpoints
+	}).(pulumi.StringArrayOutput)
 }
 
 // The list of internal load balancers to health check.
@@ -4089,6 +4167,8 @@ func (o RecordSetRoutingPolicyWrrArrayOutput) Index(i pulumi.IntInput) RecordSet
 }
 
 type RecordSetRoutingPolicyWrrHealthCheckedTargets struct {
+	// The list of external endpoint addresses to health check.
+	ExternalEndpoints []string `pulumi:"externalEndpoints"`
 	// The list of internal load balancers to health check.
 	// Structure is documented below.
 	InternalLoadBalancers []RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer `pulumi:"internalLoadBalancers"`
@@ -4106,6 +4186,8 @@ type RecordSetRoutingPolicyWrrHealthCheckedTargetsInput interface {
 }
 
 type RecordSetRoutingPolicyWrrHealthCheckedTargetsArgs struct {
+	// The list of external endpoint addresses to health check.
+	ExternalEndpoints pulumi.StringArrayInput `pulumi:"externalEndpoints"`
 	// The list of internal load balancers to health check.
 	// Structure is documented below.
 	InternalLoadBalancers RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArrayInput `pulumi:"internalLoadBalancers"`
@@ -4188,6 +4270,11 @@ func (o RecordSetRoutingPolicyWrrHealthCheckedTargetsOutput) ToRecordSetRoutingP
 	}).(RecordSetRoutingPolicyWrrHealthCheckedTargetsPtrOutput)
 }
 
+// The list of external endpoint addresses to health check.
+func (o RecordSetRoutingPolicyWrrHealthCheckedTargetsOutput) ExternalEndpoints() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v RecordSetRoutingPolicyWrrHealthCheckedTargets) []string { return v.ExternalEndpoints }).(pulumi.StringArrayOutput)
+}
+
 // The list of internal load balancers to health check.
 // Structure is documented below.
 func (o RecordSetRoutingPolicyWrrHealthCheckedTargetsOutput) InternalLoadBalancers() RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancerArrayOutput {
@@ -4218,6 +4305,16 @@ func (o RecordSetRoutingPolicyWrrHealthCheckedTargetsPtrOutput) Elem() RecordSet
 		var ret RecordSetRoutingPolicyWrrHealthCheckedTargets
 		return ret
 	}).(RecordSetRoutingPolicyWrrHealthCheckedTargetsOutput)
+}
+
+// The list of external endpoint addresses to health check.
+func (o RecordSetRoutingPolicyWrrHealthCheckedTargetsPtrOutput) ExternalEndpoints() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v *RecordSetRoutingPolicyWrrHealthCheckedTargets) []string {
+		if v == nil {
+			return nil
+		}
+		return v.ExternalEndpoints
+	}).(pulumi.StringArrayOutput)
 }
 
 // The list of internal load balancers to health check.

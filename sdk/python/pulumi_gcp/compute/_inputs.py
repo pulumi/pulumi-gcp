@@ -5197,7 +5197,7 @@ if not MYPY:
         Structure is documented below.
 
 
-        <a name="nested_aws_v4_authentication"></a>The `aws_v4_authentication` block supports:
+        <a name="nested_security_settings_aws_v4_authentication"></a>The `aws_v4_authentication` block supports:
         """
         client_tls_policy: NotRequired[pulumi.Input[str]]
         """
@@ -5226,7 +5226,7 @@ class BackendServiceSecuritySettingsArgs:
                Structure is documented below.
                
                
-               <a name="nested_aws_v4_authentication"></a>The `aws_v4_authentication` block supports:
+               <a name="nested_security_settings_aws_v4_authentication"></a>The `aws_v4_authentication` block supports:
         :param pulumi.Input[str] client_tls_policy: ClientTlsPolicy is a resource that specifies how a client should authenticate
                connections to backends of a service. This resource itself does not affect
                configuration unless it is attached to a backend service resource.
@@ -5250,7 +5250,7 @@ class BackendServiceSecuritySettingsArgs:
         Structure is documented below.
 
 
-        <a name="nested_aws_v4_authentication"></a>The `aws_v4_authentication` block supports:
+        <a name="nested_security_settings_aws_v4_authentication"></a>The `aws_v4_authentication` block supports:
         """
         return pulumi.get(self, "aws_v4_authentication")
 
@@ -6456,7 +6456,7 @@ if not MYPY:
         Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
 
 
-        <a name="nested_layer4_configs"></a>The `layer4_configs` block supports:
+        <a name="nested_match_layer4_configs"></a>The `layer4_configs` block supports:
         """
 elif False:
     FirewallPolicyRuleMatchArgsDict: TypeAlias = Mapping[str, Any]
@@ -6490,7 +6490,7 @@ class FirewallPolicyRuleMatchArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_threat_intelligences: Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
                
                
-               <a name="nested_layer4_configs"></a>The `layer4_configs` block supports:
+               <a name="nested_match_layer4_configs"></a>The `layer4_configs` block supports:
         """
         pulumi.set(__self__, "layer4_configs", layer4_configs)
         if dest_address_groups is not None:
@@ -6642,7 +6642,7 @@ class FirewallPolicyRuleMatchArgs:
         Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
 
 
-        <a name="nested_layer4_configs"></a>The `layer4_configs` block supports:
+        <a name="nested_match_layer4_configs"></a>The `layer4_configs` block supports:
         """
         return pulumi.get(self, "src_threat_intelligences")
 
@@ -7085,7 +7085,7 @@ if not MYPY:
         Structure is documented below.
 
 
-        <a name="nested_layer4_config"></a>The `layer4_config` block supports:
+        <a name="nested_rule_rule_match_layer4_config"></a>The `layer4_config` block supports:
         """
         src_address_groups: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
@@ -7148,7 +7148,7 @@ class FirewallPolicyWithRulesPredefinedRuleMatchArgs:
                Structure is documented below.
                
                
-               <a name="nested_layer4_config"></a>The `layer4_config` block supports:
+               <a name="nested_rule_rule_match_layer4_config"></a>The `layer4_config` block supports:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_address_groups: Address groups which should be matched against the traffic source.
                Maximum number of source address groups is 10.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_fqdns: Fully Qualified Domain Name (FQDN) which should be matched against
@@ -7260,7 +7260,7 @@ class FirewallPolicyWithRulesPredefinedRuleMatchArgs:
         Structure is documented below.
 
 
-        <a name="nested_layer4_config"></a>The `layer4_config` block supports:
+        <a name="nested_rule_rule_match_layer4_config"></a>The `layer4_config` block supports:
         """
         return pulumi.get(self, "layer4_configs")
 
@@ -7735,7 +7735,7 @@ if not MYPY:
         Structure is documented below.
 
 
-        <a name="nested_layer4_config"></a>The `layer4_config` block supports:
+        <a name="nested_rule_rule_match_layer4_config"></a>The `layer4_config` block supports:
         """
         dest_address_groups: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
@@ -7813,7 +7813,7 @@ class FirewallPolicyWithRulesRuleMatchArgs:
                Structure is documented below.
                
                
-               <a name="nested_layer4_config"></a>The `layer4_config` block supports:
+               <a name="nested_rule_rule_match_layer4_config"></a>The `layer4_config` block supports:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_address_groups: Address groups which should be matched against the traffic destination.
                Maximum number of destination address groups is 10.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_fqdns: Fully Qualified Domain Name (FQDN) which should be matched against
@@ -7869,7 +7869,7 @@ class FirewallPolicyWithRulesRuleMatchArgs:
         Structure is documented below.
 
 
-        <a name="nested_layer4_config"></a>The `layer4_config` block supports:
+        <a name="nested_rule_rule_match_layer4_config"></a>The `layer4_config` block supports:
         """
         return pulumi.get(self, "layer4_configs")
 
@@ -21829,7 +21829,7 @@ if not MYPY:
         Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
 
 
-        <a name="nested_layer4_configs"></a>The `layer4_configs` block supports:
+        <a name="nested_match_layer4_configs"></a>The `layer4_configs` block supports:
         """
 elif False:
     NetworkFirewallPolicyRuleMatchArgsDict: TypeAlias = Mapping[str, Any]
@@ -21866,7 +21866,7 @@ class NetworkFirewallPolicyRuleMatchArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_threat_intelligences: Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
                
                
-               <a name="nested_layer4_configs"></a>The `layer4_configs` block supports:
+               <a name="nested_match_layer4_configs"></a>The `layer4_configs` block supports:
         """
         pulumi.set(__self__, "layer4_configs", layer4_configs)
         if dest_address_groups is not None:
@@ -22033,7 +22033,7 @@ class NetworkFirewallPolicyRuleMatchArgs:
         Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
 
 
-        <a name="nested_layer4_configs"></a>The `layer4_configs` block supports:
+        <a name="nested_match_layer4_configs"></a>The `layer4_configs` block supports:
         """
         return pulumi.get(self, "src_threat_intelligences")
 
@@ -22647,7 +22647,7 @@ if not MYPY:
         Structure is documented below.
 
 
-        <a name="nested_layer4_config"></a>The `layer4_config` block supports:
+        <a name="nested_rule_rule_match_layer4_config"></a>The `layer4_config` block supports:
         """
         src_threat_intelligences: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
@@ -22705,7 +22705,7 @@ class NetworkFirewallPolicyWithRulesPredefinedRuleMatchArgs:
                Structure is documented below.
                
                
-               <a name="nested_layer4_config"></a>The `layer4_config` block supports:
+               <a name="nested_rule_rule_match_layer4_config"></a>The `layer4_config` block supports:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_threat_intelligences: Names of Network Threat Intelligence lists.
                The IPs in these lists will be matched against traffic source.
         """
@@ -22880,7 +22880,7 @@ class NetworkFirewallPolicyWithRulesPredefinedRuleMatchArgs:
         Structure is documented below.
 
 
-        <a name="nested_layer4_config"></a>The `layer4_config` block supports:
+        <a name="nested_rule_rule_match_layer4_config"></a>The `layer4_config` block supports:
         """
         return pulumi.get(self, "src_secure_tags")
 
@@ -23517,7 +23517,7 @@ if not MYPY:
         Structure is documented below.
 
 
-        <a name="nested_layer4_config"></a>The `layer4_config` block supports:
+        <a name="nested_rule_rule_match_layer4_config"></a>The `layer4_config` block supports:
         """
         src_threat_intelligences: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
@@ -23575,7 +23575,7 @@ class NetworkFirewallPolicyWithRulesRuleMatchArgs:
                Structure is documented below.
                
                
-               <a name="nested_layer4_config"></a>The `layer4_config` block supports:
+               <a name="nested_rule_rule_match_layer4_config"></a>The `layer4_config` block supports:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_threat_intelligences: Names of Network Threat Intelligence lists.
                The IPs in these lists will be matched against traffic source.
         """
@@ -23749,7 +23749,7 @@ class NetworkFirewallPolicyWithRulesRuleMatchArgs:
         Structure is documented below.
 
 
-        <a name="nested_layer4_config"></a>The `layer4_config` block supports:
+        <a name="nested_rule_rule_match_layer4_config"></a>The `layer4_config` block supports:
         """
         return pulumi.get(self, "src_secure_tags")
 
@@ -24583,7 +24583,7 @@ if not MYPY:
         Structure is documented below.
 
 
-        <a name="nested_layer4_config"></a>The `layer4_config` block supports:
+        <a name="nested_match_config_layer4_config"></a>The `layer4_config` block supports:
         """
         dest_ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
@@ -24609,7 +24609,7 @@ class OrganizationSecurityPolicyRuleMatchConfigArgs:
                Structure is documented below.
                
                
-               <a name="nested_layer4_config"></a>The `layer4_config` block supports:
+               <a name="nested_match_config_layer4_config"></a>The `layer4_config` block supports:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_ip_ranges: Destination IP address range in CIDR format. Required for
                EGRESS rules.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_ip_ranges: Source IP address range in CIDR format. Required for
@@ -24629,7 +24629,7 @@ class OrganizationSecurityPolicyRuleMatchConfigArgs:
         Structure is documented below.
 
 
-        <a name="nested_layer4_config"></a>The `layer4_config` block supports:
+        <a name="nested_match_config_layer4_config"></a>The `layer4_config` block supports:
         """
         return pulumi.get(self, "layer4_configs")
 
@@ -34747,7 +34747,7 @@ if not MYPY:
         Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
 
 
-        <a name="nested_layer4_configs"></a>The `layer4_configs` block supports:
+        <a name="nested_match_layer4_configs"></a>The `layer4_configs` block supports:
         """
 elif False:
     RegionNetworkFirewallPolicyRuleMatchArgsDict: TypeAlias = Mapping[str, Any]
@@ -34784,7 +34784,7 @@ class RegionNetworkFirewallPolicyRuleMatchArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_threat_intelligences: Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
                
                
-               <a name="nested_layer4_configs"></a>The `layer4_configs` block supports:
+               <a name="nested_match_layer4_configs"></a>The `layer4_configs` block supports:
         """
         pulumi.set(__self__, "layer4_configs", layer4_configs)
         if dest_address_groups is not None:
@@ -34951,7 +34951,7 @@ class RegionNetworkFirewallPolicyRuleMatchArgs:
         Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
 
 
-        <a name="nested_layer4_configs"></a>The `layer4_configs` block supports:
+        <a name="nested_match_layer4_configs"></a>The `layer4_configs` block supports:
         """
         return pulumi.get(self, "src_threat_intelligences")
 
@@ -35565,7 +35565,7 @@ if not MYPY:
         Structure is documented below.
 
 
-        <a name="nested_layer4_config"></a>The `layer4_config` block supports:
+        <a name="nested_rule_rule_match_layer4_config"></a>The `layer4_config` block supports:
         """
         src_threat_intelligences: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
@@ -35623,7 +35623,7 @@ class RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatchArgs:
                Structure is documented below.
                
                
-               <a name="nested_layer4_config"></a>The `layer4_config` block supports:
+               <a name="nested_rule_rule_match_layer4_config"></a>The `layer4_config` block supports:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_threat_intelligences: Names of Network Threat Intelligence lists.
                The IPs in these lists will be matched against traffic source.
         """
@@ -35798,7 +35798,7 @@ class RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatchArgs:
         Structure is documented below.
 
 
-        <a name="nested_layer4_config"></a>The `layer4_config` block supports:
+        <a name="nested_rule_rule_match_layer4_config"></a>The `layer4_config` block supports:
         """
         return pulumi.get(self, "src_secure_tags")
 
@@ -36435,7 +36435,7 @@ if not MYPY:
         Structure is documented below.
 
 
-        <a name="nested_layer4_config"></a>The `layer4_config` block supports:
+        <a name="nested_rule_rule_match_layer4_config"></a>The `layer4_config` block supports:
         """
         src_threat_intelligences: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
@@ -36493,7 +36493,7 @@ class RegionNetworkFirewallPolicyWithRulesRuleMatchArgs:
                Structure is documented below.
                
                
-               <a name="nested_layer4_config"></a>The `layer4_config` block supports:
+               <a name="nested_rule_rule_match_layer4_config"></a>The `layer4_config` block supports:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_threat_intelligences: Names of Network Threat Intelligence lists.
                The IPs in these lists will be matched against traffic source.
         """
@@ -36667,7 +36667,7 @@ class RegionNetworkFirewallPolicyWithRulesRuleMatchArgs:
         Structure is documented below.
 
 
-        <a name="nested_layer4_config"></a>The `layer4_config` block supports:
+        <a name="nested_rule_rule_match_layer4_config"></a>The `layer4_config` block supports:
         """
         return pulumi.get(self, "src_secure_tags")
 

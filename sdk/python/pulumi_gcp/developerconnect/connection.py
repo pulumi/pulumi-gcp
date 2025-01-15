@@ -24,33 +24,45 @@ class ConnectionArgs:
                  connection_id: pulumi.Input[str],
                  location: pulumi.Input[str],
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 crypto_key_config: Optional[pulumi.Input['ConnectionCryptoKeyConfigArgs']] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  github_config: Optional[pulumi.Input['ConnectionGithubConfigArgs']] = None,
+                 github_enterprise_config: Optional[pulumi.Input['ConnectionGithubEnterpriseConfigArgs']] = None,
+                 gitlab_config: Optional[pulumi.Input['ConnectionGitlabConfigArgs']] = None,
+                 gitlab_enterprise_config: Optional[pulumi.Input['ConnectionGitlabEnterpriseConfigArgs']] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Connection resource.
-        :param pulumi.Input[str] connection_id: Required. Id of the requesting object. If auto-generating Id server-side,
-               remove this field and connection_id from the method_signature of Create RPC.
+        :param pulumi.Input[str] connection_id: Required. Id of the requesting object
+               If auto-generating Id server-side, remove this field and
+               connection_id from the method_signature of Create RPC
                
                
                - - -
-        :param pulumi.Input[str] location: Resource ID segment making up resource `name`. It identifies the resource
-               within its parent collection as described in https://google.aip.dev/122. See documentation
-               for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
+        :param pulumi.Input[str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Allows clients to store small amounts of arbitrary data.
-               
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[bool] disabled: Optional. If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
-        :param pulumi.Input[str] etag: Optional. This checksum is computed by the server based on the value
-               of other fields, and may be sent on update and delete requests to ensure the
+        :param pulumi.Input['ConnectionCryptoKeyConfigArgs'] crypto_key_config: The crypto key configuration. This field is used by the Customer-managed
+               encryption keys (CMEK) feature.
+               Structure is documented below.
+        :param pulumi.Input[bool] disabled: Optional. If disabled is set to true, functionality is disabled for this connection.
+               Repository based API methods and webhooks processing for repositories in
+               this connection will be disabled.
+        :param pulumi.Input[str] etag: Optional. This checksum is computed by the server based on the value of other
+               fields, and may be sent on update and delete requests to ensure the
                client has an up-to-date value before proceeding.
         :param pulumi.Input['ConnectionGithubConfigArgs'] github_config: Configuration for connections to github.com.
                Structure is documented below.
+        :param pulumi.Input['ConnectionGithubEnterpriseConfigArgs'] github_enterprise_config: Configuration for connections to an instance of GitHub Enterprise.
+               Structure is documented below.
+        :param pulumi.Input['ConnectionGitlabConfigArgs'] gitlab_config: Configuration for connections to gitlab.com.
+               Structure is documented below.
+        :param pulumi.Input['ConnectionGitlabEnterpriseConfigArgs'] gitlab_enterprise_config: Configuration for connections to an instance of GitLab Enterprise.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels as key value pairs
-               
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
@@ -60,12 +72,20 @@ class ConnectionArgs:
         pulumi.set(__self__, "location", location)
         if annotations is not None:
             pulumi.set(__self__, "annotations", annotations)
+        if crypto_key_config is not None:
+            pulumi.set(__self__, "crypto_key_config", crypto_key_config)
         if disabled is not None:
             pulumi.set(__self__, "disabled", disabled)
         if etag is not None:
             pulumi.set(__self__, "etag", etag)
         if github_config is not None:
             pulumi.set(__self__, "github_config", github_config)
+        if github_enterprise_config is not None:
+            pulumi.set(__self__, "github_enterprise_config", github_enterprise_config)
+        if gitlab_config is not None:
+            pulumi.set(__self__, "gitlab_config", gitlab_config)
+        if gitlab_enterprise_config is not None:
+            pulumi.set(__self__, "gitlab_enterprise_config", gitlab_enterprise_config)
         if labels is not None:
             pulumi.set(__self__, "labels", labels)
         if project is not None:
@@ -75,8 +95,9 @@ class ConnectionArgs:
     @pulumi.getter(name="connectionId")
     def connection_id(self) -> pulumi.Input[str]:
         """
-        Required. Id of the requesting object. If auto-generating Id server-side,
-        remove this field and connection_id from the method_signature of Create RPC.
+        Required. Id of the requesting object
+        If auto-generating Id server-side, remove this field and
+        connection_id from the method_signature of Create RPC
 
 
         - - -
@@ -91,9 +112,7 @@ class ConnectionArgs:
     @pulumi.getter
     def location(self) -> pulumi.Input[str]:
         """
-        Resource ID segment making up resource `name`. It identifies the resource
-        within its parent collection as described in https://google.aip.dev/122. See documentation
-        for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
+        Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         """
         return pulumi.get(self, "location")
 
@@ -106,7 +125,6 @@ class ConnectionArgs:
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Optional. Allows clients to store small amounts of arbitrary data.
-
         **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
         Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
@@ -117,10 +135,26 @@ class ConnectionArgs:
         pulumi.set(self, "annotations", value)
 
     @property
+    @pulumi.getter(name="cryptoKeyConfig")
+    def crypto_key_config(self) -> Optional[pulumi.Input['ConnectionCryptoKeyConfigArgs']]:
+        """
+        The crypto key configuration. This field is used by the Customer-managed
+        encryption keys (CMEK) feature.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "crypto_key_config")
+
+    @crypto_key_config.setter
+    def crypto_key_config(self, value: Optional[pulumi.Input['ConnectionCryptoKeyConfigArgs']]):
+        pulumi.set(self, "crypto_key_config", value)
+
+    @property
     @pulumi.getter
     def disabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Optional. If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
+        Optional. If disabled is set to true, functionality is disabled for this connection.
+        Repository based API methods and webhooks processing for repositories in
+        this connection will be disabled.
         """
         return pulumi.get(self, "disabled")
 
@@ -132,8 +166,8 @@ class ConnectionArgs:
     @pulumi.getter
     def etag(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. This checksum is computed by the server based on the value
-        of other fields, and may be sent on update and delete requests to ensure the
+        Optional. This checksum is computed by the server based on the value of other
+        fields, and may be sent on update and delete requests to ensure the
         client has an up-to-date value before proceeding.
         """
         return pulumi.get(self, "etag")
@@ -156,11 +190,49 @@ class ConnectionArgs:
         pulumi.set(self, "github_config", value)
 
     @property
+    @pulumi.getter(name="githubEnterpriseConfig")
+    def github_enterprise_config(self) -> Optional[pulumi.Input['ConnectionGithubEnterpriseConfigArgs']]:
+        """
+        Configuration for connections to an instance of GitHub Enterprise.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "github_enterprise_config")
+
+    @github_enterprise_config.setter
+    def github_enterprise_config(self, value: Optional[pulumi.Input['ConnectionGithubEnterpriseConfigArgs']]):
+        pulumi.set(self, "github_enterprise_config", value)
+
+    @property
+    @pulumi.getter(name="gitlabConfig")
+    def gitlab_config(self) -> Optional[pulumi.Input['ConnectionGitlabConfigArgs']]:
+        """
+        Configuration for connections to gitlab.com.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "gitlab_config")
+
+    @gitlab_config.setter
+    def gitlab_config(self, value: Optional[pulumi.Input['ConnectionGitlabConfigArgs']]):
+        pulumi.set(self, "gitlab_config", value)
+
+    @property
+    @pulumi.getter(name="gitlabEnterpriseConfig")
+    def gitlab_enterprise_config(self) -> Optional[pulumi.Input['ConnectionGitlabEnterpriseConfigArgs']]:
+        """
+        Configuration for connections to an instance of GitLab Enterprise.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "gitlab_enterprise_config")
+
+    @gitlab_enterprise_config.setter
+    def gitlab_enterprise_config(self, value: Optional[pulumi.Input['ConnectionGitlabEnterpriseConfigArgs']]):
+        pulumi.set(self, "gitlab_enterprise_config", value)
+
+    @property
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Optional. Labels as key value pairs
-
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
@@ -190,12 +262,16 @@ class _ConnectionState:
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  connection_id: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
+                 crypto_key_config: Optional[pulumi.Input['ConnectionCryptoKeyConfigArgs']] = None,
                  delete_time: Optional[pulumi.Input[str]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  github_config: Optional[pulumi.Input['ConnectionGithubConfigArgs']] = None,
+                 github_enterprise_config: Optional[pulumi.Input['ConnectionGithubEnterpriseConfigArgs']] = None,
+                 gitlab_config: Optional[pulumi.Input['ConnectionGitlabConfigArgs']] = None,
+                 gitlab_enterprise_config: Optional[pulumi.Input['ConnectionGitlabEnterpriseConfigArgs']] = None,
                  installation_states: Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionInstallationStateArgs']]]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -208,41 +284,50 @@ class _ConnectionState:
         """
         Input properties used for looking up and filtering Connection resources.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Allows clients to store small amounts of arbitrary data.
-               
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[str] connection_id: Required. Id of the requesting object. If auto-generating Id server-side,
-               remove this field and connection_id from the method_signature of Create RPC.
+        :param pulumi.Input[str] connection_id: Required. Id of the requesting object
+               If auto-generating Id server-side, remove this field and
+               connection_id from the method_signature of Create RPC
                
                
                - - -
         :param pulumi.Input[str] create_time: Output only. [Output only] Create timestamp
+        :param pulumi.Input['ConnectionCryptoKeyConfigArgs'] crypto_key_config: The crypto key configuration. This field is used by the Customer-managed
+               encryption keys (CMEK) feature.
+               Structure is documented below.
         :param pulumi.Input[str] delete_time: Output only. [Output only] Delete timestamp
-        :param pulumi.Input[bool] disabled: Optional. If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
+        :param pulumi.Input[bool] disabled: Optional. If disabled is set to true, functionality is disabled for this connection.
+               Repository based API methods and webhooks processing for repositories in
+               this connection will be disabled.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[str] etag: Optional. This checksum is computed by the server based on the value
-               of other fields, and may be sent on update and delete requests to ensure the
+        :param pulumi.Input[str] etag: Optional. This checksum is computed by the server based on the value of other
+               fields, and may be sent on update and delete requests to ensure the
                client has an up-to-date value before proceeding.
         :param pulumi.Input['ConnectionGithubConfigArgs'] github_config: Configuration for connections to github.com.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input['ConnectionInstallationStateArgs']]] installation_states: Describes stage and necessary actions to be taken by the user to complete the installation.
-               Used for GitHub and GitHub Enterprise based connections.
+        :param pulumi.Input['ConnectionGithubEnterpriseConfigArgs'] github_enterprise_config: Configuration for connections to an instance of GitHub Enterprise.
+               Structure is documented below.
+        :param pulumi.Input['ConnectionGitlabConfigArgs'] gitlab_config: Configuration for connections to gitlab.com.
+               Structure is documented below.
+        :param pulumi.Input['ConnectionGitlabEnterpriseConfigArgs'] gitlab_enterprise_config: Configuration for connections to an instance of GitLab Enterprise.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input['ConnectionInstallationStateArgs']]] installation_states: Describes stage and necessary actions to be taken by the
+               user to complete the installation. Used for GitHub and GitHub Enterprise
+               based connections.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels as key value pairs
-               
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[str] location: Resource ID segment making up resource `name`. It identifies the resource
-               within its parent collection as described in https://google.aip.dev/122. See documentation
-               for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
+        :param pulumi.Input[str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[str] name: Identifier. The resource name of the connection, in the format
                `projects/{project}/locations/{location}/connections/{connection_id}`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[bool] reconciling: Output only. Set to true when the connection is being set up or updated
-               in the background.
+        :param pulumi.Input[bool] reconciling: Output only. Set to true when the connection is being set up or updated in the
+               background.
         :param pulumi.Input[str] uid: Output only. A system-assigned unique identifier for a the GitRepositoryLink.
         :param pulumi.Input[str] update_time: Output only. [Output only] Update timestamp
         """
@@ -252,6 +337,8 @@ class _ConnectionState:
             pulumi.set(__self__, "connection_id", connection_id)
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if crypto_key_config is not None:
+            pulumi.set(__self__, "crypto_key_config", crypto_key_config)
         if delete_time is not None:
             pulumi.set(__self__, "delete_time", delete_time)
         if disabled is not None:
@@ -264,6 +351,12 @@ class _ConnectionState:
             pulumi.set(__self__, "etag", etag)
         if github_config is not None:
             pulumi.set(__self__, "github_config", github_config)
+        if github_enterprise_config is not None:
+            pulumi.set(__self__, "github_enterprise_config", github_enterprise_config)
+        if gitlab_config is not None:
+            pulumi.set(__self__, "gitlab_config", gitlab_config)
+        if gitlab_enterprise_config is not None:
+            pulumi.set(__self__, "gitlab_enterprise_config", gitlab_enterprise_config)
         if installation_states is not None:
             pulumi.set(__self__, "installation_states", installation_states)
         if labels is not None:
@@ -288,7 +381,6 @@ class _ConnectionState:
     def annotations(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Optional. Allows clients to store small amounts of arbitrary data.
-
         **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
         Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
@@ -302,8 +394,9 @@ class _ConnectionState:
     @pulumi.getter(name="connectionId")
     def connection_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Required. Id of the requesting object. If auto-generating Id server-side,
-        remove this field and connection_id from the method_signature of Create RPC.
+        Required. Id of the requesting object
+        If auto-generating Id server-side, remove this field and
+        connection_id from the method_signature of Create RPC
 
 
         - - -
@@ -327,6 +420,20 @@ class _ConnectionState:
         pulumi.set(self, "create_time", value)
 
     @property
+    @pulumi.getter(name="cryptoKeyConfig")
+    def crypto_key_config(self) -> Optional[pulumi.Input['ConnectionCryptoKeyConfigArgs']]:
+        """
+        The crypto key configuration. This field is used by the Customer-managed
+        encryption keys (CMEK) feature.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "crypto_key_config")
+
+    @crypto_key_config.setter
+    def crypto_key_config(self, value: Optional[pulumi.Input['ConnectionCryptoKeyConfigArgs']]):
+        pulumi.set(self, "crypto_key_config", value)
+
+    @property
     @pulumi.getter(name="deleteTime")
     def delete_time(self) -> Optional[pulumi.Input[str]]:
         """
@@ -342,7 +449,9 @@ class _ConnectionState:
     @pulumi.getter
     def disabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Optional. If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
+        Optional. If disabled is set to true, functionality is disabled for this connection.
+        Repository based API methods and webhooks processing for repositories in
+        this connection will be disabled.
         """
         return pulumi.get(self, "disabled")
 
@@ -375,8 +484,8 @@ class _ConnectionState:
     @pulumi.getter
     def etag(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. This checksum is computed by the server based on the value
-        of other fields, and may be sent on update and delete requests to ensure the
+        Optional. This checksum is computed by the server based on the value of other
+        fields, and may be sent on update and delete requests to ensure the
         client has an up-to-date value before proceeding.
         """
         return pulumi.get(self, "etag")
@@ -399,11 +508,51 @@ class _ConnectionState:
         pulumi.set(self, "github_config", value)
 
     @property
+    @pulumi.getter(name="githubEnterpriseConfig")
+    def github_enterprise_config(self) -> Optional[pulumi.Input['ConnectionGithubEnterpriseConfigArgs']]:
+        """
+        Configuration for connections to an instance of GitHub Enterprise.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "github_enterprise_config")
+
+    @github_enterprise_config.setter
+    def github_enterprise_config(self, value: Optional[pulumi.Input['ConnectionGithubEnterpriseConfigArgs']]):
+        pulumi.set(self, "github_enterprise_config", value)
+
+    @property
+    @pulumi.getter(name="gitlabConfig")
+    def gitlab_config(self) -> Optional[pulumi.Input['ConnectionGitlabConfigArgs']]:
+        """
+        Configuration for connections to gitlab.com.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "gitlab_config")
+
+    @gitlab_config.setter
+    def gitlab_config(self, value: Optional[pulumi.Input['ConnectionGitlabConfigArgs']]):
+        pulumi.set(self, "gitlab_config", value)
+
+    @property
+    @pulumi.getter(name="gitlabEnterpriseConfig")
+    def gitlab_enterprise_config(self) -> Optional[pulumi.Input['ConnectionGitlabEnterpriseConfigArgs']]:
+        """
+        Configuration for connections to an instance of GitLab Enterprise.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "gitlab_enterprise_config")
+
+    @gitlab_enterprise_config.setter
+    def gitlab_enterprise_config(self, value: Optional[pulumi.Input['ConnectionGitlabEnterpriseConfigArgs']]):
+        pulumi.set(self, "gitlab_enterprise_config", value)
+
+    @property
     @pulumi.getter(name="installationStates")
     def installation_states(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ConnectionInstallationStateArgs']]]]:
         """
-        Describes stage and necessary actions to be taken by the user to complete the installation.
-        Used for GitHub and GitHub Enterprise based connections.
+        Describes stage and necessary actions to be taken by the
+        user to complete the installation. Used for GitHub and GitHub Enterprise
+        based connections.
         Structure is documented below.
         """
         return pulumi.get(self, "installation_states")
@@ -417,7 +566,6 @@ class _ConnectionState:
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
         Optional. Labels as key value pairs
-
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
@@ -431,9 +579,7 @@ class _ConnectionState:
     @pulumi.getter
     def location(self) -> Optional[pulumi.Input[str]]:
         """
-        Resource ID segment making up resource `name`. It identifies the resource
-        within its parent collection as described in https://google.aip.dev/122. See documentation
-        for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
+        Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         """
         return pulumi.get(self, "location")
 
@@ -484,8 +630,8 @@ class _ConnectionState:
     @pulumi.getter
     def reconciling(self) -> Optional[pulumi.Input[bool]]:
         """
-        Output only. Set to true when the connection is being set up or updated
-        in the background.
+        Output only. Set to true when the connection is being set up or updated in the
+        background.
         """
         return pulumi.get(self, "reconciling")
 
@@ -525,14 +671,20 @@ class Connection(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  connection_id: Optional[pulumi.Input[str]] = None,
+                 crypto_key_config: Optional[pulumi.Input[Union['ConnectionCryptoKeyConfigArgs', 'ConnectionCryptoKeyConfigArgsDict']]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  github_config: Optional[pulumi.Input[Union['ConnectionGithubConfigArgs', 'ConnectionGithubConfigArgsDict']]] = None,
+                 github_enterprise_config: Optional[pulumi.Input[Union['ConnectionGithubEnterpriseConfigArgs', 'ConnectionGithubEnterpriseConfigArgsDict']]] = None,
+                 gitlab_config: Optional[pulumi.Input[Union['ConnectionGitlabConfigArgs', 'ConnectionGitlabConfigArgsDict']]] = None,
+                 gitlab_enterprise_config: Optional[pulumi.Input[Union['ConnectionGitlabEnterpriseConfigArgs', 'ConnectionGitlabEnterpriseConfigArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        A connection for GitHub, GitHub Enterprise, GitLab, and GitLab Enterprise.
+
         ## Example Usage
 
         ### Developer Connect Connection New
@@ -607,7 +759,159 @@ class Connection(pulumi.CustomResource):
                 },
             })
         ```
+        ### Developer Connect Connection Github
 
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_connection = gcp.developerconnect.Connection("my-connection",
+            location="us-central1",
+            connection_id="tf-test-connection",
+            github_config={
+                "github_app": "DEVELOPER_CONNECT",
+                "authorizer_credential": {
+                    "oauth_token_secret_version": "projects/devconnect-terraform-creds/secrets/tf-test-do-not-change-github-oauthtoken-e0b9e7/versions/1",
+                },
+            })
+        ```
+        ### Developer Connect Connection Github Doc
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        github_token_secret = gcp.secretmanager.Secret("github-token-secret",
+            secret_id="github-token-secret",
+            replication={
+                "auto": {},
+            })
+        github_token_secret_version = gcp.secretmanager.SecretVersion("github-token-secret-version",
+            secret=github_token_secret.id,
+            secret_data=std.file(input="my-github-token.txt").result)
+        p4sa_secret_accessor = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/secretmanager.secretAccessor",
+            "members": ["serviceAccount:service-123456789@gcp-sa-devconnect.iam.gserviceaccount.com"],
+        }])
+        policy = gcp.secretmanager.SecretIamPolicy("policy",
+            secret_id=github_token_secret.secret_id,
+            policy_data=p4sa_secret_accessor.policy_data)
+        my_connection = gcp.developerconnect.Connection("my-connection",
+            location="us-central1",
+            connection_id="my-connection",
+            github_config={
+                "github_app": "DEVELOPER_CONNECT",
+                "app_installation_id": "123123",
+                "authorizer_credential": {
+                    "oauth_token_secret_version": github_token_secret_version.id,
+                },
+            })
+        ```
+        ### Developer Connect Connection Github Enterprise
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_connection = gcp.developerconnect.Connection("my-connection",
+            location="us-central1",
+            connection_id="tf-test-connection",
+            github_enterprise_config={
+                "host_uri": "https://ghe.proctor-staging-test.com",
+                "app_id": "864434",
+                "private_key_secret_version": "projects/devconnect-terraform-creds/secrets/tf-test-ghe-do-not-change-ghe-private-key-f522d2/versions/latest",
+                "webhook_secret_secret_version": "projects/devconnect-terraform-creds/secrets/tf-test-ghe-do-not-change-ghe-webhook-secret-3c806f/versions/latest",
+                "app_installation_id": "837537",
+            })
+        ```
+        ### Developer Connect Connection Github Enterprise Doc
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        private_key_secret = gcp.secretmanager.Secret("private-key-secret",
+            secret_id="ghe-pk-secret",
+            replication={
+                "auto": {},
+            })
+        private_key_secret_version = gcp.secretmanager.SecretVersion("private-key-secret-version",
+            secret=private_key_secret.id,
+            secret_data=std.file(input="private-key.pem").result)
+        webhook_secret_secret = gcp.secretmanager.Secret("webhook-secret-secret",
+            secret_id="ghe-token-secret",
+            replication={
+                "auto": {},
+            })
+        webhook_secret_secret_version = gcp.secretmanager.SecretVersion("webhook-secret-secret-version",
+            secret=webhook_secret_secret.id,
+            secret_data="<webhook-secret-data>")
+        p4sa_secret_accessor = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/secretmanager.secretAccessor",
+            "members": ["serviceAccount:service-123456789@gcp-sa-devconnect.iam.gserviceaccount.com"],
+        }])
+        policy_pk = gcp.secretmanager.SecretIamPolicy("policy-pk",
+            secret_id=private_key_secret.secret_id,
+            policy_data=p4sa_secret_accessor.policy_data)
+        policy_whs = gcp.secretmanager.SecretIamPolicy("policy-whs",
+            secret_id=webhook_secret_secret.secret_id,
+            policy_data=p4sa_secret_accessor.policy_data)
+        my_connection = gcp.developerconnect.Connection("my-connection",
+            location="us-central1",
+            connection_id="my-connection",
+            github_enterprise_config={
+                "host_uri": "https://ghe.com",
+                "private_key_secret_version": private_key_secret_version.id,
+                "webhook_secret_secret_version": webhook_secret_secret_version.id,
+                "app_id": "100",
+                "app_installation_id": "123123",
+            },
+            opts = pulumi.ResourceOptions(depends_on=[
+                    policy_pk,
+                    policy_whs,
+                ]))
+        ```
+        ### Developer Connect Connection Gitlab
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_connection = gcp.developerconnect.Connection("my-connection",
+            location="us-central1",
+            connection_id="tf-test-connection",
+            gitlab_config={
+                "webhook_secret_secret_version": "projects/devconnect-terraform-creds/secrets/gitlab-webhook/versions/latest",
+                "read_authorizer_credential": {
+                    "user_token_secret_version": "projects/devconnect-terraform-creds/secrets/gitlab-read-cred/versions/latest",
+                },
+                "authorizer_credential": {
+                    "user_token_secret_version": "projects/devconnect-terraform-creds/secrets/gitlab-auth-cred/versions/latest",
+                },
+            })
+        ```
+        ### Developer Connect Connection Gitlab Enterprise
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_connection = gcp.developerconnect.Connection("my-connection",
+            location="us-central1",
+            connection_id="tf-test-connection",
+            gitlab_enterprise_config={
+                "host_uri": "https://gle-us-central1.gcb-test.com",
+                "webhook_secret_secret_version": "projects/devconnect-terraform-creds/secrets/gitlab-enterprise-webhook/versions/latest",
+                "read_authorizer_credential": {
+                    "user_token_secret_version": "projects/devconnect-terraform-creds/secrets/gitlab-enterprise-read-cred/versions/latest",
+                },
+                "authorizer_credential": {
+                    "user_token_secret_version": "projects/devconnect-terraform-creds/secrets/gitlab-enterprise-auth-cred/versions/latest",
+                },
+            })
+        ```
         ## Import
 
         Connection can be imported using any of these accepted formats:
@@ -635,27 +939,35 @@ class Connection(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Allows clients to store small amounts of arbitrary data.
-               
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[str] connection_id: Required. Id of the requesting object. If auto-generating Id server-side,
-               remove this field and connection_id from the method_signature of Create RPC.
+        :param pulumi.Input[str] connection_id: Required. Id of the requesting object
+               If auto-generating Id server-side, remove this field and
+               connection_id from the method_signature of Create RPC
                
                
                - - -
-        :param pulumi.Input[bool] disabled: Optional. If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
-        :param pulumi.Input[str] etag: Optional. This checksum is computed by the server based on the value
-               of other fields, and may be sent on update and delete requests to ensure the
+        :param pulumi.Input[Union['ConnectionCryptoKeyConfigArgs', 'ConnectionCryptoKeyConfigArgsDict']] crypto_key_config: The crypto key configuration. This field is used by the Customer-managed
+               encryption keys (CMEK) feature.
+               Structure is documented below.
+        :param pulumi.Input[bool] disabled: Optional. If disabled is set to true, functionality is disabled for this connection.
+               Repository based API methods and webhooks processing for repositories in
+               this connection will be disabled.
+        :param pulumi.Input[str] etag: Optional. This checksum is computed by the server based on the value of other
+               fields, and may be sent on update and delete requests to ensure the
                client has an up-to-date value before proceeding.
         :param pulumi.Input[Union['ConnectionGithubConfigArgs', 'ConnectionGithubConfigArgsDict']] github_config: Configuration for connections to github.com.
                Structure is documented below.
+        :param pulumi.Input[Union['ConnectionGithubEnterpriseConfigArgs', 'ConnectionGithubEnterpriseConfigArgsDict']] github_enterprise_config: Configuration for connections to an instance of GitHub Enterprise.
+               Structure is documented below.
+        :param pulumi.Input[Union['ConnectionGitlabConfigArgs', 'ConnectionGitlabConfigArgsDict']] gitlab_config: Configuration for connections to gitlab.com.
+               Structure is documented below.
+        :param pulumi.Input[Union['ConnectionGitlabEnterpriseConfigArgs', 'ConnectionGitlabEnterpriseConfigArgsDict']] gitlab_enterprise_config: Configuration for connections to an instance of GitLab Enterprise.
+               Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels as key value pairs
-               
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[str] location: Resource ID segment making up resource `name`. It identifies the resource
-               within its parent collection as described in https://google.aip.dev/122. See documentation
-               for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
+        :param pulumi.Input[str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -666,6 +978,8 @@ class Connection(pulumi.CustomResource):
                  args: ConnectionArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A connection for GitHub, GitHub Enterprise, GitLab, and GitLab Enterprise.
+
         ## Example Usage
 
         ### Developer Connect Connection New
@@ -740,7 +1054,159 @@ class Connection(pulumi.CustomResource):
                 },
             })
         ```
+        ### Developer Connect Connection Github
 
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_connection = gcp.developerconnect.Connection("my-connection",
+            location="us-central1",
+            connection_id="tf-test-connection",
+            github_config={
+                "github_app": "DEVELOPER_CONNECT",
+                "authorizer_credential": {
+                    "oauth_token_secret_version": "projects/devconnect-terraform-creds/secrets/tf-test-do-not-change-github-oauthtoken-e0b9e7/versions/1",
+                },
+            })
+        ```
+        ### Developer Connect Connection Github Doc
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        github_token_secret = gcp.secretmanager.Secret("github-token-secret",
+            secret_id="github-token-secret",
+            replication={
+                "auto": {},
+            })
+        github_token_secret_version = gcp.secretmanager.SecretVersion("github-token-secret-version",
+            secret=github_token_secret.id,
+            secret_data=std.file(input="my-github-token.txt").result)
+        p4sa_secret_accessor = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/secretmanager.secretAccessor",
+            "members": ["serviceAccount:service-123456789@gcp-sa-devconnect.iam.gserviceaccount.com"],
+        }])
+        policy = gcp.secretmanager.SecretIamPolicy("policy",
+            secret_id=github_token_secret.secret_id,
+            policy_data=p4sa_secret_accessor.policy_data)
+        my_connection = gcp.developerconnect.Connection("my-connection",
+            location="us-central1",
+            connection_id="my-connection",
+            github_config={
+                "github_app": "DEVELOPER_CONNECT",
+                "app_installation_id": "123123",
+                "authorizer_credential": {
+                    "oauth_token_secret_version": github_token_secret_version.id,
+                },
+            })
+        ```
+        ### Developer Connect Connection Github Enterprise
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_connection = gcp.developerconnect.Connection("my-connection",
+            location="us-central1",
+            connection_id="tf-test-connection",
+            github_enterprise_config={
+                "host_uri": "https://ghe.proctor-staging-test.com",
+                "app_id": "864434",
+                "private_key_secret_version": "projects/devconnect-terraform-creds/secrets/tf-test-ghe-do-not-change-ghe-private-key-f522d2/versions/latest",
+                "webhook_secret_secret_version": "projects/devconnect-terraform-creds/secrets/tf-test-ghe-do-not-change-ghe-webhook-secret-3c806f/versions/latest",
+                "app_installation_id": "837537",
+            })
+        ```
+        ### Developer Connect Connection Github Enterprise Doc
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+        import pulumi_std as std
+
+        private_key_secret = gcp.secretmanager.Secret("private-key-secret",
+            secret_id="ghe-pk-secret",
+            replication={
+                "auto": {},
+            })
+        private_key_secret_version = gcp.secretmanager.SecretVersion("private-key-secret-version",
+            secret=private_key_secret.id,
+            secret_data=std.file(input="private-key.pem").result)
+        webhook_secret_secret = gcp.secretmanager.Secret("webhook-secret-secret",
+            secret_id="ghe-token-secret",
+            replication={
+                "auto": {},
+            })
+        webhook_secret_secret_version = gcp.secretmanager.SecretVersion("webhook-secret-secret-version",
+            secret=webhook_secret_secret.id,
+            secret_data="<webhook-secret-data>")
+        p4sa_secret_accessor = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/secretmanager.secretAccessor",
+            "members": ["serviceAccount:service-123456789@gcp-sa-devconnect.iam.gserviceaccount.com"],
+        }])
+        policy_pk = gcp.secretmanager.SecretIamPolicy("policy-pk",
+            secret_id=private_key_secret.secret_id,
+            policy_data=p4sa_secret_accessor.policy_data)
+        policy_whs = gcp.secretmanager.SecretIamPolicy("policy-whs",
+            secret_id=webhook_secret_secret.secret_id,
+            policy_data=p4sa_secret_accessor.policy_data)
+        my_connection = gcp.developerconnect.Connection("my-connection",
+            location="us-central1",
+            connection_id="my-connection",
+            github_enterprise_config={
+                "host_uri": "https://ghe.com",
+                "private_key_secret_version": private_key_secret_version.id,
+                "webhook_secret_secret_version": webhook_secret_secret_version.id,
+                "app_id": "100",
+                "app_installation_id": "123123",
+            },
+            opts = pulumi.ResourceOptions(depends_on=[
+                    policy_pk,
+                    policy_whs,
+                ]))
+        ```
+        ### Developer Connect Connection Gitlab
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_connection = gcp.developerconnect.Connection("my-connection",
+            location="us-central1",
+            connection_id="tf-test-connection",
+            gitlab_config={
+                "webhook_secret_secret_version": "projects/devconnect-terraform-creds/secrets/gitlab-webhook/versions/latest",
+                "read_authorizer_credential": {
+                    "user_token_secret_version": "projects/devconnect-terraform-creds/secrets/gitlab-read-cred/versions/latest",
+                },
+                "authorizer_credential": {
+                    "user_token_secret_version": "projects/devconnect-terraform-creds/secrets/gitlab-auth-cred/versions/latest",
+                },
+            })
+        ```
+        ### Developer Connect Connection Gitlab Enterprise
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        my_connection = gcp.developerconnect.Connection("my-connection",
+            location="us-central1",
+            connection_id="tf-test-connection",
+            gitlab_enterprise_config={
+                "host_uri": "https://gle-us-central1.gcb-test.com",
+                "webhook_secret_secret_version": "projects/devconnect-terraform-creds/secrets/gitlab-enterprise-webhook/versions/latest",
+                "read_authorizer_credential": {
+                    "user_token_secret_version": "projects/devconnect-terraform-creds/secrets/gitlab-enterprise-read-cred/versions/latest",
+                },
+                "authorizer_credential": {
+                    "user_token_secret_version": "projects/devconnect-terraform-creds/secrets/gitlab-enterprise-auth-cred/versions/latest",
+                },
+            })
+        ```
         ## Import
 
         Connection can be imported using any of these accepted formats:
@@ -782,9 +1248,13 @@ class Connection(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  connection_id: Optional[pulumi.Input[str]] = None,
+                 crypto_key_config: Optional[pulumi.Input[Union['ConnectionCryptoKeyConfigArgs', 'ConnectionCryptoKeyConfigArgsDict']]] = None,
                  disabled: Optional[pulumi.Input[bool]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
                  github_config: Optional[pulumi.Input[Union['ConnectionGithubConfigArgs', 'ConnectionGithubConfigArgsDict']]] = None,
+                 github_enterprise_config: Optional[pulumi.Input[Union['ConnectionGithubEnterpriseConfigArgs', 'ConnectionGithubEnterpriseConfigArgsDict']]] = None,
+                 gitlab_config: Optional[pulumi.Input[Union['ConnectionGitlabConfigArgs', 'ConnectionGitlabConfigArgsDict']]] = None,
+                 gitlab_enterprise_config: Optional[pulumi.Input[Union['ConnectionGitlabEnterpriseConfigArgs', 'ConnectionGitlabEnterpriseConfigArgsDict']]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -801,9 +1271,13 @@ class Connection(pulumi.CustomResource):
             if connection_id is None and not opts.urn:
                 raise TypeError("Missing required property 'connection_id'")
             __props__.__dict__["connection_id"] = connection_id
+            __props__.__dict__["crypto_key_config"] = crypto_key_config
             __props__.__dict__["disabled"] = disabled
             __props__.__dict__["etag"] = etag
             __props__.__dict__["github_config"] = github_config
+            __props__.__dict__["github_enterprise_config"] = github_enterprise_config
+            __props__.__dict__["gitlab_config"] = gitlab_config
+            __props__.__dict__["gitlab_enterprise_config"] = gitlab_enterprise_config
             __props__.__dict__["labels"] = labels
             if location is None and not opts.urn:
                 raise TypeError("Missing required property 'location'")
@@ -834,12 +1308,16 @@ class Connection(pulumi.CustomResource):
             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             connection_id: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
+            crypto_key_config: Optional[pulumi.Input[Union['ConnectionCryptoKeyConfigArgs', 'ConnectionCryptoKeyConfigArgsDict']]] = None,
             delete_time: Optional[pulumi.Input[str]] = None,
             disabled: Optional[pulumi.Input[bool]] = None,
             effective_annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             etag: Optional[pulumi.Input[str]] = None,
             github_config: Optional[pulumi.Input[Union['ConnectionGithubConfigArgs', 'ConnectionGithubConfigArgsDict']]] = None,
+            github_enterprise_config: Optional[pulumi.Input[Union['ConnectionGithubEnterpriseConfigArgs', 'ConnectionGithubEnterpriseConfigArgsDict']]] = None,
+            gitlab_config: Optional[pulumi.Input[Union['ConnectionGitlabConfigArgs', 'ConnectionGitlabConfigArgsDict']]] = None,
+            gitlab_enterprise_config: Optional[pulumi.Input[Union['ConnectionGitlabEnterpriseConfigArgs', 'ConnectionGitlabEnterpriseConfigArgsDict']]] = None,
             installation_states: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ConnectionInstallationStateArgs', 'ConnectionInstallationStateArgsDict']]]]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
@@ -857,41 +1335,50 @@ class Connection(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] annotations: Optional. Allows clients to store small amounts of arbitrary data.
-               
                **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
                Please refer to the field `effective_annotations` for all of the annotations present on the resource.
-        :param pulumi.Input[str] connection_id: Required. Id of the requesting object. If auto-generating Id server-side,
-               remove this field and connection_id from the method_signature of Create RPC.
+        :param pulumi.Input[str] connection_id: Required. Id of the requesting object
+               If auto-generating Id server-side, remove this field and
+               connection_id from the method_signature of Create RPC
                
                
                - - -
         :param pulumi.Input[str] create_time: Output only. [Output only] Create timestamp
+        :param pulumi.Input[Union['ConnectionCryptoKeyConfigArgs', 'ConnectionCryptoKeyConfigArgsDict']] crypto_key_config: The crypto key configuration. This field is used by the Customer-managed
+               encryption keys (CMEK) feature.
+               Structure is documented below.
         :param pulumi.Input[str] delete_time: Output only. [Output only] Delete timestamp
-        :param pulumi.Input[bool] disabled: Optional. If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
+        :param pulumi.Input[bool] disabled: Optional. If disabled is set to true, functionality is disabled for this connection.
+               Repository based API methods and webhooks processing for repositories in
+               this connection will be disabled.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[str] etag: Optional. This checksum is computed by the server based on the value
-               of other fields, and may be sent on update and delete requests to ensure the
+        :param pulumi.Input[str] etag: Optional. This checksum is computed by the server based on the value of other
+               fields, and may be sent on update and delete requests to ensure the
                client has an up-to-date value before proceeding.
         :param pulumi.Input[Union['ConnectionGithubConfigArgs', 'ConnectionGithubConfigArgsDict']] github_config: Configuration for connections to github.com.
                Structure is documented below.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionInstallationStateArgs', 'ConnectionInstallationStateArgsDict']]]] installation_states: Describes stage and necessary actions to be taken by the user to complete the installation.
-               Used for GitHub and GitHub Enterprise based connections.
+        :param pulumi.Input[Union['ConnectionGithubEnterpriseConfigArgs', 'ConnectionGithubEnterpriseConfigArgsDict']] github_enterprise_config: Configuration for connections to an instance of GitHub Enterprise.
+               Structure is documented below.
+        :param pulumi.Input[Union['ConnectionGitlabConfigArgs', 'ConnectionGitlabConfigArgsDict']] gitlab_config: Configuration for connections to gitlab.com.
+               Structure is documented below.
+        :param pulumi.Input[Union['ConnectionGitlabEnterpriseConfigArgs', 'ConnectionGitlabEnterpriseConfigArgsDict']] gitlab_enterprise_config: Configuration for connections to an instance of GitLab Enterprise.
+               Structure is documented below.
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ConnectionInstallationStateArgs', 'ConnectionInstallationStateArgsDict']]]] installation_states: Describes stage and necessary actions to be taken by the
+               user to complete the installation. Used for GitHub and GitHub Enterprise
+               based connections.
                Structure is documented below.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels as key value pairs
-               
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
-        :param pulumi.Input[str] location: Resource ID segment making up resource `name`. It identifies the resource
-               within its parent collection as described in https://google.aip.dev/122. See documentation
-               for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
+        :param pulumi.Input[str] location: Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         :param pulumi.Input[str] name: Identifier. The resource name of the connection, in the format
                `projects/{project}/locations/{location}/connections/{connection_id}`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[bool] reconciling: Output only. Set to true when the connection is being set up or updated
-               in the background.
+        :param pulumi.Input[bool] reconciling: Output only. Set to true when the connection is being set up or updated in the
+               background.
         :param pulumi.Input[str] uid: Output only. A system-assigned unique identifier for a the GitRepositoryLink.
         :param pulumi.Input[str] update_time: Output only. [Output only] Update timestamp
         """
@@ -902,12 +1389,16 @@ class Connection(pulumi.CustomResource):
         __props__.__dict__["annotations"] = annotations
         __props__.__dict__["connection_id"] = connection_id
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["crypto_key_config"] = crypto_key_config
         __props__.__dict__["delete_time"] = delete_time
         __props__.__dict__["disabled"] = disabled
         __props__.__dict__["effective_annotations"] = effective_annotations
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["etag"] = etag
         __props__.__dict__["github_config"] = github_config
+        __props__.__dict__["github_enterprise_config"] = github_enterprise_config
+        __props__.__dict__["gitlab_config"] = gitlab_config
+        __props__.__dict__["gitlab_enterprise_config"] = gitlab_enterprise_config
         __props__.__dict__["installation_states"] = installation_states
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
@@ -924,7 +1415,6 @@ class Connection(pulumi.CustomResource):
     def annotations(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Optional. Allows clients to store small amounts of arbitrary data.
-
         **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
         Please refer to the field `effective_annotations` for all of the annotations present on the resource.
         """
@@ -934,8 +1424,9 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter(name="connectionId")
     def connection_id(self) -> pulumi.Output[str]:
         """
-        Required. Id of the requesting object. If auto-generating Id server-side,
-        remove this field and connection_id from the method_signature of Create RPC.
+        Required. Id of the requesting object
+        If auto-generating Id server-side, remove this field and
+        connection_id from the method_signature of Create RPC
 
 
         - - -
@@ -951,6 +1442,16 @@ class Connection(pulumi.CustomResource):
         return pulumi.get(self, "create_time")
 
     @property
+    @pulumi.getter(name="cryptoKeyConfig")
+    def crypto_key_config(self) -> pulumi.Output[Optional['outputs.ConnectionCryptoKeyConfig']]:
+        """
+        The crypto key configuration. This field is used by the Customer-managed
+        encryption keys (CMEK) feature.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "crypto_key_config")
+
+    @property
     @pulumi.getter(name="deleteTime")
     def delete_time(self) -> pulumi.Output[str]:
         """
@@ -962,7 +1463,9 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter
     def disabled(self) -> pulumi.Output[Optional[bool]]:
         """
-        Optional. If disabled is set to true, functionality is disabled for this connection. Repository based API methods and webhooks processing for repositories in this connection will be disabled.
+        Optional. If disabled is set to true, functionality is disabled for this connection.
+        Repository based API methods and webhooks processing for repositories in
+        this connection will be disabled.
         """
         return pulumi.get(self, "disabled")
 
@@ -983,8 +1486,8 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter
     def etag(self) -> pulumi.Output[Optional[str]]:
         """
-        Optional. This checksum is computed by the server based on the value
-        of other fields, and may be sent on update and delete requests to ensure the
+        Optional. This checksum is computed by the server based on the value of other
+        fields, and may be sent on update and delete requests to ensure the
         client has an up-to-date value before proceeding.
         """
         return pulumi.get(self, "etag")
@@ -999,11 +1502,39 @@ class Connection(pulumi.CustomResource):
         return pulumi.get(self, "github_config")
 
     @property
+    @pulumi.getter(name="githubEnterpriseConfig")
+    def github_enterprise_config(self) -> pulumi.Output[Optional['outputs.ConnectionGithubEnterpriseConfig']]:
+        """
+        Configuration for connections to an instance of GitHub Enterprise.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "github_enterprise_config")
+
+    @property
+    @pulumi.getter(name="gitlabConfig")
+    def gitlab_config(self) -> pulumi.Output[Optional['outputs.ConnectionGitlabConfig']]:
+        """
+        Configuration for connections to gitlab.com.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "gitlab_config")
+
+    @property
+    @pulumi.getter(name="gitlabEnterpriseConfig")
+    def gitlab_enterprise_config(self) -> pulumi.Output[Optional['outputs.ConnectionGitlabEnterpriseConfig']]:
+        """
+        Configuration for connections to an instance of GitLab Enterprise.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "gitlab_enterprise_config")
+
+    @property
     @pulumi.getter(name="installationStates")
     def installation_states(self) -> pulumi.Output[Sequence['outputs.ConnectionInstallationState']]:
         """
-        Describes stage and necessary actions to be taken by the user to complete the installation.
-        Used for GitHub and GitHub Enterprise based connections.
+        Describes stage and necessary actions to be taken by the
+        user to complete the installation. Used for GitHub and GitHub Enterprise
+        based connections.
         Structure is documented below.
         """
         return pulumi.get(self, "installation_states")
@@ -1013,7 +1544,6 @@ class Connection(pulumi.CustomResource):
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
         Optional. Labels as key value pairs
-
         **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
         Please refer to the field `effective_labels` for all of the labels present on the resource.
         """
@@ -1023,9 +1553,7 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter
     def location(self) -> pulumi.Output[str]:
         """
-        Resource ID segment making up resource `name`. It identifies the resource
-        within its parent collection as described in https://google.aip.dev/122. See documentation
-        for resource type `developerconnect.googleapis.com/GitRepositoryLink`.
+        Resource ID segment making up resource `name`. It identifies the resource within its parent collection as described in https://google.aip.dev/122.
         """
         return pulumi.get(self, "location")
 
@@ -1060,8 +1588,8 @@ class Connection(pulumi.CustomResource):
     @pulumi.getter
     def reconciling(self) -> pulumi.Output[bool]:
         """
-        Output only. Set to true when the connection is being set up or updated
-        in the background.
+        Output only. Set to true when the connection is being set up or updated in the
+        background.
         """
         return pulumi.get(self, "reconciling")
 

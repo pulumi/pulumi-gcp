@@ -835,7 +835,7 @@ class DatabaseInstance(pulumi.CustomResource):
                  settings: Optional[pulumi.Input[Union['DatabaseInstanceSettingsArgs', 'DatabaseInstanceSettingsArgsDict']]] = None,
                  __props__=None):
         """
-        Creates a new Google SQL Database Instance. For more information, see the [official documentation](https://cloud.google.com/sql/),
+        Creates a new Google SQL Database Instance. For more information, see the [official documentation](https://cloud.google.com/sql/docs/mysql/create-instance),
         or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/instances).
 
         > **NOTE on `sql.DatabaseInstance`:** - Second-generation instances include a
@@ -1093,7 +1093,7 @@ class DatabaseInstance(pulumi.CustomResource):
                  args: DatabaseInstanceArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
-        Creates a new Google SQL Database Instance. For more information, see the [official documentation](https://cloud.google.com/sql/),
+        Creates a new Google SQL Database Instance. For more information, see the [official documentation](https://cloud.google.com/sql/docs/mysql/create-instance),
         or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/instances).
 
         > **NOTE on `sql.DatabaseInstance`:** - Second-generation instances include a

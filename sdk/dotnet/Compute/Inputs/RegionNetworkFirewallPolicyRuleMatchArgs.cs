@@ -153,7 +153,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
         /// 
         /// 
-        /// &lt;a name="nested_layer4_configs"&gt;&lt;/a&gt;The `layer4_configs` block supports:
+        /// &lt;a name="nested_match_layer4_configs"&gt;&lt;/a&gt;The `layer4_configs` block supports:
         /// </summary>
         public InputList<string> SrcThreatIntelligences
         {

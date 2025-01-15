@@ -32,7 +32,8 @@ public final class SettingsAccessSettings {
     private @Nullable SettingsAccessSettingsCorsSettings corsSettings;
     /**
      * @return GCIP claims and endpoint configurations for 3p identity providers.
-     * Structure is documented below.
+     * * Enabling gcipSetting significantly changes the way IAP authenticates users. Identity Platform does not support IAM, so IAP will not enforce any IAM policies for requests to your application.
+     *   Structure is documented below.
      * 
      */
     private @Nullable SettingsAccessSettingsGcipSettings gcipSettings;
@@ -84,7 +85,8 @@ public final class SettingsAccessSettings {
     }
     /**
      * @return GCIP claims and endpoint configurations for 3p identity providers.
-     * Structure is documented below.
+     * * Enabling gcipSetting significantly changes the way IAP authenticates users. Identity Platform does not support IAM, so IAP will not enforce any IAM policies for requests to your application.
+     *   Structure is documented below.
      * 
      */
     public Optional<SettingsAccessSettingsGcipSettings> gcipSettings() {

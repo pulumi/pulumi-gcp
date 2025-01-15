@@ -8,6 +8,7 @@ import com.pulumi.gcp.dns.outputs.RecordSetRoutingPolicyGeo;
 import com.pulumi.gcp.dns.outputs.RecordSetRoutingPolicyPrimaryBackup;
 import com.pulumi.gcp.dns.outputs.RecordSetRoutingPolicyWrr;
 import java.lang.Boolean;
+import java.lang.String;
 import java.util.List;
 import java.util.Objects;
 import java.util.Optional;
@@ -26,6 +27,11 @@ public final class RecordSetRoutingPolicy {
      * 
      */
     private @Nullable List<RecordSetRoutingPolicyGeo> geos;
+    /**
+     * @return Specifies the health check (used with external endpoints).
+     * 
+     */
+    private @Nullable String healthCheck;
     /**
      * @return The configuration for a failover policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
      * Structure is documented below.
@@ -56,6 +62,13 @@ public final class RecordSetRoutingPolicy {
         return this.geos == null ? List.of() : this.geos;
     }
     /**
+     * @return Specifies the health check (used with external endpoints).
+     * 
+     */
+    public Optional<String> healthCheck() {
+        return Optional.ofNullable(this.healthCheck);
+    }
+    /**
      * @return The configuration for a failover policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
      * Structure is documented below.
      * 
@@ -83,6 +96,7 @@ public final class RecordSetRoutingPolicy {
     public static final class Builder {
         private @Nullable Boolean enableGeoFencing;
         private @Nullable List<RecordSetRoutingPolicyGeo> geos;
+        private @Nullable String healthCheck;
         private @Nullable RecordSetRoutingPolicyPrimaryBackup primaryBackup;
         private @Nullable List<RecordSetRoutingPolicyWrr> wrrs;
         public Builder() {}
@@ -90,6 +104,7 @@ public final class RecordSetRoutingPolicy {
     	      Objects.requireNonNull(defaults);
     	      this.enableGeoFencing = defaults.enableGeoFencing;
     	      this.geos = defaults.geos;
+    	      this.healthCheck = defaults.healthCheck;
     	      this.primaryBackup = defaults.primaryBackup;
     	      this.wrrs = defaults.wrrs;
         }
@@ -110,6 +125,12 @@ public final class RecordSetRoutingPolicy {
             return geos(List.of(geos));
         }
         @CustomType.Setter
+        public Builder healthCheck(@Nullable String healthCheck) {
+
+            this.healthCheck = healthCheck;
+            return this;
+        }
+        @CustomType.Setter
         public Builder primaryBackup(@Nullable RecordSetRoutingPolicyPrimaryBackup primaryBackup) {
 
             this.primaryBackup = primaryBackup;
@@ -128,6 +149,7 @@ public final class RecordSetRoutingPolicy {
             final var _resultValue = new RecordSetRoutingPolicy();
             _resultValue.enableGeoFencing = enableGeoFencing;
             _resultValue.geos = geos;
+            _resultValue.healthCheck = healthCheck;
             _resultValue.primaryBackup = primaryBackup;
             _resultValue.wrrs = wrrs;
             return _resultValue;

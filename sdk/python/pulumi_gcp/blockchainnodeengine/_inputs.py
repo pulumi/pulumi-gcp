@@ -445,7 +445,7 @@ if not MYPY:
         Blockchain garbage collection modes. Only applicable when NodeType is FULL or ARCHIVE.
         Possible values are: `FULL`, `ARCHIVE`.
 
-        <a name="nested_additional_endpoints"></a>The `additional_endpoints` block contains:
+        <a name="nested_ethereum_details_additional_endpoints"></a>The `additional_endpoints` block contains:
         """
 elif False:
     BlockchainNodesEthereumDetailsGethDetailsArgsDict: TypeAlias = Mapping[str, Any]
@@ -458,7 +458,7 @@ class BlockchainNodesEthereumDetailsGethDetailsArgs:
         :param pulumi.Input[str] garbage_collection_mode: Blockchain garbage collection modes. Only applicable when NodeType is FULL or ARCHIVE.
                Possible values are: `FULL`, `ARCHIVE`.
                
-               <a name="nested_additional_endpoints"></a>The `additional_endpoints` block contains:
+               <a name="nested_ethereum_details_additional_endpoints"></a>The `additional_endpoints` block contains:
         """
         if garbage_collection_mode is not None:
             pulumi.set(__self__, "garbage_collection_mode", garbage_collection_mode)
@@ -470,7 +470,7 @@ class BlockchainNodesEthereumDetailsGethDetailsArgs:
         Blockchain garbage collection modes. Only applicable when NodeType is FULL or ARCHIVE.
         Possible values are: `FULL`, `ARCHIVE`.
 
-        <a name="nested_additional_endpoints"></a>The `additional_endpoints` block contains:
+        <a name="nested_ethereum_details_additional_endpoints"></a>The `additional_endpoints` block contains:
         """
         return pulumi.get(self, "garbage_collection_mode")
 

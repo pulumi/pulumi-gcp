@@ -41,7 +41,7 @@ namespace Pulumi.Gcp.CloudBuild.Inputs
         /// Structure is documented below.
         /// 
         /// 
-        /// &lt;a name="nested_timing"&gt;&lt;/a&gt;The `timing` block contains:
+        /// &lt;a name="nested_build_artifacts_objects_timing"&gt;&lt;/a&gt;The `timing` block contains:
         /// </summary>
         public InputList<Inputs.TriggerBuildArtifactsObjectsTimingArgs> Timings
         {

@@ -213,6 +213,50 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
+ * ### Public zone failover
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const http_health_check = new gcp.compute.HealthCheck("http-health-check", {
+ *     name: "http-health-check",
+ *     description: "Health check via http",
+ *     timeoutSec: 5,
+ *     checkIntervalSec: 30,
+ *     healthyThreshold: 4,
+ *     unhealthyThreshold: 5,
+ *     httpHealthCheck: {
+ *         portSpecification: "USE_SERVING_PORT",
+ *     },
+ * });
+ * const prod = new gcp.dns.ManagedZone("prod", {
+ *     name: "prod-zone",
+ *     dnsName: "prod.mydomain.com.",
+ * });
+ * const a = new gcp.dns.RecordSet("a", {
+ *     name: pulumi.interpolate`backend.${prod.dnsName}`,
+ *     managedZone: prod.name,
+ *     type: "A",
+ *     ttl: 300,
+ *     routingPolicy: {
+ *         healthCheck: http_health_check.id,
+ *         primaryBackup: {
+ *             trickleRatio: 0.1,
+ *             primary: {
+ *                 externalEndpoints: ["10.128.1.1"],
+ *             },
+ *             backupGeos: [{
+ *                 location: "us-west1",
+ *                 healthCheckedTargets: {
+ *                     externalEndpoints: ["10.130.1.1"],
+ *                 },
+ *             }],
+ *         },
+ *     },
+ * });
+ * ```
+ *
  * ## Import
  *
  * DNS record sets can be imported using either of these accepted formats:

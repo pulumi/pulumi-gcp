@@ -52,7 +52,7 @@ namespace Pulumi.Gcp.GkeOnPrem.Inputs
         /// Structure is documented below.
         /// 
         /// 
-        /// &lt;a name="nested_status"&gt;&lt;/a&gt;The `status` block contains:
+        /// &lt;a name="nested_platform_config_bundles_bundles_status"&gt;&lt;/a&gt;The `status` block contains:
         /// </summary>
         public InputList<Inputs.VmwareAdminClusterPlatformConfigStatusArgs> Statuses
         {

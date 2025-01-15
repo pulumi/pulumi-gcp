@@ -25,10 +25,10 @@ class WatchlistArgs:
                  entity_population_mechanism: pulumi.Input['WatchlistEntityPopulationMechanismArgs'],
                  instance: pulumi.Input[str],
                  location: pulumi.Input[str],
-                 watchlist_id: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  multiplying_factor: Optional[pulumi.Input[float]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 watchlist_id: Optional[pulumi.Input[str]] = None,
                  watchlist_user_preferences: Optional[pulumi.Input['WatchlistWatchlistUserPreferencesArgs']] = None):
         """
         The set of arguments for constructing a Watchlist resource.
@@ -39,25 +39,24 @@ class WatchlistArgs:
                Structure is documented below.
         :param pulumi.Input[str] instance: The unique identifier for the Chronicle instance, which is the same as the customer ID.
         :param pulumi.Input[str] location: The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
-        :param pulumi.Input[str] watchlist_id: Optional. The ID to use for the watchlist,
-               which will become the final component of the watchlist's resource name.
-               This value should be 4-63 characters, and valid characters
-               are /a-z-/.
         :param pulumi.Input[str] description: Optional. Description of the watchlist.
         :param pulumi.Input[float] multiplying_factor: Optional. Weight applied to the risk score for entities in this watchlist. The default is 1.0 if it is not specified.
+        :param pulumi.Input[str] watchlist_id: Optional. The ID to use for the watchlist, which will become the final component of the watchlist's resource name. This
+               value should be 4-63 characters, and valid characters are /a-z-/.
         :param pulumi.Input['WatchlistWatchlistUserPreferencesArgs'] watchlist_user_preferences: A collection of user preferences for watchlist UI configuration.
         """
         pulumi.set(__self__, "display_name", display_name)
         pulumi.set(__self__, "entity_population_mechanism", entity_population_mechanism)
         pulumi.set(__self__, "instance", instance)
         pulumi.set(__self__, "location", location)
-        pulumi.set(__self__, "watchlist_id", watchlist_id)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if multiplying_factor is not None:
             pulumi.set(__self__, "multiplying_factor", multiplying_factor)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if watchlist_id is not None:
+            pulumi.set(__self__, "watchlist_id", watchlist_id)
         if watchlist_user_preferences is not None:
             pulumi.set(__self__, "watchlist_user_preferences", watchlist_user_preferences)
 
@@ -113,21 +112,6 @@ class WatchlistArgs:
         pulumi.set(self, "location", value)
 
     @property
-    @pulumi.getter(name="watchlistId")
-    def watchlist_id(self) -> pulumi.Input[str]:
-        """
-        Optional. The ID to use for the watchlist,
-        which will become the final component of the watchlist's resource name.
-        This value should be 4-63 characters, and valid characters
-        are /a-z-/.
-        """
-        return pulumi.get(self, "watchlist_id")
-
-    @watchlist_id.setter
-    def watchlist_id(self, value: pulumi.Input[str]):
-        pulumi.set(self, "watchlist_id", value)
-
-    @property
     @pulumi.getter
     def description(self) -> Optional[pulumi.Input[str]]:
         """
@@ -159,6 +143,19 @@ class WatchlistArgs:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="watchlistId")
+    def watchlist_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. The ID to use for the watchlist, which will become the final component of the watchlist's resource name. This
+        value should be 4-63 characters, and valid characters are /a-z-/.
+        """
+        return pulumi.get(self, "watchlist_id")
+
+    @watchlist_id.setter
+    def watchlist_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "watchlist_id", value)
 
     @property
     @pulumi.getter(name="watchlistUserPreferences")
@@ -207,10 +204,8 @@ class _WatchlistState:
                Format:
                projects/{project}/locations/{location}/instances/{instance}/watchlists/{watchlist}
         :param pulumi.Input[str] update_time: Output only. Time the watchlist was last updated.
-        :param pulumi.Input[str] watchlist_id: Optional. The ID to use for the watchlist,
-               which will become the final component of the watchlist's resource name.
-               This value should be 4-63 characters, and valid characters
-               are /a-z-/.
+        :param pulumi.Input[str] watchlist_id: Optional. The ID to use for the watchlist, which will become the final component of the watchlist's resource name. This
+               value should be 4-63 characters, and valid characters are /a-z-/.
         :param pulumi.Input['WatchlistWatchlistUserPreferencesArgs'] watchlist_user_preferences: A collection of user preferences for watchlist UI configuration.
         """
         if create_time is not None:
@@ -379,10 +374,8 @@ class _WatchlistState:
     @pulumi.getter(name="watchlistId")
     def watchlist_id(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. The ID to use for the watchlist,
-        which will become the final component of the watchlist's resource name.
-        This value should be 4-63 characters, and valid characters
-        are /a-z-/.
+        Optional. The ID to use for the watchlist, which will become the final component of the watchlist's resource name. This
+        value should be 4-63 characters, and valid characters are /a-z-/.
         """
         return pulumi.get(self, "watchlist_id")
 
@@ -430,7 +423,26 @@ class Watchlist(pulumi.CustomResource):
         example = gcp.chronicle.Watchlist("example",
             location="us",
             instance="00000000-0000-0000-0000-000000000000",
-            watchlist_id="watchlist-name",
+            watchlist_id="watchlist-id",
+            description="watchlist-description",
+            display_name="watchlist_name",
+            multiplying_factor=1,
+            entity_population_mechanism={
+                "manual": {},
+            },
+            watchlist_user_preferences={
+                "pinned": True,
+            })
+        ```
+        ### Chronicle Watchlist Without Id
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.chronicle.Watchlist("example",
+            location="us",
+            instance="00000000-0000-0000-0000-000000000000",
             description="watchlist-description",
             display_name="watchlist-name",
             multiplying_factor=1,
@@ -477,10 +489,8 @@ class Watchlist(pulumi.CustomResource):
         :param pulumi.Input[str] instance: The unique identifier for the Chronicle instance, which is the same as the customer ID.
         :param pulumi.Input[str] location: The location of the resource. This is the geographical region where the Chronicle instance resides, such as "us" or "europe-west2".
         :param pulumi.Input[float] multiplying_factor: Optional. Weight applied to the risk score for entities in this watchlist. The default is 1.0 if it is not specified.
-        :param pulumi.Input[str] watchlist_id: Optional. The ID to use for the watchlist,
-               which will become the final component of the watchlist's resource name.
-               This value should be 4-63 characters, and valid characters
-               are /a-z-/.
+        :param pulumi.Input[str] watchlist_id: Optional. The ID to use for the watchlist, which will become the final component of the watchlist's resource name. This
+               value should be 4-63 characters, and valid characters are /a-z-/.
         :param pulumi.Input[Union['WatchlistWatchlistUserPreferencesArgs', 'WatchlistWatchlistUserPreferencesArgsDict']] watchlist_user_preferences: A collection of user preferences for watchlist UI configuration.
         """
         ...
@@ -501,7 +511,26 @@ class Watchlist(pulumi.CustomResource):
         example = gcp.chronicle.Watchlist("example",
             location="us",
             instance="00000000-0000-0000-0000-000000000000",
-            watchlist_id="watchlist-name",
+            watchlist_id="watchlist-id",
+            description="watchlist-description",
+            display_name="watchlist_name",
+            multiplying_factor=1,
+            entity_population_mechanism={
+                "manual": {},
+            },
+            watchlist_user_preferences={
+                "pinned": True,
+            })
+        ```
+        ### Chronicle Watchlist Without Id
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.chronicle.Watchlist("example",
+            location="us",
+            instance="00000000-0000-0000-0000-000000000000",
             description="watchlist-description",
             display_name="watchlist-name",
             multiplying_factor=1,
@@ -585,8 +614,6 @@ class Watchlist(pulumi.CustomResource):
             __props__.__dict__["location"] = location
             __props__.__dict__["multiplying_factor"] = multiplying_factor
             __props__.__dict__["project"] = project
-            if watchlist_id is None and not opts.urn:
-                raise TypeError("Missing required property 'watchlist_id'")
             __props__.__dict__["watchlist_id"] = watchlist_id
             __props__.__dict__["watchlist_user_preferences"] = watchlist_user_preferences
             __props__.__dict__["create_time"] = None
@@ -639,10 +666,8 @@ class Watchlist(pulumi.CustomResource):
                Format:
                projects/{project}/locations/{location}/instances/{instance}/watchlists/{watchlist}
         :param pulumi.Input[str] update_time: Output only. Time the watchlist was last updated.
-        :param pulumi.Input[str] watchlist_id: Optional. The ID to use for the watchlist,
-               which will become the final component of the watchlist's resource name.
-               This value should be 4-63 characters, and valid characters
-               are /a-z-/.
+        :param pulumi.Input[str] watchlist_id: Optional. The ID to use for the watchlist, which will become the final component of the watchlist's resource name. This
+               value should be 4-63 characters, and valid characters are /a-z-/.
         :param pulumi.Input[Union['WatchlistWatchlistUserPreferencesArgs', 'WatchlistWatchlistUserPreferencesArgsDict']] watchlist_user_preferences: A collection of user preferences for watchlist UI configuration.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -759,10 +784,8 @@ class Watchlist(pulumi.CustomResource):
     @pulumi.getter(name="watchlistId")
     def watchlist_id(self) -> pulumi.Output[str]:
         """
-        Optional. The ID to use for the watchlist,
-        which will become the final component of the watchlist's resource name.
-        This value should be 4-63 characters, and valid characters
-        are /a-z-/.
+        Optional. The ID to use for the watchlist, which will become the final component of the watchlist's resource name. This
+        value should be 4-63 characters, and valid characters are /a-z-/.
         """
         return pulumi.get(self, "watchlist_id")
 

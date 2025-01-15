@@ -1131,6 +1131,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "beyondcorp/securityGateway",
+  "fqn": "pulumi_gcp.beyondcorp",
+  "classes": {
+   "gcp:beyondcorp/securityGateway:SecurityGateway": "SecurityGateway"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "biglake/catalog",
   "fqn": "pulumi_gcp.biglake",
   "classes": {
@@ -1723,6 +1731,22 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "chronicle/dataAccessLabel",
+  "fqn": "pulumi_gcp.chronicle",
+  "classes": {
+   "gcp:chronicle/dataAccessLabel:DataAccessLabel": "DataAccessLabel"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "chronicle/dataAccessScope",
+  "fqn": "pulumi_gcp.chronicle",
+  "classes": {
+   "gcp:chronicle/dataAccessScope:DataAccessScope": "DataAccessScope"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "chronicle/watchlist",
   "fqn": "pulumi_gcp.chronicle",
   "classes": {
@@ -2015,6 +2039,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.cloudids",
   "classes": {
    "gcp:cloudids/endpoint:Endpoint": "Endpoint"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "cloudquota/sQuotaAdjusterSettings",
+  "fqn": "pulumi_gcp.cloudquota",
+  "classes": {
+   "gcp:cloudquota/sQuotaAdjusterSettings:SQuotaAdjusterSettings": "SQuotaAdjusterSettings"
   }
  },
  {

@@ -23,6 +23,10 @@ namespace Pulumi.Gcp.Dns.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.RecordSetRoutingPolicyGeo> Geos;
         /// <summary>
+        /// Specifies the health check (used with external endpoints).
+        /// </summary>
+        public readonly string? HealthCheck;
+        /// <summary>
         /// The configuration for a failover policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
         /// Structure is documented below.
         /// </summary>
@@ -39,12 +43,15 @@ namespace Pulumi.Gcp.Dns.Outputs
 
             ImmutableArray<Outputs.RecordSetRoutingPolicyGeo> geos,
 
+            string? healthCheck,
+
             Outputs.RecordSetRoutingPolicyPrimaryBackup? primaryBackup,
 
             ImmutableArray<Outputs.RecordSetRoutingPolicyWrr> wrrs)
         {
             EnableGeoFencing = enableGeoFencing;
             Geos = geos;
+            HealthCheck = healthCheck;
             PrimaryBackup = primaryBackup;
             Wrrs = wrrs;
         }

@@ -133,7 +133,7 @@ if not MYPY:
         Structure is documented below.
 
 
-        <a name="nested_provisioning_issue"></a>The `provisioning_issue` block contains:
+        <a name="nested_managed_provisioning_issue"></a>The `provisioning_issue` block contains:
         """
         dns_authorizations: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
@@ -180,7 +180,7 @@ class CertificateManagedArgs:
                Structure is documented below.
                
                
-               <a name="nested_provisioning_issue"></a>The `provisioning_issue` block contains:
+               <a name="nested_managed_provisioning_issue"></a>The `provisioning_issue` block contains:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_authorizations: Authorizations that will be used for performing domain authorization. Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] domains: The domains for which a managed SSL certificate will be generated.
                Wildcard domains are only supported with DNS challenge resolution
@@ -216,7 +216,7 @@ class CertificateManagedArgs:
         Structure is documented below.
 
 
-        <a name="nested_provisioning_issue"></a>The `provisioning_issue` block contains:
+        <a name="nested_managed_provisioning_issue"></a>The `provisioning_issue` block contains:
         """
         return pulumi.get(self, "authorization_attempt_infos")
 

@@ -138,7 +138,7 @@ import (
 //
 // ```
 //
-// ### With Standby Policy (`Google-Beta` Provider)
+// ### With Standby Policy (`Google` Provider)
 // ```go
 // package main
 //
@@ -253,7 +253,7 @@ type RegionInstanceGroupManager struct {
 	Region pulumi.StringOutput `pulumi:"region"`
 	// The URL of the created resource.
 	SelfLink pulumi.StringOutput `pulumi:"selfLink"`
-	// The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
+	// The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
 	StandbyPolicy RegionInstanceGroupManagerStandbyPolicyOutput `pulumi:"standbyPolicy"`
 	// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `updatePolicy`.
 	StatefulDisks RegionInstanceGroupManagerStatefulDiskArrayOutput `pulumi:"statefulDisks"`
@@ -388,7 +388,7 @@ type regionInstanceGroupManagerState struct {
 	Region *string `pulumi:"region"`
 	// The URL of the created resource.
 	SelfLink *string `pulumi:"selfLink"`
-	// The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
+	// The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
 	StandbyPolicy *RegionInstanceGroupManagerStandbyPolicy `pulumi:"standbyPolicy"`
 	// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `updatePolicy`.
 	StatefulDisks []RegionInstanceGroupManagerStatefulDisk `pulumi:"statefulDisks"`
@@ -488,7 +488,7 @@ type RegionInstanceGroupManagerState struct {
 	Region pulumi.StringPtrInput
 	// The URL of the created resource.
 	SelfLink pulumi.StringPtrInput
-	// The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
+	// The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
 	StandbyPolicy RegionInstanceGroupManagerStandbyPolicyPtrInput
 	// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `updatePolicy`.
 	StatefulDisks RegionInstanceGroupManagerStatefulDiskArrayInput
@@ -582,7 +582,7 @@ type regionInstanceGroupManagerArgs struct {
 	//
 	// ***
 	Region *string `pulumi:"region"`
-	// The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
+	// The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
 	StandbyPolicy *RegionInstanceGroupManagerStandbyPolicy `pulumi:"standbyPolicy"`
 	// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `updatePolicy`.
 	StatefulDisks []RegionInstanceGroupManagerStatefulDisk `pulumi:"statefulDisks"`
@@ -671,7 +671,7 @@ type RegionInstanceGroupManagerArgs struct {
 	//
 	// ***
 	Region pulumi.StringPtrInput
-	// The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
+	// The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
 	StandbyPolicy RegionInstanceGroupManagerStandbyPolicyPtrInput
 	// Disks created on the instances that will be preserved on instance delete, update, etc. Structure is documented below. For more information see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/configuring-stateful-disks-in-migs). Proactive cross zone instance redistribution must be disabled before you can update stateful disks on existing instance group managers. This can be controlled via the `updatePolicy`.
 	StatefulDisks RegionInstanceGroupManagerStatefulDiskArrayInput
@@ -922,7 +922,7 @@ func (o RegionInstanceGroupManagerOutput) SelfLink() pulumi.StringOutput {
 	return o.ApplyT(func(v *RegionInstanceGroupManager) pulumi.StringOutput { return v.SelfLink }).(pulumi.StringOutput)
 }
 
-// The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
+// The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
 func (o RegionInstanceGroupManagerOutput) StandbyPolicy() RegionInstanceGroupManagerStandbyPolicyOutput {
 	return o.ApplyT(func(v *RegionInstanceGroupManager) RegionInstanceGroupManagerStandbyPolicyOutput {
 		return v.StandbyPolicy

@@ -2008,7 +2008,7 @@ class VMwareCluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter
-    def vcenter(self) -> pulumi.Output[Optional['outputs.VMwareClusterVcenter']]:
+    def vcenter(self) -> pulumi.Output['outputs.VMwareClusterVcenter']:
         """
         VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
         """

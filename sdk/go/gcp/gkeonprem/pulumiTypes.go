@@ -13563,7 +13563,7 @@ func (o VMwareClusterControlPlaneNodePtrOutput) VsphereConfigs() VMwareClusterCo
 type VMwareClusterControlPlaneNodeAutoResizeConfig struct {
 	// Whether to enable control plane node auto resizing.
 	//
-	// <a name="nestedVsphereConfig"></a>The `vsphereConfig` block contains:
+	// <a name="nestedControlPlaneNodeVsphereConfig"></a>The `vsphereConfig` block contains:
 	Enabled bool `pulumi:"enabled"`
 }
 
@@ -13581,7 +13581,7 @@ type VMwareClusterControlPlaneNodeAutoResizeConfigInput interface {
 type VMwareClusterControlPlaneNodeAutoResizeConfigArgs struct {
 	// Whether to enable control plane node auto resizing.
 	//
-	// <a name="nestedVsphereConfig"></a>The `vsphereConfig` block contains:
+	// <a name="nestedControlPlaneNodeVsphereConfig"></a>The `vsphereConfig` block contains:
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
@@ -13664,7 +13664,7 @@ func (o VMwareClusterControlPlaneNodeAutoResizeConfigOutput) ToVMwareClusterCont
 
 // Whether to enable control plane node auto resizing.
 //
-// <a name="nestedVsphereConfig"></a>The `vsphereConfig` block contains:
+// <a name="nestedControlPlaneNodeVsphereConfig"></a>The `vsphereConfig` block contains:
 func (o VMwareClusterControlPlaneNodeAutoResizeConfigOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v VMwareClusterControlPlaneNodeAutoResizeConfig) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -13695,7 +13695,7 @@ func (o VMwareClusterControlPlaneNodeAutoResizeConfigPtrOutput) Elem() VMwareClu
 
 // Whether to enable control plane node auto resizing.
 //
-// <a name="nestedVsphereConfig"></a>The `vsphereConfig` block contains:
+// <a name="nestedControlPlaneNodeVsphereConfig"></a>The `vsphereConfig` block contains:
 func (o VMwareClusterControlPlaneNodeAutoResizeConfigPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *VMwareClusterControlPlaneNodeAutoResizeConfig) *bool {
 		if v == nil {
@@ -14993,7 +14993,7 @@ type VMwareClusterLoadBalancerVipConfig struct {
 	ControlPlaneVip *string `pulumi:"controlPlaneVip"`
 	// The VIP which you previously set aside for ingress traffic into this cluster.
 	//
-	// <a name="nestedF5Config"></a>The `f5Config` block supports:
+	// <a name="nestedLoadBalancerF5Config"></a>The `f5Config` block supports:
 	IngressVip *string `pulumi:"ingressVip"`
 }
 
@@ -15013,7 +15013,7 @@ type VMwareClusterLoadBalancerVipConfigArgs struct {
 	ControlPlaneVip pulumi.StringPtrInput `pulumi:"controlPlaneVip"`
 	// The VIP which you previously set aside for ingress traffic into this cluster.
 	//
-	// <a name="nestedF5Config"></a>The `f5Config` block supports:
+	// <a name="nestedLoadBalancerF5Config"></a>The `f5Config` block supports:
 	IngressVip pulumi.StringPtrInput `pulumi:"ingressVip"`
 }
 
@@ -15101,7 +15101,7 @@ func (o VMwareClusterLoadBalancerVipConfigOutput) ControlPlaneVip() pulumi.Strin
 
 // The VIP which you previously set aside for ingress traffic into this cluster.
 //
-// <a name="nestedF5Config"></a>The `f5Config` block supports:
+// <a name="nestedLoadBalancerF5Config"></a>The `f5Config` block supports:
 func (o VMwareClusterLoadBalancerVipConfigOutput) IngressVip() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VMwareClusterLoadBalancerVipConfig) *string { return v.IngressVip }).(pulumi.StringPtrOutput)
 }
@@ -15142,7 +15142,7 @@ func (o VMwareClusterLoadBalancerVipConfigPtrOutput) ControlPlaneVip() pulumi.St
 
 // The VIP which you previously set aside for ingress traffic into this cluster.
 //
-// <a name="nestedF5Config"></a>The `f5Config` block supports:
+// <a name="nestedLoadBalancerF5Config"></a>The `f5Config` block supports:
 func (o VMwareClusterLoadBalancerVipConfigPtrOutput) IngressVip() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VMwareClusterLoadBalancerVipConfig) *string {
 		if v == nil {
@@ -16003,7 +16003,7 @@ func (o VMwareClusterNetworkConfigDhcpIpConfigPtrOutput) Enabled() pulumi.BoolPt
 type VMwareClusterNetworkConfigHostConfig struct {
 	// DNS search domains.
 	//
-	// <a name="nestedControlPlaneV2Config"></a>The `controlPlaneV2Config` block supports:
+	// <a name="nestedNetworkConfigControlPlaneV2Config"></a>The `controlPlaneV2Config` block supports:
 	DnsSearchDomains []string `pulumi:"dnsSearchDomains"`
 	// DNS servers.
 	DnsServers []string `pulumi:"dnsServers"`
@@ -16025,7 +16025,7 @@ type VMwareClusterNetworkConfigHostConfigInput interface {
 type VMwareClusterNetworkConfigHostConfigArgs struct {
 	// DNS search domains.
 	//
-	// <a name="nestedControlPlaneV2Config"></a>The `controlPlaneV2Config` block supports:
+	// <a name="nestedNetworkConfigControlPlaneV2Config"></a>The `controlPlaneV2Config` block supports:
 	DnsSearchDomains pulumi.StringArrayInput `pulumi:"dnsSearchDomains"`
 	// DNS servers.
 	DnsServers pulumi.StringArrayInput `pulumi:"dnsServers"`
@@ -16112,7 +16112,7 @@ func (o VMwareClusterNetworkConfigHostConfigOutput) ToVMwareClusterNetworkConfig
 
 // DNS search domains.
 //
-// <a name="nestedControlPlaneV2Config"></a>The `controlPlaneV2Config` block supports:
+// <a name="nestedNetworkConfigControlPlaneV2Config"></a>The `controlPlaneV2Config` block supports:
 func (o VMwareClusterNetworkConfigHostConfigOutput) DnsSearchDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v VMwareClusterNetworkConfigHostConfig) []string { return v.DnsSearchDomains }).(pulumi.StringArrayOutput)
 }
@@ -16153,7 +16153,7 @@ func (o VMwareClusterNetworkConfigHostConfigPtrOutput) Elem() VMwareClusterNetwo
 
 // DNS search domains.
 //
-// <a name="nestedControlPlaneV2Config"></a>The `controlPlaneV2Config` block supports:
+// <a name="nestedNetworkConfigControlPlaneV2Config"></a>The `controlPlaneV2Config` block supports:
 func (o VMwareClusterNetworkConfigHostConfigPtrOutput) DnsSearchDomains() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v *VMwareClusterNetworkConfigHostConfig) []string {
 		if v == nil {
@@ -20802,7 +20802,7 @@ func (o VmwareAdminClusterLoadBalancerMetalLbConfigPtrOutput) Enabled() pulumi.B
 type VmwareAdminClusterLoadBalancerVipConfig struct {
 	// The VIP to configure the load balancer for add-ons.
 	//
-	// <a name="nestedF5Config"></a>The `f5Config` block supports:
+	// <a name="nestedLoadBalancerF5Config"></a>The `f5Config` block supports:
 	AddonsVip *string `pulumi:"addonsVip"`
 	// The VIP which you previously set aside for the Kubernetes
 	// API of this VMware Admin Cluster.
@@ -20823,7 +20823,7 @@ type VmwareAdminClusterLoadBalancerVipConfigInput interface {
 type VmwareAdminClusterLoadBalancerVipConfigArgs struct {
 	// The VIP to configure the load balancer for add-ons.
 	//
-	// <a name="nestedF5Config"></a>The `f5Config` block supports:
+	// <a name="nestedLoadBalancerF5Config"></a>The `f5Config` block supports:
 	AddonsVip pulumi.StringPtrInput `pulumi:"addonsVip"`
 	// The VIP which you previously set aside for the Kubernetes
 	// API of this VMware Admin Cluster.
@@ -20909,7 +20909,7 @@ func (o VmwareAdminClusterLoadBalancerVipConfigOutput) ToVmwareAdminClusterLoadB
 
 // The VIP to configure the load balancer for add-ons.
 //
-// <a name="nestedF5Config"></a>The `f5Config` block supports:
+// <a name="nestedLoadBalancerF5Config"></a>The `f5Config` block supports:
 func (o VmwareAdminClusterLoadBalancerVipConfigOutput) AddonsVip() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v VmwareAdminClusterLoadBalancerVipConfig) *string { return v.AddonsVip }).(pulumi.StringPtrOutput)
 }
@@ -20946,7 +20946,7 @@ func (o VmwareAdminClusterLoadBalancerVipConfigPtrOutput) Elem() VmwareAdminClus
 
 // The VIP to configure the load balancer for add-ons.
 //
-// <a name="nestedF5Config"></a>The `f5Config` block supports:
+// <a name="nestedLoadBalancerF5Config"></a>The `f5Config` block supports:
 func (o VmwareAdminClusterLoadBalancerVipConfigPtrOutput) AddonsVip() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *VmwareAdminClusterLoadBalancerVipConfig) *string {
 		if v == nil {
@@ -22405,7 +22405,7 @@ type VmwareAdminClusterPlatformConfig struct {
 	// ResourceStatus representing detailed cluster state.
 	// Structure is documented below.
 	//
-	// <a name="nestedStatus"></a>The `status` block contains:
+	// <a name="nestedPlatformConfigBundlesBundlesStatus"></a>The `status` block contains:
 	Statuses []VmwareAdminClusterPlatformConfigStatus `pulumi:"statuses"`
 }
 
@@ -22438,7 +22438,7 @@ type VmwareAdminClusterPlatformConfigArgs struct {
 	// ResourceStatus representing detailed cluster state.
 	// Structure is documented below.
 	//
-	// <a name="nestedStatus"></a>The `status` block contains:
+	// <a name="nestedPlatformConfigBundlesBundlesStatus"></a>The `status` block contains:
 	Statuses VmwareAdminClusterPlatformConfigStatusArrayInput `pulumi:"statuses"`
 }
 
@@ -22545,7 +22545,7 @@ func (o VmwareAdminClusterPlatformConfigOutput) RequiredPlatformVersion() pulumi
 // ResourceStatus representing detailed cluster state.
 // Structure is documented below.
 //
-// <a name="nestedStatus"></a>The `status` block contains:
+// <a name="nestedPlatformConfigBundlesBundlesStatus"></a>The `status` block contains:
 func (o VmwareAdminClusterPlatformConfigOutput) Statuses() VmwareAdminClusterPlatformConfigStatusArrayOutput {
 	return o.ApplyT(func(v VmwareAdminClusterPlatformConfig) []VmwareAdminClusterPlatformConfigStatus { return v.Statuses }).(VmwareAdminClusterPlatformConfigStatusArrayOutput)
 }
@@ -22615,7 +22615,7 @@ func (o VmwareAdminClusterPlatformConfigPtrOutput) RequiredPlatformVersion() pul
 // ResourceStatus representing detailed cluster state.
 // Structure is documented below.
 //
-// <a name="nestedStatus"></a>The `status` block contains:
+// <a name="nestedPlatformConfigBundlesBundlesStatus"></a>The `status` block contains:
 func (o VmwareAdminClusterPlatformConfigPtrOutput) Statuses() VmwareAdminClusterPlatformConfigStatusArrayOutput {
 	return o.ApplyT(func(v *VmwareAdminClusterPlatformConfig) []VmwareAdminClusterPlatformConfigStatus {
 		if v == nil {
