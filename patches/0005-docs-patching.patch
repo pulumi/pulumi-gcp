@@ -1,6 +1,6 @@
 From 0000000000000000000000000000000000000000 Mon Sep 17 00:00:00 2001
 From: Venelin <venelin@pulumi.com>
-Date: Tue, 12 Nov 2024 15:52:45 +0000
+Date: Wed, 15 Jan 2025 15:45:41 +0200
 Subject: [PATCH] docs patching
 
 
@@ -19,7 +19,7 @@ index e88c1fbc7..a13b0254f 100644
  
  * [API documentation](https://cloud.google.com/api-gateway/docs/reference/rest/v1beta/projects.locations.apis)
 diff --git a/website/docs/r/api_gateway_api_config.html.markdown b/website/docs/r/api_gateway_api_config.html.markdown
-index 13bcdcdb5..f4915524a 100644
+index cbd40ac00..b12c0e6ea 100644
 --- a/website/docs/r/api_gateway_api_config.html.markdown
 +++ b/website/docs/r/api_gateway_api_config.html.markdown
 @@ -21,9 +21,6 @@ description: |-
@@ -117,7 +117,7 @@ index 2dbadf3dd..7e3e047fe 100644
    org_id                   = google_apigee_organization.apigee_org.id
    disk_encryption_key_name = google_kms_crypto_key.apigee_key.id
 diff --git a/website/docs/r/apigee_organization.html.markdown b/website/docs/r/apigee_organization.html.markdown
-index cb61548ea..34131f252 100644
+index 1cb13c724..24a7f4e4b 100644
 --- a/website/docs/r/apigee_organization.html.markdown
 +++ b/website/docs/r/apigee_organization.html.markdown
 @@ -126,7 +126,7 @@ resource "google_kms_crypto_key_iam_member" "apigee_sa_keyuser" {
@@ -147,7 +147,7 @@ index de386e9ff..0029e996e 100644
  ~> **Warning:** All arguments including `iap.oauth2_client_secret` will be stored in the raw
  state as plain-text. [Read more about sensitive data in state](https://www.terraform.io/language/state/sensitive-data).
 diff --git a/website/docs/r/app_engine_flexible_app_version.html.markdown b/website/docs/r/app_engine_flexible_app_version.html.markdown
-index ab54b615d..2ed6376e4 100644
+index 3437336c6..faf6b651c 100644
 --- a/website/docs/r/app_engine_flexible_app_version.html.markdown
 +++ b/website/docs/r/app_engine_flexible_app_version.html.markdown
 @@ -312,7 +312,7 @@ The following arguments are supported:
@@ -160,7 +160,7 @@ index ab54b615d..2ed6376e4 100644
  * `default_expiration` -
    (Optional)
 diff --git a/website/docs/r/bigquery_job.html.markdown b/website/docs/r/bigquery_job.html.markdown
-index 56f90a480..6777bfca7 100644
+index f35325202..d226862a6 100644
 --- a/website/docs/r/bigquery_job.html.markdown
 +++ b/website/docs/r/bigquery_job.html.markdown
 @@ -711,8 +711,8 @@ The following arguments are supported:
@@ -306,7 +306,7 @@ index 7007e82bb..3051111fd 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/certificate_manager_certificate.html.markdown b/website/docs/r/certificate_manager_certificate.html.markdown
-index 48be459a6..4b2a474e7 100644
+index b69758516..d2097742d 100644
 --- a/website/docs/r/certificate_manager_certificate.html.markdown
 +++ b/website/docs/r/certificate_manager_certificate.html.markdown
 @@ -156,19 +156,38 @@ resource "google_privateca_certificate_authority" "ca_authority" {
@@ -362,7 +362,7 @@ index 48be459a6..4b2a474e7 100644
  * `pem_private_key` -
    (Optional)
 diff --git a/website/docs/r/cloud_run_domain_mapping.html.markdown b/website/docs/r/cloud_run_domain_mapping.html.markdown
-index a68f58813..650247567 100644
+index b963eecc9..7aa5ce965 100644
 --- a/website/docs/r/cloud_run_domain_mapping.html.markdown
 +++ b/website/docs/r/cloud_run_domain_mapping.html.markdown
 @@ -161,7 +161,7 @@ The following arguments are supported:
@@ -375,7 +375,7 @@ index a68f58813..650247567 100644
    **Note**: This field is non-authoritative, and will only manage the annotations present in your configuration.
    Please refer to the field `effective_annotations` for all of the annotations present on the resource.
 diff --git a/website/docs/r/cloud_run_service.html.markdown b/website/docs/r/cloud_run_service.html.markdown
-index 91c38fdd4..32b13d59c 100644
+index 017c9a4b1..bd462ca22 100644
 --- a/website/docs/r/cloud_run_service.html.markdown
 +++ b/website/docs/r/cloud_run_service.html.markdown
 @@ -31,8 +31,63 @@ To get more information about Service, see:
@@ -468,7 +468,7 @@ index 91c38fdd4..32b13d59c 100644
 -  Periodic probe of container liveness. Container will be restarted if the probe fails.
 +  Periodic probe of container liveness. Container will be restarted if the probe fails. More info:
 +  https://kubernetes.io/docs/concepts/workloads/pods/pod-lifecycle#container-probes
-   Structure is [documented below](#nested_liveness_probe).
+   Structure is [documented below](#nested_spec_template_spec_containers_containers_liveness_probe).
  
  
 @@ -1035,7 +1091,7 @@ this field is set to false, the revision name will still autogenerate.)
@@ -481,7 +481,7 @@ index 91c38fdd4..32b13d59c 100644
    Annotations with `run.googleapis.com/` and `autoscaling.knative.dev` are restricted. Use the following annotation
    keys to configure features on a Service:
 diff --git a/website/docs/r/cloud_scheduler_job.html.markdown b/website/docs/r/cloud_scheduler_job.html.markdown
-index c3e738686..4ab0fb25d 100644
+index 2e5459c7e..e4d2a69e9 100644
 --- a/website/docs/r/cloud_scheduler_job.html.markdown
 +++ b/website/docs/r/cloud_scheduler_job.html.markdown
 @@ -278,7 +278,7 @@ The following arguments are supported:
@@ -577,7 +577,7 @@ index 0a305240d..845f44993 100644
  ## Example Usage - Backend Bucket Signed Url Key
  
 diff --git a/website/docs/r/compute_backend_service.html.markdown b/website/docs/r/compute_backend_service.html.markdown
-index 7edeae294..f411c61a5 100644
+index 5d7a991c4..4136aa12d 100644
 --- a/website/docs/r/compute_backend_service.html.markdown
 +++ b/website/docs/r/compute_backend_service.html.markdown
 @@ -36,7 +36,6 @@ To get more information about BackendService, see:
@@ -797,10 +797,10 @@ index 5d846e846..8dda2ecb4 100644
    instances = [
      google_compute_instance.test.id,
 diff --git a/website/docs/r/compute_instance_group_manager.html.markdown b/website/docs/r/compute_instance_group_manager.html.markdown
-index 4492397f2..26ec08096 100644
+index 284e66bb9..2a4b43426 100644
 --- a/website/docs/r/compute_instance_group_manager.html.markdown
 +++ b/website/docs/r/compute_instance_group_manager.html.markdown
-@@ -165,7 +165,7 @@ The following arguments are supported:
+@@ -164,7 +164,7 @@ The following arguments are supported:
      not affect existing instances.
  
  * `wait_for_instances` - (Optional) Whether to wait for all instances to be created/updated before
@@ -940,7 +940,7 @@ index 1b32e0b70..05d184bdf 100644
  
  In addition to the arguments listed above, the following computed attributes are
 diff --git a/website/docs/r/compute_node_group.html.markdown b/website/docs/r/compute_node_group.html.markdown
-index 9ea19105d..a3684ed40 100644
+index 5c8570e4b..d2a2158d0 100644
 --- a/website/docs/r/compute_node_group.html.markdown
 +++ b/website/docs/r/compute_node_group.html.markdown
 @@ -28,6 +28,11 @@ To get more information about NodeGroup, see:
@@ -1041,7 +1041,7 @@ index d4c50e4c0..87e4f250a 100644
    policy_id     = google_compute_organization_security_policy.policy.id
  }
 diff --git a/website/docs/r/compute_organization_security_policy_rule.html.markdown b/website/docs/r/compute_organization_security_policy_rule.html.markdown
-index 1df50f38d..5e1ae7158 100644
+index 2712fb571..1e168e23c 100644
 --- a/website/docs/r/compute_organization_security_policy_rule.html.markdown
 +++ b/website/docs/r/compute_organization_security_policy_rule.html.markdown
 @@ -21,9 +21,6 @@ description: |-
@@ -1064,7 +1064,7 @@ index 1df50f38d..5e1ae7158 100644
  }
  
 diff --git a/website/docs/r/compute_per_instance_config.html.markdown b/website/docs/r/compute_per_instance_config.html.markdown
-index 087815a69..58339754b 100644
+index 2c406e0c7..8b2d102b8 100644
 --- a/website/docs/r/compute_per_instance_config.html.markdown
 +++ b/website/docs/r/compute_per_instance_config.html.markdown
 @@ -60,7 +60,7 @@ resource "google_compute_instance_template" "igm-basic" {
@@ -1131,10 +1131,10 @@ index db7f57628..dceb98ac2 100644
  
  ```hcl
 diff --git a/website/docs/r/compute_region_instance_group_manager.html.markdown b/website/docs/r/compute_region_instance_group_manager.html.markdown
-index 9becef0fe..4d17cf1e7 100644
+index c39fbe250..17408b0c4 100644
 --- a/website/docs/r/compute_region_instance_group_manager.html.markdown
 +++ b/website/docs/r/compute_region_instance_group_manager.html.markdown
-@@ -166,7 +166,7 @@ The following arguments are supported:
+@@ -165,7 +165,7 @@ The following arguments are supported:
      not affect existing instances.
  
  * `wait_for_instances` - (Optional) Whether to wait for all instances to be created/updated before
@@ -1160,7 +1160,7 @@ index f240f0708..40f39cf11 100644
  
  * [API documentation](https://cloud.google.com/compute/docs/reference/rest/beta/regionNetworkEndpointGroups)
 diff --git a/website/docs/r/compute_region_per_instance_config.html.markdown b/website/docs/r/compute_region_per_instance_config.html.markdown
-index 5f6a81f91..712ade9ee 100644
+index 5dadd53e4..81850e133 100644
 --- a/website/docs/r/compute_region_per_instance_config.html.markdown
 +++ b/website/docs/r/compute_region_per_instance_config.html.markdown
 @@ -61,7 +61,7 @@ resource "google_compute_instance_template" "igm-basic" {
@@ -2039,7 +2039,7 @@ index 7789b05fe..cd5d853c0 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/deployment_manager_deployment.html.markdown b/website/docs/r/deployment_manager_deployment.html.markdown
-index f9074531e..2a6673035 100644
+index d8e02342b..c9bdfe086 100644
 --- a/website/docs/r/deployment_manager_deployment.html.markdown
 +++ b/website/docs/r/deployment_manager_deployment.html.markdown
 @@ -25,15 +25,13 @@ a configuration file
@@ -2085,7 +2085,7 @@ index 234941e92..cbecd2912 100644
  * `project` - (Optional) The ID of the project in which the resource belongs.
      If it is not provided, the provider project is used.
 diff --git a/website/docs/r/dns_managed_zone.html.markdown b/website/docs/r/dns_managed_zone.html.markdown
-index 653f2afc5..e650f5a15 100644
+index ec45ead92..dfcbcd66f 100644
 --- a/website/docs/r/dns_managed_zone.html.markdown
 +++ b/website/docs/r/dns_managed_zone.html.markdown
 @@ -42,16 +42,12 @@ To get more information about ManagedZone, see:
@@ -2122,7 +2122,7 @@ index 653f2afc5..e650f5a15 100644
  * `dnssec_config` -
    (Optional)
 diff --git a/website/docs/r/dns_policy.html.markdown b/website/docs/r/dns_policy.html.markdown
-index c4477a93e..8ca08942a 100644
+index 997264bcb..a282538f8 100644
 --- a/website/docs/r/dns_policy.html.markdown
 +++ b/website/docs/r/dns_policy.html.markdown
 @@ -96,7 +96,7 @@ The following arguments are supported:
@@ -3249,7 +3249,7 @@ index 9a3a1f78f..6f8ccd37e 100644
    the sensitive_labels block, but cannot be configured in both places.
  
 diff --git a/website/docs/r/monitoring_slo.html.markdown b/website/docs/r/monitoring_slo.html.markdown
-index 8978b4bdb..f5824a993 100644
+index cf615c626..54f2ba153 100644
 --- a/website/docs/r/monitoring_slo.html.markdown
 +++ b/website/docs/r/monitoring_slo.html.markdown
 @@ -53,7 +53,7 @@ resource "google_monitoring_slo" "appeng_slo" {
@@ -3307,7 +3307,7 @@ index 8978b4bdb..f5824a993 100644
    goal = 0.9
    rolling_period_days = 20
 diff --git a/website/docs/r/monitoring_uptime_check_config.html.markdown b/website/docs/r/monitoring_uptime_check_config.html.markdown
-index c4933d88d..2328e5497 100644
+index 921d20a5e..f08d6592d 100644
 --- a/website/docs/r/monitoring_uptime_check_config.html.markdown
 +++ b/website/docs/r/monitoring_uptime_check_config.html.markdown
 @@ -28,9 +28,8 @@ To get more information about UptimeCheckConfig, see:
@@ -3335,7 +3335,7 @@ index bfcca3771..93c9e6ff2 100644
    container_image {
      repository = "gcr.io/deeplearning-platform-release/base-cpu"
 diff --git a/website/docs/r/os_config_guest_policies.html.markdown b/website/docs/r/os_config_guest_policies.html.markdown
-index 3879c6fd2..cf89daff6 100644
+index 72dc69186..a0de4b4de 100644
 --- a/website/docs/r/os_config_guest_policies.html.markdown
 +++ b/website/docs/r/os_config_guest_policies.html.markdown
 @@ -23,9 +23,6 @@ An OS Config resource representing a guest configuration policy. These policies
@@ -3363,7 +3363,7 @@ index fe9f8b04a..f1ca040b9 100644
  
  ~> **Note:** Once created, this resource cannot be updated or destroyed. These
 diff --git a/website/docs/r/redis_instance.html.markdown b/website/docs/r/redis_instance.html.markdown
-index f4e44aed8..f9ed9e443 100644
+index 9f8539617..e0a540c47 100644
 --- a/website/docs/r/redis_instance.html.markdown
 +++ b/website/docs/r/redis_instance.html.markdown
 @@ -66,7 +66,7 @@ resource "google_redis_instance" "cache" {
@@ -3401,7 +3401,7 @@ index 663f57a0a..b38168aef 100644
  <div class = "oics-button" style="float: right; margin: 0 0 -15px">
    <a href="https://console.cloud.google.com/cloudshell/open?cloudshell_git_repo=https%3A%2F%2Fgithub.com%2Fterraform-google-modules%2Fdocs-examples.git&cloudshell_image=gcr.io%2Fcloudshell-images%2Fcloudshell%3Alatest&cloudshell_print=.%2Fmotd&cloudshell_tutorial=.%2Ftutorial.md&cloudshell_working_dir=secret_version_basic&open_in_editor=main.tf" target="_blank">
 diff --git a/website/docs/r/security_scanner_scan_config.html.markdown b/website/docs/r/security_scanner_scan_config.html.markdown
-index acb39f605..35cc434e4 100644
+index cc0ae3356..d0ed428f1 100644
 --- a/website/docs/r/security_scanner_scan_config.html.markdown
 +++ b/website/docs/r/security_scanner_scan_config.html.markdown
 @@ -21,18 +21,13 @@ description: |-
@@ -3558,7 +3558,7 @@ index b6e4a06bd..a775c628e 100644
  
  <a name="nested_encryption_config"></a>The `encryption_config` block supports:
 diff --git a/website/docs/r/sql_database_instance.html.markdown b/website/docs/r/sql_database_instance.html.markdown
-index f6193b91d..3be112b5e 100644
+index 6f6e2e668..585819a79 100644
 --- a/website/docs/r/sql_database_instance.html.markdown
 +++ b/website/docs/r/sql_database_instance.html.markdown
 @@ -10,12 +10,12 @@ Creates a new Google SQL Database Instance. For more information, see the [offic
@@ -3620,7 +3620,7 @@ index f6193b91d..3be112b5e 100644
      configuration is detailed below.
  
  The `settings` block supports:
-@@ -545,7 +541,7 @@ The optional `clone` block supports:
+@@ -547,7 +543,7 @@ The optional `clone` block supports:
  * `allocated_ip_range` -  (Optional) The name of the allocated ip range for the private ip CloudSQL instance. For example: "google-managed-services-default". If set, the cloned instance ip will be created in the allocated range. The range name must comply with [RFC 1035](https://tools.ietf.org/html/rfc1035). Specifically, the name must be 1-63 characters long and match the regular expression [a-z]([-a-z0-9]*[a-z0-9])?.
  
  The optional `restore_backup_context` block supports:
@@ -3629,7 +3629,7 @@ index f6193b91d..3be112b5e 100644
  block during resource creation/update will trigger the restore action after the resource is created/updated.
  
  * `backup_run_id` - (Required) The ID of the backup run to restore from.
-@@ -583,21 +579,13 @@ instance.
+@@ -585,21 +581,13 @@ instance.
  
    * A `PRIVATE` address is an address for an instance which has been configured to use private networking see: [Private IP](https://cloud.google.com/sql/docs/mysql/private-ip).
  
