@@ -58,7 +58,8 @@ public final class SettingsAccessSettingsArgs extends com.pulumi.resources.Resou
 
     /**
      * GCIP claims and endpoint configurations for 3p identity providers.
-     * Structure is documented below.
+     * * Enabling gcipSetting significantly changes the way IAP authenticates users. Identity Platform does not support IAM, so IAP will not enforce any IAM policies for requests to your application.
+     *   Structure is documented below.
      * 
      */
     @Import(name="gcipSettings")
@@ -66,7 +67,8 @@ public final class SettingsAccessSettingsArgs extends com.pulumi.resources.Resou
 
     /**
      * @return GCIP claims and endpoint configurations for 3p identity providers.
-     * Structure is documented below.
+     * * Enabling gcipSetting significantly changes the way IAP authenticates users. Identity Platform does not support IAM, so IAP will not enforce any IAM policies for requests to your application.
+     *   Structure is documented below.
      * 
      */
     public Optional<Output<SettingsAccessSettingsGcipSettingsArgs>> gcipSettings() {
@@ -227,7 +229,8 @@ public final class SettingsAccessSettingsArgs extends com.pulumi.resources.Resou
 
         /**
          * @param gcipSettings GCIP claims and endpoint configurations for 3p identity providers.
-         * Structure is documented below.
+         * * Enabling gcipSetting significantly changes the way IAP authenticates users. Identity Platform does not support IAM, so IAP will not enforce any IAM policies for requests to your application.
+         *   Structure is documented below.
          * 
          * @return builder
          * 
@@ -239,7 +242,8 @@ public final class SettingsAccessSettingsArgs extends com.pulumi.resources.Resou
 
         /**
          * @param gcipSettings GCIP claims and endpoint configurations for 3p identity providers.
-         * Structure is documented below.
+         * * Enabling gcipSetting significantly changes the way IAP authenticates users. Identity Platform does not support IAM, so IAP will not enforce any IAM policies for requests to your application.
+         *   Structure is documented below.
          * 
          * @return builder
          * 

@@ -53,6 +53,11 @@ public final class DatabaseInstanceSettingsIpConfiguration {
      */
     private @Nullable String serverCaMode;
     /**
+     * @return The resource name of the server CA pool for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `server_ca_mode`.
+     * 
+     */
+    private @Nullable String serverCaPool;
+    /**
      * @return Specify how SSL connection should be enforced in DB connections. Supported values are `ALLOW_UNENCRYPTED_AND_ENCRYPTED`, `ENCRYPTED_ONLY`, and `TRUSTED_CLIENT_CERTIFICATE_REQUIRED` (not supported for SQL Server). See [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1/instances#ipconfiguration) for details.
      * 
      */
@@ -111,6 +116,13 @@ public final class DatabaseInstanceSettingsIpConfiguration {
         return Optional.ofNullable(this.serverCaMode);
     }
     /**
+     * @return The resource name of the server CA pool for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `server_ca_mode`.
+     * 
+     */
+    public Optional<String> serverCaPool() {
+        return Optional.ofNullable(this.serverCaPool);
+    }
+    /**
      * @return Specify how SSL connection should be enforced in DB connections. Supported values are `ALLOW_UNENCRYPTED_AND_ENCRYPTED`, `ENCRYPTED_ONLY`, and `TRUSTED_CLIENT_CERTIFICATE_REQUIRED` (not supported for SQL Server). See [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1/instances#ipconfiguration) for details.
      * 
      */
@@ -134,6 +146,7 @@ public final class DatabaseInstanceSettingsIpConfiguration {
         private @Nullable String privateNetwork;
         private @Nullable List<DatabaseInstanceSettingsIpConfigurationPscConfig> pscConfigs;
         private @Nullable String serverCaMode;
+        private @Nullable String serverCaPool;
         private @Nullable String sslMode;
         public Builder() {}
         public Builder(DatabaseInstanceSettingsIpConfiguration defaults) {
@@ -145,6 +158,7 @@ public final class DatabaseInstanceSettingsIpConfiguration {
     	      this.privateNetwork = defaults.privateNetwork;
     	      this.pscConfigs = defaults.pscConfigs;
     	      this.serverCaMode = defaults.serverCaMode;
+    	      this.serverCaPool = defaults.serverCaPool;
     	      this.sslMode = defaults.sslMode;
         }
 
@@ -197,6 +211,12 @@ public final class DatabaseInstanceSettingsIpConfiguration {
             return this;
         }
         @CustomType.Setter
+        public Builder serverCaPool(@Nullable String serverCaPool) {
+
+            this.serverCaPool = serverCaPool;
+            return this;
+        }
+        @CustomType.Setter
         public Builder sslMode(@Nullable String sslMode) {
 
             this.sslMode = sslMode;
@@ -211,6 +231,7 @@ public final class DatabaseInstanceSettingsIpConfiguration {
             _resultValue.privateNetwork = privateNetwork;
             _resultValue.pscConfigs = pscConfigs;
             _resultValue.serverCaMode = serverCaMode;
+            _resultValue.serverCaPool = serverCaPool;
             _resultValue.sslMode = sslMode;
             return _resultValue;
         }

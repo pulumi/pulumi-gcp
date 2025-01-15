@@ -5,10 +5,12 @@ package com.pulumi.gcp.dns.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
-import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.dns.inputs.RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArgs;
+import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs extends com.pulumi.resources.ResourceArgs {
@@ -16,25 +18,41 @@ public final class RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTarg
     public static final RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs Empty = new RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs();
 
     /**
+     * The list of external endpoint addresses to health check.
+     * 
+     */
+    @Import(name="externalEndpoints")
+    private @Nullable Output<List<String>> externalEndpoints;
+
+    /**
+     * @return The list of external endpoint addresses to health check.
+     * 
+     */
+    public Optional<Output<List<String>>> externalEndpoints() {
+        return Optional.ofNullable(this.externalEndpoints);
+    }
+
+    /**
      * The list of internal load balancers to health check.
      * Structure is documented below.
      * 
      */
-    @Import(name="internalLoadBalancers", required=true)
-    private Output<List<RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArgs>> internalLoadBalancers;
+    @Import(name="internalLoadBalancers")
+    private @Nullable Output<List<RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArgs>> internalLoadBalancers;
 
     /**
      * @return The list of internal load balancers to health check.
      * Structure is documented below.
      * 
      */
-    public Output<List<RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArgs>> internalLoadBalancers() {
-        return this.internalLoadBalancers;
+    public Optional<Output<List<RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArgs>>> internalLoadBalancers() {
+        return Optional.ofNullable(this.internalLoadBalancers);
     }
 
     private RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs() {}
 
     private RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs(RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs $) {
+        this.externalEndpoints = $.externalEndpoints;
         this.internalLoadBalancers = $.internalLoadBalancers;
     }
 
@@ -57,13 +75,44 @@ public final class RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTarg
         }
 
         /**
+         * @param externalEndpoints The list of external endpoint addresses to health check.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalEndpoints(@Nullable Output<List<String>> externalEndpoints) {
+            $.externalEndpoints = externalEndpoints;
+            return this;
+        }
+
+        /**
+         * @param externalEndpoints The list of external endpoint addresses to health check.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalEndpoints(List<String> externalEndpoints) {
+            return externalEndpoints(Output.of(externalEndpoints));
+        }
+
+        /**
+         * @param externalEndpoints The list of external endpoint addresses to health check.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder externalEndpoints(String... externalEndpoints) {
+            return externalEndpoints(List.of(externalEndpoints));
+        }
+
+        /**
          * @param internalLoadBalancers The list of internal load balancers to health check.
          * Structure is documented below.
          * 
          * @return builder
          * 
          */
-        public Builder internalLoadBalancers(Output<List<RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArgs>> internalLoadBalancers) {
+        public Builder internalLoadBalancers(@Nullable Output<List<RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancerArgs>> internalLoadBalancers) {
             $.internalLoadBalancers = internalLoadBalancers;
             return this;
         }
@@ -91,9 +140,6 @@ public final class RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTarg
         }
 
         public RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs build() {
-            if ($.internalLoadBalancers == null) {
-                throw new MissingRequiredPropertyException("RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs", "internalLoadBalancers");
-            }
             return $;
         }
     }

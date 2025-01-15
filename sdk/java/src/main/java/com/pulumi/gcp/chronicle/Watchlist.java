@@ -53,7 +53,54 @@ import javax.annotation.Nullable;
  *         var example = new Watchlist("example", WatchlistArgs.builder()
  *             .location("us")
  *             .instance("00000000-0000-0000-0000-000000000000")
- *             .watchlistId("watchlist-name")
+ *             .watchlistId("watchlist-id")
+ *             .description("watchlist-description")
+ *             .displayName("watchlist_name")
+ *             .multiplyingFactor(1)
+ *             .entityPopulationMechanism(WatchlistEntityPopulationMechanismArgs.builder()
+ *                 .manual()
+ *                 .build())
+ *             .watchlistUserPreferences(WatchlistWatchlistUserPreferencesArgs.builder()
+ *                 .pinned(true)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Chronicle Watchlist Without Id
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.chronicle.Watchlist;
+ * import com.pulumi.gcp.chronicle.WatchlistArgs;
+ * import com.pulumi.gcp.chronicle.inputs.WatchlistEntityPopulationMechanismArgs;
+ * import com.pulumi.gcp.chronicle.inputs.WatchlistEntityPopulationMechanismManualArgs;
+ * import com.pulumi.gcp.chronicle.inputs.WatchlistWatchlistUserPreferencesArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new Watchlist("example", WatchlistArgs.builder()
+ *             .location("us")
+ *             .instance("00000000-0000-0000-0000-000000000000")
  *             .description("watchlist-description")
  *             .displayName("watchlist-name")
  *             .multiplyingFactor(1)
@@ -257,20 +304,16 @@ public class Watchlist extends com.pulumi.resources.CustomResource {
         return this.updateTime;
     }
     /**
-     * Optional. The ID to use for the watchlist,
-     * which will become the final component of the watchlist&#39;s resource name.
-     * This value should be 4-63 characters, and valid characters
-     * are /a-z-/.
+     * Optional. The ID to use for the watchlist, which will become the final component of the watchlist&#39;s resource name. This
+     * value should be 4-63 characters, and valid characters are /a-z-/.
      * 
      */
     @Export(name="watchlistId", refs={String.class}, tree="[0]")
     private Output<String> watchlistId;
 
     /**
-     * @return Optional. The ID to use for the watchlist,
-     * which will become the final component of the watchlist&#39;s resource name.
-     * This value should be 4-63 characters, and valid characters
-     * are /a-z-/.
+     * @return Optional. The ID to use for the watchlist, which will become the final component of the watchlist&#39;s resource name. This
+     * value should be 4-63 characters, and valid characters are /a-z-/.
      * 
      */
     public Output<String> watchlistId() {

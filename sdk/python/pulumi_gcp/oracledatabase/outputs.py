@@ -1721,7 +1721,7 @@ class AutonomousDatabasePropertiesCustomerContact(dict):
         :param str email: The email address used by Oracle to send notifications regarding databases
                and infrastructure.
                
-               <a name="nested_apex_details"></a>The `apex_details` block contains:
+               <a name="nested_properties_apex_details"></a>The `apex_details` block contains:
         """
         pulumi.set(__self__, "email", email)
 
@@ -1732,7 +1732,7 @@ class AutonomousDatabasePropertiesCustomerContact(dict):
         The email address used by Oracle to send notifications regarding databases
         and infrastructure.
 
-        <a name="nested_apex_details"></a>The `apex_details` block contains:
+        <a name="nested_properties_apex_details"></a>The `apex_details` block contains:
         """
         return pulumi.get(self, "email")
 

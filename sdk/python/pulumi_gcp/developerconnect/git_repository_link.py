@@ -493,6 +493,8 @@ class GitRepositoryLink(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        A git repository link to a parent connection.
+
         ## Example Usage
 
         ## Import
@@ -549,6 +551,8 @@ class GitRepositoryLink(pulumi.CustomResource):
                  args: GitRepositoryLinkArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        A git repository link to a parent connection.
+
         ## Example Usage
 
         ## Import

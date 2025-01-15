@@ -867,14 +867,14 @@ public class VMwareCluster extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="vcenter", refs={VMwareClusterVcenter.class}, tree="[0]")
-    private Output</* @Nullable */ VMwareClusterVcenter> vcenter;
+    private Output<VMwareClusterVcenter> vcenter;
 
     /**
      * @return VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
      * 
      */
-    public Output<Optional<VMwareClusterVcenter>> vcenter() {
-        return Codegen.optional(this.vcenter);
+    public Output<VMwareClusterVcenter> vcenter() {
+        return this.vcenter;
     }
     /**
      * Enable VM tracking.

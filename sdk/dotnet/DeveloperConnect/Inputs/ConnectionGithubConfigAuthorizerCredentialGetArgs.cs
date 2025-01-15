@@ -13,9 +13,8 @@ namespace Pulumi.Gcp.DeveloperConnect.Inputs
     public sealed class ConnectionGithubConfigAuthorizerCredentialGetArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
-        /// Required. A SecretManager resource containing the OAuth token
-        /// that authorizes the connection.
-        /// Format: `projects/*/secrets/*/versions/*`.
+        /// Required. A SecretManager resource containing the OAuth token that authorizes
+        /// the connection. Format: `projects/*/secrets/*/versions/*`.
         /// </summary>
         [Input("oauthTokenSecretVersion", required: true)]
         public Input<string> OauthTokenSecretVersion { get; set; } = null!;

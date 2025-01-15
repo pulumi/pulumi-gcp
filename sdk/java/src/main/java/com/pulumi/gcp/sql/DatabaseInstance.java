@@ -23,7 +23,7 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
- * Creates a new Google SQL Database Instance. For more information, see the [official documentation](https://cloud.google.com/sql/),
+ * Creates a new Google SQL Database Instance. For more information, see the [official documentation](https://cloud.google.com/sql/docs/mysql/create-instance),
  * or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/instances).
  * 
  * &gt; **NOTE on `gcp.sql.DatabaseInstance`:** - Second-generation instances include a

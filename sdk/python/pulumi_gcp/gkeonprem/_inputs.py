@@ -6057,7 +6057,7 @@ if not MYPY:
         """
         Whether to enable control plane node auto resizing.
 
-        <a name="nested_vsphere_config"></a>The `vsphere_config` block contains:
+        <a name="nested_control_plane_node_vsphere_config"></a>The `vsphere_config` block contains:
         """
 elif False:
     VMwareClusterControlPlaneNodeAutoResizeConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -6069,7 +6069,7 @@ class VMwareClusterControlPlaneNodeAutoResizeConfigArgs:
         """
         :param pulumi.Input[bool] enabled: Whether to enable control plane node auto resizing.
                
-               <a name="nested_vsphere_config"></a>The `vsphere_config` block contains:
+               <a name="nested_control_plane_node_vsphere_config"></a>The `vsphere_config` block contains:
         """
         pulumi.set(__self__, "enabled", enabled)
 
@@ -6079,7 +6079,7 @@ class VMwareClusterControlPlaneNodeAutoResizeConfigArgs:
         """
         Whether to enable control plane node auto resizing.
 
-        <a name="nested_vsphere_config"></a>The `vsphere_config` block contains:
+        <a name="nested_control_plane_node_vsphere_config"></a>The `vsphere_config` block contains:
         """
         return pulumi.get(self, "enabled")
 
@@ -6697,7 +6697,7 @@ if not MYPY:
         """
         The VIP which you previously set aside for ingress traffic into this cluster.
 
-        <a name="nested_f5_config"></a>The `f5_config` block supports:
+        <a name="nested_load_balancer_f5_config"></a>The `f5_config` block supports:
         """
 elif False:
     VMwareClusterLoadBalancerVipConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -6711,7 +6711,7 @@ class VMwareClusterLoadBalancerVipConfigArgs:
         :param pulumi.Input[str] control_plane_vip: The VIP which you previously set aside for the Kubernetes API of this cluster.
         :param pulumi.Input[str] ingress_vip: The VIP which you previously set aside for ingress traffic into this cluster.
                
-               <a name="nested_f5_config"></a>The `f5_config` block supports:
+               <a name="nested_load_balancer_f5_config"></a>The `f5_config` block supports:
         """
         if control_plane_vip is not None:
             pulumi.set(__self__, "control_plane_vip", control_plane_vip)
@@ -6736,7 +6736,7 @@ class VMwareClusterLoadBalancerVipConfigArgs:
         """
         The VIP which you previously set aside for ingress traffic into this cluster.
 
-        <a name="nested_f5_config"></a>The `f5_config` block supports:
+        <a name="nested_load_balancer_f5_config"></a>The `f5_config` block supports:
         """
         return pulumi.get(self, "ingress_vip")
 
@@ -7115,7 +7115,7 @@ if not MYPY:
         """
         DNS search domains.
 
-        <a name="nested_control_plane_v2_config"></a>The `control_plane_v2_config` block supports:
+        <a name="nested_network_config_control_plane_v2_config"></a>The `control_plane_v2_config` block supports:
         """
         dns_servers: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
@@ -7137,7 +7137,7 @@ class VMwareClusterNetworkConfigHostConfigArgs:
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_search_domains: DNS search domains.
                
-               <a name="nested_control_plane_v2_config"></a>The `control_plane_v2_config` block supports:
+               <a name="nested_network_config_control_plane_v2_config"></a>The `control_plane_v2_config` block supports:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dns_servers: DNS servers.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] ntp_servers: NTP servers.
         """
@@ -7154,7 +7154,7 @@ class VMwareClusterNetworkConfigHostConfigArgs:
         """
         DNS search domains.
 
-        <a name="nested_control_plane_v2_config"></a>The `control_plane_v2_config` block supports:
+        <a name="nested_network_config_control_plane_v2_config"></a>The `control_plane_v2_config` block supports:
         """
         return pulumi.get(self, "dns_search_domains")
 
@@ -9398,7 +9398,7 @@ if not MYPY:
         """
         The VIP to configure the load balancer for add-ons.
 
-        <a name="nested_f5_config"></a>The `f5_config` block supports:
+        <a name="nested_load_balancer_f5_config"></a>The `f5_config` block supports:
         """
 elif False:
     VmwareAdminClusterLoadBalancerVipConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -9413,7 +9413,7 @@ class VmwareAdminClusterLoadBalancerVipConfigArgs:
                API of this VMware Admin Cluster.
         :param pulumi.Input[str] addons_vip: The VIP to configure the load balancer for add-ons.
                
-               <a name="nested_f5_config"></a>The `f5_config` block supports:
+               <a name="nested_load_balancer_f5_config"></a>The `f5_config` block supports:
         """
         pulumi.set(__self__, "control_plane_vip", control_plane_vip)
         if addons_vip is not None:
@@ -9438,7 +9438,7 @@ class VmwareAdminClusterLoadBalancerVipConfigArgs:
         """
         The VIP to configure the load balancer for add-ons.
 
-        <a name="nested_f5_config"></a>The `f5_config` block supports:
+        <a name="nested_load_balancer_f5_config"></a>The `f5_config` block supports:
         """
         return pulumi.get(self, "addons_vip")
 
@@ -10080,7 +10080,7 @@ if not MYPY:
         Structure is documented below.
 
 
-        <a name="nested_status"></a>The `status` block contains:
+        <a name="nested_platform_config_bundles_bundles_status"></a>The `status` block contains:
         """
 elif False:
     VmwareAdminClusterPlatformConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -10108,7 +10108,7 @@ class VmwareAdminClusterPlatformConfigArgs:
                Structure is documented below.
                
                
-               <a name="nested_status"></a>The `status` block contains:
+               <a name="nested_platform_config_bundles_bundles_status"></a>The `status` block contains:
         """
         if bundles is not None:
             pulumi.set(__self__, "bundles", bundles)
@@ -10171,7 +10171,7 @@ class VmwareAdminClusterPlatformConfigArgs:
         Structure is documented below.
 
 
-        <a name="nested_status"></a>The `status` block contains:
+        <a name="nested_platform_config_bundles_bundles_status"></a>The `status` block contains:
         """
         return pulumi.get(self, "statuses")
 

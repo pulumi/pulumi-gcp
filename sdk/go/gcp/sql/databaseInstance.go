@@ -12,7 +12,7 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
-// Creates a new Google SQL Database Instance. For more information, see the [official documentation](https://cloud.google.com/sql/),
+// Creates a new Google SQL Database Instance. For more information, see the [official documentation](https://cloud.google.com/sql/docs/mysql/create-instance),
 // or the [JSON API](https://cloud.google.com/sql/docs/admin-api/v1beta4/instances).
 //
 // > **NOTE on `sql.DatabaseInstance`:** - Second-generation instances include a

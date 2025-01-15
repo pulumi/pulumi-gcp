@@ -317,7 +317,7 @@ type CertificateManaged struct {
 	// specified for this Managed Certificate.
 	// Structure is documented below.
 	//
-	// <a name="nestedProvisioningIssue"></a>The `provisioningIssue` block contains:
+	// <a name="nestedManagedProvisioningIssue"></a>The `provisioningIssue` block contains:
 	AuthorizationAttemptInfos []CertificateManagedAuthorizationAttemptInfo `pulumi:"authorizationAttemptInfos"`
 	// Authorizations that will be used for performing domain authorization. Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
 	DnsAuthorizations []string `pulumi:"dnsAuthorizations"`
@@ -354,7 +354,7 @@ type CertificateManagedArgs struct {
 	// specified for this Managed Certificate.
 	// Structure is documented below.
 	//
-	// <a name="nestedProvisioningIssue"></a>The `provisioningIssue` block contains:
+	// <a name="nestedManagedProvisioningIssue"></a>The `provisioningIssue` block contains:
 	AuthorizationAttemptInfos CertificateManagedAuthorizationAttemptInfoArrayInput `pulumi:"authorizationAttemptInfos"`
 	// Authorizations that will be used for performing domain authorization. Either issuanceConfig or dnsAuthorizations should be specificed, but not both.
 	DnsAuthorizations pulumi.StringArrayInput `pulumi:"dnsAuthorizations"`
@@ -456,7 +456,7 @@ func (o CertificateManagedOutput) ToCertificateManagedPtrOutputWithContext(ctx c
 // specified for this Managed Certificate.
 // Structure is documented below.
 //
-// <a name="nestedProvisioningIssue"></a>The `provisioningIssue` block contains:
+// <a name="nestedManagedProvisioningIssue"></a>The `provisioningIssue` block contains:
 func (o CertificateManagedOutput) AuthorizationAttemptInfos() CertificateManagedAuthorizationAttemptInfoArrayOutput {
 	return o.ApplyT(func(v CertificateManaged) []CertificateManagedAuthorizationAttemptInfo {
 		return v.AuthorizationAttemptInfos
@@ -523,7 +523,7 @@ func (o CertificateManagedPtrOutput) Elem() CertificateManagedOutput {
 // specified for this Managed Certificate.
 // Structure is documented below.
 //
-// <a name="nestedProvisioningIssue"></a>The `provisioningIssue` block contains:
+// <a name="nestedManagedProvisioningIssue"></a>The `provisioningIssue` block contains:
 func (o CertificateManagedPtrOutput) AuthorizationAttemptInfos() CertificateManagedAuthorizationAttemptInfoArrayOutput {
 	return o.ApplyT(func(v *CertificateManaged) []CertificateManagedAuthorizationAttemptInfo {
 		if v == nil {

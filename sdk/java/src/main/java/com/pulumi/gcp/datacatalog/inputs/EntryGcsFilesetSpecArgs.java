@@ -58,7 +58,7 @@ public final class EntryGcsFilesetSpecArgs extends com.pulumi.resources.Resource
      * Sample files contained in this fileset, not all files contained in this fileset are represented here.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_sample_gcs_file_specs&#34;&gt;&lt;/a&gt;The `sample_gcs_file_specs` block contains:
+     * &lt;a name=&#34;nested_gcs_fileset_spec_sample_gcs_file_specs&#34;&gt;&lt;/a&gt;The `sample_gcs_file_specs` block contains:
      * 
      */
     @Import(name="sampleGcsFileSpecs")
@@ -69,7 +69,7 @@ public final class EntryGcsFilesetSpecArgs extends com.pulumi.resources.Resource
      * Sample files contained in this fileset, not all files contained in this fileset are represented here.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_sample_gcs_file_specs&#34;&gt;&lt;/a&gt;The `sample_gcs_file_specs` block contains:
+     * &lt;a name=&#34;nested_gcs_fileset_spec_sample_gcs_file_specs&#34;&gt;&lt;/a&gt;The `sample_gcs_file_specs` block contains:
      * 
      */
     public Optional<Output<List<EntryGcsFilesetSpecSampleGcsFileSpecArgs>>> sampleGcsFileSpecs() {
@@ -167,7 +167,7 @@ public final class EntryGcsFilesetSpecArgs extends com.pulumi.resources.Resource
          * Sample files contained in this fileset, not all files contained in this fileset are represented here.
          * Structure is documented below.
          * 
-         * &lt;a name=&#34;nested_sample_gcs_file_specs&#34;&gt;&lt;/a&gt;The `sample_gcs_file_specs` block contains:
+         * &lt;a name=&#34;nested_gcs_fileset_spec_sample_gcs_file_specs&#34;&gt;&lt;/a&gt;The `sample_gcs_file_specs` block contains:
          * 
          * @return builder
          * 
@@ -182,7 +182,7 @@ public final class EntryGcsFilesetSpecArgs extends com.pulumi.resources.Resource
          * Sample files contained in this fileset, not all files contained in this fileset are represented here.
          * Structure is documented below.
          * 
-         * &lt;a name=&#34;nested_sample_gcs_file_specs&#34;&gt;&lt;/a&gt;The `sample_gcs_file_specs` block contains:
+         * &lt;a name=&#34;nested_gcs_fileset_spec_sample_gcs_file_specs&#34;&gt;&lt;/a&gt;The `sample_gcs_file_specs` block contains:
          * 
          * @return builder
          * 
@@ -196,7 +196,7 @@ public final class EntryGcsFilesetSpecArgs extends com.pulumi.resources.Resource
          * Sample files contained in this fileset, not all files contained in this fileset are represented here.
          * Structure is documented below.
          * 
-         * &lt;a name=&#34;nested_sample_gcs_file_specs&#34;&gt;&lt;/a&gt;The `sample_gcs_file_specs` block contains:
+         * &lt;a name=&#34;nested_gcs_fileset_spec_sample_gcs_file_specs&#34;&gt;&lt;/a&gt;The `sample_gcs_file_specs` block contains:
          * 
          * @return builder
          * 

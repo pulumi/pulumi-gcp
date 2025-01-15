@@ -21,6 +21,10 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "gcp:chronicle/dataAccessLabel:DataAccessLabel":
+		r = &DataAccessLabel{}
+	case "gcp:chronicle/dataAccessScope:DataAccessScope":
+		r = &DataAccessScope{}
 	case "gcp:chronicle/watchlist:Watchlist":
 		r = &Watchlist{}
 	default:
@@ -36,6 +40,16 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"chronicle/dataAccessLabel",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"chronicle/dataAccessScope",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"chronicle/watchlist",

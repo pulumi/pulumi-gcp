@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Monitoring.Outputs
         /// Structure is documented below.
         /// 
         /// 
-        /// &lt;a name="nested_cloud_function_v2"&gt;&lt;/a&gt;The `cloud_function_v2` block supports:
+        /// &lt;a name="nested_synthetic_monitor_cloud_function_v2"&gt;&lt;/a&gt;The `cloud_function_v2` block supports:
         /// </summary>
         public readonly Outputs.UptimeCheckConfigSyntheticMonitorCloudFunctionV2 CloudFunctionV2;
 

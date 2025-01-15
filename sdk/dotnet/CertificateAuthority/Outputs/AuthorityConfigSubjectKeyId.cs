@@ -16,7 +16,7 @@ namespace Pulumi.Gcp.CertificateAuthority.Outputs
         /// <summary>
         /// The value of the KeyId in lowercase hexadecimal.
         /// 
-        /// &lt;a name="nested_x509_config"&gt;&lt;/a&gt;The `x509_config` block supports:
+        /// &lt;a name="nested_config_x509_config"&gt;&lt;/a&gt;The `x509_config` block supports:
         /// </summary>
         public readonly string? KeyId;
 

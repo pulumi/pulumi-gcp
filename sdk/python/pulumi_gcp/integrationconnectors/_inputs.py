@@ -864,7 +864,7 @@ if not MYPY:
         """
         Value for the "aud" claim.
 
-        <a name="nested_oauth2_client_credentials"></a>The `oauth2_client_credentials` block supports:
+        <a name="nested_auth_config_oauth2_client_credentials"></a>The `oauth2_client_credentials` block supports:
         """
         issuer: NotRequired[pulumi.Input[str]]
         """
@@ -886,7 +886,7 @@ class ConnectionAuthConfigOauth2JwtBearerJwtClaimsArgs:
         """
         :param pulumi.Input[str] audience: Value for the "aud" claim.
                
-               <a name="nested_oauth2_client_credentials"></a>The `oauth2_client_credentials` block supports:
+               <a name="nested_auth_config_oauth2_client_credentials"></a>The `oauth2_client_credentials` block supports:
         :param pulumi.Input[str] issuer: Value for the "iss" claim.
         :param pulumi.Input[str] subject: Value for the "sub" claim.
         """
@@ -903,7 +903,7 @@ class ConnectionAuthConfigOauth2JwtBearerJwtClaimsArgs:
         """
         Value for the "aud" claim.
 
-        <a name="nested_oauth2_client_credentials"></a>The `oauth2_client_credentials` block supports:
+        <a name="nested_auth_config_oauth2_client_credentials"></a>The `oauth2_client_credentials` block supports:
         """
         return pulumi.get(self, "audience")
 
@@ -1074,7 +1074,7 @@ if not MYPY:
         The resource name of the secret version in the format,
         format as: projects/*/secrets/*/versions/*.
 
-        <a name="nested_oauth2_auth_code_flow"></a>The `oauth2_auth_code_flow` block supports:
+        <a name="nested_auth_config_oauth2_auth_code_flow"></a>The `oauth2_auth_code_flow` block supports:
         """
 elif False:
     ConnectionAuthConfigSshPublicKeySshClientCertPassArgsDict: TypeAlias = Mapping[str, Any]
@@ -1087,7 +1087,7 @@ class ConnectionAuthConfigSshPublicKeySshClientCertPassArgs:
         :param pulumi.Input[str] secret_version: The resource name of the secret version in the format,
                format as: projects/*/secrets/*/versions/*.
                
-               <a name="nested_oauth2_auth_code_flow"></a>The `oauth2_auth_code_flow` block supports:
+               <a name="nested_auth_config_oauth2_auth_code_flow"></a>The `oauth2_auth_code_flow` block supports:
         """
         pulumi.set(__self__, "secret_version", secret_version)
 
@@ -1098,7 +1098,7 @@ class ConnectionAuthConfigSshPublicKeySshClientCertPassArgs:
         The resource name of the secret version in the format,
         format as: projects/*/secrets/*/versions/*.
 
-        <a name="nested_oauth2_auth_code_flow"></a>The `oauth2_auth_code_flow` block supports:
+        <a name="nested_auth_config_oauth2_auth_code_flow"></a>The `oauth2_auth_code_flow` block supports:
         """
         return pulumi.get(self, "secret_version")
 

@@ -25,6 +25,7 @@ namespace Pulumi.Gcp.Iap.Outputs
         public readonly Outputs.SettingsAccessSettingsCorsSettings? CorsSettings;
         /// <summary>
         /// GCIP claims and endpoint configurations for 3p identity providers.
+        /// * Enabling gcipSetting significantly changes the way IAP authenticates users. Identity Platform does not support IAM, so IAP will not enforce any IAM policies for requests to your application.
         /// Structure is documented below.
         /// </summary>
         public readonly Outputs.SettingsAccessSettingsGcipSettings? GcipSettings;

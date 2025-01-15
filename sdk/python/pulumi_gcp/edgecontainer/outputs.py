@@ -190,7 +190,7 @@ class ClusterControlPlaneEncryption(dict):
                Structure is documented below.
                
                
-               <a name="nested_kms_status"></a>The `kms_status` block contains:
+               <a name="nested_control_plane_encryption_kms_status"></a>The `kms_status` block contains:
         """
         if kms_key is not None:
             pulumi.set(__self__, "kms_key", kms_key)
@@ -245,7 +245,7 @@ class ClusterControlPlaneEncryption(dict):
         Structure is documented below.
 
 
-        <a name="nested_kms_status"></a>The `kms_status` block contains:
+        <a name="nested_control_plane_encryption_kms_status"></a>The `kms_status` block contains:
         """
         return pulumi.get(self, "kms_statuses")
 

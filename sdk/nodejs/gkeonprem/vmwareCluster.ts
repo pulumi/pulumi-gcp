@@ -434,7 +434,7 @@ export class VMwareCluster extends pulumi.CustomResource {
     /**
      * VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
      */
-    public readonly vcenter!: pulumi.Output<outputs.gkeonprem.VMwareClusterVcenter | undefined>;
+    public readonly vcenter!: pulumi.Output<outputs.gkeonprem.VMwareClusterVcenter>;
     /**
      * Enable VM tracking.
      */

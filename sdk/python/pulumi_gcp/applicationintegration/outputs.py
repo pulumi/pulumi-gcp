@@ -882,7 +882,7 @@ class AuthConfigDecryptedCredentialUsernameAndPassword(dict):
         """
         :param str password: Password to be used.
                
-               <a name="nested_oauth2_authorization_code"></a>The `oauth2_authorization_code` block supports:
+               <a name="nested_decrypted_credential_oauth2_authorization_code"></a>The `oauth2_authorization_code` block supports:
         :param str username: Username to be used.
         """
         if password is not None:
@@ -896,7 +896,7 @@ class AuthConfigDecryptedCredentialUsernameAndPassword(dict):
         """
         Password to be used.
 
-        <a name="nested_oauth2_authorization_code"></a>The `oauth2_authorization_code` block supports:
+        <a name="nested_decrypted_credential_oauth2_authorization_code"></a>The `oauth2_authorization_code` block supports:
         """
         return pulumi.get(self, "password")
 

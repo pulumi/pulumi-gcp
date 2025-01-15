@@ -3105,6 +3105,8 @@ type DatabaseInstanceSettingsIpConfiguration struct {
 	PscConfigs []DatabaseInstanceSettingsIpConfigurationPscConfig `pulumi:"pscConfigs"`
 	// Specify how the server certificate's Certificate Authority is hosted. Supported values are `GOOGLE_MANAGED_INTERNAL_CA` and `GOOGLE_MANAGED_CAS_CA`.
 	ServerCaMode *string `pulumi:"serverCaMode"`
+	// The resource name of the server CA pool for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `serverCaMode`.
+	ServerCaPool *string `pulumi:"serverCaPool"`
 	// Specify how SSL connection should be enforced in DB connections. Supported values are `ALLOW_UNENCRYPTED_AND_ENCRYPTED`, `ENCRYPTED_ONLY`, and `TRUSTED_CLIENT_CERTIFICATE_REQUIRED` (not supported for SQL Server). See [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1/instances#ipconfiguration) for details.
 	SslMode *string `pulumi:"sslMode"`
 }
@@ -3140,6 +3142,8 @@ type DatabaseInstanceSettingsIpConfigurationArgs struct {
 	PscConfigs DatabaseInstanceSettingsIpConfigurationPscConfigArrayInput `pulumi:"pscConfigs"`
 	// Specify how the server certificate's Certificate Authority is hosted. Supported values are `GOOGLE_MANAGED_INTERNAL_CA` and `GOOGLE_MANAGED_CAS_CA`.
 	ServerCaMode pulumi.StringPtrInput `pulumi:"serverCaMode"`
+	// The resource name of the server CA pool for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `serverCaMode`.
+	ServerCaPool pulumi.StringPtrInput `pulumi:"serverCaPool"`
 	// Specify how SSL connection should be enforced in DB connections. Supported values are `ALLOW_UNENCRYPTED_AND_ENCRYPTED`, `ENCRYPTED_ONLY`, and `TRUSTED_CLIENT_CERTIFICATE_REQUIRED` (not supported for SQL Server). See [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1/instances#ipconfiguration) for details.
 	SslMode pulumi.StringPtrInput `pulumi:"sslMode"`
 }
@@ -3267,6 +3271,11 @@ func (o DatabaseInstanceSettingsIpConfigurationOutput) ServerCaMode() pulumi.Str
 	return o.ApplyT(func(v DatabaseInstanceSettingsIpConfiguration) *string { return v.ServerCaMode }).(pulumi.StringPtrOutput)
 }
 
+// The resource name of the server CA pool for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `serverCaMode`.
+func (o DatabaseInstanceSettingsIpConfigurationOutput) ServerCaPool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceSettingsIpConfiguration) *string { return v.ServerCaPool }).(pulumi.StringPtrOutput)
+}
+
 // Specify how SSL connection should be enforced in DB connections. Supported values are `ALLOW_UNENCRYPTED_AND_ENCRYPTED`, `ENCRYPTED_ONLY`, and `TRUSTED_CLIENT_CERTIFICATE_REQUIRED` (not supported for SQL Server). See [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1/instances#ipconfiguration) for details.
 func (o DatabaseInstanceSettingsIpConfigurationOutput) SslMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v DatabaseInstanceSettingsIpConfiguration) *string { return v.SslMode }).(pulumi.StringPtrOutput)
@@ -3368,6 +3377,16 @@ func (o DatabaseInstanceSettingsIpConfigurationPtrOutput) ServerCaMode() pulumi.
 			return nil
 		}
 		return v.ServerCaMode
+	}).(pulumi.StringPtrOutput)
+}
+
+// The resource name of the server CA pool for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `serverCaMode`.
+func (o DatabaseInstanceSettingsIpConfigurationPtrOutput) ServerCaPool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceSettingsIpConfiguration) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServerCaPool
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -7012,6 +7031,8 @@ type GetDatabaseInstanceSettingIpConfiguration struct {
 	PscConfigs []GetDatabaseInstanceSettingIpConfigurationPscConfig `pulumi:"pscConfigs"`
 	// Specify how the server certificate's Certificate Authority is hosted.
 	ServerCaMode string `pulumi:"serverCaMode"`
+	// The resource name of the server CA pool for an instance with "CUSTOMER_MANAGED_CAS_CA" as the "serverCaMode".
+	ServerCaPool string `pulumi:"serverCaPool"`
 	// Specify how SSL connection should be enforced in DB connections.
 	SslMode string `pulumi:"sslMode"`
 }
@@ -7041,6 +7062,8 @@ type GetDatabaseInstanceSettingIpConfigurationArgs struct {
 	PscConfigs GetDatabaseInstanceSettingIpConfigurationPscConfigArrayInput `pulumi:"pscConfigs"`
 	// Specify how the server certificate's Certificate Authority is hosted.
 	ServerCaMode pulumi.StringInput `pulumi:"serverCaMode"`
+	// The resource name of the server CA pool for an instance with "CUSTOMER_MANAGED_CAS_CA" as the "serverCaMode".
+	ServerCaPool pulumi.StringInput `pulumi:"serverCaPool"`
 	// Specify how SSL connection should be enforced in DB connections.
 	SslMode pulumi.StringInput `pulumi:"sslMode"`
 }
@@ -7134,6 +7157,11 @@ func (o GetDatabaseInstanceSettingIpConfigurationOutput) PscConfigs() GetDatabas
 // Specify how the server certificate's Certificate Authority is hosted.
 func (o GetDatabaseInstanceSettingIpConfigurationOutput) ServerCaMode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstanceSettingIpConfiguration) string { return v.ServerCaMode }).(pulumi.StringOutput)
+}
+
+// The resource name of the server CA pool for an instance with "CUSTOMER_MANAGED_CAS_CA" as the "serverCaMode".
+func (o GetDatabaseInstanceSettingIpConfigurationOutput) ServerCaPool() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceSettingIpConfiguration) string { return v.ServerCaPool }).(pulumi.StringOutput)
 }
 
 // Specify how SSL connection should be enforced in DB connections.
@@ -10252,6 +10280,8 @@ type GetDatabaseInstancesInstanceSettingIpConfiguration struct {
 	PscConfigs []GetDatabaseInstancesInstanceSettingIpConfigurationPscConfig `pulumi:"pscConfigs"`
 	// Specify how the server certificate's Certificate Authority is hosted.
 	ServerCaMode string `pulumi:"serverCaMode"`
+	// The resource name of the server CA pool for an instance with "CUSTOMER_MANAGED_CAS_CA" as the "serverCaMode".
+	ServerCaPool string `pulumi:"serverCaPool"`
 	// Specify how SSL connection should be enforced in DB connections.
 	SslMode string `pulumi:"sslMode"`
 }
@@ -10281,6 +10311,8 @@ type GetDatabaseInstancesInstanceSettingIpConfigurationArgs struct {
 	PscConfigs GetDatabaseInstancesInstanceSettingIpConfigurationPscConfigArrayInput `pulumi:"pscConfigs"`
 	// Specify how the server certificate's Certificate Authority is hosted.
 	ServerCaMode pulumi.StringInput `pulumi:"serverCaMode"`
+	// The resource name of the server CA pool for an instance with "CUSTOMER_MANAGED_CAS_CA" as the "serverCaMode".
+	ServerCaPool pulumi.StringInput `pulumi:"serverCaPool"`
 	// Specify how SSL connection should be enforced in DB connections.
 	SslMode pulumi.StringInput `pulumi:"sslMode"`
 }
@@ -10374,6 +10406,11 @@ func (o GetDatabaseInstancesInstanceSettingIpConfigurationOutput) PscConfigs() G
 // Specify how the server certificate's Certificate Authority is hosted.
 func (o GetDatabaseInstancesInstanceSettingIpConfigurationOutput) ServerCaMode() pulumi.StringOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingIpConfiguration) string { return v.ServerCaMode }).(pulumi.StringOutput)
+}
+
+// The resource name of the server CA pool for an instance with "CUSTOMER_MANAGED_CAS_CA" as the "serverCaMode".
+func (o GetDatabaseInstancesInstanceSettingIpConfigurationOutput) ServerCaPool() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceSettingIpConfiguration) string { return v.ServerCaPool }).(pulumi.StringOutput)
 }
 
 // Specify how SSL connection should be enforced in DB connections.

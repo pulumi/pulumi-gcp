@@ -170,7 +170,7 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ### With Standby Policy (`Google-Beta` Provider)
+ * ### With Standby Policy (`Google` Provider)
  * &lt;!--Start PulumiCodeChooser --&gt;
  * <pre>
  * {@code
@@ -547,14 +547,14 @@ public class RegionInstanceGroupManager extends com.pulumi.resources.CustomResou
         return this.selfLink;
     }
     /**
-     * The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
+     * The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
      * 
      */
     @Export(name="standbyPolicy", refs={RegionInstanceGroupManagerStandbyPolicy.class}, tree="[0]")
     private Output<RegionInstanceGroupManagerStandbyPolicy> standbyPolicy;
 
     /**
-     * @return The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
+     * @return The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
      * 
      */
     public Output<RegionInstanceGroupManagerStandbyPolicy> standbyPolicy() {

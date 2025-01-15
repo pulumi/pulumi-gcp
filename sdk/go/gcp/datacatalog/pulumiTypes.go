@@ -499,7 +499,7 @@ type EntryGcsFilesetSpec struct {
 	// Sample files contained in this fileset, not all files contained in this fileset are represented here.
 	// Structure is documented below.
 	//
-	// <a name="nestedSampleGcsFileSpecs"></a>The `sampleGcsFileSpecs` block contains:
+	// <a name="nestedGcsFilesetSpecSampleGcsFileSpecs"></a>The `sampleGcsFileSpecs` block contains:
 	SampleGcsFileSpecs []EntryGcsFilesetSpecSampleGcsFileSpec `pulumi:"sampleGcsFileSpecs"`
 }
 
@@ -531,7 +531,7 @@ type EntryGcsFilesetSpecArgs struct {
 	// Sample files contained in this fileset, not all files contained in this fileset are represented here.
 	// Structure is documented below.
 	//
-	// <a name="nestedSampleGcsFileSpecs"></a>The `sampleGcsFileSpecs` block contains:
+	// <a name="nestedGcsFilesetSpecSampleGcsFileSpecs"></a>The `sampleGcsFileSpecs` block contains:
 	SampleGcsFileSpecs EntryGcsFilesetSpecSampleGcsFileSpecArrayInput `pulumi:"sampleGcsFileSpecs"`
 }
 
@@ -631,7 +631,7 @@ func (o EntryGcsFilesetSpecOutput) FilePatterns() pulumi.StringArrayOutput {
 // Sample files contained in this fileset, not all files contained in this fileset are represented here.
 // Structure is documented below.
 //
-// <a name="nestedSampleGcsFileSpecs"></a>The `sampleGcsFileSpecs` block contains:
+// <a name="nestedGcsFilesetSpecSampleGcsFileSpecs"></a>The `sampleGcsFileSpecs` block contains:
 func (o EntryGcsFilesetSpecOutput) SampleGcsFileSpecs() EntryGcsFilesetSpecSampleGcsFileSpecArrayOutput {
 	return o.ApplyT(func(v EntryGcsFilesetSpec) []EntryGcsFilesetSpecSampleGcsFileSpec { return v.SampleGcsFileSpecs }).(EntryGcsFilesetSpecSampleGcsFileSpecArrayOutput)
 }
@@ -684,7 +684,7 @@ func (o EntryGcsFilesetSpecPtrOutput) FilePatterns() pulumi.StringArrayOutput {
 // Sample files contained in this fileset, not all files contained in this fileset are represented here.
 // Structure is documented below.
 //
-// <a name="nestedSampleGcsFileSpecs"></a>The `sampleGcsFileSpecs` block contains:
+// <a name="nestedGcsFilesetSpecSampleGcsFileSpecs"></a>The `sampleGcsFileSpecs` block contains:
 func (o EntryGcsFilesetSpecPtrOutput) SampleGcsFileSpecs() EntryGcsFilesetSpecSampleGcsFileSpecArrayOutput {
 	return o.ApplyT(func(v *EntryGcsFilesetSpec) []EntryGcsFilesetSpecSampleGcsFileSpec {
 		if v == nil {

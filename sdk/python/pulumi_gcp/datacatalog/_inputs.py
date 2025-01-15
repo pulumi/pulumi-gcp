@@ -333,7 +333,7 @@ if not MYPY:
         Structure is documented below.
 
 
-        <a name="nested_sample_gcs_file_specs"></a>The `sample_gcs_file_specs` block contains:
+        <a name="nested_gcs_fileset_spec_sample_gcs_file_specs"></a>The `sample_gcs_file_specs` block contains:
         """
 elif False:
     EntryGcsFilesetSpecArgsDict: TypeAlias = Mapping[str, Any]
@@ -360,7 +360,7 @@ class EntryGcsFilesetSpecArgs:
                Structure is documented below.
                
                
-               <a name="nested_sample_gcs_file_specs"></a>The `sample_gcs_file_specs` block contains:
+               <a name="nested_gcs_fileset_spec_sample_gcs_file_specs"></a>The `sample_gcs_file_specs` block contains:
         """
         pulumi.set(__self__, "file_patterns", file_patterns)
         if sample_gcs_file_specs is not None:
@@ -397,7 +397,7 @@ class EntryGcsFilesetSpecArgs:
         Structure is documented below.
 
 
-        <a name="nested_sample_gcs_file_specs"></a>The `sample_gcs_file_specs` block contains:
+        <a name="nested_gcs_fileset_spec_sample_gcs_file_specs"></a>The `sample_gcs_file_specs` block contains:
         """
         return pulumi.get(self, "sample_gcs_file_specs")
 

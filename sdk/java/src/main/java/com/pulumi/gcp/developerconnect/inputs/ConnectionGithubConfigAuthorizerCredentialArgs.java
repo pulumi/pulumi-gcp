@@ -17,18 +17,16 @@ public final class ConnectionGithubConfigAuthorizerCredentialArgs extends com.pu
     public static final ConnectionGithubConfigAuthorizerCredentialArgs Empty = new ConnectionGithubConfigAuthorizerCredentialArgs();
 
     /**
-     * Required. A SecretManager resource containing the OAuth token
-     * that authorizes the connection.
-     * Format: `projects/*&#47;secrets/*&#47;versions/*`.
+     * Required. A SecretManager resource containing the OAuth token that authorizes
+     * the connection. Format: `projects/*&#47;secrets/*&#47;versions/*`.
      * 
      */
     @Import(name="oauthTokenSecretVersion", required=true)
     private Output<String> oauthTokenSecretVersion;
 
     /**
-     * @return Required. A SecretManager resource containing the OAuth token
-     * that authorizes the connection.
-     * Format: `projects/*&#47;secrets/*&#47;versions/*`.
+     * @return Required. A SecretManager resource containing the OAuth token that authorizes
+     * the connection. Format: `projects/*&#47;secrets/*&#47;versions/*`.
      * 
      */
     public Output<String> oauthTokenSecretVersion() {
@@ -78,9 +76,8 @@ public final class ConnectionGithubConfigAuthorizerCredentialArgs extends com.pu
         }
 
         /**
-         * @param oauthTokenSecretVersion Required. A SecretManager resource containing the OAuth token
-         * that authorizes the connection.
-         * Format: `projects/*&#47;secrets/*&#47;versions/*`.
+         * @param oauthTokenSecretVersion Required. A SecretManager resource containing the OAuth token that authorizes
+         * the connection. Format: `projects/*&#47;secrets/*&#47;versions/*`.
          * 
          * @return builder
          * 
@@ -91,9 +88,8 @@ public final class ConnectionGithubConfigAuthorizerCredentialArgs extends com.pu
         }
 
         /**
-         * @param oauthTokenSecretVersion Required. A SecretManager resource containing the OAuth token
-         * that authorizes the connection.
-         * Format: `projects/*&#47;secrets/*&#47;versions/*`.
+         * @param oauthTokenSecretVersion Required. A SecretManager resource containing the OAuth token that authorizes
+         * the connection. Format: `projects/*&#47;secrets/*&#47;versions/*`.
          * 
          * @return builder
          * 

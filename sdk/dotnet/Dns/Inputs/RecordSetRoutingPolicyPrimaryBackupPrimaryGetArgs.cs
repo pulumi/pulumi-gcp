@@ -12,7 +12,19 @@ namespace Pulumi.Gcp.Dns.Inputs
 
     public sealed class RecordSetRoutingPolicyPrimaryBackupPrimaryGetArgs : global::Pulumi.ResourceArgs
     {
-        [Input("internalLoadBalancers", required: true)]
+        [Input("externalEndpoints")]
+        private InputList<string>? _externalEndpoints;
+
+        /// <summary>
+        /// The Internet IP addresses to be health checked.
+        /// </summary>
+        public InputList<string> ExternalEndpoints
+        {
+            get => _externalEndpoints ?? (_externalEndpoints = new InputList<string>());
+            set => _externalEndpoints = value;
+        }
+
+        [Input("internalLoadBalancers")]
         private InputList<Inputs.RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancerGetArgs>? _internalLoadBalancers;
 
         /// <summary>

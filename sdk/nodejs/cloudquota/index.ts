@@ -15,6 +15,11 @@ export const getSQuotaInfos: typeof import("./getSQuotaInfos").getSQuotaInfos = 
 export const getSQuotaInfosOutput: typeof import("./getSQuotaInfos").getSQuotaInfosOutput = null as any;
 utilities.lazyLoad(exports, ["getSQuotaInfos","getSQuotaInfosOutput"], () => require("./getSQuotaInfos"));
 
+export { SQuotaAdjusterSettingsArgs, SQuotaAdjusterSettingsState } from "./squotaAdjusterSettings";
+export type SQuotaAdjusterSettings = import("./squotaAdjusterSettings").SQuotaAdjusterSettings;
+export const SQuotaAdjusterSettings: typeof import("./squotaAdjusterSettings").SQuotaAdjusterSettings = null as any;
+utilities.lazyLoad(exports, ["SQuotaAdjusterSettings"], () => require("./squotaAdjusterSettings"));
+
 export { SQuotaPreferenceArgs, SQuotaPreferenceState } from "./squotaPreference";
 export type SQuotaPreference = import("./squotaPreference").SQuotaPreference;
 export const SQuotaPreference: typeof import("./squotaPreference").SQuotaPreference = null as any;
@@ -25,6 +30,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp:cloudquota/sQuotaAdjusterSettings:SQuotaAdjusterSettings":
+                return new SQuotaAdjusterSettings(name, <any>undefined, { urn })
             case "gcp:cloudquota/sQuotaPreference:SQuotaPreference":
                 return new SQuotaPreference(name, <any>undefined, { urn })
             default:
@@ -32,4 +39,5 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("gcp", "cloudquota/sQuotaAdjusterSettings", _module)
 pulumi.runtime.registerResourceModule("gcp", "cloudquota/sQuotaPreference", _module)

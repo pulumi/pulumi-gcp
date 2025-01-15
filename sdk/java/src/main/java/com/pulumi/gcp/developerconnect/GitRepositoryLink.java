@@ -18,6 +18,8 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * A git repository link to a parent connection.
+ * 
  * ## Example Usage
  * 
  * ### Developer Connect Git Repository Link Github Doc

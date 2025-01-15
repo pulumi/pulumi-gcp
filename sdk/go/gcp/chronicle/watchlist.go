@@ -31,7 +31,42 @@ import (
 //			_, err := chronicle.NewWatchlist(ctx, "example", &chronicle.WatchlistArgs{
 //				Location:          pulumi.String("us"),
 //				Instance:          pulumi.String("00000000-0000-0000-0000-000000000000"),
-//				WatchlistId:       pulumi.String("watchlist-name"),
+//				WatchlistId:       pulumi.String("watchlist-id"),
+//				Description:       pulumi.String("watchlist-description"),
+//				DisplayName:       pulumi.String("watchlist_name"),
+//				MultiplyingFactor: pulumi.Float64(1),
+//				EntityPopulationMechanism: &chronicle.WatchlistEntityPopulationMechanismArgs{
+//					Manual: &chronicle.WatchlistEntityPopulationMechanismManualArgs{},
+//				},
+//				WatchlistUserPreferences: &chronicle.WatchlistWatchlistUserPreferencesArgs{
+//					Pinned: pulumi.Bool(true),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Chronicle Watchlist Without Id
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/chronicle"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := chronicle.NewWatchlist(ctx, "example", &chronicle.WatchlistArgs{
+//				Location:          pulumi.String("us"),
+//				Instance:          pulumi.String("00000000-0000-0000-0000-000000000000"),
 //				Description:       pulumi.String("watchlist-description"),
 //				DisplayName:       pulumi.String("watchlist-name"),
 //				MultiplyingFactor: pulumi.Float64(1),
@@ -104,10 +139,8 @@ type Watchlist struct {
 	Project pulumi.StringOutput `pulumi:"project"`
 	// Output only. Time the watchlist was last updated.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
-	// Optional. The ID to use for the watchlist,
-	// which will become the final component of the watchlist's resource name.
-	// This value should be 4-63 characters, and valid characters
-	// are /a-z-/.
+	// Optional. The ID to use for the watchlist, which will become the final component of the watchlist's resource name. This
+	// value should be 4-63 characters, and valid characters are /a-z-/.
 	WatchlistId pulumi.StringOutput `pulumi:"watchlistId"`
 	// A collection of user preferences for watchlist UI configuration.
 	WatchlistUserPreferences WatchlistWatchlistUserPreferencesOutput `pulumi:"watchlistUserPreferences"`
@@ -131,9 +164,6 @@ func NewWatchlist(ctx *pulumi.Context,
 	}
 	if args.Location == nil {
 		return nil, errors.New("invalid value for required argument 'Location'")
-	}
-	if args.WatchlistId == nil {
-		return nil, errors.New("invalid value for required argument 'WatchlistId'")
 	}
 	opts = internal.PkgResourceDefaultOpts(opts)
 	var resource Watchlist
@@ -185,10 +215,8 @@ type watchlistState struct {
 	Project *string `pulumi:"project"`
 	// Output only. Time the watchlist was last updated.
 	UpdateTime *string `pulumi:"updateTime"`
-	// Optional. The ID to use for the watchlist,
-	// which will become the final component of the watchlist's resource name.
-	// This value should be 4-63 characters, and valid characters
-	// are /a-z-/.
+	// Optional. The ID to use for the watchlist, which will become the final component of the watchlist's resource name. This
+	// value should be 4-63 characters, and valid characters are /a-z-/.
 	WatchlistId *string `pulumi:"watchlistId"`
 	// A collection of user preferences for watchlist UI configuration.
 	WatchlistUserPreferences *WatchlistWatchlistUserPreferences `pulumi:"watchlistUserPreferences"`
@@ -222,10 +250,8 @@ type WatchlistState struct {
 	Project pulumi.StringPtrInput
 	// Output only. Time the watchlist was last updated.
 	UpdateTime pulumi.StringPtrInput
-	// Optional. The ID to use for the watchlist,
-	// which will become the final component of the watchlist's resource name.
-	// This value should be 4-63 characters, and valid characters
-	// are /a-z-/.
+	// Optional. The ID to use for the watchlist, which will become the final component of the watchlist's resource name. This
+	// value should be 4-63 characters, and valid characters are /a-z-/.
 	WatchlistId pulumi.StringPtrInput
 	// A collection of user preferences for watchlist UI configuration.
 	WatchlistUserPreferences WatchlistWatchlistUserPreferencesPtrInput
@@ -252,11 +278,9 @@ type watchlistArgs struct {
 	// Optional. Weight applied to the risk score for entities in this watchlist. The default is 1.0 if it is not specified.
 	MultiplyingFactor *float64 `pulumi:"multiplyingFactor"`
 	Project           *string  `pulumi:"project"`
-	// Optional. The ID to use for the watchlist,
-	// which will become the final component of the watchlist's resource name.
-	// This value should be 4-63 characters, and valid characters
-	// are /a-z-/.
-	WatchlistId string `pulumi:"watchlistId"`
+	// Optional. The ID to use for the watchlist, which will become the final component of the watchlist's resource name. This
+	// value should be 4-63 characters, and valid characters are /a-z-/.
+	WatchlistId *string `pulumi:"watchlistId"`
 	// A collection of user preferences for watchlist UI configuration.
 	WatchlistUserPreferences *WatchlistWatchlistUserPreferences `pulumi:"watchlistUserPreferences"`
 }
@@ -279,11 +303,9 @@ type WatchlistArgs struct {
 	// Optional. Weight applied to the risk score for entities in this watchlist. The default is 1.0 if it is not specified.
 	MultiplyingFactor pulumi.Float64PtrInput
 	Project           pulumi.StringPtrInput
-	// Optional. The ID to use for the watchlist,
-	// which will become the final component of the watchlist's resource name.
-	// This value should be 4-63 characters, and valid characters
-	// are /a-z-/.
-	WatchlistId pulumi.StringInput
+	// Optional. The ID to use for the watchlist, which will become the final component of the watchlist's resource name. This
+	// value should be 4-63 characters, and valid characters are /a-z-/.
+	WatchlistId pulumi.StringPtrInput
 	// A collection of user preferences for watchlist UI configuration.
 	WatchlistUserPreferences WatchlistWatchlistUserPreferencesPtrInput
 }
@@ -435,10 +457,8 @@ func (o WatchlistOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *Watchlist) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }
 
-// Optional. The ID to use for the watchlist,
-// which will become the final component of the watchlist's resource name.
-// This value should be 4-63 characters, and valid characters
-// are /a-z-/.
+// Optional. The ID to use for the watchlist, which will become the final component of the watchlist's resource name. This
+// value should be 4-63 characters, and valid characters are /a-z-/.
 func (o WatchlistOutput) WatchlistId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Watchlist) pulumi.StringOutput { return v.WatchlistId }).(pulumi.StringOutput)
 }

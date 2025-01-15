@@ -820,7 +820,7 @@ class ConfigSignInAnonymous(dict):
         """
         :param bool enabled: Whether anonymous user auth is enabled for the project or not.
                
-               <a name="nested_hash_config"></a>The `hash_config` block contains:
+               <a name="nested_sign_in_hash_config"></a>The `hash_config` block contains:
         """
         pulumi.set(__self__, "enabled", enabled)
 
@@ -830,7 +830,7 @@ class ConfigSignInAnonymous(dict):
         """
         Whether anonymous user auth is enabled for the project or not.
 
-        <a name="nested_hash_config"></a>The `hash_config` block contains:
+        <a name="nested_sign_in_hash_config"></a>The `hash_config` block contains:
         """
         return pulumi.get(self, "enabled")
 
@@ -1294,7 +1294,7 @@ class InboundSamlConfigSpConfig(dict):
                Structure is documented below.
                
                
-               <a name="nested_sp_certificates"></a>The `sp_certificates` block contains:
+               <a name="nested_sp_config_sp_certificates"></a>The `sp_certificates` block contains:
         :param str sp_entity_id: Unique identifier for all SAML entities.
         """
         if callback_uri is not None:
@@ -1321,7 +1321,7 @@ class InboundSamlConfigSpConfig(dict):
         Structure is documented below.
 
 
-        <a name="nested_sp_certificates"></a>The `sp_certificates` block contains:
+        <a name="nested_sp_config_sp_certificates"></a>The `sp_certificates` block contains:
         """
         return pulumi.get(self, "sp_certificates")
 
@@ -1518,7 +1518,7 @@ class TenantInboundSamlConfigSpConfig(dict):
                Structure is documented below.
                
                
-               <a name="nested_sp_certificates"></a>The `sp_certificates` block contains:
+               <a name="nested_sp_config_sp_certificates"></a>The `sp_certificates` block contains:
         """
         pulumi.set(__self__, "callback_uri", callback_uri)
         pulumi.set(__self__, "sp_entity_id", sp_entity_id)
@@ -1550,7 +1550,7 @@ class TenantInboundSamlConfigSpConfig(dict):
         Structure is documented below.
 
 
-        <a name="nested_sp_certificates"></a>The `sp_certificates` block contains:
+        <a name="nested_sp_config_sp_certificates"></a>The `sp_certificates` block contains:
         """
         return pulumi.get(self, "sp_certificates")
 

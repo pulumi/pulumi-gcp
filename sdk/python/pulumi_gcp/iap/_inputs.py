@@ -426,6 +426,7 @@ if not MYPY:
         gcip_settings: NotRequired[pulumi.Input['SettingsAccessSettingsGcipSettingsArgsDict']]
         """
         GCIP claims and endpoint configurations for 3p identity providers.
+        * Enabling gcipSetting significantly changes the way IAP authenticates users. Identity Platform does not support IAM, so IAP will not enforce any IAM policies for requests to your application.
         Structure is documented below.
         """
         identity_sources: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
@@ -471,6 +472,7 @@ class SettingsAccessSettingsArgs:
         :param pulumi.Input['SettingsAccessSettingsCorsSettingsArgs'] cors_settings: Configuration to allow cross-origin requests via IAP.
                Structure is documented below.
         :param pulumi.Input['SettingsAccessSettingsGcipSettingsArgs'] gcip_settings: GCIP claims and endpoint configurations for 3p identity providers.
+               * Enabling gcipSetting significantly changes the way IAP authenticates users. Identity Platform does not support IAM, so IAP will not enforce any IAM policies for requests to your application.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] identity_sources: Identity sources that IAP can use to authenticate the end user. Only one identity source
                can be configured. The possible values are:
@@ -531,6 +533,7 @@ class SettingsAccessSettingsArgs:
     def gcip_settings(self) -> Optional[pulumi.Input['SettingsAccessSettingsGcipSettingsArgs']]:
         """
         GCIP claims and endpoint configurations for 3p identity providers.
+        * Enabling gcipSetting significantly changes the way IAP authenticates users. Identity Platform does not support IAM, so IAP will not enforce any IAM policies for requests to your application.
         Structure is documented below.
         """
         return pulumi.get(self, "gcip_settings")
@@ -762,6 +765,7 @@ if not MYPY:
         (https://developers.google.com/identity/protocols/OpenIDConnect#hd-param)
         Note: IAP does not verify that the id token's hd claim matches this value
         since access behavior is managed by IAM policies.
+        * loginHint setting is not a replacement for access control. Always enforce an appropriate access policy if you want to restrict access to users outside your domain.
         """
         programmatic_clients: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
@@ -781,6 +785,7 @@ class SettingsAccessSettingsOauthSettingsArgs:
                (https://developers.google.com/identity/protocols/OpenIDConnect#hd-param)
                Note: IAP does not verify that the id token's hd claim matches this value
                since access behavior is managed by IAM policies.
+               * loginHint setting is not a replacement for access control. Always enforce an appropriate access policy if you want to restrict access to users outside your domain.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] programmatic_clients: List of client ids allowed to use IAP programmatically.
         """
         if login_hint is not None:
@@ -797,6 +802,7 @@ class SettingsAccessSettingsOauthSettingsArgs:
         (https://developers.google.com/identity/protocols/OpenIDConnect#hd-param)
         Note: IAP does not verify that the id token's hd claim matches this value
         since access behavior is managed by IAM policies.
+        * loginHint setting is not a replacement for access control. Always enforce an appropriate access policy if you want to restrict access to users outside your domain.
         """
         return pulumi.get(self, "login_hint")
 
@@ -931,7 +937,7 @@ if not MYPY:
         Structure is documented below.
 
 
-        <a name="nested_oauth2"></a>The `oauth2` block supports:
+        <a name="nested_access_settings_workforce_identity_settings_oauth2"></a>The `oauth2` block supports:
         """
         workforce_pools: NotRequired[pulumi.Input[str]]
         """
@@ -951,7 +957,7 @@ class SettingsAccessSettingsWorkforceIdentitySettingsArgs:
                Structure is documented below.
                
                
-               <a name="nested_oauth2"></a>The `oauth2` block supports:
+               <a name="nested_access_settings_workforce_identity_settings_oauth2"></a>The `oauth2` block supports:
         :param pulumi.Input[str] workforce_pools: The workforce pool resources. Only one workforce pool is accepted.
         """
         if oauth2 is not None:
@@ -968,7 +974,7 @@ class SettingsAccessSettingsWorkforceIdentitySettingsArgs:
         Structure is documented below.
 
 
-        <a name="nested_oauth2"></a>The `oauth2` block supports:
+        <a name="nested_access_settings_workforce_identity_settings_oauth2"></a>The `oauth2` block supports:
         """
         return pulumi.get(self, "oauth2")
 

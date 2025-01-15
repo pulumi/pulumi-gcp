@@ -10,6 +10,8 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.DeveloperConnect
 {
     /// <summary>
+    /// A git repository link to a parent connection.
+    /// 
     /// ## Example Usage
     /// 
     /// ## Import

@@ -35,6 +35,11 @@ export const getAppGateway: typeof import("./getAppGateway").getAppGateway = nul
 export const getAppGatewayOutput: typeof import("./getAppGateway").getAppGatewayOutput = null as any;
 utilities.lazyLoad(exports, ["getAppGateway","getAppGatewayOutput"], () => require("./getAppGateway"));
 
+export { SecurityGatewayArgs, SecurityGatewayState } from "./securityGateway";
+export type SecurityGateway = import("./securityGateway").SecurityGateway;
+export const SecurityGateway: typeof import("./securityGateway").SecurityGateway = null as any;
+utilities.lazyLoad(exports, ["SecurityGateway"], () => require("./securityGateway"));
+
 
 const _module = {
     version: utilities.getVersion(),
@@ -46,6 +51,8 @@ const _module = {
                 return new AppConnector(name, <any>undefined, { urn })
             case "gcp:beyondcorp/appGateway:AppGateway":
                 return new AppGateway(name, <any>undefined, { urn })
+            case "gcp:beyondcorp/securityGateway:SecurityGateway":
+                return new SecurityGateway(name, <any>undefined, { urn })
             default:
                 throw new Error(`unknown resource type ${type}`);
         }
@@ -54,3 +61,4 @@ const _module = {
 pulumi.runtime.registerResourceModule("gcp", "beyondcorp/appConnection", _module)
 pulumi.runtime.registerResourceModule("gcp", "beyondcorp/appConnector", _module)
 pulumi.runtime.registerResourceModule("gcp", "beyondcorp/appGateway", _module)
+pulumi.runtime.registerResourceModule("gcp", "beyondcorp/securityGateway", _module)

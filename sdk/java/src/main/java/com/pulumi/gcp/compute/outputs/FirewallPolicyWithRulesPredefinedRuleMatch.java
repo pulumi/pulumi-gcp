@@ -48,7 +48,7 @@ public final class FirewallPolicyWithRulesPredefinedRuleMatch {
      * @return Pairs of IP protocols and ports that the rule should match.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_layer4_config&#34;&gt;&lt;/a&gt;The `layer4_config` block supports:
+     * &lt;a name=&#34;nested_rule_rule_match_layer4_config&#34;&gt;&lt;/a&gt;The `layer4_config` block supports:
      * 
      */
     private @Nullable List<FirewallPolicyWithRulesPredefinedRuleMatchLayer4Config> layer4Configs;
@@ -132,7 +132,7 @@ public final class FirewallPolicyWithRulesPredefinedRuleMatch {
      * @return Pairs of IP protocols and ports that the rule should match.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_layer4_config&#34;&gt;&lt;/a&gt;The `layer4_config` block supports:
+     * &lt;a name=&#34;nested_rule_rule_match_layer4_config&#34;&gt;&lt;/a&gt;The `layer4_config` block supports:
      * 
      */
     public List<FirewallPolicyWithRulesPredefinedRuleMatchLayer4Config> layer4Configs() {

@@ -43,7 +43,7 @@ namespace Pulumi.Gcp.DataCatalog.Inputs
         /// Structure is documented below.
         /// 
         /// 
-        /// &lt;a name="nested_sample_gcs_file_specs"&gt;&lt;/a&gt;The `sample_gcs_file_specs` block contains:
+        /// &lt;a name="nested_gcs_fileset_spec_sample_gcs_file_specs"&gt;&lt;/a&gt;The `sample_gcs_file_specs` block contains:
         /// </summary>
         public InputList<Inputs.EntryGcsFilesetSpecSampleGcsFileSpecArgs> SampleGcsFileSpecs
         {

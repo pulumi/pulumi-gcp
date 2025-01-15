@@ -1737,7 +1737,7 @@ func (o ConnectionAuthConfigOauth2JwtBearerClientKeyPtrOutput) SecretVersion() p
 type ConnectionAuthConfigOauth2JwtBearerJwtClaims struct {
 	// Value for the "aud" claim.
 	//
-	// <a name="nestedOauth2ClientCredentials"></a>The `oauth2ClientCredentials` block supports:
+	// <a name="nestedAuthConfigOauth2ClientCredentials"></a>The `oauth2ClientCredentials` block supports:
 	Audience *string `pulumi:"audience"`
 	// Value for the "iss" claim.
 	Issuer *string `pulumi:"issuer"`
@@ -1759,7 +1759,7 @@ type ConnectionAuthConfigOauth2JwtBearerJwtClaimsInput interface {
 type ConnectionAuthConfigOauth2JwtBearerJwtClaimsArgs struct {
 	// Value for the "aud" claim.
 	//
-	// <a name="nestedOauth2ClientCredentials"></a>The `oauth2ClientCredentials` block supports:
+	// <a name="nestedAuthConfigOauth2ClientCredentials"></a>The `oauth2ClientCredentials` block supports:
 	Audience pulumi.StringPtrInput `pulumi:"audience"`
 	// Value for the "iss" claim.
 	Issuer pulumi.StringPtrInput `pulumi:"issuer"`
@@ -1846,7 +1846,7 @@ func (o ConnectionAuthConfigOauth2JwtBearerJwtClaimsOutput) ToConnectionAuthConf
 
 // Value for the "aud" claim.
 //
-// <a name="nestedOauth2ClientCredentials"></a>The `oauth2ClientCredentials` block supports:
+// <a name="nestedAuthConfigOauth2ClientCredentials"></a>The `oauth2ClientCredentials` block supports:
 func (o ConnectionAuthConfigOauth2JwtBearerJwtClaimsOutput) Audience() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v ConnectionAuthConfigOauth2JwtBearerJwtClaims) *string { return v.Audience }).(pulumi.StringPtrOutput)
 }
@@ -1887,7 +1887,7 @@ func (o ConnectionAuthConfigOauth2JwtBearerJwtClaimsPtrOutput) Elem() Connection
 
 // Value for the "aud" claim.
 //
-// <a name="nestedOauth2ClientCredentials"></a>The `oauth2ClientCredentials` block supports:
+// <a name="nestedAuthConfigOauth2ClientCredentials"></a>The `oauth2ClientCredentials` block supports:
 func (o ConnectionAuthConfigOauth2JwtBearerJwtClaimsPtrOutput) Audience() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionAuthConfigOauth2JwtBearerJwtClaims) *string {
 		if v == nil {
@@ -2268,7 +2268,7 @@ type ConnectionAuthConfigSshPublicKeySshClientCertPass struct {
 	// The resource name of the secret version in the format,
 	// format as: projects/*/secrets/*/versions/*.
 	//
-	// <a name="nestedOauth2AuthCodeFlow"></a>The `oauth2AuthCodeFlow` block supports:
+	// <a name="nestedAuthConfigOauth2AuthCodeFlow"></a>The `oauth2AuthCodeFlow` block supports:
 	SecretVersion string `pulumi:"secretVersion"`
 }
 
@@ -2287,7 +2287,7 @@ type ConnectionAuthConfigSshPublicKeySshClientCertPassArgs struct {
 	// The resource name of the secret version in the format,
 	// format as: projects/*/secrets/*/versions/*.
 	//
-	// <a name="nestedOauth2AuthCodeFlow"></a>The `oauth2AuthCodeFlow` block supports:
+	// <a name="nestedAuthConfigOauth2AuthCodeFlow"></a>The `oauth2AuthCodeFlow` block supports:
 	SecretVersion pulumi.StringInput `pulumi:"secretVersion"`
 }
 
@@ -2371,7 +2371,7 @@ func (o ConnectionAuthConfigSshPublicKeySshClientCertPassOutput) ToConnectionAut
 // The resource name of the secret version in the format,
 // format as: projects/*/secrets/*/versions/*.
 //
-// <a name="nestedOauth2AuthCodeFlow"></a>The `oauth2AuthCodeFlow` block supports:
+// <a name="nestedAuthConfigOauth2AuthCodeFlow"></a>The `oauth2AuthCodeFlow` block supports:
 func (o ConnectionAuthConfigSshPublicKeySshClientCertPassOutput) SecretVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v ConnectionAuthConfigSshPublicKeySshClientCertPass) string { return v.SecretVersion }).(pulumi.StringOutput)
 }
@@ -2403,7 +2403,7 @@ func (o ConnectionAuthConfigSshPublicKeySshClientCertPassPtrOutput) Elem() Conne
 // The resource name of the secret version in the format,
 // format as: projects/*/secrets/*/versions/*.
 //
-// <a name="nestedOauth2AuthCodeFlow"></a>The `oauth2AuthCodeFlow` block supports:
+// <a name="nestedAuthConfigOauth2AuthCodeFlow"></a>The `oauth2AuthCodeFlow` block supports:
 func (o ConnectionAuthConfigSshPublicKeySshClientCertPassPtrOutput) SecretVersion() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *ConnectionAuthConfigSshPublicKeySshClientCertPass) *string {
 		if v == nil {

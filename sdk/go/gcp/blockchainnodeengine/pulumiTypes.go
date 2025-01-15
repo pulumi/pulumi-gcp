@@ -692,7 +692,7 @@ type BlockchainNodesEthereumDetailsGethDetails struct {
 	// Blockchain garbage collection modes. Only applicable when NodeType is FULL or ARCHIVE.
 	// Possible values are: `FULL`, `ARCHIVE`.
 	//
-	// <a name="nestedAdditionalEndpoints"></a>The `additionalEndpoints` block contains:
+	// <a name="nestedEthereumDetailsAdditionalEndpoints"></a>The `additionalEndpoints` block contains:
 	GarbageCollectionMode *string `pulumi:"garbageCollectionMode"`
 }
 
@@ -711,7 +711,7 @@ type BlockchainNodesEthereumDetailsGethDetailsArgs struct {
 	// Blockchain garbage collection modes. Only applicable when NodeType is FULL or ARCHIVE.
 	// Possible values are: `FULL`, `ARCHIVE`.
 	//
-	// <a name="nestedAdditionalEndpoints"></a>The `additionalEndpoints` block contains:
+	// <a name="nestedEthereumDetailsAdditionalEndpoints"></a>The `additionalEndpoints` block contains:
 	GarbageCollectionMode pulumi.StringPtrInput `pulumi:"garbageCollectionMode"`
 }
 
@@ -795,7 +795,7 @@ func (o BlockchainNodesEthereumDetailsGethDetailsOutput) ToBlockchainNodesEthere
 // Blockchain garbage collection modes. Only applicable when NodeType is FULL or ARCHIVE.
 // Possible values are: `FULL`, `ARCHIVE`.
 //
-// <a name="nestedAdditionalEndpoints"></a>The `additionalEndpoints` block contains:
+// <a name="nestedEthereumDetailsAdditionalEndpoints"></a>The `additionalEndpoints` block contains:
 func (o BlockchainNodesEthereumDetailsGethDetailsOutput) GarbageCollectionMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v BlockchainNodesEthereumDetailsGethDetails) *string { return v.GarbageCollectionMode }).(pulumi.StringPtrOutput)
 }
@@ -827,7 +827,7 @@ func (o BlockchainNodesEthereumDetailsGethDetailsPtrOutput) Elem() BlockchainNod
 // Blockchain garbage collection modes. Only applicable when NodeType is FULL or ARCHIVE.
 // Possible values are: `FULL`, `ARCHIVE`.
 //
-// <a name="nestedAdditionalEndpoints"></a>The `additionalEndpoints` block contains:
+// <a name="nestedEthereumDetailsAdditionalEndpoints"></a>The `additionalEndpoints` block contains:
 func (o BlockchainNodesEthereumDetailsGethDetailsPtrOutput) GarbageCollectionMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *BlockchainNodesEthereumDetailsGethDetails) *string {
 		if v == nil {

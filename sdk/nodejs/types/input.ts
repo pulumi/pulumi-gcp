@@ -4440,7 +4440,7 @@ export namespace applicationintegration {
         /**
          * Password to be used.
          *
-         * <a name="nestedOauth2AuthorizationCode"></a>The `oauth2AuthorizationCode` block supports:
+         * <a name="nestedDecryptedCredentialOauth2AuthorizationCode"></a>The `oauth2AuthorizationCode` block supports:
          */
         password?: pulumi.Input<string>;
         /**
@@ -5139,6 +5139,25 @@ export namespace beyondcorp {
         pscUri?: pulumi.Input<string>;
     }
 
+    export interface SecurityGatewayHub {
+        /**
+         * Internet Gateway configuration.
+         * Structure is documented below.
+         */
+        internetGateway?: pulumi.Input<inputs.beyondcorp.SecurityGatewayHubInternetGateway>;
+        /**
+         * The identifier for this object. Format specified above.
+         */
+        region: pulumi.Input<string>;
+    }
+
+    export interface SecurityGatewayHubInternetGateway {
+        /**
+         * (Output)
+         * Output only. List of IP addresses assigned to the Cloud NAT.
+         */
+        assignedIps?: pulumi.Input<pulumi.Input<string>[]>;
+    }
 }
 
 export namespace biglake {
@@ -7782,7 +7801,7 @@ export namespace blockchainnodeengine {
          * Blockchain garbage collection modes. Only applicable when NodeType is FULL or ARCHIVE.
          * Possible values are: `FULL`, `ARCHIVE`.
          *
-         * <a name="nestedAdditionalEndpoints"></a>The `additionalEndpoints` block contains:
+         * <a name="nestedEthereumDetailsAdditionalEndpoints"></a>The `additionalEndpoints` block contains:
          */
         garbageCollectionMode?: pulumi.Input<string>;
     }
@@ -7900,7 +7919,7 @@ export namespace certificateauthority {
         /**
          * The value of the KeyId in lowercase hexadecimal.
          *
-         * <a name="nestedX509Config"></a>The `x509Config` block supports:
+         * <a name="nestedConfigX509Config"></a>The `x509Config` block supports:
          */
         keyId?: pulumi.Input<string>;
     }
@@ -9034,7 +9053,7 @@ export namespace certificateauthority {
          * Structure is documented below.
          *
          *
-         * <a name="nestedX509Config"></a>The `x509Config` block supports:
+         * <a name="nestedConfigX509Config"></a>The `x509Config` block supports:
          */
         publicKey: pulumi.Input<inputs.certificateauthority.CertificateConfigPublicKey>;
         /**
@@ -9667,7 +9686,7 @@ export namespace certificatemanager {
          * Structure is documented below.
          *
          *
-         * <a name="nestedProvisioningIssue"></a>The `provisioningIssue` block contains:
+         * <a name="nestedManagedProvisioningIssue"></a>The `provisioningIssue` block contains:
          */
         authorizationAttemptInfos?: pulumi.Input<pulumi.Input<inputs.certificatemanager.CertificateManagedAuthorizationAttemptInfo>[]>;
         /**
@@ -9866,6 +9885,92 @@ export namespace certificatemanager {
 }
 
 export namespace chronicle {
+    export interface DataAccessScopeAllowedDataAccessLabel {
+        /**
+         * The asset namespace configured in the forwarder
+         * of the customer's events.
+         */
+        assetNamespace?: pulumi.Input<string>;
+        /**
+         * The name of the data access label.
+         */
+        dataAccessLabel?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Output only. The display name of the label.
+         * Data access label and log types's name
+         * will match the display name of the resource.
+         * The asset namespace will match the namespace itself.
+         * The ingestion key value pair will match the key of the tuple.
+         */
+        displayName?: pulumi.Input<string>;
+        /**
+         * Representation of an ingestion label type.
+         * Structure is documented below.
+         */
+        ingestionLabel?: pulumi.Input<inputs.chronicle.DataAccessScopeAllowedDataAccessLabelIngestionLabel>;
+        /**
+         * The name of the log type.
+         */
+        logType?: pulumi.Input<string>;
+    }
+
+    export interface DataAccessScopeAllowedDataAccessLabelIngestionLabel {
+        /**
+         * Required. The key of the ingestion label. Always required.
+         */
+        ingestionLabelKey: pulumi.Input<string>;
+        /**
+         * Optional. The value of the ingestion label. Optional. An object
+         * with no provided value and some key provided would match
+         * against the given key and ANY value.
+         */
+        ingestionLabelValue?: pulumi.Input<string>;
+    }
+
+    export interface DataAccessScopeDeniedDataAccessLabel {
+        /**
+         * The asset namespace configured in the forwarder
+         * of the customer's events.
+         */
+        assetNamespace?: pulumi.Input<string>;
+        /**
+         * The name of the data access label.
+         */
+        dataAccessLabel?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Output only. The display name of the label.
+         * Data access label and log types's name
+         * will match the display name of the resource.
+         * The asset namespace will match the namespace itself.
+         * The ingestion key value pair will match the key of the tuple.
+         */
+        displayName?: pulumi.Input<string>;
+        /**
+         * Representation of an ingestion label type.
+         * Structure is documented below.
+         */
+        ingestionLabel?: pulumi.Input<inputs.chronicle.DataAccessScopeDeniedDataAccessLabelIngestionLabel>;
+        /**
+         * The name of the log type.
+         */
+        logType?: pulumi.Input<string>;
+    }
+
+    export interface DataAccessScopeDeniedDataAccessLabelIngestionLabel {
+        /**
+         * Required. The key of the ingestion label. Always required.
+         */
+        ingestionLabelKey: pulumi.Input<string>;
+        /**
+         * Optional. The value of the ingestion label. Optional. An object
+         * with no provided value and some key provided would match
+         * against the given key and ANY value.
+         */
+        ingestionLabelValue?: pulumi.Input<string>;
+    }
+
     export interface WatchlistEntityCount {
         /**
          * (Output)
@@ -10276,7 +10381,7 @@ export namespace cloudbuild {
          * Structure is documented below.
          *
          *
-         * <a name="nestedTiming"></a>The `timing` block contains:
+         * <a name="nestedBuildArtifactsObjectsTiming"></a>The `timing` block contains:
          */
         timings?: pulumi.Input<pulumi.Input<inputs.cloudbuild.TriggerBuildArtifactsObjectsTiming>[]>;
     }
@@ -16855,7 +16960,7 @@ export namespace compute {
          * Structure is documented below.
          *
          *
-         * <a name="nestedAwsV4Authentication"></a>The `awsV4Authentication` block supports:
+         * <a name="nestedSecuritySettingsAwsV4Authentication"></a>The `awsV4Authentication` block supports:
          */
         awsV4Authentication?: pulumi.Input<inputs.compute.BackendServiceSecuritySettingsAwsV4Authentication>;
         /**
@@ -17171,7 +17276,7 @@ export namespace compute {
          * Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
          *
          *
-         * <a name="nestedLayer4Configs"></a>The `layer4Configs` block supports:
+         * <a name="nestedMatchLayer4Configs"></a>The `layer4Configs` block supports:
          */
         srcThreatIntelligences?: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -17303,7 +17408,7 @@ export namespace compute {
          * Structure is documented below.
          *
          *
-         * <a name="nestedLayer4Config"></a>The `layer4Config` block supports:
+         * <a name="nestedRuleRuleMatchLayer4Config"></a>The `layer4Config` block supports:
          */
         layer4Configs?: pulumi.Input<pulumi.Input<inputs.compute.FirewallPolicyWithRulesPredefinedRuleMatchLayer4Config>[]>;
         /**
@@ -17460,7 +17565,7 @@ export namespace compute {
          * Structure is documented below.
          *
          *
-         * <a name="nestedLayer4Config"></a>The `layer4Config` block supports:
+         * <a name="nestedRuleRuleMatchLayer4Config"></a>The `layer4Config` block supports:
          */
         layer4Configs: pulumi.Input<pulumi.Input<inputs.compute.FirewallPolicyWithRulesRuleMatchLayer4Config>[]>;
         /**
@@ -20596,7 +20701,7 @@ export namespace compute {
          * Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
          *
          *
-         * <a name="nestedLayer4Configs"></a>The `layer4Configs` block supports:
+         * <a name="nestedMatchLayer4Configs"></a>The `layer4Configs` block supports:
          */
         srcThreatIntelligences?: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -20793,7 +20898,7 @@ export namespace compute {
          * Structure is documented below.
          *
          *
-         * <a name="nestedLayer4Config"></a>The `layer4Config` block supports:
+         * <a name="nestedRuleRuleMatchLayer4Config"></a>The `layer4Config` block supports:
          */
         srcSecureTags?: pulumi.Input<pulumi.Input<inputs.compute.NetworkFirewallPolicyWithRulesPredefinedRuleMatchSrcSecureTag>[]>;
         /**
@@ -20999,7 +21104,7 @@ export namespace compute {
          * Structure is documented below.
          *
          *
-         * <a name="nestedLayer4Config"></a>The `layer4Config` block supports:
+         * <a name="nestedRuleRuleMatchLayer4Config"></a>The `layer4Config` block supports:
          */
         srcSecureTags?: pulumi.Input<pulumi.Input<inputs.compute.NetworkFirewallPolicyWithRulesRuleMatchSrcSecureTag>[]>;
         /**
@@ -21209,7 +21314,7 @@ export namespace compute {
          * Structure is documented below.
          *
          *
-         * <a name="nestedLayer4Config"></a>The `layer4Config` block supports:
+         * <a name="nestedMatchConfigLayer4Config"></a>The `layer4Config` block supports:
          */
         layer4Configs: pulumi.Input<pulumi.Input<inputs.compute.OrganizationSecurityPolicyRuleMatchConfigLayer4Config>[]>;
         /**
@@ -23586,7 +23691,7 @@ export namespace compute {
          * Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
          *
          *
-         * <a name="nestedLayer4Configs"></a>The `layer4Configs` block supports:
+         * <a name="nestedMatchLayer4Configs"></a>The `layer4Configs` block supports:
          */
         srcThreatIntelligences?: pulumi.Input<pulumi.Input<string>[]>;
     }
@@ -23783,7 +23888,7 @@ export namespace compute {
          * Structure is documented below.
          *
          *
-         * <a name="nestedLayer4Config"></a>The `layer4Config` block supports:
+         * <a name="nestedRuleRuleMatchLayer4Config"></a>The `layer4Config` block supports:
          */
         srcSecureTags?: pulumi.Input<pulumi.Input<inputs.compute.RegionNetworkFirewallPolicyWithRulesPredefinedRuleMatchSrcSecureTag>[]>;
         /**
@@ -23989,7 +24094,7 @@ export namespace compute {
          * Structure is documented below.
          *
          *
-         * <a name="nestedLayer4Config"></a>The `layer4Config` block supports:
+         * <a name="nestedRuleRuleMatchLayer4Config"></a>The `layer4Config` block supports:
          */
         srcSecureTags?: pulumi.Input<pulumi.Input<inputs.compute.RegionNetworkFirewallPolicyWithRulesRuleMatchSrcSecureTag>[]>;
         /**
@@ -35151,7 +35256,7 @@ export namespace datacatalog {
          * Structure is documented below.
          *
          *
-         * <a name="nestedSampleGcsFileSpecs"></a>The `sampleGcsFileSpecs` block contains:
+         * <a name="nestedGcsFilesetSpecSampleGcsFileSpecs"></a>The `sampleGcsFileSpecs` block contains:
          */
         sampleGcsFileSpecs?: pulumi.Input<pulumi.Input<inputs.datacatalog.EntryGcsFilesetSpecSampleGcsFileSpec>[]>;
     }
@@ -47150,39 +47255,47 @@ export namespace deploymentmanager {
 }
 
 export namespace developerconnect {
+    export interface ConnectionCryptoKeyConfig {
+        /**
+         * Required. The name of the key which is used to encrypt/decrypt customer data. For key
+         * in Cloud KMS, the key should be in the format of
+         * `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`.
+         */
+        keyReference: pulumi.Input<string>;
+    }
+
     export interface ConnectionGithubConfig {
         /**
          * Optional. GitHub App installation id.
          */
         appInstallationId?: pulumi.Input<string>;
         /**
-         * Represents an OAuth token of the account that authorized the Connection,and
-         * associated metadata.
+         * Represents an OAuth token of the account that authorized the Connection,
+         * and associated metadata.
          * Structure is documented below.
          */
         authorizerCredential?: pulumi.Input<inputs.developerconnect.ConnectionGithubConfigAuthorizerCredential>;
         /**
-         * Required. Immutable. The GitHub Application that was installed to
-         * the GitHub user or organization.
+         * Required. Immutable. The GitHub Application that was installed to the GitHub user or
+         * organization.
          * Possible values:
          * GIT_HUB_APP_UNSPECIFIED
          * DEVELOPER_CONNECT
-         * FIREBASE"
+         * FIREBASE
          */
         githubApp: pulumi.Input<string>;
         /**
          * (Output)
-         * Output only. The URI to navigate to in order to manage the installation
-         * associated with this GitHubConfig.
+         * Output only. The URI to navigate to in order to manage the installation associated
+         * with this GitHubConfig.
          */
         installationUri?: pulumi.Input<string>;
     }
 
     export interface ConnectionGithubConfigAuthorizerCredential {
         /**
-         * Required. A SecretManager resource containing the OAuth token
-         * that authorizes the connection.
-         * Format: `projects/*&#47;secrets/*&#47;versions/*`.
+         * Required. A SecretManager resource containing the OAuth token that authorizes
+         * the connection. Format: `projects/*&#47;secrets/*&#47;versions/*`.
          */
         oauthTokenSecretVersion: pulumi.Input<string>;
         /**
@@ -47192,15 +47305,202 @@ export namespace developerconnect {
         username?: pulumi.Input<string>;
     }
 
+    export interface ConnectionGithubEnterpriseConfig {
+        /**
+         * Optional. ID of the GitHub App created from the manifest.
+         */
+        appId?: pulumi.Input<string>;
+        /**
+         * Optional. ID of the installation of the GitHub App.
+         */
+        appInstallationId?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Output only. The URL-friendly name of the GitHub App.
+         */
+        appSlug?: pulumi.Input<string>;
+        /**
+         * Required. The URI of the GitHub Enterprise host this connection is for.
+         */
+        hostUri: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Output only. The URI to navigate to in order to manage the installation associated
+         * with this GitHubEnterpriseConfig.
+         */
+        installationUri?: pulumi.Input<string>;
+        /**
+         * Optional. SecretManager resource containing the private key of the GitHub App,
+         * formatted as `projects/*&#47;secrets/*&#47;versions/*`.
+         */
+        privateKeySecretVersion?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Output only. GitHub Enterprise version installed at the host_uri.
+         */
+        serverVersion?: pulumi.Input<string>;
+        /**
+         * ServiceDirectoryConfig represents Service Directory configuration for a
+         * connection.
+         * Structure is documented below.
+         */
+        serviceDirectoryConfig?: pulumi.Input<inputs.developerconnect.ConnectionGithubEnterpriseConfigServiceDirectoryConfig>;
+        /**
+         * Optional. SSL certificate to use for requests to GitHub Enterprise.
+         */
+        sslCaCertificate?: pulumi.Input<string>;
+        /**
+         * Optional. SecretManager resource containing the webhook secret of the GitHub App,
+         * formatted as `projects/*&#47;secrets/*&#47;versions/*`.
+         */
+        webhookSecretSecretVersion?: pulumi.Input<string>;
+    }
+
+    export interface ConnectionGithubEnterpriseConfigServiceDirectoryConfig {
+        /**
+         * Required. The Service Directory service name.
+         * Format:
+         * projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
+         */
+        service: pulumi.Input<string>;
+    }
+
+    export interface ConnectionGitlabConfig {
+        /**
+         * Represents a personal access token that authorized the Connection,
+         * and associated metadata.
+         * Structure is documented below.
+         */
+        authorizerCredential: pulumi.Input<inputs.developerconnect.ConnectionGitlabConfigAuthorizerCredential>;
+        /**
+         * Represents a personal access token that authorized the Connection,
+         * and associated metadata.
+         * Structure is documented below.
+         */
+        readAuthorizerCredential: pulumi.Input<inputs.developerconnect.ConnectionGitlabConfigReadAuthorizerCredential>;
+        /**
+         * Required. Immutable. SecretManager resource containing the webhook secret of a GitLab project,
+         * formatted as `projects/*&#47;secrets/*&#47;versions/*`. This is used to validate
+         * webhooks.
+         */
+        webhookSecretSecretVersion: pulumi.Input<string>;
+    }
+
+    export interface ConnectionGitlabConfigAuthorizerCredential {
+        /**
+         * Required. A SecretManager resource containing the user token that authorizes
+         * the Developer Connect connection. Format:
+         * `projects/*&#47;secrets/*&#47;versions/*`.
+         */
+        userTokenSecretVersion: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Output only. The username associated with this token.
+         */
+        username?: pulumi.Input<string>;
+    }
+
+    export interface ConnectionGitlabConfigReadAuthorizerCredential {
+        /**
+         * Required. A SecretManager resource containing the user token that authorizes
+         * the Developer Connect connection. Format:
+         * `projects/*&#47;secrets/*&#47;versions/*`.
+         */
+        userTokenSecretVersion: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Output only. The username associated with this token.
+         */
+        username?: pulumi.Input<string>;
+    }
+
+    export interface ConnectionGitlabEnterpriseConfig {
+        /**
+         * Represents a personal access token that authorized the Connection,
+         * and associated metadata.
+         * Structure is documented below.
+         */
+        authorizerCredential: pulumi.Input<inputs.developerconnect.ConnectionGitlabEnterpriseConfigAuthorizerCredential>;
+        /**
+         * Required. The URI of the GitLab Enterprise host this connection is for.
+         */
+        hostUri: pulumi.Input<string>;
+        /**
+         * Represents a personal access token that authorized the Connection,
+         * and associated metadata.
+         * Structure is documented below.
+         */
+        readAuthorizerCredential: pulumi.Input<inputs.developerconnect.ConnectionGitlabEnterpriseConfigReadAuthorizerCredential>;
+        /**
+         * (Output)
+         * Output only. Version of the GitLab Enterprise server running on the `hostUri`.
+         */
+        serverVersion?: pulumi.Input<string>;
+        /**
+         * ServiceDirectoryConfig represents Service Directory configuration for a
+         * connection.
+         * Structure is documented below.
+         */
+        serviceDirectoryConfig?: pulumi.Input<inputs.developerconnect.ConnectionGitlabEnterpriseConfigServiceDirectoryConfig>;
+        /**
+         * Optional. SSL Certificate Authority certificate to use for requests to GitLab
+         * Enterprise instance.
+         */
+        sslCaCertificate?: pulumi.Input<string>;
+        /**
+         * Required. Immutable. SecretManager resource containing the webhook secret of a GitLab project,
+         * formatted as `projects/*&#47;secrets/*&#47;versions/*`. This is used to validate
+         * webhooks.
+         */
+        webhookSecretSecretVersion: pulumi.Input<string>;
+    }
+
+    export interface ConnectionGitlabEnterpriseConfigAuthorizerCredential {
+        /**
+         * Required. A SecretManager resource containing the user token that authorizes
+         * the Developer Connect connection. Format:
+         * `projects/*&#47;secrets/*&#47;versions/*`.
+         */
+        userTokenSecretVersion: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Output only. The username associated with this token.
+         */
+        username?: pulumi.Input<string>;
+    }
+
+    export interface ConnectionGitlabEnterpriseConfigReadAuthorizerCredential {
+        /**
+         * Required. A SecretManager resource containing the user token that authorizes
+         * the Developer Connect connection. Format:
+         * `projects/*&#47;secrets/*&#47;versions/*`.
+         */
+        userTokenSecretVersion: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Output only. The username associated with this token.
+         */
+        username?: pulumi.Input<string>;
+    }
+
+    export interface ConnectionGitlabEnterpriseConfigServiceDirectoryConfig {
+        /**
+         * Required. The Service Directory service name.
+         * Format:
+         * projects/{project}/locations/{location}/namespaces/{namespace}/services/{service}.
+         */
+        service: pulumi.Input<string>;
+    }
+
     export interface ConnectionInstallationState {
         /**
-         * Output only. Link to follow for next action. Empty string if the
-         * installation is already complete.
+         * Output only. Link to follow for next action. Empty string if the installation is already
+         * complete.
          */
         actionUri?: pulumi.Input<string>;
         /**
-         * Output only. Message of what the user should do next to continue
-         * the installation.Empty string if the installation is already complete.
+         * Output only. Message of what the user should do next to continue the installation.
+         * Empty string if the installation is already complete.
          */
         message?: pulumi.Input<string>;
         /**
@@ -49878,6 +50178,10 @@ export namespace dns {
          */
         geos?: pulumi.Input<pulumi.Input<inputs.dns.RecordSetRoutingPolicyGeo>[]>;
         /**
+         * Specifies the health check (used with external endpoints).
+         */
+        healthCheck?: pulumi.Input<string>;
+        /**
          * The configuration for a failover policy with global to regional failover. Queries are responded to with the global primary targets, but if none of the primary targets are healthy, then we fallback to a regional failover policy.
          * Structure is documented below.
          */
@@ -49907,10 +50211,14 @@ export namespace dns {
 
     export interface RecordSetRoutingPolicyGeoHealthCheckedTargets {
         /**
+         * The list of external endpoint addresses to health check.
+         */
+        externalEndpoints?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
          * The list of internal load balancers to health check.
          * Structure is documented below.
          */
-        internalLoadBalancers: pulumi.Input<pulumi.Input<inputs.dns.RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer>[]>;
+        internalLoadBalancers?: pulumi.Input<pulumi.Input<inputs.dns.RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer>[]>;
     }
 
     export interface RecordSetRoutingPolicyGeoHealthCheckedTargetsInternalLoadBalancer {
@@ -49979,10 +50287,14 @@ export namespace dns {
 
     export interface RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargets {
         /**
+         * The list of external endpoint addresses to health check.
+         */
+        externalEndpoints?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
          * The list of internal load balancers to health check.
          * Structure is documented below.
          */
-        internalLoadBalancers: pulumi.Input<pulumi.Input<inputs.dns.RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer>[]>;
+        internalLoadBalancers?: pulumi.Input<pulumi.Input<inputs.dns.RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer>[]>;
     }
 
     export interface RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsInternalLoadBalancer {
@@ -50018,9 +50330,13 @@ export namespace dns {
 
     export interface RecordSetRoutingPolicyPrimaryBackupPrimary {
         /**
+         * The Internet IP addresses to be health checked.
+         */
+        externalEndpoints?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
          * The list of internal load balancers to health check.
          */
-        internalLoadBalancers: pulumi.Input<pulumi.Input<inputs.dns.RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer>[]>;
+        internalLoadBalancers?: pulumi.Input<pulumi.Input<inputs.dns.RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer>[]>;
     }
 
     export interface RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer {
@@ -50072,10 +50388,14 @@ export namespace dns {
 
     export interface RecordSetRoutingPolicyWrrHealthCheckedTargets {
         /**
+         * The list of external endpoint addresses to health check.
+         */
+        externalEndpoints?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
          * The list of internal load balancers to health check.
          * Structure is documented below.
          */
-        internalLoadBalancers: pulumi.Input<pulumi.Input<inputs.dns.RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer>[]>;
+        internalLoadBalancers?: pulumi.Input<pulumi.Input<inputs.dns.RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer>[]>;
     }
 
     export interface RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer {
@@ -50220,7 +50540,7 @@ export namespace edgecontainer {
          * Structure is documented below.
          *
          *
-         * <a name="nestedKmsStatus"></a>The `kmsStatus` block contains:
+         * <a name="nestedControlPlaneEncryptionKmsStatus"></a>The `kmsStatus` block contains:
          */
         kmsStatuses?: pulumi.Input<pulumi.Input<inputs.edgecontainer.ClusterControlPlaneEncryptionKmsStatus>[]>;
     }
@@ -54812,7 +55132,7 @@ export namespace gkeonprem {
         /**
          * Whether to enable control plane node auto resizing.
          *
-         * <a name="nestedVsphereConfig"></a>The `vsphereConfig` block contains:
+         * <a name="nestedControlPlaneNodeVsphereConfig"></a>The `vsphereConfig` block contains:
          */
         enabled: pulumi.Input<boolean>;
     }
@@ -54959,7 +55279,7 @@ export namespace gkeonprem {
         /**
          * The VIP which you previously set aside for ingress traffic into this cluster.
          *
-         * <a name="nestedF5Config"></a>The `f5Config` block supports:
+         * <a name="nestedLoadBalancerF5Config"></a>The `f5Config` block supports:
          */
         ingressVip?: pulumi.Input<string>;
     }
@@ -55048,7 +55368,7 @@ export namespace gkeonprem {
         /**
          * DNS search domains.
          *
-         * <a name="nestedControlPlaneV2Config"></a>The `controlPlaneV2Config` block supports:
+         * <a name="nestedNetworkConfigControlPlaneV2Config"></a>The `controlPlaneV2Config` block supports:
          */
         dnsSearchDomains?: pulumi.Input<pulumi.Input<string>[]>;
         /**
@@ -55555,7 +55875,7 @@ export namespace gkeonprem {
         /**
          * The VIP to configure the load balancer for add-ons.
          *
-         * <a name="nestedF5Config"></a>The `f5Config` block supports:
+         * <a name="nestedLoadBalancerF5Config"></a>The `f5Config` block supports:
          */
         addonsVip?: pulumi.Input<string>;
         /**
@@ -55726,7 +56046,7 @@ export namespace gkeonprem {
          * Structure is documented below.
          *
          *
-         * <a name="nestedStatus"></a>The `status` block contains:
+         * <a name="nestedPlatformConfigBundlesBundlesStatus"></a>The `status` block contains:
          */
         statuses?: pulumi.Input<pulumi.Input<inputs.gkeonprem.VmwareAdminClusterPlatformConfigStatus>[]>;
     }
@@ -56941,6 +57261,7 @@ export namespace iap {
         corsSettings?: pulumi.Input<inputs.iap.SettingsAccessSettingsCorsSettings>;
         /**
          * GCIP claims and endpoint configurations for 3p identity providers.
+         * * Enabling gcipSetting significantly changes the way IAP authenticates users. Identity Platform does not support IAM, so IAP will not enforce any IAM policies for requests to your application.
          * Structure is documented below.
          */
         gcipSettings?: pulumi.Input<inputs.iap.SettingsAccessSettingsGcipSettings>;
@@ -57013,6 +57334,7 @@ export namespace iap {
          * (https://developers.google.com/identity/protocols/OpenIDConnect#hd-param)
          * Note: IAP does not verify that the id token's hd claim matches this value
          * since access behavior is managed by IAM policies.
+         * * loginHint setting is not a replacement for access control. Always enforce an appropriate access policy if you want to restrict access to users outside your domain.
          */
         loginHint?: pulumi.Input<string>;
         /**
@@ -57055,7 +57377,7 @@ export namespace iap {
          * Structure is documented below.
          *
          *
-         * <a name="nestedOauth2"></a>The `oauth2` block supports:
+         * <a name="nestedAccessSettingsWorkforceIdentitySettingsOauth2"></a>The `oauth2` block supports:
          */
         oauth2?: pulumi.Input<inputs.iap.SettingsAccessSettingsWorkforceIdentitySettingsOauth2>;
         /**
@@ -57621,7 +57943,7 @@ export namespace identityplatform {
         /**
          * Whether anonymous user auth is enabled for the project or not.
          *
-         * <a name="nestedHashConfig"></a>The `hashConfig` block contains:
+         * <a name="nestedSignInHashConfig"></a>The `hashConfig` block contains:
          */
         enabled: pulumi.Input<boolean>;
     }
@@ -57738,7 +58060,7 @@ export namespace identityplatform {
          * Structure is documented below.
          *
          *
-         * <a name="nestedSpCertificates"></a>The `spCertificates` block contains:
+         * <a name="nestedSpConfigSpCertificates"></a>The `spCertificates` block contains:
          */
         spCertificates?: pulumi.Input<pulumi.Input<inputs.identityplatform.InboundSamlConfigSpConfigSpCertificate>[]>;
         /**
@@ -57792,7 +58114,7 @@ export namespace identityplatform {
          * Structure is documented below.
          *
          *
-         * <a name="nestedSpCertificates"></a>The `spCertificates` block contains:
+         * <a name="nestedSpConfigSpCertificates"></a>The `spCertificates` block contains:
          */
         spCertificates?: pulumi.Input<pulumi.Input<inputs.identityplatform.TenantInboundSamlConfigSpConfigSpCertificate>[]>;
         /**
@@ -57977,7 +58299,7 @@ export namespace integrationconnectors {
         /**
          * Value for the "aud" claim.
          *
-         * <a name="nestedOauth2ClientCredentials"></a>The `oauth2ClientCredentials` block supports:
+         * <a name="nestedAuthConfigOauth2ClientCredentials"></a>The `oauth2ClientCredentials` block supports:
          */
         audience?: pulumi.Input<string>;
         /**
@@ -58024,7 +58346,7 @@ export namespace integrationconnectors {
          * The resource name of the secret version in the format,
          * format as: projects/*&#47;secrets/*&#47;versions/*.
          *
-         * <a name="nestedOauth2AuthCodeFlow"></a>The `oauth2AuthCodeFlow` block supports:
+         * <a name="nestedAuthConfigOauth2AuthCodeFlow"></a>The `oauth2AuthCodeFlow` block supports:
          */
         secretVersion: pulumi.Input<string>;
     }
@@ -61442,7 +61764,7 @@ export namespace monitoring {
          * Structure is documented below.
          *
          *
-         * <a name="nestedCloudFunctionV2"></a>The `cloudFunctionV2` block supports:
+         * <a name="nestedSyntheticMonitorCloudFunctionV2"></a>The `cloudFunctionV2` block supports:
          */
         cloudFunctionV2: pulumi.Input<inputs.monitoring.UptimeCheckConfigSyntheticMonitorCloudFunctionV2>;
     }
@@ -65435,7 +65757,7 @@ export namespace oracledatabase {
          * The email address used by Oracle to send notifications regarding databases
          * and infrastructure.
          *
-         * <a name="nestedApexDetails"></a>The `apexDetails` block contains:
+         * <a name="nestedPropertiesApexDetails"></a>The `apexDetails` block contains:
          */
         email: pulumi.Input<string>;
     }
@@ -71942,6 +72264,10 @@ export namespace sql {
          */
         serverCaMode?: pulumi.Input<string>;
         /**
+         * The resource name of the server CA pool for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `serverCaMode`.
+         */
+        serverCaPool?: pulumi.Input<string>;
+        /**
          * Specify how SSL connection should be enforced in DB connections. Supported values are `ALLOW_UNENCRYPTED_AND_ENCRYPTED`, `ENCRYPTED_ONLY`, and `TRUSTED_CLIENT_CERTIFICATE_REQUIRED` (not supported for SQL Server). See [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1/instances#ipconfiguration) for details.
          */
         sslMode?: pulumi.Input<string>;
@@ -73269,7 +73595,7 @@ export namespace transcoder {
          * Structure is documented below.
          *
          *
-         * <a name="nestedH264"></a>The `h264` block supports:
+         * <a name="nestedConfigElementaryStreamsElementaryStreamsVideoStreamH264"></a>The `h264` block supports:
          */
         h264?: pulumi.Input<inputs.transcoder.JobConfigElementaryStreamVideoStreamH264>;
     }
@@ -73686,7 +74012,7 @@ export namespace transcoder {
          * Structure is documented below.
          *
          *
-         * <a name="nestedH264"></a>The `h264` block supports:
+         * <a name="nestedConfigElementaryStreamsElementaryStreamsVideoStreamH264"></a>The `h264` block supports:
          */
         h264?: pulumi.Input<inputs.transcoder.JobTemplateConfigElementaryStreamVideoStreamH264>;
     }

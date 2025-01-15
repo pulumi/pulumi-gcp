@@ -428,6 +428,84 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
+ * ### Public zone failover
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.HealthCheck;
+ * import com.pulumi.gcp.compute.HealthCheckArgs;
+ * import com.pulumi.gcp.compute.inputs.HealthCheckHttpHealthCheckArgs;
+ * import com.pulumi.gcp.dns.ManagedZone;
+ * import com.pulumi.gcp.dns.ManagedZoneArgs;
+ * import com.pulumi.gcp.dns.RecordSet;
+ * import com.pulumi.gcp.dns.RecordSetArgs;
+ * import com.pulumi.gcp.dns.inputs.RecordSetRoutingPolicyArgs;
+ * import com.pulumi.gcp.dns.inputs.RecordSetRoutingPolicyPrimaryBackupArgs;
+ * import com.pulumi.gcp.dns.inputs.RecordSetRoutingPolicyPrimaryBackupPrimaryArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var http_health_check = new HealthCheck("http-health-check", HealthCheckArgs.builder()
+ *             .name("http-health-check")
+ *             .description("Health check via http")
+ *             .timeoutSec(5)
+ *             .checkIntervalSec(30)
+ *             .healthyThreshold(4)
+ *             .unhealthyThreshold(5)
+ *             .httpHealthCheck(HealthCheckHttpHealthCheckArgs.builder()
+ *                 .portSpecification("USE_SERVING_PORT")
+ *                 .build())
+ *             .build());
+ * 
+ *         var prod = new ManagedZone("prod", ManagedZoneArgs.builder()
+ *             .name("prod-zone")
+ *             .dnsName("prod.mydomain.com.")
+ *             .build());
+ * 
+ *         var a = new RecordSet("a", RecordSetArgs.builder()
+ *             .name(prod.dnsName().applyValue(dnsName -> String.format("backend.%s", dnsName)))
+ *             .managedZone(prod.name())
+ *             .type("A")
+ *             .ttl(300)
+ *             .routingPolicy(RecordSetRoutingPolicyArgs.builder()
+ *                 .healthCheck(http_health_check.id())
+ *                 .primaryBackup(RecordSetRoutingPolicyPrimaryBackupArgs.builder()
+ *                     .trickleRatio(0.1)
+ *                     .primary(RecordSetRoutingPolicyPrimaryBackupPrimaryArgs.builder()
+ *                         .externalEndpoints("10.128.1.1")
+ *                         .build())
+ *                     .backupGeos(RecordSetRoutingPolicyPrimaryBackupBackupGeoArgs.builder()
+ *                         .location("us-west1")
+ *                         .healthCheckedTargets(RecordSetRoutingPolicyPrimaryBackupBackupGeoHealthCheckedTargetsArgs.builder()
+ *                             .externalEndpoints("10.130.1.1")
+ *                             .build())
+ *                         .build())
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * 
  * ## Import
  * 
  * DNS record sets can be imported using either of these accepted formats:

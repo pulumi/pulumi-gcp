@@ -87,7 +87,7 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ### With Standby Policy (`Google-Beta` Provider)
+ * ### With Standby Policy (`Google` Provider)
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
@@ -251,7 +251,7 @@ export class InstanceGroupManager extends pulumi.CustomResource {
      */
     public /*out*/ readonly selfLink!: pulumi.Output<string>;
     /**
-     * The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
+     * The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
      */
     public readonly standbyPolicy!: pulumi.Output<outputs.compute.InstanceGroupManagerStandbyPolicy>;
     /**
@@ -494,7 +494,7 @@ export interface InstanceGroupManagerState {
      */
     selfLink?: pulumi.Input<string>;
     /**
-     * The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
+     * The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
      */
     standbyPolicy?: pulumi.Input<inputs.compute.InstanceGroupManagerStandbyPolicy>;
     /**
@@ -630,7 +630,7 @@ export interface InstanceGroupManagerArgs {
      */
     project?: pulumi.Input<string>;
     /**
-     * The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig) and [API](https://cloud.google.com/compute/docs/reference/rest/beta/regionInstanceGroupManagers/patch)
+     * The standby policy for stopped and suspended instances. Structure is documented below. For more information, see the [official documentation](https://cloud.google.com/compute/docs/instance-groups/suspended-and-stopped-vms-in-mig).
      */
     standbyPolicy?: pulumi.Input<inputs.compute.InstanceGroupManagerStandbyPolicy>;
     /**

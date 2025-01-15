@@ -13,9 +13,8 @@ import javax.annotation.Nullable;
 @CustomType
 public final class ConnectionGithubConfigAuthorizerCredential {
     /**
-     * @return Required. A SecretManager resource containing the OAuth token
-     * that authorizes the connection.
-     * Format: `projects/*&#47;secrets/*&#47;versions/*`.
+     * @return Required. A SecretManager resource containing the OAuth token that authorizes
+     * the connection. Format: `projects/*&#47;secrets/*&#47;versions/*`.
      * 
      */
     private String oauthTokenSecretVersion;
@@ -28,9 +27,8 @@ public final class ConnectionGithubConfigAuthorizerCredential {
 
     private ConnectionGithubConfigAuthorizerCredential() {}
     /**
-     * @return Required. A SecretManager resource containing the OAuth token
-     * that authorizes the connection.
-     * Format: `projects/*&#47;secrets/*&#47;versions/*`.
+     * @return Required. A SecretManager resource containing the OAuth token that authorizes
+     * the connection. Format: `projects/*&#47;secrets/*&#47;versions/*`.
      * 
      */
     public String oauthTokenSecretVersion() {

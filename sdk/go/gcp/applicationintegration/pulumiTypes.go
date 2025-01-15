@@ -2487,7 +2487,7 @@ func (o AuthConfigDecryptedCredentialServiceAccountCredentialsPtrOutput) Service
 type AuthConfigDecryptedCredentialUsernameAndPassword struct {
 	// Password to be used.
 	//
-	// <a name="nestedOauth2AuthorizationCode"></a>The `oauth2AuthorizationCode` block supports:
+	// <a name="nestedDecryptedCredentialOauth2AuthorizationCode"></a>The `oauth2AuthorizationCode` block supports:
 	Password *string `pulumi:"password"`
 	// Username to be used.
 	Username *string `pulumi:"username"`
@@ -2507,7 +2507,7 @@ type AuthConfigDecryptedCredentialUsernameAndPasswordInput interface {
 type AuthConfigDecryptedCredentialUsernameAndPasswordArgs struct {
 	// Password to be used.
 	//
-	// <a name="nestedOauth2AuthorizationCode"></a>The `oauth2AuthorizationCode` block supports:
+	// <a name="nestedDecryptedCredentialOauth2AuthorizationCode"></a>The `oauth2AuthorizationCode` block supports:
 	Password pulumi.StringPtrInput `pulumi:"password"`
 	// Username to be used.
 	Username pulumi.StringPtrInput `pulumi:"username"`
@@ -2592,7 +2592,7 @@ func (o AuthConfigDecryptedCredentialUsernameAndPasswordOutput) ToAuthConfigDecr
 
 // Password to be used.
 //
-// <a name="nestedOauth2AuthorizationCode"></a>The `oauth2AuthorizationCode` block supports:
+// <a name="nestedDecryptedCredentialOauth2AuthorizationCode"></a>The `oauth2AuthorizationCode` block supports:
 func (o AuthConfigDecryptedCredentialUsernameAndPasswordOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v AuthConfigDecryptedCredentialUsernameAndPassword) *string { return v.Password }).(pulumi.StringPtrOutput)
 }
@@ -2628,7 +2628,7 @@ func (o AuthConfigDecryptedCredentialUsernameAndPasswordPtrOutput) Elem() AuthCo
 
 // Password to be used.
 //
-// <a name="nestedOauth2AuthorizationCode"></a>The `oauth2AuthorizationCode` block supports:
+// <a name="nestedDecryptedCredentialOauth2AuthorizationCode"></a>The `oauth2AuthorizationCode` block supports:
 func (o AuthConfigDecryptedCredentialUsernameAndPasswordPtrOutput) Password() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *AuthConfigDecryptedCredentialUsernameAndPassword) *string {
 		if v == nil {

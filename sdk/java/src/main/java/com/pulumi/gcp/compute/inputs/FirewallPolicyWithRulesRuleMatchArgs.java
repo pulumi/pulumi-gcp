@@ -111,7 +111,7 @@ public final class FirewallPolicyWithRulesRuleMatchArgs extends com.pulumi.resou
      * Pairs of IP protocols and ports that the rule should match.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_layer4_config&#34;&gt;&lt;/a&gt;The `layer4_config` block supports:
+     * &lt;a name=&#34;nested_rule_rule_match_layer4_config&#34;&gt;&lt;/a&gt;The `layer4_config` block supports:
      * 
      */
     @Import(name="layer4Configs", required=true)
@@ -121,7 +121,7 @@ public final class FirewallPolicyWithRulesRuleMatchArgs extends com.pulumi.resou
      * @return Pairs of IP protocols and ports that the rule should match.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_layer4_config&#34;&gt;&lt;/a&gt;The `layer4_config` block supports:
+     * &lt;a name=&#34;nested_rule_rule_match_layer4_config&#34;&gt;&lt;/a&gt;The `layer4_config` block supports:
      * 
      */
     public Output<List<FirewallPolicyWithRulesRuleMatchLayer4ConfigArgs>> layer4Configs() {
@@ -431,7 +431,7 @@ public final class FirewallPolicyWithRulesRuleMatchArgs extends com.pulumi.resou
          * @param layer4Configs Pairs of IP protocols and ports that the rule should match.
          * Structure is documented below.
          * 
-         * &lt;a name=&#34;nested_layer4_config&#34;&gt;&lt;/a&gt;The `layer4_config` block supports:
+         * &lt;a name=&#34;nested_rule_rule_match_layer4_config&#34;&gt;&lt;/a&gt;The `layer4_config` block supports:
          * 
          * @return builder
          * 
@@ -445,7 +445,7 @@ public final class FirewallPolicyWithRulesRuleMatchArgs extends com.pulumi.resou
          * @param layer4Configs Pairs of IP protocols and ports that the rule should match.
          * Structure is documented below.
          * 
-         * &lt;a name=&#34;nested_layer4_config&#34;&gt;&lt;/a&gt;The `layer4_config` block supports:
+         * &lt;a name=&#34;nested_rule_rule_match_layer4_config&#34;&gt;&lt;/a&gt;The `layer4_config` block supports:
          * 
          * @return builder
          * 
@@ -458,7 +458,7 @@ public final class FirewallPolicyWithRulesRuleMatchArgs extends com.pulumi.resou
          * @param layer4Configs Pairs of IP protocols and ports that the rule should match.
          * Structure is documented below.
          * 
-         * &lt;a name=&#34;nested_layer4_config&#34;&gt;&lt;/a&gt;The `layer4_config` block supports:
+         * &lt;a name=&#34;nested_rule_rule_match_layer4_config&#34;&gt;&lt;/a&gt;The `layer4_config` block supports:
          * 
          * @return builder
          * 

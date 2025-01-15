@@ -2249,6 +2249,32 @@
                     }
                 }
             },
+            "google_beyondcorp_security_gateway": {
+                "current": "gcp:beyondcorp/securityGateway:SecurityGateway",
+                "majorVersion": 8,
+                "fields": {
+                    "external_ips": {
+                        "maxItemsOne": false
+                    },
+                    "hubs": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "internet_gateway": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "assigned_ips": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "google_biglake_catalog": {
                 "current": "gcp:biglake/catalog:Catalog",
                 "majorVersion": 8
@@ -3378,6 +3404,36 @@
                     }
                 }
             },
+            "google_chronicle_data_access_label": {
+                "current": "gcp:chronicle/dataAccessLabel:DataAccessLabel",
+                "majorVersion": 8
+            },
+            "google_chronicle_data_access_scope": {
+                "current": "gcp:chronicle/dataAccessScope:DataAccessScope",
+                "majorVersion": 8,
+                "fields": {
+                    "allowed_data_access_labels": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "ingestion_label": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "denied_data_access_labels": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "ingestion_label": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    }
+                }
+            },
             "google_chronicle_watchlist": {
                 "current": "gcp:chronicle/watchlist:Watchlist",
                 "majorVersion": 8,
@@ -3517,6 +3573,10 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "google_cloud_quotas_quota_adjuster_settings": {
+                "current": "gcp:cloudquota/sQuotaAdjusterSettings:SQuotaAdjusterSettings",
+                "majorVersion": 8
             },
             "google_cloud_quotas_quota_preference": {
                 "current": "gcp:cloudquota/sQuotaPreference:SQuotaPreference",
@@ -16519,11 +16579,53 @@
                 "current": "gcp:developerconnect/connection:Connection",
                 "majorVersion": 8,
                 "fields": {
+                    "crypto_key_config": {
+                        "maxItemsOne": true
+                    },
                     "github_config": {
                         "maxItemsOne": true,
                         "elem": {
                             "fields": {
                                 "authorizer_credential": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "github_enterprise_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "service_directory_config": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "gitlab_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "authorizer_credential": {
+                                    "maxItemsOne": true
+                                },
+                                "read_authorizer_credential": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "gitlab_enterprise_config": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "authorizer_credential": {
+                                    "maxItemsOne": true
+                                },
+                                "read_authorizer_credential": {
+                                    "maxItemsOne": true
+                                },
+                                "service_directory_config": {
                                     "maxItemsOne": true
                                 }
                             }
@@ -17570,6 +17672,9 @@
                                                 "maxItemsOne": true,
                                                 "elem": {
                                                     "fields": {
+                                                        "external_endpoints": {
+                                                            "maxItemsOne": false
+                                                        },
                                                         "internal_load_balancers": {
                                                             "maxItemsOne": false
                                                         }
@@ -17594,6 +17699,9 @@
                                                             "maxItemsOne": true,
                                                             "elem": {
                                                                 "fields": {
+                                                                    "external_endpoints": {
+                                                                        "maxItemsOne": false
+                                                                    },
                                                                     "internal_load_balancers": {
                                                                         "maxItemsOne": false
                                                                     }
@@ -17610,6 +17718,9 @@
                                                 "maxItemsOne": true,
                                                 "elem": {
                                                     "fields": {
+                                                        "external_endpoints": {
+                                                            "maxItemsOne": false
+                                                        },
                                                         "internal_load_balancers": {
                                                             "maxItemsOne": false
                                                         }
@@ -17627,6 +17738,9 @@
                                                 "maxItemsOne": true,
                                                 "elem": {
                                                     "fields": {
+                                                        "external_endpoints": {
+                                                            "maxItemsOne": false
+                                                        },
                                                         "internal_load_balancers": {
                                                             "maxItemsOne": false
                                                         }
@@ -37652,6 +37766,7 @@
             "gcp:beyondcorp/appConnection:AppConnection": 0,
             "gcp:beyondcorp/appConnector:AppConnector": 0,
             "gcp:beyondcorp/appGateway:AppGateway": 0,
+            "gcp:beyondcorp/securityGateway:SecurityGateway": 0,
             "gcp:biglake/catalog:Catalog": 0,
             "gcp:biglake/database:Database": 0,
             "gcp:biglake/table:Table": 0,
@@ -37726,6 +37841,8 @@
             "gcp:certificatemanager/certificateMapEntry:CertificateMapEntry": 0,
             "gcp:certificatemanager/dnsAuthorization:DnsAuthorization": 0,
             "gcp:certificatemanager/trustConfig:TrustConfig": 0,
+            "gcp:chronicle/dataAccessLabel:DataAccessLabel": 0,
+            "gcp:chronicle/dataAccessScope:DataAccessScope": 0,
             "gcp:chronicle/watchlist:Watchlist": 0,
             "gcp:cloudasset/folderFeed:FolderFeed": 0,
             "gcp:cloudasset/organizationFeed:OrganizationFeed": 0,
@@ -37763,6 +37880,7 @@
             "gcp:cloudidentity/group:Group": 0,
             "gcp:cloudidentity/groupMembership:GroupMembership": 0,
             "gcp:cloudids/endpoint:Endpoint": 0,
+            "gcp:cloudquota/sQuotaAdjusterSettings:SQuotaAdjusterSettings": 0,
             "gcp:cloudquota/sQuotaPreference:SQuotaPreference": 0,
             "gcp:cloudrun/domainMapping:DomainMapping": 0,
             "gcp:cloudrun/iamBinding:IamBinding": 0,

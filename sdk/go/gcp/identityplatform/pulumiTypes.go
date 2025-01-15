@@ -2255,7 +2255,7 @@ func (o ConfigSignInPtrOutput) PhoneNumber() ConfigSignInPhoneNumberPtrOutput {
 type ConfigSignInAnonymous struct {
 	// Whether anonymous user auth is enabled for the project or not.
 	//
-	// <a name="nestedHashConfig"></a>The `hashConfig` block contains:
+	// <a name="nestedSignInHashConfig"></a>The `hashConfig` block contains:
 	Enabled bool `pulumi:"enabled"`
 }
 
@@ -2273,7 +2273,7 @@ type ConfigSignInAnonymousInput interface {
 type ConfigSignInAnonymousArgs struct {
 	// Whether anonymous user auth is enabled for the project or not.
 	//
-	// <a name="nestedHashConfig"></a>The `hashConfig` block contains:
+	// <a name="nestedSignInHashConfig"></a>The `hashConfig` block contains:
 	Enabled pulumi.BoolInput `pulumi:"enabled"`
 }
 
@@ -2356,7 +2356,7 @@ func (o ConfigSignInAnonymousOutput) ToConfigSignInAnonymousPtrOutputWithContext
 
 // Whether anonymous user auth is enabled for the project or not.
 //
-// <a name="nestedHashConfig"></a>The `hashConfig` block contains:
+// <a name="nestedSignInHashConfig"></a>The `hashConfig` block contains:
 func (o ConfigSignInAnonymousOutput) Enabled() pulumi.BoolOutput {
 	return o.ApplyT(func(v ConfigSignInAnonymous) bool { return v.Enabled }).(pulumi.BoolOutput)
 }
@@ -2387,7 +2387,7 @@ func (o ConfigSignInAnonymousPtrOutput) Elem() ConfigSignInAnonymousOutput {
 
 // Whether anonymous user auth is enabled for the project or not.
 //
-// <a name="nestedHashConfig"></a>The `hashConfig` block contains:
+// <a name="nestedSignInHashConfig"></a>The `hashConfig` block contains:
 func (o ConfigSignInAnonymousPtrOutput) Enabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *ConfigSignInAnonymous) *bool {
 		if v == nil {
@@ -3592,7 +3592,7 @@ type InboundSamlConfigSpConfig struct {
 	// The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
 	// Structure is documented below.
 	//
-	// <a name="nestedSpCertificates"></a>The `spCertificates` block contains:
+	// <a name="nestedSpConfigSpCertificates"></a>The `spCertificates` block contains:
 	SpCertificates []InboundSamlConfigSpConfigSpCertificate `pulumi:"spCertificates"`
 	// Unique identifier for all SAML entities.
 	SpEntityId *string `pulumi:"spEntityId"`
@@ -3616,7 +3616,7 @@ type InboundSamlConfigSpConfigArgs struct {
 	// The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
 	// Structure is documented below.
 	//
-	// <a name="nestedSpCertificates"></a>The `spCertificates` block contains:
+	// <a name="nestedSpConfigSpCertificates"></a>The `spCertificates` block contains:
 	SpCertificates InboundSamlConfigSpConfigSpCertificateArrayInput `pulumi:"spCertificates"`
 	// Unique identifier for all SAML entities.
 	SpEntityId pulumi.StringPtrInput `pulumi:"spEntityId"`
@@ -3708,7 +3708,7 @@ func (o InboundSamlConfigSpConfigOutput) CallbackUri() pulumi.StringPtrOutput {
 // The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
 // Structure is documented below.
 //
-// <a name="nestedSpCertificates"></a>The `spCertificates` block contains:
+// <a name="nestedSpConfigSpCertificates"></a>The `spCertificates` block contains:
 func (o InboundSamlConfigSpConfigOutput) SpCertificates() InboundSamlConfigSpConfigSpCertificateArrayOutput {
 	return o.ApplyT(func(v InboundSamlConfigSpConfig) []InboundSamlConfigSpConfigSpCertificate { return v.SpCertificates }).(InboundSamlConfigSpConfigSpCertificateArrayOutput)
 }
@@ -3756,7 +3756,7 @@ func (o InboundSamlConfigSpConfigPtrOutput) CallbackUri() pulumi.StringPtrOutput
 // The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
 // Structure is documented below.
 //
-// <a name="nestedSpCertificates"></a>The `spCertificates` block contains:
+// <a name="nestedSpConfigSpCertificates"></a>The `spCertificates` block contains:
 func (o InboundSamlConfigSpConfigPtrOutput) SpCertificates() InboundSamlConfigSpConfigSpCertificateArrayOutput {
 	return o.ApplyT(func(v *InboundSamlConfigSpConfig) []InboundSamlConfigSpConfigSpCertificate {
 		if v == nil {
@@ -4177,7 +4177,7 @@ type TenantInboundSamlConfigSpConfig struct {
 	// The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
 	// Structure is documented below.
 	//
-	// <a name="nestedSpCertificates"></a>The `spCertificates` block contains:
+	// <a name="nestedSpConfigSpCertificates"></a>The `spCertificates` block contains:
 	SpCertificates []TenantInboundSamlConfigSpConfigSpCertificate `pulumi:"spCertificates"`
 	// Unique identifier for all SAML entities.
 	SpEntityId string `pulumi:"spEntityId"`
@@ -4201,7 +4201,7 @@ type TenantInboundSamlConfigSpConfigArgs struct {
 	// The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
 	// Structure is documented below.
 	//
-	// <a name="nestedSpCertificates"></a>The `spCertificates` block contains:
+	// <a name="nestedSpConfigSpCertificates"></a>The `spCertificates` block contains:
 	SpCertificates TenantInboundSamlConfigSpConfigSpCertificateArrayInput `pulumi:"spCertificates"`
 	// Unique identifier for all SAML entities.
 	SpEntityId pulumi.StringInput `pulumi:"spEntityId"`
@@ -4293,7 +4293,7 @@ func (o TenantInboundSamlConfigSpConfigOutput) CallbackUri() pulumi.StringOutput
 // The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
 // Structure is documented below.
 //
-// <a name="nestedSpCertificates"></a>The `spCertificates` block contains:
+// <a name="nestedSpConfigSpCertificates"></a>The `spCertificates` block contains:
 func (o TenantInboundSamlConfigSpConfigOutput) SpCertificates() TenantInboundSamlConfigSpConfigSpCertificateArrayOutput {
 	return o.ApplyT(func(v TenantInboundSamlConfigSpConfig) []TenantInboundSamlConfigSpConfigSpCertificate {
 		return v.SpCertificates
@@ -4343,7 +4343,7 @@ func (o TenantInboundSamlConfigSpConfigPtrOutput) CallbackUri() pulumi.StringPtr
 // The IDP's certificate data to verify the signature in the SAMLResponse issued by the IDP.
 // Structure is documented below.
 //
-// <a name="nestedSpCertificates"></a>The `spCertificates` block contains:
+// <a name="nestedSpConfigSpCertificates"></a>The `spCertificates` block contains:
 func (o TenantInboundSamlConfigSpConfigPtrOutput) SpCertificates() TenantInboundSamlConfigSpConfigSpCertificateArrayOutput {
 	return o.ApplyT(func(v *TenantInboundSamlConfigSpConfig) []TenantInboundSamlConfigSpConfigSpCertificate {
 		if v == nil {

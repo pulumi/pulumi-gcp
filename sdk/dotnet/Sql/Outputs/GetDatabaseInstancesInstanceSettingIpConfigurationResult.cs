@@ -39,6 +39,10 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// </summary>
         public readonly string ServerCaMode;
         /// <summary>
+        /// The resource name of the server CA pool for an instance with "CUSTOMER_MANAGED_CAS_CA" as the "server_ca_mode".
+        /// </summary>
+        public readonly string ServerCaPool;
+        /// <summary>
         /// Specify how SSL connection should be enforced in DB connections.
         /// </summary>
         public readonly string SslMode;
@@ -59,6 +63,8 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             string serverCaMode,
 
+            string serverCaPool,
+
             string sslMode)
         {
             AllocatedIpRange = allocatedIpRange;
@@ -68,6 +74,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             PrivateNetwork = privateNetwork;
             PscConfigs = pscConfigs;
             ServerCaMode = serverCaMode;
+            ServerCaPool = serverCaPool;
             SslMode = sslMode;
         }
     }

@@ -21,6 +21,8 @@ func (m *module) Version() semver.Version {
 
 func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi.Resource, err error) {
 	switch typ {
+	case "gcp:cloudquota/sQuotaAdjusterSettings:SQuotaAdjusterSettings":
+		r = &SQuotaAdjusterSettings{}
 	case "gcp:cloudquota/sQuotaPreference:SQuotaPreference":
 		r = &SQuotaPreference{}
 	default:
@@ -36,6 +38,11 @@ func init() {
 	if err != nil {
 		version = semver.Version{Major: 1}
 	}
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"cloudquota/sQuotaAdjusterSettings",
+		&module{version},
+	)
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"cloudquota/sQuotaPreference",

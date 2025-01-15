@@ -14,13 +14,21 @@ namespace Pulumi.Gcp.Dns.Outputs
     public sealed class RecordSetRoutingPolicyPrimaryBackupPrimary
     {
         /// <summary>
+        /// The Internet IP addresses to be health checked.
+        /// </summary>
+        public readonly ImmutableArray<string> ExternalEndpoints;
+        /// <summary>
         /// The list of internal load balancers to health check.
         /// </summary>
         public readonly ImmutableArray<Outputs.RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer> InternalLoadBalancers;
 
         [OutputConstructor]
-        private RecordSetRoutingPolicyPrimaryBackupPrimary(ImmutableArray<Outputs.RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer> internalLoadBalancers)
+        private RecordSetRoutingPolicyPrimaryBackupPrimary(
+            ImmutableArray<string> externalEndpoints,
+
+            ImmutableArray<Outputs.RecordSetRoutingPolicyPrimaryBackupPrimaryInternalLoadBalancer> internalLoadBalancers)
         {
+            ExternalEndpoints = externalEndpoints;
             InternalLoadBalancers = internalLoadBalancers;
         }
     }

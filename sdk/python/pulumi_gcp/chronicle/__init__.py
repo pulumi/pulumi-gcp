@@ -5,6 +5,8 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .data_access_label import *
+from .data_access_scope import *
 from .watchlist import *
 from ._inputs import *
 from . import outputs

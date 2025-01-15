@@ -87,7 +87,7 @@ public final class ClusterControlPlaneEncryptionArgs extends com.pulumi.resource
      * If populated, this field contains the error status reported by Cloud KMS.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_kms_status&#34;&gt;&lt;/a&gt;The `kms_status` block contains:
+     * &lt;a name=&#34;nested_control_plane_encryption_kms_status&#34;&gt;&lt;/a&gt;The `kms_status` block contains:
      * 
      */
     @Import(name="kmsStatuses")
@@ -100,7 +100,7 @@ public final class ClusterControlPlaneEncryptionArgs extends com.pulumi.resource
      * If populated, this field contains the error status reported by Cloud KMS.
      * Structure is documented below.
      * 
-     * &lt;a name=&#34;nested_kms_status&#34;&gt;&lt;/a&gt;The `kms_status` block contains:
+     * &lt;a name=&#34;nested_control_plane_encryption_kms_status&#34;&gt;&lt;/a&gt;The `kms_status` block contains:
      * 
      */
     public Optional<Output<List<ClusterControlPlaneEncryptionKmsStatusArgs>>> kmsStatuses() {
@@ -222,7 +222,7 @@ public final class ClusterControlPlaneEncryptionArgs extends com.pulumi.resource
          * If populated, this field contains the error status reported by Cloud KMS.
          * Structure is documented below.
          * 
-         * &lt;a name=&#34;nested_kms_status&#34;&gt;&lt;/a&gt;The `kms_status` block contains:
+         * &lt;a name=&#34;nested_control_plane_encryption_kms_status&#34;&gt;&lt;/a&gt;The `kms_status` block contains:
          * 
          * @return builder
          * 
@@ -239,7 +239,7 @@ public final class ClusterControlPlaneEncryptionArgs extends com.pulumi.resource
          * If populated, this field contains the error status reported by Cloud KMS.
          * Structure is documented below.
          * 
-         * &lt;a name=&#34;nested_kms_status&#34;&gt;&lt;/a&gt;The `kms_status` block contains:
+         * &lt;a name=&#34;nested_control_plane_encryption_kms_status&#34;&gt;&lt;/a&gt;The `kms_status` block contains:
          * 
          * @return builder
          * 
@@ -255,7 +255,7 @@ public final class ClusterControlPlaneEncryptionArgs extends com.pulumi.resource
          * If populated, this field contains the error status reported by Cloud KMS.
          * Structure is documented below.
          * 
-         * &lt;a name=&#34;nested_kms_status&#34;&gt;&lt;/a&gt;The `kms_status` block contains:
+         * &lt;a name=&#34;nested_control_plane_encryption_kms_status&#34;&gt;&lt;/a&gt;The `kms_status` block contains:
          * 
          * @return builder
          * 

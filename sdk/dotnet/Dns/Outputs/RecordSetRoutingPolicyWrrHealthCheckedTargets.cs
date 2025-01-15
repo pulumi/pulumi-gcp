@@ -14,14 +14,22 @@ namespace Pulumi.Gcp.Dns.Outputs
     public sealed class RecordSetRoutingPolicyWrrHealthCheckedTargets
     {
         /// <summary>
+        /// The list of external endpoint addresses to health check.
+        /// </summary>
+        public readonly ImmutableArray<string> ExternalEndpoints;
+        /// <summary>
         /// The list of internal load balancers to health check.
         /// Structure is documented below.
         /// </summary>
         public readonly ImmutableArray<Outputs.RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer> InternalLoadBalancers;
 
         [OutputConstructor]
-        private RecordSetRoutingPolicyWrrHealthCheckedTargets(ImmutableArray<Outputs.RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer> internalLoadBalancers)
+        private RecordSetRoutingPolicyWrrHealthCheckedTargets(
+            ImmutableArray<string> externalEndpoints,
+
+            ImmutableArray<Outputs.RecordSetRoutingPolicyWrrHealthCheckedTargetsInternalLoadBalancer> internalLoadBalancers)
         {
+            ExternalEndpoints = externalEndpoints;
             InternalLoadBalancers = internalLoadBalancers;
         }
     }

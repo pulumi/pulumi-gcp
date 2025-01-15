@@ -2639,7 +2639,7 @@ type AutonomousDatabasePropertiesCustomerContact struct {
 	// The email address used by Oracle to send notifications regarding databases
 	// and infrastructure.
 	//
-	// <a name="nestedApexDetails"></a>The `apexDetails` block contains:
+	// <a name="nestedPropertiesApexDetails"></a>The `apexDetails` block contains:
 	Email string `pulumi:"email"`
 }
 
@@ -2658,7 +2658,7 @@ type AutonomousDatabasePropertiesCustomerContactArgs struct {
 	// The email address used by Oracle to send notifications regarding databases
 	// and infrastructure.
 	//
-	// <a name="nestedApexDetails"></a>The `apexDetails` block contains:
+	// <a name="nestedPropertiesApexDetails"></a>The `apexDetails` block contains:
 	Email pulumi.StringInput `pulumi:"email"`
 }
 
@@ -2716,7 +2716,7 @@ func (o AutonomousDatabasePropertiesCustomerContactOutput) ToAutonomousDatabaseP
 // The email address used by Oracle to send notifications regarding databases
 // and infrastructure.
 //
-// <a name="nestedApexDetails"></a>The `apexDetails` block contains:
+// <a name="nestedPropertiesApexDetails"></a>The `apexDetails` block contains:
 func (o AutonomousDatabasePropertiesCustomerContactOutput) Email() pulumi.StringOutput {
 	return o.ApplyT(func(v AutonomousDatabasePropertiesCustomerContact) string { return v.Email }).(pulumi.StringOutput)
 }

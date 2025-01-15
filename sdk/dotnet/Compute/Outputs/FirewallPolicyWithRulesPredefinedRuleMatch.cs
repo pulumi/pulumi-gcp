@@ -45,7 +45,7 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// Structure is documented below.
         /// 
         /// 
-        /// &lt;a name="nested_layer4_config"&gt;&lt;/a&gt;The `layer4_config` block supports:
+        /// &lt;a name="nested_rule_rule_match_layer4_config"&gt;&lt;/a&gt;The `layer4_config` block supports:
         /// </summary>
         public readonly ImmutableArray<Outputs.FirewallPolicyWithRulesPredefinedRuleMatchLayer4Config> Layer4Configs;
         /// <summary>

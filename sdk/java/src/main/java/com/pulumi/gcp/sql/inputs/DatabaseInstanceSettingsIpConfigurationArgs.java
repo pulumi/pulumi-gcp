@@ -129,6 +129,21 @@ public final class DatabaseInstanceSettingsIpConfigurationArgs extends com.pulum
     }
 
     /**
+     * The resource name of the server CA pool for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `server_ca_mode`.
+     * 
+     */
+    @Import(name="serverCaPool")
+    private @Nullable Output<String> serverCaPool;
+
+    /**
+     * @return The resource name of the server CA pool for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `server_ca_mode`.
+     * 
+     */
+    public Optional<Output<String>> serverCaPool() {
+        return Optional.ofNullable(this.serverCaPool);
+    }
+
+    /**
      * Specify how SSL connection should be enforced in DB connections. Supported values are `ALLOW_UNENCRYPTED_AND_ENCRYPTED`, `ENCRYPTED_ONLY`, and `TRUSTED_CLIENT_CERTIFICATE_REQUIRED` (not supported for SQL Server). See [API reference doc](https://cloud.google.com/sql/docs/postgres/admin-api/rest/v1/instances#ipconfiguration) for details.
      * 
      */
@@ -153,6 +168,7 @@ public final class DatabaseInstanceSettingsIpConfigurationArgs extends com.pulum
         this.privateNetwork = $.privateNetwork;
         this.pscConfigs = $.pscConfigs;
         this.serverCaMode = $.serverCaMode;
+        this.serverCaPool = $.serverCaPool;
         this.sslMode = $.sslMode;
     }
 
@@ -333,6 +349,27 @@ public final class DatabaseInstanceSettingsIpConfigurationArgs extends com.pulum
          */
         public Builder serverCaMode(String serverCaMode) {
             return serverCaMode(Output.of(serverCaMode));
+        }
+
+        /**
+         * @param serverCaPool The resource name of the server CA pool for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `server_ca_mode`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverCaPool(@Nullable Output<String> serverCaPool) {
+            $.serverCaPool = serverCaPool;
+            return this;
+        }
+
+        /**
+         * @param serverCaPool The resource name of the server CA pool for an instance with `CUSTOMER_MANAGED_CAS_CA` as the `server_ca_mode`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder serverCaPool(String serverCaPool) {
+            return serverCaPool(Output.of(serverCaPool));
         }
 
         /**

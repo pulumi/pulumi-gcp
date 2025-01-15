@@ -493,7 +493,7 @@ type ClusterControlPlaneEncryption struct {
 	// If populated, this field contains the error status reported by Cloud KMS.
 	// Structure is documented below.
 	//
-	// <a name="nestedKmsStatus"></a>The `kmsStatus` block contains:
+	// <a name="nestedControlPlaneEncryptionKmsStatus"></a>The `kmsStatus` block contains:
 	KmsStatuses []ClusterControlPlaneEncryptionKmsStatus `pulumi:"kmsStatuses"`
 }
 
@@ -530,7 +530,7 @@ type ClusterControlPlaneEncryptionArgs struct {
 	// If populated, this field contains the error status reported by Cloud KMS.
 	// Structure is documented below.
 	//
-	// <a name="nestedKmsStatus"></a>The `kmsStatus` block contains:
+	// <a name="nestedControlPlaneEncryptionKmsStatus"></a>The `kmsStatus` block contains:
 	KmsStatuses ClusterControlPlaneEncryptionKmsStatusArrayInput `pulumi:"kmsStatuses"`
 }
 
@@ -641,7 +641,7 @@ func (o ClusterControlPlaneEncryptionOutput) KmsKeyState() pulumi.StringPtrOutpu
 // If populated, this field contains the error status reported by Cloud KMS.
 // Structure is documented below.
 //
-// <a name="nestedKmsStatus"></a>The `kmsStatus` block contains:
+// <a name="nestedControlPlaneEncryptionKmsStatus"></a>The `kmsStatus` block contains:
 func (o ClusterControlPlaneEncryptionOutput) KmsStatuses() ClusterControlPlaneEncryptionKmsStatusArrayOutput {
 	return o.ApplyT(func(v ClusterControlPlaneEncryption) []ClusterControlPlaneEncryptionKmsStatus { return v.KmsStatuses }).(ClusterControlPlaneEncryptionKmsStatusArrayOutput)
 }
@@ -715,7 +715,7 @@ func (o ClusterControlPlaneEncryptionPtrOutput) KmsKeyState() pulumi.StringPtrOu
 // If populated, this field contains the error status reported by Cloud KMS.
 // Structure is documented below.
 //
-// <a name="nestedKmsStatus"></a>The `kmsStatus` block contains:
+// <a name="nestedControlPlaneEncryptionKmsStatus"></a>The `kmsStatus` block contains:
 func (o ClusterControlPlaneEncryptionPtrOutput) KmsStatuses() ClusterControlPlaneEncryptionKmsStatusArrayOutput {
 	return o.ApplyT(func(v *ClusterControlPlaneEncryption) []ClusterControlPlaneEncryptionKmsStatus {
 		if v == nil {

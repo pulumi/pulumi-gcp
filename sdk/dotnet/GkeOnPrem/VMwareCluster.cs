@@ -587,7 +587,7 @@ namespace Pulumi.Gcp.GkeOnPrem
         /// VmwareVCenterConfig specifies vCenter config for the user cluster. Inherited from the admin cluster.
         /// </summary>
         [Output("vcenter")]
-        public Output<Outputs.VMwareClusterVcenter?> Vcenter { get; private set; } = null!;
+        public Output<Outputs.VMwareClusterVcenter> Vcenter { get; private set; } = null!;
 
         /// <summary>
         /// Enable VM tracking.

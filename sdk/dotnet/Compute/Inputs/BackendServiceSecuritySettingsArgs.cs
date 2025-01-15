@@ -18,7 +18,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         /// Structure is documented below.
         /// 
         /// 
-        /// &lt;a name="nested_aws_v4_authentication"&gt;&lt;/a&gt;The `aws_v4_authentication` block supports:
+        /// &lt;a name="nested_security_settings_aws_v4_authentication"&gt;&lt;/a&gt;The `aws_v4_authentication` block supports:
         /// </summary>
         [Input("awsV4Authentication")]
         public Input<Inputs.BackendServiceSecuritySettingsAwsV4AuthenticationArgs>? AwsV4Authentication { get; set; }

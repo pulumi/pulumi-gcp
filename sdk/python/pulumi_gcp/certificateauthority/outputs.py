@@ -531,7 +531,7 @@ class AuthorityConfigSubjectKeyId(dict):
         """
         :param str key_id: The value of the KeyId in lowercase hexadecimal.
                
-               <a name="nested_x509_config"></a>The `x509_config` block supports:
+               <a name="nested_config_x509_config"></a>The `x509_config` block supports:
         """
         if key_id is not None:
             pulumi.set(__self__, "key_id", key_id)
@@ -542,7 +542,7 @@ class AuthorityConfigSubjectKeyId(dict):
         """
         The value of the KeyId in lowercase hexadecimal.
 
-        <a name="nested_x509_config"></a>The `x509_config` block supports:
+        <a name="nested_config_x509_config"></a>The `x509_config` block supports:
         """
         return pulumi.get(self, "key_id")
 
@@ -4699,7 +4699,7 @@ class CertificateConfig(dict):
                Structure is documented below.
                
                
-               <a name="nested_x509_config"></a>The `x509_config` block supports:
+               <a name="nested_config_x509_config"></a>The `x509_config` block supports:
         :param 'CertificateConfigSubjectConfigArgs' subject_config: Specifies some of the values in a certificate that are related to the subject.
                Structure is documented below.
         :param 'CertificateConfigX509ConfigArgs' x509_config: Describes how some of the technical X.509 fields in a certificate should be populated.
@@ -4721,7 +4721,7 @@ class CertificateConfig(dict):
         Structure is documented below.
 
 
-        <a name="nested_x509_config"></a>The `x509_config` block supports:
+        <a name="nested_config_x509_config"></a>The `x509_config` block supports:
         """
         return pulumi.get(self, "public_key")
 
