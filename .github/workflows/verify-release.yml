@@ -26,7 +26,7 @@ on:
         description: "The version of the provider to verify"
         required: true
         type: string
-      enableMacosRunner:
+      enableMacRunner:
         description: "Enable the macos-latest runner in addition to ubuntu-latest and windows-latest. Defaults to 'false'."
         required: false
         type: boolean
