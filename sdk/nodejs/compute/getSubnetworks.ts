@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my-subnetworks = gcp.compute.getSubnetworks({
+ * const my_subnetworks = gcp.compute.getSubnetworks({
  *     filter: "ipCidrRange eq 192.168.178.0/24",
  *     project: "my-project",
  *     region: "us-east1",
@@ -81,7 +81,7 @@ export interface GetSubnetworksResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my-subnetworks = gcp.compute.getSubnetworks({
+ * const my_subnetworks = gcp.compute.getSubnetworks({
  *     filter: "ipCidrRange eq 192.168.178.0/24",
  *     project: "my-project",
  *     region: "us-east1",

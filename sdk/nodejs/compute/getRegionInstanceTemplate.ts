@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  *     name: "generic-tpl-20200107",
  * });
  * // using a filter
- * const generic-regex = gcp.compute.getRegionInstanceTemplate({
+ * const generic_regex = gcp.compute.getRegionInstanceTemplate({
  *     filter: "name != generic-tpl-20200107",
  *     mostRecent: true,
  * });
@@ -229,7 +229,7 @@ export interface GetRegionInstanceTemplateResult {
  *     name: "generic-tpl-20200107",
  * });
  * // using a filter
- * const generic-regex = gcp.compute.getRegionInstanceTemplate({
+ * const generic_regex = gcp.compute.getRegionInstanceTemplate({
  *     filter: "name != generic-tpl-20200107",
  *     mostRecent: true,
  * });

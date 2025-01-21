@@ -19,10 +19,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my-org-projects = gcp.projects.getProject({
+ * const my_org_projects = gcp.projects.getProject({
  *     filter: "parent.id:012345678910 lifecycleState:DELETE_REQUESTED",
  * });
- * const deletion-candidate = my_org_projects.then(my_org_projects => gcp.organizations.getProject({
+ * const deletion_candidate = my_org_projects.then(my_org_projects => gcp.organizations.getProject({
  *     projectId: my_org_projects.projects?.[0]?.projectId,
  * }));
  * ```
@@ -71,10 +71,10 @@ export interface GetProjectResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my-org-projects = gcp.projects.getProject({
+ * const my_org_projects = gcp.projects.getProject({
  *     filter: "parent.id:012345678910 lifecycleState:DELETE_REQUESTED",
  * });
- * const deletion-candidate = my_org_projects.then(my_org_projects => gcp.organizations.getProject({
+ * const deletion_candidate = my_org_projects.then(my_org_projects => gcp.organizations.getProject({
  *     projectId: my_org_projects.projects?.[0]?.projectId,
  * }));
  * ```

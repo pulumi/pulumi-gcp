@@ -35,7 +35,7 @@ import * as utilities from "../utilities";
  *     },
  *     deletionProtection: true,
  * });
- * const default = gcp.compute.getNetwork({
+ * const _default = gcp.compute.getNetwork({
  *     name: "new",
  *     project: "my-project",
  * });
@@ -76,7 +76,7 @@ import * as utilities from "../utilities";
  *     },
  *     deletionProtection: true,
  * });
- * const default = gcp.compute.getNetwork({
+ * const _default = gcp.compute.getNetwork({
  *     name: "new",
  *     project: "my-project",
  * });
