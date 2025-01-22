@@ -39,6 +39,21 @@ public final class AccessLevelConditionState extends com.pulumi.resources.Resour
     }
 
     /**
+     * The name of the Access Policy this resource belongs to.
+     * 
+     */
+    @Import(name="accessPolicyId")
+    private @Nullable Output<String> accessPolicyId;
+
+    /**
+     * @return The name of the Access Policy this resource belongs to.
+     * 
+     */
+    public Optional<Output<String>> accessPolicyId() {
+        return Optional.ofNullable(this.accessPolicyId);
+    }
+
+    /**
      * Device specific restrictions, all restrictions must hold for
      * the Condition to be true. If not specified, all devices are
      * allowed.
@@ -201,6 +216,7 @@ public final class AccessLevelConditionState extends com.pulumi.resources.Resour
 
     private AccessLevelConditionState(AccessLevelConditionState $) {
         this.accessLevel = $.accessLevel;
+        this.accessPolicyId = $.accessPolicyId;
         this.devicePolicy = $.devicePolicy;
         this.ipSubnetworks = $.ipSubnetworks;
         this.members = $.members;
@@ -251,6 +267,27 @@ public final class AccessLevelConditionState extends com.pulumi.resources.Resour
          */
         public Builder accessLevel(String accessLevel) {
             return accessLevel(Output.of(accessLevel));
+        }
+
+        /**
+         * @param accessPolicyId The name of the Access Policy this resource belongs to.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accessPolicyId(@Nullable Output<String> accessPolicyId) {
+            $.accessPolicyId = accessPolicyId;
+            return this;
+        }
+
+        /**
+         * @param accessPolicyId The name of the Access Policy this resource belongs to.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accessPolicyId(String accessPolicyId) {
+            return accessPolicyId(Output.of(accessPolicyId));
         }
 
         /**

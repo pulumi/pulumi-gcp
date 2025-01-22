@@ -52,6 +52,10 @@ export class EgressPolicy extends pulumi.CustomResource {
     }
 
     /**
+     * The name of the Access Policy this resource belongs to.
+     */
+    public /*out*/ readonly accessPolicyId!: pulumi.Output<string>;
+    /**
      * The name of the Service Perimeter to add this resource to.
      *
      *
@@ -76,6 +80,7 @@ export class EgressPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as EgressPolicyState | undefined;
+            resourceInputs["accessPolicyId"] = state ? state.accessPolicyId : undefined;
             resourceInputs["egressPolicyName"] = state ? state.egressPolicyName : undefined;
             resourceInputs["resource"] = state ? state.resource : undefined;
         } else {
@@ -88,6 +93,7 @@ export class EgressPolicy extends pulumi.CustomResource {
             }
             resourceInputs["egressPolicyName"] = args ? args.egressPolicyName : undefined;
             resourceInputs["resource"] = args ? args.resource : undefined;
+            resourceInputs["accessPolicyId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(EgressPolicy.__pulumiType, name, resourceInputs, opts);
@@ -98,6 +104,10 @@ export class EgressPolicy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering EgressPolicy resources.
  */
 export interface EgressPolicyState {
+    /**
+     * The name of the Access Policy this resource belongs to.
+     */
+    accessPolicyId?: pulumi.Input<string>;
     /**
      * The name of the Service Perimeter to add this resource to.
      *

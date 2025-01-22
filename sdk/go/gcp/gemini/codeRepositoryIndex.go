@@ -76,6 +76,8 @@ type CodeRepositoryIndex struct {
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
+	// If set to true, will allow deletion of the CodeRepositoryIndex even if there are existing RepositoryGroups for the resource. These RepositoryGroups will also be deleted.
+	ForceDestroy pulumi.BoolPtrOutput `pulumi:"forceDestroy"`
 	// Optional. Immutable. Customer-managed encryption key name, in the format
 	// projects/*/locations/*/keyRings/*/cryptoKeys/*.
 	KmsKey pulumi.StringPtrOutput `pulumi:"kmsKey"`
@@ -154,6 +156,8 @@ type codeRepositoryIndexState struct {
 	CreateTime *string `pulumi:"createTime"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
+	// If set to true, will allow deletion of the CodeRepositoryIndex even if there are existing RepositoryGroups for the resource. These RepositoryGroups will also be deleted.
+	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// Optional. Immutable. Customer-managed encryption key name, in the format
 	// projects/*/locations/*/keyRings/*/cryptoKeys/*.
 	KmsKey *string `pulumi:"kmsKey"`
@@ -192,6 +196,8 @@ type CodeRepositoryIndexState struct {
 	CreateTime pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
+	// If set to true, will allow deletion of the CodeRepositoryIndex even if there are existing RepositoryGroups for the resource. These RepositoryGroups will also be deleted.
+	ForceDestroy pulumi.BoolPtrInput
 	// Optional. Immutable. Customer-managed encryption key name, in the format
 	// projects/*/locations/*/keyRings/*/cryptoKeys/*.
 	KmsKey pulumi.StringPtrInput
@@ -230,6 +236,8 @@ type codeRepositoryIndexArgs struct {
 	//
 	// ***
 	CodeRepositoryIndexId string `pulumi:"codeRepositoryIndexId"`
+	// If set to true, will allow deletion of the CodeRepositoryIndex even if there are existing RepositoryGroups for the resource. These RepositoryGroups will also be deleted.
+	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// Optional. Immutable. Customer-managed encryption key name, in the format
 	// projects/*/locations/*/keyRings/*/cryptoKeys/*.
 	KmsKey *string `pulumi:"kmsKey"`
@@ -250,6 +258,8 @@ type CodeRepositoryIndexArgs struct {
 	//
 	// ***
 	CodeRepositoryIndexId pulumi.StringInput
+	// If set to true, will allow deletion of the CodeRepositoryIndex even if there are existing RepositoryGroups for the resource. These RepositoryGroups will also be deleted.
+	ForceDestroy pulumi.BoolPtrInput
 	// Optional. Immutable. Customer-managed encryption key name, in the format
 	// projects/*/locations/*/keyRings/*/cryptoKeys/*.
 	KmsKey pulumi.StringPtrInput
@@ -366,6 +376,11 @@ func (o CodeRepositoryIndexOutput) CreateTime() pulumi.StringOutput {
 // All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 func (o CodeRepositoryIndexOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *CodeRepositoryIndex) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
+// If set to true, will allow deletion of the CodeRepositoryIndex even if there are existing RepositoryGroups for the resource. These RepositoryGroups will also be deleted.
+func (o CodeRepositoryIndexOutput) ForceDestroy() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *CodeRepositoryIndex) pulumi.BoolPtrOutput { return v.ForceDestroy }).(pulumi.BoolPtrOutput)
 }
 
 // Optional. Immutable. Customer-managed encryption key name, in the format

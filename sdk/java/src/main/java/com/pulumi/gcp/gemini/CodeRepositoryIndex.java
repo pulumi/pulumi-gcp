@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.gemini.CodeRepositoryIndexArgs;
 import com.pulumi.gcp.gemini.inputs.CodeRepositoryIndexState;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Map;
@@ -128,6 +129,20 @@ public class CodeRepositoryIndex extends com.pulumi.resources.CustomResource {
      */
     public Output<Map<String,String>> effectiveLabels() {
         return this.effectiveLabels;
+    }
+    /**
+     * If set to true, will allow deletion of the CodeRepositoryIndex even if there are existing RepositoryGroups for the resource. These RepositoryGroups will also be deleted.
+     * 
+     */
+    @Export(name="forceDestroy", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> forceDestroy;
+
+    /**
+     * @return If set to true, will allow deletion of the CodeRepositoryIndex even if there are existing RepositoryGroups for the resource. These RepositoryGroups will also be deleted.
+     * 
+     */
+    public Output<Optional<Boolean>> forceDestroy() {
+        return Codegen.optional(this.forceDestroy);
     }
     /**
      * Optional. Immutable. Customer-managed encryption key name, in the format

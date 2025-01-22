@@ -8,6 +8,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstancesInstanceClone;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstancesInstanceIpAddress;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstancesInstanceReplicaConfiguration;
+import com.pulumi.gcp.sql.outputs.GetDatabaseInstancesInstanceReplicationCluster;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstancesInstanceRestoreBackupContext;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstancesInstanceServerCaCert;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstancesInstanceSetting;
@@ -90,6 +91,11 @@ public final class GetDatabaseInstancesInstance {
      * 
      */
     private List<String> replicaNames;
+    /**
+     * @return A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only after both the primary and replica are created.
+     * 
+     */
+    private List<GetDatabaseInstancesInstanceReplicationCluster> replicationClusters;
     private List<GetDatabaseInstancesInstanceRestoreBackupContext> restoreBackupContexts;
     /**
      * @return Initial root password. Required for MS SQL Server.
@@ -226,6 +232,13 @@ public final class GetDatabaseInstancesInstance {
     public List<String> replicaNames() {
         return this.replicaNames;
     }
+    /**
+     * @return A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only after both the primary and replica are created.
+     * 
+     */
+    public List<GetDatabaseInstancesInstanceReplicationCluster> replicationClusters() {
+        return this.replicationClusters;
+    }
     public List<GetDatabaseInstancesInstanceRestoreBackupContext> restoreBackupContexts() {
         return this.restoreBackupContexts;
     }
@@ -290,6 +303,7 @@ public final class GetDatabaseInstancesInstance {
         private String region;
         private List<GetDatabaseInstancesInstanceReplicaConfiguration> replicaConfigurations;
         private List<String> replicaNames;
+        private List<GetDatabaseInstancesInstanceReplicationCluster> replicationClusters;
         private List<GetDatabaseInstancesInstanceRestoreBackupContext> restoreBackupContexts;
         private String rootPassword;
         private String selfLink;
@@ -319,6 +333,7 @@ public final class GetDatabaseInstancesInstance {
     	      this.region = defaults.region;
     	      this.replicaConfigurations = defaults.replicaConfigurations;
     	      this.replicaNames = defaults.replicaNames;
+    	      this.replicationClusters = defaults.replicationClusters;
     	      this.restoreBackupContexts = defaults.restoreBackupContexts;
     	      this.rootPassword = defaults.rootPassword;
     	      this.selfLink = defaults.selfLink;
@@ -503,6 +518,17 @@ public final class GetDatabaseInstancesInstance {
             return replicaNames(List.of(replicaNames));
         }
         @CustomType.Setter
+        public Builder replicationClusters(List<GetDatabaseInstancesInstanceReplicationCluster> replicationClusters) {
+            if (replicationClusters == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstancesInstance", "replicationClusters");
+            }
+            this.replicationClusters = replicationClusters;
+            return this;
+        }
+        public Builder replicationClusters(GetDatabaseInstancesInstanceReplicationCluster... replicationClusters) {
+            return replicationClusters(List.of(replicationClusters));
+        }
+        @CustomType.Setter
         public Builder restoreBackupContexts(List<GetDatabaseInstancesInstanceRestoreBackupContext> restoreBackupContexts) {
             if (restoreBackupContexts == null) {
               throw new MissingRequiredPropertyException("GetDatabaseInstancesInstance", "restoreBackupContexts");
@@ -581,6 +607,7 @@ public final class GetDatabaseInstancesInstance {
             _resultValue.region = region;
             _resultValue.replicaConfigurations = replicaConfigurations;
             _resultValue.replicaNames = replicaNames;
+            _resultValue.replicationClusters = replicationClusters;
             _resultValue.restoreBackupContexts = restoreBackupContexts;
             _resultValue.rootPassword = rootPassword;
             _resultValue.selfLink = selfLink;

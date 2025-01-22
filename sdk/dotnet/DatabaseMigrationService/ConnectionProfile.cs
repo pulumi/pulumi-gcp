@@ -303,13 +303,13 @@ namespace Pulumi.Gcp.DatabaseMigrationService
     ///         },
     ///         Alloydb = new Gcp.DatabaseMigrationService.Inputs.ConnectionProfileAlloydbArgs
     ///         {
-    ///             ClusterId = "tf-test-dbmsalloycluster_52865",
+    ///             ClusterId = "tf-test-dbmsalloycluster_85840",
     ///             Settings = new Gcp.DatabaseMigrationService.Inputs.ConnectionProfileAlloydbSettingsArgs
     ///             {
     ///                 InitialUser = new Gcp.DatabaseMigrationService.Inputs.ConnectionProfileAlloydbSettingsInitialUserArgs
     ///                 {
-    ///                     User = "alloyuser_85840",
-    ///                     Password = "alloypass_60302",
+    ///                     User = "alloyuser_60302",
+    ///                     Password = "alloypass_22811",
     ///                 },
     ///                 VpcNetwork = @default.Id,
     ///                 Labels = 

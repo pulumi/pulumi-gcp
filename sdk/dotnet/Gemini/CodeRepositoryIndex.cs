@@ -81,6 +81,12 @@ namespace Pulumi.Gcp.Gemini
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
         /// <summary>
+        /// If set to true, will allow deletion of the CodeRepositoryIndex even if there are existing RepositoryGroups for the resource. These RepositoryGroups will also be deleted.
+        /// </summary>
+        [Output("forceDestroy")]
+        public Output<bool?> ForceDestroy { get; private set; } = null!;
+
+        /// <summary>
         /// Optional. Immutable. Customer-managed encryption key name, in the format
         /// projects/*/locations/*/keyRings/*/cryptoKeys/*.
         /// </summary>
@@ -200,6 +206,12 @@ namespace Pulumi.Gcp.Gemini
         public Input<string> CodeRepositoryIndexId { get; set; } = null!;
 
         /// <summary>
+        /// If set to true, will allow deletion of the CodeRepositoryIndex even if there are existing RepositoryGroups for the resource. These RepositoryGroups will also be deleted.
+        /// </summary>
+        [Input("forceDestroy")]
+        public Input<bool>? ForceDestroy { get; set; }
+
+        /// <summary>
         /// Optional. Immutable. Customer-managed encryption key name, in the format
         /// projects/*/locations/*/keyRings/*/cryptoKeys/*.
         /// </summary>
@@ -271,6 +283,12 @@ namespace Pulumi.Gcp.Gemini
                 _effectiveLabels = Output.All(value, emptySecret).Apply(v => v[0]);
             }
         }
+
+        /// <summary>
+        /// If set to true, will allow deletion of the CodeRepositoryIndex even if there are existing RepositoryGroups for the resource. These RepositoryGroups will also be deleted.
+        /// </summary>
+        [Input("forceDestroy")]
+        public Input<bool>? ForceDestroy { get; set; }
 
         /// <summary>
         /// Optional. Immutable. Customer-managed encryption key name, in the format

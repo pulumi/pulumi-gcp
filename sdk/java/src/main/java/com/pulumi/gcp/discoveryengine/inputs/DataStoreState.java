@@ -5,6 +5,7 @@ package com.pulumi.gcp.discoveryengine.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.discoveryengine.inputs.DataStoreAdvancedSiteSearchConfigArgs;
 import com.pulumi.gcp.discoveryengine.inputs.DataStoreDocumentProcessingConfigArgs;
 import java.lang.Boolean;
 import java.lang.String;
@@ -17,6 +18,23 @@ import javax.annotation.Nullable;
 public final class DataStoreState extends com.pulumi.resources.ResourceArgs {
 
     public static final DataStoreState Empty = new DataStoreState();
+
+    /**
+     * Configuration data for advance site search.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="advancedSiteSearchConfig")
+    private @Nullable Output<DataStoreAdvancedSiteSearchConfigArgs> advancedSiteSearchConfig;
+
+    /**
+     * @return Configuration data for advance site search.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<DataStoreAdvancedSiteSearchConfigArgs>> advancedSiteSearchConfig() {
+        return Optional.ofNullable(this.advancedSiteSearchConfig);
+    }
 
     /**
      * The content config of the data store.
@@ -256,6 +274,7 @@ public final class DataStoreState extends com.pulumi.resources.ResourceArgs {
     private DataStoreState() {}
 
     private DataStoreState(DataStoreState $) {
+        this.advancedSiteSearchConfig = $.advancedSiteSearchConfig;
         this.contentConfig = $.contentConfig;
         this.createAdvancedSiteSearch = $.createAdvancedSiteSearch;
         this.createTime = $.createTime;
@@ -287,6 +306,29 @@ public final class DataStoreState extends com.pulumi.resources.ResourceArgs {
 
         public Builder(DataStoreState defaults) {
             $ = new DataStoreState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param advancedSiteSearchConfig Configuration data for advance site search.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder advancedSiteSearchConfig(@Nullable Output<DataStoreAdvancedSiteSearchConfigArgs> advancedSiteSearchConfig) {
+            $.advancedSiteSearchConfig = advancedSiteSearchConfig;
+            return this;
+        }
+
+        /**
+         * @param advancedSiteSearchConfig Configuration data for advance site search.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder advancedSiteSearchConfig(DataStoreAdvancedSiteSearchConfigArgs advancedSiteSearchConfig) {
+            return advancedSiteSearchConfig(Output.of(advancedSiteSearchConfig));
         }
 
         /**

@@ -750,7 +750,7 @@ class Connection(pulumi.CustomResource):
         user = gcp.sql.User("user",
             name="user",
             instance=instance.name,
-            password="tf-test-my-password_77884")
+            password="tf-test-my-password_15222")
         bq_sa = gcp.bigquery.get_default_service_account()
         key_sa_user = gcp.kms.CryptoKeyIAMMember("key_sa_user",
             crypto_key_id="projects/project/locations/us-central1/keyRings/us-central1/cryptoKeys/bq-key",
@@ -1056,7 +1056,7 @@ class Connection(pulumi.CustomResource):
         user = gcp.sql.User("user",
             name="user",
             instance=instance.name,
-            password="tf-test-my-password_77884")
+            password="tf-test-my-password_15222")
         bq_sa = gcp.bigquery.get_default_service_account()
         key_sa_user = gcp.kms.CryptoKeyIAMMember("key_sa_user",
             crypto_key_id="projects/project/locations/us-central1/keyRings/us-central1/cryptoKeys/bq-key",

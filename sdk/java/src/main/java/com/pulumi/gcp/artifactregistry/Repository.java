@@ -450,6 +450,21 @@ import javax.annotation.Nullable;
  *             .cleanupPolicyDryRun(false)
  *             .cleanupPolicies(            
  *                 RepositoryCleanupPolicyArgs.builder()
+ *                     .id("delete-untagged")
+ *                     .action("DELETE")
+ *                     .condition(RepositoryCleanupPolicyConditionArgs.builder()
+ *                         .tagState("UNTAGGED")
+ *                         .build())
+ *                     .build(),
+ *                 RepositoryCleanupPolicyArgs.builder()
+ *                     .id("keep-new-untagged")
+ *                     .action("KEEP")
+ *                     .condition(RepositoryCleanupPolicyConditionArgs.builder()
+ *                         .tagState("UNTAGGED")
+ *                         .newerThan("7d")
+ *                         .build())
+ *                     .build(),
+ *                 RepositoryCleanupPolicyArgs.builder()
  *                     .id("delete-prerelease")
  *                     .action("DELETE")
  *                     .condition(RepositoryCleanupPolicyConditionArgs.builder()
@@ -457,7 +472,7 @@ import javax.annotation.Nullable;
  *                         .tagPrefixes(                        
  *                             "alpha",
  *                             "v0")
- *                         .olderThan("2592000s")
+ *                         .olderThan("30d")
  *                         .build())
  *                     .build(),
  *                 RepositoryCleanupPolicyArgs.builder()

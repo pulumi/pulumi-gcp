@@ -109,6 +109,8 @@ clouddomainsCustomEndpoint: Optional[str]
 
 cloudfunctions2CustomEndpoint: Optional[str]
 
+colabCustomEndpoint: Optional[str]
+
 composerCustomEndpoint: Optional[str]
 
 computeCustomEndpoint: Optional[str]
@@ -278,6 +280,10 @@ osConfigCustomEndpoint: Optional[str]
 osLoginCustomEndpoint: Optional[str]
 
 parallelstoreCustomEndpoint: Optional[str]
+
+parameterManagerCustomEndpoint: Optional[str]
+
+parameterManagerRegionalCustomEndpoint: Optional[str]
 
 privatecaCustomEndpoint: Optional[str]
 

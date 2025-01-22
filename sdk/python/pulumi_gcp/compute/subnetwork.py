@@ -109,7 +109,7 @@ class SubnetworkArgs:
                Defaults to false.
         :param pulumi.Input[str] stack_type: The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
                If not specified IPV4_ONLY will be used.
-               Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+               Possible values are: `IPV4_ONLY`, `IPV4_IPV6`, `IPV6_ONLY`.
         """
         pulumi.set(__self__, "network", network)
         if allow_subnet_cidr_routes_overlap is not None:
@@ -406,7 +406,7 @@ class SubnetworkArgs:
         """
         The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
         If not specified IPV4_ONLY will be used.
-        Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+        Possible values are: `IPV4_ONLY`, `IPV4_IPV6`, `IPV6_ONLY`.
         """
         return pulumi.get(self, "stack_type")
 
@@ -520,7 +520,7 @@ class _SubnetworkState:
                Defaults to false.
         :param pulumi.Input[str] stack_type: The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
                If not specified IPV4_ONLY will be used.
-               Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+               Possible values are: `IPV4_ONLY`, `IPV4_IPV6`, `IPV6_ONLY`.
         :param pulumi.Input[int] subnetwork_id: The unique identifier number for the resource. This identifier is defined by the server.
         """
         if allow_subnet_cidr_routes_overlap is not None:
@@ -910,7 +910,7 @@ class _SubnetworkState:
         """
         The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
         If not specified IPV4_ONLY will be used.
-        Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+        Possible values are: `IPV4_ONLY`, `IPV4_IPV6`, `IPV6_ONLY`.
         """
         return pulumi.get(self, "stack_type")
 
@@ -1267,7 +1267,7 @@ class Subnetwork(pulumi.CustomResource):
                Defaults to false.
         :param pulumi.Input[str] stack_type: The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
                If not specified IPV4_ONLY will be used.
-               Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+               Possible values are: `IPV4_ONLY`, `IPV4_IPV6`, `IPV6_ONLY`.
         """
         ...
     @overload
@@ -1703,7 +1703,7 @@ class Subnetwork(pulumi.CustomResource):
                Defaults to false.
         :param pulumi.Input[str] stack_type: The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
                If not specified IPV4_ONLY will be used.
-               Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+               Possible values are: `IPV4_ONLY`, `IPV4_IPV6`, `IPV6_ONLY`.
         :param pulumi.Input[int] subnetwork_id: The unique identifier number for the resource. This identifier is defined by the server.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -1978,7 +1978,7 @@ class Subnetwork(pulumi.CustomResource):
         """
         The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
         If not specified IPV4_ONLY will be used.
-        Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+        Possible values are: `IPV4_ONLY`, `IPV4_IPV6`, `IPV6_ONLY`.
         """
         return pulumi.get(self, "stack_type")
 

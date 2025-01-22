@@ -948,6 +948,21 @@ class Repository(pulumi.CustomResource):
             cleanup_policy_dry_run=False,
             cleanup_policies=[
                 {
+                    "id": "delete-untagged",
+                    "action": "DELETE",
+                    "condition": {
+                        "tag_state": "UNTAGGED",
+                    },
+                },
+                {
+                    "id": "keep-new-untagged",
+                    "action": "KEEP",
+                    "condition": {
+                        "tag_state": "UNTAGGED",
+                        "newer_than": "7d",
+                    },
+                },
+                {
                     "id": "delete-prerelease",
                     "action": "DELETE",
                     "condition": {
@@ -956,7 +971,7 @@ class Repository(pulumi.CustomResource):
                             "alpha",
                             "v0",
                         ],
-                        "older_than": "2592000s",
+                        "older_than": "30d",
                     },
                 },
                 {
@@ -1561,6 +1576,21 @@ class Repository(pulumi.CustomResource):
             cleanup_policy_dry_run=False,
             cleanup_policies=[
                 {
+                    "id": "delete-untagged",
+                    "action": "DELETE",
+                    "condition": {
+                        "tag_state": "UNTAGGED",
+                    },
+                },
+                {
+                    "id": "keep-new-untagged",
+                    "action": "KEEP",
+                    "condition": {
+                        "tag_state": "UNTAGGED",
+                        "newer_than": "7d",
+                    },
+                },
+                {
                     "id": "delete-prerelease",
                     "action": "DELETE",
                     "condition": {
@@ -1569,7 +1599,7 @@ class Repository(pulumi.CustomResource):
                             "alpha",
                             "v0",
                         ],
-                        "older_than": "2592000s",
+                        "older_than": "30d",
                     },
                 },
                 {

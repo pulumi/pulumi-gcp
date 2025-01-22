@@ -5,6 +5,11 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { InterconnectAttachmentArgs, InterconnectAttachmentState } from "./interconnectAttachment";
+export type InterconnectAttachment = import("./interconnectAttachment").InterconnectAttachment;
+export const InterconnectAttachment: typeof import("./interconnectAttachment").InterconnectAttachment = null as any;
+utilities.lazyLoad(exports, ["InterconnectAttachment"], () => require("./interconnectAttachment"));
+
 export { NetworkArgs, NetworkState } from "./network";
 export type Network = import("./network").Network;
 export const Network: typeof import("./network").Network = null as any;
@@ -20,6 +25,8 @@ const _module = {
     version: utilities.getVersion(),
     construct: (name: string, type: string, urn: string): pulumi.Resource => {
         switch (type) {
+            case "gcp:edgenetwork/interconnectAttachment:InterconnectAttachment":
+                return new InterconnectAttachment(name, <any>undefined, { urn })
             case "gcp:edgenetwork/network:Network":
                 return new Network(name, <any>undefined, { urn })
             case "gcp:edgenetwork/subnet:Subnet":
@@ -29,5 +36,6 @@ const _module = {
         }
     },
 };
+pulumi.runtime.registerResourceModule("gcp", "edgenetwork/interconnectAttachment", _module)
 pulumi.runtime.registerResourceModule("gcp", "edgenetwork/network", _module)
 pulumi.runtime.registerResourceModule("gcp", "edgenetwork/subnet", _module)

@@ -153,9 +153,9 @@ import * as utilities from "../utilities";
  * });
  * ```
  *
- * ## Switchover (SQL Server Only)
+ * ## Switchover
  *
- * Users can perform a switchover on any direct `cascadable` replica by following the steps below.
+ * Users can perform a switchover on a replica by following the steps below.
  *
  *   ~>**WARNING:** Failure to follow these steps can lead to data loss (You will be warned during plan stage). To prevent data loss during a switchover, please verify your plan with the checklist below.
  *
@@ -163,22 +163,26 @@ import * as utilities from "../utilities";
  *
  * ### Steps to Invoke Switchover
  *
- * Create a `cascadable` replica in a different region from the primary (`cascadableReplica` is set to true in `replicaConfiguration`)
+ * MySQL/PostgreSQL: Create a cross-region, Enterprise Plus edition primary and replica pair, then set the value of primary's `replication_cluster.failover_dr_replica_name` as the replica.
+ *
+ * SQL Server: Create a `cascadable` replica in a different region from the primary (`cascadableReplica` is set to true in `replicaConfiguration`)
  *
  * #### Invoking switchover in the replica resource:
  * 1. Change instanceType from `READ_REPLICA_INSTANCE` to `CLOUD_SQL_INSTANCE`
  * 2. Remove `masterInstanceName`
- * 3. Remove `replicaConfiguration`
+ * 3. (SQL Server) Remove `replicaConfiguration`
  * 4. Add current primary's name to the replica's `replicaNames` list
+ * 5. (MySQL/PostgreSQL) Add current primary's name to the replica's `replication_cluster.failover_dr_replica_name`.
+ * 6. (MySQL/PostgreSQL) Adjust `backupConfiguration`. See Switchover Guide for details.
  *
  * #### Updating the primary resource:
  * 1. Change `instanceType` from `CLOUD_SQL_INSTANCE` to `READ_REPLICA_INSTANCE`
  * 2. Set `masterInstanceName` to the original replica (which will be primary after switchover)
- * 3. Set `replicaConfiguration` and set `cascadableReplica` to `true`
+ * 3. (SQL Server) Set `replicaConfiguration` and set `cascadableReplica` to `true`
  * 4. Remove original replica from `replicaNames`
- *    
- *     > **NOTE**: Do **not** delete the replicaNames field, even if it has no replicas remaining. Set replicaNames = [ ] to indicate it having no replicas.
- *
+ *    * **NOTE**: Do **not** delete the replicaNames field, even if it has no replicas remaining. Set replicaNames = [ ] to indicate it having no replicas.
+ * 5. (MySQL/PostgreSQL) Set `replication_cluster.failover_dr_replica_name` as the empty string.
+ * 6. (MySQL/PostgreSQL) Adjust `backupConfiguration`. See Switchover Guide for details.
  * #### Plan and verify that:
  * - `pulumi preview` outputs **"0 to add, 0 to destroy"**
  * - `pulumi preview` does not say **"must be replaced"** for any resource
@@ -351,6 +355,11 @@ export class DatabaseInstance extends pulumi.CustomResource {
      */
     public readonly replicaNames!: pulumi.Output<string[]>;
     /**
+     * A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only
+     * after both the primary and replica are created.
+     */
+    public readonly replicationCluster!: pulumi.Output<outputs.sql.DatabaseInstanceReplicationCluster>;
+    /**
      * The context needed to restore the database to a backup run. This field will
      * cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
      * **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
@@ -410,6 +419,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["replicaConfiguration"] = state ? state.replicaConfiguration : undefined;
             resourceInputs["replicaNames"] = state ? state.replicaNames : undefined;
+            resourceInputs["replicationCluster"] = state ? state.replicationCluster : undefined;
             resourceInputs["restoreBackupContext"] = state ? state.restoreBackupContext : undefined;
             resourceInputs["rootPassword"] = state ? state.rootPassword : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
@@ -433,6 +443,7 @@ export class DatabaseInstance extends pulumi.CustomResource {
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["replicaConfiguration"] = args?.replicaConfiguration ? pulumi.secret(args.replicaConfiguration) : undefined;
             resourceInputs["replicaNames"] = args ? args.replicaNames : undefined;
+            resourceInputs["replicationCluster"] = args ? args.replicationCluster : undefined;
             resourceInputs["restoreBackupContext"] = args ? args.restoreBackupContext : undefined;
             resourceInputs["rootPassword"] = args?.rootPassword ? pulumi.secret(args.rootPassword) : undefined;
             resourceInputs["settings"] = args ? args.settings : undefined;
@@ -566,6 +577,11 @@ export interface DatabaseInstanceState {
      */
     replicaNames?: pulumi.Input<pulumi.Input<string>[]>;
     /**
+     * A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only
+     * after both the primary and replica are created.
+     */
+    replicationCluster?: pulumi.Input<inputs.sql.DatabaseInstanceReplicationCluster>;
+    /**
      * The context needed to restore the database to a backup run. This field will
      * cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
      * **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
@@ -673,6 +689,11 @@ export interface DatabaseInstanceArgs {
      * List of replica names. Can be updated.
      */
     replicaNames?: pulumi.Input<pulumi.Input<string>[]>;
+    /**
+     * A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only
+     * after both the primary and replica are created.
+     */
+    replicationCluster?: pulumi.Input<inputs.sql.DatabaseInstanceReplicationCluster>;
     /**
      * The context needed to restore the database to a backup run. This field will
      * cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.

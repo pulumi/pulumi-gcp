@@ -669,7 +669,7 @@ index df91843c5..40b452e03 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/compute_instance.html.markdown b/website/docs/r/compute_instance.html.markdown
-index a9d0efc64..794b8b8d4 100644
+index 1fddef270..417939d56 100644
 --- a/website/docs/r/compute_instance.html.markdown
 +++ b/website/docs/r/compute_instance.html.markdown
 @@ -140,7 +140,7 @@ The following arguments are supported:
@@ -825,7 +825,7 @@ index c7a253e6d..fd7c0580c 100644
  ## Attributes Reference
  
 diff --git a/website/docs/r/compute_instance_template.html.markdown b/website/docs/r/compute_instance_template.html.markdown
-index b73f4c095..7b4923115 100644
+index efe4969eb..69d9d53d6 100644
 --- a/website/docs/r/compute_instance_template.html.markdown
 +++ b/website/docs/r/compute_instance_template.html.markdown
 @@ -183,12 +183,11 @@ resource "google_compute_instance_template" "foobar" {
@@ -1523,7 +1523,7 @@ index e96d17f09..bbd005a6a 100644
  resource "google_compute_ssl_certificate" "default" {
    name_prefix = "my-certificate-"
 diff --git a/website/docs/r/compute_subnetwork.html.markdown b/website/docs/r/compute_subnetwork.html.markdown
-index 2818f72b0..93b55e24e 100644
+index 1ba64e0db..a047ac09f 100644
 --- a/website/docs/r/compute_subnetwork.html.markdown
 +++ b/website/docs/r/compute_subnetwork.html.markdown
 @@ -391,9 +391,6 @@ The following arguments are supported:
@@ -3558,7 +3558,7 @@ index b6e4a06bd..a775c628e 100644
  
  <a name="nested_encryption_config"></a>The `encryption_config` block supports:
 diff --git a/website/docs/r/sql_database_instance.html.markdown b/website/docs/r/sql_database_instance.html.markdown
-index 6f6e2e668..585819a79 100644
+index 8992cfead..79ca28100 100644
 --- a/website/docs/r/sql_database_instance.html.markdown
 +++ b/website/docs/r/sql_database_instance.html.markdown
 @@ -10,12 +10,12 @@ Creates a new Google SQL Database Instance. For more information, see the [offic
@@ -3629,7 +3629,7 @@ index 6f6e2e668..585819a79 100644
  block during resource creation/update will trigger the restore action after the resource is created/updated.
  
  * `backup_run_id` - (Required) The ID of the backup run to restore from.
-@@ -585,21 +581,13 @@ instance.
+@@ -591,21 +587,13 @@ instance.
  
    * A `PRIVATE` address is an address for an instance which has been configured to use private networking see: [Private IP](https://cloud.google.com/sql/docs/mysql/private-ip).
  

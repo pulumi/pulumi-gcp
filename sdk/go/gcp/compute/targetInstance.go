@@ -201,7 +201,7 @@ import (
 //			}
 //			policyddosprotection, err := compute.NewRegionSecurityPolicy(ctx, "policyddosprotection", &compute.RegionSecurityPolicyArgs{
 //				Region:      pulumi.String("southamerica-west1"),
-//				Name:        pulumi.String("tf-test-policyddos_85794"),
+//				Name:        pulumi.String("tf-test-policyddos_21197"),
 //				Description: pulumi.String("ddos protection security policy to set target instance"),
 //				Type:        pulumi.String("CLOUD_ARMOR_NETWORK"),
 //				DdosProtectionConfig: &compute.RegionSecurityPolicyDdosProtectionConfigArgs{
@@ -213,7 +213,7 @@ import (
 //			}
 //			edgeSecService, err := compute.NewNetworkEdgeSecurityService(ctx, "edge_sec_service", &compute.NetworkEdgeSecurityServiceArgs{
 //				Region:         pulumi.String("southamerica-west1"),
-//				Name:           pulumi.String("tf-test-edgesec_21197"),
+//				Name:           pulumi.String("tf-test-edgesec_52865"),
 //				SecurityPolicy: policyddosprotection.SelfLink,
 //			})
 //			if err != nil {

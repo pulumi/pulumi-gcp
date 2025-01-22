@@ -63,6 +63,27 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Discoveryengine Datastore Advanced Site Search Config
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const advancedSiteSearchConfig = new gcp.discoveryengine.DataStore("advanced_site_search_config", {
+ *     location: "global",
+ *     dataStoreId: "data-store-id",
+ *     displayName: "tf-test-advanced-site-search-config-datastore",
+ *     industryVertical: "GENERIC",
+ *     contentConfig: "PUBLIC_WEBSITE",
+ *     solutionTypes: ["SOLUTION_TYPE_CHAT"],
+ *     createAdvancedSiteSearch: true,
+ *     skipDefaultSchemaCreation: false,
+ *     advancedSiteSearchConfig: {
+ *         disableInitialIndex: true,
+ *         disableAutomaticRefresh: true,
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -116,6 +137,11 @@ export class DataStore extends pulumi.CustomResource {
         return obj['__pulumiType'] === DataStore.__pulumiType;
     }
 
+    /**
+     * Configuration data for advance site search.
+     * Structure is documented below.
+     */
+    public readonly advancedSiteSearchConfig!: pulumi.Output<outputs.discoveryengine.DataStoreAdvancedSiteSearchConfig | undefined>;
     /**
      * The content config of the data store.
      * Possible values are: `NO_CONTENT`, `CONTENT_REQUIRED`, `PUBLIC_WEBSITE`.
@@ -203,6 +229,7 @@ export class DataStore extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as DataStoreState | undefined;
+            resourceInputs["advancedSiteSearchConfig"] = state ? state.advancedSiteSearchConfig : undefined;
             resourceInputs["contentConfig"] = state ? state.contentConfig : undefined;
             resourceInputs["createAdvancedSiteSearch"] = state ? state.createAdvancedSiteSearch : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
@@ -233,6 +260,7 @@ export class DataStore extends pulumi.CustomResource {
             if ((!args || args.location === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'location'");
             }
+            resourceInputs["advancedSiteSearchConfig"] = args ? args.advancedSiteSearchConfig : undefined;
             resourceInputs["contentConfig"] = args ? args.contentConfig : undefined;
             resourceInputs["createAdvancedSiteSearch"] = args ? args.createAdvancedSiteSearch : undefined;
             resourceInputs["dataStoreId"] = args ? args.dataStoreId : undefined;
@@ -256,6 +284,11 @@ export class DataStore extends pulumi.CustomResource {
  * Input properties used for looking up and filtering DataStore resources.
  */
 export interface DataStoreState {
+    /**
+     * Configuration data for advance site search.
+     * Structure is documented below.
+     */
+    advancedSiteSearchConfig?: pulumi.Input<inputs.discoveryengine.DataStoreAdvancedSiteSearchConfig>;
     /**
      * The content config of the data store.
      * Possible values are: `NO_CONTENT`, `CONTENT_REQUIRED`, `PUBLIC_WEBSITE`.
@@ -335,6 +368,11 @@ export interface DataStoreState {
  * The set of arguments for constructing a DataStore resource.
  */
 export interface DataStoreArgs {
+    /**
+     * Configuration data for advance site search.
+     * Structure is documented below.
+     */
+    advancedSiteSearchConfig?: pulumi.Input<inputs.discoveryengine.DataStoreAdvancedSiteSearchConfig>;
     /**
      * The content config of the data store.
      * Possible values are: `NO_CONTENT`, `CONTENT_REQUIRED`, `PUBLIC_WEBSITE`.

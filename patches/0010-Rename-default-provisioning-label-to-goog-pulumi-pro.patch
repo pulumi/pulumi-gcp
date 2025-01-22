@@ -5,10 +5,10 @@ Subject: [PATCH] Rename default provisioning label to goog-pulumi-provisioned
 
 
 diff --git a/google-beta/transport/config.go b/google-beta/transport/config.go
-index b88e939d5..a98602771 100644
+index 87d27968d..2ae7e8f5f 100644
 --- a/google-beta/transport/config.go
 +++ b/google-beta/transport/config.go
-@@ -671,7 +671,7 @@ var DefaultClientScopes = []string{
+@@ -680,7 +680,7 @@ var DefaultClientScopes = []string{
  	"https://www.googleapis.com/auth/userinfo.email",
  }
  

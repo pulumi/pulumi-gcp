@@ -38,6 +38,12 @@ namespace Pulumi.Gcp.AccessContextManager
     public partial class ServicePerimeterDryRunEgressPolicy : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The name of the Access Policy this resource belongs to.
+        /// </summary>
+        [Output("accessPolicyId")]
+        public Output<string> AccessPolicyId { get; private set; } = null!;
+
+        /// <summary>
         /// Defines conditions on the source of a request causing this `EgressPolicy` to apply.
         /// Structure is documented below.
         /// </summary>
@@ -139,6 +145,12 @@ namespace Pulumi.Gcp.AccessContextManager
 
     public sealed class ServicePerimeterDryRunEgressPolicyState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The name of the Access Policy this resource belongs to.
+        /// </summary>
+        [Input("accessPolicyId")]
+        public Input<string>? AccessPolicyId { get; set; }
+
         /// <summary>
         /// Defines conditions on the source of a request causing this `EgressPolicy` to apply.
         /// Structure is documented below.

@@ -72,6 +72,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly clouddeployCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly clouddomainsCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly cloudfunctions2CustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly colabCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly composerCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly computeCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly containerAnalysisCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -153,6 +154,8 @@ export class Provider extends pulumi.ProviderResource {
     public readonly osConfigCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly osLoginCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly parallelstoreCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly parameterManagerCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly parameterManagerRegionalCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly privatecaCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly privilegedAccessManagerCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly project!: pulumi.Output<string | undefined>;
@@ -260,6 +263,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["clouddeployCustomEndpoint"] = args ? args.clouddeployCustomEndpoint : undefined;
             resourceInputs["clouddomainsCustomEndpoint"] = args ? args.clouddomainsCustomEndpoint : undefined;
             resourceInputs["cloudfunctions2CustomEndpoint"] = args ? args.cloudfunctions2CustomEndpoint : undefined;
+            resourceInputs["colabCustomEndpoint"] = args ? args.colabCustomEndpoint : undefined;
             resourceInputs["composerCustomEndpoint"] = args ? args.composerCustomEndpoint : undefined;
             resourceInputs["computeCustomEndpoint"] = args ? args.computeCustomEndpoint : undefined;
             resourceInputs["containerAnalysisCustomEndpoint"] = args ? args.containerAnalysisCustomEndpoint : undefined;
@@ -344,6 +348,8 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["osConfigCustomEndpoint"] = args ? args.osConfigCustomEndpoint : undefined;
             resourceInputs["osLoginCustomEndpoint"] = args ? args.osLoginCustomEndpoint : undefined;
             resourceInputs["parallelstoreCustomEndpoint"] = args ? args.parallelstoreCustomEndpoint : undefined;
+            resourceInputs["parameterManagerCustomEndpoint"] = args ? args.parameterManagerCustomEndpoint : undefined;
+            resourceInputs["parameterManagerRegionalCustomEndpoint"] = args ? args.parameterManagerRegionalCustomEndpoint : undefined;
             resourceInputs["privatecaCustomEndpoint"] = args ? args.privatecaCustomEndpoint : undefined;
             resourceInputs["privilegedAccessManagerCustomEndpoint"] = args ? args.privilegedAccessManagerCustomEndpoint : undefined;
             resourceInputs["project"] = (args ? args.project : undefined) ?? utilities.getEnv("GOOGLE_PROJECT", "GOOGLE_CLOUD_PROJECT", "GCLOUD_PROJECT", "CLOUDSDK_CORE_PROJECT");
@@ -453,6 +459,7 @@ export interface ProviderArgs {
     clouddeployCustomEndpoint?: pulumi.Input<string>;
     clouddomainsCustomEndpoint?: pulumi.Input<string>;
     cloudfunctions2CustomEndpoint?: pulumi.Input<string>;
+    colabCustomEndpoint?: pulumi.Input<string>;
     composerCustomEndpoint?: pulumi.Input<string>;
     computeCustomEndpoint?: pulumi.Input<string>;
     containerAnalysisCustomEndpoint?: pulumi.Input<string>;
@@ -537,6 +544,8 @@ export interface ProviderArgs {
     osConfigCustomEndpoint?: pulumi.Input<string>;
     osLoginCustomEndpoint?: pulumi.Input<string>;
     parallelstoreCustomEndpoint?: pulumi.Input<string>;
+    parameterManagerCustomEndpoint?: pulumi.Input<string>;
+    parameterManagerRegionalCustomEndpoint?: pulumi.Input<string>;
     privatecaCustomEndpoint?: pulumi.Input<string>;
     privilegedAccessManagerCustomEndpoint?: pulumi.Input<string>;
     project?: pulumi.Input<string>;

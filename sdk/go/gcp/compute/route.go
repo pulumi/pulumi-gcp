@@ -348,8 +348,7 @@ type Route struct {
 	// `nextHopInstance`.  Omit if `nextHopInstance` is specified as
 	// a URL.
 	NextHopInstanceZone pulumi.StringOutput `pulumi:"nextHopInstanceZone"`
-	// Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance,
-	// distance, and available bandwidth between regions.
+	// Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance, distance, and available bandwidth between regions.
 	NextHopInterRegionCost pulumi.StringOutput `pulumi:"nextHopInterRegionCost"`
 	// Network IP address of an instance that should handle matching packets.
 	NextHopIp pulumi.StringOutput `pulumi:"nextHopIp"`
@@ -357,8 +356,7 @@ type Route struct {
 	NextHopMed pulumi.StringOutput `pulumi:"nextHopMed"`
 	// URL to a Network that should handle matching packets.
 	NextHopNetwork pulumi.StringOutput `pulumi:"nextHopNetwork"`
-	// Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or
-	// INCOMPLETE.
+	// Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
 	NextHopOrigin pulumi.StringOutput `pulumi:"nextHopOrigin"`
 	// URL to a VpnTunnel that should handle matching packets.
 	NextHopVpnTunnel pulumi.StringPtrOutput `pulumi:"nextHopVpnTunnel"`
@@ -465,8 +463,7 @@ type routeState struct {
 	// `nextHopInstance`.  Omit if `nextHopInstance` is specified as
 	// a URL.
 	NextHopInstanceZone *string `pulumi:"nextHopInstanceZone"`
-	// Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance,
-	// distance, and available bandwidth between regions.
+	// Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance, distance, and available bandwidth between regions.
 	NextHopInterRegionCost *string `pulumi:"nextHopInterRegionCost"`
 	// Network IP address of an instance that should handle matching packets.
 	NextHopIp *string `pulumi:"nextHopIp"`
@@ -474,8 +471,7 @@ type routeState struct {
 	NextHopMed *string `pulumi:"nextHopMed"`
 	// URL to a Network that should handle matching packets.
 	NextHopNetwork *string `pulumi:"nextHopNetwork"`
-	// Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or
-	// INCOMPLETE.
+	// Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
 	NextHopOrigin *string `pulumi:"nextHopOrigin"`
 	// URL to a VpnTunnel that should handle matching packets.
 	NextHopVpnTunnel *string `pulumi:"nextHopVpnTunnel"`
@@ -547,8 +543,7 @@ type RouteState struct {
 	// `nextHopInstance`.  Omit if `nextHopInstance` is specified as
 	// a URL.
 	NextHopInstanceZone pulumi.StringPtrInput
-	// Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance,
-	// distance, and available bandwidth between regions.
+	// Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance, distance, and available bandwidth between regions.
 	NextHopInterRegionCost pulumi.StringPtrInput
 	// Network IP address of an instance that should handle matching packets.
 	NextHopIp pulumi.StringPtrInput
@@ -556,8 +551,7 @@ type RouteState struct {
 	NextHopMed pulumi.StringPtrInput
 	// URL to a Network that should handle matching packets.
 	NextHopNetwork pulumi.StringPtrInput
-	// Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or
-	// INCOMPLETE.
+	// Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
 	NextHopOrigin pulumi.StringPtrInput
 	// URL to a VpnTunnel that should handle matching packets.
 	NextHopVpnTunnel pulumi.StringPtrInput
@@ -884,8 +878,7 @@ func (o RouteOutput) NextHopInstanceZone() pulumi.StringOutput {
 	return o.ApplyT(func(v *Route) pulumi.StringOutput { return v.NextHopInstanceZone }).(pulumi.StringOutput)
 }
 
-// Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance,
-// distance, and available bandwidth between regions.
+// Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance, distance, and available bandwidth between regions.
 func (o RouteOutput) NextHopInterRegionCost() pulumi.StringOutput {
 	return o.ApplyT(func(v *Route) pulumi.StringOutput { return v.NextHopInterRegionCost }).(pulumi.StringOutput)
 }
@@ -905,8 +898,7 @@ func (o RouteOutput) NextHopNetwork() pulumi.StringOutput {
 	return o.ApplyT(func(v *Route) pulumi.StringOutput { return v.NextHopNetwork }).(pulumi.StringOutput)
 }
 
-// Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or
-// INCOMPLETE.
+// Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
 func (o RouteOutput) NextHopOrigin() pulumi.StringOutput {
 	return o.ApplyT(func(v *Route) pulumi.StringOutput { return v.NextHopOrigin }).(pulumi.StringOutput)
 }

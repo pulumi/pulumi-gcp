@@ -227,14 +227,14 @@ public final class InstanceTemplateNetworkInterfaceArgs extends com.pulumi.resou
     }
 
     /**
-     * The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6 or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
+     * The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6, IPV6_ONLY or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
      * 
      */
     @Import(name="stackType")
     private @Nullable Output<String> stackType;
 
     /**
-     * @return The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6 or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
+     * @return The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6, IPV6_ONLY or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
      * 
      */
     public Optional<Output<String>> stackType() {
@@ -633,7 +633,7 @@ public final class InstanceTemplateNetworkInterfaceArgs extends com.pulumi.resou
         }
 
         /**
-         * @param stackType The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6 or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
+         * @param stackType The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6, IPV6_ONLY or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
          * 
          * @return builder
          * 
@@ -644,7 +644,7 @@ public final class InstanceTemplateNetworkInterfaceArgs extends com.pulumi.resou
         }
 
         /**
-         * @param stackType The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6 or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
+         * @param stackType The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6, IPV6_ONLY or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
          * 
          * @return builder
          * 

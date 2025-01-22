@@ -965,7 +965,7 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
     /**
      * The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
      * If not specified IPV4_ONLY will be used.
-     * Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+     * Possible values are: `IPV4_ONLY`, `IPV4_IPV6`, `IPV6_ONLY`.
      * 
      */
     @Export(name="stackType", refs={String.class}, tree="[0]")
@@ -974,7 +974,7 @@ public class Subnetwork extends com.pulumi.resources.CustomResource {
     /**
      * @return The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
      * If not specified IPV4_ONLY will be used.
-     * Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+     * Possible values are: `IPV4_ONLY`, `IPV4_IPV6`, `IPV6_ONLY`.
      * 
      */
     public Output<String> stackType() {

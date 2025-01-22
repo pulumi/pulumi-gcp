@@ -143,6 +143,8 @@ type AccessLevelCondition struct {
 	//
 	// ***
 	AccessLevel pulumi.StringOutput `pulumi:"accessLevel"`
+	// The name of the Access Policy this resource belongs to.
+	AccessPolicyId pulumi.StringOutput `pulumi:"accessPolicyId"`
 	// Device specific restrictions, all restrictions must hold for
 	// the Condition to be true. If not specified, all devices are
 	// allowed.
@@ -223,6 +225,8 @@ type accessLevelConditionState struct {
 	//
 	// ***
 	AccessLevel *string `pulumi:"accessLevel"`
+	// The name of the Access Policy this resource belongs to.
+	AccessPolicyId *string `pulumi:"accessPolicyId"`
 	// Device specific restrictions, all restrictions must hold for
 	// the Condition to be true. If not specified, all devices are
 	// allowed.
@@ -271,6 +275,8 @@ type AccessLevelConditionState struct {
 	//
 	// ***
 	AccessLevel pulumi.StringPtrInput
+	// The name of the Access Policy this resource belongs to.
+	AccessPolicyId pulumi.StringPtrInput
 	// Device specific restrictions, all restrictions must hold for
 	// the Condition to be true. If not specified, all devices are
 	// allowed.
@@ -507,6 +513,11 @@ func (o AccessLevelConditionOutput) ToAccessLevelConditionOutputWithContext(ctx 
 // ***
 func (o AccessLevelConditionOutput) AccessLevel() pulumi.StringOutput {
 	return o.ApplyT(func(v *AccessLevelCondition) pulumi.StringOutput { return v.AccessLevel }).(pulumi.StringOutput)
+}
+
+// The name of the Access Policy this resource belongs to.
+func (o AccessLevelConditionOutput) AccessPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *AccessLevelCondition) pulumi.StringOutput { return v.AccessPolicyId }).(pulumi.StringOutput)
 }
 
 // Device specific restrictions, all restrictions must hold for

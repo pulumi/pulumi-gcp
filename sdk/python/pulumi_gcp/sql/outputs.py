@@ -19,6 +19,7 @@ __all__ = [
     'DatabaseInstanceClone',
     'DatabaseInstanceIpAddress',
     'DatabaseInstanceReplicaConfiguration',
+    'DatabaseInstanceReplicationCluster',
     'DatabaseInstanceRestoreBackupContext',
     'DatabaseInstanceServerCaCert',
     'DatabaseInstanceSettings',
@@ -45,6 +46,7 @@ __all__ = [
     'GetDatabaseInstanceCloneResult',
     'GetDatabaseInstanceIpAddressResult',
     'GetDatabaseInstanceReplicaConfigurationResult',
+    'GetDatabaseInstanceReplicationClusterResult',
     'GetDatabaseInstanceRestoreBackupContextResult',
     'GetDatabaseInstanceServerCaCertResult',
     'GetDatabaseInstanceSettingResult',
@@ -68,6 +70,7 @@ __all__ = [
     'GetDatabaseInstancesInstanceCloneResult',
     'GetDatabaseInstancesInstanceIpAddressResult',
     'GetDatabaseInstancesInstanceReplicaConfigurationResult',
+    'GetDatabaseInstancesInstanceReplicationClusterResult',
     'GetDatabaseInstancesInstanceRestoreBackupContextResult',
     'GetDatabaseInstancesInstanceServerCaCertResult',
     'GetDatabaseInstancesInstanceSettingResult',
@@ -462,6 +465,56 @@ class DatabaseInstanceReplicaConfiguration(dict):
         value is checked during the SSL handshake.
         """
         return pulumi.get(self, "verify_server_certificate")
+
+
+@pulumi.output_type
+class DatabaseInstanceReplicationCluster(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "drReplica":
+            suggest = "dr_replica"
+        elif key == "failoverDrReplicaName":
+            suggest = "failover_dr_replica_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DatabaseInstanceReplicationCluster. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DatabaseInstanceReplicationCluster.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DatabaseInstanceReplicationCluster.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 dr_replica: Optional[bool] = None,
+                 failover_dr_replica_name: Optional[str] = None):
+        """
+        :param bool dr_replica: Read-only field that indicates whether the replica is a DR replica.
+        :param str failover_dr_replica_name: If the instance is a primary instance, then this field identifies the disaster recovery (DR) replica. The standard format of this field is "your-project:your-instance". You can also set this field to "your-instance", but cloud SQL backend will convert it to the aforementioned standard format.
+        """
+        if dr_replica is not None:
+            pulumi.set(__self__, "dr_replica", dr_replica)
+        if failover_dr_replica_name is not None:
+            pulumi.set(__self__, "failover_dr_replica_name", failover_dr_replica_name)
+
+    @property
+    @pulumi.getter(name="drReplica")
+    def dr_replica(self) -> Optional[bool]:
+        """
+        Read-only field that indicates whether the replica is a DR replica.
+        """
+        return pulumi.get(self, "dr_replica")
+
+    @property
+    @pulumi.getter(name="failoverDrReplicaName")
+    def failover_dr_replica_name(self) -> Optional[str]:
+        """
+        If the instance is a primary instance, then this field identifies the disaster recovery (DR) replica. The standard format of this field is "your-project:your-instance". You can also set this field to "your-instance", but cloud SQL backend will convert it to the aforementioned standard format.
+        """
+        return pulumi.get(self, "failover_dr_replica_name")
 
 
 @pulumi.output_type
@@ -2558,6 +2611,35 @@ class GetDatabaseInstanceReplicaConfigurationResult(dict):
 
 
 @pulumi.output_type
+class GetDatabaseInstanceReplicationClusterResult(dict):
+    def __init__(__self__, *,
+                 dr_replica: bool,
+                 failover_dr_replica_name: str):
+        """
+        :param bool dr_replica: Read-only field that indicates whether the replica is a DR replica.
+        :param str failover_dr_replica_name: If the instance is a primary instance, then this field identifies the disaster recovery (DR) replica. The standard format of this field is "your-project:your-instance". You can also set this field to "your-instance", but cloud SQL backend will convert it to the aforementioned standard format.
+        """
+        pulumi.set(__self__, "dr_replica", dr_replica)
+        pulumi.set(__self__, "failover_dr_replica_name", failover_dr_replica_name)
+
+    @property
+    @pulumi.getter(name="drReplica")
+    def dr_replica(self) -> bool:
+        """
+        Read-only field that indicates whether the replica is a DR replica.
+        """
+        return pulumi.get(self, "dr_replica")
+
+    @property
+    @pulumi.getter(name="failoverDrReplicaName")
+    def failover_dr_replica_name(self) -> str:
+        """
+        If the instance is a primary instance, then this field identifies the disaster recovery (DR) replica. The standard format of this field is "your-project:your-instance". You can also set this field to "your-instance", but cloud SQL backend will convert it to the aforementioned standard format.
+        """
+        return pulumi.get(self, "failover_dr_replica_name")
+
+
+@pulumi.output_type
 class GetDatabaseInstanceRestoreBackupContextResult(dict):
     def __init__(__self__, *,
                  backup_run_id: int,
@@ -3672,6 +3754,7 @@ class GetDatabaseInstancesInstanceResult(dict):
                  region: str,
                  replica_configurations: Sequence['outputs.GetDatabaseInstancesInstanceReplicaConfigurationResult'],
                  replica_names: Sequence[str],
+                 replication_clusters: Sequence['outputs.GetDatabaseInstancesInstanceReplicationClusterResult'],
                  restore_backup_contexts: Sequence['outputs.GetDatabaseInstancesInstanceRestoreBackupContextResult'],
                  root_password: str,
                  self_link: str,
@@ -3692,6 +3775,7 @@ class GetDatabaseInstancesInstanceResult(dict):
         :param str region: To filter out the Cloud SQL instances which are located in the specified region.
         :param Sequence['GetDatabaseInstancesInstanceReplicaConfigurationArgs'] replica_configurations: The configuration for replication.
         :param Sequence[str] replica_names: The replicas of the instance.
+        :param Sequence['GetDatabaseInstancesInstanceReplicationClusterArgs'] replication_clusters: A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only after both the primary and replica are created.
         :param str root_password: Initial root password. Required for MS SQL Server.
         :param str self_link: The URI of the created resource.
         :param str service_account_email_address: The service account email address assigned to the instance.
@@ -3717,6 +3801,7 @@ class GetDatabaseInstancesInstanceResult(dict):
         pulumi.set(__self__, "region", region)
         pulumi.set(__self__, "replica_configurations", replica_configurations)
         pulumi.set(__self__, "replica_names", replica_names)
+        pulumi.set(__self__, "replication_clusters", replication_clusters)
         pulumi.set(__self__, "restore_backup_contexts", restore_backup_contexts)
         pulumi.set(__self__, "root_password", root_password)
         pulumi.set(__self__, "self_link", self_link)
@@ -3862,6 +3947,14 @@ class GetDatabaseInstancesInstanceResult(dict):
         The replicas of the instance.
         """
         return pulumi.get(self, "replica_names")
+
+    @property
+    @pulumi.getter(name="replicationClusters")
+    def replication_clusters(self) -> Sequence['outputs.GetDatabaseInstancesInstanceReplicationClusterResult']:
+        """
+        A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only after both the primary and replica are created.
+        """
+        return pulumi.get(self, "replication_clusters")
 
     @property
     @pulumi.getter(name="restoreBackupContexts")
@@ -4131,6 +4224,35 @@ class GetDatabaseInstancesInstanceReplicaConfigurationResult(dict):
         True if the master's common name value is checked during the SSL handshake.
         """
         return pulumi.get(self, "verify_server_certificate")
+
+
+@pulumi.output_type
+class GetDatabaseInstancesInstanceReplicationClusterResult(dict):
+    def __init__(__self__, *,
+                 dr_replica: bool,
+                 failover_dr_replica_name: str):
+        """
+        :param bool dr_replica: Read-only field that indicates whether the replica is a DR replica.
+        :param str failover_dr_replica_name: If the instance is a primary instance, then this field identifies the disaster recovery (DR) replica. The standard format of this field is "your-project:your-instance". You can also set this field to "your-instance", but cloud SQL backend will convert it to the aforementioned standard format.
+        """
+        pulumi.set(__self__, "dr_replica", dr_replica)
+        pulumi.set(__self__, "failover_dr_replica_name", failover_dr_replica_name)
+
+    @property
+    @pulumi.getter(name="drReplica")
+    def dr_replica(self) -> bool:
+        """
+        Read-only field that indicates whether the replica is a DR replica.
+        """
+        return pulumi.get(self, "dr_replica")
+
+    @property
+    @pulumi.getter(name="failoverDrReplicaName")
+    def failover_dr_replica_name(self) -> str:
+        """
+        If the instance is a primary instance, then this field identifies the disaster recovery (DR) replica. The standard format of this field is "your-project:your-instance". You can also set this field to "your-instance", but cloud SQL backend will convert it to the aforementioned standard format.
+        """
+        return pulumi.get(self, "failover_dr_replica_name")
 
 
 @pulumi.output_type

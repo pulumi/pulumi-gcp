@@ -16,6 +16,21 @@ public final class IngressPolicyState extends com.pulumi.resources.ResourceArgs 
     public static final IngressPolicyState Empty = new IngressPolicyState();
 
     /**
+     * The name of the Access Policy this resource belongs to.
+     * 
+     */
+    @Import(name="accessPolicyId")
+    private @Nullable Output<String> accessPolicyId;
+
+    /**
+     * @return The name of the Access Policy this resource belongs to.
+     * 
+     */
+    public Optional<Output<String>> accessPolicyId() {
+        return Optional.ofNullable(this.accessPolicyId);
+    }
+
+    /**
      * The name of the Service Perimeter to add this resource to.
      * 
      * ***
@@ -52,6 +67,7 @@ public final class IngressPolicyState extends com.pulumi.resources.ResourceArgs 
     private IngressPolicyState() {}
 
     private IngressPolicyState(IngressPolicyState $) {
+        this.accessPolicyId = $.accessPolicyId;
         this.ingressPolicyName = $.ingressPolicyName;
         this.resource = $.resource;
     }
@@ -72,6 +88,27 @@ public final class IngressPolicyState extends com.pulumi.resources.ResourceArgs 
 
         public Builder(IngressPolicyState defaults) {
             $ = new IngressPolicyState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param accessPolicyId The name of the Access Policy this resource belongs to.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accessPolicyId(@Nullable Output<String> accessPolicyId) {
+            $.accessPolicyId = accessPolicyId;
+            return this;
+        }
+
+        /**
+         * @param accessPolicyId The name of the Access Policy this resource belongs to.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accessPolicyId(String accessPolicyId) {
+            return accessPolicyId(Output.of(accessPolicyId));
         }
 
         /**

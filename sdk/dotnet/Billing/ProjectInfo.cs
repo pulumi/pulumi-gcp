@@ -32,8 +32,8 @@ namespace Pulumi.Gcp.Billing
     /// {
     ///     var project = new Gcp.Organizations.Project("project", new()
     ///     {
-    ///         ProjectId = "tf-test_81126",
-    ///         Name = "tf-test_88717",
+    ///         ProjectId = "tf-test_88717",
+    ///         Name = "tf-test_85794",
     ///         OrgId = "123456789",
     ///         DeletionPolicy = "DELETE",
     ///     });

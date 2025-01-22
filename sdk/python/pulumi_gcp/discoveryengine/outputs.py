@@ -20,6 +20,7 @@ __all__ = [
     'ChatEngineChatEngineConfigAgentCreationConfig',
     'ChatEngineChatEngineMetadata',
     'ChatEngineCommonConfig',
+    'DataStoreAdvancedSiteSearchConfig',
     'DataStoreDocumentProcessingConfig',
     'DataStoreDocumentProcessingConfigChunkingConfig',
     'DataStoreDocumentProcessingConfigChunkingConfigLayoutBasedChunkingConfig',
@@ -242,6 +243,56 @@ class ChatEngineCommonConfig(dict):
         The name of the company, business or entity that is associated with the engine. Setting this may help improve LLM related features.
         """
         return pulumi.get(self, "company_name")
+
+
+@pulumi.output_type
+class DataStoreAdvancedSiteSearchConfig(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "disableAutomaticRefresh":
+            suggest = "disable_automatic_refresh"
+        elif key == "disableInitialIndex":
+            suggest = "disable_initial_index"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in DataStoreAdvancedSiteSearchConfig. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        DataStoreAdvancedSiteSearchConfig.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        DataStoreAdvancedSiteSearchConfig.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 disable_automatic_refresh: Optional[bool] = None,
+                 disable_initial_index: Optional[bool] = None):
+        """
+        :param bool disable_automatic_refresh: If set true, automatic refresh is disabled for the DataStore.
+        :param bool disable_initial_index: If set true, initial indexing is disabled for the DataStore.
+        """
+        if disable_automatic_refresh is not None:
+            pulumi.set(__self__, "disable_automatic_refresh", disable_automatic_refresh)
+        if disable_initial_index is not None:
+            pulumi.set(__self__, "disable_initial_index", disable_initial_index)
+
+    @property
+    @pulumi.getter(name="disableAutomaticRefresh")
+    def disable_automatic_refresh(self) -> Optional[bool]:
+        """
+        If set true, automatic refresh is disabled for the DataStore.
+        """
+        return pulumi.get(self, "disable_automatic_refresh")
+
+    @property
+    @pulumi.getter(name="disableInitialIndex")
+    def disable_initial_index(self) -> Optional[bool]:
+        """
+        If set true, initial indexing is disabled for the DataStore.
+        """
+        return pulumi.get(self, "disable_initial_index")
 
 
 @pulumi.output_type

@@ -10,6 +10,7 @@ import com.pulumi.core.internal.Codegen;
 import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.discoveryengine.DataStoreArgs;
 import com.pulumi.gcp.discoveryengine.inputs.DataStoreState;
+import com.pulumi.gcp.discoveryengine.outputs.DataStoreAdvancedSiteSearchConfig;
 import com.pulumi.gcp.discoveryengine.outputs.DataStoreDocumentProcessingConfig;
 import java.lang.Boolean;
 import java.lang.String;
@@ -125,6 +126,52 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Discoveryengine Datastore Advanced Site Search Config
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.discoveryengine.DataStore;
+ * import com.pulumi.gcp.discoveryengine.DataStoreArgs;
+ * import com.pulumi.gcp.discoveryengine.inputs.DataStoreAdvancedSiteSearchConfigArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var advancedSiteSearchConfig = new DataStore("advancedSiteSearchConfig", DataStoreArgs.builder()
+ *             .location("global")
+ *             .dataStoreId("data-store-id")
+ *             .displayName("tf-test-advanced-site-search-config-datastore")
+ *             .industryVertical("GENERIC")
+ *             .contentConfig("PUBLIC_WEBSITE")
+ *             .solutionTypes("SOLUTION_TYPE_CHAT")
+ *             .createAdvancedSiteSearch(true)
+ *             .skipDefaultSchemaCreation(false)
+ *             .advancedSiteSearchConfig(DataStoreAdvancedSiteSearchConfigArgs.builder()
+ *                 .disableInitialIndex(true)
+ *                 .disableAutomaticRefresh(true)
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -153,6 +200,22 @@ import javax.annotation.Nullable;
  */
 @ResourceType(type="gcp:discoveryengine/dataStore:DataStore")
 public class DataStore extends com.pulumi.resources.CustomResource {
+    /**
+     * Configuration data for advance site search.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="advancedSiteSearchConfig", refs={DataStoreAdvancedSiteSearchConfig.class}, tree="[0]")
+    private Output</* @Nullable */ DataStoreAdvancedSiteSearchConfig> advancedSiteSearchConfig;
+
+    /**
+     * @return Configuration data for advance site search.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<DataStoreAdvancedSiteSearchConfig>> advancedSiteSearchConfig() {
+        return Codegen.optional(this.advancedSiteSearchConfig);
+    }
     /**
      * The content config of the data store.
      * Possible values are: `NO_CONTENT`, `CONTENT_REQUIRED`, `PUBLIC_WEBSITE`.

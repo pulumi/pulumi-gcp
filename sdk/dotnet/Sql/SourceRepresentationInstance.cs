@@ -113,8 +113,7 @@ namespace Pulumi.Gcp.Sql
         public Output<string?> ClientKey { get; private set; } = null!;
 
         /// <summary>
-        /// The MySQL version running on your source database server.
-        /// Possible values are: `MYSQL_5_6`, `MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`, `POSTGRES_10`, `POSTGRES_11`, `POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`.
+        /// The MySQL, PostgreSQL or SQL Server (beta) version to use. Supported values include MYSQL_5_6, MYSQL_5_7, MYSQL_8_0, MYSQL_8_4, POSTGRES_9_6, POSTGRES_10, POSTGRES_11, POSTGRES_12, POSTGRES_13, POSTGRES_14, POSTGRES_15, POSTGRES_16, POSTGRES_17. Database Version Policies includes an up-to-date reference of supported versions.
         /// </summary>
         [Output("databaseVersion")]
         public Output<string> DatabaseVersion { get; private set; } = null!;
@@ -243,8 +242,7 @@ namespace Pulumi.Gcp.Sql
         public Input<string>? ClientKey { get; set; }
 
         /// <summary>
-        /// The MySQL version running on your source database server.
-        /// Possible values are: `MYSQL_5_6`, `MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`, `POSTGRES_10`, `POSTGRES_11`, `POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`.
+        /// The MySQL, PostgreSQL or SQL Server (beta) version to use. Supported values include MYSQL_5_6, MYSQL_5_7, MYSQL_8_0, MYSQL_8_4, POSTGRES_9_6, POSTGRES_10, POSTGRES_11, POSTGRES_12, POSTGRES_13, POSTGRES_14, POSTGRES_15, POSTGRES_16, POSTGRES_17. Database Version Policies includes an up-to-date reference of supported versions.
         /// </summary>
         [Input("databaseVersion", required: true)]
         public Input<string> DatabaseVersion { get; set; } = null!;
@@ -341,8 +339,7 @@ namespace Pulumi.Gcp.Sql
         public Input<string>? ClientKey { get; set; }
 
         /// <summary>
-        /// The MySQL version running on your source database server.
-        /// Possible values are: `MYSQL_5_6`, `MYSQL_5_7`, `MYSQL_8_0`, `POSTGRES_9_6`, `POSTGRES_10`, `POSTGRES_11`, `POSTGRES_12`, `POSTGRES_13`, `POSTGRES_14`.
+        /// The MySQL, PostgreSQL or SQL Server (beta) version to use. Supported values include MYSQL_5_6, MYSQL_5_7, MYSQL_8_0, MYSQL_8_4, POSTGRES_9_6, POSTGRES_10, POSTGRES_11, POSTGRES_12, POSTGRES_13, POSTGRES_14, POSTGRES_15, POSTGRES_16, POSTGRES_17. Database Version Policies includes an up-to-date reference of supported versions.
         /// </summary>
         [Input("databaseVersion")]
         public Input<string>? DatabaseVersion { get; set; }

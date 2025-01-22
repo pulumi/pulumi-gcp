@@ -32,12 +32,12 @@ namespace Pulumi.Gcp.GkeHub
     /// {
     ///     var scope = new Gcp.GkeHub.Scope("scope", new()
     ///     {
-    ///         ScopeId = "tf-test-scope_34535",
+    ///         ScopeId = "tf-test-scope_22375",
     ///     });
     /// 
     ///     var @namespace = new Gcp.GkeHub.Namespace("namespace", new()
     ///     {
-    ///         ScopeNamespaceId = "tf-test-namespace_22375",
+    ///         ScopeNamespaceId = "tf-test-namespace_29439",
     ///         ScopeId = scope.ScopeId,
     ///         Scope = scope.Name,
     ///         NamespaceLabels = 

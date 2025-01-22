@@ -11544,6 +11544,91 @@ export namespace chronicle {
         ingestionLabelValue?: string;
     }
 
+    export interface ReferenceListEntry {
+        /**
+         * Required. The value of the entry. Maximum length is 512 characters.
+         *
+         * - - -
+         */
+        value: string;
+    }
+
+    export interface ReferenceListScopeInfo {
+        /**
+         * ReferenceListScope specifies the list of scope names of the reference list.
+         * Structure is documented below.
+         */
+        referenceListScope: outputs.chronicle.ReferenceListScopeInfoReferenceListScope;
+    }
+
+    export interface ReferenceListScopeInfoReferenceListScope {
+        /**
+         * Optional. The list of scope names of the reference list. The scope names should be
+         * full resource names and should be of the format:
+         * "projects/{project}/locations/{location}/instances/{instance}/dataAccessScopes/{scope_name}".
+         */
+        scopeNames?: string[];
+    }
+
+    export interface RuleCompilationDiagnostic {
+        /**
+         * (Output)
+         * Output only. The diagnostic message.
+         */
+        message: string;
+        /**
+         * CompilationPosition represents the location of a compilation diagnostic in
+         * rule text.
+         * Structure is documented below.
+         */
+        position?: outputs.chronicle.RuleCompilationDiagnosticPosition;
+        /**
+         * (Output)
+         * Output only. The severity of a rule's compilation diagnostic.
+         * Possible values:
+         * SEVERITY_UNSPECIFIED
+         * WARNING
+         * ERROR
+         */
+        severity: string;
+        /**
+         * (Output)
+         * Output only. Link to documentation that describes a diagnostic in more detail.
+         */
+        uri: string;
+    }
+
+    export interface RuleCompilationDiagnosticPosition {
+        /**
+         * (Output)
+         * Output only. End column number, beginning at 1.
+         */
+        endColumn: number;
+        /**
+         * (Output)
+         * Output only. End line number, beginning at 1.
+         */
+        endLine: number;
+        /**
+         * (Output)
+         * Output only. Start column number, beginning at 1.
+         */
+        startColumn: number;
+        /**
+         * (Output)
+         * Output only. Start line number, beginning at 1.
+         */
+        startLine: number;
+    }
+
+    export interface RuleSeverity {
+        /**
+         * The display name of the severity level. Extracted from the meta section of
+         * the rule text.
+         */
+        displayName?: string;
+    }
+
     export interface WatchlistEntityCount {
         /**
          * (Output)
@@ -20610,6 +20695,78 @@ export namespace cloudtasks {
          * default and means that no operations are logged.
          */
         samplingRatio: number;
+    }
+
+}
+
+export namespace colab {
+    export interface RuntimeTemplateDataPersistentDiskSpec {
+        /**
+         * The disk size of the runtime in GB. If specified, the diskType must also be specified. The minimum size is 10GB and the maximum is 65536GB.
+         */
+        diskSizeGb: string;
+        /**
+         * The type of the persistent disk.
+         */
+        diskType: string;
+    }
+
+    export interface RuntimeTemplateEncryptionSpec {
+        /**
+         * The Cloud KMS encryption key (customer-managed encryption key) used to protect the runtime.
+         */
+        kmsKeyName?: string;
+    }
+
+    export interface RuntimeTemplateEucConfig {
+        /**
+         * Disable end user credential access for the runtime.
+         */
+        eucDisabled?: boolean;
+    }
+
+    export interface RuntimeTemplateIdleShutdownConfig {
+        /**
+         * The duration after which the runtime is automatically shut down. An input of 0s disables the idle shutdown feature, and a valid range is [10m, 24h].
+         */
+        idleTimeout: string;
+    }
+
+    export interface RuntimeTemplateMachineSpec {
+        /**
+         * The number of accelerators used by the runtime.
+         */
+        acceleratorCount: number;
+        /**
+         * The type of hardware accelerator used by the runtime. If specified, acceleratorCount must also be specified.
+         */
+        acceleratorType?: string;
+        /**
+         * The Compute Engine machine type selected for the runtime.
+         */
+        machineType: string;
+    }
+
+    export interface RuntimeTemplateNetworkSpec {
+        /**
+         * Enable public internet access for the runtime.
+         */
+        enableInternetAccess?: boolean;
+        /**
+         * The name of the VPC that this runtime is in.
+         */
+        network: string;
+        /**
+         * The name of the subnetwork that this runtime is in.
+         */
+        subnetwork?: string;
+    }
+
+    export interface RuntimeTemplateShieldedVmConfig {
+        /**
+         * Enables secure boot for the runtime.
+         */
+        enableSecureBoot?: boolean;
     }
 
 }
@@ -29999,7 +30156,7 @@ export namespace compute {
          */
         securityPolicy?: string;
         /**
-         * The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6 or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
+         * The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6, IPV6_ONLY or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
          */
         stackType: string;
         /**
@@ -30578,7 +30735,7 @@ export namespace compute {
          */
         queueCount?: number;
         /**
-         * The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6 or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
+         * The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6, IPV6_ONLY or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
          */
         stackType: string;
         /**
@@ -33688,7 +33845,7 @@ export namespace compute {
          * Currently, only one IPv6 access config, DIRECT_IPV6, is supported. If there is no ipv6AccessConfig
          * specified, then this instance will have no external IPv6 Internet access. Structure documented below.
          */
-        ipv6AccessConfigs?: outputs.compute.RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig[];
+        ipv6AccessConfigs: outputs.compute.RegionInstanceTemplateNetworkInterfaceIpv6AccessConfig[];
         /**
          * One of EXTERNAL, INTERNAL to indicate whether the IP can be accessed from the Internet. This field is always inherited from its subnetwork.
          */
@@ -33721,7 +33878,7 @@ export namespace compute {
          */
         queueCount?: number;
         /**
-         * The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6 or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
+         * The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6, IPV6_ONLY or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
          */
         stackType: string;
         /**
@@ -62851,6 +63008,17 @@ export namespace discoveryengine {
         companyName?: string;
     }
 
+    export interface DataStoreAdvancedSiteSearchConfig {
+        /**
+         * If set true, automatic refresh is disabled for the DataStore.
+         */
+        disableAutomaticRefresh?: boolean;
+        /**
+         * If set true, initial indexing is disabled for the DataStore.
+         */
+        disableInitialIndex?: boolean;
+    }
+
     export interface DataStoreDocumentProcessingConfig {
         /**
          * Whether chunking mode is enabled.
@@ -85133,6 +85301,62 @@ export namespace osconfig {
 
 }
 
+export namespace parametermanager {
+    export interface GetRegionalParameterPolicyMember {
+        /**
+         * IAM policy binding member referring to a Google Cloud resource by user-assigned name. If a resource is
+         * deleted and recreated with the same name, the binding will be applicable to the new resource. Format:
+         * 'principal://parametermanager.googleapis.com/projects/{{project}}/name/locations/{{location}}/parameters/{{parameter_id}}'
+         */
+        iamPolicyNamePrincipal: string;
+        /**
+         * IAM policy binding member referring to a Google Cloud resource by system-assigned unique identifier. If
+         * a resource is deleted and recreated with the same name, the binding will not be applicable to the new
+         * resource. Format:
+         * 'principal://parametermanager.googleapis.com/projects/{{project}}/uid/locations/{{location}}/parameters/{{uid}}'
+         */
+        iamPolicyUidPrincipal: string;
+    }
+
+    export interface ParameterPolicyMember {
+        /**
+         * (Output)
+         * IAM policy binding member referring to a Google Cloud resource by user-assigned name. If a
+         * resource is deleted and recreated with the same name, the binding will be applicable to the
+         * new resource. Format:
+         * `principal://parametermanager.googleapis.com/projects/{{project}}/name/locations/global/parameters/{{parameter_id}}`
+         */
+        iamPolicyNamePrincipal: string;
+        /**
+         * (Output)
+         * IAM policy binding member referring to a Google Cloud resource by system-assigned unique identifier.
+         * If a resource is deleted and recreated with the same name, the binding will not be applicable to the
+         * new resource. Format:
+         * `principal://parametermanager.googleapis.com/projects/{{project}}/uid/locations/global/parameters/{{uid}}`
+         */
+        iamPolicyUidPrincipal: string;
+    }
+
+    export interface RegionalParameterPolicyMember {
+        /**
+         * (Output)
+         * IAM policy binding member referring to a Google Cloud resource by user-assigned name. If a resource is
+         * deleted and recreated with the same name, the binding will be applicable to the new resource. Format:
+         * `principal://parametermanager.googleapis.com/projects/{{project}}/name/locations/{{location}}/parameters/{{parameter_id}}`
+         */
+        iamPolicyNamePrincipal: string;
+        /**
+         * (Output)
+         * IAM policy binding member referring to a Google Cloud resource by system-assigned unique identifier. If
+         * a resource is deleted and recreated with the same name, the binding will not be applicable to the new
+         * resource. Format:
+         * `principal://parametermanager.googleapis.com/projects/{{project}}/uid/locations/{{location}}/parameters/{{uid}}`
+         */
+        iamPolicyUidPrincipal: string;
+    }
+
+}
+
 export namespace privilegedaccessmanager {
     export interface EntitlementAdditionalNotificationTargets {
         /**
@@ -89735,6 +89959,17 @@ export namespace sql {
         verifyServerCertificate?: boolean;
     }
 
+    export interface DatabaseInstanceReplicationCluster {
+        /**
+         * Read-only field that indicates whether the replica is a DR replica.
+         */
+        drReplica: boolean;
+        /**
+         * If the instance is a primary instance, then this field identifies the disaster recovery (DR) replica. The standard format of this field is "your-project:your-instance". You can also set this field to "your-instance", but cloud SQL backend will convert it to the aforementioned standard format.
+         */
+        failoverDrReplicaName?: string;
+    }
+
     export interface DatabaseInstanceRestoreBackupContext {
         /**
          * The ID of the backup run to restore from.
@@ -90254,6 +90489,17 @@ export namespace sql {
         verifyServerCertificate: boolean;
     }
 
+    export interface GetDatabaseInstanceReplicationCluster {
+        /**
+         * Read-only field that indicates whether the replica is a DR replica.
+         */
+        drReplica: boolean;
+        /**
+         * If the instance is a primary instance, then this field identifies the disaster recovery (DR) replica. The standard format of this field is "your-project:your-instance". You can also set this field to "your-instance", but cloud SQL backend will convert it to the aforementioned standard format.
+         */
+        failoverDrReplicaName: string;
+    }
+
     export interface GetDatabaseInstanceRestoreBackupContext {
         /**
          * The ID of the backup run to restore from.
@@ -90701,6 +90947,10 @@ export namespace sql {
          * The replicas of the instance.
          */
         replicaNames: string[];
+        /**
+         * A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only after both the primary and replica are created.
+         */
+        replicationClusters: outputs.sql.GetDatabaseInstancesInstanceReplicationCluster[];
         restoreBackupContexts: outputs.sql.GetDatabaseInstancesInstanceRestoreBackupContext[];
         /**
          * Initial root password. Required for MS SQL Server.
@@ -90799,6 +91049,17 @@ export namespace sql {
          * True if the master's common name value is checked during the SSL handshake.
          */
         verifyServerCertificate: boolean;
+    }
+
+    export interface GetDatabaseInstancesInstanceReplicationCluster {
+        /**
+         * Read-only field that indicates whether the replica is a DR replica.
+         */
+        drReplica: boolean;
+        /**
+         * If the instance is a primary instance, then this field identifies the disaster recovery (DR) replica. The standard format of this field is "your-project:your-instance". You can also set this field to "your-instance", but cloud SQL backend will convert it to the aforementioned standard format.
+         */
+        failoverDrReplicaName: string;
     }
 
     export interface GetDatabaseInstancesInstanceRestoreBackupContext {

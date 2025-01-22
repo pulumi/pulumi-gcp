@@ -18,6 +18,21 @@ public final class ServicePerimeterDryRunEgressPolicyState extends com.pulumi.re
     public static final ServicePerimeterDryRunEgressPolicyState Empty = new ServicePerimeterDryRunEgressPolicyState();
 
     /**
+     * The name of the Access Policy this resource belongs to.
+     * 
+     */
+    @Import(name="accessPolicyId")
+    private @Nullable Output<String> accessPolicyId;
+
+    /**
+     * @return The name of the Access Policy this resource belongs to.
+     * 
+     */
+    public Optional<Output<String>> accessPolicyId() {
+        return Optional.ofNullable(this.accessPolicyId);
+    }
+
+    /**
      * Defines conditions on the source of a request causing this `EgressPolicy` to apply.
      * Structure is documented below.
      * 
@@ -75,6 +90,7 @@ public final class ServicePerimeterDryRunEgressPolicyState extends com.pulumi.re
     private ServicePerimeterDryRunEgressPolicyState() {}
 
     private ServicePerimeterDryRunEgressPolicyState(ServicePerimeterDryRunEgressPolicyState $) {
+        this.accessPolicyId = $.accessPolicyId;
         this.egressFrom = $.egressFrom;
         this.egressTo = $.egressTo;
         this.perimeter = $.perimeter;
@@ -96,6 +112,27 @@ public final class ServicePerimeterDryRunEgressPolicyState extends com.pulumi.re
 
         public Builder(ServicePerimeterDryRunEgressPolicyState defaults) {
             $ = new ServicePerimeterDryRunEgressPolicyState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param accessPolicyId The name of the Access Policy this resource belongs to.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accessPolicyId(@Nullable Output<String> accessPolicyId) {
+            $.accessPolicyId = accessPolicyId;
+            return this;
+        }
+
+        /**
+         * @param accessPolicyId The name of the Access Policy this resource belongs to.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accessPolicyId(String accessPolicyId) {
+            return accessPolicyId(Output.of(accessPolicyId));
         }
 
         /**

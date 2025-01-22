@@ -205,19 +205,19 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) {
  *         var network = new Network("network", NetworkArgs.builder()
- *             .name("tf-test-network_55138")
+ *             .name("tf-test-network_37559")
  *             .autoCreateSubnetworks(false)
  *             .build());
  * 
  *         var subnetwork = new Subnetwork("subnetwork", SubnetworkArgs.builder()
- *             .name("tf-test-subnet_37559")
+ *             .name("tf-test-subnet_91980")
  *             .ipCidrRange("10.0.0.0/28")
  *             .region("us-central1")
  *             .network(network.selfLink())
  *             .build());
  * 
  *         var instance = new Instance("instance", InstanceArgs.builder()
- *             .name("tf-test-instance_91980")
+ *             .name("tf-test-instance_37118")
  *             .machineType("e2-medium")
  *             .canIpForward(true)
  *             .zone("us-central1-a")
@@ -236,13 +236,13 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var basicHub = new Hub("basicHub", HubArgs.builder()
- *             .name("tf-test-hub_37118")
+ *             .name("tf-test-hub_80332")
  *             .description("A sample hub")
  *             .labels(Map.of("label-two", "value-one"))
  *             .build());
  * 
  *         var primary = new Spoke("primary", SpokeArgs.builder()
- *             .name("tf-test-name_80332")
+ *             .name("tf-test-name_13293")
  *             .location("us-central1")
  *             .description("A sample spoke with a linked routher appliance instance")
  *             .labels(Map.of("label-one", "value-one"))
@@ -659,8 +659,8 @@ import javax.annotation.Nullable;
  *             .hub(starHub.id())
  *             .autoAccept(GroupAutoAcceptArgs.builder()
  *                 .autoAcceptProjects(                
- *                     "foo_13293",
- *                     "bar_40289")
+ *                     "foo_40289",
+ *                     "bar_33395")
  *                 .build())
  *             .build());
  * 

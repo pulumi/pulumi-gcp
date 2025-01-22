@@ -23,6 +23,18 @@ __all__ = [
     'DataAccessScopeDeniedDataAccessLabelArgsDict',
     'DataAccessScopeDeniedDataAccessLabelIngestionLabelArgs',
     'DataAccessScopeDeniedDataAccessLabelIngestionLabelArgsDict',
+    'ReferenceListEntryArgs',
+    'ReferenceListEntryArgsDict',
+    'ReferenceListScopeInfoArgs',
+    'ReferenceListScopeInfoArgsDict',
+    'ReferenceListScopeInfoReferenceListScopeArgs',
+    'ReferenceListScopeInfoReferenceListScopeArgsDict',
+    'RuleCompilationDiagnosticArgs',
+    'RuleCompilationDiagnosticArgsDict',
+    'RuleCompilationDiagnosticPositionArgs',
+    'RuleCompilationDiagnosticPositionArgsDict',
+    'RuleSeverityArgs',
+    'RuleSeverityArgsDict',
     'WatchlistEntityCountArgs',
     'WatchlistEntityCountArgsDict',
     'WatchlistEntityPopulationMechanismArgs',
@@ -413,6 +425,373 @@ class DataAccessScopeDeniedDataAccessLabelIngestionLabelArgs:
     @ingestion_label_value.setter
     def ingestion_label_value(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "ingestion_label_value", value)
+
+
+if not MYPY:
+    class ReferenceListEntryArgsDict(TypedDict):
+        value: pulumi.Input[str]
+        """
+        Required. The value of the entry. Maximum length is 512 characters.
+
+        - - -
+        """
+elif False:
+    ReferenceListEntryArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ReferenceListEntryArgs:
+    def __init__(__self__, *,
+                 value: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] value: Required. The value of the entry. Maximum length is 512 characters.
+               
+               - - -
+        """
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> pulumi.Input[str]:
+        """
+        Required. The value of the entry. Maximum length is 512 characters.
+
+        - - -
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: pulumi.Input[str]):
+        pulumi.set(self, "value", value)
+
+
+if not MYPY:
+    class ReferenceListScopeInfoArgsDict(TypedDict):
+        reference_list_scope: pulumi.Input['ReferenceListScopeInfoReferenceListScopeArgsDict']
+        """
+        ReferenceListScope specifies the list of scope names of the reference list.
+        Structure is documented below.
+        """
+elif False:
+    ReferenceListScopeInfoArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ReferenceListScopeInfoArgs:
+    def __init__(__self__, *,
+                 reference_list_scope: pulumi.Input['ReferenceListScopeInfoReferenceListScopeArgs']):
+        """
+        :param pulumi.Input['ReferenceListScopeInfoReferenceListScopeArgs'] reference_list_scope: ReferenceListScope specifies the list of scope names of the reference list.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "reference_list_scope", reference_list_scope)
+
+    @property
+    @pulumi.getter(name="referenceListScope")
+    def reference_list_scope(self) -> pulumi.Input['ReferenceListScopeInfoReferenceListScopeArgs']:
+        """
+        ReferenceListScope specifies the list of scope names of the reference list.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "reference_list_scope")
+
+    @reference_list_scope.setter
+    def reference_list_scope(self, value: pulumi.Input['ReferenceListScopeInfoReferenceListScopeArgs']):
+        pulumi.set(self, "reference_list_scope", value)
+
+
+if not MYPY:
+    class ReferenceListScopeInfoReferenceListScopeArgsDict(TypedDict):
+        scope_names: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Optional. The list of scope names of the reference list. The scope names should be
+        full resource names and should be of the format:
+        "projects/{project}/locations/{location}/instances/{instance}/dataAccessScopes/{scope_name}".
+        """
+elif False:
+    ReferenceListScopeInfoReferenceListScopeArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ReferenceListScopeInfoReferenceListScopeArgs:
+    def __init__(__self__, *,
+                 scope_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] scope_names: Optional. The list of scope names of the reference list. The scope names should be
+               full resource names and should be of the format:
+               "projects/{project}/locations/{location}/instances/{instance}/dataAccessScopes/{scope_name}".
+        """
+        if scope_names is not None:
+            pulumi.set(__self__, "scope_names", scope_names)
+
+    @property
+    @pulumi.getter(name="scopeNames")
+    def scope_names(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Optional. The list of scope names of the reference list. The scope names should be
+        full resource names and should be of the format:
+        "projects/{project}/locations/{location}/instances/{instance}/dataAccessScopes/{scope_name}".
+        """
+        return pulumi.get(self, "scope_names")
+
+    @scope_names.setter
+    def scope_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "scope_names", value)
+
+
+if not MYPY:
+    class RuleCompilationDiagnosticArgsDict(TypedDict):
+        message: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Output only. The diagnostic message.
+        """
+        position: NotRequired[pulumi.Input['RuleCompilationDiagnosticPositionArgsDict']]
+        """
+        CompilationPosition represents the location of a compilation diagnostic in
+        rule text.
+        Structure is documented below.
+        """
+        severity: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Output only. The severity of a rule's compilation diagnostic.
+        Possible values:
+        SEVERITY_UNSPECIFIED
+        WARNING
+        ERROR
+        """
+        uri: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Output only. Link to documentation that describes a diagnostic in more detail.
+        """
+elif False:
+    RuleCompilationDiagnosticArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RuleCompilationDiagnosticArgs:
+    def __init__(__self__, *,
+                 message: Optional[pulumi.Input[str]] = None,
+                 position: Optional[pulumi.Input['RuleCompilationDiagnosticPositionArgs']] = None,
+                 severity: Optional[pulumi.Input[str]] = None,
+                 uri: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] message: (Output)
+               Output only. The diagnostic message.
+        :param pulumi.Input['RuleCompilationDiagnosticPositionArgs'] position: CompilationPosition represents the location of a compilation diagnostic in
+               rule text.
+               Structure is documented below.
+        :param pulumi.Input[str] severity: (Output)
+               Output only. The severity of a rule's compilation diagnostic.
+               Possible values:
+               SEVERITY_UNSPECIFIED
+               WARNING
+               ERROR
+        :param pulumi.Input[str] uri: (Output)
+               Output only. Link to documentation that describes a diagnostic in more detail.
+        """
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+        if position is not None:
+            pulumi.set(__self__, "position", position)
+        if severity is not None:
+            pulumi.set(__self__, "severity", severity)
+        if uri is not None:
+            pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Output only. The diagnostic message.
+        """
+        return pulumi.get(self, "message")
+
+    @message.setter
+    def message(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "message", value)
+
+    @property
+    @pulumi.getter
+    def position(self) -> Optional[pulumi.Input['RuleCompilationDiagnosticPositionArgs']]:
+        """
+        CompilationPosition represents the location of a compilation diagnostic in
+        rule text.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "position")
+
+    @position.setter
+    def position(self, value: Optional[pulumi.Input['RuleCompilationDiagnosticPositionArgs']]):
+        pulumi.set(self, "position", value)
+
+    @property
+    @pulumi.getter
+    def severity(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Output only. The severity of a rule's compilation diagnostic.
+        Possible values:
+        SEVERITY_UNSPECIFIED
+        WARNING
+        ERROR
+        """
+        return pulumi.get(self, "severity")
+
+    @severity.setter
+    def severity(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "severity", value)
+
+    @property
+    @pulumi.getter
+    def uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Output only. Link to documentation that describes a diagnostic in more detail.
+        """
+        return pulumi.get(self, "uri")
+
+    @uri.setter
+    def uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "uri", value)
+
+
+if not MYPY:
+    class RuleCompilationDiagnosticPositionArgsDict(TypedDict):
+        end_column: NotRequired[pulumi.Input[int]]
+        """
+        (Output)
+        Output only. End column number, beginning at 1.
+        """
+        end_line: NotRequired[pulumi.Input[int]]
+        """
+        (Output)
+        Output only. End line number, beginning at 1.
+        """
+        start_column: NotRequired[pulumi.Input[int]]
+        """
+        (Output)
+        Output only. Start column number, beginning at 1.
+        """
+        start_line: NotRequired[pulumi.Input[int]]
+        """
+        (Output)
+        Output only. Start line number, beginning at 1.
+        """
+elif False:
+    RuleCompilationDiagnosticPositionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RuleCompilationDiagnosticPositionArgs:
+    def __init__(__self__, *,
+                 end_column: Optional[pulumi.Input[int]] = None,
+                 end_line: Optional[pulumi.Input[int]] = None,
+                 start_column: Optional[pulumi.Input[int]] = None,
+                 start_line: Optional[pulumi.Input[int]] = None):
+        """
+        :param pulumi.Input[int] end_column: (Output)
+               Output only. End column number, beginning at 1.
+        :param pulumi.Input[int] end_line: (Output)
+               Output only. End line number, beginning at 1.
+        :param pulumi.Input[int] start_column: (Output)
+               Output only. Start column number, beginning at 1.
+        :param pulumi.Input[int] start_line: (Output)
+               Output only. Start line number, beginning at 1.
+        """
+        if end_column is not None:
+            pulumi.set(__self__, "end_column", end_column)
+        if end_line is not None:
+            pulumi.set(__self__, "end_line", end_line)
+        if start_column is not None:
+            pulumi.set(__self__, "start_column", start_column)
+        if start_line is not None:
+            pulumi.set(__self__, "start_line", start_line)
+
+    @property
+    @pulumi.getter(name="endColumn")
+    def end_column(self) -> Optional[pulumi.Input[int]]:
+        """
+        (Output)
+        Output only. End column number, beginning at 1.
+        """
+        return pulumi.get(self, "end_column")
+
+    @end_column.setter
+    def end_column(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "end_column", value)
+
+    @property
+    @pulumi.getter(name="endLine")
+    def end_line(self) -> Optional[pulumi.Input[int]]:
+        """
+        (Output)
+        Output only. End line number, beginning at 1.
+        """
+        return pulumi.get(self, "end_line")
+
+    @end_line.setter
+    def end_line(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "end_line", value)
+
+    @property
+    @pulumi.getter(name="startColumn")
+    def start_column(self) -> Optional[pulumi.Input[int]]:
+        """
+        (Output)
+        Output only. Start column number, beginning at 1.
+        """
+        return pulumi.get(self, "start_column")
+
+    @start_column.setter
+    def start_column(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "start_column", value)
+
+    @property
+    @pulumi.getter(name="startLine")
+    def start_line(self) -> Optional[pulumi.Input[int]]:
+        """
+        (Output)
+        Output only. Start line number, beginning at 1.
+        """
+        return pulumi.get(self, "start_line")
+
+    @start_line.setter
+    def start_line(self, value: Optional[pulumi.Input[int]]):
+        pulumi.set(self, "start_line", value)
+
+
+if not MYPY:
+    class RuleSeverityArgsDict(TypedDict):
+        display_name: NotRequired[pulumi.Input[str]]
+        """
+        The display name of the severity level. Extracted from the meta section of
+        the rule text.
+        """
+elif False:
+    RuleSeverityArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RuleSeverityArgs:
+    def __init__(__self__, *,
+                 display_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] display_name: The display name of the severity level. Extracted from the meta section of
+               the rule text.
+        """
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The display name of the severity level. Extracted from the meta section of
+        the rule text.
+        """
+        return pulumi.get(self, "display_name")
+
+    @display_name.setter
+    def display_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "display_name", value)
 
 
 if not MYPY:

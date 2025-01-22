@@ -113,9 +113,9 @@ public class DataAccessLabel extends com.pulumi.resources.CustomResource {
     }
     /**
      * Required. The ID to use for the data access label, which will become the label&#39;s
-     * display name and the final component of the label&#39;s resource name. It must
-     * only contain ASCII lowercase letters, numbers, and dashes; it must begin
-     * with a letter, and it must not exceed 1000 characters.
+     * display name and the final component of the label&#39;s resource name. The
+     * maximum number of characters should be 63. Regex pattern is as per AIP:
+     * https://google.aip.dev/122#resource-id-segments
      * 
      * ***
      * 
@@ -125,9 +125,9 @@ public class DataAccessLabel extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Required. The ID to use for the data access label, which will become the label&#39;s
-     * display name and the final component of the label&#39;s resource name. It must
-     * only contain ASCII lowercase letters, numbers, and dashes; it must begin
-     * with a letter, and it must not exceed 1000 characters.
+     * display name and the final component of the label&#39;s resource name. The
+     * maximum number of characters should be 63. Regex pattern is as per AIP:
+     * https://google.aip.dev/122#resource-id-segments
      * 
      * ***
      * 

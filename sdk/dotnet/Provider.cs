@@ -153,6 +153,9 @@ namespace Pulumi.Gcp
         [Output("cloudfunctions2CustomEndpoint")]
         public Output<string?> Cloudfunctions2CustomEndpoint { get; private set; } = null!;
 
+        [Output("colabCustomEndpoint")]
+        public Output<string?> ColabCustomEndpoint { get; private set; } = null!;
+
         [Output("composerCustomEndpoint")]
         public Output<string?> ComposerCustomEndpoint { get; private set; } = null!;
 
@@ -395,6 +398,12 @@ namespace Pulumi.Gcp
 
         [Output("parallelstoreCustomEndpoint")]
         public Output<string?> ParallelstoreCustomEndpoint { get; private set; } = null!;
+
+        [Output("parameterManagerCustomEndpoint")]
+        public Output<string?> ParameterManagerCustomEndpoint { get; private set; } = null!;
+
+        [Output("parameterManagerRegionalCustomEndpoint")]
+        public Output<string?> ParameterManagerRegionalCustomEndpoint { get; private set; } = null!;
 
         [Output("privatecaCustomEndpoint")]
         public Output<string?> PrivatecaCustomEndpoint { get; private set; } = null!;
@@ -722,6 +731,9 @@ namespace Pulumi.Gcp
         [Input("cloudfunctions2CustomEndpoint")]
         public Input<string>? Cloudfunctions2CustomEndpoint { get; set; }
 
+        [Input("colabCustomEndpoint")]
+        public Input<string>? ColabCustomEndpoint { get; set; }
+
         [Input("composerCustomEndpoint")]
         public Input<string>? ComposerCustomEndpoint { get; set; }
 
@@ -983,6 +995,12 @@ namespace Pulumi.Gcp
 
         [Input("parallelstoreCustomEndpoint")]
         public Input<string>? ParallelstoreCustomEndpoint { get; set; }
+
+        [Input("parameterManagerCustomEndpoint")]
+        public Input<string>? ParameterManagerCustomEndpoint { get; set; }
+
+        [Input("parameterManagerRegionalCustomEndpoint")]
+        public Input<string>? ParameterManagerRegionalCustomEndpoint { get; set; }
 
         [Input("privatecaCustomEndpoint")]
         public Input<string>? PrivatecaCustomEndpoint { get; set; }

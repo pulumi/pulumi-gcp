@@ -653,6 +653,728 @@ func (o DataAccessScopeDeniedDataAccessLabelIngestionLabelPtrOutput) IngestionLa
 	}).(pulumi.StringPtrOutput)
 }
 
+type ReferenceListEntry struct {
+	// Required. The value of the entry. Maximum length is 512 characters.
+	//
+	// ***
+	Value string `pulumi:"value"`
+}
+
+// ReferenceListEntryInput is an input type that accepts ReferenceListEntryArgs and ReferenceListEntryOutput values.
+// You can construct a concrete instance of `ReferenceListEntryInput` via:
+//
+//	ReferenceListEntryArgs{...}
+type ReferenceListEntryInput interface {
+	pulumi.Input
+
+	ToReferenceListEntryOutput() ReferenceListEntryOutput
+	ToReferenceListEntryOutputWithContext(context.Context) ReferenceListEntryOutput
+}
+
+type ReferenceListEntryArgs struct {
+	// Required. The value of the entry. Maximum length is 512 characters.
+	//
+	// ***
+	Value pulumi.StringInput `pulumi:"value"`
+}
+
+func (ReferenceListEntryArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReferenceListEntry)(nil)).Elem()
+}
+
+func (i ReferenceListEntryArgs) ToReferenceListEntryOutput() ReferenceListEntryOutput {
+	return i.ToReferenceListEntryOutputWithContext(context.Background())
+}
+
+func (i ReferenceListEntryArgs) ToReferenceListEntryOutputWithContext(ctx context.Context) ReferenceListEntryOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReferenceListEntryOutput)
+}
+
+// ReferenceListEntryArrayInput is an input type that accepts ReferenceListEntryArray and ReferenceListEntryArrayOutput values.
+// You can construct a concrete instance of `ReferenceListEntryArrayInput` via:
+//
+//	ReferenceListEntryArray{ ReferenceListEntryArgs{...} }
+type ReferenceListEntryArrayInput interface {
+	pulumi.Input
+
+	ToReferenceListEntryArrayOutput() ReferenceListEntryArrayOutput
+	ToReferenceListEntryArrayOutputWithContext(context.Context) ReferenceListEntryArrayOutput
+}
+
+type ReferenceListEntryArray []ReferenceListEntryInput
+
+func (ReferenceListEntryArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReferenceListEntry)(nil)).Elem()
+}
+
+func (i ReferenceListEntryArray) ToReferenceListEntryArrayOutput() ReferenceListEntryArrayOutput {
+	return i.ToReferenceListEntryArrayOutputWithContext(context.Background())
+}
+
+func (i ReferenceListEntryArray) ToReferenceListEntryArrayOutputWithContext(ctx context.Context) ReferenceListEntryArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReferenceListEntryArrayOutput)
+}
+
+type ReferenceListEntryOutput struct{ *pulumi.OutputState }
+
+func (ReferenceListEntryOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReferenceListEntry)(nil)).Elem()
+}
+
+func (o ReferenceListEntryOutput) ToReferenceListEntryOutput() ReferenceListEntryOutput {
+	return o
+}
+
+func (o ReferenceListEntryOutput) ToReferenceListEntryOutputWithContext(ctx context.Context) ReferenceListEntryOutput {
+	return o
+}
+
+// Required. The value of the entry. Maximum length is 512 characters.
+//
+// ***
+func (o ReferenceListEntryOutput) Value() pulumi.StringOutput {
+	return o.ApplyT(func(v ReferenceListEntry) string { return v.Value }).(pulumi.StringOutput)
+}
+
+type ReferenceListEntryArrayOutput struct{ *pulumi.OutputState }
+
+func (ReferenceListEntryArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReferenceListEntry)(nil)).Elem()
+}
+
+func (o ReferenceListEntryArrayOutput) ToReferenceListEntryArrayOutput() ReferenceListEntryArrayOutput {
+	return o
+}
+
+func (o ReferenceListEntryArrayOutput) ToReferenceListEntryArrayOutputWithContext(ctx context.Context) ReferenceListEntryArrayOutput {
+	return o
+}
+
+func (o ReferenceListEntryArrayOutput) Index(i pulumi.IntInput) ReferenceListEntryOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReferenceListEntry {
+		return vs[0].([]ReferenceListEntry)[vs[1].(int)]
+	}).(ReferenceListEntryOutput)
+}
+
+type ReferenceListScopeInfo struct {
+	// ReferenceListScope specifies the list of scope names of the reference list.
+	// Structure is documented below.
+	ReferenceListScope ReferenceListScopeInfoReferenceListScope `pulumi:"referenceListScope"`
+}
+
+// ReferenceListScopeInfoInput is an input type that accepts ReferenceListScopeInfoArgs and ReferenceListScopeInfoOutput values.
+// You can construct a concrete instance of `ReferenceListScopeInfoInput` via:
+//
+//	ReferenceListScopeInfoArgs{...}
+type ReferenceListScopeInfoInput interface {
+	pulumi.Input
+
+	ToReferenceListScopeInfoOutput() ReferenceListScopeInfoOutput
+	ToReferenceListScopeInfoOutputWithContext(context.Context) ReferenceListScopeInfoOutput
+}
+
+type ReferenceListScopeInfoArgs struct {
+	// ReferenceListScope specifies the list of scope names of the reference list.
+	// Structure is documented below.
+	ReferenceListScope ReferenceListScopeInfoReferenceListScopeInput `pulumi:"referenceListScope"`
+}
+
+func (ReferenceListScopeInfoArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReferenceListScopeInfo)(nil)).Elem()
+}
+
+func (i ReferenceListScopeInfoArgs) ToReferenceListScopeInfoOutput() ReferenceListScopeInfoOutput {
+	return i.ToReferenceListScopeInfoOutputWithContext(context.Background())
+}
+
+func (i ReferenceListScopeInfoArgs) ToReferenceListScopeInfoOutputWithContext(ctx context.Context) ReferenceListScopeInfoOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReferenceListScopeInfoOutput)
+}
+
+// ReferenceListScopeInfoArrayInput is an input type that accepts ReferenceListScopeInfoArray and ReferenceListScopeInfoArrayOutput values.
+// You can construct a concrete instance of `ReferenceListScopeInfoArrayInput` via:
+//
+//	ReferenceListScopeInfoArray{ ReferenceListScopeInfoArgs{...} }
+type ReferenceListScopeInfoArrayInput interface {
+	pulumi.Input
+
+	ToReferenceListScopeInfoArrayOutput() ReferenceListScopeInfoArrayOutput
+	ToReferenceListScopeInfoArrayOutputWithContext(context.Context) ReferenceListScopeInfoArrayOutput
+}
+
+type ReferenceListScopeInfoArray []ReferenceListScopeInfoInput
+
+func (ReferenceListScopeInfoArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReferenceListScopeInfo)(nil)).Elem()
+}
+
+func (i ReferenceListScopeInfoArray) ToReferenceListScopeInfoArrayOutput() ReferenceListScopeInfoArrayOutput {
+	return i.ToReferenceListScopeInfoArrayOutputWithContext(context.Background())
+}
+
+func (i ReferenceListScopeInfoArray) ToReferenceListScopeInfoArrayOutputWithContext(ctx context.Context) ReferenceListScopeInfoArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReferenceListScopeInfoArrayOutput)
+}
+
+type ReferenceListScopeInfoOutput struct{ *pulumi.OutputState }
+
+func (ReferenceListScopeInfoOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReferenceListScopeInfo)(nil)).Elem()
+}
+
+func (o ReferenceListScopeInfoOutput) ToReferenceListScopeInfoOutput() ReferenceListScopeInfoOutput {
+	return o
+}
+
+func (o ReferenceListScopeInfoOutput) ToReferenceListScopeInfoOutputWithContext(ctx context.Context) ReferenceListScopeInfoOutput {
+	return o
+}
+
+// ReferenceListScope specifies the list of scope names of the reference list.
+// Structure is documented below.
+func (o ReferenceListScopeInfoOutput) ReferenceListScope() ReferenceListScopeInfoReferenceListScopeOutput {
+	return o.ApplyT(func(v ReferenceListScopeInfo) ReferenceListScopeInfoReferenceListScope { return v.ReferenceListScope }).(ReferenceListScopeInfoReferenceListScopeOutput)
+}
+
+type ReferenceListScopeInfoArrayOutput struct{ *pulumi.OutputState }
+
+func (ReferenceListScopeInfoArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ReferenceListScopeInfo)(nil)).Elem()
+}
+
+func (o ReferenceListScopeInfoArrayOutput) ToReferenceListScopeInfoArrayOutput() ReferenceListScopeInfoArrayOutput {
+	return o
+}
+
+func (o ReferenceListScopeInfoArrayOutput) ToReferenceListScopeInfoArrayOutputWithContext(ctx context.Context) ReferenceListScopeInfoArrayOutput {
+	return o
+}
+
+func (o ReferenceListScopeInfoArrayOutput) Index(i pulumi.IntInput) ReferenceListScopeInfoOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ReferenceListScopeInfo {
+		return vs[0].([]ReferenceListScopeInfo)[vs[1].(int)]
+	}).(ReferenceListScopeInfoOutput)
+}
+
+type ReferenceListScopeInfoReferenceListScope struct {
+	// Optional. The list of scope names of the reference list. The scope names should be
+	// full resource names and should be of the format:
+	// "projects/{project}/locations/{location}/instances/{instance}/dataAccessScopes/{scope_name}".
+	ScopeNames []string `pulumi:"scopeNames"`
+}
+
+// ReferenceListScopeInfoReferenceListScopeInput is an input type that accepts ReferenceListScopeInfoReferenceListScopeArgs and ReferenceListScopeInfoReferenceListScopeOutput values.
+// You can construct a concrete instance of `ReferenceListScopeInfoReferenceListScopeInput` via:
+//
+//	ReferenceListScopeInfoReferenceListScopeArgs{...}
+type ReferenceListScopeInfoReferenceListScopeInput interface {
+	pulumi.Input
+
+	ToReferenceListScopeInfoReferenceListScopeOutput() ReferenceListScopeInfoReferenceListScopeOutput
+	ToReferenceListScopeInfoReferenceListScopeOutputWithContext(context.Context) ReferenceListScopeInfoReferenceListScopeOutput
+}
+
+type ReferenceListScopeInfoReferenceListScopeArgs struct {
+	// Optional. The list of scope names of the reference list. The scope names should be
+	// full resource names and should be of the format:
+	// "projects/{project}/locations/{location}/instances/{instance}/dataAccessScopes/{scope_name}".
+	ScopeNames pulumi.StringArrayInput `pulumi:"scopeNames"`
+}
+
+func (ReferenceListScopeInfoReferenceListScopeArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReferenceListScopeInfoReferenceListScope)(nil)).Elem()
+}
+
+func (i ReferenceListScopeInfoReferenceListScopeArgs) ToReferenceListScopeInfoReferenceListScopeOutput() ReferenceListScopeInfoReferenceListScopeOutput {
+	return i.ToReferenceListScopeInfoReferenceListScopeOutputWithContext(context.Background())
+}
+
+func (i ReferenceListScopeInfoReferenceListScopeArgs) ToReferenceListScopeInfoReferenceListScopeOutputWithContext(ctx context.Context) ReferenceListScopeInfoReferenceListScopeOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ReferenceListScopeInfoReferenceListScopeOutput)
+}
+
+type ReferenceListScopeInfoReferenceListScopeOutput struct{ *pulumi.OutputState }
+
+func (ReferenceListScopeInfoReferenceListScopeOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ReferenceListScopeInfoReferenceListScope)(nil)).Elem()
+}
+
+func (o ReferenceListScopeInfoReferenceListScopeOutput) ToReferenceListScopeInfoReferenceListScopeOutput() ReferenceListScopeInfoReferenceListScopeOutput {
+	return o
+}
+
+func (o ReferenceListScopeInfoReferenceListScopeOutput) ToReferenceListScopeInfoReferenceListScopeOutputWithContext(ctx context.Context) ReferenceListScopeInfoReferenceListScopeOutput {
+	return o
+}
+
+// Optional. The list of scope names of the reference list. The scope names should be
+// full resource names and should be of the format:
+// "projects/{project}/locations/{location}/instances/{instance}/dataAccessScopes/{scope_name}".
+func (o ReferenceListScopeInfoReferenceListScopeOutput) ScopeNames() pulumi.StringArrayOutput {
+	return o.ApplyT(func(v ReferenceListScopeInfoReferenceListScope) []string { return v.ScopeNames }).(pulumi.StringArrayOutput)
+}
+
+type RuleCompilationDiagnostic struct {
+	// (Output)
+	// Output only. The diagnostic message.
+	Message *string `pulumi:"message"`
+	// CompilationPosition represents the location of a compilation diagnostic in
+	// rule text.
+	// Structure is documented below.
+	Position *RuleCompilationDiagnosticPosition `pulumi:"position"`
+	// (Output)
+	// Output only. The severity of a rule's compilation diagnostic.
+	// Possible values:
+	// SEVERITY_UNSPECIFIED
+	// WARNING
+	// ERROR
+	Severity *string `pulumi:"severity"`
+	// (Output)
+	// Output only. Link to documentation that describes a diagnostic in more detail.
+	Uri *string `pulumi:"uri"`
+}
+
+// RuleCompilationDiagnosticInput is an input type that accepts RuleCompilationDiagnosticArgs and RuleCompilationDiagnosticOutput values.
+// You can construct a concrete instance of `RuleCompilationDiagnosticInput` via:
+//
+//	RuleCompilationDiagnosticArgs{...}
+type RuleCompilationDiagnosticInput interface {
+	pulumi.Input
+
+	ToRuleCompilationDiagnosticOutput() RuleCompilationDiagnosticOutput
+	ToRuleCompilationDiagnosticOutputWithContext(context.Context) RuleCompilationDiagnosticOutput
+}
+
+type RuleCompilationDiagnosticArgs struct {
+	// (Output)
+	// Output only. The diagnostic message.
+	Message pulumi.StringPtrInput `pulumi:"message"`
+	// CompilationPosition represents the location of a compilation diagnostic in
+	// rule text.
+	// Structure is documented below.
+	Position RuleCompilationDiagnosticPositionPtrInput `pulumi:"position"`
+	// (Output)
+	// Output only. The severity of a rule's compilation diagnostic.
+	// Possible values:
+	// SEVERITY_UNSPECIFIED
+	// WARNING
+	// ERROR
+	Severity pulumi.StringPtrInput `pulumi:"severity"`
+	// (Output)
+	// Output only. Link to documentation that describes a diagnostic in more detail.
+	Uri pulumi.StringPtrInput `pulumi:"uri"`
+}
+
+func (RuleCompilationDiagnosticArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleCompilationDiagnostic)(nil)).Elem()
+}
+
+func (i RuleCompilationDiagnosticArgs) ToRuleCompilationDiagnosticOutput() RuleCompilationDiagnosticOutput {
+	return i.ToRuleCompilationDiagnosticOutputWithContext(context.Background())
+}
+
+func (i RuleCompilationDiagnosticArgs) ToRuleCompilationDiagnosticOutputWithContext(ctx context.Context) RuleCompilationDiagnosticOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleCompilationDiagnosticOutput)
+}
+
+// RuleCompilationDiagnosticArrayInput is an input type that accepts RuleCompilationDiagnosticArray and RuleCompilationDiagnosticArrayOutput values.
+// You can construct a concrete instance of `RuleCompilationDiagnosticArrayInput` via:
+//
+//	RuleCompilationDiagnosticArray{ RuleCompilationDiagnosticArgs{...} }
+type RuleCompilationDiagnosticArrayInput interface {
+	pulumi.Input
+
+	ToRuleCompilationDiagnosticArrayOutput() RuleCompilationDiagnosticArrayOutput
+	ToRuleCompilationDiagnosticArrayOutputWithContext(context.Context) RuleCompilationDiagnosticArrayOutput
+}
+
+type RuleCompilationDiagnosticArray []RuleCompilationDiagnosticInput
+
+func (RuleCompilationDiagnosticArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RuleCompilationDiagnostic)(nil)).Elem()
+}
+
+func (i RuleCompilationDiagnosticArray) ToRuleCompilationDiagnosticArrayOutput() RuleCompilationDiagnosticArrayOutput {
+	return i.ToRuleCompilationDiagnosticArrayOutputWithContext(context.Background())
+}
+
+func (i RuleCompilationDiagnosticArray) ToRuleCompilationDiagnosticArrayOutputWithContext(ctx context.Context) RuleCompilationDiagnosticArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleCompilationDiagnosticArrayOutput)
+}
+
+type RuleCompilationDiagnosticOutput struct{ *pulumi.OutputState }
+
+func (RuleCompilationDiagnosticOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleCompilationDiagnostic)(nil)).Elem()
+}
+
+func (o RuleCompilationDiagnosticOutput) ToRuleCompilationDiagnosticOutput() RuleCompilationDiagnosticOutput {
+	return o
+}
+
+func (o RuleCompilationDiagnosticOutput) ToRuleCompilationDiagnosticOutputWithContext(ctx context.Context) RuleCompilationDiagnosticOutput {
+	return o
+}
+
+// (Output)
+// Output only. The diagnostic message.
+func (o RuleCompilationDiagnosticOutput) Message() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleCompilationDiagnostic) *string { return v.Message }).(pulumi.StringPtrOutput)
+}
+
+// CompilationPosition represents the location of a compilation diagnostic in
+// rule text.
+// Structure is documented below.
+func (o RuleCompilationDiagnosticOutput) Position() RuleCompilationDiagnosticPositionPtrOutput {
+	return o.ApplyT(func(v RuleCompilationDiagnostic) *RuleCompilationDiagnosticPosition { return v.Position }).(RuleCompilationDiagnosticPositionPtrOutput)
+}
+
+// (Output)
+// Output only. The severity of a rule's compilation diagnostic.
+// Possible values:
+// SEVERITY_UNSPECIFIED
+// WARNING
+// ERROR
+func (o RuleCompilationDiagnosticOutput) Severity() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleCompilationDiagnostic) *string { return v.Severity }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Output only. Link to documentation that describes a diagnostic in more detail.
+func (o RuleCompilationDiagnosticOutput) Uri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleCompilationDiagnostic) *string { return v.Uri }).(pulumi.StringPtrOutput)
+}
+
+type RuleCompilationDiagnosticArrayOutput struct{ *pulumi.OutputState }
+
+func (RuleCompilationDiagnosticArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RuleCompilationDiagnostic)(nil)).Elem()
+}
+
+func (o RuleCompilationDiagnosticArrayOutput) ToRuleCompilationDiagnosticArrayOutput() RuleCompilationDiagnosticArrayOutput {
+	return o
+}
+
+func (o RuleCompilationDiagnosticArrayOutput) ToRuleCompilationDiagnosticArrayOutputWithContext(ctx context.Context) RuleCompilationDiagnosticArrayOutput {
+	return o
+}
+
+func (o RuleCompilationDiagnosticArrayOutput) Index(i pulumi.IntInput) RuleCompilationDiagnosticOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RuleCompilationDiagnostic {
+		return vs[0].([]RuleCompilationDiagnostic)[vs[1].(int)]
+	}).(RuleCompilationDiagnosticOutput)
+}
+
+type RuleCompilationDiagnosticPosition struct {
+	// (Output)
+	// Output only. End column number, beginning at 1.
+	EndColumn *int `pulumi:"endColumn"`
+	// (Output)
+	// Output only. End line number, beginning at 1.
+	EndLine *int `pulumi:"endLine"`
+	// (Output)
+	// Output only. Start column number, beginning at 1.
+	StartColumn *int `pulumi:"startColumn"`
+	// (Output)
+	// Output only. Start line number, beginning at 1.
+	StartLine *int `pulumi:"startLine"`
+}
+
+// RuleCompilationDiagnosticPositionInput is an input type that accepts RuleCompilationDiagnosticPositionArgs and RuleCompilationDiagnosticPositionOutput values.
+// You can construct a concrete instance of `RuleCompilationDiagnosticPositionInput` via:
+//
+//	RuleCompilationDiagnosticPositionArgs{...}
+type RuleCompilationDiagnosticPositionInput interface {
+	pulumi.Input
+
+	ToRuleCompilationDiagnosticPositionOutput() RuleCompilationDiagnosticPositionOutput
+	ToRuleCompilationDiagnosticPositionOutputWithContext(context.Context) RuleCompilationDiagnosticPositionOutput
+}
+
+type RuleCompilationDiagnosticPositionArgs struct {
+	// (Output)
+	// Output only. End column number, beginning at 1.
+	EndColumn pulumi.IntPtrInput `pulumi:"endColumn"`
+	// (Output)
+	// Output only. End line number, beginning at 1.
+	EndLine pulumi.IntPtrInput `pulumi:"endLine"`
+	// (Output)
+	// Output only. Start column number, beginning at 1.
+	StartColumn pulumi.IntPtrInput `pulumi:"startColumn"`
+	// (Output)
+	// Output only. Start line number, beginning at 1.
+	StartLine pulumi.IntPtrInput `pulumi:"startLine"`
+}
+
+func (RuleCompilationDiagnosticPositionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleCompilationDiagnosticPosition)(nil)).Elem()
+}
+
+func (i RuleCompilationDiagnosticPositionArgs) ToRuleCompilationDiagnosticPositionOutput() RuleCompilationDiagnosticPositionOutput {
+	return i.ToRuleCompilationDiagnosticPositionOutputWithContext(context.Background())
+}
+
+func (i RuleCompilationDiagnosticPositionArgs) ToRuleCompilationDiagnosticPositionOutputWithContext(ctx context.Context) RuleCompilationDiagnosticPositionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleCompilationDiagnosticPositionOutput)
+}
+
+func (i RuleCompilationDiagnosticPositionArgs) ToRuleCompilationDiagnosticPositionPtrOutput() RuleCompilationDiagnosticPositionPtrOutput {
+	return i.ToRuleCompilationDiagnosticPositionPtrOutputWithContext(context.Background())
+}
+
+func (i RuleCompilationDiagnosticPositionArgs) ToRuleCompilationDiagnosticPositionPtrOutputWithContext(ctx context.Context) RuleCompilationDiagnosticPositionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleCompilationDiagnosticPositionOutput).ToRuleCompilationDiagnosticPositionPtrOutputWithContext(ctx)
+}
+
+// RuleCompilationDiagnosticPositionPtrInput is an input type that accepts RuleCompilationDiagnosticPositionArgs, RuleCompilationDiagnosticPositionPtr and RuleCompilationDiagnosticPositionPtrOutput values.
+// You can construct a concrete instance of `RuleCompilationDiagnosticPositionPtrInput` via:
+//
+//	        RuleCompilationDiagnosticPositionArgs{...}
+//
+//	or:
+//
+//	        nil
+type RuleCompilationDiagnosticPositionPtrInput interface {
+	pulumi.Input
+
+	ToRuleCompilationDiagnosticPositionPtrOutput() RuleCompilationDiagnosticPositionPtrOutput
+	ToRuleCompilationDiagnosticPositionPtrOutputWithContext(context.Context) RuleCompilationDiagnosticPositionPtrOutput
+}
+
+type ruleCompilationDiagnosticPositionPtrType RuleCompilationDiagnosticPositionArgs
+
+func RuleCompilationDiagnosticPositionPtr(v *RuleCompilationDiagnosticPositionArgs) RuleCompilationDiagnosticPositionPtrInput {
+	return (*ruleCompilationDiagnosticPositionPtrType)(v)
+}
+
+func (*ruleCompilationDiagnosticPositionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleCompilationDiagnosticPosition)(nil)).Elem()
+}
+
+func (i *ruleCompilationDiagnosticPositionPtrType) ToRuleCompilationDiagnosticPositionPtrOutput() RuleCompilationDiagnosticPositionPtrOutput {
+	return i.ToRuleCompilationDiagnosticPositionPtrOutputWithContext(context.Background())
+}
+
+func (i *ruleCompilationDiagnosticPositionPtrType) ToRuleCompilationDiagnosticPositionPtrOutputWithContext(ctx context.Context) RuleCompilationDiagnosticPositionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleCompilationDiagnosticPositionPtrOutput)
+}
+
+type RuleCompilationDiagnosticPositionOutput struct{ *pulumi.OutputState }
+
+func (RuleCompilationDiagnosticPositionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleCompilationDiagnosticPosition)(nil)).Elem()
+}
+
+func (o RuleCompilationDiagnosticPositionOutput) ToRuleCompilationDiagnosticPositionOutput() RuleCompilationDiagnosticPositionOutput {
+	return o
+}
+
+func (o RuleCompilationDiagnosticPositionOutput) ToRuleCompilationDiagnosticPositionOutputWithContext(ctx context.Context) RuleCompilationDiagnosticPositionOutput {
+	return o
+}
+
+func (o RuleCompilationDiagnosticPositionOutput) ToRuleCompilationDiagnosticPositionPtrOutput() RuleCompilationDiagnosticPositionPtrOutput {
+	return o.ToRuleCompilationDiagnosticPositionPtrOutputWithContext(context.Background())
+}
+
+func (o RuleCompilationDiagnosticPositionOutput) ToRuleCompilationDiagnosticPositionPtrOutputWithContext(ctx context.Context) RuleCompilationDiagnosticPositionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RuleCompilationDiagnosticPosition) *RuleCompilationDiagnosticPosition {
+		return &v
+	}).(RuleCompilationDiagnosticPositionPtrOutput)
+}
+
+// (Output)
+// Output only. End column number, beginning at 1.
+func (o RuleCompilationDiagnosticPositionOutput) EndColumn() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RuleCompilationDiagnosticPosition) *int { return v.EndColumn }).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// Output only. End line number, beginning at 1.
+func (o RuleCompilationDiagnosticPositionOutput) EndLine() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RuleCompilationDiagnosticPosition) *int { return v.EndLine }).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// Output only. Start column number, beginning at 1.
+func (o RuleCompilationDiagnosticPositionOutput) StartColumn() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RuleCompilationDiagnosticPosition) *int { return v.StartColumn }).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// Output only. Start line number, beginning at 1.
+func (o RuleCompilationDiagnosticPositionOutput) StartLine() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v RuleCompilationDiagnosticPosition) *int { return v.StartLine }).(pulumi.IntPtrOutput)
+}
+
+type RuleCompilationDiagnosticPositionPtrOutput struct{ *pulumi.OutputState }
+
+func (RuleCompilationDiagnosticPositionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RuleCompilationDiagnosticPosition)(nil)).Elem()
+}
+
+func (o RuleCompilationDiagnosticPositionPtrOutput) ToRuleCompilationDiagnosticPositionPtrOutput() RuleCompilationDiagnosticPositionPtrOutput {
+	return o
+}
+
+func (o RuleCompilationDiagnosticPositionPtrOutput) ToRuleCompilationDiagnosticPositionPtrOutputWithContext(ctx context.Context) RuleCompilationDiagnosticPositionPtrOutput {
+	return o
+}
+
+func (o RuleCompilationDiagnosticPositionPtrOutput) Elem() RuleCompilationDiagnosticPositionOutput {
+	return o.ApplyT(func(v *RuleCompilationDiagnosticPosition) RuleCompilationDiagnosticPosition {
+		if v != nil {
+			return *v
+		}
+		var ret RuleCompilationDiagnosticPosition
+		return ret
+	}).(RuleCompilationDiagnosticPositionOutput)
+}
+
+// (Output)
+// Output only. End column number, beginning at 1.
+func (o RuleCompilationDiagnosticPositionPtrOutput) EndColumn() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RuleCompilationDiagnosticPosition) *int {
+		if v == nil {
+			return nil
+		}
+		return v.EndColumn
+	}).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// Output only. End line number, beginning at 1.
+func (o RuleCompilationDiagnosticPositionPtrOutput) EndLine() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RuleCompilationDiagnosticPosition) *int {
+		if v == nil {
+			return nil
+		}
+		return v.EndLine
+	}).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// Output only. Start column number, beginning at 1.
+func (o RuleCompilationDiagnosticPositionPtrOutput) StartColumn() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RuleCompilationDiagnosticPosition) *int {
+		if v == nil {
+			return nil
+		}
+		return v.StartColumn
+	}).(pulumi.IntPtrOutput)
+}
+
+// (Output)
+// Output only. Start line number, beginning at 1.
+func (o RuleCompilationDiagnosticPositionPtrOutput) StartLine() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v *RuleCompilationDiagnosticPosition) *int {
+		if v == nil {
+			return nil
+		}
+		return v.StartLine
+	}).(pulumi.IntPtrOutput)
+}
+
+type RuleSeverity struct {
+	// The display name of the severity level. Extracted from the meta section of
+	// the rule text.
+	DisplayName *string `pulumi:"displayName"`
+}
+
+// RuleSeverityInput is an input type that accepts RuleSeverityArgs and RuleSeverityOutput values.
+// You can construct a concrete instance of `RuleSeverityInput` via:
+//
+//	RuleSeverityArgs{...}
+type RuleSeverityInput interface {
+	pulumi.Input
+
+	ToRuleSeverityOutput() RuleSeverityOutput
+	ToRuleSeverityOutputWithContext(context.Context) RuleSeverityOutput
+}
+
+type RuleSeverityArgs struct {
+	// The display name of the severity level. Extracted from the meta section of
+	// the rule text.
+	DisplayName pulumi.StringPtrInput `pulumi:"displayName"`
+}
+
+func (RuleSeverityArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleSeverity)(nil)).Elem()
+}
+
+func (i RuleSeverityArgs) ToRuleSeverityOutput() RuleSeverityOutput {
+	return i.ToRuleSeverityOutputWithContext(context.Background())
+}
+
+func (i RuleSeverityArgs) ToRuleSeverityOutputWithContext(ctx context.Context) RuleSeverityOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleSeverityOutput)
+}
+
+// RuleSeverityArrayInput is an input type that accepts RuleSeverityArray and RuleSeverityArrayOutput values.
+// You can construct a concrete instance of `RuleSeverityArrayInput` via:
+//
+//	RuleSeverityArray{ RuleSeverityArgs{...} }
+type RuleSeverityArrayInput interface {
+	pulumi.Input
+
+	ToRuleSeverityArrayOutput() RuleSeverityArrayOutput
+	ToRuleSeverityArrayOutputWithContext(context.Context) RuleSeverityArrayOutput
+}
+
+type RuleSeverityArray []RuleSeverityInput
+
+func (RuleSeverityArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RuleSeverity)(nil)).Elem()
+}
+
+func (i RuleSeverityArray) ToRuleSeverityArrayOutput() RuleSeverityArrayOutput {
+	return i.ToRuleSeverityArrayOutputWithContext(context.Background())
+}
+
+func (i RuleSeverityArray) ToRuleSeverityArrayOutputWithContext(ctx context.Context) RuleSeverityArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RuleSeverityArrayOutput)
+}
+
+type RuleSeverityOutput struct{ *pulumi.OutputState }
+
+func (RuleSeverityOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RuleSeverity)(nil)).Elem()
+}
+
+func (o RuleSeverityOutput) ToRuleSeverityOutput() RuleSeverityOutput {
+	return o
+}
+
+func (o RuleSeverityOutput) ToRuleSeverityOutputWithContext(ctx context.Context) RuleSeverityOutput {
+	return o
+}
+
+// The display name of the severity level. Extracted from the meta section of
+// the rule text.
+func (o RuleSeverityOutput) DisplayName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RuleSeverity) *string { return v.DisplayName }).(pulumi.StringPtrOutput)
+}
+
+type RuleSeverityArrayOutput struct{ *pulumi.OutputState }
+
+func (RuleSeverityArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RuleSeverity)(nil)).Elem()
+}
+
+func (o RuleSeverityArrayOutput) ToRuleSeverityArrayOutput() RuleSeverityArrayOutput {
+	return o
+}
+
+func (o RuleSeverityArrayOutput) ToRuleSeverityArrayOutputWithContext(ctx context.Context) RuleSeverityArrayOutput {
+	return o
+}
+
+func (o RuleSeverityArrayOutput) Index(i pulumi.IntInput) RuleSeverityOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RuleSeverity {
+		return vs[0].([]RuleSeverity)[vs[1].(int)]
+	}).(RuleSeverityOutput)
+}
+
 type WatchlistEntityCount struct {
 	// (Output)
 	// Output only. Count of asset type entities in the watchlist.
@@ -1174,6 +1896,17 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DataAccessScopeDeniedDataAccessLabelArrayInput)(nil)).Elem(), DataAccessScopeDeniedDataAccessLabelArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataAccessScopeDeniedDataAccessLabelIngestionLabelInput)(nil)).Elem(), DataAccessScopeDeniedDataAccessLabelIngestionLabelArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataAccessScopeDeniedDataAccessLabelIngestionLabelPtrInput)(nil)).Elem(), DataAccessScopeDeniedDataAccessLabelIngestionLabelArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReferenceListEntryInput)(nil)).Elem(), ReferenceListEntryArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReferenceListEntryArrayInput)(nil)).Elem(), ReferenceListEntryArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReferenceListScopeInfoInput)(nil)).Elem(), ReferenceListScopeInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReferenceListScopeInfoArrayInput)(nil)).Elem(), ReferenceListScopeInfoArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ReferenceListScopeInfoReferenceListScopeInput)(nil)).Elem(), ReferenceListScopeInfoReferenceListScopeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleCompilationDiagnosticInput)(nil)).Elem(), RuleCompilationDiagnosticArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleCompilationDiagnosticArrayInput)(nil)).Elem(), RuleCompilationDiagnosticArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleCompilationDiagnosticPositionInput)(nil)).Elem(), RuleCompilationDiagnosticPositionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleCompilationDiagnosticPositionPtrInput)(nil)).Elem(), RuleCompilationDiagnosticPositionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleSeverityInput)(nil)).Elem(), RuleSeverityArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RuleSeverityArrayInput)(nil)).Elem(), RuleSeverityArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WatchlistEntityCountInput)(nil)).Elem(), WatchlistEntityCountArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WatchlistEntityCountArrayInput)(nil)).Elem(), WatchlistEntityCountArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*WatchlistEntityPopulationMechanismInput)(nil)).Elem(), WatchlistEntityPopulationMechanismArgs{})
@@ -1190,6 +1923,17 @@ func init() {
 	pulumi.RegisterOutputType(DataAccessScopeDeniedDataAccessLabelArrayOutput{})
 	pulumi.RegisterOutputType(DataAccessScopeDeniedDataAccessLabelIngestionLabelOutput{})
 	pulumi.RegisterOutputType(DataAccessScopeDeniedDataAccessLabelIngestionLabelPtrOutput{})
+	pulumi.RegisterOutputType(ReferenceListEntryOutput{})
+	pulumi.RegisterOutputType(ReferenceListEntryArrayOutput{})
+	pulumi.RegisterOutputType(ReferenceListScopeInfoOutput{})
+	pulumi.RegisterOutputType(ReferenceListScopeInfoArrayOutput{})
+	pulumi.RegisterOutputType(ReferenceListScopeInfoReferenceListScopeOutput{})
+	pulumi.RegisterOutputType(RuleCompilationDiagnosticOutput{})
+	pulumi.RegisterOutputType(RuleCompilationDiagnosticArrayOutput{})
+	pulumi.RegisterOutputType(RuleCompilationDiagnosticPositionOutput{})
+	pulumi.RegisterOutputType(RuleCompilationDiagnosticPositionPtrOutput{})
+	pulumi.RegisterOutputType(RuleSeverityOutput{})
+	pulumi.RegisterOutputType(RuleSeverityArrayOutput{})
 	pulumi.RegisterOutputType(WatchlistEntityCountOutput{})
 	pulumi.RegisterOutputType(WatchlistEntityCountArrayOutput{})
 	pulumi.RegisterOutputType(WatchlistEntityPopulationMechanismOutput{})

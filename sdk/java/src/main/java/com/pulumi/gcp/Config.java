@@ -156,6 +156,9 @@ public final class Config {
     public Optional<String> cloudfunctions2CustomEndpoint() {
         return Codegen.stringProp("cloudfunctions2CustomEndpoint").config(config).get();
     }
+    public Optional<String> colabCustomEndpoint() {
+        return Codegen.stringProp("colabCustomEndpoint").config(config).get();
+    }
     public Optional<String> composerCustomEndpoint() {
         return Codegen.stringProp("composerCustomEndpoint").config(config).get();
     }
@@ -410,6 +413,12 @@ public final class Config {
     }
     public Optional<String> parallelstoreCustomEndpoint() {
         return Codegen.stringProp("parallelstoreCustomEndpoint").config(config).get();
+    }
+    public Optional<String> parameterManagerCustomEndpoint() {
+        return Codegen.stringProp("parameterManagerCustomEndpoint").config(config).get();
+    }
+    public Optional<String> parameterManagerRegionalCustomEndpoint() {
+        return Codegen.stringProp("parameterManagerRegionalCustomEndpoint").config(config).get();
     }
     public Optional<String> privatecaCustomEndpoint() {
         return Codegen.stringProp("privatecaCustomEndpoint").config(config).get();

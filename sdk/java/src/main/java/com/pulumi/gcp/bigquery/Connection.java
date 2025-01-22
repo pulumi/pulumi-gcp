@@ -532,7 +532,7 @@ import javax.annotation.Nullable;
  *         var user = new User("user", UserArgs.builder()
  *             .name("user")
  *             .instance(instance.name())
- *             .password("tf-test-my-password_77884")
+ *             .password("tf-test-my-password_15222")
  *             .build());
  * 
  *         final var bqSa = BigqueryFunctions.getDefaultServiceAccount();

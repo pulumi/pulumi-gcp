@@ -295,8 +295,7 @@ export class Route extends pulumi.CustomResource {
      */
     public readonly nextHopInstanceZone!: pulumi.Output<string>;
     /**
-     * Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance,
-     * distance, and available bandwidth between regions.
+     * Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance, distance, and available bandwidth between regions.
      */
     public /*out*/ readonly nextHopInterRegionCost!: pulumi.Output<string>;
     /**
@@ -312,8 +311,7 @@ export class Route extends pulumi.CustomResource {
      */
     public /*out*/ readonly nextHopNetwork!: pulumi.Output<string>;
     /**
-     * Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or
-     * INCOMPLETE.
+     * Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
      */
     public /*out*/ readonly nextHopOrigin!: pulumi.Output<string>;
     /**
@@ -479,8 +477,7 @@ export interface RouteState {
      */
     nextHopInstanceZone?: pulumi.Input<string>;
     /**
-     * Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance,
-     * distance, and available bandwidth between regions.
+     * Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance, distance, and available bandwidth between regions.
      */
     nextHopInterRegionCost?: pulumi.Input<string>;
     /**
@@ -496,8 +493,7 @@ export interface RouteState {
      */
     nextHopNetwork?: pulumi.Input<string>;
     /**
-     * Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or
-     * INCOMPLETE.
+     * Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
      */
     nextHopOrigin?: pulumi.Input<string>;
     /**

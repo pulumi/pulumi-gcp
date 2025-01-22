@@ -80,6 +80,7 @@ type LookupDatabaseInstanceResult struct {
 	Region                     string                                    `pulumi:"region"`
 	ReplicaConfigurations      []GetDatabaseInstanceReplicaConfiguration `pulumi:"replicaConfigurations"`
 	ReplicaNames               []string                                  `pulumi:"replicaNames"`
+	ReplicationClusters        []GetDatabaseInstanceReplicationCluster   `pulumi:"replicationClusters"`
 	RestoreBackupContexts      []GetDatabaseInstanceRestoreBackupContext `pulumi:"restoreBackupContexts"`
 	RootPassword               string                                    `pulumi:"rootPassword"`
 	SelfLink                   string                                    `pulumi:"selfLink"`
@@ -209,6 +210,12 @@ func (o LookupDatabaseInstanceResultOutput) ReplicaConfigurations() GetDatabaseI
 
 func (o LookupDatabaseInstanceResultOutput) ReplicaNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v LookupDatabaseInstanceResult) []string { return v.ReplicaNames }).(pulumi.StringArrayOutput)
+}
+
+func (o LookupDatabaseInstanceResultOutput) ReplicationClusters() GetDatabaseInstanceReplicationClusterArrayOutput {
+	return o.ApplyT(func(v LookupDatabaseInstanceResult) []GetDatabaseInstanceReplicationCluster {
+		return v.ReplicationClusters
+	}).(GetDatabaseInstanceReplicationClusterArrayOutput)
 }
 
 func (o LookupDatabaseInstanceResultOutput) RestoreBackupContexts() GetDatabaseInstanceRestoreBackupContextArrayOutput {

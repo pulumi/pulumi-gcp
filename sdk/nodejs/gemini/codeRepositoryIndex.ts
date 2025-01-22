@@ -88,6 +88,10 @@ export class CodeRepositoryIndex extends pulumi.CustomResource {
      */
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
     /**
+     * If set to true, will allow deletion of the CodeRepositoryIndex even if there are existing RepositoryGroups for the resource. These RepositoryGroups will also be deleted.
+     */
+    public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
+    /**
      * Optional. Immutable. Customer-managed encryption key name, in the format
      * projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*.
      */
@@ -147,6 +151,7 @@ export class CodeRepositoryIndex extends pulumi.CustomResource {
             resourceInputs["codeRepositoryIndexId"] = state ? state.codeRepositoryIndexId : undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
+            resourceInputs["forceDestroy"] = state ? state.forceDestroy : undefined;
             resourceInputs["kmsKey"] = state ? state.kmsKey : undefined;
             resourceInputs["labels"] = state ? state.labels : undefined;
             resourceInputs["location"] = state ? state.location : undefined;
@@ -164,6 +169,7 @@ export class CodeRepositoryIndex extends pulumi.CustomResource {
                 throw new Error("Missing required property 'location'");
             }
             resourceInputs["codeRepositoryIndexId"] = args ? args.codeRepositoryIndexId : undefined;
+            resourceInputs["forceDestroy"] = args ? args.forceDestroy : undefined;
             resourceInputs["kmsKey"] = args ? args.kmsKey : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
@@ -201,6 +207,10 @@ export interface CodeRepositoryIndexState {
      * All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
+     * If set to true, will allow deletion of the CodeRepositoryIndex even if there are existing RepositoryGroups for the resource. These RepositoryGroups will also be deleted.
+     */
+    forceDestroy?: pulumi.Input<boolean>;
     /**
      * Optional. Immutable. Customer-managed encryption key name, in the format
      * projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*.
@@ -257,6 +267,10 @@ export interface CodeRepositoryIndexArgs {
      * - - -
      */
     codeRepositoryIndexId: pulumi.Input<string>;
+    /**
+     * If set to true, will allow deletion of the CodeRepositoryIndex even if there are existing RepositoryGroups for the resource. These RepositoryGroups will also be deleted.
+     */
+    forceDestroy?: pulumi.Input<boolean>;
     /**
      * Optional. Immutable. Customer-managed encryption key name, in the format
      * projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*.

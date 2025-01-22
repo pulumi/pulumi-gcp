@@ -45,6 +45,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:accesscontextmanager/servicePerimeterDryRunEgressPolicy:ServicePerimeterDryRunEgressPolicy")
 public class ServicePerimeterDryRunEgressPolicy extends com.pulumi.resources.CustomResource {
     /**
+     * The name of the Access Policy this resource belongs to.
+     * 
+     */
+    @Export(name="accessPolicyId", refs={String.class}, tree="[0]")
+    private Output<String> accessPolicyId;
+
+    /**
+     * @return The name of the Access Policy this resource belongs to.
+     * 
+     */
+    public Output<String> accessPolicyId() {
+        return this.accessPolicyId;
+    }
+    /**
      * Defines conditions on the source of a request causing this `EgressPolicy` to apply.
      * Structure is documented below.
      * 

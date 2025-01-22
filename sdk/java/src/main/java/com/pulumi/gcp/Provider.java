@@ -293,6 +293,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> cloudfunctions2CustomEndpoint() {
         return Codegen.optional(this.cloudfunctions2CustomEndpoint);
     }
+    @Export(name="colabCustomEndpoint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> colabCustomEndpoint;
+
+    public Output<Optional<String>> colabCustomEndpoint() {
+        return Codegen.optional(this.colabCustomEndpoint);
+    }
     @Export(name="composerCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> composerCustomEndpoint;
 
@@ -778,6 +784,18 @@ public class Provider extends com.pulumi.resources.ProviderResource {
 
     public Output<Optional<String>> parallelstoreCustomEndpoint() {
         return Codegen.optional(this.parallelstoreCustomEndpoint);
+    }
+    @Export(name="parameterManagerCustomEndpoint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> parameterManagerCustomEndpoint;
+
+    public Output<Optional<String>> parameterManagerCustomEndpoint() {
+        return Codegen.optional(this.parameterManagerCustomEndpoint);
+    }
+    @Export(name="parameterManagerRegionalCustomEndpoint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> parameterManagerRegionalCustomEndpoint;
+
+    public Output<Optional<String>> parameterManagerRegionalCustomEndpoint() {
+        return Codegen.optional(this.parameterManagerRegionalCustomEndpoint);
     }
     @Export(name="privatecaCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> privatecaCustomEndpoint;

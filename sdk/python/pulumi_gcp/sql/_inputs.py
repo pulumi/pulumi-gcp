@@ -21,6 +21,8 @@ __all__ = [
     'DatabaseInstanceIpAddressArgsDict',
     'DatabaseInstanceReplicaConfigurationArgs',
     'DatabaseInstanceReplicaConfigurationArgsDict',
+    'DatabaseInstanceReplicationClusterArgs',
+    'DatabaseInstanceReplicationClusterArgsDict',
     'DatabaseInstanceRestoreBackupContextArgs',
     'DatabaseInstanceRestoreBackupContextArgsDict',
     'DatabaseInstanceServerCaCertArgs',
@@ -553,6 +555,58 @@ class DatabaseInstanceReplicaConfigurationArgs:
     @verify_server_certificate.setter
     def verify_server_certificate(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "verify_server_certificate", value)
+
+
+if not MYPY:
+    class DatabaseInstanceReplicationClusterArgsDict(TypedDict):
+        dr_replica: NotRequired[pulumi.Input[bool]]
+        """
+        Read-only field that indicates whether the replica is a DR replica.
+        """
+        failover_dr_replica_name: NotRequired[pulumi.Input[str]]
+        """
+        If the instance is a primary instance, then this field identifies the disaster recovery (DR) replica. The standard format of this field is "your-project:your-instance". You can also set this field to "your-instance", but cloud SQL backend will convert it to the aforementioned standard format.
+        """
+elif False:
+    DatabaseInstanceReplicationClusterArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class DatabaseInstanceReplicationClusterArgs:
+    def __init__(__self__, *,
+                 dr_replica: Optional[pulumi.Input[bool]] = None,
+                 failover_dr_replica_name: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[bool] dr_replica: Read-only field that indicates whether the replica is a DR replica.
+        :param pulumi.Input[str] failover_dr_replica_name: If the instance is a primary instance, then this field identifies the disaster recovery (DR) replica. The standard format of this field is "your-project:your-instance". You can also set this field to "your-instance", but cloud SQL backend will convert it to the aforementioned standard format.
+        """
+        if dr_replica is not None:
+            pulumi.set(__self__, "dr_replica", dr_replica)
+        if failover_dr_replica_name is not None:
+            pulumi.set(__self__, "failover_dr_replica_name", failover_dr_replica_name)
+
+    @property
+    @pulumi.getter(name="drReplica")
+    def dr_replica(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Read-only field that indicates whether the replica is a DR replica.
+        """
+        return pulumi.get(self, "dr_replica")
+
+    @dr_replica.setter
+    def dr_replica(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "dr_replica", value)
+
+    @property
+    @pulumi.getter(name="failoverDrReplicaName")
+    def failover_dr_replica_name(self) -> Optional[pulumi.Input[str]]:
+        """
+        If the instance is a primary instance, then this field identifies the disaster recovery (DR) replica. The standard format of this field is "your-project:your-instance". You can also set this field to "your-instance", but cloud SQL backend will convert it to the aforementioned standard format.
+        """
+        return pulumi.get(self, "failover_dr_replica_name")
+
+    @failover_dr_replica_name.setter
+    def failover_dr_replica_name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "failover_dr_replica_name", value)
 
 
 if not MYPY:

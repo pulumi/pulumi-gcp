@@ -36,6 +36,20 @@ import javax.annotation.Nullable;
 @ResourceType(type="gcp:accesscontextmanager/ingressPolicy:IngressPolicy")
 public class IngressPolicy extends com.pulumi.resources.CustomResource {
     /**
+     * The name of the Access Policy this resource belongs to.
+     * 
+     */
+    @Export(name="accessPolicyId", refs={String.class}, tree="[0]")
+    private Output<String> accessPolicyId;
+
+    /**
+     * @return The name of the Access Policy this resource belongs to.
+     * 
+     */
+    public Output<String> accessPolicyId() {
+        return this.accessPolicyId;
+    }
+    /**
      * The name of the Service Perimeter to add this resource to.
      * 
      * ***

@@ -91,7 +91,7 @@ public final class InstanceNetworkInterface {
      */
     private @Nullable String securityPolicy;
     /**
-     * @return The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6 or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
+     * @return The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6, IPV6_ONLY or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
      * 
      */
     private @Nullable String stackType;
@@ -217,7 +217,7 @@ public final class InstanceNetworkInterface {
         return Optional.ofNullable(this.securityPolicy);
     }
     /**
-     * @return The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6 or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
+     * @return The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6, IPV6_ONLY or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
      * 
      */
     public Optional<String> stackType() {

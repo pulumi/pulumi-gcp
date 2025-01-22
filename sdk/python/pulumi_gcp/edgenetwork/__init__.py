@@ -5,5 +5,6 @@
 from .. import _utilities
 import typing
 # Export this package's modules as members:
+from .interconnect_attachment import *
 from .network import *
 from .subnet import *

@@ -88,11 +88,13 @@ class ServicePerimeterEgressPolicyArgs:
 @pulumi.input_type
 class _ServicePerimeterEgressPolicyState:
     def __init__(__self__, *,
+                 access_policy_id: Optional[pulumi.Input[str]] = None,
                  egress_from: Optional[pulumi.Input['ServicePerimeterEgressPolicyEgressFromArgs']] = None,
                  egress_to: Optional[pulumi.Input['ServicePerimeterEgressPolicyEgressToArgs']] = None,
                  perimeter: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ServicePerimeterEgressPolicy resources.
+        :param pulumi.Input[str] access_policy_id: The name of the Access Policy this resource belongs to.
         :param pulumi.Input['ServicePerimeterEgressPolicyEgressFromArgs'] egress_from: Defines conditions on the source of a request causing this `EgressPolicy` to apply.
                Structure is documented below.
         :param pulumi.Input['ServicePerimeterEgressPolicyEgressToArgs'] egress_to: Defines the conditions on the `ApiOperation` and destination resources that
@@ -103,12 +105,26 @@ class _ServicePerimeterEgressPolicyState:
                
                - - -
         """
+        if access_policy_id is not None:
+            pulumi.set(__self__, "access_policy_id", access_policy_id)
         if egress_from is not None:
             pulumi.set(__self__, "egress_from", egress_from)
         if egress_to is not None:
             pulumi.set(__self__, "egress_to", egress_to)
         if perimeter is not None:
             pulumi.set(__self__, "perimeter", perimeter)
+
+    @property
+    @pulumi.getter(name="accessPolicyId")
+    def access_policy_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the Access Policy this resource belongs to.
+        """
+        return pulumi.get(self, "access_policy_id")
+
+    @access_policy_id.setter
+    def access_policy_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access_policy_id", value)
 
     @property
     @pulumi.getter(name="egressFrom")
@@ -262,6 +278,7 @@ class ServicePerimeterEgressPolicy(pulumi.CustomResource):
             if perimeter is None and not opts.urn:
                 raise TypeError("Missing required property 'perimeter'")
             __props__.__dict__["perimeter"] = perimeter
+            __props__.__dict__["access_policy_id"] = None
         super(ServicePerimeterEgressPolicy, __self__).__init__(
             'gcp:accesscontextmanager/servicePerimeterEgressPolicy:ServicePerimeterEgressPolicy',
             resource_name,
@@ -272,6 +289,7 @@ class ServicePerimeterEgressPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            access_policy_id: Optional[pulumi.Input[str]] = None,
             egress_from: Optional[pulumi.Input[Union['ServicePerimeterEgressPolicyEgressFromArgs', 'ServicePerimeterEgressPolicyEgressFromArgsDict']]] = None,
             egress_to: Optional[pulumi.Input[Union['ServicePerimeterEgressPolicyEgressToArgs', 'ServicePerimeterEgressPolicyEgressToArgsDict']]] = None,
             perimeter: Optional[pulumi.Input[str]] = None) -> 'ServicePerimeterEgressPolicy':
@@ -282,6 +300,7 @@ class ServicePerimeterEgressPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] access_policy_id: The name of the Access Policy this resource belongs to.
         :param pulumi.Input[Union['ServicePerimeterEgressPolicyEgressFromArgs', 'ServicePerimeterEgressPolicyEgressFromArgsDict']] egress_from: Defines conditions on the source of a request causing this `EgressPolicy` to apply.
                Structure is documented below.
         :param pulumi.Input[Union['ServicePerimeterEgressPolicyEgressToArgs', 'ServicePerimeterEgressPolicyEgressToArgsDict']] egress_to: Defines the conditions on the `ApiOperation` and destination resources that
@@ -296,10 +315,19 @@ class ServicePerimeterEgressPolicy(pulumi.CustomResource):
 
         __props__ = _ServicePerimeterEgressPolicyState.__new__(_ServicePerimeterEgressPolicyState)
 
+        __props__.__dict__["access_policy_id"] = access_policy_id
         __props__.__dict__["egress_from"] = egress_from
         __props__.__dict__["egress_to"] = egress_to
         __props__.__dict__["perimeter"] = perimeter
         return ServicePerimeterEgressPolicy(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="accessPolicyId")
+    def access_policy_id(self) -> pulumi.Output[str]:
+        """
+        The name of the Access Policy this resource belongs to.
+        """
+        return pulumi.get(self, "access_policy_id")
 
     @property
     @pulumi.getter(name="egressFrom")

@@ -151,7 +151,7 @@ namespace Pulumi.Gcp.Compute
         /// For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth.
         /// Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED,
         /// Defaults to BPS_10G
-        /// Possible values are: `BPS_50M`, `BPS_100M`, `BPS_200M`, `BPS_300M`, `BPS_400M`, `BPS_500M`, `BPS_1G`, `BPS_2G`, `BPS_5G`, `BPS_10G`, `BPS_20G`, `BPS_50G`.
+        /// Possible values are: `BPS_50M`, `BPS_100M`, `BPS_200M`, `BPS_300M`, `BPS_400M`, `BPS_500M`, `BPS_1G`, `BPS_2G`, `BPS_5G`, `BPS_10G`, `BPS_20G`, `BPS_50G`, `BPS_100G`.
         /// </summary>
         [Output("bandwidth")]
         public Output<string> Bandwidth { get; private set; } = null!;
@@ -446,7 +446,7 @@ namespace Pulumi.Gcp.Compute
         /// For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth.
         /// Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED,
         /// Defaults to BPS_10G
-        /// Possible values are: `BPS_50M`, `BPS_100M`, `BPS_200M`, `BPS_300M`, `BPS_400M`, `BPS_500M`, `BPS_1G`, `BPS_2G`, `BPS_5G`, `BPS_10G`, `BPS_20G`, `BPS_50G`.
+        /// Possible values are: `BPS_50M`, `BPS_100M`, `BPS_200M`, `BPS_300M`, `BPS_400M`, `BPS_500M`, `BPS_1G`, `BPS_2G`, `BPS_5G`, `BPS_10G`, `BPS_20G`, `BPS_50G`, `BPS_100G`.
         /// </summary>
         [Input("bandwidth")]
         public Input<string>? Bandwidth { get; set; }
@@ -638,7 +638,7 @@ namespace Pulumi.Gcp.Compute
         /// For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth.
         /// Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED,
         /// Defaults to BPS_10G
-        /// Possible values are: `BPS_50M`, `BPS_100M`, `BPS_200M`, `BPS_300M`, `BPS_400M`, `BPS_500M`, `BPS_1G`, `BPS_2G`, `BPS_5G`, `BPS_10G`, `BPS_20G`, `BPS_50G`.
+        /// Possible values are: `BPS_50M`, `BPS_100M`, `BPS_200M`, `BPS_300M`, `BPS_400M`, `BPS_500M`, `BPS_1G`, `BPS_2G`, `BPS_5G`, `BPS_10G`, `BPS_20G`, `BPS_50G`, `BPS_100G`.
         /// </summary>
         [Input("bandwidth")]
         public Input<string>? Bandwidth { get; set; }

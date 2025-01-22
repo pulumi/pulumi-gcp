@@ -148,13 +148,13 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// {
     ///     var network = new Gcp.Compute.Network("network", new()
     ///     {
-    ///         Name = "tf-test-network_55138",
+    ///         Name = "tf-test-network_37559",
     ///         AutoCreateSubnetworks = false,
     ///     });
     /// 
     ///     var subnetwork = new Gcp.Compute.Subnetwork("subnetwork", new()
     ///     {
-    ///         Name = "tf-test-subnet_37559",
+    ///         Name = "tf-test-subnet_91980",
     ///         IpCidrRange = "10.0.0.0/28",
     ///         Region = "us-central1",
     ///         Network = network.SelfLink,
@@ -162,7 +162,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// 
     ///     var instance = new Gcp.Compute.Instance("instance", new()
     ///     {
-    ///         Name = "tf-test-instance_91980",
+    ///         Name = "tf-test-instance_37118",
     ///         MachineType = "e2-medium",
     ///         CanIpForward = true,
     ///         Zone = "us-central1-a",
@@ -192,7 +192,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// 
     ///     var basicHub = new Gcp.NetworkConnectivity.Hub("basic_hub", new()
     ///     {
-    ///         Name = "tf-test-hub_37118",
+    ///         Name = "tf-test-hub_80332",
     ///         Description = "A sample hub",
     ///         Labels = 
     ///         {
@@ -202,7 +202,7 @@ namespace Pulumi.Gcp.NetworkConnectivity
     /// 
     ///     var primary = new Gcp.NetworkConnectivity.Spoke("primary", new()
     ///     {
-    ///         Name = "tf-test-name_80332",
+    ///         Name = "tf-test-name_13293",
     ///         Location = "us-central1",
     ///         Description = "A sample spoke with a linked routher appliance instance",
     ///         Labels = 
@@ -594,8 +594,8 @@ namespace Pulumi.Gcp.NetworkConnectivity
     ///         {
     ///             AutoAcceptProjects = new[]
     ///             {
-    ///                 "foo_13293",
-    ///                 "bar_40289",
+    ///                 "foo_40289",
+    ///                 "bar_33395",
     ///             },
     ///         },
     ///     });

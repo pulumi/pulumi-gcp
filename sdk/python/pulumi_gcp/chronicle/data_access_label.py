@@ -28,9 +28,9 @@ class DataAccessLabelArgs:
         """
         The set of arguments for constructing a DataAccessLabel resource.
         :param pulumi.Input[str] data_access_label_id: Required. The ID to use for the data access label, which will become the label's
-               display name and the final component of the label's resource name. It must
-               only contain ASCII lowercase letters, numbers, and dashes; it must begin
-               with a letter, and it must not exceed 1000 characters.
+               display name and the final component of the label's resource name. The
+               maximum number of characters should be 63. Regex pattern is as per AIP:
+               https://google.aip.dev/122#resource-id-segments
                
                
                - - -
@@ -55,9 +55,9 @@ class DataAccessLabelArgs:
     def data_access_label_id(self) -> pulumi.Input[str]:
         """
         Required. The ID to use for the data access label, which will become the label's
-        display name and the final component of the label's resource name. It must
-        only contain ASCII lowercase letters, numbers, and dashes; it must begin
-        with a letter, and it must not exceed 1000 characters.
+        display name and the final component of the label's resource name. The
+        maximum number of characters should be 63. Regex pattern is as per AIP:
+        https://google.aip.dev/122#resource-id-segments
 
 
         - - -
@@ -150,9 +150,9 @@ class _DataAccessLabelState:
         :param pulumi.Input[str] author: Output only. The user who created the data access label.
         :param pulumi.Input[str] create_time: Output only. The time at which the data access label was created.
         :param pulumi.Input[str] data_access_label_id: Required. The ID to use for the data access label, which will become the label's
-               display name and the final component of the label's resource name. It must
-               only contain ASCII lowercase letters, numbers, and dashes; it must begin
-               with a letter, and it must not exceed 1000 characters.
+               display name and the final component of the label's resource name. The
+               maximum number of characters should be 63. Regex pattern is as per AIP:
+               https://google.aip.dev/122#resource-id-segments
                
                
                - - -
@@ -223,9 +223,9 @@ class _DataAccessLabelState:
     def data_access_label_id(self) -> Optional[pulumi.Input[str]]:
         """
         Required. The ID to use for the data access label, which will become the label's
-        display name and the final component of the label's resource name. It must
-        only contain ASCII lowercase letters, numbers, and dashes; it must begin
-        with a letter, and it must not exceed 1000 characters.
+        display name and the final component of the label's resource name. The
+        maximum number of characters should be 63. Regex pattern is as per AIP:
+        https://google.aip.dev/122#resource-id-segments
 
 
         - - -
@@ -404,9 +404,9 @@ class DataAccessLabel(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] data_access_label_id: Required. The ID to use for the data access label, which will become the label's
-               display name and the final component of the label's resource name. It must
-               only contain ASCII lowercase letters, numbers, and dashes; it must begin
-               with a letter, and it must not exceed 1000 characters.
+               display name and the final component of the label's resource name. The
+               maximum number of characters should be 63. Regex pattern is as per AIP:
+               https://google.aip.dev/122#resource-id-segments
                
                
                - - -
@@ -546,9 +546,9 @@ class DataAccessLabel(pulumi.CustomResource):
         :param pulumi.Input[str] author: Output only. The user who created the data access label.
         :param pulumi.Input[str] create_time: Output only. The time at which the data access label was created.
         :param pulumi.Input[str] data_access_label_id: Required. The ID to use for the data access label, which will become the label's
-               display name and the final component of the label's resource name. It must
-               only contain ASCII lowercase letters, numbers, and dashes; it must begin
-               with a letter, and it must not exceed 1000 characters.
+               display name and the final component of the label's resource name. The
+               maximum number of characters should be 63. Regex pattern is as per AIP:
+               https://google.aip.dev/122#resource-id-segments
                
                
                - - -
@@ -604,9 +604,9 @@ class DataAccessLabel(pulumi.CustomResource):
     def data_access_label_id(self) -> pulumi.Output[str]:
         """
         Required. The ID to use for the data access label, which will become the label's
-        display name and the final component of the label's resource name. It must
-        only contain ASCII lowercase letters, numbers, and dashes; it must begin
-        with a letter, and it must not exceed 1000 characters.
+        display name and the final component of the label's resource name. The
+        maximum number of characters should be 63. Regex pattern is as per AIP:
+        https://google.aip.dev/122#resource-id-segments
 
 
         - - -

@@ -38,6 +38,8 @@ import (
 type ServicePerimeterDryRunEgressPolicy struct {
 	pulumi.CustomResourceState
 
+	// The name of the Access Policy this resource belongs to.
+	AccessPolicyId pulumi.StringOutput `pulumi:"accessPolicyId"`
 	// Defines conditions on the source of a request causing this `EgressPolicy` to apply.
 	// Structure is documented below.
 	EgressFrom ServicePerimeterDryRunEgressPolicyEgressFromPtrOutput `pulumi:"egressFrom"`
@@ -84,6 +86,8 @@ func GetServicePerimeterDryRunEgressPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ServicePerimeterDryRunEgressPolicy resources.
 type servicePerimeterDryRunEgressPolicyState struct {
+	// The name of the Access Policy this resource belongs to.
+	AccessPolicyId *string `pulumi:"accessPolicyId"`
 	// Defines conditions on the source of a request causing this `EgressPolicy` to apply.
 	// Structure is documented below.
 	EgressFrom *ServicePerimeterDryRunEgressPolicyEgressFrom `pulumi:"egressFrom"`
@@ -98,6 +102,8 @@ type servicePerimeterDryRunEgressPolicyState struct {
 }
 
 type ServicePerimeterDryRunEgressPolicyState struct {
+	// The name of the Access Policy this resource belongs to.
+	AccessPolicyId pulumi.StringPtrInput
 	// Defines conditions on the source of a request causing this `EgressPolicy` to apply.
 	// Structure is documented below.
 	EgressFrom ServicePerimeterDryRunEgressPolicyEgressFromPtrInput
@@ -229,6 +235,11 @@ func (o ServicePerimeterDryRunEgressPolicyOutput) ToServicePerimeterDryRunEgress
 
 func (o ServicePerimeterDryRunEgressPolicyOutput) ToServicePerimeterDryRunEgressPolicyOutputWithContext(ctx context.Context) ServicePerimeterDryRunEgressPolicyOutput {
 	return o
+}
+
+// The name of the Access Policy this resource belongs to.
+func (o ServicePerimeterDryRunEgressPolicyOutput) AccessPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServicePerimeterDryRunEgressPolicy) pulumi.StringOutput { return v.AccessPolicyId }).(pulumi.StringOutput)
 }
 
 // Defines conditions on the source of a request causing this `EgressPolicy` to apply.

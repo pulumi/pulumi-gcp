@@ -9971,6 +9971,91 @@ export namespace chronicle {
         ingestionLabelValue?: pulumi.Input<string>;
     }
 
+    export interface ReferenceListEntry {
+        /**
+         * Required. The value of the entry. Maximum length is 512 characters.
+         *
+         * - - -
+         */
+        value: pulumi.Input<string>;
+    }
+
+    export interface ReferenceListScopeInfo {
+        /**
+         * ReferenceListScope specifies the list of scope names of the reference list.
+         * Structure is documented below.
+         */
+        referenceListScope: pulumi.Input<inputs.chronicle.ReferenceListScopeInfoReferenceListScope>;
+    }
+
+    export interface ReferenceListScopeInfoReferenceListScope {
+        /**
+         * Optional. The list of scope names of the reference list. The scope names should be
+         * full resource names and should be of the format:
+         * "projects/{project}/locations/{location}/instances/{instance}/dataAccessScopes/{scope_name}".
+         */
+        scopeNames?: pulumi.Input<pulumi.Input<string>[]>;
+    }
+
+    export interface RuleCompilationDiagnostic {
+        /**
+         * (Output)
+         * Output only. The diagnostic message.
+         */
+        message?: pulumi.Input<string>;
+        /**
+         * CompilationPosition represents the location of a compilation diagnostic in
+         * rule text.
+         * Structure is documented below.
+         */
+        position?: pulumi.Input<inputs.chronicle.RuleCompilationDiagnosticPosition>;
+        /**
+         * (Output)
+         * Output only. The severity of a rule's compilation diagnostic.
+         * Possible values:
+         * SEVERITY_UNSPECIFIED
+         * WARNING
+         * ERROR
+         */
+        severity?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Output only. Link to documentation that describes a diagnostic in more detail.
+         */
+        uri?: pulumi.Input<string>;
+    }
+
+    export interface RuleCompilationDiagnosticPosition {
+        /**
+         * (Output)
+         * Output only. End column number, beginning at 1.
+         */
+        endColumn?: pulumi.Input<number>;
+        /**
+         * (Output)
+         * Output only. End line number, beginning at 1.
+         */
+        endLine?: pulumi.Input<number>;
+        /**
+         * (Output)
+         * Output only. Start column number, beginning at 1.
+         */
+        startColumn?: pulumi.Input<number>;
+        /**
+         * (Output)
+         * Output only. Start line number, beginning at 1.
+         */
+        startLine?: pulumi.Input<number>;
+    }
+
+    export interface RuleSeverity {
+        /**
+         * The display name of the severity level. Extracted from the meta section of
+         * the rule text.
+         */
+        displayName?: pulumi.Input<string>;
+    }
+
     export interface WatchlistEntityCount {
         /**
          * (Output)
@@ -15532,6 +15617,77 @@ export namespace cloudtasks {
     }
 }
 
+export namespace colab {
+    export interface RuntimeTemplateDataPersistentDiskSpec {
+        /**
+         * The disk size of the runtime in GB. If specified, the diskType must also be specified. The minimum size is 10GB and the maximum is 65536GB.
+         */
+        diskSizeGb?: pulumi.Input<string>;
+        /**
+         * The type of the persistent disk.
+         */
+        diskType?: pulumi.Input<string>;
+    }
+
+    export interface RuntimeTemplateEncryptionSpec {
+        /**
+         * The Cloud KMS encryption key (customer-managed encryption key) used to protect the runtime.
+         */
+        kmsKeyName?: pulumi.Input<string>;
+    }
+
+    export interface RuntimeTemplateEucConfig {
+        /**
+         * Disable end user credential access for the runtime.
+         */
+        eucDisabled?: pulumi.Input<boolean>;
+    }
+
+    export interface RuntimeTemplateIdleShutdownConfig {
+        /**
+         * The duration after which the runtime is automatically shut down. An input of 0s disables the idle shutdown feature, and a valid range is [10m, 24h].
+         */
+        idleTimeout?: pulumi.Input<string>;
+    }
+
+    export interface RuntimeTemplateMachineSpec {
+        /**
+         * The number of accelerators used by the runtime.
+         */
+        acceleratorCount?: pulumi.Input<number>;
+        /**
+         * The type of hardware accelerator used by the runtime. If specified, acceleratorCount must also be specified.
+         */
+        acceleratorType?: pulumi.Input<string>;
+        /**
+         * The Compute Engine machine type selected for the runtime.
+         */
+        machineType?: pulumi.Input<string>;
+    }
+
+    export interface RuntimeTemplateNetworkSpec {
+        /**
+         * Enable public internet access for the runtime.
+         */
+        enableInternetAccess?: pulumi.Input<boolean>;
+        /**
+         * The name of the VPC that this runtime is in.
+         */
+        network?: pulumi.Input<string>;
+        /**
+         * The name of the subnetwork that this runtime is in.
+         */
+        subnetwork?: pulumi.Input<string>;
+    }
+
+    export interface RuntimeTemplateShieldedVmConfig {
+        /**
+         * Enables secure boot for the runtime.
+         */
+        enableSecureBoot?: pulumi.Input<boolean>;
+    }
+}
+
 export namespace composer {
     export interface EnvironmentConfig {
         /**
@@ -19550,7 +19706,7 @@ export namespace compute {
          */
         securityPolicy?: pulumi.Input<string>;
         /**
-         * The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6 or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
+         * The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6, IPV6_ONLY or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
          */
         stackType?: pulumi.Input<string>;
         /**
@@ -20129,7 +20285,7 @@ export namespace compute {
          */
         queueCount?: pulumi.Input<number>;
         /**
-         * The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6 or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
+         * The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6, IPV6_ONLY or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
          */
         stackType?: pulumi.Input<string>;
         /**
@@ -23272,7 +23428,7 @@ export namespace compute {
          */
         queueCount?: pulumi.Input<number>;
         /**
-         * The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6 or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
+         * The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6, IPV6_ONLY or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
          */
         stackType?: pulumi.Input<string>;
         /**
@@ -49815,6 +49971,17 @@ export namespace discoveryengine {
         companyName?: pulumi.Input<string>;
     }
 
+    export interface DataStoreAdvancedSiteSearchConfig {
+        /**
+         * If set true, automatic refresh is disabled for the DataStore.
+         */
+        disableAutomaticRefresh?: pulumi.Input<boolean>;
+        /**
+         * If set true, initial indexing is disabled for the DataStore.
+         */
+        disableInitialIndex?: pulumi.Input<boolean>;
+    }
+
     export interface DataStoreDocumentProcessingConfig {
         /**
          * Whether chunking mode is enabled.
@@ -68615,6 +68782,45 @@ export namespace osconfig {
     }
 }
 
+export namespace parametermanager {
+    export interface ParameterPolicyMember {
+        /**
+         * (Output)
+         * IAM policy binding member referring to a Google Cloud resource by user-assigned name. If a
+         * resource is deleted and recreated with the same name, the binding will be applicable to the
+         * new resource. Format:
+         * `principal://parametermanager.googleapis.com/projects/{{project}}/name/locations/global/parameters/{{parameter_id}}`
+         */
+        iamPolicyNamePrincipal?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * IAM policy binding member referring to a Google Cloud resource by system-assigned unique identifier.
+         * If a resource is deleted and recreated with the same name, the binding will not be applicable to the
+         * new resource. Format:
+         * `principal://parametermanager.googleapis.com/projects/{{project}}/uid/locations/global/parameters/{{uid}}`
+         */
+        iamPolicyUidPrincipal?: pulumi.Input<string>;
+    }
+
+    export interface RegionalParameterPolicyMember {
+        /**
+         * (Output)
+         * IAM policy binding member referring to a Google Cloud resource by user-assigned name. If a resource is
+         * deleted and recreated with the same name, the binding will be applicable to the new resource. Format:
+         * `principal://parametermanager.googleapis.com/projects/{{project}}/name/locations/{{location}}/parameters/{{parameter_id}}`
+         */
+        iamPolicyNamePrincipal?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * IAM policy binding member referring to a Google Cloud resource by system-assigned unique identifier. If
+         * a resource is deleted and recreated with the same name, the binding will not be applicable to the new
+         * resource. Format:
+         * `principal://parametermanager.googleapis.com/projects/{{project}}/uid/locations/{{location}}/parameters/{{uid}}`
+         */
+        iamPolicyUidPrincipal?: pulumi.Input<string>;
+    }
+}
+
 export namespace privilegedaccessmanager {
     export interface EntitlementAdditionalNotificationTargets {
         /**
@@ -71973,6 +72179,17 @@ export namespace sql {
          * value is checked during the SSL handshake.
          */
         verifyServerCertificate?: pulumi.Input<boolean>;
+    }
+
+    export interface DatabaseInstanceReplicationCluster {
+        /**
+         * Read-only field that indicates whether the replica is a DR replica.
+         */
+        drReplica?: pulumi.Input<boolean>;
+        /**
+         * If the instance is a primary instance, then this field identifies the disaster recovery (DR) replica. The standard format of this field is "your-project:your-instance". You can also set this field to "your-instance", but cloud SQL backend will convert it to the aforementioned standard format.
+         */
+        failoverDrReplicaName?: pulumi.Input<string>;
     }
 
     export interface DatabaseInstanceRestoreBackupContext {
