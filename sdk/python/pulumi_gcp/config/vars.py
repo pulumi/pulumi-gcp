@@ -210,6 +210,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('cloudfunctions2CustomEndpoint')
 
     @property
+    def colab_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('colabCustomEndpoint')
+
+    @property
     def composer_custom_endpoint(self) -> Optional[str]:
         return __config__.get('composerCustomEndpoint')
 
@@ -548,6 +552,14 @@ class _ExportableConfig(types.ModuleType):
     @property
     def parallelstore_custom_endpoint(self) -> Optional[str]:
         return __config__.get('parallelstoreCustomEndpoint')
+
+    @property
+    def parameter_manager_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('parameterManagerCustomEndpoint')
+
+    @property
+    def parameter_manager_regional_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('parameterManagerRegionalCustomEndpoint')
 
     @property
     def privateca_custom_endpoint(self) -> Optional[str]:

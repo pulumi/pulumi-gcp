@@ -239,9 +239,9 @@ namespace Pulumi.Gcp.Sql
     /// });
     /// ```
     /// 
-    /// ## Switchover (SQL Server Only)
+    /// ## Switchover
     /// 
-    /// Users can perform a switchover on any direct `cascadable` replica by following the steps below.
+    /// Users can perform a switchover on a replica by following the steps below.
     /// 
     ///   ~&gt;**WARNING:** Failure to follow these steps can lead to data loss (You will be warned during plan stage). To prevent data loss during a switchover, please verify your plan with the checklist below.
     /// 
@@ -249,22 +249,26 @@ namespace Pulumi.Gcp.Sql
     /// 
     /// ### Steps to Invoke Switchover
     /// 
-    /// Create a `cascadable` replica in a different region from the primary (`cascadable_replica` is set to true in `replica_configuration`)
+    /// MySQL/PostgreSQL: Create a cross-region, Enterprise Plus edition primary and replica pair, then set the value of primary's `replication_cluster.failover_dr_replica_name` as the replica.
+    /// 
+    /// SQL Server: Create a `cascadable` replica in a different region from the primary (`cascadable_replica` is set to true in `replica_configuration`)
     /// 
     /// #### Invoking switchover in the replica resource:
     /// 1. Change instance_type from `READ_REPLICA_INSTANCE` to `CLOUD_SQL_INSTANCE`
     /// 2. Remove `master_instance_name`
-    /// 3. Remove `replica_configuration`
+    /// 3. (SQL Server) Remove `replica_configuration`
     /// 4. Add current primary's name to the replica's `replica_names` list
+    /// 5. (MySQL/PostgreSQL) Add current primary's name to the replica's `replication_cluster.failover_dr_replica_name`.
+    /// 6. (MySQL/PostgreSQL) Adjust `backup_configuration`. See Switchover Guide for details.
     /// 
     /// #### Updating the primary resource:
     /// 1. Change `instance_type` from `CLOUD_SQL_INSTANCE` to `READ_REPLICA_INSTANCE`
     /// 2. Set `master_instance_name` to the original replica (which will be primary after switchover)
-    /// 3. Set `replica_configuration` and set `cascadable_replica` to `true`
+    /// 3. (SQL Server) Set `replica_configuration` and set `cascadable_replica` to `true`
     /// 4. Remove original replica from `replica_names`
-    ///    
-    ///     &gt; **NOTE**: Do **not** delete the replica_names field, even if it has no replicas remaining. Set replica_names = [ ] to indicate it having no replicas.
-    /// 
+    ///    * **NOTE**: Do **not** delete the replica_names field, even if it has no replicas remaining. Set replica_names = [ ] to indicate it having no replicas.
+    /// 5. (MySQL/PostgreSQL) Set `replication_cluster.failover_dr_replica_name` as the empty string.
+    /// 6. (MySQL/PostgreSQL) Adjust `backup_configuration`. See Switchover Guide for details.
     /// #### Plan and verify that:
     /// - `pulumi preview` outputs **"0 to add, 0 to destroy"**
     /// - `pulumi preview` does not say **"must be replaced"** for any resource
@@ -450,6 +454,13 @@ namespace Pulumi.Gcp.Sql
         /// </summary>
         [Output("replicaNames")]
         public Output<ImmutableArray<string>> ReplicaNames { get; private set; } = null!;
+
+        /// <summary>
+        /// A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only
+        /// after both the primary and replica are created.
+        /// </summary>
+        [Output("replicationCluster")]
+        public Output<Outputs.DatabaseInstanceReplicationCluster> ReplicationCluster { get; private set; } = null!;
 
         /// <summary>
         /// The context needed to restore the database to a backup run. This field will
@@ -656,6 +667,13 @@ namespace Pulumi.Gcp.Sql
             get => _replicaNames ?? (_replicaNames = new InputList<string>());
             set => _replicaNames = value;
         }
+
+        /// <summary>
+        /// A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only
+        /// after both the primary and replica are created.
+        /// </summary>
+        [Input("replicationCluster")]
+        public Input<Inputs.DatabaseInstanceReplicationClusterArgs>? ReplicationCluster { get; set; }
 
         /// <summary>
         /// The context needed to restore the database to a backup run. This field will
@@ -869,6 +887,13 @@ namespace Pulumi.Gcp.Sql
             get => _replicaNames ?? (_replicaNames = new InputList<string>());
             set => _replicaNames = value;
         }
+
+        /// <summary>
+        /// A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only
+        /// after both the primary and replica are created.
+        /// </summary>
+        [Input("replicationCluster")]
+        public Input<Inputs.DatabaseInstanceReplicationClusterGetArgs>? ReplicationCluster { get; set; }
 
         /// <summary>
         /// The context needed to restore the database to a backup run. This field will

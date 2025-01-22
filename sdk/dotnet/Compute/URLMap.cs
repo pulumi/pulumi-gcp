@@ -16,6 +16,8 @@ namespace Pulumi.Gcp.Compute
     /// To get more information about UrlMap, see:
     /// 
     /// * [API documentation](https://cloud.google.com/compute/docs/reference/rest/v1/urlMaps)
+    /// * How-to Guides
+    ///     * [Official Documentation](https://cloud.google.com/load-balancing/docs/url-map-concepts)
     /// 
     /// ## Example Usage
     /// 

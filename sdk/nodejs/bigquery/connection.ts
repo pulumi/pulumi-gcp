@@ -249,7 +249,7 @@ import * as utilities from "../utilities";
  * const user = new gcp.sql.User("user", {
  *     name: "user",
  *     instance: instance.name,
- *     password: "tf-test-my-password_77884",
+ *     password: "tf-test-my-password_15222",
  * });
  * const bqSa = gcp.bigquery.getDefaultServiceAccount({});
  * const keySaUser = new gcp.kms.CryptoKeyIAMMember("key_sa_user", {

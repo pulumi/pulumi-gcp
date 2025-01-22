@@ -568,7 +568,7 @@ type Subnetwork struct {
 	SendSecondaryIpRangeIfEmpty pulumi.BoolPtrOutput `pulumi:"sendSecondaryIpRangeIfEmpty"`
 	// The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
 	// If not specified IPV4_ONLY will be used.
-	// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+	// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`, `IPV6_ONLY`.
 	StackType pulumi.StringOutput `pulumi:"stackType"`
 	// The unique identifier number for the resource. This identifier is defined by the server.
 	SubnetworkId pulumi.IntOutput `pulumi:"subnetworkId"`
@@ -706,7 +706,7 @@ type subnetworkState struct {
 	SendSecondaryIpRangeIfEmpty *bool `pulumi:"sendSecondaryIpRangeIfEmpty"`
 	// The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
 	// If not specified IPV4_ONLY will be used.
-	// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+	// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`, `IPV6_ONLY`.
 	StackType *string `pulumi:"stackType"`
 	// The unique identifier number for the resource. This identifier is defined by the server.
 	SubnetworkId *int `pulumi:"subnetworkId"`
@@ -812,7 +812,7 @@ type SubnetworkState struct {
 	SendSecondaryIpRangeIfEmpty pulumi.BoolPtrInput
 	// The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
 	// If not specified IPV4_ONLY will be used.
-	// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+	// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`, `IPV6_ONLY`.
 	StackType pulumi.StringPtrInput
 	// The unique identifier number for the resource. This identifier is defined by the server.
 	SubnetworkId pulumi.IntPtrInput
@@ -907,7 +907,7 @@ type subnetworkArgs struct {
 	SendSecondaryIpRangeIfEmpty *bool `pulumi:"sendSecondaryIpRangeIfEmpty"`
 	// The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
 	// If not specified IPV4_ONLY will be used.
-	// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+	// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`, `IPV6_ONLY`.
 	StackType *string `pulumi:"stackType"`
 }
 
@@ -997,7 +997,7 @@ type SubnetworkArgs struct {
 	SendSecondaryIpRangeIfEmpty pulumi.BoolPtrInput
 	// The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
 	// If not specified IPV4_ONLY will be used.
-	// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+	// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`, `IPV6_ONLY`.
 	StackType pulumi.StringPtrInput
 }
 
@@ -1256,7 +1256,7 @@ func (o SubnetworkOutput) SendSecondaryIpRangeIfEmpty() pulumi.BoolPtrOutput {
 
 // The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
 // If not specified IPV4_ONLY will be used.
-// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`, `IPV6_ONLY`.
 func (o SubnetworkOutput) StackType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Subnetwork) pulumi.StringOutput { return v.StackType }).(pulumi.StringOutput)
 }

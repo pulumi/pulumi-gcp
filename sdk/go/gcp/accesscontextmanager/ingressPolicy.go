@@ -32,6 +32,8 @@ import (
 type IngressPolicy struct {
 	pulumi.CustomResourceState
 
+	// The name of the Access Policy this resource belongs to.
+	AccessPolicyId pulumi.StringOutput `pulumi:"accessPolicyId"`
 	// The name of the Service Perimeter to add this resource to.
 	//
 	// ***
@@ -76,6 +78,8 @@ func GetIngressPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering IngressPolicy resources.
 type ingressPolicyState struct {
+	// The name of the Access Policy this resource belongs to.
+	AccessPolicyId *string `pulumi:"accessPolicyId"`
 	// The name of the Service Perimeter to add this resource to.
 	//
 	// ***
@@ -85,6 +89,8 @@ type ingressPolicyState struct {
 }
 
 type IngressPolicyState struct {
+	// The name of the Access Policy this resource belongs to.
+	AccessPolicyId pulumi.StringPtrInput
 	// The name of the Service Perimeter to add this resource to.
 	//
 	// ***
@@ -201,6 +207,11 @@ func (o IngressPolicyOutput) ToIngressPolicyOutput() IngressPolicyOutput {
 
 func (o IngressPolicyOutput) ToIngressPolicyOutputWithContext(ctx context.Context) IngressPolicyOutput {
 	return o
+}
+
+// The name of the Access Policy this resource belongs to.
+func (o IngressPolicyOutput) AccessPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *IngressPolicy) pulumi.StringOutput { return v.AccessPolicyId }).(pulumi.StringOutput)
 }
 
 // The name of the Service Perimeter to add this resource to.

@@ -70,6 +70,7 @@ export interface GetDatabaseInstanceResult {
     readonly region: string;
     readonly replicaConfigurations: outputs.sql.GetDatabaseInstanceReplicaConfiguration[];
     readonly replicaNames: string[];
+    readonly replicationClusters: outputs.sql.GetDatabaseInstanceReplicationCluster[];
     readonly restoreBackupContexts: outputs.sql.GetDatabaseInstanceRestoreBackupContext[];
     readonly rootPassword: string;
     readonly selfLink: string;

@@ -51,6 +51,7 @@ import * as cloudrun from "./cloudrun";
 import * as cloudrunv2 from "./cloudrunv2";
 import * as cloudscheduler from "./cloudscheduler";
 import * as cloudtasks from "./cloudtasks";
+import * as colab from "./colab";
 import * as composer from "./composer";
 import * as compute from "./compute";
 import * as config from "./config";
@@ -110,6 +111,7 @@ import * as orgpolicy from "./orgpolicy";
 import * as osconfig from "./osconfig";
 import * as oslogin from "./oslogin";
 import * as parallelstore from "./parallelstore";
+import * as parametermanager from "./parametermanager";
 import * as privilegedaccessmanager from "./privilegedaccessmanager";
 import * as projects from "./projects";
 import * as pubsub from "./pubsub";
@@ -180,6 +182,7 @@ export {
     cloudrunv2,
     cloudscheduler,
     cloudtasks,
+    colab,
     composer,
     compute,
     config,
@@ -239,6 +242,7 @@ export {
     osconfig,
     oslogin,
     parallelstore,
+    parametermanager,
     privilegedaccessmanager,
     projects,
     pubsub,

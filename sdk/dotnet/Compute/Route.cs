@@ -349,8 +349,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string> NextHopInstanceZone { get; private set; } = null!;
 
         /// <summary>
-        /// Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance,
-        /// distance, and available bandwidth between regions.
+        /// Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance, distance, and available bandwidth between regions.
         /// </summary>
         [Output("nextHopInterRegionCost")]
         public Output<string> NextHopInterRegionCost { get; private set; } = null!;
@@ -374,8 +373,7 @@ namespace Pulumi.Gcp.Compute
         public Output<string> NextHopNetwork { get; private set; } = null!;
 
         /// <summary>
-        /// Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or
-        /// INCOMPLETE.
+        /// Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
         /// </summary>
         [Output("nextHopOrigin")]
         public Output<string> NextHopOrigin { get; private set; } = null!;
@@ -681,8 +679,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? NextHopInstanceZone { get; set; }
 
         /// <summary>
-        /// Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance,
-        /// distance, and available bandwidth between regions.
+        /// Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance, distance, and available bandwidth between regions.
         /// </summary>
         [Input("nextHopInterRegionCost")]
         public Input<string>? NextHopInterRegionCost { get; set; }
@@ -706,8 +703,7 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? NextHopNetwork { get; set; }
 
         /// <summary>
-        /// Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or
-        /// INCOMPLETE.
+        /// Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
         /// </summary>
         [Input("nextHopOrigin")]
         public Input<string>? NextHopOrigin { get; set; }

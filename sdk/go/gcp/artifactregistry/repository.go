@@ -350,6 +350,21 @@ import (
 //				CleanupPolicyDryRun: pulumi.Bool(false),
 //				CleanupPolicies: artifactregistry.RepositoryCleanupPolicyArray{
 //					&artifactregistry.RepositoryCleanupPolicyArgs{
+//						Id:     pulumi.String("delete-untagged"),
+//						Action: pulumi.String("DELETE"),
+//						Condition: &artifactregistry.RepositoryCleanupPolicyConditionArgs{
+//							TagState: pulumi.String("UNTAGGED"),
+//						},
+//					},
+//					&artifactregistry.RepositoryCleanupPolicyArgs{
+//						Id:     pulumi.String("keep-new-untagged"),
+//						Action: pulumi.String("KEEP"),
+//						Condition: &artifactregistry.RepositoryCleanupPolicyConditionArgs{
+//							TagState:  pulumi.String("UNTAGGED"),
+//							NewerThan: pulumi.String("7d"),
+//						},
+//					},
+//					&artifactregistry.RepositoryCleanupPolicyArgs{
 //						Id:     pulumi.String("delete-prerelease"),
 //						Action: pulumi.String("DELETE"),
 //						Condition: &artifactregistry.RepositoryCleanupPolicyConditionArgs{
@@ -358,7 +373,7 @@ import (
 //								pulumi.String("alpha"),
 //								pulumi.String("v0"),
 //							},
-//							OlderThan: pulumi.String("2592000s"),
+//							OlderThan: pulumi.String("30d"),
 //						},
 //					},
 //					&artifactregistry.RepositoryCleanupPolicyArgs{

@@ -845,7 +845,7 @@ class Routine(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        test = gcp.bigquery.Dataset("test", dataset_id="tf_test_dataset_id_15222")
+        test = gcp.bigquery.Dataset("test", dataset_id="tf_test_dataset_id_81126")
         custom_masking_routine = gcp.bigquery.Routine("custom_masking_routine",
             dataset_id=test.dataset_id,
             routine_id="custom_masking_routine",
@@ -1140,7 +1140,7 @@ class Routine(pulumi.CustomResource):
         import pulumi
         import pulumi_gcp as gcp
 
-        test = gcp.bigquery.Dataset("test", dataset_id="tf_test_dataset_id_15222")
+        test = gcp.bigquery.Dataset("test", dataset_id="tf_test_dataset_id_81126")
         custom_masking_routine = gcp.bigquery.Routine("custom_masking_routine",
             dataset_id=test.dataset_id,
             routine_id="custom_masking_routine",

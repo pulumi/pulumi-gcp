@@ -67,10 +67,12 @@ class ServicePerimeterDryRunResourceArgs:
 @pulumi.input_type
 class _ServicePerimeterDryRunResourceState:
     def __init__(__self__, *,
+                 access_policy_id: Optional[pulumi.Input[str]] = None,
                  perimeter_name: Optional[pulumi.Input[str]] = None,
                  resource: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ServicePerimeterDryRunResource resources.
+        :param pulumi.Input[str] access_policy_id: The name of the Access Policy this resource belongs to.
         :param pulumi.Input[str] perimeter_name: The name of the Service Perimeter to add this resource to.
                
                
@@ -79,10 +81,24 @@ class _ServicePerimeterDryRunResourceState:
                Currently only projects are allowed.
                Format: projects/{project_number}
         """
+        if access_policy_id is not None:
+            pulumi.set(__self__, "access_policy_id", access_policy_id)
         if perimeter_name is not None:
             pulumi.set(__self__, "perimeter_name", perimeter_name)
         if resource is not None:
             pulumi.set(__self__, "resource", resource)
+
+    @property
+    @pulumi.getter(name="accessPolicyId")
+    def access_policy_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the Access Policy this resource belongs to.
+        """
+        return pulumi.get(self, "access_policy_id")
+
+    @access_policy_id.setter
+    def access_policy_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access_policy_id", value)
 
     @property
     @pulumi.getter(name="perimeterName")
@@ -288,6 +304,7 @@ class ServicePerimeterDryRunResource(pulumi.CustomResource):
             if resource is None and not opts.urn:
                 raise TypeError("Missing required property 'resource'")
             __props__.__dict__["resource"] = resource
+            __props__.__dict__["access_policy_id"] = None
         super(ServicePerimeterDryRunResource, __self__).__init__(
             'gcp:accesscontextmanager/servicePerimeterDryRunResource:ServicePerimeterDryRunResource',
             resource_name,
@@ -298,6 +315,7 @@ class ServicePerimeterDryRunResource(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            access_policy_id: Optional[pulumi.Input[str]] = None,
             perimeter_name: Optional[pulumi.Input[str]] = None,
             resource: Optional[pulumi.Input[str]] = None) -> 'ServicePerimeterDryRunResource':
         """
@@ -307,6 +325,7 @@ class ServicePerimeterDryRunResource(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] access_policy_id: The name of the Access Policy this resource belongs to.
         :param pulumi.Input[str] perimeter_name: The name of the Service Perimeter to add this resource to.
                
                
@@ -319,9 +338,18 @@ class ServicePerimeterDryRunResource(pulumi.CustomResource):
 
         __props__ = _ServicePerimeterDryRunResourceState.__new__(_ServicePerimeterDryRunResourceState)
 
+        __props__.__dict__["access_policy_id"] = access_policy_id
         __props__.__dict__["perimeter_name"] = perimeter_name
         __props__.__dict__["resource"] = resource
         return ServicePerimeterDryRunResource(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="accessPolicyId")
+    def access_policy_id(self) -> pulumi.Output[str]:
+        """
+        The name of the Access Policy this resource belongs to.
+        """
+        return pulumi.get(self, "access_policy_id")
 
     @property
     @pulumi.getter(name="perimeterName")

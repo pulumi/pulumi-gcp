@@ -42,7 +42,7 @@ public final class InterconnectAttachmentState extends com.pulumi.resources.Reso
      * For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth.
      * Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED,
      * Defaults to BPS_10G
-     * Possible values are: `BPS_50M`, `BPS_100M`, `BPS_200M`, `BPS_300M`, `BPS_400M`, `BPS_500M`, `BPS_1G`, `BPS_2G`, `BPS_5G`, `BPS_10G`, `BPS_20G`, `BPS_50G`.
+     * Possible values are: `BPS_50M`, `BPS_100M`, `BPS_200M`, `BPS_300M`, `BPS_400M`, `BPS_500M`, `BPS_1G`, `BPS_2G`, `BPS_5G`, `BPS_10G`, `BPS_20G`, `BPS_50G`, `BPS_100G`.
      * 
      */
     @Import(name="bandwidth")
@@ -54,7 +54,7 @@ public final class InterconnectAttachmentState extends com.pulumi.resources.Reso
      * For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth.
      * Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED,
      * Defaults to BPS_10G
-     * Possible values are: `BPS_50M`, `BPS_100M`, `BPS_200M`, `BPS_300M`, `BPS_400M`, `BPS_500M`, `BPS_1G`, `BPS_2G`, `BPS_5G`, `BPS_10G`, `BPS_20G`, `BPS_50G`.
+     * Possible values are: `BPS_50M`, `BPS_100M`, `BPS_200M`, `BPS_300M`, `BPS_400M`, `BPS_500M`, `BPS_1G`, `BPS_2G`, `BPS_5G`, `BPS_10G`, `BPS_20G`, `BPS_50G`, `BPS_100G`.
      * 
      */
     public Optional<Output<String>> bandwidth() {
@@ -679,7 +679,7 @@ public final class InterconnectAttachmentState extends com.pulumi.resources.Reso
          * For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth.
          * Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED,
          * Defaults to BPS_10G
-         * Possible values are: `BPS_50M`, `BPS_100M`, `BPS_200M`, `BPS_300M`, `BPS_400M`, `BPS_500M`, `BPS_1G`, `BPS_2G`, `BPS_5G`, `BPS_10G`, `BPS_20G`, `BPS_50G`.
+         * Possible values are: `BPS_50M`, `BPS_100M`, `BPS_200M`, `BPS_300M`, `BPS_400M`, `BPS_500M`, `BPS_1G`, `BPS_2G`, `BPS_5G`, `BPS_10G`, `BPS_20G`, `BPS_50G`, `BPS_100G`.
          * 
          * @return builder
          * 
@@ -695,7 +695,7 @@ public final class InterconnectAttachmentState extends com.pulumi.resources.Reso
          * For attachments of type PARTNER, the Google Partner that is operating the interconnect must set the bandwidth.
          * Output only for PARTNER type, mutable for PARTNER_PROVIDER and DEDICATED,
          * Defaults to BPS_10G
-         * Possible values are: `BPS_50M`, `BPS_100M`, `BPS_200M`, `BPS_300M`, `BPS_400M`, `BPS_500M`, `BPS_1G`, `BPS_2G`, `BPS_5G`, `BPS_10G`, `BPS_20G`, `BPS_50G`.
+         * Possible values are: `BPS_50M`, `BPS_100M`, `BPS_200M`, `BPS_300M`, `BPS_400M`, `BPS_500M`, `BPS_1G`, `BPS_2G`, `BPS_5G`, `BPS_10G`, `BPS_20G`, `BPS_50G`, `BPS_100G`.
          * 
          * @return builder
          * 

@@ -511,16 +511,14 @@ public class Route extends com.pulumi.resources.CustomResource {
         return this.nextHopInstanceZone;
     }
     /**
-     * Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance,
-     * distance, and available bandwidth between regions.
+     * Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance, distance, and available bandwidth between regions.
      * 
      */
     @Export(name="nextHopInterRegionCost", refs={String.class}, tree="[0]")
     private Output<String> nextHopInterRegionCost;
 
     /**
-     * @return Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance,
-     * distance, and available bandwidth between regions.
+     * @return Internal fixed region-to-region cost that Google Cloud calculates based on factors such as network performance, distance, and available bandwidth between regions.
      * 
      */
     public Output<String> nextHopInterRegionCost() {
@@ -569,16 +567,14 @@ public class Route extends com.pulumi.resources.CustomResource {
         return this.nextHopNetwork;
     }
     /**
-     * Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or
-     * INCOMPLETE.
+     * Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
      * 
      */
     @Export(name="nextHopOrigin", refs={String.class}, tree="[0]")
     private Output<String> nextHopOrigin;
 
     /**
-     * @return Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or
-     * INCOMPLETE.
+     * @return Indicates the origin of the route. Can be IGP (Interior Gateway Protocol), EGP (Exterior Gateway Protocol), or INCOMPLETE.
      * 
      */
     public Output<String> nextHopOrigin() {

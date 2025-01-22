@@ -754,6 +754,162 @@ func (o DatabaseInstanceReplicaConfigurationPtrOutput) VerifyServerCertificate()
 	}).(pulumi.BoolPtrOutput)
 }
 
+type DatabaseInstanceReplicationCluster struct {
+	// Read-only field that indicates whether the replica is a DR replica.
+	DrReplica *bool `pulumi:"drReplica"`
+	// If the instance is a primary instance, then this field identifies the disaster recovery (DR) replica. The standard format of this field is "your-project:your-instance". You can also set this field to "your-instance", but cloud SQL backend will convert it to the aforementioned standard format.
+	FailoverDrReplicaName *string `pulumi:"failoverDrReplicaName"`
+}
+
+// DatabaseInstanceReplicationClusterInput is an input type that accepts DatabaseInstanceReplicationClusterArgs and DatabaseInstanceReplicationClusterOutput values.
+// You can construct a concrete instance of `DatabaseInstanceReplicationClusterInput` via:
+//
+//	DatabaseInstanceReplicationClusterArgs{...}
+type DatabaseInstanceReplicationClusterInput interface {
+	pulumi.Input
+
+	ToDatabaseInstanceReplicationClusterOutput() DatabaseInstanceReplicationClusterOutput
+	ToDatabaseInstanceReplicationClusterOutputWithContext(context.Context) DatabaseInstanceReplicationClusterOutput
+}
+
+type DatabaseInstanceReplicationClusterArgs struct {
+	// Read-only field that indicates whether the replica is a DR replica.
+	DrReplica pulumi.BoolPtrInput `pulumi:"drReplica"`
+	// If the instance is a primary instance, then this field identifies the disaster recovery (DR) replica. The standard format of this field is "your-project:your-instance". You can also set this field to "your-instance", but cloud SQL backend will convert it to the aforementioned standard format.
+	FailoverDrReplicaName pulumi.StringPtrInput `pulumi:"failoverDrReplicaName"`
+}
+
+func (DatabaseInstanceReplicationClusterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseInstanceReplicationCluster)(nil)).Elem()
+}
+
+func (i DatabaseInstanceReplicationClusterArgs) ToDatabaseInstanceReplicationClusterOutput() DatabaseInstanceReplicationClusterOutput {
+	return i.ToDatabaseInstanceReplicationClusterOutputWithContext(context.Background())
+}
+
+func (i DatabaseInstanceReplicationClusterArgs) ToDatabaseInstanceReplicationClusterOutputWithContext(ctx context.Context) DatabaseInstanceReplicationClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceReplicationClusterOutput)
+}
+
+func (i DatabaseInstanceReplicationClusterArgs) ToDatabaseInstanceReplicationClusterPtrOutput() DatabaseInstanceReplicationClusterPtrOutput {
+	return i.ToDatabaseInstanceReplicationClusterPtrOutputWithContext(context.Background())
+}
+
+func (i DatabaseInstanceReplicationClusterArgs) ToDatabaseInstanceReplicationClusterPtrOutputWithContext(ctx context.Context) DatabaseInstanceReplicationClusterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceReplicationClusterOutput).ToDatabaseInstanceReplicationClusterPtrOutputWithContext(ctx)
+}
+
+// DatabaseInstanceReplicationClusterPtrInput is an input type that accepts DatabaseInstanceReplicationClusterArgs, DatabaseInstanceReplicationClusterPtr and DatabaseInstanceReplicationClusterPtrOutput values.
+// You can construct a concrete instance of `DatabaseInstanceReplicationClusterPtrInput` via:
+//
+//	        DatabaseInstanceReplicationClusterArgs{...}
+//
+//	or:
+//
+//	        nil
+type DatabaseInstanceReplicationClusterPtrInput interface {
+	pulumi.Input
+
+	ToDatabaseInstanceReplicationClusterPtrOutput() DatabaseInstanceReplicationClusterPtrOutput
+	ToDatabaseInstanceReplicationClusterPtrOutputWithContext(context.Context) DatabaseInstanceReplicationClusterPtrOutput
+}
+
+type databaseInstanceReplicationClusterPtrType DatabaseInstanceReplicationClusterArgs
+
+func DatabaseInstanceReplicationClusterPtr(v *DatabaseInstanceReplicationClusterArgs) DatabaseInstanceReplicationClusterPtrInput {
+	return (*databaseInstanceReplicationClusterPtrType)(v)
+}
+
+func (*databaseInstanceReplicationClusterPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseInstanceReplicationCluster)(nil)).Elem()
+}
+
+func (i *databaseInstanceReplicationClusterPtrType) ToDatabaseInstanceReplicationClusterPtrOutput() DatabaseInstanceReplicationClusterPtrOutput {
+	return i.ToDatabaseInstanceReplicationClusterPtrOutputWithContext(context.Background())
+}
+
+func (i *databaseInstanceReplicationClusterPtrType) ToDatabaseInstanceReplicationClusterPtrOutputWithContext(ctx context.Context) DatabaseInstanceReplicationClusterPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DatabaseInstanceReplicationClusterPtrOutput)
+}
+
+type DatabaseInstanceReplicationClusterOutput struct{ *pulumi.OutputState }
+
+func (DatabaseInstanceReplicationClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DatabaseInstanceReplicationCluster)(nil)).Elem()
+}
+
+func (o DatabaseInstanceReplicationClusterOutput) ToDatabaseInstanceReplicationClusterOutput() DatabaseInstanceReplicationClusterOutput {
+	return o
+}
+
+func (o DatabaseInstanceReplicationClusterOutput) ToDatabaseInstanceReplicationClusterOutputWithContext(ctx context.Context) DatabaseInstanceReplicationClusterOutput {
+	return o
+}
+
+func (o DatabaseInstanceReplicationClusterOutput) ToDatabaseInstanceReplicationClusterPtrOutput() DatabaseInstanceReplicationClusterPtrOutput {
+	return o.ToDatabaseInstanceReplicationClusterPtrOutputWithContext(context.Background())
+}
+
+func (o DatabaseInstanceReplicationClusterOutput) ToDatabaseInstanceReplicationClusterPtrOutputWithContext(ctx context.Context) DatabaseInstanceReplicationClusterPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DatabaseInstanceReplicationCluster) *DatabaseInstanceReplicationCluster {
+		return &v
+	}).(DatabaseInstanceReplicationClusterPtrOutput)
+}
+
+// Read-only field that indicates whether the replica is a DR replica.
+func (o DatabaseInstanceReplicationClusterOutput) DrReplica() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceReplicationCluster) *bool { return v.DrReplica }).(pulumi.BoolPtrOutput)
+}
+
+// If the instance is a primary instance, then this field identifies the disaster recovery (DR) replica. The standard format of this field is "your-project:your-instance". You can also set this field to "your-instance", but cloud SQL backend will convert it to the aforementioned standard format.
+func (o DatabaseInstanceReplicationClusterOutput) FailoverDrReplicaName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v DatabaseInstanceReplicationCluster) *string { return v.FailoverDrReplicaName }).(pulumi.StringPtrOutput)
+}
+
+type DatabaseInstanceReplicationClusterPtrOutput struct{ *pulumi.OutputState }
+
+func (DatabaseInstanceReplicationClusterPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DatabaseInstanceReplicationCluster)(nil)).Elem()
+}
+
+func (o DatabaseInstanceReplicationClusterPtrOutput) ToDatabaseInstanceReplicationClusterPtrOutput() DatabaseInstanceReplicationClusterPtrOutput {
+	return o
+}
+
+func (o DatabaseInstanceReplicationClusterPtrOutput) ToDatabaseInstanceReplicationClusterPtrOutputWithContext(ctx context.Context) DatabaseInstanceReplicationClusterPtrOutput {
+	return o
+}
+
+func (o DatabaseInstanceReplicationClusterPtrOutput) Elem() DatabaseInstanceReplicationClusterOutput {
+	return o.ApplyT(func(v *DatabaseInstanceReplicationCluster) DatabaseInstanceReplicationCluster {
+		if v != nil {
+			return *v
+		}
+		var ret DatabaseInstanceReplicationCluster
+		return ret
+	}).(DatabaseInstanceReplicationClusterOutput)
+}
+
+// Read-only field that indicates whether the replica is a DR replica.
+func (o DatabaseInstanceReplicationClusterPtrOutput) DrReplica() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceReplicationCluster) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DrReplica
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If the instance is a primary instance, then this field identifies the disaster recovery (DR) replica. The standard format of this field is "your-project:your-instance". You can also set this field to "your-instance", but cloud SQL backend will convert it to the aforementioned standard format.
+func (o DatabaseInstanceReplicationClusterPtrOutput) FailoverDrReplicaName() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *DatabaseInstanceReplicationCluster) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FailoverDrReplicaName
+	}).(pulumi.StringPtrOutput)
+}
+
 type DatabaseInstanceRestoreBackupContext struct {
 	// The ID of the backup run to restore from.
 	BackupRunId int `pulumi:"backupRunId"`
@@ -5505,6 +5661,112 @@ func (o GetDatabaseInstanceReplicaConfigurationArrayOutput) Index(i pulumi.IntIn
 	}).(GetDatabaseInstanceReplicaConfigurationOutput)
 }
 
+type GetDatabaseInstanceReplicationCluster struct {
+	// Read-only field that indicates whether the replica is a DR replica.
+	DrReplica bool `pulumi:"drReplica"`
+	// If the instance is a primary instance, then this field identifies the disaster recovery (DR) replica. The standard format of this field is "your-project:your-instance". You can also set this field to "your-instance", but cloud SQL backend will convert it to the aforementioned standard format.
+	FailoverDrReplicaName string `pulumi:"failoverDrReplicaName"`
+}
+
+// GetDatabaseInstanceReplicationClusterInput is an input type that accepts GetDatabaseInstanceReplicationClusterArgs and GetDatabaseInstanceReplicationClusterOutput values.
+// You can construct a concrete instance of `GetDatabaseInstanceReplicationClusterInput` via:
+//
+//	GetDatabaseInstanceReplicationClusterArgs{...}
+type GetDatabaseInstanceReplicationClusterInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstanceReplicationClusterOutput() GetDatabaseInstanceReplicationClusterOutput
+	ToGetDatabaseInstanceReplicationClusterOutputWithContext(context.Context) GetDatabaseInstanceReplicationClusterOutput
+}
+
+type GetDatabaseInstanceReplicationClusterArgs struct {
+	// Read-only field that indicates whether the replica is a DR replica.
+	DrReplica pulumi.BoolInput `pulumi:"drReplica"`
+	// If the instance is a primary instance, then this field identifies the disaster recovery (DR) replica. The standard format of this field is "your-project:your-instance". You can also set this field to "your-instance", but cloud SQL backend will convert it to the aforementioned standard format.
+	FailoverDrReplicaName pulumi.StringInput `pulumi:"failoverDrReplicaName"`
+}
+
+func (GetDatabaseInstanceReplicationClusterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstanceReplicationCluster)(nil)).Elem()
+}
+
+func (i GetDatabaseInstanceReplicationClusterArgs) ToGetDatabaseInstanceReplicationClusterOutput() GetDatabaseInstanceReplicationClusterOutput {
+	return i.ToGetDatabaseInstanceReplicationClusterOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstanceReplicationClusterArgs) ToGetDatabaseInstanceReplicationClusterOutputWithContext(ctx context.Context) GetDatabaseInstanceReplicationClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceReplicationClusterOutput)
+}
+
+// GetDatabaseInstanceReplicationClusterArrayInput is an input type that accepts GetDatabaseInstanceReplicationClusterArray and GetDatabaseInstanceReplicationClusterArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseInstanceReplicationClusterArrayInput` via:
+//
+//	GetDatabaseInstanceReplicationClusterArray{ GetDatabaseInstanceReplicationClusterArgs{...} }
+type GetDatabaseInstanceReplicationClusterArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstanceReplicationClusterArrayOutput() GetDatabaseInstanceReplicationClusterArrayOutput
+	ToGetDatabaseInstanceReplicationClusterArrayOutputWithContext(context.Context) GetDatabaseInstanceReplicationClusterArrayOutput
+}
+
+type GetDatabaseInstanceReplicationClusterArray []GetDatabaseInstanceReplicationClusterInput
+
+func (GetDatabaseInstanceReplicationClusterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstanceReplicationCluster)(nil)).Elem()
+}
+
+func (i GetDatabaseInstanceReplicationClusterArray) ToGetDatabaseInstanceReplicationClusterArrayOutput() GetDatabaseInstanceReplicationClusterArrayOutput {
+	return i.ToGetDatabaseInstanceReplicationClusterArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstanceReplicationClusterArray) ToGetDatabaseInstanceReplicationClusterArrayOutputWithContext(ctx context.Context) GetDatabaseInstanceReplicationClusterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstanceReplicationClusterArrayOutput)
+}
+
+type GetDatabaseInstanceReplicationClusterOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstanceReplicationClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstanceReplicationCluster)(nil)).Elem()
+}
+
+func (o GetDatabaseInstanceReplicationClusterOutput) ToGetDatabaseInstanceReplicationClusterOutput() GetDatabaseInstanceReplicationClusterOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceReplicationClusterOutput) ToGetDatabaseInstanceReplicationClusterOutputWithContext(ctx context.Context) GetDatabaseInstanceReplicationClusterOutput {
+	return o
+}
+
+// Read-only field that indicates whether the replica is a DR replica.
+func (o GetDatabaseInstanceReplicationClusterOutput) DrReplica() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceReplicationCluster) bool { return v.DrReplica }).(pulumi.BoolOutput)
+}
+
+// If the instance is a primary instance, then this field identifies the disaster recovery (DR) replica. The standard format of this field is "your-project:your-instance". You can also set this field to "your-instance", but cloud SQL backend will convert it to the aforementioned standard format.
+func (o GetDatabaseInstanceReplicationClusterOutput) FailoverDrReplicaName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstanceReplicationCluster) string { return v.FailoverDrReplicaName }).(pulumi.StringOutput)
+}
+
+type GetDatabaseInstanceReplicationClusterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstanceReplicationClusterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstanceReplicationCluster)(nil)).Elem()
+}
+
+func (o GetDatabaseInstanceReplicationClusterArrayOutput) ToGetDatabaseInstanceReplicationClusterArrayOutput() GetDatabaseInstanceReplicationClusterArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceReplicationClusterArrayOutput) ToGetDatabaseInstanceReplicationClusterArrayOutputWithContext(ctx context.Context) GetDatabaseInstanceReplicationClusterArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstanceReplicationClusterArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstanceReplicationClusterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstanceReplicationCluster {
+		return vs[0].([]GetDatabaseInstanceReplicationCluster)[vs[1].(int)]
+	}).(GetDatabaseInstanceReplicationClusterOutput)
+}
+
 type GetDatabaseInstanceRestoreBackupContext struct {
 	// The ID of the backup run to restore from.
 	BackupRunId int `pulumi:"backupRunId"`
@@ -8045,7 +8307,9 @@ type GetDatabaseInstancesInstance struct {
 	// The configuration for replication.
 	ReplicaConfigurations []GetDatabaseInstancesInstanceReplicaConfiguration `pulumi:"replicaConfigurations"`
 	// The replicas of the instance.
-	ReplicaNames          []string                                           `pulumi:"replicaNames"`
+	ReplicaNames []string `pulumi:"replicaNames"`
+	// A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only after both the primary and replica are created.
+	ReplicationClusters   []GetDatabaseInstancesInstanceReplicationCluster   `pulumi:"replicationClusters"`
 	RestoreBackupContexts []GetDatabaseInstancesInstanceRestoreBackupContext `pulumi:"restoreBackupContexts"`
 	// Initial root password. Required for MS SQL Server.
 	RootPassword string `pulumi:"rootPassword"`
@@ -8102,7 +8366,9 @@ type GetDatabaseInstancesInstanceArgs struct {
 	// The configuration for replication.
 	ReplicaConfigurations GetDatabaseInstancesInstanceReplicaConfigurationArrayInput `pulumi:"replicaConfigurations"`
 	// The replicas of the instance.
-	ReplicaNames          pulumi.StringArrayInput                                    `pulumi:"replicaNames"`
+	ReplicaNames pulumi.StringArrayInput `pulumi:"replicaNames"`
+	// A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only after both the primary and replica are created.
+	ReplicationClusters   GetDatabaseInstancesInstanceReplicationClusterArrayInput   `pulumi:"replicationClusters"`
 	RestoreBackupContexts GetDatabaseInstancesInstanceRestoreBackupContextArrayInput `pulumi:"restoreBackupContexts"`
 	// Initial root password. Required for MS SQL Server.
 	RootPassword pulumi.StringInput `pulumi:"rootPassword"`
@@ -8259,6 +8525,13 @@ func (o GetDatabaseInstancesInstanceOutput) ReplicaConfigurations() GetDatabaseI
 // The replicas of the instance.
 func (o GetDatabaseInstancesInstanceOutput) ReplicaNames() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetDatabaseInstancesInstance) []string { return v.ReplicaNames }).(pulumi.StringArrayOutput)
+}
+
+// A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only after both the primary and replica are created.
+func (o GetDatabaseInstancesInstanceOutput) ReplicationClusters() GetDatabaseInstancesInstanceReplicationClusterArrayOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstance) []GetDatabaseInstancesInstanceReplicationCluster {
+		return v.ReplicationClusters
+	}).(GetDatabaseInstancesInstanceReplicationClusterArrayOutput)
 }
 
 func (o GetDatabaseInstancesInstanceOutput) RestoreBackupContexts() GetDatabaseInstancesInstanceRestoreBackupContextArrayOutput {
@@ -8746,6 +9019,112 @@ func (o GetDatabaseInstancesInstanceReplicaConfigurationArrayOutput) Index(i pul
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstancesInstanceReplicaConfiguration {
 		return vs[0].([]GetDatabaseInstancesInstanceReplicaConfiguration)[vs[1].(int)]
 	}).(GetDatabaseInstancesInstanceReplicaConfigurationOutput)
+}
+
+type GetDatabaseInstancesInstanceReplicationCluster struct {
+	// Read-only field that indicates whether the replica is a DR replica.
+	DrReplica bool `pulumi:"drReplica"`
+	// If the instance is a primary instance, then this field identifies the disaster recovery (DR) replica. The standard format of this field is "your-project:your-instance". You can also set this field to "your-instance", but cloud SQL backend will convert it to the aforementioned standard format.
+	FailoverDrReplicaName string `pulumi:"failoverDrReplicaName"`
+}
+
+// GetDatabaseInstancesInstanceReplicationClusterInput is an input type that accepts GetDatabaseInstancesInstanceReplicationClusterArgs and GetDatabaseInstancesInstanceReplicationClusterOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceReplicationClusterInput` via:
+//
+//	GetDatabaseInstancesInstanceReplicationClusterArgs{...}
+type GetDatabaseInstancesInstanceReplicationClusterInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceReplicationClusterOutput() GetDatabaseInstancesInstanceReplicationClusterOutput
+	ToGetDatabaseInstancesInstanceReplicationClusterOutputWithContext(context.Context) GetDatabaseInstancesInstanceReplicationClusterOutput
+}
+
+type GetDatabaseInstancesInstanceReplicationClusterArgs struct {
+	// Read-only field that indicates whether the replica is a DR replica.
+	DrReplica pulumi.BoolInput `pulumi:"drReplica"`
+	// If the instance is a primary instance, then this field identifies the disaster recovery (DR) replica. The standard format of this field is "your-project:your-instance". You can also set this field to "your-instance", but cloud SQL backend will convert it to the aforementioned standard format.
+	FailoverDrReplicaName pulumi.StringInput `pulumi:"failoverDrReplicaName"`
+}
+
+func (GetDatabaseInstancesInstanceReplicationClusterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstanceReplicationCluster)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceReplicationClusterArgs) ToGetDatabaseInstancesInstanceReplicationClusterOutput() GetDatabaseInstancesInstanceReplicationClusterOutput {
+	return i.ToGetDatabaseInstancesInstanceReplicationClusterOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceReplicationClusterArgs) ToGetDatabaseInstancesInstanceReplicationClusterOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceReplicationClusterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceReplicationClusterOutput)
+}
+
+// GetDatabaseInstancesInstanceReplicationClusterArrayInput is an input type that accepts GetDatabaseInstancesInstanceReplicationClusterArray and GetDatabaseInstancesInstanceReplicationClusterArrayOutput values.
+// You can construct a concrete instance of `GetDatabaseInstancesInstanceReplicationClusterArrayInput` via:
+//
+//	GetDatabaseInstancesInstanceReplicationClusterArray{ GetDatabaseInstancesInstanceReplicationClusterArgs{...} }
+type GetDatabaseInstancesInstanceReplicationClusterArrayInput interface {
+	pulumi.Input
+
+	ToGetDatabaseInstancesInstanceReplicationClusterArrayOutput() GetDatabaseInstancesInstanceReplicationClusterArrayOutput
+	ToGetDatabaseInstancesInstanceReplicationClusterArrayOutputWithContext(context.Context) GetDatabaseInstancesInstanceReplicationClusterArrayOutput
+}
+
+type GetDatabaseInstancesInstanceReplicationClusterArray []GetDatabaseInstancesInstanceReplicationClusterInput
+
+func (GetDatabaseInstancesInstanceReplicationClusterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstanceReplicationCluster)(nil)).Elem()
+}
+
+func (i GetDatabaseInstancesInstanceReplicationClusterArray) ToGetDatabaseInstancesInstanceReplicationClusterArrayOutput() GetDatabaseInstancesInstanceReplicationClusterArrayOutput {
+	return i.ToGetDatabaseInstancesInstanceReplicationClusterArrayOutputWithContext(context.Background())
+}
+
+func (i GetDatabaseInstancesInstanceReplicationClusterArray) ToGetDatabaseInstancesInstanceReplicationClusterArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceReplicationClusterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetDatabaseInstancesInstanceReplicationClusterArrayOutput)
+}
+
+type GetDatabaseInstancesInstanceReplicationClusterOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceReplicationClusterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetDatabaseInstancesInstanceReplicationCluster)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceReplicationClusterOutput) ToGetDatabaseInstancesInstanceReplicationClusterOutput() GetDatabaseInstancesInstanceReplicationClusterOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceReplicationClusterOutput) ToGetDatabaseInstancesInstanceReplicationClusterOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceReplicationClusterOutput {
+	return o
+}
+
+// Read-only field that indicates whether the replica is a DR replica.
+func (o GetDatabaseInstancesInstanceReplicationClusterOutput) DrReplica() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceReplicationCluster) bool { return v.DrReplica }).(pulumi.BoolOutput)
+}
+
+// If the instance is a primary instance, then this field identifies the disaster recovery (DR) replica. The standard format of this field is "your-project:your-instance". You can also set this field to "your-instance", but cloud SQL backend will convert it to the aforementioned standard format.
+func (o GetDatabaseInstancesInstanceReplicationClusterOutput) FailoverDrReplicaName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetDatabaseInstancesInstanceReplicationCluster) string { return v.FailoverDrReplicaName }).(pulumi.StringOutput)
+}
+
+type GetDatabaseInstancesInstanceReplicationClusterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetDatabaseInstancesInstanceReplicationClusterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetDatabaseInstancesInstanceReplicationCluster)(nil)).Elem()
+}
+
+func (o GetDatabaseInstancesInstanceReplicationClusterArrayOutput) ToGetDatabaseInstancesInstanceReplicationClusterArrayOutput() GetDatabaseInstancesInstanceReplicationClusterArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceReplicationClusterArrayOutput) ToGetDatabaseInstancesInstanceReplicationClusterArrayOutputWithContext(ctx context.Context) GetDatabaseInstancesInstanceReplicationClusterArrayOutput {
+	return o
+}
+
+func (o GetDatabaseInstancesInstanceReplicationClusterArrayOutput) Index(i pulumi.IntInput) GetDatabaseInstancesInstanceReplicationClusterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetDatabaseInstancesInstanceReplicationCluster {
+		return vs[0].([]GetDatabaseInstancesInstanceReplicationCluster)[vs[1].(int)]
+	}).(GetDatabaseInstancesInstanceReplicationClusterOutput)
 }
 
 type GetDatabaseInstancesInstanceRestoreBackupContext struct {
@@ -11589,6 +11968,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceIpAddressArrayInput)(nil)).Elem(), DatabaseInstanceIpAddressArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceReplicaConfigurationInput)(nil)).Elem(), DatabaseInstanceReplicaConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceReplicaConfigurationPtrInput)(nil)).Elem(), DatabaseInstanceReplicaConfigurationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceReplicationClusterInput)(nil)).Elem(), DatabaseInstanceReplicationClusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceReplicationClusterPtrInput)(nil)).Elem(), DatabaseInstanceReplicationClusterArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceRestoreBackupContextInput)(nil)).Elem(), DatabaseInstanceRestoreBackupContextArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceRestoreBackupContextPtrInput)(nil)).Elem(), DatabaseInstanceRestoreBackupContextArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DatabaseInstanceServerCaCertInput)(nil)).Elem(), DatabaseInstanceServerCaCertArgs{})
@@ -11641,6 +12022,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceIpAddressArrayInput)(nil)).Elem(), GetDatabaseInstanceIpAddressArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceReplicaConfigurationInput)(nil)).Elem(), GetDatabaseInstanceReplicaConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceReplicaConfigurationArrayInput)(nil)).Elem(), GetDatabaseInstanceReplicaConfigurationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceReplicationClusterInput)(nil)).Elem(), GetDatabaseInstanceReplicationClusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceReplicationClusterArrayInput)(nil)).Elem(), GetDatabaseInstanceReplicationClusterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceRestoreBackupContextInput)(nil)).Elem(), GetDatabaseInstanceRestoreBackupContextArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceRestoreBackupContextArrayInput)(nil)).Elem(), GetDatabaseInstanceRestoreBackupContextArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstanceServerCaCertInput)(nil)).Elem(), GetDatabaseInstanceServerCaCertArgs{})
@@ -11687,6 +12070,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceIpAddressArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceIpAddressArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceReplicaConfigurationInput)(nil)).Elem(), GetDatabaseInstancesInstanceReplicaConfigurationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceReplicaConfigurationArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceReplicaConfigurationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceReplicationClusterInput)(nil)).Elem(), GetDatabaseInstancesInstanceReplicationClusterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceReplicationClusterArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceReplicationClusterArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceRestoreBackupContextInput)(nil)).Elem(), GetDatabaseInstancesInstanceRestoreBackupContextArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceRestoreBackupContextArrayInput)(nil)).Elem(), GetDatabaseInstancesInstanceRestoreBackupContextArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetDatabaseInstancesInstanceServerCaCertInput)(nil)).Elem(), GetDatabaseInstancesInstanceServerCaCertArgs{})
@@ -11735,6 +12120,8 @@ func init() {
 	pulumi.RegisterOutputType(DatabaseInstanceIpAddressArrayOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceReplicaConfigurationOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceReplicaConfigurationPtrOutput{})
+	pulumi.RegisterOutputType(DatabaseInstanceReplicationClusterOutput{})
+	pulumi.RegisterOutputType(DatabaseInstanceReplicationClusterPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceRestoreBackupContextOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceRestoreBackupContextPtrOutput{})
 	pulumi.RegisterOutputType(DatabaseInstanceServerCaCertOutput{})
@@ -11787,6 +12174,8 @@ func init() {
 	pulumi.RegisterOutputType(GetDatabaseInstanceIpAddressArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceReplicaConfigurationOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceReplicaConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstanceReplicationClusterOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstanceReplicationClusterArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceRestoreBackupContextOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceRestoreBackupContextArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstanceServerCaCertOutput{})
@@ -11833,6 +12222,8 @@ func init() {
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceIpAddressArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceReplicaConfigurationOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceReplicaConfigurationArrayOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceReplicationClusterOutput{})
+	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceReplicationClusterArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceRestoreBackupContextOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceRestoreBackupContextArrayOutput{})
 	pulumi.RegisterOutputType(GetDatabaseInstancesInstanceServerCaCertOutput{})

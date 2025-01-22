@@ -63,20 +63,36 @@ class IngressPolicyArgs:
 @pulumi.input_type
 class _IngressPolicyState:
     def __init__(__self__, *,
+                 access_policy_id: Optional[pulumi.Input[str]] = None,
                  ingress_policy_name: Optional[pulumi.Input[str]] = None,
                  resource: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering IngressPolicy resources.
+        :param pulumi.Input[str] access_policy_id: The name of the Access Policy this resource belongs to.
         :param pulumi.Input[str] ingress_policy_name: The name of the Service Perimeter to add this resource to.
                
                
                - - -
         :param pulumi.Input[str] resource: A GCP resource that is inside of the service perimeter.
         """
+        if access_policy_id is not None:
+            pulumi.set(__self__, "access_policy_id", access_policy_id)
         if ingress_policy_name is not None:
             pulumi.set(__self__, "ingress_policy_name", ingress_policy_name)
         if resource is not None:
             pulumi.set(__self__, "resource", resource)
+
+    @property
+    @pulumi.getter(name="accessPolicyId")
+    def access_policy_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the Access Policy this resource belongs to.
+        """
+        return pulumi.get(self, "access_policy_id")
+
+    @access_policy_id.setter
+    def access_policy_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access_policy_id", value)
 
     @property
     @pulumi.getter(name="ingressPolicyName")
@@ -198,6 +214,7 @@ class IngressPolicy(pulumi.CustomResource):
             if resource is None and not opts.urn:
                 raise TypeError("Missing required property 'resource'")
             __props__.__dict__["resource"] = resource
+            __props__.__dict__["access_policy_id"] = None
         super(IngressPolicy, __self__).__init__(
             'gcp:accesscontextmanager/ingressPolicy:IngressPolicy',
             resource_name,
@@ -208,6 +225,7 @@ class IngressPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            access_policy_id: Optional[pulumi.Input[str]] = None,
             ingress_policy_name: Optional[pulumi.Input[str]] = None,
             resource: Optional[pulumi.Input[str]] = None) -> 'IngressPolicy':
         """
@@ -217,6 +235,7 @@ class IngressPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] access_policy_id: The name of the Access Policy this resource belongs to.
         :param pulumi.Input[str] ingress_policy_name: The name of the Service Perimeter to add this resource to.
                
                
@@ -227,9 +246,18 @@ class IngressPolicy(pulumi.CustomResource):
 
         __props__ = _IngressPolicyState.__new__(_IngressPolicyState)
 
+        __props__.__dict__["access_policy_id"] = access_policy_id
         __props__.__dict__["ingress_policy_name"] = ingress_policy_name
         __props__.__dict__["resource"] = resource
         return IngressPolicy(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="accessPolicyId")
+    def access_policy_id(self) -> pulumi.Output[str]:
+        """
+        The name of the Access Policy this resource belongs to.
+        """
+        return pulumi.get(self, "access_policy_id")
 
     @property
     @pulumi.getter(name="ingressPolicyName")

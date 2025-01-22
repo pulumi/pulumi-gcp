@@ -153,6 +153,7 @@ namespace Pulumi.Gcp.Sql
         public readonly string Region;
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceReplicaConfigurationResult> ReplicaConfigurations;
         public readonly ImmutableArray<string> ReplicaNames;
+        public readonly ImmutableArray<Outputs.GetDatabaseInstanceReplicationClusterResult> ReplicationClusters;
         public readonly ImmutableArray<Outputs.GetDatabaseInstanceRestoreBackupContextResult> RestoreBackupContexts;
         public readonly string RootPassword;
         public readonly string SelfLink;
@@ -204,6 +205,8 @@ namespace Pulumi.Gcp.Sql
 
             ImmutableArray<string> replicaNames,
 
+            ImmutableArray<Outputs.GetDatabaseInstanceReplicationClusterResult> replicationClusters,
+
             ImmutableArray<Outputs.GetDatabaseInstanceRestoreBackupContextResult> restoreBackupContexts,
 
             string rootPassword,
@@ -237,6 +240,7 @@ namespace Pulumi.Gcp.Sql
             Region = region;
             ReplicaConfigurations = replicaConfigurations;
             ReplicaNames = replicaNames;
+            ReplicationClusters = replicationClusters;
             RestoreBackupContexts = restoreBackupContexts;
             RootPassword = rootPassword;
             SelfLink = selfLink;

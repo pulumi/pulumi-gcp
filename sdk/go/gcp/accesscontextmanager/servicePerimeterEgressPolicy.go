@@ -38,6 +38,8 @@ import (
 type ServicePerimeterEgressPolicy struct {
 	pulumi.CustomResourceState
 
+	// The name of the Access Policy this resource belongs to.
+	AccessPolicyId pulumi.StringOutput `pulumi:"accessPolicyId"`
 	// Defines conditions on the source of a request causing this `EgressPolicy` to apply.
 	// Structure is documented below.
 	EgressFrom ServicePerimeterEgressPolicyEgressFromPtrOutput `pulumi:"egressFrom"`
@@ -84,6 +86,8 @@ func GetServicePerimeterEgressPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ServicePerimeterEgressPolicy resources.
 type servicePerimeterEgressPolicyState struct {
+	// The name of the Access Policy this resource belongs to.
+	AccessPolicyId *string `pulumi:"accessPolicyId"`
 	// Defines conditions on the source of a request causing this `EgressPolicy` to apply.
 	// Structure is documented below.
 	EgressFrom *ServicePerimeterEgressPolicyEgressFrom `pulumi:"egressFrom"`
@@ -98,6 +102,8 @@ type servicePerimeterEgressPolicyState struct {
 }
 
 type ServicePerimeterEgressPolicyState struct {
+	// The name of the Access Policy this resource belongs to.
+	AccessPolicyId pulumi.StringPtrInput
 	// Defines conditions on the source of a request causing this `EgressPolicy` to apply.
 	// Structure is documented below.
 	EgressFrom ServicePerimeterEgressPolicyEgressFromPtrInput
@@ -229,6 +235,11 @@ func (o ServicePerimeterEgressPolicyOutput) ToServicePerimeterEgressPolicyOutput
 
 func (o ServicePerimeterEgressPolicyOutput) ToServicePerimeterEgressPolicyOutputWithContext(ctx context.Context) ServicePerimeterEgressPolicyOutput {
 	return o
+}
+
+// The name of the Access Policy this resource belongs to.
+func (o ServicePerimeterEgressPolicyOutput) AccessPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServicePerimeterEgressPolicy) pulumi.StringOutput { return v.AccessPolicyId }).(pulumi.StringOutput)
 }
 
 // Defines conditions on the source of a request causing this `EgressPolicy` to apply.

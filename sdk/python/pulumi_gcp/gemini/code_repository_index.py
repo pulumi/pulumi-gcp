@@ -21,6 +21,7 @@ class CodeRepositoryIndexArgs:
     def __init__(__self__, *,
                  code_repository_index_id: pulumi.Input[str],
                  location: pulumi.Input[str],
+                 force_destroy: Optional[pulumi.Input[bool]] = None,
                  kms_key: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  project: Optional[pulumi.Input[str]] = None):
@@ -31,6 +32,7 @@ class CodeRepositoryIndexArgs:
                
                - - -
         :param pulumi.Input[str] location: The location of the Code Repository Index, for example `us-central1`.
+        :param pulumi.Input[bool] force_destroy: If set to true, will allow deletion of the CodeRepositoryIndex even if there are existing RepositoryGroups for the resource. These RepositoryGroups will also be deleted.
         :param pulumi.Input[str] kms_key: Optional. Immutable. Customer-managed encryption key name, in the format
                projects/*/locations/*/keyRings/*/cryptoKeys/*.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels as key value pairs.
@@ -41,6 +43,8 @@ class CodeRepositoryIndexArgs:
         """
         pulumi.set(__self__, "code_repository_index_id", code_repository_index_id)
         pulumi.set(__self__, "location", location)
+        if force_destroy is not None:
+            pulumi.set(__self__, "force_destroy", force_destroy)
         if kms_key is not None:
             pulumi.set(__self__, "kms_key", kms_key)
         if labels is not None:
@@ -74,6 +78,18 @@ class CodeRepositoryIndexArgs:
     @location.setter
     def location(self, value: pulumi.Input[str]):
         pulumi.set(self, "location", value)
+
+    @property
+    @pulumi.getter(name="forceDestroy")
+    def force_destroy(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set to true, will allow deletion of the CodeRepositoryIndex even if there are existing RepositoryGroups for the resource. These RepositoryGroups will also be deleted.
+        """
+        return pulumi.get(self, "force_destroy")
+
+    @force_destroy.setter
+    def force_destroy(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_destroy", value)
 
     @property
     @pulumi.getter(name="kmsKey")
@@ -122,6 +138,7 @@ class _CodeRepositoryIndexState:
                  code_repository_index_id: Optional[pulumi.Input[str]] = None,
                  create_time: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 force_destroy: Optional[pulumi.Input[bool]] = None,
                  kms_key: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -138,6 +155,7 @@ class _CodeRepositoryIndexState:
                - - -
         :param pulumi.Input[str] create_time: Output only. Create time stamp.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[bool] force_destroy: If set to true, will allow deletion of the CodeRepositoryIndex even if there are existing RepositoryGroups for the resource. These RepositoryGroups will also be deleted.
         :param pulumi.Input[str] kms_key: Optional. Immutable. Customer-managed encryption key name, in the format
                projects/*/locations/*/keyRings/*/cryptoKeys/*.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels as key value pairs.
@@ -164,6 +182,8 @@ class _CodeRepositoryIndexState:
             pulumi.set(__self__, "create_time", create_time)
         if effective_labels is not None:
             pulumi.set(__self__, "effective_labels", effective_labels)
+        if force_destroy is not None:
+            pulumi.set(__self__, "force_destroy", force_destroy)
         if kms_key is not None:
             pulumi.set(__self__, "kms_key", kms_key)
         if labels is not None:
@@ -219,6 +239,18 @@ class _CodeRepositoryIndexState:
     @effective_labels.setter
     def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
         pulumi.set(self, "effective_labels", value)
+
+    @property
+    @pulumi.getter(name="forceDestroy")
+    def force_destroy(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If set to true, will allow deletion of the CodeRepositoryIndex even if there are existing RepositoryGroups for the resource. These RepositoryGroups will also be deleted.
+        """
+        return pulumi.get(self, "force_destroy")
+
+    @force_destroy.setter
+    def force_destroy(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "force_destroy", value)
 
     @property
     @pulumi.getter(name="kmsKey")
@@ -334,6 +366,7 @@ class CodeRepositoryIndex(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  code_repository_index_id: Optional[pulumi.Input[str]] = None,
+                 force_destroy: Optional[pulumi.Input[bool]] = None,
                  kms_key: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -384,6 +417,7 @@ class CodeRepositoryIndex(pulumi.CustomResource):
                
                
                - - -
+        :param pulumi.Input[bool] force_destroy: If set to true, will allow deletion of the CodeRepositoryIndex even if there are existing RepositoryGroups for the resource. These RepositoryGroups will also be deleted.
         :param pulumi.Input[str] kms_key: Optional. Immutable. Customer-managed encryption key name, in the format
                projects/*/locations/*/keyRings/*/cryptoKeys/*.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels as key value pairs.
@@ -454,6 +488,7 @@ class CodeRepositoryIndex(pulumi.CustomResource):
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
                  code_repository_index_id: Optional[pulumi.Input[str]] = None,
+                 force_destroy: Optional[pulumi.Input[bool]] = None,
                  kms_key: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -470,6 +505,7 @@ class CodeRepositoryIndex(pulumi.CustomResource):
             if code_repository_index_id is None and not opts.urn:
                 raise TypeError("Missing required property 'code_repository_index_id'")
             __props__.__dict__["code_repository_index_id"] = code_repository_index_id
+            __props__.__dict__["force_destroy"] = force_destroy
             __props__.__dict__["kms_key"] = kms_key
             __props__.__dict__["labels"] = labels
             if location is None and not opts.urn:
@@ -497,6 +533,7 @@ class CodeRepositoryIndex(pulumi.CustomResource):
             code_repository_index_id: Optional[pulumi.Input[str]] = None,
             create_time: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            force_destroy: Optional[pulumi.Input[bool]] = None,
             kms_key: Optional[pulumi.Input[str]] = None,
             labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             location: Optional[pulumi.Input[str]] = None,
@@ -518,6 +555,7 @@ class CodeRepositoryIndex(pulumi.CustomResource):
                - - -
         :param pulumi.Input[str] create_time: Output only. Create time stamp.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        :param pulumi.Input[bool] force_destroy: If set to true, will allow deletion of the CodeRepositoryIndex even if there are existing RepositoryGroups for the resource. These RepositoryGroups will also be deleted.
         :param pulumi.Input[str] kms_key: Optional. Immutable. Customer-managed encryption key name, in the format
                projects/*/locations/*/keyRings/*/cryptoKeys/*.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels as key value pairs.
@@ -545,6 +583,7 @@ class CodeRepositoryIndex(pulumi.CustomResource):
         __props__.__dict__["code_repository_index_id"] = code_repository_index_id
         __props__.__dict__["create_time"] = create_time
         __props__.__dict__["effective_labels"] = effective_labels
+        __props__.__dict__["force_destroy"] = force_destroy
         __props__.__dict__["kms_key"] = kms_key
         __props__.__dict__["labels"] = labels
         __props__.__dict__["location"] = location
@@ -581,6 +620,14 @@ class CodeRepositoryIndex(pulumi.CustomResource):
         All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         """
         return pulumi.get(self, "effective_labels")
+
+    @property
+    @pulumi.getter(name="forceDestroy")
+    def force_destroy(self) -> pulumi.Output[Optional[bool]]:
+        """
+        If set to true, will allow deletion of the CodeRepositoryIndex even if there are existing RepositoryGroups for the resource. These RepositoryGroups will also be deleted.
+        """
+        return pulumi.get(self, "force_destroy")
 
     @property
     @pulumi.getter(name="kmsKey")

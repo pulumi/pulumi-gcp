@@ -90,6 +90,12 @@ namespace Pulumi.Gcp.AccessContextManager
     public partial class ServicePerimeterDryRunResource : global::Pulumi.CustomResource
     {
         /// <summary>
+        /// The name of the Access Policy this resource belongs to.
+        /// </summary>
+        [Output("accessPolicyId")]
+        public Output<string> AccessPolicyId { get; private set; } = null!;
+
+        /// <summary>
         /// The name of the Service Perimeter to add this resource to.
         /// 
         /// 
@@ -177,6 +183,12 @@ namespace Pulumi.Gcp.AccessContextManager
 
     public sealed class ServicePerimeterDryRunResourceState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// The name of the Access Policy this resource belongs to.
+        /// </summary>
+        [Input("accessPolicyId")]
+        public Input<string>? AccessPolicyId { get; set; }
+
         /// <summary>
         /// The name of the Service Perimeter to add this resource to.
         /// 

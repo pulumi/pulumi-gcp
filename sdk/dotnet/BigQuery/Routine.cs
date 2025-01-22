@@ -309,7 +309,7 @@ namespace Pulumi.Gcp.BigQuery
     /// {
     ///     var test = new Gcp.BigQuery.Dataset("test", new()
     ///     {
-    ///         DatasetId = "tf_test_dataset_id_15222",
+    ///         DatasetId = "tf_test_dataset_id_81126",
     ///     });
     /// 
     ///     var customMaskingRoutine = new Gcp.BigQuery.Routine("custom_masking_routine", new()

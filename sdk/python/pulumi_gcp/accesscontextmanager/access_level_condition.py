@@ -217,6 +217,7 @@ class AccessLevelConditionArgs:
 class _AccessLevelConditionState:
     def __init__(__self__, *,
                  access_level: Optional[pulumi.Input[str]] = None,
+                 access_policy_id: Optional[pulumi.Input[str]] = None,
                  device_policy: Optional[pulumi.Input['AccessLevelConditionDevicePolicyArgs']] = None,
                  ip_subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -230,6 +231,7 @@ class _AccessLevelConditionState:
                
                
                - - -
+        :param pulumi.Input[str] access_policy_id: The name of the Access Policy this resource belongs to.
         :param pulumi.Input['AccessLevelConditionDevicePolicyArgs'] device_policy: Device specific restrictions, all restrictions must hold for
                the Condition to be true. If not specified, all devices are
                allowed.
@@ -267,6 +269,8 @@ class _AccessLevelConditionState:
         """
         if access_level is not None:
             pulumi.set(__self__, "access_level", access_level)
+        if access_policy_id is not None:
+            pulumi.set(__self__, "access_policy_id", access_policy_id)
         if device_policy is not None:
             pulumi.set(__self__, "device_policy", device_policy)
         if ip_subnetworks is not None:
@@ -296,6 +300,18 @@ class _AccessLevelConditionState:
     @access_level.setter
     def access_level(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "access_level", value)
+
+    @property
+    @pulumi.getter(name="accessPolicyId")
+    def access_policy_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the Access Policy this resource belongs to.
+        """
+        return pulumi.get(self, "access_policy_id")
+
+    @access_policy_id.setter
+    def access_policy_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access_policy_id", value)
 
     @property
     @pulumi.getter(name="devicePolicy")
@@ -672,6 +688,7 @@ class AccessLevelCondition(pulumi.CustomResource):
             __props__.__dict__["regions"] = regions
             __props__.__dict__["required_access_levels"] = required_access_levels
             __props__.__dict__["vpc_network_sources"] = vpc_network_sources
+            __props__.__dict__["access_policy_id"] = None
         super(AccessLevelCondition, __self__).__init__(
             'gcp:accesscontextmanager/accessLevelCondition:AccessLevelCondition',
             resource_name,
@@ -683,6 +700,7 @@ class AccessLevelCondition(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             access_level: Optional[pulumi.Input[str]] = None,
+            access_policy_id: Optional[pulumi.Input[str]] = None,
             device_policy: Optional[pulumi.Input[Union['AccessLevelConditionDevicePolicyArgs', 'AccessLevelConditionDevicePolicyArgsDict']]] = None,
             ip_subnetworks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
             members: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -701,6 +719,7 @@ class AccessLevelCondition(pulumi.CustomResource):
                
                
                - - -
+        :param pulumi.Input[str] access_policy_id: The name of the Access Policy this resource belongs to.
         :param pulumi.Input[Union['AccessLevelConditionDevicePolicyArgs', 'AccessLevelConditionDevicePolicyArgsDict']] device_policy: Device specific restrictions, all restrictions must hold for
                the Condition to be true. If not specified, all devices are
                allowed.
@@ -741,6 +760,7 @@ class AccessLevelCondition(pulumi.CustomResource):
         __props__ = _AccessLevelConditionState.__new__(_AccessLevelConditionState)
 
         __props__.__dict__["access_level"] = access_level
+        __props__.__dict__["access_policy_id"] = access_policy_id
         __props__.__dict__["device_policy"] = device_policy
         __props__.__dict__["ip_subnetworks"] = ip_subnetworks
         __props__.__dict__["members"] = members
@@ -760,6 +780,14 @@ class AccessLevelCondition(pulumi.CustomResource):
         - - -
         """
         return pulumi.get(self, "access_level")
+
+    @property
+    @pulumi.getter(name="accessPolicyId")
+    def access_policy_id(self) -> pulumi.Output[str]:
+        """
+        The name of the Access Policy this resource belongs to.
+        """
+        return pulumi.get(self, "access_policy_id")
 
     @property
     @pulumi.getter(name="devicePolicy")

@@ -33,6 +33,7 @@ class DatabaseInstanceArgs:
                  region: Optional[pulumi.Input[str]] = None,
                  replica_configuration: Optional[pulumi.Input['DatabaseInstanceReplicaConfigurationArgs']] = None,
                  replica_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 replication_cluster: Optional[pulumi.Input['DatabaseInstanceReplicationClusterArgs']] = None,
                  restore_backup_context: Optional[pulumi.Input['DatabaseInstanceRestoreBackupContextArgs']] = None,
                  root_password: Optional[pulumi.Input[str]] = None,
                  settings: Optional[pulumi.Input['DatabaseInstanceSettingsArgs']] = None):
@@ -78,6 +79,8 @@ class DatabaseInstanceArgs:
         :param pulumi.Input['DatabaseInstanceReplicaConfigurationArgs'] replica_configuration: The configuration for replication. The
                configuration is detailed below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] replica_names: List of replica names. Can be updated.
+        :param pulumi.Input['DatabaseInstanceReplicationClusterArgs'] replication_cluster: A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only
+               after both the primary and replica are created.
         :param pulumi.Input['DatabaseInstanceRestoreBackupContextArgs'] restore_backup_context: The context needed to restore the database to a backup run. This field will
                cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
                **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
@@ -109,6 +112,8 @@ class DatabaseInstanceArgs:
             pulumi.set(__self__, "replica_configuration", replica_configuration)
         if replica_names is not None:
             pulumi.set(__self__, "replica_names", replica_names)
+        if replication_cluster is not None:
+            pulumi.set(__self__, "replication_cluster", replication_cluster)
         if restore_backup_context is not None:
             pulumi.set(__self__, "restore_backup_context", restore_backup_context)
         if root_password is not None:
@@ -289,6 +294,19 @@ class DatabaseInstanceArgs:
         pulumi.set(self, "replica_names", value)
 
     @property
+    @pulumi.getter(name="replicationCluster")
+    def replication_cluster(self) -> Optional[pulumi.Input['DatabaseInstanceReplicationClusterArgs']]:
+        """
+        A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only
+        after both the primary and replica are created.
+        """
+        return pulumi.get(self, "replication_cluster")
+
+    @replication_cluster.setter
+    def replication_cluster(self, value: Optional[pulumi.Input['DatabaseInstanceReplicationClusterArgs']]):
+        pulumi.set(self, "replication_cluster", value)
+
+    @property
     @pulumi.getter(name="restoreBackupContext")
     def restore_backup_context(self) -> Optional[pulumi.Input['DatabaseInstanceRestoreBackupContextArgs']]:
         """
@@ -352,6 +370,7 @@ class _DatabaseInstanceState:
                  region: Optional[pulumi.Input[str]] = None,
                  replica_configuration: Optional[pulumi.Input['DatabaseInstanceReplicaConfigurationArgs']] = None,
                  replica_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 replication_cluster: Optional[pulumi.Input['DatabaseInstanceReplicationClusterArgs']] = None,
                  restore_backup_context: Optional[pulumi.Input['DatabaseInstanceRestoreBackupContextArgs']] = None,
                  root_password: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
@@ -408,6 +427,8 @@ class _DatabaseInstanceState:
         :param pulumi.Input['DatabaseInstanceReplicaConfigurationArgs'] replica_configuration: The configuration for replication. The
                configuration is detailed below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] replica_names: List of replica names. Can be updated.
+        :param pulumi.Input['DatabaseInstanceReplicationClusterArgs'] replication_cluster: A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only
+               after both the primary and replica are created.
         :param pulumi.Input['DatabaseInstanceRestoreBackupContextArgs'] restore_backup_context: The context needed to restore the database to a backup run. This field will
                cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
                **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
@@ -459,6 +480,8 @@ class _DatabaseInstanceState:
             pulumi.set(__self__, "replica_configuration", replica_configuration)
         if replica_names is not None:
             pulumi.set(__self__, "replica_names", replica_names)
+        if replication_cluster is not None:
+            pulumi.set(__self__, "replication_cluster", replication_cluster)
         if restore_backup_context is not None:
             pulumi.set(__self__, "restore_backup_context", restore_backup_context)
         if root_password is not None:
@@ -739,6 +762,19 @@ class _DatabaseInstanceState:
         pulumi.set(self, "replica_names", value)
 
     @property
+    @pulumi.getter(name="replicationCluster")
+    def replication_cluster(self) -> Optional[pulumi.Input['DatabaseInstanceReplicationClusterArgs']]:
+        """
+        A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only
+        after both the primary and replica are created.
+        """
+        return pulumi.get(self, "replication_cluster")
+
+    @replication_cluster.setter
+    def replication_cluster(self, value: Optional[pulumi.Input['DatabaseInstanceReplicationClusterArgs']]):
+        pulumi.set(self, "replication_cluster", value)
+
+    @property
     @pulumi.getter(name="restoreBackupContext")
     def restore_backup_context(self) -> Optional[pulumi.Input['DatabaseInstanceRestoreBackupContextArgs']]:
         """
@@ -830,6 +866,7 @@ class DatabaseInstance(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  replica_configuration: Optional[pulumi.Input[Union['DatabaseInstanceReplicaConfigurationArgs', 'DatabaseInstanceReplicaConfigurationArgsDict']]] = None,
                  replica_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 replication_cluster: Optional[pulumi.Input[Union['DatabaseInstanceReplicationClusterArgs', 'DatabaseInstanceReplicationClusterArgsDict']]] = None,
                  restore_backup_context: Optional[pulumi.Input[Union['DatabaseInstanceRestoreBackupContextArgs', 'DatabaseInstanceRestoreBackupContextArgsDict']]] = None,
                  root_password: Optional[pulumi.Input[str]] = None,
                  settings: Optional[pulumi.Input[Union['DatabaseInstanceSettingsArgs', 'DatabaseInstanceSettingsArgsDict']]] = None,
@@ -973,9 +1010,9 @@ class DatabaseInstance(pulumi.CustomResource):
             })
         ```
 
-        ## Switchover (SQL Server Only)
+        ## Switchover
 
-        Users can perform a switchover on any direct `cascadable` replica by following the steps below.
+        Users can perform a switchover on a replica by following the steps below.
 
           ~>**WARNING:** Failure to follow these steps can lead to data loss (You will be warned during plan stage). To prevent data loss during a switchover, please verify your plan with the checklist below.
 
@@ -983,22 +1020,26 @@ class DatabaseInstance(pulumi.CustomResource):
 
         ### Steps to Invoke Switchover
 
-        Create a `cascadable` replica in a different region from the primary (`cascadable_replica` is set to true in `replica_configuration`)
+        MySQL/PostgreSQL: Create a cross-region, Enterprise Plus edition primary and replica pair, then set the value of primary's `replication_cluster.failover_dr_replica_name` as the replica.
+
+        SQL Server: Create a `cascadable` replica in a different region from the primary (`cascadable_replica` is set to true in `replica_configuration`)
 
         #### Invoking switchover in the replica resource:
         1. Change instance_type from `READ_REPLICA_INSTANCE` to `CLOUD_SQL_INSTANCE`
         2. Remove `master_instance_name`
-        3. Remove `replica_configuration`
+        3. (SQL Server) Remove `replica_configuration`
         4. Add current primary's name to the replica's `replica_names` list
+        5. (MySQL/PostgreSQL) Add current primary's name to the replica's `replication_cluster.failover_dr_replica_name`.
+        6. (MySQL/PostgreSQL) Adjust `backup_configuration`. See Switchover Guide for details.
 
         #### Updating the primary resource:
         1. Change `instance_type` from `CLOUD_SQL_INSTANCE` to `READ_REPLICA_INSTANCE`
         2. Set `master_instance_name` to the original replica (which will be primary after switchover)
-        3. Set `replica_configuration` and set `cascadable_replica` to `true`
+        3. (SQL Server) Set `replica_configuration` and set `cascadable_replica` to `true`
         4. Remove original replica from `replica_names`
-           
-            > **NOTE**: Do **not** delete the replica_names field, even if it has no replicas remaining. Set replica_names = [ ] to indicate it having no replicas.
-
+           * **NOTE**: Do **not** delete the replica_names field, even if it has no replicas remaining. Set replica_names = [ ] to indicate it having no replicas.
+        5. (MySQL/PostgreSQL) Set `replication_cluster.failover_dr_replica_name` as the empty string.
+        6. (MySQL/PostgreSQL) Adjust `backup_configuration`. See Switchover Guide for details.
         #### Plan and verify that:
         - `pulumi preview` outputs **"0 to add, 0 to destroy"**
         - `pulumi preview` does not say **"must be replaced"** for any resource
@@ -1078,6 +1119,8 @@ class DatabaseInstance(pulumi.CustomResource):
         :param pulumi.Input[Union['DatabaseInstanceReplicaConfigurationArgs', 'DatabaseInstanceReplicaConfigurationArgsDict']] replica_configuration: The configuration for replication. The
                configuration is detailed below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] replica_names: List of replica names. Can be updated.
+        :param pulumi.Input[Union['DatabaseInstanceReplicationClusterArgs', 'DatabaseInstanceReplicationClusterArgsDict']] replication_cluster: A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only
+               after both the primary and replica are created.
         :param pulumi.Input[Union['DatabaseInstanceRestoreBackupContextArgs', 'DatabaseInstanceRestoreBackupContextArgsDict']] restore_backup_context: The context needed to restore the database to a backup run. This field will
                cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
                **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
@@ -1231,9 +1274,9 @@ class DatabaseInstance(pulumi.CustomResource):
             })
         ```
 
-        ## Switchover (SQL Server Only)
+        ## Switchover
 
-        Users can perform a switchover on any direct `cascadable` replica by following the steps below.
+        Users can perform a switchover on a replica by following the steps below.
 
           ~>**WARNING:** Failure to follow these steps can lead to data loss (You will be warned during plan stage). To prevent data loss during a switchover, please verify your plan with the checklist below.
 
@@ -1241,22 +1284,26 @@ class DatabaseInstance(pulumi.CustomResource):
 
         ### Steps to Invoke Switchover
 
-        Create a `cascadable` replica in a different region from the primary (`cascadable_replica` is set to true in `replica_configuration`)
+        MySQL/PostgreSQL: Create a cross-region, Enterprise Plus edition primary and replica pair, then set the value of primary's `replication_cluster.failover_dr_replica_name` as the replica.
+
+        SQL Server: Create a `cascadable` replica in a different region from the primary (`cascadable_replica` is set to true in `replica_configuration`)
 
         #### Invoking switchover in the replica resource:
         1. Change instance_type from `READ_REPLICA_INSTANCE` to `CLOUD_SQL_INSTANCE`
         2. Remove `master_instance_name`
-        3. Remove `replica_configuration`
+        3. (SQL Server) Remove `replica_configuration`
         4. Add current primary's name to the replica's `replica_names` list
+        5. (MySQL/PostgreSQL) Add current primary's name to the replica's `replication_cluster.failover_dr_replica_name`.
+        6. (MySQL/PostgreSQL) Adjust `backup_configuration`. See Switchover Guide for details.
 
         #### Updating the primary resource:
         1. Change `instance_type` from `CLOUD_SQL_INSTANCE` to `READ_REPLICA_INSTANCE`
         2. Set `master_instance_name` to the original replica (which will be primary after switchover)
-        3. Set `replica_configuration` and set `cascadable_replica` to `true`
+        3. (SQL Server) Set `replica_configuration` and set `cascadable_replica` to `true`
         4. Remove original replica from `replica_names`
-           
-            > **NOTE**: Do **not** delete the replica_names field, even if it has no replicas remaining. Set replica_names = [ ] to indicate it having no replicas.
-
+           * **NOTE**: Do **not** delete the replica_names field, even if it has no replicas remaining. Set replica_names = [ ] to indicate it having no replicas.
+        5. (MySQL/PostgreSQL) Set `replication_cluster.failover_dr_replica_name` as the empty string.
+        6. (MySQL/PostgreSQL) Adjust `backup_configuration`. See Switchover Guide for details.
         #### Plan and verify that:
         - `pulumi preview` outputs **"0 to add, 0 to destroy"**
         - `pulumi preview` does not say **"must be replaced"** for any resource
@@ -1321,6 +1368,7 @@ class DatabaseInstance(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  replica_configuration: Optional[pulumi.Input[Union['DatabaseInstanceReplicaConfigurationArgs', 'DatabaseInstanceReplicaConfigurationArgsDict']]] = None,
                  replica_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 replication_cluster: Optional[pulumi.Input[Union['DatabaseInstanceReplicationClusterArgs', 'DatabaseInstanceReplicationClusterArgsDict']]] = None,
                  restore_backup_context: Optional[pulumi.Input[Union['DatabaseInstanceRestoreBackupContextArgs', 'DatabaseInstanceRestoreBackupContextArgsDict']]] = None,
                  root_password: Optional[pulumi.Input[str]] = None,
                  settings: Optional[pulumi.Input[Union['DatabaseInstanceSettingsArgs', 'DatabaseInstanceSettingsArgsDict']]] = None,
@@ -1347,6 +1395,7 @@ class DatabaseInstance(pulumi.CustomResource):
             __props__.__dict__["region"] = region
             __props__.__dict__["replica_configuration"] = None if replica_configuration is None else pulumi.Output.secret(replica_configuration)
             __props__.__dict__["replica_names"] = replica_names
+            __props__.__dict__["replication_cluster"] = replication_cluster
             __props__.__dict__["restore_backup_context"] = restore_backup_context
             __props__.__dict__["root_password"] = None if root_password is None else pulumi.Output.secret(root_password)
             __props__.__dict__["settings"] = settings
@@ -1393,6 +1442,7 @@ class DatabaseInstance(pulumi.CustomResource):
             region: Optional[pulumi.Input[str]] = None,
             replica_configuration: Optional[pulumi.Input[Union['DatabaseInstanceReplicaConfigurationArgs', 'DatabaseInstanceReplicaConfigurationArgsDict']]] = None,
             replica_names: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            replication_cluster: Optional[pulumi.Input[Union['DatabaseInstanceReplicationClusterArgs', 'DatabaseInstanceReplicationClusterArgsDict']]] = None,
             restore_backup_context: Optional[pulumi.Input[Union['DatabaseInstanceRestoreBackupContextArgs', 'DatabaseInstanceRestoreBackupContextArgsDict']]] = None,
             root_password: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
@@ -1454,6 +1504,8 @@ class DatabaseInstance(pulumi.CustomResource):
         :param pulumi.Input[Union['DatabaseInstanceReplicaConfigurationArgs', 'DatabaseInstanceReplicaConfigurationArgsDict']] replica_configuration: The configuration for replication. The
                configuration is detailed below.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] replica_names: List of replica names. Can be updated.
+        :param pulumi.Input[Union['DatabaseInstanceReplicationClusterArgs', 'DatabaseInstanceReplicationClusterArgsDict']] replication_cluster: A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only
+               after both the primary and replica are created.
         :param pulumi.Input[Union['DatabaseInstanceRestoreBackupContextArgs', 'DatabaseInstanceRestoreBackupContextArgsDict']] restore_backup_context: The context needed to restore the database to a backup run. This field will
                cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
                **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
@@ -1489,6 +1541,7 @@ class DatabaseInstance(pulumi.CustomResource):
         __props__.__dict__["region"] = region
         __props__.__dict__["replica_configuration"] = replica_configuration
         __props__.__dict__["replica_names"] = replica_names
+        __props__.__dict__["replication_cluster"] = replication_cluster
         __props__.__dict__["restore_backup_context"] = restore_backup_context
         __props__.__dict__["root_password"] = root_password
         __props__.__dict__["self_link"] = self_link
@@ -1682,6 +1735,15 @@ class DatabaseInstance(pulumi.CustomResource):
         List of replica names. Can be updated.
         """
         return pulumi.get(self, "replica_names")
+
+    @property
+    @pulumi.getter(name="replicationCluster")
+    def replication_cluster(self) -> pulumi.Output['outputs.DatabaseInstanceReplicationCluster']:
+        """
+        A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only
+        after both the primary and replica are created.
+        """
+        return pulumi.get(self, "replication_cluster")
 
     @property
     @pulumi.getter(name="restoreBackupContext")

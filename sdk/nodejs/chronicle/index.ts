@@ -15,6 +15,21 @@ export type DataAccessScope = import("./dataAccessScope").DataAccessScope;
 export const DataAccessScope: typeof import("./dataAccessScope").DataAccessScope = null as any;
 utilities.lazyLoad(exports, ["DataAccessScope"], () => require("./dataAccessScope"));
 
+export { ReferenceListArgs, ReferenceListState } from "./referenceList";
+export type ReferenceList = import("./referenceList").ReferenceList;
+export const ReferenceList: typeof import("./referenceList").ReferenceList = null as any;
+utilities.lazyLoad(exports, ["ReferenceList"], () => require("./referenceList"));
+
+export { RuleArgs, RuleState } from "./rule";
+export type Rule = import("./rule").Rule;
+export const Rule: typeof import("./rule").Rule = null as any;
+utilities.lazyLoad(exports, ["Rule"], () => require("./rule"));
+
+export { RuleDeploymentArgs, RuleDeploymentState } from "./ruleDeployment";
+export type RuleDeployment = import("./ruleDeployment").RuleDeployment;
+export const RuleDeployment: typeof import("./ruleDeployment").RuleDeployment = null as any;
+utilities.lazyLoad(exports, ["RuleDeployment"], () => require("./ruleDeployment"));
+
 export { WatchlistArgs, WatchlistState } from "./watchlist";
 export type Watchlist = import("./watchlist").Watchlist;
 export const Watchlist: typeof import("./watchlist").Watchlist = null as any;
@@ -29,6 +44,12 @@ const _module = {
                 return new DataAccessLabel(name, <any>undefined, { urn })
             case "gcp:chronicle/dataAccessScope:DataAccessScope":
                 return new DataAccessScope(name, <any>undefined, { urn })
+            case "gcp:chronicle/referenceList:ReferenceList":
+                return new ReferenceList(name, <any>undefined, { urn })
+            case "gcp:chronicle/rule:Rule":
+                return new Rule(name, <any>undefined, { urn })
+            case "gcp:chronicle/ruleDeployment:RuleDeployment":
+                return new RuleDeployment(name, <any>undefined, { urn })
             case "gcp:chronicle/watchlist:Watchlist":
                 return new Watchlist(name, <any>undefined, { urn })
             default:
@@ -38,4 +59,7 @@ const _module = {
 };
 pulumi.runtime.registerResourceModule("gcp", "chronicle/dataAccessLabel", _module)
 pulumi.runtime.registerResourceModule("gcp", "chronicle/dataAccessScope", _module)
+pulumi.runtime.registerResourceModule("gcp", "chronicle/referenceList", _module)
+pulumi.runtime.registerResourceModule("gcp", "chronicle/rule", _module)
+pulumi.runtime.registerResourceModule("gcp", "chronicle/ruleDeployment", _module)
 pulumi.runtime.registerResourceModule("gcp", "chronicle/watchlist", _module)

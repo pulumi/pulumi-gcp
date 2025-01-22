@@ -8,6 +8,7 @@ import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceCloneArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceReplicaConfigurationArgs;
+import com.pulumi.gcp.sql.inputs.DatabaseInstanceReplicationClusterArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceRestoreBackupContextArgs;
 import com.pulumi.gcp.sql.inputs.DatabaseInstanceSettingsArgs;
 import java.lang.Boolean;
@@ -259,6 +260,23 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
     }
 
     /**
+     * A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only
+     * after both the primary and replica are created.
+     * 
+     */
+    @Import(name="replicationCluster")
+    private @Nullable Output<DatabaseInstanceReplicationClusterArgs> replicationCluster;
+
+    /**
+     * @return A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only
+     * after both the primary and replica are created.
+     * 
+     */
+    public Optional<Output<DatabaseInstanceReplicationClusterArgs>> replicationCluster() {
+        return Optional.ofNullable(this.replicationCluster);
+    }
+
+    /**
      * The context needed to restore the database to a backup run. This field will
      * cause the provider to trigger the database to restore from the backup run indicated. The configuration is detailed below.
      * **NOTE:** Restoring from a backup is an imperative action and not recommended via this provider. Adding or modifying this
@@ -326,6 +344,7 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
         this.region = $.region;
         this.replicaConfiguration = $.replicaConfiguration;
         this.replicaNames = $.replicaNames;
+        this.replicationCluster = $.replicationCluster;
         this.restoreBackupContext = $.restoreBackupContext;
         this.rootPassword = $.rootPassword;
         this.settings = $.settings;
@@ -665,6 +684,29 @@ public final class DatabaseInstanceArgs extends com.pulumi.resources.ResourceArg
          */
         public Builder replicaNames(String... replicaNames) {
             return replicaNames(List.of(replicaNames));
+        }
+
+        /**
+         * @param replicationCluster A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only
+         * after both the primary and replica are created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replicationCluster(@Nullable Output<DatabaseInstanceReplicationClusterArgs> replicationCluster) {
+            $.replicationCluster = replicationCluster;
+            return this;
+        }
+
+        /**
+         * @param replicationCluster A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only
+         * after both the primary and replica are created.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder replicationCluster(DatabaseInstanceReplicationClusterArgs replicationCluster) {
+            return replicationCluster(Output.of(replicationCluster));
         }
 
         /**

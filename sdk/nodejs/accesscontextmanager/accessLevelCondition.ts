@@ -125,6 +125,10 @@ export class AccessLevelCondition extends pulumi.CustomResource {
      */
     public readonly accessLevel!: pulumi.Output<string>;
     /**
+     * The name of the Access Policy this resource belongs to.
+     */
+    public /*out*/ readonly accessPolicyId!: pulumi.Output<string>;
+    /**
      * Device specific restrictions, all restrictions must hold for
      * the Condition to be true. If not specified, all devices are
      * allowed.
@@ -194,6 +198,7 @@ export class AccessLevelCondition extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as AccessLevelConditionState | undefined;
             resourceInputs["accessLevel"] = state ? state.accessLevel : undefined;
+            resourceInputs["accessPolicyId"] = state ? state.accessPolicyId : undefined;
             resourceInputs["devicePolicy"] = state ? state.devicePolicy : undefined;
             resourceInputs["ipSubnetworks"] = state ? state.ipSubnetworks : undefined;
             resourceInputs["members"] = state ? state.members : undefined;
@@ -214,6 +219,7 @@ export class AccessLevelCondition extends pulumi.CustomResource {
             resourceInputs["regions"] = args ? args.regions : undefined;
             resourceInputs["requiredAccessLevels"] = args ? args.requiredAccessLevels : undefined;
             resourceInputs["vpcNetworkSources"] = args ? args.vpcNetworkSources : undefined;
+            resourceInputs["accessPolicyId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(AccessLevelCondition.__pulumiType, name, resourceInputs, opts);
@@ -231,6 +237,10 @@ export interface AccessLevelConditionState {
      * - - -
      */
     accessLevel?: pulumi.Input<string>;
+    /**
+     * The name of the Access Policy this resource belongs to.
+     */
+    accessPolicyId?: pulumi.Input<string>;
     /**
      * Device specific restrictions, all restrictions must hold for
      * the Condition to be true. If not specified, all devices are

@@ -27,7 +27,7 @@ class GetDatabaseInstanceResult:
     """
     A collection of values returned by getDatabaseInstance.
     """
-    def __init__(__self__, available_maintenance_versions=None, clones=None, connection_name=None, database_version=None, deletion_protection=None, dns_name=None, encryption_key_name=None, first_ip_address=None, id=None, instance_type=None, ip_addresses=None, maintenance_version=None, master_instance_name=None, name=None, private_ip_address=None, project=None, psc_service_attachment_link=None, public_ip_address=None, region=None, replica_configurations=None, replica_names=None, restore_backup_contexts=None, root_password=None, self_link=None, server_ca_certs=None, service_account_email_address=None, settings=None):
+    def __init__(__self__, available_maintenance_versions=None, clones=None, connection_name=None, database_version=None, deletion_protection=None, dns_name=None, encryption_key_name=None, first_ip_address=None, id=None, instance_type=None, ip_addresses=None, maintenance_version=None, master_instance_name=None, name=None, private_ip_address=None, project=None, psc_service_attachment_link=None, public_ip_address=None, region=None, replica_configurations=None, replica_names=None, replication_clusters=None, restore_backup_contexts=None, root_password=None, self_link=None, server_ca_certs=None, service_account_email_address=None, settings=None):
         if available_maintenance_versions and not isinstance(available_maintenance_versions, list):
             raise TypeError("Expected argument 'available_maintenance_versions' to be a list")
         pulumi.set(__self__, "available_maintenance_versions", available_maintenance_versions)
@@ -91,6 +91,9 @@ class GetDatabaseInstanceResult:
         if replica_names and not isinstance(replica_names, list):
             raise TypeError("Expected argument 'replica_names' to be a list")
         pulumi.set(__self__, "replica_names", replica_names)
+        if replication_clusters and not isinstance(replication_clusters, list):
+            raise TypeError("Expected argument 'replication_clusters' to be a list")
+        pulumi.set(__self__, "replication_clusters", replication_clusters)
         if restore_backup_contexts and not isinstance(restore_backup_contexts, list):
             raise TypeError("Expected argument 'restore_backup_contexts' to be a list")
         pulumi.set(__self__, "restore_backup_contexts", restore_backup_contexts)
@@ -219,6 +222,11 @@ class GetDatabaseInstanceResult:
         return pulumi.get(self, "replica_names")
 
     @property
+    @pulumi.getter(name="replicationClusters")
+    def replication_clusters(self) -> Sequence['outputs.GetDatabaseInstanceReplicationClusterResult']:
+        return pulumi.get(self, "replication_clusters")
+
+    @property
     @pulumi.getter(name="restoreBackupContexts")
     def restore_backup_contexts(self) -> Sequence['outputs.GetDatabaseInstanceRestoreBackupContextResult']:
         return pulumi.get(self, "restore_backup_contexts")
@@ -276,6 +284,7 @@ class AwaitableGetDatabaseInstanceResult(GetDatabaseInstanceResult):
             region=self.region,
             replica_configurations=self.replica_configurations,
             replica_names=self.replica_names,
+            replication_clusters=self.replication_clusters,
             restore_backup_contexts=self.restore_backup_contexts,
             root_password=self.root_password,
             self_link=self.self_link,
@@ -331,6 +340,7 @@ def get_database_instance(name: Optional[str] = None,
         region=pulumi.get(__ret__, 'region'),
         replica_configurations=pulumi.get(__ret__, 'replica_configurations'),
         replica_names=pulumi.get(__ret__, 'replica_names'),
+        replication_clusters=pulumi.get(__ret__, 'replication_clusters'),
         restore_backup_contexts=pulumi.get(__ret__, 'restore_backup_contexts'),
         root_password=pulumi.get(__ret__, 'root_password'),
         self_link=pulumi.get(__ret__, 'self_link'),
@@ -383,6 +393,7 @@ def get_database_instance_output(name: Optional[pulumi.Input[str]] = None,
         region=pulumi.get(__response__, 'region'),
         replica_configurations=pulumi.get(__response__, 'replica_configurations'),
         replica_names=pulumi.get(__response__, 'replica_names'),
+        replication_clusters=pulumi.get(__response__, 'replication_clusters'),
         restore_backup_contexts=pulumi.get(__response__, 'restore_backup_contexts'),
         root_password=pulumi.get(__response__, 'root_password'),
         self_link=pulumi.get(__response__, 'self_link'),

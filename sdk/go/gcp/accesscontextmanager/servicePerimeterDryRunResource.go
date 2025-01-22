@@ -104,6 +104,8 @@ import (
 type ServicePerimeterDryRunResource struct {
 	pulumi.CustomResourceState
 
+	// The name of the Access Policy this resource belongs to.
+	AccessPolicyId pulumi.StringOutput `pulumi:"accessPolicyId"`
 	// The name of the Service Perimeter to add this resource to.
 	//
 	// ***
@@ -150,6 +152,8 @@ func GetServicePerimeterDryRunResource(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ServicePerimeterDryRunResource resources.
 type servicePerimeterDryRunResourceState struct {
+	// The name of the Access Policy this resource belongs to.
+	AccessPolicyId *string `pulumi:"accessPolicyId"`
 	// The name of the Service Perimeter to add this resource to.
 	//
 	// ***
@@ -161,6 +165,8 @@ type servicePerimeterDryRunResourceState struct {
 }
 
 type ServicePerimeterDryRunResourceState struct {
+	// The name of the Access Policy this resource belongs to.
+	AccessPolicyId pulumi.StringPtrInput
 	// The name of the Service Perimeter to add this resource to.
 	//
 	// ***
@@ -283,6 +289,11 @@ func (o ServicePerimeterDryRunResourceOutput) ToServicePerimeterDryRunResourceOu
 
 func (o ServicePerimeterDryRunResourceOutput) ToServicePerimeterDryRunResourceOutputWithContext(ctx context.Context) ServicePerimeterDryRunResourceOutput {
 	return o
+}
+
+// The name of the Access Policy this resource belongs to.
+func (o ServicePerimeterDryRunResourceOutput) AccessPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServicePerimeterDryRunResource) pulumi.StringOutput { return v.AccessPolicyId }).(pulumi.StringOutput)
 }
 
 // The name of the Service Perimeter to add this resource to.

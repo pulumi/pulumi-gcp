@@ -63,6 +63,7 @@ type Provider struct {
 	ClouddeployCustomEndpoint              pulumi.StringPtrOutput `pulumi:"clouddeployCustomEndpoint"`
 	ClouddomainsCustomEndpoint             pulumi.StringPtrOutput `pulumi:"clouddomainsCustomEndpoint"`
 	Cloudfunctions2CustomEndpoint          pulumi.StringPtrOutput `pulumi:"cloudfunctions2CustomEndpoint"`
+	ColabCustomEndpoint                    pulumi.StringPtrOutput `pulumi:"colabCustomEndpoint"`
 	ComposerCustomEndpoint                 pulumi.StringPtrOutput `pulumi:"composerCustomEndpoint"`
 	ComputeCustomEndpoint                  pulumi.StringPtrOutput `pulumi:"computeCustomEndpoint"`
 	ContainerAnalysisCustomEndpoint        pulumi.StringPtrOutput `pulumi:"containerAnalysisCustomEndpoint"`
@@ -144,6 +145,8 @@ type Provider struct {
 	OsConfigCustomEndpoint                 pulumi.StringPtrOutput `pulumi:"osConfigCustomEndpoint"`
 	OsLoginCustomEndpoint                  pulumi.StringPtrOutput `pulumi:"osLoginCustomEndpoint"`
 	ParallelstoreCustomEndpoint            pulumi.StringPtrOutput `pulumi:"parallelstoreCustomEndpoint"`
+	ParameterManagerCustomEndpoint         pulumi.StringPtrOutput `pulumi:"parameterManagerCustomEndpoint"`
+	ParameterManagerRegionalCustomEndpoint pulumi.StringPtrOutput `pulumi:"parameterManagerRegionalCustomEndpoint"`
 	PrivatecaCustomEndpoint                pulumi.StringPtrOutput `pulumi:"privatecaCustomEndpoint"`
 	PrivilegedAccessManagerCustomEndpoint  pulumi.StringPtrOutput `pulumi:"privilegedAccessManagerCustomEndpoint"`
 	Project                                pulumi.StringPtrOutput `pulumi:"project"`
@@ -280,6 +283,7 @@ type providerArgs struct {
 	ClouddeployCustomEndpoint              *string           `pulumi:"clouddeployCustomEndpoint"`
 	ClouddomainsCustomEndpoint             *string           `pulumi:"clouddomainsCustomEndpoint"`
 	Cloudfunctions2CustomEndpoint          *string           `pulumi:"cloudfunctions2CustomEndpoint"`
+	ColabCustomEndpoint                    *string           `pulumi:"colabCustomEndpoint"`
 	ComposerCustomEndpoint                 *string           `pulumi:"composerCustomEndpoint"`
 	ComputeCustomEndpoint                  *string           `pulumi:"computeCustomEndpoint"`
 	ContainerAnalysisCustomEndpoint        *string           `pulumi:"containerAnalysisCustomEndpoint"`
@@ -364,6 +368,8 @@ type providerArgs struct {
 	OsConfigCustomEndpoint                 *string           `pulumi:"osConfigCustomEndpoint"`
 	OsLoginCustomEndpoint                  *string           `pulumi:"osLoginCustomEndpoint"`
 	ParallelstoreCustomEndpoint            *string           `pulumi:"parallelstoreCustomEndpoint"`
+	ParameterManagerCustomEndpoint         *string           `pulumi:"parameterManagerCustomEndpoint"`
+	ParameterManagerRegionalCustomEndpoint *string           `pulumi:"parameterManagerRegionalCustomEndpoint"`
 	PrivatecaCustomEndpoint                *string           `pulumi:"privatecaCustomEndpoint"`
 	PrivilegedAccessManagerCustomEndpoint  *string           `pulumi:"privilegedAccessManagerCustomEndpoint"`
 	Project                                *string           `pulumi:"project"`
@@ -465,6 +471,7 @@ type ProviderArgs struct {
 	ClouddeployCustomEndpoint              pulumi.StringPtrInput
 	ClouddomainsCustomEndpoint             pulumi.StringPtrInput
 	Cloudfunctions2CustomEndpoint          pulumi.StringPtrInput
+	ColabCustomEndpoint                    pulumi.StringPtrInput
 	ComposerCustomEndpoint                 pulumi.StringPtrInput
 	ComputeCustomEndpoint                  pulumi.StringPtrInput
 	ContainerAnalysisCustomEndpoint        pulumi.StringPtrInput
@@ -549,6 +556,8 @@ type ProviderArgs struct {
 	OsConfigCustomEndpoint                 pulumi.StringPtrInput
 	OsLoginCustomEndpoint                  pulumi.StringPtrInput
 	ParallelstoreCustomEndpoint            pulumi.StringPtrInput
+	ParameterManagerCustomEndpoint         pulumi.StringPtrInput
+	ParameterManagerRegionalCustomEndpoint pulumi.StringPtrInput
 	PrivatecaCustomEndpoint                pulumi.StringPtrInput
 	PrivilegedAccessManagerCustomEndpoint  pulumi.StringPtrInput
 	Project                                pulumi.StringPtrInput
@@ -816,6 +825,10 @@ func (o ProviderOutput) ClouddomainsCustomEndpoint() pulumi.StringPtrOutput {
 
 func (o ProviderOutput) Cloudfunctions2CustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.Cloudfunctions2CustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) ColabCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ColabCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) ComposerCustomEndpoint() pulumi.StringPtrOutput {
@@ -1140,6 +1153,14 @@ func (o ProviderOutput) OsLoginCustomEndpoint() pulumi.StringPtrOutput {
 
 func (o ProviderOutput) ParallelstoreCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ParallelstoreCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) ParameterManagerCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ParameterManagerCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) ParameterManagerRegionalCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ParameterManagerRegionalCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) PrivatecaCustomEndpoint() pulumi.StringPtrOutput {

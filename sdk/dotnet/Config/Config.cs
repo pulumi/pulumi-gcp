@@ -361,6 +361,13 @@ namespace Pulumi.Gcp
             set => _cloudfunctions2CustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _colabCustomEndpoint = new __Value<string?>(() => __config.Get("colabCustomEndpoint"));
+        public static string? ColabCustomEndpoint
+        {
+            get => _colabCustomEndpoint.Get();
+            set => _colabCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _composerCustomEndpoint = new __Value<string?>(() => __config.Get("composerCustomEndpoint"));
         public static string? ComposerCustomEndpoint
         {
@@ -954,6 +961,20 @@ namespace Pulumi.Gcp
         {
             get => _parallelstoreCustomEndpoint.Get();
             set => _parallelstoreCustomEndpoint.Set(value);
+        }
+
+        private static readonly __Value<string?> _parameterManagerCustomEndpoint = new __Value<string?>(() => __config.Get("parameterManagerCustomEndpoint"));
+        public static string? ParameterManagerCustomEndpoint
+        {
+            get => _parameterManagerCustomEndpoint.Get();
+            set => _parameterManagerCustomEndpoint.Set(value);
+        }
+
+        private static readonly __Value<string?> _parameterManagerRegionalCustomEndpoint = new __Value<string?>(() => __config.Get("parameterManagerRegionalCustomEndpoint"));
+        public static string? ParameterManagerRegionalCustomEndpoint
+        {
+            get => _parameterManagerRegionalCustomEndpoint.Get();
+            set => _parameterManagerRegionalCustomEndpoint.Set(value);
         }
 
         private static readonly __Value<string?> _privatecaCustomEndpoint = new __Value<string?>(() => __config.Get("privatecaCustomEndpoint"));

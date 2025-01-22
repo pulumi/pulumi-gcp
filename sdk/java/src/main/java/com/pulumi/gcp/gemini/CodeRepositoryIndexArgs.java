@@ -6,6 +6,7 @@ package com.pulumi.gcp.gemini;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -34,6 +35,21 @@ public final class CodeRepositoryIndexArgs extends com.pulumi.resources.Resource
      */
     public Output<String> codeRepositoryIndexId() {
         return this.codeRepositoryIndexId;
+    }
+
+    /**
+     * If set to true, will allow deletion of the CodeRepositoryIndex even if there are existing RepositoryGroups for the resource. These RepositoryGroups will also be deleted.
+     * 
+     */
+    @Import(name="forceDestroy")
+    private @Nullable Output<Boolean> forceDestroy;
+
+    /**
+     * @return If set to true, will allow deletion of the CodeRepositoryIndex even if there are existing RepositoryGroups for the resource. These RepositoryGroups will also be deleted.
+     * 
+     */
+    public Optional<Output<Boolean>> forceDestroy() {
+        return Optional.ofNullable(this.forceDestroy);
     }
 
     /**
@@ -108,6 +124,7 @@ public final class CodeRepositoryIndexArgs extends com.pulumi.resources.Resource
 
     private CodeRepositoryIndexArgs(CodeRepositoryIndexArgs $) {
         this.codeRepositoryIndexId = $.codeRepositoryIndexId;
+        this.forceDestroy = $.forceDestroy;
         this.kmsKey = $.kmsKey;
         this.labels = $.labels;
         this.location = $.location;
@@ -155,6 +172,27 @@ public final class CodeRepositoryIndexArgs extends com.pulumi.resources.Resource
          */
         public Builder codeRepositoryIndexId(String codeRepositoryIndexId) {
             return codeRepositoryIndexId(Output.of(codeRepositoryIndexId));
+        }
+
+        /**
+         * @param forceDestroy If set to true, will allow deletion of the CodeRepositoryIndex even if there are existing RepositoryGroups for the resource. These RepositoryGroups will also be deleted.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceDestroy(@Nullable Output<Boolean> forceDestroy) {
+            $.forceDestroy = forceDestroy;
+            return this;
+        }
+
+        /**
+         * @param forceDestroy If set to true, will allow deletion of the CodeRepositoryIndex even if there are existing RepositoryGroups for the resource. These RepositoryGroups will also be deleted.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder forceDestroy(Boolean forceDestroy) {
+            return forceDestroy(Output.of(forceDestroy));
         }
 
         /**

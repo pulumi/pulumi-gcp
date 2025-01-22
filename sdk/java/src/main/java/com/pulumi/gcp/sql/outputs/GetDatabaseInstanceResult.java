@@ -8,6 +8,7 @@ import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceClone;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceIpAddress;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceReplicaConfiguration;
+import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceReplicationCluster;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceRestoreBackupContext;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceServerCaCert;
 import com.pulumi.gcp.sql.outputs.GetDatabaseInstanceSetting;
@@ -45,6 +46,7 @@ public final class GetDatabaseInstanceResult {
     private String region;
     private List<GetDatabaseInstanceReplicaConfiguration> replicaConfigurations;
     private List<String> replicaNames;
+    private List<GetDatabaseInstanceReplicationCluster> replicationClusters;
     private List<GetDatabaseInstanceRestoreBackupContext> restoreBackupContexts;
     private String rootPassword;
     private String selfLink;
@@ -120,6 +122,9 @@ public final class GetDatabaseInstanceResult {
     public List<String> replicaNames() {
         return this.replicaNames;
     }
+    public List<GetDatabaseInstanceReplicationCluster> replicationClusters() {
+        return this.replicationClusters;
+    }
     public List<GetDatabaseInstanceRestoreBackupContext> restoreBackupContexts() {
         return this.restoreBackupContexts;
     }
@@ -169,6 +174,7 @@ public final class GetDatabaseInstanceResult {
         private String region;
         private List<GetDatabaseInstanceReplicaConfiguration> replicaConfigurations;
         private List<String> replicaNames;
+        private List<GetDatabaseInstanceReplicationCluster> replicationClusters;
         private List<GetDatabaseInstanceRestoreBackupContext> restoreBackupContexts;
         private String rootPassword;
         private String selfLink;
@@ -199,6 +205,7 @@ public final class GetDatabaseInstanceResult {
     	      this.region = defaults.region;
     	      this.replicaConfigurations = defaults.replicaConfigurations;
     	      this.replicaNames = defaults.replicaNames;
+    	      this.replicationClusters = defaults.replicationClusters;
     	      this.restoreBackupContexts = defaults.restoreBackupContexts;
     	      this.rootPassword = defaults.rootPassword;
     	      this.selfLink = defaults.selfLink;
@@ -389,6 +396,17 @@ public final class GetDatabaseInstanceResult {
             return replicaNames(List.of(replicaNames));
         }
         @CustomType.Setter
+        public Builder replicationClusters(List<GetDatabaseInstanceReplicationCluster> replicationClusters) {
+            if (replicationClusters == null) {
+              throw new MissingRequiredPropertyException("GetDatabaseInstanceResult", "replicationClusters");
+            }
+            this.replicationClusters = replicationClusters;
+            return this;
+        }
+        public Builder replicationClusters(GetDatabaseInstanceReplicationCluster... replicationClusters) {
+            return replicationClusters(List.of(replicationClusters));
+        }
+        @CustomType.Setter
         public Builder restoreBackupContexts(List<GetDatabaseInstanceRestoreBackupContext> restoreBackupContexts) {
             if (restoreBackupContexts == null) {
               throw new MissingRequiredPropertyException("GetDatabaseInstanceResult", "restoreBackupContexts");
@@ -468,6 +486,7 @@ public final class GetDatabaseInstanceResult {
             _resultValue.region = region;
             _resultValue.replicaConfigurations = replicaConfigurations;
             _resultValue.replicaNames = replicaNames;
+            _resultValue.replicationClusters = replicationClusters;
             _resultValue.restoreBackupContexts = restoreBackupContexts;
             _resultValue.rootPassword = rootPassword;
             _resultValue.selfLink = selfLink;

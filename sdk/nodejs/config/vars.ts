@@ -385,6 +385,14 @@ Object.defineProperty(exports, "cloudfunctions2CustomEndpoint", {
     enumerable: true,
 });
 
+export declare const colabCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "colabCustomEndpoint", {
+    get() {
+        return __config.get("colabCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const composerCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "composerCustomEndpoint", {
     get() {
@@ -1061,6 +1069,22 @@ export declare const parallelstoreCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "parallelstoreCustomEndpoint", {
     get() {
         return __config.get("parallelstoreCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const parameterManagerCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "parameterManagerCustomEndpoint", {
+    get() {
+        return __config.get("parameterManagerCustomEndpoint");
+    },
+    enumerable: true,
+});
+
+export declare const parameterManagerRegionalCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "parameterManagerRegionalCustomEndpoint", {
+    get() {
+        return __config.get("parameterManagerRegionalCustomEndpoint");
     },
     enumerable: true,
 });

@@ -152,6 +152,9 @@ func GetClouddomainsCustomEndpoint(ctx *pulumi.Context) string {
 func GetCloudfunctions2CustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:cloudfunctions2CustomEndpoint")
 }
+func GetColabCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:colabCustomEndpoint")
+}
 func GetComposerCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:composerCustomEndpoint")
 }
@@ -414,6 +417,12 @@ func GetOsLoginCustomEndpoint(ctx *pulumi.Context) string {
 }
 func GetParallelstoreCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:parallelstoreCustomEndpoint")
+}
+func GetParameterManagerCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:parameterManagerCustomEndpoint")
+}
+func GetParameterManagerRegionalCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:parameterManagerRegionalCustomEndpoint")
 }
 func GetPrivatecaCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:privatecaCustomEndpoint")

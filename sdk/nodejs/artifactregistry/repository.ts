@@ -201,6 +201,21 @@ import * as utilities from "../utilities";
  *     cleanupPolicyDryRun: false,
  *     cleanupPolicies: [
  *         {
+ *             id: "delete-untagged",
+ *             action: "DELETE",
+ *             condition: {
+ *                 tagState: "UNTAGGED",
+ *             },
+ *         },
+ *         {
+ *             id: "keep-new-untagged",
+ *             action: "KEEP",
+ *             condition: {
+ *                 tagState: "UNTAGGED",
+ *                 newerThan: "7d",
+ *             },
+ *         },
+ *         {
  *             id: "delete-prerelease",
  *             action: "DELETE",
  *             condition: {
@@ -209,7 +224,7 @@ import * as utilities from "../utilities";
  *                     "alpha",
  *                     "v0",
  *                 ],
- *                 olderThan: "2592000s",
+ *                 olderThan: "30d",
  *             },
  *         },
  *         {

@@ -104,6 +104,44 @@ import (
 //	}
 //
 // ```
+// ### Discoveryengine Datastore Advanced Site Search Config
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/discoveryengine"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := discoveryengine.NewDataStore(ctx, "advanced_site_search_config", &discoveryengine.DataStoreArgs{
+//				Location:         pulumi.String("global"),
+//				DataStoreId:      pulumi.String("data-store-id"),
+//				DisplayName:      pulumi.String("tf-test-advanced-site-search-config-datastore"),
+//				IndustryVertical: pulumi.String("GENERIC"),
+//				ContentConfig:    pulumi.String("PUBLIC_WEBSITE"),
+//				SolutionTypes: pulumi.StringArray{
+//					pulumi.String("SOLUTION_TYPE_CHAT"),
+//				},
+//				CreateAdvancedSiteSearch:  pulumi.Bool(true),
+//				SkipDefaultSchemaCreation: pulumi.Bool(false),
+//				AdvancedSiteSearchConfig: &discoveryengine.DataStoreAdvancedSiteSearchConfigArgs{
+//					DisableInitialIndex:     pulumi.Bool(true),
+//					DisableAutomaticRefresh: pulumi.Bool(true),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -131,6 +169,9 @@ import (
 type DataStore struct {
 	pulumi.CustomResourceState
 
+	// Configuration data for advance site search.
+	// Structure is documented below.
+	AdvancedSiteSearchConfig DataStoreAdvancedSiteSearchConfigPtrOutput `pulumi:"advancedSiteSearchConfig"`
 	// The content config of the data store.
 	// Possible values are: `NO_CONTENT`, `CONTENT_REQUIRED`, `PUBLIC_WEBSITE`.
 	ContentConfig pulumi.StringOutput `pulumi:"contentConfig"`
@@ -224,6 +265,9 @@ func GetDataStore(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering DataStore resources.
 type dataStoreState struct {
+	// Configuration data for advance site search.
+	// Structure is documented below.
+	AdvancedSiteSearchConfig *DataStoreAdvancedSiteSearchConfig `pulumi:"advancedSiteSearchConfig"`
 	// The content config of the data store.
 	// Possible values are: `NO_CONTENT`, `CONTENT_REQUIRED`, `PUBLIC_WEBSITE`.
 	ContentConfig *string `pulumi:"contentConfig"`
@@ -273,6 +317,9 @@ type dataStoreState struct {
 }
 
 type DataStoreState struct {
+	// Configuration data for advance site search.
+	// Structure is documented below.
+	AdvancedSiteSearchConfig DataStoreAdvancedSiteSearchConfigPtrInput
 	// The content config of the data store.
 	// Possible values are: `NO_CONTENT`, `CONTENT_REQUIRED`, `PUBLIC_WEBSITE`.
 	ContentConfig pulumi.StringPtrInput
@@ -326,6 +373,9 @@ func (DataStoreState) ElementType() reflect.Type {
 }
 
 type dataStoreArgs struct {
+	// Configuration data for advance site search.
+	// Structure is documented below.
+	AdvancedSiteSearchConfig *DataStoreAdvancedSiteSearchConfig `pulumi:"advancedSiteSearchConfig"`
 	// The content config of the data store.
 	// Possible values are: `NO_CONTENT`, `CONTENT_REQUIRED`, `PUBLIC_WEBSITE`.
 	ContentConfig string `pulumi:"contentConfig"`
@@ -367,6 +417,9 @@ type dataStoreArgs struct {
 
 // The set of arguments for constructing a DataStore resource.
 type DataStoreArgs struct {
+	// Configuration data for advance site search.
+	// Structure is documented below.
+	AdvancedSiteSearchConfig DataStoreAdvancedSiteSearchConfigPtrInput
 	// The content config of the data store.
 	// Possible values are: `NO_CONTENT`, `CONTENT_REQUIRED`, `PUBLIC_WEBSITE`.
 	ContentConfig pulumi.StringInput
@@ -491,6 +544,12 @@ func (o DataStoreOutput) ToDataStoreOutput() DataStoreOutput {
 
 func (o DataStoreOutput) ToDataStoreOutputWithContext(ctx context.Context) DataStoreOutput {
 	return o
+}
+
+// Configuration data for advance site search.
+// Structure is documented below.
+func (o DataStoreOutput) AdvancedSiteSearchConfig() DataStoreAdvancedSiteSearchConfigPtrOutput {
+	return o.ApplyT(func(v *DataStore) DataStoreAdvancedSiteSearchConfigPtrOutput { return v.AdvancedSiteSearchConfig }).(DataStoreAdvancedSiteSearchConfigPtrOutput)
 }
 
 // The content config of the data store.

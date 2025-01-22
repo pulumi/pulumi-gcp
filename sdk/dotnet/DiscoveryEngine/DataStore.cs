@@ -93,6 +93,38 @@ namespace Pulumi.Gcp.DiscoveryEngine
     /// 
     /// });
     /// ```
+    /// ### Discoveryengine Datastore Advanced Site Search Config
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var advancedSiteSearchConfig = new Gcp.DiscoveryEngine.DataStore("advanced_site_search_config", new()
+    ///     {
+    ///         Location = "global",
+    ///         DataStoreId = "data-store-id",
+    ///         DisplayName = "tf-test-advanced-site-search-config-datastore",
+    ///         IndustryVertical = "GENERIC",
+    ///         ContentConfig = "PUBLIC_WEBSITE",
+    ///         SolutionTypes = new[]
+    ///         {
+    ///             "SOLUTION_TYPE_CHAT",
+    ///         },
+    ///         CreateAdvancedSiteSearch = true,
+    ///         SkipDefaultSchemaCreation = false,
+    ///         AdvancedSiteSearchConfig = new Gcp.DiscoveryEngine.Inputs.DataStoreAdvancedSiteSearchConfigArgs
+    ///         {
+    ///             DisableInitialIndex = true,
+    ///             DisableAutomaticRefresh = true,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -121,6 +153,13 @@ namespace Pulumi.Gcp.DiscoveryEngine
     [GcpResourceType("gcp:discoveryengine/dataStore:DataStore")]
     public partial class DataStore : global::Pulumi.CustomResource
     {
+        /// <summary>
+        /// Configuration data for advance site search.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("advancedSiteSearchConfig")]
+        public Output<Outputs.DataStoreAdvancedSiteSearchConfig?> AdvancedSiteSearchConfig { get; private set; } = null!;
+
         /// <summary>
         /// The content config of the data store.
         /// Possible values are: `NO_CONTENT`, `CONTENT_REQUIRED`, `PUBLIC_WEBSITE`.
@@ -267,6 +306,13 @@ namespace Pulumi.Gcp.DiscoveryEngine
     public sealed class DataStoreArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Configuration data for advance site search.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("advancedSiteSearchConfig")]
+        public Input<Inputs.DataStoreAdvancedSiteSearchConfigArgs>? AdvancedSiteSearchConfig { get; set; }
+
+        /// <summary>
         /// The content config of the data store.
         /// Possible values are: `NO_CONTENT`, `CONTENT_REQUIRED`, `PUBLIC_WEBSITE`.
         /// </summary>
@@ -358,6 +404,13 @@ namespace Pulumi.Gcp.DiscoveryEngine
 
     public sealed class DataStoreState : global::Pulumi.ResourceArgs
     {
+        /// <summary>
+        /// Configuration data for advance site search.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("advancedSiteSearchConfig")]
+        public Input<Inputs.DataStoreAdvancedSiteSearchConfigGetArgs>? AdvancedSiteSearchConfig { get; set; }
+
         /// <summary>
         /// The content config of the data store.
         /// Possible values are: `NO_CONTENT`, `CONTENT_REQUIRED`, `PUBLIC_WEBSITE`.

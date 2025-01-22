@@ -291,6 +291,25 @@ namespace Pulumi.Gcp.ArtifactRegistry
     ///         {
     ///             new Gcp.ArtifactRegistry.Inputs.RepositoryCleanupPolicyArgs
     ///             {
+    ///                 Id = "delete-untagged",
+    ///                 Action = "DELETE",
+    ///                 Condition = new Gcp.ArtifactRegistry.Inputs.RepositoryCleanupPolicyConditionArgs
+    ///                 {
+    ///                     TagState = "UNTAGGED",
+    ///                 },
+    ///             },
+    ///             new Gcp.ArtifactRegistry.Inputs.RepositoryCleanupPolicyArgs
+    ///             {
+    ///                 Id = "keep-new-untagged",
+    ///                 Action = "KEEP",
+    ///                 Condition = new Gcp.ArtifactRegistry.Inputs.RepositoryCleanupPolicyConditionArgs
+    ///                 {
+    ///                     TagState = "UNTAGGED",
+    ///                     NewerThan = "7d",
+    ///                 },
+    ///             },
+    ///             new Gcp.ArtifactRegistry.Inputs.RepositoryCleanupPolicyArgs
+    ///             {
     ///                 Id = "delete-prerelease",
     ///                 Action = "DELETE",
     ///                 Condition = new Gcp.ArtifactRegistry.Inputs.RepositoryCleanupPolicyConditionArgs
@@ -301,7 +320,7 @@ namespace Pulumi.Gcp.ArtifactRegistry
     ///                         "alpha",
     ///                         "v0",
     ///                     },
-    ///                     OlderThan = "2592000s",
+    ///                     OlderThan = "30d",
     ///                 },
     ///             },
     ///             new Gcp.ArtifactRegistry.Inputs.RepositoryCleanupPolicyArgs

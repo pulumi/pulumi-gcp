@@ -571,7 +571,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
         /// If not specified IPV4_ONLY will be used.
-        /// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+        /// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`, `IPV6_ONLY`.
         /// </summary>
         [Output("stackType")]
         public Output<string> StackType { get; private set; } = null!;
@@ -788,7 +788,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
         /// If not specified IPV4_ONLY will be used.
-        /// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+        /// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`, `IPV6_ONLY`.
         /// </summary>
         [Input("stackType")]
         public Input<string>? StackType { get; set; }
@@ -998,7 +998,7 @@ namespace Pulumi.Gcp.Compute
         /// <summary>
         /// The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
         /// If not specified IPV4_ONLY will be used.
-        /// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+        /// Possible values are: `IPV4_ONLY`, `IPV4_IPV6`, `IPV6_ONLY`.
         /// </summary>
         [Input("stackType")]
         public Input<string>? StackType { get; set; }

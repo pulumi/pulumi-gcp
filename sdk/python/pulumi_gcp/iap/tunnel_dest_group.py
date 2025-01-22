@@ -253,7 +253,7 @@ class TunnelDestGroup(pulumi.CustomResource):
 
         dest_group = gcp.iap.TunnelDestGroup("dest_group",
             region="us-central1",
-            group_name="testgroup_2067",
+            group_name="testgroup_40785",
             cidrs=[
                 "10.1.0.0/16",
                 "192.168.10.0/24",
@@ -339,7 +339,7 @@ class TunnelDestGroup(pulumi.CustomResource):
 
         dest_group = gcp.iap.TunnelDestGroup("dest_group",
             region="us-central1",
-            group_name="testgroup_2067",
+            group_name="testgroup_40785",
             cidrs=[
                 "10.1.0.0/16",
                 "192.168.10.0/24",

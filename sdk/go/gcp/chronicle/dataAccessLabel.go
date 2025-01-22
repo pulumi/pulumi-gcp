@@ -75,9 +75,9 @@ type DataAccessLabel struct {
 	// Output only. The time at which the data access label was created.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Required. The ID to use for the data access label, which will become the label's
-	// display name and the final component of the label's resource name. It must
-	// only contain ASCII lowercase letters, numbers, and dashes; it must begin
-	// with a letter, and it must not exceed 1000 characters.
+	// display name and the final component of the label's resource name. The
+	// maximum number of characters should be 63. Regex pattern is as per AIP:
+	// https://google.aip.dev/122#resource-id-segments
 	//
 	// ***
 	DataAccessLabelId pulumi.StringOutput `pulumi:"dataAccessLabelId"`
@@ -151,9 +151,9 @@ type dataAccessLabelState struct {
 	// Output only. The time at which the data access label was created.
 	CreateTime *string `pulumi:"createTime"`
 	// Required. The ID to use for the data access label, which will become the label's
-	// display name and the final component of the label's resource name. It must
-	// only contain ASCII lowercase letters, numbers, and dashes; it must begin
-	// with a letter, and it must not exceed 1000 characters.
+	// display name and the final component of the label's resource name. The
+	// maximum number of characters should be 63. Regex pattern is as per AIP:
+	// https://google.aip.dev/122#resource-id-segments
 	//
 	// ***
 	DataAccessLabelId *string `pulumi:"dataAccessLabelId"`
@@ -186,9 +186,9 @@ type DataAccessLabelState struct {
 	// Output only. The time at which the data access label was created.
 	CreateTime pulumi.StringPtrInput
 	// Required. The ID to use for the data access label, which will become the label's
-	// display name and the final component of the label's resource name. It must
-	// only contain ASCII lowercase letters, numbers, and dashes; it must begin
-	// with a letter, and it must not exceed 1000 characters.
+	// display name and the final component of the label's resource name. The
+	// maximum number of characters should be 63. Regex pattern is as per AIP:
+	// https://google.aip.dev/122#resource-id-segments
 	//
 	// ***
 	DataAccessLabelId pulumi.StringPtrInput
@@ -221,9 +221,9 @@ func (DataAccessLabelState) ElementType() reflect.Type {
 
 type dataAccessLabelArgs struct {
 	// Required. The ID to use for the data access label, which will become the label's
-	// display name and the final component of the label's resource name. It must
-	// only contain ASCII lowercase letters, numbers, and dashes; it must begin
-	// with a letter, and it must not exceed 1000 characters.
+	// display name and the final component of the label's resource name. The
+	// maximum number of characters should be 63. Regex pattern is as per AIP:
+	// https://google.aip.dev/122#resource-id-segments
 	//
 	// ***
 	DataAccessLabelId string `pulumi:"dataAccessLabelId"`
@@ -243,9 +243,9 @@ type dataAccessLabelArgs struct {
 // The set of arguments for constructing a DataAccessLabel resource.
 type DataAccessLabelArgs struct {
 	// Required. The ID to use for the data access label, which will become the label's
-	// display name and the final component of the label's resource name. It must
-	// only contain ASCII lowercase letters, numbers, and dashes; it must begin
-	// with a letter, and it must not exceed 1000 characters.
+	// display name and the final component of the label's resource name. The
+	// maximum number of characters should be 63. Regex pattern is as per AIP:
+	// https://google.aip.dev/122#resource-id-segments
 	//
 	// ***
 	DataAccessLabelId pulumi.StringInput
@@ -360,9 +360,9 @@ func (o DataAccessLabelOutput) CreateTime() pulumi.StringOutput {
 }
 
 // Required. The ID to use for the data access label, which will become the label's
-// display name and the final component of the label's resource name. It must
-// only contain ASCII lowercase letters, numbers, and dashes; it must begin
-// with a letter, and it must not exceed 1000 characters.
+// display name and the final component of the label's resource name. The
+// maximum number of characters should be 63. Regex pattern is as per AIP:
+// https://google.aip.dev/122#resource-id-segments
 //
 // ***
 func (o DataAccessLabelOutput) DataAccessLabelId() pulumi.StringOutput {

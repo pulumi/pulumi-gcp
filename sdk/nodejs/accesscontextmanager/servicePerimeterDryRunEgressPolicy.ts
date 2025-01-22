@@ -60,6 +60,10 @@ export class ServicePerimeterDryRunEgressPolicy extends pulumi.CustomResource {
     }
 
     /**
+     * The name of the Access Policy this resource belongs to.
+     */
+    public /*out*/ readonly accessPolicyId!: pulumi.Output<string>;
+    /**
      * Defines conditions on the source of a request causing this `EgressPolicy` to apply.
      * Structure is documented below.
      */
@@ -91,6 +95,7 @@ export class ServicePerimeterDryRunEgressPolicy extends pulumi.CustomResource {
         opts = opts || {};
         if (opts.id) {
             const state = argsOrState as ServicePerimeterDryRunEgressPolicyState | undefined;
+            resourceInputs["accessPolicyId"] = state ? state.accessPolicyId : undefined;
             resourceInputs["egressFrom"] = state ? state.egressFrom : undefined;
             resourceInputs["egressTo"] = state ? state.egressTo : undefined;
             resourceInputs["perimeter"] = state ? state.perimeter : undefined;
@@ -102,6 +107,7 @@ export class ServicePerimeterDryRunEgressPolicy extends pulumi.CustomResource {
             resourceInputs["egressFrom"] = args ? args.egressFrom : undefined;
             resourceInputs["egressTo"] = args ? args.egressTo : undefined;
             resourceInputs["perimeter"] = args ? args.perimeter : undefined;
+            resourceInputs["accessPolicyId"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
         super(ServicePerimeterDryRunEgressPolicy.__pulumiType, name, resourceInputs, opts);
@@ -112,6 +118,10 @@ export class ServicePerimeterDryRunEgressPolicy extends pulumi.CustomResource {
  * Input properties used for looking up and filtering ServicePerimeterDryRunEgressPolicy resources.
  */
 export interface ServicePerimeterDryRunEgressPolicyState {
+    /**
+     * The name of the Access Policy this resource belongs to.
+     */
+    accessPolicyId?: pulumi.Input<string>;
     /**
      * Defines conditions on the source of a request causing this `EgressPolicy` to apply.
      * Structure is documented below.

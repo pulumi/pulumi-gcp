@@ -202,11 +202,11 @@ import * as utilities from "../utilities";
  *         foo: "bar",
  *     },
  *     alloydb: {
- *         clusterId: "tf-test-dbmsalloycluster_52865",
+ *         clusterId: "tf-test-dbmsalloycluster_85840",
  *         settings: {
  *             initialUser: {
- *                 user: "alloyuser_85840",
- *                 password: "alloypass_60302",
+ *                 user: "alloyuser_60302",
+ *                 password: "alloypass_22811",
  *             },
  *             vpcNetwork: _default.id,
  *             labels: {

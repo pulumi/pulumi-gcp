@@ -20,6 +20,12 @@ __all__ = [
     'DataAccessScopeAllowedDataAccessLabelIngestionLabel',
     'DataAccessScopeDeniedDataAccessLabel',
     'DataAccessScopeDeniedDataAccessLabelIngestionLabel',
+    'ReferenceListEntry',
+    'ReferenceListScopeInfo',
+    'ReferenceListScopeInfoReferenceListScope',
+    'RuleCompilationDiagnostic',
+    'RuleCompilationDiagnosticPosition',
+    'RuleSeverity',
     'WatchlistEntityCount',
     'WatchlistEntityPopulationMechanism',
     'WatchlistEntityPopulationMechanismManual',
@@ -342,6 +348,302 @@ class DataAccessScopeDeniedDataAccessLabelIngestionLabel(dict):
         against the given key and ANY value.
         """
         return pulumi.get(self, "ingestion_label_value")
+
+
+@pulumi.output_type
+class ReferenceListEntry(dict):
+    def __init__(__self__, *,
+                 value: str):
+        """
+        :param str value: Required. The value of the entry. Maximum length is 512 characters.
+               
+               - - -
+        """
+        pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> str:
+        """
+        Required. The value of the entry. Maximum length is 512 characters.
+
+        - - -
+        """
+        return pulumi.get(self, "value")
+
+
+@pulumi.output_type
+class ReferenceListScopeInfo(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "referenceListScope":
+            suggest = "reference_list_scope"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ReferenceListScopeInfo. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ReferenceListScopeInfo.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ReferenceListScopeInfo.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 reference_list_scope: 'outputs.ReferenceListScopeInfoReferenceListScope'):
+        """
+        :param 'ReferenceListScopeInfoReferenceListScopeArgs' reference_list_scope: ReferenceListScope specifies the list of scope names of the reference list.
+               Structure is documented below.
+        """
+        pulumi.set(__self__, "reference_list_scope", reference_list_scope)
+
+    @property
+    @pulumi.getter(name="referenceListScope")
+    def reference_list_scope(self) -> 'outputs.ReferenceListScopeInfoReferenceListScope':
+        """
+        ReferenceListScope specifies the list of scope names of the reference list.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "reference_list_scope")
+
+
+@pulumi.output_type
+class ReferenceListScopeInfoReferenceListScope(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "scopeNames":
+            suggest = "scope_names"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in ReferenceListScopeInfoReferenceListScope. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        ReferenceListScopeInfoReferenceListScope.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        ReferenceListScopeInfoReferenceListScope.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 scope_names: Optional[Sequence[str]] = None):
+        """
+        :param Sequence[str] scope_names: Optional. The list of scope names of the reference list. The scope names should be
+               full resource names and should be of the format:
+               "projects/{project}/locations/{location}/instances/{instance}/dataAccessScopes/{scope_name}".
+        """
+        if scope_names is not None:
+            pulumi.set(__self__, "scope_names", scope_names)
+
+    @property
+    @pulumi.getter(name="scopeNames")
+    def scope_names(self) -> Optional[Sequence[str]]:
+        """
+        Optional. The list of scope names of the reference list. The scope names should be
+        full resource names and should be of the format:
+        "projects/{project}/locations/{location}/instances/{instance}/dataAccessScopes/{scope_name}".
+        """
+        return pulumi.get(self, "scope_names")
+
+
+@pulumi.output_type
+class RuleCompilationDiagnostic(dict):
+    def __init__(__self__, *,
+                 message: Optional[str] = None,
+                 position: Optional['outputs.RuleCompilationDiagnosticPosition'] = None,
+                 severity: Optional[str] = None,
+                 uri: Optional[str] = None):
+        """
+        :param str message: (Output)
+               Output only. The diagnostic message.
+        :param 'RuleCompilationDiagnosticPositionArgs' position: CompilationPosition represents the location of a compilation diagnostic in
+               rule text.
+               Structure is documented below.
+        :param str severity: (Output)
+               Output only. The severity of a rule's compilation diagnostic.
+               Possible values:
+               SEVERITY_UNSPECIFIED
+               WARNING
+               ERROR
+        :param str uri: (Output)
+               Output only. Link to documentation that describes a diagnostic in more detail.
+        """
+        if message is not None:
+            pulumi.set(__self__, "message", message)
+        if position is not None:
+            pulumi.set(__self__, "position", position)
+        if severity is not None:
+            pulumi.set(__self__, "severity", severity)
+        if uri is not None:
+            pulumi.set(__self__, "uri", uri)
+
+    @property
+    @pulumi.getter
+    def message(self) -> Optional[str]:
+        """
+        (Output)
+        Output only. The diagnostic message.
+        """
+        return pulumi.get(self, "message")
+
+    @property
+    @pulumi.getter
+    def position(self) -> Optional['outputs.RuleCompilationDiagnosticPosition']:
+        """
+        CompilationPosition represents the location of a compilation diagnostic in
+        rule text.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "position")
+
+    @property
+    @pulumi.getter
+    def severity(self) -> Optional[str]:
+        """
+        (Output)
+        Output only. The severity of a rule's compilation diagnostic.
+        Possible values:
+        SEVERITY_UNSPECIFIED
+        WARNING
+        ERROR
+        """
+        return pulumi.get(self, "severity")
+
+    @property
+    @pulumi.getter
+    def uri(self) -> Optional[str]:
+        """
+        (Output)
+        Output only. Link to documentation that describes a diagnostic in more detail.
+        """
+        return pulumi.get(self, "uri")
+
+
+@pulumi.output_type
+class RuleCompilationDiagnosticPosition(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endColumn":
+            suggest = "end_column"
+        elif key == "endLine":
+            suggest = "end_line"
+        elif key == "startColumn":
+            suggest = "start_column"
+        elif key == "startLine":
+            suggest = "start_line"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RuleCompilationDiagnosticPosition. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RuleCompilationDiagnosticPosition.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RuleCompilationDiagnosticPosition.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 end_column: Optional[int] = None,
+                 end_line: Optional[int] = None,
+                 start_column: Optional[int] = None,
+                 start_line: Optional[int] = None):
+        """
+        :param int end_column: (Output)
+               Output only. End column number, beginning at 1.
+        :param int end_line: (Output)
+               Output only. End line number, beginning at 1.
+        :param int start_column: (Output)
+               Output only. Start column number, beginning at 1.
+        :param int start_line: (Output)
+               Output only. Start line number, beginning at 1.
+        """
+        if end_column is not None:
+            pulumi.set(__self__, "end_column", end_column)
+        if end_line is not None:
+            pulumi.set(__self__, "end_line", end_line)
+        if start_column is not None:
+            pulumi.set(__self__, "start_column", start_column)
+        if start_line is not None:
+            pulumi.set(__self__, "start_line", start_line)
+
+    @property
+    @pulumi.getter(name="endColumn")
+    def end_column(self) -> Optional[int]:
+        """
+        (Output)
+        Output only. End column number, beginning at 1.
+        """
+        return pulumi.get(self, "end_column")
+
+    @property
+    @pulumi.getter(name="endLine")
+    def end_line(self) -> Optional[int]:
+        """
+        (Output)
+        Output only. End line number, beginning at 1.
+        """
+        return pulumi.get(self, "end_line")
+
+    @property
+    @pulumi.getter(name="startColumn")
+    def start_column(self) -> Optional[int]:
+        """
+        (Output)
+        Output only. Start column number, beginning at 1.
+        """
+        return pulumi.get(self, "start_column")
+
+    @property
+    @pulumi.getter(name="startLine")
+    def start_line(self) -> Optional[int]:
+        """
+        (Output)
+        Output only. Start line number, beginning at 1.
+        """
+        return pulumi.get(self, "start_line")
+
+
+@pulumi.output_type
+class RuleSeverity(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "displayName":
+            suggest = "display_name"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RuleSeverity. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RuleSeverity.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RuleSeverity.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 display_name: Optional[str] = None):
+        """
+        :param str display_name: The display name of the severity level. Extracted from the meta section of
+               the rule text.
+        """
+        if display_name is not None:
+            pulumi.set(__self__, "display_name", display_name)
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> Optional[str]:
+        """
+        The display name of the severity level. Extracted from the meta section of
+        the rule text.
+        """
+        return pulumi.get(self, "display_name")
 
 
 @pulumi.output_type

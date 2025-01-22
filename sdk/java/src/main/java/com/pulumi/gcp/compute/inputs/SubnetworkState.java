@@ -474,7 +474,7 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
     /**
      * The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
      * If not specified IPV4_ONLY will be used.
-     * Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+     * Possible values are: `IPV4_ONLY`, `IPV4_IPV6`, `IPV6_ONLY`.
      * 
      */
     @Import(name="stackType")
@@ -483,7 +483,7 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
     /**
      * @return The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
      * If not specified IPV4_ONLY will be used.
-     * Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+     * Possible values are: `IPV4_ONLY`, `IPV4_IPV6`, `IPV6_ONLY`.
      * 
      */
     public Optional<Output<String>> stackType() {
@@ -1159,7 +1159,7 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param stackType The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
          * If not specified IPV4_ONLY will be used.
-         * Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+         * Possible values are: `IPV4_ONLY`, `IPV4_IPV6`, `IPV6_ONLY`.
          * 
          * @return builder
          * 
@@ -1172,7 +1172,7 @@ public final class SubnetworkState extends com.pulumi.resources.ResourceArgs {
         /**
          * @param stackType The stack type for this subnet to identify whether the IPv6 feature is enabled or not.
          * If not specified IPV4_ONLY will be used.
-         * Possible values are: `IPV4_ONLY`, `IPV4_IPV6`.
+         * Possible values are: `IPV4_ONLY`, `IPV4_IPV6`, `IPV6_ONLY`.
          * 
          * @return builder
          * 

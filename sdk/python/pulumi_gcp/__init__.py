@@ -86,6 +86,8 @@ if typing.TYPE_CHECKING:
     cloudscheduler = __cloudscheduler
     import pulumi_gcp.cloudtasks as __cloudtasks
     cloudtasks = __cloudtasks
+    import pulumi_gcp.colab as __colab
+    colab = __colab
     import pulumi_gcp.composer as __composer
     composer = __composer
     import pulumi_gcp.compute as __compute
@@ -204,6 +206,8 @@ if typing.TYPE_CHECKING:
     oslogin = __oslogin
     import pulumi_gcp.parallelstore as __parallelstore
     parallelstore = __parallelstore
+    import pulumi_gcp.parametermanager as __parametermanager
+    parametermanager = __parametermanager
     import pulumi_gcp.privilegedaccessmanager as __privilegedaccessmanager
     privilegedaccessmanager = __privilegedaccessmanager
     import pulumi_gcp.projects as __projects
@@ -301,6 +305,7 @@ else:
     cloudrunv2 = _utilities.lazy_import('pulumi_gcp.cloudrunv2')
     cloudscheduler = _utilities.lazy_import('pulumi_gcp.cloudscheduler')
     cloudtasks = _utilities.lazy_import('pulumi_gcp.cloudtasks')
+    colab = _utilities.lazy_import('pulumi_gcp.colab')
     composer = _utilities.lazy_import('pulumi_gcp.composer')
     compute = _utilities.lazy_import('pulumi_gcp.compute')
     config = _utilities.lazy_import('pulumi_gcp.config')
@@ -360,6 +365,7 @@ else:
     osconfig = _utilities.lazy_import('pulumi_gcp.osconfig')
     oslogin = _utilities.lazy_import('pulumi_gcp.oslogin')
     parallelstore = _utilities.lazy_import('pulumi_gcp.parallelstore')
+    parametermanager = _utilities.lazy_import('pulumi_gcp.parametermanager')
     privilegedaccessmanager = _utilities.lazy_import('pulumi_gcp.privilegedaccessmanager')
     projects = _utilities.lazy_import('pulumi_gcp.projects')
     pubsub = _utilities.lazy_import('pulumi_gcp.pubsub')
@@ -775,6 +781,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.apigee",
   "classes": {
    "gcp:apigee/environment:Environment": "Environment"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "apigee/environmentAddonsConfig",
+  "fqn": "pulumi_gcp.apigee",
+  "classes": {
+   "gcp:apigee/environmentAddonsConfig:EnvironmentAddonsConfig": "EnvironmentAddonsConfig"
   }
  },
  {
@@ -1747,6 +1761,30 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "chronicle/referenceList",
+  "fqn": "pulumi_gcp.chronicle",
+  "classes": {
+   "gcp:chronicle/referenceList:ReferenceList": "ReferenceList"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "chronicle/rule",
+  "fqn": "pulumi_gcp.chronicle",
+  "classes": {
+   "gcp:chronicle/rule:Rule": "Rule"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "chronicle/ruleDeployment",
+  "fqn": "pulumi_gcp.chronicle",
+  "classes": {
+   "gcp:chronicle/ruleDeployment:RuleDeployment": "RuleDeployment"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "chronicle/watchlist",
   "fqn": "pulumi_gcp.chronicle",
   "classes": {
@@ -2199,6 +2237,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.cloudtasks",
   "classes": {
    "gcp:cloudtasks/queueIamPolicy:QueueIamPolicy": "QueueIamPolicy"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "colab/runtimeTemplate",
+  "fqn": "pulumi_gcp.colab",
+  "classes": {
+   "gcp:colab/runtimeTemplate:RuntimeTemplate": "RuntimeTemplate"
   }
  },
  {
@@ -4567,6 +4613,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.edgecontainer",
   "classes": {
    "gcp:edgecontainer/vpnConnection:VpnConnection": "VpnConnection"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "edgenetwork/interconnectAttachment",
+  "fqn": "pulumi_gcp.edgenetwork",
+  "classes": {
+   "gcp:edgenetwork/interconnectAttachment:InterconnectAttachment": "InterconnectAttachment"
   }
  },
  {
@@ -7031,6 +7085,30 @@ _utilities.register(
   "fqn": "pulumi_gcp.parallelstore",
   "classes": {
    "gcp:parallelstore/instance:Instance": "Instance"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "parametermanager/parameter",
+  "fqn": "pulumi_gcp.parametermanager",
+  "classes": {
+   "gcp:parametermanager/parameter:Parameter": "Parameter"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "parametermanager/regionalParameter",
+  "fqn": "pulumi_gcp.parametermanager",
+  "classes": {
+   "gcp:parametermanager/regionalParameter:RegionalParameter": "RegionalParameter"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "parametermanager/regionalParameterVersion",
+  "fqn": "pulumi_gcp.parametermanager",
+  "classes": {
+   "gcp:parametermanager/regionalParameterVersion:RegionalParameterVersion": "RegionalParameterVersion"
   }
  },
  {

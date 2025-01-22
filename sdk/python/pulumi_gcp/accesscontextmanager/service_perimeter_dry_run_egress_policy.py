@@ -88,11 +88,13 @@ class ServicePerimeterDryRunEgressPolicyArgs:
 @pulumi.input_type
 class _ServicePerimeterDryRunEgressPolicyState:
     def __init__(__self__, *,
+                 access_policy_id: Optional[pulumi.Input[str]] = None,
                  egress_from: Optional[pulumi.Input['ServicePerimeterDryRunEgressPolicyEgressFromArgs']] = None,
                  egress_to: Optional[pulumi.Input['ServicePerimeterDryRunEgressPolicyEgressToArgs']] = None,
                  perimeter: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering ServicePerimeterDryRunEgressPolicy resources.
+        :param pulumi.Input[str] access_policy_id: The name of the Access Policy this resource belongs to.
         :param pulumi.Input['ServicePerimeterDryRunEgressPolicyEgressFromArgs'] egress_from: Defines conditions on the source of a request causing this `EgressPolicy` to apply.
                Structure is documented below.
         :param pulumi.Input['ServicePerimeterDryRunEgressPolicyEgressToArgs'] egress_to: Defines the conditions on the `ApiOperation` and destination resources that
@@ -103,12 +105,26 @@ class _ServicePerimeterDryRunEgressPolicyState:
                
                - - -
         """
+        if access_policy_id is not None:
+            pulumi.set(__self__, "access_policy_id", access_policy_id)
         if egress_from is not None:
             pulumi.set(__self__, "egress_from", egress_from)
         if egress_to is not None:
             pulumi.set(__self__, "egress_to", egress_to)
         if perimeter is not None:
             pulumi.set(__self__, "perimeter", perimeter)
+
+    @property
+    @pulumi.getter(name="accessPolicyId")
+    def access_policy_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the Access Policy this resource belongs to.
+        """
+        return pulumi.get(self, "access_policy_id")
+
+    @access_policy_id.setter
+    def access_policy_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "access_policy_id", value)
 
     @property
     @pulumi.getter(name="egressFrom")
@@ -262,6 +278,7 @@ class ServicePerimeterDryRunEgressPolicy(pulumi.CustomResource):
             if perimeter is None and not opts.urn:
                 raise TypeError("Missing required property 'perimeter'")
             __props__.__dict__["perimeter"] = perimeter
+            __props__.__dict__["access_policy_id"] = None
         super(ServicePerimeterDryRunEgressPolicy, __self__).__init__(
             'gcp:accesscontextmanager/servicePerimeterDryRunEgressPolicy:ServicePerimeterDryRunEgressPolicy',
             resource_name,
@@ -272,6 +289,7 @@ class ServicePerimeterDryRunEgressPolicy(pulumi.CustomResource):
     def get(resource_name: str,
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
+            access_policy_id: Optional[pulumi.Input[str]] = None,
             egress_from: Optional[pulumi.Input[Union['ServicePerimeterDryRunEgressPolicyEgressFromArgs', 'ServicePerimeterDryRunEgressPolicyEgressFromArgsDict']]] = None,
             egress_to: Optional[pulumi.Input[Union['ServicePerimeterDryRunEgressPolicyEgressToArgs', 'ServicePerimeterDryRunEgressPolicyEgressToArgsDict']]] = None,
             perimeter: Optional[pulumi.Input[str]] = None) -> 'ServicePerimeterDryRunEgressPolicy':
@@ -282,6 +300,7 @@ class ServicePerimeterDryRunEgressPolicy(pulumi.CustomResource):
         :param str resource_name: The unique name of the resulting resource.
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[str] access_policy_id: The name of the Access Policy this resource belongs to.
         :param pulumi.Input[Union['ServicePerimeterDryRunEgressPolicyEgressFromArgs', 'ServicePerimeterDryRunEgressPolicyEgressFromArgsDict']] egress_from: Defines conditions on the source of a request causing this `EgressPolicy` to apply.
                Structure is documented below.
         :param pulumi.Input[Union['ServicePerimeterDryRunEgressPolicyEgressToArgs', 'ServicePerimeterDryRunEgressPolicyEgressToArgsDict']] egress_to: Defines the conditions on the `ApiOperation` and destination resources that
@@ -296,10 +315,19 @@ class ServicePerimeterDryRunEgressPolicy(pulumi.CustomResource):
 
         __props__ = _ServicePerimeterDryRunEgressPolicyState.__new__(_ServicePerimeterDryRunEgressPolicyState)
 
+        __props__.__dict__["access_policy_id"] = access_policy_id
         __props__.__dict__["egress_from"] = egress_from
         __props__.__dict__["egress_to"] = egress_to
         __props__.__dict__["perimeter"] = perimeter
         return ServicePerimeterDryRunEgressPolicy(resource_name, opts=opts, __props__=__props__)
+
+    @property
+    @pulumi.getter(name="accessPolicyId")
+    def access_policy_id(self) -> pulumi.Output[str]:
+        """
+        The name of the Access Policy this resource belongs to.
+        """
+        return pulumi.get(self, "access_policy_id")
 
     @property
     @pulumi.getter(name="egressFrom")

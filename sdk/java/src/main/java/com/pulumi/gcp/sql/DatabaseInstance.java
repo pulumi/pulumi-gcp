@@ -13,6 +13,7 @@ import com.pulumi.gcp.sql.inputs.DatabaseInstanceState;
 import com.pulumi.gcp.sql.outputs.DatabaseInstanceClone;
 import com.pulumi.gcp.sql.outputs.DatabaseInstanceIpAddress;
 import com.pulumi.gcp.sql.outputs.DatabaseInstanceReplicaConfiguration;
+import com.pulumi.gcp.sql.outputs.DatabaseInstanceReplicationCluster;
 import com.pulumi.gcp.sql.outputs.DatabaseInstanceRestoreBackupContext;
 import com.pulumi.gcp.sql.outputs.DatabaseInstanceServerCaCert;
 import com.pulumi.gcp.sql.outputs.DatabaseInstanceSettings;
@@ -316,9 +317,9 @@ import javax.annotation.Nullable;
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
  * 
- * ## Switchover (SQL Server Only)
+ * ## Switchover
  * 
- * Users can perform a switchover on any direct `cascadable` replica by following the steps below.
+ * Users can perform a switchover on a replica by following the steps below.
  * 
  *   ~&gt;**WARNING:** Failure to follow these steps can lead to data loss (You will be warned during plan stage). To prevent data loss during a switchover, please verify your plan with the checklist below.
  * 
@@ -326,22 +327,26 @@ import javax.annotation.Nullable;
  * 
  * ### Steps to Invoke Switchover
  * 
- * Create a `cascadable` replica in a different region from the primary (`cascadable_replica` is set to true in `replica_configuration`)
+ * MySQL/PostgreSQL: Create a cross-region, Enterprise Plus edition primary and replica pair, then set the value of primary&#39;s `replication_cluster.failover_dr_replica_name` as the replica.
+ * 
+ * SQL Server: Create a `cascadable` replica in a different region from the primary (`cascadable_replica` is set to true in `replica_configuration`)
  * 
  * #### Invoking switchover in the replica resource:
  * 1. Change instance_type from `READ_REPLICA_INSTANCE` to `CLOUD_SQL_INSTANCE`
  * 2. Remove `master_instance_name`
- * 3. Remove `replica_configuration`
+ * 3. (SQL Server) Remove `replica_configuration`
  * 4. Add current primary&#39;s name to the replica&#39;s `replica_names` list
+ * 5. (MySQL/PostgreSQL) Add current primary&#39;s name to the replica&#39;s `replication_cluster.failover_dr_replica_name`.
+ * 6. (MySQL/PostgreSQL) Adjust `backup_configuration`. See Switchover Guide for details.
  * 
  * #### Updating the primary resource:
  * 1. Change `instance_type` from `CLOUD_SQL_INSTANCE` to `READ_REPLICA_INSTANCE`
  * 2. Set `master_instance_name` to the original replica (which will be primary after switchover)
- * 3. Set `replica_configuration` and set `cascadable_replica` to `true`
+ * 3. (SQL Server) Set `replica_configuration` and set `cascadable_replica` to `true`
  * 4. Remove original replica from `replica_names`
- *    
- *     &gt; **NOTE**: Do **not** delete the replica_names field, even if it has no replicas remaining. Set replica_names = [ ] to indicate it having no replicas.
- * 
+ *    * **NOTE**: Do **not** delete the replica_names field, even if it has no replicas remaining. Set replica_names = [ ] to indicate it having no replicas.
+ * 5. (MySQL/PostgreSQL) Set `replication_cluster.failover_dr_replica_name` as the empty string.
+ * 6. (MySQL/PostgreSQL) Adjust `backup_configuration`. See Switchover Guide for details.
  * #### Plan and verify that:
  * - `pulumi preview` outputs **&#34;0 to add, 0 to destroy&#34;**
  * - `pulumi preview` does not say **&#34;must be replaced&#34;** for any resource
@@ -711,6 +716,22 @@ public class DatabaseInstance extends com.pulumi.resources.CustomResource {
      */
     public Output<List<String>> replicaNames() {
         return this.replicaNames;
+    }
+    /**
+     * A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only
+     * after both the primary and replica are created.
+     * 
+     */
+    @Export(name="replicationCluster", refs={DatabaseInstanceReplicationCluster.class}, tree="[0]")
+    private Output<DatabaseInstanceReplicationCluster> replicationCluster;
+
+    /**
+     * @return A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only
+     * after both the primary and replica are created.
+     * 
+     */
+    public Output<DatabaseInstanceReplicationCluster> replicationCluster() {
+        return this.replicationCluster;
     }
     /**
      * The context needed to restore the database to a backup run. This field will

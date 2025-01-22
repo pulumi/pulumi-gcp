@@ -72,6 +72,10 @@ namespace Pulumi.Gcp.Sql.Outputs
         /// The replicas of the instance.
         /// </summary>
         public readonly ImmutableArray<string> ReplicaNames;
+        /// <summary>
+        /// A primary instance and disaster recovery replica pair. Applicable to MySQL and PostgreSQL. This field can be set only after both the primary and replica are created.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetDatabaseInstancesInstanceReplicationClusterResult> ReplicationClusters;
         public readonly ImmutableArray<Outputs.GetDatabaseInstancesInstanceRestoreBackupContextResult> RestoreBackupContexts;
         /// <summary>
         /// Initial root password. Required for MS SQL Server.
@@ -133,6 +137,8 @@ namespace Pulumi.Gcp.Sql.Outputs
 
             ImmutableArray<string> replicaNames,
 
+            ImmutableArray<Outputs.GetDatabaseInstancesInstanceReplicationClusterResult> replicationClusters,
+
             ImmutableArray<Outputs.GetDatabaseInstancesInstanceRestoreBackupContextResult> restoreBackupContexts,
 
             string rootPassword,
@@ -165,6 +171,7 @@ namespace Pulumi.Gcp.Sql.Outputs
             Region = region;
             ReplicaConfigurations = replicaConfigurations;
             ReplicaNames = replicaNames;
+            ReplicationClusters = replicationClusters;
             RestoreBackupContexts = restoreBackupContexts;
             RootPassword = rootPassword;
             SelfLink = selfLink;

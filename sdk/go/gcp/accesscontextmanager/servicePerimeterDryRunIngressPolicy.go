@@ -39,6 +39,8 @@ import (
 type ServicePerimeterDryRunIngressPolicy struct {
 	pulumi.CustomResourceState
 
+	// The name of the Access Policy this resource belongs to.
+	AccessPolicyId pulumi.StringOutput `pulumi:"accessPolicyId"`
 	// Defines the conditions on the source of a request causing this `IngressPolicy`
 	// to apply.
 	// Structure is documented below.
@@ -86,6 +88,8 @@ func GetServicePerimeterDryRunIngressPolicy(ctx *pulumi.Context,
 
 // Input properties used for looking up and filtering ServicePerimeterDryRunIngressPolicy resources.
 type servicePerimeterDryRunIngressPolicyState struct {
+	// The name of the Access Policy this resource belongs to.
+	AccessPolicyId *string `pulumi:"accessPolicyId"`
 	// Defines the conditions on the source of a request causing this `IngressPolicy`
 	// to apply.
 	// Structure is documented below.
@@ -101,6 +105,8 @@ type servicePerimeterDryRunIngressPolicyState struct {
 }
 
 type ServicePerimeterDryRunIngressPolicyState struct {
+	// The name of the Access Policy this resource belongs to.
+	AccessPolicyId pulumi.StringPtrInput
 	// Defines the conditions on the source of a request causing this `IngressPolicy`
 	// to apply.
 	// Structure is documented below.
@@ -235,6 +241,11 @@ func (o ServicePerimeterDryRunIngressPolicyOutput) ToServicePerimeterDryRunIngre
 
 func (o ServicePerimeterDryRunIngressPolicyOutput) ToServicePerimeterDryRunIngressPolicyOutputWithContext(ctx context.Context) ServicePerimeterDryRunIngressPolicyOutput {
 	return o
+}
+
+// The name of the Access Policy this resource belongs to.
+func (o ServicePerimeterDryRunIngressPolicyOutput) AccessPolicyId() pulumi.StringOutput {
+	return o.ApplyT(func(v *ServicePerimeterDryRunIngressPolicy) pulumi.StringOutput { return v.AccessPolicyId }).(pulumi.StringOutput)
 }
 
 // Defines the conditions on the source of a request causing this `IngressPolicy`

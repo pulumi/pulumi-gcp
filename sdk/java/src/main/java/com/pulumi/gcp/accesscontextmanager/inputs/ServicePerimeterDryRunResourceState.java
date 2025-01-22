@@ -16,6 +16,21 @@ public final class ServicePerimeterDryRunResourceState extends com.pulumi.resour
     public static final ServicePerimeterDryRunResourceState Empty = new ServicePerimeterDryRunResourceState();
 
     /**
+     * The name of the Access Policy this resource belongs to.
+     * 
+     */
+    @Import(name="accessPolicyId")
+    private @Nullable Output<String> accessPolicyId;
+
+    /**
+     * @return The name of the Access Policy this resource belongs to.
+     * 
+     */
+    public Optional<Output<String>> accessPolicyId() {
+        return Optional.ofNullable(this.accessPolicyId);
+    }
+
+    /**
      * The name of the Service Perimeter to add this resource to.
      * 
      * ***
@@ -56,6 +71,7 @@ public final class ServicePerimeterDryRunResourceState extends com.pulumi.resour
     private ServicePerimeterDryRunResourceState() {}
 
     private ServicePerimeterDryRunResourceState(ServicePerimeterDryRunResourceState $) {
+        this.accessPolicyId = $.accessPolicyId;
         this.perimeterName = $.perimeterName;
         this.resource = $.resource;
     }
@@ -76,6 +92,27 @@ public final class ServicePerimeterDryRunResourceState extends com.pulumi.resour
 
         public Builder(ServicePerimeterDryRunResourceState defaults) {
             $ = new ServicePerimeterDryRunResourceState(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param accessPolicyId The name of the Access Policy this resource belongs to.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accessPolicyId(@Nullable Output<String> accessPolicyId) {
+            $.accessPolicyId = accessPolicyId;
+            return this;
+        }
+
+        /**
+         * @param accessPolicyId The name of the Access Policy this resource belongs to.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder accessPolicyId(String accessPolicyId) {
+            return accessPolicyId(Output.of(accessPolicyId));
         }
 
         /**

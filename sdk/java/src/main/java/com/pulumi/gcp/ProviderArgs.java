@@ -349,6 +349,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.cloudfunctions2CustomEndpoint);
     }
 
+    @Import(name="colabCustomEndpoint")
+    private @Nullable Output<String> colabCustomEndpoint;
+
+    public Optional<Output<String>> colabCustomEndpoint() {
+        return Optional.ofNullable(this.colabCustomEndpoint);
+    }
+
     @Import(name="composerCustomEndpoint")
     private @Nullable Output<String> composerCustomEndpoint;
 
@@ -937,6 +944,20 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.parallelstoreCustomEndpoint);
     }
 
+    @Import(name="parameterManagerCustomEndpoint")
+    private @Nullable Output<String> parameterManagerCustomEndpoint;
+
+    public Optional<Output<String>> parameterManagerCustomEndpoint() {
+        return Optional.ofNullable(this.parameterManagerCustomEndpoint);
+    }
+
+    @Import(name="parameterManagerRegionalCustomEndpoint")
+    private @Nullable Output<String> parameterManagerRegionalCustomEndpoint;
+
+    public Optional<Output<String>> parameterManagerRegionalCustomEndpoint() {
+        return Optional.ofNullable(this.parameterManagerRegionalCustomEndpoint);
+    }
+
     @Import(name="privatecaCustomEndpoint")
     private @Nullable Output<String> privatecaCustomEndpoint;
 
@@ -1337,6 +1358,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.clouddeployCustomEndpoint = $.clouddeployCustomEndpoint;
         this.clouddomainsCustomEndpoint = $.clouddomainsCustomEndpoint;
         this.cloudfunctions2CustomEndpoint = $.cloudfunctions2CustomEndpoint;
+        this.colabCustomEndpoint = $.colabCustomEndpoint;
         this.composerCustomEndpoint = $.composerCustomEndpoint;
         this.computeCustomEndpoint = $.computeCustomEndpoint;
         this.containerAnalysisCustomEndpoint = $.containerAnalysisCustomEndpoint;
@@ -1421,6 +1443,8 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.osConfigCustomEndpoint = $.osConfigCustomEndpoint;
         this.osLoginCustomEndpoint = $.osLoginCustomEndpoint;
         this.parallelstoreCustomEndpoint = $.parallelstoreCustomEndpoint;
+        this.parameterManagerCustomEndpoint = $.parameterManagerCustomEndpoint;
+        this.parameterManagerRegionalCustomEndpoint = $.parameterManagerRegionalCustomEndpoint;
         this.privatecaCustomEndpoint = $.privatecaCustomEndpoint;
         this.privilegedAccessManagerCustomEndpoint = $.privilegedAccessManagerCustomEndpoint;
         this.project = $.project;
@@ -1912,6 +1936,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder cloudfunctions2CustomEndpoint(String cloudfunctions2CustomEndpoint) {
             return cloudfunctions2CustomEndpoint(Output.of(cloudfunctions2CustomEndpoint));
+        }
+
+        public Builder colabCustomEndpoint(@Nullable Output<String> colabCustomEndpoint) {
+            $.colabCustomEndpoint = colabCustomEndpoint;
+            return this;
+        }
+
+        public Builder colabCustomEndpoint(String colabCustomEndpoint) {
+            return colabCustomEndpoint(Output.of(colabCustomEndpoint));
         }
 
         public Builder composerCustomEndpoint(@Nullable Output<String> composerCustomEndpoint) {
@@ -2672,6 +2705,24 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder parallelstoreCustomEndpoint(String parallelstoreCustomEndpoint) {
             return parallelstoreCustomEndpoint(Output.of(parallelstoreCustomEndpoint));
+        }
+
+        public Builder parameterManagerCustomEndpoint(@Nullable Output<String> parameterManagerCustomEndpoint) {
+            $.parameterManagerCustomEndpoint = parameterManagerCustomEndpoint;
+            return this;
+        }
+
+        public Builder parameterManagerCustomEndpoint(String parameterManagerCustomEndpoint) {
+            return parameterManagerCustomEndpoint(Output.of(parameterManagerCustomEndpoint));
+        }
+
+        public Builder parameterManagerRegionalCustomEndpoint(@Nullable Output<String> parameterManagerRegionalCustomEndpoint) {
+            $.parameterManagerRegionalCustomEndpoint = parameterManagerRegionalCustomEndpoint;
+            return this;
+        }
+
+        public Builder parameterManagerRegionalCustomEndpoint(String parameterManagerRegionalCustomEndpoint) {
+            return parameterManagerRegionalCustomEndpoint(Output.of(parameterManagerRegionalCustomEndpoint));
         }
 
         public Builder privatecaCustomEndpoint(@Nullable Output<String> privatecaCustomEndpoint) {

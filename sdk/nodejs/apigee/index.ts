@@ -55,6 +55,11 @@ export type Environment = import("./environment").Environment;
 export const Environment: typeof import("./environment").Environment = null as any;
 utilities.lazyLoad(exports, ["Environment"], () => require("./environment"));
 
+export { EnvironmentAddonsConfigArgs, EnvironmentAddonsConfigState } from "./environmentAddonsConfig";
+export type EnvironmentAddonsConfig = import("./environmentAddonsConfig").EnvironmentAddonsConfig;
+export const EnvironmentAddonsConfig: typeof import("./environmentAddonsConfig").EnvironmentAddonsConfig = null as any;
+utilities.lazyLoad(exports, ["EnvironmentAddonsConfig"], () => require("./environmentAddonsConfig"));
+
 export { EnvironmentIamBindingArgs, EnvironmentIamBindingState } from "./environmentIamBinding";
 export type EnvironmentIamBinding = import("./environmentIamBinding").EnvironmentIamBinding;
 export const EnvironmentIamBinding: typeof import("./environmentIamBinding").EnvironmentIamBinding = null as any;
@@ -170,6 +175,8 @@ const _module = {
                 return new EnvReferences(name, <any>undefined, { urn })
             case "gcp:apigee/environment:Environment":
                 return new Environment(name, <any>undefined, { urn })
+            case "gcp:apigee/environmentAddonsConfig:EnvironmentAddonsConfig":
+                return new EnvironmentAddonsConfig(name, <any>undefined, { urn })
             case "gcp:apigee/environmentIamBinding:EnvironmentIamBinding":
                 return new EnvironmentIamBinding(name, <any>undefined, { urn })
             case "gcp:apigee/environmentIamMember:EnvironmentIamMember":
@@ -219,6 +226,7 @@ pulumi.runtime.registerResourceModule("gcp", "apigee/envGroupAttachment", _modul
 pulumi.runtime.registerResourceModule("gcp", "apigee/envKeystore", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/envReferences", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/environment", _module)
+pulumi.runtime.registerResourceModule("gcp", "apigee/environmentAddonsConfig", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/environmentIamBinding", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/environmentIamMember", _module)
 pulumi.runtime.registerResourceModule("gcp", "apigee/environmentIamPolicy", _module)

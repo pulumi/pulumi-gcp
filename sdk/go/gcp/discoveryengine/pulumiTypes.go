@@ -622,6 +622,162 @@ func (o ChatEngineCommonConfigPtrOutput) CompanyName() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type DataStoreAdvancedSiteSearchConfig struct {
+	// If set true, automatic refresh is disabled for the DataStore.
+	DisableAutomaticRefresh *bool `pulumi:"disableAutomaticRefresh"`
+	// If set true, initial indexing is disabled for the DataStore.
+	DisableInitialIndex *bool `pulumi:"disableInitialIndex"`
+}
+
+// DataStoreAdvancedSiteSearchConfigInput is an input type that accepts DataStoreAdvancedSiteSearchConfigArgs and DataStoreAdvancedSiteSearchConfigOutput values.
+// You can construct a concrete instance of `DataStoreAdvancedSiteSearchConfigInput` via:
+//
+//	DataStoreAdvancedSiteSearchConfigArgs{...}
+type DataStoreAdvancedSiteSearchConfigInput interface {
+	pulumi.Input
+
+	ToDataStoreAdvancedSiteSearchConfigOutput() DataStoreAdvancedSiteSearchConfigOutput
+	ToDataStoreAdvancedSiteSearchConfigOutputWithContext(context.Context) DataStoreAdvancedSiteSearchConfigOutput
+}
+
+type DataStoreAdvancedSiteSearchConfigArgs struct {
+	// If set true, automatic refresh is disabled for the DataStore.
+	DisableAutomaticRefresh pulumi.BoolPtrInput `pulumi:"disableAutomaticRefresh"`
+	// If set true, initial indexing is disabled for the DataStore.
+	DisableInitialIndex pulumi.BoolPtrInput `pulumi:"disableInitialIndex"`
+}
+
+func (DataStoreAdvancedSiteSearchConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataStoreAdvancedSiteSearchConfig)(nil)).Elem()
+}
+
+func (i DataStoreAdvancedSiteSearchConfigArgs) ToDataStoreAdvancedSiteSearchConfigOutput() DataStoreAdvancedSiteSearchConfigOutput {
+	return i.ToDataStoreAdvancedSiteSearchConfigOutputWithContext(context.Background())
+}
+
+func (i DataStoreAdvancedSiteSearchConfigArgs) ToDataStoreAdvancedSiteSearchConfigOutputWithContext(ctx context.Context) DataStoreAdvancedSiteSearchConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataStoreAdvancedSiteSearchConfigOutput)
+}
+
+func (i DataStoreAdvancedSiteSearchConfigArgs) ToDataStoreAdvancedSiteSearchConfigPtrOutput() DataStoreAdvancedSiteSearchConfigPtrOutput {
+	return i.ToDataStoreAdvancedSiteSearchConfigPtrOutputWithContext(context.Background())
+}
+
+func (i DataStoreAdvancedSiteSearchConfigArgs) ToDataStoreAdvancedSiteSearchConfigPtrOutputWithContext(ctx context.Context) DataStoreAdvancedSiteSearchConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataStoreAdvancedSiteSearchConfigOutput).ToDataStoreAdvancedSiteSearchConfigPtrOutputWithContext(ctx)
+}
+
+// DataStoreAdvancedSiteSearchConfigPtrInput is an input type that accepts DataStoreAdvancedSiteSearchConfigArgs, DataStoreAdvancedSiteSearchConfigPtr and DataStoreAdvancedSiteSearchConfigPtrOutput values.
+// You can construct a concrete instance of `DataStoreAdvancedSiteSearchConfigPtrInput` via:
+//
+//	        DataStoreAdvancedSiteSearchConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type DataStoreAdvancedSiteSearchConfigPtrInput interface {
+	pulumi.Input
+
+	ToDataStoreAdvancedSiteSearchConfigPtrOutput() DataStoreAdvancedSiteSearchConfigPtrOutput
+	ToDataStoreAdvancedSiteSearchConfigPtrOutputWithContext(context.Context) DataStoreAdvancedSiteSearchConfigPtrOutput
+}
+
+type dataStoreAdvancedSiteSearchConfigPtrType DataStoreAdvancedSiteSearchConfigArgs
+
+func DataStoreAdvancedSiteSearchConfigPtr(v *DataStoreAdvancedSiteSearchConfigArgs) DataStoreAdvancedSiteSearchConfigPtrInput {
+	return (*dataStoreAdvancedSiteSearchConfigPtrType)(v)
+}
+
+func (*dataStoreAdvancedSiteSearchConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataStoreAdvancedSiteSearchConfig)(nil)).Elem()
+}
+
+func (i *dataStoreAdvancedSiteSearchConfigPtrType) ToDataStoreAdvancedSiteSearchConfigPtrOutput() DataStoreAdvancedSiteSearchConfigPtrOutput {
+	return i.ToDataStoreAdvancedSiteSearchConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *dataStoreAdvancedSiteSearchConfigPtrType) ToDataStoreAdvancedSiteSearchConfigPtrOutputWithContext(ctx context.Context) DataStoreAdvancedSiteSearchConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(DataStoreAdvancedSiteSearchConfigPtrOutput)
+}
+
+type DataStoreAdvancedSiteSearchConfigOutput struct{ *pulumi.OutputState }
+
+func (DataStoreAdvancedSiteSearchConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*DataStoreAdvancedSiteSearchConfig)(nil)).Elem()
+}
+
+func (o DataStoreAdvancedSiteSearchConfigOutput) ToDataStoreAdvancedSiteSearchConfigOutput() DataStoreAdvancedSiteSearchConfigOutput {
+	return o
+}
+
+func (o DataStoreAdvancedSiteSearchConfigOutput) ToDataStoreAdvancedSiteSearchConfigOutputWithContext(ctx context.Context) DataStoreAdvancedSiteSearchConfigOutput {
+	return o
+}
+
+func (o DataStoreAdvancedSiteSearchConfigOutput) ToDataStoreAdvancedSiteSearchConfigPtrOutput() DataStoreAdvancedSiteSearchConfigPtrOutput {
+	return o.ToDataStoreAdvancedSiteSearchConfigPtrOutputWithContext(context.Background())
+}
+
+func (o DataStoreAdvancedSiteSearchConfigOutput) ToDataStoreAdvancedSiteSearchConfigPtrOutputWithContext(ctx context.Context) DataStoreAdvancedSiteSearchConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v DataStoreAdvancedSiteSearchConfig) *DataStoreAdvancedSiteSearchConfig {
+		return &v
+	}).(DataStoreAdvancedSiteSearchConfigPtrOutput)
+}
+
+// If set true, automatic refresh is disabled for the DataStore.
+func (o DataStoreAdvancedSiteSearchConfigOutput) DisableAutomaticRefresh() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DataStoreAdvancedSiteSearchConfig) *bool { return v.DisableAutomaticRefresh }).(pulumi.BoolPtrOutput)
+}
+
+// If set true, initial indexing is disabled for the DataStore.
+func (o DataStoreAdvancedSiteSearchConfigOutput) DisableInitialIndex() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v DataStoreAdvancedSiteSearchConfig) *bool { return v.DisableInitialIndex }).(pulumi.BoolPtrOutput)
+}
+
+type DataStoreAdvancedSiteSearchConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (DataStoreAdvancedSiteSearchConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**DataStoreAdvancedSiteSearchConfig)(nil)).Elem()
+}
+
+func (o DataStoreAdvancedSiteSearchConfigPtrOutput) ToDataStoreAdvancedSiteSearchConfigPtrOutput() DataStoreAdvancedSiteSearchConfigPtrOutput {
+	return o
+}
+
+func (o DataStoreAdvancedSiteSearchConfigPtrOutput) ToDataStoreAdvancedSiteSearchConfigPtrOutputWithContext(ctx context.Context) DataStoreAdvancedSiteSearchConfigPtrOutput {
+	return o
+}
+
+func (o DataStoreAdvancedSiteSearchConfigPtrOutput) Elem() DataStoreAdvancedSiteSearchConfigOutput {
+	return o.ApplyT(func(v *DataStoreAdvancedSiteSearchConfig) DataStoreAdvancedSiteSearchConfig {
+		if v != nil {
+			return *v
+		}
+		var ret DataStoreAdvancedSiteSearchConfig
+		return ret
+	}).(DataStoreAdvancedSiteSearchConfigOutput)
+}
+
+// If set true, automatic refresh is disabled for the DataStore.
+func (o DataStoreAdvancedSiteSearchConfigPtrOutput) DisableAutomaticRefresh() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DataStoreAdvancedSiteSearchConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableAutomaticRefresh
+	}).(pulumi.BoolPtrOutput)
+}
+
+// If set true, initial indexing is disabled for the DataStore.
+func (o DataStoreAdvancedSiteSearchConfigPtrOutput) DisableInitialIndex() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *DataStoreAdvancedSiteSearchConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.DisableInitialIndex
+	}).(pulumi.BoolPtrOutput)
+}
+
 type DataStoreDocumentProcessingConfig struct {
 	// Whether chunking mode is enabled.
 	// Structure is documented below.
@@ -2897,6 +3053,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ChatEngineChatEngineMetadataArrayInput)(nil)).Elem(), ChatEngineChatEngineMetadataArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ChatEngineCommonConfigInput)(nil)).Elem(), ChatEngineCommonConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ChatEngineCommonConfigPtrInput)(nil)).Elem(), ChatEngineCommonConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreAdvancedSiteSearchConfigInput)(nil)).Elem(), DataStoreAdvancedSiteSearchConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreAdvancedSiteSearchConfigPtrInput)(nil)).Elem(), DataStoreAdvancedSiteSearchConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreDocumentProcessingConfigInput)(nil)).Elem(), DataStoreDocumentProcessingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreDocumentProcessingConfigPtrInput)(nil)).Elem(), DataStoreDocumentProcessingConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*DataStoreDocumentProcessingConfigChunkingConfigInput)(nil)).Elem(), DataStoreDocumentProcessingConfigChunkingConfigArgs{})
@@ -2937,6 +3095,8 @@ func init() {
 	pulumi.RegisterOutputType(ChatEngineChatEngineMetadataArrayOutput{})
 	pulumi.RegisterOutputType(ChatEngineCommonConfigOutput{})
 	pulumi.RegisterOutputType(ChatEngineCommonConfigPtrOutput{})
+	pulumi.RegisterOutputType(DataStoreAdvancedSiteSearchConfigOutput{})
+	pulumi.RegisterOutputType(DataStoreAdvancedSiteSearchConfigPtrOutput{})
 	pulumi.RegisterOutputType(DataStoreDocumentProcessingConfigOutput{})
 	pulumi.RegisterOutputType(DataStoreDocumentProcessingConfigPtrOutput{})
 	pulumi.RegisterOutputType(DataStoreDocumentProcessingConfigChunkingConfigOutput{})

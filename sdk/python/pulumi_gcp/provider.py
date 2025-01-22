@@ -67,6 +67,7 @@ class ProviderArgs:
                  clouddeploy_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  clouddomains_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloudfunctions2_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 colab_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  composer_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  compute_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  container_analysis_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -151,6 +152,8 @@ class ProviderArgs:
                  os_config_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  os_login_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  parallelstore_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 parameter_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 parameter_manager_regional_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  privateca_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  privileged_access_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -298,6 +301,8 @@ class ProviderArgs:
             pulumi.set(__self__, "clouddomains_custom_endpoint", clouddomains_custom_endpoint)
         if cloudfunctions2_custom_endpoint is not None:
             pulumi.set(__self__, "cloudfunctions2_custom_endpoint", cloudfunctions2_custom_endpoint)
+        if colab_custom_endpoint is not None:
+            pulumi.set(__self__, "colab_custom_endpoint", colab_custom_endpoint)
         if composer_custom_endpoint is not None:
             pulumi.set(__self__, "composer_custom_endpoint", composer_custom_endpoint)
         if compute_custom_endpoint is not None:
@@ -466,6 +471,10 @@ class ProviderArgs:
             pulumi.set(__self__, "os_login_custom_endpoint", os_login_custom_endpoint)
         if parallelstore_custom_endpoint is not None:
             pulumi.set(__self__, "parallelstore_custom_endpoint", parallelstore_custom_endpoint)
+        if parameter_manager_custom_endpoint is not None:
+            pulumi.set(__self__, "parameter_manager_custom_endpoint", parameter_manager_custom_endpoint)
+        if parameter_manager_regional_custom_endpoint is not None:
+            pulumi.set(__self__, "parameter_manager_regional_custom_endpoint", parameter_manager_regional_custom_endpoint)
         if privateca_custom_endpoint is not None:
             pulumi.set(__self__, "privateca_custom_endpoint", privateca_custom_endpoint)
         if privileged_access_manager_custom_endpoint is not None:
@@ -995,6 +1004,15 @@ class ProviderArgs:
     @cloudfunctions2_custom_endpoint.setter
     def cloudfunctions2_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "cloudfunctions2_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="colabCustomEndpoint")
+    def colab_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "colab_custom_endpoint")
+
+    @colab_custom_endpoint.setter
+    def colab_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "colab_custom_endpoint", value)
 
     @property
     @pulumi.getter(name="composerCustomEndpoint")
@@ -1753,6 +1771,24 @@ class ProviderArgs:
         pulumi.set(self, "parallelstore_custom_endpoint", value)
 
     @property
+    @pulumi.getter(name="parameterManagerCustomEndpoint")
+    def parameter_manager_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "parameter_manager_custom_endpoint")
+
+    @parameter_manager_custom_endpoint.setter
+    def parameter_manager_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parameter_manager_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="parameterManagerRegionalCustomEndpoint")
+    def parameter_manager_regional_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "parameter_manager_regional_custom_endpoint")
+
+    @parameter_manager_regional_custom_endpoint.setter
+    def parameter_manager_regional_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "parameter_manager_regional_custom_endpoint", value)
+
+    @property
     @pulumi.getter(name="privatecaCustomEndpoint")
     def privateca_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
         return pulumi.get(self, "privateca_custom_endpoint")
@@ -2255,6 +2291,7 @@ class Provider(pulumi.ProviderResource):
                  clouddeploy_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  clouddomains_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloudfunctions2_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 colab_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  composer_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  compute_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  container_analysis_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2339,6 +2376,8 @@ class Provider(pulumi.ProviderResource):
                  os_config_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  os_login_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  parallelstore_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 parameter_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 parameter_manager_regional_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  privateca_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  privileged_access_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -2473,6 +2512,7 @@ class Provider(pulumi.ProviderResource):
                  clouddeploy_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  clouddomains_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  cloudfunctions2_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 colab_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  composer_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  compute_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  container_analysis_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2557,6 +2597,8 @@ class Provider(pulumi.ProviderResource):
                  os_config_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  os_login_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  parallelstore_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 parameter_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 parameter_manager_regional_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  privateca_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  privileged_access_manager_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -2663,6 +2705,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["clouddeploy_custom_endpoint"] = clouddeploy_custom_endpoint
             __props__.__dict__["clouddomains_custom_endpoint"] = clouddomains_custom_endpoint
             __props__.__dict__["cloudfunctions2_custom_endpoint"] = cloudfunctions2_custom_endpoint
+            __props__.__dict__["colab_custom_endpoint"] = colab_custom_endpoint
             __props__.__dict__["composer_custom_endpoint"] = composer_custom_endpoint
             __props__.__dict__["compute_custom_endpoint"] = compute_custom_endpoint
             __props__.__dict__["container_analysis_custom_endpoint"] = container_analysis_custom_endpoint
@@ -2747,6 +2790,8 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["os_config_custom_endpoint"] = os_config_custom_endpoint
             __props__.__dict__["os_login_custom_endpoint"] = os_login_custom_endpoint
             __props__.__dict__["parallelstore_custom_endpoint"] = parallelstore_custom_endpoint
+            __props__.__dict__["parameter_manager_custom_endpoint"] = parameter_manager_custom_endpoint
+            __props__.__dict__["parameter_manager_regional_custom_endpoint"] = parameter_manager_regional_custom_endpoint
             __props__.__dict__["privateca_custom_endpoint"] = privateca_custom_endpoint
             __props__.__dict__["privileged_access_manager_custom_endpoint"] = privileged_access_manager_custom_endpoint
             if project is None:
@@ -3035,6 +3080,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="cloudfunctions2CustomEndpoint")
     def cloudfunctions2_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "cloudfunctions2_custom_endpoint")
+
+    @property
+    @pulumi.getter(name="colabCustomEndpoint")
+    def colab_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "colab_custom_endpoint")
 
     @property
     @pulumi.getter(name="composerCustomEndpoint")
@@ -3440,6 +3490,16 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="parallelstoreCustomEndpoint")
     def parallelstore_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "parallelstore_custom_endpoint")
+
+    @property
+    @pulumi.getter(name="parameterManagerCustomEndpoint")
+    def parameter_manager_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "parameter_manager_custom_endpoint")
+
+    @property
+    @pulumi.getter(name="parameterManagerRegionalCustomEndpoint")
+    def parameter_manager_regional_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "parameter_manager_regional_custom_endpoint")
 
     @property
     @pulumi.getter(name="privatecaCustomEndpoint")

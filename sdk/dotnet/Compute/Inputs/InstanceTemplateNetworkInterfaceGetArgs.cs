@@ -116,7 +116,7 @@ namespace Pulumi.Gcp.Compute.Inputs
         public Input<int>? QueueCount { get; set; }
 
         /// <summary>
-        /// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6 or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
+        /// The stack type for this network interface to identify whether the IPv6 feature is enabled or not. Values are IPV4_IPV6, IPV6_ONLY or IPV4_ONLY. If not specified, IPV4_ONLY will be used.
         /// </summary>
         [Input("stackType")]
         public Input<string>? StackType { get; set; }
