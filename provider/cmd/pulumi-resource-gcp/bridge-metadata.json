@@ -1345,6 +1345,10 @@
                     }
                 }
             },
+            "google_apigee_environment_addons_config": {
+                "current": "gcp:apigee/environmentAddonsConfig:EnvironmentAddonsConfig",
+                "majorVersion": 8
+            },
             "google_apigee_environment_iam_binding": {
                 "current": "gcp:apigee/environmentIamBinding:EnvironmentIamBinding",
                 "majorVersion": 8,
@@ -3434,6 +3438,75 @@
                     }
                 }
             },
+            "google_chronicle_reference_list": {
+                "current": "gcp:chronicle/referenceList:ReferenceList",
+                "majorVersion": 8,
+                "fields": {
+                    "entries": {
+                        "maxItemsOne": false
+                    },
+                    "rules": {
+                        "maxItemsOne": false
+                    },
+                    "scope_info": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "reference_list_scope": {
+                                    "maxItemsOne": true,
+                                    "elem": {
+                                        "fields": {
+                                            "scope_names": {
+                                                "maxItemsOne": false
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
+                    }
+                }
+            },
+            "google_chronicle_rule": {
+                "current": "gcp:chronicle/rule:Rule",
+                "majorVersion": 8,
+                "fields": {
+                    "allowed_run_frequencies": {
+                        "maxItemsOne": false
+                    },
+                    "compilation_diagnostics": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "position": {
+                                    "maxItemsOne": true
+                                }
+                            }
+                        }
+                    },
+                    "data_tables": {
+                        "maxItemsOne": false
+                    },
+                    "reference_lists": {
+                        "maxItemsOne": false
+                    },
+                    "severity": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_chronicle_rule_deployment": {
+                "current": "gcp:chronicle/ruleDeployment:RuleDeployment",
+                "majorVersion": 8,
+                "fields": {
+                    "consumer_rules": {
+                        "maxItemsOne": false
+                    },
+                    "producer_rules": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "google_chronicle_watchlist": {
                 "current": "gcp:chronicle/watchlist:Watchlist",
                 "majorVersion": 8,
@@ -5295,6 +5368,36 @@
             "google_cloudfunctions_function_iam_policy": {
                 "current": "gcp:cloudfunctions/functionIamPolicy:FunctionIamPolicy",
                 "majorVersion": 8
+            },
+            "google_colab_runtime_template": {
+                "current": "gcp:colab/runtimeTemplate:RuntimeTemplate",
+                "majorVersion": 8,
+                "fields": {
+                    "data_persistent_disk_spec": {
+                        "maxItemsOne": true
+                    },
+                    "encryption_spec": {
+                        "maxItemsOne": true
+                    },
+                    "euc_config": {
+                        "maxItemsOne": true
+                    },
+                    "idle_shutdown_config": {
+                        "maxItemsOne": true
+                    },
+                    "machine_spec": {
+                        "maxItemsOne": true
+                    },
+                    "network_spec": {
+                        "maxItemsOne": true
+                    },
+                    "network_tags": {
+                        "maxItemsOne": false
+                    },
+                    "shielded_vm_config": {
+                        "maxItemsOne": true
+                    }
+                }
             },
             "google_composer_environment": {
                 "current": "gcp:composer/environment:Environment",
@@ -17448,6 +17551,9 @@
                 "current": "gcp:discoveryengine/dataStore:DataStore",
                 "majorVersion": 8,
                 "fields": {
+                    "advanced_site_search_config": {
+                        "maxItemsOne": true
+                    },
                     "document_processing_config": {
                         "maxItemsOne": true,
                         "elem": {
@@ -18041,6 +18147,10 @@
                         "maxItemsOne": true
                     }
                 }
+            },
+            "google_edgenetwork_interconnect_attachment": {
+                "current": "gcp:edgenetwork/interconnectAttachment:InterconnectAttachment",
+                "majorVersion": 8
             },
             "google_edgenetwork_network": {
                 "current": "gcp:edgenetwork/network:Network",
@@ -25157,6 +25267,28 @@
                     }
                 }
             },
+            "google_parameter_manager_parameter": {
+                "current": "gcp:parametermanager/parameter:Parameter",
+                "majorVersion": 8,
+                "fields": {
+                    "policy_member": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_parameter_manager_regional_parameter": {
+                "current": "gcp:parametermanager/regionalParameter:RegionalParameter",
+                "majorVersion": 8,
+                "fields": {
+                    "policy_member": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_parameter_manager_regional_parameter_version": {
+                "current": "gcp:parametermanager/regionalParameterVersion:RegionalParameterVersion",
+                "majorVersion": 8
+            },
             "google_privateca_ca_pool": {
                 "current": "gcp:certificateauthority/caPool:CaPool",
                 "majorVersion": 8,
@@ -27753,6 +27885,9 @@
                     },
                     "replica_names": {
                         "maxItemsOne": false
+                    },
+                    "replication_cluster": {
+                        "maxItemsOne": true
                     },
                     "restore_backup_context": {
                         "maxItemsOne": true
@@ -35064,6 +35199,15 @@
                 "current": "gcp:organizations/getOrganization:getOrganization",
                 "majorVersion": 8
             },
+            "google_parameter_manager_regional_parameter": {
+                "current": "gcp:parametermanager/getRegionalParameter:getRegionalParameter",
+                "majorVersion": 8,
+                "fields": {
+                    "policy_member": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "google_privateca_ca_pool_iam_policy": {
                 "current": "gcp:certificateauthority/getCaPoolIamPolicy:getCaPoolIamPolicy",
                 "majorVersion": 8
@@ -35919,6 +36063,9 @@
                     "replica_names": {
                         "maxItemsOne": false
                     },
+                    "replication_cluster": {
+                        "maxItemsOne": false
+                    },
                     "restore_backup_context": {
                         "maxItemsOne": false
                     },
@@ -36029,6 +36176,9 @@
                                     "maxItemsOne": false
                                 },
                                 "replica_names": {
+                                    "maxItemsOne": false
+                                },
+                                "replication_cluster": {
                                     "maxItemsOne": false
                                 },
                                 "restore_backup_context": {
@@ -36753,6 +36903,10 @@
                 "effective_labels",
                 "terraform_labels"
             ],
+            "google_colab_runtime_template": [
+                "effective_labels",
+                "terraform_labels"
+            ],
             "google_composer_environment": [
                 "effective_labels",
                 "terraform_labels"
@@ -36958,6 +37112,10 @@
                 "terraform_labels"
             ],
             "google_edgecontainer_vpn_connection": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_edgenetwork_interconnect_attachment": [
                 "effective_labels",
                 "terraform_labels"
             ],
@@ -37309,6 +37467,14 @@
                 "effective_labels",
                 "terraform_labels"
             ],
+            "google_parameter_manager_parameter": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_parameter_manager_regional_parameter": [
+                "effective_labels",
+                "terraform_labels"
+            ],
             "google_privateca_ca_pool": [
                 "effective_labels",
                 "terraform_labels"
@@ -37607,6 +37773,10 @@
                 "cloud_vm_clusters.$.effective_labels",
                 "cloud_vm_clusters.$.terraform_labels"
             ],
+            "google_parameter_manager_regional_parameter": [
+                "effective_labels",
+                "terraform_labels"
+            ],
             "google_privateca_certificate_authority": [
                 "effective_labels",
                 "terraform_labels"
@@ -37722,6 +37892,7 @@
             "gcp:apigee/envKeystore:EnvKeystore": 0,
             "gcp:apigee/envReferences:EnvReferences": 0,
             "gcp:apigee/environment:Environment": 0,
+            "gcp:apigee/environmentAddonsConfig:EnvironmentAddonsConfig": 0,
             "gcp:apigee/environmentIamBinding:EnvironmentIamBinding": 0,
             "gcp:apigee/environmentIamMember:EnvironmentIamMember": 0,
             "gcp:apigee/environmentIamPolicy:EnvironmentIamPolicy": 0,
@@ -37843,6 +38014,9 @@
             "gcp:certificatemanager/trustConfig:TrustConfig": 0,
             "gcp:chronicle/dataAccessLabel:DataAccessLabel": 0,
             "gcp:chronicle/dataAccessScope:DataAccessScope": 0,
+            "gcp:chronicle/referenceList:ReferenceList": 0,
+            "gcp:chronicle/rule:Rule": 0,
+            "gcp:chronicle/ruleDeployment:RuleDeployment": 0,
             "gcp:chronicle/watchlist:Watchlist": 0,
             "gcp:cloudasset/folderFeed:FolderFeed": 0,
             "gcp:cloudasset/organizationFeed:OrganizationFeed": 0,
@@ -37900,6 +38074,7 @@
             "gcp:cloudtasks/queueIamBinding:QueueIamBinding": 0,
             "gcp:cloudtasks/queueIamMember:QueueIamMember": 0,
             "gcp:cloudtasks/queueIamPolicy:QueueIamPolicy": 0,
+            "gcp:colab/runtimeTemplate:RuntimeTemplate": 0,
             "gcp:composer/environment:Environment": 0,
             "gcp:composer/userWorkloadsConfigMap:UserWorkloadsConfigMap": 0,
             "gcp:composer/userWorkloadsSecret:UserWorkloadsSecret": 0,
@@ -38196,6 +38371,7 @@
             "gcp:edgecontainer/cluster:Cluster": 0,
             "gcp:edgecontainer/nodePool:NodePool": 0,
             "gcp:edgecontainer/vpnConnection:VpnConnection": 0,
+            "gcp:edgenetwork/interconnectAttachment:InterconnectAttachment": 0,
             "gcp:edgenetwork/network:Network": 0,
             "gcp:edgenetwork/subnet:Subnet": 0,
             "gcp:endpoints/consumersIamBinding:ConsumersIamBinding": 0,
@@ -38504,6 +38680,9 @@
             "gcp:osconfig/patchDeployment:PatchDeployment": 0,
             "gcp:oslogin/sshPublicKey:SshPublicKey": 0,
             "gcp:parallelstore/instance:Instance": 0,
+            "gcp:parametermanager/parameter:Parameter": 0,
+            "gcp:parametermanager/regionalParameter:RegionalParameter": 0,
+            "gcp:parametermanager/regionalParameterVersion:RegionalParameterVersion": 0,
             "gcp:privilegedaccessmanager/entitlement:entitlement": 0,
             "gcp:projects/accessApprovalSettings:AccessApprovalSettings": 0,
             "gcp:projects/apiKey:ApiKey": 0,
@@ -38979,6 +39158,7 @@
             "gcp:organizations/getIAMPolicy:getIAMPolicy": 0,
             "gcp:organizations/getOrganization:getOrganization": 0,
             "gcp:organizations/getProject:getProject": 0,
+            "gcp:parametermanager/getRegionalParameter:getRegionalParameter": 0,
             "gcp:privilegedaccessmanager/getEntitlement:getEntitlement": 0,
             "gcp:projects/getIamPolicy:getIamPolicy": 0,
             "gcp:projects/getOrganizationPolicy:getOrganizationPolicy": 0,
