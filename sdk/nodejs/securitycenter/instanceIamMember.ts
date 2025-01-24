@@ -35,7 +35,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const default = gcp.appengine.getDefaultServiceAccount({});
+ * const _default = gcp.appengine.getDefaultServiceAccount({});
  * const network = new gcp.compute.Network("network", {name: "datafusion-full-network"});
  * const privateIpAlloc = new gcp.compute.GlobalAddress("private_ip_alloc", {
  *     name: "datafusion-ip-alloc",
