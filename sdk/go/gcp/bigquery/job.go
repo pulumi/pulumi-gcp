@@ -399,7 +399,7 @@ import (
 //			for index := 0; index < count; index++ {
 //				key0 := index
 //				val0 := index
-//				__res, err := bigquery.NewDataset(ctx, fmt.Sprintf("source-%v", key0), &bigquery.DatasetArgs{
+//				__res, err := bigquery.NewDataset(ctx, __res, &bigquery.DatasetArgs{
 //					DatasetId:    pulumi.Sprintf("job_copy_%v_dataset", val0),
 //					FriendlyName: pulumi.String("test"),
 //					Description:  pulumi.String("This is a test description"),
@@ -414,7 +414,7 @@ import (
 //			for index := 0; index < count; index++ {
 //				key0 := index
 //				val0 := index
-//				__res, err := bigquery.NewTable(ctx, fmt.Sprintf("source-%v", key0), &bigquery.TableArgs{
+//				__res, err := bigquery.NewTable(ctx, __res, &bigquery.TableArgs{
 //					DatasetId:          sourceDataset[val0].DatasetId,
 //					TableId:            pulumi.Sprintf("job_copy_%v_table", val0),
 //					DeletionProtection: pulumi.Bool(false),
@@ -552,7 +552,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := bigquery.NewDataset(ctx, "source-one", &bigquery.DatasetArgs{
+//			source_oneDataset, err := bigquery.NewDataset(ctx, "source-one", &bigquery.DatasetArgs{
 //				DatasetId:    pulumi.String("job_extract_dataset"),
 //				FriendlyName: pulumi.String("test"),
 //				Description:  pulumi.String("This is a test description"),
@@ -561,7 +561,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = bigquery.NewTable(ctx, "source-one", &bigquery.TableArgs{
+//			source_one, err := bigquery.NewTable(ctx, "source-one", &bigquery.TableArgs{
 //				DeletionProtection: pulumi.Bool(false),
 //				DatasetId:          source_oneDataset.DatasetId,
 //				TableId:            pulumi.String("job_extract_table"),

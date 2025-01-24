@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my-beyondcorp-app-connection = gcp.beyondcorp.getAppConnection({
+ * const my_beyondcorp_app_connection = gcp.beyondcorp.getAppConnection({
  *     name: "my-beyondcorp-app-connection",
  * });
  * ```
@@ -80,7 +80,7 @@ export interface GetAppConnectionResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my-beyondcorp-app-connection = gcp.beyondcorp.getAppConnection({
+ * const my_beyondcorp_app_connection = gcp.beyondcorp.getAppConnection({
  *     name: "my-beyondcorp-app-connection",
  * });
  * ```
