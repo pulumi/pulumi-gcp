@@ -47,7 +47,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = firebase.NewWebApp(ctx, "default", &firebase.WebAppArgs{
+//			_default, err := firebase.NewWebApp(ctx, "default", &firebase.WebAppArgs{
 //				Project:     pulumi.String("my-project-name"),
 //				DisplayName: pulumi.String("Web App for reCAPTCHA Enterprise"),
 //			})

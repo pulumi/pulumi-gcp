@@ -37,14 +37,14 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewNetwork(ctx, "network-1", &compute.NetworkArgs{
+//			network_1, err := compute.NewNetwork(ctx, "network-1", &compute.NetworkArgs{
 //				Name:                  pulumi.String("network-1"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewNetwork(ctx, "network-2", &compute.NetworkArgs{
+//			network_2, err := compute.NewNetwork(ctx, "network-2", &compute.NetworkArgs{
 //				Name:                  pulumi.String("network-2"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //			})

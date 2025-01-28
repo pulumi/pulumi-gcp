@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my-vmcluster = gcp.oracledatabase.getCloudVmCluster({
+ * const my_vmcluster = gcp.oracledatabase.getCloudVmCluster({
  *     location: "us-east4",
  *     cloudVmClusterId: "vmcluster-id",
  * });
@@ -91,7 +91,7 @@ export interface GetCloudVmClusterResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my-vmcluster = gcp.oracledatabase.getCloudVmCluster({
+ * const my_vmcluster = gcp.oracledatabase.getCloudVmCluster({
  *     location: "us-east4",
  *     cloudVmClusterId: "vmcluster-id",
  * });

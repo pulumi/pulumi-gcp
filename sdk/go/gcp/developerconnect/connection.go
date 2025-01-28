@@ -32,13 +32,13 @@ import (
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			// Setup permissions. Only needed once per project
-//			_, err := projects.NewServiceIdentity(ctx, "devconnect-p4sa", &projects.ServiceIdentityArgs{
+//			devconnect_p4sa, err := projects.NewServiceIdentity(ctx, "devconnect-p4sa", &projects.ServiceIdentityArgs{
 //				Service: pulumi.String("developerconnect.googleapis.com"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = projects.NewIAMMember(ctx, "devconnect-secret", &projects.IAMMemberArgs{
+//			devconnect_secret, err := projects.NewIAMMember(ctx, "devconnect-secret", &projects.IAMMemberArgs{
 //				Project: pulumi.String("my-project-name"),
 //				Role:    pulumi.String("roles/secretmanager.admin"),
 //				Member:  devconnect_p4sa.Member,
@@ -46,7 +46,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = developerconnect.NewConnection(ctx, "my-connection", &developerconnect.ConnectionArgs{
+//			my_connection, err := developerconnect.NewConnection(ctx, "my-connection", &developerconnect.ConnectionArgs{
 //				Location:     pulumi.String("us-central1"),
 //				ConnectionId: pulumi.String("tf-test-connection-new"),
 //				GithubConfig: &developerconnect.ConnectionGithubConfigArgs{
@@ -78,7 +78,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := developerconnect.NewConnection(ctx, "my-connection", &developerconnect.ConnectionArgs{
+//			my_connection, err := developerconnect.NewConnection(ctx, "my-connection", &developerconnect.ConnectionArgs{
 //				Location:     pulumi.String("us-central1"),
 //				ConnectionId: pulumi.String("tf-test-connection-cred"),
 //				GithubConfig: &developerconnect.ConnectionGithubConfigArgs{
@@ -115,7 +115,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := secretmanager.NewSecret(ctx, "github-token-secret", &secretmanager.SecretArgs{
+//			github_token_secret, err := secretmanager.NewSecret(ctx, "github-token-secret", &secretmanager.SecretArgs{
 //				SecretId: pulumi.String("github-token-secret"),
 //				Replication: &secretmanager.SecretReplicationArgs{
 //					Auto: &secretmanager.SecretReplicationAutoArgs{},
@@ -130,14 +130,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = secretmanager.NewSecretVersion(ctx, "github-token-secret-version", &secretmanager.SecretVersionArgs{
+//			github_token_secret_version, err := secretmanager.NewSecretVersion(ctx, "github-token-secret-version", &secretmanager.SecretVersionArgs{
 //				Secret:     github_token_secret.ID(),
 //				SecretData: pulumi.String(invokeFile.Result),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = projects.NewServiceIdentity(ctx, "devconnect-p4sa", &projects.ServiceIdentityArgs{
+//			devconnect_p4sa, err := projects.NewServiceIdentity(ctx, "devconnect-p4sa", &projects.ServiceIdentityArgs{
 //				Service: pulumi.String("developerconnect.googleapis.com"),
 //			})
 //			if err != nil {
@@ -230,7 +230,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := secretmanager.NewSecret(ctx, "github-token-secret", &secretmanager.SecretArgs{
+//			github_token_secret, err := secretmanager.NewSecret(ctx, "github-token-secret", &secretmanager.SecretArgs{
 //				SecretId: pulumi.String("github-token-secret"),
 //				Replication: &secretmanager.SecretReplicationArgs{
 //					Auto: &secretmanager.SecretReplicationAutoArgs{},
@@ -245,7 +245,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = secretmanager.NewSecretVersion(ctx, "github-token-secret-version", &secretmanager.SecretVersionArgs{
+//			github_token_secret_version, err := secretmanager.NewSecretVersion(ctx, "github-token-secret-version", &secretmanager.SecretVersionArgs{
 //				Secret:     github_token_secret.ID(),
 //				SecretData: pulumi.String(invokeFile.Result),
 //			})
@@ -341,7 +341,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := secretmanager.NewSecret(ctx, "private-key-secret", &secretmanager.SecretArgs{
+//			private_key_secret, err := secretmanager.NewSecret(ctx, "private-key-secret", &secretmanager.SecretArgs{
 //				SecretId: pulumi.String("ghe-pk-secret"),
 //				Replication: &secretmanager.SecretReplicationArgs{
 //					Auto: &secretmanager.SecretReplicationAutoArgs{},
@@ -356,14 +356,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = secretmanager.NewSecretVersion(ctx, "private-key-secret-version", &secretmanager.SecretVersionArgs{
+//			private_key_secret_version, err := secretmanager.NewSecretVersion(ctx, "private-key-secret-version", &secretmanager.SecretVersionArgs{
 //				Secret:     private_key_secret.ID(),
 //				SecretData: pulumi.String(invokeFile.Result),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = secretmanager.NewSecret(ctx, "webhook-secret-secret", &secretmanager.SecretArgs{
+//			webhook_secret_secret, err := secretmanager.NewSecret(ctx, "webhook-secret-secret", &secretmanager.SecretArgs{
 //				SecretId: pulumi.String("ghe-token-secret"),
 //				Replication: &secretmanager.SecretReplicationArgs{
 //					Auto: &secretmanager.SecretReplicationAutoArgs{},
@@ -372,7 +372,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = secretmanager.NewSecretVersion(ctx, "webhook-secret-secret-version", &secretmanager.SecretVersionArgs{
+//			webhook_secret_secret_version, err := secretmanager.NewSecretVersion(ctx, "webhook-secret-secret-version", &secretmanager.SecretVersionArgs{
 //				Secret:     webhook_secret_secret.ID(),
 //				SecretData: pulumi.String("<webhook-secret-data>"),
 //			})
@@ -392,14 +392,14 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = secretmanager.NewSecretIamPolicy(ctx, "policy-pk", &secretmanager.SecretIamPolicyArgs{
+//			policy_pk, err := secretmanager.NewSecretIamPolicy(ctx, "policy-pk", &secretmanager.SecretIamPolicyArgs{
 //				SecretId:   private_key_secret.SecretId,
 //				PolicyData: pulumi.String(p4sa_secretAccessor.PolicyData),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = secretmanager.NewSecretIamPolicy(ctx, "policy-whs", &secretmanager.SecretIamPolicyArgs{
+//			policy_whs, err := secretmanager.NewSecretIamPolicy(ctx, "policy-whs", &secretmanager.SecretIamPolicyArgs{
 //				SecretId:   webhook_secret_secret.SecretId,
 //				PolicyData: pulumi.String(p4sa_secretAccessor.PolicyData),
 //			})
