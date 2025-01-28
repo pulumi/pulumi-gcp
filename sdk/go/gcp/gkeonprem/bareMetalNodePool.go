@@ -30,7 +30,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := gkeonprem.NewBareMetalCluster(ctx, "default-basic", &gkeonprem.BareMetalClusterArgs{
+//			default_basic, err := gkeonprem.NewBareMetalCluster(ctx, "default-basic", &gkeonprem.BareMetalClusterArgs{
 //				Name:                   pulumi.String("my-cluster"),
 //				Location:               pulumi.String("us-west1"),
 //				AdminClusterMembership: pulumi.String("projects/870316890899/locations/global/memberships/gkeonprem-terraform-test"),
@@ -147,7 +147,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := gkeonprem.NewBareMetalCluster(ctx, "default-full", &gkeonprem.BareMetalClusterArgs{
+//			default_full, err := gkeonprem.NewBareMetalCluster(ctx, "default-full", &gkeonprem.BareMetalClusterArgs{
 //				Name:                   pulumi.String("my-cluster"),
 //				Location:               pulumi.String("us-west1"),
 //				AdminClusterMembership: pulumi.String("projects/870316890899/locations/global/memberships/gkeonprem-terraform-test"),
