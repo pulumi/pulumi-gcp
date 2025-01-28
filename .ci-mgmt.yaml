@@ -34,3 +34,8 @@ goBuildParallelism: 2
 # Use `pulumi convert` for translating examples from TF to Pulumi.
 pulumiConvert: 1
 integrationTestProvider: true
+releaseVerification:
+  nodejs: examples/bucket
+  python: examples/bucket-py
+  dotnet: examples/serverless-cs
+  go: examples/bucket-go
