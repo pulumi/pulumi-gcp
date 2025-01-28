@@ -415,12 +415,13 @@ func TestBucketBooleanLabel(t *testing.T) {
 	      "stables": "*",
 	      "hasDetailedDiff": true,
 	      "detailedDiff": {
-		"labels.bad-bool": {
+		"labels[\"bad-bool\"]": {
 		  "kind": "UPDATE"
 		},
-                "pulumiLabels": {
+		"effectiveLabels[\"bad-bool\"]": {
 		  "kind": "UPDATE"
-                }
+                },
+		  "pulumiLabels[\"bad-bool\"]": {}
 	      }
 	    }
 	  }
@@ -640,7 +641,9 @@ func TestRegress1488(t *testing.T) {
 	  "response": {
 	    "stables": "*",
 	    "changes": "*",
-	    "hasDetailedDiff": "*"
+	    "hasDetailedDiff": "*",
+	    "detailedDiff": "*",
+		"diffs": "*"
 	  }
 	}
 	]`, proj, proj))
