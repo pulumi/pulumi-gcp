@@ -213,6 +213,8 @@ jobs:
   verify_release:
     name: verify_release
     needs: publish_sdk
+    permissions:
+      id-token: write
     uses: ./.github/workflows/verify-release.yml
     secrets: inherit
     with:
