@@ -36,21 +36,21 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := storage.NewBucket(ctx, "log-bucket", &storage.BucketArgs{
+//			log_bucket, err := storage.NewBucket(ctx, "log-bucket", &storage.BucketArgs{
 //				Name:     pulumi.String("folder-logging-bucket"),
 //				Location: pulumi.String("US"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = organizations.NewFolder(ctx, "my-folder", &organizations.FolderArgs{
+//			my_folder, err := organizations.NewFolder(ctx, "my-folder", &organizations.FolderArgs{
 //				DisplayName: pulumi.String("My folder"),
 //				Parent:      pulumi.String("organizations/123456"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = logging.NewFolderSink(ctx, "my-sink", &logging.FolderSinkArgs{
+//			my_sink, err := logging.NewFolderSink(ctx, "my-sink", &logging.FolderSinkArgs{
 //				Name:        pulumi.String("my-sink"),
 //				Description: pulumi.String("some explanation on what this is"),
 //				Folder:      my_folder.Name,

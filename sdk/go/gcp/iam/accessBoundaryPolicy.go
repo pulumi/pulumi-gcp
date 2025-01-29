@@ -47,7 +47,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = accesscontextmanager.NewAccessPolicy(ctx, "access-policy", &accesscontextmanager.AccessPolicyArgs{
+//			access_policy, err := accesscontextmanager.NewAccessPolicy(ctx, "access-policy", &accesscontextmanager.AccessPolicyArgs{
 //				Parent: project.OrgId.ApplyT(func(orgId *string) (string, error) {
 //					return fmt.Sprintf("organizations/%v", orgId), nil
 //				}).(pulumi.StringOutput),
@@ -56,7 +56,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = accesscontextmanager.NewAccessLevel(ctx, "test-access", &accesscontextmanager.AccessLevelArgs{
+//			test_access, err := accesscontextmanager.NewAccessLevel(ctx, "test-access", &accesscontextmanager.AccessLevelArgs{
 //				Parent: access_policy.Name.ApplyT(func(name string) (string, error) {
 //					return fmt.Sprintf("accessPolicies/%v", name), nil
 //				}).(pulumi.StringOutput),

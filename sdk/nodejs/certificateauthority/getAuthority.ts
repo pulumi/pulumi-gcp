@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const default = gcp.certificateauthority.getAuthority({
+ * const _default = gcp.certificateauthority.getAuthority({
  *     location: "us-west1",
  *     pool: "pool-name",
  *     certificateAuthorityId: "ca-id",
@@ -105,7 +105,7 @@ export interface GetAuthorityResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const default = gcp.certificateauthority.getAuthority({
+ * const _default = gcp.certificateauthority.getAuthority({
  *     location: "us-west1",
  *     pool: "pool-name",
  *     certificateAuthorityId: "ca-id",

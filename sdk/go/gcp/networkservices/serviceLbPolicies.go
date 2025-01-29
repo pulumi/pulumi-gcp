@@ -57,7 +57,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := networkservices.NewServiceLbPolicies(ctx, "default", &networkservices.ServiceLbPoliciesArgs{
+//			_default, err := networkservices.NewServiceLbPolicies(ctx, "default", &networkservices.ServiceLbPoliciesArgs{
 //				Name:                   pulumi.String("my-lb-policy"),
 //				Location:               pulumi.String("global"),
 //				Description:            pulumi.String("my description"),
