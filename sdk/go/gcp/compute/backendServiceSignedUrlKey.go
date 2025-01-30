@@ -77,7 +77,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewHttpHealthCheck(ctx, "default", &compute.HttpHealthCheckArgs{
+//			_default, err := compute.NewHttpHealthCheck(ctx, "default", &compute.HttpHealthCheckArgs{
 //				Name:             pulumi.String("test"),
 //				RequestPath:      pulumi.String("/"),
 //				CheckIntervalSec: pulumi.Int(1),

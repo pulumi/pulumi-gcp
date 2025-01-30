@@ -262,7 +262,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := bigquery.NewDataset(ctx, "default", &bigquery.DatasetArgs{
+//			_default, err := bigquery.NewDataset(ctx, "default", &bigquery.DatasetArgs{
 //				DatasetId:                pulumi.String("tf_test"),
 //				FriendlyName:             pulumi.String("terraform-test"),
 //				Description:              pulumi.String("Description for the dataset created by terraform"),

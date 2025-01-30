@@ -13,10 +13,10 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const policy-org = gcp.accesscontextmanager.getAccessPolicy({
+ * const policy_org = gcp.accesscontextmanager.getAccessPolicy({
  *     parent: "organizations/1234567",
  * });
- * const policy-scoped = gcp.accesscontextmanager.getAccessPolicy({
+ * const policy_scoped = gcp.accesscontextmanager.getAccessPolicy({
  *     parent: "organizations/1234567",
  *     scopes: ["projects/1234567"],
  * });
@@ -72,10 +72,10 @@ export interface GetAccessPolicyResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const policy-org = gcp.accesscontextmanager.getAccessPolicy({
+ * const policy_org = gcp.accesscontextmanager.getAccessPolicy({
  *     parent: "organizations/1234567",
  * });
- * const policy-scoped = gcp.accesscontextmanager.getAccessPolicy({
+ * const policy_scoped = gcp.accesscontextmanager.getAccessPolicy({
  *     parent: "organizations/1234567",
  *     scopes: ["projects/1234567"],
  * });

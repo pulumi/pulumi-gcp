@@ -574,7 +574,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudbuildv2.NewConnection(ctx, "my-connection", &cloudbuildv2.ConnectionArgs{
+//			my_connection, err := cloudbuildv2.NewConnection(ctx, "my-connection", &cloudbuildv2.ConnectionArgs{
 //				Location: pulumi.String("us-central1"),
 //				Name:     pulumi.String("my-connection"),
 //				GithubConfig: &cloudbuildv2.ConnectionGithubConfigArgs{
@@ -587,7 +587,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cloudbuildv2.NewRepository(ctx, "my-repository", &cloudbuildv2.RepositoryArgs{
+//			my_repository, err := cloudbuildv2.NewRepository(ctx, "my-repository", &cloudbuildv2.RepositoryArgs{
 //				Name:             pulumi.String("my-repo"),
 //				ParentConnection: my_connection.ID(),
 //				RemoteUri:        pulumi.String("https://github.com/myuser/my-repo.git"),
@@ -960,7 +960,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := cloudbuildv2.NewConnection(ctx, "my-connection", &cloudbuildv2.ConnectionArgs{
+//			my_connection, err := cloudbuildv2.NewConnection(ctx, "my-connection", &cloudbuildv2.ConnectionArgs{
 //				Location: pulumi.String("us-central1"),
 //				Name:     pulumi.String("my-connection"),
 //				GithubConfig: &cloudbuildv2.ConnectionGithubConfigArgs{
@@ -973,7 +973,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = cloudbuildv2.NewRepository(ctx, "my-repository", &cloudbuildv2.RepositoryArgs{
+//			my_repository, err := cloudbuildv2.NewRepository(ctx, "my-repository", &cloudbuildv2.RepositoryArgs{
 //				Name:             pulumi.String("my-repo"),
 //				ParentConnection: my_connection.ID(),
 //				RemoteUri:        pulumi.String("https://github.com/myuser/my-repo.git"),
