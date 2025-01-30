@@ -102,6 +102,7 @@ jobs:
     name: publish
     permissions:
       contents: write
+      id-token: write
     needs:
       - prerequisites
       - build_provider
