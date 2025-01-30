@@ -75,7 +75,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = projects.NewIAMMember(ctx, "synchronizer-iam", &projects.IAMMemberArgs{
+//			synchronizer_iam, err := projects.NewIAMMember(ctx, "synchronizer-iam", &projects.IAMMemberArgs{
 //				Project: project.ProjectId,
 //				Role:    pulumi.String("roles/apigee.synchronizerManager"),
 //				Member: serviceAccount.Email.ApplyT(func(email string) (string, error) {

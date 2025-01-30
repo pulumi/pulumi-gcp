@@ -13,7 +13,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const default = gcp.appengine.getDefaultServiceAccount({});
+ * const _default = gcp.appengine.getDefaultServiceAccount({});
  * export const defaultAccount = _default.then(_default => _default.email);
  * ```
  */
@@ -74,7 +74,7 @@ export interface GetDefaultServiceAccountResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const default = gcp.appengine.getDefaultServiceAccount({});
+ * const _default = gcp.appengine.getDefaultServiceAccount({});
  * export const defaultAccount = _default.then(_default => _default.email);
  * ```
  */
