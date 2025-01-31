@@ -2159,6 +2159,13 @@ func Provider() tfbridge.ProviderInfo {
 			"google_bigquery_table": {
 				DeleteBeforeReplace: true,
 			},
+			"google_chronicle_retrohunt": {
+				Fields: map[string]*tfbridge.SchemaInfo{
+					"retrohunt": {
+						Name: "RetrohuntId",
+					},
+				},
+			},
 		},
 		DataSources: map[string]*tfbridge.DataSourceInfo{
 			// Access Approval
