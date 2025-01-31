@@ -46,7 +46,8 @@ const (
 	gcpActiveDirectory      = "ActiveDirectory"      // Active Directory resources
 	gcpAlloydb              = "Alloydb"              // Alloydb resources
 	// nolint:revive
-	gcpApiGateway               = "ApiGateway"               // ApiGateway resources
+	gcpApiGateway = "ApiGateway" // ApiGateway resources
+	//nolint:revive
 	gcpApiHub                   = "ApiHub"                   // ApiHub resources
 	gcpApigee                   = "Apigee"                   // Apigee resources
 	gcpAppEngine                = "AppEngine"                // AppEngine resources
@@ -174,7 +175,7 @@ var moduleMapping = map[string]string{
 	"active_directory":                gcpActiveDirectory,
 	"alloydb":                         gcpAlloydb,
 	"api_gateway":                     gcpApiGateway,
-	"apihub":                         gcpApiHub,
+	"apihub":                          gcpApiHub,
 	"apigee":                          gcpApigee,
 	"app_engine":                      gcpAppEngine,
 	"apphub":                          "Apphub",
