@@ -4212,6 +4212,127 @@ func (o GetKMSCryptoKeyVersionTemplateArrayOutput) Index(i pulumi.IntInput) GetK
 	}).(GetKMSCryptoKeyVersionTemplateOutput)
 }
 
+type GetKeyHandlesKeyHandle struct {
+	// The identifier of the KMS Key created for the KeyHandle. Its format is `projects/{projectId}/locations/{location}/keyRings/{keyRingName}/cryptoKeys/{cryptoKeyName}`.
+	KmsKey string `pulumi:"kmsKey"`
+	// The name of the KeyHandle. Its format is `projects/{projectId}/locations/{location}/keyHandles/{keyHandleName}`.
+	Name string `pulumi:"name"`
+	// The resource type by which to filter KeyHandle e.g. {SERVICE}.googleapis.com/{TYPE}. See documentation for supported resource types.
+	//
+	// ***
+	ResourceTypeSelector string `pulumi:"resourceTypeSelector"`
+}
+
+// GetKeyHandlesKeyHandleInput is an input type that accepts GetKeyHandlesKeyHandleArgs and GetKeyHandlesKeyHandleOutput values.
+// You can construct a concrete instance of `GetKeyHandlesKeyHandleInput` via:
+//
+//	GetKeyHandlesKeyHandleArgs{...}
+type GetKeyHandlesKeyHandleInput interface {
+	pulumi.Input
+
+	ToGetKeyHandlesKeyHandleOutput() GetKeyHandlesKeyHandleOutput
+	ToGetKeyHandlesKeyHandleOutputWithContext(context.Context) GetKeyHandlesKeyHandleOutput
+}
+
+type GetKeyHandlesKeyHandleArgs struct {
+	// The identifier of the KMS Key created for the KeyHandle. Its format is `projects/{projectId}/locations/{location}/keyRings/{keyRingName}/cryptoKeys/{cryptoKeyName}`.
+	KmsKey pulumi.StringInput `pulumi:"kmsKey"`
+	// The name of the KeyHandle. Its format is `projects/{projectId}/locations/{location}/keyHandles/{keyHandleName}`.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The resource type by which to filter KeyHandle e.g. {SERVICE}.googleapis.com/{TYPE}. See documentation for supported resource types.
+	//
+	// ***
+	ResourceTypeSelector pulumi.StringInput `pulumi:"resourceTypeSelector"`
+}
+
+func (GetKeyHandlesKeyHandleArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKeyHandlesKeyHandle)(nil)).Elem()
+}
+
+func (i GetKeyHandlesKeyHandleArgs) ToGetKeyHandlesKeyHandleOutput() GetKeyHandlesKeyHandleOutput {
+	return i.ToGetKeyHandlesKeyHandleOutputWithContext(context.Background())
+}
+
+func (i GetKeyHandlesKeyHandleArgs) ToGetKeyHandlesKeyHandleOutputWithContext(ctx context.Context) GetKeyHandlesKeyHandleOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKeyHandlesKeyHandleOutput)
+}
+
+// GetKeyHandlesKeyHandleArrayInput is an input type that accepts GetKeyHandlesKeyHandleArray and GetKeyHandlesKeyHandleArrayOutput values.
+// You can construct a concrete instance of `GetKeyHandlesKeyHandleArrayInput` via:
+//
+//	GetKeyHandlesKeyHandleArray{ GetKeyHandlesKeyHandleArgs{...} }
+type GetKeyHandlesKeyHandleArrayInput interface {
+	pulumi.Input
+
+	ToGetKeyHandlesKeyHandleArrayOutput() GetKeyHandlesKeyHandleArrayOutput
+	ToGetKeyHandlesKeyHandleArrayOutputWithContext(context.Context) GetKeyHandlesKeyHandleArrayOutput
+}
+
+type GetKeyHandlesKeyHandleArray []GetKeyHandlesKeyHandleInput
+
+func (GetKeyHandlesKeyHandleArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKeyHandlesKeyHandle)(nil)).Elem()
+}
+
+func (i GetKeyHandlesKeyHandleArray) ToGetKeyHandlesKeyHandleArrayOutput() GetKeyHandlesKeyHandleArrayOutput {
+	return i.ToGetKeyHandlesKeyHandleArrayOutputWithContext(context.Background())
+}
+
+func (i GetKeyHandlesKeyHandleArray) ToGetKeyHandlesKeyHandleArrayOutputWithContext(ctx context.Context) GetKeyHandlesKeyHandleArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetKeyHandlesKeyHandleArrayOutput)
+}
+
+type GetKeyHandlesKeyHandleOutput struct{ *pulumi.OutputState }
+
+func (GetKeyHandlesKeyHandleOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetKeyHandlesKeyHandle)(nil)).Elem()
+}
+
+func (o GetKeyHandlesKeyHandleOutput) ToGetKeyHandlesKeyHandleOutput() GetKeyHandlesKeyHandleOutput {
+	return o
+}
+
+func (o GetKeyHandlesKeyHandleOutput) ToGetKeyHandlesKeyHandleOutputWithContext(ctx context.Context) GetKeyHandlesKeyHandleOutput {
+	return o
+}
+
+// The identifier of the KMS Key created for the KeyHandle. Its format is `projects/{projectId}/locations/{location}/keyRings/{keyRingName}/cryptoKeys/{cryptoKeyName}`.
+func (o GetKeyHandlesKeyHandleOutput) KmsKey() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeyHandlesKeyHandle) string { return v.KmsKey }).(pulumi.StringOutput)
+}
+
+// The name of the KeyHandle. Its format is `projects/{projectId}/locations/{location}/keyHandles/{keyHandleName}`.
+func (o GetKeyHandlesKeyHandleOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeyHandlesKeyHandle) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The resource type by which to filter KeyHandle e.g. {SERVICE}.googleapis.com/{TYPE}. See documentation for supported resource types.
+//
+// ***
+func (o GetKeyHandlesKeyHandleOutput) ResourceTypeSelector() pulumi.StringOutput {
+	return o.ApplyT(func(v GetKeyHandlesKeyHandle) string { return v.ResourceTypeSelector }).(pulumi.StringOutput)
+}
+
+type GetKeyHandlesKeyHandleArrayOutput struct{ *pulumi.OutputState }
+
+func (GetKeyHandlesKeyHandleArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetKeyHandlesKeyHandle)(nil)).Elem()
+}
+
+func (o GetKeyHandlesKeyHandleArrayOutput) ToGetKeyHandlesKeyHandleArrayOutput() GetKeyHandlesKeyHandleArrayOutput {
+	return o
+}
+
+func (o GetKeyHandlesKeyHandleArrayOutput) ToGetKeyHandlesKeyHandleArrayOutputWithContext(ctx context.Context) GetKeyHandlesKeyHandleArrayOutput {
+	return o
+}
+
+func (o GetKeyHandlesKeyHandleArrayOutput) Index(i pulumi.IntInput) GetKeyHandlesKeyHandleOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetKeyHandlesKeyHandle {
+		return vs[0].([]GetKeyHandlesKeyHandle)[vs[1].(int)]
+	}).(GetKeyHandlesKeyHandleOutput)
+}
+
 type GetKeyRingsKeyRing struct {
 	Id   string `pulumi:"id"`
 	Name string `pulumi:"name"`
@@ -4371,6 +4492,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKMSCryptoKeyVersionPublicKeyArrayInput)(nil)).Elem(), GetKMSCryptoKeyVersionPublicKeyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKMSCryptoKeyVersionTemplateInput)(nil)).Elem(), GetKMSCryptoKeyVersionTemplateArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKMSCryptoKeyVersionTemplateArrayInput)(nil)).Elem(), GetKMSCryptoKeyVersionTemplateArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKeyHandlesKeyHandleInput)(nil)).Elem(), GetKeyHandlesKeyHandleArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetKeyHandlesKeyHandleArrayInput)(nil)).Elem(), GetKeyHandlesKeyHandleArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKeyRingsKeyRingInput)(nil)).Elem(), GetKeyRingsKeyRingArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetKeyRingsKeyRingArrayInput)(nil)).Elem(), GetKeyRingsKeyRingArray{})
 	pulumi.RegisterOutputType(CryptoKeyIAMBindingConditionOutput{})
@@ -4431,6 +4554,8 @@ func init() {
 	pulumi.RegisterOutputType(GetKMSCryptoKeyVersionPublicKeyArrayOutput{})
 	pulumi.RegisterOutputType(GetKMSCryptoKeyVersionTemplateOutput{})
 	pulumi.RegisterOutputType(GetKMSCryptoKeyVersionTemplateArrayOutput{})
+	pulumi.RegisterOutputType(GetKeyHandlesKeyHandleOutput{})
+	pulumi.RegisterOutputType(GetKeyHandlesKeyHandleArrayOutput{})
 	pulumi.RegisterOutputType(GetKeyRingsKeyRingOutput{})
 	pulumi.RegisterOutputType(GetKeyRingsKeyRingArrayOutput{})
 }

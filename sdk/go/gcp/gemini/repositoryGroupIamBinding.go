@@ -12,6 +12,255 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Three different resources help you manage your IAM policy for Gemini for Google Cloud RepositoryGroup. Each of these resources serves a different use case:
+//
+// * `gemini.RepositoryGroupIamPolicy`: Authoritative. Sets the IAM policy for the repositorygroup and replaces any existing policy already attached.
+// * `gemini.RepositoryGroupIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the repositorygroup are preserved.
+// * `gemini.RepositoryGroupIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the repositorygroup are preserved.
+//
+// # A data source can be used to retrieve policy data in advent you do not need creation
+//
+// * `gemini.RepositoryGroupIamPolicy`: Retrieves the IAM policy for the repositorygroup
+//
+// > **Note:** `gemini.RepositoryGroupIamPolicy` **cannot** be used in conjunction with `gemini.RepositoryGroupIamBinding` and `gemini.RepositoryGroupIamMember` or they will fight over what your policy should be.
+//
+// > **Note:** `gemini.RepositoryGroupIamBinding` resources **can be** used in conjunction with `gemini.RepositoryGroupIamMember` resources **only if** they do not grant privilege to the same role.
+//
+// ## gemini.RepositoryGroupIamPolicy
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/gemini"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					{
+//						Role: "roles/cloudaicompanion.repositoryGroupsUser",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gemini.NewRepositoryGroupIamPolicy(ctx, "policy", &gemini.RepositoryGroupIamPolicyArgs{
+//				Project:             pulumi.Any(example.Project),
+//				Location:            pulumi.Any(example.Location),
+//				CodeRepositoryIndex: pulumi.Any(example.CodeRepositoryIndex),
+//				RepositoryGroupId:   pulumi.Any(example.RepositoryGroupId),
+//				PolicyData:          pulumi.String(admin.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## gemini.RepositoryGroupIamBinding
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/gemini"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gemini.NewRepositoryGroupIamBinding(ctx, "binding", &gemini.RepositoryGroupIamBindingArgs{
+//				Project:             pulumi.Any(example.Project),
+//				Location:            pulumi.Any(example.Location),
+//				CodeRepositoryIndex: pulumi.Any(example.CodeRepositoryIndex),
+//				RepositoryGroupId:   pulumi.Any(example.RepositoryGroupId),
+//				Role:                pulumi.String("roles/cloudaicompanion.repositoryGroupsUser"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## gemini.RepositoryGroupIamMember
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/gemini"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gemini.NewRepositoryGroupIamMember(ctx, "member", &gemini.RepositoryGroupIamMemberArgs{
+//				Project:             pulumi.Any(example.Project),
+//				Location:            pulumi.Any(example.Location),
+//				CodeRepositoryIndex: pulumi.Any(example.CodeRepositoryIndex),
+//				RepositoryGroupId:   pulumi.Any(example.RepositoryGroupId),
+//				Role:                pulumi.String("roles/cloudaicompanion.repositoryGroupsUser"),
+//				Member:              pulumi.String("user:jane@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## This resource supports User Project Overrides.
+//
+// -
+//
+// # IAM policy for Gemini for Google Cloud RepositoryGroup
+// Three different resources help you manage your IAM policy for Gemini for Google Cloud RepositoryGroup. Each of these resources serves a different use case:
+//
+// * `gemini.RepositoryGroupIamPolicy`: Authoritative. Sets the IAM policy for the repositorygroup and replaces any existing policy already attached.
+// * `gemini.RepositoryGroupIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the repositorygroup are preserved.
+// * `gemini.RepositoryGroupIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the repositorygroup are preserved.
+//
+// # A data source can be used to retrieve policy data in advent you do not need creation
+//
+// * `gemini.RepositoryGroupIamPolicy`: Retrieves the IAM policy for the repositorygroup
+//
+// > **Note:** `gemini.RepositoryGroupIamPolicy` **cannot** be used in conjunction with `gemini.RepositoryGroupIamBinding` and `gemini.RepositoryGroupIamMember` or they will fight over what your policy should be.
+//
+// > **Note:** `gemini.RepositoryGroupIamBinding` resources **can be** used in conjunction with `gemini.RepositoryGroupIamMember` resources **only if** they do not grant privilege to the same role.
+//
+// ## gemini.RepositoryGroupIamPolicy
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/gemini"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			admin, err := organizations.LookupIAMPolicy(ctx, &organizations.LookupIAMPolicyArgs{
+//				Bindings: []organizations.GetIAMPolicyBinding{
+//					{
+//						Role: "roles/cloudaicompanion.repositoryGroupsUser",
+//						Members: []string{
+//							"user:jane@example.com",
+//						},
+//					},
+//				},
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			_, err = gemini.NewRepositoryGroupIamPolicy(ctx, "policy", &gemini.RepositoryGroupIamPolicyArgs{
+//				Project:             pulumi.Any(example.Project),
+//				Location:            pulumi.Any(example.Location),
+//				CodeRepositoryIndex: pulumi.Any(example.CodeRepositoryIndex),
+//				RepositoryGroupId:   pulumi.Any(example.RepositoryGroupId),
+//				PolicyData:          pulumi.String(admin.PolicyData),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## gemini.RepositoryGroupIamBinding
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/gemini"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gemini.NewRepositoryGroupIamBinding(ctx, "binding", &gemini.RepositoryGroupIamBindingArgs{
+//				Project:             pulumi.Any(example.Project),
+//				Location:            pulumi.Any(example.Location),
+//				CodeRepositoryIndex: pulumi.Any(example.CodeRepositoryIndex),
+//				RepositoryGroupId:   pulumi.Any(example.RepositoryGroupId),
+//				Role:                pulumi.String("roles/cloudaicompanion.repositoryGroupsUser"),
+//				Members: pulumi.StringArray{
+//					pulumi.String("user:jane@example.com"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
+// ## gemini.RepositoryGroupIamMember
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/gemini"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gemini.NewRepositoryGroupIamMember(ctx, "member", &gemini.RepositoryGroupIamMemberArgs{
+//				Project:             pulumi.Any(example.Project),
+//				Location:            pulumi.Any(example.Location),
+//				CodeRepositoryIndex: pulumi.Any(example.CodeRepositoryIndex),
+//				RepositoryGroupId:   pulumi.Any(example.RepositoryGroupId),
+//				Role:                pulumi.String("roles/cloudaicompanion.repositoryGroupsUser"),
+//				Member:              pulumi.String("user:jane@example.com"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+//
 // ## Import
 //
 // For all import syntaxes, the "resource in question" can take any of the following forms:

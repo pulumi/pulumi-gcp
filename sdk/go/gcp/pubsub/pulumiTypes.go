@@ -3669,6 +3669,9 @@ type TopicIngestionDataSourceSettings struct {
 	// Settings for ingestion from Amazon Kinesis Data Streams.
 	// Structure is documented below.
 	AwsKinesis *TopicIngestionDataSourceSettingsAwsKinesis `pulumi:"awsKinesis"`
+	// Settings for ingestion from Azure Event Hubs.
+	// Structure is documented below.
+	AzureEventHubs *TopicIngestionDataSourceSettingsAzureEventHubs `pulumi:"azureEventHubs"`
 	// Settings for ingestion from Cloud Storage.
 	// Structure is documented below.
 	CloudStorage *TopicIngestionDataSourceSettingsCloudStorage `pulumi:"cloudStorage"`
@@ -3693,6 +3696,9 @@ type TopicIngestionDataSourceSettingsArgs struct {
 	// Settings for ingestion from Amazon Kinesis Data Streams.
 	// Structure is documented below.
 	AwsKinesis TopicIngestionDataSourceSettingsAwsKinesisPtrInput `pulumi:"awsKinesis"`
+	// Settings for ingestion from Azure Event Hubs.
+	// Structure is documented below.
+	AzureEventHubs TopicIngestionDataSourceSettingsAzureEventHubsPtrInput `pulumi:"azureEventHubs"`
 	// Settings for ingestion from Cloud Storage.
 	// Structure is documented below.
 	CloudStorage TopicIngestionDataSourceSettingsCloudStoragePtrInput `pulumi:"cloudStorage"`
@@ -3787,6 +3793,14 @@ func (o TopicIngestionDataSourceSettingsOutput) AwsKinesis() TopicIngestionDataS
 	}).(TopicIngestionDataSourceSettingsAwsKinesisPtrOutput)
 }
 
+// Settings for ingestion from Azure Event Hubs.
+// Structure is documented below.
+func (o TopicIngestionDataSourceSettingsOutput) AzureEventHubs() TopicIngestionDataSourceSettingsAzureEventHubsPtrOutput {
+	return o.ApplyT(func(v TopicIngestionDataSourceSettings) *TopicIngestionDataSourceSettingsAzureEventHubs {
+		return v.AzureEventHubs
+	}).(TopicIngestionDataSourceSettingsAzureEventHubsPtrOutput)
+}
+
 // Settings for ingestion from Cloud Storage.
 // Structure is documented below.
 func (o TopicIngestionDataSourceSettingsOutput) CloudStorage() TopicIngestionDataSourceSettingsCloudStoragePtrOutput {
@@ -3837,6 +3851,17 @@ func (o TopicIngestionDataSourceSettingsPtrOutput) AwsKinesis() TopicIngestionDa
 		}
 		return v.AwsKinesis
 	}).(TopicIngestionDataSourceSettingsAwsKinesisPtrOutput)
+}
+
+// Settings for ingestion from Azure Event Hubs.
+// Structure is documented below.
+func (o TopicIngestionDataSourceSettingsPtrOutput) AzureEventHubs() TopicIngestionDataSourceSettingsAzureEventHubsPtrOutput {
+	return o.ApplyT(func(v *TopicIngestionDataSourceSettings) *TopicIngestionDataSourceSettingsAzureEventHubs {
+		if v == nil {
+			return nil
+		}
+		return v.AzureEventHubs
+	}).(TopicIngestionDataSourceSettingsAzureEventHubsPtrOutput)
 }
 
 // Settings for ingestion from Cloud Storage.
@@ -4081,6 +4106,265 @@ func (o TopicIngestionDataSourceSettingsAwsKinesisPtrOutput) StreamArn() pulumi.
 			return nil
 		}
 		return &v.StreamArn
+	}).(pulumi.StringPtrOutput)
+}
+
+type TopicIngestionDataSourceSettingsAzureEventHubs struct {
+	// The Azure event hub client ID to use for ingestion.
+	ClientId *string `pulumi:"clientId"`
+	// The Azure event hub to ingest data from.
+	EventHub *string `pulumi:"eventHub"`
+	// The GCP service account to be used for Federated Identity authentication
+	// with Azure (via a `AssumeRoleWithWebIdentity` call for the provided
+	// role).
+	GcpServiceAccount *string `pulumi:"gcpServiceAccount"`
+	// The Azure event hub namespace to ingest data from.
+	Namespace *string `pulumi:"namespace"`
+	// The name of the resource group within an Azure subscription.
+	ResourceGroup *string `pulumi:"resourceGroup"`
+	// The Azure event hub subscription ID to use for ingestion.
+	SubscriptionId *string `pulumi:"subscriptionId"`
+	// The Azure event hub tenant ID to use for ingestion.
+	TenantId *string `pulumi:"tenantId"`
+}
+
+// TopicIngestionDataSourceSettingsAzureEventHubsInput is an input type that accepts TopicIngestionDataSourceSettingsAzureEventHubsArgs and TopicIngestionDataSourceSettingsAzureEventHubsOutput values.
+// You can construct a concrete instance of `TopicIngestionDataSourceSettingsAzureEventHubsInput` via:
+//
+//	TopicIngestionDataSourceSettingsAzureEventHubsArgs{...}
+type TopicIngestionDataSourceSettingsAzureEventHubsInput interface {
+	pulumi.Input
+
+	ToTopicIngestionDataSourceSettingsAzureEventHubsOutput() TopicIngestionDataSourceSettingsAzureEventHubsOutput
+	ToTopicIngestionDataSourceSettingsAzureEventHubsOutputWithContext(context.Context) TopicIngestionDataSourceSettingsAzureEventHubsOutput
+}
+
+type TopicIngestionDataSourceSettingsAzureEventHubsArgs struct {
+	// The Azure event hub client ID to use for ingestion.
+	ClientId pulumi.StringPtrInput `pulumi:"clientId"`
+	// The Azure event hub to ingest data from.
+	EventHub pulumi.StringPtrInput `pulumi:"eventHub"`
+	// The GCP service account to be used for Federated Identity authentication
+	// with Azure (via a `AssumeRoleWithWebIdentity` call for the provided
+	// role).
+	GcpServiceAccount pulumi.StringPtrInput `pulumi:"gcpServiceAccount"`
+	// The Azure event hub namespace to ingest data from.
+	Namespace pulumi.StringPtrInput `pulumi:"namespace"`
+	// The name of the resource group within an Azure subscription.
+	ResourceGroup pulumi.StringPtrInput `pulumi:"resourceGroup"`
+	// The Azure event hub subscription ID to use for ingestion.
+	SubscriptionId pulumi.StringPtrInput `pulumi:"subscriptionId"`
+	// The Azure event hub tenant ID to use for ingestion.
+	TenantId pulumi.StringPtrInput `pulumi:"tenantId"`
+}
+
+func (TopicIngestionDataSourceSettingsAzureEventHubsArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*TopicIngestionDataSourceSettingsAzureEventHubs)(nil)).Elem()
+}
+
+func (i TopicIngestionDataSourceSettingsAzureEventHubsArgs) ToTopicIngestionDataSourceSettingsAzureEventHubsOutput() TopicIngestionDataSourceSettingsAzureEventHubsOutput {
+	return i.ToTopicIngestionDataSourceSettingsAzureEventHubsOutputWithContext(context.Background())
+}
+
+func (i TopicIngestionDataSourceSettingsAzureEventHubsArgs) ToTopicIngestionDataSourceSettingsAzureEventHubsOutputWithContext(ctx context.Context) TopicIngestionDataSourceSettingsAzureEventHubsOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicIngestionDataSourceSettingsAzureEventHubsOutput)
+}
+
+func (i TopicIngestionDataSourceSettingsAzureEventHubsArgs) ToTopicIngestionDataSourceSettingsAzureEventHubsPtrOutput() TopicIngestionDataSourceSettingsAzureEventHubsPtrOutput {
+	return i.ToTopicIngestionDataSourceSettingsAzureEventHubsPtrOutputWithContext(context.Background())
+}
+
+func (i TopicIngestionDataSourceSettingsAzureEventHubsArgs) ToTopicIngestionDataSourceSettingsAzureEventHubsPtrOutputWithContext(ctx context.Context) TopicIngestionDataSourceSettingsAzureEventHubsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicIngestionDataSourceSettingsAzureEventHubsOutput).ToTopicIngestionDataSourceSettingsAzureEventHubsPtrOutputWithContext(ctx)
+}
+
+// TopicIngestionDataSourceSettingsAzureEventHubsPtrInput is an input type that accepts TopicIngestionDataSourceSettingsAzureEventHubsArgs, TopicIngestionDataSourceSettingsAzureEventHubsPtr and TopicIngestionDataSourceSettingsAzureEventHubsPtrOutput values.
+// You can construct a concrete instance of `TopicIngestionDataSourceSettingsAzureEventHubsPtrInput` via:
+//
+//	        TopicIngestionDataSourceSettingsAzureEventHubsArgs{...}
+//
+//	or:
+//
+//	        nil
+type TopicIngestionDataSourceSettingsAzureEventHubsPtrInput interface {
+	pulumi.Input
+
+	ToTopicIngestionDataSourceSettingsAzureEventHubsPtrOutput() TopicIngestionDataSourceSettingsAzureEventHubsPtrOutput
+	ToTopicIngestionDataSourceSettingsAzureEventHubsPtrOutputWithContext(context.Context) TopicIngestionDataSourceSettingsAzureEventHubsPtrOutput
+}
+
+type topicIngestionDataSourceSettingsAzureEventHubsPtrType TopicIngestionDataSourceSettingsAzureEventHubsArgs
+
+func TopicIngestionDataSourceSettingsAzureEventHubsPtr(v *TopicIngestionDataSourceSettingsAzureEventHubsArgs) TopicIngestionDataSourceSettingsAzureEventHubsPtrInput {
+	return (*topicIngestionDataSourceSettingsAzureEventHubsPtrType)(v)
+}
+
+func (*topicIngestionDataSourceSettingsAzureEventHubsPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**TopicIngestionDataSourceSettingsAzureEventHubs)(nil)).Elem()
+}
+
+func (i *topicIngestionDataSourceSettingsAzureEventHubsPtrType) ToTopicIngestionDataSourceSettingsAzureEventHubsPtrOutput() TopicIngestionDataSourceSettingsAzureEventHubsPtrOutput {
+	return i.ToTopicIngestionDataSourceSettingsAzureEventHubsPtrOutputWithContext(context.Background())
+}
+
+func (i *topicIngestionDataSourceSettingsAzureEventHubsPtrType) ToTopicIngestionDataSourceSettingsAzureEventHubsPtrOutputWithContext(ctx context.Context) TopicIngestionDataSourceSettingsAzureEventHubsPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(TopicIngestionDataSourceSettingsAzureEventHubsPtrOutput)
+}
+
+type TopicIngestionDataSourceSettingsAzureEventHubsOutput struct{ *pulumi.OutputState }
+
+func (TopicIngestionDataSourceSettingsAzureEventHubsOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*TopicIngestionDataSourceSettingsAzureEventHubs)(nil)).Elem()
+}
+
+func (o TopicIngestionDataSourceSettingsAzureEventHubsOutput) ToTopicIngestionDataSourceSettingsAzureEventHubsOutput() TopicIngestionDataSourceSettingsAzureEventHubsOutput {
+	return o
+}
+
+func (o TopicIngestionDataSourceSettingsAzureEventHubsOutput) ToTopicIngestionDataSourceSettingsAzureEventHubsOutputWithContext(ctx context.Context) TopicIngestionDataSourceSettingsAzureEventHubsOutput {
+	return o
+}
+
+func (o TopicIngestionDataSourceSettingsAzureEventHubsOutput) ToTopicIngestionDataSourceSettingsAzureEventHubsPtrOutput() TopicIngestionDataSourceSettingsAzureEventHubsPtrOutput {
+	return o.ToTopicIngestionDataSourceSettingsAzureEventHubsPtrOutputWithContext(context.Background())
+}
+
+func (o TopicIngestionDataSourceSettingsAzureEventHubsOutput) ToTopicIngestionDataSourceSettingsAzureEventHubsPtrOutputWithContext(ctx context.Context) TopicIngestionDataSourceSettingsAzureEventHubsPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v TopicIngestionDataSourceSettingsAzureEventHubs) *TopicIngestionDataSourceSettingsAzureEventHubs {
+		return &v
+	}).(TopicIngestionDataSourceSettingsAzureEventHubsPtrOutput)
+}
+
+// The Azure event hub client ID to use for ingestion.
+func (o TopicIngestionDataSourceSettingsAzureEventHubsOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TopicIngestionDataSourceSettingsAzureEventHubs) *string { return v.ClientId }).(pulumi.StringPtrOutput)
+}
+
+// The Azure event hub to ingest data from.
+func (o TopicIngestionDataSourceSettingsAzureEventHubsOutput) EventHub() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TopicIngestionDataSourceSettingsAzureEventHubs) *string { return v.EventHub }).(pulumi.StringPtrOutput)
+}
+
+// The GCP service account to be used for Federated Identity authentication
+// with Azure (via a `AssumeRoleWithWebIdentity` call for the provided
+// role).
+func (o TopicIngestionDataSourceSettingsAzureEventHubsOutput) GcpServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TopicIngestionDataSourceSettingsAzureEventHubs) *string { return v.GcpServiceAccount }).(pulumi.StringPtrOutput)
+}
+
+// The Azure event hub namespace to ingest data from.
+func (o TopicIngestionDataSourceSettingsAzureEventHubsOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TopicIngestionDataSourceSettingsAzureEventHubs) *string { return v.Namespace }).(pulumi.StringPtrOutput)
+}
+
+// The name of the resource group within an Azure subscription.
+func (o TopicIngestionDataSourceSettingsAzureEventHubsOutput) ResourceGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TopicIngestionDataSourceSettingsAzureEventHubs) *string { return v.ResourceGroup }).(pulumi.StringPtrOutput)
+}
+
+// The Azure event hub subscription ID to use for ingestion.
+func (o TopicIngestionDataSourceSettingsAzureEventHubsOutput) SubscriptionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TopicIngestionDataSourceSettingsAzureEventHubs) *string { return v.SubscriptionId }).(pulumi.StringPtrOutput)
+}
+
+// The Azure event hub tenant ID to use for ingestion.
+func (o TopicIngestionDataSourceSettingsAzureEventHubsOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v TopicIngestionDataSourceSettingsAzureEventHubs) *string { return v.TenantId }).(pulumi.StringPtrOutput)
+}
+
+type TopicIngestionDataSourceSettingsAzureEventHubsPtrOutput struct{ *pulumi.OutputState }
+
+func (TopicIngestionDataSourceSettingsAzureEventHubsPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**TopicIngestionDataSourceSettingsAzureEventHubs)(nil)).Elem()
+}
+
+func (o TopicIngestionDataSourceSettingsAzureEventHubsPtrOutput) ToTopicIngestionDataSourceSettingsAzureEventHubsPtrOutput() TopicIngestionDataSourceSettingsAzureEventHubsPtrOutput {
+	return o
+}
+
+func (o TopicIngestionDataSourceSettingsAzureEventHubsPtrOutput) ToTopicIngestionDataSourceSettingsAzureEventHubsPtrOutputWithContext(ctx context.Context) TopicIngestionDataSourceSettingsAzureEventHubsPtrOutput {
+	return o
+}
+
+func (o TopicIngestionDataSourceSettingsAzureEventHubsPtrOutput) Elem() TopicIngestionDataSourceSettingsAzureEventHubsOutput {
+	return o.ApplyT(func(v *TopicIngestionDataSourceSettingsAzureEventHubs) TopicIngestionDataSourceSettingsAzureEventHubs {
+		if v != nil {
+			return *v
+		}
+		var ret TopicIngestionDataSourceSettingsAzureEventHubs
+		return ret
+	}).(TopicIngestionDataSourceSettingsAzureEventHubsOutput)
+}
+
+// The Azure event hub client ID to use for ingestion.
+func (o TopicIngestionDataSourceSettingsAzureEventHubsPtrOutput) ClientId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TopicIngestionDataSourceSettingsAzureEventHubs) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ClientId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Azure event hub to ingest data from.
+func (o TopicIngestionDataSourceSettingsAzureEventHubsPtrOutput) EventHub() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TopicIngestionDataSourceSettingsAzureEventHubs) *string {
+		if v == nil {
+			return nil
+		}
+		return v.EventHub
+	}).(pulumi.StringPtrOutput)
+}
+
+// The GCP service account to be used for Federated Identity authentication
+// with Azure (via a `AssumeRoleWithWebIdentity` call for the provided
+// role).
+func (o TopicIngestionDataSourceSettingsAzureEventHubsPtrOutput) GcpServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TopicIngestionDataSourceSettingsAzureEventHubs) *string {
+		if v == nil {
+			return nil
+		}
+		return v.GcpServiceAccount
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Azure event hub namespace to ingest data from.
+func (o TopicIngestionDataSourceSettingsAzureEventHubsPtrOutput) Namespace() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TopicIngestionDataSourceSettingsAzureEventHubs) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Namespace
+	}).(pulumi.StringPtrOutput)
+}
+
+// The name of the resource group within an Azure subscription.
+func (o TopicIngestionDataSourceSettingsAzureEventHubsPtrOutput) ResourceGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TopicIngestionDataSourceSettingsAzureEventHubs) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ResourceGroup
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Azure event hub subscription ID to use for ingestion.
+func (o TopicIngestionDataSourceSettingsAzureEventHubsPtrOutput) SubscriptionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TopicIngestionDataSourceSettingsAzureEventHubs) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SubscriptionId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Azure event hub tenant ID to use for ingestion.
+func (o TopicIngestionDataSourceSettingsAzureEventHubsPtrOutput) TenantId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *TopicIngestionDataSourceSettingsAzureEventHubs) *string {
+		if v == nil {
+			return nil
+		}
+		return v.TenantId
 	}).(pulumi.StringPtrOutput)
 }
 
@@ -4912,6 +5196,11 @@ type TopicMessageStoragePolicy struct {
 	// allowed regions. An empty list means that no regions are allowed,
 	// and is not a valid configuration.
 	AllowedPersistenceRegions []string `pulumi:"allowedPersistenceRegions"`
+	// If true, `allowedPersistenceRegions` is also used to enforce in-transit
+	// guarantees for messages. That is, Pub/Sub will fail topics.publish
+	// operations on this topic and subscribe operations on any subscription
+	// attached to this topic in any region that is not in `allowedPersistenceRegions`.
+	EnforceInTransit *bool `pulumi:"enforceInTransit"`
 }
 
 // TopicMessageStoragePolicyInput is an input type that accepts TopicMessageStoragePolicyArgs and TopicMessageStoragePolicyOutput values.
@@ -4933,6 +5222,11 @@ type TopicMessageStoragePolicyArgs struct {
 	// allowed regions. An empty list means that no regions are allowed,
 	// and is not a valid configuration.
 	AllowedPersistenceRegions pulumi.StringArrayInput `pulumi:"allowedPersistenceRegions"`
+	// If true, `allowedPersistenceRegions` is also used to enforce in-transit
+	// guarantees for messages. That is, Pub/Sub will fail topics.publish
+	// operations on this topic and subscribe operations on any subscription
+	// attached to this topic in any region that is not in `allowedPersistenceRegions`.
+	EnforceInTransit pulumi.BoolPtrInput `pulumi:"enforceInTransit"`
 }
 
 func (TopicMessageStoragePolicyArgs) ElementType() reflect.Type {
@@ -5022,6 +5316,14 @@ func (o TopicMessageStoragePolicyOutput) AllowedPersistenceRegions() pulumi.Stri
 	return o.ApplyT(func(v TopicMessageStoragePolicy) []string { return v.AllowedPersistenceRegions }).(pulumi.StringArrayOutput)
 }
 
+// If true, `allowedPersistenceRegions` is also used to enforce in-transit
+// guarantees for messages. That is, Pub/Sub will fail topics.publish
+// operations on this topic and subscribe operations on any subscription
+// attached to this topic in any region that is not in `allowedPersistenceRegions`.
+func (o TopicMessageStoragePolicyOutput) EnforceInTransit() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v TopicMessageStoragePolicy) *bool { return v.EnforceInTransit }).(pulumi.BoolPtrOutput)
+}
+
 type TopicMessageStoragePolicyPtrOutput struct{ *pulumi.OutputState }
 
 func (TopicMessageStoragePolicyPtrOutput) ElementType() reflect.Type {
@@ -5059,6 +5361,19 @@ func (o TopicMessageStoragePolicyPtrOutput) AllowedPersistenceRegions() pulumi.S
 		}
 		return v.AllowedPersistenceRegions
 	}).(pulumi.StringArrayOutput)
+}
+
+// If true, `allowedPersistenceRegions` is also used to enforce in-transit
+// guarantees for messages. That is, Pub/Sub will fail topics.publish
+// operations on this topic and subscribe operations on any subscription
+// attached to this topic in any region that is not in `allowedPersistenceRegions`.
+func (o TopicMessageStoragePolicyPtrOutput) EnforceInTransit() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *TopicMessageStoragePolicy) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnforceInTransit
+	}).(pulumi.BoolPtrOutput)
 }
 
 type TopicSchemaSettings struct {
@@ -6529,6 +6844,8 @@ func (o GetSubscriptionRetryPolicyArrayOutput) Index(i pulumi.IntInput) GetSubsc
 type GetTopicIngestionDataSourceSetting struct {
 	// Settings for ingestion from Amazon Kinesis Data Streams.
 	AwsKineses []GetTopicIngestionDataSourceSettingAwsKinese `pulumi:"awsKineses"`
+	// Settings for ingestion from Azure Event Hubs.
+	AzureEventHubs []GetTopicIngestionDataSourceSettingAzureEventHub `pulumi:"azureEventHubs"`
 	// Settings for ingestion from Cloud Storage.
 	CloudStorages []GetTopicIngestionDataSourceSettingCloudStorage `pulumi:"cloudStorages"`
 	// Settings for Platform Logs regarding ingestion to Pub/Sub. If unset,
@@ -6550,6 +6867,8 @@ type GetTopicIngestionDataSourceSettingInput interface {
 type GetTopicIngestionDataSourceSettingArgs struct {
 	// Settings for ingestion from Amazon Kinesis Data Streams.
 	AwsKineses GetTopicIngestionDataSourceSettingAwsKineseArrayInput `pulumi:"awsKineses"`
+	// Settings for ingestion from Azure Event Hubs.
+	AzureEventHubs GetTopicIngestionDataSourceSettingAzureEventHubArrayInput `pulumi:"azureEventHubs"`
 	// Settings for ingestion from Cloud Storage.
 	CloudStorages GetTopicIngestionDataSourceSettingCloudStorageArrayInput `pulumi:"cloudStorages"`
 	// Settings for Platform Logs regarding ingestion to Pub/Sub. If unset,
@@ -6613,6 +6932,13 @@ func (o GetTopicIngestionDataSourceSettingOutput) AwsKineses() GetTopicIngestion
 	return o.ApplyT(func(v GetTopicIngestionDataSourceSetting) []GetTopicIngestionDataSourceSettingAwsKinese {
 		return v.AwsKineses
 	}).(GetTopicIngestionDataSourceSettingAwsKineseArrayOutput)
+}
+
+// Settings for ingestion from Azure Event Hubs.
+func (o GetTopicIngestionDataSourceSettingOutput) AzureEventHubs() GetTopicIngestionDataSourceSettingAzureEventHubArrayOutput {
+	return o.ApplyT(func(v GetTopicIngestionDataSourceSetting) []GetTopicIngestionDataSourceSettingAzureEventHub {
+		return v.AzureEventHubs
+	}).(GetTopicIngestionDataSourceSettingAzureEventHubArrayOutput)
 }
 
 // Settings for ingestion from Cloud Storage.
@@ -6793,6 +7119,163 @@ func (o GetTopicIngestionDataSourceSettingAwsKineseArrayOutput) Index(i pulumi.I
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTopicIngestionDataSourceSettingAwsKinese {
 		return vs[0].([]GetTopicIngestionDataSourceSettingAwsKinese)[vs[1].(int)]
 	}).(GetTopicIngestionDataSourceSettingAwsKineseOutput)
+}
+
+type GetTopicIngestionDataSourceSettingAzureEventHub struct {
+	// The Azure event hub client ID to use for ingestion.
+	ClientId string `pulumi:"clientId"`
+	// The Azure event hub to ingest data from.
+	EventHub string `pulumi:"eventHub"`
+	// The GCP service account to be used for Federated Identity authentication
+	// with Azure (via a 'AssumeRoleWithWebIdentity' call for the provided
+	// role).
+	GcpServiceAccount string `pulumi:"gcpServiceAccount"`
+	// The Azure event hub namespace to ingest data from.
+	Namespace string `pulumi:"namespace"`
+	// The name of the resource group within an Azure subscription.
+	ResourceGroup string `pulumi:"resourceGroup"`
+	// The Azure event hub subscription ID to use for ingestion.
+	SubscriptionId string `pulumi:"subscriptionId"`
+	// The Azure event hub tenant ID to use for ingestion.
+	TenantId string `pulumi:"tenantId"`
+}
+
+// GetTopicIngestionDataSourceSettingAzureEventHubInput is an input type that accepts GetTopicIngestionDataSourceSettingAzureEventHubArgs and GetTopicIngestionDataSourceSettingAzureEventHubOutput values.
+// You can construct a concrete instance of `GetTopicIngestionDataSourceSettingAzureEventHubInput` via:
+//
+//	GetTopicIngestionDataSourceSettingAzureEventHubArgs{...}
+type GetTopicIngestionDataSourceSettingAzureEventHubInput interface {
+	pulumi.Input
+
+	ToGetTopicIngestionDataSourceSettingAzureEventHubOutput() GetTopicIngestionDataSourceSettingAzureEventHubOutput
+	ToGetTopicIngestionDataSourceSettingAzureEventHubOutputWithContext(context.Context) GetTopicIngestionDataSourceSettingAzureEventHubOutput
+}
+
+type GetTopicIngestionDataSourceSettingAzureEventHubArgs struct {
+	// The Azure event hub client ID to use for ingestion.
+	ClientId pulumi.StringInput `pulumi:"clientId"`
+	// The Azure event hub to ingest data from.
+	EventHub pulumi.StringInput `pulumi:"eventHub"`
+	// The GCP service account to be used for Federated Identity authentication
+	// with Azure (via a 'AssumeRoleWithWebIdentity' call for the provided
+	// role).
+	GcpServiceAccount pulumi.StringInput `pulumi:"gcpServiceAccount"`
+	// The Azure event hub namespace to ingest data from.
+	Namespace pulumi.StringInput `pulumi:"namespace"`
+	// The name of the resource group within an Azure subscription.
+	ResourceGroup pulumi.StringInput `pulumi:"resourceGroup"`
+	// The Azure event hub subscription ID to use for ingestion.
+	SubscriptionId pulumi.StringInput `pulumi:"subscriptionId"`
+	// The Azure event hub tenant ID to use for ingestion.
+	TenantId pulumi.StringInput `pulumi:"tenantId"`
+}
+
+func (GetTopicIngestionDataSourceSettingAzureEventHubArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTopicIngestionDataSourceSettingAzureEventHub)(nil)).Elem()
+}
+
+func (i GetTopicIngestionDataSourceSettingAzureEventHubArgs) ToGetTopicIngestionDataSourceSettingAzureEventHubOutput() GetTopicIngestionDataSourceSettingAzureEventHubOutput {
+	return i.ToGetTopicIngestionDataSourceSettingAzureEventHubOutputWithContext(context.Background())
+}
+
+func (i GetTopicIngestionDataSourceSettingAzureEventHubArgs) ToGetTopicIngestionDataSourceSettingAzureEventHubOutputWithContext(ctx context.Context) GetTopicIngestionDataSourceSettingAzureEventHubOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTopicIngestionDataSourceSettingAzureEventHubOutput)
+}
+
+// GetTopicIngestionDataSourceSettingAzureEventHubArrayInput is an input type that accepts GetTopicIngestionDataSourceSettingAzureEventHubArray and GetTopicIngestionDataSourceSettingAzureEventHubArrayOutput values.
+// You can construct a concrete instance of `GetTopicIngestionDataSourceSettingAzureEventHubArrayInput` via:
+//
+//	GetTopicIngestionDataSourceSettingAzureEventHubArray{ GetTopicIngestionDataSourceSettingAzureEventHubArgs{...} }
+type GetTopicIngestionDataSourceSettingAzureEventHubArrayInput interface {
+	pulumi.Input
+
+	ToGetTopicIngestionDataSourceSettingAzureEventHubArrayOutput() GetTopicIngestionDataSourceSettingAzureEventHubArrayOutput
+	ToGetTopicIngestionDataSourceSettingAzureEventHubArrayOutputWithContext(context.Context) GetTopicIngestionDataSourceSettingAzureEventHubArrayOutput
+}
+
+type GetTopicIngestionDataSourceSettingAzureEventHubArray []GetTopicIngestionDataSourceSettingAzureEventHubInput
+
+func (GetTopicIngestionDataSourceSettingAzureEventHubArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTopicIngestionDataSourceSettingAzureEventHub)(nil)).Elem()
+}
+
+func (i GetTopicIngestionDataSourceSettingAzureEventHubArray) ToGetTopicIngestionDataSourceSettingAzureEventHubArrayOutput() GetTopicIngestionDataSourceSettingAzureEventHubArrayOutput {
+	return i.ToGetTopicIngestionDataSourceSettingAzureEventHubArrayOutputWithContext(context.Background())
+}
+
+func (i GetTopicIngestionDataSourceSettingAzureEventHubArray) ToGetTopicIngestionDataSourceSettingAzureEventHubArrayOutputWithContext(ctx context.Context) GetTopicIngestionDataSourceSettingAzureEventHubArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetTopicIngestionDataSourceSettingAzureEventHubArrayOutput)
+}
+
+type GetTopicIngestionDataSourceSettingAzureEventHubOutput struct{ *pulumi.OutputState }
+
+func (GetTopicIngestionDataSourceSettingAzureEventHubOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetTopicIngestionDataSourceSettingAzureEventHub)(nil)).Elem()
+}
+
+func (o GetTopicIngestionDataSourceSettingAzureEventHubOutput) ToGetTopicIngestionDataSourceSettingAzureEventHubOutput() GetTopicIngestionDataSourceSettingAzureEventHubOutput {
+	return o
+}
+
+func (o GetTopicIngestionDataSourceSettingAzureEventHubOutput) ToGetTopicIngestionDataSourceSettingAzureEventHubOutputWithContext(ctx context.Context) GetTopicIngestionDataSourceSettingAzureEventHubOutput {
+	return o
+}
+
+// The Azure event hub client ID to use for ingestion.
+func (o GetTopicIngestionDataSourceSettingAzureEventHubOutput) ClientId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTopicIngestionDataSourceSettingAzureEventHub) string { return v.ClientId }).(pulumi.StringOutput)
+}
+
+// The Azure event hub to ingest data from.
+func (o GetTopicIngestionDataSourceSettingAzureEventHubOutput) EventHub() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTopicIngestionDataSourceSettingAzureEventHub) string { return v.EventHub }).(pulumi.StringOutput)
+}
+
+// The GCP service account to be used for Federated Identity authentication
+// with Azure (via a 'AssumeRoleWithWebIdentity' call for the provided
+// role).
+func (o GetTopicIngestionDataSourceSettingAzureEventHubOutput) GcpServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTopicIngestionDataSourceSettingAzureEventHub) string { return v.GcpServiceAccount }).(pulumi.StringOutput)
+}
+
+// The Azure event hub namespace to ingest data from.
+func (o GetTopicIngestionDataSourceSettingAzureEventHubOutput) Namespace() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTopicIngestionDataSourceSettingAzureEventHub) string { return v.Namespace }).(pulumi.StringOutput)
+}
+
+// The name of the resource group within an Azure subscription.
+func (o GetTopicIngestionDataSourceSettingAzureEventHubOutput) ResourceGroup() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTopicIngestionDataSourceSettingAzureEventHub) string { return v.ResourceGroup }).(pulumi.StringOutput)
+}
+
+// The Azure event hub subscription ID to use for ingestion.
+func (o GetTopicIngestionDataSourceSettingAzureEventHubOutput) SubscriptionId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTopicIngestionDataSourceSettingAzureEventHub) string { return v.SubscriptionId }).(pulumi.StringOutput)
+}
+
+// The Azure event hub tenant ID to use for ingestion.
+func (o GetTopicIngestionDataSourceSettingAzureEventHubOutput) TenantId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetTopicIngestionDataSourceSettingAzureEventHub) string { return v.TenantId }).(pulumi.StringOutput)
+}
+
+type GetTopicIngestionDataSourceSettingAzureEventHubArrayOutput struct{ *pulumi.OutputState }
+
+func (GetTopicIngestionDataSourceSettingAzureEventHubArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetTopicIngestionDataSourceSettingAzureEventHub)(nil)).Elem()
+}
+
+func (o GetTopicIngestionDataSourceSettingAzureEventHubArrayOutput) ToGetTopicIngestionDataSourceSettingAzureEventHubArrayOutput() GetTopicIngestionDataSourceSettingAzureEventHubArrayOutput {
+	return o
+}
+
+func (o GetTopicIngestionDataSourceSettingAzureEventHubArrayOutput) ToGetTopicIngestionDataSourceSettingAzureEventHubArrayOutputWithContext(ctx context.Context) GetTopicIngestionDataSourceSettingAzureEventHubArrayOutput {
+	return o
+}
+
+func (o GetTopicIngestionDataSourceSettingAzureEventHubArrayOutput) Index(i pulumi.IntInput) GetTopicIngestionDataSourceSettingAzureEventHubOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetTopicIngestionDataSourceSettingAzureEventHub {
+		return vs[0].([]GetTopicIngestionDataSourceSettingAzureEventHub)[vs[1].(int)]
+	}).(GetTopicIngestionDataSourceSettingAzureEventHubOutput)
 }
 
 type GetTopicIngestionDataSourceSettingCloudStorage struct {
@@ -7366,6 +7849,11 @@ type GetTopicMessageStoragePolicy struct {
 	// allowed regions. An empty list means that no regions are allowed,
 	// and is not a valid configuration.
 	AllowedPersistenceRegions []string `pulumi:"allowedPersistenceRegions"`
+	// If true, 'allowedPersistenceRegions' is also used to enforce in-transit
+	// guarantees for messages. That is, Pub/Sub will fail topics.publish
+	// operations on this topic and subscribe operations on any subscription
+	// attached to this topic in any region that is not in 'allowedPersistenceRegions'.
+	EnforceInTransit bool `pulumi:"enforceInTransit"`
 }
 
 // GetTopicMessageStoragePolicyInput is an input type that accepts GetTopicMessageStoragePolicyArgs and GetTopicMessageStoragePolicyOutput values.
@@ -7387,6 +7875,11 @@ type GetTopicMessageStoragePolicyArgs struct {
 	// allowed regions. An empty list means that no regions are allowed,
 	// and is not a valid configuration.
 	AllowedPersistenceRegions pulumi.StringArrayInput `pulumi:"allowedPersistenceRegions"`
+	// If true, 'allowedPersistenceRegions' is also used to enforce in-transit
+	// guarantees for messages. That is, Pub/Sub will fail topics.publish
+	// operations on this topic and subscribe operations on any subscription
+	// attached to this topic in any region that is not in 'allowedPersistenceRegions'.
+	EnforceInTransit pulumi.BoolInput `pulumi:"enforceInTransit"`
 }
 
 func (GetTopicMessageStoragePolicyArgs) ElementType() reflect.Type {
@@ -7448,6 +7941,14 @@ func (o GetTopicMessageStoragePolicyOutput) ToGetTopicMessageStoragePolicyOutput
 // and is not a valid configuration.
 func (o GetTopicMessageStoragePolicyOutput) AllowedPersistenceRegions() pulumi.StringArrayOutput {
 	return o.ApplyT(func(v GetTopicMessageStoragePolicy) []string { return v.AllowedPersistenceRegions }).(pulumi.StringArrayOutput)
+}
+
+// If true, 'allowedPersistenceRegions' is also used to enforce in-transit
+// guarantees for messages. That is, Pub/Sub will fail topics.publish
+// operations on this topic and subscribe operations on any subscription
+// attached to this topic in any region that is not in 'allowedPersistenceRegions'.
+func (o GetTopicMessageStoragePolicyOutput) EnforceInTransit() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetTopicMessageStoragePolicy) bool { return v.EnforceInTransit }).(pulumi.BoolOutput)
 }
 
 type GetTopicMessageStoragePolicyArrayOutput struct{ *pulumi.OutputState }
@@ -7630,6 +8131,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*TopicIngestionDataSourceSettingsPtrInput)(nil)).Elem(), TopicIngestionDataSourceSettingsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TopicIngestionDataSourceSettingsAwsKinesisInput)(nil)).Elem(), TopicIngestionDataSourceSettingsAwsKinesisArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TopicIngestionDataSourceSettingsAwsKinesisPtrInput)(nil)).Elem(), TopicIngestionDataSourceSettingsAwsKinesisArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TopicIngestionDataSourceSettingsAzureEventHubsInput)(nil)).Elem(), TopicIngestionDataSourceSettingsAzureEventHubsArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*TopicIngestionDataSourceSettingsAzureEventHubsPtrInput)(nil)).Elem(), TopicIngestionDataSourceSettingsAzureEventHubsArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TopicIngestionDataSourceSettingsCloudStorageInput)(nil)).Elem(), TopicIngestionDataSourceSettingsCloudStorageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TopicIngestionDataSourceSettingsCloudStoragePtrInput)(nil)).Elem(), TopicIngestionDataSourceSettingsCloudStorageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*TopicIngestionDataSourceSettingsCloudStorageAvroFormatInput)(nil)).Elem(), TopicIngestionDataSourceSettingsCloudStorageAvroFormatArgs{})
@@ -7666,6 +8169,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicIngestionDataSourceSettingArrayInput)(nil)).Elem(), GetTopicIngestionDataSourceSettingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicIngestionDataSourceSettingAwsKineseInput)(nil)).Elem(), GetTopicIngestionDataSourceSettingAwsKineseArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicIngestionDataSourceSettingAwsKineseArrayInput)(nil)).Elem(), GetTopicIngestionDataSourceSettingAwsKineseArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicIngestionDataSourceSettingAzureEventHubInput)(nil)).Elem(), GetTopicIngestionDataSourceSettingAzureEventHubArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicIngestionDataSourceSettingAzureEventHubArrayInput)(nil)).Elem(), GetTopicIngestionDataSourceSettingAzureEventHubArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicIngestionDataSourceSettingCloudStorageInput)(nil)).Elem(), GetTopicIngestionDataSourceSettingCloudStorageArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicIngestionDataSourceSettingCloudStorageArrayInput)(nil)).Elem(), GetTopicIngestionDataSourceSettingCloudStorageArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetTopicIngestionDataSourceSettingCloudStorageAvroFormatInput)(nil)).Elem(), GetTopicIngestionDataSourceSettingCloudStorageAvroFormatArgs{})
@@ -7724,6 +8229,8 @@ func init() {
 	pulumi.RegisterOutputType(TopicIngestionDataSourceSettingsPtrOutput{})
 	pulumi.RegisterOutputType(TopicIngestionDataSourceSettingsAwsKinesisOutput{})
 	pulumi.RegisterOutputType(TopicIngestionDataSourceSettingsAwsKinesisPtrOutput{})
+	pulumi.RegisterOutputType(TopicIngestionDataSourceSettingsAzureEventHubsOutput{})
+	pulumi.RegisterOutputType(TopicIngestionDataSourceSettingsAzureEventHubsPtrOutput{})
 	pulumi.RegisterOutputType(TopicIngestionDataSourceSettingsCloudStorageOutput{})
 	pulumi.RegisterOutputType(TopicIngestionDataSourceSettingsCloudStoragePtrOutput{})
 	pulumi.RegisterOutputType(TopicIngestionDataSourceSettingsCloudStorageAvroFormatOutput{})
@@ -7760,6 +8267,8 @@ func init() {
 	pulumi.RegisterOutputType(GetTopicIngestionDataSourceSettingArrayOutput{})
 	pulumi.RegisterOutputType(GetTopicIngestionDataSourceSettingAwsKineseOutput{})
 	pulumi.RegisterOutputType(GetTopicIngestionDataSourceSettingAwsKineseArrayOutput{})
+	pulumi.RegisterOutputType(GetTopicIngestionDataSourceSettingAzureEventHubOutput{})
+	pulumi.RegisterOutputType(GetTopicIngestionDataSourceSettingAzureEventHubArrayOutput{})
 	pulumi.RegisterOutputType(GetTopicIngestionDataSourceSettingCloudStorageOutput{})
 	pulumi.RegisterOutputType(GetTopicIngestionDataSourceSettingCloudStorageArrayOutput{})
 	pulumi.RegisterOutputType(GetTopicIngestionDataSourceSettingCloudStorageAvroFormatOutput{})

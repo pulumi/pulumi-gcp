@@ -28,6 +28,8 @@ __all__ = [
     'EnvironmentIamBindingCondition',
     'EnvironmentIamMemberCondition',
     'EnvironmentNodeConfig',
+    'EnvironmentProperties',
+    'EnvironmentPropertiesProperty',
     'KeystoresAliasesKeyCertFileCertsInfo',
     'KeystoresAliasesKeyCertFileCertsInfoCertInfo',
     'KeystoresAliasesPkcs12CertsInfo',
@@ -556,6 +558,58 @@ class EnvironmentNodeConfig(dict):
         recommended minimum number of nodes for that gateway.
         """
         return pulumi.get(self, "min_node_count")
+
+
+@pulumi.output_type
+class EnvironmentProperties(dict):
+    def __init__(__self__, *,
+                 properties: Optional[Sequence['outputs.EnvironmentPropertiesProperty']] = None):
+        """
+        :param Sequence['EnvironmentPropertiesPropertyArgs'] properties: List of all properties in the object.
+               Structure is documented below.
+        """
+        if properties is not None:
+            pulumi.set(__self__, "properties", properties)
+
+    @property
+    @pulumi.getter
+    def properties(self) -> Optional[Sequence['outputs.EnvironmentPropertiesProperty']]:
+        """
+        List of all properties in the object.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "properties")
+
+
+@pulumi.output_type
+class EnvironmentPropertiesProperty(dict):
+    def __init__(__self__, *,
+                 name: Optional[str] = None,
+                 value: Optional[str] = None):
+        """
+        :param str name: The property key.
+        :param str value: The property value.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[str]:
+        """
+        The property key.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[str]:
+        """
+        The property value.
+        """
+        return pulumi.get(self, "value")
 
 
 @pulumi.output_type

@@ -6,6 +6,7 @@ package com.pulumi.gcp.pubsub.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.pubsub.inputs.TopicIngestionDataSourceSettingsAwsKinesisArgs;
+import com.pulumi.gcp.pubsub.inputs.TopicIngestionDataSourceSettingsAzureEventHubsArgs;
 import com.pulumi.gcp.pubsub.inputs.TopicIngestionDataSourceSettingsCloudStorageArgs;
 import com.pulumi.gcp.pubsub.inputs.TopicIngestionDataSourceSettingsPlatformLogsSettingsArgs;
 import java.util.Objects;
@@ -32,6 +33,23 @@ public final class TopicIngestionDataSourceSettingsArgs extends com.pulumi.resou
      */
     public Optional<Output<TopicIngestionDataSourceSettingsAwsKinesisArgs>> awsKinesis() {
         return Optional.ofNullable(this.awsKinesis);
+    }
+
+    /**
+     * Settings for ingestion from Azure Event Hubs.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="azureEventHubs")
+    private @Nullable Output<TopicIngestionDataSourceSettingsAzureEventHubsArgs> azureEventHubs;
+
+    /**
+     * @return Settings for ingestion from Azure Event Hubs.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<TopicIngestionDataSourceSettingsAzureEventHubsArgs>> azureEventHubs() {
+        return Optional.ofNullable(this.azureEventHubs);
     }
 
     /**
@@ -74,6 +92,7 @@ public final class TopicIngestionDataSourceSettingsArgs extends com.pulumi.resou
 
     private TopicIngestionDataSourceSettingsArgs(TopicIngestionDataSourceSettingsArgs $) {
         this.awsKinesis = $.awsKinesis;
+        this.azureEventHubs = $.azureEventHubs;
         this.cloudStorage = $.cloudStorage;
         this.platformLogsSettings = $.platformLogsSettings;
     }
@@ -117,6 +136,29 @@ public final class TopicIngestionDataSourceSettingsArgs extends com.pulumi.resou
          */
         public Builder awsKinesis(TopicIngestionDataSourceSettingsAwsKinesisArgs awsKinesis) {
             return awsKinesis(Output.of(awsKinesis));
+        }
+
+        /**
+         * @param azureEventHubs Settings for ingestion from Azure Event Hubs.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder azureEventHubs(@Nullable Output<TopicIngestionDataSourceSettingsAzureEventHubsArgs> azureEventHubs) {
+            $.azureEventHubs = azureEventHubs;
+            return this;
+        }
+
+        /**
+         * @param azureEventHubs Settings for ingestion from Azure Event Hubs.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder azureEventHubs(TopicIngestionDataSourceSettingsAzureEventHubsArgs azureEventHubs) {
+            return azureEventHubs(Output.of(azureEventHubs));
         }
 
         /**

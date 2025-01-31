@@ -249,6 +249,14 @@ export class Instance extends pulumi.CustomResource {
      */
     public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
+     * A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags.
+     * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when
+     * empty. The field is immutable and causes resource replacement when mutated. This field is only set at create time and
+     * modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the
+     * 'google_tags_tag_value' resource.
+     */
+    public readonly tags!: pulumi.Output<{[key: string]: string} | undefined>;
+    /**
      * The service tier of the instance.
      * Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE
      */
@@ -289,6 +297,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["protocol"] = state ? state.protocol : undefined;
             resourceInputs["pulumiLabels"] = state ? state.pulumiLabels : undefined;
+            resourceInputs["tags"] = state ? state.tags : undefined;
             resourceInputs["tier"] = state ? state.tier : undefined;
             resourceInputs["zone"] = state ? state.zone : undefined;
         } else {
@@ -314,6 +323,7 @@ export class Instance extends pulumi.CustomResource {
             resourceInputs["performanceConfig"] = args ? args.performanceConfig : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["protocol"] = args ? args.protocol : undefined;
+            resourceInputs["tags"] = args ? args.tags : undefined;
             resourceInputs["tier"] = args ? args.tier : undefined;
             resourceInputs["zone"] = args ? args.zone : undefined;
             resourceInputs["createTime"] = undefined /*out*/;
@@ -404,6 +414,14 @@ export interface InstanceState {
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
+     * A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags.
+     * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when
+     * empty. The field is immutable and causes resource replacement when mutated. This field is only set at create time and
+     * modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the
+     * 'google_tags_tag_value' resource.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+    /**
      * The service tier of the instance.
      * Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE
      */
@@ -473,6 +491,14 @@ export interface InstanceArgs {
      * "NFS_V3" Possible values: ["NFS_V3", "NFS_V4_1"]
      */
     protocol?: pulumi.Input<string>;
+    /**
+     * A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags.
+     * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when
+     * empty. The field is immutable and causes resource replacement when mutated. This field is only set at create time and
+     * modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the
+     * 'google_tags_tag_value' resource.
+     */
+    tags?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * The service tier of the instance.
      * Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE

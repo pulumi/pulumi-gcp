@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  *
  * const project = gcp.organizations.getProject({});
  * const addressGroup1 = new gcp.networksecurity.AddressGroup("address_group_1", {
- *     name: "tf-address-group",
+ *     name: "address-group",
  *     parent: project.then(project => project.id),
  *     description: "Regional address group",
  *     location: "us-west2",
@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  *     description: "Tag key",
  *     parent: project.then(project => project.id),
  *     purpose: "GCE_FIREWALL",
- *     shortName: "tf-tag-key",
+ *     shortName: "tag-key",
  *     purposeData: {
  *         network: project.then(project => `${project.name}/default`),
  *     },
@@ -37,10 +37,14 @@ import * as utilities from "../utilities";
  * const secureTagValue1 = new gcp.tags.TagValue("secure_tag_value_1", {
  *     description: "Tag value",
  *     parent: secureTagKey1.id,
- *     shortName: "tf-tag-value",
+ *     shortName: "tag-value",
  * });
- * const region_network_firewall_policy_with_rules = new gcp.compute.RegionNetworkFirewallPolicyWithRules("region-network-firewall-policy-with-rules", {
- *     name: "tf-region-fw-policy-with-rules",
+ * const network = new gcp.compute.Network("network", {
+ *     name: "network",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const primary = new gcp.compute.RegionNetworkFirewallPolicyWithRules("primary", {
+ *     name: "fw-policy",
  *     region: "us-west2",
  *     description: "Terraform test",
  *     rules: [
@@ -51,13 +55,6 @@ import * as utilities from "../utilities";
  *             action: "allow",
  *             direction: "EGRESS",
  *             match: {
- *                 layer4Configs: [{
- *                     ipProtocol: "tcp",
- *                     ports: [
- *                         "8080",
- *                         "7070",
- *                     ],
- *                 }],
  *                 destIpRanges: ["11.100.0.1/32"],
  *                 destFqdns: [
  *                     "www.yyy.com",
@@ -72,6 +69,13 @@ import * as utilities from "../utilities";
  *                     "iplist-tor-exit-nodes",
  *                 ],
  *                 destAddressGroups: [addressGroup1.id],
+ *                 layer4Configs: [{
+ *                     ipProtocol: "tcp",
+ *                     ports: [
+ *                         "8080",
+ *                         "7070",
+ *                     ],
+ *                 }],
  *             },
  *             targetSecureTags: [{
  *                 name: secureTagValue1.id,
@@ -84,10 +88,8 @@ import * as utilities from "../utilities";
  *             enableLogging: false,
  *             action: "deny",
  *             direction: "INGRESS",
+ *             disabled: true,
  *             match: {
- *                 layer4Configs: [{
- *                     ipProtocol: "udp",
- *                 }],
  *                 srcIpRanges: ["0.0.0.0/0"],
  *                 srcFqdns: [
  *                     "www.abc.com",
@@ -105,8 +107,43 @@ import * as utilities from "../utilities";
  *                 srcSecureTags: [{
  *                     name: secureTagValue1.id,
  *                 }],
+ *                 layer4Configs: [{
+ *                     ipProtocol: "udp",
+ *                 }],
  *             },
- *             disabled: true,
+ *         },
+ *         {
+ *             description: "network scope rule 1",
+ *             ruleName: "network scope 1",
+ *             priority: 4000,
+ *             enableLogging: false,
+ *             action: "allow",
+ *             direction: "INGRESS",
+ *             match: {
+ *                 srcIpRanges: ["11.100.0.1/32"],
+ *                 srcNetworkScope: "VPC_NETWORKS",
+ *                 srcNetworks: [network.id],
+ *                 layer4Configs: [{
+ *                     ipProtocol: "tcp",
+ *                     ports: ["8080"],
+ *                 }],
+ *             },
+ *         },
+ *         {
+ *             description: "network scope rule 2",
+ *             ruleName: "network scope 2",
+ *             priority: 5000,
+ *             enableLogging: false,
+ *             action: "allow",
+ *             direction: "EGRESS",
+ *             match: {
+ *                 destIpRanges: ["0.0.0.0/0"],
+ *                 destNetworkScope: "NON_INTERNET",
+ *                 layer4Configs: [{
+ *                     ipProtocol: "tcp",
+ *                     ports: ["8080"],
+ *                 }],
+ *             },
  *         },
  *     ],
  * });

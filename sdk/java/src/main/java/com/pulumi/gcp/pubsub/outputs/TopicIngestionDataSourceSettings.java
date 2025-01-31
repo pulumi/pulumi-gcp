@@ -5,6 +5,7 @@ package com.pulumi.gcp.pubsub.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.gcp.pubsub.outputs.TopicIngestionDataSourceSettingsAwsKinesis;
+import com.pulumi.gcp.pubsub.outputs.TopicIngestionDataSourceSettingsAzureEventHubs;
 import com.pulumi.gcp.pubsub.outputs.TopicIngestionDataSourceSettingsCloudStorage;
 import com.pulumi.gcp.pubsub.outputs.TopicIngestionDataSourceSettingsPlatformLogsSettings;
 import java.util.Objects;
@@ -19,6 +20,12 @@ public final class TopicIngestionDataSourceSettings {
      * 
      */
     private @Nullable TopicIngestionDataSourceSettingsAwsKinesis awsKinesis;
+    /**
+     * @return Settings for ingestion from Azure Event Hubs.
+     * Structure is documented below.
+     * 
+     */
+    private @Nullable TopicIngestionDataSourceSettingsAzureEventHubs azureEventHubs;
     /**
      * @return Settings for ingestion from Cloud Storage.
      * Structure is documented below.
@@ -41,6 +48,14 @@ public final class TopicIngestionDataSourceSettings {
      */
     public Optional<TopicIngestionDataSourceSettingsAwsKinesis> awsKinesis() {
         return Optional.ofNullable(this.awsKinesis);
+    }
+    /**
+     * @return Settings for ingestion from Azure Event Hubs.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<TopicIngestionDataSourceSettingsAzureEventHubs> azureEventHubs() {
+        return Optional.ofNullable(this.azureEventHubs);
     }
     /**
      * @return Settings for ingestion from Cloud Storage.
@@ -70,12 +85,14 @@ public final class TopicIngestionDataSourceSettings {
     @CustomType.Builder
     public static final class Builder {
         private @Nullable TopicIngestionDataSourceSettingsAwsKinesis awsKinesis;
+        private @Nullable TopicIngestionDataSourceSettingsAzureEventHubs azureEventHubs;
         private @Nullable TopicIngestionDataSourceSettingsCloudStorage cloudStorage;
         private @Nullable TopicIngestionDataSourceSettingsPlatformLogsSettings platformLogsSettings;
         public Builder() {}
         public Builder(TopicIngestionDataSourceSettings defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.awsKinesis = defaults.awsKinesis;
+    	      this.azureEventHubs = defaults.azureEventHubs;
     	      this.cloudStorage = defaults.cloudStorage;
     	      this.platformLogsSettings = defaults.platformLogsSettings;
         }
@@ -84,6 +101,12 @@ public final class TopicIngestionDataSourceSettings {
         public Builder awsKinesis(@Nullable TopicIngestionDataSourceSettingsAwsKinesis awsKinesis) {
 
             this.awsKinesis = awsKinesis;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder azureEventHubs(@Nullable TopicIngestionDataSourceSettingsAzureEventHubs azureEventHubs) {
+
+            this.azureEventHubs = azureEventHubs;
             return this;
         }
         @CustomType.Setter
@@ -101,6 +124,7 @@ public final class TopicIngestionDataSourceSettings {
         public TopicIngestionDataSourceSettings build() {
             final var _resultValue = new TopicIngestionDataSourceSettings();
             _resultValue.awsKinesis = awsKinesis;
+            _resultValue.azureEventHubs = azureEventHubs;
             _resultValue.cloudStorage = cloudStorage;
             _resultValue.platformLogsSettings = platformLogsSettings;
             return _resultValue;

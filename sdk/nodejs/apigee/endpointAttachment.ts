@@ -13,43 +13,6 @@ import * as utilities from "../utilities";
  * * How-to Guides
  *     * [Creating an environment](https://cloud.google.com/apigee/docs/api-platform/get-started/create-environment)
  *
- * ## Example Usage
- *
- * ### Apigee Endpoint Attachment Basic
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- *
- * const current = gcp.organizations.getClientConfig({});
- * const apigeeNetwork = new gcp.compute.Network("apigee_network", {name: "apigee-network"});
- * const apigeeRange = new gcp.compute.GlobalAddress("apigee_range", {
- *     name: "apigee-range",
- *     purpose: "VPC_PEERING",
- *     addressType: "INTERNAL",
- *     prefixLength: 16,
- *     network: apigeeNetwork.id,
- * });
- * const apigeeVpcConnection = new gcp.servicenetworking.Connection("apigee_vpc_connection", {
- *     network: apigeeNetwork.id,
- *     service: "servicenetworking.googleapis.com",
- *     reservedPeeringRanges: [apigeeRange.name],
- * });
- * const apigeeOrg = new gcp.apigee.Organization("apigee_org", {
- *     analyticsRegion: "us-central1",
- *     projectId: current.then(current => current.project),
- *     authorizedNetwork: apigeeNetwork.id,
- * }, {
- *     dependsOn: [apigeeVpcConnection],
- * });
- * const apigeeEndpointAttachment = new gcp.apigee.EndpointAttachment("apigee_endpoint_attachment", {
- *     orgId: apigeeOrg.id,
- *     endpointAttachmentId: "test1",
- *     location: "{google_compute_service_attachment location}",
- *     serviceAttachment: "{google_compute_service_attachment id}",
- * });
- * ```
- *
  * ## Import
  *
  * EndpointAttachment can be imported using any of these accepted formats:

@@ -2817,6 +2817,25 @@ export namespace apigee {
         minNodeCount?: string;
     }
 
+    export interface EnvironmentProperties {
+        /**
+         * List of all properties in the object.
+         * Structure is documented below.
+         */
+        properties?: outputs.apigee.EnvironmentPropertiesProperty[];
+    }
+
+    export interface EnvironmentPropertiesProperty {
+        /**
+         * The property key.
+         */
+        name?: string;
+        /**
+         * The property value.
+         */
+        value?: string;
+    }
+
     export interface KeystoresAliasesKeyCertFileCertsInfo {
         /**
          * (Output)
@@ -3144,6 +3163,41 @@ export namespace apigee {
          * Indicates whether the cert should be matched against as a wildcard cert.
          */
         wildcardMatch?: boolean;
+    }
+
+}
+
+export namespace apihub {
+    export interface ApiHubInstanceConfig {
+        /**
+         * Optional. The Customer Managed Encryption Key (CMEK) used for data encryption.
+         * The CMEK name should follow the format of
+         * `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)`,
+         * where the location must match the instance location.
+         * If the CMEK is not provided, a GMEK will be created for the instance.
+         */
+        cmekKeyName?: string;
+        /**
+         * Optional. If true, the search will be disabled for the instance. The default value
+         * is false.
+         */
+        disableSearch?: boolean;
+        /**
+         * Optional. Encryption type for the region. If the encryption type is CMEK, the
+         * cmekKeyName must be provided. If no encryption type is provided,
+         * GMEK will be used.
+         * Possible values:
+         * ENCRYPTION_TYPE_UNSPECIFIED
+         * GMEK
+         * CMEK
+         */
+        encryptionType: string;
+        /**
+         * Optional. The name of the Vertex AI location where the data store is stored.
+         *
+         * - - -
+         */
+        vertexLocation?: string;
     }
 
 }
@@ -11570,6 +11624,34 @@ export namespace chronicle {
         scopeNames?: string[];
     }
 
+    export interface RetrohuntExecutionInterval {
+        /**
+         * Optional. Exclusive end of the interval.
+         * If specified, a Timestamp matching this interval will have to be before the
+         * end.
+         */
+        endTime?: string;
+        /**
+         * Optional. Inclusive start of the interval.
+         * If specified, a Timestamp matching this interval will have to be the same
+         * or after the start.
+         */
+        startTime?: string;
+    }
+
+    export interface RetrohuntProcessInterval {
+        /**
+         * Exclusive end of the interval.
+         *
+         * - - -
+         */
+        endTime: string;
+        /**
+         * Inclusive start of the interval.
+         */
+        startTime: string;
+    }
+
     export interface RuleCompilationDiagnostic {
         /**
          * (Output)
@@ -18435,6 +18517,45 @@ export namespace cloudrunv2 {
         useDefault: boolean;
     }
 
+    export interface GetServiceBuildConfig {
+        /**
+         * The base image used to build the function.
+         */
+        baseImage: string;
+        /**
+         * Sets whether the function will receive automatic base image updates.
+         */
+        enableAutomaticUpdates: boolean;
+        /**
+         * User-provided build-time environment variables for the function.
+         */
+        environmentVariables: {[key: string]: string};
+        /**
+         * The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix, if not specified. For backward compatibility, if function with given name is not found, then the system will try to use function named "function".
+         */
+        functionTarget: string;
+        /**
+         * Artifact Registry URI to store the built image.
+         */
+        imageUri: string;
+        /**
+         * The name of the Cloud Run v2 Service.
+         */
+        name: string;
+        /**
+         * Service account to be used for building the container. The format of this field is 'projects/{projectId}/serviceAccounts/{serviceAccountEmail}'.
+         */
+        serviceAccount: string;
+        /**
+         * The Cloud Storage bucket URI where the function source code is located.
+         */
+        sourceLocation: string;
+        /**
+         * Name of the Cloud Build Custom Worker Pool that should be used to build the Cloud Run function. The format of this field is 'projects/{project}/locations/{region}/workerPools/{workerPool}' where {project} and {region} are the project id and region respectively where the worker pool is defined and {workerPool} is the short name of the worker pool.
+         */
+        workerPool: string;
+    }
+
     export interface GetServiceCondition {
         /**
          * A reason for the execution condition.
@@ -19560,6 +19681,46 @@ export namespace cloudrunv2 {
          * If True, indicates to use the default project's binary authorization policy. If False, binary authorization will be disabled.
          */
         useDefault?: boolean;
+    }
+
+    export interface ServiceBuildConfig {
+        /**
+         * The base image used to build the function.
+         */
+        baseImage?: string;
+        /**
+         * Sets whether the function will receive automatic base image updates.
+         */
+        enableAutomaticUpdates?: boolean;
+        /**
+         * User-provided build-time environment variables for the function.
+         */
+        environmentVariables?: {[key: string]: string};
+        /**
+         * The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix, if not specified. For backward compatibility, if function with given name is not found, then the system will try to use function named "function".
+         */
+        functionTarget?: string;
+        /**
+         * Artifact Registry URI to store the built image.
+         */
+        imageUri?: string;
+        /**
+         * (Output)
+         * The Cloud Build name of the latest successful deployment of the function.
+         */
+        name: string;
+        /**
+         * Service account to be used for building the container. The format of this field is `projects/{projectId}/serviceAccounts/{serviceAccountEmail}`.
+         */
+        serviceAccount?: string;
+        /**
+         * The Cloud Storage bucket URI where the function source code is located.
+         */
+        sourceLocation?: string;
+        /**
+         * Name of the Cloud Build Custom Worker Pool that should be used to build the Cloud Run function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where {project} and {region} are the project id and region respectively where the worker pool is defined and {workerPool} is the short name of the worker pool.
+         */
+        workerPool?: string;
     }
 
     export interface ServiceCondition {
@@ -20700,6 +20861,13 @@ export namespace cloudtasks {
 }
 
 export namespace colab {
+    export interface RuntimeNotebookRuntimeTemplateRef {
+        /**
+         * The resource name of the NotebookRuntimeTemplate based on which a NotebookRuntime will be created.
+         */
+        notebookRuntimeTemplate: string;
+    }
+
     export interface RuntimeTemplateDataPersistentDiskSpec {
         /**
          * The disk size of the runtime in GB. If specified, the diskType must also be specified. The minimum size is 10GB and the maximum is 65536GB.
@@ -20723,6 +20891,18 @@ export namespace colab {
          * Disable end user credential access for the runtime.
          */
         eucDisabled?: boolean;
+    }
+
+    export interface RuntimeTemplateIamBindingCondition {
+        description?: string;
+        expression: string;
+        title: string;
+    }
+
+    export interface RuntimeTemplateIamMemberCondition {
+        description?: string;
+        expression: string;
+        title: string;
     }
 
     export interface RuntimeTemplateIdleShutdownConfig {
@@ -22989,6 +23169,11 @@ export namespace compute {
          */
         destIpRanges?: string[];
         /**
+         * Network scope of the traffic destination.
+         * Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+         */
+        destNetworkScope?: string;
+        /**
          * Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of dest region codes allowed is 5000.
          */
         destRegionCodes?: string[];
@@ -23013,6 +23198,15 @@ export namespace compute {
          * CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
          */
         srcIpRanges?: string[];
+        /**
+         * Network scope of the traffic source.
+         * Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+         */
+        srcNetworkScope?: string;
+        /**
+         * Networks of the traffic source. It can be either a full or partial url.
+         */
+        srcNetworks?: string[];
         /**
          * Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of source region codes allowed is 5000.
          */
@@ -23294,6 +23488,11 @@ export namespace compute {
          */
         destIpRanges?: string[];
         /**
+         * Network scope of the traffic destination.
+         * Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+         */
+        destNetworkScope?: string;
+        /**
          * Region codes whose IP addresses will be used to match for destination
          * of traffic. Should be specified as 2 letter country code defined as per
          * ISO 3166 alpha-2 country codes. ex."US"
@@ -23328,6 +23527,15 @@ export namespace compute {
          * INGRESS rules.
          */
         srcIpRanges?: string[];
+        /**
+         * Network scope of the traffic source.
+         * Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+         */
+        srcNetworkScope?: string;
+        /**
+         * Networks of the traffic source. It can be either a full or partial url.
+         */
+        srcNetworks?: string[];
         /**
          * Region codes whose IP addresses will be used to match for source
          * of traffic. Should be specified as 2 letter country code defined as per
@@ -30672,6 +30880,30 @@ export namespace compute {
         type: string;
     }
 
+    export interface InstanceTemplateIamBindingCondition {
+        description?: string;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: string;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
+        title: string;
+    }
+
+    export interface InstanceTemplateIamMemberCondition {
+        description?: string;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: string;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
+        title: string;
+    }
+
     export interface InstanceTemplateNetworkInterface {
         /**
          * Access configurations, i.e. IPs via which this
@@ -31270,6 +31502,11 @@ export namespace compute {
          */
         destIpRanges?: string[];
         /**
+         * Network scope of the traffic destination.
+         * Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+         */
+        destNetworkScope?: string;
+        /**
          * Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of dest region codes allowed is 5000.
          */
         destRegionCodes?: string[];
@@ -31294,6 +31531,15 @@ export namespace compute {
          * CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
          */
         srcIpRanges?: string[];
+        /**
+         * Network scope of the traffic source.
+         * Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+         */
+        srcNetworkScope?: string;
+        /**
+         * Networks of the traffic source. It can be either a full or partial url.
+         */
+        srcNetworks?: string[];
         /**
          * Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of source region codes allowed is 5000.
          */
@@ -31663,6 +31909,11 @@ export namespace compute {
          */
         destIpRanges?: string[];
         /**
+         * Network scope of the traffic destination.
+         * Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+         */
+        destNetworkScope?: string;
+        /**
          * Region codes whose IP addresses will be used to match for destination
          * of traffic. Should be specified as 2 letter country code defined as per
          * ISO 3166 alpha-2 country codes. ex."US"
@@ -31694,6 +31945,15 @@ export namespace compute {
          * INGRESS rules.
          */
         srcIpRanges?: string[];
+        /**
+         * Network scope of the traffic source.
+         * Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+         */
+        srcNetworkScope?: string;
+        /**
+         * Networks of the traffic source. It can be either a full or partial url.
+         */
+        srcNetworks?: string[];
         /**
          * Region codes whose IP addresses will be used to match for source
          * of traffic. Should be specified as 2 letter country code defined as per
@@ -34260,6 +34520,11 @@ export namespace compute {
          */
         destIpRanges?: string[];
         /**
+         * Network scope of the traffic destination.
+         * Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+         */
+        destNetworkScope?: string;
+        /**
          * Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of dest region codes allowed is 5000.
          */
         destRegionCodes?: string[];
@@ -34284,6 +34549,15 @@ export namespace compute {
          * CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
          */
         srcIpRanges?: string[];
+        /**
+         * Network scope of the traffic source.
+         * Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+         */
+        srcNetworkScope?: string;
+        /**
+         * Networks of the traffic source. It can be either a full or partial url.
+         */
+        srcNetworks?: string[];
         /**
          * Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of source region codes allowed is 5000.
          */
@@ -34653,6 +34927,11 @@ export namespace compute {
          */
         destIpRanges?: string[];
         /**
+         * Network scope of the traffic destination.
+         * Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+         */
+        destNetworkScope?: string;
+        /**
          * Region codes whose IP addresses will be used to match for destination
          * of traffic. Should be specified as 2 letter country code defined as per
          * ISO 3166 alpha-2 country codes. ex."US"
@@ -34684,6 +34963,15 @@ export namespace compute {
          * INGRESS rules.
          */
         srcIpRanges?: string[];
+        /**
+         * Network scope of the traffic source.
+         * Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+         */
+        srcNetworkScope?: string;
+        /**
+         * Networks of the traffic source. It can be either a full or partial url.
+         */
+        srcNetworks?: string[];
         /**
          * Region codes whose IP addresses will be used to match for source
          * of traffic. Should be specified as 2 letter country code defined as per
@@ -73352,6 +73640,23 @@ export namespace kms {
         protectionLevel: string;
     }
 
+    export interface GetKeyHandlesKeyHandle {
+        /**
+         * The identifier of the KMS Key created for the KeyHandle. Its format is `projects/{projectId}/locations/{location}/keyRings/{keyRingName}/cryptoKeys/{cryptoKeyName}`.
+         */
+        kmsKey: string;
+        /**
+         * The name of the KeyHandle. Its format is `projects/{projectId}/locations/{location}/keyHandles/{keyHandleName}`.
+         */
+        name: string;
+        /**
+         * The resource type by which to filter KeyHandle e.g. {SERVICE}.googleapis.com/{TYPE}. See documentation for supported resource types. 
+         *
+         * - - -
+         */
+        resourceTypeSelector: string;
+    }
+
     export interface GetKeyRingsKeyRing {
         id: string;
         name: string;
@@ -77407,6 +77712,22 @@ export namespace networksecurity {
          * OUT_OF_SYNC
          */
         state: string;
+    }
+
+    export interface SecurityProfileCustomInterceptProfile {
+        /**
+         * The Intercept Endpoint Group to which matching traffic should be intercepted.
+         * Format: projects/{project_id}/locations/global/interceptEndpointGroups/{endpoint_group_id}
+         */
+        interceptEndpointGroup: string;
+    }
+
+    export interface SecurityProfileCustomMirroringProfile {
+        /**
+         * The Mirroring Endpoint Group to which matching traffic should be mirrored.
+         * Format: projects/{project_id}/locations/global/mirroringEndpointGroups/{endpoint_group_id}
+         */
+        mirroringEndpointGroup: string;
     }
 
     export interface SecurityProfileThreatPreventionProfile {
@@ -83129,6 +83450,29 @@ export namespace organizations {
         title: string;
     }
 
+    export interface GetSOrganization {
+        /**
+         * The Google for Work customer ID of the Organization.
+         */
+        directoryCustomerId: string;
+        /**
+         * A human-readable string that refers to the Organization in the Google Cloud console. The string will be set to the primary domain (for example, `"google.com"`) of the G Suite customer that owns the organization.
+         */
+        displayName: string;
+        /**
+         * The Organization's current lifecycle state.
+         */
+        lifecycleState: string;
+        /**
+         * The resource name of the Organization in the form `organizations/{organization_id}`.
+         */
+        name: string;
+        /**
+         * The Organization ID.
+         */
+        orgId: string;
+    }
+
     export interface IAMBindingCondition {
         description?: string;
         expression: string;
@@ -85302,6 +85646,23 @@ export namespace osconfig {
 }
 
 export namespace parametermanager {
+    export interface GetParameterPolicyMember {
+        /**
+         * IAM policy binding member referring to a Google Cloud resource by user-assigned name. If a
+         * resource is deleted and recreated with the same name, the binding will be applicable to the
+         * new resource. Format:
+         * 'principal://parametermanager.googleapis.com/projects/{{project}}/name/locations/global/parameters/{{parameter_id}}'
+         */
+        iamPolicyNamePrincipal: string;
+        /**
+         * IAM policy binding member referring to a Google Cloud resource by system-assigned unique identifier.
+         * If a resource is deleted and recreated with the same name, the binding will not be applicable to the
+         * new resource. Format:
+         * 'principal://parametermanager.googleapis.com/projects/{{project}}/uid/locations/global/parameters/{{uid}}'
+         */
+        iamPolicyUidPrincipal: string;
+    }
+
     export interface GetRegionalParameterPolicyMember {
         /**
          * IAM policy binding member referring to a Google Cloud resource by user-assigned name. If a resource is
@@ -85314,6 +85675,67 @@ export namespace parametermanager {
          * a resource is deleted and recreated with the same name, the binding will not be applicable to the new
          * resource. Format:
          * 'principal://parametermanager.googleapis.com/projects/{{project}}/uid/locations/{{location}}/parameters/{{uid}}'
+         */
+        iamPolicyUidPrincipal: string;
+    }
+
+    export interface GetRegionalParametersParameter {
+        /**
+         * The time at which the regional parameter was created.
+         */
+        createTime: string;
+        effectiveLabels: {[key: string]: string};
+        /**
+         * The format type of the regional parameter.
+         */
+        format: string;
+        /**
+         * The labels assigned to the regional parameter.
+         */
+        labels: {[key: string]: string};
+        /**
+         * The location of regional parameter.
+         */
+        location: string;
+        /**
+         * The resource name of the regional parameter. Format: `projects/{{project}}/locations/{{location}}/parameters/{{parameter_id}}`
+         */
+        name: string;
+        /**
+         * The unique name of the resource.
+         */
+        parameterId: string;
+        /**
+         * An object containing a unique resource identity tied to the regional parameter. Structure is documented below.
+         */
+        policyMembers: outputs.parametermanager.GetRegionalParametersParameterPolicyMember[];
+        /**
+         * The ID of the project.
+         */
+        project: string;
+        /**
+         * The combination of labels configured directly on the resource
+         *  and default labels configured on the provider.
+         */
+        pulumiLabels: {[key: string]: string};
+        /**
+         * The time at which the regional parameter was updated.
+         */
+        updateTime: string;
+    }
+
+    export interface GetRegionalParametersParameterPolicyMember {
+        /**
+         * AM policy binding member referring to a Google Cloud resource by user-assigned name. If a resource is deleted and recreated with the same name, the binding will be applicable to the
+         * new resource. Format:
+         * `principal://parametermanager.googleapis.com/projects/{{project}}/name/locations/{{location}}/parameters/{{parameter_id}}`
+         */
+        iamPolicyNamePrincipal: string;
+        /**
+         * IAM policy binding member referring to a Google Cloud resource by system-assigned unique identifier.
+         * If a resource is deleted and recreated with the same name, the binding will not be applicable to the
+         * new resource. Format:
+         * `principal://parametermanager.googleapis.com/projects/{{project}}/uid/locations/{{location}}/parameters/{{uid}}`
          */
         iamPolicyUidPrincipal: string;
     }
@@ -86128,6 +86550,10 @@ export namespace pubsub {
          */
         awsKineses: outputs.pubsub.GetTopicIngestionDataSourceSettingAwsKinese[];
         /**
+         * Settings for ingestion from Azure Event Hubs.
+         */
+        azureEventHubs: outputs.pubsub.GetTopicIngestionDataSourceSettingAzureEventHub[];
+        /**
          * Settings for ingestion from Cloud Storage.
          */
         cloudStorages: outputs.pubsub.GetTopicIngestionDataSourceSettingCloudStorage[];
@@ -86162,6 +86588,39 @@ export namespace pubsub {
          * The Kinesis stream ARN to ingest data from.
          */
         streamArn: string;
+    }
+
+    export interface GetTopicIngestionDataSourceSettingAzureEventHub {
+        /**
+         * The Azure event hub client ID to use for ingestion.
+         */
+        clientId: string;
+        /**
+         * The Azure event hub to ingest data from.
+         */
+        eventHub: string;
+        /**
+         * The GCP service account to be used for Federated Identity authentication
+         * with Azure (via a 'AssumeRoleWithWebIdentity' call for the provided
+         * role).
+         */
+        gcpServiceAccount: string;
+        /**
+         * The Azure event hub namespace to ingest data from.
+         */
+        namespace: string;
+        /**
+         * The name of the resource group within an Azure subscription.
+         */
+        resourceGroup: string;
+        /**
+         * The Azure event hub subscription ID to use for ingestion.
+         */
+        subscriptionId: string;
+        /**
+         * The Azure event hub tenant ID to use for ingestion.
+         */
+        tenantId: string;
     }
 
     export interface GetTopicIngestionDataSourceSettingCloudStorage {
@@ -86236,6 +86695,13 @@ export namespace pubsub {
          * and is not a valid configuration.
          */
         allowedPersistenceRegions: string[];
+        /**
+         * If true, 'allowedPersistenceRegions' is also used to enforce in-transit
+         * guarantees for messages. That is, Pub/Sub will fail topics.publish
+         * operations on this topic and subscribe operations on any subscription
+         * attached to this topic in any region that is not in 'allowedPersistenceRegions'.
+         */
+        enforceInTransit: boolean;
     }
 
     export interface GetTopicSchemaSetting {
@@ -86564,6 +87030,11 @@ export namespace pubsub {
          */
         awsKinesis?: outputs.pubsub.TopicIngestionDataSourceSettingsAwsKinesis;
         /**
+         * Settings for ingestion from Azure Event Hubs.
+         * Structure is documented below.
+         */
+        azureEventHubs?: outputs.pubsub.TopicIngestionDataSourceSettingsAzureEventHubs;
+        /**
          * Settings for ingestion from Cloud Storage.
          * Structure is documented below.
          */
@@ -86600,6 +87071,39 @@ export namespace pubsub {
          * The Kinesis stream ARN to ingest data from.
          */
         streamArn: string;
+    }
+
+    export interface TopicIngestionDataSourceSettingsAzureEventHubs {
+        /**
+         * The Azure event hub client ID to use for ingestion.
+         */
+        clientId?: string;
+        /**
+         * The Azure event hub to ingest data from.
+         */
+        eventHub?: string;
+        /**
+         * The GCP service account to be used for Federated Identity authentication
+         * with Azure (via a `AssumeRoleWithWebIdentity` call for the provided
+         * role).
+         */
+        gcpServiceAccount?: string;
+        /**
+         * The Azure event hub namespace to ingest data from.
+         */
+        namespace?: string;
+        /**
+         * The name of the resource group within an Azure subscription.
+         */
+        resourceGroup?: string;
+        /**
+         * The Azure event hub subscription ID to use for ingestion.
+         */
+        subscriptionId?: string;
+        /**
+         * The Azure event hub tenant ID to use for ingestion.
+         */
+        tenantId?: string;
     }
 
     export interface TopicIngestionDataSourceSettingsCloudStorage {
@@ -86677,6 +87181,13 @@ export namespace pubsub {
          * and is not a valid configuration.
          */
         allowedPersistenceRegions: string[];
+        /**
+         * If true, `allowedPersistenceRegions` is also used to enforce in-transit
+         * guarantees for messages. That is, Pub/Sub will fail topics.publish
+         * operations on this topic and subscribe operations on any subscription
+         * attached to this topic in any region that is not in `allowedPersistenceRegions`.
+         */
+        enforceInTransit?: boolean;
     }
 
     export interface TopicSchemaSettings {
@@ -87040,8 +87551,6 @@ export namespace redis {
          * Required. The consumer network where the network address of
          * the discovery endpoint will be reserved, in the form of
          * projects/{network_project_id_or_number}/global/networks/{network_id}.
-         *
-         * - - -
          */
         network: string;
     }
@@ -87069,6 +87578,19 @@ export namespace redis {
         pscConnectionId?: string;
     }
 
+    export interface ClusterPscServiceAttachment {
+        /**
+         * (Output)
+         * Type of a PSC connection targeting this service attachment.
+         */
+        connectionType: string;
+        /**
+         * (Output)
+         * Service attachment URI which your self-created PscConnection should use as
+         */
+        serviceAttachment: string;
+    }
+
     export interface ClusterStateInfo {
         /**
          * A nested object resource.
@@ -87086,6 +87608,70 @@ export namespace redis {
          * Target number of shards for redis cluster.
          */
         targetShardCount?: number;
+    }
+
+    export interface ClusterUserCreatedConnectionsClusterEndpoint {
+        /**
+         * Structure is documented below.
+         */
+        connections?: outputs.redis.ClusterUserCreatedConnectionsClusterEndpointConnection[];
+    }
+
+    export interface ClusterUserCreatedConnectionsClusterEndpointConnection {
+        /**
+         * Detailed information of a PSC connection that is created by the customer
+         * who owns the cluster.
+         * Structure is documented below.
+         */
+        pscConnection?: outputs.redis.ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnection;
+    }
+
+    export interface ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnection {
+        /**
+         * The IP allocated on the consumer network for the PSC forwarding rule.
+         */
+        address: string;
+        /**
+         * (Output)
+         * Output Only. Type of a PSC Connection.
+         * Possible values:
+         * CONNECTION_TYPE_DISCOVERY
+         * CONNECTION_TYPE_PRIMARY
+         * CONNECTION_TYPE_READER
+         */
+        connectionType: string;
+        /**
+         * The URI of the consumer side forwarding rule.
+         * Format:
+         * projects/{project}/regions/{region}/forwardingRules/{forwarding_rule}
+         */
+        forwardingRule: string;
+        /**
+         * The consumer network where the IP address resides, in the form of
+         * projects/{project_id}/global/networks/{network_id}.
+         */
+        network: string;
+        /**
+         * The consumer projectId where the forwarding rule is created from.
+         */
+        projectId: string;
+        /**
+         * The PSC connection id of the forwarding rule connected to the
+         * service attachment.
+         */
+        pscConnectionId: string;
+        /**
+         * (Output)
+         * Output Only. The status of the PSC connection: whether a connection exists and ACTIVE or it no longer exists.
+         * Possible values:
+         * ACTIVE
+         * NOT_FOUND
+         */
+        pscConnectionStatus: string;
+        /**
+         * The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
+         */
+        serviceAttachment: string;
     }
 
     export interface ClusterZoneDistributionConfig {

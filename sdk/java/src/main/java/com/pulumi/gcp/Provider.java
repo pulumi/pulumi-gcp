@@ -65,6 +65,12 @@ public class Provider extends com.pulumi.resources.ProviderResource {
     public Output<Optional<String>> apigeeCustomEndpoint() {
         return Codegen.optional(this.apigeeCustomEndpoint);
     }
+    @Export(name="apihubCustomEndpoint", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> apihubCustomEndpoint;
+
+    public Output<Optional<String>> apihubCustomEndpoint() {
+        return Codegen.optional(this.apihubCustomEndpoint);
+    }
     @Export(name="apikeysCustomEndpoint", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> apikeysCustomEndpoint;
 

@@ -76,6 +76,13 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.apigeeCustomEndpoint);
     }
 
+    @Import(name="apihubCustomEndpoint")
+    private @Nullable Output<String> apihubCustomEndpoint;
+
+    public Optional<Output<String>> apihubCustomEndpoint() {
+        return Optional.ofNullable(this.apihubCustomEndpoint);
+    }
+
     @Import(name="apikeysCustomEndpoint")
     private @Nullable Output<String> apikeysCustomEndpoint;
 
@@ -1319,6 +1326,7 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
         this.alloydbCustomEndpoint = $.alloydbCustomEndpoint;
         this.apiGatewayCustomEndpoint = $.apiGatewayCustomEndpoint;
         this.apigeeCustomEndpoint = $.apigeeCustomEndpoint;
+        this.apihubCustomEndpoint = $.apihubCustomEndpoint;
         this.apikeysCustomEndpoint = $.apikeysCustomEndpoint;
         this.appEngineCustomEndpoint = $.appEngineCustomEndpoint;
         this.apphubCustomEndpoint = $.apphubCustomEndpoint;
@@ -1585,6 +1593,15 @@ public final class ProviderArgs extends com.pulumi.resources.ResourceArgs {
 
         public Builder apigeeCustomEndpoint(String apigeeCustomEndpoint) {
             return apigeeCustomEndpoint(Output.of(apigeeCustomEndpoint));
+        }
+
+        public Builder apihubCustomEndpoint(@Nullable Output<String> apihubCustomEndpoint) {
+            $.apihubCustomEndpoint = apihubCustomEndpoint;
+            return this;
+        }
+
+        public Builder apihubCustomEndpoint(String apihubCustomEndpoint) {
+            return apihubCustomEndpoint(Output.of(apihubCustomEndpoint));
         }
 
         public Builder apikeysCustomEndpoint(@Nullable Output<String> apikeysCustomEndpoint) {

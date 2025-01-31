@@ -6,6 +6,7 @@ package com.pulumi.gcp.apigee.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.apigee.inputs.EnvironmentNodeConfigArgs;
+import com.pulumi.gcp.apigee.inputs.EnvironmentPropertiesArgs;
 import java.lang.String;
 import java.util.Objects;
 import java.util.Optional;
@@ -163,6 +164,23 @@ public final class EnvironmentState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Key-value pairs that may be used for customizing the environment.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="properties")
+    private @Nullable Output<EnvironmentPropertiesArgs> properties;
+
+    /**
+     * @return Key-value pairs that may be used for customizing the environment.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<EnvironmentPropertiesArgs>> properties() {
+        return Optional.ofNullable(this.properties);
+    }
+
+    /**
      * Types that can be selected for an Environment. Each of the types are
      * limited by capability and capacity. Refer to Apigee&#39;s public documentation
      * to understand about each of these types in details.
@@ -196,6 +214,7 @@ public final class EnvironmentState extends com.pulumi.resources.ResourceArgs {
         this.name = $.name;
         this.nodeConfig = $.nodeConfig;
         this.orgId = $.orgId;
+        this.properties = $.properties;
         this.type = $.type;
     }
 
@@ -409,6 +428,29 @@ public final class EnvironmentState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder orgId(String orgId) {
             return orgId(Output.of(orgId));
+        }
+
+        /**
+         * @param properties Key-value pairs that may be used for customizing the environment.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder properties(@Nullable Output<EnvironmentPropertiesArgs> properties) {
+            $.properties = properties;
+            return this;
+        }
+
+        /**
+         * @param properties Key-value pairs that may be used for customizing the environment.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder properties(EnvironmentPropertiesArgs properties) {
+            return properties(Output.of(properties));
         }
 
         /**

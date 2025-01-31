@@ -64,6 +64,23 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
     }
 
     /**
+     * Network scope of the traffic destination.
+     * Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+     * 
+     */
+    @Import(name="destNetworkScope")
+    private @Nullable Output<String> destNetworkScope;
+
+    /**
+     * @return Network scope of the traffic destination.
+     * Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+     * 
+     */
+    public Optional<Output<String>> destNetworkScope() {
+        return Optional.ofNullable(this.destNetworkScope);
+    }
+
+    /**
      * Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex.&#34;US&#34; Maximum number of dest region codes allowed is 5000.
      * 
      */
@@ -156,6 +173,38 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
     }
 
     /**
+     * Network scope of the traffic source.
+     * Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+     * 
+     */
+    @Import(name="srcNetworkScope")
+    private @Nullable Output<String> srcNetworkScope;
+
+    /**
+     * @return Network scope of the traffic source.
+     * Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+     * 
+     */
+    public Optional<Output<String>> srcNetworkScope() {
+        return Optional.ofNullable(this.srcNetworkScope);
+    }
+
+    /**
+     * Networks of the traffic source. It can be either a full or partial url.
+     * 
+     */
+    @Import(name="srcNetworks")
+    private @Nullable Output<List<String>> srcNetworks;
+
+    /**
+     * @return Networks of the traffic source. It can be either a full or partial url.
+     * 
+     */
+    public Optional<Output<List<String>>> srcNetworks() {
+        return Optional.ofNullable(this.srcNetworks);
+    }
+
+    /**
      * Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex.&#34;US&#34; Maximum number of source region codes allowed is 5000.
      * 
      */
@@ -195,12 +244,15 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
         this.destAddressGroups = $.destAddressGroups;
         this.destFqdns = $.destFqdns;
         this.destIpRanges = $.destIpRanges;
+        this.destNetworkScope = $.destNetworkScope;
         this.destRegionCodes = $.destRegionCodes;
         this.destThreatIntelligences = $.destThreatIntelligences;
         this.layer4Configs = $.layer4Configs;
         this.srcAddressGroups = $.srcAddressGroups;
         this.srcFqdns = $.srcFqdns;
         this.srcIpRanges = $.srcIpRanges;
+        this.srcNetworkScope = $.srcNetworkScope;
+        this.srcNetworks = $.srcNetworks;
         this.srcRegionCodes = $.srcRegionCodes;
         this.srcThreatIntelligences = $.srcThreatIntelligences;
     }
@@ -314,6 +366,29 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
          */
         public Builder destIpRanges(String... destIpRanges) {
             return destIpRanges(List.of(destIpRanges));
+        }
+
+        /**
+         * @param destNetworkScope Network scope of the traffic destination.
+         * Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder destNetworkScope(@Nullable Output<String> destNetworkScope) {
+            $.destNetworkScope = destNetworkScope;
+            return this;
+        }
+
+        /**
+         * @param destNetworkScope Network scope of the traffic destination.
+         * Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder destNetworkScope(String destNetworkScope) {
+            return destNetworkScope(Output.of(destNetworkScope));
         }
 
         /**
@@ -503,6 +578,60 @@ public final class FirewallPolicyRuleMatchArgs extends com.pulumi.resources.Reso
          */
         public Builder srcIpRanges(String... srcIpRanges) {
             return srcIpRanges(List.of(srcIpRanges));
+        }
+
+        /**
+         * @param srcNetworkScope Network scope of the traffic source.
+         * Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder srcNetworkScope(@Nullable Output<String> srcNetworkScope) {
+            $.srcNetworkScope = srcNetworkScope;
+            return this;
+        }
+
+        /**
+         * @param srcNetworkScope Network scope of the traffic source.
+         * Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder srcNetworkScope(String srcNetworkScope) {
+            return srcNetworkScope(Output.of(srcNetworkScope));
+        }
+
+        /**
+         * @param srcNetworks Networks of the traffic source. It can be either a full or partial url.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder srcNetworks(@Nullable Output<List<String>> srcNetworks) {
+            $.srcNetworks = srcNetworks;
+            return this;
+        }
+
+        /**
+         * @param srcNetworks Networks of the traffic source. It can be either a full or partial url.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder srcNetworks(List<String> srcNetworks) {
+            return srcNetworks(Output.of(srcNetworks));
+        }
+
+        /**
+         * @param srcNetworks Networks of the traffic source. It can be either a full or partial url.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder srcNetworks(String... srcNetworks) {
+            return srcNetworks(List.of(srcNetworks));
         }
 
         /**

@@ -7,7 +7,33 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * The resource for managing Repository Group for Gemini Code Assist.
+ *
+ * To get more information about RepositoryGroup, see:
+ *
+ * * [API documentation](https://cloud.google.com/gemini/docs/api/reference/rest/v1/projects.locations.codeRepositoryIndexes.repositoryGroups)
+ *
  * ## Example Usage
+ *
+ * ### Gemini Repository Group Basic
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const example = new gcp.gemini.RepositoryGroup("example", {
+ *     location: "us-central1",
+ *     codeRepositoryIndex: "example-cri",
+ *     repositoryGroupId: "example-repository-group",
+ *     repositories: [{
+ *         resource: "projects/example-project/locations/us-central1/connections/example-connection/gitRepositoryLinks/example-repo",
+ *         branchPattern: "main",
+ *     }],
+ *     labels: {
+ *         label1: "value1",
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -66,7 +92,7 @@ export class RepositoryGroup extends pulumi.CustomResource {
      */
     public readonly codeRepositoryIndex!: pulumi.Output<string>;
     /**
-     * Output only. Create time stamp
+     * Output only. Create time stamp.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
     /**
@@ -74,7 +100,7 @@ export class RepositoryGroup extends pulumi.CustomResource {
      */
     public /*out*/ readonly effectiveLabels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * Optional. Labels as key value pairs **Note**: This field is non-authoritative, and will only manage the labels present
+     * Optional. Labels as key value pairs. **Note**: This field is non-authoritative, and will only manage the labels present
      * in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
     public readonly labels!: pulumi.Output<{[key: string]: string} | undefined>;
@@ -83,7 +109,7 @@ export class RepositoryGroup extends pulumi.CustomResource {
      */
     public readonly location!: pulumi.Output<string>;
     /**
-     * Immutable. Identifier. name of resource
+     * Immutable. Identifier. Name of Repository Group.
      */
     public /*out*/ readonly name!: pulumi.Output<string>;
     public readonly project!: pulumi.Output<string>;
@@ -93,7 +119,7 @@ export class RepositoryGroup extends pulumi.CustomResource {
      */
     public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
-     * Required. List of repositories to group
+     * Required. List of repositories to group.
      * Structure is documented below.
      */
     public readonly repositories!: pulumi.Output<outputs.gemini.RepositoryGroupRepository[]>;
@@ -102,7 +128,7 @@ export class RepositoryGroup extends pulumi.CustomResource {
      */
     public readonly repositoryGroupId!: pulumi.Output<string>;
     /**
-     * Output only. Update time stamp
+     * Output only. Update time stamp.
      */
     public /*out*/ readonly updateTime!: pulumi.Output<string>;
 
@@ -172,7 +198,7 @@ export interface RepositoryGroupState {
      */
     codeRepositoryIndex?: pulumi.Input<string>;
     /**
-     * Output only. Create time stamp
+     * Output only. Create time stamp.
      */
     createTime?: pulumi.Input<string>;
     /**
@@ -180,7 +206,7 @@ export interface RepositoryGroupState {
      */
     effectiveLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Optional. Labels as key value pairs **Note**: This field is non-authoritative, and will only manage the labels present
+     * Optional. Labels as key value pairs. **Note**: This field is non-authoritative, and will only manage the labels present
      * in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -189,7 +215,7 @@ export interface RepositoryGroupState {
      */
     location?: pulumi.Input<string>;
     /**
-     * Immutable. Identifier. name of resource
+     * Immutable. Identifier. Name of Repository Group.
      */
     name?: pulumi.Input<string>;
     project?: pulumi.Input<string>;
@@ -199,7 +225,7 @@ export interface RepositoryGroupState {
      */
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
-     * Required. List of repositories to group
+     * Required. List of repositories to group.
      * Structure is documented below.
      */
     repositories?: pulumi.Input<pulumi.Input<inputs.gemini.RepositoryGroupRepository>[]>;
@@ -208,7 +234,7 @@ export interface RepositoryGroupState {
      */
     repositoryGroupId?: pulumi.Input<string>;
     /**
-     * Output only. Update time stamp
+     * Output only. Update time stamp.
      */
     updateTime?: pulumi.Input<string>;
 }
@@ -222,7 +248,7 @@ export interface RepositoryGroupArgs {
      */
     codeRepositoryIndex: pulumi.Input<string>;
     /**
-     * Optional. Labels as key value pairs **Note**: This field is non-authoritative, and will only manage the labels present
+     * Optional. Labels as key value pairs. **Note**: This field is non-authoritative, and will only manage the labels present
      * in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
      */
     labels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
@@ -232,7 +258,7 @@ export interface RepositoryGroupArgs {
     location: pulumi.Input<string>;
     project?: pulumi.Input<string>;
     /**
-     * Required. List of repositories to group
+     * Required. List of repositories to group.
      * Structure is documented below.
      */
     repositories: pulumi.Input<pulumi.Input<inputs.gemini.RepositoryGroupRepository>[]>;

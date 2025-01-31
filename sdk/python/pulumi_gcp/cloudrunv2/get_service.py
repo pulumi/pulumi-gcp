@@ -27,13 +27,16 @@ class GetServiceResult:
     """
     A collection of values returned by getService.
     """
-    def __init__(__self__, annotations=None, binary_authorizations=None, client=None, client_version=None, conditions=None, create_time=None, creator=None, custom_audiences=None, default_uri_disabled=None, delete_time=None, deletion_protection=None, description=None, effective_annotations=None, effective_labels=None, etag=None, expire_time=None, generation=None, id=None, ingress=None, invoker_iam_disabled=None, labels=None, last_modifier=None, latest_created_revision=None, latest_ready_revision=None, launch_stage=None, location=None, name=None, observed_generation=None, project=None, pulumi_labels=None, reconciling=None, scalings=None, templates=None, terminal_conditions=None, traffic_statuses=None, traffics=None, uid=None, update_time=None, uri=None, urls=None):
+    def __init__(__self__, annotations=None, binary_authorizations=None, build_configs=None, client=None, client_version=None, conditions=None, create_time=None, creator=None, custom_audiences=None, default_uri_disabled=None, delete_time=None, deletion_protection=None, description=None, effective_annotations=None, effective_labels=None, etag=None, expire_time=None, generation=None, id=None, ingress=None, invoker_iam_disabled=None, labels=None, last_modifier=None, latest_created_revision=None, latest_ready_revision=None, launch_stage=None, location=None, name=None, observed_generation=None, project=None, pulumi_labels=None, reconciling=None, scalings=None, templates=None, terminal_conditions=None, traffic_statuses=None, traffics=None, uid=None, update_time=None, uri=None, urls=None):
         if annotations and not isinstance(annotations, dict):
             raise TypeError("Expected argument 'annotations' to be a dict")
         pulumi.set(__self__, "annotations", annotations)
         if binary_authorizations and not isinstance(binary_authorizations, list):
             raise TypeError("Expected argument 'binary_authorizations' to be a list")
         pulumi.set(__self__, "binary_authorizations", binary_authorizations)
+        if build_configs and not isinstance(build_configs, list):
+            raise TypeError("Expected argument 'build_configs' to be a list")
+        pulumi.set(__self__, "build_configs", build_configs)
         if client and not isinstance(client, str):
             raise TypeError("Expected argument 'client' to be a str")
         pulumi.set(__self__, "client", client)
@@ -158,6 +161,11 @@ class GetServiceResult:
     @pulumi.getter(name="binaryAuthorizations")
     def binary_authorizations(self) -> Sequence['outputs.GetServiceBinaryAuthorizationResult']:
         return pulumi.get(self, "binary_authorizations")
+
+    @property
+    @pulumi.getter(name="buildConfigs")
+    def build_configs(self) -> Sequence['outputs.GetServiceBuildConfigResult']:
+        return pulumi.get(self, "build_configs")
 
     @property
     @pulumi.getter
@@ -361,6 +369,7 @@ class AwaitableGetServiceResult(GetServiceResult):
         return GetServiceResult(
             annotations=self.annotations,
             binary_authorizations=self.binary_authorizations,
+            build_configs=self.build_configs,
             client=self.client,
             client_version=self.client_version,
             conditions=self.conditions,
@@ -438,6 +447,7 @@ def get_service(location: Optional[str] = None,
     return AwaitableGetServiceResult(
         annotations=pulumi.get(__ret__, 'annotations'),
         binary_authorizations=pulumi.get(__ret__, 'binary_authorizations'),
+        build_configs=pulumi.get(__ret__, 'build_configs'),
         client=pulumi.get(__ret__, 'client'),
         client_version=pulumi.get(__ret__, 'client_version'),
         conditions=pulumi.get(__ret__, 'conditions'),
@@ -512,6 +522,7 @@ def get_service_output(location: Optional[pulumi.Input[Optional[str]]] = None,
     return __ret__.apply(lambda __response__: GetServiceResult(
         annotations=pulumi.get(__response__, 'annotations'),
         binary_authorizations=pulumi.get(__response__, 'binary_authorizations'),
+        build_configs=pulumi.get(__response__, 'build_configs'),
         client=pulumi.get(__response__, 'client'),
         client_version=pulumi.get(__response__, 'client_version'),
         conditions=pulumi.get(__response__, 'conditions'),

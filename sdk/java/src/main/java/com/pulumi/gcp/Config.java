@@ -39,6 +39,9 @@ public final class Config {
     public Optional<String> apigeeCustomEndpoint() {
         return Codegen.stringProp("apigeeCustomEndpoint").config(config).get();
     }
+    public Optional<String> apihubCustomEndpoint() {
+        return Codegen.stringProp("apihubCustomEndpoint").config(config).get();
+    }
     public Optional<String> apikeysCustomEndpoint() {
         return Codegen.stringProp("apikeysCustomEndpoint").config(config).get();
     }

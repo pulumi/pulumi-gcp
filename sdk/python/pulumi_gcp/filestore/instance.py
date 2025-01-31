@@ -34,6 +34,7 @@ class InstanceArgs:
                  performance_config: Optional[pulumi.Input['InstancePerformanceConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Instance resource.
@@ -58,6 +59,11 @@ class InstanceArgs:
         :param pulumi.Input[str] protocol: Either NFSv3, for using NFS version 3 as file sharing protocol, or NFSv4.1, for using NFS version 4.1 as file sharing
                protocol. NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE. The default is NFSv3. Default value:
                "NFS_V3" Possible values: ["NFS_V3", "NFS_V4_1"]
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags.
+               Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when
+               empty. The field is immutable and causes resource replacement when mutated. This field is only set at create time and
+               modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the
+               'google_tags_tag_value' resource.
         :param pulumi.Input[str] zone: The name of the Filestore zone of the instance.
         """
         pulumi.set(__self__, "file_shares", file_shares)
@@ -83,6 +89,8 @@ class InstanceArgs:
             pulumi.set(__self__, "project", project)
         if protocol is not None:
             pulumi.set(__self__, "protocol", protocol)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if zone is not None:
             warnings.warn("""`zone` is deprecated and will be removed in a future major release. Use `location` instead.""", DeprecationWarning)
             pulumi.log.warn("""zone is deprecated: `zone` is deprecated and will be removed in a future major release. Use `location` instead.""")
@@ -253,6 +261,22 @@ class InstanceArgs:
 
     @property
     @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags.
+        Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when
+        empty. The field is immutable and causes resource replacement when mutated. This field is only set at create time and
+        modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the
+        'google_tags_tag_value' resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
     @_utilities.deprecated("""`zone` is deprecated and will be removed in a future major release. Use `location` instead.""")
     def zone(self) -> Optional[pulumi.Input[str]]:
         """
@@ -284,6 +308,7 @@ class _InstanceState:
                  project: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
                  pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tier: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None):
         """
@@ -313,6 +338,11 @@ class _InstanceState:
                "NFS_V3" Possible values: ["NFS_V3", "NFS_V4_1"]
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags.
+               Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when
+               empty. The field is immutable and causes resource replacement when mutated. This field is only set at create time and
+               modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the
+               'google_tags_tag_value' resource.
         :param pulumi.Input[str] tier: The service tier of the instance.
                Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE
         :param pulumi.Input[str] zone: The name of the Filestore zone of the instance.
@@ -349,6 +379,8 @@ class _InstanceState:
             pulumi.set(__self__, "protocol", protocol)
         if pulumi_labels is not None:
             pulumi.set(__self__, "pulumi_labels", pulumi_labels)
+        if tags is not None:
+            pulumi.set(__self__, "tags", tags)
         if tier is not None:
             pulumi.set(__self__, "tier", tier)
         if zone is not None:
@@ -558,6 +590,22 @@ class _InstanceState:
 
     @property
     @pulumi.getter
+    def tags(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags.
+        Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when
+        empty. The field is immutable and causes resource replacement when mutated. This field is only set at create time and
+        modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the
+        'google_tags_tag_value' resource.
+        """
+        return pulumi.get(self, "tags")
+
+    @tags.setter
+    def tags(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "tags", value)
+
+    @property
+    @pulumi.getter
     def tier(self) -> Optional[pulumi.Input[str]]:
         """
         The service tier of the instance.
@@ -600,6 +648,7 @@ class Instance(pulumi.CustomResource):
                  performance_config: Optional[pulumi.Input[Union['InstancePerformanceConfigArgs', 'InstancePerformanceConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tier: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -761,6 +810,11 @@ class Instance(pulumi.CustomResource):
         :param pulumi.Input[str] protocol: Either NFSv3, for using NFS version 3 as file sharing protocol, or NFSv4.1, for using NFS version 4.1 as file sharing
                protocol. NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE. The default is NFSv3. Default value:
                "NFS_V3" Possible values: ["NFS_V3", "NFS_V4_1"]
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags.
+               Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when
+               empty. The field is immutable and causes resource replacement when mutated. This field is only set at create time and
+               modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the
+               'google_tags_tag_value' resource.
         :param pulumi.Input[str] tier: The service tier of the instance.
                Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE
         :param pulumi.Input[str] zone: The name of the Filestore zone of the instance.
@@ -935,6 +989,7 @@ class Instance(pulumi.CustomResource):
                  performance_config: Optional[pulumi.Input[Union['InstancePerformanceConfigArgs', 'InstancePerformanceConfigArgsDict']]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  protocol: Optional[pulumi.Input[str]] = None,
+                 tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  tier: Optional[pulumi.Input[str]] = None,
                  zone: Optional[pulumi.Input[str]] = None,
                  __props__=None):
@@ -962,6 +1017,7 @@ class Instance(pulumi.CustomResource):
             __props__.__dict__["performance_config"] = performance_config
             __props__.__dict__["project"] = project
             __props__.__dict__["protocol"] = protocol
+            __props__.__dict__["tags"] = tags
             if tier is None and not opts.urn:
                 raise TypeError("Missing required property 'tier'")
             __props__.__dict__["tier"] = tier
@@ -998,6 +1054,7 @@ class Instance(pulumi.CustomResource):
             project: Optional[pulumi.Input[str]] = None,
             protocol: Optional[pulumi.Input[str]] = None,
             pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+            tags: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             tier: Optional[pulumi.Input[str]] = None,
             zone: Optional[pulumi.Input[str]] = None) -> 'Instance':
         """
@@ -1032,6 +1089,11 @@ class Instance(pulumi.CustomResource):
                "NFS_V3" Possible values: ["NFS_V3", "NFS_V4_1"]
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] tags: A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags.
+               Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when
+               empty. The field is immutable and causes resource replacement when mutated. This field is only set at create time and
+               modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the
+               'google_tags_tag_value' resource.
         :param pulumi.Input[str] tier: The service tier of the instance.
                Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE
         :param pulumi.Input[str] zone: The name of the Filestore zone of the instance.
@@ -1056,6 +1118,7 @@ class Instance(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["protocol"] = protocol
         __props__.__dict__["pulumi_labels"] = pulumi_labels
+        __props__.__dict__["tags"] = tags
         __props__.__dict__["tier"] = tier
         __props__.__dict__["zone"] = zone
         return Instance(resource_name, opts=opts, __props__=__props__)
@@ -1194,6 +1257,18 @@ class Instance(pulumi.CustomResource):
         and default labels configured on the provider.
         """
         return pulumi.get(self, "pulumi_labels")
+
+    @property
+    @pulumi.getter
+    def tags(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+        """
+        A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags.
+        Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when
+        empty. The field is immutable and causes resource replacement when mutated. This field is only set at create time and
+        modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the
+        'google_tags_tag_value' resource.
+        """
+        return pulumi.get(self, "tags")
 
     @property
     @pulumi.getter

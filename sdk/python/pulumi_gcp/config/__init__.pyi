@@ -31,6 +31,8 @@ apiGatewayCustomEndpoint: Optional[str]
 
 apigeeCustomEndpoint: Optional[str]
 
+apihubCustomEndpoint: Optional[str]
+
 apikeysCustomEndpoint: Optional[str]
 
 appEngineCustomEndpoint: Optional[str]

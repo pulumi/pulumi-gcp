@@ -42,9 +42,9 @@ namespace Pulumi.Gcp.ParameterManager
     /// ```csharp
     /// using System.Collections.Generic;
     /// using System.Linq;
+    /// using System.Text.Json;
     /// using Pulumi;
     /// using Gcp = Pulumi.Gcp;
-    /// using Std = Pulumi.Std;
     /// 
     /// return await Deployment.RunAsync(() =&gt; 
     /// {
@@ -59,45 +59,15 @@ namespace Pulumi.Gcp.ParameterManager
     ///     {
     ///         Parameter = regional_parameter_basic.Id,
     ///         ParameterVersionId = "regional_parameter_version",
-    ///         ParameterData = Std.File.Invoke(new()
+    ///         ParameterData = JsonSerializer.Serialize(new Dictionary&lt;string, object?&gt;
     ///         {
-    ///             Input = "parameter_data_json_format.yaml",
-    ///         }).Apply(invoke =&gt; invoke.Result),
+    ///             ["key1"] = "val1",
+    ///             ["key2"] = "val2",
+    ///         }),
     ///     });
     /// 
     /// });
     /// ```
-    /// ### Regional Parameter Version With Yaml Format
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// using Std = Pulumi.Std;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var regional_parameter_basic = new Gcp.ParameterManager.RegionalParameter("regional-parameter-basic", new()
-    ///     {
-    ///         ParameterId = "regional_parameter",
-    ///         Format = "YAML",
-    ///         Location = "us-central1",
-    ///     });
-    /// 
-    ///     var regional_parameter_version_with_yaml_format = new Gcp.ParameterManager.RegionalParameterVersion("regional-parameter-version-with-yaml-format", new()
-    ///     {
-    ///         Parameter = regional_parameter_basic.Id,
-    ///         ParameterVersionId = "regional_parameter_version",
-    ///         ParameterData = Std.File.Invoke(new()
-    ///         {
-    ///             Input = "parameter_data_yaml_format.yaml",
-    ///         }).Apply(invoke =&gt; invoke.Result),
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// RegionalParameterVersion can be imported using any of these accepted formats:

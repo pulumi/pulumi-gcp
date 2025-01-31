@@ -284,6 +284,12 @@ type Instance struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
+	// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags.
+	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when
+	// empty. The field is immutable and causes resource replacement when mutated. This field is only set at create time and
+	// modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the
+	// 'google_tags_tag_value' resource.
+	Tags pulumi.StringMapOutput `pulumi:"tags"`
 	// The service tier of the instance.
 	// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE
 	Tier pulumi.StringOutput `pulumi:"tier"`
@@ -378,6 +384,12 @@ type instanceState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags.
+	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when
+	// empty. The field is immutable and causes resource replacement when mutated. This field is only set at create time and
+	// modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the
+	// 'google_tags_tag_value' resource.
+	Tags map[string]string `pulumi:"tags"`
 	// The service tier of the instance.
 	// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE
 	Tier *string `pulumi:"tier"`
@@ -429,6 +441,12 @@ type InstanceState struct {
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
+	// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags.
+	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when
+	// empty. The field is immutable and causes resource replacement when mutated. This field is only set at create time and
+	// modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the
+	// 'google_tags_tag_value' resource.
+	Tags pulumi.StringMapInput
 	// The service tier of the instance.
 	// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE
 	Tier pulumi.StringPtrInput
@@ -474,6 +492,12 @@ type instanceArgs struct {
 	// protocol. NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE. The default is NFSv3. Default value:
 	// "NFS_V3" Possible values: ["NFS_V3", "NFS_V4_1"]
 	Protocol *string `pulumi:"protocol"`
+	// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags.
+	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when
+	// empty. The field is immutable and causes resource replacement when mutated. This field is only set at create time and
+	// modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the
+	// 'google_tags_tag_value' resource.
+	Tags map[string]string `pulumi:"tags"`
 	// The service tier of the instance.
 	// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE
 	Tier string `pulumi:"tier"`
@@ -516,6 +540,12 @@ type InstanceArgs struct {
 	// protocol. NFSv4.1 can be used with HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE. The default is NFSv3. Default value:
 	// "NFS_V3" Possible values: ["NFS_V3", "NFS_V4_1"]
 	Protocol pulumi.StringPtrInput
+	// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags.
+	// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when
+	// empty. The field is immutable and causes resource replacement when mutated. This field is only set at create time and
+	// modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the
+	// 'google_tags_tag_value' resource.
+	Tags pulumi.StringMapInput
 	// The service tier of the instance.
 	// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE
 	Tier pulumi.StringInput
@@ -699,6 +729,15 @@ func (o InstanceOutput) Protocol() pulumi.StringPtrOutput {
 // and default labels configured on the provider.
 func (o InstanceOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
+// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags.
+// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when
+// empty. The field is immutable and causes resource replacement when mutated. This field is only set at create time and
+// modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the
+// 'google_tags_tag_value' resource.
+func (o InstanceOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *Instance) pulumi.StringMapOutput { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 // The service tier of the instance.

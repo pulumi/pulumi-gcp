@@ -30,7 +30,7 @@ namespace Pulumi.Gcp.Compute
     /// {
     ///     var basicGlobalNetworksecurityAddressGroup = new Gcp.NetworkSecurity.AddressGroup("basic_global_networksecurity_address_group", new()
     ///     {
-    ///         Name = "address",
+    ///         Name = "address-group",
     ///         Parent = "organizations/123456789",
     ///         Description = "Sample global networksecurity_address_group",
     ///         Location = "global",
@@ -52,11 +52,11 @@ namespace Pulumi.Gcp.Compute
     ///     var @default = new Gcp.Compute.FirewallPolicy("default", new()
     ///     {
     ///         Parent = folder.Id,
-    ///         ShortName = "policy",
+    ///         ShortName = "fw-policy",
     ///         Description = "Resource created for Terraform acceptance testing",
     ///     });
     /// 
-    ///     var policyRule = new Gcp.Compute.FirewallPolicyRule("policy_rule", new()
+    ///     var primary = new Gcp.Compute.FirewallPolicyRule("primary", new()
     ///     {
     ///         FirewallPolicy = @default.Name,
     ///         Description = "Resource created for Terraform acceptance testing",
@@ -65,8 +65,31 @@ namespace Pulumi.Gcp.Compute
     ///         Action = "allow",
     ///         Direction = "EGRESS",
     ///         Disabled = false,
+    ///         TargetServiceAccounts = new[]
+    ///         {
+    ///             "my@service-account.com",
+    ///         },
     ///         Match = new Gcp.Compute.Inputs.FirewallPolicyRuleMatchArgs
     ///         {
+    ///             DestIpRanges = new[]
+    ///             {
+    ///                 "11.100.0.1/32",
+    ///             },
+    ///             DestFqdns = new() { },
+    ///             DestRegionCodes = new[]
+    ///             {
+    ///                 "US",
+    ///             },
+    ///             DestThreatIntelligences = new[]
+    ///             {
+    ///                 "iplist-known-malicious-ips",
+    ///             },
+    ///             SrcAddressGroups = new() { },
+    ///             DestAddressGroups = new[]
+    ///             {
+    ///                 basicGlobalNetworksecurityAddressGroup.Id,
+    ///             },
+    ///             DestNetworkScope = "INTERNET",
     ///             Layer4Configs = new[]
     ///             {
     ///                 new Gcp.Compute.Inputs.FirewallPolicyRuleMatchLayer4ConfigArgs
@@ -86,28 +109,79 @@ namespace Pulumi.Gcp.Compute
     ///                     },
     ///                 },
     ///             },
-    ///             DestIpRanges = new[]
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Firewall Policy Rule Network Scope
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var folder = new Gcp.Organizations.Folder("folder", new()
+    ///     {
+    ///         DisplayName = "folder",
+    ///         Parent = "organizations/123456789",
+    ///         DeletionProtection = false,
+    ///     });
+    /// 
+    ///     var @default = new Gcp.Compute.FirewallPolicy("default", new()
+    ///     {
+    ///         Parent = folder.Id,
+    ///         ShortName = "fw-policy",
+    ///         Description = "Firewall policy",
+    ///     });
+    /// 
+    ///     var network = new Gcp.Compute.Network("network", new()
+    ///     {
+    ///         Name = "network",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var primary = new Gcp.Compute.FirewallPolicyRule("primary", new()
+    ///     {
+    ///         FirewallPolicy = @default.Name,
+    ///         Description = "Firewall policy rule with network scope",
+    ///         Priority = 9000,
+    ///         Action = "allow",
+    ///         Direction = "INGRESS",
+    ///         Disabled = false,
+    ///         Match = new Gcp.Compute.Inputs.FirewallPolicyRuleMatchArgs
+    ///         {
+    ///             SrcIpRanges = new[]
     ///             {
     ///                 "11.100.0.1/32",
     ///             },
-    ///             DestFqdns = new() { },
-    ///             DestRegionCodes = new[]
+    ///             SrcNetworkScope = "VPC_NETWORKS",
+    ///             SrcNetworks = new[]
     ///             {
-    ///                 "US",
+    ///                 network.Id,
     ///             },
-    ///             DestThreatIntelligences = new[]
+    ///             Layer4Configs = new[]
     ///             {
-    ///                 "iplist-known-malicious-ips",
+    ///                 new Gcp.Compute.Inputs.FirewallPolicyRuleMatchLayer4ConfigArgs
+    ///                 {
+    ///                     IpProtocol = "tcp",
+    ///                     Ports = new[]
+    ///                     {
+    ///                         "8080",
+    ///                     },
+    ///                 },
+    ///                 new Gcp.Compute.Inputs.FirewallPolicyRuleMatchLayer4ConfigArgs
+    ///                 {
+    ///                     IpProtocol = "udp",
+    ///                     Ports = new[]
+    ///                     {
+    ///                         "22",
+    ///                     },
+    ///                 },
     ///             },
-    ///             SrcAddressGroups = new() { },
-    ///             DestAddressGroups = new[]
-    ///             {
-    ///                 basicGlobalNetworksecurityAddressGroup.Id,
-    ///             },
-    ///         },
-    ///         TargetServiceAccounts = new[]
-    ///         {
-    ///             "my@service-account.com",
     ///         },
     ///     });
     /// 

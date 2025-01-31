@@ -1839,6 +1839,253 @@ func (o EnvironmentNodeConfigPtrOutput) MinNodeCount() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type EnvironmentProperties struct {
+	// List of all properties in the object.
+	// Structure is documented below.
+	Properties []EnvironmentPropertiesProperty `pulumi:"properties"`
+}
+
+// EnvironmentPropertiesInput is an input type that accepts EnvironmentPropertiesArgs and EnvironmentPropertiesOutput values.
+// You can construct a concrete instance of `EnvironmentPropertiesInput` via:
+//
+//	EnvironmentPropertiesArgs{...}
+type EnvironmentPropertiesInput interface {
+	pulumi.Input
+
+	ToEnvironmentPropertiesOutput() EnvironmentPropertiesOutput
+	ToEnvironmentPropertiesOutputWithContext(context.Context) EnvironmentPropertiesOutput
+}
+
+type EnvironmentPropertiesArgs struct {
+	// List of all properties in the object.
+	// Structure is documented below.
+	Properties EnvironmentPropertiesPropertyArrayInput `pulumi:"properties"`
+}
+
+func (EnvironmentPropertiesArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentProperties)(nil)).Elem()
+}
+
+func (i EnvironmentPropertiesArgs) ToEnvironmentPropertiesOutput() EnvironmentPropertiesOutput {
+	return i.ToEnvironmentPropertiesOutputWithContext(context.Background())
+}
+
+func (i EnvironmentPropertiesArgs) ToEnvironmentPropertiesOutputWithContext(ctx context.Context) EnvironmentPropertiesOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentPropertiesOutput)
+}
+
+func (i EnvironmentPropertiesArgs) ToEnvironmentPropertiesPtrOutput() EnvironmentPropertiesPtrOutput {
+	return i.ToEnvironmentPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i EnvironmentPropertiesArgs) ToEnvironmentPropertiesPtrOutputWithContext(ctx context.Context) EnvironmentPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentPropertiesOutput).ToEnvironmentPropertiesPtrOutputWithContext(ctx)
+}
+
+// EnvironmentPropertiesPtrInput is an input type that accepts EnvironmentPropertiesArgs, EnvironmentPropertiesPtr and EnvironmentPropertiesPtrOutput values.
+// You can construct a concrete instance of `EnvironmentPropertiesPtrInput` via:
+//
+//	        EnvironmentPropertiesArgs{...}
+//
+//	or:
+//
+//	        nil
+type EnvironmentPropertiesPtrInput interface {
+	pulumi.Input
+
+	ToEnvironmentPropertiesPtrOutput() EnvironmentPropertiesPtrOutput
+	ToEnvironmentPropertiesPtrOutputWithContext(context.Context) EnvironmentPropertiesPtrOutput
+}
+
+type environmentPropertiesPtrType EnvironmentPropertiesArgs
+
+func EnvironmentPropertiesPtr(v *EnvironmentPropertiesArgs) EnvironmentPropertiesPtrInput {
+	return (*environmentPropertiesPtrType)(v)
+}
+
+func (*environmentPropertiesPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnvironmentProperties)(nil)).Elem()
+}
+
+func (i *environmentPropertiesPtrType) ToEnvironmentPropertiesPtrOutput() EnvironmentPropertiesPtrOutput {
+	return i.ToEnvironmentPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (i *environmentPropertiesPtrType) ToEnvironmentPropertiesPtrOutputWithContext(ctx context.Context) EnvironmentPropertiesPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentPropertiesPtrOutput)
+}
+
+type EnvironmentPropertiesOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentPropertiesOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentProperties)(nil)).Elem()
+}
+
+func (o EnvironmentPropertiesOutput) ToEnvironmentPropertiesOutput() EnvironmentPropertiesOutput {
+	return o
+}
+
+func (o EnvironmentPropertiesOutput) ToEnvironmentPropertiesOutputWithContext(ctx context.Context) EnvironmentPropertiesOutput {
+	return o
+}
+
+func (o EnvironmentPropertiesOutput) ToEnvironmentPropertiesPtrOutput() EnvironmentPropertiesPtrOutput {
+	return o.ToEnvironmentPropertiesPtrOutputWithContext(context.Background())
+}
+
+func (o EnvironmentPropertiesOutput) ToEnvironmentPropertiesPtrOutputWithContext(ctx context.Context) EnvironmentPropertiesPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v EnvironmentProperties) *EnvironmentProperties {
+		return &v
+	}).(EnvironmentPropertiesPtrOutput)
+}
+
+// List of all properties in the object.
+// Structure is documented below.
+func (o EnvironmentPropertiesOutput) Properties() EnvironmentPropertiesPropertyArrayOutput {
+	return o.ApplyT(func(v EnvironmentProperties) []EnvironmentPropertiesProperty { return v.Properties }).(EnvironmentPropertiesPropertyArrayOutput)
+}
+
+type EnvironmentPropertiesPtrOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentPropertiesPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**EnvironmentProperties)(nil)).Elem()
+}
+
+func (o EnvironmentPropertiesPtrOutput) ToEnvironmentPropertiesPtrOutput() EnvironmentPropertiesPtrOutput {
+	return o
+}
+
+func (o EnvironmentPropertiesPtrOutput) ToEnvironmentPropertiesPtrOutputWithContext(ctx context.Context) EnvironmentPropertiesPtrOutput {
+	return o
+}
+
+func (o EnvironmentPropertiesPtrOutput) Elem() EnvironmentPropertiesOutput {
+	return o.ApplyT(func(v *EnvironmentProperties) EnvironmentProperties {
+		if v != nil {
+			return *v
+		}
+		var ret EnvironmentProperties
+		return ret
+	}).(EnvironmentPropertiesOutput)
+}
+
+// List of all properties in the object.
+// Structure is documented below.
+func (o EnvironmentPropertiesPtrOutput) Properties() EnvironmentPropertiesPropertyArrayOutput {
+	return o.ApplyT(func(v *EnvironmentProperties) []EnvironmentPropertiesProperty {
+		if v == nil {
+			return nil
+		}
+		return v.Properties
+	}).(EnvironmentPropertiesPropertyArrayOutput)
+}
+
+type EnvironmentPropertiesProperty struct {
+	// The property key.
+	Name *string `pulumi:"name"`
+	// The property value.
+	Value *string `pulumi:"value"`
+}
+
+// EnvironmentPropertiesPropertyInput is an input type that accepts EnvironmentPropertiesPropertyArgs and EnvironmentPropertiesPropertyOutput values.
+// You can construct a concrete instance of `EnvironmentPropertiesPropertyInput` via:
+//
+//	EnvironmentPropertiesPropertyArgs{...}
+type EnvironmentPropertiesPropertyInput interface {
+	pulumi.Input
+
+	ToEnvironmentPropertiesPropertyOutput() EnvironmentPropertiesPropertyOutput
+	ToEnvironmentPropertiesPropertyOutputWithContext(context.Context) EnvironmentPropertiesPropertyOutput
+}
+
+type EnvironmentPropertiesPropertyArgs struct {
+	// The property key.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// The property value.
+	Value pulumi.StringPtrInput `pulumi:"value"`
+}
+
+func (EnvironmentPropertiesPropertyArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentPropertiesProperty)(nil)).Elem()
+}
+
+func (i EnvironmentPropertiesPropertyArgs) ToEnvironmentPropertiesPropertyOutput() EnvironmentPropertiesPropertyOutput {
+	return i.ToEnvironmentPropertiesPropertyOutputWithContext(context.Background())
+}
+
+func (i EnvironmentPropertiesPropertyArgs) ToEnvironmentPropertiesPropertyOutputWithContext(ctx context.Context) EnvironmentPropertiesPropertyOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentPropertiesPropertyOutput)
+}
+
+// EnvironmentPropertiesPropertyArrayInput is an input type that accepts EnvironmentPropertiesPropertyArray and EnvironmentPropertiesPropertyArrayOutput values.
+// You can construct a concrete instance of `EnvironmentPropertiesPropertyArrayInput` via:
+//
+//	EnvironmentPropertiesPropertyArray{ EnvironmentPropertiesPropertyArgs{...} }
+type EnvironmentPropertiesPropertyArrayInput interface {
+	pulumi.Input
+
+	ToEnvironmentPropertiesPropertyArrayOutput() EnvironmentPropertiesPropertyArrayOutput
+	ToEnvironmentPropertiesPropertyArrayOutputWithContext(context.Context) EnvironmentPropertiesPropertyArrayOutput
+}
+
+type EnvironmentPropertiesPropertyArray []EnvironmentPropertiesPropertyInput
+
+func (EnvironmentPropertiesPropertyArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EnvironmentPropertiesProperty)(nil)).Elem()
+}
+
+func (i EnvironmentPropertiesPropertyArray) ToEnvironmentPropertiesPropertyArrayOutput() EnvironmentPropertiesPropertyArrayOutput {
+	return i.ToEnvironmentPropertiesPropertyArrayOutputWithContext(context.Background())
+}
+
+func (i EnvironmentPropertiesPropertyArray) ToEnvironmentPropertiesPropertyArrayOutputWithContext(ctx context.Context) EnvironmentPropertiesPropertyArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(EnvironmentPropertiesPropertyArrayOutput)
+}
+
+type EnvironmentPropertiesPropertyOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentPropertiesPropertyOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*EnvironmentPropertiesProperty)(nil)).Elem()
+}
+
+func (o EnvironmentPropertiesPropertyOutput) ToEnvironmentPropertiesPropertyOutput() EnvironmentPropertiesPropertyOutput {
+	return o
+}
+
+func (o EnvironmentPropertiesPropertyOutput) ToEnvironmentPropertiesPropertyOutputWithContext(ctx context.Context) EnvironmentPropertiesPropertyOutput {
+	return o
+}
+
+// The property key.
+func (o EnvironmentPropertiesPropertyOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnvironmentPropertiesProperty) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// The property value.
+func (o EnvironmentPropertiesPropertyOutput) Value() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v EnvironmentPropertiesProperty) *string { return v.Value }).(pulumi.StringPtrOutput)
+}
+
+type EnvironmentPropertiesPropertyArrayOutput struct{ *pulumi.OutputState }
+
+func (EnvironmentPropertiesPropertyArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]EnvironmentPropertiesProperty)(nil)).Elem()
+}
+
+func (o EnvironmentPropertiesPropertyArrayOutput) ToEnvironmentPropertiesPropertyArrayOutput() EnvironmentPropertiesPropertyArrayOutput {
+	return o
+}
+
+func (o EnvironmentPropertiesPropertyArrayOutput) ToEnvironmentPropertiesPropertyArrayOutputWithContext(ctx context.Context) EnvironmentPropertiesPropertyArrayOutput {
+	return o
+}
+
+func (o EnvironmentPropertiesPropertyArrayOutput) Index(i pulumi.IntInput) EnvironmentPropertiesPropertyOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) EnvironmentPropertiesProperty {
+		return vs[0].([]EnvironmentPropertiesProperty)[vs[1].(int)]
+	}).(EnvironmentPropertiesPropertyOutput)
+}
+
 type KeystoresAliasesKeyCertFileCertsInfo struct {
 	// (Output)
 	// List of all properties in the object.
@@ -4097,6 +4344,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentIamMemberConditionPtrInput)(nil)).Elem(), EnvironmentIamMemberConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentNodeConfigInput)(nil)).Elem(), EnvironmentNodeConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentNodeConfigPtrInput)(nil)).Elem(), EnvironmentNodeConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentPropertiesInput)(nil)).Elem(), EnvironmentPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentPropertiesPtrInput)(nil)).Elem(), EnvironmentPropertiesArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentPropertiesPropertyInput)(nil)).Elem(), EnvironmentPropertiesPropertyArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*EnvironmentPropertiesPropertyArrayInput)(nil)).Elem(), EnvironmentPropertiesPropertyArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KeystoresAliasesKeyCertFileCertsInfoInput)(nil)).Elem(), KeystoresAliasesKeyCertFileCertsInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KeystoresAliasesKeyCertFileCertsInfoPtrInput)(nil)).Elem(), KeystoresAliasesKeyCertFileCertsInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*KeystoresAliasesKeyCertFileCertsInfoCertInfoInput)(nil)).Elem(), KeystoresAliasesKeyCertFileCertsInfoCertInfoArgs{})
@@ -4147,6 +4398,10 @@ func init() {
 	pulumi.RegisterOutputType(EnvironmentIamMemberConditionPtrOutput{})
 	pulumi.RegisterOutputType(EnvironmentNodeConfigOutput{})
 	pulumi.RegisterOutputType(EnvironmentNodeConfigPtrOutput{})
+	pulumi.RegisterOutputType(EnvironmentPropertiesOutput{})
+	pulumi.RegisterOutputType(EnvironmentPropertiesPtrOutput{})
+	pulumi.RegisterOutputType(EnvironmentPropertiesPropertyOutput{})
+	pulumi.RegisterOutputType(EnvironmentPropertiesPropertyArrayOutput{})
 	pulumi.RegisterOutputType(KeystoresAliasesKeyCertFileCertsInfoOutput{})
 	pulumi.RegisterOutputType(KeystoresAliasesKeyCertFileCertsInfoPtrOutput{})
 	pulumi.RegisterOutputType(KeystoresAliasesKeyCertFileCertsInfoCertInfoOutput{})

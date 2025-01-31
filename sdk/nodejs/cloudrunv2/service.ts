@@ -505,6 +505,64 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Cloudrunv2 Service Function
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const project = gcp.organizations.getProject({});
+ * const bucket = new gcp.storage.Bucket("bucket", {
+ *     name: project.then(project => `${project.projectId}-gcf-source`),
+ *     location: "US",
+ *     uniformBucketLevelAccess: true,
+ * });
+ * const object = new gcp.storage.BucketObject("object", {
+ *     name: "function-source.zip",
+ *     bucket: bucket.name,
+ *     source: new pulumi.asset.FileAsset("function_source.zip"),
+ * });
+ * const cloudbuildServiceAccount = new gcp.serviceaccount.Account("cloudbuild_service_account", {accountId: "build-sa"});
+ * const actAs = new gcp.projects.IAMMember("act_as", {
+ *     project: project.then(project => project.projectId),
+ *     role: "roles/iam.serviceAccountUser",
+ *     member: pulumi.interpolate`serviceAccount:${cloudbuildServiceAccount.email}`,
+ * });
+ * const logsWriter = new gcp.projects.IAMMember("logs_writer", {
+ *     project: project.then(project => project.projectId),
+ *     role: "roles/logging.logWriter",
+ *     member: pulumi.interpolate`serviceAccount:${cloudbuildServiceAccount.email}`,
+ * });
+ * const _default = new gcp.cloudrunv2.Service("default", {
+ *     name: "cloudrun-service",
+ *     location: "us-central1",
+ *     deletionProtection: false,
+ *     ingress: "INGRESS_TRAFFIC_ALL",
+ *     template: {
+ *         containers: [{
+ *             image: "us-docker.pkg.dev/cloudrun/container/hello",
+ *         }],
+ *     },
+ *     buildConfig: {
+ *         sourceLocation: pulumi.interpolate`gs://${bucket.name}/${object.name}`,
+ *         functionTarget: "helloHttp",
+ *         imageUri: "us-docker.pkg.dev/cloudrun/container/hello",
+ *         baseImage: "us-central1-docker.pkg.dev/serverless-runtimes/google-22-full/runtimes/nodejs22",
+ *         enableAutomaticUpdates: true,
+ *         workerPool: "worker-pool",
+ *         environmentVariables: {
+ *             FOO_KEY: "FOO_VALUE",
+ *             BAR_KEY: "BAR_VALUE",
+ *         },
+ *         serviceAccount: cloudbuildServiceAccount.id,
+ *     },
+ * }, {
+ *     dependsOn: [
+ *         actAs,
+ *         logsWriter,
+ *     ],
+ * });
+ * ```
  *
  * ## Import
  *
@@ -572,6 +630,10 @@ export class Service extends pulumi.CustomResource {
      * Settings for the Binary Authorization feature.
      */
     public readonly binaryAuthorization!: pulumi.Output<outputs.cloudrunv2.ServiceBinaryAuthorization | undefined>;
+    /**
+     * Configuration for building a Cloud Run function.
+     */
+    public readonly buildConfig!: pulumi.Output<outputs.cloudrunv2.ServiceBuildConfig | undefined>;
     /**
      * Arbitrary identifier for the API client.
      */
@@ -754,6 +816,7 @@ export class Service extends pulumi.CustomResource {
             const state = argsOrState as ServiceState | undefined;
             resourceInputs["annotations"] = state ? state.annotations : undefined;
             resourceInputs["binaryAuthorization"] = state ? state.binaryAuthorization : undefined;
+            resourceInputs["buildConfig"] = state ? state.buildConfig : undefined;
             resourceInputs["client"] = state ? state.client : undefined;
             resourceInputs["clientVersion"] = state ? state.clientVersion : undefined;
             resourceInputs["conditions"] = state ? state.conditions : undefined;
@@ -801,6 +864,7 @@ export class Service extends pulumi.CustomResource {
             }
             resourceInputs["annotations"] = args ? args.annotations : undefined;
             resourceInputs["binaryAuthorization"] = args ? args.binaryAuthorization : undefined;
+            resourceInputs["buildConfig"] = args ? args.buildConfig : undefined;
             resourceInputs["client"] = args ? args.client : undefined;
             resourceInputs["clientVersion"] = args ? args.clientVersion : undefined;
             resourceInputs["customAudiences"] = args ? args.customAudiences : undefined;
@@ -864,6 +928,10 @@ export interface ServiceState {
      * Settings for the Binary Authorization feature.
      */
     binaryAuthorization?: pulumi.Input<inputs.cloudrunv2.ServiceBinaryAuthorization>;
+    /**
+     * Configuration for building a Cloud Run function.
+     */
+    buildConfig?: pulumi.Input<inputs.cloudrunv2.ServiceBuildConfig>;
     /**
      * Arbitrary identifier for the API client.
      */
@@ -1050,6 +1118,10 @@ export interface ServiceArgs {
      * Settings for the Binary Authorization feature.
      */
     binaryAuthorization?: pulumi.Input<inputs.cloudrunv2.ServiceBinaryAuthorization>;
+    /**
+     * Configuration for building a Cloud Run function.
+     */
+    buildConfig?: pulumi.Input<inputs.cloudrunv2.ServiceBuildConfig>;
     /**
      * Arbitrary identifier for the API client.
      */

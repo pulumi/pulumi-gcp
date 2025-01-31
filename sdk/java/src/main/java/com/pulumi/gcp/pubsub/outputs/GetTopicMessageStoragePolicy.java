@@ -5,6 +5,7 @@ package com.pulumi.gcp.pubsub.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
@@ -21,6 +22,14 @@ public final class GetTopicMessageStoragePolicy {
      * 
      */
     private List<String> allowedPersistenceRegions;
+    /**
+     * @return If true, &#39;allowedPersistenceRegions&#39; is also used to enforce in-transit
+     * guarantees for messages. That is, Pub/Sub will fail topics.publish
+     * operations on this topic and subscribe operations on any subscription
+     * attached to this topic in any region that is not in &#39;allowedPersistenceRegions&#39;.
+     * 
+     */
+    private Boolean enforceInTransit;
 
     private GetTopicMessageStoragePolicy() {}
     /**
@@ -35,6 +44,16 @@ public final class GetTopicMessageStoragePolicy {
     public List<String> allowedPersistenceRegions() {
         return this.allowedPersistenceRegions;
     }
+    /**
+     * @return If true, &#39;allowedPersistenceRegions&#39; is also used to enforce in-transit
+     * guarantees for messages. That is, Pub/Sub will fail topics.publish
+     * operations on this topic and subscribe operations on any subscription
+     * attached to this topic in any region that is not in &#39;allowedPersistenceRegions&#39;.
+     * 
+     */
+    public Boolean enforceInTransit() {
+        return this.enforceInTransit;
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -46,10 +65,12 @@ public final class GetTopicMessageStoragePolicy {
     @CustomType.Builder
     public static final class Builder {
         private List<String> allowedPersistenceRegions;
+        private Boolean enforceInTransit;
         public Builder() {}
         public Builder(GetTopicMessageStoragePolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowedPersistenceRegions = defaults.allowedPersistenceRegions;
+    	      this.enforceInTransit = defaults.enforceInTransit;
         }
 
         @CustomType.Setter
@@ -63,9 +84,18 @@ public final class GetTopicMessageStoragePolicy {
         public Builder allowedPersistenceRegions(String... allowedPersistenceRegions) {
             return allowedPersistenceRegions(List.of(allowedPersistenceRegions));
         }
+        @CustomType.Setter
+        public Builder enforceInTransit(Boolean enforceInTransit) {
+            if (enforceInTransit == null) {
+              throw new MissingRequiredPropertyException("GetTopicMessageStoragePolicy", "enforceInTransit");
+            }
+            this.enforceInTransit = enforceInTransit;
+            return this;
+        }
         public GetTopicMessageStoragePolicy build() {
             final var _resultValue = new GetTopicMessageStoragePolicy();
             _resultValue.allowedPersistenceRegions = allowedPersistenceRegions;
+            _resultValue.enforceInTransit = enforceInTransit;
             return _resultValue;
         }
     }

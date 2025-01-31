@@ -19,6 +19,7 @@ import * as activedirectory from "./activedirectory";
 import * as alloydb from "./alloydb";
 import * as apigateway from "./apigateway";
 import * as apigee from "./apigee";
+import * as apihub from "./apihub";
 import * as appengine from "./appengine";
 import * as apphub from "./apphub";
 import * as applicationintegration from "./applicationintegration";
@@ -150,6 +151,7 @@ export {
     alloydb,
     apigateway,
     apigee,
+    apihub,
     appengine,
     apphub,
     applicationintegration,

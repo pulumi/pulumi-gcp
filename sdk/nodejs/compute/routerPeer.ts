@@ -74,6 +74,22 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Router Zero Custom Learend Route Priority
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const peer = new gcp.compute.RouterPeer("peer", {
+ *     name: "my-router-peer",
+ *     router: "my-router",
+ *     region: "us-central1",
+ *     "interface": "interface-1",
+ *     peerAsn: 65513,
+ *     customLearnedRoutePriority: 0,
+ *     zeroCustomLearnedRoutePriority: true,
+ * });
+ * ```
  * ### Router Peer Router Appliance
  *
  * ```typescript
@@ -470,6 +486,10 @@ export class RouterPeer extends pulumi.CustomResource {
      */
     public readonly ipv6NexthopAddress!: pulumi.Output<string>;
     /**
+     * An internal boolean field for provider use.
+     */
+    public /*out*/ readonly isCustomLearnedPrioritySet!: pulumi.Output<boolean>;
+    /**
      * The resource that configures and manages this BGP peer.
      * * `MANAGED_BY_USER` is the default value and can be managed by
      * you or other users
@@ -540,6 +560,11 @@ export class RouterPeer extends pulumi.CustomResource {
      * this Cloud Router. The VM instance is the peer side of the BGP session.
      */
     public readonly routerApplianceInstance!: pulumi.Output<string | undefined>;
+    /**
+     * The user-defined zero-custom-learned-route-priority for a custom-learned-route-priority in BGP session.
+     * This value has to be set true to force the customLearnedRoutePriority to be 0.
+     */
+    public readonly zeroCustomLearnedRoutePriority!: pulumi.Output<boolean | undefined>;
 
     /**
      * Create a RouterPeer resource with the given unique name, arguments, and options.
@@ -570,6 +595,7 @@ export class RouterPeer extends pulumi.CustomResource {
             resourceInputs["ipAddress"] = state ? state.ipAddress : undefined;
             resourceInputs["ipv4NexthopAddress"] = state ? state.ipv4NexthopAddress : undefined;
             resourceInputs["ipv6NexthopAddress"] = state ? state.ipv6NexthopAddress : undefined;
+            resourceInputs["isCustomLearnedPrioritySet"] = state ? state.isCustomLearnedPrioritySet : undefined;
             resourceInputs["managementType"] = state ? state.managementType : undefined;
             resourceInputs["md5AuthenticationKey"] = state ? state.md5AuthenticationKey : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
@@ -581,6 +607,7 @@ export class RouterPeer extends pulumi.CustomResource {
             resourceInputs["region"] = state ? state.region : undefined;
             resourceInputs["router"] = state ? state.router : undefined;
             resourceInputs["routerApplianceInstance"] = state ? state.routerApplianceInstance : undefined;
+            resourceInputs["zeroCustomLearnedRoutePriority"] = state ? state.zeroCustomLearnedRoutePriority : undefined;
         } else {
             const args = argsOrState as RouterPeerArgs | undefined;
             if ((!args || args.interface === undefined) && !opts.urn) {
@@ -618,6 +645,8 @@ export class RouterPeer extends pulumi.CustomResource {
             resourceInputs["region"] = args ? args.region : undefined;
             resourceInputs["router"] = args ? args.router : undefined;
             resourceInputs["routerApplianceInstance"] = args ? args.routerApplianceInstance : undefined;
+            resourceInputs["zeroCustomLearnedRoutePriority"] = args ? args.zeroCustomLearnedRoutePriority : undefined;
+            resourceInputs["isCustomLearnedPrioritySet"] = undefined /*out*/;
             resourceInputs["managementType"] = undefined /*out*/;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -729,6 +758,10 @@ export interface RouterPeerState {
      */
     ipv6NexthopAddress?: pulumi.Input<string>;
     /**
+     * An internal boolean field for provider use.
+     */
+    isCustomLearnedPrioritySet?: pulumi.Input<boolean>;
+    /**
      * The resource that configures and manages this BGP peer.
      * * `MANAGED_BY_USER` is the default value and can be managed by
      * you or other users
@@ -799,6 +832,11 @@ export interface RouterPeerState {
      * this Cloud Router. The VM instance is the peer side of the BGP session.
      */
     routerApplianceInstance?: pulumi.Input<string>;
+    /**
+     * The user-defined zero-custom-learned-route-priority for a custom-learned-route-priority in BGP session.
+     * This value has to be set true to force the customLearnedRoutePriority to be 0.
+     */
+    zeroCustomLearnedRoutePriority?: pulumi.Input<boolean>;
 }
 
 /**
@@ -963,4 +1001,9 @@ export interface RouterPeerArgs {
      * this Cloud Router. The VM instance is the peer side of the BGP session.
      */
     routerApplianceInstance?: pulumi.Input<string>;
+    /**
+     * The user-defined zero-custom-learned-route-priority for a custom-learned-route-priority in BGP session.
+     * This value has to be set true to force the customLearnedRoutePriority to be 0.
+     */
+    zeroCustomLearnedRoutePriority?: pulumi.Input<boolean>;
 }

@@ -53,6 +53,110 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// });
     /// ```
+    /// ### Network Security Security Profile Group Mirroring
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Compute.Network("default", new()
+    ///     {
+    ///         Name = "network",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var defaultMirroringDeploymentGroup = new Gcp.NetworkSecurity.MirroringDeploymentGroup("default", new()
+    ///     {
+    ///         MirroringDeploymentGroupId = "deployment-group",
+    ///         Location = "global",
+    ///         Network = @default.Id,
+    ///     });
+    /// 
+    ///     var defaultMirroringEndpointGroup = new Gcp.NetworkSecurity.MirroringEndpointGroup("default", new()
+    ///     {
+    ///         MirroringEndpointGroupId = "endpoint-group",
+    ///         Location = "global",
+    ///         MirroringDeploymentGroup = defaultMirroringDeploymentGroup.Id,
+    ///     });
+    /// 
+    ///     var defaultSecurityProfile = new Gcp.NetworkSecurity.SecurityProfile("default", new()
+    ///     {
+    ///         Name = "sec-profile",
+    ///         Parent = "organizations/123456789",
+    ///         Description = "my description",
+    ///         Type = "CUSTOM_MIRRORING",
+    ///         CustomMirroringProfile = new Gcp.NetworkSecurity.Inputs.SecurityProfileCustomMirroringProfileArgs
+    ///         {
+    ///             MirroringEndpointGroup = defaultMirroringEndpointGroup.Id,
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultSecurityProfileGroup = new Gcp.NetworkSecurity.SecurityProfileGroup("default", new()
+    ///     {
+    ///         Name = "sec-profile-group",
+    ///         Parent = "organizations/123456789",
+    ///         Description = "my description",
+    ///         CustomMirroringProfile = defaultSecurityProfile.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Network Security Security Profile Group Intercept
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Compute.Network("default", new()
+    ///     {
+    ///         Name = "network",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var defaultInterceptDeploymentGroup = new Gcp.NetworkSecurity.InterceptDeploymentGroup("default", new()
+    ///     {
+    ///         InterceptDeploymentGroupId = "deployment-group",
+    ///         Location = "global",
+    ///         Network = @default.Id,
+    ///     });
+    /// 
+    ///     var defaultInterceptEndpointGroup = new Gcp.NetworkSecurity.InterceptEndpointGroup("default", new()
+    ///     {
+    ///         InterceptEndpointGroupId = "endpoint-group",
+    ///         Location = "global",
+    ///         InterceptDeploymentGroup = defaultInterceptDeploymentGroup.Id,
+    ///     });
+    /// 
+    ///     var defaultSecurityProfile = new Gcp.NetworkSecurity.SecurityProfile("default", new()
+    ///     {
+    ///         Name = "sec-profile",
+    ///         Parent = "organizations/123456789",
+    ///         Description = "my description",
+    ///         Type = "CUSTOM_INTERCEPT",
+    ///         CustomInterceptProfile = new Gcp.NetworkSecurity.Inputs.SecurityProfileCustomInterceptProfileArgs
+    ///         {
+    ///             InterceptEndpointGroup = defaultInterceptEndpointGroup.Id,
+    ///         },
+    ///     });
+    /// 
+    ///     var defaultSecurityProfileGroup = new Gcp.NetworkSecurity.SecurityProfileGroup("default", new()
+    ///     {
+    ///         Name = "sec-profile-group",
+    ///         Parent = "organizations/123456789",
+    ///         Description = "my description",
+    ///         CustomInterceptProfile = defaultSecurityProfile.Id,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -74,6 +178,18 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// Reference to a SecurityProfile with the CustomIntercept configuration.
+        /// </summary>
+        [Output("customInterceptProfile")]
+        public Output<string?> CustomInterceptProfile { get; private set; } = null!;
+
+        /// <summary>
+        /// Reference to a SecurityProfile with the custom mirroring configuration for the SecurityProfileGroup.
+        /// </summary>
+        [Output("customMirroringProfile")]
+        public Output<string?> CustomMirroringProfile { get; private set; } = null!;
 
         /// <summary>
         /// An optional description of the profile. The Max length is 512 characters.
@@ -198,6 +314,18 @@ namespace Pulumi.Gcp.NetworkSecurity
     public sealed class SecurityProfileGroupArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// Reference to a SecurityProfile with the CustomIntercept configuration.
+        /// </summary>
+        [Input("customInterceptProfile")]
+        public Input<string>? CustomInterceptProfile { get; set; }
+
+        /// <summary>
+        /// Reference to a SecurityProfile with the custom mirroring configuration for the SecurityProfileGroup.
+        /// </summary>
+        [Input("customMirroringProfile")]
+        public Input<string>? CustomMirroringProfile { get; set; }
+
+        /// <summary>
         /// An optional description of the profile. The Max length is 512 characters.
         /// </summary>
         [Input("description")]
@@ -260,6 +388,18 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// Reference to a SecurityProfile with the CustomIntercept configuration.
+        /// </summary>
+        [Input("customInterceptProfile")]
+        public Input<string>? CustomInterceptProfile { get; set; }
+
+        /// <summary>
+        /// Reference to a SecurityProfile with the custom mirroring configuration for the SecurityProfileGroup.
+        /// </summary>
+        [Input("customMirroringProfile")]
+        public Input<string>? CustomMirroringProfile { get; set; }
 
         /// <summary>
         /// An optional description of the profile. The Max length is 512 characters.

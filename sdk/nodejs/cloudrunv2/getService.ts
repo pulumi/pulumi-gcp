@@ -59,6 +59,7 @@ export interface GetServiceArgs {
 export interface GetServiceResult {
     readonly annotations: {[key: string]: string};
     readonly binaryAuthorizations: outputs.cloudrunv2.GetServiceBinaryAuthorization[];
+    readonly buildConfigs: outputs.cloudrunv2.GetServiceBuildConfig[];
     readonly client: string;
     readonly clientVersion: string;
     readonly conditions: outputs.cloudrunv2.GetServiceCondition[];

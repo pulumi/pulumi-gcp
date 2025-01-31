@@ -320,6 +320,135 @@ class RepositoryGroupIamMember(pulumi.CustomResource):
                  role: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        Three different resources help you manage your IAM policy for Gemini for Google Cloud RepositoryGroup. Each of these resources serves a different use case:
+
+        * `gemini.RepositoryGroupIamPolicy`: Authoritative. Sets the IAM policy for the repositorygroup and replaces any existing policy already attached.
+        * `gemini.RepositoryGroupIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the repositorygroup are preserved.
+        * `gemini.RepositoryGroupIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the repositorygroup are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `gemini.RepositoryGroupIamPolicy`: Retrieves the IAM policy for the repositorygroup
+
+        > **Note:** `gemini.RepositoryGroupIamPolicy` **cannot** be used in conjunction with `gemini.RepositoryGroupIamBinding` and `gemini.RepositoryGroupIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `gemini.RepositoryGroupIamBinding` resources **can be** used in conjunction with `gemini.RepositoryGroupIamMember` resources **only if** they do not grant privilege to the same role.
+
+        ## gemini.RepositoryGroupIamPolicy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/cloudaicompanion.repositoryGroupsUser",
+            "members": ["user:jane@example.com"],
+        }])
+        policy = gcp.gemini.RepositoryGroupIamPolicy("policy",
+            project=example["project"],
+            location=example["location"],
+            code_repository_index=example["codeRepositoryIndex"],
+            repository_group_id=example["repositoryGroupId"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## gemini.RepositoryGroupIamBinding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.gemini.RepositoryGroupIamBinding("binding",
+            project=example["project"],
+            location=example["location"],
+            code_repository_index=example["codeRepositoryIndex"],
+            repository_group_id=example["repositoryGroupId"],
+            role="roles/cloudaicompanion.repositoryGroupsUser",
+            members=["user:jane@example.com"])
+        ```
+
+        ## gemini.RepositoryGroupIamMember
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.gemini.RepositoryGroupIamMember("member",
+            project=example["project"],
+            location=example["location"],
+            code_repository_index=example["codeRepositoryIndex"],
+            repository_group_id=example["repositoryGroupId"],
+            role="roles/cloudaicompanion.repositoryGroupsUser",
+            member="user:jane@example.com")
+        ```
+
+        ## This resource supports User Project Overrides.
+
+        - 
+
+        # IAM policy for Gemini for Google Cloud RepositoryGroup
+        Three different resources help you manage your IAM policy for Gemini for Google Cloud RepositoryGroup. Each of these resources serves a different use case:
+
+        * `gemini.RepositoryGroupIamPolicy`: Authoritative. Sets the IAM policy for the repositorygroup and replaces any existing policy already attached.
+        * `gemini.RepositoryGroupIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the repositorygroup are preserved.
+        * `gemini.RepositoryGroupIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the repositorygroup are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `gemini.RepositoryGroupIamPolicy`: Retrieves the IAM policy for the repositorygroup
+
+        > **Note:** `gemini.RepositoryGroupIamPolicy` **cannot** be used in conjunction with `gemini.RepositoryGroupIamBinding` and `gemini.RepositoryGroupIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `gemini.RepositoryGroupIamBinding` resources **can be** used in conjunction with `gemini.RepositoryGroupIamMember` resources **only if** they do not grant privilege to the same role.
+
+        ## gemini.RepositoryGroupIamPolicy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/cloudaicompanion.repositoryGroupsUser",
+            "members": ["user:jane@example.com"],
+        }])
+        policy = gcp.gemini.RepositoryGroupIamPolicy("policy",
+            project=example["project"],
+            location=example["location"],
+            code_repository_index=example["codeRepositoryIndex"],
+            repository_group_id=example["repositoryGroupId"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## gemini.RepositoryGroupIamBinding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.gemini.RepositoryGroupIamBinding("binding",
+            project=example["project"],
+            location=example["location"],
+            code_repository_index=example["codeRepositoryIndex"],
+            repository_group_id=example["repositoryGroupId"],
+            role="roles/cloudaicompanion.repositoryGroupsUser",
+            members=["user:jane@example.com"])
+        ```
+
+        ## gemini.RepositoryGroupIamMember
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.gemini.RepositoryGroupIamMember("member",
+            project=example["project"],
+            location=example["location"],
+            code_repository_index=example["codeRepositoryIndex"],
+            repository_group_id=example["repositoryGroupId"],
+            role="roles/cloudaicompanion.repositoryGroupsUser",
+            member="user:jane@example.com")
+        ```
+
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms:
@@ -387,6 +516,135 @@ class RepositoryGroupIamMember(pulumi.CustomResource):
                  args: RepositoryGroupIamMemberArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        Three different resources help you manage your IAM policy for Gemini for Google Cloud RepositoryGroup. Each of these resources serves a different use case:
+
+        * `gemini.RepositoryGroupIamPolicy`: Authoritative. Sets the IAM policy for the repositorygroup and replaces any existing policy already attached.
+        * `gemini.RepositoryGroupIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the repositorygroup are preserved.
+        * `gemini.RepositoryGroupIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the repositorygroup are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `gemini.RepositoryGroupIamPolicy`: Retrieves the IAM policy for the repositorygroup
+
+        > **Note:** `gemini.RepositoryGroupIamPolicy` **cannot** be used in conjunction with `gemini.RepositoryGroupIamBinding` and `gemini.RepositoryGroupIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `gemini.RepositoryGroupIamBinding` resources **can be** used in conjunction with `gemini.RepositoryGroupIamMember` resources **only if** they do not grant privilege to the same role.
+
+        ## gemini.RepositoryGroupIamPolicy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/cloudaicompanion.repositoryGroupsUser",
+            "members": ["user:jane@example.com"],
+        }])
+        policy = gcp.gemini.RepositoryGroupIamPolicy("policy",
+            project=example["project"],
+            location=example["location"],
+            code_repository_index=example["codeRepositoryIndex"],
+            repository_group_id=example["repositoryGroupId"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## gemini.RepositoryGroupIamBinding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.gemini.RepositoryGroupIamBinding("binding",
+            project=example["project"],
+            location=example["location"],
+            code_repository_index=example["codeRepositoryIndex"],
+            repository_group_id=example["repositoryGroupId"],
+            role="roles/cloudaicompanion.repositoryGroupsUser",
+            members=["user:jane@example.com"])
+        ```
+
+        ## gemini.RepositoryGroupIamMember
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.gemini.RepositoryGroupIamMember("member",
+            project=example["project"],
+            location=example["location"],
+            code_repository_index=example["codeRepositoryIndex"],
+            repository_group_id=example["repositoryGroupId"],
+            role="roles/cloudaicompanion.repositoryGroupsUser",
+            member="user:jane@example.com")
+        ```
+
+        ## This resource supports User Project Overrides.
+
+        - 
+
+        # IAM policy for Gemini for Google Cloud RepositoryGroup
+        Three different resources help you manage your IAM policy for Gemini for Google Cloud RepositoryGroup. Each of these resources serves a different use case:
+
+        * `gemini.RepositoryGroupIamPolicy`: Authoritative. Sets the IAM policy for the repositorygroup and replaces any existing policy already attached.
+        * `gemini.RepositoryGroupIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the repositorygroup are preserved.
+        * `gemini.RepositoryGroupIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the repositorygroup are preserved.
+
+        A data source can be used to retrieve policy data in advent you do not need creation
+
+        * `gemini.RepositoryGroupIamPolicy`: Retrieves the IAM policy for the repositorygroup
+
+        > **Note:** `gemini.RepositoryGroupIamPolicy` **cannot** be used in conjunction with `gemini.RepositoryGroupIamBinding` and `gemini.RepositoryGroupIamMember` or they will fight over what your policy should be.
+
+        > **Note:** `gemini.RepositoryGroupIamBinding` resources **can be** used in conjunction with `gemini.RepositoryGroupIamMember` resources **only if** they do not grant privilege to the same role.
+
+        ## gemini.RepositoryGroupIamPolicy
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        admin = gcp.organizations.get_iam_policy(bindings=[{
+            "role": "roles/cloudaicompanion.repositoryGroupsUser",
+            "members": ["user:jane@example.com"],
+        }])
+        policy = gcp.gemini.RepositoryGroupIamPolicy("policy",
+            project=example["project"],
+            location=example["location"],
+            code_repository_index=example["codeRepositoryIndex"],
+            repository_group_id=example["repositoryGroupId"],
+            policy_data=admin.policy_data)
+        ```
+
+        ## gemini.RepositoryGroupIamBinding
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        binding = gcp.gemini.RepositoryGroupIamBinding("binding",
+            project=example["project"],
+            location=example["location"],
+            code_repository_index=example["codeRepositoryIndex"],
+            repository_group_id=example["repositoryGroupId"],
+            role="roles/cloudaicompanion.repositoryGroupsUser",
+            members=["user:jane@example.com"])
+        ```
+
+        ## gemini.RepositoryGroupIamMember
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        member = gcp.gemini.RepositoryGroupIamMember("member",
+            project=example["project"],
+            location=example["location"],
+            code_repository_index=example["codeRepositoryIndex"],
+            repository_group_id=example["repositoryGroupId"],
+            role="roles/cloudaicompanion.repositoryGroupsUser",
+            member="user:jane@example.com")
+        ```
+
         ## Import
 
         For all import syntaxes, the "resource in question" can take any of the following forms:

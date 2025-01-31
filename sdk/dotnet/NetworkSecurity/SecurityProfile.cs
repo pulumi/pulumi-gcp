@@ -88,6 +88,94 @@ namespace Pulumi.Gcp.NetworkSecurity
     /// 
     /// });
     /// ```
+    /// ### Network Security Security Profile Mirroring
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Compute.Network("default", new()
+    ///     {
+    ///         Name = "my-network",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var defaultMirroringDeploymentGroup = new Gcp.NetworkSecurity.MirroringDeploymentGroup("default", new()
+    ///     {
+    ///         MirroringDeploymentGroupId = "my-dg",
+    ///         Location = "global",
+    ///         Network = @default.Id,
+    ///     });
+    /// 
+    ///     var defaultMirroringEndpointGroup = new Gcp.NetworkSecurity.MirroringEndpointGroup("default", new()
+    ///     {
+    ///         MirroringEndpointGroupId = "my-eg",
+    ///         Location = "global",
+    ///         MirroringDeploymentGroup = defaultMirroringDeploymentGroup.Id,
+    ///     });
+    /// 
+    ///     var defaultSecurityProfile = new Gcp.NetworkSecurity.SecurityProfile("default", new()
+    ///     {
+    ///         Name = "my-security-profile",
+    ///         Parent = "organizations/123456789",
+    ///         Description = "my description",
+    ///         Type = "CUSTOM_MIRRORING",
+    ///         CustomMirroringProfile = new Gcp.NetworkSecurity.Inputs.SecurityProfileCustomMirroringProfileArgs
+    ///         {
+    ///             MirroringEndpointGroup = defaultMirroringEndpointGroup.Id,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Network Security Security Profile Intercept
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var @default = new Gcp.Compute.Network("default", new()
+    ///     {
+    ///         Name = "my-network",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var defaultInterceptDeploymentGroup = new Gcp.NetworkSecurity.InterceptDeploymentGroup("default", new()
+    ///     {
+    ///         InterceptDeploymentGroupId = "my-dg",
+    ///         Location = "global",
+    ///         Network = @default.Id,
+    ///     });
+    /// 
+    ///     var defaultInterceptEndpointGroup = new Gcp.NetworkSecurity.InterceptEndpointGroup("default", new()
+    ///     {
+    ///         InterceptEndpointGroupId = "my-eg",
+    ///         Location = "global",
+    ///         InterceptDeploymentGroup = defaultInterceptDeploymentGroup.Id,
+    ///     });
+    /// 
+    ///     var defaultSecurityProfile = new Gcp.NetworkSecurity.SecurityProfile("default", new()
+    ///     {
+    ///         Name = "my-security-profile",
+    ///         Parent = "organizations/123456789",
+    ///         Description = "my description",
+    ///         Type = "CUSTOM_INTERCEPT",
+    ///         CustomInterceptProfile = new Gcp.NetworkSecurity.Inputs.SecurityProfileCustomInterceptProfileArgs
+    ///         {
+    ///             InterceptEndpointGroup = defaultInterceptEndpointGroup.Id,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -109,6 +197,22 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
+
+        /// <summary>
+        /// The configuration for defining the Intercept Endpoint Group used to
+        /// intercept traffic to third-party firewall appliances.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("customInterceptProfile")]
+        public Output<Outputs.SecurityProfileCustomInterceptProfile?> CustomInterceptProfile { get; private set; } = null!;
+
+        /// <summary>
+        /// The configuration for defining the Mirroring Endpoint Group used to
+        /// mirror traffic to third-party collectors.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("customMirroringProfile")]
+        public Output<Outputs.SecurityProfileCustomMirroringProfile?> CustomMirroringProfile { get; private set; } = null!;
 
         /// <summary>
         /// An optional description of the security profile. The Max length is 512 characters.
@@ -184,7 +288,7 @@ namespace Pulumi.Gcp.NetworkSecurity
 
         /// <summary>
         /// The type of security profile.
-        /// Possible values are: `THREAT_PREVENTION`.
+        /// Possible values are: `THREAT_PREVENTION`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
         /// </summary>
         [Output("type")]
         public Output<string> Type { get; private set; } = null!;
@@ -247,6 +351,22 @@ namespace Pulumi.Gcp.NetworkSecurity
     public sealed class SecurityProfileArgs : global::Pulumi.ResourceArgs
     {
         /// <summary>
+        /// The configuration for defining the Intercept Endpoint Group used to
+        /// intercept traffic to third-party firewall appliances.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("customInterceptProfile")]
+        public Input<Inputs.SecurityProfileCustomInterceptProfileArgs>? CustomInterceptProfile { get; set; }
+
+        /// <summary>
+        /// The configuration for defining the Mirroring Endpoint Group used to
+        /// mirror traffic to third-party collectors.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("customMirroringProfile")]
+        public Input<Inputs.SecurityProfileCustomMirroringProfileArgs>? CustomMirroringProfile { get; set; }
+
+        /// <summary>
         /// An optional description of the security profile. The Max length is 512 characters.
         /// </summary>
         [Input("description")]
@@ -299,7 +419,7 @@ namespace Pulumi.Gcp.NetworkSecurity
 
         /// <summary>
         /// The type of security profile.
-        /// Possible values are: `THREAT_PREVENTION`.
+        /// Possible values are: `THREAT_PREVENTION`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
         /// </summary>
         [Input("type", required: true)]
         public Input<string> Type { get; set; } = null!;
@@ -317,6 +437,22 @@ namespace Pulumi.Gcp.NetworkSecurity
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
+
+        /// <summary>
+        /// The configuration for defining the Intercept Endpoint Group used to
+        /// intercept traffic to third-party firewall appliances.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("customInterceptProfile")]
+        public Input<Inputs.SecurityProfileCustomInterceptProfileGetArgs>? CustomInterceptProfile { get; set; }
+
+        /// <summary>
+        /// The configuration for defining the Mirroring Endpoint Group used to
+        /// mirror traffic to third-party collectors.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("customMirroringProfile")]
+        public Input<Inputs.SecurityProfileCustomMirroringProfileGetArgs>? CustomMirroringProfile { get; set; }
 
         /// <summary>
         /// An optional description of the security profile. The Max length is 512 characters.
@@ -418,7 +554,7 @@ namespace Pulumi.Gcp.NetworkSecurity
 
         /// <summary>
         /// The type of security profile.
-        /// Possible values are: `THREAT_PREVENTION`.
+        /// Possible values are: `THREAT_PREVENTION`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
         /// </summary>
         [Input("type")]
         public Input<string>? Type { get; set; }

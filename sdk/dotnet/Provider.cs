@@ -39,6 +39,9 @@ namespace Pulumi.Gcp
         [Output("apigeeCustomEndpoint")]
         public Output<string?> ApigeeCustomEndpoint { get; private set; } = null!;
 
+        [Output("apihubCustomEndpoint")]
+        public Output<string?> ApihubCustomEndpoint { get; private set; } = null!;
+
         [Output("apikeysCustomEndpoint")]
         public Output<string?> ApikeysCustomEndpoint { get; private set; } = null!;
 
@@ -613,6 +616,9 @@ namespace Pulumi.Gcp
 
         [Input("apigeeCustomEndpoint")]
         public Input<string>? ApigeeCustomEndpoint { get; set; }
+
+        [Input("apihubCustomEndpoint")]
+        public Input<string>? ApihubCustomEndpoint { get; set; }
 
         [Input("apikeysCustomEndpoint")]
         public Input<string>? ApikeysCustomEndpoint { get; set; }

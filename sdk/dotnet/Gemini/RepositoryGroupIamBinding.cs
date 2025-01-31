@@ -10,6 +10,211 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Gemini
 {
     /// <summary>
+    /// Three different resources help you manage your IAM policy for Gemini for Google Cloud RepositoryGroup. Each of these resources serves a different use case:
+    /// 
+    /// * `gcp.gemini.RepositoryGroupIamPolicy`: Authoritative. Sets the IAM policy for the repositorygroup and replaces any existing policy already attached.
+    /// * `gcp.gemini.RepositoryGroupIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the repositorygroup are preserved.
+    /// * `gcp.gemini.RepositoryGroupIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the repositorygroup are preserved.
+    /// 
+    /// A data source can be used to retrieve policy data in advent you do not need creation
+    /// 
+    /// * `gcp.gemini.RepositoryGroupIamPolicy`: Retrieves the IAM policy for the repositorygroup
+    /// 
+    /// &gt; **Note:** `gcp.gemini.RepositoryGroupIamPolicy` **cannot** be used in conjunction with `gcp.gemini.RepositoryGroupIamBinding` and `gcp.gemini.RepositoryGroupIamMember` or they will fight over what your policy should be.
+    /// 
+    /// &gt; **Note:** `gcp.gemini.RepositoryGroupIamBinding` resources **can be** used in conjunction with `gcp.gemini.RepositoryGroupIamMember` resources **only if** they do not grant privilege to the same role.
+    /// 
+    /// ## gcp.gemini.RepositoryGroupIamPolicy
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     {
+    ///         Bindings = new[]
+    ///         {
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             {
+    ///                 Role = "roles/cloudaicompanion.repositoryGroupsUser",
+    ///                 Members = new[]
+    ///                 {
+    ///                     "user:jane@example.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var policy = new Gcp.Gemini.RepositoryGroupIamPolicy("policy", new()
+    ///     {
+    ///         Project = example.Project,
+    ///         Location = example.Location,
+    ///         CodeRepositoryIndex = example.CodeRepositoryIndex,
+    ///         RepositoryGroupId = example.RepositoryGroupId,
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## gcp.gemini.RepositoryGroupIamBinding
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var binding = new Gcp.Gemini.RepositoryGroupIamBinding("binding", new()
+    ///     {
+    ///         Project = example.Project,
+    ///         Location = example.Location,
+    ///         CodeRepositoryIndex = example.CodeRepositoryIndex,
+    ///         RepositoryGroupId = example.RepositoryGroupId,
+    ///         Role = "roles/cloudaicompanion.repositoryGroupsUser",
+    ///         Members = new[]
+    ///         {
+    ///             "user:jane@example.com",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## gcp.gemini.RepositoryGroupIamMember
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var member = new Gcp.Gemini.RepositoryGroupIamMember("member", new()
+    ///     {
+    ///         Project = example.Project,
+    ///         Location = example.Location,
+    ///         CodeRepositoryIndex = example.CodeRepositoryIndex,
+    ///         RepositoryGroupId = example.RepositoryGroupId,
+    ///         Role = "roles/cloudaicompanion.repositoryGroupsUser",
+    ///         Member = "user:jane@example.com",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## This resource supports User Project Overrides.
+    /// 
+    /// - 
+    /// 
+    /// # IAM policy for Gemini for Google Cloud RepositoryGroup
+    /// Three different resources help you manage your IAM policy for Gemini for Google Cloud RepositoryGroup. Each of these resources serves a different use case:
+    /// 
+    /// * `gcp.gemini.RepositoryGroupIamPolicy`: Authoritative. Sets the IAM policy for the repositorygroup and replaces any existing policy already attached.
+    /// * `gcp.gemini.RepositoryGroupIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the repositorygroup are preserved.
+    /// * `gcp.gemini.RepositoryGroupIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the repositorygroup are preserved.
+    /// 
+    /// A data source can be used to retrieve policy data in advent you do not need creation
+    /// 
+    /// * `gcp.gemini.RepositoryGroupIamPolicy`: Retrieves the IAM policy for the repositorygroup
+    /// 
+    /// &gt; **Note:** `gcp.gemini.RepositoryGroupIamPolicy` **cannot** be used in conjunction with `gcp.gemini.RepositoryGroupIamBinding` and `gcp.gemini.RepositoryGroupIamMember` or they will fight over what your policy should be.
+    /// 
+    /// &gt; **Note:** `gcp.gemini.RepositoryGroupIamBinding` resources **can be** used in conjunction with `gcp.gemini.RepositoryGroupIamMember` resources **only if** they do not grant privilege to the same role.
+    /// 
+    /// ## gcp.gemini.RepositoryGroupIamPolicy
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var admin = Gcp.Organizations.GetIAMPolicy.Invoke(new()
+    ///     {
+    ///         Bindings = new[]
+    ///         {
+    ///             new Gcp.Organizations.Inputs.GetIAMPolicyBindingInputArgs
+    ///             {
+    ///                 Role = "roles/cloudaicompanion.repositoryGroupsUser",
+    ///                 Members = new[]
+    ///                 {
+    ///                     "user:jane@example.com",
+    ///                 },
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    ///     var policy = new Gcp.Gemini.RepositoryGroupIamPolicy("policy", new()
+    ///     {
+    ///         Project = example.Project,
+    ///         Location = example.Location,
+    ///         CodeRepositoryIndex = example.CodeRepositoryIndex,
+    ///         RepositoryGroupId = example.RepositoryGroupId,
+    ///         PolicyData = admin.Apply(getIAMPolicyResult =&gt; getIAMPolicyResult.PolicyData),
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## gcp.gemini.RepositoryGroupIamBinding
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var binding = new Gcp.Gemini.RepositoryGroupIamBinding("binding", new()
+    ///     {
+    ///         Project = example.Project,
+    ///         Location = example.Location,
+    ///         CodeRepositoryIndex = example.CodeRepositoryIndex,
+    ///         RepositoryGroupId = example.RepositoryGroupId,
+    ///         Role = "roles/cloudaicompanion.repositoryGroupsUser",
+    ///         Members = new[]
+    ///         {
+    ///             "user:jane@example.com",
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
+    /// ## gcp.gemini.RepositoryGroupIamMember
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var member = new Gcp.Gemini.RepositoryGroupIamMember("member", new()
+    ///     {
+    ///         Project = example.Project,
+    ///         Location = example.Location,
+    ///         CodeRepositoryIndex = example.CodeRepositoryIndex,
+    ///         RepositoryGroupId = example.RepositoryGroupId,
+    ///         Role = "roles/cloudaicompanion.repositoryGroupsUser",
+    ///         Member = "user:jane@example.com",
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// 
     /// ## Import
     /// 
     /// For all import syntaxes, the "resource in question" can take any of the following forms:

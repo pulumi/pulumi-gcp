@@ -18,7 +18,56 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * The resource for managing Repository Group for Gemini Code Assist.
+ * 
+ * To get more information about RepositoryGroup, see:
+ * 
+ * * [API documentation](https://cloud.google.com/gemini/docs/api/reference/rest/v1/projects.locations.codeRepositoryIndexes.repositoryGroups)
+ * 
  * ## Example Usage
+ * 
+ * ### Gemini Repository Group Basic
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.gemini.RepositoryGroup;
+ * import com.pulumi.gcp.gemini.RepositoryGroupArgs;
+ * import com.pulumi.gcp.gemini.inputs.RepositoryGroupRepositoryArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var example = new RepositoryGroup("example", RepositoryGroupArgs.builder()
+ *             .location("us-central1")
+ *             .codeRepositoryIndex("example-cri")
+ *             .repositoryGroupId("example-repository-group")
+ *             .repositories(RepositoryGroupRepositoryArgs.builder()
+ *                 .resource("projects/example-project/locations/us-central1/connections/example-connection/gitRepositoryLinks/example-repo")
+ *                 .branchPattern("main")
+ *                 .build())
+ *             .labels(Map.of("label1", "value1"))
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -62,14 +111,14 @@ public class RepositoryGroup extends com.pulumi.resources.CustomResource {
         return this.codeRepositoryIndex;
     }
     /**
-     * Output only. Create time stamp
+     * Output only. Create time stamp.
      * 
      */
     @Export(name="createTime", refs={String.class}, tree="[0]")
     private Output<String> createTime;
 
     /**
-     * @return Output only. Create time stamp
+     * @return Output only. Create time stamp.
      * 
      */
     public Output<String> createTime() {
@@ -90,7 +139,7 @@ public class RepositoryGroup extends com.pulumi.resources.CustomResource {
         return this.effectiveLabels;
     }
     /**
-     * Optional. Labels as key value pairs **Note**: This field is non-authoritative, and will only manage the labels present
+     * Optional. Labels as key value pairs. **Note**: This field is non-authoritative, and will only manage the labels present
      * in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
      * 
      */
@@ -98,7 +147,7 @@ public class RepositoryGroup extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Map<String,String>> labels;
 
     /**
-     * @return Optional. Labels as key value pairs **Note**: This field is non-authoritative, and will only manage the labels present
+     * @return Optional. Labels as key value pairs. **Note**: This field is non-authoritative, and will only manage the labels present
      * in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
      * 
      */
@@ -120,14 +169,14 @@ public class RepositoryGroup extends com.pulumi.resources.CustomResource {
         return this.location;
     }
     /**
-     * Immutable. Identifier. name of resource
+     * Immutable. Identifier. Name of Repository Group.
      * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
 
     /**
-     * @return Immutable. Identifier. name of resource
+     * @return Immutable. Identifier. Name of Repository Group.
      * 
      */
     public Output<String> name() {
@@ -156,7 +205,7 @@ public class RepositoryGroup extends com.pulumi.resources.CustomResource {
         return this.pulumiLabels;
     }
     /**
-     * Required. List of repositories to group
+     * Required. List of repositories to group.
      * Structure is documented below.
      * 
      */
@@ -164,7 +213,7 @@ public class RepositoryGroup extends com.pulumi.resources.CustomResource {
     private Output<List<RepositoryGroupRepository>> repositories;
 
     /**
-     * @return Required. List of repositories to group
+     * @return Required. List of repositories to group.
      * Structure is documented below.
      * 
      */
@@ -186,14 +235,14 @@ public class RepositoryGroup extends com.pulumi.resources.CustomResource {
         return this.repositoryGroupId;
     }
     /**
-     * Output only. Update time stamp
+     * Output only. Update time stamp.
      * 
      */
     @Export(name="updateTime", refs={String.class}, tree="[0]")
     private Output<String> updateTime;
 
     /**
-     * @return Output only. Update time stamp
+     * @return Output only. Update time stamp.
      * 
      */
     public Output<String> updateTime() {

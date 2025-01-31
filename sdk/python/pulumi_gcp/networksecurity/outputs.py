@@ -55,6 +55,8 @@ __all__ = [
     'InterceptEndpointGroupAssociationLocationsDetail',
     'MirroringDeploymentGroupConnectedEndpointGroup',
     'MirroringEndpointGroupAssociationLocationsDetail',
+    'SecurityProfileCustomInterceptProfile',
+    'SecurityProfileCustomMirroringProfile',
     'SecurityProfileThreatPreventionProfile',
     'SecurityProfileThreatPreventionProfileSeverityOverride',
     'SecurityProfileThreatPreventionProfileThreatOverride',
@@ -2063,6 +2065,80 @@ class MirroringEndpointGroupAssociationLocationsDetail(dict):
         OUT_OF_SYNC
         """
         return pulumi.get(self, "state")
+
+
+@pulumi.output_type
+class SecurityProfileCustomInterceptProfile(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "interceptEndpointGroup":
+            suggest = "intercept_endpoint_group"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecurityProfileCustomInterceptProfile. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecurityProfileCustomInterceptProfile.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecurityProfileCustomInterceptProfile.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 intercept_endpoint_group: str):
+        """
+        :param str intercept_endpoint_group: The Intercept Endpoint Group to which matching traffic should be intercepted.
+               Format: projects/{project_id}/locations/global/interceptEndpointGroups/{endpoint_group_id}
+        """
+        pulumi.set(__self__, "intercept_endpoint_group", intercept_endpoint_group)
+
+    @property
+    @pulumi.getter(name="interceptEndpointGroup")
+    def intercept_endpoint_group(self) -> str:
+        """
+        The Intercept Endpoint Group to which matching traffic should be intercepted.
+        Format: projects/{project_id}/locations/global/interceptEndpointGroups/{endpoint_group_id}
+        """
+        return pulumi.get(self, "intercept_endpoint_group")
+
+
+@pulumi.output_type
+class SecurityProfileCustomMirroringProfile(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "mirroringEndpointGroup":
+            suggest = "mirroring_endpoint_group"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in SecurityProfileCustomMirroringProfile. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        SecurityProfileCustomMirroringProfile.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        SecurityProfileCustomMirroringProfile.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 mirroring_endpoint_group: str):
+        """
+        :param str mirroring_endpoint_group: The Mirroring Endpoint Group to which matching traffic should be mirrored.
+               Format: projects/{project_id}/locations/global/mirroringEndpointGroups/{endpoint_group_id}
+        """
+        pulumi.set(__self__, "mirroring_endpoint_group", mirroring_endpoint_group)
+
+    @property
+    @pulumi.getter(name="mirroringEndpointGroup")
+    def mirroring_endpoint_group(self) -> str:
+        """
+        The Mirroring Endpoint Group to which matching traffic should be mirrored.
+        Format: projects/{project_id}/locations/global/mirroringEndpointGroups/{endpoint_group_id}
+        """
+        return pulumi.get(self, "mirroring_endpoint_group")
 
 
 @pulumi.output_type

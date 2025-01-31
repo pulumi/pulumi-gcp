@@ -26,7 +26,7 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var addressGroup1 = new Gcp.NetworkSecurity.AddressGroup("address_group_1", new()
     ///     {
-    ///         Name = "tf-address-group",
+    ///         Name = "address-group",
     ///         Parent = project.Apply(getProjectResult =&gt; getProjectResult.Id),
     ///         Description = "Global address group",
     ///         Location = "global",
@@ -43,7 +43,7 @@ namespace Pulumi.Gcp.Compute
     ///         Description = "Tag key",
     ///         Parent = project.Apply(getProjectResult =&gt; getProjectResult.Id),
     ///         Purpose = "GCE_FIREWALL",
-    ///         ShortName = "tf-tag-key",
+    ///         ShortName = "tag-key",
     ///         PurposeData = 
     ///         {
     ///             { "network", $"{project.Apply(getProjectResult =&gt; getProjectResult.Name)}/default" },
@@ -54,12 +54,12 @@ namespace Pulumi.Gcp.Compute
     ///     {
     ///         Description = "Tag value",
     ///         Parent = secureTagKey1.Id,
-    ///         ShortName = "tf-tag-value",
+    ///         ShortName = "tag-value",
     ///     });
     /// 
     ///     var securityProfile1 = new Gcp.NetworkSecurity.SecurityProfile("security_profile_1", new()
     ///     {
-    ///         Name = "tf-security-profile",
+    ///         Name = "sp",
     ///         Type = "THREAT_PREVENTION",
     ///         Parent = "organizations/123456789",
     ///         Location = "global",
@@ -67,15 +67,21 @@ namespace Pulumi.Gcp.Compute
     /// 
     ///     var securityProfileGroup1 = new Gcp.NetworkSecurity.SecurityProfileGroup("security_profile_group_1", new()
     ///     {
-    ///         Name = "tf-security-profile-group",
+    ///         Name = "spg",
     ///         Parent = "organizations/123456789",
     ///         Description = "my description",
     ///         ThreatPreventionProfile = securityProfile1.Id,
     ///     });
     /// 
-    ///     var network_firewall_policy_with_rules = new Gcp.Compute.NetworkFirewallPolicyWithRules("network-firewall-policy-with-rules", new()
+    ///     var network = new Gcp.Compute.Network("network", new()
     ///     {
-    ///         Name = "tf-fw-policy-with-rules",
+    ///         Name = "network",
+    ///         AutoCreateSubnetworks = false,
+    ///     });
+    /// 
+    ///     var primary = new Gcp.Compute.NetworkFirewallPolicyWithRules("primary", new()
+    ///     {
+    ///         Name = "fw-policy",
     ///         Description = "Terraform test",
     ///         Rules = new[]
     ///         {
@@ -88,18 +94,6 @@ namespace Pulumi.Gcp.Compute
     ///                 Direction = "EGRESS",
     ///                 Match = new Gcp.Compute.Inputs.NetworkFirewallPolicyWithRulesRuleMatchArgs
     ///                 {
-    ///                     Layer4Configs = new[]
-    ///                     {
-    ///                         new Gcp.Compute.Inputs.NetworkFirewallPolicyWithRulesRuleMatchLayer4ConfigArgs
-    ///                         {
-    ///                             IpProtocol = "tcp",
-    ///                             Ports = new[]
-    ///                             {
-    ///                                 "8080",
-    ///                                 "7070",
-    ///                             },
-    ///                         },
-    ///                     },
     ///                     DestIpRanges = new[]
     ///                     {
     ///                         "11.100.0.1/32",
@@ -123,6 +117,18 @@ namespace Pulumi.Gcp.Compute
     ///                     {
     ///                         addressGroup1.Id,
     ///                     },
+    ///                     Layer4Configs = new[]
+    ///                     {
+    ///                         new Gcp.Compute.Inputs.NetworkFirewallPolicyWithRulesRuleMatchLayer4ConfigArgs
+    ///                         {
+    ///                             IpProtocol = "tcp",
+    ///                             Ports = new[]
+    ///                             {
+    ///                                 "8080",
+    ///                                 "7070",
+    ///                             },
+    ///                         },
+    ///                     },
     ///                 },
     ///                 TargetSecureTags = new[]
     ///                 {
@@ -139,15 +145,9 @@ namespace Pulumi.Gcp.Compute
     ///                 EnableLogging = false,
     ///                 Action = "deny",
     ///                 Direction = "INGRESS",
+    ///                 Disabled = true,
     ///                 Match = new Gcp.Compute.Inputs.NetworkFirewallPolicyWithRulesRuleMatchArgs
     ///                 {
-    ///                     Layer4Configs = new[]
-    ///                     {
-    ///                         new Gcp.Compute.Inputs.NetworkFirewallPolicyWithRulesRuleMatchLayer4ConfigArgs
-    ///                         {
-    ///                             IpProtocol = "udp",
-    ///                         },
-    ///                     },
     ///                     SrcIpRanges = new[]
     ///                     {
     ///                         "0.0.0.0/0",
@@ -178,8 +178,14 @@ namespace Pulumi.Gcp.Compute
     ///                             Name = secureTagValue1.Id,
     ///                         },
     ///                     },
+    ///                     Layer4Configs = new[]
+    ///                     {
+    ///                         new Gcp.Compute.Inputs.NetworkFirewallPolicyWithRulesRuleMatchLayer4ConfigArgs
+    ///                         {
+    ///                             IpProtocol = "udp",
+    ///                         },
+    ///                     },
     ///                 },
-    ///                 Disabled = true,
     ///             },
     ///             new Gcp.Compute.Inputs.NetworkFirewallPolicyWithRulesRuleArgs
     ///             {
@@ -189,8 +195,18 @@ namespace Pulumi.Gcp.Compute
     ///                 EnableLogging = false,
     ///                 Action = "apply_security_profile_group",
     ///                 Direction = "INGRESS",
+    ///                 TargetServiceAccounts = new[]
+    ///                 {
+    ///                     "test@google.com",
+    ///                 },
+    ///                 SecurityProfileGroup = securityProfileGroup1.Id.Apply(id =&gt; $"//networksecurity.googleapis.com/{id}"),
+    ///                 TlsInspect = true,
     ///                 Match = new Gcp.Compute.Inputs.NetworkFirewallPolicyWithRulesRuleMatchArgs
     ///                 {
+    ///                     SrcIpRanges = new[]
+    ///                     {
+    ///                         "0.0.0.0/0",
+    ///                     },
     ///                     Layer4Configs = new[]
     ///                     {
     ///                         new Gcp.Compute.Inputs.NetworkFirewallPolicyWithRulesRuleMatchLayer4ConfigArgs
@@ -198,17 +214,67 @@ namespace Pulumi.Gcp.Compute
     ///                             IpProtocol = "tcp",
     ///                         },
     ///                     },
+    ///                 },
+    ///             },
+    ///             new Gcp.Compute.Inputs.NetworkFirewallPolicyWithRulesRuleArgs
+    ///             {
+    ///                 Description = "network scope rule 1",
+    ///                 RuleName = "network scope 1",
+    ///                 Priority = 4000,
+    ///                 EnableLogging = false,
+    ///                 Action = "allow",
+    ///                 Direction = "INGRESS",
+    ///                 Match = new Gcp.Compute.Inputs.NetworkFirewallPolicyWithRulesRuleMatchArgs
+    ///                 {
     ///                     SrcIpRanges = new[]
+    ///                     {
+    ///                         "11.100.0.1/32",
+    ///                     },
+    ///                     SrcNetworkScope = "VPC_NETWORKS",
+    ///                     SrcNetworks = new[]
+    ///                     {
+    ///                         network.Id,
+    ///                     },
+    ///                     Layer4Configs = new[]
+    ///                     {
+    ///                         new Gcp.Compute.Inputs.NetworkFirewallPolicyWithRulesRuleMatchLayer4ConfigArgs
+    ///                         {
+    ///                             IpProtocol = "tcp",
+    ///                             Ports = new[]
+    ///                             {
+    ///                                 "8080",
+    ///                             },
+    ///                         },
+    ///                     },
+    ///                 },
+    ///             },
+    ///             new Gcp.Compute.Inputs.NetworkFirewallPolicyWithRulesRuleArgs
+    ///             {
+    ///                 Description = "network scope rule 2",
+    ///                 RuleName = "network scope 2",
+    ///                 Priority = 5000,
+    ///                 EnableLogging = false,
+    ///                 Action = "allow",
+    ///                 Direction = "EGRESS",
+    ///                 Match = new Gcp.Compute.Inputs.NetworkFirewallPolicyWithRulesRuleMatchArgs
+    ///                 {
+    ///                     DestIpRanges = new[]
     ///                     {
     ///                         "0.0.0.0/0",
     ///                     },
+    ///                     DestNetworkScope = "INTERNET",
+    ///                     Layer4Configs = new[]
+    ///                     {
+    ///                         new Gcp.Compute.Inputs.NetworkFirewallPolicyWithRulesRuleMatchLayer4ConfigArgs
+    ///                         {
+    ///                             IpProtocol = "tcp",
+    ///                             Ports = new[]
+    ///                             {
+    ///                                 "8080",
+    ///                             },
+    ///                         },
+    ///                     },
     ///                 },
-    ///                 TargetServiceAccounts = new[]
-    ///                 {
-    ///                     "test@google.com",
-    ///                 },
-    ///                 SecurityProfileGroup = securityProfileGroup1.Id.Apply(id =&gt; $"//networksecurity.googleapis.com/{id}"),
-    ///                 TlsInspect = true,
     ///             },
     ///         },
     ///     });

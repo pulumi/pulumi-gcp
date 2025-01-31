@@ -30,6 +30,7 @@ __all__ = [
     'GetIAMPolicyAuditConfigAuditLogConfigResult',
     'GetIAMPolicyBindingResult',
     'GetIAMPolicyBindingConditionResult',
+    'GetSOrganizationResult',
 ]
 
 @pulumi.output_type
@@ -674,5 +675,67 @@ class GetIAMPolicyBindingConditionResult(dict):
         An optional description of the expression. This is a longer text which describes the expression, e.g. when hovered over it in a UI.
         """
         return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class GetSOrganizationResult(dict):
+    def __init__(__self__, *,
+                 directory_customer_id: str,
+                 display_name: str,
+                 lifecycle_state: str,
+                 name: str,
+                 org_id: str):
+        """
+        :param str directory_customer_id: The Google for Work customer ID of the Organization.
+        :param str display_name: A human-readable string that refers to the Organization in the Google Cloud console. The string will be set to the primary domain (for example, `"google.com"`) of the G Suite customer that owns the organization.
+        :param str lifecycle_state: The Organization's current lifecycle state.
+        :param str name: The resource name of the Organization in the form `organizations/{organization_id}`.
+        :param str org_id: The Organization ID.
+        """
+        pulumi.set(__self__, "directory_customer_id", directory_customer_id)
+        pulumi.set(__self__, "display_name", display_name)
+        pulumi.set(__self__, "lifecycle_state", lifecycle_state)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "org_id", org_id)
+
+    @property
+    @pulumi.getter(name="directoryCustomerId")
+    def directory_customer_id(self) -> str:
+        """
+        The Google for Work customer ID of the Organization.
+        """
+        return pulumi.get(self, "directory_customer_id")
+
+    @property
+    @pulumi.getter(name="displayName")
+    def display_name(self) -> str:
+        """
+        A human-readable string that refers to the Organization in the Google Cloud console. The string will be set to the primary domain (for example, `"google.com"`) of the G Suite customer that owns the organization.
+        """
+        return pulumi.get(self, "display_name")
+
+    @property
+    @pulumi.getter(name="lifecycleState")
+    def lifecycle_state(self) -> str:
+        """
+        The Organization's current lifecycle state.
+        """
+        return pulumi.get(self, "lifecycle_state")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The resource name of the Organization in the form `organizations/{organization_id}`.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="orgId")
+    def org_id(self) -> str:
+        """
+        The Organization ID.
+        """
+        return pulumi.get(self, "org_id")
 
 

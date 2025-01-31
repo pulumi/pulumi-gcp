@@ -17,6 +17,36 @@ public final class SecurityProfileGroupArgs extends com.pulumi.resources.Resourc
     public static final SecurityProfileGroupArgs Empty = new SecurityProfileGroupArgs();
 
     /**
+     * Reference to a SecurityProfile with the CustomIntercept configuration.
+     * 
+     */
+    @Import(name="customInterceptProfile")
+    private @Nullable Output<String> customInterceptProfile;
+
+    /**
+     * @return Reference to a SecurityProfile with the CustomIntercept configuration.
+     * 
+     */
+    public Optional<Output<String>> customInterceptProfile() {
+        return Optional.ofNullable(this.customInterceptProfile);
+    }
+
+    /**
+     * Reference to a SecurityProfile with the custom mirroring configuration for the SecurityProfileGroup.
+     * 
+     */
+    @Import(name="customMirroringProfile")
+    private @Nullable Output<String> customMirroringProfile;
+
+    /**
+     * @return Reference to a SecurityProfile with the custom mirroring configuration for the SecurityProfileGroup.
+     * 
+     */
+    public Optional<Output<String>> customMirroringProfile() {
+        return Optional.ofNullable(this.customMirroringProfile);
+    }
+
+    /**
      * An optional description of the profile. The Max length is 512 characters.
      * 
      */
@@ -123,6 +153,8 @@ public final class SecurityProfileGroupArgs extends com.pulumi.resources.Resourc
     private SecurityProfileGroupArgs() {}
 
     private SecurityProfileGroupArgs(SecurityProfileGroupArgs $) {
+        this.customInterceptProfile = $.customInterceptProfile;
+        this.customMirroringProfile = $.customMirroringProfile;
         this.description = $.description;
         this.labels = $.labels;
         this.location = $.location;
@@ -147,6 +179,48 @@ public final class SecurityProfileGroupArgs extends com.pulumi.resources.Resourc
 
         public Builder(SecurityProfileGroupArgs defaults) {
             $ = new SecurityProfileGroupArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param customInterceptProfile Reference to a SecurityProfile with the CustomIntercept configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customInterceptProfile(@Nullable Output<String> customInterceptProfile) {
+            $.customInterceptProfile = customInterceptProfile;
+            return this;
+        }
+
+        /**
+         * @param customInterceptProfile Reference to a SecurityProfile with the CustomIntercept configuration.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customInterceptProfile(String customInterceptProfile) {
+            return customInterceptProfile(Output.of(customInterceptProfile));
+        }
+
+        /**
+         * @param customMirroringProfile Reference to a SecurityProfile with the custom mirroring configuration for the SecurityProfileGroup.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customMirroringProfile(@Nullable Output<String> customMirroringProfile) {
+            $.customMirroringProfile = customMirroringProfile;
+            return this;
+        }
+
+        /**
+         * @param customMirroringProfile Reference to a SecurityProfile with the custom mirroring configuration for the SecurityProfileGroup.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customMirroringProfile(String customMirroringProfile) {
+            return customMirroringProfile(Output.of(customMirroringProfile));
         }
 
         /**

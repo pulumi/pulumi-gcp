@@ -51,6 +51,13 @@ namespace Pulumi.Gcp.Compute.Inputs
             set => _destIpRanges = value;
         }
 
+        /// <summary>
+        /// Network scope of the traffic destination.
+        /// Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+        /// </summary>
+        [Input("destNetworkScope")]
+        public Input<string>? DestNetworkScope { get; set; }
+
         [Input("destRegionCodes")]
         private InputList<string>? _destRegionCodes;
 
@@ -132,6 +139,25 @@ namespace Pulumi.Gcp.Compute.Inputs
         {
             get => _srcIpRanges ?? (_srcIpRanges = new InputList<string>());
             set => _srcIpRanges = value;
+        }
+
+        /// <summary>
+        /// Network scope of the traffic source.
+        /// Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+        /// </summary>
+        [Input("srcNetworkScope")]
+        public Input<string>? SrcNetworkScope { get; set; }
+
+        [Input("srcNetworks")]
+        private InputList<string>? _srcNetworks;
+
+        /// <summary>
+        /// Networks of the traffic source. It can be either a full or partial url.
+        /// </summary>
+        public InputList<string> SrcNetworks
+        {
+            get => _srcNetworks ?? (_srcNetworks = new InputList<string>());
+            set => _srcNetworks = value;
         }
 
         [Input("srcRegionCodes")]

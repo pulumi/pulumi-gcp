@@ -59,6 +59,8 @@ __all__ = [
     'TopicIngestionDataSourceSettingsArgsDict',
     'TopicIngestionDataSourceSettingsAwsKinesisArgs',
     'TopicIngestionDataSourceSettingsAwsKinesisArgsDict',
+    'TopicIngestionDataSourceSettingsAzureEventHubsArgs',
+    'TopicIngestionDataSourceSettingsAzureEventHubsArgsDict',
     'TopicIngestionDataSourceSettingsCloudStorageArgs',
     'TopicIngestionDataSourceSettingsCloudStorageArgsDict',
     'TopicIngestionDataSourceSettingsCloudStorageAvroFormatArgs',
@@ -1508,6 +1510,11 @@ if not MYPY:
         Settings for ingestion from Amazon Kinesis Data Streams.
         Structure is documented below.
         """
+        azure_event_hubs: NotRequired[pulumi.Input['TopicIngestionDataSourceSettingsAzureEventHubsArgsDict']]
+        """
+        Settings for ingestion from Azure Event Hubs.
+        Structure is documented below.
+        """
         cloud_storage: NotRequired[pulumi.Input['TopicIngestionDataSourceSettingsCloudStorageArgsDict']]
         """
         Settings for ingestion from Cloud Storage.
@@ -1526,10 +1533,13 @@ elif False:
 class TopicIngestionDataSourceSettingsArgs:
     def __init__(__self__, *,
                  aws_kinesis: Optional[pulumi.Input['TopicIngestionDataSourceSettingsAwsKinesisArgs']] = None,
+                 azure_event_hubs: Optional[pulumi.Input['TopicIngestionDataSourceSettingsAzureEventHubsArgs']] = None,
                  cloud_storage: Optional[pulumi.Input['TopicIngestionDataSourceSettingsCloudStorageArgs']] = None,
                  platform_logs_settings: Optional[pulumi.Input['TopicIngestionDataSourceSettingsPlatformLogsSettingsArgs']] = None):
         """
         :param pulumi.Input['TopicIngestionDataSourceSettingsAwsKinesisArgs'] aws_kinesis: Settings for ingestion from Amazon Kinesis Data Streams.
+               Structure is documented below.
+        :param pulumi.Input['TopicIngestionDataSourceSettingsAzureEventHubsArgs'] azure_event_hubs: Settings for ingestion from Azure Event Hubs.
                Structure is documented below.
         :param pulumi.Input['TopicIngestionDataSourceSettingsCloudStorageArgs'] cloud_storage: Settings for ingestion from Cloud Storage.
                Structure is documented below.
@@ -1539,6 +1549,8 @@ class TopicIngestionDataSourceSettingsArgs:
         """
         if aws_kinesis is not None:
             pulumi.set(__self__, "aws_kinesis", aws_kinesis)
+        if azure_event_hubs is not None:
+            pulumi.set(__self__, "azure_event_hubs", azure_event_hubs)
         if cloud_storage is not None:
             pulumi.set(__self__, "cloud_storage", cloud_storage)
         if platform_logs_settings is not None:
@@ -1556,6 +1568,19 @@ class TopicIngestionDataSourceSettingsArgs:
     @aws_kinesis.setter
     def aws_kinesis(self, value: Optional[pulumi.Input['TopicIngestionDataSourceSettingsAwsKinesisArgs']]):
         pulumi.set(self, "aws_kinesis", value)
+
+    @property
+    @pulumi.getter(name="azureEventHubs")
+    def azure_event_hubs(self) -> Optional[pulumi.Input['TopicIngestionDataSourceSettingsAzureEventHubsArgs']]:
+        """
+        Settings for ingestion from Azure Event Hubs.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "azure_event_hubs")
+
+    @azure_event_hubs.setter
+    def azure_event_hubs(self, value: Optional[pulumi.Input['TopicIngestionDataSourceSettingsAzureEventHubsArgs']]):
+        pulumi.set(self, "azure_event_hubs", value)
 
     @property
     @pulumi.getter(name="cloudStorage")
@@ -1692,6 +1717,164 @@ class TopicIngestionDataSourceSettingsAwsKinesisArgs:
     @stream_arn.setter
     def stream_arn(self, value: pulumi.Input[str]):
         pulumi.set(self, "stream_arn", value)
+
+
+if not MYPY:
+    class TopicIngestionDataSourceSettingsAzureEventHubsArgsDict(TypedDict):
+        client_id: NotRequired[pulumi.Input[str]]
+        """
+        The Azure event hub client ID to use for ingestion.
+        """
+        event_hub: NotRequired[pulumi.Input[str]]
+        """
+        The Azure event hub to ingest data from.
+        """
+        gcp_service_account: NotRequired[pulumi.Input[str]]
+        """
+        The GCP service account to be used for Federated Identity authentication
+        with Azure (via a `AssumeRoleWithWebIdentity` call for the provided
+        role).
+        """
+        namespace: NotRequired[pulumi.Input[str]]
+        """
+        The Azure event hub namespace to ingest data from.
+        """
+        resource_group: NotRequired[pulumi.Input[str]]
+        """
+        The name of the resource group within an Azure subscription.
+        """
+        subscription_id: NotRequired[pulumi.Input[str]]
+        """
+        The Azure event hub subscription ID to use for ingestion.
+        """
+        tenant_id: NotRequired[pulumi.Input[str]]
+        """
+        The Azure event hub tenant ID to use for ingestion.
+        """
+elif False:
+    TopicIngestionDataSourceSettingsAzureEventHubsArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class TopicIngestionDataSourceSettingsAzureEventHubsArgs:
+    def __init__(__self__, *,
+                 client_id: Optional[pulumi.Input[str]] = None,
+                 event_hub: Optional[pulumi.Input[str]] = None,
+                 gcp_service_account: Optional[pulumi.Input[str]] = None,
+                 namespace: Optional[pulumi.Input[str]] = None,
+                 resource_group: Optional[pulumi.Input[str]] = None,
+                 subscription_id: Optional[pulumi.Input[str]] = None,
+                 tenant_id: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] client_id: The Azure event hub client ID to use for ingestion.
+        :param pulumi.Input[str] event_hub: The Azure event hub to ingest data from.
+        :param pulumi.Input[str] gcp_service_account: The GCP service account to be used for Federated Identity authentication
+               with Azure (via a `AssumeRoleWithWebIdentity` call for the provided
+               role).
+        :param pulumi.Input[str] namespace: The Azure event hub namespace to ingest data from.
+        :param pulumi.Input[str] resource_group: The name of the resource group within an Azure subscription.
+        :param pulumi.Input[str] subscription_id: The Azure event hub subscription ID to use for ingestion.
+        :param pulumi.Input[str] tenant_id: The Azure event hub tenant ID to use for ingestion.
+        """
+        if client_id is not None:
+            pulumi.set(__self__, "client_id", client_id)
+        if event_hub is not None:
+            pulumi.set(__self__, "event_hub", event_hub)
+        if gcp_service_account is not None:
+            pulumi.set(__self__, "gcp_service_account", gcp_service_account)
+        if namespace is not None:
+            pulumi.set(__self__, "namespace", namespace)
+        if resource_group is not None:
+            pulumi.set(__self__, "resource_group", resource_group)
+        if subscription_id is not None:
+            pulumi.set(__self__, "subscription_id", subscription_id)
+        if tenant_id is not None:
+            pulumi.set(__self__, "tenant_id", tenant_id)
+
+    @property
+    @pulumi.getter(name="clientId")
+    def client_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Azure event hub client ID to use for ingestion.
+        """
+        return pulumi.get(self, "client_id")
+
+    @client_id.setter
+    def client_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "client_id", value)
+
+    @property
+    @pulumi.getter(name="eventHub")
+    def event_hub(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Azure event hub to ingest data from.
+        """
+        return pulumi.get(self, "event_hub")
+
+    @event_hub.setter
+    def event_hub(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "event_hub", value)
+
+    @property
+    @pulumi.getter(name="gcpServiceAccount")
+    def gcp_service_account(self) -> Optional[pulumi.Input[str]]:
+        """
+        The GCP service account to be used for Federated Identity authentication
+        with Azure (via a `AssumeRoleWithWebIdentity` call for the provided
+        role).
+        """
+        return pulumi.get(self, "gcp_service_account")
+
+    @gcp_service_account.setter
+    def gcp_service_account(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "gcp_service_account", value)
+
+    @property
+    @pulumi.getter
+    def namespace(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Azure event hub namespace to ingest data from.
+        """
+        return pulumi.get(self, "namespace")
+
+    @namespace.setter
+    def namespace(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "namespace", value)
+
+    @property
+    @pulumi.getter(name="resourceGroup")
+    def resource_group(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the resource group within an Azure subscription.
+        """
+        return pulumi.get(self, "resource_group")
+
+    @resource_group.setter
+    def resource_group(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "resource_group", value)
+
+    @property
+    @pulumi.getter(name="subscriptionId")
+    def subscription_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Azure event hub subscription ID to use for ingestion.
+        """
+        return pulumi.get(self, "subscription_id")
+
+    @subscription_id.setter
+    def subscription_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "subscription_id", value)
+
+    @property
+    @pulumi.getter(name="tenantId")
+    def tenant_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Azure event hub tenant ID to use for ingestion.
+        """
+        return pulumi.get(self, "tenant_id")
+
+    @tenant_id.setter
+    def tenant_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "tenant_id", value)
 
 
 if not MYPY:
@@ -1978,13 +2161,21 @@ if not MYPY:
         allowed regions. An empty list means that no regions are allowed,
         and is not a valid configuration.
         """
+        enforce_in_transit: NotRequired[pulumi.Input[bool]]
+        """
+        If true, `allowedPersistenceRegions` is also used to enforce in-transit
+        guarantees for messages. That is, Pub/Sub will fail topics.publish
+        operations on this topic and subscribe operations on any subscription
+        attached to this topic in any region that is not in `allowedPersistenceRegions`.
+        """
 elif False:
     TopicMessageStoragePolicyArgsDict: TypeAlias = Mapping[str, Any]
 
 @pulumi.input_type
 class TopicMessageStoragePolicyArgs:
     def __init__(__self__, *,
-                 allowed_persistence_regions: pulumi.Input[Sequence[pulumi.Input[str]]]):
+                 allowed_persistence_regions: pulumi.Input[Sequence[pulumi.Input[str]]],
+                 enforce_in_transit: Optional[pulumi.Input[bool]] = None):
         """
         :param pulumi.Input[Sequence[pulumi.Input[str]]] allowed_persistence_regions: A list of IDs of GCP regions where messages that are published to
                the topic may be persisted in storage. Messages published by
@@ -1992,8 +2183,14 @@ class TopicMessageStoragePolicyArgs:
                of GCP altogether) will be routed for storage in one of the
                allowed regions. An empty list means that no regions are allowed,
                and is not a valid configuration.
+        :param pulumi.Input[bool] enforce_in_transit: If true, `allowedPersistenceRegions` is also used to enforce in-transit
+               guarantees for messages. That is, Pub/Sub will fail topics.publish
+               operations on this topic and subscribe operations on any subscription
+               attached to this topic in any region that is not in `allowedPersistenceRegions`.
         """
         pulumi.set(__self__, "allowed_persistence_regions", allowed_persistence_regions)
+        if enforce_in_transit is not None:
+            pulumi.set(__self__, "enforce_in_transit", enforce_in_transit)
 
     @property
     @pulumi.getter(name="allowedPersistenceRegions")
@@ -2011,6 +2208,21 @@ class TopicMessageStoragePolicyArgs:
     @allowed_persistence_regions.setter
     def allowed_persistence_regions(self, value: pulumi.Input[Sequence[pulumi.Input[str]]]):
         pulumi.set(self, "allowed_persistence_regions", value)
+
+    @property
+    @pulumi.getter(name="enforceInTransit")
+    def enforce_in_transit(self) -> Optional[pulumi.Input[bool]]:
+        """
+        If true, `allowedPersistenceRegions` is also used to enforce in-transit
+        guarantees for messages. That is, Pub/Sub will fail topics.publish
+        operations on this topic and subscribe operations on any subscription
+        attached to this topic in any region that is not in `allowedPersistenceRegions`.
+        """
+        return pulumi.get(self, "enforce_in_transit")
+
+    @enforce_in_transit.setter
+    def enforce_in_transit(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enforce_in_transit", value)
 
 
 if not MYPY:

@@ -73,6 +73,14 @@ Object.defineProperty(exports, "apigeeCustomEndpoint", {
     enumerable: true,
 });
 
+export declare const apihubCustomEndpoint: string | undefined;
+Object.defineProperty(exports, "apihubCustomEndpoint", {
+    get() {
+        return __config.get("apihubCustomEndpoint");
+    },
+    enumerable: true,
+});
+
 export declare const apikeysCustomEndpoint: string | undefined;
 Object.defineProperty(exports, "apikeysCustomEndpoint", {
     get() {

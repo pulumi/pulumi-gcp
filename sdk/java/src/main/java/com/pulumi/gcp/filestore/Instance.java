@@ -512,6 +512,28 @@ public class Instance extends com.pulumi.resources.CustomResource {
         return this.pulumiLabels;
     }
     /**
+     * A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags.
+     * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when
+     * empty. The field is immutable and causes resource replacement when mutated. This field is only set at create time and
+     * modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the
+     * &#39;google_tags_tag_value&#39; resource.
+     * 
+     */
+    @Export(name="tags", refs={Map.class,String.class}, tree="[0,1,1]")
+    private Output</* @Nullable */ Map<String,String>> tags;
+
+    /**
+     * @return A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags.
+     * Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when
+     * empty. The field is immutable and causes resource replacement when mutated. This field is only set at create time and
+     * modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the
+     * &#39;google_tags_tag_value&#39; resource.
+     * 
+     */
+    public Output<Optional<Map<String,String>>> tags() {
+        return Codegen.optional(this.tags);
+    }
+    /**
      * The service tier of the instance.
      * Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE
      * 

@@ -16,6 +16,7 @@ from .get_folders import *
 from .get_iam_policy import *
 from .get_organization import *
 from .get_project import *
+from .get_s import *
 from .iam_audit_config import *
 from .iam_binding import *
 from .iam_custom_role import *

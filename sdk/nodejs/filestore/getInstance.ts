@@ -79,6 +79,7 @@ export interface GetInstanceResult {
     readonly project?: string;
     readonly protocol: string;
     readonly pulumiLabels: {[key: string]: string};
+    readonly tags: {[key: string]: string};
     readonly tier: string;
     readonly zone: string;
 }

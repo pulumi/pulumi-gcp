@@ -26,6 +26,11 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly ImmutableArray<string> DestIpRanges;
         /// <summary>
+        /// Network scope of the traffic destination.
+        /// Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+        /// </summary>
+        public readonly string? DestNetworkScope;
+        /// <summary>
         /// Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of dest region codes allowed is 5000.
         /// </summary>
         public readonly ImmutableArray<string> DestRegionCodes;
@@ -51,6 +56,15 @@ namespace Pulumi.Gcp.Compute.Outputs
         /// </summary>
         public readonly ImmutableArray<string> SrcIpRanges;
         /// <summary>
+        /// Network scope of the traffic source.
+        /// Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+        /// </summary>
+        public readonly string? SrcNetworkScope;
+        /// <summary>
+        /// Networks of the traffic source. It can be either a full or partial url.
+        /// </summary>
+        public readonly ImmutableArray<string> SrcNetworks;
+        /// <summary>
         /// Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of source region codes allowed is 5000.
         /// </summary>
         public readonly ImmutableArray<string> SrcRegionCodes;
@@ -70,6 +84,8 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             ImmutableArray<string> destIpRanges,
 
+            string? destNetworkScope,
+
             ImmutableArray<string> destRegionCodes,
 
             ImmutableArray<string> destThreatIntelligences,
@@ -82,6 +98,10 @@ namespace Pulumi.Gcp.Compute.Outputs
 
             ImmutableArray<string> srcIpRanges,
 
+            string? srcNetworkScope,
+
+            ImmutableArray<string> srcNetworks,
+
             ImmutableArray<string> srcRegionCodes,
 
             ImmutableArray<string> srcThreatIntelligences)
@@ -89,12 +109,15 @@ namespace Pulumi.Gcp.Compute.Outputs
             DestAddressGroups = destAddressGroups;
             DestFqdns = destFqdns;
             DestIpRanges = destIpRanges;
+            DestNetworkScope = destNetworkScope;
             DestRegionCodes = destRegionCodes;
             DestThreatIntelligences = destThreatIntelligences;
             Layer4Configs = layer4Configs;
             SrcAddressGroups = srcAddressGroups;
             SrcFqdns = srcFqdns;
             SrcIpRanges = srcIpRanges;
+            SrcNetworkScope = srcNetworkScope;
+            SrcNetworks = srcNetworks;
             SrcRegionCodes = srcRegionCodes;
             SrcThreatIntelligences = srcThreatIntelligences;
         }

@@ -99,6 +99,29 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Router Zero Custom Learend Route Priority
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var peer = new Gcp.Compute.RouterPeer("peer", new()
+    ///     {
+    ///         Name = "my-router-peer",
+    ///         Router = "my-router",
+    ///         Region = "us-central1",
+    ///         Interface = "interface-1",
+    ///         PeerAsn = 65513,
+    ///         CustomLearnedRoutePriority = 0,
+    ///         ZeroCustomLearnedRoutePriority = true,
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// ### Router Peer Router Appliance
     /// 
     /// ```csharp
@@ -618,6 +641,12 @@ namespace Pulumi.Gcp.Compute
         public Output<string> Ipv6NexthopAddress { get; private set; } = null!;
 
         /// <summary>
+        /// An internal boolean field for provider use.
+        /// </summary>
+        [Output("isCustomLearnedPrioritySet")]
+        public Output<bool> IsCustomLearnedPrioritySet { get; private set; } = null!;
+
+        /// <summary>
         /// The resource that configures and manages this BGP peer.
         /// * `MANAGED_BY_USER` is the default value and can be managed by
         /// you or other users
@@ -709,6 +738,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("routerApplianceInstance")]
         public Output<string?> RouterApplianceInstance { get; private set; } = null!;
+
+        /// <summary>
+        /// The user-defined zero-custom-learned-route-priority for a custom-learned-route-priority in BGP session.
+        /// This value has to be set true to force the custom_learned_route_priority to be 0.
+        /// </summary>
+        [Output("zeroCustomLearnedRoutePriority")]
+        public Output<bool?> ZeroCustomLearnedRoutePriority { get; private set; } = null!;
 
 
         /// <summary>
@@ -996,6 +1032,13 @@ namespace Pulumi.Gcp.Compute
         [Input("routerApplianceInstance")]
         public Input<string>? RouterApplianceInstance { get; set; }
 
+        /// <summary>
+        /// The user-defined zero-custom-learned-route-priority for a custom-learned-route-priority in BGP session.
+        /// This value has to be set true to force the custom_learned_route_priority to be 0.
+        /// </summary>
+        [Input("zeroCustomLearnedRoutePriority")]
+        public Input<bool>? ZeroCustomLearnedRoutePriority { get; set; }
+
         public RouterPeerArgs()
         {
         }
@@ -1166,6 +1209,12 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Ipv6NexthopAddress { get; set; }
 
         /// <summary>
+        /// An internal boolean field for provider use.
+        /// </summary>
+        [Input("isCustomLearnedPrioritySet")]
+        public Input<bool>? IsCustomLearnedPrioritySet { get; set; }
+
+        /// <summary>
         /// The resource that configures and manages this BGP peer.
         /// * `MANAGED_BY_USER` is the default value and can be managed by
         /// you or other users
@@ -1257,6 +1306,13 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("routerApplianceInstance")]
         public Input<string>? RouterApplianceInstance { get; set; }
+
+        /// <summary>
+        /// The user-defined zero-custom-learned-route-priority for a custom-learned-route-priority in BGP session.
+        /// This value has to be set true to force the custom_learned_route_priority to be 0.
+        /// </summary>
+        [Input("zeroCustomLearnedRoutePriority")]
+        public Input<bool>? ZeroCustomLearnedRoutePriority { get; set; }
 
         public RouterPeerState()
         {

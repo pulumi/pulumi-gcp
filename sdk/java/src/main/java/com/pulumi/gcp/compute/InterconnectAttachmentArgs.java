@@ -10,6 +10,7 @@ import java.lang.Boolean;
 import java.lang.Integer;
 import java.lang.String;
 import java.util.List;
+import java.util.Map;
 import java.util.Objects;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -230,6 +231,29 @@ public final class InterconnectAttachmentArgs extends com.pulumi.resources.Resou
     }
 
     /**
+     * Labels for this resource. These can only be added or modified by the setLabels
+     * method. Each label key/value pair must comply with RFC1035. Label values may be empty.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * 
+     */
+    @Import(name="labels")
+    private @Nullable Output<Map<String,String>> labels;
+
+    /**
+     * @return Labels for this resource. These can only be added or modified by the setLabels
+     * method. Each label key/value pair must comply with RFC1035. Label values may be empty.
+     * 
+     * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+     * Please refer to the field `effective_labels` for all of the labels present on the resource.
+     * 
+     */
+    public Optional<Output<Map<String,String>>> labels() {
+        return Optional.ofNullable(this.labels);
+    }
+
+    /**
      * Maximum Transmission Unit (MTU), in bytes, of packets passing through
      * this interconnect attachment. Currently, only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
      * 
@@ -423,6 +447,7 @@ public final class InterconnectAttachmentArgs extends com.pulumi.resources.Resou
         this.encryption = $.encryption;
         this.interconnect = $.interconnect;
         this.ipsecInternalAddresses = $.ipsecInternalAddresses;
+        this.labels = $.labels;
         this.mtu = $.mtu;
         this.name = $.name;
         this.project = $.project;
@@ -748,6 +773,35 @@ public final class InterconnectAttachmentArgs extends com.pulumi.resources.Resou
          */
         public Builder ipsecInternalAddresses(String... ipsecInternalAddresses) {
             return ipsecInternalAddresses(List.of(ipsecInternalAddresses));
+        }
+
+        /**
+         * @param labels Labels for this resource. These can only be added or modified by the setLabels
+         * method. Each label key/value pair must comply with RFC1035. Label values may be empty.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder labels(@Nullable Output<Map<String,String>> labels) {
+            $.labels = labels;
+            return this;
+        }
+
+        /**
+         * @param labels Labels for this resource. These can only be added or modified by the setLabels
+         * method. Each label key/value pair must comply with RFC1035. Label values may be empty.
+         * 
+         * **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+         * Please refer to the field `effective_labels` for all of the labels present on the resource.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder labels(Map<String,String> labels) {
+            return labels(Output.of(labels));
         }
 
         /**

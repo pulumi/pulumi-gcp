@@ -124,6 +124,37 @@ import (
 //	}
 //
 // ```
+// ### Router Zero Custom Learend Route Priority
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewRouterPeer(ctx, "peer", &compute.RouterPeerArgs{
+//				Name:                           pulumi.String("my-router-peer"),
+//				Router:                         pulumi.String("my-router"),
+//				Region:                         pulumi.String("us-central1"),
+//				Interface:                      pulumi.String("interface-1"),
+//				PeerAsn:                        pulumi.Int(65513),
+//				CustomLearnedRoutePriority:     pulumi.Int(0),
+//				ZeroCustomLearnedRoutePriority: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 // ### Router Peer Router Appliance
 //
 // ```go
@@ -584,6 +615,8 @@ type RouterPeer struct {
 	// If you do not specify the next hop addresses, Google Cloud automatically
 	// assigns unused addresses from the 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64 range for you.
 	Ipv6NexthopAddress pulumi.StringOutput `pulumi:"ipv6NexthopAddress"`
+	// An internal boolean field for provider use.
+	IsCustomLearnedPrioritySet pulumi.BoolOutput `pulumi:"isCustomLearnedPrioritySet"`
 	// The resource that configures and manages this BGP peer.
 	// * `MANAGED_BY_USER` is the default value and can be managed by
 	//   you or other users
@@ -632,6 +665,9 @@ type RouterPeer struct {
 	// The VM instance must be located in zones contained in the same region as
 	// this Cloud Router. The VM instance is the peer side of the BGP session.
 	RouterApplianceInstance pulumi.StringPtrOutput `pulumi:"routerApplianceInstance"`
+	// The user-defined zero-custom-learned-route-priority for a custom-learned-route-priority in BGP session.
+	// This value has to be set true to force the customLearnedRoutePriority to be 0.
+	ZeroCustomLearnedRoutePriority pulumi.BoolPtrOutput `pulumi:"zeroCustomLearnedRoutePriority"`
 }
 
 // NewRouterPeer registers a new resource with the given unique name, arguments, and options.
@@ -740,6 +776,8 @@ type routerPeerState struct {
 	// If you do not specify the next hop addresses, Google Cloud automatically
 	// assigns unused addresses from the 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64 range for you.
 	Ipv6NexthopAddress *string `pulumi:"ipv6NexthopAddress"`
+	// An internal boolean field for provider use.
+	IsCustomLearnedPrioritySet *bool `pulumi:"isCustomLearnedPrioritySet"`
 	// The resource that configures and manages this BGP peer.
 	// * `MANAGED_BY_USER` is the default value and can be managed by
 	//   you or other users
@@ -788,6 +826,9 @@ type routerPeerState struct {
 	// The VM instance must be located in zones contained in the same region as
 	// this Cloud Router. The VM instance is the peer side of the BGP session.
 	RouterApplianceInstance *string `pulumi:"routerApplianceInstance"`
+	// The user-defined zero-custom-learned-route-priority for a custom-learned-route-priority in BGP session.
+	// This value has to be set true to force the customLearnedRoutePriority to be 0.
+	ZeroCustomLearnedRoutePriority *bool `pulumi:"zeroCustomLearnedRoutePriority"`
 }
 
 type RouterPeerState struct {
@@ -858,6 +899,8 @@ type RouterPeerState struct {
 	// If you do not specify the next hop addresses, Google Cloud automatically
 	// assigns unused addresses from the 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64 range for you.
 	Ipv6NexthopAddress pulumi.StringPtrInput
+	// An internal boolean field for provider use.
+	IsCustomLearnedPrioritySet pulumi.BoolPtrInput
 	// The resource that configures and manages this BGP peer.
 	// * `MANAGED_BY_USER` is the default value and can be managed by
 	//   you or other users
@@ -906,6 +949,9 @@ type RouterPeerState struct {
 	// The VM instance must be located in zones contained in the same region as
 	// this Cloud Router. The VM instance is the peer side of the BGP session.
 	RouterApplianceInstance pulumi.StringPtrInput
+	// The user-defined zero-custom-learned-route-priority for a custom-learned-route-priority in BGP session.
+	// This value has to be set true to force the customLearnedRoutePriority to be 0.
+	ZeroCustomLearnedRoutePriority pulumi.BoolPtrInput
 }
 
 func (RouterPeerState) ElementType() reflect.Type {
@@ -1018,6 +1064,9 @@ type routerPeerArgs struct {
 	// The VM instance must be located in zones contained in the same region as
 	// this Cloud Router. The VM instance is the peer side of the BGP session.
 	RouterApplianceInstance *string `pulumi:"routerApplianceInstance"`
+	// The user-defined zero-custom-learned-route-priority for a custom-learned-route-priority in BGP session.
+	// This value has to be set true to force the customLearnedRoutePriority to be 0.
+	ZeroCustomLearnedRoutePriority *bool `pulumi:"zeroCustomLearnedRoutePriority"`
 }
 
 // The set of arguments for constructing a RouterPeer resource.
@@ -1127,6 +1176,9 @@ type RouterPeerArgs struct {
 	// The VM instance must be located in zones contained in the same region as
 	// this Cloud Router. The VM instance is the peer side of the BGP session.
 	RouterApplianceInstance pulumi.StringPtrInput
+	// The user-defined zero-custom-learned-route-priority for a custom-learned-route-priority in BGP session.
+	// This value has to be set true to force the customLearnedRoutePriority to be 0.
+	ZeroCustomLearnedRoutePriority pulumi.BoolPtrInput
 }
 
 func (RouterPeerArgs) ElementType() reflect.Type {
@@ -1331,6 +1383,11 @@ func (o RouterPeerOutput) Ipv6NexthopAddress() pulumi.StringOutput {
 	return o.ApplyT(func(v *RouterPeer) pulumi.StringOutput { return v.Ipv6NexthopAddress }).(pulumi.StringOutput)
 }
 
+// An internal boolean field for provider use.
+func (o RouterPeerOutput) IsCustomLearnedPrioritySet() pulumi.BoolOutput {
+	return o.ApplyT(func(v *RouterPeer) pulumi.BoolOutput { return v.IsCustomLearnedPrioritySet }).(pulumi.BoolOutput)
+}
+
 // The resource that configures and manages this BGP peer.
 //   - `MANAGED_BY_USER` is the default value and can be managed by
 //     you or other users
@@ -1410,6 +1467,12 @@ func (o RouterPeerOutput) Router() pulumi.StringOutput {
 // this Cloud Router. The VM instance is the peer side of the BGP session.
 func (o RouterPeerOutput) RouterApplianceInstance() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *RouterPeer) pulumi.StringPtrOutput { return v.RouterApplianceInstance }).(pulumi.StringPtrOutput)
+}
+
+// The user-defined zero-custom-learned-route-priority for a custom-learned-route-priority in BGP session.
+// This value has to be set true to force the customLearnedRoutePriority to be 0.
+func (o RouterPeerOutput) ZeroCustomLearnedRoutePriority() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *RouterPeer) pulumi.BoolPtrOutput { return v.ZeroCustomLearnedRoutePriority }).(pulumi.BoolPtrOutput)
 }
 
 type RouterPeerArrayOutput struct{ *pulumi.OutputState }

@@ -15,12 +15,18 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'RuntimeNotebookRuntimeTemplateRefArgs',
+    'RuntimeNotebookRuntimeTemplateRefArgsDict',
     'RuntimeTemplateDataPersistentDiskSpecArgs',
     'RuntimeTemplateDataPersistentDiskSpecArgsDict',
     'RuntimeTemplateEncryptionSpecArgs',
     'RuntimeTemplateEncryptionSpecArgsDict',
     'RuntimeTemplateEucConfigArgs',
     'RuntimeTemplateEucConfigArgsDict',
+    'RuntimeTemplateIamBindingConditionArgs',
+    'RuntimeTemplateIamBindingConditionArgsDict',
+    'RuntimeTemplateIamMemberConditionArgs',
+    'RuntimeTemplateIamMemberConditionArgsDict',
     'RuntimeTemplateIdleShutdownConfigArgs',
     'RuntimeTemplateIdleShutdownConfigArgsDict',
     'RuntimeTemplateMachineSpecArgs',
@@ -32,6 +38,37 @@ __all__ = [
 ]
 
 MYPY = False
+
+if not MYPY:
+    class RuntimeNotebookRuntimeTemplateRefArgsDict(TypedDict):
+        notebook_runtime_template: pulumi.Input[str]
+        """
+        The resource name of the NotebookRuntimeTemplate based on which a NotebookRuntime will be created.
+        """
+elif False:
+    RuntimeNotebookRuntimeTemplateRefArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RuntimeNotebookRuntimeTemplateRefArgs:
+    def __init__(__self__, *,
+                 notebook_runtime_template: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] notebook_runtime_template: The resource name of the NotebookRuntimeTemplate based on which a NotebookRuntime will be created.
+        """
+        pulumi.set(__self__, "notebook_runtime_template", notebook_runtime_template)
+
+    @property
+    @pulumi.getter(name="notebookRuntimeTemplate")
+    def notebook_runtime_template(self) -> pulumi.Input[str]:
+        """
+        The resource name of the NotebookRuntimeTemplate based on which a NotebookRuntime will be created.
+        """
+        return pulumi.get(self, "notebook_runtime_template")
+
+    @notebook_runtime_template.setter
+    def notebook_runtime_template(self, value: pulumi.Input[str]):
+        pulumi.set(self, "notebook_runtime_template", value)
+
 
 if not MYPY:
     class RuntimeTemplateDataPersistentDiskSpecArgsDict(TypedDict):
@@ -147,6 +184,100 @@ class RuntimeTemplateEucConfigArgs:
     @euc_disabled.setter
     def euc_disabled(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "euc_disabled", value)
+
+
+if not MYPY:
+    class RuntimeTemplateIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    RuntimeTemplateIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RuntimeTemplateIamBindingConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[str],
+                 title: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+
+if not MYPY:
+    class RuntimeTemplateIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        title: pulumi.Input[str]
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    RuntimeTemplateIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RuntimeTemplateIamMemberConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[str],
+                 title: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
 
 
 if not MYPY:

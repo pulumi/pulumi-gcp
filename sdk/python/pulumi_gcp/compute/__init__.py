@@ -57,6 +57,7 @@ from .get_instance_guest_attributes import *
 from .get_instance_iam_policy import *
 from .get_instance_serial_port import *
 from .get_instance_template import *
+from .get_instance_template_iam_policy import *
 from .get_lbip_ranges import *
 from .get_machine_image_iam_policy import *
 from .get_machine_types import *
@@ -113,6 +114,9 @@ from .instance_iam_member import *
 from .instance_iam_policy import *
 from .instance_settings import *
 from .instance_template import *
+from .instance_template_iam_binding import *
+from .instance_template_iam_member import *
+from .instance_template_iam_policy import *
 from .interconnect import *
 from .interconnect_attachment import *
 from .machine_image import *

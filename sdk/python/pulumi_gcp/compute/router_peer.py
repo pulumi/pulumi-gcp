@@ -46,7 +46,8 @@ class RouterPeerArgs:
                  peer_ipv6_nexthop_address: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
-                 router_appliance_instance: Optional[pulumi.Input[str]] = None):
+                 router_appliance_instance: Optional[pulumi.Input[str]] = None,
+                 zero_custom_learned_route_priority: Optional[pulumi.Input[bool]] = None):
         """
         The set of arguments for constructing a RouterPeer resource.
         :param pulumi.Input[str] interface: Name of the interface the BGP peer is associated with.
@@ -129,6 +130,8 @@ class RouterPeerArgs:
                such as Next Gen Firewalls, Virtual Routers, or Router Appliances.
                The VM instance must be located in zones contained in the same region as
                this Cloud Router. The VM instance is the peer side of the BGP session.
+        :param pulumi.Input[bool] zero_custom_learned_route_priority: The user-defined zero-custom-learned-route-priority for a custom-learned-route-priority in BGP session.
+               This value has to be set true to force the custom_learned_route_priority to be 0.
         """
         pulumi.set(__self__, "interface", interface)
         pulumi.set(__self__, "peer_asn", peer_asn)
@@ -179,6 +182,8 @@ class RouterPeerArgs:
             pulumi.set(__self__, "region", region)
         if router_appliance_instance is not None:
             pulumi.set(__self__, "router_appliance_instance", router_appliance_instance)
+        if zero_custom_learned_route_priority is not None:
+            pulumi.set(__self__, "zero_custom_learned_route_priority", zero_custom_learned_route_priority)
 
     @property
     @pulumi.getter
@@ -546,6 +551,19 @@ class RouterPeerArgs:
     def router_appliance_instance(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "router_appliance_instance", value)
 
+    @property
+    @pulumi.getter(name="zeroCustomLearnedRoutePriority")
+    def zero_custom_learned_route_priority(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The user-defined zero-custom-learned-route-priority for a custom-learned-route-priority in BGP session.
+        This value has to be set true to force the custom_learned_route_priority to be 0.
+        """
+        return pulumi.get(self, "zero_custom_learned_route_priority")
+
+    @zero_custom_learned_route_priority.setter
+    def zero_custom_learned_route_priority(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "zero_custom_learned_route_priority", value)
+
 
 @pulumi.input_type
 class _RouterPeerState:
@@ -566,6 +584,7 @@ class _RouterPeerState:
                  ip_address: Optional[pulumi.Input[str]] = None,
                  ipv4_nexthop_address: Optional[pulumi.Input[str]] = None,
                  ipv6_nexthop_address: Optional[pulumi.Input[str]] = None,
+                 is_custom_learned_priority_set: Optional[pulumi.Input[bool]] = None,
                  management_type: Optional[pulumi.Input[str]] = None,
                  md5_authentication_key: Optional[pulumi.Input['RouterPeerMd5AuthenticationKeyArgs']] = None,
                  name: Optional[pulumi.Input[str]] = None,
@@ -576,7 +595,8 @@ class _RouterPeerState:
                  project: Optional[pulumi.Input[str]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  router: Optional[pulumi.Input[str]] = None,
-                 router_appliance_instance: Optional[pulumi.Input[str]] = None):
+                 router_appliance_instance: Optional[pulumi.Input[str]] = None,
+                 zero_custom_learned_route_priority: Optional[pulumi.Input[bool]] = None):
         """
         Input properties used for looking up and filtering RouterPeer resources.
         :param pulumi.Input[str] advertise_mode: User-specified flag to indicate which mode to use for advertisement.
@@ -630,6 +650,7 @@ class _RouterPeerState:
                The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
                If you do not specify the next hop addresses, Google Cloud automatically
                assigns unused addresses from the 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64 range for you.
+        :param pulumi.Input[bool] is_custom_learned_priority_set: An internal boolean field for provider use.
         :param pulumi.Input[str] management_type: The resource that configures and manages this BGP peer.
                * `MANAGED_BY_USER` is the default value and can be managed by
                you or other users
@@ -668,6 +689,8 @@ class _RouterPeerState:
                such as Next Gen Firewalls, Virtual Routers, or Router Appliances.
                The VM instance must be located in zones contained in the same region as
                this Cloud Router. The VM instance is the peer side of the BGP session.
+        :param pulumi.Input[bool] zero_custom_learned_route_priority: The user-defined zero-custom-learned-route-priority for a custom-learned-route-priority in BGP session.
+               This value has to be set true to force the custom_learned_route_priority to be 0.
         """
         if advertise_mode is not None:
             pulumi.set(__self__, "advertise_mode", advertise_mode)
@@ -701,6 +724,8 @@ class _RouterPeerState:
             pulumi.set(__self__, "ipv4_nexthop_address", ipv4_nexthop_address)
         if ipv6_nexthop_address is not None:
             pulumi.set(__self__, "ipv6_nexthop_address", ipv6_nexthop_address)
+        if is_custom_learned_priority_set is not None:
+            pulumi.set(__self__, "is_custom_learned_priority_set", is_custom_learned_priority_set)
         if management_type is not None:
             pulumi.set(__self__, "management_type", management_type)
         if md5_authentication_key is not None:
@@ -723,6 +748,8 @@ class _RouterPeerState:
             pulumi.set(__self__, "router", router)
         if router_appliance_instance is not None:
             pulumi.set(__self__, "router_appliance_instance", router_appliance_instance)
+        if zero_custom_learned_route_priority is not None:
+            pulumi.set(__self__, "zero_custom_learned_route_priority", zero_custom_learned_route_priority)
 
     @property
     @pulumi.getter(name="advertiseMode")
@@ -952,6 +979,18 @@ class _RouterPeerState:
         pulumi.set(self, "ipv6_nexthop_address", value)
 
     @property
+    @pulumi.getter(name="isCustomLearnedPrioritySet")
+    def is_custom_learned_priority_set(self) -> Optional[pulumi.Input[bool]]:
+        """
+        An internal boolean field for provider use.
+        """
+        return pulumi.get(self, "is_custom_learned_priority_set")
+
+    @is_custom_learned_priority_set.setter
+    def is_custom_learned_priority_set(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "is_custom_learned_priority_set", value)
+
+    @property
     @pulumi.getter(name="managementType")
     def management_type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1110,6 +1149,19 @@ class _RouterPeerState:
     def router_appliance_instance(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "router_appliance_instance", value)
 
+    @property
+    @pulumi.getter(name="zeroCustomLearnedRoutePriority")
+    def zero_custom_learned_route_priority(self) -> Optional[pulumi.Input[bool]]:
+        """
+        The user-defined zero-custom-learned-route-priority for a custom-learned-route-priority in BGP session.
+        This value has to be set true to force the custom_learned_route_priority to be 0.
+        """
+        return pulumi.get(self, "zero_custom_learned_route_priority")
+
+    @zero_custom_learned_route_priority.setter
+    def zero_custom_learned_route_priority(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "zero_custom_learned_route_priority", value)
+
 
 class RouterPeer(pulumi.CustomResource):
     @overload
@@ -1142,6 +1194,7 @@ class RouterPeer(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  router: Optional[pulumi.Input[str]] = None,
                  router_appliance_instance: Optional[pulumi.Input[str]] = None,
+                 zero_custom_learned_route_priority: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         """
         BGP information that must be configured into the routing stack to
@@ -1207,6 +1260,21 @@ class RouterPeer(pulumi.CustomResource):
                 "multiplier": 5,
                 "session_initialization_mode": "ACTIVE",
             })
+        ```
+        ### Router Zero Custom Learend Route Priority
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        peer = gcp.compute.RouterPeer("peer",
+            name="my-router-peer",
+            router="my-router",
+            region="us-central1",
+            interface="interface-1",
+            peer_asn=65513,
+            custom_learned_route_priority=0,
+            zero_custom_learned_route_priority=True)
         ```
         ### Router Peer Router Appliance
 
@@ -1532,6 +1600,8 @@ class RouterPeer(pulumi.CustomResource):
                such as Next Gen Firewalls, Virtual Routers, or Router Appliances.
                The VM instance must be located in zones contained in the same region as
                this Cloud Router. The VM instance is the peer side of the BGP session.
+        :param pulumi.Input[bool] zero_custom_learned_route_priority: The user-defined zero-custom-learned-route-priority for a custom-learned-route-priority in BGP session.
+               This value has to be set true to force the custom_learned_route_priority to be 0.
         """
         ...
     @overload
@@ -1603,6 +1673,21 @@ class RouterPeer(pulumi.CustomResource):
                 "multiplier": 5,
                 "session_initialization_mode": "ACTIVE",
             })
+        ```
+        ### Router Zero Custom Learend Route Priority
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        peer = gcp.compute.RouterPeer("peer",
+            name="my-router-peer",
+            router="my-router",
+            region="us-central1",
+            interface="interface-1",
+            peer_asn=65513,
+            custom_learned_route_priority=0,
+            zero_custom_learned_route_priority=True)
         ```
         ### Router Peer Router Appliance
 
@@ -1887,6 +1972,7 @@ class RouterPeer(pulumi.CustomResource):
                  region: Optional[pulumi.Input[str]] = None,
                  router: Optional[pulumi.Input[str]] = None,
                  router_appliance_instance: Optional[pulumi.Input[str]] = None,
+                 zero_custom_learned_route_priority: Optional[pulumi.Input[bool]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
         if not isinstance(opts, pulumi.ResourceOptions):
@@ -1928,6 +2014,8 @@ class RouterPeer(pulumi.CustomResource):
                 raise TypeError("Missing required property 'router'")
             __props__.__dict__["router"] = router
             __props__.__dict__["router_appliance_instance"] = router_appliance_instance
+            __props__.__dict__["zero_custom_learned_route_priority"] = zero_custom_learned_route_priority
+            __props__.__dict__["is_custom_learned_priority_set"] = None
             __props__.__dict__["management_type"] = None
         super(RouterPeer, __self__).__init__(
             'gcp:compute/routerPeer:RouterPeer',
@@ -1955,6 +2043,7 @@ class RouterPeer(pulumi.CustomResource):
             ip_address: Optional[pulumi.Input[str]] = None,
             ipv4_nexthop_address: Optional[pulumi.Input[str]] = None,
             ipv6_nexthop_address: Optional[pulumi.Input[str]] = None,
+            is_custom_learned_priority_set: Optional[pulumi.Input[bool]] = None,
             management_type: Optional[pulumi.Input[str]] = None,
             md5_authentication_key: Optional[pulumi.Input[Union['RouterPeerMd5AuthenticationKeyArgs', 'RouterPeerMd5AuthenticationKeyArgsDict']]] = None,
             name: Optional[pulumi.Input[str]] = None,
@@ -1965,7 +2054,8 @@ class RouterPeer(pulumi.CustomResource):
             project: Optional[pulumi.Input[str]] = None,
             region: Optional[pulumi.Input[str]] = None,
             router: Optional[pulumi.Input[str]] = None,
-            router_appliance_instance: Optional[pulumi.Input[str]] = None) -> 'RouterPeer':
+            router_appliance_instance: Optional[pulumi.Input[str]] = None,
+            zero_custom_learned_route_priority: Optional[pulumi.Input[bool]] = None) -> 'RouterPeer':
         """
         Get an existing RouterPeer resource's state with the given name, id, and optional extra
         properties used to qualify the lookup.
@@ -2024,6 +2114,7 @@ class RouterPeer(pulumi.CustomResource):
                The address must be in the range 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64.
                If you do not specify the next hop addresses, Google Cloud automatically
                assigns unused addresses from the 2600:2d00:0:2::/64 or 2600:2d00:0:3::/64 range for you.
+        :param pulumi.Input[bool] is_custom_learned_priority_set: An internal boolean field for provider use.
         :param pulumi.Input[str] management_type: The resource that configures and manages this BGP peer.
                * `MANAGED_BY_USER` is the default value and can be managed by
                you or other users
@@ -2062,6 +2153,8 @@ class RouterPeer(pulumi.CustomResource):
                such as Next Gen Firewalls, Virtual Routers, or Router Appliances.
                The VM instance must be located in zones contained in the same region as
                this Cloud Router. The VM instance is the peer side of the BGP session.
+        :param pulumi.Input[bool] zero_custom_learned_route_priority: The user-defined zero-custom-learned-route-priority for a custom-learned-route-priority in BGP session.
+               This value has to be set true to force the custom_learned_route_priority to be 0.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -2083,6 +2176,7 @@ class RouterPeer(pulumi.CustomResource):
         __props__.__dict__["ip_address"] = ip_address
         __props__.__dict__["ipv4_nexthop_address"] = ipv4_nexthop_address
         __props__.__dict__["ipv6_nexthop_address"] = ipv6_nexthop_address
+        __props__.__dict__["is_custom_learned_priority_set"] = is_custom_learned_priority_set
         __props__.__dict__["management_type"] = management_type
         __props__.__dict__["md5_authentication_key"] = md5_authentication_key
         __props__.__dict__["name"] = name
@@ -2094,6 +2188,7 @@ class RouterPeer(pulumi.CustomResource):
         __props__.__dict__["region"] = region
         __props__.__dict__["router"] = router
         __props__.__dict__["router_appliance_instance"] = router_appliance_instance
+        __props__.__dict__["zero_custom_learned_route_priority"] = zero_custom_learned_route_priority
         return RouterPeer(resource_name, opts=opts, __props__=__props__)
 
     @property
@@ -2260,6 +2355,14 @@ class RouterPeer(pulumi.CustomResource):
         return pulumi.get(self, "ipv6_nexthop_address")
 
     @property
+    @pulumi.getter(name="isCustomLearnedPrioritySet")
+    def is_custom_learned_priority_set(self) -> pulumi.Output[bool]:
+        """
+        An internal boolean field for provider use.
+        """
+        return pulumi.get(self, "is_custom_learned_priority_set")
+
+    @property
     @pulumi.getter(name="managementType")
     def management_type(self) -> pulumi.Output[str]:
         """
@@ -2373,4 +2476,13 @@ class RouterPeer(pulumi.CustomResource):
         this Cloud Router. The VM instance is the peer side of the BGP session.
         """
         return pulumi.get(self, "router_appliance_instance")
+
+    @property
+    @pulumi.getter(name="zeroCustomLearnedRoutePriority")
+    def zero_custom_learned_route_priority(self) -> pulumi.Output[Optional[bool]]:
+        """
+        The user-defined zero-custom-learned-route-priority for a custom-learned-route-priority in BGP session.
+        This value has to be set true to force the custom_learned_route_priority to be 0.
+        """
+        return pulumi.get(self, "zero_custom_learned_route_priority")
 

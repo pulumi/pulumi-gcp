@@ -5692,6 +5692,288 @@ func (o MirroringEndpointGroupAssociationLocationsDetailArrayOutput) Index(i pul
 	}).(MirroringEndpointGroupAssociationLocationsDetailOutput)
 }
 
+type SecurityProfileCustomInterceptProfile struct {
+	// The Intercept Endpoint Group to which matching traffic should be intercepted.
+	// Format: projects/{project_id}/locations/global/interceptEndpointGroups/{endpoint_group_id}
+	InterceptEndpointGroup string `pulumi:"interceptEndpointGroup"`
+}
+
+// SecurityProfileCustomInterceptProfileInput is an input type that accepts SecurityProfileCustomInterceptProfileArgs and SecurityProfileCustomInterceptProfileOutput values.
+// You can construct a concrete instance of `SecurityProfileCustomInterceptProfileInput` via:
+//
+//	SecurityProfileCustomInterceptProfileArgs{...}
+type SecurityProfileCustomInterceptProfileInput interface {
+	pulumi.Input
+
+	ToSecurityProfileCustomInterceptProfileOutput() SecurityProfileCustomInterceptProfileOutput
+	ToSecurityProfileCustomInterceptProfileOutputWithContext(context.Context) SecurityProfileCustomInterceptProfileOutput
+}
+
+type SecurityProfileCustomInterceptProfileArgs struct {
+	// The Intercept Endpoint Group to which matching traffic should be intercepted.
+	// Format: projects/{project_id}/locations/global/interceptEndpointGroups/{endpoint_group_id}
+	InterceptEndpointGroup pulumi.StringInput `pulumi:"interceptEndpointGroup"`
+}
+
+func (SecurityProfileCustomInterceptProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityProfileCustomInterceptProfile)(nil)).Elem()
+}
+
+func (i SecurityProfileCustomInterceptProfileArgs) ToSecurityProfileCustomInterceptProfileOutput() SecurityProfileCustomInterceptProfileOutput {
+	return i.ToSecurityProfileCustomInterceptProfileOutputWithContext(context.Background())
+}
+
+func (i SecurityProfileCustomInterceptProfileArgs) ToSecurityProfileCustomInterceptProfileOutputWithContext(ctx context.Context) SecurityProfileCustomInterceptProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityProfileCustomInterceptProfileOutput)
+}
+
+func (i SecurityProfileCustomInterceptProfileArgs) ToSecurityProfileCustomInterceptProfilePtrOutput() SecurityProfileCustomInterceptProfilePtrOutput {
+	return i.ToSecurityProfileCustomInterceptProfilePtrOutputWithContext(context.Background())
+}
+
+func (i SecurityProfileCustomInterceptProfileArgs) ToSecurityProfileCustomInterceptProfilePtrOutputWithContext(ctx context.Context) SecurityProfileCustomInterceptProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityProfileCustomInterceptProfileOutput).ToSecurityProfileCustomInterceptProfilePtrOutputWithContext(ctx)
+}
+
+// SecurityProfileCustomInterceptProfilePtrInput is an input type that accepts SecurityProfileCustomInterceptProfileArgs, SecurityProfileCustomInterceptProfilePtr and SecurityProfileCustomInterceptProfilePtrOutput values.
+// You can construct a concrete instance of `SecurityProfileCustomInterceptProfilePtrInput` via:
+//
+//	        SecurityProfileCustomInterceptProfileArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityProfileCustomInterceptProfilePtrInput interface {
+	pulumi.Input
+
+	ToSecurityProfileCustomInterceptProfilePtrOutput() SecurityProfileCustomInterceptProfilePtrOutput
+	ToSecurityProfileCustomInterceptProfilePtrOutputWithContext(context.Context) SecurityProfileCustomInterceptProfilePtrOutput
+}
+
+type securityProfileCustomInterceptProfilePtrType SecurityProfileCustomInterceptProfileArgs
+
+func SecurityProfileCustomInterceptProfilePtr(v *SecurityProfileCustomInterceptProfileArgs) SecurityProfileCustomInterceptProfilePtrInput {
+	return (*securityProfileCustomInterceptProfilePtrType)(v)
+}
+
+func (*securityProfileCustomInterceptProfilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityProfileCustomInterceptProfile)(nil)).Elem()
+}
+
+func (i *securityProfileCustomInterceptProfilePtrType) ToSecurityProfileCustomInterceptProfilePtrOutput() SecurityProfileCustomInterceptProfilePtrOutput {
+	return i.ToSecurityProfileCustomInterceptProfilePtrOutputWithContext(context.Background())
+}
+
+func (i *securityProfileCustomInterceptProfilePtrType) ToSecurityProfileCustomInterceptProfilePtrOutputWithContext(ctx context.Context) SecurityProfileCustomInterceptProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityProfileCustomInterceptProfilePtrOutput)
+}
+
+type SecurityProfileCustomInterceptProfileOutput struct{ *pulumi.OutputState }
+
+func (SecurityProfileCustomInterceptProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityProfileCustomInterceptProfile)(nil)).Elem()
+}
+
+func (o SecurityProfileCustomInterceptProfileOutput) ToSecurityProfileCustomInterceptProfileOutput() SecurityProfileCustomInterceptProfileOutput {
+	return o
+}
+
+func (o SecurityProfileCustomInterceptProfileOutput) ToSecurityProfileCustomInterceptProfileOutputWithContext(ctx context.Context) SecurityProfileCustomInterceptProfileOutput {
+	return o
+}
+
+func (o SecurityProfileCustomInterceptProfileOutput) ToSecurityProfileCustomInterceptProfilePtrOutput() SecurityProfileCustomInterceptProfilePtrOutput {
+	return o.ToSecurityProfileCustomInterceptProfilePtrOutputWithContext(context.Background())
+}
+
+func (o SecurityProfileCustomInterceptProfileOutput) ToSecurityProfileCustomInterceptProfilePtrOutputWithContext(ctx context.Context) SecurityProfileCustomInterceptProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityProfileCustomInterceptProfile) *SecurityProfileCustomInterceptProfile {
+		return &v
+	}).(SecurityProfileCustomInterceptProfilePtrOutput)
+}
+
+// The Intercept Endpoint Group to which matching traffic should be intercepted.
+// Format: projects/{project_id}/locations/global/interceptEndpointGroups/{endpoint_group_id}
+func (o SecurityProfileCustomInterceptProfileOutput) InterceptEndpointGroup() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityProfileCustomInterceptProfile) string { return v.InterceptEndpointGroup }).(pulumi.StringOutput)
+}
+
+type SecurityProfileCustomInterceptProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityProfileCustomInterceptProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityProfileCustomInterceptProfile)(nil)).Elem()
+}
+
+func (o SecurityProfileCustomInterceptProfilePtrOutput) ToSecurityProfileCustomInterceptProfilePtrOutput() SecurityProfileCustomInterceptProfilePtrOutput {
+	return o
+}
+
+func (o SecurityProfileCustomInterceptProfilePtrOutput) ToSecurityProfileCustomInterceptProfilePtrOutputWithContext(ctx context.Context) SecurityProfileCustomInterceptProfilePtrOutput {
+	return o
+}
+
+func (o SecurityProfileCustomInterceptProfilePtrOutput) Elem() SecurityProfileCustomInterceptProfileOutput {
+	return o.ApplyT(func(v *SecurityProfileCustomInterceptProfile) SecurityProfileCustomInterceptProfile {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityProfileCustomInterceptProfile
+		return ret
+	}).(SecurityProfileCustomInterceptProfileOutput)
+}
+
+// The Intercept Endpoint Group to which matching traffic should be intercepted.
+// Format: projects/{project_id}/locations/global/interceptEndpointGroups/{endpoint_group_id}
+func (o SecurityProfileCustomInterceptProfilePtrOutput) InterceptEndpointGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityProfileCustomInterceptProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.InterceptEndpointGroup
+	}).(pulumi.StringPtrOutput)
+}
+
+type SecurityProfileCustomMirroringProfile struct {
+	// The Mirroring Endpoint Group to which matching traffic should be mirrored.
+	// Format: projects/{project_id}/locations/global/mirroringEndpointGroups/{endpoint_group_id}
+	MirroringEndpointGroup string `pulumi:"mirroringEndpointGroup"`
+}
+
+// SecurityProfileCustomMirroringProfileInput is an input type that accepts SecurityProfileCustomMirroringProfileArgs and SecurityProfileCustomMirroringProfileOutput values.
+// You can construct a concrete instance of `SecurityProfileCustomMirroringProfileInput` via:
+//
+//	SecurityProfileCustomMirroringProfileArgs{...}
+type SecurityProfileCustomMirroringProfileInput interface {
+	pulumi.Input
+
+	ToSecurityProfileCustomMirroringProfileOutput() SecurityProfileCustomMirroringProfileOutput
+	ToSecurityProfileCustomMirroringProfileOutputWithContext(context.Context) SecurityProfileCustomMirroringProfileOutput
+}
+
+type SecurityProfileCustomMirroringProfileArgs struct {
+	// The Mirroring Endpoint Group to which matching traffic should be mirrored.
+	// Format: projects/{project_id}/locations/global/mirroringEndpointGroups/{endpoint_group_id}
+	MirroringEndpointGroup pulumi.StringInput `pulumi:"mirroringEndpointGroup"`
+}
+
+func (SecurityProfileCustomMirroringProfileArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityProfileCustomMirroringProfile)(nil)).Elem()
+}
+
+func (i SecurityProfileCustomMirroringProfileArgs) ToSecurityProfileCustomMirroringProfileOutput() SecurityProfileCustomMirroringProfileOutput {
+	return i.ToSecurityProfileCustomMirroringProfileOutputWithContext(context.Background())
+}
+
+func (i SecurityProfileCustomMirroringProfileArgs) ToSecurityProfileCustomMirroringProfileOutputWithContext(ctx context.Context) SecurityProfileCustomMirroringProfileOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityProfileCustomMirroringProfileOutput)
+}
+
+func (i SecurityProfileCustomMirroringProfileArgs) ToSecurityProfileCustomMirroringProfilePtrOutput() SecurityProfileCustomMirroringProfilePtrOutput {
+	return i.ToSecurityProfileCustomMirroringProfilePtrOutputWithContext(context.Background())
+}
+
+func (i SecurityProfileCustomMirroringProfileArgs) ToSecurityProfileCustomMirroringProfilePtrOutputWithContext(ctx context.Context) SecurityProfileCustomMirroringProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityProfileCustomMirroringProfileOutput).ToSecurityProfileCustomMirroringProfilePtrOutputWithContext(ctx)
+}
+
+// SecurityProfileCustomMirroringProfilePtrInput is an input type that accepts SecurityProfileCustomMirroringProfileArgs, SecurityProfileCustomMirroringProfilePtr and SecurityProfileCustomMirroringProfilePtrOutput values.
+// You can construct a concrete instance of `SecurityProfileCustomMirroringProfilePtrInput` via:
+//
+//	        SecurityProfileCustomMirroringProfileArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityProfileCustomMirroringProfilePtrInput interface {
+	pulumi.Input
+
+	ToSecurityProfileCustomMirroringProfilePtrOutput() SecurityProfileCustomMirroringProfilePtrOutput
+	ToSecurityProfileCustomMirroringProfilePtrOutputWithContext(context.Context) SecurityProfileCustomMirroringProfilePtrOutput
+}
+
+type securityProfileCustomMirroringProfilePtrType SecurityProfileCustomMirroringProfileArgs
+
+func SecurityProfileCustomMirroringProfilePtr(v *SecurityProfileCustomMirroringProfileArgs) SecurityProfileCustomMirroringProfilePtrInput {
+	return (*securityProfileCustomMirroringProfilePtrType)(v)
+}
+
+func (*securityProfileCustomMirroringProfilePtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityProfileCustomMirroringProfile)(nil)).Elem()
+}
+
+func (i *securityProfileCustomMirroringProfilePtrType) ToSecurityProfileCustomMirroringProfilePtrOutput() SecurityProfileCustomMirroringProfilePtrOutput {
+	return i.ToSecurityProfileCustomMirroringProfilePtrOutputWithContext(context.Background())
+}
+
+func (i *securityProfileCustomMirroringProfilePtrType) ToSecurityProfileCustomMirroringProfilePtrOutputWithContext(ctx context.Context) SecurityProfileCustomMirroringProfilePtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityProfileCustomMirroringProfilePtrOutput)
+}
+
+type SecurityProfileCustomMirroringProfileOutput struct{ *pulumi.OutputState }
+
+func (SecurityProfileCustomMirroringProfileOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityProfileCustomMirroringProfile)(nil)).Elem()
+}
+
+func (o SecurityProfileCustomMirroringProfileOutput) ToSecurityProfileCustomMirroringProfileOutput() SecurityProfileCustomMirroringProfileOutput {
+	return o
+}
+
+func (o SecurityProfileCustomMirroringProfileOutput) ToSecurityProfileCustomMirroringProfileOutputWithContext(ctx context.Context) SecurityProfileCustomMirroringProfileOutput {
+	return o
+}
+
+func (o SecurityProfileCustomMirroringProfileOutput) ToSecurityProfileCustomMirroringProfilePtrOutput() SecurityProfileCustomMirroringProfilePtrOutput {
+	return o.ToSecurityProfileCustomMirroringProfilePtrOutputWithContext(context.Background())
+}
+
+func (o SecurityProfileCustomMirroringProfileOutput) ToSecurityProfileCustomMirroringProfilePtrOutputWithContext(ctx context.Context) SecurityProfileCustomMirroringProfilePtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityProfileCustomMirroringProfile) *SecurityProfileCustomMirroringProfile {
+		return &v
+	}).(SecurityProfileCustomMirroringProfilePtrOutput)
+}
+
+// The Mirroring Endpoint Group to which matching traffic should be mirrored.
+// Format: projects/{project_id}/locations/global/mirroringEndpointGroups/{endpoint_group_id}
+func (o SecurityProfileCustomMirroringProfileOutput) MirroringEndpointGroup() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityProfileCustomMirroringProfile) string { return v.MirroringEndpointGroup }).(pulumi.StringOutput)
+}
+
+type SecurityProfileCustomMirroringProfilePtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityProfileCustomMirroringProfilePtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityProfileCustomMirroringProfile)(nil)).Elem()
+}
+
+func (o SecurityProfileCustomMirroringProfilePtrOutput) ToSecurityProfileCustomMirroringProfilePtrOutput() SecurityProfileCustomMirroringProfilePtrOutput {
+	return o
+}
+
+func (o SecurityProfileCustomMirroringProfilePtrOutput) ToSecurityProfileCustomMirroringProfilePtrOutputWithContext(ctx context.Context) SecurityProfileCustomMirroringProfilePtrOutput {
+	return o
+}
+
+func (o SecurityProfileCustomMirroringProfilePtrOutput) Elem() SecurityProfileCustomMirroringProfileOutput {
+	return o.ApplyT(func(v *SecurityProfileCustomMirroringProfile) SecurityProfileCustomMirroringProfile {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityProfileCustomMirroringProfile
+		return ret
+	}).(SecurityProfileCustomMirroringProfileOutput)
+}
+
+// The Mirroring Endpoint Group to which matching traffic should be mirrored.
+// Format: projects/{project_id}/locations/global/mirroringEndpointGroups/{endpoint_group_id}
+func (o SecurityProfileCustomMirroringProfilePtrOutput) MirroringEndpointGroup() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityProfileCustomMirroringProfile) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.MirroringEndpointGroup
+	}).(pulumi.StringPtrOutput)
+}
+
 type SecurityProfileThreatPreventionProfile struct {
 	// The configuration for overriding threats actions by severity match.
 	// Structure is documented below.
@@ -7222,6 +7504,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*MirroringDeploymentGroupConnectedEndpointGroupArrayInput)(nil)).Elem(), MirroringDeploymentGroupConnectedEndpointGroupArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MirroringEndpointGroupAssociationLocationsDetailInput)(nil)).Elem(), MirroringEndpointGroupAssociationLocationsDetailArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*MirroringEndpointGroupAssociationLocationsDetailArrayInput)(nil)).Elem(), MirroringEndpointGroupAssociationLocationsDetailArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityProfileCustomInterceptProfileInput)(nil)).Elem(), SecurityProfileCustomInterceptProfileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityProfileCustomInterceptProfilePtrInput)(nil)).Elem(), SecurityProfileCustomInterceptProfileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityProfileCustomMirroringProfileInput)(nil)).Elem(), SecurityProfileCustomMirroringProfileArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityProfileCustomMirroringProfilePtrInput)(nil)).Elem(), SecurityProfileCustomMirroringProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityProfileThreatPreventionProfileInput)(nil)).Elem(), SecurityProfileThreatPreventionProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityProfileThreatPreventionProfilePtrInput)(nil)).Elem(), SecurityProfileThreatPreventionProfileArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityProfileThreatPreventionProfileSeverityOverrideInput)(nil)).Elem(), SecurityProfileThreatPreventionProfileSeverityOverrideArgs{})
@@ -7320,6 +7606,10 @@ func init() {
 	pulumi.RegisterOutputType(MirroringDeploymentGroupConnectedEndpointGroupArrayOutput{})
 	pulumi.RegisterOutputType(MirroringEndpointGroupAssociationLocationsDetailOutput{})
 	pulumi.RegisterOutputType(MirroringEndpointGroupAssociationLocationsDetailArrayOutput{})
+	pulumi.RegisterOutputType(SecurityProfileCustomInterceptProfileOutput{})
+	pulumi.RegisterOutputType(SecurityProfileCustomInterceptProfilePtrOutput{})
+	pulumi.RegisterOutputType(SecurityProfileCustomMirroringProfileOutput{})
+	pulumi.RegisterOutputType(SecurityProfileCustomMirroringProfilePtrOutput{})
 	pulumi.RegisterOutputType(SecurityProfileThreatPreventionProfileOutput{})
 	pulumi.RegisterOutputType(SecurityProfileThreatPreventionProfilePtrOutput{})
 	pulumi.RegisterOutputType(SecurityProfileThreatPreventionProfileSeverityOverrideOutput{})

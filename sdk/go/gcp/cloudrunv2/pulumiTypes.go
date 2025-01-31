@@ -4103,6 +4103,299 @@ func (o ServiceBinaryAuthorizationPtrOutput) UseDefault() pulumi.BoolPtrOutput {
 	}).(pulumi.BoolPtrOutput)
 }
 
+type ServiceBuildConfig struct {
+	// The base image used to build the function.
+	BaseImage *string `pulumi:"baseImage"`
+	// Sets whether the function will receive automatic base image updates.
+	EnableAutomaticUpdates *bool `pulumi:"enableAutomaticUpdates"`
+	// User-provided build-time environment variables for the function.
+	EnvironmentVariables map[string]string `pulumi:"environmentVariables"`
+	// The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix, if not specified. For backward compatibility, if function with given name is not found, then the system will try to use function named "function".
+	FunctionTarget *string `pulumi:"functionTarget"`
+	// Artifact Registry URI to store the built image.
+	ImageUri *string `pulumi:"imageUri"`
+	// (Output)
+	// The Cloud Build name of the latest successful deployment of the function.
+	Name *string `pulumi:"name"`
+	// Service account to be used for building the container. The format of this field is `projects/{projectId}/serviceAccounts/{serviceAccountEmail}`.
+	ServiceAccount *string `pulumi:"serviceAccount"`
+	// The Cloud Storage bucket URI where the function source code is located.
+	SourceLocation *string `pulumi:"sourceLocation"`
+	// Name of the Cloud Build Custom Worker Pool that should be used to build the Cloud Run function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where {project} and {region} are the project id and region respectively where the worker pool is defined and {workerPool} is the short name of the worker pool.
+	WorkerPool *string `pulumi:"workerPool"`
+}
+
+// ServiceBuildConfigInput is an input type that accepts ServiceBuildConfigArgs and ServiceBuildConfigOutput values.
+// You can construct a concrete instance of `ServiceBuildConfigInput` via:
+//
+//	ServiceBuildConfigArgs{...}
+type ServiceBuildConfigInput interface {
+	pulumi.Input
+
+	ToServiceBuildConfigOutput() ServiceBuildConfigOutput
+	ToServiceBuildConfigOutputWithContext(context.Context) ServiceBuildConfigOutput
+}
+
+type ServiceBuildConfigArgs struct {
+	// The base image used to build the function.
+	BaseImage pulumi.StringPtrInput `pulumi:"baseImage"`
+	// Sets whether the function will receive automatic base image updates.
+	EnableAutomaticUpdates pulumi.BoolPtrInput `pulumi:"enableAutomaticUpdates"`
+	// User-provided build-time environment variables for the function.
+	EnvironmentVariables pulumi.StringMapInput `pulumi:"environmentVariables"`
+	// The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix, if not specified. For backward compatibility, if function with given name is not found, then the system will try to use function named "function".
+	FunctionTarget pulumi.StringPtrInput `pulumi:"functionTarget"`
+	// Artifact Registry URI to store the built image.
+	ImageUri pulumi.StringPtrInput `pulumi:"imageUri"`
+	// (Output)
+	// The Cloud Build name of the latest successful deployment of the function.
+	Name pulumi.StringPtrInput `pulumi:"name"`
+	// Service account to be used for building the container. The format of this field is `projects/{projectId}/serviceAccounts/{serviceAccountEmail}`.
+	ServiceAccount pulumi.StringPtrInput `pulumi:"serviceAccount"`
+	// The Cloud Storage bucket URI where the function source code is located.
+	SourceLocation pulumi.StringPtrInput `pulumi:"sourceLocation"`
+	// Name of the Cloud Build Custom Worker Pool that should be used to build the Cloud Run function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where {project} and {region} are the project id and region respectively where the worker pool is defined and {workerPool} is the short name of the worker pool.
+	WorkerPool pulumi.StringPtrInput `pulumi:"workerPool"`
+}
+
+func (ServiceBuildConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceBuildConfig)(nil)).Elem()
+}
+
+func (i ServiceBuildConfigArgs) ToServiceBuildConfigOutput() ServiceBuildConfigOutput {
+	return i.ToServiceBuildConfigOutputWithContext(context.Background())
+}
+
+func (i ServiceBuildConfigArgs) ToServiceBuildConfigOutputWithContext(ctx context.Context) ServiceBuildConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceBuildConfigOutput)
+}
+
+func (i ServiceBuildConfigArgs) ToServiceBuildConfigPtrOutput() ServiceBuildConfigPtrOutput {
+	return i.ToServiceBuildConfigPtrOutputWithContext(context.Background())
+}
+
+func (i ServiceBuildConfigArgs) ToServiceBuildConfigPtrOutputWithContext(ctx context.Context) ServiceBuildConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceBuildConfigOutput).ToServiceBuildConfigPtrOutputWithContext(ctx)
+}
+
+// ServiceBuildConfigPtrInput is an input type that accepts ServiceBuildConfigArgs, ServiceBuildConfigPtr and ServiceBuildConfigPtrOutput values.
+// You can construct a concrete instance of `ServiceBuildConfigPtrInput` via:
+//
+//	        ServiceBuildConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type ServiceBuildConfigPtrInput interface {
+	pulumi.Input
+
+	ToServiceBuildConfigPtrOutput() ServiceBuildConfigPtrOutput
+	ToServiceBuildConfigPtrOutputWithContext(context.Context) ServiceBuildConfigPtrOutput
+}
+
+type serviceBuildConfigPtrType ServiceBuildConfigArgs
+
+func ServiceBuildConfigPtr(v *ServiceBuildConfigArgs) ServiceBuildConfigPtrInput {
+	return (*serviceBuildConfigPtrType)(v)
+}
+
+func (*serviceBuildConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceBuildConfig)(nil)).Elem()
+}
+
+func (i *serviceBuildConfigPtrType) ToServiceBuildConfigPtrOutput() ServiceBuildConfigPtrOutput {
+	return i.ToServiceBuildConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *serviceBuildConfigPtrType) ToServiceBuildConfigPtrOutputWithContext(ctx context.Context) ServiceBuildConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ServiceBuildConfigPtrOutput)
+}
+
+type ServiceBuildConfigOutput struct{ *pulumi.OutputState }
+
+func (ServiceBuildConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ServiceBuildConfig)(nil)).Elem()
+}
+
+func (o ServiceBuildConfigOutput) ToServiceBuildConfigOutput() ServiceBuildConfigOutput {
+	return o
+}
+
+func (o ServiceBuildConfigOutput) ToServiceBuildConfigOutputWithContext(ctx context.Context) ServiceBuildConfigOutput {
+	return o
+}
+
+func (o ServiceBuildConfigOutput) ToServiceBuildConfigPtrOutput() ServiceBuildConfigPtrOutput {
+	return o.ToServiceBuildConfigPtrOutputWithContext(context.Background())
+}
+
+func (o ServiceBuildConfigOutput) ToServiceBuildConfigPtrOutputWithContext(ctx context.Context) ServiceBuildConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ServiceBuildConfig) *ServiceBuildConfig {
+		return &v
+	}).(ServiceBuildConfigPtrOutput)
+}
+
+// The base image used to build the function.
+func (o ServiceBuildConfigOutput) BaseImage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceBuildConfig) *string { return v.BaseImage }).(pulumi.StringPtrOutput)
+}
+
+// Sets whether the function will receive automatic base image updates.
+func (o ServiceBuildConfigOutput) EnableAutomaticUpdates() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v ServiceBuildConfig) *bool { return v.EnableAutomaticUpdates }).(pulumi.BoolPtrOutput)
+}
+
+// User-provided build-time environment variables for the function.
+func (o ServiceBuildConfigOutput) EnvironmentVariables() pulumi.StringMapOutput {
+	return o.ApplyT(func(v ServiceBuildConfig) map[string]string { return v.EnvironmentVariables }).(pulumi.StringMapOutput)
+}
+
+// The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix, if not specified. For backward compatibility, if function with given name is not found, then the system will try to use function named "function".
+func (o ServiceBuildConfigOutput) FunctionTarget() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceBuildConfig) *string { return v.FunctionTarget }).(pulumi.StringPtrOutput)
+}
+
+// Artifact Registry URI to store the built image.
+func (o ServiceBuildConfigOutput) ImageUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceBuildConfig) *string { return v.ImageUri }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The Cloud Build name of the latest successful deployment of the function.
+func (o ServiceBuildConfigOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceBuildConfig) *string { return v.Name }).(pulumi.StringPtrOutput)
+}
+
+// Service account to be used for building the container. The format of this field is `projects/{projectId}/serviceAccounts/{serviceAccountEmail}`.
+func (o ServiceBuildConfigOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceBuildConfig) *string { return v.ServiceAccount }).(pulumi.StringPtrOutput)
+}
+
+// The Cloud Storage bucket URI where the function source code is located.
+func (o ServiceBuildConfigOutput) SourceLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceBuildConfig) *string { return v.SourceLocation }).(pulumi.StringPtrOutput)
+}
+
+// Name of the Cloud Build Custom Worker Pool that should be used to build the Cloud Run function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where {project} and {region} are the project id and region respectively where the worker pool is defined and {workerPool} is the short name of the worker pool.
+func (o ServiceBuildConfigOutput) WorkerPool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ServiceBuildConfig) *string { return v.WorkerPool }).(pulumi.StringPtrOutput)
+}
+
+type ServiceBuildConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (ServiceBuildConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ServiceBuildConfig)(nil)).Elem()
+}
+
+func (o ServiceBuildConfigPtrOutput) ToServiceBuildConfigPtrOutput() ServiceBuildConfigPtrOutput {
+	return o
+}
+
+func (o ServiceBuildConfigPtrOutput) ToServiceBuildConfigPtrOutputWithContext(ctx context.Context) ServiceBuildConfigPtrOutput {
+	return o
+}
+
+func (o ServiceBuildConfigPtrOutput) Elem() ServiceBuildConfigOutput {
+	return o.ApplyT(func(v *ServiceBuildConfig) ServiceBuildConfig {
+		if v != nil {
+			return *v
+		}
+		var ret ServiceBuildConfig
+		return ret
+	}).(ServiceBuildConfigOutput)
+}
+
+// The base image used to build the function.
+func (o ServiceBuildConfigPtrOutput) BaseImage() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceBuildConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.BaseImage
+	}).(pulumi.StringPtrOutput)
+}
+
+// Sets whether the function will receive automatic base image updates.
+func (o ServiceBuildConfigPtrOutput) EnableAutomaticUpdates() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *ServiceBuildConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.EnableAutomaticUpdates
+	}).(pulumi.BoolPtrOutput)
+}
+
+// User-provided build-time environment variables for the function.
+func (o ServiceBuildConfigPtrOutput) EnvironmentVariables() pulumi.StringMapOutput {
+	return o.ApplyT(func(v *ServiceBuildConfig) map[string]string {
+		if v == nil {
+			return nil
+		}
+		return v.EnvironmentVariables
+	}).(pulumi.StringMapOutput)
+}
+
+// The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix, if not specified. For backward compatibility, if function with given name is not found, then the system will try to use function named "function".
+func (o ServiceBuildConfigPtrOutput) FunctionTarget() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceBuildConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.FunctionTarget
+	}).(pulumi.StringPtrOutput)
+}
+
+// Artifact Registry URI to store the built image.
+func (o ServiceBuildConfigPtrOutput) ImageUri() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceBuildConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ImageUri
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// The Cloud Build name of the latest successful deployment of the function.
+func (o ServiceBuildConfigPtrOutput) Name() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceBuildConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.Name
+	}).(pulumi.StringPtrOutput)
+}
+
+// Service account to be used for building the container. The format of this field is `projects/{projectId}/serviceAccounts/{serviceAccountEmail}`.
+func (o ServiceBuildConfigPtrOutput) ServiceAccount() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceBuildConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ServiceAccount
+	}).(pulumi.StringPtrOutput)
+}
+
+// The Cloud Storage bucket URI where the function source code is located.
+func (o ServiceBuildConfigPtrOutput) SourceLocation() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceBuildConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.SourceLocation
+	}).(pulumi.StringPtrOutput)
+}
+
+// Name of the Cloud Build Custom Worker Pool that should be used to build the Cloud Run function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where {project} and {region} are the project id and region respectively where the worker pool is defined and {workerPool} is the short name of the worker pool.
+func (o ServiceBuildConfigPtrOutput) WorkerPool() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ServiceBuildConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.WorkerPool
+	}).(pulumi.StringPtrOutput)
+}
+
 type ServiceCondition struct {
 	// (Output)
 	// A reason for the execution condition.
@@ -13229,6 +13522,175 @@ func (o GetServiceBinaryAuthorizationArrayOutput) Index(i pulumi.IntInput) GetSe
 	}).(GetServiceBinaryAuthorizationOutput)
 }
 
+type GetServiceBuildConfig struct {
+	// The base image used to build the function.
+	BaseImage string `pulumi:"baseImage"`
+	// Sets whether the function will receive automatic base image updates.
+	EnableAutomaticUpdates bool `pulumi:"enableAutomaticUpdates"`
+	// User-provided build-time environment variables for the function.
+	EnvironmentVariables map[string]string `pulumi:"environmentVariables"`
+	// The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix, if not specified. For backward compatibility, if function with given name is not found, then the system will try to use function named "function".
+	FunctionTarget string `pulumi:"functionTarget"`
+	// Artifact Registry URI to store the built image.
+	ImageUri string `pulumi:"imageUri"`
+	// The name of the Cloud Run v2 Service.
+	Name string `pulumi:"name"`
+	// Service account to be used for building the container. The format of this field is 'projects/{projectId}/serviceAccounts/{serviceAccountEmail}'.
+	ServiceAccount string `pulumi:"serviceAccount"`
+	// The Cloud Storage bucket URI where the function source code is located.
+	SourceLocation string `pulumi:"sourceLocation"`
+	// Name of the Cloud Build Custom Worker Pool that should be used to build the Cloud Run function. The format of this field is 'projects/{project}/locations/{region}/workerPools/{workerPool}' where {project} and {region} are the project id and region respectively where the worker pool is defined and {workerPool} is the short name of the worker pool.
+	WorkerPool string `pulumi:"workerPool"`
+}
+
+// GetServiceBuildConfigInput is an input type that accepts GetServiceBuildConfigArgs and GetServiceBuildConfigOutput values.
+// You can construct a concrete instance of `GetServiceBuildConfigInput` via:
+//
+//	GetServiceBuildConfigArgs{...}
+type GetServiceBuildConfigInput interface {
+	pulumi.Input
+
+	ToGetServiceBuildConfigOutput() GetServiceBuildConfigOutput
+	ToGetServiceBuildConfigOutputWithContext(context.Context) GetServiceBuildConfigOutput
+}
+
+type GetServiceBuildConfigArgs struct {
+	// The base image used to build the function.
+	BaseImage pulumi.StringInput `pulumi:"baseImage"`
+	// Sets whether the function will receive automatic base image updates.
+	EnableAutomaticUpdates pulumi.BoolInput `pulumi:"enableAutomaticUpdates"`
+	// User-provided build-time environment variables for the function.
+	EnvironmentVariables pulumi.StringMapInput `pulumi:"environmentVariables"`
+	// The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix, if not specified. For backward compatibility, if function with given name is not found, then the system will try to use function named "function".
+	FunctionTarget pulumi.StringInput `pulumi:"functionTarget"`
+	// Artifact Registry URI to store the built image.
+	ImageUri pulumi.StringInput `pulumi:"imageUri"`
+	// The name of the Cloud Run v2 Service.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Service account to be used for building the container. The format of this field is 'projects/{projectId}/serviceAccounts/{serviceAccountEmail}'.
+	ServiceAccount pulumi.StringInput `pulumi:"serviceAccount"`
+	// The Cloud Storage bucket URI where the function source code is located.
+	SourceLocation pulumi.StringInput `pulumi:"sourceLocation"`
+	// Name of the Cloud Build Custom Worker Pool that should be used to build the Cloud Run function. The format of this field is 'projects/{project}/locations/{region}/workerPools/{workerPool}' where {project} and {region} are the project id and region respectively where the worker pool is defined and {workerPool} is the short name of the worker pool.
+	WorkerPool pulumi.StringInput `pulumi:"workerPool"`
+}
+
+func (GetServiceBuildConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceBuildConfig)(nil)).Elem()
+}
+
+func (i GetServiceBuildConfigArgs) ToGetServiceBuildConfigOutput() GetServiceBuildConfigOutput {
+	return i.ToGetServiceBuildConfigOutputWithContext(context.Background())
+}
+
+func (i GetServiceBuildConfigArgs) ToGetServiceBuildConfigOutputWithContext(ctx context.Context) GetServiceBuildConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceBuildConfigOutput)
+}
+
+// GetServiceBuildConfigArrayInput is an input type that accepts GetServiceBuildConfigArray and GetServiceBuildConfigArrayOutput values.
+// You can construct a concrete instance of `GetServiceBuildConfigArrayInput` via:
+//
+//	GetServiceBuildConfigArray{ GetServiceBuildConfigArgs{...} }
+type GetServiceBuildConfigArrayInput interface {
+	pulumi.Input
+
+	ToGetServiceBuildConfigArrayOutput() GetServiceBuildConfigArrayOutput
+	ToGetServiceBuildConfigArrayOutputWithContext(context.Context) GetServiceBuildConfigArrayOutput
+}
+
+type GetServiceBuildConfigArray []GetServiceBuildConfigInput
+
+func (GetServiceBuildConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceBuildConfig)(nil)).Elem()
+}
+
+func (i GetServiceBuildConfigArray) ToGetServiceBuildConfigArrayOutput() GetServiceBuildConfigArrayOutput {
+	return i.ToGetServiceBuildConfigArrayOutputWithContext(context.Background())
+}
+
+func (i GetServiceBuildConfigArray) ToGetServiceBuildConfigArrayOutputWithContext(ctx context.Context) GetServiceBuildConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetServiceBuildConfigArrayOutput)
+}
+
+type GetServiceBuildConfigOutput struct{ *pulumi.OutputState }
+
+func (GetServiceBuildConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetServiceBuildConfig)(nil)).Elem()
+}
+
+func (o GetServiceBuildConfigOutput) ToGetServiceBuildConfigOutput() GetServiceBuildConfigOutput {
+	return o
+}
+
+func (o GetServiceBuildConfigOutput) ToGetServiceBuildConfigOutputWithContext(ctx context.Context) GetServiceBuildConfigOutput {
+	return o
+}
+
+// The base image used to build the function.
+func (o GetServiceBuildConfigOutput) BaseImage() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceBuildConfig) string { return v.BaseImage }).(pulumi.StringOutput)
+}
+
+// Sets whether the function will receive automatic base image updates.
+func (o GetServiceBuildConfigOutput) EnableAutomaticUpdates() pulumi.BoolOutput {
+	return o.ApplyT(func(v GetServiceBuildConfig) bool { return v.EnableAutomaticUpdates }).(pulumi.BoolOutput)
+}
+
+// User-provided build-time environment variables for the function.
+func (o GetServiceBuildConfigOutput) EnvironmentVariables() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetServiceBuildConfig) map[string]string { return v.EnvironmentVariables }).(pulumi.StringMapOutput)
+}
+
+// The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix, if not specified. For backward compatibility, if function with given name is not found, then the system will try to use function named "function".
+func (o GetServiceBuildConfigOutput) FunctionTarget() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceBuildConfig) string { return v.FunctionTarget }).(pulumi.StringOutput)
+}
+
+// Artifact Registry URI to store the built image.
+func (o GetServiceBuildConfigOutput) ImageUri() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceBuildConfig) string { return v.ImageUri }).(pulumi.StringOutput)
+}
+
+// The name of the Cloud Run v2 Service.
+func (o GetServiceBuildConfigOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceBuildConfig) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// Service account to be used for building the container. The format of this field is 'projects/{projectId}/serviceAccounts/{serviceAccountEmail}'.
+func (o GetServiceBuildConfigOutput) ServiceAccount() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceBuildConfig) string { return v.ServiceAccount }).(pulumi.StringOutput)
+}
+
+// The Cloud Storage bucket URI where the function source code is located.
+func (o GetServiceBuildConfigOutput) SourceLocation() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceBuildConfig) string { return v.SourceLocation }).(pulumi.StringOutput)
+}
+
+// Name of the Cloud Build Custom Worker Pool that should be used to build the Cloud Run function. The format of this field is 'projects/{project}/locations/{region}/workerPools/{workerPool}' where {project} and {region} are the project id and region respectively where the worker pool is defined and {workerPool} is the short name of the worker pool.
+func (o GetServiceBuildConfigOutput) WorkerPool() pulumi.StringOutput {
+	return o.ApplyT(func(v GetServiceBuildConfig) string { return v.WorkerPool }).(pulumi.StringOutput)
+}
+
+type GetServiceBuildConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (GetServiceBuildConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetServiceBuildConfig)(nil)).Elem()
+}
+
+func (o GetServiceBuildConfigArrayOutput) ToGetServiceBuildConfigArrayOutput() GetServiceBuildConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceBuildConfigArrayOutput) ToGetServiceBuildConfigArrayOutputWithContext(ctx context.Context) GetServiceBuildConfigArrayOutput {
+	return o
+}
+
+func (o GetServiceBuildConfigArrayOutput) Index(i pulumi.IntInput) GetServiceBuildConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetServiceBuildConfig {
+		return vs[0].([]GetServiceBuildConfig)[vs[1].(int)]
+	}).(GetServiceBuildConfigOutput)
+}
+
 type GetServiceCondition struct {
 	// A reason for the execution condition.
 	ExecutionReason string `pulumi:"executionReason"`
@@ -17631,6 +18093,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*JobTerminalConditionArrayInput)(nil)).Elem(), JobTerminalConditionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceBinaryAuthorizationInput)(nil)).Elem(), ServiceBinaryAuthorizationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceBinaryAuthorizationPtrInput)(nil)).Elem(), ServiceBinaryAuthorizationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceBuildConfigInput)(nil)).Elem(), ServiceBuildConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ServiceBuildConfigPtrInput)(nil)).Elem(), ServiceBuildConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceConditionInput)(nil)).Elem(), ServiceConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceConditionArrayInput)(nil)).Elem(), ServiceConditionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ServiceIamBindingConditionInput)(nil)).Elem(), ServiceIamBindingConditionArgs{})
@@ -17751,6 +18215,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetJobTerminalConditionArrayInput)(nil)).Elem(), GetJobTerminalConditionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceBinaryAuthorizationInput)(nil)).Elem(), GetServiceBinaryAuthorizationArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceBinaryAuthorizationArrayInput)(nil)).Elem(), GetServiceBinaryAuthorizationArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceBuildConfigInput)(nil)).Elem(), GetServiceBuildConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceBuildConfigArrayInput)(nil)).Elem(), GetServiceBuildConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceConditionInput)(nil)).Elem(), GetServiceConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceConditionArrayInput)(nil)).Elem(), GetServiceConditionArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetServiceScalingInput)(nil)).Elem(), GetServiceScalingArgs{})
@@ -17871,6 +18337,8 @@ func init() {
 	pulumi.RegisterOutputType(JobTerminalConditionArrayOutput{})
 	pulumi.RegisterOutputType(ServiceBinaryAuthorizationOutput{})
 	pulumi.RegisterOutputType(ServiceBinaryAuthorizationPtrOutput{})
+	pulumi.RegisterOutputType(ServiceBuildConfigOutput{})
+	pulumi.RegisterOutputType(ServiceBuildConfigPtrOutput{})
 	pulumi.RegisterOutputType(ServiceConditionOutput{})
 	pulumi.RegisterOutputType(ServiceConditionArrayOutput{})
 	pulumi.RegisterOutputType(ServiceIamBindingConditionOutput{})
@@ -17991,6 +18459,8 @@ func init() {
 	pulumi.RegisterOutputType(GetJobTerminalConditionArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceBinaryAuthorizationOutput{})
 	pulumi.RegisterOutputType(GetServiceBinaryAuthorizationArrayOutput{})
+	pulumi.RegisterOutputType(GetServiceBuildConfigOutput{})
+	pulumi.RegisterOutputType(GetServiceBuildConfigArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceConditionOutput{})
 	pulumi.RegisterOutputType(GetServiceConditionArrayOutput{})
 	pulumi.RegisterOutputType(GetServiceScalingOutput{})

@@ -828,6 +828,98 @@ namespace Pulumi.Gcp.CloudRunV2
     /// 
     /// });
     /// ```
+    /// ### Cloudrunv2 Service Function
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var project = Gcp.Organizations.GetProject.Invoke();
+    /// 
+    ///     var bucket = new Gcp.Storage.Bucket("bucket", new()
+    ///     {
+    ///         Name = $"{project.Apply(getProjectResult =&gt; getProjectResult.ProjectId)}-gcf-source",
+    ///         Location = "US",
+    ///         UniformBucketLevelAccess = true,
+    ///     });
+    /// 
+    ///     var @object = new Gcp.Storage.BucketObject("object", new()
+    ///     {
+    ///         Name = "function-source.zip",
+    ///         Bucket = bucket.Name,
+    ///         Source = new FileAsset("function_source.zip"),
+    ///     });
+    /// 
+    ///     var cloudbuildServiceAccount = new Gcp.ServiceAccount.Account("cloudbuild_service_account", new()
+    ///     {
+    ///         AccountId = "build-sa",
+    ///     });
+    /// 
+    ///     var actAs = new Gcp.Projects.IAMMember("act_as", new()
+    ///     {
+    ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
+    ///         Role = "roles/iam.serviceAccountUser",
+    ///         Member = cloudbuildServiceAccount.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///     });
+    /// 
+    ///     var logsWriter = new Gcp.Projects.IAMMember("logs_writer", new()
+    ///     {
+    ///         Project = project.Apply(getProjectResult =&gt; getProjectResult.ProjectId),
+    ///         Role = "roles/logging.logWriter",
+    ///         Member = cloudbuildServiceAccount.Email.Apply(email =&gt; $"serviceAccount:{email}"),
+    ///     });
+    /// 
+    ///     var @default = new Gcp.CloudRunV2.Service("default", new()
+    ///     {
+    ///         Name = "cloudrun-service",
+    ///         Location = "us-central1",
+    ///         DeletionProtection = false,
+    ///         Ingress = "INGRESS_TRAFFIC_ALL",
+    ///         Template = new Gcp.CloudRunV2.Inputs.ServiceTemplateArgs
+    ///         {
+    ///             Containers = new[]
+    ///             {
+    ///                 new Gcp.CloudRunV2.Inputs.ServiceTemplateContainerArgs
+    ///                 {
+    ///                     Image = "us-docker.pkg.dev/cloudrun/container/hello",
+    ///                 },
+    ///             },
+    ///         },
+    ///         BuildConfig = new Gcp.CloudRunV2.Inputs.ServiceBuildConfigArgs
+    ///         {
+    ///             SourceLocation = Output.Tuple(bucket.Name, @object.Name).Apply(values =&gt;
+    ///             {
+    ///                 var bucketName = values.Item1;
+    ///                 var objectName = values.Item2;
+    ///                 return $"gs://{bucketName}/{objectName}";
+    ///             }),
+    ///             FunctionTarget = "helloHttp",
+    ///             ImageUri = "us-docker.pkg.dev/cloudrun/container/hello",
+    ///             BaseImage = "us-central1-docker.pkg.dev/serverless-runtimes/google-22-full/runtimes/nodejs22",
+    ///             EnableAutomaticUpdates = true,
+    ///             WorkerPool = "worker-pool",
+    ///             EnvironmentVariables = 
+    ///             {
+    ///                 { "FOO_KEY", "FOO_VALUE" },
+    ///                 { "BAR_KEY", "BAR_VALUE" },
+    ///             },
+    ///             ServiceAccount = cloudbuildServiceAccount.Id,
+    ///         },
+    ///     }, new CustomResourceOptions
+    ///     {
+    ///         DependsOn =
+    ///         {
+    ///             actAs,
+    ///             logsWriter,
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -873,6 +965,12 @@ namespace Pulumi.Gcp.CloudRunV2
         /// </summary>
         [Output("binaryAuthorization")]
         public Output<Outputs.ServiceBinaryAuthorization?> BinaryAuthorization { get; private set; } = null!;
+
+        /// <summary>
+        /// Configuration for building a Cloud Run function.
+        /// </summary>
+        [Output("buildConfig")]
+        public Output<Outputs.ServiceBuildConfig?> BuildConfig { get; private set; } = null!;
 
         /// <summary>
         /// Arbitrary identifier for the API client.
@@ -1190,6 +1288,12 @@ namespace Pulumi.Gcp.CloudRunV2
         public Input<Inputs.ServiceBinaryAuthorizationArgs>? BinaryAuthorization { get; set; }
 
         /// <summary>
+        /// Configuration for building a Cloud Run function.
+        /// </summary>
+        [Input("buildConfig")]
+        public Input<Inputs.ServiceBuildConfigArgs>? BuildConfig { get; set; }
+
+        /// <summary>
         /// Arbitrary identifier for the API client.
         /// </summary>
         [Input("client")]
@@ -1347,6 +1451,12 @@ namespace Pulumi.Gcp.CloudRunV2
         /// </summary>
         [Input("binaryAuthorization")]
         public Input<Inputs.ServiceBinaryAuthorizationGetArgs>? BinaryAuthorization { get; set; }
+
+        /// <summary>
+        /// Configuration for building a Cloud Run function.
+        /// </summary>
+        [Input("buildConfig")]
+        public Input<Inputs.ServiceBuildConfigGetArgs>? BuildConfig { get; set; }
 
         /// <summary>
         /// Arbitrary identifier for the API client.

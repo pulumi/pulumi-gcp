@@ -31,10 +31,10 @@ class RepositoryGroupArgs:
         The set of arguments for constructing a RepositoryGroup resource.
         :param pulumi.Input[str] code_repository_index: Required. Id of the Code Repository Index.
         :param pulumi.Input[str] location: The location of the Code Repository Index, for example `us-central1`.
-        :param pulumi.Input[Sequence[pulumi.Input['RepositoryGroupRepositoryArgs']]] repositories: Required. List of repositories to group
+        :param pulumi.Input[Sequence[pulumi.Input['RepositoryGroupRepositoryArgs']]] repositories: Required. List of repositories to group.
                Structure is documented below.
         :param pulumi.Input[str] repository_group_id: Required. Id of the Repository Group.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels as key value pairs **Note**: This field is non-authoritative, and will only manage the labels present
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels as key value pairs. **Note**: This field is non-authoritative, and will only manage the labels present
                in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
         """
         pulumi.set(__self__, "code_repository_index", code_repository_index)
@@ -74,7 +74,7 @@ class RepositoryGroupArgs:
     @pulumi.getter
     def repositories(self) -> pulumi.Input[Sequence[pulumi.Input['RepositoryGroupRepositoryArgs']]]:
         """
-        Required. List of repositories to group
+        Required. List of repositories to group.
         Structure is documented below.
         """
         return pulumi.get(self, "repositories")
@@ -99,7 +99,7 @@ class RepositoryGroupArgs:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Optional. Labels as key value pairs **Note**: This field is non-authoritative, and will only manage the labels present
+        Optional. Labels as key value pairs. **Note**: This field is non-authoritative, and will only manage the labels present
         in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
@@ -135,18 +135,18 @@ class _RepositoryGroupState:
         """
         Input properties used for looking up and filtering RepositoryGroup resources.
         :param pulumi.Input[str] code_repository_index: Required. Id of the Code Repository Index.
-        :param pulumi.Input[str] create_time: Output only. Create time stamp
+        :param pulumi.Input[str] create_time: Output only. Create time stamp.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels as key value pairs **Note**: This field is non-authoritative, and will only manage the labels present
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels as key value pairs. **Note**: This field is non-authoritative, and will only manage the labels present
                in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location of the Code Repository Index, for example `us-central1`.
-        :param pulumi.Input[str] name: Immutable. Identifier. name of resource
+        :param pulumi.Input[str] name: Immutable. Identifier. Name of Repository Group.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[Sequence[pulumi.Input['RepositoryGroupRepositoryArgs']]] repositories: Required. List of repositories to group
+        :param pulumi.Input[Sequence[pulumi.Input['RepositoryGroupRepositoryArgs']]] repositories: Required. List of repositories to group.
                Structure is documented below.
         :param pulumi.Input[str] repository_group_id: Required. Id of the Repository Group.
-        :param pulumi.Input[str] update_time: Output only. Update time stamp
+        :param pulumi.Input[str] update_time: Output only. Update time stamp.
         """
         if code_repository_index is not None:
             pulumi.set(__self__, "code_repository_index", code_repository_index)
@@ -187,7 +187,7 @@ class _RepositoryGroupState:
     @pulumi.getter(name="createTime")
     def create_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. Create time stamp
+        Output only. Create time stamp.
         """
         return pulumi.get(self, "create_time")
 
@@ -211,7 +211,7 @@ class _RepositoryGroupState:
     @pulumi.getter
     def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Optional. Labels as key value pairs **Note**: This field is non-authoritative, and will only manage the labels present
+        Optional. Labels as key value pairs. **Note**: This field is non-authoritative, and will only manage the labels present
         in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
@@ -236,7 +236,7 @@ class _RepositoryGroupState:
     @pulumi.getter
     def name(self) -> Optional[pulumi.Input[str]]:
         """
-        Immutable. Identifier. name of resource
+        Immutable. Identifier. Name of Repository Group.
         """
         return pulumi.get(self, "name")
 
@@ -270,7 +270,7 @@ class _RepositoryGroupState:
     @pulumi.getter
     def repositories(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['RepositoryGroupRepositoryArgs']]]]:
         """
-        Required. List of repositories to group
+        Required. List of repositories to group.
         Structure is documented below.
         """
         return pulumi.get(self, "repositories")
@@ -295,7 +295,7 @@ class _RepositoryGroupState:
     @pulumi.getter(name="updateTime")
     def update_time(self) -> Optional[pulumi.Input[str]]:
         """
-        Output only. Update time stamp
+        Output only. Update time stamp.
         """
         return pulumi.get(self, "update_time")
 
@@ -317,7 +317,32 @@ class RepositoryGroup(pulumi.CustomResource):
                  repository_group_id: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        The resource for managing Repository Group for Gemini Code Assist.
+
+        To get more information about RepositoryGroup, see:
+
+        * [API documentation](https://cloud.google.com/gemini/docs/api/reference/rest/v1/projects.locations.codeRepositoryIndexes.repositoryGroups)
+
         ## Example Usage
+
+        ### Gemini Repository Group Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.gemini.RepositoryGroup("example",
+            location="us-central1",
+            code_repository_index="example-cri",
+            repository_group_id="example-repository-group",
+            repositories=[{
+                "resource": "projects/example-project/locations/us-central1/connections/example-connection/gitRepositoryLinks/example-repo",
+                "branch_pattern": "main",
+            }],
+            labels={
+                "label1": "value1",
+            })
+        ```
 
         ## Import
 
@@ -346,10 +371,10 @@ class RepositoryGroup(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] code_repository_index: Required. Id of the Code Repository Index.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels as key value pairs **Note**: This field is non-authoritative, and will only manage the labels present
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels as key value pairs. **Note**: This field is non-authoritative, and will only manage the labels present
                in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location of the Code Repository Index, for example `us-central1`.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RepositoryGroupRepositoryArgs', 'RepositoryGroupRepositoryArgsDict']]]] repositories: Required. List of repositories to group
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RepositoryGroupRepositoryArgs', 'RepositoryGroupRepositoryArgsDict']]]] repositories: Required. List of repositories to group.
                Structure is documented below.
         :param pulumi.Input[str] repository_group_id: Required. Id of the Repository Group.
         """
@@ -360,7 +385,32 @@ class RepositoryGroup(pulumi.CustomResource):
                  args: RepositoryGroupArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        The resource for managing Repository Group for Gemini Code Assist.
+
+        To get more information about RepositoryGroup, see:
+
+        * [API documentation](https://cloud.google.com/gemini/docs/api/reference/rest/v1/projects.locations.codeRepositoryIndexes.repositoryGroups)
+
         ## Example Usage
+
+        ### Gemini Repository Group Basic
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.gemini.RepositoryGroup("example",
+            location="us-central1",
+            code_repository_index="example-cri",
+            repository_group_id="example-repository-group",
+            repositories=[{
+                "resource": "projects/example-project/locations/us-central1/connections/example-connection/gitRepositoryLinks/example-repo",
+                "branch_pattern": "main",
+            }],
+            labels={
+                "label1": "value1",
+            })
+        ```
 
         ## Import
 
@@ -466,18 +516,18 @@ class RepositoryGroup(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] code_repository_index: Required. Id of the Code Repository Index.
-        :param pulumi.Input[str] create_time: Output only. Create time stamp
+        :param pulumi.Input[str] create_time: Output only. Create time stamp.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels as key value pairs **Note**: This field is non-authoritative, and will only manage the labels present
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels as key value pairs. **Note**: This field is non-authoritative, and will only manage the labels present
                in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
         :param pulumi.Input[str] location: The location of the Code Repository Index, for example `us-central1`.
-        :param pulumi.Input[str] name: Immutable. Identifier. name of resource
+        :param pulumi.Input[str] name: Immutable. Identifier. Name of Repository Group.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
-        :param pulumi.Input[Sequence[pulumi.Input[Union['RepositoryGroupRepositoryArgs', 'RepositoryGroupRepositoryArgsDict']]]] repositories: Required. List of repositories to group
+        :param pulumi.Input[Sequence[pulumi.Input[Union['RepositoryGroupRepositoryArgs', 'RepositoryGroupRepositoryArgsDict']]]] repositories: Required. List of repositories to group.
                Structure is documented below.
         :param pulumi.Input[str] repository_group_id: Required. Id of the Repository Group.
-        :param pulumi.Input[str] update_time: Output only. Update time stamp
+        :param pulumi.Input[str] update_time: Output only. Update time stamp.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -508,7 +558,7 @@ class RepositoryGroup(pulumi.CustomResource):
     @pulumi.getter(name="createTime")
     def create_time(self) -> pulumi.Output[str]:
         """
-        Output only. Create time stamp
+        Output only. Create time stamp.
         """
         return pulumi.get(self, "create_time")
 
@@ -524,7 +574,7 @@ class RepositoryGroup(pulumi.CustomResource):
     @pulumi.getter
     def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        Optional. Labels as key value pairs **Note**: This field is non-authoritative, and will only manage the labels present
+        Optional. Labels as key value pairs. **Note**: This field is non-authoritative, and will only manage the labels present
         in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
         """
         return pulumi.get(self, "labels")
@@ -541,7 +591,7 @@ class RepositoryGroup(pulumi.CustomResource):
     @pulumi.getter
     def name(self) -> pulumi.Output[str]:
         """
-        Immutable. Identifier. name of resource
+        Immutable. Identifier. Name of Repository Group.
         """
         return pulumi.get(self, "name")
 
@@ -563,7 +613,7 @@ class RepositoryGroup(pulumi.CustomResource):
     @pulumi.getter
     def repositories(self) -> pulumi.Output[Sequence['outputs.RepositoryGroupRepository']]:
         """
-        Required. List of repositories to group
+        Required. List of repositories to group.
         Structure is documented below.
         """
         return pulumi.get(self, "repositories")
@@ -580,7 +630,7 @@ class RepositoryGroup(pulumi.CustomResource):
     @pulumi.getter(name="updateTime")
     def update_time(self) -> pulumi.Output[str]:
         """
-        Output only. Update time stamp
+        Output only. Update time stamp.
         """
         return pulumi.get(self, "update_time")
 

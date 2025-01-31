@@ -60,7 +60,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var basicGlobalNetworksecurityAddressGroup = new AddressGroup("basicGlobalNetworksecurityAddressGroup", AddressGroupArgs.builder()
- *             .name("address")
+ *             .name("address-group")
  *             .parent("organizations/123456789")
  *             .description("Sample global networksecurity_address_group")
  *             .location("global")
@@ -77,11 +77,11 @@ import javax.annotation.Nullable;
  * 
  *         var default_ = new FirewallPolicy("default", FirewallPolicyArgs.builder()
  *             .parent(folder.id())
- *             .shortName("policy")
+ *             .shortName("fw-policy")
  *             .description("Resource created for Terraform acceptance testing")
  *             .build());
  * 
- *         var policyRule = new FirewallPolicyRule("policyRule", FirewallPolicyRuleArgs.builder()
+ *         var primary = new FirewallPolicyRule("primary", FirewallPolicyRuleArgs.builder()
  *             .firewallPolicy(default_.name())
  *             .description("Resource created for Terraform acceptance testing")
  *             .priority(9000)
@@ -89,7 +89,15 @@ import javax.annotation.Nullable;
  *             .action("allow")
  *             .direction("EGRESS")
  *             .disabled(false)
+ *             .targetServiceAccounts("my}{@literal @}{@code service-account.com")
  *             .match(FirewallPolicyRuleMatchArgs.builder()
+ *                 .destIpRanges("11.100.0.1/32")
+ *                 .destFqdns()
+ *                 .destRegionCodes("US")
+ *                 .destThreatIntelligences("iplist-known-malicious-ips")
+ *                 .srcAddressGroups()
+ *                 .destAddressGroups(basicGlobalNetworksecurityAddressGroup.id())
+ *                 .destNetworkScope("INTERNET")
  *                 .layer4Configs(                
  *                     FirewallPolicyRuleMatchLayer4ConfigArgs.builder()
  *                         .ipProtocol("tcp")
@@ -99,18 +107,88 @@ import javax.annotation.Nullable;
  *                         .ipProtocol("udp")
  *                         .ports(22)
  *                         .build())
- *                 .destIpRanges("11.100.0.1/32")
- *                 .destFqdns()
- *                 .destRegionCodes("US")
- *                 .destThreatIntelligences("iplist-known-malicious-ips")
- *                 .srcAddressGroups()
- *                 .destAddressGroups(basicGlobalNetworksecurityAddressGroup.id())
  *                 .build())
- *             .targetServiceAccounts("my}{@literal @}{@code service-account.com")
  *             .build());
  * 
  *     }}{@code
  * }}{@code
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Firewall Policy Rule Network Scope
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.organizations.Folder;
+ * import com.pulumi.gcp.organizations.FolderArgs;
+ * import com.pulumi.gcp.compute.FirewallPolicy;
+ * import com.pulumi.gcp.compute.FirewallPolicyArgs;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.FirewallPolicyRule;
+ * import com.pulumi.gcp.compute.FirewallPolicyRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.FirewallPolicyRuleMatchArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var folder = new Folder("folder", FolderArgs.builder()
+ *             .displayName("folder")
+ *             .parent("organizations/123456789")
+ *             .deletionProtection(false)
+ *             .build());
+ * 
+ *         var default_ = new FirewallPolicy("default", FirewallPolicyArgs.builder()
+ *             .parent(folder.id())
+ *             .shortName("fw-policy")
+ *             .description("Firewall policy")
+ *             .build());
+ * 
+ *         var network = new Network("network", NetworkArgs.builder()
+ *             .name("network")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var primary = new FirewallPolicyRule("primary", FirewallPolicyRuleArgs.builder()
+ *             .firewallPolicy(default_.name())
+ *             .description("Firewall policy rule with network scope")
+ *             .priority(9000)
+ *             .action("allow")
+ *             .direction("INGRESS")
+ *             .disabled(false)
+ *             .match(FirewallPolicyRuleMatchArgs.builder()
+ *                 .srcIpRanges("11.100.0.1/32")
+ *                 .srcNetworkScope("VPC_NETWORKS")
+ *                 .srcNetworks(network.id())
+ *                 .layer4Configs(                
+ *                     FirewallPolicyRuleMatchLayer4ConfigArgs.builder()
+ *                         .ipProtocol("tcp")
+ *                         .ports(8080)
+ *                         .build(),
+ *                     FirewallPolicyRuleMatchLayer4ConfigArgs.builder()
+ *                         .ipProtocol("udp")
+ *                         .ports(22)
+ *                         .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;

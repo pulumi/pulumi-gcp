@@ -595,17 +595,19 @@ type Cluster struct {
 	pulumi.CustomResourceState
 
 	// Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
-	// Default value: "AUTH_MODE_DISABLED" Possible values: ["AUTH_MODE_UNSPECIFIED", "AUTH_MODE_IAM_AUTH",
-	// "AUTH_MODE_DISABLED"]
+	// Default value is `AUTH_MODE_DISABLED`.
+	// Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
 	AuthorizationMode pulumi.StringPtrOutput `pulumi:"authorizationMode"`
 	// The timestamp associated with the cluster creation request. A timestamp in
 	// RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional
 	// digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// Cross cluster replication config
+	// Structure is documented below.
 	CrossClusterReplicationConfig ClusterCrossClusterReplicationConfigOutput `pulumi:"crossClusterReplicationConfig"`
-	// Optional. Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster
-	// operation will fail. Default value is true.
+	// Optional. Indicates if the cluster is deletion protected or not.
+	// If the value if set to true, any delete cluster operation will fail.
+	// Default value is true.
 	DeletionProtectionEnabled pulumi.BoolPtrOutput `pulumi:"deletionProtectionEnabled"`
 	// Output only. Endpoints created on each given network,
 	// for Redis clients to connect to the cluster.
@@ -613,21 +615,28 @@ type Cluster struct {
 	// Structure is documented below.
 	DiscoveryEndpoints ClusterDiscoveryEndpointArrayOutput `pulumi:"discoveryEndpoints"`
 	// Maintenance policy for a cluster
+	// Structure is documented below.
 	MaintenancePolicy ClusterMaintenancePolicyPtrOutput `pulumi:"maintenancePolicy"`
 	// Upcoming maintenance schedule.
 	// Structure is documented below.
 	MaintenanceSchedules ClusterMaintenanceScheduleArrayOutput `pulumi:"maintenanceSchedules"`
 	// Unique name of the resource in this scope including project and location using the form:
 	// projects/{projectId}/locations/{locationId}/clusters/{clusterId}
+	//
+	// ***
 	Name pulumi.StringOutput `pulumi:"name"`
-	// The nodeType for the Redis cluster. If not provided, REDIS_HIGHMEM_MEDIUM will be used as default Possible values:
-	// ["REDIS_SHARED_CORE_NANO", "REDIS_HIGHMEM_MEDIUM", "REDIS_HIGHMEM_XLARGE", "REDIS_STANDARD_SMALL"]
+	// The nodeType for the Redis cluster.
+	// If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
+	// Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
 	NodeType pulumi.StringOutput `pulumi:"nodeType"`
 	// Persistence config (RDB, AOF) for the cluster.
+	// Structure is documented below.
 	PersistenceConfig ClusterPersistenceConfigOutput `pulumi:"persistenceConfig"`
 	// Output only. Redis memory precise size in GB for the entire cluster.
 	PreciseSizeGb pulumi.Float64Output `pulumi:"preciseSizeGb"`
-	Project       pulumi.StringOutput  `pulumi:"project"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringOutput `pulumi:"project"`
 	// Required. Each PscConfig configures the consumer network where two
 	// network addresses will be designated to the cluster for client access.
 	// Currently, only one PscConfig is supported.
@@ -636,8 +645,11 @@ type Cluster struct {
 	// Output only. PSC connections for discovery of the cluster topology and accessing the cluster.
 	// Structure is documented below.
 	PscConnections ClusterPscConnectionArrayOutput `pulumi:"pscConnections"`
-	// Configure Redis Cluster behavior using a subset of native Redis configuration parameters. Please check Memorystore
-	// documentation for the list of supported parameters:
+	// Service attachment details to configure Psc connections.
+	// Structure is documented below.
+	PscServiceAttachments ClusterPscServiceAttachmentArrayOutput `pulumi:"pscServiceAttachments"`
+	// Configure Redis Cluster behavior using a subset of native Redis configuration parameters.
+	// Please check Memorystore documentation for the list of supported parameters:
 	// https://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations
 	RedisConfigs pulumi.StringMapOutput `pulumi:"redisConfigs"`
 	// The name of the region of the Redis cluster.
@@ -653,14 +665,16 @@ type Cluster struct {
 	// Output only. Additional information about the current state of the cluster.
 	// Structure is documented below.
 	StateInfos ClusterStateInfoArrayOutput `pulumi:"stateInfos"`
-	// Optional. The in-transit encryption for the Redis cluster. If not provided, encryption is disabled for the cluster.
-	// Default value: "TRANSIT_ENCRYPTION_MODE_DISABLED" Possible values: ["TRANSIT_ENCRYPTION_MODE_UNSPECIFIED",
-	// "TRANSIT_ENCRYPTION_MODE_DISABLED", "TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION"]
+	// Optional. The in-transit encryption for the Redis cluster.
+	// If not provided, encryption is disabled for the cluster.
+	// Default value is `TRANSIT_ENCRYPTION_MODE_DISABLED`.
+	// Possible values are: `TRANSIT_ENCRYPTION_MODE_UNSPECIFIED`, `TRANSIT_ENCRYPTION_MODE_DISABLED`, `TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION`.
 	TransitEncryptionMode pulumi.StringPtrOutput `pulumi:"transitEncryptionMode"`
 	// System assigned, unique identifier for the cluster.
 	Uid pulumi.StringOutput `pulumi:"uid"`
 	// Immutable. Zone distribution config for Memorystore Redis cluster.
-	ZoneDistributionConfig ClusterZoneDistributionConfigPtrOutput `pulumi:"zoneDistributionConfig"`
+	// Structure is documented below.
+	ZoneDistributionConfig ClusterZoneDistributionConfigOutput `pulumi:"zoneDistributionConfig"`
 }
 
 // NewCluster registers a new resource with the given unique name, arguments, and options.
@@ -670,9 +684,6 @@ func NewCluster(ctx *pulumi.Context,
 		return nil, errors.New("missing one or more required arguments")
 	}
 
-	if args.PscConfigs == nil {
-		return nil, errors.New("invalid value for required argument 'PscConfigs'")
-	}
 	if args.ShardCount == nil {
 		return nil, errors.New("invalid value for required argument 'ShardCount'")
 	}
@@ -700,17 +711,19 @@ func GetCluster(ctx *pulumi.Context,
 // Input properties used for looking up and filtering Cluster resources.
 type clusterState struct {
 	// Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
-	// Default value: "AUTH_MODE_DISABLED" Possible values: ["AUTH_MODE_UNSPECIFIED", "AUTH_MODE_IAM_AUTH",
-	// "AUTH_MODE_DISABLED"]
+	// Default value is `AUTH_MODE_DISABLED`.
+	// Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
 	AuthorizationMode *string `pulumi:"authorizationMode"`
 	// The timestamp associated with the cluster creation request. A timestamp in
 	// RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional
 	// digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime *string `pulumi:"createTime"`
 	// Cross cluster replication config
+	// Structure is documented below.
 	CrossClusterReplicationConfig *ClusterCrossClusterReplicationConfig `pulumi:"crossClusterReplicationConfig"`
-	// Optional. Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster
-	// operation will fail. Default value is true.
+	// Optional. Indicates if the cluster is deletion protected or not.
+	// If the value if set to true, any delete cluster operation will fail.
+	// Default value is true.
 	DeletionProtectionEnabled *bool `pulumi:"deletionProtectionEnabled"`
 	// Output only. Endpoints created on each given network,
 	// for Redis clients to connect to the cluster.
@@ -718,21 +731,28 @@ type clusterState struct {
 	// Structure is documented below.
 	DiscoveryEndpoints []ClusterDiscoveryEndpoint `pulumi:"discoveryEndpoints"`
 	// Maintenance policy for a cluster
+	// Structure is documented below.
 	MaintenancePolicy *ClusterMaintenancePolicy `pulumi:"maintenancePolicy"`
 	// Upcoming maintenance schedule.
 	// Structure is documented below.
 	MaintenanceSchedules []ClusterMaintenanceSchedule `pulumi:"maintenanceSchedules"`
 	// Unique name of the resource in this scope including project and location using the form:
 	// projects/{projectId}/locations/{locationId}/clusters/{clusterId}
+	//
+	// ***
 	Name *string `pulumi:"name"`
-	// The nodeType for the Redis cluster. If not provided, REDIS_HIGHMEM_MEDIUM will be used as default Possible values:
-	// ["REDIS_SHARED_CORE_NANO", "REDIS_HIGHMEM_MEDIUM", "REDIS_HIGHMEM_XLARGE", "REDIS_STANDARD_SMALL"]
+	// The nodeType for the Redis cluster.
+	// If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
+	// Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
 	NodeType *string `pulumi:"nodeType"`
 	// Persistence config (RDB, AOF) for the cluster.
+	// Structure is documented below.
 	PersistenceConfig *ClusterPersistenceConfig `pulumi:"persistenceConfig"`
 	// Output only. Redis memory precise size in GB for the entire cluster.
 	PreciseSizeGb *float64 `pulumi:"preciseSizeGb"`
-	Project       *string  `pulumi:"project"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 	// Required. Each PscConfig configures the consumer network where two
 	// network addresses will be designated to the cluster for client access.
 	// Currently, only one PscConfig is supported.
@@ -741,8 +761,11 @@ type clusterState struct {
 	// Output only. PSC connections for discovery of the cluster topology and accessing the cluster.
 	// Structure is documented below.
 	PscConnections []ClusterPscConnection `pulumi:"pscConnections"`
-	// Configure Redis Cluster behavior using a subset of native Redis configuration parameters. Please check Memorystore
-	// documentation for the list of supported parameters:
+	// Service attachment details to configure Psc connections.
+	// Structure is documented below.
+	PscServiceAttachments []ClusterPscServiceAttachment `pulumi:"pscServiceAttachments"`
+	// Configure Redis Cluster behavior using a subset of native Redis configuration parameters.
+	// Please check Memorystore documentation for the list of supported parameters:
 	// https://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations
 	RedisConfigs map[string]string `pulumi:"redisConfigs"`
 	// The name of the region of the Redis cluster.
@@ -758,29 +781,33 @@ type clusterState struct {
 	// Output only. Additional information about the current state of the cluster.
 	// Structure is documented below.
 	StateInfos []ClusterStateInfo `pulumi:"stateInfos"`
-	// Optional. The in-transit encryption for the Redis cluster. If not provided, encryption is disabled for the cluster.
-	// Default value: "TRANSIT_ENCRYPTION_MODE_DISABLED" Possible values: ["TRANSIT_ENCRYPTION_MODE_UNSPECIFIED",
-	// "TRANSIT_ENCRYPTION_MODE_DISABLED", "TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION"]
+	// Optional. The in-transit encryption for the Redis cluster.
+	// If not provided, encryption is disabled for the cluster.
+	// Default value is `TRANSIT_ENCRYPTION_MODE_DISABLED`.
+	// Possible values are: `TRANSIT_ENCRYPTION_MODE_UNSPECIFIED`, `TRANSIT_ENCRYPTION_MODE_DISABLED`, `TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION`.
 	TransitEncryptionMode *string `pulumi:"transitEncryptionMode"`
 	// System assigned, unique identifier for the cluster.
 	Uid *string `pulumi:"uid"`
 	// Immutable. Zone distribution config for Memorystore Redis cluster.
+	// Structure is documented below.
 	ZoneDistributionConfig *ClusterZoneDistributionConfig `pulumi:"zoneDistributionConfig"`
 }
 
 type ClusterState struct {
 	// Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
-	// Default value: "AUTH_MODE_DISABLED" Possible values: ["AUTH_MODE_UNSPECIFIED", "AUTH_MODE_IAM_AUTH",
-	// "AUTH_MODE_DISABLED"]
+	// Default value is `AUTH_MODE_DISABLED`.
+	// Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
 	AuthorizationMode pulumi.StringPtrInput
 	// The timestamp associated with the cluster creation request. A timestamp in
 	// RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional
 	// digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
 	CreateTime pulumi.StringPtrInput
 	// Cross cluster replication config
+	// Structure is documented below.
 	CrossClusterReplicationConfig ClusterCrossClusterReplicationConfigPtrInput
-	// Optional. Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster
-	// operation will fail. Default value is true.
+	// Optional. Indicates if the cluster is deletion protected or not.
+	// If the value if set to true, any delete cluster operation will fail.
+	// Default value is true.
 	DeletionProtectionEnabled pulumi.BoolPtrInput
 	// Output only. Endpoints created on each given network,
 	// for Redis clients to connect to the cluster.
@@ -788,21 +815,28 @@ type ClusterState struct {
 	// Structure is documented below.
 	DiscoveryEndpoints ClusterDiscoveryEndpointArrayInput
 	// Maintenance policy for a cluster
+	// Structure is documented below.
 	MaintenancePolicy ClusterMaintenancePolicyPtrInput
 	// Upcoming maintenance schedule.
 	// Structure is documented below.
 	MaintenanceSchedules ClusterMaintenanceScheduleArrayInput
 	// Unique name of the resource in this scope including project and location using the form:
 	// projects/{projectId}/locations/{locationId}/clusters/{clusterId}
+	//
+	// ***
 	Name pulumi.StringPtrInput
-	// The nodeType for the Redis cluster. If not provided, REDIS_HIGHMEM_MEDIUM will be used as default Possible values:
-	// ["REDIS_SHARED_CORE_NANO", "REDIS_HIGHMEM_MEDIUM", "REDIS_HIGHMEM_XLARGE", "REDIS_STANDARD_SMALL"]
+	// The nodeType for the Redis cluster.
+	// If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
+	// Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
 	NodeType pulumi.StringPtrInput
 	// Persistence config (RDB, AOF) for the cluster.
+	// Structure is documented below.
 	PersistenceConfig ClusterPersistenceConfigPtrInput
 	// Output only. Redis memory precise size in GB for the entire cluster.
 	PreciseSizeGb pulumi.Float64PtrInput
-	Project       pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
 	// Required. Each PscConfig configures the consumer network where two
 	// network addresses will be designated to the cluster for client access.
 	// Currently, only one PscConfig is supported.
@@ -811,8 +845,11 @@ type ClusterState struct {
 	// Output only. PSC connections for discovery of the cluster topology and accessing the cluster.
 	// Structure is documented below.
 	PscConnections ClusterPscConnectionArrayInput
-	// Configure Redis Cluster behavior using a subset of native Redis configuration parameters. Please check Memorystore
-	// documentation for the list of supported parameters:
+	// Service attachment details to configure Psc connections.
+	// Structure is documented below.
+	PscServiceAttachments ClusterPscServiceAttachmentArrayInput
+	// Configure Redis Cluster behavior using a subset of native Redis configuration parameters.
+	// Please check Memorystore documentation for the list of supported parameters:
 	// https://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations
 	RedisConfigs pulumi.StringMapInput
 	// The name of the region of the Redis cluster.
@@ -828,13 +865,15 @@ type ClusterState struct {
 	// Output only. Additional information about the current state of the cluster.
 	// Structure is documented below.
 	StateInfos ClusterStateInfoArrayInput
-	// Optional. The in-transit encryption for the Redis cluster. If not provided, encryption is disabled for the cluster.
-	// Default value: "TRANSIT_ENCRYPTION_MODE_DISABLED" Possible values: ["TRANSIT_ENCRYPTION_MODE_UNSPECIFIED",
-	// "TRANSIT_ENCRYPTION_MODE_DISABLED", "TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION"]
+	// Optional. The in-transit encryption for the Redis cluster.
+	// If not provided, encryption is disabled for the cluster.
+	// Default value is `TRANSIT_ENCRYPTION_MODE_DISABLED`.
+	// Possible values are: `TRANSIT_ENCRYPTION_MODE_UNSPECIFIED`, `TRANSIT_ENCRYPTION_MODE_DISABLED`, `TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION`.
 	TransitEncryptionMode pulumi.StringPtrInput
 	// System assigned, unique identifier for the cluster.
 	Uid pulumi.StringPtrInput
 	// Immutable. Zone distribution config for Memorystore Redis cluster.
+	// Structure is documented below.
 	ZoneDistributionConfig ClusterZoneDistributionConfigPtrInput
 }
 
@@ -844,32 +883,41 @@ func (ClusterState) ElementType() reflect.Type {
 
 type clusterArgs struct {
 	// Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
-	// Default value: "AUTH_MODE_DISABLED" Possible values: ["AUTH_MODE_UNSPECIFIED", "AUTH_MODE_IAM_AUTH",
-	// "AUTH_MODE_DISABLED"]
+	// Default value is `AUTH_MODE_DISABLED`.
+	// Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
 	AuthorizationMode *string `pulumi:"authorizationMode"`
 	// Cross cluster replication config
+	// Structure is documented below.
 	CrossClusterReplicationConfig *ClusterCrossClusterReplicationConfig `pulumi:"crossClusterReplicationConfig"`
-	// Optional. Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster
-	// operation will fail. Default value is true.
+	// Optional. Indicates if the cluster is deletion protected or not.
+	// If the value if set to true, any delete cluster operation will fail.
+	// Default value is true.
 	DeletionProtectionEnabled *bool `pulumi:"deletionProtectionEnabled"`
 	// Maintenance policy for a cluster
+	// Structure is documented below.
 	MaintenancePolicy *ClusterMaintenancePolicy `pulumi:"maintenancePolicy"`
 	// Unique name of the resource in this scope including project and location using the form:
 	// projects/{projectId}/locations/{locationId}/clusters/{clusterId}
+	//
+	// ***
 	Name *string `pulumi:"name"`
-	// The nodeType for the Redis cluster. If not provided, REDIS_HIGHMEM_MEDIUM will be used as default Possible values:
-	// ["REDIS_SHARED_CORE_NANO", "REDIS_HIGHMEM_MEDIUM", "REDIS_HIGHMEM_XLARGE", "REDIS_STANDARD_SMALL"]
+	// The nodeType for the Redis cluster.
+	// If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
+	// Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
 	NodeType *string `pulumi:"nodeType"`
 	// Persistence config (RDB, AOF) for the cluster.
+	// Structure is documented below.
 	PersistenceConfig *ClusterPersistenceConfig `pulumi:"persistenceConfig"`
-	Project           *string                   `pulumi:"project"`
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project *string `pulumi:"project"`
 	// Required. Each PscConfig configures the consumer network where two
 	// network addresses will be designated to the cluster for client access.
 	// Currently, only one PscConfig is supported.
 	// Structure is documented below.
 	PscConfigs []ClusterPscConfig `pulumi:"pscConfigs"`
-	// Configure Redis Cluster behavior using a subset of native Redis configuration parameters. Please check Memorystore
-	// documentation for the list of supported parameters:
+	// Configure Redis Cluster behavior using a subset of native Redis configuration parameters.
+	// Please check Memorystore documentation for the list of supported parameters:
 	// https://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations
 	RedisConfigs map[string]string `pulumi:"redisConfigs"`
 	// The name of the region of the Redis cluster.
@@ -878,43 +926,54 @@ type clusterArgs struct {
 	ReplicaCount *int `pulumi:"replicaCount"`
 	// Required. Number of shards for the Redis cluster.
 	ShardCount int `pulumi:"shardCount"`
-	// Optional. The in-transit encryption for the Redis cluster. If not provided, encryption is disabled for the cluster.
-	// Default value: "TRANSIT_ENCRYPTION_MODE_DISABLED" Possible values: ["TRANSIT_ENCRYPTION_MODE_UNSPECIFIED",
-	// "TRANSIT_ENCRYPTION_MODE_DISABLED", "TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION"]
+	// Optional. The in-transit encryption for the Redis cluster.
+	// If not provided, encryption is disabled for the cluster.
+	// Default value is `TRANSIT_ENCRYPTION_MODE_DISABLED`.
+	// Possible values are: `TRANSIT_ENCRYPTION_MODE_UNSPECIFIED`, `TRANSIT_ENCRYPTION_MODE_DISABLED`, `TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION`.
 	TransitEncryptionMode *string `pulumi:"transitEncryptionMode"`
 	// Immutable. Zone distribution config for Memorystore Redis cluster.
+	// Structure is documented below.
 	ZoneDistributionConfig *ClusterZoneDistributionConfig `pulumi:"zoneDistributionConfig"`
 }
 
 // The set of arguments for constructing a Cluster resource.
 type ClusterArgs struct {
 	// Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
-	// Default value: "AUTH_MODE_DISABLED" Possible values: ["AUTH_MODE_UNSPECIFIED", "AUTH_MODE_IAM_AUTH",
-	// "AUTH_MODE_DISABLED"]
+	// Default value is `AUTH_MODE_DISABLED`.
+	// Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
 	AuthorizationMode pulumi.StringPtrInput
 	// Cross cluster replication config
+	// Structure is documented below.
 	CrossClusterReplicationConfig ClusterCrossClusterReplicationConfigPtrInput
-	// Optional. Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster
-	// operation will fail. Default value is true.
+	// Optional. Indicates if the cluster is deletion protected or not.
+	// If the value if set to true, any delete cluster operation will fail.
+	// Default value is true.
 	DeletionProtectionEnabled pulumi.BoolPtrInput
 	// Maintenance policy for a cluster
+	// Structure is documented below.
 	MaintenancePolicy ClusterMaintenancePolicyPtrInput
 	// Unique name of the resource in this scope including project and location using the form:
 	// projects/{projectId}/locations/{locationId}/clusters/{clusterId}
+	//
+	// ***
 	Name pulumi.StringPtrInput
-	// The nodeType for the Redis cluster. If not provided, REDIS_HIGHMEM_MEDIUM will be used as default Possible values:
-	// ["REDIS_SHARED_CORE_NANO", "REDIS_HIGHMEM_MEDIUM", "REDIS_HIGHMEM_XLARGE", "REDIS_STANDARD_SMALL"]
+	// The nodeType for the Redis cluster.
+	// If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
+	// Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
 	NodeType pulumi.StringPtrInput
 	// Persistence config (RDB, AOF) for the cluster.
+	// Structure is documented below.
 	PersistenceConfig ClusterPersistenceConfigPtrInput
-	Project           pulumi.StringPtrInput
+	// The ID of the project in which the resource belongs.
+	// If it is not provided, the provider project is used.
+	Project pulumi.StringPtrInput
 	// Required. Each PscConfig configures the consumer network where two
 	// network addresses will be designated to the cluster for client access.
 	// Currently, only one PscConfig is supported.
 	// Structure is documented below.
 	PscConfigs ClusterPscConfigArrayInput
-	// Configure Redis Cluster behavior using a subset of native Redis configuration parameters. Please check Memorystore
-	// documentation for the list of supported parameters:
+	// Configure Redis Cluster behavior using a subset of native Redis configuration parameters.
+	// Please check Memorystore documentation for the list of supported parameters:
 	// https://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations
 	RedisConfigs pulumi.StringMapInput
 	// The name of the region of the Redis cluster.
@@ -923,11 +982,13 @@ type ClusterArgs struct {
 	ReplicaCount pulumi.IntPtrInput
 	// Required. Number of shards for the Redis cluster.
 	ShardCount pulumi.IntInput
-	// Optional. The in-transit encryption for the Redis cluster. If not provided, encryption is disabled for the cluster.
-	// Default value: "TRANSIT_ENCRYPTION_MODE_DISABLED" Possible values: ["TRANSIT_ENCRYPTION_MODE_UNSPECIFIED",
-	// "TRANSIT_ENCRYPTION_MODE_DISABLED", "TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION"]
+	// Optional. The in-transit encryption for the Redis cluster.
+	// If not provided, encryption is disabled for the cluster.
+	// Default value is `TRANSIT_ENCRYPTION_MODE_DISABLED`.
+	// Possible values are: `TRANSIT_ENCRYPTION_MODE_UNSPECIFIED`, `TRANSIT_ENCRYPTION_MODE_DISABLED`, `TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION`.
 	TransitEncryptionMode pulumi.StringPtrInput
 	// Immutable. Zone distribution config for Memorystore Redis cluster.
+	// Structure is documented below.
 	ZoneDistributionConfig ClusterZoneDistributionConfigPtrInput
 }
 
@@ -1019,8 +1080,8 @@ func (o ClusterOutput) ToClusterOutputWithContext(ctx context.Context) ClusterOu
 }
 
 // Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
-// Default value: "AUTH_MODE_DISABLED" Possible values: ["AUTH_MODE_UNSPECIFIED", "AUTH_MODE_IAM_AUTH",
-// "AUTH_MODE_DISABLED"]
+// Default value is `AUTH_MODE_DISABLED`.
+// Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
 func (o ClusterOutput) AuthorizationMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.AuthorizationMode }).(pulumi.StringPtrOutput)
 }
@@ -1033,12 +1094,14 @@ func (o ClusterOutput) CreateTime() pulumi.StringOutput {
 }
 
 // Cross cluster replication config
+// Structure is documented below.
 func (o ClusterOutput) CrossClusterReplicationConfig() ClusterCrossClusterReplicationConfigOutput {
 	return o.ApplyT(func(v *Cluster) ClusterCrossClusterReplicationConfigOutput { return v.CrossClusterReplicationConfig }).(ClusterCrossClusterReplicationConfigOutput)
 }
 
-// Optional. Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster
-// operation will fail. Default value is true.
+// Optional. Indicates if the cluster is deletion protected or not.
+// If the value if set to true, any delete cluster operation will fail.
+// Default value is true.
 func (o ClusterOutput) DeletionProtectionEnabled() pulumi.BoolPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.DeletionProtectionEnabled }).(pulumi.BoolPtrOutput)
 }
@@ -1052,6 +1115,7 @@ func (o ClusterOutput) DiscoveryEndpoints() ClusterDiscoveryEndpointArrayOutput 
 }
 
 // Maintenance policy for a cluster
+// Structure is documented below.
 func (o ClusterOutput) MaintenancePolicy() ClusterMaintenancePolicyPtrOutput {
 	return o.ApplyT(func(v *Cluster) ClusterMaintenancePolicyPtrOutput { return v.MaintenancePolicy }).(ClusterMaintenancePolicyPtrOutput)
 }
@@ -1064,17 +1128,21 @@ func (o ClusterOutput) MaintenanceSchedules() ClusterMaintenanceScheduleArrayOut
 
 // Unique name of the resource in this scope including project and location using the form:
 // projects/{projectId}/locations/{locationId}/clusters/{clusterId}
+//
+// ***
 func (o ClusterOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
 
-// The nodeType for the Redis cluster. If not provided, REDIS_HIGHMEM_MEDIUM will be used as default Possible values:
-// ["REDIS_SHARED_CORE_NANO", "REDIS_HIGHMEM_MEDIUM", "REDIS_HIGHMEM_XLARGE", "REDIS_STANDARD_SMALL"]
+// The nodeType for the Redis cluster.
+// If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
+// Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
 func (o ClusterOutput) NodeType() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.NodeType }).(pulumi.StringOutput)
 }
 
 // Persistence config (RDB, AOF) for the cluster.
+// Structure is documented below.
 func (o ClusterOutput) PersistenceConfig() ClusterPersistenceConfigOutput {
 	return o.ApplyT(func(v *Cluster) ClusterPersistenceConfigOutput { return v.PersistenceConfig }).(ClusterPersistenceConfigOutput)
 }
@@ -1084,6 +1152,8 @@ func (o ClusterOutput) PreciseSizeGb() pulumi.Float64Output {
 	return o.ApplyT(func(v *Cluster) pulumi.Float64Output { return v.PreciseSizeGb }).(pulumi.Float64Output)
 }
 
+// The ID of the project in which the resource belongs.
+// If it is not provided, the provider project is used.
 func (o ClusterOutput) Project() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.Project }).(pulumi.StringOutput)
 }
@@ -1102,8 +1172,14 @@ func (o ClusterOutput) PscConnections() ClusterPscConnectionArrayOutput {
 	return o.ApplyT(func(v *Cluster) ClusterPscConnectionArrayOutput { return v.PscConnections }).(ClusterPscConnectionArrayOutput)
 }
 
-// Configure Redis Cluster behavior using a subset of native Redis configuration parameters. Please check Memorystore
-// documentation for the list of supported parameters:
+// Service attachment details to configure Psc connections.
+// Structure is documented below.
+func (o ClusterOutput) PscServiceAttachments() ClusterPscServiceAttachmentArrayOutput {
+	return o.ApplyT(func(v *Cluster) ClusterPscServiceAttachmentArrayOutput { return v.PscServiceAttachments }).(ClusterPscServiceAttachmentArrayOutput)
+}
+
+// Configure Redis Cluster behavior using a subset of native Redis configuration parameters.
+// Please check Memorystore documentation for the list of supported parameters:
 // https://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations
 func (o ClusterOutput) RedisConfigs() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringMapOutput { return v.RedisConfigs }).(pulumi.StringMapOutput)
@@ -1140,9 +1216,10 @@ func (o ClusterOutput) StateInfos() ClusterStateInfoArrayOutput {
 	return o.ApplyT(func(v *Cluster) ClusterStateInfoArrayOutput { return v.StateInfos }).(ClusterStateInfoArrayOutput)
 }
 
-// Optional. The in-transit encryption for the Redis cluster. If not provided, encryption is disabled for the cluster.
-// Default value: "TRANSIT_ENCRYPTION_MODE_DISABLED" Possible values: ["TRANSIT_ENCRYPTION_MODE_UNSPECIFIED",
-// "TRANSIT_ENCRYPTION_MODE_DISABLED", "TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION"]
+// Optional. The in-transit encryption for the Redis cluster.
+// If not provided, encryption is disabled for the cluster.
+// Default value is `TRANSIT_ENCRYPTION_MODE_DISABLED`.
+// Possible values are: `TRANSIT_ENCRYPTION_MODE_UNSPECIFIED`, `TRANSIT_ENCRYPTION_MODE_DISABLED`, `TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION`.
 func (o ClusterOutput) TransitEncryptionMode() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringPtrOutput { return v.TransitEncryptionMode }).(pulumi.StringPtrOutput)
 }
@@ -1153,8 +1230,9 @@ func (o ClusterOutput) Uid() pulumi.StringOutput {
 }
 
 // Immutable. Zone distribution config for Memorystore Redis cluster.
-func (o ClusterOutput) ZoneDistributionConfig() ClusterZoneDistributionConfigPtrOutput {
-	return o.ApplyT(func(v *Cluster) ClusterZoneDistributionConfigPtrOutput { return v.ZoneDistributionConfig }).(ClusterZoneDistributionConfigPtrOutput)
+// Structure is documented below.
+func (o ClusterOutput) ZoneDistributionConfig() ClusterZoneDistributionConfigOutput {
+	return o.ApplyT(func(v *Cluster) ClusterZoneDistributionConfigOutput { return v.ZoneDistributionConfig }).(ClusterZoneDistributionConfigOutput)
 }
 
 type ClusterArrayOutput struct{ *pulumi.OutputState }

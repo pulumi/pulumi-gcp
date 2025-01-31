@@ -333,6 +333,21 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * An internal boolean field for provider use.
+     * 
+     */
+    @Import(name="isCustomLearnedPrioritySet")
+    private @Nullable Output<Boolean> isCustomLearnedPrioritySet;
+
+    /**
+     * @return An internal boolean field for provider use.
+     * 
+     */
+    public Optional<Output<Boolean>> isCustomLearnedPrioritySet() {
+        return Optional.ofNullable(this.isCustomLearnedPrioritySet);
+    }
+
+    /**
      * The resource that configures and manages this BGP peer.
      * * `MANAGED_BY_USER` is the default value and can be managed by
      *   you or other users
@@ -549,6 +564,23 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.routerApplianceInstance);
     }
 
+    /**
+     * The user-defined zero-custom-learned-route-priority for a custom-learned-route-priority in BGP session.
+     * This value has to be set true to force the custom_learned_route_priority to be 0.
+     * 
+     */
+    @Import(name="zeroCustomLearnedRoutePriority")
+    private @Nullable Output<Boolean> zeroCustomLearnedRoutePriority;
+
+    /**
+     * @return The user-defined zero-custom-learned-route-priority for a custom-learned-route-priority in BGP session.
+     * This value has to be set true to force the custom_learned_route_priority to be 0.
+     * 
+     */
+    public Optional<Output<Boolean>> zeroCustomLearnedRoutePriority() {
+        return Optional.ofNullable(this.zeroCustomLearnedRoutePriority);
+    }
+
     private RouterPeerState() {}
 
     private RouterPeerState(RouterPeerState $) {
@@ -568,6 +600,7 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
         this.ipAddress = $.ipAddress;
         this.ipv4NexthopAddress = $.ipv4NexthopAddress;
         this.ipv6NexthopAddress = $.ipv6NexthopAddress;
+        this.isCustomLearnedPrioritySet = $.isCustomLearnedPrioritySet;
         this.managementType = $.managementType;
         this.md5AuthenticationKey = $.md5AuthenticationKey;
         this.name = $.name;
@@ -579,6 +612,7 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
         this.region = $.region;
         this.router = $.router;
         this.routerApplianceInstance = $.routerApplianceInstance;
+        this.zeroCustomLearnedRoutePriority = $.zeroCustomLearnedRoutePriority;
     }
 
     public static Builder builder() {
@@ -1075,6 +1109,27 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
+         * @param isCustomLearnedPrioritySet An internal boolean field for provider use.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isCustomLearnedPrioritySet(@Nullable Output<Boolean> isCustomLearnedPrioritySet) {
+            $.isCustomLearnedPrioritySet = isCustomLearnedPrioritySet;
+            return this;
+        }
+
+        /**
+         * @param isCustomLearnedPrioritySet An internal boolean field for provider use.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder isCustomLearnedPrioritySet(Boolean isCustomLearnedPrioritySet) {
+            return isCustomLearnedPrioritySet(Output.of(isCustomLearnedPrioritySet));
+        }
+
+        /**
          * @param managementType The resource that configures and manages this BGP peer.
          * * `MANAGED_BY_USER` is the default value and can be managed by
          *   you or other users
@@ -1355,6 +1410,29 @@ public final class RouterPeerState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder routerApplianceInstance(String routerApplianceInstance) {
             return routerApplianceInstance(Output.of(routerApplianceInstance));
+        }
+
+        /**
+         * @param zeroCustomLearnedRoutePriority The user-defined zero-custom-learned-route-priority for a custom-learned-route-priority in BGP session.
+         * This value has to be set true to force the custom_learned_route_priority to be 0.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zeroCustomLearnedRoutePriority(@Nullable Output<Boolean> zeroCustomLearnedRoutePriority) {
+            $.zeroCustomLearnedRoutePriority = zeroCustomLearnedRoutePriority;
+            return this;
+        }
+
+        /**
+         * @param zeroCustomLearnedRoutePriority The user-defined zero-custom-learned-route-priority for a custom-learned-route-priority in BGP session.
+         * This value has to be set true to force the custom_learned_route_priority to be 0.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zeroCustomLearnedRoutePriority(Boolean zeroCustomLearnedRoutePriority) {
+            return zeroCustomLearnedRoutePriority(Output.of(zeroCustomLearnedRoutePriority));
         }
 
         public RouterPeerState build() {

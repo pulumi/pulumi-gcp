@@ -39,6 +39,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.networksecurity.SecurityProfileArgs;
  * import com.pulumi.gcp.networksecurity.SecurityProfileGroup;
  * import com.pulumi.gcp.networksecurity.SecurityProfileGroupArgs;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
  * import com.pulumi.gcp.compute.FirewallPolicyWithRules;
  * import com.pulumi.gcp.compute.FirewallPolicyWithRulesArgs;
  * import com.pulumi.gcp.compute.inputs.FirewallPolicyWithRulesRuleArgs;
@@ -59,7 +61,7 @@ import javax.annotation.Nullable;
  *         final var project = OrganizationsFunctions.getProject();
  * 
  *         var addressGroup1 = new AddressGroup("addressGroup1", AddressGroupArgs.builder()
- *             .name("tf-address-group")
+ *             .name("address-group")
  *             .parent("organizations/123456789")
  *             .description("Global address group")
  *             .location("global")
@@ -69,21 +71,26 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var securityProfile1 = new SecurityProfile("securityProfile1", SecurityProfileArgs.builder()
- *             .name("tf-security-profile")
+ *             .name("sp")
  *             .type("THREAT_PREVENTION")
  *             .parent("organizations/123456789")
  *             .location("global")
  *             .build());
  * 
  *         var securityProfileGroup1 = new SecurityProfileGroup("securityProfileGroup1", SecurityProfileGroupArgs.builder()
- *             .name("tf-security-profile-group")
+ *             .name("spg")
  *             .parent("organizations/123456789")
  *             .description("my description")
  *             .threatPreventionProfile(securityProfile1.id())
  *             .build());
  * 
- *         var firewall_policy_with_rules = new FirewallPolicyWithRules("firewall-policy-with-rules", FirewallPolicyWithRulesArgs.builder()
- *             .shortName("tf-fw-org-policy-with-rules")
+ *         var network = new Network("network", NetworkArgs.builder()
+ *             .name("network")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var primary = new FirewallPolicyWithRules("primary", FirewallPolicyWithRulesArgs.builder()
+ *             .shortName("fw-policy")
  *             .description("Terraform test")
  *             .parent("organizations/123456789")
  *             .rules(            
@@ -93,13 +100,8 @@ import javax.annotation.Nullable;
  *                     .enableLogging(true)
  *                     .action("allow")
  *                     .direction("EGRESS")
+ *                     .targetResources(String.format("https://www.googleapis.com/compute/beta/projects/%s/global/networks/default", project.applyValue(getProjectResult -> getProjectResult.name())))
  *                     .match(FirewallPolicyWithRulesRuleMatchArgs.builder()
- *                         .layer4Configs(FirewallPolicyWithRulesRuleMatchLayer4ConfigArgs.builder()
- *                             .ipProtocol("tcp")
- *                             .ports(                            
- *                                 8080,
- *                                 7070)
- *                             .build())
  *                         .destIpRanges("11.100.0.1/32")
  *                         .destFqdns(                        
  *                             "www.yyy.com",
@@ -111,8 +113,13 @@ import javax.annotation.Nullable;
  *                             "iplist-search-engines-crawlers",
  *                             "iplist-tor-exit-nodes")
  *                         .destAddressGroups(addressGroup1.id())
+ *                         .layer4Configs(FirewallPolicyWithRulesRuleMatchLayer4ConfigArgs.builder()
+ *                             .ipProtocol("tcp")
+ *                             .ports(                            
+ *                                 8080,
+ *                                 7070)
+ *                             .build())
  *                         .build())
- *                     .targetResources(String.format("https://www.googleapis.com/compute/beta/projects/%s/global/networks/default", project.applyValue(getProjectResult -> getProjectResult.name())))
  *                     .build(),
  *                 FirewallPolicyWithRulesRuleArgs.builder()
  *                     .description("udp rule")
@@ -120,10 +127,8 @@ import javax.annotation.Nullable;
  *                     .enableLogging(false)
  *                     .action("deny")
  *                     .direction("INGRESS")
+ *                     .disabled(true)
  *                     .match(FirewallPolicyWithRulesRuleMatchArgs.builder()
- *                         .layer4Configs(FirewallPolicyWithRulesRuleMatchLayer4ConfigArgs.builder()
- *                             .ipProtocol("udp")
- *                             .build())
  *                         .srcIpRanges("0.0.0.0/0")
  *                         .srcFqdns(                        
  *                             "www.abc.com",
@@ -135,8 +140,10 @@ import javax.annotation.Nullable;
  *                             "iplist-known-malicious-ips",
  *                             "iplist-public-clouds")
  *                         .srcAddressGroups(addressGroup1.id())
+ *                         .layer4Configs(FirewallPolicyWithRulesRuleMatchLayer4ConfigArgs.builder()
+ *                             .ipProtocol("udp")
+ *                             .build())
  *                         .build())
- *                     .disabled(true)
  *                     .build(),
  *                 FirewallPolicyWithRulesRuleArgs.builder()
  *                     .description("security profile group rule")
@@ -145,15 +152,48 @@ import javax.annotation.Nullable;
  *                     .enableLogging(false)
  *                     .action("apply_security_profile_group")
  *                     .direction("INGRESS")
- *                     .match(FirewallPolicyWithRulesRuleMatchArgs.builder()
- *                         .layer4Configs(FirewallPolicyWithRulesRuleMatchLayer4ConfigArgs.builder()
- *                             .ipProtocol("tcp")
- *                             .build())
- *                         .srcIpRanges("0.0.0.0/0")
- *                         .build())
  *                     .targetServiceAccounts("test}{@literal @}{@code google.com")
  *                     .securityProfileGroup(securityProfileGroup1.id().applyValue(id -> String.format("//networksecurity.googleapis.com/%s", id)))
  *                     .tlsInspect(true)
+ *                     .match(FirewallPolicyWithRulesRuleMatchArgs.builder()
+ *                         .srcIpRanges("0.0.0.0/0")
+ *                         .layer4Configs(FirewallPolicyWithRulesRuleMatchLayer4ConfigArgs.builder()
+ *                             .ipProtocol("tcp")
+ *                             .build())
+ *                         .build())
+ *                     .build(),
+ *                 FirewallPolicyWithRulesRuleArgs.builder()
+ *                     .description("network scope rule 1")
+ *                     .ruleName("network scope 1")
+ *                     .priority(4000)
+ *                     .enableLogging(false)
+ *                     .action("allow")
+ *                     .direction("INGRESS")
+ *                     .match(FirewallPolicyWithRulesRuleMatchArgs.builder()
+ *                         .srcIpRanges("11.100.0.1/32")
+ *                         .srcNetworkScope("VPC_NETWORKS")
+ *                         .srcNetworks(network.id())
+ *                         .layer4Configs(FirewallPolicyWithRulesRuleMatchLayer4ConfigArgs.builder()
+ *                             .ipProtocol("tcp")
+ *                             .ports(8080)
+ *                             .build())
+ *                         .build())
+ *                     .build(),
+ *                 FirewallPolicyWithRulesRuleArgs.builder()
+ *                     .description("network scope rule 2")
+ *                     .ruleName("network scope 2")
+ *                     .priority(5000)
+ *                     .enableLogging(false)
+ *                     .action("allow")
+ *                     .direction("EGRESS")
+ *                     .match(FirewallPolicyWithRulesRuleMatchArgs.builder()
+ *                         .destIpRanges("0.0.0.0/0")
+ *                         .destNetworkScope("INTERNET")
+ *                         .layer4Configs(FirewallPolicyWithRulesRuleMatchLayer4ConfigArgs.builder()
+ *                             .ipProtocol("tcp")
+ *                             .ports(8080)
+ *                             .build())
+ *                         .build())
  *                     .build())
  *             .build());
  * 

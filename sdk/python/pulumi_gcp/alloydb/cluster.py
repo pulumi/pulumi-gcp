@@ -41,6 +41,7 @@ class ClusterArgs:
                  restore_backup_source: Optional[pulumi.Input['ClusterRestoreBackupSourceArgs']] = None,
                  restore_continuous_backup_source: Optional[pulumi.Input['ClusterRestoreContinuousBackupSourceArgs']] = None,
                  secondary_config: Optional[pulumi.Input['ClusterSecondaryConfigArgs']] = None,
+                 skip_await_major_version_upgrade: Optional[pulumi.Input[bool]] = None,
                  subscription_type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Cluster resource.
@@ -62,7 +63,8 @@ class ClusterArgs:
         :param pulumi.Input['ClusterContinuousBackupConfigArgs'] continuous_backup_config: The continuous backup config for this cluster.
                If no policy is provided then the default policy will be used. The default policy takes one backup a day and retains backups for 14 days.
                Structure is documented below.
-        :param pulumi.Input[str] database_version: The database engine major version. This is an optional field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
+        :param pulumi.Input[str] database_version: The database engine major version. This is an optional field and it's populated at the Cluster creation time.
+               Note: Changing this field to a higer version results in upgrading the AlloyDB cluster which is an irreversible change.
         :param pulumi.Input[str] deletion_policy: Policy to determine if the cluster should be deleted forcefully.
                Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
                Deleting a Secondary cluster with a secondary instance REQUIRES setting deletion_policy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
@@ -90,6 +92,9 @@ class ClusterArgs:
                Structure is documented below.
         :param pulumi.Input['ClusterSecondaryConfigArgs'] secondary_config: Configuration of the secondary cluster for Cross Region Replication. This should be set if and only if the cluster is of type SECONDARY.
                Structure is documented below.
+        :param pulumi.Input[bool] skip_await_major_version_upgrade: Set to true to skip awaiting on the major version upgrade of the cluster.
+               Possible values: true, false
+               Default value: "true"
         :param pulumi.Input[str] subscription_type: The subscrition type of cluster.
                Possible values are: `TRIAL`, `STANDARD`.
         """
@@ -131,6 +136,8 @@ class ClusterArgs:
             pulumi.set(__self__, "restore_continuous_backup_source", restore_continuous_backup_source)
         if secondary_config is not None:
             pulumi.set(__self__, "secondary_config", secondary_config)
+        if skip_await_major_version_upgrade is not None:
+            pulumi.set(__self__, "skip_await_major_version_upgrade", skip_await_major_version_upgrade)
         if subscription_type is not None:
             pulumi.set(__self__, "subscription_type", subscription_type)
 
@@ -222,7 +229,8 @@ class ClusterArgs:
     @pulumi.getter(name="databaseVersion")
     def database_version(self) -> Optional[pulumi.Input[str]]:
         """
-        The database engine major version. This is an optional field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
+        The database engine major version. This is an optional field and it's populated at the Cluster creation time.
+        Note: Changing this field to a higer version results in upgrading the AlloyDB cluster which is an irreversible change.
         """
         return pulumi.get(self, "database_version")
 
@@ -401,6 +409,20 @@ class ClusterArgs:
         pulumi.set(self, "secondary_config", value)
 
     @property
+    @pulumi.getter(name="skipAwaitMajorVersionUpgrade")
+    def skip_await_major_version_upgrade(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set to true to skip awaiting on the major version upgrade of the cluster.
+        Possible values: true, false
+        Default value: "true"
+        """
+        return pulumi.get(self, "skip_await_major_version_upgrade")
+
+    @skip_await_major_version_upgrade.setter
+    def skip_await_major_version_upgrade(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "skip_await_major_version_upgrade", value)
+
+    @property
     @pulumi.getter(name="subscriptionType")
     def subscription_type(self) -> Optional[pulumi.Input[str]]:
         """
@@ -446,6 +468,7 @@ class _ClusterState:
                  restore_backup_source: Optional[pulumi.Input['ClusterRestoreBackupSourceArgs']] = None,
                  restore_continuous_backup_source: Optional[pulumi.Input['ClusterRestoreContinuousBackupSourceArgs']] = None,
                  secondary_config: Optional[pulumi.Input['ClusterSecondaryConfigArgs']] = None,
+                 skip_await_major_version_upgrade: Optional[pulumi.Input[bool]] = None,
                  state: Optional[pulumi.Input[str]] = None,
                  subscription_type: Optional[pulumi.Input[str]] = None,
                  trial_metadatas: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterTrialMetadataArgs']]]] = None,
@@ -470,7 +493,8 @@ class _ClusterState:
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterContinuousBackupInfoArgs']]] continuous_backup_infos: ContinuousBackupInfo describes the continuous backup properties of a cluster.
                Structure is documented below.
-        :param pulumi.Input[str] database_version: The database engine major version. This is an optional field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
+        :param pulumi.Input[str] database_version: The database engine major version. This is an optional field and it's populated at the Cluster creation time.
+               Note: Changing this field to a higer version results in upgrading the AlloyDB cluster which is an irreversible change.
         :param pulumi.Input[str] deletion_policy: Policy to determine if the cluster should be deleted forcefully.
                Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
                Deleting a Secondary cluster with a secondary instance REQUIRES setting deletion_policy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
@@ -514,6 +538,9 @@ class _ClusterState:
                Structure is documented below.
         :param pulumi.Input['ClusterSecondaryConfigArgs'] secondary_config: Configuration of the secondary cluster for Cross Region Replication. This should be set if and only if the cluster is of type SECONDARY.
                Structure is documented below.
+        :param pulumi.Input[bool] skip_await_major_version_upgrade: Set to true to skip awaiting on the major version upgrade of the cluster.
+               Possible values: true, false
+               Default value: "true"
         :param pulumi.Input[str] state: Output only. The current serving state of the cluster.
         :param pulumi.Input[str] subscription_type: The subscrition type of cluster.
                Possible values are: `TRIAL`, `STANDARD`.
@@ -579,6 +606,8 @@ class _ClusterState:
             pulumi.set(__self__, "restore_continuous_backup_source", restore_continuous_backup_source)
         if secondary_config is not None:
             pulumi.set(__self__, "secondary_config", secondary_config)
+        if skip_await_major_version_upgrade is not None:
+            pulumi.set(__self__, "skip_await_major_version_upgrade", skip_await_major_version_upgrade)
         if state is not None:
             pulumi.set(__self__, "state", state)
         if subscription_type is not None:
@@ -687,7 +716,8 @@ class _ClusterState:
     @pulumi.getter(name="databaseVersion")
     def database_version(self) -> Optional[pulumi.Input[str]]:
         """
-        The database engine major version. This is an optional field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
+        The database engine major version. This is an optional field and it's populated at the Cluster creation time.
+        Note: Changing this field to a higer version results in upgrading the AlloyDB cluster which is an irreversible change.
         """
         return pulumi.get(self, "database_version")
 
@@ -968,6 +998,20 @@ class _ClusterState:
         pulumi.set(self, "secondary_config", value)
 
     @property
+    @pulumi.getter(name="skipAwaitMajorVersionUpgrade")
+    def skip_await_major_version_upgrade(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Set to true to skip awaiting on the major version upgrade of the cluster.
+        Possible values: true, false
+        Default value: "true"
+        """
+        return pulumi.get(self, "skip_await_major_version_upgrade")
+
+    @skip_await_major_version_upgrade.setter
+    def skip_await_major_version_upgrade(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "skip_await_major_version_upgrade", value)
+
+    @property
     @pulumi.getter
     def state(self) -> Optional[pulumi.Input[str]]:
         """
@@ -1043,6 +1087,7 @@ class Cluster(pulumi.CustomResource):
                  restore_backup_source: Optional[pulumi.Input[Union['ClusterRestoreBackupSourceArgs', 'ClusterRestoreBackupSourceArgsDict']]] = None,
                  restore_continuous_backup_source: Optional[pulumi.Input[Union['ClusterRestoreContinuousBackupSourceArgs', 'ClusterRestoreContinuousBackupSourceArgsDict']]] = None,
                  secondary_config: Optional[pulumi.Input[Union['ClusterSecondaryConfigArgs', 'ClusterSecondaryConfigArgsDict']]] = None,
+                 skip_await_major_version_upgrade: Optional[pulumi.Input[bool]] = None,
                  subscription_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -1204,7 +1249,8 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[Union['ClusterContinuousBackupConfigArgs', 'ClusterContinuousBackupConfigArgsDict']] continuous_backup_config: The continuous backup config for this cluster.
                If no policy is provided then the default policy will be used. The default policy takes one backup a day and retains backups for 14 days.
                Structure is documented below.
-        :param pulumi.Input[str] database_version: The database engine major version. This is an optional field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
+        :param pulumi.Input[str] database_version: The database engine major version. This is an optional field and it's populated at the Cluster creation time.
+               Note: Changing this field to a higer version results in upgrading the AlloyDB cluster which is an irreversible change.
         :param pulumi.Input[str] deletion_policy: Policy to determine if the cluster should be deleted forcefully.
                Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
                Deleting a Secondary cluster with a secondary instance REQUIRES setting deletion_policy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
@@ -1236,6 +1282,9 @@ class Cluster(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Union['ClusterSecondaryConfigArgs', 'ClusterSecondaryConfigArgsDict']] secondary_config: Configuration of the secondary cluster for Cross Region Replication. This should be set if and only if the cluster is of type SECONDARY.
                Structure is documented below.
+        :param pulumi.Input[bool] skip_await_major_version_upgrade: Set to true to skip awaiting on the major version upgrade of the cluster.
+               Possible values: true, false
+               Default value: "true"
         :param pulumi.Input[str] subscription_type: The subscrition type of cluster.
                Possible values are: `TRIAL`, `STANDARD`.
         """
@@ -1423,6 +1472,7 @@ class Cluster(pulumi.CustomResource):
                  restore_backup_source: Optional[pulumi.Input[Union['ClusterRestoreBackupSourceArgs', 'ClusterRestoreBackupSourceArgsDict']]] = None,
                  restore_continuous_backup_source: Optional[pulumi.Input[Union['ClusterRestoreContinuousBackupSourceArgs', 'ClusterRestoreContinuousBackupSourceArgsDict']]] = None,
                  secondary_config: Optional[pulumi.Input[Union['ClusterSecondaryConfigArgs', 'ClusterSecondaryConfigArgsDict']]] = None,
+                 skip_await_major_version_upgrade: Optional[pulumi.Input[bool]] = None,
                  subscription_type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -1457,6 +1507,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["restore_backup_source"] = restore_backup_source
             __props__.__dict__["restore_continuous_backup_source"] = restore_continuous_backup_source
             __props__.__dict__["secondary_config"] = secondary_config
+            __props__.__dict__["skip_await_major_version_upgrade"] = skip_await_major_version_upgrade
             __props__.__dict__["subscription_type"] = subscription_type
             __props__.__dict__["backup_sources"] = None
             __props__.__dict__["continuous_backup_infos"] = None
@@ -1511,6 +1562,7 @@ class Cluster(pulumi.CustomResource):
             restore_backup_source: Optional[pulumi.Input[Union['ClusterRestoreBackupSourceArgs', 'ClusterRestoreBackupSourceArgsDict']]] = None,
             restore_continuous_backup_source: Optional[pulumi.Input[Union['ClusterRestoreContinuousBackupSourceArgs', 'ClusterRestoreContinuousBackupSourceArgsDict']]] = None,
             secondary_config: Optional[pulumi.Input[Union['ClusterSecondaryConfigArgs', 'ClusterSecondaryConfigArgsDict']]] = None,
+            skip_await_major_version_upgrade: Optional[pulumi.Input[bool]] = None,
             state: Optional[pulumi.Input[str]] = None,
             subscription_type: Optional[pulumi.Input[str]] = None,
             trial_metadatas: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterTrialMetadataArgs', 'ClusterTrialMetadataArgsDict']]]]] = None,
@@ -1540,7 +1592,8 @@ class Cluster(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterContinuousBackupInfoArgs', 'ClusterContinuousBackupInfoArgsDict']]]] continuous_backup_infos: ContinuousBackupInfo describes the continuous backup properties of a cluster.
                Structure is documented below.
-        :param pulumi.Input[str] database_version: The database engine major version. This is an optional field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
+        :param pulumi.Input[str] database_version: The database engine major version. This is an optional field and it's populated at the Cluster creation time.
+               Note: Changing this field to a higer version results in upgrading the AlloyDB cluster which is an irreversible change.
         :param pulumi.Input[str] deletion_policy: Policy to determine if the cluster should be deleted forcefully.
                Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
                Deleting a Secondary cluster with a secondary instance REQUIRES setting deletion_policy = "FORCE" otherwise an error is returned. This is needed as there is no support to delete just the secondary instance, and the only way to delete secondary instance is to delete the associated secondary cluster forcefully which also deletes the secondary instance.
@@ -1584,6 +1637,9 @@ class Cluster(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[Union['ClusterSecondaryConfigArgs', 'ClusterSecondaryConfigArgsDict']] secondary_config: Configuration of the secondary cluster for Cross Region Replication. This should be set if and only if the cluster is of type SECONDARY.
                Structure is documented below.
+        :param pulumi.Input[bool] skip_await_major_version_upgrade: Set to true to skip awaiting on the major version upgrade of the cluster.
+               Possible values: true, false
+               Default value: "true"
         :param pulumi.Input[str] state: Output only. The current serving state of the cluster.
         :param pulumi.Input[str] subscription_type: The subscrition type of cluster.
                Possible values are: `TRIAL`, `STANDARD`.
@@ -1624,6 +1680,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["restore_backup_source"] = restore_backup_source
         __props__.__dict__["restore_continuous_backup_source"] = restore_continuous_backup_source
         __props__.__dict__["secondary_config"] = secondary_config
+        __props__.__dict__["skip_await_major_version_upgrade"] = skip_await_major_version_upgrade
         __props__.__dict__["state"] = state
         __props__.__dict__["subscription_type"] = subscription_type
         __props__.__dict__["trial_metadatas"] = trial_metadatas
@@ -1701,7 +1758,8 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="databaseVersion")
     def database_version(self) -> pulumi.Output[str]:
         """
-        The database engine major version. This is an optional field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
+        The database engine major version. This is an optional field and it's populated at the Cluster creation time.
+        Note: Changing this field to a higer version results in upgrading the AlloyDB cluster which is an irreversible change.
         """
         return pulumi.get(self, "database_version")
 
@@ -1892,6 +1950,16 @@ class Cluster(pulumi.CustomResource):
         Structure is documented below.
         """
         return pulumi.get(self, "secondary_config")
+
+    @property
+    @pulumi.getter(name="skipAwaitMajorVersionUpgrade")
+    def skip_await_major_version_upgrade(self) -> pulumi.Output[Optional[bool]]:
+        """
+        Set to true to skip awaiting on the major version upgrade of the cluster.
+        Possible values: true, false
+        Default value: "true"
+        """
+        return pulumi.get(self, "skip_await_major_version_upgrade")
 
     @property
     @pulumi.getter

@@ -86,6 +86,7 @@ type LookupInstanceResult struct {
 	Project            *string                        `pulumi:"project"`
 	Protocol           string                         `pulumi:"protocol"`
 	PulumiLabels       map[string]string              `pulumi:"pulumiLabels"`
+	Tags               map[string]string              `pulumi:"tags"`
 	Tier               string                         `pulumi:"tier"`
 	Zone               string                         `pulumi:"zone"`
 }
@@ -200,6 +201,10 @@ func (o LookupInstanceResultOutput) Protocol() pulumi.StringOutput {
 
 func (o LookupInstanceResultOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v LookupInstanceResult) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
+func (o LookupInstanceResultOutput) Tags() pulumi.StringMapOutput {
+	return o.ApplyT(func(v LookupInstanceResult) map[string]string { return v.Tags }).(pulumi.StringMapOutput)
 }
 
 func (o LookupInstanceResultOutput) Tier() pulumi.StringOutput {

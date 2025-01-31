@@ -11,6 +11,7 @@ import com.pulumi.gcp.Utilities;
 import com.pulumi.gcp.apigee.EnvironmentArgs;
 import com.pulumi.gcp.apigee.inputs.EnvironmentState;
 import com.pulumi.gcp.apigee.outputs.EnvironmentNodeConfig;
+import com.pulumi.gcp.apigee.outputs.EnvironmentProperties;
 import java.lang.String;
 import java.util.Optional;
 import javax.annotation.Nullable;
@@ -260,6 +261,22 @@ public class Environment extends com.pulumi.resources.CustomResource {
      */
     public Output<String> orgId() {
         return this.orgId;
+    }
+    /**
+     * Key-value pairs that may be used for customizing the environment.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="properties", refs={EnvironmentProperties.class}, tree="[0]")
+    private Output</* @Nullable */ EnvironmentProperties> properties;
+
+    /**
+     * @return Key-value pairs that may be used for customizing the environment.
+     * Structure is documented below.
+     * 
+     */
+    public Output<Optional<EnvironmentProperties>> properties() {
+        return Codegen.optional(this.properties);
     }
     /**
      * Types that can be selected for an Environment. Each of the types are

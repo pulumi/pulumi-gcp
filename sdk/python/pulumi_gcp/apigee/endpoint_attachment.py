@@ -241,38 +241,6 @@ class EndpointAttachment(pulumi.CustomResource):
         * How-to Guides
             * [Creating an environment](https://cloud.google.com/apigee/docs/api-platform/get-started/create-environment)
 
-        ## Example Usage
-
-        ### Apigee Endpoint Attachment Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        current = gcp.organizations.get_client_config()
-        apigee_network = gcp.compute.Network("apigee_network", name="apigee-network")
-        apigee_range = gcp.compute.GlobalAddress("apigee_range",
-            name="apigee-range",
-            purpose="VPC_PEERING",
-            address_type="INTERNAL",
-            prefix_length=16,
-            network=apigee_network.id)
-        apigee_vpc_connection = gcp.servicenetworking.Connection("apigee_vpc_connection",
-            network=apigee_network.id,
-            service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[apigee_range.name])
-        apigee_org = gcp.apigee.Organization("apigee_org",
-            analytics_region="us-central1",
-            project_id=current.project,
-            authorized_network=apigee_network.id,
-            opts = pulumi.ResourceOptions(depends_on=[apigee_vpc_connection]))
-        apigee_endpoint_attachment = gcp.apigee.EndpointAttachment("apigee_endpoint_attachment",
-            org_id=apigee_org.id,
-            endpoint_attachment_id="test1",
-            location="{google_compute_service_attachment location}",
-            service_attachment="{google_compute_service_attachment id}")
-        ```
-
         ## Import
 
         EndpointAttachment can be imported using any of these accepted formats:
@@ -316,38 +284,6 @@ class EndpointAttachment(pulumi.CustomResource):
         * [API documentation](https://cloud.google.com/apigee/docs/reference/apis/apigee/rest/v1/organizations.endpointAttachments/create)
         * How-to Guides
             * [Creating an environment](https://cloud.google.com/apigee/docs/api-platform/get-started/create-environment)
-
-        ## Example Usage
-
-        ### Apigee Endpoint Attachment Basic
-
-        ```python
-        import pulumi
-        import pulumi_gcp as gcp
-
-        current = gcp.organizations.get_client_config()
-        apigee_network = gcp.compute.Network("apigee_network", name="apigee-network")
-        apigee_range = gcp.compute.GlobalAddress("apigee_range",
-            name="apigee-range",
-            purpose="VPC_PEERING",
-            address_type="INTERNAL",
-            prefix_length=16,
-            network=apigee_network.id)
-        apigee_vpc_connection = gcp.servicenetworking.Connection("apigee_vpc_connection",
-            network=apigee_network.id,
-            service="servicenetworking.googleapis.com",
-            reserved_peering_ranges=[apigee_range.name])
-        apigee_org = gcp.apigee.Organization("apigee_org",
-            analytics_region="us-central1",
-            project_id=current.project,
-            authorized_network=apigee_network.id,
-            opts = pulumi.ResourceOptions(depends_on=[apigee_vpc_connection]))
-        apigee_endpoint_attachment = gcp.apigee.EndpointAttachment("apigee_endpoint_attachment",
-            org_id=apigee_org.id,
-            endpoint_attachment_id="test1",
-            location="{google_compute_service_attachment location}",
-            service_attachment="{google_compute_service_attachment id}")
-        ```
 
         ## Import
 

@@ -23,6 +23,8 @@ __all__ = [
     'ReferenceListEntry',
     'ReferenceListScopeInfo',
     'ReferenceListScopeInfoReferenceListScope',
+    'RetrohuntExecutionInterval',
+    'RetrohuntProcessInterval',
     'RuleCompilationDiagnostic',
     'RuleCompilationDiagnosticPosition',
     'RuleSeverity',
@@ -447,6 +449,116 @@ class ReferenceListScopeInfoReferenceListScope(dict):
         "projects/{project}/locations/{location}/instances/{instance}/dataAccessScopes/{scope_name}".
         """
         return pulumi.get(self, "scope_names")
+
+
+@pulumi.output_type
+class RetrohuntExecutionInterval(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endTime":
+            suggest = "end_time"
+        elif key == "startTime":
+            suggest = "start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RetrohuntExecutionInterval. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RetrohuntExecutionInterval.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RetrohuntExecutionInterval.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 end_time: Optional[str] = None,
+                 start_time: Optional[str] = None):
+        """
+        :param str end_time: Optional. Exclusive end of the interval.
+               If specified, a Timestamp matching this interval will have to be before the
+               end.
+        :param str start_time: Optional. Inclusive start of the interval.
+               If specified, a Timestamp matching this interval will have to be the same
+               or after the start.
+        """
+        if end_time is not None:
+            pulumi.set(__self__, "end_time", end_time)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> Optional[str]:
+        """
+        Optional. Exclusive end of the interval.
+        If specified, a Timestamp matching this interval will have to be before the
+        end.
+        """
+        return pulumi.get(self, "end_time")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[str]:
+        """
+        Optional. Inclusive start of the interval.
+        If specified, a Timestamp matching this interval will have to be the same
+        or after the start.
+        """
+        return pulumi.get(self, "start_time")
+
+
+@pulumi.output_type
+class RetrohuntProcessInterval(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "endTime":
+            suggest = "end_time"
+        elif key == "startTime":
+            suggest = "start_time"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RetrohuntProcessInterval. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RetrohuntProcessInterval.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RetrohuntProcessInterval.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 end_time: str,
+                 start_time: str):
+        """
+        :param str end_time: Exclusive end of the interval.
+               
+               - - -
+        :param str start_time: Inclusive start of the interval.
+        """
+        pulumi.set(__self__, "end_time", end_time)
+        pulumi.set(__self__, "start_time", start_time)
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> str:
+        """
+        Exclusive end of the interval.
+
+        - - -
+        """
+        return pulumi.get(self, "end_time")
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> str:
+        """
+        Inclusive start of the interval.
+        """
+        return pulumi.get(self, "start_time")
 
 
 @pulumi.output_type

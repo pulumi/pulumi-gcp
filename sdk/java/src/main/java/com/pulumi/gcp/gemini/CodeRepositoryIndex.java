@@ -18,6 +18,14 @@ import java.util.Optional;
 import javax.annotation.Nullable;
 
 /**
+ * The resource for managing Code Repository Index for Gemini Code Assist.
+ * 
+ * To get more information about CodeRepositoryIndex, see:
+ * 
+ * * [API documentation](https://cloud.google.com/gemini/docs/api/reference/rest/v1/projects.locations.codeRepositoryIndexes)
+ * * How-to Guides
+ *     * [Gemini Code Assist overview](https://cloud.google.com/gemini/docs/codeassist/overview)
+ * 
  * ## Example Usage
  * 
  * ### Gemini Code Repository Index Basic
@@ -47,7 +55,7 @@ import javax.annotation.Nullable;
  *     public static void stack(Context ctx) {
  *         var example = new CodeRepositoryIndex("example", CodeRepositoryIndexArgs.builder()
  *             .location("us-central1")
- *             .codeRepositoryIndexId("")
+ *             .codeRepositoryIndexId("code-repository-index-example")
  *             .kmsKey("projects/projectExample/locations/locationExample/keyRings/keyRingExample/cryptoKeys/cryptoKeyExample")
  *             .build());
  * 
@@ -146,7 +154,7 @@ public class CodeRepositoryIndex extends com.pulumi.resources.CustomResource {
     }
     /**
      * Optional. Immutable. Customer-managed encryption key name, in the format
-     * projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*.
+     * `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`.
      * 
      */
     @Export(name="kmsKey", refs={String.class}, tree="[0]")
@@ -154,7 +162,7 @@ public class CodeRepositoryIndex extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Optional. Immutable. Customer-managed encryption key name, in the format
-     * projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*.
+     * `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`.
      * 
      */
     public Output<Optional<String>> kmsKey() {
@@ -240,12 +248,7 @@ public class CodeRepositoryIndex extends com.pulumi.resources.CustomResource {
     }
     /**
      * Output only. Code Repository Index instance State.
-     * Possible values:
-     * STATE_UNSPECIFIED
-     * CREATING
-     * ACTIVE
-     * DELETING
-     * SUSPENDED
+     * Possible values are: `STATE_UNSPECIFIED`, `CREATING`, `ACTIVE`, `DELETING`, `SUSPENDED`.
      * 
      */
     @Export(name="state", refs={String.class}, tree="[0]")
@@ -253,12 +256,7 @@ public class CodeRepositoryIndex extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Output only. Code Repository Index instance State.
-     * Possible values:
-     * STATE_UNSPECIFIED
-     * CREATING
-     * ACTIVE
-     * DELETING
-     * SUSPENDED
+     * Possible values are: `STATE_UNSPECIFIED`, `CREATING`, `ACTIVE`, `DELETING`, `SUSPENDED`.
      * 
      */
     public Output<String> state() {

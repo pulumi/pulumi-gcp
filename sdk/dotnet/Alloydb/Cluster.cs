@@ -294,7 +294,8 @@ namespace Pulumi.Gcp.Alloydb
         public Output<ImmutableArray<Outputs.ClusterContinuousBackupInfo>> ContinuousBackupInfos { get; private set; } = null!;
 
         /// <summary>
-        /// The database engine major version. This is an optional field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
+        /// The database engine major version. This is an optional field and it's populated at the Cluster creation time.
+        /// Note: Changing this field to a higer version results in upgrading the AlloyDB cluster which is an irreversible change.
         /// </summary>
         [Output("databaseVersion")]
         public Output<string> DatabaseVersion { get; private set; } = null!;
@@ -446,6 +447,14 @@ namespace Pulumi.Gcp.Alloydb
         public Output<Outputs.ClusterSecondaryConfig?> SecondaryConfig { get; private set; } = null!;
 
         /// <summary>
+        /// Set to true to skip awaiting on the major version upgrade of the cluster.
+        /// Possible values: true, false
+        /// Default value: "true"
+        /// </summary>
+        [Output("skipAwaitMajorVersionUpgrade")]
+        public Output<bool?> SkipAwaitMajorVersionUpgrade { get; private set; } = null!;
+
+        /// <summary>
         /// Output only. The current serving state of the cluster.
         /// </summary>
         [Output("state")]
@@ -568,7 +577,8 @@ namespace Pulumi.Gcp.Alloydb
         public Input<Inputs.ClusterContinuousBackupConfigArgs>? ContinuousBackupConfig { get; set; }
 
         /// <summary>
-        /// The database engine major version. This is an optional field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
+        /// The database engine major version. This is an optional field and it's populated at the Cluster creation time.
+        /// Note: Changing this field to a higer version results in upgrading the AlloyDB cluster which is an irreversible change.
         /// </summary>
         [Input("databaseVersion")]
         public Input<string>? DatabaseVersion { get; set; }
@@ -681,6 +691,14 @@ namespace Pulumi.Gcp.Alloydb
         public Input<Inputs.ClusterSecondaryConfigArgs>? SecondaryConfig { get; set; }
 
         /// <summary>
+        /// Set to true to skip awaiting on the major version upgrade of the cluster.
+        /// Possible values: true, false
+        /// Default value: "true"
+        /// </summary>
+        [Input("skipAwaitMajorVersionUpgrade")]
+        public Input<bool>? SkipAwaitMajorVersionUpgrade { get; set; }
+
+        /// <summary>
         /// The subscrition type of cluster.
         /// Possible values are: `TRIAL`, `STANDARD`.
         /// </summary>
@@ -767,7 +785,8 @@ namespace Pulumi.Gcp.Alloydb
         }
 
         /// <summary>
-        /// The database engine major version. This is an optional field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
+        /// The database engine major version. This is an optional field and it's populated at the Cluster creation time.
+        /// Note: Changing this field to a higer version results in upgrading the AlloyDB cluster which is an irreversible change.
         /// </summary>
         [Input("databaseVersion")]
         public Input<string>? DatabaseVersion { get; set; }
@@ -960,6 +979,14 @@ namespace Pulumi.Gcp.Alloydb
         /// </summary>
         [Input("secondaryConfig")]
         public Input<Inputs.ClusterSecondaryConfigGetArgs>? SecondaryConfig { get; set; }
+
+        /// <summary>
+        /// Set to true to skip awaiting on the major version upgrade of the cluster.
+        /// Possible values: true, false
+        /// Default value: "true"
+        /// </summary>
+        [Input("skipAwaitMajorVersionUpgrade")]
+        public Input<bool>? SkipAwaitMajorVersionUpgrade { get; set; }
 
         /// <summary>
         /// Output only. The current serving state of the cluster.

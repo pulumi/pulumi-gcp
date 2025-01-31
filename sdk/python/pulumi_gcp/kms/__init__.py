@@ -22,6 +22,7 @@ from .get_crypto_key_versions import *
 from .get_crypto_keys import *
 from .get_ekm_connection_iam_policy import *
 from .get_key_handle import *
+from .get_key_handles import *
 from .get_key_ring_iam_policy import *
 from .get_key_rings import *
 from .get_kms_crypto_key import *

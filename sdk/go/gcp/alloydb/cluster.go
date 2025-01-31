@@ -284,7 +284,8 @@ type Cluster struct {
 	// ContinuousBackupInfo describes the continuous backup properties of a cluster.
 	// Structure is documented below.
 	ContinuousBackupInfos ClusterContinuousBackupInfoArrayOutput `pulumi:"continuousBackupInfos"`
-	// The database engine major version. This is an optional field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
+	// The database engine major version. This is an optional field and it's populated at the Cluster creation time.
+	// Note: Changing this field to a higer version results in upgrading the AlloyDB cluster which is an irreversible change.
 	DatabaseVersion pulumi.StringOutput `pulumi:"databaseVersion"`
 	// Policy to determine if the cluster should be deleted forcefully.
 	// Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
@@ -349,6 +350,10 @@ type Cluster struct {
 	// Configuration of the secondary cluster for Cross Region Replication. This should be set if and only if the cluster is of type SECONDARY.
 	// Structure is documented below.
 	SecondaryConfig ClusterSecondaryConfigPtrOutput `pulumi:"secondaryConfig"`
+	// Set to true to skip awaiting on the major version upgrade of the cluster.
+	// Possible values: true, false
+	// Default value: "true"
+	SkipAwaitMajorVersionUpgrade pulumi.BoolPtrOutput `pulumi:"skipAwaitMajorVersionUpgrade"`
 	// Output only. The current serving state of the cluster.
 	State pulumi.StringOutput `pulumi:"state"`
 	// The subscrition type of cluster.
@@ -427,7 +432,8 @@ type clusterState struct {
 	// ContinuousBackupInfo describes the continuous backup properties of a cluster.
 	// Structure is documented below.
 	ContinuousBackupInfos []ClusterContinuousBackupInfo `pulumi:"continuousBackupInfos"`
-	// The database engine major version. This is an optional field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
+	// The database engine major version. This is an optional field and it's populated at the Cluster creation time.
+	// Note: Changing this field to a higer version results in upgrading the AlloyDB cluster which is an irreversible change.
 	DatabaseVersion *string `pulumi:"databaseVersion"`
 	// Policy to determine if the cluster should be deleted forcefully.
 	// Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
@@ -492,6 +498,10 @@ type clusterState struct {
 	// Configuration of the secondary cluster for Cross Region Replication. This should be set if and only if the cluster is of type SECONDARY.
 	// Structure is documented below.
 	SecondaryConfig *ClusterSecondaryConfig `pulumi:"secondaryConfig"`
+	// Set to true to skip awaiting on the major version upgrade of the cluster.
+	// Possible values: true, false
+	// Default value: "true"
+	SkipAwaitMajorVersionUpgrade *bool `pulumi:"skipAwaitMajorVersionUpgrade"`
 	// Output only. The current serving state of the cluster.
 	State *string `pulumi:"state"`
 	// The subscrition type of cluster.
@@ -530,7 +540,8 @@ type ClusterState struct {
 	// ContinuousBackupInfo describes the continuous backup properties of a cluster.
 	// Structure is documented below.
 	ContinuousBackupInfos ClusterContinuousBackupInfoArrayInput
-	// The database engine major version. This is an optional field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
+	// The database engine major version. This is an optional field and it's populated at the Cluster creation time.
+	// Note: Changing this field to a higer version results in upgrading the AlloyDB cluster which is an irreversible change.
 	DatabaseVersion pulumi.StringPtrInput
 	// Policy to determine if the cluster should be deleted forcefully.
 	// Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
@@ -595,6 +606,10 @@ type ClusterState struct {
 	// Configuration of the secondary cluster for Cross Region Replication. This should be set if and only if the cluster is of type SECONDARY.
 	// Structure is documented below.
 	SecondaryConfig ClusterSecondaryConfigPtrInput
+	// Set to true to skip awaiting on the major version upgrade of the cluster.
+	// Possible values: true, false
+	// Default value: "true"
+	SkipAwaitMajorVersionUpgrade pulumi.BoolPtrInput
 	// Output only. The current serving state of the cluster.
 	State pulumi.StringPtrInput
 	// The subscrition type of cluster.
@@ -631,7 +646,8 @@ type clusterArgs struct {
 	// If no policy is provided then the default policy will be used. The default policy takes one backup a day and retains backups for 14 days.
 	// Structure is documented below.
 	ContinuousBackupConfig *ClusterContinuousBackupConfig `pulumi:"continuousBackupConfig"`
-	// The database engine major version. This is an optional field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
+	// The database engine major version. This is an optional field and it's populated at the Cluster creation time.
+	// Note: Changing this field to a higer version results in upgrading the AlloyDB cluster which is an irreversible change.
 	DatabaseVersion *string `pulumi:"databaseVersion"`
 	// Policy to determine if the cluster should be deleted forcefully.
 	// Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
@@ -677,6 +693,10 @@ type clusterArgs struct {
 	// Configuration of the secondary cluster for Cross Region Replication. This should be set if and only if the cluster is of type SECONDARY.
 	// Structure is documented below.
 	SecondaryConfig *ClusterSecondaryConfig `pulumi:"secondaryConfig"`
+	// Set to true to skip awaiting on the major version upgrade of the cluster.
+	// Possible values: true, false
+	// Default value: "true"
+	SkipAwaitMajorVersionUpgrade *bool `pulumi:"skipAwaitMajorVersionUpgrade"`
 	// The subscrition type of cluster.
 	// Possible values are: `TRIAL`, `STANDARD`.
 	SubscriptionType *string `pulumi:"subscriptionType"`
@@ -703,7 +723,8 @@ type ClusterArgs struct {
 	// If no policy is provided then the default policy will be used. The default policy takes one backup a day and retains backups for 14 days.
 	// Structure is documented below.
 	ContinuousBackupConfig ClusterContinuousBackupConfigPtrInput
-	// The database engine major version. This is an optional field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
+	// The database engine major version. This is an optional field and it's populated at the Cluster creation time.
+	// Note: Changing this field to a higer version results in upgrading the AlloyDB cluster which is an irreversible change.
 	DatabaseVersion pulumi.StringPtrInput
 	// Policy to determine if the cluster should be deleted forcefully.
 	// Deleting a cluster forcefully, deletes the cluster and all its associated instances within the cluster.
@@ -749,6 +770,10 @@ type ClusterArgs struct {
 	// Configuration of the secondary cluster for Cross Region Replication. This should be set if and only if the cluster is of type SECONDARY.
 	// Structure is documented below.
 	SecondaryConfig ClusterSecondaryConfigPtrInput
+	// Set to true to skip awaiting on the major version upgrade of the cluster.
+	// Possible values: true, false
+	// Default value: "true"
+	SkipAwaitMajorVersionUpgrade pulumi.BoolPtrInput
 	// The subscrition type of cluster.
 	// Possible values are: `TRIAL`, `STANDARD`.
 	SubscriptionType pulumi.StringPtrInput
@@ -887,7 +912,8 @@ func (o ClusterOutput) ContinuousBackupInfos() ClusterContinuousBackupInfoArrayO
 	return o.ApplyT(func(v *Cluster) ClusterContinuousBackupInfoArrayOutput { return v.ContinuousBackupInfos }).(ClusterContinuousBackupInfoArrayOutput)
 }
 
-// The database engine major version. This is an optional field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
+// The database engine major version. This is an optional field and it's populated at the Cluster creation time.
+// Note: Changing this field to a higer version results in upgrading the AlloyDB cluster which is an irreversible change.
 func (o ClusterOutput) DatabaseVersion() pulumi.StringOutput {
 	return o.ApplyT(func(v *Cluster) pulumi.StringOutput { return v.DatabaseVersion }).(pulumi.StringOutput)
 }
@@ -1016,6 +1042,13 @@ func (o ClusterOutput) RestoreContinuousBackupSource() ClusterRestoreContinuousB
 // Structure is documented below.
 func (o ClusterOutput) SecondaryConfig() ClusterSecondaryConfigPtrOutput {
 	return o.ApplyT(func(v *Cluster) ClusterSecondaryConfigPtrOutput { return v.SecondaryConfig }).(ClusterSecondaryConfigPtrOutput)
+}
+
+// Set to true to skip awaiting on the major version upgrade of the cluster.
+// Possible values: true, false
+// Default value: "true"
+func (o ClusterOutput) SkipAwaitMajorVersionUpgrade() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *Cluster) pulumi.BoolPtrOutput { return v.SkipAwaitMajorVersionUpgrade }).(pulumi.BoolPtrOutput)
 }
 
 // Output only. The current serving state of the cluster.

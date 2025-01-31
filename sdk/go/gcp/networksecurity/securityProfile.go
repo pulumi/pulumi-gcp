@@ -99,6 +99,116 @@ import (
 //	}
 //
 // ```
+// ### Network Security Security Profile Mirroring
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/networksecurity"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//				Name:                  pulumi.String("my-network"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultMirroringDeploymentGroup, err := networksecurity.NewMirroringDeploymentGroup(ctx, "default", &networksecurity.MirroringDeploymentGroupArgs{
+//				MirroringDeploymentGroupId: pulumi.String("my-dg"),
+//				Location:                   pulumi.String("global"),
+//				Network:                    _default.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultMirroringEndpointGroup, err := networksecurity.NewMirroringEndpointGroup(ctx, "default", &networksecurity.MirroringEndpointGroupArgs{
+//				MirroringEndpointGroupId: pulumi.String("my-eg"),
+//				Location:                 pulumi.String("global"),
+//				MirroringDeploymentGroup: defaultMirroringDeploymentGroup.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networksecurity.NewSecurityProfile(ctx, "default", &networksecurity.SecurityProfileArgs{
+//				Name:        pulumi.String("my-security-profile"),
+//				Parent:      pulumi.String("organizations/123456789"),
+//				Description: pulumi.String("my description"),
+//				Type:        pulumi.String("CUSTOM_MIRRORING"),
+//				CustomMirroringProfile: &networksecurity.SecurityProfileCustomMirroringProfileArgs{
+//					MirroringEndpointGroup: defaultMirroringEndpointGroup.ID(),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Network Security Security Profile Intercept
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/networksecurity"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//				Name:                  pulumi.String("my-network"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultInterceptDeploymentGroup, err := networksecurity.NewInterceptDeploymentGroup(ctx, "default", &networksecurity.InterceptDeploymentGroupArgs{
+//				InterceptDeploymentGroupId: pulumi.String("my-dg"),
+//				Location:                   pulumi.String("global"),
+//				Network:                    _default.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			defaultInterceptEndpointGroup, err := networksecurity.NewInterceptEndpointGroup(ctx, "default", &networksecurity.InterceptEndpointGroupArgs{
+//				InterceptEndpointGroupId: pulumi.String("my-eg"),
+//				Location:                 pulumi.String("global"),
+//				InterceptDeploymentGroup: defaultInterceptDeploymentGroup.ID(),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = networksecurity.NewSecurityProfile(ctx, "default", &networksecurity.SecurityProfileArgs{
+//				Name:        pulumi.String("my-security-profile"),
+//				Parent:      pulumi.String("organizations/123456789"),
+//				Description: pulumi.String("my description"),
+//				Type:        pulumi.String("CUSTOM_INTERCEPT"),
+//				CustomInterceptProfile: &networksecurity.SecurityProfileCustomInterceptProfileArgs{
+//					InterceptEndpointGroup: defaultInterceptEndpointGroup.ID(),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -116,6 +226,14 @@ type SecurityProfile struct {
 
 	// Time the security profile was created in UTC.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
+	// The configuration for defining the Intercept Endpoint Group used to
+	// intercept traffic to third-party firewall appliances.
+	// Structure is documented below.
+	CustomInterceptProfile SecurityProfileCustomInterceptProfilePtrOutput `pulumi:"customInterceptProfile"`
+	// The configuration for defining the Mirroring Endpoint Group used to
+	// mirror traffic to third-party collectors.
+	// Structure is documented below.
+	CustomMirroringProfile SecurityProfileCustomMirroringProfilePtrOutput `pulumi:"customMirroringProfile"`
 	// An optional description of the security profile. The Max length is 512 characters.
 	Description pulumi.StringPtrOutput `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -148,7 +266,7 @@ type SecurityProfile struct {
 	// Structure is documented below.
 	ThreatPreventionProfile SecurityProfileThreatPreventionProfilePtrOutput `pulumi:"threatPreventionProfile"`
 	// The type of security profile.
-	// Possible values are: `THREAT_PREVENTION`.
+	// Possible values are: `THREAT_PREVENTION`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
 	Type pulumi.StringOutput `pulumi:"type"`
 	// Time the security profile was updated in UTC.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -194,6 +312,14 @@ func GetSecurityProfile(ctx *pulumi.Context,
 type securityProfileState struct {
 	// Time the security profile was created in UTC.
 	CreateTime *string `pulumi:"createTime"`
+	// The configuration for defining the Intercept Endpoint Group used to
+	// intercept traffic to third-party firewall appliances.
+	// Structure is documented below.
+	CustomInterceptProfile *SecurityProfileCustomInterceptProfile `pulumi:"customInterceptProfile"`
+	// The configuration for defining the Mirroring Endpoint Group used to
+	// mirror traffic to third-party collectors.
+	// Structure is documented below.
+	CustomMirroringProfile *SecurityProfileCustomMirroringProfile `pulumi:"customMirroringProfile"`
 	// An optional description of the security profile. The Max length is 512 characters.
 	Description *string `pulumi:"description"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -226,7 +352,7 @@ type securityProfileState struct {
 	// Structure is documented below.
 	ThreatPreventionProfile *SecurityProfileThreatPreventionProfile `pulumi:"threatPreventionProfile"`
 	// The type of security profile.
-	// Possible values are: `THREAT_PREVENTION`.
+	// Possible values are: `THREAT_PREVENTION`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
 	Type *string `pulumi:"type"`
 	// Time the security profile was updated in UTC.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -235,6 +361,14 @@ type securityProfileState struct {
 type SecurityProfileState struct {
 	// Time the security profile was created in UTC.
 	CreateTime pulumi.StringPtrInput
+	// The configuration for defining the Intercept Endpoint Group used to
+	// intercept traffic to third-party firewall appliances.
+	// Structure is documented below.
+	CustomInterceptProfile SecurityProfileCustomInterceptProfilePtrInput
+	// The configuration for defining the Mirroring Endpoint Group used to
+	// mirror traffic to third-party collectors.
+	// Structure is documented below.
+	CustomMirroringProfile SecurityProfileCustomMirroringProfilePtrInput
 	// An optional description of the security profile. The Max length is 512 characters.
 	Description pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
@@ -267,7 +401,7 @@ type SecurityProfileState struct {
 	// Structure is documented below.
 	ThreatPreventionProfile SecurityProfileThreatPreventionProfilePtrInput
 	// The type of security profile.
-	// Possible values are: `THREAT_PREVENTION`.
+	// Possible values are: `THREAT_PREVENTION`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
 	Type pulumi.StringPtrInput
 	// Time the security profile was updated in UTC.
 	UpdateTime pulumi.StringPtrInput
@@ -278,6 +412,14 @@ func (SecurityProfileState) ElementType() reflect.Type {
 }
 
 type securityProfileArgs struct {
+	// The configuration for defining the Intercept Endpoint Group used to
+	// intercept traffic to third-party firewall appliances.
+	// Structure is documented below.
+	CustomInterceptProfile *SecurityProfileCustomInterceptProfile `pulumi:"customInterceptProfile"`
+	// The configuration for defining the Mirroring Endpoint Group used to
+	// mirror traffic to third-party collectors.
+	// Structure is documented below.
+	CustomMirroringProfile *SecurityProfileCustomMirroringProfile `pulumi:"customMirroringProfile"`
 	// An optional description of the security profile. The Max length is 512 characters.
 	Description *string `pulumi:"description"`
 	// A map of key/value label pairs to assign to the resource.
@@ -299,12 +441,20 @@ type securityProfileArgs struct {
 	// Structure is documented below.
 	ThreatPreventionProfile *SecurityProfileThreatPreventionProfile `pulumi:"threatPreventionProfile"`
 	// The type of security profile.
-	// Possible values are: `THREAT_PREVENTION`.
+	// Possible values are: `THREAT_PREVENTION`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
 	Type string `pulumi:"type"`
 }
 
 // The set of arguments for constructing a SecurityProfile resource.
 type SecurityProfileArgs struct {
+	// The configuration for defining the Intercept Endpoint Group used to
+	// intercept traffic to third-party firewall appliances.
+	// Structure is documented below.
+	CustomInterceptProfile SecurityProfileCustomInterceptProfilePtrInput
+	// The configuration for defining the Mirroring Endpoint Group used to
+	// mirror traffic to third-party collectors.
+	// Structure is documented below.
+	CustomMirroringProfile SecurityProfileCustomMirroringProfilePtrInput
 	// An optional description of the security profile. The Max length is 512 characters.
 	Description pulumi.StringPtrInput
 	// A map of key/value label pairs to assign to the resource.
@@ -326,7 +476,7 @@ type SecurityProfileArgs struct {
 	// Structure is documented below.
 	ThreatPreventionProfile SecurityProfileThreatPreventionProfilePtrInput
 	// The type of security profile.
-	// Possible values are: `THREAT_PREVENTION`.
+	// Possible values are: `THREAT_PREVENTION`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
 	Type pulumi.StringInput
 }
 
@@ -422,6 +572,24 @@ func (o SecurityProfileOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityProfile) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
 
+// The configuration for defining the Intercept Endpoint Group used to
+// intercept traffic to third-party firewall appliances.
+// Structure is documented below.
+func (o SecurityProfileOutput) CustomInterceptProfile() SecurityProfileCustomInterceptProfilePtrOutput {
+	return o.ApplyT(func(v *SecurityProfile) SecurityProfileCustomInterceptProfilePtrOutput {
+		return v.CustomInterceptProfile
+	}).(SecurityProfileCustomInterceptProfilePtrOutput)
+}
+
+// The configuration for defining the Mirroring Endpoint Group used to
+// mirror traffic to third-party collectors.
+// Structure is documented below.
+func (o SecurityProfileOutput) CustomMirroringProfile() SecurityProfileCustomMirroringProfilePtrOutput {
+	return o.ApplyT(func(v *SecurityProfile) SecurityProfileCustomMirroringProfilePtrOutput {
+		return v.CustomMirroringProfile
+	}).(SecurityProfileCustomMirroringProfilePtrOutput)
+}
+
 // An optional description of the security profile. The Max length is 512 characters.
 func (o SecurityProfileOutput) Description() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *SecurityProfile) pulumi.StringPtrOutput { return v.Description }).(pulumi.StringPtrOutput)
@@ -486,7 +654,7 @@ func (o SecurityProfileOutput) ThreatPreventionProfile() SecurityProfileThreatPr
 }
 
 // The type of security profile.
-// Possible values are: `THREAT_PREVENTION`.
+// Possible values are: `THREAT_PREVENTION`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
 func (o SecurityProfileOutput) Type() pulumi.StringOutput {
 	return o.ApplyT(func(v *SecurityProfile) pulumi.StringOutput { return v.Type }).(pulumi.StringOutput)
 }

@@ -6,9 +6,12 @@ package com.pulumi.gcp.pubsub.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 
 public final class TopicMessageStoragePolicyArgs extends com.pulumi.resources.ResourceArgs {
@@ -40,10 +43,32 @@ public final class TopicMessageStoragePolicyArgs extends com.pulumi.resources.Re
         return this.allowedPersistenceRegions;
     }
 
+    /**
+     * If true, `allowedPersistenceRegions` is also used to enforce in-transit
+     * guarantees for messages. That is, Pub/Sub will fail topics.publish
+     * operations on this topic and subscribe operations on any subscription
+     * attached to this topic in any region that is not in `allowedPersistenceRegions`.
+     * 
+     */
+    @Import(name="enforceInTransit")
+    private @Nullable Output<Boolean> enforceInTransit;
+
+    /**
+     * @return If true, `allowedPersistenceRegions` is also used to enforce in-transit
+     * guarantees for messages. That is, Pub/Sub will fail topics.publish
+     * operations on this topic and subscribe operations on any subscription
+     * attached to this topic in any region that is not in `allowedPersistenceRegions`.
+     * 
+     */
+    public Optional<Output<Boolean>> enforceInTransit() {
+        return Optional.ofNullable(this.enforceInTransit);
+    }
+
     private TopicMessageStoragePolicyArgs() {}
 
     private TopicMessageStoragePolicyArgs(TopicMessageStoragePolicyArgs $) {
         this.allowedPersistenceRegions = $.allowedPersistenceRegions;
+        this.enforceInTransit = $.enforceInTransit;
     }
 
     public static Builder builder() {
@@ -108,6 +133,33 @@ public final class TopicMessageStoragePolicyArgs extends com.pulumi.resources.Re
          */
         public Builder allowedPersistenceRegions(String... allowedPersistenceRegions) {
             return allowedPersistenceRegions(List.of(allowedPersistenceRegions));
+        }
+
+        /**
+         * @param enforceInTransit If true, `allowedPersistenceRegions` is also used to enforce in-transit
+         * guarantees for messages. That is, Pub/Sub will fail topics.publish
+         * operations on this topic and subscribe operations on any subscription
+         * attached to this topic in any region that is not in `allowedPersistenceRegions`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enforceInTransit(@Nullable Output<Boolean> enforceInTransit) {
+            $.enforceInTransit = enforceInTransit;
+            return this;
+        }
+
+        /**
+         * @param enforceInTransit If true, `allowedPersistenceRegions` is also used to enforce in-transit
+         * guarantees for messages. That is, Pub/Sub will fail topics.publish
+         * operations on this topic and subscribe operations on any subscription
+         * attached to this topic in any region that is not in `allowedPersistenceRegions`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder enforceInTransit(Boolean enforceInTransit) {
+            return enforceInTransit(Output.of(enforceInTransit));
         }
 
         public TopicMessageStoragePolicyArgs build() {

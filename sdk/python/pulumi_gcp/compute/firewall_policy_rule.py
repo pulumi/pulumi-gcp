@@ -539,7 +539,7 @@ class FirewallPolicyRule(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         basic_global_networksecurity_address_group = gcp.networksecurity.AddressGroup("basic_global_networksecurity_address_group",
-            name="address",
+            name="address-group",
             parent="organizations/123456789",
             description="Sample global networksecurity_address_group",
             location="global",
@@ -552,9 +552,9 @@ class FirewallPolicyRule(pulumi.CustomResource):
             deletion_protection=False)
         default = gcp.compute.FirewallPolicy("default",
             parent=folder.id,
-            short_name="policy",
+            short_name="fw-policy",
             description="Resource created for Terraform acceptance testing")
-        policy_rule = gcp.compute.FirewallPolicyRule("policy_rule",
+        primary = gcp.compute.FirewallPolicyRule("primary",
             firewall_policy=default.name,
             description="Resource created for Terraform acceptance testing",
             priority=9000,
@@ -562,7 +562,15 @@ class FirewallPolicyRule(pulumi.CustomResource):
             action="allow",
             direction="EGRESS",
             disabled=False,
+            target_service_accounts=["my@service-account.com"],
             match={
+                "dest_ip_ranges": ["11.100.0.1/32"],
+                "dest_fqdns": [],
+                "dest_region_codes": ["US"],
+                "dest_threat_intelligences": ["iplist-known-malicious-ips"],
+                "src_address_groups": [],
+                "dest_address_groups": [basic_global_networksecurity_address_group.id],
+                "dest_network_scope": "INTERNET",
                 "layer4_configs": [
                     {
                         "ip_protocol": "tcp",
@@ -573,14 +581,47 @@ class FirewallPolicyRule(pulumi.CustomResource):
                         "ports": ["22"],
                     },
                 ],
-                "dest_ip_ranges": ["11.100.0.1/32"],
-                "dest_fqdns": [],
-                "dest_region_codes": ["US"],
-                "dest_threat_intelligences": ["iplist-known-malicious-ips"],
-                "src_address_groups": [],
-                "dest_address_groups": [basic_global_networksecurity_address_group.id],
-            },
-            target_service_accounts=["my@service-account.com"])
+            })
+        ```
+        ### Firewall Policy Rule Network Scope
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        folder = gcp.organizations.Folder("folder",
+            display_name="folder",
+            parent="organizations/123456789",
+            deletion_protection=False)
+        default = gcp.compute.FirewallPolicy("default",
+            parent=folder.id,
+            short_name="fw-policy",
+            description="Firewall policy")
+        network = gcp.compute.Network("network",
+            name="network",
+            auto_create_subnetworks=False)
+        primary = gcp.compute.FirewallPolicyRule("primary",
+            firewall_policy=default.name,
+            description="Firewall policy rule with network scope",
+            priority=9000,
+            action="allow",
+            direction="INGRESS",
+            disabled=False,
+            match={
+                "src_ip_ranges": ["11.100.0.1/32"],
+                "src_network_scope": "VPC_NETWORKS",
+                "src_networks": [network.id],
+                "layer4_configs": [
+                    {
+                        "ip_protocol": "tcp",
+                        "ports": ["8080"],
+                    },
+                    {
+                        "ip_protocol": "udp",
+                        "ports": ["22"],
+                    },
+                ],
+            })
         ```
 
         ## Import
@@ -649,7 +690,7 @@ class FirewallPolicyRule(pulumi.CustomResource):
         import pulumi_gcp as gcp
 
         basic_global_networksecurity_address_group = gcp.networksecurity.AddressGroup("basic_global_networksecurity_address_group",
-            name="address",
+            name="address-group",
             parent="organizations/123456789",
             description="Sample global networksecurity_address_group",
             location="global",
@@ -662,9 +703,9 @@ class FirewallPolicyRule(pulumi.CustomResource):
             deletion_protection=False)
         default = gcp.compute.FirewallPolicy("default",
             parent=folder.id,
-            short_name="policy",
+            short_name="fw-policy",
             description="Resource created for Terraform acceptance testing")
-        policy_rule = gcp.compute.FirewallPolicyRule("policy_rule",
+        primary = gcp.compute.FirewallPolicyRule("primary",
             firewall_policy=default.name,
             description="Resource created for Terraform acceptance testing",
             priority=9000,
@@ -672,7 +713,15 @@ class FirewallPolicyRule(pulumi.CustomResource):
             action="allow",
             direction="EGRESS",
             disabled=False,
+            target_service_accounts=["my@service-account.com"],
             match={
+                "dest_ip_ranges": ["11.100.0.1/32"],
+                "dest_fqdns": [],
+                "dest_region_codes": ["US"],
+                "dest_threat_intelligences": ["iplist-known-malicious-ips"],
+                "src_address_groups": [],
+                "dest_address_groups": [basic_global_networksecurity_address_group.id],
+                "dest_network_scope": "INTERNET",
                 "layer4_configs": [
                     {
                         "ip_protocol": "tcp",
@@ -683,14 +732,47 @@ class FirewallPolicyRule(pulumi.CustomResource):
                         "ports": ["22"],
                     },
                 ],
-                "dest_ip_ranges": ["11.100.0.1/32"],
-                "dest_fqdns": [],
-                "dest_region_codes": ["US"],
-                "dest_threat_intelligences": ["iplist-known-malicious-ips"],
-                "src_address_groups": [],
-                "dest_address_groups": [basic_global_networksecurity_address_group.id],
-            },
-            target_service_accounts=["my@service-account.com"])
+            })
+        ```
+        ### Firewall Policy Rule Network Scope
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        folder = gcp.organizations.Folder("folder",
+            display_name="folder",
+            parent="organizations/123456789",
+            deletion_protection=False)
+        default = gcp.compute.FirewallPolicy("default",
+            parent=folder.id,
+            short_name="fw-policy",
+            description="Firewall policy")
+        network = gcp.compute.Network("network",
+            name="network",
+            auto_create_subnetworks=False)
+        primary = gcp.compute.FirewallPolicyRule("primary",
+            firewall_policy=default.name,
+            description="Firewall policy rule with network scope",
+            priority=9000,
+            action="allow",
+            direction="INGRESS",
+            disabled=False,
+            match={
+                "src_ip_ranges": ["11.100.0.1/32"],
+                "src_network_scope": "VPC_NETWORKS",
+                "src_networks": [network.id],
+                "layer4_configs": [
+                    {
+                        "ip_protocol": "tcp",
+                        "ports": ["8080"],
+                    },
+                    {
+                        "ip_protocol": "udp",
+                        "ports": ["22"],
+                    },
+                ],
+            })
         ```
 
         ## Import

@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const basicRegionalNetworksecurityAddressGroup = new gcp.networksecurity.AddressGroup("basic_regional_networksecurity_address_group", {
- *     name: "address",
+ *     name: "address-group",
  *     parent: "projects/my-project-name",
  *     description: "Sample regional networksecurity_address_group",
  *     location: "us-west1",
@@ -31,7 +31,7 @@ import * as utilities from "../utilities";
  *     capacity: 100,
  * });
  * const basicRegionalNetworkFirewallPolicy = new gcp.compute.RegionNetworkFirewallPolicy("basic_regional_network_firewall_policy", {
- *     name: "policy",
+ *     name: "fw-policy",
  *     description: "Sample regional network firewall policy",
  *     project: "my-project-name",
  *     region: "us-west1",
@@ -41,7 +41,7 @@ import * as utilities from "../utilities";
  *     description: "For keyname resources.",
  *     parent: "organizations/123456789",
  *     purpose: "GCE_FIREWALL",
- *     shortName: "tagkey",
+ *     shortName: "tag-key",
  *     purposeData: {
  *         network: pulumi.interpolate`my-project-name/${basicNetwork.name}`,
  *     },
@@ -49,7 +49,7 @@ import * as utilities from "../utilities";
  * const basicValue = new gcp.tags.TagValue("basic_value", {
  *     description: "For valuename resources.",
  *     parent: basicKey.id,
- *     shortName: "tagvalue",
+ *     shortName: "tag-value",
  * });
  * const primary = new gcp.compute.RegionNetworkFirewallPolicyRule("primary", {
  *     action: "allow",
@@ -63,6 +63,7 @@ import * as utilities from "../utilities";
  *     ruleName: "test-rule",
  *     targetServiceAccounts: ["my@service-account.com"],
  *     match: {
+ *         srcAddressGroups: [basicRegionalNetworksecurityAddressGroup.id],
  *         srcIpRanges: ["10.100.0.1/32"],
  *         srcFqdns: ["example.com"],
  *         srcRegionCodes: ["US"],
@@ -73,7 +74,70 @@ import * as utilities from "../utilities";
  *         srcSecureTags: [{
  *             name: basicValue.id,
  *         }],
- *         srcAddressGroups: [basicRegionalNetworksecurityAddressGroup.id],
+ *     },
+ * });
+ * ```
+ * ### Region Network Firewall Policy Rule Network Scope Egress
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const basicRegionalNetworkFirewallPolicy = new gcp.compute.RegionNetworkFirewallPolicy("basic_regional_network_firewall_policy", {
+ *     name: "fw-policy",
+ *     description: "Sample regional network firewall policy",
+ *     project: "my-project-name",
+ *     region: "us-west1",
+ * });
+ * const primary = new gcp.compute.RegionNetworkFirewallPolicyRule("primary", {
+ *     action: "allow",
+ *     description: "This is a simple rule description",
+ *     direction: "EGRESS",
+ *     disabled: false,
+ *     enableLogging: true,
+ *     firewallPolicy: basicRegionalNetworkFirewallPolicy.name,
+ *     priority: 1000,
+ *     region: "us-west1",
+ *     ruleName: "test-rule",
+ *     match: {
+ *         destIpRanges: ["10.100.0.1/32"],
+ *         destNetworkScope: "INTERNET",
+ *         layer4Configs: [{
+ *             ipProtocol: "all",
+ *         }],
+ *     },
+ * });
+ * ```
+ * ### Region Network Firewall Policy Rule Network Scope Ingress
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const basicRegionalNetworkFirewallPolicy = new gcp.compute.RegionNetworkFirewallPolicy("basic_regional_network_firewall_policy", {
+ *     name: "fw-policy",
+ *     description: "Sample regional network firewall policy",
+ *     project: "my-project-name",
+ *     region: "us-west1",
+ * });
+ * const network = new gcp.compute.Network("network", {name: "network"});
+ * const primary = new gcp.compute.RegionNetworkFirewallPolicyRule("primary", {
+ *     action: "allow",
+ *     description: "This is a simple rule description",
+ *     direction: "INGRESS",
+ *     disabled: false,
+ *     enableLogging: true,
+ *     firewallPolicy: basicRegionalNetworkFirewallPolicy.name,
+ *     priority: 1000,
+ *     region: "us-west1",
+ *     ruleName: "test-rule",
+ *     match: {
+ *         srcIpRanges: ["10.100.0.1/32"],
+ *         srcNetworkScope: "VPC_NETWORKS",
+ *         srcNetworks: [network.id],
+ *         layer4Configs: [{
+ *             ipProtocol: "all",
+ *         }],
  *     },
  * });
  * ```

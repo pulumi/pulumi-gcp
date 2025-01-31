@@ -27,7 +27,7 @@ class GetInstanceResult:
     """
     A collection of values returned by getInstance.
     """
-    def __init__(__self__, create_time=None, deletion_protection_enabled=None, deletion_protection_reason=None, description=None, effective_labels=None, etag=None, file_shares=None, id=None, kms_key_name=None, labels=None, location=None, name=None, networks=None, performance_configs=None, project=None, protocol=None, pulumi_labels=None, tier=None, zone=None):
+    def __init__(__self__, create_time=None, deletion_protection_enabled=None, deletion_protection_reason=None, description=None, effective_labels=None, etag=None, file_shares=None, id=None, kms_key_name=None, labels=None, location=None, name=None, networks=None, performance_configs=None, project=None, protocol=None, pulumi_labels=None, tags=None, tier=None, zone=None):
         if create_time and not isinstance(create_time, str):
             raise TypeError("Expected argument 'create_time' to be a str")
         pulumi.set(__self__, "create_time", create_time)
@@ -79,6 +79,9 @@ class GetInstanceResult:
         if pulumi_labels and not isinstance(pulumi_labels, dict):
             raise TypeError("Expected argument 'pulumi_labels' to be a dict")
         pulumi.set(__self__, "pulumi_labels", pulumi_labels)
+        if tags and not isinstance(tags, dict):
+            raise TypeError("Expected argument 'tags' to be a dict")
+        pulumi.set(__self__, "tags", tags)
         if tier and not isinstance(tier, str):
             raise TypeError("Expected argument 'tier' to be a str")
         pulumi.set(__self__, "tier", tier)
@@ -176,6 +179,11 @@ class GetInstanceResult:
 
     @property
     @pulumi.getter
+    def tags(self) -> Mapping[str, str]:
+        return pulumi.get(self, "tags")
+
+    @property
+    @pulumi.getter
     def tier(self) -> str:
         return pulumi.get(self, "tier")
 
@@ -208,6 +216,7 @@ class AwaitableGetInstanceResult(GetInstanceResult):
             project=self.project,
             protocol=self.protocol,
             pulumi_labels=self.pulumi_labels,
+            tags=self.tags,
             tier=self.tier,
             zone=self.zone)
 
@@ -266,6 +275,7 @@ def get_instance(location: Optional[str] = None,
         project=pulumi.get(__ret__, 'project'),
         protocol=pulumi.get(__ret__, 'protocol'),
         pulumi_labels=pulumi.get(__ret__, 'pulumi_labels'),
+        tags=pulumi.get(__ret__, 'tags'),
         tier=pulumi.get(__ret__, 'tier'),
         zone=pulumi.get(__ret__, 'zone'))
 def get_instance_output(location: Optional[pulumi.Input[Optional[str]]] = None,
@@ -321,5 +331,6 @@ def get_instance_output(location: Optional[pulumi.Input[Optional[str]]] = None,
         project=pulumi.get(__response__, 'project'),
         protocol=pulumi.get(__response__, 'protocol'),
         pulumi_labels=pulumi.get(__response__, 'pulumi_labels'),
+        tags=pulumi.get(__response__, 'tags'),
         tier=pulumi.get(__response__, 'tier'),
         zone=pulumi.get(__response__, 'zone')))

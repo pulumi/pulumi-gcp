@@ -39,6 +39,10 @@ __all__ = [
     'EnvironmentIamMemberConditionArgsDict',
     'EnvironmentNodeConfigArgs',
     'EnvironmentNodeConfigArgsDict',
+    'EnvironmentPropertiesArgs',
+    'EnvironmentPropertiesArgsDict',
+    'EnvironmentPropertiesPropertyArgs',
+    'EnvironmentPropertiesPropertyArgsDict',
     'KeystoresAliasesKeyCertFileCertsInfoArgs',
     'KeystoresAliasesKeyCertFileCertsInfoArgsDict',
     'KeystoresAliasesKeyCertFileCertsInfoCertInfoArgs',
@@ -760,6 +764,93 @@ class EnvironmentNodeConfigArgs:
     @min_node_count.setter
     def min_node_count(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "min_node_count", value)
+
+
+if not MYPY:
+    class EnvironmentPropertiesArgsDict(TypedDict):
+        properties: NotRequired[pulumi.Input[Sequence[pulumi.Input['EnvironmentPropertiesPropertyArgsDict']]]]
+        """
+        List of all properties in the object.
+        Structure is documented below.
+        """
+elif False:
+    EnvironmentPropertiesArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class EnvironmentPropertiesArgs:
+    def __init__(__self__, *,
+                 properties: Optional[pulumi.Input[Sequence[pulumi.Input['EnvironmentPropertiesPropertyArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['EnvironmentPropertiesPropertyArgs']]] properties: List of all properties in the object.
+               Structure is documented below.
+        """
+        if properties is not None:
+            pulumi.set(__self__, "properties", properties)
+
+    @property
+    @pulumi.getter
+    def properties(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['EnvironmentPropertiesPropertyArgs']]]]:
+        """
+        List of all properties in the object.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "properties")
+
+    @properties.setter
+    def properties(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['EnvironmentPropertiesPropertyArgs']]]]):
+        pulumi.set(self, "properties", value)
+
+
+if not MYPY:
+    class EnvironmentPropertiesPropertyArgsDict(TypedDict):
+        name: NotRequired[pulumi.Input[str]]
+        """
+        The property key.
+        """
+        value: NotRequired[pulumi.Input[str]]
+        """
+        The property value.
+        """
+elif False:
+    EnvironmentPropertiesPropertyArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class EnvironmentPropertiesPropertyArgs:
+    def __init__(__self__, *,
+                 name: Optional[pulumi.Input[str]] = None,
+                 value: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] name: The property key.
+        :param pulumi.Input[str] value: The property value.
+        """
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if value is not None:
+            pulumi.set(__self__, "value", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        The property key.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter
+    def value(self) -> Optional[pulumi.Input[str]]:
+        """
+        The property value.
+        """
+        return pulumi.get(self, "value")
+
+    @value.setter
+    def value(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "value", value)
 
 
 if not MYPY:

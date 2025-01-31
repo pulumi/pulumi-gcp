@@ -17,6 +17,7 @@ import com.pulumi.gcp.redis.outputs.ClusterMaintenanceSchedule;
 import com.pulumi.gcp.redis.outputs.ClusterPersistenceConfig;
 import com.pulumi.gcp.redis.outputs.ClusterPscConfig;
 import com.pulumi.gcp.redis.outputs.ClusterPscConnection;
+import com.pulumi.gcp.redis.outputs.ClusterPscServiceAttachment;
 import com.pulumi.gcp.redis.outputs.ClusterStateInfo;
 import com.pulumi.gcp.redis.outputs.ClusterZoneDistributionConfig;
 import java.lang.Boolean;
@@ -630,8 +631,8 @@ import javax.annotation.Nullable;
 public class Cluster extends com.pulumi.resources.CustomResource {
     /**
      * Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
-     * Default value: &#34;AUTH_MODE_DISABLED&#34; Possible values: [&#34;AUTH_MODE_UNSPECIFIED&#34;, &#34;AUTH_MODE_IAM_AUTH&#34;,
-     * &#34;AUTH_MODE_DISABLED&#34;]
+     * Default value is `AUTH_MODE_DISABLED`.
+     * Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
      * 
      */
     @Export(name="authorizationMode", refs={String.class}, tree="[0]")
@@ -639,8 +640,8 @@ public class Cluster extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
-     * Default value: &#34;AUTH_MODE_DISABLED&#34; Possible values: [&#34;AUTH_MODE_UNSPECIFIED&#34;, &#34;AUTH_MODE_IAM_AUTH&#34;,
-     * &#34;AUTH_MODE_DISABLED&#34;]
+     * Default value is `AUTH_MODE_DISABLED`.
+     * Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
      * 
      */
     public Output<Optional<String>> authorizationMode() {
@@ -666,6 +667,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     }
     /**
      * Cross cluster replication config
+     * Structure is documented below.
      * 
      */
     @Export(name="crossClusterReplicationConfig", refs={ClusterCrossClusterReplicationConfig.class}, tree="[0]")
@@ -673,22 +675,25 @@ public class Cluster extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Cross cluster replication config
+     * Structure is documented below.
      * 
      */
     public Output<ClusterCrossClusterReplicationConfig> crossClusterReplicationConfig() {
         return this.crossClusterReplicationConfig;
     }
     /**
-     * Optional. Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster
-     * operation will fail. Default value is true.
+     * Optional. Indicates if the cluster is deletion protected or not.
+     * If the value if set to true, any delete cluster operation will fail.
+     * Default value is true.
      * 
      */
     @Export(name="deletionProtectionEnabled", refs={Boolean.class}, tree="[0]")
     private Output</* @Nullable */ Boolean> deletionProtectionEnabled;
 
     /**
-     * @return Optional. Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster
-     * operation will fail. Default value is true.
+     * @return Optional. Indicates if the cluster is deletion protected or not.
+     * If the value if set to true, any delete cluster operation will fail.
+     * Default value is true.
      * 
      */
     public Output<Optional<Boolean>> deletionProtectionEnabled() {
@@ -716,6 +721,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     }
     /**
      * Maintenance policy for a cluster
+     * Structure is documented below.
      * 
      */
     @Export(name="maintenancePolicy", refs={ClusterMaintenancePolicy.class}, tree="[0]")
@@ -723,6 +729,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Maintenance policy for a cluster
+     * Structure is documented below.
      * 
      */
     public Output<Optional<ClusterMaintenancePolicy>> maintenancePolicy() {
@@ -748,6 +755,8 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Unique name of the resource in this scope including project and location using the form:
      * projects/{projectId}/locations/{locationId}/clusters/{clusterId}
      * 
+     * ***
+     * 
      */
     @Export(name="name", refs={String.class}, tree="[0]")
     private Output<String> name;
@@ -756,21 +765,25 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * @return Unique name of the resource in this scope including project and location using the form:
      * projects/{projectId}/locations/{locationId}/clusters/{clusterId}
      * 
+     * ***
+     * 
      */
     public Output<String> name() {
         return this.name;
     }
     /**
-     * The nodeType for the Redis cluster. If not provided, REDIS_HIGHMEM_MEDIUM will be used as default Possible values:
-     * [&#34;REDIS_SHARED_CORE_NANO&#34;, &#34;REDIS_HIGHMEM_MEDIUM&#34;, &#34;REDIS_HIGHMEM_XLARGE&#34;, &#34;REDIS_STANDARD_SMALL&#34;]
+     * The nodeType for the Redis cluster.
+     * If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
+     * Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
      * 
      */
     @Export(name="nodeType", refs={String.class}, tree="[0]")
     private Output<String> nodeType;
 
     /**
-     * @return The nodeType for the Redis cluster. If not provided, REDIS_HIGHMEM_MEDIUM will be used as default Possible values:
-     * [&#34;REDIS_SHARED_CORE_NANO&#34;, &#34;REDIS_HIGHMEM_MEDIUM&#34;, &#34;REDIS_HIGHMEM_XLARGE&#34;, &#34;REDIS_STANDARD_SMALL&#34;]
+     * @return The nodeType for the Redis cluster.
+     * If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
+     * Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
      * 
      */
     public Output<String> nodeType() {
@@ -778,6 +791,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     }
     /**
      * Persistence config (RDB, AOF) for the cluster.
+     * Structure is documented below.
      * 
      */
     @Export(name="persistenceConfig", refs={ClusterPersistenceConfig.class}, tree="[0]")
@@ -785,6 +799,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
 
     /**
      * @return Persistence config (RDB, AOF) for the cluster.
+     * Structure is documented below.
      * 
      */
     public Output<ClusterPersistenceConfig> persistenceConfig() {
@@ -804,9 +819,19 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     public Output<Double> preciseSizeGb() {
         return this.preciseSizeGb;
     }
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Export(name="project", refs={String.class}, tree="[0]")
     private Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Output<String> project() {
         return this.project;
     }
@@ -818,7 +843,7 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * 
      */
     @Export(name="pscConfigs", refs={List.class,ClusterPscConfig.class}, tree="[0,1]")
-    private Output<List<ClusterPscConfig>> pscConfigs;
+    private Output</* @Nullable */ List<ClusterPscConfig>> pscConfigs;
 
     /**
      * @return Required. Each PscConfig configures the consumer network where two
@@ -827,8 +852,8 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      * Structure is documented below.
      * 
      */
-    public Output<List<ClusterPscConfig>> pscConfigs() {
-        return this.pscConfigs;
+    public Output<Optional<List<ClusterPscConfig>>> pscConfigs() {
+        return Codegen.optional(this.pscConfigs);
     }
     /**
      * Output only. PSC connections for discovery of the cluster topology and accessing the cluster.
@@ -847,8 +872,24 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.pscConnections;
     }
     /**
-     * Configure Redis Cluster behavior using a subset of native Redis configuration parameters. Please check Memorystore
-     * documentation for the list of supported parameters:
+     * Service attachment details to configure Psc connections.
+     * Structure is documented below.
+     * 
+     */
+    @Export(name="pscServiceAttachments", refs={List.class,ClusterPscServiceAttachment.class}, tree="[0,1]")
+    private Output<List<ClusterPscServiceAttachment>> pscServiceAttachments;
+
+    /**
+     * @return Service attachment details to configure Psc connections.
+     * Structure is documented below.
+     * 
+     */
+    public Output<List<ClusterPscServiceAttachment>> pscServiceAttachments() {
+        return this.pscServiceAttachments;
+    }
+    /**
+     * Configure Redis Cluster behavior using a subset of native Redis configuration parameters.
+     * Please check Memorystore documentation for the list of supported parameters:
      * https://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations
      * 
      */
@@ -856,8 +897,8 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     private Output</* @Nullable */ Map<String,String>> redisConfigs;
 
     /**
-     * @return Configure Redis Cluster behavior using a subset of native Redis configuration parameters. Please check Memorystore
-     * documentation for the list of supported parameters:
+     * @return Configure Redis Cluster behavior using a subset of native Redis configuration parameters.
+     * Please check Memorystore documentation for the list of supported parameters:
      * https://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations
      * 
      */
@@ -951,18 +992,20 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.stateInfos;
     }
     /**
-     * Optional. The in-transit encryption for the Redis cluster. If not provided, encryption is disabled for the cluster.
-     * Default value: &#34;TRANSIT_ENCRYPTION_MODE_DISABLED&#34; Possible values: [&#34;TRANSIT_ENCRYPTION_MODE_UNSPECIFIED&#34;,
-     * &#34;TRANSIT_ENCRYPTION_MODE_DISABLED&#34;, &#34;TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION&#34;]
+     * Optional. The in-transit encryption for the Redis cluster.
+     * If not provided, encryption is disabled for the cluster.
+     * Default value is `TRANSIT_ENCRYPTION_MODE_DISABLED`.
+     * Possible values are: `TRANSIT_ENCRYPTION_MODE_UNSPECIFIED`, `TRANSIT_ENCRYPTION_MODE_DISABLED`, `TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION`.
      * 
      */
     @Export(name="transitEncryptionMode", refs={String.class}, tree="[0]")
     private Output</* @Nullable */ String> transitEncryptionMode;
 
     /**
-     * @return Optional. The in-transit encryption for the Redis cluster. If not provided, encryption is disabled for the cluster.
-     * Default value: &#34;TRANSIT_ENCRYPTION_MODE_DISABLED&#34; Possible values: [&#34;TRANSIT_ENCRYPTION_MODE_UNSPECIFIED&#34;,
-     * &#34;TRANSIT_ENCRYPTION_MODE_DISABLED&#34;, &#34;TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION&#34;]
+     * @return Optional. The in-transit encryption for the Redis cluster.
+     * If not provided, encryption is disabled for the cluster.
+     * Default value is `TRANSIT_ENCRYPTION_MODE_DISABLED`.
+     * Possible values are: `TRANSIT_ENCRYPTION_MODE_UNSPECIFIED`, `TRANSIT_ENCRYPTION_MODE_DISABLED`, `TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION`.
      * 
      */
     public Output<Optional<String>> transitEncryptionMode() {
@@ -984,17 +1027,19 @@ public class Cluster extends com.pulumi.resources.CustomResource {
     }
     /**
      * Immutable. Zone distribution config for Memorystore Redis cluster.
+     * Structure is documented below.
      * 
      */
     @Export(name="zoneDistributionConfig", refs={ClusterZoneDistributionConfig.class}, tree="[0]")
-    private Output</* @Nullable */ ClusterZoneDistributionConfig> zoneDistributionConfig;
+    private Output<ClusterZoneDistributionConfig> zoneDistributionConfig;
 
     /**
      * @return Immutable. Zone distribution config for Memorystore Redis cluster.
+     * Structure is documented below.
      * 
      */
-    public Output<Optional<ClusterZoneDistributionConfig>> zoneDistributionConfig() {
-        return Codegen.optional(this.zoneDistributionConfig);
+    public Output<ClusterZoneDistributionConfig> zoneDistributionConfig() {
+        return this.zoneDistributionConfig;
     }
 
     /**

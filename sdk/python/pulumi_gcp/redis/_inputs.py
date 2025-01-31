@@ -49,10 +49,18 @@ __all__ = [
     'ClusterPscConfigArgsDict',
     'ClusterPscConnectionArgs',
     'ClusterPscConnectionArgsDict',
+    'ClusterPscServiceAttachmentArgs',
+    'ClusterPscServiceAttachmentArgsDict',
     'ClusterStateInfoArgs',
     'ClusterStateInfoArgsDict',
     'ClusterStateInfoUpdateInfoArgs',
     'ClusterStateInfoUpdateInfoArgsDict',
+    'ClusterUserCreatedConnectionsClusterEndpointArgs',
+    'ClusterUserCreatedConnectionsClusterEndpointArgsDict',
+    'ClusterUserCreatedConnectionsClusterEndpointConnectionArgs',
+    'ClusterUserCreatedConnectionsClusterEndpointConnectionArgsDict',
+    'ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionArgs',
+    'ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionArgsDict',
     'ClusterZoneDistributionConfigArgs',
     'ClusterZoneDistributionConfigArgsDict',
     'InstanceMaintenancePolicyArgs',
@@ -1228,8 +1236,6 @@ if not MYPY:
         Required. The consumer network where the network address of
         the discovery endpoint will be reserved, in the form of
         projects/{network_project_id_or_number}/global/networks/{network_id}.
-
-        - - -
         """
 elif False:
     ClusterPscConfigArgsDict: TypeAlias = Mapping[str, Any]
@@ -1242,8 +1248,6 @@ class ClusterPscConfigArgs:
         :param pulumi.Input[str] network: Required. The consumer network where the network address of
                the discovery endpoint will be reserved, in the form of
                projects/{network_project_id_or_number}/global/networks/{network_id}.
-               
-               - - -
         """
         pulumi.set(__self__, "network", network)
 
@@ -1254,8 +1258,6 @@ class ClusterPscConfigArgs:
         Required. The consumer network where the network address of
         the discovery endpoint will be reserved, in the form of
         projects/{network_project_id_or_number}/global/networks/{network_id}.
-
-        - - -
         """
         return pulumi.get(self, "network")
 
@@ -1377,6 +1379,64 @@ class ClusterPscConnectionArgs:
 
 
 if not MYPY:
+    class ClusterPscServiceAttachmentArgsDict(TypedDict):
+        connection_type: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Type of a PSC connection targeting this service attachment.
+        """
+        service_attachment: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Service attachment URI which your self-created PscConnection should use as
+        """
+elif False:
+    ClusterPscServiceAttachmentArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterPscServiceAttachmentArgs:
+    def __init__(__self__, *,
+                 connection_type: Optional[pulumi.Input[str]] = None,
+                 service_attachment: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] connection_type: (Output)
+               Type of a PSC connection targeting this service attachment.
+        :param pulumi.Input[str] service_attachment: (Output)
+               Service attachment URI which your self-created PscConnection should use as
+        """
+        if connection_type is not None:
+            pulumi.set(__self__, "connection_type", connection_type)
+        if service_attachment is not None:
+            pulumi.set(__self__, "service_attachment", service_attachment)
+
+    @property
+    @pulumi.getter(name="connectionType")
+    def connection_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Type of a PSC connection targeting this service attachment.
+        """
+        return pulumi.get(self, "connection_type")
+
+    @connection_type.setter
+    def connection_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "connection_type", value)
+
+    @property
+    @pulumi.getter(name="serviceAttachment")
+    def service_attachment(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Service attachment URI which your self-created PscConnection should use as
+        """
+        return pulumi.get(self, "service_attachment")
+
+    @service_attachment.setter
+    def service_attachment(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_attachment", value)
+
+
+if not MYPY:
     class ClusterStateInfoArgsDict(TypedDict):
         update_info: NotRequired[pulumi.Input['ClusterStateInfoUpdateInfoArgsDict']]
         """
@@ -1461,6 +1521,282 @@ class ClusterStateInfoUpdateInfoArgs:
     @target_shard_count.setter
     def target_shard_count(self, value: Optional[pulumi.Input[int]]):
         pulumi.set(self, "target_shard_count", value)
+
+
+if not MYPY:
+    class ClusterUserCreatedConnectionsClusterEndpointArgsDict(TypedDict):
+        connections: NotRequired[pulumi.Input[Sequence[pulumi.Input['ClusterUserCreatedConnectionsClusterEndpointConnectionArgsDict']]]]
+        """
+        Structure is documented below.
+        """
+elif False:
+    ClusterUserCreatedConnectionsClusterEndpointArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterUserCreatedConnectionsClusterEndpointArgs:
+    def __init__(__self__, *,
+                 connections: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterUserCreatedConnectionsClusterEndpointConnectionArgs']]]] = None):
+        """
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterUserCreatedConnectionsClusterEndpointConnectionArgs']]] connections: Structure is documented below.
+        """
+        if connections is not None:
+            pulumi.set(__self__, "connections", connections)
+
+    @property
+    @pulumi.getter
+    def connections(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterUserCreatedConnectionsClusterEndpointConnectionArgs']]]]:
+        """
+        Structure is documented below.
+        """
+        return pulumi.get(self, "connections")
+
+    @connections.setter
+    def connections(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterUserCreatedConnectionsClusterEndpointConnectionArgs']]]]):
+        pulumi.set(self, "connections", value)
+
+
+if not MYPY:
+    class ClusterUserCreatedConnectionsClusterEndpointConnectionArgsDict(TypedDict):
+        psc_connection: NotRequired[pulumi.Input['ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionArgsDict']]
+        """
+        Detailed information of a PSC connection that is created by the customer
+        who owns the cluster.
+        Structure is documented below.
+        """
+elif False:
+    ClusterUserCreatedConnectionsClusterEndpointConnectionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterUserCreatedConnectionsClusterEndpointConnectionArgs:
+    def __init__(__self__, *,
+                 psc_connection: Optional[pulumi.Input['ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionArgs']] = None):
+        """
+        :param pulumi.Input['ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionArgs'] psc_connection: Detailed information of a PSC connection that is created by the customer
+               who owns the cluster.
+               Structure is documented below.
+        """
+        if psc_connection is not None:
+            pulumi.set(__self__, "psc_connection", psc_connection)
+
+    @property
+    @pulumi.getter(name="pscConnection")
+    def psc_connection(self) -> Optional[pulumi.Input['ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionArgs']]:
+        """
+        Detailed information of a PSC connection that is created by the customer
+        who owns the cluster.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "psc_connection")
+
+    @psc_connection.setter
+    def psc_connection(self, value: Optional[pulumi.Input['ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionArgs']]):
+        pulumi.set(self, "psc_connection", value)
+
+
+if not MYPY:
+    class ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionArgsDict(TypedDict):
+        address: pulumi.Input[str]
+        """
+        The IP allocated on the consumer network for the PSC forwarding rule.
+        """
+        forwarding_rule: pulumi.Input[str]
+        """
+        The URI of the consumer side forwarding rule.
+        Format:
+        projects/{project}/regions/{region}/forwardingRules/{forwarding_rule}
+        """
+        network: pulumi.Input[str]
+        """
+        The consumer network where the IP address resides, in the form of
+        projects/{project_id}/global/networks/{network_id}.
+        """
+        psc_connection_id: pulumi.Input[str]
+        """
+        The PSC connection id of the forwarding rule connected to the
+        service attachment.
+        """
+        service_attachment: pulumi.Input[str]
+        """
+        The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
+        """
+        connection_type: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Output Only. Type of a PSC Connection.
+        Possible values:
+        CONNECTION_TYPE_DISCOVERY
+        CONNECTION_TYPE_PRIMARY
+        CONNECTION_TYPE_READER
+        """
+        project_id: NotRequired[pulumi.Input[str]]
+        """
+        The consumer project_id where the forwarding rule is created from.
+        """
+        psc_connection_status: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        Output Only. The status of the PSC connection: whether a connection exists and ACTIVE or it no longer exists.
+        Possible values:
+        ACTIVE
+        NOT_FOUND
+        """
+elif False:
+    ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionArgs:
+    def __init__(__self__, *,
+                 address: pulumi.Input[str],
+                 forwarding_rule: pulumi.Input[str],
+                 network: pulumi.Input[str],
+                 psc_connection_id: pulumi.Input[str],
+                 service_attachment: pulumi.Input[str],
+                 connection_type: Optional[pulumi.Input[str]] = None,
+                 project_id: Optional[pulumi.Input[str]] = None,
+                 psc_connection_status: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] address: The IP allocated on the consumer network for the PSC forwarding rule.
+        :param pulumi.Input[str] forwarding_rule: The URI of the consumer side forwarding rule.
+               Format:
+               projects/{project}/regions/{region}/forwardingRules/{forwarding_rule}
+        :param pulumi.Input[str] network: The consumer network where the IP address resides, in the form of
+               projects/{project_id}/global/networks/{network_id}.
+        :param pulumi.Input[str] psc_connection_id: The PSC connection id of the forwarding rule connected to the
+               service attachment.
+        :param pulumi.Input[str] service_attachment: The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
+        :param pulumi.Input[str] connection_type: (Output)
+               Output Only. Type of a PSC Connection.
+               Possible values:
+               CONNECTION_TYPE_DISCOVERY
+               CONNECTION_TYPE_PRIMARY
+               CONNECTION_TYPE_READER
+        :param pulumi.Input[str] project_id: The consumer project_id where the forwarding rule is created from.
+        :param pulumi.Input[str] psc_connection_status: (Output)
+               Output Only. The status of the PSC connection: whether a connection exists and ACTIVE or it no longer exists.
+               Possible values:
+               ACTIVE
+               NOT_FOUND
+        """
+        pulumi.set(__self__, "address", address)
+        pulumi.set(__self__, "forwarding_rule", forwarding_rule)
+        pulumi.set(__self__, "network", network)
+        pulumi.set(__self__, "psc_connection_id", psc_connection_id)
+        pulumi.set(__self__, "service_attachment", service_attachment)
+        if connection_type is not None:
+            pulumi.set(__self__, "connection_type", connection_type)
+        if project_id is not None:
+            pulumi.set(__self__, "project_id", project_id)
+        if psc_connection_status is not None:
+            pulumi.set(__self__, "psc_connection_status", psc_connection_status)
+
+    @property
+    @pulumi.getter
+    def address(self) -> pulumi.Input[str]:
+        """
+        The IP allocated on the consumer network for the PSC forwarding rule.
+        """
+        return pulumi.get(self, "address")
+
+    @address.setter
+    def address(self, value: pulumi.Input[str]):
+        pulumi.set(self, "address", value)
+
+    @property
+    @pulumi.getter(name="forwardingRule")
+    def forwarding_rule(self) -> pulumi.Input[str]:
+        """
+        The URI of the consumer side forwarding rule.
+        Format:
+        projects/{project}/regions/{region}/forwardingRules/{forwarding_rule}
+        """
+        return pulumi.get(self, "forwarding_rule")
+
+    @forwarding_rule.setter
+    def forwarding_rule(self, value: pulumi.Input[str]):
+        pulumi.set(self, "forwarding_rule", value)
+
+    @property
+    @pulumi.getter
+    def network(self) -> pulumi.Input[str]:
+        """
+        The consumer network where the IP address resides, in the form of
+        projects/{project_id}/global/networks/{network_id}.
+        """
+        return pulumi.get(self, "network")
+
+    @network.setter
+    def network(self, value: pulumi.Input[str]):
+        pulumi.set(self, "network", value)
+
+    @property
+    @pulumi.getter(name="pscConnectionId")
+    def psc_connection_id(self) -> pulumi.Input[str]:
+        """
+        The PSC connection id of the forwarding rule connected to the
+        service attachment.
+        """
+        return pulumi.get(self, "psc_connection_id")
+
+    @psc_connection_id.setter
+    def psc_connection_id(self, value: pulumi.Input[str]):
+        pulumi.set(self, "psc_connection_id", value)
+
+    @property
+    @pulumi.getter(name="serviceAttachment")
+    def service_attachment(self) -> pulumi.Input[str]:
+        """
+        The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
+        """
+        return pulumi.get(self, "service_attachment")
+
+    @service_attachment.setter
+    def service_attachment(self, value: pulumi.Input[str]):
+        pulumi.set(self, "service_attachment", value)
+
+    @property
+    @pulumi.getter(name="connectionType")
+    def connection_type(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Output Only. Type of a PSC Connection.
+        Possible values:
+        CONNECTION_TYPE_DISCOVERY
+        CONNECTION_TYPE_PRIMARY
+        CONNECTION_TYPE_READER
+        """
+        return pulumi.get(self, "connection_type")
+
+    @connection_type.setter
+    def connection_type(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "connection_type", value)
+
+    @property
+    @pulumi.getter(name="projectId")
+    def project_id(self) -> Optional[pulumi.Input[str]]:
+        """
+        The consumer project_id where the forwarding rule is created from.
+        """
+        return pulumi.get(self, "project_id")
+
+    @project_id.setter
+    def project_id(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "project_id", value)
+
+    @property
+    @pulumi.getter(name="pscConnectionStatus")
+    def psc_connection_status(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        Output Only. The status of the PSC connection: whether a connection exists and ACTIVE or it no longer exists.
+        Possible values:
+        ACTIVE
+        NOT_FOUND
+        """
+        return pulumi.get(self, "psc_connection_status")
+
+    @psc_connection_status.setter
+    def psc_connection_status(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "psc_connection_status", value)
 
 
 if not MYPY:

@@ -68,6 +68,7 @@ type LookupServiceArgs struct {
 type LookupServiceResult struct {
 	Annotations          map[string]string               `pulumi:"annotations"`
 	BinaryAuthorizations []GetServiceBinaryAuthorization `pulumi:"binaryAuthorizations"`
+	BuildConfigs         []GetServiceBuildConfig         `pulumi:"buildConfigs"`
 	Client               string                          `pulumi:"client"`
 	ClientVersion        string                          `pulumi:"clientVersion"`
 	Conditions           []GetServiceCondition           `pulumi:"conditions"`
@@ -156,6 +157,10 @@ func (o LookupServiceResultOutput) Annotations() pulumi.StringMapOutput {
 
 func (o LookupServiceResultOutput) BinaryAuthorizations() GetServiceBinaryAuthorizationArrayOutput {
 	return o.ApplyT(func(v LookupServiceResult) []GetServiceBinaryAuthorization { return v.BinaryAuthorizations }).(GetServiceBinaryAuthorizationArrayOutput)
+}
+
+func (o LookupServiceResultOutput) BuildConfigs() GetServiceBuildConfigArrayOutput {
+	return o.ApplyT(func(v LookupServiceResult) []GetServiceBuildConfig { return v.BuildConfigs }).(GetServiceBuildConfigArrayOutput)
 }
 
 func (o LookupServiceResultOutput) Client() pulumi.StringOutput {

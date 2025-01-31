@@ -91,6 +91,25 @@ public final class PublicAdvertisedPrefixArgs extends com.pulumi.resources.Resou
     }
 
     /**
+     * Specifies how child public delegated prefix will be scoped. pdpScope
+     * must be one of: GLOBAL, REGIONAL
+     * Possible values are: `GLOBAL`, `REGIONAL`.
+     * 
+     */
+    @Import(name="pdpScope")
+    private @Nullable Output<String> pdpScope;
+
+    /**
+     * @return Specifies how child public delegated prefix will be scoped. pdpScope
+     * must be one of: GLOBAL, REGIONAL
+     * Possible values are: `GLOBAL`, `REGIONAL`.
+     * 
+     */
+    public Optional<Output<String>> pdpScope() {
+        return Optional.ofNullable(this.pdpScope);
+    }
+
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      * 
@@ -114,6 +133,7 @@ public final class PublicAdvertisedPrefixArgs extends com.pulumi.resources.Resou
         this.dnsVerificationIp = $.dnsVerificationIp;
         this.ipCidrRange = $.ipCidrRange;
         this.name = $.name;
+        this.pdpScope = $.pdpScope;
         this.project = $.project;
     }
 
@@ -231,6 +251,31 @@ public final class PublicAdvertisedPrefixArgs extends com.pulumi.resources.Resou
          */
         public Builder name(String name) {
             return name(Output.of(name));
+        }
+
+        /**
+         * @param pdpScope Specifies how child public delegated prefix will be scoped. pdpScope
+         * must be one of: GLOBAL, REGIONAL
+         * Possible values are: `GLOBAL`, `REGIONAL`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pdpScope(@Nullable Output<String> pdpScope) {
+            $.pdpScope = pdpScope;
+            return this;
+        }
+
+        /**
+         * @param pdpScope Specifies how child public delegated prefix will be scoped. pdpScope
+         * must be one of: GLOBAL, REGIONAL
+         * Possible values are: `GLOBAL`, `REGIONAL`.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder pdpScope(String pdpScope) {
+            return pdpScope(Output.of(pdpScope));
         }
 
         /**

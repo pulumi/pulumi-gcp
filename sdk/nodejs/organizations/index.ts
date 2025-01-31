@@ -60,6 +60,11 @@ export const getProject: typeof import("./getProject").getProject = null as any;
 export const getProjectOutput: typeof import("./getProject").getProjectOutput = null as any;
 utilities.lazyLoad(exports, ["getProject","getProjectOutput"], () => require("./getProject"));
 
+export { GetSArgs, GetSResult, GetSOutputArgs } from "./getS";
+export const getS: typeof import("./getS").getS = null as any;
+export const getSOutput: typeof import("./getS").getSOutput = null as any;
+utilities.lazyLoad(exports, ["getS","getSOutput"], () => require("./getS"));
+
 export { IamAuditConfigArgs, IamAuditConfigState } from "./iamAuditConfig";
 export type IamAuditConfig = import("./iamAuditConfig").IamAuditConfig;
 export const IamAuditConfig: typeof import("./iamAuditConfig").IamAuditConfig = null as any;

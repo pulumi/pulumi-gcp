@@ -158,6 +158,7 @@ namespace Pulumi.Gcp.CloudRunV2
     {
         public readonly ImmutableDictionary<string, string> Annotations;
         public readonly ImmutableArray<Outputs.GetServiceBinaryAuthorizationResult> BinaryAuthorizations;
+        public readonly ImmutableArray<Outputs.GetServiceBuildConfigResult> BuildConfigs;
         public readonly string Client;
         public readonly string ClientVersion;
         public readonly ImmutableArray<Outputs.GetServiceConditionResult> Conditions;
@@ -205,6 +206,8 @@ namespace Pulumi.Gcp.CloudRunV2
             ImmutableDictionary<string, string> annotations,
 
             ImmutableArray<Outputs.GetServiceBinaryAuthorizationResult> binaryAuthorizations,
+
+            ImmutableArray<Outputs.GetServiceBuildConfigResult> buildConfigs,
 
             string client,
 
@@ -284,6 +287,7 @@ namespace Pulumi.Gcp.CloudRunV2
         {
             Annotations = annotations;
             BinaryAuthorizations = binaryAuthorizations;
+            BuildConfigs = buildConfigs;
             Client = client;
             ClientVersion = clientVersion;
             Conditions = conditions;

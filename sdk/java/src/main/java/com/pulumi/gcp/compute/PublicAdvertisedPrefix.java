@@ -62,6 +62,44 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Public Advertised Prefixes Pdp Scope
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.PublicAdvertisedPrefix;
+ * import com.pulumi.gcp.compute.PublicAdvertisedPrefixArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var prefixes = new PublicAdvertisedPrefix("prefixes", PublicAdvertisedPrefixArgs.builder()
+ *             .name("my-pap")
+ *             .description("description")
+ *             .dnsVerificationIp("127.127.0.0")
+ *             .ipCidrRange("127.127.0.0/16")
+ *             .pdpScope("REGIONAL")
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -159,6 +197,24 @@ public class PublicAdvertisedPrefix extends com.pulumi.resources.CustomResource 
      */
     public Output<String> name() {
         return this.name;
+    }
+    /**
+     * Specifies how child public delegated prefix will be scoped. pdpScope
+     * must be one of: GLOBAL, REGIONAL
+     * Possible values are: `GLOBAL`, `REGIONAL`.
+     * 
+     */
+    @Export(name="pdpScope", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> pdpScope;
+
+    /**
+     * @return Specifies how child public delegated prefix will be scoped. pdpScope
+     * must be one of: GLOBAL, REGIONAL
+     * Possible values are: `GLOBAL`, `REGIONAL`.
+     * 
+     */
+    public Output<Optional<String>> pdpScope() {
+        return Codegen.optional(this.pdpScope);
     }
     /**
      * The ID of the project in which the resource belongs.

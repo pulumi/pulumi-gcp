@@ -25,6 +25,7 @@ type Provider struct {
 	AlloydbCustomEndpoint                  pulumi.StringPtrOutput `pulumi:"alloydbCustomEndpoint"`
 	ApiGatewayCustomEndpoint               pulumi.StringPtrOutput `pulumi:"apiGatewayCustomEndpoint"`
 	ApigeeCustomEndpoint                   pulumi.StringPtrOutput `pulumi:"apigeeCustomEndpoint"`
+	ApihubCustomEndpoint                   pulumi.StringPtrOutput `pulumi:"apihubCustomEndpoint"`
 	ApikeysCustomEndpoint                  pulumi.StringPtrOutput `pulumi:"apikeysCustomEndpoint"`
 	AppEngineCustomEndpoint                pulumi.StringPtrOutput `pulumi:"appEngineCustomEndpoint"`
 	ApphubCustomEndpoint                   pulumi.StringPtrOutput `pulumi:"apphubCustomEndpoint"`
@@ -244,6 +245,7 @@ type providerArgs struct {
 	AlloydbCustomEndpoint                  *string           `pulumi:"alloydbCustomEndpoint"`
 	ApiGatewayCustomEndpoint               *string           `pulumi:"apiGatewayCustomEndpoint"`
 	ApigeeCustomEndpoint                   *string           `pulumi:"apigeeCustomEndpoint"`
+	ApihubCustomEndpoint                   *string           `pulumi:"apihubCustomEndpoint"`
 	ApikeysCustomEndpoint                  *string           `pulumi:"apikeysCustomEndpoint"`
 	AppEngineCustomEndpoint                *string           `pulumi:"appEngineCustomEndpoint"`
 	ApphubCustomEndpoint                   *string           `pulumi:"apphubCustomEndpoint"`
@@ -432,6 +434,7 @@ type ProviderArgs struct {
 	AlloydbCustomEndpoint                  pulumi.StringPtrInput
 	ApiGatewayCustomEndpoint               pulumi.StringPtrInput
 	ApigeeCustomEndpoint                   pulumi.StringPtrInput
+	ApihubCustomEndpoint                   pulumi.StringPtrInput
 	ApikeysCustomEndpoint                  pulumi.StringPtrInput
 	AppEngineCustomEndpoint                pulumi.StringPtrInput
 	ApphubCustomEndpoint                   pulumi.StringPtrInput
@@ -673,6 +676,10 @@ func (o ProviderOutput) ApiGatewayCustomEndpoint() pulumi.StringPtrOutput {
 
 func (o ProviderOutput) ApigeeCustomEndpoint() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ApigeeCustomEndpoint }).(pulumi.StringPtrOutput)
+}
+
+func (o ProviderOutput) ApihubCustomEndpoint() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *Provider) pulumi.StringPtrOutput { return v.ApihubCustomEndpoint }).(pulumi.StringPtrOutput)
 }
 
 func (o ProviderOutput) ApikeysCustomEndpoint() pulumi.StringPtrOutput {

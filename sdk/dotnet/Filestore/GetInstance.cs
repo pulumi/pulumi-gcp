@@ -189,6 +189,7 @@ namespace Pulumi.Gcp.Filestore
         public readonly string? Project;
         public readonly string Protocol;
         public readonly ImmutableDictionary<string, string> PulumiLabels;
+        public readonly ImmutableDictionary<string, string> Tags;
         public readonly string Tier;
         public readonly string Zone;
 
@@ -228,6 +229,8 @@ namespace Pulumi.Gcp.Filestore
 
             ImmutableDictionary<string, string> pulumiLabels,
 
+            ImmutableDictionary<string, string> tags,
+
             string tier,
 
             string zone)
@@ -249,6 +252,7 @@ namespace Pulumi.Gcp.Filestore
             Project = project;
             Protocol = protocol;
             PulumiLabels = pulumiLabels;
+            Tags = tags;
             Tier = tier;
             Zone = zone;
         }

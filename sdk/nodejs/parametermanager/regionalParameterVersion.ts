@@ -28,7 +28,6 @@ import * as utilities from "../utilities";
  * ```typescript
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
- * import * as std from "@pulumi/std";
  *
  * const regional_parameter_basic = new gcp.parametermanager.RegionalParameter("regional-parameter-basic", {
  *     parameterId: "regional_parameter",
@@ -38,32 +37,12 @@ import * as utilities from "../utilities";
  * const regional_parameter_version_with_json_format = new gcp.parametermanager.RegionalParameterVersion("regional-parameter-version-with-json-format", {
  *     parameter: regional_parameter_basic.id,
  *     parameterVersionId: "regional_parameter_version",
- *     parameterData: std.file({
- *         input: "parameter_data_json_format.yaml",
- *     }).then(invoke => invoke.result),
+ *     parameterData: JSON.stringify({
+ *         key1: "val1",
+ *         key2: "val2",
+ *     }),
  * });
  * ```
- * ### Regional Parameter Version With Yaml Format
- *
- * ```typescript
- * import * as pulumi from "@pulumi/pulumi";
- * import * as gcp from "@pulumi/gcp";
- * import * as std from "@pulumi/std";
- *
- * const regional_parameter_basic = new gcp.parametermanager.RegionalParameter("regional-parameter-basic", {
- *     parameterId: "regional_parameter",
- *     format: "YAML",
- *     location: "us-central1",
- * });
- * const regional_parameter_version_with_yaml_format = new gcp.parametermanager.RegionalParameterVersion("regional-parameter-version-with-yaml-format", {
- *     parameter: regional_parameter_basic.id,
- *     parameterVersionId: "regional_parameter_version",
- *     parameterData: std.file({
- *         input: "parameter_data_yaml_format.yaml",
- *     }).then(invoke => invoke.result),
- * });
- * ```
- *
  * ## Import
  *
  * RegionalParameterVersion can be imported using any of these accepted formats:

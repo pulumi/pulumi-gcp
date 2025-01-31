@@ -34,14 +34,14 @@ public final class RepositoryGroupState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Output only. Create time stamp
+     * Output only. Create time stamp.
      * 
      */
     @Import(name="createTime")
     private @Nullable Output<String> createTime;
 
     /**
-     * @return Output only. Create time stamp
+     * @return Output only. Create time stamp.
      * 
      */
     public Optional<Output<String>> createTime() {
@@ -64,7 +64,7 @@ public final class RepositoryGroupState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Optional. Labels as key value pairs **Note**: This field is non-authoritative, and will only manage the labels present
+     * Optional. Labels as key value pairs. **Note**: This field is non-authoritative, and will only manage the labels present
      * in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
      * 
      */
@@ -72,7 +72,7 @@ public final class RepositoryGroupState extends com.pulumi.resources.ResourceArg
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return Optional. Labels as key value pairs **Note**: This field is non-authoritative, and will only manage the labels present
+     * @return Optional. Labels as key value pairs. **Note**: This field is non-authoritative, and will only manage the labels present
      * in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
      * 
      */
@@ -96,14 +96,14 @@ public final class RepositoryGroupState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Immutable. Identifier. name of resource
+     * Immutable. Identifier. Name of Repository Group.
      * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
 
     /**
-     * @return Immutable. Identifier. name of resource
+     * @return Immutable. Identifier. Name of Repository Group.
      * 
      */
     public Optional<Output<String>> name() {
@@ -135,7 +135,7 @@ public final class RepositoryGroupState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Required. List of repositories to group
+     * Required. List of repositories to group.
      * Structure is documented below.
      * 
      */
@@ -143,7 +143,7 @@ public final class RepositoryGroupState extends com.pulumi.resources.ResourceArg
     private @Nullable Output<List<RepositoryGroupRepositoryArgs>> repositories;
 
     /**
-     * @return Required. List of repositories to group
+     * @return Required. List of repositories to group.
      * Structure is documented below.
      * 
      */
@@ -167,14 +167,14 @@ public final class RepositoryGroupState extends com.pulumi.resources.ResourceArg
     }
 
     /**
-     * Output only. Update time stamp
+     * Output only. Update time stamp.
      * 
      */
     @Import(name="updateTime")
     private @Nullable Output<String> updateTime;
 
     /**
-     * @return Output only. Update time stamp
+     * @return Output only. Update time stamp.
      * 
      */
     public Optional<Output<String>> updateTime() {
@@ -237,7 +237,7 @@ public final class RepositoryGroupState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param createTime Output only. Create time stamp
+         * @param createTime Output only. Create time stamp.
          * 
          * @return builder
          * 
@@ -248,7 +248,7 @@ public final class RepositoryGroupState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param createTime Output only. Create time stamp
+         * @param createTime Output only. Create time stamp.
          * 
          * @return builder
          * 
@@ -279,7 +279,7 @@ public final class RepositoryGroupState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param labels Optional. Labels as key value pairs **Note**: This field is non-authoritative, and will only manage the labels present
+         * @param labels Optional. Labels as key value pairs. **Note**: This field is non-authoritative, and will only manage the labels present
          * in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
          * 
          * @return builder
@@ -291,7 +291,7 @@ public final class RepositoryGroupState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param labels Optional. Labels as key value pairs **Note**: This field is non-authoritative, and will only manage the labels present
+         * @param labels Optional. Labels as key value pairs. **Note**: This field is non-authoritative, and will only manage the labels present
          * in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
          * 
          * @return builder
@@ -323,7 +323,7 @@ public final class RepositoryGroupState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param name Immutable. Identifier. name of resource
+         * @param name Immutable. Identifier. Name of Repository Group.
          * 
          * @return builder
          * 
@@ -334,7 +334,7 @@ public final class RepositoryGroupState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param name Immutable. Identifier. name of resource
+         * @param name Immutable. Identifier. Name of Repository Group.
          * 
          * @return builder
          * 
@@ -376,7 +376,7 @@ public final class RepositoryGroupState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param repositories Required. List of repositories to group
+         * @param repositories Required. List of repositories to group.
          * Structure is documented below.
          * 
          * @return builder
@@ -388,7 +388,7 @@ public final class RepositoryGroupState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param repositories Required. List of repositories to group
+         * @param repositories Required. List of repositories to group.
          * Structure is documented below.
          * 
          * @return builder
@@ -399,7 +399,7 @@ public final class RepositoryGroupState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param repositories Required. List of repositories to group
+         * @param repositories Required. List of repositories to group.
          * Structure is documented below.
          * 
          * @return builder
@@ -431,7 +431,7 @@ public final class RepositoryGroupState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param updateTime Output only. Update time stamp
+         * @param updateTime Output only. Update time stamp.
          * 
          * @return builder
          * 
@@ -442,7 +442,7 @@ public final class RepositoryGroupState extends com.pulumi.resources.ResourceArg
         }
 
         /**
-         * @param updateTime Output only. Update time stamp
+         * @param updateTime Output only. Update time stamp.
          * 
          * @return builder
          * 

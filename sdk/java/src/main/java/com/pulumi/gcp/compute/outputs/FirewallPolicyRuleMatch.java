@@ -9,6 +9,7 @@ import com.pulumi.gcp.compute.outputs.FirewallPolicyRuleMatchLayer4Config;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
 import javax.annotation.Nullable;
 
 @CustomType
@@ -28,6 +29,12 @@ public final class FirewallPolicyRuleMatch {
      * 
      */
     private @Nullable List<String> destIpRanges;
+    /**
+     * @return Network scope of the traffic destination.
+     * Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+     * 
+     */
+    private @Nullable String destNetworkScope;
     /**
      * @return Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex.&#34;US&#34; Maximum number of dest region codes allowed is 5000.
      * 
@@ -59,6 +66,17 @@ public final class FirewallPolicyRuleMatch {
      * 
      */
     private @Nullable List<String> srcIpRanges;
+    /**
+     * @return Network scope of the traffic source.
+     * Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+     * 
+     */
+    private @Nullable String srcNetworkScope;
+    /**
+     * @return Networks of the traffic source. It can be either a full or partial url.
+     * 
+     */
+    private @Nullable List<String> srcNetworks;
     /**
      * @return Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex.&#34;US&#34; Maximum number of source region codes allowed is 5000.
      * 
@@ -93,6 +111,14 @@ public final class FirewallPolicyRuleMatch {
      */
     public List<String> destIpRanges() {
         return this.destIpRanges == null ? List.of() : this.destIpRanges;
+    }
+    /**
+     * @return Network scope of the traffic destination.
+     * Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+     * 
+     */
+    public Optional<String> destNetworkScope() {
+        return Optional.ofNullable(this.destNetworkScope);
     }
     /**
      * @return Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex.&#34;US&#34; Maximum number of dest region codes allowed is 5000.
@@ -138,6 +164,21 @@ public final class FirewallPolicyRuleMatch {
         return this.srcIpRanges == null ? List.of() : this.srcIpRanges;
     }
     /**
+     * @return Network scope of the traffic source.
+     * Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+     * 
+     */
+    public Optional<String> srcNetworkScope() {
+        return Optional.ofNullable(this.srcNetworkScope);
+    }
+    /**
+     * @return Networks of the traffic source. It can be either a full or partial url.
+     * 
+     */
+    public List<String> srcNetworks() {
+        return this.srcNetworks == null ? List.of() : this.srcNetworks;
+    }
+    /**
      * @return Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex.&#34;US&#34; Maximum number of source region codes allowed is 5000.
      * 
      */
@@ -166,12 +207,15 @@ public final class FirewallPolicyRuleMatch {
         private @Nullable List<String> destAddressGroups;
         private @Nullable List<String> destFqdns;
         private @Nullable List<String> destIpRanges;
+        private @Nullable String destNetworkScope;
         private @Nullable List<String> destRegionCodes;
         private @Nullable List<String> destThreatIntelligences;
         private List<FirewallPolicyRuleMatchLayer4Config> layer4Configs;
         private @Nullable List<String> srcAddressGroups;
         private @Nullable List<String> srcFqdns;
         private @Nullable List<String> srcIpRanges;
+        private @Nullable String srcNetworkScope;
+        private @Nullable List<String> srcNetworks;
         private @Nullable List<String> srcRegionCodes;
         private @Nullable List<String> srcThreatIntelligences;
         public Builder() {}
@@ -180,12 +224,15 @@ public final class FirewallPolicyRuleMatch {
     	      this.destAddressGroups = defaults.destAddressGroups;
     	      this.destFqdns = defaults.destFqdns;
     	      this.destIpRanges = defaults.destIpRanges;
+    	      this.destNetworkScope = defaults.destNetworkScope;
     	      this.destRegionCodes = defaults.destRegionCodes;
     	      this.destThreatIntelligences = defaults.destThreatIntelligences;
     	      this.layer4Configs = defaults.layer4Configs;
     	      this.srcAddressGroups = defaults.srcAddressGroups;
     	      this.srcFqdns = defaults.srcFqdns;
     	      this.srcIpRanges = defaults.srcIpRanges;
+    	      this.srcNetworkScope = defaults.srcNetworkScope;
+    	      this.srcNetworks = defaults.srcNetworks;
     	      this.srcRegionCodes = defaults.srcRegionCodes;
     	      this.srcThreatIntelligences = defaults.srcThreatIntelligences;
         }
@@ -216,6 +263,12 @@ public final class FirewallPolicyRuleMatch {
         }
         public Builder destIpRanges(String... destIpRanges) {
             return destIpRanges(List.of(destIpRanges));
+        }
+        @CustomType.Setter
+        public Builder destNetworkScope(@Nullable String destNetworkScope) {
+
+            this.destNetworkScope = destNetworkScope;
+            return this;
         }
         @CustomType.Setter
         public Builder destRegionCodes(@Nullable List<String> destRegionCodes) {
@@ -274,6 +327,21 @@ public final class FirewallPolicyRuleMatch {
             return srcIpRanges(List.of(srcIpRanges));
         }
         @CustomType.Setter
+        public Builder srcNetworkScope(@Nullable String srcNetworkScope) {
+
+            this.srcNetworkScope = srcNetworkScope;
+            return this;
+        }
+        @CustomType.Setter
+        public Builder srcNetworks(@Nullable List<String> srcNetworks) {
+
+            this.srcNetworks = srcNetworks;
+            return this;
+        }
+        public Builder srcNetworks(String... srcNetworks) {
+            return srcNetworks(List.of(srcNetworks));
+        }
+        @CustomType.Setter
         public Builder srcRegionCodes(@Nullable List<String> srcRegionCodes) {
 
             this.srcRegionCodes = srcRegionCodes;
@@ -296,12 +364,15 @@ public final class FirewallPolicyRuleMatch {
             _resultValue.destAddressGroups = destAddressGroups;
             _resultValue.destFqdns = destFqdns;
             _resultValue.destIpRanges = destIpRanges;
+            _resultValue.destNetworkScope = destNetworkScope;
             _resultValue.destRegionCodes = destRegionCodes;
             _resultValue.destThreatIntelligences = destThreatIntelligences;
             _resultValue.layer4Configs = layer4Configs;
             _resultValue.srcAddressGroups = srcAddressGroups;
             _resultValue.srcFqdns = srcFqdns;
             _resultValue.srcIpRanges = srcIpRanges;
+            _resultValue.srcNetworkScope = srcNetworkScope;
+            _resultValue.srcNetworks = srcNetworks;
             _resultValue.srcRegionCodes = srcRegionCodes;
             _resultValue.srcThreatIntelligences = srcThreatIntelligences;
             return _resultValue;

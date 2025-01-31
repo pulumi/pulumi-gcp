@@ -29,6 +29,7 @@ class EnvironmentArgs:
                  forward_proxy_uri: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  node_config: Optional[pulumi.Input['EnvironmentNodeConfigArgs']] = None,
+                 properties: Optional[pulumi.Input['EnvironmentPropertiesArgs']] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a Environment resource.
@@ -54,6 +55,8 @@ class EnvironmentArgs:
         :param pulumi.Input[str] name: The resource ID of the environment.
         :param pulumi.Input['EnvironmentNodeConfigArgs'] node_config: NodeConfig for setting the min/max number of nodes associated with the environment.
                Structure is documented below.
+        :param pulumi.Input['EnvironmentPropertiesArgs'] properties: Key-value pairs that may be used for customizing the environment.
+               Structure is documented below.
         :param pulumi.Input[str] type: Types that can be selected for an Environment. Each of the types are
                limited by capability and capacity. Refer to Apigee's public documentation
                to understand about each of these types in details.
@@ -75,6 +78,8 @@ class EnvironmentArgs:
             pulumi.set(__self__, "name", name)
         if node_config is not None:
             pulumi.set(__self__, "node_config", node_config)
+        if properties is not None:
+            pulumi.set(__self__, "properties", properties)
         if type is not None:
             pulumi.set(__self__, "type", type)
 
@@ -190,6 +195,19 @@ class EnvironmentArgs:
 
     @property
     @pulumi.getter
+    def properties(self) -> Optional[pulumi.Input['EnvironmentPropertiesArgs']]:
+        """
+        Key-value pairs that may be used for customizing the environment.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "properties")
+
+    @properties.setter
+    def properties(self, value: Optional[pulumi.Input['EnvironmentPropertiesArgs']]):
+        pulumi.set(self, "properties", value)
+
+    @property
+    @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         Types that can be selected for an Environment. Each of the types are
@@ -216,6 +234,7 @@ class _EnvironmentState:
                  name: Optional[pulumi.Input[str]] = None,
                  node_config: Optional[pulumi.Input['EnvironmentNodeConfigArgs']] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
+                 properties: Optional[pulumi.Input['EnvironmentPropertiesArgs']] = None,
                  type: Optional[pulumi.Input[str]] = None):
         """
         Input properties used for looking up and filtering Environment resources.
@@ -241,6 +260,8 @@ class _EnvironmentState:
                
                
                - - -
+        :param pulumi.Input['EnvironmentPropertiesArgs'] properties: Key-value pairs that may be used for customizing the environment.
+               Structure is documented below.
         :param pulumi.Input[str] type: Types that can be selected for an Environment. Each of the types are
                limited by capability and capacity. Refer to Apigee's public documentation
                to understand about each of these types in details.
@@ -263,6 +284,8 @@ class _EnvironmentState:
             pulumi.set(__self__, "node_config", node_config)
         if org_id is not None:
             pulumi.set(__self__, "org_id", org_id)
+        if properties is not None:
+            pulumi.set(__self__, "properties", properties)
         if type is not None:
             pulumi.set(__self__, "type", type)
 
@@ -378,6 +401,19 @@ class _EnvironmentState:
 
     @property
     @pulumi.getter
+    def properties(self) -> Optional[pulumi.Input['EnvironmentPropertiesArgs']]:
+        """
+        Key-value pairs that may be used for customizing the environment.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "properties")
+
+    @properties.setter
+    def properties(self, value: Optional[pulumi.Input['EnvironmentPropertiesArgs']]):
+        pulumi.set(self, "properties", value)
+
+    @property
+    @pulumi.getter
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         Types that can be selected for an Environment. Each of the types are
@@ -406,6 +442,7 @@ class Environment(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  node_config: Optional[pulumi.Input[Union['EnvironmentNodeConfigArgs', 'EnvironmentNodeConfigArgsDict']]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
+                 properties: Optional[pulumi.Input[Union['EnvironmentPropertiesArgs', 'EnvironmentPropertiesArgsDict']]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -491,6 +528,8 @@ class Environment(pulumi.CustomResource):
                
                
                - - -
+        :param pulumi.Input[Union['EnvironmentPropertiesArgs', 'EnvironmentPropertiesArgsDict']] properties: Key-value pairs that may be used for customizing the environment.
+               Structure is documented below.
         :param pulumi.Input[str] type: Types that can be selected for an Environment. Each of the types are
                limited by capability and capacity. Refer to Apigee's public documentation
                to understand about each of these types in details.
@@ -585,6 +624,7 @@ class Environment(pulumi.CustomResource):
                  name: Optional[pulumi.Input[str]] = None,
                  node_config: Optional[pulumi.Input[Union['EnvironmentNodeConfigArgs', 'EnvironmentNodeConfigArgsDict']]] = None,
                  org_id: Optional[pulumi.Input[str]] = None,
+                 properties: Optional[pulumi.Input[Union['EnvironmentPropertiesArgs', 'EnvironmentPropertiesArgsDict']]] = None,
                  type: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -605,6 +645,7 @@ class Environment(pulumi.CustomResource):
             if org_id is None and not opts.urn:
                 raise TypeError("Missing required property 'org_id'")
             __props__.__dict__["org_id"] = org_id
+            __props__.__dict__["properties"] = properties
             __props__.__dict__["type"] = type
         super(Environment, __self__).__init__(
             'gcp:apigee/environment:Environment',
@@ -624,6 +665,7 @@ class Environment(pulumi.CustomResource):
             name: Optional[pulumi.Input[str]] = None,
             node_config: Optional[pulumi.Input[Union['EnvironmentNodeConfigArgs', 'EnvironmentNodeConfigArgsDict']]] = None,
             org_id: Optional[pulumi.Input[str]] = None,
+            properties: Optional[pulumi.Input[Union['EnvironmentPropertiesArgs', 'EnvironmentPropertiesArgsDict']]] = None,
             type: Optional[pulumi.Input[str]] = None) -> 'Environment':
         """
         Get an existing Environment resource's state with the given name, id, and optional extra
@@ -654,6 +696,8 @@ class Environment(pulumi.CustomResource):
                
                
                - - -
+        :param pulumi.Input[Union['EnvironmentPropertiesArgs', 'EnvironmentPropertiesArgsDict']] properties: Key-value pairs that may be used for customizing the environment.
+               Structure is documented below.
         :param pulumi.Input[str] type: Types that can be selected for an Environment. Each of the types are
                limited by capability and capacity. Refer to Apigee's public documentation
                to understand about each of these types in details.
@@ -672,6 +716,7 @@ class Environment(pulumi.CustomResource):
         __props__.__dict__["name"] = name
         __props__.__dict__["node_config"] = node_config
         __props__.__dict__["org_id"] = org_id
+        __props__.__dict__["properties"] = properties
         __props__.__dict__["type"] = type
         return Environment(resource_name, opts=opts, __props__=__props__)
 
@@ -752,6 +797,15 @@ class Environment(pulumi.CustomResource):
         - - -
         """
         return pulumi.get(self, "org_id")
+
+    @property
+    @pulumi.getter
+    def properties(self) -> pulumi.Output[Optional['outputs.EnvironmentProperties']]:
+        """
+        Key-value pairs that may be used for customizing the environment.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "properties")
 
     @property
     @pulumi.getter

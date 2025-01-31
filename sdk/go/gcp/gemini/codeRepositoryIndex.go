@@ -12,6 +12,14 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The resource for managing Code Repository Index for Gemini Code Assist.
+//
+// To get more information about CodeRepositoryIndex, see:
+//
+// * [API documentation](https://cloud.google.com/gemini/docs/api/reference/rest/v1/projects.locations.codeRepositoryIndexes)
+// * How-to Guides
+//   - [Gemini Code Assist overview](https://cloud.google.com/gemini/docs/codeassist/overview)
+//
 // ## Example Usage
 //
 // ### Gemini Code Repository Index Basic
@@ -30,7 +38,7 @@ import (
 //		pulumi.Run(func(ctx *pulumi.Context) error {
 //			_, err := gemini.NewCodeRepositoryIndex(ctx, "example", &gemini.CodeRepositoryIndexArgs{
 //				Location:              pulumi.String("us-central1"),
-//				CodeRepositoryIndexId: pulumi.String(""),
+//				CodeRepositoryIndexId: pulumi.String("code-repository-index-example"),
 //				KmsKey:                pulumi.String("projects/projectExample/locations/locationExample/keyRings/keyRingExample/cryptoKeys/cryptoKeyExample"),
 //			})
 //			if err != nil {
@@ -79,7 +87,7 @@ type CodeRepositoryIndex struct {
 	// If set to true, will allow deletion of the CodeRepositoryIndex even if there are existing RepositoryGroups for the resource. These RepositoryGroups will also be deleted.
 	ForceDestroy pulumi.BoolPtrOutput `pulumi:"forceDestroy"`
 	// Optional. Immutable. Customer-managed encryption key name, in the format
-	// projects/*/locations/*/keyRings/*/cryptoKeys/*.
+	// `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
 	KmsKey pulumi.StringPtrOutput `pulumi:"kmsKey"`
 	// Optional. Labels as key value pairs.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -96,12 +104,7 @@ type CodeRepositoryIndex struct {
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
 	// Output only. Code Repository Index instance State.
-	// Possible values:
-	// STATE_UNSPECIFIED
-	// CREATING
-	// ACTIVE
-	// DELETING
-	// SUSPENDED
+	// Possible values are: `STATE_UNSPECIFIED`, `CREATING`, `ACTIVE`, `DELETING`, `SUSPENDED`.
 	State pulumi.StringOutput `pulumi:"state"`
 	// Output only. Update time stamp.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
@@ -159,7 +162,7 @@ type codeRepositoryIndexState struct {
 	// If set to true, will allow deletion of the CodeRepositoryIndex even if there are existing RepositoryGroups for the resource. These RepositoryGroups will also be deleted.
 	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// Optional. Immutable. Customer-managed encryption key name, in the format
-	// projects/*/locations/*/keyRings/*/cryptoKeys/*.
+	// `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
 	KmsKey *string `pulumi:"kmsKey"`
 	// Optional. Labels as key value pairs.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -176,12 +179,7 @@ type codeRepositoryIndexState struct {
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
 	// Output only. Code Repository Index instance State.
-	// Possible values:
-	// STATE_UNSPECIFIED
-	// CREATING
-	// ACTIVE
-	// DELETING
-	// SUSPENDED
+	// Possible values are: `STATE_UNSPECIFIED`, `CREATING`, `ACTIVE`, `DELETING`, `SUSPENDED`.
 	State *string `pulumi:"state"`
 	// Output only. Update time stamp.
 	UpdateTime *string `pulumi:"updateTime"`
@@ -199,7 +197,7 @@ type CodeRepositoryIndexState struct {
 	// If set to true, will allow deletion of the CodeRepositoryIndex even if there are existing RepositoryGroups for the resource. These RepositoryGroups will also be deleted.
 	ForceDestroy pulumi.BoolPtrInput
 	// Optional. Immutable. Customer-managed encryption key name, in the format
-	// projects/*/locations/*/keyRings/*/cryptoKeys/*.
+	// `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
 	KmsKey pulumi.StringPtrInput
 	// Optional. Labels as key value pairs.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -216,12 +214,7 @@ type CodeRepositoryIndexState struct {
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
 	// Output only. Code Repository Index instance State.
-	// Possible values:
-	// STATE_UNSPECIFIED
-	// CREATING
-	// ACTIVE
-	// DELETING
-	// SUSPENDED
+	// Possible values are: `STATE_UNSPECIFIED`, `CREATING`, `ACTIVE`, `DELETING`, `SUSPENDED`.
 	State pulumi.StringPtrInput
 	// Output only. Update time stamp.
 	UpdateTime pulumi.StringPtrInput
@@ -239,7 +232,7 @@ type codeRepositoryIndexArgs struct {
 	// If set to true, will allow deletion of the CodeRepositoryIndex even if there are existing RepositoryGroups for the resource. These RepositoryGroups will also be deleted.
 	ForceDestroy *bool `pulumi:"forceDestroy"`
 	// Optional. Immutable. Customer-managed encryption key name, in the format
-	// projects/*/locations/*/keyRings/*/cryptoKeys/*.
+	// `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
 	KmsKey *string `pulumi:"kmsKey"`
 	// Optional. Labels as key value pairs.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -261,7 +254,7 @@ type CodeRepositoryIndexArgs struct {
 	// If set to true, will allow deletion of the CodeRepositoryIndex even if there are existing RepositoryGroups for the resource. These RepositoryGroups will also be deleted.
 	ForceDestroy pulumi.BoolPtrInput
 	// Optional. Immutable. Customer-managed encryption key name, in the format
-	// projects/*/locations/*/keyRings/*/cryptoKeys/*.
+	// `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
 	KmsKey pulumi.StringPtrInput
 	// Optional. Labels as key value pairs.
 	// **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
@@ -384,7 +377,7 @@ func (o CodeRepositoryIndexOutput) ForceDestroy() pulumi.BoolPtrOutput {
 }
 
 // Optional. Immutable. Customer-managed encryption key name, in the format
-// projects/*/locations/*/keyRings/*/cryptoKeys/*.
+// `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
 func (o CodeRepositoryIndexOutput) KmsKey() pulumi.StringPtrOutput {
 	return o.ApplyT(func(v *CodeRepositoryIndex) pulumi.StringPtrOutput { return v.KmsKey }).(pulumi.StringPtrOutput)
 }
@@ -419,12 +412,7 @@ func (o CodeRepositoryIndexOutput) PulumiLabels() pulumi.StringMapOutput {
 }
 
 // Output only. Code Repository Index instance State.
-// Possible values:
-// STATE_UNSPECIFIED
-// CREATING
-// ACTIVE
-// DELETING
-// SUSPENDED
+// Possible values are: `STATE_UNSPECIFIED`, `CREATING`, `ACTIVE`, `DELETING`, `SUSPENDED`.
 func (o CodeRepositoryIndexOutput) State() pulumi.StringOutput {
 	return o.ApplyT(func(v *CodeRepositoryIndex) pulumi.StringOutput { return v.State }).(pulumi.StringOutput)
 }

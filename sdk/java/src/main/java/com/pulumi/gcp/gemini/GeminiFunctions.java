@@ -15,18 +15,228 @@ import com.pulumi.gcp.gemini.outputs.GetRepositoryGroupIamPolicyResult;
 import java.util.concurrent.CompletableFuture;
 
 public final class GeminiFunctions {
+    /**
+     * Retrieves the current IAM policy data for repositorygroup
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.gemini.GeminiFunctions;
+     * import com.pulumi.gcp.gemini.inputs.GetRepositoryGroupIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = GeminiFunctions.getRepositoryGroupIamPolicy(GetRepositoryGroupIamPolicyArgs.builder()
+     *             .project(example.project())
+     *             .location(example.location())
+     *             .codeRepositoryIndex(example.codeRepositoryIndex())
+     *             .repositoryGroupId(example.repositoryGroupId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetRepositoryGroupIamPolicyResult> getRepositoryGroupIamPolicy(GetRepositoryGroupIamPolicyArgs args) {
         return getRepositoryGroupIamPolicy(args, InvokeOptions.Empty);
     }
+    /**
+     * Retrieves the current IAM policy data for repositorygroup
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.gemini.GeminiFunctions;
+     * import com.pulumi.gcp.gemini.inputs.GetRepositoryGroupIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = GeminiFunctions.getRepositoryGroupIamPolicy(GetRepositoryGroupIamPolicyArgs.builder()
+     *             .project(example.project())
+     *             .location(example.location())
+     *             .codeRepositoryIndex(example.codeRepositoryIndex())
+     *             .repositoryGroupId(example.repositoryGroupId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetRepositoryGroupIamPolicyResult> getRepositoryGroupIamPolicyPlain(GetRepositoryGroupIamPolicyPlainArgs args) {
         return getRepositoryGroupIamPolicyPlain(args, InvokeOptions.Empty);
     }
+    /**
+     * Retrieves the current IAM policy data for repositorygroup
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.gemini.GeminiFunctions;
+     * import com.pulumi.gcp.gemini.inputs.GetRepositoryGroupIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = GeminiFunctions.getRepositoryGroupIamPolicy(GetRepositoryGroupIamPolicyArgs.builder()
+     *             .project(example.project())
+     *             .location(example.location())
+     *             .codeRepositoryIndex(example.codeRepositoryIndex())
+     *             .repositoryGroupId(example.repositoryGroupId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetRepositoryGroupIamPolicyResult> getRepositoryGroupIamPolicy(GetRepositoryGroupIamPolicyArgs args, InvokeOptions options) {
         return Deployment.getInstance().invoke("gcp:gemini/getRepositoryGroupIamPolicy:getRepositoryGroupIamPolicy", TypeShape.of(GetRepositoryGroupIamPolicyResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Retrieves the current IAM policy data for repositorygroup
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.gemini.GeminiFunctions;
+     * import com.pulumi.gcp.gemini.inputs.GetRepositoryGroupIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = GeminiFunctions.getRepositoryGroupIamPolicy(GetRepositoryGroupIamPolicyArgs.builder()
+     *             .project(example.project())
+     *             .location(example.location())
+     *             .codeRepositoryIndex(example.codeRepositoryIndex())
+     *             .repositoryGroupId(example.repositoryGroupId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static Output<GetRepositoryGroupIamPolicyResult> getRepositoryGroupIamPolicy(GetRepositoryGroupIamPolicyArgs args, InvokeOutputOptions options) {
         return Deployment.getInstance().invoke("gcp:gemini/getRepositoryGroupIamPolicy:getRepositoryGroupIamPolicy", TypeShape.of(GetRepositoryGroupIamPolicyResult.class), args, Utilities.withVersion(options));
     }
+    /**
+     * Retrieves the current IAM policy data for repositorygroup
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.gemini.GeminiFunctions;
+     * import com.pulumi.gcp.gemini.inputs.GetRepositoryGroupIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = GeminiFunctions.getRepositoryGroupIamPolicy(GetRepositoryGroupIamPolicyArgs.builder()
+     *             .project(example.project())
+     *             .location(example.location())
+     *             .codeRepositoryIndex(example.codeRepositoryIndex())
+     *             .repositoryGroupId(example.repositoryGroupId())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
     public static CompletableFuture<GetRepositoryGroupIamPolicyResult> getRepositoryGroupIamPolicyPlain(GetRepositoryGroupIamPolicyPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:gemini/getRepositoryGroupIamPolicy:getRepositoryGroupIamPolicy", TypeShape.of(GetRepositoryGroupIamPolicyResult.class), args, Utilities.withVersion(options));
     }

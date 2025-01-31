@@ -22,7 +22,7 @@ import * as utilities from "../utilities";
  * import * as gcp from "@pulumi/gcp";
  *
  * const basicGlobalNetworksecurityAddressGroup = new gcp.networksecurity.AddressGroup("basic_global_networksecurity_address_group", {
- *     name: "address",
+ *     name: "address-group",
  *     parent: "organizations/123456789",
  *     description: "Sample global networksecurity_address_group",
  *     location: "global",
@@ -37,10 +37,10 @@ import * as utilities from "../utilities";
  * });
  * const _default = new gcp.compute.FirewallPolicy("default", {
  *     parent: folder.id,
- *     shortName: "policy",
+ *     shortName: "fw-policy",
  *     description: "Resource created for Terraform acceptance testing",
  * });
- * const policyRule = new gcp.compute.FirewallPolicyRule("policy_rule", {
+ * const primary = new gcp.compute.FirewallPolicyRule("primary", {
  *     firewallPolicy: _default.name,
  *     description: "Resource created for Terraform acceptance testing",
  *     priority: 9000,
@@ -48,7 +48,15 @@ import * as utilities from "../utilities";
  *     action: "allow",
  *     direction: "EGRESS",
  *     disabled: false,
+ *     targetServiceAccounts: ["my@service-account.com"],
  *     match: {
+ *         destIpRanges: ["11.100.0.1/32"],
+ *         destFqdns: [],
+ *         destRegionCodes: ["US"],
+ *         destThreatIntelligences: ["iplist-known-malicious-ips"],
+ *         srcAddressGroups: [],
+ *         destAddressGroups: [basicGlobalNetworksecurityAddressGroup.id],
+ *         destNetworkScope: "INTERNET",
  *         layer4Configs: [
  *             {
  *                 ipProtocol: "tcp",
@@ -59,14 +67,51 @@ import * as utilities from "../utilities";
  *                 ports: ["22"],
  *             },
  *         ],
- *         destIpRanges: ["11.100.0.1/32"],
- *         destFqdns: [],
- *         destRegionCodes: ["US"],
- *         destThreatIntelligences: ["iplist-known-malicious-ips"],
- *         srcAddressGroups: [],
- *         destAddressGroups: [basicGlobalNetworksecurityAddressGroup.id],
  *     },
- *     targetServiceAccounts: ["my@service-account.com"],
+ * });
+ * ```
+ * ### Firewall Policy Rule Network Scope
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const folder = new gcp.organizations.Folder("folder", {
+ *     displayName: "folder",
+ *     parent: "organizations/123456789",
+ *     deletionProtection: false,
+ * });
+ * const _default = new gcp.compute.FirewallPolicy("default", {
+ *     parent: folder.id,
+ *     shortName: "fw-policy",
+ *     description: "Firewall policy",
+ * });
+ * const network = new gcp.compute.Network("network", {
+ *     name: "network",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const primary = new gcp.compute.FirewallPolicyRule("primary", {
+ *     firewallPolicy: _default.name,
+ *     description: "Firewall policy rule with network scope",
+ *     priority: 9000,
+ *     action: "allow",
+ *     direction: "INGRESS",
+ *     disabled: false,
+ *     match: {
+ *         srcIpRanges: ["11.100.0.1/32"],
+ *         srcNetworkScope: "VPC_NETWORKS",
+ *         srcNetworks: [network.id],
+ *         layer4Configs: [
+ *             {
+ *                 ipProtocol: "tcp",
+ *                 ports: ["8080"],
+ *             },
+ *             {
+ *                 ipProtocol: "udp",
+ *                 ports: ["22"],
+ *             },
+ *         ],
+ *     },
  * });
  * ```
  *

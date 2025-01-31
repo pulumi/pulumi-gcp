@@ -145,6 +145,11 @@ export class Environment extends pulumi.CustomResource {
      */
     public readonly orgId!: pulumi.Output<string>;
     /**
+     * Key-value pairs that may be used for customizing the environment.
+     * Structure is documented below.
+     */
+    public readonly properties!: pulumi.Output<outputs.apigee.EnvironmentProperties | undefined>;
+    /**
      * Types that can be selected for an Environment. Each of the types are
      * limited by capability and capacity. Refer to Apigee's public documentation
      * to understand about each of these types in details.
@@ -174,6 +179,7 @@ export class Environment extends pulumi.CustomResource {
             resourceInputs["name"] = state ? state.name : undefined;
             resourceInputs["nodeConfig"] = state ? state.nodeConfig : undefined;
             resourceInputs["orgId"] = state ? state.orgId : undefined;
+            resourceInputs["properties"] = state ? state.properties : undefined;
             resourceInputs["type"] = state ? state.type : undefined;
         } else {
             const args = argsOrState as EnvironmentArgs | undefined;
@@ -188,6 +194,7 @@ export class Environment extends pulumi.CustomResource {
             resourceInputs["name"] = args ? args.name : undefined;
             resourceInputs["nodeConfig"] = args ? args.nodeConfig : undefined;
             resourceInputs["orgId"] = args ? args.orgId : undefined;
+            resourceInputs["properties"] = args ? args.properties : undefined;
             resourceInputs["type"] = args ? args.type : undefined;
         }
         opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts);
@@ -245,6 +252,11 @@ export interface EnvironmentState {
      * - - -
      */
     orgId?: pulumi.Input<string>;
+    /**
+     * Key-value pairs that may be used for customizing the environment.
+     * Structure is documented below.
+     */
+    properties?: pulumi.Input<inputs.apigee.EnvironmentProperties>;
     /**
      * Types that can be selected for an Environment. Each of the types are
      * limited by capability and capacity. Refer to Apigee's public documentation
@@ -305,6 +317,11 @@ export interface EnvironmentArgs {
      * - - -
      */
     orgId: pulumi.Input<string>;
+    /**
+     * Key-value pairs that may be used for customizing the environment.
+     * Structure is documented below.
+     */
+    properties?: pulumi.Input<inputs.apigee.EnvironmentProperties>;
     /**
      * Types that can be selected for an Environment. Each of the types are
      * limited by capability and capacity. Refer to Apigee's public documentation

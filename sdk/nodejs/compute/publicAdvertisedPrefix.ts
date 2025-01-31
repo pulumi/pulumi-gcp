@@ -28,6 +28,20 @@ import * as utilities from "../utilities";
  *     ipCidrRange: "127.127.0.0/16",
  * });
  * ```
+ * ### Public Advertised Prefixes Pdp Scope
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const prefixes = new gcp.compute.PublicAdvertisedPrefix("prefixes", {
+ *     name: "my-pap",
+ *     description: "description",
+ *     dnsVerificationIp: "127.127.0.0",
+ *     ipCidrRange: "127.127.0.0/16",
+ *     pdpScope: "REGIONAL",
+ * });
+ * ```
  *
  * ## Import
  *
@@ -106,6 +120,12 @@ export class PublicAdvertisedPrefix extends pulumi.CustomResource {
      */
     public readonly name!: pulumi.Output<string>;
     /**
+     * Specifies how child public delegated prefix will be scoped. pdpScope
+     * must be one of: GLOBAL, REGIONAL
+     * Possible values are: `GLOBAL`, `REGIONAL`.
+     */
+    public readonly pdpScope!: pulumi.Output<string | undefined>;
+    /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
      */
@@ -136,6 +156,7 @@ export class PublicAdvertisedPrefix extends pulumi.CustomResource {
             resourceInputs["dnsVerificationIp"] = state ? state.dnsVerificationIp : undefined;
             resourceInputs["ipCidrRange"] = state ? state.ipCidrRange : undefined;
             resourceInputs["name"] = state ? state.name : undefined;
+            resourceInputs["pdpScope"] = state ? state.pdpScope : undefined;
             resourceInputs["project"] = state ? state.project : undefined;
             resourceInputs["selfLink"] = state ? state.selfLink : undefined;
             resourceInputs["sharedSecret"] = state ? state.sharedSecret : undefined;
@@ -151,6 +172,7 @@ export class PublicAdvertisedPrefix extends pulumi.CustomResource {
             resourceInputs["dnsVerificationIp"] = args ? args.dnsVerificationIp : undefined;
             resourceInputs["ipCidrRange"] = args ? args.ipCidrRange : undefined;
             resourceInputs["name"] = args ? args.name : undefined;
+            resourceInputs["pdpScope"] = args ? args.pdpScope : undefined;
             resourceInputs["project"] = args ? args.project : undefined;
             resourceInputs["selfLink"] = undefined /*out*/;
             resourceInputs["sharedSecret"] = undefined /*out*/;
@@ -188,6 +210,12 @@ export interface PublicAdvertisedPrefixState {
      * except the last character, which cannot be a dash.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Specifies how child public delegated prefix will be scoped. pdpScope
+     * must be one of: GLOBAL, REGIONAL
+     * Possible values are: `GLOBAL`, `REGIONAL`.
+     */
+    pdpScope?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.
@@ -231,6 +259,12 @@ export interface PublicAdvertisedPrefixArgs {
      * except the last character, which cannot be a dash.
      */
     name?: pulumi.Input<string>;
+    /**
+     * Specifies how child public delegated prefix will be scoped. pdpScope
+     * must be one of: GLOBAL, REGIONAL
+     * Possible values are: `GLOBAL`, `REGIONAL`.
+     */
+    pdpScope?: pulumi.Input<string>;
     /**
      * The ID of the project in which the resource belongs.
      * If it is not provided, the provider project is used.

@@ -94,6 +94,7 @@ namespace Pulumi.Gcp.PubSub
     ///             {
     ///                 "europe-west3",
     ///             },
+    ///             EnforceInTransit = true,
     ///         },
     ///     });
     /// 
@@ -203,6 +204,36 @@ namespace Pulumi.Gcp.PubSub
     ///             PlatformLogsSettings = new Gcp.PubSub.Inputs.TopicIngestionDataSourceSettingsPlatformLogsSettingsArgs
     ///             {
     ///                 Severity = "WARNING",
+    ///             },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
+    /// ### Pubsub Topic Ingestion Azure Event Hubs
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Gcp.PubSub.Topic("example", new()
+    ///     {
+    ///         Name = "example-topic",
+    ///         IngestionDataSourceSettings = new Gcp.PubSub.Inputs.TopicIngestionDataSourceSettingsArgs
+    ///         {
+    ///             AzureEventHubs = new Gcp.PubSub.Inputs.TopicIngestionDataSourceSettingsAzureEventHubsArgs
+    ///             {
+    ///                 ResourceGroup = "azure-ingestion-resource-group",
+    ///                 Namespace = "azure-ingestion-namespace",
+    ///                 EventHub = "azure-ingestion-event-hub",
+    ///                 ClientId = "aZZZZZZZ-YYYY-HHHH-GGGG-abcdef569123",
+    ///                 TenantId = "0XXXXXXX-YYYY-HHHH-GGGG-123456789123",
+    ///                 SubscriptionId = "bXXXXXXX-YYYY-HHHH-GGGG-123456789123",
+    ///                 GcpServiceAccount = "fake-service-account@fake-gcp-project.iam.gserviceaccount.com",
     ///             },
     ///         },
     ///     });

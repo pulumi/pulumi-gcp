@@ -23,6 +23,8 @@ import com.pulumi.gcp.organizations.inputs.GetOrganizationArgs;
 import com.pulumi.gcp.organizations.inputs.GetOrganizationPlainArgs;
 import com.pulumi.gcp.organizations.inputs.GetProjectArgs;
 import com.pulumi.gcp.organizations.inputs.GetProjectPlainArgs;
+import com.pulumi.gcp.organizations.inputs.GetSArgs;
+import com.pulumi.gcp.organizations.inputs.GetSPlainArgs;
 import com.pulumi.gcp.organizations.outputs.GetActiveFolderResult;
 import com.pulumi.gcp.organizations.outputs.GetBillingAccountResult;
 import com.pulumi.gcp.organizations.outputs.GetClientConfigResult;
@@ -32,6 +34,7 @@ import com.pulumi.gcp.organizations.outputs.GetFoldersResult;
 import com.pulumi.gcp.organizations.outputs.GetIAMPolicyResult;
 import com.pulumi.gcp.organizations.outputs.GetOrganizationResult;
 import com.pulumi.gcp.organizations.outputs.GetProjectResult;
+import com.pulumi.gcp.organizations.outputs.GetSResult;
 import com.pulumi.resources.InvokeArgs;
 import java.util.concurrent.CompletableFuture;
 
@@ -2728,5 +2731,313 @@ public final class OrganizationsFunctions {
      */
     public static CompletableFuture<GetProjectResult> getProjectPlain(GetProjectPlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:organizations/getProject:getProject", TypeShape.of(GetProjectResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets a list of all organizations.
+     * See [the official documentation](https://cloud.google.com/resource-manager/docs/creating-managing-organization)
+     * and [API](https://cloud.google.com/resource-manager/reference/rest/v1/organizations/search).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetSArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = OrganizationsFunctions.getS(GetSArgs.builder()
+     *             .filter("domain:example.com")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSResult> getS() {
+        return getS(GetSArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Gets a list of all organizations.
+     * See [the official documentation](https://cloud.google.com/resource-manager/docs/creating-managing-organization)
+     * and [API](https://cloud.google.com/resource-manager/reference/rest/v1/organizations/search).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetSArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = OrganizationsFunctions.getS(GetSArgs.builder()
+     *             .filter("domain:example.com")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetSResult> getSPlain() {
+        return getSPlain(GetSPlainArgs.Empty, InvokeOptions.Empty);
+    }
+    /**
+     * Gets a list of all organizations.
+     * See [the official documentation](https://cloud.google.com/resource-manager/docs/creating-managing-organization)
+     * and [API](https://cloud.google.com/resource-manager/reference/rest/v1/organizations/search).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetSArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = OrganizationsFunctions.getS(GetSArgs.builder()
+     *             .filter("domain:example.com")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSResult> getS(GetSArgs args) {
+        return getS(args, InvokeOptions.Empty);
+    }
+    /**
+     * Gets a list of all organizations.
+     * See [the official documentation](https://cloud.google.com/resource-manager/docs/creating-managing-organization)
+     * and [API](https://cloud.google.com/resource-manager/reference/rest/v1/organizations/search).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetSArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = OrganizationsFunctions.getS(GetSArgs.builder()
+     *             .filter("domain:example.com")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetSResult> getSPlain(GetSPlainArgs args) {
+        return getSPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Gets a list of all organizations.
+     * See [the official documentation](https://cloud.google.com/resource-manager/docs/creating-managing-organization)
+     * and [API](https://cloud.google.com/resource-manager/reference/rest/v1/organizations/search).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetSArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = OrganizationsFunctions.getS(GetSArgs.builder()
+     *             .filter("domain:example.com")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSResult> getS(GetSArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:organizations/getS:getS", TypeShape.of(GetSResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets a list of all organizations.
+     * See [the official documentation](https://cloud.google.com/resource-manager/docs/creating-managing-organization)
+     * and [API](https://cloud.google.com/resource-manager/reference/rest/v1/organizations/search).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetSArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = OrganizationsFunctions.getS(GetSArgs.builder()
+     *             .filter("domain:example.com")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetSResult> getS(GetSArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:organizations/getS:getS", TypeShape.of(GetSResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Gets a list of all organizations.
+     * See [the official documentation](https://cloud.google.com/resource-manager/docs/creating-managing-organization)
+     * and [API](https://cloud.google.com/resource-manager/reference/rest/v1/organizations/search).
+     * 
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.organizations.OrganizationsFunctions;
+     * import com.pulumi.gcp.organizations.inputs.GetSArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var example = OrganizationsFunctions.getS(GetSArgs.builder()
+     *             .filter("domain:example.com")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetSResult> getSPlain(GetSPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:organizations/getS:getS", TypeShape.of(GetSResult.class), args, Utilities.withVersion(options));
     }
 }

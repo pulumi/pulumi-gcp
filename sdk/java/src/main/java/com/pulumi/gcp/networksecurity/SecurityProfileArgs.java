@@ -6,6 +6,8 @@ package com.pulumi.gcp.networksecurity;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import com.pulumi.gcp.networksecurity.inputs.SecurityProfileCustomInterceptProfileArgs;
+import com.pulumi.gcp.networksecurity.inputs.SecurityProfileCustomMirroringProfileArgs;
 import com.pulumi.gcp.networksecurity.inputs.SecurityProfileThreatPreventionProfileArgs;
 import java.lang.String;
 import java.util.Map;
@@ -17,6 +19,44 @@ import javax.annotation.Nullable;
 public final class SecurityProfileArgs extends com.pulumi.resources.ResourceArgs {
 
     public static final SecurityProfileArgs Empty = new SecurityProfileArgs();
+
+    /**
+     * The configuration for defining the Intercept Endpoint Group used to
+     * intercept traffic to third-party firewall appliances.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="customInterceptProfile")
+    private @Nullable Output<SecurityProfileCustomInterceptProfileArgs> customInterceptProfile;
+
+    /**
+     * @return The configuration for defining the Intercept Endpoint Group used to
+     * intercept traffic to third-party firewall appliances.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<SecurityProfileCustomInterceptProfileArgs>> customInterceptProfile() {
+        return Optional.ofNullable(this.customInterceptProfile);
+    }
+
+    /**
+     * The configuration for defining the Mirroring Endpoint Group used to
+     * mirror traffic to third-party collectors.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="customMirroringProfile")
+    private @Nullable Output<SecurityProfileCustomMirroringProfileArgs> customMirroringProfile;
+
+    /**
+     * @return The configuration for defining the Mirroring Endpoint Group used to
+     * mirror traffic to third-party collectors.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<SecurityProfileCustomMirroringProfileArgs>> customMirroringProfile() {
+        return Optional.ofNullable(this.customMirroringProfile);
+    }
 
     /**
      * An optional description of the security profile. The Max length is 512 characters.
@@ -126,7 +166,7 @@ public final class SecurityProfileArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * The type of security profile.
-     * Possible values are: `THREAT_PREVENTION`.
+     * Possible values are: `THREAT_PREVENTION`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
      * 
      */
     @Import(name="type", required=true)
@@ -134,7 +174,7 @@ public final class SecurityProfileArgs extends com.pulumi.resources.ResourceArgs
 
     /**
      * @return The type of security profile.
-     * Possible values are: `THREAT_PREVENTION`.
+     * Possible values are: `THREAT_PREVENTION`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
      * 
      */
     public Output<String> type() {
@@ -144,6 +184,8 @@ public final class SecurityProfileArgs extends com.pulumi.resources.ResourceArgs
     private SecurityProfileArgs() {}
 
     private SecurityProfileArgs(SecurityProfileArgs $) {
+        this.customInterceptProfile = $.customInterceptProfile;
+        this.customMirroringProfile = $.customMirroringProfile;
         this.description = $.description;
         this.labels = $.labels;
         this.location = $.location;
@@ -169,6 +211,56 @@ public final class SecurityProfileArgs extends com.pulumi.resources.ResourceArgs
 
         public Builder(SecurityProfileArgs defaults) {
             $ = new SecurityProfileArgs(Objects.requireNonNull(defaults));
+        }
+
+        /**
+         * @param customInterceptProfile The configuration for defining the Intercept Endpoint Group used to
+         * intercept traffic to third-party firewall appliances.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customInterceptProfile(@Nullable Output<SecurityProfileCustomInterceptProfileArgs> customInterceptProfile) {
+            $.customInterceptProfile = customInterceptProfile;
+            return this;
+        }
+
+        /**
+         * @param customInterceptProfile The configuration for defining the Intercept Endpoint Group used to
+         * intercept traffic to third-party firewall appliances.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customInterceptProfile(SecurityProfileCustomInterceptProfileArgs customInterceptProfile) {
+            return customInterceptProfile(Output.of(customInterceptProfile));
+        }
+
+        /**
+         * @param customMirroringProfile The configuration for defining the Mirroring Endpoint Group used to
+         * mirror traffic to third-party collectors.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customMirroringProfile(@Nullable Output<SecurityProfileCustomMirroringProfileArgs> customMirroringProfile) {
+            $.customMirroringProfile = customMirroringProfile;
+            return this;
+        }
+
+        /**
+         * @param customMirroringProfile The configuration for defining the Mirroring Endpoint Group used to
+         * mirror traffic to third-party collectors.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customMirroringProfile(SecurityProfileCustomMirroringProfileArgs customMirroringProfile) {
+            return customMirroringProfile(Output.of(customMirroringProfile));
         }
 
         /**
@@ -315,7 +407,7 @@ public final class SecurityProfileArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param type The type of security profile.
-         * Possible values are: `THREAT_PREVENTION`.
+         * Possible values are: `THREAT_PREVENTION`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
          * 
          * @return builder
          * 
@@ -327,7 +419,7 @@ public final class SecurityProfileArgs extends com.pulumi.resources.ResourceArgs
 
         /**
          * @param type The type of security profile.
-         * Possible values are: `THREAT_PREVENTION`.
+         * Possible values are: `THREAT_PREVENTION`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
          * 
          * @return builder
          * 

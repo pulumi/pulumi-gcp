@@ -22,11 +22,22 @@ namespace Pulumi.Gcp.PubSub.Outputs
         /// and is not a valid configuration.
         /// </summary>
         public readonly ImmutableArray<string> AllowedPersistenceRegions;
+        /// <summary>
+        /// If true, `allowedPersistenceRegions` is also used to enforce in-transit
+        /// guarantees for messages. That is, Pub/Sub will fail topics.publish
+        /// operations on this topic and subscribe operations on any subscription
+        /// attached to this topic in any region that is not in `allowedPersistenceRegions`.
+        /// </summary>
+        public readonly bool? EnforceInTransit;
 
         [OutputConstructor]
-        private TopicMessageStoragePolicy(ImmutableArray<string> allowedPersistenceRegions)
+        private TopicMessageStoragePolicy(
+            ImmutableArray<string> allowedPersistenceRegions,
+
+            bool? enforceInTransit)
         {
             AllowedPersistenceRegions = allowedPersistenceRegions;
+            EnforceInTransit = enforceInTransit;
         }
     }
 }

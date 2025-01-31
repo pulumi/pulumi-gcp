@@ -143,6 +143,9 @@ type Environment struct {
 	//
 	// ***
 	OrgId pulumi.StringOutput `pulumi:"orgId"`
+	// Key-value pairs that may be used for customizing the environment.
+	// Structure is documented below.
+	Properties EnvironmentPropertiesPtrOutput `pulumi:"properties"`
 	// Types that can be selected for an Environment. Each of the types are
 	// limited by capability and capacity. Refer to Apigee's public documentation
 	// to understand about each of these types in details.
@@ -213,6 +216,9 @@ type environmentState struct {
 	//
 	// ***
 	OrgId *string `pulumi:"orgId"`
+	// Key-value pairs that may be used for customizing the environment.
+	// Structure is documented below.
+	Properties *EnvironmentProperties `pulumi:"properties"`
 	// Types that can be selected for an Environment. Each of the types are
 	// limited by capability and capacity. Refer to Apigee's public documentation
 	// to understand about each of these types in details.
@@ -251,6 +257,9 @@ type EnvironmentState struct {
 	//
 	// ***
 	OrgId pulumi.StringPtrInput
+	// Key-value pairs that may be used for customizing the environment.
+	// Structure is documented below.
+	Properties EnvironmentPropertiesPtrInput
 	// Types that can be selected for an Environment. Each of the types are
 	// limited by capability and capacity. Refer to Apigee's public documentation
 	// to understand about each of these types in details.
@@ -293,6 +302,9 @@ type environmentArgs struct {
 	//
 	// ***
 	OrgId string `pulumi:"orgId"`
+	// Key-value pairs that may be used for customizing the environment.
+	// Structure is documented below.
+	Properties *EnvironmentProperties `pulumi:"properties"`
 	// Types that can be selected for an Environment. Each of the types are
 	// limited by capability and capacity. Refer to Apigee's public documentation
 	// to understand about each of these types in details.
@@ -332,6 +344,9 @@ type EnvironmentArgs struct {
 	//
 	// ***
 	OrgId pulumi.StringInput
+	// Key-value pairs that may be used for customizing the environment.
+	// Structure is documented below.
+	Properties EnvironmentPropertiesPtrInput
 	// Types that can be selected for an Environment. Each of the types are
 	// limited by capability and capacity. Refer to Apigee's public documentation
 	// to understand about each of these types in details.
@@ -478,6 +493,12 @@ func (o EnvironmentOutput) NodeConfig() EnvironmentNodeConfigOutput {
 // ***
 func (o EnvironmentOutput) OrgId() pulumi.StringOutput {
 	return o.ApplyT(func(v *Environment) pulumi.StringOutput { return v.OrgId }).(pulumi.StringOutput)
+}
+
+// Key-value pairs that may be used for customizing the environment.
+// Structure is documented below.
+func (o EnvironmentOutput) Properties() EnvironmentPropertiesPtrOutput {
+	return o.ApplyT(func(v *Environment) EnvironmentPropertiesPtrOutput { return v.Properties }).(EnvironmentPropertiesPtrOutput)
 }
 
 // Types that can be selected for an Environment. Each of the types are
