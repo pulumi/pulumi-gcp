@@ -394,7 +394,12 @@ func preConfigureCallbackWithLogger(
 			if !tfbridge.ConfigBoolValue(
 				vars, "disableGlobalProjectWarning",
 				[]string{"PULUMI_GCP_DISABLE_GLOBAL_PROJECT_WARNING"},
-			) {
+			) && tfbridge.StringValue(
+				// Pulumi may mis-type the value of
+				// disableGlobalProjectWarning as a string, so we check
+				// for strings as well.
+				vars, "disableGlobalProjectWarning",
+			) != "true" {
 				tfbridge.GetLogger(ctx).Warn(noProjectErr)
 			}
 			return nil
