@@ -39,6 +39,8 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.tags.TagKeyArgs;
  * import com.pulumi.gcp.tags.TagValue;
  * import com.pulumi.gcp.tags.TagValueArgs;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
  * import com.pulumi.gcp.compute.RegionNetworkFirewallPolicyWithRules;
  * import com.pulumi.gcp.compute.RegionNetworkFirewallPolicyWithRulesArgs;
  * import com.pulumi.gcp.compute.inputs.RegionNetworkFirewallPolicyWithRulesRuleArgs;
@@ -59,7 +61,7 @@ import javax.annotation.Nullable;
  *         final var project = OrganizationsFunctions.getProject();
  * 
  *         var addressGroup1 = new AddressGroup("addressGroup1", AddressGroupArgs.builder()
- *             .name("tf-address-group")
+ *             .name("address-group")
  *             .parent(project.applyValue(getProjectResult -> getProjectResult.id()))
  *             .description("Regional address group")
  *             .location("us-west2")
@@ -72,18 +74,23 @@ import javax.annotation.Nullable;
  *             .description("Tag key")
  *             .parent(project.applyValue(getProjectResult -> getProjectResult.id()))
  *             .purpose("GCE_FIREWALL")
- *             .shortName("tf-tag-key")
+ *             .shortName("tag-key")
  *             .purposeData(Map.of("network", String.format("%s/default", project.applyValue(getProjectResult -> getProjectResult.name()))))
  *             .build());
  * 
  *         var secureTagValue1 = new TagValue("secureTagValue1", TagValueArgs.builder()
  *             .description("Tag value")
  *             .parent(secureTagKey1.id())
- *             .shortName("tf-tag-value")
+ *             .shortName("tag-value")
  *             .build());
  * 
- *         var region_network_firewall_policy_with_rules = new RegionNetworkFirewallPolicyWithRules("region-network-firewall-policy-with-rules", RegionNetworkFirewallPolicyWithRulesArgs.builder()
- *             .name("tf-region-fw-policy-with-rules")
+ *         var network = new Network("network", NetworkArgs.builder()
+ *             .name("network")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var primary = new RegionNetworkFirewallPolicyWithRules("primary", RegionNetworkFirewallPolicyWithRulesArgs.builder()
+ *             .name("fw-policy")
  *             .region("us-west2")
  *             .description("Terraform test")
  *             .rules(            
@@ -94,12 +101,6 @@ import javax.annotation.Nullable;
  *                     .action("allow")
  *                     .direction("EGRESS")
  *                     .match(RegionNetworkFirewallPolicyWithRulesRuleMatchArgs.builder()
- *                         .layer4Configs(RegionNetworkFirewallPolicyWithRulesRuleMatchLayer4ConfigArgs.builder()
- *                             .ipProtocol("tcp")
- *                             .ports(                            
- *                                 8080,
- *                                 7070)
- *                             .build())
  *                         .destIpRanges("11.100.0.1/32")
  *                         .destFqdns(                        
  *                             "www.yyy.com",
@@ -111,6 +112,12 @@ import javax.annotation.Nullable;
  *                             "iplist-search-engines-crawlers",
  *                             "iplist-tor-exit-nodes")
  *                         .destAddressGroups(addressGroup1.id())
+ *                         .layer4Configs(RegionNetworkFirewallPolicyWithRulesRuleMatchLayer4ConfigArgs.builder()
+ *                             .ipProtocol("tcp")
+ *                             .ports(                            
+ *                                 8080,
+ *                                 7070)
+ *                             .build())
  *                         .build())
  *                     .targetSecureTags(RegionNetworkFirewallPolicyWithRulesRuleTargetSecureTagArgs.builder()
  *                         .name(secureTagValue1.id())
@@ -123,10 +130,8 @@ import javax.annotation.Nullable;
  *                     .enableLogging(false)
  *                     .action("deny")
  *                     .direction("INGRESS")
+ *                     .disabled(true)
  *                     .match(RegionNetworkFirewallPolicyWithRulesRuleMatchArgs.builder()
- *                         .layer4Configs(RegionNetworkFirewallPolicyWithRulesRuleMatchLayer4ConfigArgs.builder()
- *                             .ipProtocol("udp")
- *                             .build())
  *                         .srcIpRanges("0.0.0.0/0")
  *                         .srcFqdns(                        
  *                             "www.abc.com",
@@ -141,8 +146,43 @@ import javax.annotation.Nullable;
  *                         .srcSecureTags(RegionNetworkFirewallPolicyWithRulesRuleMatchSrcSecureTagArgs.builder()
  *                             .name(secureTagValue1.id())
  *                             .build())
+ *                         .layer4Configs(RegionNetworkFirewallPolicyWithRulesRuleMatchLayer4ConfigArgs.builder()
+ *                             .ipProtocol("udp")
+ *                             .build())
  *                         .build())
- *                     .disabled(true)
+ *                     .build(),
+ *                 RegionNetworkFirewallPolicyWithRulesRuleArgs.builder()
+ *                     .description("network scope rule 1")
+ *                     .ruleName("network scope 1")
+ *                     .priority(4000)
+ *                     .enableLogging(false)
+ *                     .action("allow")
+ *                     .direction("INGRESS")
+ *                     .match(RegionNetworkFirewallPolicyWithRulesRuleMatchArgs.builder()
+ *                         .srcIpRanges("11.100.0.1/32")
+ *                         .srcNetworkScope("VPC_NETWORKS")
+ *                         .srcNetworks(network.id())
+ *                         .layer4Configs(RegionNetworkFirewallPolicyWithRulesRuleMatchLayer4ConfigArgs.builder()
+ *                             .ipProtocol("tcp")
+ *                             .ports(8080)
+ *                             .build())
+ *                         .build())
+ *                     .build(),
+ *                 RegionNetworkFirewallPolicyWithRulesRuleArgs.builder()
+ *                     .description("network scope rule 2")
+ *                     .ruleName("network scope 2")
+ *                     .priority(5000)
+ *                     .enableLogging(false)
+ *                     .action("allow")
+ *                     .direction("EGRESS")
+ *                     .match(RegionNetworkFirewallPolicyWithRulesRuleMatchArgs.builder()
+ *                         .destIpRanges("0.0.0.0/0")
+ *                         .destNetworkScope("NON_INTERNET")
+ *                         .layer4Configs(RegionNetworkFirewallPolicyWithRulesRuleMatchLayer4ConfigArgs.builder()
+ *                             .ipProtocol("tcp")
+ *                             .ports(8080)
+ *                             .build())
+ *                         .build())
  *                     .build())
  *             .build());
  * 

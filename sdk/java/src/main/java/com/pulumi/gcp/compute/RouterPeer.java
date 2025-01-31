@@ -162,6 +162,46 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Router Zero Custom Learend Route Priority
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.RouterPeer;
+ * import com.pulumi.gcp.compute.RouterPeerArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var peer = new RouterPeer("peer", RouterPeerArgs.builder()
+ *             .name("my-router-peer")
+ *             .router("my-router")
+ *             .region("us-central1")
+ *             .interface_("interface-1")
+ *             .peerAsn(65513)
+ *             .customLearnedRoutePriority(0)
+ *             .zeroCustomLearnedRoutePriority(true)
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * ### Router Peer Router Appliance
  * 
  * &lt;!--Start PulumiCodeChooser --&gt;
@@ -867,6 +907,20 @@ public class RouterPeer extends com.pulumi.resources.CustomResource {
         return this.ipv6NexthopAddress;
     }
     /**
+     * An internal boolean field for provider use.
+     * 
+     */
+    @Export(name="isCustomLearnedPrioritySet", refs={Boolean.class}, tree="[0]")
+    private Output<Boolean> isCustomLearnedPrioritySet;
+
+    /**
+     * @return An internal boolean field for provider use.
+     * 
+     */
+    public Output<Boolean> isCustomLearnedPrioritySet() {
+        return this.isCustomLearnedPrioritySet;
+    }
+    /**
      * The resource that configures and manages this BGP peer.
      * * `MANAGED_BY_USER` is the default value and can be managed by
      *   you or other users
@@ -1071,6 +1125,22 @@ public class RouterPeer extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<String>> routerApplianceInstance() {
         return Codegen.optional(this.routerApplianceInstance);
+    }
+    /**
+     * The user-defined zero-custom-learned-route-priority for a custom-learned-route-priority in BGP session.
+     * This value has to be set true to force the custom_learned_route_priority to be 0.
+     * 
+     */
+    @Export(name="zeroCustomLearnedRoutePriority", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> zeroCustomLearnedRoutePriority;
+
+    /**
+     * @return The user-defined zero-custom-learned-route-priority for a custom-learned-route-priority in BGP session.
+     * This value has to be set true to force the custom_learned_route_priority to be 0.
+     * 
+     */
+    public Output<Optional<Boolean>> zeroCustomLearnedRoutePriority() {
+        return Codegen.optional(this.zeroCustomLearnedRoutePriority);
     }
 
     /**

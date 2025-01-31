@@ -54,7 +54,7 @@ public final class CodeRepositoryIndexArgs extends com.pulumi.resources.Resource
 
     /**
      * Optional. Immutable. Customer-managed encryption key name, in the format
-     * projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*.
+     * `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`.
      * 
      */
     @Import(name="kmsKey")
@@ -62,7 +62,7 @@ public final class CodeRepositoryIndexArgs extends com.pulumi.resources.Resource
 
     /**
      * @return Optional. Immutable. Customer-managed encryption key name, in the format
-     * projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*.
+     * `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`.
      * 
      */
     public Optional<Output<String>> kmsKey() {
@@ -197,7 +197,7 @@ public final class CodeRepositoryIndexArgs extends com.pulumi.resources.Resource
 
         /**
          * @param kmsKey Optional. Immutable. Customer-managed encryption key name, in the format
-         * projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*.
+         * `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`.
          * 
          * @return builder
          * 
@@ -209,7 +209,7 @@ public final class CodeRepositoryIndexArgs extends com.pulumi.resources.Resource
 
         /**
          * @param kmsKey Optional. Immutable. Customer-managed encryption key name, in the format
-         * projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*.
+         * `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`.
          * 
          * @return builder
          * 

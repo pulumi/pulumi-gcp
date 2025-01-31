@@ -37,7 +37,7 @@ import (
 //				return err
 //			}
 //			addressGroup1, err := networksecurity.NewAddressGroup(ctx, "address_group_1", &networksecurity.AddressGroupArgs{
-//				Name:        pulumi.String("tf-address-group"),
+//				Name:        pulumi.String("address-group"),
 //				Parent:      pulumi.String("organizations/123456789"),
 //				Description: pulumi.String("Global address group"),
 //				Location:    pulumi.String("global"),
@@ -51,7 +51,7 @@ import (
 //				return err
 //			}
 //			securityProfile1, err := networksecurity.NewSecurityProfile(ctx, "security_profile_1", &networksecurity.SecurityProfileArgs{
-//				Name:     pulumi.String("tf-security-profile"),
+//				Name:     pulumi.String("sp"),
 //				Type:     pulumi.String("THREAT_PREVENTION"),
 //				Parent:   pulumi.String("organizations/123456789"),
 //				Location: pulumi.String("global"),
@@ -60,7 +60,7 @@ import (
 //				return err
 //			}
 //			securityProfileGroup1, err := networksecurity.NewSecurityProfileGroup(ctx, "security_profile_group_1", &networksecurity.SecurityProfileGroupArgs{
-//				Name:                    pulumi.String("tf-security-profile-group"),
+//				Name:                    pulumi.String("spg"),
 //				Parent:                  pulumi.String("organizations/123456789"),
 //				Description:             pulumi.String("my description"),
 //				ThreatPreventionProfile: securityProfile1.ID(),
@@ -68,8 +68,15 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewFirewallPolicyWithRules(ctx, "firewall-policy-with-rules", &compute.FirewallPolicyWithRulesArgs{
-//				ShortName:   pulumi.String("tf-fw-org-policy-with-rules"),
+//			network, err := compute.NewNetwork(ctx, "network", &compute.NetworkArgs{
+//				Name:                  pulumi.String("network"),
+//				AutoCreateSubnetworks: pulumi.Bool(false),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = compute.NewFirewallPolicyWithRules(ctx, "primary", &compute.FirewallPolicyWithRulesArgs{
+//				ShortName:   pulumi.String("fw-policy"),
 //				Description: pulumi.String("Terraform test"),
 //				Parent:      pulumi.String("organizations/123456789"),
 //				Rules: compute.FirewallPolicyWithRulesRuleArray{
@@ -79,16 +86,10 @@ import (
 //						EnableLogging: pulumi.Bool(true),
 //						Action:        pulumi.String("allow"),
 //						Direction:     pulumi.String("EGRESS"),
+//						TargetResources: pulumi.StringArray{
+//							pulumi.Sprintf("https://www.googleapis.com/compute/beta/projects/%v/global/networks/default", project.Name),
+//						},
 //						Match: &compute.FirewallPolicyWithRulesRuleMatchArgs{
-//							Layer4Configs: compute.FirewallPolicyWithRulesRuleMatchLayer4ConfigArray{
-//								&compute.FirewallPolicyWithRulesRuleMatchLayer4ConfigArgs{
-//									IpProtocol: pulumi.String("tcp"),
-//									Ports: pulumi.StringArray{
-//										pulumi.String("8080"),
-//										pulumi.String("7070"),
-//									},
-//								},
-//							},
 //							DestIpRanges: pulumi.StringArray{
 //								pulumi.String("11.100.0.1/32"),
 //							},
@@ -107,9 +108,15 @@ import (
 //							DestAddressGroups: pulumi.StringArray{
 //								addressGroup1.ID(),
 //							},
-//						},
-//						TargetResources: pulumi.StringArray{
-//							pulumi.Sprintf("https://www.googleapis.com/compute/beta/projects/%v/global/networks/default", project.Name),
+//							Layer4Configs: compute.FirewallPolicyWithRulesRuleMatchLayer4ConfigArray{
+//								&compute.FirewallPolicyWithRulesRuleMatchLayer4ConfigArgs{
+//									IpProtocol: pulumi.String("tcp"),
+//									Ports: pulumi.StringArray{
+//										pulumi.String("8080"),
+//										pulumi.String("7070"),
+//									},
+//								},
+//							},
 //						},
 //					},
 //					&compute.FirewallPolicyWithRulesRuleArgs{
@@ -118,12 +125,8 @@ import (
 //						EnableLogging: pulumi.Bool(false),
 //						Action:        pulumi.String("deny"),
 //						Direction:     pulumi.String("INGRESS"),
+//						Disabled:      pulumi.Bool(true),
 //						Match: &compute.FirewallPolicyWithRulesRuleMatchArgs{
-//							Layer4Configs: compute.FirewallPolicyWithRulesRuleMatchLayer4ConfigArray{
-//								&compute.FirewallPolicyWithRulesRuleMatchLayer4ConfigArgs{
-//									IpProtocol: pulumi.String("udp"),
-//								},
-//							},
 //							SrcIpRanges: pulumi.StringArray{
 //								pulumi.String("0.0.0.0/0"),
 //							},
@@ -142,8 +145,12 @@ import (
 //							SrcAddressGroups: pulumi.StringArray{
 //								addressGroup1.ID(),
 //							},
+//							Layer4Configs: compute.FirewallPolicyWithRulesRuleMatchLayer4ConfigArray{
+//								&compute.FirewallPolicyWithRulesRuleMatchLayer4ConfigArgs{
+//									IpProtocol: pulumi.String("udp"),
+//								},
+//							},
 //						},
-//						Disabled: pulumi.Bool(true),
 //					},
 //					&compute.FirewallPolicyWithRulesRuleArgs{
 //						Description:   pulumi.String("security profile group rule"),
@@ -152,16 +159,6 @@ import (
 //						EnableLogging: pulumi.Bool(false),
 //						Action:        pulumi.String("apply_security_profile_group"),
 //						Direction:     pulumi.String("INGRESS"),
-//						Match: &compute.FirewallPolicyWithRulesRuleMatchArgs{
-//							Layer4Configs: compute.FirewallPolicyWithRulesRuleMatchLayer4ConfigArray{
-//								&compute.FirewallPolicyWithRulesRuleMatchLayer4ConfigArgs{
-//									IpProtocol: pulumi.String("tcp"),
-//								},
-//							},
-//							SrcIpRanges: pulumi.StringArray{
-//								pulumi.String("0.0.0.0/0"),
-//							},
-//						},
 //						TargetServiceAccounts: pulumi.StringArray{
 //							pulumi.String("test@google.com"),
 //						},
@@ -169,6 +166,63 @@ import (
 //							return fmt.Sprintf("//networksecurity.googleapis.com/%v", id), nil
 //						}).(pulumi.StringOutput),
 //						TlsInspect: pulumi.Bool(true),
+//						Match: &compute.FirewallPolicyWithRulesRuleMatchArgs{
+//							SrcIpRanges: pulumi.StringArray{
+//								pulumi.String("0.0.0.0/0"),
+//							},
+//							Layer4Configs: compute.FirewallPolicyWithRulesRuleMatchLayer4ConfigArray{
+//								&compute.FirewallPolicyWithRulesRuleMatchLayer4ConfigArgs{
+//									IpProtocol: pulumi.String("tcp"),
+//								},
+//							},
+//						},
+//					},
+//					&compute.FirewallPolicyWithRulesRuleArgs{
+//						Description:   pulumi.String("network scope rule 1"),
+//						RuleName:      pulumi.String("network scope 1"),
+//						Priority:      pulumi.Int(4000),
+//						EnableLogging: pulumi.Bool(false),
+//						Action:        pulumi.String("allow"),
+//						Direction:     pulumi.String("INGRESS"),
+//						Match: &compute.FirewallPolicyWithRulesRuleMatchArgs{
+//							SrcIpRanges: pulumi.StringArray{
+//								pulumi.String("11.100.0.1/32"),
+//							},
+//							SrcNetworkScope: pulumi.String("VPC_NETWORKS"),
+//							SrcNetworks: pulumi.StringArray{
+//								network.ID(),
+//							},
+//							Layer4Configs: compute.FirewallPolicyWithRulesRuleMatchLayer4ConfigArray{
+//								&compute.FirewallPolicyWithRulesRuleMatchLayer4ConfigArgs{
+//									IpProtocol: pulumi.String("tcp"),
+//									Ports: pulumi.StringArray{
+//										pulumi.String("8080"),
+//									},
+//								},
+//							},
+//						},
+//					},
+//					&compute.FirewallPolicyWithRulesRuleArgs{
+//						Description:   pulumi.String("network scope rule 2"),
+//						RuleName:      pulumi.String("network scope 2"),
+//						Priority:      pulumi.Int(5000),
+//						EnableLogging: pulumi.Bool(false),
+//						Action:        pulumi.String("allow"),
+//						Direction:     pulumi.String("EGRESS"),
+//						Match: &compute.FirewallPolicyWithRulesRuleMatchArgs{
+//							DestIpRanges: pulumi.StringArray{
+//								pulumi.String("0.0.0.0/0"),
+//							},
+//							DestNetworkScope: pulumi.String("INTERNET"),
+//							Layer4Configs: compute.FirewallPolicyWithRulesRuleMatchLayer4ConfigArray{
+//								&compute.FirewallPolicyWithRulesRuleMatchLayer4ConfigArgs{
+//									IpProtocol: pulumi.String("tcp"),
+//									Ports: pulumi.StringArray{
+//										pulumi.String("8080"),
+//									},
+//								},
+//							},
+//						},
 //					},
 //				},
 //			})

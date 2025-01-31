@@ -18,6 +18,10 @@ namespace Pulumi.Gcp.PubSub.Outputs
         /// </summary>
         public readonly ImmutableArray<Outputs.GetTopicIngestionDataSourceSettingAwsKineseResult> AwsKineses;
         /// <summary>
+        /// Settings for ingestion from Azure Event Hubs.
+        /// </summary>
+        public readonly ImmutableArray<Outputs.GetTopicIngestionDataSourceSettingAzureEventHubResult> AzureEventHubs;
+        /// <summary>
         /// Settings for ingestion from Cloud Storage.
         /// </summary>
         public readonly ImmutableArray<Outputs.GetTopicIngestionDataSourceSettingCloudStorageResult> CloudStorages;
@@ -31,11 +35,14 @@ namespace Pulumi.Gcp.PubSub.Outputs
         private GetTopicIngestionDataSourceSettingResult(
             ImmutableArray<Outputs.GetTopicIngestionDataSourceSettingAwsKineseResult> awsKineses,
 
+            ImmutableArray<Outputs.GetTopicIngestionDataSourceSettingAzureEventHubResult> azureEventHubs,
+
             ImmutableArray<Outputs.GetTopicIngestionDataSourceSettingCloudStorageResult> cloudStorages,
 
             ImmutableArray<Outputs.GetTopicIngestionDataSourceSettingPlatformLogsSettingResult> platformLogsSettings)
         {
             AwsKineses = awsKineses;
+            AzureEventHubs = azureEventHubs;
             CloudStorages = cloudStorages;
             PlatformLogsSettings = platformLogsSettings;
         }

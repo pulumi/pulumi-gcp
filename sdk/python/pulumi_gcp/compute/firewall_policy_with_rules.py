@@ -306,7 +306,7 @@ class FirewallPolicyWithRules(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         address_group1 = gcp.networksecurity.AddressGroup("address_group_1",
-            name="tf-address-group",
+            name="address-group",
             parent="organizations/123456789",
             description="Global address group",
             location="global",
@@ -314,17 +314,20 @@ class FirewallPolicyWithRules(pulumi.CustomResource):
             type="IPV4",
             capacity=100)
         security_profile1 = gcp.networksecurity.SecurityProfile("security_profile_1",
-            name="tf-security-profile",
+            name="sp",
             type="THREAT_PREVENTION",
             parent="organizations/123456789",
             location="global")
         security_profile_group1 = gcp.networksecurity.SecurityProfileGroup("security_profile_group_1",
-            name="tf-security-profile-group",
+            name="spg",
             parent="organizations/123456789",
             description="my description",
             threat_prevention_profile=security_profile1.id)
-        firewall_policy_with_rules = gcp.compute.FirewallPolicyWithRules("firewall-policy-with-rules",
-            short_name="tf-fw-org-policy-with-rules",
+        network = gcp.compute.Network("network",
+            name="network",
+            auto_create_subnetworks=False)
+        primary = gcp.compute.FirewallPolicyWithRules("primary",
+            short_name="fw-policy",
             description="Terraform test",
             parent="organizations/123456789",
             rules=[
@@ -334,14 +337,8 @@ class FirewallPolicyWithRules(pulumi.CustomResource):
                     "enable_logging": True,
                     "action": "allow",
                     "direction": "EGRESS",
+                    "target_resources": [f"https://www.googleapis.com/compute/beta/projects/{project.name}/global/networks/default"],
                     "match": {
-                        "layer4_configs": [{
-                            "ip_protocol": "tcp",
-                            "ports": [
-                                "8080",
-                                "7070",
-                            ],
-                        }],
                         "dest_ip_ranges": ["11.100.0.1/32"],
                         "dest_fqdns": [
                             "www.yyy.com",
@@ -356,8 +353,14 @@ class FirewallPolicyWithRules(pulumi.CustomResource):
                             "iplist-tor-exit-nodes",
                         ],
                         "dest_address_groups": [address_group1.id],
+                        "layer4_configs": [{
+                            "ip_protocol": "tcp",
+                            "ports": [
+                                "8080",
+                                "7070",
+                            ],
+                        }],
                     },
-                    "target_resources": [f"https://www.googleapis.com/compute/beta/projects/{project.name}/global/networks/default"],
                 },
                 {
                     "description": "udp rule",
@@ -365,10 +368,8 @@ class FirewallPolicyWithRules(pulumi.CustomResource):
                     "enable_logging": False,
                     "action": "deny",
                     "direction": "INGRESS",
+                    "disabled": True,
                     "match": {
-                        "layer4_configs": [{
-                            "ip_protocol": "udp",
-                        }],
                         "src_ip_ranges": ["0.0.0.0/0"],
                         "src_fqdns": [
                             "www.abc.com",
@@ -383,8 +384,10 @@ class FirewallPolicyWithRules(pulumi.CustomResource):
                             "iplist-public-clouds",
                         ],
                         "src_address_groups": [address_group1.id],
+                        "layer4_configs": [{
+                            "ip_protocol": "udp",
+                        }],
                     },
-                    "disabled": True,
                 },
                 {
                     "description": "security profile group rule",
@@ -393,15 +396,48 @@ class FirewallPolicyWithRules(pulumi.CustomResource):
                     "enable_logging": False,
                     "action": "apply_security_profile_group",
                     "direction": "INGRESS",
-                    "match": {
-                        "layer4_configs": [{
-                            "ip_protocol": "tcp",
-                        }],
-                        "src_ip_ranges": ["0.0.0.0/0"],
-                    },
                     "target_service_accounts": ["test@google.com"],
                     "security_profile_group": security_profile_group1.id.apply(lambda id: f"//networksecurity.googleapis.com/{id}"),
                     "tls_inspect": True,
+                    "match": {
+                        "src_ip_ranges": ["0.0.0.0/0"],
+                        "layer4_configs": [{
+                            "ip_protocol": "tcp",
+                        }],
+                    },
+                },
+                {
+                    "description": "network scope rule 1",
+                    "rule_name": "network scope 1",
+                    "priority": 4000,
+                    "enable_logging": False,
+                    "action": "allow",
+                    "direction": "INGRESS",
+                    "match": {
+                        "src_ip_ranges": ["11.100.0.1/32"],
+                        "src_network_scope": "VPC_NETWORKS",
+                        "src_networks": [network.id],
+                        "layer4_configs": [{
+                            "ip_protocol": "tcp",
+                            "ports": ["8080"],
+                        }],
+                    },
+                },
+                {
+                    "description": "network scope rule 2",
+                    "rule_name": "network scope 2",
+                    "priority": 5000,
+                    "enable_logging": False,
+                    "action": "allow",
+                    "direction": "EGRESS",
+                    "match": {
+                        "dest_ip_ranges": ["0.0.0.0/0"],
+                        "dest_network_scope": "INTERNET",
+                        "layer4_configs": [{
+                            "ip_protocol": "tcp",
+                            "ports": ["8080"],
+                        }],
+                    },
                 },
             ])
         ```
@@ -451,7 +487,7 @@ class FirewallPolicyWithRules(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         address_group1 = gcp.networksecurity.AddressGroup("address_group_1",
-            name="tf-address-group",
+            name="address-group",
             parent="organizations/123456789",
             description="Global address group",
             location="global",
@@ -459,17 +495,20 @@ class FirewallPolicyWithRules(pulumi.CustomResource):
             type="IPV4",
             capacity=100)
         security_profile1 = gcp.networksecurity.SecurityProfile("security_profile_1",
-            name="tf-security-profile",
+            name="sp",
             type="THREAT_PREVENTION",
             parent="organizations/123456789",
             location="global")
         security_profile_group1 = gcp.networksecurity.SecurityProfileGroup("security_profile_group_1",
-            name="tf-security-profile-group",
+            name="spg",
             parent="organizations/123456789",
             description="my description",
             threat_prevention_profile=security_profile1.id)
-        firewall_policy_with_rules = gcp.compute.FirewallPolicyWithRules("firewall-policy-with-rules",
-            short_name="tf-fw-org-policy-with-rules",
+        network = gcp.compute.Network("network",
+            name="network",
+            auto_create_subnetworks=False)
+        primary = gcp.compute.FirewallPolicyWithRules("primary",
+            short_name="fw-policy",
             description="Terraform test",
             parent="organizations/123456789",
             rules=[
@@ -479,14 +518,8 @@ class FirewallPolicyWithRules(pulumi.CustomResource):
                     "enable_logging": True,
                     "action": "allow",
                     "direction": "EGRESS",
+                    "target_resources": [f"https://www.googleapis.com/compute/beta/projects/{project.name}/global/networks/default"],
                     "match": {
-                        "layer4_configs": [{
-                            "ip_protocol": "tcp",
-                            "ports": [
-                                "8080",
-                                "7070",
-                            ],
-                        }],
                         "dest_ip_ranges": ["11.100.0.1/32"],
                         "dest_fqdns": [
                             "www.yyy.com",
@@ -501,8 +534,14 @@ class FirewallPolicyWithRules(pulumi.CustomResource):
                             "iplist-tor-exit-nodes",
                         ],
                         "dest_address_groups": [address_group1.id],
+                        "layer4_configs": [{
+                            "ip_protocol": "tcp",
+                            "ports": [
+                                "8080",
+                                "7070",
+                            ],
+                        }],
                     },
-                    "target_resources": [f"https://www.googleapis.com/compute/beta/projects/{project.name}/global/networks/default"],
                 },
                 {
                     "description": "udp rule",
@@ -510,10 +549,8 @@ class FirewallPolicyWithRules(pulumi.CustomResource):
                     "enable_logging": False,
                     "action": "deny",
                     "direction": "INGRESS",
+                    "disabled": True,
                     "match": {
-                        "layer4_configs": [{
-                            "ip_protocol": "udp",
-                        }],
                         "src_ip_ranges": ["0.0.0.0/0"],
                         "src_fqdns": [
                             "www.abc.com",
@@ -528,8 +565,10 @@ class FirewallPolicyWithRules(pulumi.CustomResource):
                             "iplist-public-clouds",
                         ],
                         "src_address_groups": [address_group1.id],
+                        "layer4_configs": [{
+                            "ip_protocol": "udp",
+                        }],
                     },
-                    "disabled": True,
                 },
                 {
                     "description": "security profile group rule",
@@ -538,15 +577,48 @@ class FirewallPolicyWithRules(pulumi.CustomResource):
                     "enable_logging": False,
                     "action": "apply_security_profile_group",
                     "direction": "INGRESS",
-                    "match": {
-                        "layer4_configs": [{
-                            "ip_protocol": "tcp",
-                        }],
-                        "src_ip_ranges": ["0.0.0.0/0"],
-                    },
                     "target_service_accounts": ["test@google.com"],
                     "security_profile_group": security_profile_group1.id.apply(lambda id: f"//networksecurity.googleapis.com/{id}"),
                     "tls_inspect": True,
+                    "match": {
+                        "src_ip_ranges": ["0.0.0.0/0"],
+                        "layer4_configs": [{
+                            "ip_protocol": "tcp",
+                        }],
+                    },
+                },
+                {
+                    "description": "network scope rule 1",
+                    "rule_name": "network scope 1",
+                    "priority": 4000,
+                    "enable_logging": False,
+                    "action": "allow",
+                    "direction": "INGRESS",
+                    "match": {
+                        "src_ip_ranges": ["11.100.0.1/32"],
+                        "src_network_scope": "VPC_NETWORKS",
+                        "src_networks": [network.id],
+                        "layer4_configs": [{
+                            "ip_protocol": "tcp",
+                            "ports": ["8080"],
+                        }],
+                    },
+                },
+                {
+                    "description": "network scope rule 2",
+                    "rule_name": "network scope 2",
+                    "priority": 5000,
+                    "enable_logging": False,
+                    "action": "allow",
+                    "direction": "EGRESS",
+                    "match": {
+                        "dest_ip_ranges": ["0.0.0.0/0"],
+                        "dest_network_scope": "INTERNET",
+                        "layer4_configs": [{
+                            "ip_protocol": "tcp",
+                            "ports": ["8080"],
+                        }],
+                    },
                 },
             ])
         ```

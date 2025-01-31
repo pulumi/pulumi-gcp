@@ -120,6 +120,11 @@ export const getKeyHandle: typeof import("./getKeyHandle").getKeyHandle = null a
 export const getKeyHandleOutput: typeof import("./getKeyHandle").getKeyHandleOutput = null as any;
 utilities.lazyLoad(exports, ["getKeyHandle","getKeyHandleOutput"], () => require("./getKeyHandle"));
 
+export { GetKeyHandlesArgs, GetKeyHandlesResult, GetKeyHandlesOutputArgs } from "./getKeyHandles";
+export const getKeyHandles: typeof import("./getKeyHandles").getKeyHandles = null as any;
+export const getKeyHandlesOutput: typeof import("./getKeyHandles").getKeyHandlesOutput = null as any;
+utilities.lazyLoad(exports, ["getKeyHandles","getKeyHandlesOutput"], () => require("./getKeyHandles"));
+
 export { GetKeyRingIamPolicyArgs, GetKeyRingIamPolicyResult, GetKeyRingIamPolicyOutputArgs } from "./getKeyRingIamPolicy";
 export const getKeyRingIamPolicy: typeof import("./getKeyRingIamPolicy").getKeyRingIamPolicy = null as any;
 export const getKeyRingIamPolicyOutput: typeof import("./getKeyRingIamPolicy").getKeyRingIamPolicyOutput = null as any;

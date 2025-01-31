@@ -23,6 +23,8 @@ func (m *module) Construct(ctx *pulumi.Context, name, typ, urn string) (r pulumi
 	switch typ {
 	case "gcp:parametermanager/parameter:Parameter":
 		r = &Parameter{}
+	case "gcp:parametermanager/parameterVersion:ParameterVersion":
+		r = &ParameterVersion{}
 	case "gcp:parametermanager/regionalParameter:RegionalParameter":
 		r = &RegionalParameter{}
 	case "gcp:parametermanager/regionalParameterVersion:RegionalParameterVersion":
@@ -43,6 +45,11 @@ func init() {
 	pulumi.RegisterResourceModule(
 		"gcp",
 		"parametermanager/parameter",
+		&module{version},
+	)
+	pulumi.RegisterResourceModule(
+		"gcp",
+		"parametermanager/parameterVersion",
 		&module{version},
 	)
 	pulumi.RegisterResourceModule(

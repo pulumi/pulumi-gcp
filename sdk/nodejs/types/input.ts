@@ -2742,6 +2742,25 @@ export namespace apigee {
         minNodeCount?: pulumi.Input<string>;
     }
 
+    export interface EnvironmentProperties {
+        /**
+         * List of all properties in the object.
+         * Structure is documented below.
+         */
+        properties?: pulumi.Input<pulumi.Input<inputs.apigee.EnvironmentPropertiesProperty>[]>;
+    }
+
+    export interface EnvironmentPropertiesProperty {
+        /**
+         * The property key.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * The property value.
+         */
+        value?: pulumi.Input<string>;
+    }
+
     export interface KeystoresAliasesKeyCertFileCertsInfo {
         /**
          * (Output)
@@ -3069,6 +3088,40 @@ export namespace apigee {
          * Indicates whether the cert should be matched against as a wildcard cert.
          */
         wildcardMatch?: pulumi.Input<boolean>;
+    }
+}
+
+export namespace apihub {
+    export interface ApiHubInstanceConfig {
+        /**
+         * Optional. The Customer Managed Encryption Key (CMEK) used for data encryption.
+         * The CMEK name should follow the format of
+         * `projects/([^/]+)/locations/([^/]+)/keyRings/([^/]+)/cryptoKeys/([^/]+)`,
+         * where the location must match the instance location.
+         * If the CMEK is not provided, a GMEK will be created for the instance.
+         */
+        cmekKeyName?: pulumi.Input<string>;
+        /**
+         * Optional. If true, the search will be disabled for the instance. The default value
+         * is false.
+         */
+        disableSearch?: pulumi.Input<boolean>;
+        /**
+         * Optional. Encryption type for the region. If the encryption type is CMEK, the
+         * cmekKeyName must be provided. If no encryption type is provided,
+         * GMEK will be used.
+         * Possible values:
+         * ENCRYPTION_TYPE_UNSPECIFIED
+         * GMEK
+         * CMEK
+         */
+        encryptionType?: pulumi.Input<string>;
+        /**
+         * Optional. The name of the Vertex AI location where the data store is stored.
+         *
+         * - - -
+         */
+        vertexLocation?: pulumi.Input<string>;
     }
 }
 
@@ -9997,6 +10050,34 @@ export namespace chronicle {
         scopeNames?: pulumi.Input<pulumi.Input<string>[]>;
     }
 
+    export interface RetrohuntExecutionInterval {
+        /**
+         * Optional. Exclusive end of the interval.
+         * If specified, a Timestamp matching this interval will have to be before the
+         * end.
+         */
+        endTime?: pulumi.Input<string>;
+        /**
+         * Optional. Inclusive start of the interval.
+         * If specified, a Timestamp matching this interval will have to be the same
+         * or after the start.
+         */
+        startTime?: pulumi.Input<string>;
+    }
+
+    export interface RetrohuntProcessInterval {
+        /**
+         * Exclusive end of the interval.
+         *
+         * - - -
+         */
+        endTime: pulumi.Input<string>;
+        /**
+         * Inclusive start of the interval.
+         */
+        startTime: pulumi.Input<string>;
+    }
+
     export interface RuleCompilationDiagnostic {
         /**
          * (Output)
@@ -14483,6 +14564,46 @@ export namespace cloudrunv2 {
         useDefault?: pulumi.Input<boolean>;
     }
 
+    export interface ServiceBuildConfig {
+        /**
+         * The base image used to build the function.
+         */
+        baseImage?: pulumi.Input<string>;
+        /**
+         * Sets whether the function will receive automatic base image updates.
+         */
+        enableAutomaticUpdates?: pulumi.Input<boolean>;
+        /**
+         * User-provided build-time environment variables for the function.
+         */
+        environmentVariables?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
+        /**
+         * The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix, if not specified. For backward compatibility, if function with given name is not found, then the system will try to use function named "function".
+         */
+        functionTarget?: pulumi.Input<string>;
+        /**
+         * Artifact Registry URI to store the built image.
+         */
+        imageUri?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * The Cloud Build name of the latest successful deployment of the function.
+         */
+        name?: pulumi.Input<string>;
+        /**
+         * Service account to be used for building the container. The format of this field is `projects/{projectId}/serviceAccounts/{serviceAccountEmail}`.
+         */
+        serviceAccount?: pulumi.Input<string>;
+        /**
+         * The Cloud Storage bucket URI where the function source code is located.
+         */
+        sourceLocation?: pulumi.Input<string>;
+        /**
+         * Name of the Cloud Build Custom Worker Pool that should be used to build the Cloud Run function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where {project} and {region} are the project id and region respectively where the worker pool is defined and {workerPool} is the short name of the worker pool.
+         */
+        workerPool?: pulumi.Input<string>;
+    }
+
     export interface ServiceCondition {
         /**
          * (Output)
@@ -15618,6 +15739,13 @@ export namespace cloudtasks {
 }
 
 export namespace colab {
+    export interface RuntimeNotebookRuntimeTemplateRef {
+        /**
+         * The resource name of the NotebookRuntimeTemplate based on which a NotebookRuntime will be created.
+         */
+        notebookRuntimeTemplate: pulumi.Input<string>;
+    }
+
     export interface RuntimeTemplateDataPersistentDiskSpec {
         /**
          * The disk size of the runtime in GB. If specified, the diskType must also be specified. The minimum size is 10GB and the maximum is 65536GB.
@@ -15641,6 +15769,18 @@ export namespace colab {
          * Disable end user credential access for the runtime.
          */
         eucDisabled?: pulumi.Input<boolean>;
+    }
+
+    export interface RuntimeTemplateIamBindingCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
+    }
+
+    export interface RuntimeTemplateIamMemberCondition {
+        description?: pulumi.Input<string>;
+        expression: pulumi.Input<string>;
+        title: pulumi.Input<string>;
     }
 
     export interface RuntimeTemplateIdleShutdownConfig {
@@ -17400,6 +17540,11 @@ export namespace compute {
          */
         destIpRanges?: pulumi.Input<pulumi.Input<string>[]>;
         /**
+         * Network scope of the traffic destination.
+         * Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+         */
+        destNetworkScope?: pulumi.Input<string>;
+        /**
          * Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of dest region codes allowed is 5000.
          */
         destRegionCodes?: pulumi.Input<pulumi.Input<string>[]>;
@@ -17424,6 +17569,15 @@ export namespace compute {
          * CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
          */
         srcIpRanges?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Network scope of the traffic source.
+         * Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+         */
+        srcNetworkScope?: pulumi.Input<string>;
+        /**
+         * Networks of the traffic source. It can be either a full or partial url.
+         */
+        srcNetworks?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of source region codes allowed is 5000.
          */
@@ -17705,6 +17859,11 @@ export namespace compute {
          */
         destIpRanges?: pulumi.Input<pulumi.Input<string>[]>;
         /**
+         * Network scope of the traffic destination.
+         * Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+         */
+        destNetworkScope?: pulumi.Input<string>;
+        /**
          * Region codes whose IP addresses will be used to match for destination
          * of traffic. Should be specified as 2 letter country code defined as per
          * ISO 3166 alpha-2 country codes. ex."US"
@@ -17739,6 +17898,15 @@ export namespace compute {
          * INGRESS rules.
          */
         srcIpRanges?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Network scope of the traffic source.
+         * Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+         */
+        srcNetworkScope?: pulumi.Input<string>;
+        /**
+         * Networks of the traffic source. It can be either a full or partial url.
+         */
+        srcNetworks?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * Region codes whose IP addresses will be used to match for source
          * of traffic. Should be specified as 2 letter country code defined as per
@@ -20222,6 +20390,30 @@ export namespace compute {
         type: pulumi.Input<string>;
     }
 
+    export interface InstanceTemplateIamBindingCondition {
+        description?: pulumi.Input<string>;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: pulumi.Input<string>;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
+        title: pulumi.Input<string>;
+    }
+
+    export interface InstanceTemplateIamMemberCondition {
+        description?: pulumi.Input<string>;
+        /**
+         * Textual representation of an expression in Common Expression Language syntax.
+         */
+        expression: pulumi.Input<string>;
+        /**
+         * A title for the expression, i.e. a short string describing its purpose.
+         */
+        title: pulumi.Input<string>;
+    }
+
     export interface InstanceTemplateNetworkInterface {
         /**
          * Access configurations, i.e. IPs via which this
@@ -20820,6 +21012,11 @@ export namespace compute {
          */
         destIpRanges?: pulumi.Input<pulumi.Input<string>[]>;
         /**
+         * Network scope of the traffic destination.
+         * Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+         */
+        destNetworkScope?: pulumi.Input<string>;
+        /**
          * Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of dest region codes allowed is 5000.
          */
         destRegionCodes?: pulumi.Input<pulumi.Input<string>[]>;
@@ -20844,6 +21041,15 @@ export namespace compute {
          * CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
          */
         srcIpRanges?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Network scope of the traffic source.
+         * Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+         */
+        srcNetworkScope?: pulumi.Input<string>;
+        /**
+         * Networks of the traffic source. It can be either a full or partial url.
+         */
+        srcNetworks?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of source region codes allowed is 5000.
          */
@@ -21213,6 +21419,11 @@ export namespace compute {
          */
         destIpRanges?: pulumi.Input<pulumi.Input<string>[]>;
         /**
+         * Network scope of the traffic destination.
+         * Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+         */
+        destNetworkScope?: pulumi.Input<string>;
+        /**
          * Region codes whose IP addresses will be used to match for destination
          * of traffic. Should be specified as 2 letter country code defined as per
          * ISO 3166 alpha-2 country codes. ex."US"
@@ -21244,6 +21455,15 @@ export namespace compute {
          * INGRESS rules.
          */
         srcIpRanges?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Network scope of the traffic source.
+         * Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+         */
+        srcNetworkScope?: pulumi.Input<string>;
+        /**
+         * Networks of the traffic source. It can be either a full or partial url.
+         */
+        srcNetworks?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * Region codes whose IP addresses will be used to match for source
          * of traffic. Should be specified as 2 letter country code defined as per
@@ -23810,6 +24030,11 @@ export namespace compute {
          */
         destIpRanges?: pulumi.Input<pulumi.Input<string>[]>;
         /**
+         * Network scope of the traffic destination.
+         * Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+         */
+        destNetworkScope?: pulumi.Input<string>;
+        /**
          * Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of dest region codes allowed is 5000.
          */
         destRegionCodes?: pulumi.Input<pulumi.Input<string>[]>;
@@ -23834,6 +24059,15 @@ export namespace compute {
          * CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
          */
         srcIpRanges?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Network scope of the traffic source.
+         * Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+         */
+        srcNetworkScope?: pulumi.Input<string>;
+        /**
+         * Networks of the traffic source. It can be either a full or partial url.
+         */
+        srcNetworks?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of source region codes allowed is 5000.
          */
@@ -24203,6 +24437,11 @@ export namespace compute {
          */
         destIpRanges?: pulumi.Input<pulumi.Input<string>[]>;
         /**
+         * Network scope of the traffic destination.
+         * Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+         */
+        destNetworkScope?: pulumi.Input<string>;
+        /**
          * Region codes whose IP addresses will be used to match for destination
          * of traffic. Should be specified as 2 letter country code defined as per
          * ISO 3166 alpha-2 country codes. ex."US"
@@ -24234,6 +24473,15 @@ export namespace compute {
          * INGRESS rules.
          */
         srcIpRanges?: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * Network scope of the traffic source.
+         * Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+         */
+        srcNetworkScope?: pulumi.Input<string>;
+        /**
+         * Networks of the traffic source. It can be either a full or partial url.
+         */
+        srcNetworks?: pulumi.Input<pulumi.Input<string>[]>;
         /**
          * Region codes whose IP addresses will be used to match for source
          * of traffic. Should be specified as 2 letter country code defined as per
@@ -63190,6 +63438,22 @@ export namespace networksecurity {
         state?: pulumi.Input<string>;
     }
 
+    export interface SecurityProfileCustomInterceptProfile {
+        /**
+         * The Intercept Endpoint Group to which matching traffic should be intercepted.
+         * Format: projects/{project_id}/locations/global/interceptEndpointGroups/{endpoint_group_id}
+         */
+        interceptEndpointGroup: pulumi.Input<string>;
+    }
+
+    export interface SecurityProfileCustomMirroringProfile {
+        /**
+         * The Mirroring Endpoint Group to which matching traffic should be mirrored.
+         * Format: projects/{project_id}/locations/global/mirroringEndpointGroups/{endpoint_group_id}
+         */
+        mirroringEndpointGroup: pulumi.Input<string>;
+    }
+
     export interface SecurityProfileThreatPreventionProfile {
         /**
          * The configuration for overriding threats actions by severity match.
@@ -69471,6 +69735,11 @@ export namespace pubsub {
          */
         awsKinesis?: pulumi.Input<inputs.pubsub.TopicIngestionDataSourceSettingsAwsKinesis>;
         /**
+         * Settings for ingestion from Azure Event Hubs.
+         * Structure is documented below.
+         */
+        azureEventHubs?: pulumi.Input<inputs.pubsub.TopicIngestionDataSourceSettingsAzureEventHubs>;
+        /**
          * Settings for ingestion from Cloud Storage.
          * Structure is documented below.
          */
@@ -69507,6 +69776,39 @@ export namespace pubsub {
          * The Kinesis stream ARN to ingest data from.
          */
         streamArn: pulumi.Input<string>;
+    }
+
+    export interface TopicIngestionDataSourceSettingsAzureEventHubs {
+        /**
+         * The Azure event hub client ID to use for ingestion.
+         */
+        clientId?: pulumi.Input<string>;
+        /**
+         * The Azure event hub to ingest data from.
+         */
+        eventHub?: pulumi.Input<string>;
+        /**
+         * The GCP service account to be used for Federated Identity authentication
+         * with Azure (via a `AssumeRoleWithWebIdentity` call for the provided
+         * role).
+         */
+        gcpServiceAccount?: pulumi.Input<string>;
+        /**
+         * The Azure event hub namespace to ingest data from.
+         */
+        namespace?: pulumi.Input<string>;
+        /**
+         * The name of the resource group within an Azure subscription.
+         */
+        resourceGroup?: pulumi.Input<string>;
+        /**
+         * The Azure event hub subscription ID to use for ingestion.
+         */
+        subscriptionId?: pulumi.Input<string>;
+        /**
+         * The Azure event hub tenant ID to use for ingestion.
+         */
+        tenantId?: pulumi.Input<string>;
     }
 
     export interface TopicIngestionDataSourceSettingsCloudStorage {
@@ -69584,6 +69886,13 @@ export namespace pubsub {
          * and is not a valid configuration.
          */
         allowedPersistenceRegions: pulumi.Input<pulumi.Input<string>[]>;
+        /**
+         * If true, `allowedPersistenceRegions` is also used to enforce in-transit
+         * guarantees for messages. That is, Pub/Sub will fail topics.publish
+         * operations on this topic and subscribe operations on any subscription
+         * attached to this topic in any region that is not in `allowedPersistenceRegions`.
+         */
+        enforceInTransit?: pulumi.Input<boolean>;
     }
 
     export interface TopicSchemaSettings {
@@ -69945,8 +70254,6 @@ export namespace redis {
          * Required. The consumer network where the network address of
          * the discovery endpoint will be reserved, in the form of
          * projects/{network_project_id_or_number}/global/networks/{network_id}.
-         *
-         * - - -
          */
         network: pulumi.Input<string>;
     }
@@ -69974,6 +70281,19 @@ export namespace redis {
         pscConnectionId?: pulumi.Input<string>;
     }
 
+    export interface ClusterPscServiceAttachment {
+        /**
+         * (Output)
+         * Type of a PSC connection targeting this service attachment.
+         */
+        connectionType?: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Service attachment URI which your self-created PscConnection should use as
+         */
+        serviceAttachment?: pulumi.Input<string>;
+    }
+
     export interface ClusterStateInfo {
         /**
          * A nested object resource.
@@ -69991,6 +70311,70 @@ export namespace redis {
          * Target number of shards for redis cluster.
          */
         targetShardCount?: pulumi.Input<number>;
+    }
+
+    export interface ClusterUserCreatedConnectionsClusterEndpoint {
+        /**
+         * Structure is documented below.
+         */
+        connections?: pulumi.Input<pulumi.Input<inputs.redis.ClusterUserCreatedConnectionsClusterEndpointConnection>[]>;
+    }
+
+    export interface ClusterUserCreatedConnectionsClusterEndpointConnection {
+        /**
+         * Detailed information of a PSC connection that is created by the customer
+         * who owns the cluster.
+         * Structure is documented below.
+         */
+        pscConnection?: pulumi.Input<inputs.redis.ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnection>;
+    }
+
+    export interface ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnection {
+        /**
+         * The IP allocated on the consumer network for the PSC forwarding rule.
+         */
+        address: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Output Only. Type of a PSC Connection.
+         * Possible values:
+         * CONNECTION_TYPE_DISCOVERY
+         * CONNECTION_TYPE_PRIMARY
+         * CONNECTION_TYPE_READER
+         */
+        connectionType?: pulumi.Input<string>;
+        /**
+         * The URI of the consumer side forwarding rule.
+         * Format:
+         * projects/{project}/regions/{region}/forwardingRules/{forwarding_rule}
+         */
+        forwardingRule: pulumi.Input<string>;
+        /**
+         * The consumer network where the IP address resides, in the form of
+         * projects/{project_id}/global/networks/{network_id}.
+         */
+        network: pulumi.Input<string>;
+        /**
+         * The consumer projectId where the forwarding rule is created from.
+         */
+        projectId?: pulumi.Input<string>;
+        /**
+         * The PSC connection id of the forwarding rule connected to the
+         * service attachment.
+         */
+        pscConnectionId: pulumi.Input<string>;
+        /**
+         * (Output)
+         * Output Only. The status of the PSC connection: whether a connection exists and ACTIVE or it no longer exists.
+         * Possible values:
+         * ACTIVE
+         * NOT_FOUND
+         */
+        pscConnectionStatus?: pulumi.Input<string>;
+        /**
+         * The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
+         */
+        serviceAttachment: pulumi.Input<string>;
     }
 
     export interface ClusterZoneDistributionConfig {

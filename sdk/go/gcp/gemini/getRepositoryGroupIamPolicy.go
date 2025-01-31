@@ -11,6 +11,36 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// Retrieves the current IAM policy data for repositorygroup
+//
+// ## example
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/gemini"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gemini.LookupRepositoryGroupIamPolicy(ctx, &gemini.LookupRepositoryGroupIamPolicyArgs{
+//				Project:             pulumi.StringRef(example.Project),
+//				Location:            pulumi.StringRef(example.Location),
+//				CodeRepositoryIndex: example.CodeRepositoryIndex,
+//				RepositoryGroupId:   example.RepositoryGroupId,
+//			}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 func LookupRepositoryGroupIamPolicy(ctx *pulumi.Context, args *LookupRepositoryGroupIamPolicyArgs, opts ...pulumi.InvokeOption) (*LookupRepositoryGroupIamPolicyResult, error) {
 	opts = internal.PkgInvokeDefaultOpts(opts)
 	var rv LookupRepositoryGroupIamPolicyResult

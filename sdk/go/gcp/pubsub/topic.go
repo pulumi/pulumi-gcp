@@ -114,6 +114,7 @@ import (
 //					AllowedPersistenceRegions: pulumi.StringArray{
 //						pulumi.String("europe-west3"),
 //					},
+//					EnforceInTransit: pulumi.Bool(true),
 //				},
 //			})
 //			if err != nil {
@@ -239,6 +240,42 @@ import (
 //					},
 //					PlatformLogsSettings: &pubsub.TopicIngestionDataSourceSettingsPlatformLogsSettingsArgs{
 //						Severity: pulumi.String("WARNING"),
+//					},
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
+// ### Pubsub Topic Ingestion Azure Event Hubs
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/pubsub"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := pubsub.NewTopic(ctx, "example", &pubsub.TopicArgs{
+//				Name: pulumi.String("example-topic"),
+//				IngestionDataSourceSettings: &pubsub.TopicIngestionDataSourceSettingsArgs{
+//					AzureEventHubs: &pubsub.TopicIngestionDataSourceSettingsAzureEventHubsArgs{
+//						ResourceGroup:     pulumi.String("azure-ingestion-resource-group"),
+//						Namespace:         pulumi.String("azure-ingestion-namespace"),
+//						EventHub:          pulumi.String("azure-ingestion-event-hub"),
+//						ClientId:          pulumi.String("aZZZZZZZ-YYYY-HHHH-GGGG-abcdef569123"),
+//						TenantId:          pulumi.String("0XXXXXXX-YYYY-HHHH-GGGG-123456789123"),
+//						SubscriptionId:    pulumi.String("bXXXXXXX-YYYY-HHHH-GGGG-123456789123"),
+//						GcpServiceAccount: pulumi.String("fake-service-account@fake-gcp-project.iam.gserviceaccount.com"),
 //					},
 //				},
 //			})

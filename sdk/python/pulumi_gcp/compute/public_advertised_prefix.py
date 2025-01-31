@@ -23,6 +23,7 @@ class PublicAdvertisedPrefixArgs:
                  ip_cidr_range: pulumi.Input[str],
                  description: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 pdp_scope: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None):
         """
         The set of arguments for constructing a PublicAdvertisedPrefix resource.
@@ -38,6 +39,9 @@ class PublicAdvertisedPrefixArgs:
                which means the first character must be a lowercase letter, and all
                following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
+        :param pulumi.Input[str] pdp_scope: Specifies how child public delegated prefix will be scoped. pdpScope
+               must be one of: GLOBAL, REGIONAL
+               Possible values are: `GLOBAL`, `REGIONAL`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -47,6 +51,8 @@ class PublicAdvertisedPrefixArgs:
             pulumi.set(__self__, "description", description)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if pdp_scope is not None:
+            pulumi.set(__self__, "pdp_scope", pdp_scope)
         if project is not None:
             pulumi.set(__self__, "project", project)
 
@@ -107,6 +113,20 @@ class PublicAdvertisedPrefixArgs:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="pdpScope")
+    def pdp_scope(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies how child public delegated prefix will be scoped. pdpScope
+        must be one of: GLOBAL, REGIONAL
+        Possible values are: `GLOBAL`, `REGIONAL`.
+        """
+        return pulumi.get(self, "pdp_scope")
+
+    @pdp_scope.setter
+    def pdp_scope(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pdp_scope", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
@@ -127,6 +147,7 @@ class _PublicAdvertisedPrefixState:
                  dns_verification_ip: Optional[pulumi.Input[str]] = None,
                  ip_cidr_range: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 pdp_scope: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
                  shared_secret: Optional[pulumi.Input[str]] = None):
@@ -144,6 +165,9 @@ class _PublicAdvertisedPrefixState:
                which means the first character must be a lowercase letter, and all
                following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
+        :param pulumi.Input[str] pdp_scope: Specifies how child public delegated prefix will be scoped. pdpScope
+               must be one of: GLOBAL, REGIONAL
+               Possible values are: `GLOBAL`, `REGIONAL`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
@@ -157,6 +181,8 @@ class _PublicAdvertisedPrefixState:
             pulumi.set(__self__, "ip_cidr_range", ip_cidr_range)
         if name is not None:
             pulumi.set(__self__, "name", name)
+        if pdp_scope is not None:
+            pulumi.set(__self__, "pdp_scope", pdp_scope)
         if project is not None:
             pulumi.set(__self__, "project", project)
         if self_link is not None:
@@ -221,6 +247,20 @@ class _PublicAdvertisedPrefixState:
         pulumi.set(self, "name", value)
 
     @property
+    @pulumi.getter(name="pdpScope")
+    def pdp_scope(self) -> Optional[pulumi.Input[str]]:
+        """
+        Specifies how child public delegated prefix will be scoped. pdpScope
+        must be one of: GLOBAL, REGIONAL
+        Possible values are: `GLOBAL`, `REGIONAL`.
+        """
+        return pulumi.get(self, "pdp_scope")
+
+    @pdp_scope.setter
+    def pdp_scope(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "pdp_scope", value)
+
+    @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
         """
@@ -267,6 +307,7 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
                  dns_verification_ip: Optional[pulumi.Input[str]] = None,
                  ip_cidr_range: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 pdp_scope: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
@@ -291,6 +332,19 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
             description="description",
             dns_verification_ip="127.127.0.0",
             ip_cidr_range="127.127.0.0/16")
+        ```
+        ### Public Advertised Prefixes Pdp Scope
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        prefixes = gcp.compute.PublicAdvertisedPrefix("prefixes",
+            name="my-pap",
+            description="description",
+            dns_verification_ip="127.127.0.0",
+            ip_cidr_range="127.127.0.0/16",
+            pdp_scope="REGIONAL")
         ```
 
         ## Import
@@ -331,6 +385,9 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
                which means the first character must be a lowercase letter, and all
                following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
+        :param pulumi.Input[str] pdp_scope: Specifies how child public delegated prefix will be scoped. pdpScope
+               must be one of: GLOBAL, REGIONAL
+               Possible values are: `GLOBAL`, `REGIONAL`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         """
@@ -362,6 +419,19 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
             description="description",
             dns_verification_ip="127.127.0.0",
             ip_cidr_range="127.127.0.0/16")
+        ```
+        ### Public Advertised Prefixes Pdp Scope
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        prefixes = gcp.compute.PublicAdvertisedPrefix("prefixes",
+            name="my-pap",
+            description="description",
+            dns_verification_ip="127.127.0.0",
+            ip_cidr_range="127.127.0.0/16",
+            pdp_scope="REGIONAL")
         ```
 
         ## Import
@@ -407,6 +477,7 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
                  dns_verification_ip: Optional[pulumi.Input[str]] = None,
                  ip_cidr_range: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
+                 pdp_scope: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         opts = pulumi.ResourceOptions.merge(_utilities.get_resource_opts_defaults(), opts)
@@ -425,6 +496,7 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
                 raise TypeError("Missing required property 'ip_cidr_range'")
             __props__.__dict__["ip_cidr_range"] = ip_cidr_range
             __props__.__dict__["name"] = name
+            __props__.__dict__["pdp_scope"] = pdp_scope
             __props__.__dict__["project"] = project
             __props__.__dict__["self_link"] = None
             __props__.__dict__["shared_secret"] = None
@@ -442,6 +514,7 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
             dns_verification_ip: Optional[pulumi.Input[str]] = None,
             ip_cidr_range: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
+            pdp_scope: Optional[pulumi.Input[str]] = None,
             project: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
             shared_secret: Optional[pulumi.Input[str]] = None) -> 'PublicAdvertisedPrefix':
@@ -464,6 +537,9 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
                which means the first character must be a lowercase letter, and all
                following characters must be a dash, lowercase letter, or digit,
                except the last character, which cannot be a dash.
+        :param pulumi.Input[str] pdp_scope: Specifies how child public delegated prefix will be scoped. pdpScope
+               must be one of: GLOBAL, REGIONAL
+               Possible values are: `GLOBAL`, `REGIONAL`.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
         :param pulumi.Input[str] self_link: The URI of the created resource.
@@ -477,6 +553,7 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
         __props__.__dict__["dns_verification_ip"] = dns_verification_ip
         __props__.__dict__["ip_cidr_range"] = ip_cidr_range
         __props__.__dict__["name"] = name
+        __props__.__dict__["pdp_scope"] = pdp_scope
         __props__.__dict__["project"] = project
         __props__.__dict__["self_link"] = self_link
         __props__.__dict__["shared_secret"] = shared_secret
@@ -521,6 +598,16 @@ class PublicAdvertisedPrefix(pulumi.CustomResource):
         except the last character, which cannot be a dash.
         """
         return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="pdpScope")
+    def pdp_scope(self) -> pulumi.Output[Optional[str]]:
+        """
+        Specifies how child public delegated prefix will be scoped. pdpScope
+        must be one of: GLOBAL, REGIONAL
+        Possible values are: `GLOBAL`, `REGIONAL`.
+        """
+        return pulumi.get(self, "pdp_scope")
 
     @property
     @pulumi.getter

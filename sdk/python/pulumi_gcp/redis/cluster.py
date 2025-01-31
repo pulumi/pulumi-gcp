@@ -21,7 +21,6 @@ __all__ = ['ClusterArgs', 'Cluster']
 @pulumi.input_type
 class ClusterArgs:
     def __init__(__self__, *,
-                 psc_configs: pulumi.Input[Sequence[pulumi.Input['ClusterPscConfigArgs']]],
                  shard_count: pulumi.Input[int],
                  authorization_mode: Optional[pulumi.Input[str]] = None,
                  cross_cluster_replication_config: Optional[pulumi.Input['ClusterCrossClusterReplicationConfigArgs']] = None,
@@ -31,6 +30,7 @@ class ClusterArgs:
                  node_type: Optional[pulumi.Input[str]] = None,
                  persistence_config: Optional[pulumi.Input['ClusterPersistenceConfigArgs']] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 psc_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterPscConfigArgs']]]] = None,
                  redis_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  replica_count: Optional[pulumi.Input[int]] = None,
@@ -38,34 +38,45 @@ class ClusterArgs:
                  zone_distribution_config: Optional[pulumi.Input['ClusterZoneDistributionConfigArgs']] = None):
         """
         The set of arguments for constructing a Cluster resource.
+        :param pulumi.Input[int] shard_count: Required. Number of shards for the Redis cluster.
+        :param pulumi.Input[str] authorization_mode: Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
+               Default value is `AUTH_MODE_DISABLED`.
+               Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
+        :param pulumi.Input['ClusterCrossClusterReplicationConfigArgs'] cross_cluster_replication_config: Cross cluster replication config
+               Structure is documented below.
+        :param pulumi.Input[bool] deletion_protection_enabled: Optional. Indicates if the cluster is deletion protected or not.
+               If the value if set to true, any delete cluster operation will fail.
+               Default value is true.
+        :param pulumi.Input['ClusterMaintenancePolicyArgs'] maintenance_policy: Maintenance policy for a cluster
+               Structure is documented below.
+        :param pulumi.Input[str] name: Unique name of the resource in this scope including project and location using the form:
+               projects/{projectId}/locations/{locationId}/clusters/{clusterId}
+               
+               
+               - - -
+        :param pulumi.Input[str] node_type: The nodeType for the Redis cluster.
+               If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
+               Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
+        :param pulumi.Input['ClusterPersistenceConfigArgs'] persistence_config: Persistence config (RDB, AOF) for the cluster.
+               Structure is documented below.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterPscConfigArgs']]] psc_configs: Required. Each PscConfig configures the consumer network where two
                network addresses will be designated to the cluster for client access.
                Currently, only one PscConfig is supported.
                Structure is documented below.
-        :param pulumi.Input[int] shard_count: Required. Number of shards for the Redis cluster.
-        :param pulumi.Input[str] authorization_mode: Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
-               Default value: "AUTH_MODE_DISABLED" Possible values: ["AUTH_MODE_UNSPECIFIED", "AUTH_MODE_IAM_AUTH",
-               "AUTH_MODE_DISABLED"]
-        :param pulumi.Input['ClusterCrossClusterReplicationConfigArgs'] cross_cluster_replication_config: Cross cluster replication config
-        :param pulumi.Input[bool] deletion_protection_enabled: Optional. Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster
-               operation will fail. Default value is true.
-        :param pulumi.Input['ClusterMaintenancePolicyArgs'] maintenance_policy: Maintenance policy for a cluster
-        :param pulumi.Input[str] name: Unique name of the resource in this scope including project and location using the form:
-               projects/{projectId}/locations/{locationId}/clusters/{clusterId}
-        :param pulumi.Input[str] node_type: The nodeType for the Redis cluster. If not provided, REDIS_HIGHMEM_MEDIUM will be used as default Possible values:
-               ["REDIS_SHARED_CORE_NANO", "REDIS_HIGHMEM_MEDIUM", "REDIS_HIGHMEM_XLARGE", "REDIS_STANDARD_SMALL"]
-        :param pulumi.Input['ClusterPersistenceConfigArgs'] persistence_config: Persistence config (RDB, AOF) for the cluster.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] redis_configs: Configure Redis Cluster behavior using a subset of native Redis configuration parameters. Please check Memorystore
-               documentation for the list of supported parameters:
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] redis_configs: Configure Redis Cluster behavior using a subset of native Redis configuration parameters.
+               Please check Memorystore documentation for the list of supported parameters:
                https://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations
         :param pulumi.Input[str] region: The name of the region of the Redis cluster.
         :param pulumi.Input[int] replica_count: Optional. The number of replica nodes per shard.
-        :param pulumi.Input[str] transit_encryption_mode: Optional. The in-transit encryption for the Redis cluster. If not provided, encryption is disabled for the cluster.
-               Default value: "TRANSIT_ENCRYPTION_MODE_DISABLED" Possible values: ["TRANSIT_ENCRYPTION_MODE_UNSPECIFIED",
-               "TRANSIT_ENCRYPTION_MODE_DISABLED", "TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION"]
+        :param pulumi.Input[str] transit_encryption_mode: Optional. The in-transit encryption for the Redis cluster.
+               If not provided, encryption is disabled for the cluster.
+               Default value is `TRANSIT_ENCRYPTION_MODE_DISABLED`.
+               Possible values are: `TRANSIT_ENCRYPTION_MODE_UNSPECIFIED`, `TRANSIT_ENCRYPTION_MODE_DISABLED`, `TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION`.
         :param pulumi.Input['ClusterZoneDistributionConfigArgs'] zone_distribution_config: Immutable. Zone distribution config for Memorystore Redis cluster.
+               Structure is documented below.
         """
-        pulumi.set(__self__, "psc_configs", psc_configs)
         pulumi.set(__self__, "shard_count", shard_count)
         if authorization_mode is not None:
             pulumi.set(__self__, "authorization_mode", authorization_mode)
@@ -83,6 +94,8 @@ class ClusterArgs:
             pulumi.set(__self__, "persistence_config", persistence_config)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if psc_configs is not None:
+            pulumi.set(__self__, "psc_configs", psc_configs)
         if redis_configs is not None:
             pulumi.set(__self__, "redis_configs", redis_configs)
         if region is not None:
@@ -93,21 +106,6 @@ class ClusterArgs:
             pulumi.set(__self__, "transit_encryption_mode", transit_encryption_mode)
         if zone_distribution_config is not None:
             pulumi.set(__self__, "zone_distribution_config", zone_distribution_config)
-
-    @property
-    @pulumi.getter(name="pscConfigs")
-    def psc_configs(self) -> pulumi.Input[Sequence[pulumi.Input['ClusterPscConfigArgs']]]:
-        """
-        Required. Each PscConfig configures the consumer network where two
-        network addresses will be designated to the cluster for client access.
-        Currently, only one PscConfig is supported.
-        Structure is documented below.
-        """
-        return pulumi.get(self, "psc_configs")
-
-    @psc_configs.setter
-    def psc_configs(self, value: pulumi.Input[Sequence[pulumi.Input['ClusterPscConfigArgs']]]):
-        pulumi.set(self, "psc_configs", value)
 
     @property
     @pulumi.getter(name="shardCount")
@@ -126,8 +124,8 @@ class ClusterArgs:
     def authorization_mode(self) -> Optional[pulumi.Input[str]]:
         """
         Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
-        Default value: "AUTH_MODE_DISABLED" Possible values: ["AUTH_MODE_UNSPECIFIED", "AUTH_MODE_IAM_AUTH",
-        "AUTH_MODE_DISABLED"]
+        Default value is `AUTH_MODE_DISABLED`.
+        Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
         """
         return pulumi.get(self, "authorization_mode")
 
@@ -140,6 +138,7 @@ class ClusterArgs:
     def cross_cluster_replication_config(self) -> Optional[pulumi.Input['ClusterCrossClusterReplicationConfigArgs']]:
         """
         Cross cluster replication config
+        Structure is documented below.
         """
         return pulumi.get(self, "cross_cluster_replication_config")
 
@@ -151,8 +150,9 @@ class ClusterArgs:
     @pulumi.getter(name="deletionProtectionEnabled")
     def deletion_protection_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Optional. Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster
-        operation will fail. Default value is true.
+        Optional. Indicates if the cluster is deletion protected or not.
+        If the value if set to true, any delete cluster operation will fail.
+        Default value is true.
         """
         return pulumi.get(self, "deletion_protection_enabled")
 
@@ -165,6 +165,7 @@ class ClusterArgs:
     def maintenance_policy(self) -> Optional[pulumi.Input['ClusterMaintenancePolicyArgs']]:
         """
         Maintenance policy for a cluster
+        Structure is documented below.
         """
         return pulumi.get(self, "maintenance_policy")
 
@@ -178,6 +179,9 @@ class ClusterArgs:
         """
         Unique name of the resource in this scope including project and location using the form:
         projects/{projectId}/locations/{locationId}/clusters/{clusterId}
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -189,8 +193,9 @@ class ClusterArgs:
     @pulumi.getter(name="nodeType")
     def node_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The nodeType for the Redis cluster. If not provided, REDIS_HIGHMEM_MEDIUM will be used as default Possible values:
-        ["REDIS_SHARED_CORE_NANO", "REDIS_HIGHMEM_MEDIUM", "REDIS_HIGHMEM_XLARGE", "REDIS_STANDARD_SMALL"]
+        The nodeType for the Redis cluster.
+        If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
+        Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
         """
         return pulumi.get(self, "node_type")
 
@@ -203,6 +208,7 @@ class ClusterArgs:
     def persistence_config(self) -> Optional[pulumi.Input['ClusterPersistenceConfigArgs']]:
         """
         Persistence config (RDB, AOF) for the cluster.
+        Structure is documented below.
         """
         return pulumi.get(self, "persistence_config")
 
@@ -213,6 +219,10 @@ class ClusterArgs:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -220,11 +230,26 @@ class ClusterArgs:
         pulumi.set(self, "project", value)
 
     @property
+    @pulumi.getter(name="pscConfigs")
+    def psc_configs(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterPscConfigArgs']]]]:
+        """
+        Required. Each PscConfig configures the consumer network where two
+        network addresses will be designated to the cluster for client access.
+        Currently, only one PscConfig is supported.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "psc_configs")
+
+    @psc_configs.setter
+    def psc_configs(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterPscConfigArgs']]]]):
+        pulumi.set(self, "psc_configs", value)
+
+    @property
     @pulumi.getter(name="redisConfigs")
     def redis_configs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Configure Redis Cluster behavior using a subset of native Redis configuration parameters. Please check Memorystore
-        documentation for the list of supported parameters:
+        Configure Redis Cluster behavior using a subset of native Redis configuration parameters.
+        Please check Memorystore documentation for the list of supported parameters:
         https://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations
         """
         return pulumi.get(self, "redis_configs")
@@ -261,9 +286,10 @@ class ClusterArgs:
     @pulumi.getter(name="transitEncryptionMode")
     def transit_encryption_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. The in-transit encryption for the Redis cluster. If not provided, encryption is disabled for the cluster.
-        Default value: "TRANSIT_ENCRYPTION_MODE_DISABLED" Possible values: ["TRANSIT_ENCRYPTION_MODE_UNSPECIFIED",
-        "TRANSIT_ENCRYPTION_MODE_DISABLED", "TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION"]
+        Optional. The in-transit encryption for the Redis cluster.
+        If not provided, encryption is disabled for the cluster.
+        Default value is `TRANSIT_ENCRYPTION_MODE_DISABLED`.
+        Possible values are: `TRANSIT_ENCRYPTION_MODE_UNSPECIFIED`, `TRANSIT_ENCRYPTION_MODE_DISABLED`, `TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION`.
         """
         return pulumi.get(self, "transit_encryption_mode")
 
@@ -276,6 +302,7 @@ class ClusterArgs:
     def zone_distribution_config(self) -> Optional[pulumi.Input['ClusterZoneDistributionConfigArgs']]:
         """
         Immutable. Zone distribution config for Memorystore Redis cluster.
+        Structure is documented below.
         """
         return pulumi.get(self, "zone_distribution_config")
 
@@ -301,6 +328,7 @@ class _ClusterState:
                  project: Optional[pulumi.Input[str]] = None,
                  psc_configs: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterPscConfigArgs']]]] = None,
                  psc_connections: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterPscConnectionArgs']]]] = None,
+                 psc_service_attachments: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterPscServiceAttachmentArgs']]]] = None,
                  redis_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  replica_count: Optional[pulumi.Input[int]] = None,
@@ -314,35 +342,47 @@ class _ClusterState:
         """
         Input properties used for looking up and filtering Cluster resources.
         :param pulumi.Input[str] authorization_mode: Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
-               Default value: "AUTH_MODE_DISABLED" Possible values: ["AUTH_MODE_UNSPECIFIED", "AUTH_MODE_IAM_AUTH",
-               "AUTH_MODE_DISABLED"]
+               Default value is `AUTH_MODE_DISABLED`.
+               Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
         :param pulumi.Input[str] create_time: The timestamp associated with the cluster creation request. A timestamp in
                RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional
                digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input['ClusterCrossClusterReplicationConfigArgs'] cross_cluster_replication_config: Cross cluster replication config
-        :param pulumi.Input[bool] deletion_protection_enabled: Optional. Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster
-               operation will fail. Default value is true.
+               Structure is documented below.
+        :param pulumi.Input[bool] deletion_protection_enabled: Optional. Indicates if the cluster is deletion protected or not.
+               If the value if set to true, any delete cluster operation will fail.
+               Default value is true.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterDiscoveryEndpointArgs']]] discovery_endpoints: Output only. Endpoints created on each given network,
                for Redis clients to connect to the cluster.
                Currently only one endpoint is supported.
                Structure is documented below.
         :param pulumi.Input['ClusterMaintenancePolicyArgs'] maintenance_policy: Maintenance policy for a cluster
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterMaintenanceScheduleArgs']]] maintenance_schedules: Upcoming maintenance schedule.
                Structure is documented below.
         :param pulumi.Input[str] name: Unique name of the resource in this scope including project and location using the form:
                projects/{projectId}/locations/{locationId}/clusters/{clusterId}
-        :param pulumi.Input[str] node_type: The nodeType for the Redis cluster. If not provided, REDIS_HIGHMEM_MEDIUM will be used as default Possible values:
-               ["REDIS_SHARED_CORE_NANO", "REDIS_HIGHMEM_MEDIUM", "REDIS_HIGHMEM_XLARGE", "REDIS_STANDARD_SMALL"]
+               
+               
+               - - -
+        :param pulumi.Input[str] node_type: The nodeType for the Redis cluster.
+               If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
+               Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
         :param pulumi.Input['ClusterPersistenceConfigArgs'] persistence_config: Persistence config (RDB, AOF) for the cluster.
+               Structure is documented below.
         :param pulumi.Input[float] precise_size_gb: Output only. Redis memory precise size in GB for the entire cluster.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterPscConfigArgs']]] psc_configs: Required. Each PscConfig configures the consumer network where two
                network addresses will be designated to the cluster for client access.
                Currently, only one PscConfig is supported.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input['ClusterPscConnectionArgs']]] psc_connections: Output only. PSC connections for discovery of the cluster topology and accessing the cluster.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] redis_configs: Configure Redis Cluster behavior using a subset of native Redis configuration parameters. Please check Memorystore
-               documentation for the list of supported parameters:
+        :param pulumi.Input[Sequence[pulumi.Input['ClusterPscServiceAttachmentArgs']]] psc_service_attachments: Service attachment details to configure Psc connections.
+               Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] redis_configs: Configure Redis Cluster behavior using a subset of native Redis configuration parameters.
+               Please check Memorystore documentation for the list of supported parameters:
                https://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations
         :param pulumi.Input[str] region: The name of the region of the Redis cluster.
         :param pulumi.Input[int] replica_count: Optional. The number of replica nodes per shard.
@@ -351,11 +391,13 @@ class _ClusterState:
         :param pulumi.Input[str] state: The current state of this cluster. Can be CREATING, READY, UPDATING, DELETING and SUSPENDED
         :param pulumi.Input[Sequence[pulumi.Input['ClusterStateInfoArgs']]] state_infos: Output only. Additional information about the current state of the cluster.
                Structure is documented below.
-        :param pulumi.Input[str] transit_encryption_mode: Optional. The in-transit encryption for the Redis cluster. If not provided, encryption is disabled for the cluster.
-               Default value: "TRANSIT_ENCRYPTION_MODE_DISABLED" Possible values: ["TRANSIT_ENCRYPTION_MODE_UNSPECIFIED",
-               "TRANSIT_ENCRYPTION_MODE_DISABLED", "TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION"]
+        :param pulumi.Input[str] transit_encryption_mode: Optional. The in-transit encryption for the Redis cluster.
+               If not provided, encryption is disabled for the cluster.
+               Default value is `TRANSIT_ENCRYPTION_MODE_DISABLED`.
+               Possible values are: `TRANSIT_ENCRYPTION_MODE_UNSPECIFIED`, `TRANSIT_ENCRYPTION_MODE_DISABLED`, `TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION`.
         :param pulumi.Input[str] uid: System assigned, unique identifier for the cluster.
         :param pulumi.Input['ClusterZoneDistributionConfigArgs'] zone_distribution_config: Immutable. Zone distribution config for Memorystore Redis cluster.
+               Structure is documented below.
         """
         if authorization_mode is not None:
             pulumi.set(__self__, "authorization_mode", authorization_mode)
@@ -385,6 +427,8 @@ class _ClusterState:
             pulumi.set(__self__, "psc_configs", psc_configs)
         if psc_connections is not None:
             pulumi.set(__self__, "psc_connections", psc_connections)
+        if psc_service_attachments is not None:
+            pulumi.set(__self__, "psc_service_attachments", psc_service_attachments)
         if redis_configs is not None:
             pulumi.set(__self__, "redis_configs", redis_configs)
         if region is not None:
@@ -411,8 +455,8 @@ class _ClusterState:
     def authorization_mode(self) -> Optional[pulumi.Input[str]]:
         """
         Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
-        Default value: "AUTH_MODE_DISABLED" Possible values: ["AUTH_MODE_UNSPECIFIED", "AUTH_MODE_IAM_AUTH",
-        "AUTH_MODE_DISABLED"]
+        Default value is `AUTH_MODE_DISABLED`.
+        Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
         """
         return pulumi.get(self, "authorization_mode")
 
@@ -439,6 +483,7 @@ class _ClusterState:
     def cross_cluster_replication_config(self) -> Optional[pulumi.Input['ClusterCrossClusterReplicationConfigArgs']]:
         """
         Cross cluster replication config
+        Structure is documented below.
         """
         return pulumi.get(self, "cross_cluster_replication_config")
 
@@ -450,8 +495,9 @@ class _ClusterState:
     @pulumi.getter(name="deletionProtectionEnabled")
     def deletion_protection_enabled(self) -> Optional[pulumi.Input[bool]]:
         """
-        Optional. Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster
-        operation will fail. Default value is true.
+        Optional. Indicates if the cluster is deletion protected or not.
+        If the value if set to true, any delete cluster operation will fail.
+        Default value is true.
         """
         return pulumi.get(self, "deletion_protection_enabled")
 
@@ -479,6 +525,7 @@ class _ClusterState:
     def maintenance_policy(self) -> Optional[pulumi.Input['ClusterMaintenancePolicyArgs']]:
         """
         Maintenance policy for a cluster
+        Structure is documented below.
         """
         return pulumi.get(self, "maintenance_policy")
 
@@ -505,6 +552,9 @@ class _ClusterState:
         """
         Unique name of the resource in this scope including project and location using the form:
         projects/{projectId}/locations/{locationId}/clusters/{clusterId}
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -516,8 +566,9 @@ class _ClusterState:
     @pulumi.getter(name="nodeType")
     def node_type(self) -> Optional[pulumi.Input[str]]:
         """
-        The nodeType for the Redis cluster. If not provided, REDIS_HIGHMEM_MEDIUM will be used as default Possible values:
-        ["REDIS_SHARED_CORE_NANO", "REDIS_HIGHMEM_MEDIUM", "REDIS_HIGHMEM_XLARGE", "REDIS_STANDARD_SMALL"]
+        The nodeType for the Redis cluster.
+        If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
+        Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
         """
         return pulumi.get(self, "node_type")
 
@@ -530,6 +581,7 @@ class _ClusterState:
     def persistence_config(self) -> Optional[pulumi.Input['ClusterPersistenceConfigArgs']]:
         """
         Persistence config (RDB, AOF) for the cluster.
+        Structure is documented below.
         """
         return pulumi.get(self, "persistence_config")
 
@@ -552,6 +604,10 @@ class _ClusterState:
     @property
     @pulumi.getter
     def project(self) -> Optional[pulumi.Input[str]]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @project.setter
@@ -587,11 +643,24 @@ class _ClusterState:
         pulumi.set(self, "psc_connections", value)
 
     @property
+    @pulumi.getter(name="pscServiceAttachments")
+    def psc_service_attachments(self) -> Optional[pulumi.Input[Sequence[pulumi.Input['ClusterPscServiceAttachmentArgs']]]]:
+        """
+        Service attachment details to configure Psc connections.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "psc_service_attachments")
+
+    @psc_service_attachments.setter
+    def psc_service_attachments(self, value: Optional[pulumi.Input[Sequence[pulumi.Input['ClusterPscServiceAttachmentArgs']]]]):
+        pulumi.set(self, "psc_service_attachments", value)
+
+    @property
     @pulumi.getter(name="redisConfigs")
     def redis_configs(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
         """
-        Configure Redis Cluster behavior using a subset of native Redis configuration parameters. Please check Memorystore
-        documentation for the list of supported parameters:
+        Configure Redis Cluster behavior using a subset of native Redis configuration parameters.
+        Please check Memorystore documentation for the list of supported parameters:
         https://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations
         """
         return pulumi.get(self, "redis_configs")
@@ -677,9 +746,10 @@ class _ClusterState:
     @pulumi.getter(name="transitEncryptionMode")
     def transit_encryption_mode(self) -> Optional[pulumi.Input[str]]:
         """
-        Optional. The in-transit encryption for the Redis cluster. If not provided, encryption is disabled for the cluster.
-        Default value: "TRANSIT_ENCRYPTION_MODE_DISABLED" Possible values: ["TRANSIT_ENCRYPTION_MODE_UNSPECIFIED",
-        "TRANSIT_ENCRYPTION_MODE_DISABLED", "TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION"]
+        Optional. The in-transit encryption for the Redis cluster.
+        If not provided, encryption is disabled for the cluster.
+        Default value is `TRANSIT_ENCRYPTION_MODE_DISABLED`.
+        Possible values are: `TRANSIT_ENCRYPTION_MODE_UNSPECIFIED`, `TRANSIT_ENCRYPTION_MODE_DISABLED`, `TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION`.
         """
         return pulumi.get(self, "transit_encryption_mode")
 
@@ -704,6 +774,7 @@ class _ClusterState:
     def zone_distribution_config(self) -> Optional[pulumi.Input['ClusterZoneDistributionConfigArgs']]:
         """
         Immutable. Zone distribution config for Memorystore Redis cluster.
+        Structure is documented below.
         """
         return pulumi.get(self, "zone_distribution_config")
 
@@ -1113,31 +1184,43 @@ class Cluster(pulumi.CustomResource):
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] authorization_mode: Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
-               Default value: "AUTH_MODE_DISABLED" Possible values: ["AUTH_MODE_UNSPECIFIED", "AUTH_MODE_IAM_AUTH",
-               "AUTH_MODE_DISABLED"]
+               Default value is `AUTH_MODE_DISABLED`.
+               Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
         :param pulumi.Input[Union['ClusterCrossClusterReplicationConfigArgs', 'ClusterCrossClusterReplicationConfigArgsDict']] cross_cluster_replication_config: Cross cluster replication config
-        :param pulumi.Input[bool] deletion_protection_enabled: Optional. Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster
-               operation will fail. Default value is true.
+               Structure is documented below.
+        :param pulumi.Input[bool] deletion_protection_enabled: Optional. Indicates if the cluster is deletion protected or not.
+               If the value if set to true, any delete cluster operation will fail.
+               Default value is true.
         :param pulumi.Input[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict']] maintenance_policy: Maintenance policy for a cluster
+               Structure is documented below.
         :param pulumi.Input[str] name: Unique name of the resource in this scope including project and location using the form:
                projects/{projectId}/locations/{locationId}/clusters/{clusterId}
-        :param pulumi.Input[str] node_type: The nodeType for the Redis cluster. If not provided, REDIS_HIGHMEM_MEDIUM will be used as default Possible values:
-               ["REDIS_SHARED_CORE_NANO", "REDIS_HIGHMEM_MEDIUM", "REDIS_HIGHMEM_XLARGE", "REDIS_STANDARD_SMALL"]
+               
+               
+               - - -
+        :param pulumi.Input[str] node_type: The nodeType for the Redis cluster.
+               If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
+               Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
         :param pulumi.Input[Union['ClusterPersistenceConfigArgs', 'ClusterPersistenceConfigArgsDict']] persistence_config: Persistence config (RDB, AOF) for the cluster.
+               Structure is documented below.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterPscConfigArgs', 'ClusterPscConfigArgsDict']]]] psc_configs: Required. Each PscConfig configures the consumer network where two
                network addresses will be designated to the cluster for client access.
                Currently, only one PscConfig is supported.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] redis_configs: Configure Redis Cluster behavior using a subset of native Redis configuration parameters. Please check Memorystore
-               documentation for the list of supported parameters:
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] redis_configs: Configure Redis Cluster behavior using a subset of native Redis configuration parameters.
+               Please check Memorystore documentation for the list of supported parameters:
                https://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations
         :param pulumi.Input[str] region: The name of the region of the Redis cluster.
         :param pulumi.Input[int] replica_count: Optional. The number of replica nodes per shard.
         :param pulumi.Input[int] shard_count: Required. Number of shards for the Redis cluster.
-        :param pulumi.Input[str] transit_encryption_mode: Optional. The in-transit encryption for the Redis cluster. If not provided, encryption is disabled for the cluster.
-               Default value: "TRANSIT_ENCRYPTION_MODE_DISABLED" Possible values: ["TRANSIT_ENCRYPTION_MODE_UNSPECIFIED",
-               "TRANSIT_ENCRYPTION_MODE_DISABLED", "TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION"]
+        :param pulumi.Input[str] transit_encryption_mode: Optional. The in-transit encryption for the Redis cluster.
+               If not provided, encryption is disabled for the cluster.
+               Default value is `TRANSIT_ENCRYPTION_MODE_DISABLED`.
+               Possible values are: `TRANSIT_ENCRYPTION_MODE_UNSPECIFIED`, `TRANSIT_ENCRYPTION_MODE_DISABLED`, `TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION`.
         :param pulumi.Input[Union['ClusterZoneDistributionConfigArgs', 'ClusterZoneDistributionConfigArgsDict']] zone_distribution_config: Immutable. Zone distribution config for Memorystore Redis cluster.
+               Structure is documented below.
         """
         ...
     @overload
@@ -1569,8 +1652,6 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["node_type"] = node_type
             __props__.__dict__["persistence_config"] = persistence_config
             __props__.__dict__["project"] = project
-            if psc_configs is None and not opts.urn:
-                raise TypeError("Missing required property 'psc_configs'")
             __props__.__dict__["psc_configs"] = psc_configs
             __props__.__dict__["redis_configs"] = redis_configs
             __props__.__dict__["region"] = region
@@ -1585,6 +1666,7 @@ class Cluster(pulumi.CustomResource):
             __props__.__dict__["maintenance_schedules"] = None
             __props__.__dict__["precise_size_gb"] = None
             __props__.__dict__["psc_connections"] = None
+            __props__.__dict__["psc_service_attachments"] = None
             __props__.__dict__["size_gb"] = None
             __props__.__dict__["state"] = None
             __props__.__dict__["state_infos"] = None
@@ -1613,6 +1695,7 @@ class Cluster(pulumi.CustomResource):
             project: Optional[pulumi.Input[str]] = None,
             psc_configs: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterPscConfigArgs', 'ClusterPscConfigArgsDict']]]]] = None,
             psc_connections: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterPscConnectionArgs', 'ClusterPscConnectionArgsDict']]]]] = None,
+            psc_service_attachments: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ClusterPscServiceAttachmentArgs', 'ClusterPscServiceAttachmentArgsDict']]]]] = None,
             redis_configs: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             region: Optional[pulumi.Input[str]] = None,
             replica_count: Optional[pulumi.Input[int]] = None,
@@ -1631,35 +1714,47 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] authorization_mode: Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
-               Default value: "AUTH_MODE_DISABLED" Possible values: ["AUTH_MODE_UNSPECIFIED", "AUTH_MODE_IAM_AUTH",
-               "AUTH_MODE_DISABLED"]
+               Default value is `AUTH_MODE_DISABLED`.
+               Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
         :param pulumi.Input[str] create_time: The timestamp associated with the cluster creation request. A timestamp in
                RFC3339 UTC "Zulu" format, with nanosecond resolution and up to nine fractional
                digits. Examples: "2014-10-02T15:01:23Z" and "2014-10-02T15:01:23.045123456Z".
         :param pulumi.Input[Union['ClusterCrossClusterReplicationConfigArgs', 'ClusterCrossClusterReplicationConfigArgsDict']] cross_cluster_replication_config: Cross cluster replication config
-        :param pulumi.Input[bool] deletion_protection_enabled: Optional. Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster
-               operation will fail. Default value is true.
+               Structure is documented below.
+        :param pulumi.Input[bool] deletion_protection_enabled: Optional. Indicates if the cluster is deletion protected or not.
+               If the value if set to true, any delete cluster operation will fail.
+               Default value is true.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterDiscoveryEndpointArgs', 'ClusterDiscoveryEndpointArgsDict']]]] discovery_endpoints: Output only. Endpoints created on each given network,
                for Redis clients to connect to the cluster.
                Currently only one endpoint is supported.
                Structure is documented below.
         :param pulumi.Input[Union['ClusterMaintenancePolicyArgs', 'ClusterMaintenancePolicyArgsDict']] maintenance_policy: Maintenance policy for a cluster
+               Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterMaintenanceScheduleArgs', 'ClusterMaintenanceScheduleArgsDict']]]] maintenance_schedules: Upcoming maintenance schedule.
                Structure is documented below.
         :param pulumi.Input[str] name: Unique name of the resource in this scope including project and location using the form:
                projects/{projectId}/locations/{locationId}/clusters/{clusterId}
-        :param pulumi.Input[str] node_type: The nodeType for the Redis cluster. If not provided, REDIS_HIGHMEM_MEDIUM will be used as default Possible values:
-               ["REDIS_SHARED_CORE_NANO", "REDIS_HIGHMEM_MEDIUM", "REDIS_HIGHMEM_XLARGE", "REDIS_STANDARD_SMALL"]
+               
+               
+               - - -
+        :param pulumi.Input[str] node_type: The nodeType for the Redis cluster.
+               If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
+               Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
         :param pulumi.Input[Union['ClusterPersistenceConfigArgs', 'ClusterPersistenceConfigArgsDict']] persistence_config: Persistence config (RDB, AOF) for the cluster.
+               Structure is documented below.
         :param pulumi.Input[float] precise_size_gb: Output only. Redis memory precise size in GB for the entire cluster.
+        :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
+               If it is not provided, the provider project is used.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterPscConfigArgs', 'ClusterPscConfigArgsDict']]]] psc_configs: Required. Each PscConfig configures the consumer network where two
                network addresses will be designated to the cluster for client access.
                Currently, only one PscConfig is supported.
                Structure is documented below.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterPscConnectionArgs', 'ClusterPscConnectionArgsDict']]]] psc_connections: Output only. PSC connections for discovery of the cluster topology and accessing the cluster.
                Structure is documented below.
-        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] redis_configs: Configure Redis Cluster behavior using a subset of native Redis configuration parameters. Please check Memorystore
-               documentation for the list of supported parameters:
+        :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterPscServiceAttachmentArgs', 'ClusterPscServiceAttachmentArgsDict']]]] psc_service_attachments: Service attachment details to configure Psc connections.
+               Structure is documented below.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] redis_configs: Configure Redis Cluster behavior using a subset of native Redis configuration parameters.
+               Please check Memorystore documentation for the list of supported parameters:
                https://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations
         :param pulumi.Input[str] region: The name of the region of the Redis cluster.
         :param pulumi.Input[int] replica_count: Optional. The number of replica nodes per shard.
@@ -1668,11 +1763,13 @@ class Cluster(pulumi.CustomResource):
         :param pulumi.Input[str] state: The current state of this cluster. Can be CREATING, READY, UPDATING, DELETING and SUSPENDED
         :param pulumi.Input[Sequence[pulumi.Input[Union['ClusterStateInfoArgs', 'ClusterStateInfoArgsDict']]]] state_infos: Output only. Additional information about the current state of the cluster.
                Structure is documented below.
-        :param pulumi.Input[str] transit_encryption_mode: Optional. The in-transit encryption for the Redis cluster. If not provided, encryption is disabled for the cluster.
-               Default value: "TRANSIT_ENCRYPTION_MODE_DISABLED" Possible values: ["TRANSIT_ENCRYPTION_MODE_UNSPECIFIED",
-               "TRANSIT_ENCRYPTION_MODE_DISABLED", "TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION"]
+        :param pulumi.Input[str] transit_encryption_mode: Optional. The in-transit encryption for the Redis cluster.
+               If not provided, encryption is disabled for the cluster.
+               Default value is `TRANSIT_ENCRYPTION_MODE_DISABLED`.
+               Possible values are: `TRANSIT_ENCRYPTION_MODE_UNSPECIFIED`, `TRANSIT_ENCRYPTION_MODE_DISABLED`, `TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION`.
         :param pulumi.Input[str] uid: System assigned, unique identifier for the cluster.
         :param pulumi.Input[Union['ClusterZoneDistributionConfigArgs', 'ClusterZoneDistributionConfigArgsDict']] zone_distribution_config: Immutable. Zone distribution config for Memorystore Redis cluster.
+               Structure is documented below.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
 
@@ -1692,6 +1789,7 @@ class Cluster(pulumi.CustomResource):
         __props__.__dict__["project"] = project
         __props__.__dict__["psc_configs"] = psc_configs
         __props__.__dict__["psc_connections"] = psc_connections
+        __props__.__dict__["psc_service_attachments"] = psc_service_attachments
         __props__.__dict__["redis_configs"] = redis_configs
         __props__.__dict__["region"] = region
         __props__.__dict__["replica_count"] = replica_count
@@ -1709,8 +1807,8 @@ class Cluster(pulumi.CustomResource):
     def authorization_mode(self) -> pulumi.Output[Optional[str]]:
         """
         Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
-        Default value: "AUTH_MODE_DISABLED" Possible values: ["AUTH_MODE_UNSPECIFIED", "AUTH_MODE_IAM_AUTH",
-        "AUTH_MODE_DISABLED"]
+        Default value is `AUTH_MODE_DISABLED`.
+        Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
         """
         return pulumi.get(self, "authorization_mode")
 
@@ -1729,6 +1827,7 @@ class Cluster(pulumi.CustomResource):
     def cross_cluster_replication_config(self) -> pulumi.Output['outputs.ClusterCrossClusterReplicationConfig']:
         """
         Cross cluster replication config
+        Structure is documented below.
         """
         return pulumi.get(self, "cross_cluster_replication_config")
 
@@ -1736,8 +1835,9 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="deletionProtectionEnabled")
     def deletion_protection_enabled(self) -> pulumi.Output[Optional[bool]]:
         """
-        Optional. Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster
-        operation will fail. Default value is true.
+        Optional. Indicates if the cluster is deletion protected or not.
+        If the value if set to true, any delete cluster operation will fail.
+        Default value is true.
         """
         return pulumi.get(self, "deletion_protection_enabled")
 
@@ -1757,6 +1857,7 @@ class Cluster(pulumi.CustomResource):
     def maintenance_policy(self) -> pulumi.Output[Optional['outputs.ClusterMaintenancePolicy']]:
         """
         Maintenance policy for a cluster
+        Structure is documented below.
         """
         return pulumi.get(self, "maintenance_policy")
 
@@ -1775,6 +1876,9 @@ class Cluster(pulumi.CustomResource):
         """
         Unique name of the resource in this scope including project and location using the form:
         projects/{projectId}/locations/{locationId}/clusters/{clusterId}
+
+
+        - - -
         """
         return pulumi.get(self, "name")
 
@@ -1782,8 +1886,9 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="nodeType")
     def node_type(self) -> pulumi.Output[str]:
         """
-        The nodeType for the Redis cluster. If not provided, REDIS_HIGHMEM_MEDIUM will be used as default Possible values:
-        ["REDIS_SHARED_CORE_NANO", "REDIS_HIGHMEM_MEDIUM", "REDIS_HIGHMEM_XLARGE", "REDIS_STANDARD_SMALL"]
+        The nodeType for the Redis cluster.
+        If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
+        Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
         """
         return pulumi.get(self, "node_type")
 
@@ -1792,6 +1897,7 @@ class Cluster(pulumi.CustomResource):
     def persistence_config(self) -> pulumi.Output['outputs.ClusterPersistenceConfig']:
         """
         Persistence config (RDB, AOF) for the cluster.
+        Structure is documented below.
         """
         return pulumi.get(self, "persistence_config")
 
@@ -1806,11 +1912,15 @@ class Cluster(pulumi.CustomResource):
     @property
     @pulumi.getter
     def project(self) -> pulumi.Output[str]:
+        """
+        The ID of the project in which the resource belongs.
+        If it is not provided, the provider project is used.
+        """
         return pulumi.get(self, "project")
 
     @property
     @pulumi.getter(name="pscConfigs")
-    def psc_configs(self) -> pulumi.Output[Sequence['outputs.ClusterPscConfig']]:
+    def psc_configs(self) -> pulumi.Output[Optional[Sequence['outputs.ClusterPscConfig']]]:
         """
         Required. Each PscConfig configures the consumer network where two
         network addresses will be designated to the cluster for client access.
@@ -1829,11 +1939,20 @@ class Cluster(pulumi.CustomResource):
         return pulumi.get(self, "psc_connections")
 
     @property
+    @pulumi.getter(name="pscServiceAttachments")
+    def psc_service_attachments(self) -> pulumi.Output[Sequence['outputs.ClusterPscServiceAttachment']]:
+        """
+        Service attachment details to configure Psc connections.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "psc_service_attachments")
+
+    @property
     @pulumi.getter(name="redisConfigs")
     def redis_configs(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
         """
-        Configure Redis Cluster behavior using a subset of native Redis configuration parameters. Please check Memorystore
-        documentation for the list of supported parameters:
+        Configure Redis Cluster behavior using a subset of native Redis configuration parameters.
+        Please check Memorystore documentation for the list of supported parameters:
         https://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations
         """
         return pulumi.get(self, "redis_configs")
@@ -1891,9 +2010,10 @@ class Cluster(pulumi.CustomResource):
     @pulumi.getter(name="transitEncryptionMode")
     def transit_encryption_mode(self) -> pulumi.Output[Optional[str]]:
         """
-        Optional. The in-transit encryption for the Redis cluster. If not provided, encryption is disabled for the cluster.
-        Default value: "TRANSIT_ENCRYPTION_MODE_DISABLED" Possible values: ["TRANSIT_ENCRYPTION_MODE_UNSPECIFIED",
-        "TRANSIT_ENCRYPTION_MODE_DISABLED", "TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION"]
+        Optional. The in-transit encryption for the Redis cluster.
+        If not provided, encryption is disabled for the cluster.
+        Default value is `TRANSIT_ENCRYPTION_MODE_DISABLED`.
+        Possible values are: `TRANSIT_ENCRYPTION_MODE_UNSPECIFIED`, `TRANSIT_ENCRYPTION_MODE_DISABLED`, `TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION`.
         """
         return pulumi.get(self, "transit_encryption_mode")
 
@@ -1907,9 +2027,10 @@ class Cluster(pulumi.CustomResource):
 
     @property
     @pulumi.getter(name="zoneDistributionConfig")
-    def zone_distribution_config(self) -> pulumi.Output[Optional['outputs.ClusterZoneDistributionConfig']]:
+    def zone_distribution_config(self) -> pulumi.Output['outputs.ClusterZoneDistributionConfig']:
         """
         Immutable. Zone distribution config for Memorystore Redis cluster.
+        Structure is documented below.
         """
         return pulumi.get(self, "zone_distribution_config")
 

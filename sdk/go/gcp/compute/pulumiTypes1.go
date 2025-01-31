@@ -13,6 +13,370 @@ import (
 
 var _ = internal.GetEnvOrDefault
 
+type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig struct {
+	// If set to true, enables CAAP for L7 DDoS detection.
+	Enable *bool `pulumi:"enable"`
+	// Rule visibility. Supported values include: "STANDARD", "PREMIUM".
+	RuleVisibility *string `pulumi:"ruleVisibility"`
+	// Configuration options for layer7 adaptive protection for various customizable thresholds.
+	ThresholdConfigs []SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig `pulumi:"thresholdConfigs"`
+}
+
+// SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigInput is an input type that accepts SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs and SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput values.
+// You can construct a concrete instance of `SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigInput` via:
+//
+//	SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs{...}
+type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput
+	ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutputWithContext(context.Context) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput
+}
+
+type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs struct {
+	// If set to true, enables CAAP for L7 DDoS detection.
+	Enable pulumi.BoolPtrInput `pulumi:"enable"`
+	// Rule visibility. Supported values include: "STANDARD", "PREMIUM".
+	RuleVisibility pulumi.StringPtrInput `pulumi:"ruleVisibility"`
+	// Configuration options for layer7 adaptive protection for various customizable thresholds.
+	ThresholdConfigs SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayInput `pulumi:"thresholdConfigs"`
+}
+
+func (SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig)(nil)).Elem()
+}
+
+func (i SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput {
+	return i.ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutputWithContext(ctx context.Context) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput)
+}
+
+func (i SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput {
+	return i.ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput).ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutputWithContext(ctx)
+}
+
+// SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrInput is an input type that accepts SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs, SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtr and SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput values.
+// You can construct a concrete instance of `SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrInput` via:
+//
+//	        SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs{...}
+//
+//	or:
+//
+//	        nil
+type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput
+	ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutputWithContext(context.Context) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput
+}
+
+type securityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrType SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs
+
+func SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtr(v *SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrInput {
+	return (*securityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrType)(v)
+}
+
+func (*securityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig)(nil)).Elem()
+}
+
+func (i *securityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrType) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput {
+	return i.ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutputWithContext(context.Background())
+}
+
+func (i *securityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrType) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput)
+}
+
+type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig)(nil)).Elem()
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput {
+	return o
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutputWithContext(ctx context.Context) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput {
+	return o
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput {
+	return o.ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutputWithContext(context.Background())
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig) *SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig {
+		return &v
+	}).(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput)
+}
+
+// If set to true, enables CAAP for L7 DDoS detection.
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput) Enable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig) *bool { return v.Enable }).(pulumi.BoolPtrOutput)
+}
+
+// Rule visibility. Supported values include: "STANDARD", "PREMIUM".
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput) RuleVisibility() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig) *string { return v.RuleVisibility }).(pulumi.StringPtrOutput)
+}
+
+// Configuration options for layer7 adaptive protection for various customizable thresholds.
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput) ThresholdConfigs() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig) []SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig {
+		return v.ThresholdConfigs
+	}).(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput)
+}
+
+type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig)(nil)).Elem()
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutputWithContext(ctx context.Context) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput {
+	return o
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput) Elem() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput {
+	return o.ApplyT(func(v *SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig {
+		if v != nil {
+			return *v
+		}
+		var ret SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig
+		return ret
+	}).(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput)
+}
+
+// If set to true, enables CAAP for L7 DDoS detection.
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput) Enable() pulumi.BoolPtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig) *bool {
+		if v == nil {
+			return nil
+		}
+		return v.Enable
+	}).(pulumi.BoolPtrOutput)
+}
+
+// Rule visibility. Supported values include: "STANDARD", "PREMIUM".
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput) RuleVisibility() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig) *string {
+		if v == nil {
+			return nil
+		}
+		return v.RuleVisibility
+	}).(pulumi.StringPtrOutput)
+}
+
+// Configuration options for layer7 adaptive protection for various customizable thresholds.
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput) ThresholdConfigs() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput {
+	return o.ApplyT(func(v *SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfig) []SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig {
+		if v == nil {
+			return nil
+		}
+		return v.ThresholdConfigs
+	}).(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput)
+}
+
+type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig struct {
+	// Confidence threshold above which Adaptive Protection's auto-deploy takes actions.
+	AutoDeployConfidenceThreshold *float64 `pulumi:"autoDeployConfidenceThreshold"`
+	// Duration over which Adaptive Protection's auto-deployed actions last.
+	AutoDeployExpirationSec *int `pulumi:"autoDeployExpirationSec"`
+	// Impacted baseline threshold below which Adaptive Protection's auto-deploy takes actions.
+	AutoDeployImpactedBaselineThreshold *float64 `pulumi:"autoDeployImpactedBaselineThreshold"`
+	// Load threshold above which Adaptive Protection automatically deploy threshold based on the backend load threshold and detect a new rule during an alerted attack.
+	AutoDeployLoadThreshold *float64 `pulumi:"autoDeployLoadThreshold"`
+	// Detection threshold based on absolute QPS.
+	DetectionAbsoluteQps *float64 `pulumi:"detectionAbsoluteQps"`
+	// Detection threshold based on the backend service's load.
+	DetectionLoadThreshold *float64 `pulumi:"detectionLoadThreshold"`
+	// Detection threshold based on QPS relative to the average of baseline traffic.
+	DetectionRelativeToBaselineQps *float64 `pulumi:"detectionRelativeToBaselineQps"`
+	// The name of config. The name must be 1-63 characters long, and comply with RFC1035. The name must be unique within the security policy.
+	Name string `pulumi:"name"`
+	// Configuration options for enabling Adaptive Protection to work on the specified service granularity. Structure is documented below.
+	TrafficGranularityConfigs []SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig `pulumi:"trafficGranularityConfigs"`
+}
+
+// SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigInput is an input type that accepts SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArgs and SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput values.
+// You can construct a concrete instance of `SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigInput` via:
+//
+//	SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArgs{...}
+type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput
+	ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutputWithContext(context.Context) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput
+}
+
+type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArgs struct {
+	// Confidence threshold above which Adaptive Protection's auto-deploy takes actions.
+	AutoDeployConfidenceThreshold pulumi.Float64PtrInput `pulumi:"autoDeployConfidenceThreshold"`
+	// Duration over which Adaptive Protection's auto-deployed actions last.
+	AutoDeployExpirationSec pulumi.IntPtrInput `pulumi:"autoDeployExpirationSec"`
+	// Impacted baseline threshold below which Adaptive Protection's auto-deploy takes actions.
+	AutoDeployImpactedBaselineThreshold pulumi.Float64PtrInput `pulumi:"autoDeployImpactedBaselineThreshold"`
+	// Load threshold above which Adaptive Protection automatically deploy threshold based on the backend load threshold and detect a new rule during an alerted attack.
+	AutoDeployLoadThreshold pulumi.Float64PtrInput `pulumi:"autoDeployLoadThreshold"`
+	// Detection threshold based on absolute QPS.
+	DetectionAbsoluteQps pulumi.Float64PtrInput `pulumi:"detectionAbsoluteQps"`
+	// Detection threshold based on the backend service's load.
+	DetectionLoadThreshold pulumi.Float64PtrInput `pulumi:"detectionLoadThreshold"`
+	// Detection threshold based on QPS relative to the average of baseline traffic.
+	DetectionRelativeToBaselineQps pulumi.Float64PtrInput `pulumi:"detectionRelativeToBaselineQps"`
+	// The name of config. The name must be 1-63 characters long, and comply with RFC1035. The name must be unique within the security policy.
+	Name pulumi.StringInput `pulumi:"name"`
+	// Configuration options for enabling Adaptive Protection to work on the specified service granularity. Structure is documented below.
+	TrafficGranularityConfigs SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayInput `pulumi:"trafficGranularityConfigs"`
+}
+
+func (SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig)(nil)).Elem()
+}
+
+func (i SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArgs) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput {
+	return i.ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArgs) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutputWithContext(ctx context.Context) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput)
+}
+
+// SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayInput is an input type that accepts SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArray and SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput values.
+// You can construct a concrete instance of `SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayInput` via:
+//
+//	SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArray{ SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArgs{...} }
+type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayInput interface {
+	pulumi.Input
+
+	ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput
+	ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutputWithContext(context.Context) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput
+}
+
+type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArray []SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigInput
+
+func (SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig)(nil)).Elem()
+}
+
+func (i SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArray) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput {
+	return i.ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutputWithContext(context.Background())
+}
+
+func (i SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArray) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutputWithContext(ctx context.Context) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput)
+}
+
+type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig)(nil)).Elem()
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput {
+	return o
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutputWithContext(ctx context.Context) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput {
+	return o
+}
+
+// Confidence threshold above which Adaptive Protection's auto-deploy takes actions.
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput) AutoDeployConfidenceThreshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig) *float64 {
+		return v.AutoDeployConfidenceThreshold
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Duration over which Adaptive Protection's auto-deployed actions last.
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput) AutoDeployExpirationSec() pulumi.IntPtrOutput {
+	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig) *int {
+		return v.AutoDeployExpirationSec
+	}).(pulumi.IntPtrOutput)
+}
+
+// Impacted baseline threshold below which Adaptive Protection's auto-deploy takes actions.
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput) AutoDeployImpactedBaselineThreshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig) *float64 {
+		return v.AutoDeployImpactedBaselineThreshold
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Load threshold above which Adaptive Protection automatically deploy threshold based on the backend load threshold and detect a new rule during an alerted attack.
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput) AutoDeployLoadThreshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig) *float64 {
+		return v.AutoDeployLoadThreshold
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Detection threshold based on absolute QPS.
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput) DetectionAbsoluteQps() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig) *float64 {
+		return v.DetectionAbsoluteQps
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Detection threshold based on the backend service's load.
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput) DetectionLoadThreshold() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig) *float64 {
+		return v.DetectionLoadThreshold
+	}).(pulumi.Float64PtrOutput)
+}
+
+// Detection threshold based on QPS relative to the average of baseline traffic.
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput) DetectionRelativeToBaselineQps() pulumi.Float64PtrOutput {
+	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig) *float64 {
+		return v.DetectionRelativeToBaselineQps
+	}).(pulumi.Float64PtrOutput)
+}
+
+// The name of config. The name must be 1-63 characters long, and comply with RFC1035. The name must be unique within the security policy.
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig) string {
+		return v.Name
+	}).(pulumi.StringOutput)
+}
+
+// Configuration options for enabling Adaptive Protection to work on the specified service granularity. Structure is documented below.
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput) TrafficGranularityConfigs() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput {
+	return o.ApplyT(func(v SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig) []SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig {
+		return v.TrafficGranularityConfigs
+	}).(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput)
+}
+
+type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput struct{ *pulumi.OutputState }
+
+func (SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig)(nil)).Elem()
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput() SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput) ToSecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutputWithContext(ctx context.Context) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput {
+	return o
+}
+
+func (o SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput) Index(i pulumi.IntInput) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig {
+		return vs[0].([]SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfig)[vs[1].(int)]
+	}).(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput)
+}
+
 type SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfig struct {
 	// If enabled, traffic matching each unique value for the specified type constitutes a separate traffic unit. It can only be set to true if value is empty.
 	EnableEachUniqueValue *bool `pulumi:"enableEachUniqueValue"`
@@ -53178,6 +53542,10 @@ func (o GetSubnetworksSubnetworkArrayOutput) Index(i pulumi.IntInput) GetSubnetw
 }
 
 func init() {
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigInput)(nil)).Elem(), SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrInput)(nil)).Elem(), SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigInput)(nil)).Elem(), SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayInput)(nil)).Elem(), SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigInput)(nil)).Elem(), SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayInput)(nil)).Elem(), SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*SecurityPolicyAdvancedOptionsConfigInput)(nil)).Elem(), SecurityPolicyAdvancedOptionsConfigArgs{})
@@ -53878,6 +54246,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworkSecondaryIpRangeArrayInput)(nil)).Elem(), GetSubnetworkSecondaryIpRangeArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkInput)(nil)).Elem(), GetSubnetworksSubnetworkArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetSubnetworksSubnetworkArrayInput)(nil)).Elem(), GetSubnetworksSubnetworkArray{})
+	pulumi.RegisterOutputType(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigPtrOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigOutput{})
+	pulumi.RegisterOutputType(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigArrayOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyAdaptiveProtectionConfigLayer7DdosDefenseConfigThresholdConfigTrafficGranularityConfigArrayOutput{})
 	pulumi.RegisterOutputType(SecurityPolicyAdvancedOptionsConfigOutput{})

@@ -5,9 +5,12 @@ package com.pulumi.gcp.pubsub.outputs;
 
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.List;
 import java.util.Objects;
+import java.util.Optional;
+import javax.annotation.Nullable;
 
 @CustomType
 public final class TopicMessageStoragePolicy {
@@ -21,6 +24,14 @@ public final class TopicMessageStoragePolicy {
      * 
      */
     private List<String> allowedPersistenceRegions;
+    /**
+     * @return If true, `allowedPersistenceRegions` is also used to enforce in-transit
+     * guarantees for messages. That is, Pub/Sub will fail topics.publish
+     * operations on this topic and subscribe operations on any subscription
+     * attached to this topic in any region that is not in `allowedPersistenceRegions`.
+     * 
+     */
+    private @Nullable Boolean enforceInTransit;
 
     private TopicMessageStoragePolicy() {}
     /**
@@ -35,6 +46,16 @@ public final class TopicMessageStoragePolicy {
     public List<String> allowedPersistenceRegions() {
         return this.allowedPersistenceRegions;
     }
+    /**
+     * @return If true, `allowedPersistenceRegions` is also used to enforce in-transit
+     * guarantees for messages. That is, Pub/Sub will fail topics.publish
+     * operations on this topic and subscribe operations on any subscription
+     * attached to this topic in any region that is not in `allowedPersistenceRegions`.
+     * 
+     */
+    public Optional<Boolean> enforceInTransit() {
+        return Optional.ofNullable(this.enforceInTransit);
+    }
 
     public static Builder builder() {
         return new Builder();
@@ -46,10 +67,12 @@ public final class TopicMessageStoragePolicy {
     @CustomType.Builder
     public static final class Builder {
         private List<String> allowedPersistenceRegions;
+        private @Nullable Boolean enforceInTransit;
         public Builder() {}
         public Builder(TopicMessageStoragePolicy defaults) {
     	      Objects.requireNonNull(defaults);
     	      this.allowedPersistenceRegions = defaults.allowedPersistenceRegions;
+    	      this.enforceInTransit = defaults.enforceInTransit;
         }
 
         @CustomType.Setter
@@ -63,9 +86,16 @@ public final class TopicMessageStoragePolicy {
         public Builder allowedPersistenceRegions(String... allowedPersistenceRegions) {
             return allowedPersistenceRegions(List.of(allowedPersistenceRegions));
         }
+        @CustomType.Setter
+        public Builder enforceInTransit(@Nullable Boolean enforceInTransit) {
+
+            this.enforceInTransit = enforceInTransit;
+            return this;
+        }
         public TopicMessageStoragePolicy build() {
             final var _resultValue = new TopicMessageStoragePolicy();
             _resultValue.allowedPersistenceRegions = allowedPersistenceRegions;
+            _resultValue.enforceInTransit = enforceInTransit;
             return _resultValue;
         }
     }

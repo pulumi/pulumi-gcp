@@ -10,7 +10,45 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Gemini
 {
     /// <summary>
+    /// The resource for managing Repository Group for Gemini Code Assist.
+    /// 
+    /// To get more information about RepositoryGroup, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/gemini/docs/api/reference/rest/v1/projects.locations.codeRepositoryIndexes.repositoryGroups)
+    /// 
     /// ## Example Usage
+    /// 
+    /// ### Gemini Repository Group Basic
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var example = new Gcp.Gemini.RepositoryGroup("example", new()
+    ///     {
+    ///         Location = "us-central1",
+    ///         CodeRepositoryIndex = "example-cri",
+    ///         RepositoryGroupId = "example-repository-group",
+    ///         Repositories = new[]
+    ///         {
+    ///             new Gcp.Gemini.Inputs.RepositoryGroupRepositoryArgs
+    ///             {
+    ///                 Resource = "projects/example-project/locations/us-central1/connections/example-connection/gitRepositoryLinks/example-repo",
+    ///                 BranchPattern = "main",
+    ///             },
+    ///         },
+    ///         Labels = 
+    ///         {
+    ///             { "label1", "value1" },
+    ///         },
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -46,7 +84,7 @@ namespace Pulumi.Gcp.Gemini
         public Output<string> CodeRepositoryIndex { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. Create time stamp
+        /// Output only. Create time stamp.
         /// </summary>
         [Output("createTime")]
         public Output<string> CreateTime { get; private set; } = null!;
@@ -58,7 +96,7 @@ namespace Pulumi.Gcp.Gemini
         public Output<ImmutableDictionary<string, string>> EffectiveLabels { get; private set; } = null!;
 
         /// <summary>
-        /// Optional. Labels as key value pairs **Note**: This field is non-authoritative, and will only manage the labels present
+        /// Optional. Labels as key value pairs. **Note**: This field is non-authoritative, and will only manage the labels present
         /// in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
         /// </summary>
         [Output("labels")]
@@ -71,7 +109,7 @@ namespace Pulumi.Gcp.Gemini
         public Output<string> Location { get; private set; } = null!;
 
         /// <summary>
-        /// Immutable. Identifier. name of resource
+        /// Immutable. Identifier. Name of Repository Group.
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
@@ -87,7 +125,7 @@ namespace Pulumi.Gcp.Gemini
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
-        /// Required. List of repositories to group
+        /// Required. List of repositories to group.
         /// Structure is documented below.
         /// </summary>
         [Output("repositories")]
@@ -100,7 +138,7 @@ namespace Pulumi.Gcp.Gemini
         public Output<string> RepositoryGroupId { get; private set; } = null!;
 
         /// <summary>
-        /// Output only. Update time stamp
+        /// Output only. Update time stamp.
         /// </summary>
         [Output("updateTime")]
         public Output<string> UpdateTime { get; private set; } = null!;
@@ -166,7 +204,7 @@ namespace Pulumi.Gcp.Gemini
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Optional. Labels as key value pairs **Note**: This field is non-authoritative, and will only manage the labels present
+        /// Optional. Labels as key value pairs. **Note**: This field is non-authoritative, and will only manage the labels present
         /// in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
@@ -188,7 +226,7 @@ namespace Pulumi.Gcp.Gemini
         private InputList<Inputs.RepositoryGroupRepositoryArgs>? _repositories;
 
         /// <summary>
-        /// Required. List of repositories to group
+        /// Required. List of repositories to group.
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.RepositoryGroupRepositoryArgs> Repositories
@@ -218,7 +256,7 @@ namespace Pulumi.Gcp.Gemini
         public Input<string>? CodeRepositoryIndex { get; set; }
 
         /// <summary>
-        /// Output only. Create time stamp
+        /// Output only. Create time stamp.
         /// </summary>
         [Input("createTime")]
         public Input<string>? CreateTime { get; set; }
@@ -243,7 +281,7 @@ namespace Pulumi.Gcp.Gemini
         private InputMap<string>? _labels;
 
         /// <summary>
-        /// Optional. Labels as key value pairs **Note**: This field is non-authoritative, and will only manage the labels present
+        /// Optional. Labels as key value pairs. **Note**: This field is non-authoritative, and will only manage the labels present
         /// in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
         /// </summary>
         public InputMap<string> Labels
@@ -259,7 +297,7 @@ namespace Pulumi.Gcp.Gemini
         public Input<string>? Location { get; set; }
 
         /// <summary>
-        /// Immutable. Identifier. name of resource
+        /// Immutable. Identifier. Name of Repository Group.
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
@@ -288,7 +326,7 @@ namespace Pulumi.Gcp.Gemini
         private InputList<Inputs.RepositoryGroupRepositoryGetArgs>? _repositories;
 
         /// <summary>
-        /// Required. List of repositories to group
+        /// Required. List of repositories to group.
         /// Structure is documented below.
         /// </summary>
         public InputList<Inputs.RepositoryGroupRepositoryGetArgs> Repositories
@@ -304,7 +342,7 @@ namespace Pulumi.Gcp.Gemini
         public Input<string>? RepositoryGroupId { get; set; }
 
         /// <summary>
-        /// Output only. Update time stamp
+        /// Output only. Update time stamp.
         /// </summary>
         [Input("updateTime")]
         public Input<string>? UpdateTime { get; set; }

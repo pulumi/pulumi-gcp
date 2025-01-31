@@ -11,12 +11,87 @@ namespace Pulumi.Gcp.Gemini
 {
     public static class GetRepositoryGroupIamPolicy
     {
+        /// <summary>
+        /// Retrieves the current IAM policy data for repositorygroup
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.Gemini.GetRepositoryGroupIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = example.Project,
+        ///         Location = example.Location,
+        ///         CodeRepositoryIndex = example.CodeRepositoryIndex,
+        ///         RepositoryGroupId = example.RepositoryGroupId,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Task<GetRepositoryGroupIamPolicyResult> InvokeAsync(GetRepositoryGroupIamPolicyArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.InvokeAsync<GetRepositoryGroupIamPolicyResult>("gcp:gemini/getRepositoryGroupIamPolicy:getRepositoryGroupIamPolicy", args ?? new GetRepositoryGroupIamPolicyArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Retrieves the current IAM policy data for repositorygroup
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.Gemini.GetRepositoryGroupIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = example.Project,
+        ///         Location = example.Location,
+        ///         CodeRepositoryIndex = example.CodeRepositoryIndex,
+        ///         RepositoryGroupId = example.RepositoryGroupId,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetRepositoryGroupIamPolicyResult> Invoke(GetRepositoryGroupIamPolicyInvokeArgs args, InvokeOptions? options = null)
             => global::Pulumi.Deployment.Instance.Invoke<GetRepositoryGroupIamPolicyResult>("gcp:gemini/getRepositoryGroupIamPolicy:getRepositoryGroupIamPolicy", args ?? new GetRepositoryGroupIamPolicyInvokeArgs(), options.WithDefaults());
 
+        /// <summary>
+        /// Retrieves the current IAM policy data for repositorygroup
+        /// 
+        /// 
+        /// ## example
+        /// 
+        /// ```csharp
+        /// using System.Collections.Generic;
+        /// using System.Linq;
+        /// using Pulumi;
+        /// using Gcp = Pulumi.Gcp;
+        /// 
+        /// return await Deployment.RunAsync(() =&gt; 
+        /// {
+        ///     var policy = Gcp.Gemini.GetRepositoryGroupIamPolicy.Invoke(new()
+        ///     {
+        ///         Project = example.Project,
+        ///         Location = example.Location,
+        ///         CodeRepositoryIndex = example.CodeRepositoryIndex,
+        ///         RepositoryGroupId = example.RepositoryGroupId,
+        ///     });
+        /// 
+        /// });
+        /// ```
+        /// </summary>
         public static Output<GetRepositoryGroupIamPolicyResult> Invoke(GetRepositoryGroupIamPolicyInvokeArgs args, InvokeOutputOptions options)
             => global::Pulumi.Deployment.Instance.Invoke<GetRepositoryGroupIamPolicyResult>("gcp:gemini/getRepositoryGroupIamPolicy:getRepositoryGroupIamPolicy", args ?? new GetRepositoryGroupIamPolicyInvokeArgs(), options.WithDefaults());
     }

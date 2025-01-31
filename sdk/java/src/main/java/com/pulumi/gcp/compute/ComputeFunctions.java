@@ -58,6 +58,8 @@ import com.pulumi.gcp.compute.inputs.GetInstancePlainArgs;
 import com.pulumi.gcp.compute.inputs.GetInstanceSerialPortArgs;
 import com.pulumi.gcp.compute.inputs.GetInstanceSerialPortPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetInstanceTemplateArgs;
+import com.pulumi.gcp.compute.inputs.GetInstanceTemplateIamPolicyArgs;
+import com.pulumi.gcp.compute.inputs.GetInstanceTemplateIamPolicyPlainArgs;
 import com.pulumi.gcp.compute.inputs.GetInstanceTemplatePlainArgs;
 import com.pulumi.gcp.compute.inputs.GetMachineImageIamPolicyArgs;
 import com.pulumi.gcp.compute.inputs.GetMachineImageIamPolicyPlainArgs;
@@ -147,6 +149,7 @@ import com.pulumi.gcp.compute.outputs.GetInstanceGuestAttributesResult;
 import com.pulumi.gcp.compute.outputs.GetInstanceIamPolicyResult;
 import com.pulumi.gcp.compute.outputs.GetInstanceResult;
 import com.pulumi.gcp.compute.outputs.GetInstanceSerialPortResult;
+import com.pulumi.gcp.compute.outputs.GetInstanceTemplateIamPolicyResult;
 import com.pulumi.gcp.compute.outputs.GetInstanceTemplateResult;
 import com.pulumi.gcp.compute.outputs.GetLBIPRangesResult;
 import com.pulumi.gcp.compute.outputs.GetMachineImageIamPolicyResult;
@@ -6796,6 +6799,221 @@ public final class ComputeFunctions {
      */
     public static CompletableFuture<GetInstanceTemplateResult> getInstanceTemplatePlain(GetInstanceTemplatePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:compute/getInstanceTemplate:getInstanceTemplate", TypeShape.of(GetInstanceTemplateResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for instancetemplate
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInstanceTemplateIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ComputeFunctions.getInstanceTemplateIamPolicy(GetInstanceTemplateIamPolicyArgs.builder()
+     *             .project(default_.project())
+     *             .name(default_.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetInstanceTemplateIamPolicyResult> getInstanceTemplateIamPolicy(GetInstanceTemplateIamPolicyArgs args) {
+        return getInstanceTemplateIamPolicy(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for instancetemplate
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInstanceTemplateIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ComputeFunctions.getInstanceTemplateIamPolicy(GetInstanceTemplateIamPolicyArgs.builder()
+     *             .project(default_.project())
+     *             .name(default_.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetInstanceTemplateIamPolicyResult> getInstanceTemplateIamPolicyPlain(GetInstanceTemplateIamPolicyPlainArgs args) {
+        return getInstanceTemplateIamPolicyPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * Retrieves the current IAM policy data for instancetemplate
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInstanceTemplateIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ComputeFunctions.getInstanceTemplateIamPolicy(GetInstanceTemplateIamPolicyArgs.builder()
+     *             .project(default_.project())
+     *             .name(default_.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetInstanceTemplateIamPolicyResult> getInstanceTemplateIamPolicy(GetInstanceTemplateIamPolicyArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getInstanceTemplateIamPolicy:getInstanceTemplateIamPolicy", TypeShape.of(GetInstanceTemplateIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for instancetemplate
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInstanceTemplateIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ComputeFunctions.getInstanceTemplateIamPolicy(GetInstanceTemplateIamPolicyArgs.builder()
+     *             .project(default_.project())
+     *             .name(default_.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetInstanceTemplateIamPolicyResult> getInstanceTemplateIamPolicy(GetInstanceTemplateIamPolicyArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:compute/getInstanceTemplateIamPolicy:getInstanceTemplateIamPolicy", TypeShape.of(GetInstanceTemplateIamPolicyResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * Retrieves the current IAM policy data for instancetemplate
+     * 
+     * ## example
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.compute.ComputeFunctions;
+     * import com.pulumi.gcp.compute.inputs.GetInstanceTemplateIamPolicyArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var policy = ComputeFunctions.getInstanceTemplateIamPolicy(GetInstanceTemplateIamPolicyArgs.builder()
+     *             .project(default_.project())
+     *             .name(default_.name())
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetInstanceTemplateIamPolicyResult> getInstanceTemplateIamPolicyPlain(GetInstanceTemplateIamPolicyPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:compute/getInstanceTemplateIamPolicy:getInstanceTemplateIamPolicy", TypeShape.of(GetInstanceTemplateIamPolicyResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Use this data source to access IP ranges in your firewall rules.

@@ -35,7 +35,7 @@ public final class RepositoryGroupArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Optional. Labels as key value pairs **Note**: This field is non-authoritative, and will only manage the labels present
+     * Optional. Labels as key value pairs. **Note**: This field is non-authoritative, and will only manage the labels present
      * in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
      * 
      */
@@ -43,7 +43,7 @@ public final class RepositoryGroupArgs extends com.pulumi.resources.ResourceArgs
     private @Nullable Output<Map<String,String>> labels;
 
     /**
-     * @return Optional. Labels as key value pairs **Note**: This field is non-authoritative, and will only manage the labels present
+     * @return Optional. Labels as key value pairs. **Note**: This field is non-authoritative, and will only manage the labels present
      * in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
      * 
      */
@@ -74,7 +74,7 @@ public final class RepositoryGroupArgs extends com.pulumi.resources.ResourceArgs
     }
 
     /**
-     * Required. List of repositories to group
+     * Required. List of repositories to group.
      * Structure is documented below.
      * 
      */
@@ -82,7 +82,7 @@ public final class RepositoryGroupArgs extends com.pulumi.resources.ResourceArgs
     private Output<List<RepositoryGroupRepositoryArgs>> repositories;
 
     /**
-     * @return Required. List of repositories to group
+     * @return Required. List of repositories to group.
      * Structure is documented below.
      * 
      */
@@ -156,7 +156,7 @@ public final class RepositoryGroupArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param labels Optional. Labels as key value pairs **Note**: This field is non-authoritative, and will only manage the labels present
+         * @param labels Optional. Labels as key value pairs. **Note**: This field is non-authoritative, and will only manage the labels present
          * in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
          * 
          * @return builder
@@ -168,7 +168,7 @@ public final class RepositoryGroupArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param labels Optional. Labels as key value pairs **Note**: This field is non-authoritative, and will only manage the labels present
+         * @param labels Optional. Labels as key value pairs. **Note**: This field is non-authoritative, and will only manage the labels present
          * in your configuration. Please refer to the field &#39;effective_labels&#39; for all of the labels present on the resource.
          * 
          * @return builder
@@ -209,7 +209,7 @@ public final class RepositoryGroupArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param repositories Required. List of repositories to group
+         * @param repositories Required. List of repositories to group.
          * Structure is documented below.
          * 
          * @return builder
@@ -221,7 +221,7 @@ public final class RepositoryGroupArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param repositories Required. List of repositories to group
+         * @param repositories Required. List of repositories to group.
          * Structure is documented below.
          * 
          * @return builder
@@ -232,7 +232,7 @@ public final class RepositoryGroupArgs extends com.pulumi.resources.ResourceArgs
         }
 
         /**
-         * @param repositories Required. List of repositories to group
+         * @param repositories Required. List of repositories to group.
          * Structure is documented below.
          * 
          * @return builder

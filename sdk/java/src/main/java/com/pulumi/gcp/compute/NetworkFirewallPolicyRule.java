@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var basicGlobalNetworksecurityAddressGroup = new AddressGroup("basicGlobalNetworksecurityAddressGroup", AddressGroupArgs.builder()
- *             .name("address")
+ *             .name("address-group")
  *             .parent("projects/my-project-name")
  *             .description("Sample global networksecurity_address_group")
  *             .location("global")
@@ -75,7 +75,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var basicNetworkFirewallPolicy = new NetworkFirewallPolicy("basicNetworkFirewallPolicy", NetworkFirewallPolicyArgs.builder()
- *             .name("policy")
+ *             .name("fw-policy")
  *             .description("Sample global network firewall policy")
  *             .project("my-project-name")
  *             .build());
@@ -88,14 +88,14 @@ import javax.annotation.Nullable;
  *             .description("For keyname resources.")
  *             .parent("organizations/123456789")
  *             .purpose("GCE_FIREWALL")
- *             .shortName("tagkey")
+ *             .shortName("tag-key")
  *             .purposeData(Map.of("network", basicNetwork.name().applyValue(name -> String.format("my-project-name/%s", name))))
  *             .build());
  * 
  *         var basicValue = new TagValue("basicValue", TagValueArgs.builder()
  *             .description("For valuename resources.")
  *             .parent(basicKey.id())
- *             .shortName("tagvalue")
+ *             .shortName("tag-value")
  *             .build());
  * 
  *         var primary = new NetworkFirewallPolicyRule("primary", NetworkFirewallPolicyRuleArgs.builder()
@@ -109,6 +109,7 @@ import javax.annotation.Nullable;
  *             .ruleName("test-rule")
  *             .targetServiceAccounts("my}{@literal @}{@code service-account.com")
  *             .match(NetworkFirewallPolicyRuleMatchArgs.builder()
+ *                 .srcAddressGroups(basicGlobalNetworksecurityAddressGroup.id())
  *                 .srcIpRanges("10.100.0.1/32")
  *                 .srcFqdns("google.com")
  *                 .srcRegionCodes("US")
@@ -119,12 +120,132 @@ import javax.annotation.Nullable;
  *                 .layer4Configs(NetworkFirewallPolicyRuleMatchLayer4ConfigArgs.builder()
  *                     .ipProtocol("all")
  *                     .build())
- *                 .srcAddressGroups(basicGlobalNetworksecurityAddressGroup.id())
  *                 .build())
  *             .build());
  * 
  *     }}{@code
  * }}{@code
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Network Firewall Policy Rule Network Scope Egress
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.NetworkFirewallPolicy;
+ * import com.pulumi.gcp.compute.NetworkFirewallPolicyArgs;
+ * import com.pulumi.gcp.compute.NetworkFirewallPolicyRule;
+ * import com.pulumi.gcp.compute.NetworkFirewallPolicyRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.NetworkFirewallPolicyRuleMatchArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var basicNetworkFirewallPolicy = new NetworkFirewallPolicy("basicNetworkFirewallPolicy", NetworkFirewallPolicyArgs.builder()
+ *             .name("fw-policy")
+ *             .description("Sample global network firewall policy")
+ *             .project("my-project-name")
+ *             .build());
+ * 
+ *         var primary = new NetworkFirewallPolicyRule("primary", NetworkFirewallPolicyRuleArgs.builder()
+ *             .action("allow")
+ *             .description("This is a simple rule description")
+ *             .direction("EGRESS")
+ *             .disabled(false)
+ *             .enableLogging(true)
+ *             .firewallPolicy(basicNetworkFirewallPolicy.name())
+ *             .priority(1000)
+ *             .ruleName("test-rule")
+ *             .match(NetworkFirewallPolicyRuleMatchArgs.builder()
+ *                 .destIpRanges("10.100.0.1/32")
+ *                 .destNetworkScope("INTERNET")
+ *                 .layer4Configs(NetworkFirewallPolicyRuleMatchLayer4ConfigArgs.builder()
+ *                     .ipProtocol("all")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Network Firewall Policy Rule Network Scope Ingress
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.NetworkFirewallPolicy;
+ * import com.pulumi.gcp.compute.NetworkFirewallPolicyArgs;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.NetworkFirewallPolicyRule;
+ * import com.pulumi.gcp.compute.NetworkFirewallPolicyRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.NetworkFirewallPolicyRuleMatchArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var basicNetworkFirewallPolicy = new NetworkFirewallPolicy("basicNetworkFirewallPolicy", NetworkFirewallPolicyArgs.builder()
+ *             .name("fw-policy")
+ *             .description("Sample global network firewall policy")
+ *             .project("my-project-name")
+ *             .build());
+ * 
+ *         var network = new Network("network", NetworkArgs.builder()
+ *             .name("network")
+ *             .build());
+ * 
+ *         var primary = new NetworkFirewallPolicyRule("primary", NetworkFirewallPolicyRuleArgs.builder()
+ *             .action("allow")
+ *             .description("This is a simple rule description")
+ *             .direction("INGRESS")
+ *             .disabled(false)
+ *             .enableLogging(true)
+ *             .firewallPolicy(basicNetworkFirewallPolicy.name())
+ *             .priority(1000)
+ *             .ruleName("test-rule")
+ *             .match(NetworkFirewallPolicyRuleMatchArgs.builder()
+ *                 .srcIpRanges("11.100.0.1/32")
+ *                 .srcNetworkScope("VPC_NETWORKS")
+ *                 .srcNetworks(network.id())
+ *                 .layer4Configs(NetworkFirewallPolicyRuleMatchLayer4ConfigArgs.builder()
+ *                     .ipProtocol("all")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;

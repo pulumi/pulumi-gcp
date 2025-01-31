@@ -226,7 +226,8 @@ export class Cluster extends pulumi.CustomResource {
      */
     public /*out*/ readonly continuousBackupInfos!: pulumi.Output<outputs.alloydb.ClusterContinuousBackupInfo[]>;
     /**
-     * The database engine major version. This is an optional field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
+     * The database engine major version. This is an optional field and it's populated at the Cluster creation time.
+     * Note: Changing this field to a higer version results in upgrading the AlloyDB cluster which is an irreversible change.
      */
     public readonly databaseVersion!: pulumi.Output<string>;
     /**
@@ -334,6 +335,12 @@ export class Cluster extends pulumi.CustomResource {
      */
     public readonly secondaryConfig!: pulumi.Output<outputs.alloydb.ClusterSecondaryConfig | undefined>;
     /**
+     * Set to true to skip awaiting on the major version upgrade of the cluster.
+     * Possible values: true, false
+     * Default value: "true"
+     */
+    public readonly skipAwaitMajorVersionUpgrade!: pulumi.Output<boolean | undefined>;
+    /**
      * Output only. The current serving state of the cluster.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
@@ -394,6 +401,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["restoreBackupSource"] = state ? state.restoreBackupSource : undefined;
             resourceInputs["restoreContinuousBackupSource"] = state ? state.restoreContinuousBackupSource : undefined;
             resourceInputs["secondaryConfig"] = state ? state.secondaryConfig : undefined;
+            resourceInputs["skipAwaitMajorVersionUpgrade"] = state ? state.skipAwaitMajorVersionUpgrade : undefined;
             resourceInputs["state"] = state ? state.state : undefined;
             resourceInputs["subscriptionType"] = state ? state.subscriptionType : undefined;
             resourceInputs["trialMetadatas"] = state ? state.trialMetadatas : undefined;
@@ -426,6 +434,7 @@ export class Cluster extends pulumi.CustomResource {
             resourceInputs["restoreBackupSource"] = args ? args.restoreBackupSource : undefined;
             resourceInputs["restoreContinuousBackupSource"] = args ? args.restoreContinuousBackupSource : undefined;
             resourceInputs["secondaryConfig"] = args ? args.secondaryConfig : undefined;
+            resourceInputs["skipAwaitMajorVersionUpgrade"] = args ? args.skipAwaitMajorVersionUpgrade : undefined;
             resourceInputs["subscriptionType"] = args ? args.subscriptionType : undefined;
             resourceInputs["backupSources"] = undefined /*out*/;
             resourceInputs["continuousBackupInfos"] = undefined /*out*/;
@@ -491,7 +500,8 @@ export interface ClusterState {
      */
     continuousBackupInfos?: pulumi.Input<pulumi.Input<inputs.alloydb.ClusterContinuousBackupInfo>[]>;
     /**
-     * The database engine major version. This is an optional field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
+     * The database engine major version. This is an optional field and it's populated at the Cluster creation time.
+     * Note: Changing this field to a higer version results in upgrading the AlloyDB cluster which is an irreversible change.
      */
     databaseVersion?: pulumi.Input<string>;
     /**
@@ -599,6 +609,12 @@ export interface ClusterState {
      */
     secondaryConfig?: pulumi.Input<inputs.alloydb.ClusterSecondaryConfig>;
     /**
+     * Set to true to skip awaiting on the major version upgrade of the cluster.
+     * Possible values: true, false
+     * Default value: "true"
+     */
+    skipAwaitMajorVersionUpgrade?: pulumi.Input<boolean>;
+    /**
      * Output only. The current serving state of the cluster.
      */
     state?: pulumi.Input<string>;
@@ -652,7 +668,8 @@ export interface ClusterArgs {
      */
     continuousBackupConfig?: pulumi.Input<inputs.alloydb.ClusterContinuousBackupConfig>;
     /**
-     * The database engine major version. This is an optional field and it's populated at the Cluster creation time. This field cannot be changed after cluster creation.
+     * The database engine major version. This is an optional field and it's populated at the Cluster creation time.
+     * Note: Changing this field to a higer version results in upgrading the AlloyDB cluster which is an irreversible change.
      */
     databaseVersion?: pulumi.Input<string>;
     /**
@@ -728,6 +745,12 @@ export interface ClusterArgs {
      * Structure is documented below.
      */
     secondaryConfig?: pulumi.Input<inputs.alloydb.ClusterSecondaryConfig>;
+    /**
+     * Set to true to skip awaiting on the major version upgrade of the cluster.
+     * Possible values: true, false
+     * Default value: "true"
+     */
+    skipAwaitMajorVersionUpgrade?: pulumi.Input<boolean>;
     /**
      * The subscrition type of cluster.
      * Possible values are: `TRIAL`, `STANDARD`.

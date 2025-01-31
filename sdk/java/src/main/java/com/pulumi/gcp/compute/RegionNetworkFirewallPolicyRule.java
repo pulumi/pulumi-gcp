@@ -65,7 +65,7 @@ import javax.annotation.Nullable;
  * 
  *     public static void stack(Context ctx) }{{@code
  *         var basicRegionalNetworksecurityAddressGroup = new AddressGroup("basicRegionalNetworksecurityAddressGroup", AddressGroupArgs.builder()
- *             .name("address")
+ *             .name("address-group")
  *             .parent("projects/my-project-name")
  *             .description("Sample regional networksecurity_address_group")
  *             .location("us-west1")
@@ -75,7 +75,7 @@ import javax.annotation.Nullable;
  *             .build());
  * 
  *         var basicRegionalNetworkFirewallPolicy = new RegionNetworkFirewallPolicy("basicRegionalNetworkFirewallPolicy", RegionNetworkFirewallPolicyArgs.builder()
- *             .name("policy")
+ *             .name("fw-policy")
  *             .description("Sample regional network firewall policy")
  *             .project("my-project-name")
  *             .region("us-west1")
@@ -89,14 +89,14 @@ import javax.annotation.Nullable;
  *             .description("For keyname resources.")
  *             .parent("organizations/123456789")
  *             .purpose("GCE_FIREWALL")
- *             .shortName("tagkey")
+ *             .shortName("tag-key")
  *             .purposeData(Map.of("network", basicNetwork.name().applyValue(name -> String.format("my-project-name/%s", name))))
  *             .build());
  * 
  *         var basicValue = new TagValue("basicValue", TagValueArgs.builder()
  *             .description("For valuename resources.")
  *             .parent(basicKey.id())
- *             .shortName("tagvalue")
+ *             .shortName("tag-value")
  *             .build());
  * 
  *         var primary = new RegionNetworkFirewallPolicyRule("primary", RegionNetworkFirewallPolicyRuleArgs.builder()
@@ -111,6 +111,7 @@ import javax.annotation.Nullable;
  *             .ruleName("test-rule")
  *             .targetServiceAccounts("my}{@literal @}{@code service-account.com")
  *             .match(RegionNetworkFirewallPolicyRuleMatchArgs.builder()
+ *                 .srcAddressGroups(basicRegionalNetworksecurityAddressGroup.id())
  *                 .srcIpRanges("10.100.0.1/32")
  *                 .srcFqdns("example.com")
  *                 .srcRegionCodes("US")
@@ -121,12 +122,136 @@ import javax.annotation.Nullable;
  *                 .srcSecureTags(RegionNetworkFirewallPolicyRuleMatchSrcSecureTagArgs.builder()
  *                     .name(basicValue.id())
  *                     .build())
- *                 .srcAddressGroups(basicRegionalNetworksecurityAddressGroup.id())
  *                 .build())
  *             .build());
  * 
  *     }}{@code
  * }}{@code
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Region Network Firewall Policy Rule Network Scope Egress
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.RegionNetworkFirewallPolicy;
+ * import com.pulumi.gcp.compute.RegionNetworkFirewallPolicyArgs;
+ * import com.pulumi.gcp.compute.RegionNetworkFirewallPolicyRule;
+ * import com.pulumi.gcp.compute.RegionNetworkFirewallPolicyRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionNetworkFirewallPolicyRuleMatchArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var basicRegionalNetworkFirewallPolicy = new RegionNetworkFirewallPolicy("basicRegionalNetworkFirewallPolicy", RegionNetworkFirewallPolicyArgs.builder()
+ *             .name("fw-policy")
+ *             .description("Sample regional network firewall policy")
+ *             .project("my-project-name")
+ *             .region("us-west1")
+ *             .build());
+ * 
+ *         var primary = new RegionNetworkFirewallPolicyRule("primary", RegionNetworkFirewallPolicyRuleArgs.builder()
+ *             .action("allow")
+ *             .description("This is a simple rule description")
+ *             .direction("EGRESS")
+ *             .disabled(false)
+ *             .enableLogging(true)
+ *             .firewallPolicy(basicRegionalNetworkFirewallPolicy.name())
+ *             .priority(1000)
+ *             .region("us-west1")
+ *             .ruleName("test-rule")
+ *             .match(RegionNetworkFirewallPolicyRuleMatchArgs.builder()
+ *                 .destIpRanges("10.100.0.1/32")
+ *                 .destNetworkScope("INTERNET")
+ *                 .layer4Configs(RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgs.builder()
+ *                     .ipProtocol("all")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Region Network Firewall Policy Rule Network Scope Ingress
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.RegionNetworkFirewallPolicy;
+ * import com.pulumi.gcp.compute.RegionNetworkFirewallPolicyArgs;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.compute.RegionNetworkFirewallPolicyRule;
+ * import com.pulumi.gcp.compute.RegionNetworkFirewallPolicyRuleArgs;
+ * import com.pulumi.gcp.compute.inputs.RegionNetworkFirewallPolicyRuleMatchArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var basicRegionalNetworkFirewallPolicy = new RegionNetworkFirewallPolicy("basicRegionalNetworkFirewallPolicy", RegionNetworkFirewallPolicyArgs.builder()
+ *             .name("fw-policy")
+ *             .description("Sample regional network firewall policy")
+ *             .project("my-project-name")
+ *             .region("us-west1")
+ *             .build());
+ * 
+ *         var network = new Network("network", NetworkArgs.builder()
+ *             .name("network")
+ *             .build());
+ * 
+ *         var primary = new RegionNetworkFirewallPolicyRule("primary", RegionNetworkFirewallPolicyRuleArgs.builder()
+ *             .action("allow")
+ *             .description("This is a simple rule description")
+ *             .direction("INGRESS")
+ *             .disabled(false)
+ *             .enableLogging(true)
+ *             .firewallPolicy(basicRegionalNetworkFirewallPolicy.name())
+ *             .priority(1000)
+ *             .region("us-west1")
+ *             .ruleName("test-rule")
+ *             .match(RegionNetworkFirewallPolicyRuleMatchArgs.builder()
+ *                 .srcIpRanges("10.100.0.1/32")
+ *                 .srcNetworkScope("VPC_NETWORKS")
+ *                 .srcNetworks(network.id())
+ *                 .layer4Configs(RegionNetworkFirewallPolicyRuleMatchLayer4ConfigArgs.builder()
+ *                     .ipProtocol("all")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }
+ * }
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;

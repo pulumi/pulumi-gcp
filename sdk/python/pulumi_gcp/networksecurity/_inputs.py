@@ -93,6 +93,10 @@ __all__ = [
     'MirroringDeploymentGroupConnectedEndpointGroupArgsDict',
     'MirroringEndpointGroupAssociationLocationsDetailArgs',
     'MirroringEndpointGroupAssociationLocationsDetailArgsDict',
+    'SecurityProfileCustomInterceptProfileArgs',
+    'SecurityProfileCustomInterceptProfileArgsDict',
+    'SecurityProfileCustomMirroringProfileArgs',
+    'SecurityProfileCustomMirroringProfileArgsDict',
     'SecurityProfileThreatPreventionProfileArgs',
     'SecurityProfileThreatPreventionProfileArgsDict',
     'SecurityProfileThreatPreventionProfileSeverityOverrideArgs',
@@ -2758,6 +2762,74 @@ class MirroringEndpointGroupAssociationLocationsDetailArgs:
     @state.setter
     def state(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "state", value)
+
+
+if not MYPY:
+    class SecurityProfileCustomInterceptProfileArgsDict(TypedDict):
+        intercept_endpoint_group: pulumi.Input[str]
+        """
+        The Intercept Endpoint Group to which matching traffic should be intercepted.
+        Format: projects/{project_id}/locations/global/interceptEndpointGroups/{endpoint_group_id}
+        """
+elif False:
+    SecurityProfileCustomInterceptProfileArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SecurityProfileCustomInterceptProfileArgs:
+    def __init__(__self__, *,
+                 intercept_endpoint_group: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] intercept_endpoint_group: The Intercept Endpoint Group to which matching traffic should be intercepted.
+               Format: projects/{project_id}/locations/global/interceptEndpointGroups/{endpoint_group_id}
+        """
+        pulumi.set(__self__, "intercept_endpoint_group", intercept_endpoint_group)
+
+    @property
+    @pulumi.getter(name="interceptEndpointGroup")
+    def intercept_endpoint_group(self) -> pulumi.Input[str]:
+        """
+        The Intercept Endpoint Group to which matching traffic should be intercepted.
+        Format: projects/{project_id}/locations/global/interceptEndpointGroups/{endpoint_group_id}
+        """
+        return pulumi.get(self, "intercept_endpoint_group")
+
+    @intercept_endpoint_group.setter
+    def intercept_endpoint_group(self, value: pulumi.Input[str]):
+        pulumi.set(self, "intercept_endpoint_group", value)
+
+
+if not MYPY:
+    class SecurityProfileCustomMirroringProfileArgsDict(TypedDict):
+        mirroring_endpoint_group: pulumi.Input[str]
+        """
+        The Mirroring Endpoint Group to which matching traffic should be mirrored.
+        Format: projects/{project_id}/locations/global/mirroringEndpointGroups/{endpoint_group_id}
+        """
+elif False:
+    SecurityProfileCustomMirroringProfileArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class SecurityProfileCustomMirroringProfileArgs:
+    def __init__(__self__, *,
+                 mirroring_endpoint_group: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] mirroring_endpoint_group: The Mirroring Endpoint Group to which matching traffic should be mirrored.
+               Format: projects/{project_id}/locations/global/mirroringEndpointGroups/{endpoint_group_id}
+        """
+        pulumi.set(__self__, "mirroring_endpoint_group", mirroring_endpoint_group)
+
+    @property
+    @pulumi.getter(name="mirroringEndpointGroup")
+    def mirroring_endpoint_group(self) -> pulumi.Input[str]:
+        """
+        The Mirroring Endpoint Group to which matching traffic should be mirrored.
+        Format: projects/{project_id}/locations/global/mirroringEndpointGroups/{endpoint_group_id}
+        """
+        return pulumi.get(self, "mirroring_endpoint_group")
+
+    @mirroring_endpoint_group.setter
+    def mirroring_endpoint_group(self, value: pulumi.Input[str]):
+        pulumi.set(self, "mirroring_endpoint_group", value)
 
 
 if not MYPY:

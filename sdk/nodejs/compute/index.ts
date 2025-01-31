@@ -265,6 +265,11 @@ export const getInstanceTemplate: typeof import("./getInstanceTemplate").getInst
 export const getInstanceTemplateOutput: typeof import("./getInstanceTemplate").getInstanceTemplateOutput = null as any;
 utilities.lazyLoad(exports, ["getInstanceTemplate","getInstanceTemplateOutput"], () => require("./getInstanceTemplate"));
 
+export { GetInstanceTemplateIamPolicyArgs, GetInstanceTemplateIamPolicyResult, GetInstanceTemplateIamPolicyOutputArgs } from "./getInstanceTemplateIamPolicy";
+export const getInstanceTemplateIamPolicy: typeof import("./getInstanceTemplateIamPolicy").getInstanceTemplateIamPolicy = null as any;
+export const getInstanceTemplateIamPolicyOutput: typeof import("./getInstanceTemplateIamPolicy").getInstanceTemplateIamPolicyOutput = null as any;
+utilities.lazyLoad(exports, ["getInstanceTemplateIamPolicy","getInstanceTemplateIamPolicyOutput"], () => require("./getInstanceTemplateIamPolicy"));
+
 export { GetLBIPRangesResult } from "./getLBIPRanges";
 export const getLBIPRanges: typeof import("./getLBIPRanges").getLBIPRanges = null as any;
 export const getLBIPRangesOutput: typeof import("./getLBIPRanges").getLBIPRangesOutput = null as any;
@@ -544,6 +549,21 @@ export { InstanceTemplateArgs, InstanceTemplateState } from "./instanceTemplate"
 export type InstanceTemplate = import("./instanceTemplate").InstanceTemplate;
 export const InstanceTemplate: typeof import("./instanceTemplate").InstanceTemplate = null as any;
 utilities.lazyLoad(exports, ["InstanceTemplate"], () => require("./instanceTemplate"));
+
+export { InstanceTemplateIamBindingArgs, InstanceTemplateIamBindingState } from "./instanceTemplateIamBinding";
+export type InstanceTemplateIamBinding = import("./instanceTemplateIamBinding").InstanceTemplateIamBinding;
+export const InstanceTemplateIamBinding: typeof import("./instanceTemplateIamBinding").InstanceTemplateIamBinding = null as any;
+utilities.lazyLoad(exports, ["InstanceTemplateIamBinding"], () => require("./instanceTemplateIamBinding"));
+
+export { InstanceTemplateIamMemberArgs, InstanceTemplateIamMemberState } from "./instanceTemplateIamMember";
+export type InstanceTemplateIamMember = import("./instanceTemplateIamMember").InstanceTemplateIamMember;
+export const InstanceTemplateIamMember: typeof import("./instanceTemplateIamMember").InstanceTemplateIamMember = null as any;
+utilities.lazyLoad(exports, ["InstanceTemplateIamMember"], () => require("./instanceTemplateIamMember"));
+
+export { InstanceTemplateIamPolicyArgs, InstanceTemplateIamPolicyState } from "./instanceTemplateIamPolicy";
+export type InstanceTemplateIamPolicy = import("./instanceTemplateIamPolicy").InstanceTemplateIamPolicy;
+export const InstanceTemplateIamPolicy: typeof import("./instanceTemplateIamPolicy").InstanceTemplateIamPolicy = null as any;
+utilities.lazyLoad(exports, ["InstanceTemplateIamPolicy"], () => require("./instanceTemplateIamPolicy"));
 
 export { InterconnectArgs, InterconnectState } from "./interconnect";
 export type Interconnect = import("./interconnect").Interconnect;
@@ -1152,6 +1172,12 @@ const _module = {
                 return new InstanceSettings(name, <any>undefined, { urn })
             case "gcp:compute/instanceTemplate:InstanceTemplate":
                 return new InstanceTemplate(name, <any>undefined, { urn })
+            case "gcp:compute/instanceTemplateIamBinding:InstanceTemplateIamBinding":
+                return new InstanceTemplateIamBinding(name, <any>undefined, { urn })
+            case "gcp:compute/instanceTemplateIamMember:InstanceTemplateIamMember":
+                return new InstanceTemplateIamMember(name, <any>undefined, { urn })
+            case "gcp:compute/instanceTemplateIamPolicy:InstanceTemplateIamPolicy":
+                return new InstanceTemplateIamPolicy(name, <any>undefined, { urn })
             case "gcp:compute/interconnect:Interconnect":
                 return new Interconnect(name, <any>undefined, { urn })
             case "gcp:compute/interconnectAttachment:InterconnectAttachment":
@@ -1406,6 +1432,9 @@ pulumi.runtime.registerResourceModule("gcp", "compute/instanceIAMMember", _modul
 pulumi.runtime.registerResourceModule("gcp", "compute/instanceIAMPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/instanceSettings", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/instanceTemplate", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/instanceTemplateIamBinding", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/instanceTemplateIamMember", _module)
+pulumi.runtime.registerResourceModule("gcp", "compute/instanceTemplateIamPolicy", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/interconnect", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/interconnectAttachment", _module)
 pulumi.runtime.registerResourceModule("gcp", "compute/machineImage", _module)

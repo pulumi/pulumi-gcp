@@ -39,6 +39,7 @@ public final class GetInstanceResult {
     private @Nullable String project;
     private String protocol;
     private Map<String,String> pulumiLabels;
+    private Map<String,String> tags;
     private String tier;
     private String zone;
 
@@ -98,6 +99,9 @@ public final class GetInstanceResult {
     public Map<String,String> pulumiLabels() {
         return this.pulumiLabels;
     }
+    public Map<String,String> tags() {
+        return this.tags;
+    }
     public String tier() {
         return this.tier;
     }
@@ -131,6 +135,7 @@ public final class GetInstanceResult {
         private @Nullable String project;
         private String protocol;
         private Map<String,String> pulumiLabels;
+        private Map<String,String> tags;
         private String tier;
         private String zone;
         public Builder() {}
@@ -153,6 +158,7 @@ public final class GetInstanceResult {
     	      this.project = defaults.project;
     	      this.protocol = defaults.protocol;
     	      this.pulumiLabels = defaults.pulumiLabels;
+    	      this.tags = defaults.tags;
     	      this.tier = defaults.tier;
     	      this.zone = defaults.zone;
         }
@@ -299,6 +305,14 @@ public final class GetInstanceResult {
             return this;
         }
         @CustomType.Setter
+        public Builder tags(Map<String,String> tags) {
+            if (tags == null) {
+              throw new MissingRequiredPropertyException("GetInstanceResult", "tags");
+            }
+            this.tags = tags;
+            return this;
+        }
+        @CustomType.Setter
         public Builder tier(String tier) {
             if (tier == null) {
               throw new MissingRequiredPropertyException("GetInstanceResult", "tier");
@@ -333,6 +347,7 @@ public final class GetInstanceResult {
             _resultValue.project = project;
             _resultValue.protocol = protocol;
             _resultValue.pulumiLabels = pulumiLabels;
+            _resultValue.tags = tags;
             _resultValue.tier = tier;
             _resultValue.zone = zone;
             return _resultValue;

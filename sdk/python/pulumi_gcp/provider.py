@@ -28,6 +28,7 @@ class ProviderArgs:
                  alloydb_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  api_gateway_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  apigee_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 apihub_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  apikeys_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  app_engine_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  apphub_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -223,6 +224,8 @@ class ProviderArgs:
             pulumi.set(__self__, "api_gateway_custom_endpoint", api_gateway_custom_endpoint)
         if apigee_custom_endpoint is not None:
             pulumi.set(__self__, "apigee_custom_endpoint", apigee_custom_endpoint)
+        if apihub_custom_endpoint is not None:
+            pulumi.set(__self__, "apihub_custom_endpoint", apihub_custom_endpoint)
         if apikeys_custom_endpoint is not None:
             pulumi.set(__self__, "apikeys_custom_endpoint", apikeys_custom_endpoint)
         if app_engine_custom_endpoint is not None:
@@ -653,6 +656,15 @@ class ProviderArgs:
     @apigee_custom_endpoint.setter
     def apigee_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "apigee_custom_endpoint", value)
+
+    @property
+    @pulumi.getter(name="apihubCustomEndpoint")
+    def apihub_custom_endpoint(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "apihub_custom_endpoint")
+
+    @apihub_custom_endpoint.setter
+    def apihub_custom_endpoint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "apihub_custom_endpoint", value)
 
     @property
     @pulumi.getter(name="apikeysCustomEndpoint")
@@ -2252,6 +2264,7 @@ class Provider(pulumi.ProviderResource):
                  alloydb_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  api_gateway_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  apigee_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 apihub_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  apikeys_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  app_engine_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  apphub_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2473,6 +2486,7 @@ class Provider(pulumi.ProviderResource):
                  alloydb_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  api_gateway_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  apigee_custom_endpoint: Optional[pulumi.Input[str]] = None,
+                 apihub_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  apikeys_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  app_engine_custom_endpoint: Optional[pulumi.Input[str]] = None,
                  apphub_custom_endpoint: Optional[pulumi.Input[str]] = None,
@@ -2666,6 +2680,7 @@ class Provider(pulumi.ProviderResource):
             __props__.__dict__["alloydb_custom_endpoint"] = alloydb_custom_endpoint
             __props__.__dict__["api_gateway_custom_endpoint"] = api_gateway_custom_endpoint
             __props__.__dict__["apigee_custom_endpoint"] = apigee_custom_endpoint
+            __props__.__dict__["apihub_custom_endpoint"] = apihub_custom_endpoint
             __props__.__dict__["apikeys_custom_endpoint"] = apikeys_custom_endpoint
             __props__.__dict__["app_engine_custom_endpoint"] = app_engine_custom_endpoint
             __props__.__dict__["apphub_custom_endpoint"] = apphub_custom_endpoint
@@ -2890,6 +2905,11 @@ class Provider(pulumi.ProviderResource):
     @pulumi.getter(name="apigeeCustomEndpoint")
     def apigee_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
         return pulumi.get(self, "apigee_custom_endpoint")
+
+    @property
+    @pulumi.getter(name="apihubCustomEndpoint")
+    def apihub_custom_endpoint(self) -> pulumi.Output[Optional[str]]:
+        return pulumi.get(self, "apihub_custom_endpoint")
 
     @property
     @pulumi.getter(name="apikeysCustomEndpoint")

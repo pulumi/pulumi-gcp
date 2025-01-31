@@ -16,6 +16,7 @@ import com.pulumi.gcp.alloydb.inputs.ClusterPscConfigArgs;
 import com.pulumi.gcp.alloydb.inputs.ClusterRestoreBackupSourceArgs;
 import com.pulumi.gcp.alloydb.inputs.ClusterRestoreContinuousBackupSourceArgs;
 import com.pulumi.gcp.alloydb.inputs.ClusterSecondaryConfigArgs;
+import java.lang.Boolean;
 import java.lang.String;
 import java.util.Map;
 import java.util.Objects;
@@ -121,14 +122,16 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * The database engine major version. This is an optional field and it&#39;s populated at the Cluster creation time. This field cannot be changed after cluster creation.
+     * The database engine major version. This is an optional field and it&#39;s populated at the Cluster creation time.
+     * Note: Changing this field to a higer version results in upgrading the AlloyDB cluster which is an irreversible change.
      * 
      */
     @Import(name="databaseVersion")
     private @Nullable Output<String> databaseVersion;
 
     /**
-     * @return The database engine major version. This is an optional field and it&#39;s populated at the Cluster creation time. This field cannot be changed after cluster creation.
+     * @return The database engine major version. This is an optional field and it&#39;s populated at the Cluster creation time.
+     * Note: Changing this field to a higer version results in upgrading the AlloyDB cluster which is an irreversible change.
      * 
      */
     public Optional<Output<String>> databaseVersion() {
@@ -378,6 +381,25 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
+     * Set to true to skip awaiting on the major version upgrade of the cluster.
+     * Possible values: true, false
+     * Default value: &#34;true&#34;
+     * 
+     */
+    @Import(name="skipAwaitMajorVersionUpgrade")
+    private @Nullable Output<Boolean> skipAwaitMajorVersionUpgrade;
+
+    /**
+     * @return Set to true to skip awaiting on the major version upgrade of the cluster.
+     * Possible values: true, false
+     * Default value: &#34;true&#34;
+     * 
+     */
+    public Optional<Output<Boolean>> skipAwaitMajorVersionUpgrade() {
+        return Optional.ofNullable(this.skipAwaitMajorVersionUpgrade);
+    }
+
+    /**
      * The subscrition type of cluster.
      * Possible values are: `TRIAL`, `STANDARD`.
      * 
@@ -417,6 +439,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         this.restoreBackupSource = $.restoreBackupSource;
         this.restoreContinuousBackupSource = $.restoreContinuousBackupSource;
         this.secondaryConfig = $.secondaryConfig;
+        this.skipAwaitMajorVersionUpgrade = $.skipAwaitMajorVersionUpgrade;
         this.subscriptionType = $.subscriptionType;
     }
 
@@ -562,7 +585,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param databaseVersion The database engine major version. This is an optional field and it&#39;s populated at the Cluster creation time. This field cannot be changed after cluster creation.
+         * @param databaseVersion The database engine major version. This is an optional field and it&#39;s populated at the Cluster creation time.
+         * Note: Changing this field to a higer version results in upgrading the AlloyDB cluster which is an irreversible change.
          * 
          * @return builder
          * 
@@ -573,7 +597,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param databaseVersion The database engine major version. This is an optional field and it&#39;s populated at the Cluster creation time. This field cannot be changed after cluster creation.
+         * @param databaseVersion The database engine major version. This is an optional field and it&#39;s populated at the Cluster creation time.
+         * Note: Changing this field to a higer version results in upgrading the AlloyDB cluster which is an irreversible change.
          * 
          * @return builder
          * 
@@ -906,6 +931,31 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder secondaryConfig(ClusterSecondaryConfigArgs secondaryConfig) {
             return secondaryConfig(Output.of(secondaryConfig));
+        }
+
+        /**
+         * @param skipAwaitMajorVersionUpgrade Set to true to skip awaiting on the major version upgrade of the cluster.
+         * Possible values: true, false
+         * Default value: &#34;true&#34;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipAwaitMajorVersionUpgrade(@Nullable Output<Boolean> skipAwaitMajorVersionUpgrade) {
+            $.skipAwaitMajorVersionUpgrade = skipAwaitMajorVersionUpgrade;
+            return this;
+        }
+
+        /**
+         * @param skipAwaitMajorVersionUpgrade Set to true to skip awaiting on the major version upgrade of the cluster.
+         * Possible values: true, false
+         * Default value: &#34;true&#34;
+         * 
+         * @return builder
+         * 
+         */
+        public Builder skipAwaitMajorVersionUpgrade(Boolean skipAwaitMajorVersionUpgrade) {
+            return skipAwaitMajorVersionUpgrade(Output.of(skipAwaitMajorVersionUpgrade));
         }
 
         /**

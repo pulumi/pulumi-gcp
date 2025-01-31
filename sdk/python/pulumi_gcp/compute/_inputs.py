@@ -355,6 +355,10 @@ __all__ = [
     'InstanceTemplateDiskSourceSnapshotEncryptionKeyArgsDict',
     'InstanceTemplateGuestAcceleratorArgs',
     'InstanceTemplateGuestAcceleratorArgsDict',
+    'InstanceTemplateIamBindingConditionArgs',
+    'InstanceTemplateIamBindingConditionArgsDict',
+    'InstanceTemplateIamMemberConditionArgs',
+    'InstanceTemplateIamMemberConditionArgsDict',
     'InstanceTemplateNetworkInterfaceArgs',
     'InstanceTemplateNetworkInterfaceArgsDict',
     'InstanceTemplateNetworkInterfaceAccessConfigArgs',
@@ -6427,6 +6431,11 @@ if not MYPY:
         """
         CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
         """
+        dest_network_scope: NotRequired[pulumi.Input[str]]
+        """
+        Network scope of the traffic destination.
+        Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+        """
         dest_region_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
         Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of dest region codes allowed is 5000.
@@ -6446,6 +6455,15 @@ if not MYPY:
         src_ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
         CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
+        """
+        src_network_scope: NotRequired[pulumi.Input[str]]
+        """
+        Network scope of the traffic source.
+        Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+        """
+        src_networks: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Networks of the traffic source. It can be either a full or partial url.
         """
         src_region_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
@@ -6468,11 +6486,14 @@ class FirewallPolicyRuleMatchArgs:
                  dest_address_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dest_fqdns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dest_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 dest_network_scope: Optional[pulumi.Input[str]] = None,
                  dest_region_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dest_threat_intelligences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  src_address_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  src_fqdns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  src_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 src_network_scope: Optional[pulumi.Input[str]] = None,
+                 src_networks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  src_region_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  src_threat_intelligences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
@@ -6481,11 +6502,16 @@ class FirewallPolicyRuleMatchArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_address_groups: Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_fqdns: Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 100.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_ip_ranges: CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
+        :param pulumi.Input[str] dest_network_scope: Network scope of the traffic destination.
+               Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_region_codes: Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of dest region codes allowed is 5000.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_threat_intelligences: Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic destination.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_address_groups: Address groups which should be matched against the traffic source. Maximum number of source address groups is 10.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_fqdns: Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 100.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_ip_ranges: CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
+        :param pulumi.Input[str] src_network_scope: Network scope of the traffic source.
+               Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_networks: Networks of the traffic source. It can be either a full or partial url.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_region_codes: Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of source region codes allowed is 5000.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_threat_intelligences: Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic source.
                
@@ -6499,6 +6525,8 @@ class FirewallPolicyRuleMatchArgs:
             pulumi.set(__self__, "dest_fqdns", dest_fqdns)
         if dest_ip_ranges is not None:
             pulumi.set(__self__, "dest_ip_ranges", dest_ip_ranges)
+        if dest_network_scope is not None:
+            pulumi.set(__self__, "dest_network_scope", dest_network_scope)
         if dest_region_codes is not None:
             pulumi.set(__self__, "dest_region_codes", dest_region_codes)
         if dest_threat_intelligences is not None:
@@ -6509,6 +6537,10 @@ class FirewallPolicyRuleMatchArgs:
             pulumi.set(__self__, "src_fqdns", src_fqdns)
         if src_ip_ranges is not None:
             pulumi.set(__self__, "src_ip_ranges", src_ip_ranges)
+        if src_network_scope is not None:
+            pulumi.set(__self__, "src_network_scope", src_network_scope)
+        if src_networks is not None:
+            pulumi.set(__self__, "src_networks", src_networks)
         if src_region_codes is not None:
             pulumi.set(__self__, "src_region_codes", src_region_codes)
         if src_threat_intelligences is not None:
@@ -6562,6 +6594,19 @@ class FirewallPolicyRuleMatchArgs:
     @dest_ip_ranges.setter
     def dest_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "dest_ip_ranges", value)
+
+    @property
+    @pulumi.getter(name="destNetworkScope")
+    def dest_network_scope(self) -> Optional[pulumi.Input[str]]:
+        """
+        Network scope of the traffic destination.
+        Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+        """
+        return pulumi.get(self, "dest_network_scope")
+
+    @dest_network_scope.setter
+    def dest_network_scope(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dest_network_scope", value)
 
     @property
     @pulumi.getter(name="destRegionCodes")
@@ -6622,6 +6667,31 @@ class FirewallPolicyRuleMatchArgs:
     @src_ip_ranges.setter
     def src_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "src_ip_ranges", value)
+
+    @property
+    @pulumi.getter(name="srcNetworkScope")
+    def src_network_scope(self) -> Optional[pulumi.Input[str]]:
+        """
+        Network scope of the traffic source.
+        Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+        """
+        return pulumi.get(self, "src_network_scope")
+
+    @src_network_scope.setter
+    def src_network_scope(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "src_network_scope", value)
+
+    @property
+    @pulumi.getter(name="srcNetworks")
+    def src_networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Networks of the traffic source. It can be either a full or partial url.
+        """
+        return pulumi.get(self, "src_networks")
+
+    @src_networks.setter
+    def src_networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "src_networks", value)
 
     @property
     @pulumi.getter(name="srcRegionCodes")
@@ -7752,6 +7822,11 @@ if not MYPY:
         Destination IP address range in CIDR format. Required for
         EGRESS rules.
         """
+        dest_network_scope: NotRequired[pulumi.Input[str]]
+        """
+        Network scope of the traffic destination.
+        Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+        """
         dest_region_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
         Region codes whose IP addresses will be used to match for destination
@@ -7779,6 +7854,15 @@ if not MYPY:
         Source IP address range in CIDR format. Required for
         INGRESS rules.
         """
+        src_network_scope: NotRequired[pulumi.Input[str]]
+        """
+        Network scope of the traffic source.
+        Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+        """
+        src_networks: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Networks of the traffic source. It can be either a full or partial url.
+        """
         src_region_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
         Region codes whose IP addresses will be used to match for source
@@ -7801,11 +7885,14 @@ class FirewallPolicyWithRulesRuleMatchArgs:
                  dest_address_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dest_fqdns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dest_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 dest_network_scope: Optional[pulumi.Input[str]] = None,
                  dest_region_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dest_threat_intelligences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  src_address_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  src_fqdns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  src_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 src_network_scope: Optional[pulumi.Input[str]] = None,
+                 src_networks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  src_region_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  src_threat_intelligences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
         """
@@ -7820,6 +7907,8 @@ class FirewallPolicyWithRulesRuleMatchArgs:
                traffic destination. Maximum number of destination fqdn allowed is 100.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_ip_ranges: Destination IP address range in CIDR format. Required for
                EGRESS rules.
+        :param pulumi.Input[str] dest_network_scope: Network scope of the traffic destination.
+               Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_region_codes: Region codes whose IP addresses will be used to match for destination
                of traffic. Should be specified as 2 letter country code defined as per
                ISO 3166 alpha-2 country codes. ex."US"
@@ -7832,6 +7921,9 @@ class FirewallPolicyWithRulesRuleMatchArgs:
                traffic source. Maximum number of source fqdn allowed is 100.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_ip_ranges: Source IP address range in CIDR format. Required for
                INGRESS rules.
+        :param pulumi.Input[str] src_network_scope: Network scope of the traffic source.
+               Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_networks: Networks of the traffic source. It can be either a full or partial url.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_region_codes: Region codes whose IP addresses will be used to match for source
                of traffic. Should be specified as 2 letter country code defined as per
                ISO 3166 alpha-2 country codes. ex."US"
@@ -7846,6 +7938,8 @@ class FirewallPolicyWithRulesRuleMatchArgs:
             pulumi.set(__self__, "dest_fqdns", dest_fqdns)
         if dest_ip_ranges is not None:
             pulumi.set(__self__, "dest_ip_ranges", dest_ip_ranges)
+        if dest_network_scope is not None:
+            pulumi.set(__self__, "dest_network_scope", dest_network_scope)
         if dest_region_codes is not None:
             pulumi.set(__self__, "dest_region_codes", dest_region_codes)
         if dest_threat_intelligences is not None:
@@ -7856,6 +7950,10 @@ class FirewallPolicyWithRulesRuleMatchArgs:
             pulumi.set(__self__, "src_fqdns", src_fqdns)
         if src_ip_ranges is not None:
             pulumi.set(__self__, "src_ip_ranges", src_ip_ranges)
+        if src_network_scope is not None:
+            pulumi.set(__self__, "src_network_scope", src_network_scope)
+        if src_networks is not None:
+            pulumi.set(__self__, "src_networks", src_networks)
         if src_region_codes is not None:
             pulumi.set(__self__, "src_region_codes", src_region_codes)
         if src_threat_intelligences is not None:
@@ -7915,6 +8013,19 @@ class FirewallPolicyWithRulesRuleMatchArgs:
     @dest_ip_ranges.setter
     def dest_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "dest_ip_ranges", value)
+
+    @property
+    @pulumi.getter(name="destNetworkScope")
+    def dest_network_scope(self) -> Optional[pulumi.Input[str]]:
+        """
+        Network scope of the traffic destination.
+        Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+        """
+        return pulumi.get(self, "dest_network_scope")
+
+    @dest_network_scope.setter
+    def dest_network_scope(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dest_network_scope", value)
 
     @property
     @pulumi.getter(name="destRegionCodes")
@@ -7982,6 +8093,31 @@ class FirewallPolicyWithRulesRuleMatchArgs:
     @src_ip_ranges.setter
     def src_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "src_ip_ranges", value)
+
+    @property
+    @pulumi.getter(name="srcNetworkScope")
+    def src_network_scope(self) -> Optional[pulumi.Input[str]]:
+        """
+        Network scope of the traffic source.
+        Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+        """
+        return pulumi.get(self, "src_network_scope")
+
+    @src_network_scope.setter
+    def src_network_scope(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "src_network_scope", value)
+
+    @property
+    @pulumi.getter(name="srcNetworks")
+    def src_networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Networks of the traffic source. It can be either a full or partial url.
+        """
+        return pulumi.get(self, "src_networks")
+
+    @src_networks.setter
+    def src_networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "src_networks", value)
 
     @property
     @pulumi.getter(name="srcRegionCodes")
@@ -19226,6 +19362,132 @@ class InstanceTemplateGuestAcceleratorArgs:
 
 
 if not MYPY:
+    class InstanceTemplateIamBindingConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        title: pulumi.Input[str]
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    InstanceTemplateIamBindingConditionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstanceTemplateIamBindingConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[str],
+                 title: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] expression: Textual representation of an expression in Common Expression Language syntax.
+        :param pulumi.Input[str] title: A title for the expression, i.e. a short string describing its purpose.
+        """
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[str]:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+
+if not MYPY:
+    class InstanceTemplateIamMemberConditionArgsDict(TypedDict):
+        expression: pulumi.Input[str]
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        title: pulumi.Input[str]
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        description: NotRequired[pulumi.Input[str]]
+elif False:
+    InstanceTemplateIamMemberConditionArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class InstanceTemplateIamMemberConditionArgs:
+    def __init__(__self__, *,
+                 expression: pulumi.Input[str],
+                 title: pulumi.Input[str],
+                 description: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] expression: Textual representation of an expression in Common Expression Language syntax.
+        :param pulumi.Input[str] title: A title for the expression, i.e. a short string describing its purpose.
+        """
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> pulumi.Input[str]:
+        """
+        Textual representation of an expression in Common Expression Language syntax.
+        """
+        return pulumi.get(self, "expression")
+
+    @expression.setter
+    def expression(self, value: pulumi.Input[str]):
+        pulumi.set(self, "expression", value)
+
+    @property
+    @pulumi.getter
+    def title(self) -> pulumi.Input[str]:
+        """
+        A title for the expression, i.e. a short string describing its purpose.
+        """
+        return pulumi.get(self, "title")
+
+    @title.setter
+    def title(self, value: pulumi.Input[str]):
+        pulumi.set(self, "title", value)
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[pulumi.Input[str]]:
+        return pulumi.get(self, "description")
+
+    @description.setter
+    def description(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "description", value)
+
+
+if not MYPY:
     class InstanceTemplateNetworkInterfaceArgsDict(TypedDict):
         access_configs: NotRequired[pulumi.Input[Sequence[pulumi.Input['InstanceTemplateNetworkInterfaceAccessConfigArgsDict']]]]
         """
@@ -21795,6 +22057,11 @@ if not MYPY:
         """
         CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
         """
+        dest_network_scope: NotRequired[pulumi.Input[str]]
+        """
+        Network scope of the traffic destination.
+        Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+        """
         dest_region_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
         Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of dest region codes allowed is 5000.
@@ -21814,6 +22081,15 @@ if not MYPY:
         src_ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
         CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
+        """
+        src_network_scope: NotRequired[pulumi.Input[str]]
+        """
+        Network scope of the traffic source.
+        Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+        """
+        src_networks: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Networks of the traffic source. It can be either a full or partial url.
         """
         src_region_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
@@ -21841,11 +22117,14 @@ class NetworkFirewallPolicyRuleMatchArgs:
                  dest_address_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dest_fqdns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dest_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 dest_network_scope: Optional[pulumi.Input[str]] = None,
                  dest_region_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dest_threat_intelligences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  src_address_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  src_fqdns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  src_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 src_network_scope: Optional[pulumi.Input[str]] = None,
+                 src_networks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  src_region_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  src_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkFirewallPolicyRuleMatchSrcSecureTagArgs']]]] = None,
                  src_threat_intelligences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -21855,11 +22134,16 @@ class NetworkFirewallPolicyRuleMatchArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_address_groups: Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_fqdns: Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 100.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_ip_ranges: CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
+        :param pulumi.Input[str] dest_network_scope: Network scope of the traffic destination.
+               Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_region_codes: Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of dest region codes allowed is 5000.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_threat_intelligences: Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic destination.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_address_groups: Address groups which should be matched against the traffic source. Maximum number of source address groups is 10.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_fqdns: Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 100.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_ip_ranges: CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
+        :param pulumi.Input[str] src_network_scope: Network scope of the traffic source.
+               Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_networks: Networks of the traffic source. It can be either a full or partial url.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_region_codes: Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of source region codes allowed is 5000.
         :param pulumi.Input[Sequence[pulumi.Input['NetworkFirewallPolicyRuleMatchSrcSecureTagArgs']]] src_secure_tags: List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.
                Structure is documented below.
@@ -21875,6 +22159,8 @@ class NetworkFirewallPolicyRuleMatchArgs:
             pulumi.set(__self__, "dest_fqdns", dest_fqdns)
         if dest_ip_ranges is not None:
             pulumi.set(__self__, "dest_ip_ranges", dest_ip_ranges)
+        if dest_network_scope is not None:
+            pulumi.set(__self__, "dest_network_scope", dest_network_scope)
         if dest_region_codes is not None:
             pulumi.set(__self__, "dest_region_codes", dest_region_codes)
         if dest_threat_intelligences is not None:
@@ -21885,6 +22171,10 @@ class NetworkFirewallPolicyRuleMatchArgs:
             pulumi.set(__self__, "src_fqdns", src_fqdns)
         if src_ip_ranges is not None:
             pulumi.set(__self__, "src_ip_ranges", src_ip_ranges)
+        if src_network_scope is not None:
+            pulumi.set(__self__, "src_network_scope", src_network_scope)
+        if src_networks is not None:
+            pulumi.set(__self__, "src_networks", src_networks)
         if src_region_codes is not None:
             pulumi.set(__self__, "src_region_codes", src_region_codes)
         if src_secure_tags is not None:
@@ -21940,6 +22230,19 @@ class NetworkFirewallPolicyRuleMatchArgs:
     @dest_ip_ranges.setter
     def dest_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "dest_ip_ranges", value)
+
+    @property
+    @pulumi.getter(name="destNetworkScope")
+    def dest_network_scope(self) -> Optional[pulumi.Input[str]]:
+        """
+        Network scope of the traffic destination.
+        Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+        """
+        return pulumi.get(self, "dest_network_scope")
+
+    @dest_network_scope.setter
+    def dest_network_scope(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dest_network_scope", value)
 
     @property
     @pulumi.getter(name="destRegionCodes")
@@ -22000,6 +22303,31 @@ class NetworkFirewallPolicyRuleMatchArgs:
     @src_ip_ranges.setter
     def src_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "src_ip_ranges", value)
+
+    @property
+    @pulumi.getter(name="srcNetworkScope")
+    def src_network_scope(self) -> Optional[pulumi.Input[str]]:
+        """
+        Network scope of the traffic source.
+        Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+        """
+        return pulumi.get(self, "src_network_scope")
+
+    @src_network_scope.setter
+    def src_network_scope(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "src_network_scope", value)
+
+    @property
+    @pulumi.getter(name="srcNetworks")
+    def src_networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Networks of the traffic source. It can be either a full or partial url.
+        """
+        return pulumi.get(self, "src_networks")
+
+    @src_networks.setter
+    def src_networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "src_networks", value)
 
     @property
     @pulumi.getter(name="srcRegionCodes")
@@ -23473,6 +23801,11 @@ if not MYPY:
         Destination IP address range in CIDR format. Required for
         EGRESS rules.
         """
+        dest_network_scope: NotRequired[pulumi.Input[str]]
+        """
+        Network scope of the traffic destination.
+        Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+        """
         dest_region_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
         Region codes whose IP addresses will be used to match for destination
@@ -23499,6 +23832,15 @@ if not MYPY:
         """
         Source IP address range in CIDR format. Required for
         INGRESS rules.
+        """
+        src_network_scope: NotRequired[pulumi.Input[str]]
+        """
+        Network scope of the traffic source.
+        Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+        """
+        src_networks: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Networks of the traffic source. It can be either a full or partial url.
         """
         src_region_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
@@ -23534,11 +23876,14 @@ class NetworkFirewallPolicyWithRulesRuleMatchArgs:
                  dest_address_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dest_fqdns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dest_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 dest_network_scope: Optional[pulumi.Input[str]] = None,
                  dest_region_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dest_threat_intelligences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  src_address_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  src_fqdns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  src_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 src_network_scope: Optional[pulumi.Input[str]] = None,
+                 src_networks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  src_region_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  src_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input['NetworkFirewallPolicyWithRulesRuleMatchSrcSecureTagArgs']]]] = None,
                  src_threat_intelligences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -23551,6 +23896,8 @@ class NetworkFirewallPolicyWithRulesRuleMatchArgs:
                traffic destination. Maximum number of destination fqdn allowed is 100.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_ip_ranges: Destination IP address range in CIDR format. Required for
                EGRESS rules.
+        :param pulumi.Input[str] dest_network_scope: Network scope of the traffic destination.
+               Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_region_codes: Region codes whose IP addresses will be used to match for destination
                of traffic. Should be specified as 2 letter country code defined as per
                ISO 3166 alpha-2 country codes. ex."US"
@@ -23563,6 +23910,9 @@ class NetworkFirewallPolicyWithRulesRuleMatchArgs:
                traffic source. Maximum number of source fqdn allowed is 100.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_ip_ranges: Source IP address range in CIDR format. Required for
                INGRESS rules.
+        :param pulumi.Input[str] src_network_scope: Network scope of the traffic source.
+               Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_networks: Networks of the traffic source. It can be either a full or partial url.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_region_codes: Region codes whose IP addresses will be used to match for source
                of traffic. Should be specified as 2 letter country code defined as per
                ISO 3166 alpha-2 country codes. ex."US"
@@ -23586,6 +23936,8 @@ class NetworkFirewallPolicyWithRulesRuleMatchArgs:
             pulumi.set(__self__, "dest_fqdns", dest_fqdns)
         if dest_ip_ranges is not None:
             pulumi.set(__self__, "dest_ip_ranges", dest_ip_ranges)
+        if dest_network_scope is not None:
+            pulumi.set(__self__, "dest_network_scope", dest_network_scope)
         if dest_region_codes is not None:
             pulumi.set(__self__, "dest_region_codes", dest_region_codes)
         if dest_threat_intelligences is not None:
@@ -23596,6 +23948,10 @@ class NetworkFirewallPolicyWithRulesRuleMatchArgs:
             pulumi.set(__self__, "src_fqdns", src_fqdns)
         if src_ip_ranges is not None:
             pulumi.set(__self__, "src_ip_ranges", src_ip_ranges)
+        if src_network_scope is not None:
+            pulumi.set(__self__, "src_network_scope", src_network_scope)
+        if src_networks is not None:
+            pulumi.set(__self__, "src_networks", src_networks)
         if src_region_codes is not None:
             pulumi.set(__self__, "src_region_codes", src_region_codes)
         if src_secure_tags is not None:
@@ -23654,6 +24010,19 @@ class NetworkFirewallPolicyWithRulesRuleMatchArgs:
     @dest_ip_ranges.setter
     def dest_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "dest_ip_ranges", value)
+
+    @property
+    @pulumi.getter(name="destNetworkScope")
+    def dest_network_scope(self) -> Optional[pulumi.Input[str]]:
+        """
+        Network scope of the traffic destination.
+        Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+        """
+        return pulumi.get(self, "dest_network_scope")
+
+    @dest_network_scope.setter
+    def dest_network_scope(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dest_network_scope", value)
 
     @property
     @pulumi.getter(name="destRegionCodes")
@@ -23721,6 +24090,31 @@ class NetworkFirewallPolicyWithRulesRuleMatchArgs:
     @src_ip_ranges.setter
     def src_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "src_ip_ranges", value)
+
+    @property
+    @pulumi.getter(name="srcNetworkScope")
+    def src_network_scope(self) -> Optional[pulumi.Input[str]]:
+        """
+        Network scope of the traffic source.
+        Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+        """
+        return pulumi.get(self, "src_network_scope")
+
+    @src_network_scope.setter
+    def src_network_scope(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "src_network_scope", value)
+
+    @property
+    @pulumi.getter(name="srcNetworks")
+    def src_networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Networks of the traffic source. It can be either a full or partial url.
+        """
+        return pulumi.get(self, "src_networks")
+
+    @src_networks.setter
+    def src_networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "src_networks", value)
 
     @property
     @pulumi.getter(name="srcRegionCodes")
@@ -34713,6 +35107,11 @@ if not MYPY:
         """
         CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
         """
+        dest_network_scope: NotRequired[pulumi.Input[str]]
+        """
+        Network scope of the traffic destination.
+        Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+        """
         dest_region_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
         Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of dest region codes allowed is 5000.
@@ -34732,6 +35131,15 @@ if not MYPY:
         src_ip_ranges: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
         CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
+        """
+        src_network_scope: NotRequired[pulumi.Input[str]]
+        """
+        Network scope of the traffic source.
+        Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+        """
+        src_networks: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Networks of the traffic source. It can be either a full or partial url.
         """
         src_region_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
@@ -34759,11 +35167,14 @@ class RegionNetworkFirewallPolicyRuleMatchArgs:
                  dest_address_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dest_fqdns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dest_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 dest_network_scope: Optional[pulumi.Input[str]] = None,
                  dest_region_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dest_threat_intelligences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  src_address_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  src_fqdns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  src_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 src_network_scope: Optional[pulumi.Input[str]] = None,
+                 src_networks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  src_region_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  src_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyRuleMatchSrcSecureTagArgs']]]] = None,
                  src_threat_intelligences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -34773,11 +35184,16 @@ class RegionNetworkFirewallPolicyRuleMatchArgs:
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_address_groups: Address groups which should be matched against the traffic destination. Maximum number of destination address groups is 10.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_fqdns: Fully Qualified Domain Name (FQDN) which should be matched against traffic destination. Maximum number of destination fqdn allowed is 100.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_ip_ranges: CIDR IP address range. Maximum number of destination CIDR IP ranges allowed is 5000.
+        :param pulumi.Input[str] dest_network_scope: Network scope of the traffic destination.
+               Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_region_codes: Region codes whose IP addresses will be used to match for destination of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of dest region codes allowed is 5000.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_threat_intelligences: Names of Network Threat Intelligence lists. The IPs in these lists will be matched against traffic destination.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_address_groups: Address groups which should be matched against the traffic source. Maximum number of source address groups is 10.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_fqdns: Fully Qualified Domain Name (FQDN) which should be matched against traffic source. Maximum number of source fqdn allowed is 100.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_ip_ranges: CIDR IP address range. Maximum number of source CIDR IP ranges allowed is 5000.
+        :param pulumi.Input[str] src_network_scope: Network scope of the traffic source.
+               Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_networks: Networks of the traffic source. It can be either a full or partial url.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_region_codes: Region codes whose IP addresses will be used to match for source of traffic. Should be specified as 2 letter country code defined as per ISO 3166 alpha-2 country codes. ex."US" Maximum number of source region codes allowed is 5000.
         :param pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyRuleMatchSrcSecureTagArgs']]] src_secure_tags: List of secure tag values, which should be matched at the source of the traffic. For INGRESS rule, if all the srcSecureTag are INEFFECTIVE, and there is no srcIpRange, this rule will be ignored. Maximum number of source tag values allowed is 256.
                Structure is documented below.
@@ -34793,6 +35209,8 @@ class RegionNetworkFirewallPolicyRuleMatchArgs:
             pulumi.set(__self__, "dest_fqdns", dest_fqdns)
         if dest_ip_ranges is not None:
             pulumi.set(__self__, "dest_ip_ranges", dest_ip_ranges)
+        if dest_network_scope is not None:
+            pulumi.set(__self__, "dest_network_scope", dest_network_scope)
         if dest_region_codes is not None:
             pulumi.set(__self__, "dest_region_codes", dest_region_codes)
         if dest_threat_intelligences is not None:
@@ -34803,6 +35221,10 @@ class RegionNetworkFirewallPolicyRuleMatchArgs:
             pulumi.set(__self__, "src_fqdns", src_fqdns)
         if src_ip_ranges is not None:
             pulumi.set(__self__, "src_ip_ranges", src_ip_ranges)
+        if src_network_scope is not None:
+            pulumi.set(__self__, "src_network_scope", src_network_scope)
+        if src_networks is not None:
+            pulumi.set(__self__, "src_networks", src_networks)
         if src_region_codes is not None:
             pulumi.set(__self__, "src_region_codes", src_region_codes)
         if src_secure_tags is not None:
@@ -34858,6 +35280,19 @@ class RegionNetworkFirewallPolicyRuleMatchArgs:
     @dest_ip_ranges.setter
     def dest_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "dest_ip_ranges", value)
+
+    @property
+    @pulumi.getter(name="destNetworkScope")
+    def dest_network_scope(self) -> Optional[pulumi.Input[str]]:
+        """
+        Network scope of the traffic destination.
+        Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+        """
+        return pulumi.get(self, "dest_network_scope")
+
+    @dest_network_scope.setter
+    def dest_network_scope(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dest_network_scope", value)
 
     @property
     @pulumi.getter(name="destRegionCodes")
@@ -34918,6 +35353,31 @@ class RegionNetworkFirewallPolicyRuleMatchArgs:
     @src_ip_ranges.setter
     def src_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "src_ip_ranges", value)
+
+    @property
+    @pulumi.getter(name="srcNetworkScope")
+    def src_network_scope(self) -> Optional[pulumi.Input[str]]:
+        """
+        Network scope of the traffic source.
+        Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+        """
+        return pulumi.get(self, "src_network_scope")
+
+    @src_network_scope.setter
+    def src_network_scope(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "src_network_scope", value)
+
+    @property
+    @pulumi.getter(name="srcNetworks")
+    def src_networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Networks of the traffic source. It can be either a full or partial url.
+        """
+        return pulumi.get(self, "src_networks")
+
+    @src_networks.setter
+    def src_networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "src_networks", value)
 
     @property
     @pulumi.getter(name="srcRegionCodes")
@@ -36391,6 +36851,11 @@ if not MYPY:
         Destination IP address range in CIDR format. Required for
         EGRESS rules.
         """
+        dest_network_scope: NotRequired[pulumi.Input[str]]
+        """
+        Network scope of the traffic destination.
+        Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+        """
         dest_region_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
         Region codes whose IP addresses will be used to match for destination
@@ -36417,6 +36882,15 @@ if not MYPY:
         """
         Source IP address range in CIDR format. Required for
         INGRESS rules.
+        """
+        src_network_scope: NotRequired[pulumi.Input[str]]
+        """
+        Network scope of the traffic source.
+        Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+        """
+        src_networks: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
+        """
+        Networks of the traffic source. It can be either a full or partial url.
         """
         src_region_codes: NotRequired[pulumi.Input[Sequence[pulumi.Input[str]]]]
         """
@@ -36452,11 +36926,14 @@ class RegionNetworkFirewallPolicyWithRulesRuleMatchArgs:
                  dest_address_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dest_fqdns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dest_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 dest_network_scope: Optional[pulumi.Input[str]] = None,
                  dest_region_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  dest_threat_intelligences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  src_address_groups: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  src_fqdns: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  src_ip_ranges: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 src_network_scope: Optional[pulumi.Input[str]] = None,
+                 src_networks: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  src_region_codes: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
                  src_secure_tags: Optional[pulumi.Input[Sequence[pulumi.Input['RegionNetworkFirewallPolicyWithRulesRuleMatchSrcSecureTagArgs']]]] = None,
                  src_threat_intelligences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None):
@@ -36469,6 +36946,8 @@ class RegionNetworkFirewallPolicyWithRulesRuleMatchArgs:
                traffic destination. Maximum number of destination fqdn allowed is 100.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_ip_ranges: Destination IP address range in CIDR format. Required for
                EGRESS rules.
+        :param pulumi.Input[str] dest_network_scope: Network scope of the traffic destination.
+               Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] dest_region_codes: Region codes whose IP addresses will be used to match for destination
                of traffic. Should be specified as 2 letter country code defined as per
                ISO 3166 alpha-2 country codes. ex."US"
@@ -36481,6 +36960,9 @@ class RegionNetworkFirewallPolicyWithRulesRuleMatchArgs:
                traffic source. Maximum number of source fqdn allowed is 100.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_ip_ranges: Source IP address range in CIDR format. Required for
                INGRESS rules.
+        :param pulumi.Input[str] src_network_scope: Network scope of the traffic source.
+               Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+        :param pulumi.Input[Sequence[pulumi.Input[str]]] src_networks: Networks of the traffic source. It can be either a full or partial url.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] src_region_codes: Region codes whose IP addresses will be used to match for source
                of traffic. Should be specified as 2 letter country code defined as per
                ISO 3166 alpha-2 country codes. ex."US"
@@ -36504,6 +36986,8 @@ class RegionNetworkFirewallPolicyWithRulesRuleMatchArgs:
             pulumi.set(__self__, "dest_fqdns", dest_fqdns)
         if dest_ip_ranges is not None:
             pulumi.set(__self__, "dest_ip_ranges", dest_ip_ranges)
+        if dest_network_scope is not None:
+            pulumi.set(__self__, "dest_network_scope", dest_network_scope)
         if dest_region_codes is not None:
             pulumi.set(__self__, "dest_region_codes", dest_region_codes)
         if dest_threat_intelligences is not None:
@@ -36514,6 +36998,10 @@ class RegionNetworkFirewallPolicyWithRulesRuleMatchArgs:
             pulumi.set(__self__, "src_fqdns", src_fqdns)
         if src_ip_ranges is not None:
             pulumi.set(__self__, "src_ip_ranges", src_ip_ranges)
+        if src_network_scope is not None:
+            pulumi.set(__self__, "src_network_scope", src_network_scope)
+        if src_networks is not None:
+            pulumi.set(__self__, "src_networks", src_networks)
         if src_region_codes is not None:
             pulumi.set(__self__, "src_region_codes", src_region_codes)
         if src_secure_tags is not None:
@@ -36572,6 +37060,19 @@ class RegionNetworkFirewallPolicyWithRulesRuleMatchArgs:
     @dest_ip_ranges.setter
     def dest_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "dest_ip_ranges", value)
+
+    @property
+    @pulumi.getter(name="destNetworkScope")
+    def dest_network_scope(self) -> Optional[pulumi.Input[str]]:
+        """
+        Network scope of the traffic destination.
+        Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+        """
+        return pulumi.get(self, "dest_network_scope")
+
+    @dest_network_scope.setter
+    def dest_network_scope(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "dest_network_scope", value)
 
     @property
     @pulumi.getter(name="destRegionCodes")
@@ -36639,6 +37140,31 @@ class RegionNetworkFirewallPolicyWithRulesRuleMatchArgs:
     @src_ip_ranges.setter
     def src_ip_ranges(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "src_ip_ranges", value)
+
+    @property
+    @pulumi.getter(name="srcNetworkScope")
+    def src_network_scope(self) -> Optional[pulumi.Input[str]]:
+        """
+        Network scope of the traffic source.
+        Possible values are: `INTERNET`, `INTRA_VPC`, `NON_INTERNET`, `VPC_NETWORKS`.
+        """
+        return pulumi.get(self, "src_network_scope")
+
+    @src_network_scope.setter
+    def src_network_scope(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "src_network_scope", value)
+
+    @property
+    @pulumi.getter(name="srcNetworks")
+    def src_networks(self) -> Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]:
+        """
+        Networks of the traffic source. It can be either a full or partial url.
+        """
+        return pulumi.get(self, "src_networks")
+
+    @src_networks.setter
+    def src_networks(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
+        pulumi.set(self, "src_networks", value)
 
     @property
     @pulumi.getter(name="srcRegionCodes")

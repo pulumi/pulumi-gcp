@@ -10,6 +10,14 @@ using Pulumi.Serialization;
 namespace Pulumi.Gcp.Gemini
 {
     /// <summary>
+    /// The resource for managing Code Repository Index for Gemini Code Assist.
+    /// 
+    /// To get more information about CodeRepositoryIndex, see:
+    /// 
+    /// * [API documentation](https://cloud.google.com/gemini/docs/api/reference/rest/v1/projects.locations.codeRepositoryIndexes)
+    /// * How-to Guides
+    ///     * [Gemini Code Assist overview](https://cloud.google.com/gemini/docs/codeassist/overview)
+    /// 
     /// ## Example Usage
     /// 
     /// ### Gemini Code Repository Index Basic
@@ -25,7 +33,7 @@ namespace Pulumi.Gcp.Gemini
     ///     var example = new Gcp.Gemini.CodeRepositoryIndex("example", new()
     ///     {
     ///         Location = "us-central1",
-    ///         CodeRepositoryIndexId = "",
+    ///         CodeRepositoryIndexId = "code-repository-index-example",
     ///         KmsKey = "projects/projectExample/locations/locationExample/keyRings/keyRingExample/cryptoKeys/cryptoKeyExample",
     ///     });
     /// 
@@ -88,7 +96,7 @@ namespace Pulumi.Gcp.Gemini
 
         /// <summary>
         /// Optional. Immutable. Customer-managed encryption key name, in the format
-        /// projects/*/locations/*/keyRings/*/cryptoKeys/*.
+        /// `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         /// </summary>
         [Output("kmsKey")]
         public Output<string?> KmsKey { get; private set; } = null!;
@@ -129,12 +137,7 @@ namespace Pulumi.Gcp.Gemini
 
         /// <summary>
         /// Output only. Code Repository Index instance State.
-        /// Possible values:
-        /// STATE_UNSPECIFIED
-        /// CREATING
-        /// ACTIVE
-        /// DELETING
-        /// SUSPENDED
+        /// Possible values are: `STATE_UNSPECIFIED`, `CREATING`, `ACTIVE`, `DELETING`, `SUSPENDED`.
         /// </summary>
         [Output("state")]
         public Output<string> State { get; private set; } = null!;
@@ -213,7 +216,7 @@ namespace Pulumi.Gcp.Gemini
 
         /// <summary>
         /// Optional. Immutable. Customer-managed encryption key name, in the format
-        /// projects/*/locations/*/keyRings/*/cryptoKeys/*.
+        /// `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         /// </summary>
         [Input("kmsKey")]
         public Input<string>? KmsKey { get; set; }
@@ -292,7 +295,7 @@ namespace Pulumi.Gcp.Gemini
 
         /// <summary>
         /// Optional. Immutable. Customer-managed encryption key name, in the format
-        /// projects/*/locations/*/keyRings/*/cryptoKeys/*.
+        /// `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         /// </summary>
         [Input("kmsKey")]
         public Input<string>? KmsKey { get; set; }
@@ -349,12 +352,7 @@ namespace Pulumi.Gcp.Gemini
 
         /// <summary>
         /// Output only. Code Repository Index instance State.
-        /// Possible values:
-        /// STATE_UNSPECIFIED
-        /// CREATING
-        /// ACTIVE
-        /// DELETING
-        /// SUSPENDED
+        /// Possible values are: `STATE_UNSPECIFIED`, `CREATING`, `ACTIVE`, `DELETING`, `SUSPENDED`.
         /// </summary>
         [Input("state")]
         public Input<string>? State { get; set; }

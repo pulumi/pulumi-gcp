@@ -65,6 +65,8 @@ __all__ = [
     'JobTerminalConditionArgsDict',
     'ServiceBinaryAuthorizationArgs',
     'ServiceBinaryAuthorizationArgsDict',
+    'ServiceBuildConfigArgs',
+    'ServiceBuildConfigArgsDict',
     'ServiceConditionArgs',
     'ServiceConditionArgsDict',
     'ServiceIamBindingConditionArgs',
@@ -2375,6 +2377,201 @@ class ServiceBinaryAuthorizationArgs:
     @use_default.setter
     def use_default(self, value: Optional[pulumi.Input[bool]]):
         pulumi.set(self, "use_default", value)
+
+
+if not MYPY:
+    class ServiceBuildConfigArgsDict(TypedDict):
+        base_image: NotRequired[pulumi.Input[str]]
+        """
+        The base image used to build the function.
+        """
+        enable_automatic_updates: NotRequired[pulumi.Input[bool]]
+        """
+        Sets whether the function will receive automatic base image updates.
+        """
+        environment_variables: NotRequired[pulumi.Input[Mapping[str, pulumi.Input[str]]]]
+        """
+        User-provided build-time environment variables for the function.
+        """
+        function_target: NotRequired[pulumi.Input[str]]
+        """
+        The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix, if not specified. For backward compatibility, if function with given name is not found, then the system will try to use function named "function".
+        """
+        image_uri: NotRequired[pulumi.Input[str]]
+        """
+        Artifact Registry URI to store the built image.
+        """
+        name: NotRequired[pulumi.Input[str]]
+        """
+        (Output)
+        The Cloud Build name of the latest successful deployment of the function.
+        """
+        service_account: NotRequired[pulumi.Input[str]]
+        """
+        Service account to be used for building the container. The format of this field is `projects/{projectId}/serviceAccounts/{serviceAccountEmail}`.
+        """
+        source_location: NotRequired[pulumi.Input[str]]
+        """
+        The Cloud Storage bucket URI where the function source code is located.
+        """
+        worker_pool: NotRequired[pulumi.Input[str]]
+        """
+        Name of the Cloud Build Custom Worker Pool that should be used to build the Cloud Run function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where {project} and {region} are the project id and region respectively where the worker pool is defined and {workerPool} is the short name of the worker pool.
+        """
+elif False:
+    ServiceBuildConfigArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class ServiceBuildConfigArgs:
+    def __init__(__self__, *,
+                 base_image: Optional[pulumi.Input[str]] = None,
+                 enable_automatic_updates: Optional[pulumi.Input[bool]] = None,
+                 environment_variables: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
+                 function_target: Optional[pulumi.Input[str]] = None,
+                 image_uri: Optional[pulumi.Input[str]] = None,
+                 name: Optional[pulumi.Input[str]] = None,
+                 service_account: Optional[pulumi.Input[str]] = None,
+                 source_location: Optional[pulumi.Input[str]] = None,
+                 worker_pool: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] base_image: The base image used to build the function.
+        :param pulumi.Input[bool] enable_automatic_updates: Sets whether the function will receive automatic base image updates.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] environment_variables: User-provided build-time environment variables for the function.
+        :param pulumi.Input[str] function_target: The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix, if not specified. For backward compatibility, if function with given name is not found, then the system will try to use function named "function".
+        :param pulumi.Input[str] image_uri: Artifact Registry URI to store the built image.
+        :param pulumi.Input[str] name: (Output)
+               The Cloud Build name of the latest successful deployment of the function.
+        :param pulumi.Input[str] service_account: Service account to be used for building the container. The format of this field is `projects/{projectId}/serviceAccounts/{serviceAccountEmail}`.
+        :param pulumi.Input[str] source_location: The Cloud Storage bucket URI where the function source code is located.
+        :param pulumi.Input[str] worker_pool: Name of the Cloud Build Custom Worker Pool that should be used to build the Cloud Run function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where {project} and {region} are the project id and region respectively where the worker pool is defined and {workerPool} is the short name of the worker pool.
+        """
+        if base_image is not None:
+            pulumi.set(__self__, "base_image", base_image)
+        if enable_automatic_updates is not None:
+            pulumi.set(__self__, "enable_automatic_updates", enable_automatic_updates)
+        if environment_variables is not None:
+            pulumi.set(__self__, "environment_variables", environment_variables)
+        if function_target is not None:
+            pulumi.set(__self__, "function_target", function_target)
+        if image_uri is not None:
+            pulumi.set(__self__, "image_uri", image_uri)
+        if name is not None:
+            pulumi.set(__self__, "name", name)
+        if service_account is not None:
+            pulumi.set(__self__, "service_account", service_account)
+        if source_location is not None:
+            pulumi.set(__self__, "source_location", source_location)
+        if worker_pool is not None:
+            pulumi.set(__self__, "worker_pool", worker_pool)
+
+    @property
+    @pulumi.getter(name="baseImage")
+    def base_image(self) -> Optional[pulumi.Input[str]]:
+        """
+        The base image used to build the function.
+        """
+        return pulumi.get(self, "base_image")
+
+    @base_image.setter
+    def base_image(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "base_image", value)
+
+    @property
+    @pulumi.getter(name="enableAutomaticUpdates")
+    def enable_automatic_updates(self) -> Optional[pulumi.Input[bool]]:
+        """
+        Sets whether the function will receive automatic base image updates.
+        """
+        return pulumi.get(self, "enable_automatic_updates")
+
+    @enable_automatic_updates.setter
+    def enable_automatic_updates(self, value: Optional[pulumi.Input[bool]]):
+        pulumi.set(self, "enable_automatic_updates", value)
+
+    @property
+    @pulumi.getter(name="environmentVariables")
+    def environment_variables(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        User-provided build-time environment variables for the function.
+        """
+        return pulumi.get(self, "environment_variables")
+
+    @environment_variables.setter
+    def environment_variables(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "environment_variables", value)
+
+    @property
+    @pulumi.getter(name="functionTarget")
+    def function_target(self) -> Optional[pulumi.Input[str]]:
+        """
+        The name of the function (as defined in source code) that will be executed. Defaults to the resource name suffix, if not specified. For backward compatibility, if function with given name is not found, then the system will try to use function named "function".
+        """
+        return pulumi.get(self, "function_target")
+
+    @function_target.setter
+    def function_target(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "function_target", value)
+
+    @property
+    @pulumi.getter(name="imageUri")
+    def image_uri(self) -> Optional[pulumi.Input[str]]:
+        """
+        Artifact Registry URI to store the built image.
+        """
+        return pulumi.get(self, "image_uri")
+
+    @image_uri.setter
+    def image_uri(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "image_uri", value)
+
+    @property
+    @pulumi.getter
+    def name(self) -> Optional[pulumi.Input[str]]:
+        """
+        (Output)
+        The Cloud Build name of the latest successful deployment of the function.
+        """
+        return pulumi.get(self, "name")
+
+    @name.setter
+    def name(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "name", value)
+
+    @property
+    @pulumi.getter(name="serviceAccount")
+    def service_account(self) -> Optional[pulumi.Input[str]]:
+        """
+        Service account to be used for building the container. The format of this field is `projects/{projectId}/serviceAccounts/{serviceAccountEmail}`.
+        """
+        return pulumi.get(self, "service_account")
+
+    @service_account.setter
+    def service_account(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "service_account", value)
+
+    @property
+    @pulumi.getter(name="sourceLocation")
+    def source_location(self) -> Optional[pulumi.Input[str]]:
+        """
+        The Cloud Storage bucket URI where the function source code is located.
+        """
+        return pulumi.get(self, "source_location")
+
+    @source_location.setter
+    def source_location(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "source_location", value)
+
+    @property
+    @pulumi.getter(name="workerPool")
+    def worker_pool(self) -> Optional[pulumi.Input[str]]:
+        """
+        Name of the Cloud Build Custom Worker Pool that should be used to build the Cloud Run function. The format of this field is `projects/{project}/locations/{region}/workerPools/{workerPool}` where {project} and {region} are the project id and region respectively where the worker pool is defined and {workerPool} is the short name of the worker pool.
+        """
+        return pulumi.get(self, "worker_pool")
+
+    @worker_pool.setter
+    def worker_pool(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "worker_pool", value)
 
 
 if not MYPY:

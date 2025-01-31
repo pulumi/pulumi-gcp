@@ -35,6 +35,8 @@ import com.pulumi.gcp.kms.inputs.GetKMSSecretCiphertextPlainArgs;
 import com.pulumi.gcp.kms.inputs.GetKMSSecretPlainArgs;
 import com.pulumi.gcp.kms.inputs.GetKeyHandleArgs;
 import com.pulumi.gcp.kms.inputs.GetKeyHandlePlainArgs;
+import com.pulumi.gcp.kms.inputs.GetKeyHandlesArgs;
+import com.pulumi.gcp.kms.inputs.GetKeyHandlesPlainArgs;
 import com.pulumi.gcp.kms.inputs.GetKeyRingIamPolicyArgs;
 import com.pulumi.gcp.kms.inputs.GetKeyRingIamPolicyPlainArgs;
 import com.pulumi.gcp.kms.inputs.GetKeyRingsArgs;
@@ -52,6 +54,7 @@ import com.pulumi.gcp.kms.outputs.GetKMSSecretAsymmetricResult;
 import com.pulumi.gcp.kms.outputs.GetKMSSecretCiphertextResult;
 import com.pulumi.gcp.kms.outputs.GetKMSSecretResult;
 import com.pulumi.gcp.kms.outputs.GetKeyHandleResult;
+import com.pulumi.gcp.kms.outputs.GetKeyHandlesResult;
 import com.pulumi.gcp.kms.outputs.GetKeyRingIamPolicyResult;
 import com.pulumi.gcp.kms.outputs.GetKeyRingsResult;
 import java.util.concurrent.CompletableFuture;
@@ -4316,6 +4319,216 @@ public final class KmsFunctions {
      */
     public static CompletableFuture<GetKeyHandleResult> getKeyHandlePlain(GetKeyHandlePlainArgs args, InvokeOptions options) {
         return Deployment.getInstance().invokeAsync("gcp:kms/getKeyHandle:getKeyHandle", TypeShape.of(GetKeyHandleResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.kms.KmsFunctions;
+     * import com.pulumi.gcp.kms.inputs.GetKeyHandlesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myKeyHandles = KmsFunctions.getKeyHandles(GetKeyHandlesArgs.builder()
+     *             .project("resource-project-id")
+     *             .location("us-central1")
+     *             .resourceTypeSelector("storage.googleapis.com/Bucket")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetKeyHandlesResult> getKeyHandles(GetKeyHandlesArgs args) {
+        return getKeyHandles(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.kms.KmsFunctions;
+     * import com.pulumi.gcp.kms.inputs.GetKeyHandlesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myKeyHandles = KmsFunctions.getKeyHandles(GetKeyHandlesArgs.builder()
+     *             .project("resource-project-id")
+     *             .location("us-central1")
+     *             .resourceTypeSelector("storage.googleapis.com/Bucket")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetKeyHandlesResult> getKeyHandlesPlain(GetKeyHandlesPlainArgs args) {
+        return getKeyHandlesPlain(args, InvokeOptions.Empty);
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.kms.KmsFunctions;
+     * import com.pulumi.gcp.kms.inputs.GetKeyHandlesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myKeyHandles = KmsFunctions.getKeyHandles(GetKeyHandlesArgs.builder()
+     *             .project("resource-project-id")
+     *             .location("us-central1")
+     *             .resourceTypeSelector("storage.googleapis.com/Bucket")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetKeyHandlesResult> getKeyHandles(GetKeyHandlesArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invoke("gcp:kms/getKeyHandles:getKeyHandles", TypeShape.of(GetKeyHandlesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.kms.KmsFunctions;
+     * import com.pulumi.gcp.kms.inputs.GetKeyHandlesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myKeyHandles = KmsFunctions.getKeyHandles(GetKeyHandlesArgs.builder()
+     *             .project("resource-project-id")
+     *             .location("us-central1")
+     *             .resourceTypeSelector("storage.googleapis.com/Bucket")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static Output<GetKeyHandlesResult> getKeyHandles(GetKeyHandlesArgs args, InvokeOutputOptions options) {
+        return Deployment.getInstance().invoke("gcp:kms/getKeyHandles:getKeyHandles", TypeShape.of(GetKeyHandlesResult.class), args, Utilities.withVersion(options));
+    }
+    /**
+     * ## Example Usage
+     * 
+     * &lt;!--Start PulumiCodeChooser --&gt;
+     * <pre>
+     * {@code
+     * package generated_program;
+     * 
+     * import com.pulumi.Context;
+     * import com.pulumi.Pulumi;
+     * import com.pulumi.core.Output;
+     * import com.pulumi.gcp.kms.KmsFunctions;
+     * import com.pulumi.gcp.kms.inputs.GetKeyHandlesArgs;
+     * import java.util.List;
+     * import java.util.ArrayList;
+     * import java.util.Map;
+     * import java.io.File;
+     * import java.nio.file.Files;
+     * import java.nio.file.Paths;
+     * 
+     * public class App {
+     *     public static void main(String[] args) {
+     *         Pulumi.run(App::stack);
+     *     }
+     * 
+     *     public static void stack(Context ctx) {
+     *         final var myKeyHandles = KmsFunctions.getKeyHandles(GetKeyHandlesArgs.builder()
+     *             .project("resource-project-id")
+     *             .location("us-central1")
+     *             .resourceTypeSelector("storage.googleapis.com/Bucket")
+     *             .build());
+     * 
+     *     }
+     * }
+     * }
+     * </pre>
+     * &lt;!--End PulumiCodeChooser --&gt;
+     * 
+     */
+    public static CompletableFuture<GetKeyHandlesResult> getKeyHandlesPlain(GetKeyHandlesPlainArgs args, InvokeOptions options) {
+        return Deployment.getInstance().invokeAsync("gcp:kms/getKeyHandles:getKeyHandles", TypeShape.of(GetKeyHandlesResult.class), args, Utilities.withVersion(options));
     }
     /**
      * Retrieves the current IAM policy data for a Google Cloud KMS key ring.

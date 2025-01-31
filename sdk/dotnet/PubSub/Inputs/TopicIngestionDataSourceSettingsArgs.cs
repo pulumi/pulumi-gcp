@@ -20,6 +20,13 @@ namespace Pulumi.Gcp.PubSub.Inputs
         public Input<Inputs.TopicIngestionDataSourceSettingsAwsKinesisArgs>? AwsKinesis { get; set; }
 
         /// <summary>
+        /// Settings for ingestion from Azure Event Hubs.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("azureEventHubs")]
+        public Input<Inputs.TopicIngestionDataSourceSettingsAzureEventHubsArgs>? AzureEventHubs { get; set; }
+
+        /// <summary>
         /// Settings for ingestion from Cloud Storage.
         /// Structure is documented below.
         /// </summary>

@@ -835,6 +835,113 @@ import (
 //	}
 //
 // ```
+// ### Cloudrunv2 Service Function
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"fmt"
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/cloudrunv2"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/organizations"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/projects"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/serviceaccount"
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/storage"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			project, err := organizations.LookupProject(ctx, &organizations.LookupProjectArgs{}, nil)
+//			if err != nil {
+//				return err
+//			}
+//			bucket, err := storage.NewBucket(ctx, "bucket", &storage.BucketArgs{
+//				Name:                     pulumi.Sprintf("%v-gcf-source", project.ProjectId),
+//				Location:                 pulumi.String("US"),
+//				UniformBucketLevelAccess: pulumi.Bool(true),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			object, err := storage.NewBucketObject(ctx, "object", &storage.BucketObjectArgs{
+//				Name:   pulumi.String("function-source.zip"),
+//				Bucket: bucket.Name,
+//				Source: pulumi.NewFileAsset("function_source.zip"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			cloudbuildServiceAccount, err := serviceaccount.NewAccount(ctx, "cloudbuild_service_account", &serviceaccount.AccountArgs{
+//				AccountId: pulumi.String("build-sa"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			actAs, err := projects.NewIAMMember(ctx, "act_as", &projects.IAMMemberArgs{
+//				Project: pulumi.String(project.ProjectId),
+//				Role:    pulumi.String("roles/iam.serviceAccountUser"),
+//				Member: cloudbuildServiceAccount.Email.ApplyT(func(email string) (string, error) {
+//					return fmt.Sprintf("serviceAccount:%v", email), nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			logsWriter, err := projects.NewIAMMember(ctx, "logs_writer", &projects.IAMMemberArgs{
+//				Project: pulumi.String(project.ProjectId),
+//				Role:    pulumi.String("roles/logging.logWriter"),
+//				Member: cloudbuildServiceAccount.Email.ApplyT(func(email string) (string, error) {
+//					return fmt.Sprintf("serviceAccount:%v", email), nil
+//				}).(pulumi.StringOutput),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			_, err = cloudrunv2.NewService(ctx, "default", &cloudrunv2.ServiceArgs{
+//				Name:               pulumi.String("cloudrun-service"),
+//				Location:           pulumi.String("us-central1"),
+//				DeletionProtection: pulumi.Bool(false),
+//				Ingress:            pulumi.String("INGRESS_TRAFFIC_ALL"),
+//				Template: &cloudrunv2.ServiceTemplateArgs{
+//					Containers: cloudrunv2.ServiceTemplateContainerArray{
+//						&cloudrunv2.ServiceTemplateContainerArgs{
+//							Image: pulumi.String("us-docker.pkg.dev/cloudrun/container/hello"),
+//						},
+//					},
+//				},
+//				BuildConfig: &cloudrunv2.ServiceBuildConfigArgs{
+//					SourceLocation: pulumi.All(bucket.Name, object.Name).ApplyT(func(_args []interface{}) (string, error) {
+//						bucketName := _args[0].(string)
+//						objectName := _args[1].(string)
+//						return fmt.Sprintf("gs://%v/%v", bucketName, objectName), nil
+//					}).(pulumi.StringOutput),
+//					FunctionTarget:         pulumi.String("helloHttp"),
+//					ImageUri:               pulumi.String("us-docker.pkg.dev/cloudrun/container/hello"),
+//					BaseImage:              pulumi.String("us-central1-docker.pkg.dev/serverless-runtimes/google-22-full/runtimes/nodejs22"),
+//					EnableAutomaticUpdates: pulumi.Bool(true),
+//					WorkerPool:             pulumi.String("worker-pool"),
+//					EnvironmentVariables: pulumi.StringMap{
+//						"FOO_KEY": pulumi.String("FOO_VALUE"),
+//						"BAR_KEY": pulumi.String("BAR_VALUE"),
+//					},
+//					ServiceAccount: cloudbuildServiceAccount.ID(),
+//				},
+//			}, pulumi.DependsOn([]pulumi.Resource{
+//				actAs,
+//				logsWriter,
+//			}))
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -872,6 +979,8 @@ type Service struct {
 	Annotations pulumi.StringMapOutput `pulumi:"annotations"`
 	// Settings for the Binary Authorization feature.
 	BinaryAuthorization ServiceBinaryAuthorizationPtrOutput `pulumi:"binaryAuthorization"`
+	// Configuration for building a Cloud Run function.
+	BuildConfig ServiceBuildConfigPtrOutput `pulumi:"buildConfig"`
 	// Arbitrary identifier for the API client.
 	Client pulumi.StringPtrOutput `pulumi:"client"`
 	// Arbitrary version identifier for the API client.
@@ -1023,6 +1132,8 @@ type serviceState struct {
 	Annotations map[string]string `pulumi:"annotations"`
 	// Settings for the Binary Authorization feature.
 	BinaryAuthorization *ServiceBinaryAuthorization `pulumi:"binaryAuthorization"`
+	// Configuration for building a Cloud Run function.
+	BuildConfig *ServiceBuildConfig `pulumi:"buildConfig"`
 	// Arbitrary identifier for the API client.
 	Client *string `pulumi:"client"`
 	// Arbitrary version identifier for the API client.
@@ -1134,6 +1245,8 @@ type ServiceState struct {
 	Annotations pulumi.StringMapInput
 	// Settings for the Binary Authorization feature.
 	BinaryAuthorization ServiceBinaryAuthorizationPtrInput
+	// Configuration for building a Cloud Run function.
+	BuildConfig ServiceBuildConfigPtrInput
 	// Arbitrary identifier for the API client.
 	Client pulumi.StringPtrInput
 	// Arbitrary version identifier for the API client.
@@ -1249,6 +1362,8 @@ type serviceArgs struct {
 	Annotations map[string]string `pulumi:"annotations"`
 	// Settings for the Binary Authorization feature.
 	BinaryAuthorization *ServiceBinaryAuthorization `pulumi:"binaryAuthorization"`
+	// Configuration for building a Cloud Run function.
+	BuildConfig *ServiceBuildConfig `pulumi:"buildConfig"`
 	// Arbitrary identifier for the API client.
 	Client *string `pulumi:"client"`
 	// Arbitrary version identifier for the API client.
@@ -1312,6 +1427,8 @@ type ServiceArgs struct {
 	Annotations pulumi.StringMapInput
 	// Settings for the Binary Authorization feature.
 	BinaryAuthorization ServiceBinaryAuthorizationPtrInput
+	// Configuration for building a Cloud Run function.
+	BuildConfig ServiceBuildConfigPtrInput
 	// Arbitrary identifier for the API client.
 	Client pulumi.StringPtrInput
 	// Arbitrary version identifier for the API client.
@@ -1464,6 +1581,11 @@ func (o ServiceOutput) Annotations() pulumi.StringMapOutput {
 // Settings for the Binary Authorization feature.
 func (o ServiceOutput) BinaryAuthorization() ServiceBinaryAuthorizationPtrOutput {
 	return o.ApplyT(func(v *Service) ServiceBinaryAuthorizationPtrOutput { return v.BinaryAuthorization }).(ServiceBinaryAuthorizationPtrOutput)
+}
+
+// Configuration for building a Cloud Run function.
+func (o ServiceOutput) BuildConfig() ServiceBuildConfigPtrOutput {
+	return o.ApplyT(func(v *Service) ServiceBuildConfigPtrOutput { return v.BuildConfig }).(ServiceBuildConfigPtrOutput)
 }
 
 // Arbitrary identifier for the API client.

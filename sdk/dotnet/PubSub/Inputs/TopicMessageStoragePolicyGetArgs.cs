@@ -29,6 +29,15 @@ namespace Pulumi.Gcp.PubSub.Inputs
             set => _allowedPersistenceRegions = value;
         }
 
+        /// <summary>
+        /// If true, `allowedPersistenceRegions` is also used to enforce in-transit
+        /// guarantees for messages. That is, Pub/Sub will fail topics.publish
+        /// operations on this topic and subscribe operations on any subscription
+        /// attached to this topic in any region that is not in `allowedPersistenceRegions`.
+        /// </summary>
+        [Input("enforceInTransit")]
+        public Input<bool>? EnforceInTransit { get; set; }
+
         public TopicMessageStoragePolicyGetArgs()
         {
         }

@@ -34,7 +34,7 @@ class CodeRepositoryIndexArgs:
         :param pulumi.Input[str] location: The location of the Code Repository Index, for example `us-central1`.
         :param pulumi.Input[bool] force_destroy: If set to true, will allow deletion of the CodeRepositoryIndex even if there are existing RepositoryGroups for the resource. These RepositoryGroups will also be deleted.
         :param pulumi.Input[str] kms_key: Optional. Immutable. Customer-managed encryption key name, in the format
-               projects/*/locations/*/keyRings/*/cryptoKeys/*.
+               `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels as key value pairs.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -96,7 +96,7 @@ class CodeRepositoryIndexArgs:
     def kms_key(self) -> Optional[pulumi.Input[str]]:
         """
         Optional. Immutable. Customer-managed encryption key name, in the format
-        projects/*/locations/*/keyRings/*/cryptoKeys/*.
+        `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         """
         return pulumi.get(self, "kms_key")
 
@@ -157,7 +157,7 @@ class _CodeRepositoryIndexState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[bool] force_destroy: If set to true, will allow deletion of the CodeRepositoryIndex even if there are existing RepositoryGroups for the resource. These RepositoryGroups will also be deleted.
         :param pulumi.Input[str] kms_key: Optional. Immutable. Customer-managed encryption key name, in the format
-               projects/*/locations/*/keyRings/*/cryptoKeys/*.
+               `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels as key value pairs.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -168,12 +168,7 @@ class _CodeRepositoryIndexState:
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[str] state: Output only. Code Repository Index instance State.
-               Possible values:
-               STATE_UNSPECIFIED
-               CREATING
-               ACTIVE
-               DELETING
-               SUSPENDED
+               Possible values are: `STATE_UNSPECIFIED`, `CREATING`, `ACTIVE`, `DELETING`, `SUSPENDED`.
         :param pulumi.Input[str] update_time: Output only. Update time stamp.
         """
         if code_repository_index_id is not None:
@@ -257,7 +252,7 @@ class _CodeRepositoryIndexState:
     def kms_key(self) -> Optional[pulumi.Input[str]]:
         """
         Optional. Immutable. Customer-managed encryption key name, in the format
-        projects/*/locations/*/keyRings/*/cryptoKeys/*.
+        `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         """
         return pulumi.get(self, "kms_key")
 
@@ -334,12 +329,7 @@ class _CodeRepositoryIndexState:
     def state(self) -> Optional[pulumi.Input[str]]:
         """
         Output only. Code Repository Index instance State.
-        Possible values:
-        STATE_UNSPECIFIED
-        CREATING
-        ACTIVE
-        DELETING
-        SUSPENDED
+        Possible values are: `STATE_UNSPECIFIED`, `CREATING`, `ACTIVE`, `DELETING`, `SUSPENDED`.
         """
         return pulumi.get(self, "state")
 
@@ -373,6 +363,14 @@ class CodeRepositoryIndex(pulumi.CustomResource):
                  project: Optional[pulumi.Input[str]] = None,
                  __props__=None):
         """
+        The resource for managing Code Repository Index for Gemini Code Assist.
+
+        To get more information about CodeRepositoryIndex, see:
+
+        * [API documentation](https://cloud.google.com/gemini/docs/api/reference/rest/v1/projects.locations.codeRepositoryIndexes)
+        * How-to Guides
+            * [Gemini Code Assist overview](https://cloud.google.com/gemini/docs/codeassist/overview)
+
         ## Example Usage
 
         ### Gemini Code Repository Index Basic
@@ -383,7 +381,7 @@ class CodeRepositoryIndex(pulumi.CustomResource):
 
         example = gcp.gemini.CodeRepositoryIndex("example",
             location="us-central1",
-            code_repository_index_id="",
+            code_repository_index_id="code-repository-index-example",
             kms_key="projects/projectExample/locations/locationExample/keyRings/keyRingExample/cryptoKeys/cryptoKeyExample")
         ```
 
@@ -419,7 +417,7 @@ class CodeRepositoryIndex(pulumi.CustomResource):
                - - -
         :param pulumi.Input[bool] force_destroy: If set to true, will allow deletion of the CodeRepositoryIndex even if there are existing RepositoryGroups for the resource. These RepositoryGroups will also be deleted.
         :param pulumi.Input[str] kms_key: Optional. Immutable. Customer-managed encryption key name, in the format
-               projects/*/locations/*/keyRings/*/cryptoKeys/*.
+               `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels as key value pairs.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -434,6 +432,14 @@ class CodeRepositoryIndex(pulumi.CustomResource):
                  args: CodeRepositoryIndexArgs,
                  opts: Optional[pulumi.ResourceOptions] = None):
         """
+        The resource for managing Code Repository Index for Gemini Code Assist.
+
+        To get more information about CodeRepositoryIndex, see:
+
+        * [API documentation](https://cloud.google.com/gemini/docs/api/reference/rest/v1/projects.locations.codeRepositoryIndexes)
+        * How-to Guides
+            * [Gemini Code Assist overview](https://cloud.google.com/gemini/docs/codeassist/overview)
+
         ## Example Usage
 
         ### Gemini Code Repository Index Basic
@@ -444,7 +450,7 @@ class CodeRepositoryIndex(pulumi.CustomResource):
 
         example = gcp.gemini.CodeRepositoryIndex("example",
             location="us-central1",
-            code_repository_index_id="",
+            code_repository_index_id="code-repository-index-example",
             kms_key="projects/projectExample/locations/locationExample/keyRings/keyRingExample/cryptoKeys/cryptoKeyExample")
         ```
 
@@ -557,7 +563,7 @@ class CodeRepositoryIndex(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[bool] force_destroy: If set to true, will allow deletion of the CodeRepositoryIndex even if there are existing RepositoryGroups for the resource. These RepositoryGroups will also be deleted.
         :param pulumi.Input[str] kms_key: Optional. Immutable. Customer-managed encryption key name, in the format
-               projects/*/locations/*/keyRings/*/cryptoKeys/*.
+               `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Optional. Labels as key value pairs.
                **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
                Please refer to the field `effective_labels` for all of the labels present on the resource.
@@ -568,12 +574,7 @@ class CodeRepositoryIndex(pulumi.CustomResource):
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
                and default labels configured on the provider.
         :param pulumi.Input[str] state: Output only. Code Repository Index instance State.
-               Possible values:
-               STATE_UNSPECIFIED
-               CREATING
-               ACTIVE
-               DELETING
-               SUSPENDED
+               Possible values are: `STATE_UNSPECIFIED`, `CREATING`, `ACTIVE`, `DELETING`, `SUSPENDED`.
         :param pulumi.Input[str] update_time: Output only. Update time stamp.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -634,7 +635,7 @@ class CodeRepositoryIndex(pulumi.CustomResource):
     def kms_key(self) -> pulumi.Output[Optional[str]]:
         """
         Optional. Immutable. Customer-managed encryption key name, in the format
-        projects/*/locations/*/keyRings/*/cryptoKeys/*.
+        `projects/*/locations/*/keyRings/*/cryptoKeys/*`.
         """
         return pulumi.get(self, "kms_key")
 
@@ -687,12 +688,7 @@ class CodeRepositoryIndex(pulumi.CustomResource):
     def state(self) -> pulumi.Output[str]:
         """
         Output only. Code Repository Index instance State.
-        Possible values:
-        STATE_UNSPECIFIED
-        CREATING
-        ACTIVE
-        DELETING
-        SUSPENDED
+        Possible values are: `STATE_UNSPECIFIED`, `CREATING`, `ACTIVE`, `DELETING`, `SUSPENDED`.
         """
         return pulumi.get(self, "state")
 

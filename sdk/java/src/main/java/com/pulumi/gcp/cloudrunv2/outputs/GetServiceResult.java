@@ -6,6 +6,7 @@ package com.pulumi.gcp.cloudrunv2.outputs;
 import com.pulumi.core.annotations.CustomType;
 import com.pulumi.exceptions.MissingRequiredPropertyException;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceBinaryAuthorization;
+import com.pulumi.gcp.cloudrunv2.outputs.GetServiceBuildConfig;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceCondition;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceScaling;
 import com.pulumi.gcp.cloudrunv2.outputs.GetServiceTemplate;
@@ -24,6 +25,7 @@ import javax.annotation.Nullable;
 public final class GetServiceResult {
     private Map<String,String> annotations;
     private List<GetServiceBinaryAuthorization> binaryAuthorizations;
+    private List<GetServiceBuildConfig> buildConfigs;
     private String client;
     private String clientVersion;
     private List<GetServiceCondition> conditions;
@@ -73,6 +75,9 @@ public final class GetServiceResult {
     }
     public List<GetServiceBinaryAuthorization> binaryAuthorizations() {
         return this.binaryAuthorizations;
+    }
+    public List<GetServiceBuildConfig> buildConfigs() {
+        return this.buildConfigs;
     }
     public String client() {
         return this.client;
@@ -204,6 +209,7 @@ public final class GetServiceResult {
     public static final class Builder {
         private Map<String,String> annotations;
         private List<GetServiceBinaryAuthorization> binaryAuthorizations;
+        private List<GetServiceBuildConfig> buildConfigs;
         private String client;
         private String clientVersion;
         private List<GetServiceCondition> conditions;
@@ -247,6 +253,7 @@ public final class GetServiceResult {
     	      Objects.requireNonNull(defaults);
     	      this.annotations = defaults.annotations;
     	      this.binaryAuthorizations = defaults.binaryAuthorizations;
+    	      this.buildConfigs = defaults.buildConfigs;
     	      this.client = defaults.client;
     	      this.clientVersion = defaults.clientVersion;
     	      this.conditions = defaults.conditions;
@@ -305,6 +312,17 @@ public final class GetServiceResult {
         }
         public Builder binaryAuthorizations(GetServiceBinaryAuthorization... binaryAuthorizations) {
             return binaryAuthorizations(List.of(binaryAuthorizations));
+        }
+        @CustomType.Setter
+        public Builder buildConfigs(List<GetServiceBuildConfig> buildConfigs) {
+            if (buildConfigs == null) {
+              throw new MissingRequiredPropertyException("GetServiceResult", "buildConfigs");
+            }
+            this.buildConfigs = buildConfigs;
+            return this;
+        }
+        public Builder buildConfigs(GetServiceBuildConfig... buildConfigs) {
+            return buildConfigs(List.of(buildConfigs));
         }
         @CustomType.Setter
         public Builder client(String client) {
@@ -634,6 +652,7 @@ public final class GetServiceResult {
             final var _resultValue = new GetServiceResult();
             _resultValue.annotations = annotations;
             _resultValue.binaryAuthorizations = binaryAuthorizations;
+            _resultValue.buildConfigs = buildConfigs;
             _resultValue.client = client;
             _resultValue.clientVersion = clientVersion;
             _resultValue.conditions = conditions;

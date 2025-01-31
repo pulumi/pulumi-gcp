@@ -164,6 +164,13 @@ namespace Pulumi.Gcp.Apigee
         public Output<string> OrgId { get; private set; } = null!;
 
         /// <summary>
+        /// Key-value pairs that may be used for customizing the environment.
+        /// Structure is documented below.
+        /// </summary>
+        [Output("properties")]
+        public Output<Outputs.EnvironmentProperties?> Properties { get; private set; } = null!;
+
+        /// <summary>
         /// Types that can be selected for an Environment. Each of the types are
         /// limited by capability and capacity. Refer to Apigee's public documentation
         /// to understand about each of these types in details.
@@ -282,6 +289,13 @@ namespace Pulumi.Gcp.Apigee
         public Input<string> OrgId { get; set; } = null!;
 
         /// <summary>
+        /// Key-value pairs that may be used for customizing the environment.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("properties")]
+        public Input<Inputs.EnvironmentPropertiesArgs>? Properties { get; set; }
+
+        /// <summary>
         /// Types that can be selected for an Environment. Each of the types are
         /// limited by capability and capacity. Refer to Apigee's public documentation
         /// to understand about each of these types in details.
@@ -360,6 +374,13 @@ namespace Pulumi.Gcp.Apigee
         /// </summary>
         [Input("orgId")]
         public Input<string>? OrgId { get; set; }
+
+        /// <summary>
+        /// Key-value pairs that may be used for customizing the environment.
+        /// Structure is documented below.
+        /// </summary>
+        [Input("properties")]
+        public Input<Inputs.EnvironmentPropertiesGetArgs>? Properties { get; set; }
 
         /// <summary>
         /// Types that can be selected for an Environment. Each of the types are

@@ -34,6 +34,7 @@ export class Provider extends pulumi.ProviderResource {
     public readonly alloydbCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly apiGatewayCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly apigeeCustomEndpoint!: pulumi.Output<string | undefined>;
+    public readonly apihubCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly apikeysCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly appEngineCustomEndpoint!: pulumi.Output<string | undefined>;
     public readonly apphubCustomEndpoint!: pulumi.Output<string | undefined>;
@@ -224,6 +225,7 @@ export class Provider extends pulumi.ProviderResource {
             resourceInputs["alloydbCustomEndpoint"] = args ? args.alloydbCustomEndpoint : undefined;
             resourceInputs["apiGatewayCustomEndpoint"] = args ? args.apiGatewayCustomEndpoint : undefined;
             resourceInputs["apigeeCustomEndpoint"] = args ? args.apigeeCustomEndpoint : undefined;
+            resourceInputs["apihubCustomEndpoint"] = args ? args.apihubCustomEndpoint : undefined;
             resourceInputs["apikeysCustomEndpoint"] = args ? args.apikeysCustomEndpoint : undefined;
             resourceInputs["appEngineCustomEndpoint"] = args ? args.appEngineCustomEndpoint : undefined;
             resourceInputs["apphubCustomEndpoint"] = args ? args.apphubCustomEndpoint : undefined;
@@ -420,6 +422,7 @@ export interface ProviderArgs {
     alloydbCustomEndpoint?: pulumi.Input<string>;
     apiGatewayCustomEndpoint?: pulumi.Input<string>;
     apigeeCustomEndpoint?: pulumi.Input<string>;
+    apihubCustomEndpoint?: pulumi.Input<string>;
     apikeysCustomEndpoint?: pulumi.Input<string>;
     appEngineCustomEndpoint?: pulumi.Input<string>;
     apphubCustomEndpoint?: pulumi.Input<string>;

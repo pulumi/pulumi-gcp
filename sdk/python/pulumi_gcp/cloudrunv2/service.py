@@ -25,6 +25,7 @@ class ServiceArgs:
                  template: pulumi.Input['ServiceTemplateArgs'],
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  binary_authorization: Optional[pulumi.Input['ServiceBinaryAuthorizationArgs']] = None,
+                 build_config: Optional[pulumi.Input['ServiceBuildConfigArgs']] = None,
                  client: Optional[pulumi.Input[str]] = None,
                  client_version: Optional[pulumi.Input[str]] = None,
                  custom_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -52,6 +53,7 @@ class ServiceArgs:
                annotations present in your configuration. Please refer to the field 'effective_annotations' for all of the annotations
                present on the resource.
         :param pulumi.Input['ServiceBinaryAuthorizationArgs'] binary_authorization: Settings for the Binary Authorization feature.
+        :param pulumi.Input['ServiceBuildConfigArgs'] build_config: Configuration for building a Cloud Run function.
         :param pulumi.Input[str] client: Arbitrary identifier for the API client.
         :param pulumi.Input[str] client_version: Arbitrary version identifier for the API client.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_audiences: One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
@@ -89,6 +91,8 @@ class ServiceArgs:
             pulumi.set(__self__, "annotations", annotations)
         if binary_authorization is not None:
             pulumi.set(__self__, "binary_authorization", binary_authorization)
+        if build_config is not None:
+            pulumi.set(__self__, "build_config", build_config)
         if client is not None:
             pulumi.set(__self__, "client", client)
         if client_version is not None:
@@ -172,6 +176,18 @@ class ServiceArgs:
     @binary_authorization.setter
     def binary_authorization(self, value: Optional[pulumi.Input['ServiceBinaryAuthorizationArgs']]):
         pulumi.set(self, "binary_authorization", value)
+
+    @property
+    @pulumi.getter(name="buildConfig")
+    def build_config(self) -> Optional[pulumi.Input['ServiceBuildConfigArgs']]:
+        """
+        Configuration for building a Cloud Run function.
+        """
+        return pulumi.get(self, "build_config")
+
+    @build_config.setter
+    def build_config(self, value: Optional[pulumi.Input['ServiceBuildConfigArgs']]):
+        pulumi.set(self, "build_config", value)
 
     @property
     @pulumi.getter
@@ -359,6 +375,7 @@ class _ServiceState:
     def __init__(__self__, *,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  binary_authorization: Optional[pulumi.Input['ServiceBinaryAuthorizationArgs']] = None,
+                 build_config: Optional[pulumi.Input['ServiceBuildConfigArgs']] = None,
                  client: Optional[pulumi.Input[str]] = None,
                  client_version: Optional[pulumi.Input[str]] = None,
                  conditions: Optional[pulumi.Input[Sequence[pulumi.Input['ServiceConditionArgs']]]] = None,
@@ -406,6 +423,7 @@ class _ServiceState:
                annotations present in your configuration. Please refer to the field 'effective_annotations' for all of the annotations
                present on the resource.
         :param pulumi.Input['ServiceBinaryAuthorizationArgs'] binary_authorization: Settings for the Binary Authorization feature.
+        :param pulumi.Input['ServiceBuildConfigArgs'] build_config: Configuration for building a Cloud Run function.
         :param pulumi.Input[str] client: Arbitrary identifier for the API client.
         :param pulumi.Input[str] client_version: Arbitrary version identifier for the API client.
         :param pulumi.Input[Sequence[pulumi.Input['ServiceConditionArgs']]] conditions: The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Service does not reach its Serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
@@ -472,6 +490,8 @@ class _ServiceState:
             pulumi.set(__self__, "annotations", annotations)
         if binary_authorization is not None:
             pulumi.set(__self__, "binary_authorization", binary_authorization)
+        if build_config is not None:
+            pulumi.set(__self__, "build_config", build_config)
         if client is not None:
             pulumi.set(__self__, "client", client)
         if client_version is not None:
@@ -576,6 +596,18 @@ class _ServiceState:
     @binary_authorization.setter
     def binary_authorization(self, value: Optional[pulumi.Input['ServiceBinaryAuthorizationArgs']]):
         pulumi.set(self, "binary_authorization", value)
+
+    @property
+    @pulumi.getter(name="buildConfig")
+    def build_config(self) -> Optional[pulumi.Input['ServiceBuildConfigArgs']]:
+        """
+        Configuration for building a Cloud Run function.
+        """
+        return pulumi.get(self, "build_config")
+
+    @build_config.setter
+    def build_config(self, value: Optional[pulumi.Input['ServiceBuildConfigArgs']]):
+        pulumi.set(self, "build_config", value)
 
     @property
     @pulumi.getter
@@ -1047,6 +1079,7 @@ class Service(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  binary_authorization: Optional[pulumi.Input[Union['ServiceBinaryAuthorizationArgs', 'ServiceBinaryAuthorizationArgsDict']]] = None,
+                 build_config: Optional[pulumi.Input[Union['ServiceBuildConfigArgs', 'ServiceBuildConfigArgsDict']]] = None,
                  client: Optional[pulumi.Input[str]] = None,
                  client_version: Optional[pulumi.Input[str]] = None,
                  custom_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -1532,6 +1565,62 @@ class Service(pulumi.CustomResource):
                 }],
             })
         ```
+        ### Cloudrunv2 Service Function
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        bucket = gcp.storage.Bucket("bucket",
+            name=f"{project.project_id}-gcf-source",
+            location="US",
+            uniform_bucket_level_access=True)
+        object = gcp.storage.BucketObject("object",
+            name="function-source.zip",
+            bucket=bucket.name,
+            source=pulumi.FileAsset("function_source.zip"))
+        cloudbuild_service_account = gcp.serviceaccount.Account("cloudbuild_service_account", account_id="build-sa")
+        act_as = gcp.projects.IAMMember("act_as",
+            project=project.project_id,
+            role="roles/iam.serviceAccountUser",
+            member=cloudbuild_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
+        logs_writer = gcp.projects.IAMMember("logs_writer",
+            project=project.project_id,
+            role="roles/logging.logWriter",
+            member=cloudbuild_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
+        default = gcp.cloudrunv2.Service("default",
+            name="cloudrun-service",
+            location="us-central1",
+            deletion_protection=False,
+            ingress="INGRESS_TRAFFIC_ALL",
+            template={
+                "containers": [{
+                    "image": "us-docker.pkg.dev/cloudrun/container/hello",
+                }],
+            },
+            build_config={
+                "source_location": pulumi.Output.all(
+                    bucketName=bucket.name,
+                    objectName=object.name
+        ).apply(lambda resolved_outputs: f"gs://{resolved_outputs['bucketName']}/{resolved_outputs['objectName']}")
+        ,
+                "function_target": "helloHttp",
+                "image_uri": "us-docker.pkg.dev/cloudrun/container/hello",
+                "base_image": "us-central1-docker.pkg.dev/serverless-runtimes/google-22-full/runtimes/nodejs22",
+                "enable_automatic_updates": True,
+                "worker_pool": "worker-pool",
+                "environment_variables": {
+                    "FOO_KEY": "FOO_VALUE",
+                    "BAR_KEY": "BAR_VALUE",
+                },
+                "service_account": cloudbuild_service_account.id,
+            },
+            opts = pulumi.ResourceOptions(depends_on=[
+                    act_as,
+                    logs_writer,
+                ]))
+        ```
 
         ## Import
 
@@ -1567,6 +1656,7 @@ class Service(pulumi.CustomResource):
                annotations present in your configuration. Please refer to the field 'effective_annotations' for all of the annotations
                present on the resource.
         :param pulumi.Input[Union['ServiceBinaryAuthorizationArgs', 'ServiceBinaryAuthorizationArgsDict']] binary_authorization: Settings for the Binary Authorization feature.
+        :param pulumi.Input[Union['ServiceBuildConfigArgs', 'ServiceBuildConfigArgsDict']] build_config: Configuration for building a Cloud Run function.
         :param pulumi.Input[str] client: Arbitrary identifier for the API client.
         :param pulumi.Input[str] client_version: Arbitrary version identifier for the API client.
         :param pulumi.Input[Sequence[pulumi.Input[str]]] custom_audiences: One or more custom audiences that you want this service to support. Specify each custom audience as the full URL in a
@@ -2075,6 +2165,62 @@ class Service(pulumi.CustomResource):
                 }],
             })
         ```
+        ### Cloudrunv2 Service Function
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        project = gcp.organizations.get_project()
+        bucket = gcp.storage.Bucket("bucket",
+            name=f"{project.project_id}-gcf-source",
+            location="US",
+            uniform_bucket_level_access=True)
+        object = gcp.storage.BucketObject("object",
+            name="function-source.zip",
+            bucket=bucket.name,
+            source=pulumi.FileAsset("function_source.zip"))
+        cloudbuild_service_account = gcp.serviceaccount.Account("cloudbuild_service_account", account_id="build-sa")
+        act_as = gcp.projects.IAMMember("act_as",
+            project=project.project_id,
+            role="roles/iam.serviceAccountUser",
+            member=cloudbuild_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
+        logs_writer = gcp.projects.IAMMember("logs_writer",
+            project=project.project_id,
+            role="roles/logging.logWriter",
+            member=cloudbuild_service_account.email.apply(lambda email: f"serviceAccount:{email}"))
+        default = gcp.cloudrunv2.Service("default",
+            name="cloudrun-service",
+            location="us-central1",
+            deletion_protection=False,
+            ingress="INGRESS_TRAFFIC_ALL",
+            template={
+                "containers": [{
+                    "image": "us-docker.pkg.dev/cloudrun/container/hello",
+                }],
+            },
+            build_config={
+                "source_location": pulumi.Output.all(
+                    bucketName=bucket.name,
+                    objectName=object.name
+        ).apply(lambda resolved_outputs: f"gs://{resolved_outputs['bucketName']}/{resolved_outputs['objectName']}")
+        ,
+                "function_target": "helloHttp",
+                "image_uri": "us-docker.pkg.dev/cloudrun/container/hello",
+                "base_image": "us-central1-docker.pkg.dev/serverless-runtimes/google-22-full/runtimes/nodejs22",
+                "enable_automatic_updates": True,
+                "worker_pool": "worker-pool",
+                "environment_variables": {
+                    "FOO_KEY": "FOO_VALUE",
+                    "BAR_KEY": "BAR_VALUE",
+                },
+                "service_account": cloudbuild_service_account.id,
+            },
+            opts = pulumi.ResourceOptions(depends_on=[
+                    act_as,
+                    logs_writer,
+                ]))
+        ```
 
         ## Import
 
@@ -2117,6 +2263,7 @@ class Service(pulumi.CustomResource):
                  opts: Optional[pulumi.ResourceOptions] = None,
                  annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  binary_authorization: Optional[pulumi.Input[Union['ServiceBinaryAuthorizationArgs', 'ServiceBinaryAuthorizationArgsDict']]] = None,
+                 build_config: Optional[pulumi.Input[Union['ServiceBuildConfigArgs', 'ServiceBuildConfigArgsDict']]] = None,
                  client: Optional[pulumi.Input[str]] = None,
                  client_version: Optional[pulumi.Input[str]] = None,
                  custom_audiences: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
@@ -2144,6 +2291,7 @@ class Service(pulumi.CustomResource):
 
             __props__.__dict__["annotations"] = annotations
             __props__.__dict__["binary_authorization"] = binary_authorization
+            __props__.__dict__["build_config"] = build_config
             __props__.__dict__["client"] = client
             __props__.__dict__["client_version"] = client_version
             __props__.__dict__["custom_audiences"] = custom_audiences
@@ -2199,6 +2347,7 @@ class Service(pulumi.CustomResource):
             opts: Optional[pulumi.ResourceOptions] = None,
             annotations: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             binary_authorization: Optional[pulumi.Input[Union['ServiceBinaryAuthorizationArgs', 'ServiceBinaryAuthorizationArgsDict']]] = None,
+            build_config: Optional[pulumi.Input[Union['ServiceBuildConfigArgs', 'ServiceBuildConfigArgsDict']]] = None,
             client: Optional[pulumi.Input[str]] = None,
             client_version: Optional[pulumi.Input[str]] = None,
             conditions: Optional[pulumi.Input[Sequence[pulumi.Input[Union['ServiceConditionArgs', 'ServiceConditionArgsDict']]]]] = None,
@@ -2251,6 +2400,7 @@ class Service(pulumi.CustomResource):
                annotations present in your configuration. Please refer to the field 'effective_annotations' for all of the annotations
                present on the resource.
         :param pulumi.Input[Union['ServiceBinaryAuthorizationArgs', 'ServiceBinaryAuthorizationArgsDict']] binary_authorization: Settings for the Binary Authorization feature.
+        :param pulumi.Input[Union['ServiceBuildConfigArgs', 'ServiceBuildConfigArgsDict']] build_config: Configuration for building a Cloud Run function.
         :param pulumi.Input[str] client: Arbitrary identifier for the API client.
         :param pulumi.Input[str] client_version: Arbitrary version identifier for the API client.
         :param pulumi.Input[Sequence[pulumi.Input[Union['ServiceConditionArgs', 'ServiceConditionArgsDict']]]] conditions: The Conditions of all other associated sub-resources. They contain additional diagnostics information in case the Service does not reach its Serving state. See comments in reconciling for additional information on reconciliation process in Cloud Run.
@@ -2319,6 +2469,7 @@ class Service(pulumi.CustomResource):
 
         __props__.__dict__["annotations"] = annotations
         __props__.__dict__["binary_authorization"] = binary_authorization
+        __props__.__dict__["build_config"] = build_config
         __props__.__dict__["client"] = client
         __props__.__dict__["client_version"] = client_version
         __props__.__dict__["conditions"] = conditions
@@ -2379,6 +2530,14 @@ class Service(pulumi.CustomResource):
         Settings for the Binary Authorization feature.
         """
         return pulumi.get(self, "binary_authorization")
+
+    @property
+    @pulumi.getter(name="buildConfig")
+    def build_config(self) -> pulumi.Output[Optional['outputs.ServiceBuildConfig']]:
+        """
+        Configuration for building a Cloud Run function.
+        """
+        return pulumi.get(self, "build_config")
 
     @property
     @pulumi.getter

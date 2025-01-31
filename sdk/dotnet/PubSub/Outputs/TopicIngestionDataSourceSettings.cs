@@ -19,6 +19,11 @@ namespace Pulumi.Gcp.PubSub.Outputs
         /// </summary>
         public readonly Outputs.TopicIngestionDataSourceSettingsAwsKinesis? AwsKinesis;
         /// <summary>
+        /// Settings for ingestion from Azure Event Hubs.
+        /// Structure is documented below.
+        /// </summary>
+        public readonly Outputs.TopicIngestionDataSourceSettingsAzureEventHubs? AzureEventHubs;
+        /// <summary>
         /// Settings for ingestion from Cloud Storage.
         /// Structure is documented below.
         /// </summary>
@@ -34,11 +39,14 @@ namespace Pulumi.Gcp.PubSub.Outputs
         private TopicIngestionDataSourceSettings(
             Outputs.TopicIngestionDataSourceSettingsAwsKinesis? awsKinesis,
 
+            Outputs.TopicIngestionDataSourceSettingsAzureEventHubs? azureEventHubs,
+
             Outputs.TopicIngestionDataSourceSettingsCloudStorage? cloudStorage,
 
             Outputs.TopicIngestionDataSourceSettingsPlatformLogsSettings? platformLogsSettings)
         {
             AwsKinesis = awsKinesis;
+            AzureEventHubs = azureEventHubs;
             CloudStorage = cloudStorage;
             PlatformLogsSettings = platformLogsSettings;
         }

@@ -17,7 +17,7 @@ import * as utilities from "../utilities";
  *
  * const project = gcp.organizations.getProject({});
  * const addressGroup1 = new gcp.networksecurity.AddressGroup("address_group_1", {
- *     name: "tf-address-group",
+ *     name: "address-group",
  *     parent: project.then(project => project.id),
  *     description: "Global address group",
  *     location: "global",
@@ -29,7 +29,7 @@ import * as utilities from "../utilities";
  *     description: "Tag key",
  *     parent: project.then(project => project.id),
  *     purpose: "GCE_FIREWALL",
- *     shortName: "tf-tag-key",
+ *     shortName: "tag-key",
  *     purposeData: {
  *         network: project.then(project => `${project.name}/default`),
  *     },
@@ -37,22 +37,26 @@ import * as utilities from "../utilities";
  * const secureTagValue1 = new gcp.tags.TagValue("secure_tag_value_1", {
  *     description: "Tag value",
  *     parent: secureTagKey1.id,
- *     shortName: "tf-tag-value",
+ *     shortName: "tag-value",
  * });
  * const securityProfile1 = new gcp.networksecurity.SecurityProfile("security_profile_1", {
- *     name: "tf-security-profile",
+ *     name: "sp",
  *     type: "THREAT_PREVENTION",
  *     parent: "organizations/123456789",
  *     location: "global",
  * });
  * const securityProfileGroup1 = new gcp.networksecurity.SecurityProfileGroup("security_profile_group_1", {
- *     name: "tf-security-profile-group",
+ *     name: "spg",
  *     parent: "organizations/123456789",
  *     description: "my description",
  *     threatPreventionProfile: securityProfile1.id,
  * });
- * const network_firewall_policy_with_rules = new gcp.compute.NetworkFirewallPolicyWithRules("network-firewall-policy-with-rules", {
- *     name: "tf-fw-policy-with-rules",
+ * const network = new gcp.compute.Network("network", {
+ *     name: "network",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const primary = new gcp.compute.NetworkFirewallPolicyWithRules("primary", {
+ *     name: "fw-policy",
  *     description: "Terraform test",
  *     rules: [
  *         {
@@ -62,13 +66,6 @@ import * as utilities from "../utilities";
  *             action: "allow",
  *             direction: "EGRESS",
  *             match: {
- *                 layer4Configs: [{
- *                     ipProtocol: "tcp",
- *                     ports: [
- *                         "8080",
- *                         "7070",
- *                     ],
- *                 }],
  *                 destIpRanges: ["11.100.0.1/32"],
  *                 destFqdns: [
  *                     "www.yyy.com",
@@ -83,6 +80,13 @@ import * as utilities from "../utilities";
  *                     "iplist-tor-exit-nodes",
  *                 ],
  *                 destAddressGroups: [addressGroup1.id],
+ *                 layer4Configs: [{
+ *                     ipProtocol: "tcp",
+ *                     ports: [
+ *                         "8080",
+ *                         "7070",
+ *                     ],
+ *                 }],
  *             },
  *             targetSecureTags: [{
  *                 name: secureTagValue1.id,
@@ -94,10 +98,8 @@ import * as utilities from "../utilities";
  *             enableLogging: false,
  *             action: "deny",
  *             direction: "INGRESS",
+ *             disabled: true,
  *             match: {
- *                 layer4Configs: [{
- *                     ipProtocol: "udp",
- *                 }],
  *                 srcIpRanges: ["0.0.0.0/0"],
  *                 srcFqdns: [
  *                     "www.abc.com",
@@ -115,8 +117,10 @@ import * as utilities from "../utilities";
  *                 srcSecureTags: [{
  *                     name: secureTagValue1.id,
  *                 }],
+ *                 layer4Configs: [{
+ *                     ipProtocol: "udp",
+ *                 }],
  *             },
- *             disabled: true,
  *         },
  *         {
  *             description: "security profile group rule",
@@ -125,15 +129,48 @@ import * as utilities from "../utilities";
  *             enableLogging: false,
  *             action: "apply_security_profile_group",
  *             direction: "INGRESS",
- *             match: {
- *                 layer4Configs: [{
- *                     ipProtocol: "tcp",
- *                 }],
- *                 srcIpRanges: ["0.0.0.0/0"],
- *             },
  *             targetServiceAccounts: ["test@google.com"],
  *             securityProfileGroup: pulumi.interpolate`//networksecurity.googleapis.com/${securityProfileGroup1.id}`,
  *             tlsInspect: true,
+ *             match: {
+ *                 srcIpRanges: ["0.0.0.0/0"],
+ *                 layer4Configs: [{
+ *                     ipProtocol: "tcp",
+ *                 }],
+ *             },
+ *         },
+ *         {
+ *             description: "network scope rule 1",
+ *             ruleName: "network scope 1",
+ *             priority: 4000,
+ *             enableLogging: false,
+ *             action: "allow",
+ *             direction: "INGRESS",
+ *             match: {
+ *                 srcIpRanges: ["11.100.0.1/32"],
+ *                 srcNetworkScope: "VPC_NETWORKS",
+ *                 srcNetworks: [network.id],
+ *                 layer4Configs: [{
+ *                     ipProtocol: "tcp",
+ *                     ports: ["8080"],
+ *                 }],
+ *             },
+ *         },
+ *         {
+ *             description: "network scope rule 2",
+ *             ruleName: "network scope 2",
+ *             priority: 5000,
+ *             enableLogging: false,
+ *             action: "allow",
+ *             direction: "EGRESS",
+ *             match: {
+ *                 destIpRanges: ["0.0.0.0/0"],
+ *                 destNetworkScope: "INTERNET",
+ *                 layer4Configs: [{
+ *                     ipProtocol: "tcp",
+ *                     ports: ["8080"],
+ *                 }],
+ *             },
  *         },
  *     ],
  * });

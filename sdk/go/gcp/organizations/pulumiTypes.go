@@ -2117,6 +2117,139 @@ func (o GetIAMPolicyBindingConditionPtrOutput) Title() pulumi.StringPtrOutput {
 	}).(pulumi.StringPtrOutput)
 }
 
+type GetSOrganization struct {
+	// The Google for Work customer ID of the Organization.
+	DirectoryCustomerId string `pulumi:"directoryCustomerId"`
+	// A human-readable string that refers to the Organization in the Google Cloud console. The string will be set to the primary domain (for example, `"google.com"`) of the G Suite customer that owns the organization.
+	DisplayName string `pulumi:"displayName"`
+	// The Organization's current lifecycle state.
+	LifecycleState string `pulumi:"lifecycleState"`
+	// The resource name of the Organization in the form `organizations/{organization_id}`.
+	Name string `pulumi:"name"`
+	// The Organization ID.
+	OrgId string `pulumi:"orgId"`
+}
+
+// GetSOrganizationInput is an input type that accepts GetSOrganizationArgs and GetSOrganizationOutput values.
+// You can construct a concrete instance of `GetSOrganizationInput` via:
+//
+//	GetSOrganizationArgs{...}
+type GetSOrganizationInput interface {
+	pulumi.Input
+
+	ToGetSOrganizationOutput() GetSOrganizationOutput
+	ToGetSOrganizationOutputWithContext(context.Context) GetSOrganizationOutput
+}
+
+type GetSOrganizationArgs struct {
+	// The Google for Work customer ID of the Organization.
+	DirectoryCustomerId pulumi.StringInput `pulumi:"directoryCustomerId"`
+	// A human-readable string that refers to the Organization in the Google Cloud console. The string will be set to the primary domain (for example, `"google.com"`) of the G Suite customer that owns the organization.
+	DisplayName pulumi.StringInput `pulumi:"displayName"`
+	// The Organization's current lifecycle state.
+	LifecycleState pulumi.StringInput `pulumi:"lifecycleState"`
+	// The resource name of the Organization in the form `organizations/{organization_id}`.
+	Name pulumi.StringInput `pulumi:"name"`
+	// The Organization ID.
+	OrgId pulumi.StringInput `pulumi:"orgId"`
+}
+
+func (GetSOrganizationArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSOrganization)(nil)).Elem()
+}
+
+func (i GetSOrganizationArgs) ToGetSOrganizationOutput() GetSOrganizationOutput {
+	return i.ToGetSOrganizationOutputWithContext(context.Background())
+}
+
+func (i GetSOrganizationArgs) ToGetSOrganizationOutputWithContext(ctx context.Context) GetSOrganizationOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSOrganizationOutput)
+}
+
+// GetSOrganizationArrayInput is an input type that accepts GetSOrganizationArray and GetSOrganizationArrayOutput values.
+// You can construct a concrete instance of `GetSOrganizationArrayInput` via:
+//
+//	GetSOrganizationArray{ GetSOrganizationArgs{...} }
+type GetSOrganizationArrayInput interface {
+	pulumi.Input
+
+	ToGetSOrganizationArrayOutput() GetSOrganizationArrayOutput
+	ToGetSOrganizationArrayOutputWithContext(context.Context) GetSOrganizationArrayOutput
+}
+
+type GetSOrganizationArray []GetSOrganizationInput
+
+func (GetSOrganizationArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSOrganization)(nil)).Elem()
+}
+
+func (i GetSOrganizationArray) ToGetSOrganizationArrayOutput() GetSOrganizationArrayOutput {
+	return i.ToGetSOrganizationArrayOutputWithContext(context.Background())
+}
+
+func (i GetSOrganizationArray) ToGetSOrganizationArrayOutputWithContext(ctx context.Context) GetSOrganizationArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetSOrganizationArrayOutput)
+}
+
+type GetSOrganizationOutput struct{ *pulumi.OutputState }
+
+func (GetSOrganizationOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetSOrganization)(nil)).Elem()
+}
+
+func (o GetSOrganizationOutput) ToGetSOrganizationOutput() GetSOrganizationOutput {
+	return o
+}
+
+func (o GetSOrganizationOutput) ToGetSOrganizationOutputWithContext(ctx context.Context) GetSOrganizationOutput {
+	return o
+}
+
+// The Google for Work customer ID of the Organization.
+func (o GetSOrganizationOutput) DirectoryCustomerId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSOrganization) string { return v.DirectoryCustomerId }).(pulumi.StringOutput)
+}
+
+// A human-readable string that refers to the Organization in the Google Cloud console. The string will be set to the primary domain (for example, `"google.com"`) of the G Suite customer that owns the organization.
+func (o GetSOrganizationOutput) DisplayName() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSOrganization) string { return v.DisplayName }).(pulumi.StringOutput)
+}
+
+// The Organization's current lifecycle state.
+func (o GetSOrganizationOutput) LifecycleState() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSOrganization) string { return v.LifecycleState }).(pulumi.StringOutput)
+}
+
+// The resource name of the Organization in the form `organizations/{organization_id}`.
+func (o GetSOrganizationOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSOrganization) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The Organization ID.
+func (o GetSOrganizationOutput) OrgId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetSOrganization) string { return v.OrgId }).(pulumi.StringOutput)
+}
+
+type GetSOrganizationArrayOutput struct{ *pulumi.OutputState }
+
+func (GetSOrganizationArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetSOrganization)(nil)).Elem()
+}
+
+func (o GetSOrganizationArrayOutput) ToGetSOrganizationArrayOutput() GetSOrganizationArrayOutput {
+	return o
+}
+
+func (o GetSOrganizationArrayOutput) ToGetSOrganizationArrayOutputWithContext(ctx context.Context) GetSOrganizationArrayOutput {
+	return o
+}
+
+func (o GetSOrganizationArrayOutput) Index(i pulumi.IntInput) GetSOrganizationOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetSOrganization {
+		return vs[0].([]GetSOrganization)[vs[1].(int)]
+	}).(GetSOrganizationOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApprovalSettingsEnrolledServiceInput)(nil)).Elem(), AccessApprovalSettingsEnrolledServiceArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*AccessApprovalSettingsEnrolledServiceArrayInput)(nil)).Elem(), AccessApprovalSettingsEnrolledServiceArray{})
@@ -2146,6 +2279,8 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIAMPolicyBindingArrayInput)(nil)).Elem(), GetIAMPolicyBindingArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIAMPolicyBindingConditionInput)(nil)).Elem(), GetIAMPolicyBindingConditionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetIAMPolicyBindingConditionPtrInput)(nil)).Elem(), GetIAMPolicyBindingConditionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSOrganizationInput)(nil)).Elem(), GetSOrganizationArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetSOrganizationArrayInput)(nil)).Elem(), GetSOrganizationArray{})
 	pulumi.RegisterOutputType(AccessApprovalSettingsEnrolledServiceOutput{})
 	pulumi.RegisterOutputType(AccessApprovalSettingsEnrolledServiceArrayOutput{})
 	pulumi.RegisterOutputType(IAMBindingConditionOutput{})
@@ -2174,4 +2309,6 @@ func init() {
 	pulumi.RegisterOutputType(GetIAMPolicyBindingArrayOutput{})
 	pulumi.RegisterOutputType(GetIAMPolicyBindingConditionOutput{})
 	pulumi.RegisterOutputType(GetIAMPolicyBindingConditionPtrOutput{})
+	pulumi.RegisterOutputType(GetSOrganizationOutput{})
+	pulumi.RegisterOutputType(GetSOrganizationArrayOutput{})
 }

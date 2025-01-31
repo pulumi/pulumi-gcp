@@ -483,6 +483,7 @@ class Topic(pulumi.CustomResource):
             name="example-topic",
             message_storage_policy={
                 "allowed_persistence_regions": ["europe-west3"],
+                "enforce_in_transit": True,
             })
         ```
         ### Pubsub Topic Schema Settings
@@ -553,6 +554,26 @@ class Topic(pulumi.CustomResource):
                 },
                 "platform_logs_settings": {
                     "severity": "WARNING",
+                },
+            })
+        ```
+        ### Pubsub Topic Ingestion Azure Event Hubs
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.pubsub.Topic("example",
+            name="example-topic",
+            ingestion_data_source_settings={
+                "azure_event_hubs": {
+                    "resource_group": "azure-ingestion-resource-group",
+                    "namespace": "azure-ingestion-namespace",
+                    "event_hub": "azure-ingestion-event-hub",
+                    "client_id": "aZZZZZZZ-YYYY-HHHH-GGGG-abcdef569123",
+                    "tenant_id": "0XXXXXXX-YYYY-HHHH-GGGG-123456789123",
+                    "subscription_id": "bXXXXXXX-YYYY-HHHH-GGGG-123456789123",
+                    "gcp_service_account": "fake-service-account@fake-gcp-project.iam.gserviceaccount.com",
                 },
             })
         ```
@@ -674,6 +695,7 @@ class Topic(pulumi.CustomResource):
             name="example-topic",
             message_storage_policy={
                 "allowed_persistence_regions": ["europe-west3"],
+                "enforce_in_transit": True,
             })
         ```
         ### Pubsub Topic Schema Settings
@@ -744,6 +766,26 @@ class Topic(pulumi.CustomResource):
                 },
                 "platform_logs_settings": {
                     "severity": "WARNING",
+                },
+            })
+        ```
+        ### Pubsub Topic Ingestion Azure Event Hubs
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        example = gcp.pubsub.Topic("example",
+            name="example-topic",
+            ingestion_data_source_settings={
+                "azure_event_hubs": {
+                    "resource_group": "azure-ingestion-resource-group",
+                    "namespace": "azure-ingestion-namespace",
+                    "event_hub": "azure-ingestion-event-hub",
+                    "client_id": "aZZZZZZZ-YYYY-HHHH-GGGG-abcdef569123",
+                    "tenant_id": "0XXXXXXX-YYYY-HHHH-GGGG-123456789123",
+                    "subscription_id": "bXXXXXXX-YYYY-HHHH-GGGG-123456789123",
+                    "gcp_service_account": "fake-service-account@fake-gcp-project.iam.gserviceaccount.com",
                 },
             })
         ```

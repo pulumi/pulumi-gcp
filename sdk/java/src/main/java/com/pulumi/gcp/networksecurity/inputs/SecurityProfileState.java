@@ -5,6 +5,8 @@ package com.pulumi.gcp.networksecurity.inputs;
 
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
+import com.pulumi.gcp.networksecurity.inputs.SecurityProfileCustomInterceptProfileArgs;
+import com.pulumi.gcp.networksecurity.inputs.SecurityProfileCustomMirroringProfileArgs;
 import com.pulumi.gcp.networksecurity.inputs.SecurityProfileThreatPreventionProfileArgs;
 import java.lang.String;
 import java.util.Map;
@@ -30,6 +32,44 @@ public final class SecurityProfileState extends com.pulumi.resources.ResourceArg
      */
     public Optional<Output<String>> createTime() {
         return Optional.ofNullable(this.createTime);
+    }
+
+    /**
+     * The configuration for defining the Intercept Endpoint Group used to
+     * intercept traffic to third-party firewall appliances.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="customInterceptProfile")
+    private @Nullable Output<SecurityProfileCustomInterceptProfileArgs> customInterceptProfile;
+
+    /**
+     * @return The configuration for defining the Intercept Endpoint Group used to
+     * intercept traffic to third-party firewall appliances.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<SecurityProfileCustomInterceptProfileArgs>> customInterceptProfile() {
+        return Optional.ofNullable(this.customInterceptProfile);
+    }
+
+    /**
+     * The configuration for defining the Mirroring Endpoint Group used to
+     * mirror traffic to third-party collectors.
+     * Structure is documented below.
+     * 
+     */
+    @Import(name="customMirroringProfile")
+    private @Nullable Output<SecurityProfileCustomMirroringProfileArgs> customMirroringProfile;
+
+    /**
+     * @return The configuration for defining the Mirroring Endpoint Group used to
+     * mirror traffic to third-party collectors.
+     * Structure is documented below.
+     * 
+     */
+    public Optional<Output<SecurityProfileCustomMirroringProfileArgs>> customMirroringProfile() {
+        return Optional.ofNullable(this.customMirroringProfile);
     }
 
     /**
@@ -206,7 +246,7 @@ public final class SecurityProfileState extends com.pulumi.resources.ResourceArg
 
     /**
      * The type of security profile.
-     * Possible values are: `THREAT_PREVENTION`.
+     * Possible values are: `THREAT_PREVENTION`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
      * 
      */
     @Import(name="type")
@@ -214,7 +254,7 @@ public final class SecurityProfileState extends com.pulumi.resources.ResourceArg
 
     /**
      * @return The type of security profile.
-     * Possible values are: `THREAT_PREVENTION`.
+     * Possible values are: `THREAT_PREVENTION`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
      * 
      */
     public Optional<Output<String>> type() {
@@ -240,6 +280,8 @@ public final class SecurityProfileState extends com.pulumi.resources.ResourceArg
 
     private SecurityProfileState(SecurityProfileState $) {
         this.createTime = $.createTime;
+        this.customInterceptProfile = $.customInterceptProfile;
+        this.customMirroringProfile = $.customMirroringProfile;
         this.description = $.description;
         this.effectiveLabels = $.effectiveLabels;
         this.etag = $.etag;
@@ -291,6 +333,56 @@ public final class SecurityProfileState extends com.pulumi.resources.ResourceArg
          */
         public Builder createTime(String createTime) {
             return createTime(Output.of(createTime));
+        }
+
+        /**
+         * @param customInterceptProfile The configuration for defining the Intercept Endpoint Group used to
+         * intercept traffic to third-party firewall appliances.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customInterceptProfile(@Nullable Output<SecurityProfileCustomInterceptProfileArgs> customInterceptProfile) {
+            $.customInterceptProfile = customInterceptProfile;
+            return this;
+        }
+
+        /**
+         * @param customInterceptProfile The configuration for defining the Intercept Endpoint Group used to
+         * intercept traffic to third-party firewall appliances.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customInterceptProfile(SecurityProfileCustomInterceptProfileArgs customInterceptProfile) {
+            return customInterceptProfile(Output.of(customInterceptProfile));
+        }
+
+        /**
+         * @param customMirroringProfile The configuration for defining the Mirroring Endpoint Group used to
+         * mirror traffic to third-party collectors.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customMirroringProfile(@Nullable Output<SecurityProfileCustomMirroringProfileArgs> customMirroringProfile) {
+            $.customMirroringProfile = customMirroringProfile;
+            return this;
+        }
+
+        /**
+         * @param customMirroringProfile The configuration for defining the Mirroring Endpoint Group used to
+         * mirror traffic to third-party collectors.
+         * Structure is documented below.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder customMirroringProfile(SecurityProfileCustomMirroringProfileArgs customMirroringProfile) {
+            return customMirroringProfile(Output.of(customMirroringProfile));
         }
 
         /**
@@ -527,7 +619,7 @@ public final class SecurityProfileState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param type The type of security profile.
-         * Possible values are: `THREAT_PREVENTION`.
+         * Possible values are: `THREAT_PREVENTION`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
          * 
          * @return builder
          * 
@@ -539,7 +631,7 @@ public final class SecurityProfileState extends com.pulumi.resources.ResourceArg
 
         /**
          * @param type The type of security profile.
-         * Possible values are: `THREAT_PREVENTION`.
+         * Possible values are: `THREAT_PREVENTION`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
          * 
          * @return builder
          * 

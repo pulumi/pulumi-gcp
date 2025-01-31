@@ -22,6 +22,8 @@ __all__ = ['SecurityProfileArgs', 'SecurityProfile']
 class SecurityProfileArgs:
     def __init__(__self__, *,
                  type: pulumi.Input[str],
+                 custom_intercept_profile: Optional[pulumi.Input['SecurityProfileCustomInterceptProfileArgs']] = None,
+                 custom_mirroring_profile: Optional[pulumi.Input['SecurityProfileCustomMirroringProfileArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -31,7 +33,13 @@ class SecurityProfileArgs:
         """
         The set of arguments for constructing a SecurityProfile resource.
         :param pulumi.Input[str] type: The type of security profile.
-               Possible values are: `THREAT_PREVENTION`.
+               Possible values are: `THREAT_PREVENTION`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
+        :param pulumi.Input['SecurityProfileCustomInterceptProfileArgs'] custom_intercept_profile: The configuration for defining the Intercept Endpoint Group used to
+               intercept traffic to third-party firewall appliances.
+               Structure is documented below.
+        :param pulumi.Input['SecurityProfileCustomMirroringProfileArgs'] custom_mirroring_profile: The configuration for defining the Mirroring Endpoint Group used to
+               mirror traffic to third-party collectors.
+               Structure is documented below.
         :param pulumi.Input[str] description: An optional description of the security profile. The Max length is 512 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value label pairs to assign to the resource.
                
@@ -49,6 +57,10 @@ class SecurityProfileArgs:
                Structure is documented below.
         """
         pulumi.set(__self__, "type", type)
+        if custom_intercept_profile is not None:
+            pulumi.set(__self__, "custom_intercept_profile", custom_intercept_profile)
+        if custom_mirroring_profile is not None:
+            pulumi.set(__self__, "custom_mirroring_profile", custom_mirroring_profile)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if labels is not None:
@@ -67,13 +79,41 @@ class SecurityProfileArgs:
     def type(self) -> pulumi.Input[str]:
         """
         The type of security profile.
-        Possible values are: `THREAT_PREVENTION`.
+        Possible values are: `THREAT_PREVENTION`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
         """
         return pulumi.get(self, "type")
 
     @type.setter
     def type(self, value: pulumi.Input[str]):
         pulumi.set(self, "type", value)
+
+    @property
+    @pulumi.getter(name="customInterceptProfile")
+    def custom_intercept_profile(self) -> Optional[pulumi.Input['SecurityProfileCustomInterceptProfileArgs']]:
+        """
+        The configuration for defining the Intercept Endpoint Group used to
+        intercept traffic to third-party firewall appliances.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "custom_intercept_profile")
+
+    @custom_intercept_profile.setter
+    def custom_intercept_profile(self, value: Optional[pulumi.Input['SecurityProfileCustomInterceptProfileArgs']]):
+        pulumi.set(self, "custom_intercept_profile", value)
+
+    @property
+    @pulumi.getter(name="customMirroringProfile")
+    def custom_mirroring_profile(self) -> Optional[pulumi.Input['SecurityProfileCustomMirroringProfileArgs']]:
+        """
+        The configuration for defining the Mirroring Endpoint Group used to
+        mirror traffic to third-party collectors.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "custom_mirroring_profile")
+
+    @custom_mirroring_profile.setter
+    def custom_mirroring_profile(self, value: Optional[pulumi.Input['SecurityProfileCustomMirroringProfileArgs']]):
+        pulumi.set(self, "custom_mirroring_profile", value)
 
     @property
     @pulumi.getter
@@ -161,6 +201,8 @@ class SecurityProfileArgs:
 class _SecurityProfileState:
     def __init__(__self__, *,
                  create_time: Optional[pulumi.Input[str]] = None,
+                 custom_intercept_profile: Optional[pulumi.Input['SecurityProfileCustomInterceptProfileArgs']] = None,
+                 custom_mirroring_profile: Optional[pulumi.Input['SecurityProfileCustomMirroringProfileArgs']] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  etag: Optional[pulumi.Input[str]] = None,
@@ -176,6 +218,12 @@ class _SecurityProfileState:
         """
         Input properties used for looking up and filtering SecurityProfile resources.
         :param pulumi.Input[str] create_time: Time the security profile was created in UTC.
+        :param pulumi.Input['SecurityProfileCustomInterceptProfileArgs'] custom_intercept_profile: The configuration for defining the Intercept Endpoint Group used to
+               intercept traffic to third-party firewall appliances.
+               Structure is documented below.
+        :param pulumi.Input['SecurityProfileCustomMirroringProfileArgs'] custom_mirroring_profile: The configuration for defining the Mirroring Endpoint Group used to
+               mirror traffic to third-party collectors.
+               Structure is documented below.
         :param pulumi.Input[str] description: An optional description of the security profile. The Max length is 512 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields,
@@ -199,11 +247,15 @@ class _SecurityProfileState:
         :param pulumi.Input['SecurityProfileThreatPreventionProfileArgs'] threat_prevention_profile: The threat prevention configuration for the security profile.
                Structure is documented below.
         :param pulumi.Input[str] type: The type of security profile.
-               Possible values are: `THREAT_PREVENTION`.
+               Possible values are: `THREAT_PREVENTION`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
         :param pulumi.Input[str] update_time: Time the security profile was updated in UTC.
         """
         if create_time is not None:
             pulumi.set(__self__, "create_time", create_time)
+        if custom_intercept_profile is not None:
+            pulumi.set(__self__, "custom_intercept_profile", custom_intercept_profile)
+        if custom_mirroring_profile is not None:
+            pulumi.set(__self__, "custom_mirroring_profile", custom_mirroring_profile)
         if description is not None:
             pulumi.set(__self__, "description", description)
         if effective_labels is not None:
@@ -240,6 +292,34 @@ class _SecurityProfileState:
     @create_time.setter
     def create_time(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "create_time", value)
+
+    @property
+    @pulumi.getter(name="customInterceptProfile")
+    def custom_intercept_profile(self) -> Optional[pulumi.Input['SecurityProfileCustomInterceptProfileArgs']]:
+        """
+        The configuration for defining the Intercept Endpoint Group used to
+        intercept traffic to third-party firewall appliances.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "custom_intercept_profile")
+
+    @custom_intercept_profile.setter
+    def custom_intercept_profile(self, value: Optional[pulumi.Input['SecurityProfileCustomInterceptProfileArgs']]):
+        pulumi.set(self, "custom_intercept_profile", value)
+
+    @property
+    @pulumi.getter(name="customMirroringProfile")
+    def custom_mirroring_profile(self) -> Optional[pulumi.Input['SecurityProfileCustomMirroringProfileArgs']]:
+        """
+        The configuration for defining the Mirroring Endpoint Group used to
+        mirror traffic to third-party collectors.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "custom_mirroring_profile")
+
+    @custom_mirroring_profile.setter
+    def custom_mirroring_profile(self, value: Optional[pulumi.Input['SecurityProfileCustomMirroringProfileArgs']]):
+        pulumi.set(self, "custom_mirroring_profile", value)
 
     @property
     @pulumi.getter
@@ -378,7 +458,7 @@ class _SecurityProfileState:
     def type(self) -> Optional[pulumi.Input[str]]:
         """
         The type of security profile.
-        Possible values are: `THREAT_PREVENTION`.
+        Possible values are: `THREAT_PREVENTION`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
         """
         return pulumi.get(self, "type")
 
@@ -404,6 +484,8 @@ class SecurityProfile(pulumi.CustomResource):
     def __init__(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 custom_intercept_profile: Optional[pulumi.Input[Union['SecurityProfileCustomInterceptProfileArgs', 'SecurityProfileCustomInterceptProfileArgsDict']]] = None,
+                 custom_mirroring_profile: Optional[pulumi.Input[Union['SecurityProfileCustomMirroringProfileArgs', 'SecurityProfileCustomMirroringProfileArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -466,6 +548,58 @@ class SecurityProfile(pulumi.CustomResource):
                 }],
             })
         ```
+        ### Network Security Security Profile Mirroring
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.Network("default",
+            name="my-network",
+            auto_create_subnetworks=False)
+        default_mirroring_deployment_group = gcp.networksecurity.MirroringDeploymentGroup("default",
+            mirroring_deployment_group_id="my-dg",
+            location="global",
+            network=default.id)
+        default_mirroring_endpoint_group = gcp.networksecurity.MirroringEndpointGroup("default",
+            mirroring_endpoint_group_id="my-eg",
+            location="global",
+            mirroring_deployment_group=default_mirroring_deployment_group.id)
+        default_security_profile = gcp.networksecurity.SecurityProfile("default",
+            name="my-security-profile",
+            parent="organizations/123456789",
+            description="my description",
+            type="CUSTOM_MIRRORING",
+            custom_mirroring_profile={
+                "mirroring_endpoint_group": default_mirroring_endpoint_group.id,
+            })
+        ```
+        ### Network Security Security Profile Intercept
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.Network("default",
+            name="my-network",
+            auto_create_subnetworks=False)
+        default_intercept_deployment_group = gcp.networksecurity.InterceptDeploymentGroup("default",
+            intercept_deployment_group_id="my-dg",
+            location="global",
+            network=default.id)
+        default_intercept_endpoint_group = gcp.networksecurity.InterceptEndpointGroup("default",
+            intercept_endpoint_group_id="my-eg",
+            location="global",
+            intercept_deployment_group=default_intercept_deployment_group.id)
+        default_security_profile = gcp.networksecurity.SecurityProfile("default",
+            name="my-security-profile",
+            parent="organizations/123456789",
+            description="my description",
+            type="CUSTOM_INTERCEPT",
+            custom_intercept_profile={
+                "intercept_endpoint_group": default_intercept_endpoint_group.id,
+            })
+        ```
 
         ## Import
 
@@ -481,6 +615,12 @@ class SecurityProfile(pulumi.CustomResource):
 
         :param str resource_name: The name of the resource.
         :param pulumi.ResourceOptions opts: Options for the resource.
+        :param pulumi.Input[Union['SecurityProfileCustomInterceptProfileArgs', 'SecurityProfileCustomInterceptProfileArgsDict']] custom_intercept_profile: The configuration for defining the Intercept Endpoint Group used to
+               intercept traffic to third-party firewall appliances.
+               Structure is documented below.
+        :param pulumi.Input[Union['SecurityProfileCustomMirroringProfileArgs', 'SecurityProfileCustomMirroringProfileArgsDict']] custom_mirroring_profile: The configuration for defining the Mirroring Endpoint Group used to
+               mirror traffic to third-party collectors.
+               Structure is documented below.
         :param pulumi.Input[str] description: An optional description of the security profile. The Max length is 512 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: A map of key/value label pairs to assign to the resource.
                
@@ -497,7 +637,7 @@ class SecurityProfile(pulumi.CustomResource):
         :param pulumi.Input[Union['SecurityProfileThreatPreventionProfileArgs', 'SecurityProfileThreatPreventionProfileArgsDict']] threat_prevention_profile: The threat prevention configuration for the security profile.
                Structure is documented below.
         :param pulumi.Input[str] type: The type of security profile.
-               Possible values are: `THREAT_PREVENTION`.
+               Possible values are: `THREAT_PREVENTION`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
         """
         ...
     @overload
@@ -559,6 +699,58 @@ class SecurityProfile(pulumi.CustomResource):
                 }],
             })
         ```
+        ### Network Security Security Profile Mirroring
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.Network("default",
+            name="my-network",
+            auto_create_subnetworks=False)
+        default_mirroring_deployment_group = gcp.networksecurity.MirroringDeploymentGroup("default",
+            mirroring_deployment_group_id="my-dg",
+            location="global",
+            network=default.id)
+        default_mirroring_endpoint_group = gcp.networksecurity.MirroringEndpointGroup("default",
+            mirroring_endpoint_group_id="my-eg",
+            location="global",
+            mirroring_deployment_group=default_mirroring_deployment_group.id)
+        default_security_profile = gcp.networksecurity.SecurityProfile("default",
+            name="my-security-profile",
+            parent="organizations/123456789",
+            description="my description",
+            type="CUSTOM_MIRRORING",
+            custom_mirroring_profile={
+                "mirroring_endpoint_group": default_mirroring_endpoint_group.id,
+            })
+        ```
+        ### Network Security Security Profile Intercept
+
+        ```python
+        import pulumi
+        import pulumi_gcp as gcp
+
+        default = gcp.compute.Network("default",
+            name="my-network",
+            auto_create_subnetworks=False)
+        default_intercept_deployment_group = gcp.networksecurity.InterceptDeploymentGroup("default",
+            intercept_deployment_group_id="my-dg",
+            location="global",
+            network=default.id)
+        default_intercept_endpoint_group = gcp.networksecurity.InterceptEndpointGroup("default",
+            intercept_endpoint_group_id="my-eg",
+            location="global",
+            intercept_deployment_group=default_intercept_deployment_group.id)
+        default_security_profile = gcp.networksecurity.SecurityProfile("default",
+            name="my-security-profile",
+            parent="organizations/123456789",
+            description="my description",
+            type="CUSTOM_INTERCEPT",
+            custom_intercept_profile={
+                "intercept_endpoint_group": default_intercept_endpoint_group.id,
+            })
+        ```
 
         ## Import
 
@@ -587,6 +779,8 @@ class SecurityProfile(pulumi.CustomResource):
     def _internal_init(__self__,
                  resource_name: str,
                  opts: Optional[pulumi.ResourceOptions] = None,
+                 custom_intercept_profile: Optional[pulumi.Input[Union['SecurityProfileCustomInterceptProfileArgs', 'SecurityProfileCustomInterceptProfileArgsDict']]] = None,
+                 custom_mirroring_profile: Optional[pulumi.Input[Union['SecurityProfileCustomMirroringProfileArgs', 'SecurityProfileCustomMirroringProfileArgsDict']]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  location: Optional[pulumi.Input[str]] = None,
@@ -603,6 +797,8 @@ class SecurityProfile(pulumi.CustomResource):
                 raise TypeError('__props__ is only valid when passed in combination with a valid opts.id to get an existing resource')
             __props__ = SecurityProfileArgs.__new__(SecurityProfileArgs)
 
+            __props__.__dict__["custom_intercept_profile"] = custom_intercept_profile
+            __props__.__dict__["custom_mirroring_profile"] = custom_mirroring_profile
             __props__.__dict__["description"] = description
             __props__.__dict__["labels"] = labels
             __props__.__dict__["location"] = location
@@ -631,6 +827,8 @@ class SecurityProfile(pulumi.CustomResource):
             id: pulumi.Input[str],
             opts: Optional[pulumi.ResourceOptions] = None,
             create_time: Optional[pulumi.Input[str]] = None,
+            custom_intercept_profile: Optional[pulumi.Input[Union['SecurityProfileCustomInterceptProfileArgs', 'SecurityProfileCustomInterceptProfileArgsDict']]] = None,
+            custom_mirroring_profile: Optional[pulumi.Input[Union['SecurityProfileCustomMirroringProfileArgs', 'SecurityProfileCustomMirroringProfileArgsDict']]] = None,
             description: Optional[pulumi.Input[str]] = None,
             effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             etag: Optional[pulumi.Input[str]] = None,
@@ -651,6 +849,12 @@ class SecurityProfile(pulumi.CustomResource):
         :param pulumi.Input[str] id: The unique provider ID of the resource to lookup.
         :param pulumi.ResourceOptions opts: Options for the resource.
         :param pulumi.Input[str] create_time: Time the security profile was created in UTC.
+        :param pulumi.Input[Union['SecurityProfileCustomInterceptProfileArgs', 'SecurityProfileCustomInterceptProfileArgsDict']] custom_intercept_profile: The configuration for defining the Intercept Endpoint Group used to
+               intercept traffic to third-party firewall appliances.
+               Structure is documented below.
+        :param pulumi.Input[Union['SecurityProfileCustomMirroringProfileArgs', 'SecurityProfileCustomMirroringProfileArgsDict']] custom_mirroring_profile: The configuration for defining the Mirroring Endpoint Group used to
+               mirror traffic to third-party collectors.
+               Structure is documented below.
         :param pulumi.Input[str] description: An optional description of the security profile. The Max length is 512 characters.
         :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] etag: This checksum is computed by the server based on the value of other fields,
@@ -674,7 +878,7 @@ class SecurityProfile(pulumi.CustomResource):
         :param pulumi.Input[Union['SecurityProfileThreatPreventionProfileArgs', 'SecurityProfileThreatPreventionProfileArgsDict']] threat_prevention_profile: The threat prevention configuration for the security profile.
                Structure is documented below.
         :param pulumi.Input[str] type: The type of security profile.
-               Possible values are: `THREAT_PREVENTION`.
+               Possible values are: `THREAT_PREVENTION`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
         :param pulumi.Input[str] update_time: Time the security profile was updated in UTC.
         """
         opts = pulumi.ResourceOptions.merge(opts, pulumi.ResourceOptions(id=id))
@@ -682,6 +886,8 @@ class SecurityProfile(pulumi.CustomResource):
         __props__ = _SecurityProfileState.__new__(_SecurityProfileState)
 
         __props__.__dict__["create_time"] = create_time
+        __props__.__dict__["custom_intercept_profile"] = custom_intercept_profile
+        __props__.__dict__["custom_mirroring_profile"] = custom_mirroring_profile
         __props__.__dict__["description"] = description
         __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["etag"] = etag
@@ -703,6 +909,26 @@ class SecurityProfile(pulumi.CustomResource):
         Time the security profile was created in UTC.
         """
         return pulumi.get(self, "create_time")
+
+    @property
+    @pulumi.getter(name="customInterceptProfile")
+    def custom_intercept_profile(self) -> pulumi.Output[Optional['outputs.SecurityProfileCustomInterceptProfile']]:
+        """
+        The configuration for defining the Intercept Endpoint Group used to
+        intercept traffic to third-party firewall appliances.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "custom_intercept_profile")
+
+    @property
+    @pulumi.getter(name="customMirroringProfile")
+    def custom_mirroring_profile(self) -> pulumi.Output[Optional['outputs.SecurityProfileCustomMirroringProfile']]:
+        """
+        The configuration for defining the Mirroring Endpoint Group used to
+        mirror traffic to third-party collectors.
+        Structure is documented below.
+        """
+        return pulumi.get(self, "custom_mirroring_profile")
 
     @property
     @pulumi.getter
@@ -801,7 +1027,7 @@ class SecurityProfile(pulumi.CustomResource):
     def type(self) -> pulumi.Output[str]:
         """
         The type of security profile.
-        Possible values are: `THREAT_PREVENTION`.
+        Possible values are: `THREAT_PREVENTION`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
         """
         return pulumi.get(self, "type")
 

@@ -75,6 +75,152 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Network Security Security Profile Group Mirroring
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.networksecurity.MirroringDeploymentGroup;
+ * import com.pulumi.gcp.networksecurity.MirroringDeploymentGroupArgs;
+ * import com.pulumi.gcp.networksecurity.MirroringEndpointGroup;
+ * import com.pulumi.gcp.networksecurity.MirroringEndpointGroupArgs;
+ * import com.pulumi.gcp.networksecurity.SecurityProfile;
+ * import com.pulumi.gcp.networksecurity.SecurityProfileArgs;
+ * import com.pulumi.gcp.networksecurity.inputs.SecurityProfileCustomMirroringProfileArgs;
+ * import com.pulumi.gcp.networksecurity.SecurityProfileGroup;
+ * import com.pulumi.gcp.networksecurity.SecurityProfileGroupArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Network("default", NetworkArgs.builder()
+ *             .name("network")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var defaultMirroringDeploymentGroup = new MirroringDeploymentGroup("defaultMirroringDeploymentGroup", MirroringDeploymentGroupArgs.builder()
+ *             .mirroringDeploymentGroupId("deployment-group")
+ *             .location("global")
+ *             .network(default_.id())
+ *             .build());
+ * 
+ *         var defaultMirroringEndpointGroup = new MirroringEndpointGroup("defaultMirroringEndpointGroup", MirroringEndpointGroupArgs.builder()
+ *             .mirroringEndpointGroupId("endpoint-group")
+ *             .location("global")
+ *             .mirroringDeploymentGroup(defaultMirroringDeploymentGroup.id())
+ *             .build());
+ * 
+ *         var defaultSecurityProfile = new SecurityProfile("defaultSecurityProfile", SecurityProfileArgs.builder()
+ *             .name("sec-profile")
+ *             .parent("organizations/123456789")
+ *             .description("my description")
+ *             .type("CUSTOM_MIRRORING")
+ *             .customMirroringProfile(SecurityProfileCustomMirroringProfileArgs.builder()
+ *                 .mirroringEndpointGroup(defaultMirroringEndpointGroup.id())
+ *                 .build())
+ *             .build());
+ * 
+ *         var defaultSecurityProfileGroup = new SecurityProfileGroup("defaultSecurityProfileGroup", SecurityProfileGroupArgs.builder()
+ *             .name("sec-profile-group")
+ *             .parent("organizations/123456789")
+ *             .description("my description")
+ *             .customMirroringProfile(defaultSecurityProfile.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Network Security Security Profile Group Intercept
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.compute.Network;
+ * import com.pulumi.gcp.compute.NetworkArgs;
+ * import com.pulumi.gcp.networksecurity.InterceptDeploymentGroup;
+ * import com.pulumi.gcp.networksecurity.InterceptDeploymentGroupArgs;
+ * import com.pulumi.gcp.networksecurity.InterceptEndpointGroup;
+ * import com.pulumi.gcp.networksecurity.InterceptEndpointGroupArgs;
+ * import com.pulumi.gcp.networksecurity.SecurityProfile;
+ * import com.pulumi.gcp.networksecurity.SecurityProfileArgs;
+ * import com.pulumi.gcp.networksecurity.inputs.SecurityProfileCustomInterceptProfileArgs;
+ * import com.pulumi.gcp.networksecurity.SecurityProfileGroup;
+ * import com.pulumi.gcp.networksecurity.SecurityProfileGroupArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App {
+ *     public static void main(String[] args) {
+ *         Pulumi.run(App::stack);
+ *     }
+ * 
+ *     public static void stack(Context ctx) {
+ *         var default_ = new Network("default", NetworkArgs.builder()
+ *             .name("network")
+ *             .autoCreateSubnetworks(false)
+ *             .build());
+ * 
+ *         var defaultInterceptDeploymentGroup = new InterceptDeploymentGroup("defaultInterceptDeploymentGroup", InterceptDeploymentGroupArgs.builder()
+ *             .interceptDeploymentGroupId("deployment-group")
+ *             .location("global")
+ *             .network(default_.id())
+ *             .build());
+ * 
+ *         var defaultInterceptEndpointGroup = new InterceptEndpointGroup("defaultInterceptEndpointGroup", InterceptEndpointGroupArgs.builder()
+ *             .interceptEndpointGroupId("endpoint-group")
+ *             .location("global")
+ *             .interceptDeploymentGroup(defaultInterceptDeploymentGroup.id())
+ *             .build());
+ * 
+ *         var defaultSecurityProfile = new SecurityProfile("defaultSecurityProfile", SecurityProfileArgs.builder()
+ *             .name("sec-profile")
+ *             .parent("organizations/123456789")
+ *             .description("my description")
+ *             .type("CUSTOM_INTERCEPT")
+ *             .customInterceptProfile(SecurityProfileCustomInterceptProfileArgs.builder()
+ *                 .interceptEndpointGroup(defaultInterceptEndpointGroup.id())
+ *                 .build())
+ *             .build());
+ * 
+ *         var defaultSecurityProfileGroup = new SecurityProfileGroup("defaultSecurityProfileGroup", SecurityProfileGroupArgs.builder()
+ *             .name("sec-profile-group")
+ *             .parent("organizations/123456789")
+ *             .description("my description")
+ *             .customInterceptProfile(defaultSecurityProfile.id())
+ *             .build());
+ * 
+ *     }
+ * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
  * 
  * ## Import
  * 
@@ -104,6 +250,34 @@ public class SecurityProfileGroup extends com.pulumi.resources.CustomResource {
      */
     public Output<String> createTime() {
         return this.createTime;
+    }
+    /**
+     * Reference to a SecurityProfile with the CustomIntercept configuration.
+     * 
+     */
+    @Export(name="customInterceptProfile", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> customInterceptProfile;
+
+    /**
+     * @return Reference to a SecurityProfile with the CustomIntercept configuration.
+     * 
+     */
+    public Output<Optional<String>> customInterceptProfile() {
+        return Codegen.optional(this.customInterceptProfile);
+    }
+    /**
+     * Reference to a SecurityProfile with the custom mirroring configuration for the SecurityProfileGroup.
+     * 
+     */
+    @Export(name="customMirroringProfile", refs={String.class}, tree="[0]")
+    private Output</* @Nullable */ String> customMirroringProfile;
+
+    /**
+     * @return Reference to a SecurityProfile with the custom mirroring configuration for the SecurityProfileGroup.
+     * 
+     */
+    public Output<Optional<String>> customMirroringProfile() {
+        return Codegen.optional(this.customMirroringProfile);
     }
     /**
      * An optional description of the profile. The Max length is 512 characters.

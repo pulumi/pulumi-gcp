@@ -62,6 +62,66 @@ import * as utilities from "../utilities";
  *     },
  * });
  * ```
+ * ### Network Security Security Profile Mirroring
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.Network("default", {
+ *     name: "my-network",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const defaultMirroringDeploymentGroup = new gcp.networksecurity.MirroringDeploymentGroup("default", {
+ *     mirroringDeploymentGroupId: "my-dg",
+ *     location: "global",
+ *     network: _default.id,
+ * });
+ * const defaultMirroringEndpointGroup = new gcp.networksecurity.MirroringEndpointGroup("default", {
+ *     mirroringEndpointGroupId: "my-eg",
+ *     location: "global",
+ *     mirroringDeploymentGroup: defaultMirroringDeploymentGroup.id,
+ * });
+ * const defaultSecurityProfile = new gcp.networksecurity.SecurityProfile("default", {
+ *     name: "my-security-profile",
+ *     parent: "organizations/123456789",
+ *     description: "my description",
+ *     type: "CUSTOM_MIRRORING",
+ *     customMirroringProfile: {
+ *         mirroringEndpointGroup: defaultMirroringEndpointGroup.id,
+ *     },
+ * });
+ * ```
+ * ### Network Security Security Profile Intercept
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const _default = new gcp.compute.Network("default", {
+ *     name: "my-network",
+ *     autoCreateSubnetworks: false,
+ * });
+ * const defaultInterceptDeploymentGroup = new gcp.networksecurity.InterceptDeploymentGroup("default", {
+ *     interceptDeploymentGroupId: "my-dg",
+ *     location: "global",
+ *     network: _default.id,
+ * });
+ * const defaultInterceptEndpointGroup = new gcp.networksecurity.InterceptEndpointGroup("default", {
+ *     interceptEndpointGroupId: "my-eg",
+ *     location: "global",
+ *     interceptDeploymentGroup: defaultInterceptDeploymentGroup.id,
+ * });
+ * const defaultSecurityProfile = new gcp.networksecurity.SecurityProfile("default", {
+ *     name: "my-security-profile",
+ *     parent: "organizations/123456789",
+ *     description: "my description",
+ *     type: "CUSTOM_INTERCEPT",
+ *     customInterceptProfile: {
+ *         interceptEndpointGroup: defaultInterceptEndpointGroup.id,
+ *     },
+ * });
+ * ```
  *
  * ## Import
  *
@@ -107,6 +167,18 @@ export class SecurityProfile extends pulumi.CustomResource {
      * Time the security profile was created in UTC.
      */
     public /*out*/ readonly createTime!: pulumi.Output<string>;
+    /**
+     * The configuration for defining the Intercept Endpoint Group used to
+     * intercept traffic to third-party firewall appliances.
+     * Structure is documented below.
+     */
+    public readonly customInterceptProfile!: pulumi.Output<outputs.networksecurity.SecurityProfileCustomInterceptProfile | undefined>;
+    /**
+     * The configuration for defining the Mirroring Endpoint Group used to
+     * mirror traffic to third-party collectors.
+     * Structure is documented below.
+     */
+    public readonly customMirroringProfile!: pulumi.Output<outputs.networksecurity.SecurityProfileCustomMirroringProfile | undefined>;
     /**
      * An optional description of the security profile. The Max length is 512 characters.
      */
@@ -161,7 +233,7 @@ export class SecurityProfile extends pulumi.CustomResource {
     public readonly threatPreventionProfile!: pulumi.Output<outputs.networksecurity.SecurityProfileThreatPreventionProfile | undefined>;
     /**
      * The type of security profile.
-     * Possible values are: `THREAT_PREVENTION`.
+     * Possible values are: `THREAT_PREVENTION`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
      */
     public readonly type!: pulumi.Output<string>;
     /**
@@ -183,6 +255,8 @@ export class SecurityProfile extends pulumi.CustomResource {
         if (opts.id) {
             const state = argsOrState as SecurityProfileState | undefined;
             resourceInputs["createTime"] = state ? state.createTime : undefined;
+            resourceInputs["customInterceptProfile"] = state ? state.customInterceptProfile : undefined;
+            resourceInputs["customMirroringProfile"] = state ? state.customMirroringProfile : undefined;
             resourceInputs["description"] = state ? state.description : undefined;
             resourceInputs["effectiveLabels"] = state ? state.effectiveLabels : undefined;
             resourceInputs["etag"] = state ? state.etag : undefined;
@@ -200,6 +274,8 @@ export class SecurityProfile extends pulumi.CustomResource {
             if ((!args || args.type === undefined) && !opts.urn) {
                 throw new Error("Missing required property 'type'");
             }
+            resourceInputs["customInterceptProfile"] = args ? args.customInterceptProfile : undefined;
+            resourceInputs["customMirroringProfile"] = args ? args.customMirroringProfile : undefined;
             resourceInputs["description"] = args ? args.description : undefined;
             resourceInputs["labels"] = args ? args.labels : undefined;
             resourceInputs["location"] = args ? args.location : undefined;
@@ -229,6 +305,18 @@ export interface SecurityProfileState {
      * Time the security profile was created in UTC.
      */
     createTime?: pulumi.Input<string>;
+    /**
+     * The configuration for defining the Intercept Endpoint Group used to
+     * intercept traffic to third-party firewall appliances.
+     * Structure is documented below.
+     */
+    customInterceptProfile?: pulumi.Input<inputs.networksecurity.SecurityProfileCustomInterceptProfile>;
+    /**
+     * The configuration for defining the Mirroring Endpoint Group used to
+     * mirror traffic to third-party collectors.
+     * Structure is documented below.
+     */
+    customMirroringProfile?: pulumi.Input<inputs.networksecurity.SecurityProfileCustomMirroringProfile>;
     /**
      * An optional description of the security profile. The Max length is 512 characters.
      */
@@ -283,7 +371,7 @@ export interface SecurityProfileState {
     threatPreventionProfile?: pulumi.Input<inputs.networksecurity.SecurityProfileThreatPreventionProfile>;
     /**
      * The type of security profile.
-     * Possible values are: `THREAT_PREVENTION`.
+     * Possible values are: `THREAT_PREVENTION`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
      */
     type?: pulumi.Input<string>;
     /**
@@ -296,6 +384,18 @@ export interface SecurityProfileState {
  * The set of arguments for constructing a SecurityProfile resource.
  */
 export interface SecurityProfileArgs {
+    /**
+     * The configuration for defining the Intercept Endpoint Group used to
+     * intercept traffic to third-party firewall appliances.
+     * Structure is documented below.
+     */
+    customInterceptProfile?: pulumi.Input<inputs.networksecurity.SecurityProfileCustomInterceptProfile>;
+    /**
+     * The configuration for defining the Mirroring Endpoint Group used to
+     * mirror traffic to third-party collectors.
+     * Structure is documented below.
+     */
+    customMirroringProfile?: pulumi.Input<inputs.networksecurity.SecurityProfileCustomMirroringProfile>;
     /**
      * An optional description of the security profile. The Max length is 512 characters.
      */
@@ -331,7 +431,7 @@ export interface SecurityProfileArgs {
     threatPreventionProfile?: pulumi.Input<inputs.networksecurity.SecurityProfileThreatPreventionProfile>;
     /**
      * The type of security profile.
-     * Possible values are: `THREAT_PREVENTION`.
+     * Possible values are: `THREAT_PREVENTION`, `CUSTOM_MIRRORING`, `CUSTOM_INTERCEPT`.
      */
     type: pulumi.Input<string>;
 }

@@ -116,7 +116,20 @@ def get_repository_group_iam_policy(code_repository_index: Optional[str] = None,
                                     repository_group_id: Optional[str] = None,
                                     opts: Optional[pulumi.InvokeOptions] = None) -> AwaitableGetRepositoryGroupIamPolicyResult:
     """
-    Use this data source to access information about an existing resource.
+    Retrieves the current IAM policy data for repositorygroup
+
+    ## example
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.gemini.get_repository_group_iam_policy(project=example["project"],
+        location=example["location"],
+        code_repository_index=example["codeRepositoryIndex"],
+        repository_group_id=example["repositoryGroupId"])
+    ```
+
 
     :param str location: The location of the Code Repository Index, for example `us-central1`. Used to find the parent resource to bind the IAM policy to. If not specified,
            the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no
@@ -146,7 +159,20 @@ def get_repository_group_iam_policy_output(code_repository_index: Optional[pulum
                                            repository_group_id: Optional[pulumi.Input[str]] = None,
                                            opts: Optional[Union[pulumi.InvokeOptions, pulumi.InvokeOutputOptions]] = None) -> pulumi.Output[GetRepositoryGroupIamPolicyResult]:
     """
-    Use this data source to access information about an existing resource.
+    Retrieves the current IAM policy data for repositorygroup
+
+    ## example
+
+    ```python
+    import pulumi
+    import pulumi_gcp as gcp
+
+    policy = gcp.gemini.get_repository_group_iam_policy(project=example["project"],
+        location=example["location"],
+        code_repository_index=example["codeRepositoryIndex"],
+        repository_group_id=example["repositoryGroupId"])
+    ```
+
 
     :param str location: The location of the Code Repository Index, for example `us-central1`. Used to find the parent resource to bind the IAM policy to. If not specified,
            the value will be parsed from the identifier of the parent resource. If no location is provided in the parent identifier and no

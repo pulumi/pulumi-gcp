@@ -7,6 +7,145 @@ import * as outputs from "../types/output";
 import * as utilities from "../utilities";
 
 /**
+ * Three different resources help you manage your IAM policy for Gemini for Google Cloud RepositoryGroup. Each of these resources serves a different use case:
+ *
+ * * `gcp.gemini.RepositoryGroupIamPolicy`: Authoritative. Sets the IAM policy for the repositorygroup and replaces any existing policy already attached.
+ * * `gcp.gemini.RepositoryGroupIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the repositorygroup are preserved.
+ * * `gcp.gemini.RepositoryGroupIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the repositorygroup are preserved.
+ *
+ * A data source can be used to retrieve policy data in advent you do not need creation
+ *
+ * * `gcp.gemini.RepositoryGroupIamPolicy`: Retrieves the IAM policy for the repositorygroup
+ *
+ * > **Note:** `gcp.gemini.RepositoryGroupIamPolicy` **cannot** be used in conjunction with `gcp.gemini.RepositoryGroupIamBinding` and `gcp.gemini.RepositoryGroupIamMember` or they will fight over what your policy should be.
+ *
+ * > **Note:** `gcp.gemini.RepositoryGroupIamBinding` resources **can be** used in conjunction with `gcp.gemini.RepositoryGroupIamMember` resources **only if** they do not grant privilege to the same role.
+ *
+ * ## gcp.gemini.RepositoryGroupIamPolicy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/cloudaicompanion.repositoryGroupsUser",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const policy = new gcp.gemini.RepositoryGroupIamPolicy("policy", {
+ *     project: example.project,
+ *     location: example.location,
+ *     codeRepositoryIndex: example.codeRepositoryIndex,
+ *     repositoryGroupId: example.repositoryGroupId,
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ *
+ * ## gcp.gemini.RepositoryGroupIamBinding
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const binding = new gcp.gemini.RepositoryGroupIamBinding("binding", {
+ *     project: example.project,
+ *     location: example.location,
+ *     codeRepositoryIndex: example.codeRepositoryIndex,
+ *     repositoryGroupId: example.repositoryGroupId,
+ *     role: "roles/cloudaicompanion.repositoryGroupsUser",
+ *     members: ["user:jane@example.com"],
+ * });
+ * ```
+ *
+ * ## gcp.gemini.RepositoryGroupIamMember
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const member = new gcp.gemini.RepositoryGroupIamMember("member", {
+ *     project: example.project,
+ *     location: example.location,
+ *     codeRepositoryIndex: example.codeRepositoryIndex,
+ *     repositoryGroupId: example.repositoryGroupId,
+ *     role: "roles/cloudaicompanion.repositoryGroupsUser",
+ *     member: "user:jane@example.com",
+ * });
+ * ```
+ *
+ * ## This resource supports User Project Overrides.
+ *
+ * - 
+ *
+ * # IAM policy for Gemini for Google Cloud RepositoryGroup
+ * Three different resources help you manage your IAM policy for Gemini for Google Cloud RepositoryGroup. Each of these resources serves a different use case:
+ *
+ * * `gcp.gemini.RepositoryGroupIamPolicy`: Authoritative. Sets the IAM policy for the repositorygroup and replaces any existing policy already attached.
+ * * `gcp.gemini.RepositoryGroupIamBinding`: Authoritative for a given role. Updates the IAM policy to grant a role to a list of members. Other roles within the IAM policy for the repositorygroup are preserved.
+ * * `gcp.gemini.RepositoryGroupIamMember`: Non-authoritative. Updates the IAM policy to grant a role to a new member. Other members for the role for the repositorygroup are preserved.
+ *
+ * A data source can be used to retrieve policy data in advent you do not need creation
+ *
+ * * `gcp.gemini.RepositoryGroupIamPolicy`: Retrieves the IAM policy for the repositorygroup
+ *
+ * > **Note:** `gcp.gemini.RepositoryGroupIamPolicy` **cannot** be used in conjunction with `gcp.gemini.RepositoryGroupIamBinding` and `gcp.gemini.RepositoryGroupIamMember` or they will fight over what your policy should be.
+ *
+ * > **Note:** `gcp.gemini.RepositoryGroupIamBinding` resources **can be** used in conjunction with `gcp.gemini.RepositoryGroupIamMember` resources **only if** they do not grant privilege to the same role.
+ *
+ * ## gcp.gemini.RepositoryGroupIamPolicy
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const admin = gcp.organizations.getIAMPolicy({
+ *     bindings: [{
+ *         role: "roles/cloudaicompanion.repositoryGroupsUser",
+ *         members: ["user:jane@example.com"],
+ *     }],
+ * });
+ * const policy = new gcp.gemini.RepositoryGroupIamPolicy("policy", {
+ *     project: example.project,
+ *     location: example.location,
+ *     codeRepositoryIndex: example.codeRepositoryIndex,
+ *     repositoryGroupId: example.repositoryGroupId,
+ *     policyData: admin.then(admin => admin.policyData),
+ * });
+ * ```
+ *
+ * ## gcp.gemini.RepositoryGroupIamBinding
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const binding = new gcp.gemini.RepositoryGroupIamBinding("binding", {
+ *     project: example.project,
+ *     location: example.location,
+ *     codeRepositoryIndex: example.codeRepositoryIndex,
+ *     repositoryGroupId: example.repositoryGroupId,
+ *     role: "roles/cloudaicompanion.repositoryGroupsUser",
+ *     members: ["user:jane@example.com"],
+ * });
+ * ```
+ *
+ * ## gcp.gemini.RepositoryGroupIamMember
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const member = new gcp.gemini.RepositoryGroupIamMember("member", {
+ *     project: example.project,
+ *     location: example.location,
+ *     codeRepositoryIndex: example.codeRepositoryIndex,
+ *     repositoryGroupId: example.repositoryGroupId,
+ *     role: "roles/cloudaicompanion.repositoryGroupsUser",
+ *     member: "user:jane@example.com",
+ * });
+ * ```
+ *
  * ## Import
  *
  * For all import syntaxes, the "resource in question" can take any of the following forms:

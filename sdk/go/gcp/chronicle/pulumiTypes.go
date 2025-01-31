@@ -914,6 +914,288 @@ func (o ReferenceListScopeInfoReferenceListScopeOutput) ScopeNames() pulumi.Stri
 	return o.ApplyT(func(v ReferenceListScopeInfoReferenceListScope) []string { return v.ScopeNames }).(pulumi.StringArrayOutput)
 }
 
+type RetrohuntExecutionInterval struct {
+	// Optional. Exclusive end of the interval.
+	// If specified, a Timestamp matching this interval will have to be before the
+	// end.
+	EndTime *string `pulumi:"endTime"`
+	// Optional. Inclusive start of the interval.
+	// If specified, a Timestamp matching this interval will have to be the same
+	// or after the start.
+	StartTime *string `pulumi:"startTime"`
+}
+
+// RetrohuntExecutionIntervalInput is an input type that accepts RetrohuntExecutionIntervalArgs and RetrohuntExecutionIntervalOutput values.
+// You can construct a concrete instance of `RetrohuntExecutionIntervalInput` via:
+//
+//	RetrohuntExecutionIntervalArgs{...}
+type RetrohuntExecutionIntervalInput interface {
+	pulumi.Input
+
+	ToRetrohuntExecutionIntervalOutput() RetrohuntExecutionIntervalOutput
+	ToRetrohuntExecutionIntervalOutputWithContext(context.Context) RetrohuntExecutionIntervalOutput
+}
+
+type RetrohuntExecutionIntervalArgs struct {
+	// Optional. Exclusive end of the interval.
+	// If specified, a Timestamp matching this interval will have to be before the
+	// end.
+	EndTime pulumi.StringPtrInput `pulumi:"endTime"`
+	// Optional. Inclusive start of the interval.
+	// If specified, a Timestamp matching this interval will have to be the same
+	// or after the start.
+	StartTime pulumi.StringPtrInput `pulumi:"startTime"`
+}
+
+func (RetrohuntExecutionIntervalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RetrohuntExecutionInterval)(nil)).Elem()
+}
+
+func (i RetrohuntExecutionIntervalArgs) ToRetrohuntExecutionIntervalOutput() RetrohuntExecutionIntervalOutput {
+	return i.ToRetrohuntExecutionIntervalOutputWithContext(context.Background())
+}
+
+func (i RetrohuntExecutionIntervalArgs) ToRetrohuntExecutionIntervalOutputWithContext(ctx context.Context) RetrohuntExecutionIntervalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RetrohuntExecutionIntervalOutput)
+}
+
+// RetrohuntExecutionIntervalArrayInput is an input type that accepts RetrohuntExecutionIntervalArray and RetrohuntExecutionIntervalArrayOutput values.
+// You can construct a concrete instance of `RetrohuntExecutionIntervalArrayInput` via:
+//
+//	RetrohuntExecutionIntervalArray{ RetrohuntExecutionIntervalArgs{...} }
+type RetrohuntExecutionIntervalArrayInput interface {
+	pulumi.Input
+
+	ToRetrohuntExecutionIntervalArrayOutput() RetrohuntExecutionIntervalArrayOutput
+	ToRetrohuntExecutionIntervalArrayOutputWithContext(context.Context) RetrohuntExecutionIntervalArrayOutput
+}
+
+type RetrohuntExecutionIntervalArray []RetrohuntExecutionIntervalInput
+
+func (RetrohuntExecutionIntervalArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RetrohuntExecutionInterval)(nil)).Elem()
+}
+
+func (i RetrohuntExecutionIntervalArray) ToRetrohuntExecutionIntervalArrayOutput() RetrohuntExecutionIntervalArrayOutput {
+	return i.ToRetrohuntExecutionIntervalArrayOutputWithContext(context.Background())
+}
+
+func (i RetrohuntExecutionIntervalArray) ToRetrohuntExecutionIntervalArrayOutputWithContext(ctx context.Context) RetrohuntExecutionIntervalArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RetrohuntExecutionIntervalArrayOutput)
+}
+
+type RetrohuntExecutionIntervalOutput struct{ *pulumi.OutputState }
+
+func (RetrohuntExecutionIntervalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RetrohuntExecutionInterval)(nil)).Elem()
+}
+
+func (o RetrohuntExecutionIntervalOutput) ToRetrohuntExecutionIntervalOutput() RetrohuntExecutionIntervalOutput {
+	return o
+}
+
+func (o RetrohuntExecutionIntervalOutput) ToRetrohuntExecutionIntervalOutputWithContext(ctx context.Context) RetrohuntExecutionIntervalOutput {
+	return o
+}
+
+// Optional. Exclusive end of the interval.
+// If specified, a Timestamp matching this interval will have to be before the
+// end.
+func (o RetrohuntExecutionIntervalOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RetrohuntExecutionInterval) *string { return v.EndTime }).(pulumi.StringPtrOutput)
+}
+
+// Optional. Inclusive start of the interval.
+// If specified, a Timestamp matching this interval will have to be the same
+// or after the start.
+func (o RetrohuntExecutionIntervalOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v RetrohuntExecutionInterval) *string { return v.StartTime }).(pulumi.StringPtrOutput)
+}
+
+type RetrohuntExecutionIntervalArrayOutput struct{ *pulumi.OutputState }
+
+func (RetrohuntExecutionIntervalArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]RetrohuntExecutionInterval)(nil)).Elem()
+}
+
+func (o RetrohuntExecutionIntervalArrayOutput) ToRetrohuntExecutionIntervalArrayOutput() RetrohuntExecutionIntervalArrayOutput {
+	return o
+}
+
+func (o RetrohuntExecutionIntervalArrayOutput) ToRetrohuntExecutionIntervalArrayOutputWithContext(ctx context.Context) RetrohuntExecutionIntervalArrayOutput {
+	return o
+}
+
+func (o RetrohuntExecutionIntervalArrayOutput) Index(i pulumi.IntInput) RetrohuntExecutionIntervalOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) RetrohuntExecutionInterval {
+		return vs[0].([]RetrohuntExecutionInterval)[vs[1].(int)]
+	}).(RetrohuntExecutionIntervalOutput)
+}
+
+type RetrohuntProcessInterval struct {
+	// Exclusive end of the interval.
+	//
+	// ***
+	EndTime string `pulumi:"endTime"`
+	// Inclusive start of the interval.
+	StartTime string `pulumi:"startTime"`
+}
+
+// RetrohuntProcessIntervalInput is an input type that accepts RetrohuntProcessIntervalArgs and RetrohuntProcessIntervalOutput values.
+// You can construct a concrete instance of `RetrohuntProcessIntervalInput` via:
+//
+//	RetrohuntProcessIntervalArgs{...}
+type RetrohuntProcessIntervalInput interface {
+	pulumi.Input
+
+	ToRetrohuntProcessIntervalOutput() RetrohuntProcessIntervalOutput
+	ToRetrohuntProcessIntervalOutputWithContext(context.Context) RetrohuntProcessIntervalOutput
+}
+
+type RetrohuntProcessIntervalArgs struct {
+	// Exclusive end of the interval.
+	//
+	// ***
+	EndTime pulumi.StringInput `pulumi:"endTime"`
+	// Inclusive start of the interval.
+	StartTime pulumi.StringInput `pulumi:"startTime"`
+}
+
+func (RetrohuntProcessIntervalArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*RetrohuntProcessInterval)(nil)).Elem()
+}
+
+func (i RetrohuntProcessIntervalArgs) ToRetrohuntProcessIntervalOutput() RetrohuntProcessIntervalOutput {
+	return i.ToRetrohuntProcessIntervalOutputWithContext(context.Background())
+}
+
+func (i RetrohuntProcessIntervalArgs) ToRetrohuntProcessIntervalOutputWithContext(ctx context.Context) RetrohuntProcessIntervalOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RetrohuntProcessIntervalOutput)
+}
+
+func (i RetrohuntProcessIntervalArgs) ToRetrohuntProcessIntervalPtrOutput() RetrohuntProcessIntervalPtrOutput {
+	return i.ToRetrohuntProcessIntervalPtrOutputWithContext(context.Background())
+}
+
+func (i RetrohuntProcessIntervalArgs) ToRetrohuntProcessIntervalPtrOutputWithContext(ctx context.Context) RetrohuntProcessIntervalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RetrohuntProcessIntervalOutput).ToRetrohuntProcessIntervalPtrOutputWithContext(ctx)
+}
+
+// RetrohuntProcessIntervalPtrInput is an input type that accepts RetrohuntProcessIntervalArgs, RetrohuntProcessIntervalPtr and RetrohuntProcessIntervalPtrOutput values.
+// You can construct a concrete instance of `RetrohuntProcessIntervalPtrInput` via:
+//
+//	        RetrohuntProcessIntervalArgs{...}
+//
+//	or:
+//
+//	        nil
+type RetrohuntProcessIntervalPtrInput interface {
+	pulumi.Input
+
+	ToRetrohuntProcessIntervalPtrOutput() RetrohuntProcessIntervalPtrOutput
+	ToRetrohuntProcessIntervalPtrOutputWithContext(context.Context) RetrohuntProcessIntervalPtrOutput
+}
+
+type retrohuntProcessIntervalPtrType RetrohuntProcessIntervalArgs
+
+func RetrohuntProcessIntervalPtr(v *RetrohuntProcessIntervalArgs) RetrohuntProcessIntervalPtrInput {
+	return (*retrohuntProcessIntervalPtrType)(v)
+}
+
+func (*retrohuntProcessIntervalPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**RetrohuntProcessInterval)(nil)).Elem()
+}
+
+func (i *retrohuntProcessIntervalPtrType) ToRetrohuntProcessIntervalPtrOutput() RetrohuntProcessIntervalPtrOutput {
+	return i.ToRetrohuntProcessIntervalPtrOutputWithContext(context.Background())
+}
+
+func (i *retrohuntProcessIntervalPtrType) ToRetrohuntProcessIntervalPtrOutputWithContext(ctx context.Context) RetrohuntProcessIntervalPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(RetrohuntProcessIntervalPtrOutput)
+}
+
+type RetrohuntProcessIntervalOutput struct{ *pulumi.OutputState }
+
+func (RetrohuntProcessIntervalOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*RetrohuntProcessInterval)(nil)).Elem()
+}
+
+func (o RetrohuntProcessIntervalOutput) ToRetrohuntProcessIntervalOutput() RetrohuntProcessIntervalOutput {
+	return o
+}
+
+func (o RetrohuntProcessIntervalOutput) ToRetrohuntProcessIntervalOutputWithContext(ctx context.Context) RetrohuntProcessIntervalOutput {
+	return o
+}
+
+func (o RetrohuntProcessIntervalOutput) ToRetrohuntProcessIntervalPtrOutput() RetrohuntProcessIntervalPtrOutput {
+	return o.ToRetrohuntProcessIntervalPtrOutputWithContext(context.Background())
+}
+
+func (o RetrohuntProcessIntervalOutput) ToRetrohuntProcessIntervalPtrOutputWithContext(ctx context.Context) RetrohuntProcessIntervalPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v RetrohuntProcessInterval) *RetrohuntProcessInterval {
+		return &v
+	}).(RetrohuntProcessIntervalPtrOutput)
+}
+
+// Exclusive end of the interval.
+//
+// ***
+func (o RetrohuntProcessIntervalOutput) EndTime() pulumi.StringOutput {
+	return o.ApplyT(func(v RetrohuntProcessInterval) string { return v.EndTime }).(pulumi.StringOutput)
+}
+
+// Inclusive start of the interval.
+func (o RetrohuntProcessIntervalOutput) StartTime() pulumi.StringOutput {
+	return o.ApplyT(func(v RetrohuntProcessInterval) string { return v.StartTime }).(pulumi.StringOutput)
+}
+
+type RetrohuntProcessIntervalPtrOutput struct{ *pulumi.OutputState }
+
+func (RetrohuntProcessIntervalPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**RetrohuntProcessInterval)(nil)).Elem()
+}
+
+func (o RetrohuntProcessIntervalPtrOutput) ToRetrohuntProcessIntervalPtrOutput() RetrohuntProcessIntervalPtrOutput {
+	return o
+}
+
+func (o RetrohuntProcessIntervalPtrOutput) ToRetrohuntProcessIntervalPtrOutputWithContext(ctx context.Context) RetrohuntProcessIntervalPtrOutput {
+	return o
+}
+
+func (o RetrohuntProcessIntervalPtrOutput) Elem() RetrohuntProcessIntervalOutput {
+	return o.ApplyT(func(v *RetrohuntProcessInterval) RetrohuntProcessInterval {
+		if v != nil {
+			return *v
+		}
+		var ret RetrohuntProcessInterval
+		return ret
+	}).(RetrohuntProcessIntervalOutput)
+}
+
+// Exclusive end of the interval.
+//
+// ***
+func (o RetrohuntProcessIntervalPtrOutput) EndTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RetrohuntProcessInterval) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.EndTime
+	}).(pulumi.StringPtrOutput)
+}
+
+// Inclusive start of the interval.
+func (o RetrohuntProcessIntervalPtrOutput) StartTime() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *RetrohuntProcessInterval) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.StartTime
+	}).(pulumi.StringPtrOutput)
+}
+
 type RuleCompilationDiagnostic struct {
 	// (Output)
 	// Output only. The diagnostic message.
@@ -1901,6 +2183,10 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ReferenceListScopeInfoInput)(nil)).Elem(), ReferenceListScopeInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReferenceListScopeInfoArrayInput)(nil)).Elem(), ReferenceListScopeInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ReferenceListScopeInfoReferenceListScopeInput)(nil)).Elem(), ReferenceListScopeInfoReferenceListScopeArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RetrohuntExecutionIntervalInput)(nil)).Elem(), RetrohuntExecutionIntervalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RetrohuntExecutionIntervalArrayInput)(nil)).Elem(), RetrohuntExecutionIntervalArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RetrohuntProcessIntervalInput)(nil)).Elem(), RetrohuntProcessIntervalArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*RetrohuntProcessIntervalPtrInput)(nil)).Elem(), RetrohuntProcessIntervalArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleCompilationDiagnosticInput)(nil)).Elem(), RuleCompilationDiagnosticArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleCompilationDiagnosticArrayInput)(nil)).Elem(), RuleCompilationDiagnosticArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RuleCompilationDiagnosticPositionInput)(nil)).Elem(), RuleCompilationDiagnosticPositionArgs{})
@@ -1928,6 +2214,10 @@ func init() {
 	pulumi.RegisterOutputType(ReferenceListScopeInfoOutput{})
 	pulumi.RegisterOutputType(ReferenceListScopeInfoArrayOutput{})
 	pulumi.RegisterOutputType(ReferenceListScopeInfoReferenceListScopeOutput{})
+	pulumi.RegisterOutputType(RetrohuntExecutionIntervalOutput{})
+	pulumi.RegisterOutputType(RetrohuntExecutionIntervalArrayOutput{})
+	pulumi.RegisterOutputType(RetrohuntProcessIntervalOutput{})
+	pulumi.RegisterOutputType(RetrohuntProcessIntervalPtrOutput{})
 	pulumi.RegisterOutputType(RuleCompilationDiagnosticOutput{})
 	pulumi.RegisterOutputType(RuleCompilationDiagnosticArrayOutput{})
 	pulumi.RegisterOutputType(RuleCompilationDiagnosticPositionOutput{})

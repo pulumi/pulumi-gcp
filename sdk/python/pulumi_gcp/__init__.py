@@ -22,6 +22,8 @@ if typing.TYPE_CHECKING:
     apigateway = __apigateway
     import pulumi_gcp.apigee as __apigee
     apigee = __apigee
+    import pulumi_gcp.apihub as __apihub
+    apihub = __apihub
     import pulumi_gcp.appengine as __appengine
     appengine = __appengine
     import pulumi_gcp.apphub as __apphub
@@ -273,6 +275,7 @@ else:
     alloydb = _utilities.lazy_import('pulumi_gcp.alloydb')
     apigateway = _utilities.lazy_import('pulumi_gcp.apigateway')
     apigee = _utilities.lazy_import('pulumi_gcp.apigee')
+    apihub = _utilities.lazy_import('pulumi_gcp.apihub')
     appengine = _utilities.lazy_import('pulumi_gcp.appengine')
     apphub = _utilities.lazy_import('pulumi_gcp.apphub')
     applicationintegration = _utilities.lazy_import('pulumi_gcp.applicationintegration')
@@ -925,6 +928,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.apigee",
   "classes": {
    "gcp:apigee/targetServer:TargetServer": "TargetServer"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "apihub/apiHubInstance",
+  "fqn": "pulumi_gcp.apihub",
+  "classes": {
+   "gcp:apihub/apiHubInstance:ApiHubInstance": "ApiHubInstance"
   }
  },
  {
@@ -1769,6 +1780,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "chronicle/retrohunt",
+  "fqn": "pulumi_gcp.chronicle",
+  "classes": {
+   "gcp:chronicle/retrohunt:Retrohunt": "Retrohunt"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "chronicle/rule",
   "fqn": "pulumi_gcp.chronicle",
   "classes": {
@@ -2241,10 +2260,42 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "colab/runtime",
+  "fqn": "pulumi_gcp.colab",
+  "classes": {
+   "gcp:colab/runtime:Runtime": "Runtime"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "colab/runtimeTemplate",
   "fqn": "pulumi_gcp.colab",
   "classes": {
    "gcp:colab/runtimeTemplate:RuntimeTemplate": "RuntimeTemplate"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "colab/runtimeTemplateIamBinding",
+  "fqn": "pulumi_gcp.colab",
+  "classes": {
+   "gcp:colab/runtimeTemplateIamBinding:RuntimeTemplateIamBinding": "RuntimeTemplateIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "colab/runtimeTemplateIamMember",
+  "fqn": "pulumi_gcp.colab",
+  "classes": {
+   "gcp:colab/runtimeTemplateIamMember:RuntimeTemplateIamMember": "RuntimeTemplateIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "colab/runtimeTemplateIamPolicy",
+  "fqn": "pulumi_gcp.colab",
+  "classes": {
+   "gcp:colab/runtimeTemplateIamPolicy:RuntimeTemplateIamPolicy": "RuntimeTemplateIamPolicy"
   }
  },
  {
@@ -2677,6 +2728,30 @@ _utilities.register(
   "fqn": "pulumi_gcp.compute",
   "classes": {
    "gcp:compute/instanceTemplate:InstanceTemplate": "InstanceTemplate"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "compute/instanceTemplateIamBinding",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/instanceTemplateIamBinding:InstanceTemplateIamBinding": "InstanceTemplateIamBinding"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "compute/instanceTemplateIamMember",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/instanceTemplateIamMember:InstanceTemplateIamMember": "InstanceTemplateIamMember"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "compute/instanceTemplateIamPolicy",
+  "fqn": "pulumi_gcp.compute",
+  "classes": {
+   "gcp:compute/instanceTemplateIamPolicy:InstanceTemplateIamPolicy": "InstanceTemplateIamPolicy"
   }
  },
  {
@@ -7097,6 +7172,14 @@ _utilities.register(
  },
  {
   "pkg": "gcp",
+  "mod": "parametermanager/parameterVersion",
+  "fqn": "pulumi_gcp.parametermanager",
+  "classes": {
+   "gcp:parametermanager/parameterVersion:ParameterVersion": "ParameterVersion"
+  }
+ },
+ {
+  "pkg": "gcp",
   "mod": "parametermanager/regionalParameter",
   "fqn": "pulumi_gcp.parametermanager",
   "classes": {
@@ -7357,6 +7440,14 @@ _utilities.register(
   "fqn": "pulumi_gcp.redis",
   "classes": {
    "gcp:redis/cluster:Cluster": "Cluster"
+  }
+ },
+ {
+  "pkg": "gcp",
+  "mod": "redis/clusterUserCreatedConnections",
+  "fqn": "pulumi_gcp.redis",
+  "classes": {
+   "gcp:redis/clusterUserCreatedConnections:ClusterUserCreatedConnections": "ClusterUserCreatedConnections"
   }
  },
  {

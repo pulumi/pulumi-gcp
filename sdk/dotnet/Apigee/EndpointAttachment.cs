@@ -18,68 +18,6 @@ namespace Pulumi.Gcp.Apigee
     /// * How-to Guides
     ///     * [Creating an environment](https://cloud.google.com/apigee/docs/api-platform/get-started/create-environment)
     /// 
-    /// ## Example Usage
-    /// 
-    /// ### Apigee Endpoint Attachment Basic
-    /// 
-    /// ```csharp
-    /// using System.Collections.Generic;
-    /// using System.Linq;
-    /// using Pulumi;
-    /// using Gcp = Pulumi.Gcp;
-    /// 
-    /// return await Deployment.RunAsync(() =&gt; 
-    /// {
-    ///     var current = Gcp.Organizations.GetClientConfig.Invoke();
-    /// 
-    ///     var apigeeNetwork = new Gcp.Compute.Network("apigee_network", new()
-    ///     {
-    ///         Name = "apigee-network",
-    ///     });
-    /// 
-    ///     var apigeeRange = new Gcp.Compute.GlobalAddress("apigee_range", new()
-    ///     {
-    ///         Name = "apigee-range",
-    ///         Purpose = "VPC_PEERING",
-    ///         AddressType = "INTERNAL",
-    ///         PrefixLength = 16,
-    ///         Network = apigeeNetwork.Id,
-    ///     });
-    /// 
-    ///     var apigeeVpcConnection = new Gcp.ServiceNetworking.Connection("apigee_vpc_connection", new()
-    ///     {
-    ///         Network = apigeeNetwork.Id,
-    ///         Service = "servicenetworking.googleapis.com",
-    ///         ReservedPeeringRanges = new[]
-    ///         {
-    ///             apigeeRange.Name,
-    ///         },
-    ///     });
-    /// 
-    ///     var apigeeOrg = new Gcp.Apigee.Organization("apigee_org", new()
-    ///     {
-    ///         AnalyticsRegion = "us-central1",
-    ///         ProjectId = current.Apply(getClientConfigResult =&gt; getClientConfigResult.Project),
-    ///         AuthorizedNetwork = apigeeNetwork.Id,
-    ///     }, new CustomResourceOptions
-    ///     {
-    ///         DependsOn =
-    ///         {
-    ///             apigeeVpcConnection,
-    ///         },
-    ///     });
-    /// 
-    ///     var apigeeEndpointAttachment = new Gcp.Apigee.EndpointAttachment("apigee_endpoint_attachment", new()
-    ///     {
-    ///         OrgId = apigeeOrg.Id,
-    ///         EndpointAttachmentId = "test1",
-    ///         Location = "{google_compute_service_attachment location}",
-    ///         ServiceAttachment = "{google_compute_service_attachment id}",
-    ///     });
-    /// 
-    /// });
-    /// ```
-    /// 
     /// ## Import
     /// 
     /// EndpointAttachment can be imported using any of these accepted formats:

@@ -45,6 +45,7 @@ __all__ = [
     'GetKMSCryptoKeyPrimaryResult',
     'GetKMSCryptoKeyVersionPublicKeyResult',
     'GetKMSCryptoKeyVersionTemplateResult',
+    'GetKeyHandlesKeyHandleResult',
     'GetKeyRingsKeyRingResult',
 ]
 
@@ -1552,6 +1553,50 @@ class GetKMSCryptoKeyVersionTemplateResult(dict):
         The protection level to use when creating a version based on this template. Possible values include "SOFTWARE", "HSM", "EXTERNAL", "EXTERNAL_VPC". Defaults to "SOFTWARE".
         """
         return pulumi.get(self, "protection_level")
+
+
+@pulumi.output_type
+class GetKeyHandlesKeyHandleResult(dict):
+    def __init__(__self__, *,
+                 kms_key: str,
+                 name: str,
+                 resource_type_selector: str):
+        """
+        :param str kms_key: The identifier of the KMS Key created for the KeyHandle. Its format is `projects/{projectId}/locations/{location}/keyRings/{keyRingName}/cryptoKeys/{cryptoKeyName}`.
+        :param str name: The name of the KeyHandle. Its format is `projects/{projectId}/locations/{location}/keyHandles/{keyHandleName}`.
+        :param str resource_type_selector: The resource type by which to filter KeyHandle e.g. {SERVICE}.googleapis.com/{TYPE}. See documentation for supported resource types. 
+               
+               - - -
+        """
+        pulumi.set(__self__, "kms_key", kms_key)
+        pulumi.set(__self__, "name", name)
+        pulumi.set(__self__, "resource_type_selector", resource_type_selector)
+
+    @property
+    @pulumi.getter(name="kmsKey")
+    def kms_key(self) -> str:
+        """
+        The identifier of the KMS Key created for the KeyHandle. Its format is `projects/{projectId}/locations/{location}/keyRings/{keyRingName}/cryptoKeys/{cryptoKeyName}`.
+        """
+        return pulumi.get(self, "kms_key")
+
+    @property
+    @pulumi.getter
+    def name(self) -> str:
+        """
+        The name of the KeyHandle. Its format is `projects/{projectId}/locations/{location}/keyHandles/{keyHandleName}`.
+        """
+        return pulumi.get(self, "name")
+
+    @property
+    @pulumi.getter(name="resourceTypeSelector")
+    def resource_type_selector(self) -> str:
+        """
+        The resource type by which to filter KeyHandle e.g. {SERVICE}.googleapis.com/{TYPE}. See documentation for supported resource types. 
+
+        - - -
+        """
+        return pulumi.get(self, "resource_type_selector")
 
 
 @pulumi.output_type

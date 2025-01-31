@@ -349,7 +349,7 @@ class RegionNetworkFirewallPolicyWithRules(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         address_group1 = gcp.networksecurity.AddressGroup("address_group_1",
-            name="tf-address-group",
+            name="address-group",
             parent=project.id,
             description="Regional address group",
             location="us-west2",
@@ -360,16 +360,19 @@ class RegionNetworkFirewallPolicyWithRules(pulumi.CustomResource):
             description="Tag key",
             parent=project.id,
             purpose="GCE_FIREWALL",
-            short_name="tf-tag-key",
+            short_name="tag-key",
             purpose_data={
                 "network": f"{project.name}/default",
             })
         secure_tag_value1 = gcp.tags.TagValue("secure_tag_value_1",
             description="Tag value",
             parent=secure_tag_key1.id,
-            short_name="tf-tag-value")
-        region_network_firewall_policy_with_rules = gcp.compute.RegionNetworkFirewallPolicyWithRules("region-network-firewall-policy-with-rules",
-            name="tf-region-fw-policy-with-rules",
+            short_name="tag-value")
+        network = gcp.compute.Network("network",
+            name="network",
+            auto_create_subnetworks=False)
+        primary = gcp.compute.RegionNetworkFirewallPolicyWithRules("primary",
+            name="fw-policy",
             region="us-west2",
             description="Terraform test",
             rules=[
@@ -380,13 +383,6 @@ class RegionNetworkFirewallPolicyWithRules(pulumi.CustomResource):
                     "action": "allow",
                     "direction": "EGRESS",
                     "match": {
-                        "layer4_configs": [{
-                            "ip_protocol": "tcp",
-                            "ports": [
-                                "8080",
-                                "7070",
-                            ],
-                        }],
                         "dest_ip_ranges": ["11.100.0.1/32"],
                         "dest_fqdns": [
                             "www.yyy.com",
@@ -401,6 +397,13 @@ class RegionNetworkFirewallPolicyWithRules(pulumi.CustomResource):
                             "iplist-tor-exit-nodes",
                         ],
                         "dest_address_groups": [address_group1.id],
+                        "layer4_configs": [{
+                            "ip_protocol": "tcp",
+                            "ports": [
+                                "8080",
+                                "7070",
+                            ],
+                        }],
                     },
                     "target_secure_tags": [{
                         "name": secure_tag_value1.id,
@@ -413,10 +416,8 @@ class RegionNetworkFirewallPolicyWithRules(pulumi.CustomResource):
                     "enable_logging": False,
                     "action": "deny",
                     "direction": "INGRESS",
+                    "disabled": True,
                     "match": {
-                        "layer4_configs": [{
-                            "ip_protocol": "udp",
-                        }],
                         "src_ip_ranges": ["0.0.0.0/0"],
                         "src_fqdns": [
                             "www.abc.com",
@@ -434,8 +435,43 @@ class RegionNetworkFirewallPolicyWithRules(pulumi.CustomResource):
                         "src_secure_tags": [{
                             "name": secure_tag_value1.id,
                         }],
+                        "layer4_configs": [{
+                            "ip_protocol": "udp",
+                        }],
                     },
-                    "disabled": True,
+                },
+                {
+                    "description": "network scope rule 1",
+                    "rule_name": "network scope 1",
+                    "priority": 4000,
+                    "enable_logging": False,
+                    "action": "allow",
+                    "direction": "INGRESS",
+                    "match": {
+                        "src_ip_ranges": ["11.100.0.1/32"],
+                        "src_network_scope": "VPC_NETWORKS",
+                        "src_networks": [network.id],
+                        "layer4_configs": [{
+                            "ip_protocol": "tcp",
+                            "ports": ["8080"],
+                        }],
+                    },
+                },
+                {
+                    "description": "network scope rule 2",
+                    "rule_name": "network scope 2",
+                    "priority": 5000,
+                    "enable_logging": False,
+                    "action": "allow",
+                    "direction": "EGRESS",
+                    "match": {
+                        "dest_ip_ranges": ["0.0.0.0/0"],
+                        "dest_network_scope": "NON_INTERNET",
+                        "layer4_configs": [{
+                            "ip_protocol": "tcp",
+                            "ports": ["8080"],
+                        }],
+                    },
                 },
             ])
         ```
@@ -501,7 +537,7 @@ class RegionNetworkFirewallPolicyWithRules(pulumi.CustomResource):
 
         project = gcp.organizations.get_project()
         address_group1 = gcp.networksecurity.AddressGroup("address_group_1",
-            name="tf-address-group",
+            name="address-group",
             parent=project.id,
             description="Regional address group",
             location="us-west2",
@@ -512,16 +548,19 @@ class RegionNetworkFirewallPolicyWithRules(pulumi.CustomResource):
             description="Tag key",
             parent=project.id,
             purpose="GCE_FIREWALL",
-            short_name="tf-tag-key",
+            short_name="tag-key",
             purpose_data={
                 "network": f"{project.name}/default",
             })
         secure_tag_value1 = gcp.tags.TagValue("secure_tag_value_1",
             description="Tag value",
             parent=secure_tag_key1.id,
-            short_name="tf-tag-value")
-        region_network_firewall_policy_with_rules = gcp.compute.RegionNetworkFirewallPolicyWithRules("region-network-firewall-policy-with-rules",
-            name="tf-region-fw-policy-with-rules",
+            short_name="tag-value")
+        network = gcp.compute.Network("network",
+            name="network",
+            auto_create_subnetworks=False)
+        primary = gcp.compute.RegionNetworkFirewallPolicyWithRules("primary",
+            name="fw-policy",
             region="us-west2",
             description="Terraform test",
             rules=[
@@ -532,13 +571,6 @@ class RegionNetworkFirewallPolicyWithRules(pulumi.CustomResource):
                     "action": "allow",
                     "direction": "EGRESS",
                     "match": {
-                        "layer4_configs": [{
-                            "ip_protocol": "tcp",
-                            "ports": [
-                                "8080",
-                                "7070",
-                            ],
-                        }],
                         "dest_ip_ranges": ["11.100.0.1/32"],
                         "dest_fqdns": [
                             "www.yyy.com",
@@ -553,6 +585,13 @@ class RegionNetworkFirewallPolicyWithRules(pulumi.CustomResource):
                             "iplist-tor-exit-nodes",
                         ],
                         "dest_address_groups": [address_group1.id],
+                        "layer4_configs": [{
+                            "ip_protocol": "tcp",
+                            "ports": [
+                                "8080",
+                                "7070",
+                            ],
+                        }],
                     },
                     "target_secure_tags": [{
                         "name": secure_tag_value1.id,
@@ -565,10 +604,8 @@ class RegionNetworkFirewallPolicyWithRules(pulumi.CustomResource):
                     "enable_logging": False,
                     "action": "deny",
                     "direction": "INGRESS",
+                    "disabled": True,
                     "match": {
-                        "layer4_configs": [{
-                            "ip_protocol": "udp",
-                        }],
                         "src_ip_ranges": ["0.0.0.0/0"],
                         "src_fqdns": [
                             "www.abc.com",
@@ -586,8 +623,43 @@ class RegionNetworkFirewallPolicyWithRules(pulumi.CustomResource):
                         "src_secure_tags": [{
                             "name": secure_tag_value1.id,
                         }],
+                        "layer4_configs": [{
+                            "ip_protocol": "udp",
+                        }],
                     },
-                    "disabled": True,
+                },
+                {
+                    "description": "network scope rule 1",
+                    "rule_name": "network scope 1",
+                    "priority": 4000,
+                    "enable_logging": False,
+                    "action": "allow",
+                    "direction": "INGRESS",
+                    "match": {
+                        "src_ip_ranges": ["11.100.0.1/32"],
+                        "src_network_scope": "VPC_NETWORKS",
+                        "src_networks": [network.id],
+                        "layer4_configs": [{
+                            "ip_protocol": "tcp",
+                            "ports": ["8080"],
+                        }],
+                    },
+                },
+                {
+                    "description": "network scope rule 2",
+                    "rule_name": "network scope 2",
+                    "priority": 5000,
+                    "enable_logging": False,
+                    "action": "allow",
+                    "direction": "EGRESS",
+                    "match": {
+                        "dest_ip_ranges": ["0.0.0.0/0"],
+                        "dest_network_scope": "NON_INTERNET",
+                        "layer4_configs": [{
+                            "ip_protocol": "tcp",
+                            "ports": ["8080"],
+                        }],
+                    },
                 },
             ])
         ```

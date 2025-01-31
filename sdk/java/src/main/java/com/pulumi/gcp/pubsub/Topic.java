@@ -148,6 +148,7 @@ import javax.annotation.Nullable;
  *             .name("example-topic")
  *             .messageStoragePolicy(TopicMessageStoragePolicyArgs.builder()
  *                 .allowedPersistenceRegions("europe-west3")
+ *                 .enforceInTransit(true)
  *                 .build())
  *             .build());
  * 
@@ -313,6 +314,53 @@ import javax.annotation.Nullable;
  * 
  *     }
  * }
+ * }
+ * </pre>
+ * &lt;!--End PulumiCodeChooser --&gt;
+ * ### Pubsub Topic Ingestion Azure Event Hubs
+ * 
+ * &lt;!--Start PulumiCodeChooser --&gt;
+ * <pre>
+ * {@code
+ * package generated_program;
+ * 
+ * import com.pulumi.Context;
+ * import com.pulumi.Pulumi;
+ * import com.pulumi.core.Output;
+ * import com.pulumi.gcp.pubsub.Topic;
+ * import com.pulumi.gcp.pubsub.TopicArgs;
+ * import com.pulumi.gcp.pubsub.inputs.TopicIngestionDataSourceSettingsArgs;
+ * import com.pulumi.gcp.pubsub.inputs.TopicIngestionDataSourceSettingsAzureEventHubsArgs;
+ * import java.util.List;
+ * import java.util.ArrayList;
+ * import java.util.Map;
+ * import java.io.File;
+ * import java.nio.file.Files;
+ * import java.nio.file.Paths;
+ * 
+ * public class App }{{@code
+ *     public static void main(String[] args) }{{@code
+ *         Pulumi.run(App::stack);
+ *     }}{@code
+ * 
+ *     public static void stack(Context ctx) }{{@code
+ *         var example = new Topic("example", TopicArgs.builder()
+ *             .name("example-topic")
+ *             .ingestionDataSourceSettings(TopicIngestionDataSourceSettingsArgs.builder()
+ *                 .azureEventHubs(TopicIngestionDataSourceSettingsAzureEventHubsArgs.builder()
+ *                     .resourceGroup("azure-ingestion-resource-group")
+ *                     .namespace("azure-ingestion-namespace")
+ *                     .eventHub("azure-ingestion-event-hub")
+ *                     .clientId("aZZZZZZZ-YYYY-HHHH-GGGG-abcdef569123")
+ *                     .tenantId("0XXXXXXX-YYYY-HHHH-GGGG-123456789123")
+ *                     .subscriptionId("bXXXXXXX-YYYY-HHHH-GGGG-123456789123")
+ *                     .gcpServiceAccount("fake-service-account}{@literal @}{@code fake-gcp-project.iam.gserviceaccount.com")
+ *                     .build())
+ *                 .build())
+ *             .build());
+ * 
+ *     }}{@code
+ * }}{@code
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;

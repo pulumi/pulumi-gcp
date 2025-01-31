@@ -54,6 +54,10 @@ class _ExportableConfig(types.ModuleType):
         return __config__.get('apigeeCustomEndpoint')
 
     @property
+    def apihub_custom_endpoint(self) -> Optional[str]:
+        return __config__.get('apihubCustomEndpoint')
+
+    @property
     def apikeys_custom_endpoint(self) -> Optional[str]:
         return __config__.get('apikeysCustomEndpoint')
 

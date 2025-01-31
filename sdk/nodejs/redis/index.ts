@@ -10,6 +10,11 @@ export type Cluster = import("./cluster").Cluster;
 export const Cluster: typeof import("./cluster").Cluster = null as any;
 utilities.lazyLoad(exports, ["Cluster"], () => require("./cluster"));
 
+export { ClusterUserCreatedConnectionsArgs, ClusterUserCreatedConnectionsState } from "./clusterUserCreatedConnections";
+export type ClusterUserCreatedConnections = import("./clusterUserCreatedConnections").ClusterUserCreatedConnections;
+export const ClusterUserCreatedConnections: typeof import("./clusterUserCreatedConnections").ClusterUserCreatedConnections = null as any;
+utilities.lazyLoad(exports, ["ClusterUserCreatedConnections"], () => require("./clusterUserCreatedConnections"));
+
 export { GetInstanceArgs, GetInstanceResult, GetInstanceOutputArgs } from "./getInstance";
 export const getInstance: typeof import("./getInstance").getInstance = null as any;
 export const getInstanceOutput: typeof import("./getInstance").getInstanceOutput = null as any;
@@ -27,6 +32,8 @@ const _module = {
         switch (type) {
             case "gcp:redis/cluster:Cluster":
                 return new Cluster(name, <any>undefined, { urn })
+            case "gcp:redis/clusterUserCreatedConnections:ClusterUserCreatedConnections":
+                return new ClusterUserCreatedConnections(name, <any>undefined, { urn })
             case "gcp:redis/instance:Instance":
                 return new Instance(name, <any>undefined, { urn })
             default:
@@ -35,4 +42,5 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "redis/cluster", _module)
+pulumi.runtime.registerResourceModule("gcp", "redis/clusterUserCreatedConnections", _module)
 pulumi.runtime.registerResourceModule("gcp", "redis/instance", _module)

@@ -29,6 +29,10 @@ __all__ = [
     'ReferenceListScopeInfoArgsDict',
     'ReferenceListScopeInfoReferenceListScopeArgs',
     'ReferenceListScopeInfoReferenceListScopeArgsDict',
+    'RetrohuntExecutionIntervalArgs',
+    'RetrohuntExecutionIntervalArgsDict',
+    'RetrohuntProcessIntervalArgs',
+    'RetrohuntProcessIntervalArgsDict',
     'RuleCompilationDiagnosticArgs',
     'RuleCompilationDiagnosticArgsDict',
     'RuleCompilationDiagnosticPositionArgs',
@@ -534,6 +538,126 @@ class ReferenceListScopeInfoReferenceListScopeArgs:
     @scope_names.setter
     def scope_names(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "scope_names", value)
+
+
+if not MYPY:
+    class RetrohuntExecutionIntervalArgsDict(TypedDict):
+        end_time: NotRequired[pulumi.Input[str]]
+        """
+        Optional. Exclusive end of the interval.
+        If specified, a Timestamp matching this interval will have to be before the
+        end.
+        """
+        start_time: NotRequired[pulumi.Input[str]]
+        """
+        Optional. Inclusive start of the interval.
+        If specified, a Timestamp matching this interval will have to be the same
+        or after the start.
+        """
+elif False:
+    RetrohuntExecutionIntervalArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RetrohuntExecutionIntervalArgs:
+    def __init__(__self__, *,
+                 end_time: Optional[pulumi.Input[str]] = None,
+                 start_time: Optional[pulumi.Input[str]] = None):
+        """
+        :param pulumi.Input[str] end_time: Optional. Exclusive end of the interval.
+               If specified, a Timestamp matching this interval will have to be before the
+               end.
+        :param pulumi.Input[str] start_time: Optional. Inclusive start of the interval.
+               If specified, a Timestamp matching this interval will have to be the same
+               or after the start.
+        """
+        if end_time is not None:
+            pulumi.set(__self__, "end_time", end_time)
+        if start_time is not None:
+            pulumi.set(__self__, "start_time", start_time)
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Exclusive end of the interval.
+        If specified, a Timestamp matching this interval will have to be before the
+        end.
+        """
+        return pulumi.get(self, "end_time")
+
+    @end_time.setter
+    def end_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "end_time", value)
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> Optional[pulumi.Input[str]]:
+        """
+        Optional. Inclusive start of the interval.
+        If specified, a Timestamp matching this interval will have to be the same
+        or after the start.
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "start_time", value)
+
+
+if not MYPY:
+    class RetrohuntProcessIntervalArgsDict(TypedDict):
+        end_time: pulumi.Input[str]
+        """
+        Exclusive end of the interval.
+
+        - - -
+        """
+        start_time: pulumi.Input[str]
+        """
+        Inclusive start of the interval.
+        """
+elif False:
+    RetrohuntProcessIntervalArgsDict: TypeAlias = Mapping[str, Any]
+
+@pulumi.input_type
+class RetrohuntProcessIntervalArgs:
+    def __init__(__self__, *,
+                 end_time: pulumi.Input[str],
+                 start_time: pulumi.Input[str]):
+        """
+        :param pulumi.Input[str] end_time: Exclusive end of the interval.
+               
+               - - -
+        :param pulumi.Input[str] start_time: Inclusive start of the interval.
+        """
+        pulumi.set(__self__, "end_time", end_time)
+        pulumi.set(__self__, "start_time", start_time)
+
+    @property
+    @pulumi.getter(name="endTime")
+    def end_time(self) -> pulumi.Input[str]:
+        """
+        Exclusive end of the interval.
+
+        - - -
+        """
+        return pulumi.get(self, "end_time")
+
+    @end_time.setter
+    def end_time(self, value: pulumi.Input[str]):
+        pulumi.set(self, "end_time", value)
+
+    @property
+    @pulumi.getter(name="startTime")
+    def start_time(self) -> pulumi.Input[str]:
+        """
+        Inclusive start of the interval.
+        """
+        return pulumi.get(self, "start_time")
+
+    @start_time.setter
+    def start_time(self, value: pulumi.Input[str]):
+        pulumi.set(self, "start_time", value)
 
 
 if not MYPY:

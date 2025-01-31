@@ -30,6 +30,7 @@ class InterconnectAttachmentArgs:
                  encryption: Optional[pulumi.Input[str]] = None,
                  interconnect: Optional[pulumi.Input[str]] = None,
                  ipsec_internal_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  mtu: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -97,6 +98,11 @@ class InterconnectAttachmentArgs:
                encryption option as IPSEC, later on when creating HA VPN gateway on this
                interconnect attachment, the HA VPN gateway's IP address will be
                allocated from regional external IP address pool.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this resource. These can only be added or modified by the setLabels
+               method. Each label key/value pair must comply with RFC1035. Label values may be empty.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] mtu: Maximum Transmission Unit (MTU), in bytes, of packets passing through
                this interconnect attachment. Currently, only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The
@@ -145,6 +151,8 @@ class InterconnectAttachmentArgs:
             pulumi.set(__self__, "interconnect", interconnect)
         if ipsec_internal_addresses is not None:
             pulumi.set(__self__, "ipsec_internal_addresses", ipsec_internal_addresses)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
         if mtu is not None:
             pulumi.set(__self__, "mtu", mtu)
         if name is not None:
@@ -320,6 +328,22 @@ class InterconnectAttachmentArgs:
 
     @property
     @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Labels for this resource. These can only be added or modified by the setLabels
+        method. Each label key/value pair must comply with RFC1035. Label values may be empty.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
+
+    @property
+    @pulumi.getter
     def mtu(self) -> Optional[pulumi.Input[str]]:
         """
         Maximum Transmission Unit (MTU), in bytes, of packets passing through
@@ -450,16 +474,20 @@ class _InterconnectAttachmentState:
                  customer_router_ipv6_address: Optional[pulumi.Input[str]] = None,
                  description: Optional[pulumi.Input[str]] = None,
                  edge_availability_domain: Optional[pulumi.Input[str]] = None,
+                 effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  encryption: Optional[pulumi.Input[str]] = None,
                  google_reference_id: Optional[pulumi.Input[str]] = None,
                  interconnect: Optional[pulumi.Input[str]] = None,
                  ipsec_internal_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 label_fingerprint: Optional[pulumi.Input[str]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  mtu: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  pairing_key: Optional[pulumi.Input[str]] = None,
                  partner_asn: Optional[pulumi.Input[str]] = None,
                  private_interconnect_infos: Optional[pulumi.Input[Sequence[pulumi.Input['InterconnectAttachmentPrivateInterconnectInfoArgs']]]] = None,
                  project: Optional[pulumi.Input[str]] = None,
+                 pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  region: Optional[pulumi.Input[str]] = None,
                  router: Optional[pulumi.Input[str]] = None,
                  self_link: Optional[pulumi.Input[str]] = None,
@@ -501,6 +529,7 @@ class _InterconnectAttachmentState:
                selected availability domain will be provided to the Partner via the
                pairing key so that the provisioned circuit will lie in the specified
                domain. If not specified, the value will default to AVAILABILITY_DOMAIN_ANY.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] encryption: Indicates the user-supplied encryption option of this interconnect
                attachment. Can only be specified at attachment creation for PARTNER or
                DEDICATED attachments.
@@ -534,6 +563,16 @@ class _InterconnectAttachmentState:
                encryption option as IPSEC, later on when creating HA VPN gateway on this
                interconnect attachment, the HA VPN gateway's IP address will be
                allocated from regional external IP address pool.
+        :param pulumi.Input[str] label_fingerprint: A fingerprint for the labels being applied to this Interconnect, which is essentially a hash
+               of the labels set used for optimistic locking. The fingerprint is initially generated by
+               Compute Engine and changes after every request to modify or update labels.
+               You must always provide an up-to-date fingerprint hash in order to update or change labels,
+               otherwise the request will fail with error 412 conditionNotMet.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this resource. These can only be added or modified by the setLabels
+               method. Each label key/value pair must comply with RFC1035. Label values may be empty.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] mtu: Maximum Transmission Unit (MTU), in bytes, of packets passing through
                this interconnect attachment. Currently, only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The
@@ -556,6 +595,8 @@ class _InterconnectAttachmentState:
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] region: Region where the regional interconnect attachment resides.
         :param pulumi.Input[str] router: URL of the cloud router to be used for dynamic routing. This router must be in
                the same region as this InterconnectAttachment. The InterconnectAttachment will
@@ -600,6 +641,8 @@ class _InterconnectAttachmentState:
             pulumi.set(__self__, "description", description)
         if edge_availability_domain is not None:
             pulumi.set(__self__, "edge_availability_domain", edge_availability_domain)
+        if effective_labels is not None:
+            pulumi.set(__self__, "effective_labels", effective_labels)
         if encryption is not None:
             pulumi.set(__self__, "encryption", encryption)
         if google_reference_id is not None:
@@ -608,6 +651,10 @@ class _InterconnectAttachmentState:
             pulumi.set(__self__, "interconnect", interconnect)
         if ipsec_internal_addresses is not None:
             pulumi.set(__self__, "ipsec_internal_addresses", ipsec_internal_addresses)
+        if label_fingerprint is not None:
+            pulumi.set(__self__, "label_fingerprint", label_fingerprint)
+        if labels is not None:
+            pulumi.set(__self__, "labels", labels)
         if mtu is not None:
             pulumi.set(__self__, "mtu", mtu)
         if name is not None:
@@ -620,6 +667,8 @@ class _InterconnectAttachmentState:
             pulumi.set(__self__, "private_interconnect_infos", private_interconnect_infos)
         if project is not None:
             pulumi.set(__self__, "project", project)
+        if pulumi_labels is not None:
+            pulumi.set(__self__, "pulumi_labels", pulumi_labels)
         if region is not None:
             pulumi.set(__self__, "region", region)
         if router is not None:
@@ -779,6 +828,18 @@ class _InterconnectAttachmentState:
         pulumi.set(self, "edge_availability_domain", value)
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @effective_labels.setter
+    def effective_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "effective_labels", value)
+
+    @property
     @pulumi.getter
     def encryption(self) -> Optional[pulumi.Input[str]]:
         """
@@ -854,6 +915,38 @@ class _InterconnectAttachmentState:
     @ipsec_internal_addresses.setter
     def ipsec_internal_addresses(self, value: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]]):
         pulumi.set(self, "ipsec_internal_addresses", value)
+
+    @property
+    @pulumi.getter(name="labelFingerprint")
+    def label_fingerprint(self) -> Optional[pulumi.Input[str]]:
+        """
+        A fingerprint for the labels being applied to this Interconnect, which is essentially a hash
+        of the labels set used for optimistic locking. The fingerprint is initially generated by
+        Compute Engine and changes after every request to modify or update labels.
+        You must always provide an up-to-date fingerprint hash in order to update or change labels,
+        otherwise the request will fail with error 412 conditionNotMet.
+        """
+        return pulumi.get(self, "label_fingerprint")
+
+    @label_fingerprint.setter
+    def label_fingerprint(self, value: Optional[pulumi.Input[str]]):
+        pulumi.set(self, "label_fingerprint", value)
+
+    @property
+    @pulumi.getter
+    def labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        Labels for this resource. These can only be added or modified by the setLabels
+        method. Each label key/value pair must comply with RFC1035. Label values may be empty.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
+        """
+        return pulumi.get(self, "labels")
+
+    @labels.setter
+    def labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "labels", value)
 
     @property
     @pulumi.getter
@@ -942,6 +1035,19 @@ class _InterconnectAttachmentState:
     @project.setter
     def project(self, value: Optional[pulumi.Input[str]]):
         pulumi.set(self, "project", value)
+
+    @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
+
+    @pulumi_labels.setter
+    def pulumi_labels(self, value: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]]):
+        pulumi.set(self, "pulumi_labels", value)
 
     @property
     @pulumi.getter
@@ -1068,6 +1174,7 @@ class InterconnectAttachment(pulumi.CustomResource):
                  encryption: Optional[pulumi.Input[str]] = None,
                  interconnect: Optional[pulumi.Input[str]] = None,
                  ipsec_internal_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  mtu: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -1104,7 +1211,10 @@ class InterconnectAttachment(pulumi.CustomResource):
             edge_availability_domain="AVAILABILITY_DOMAIN_1",
             type="PARTNER",
             router=foobar.id,
-            mtu="1500")
+            mtu="1500",
+            labels={
+                "mykey": "myvalue",
+            })
         ```
         ### Compute Interconnect Attachment Ipsec Encryption
 
@@ -1223,6 +1333,11 @@ class InterconnectAttachment(pulumi.CustomResource):
                encryption option as IPSEC, later on when creating HA VPN gateway on this
                interconnect attachment, the HA VPN gateway's IP address will be
                allocated from regional external IP address pool.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this resource. These can only be added or modified by the setLabels
+               method. Each label key/value pair must comply with RFC1035. Label values may be empty.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] mtu: Maximum Transmission Unit (MTU), in bytes, of packets passing through
                this interconnect attachment. Currently, only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The
@@ -1290,7 +1405,10 @@ class InterconnectAttachment(pulumi.CustomResource):
             edge_availability_domain="AVAILABILITY_DOMAIN_1",
             type="PARTNER",
             router=foobar.id,
-            mtu="1500")
+            mtu="1500",
+            labels={
+                "mykey": "myvalue",
+            })
         ```
         ### Compute Interconnect Attachment Ipsec Encryption
 
@@ -1377,6 +1495,7 @@ class InterconnectAttachment(pulumi.CustomResource):
                  encryption: Optional[pulumi.Input[str]] = None,
                  interconnect: Optional[pulumi.Input[str]] = None,
                  ipsec_internal_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+                 labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
                  mtu: Optional[pulumi.Input[str]] = None,
                  name: Optional[pulumi.Input[str]] = None,
                  project: Optional[pulumi.Input[str]] = None,
@@ -1403,6 +1522,7 @@ class InterconnectAttachment(pulumi.CustomResource):
             __props__.__dict__["encryption"] = encryption
             __props__.__dict__["interconnect"] = interconnect
             __props__.__dict__["ipsec_internal_addresses"] = ipsec_internal_addresses
+            __props__.__dict__["labels"] = labels
             __props__.__dict__["mtu"] = mtu
             __props__.__dict__["name"] = name
             __props__.__dict__["project"] = project
@@ -1419,12 +1539,17 @@ class InterconnectAttachment(pulumi.CustomResource):
             __props__.__dict__["creation_timestamp"] = None
             __props__.__dict__["customer_router_ip_address"] = None
             __props__.__dict__["customer_router_ipv6_address"] = None
+            __props__.__dict__["effective_labels"] = None
             __props__.__dict__["google_reference_id"] = None
+            __props__.__dict__["label_fingerprint"] = None
             __props__.__dict__["pairing_key"] = None
             __props__.__dict__["partner_asn"] = None
             __props__.__dict__["private_interconnect_infos"] = None
+            __props__.__dict__["pulumi_labels"] = None
             __props__.__dict__["self_link"] = None
             __props__.__dict__["state"] = None
+        secret_opts = pulumi.ResourceOptions(additional_secret_outputs=["effectiveLabels", "pulumiLabels"])
+        opts = pulumi.ResourceOptions.merge(opts, secret_opts)
         super(InterconnectAttachment, __self__).__init__(
             'gcp:compute/interconnectAttachment:InterconnectAttachment',
             resource_name,
@@ -1445,16 +1570,20 @@ class InterconnectAttachment(pulumi.CustomResource):
             customer_router_ipv6_address: Optional[pulumi.Input[str]] = None,
             description: Optional[pulumi.Input[str]] = None,
             edge_availability_domain: Optional[pulumi.Input[str]] = None,
+            effective_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             encryption: Optional[pulumi.Input[str]] = None,
             google_reference_id: Optional[pulumi.Input[str]] = None,
             interconnect: Optional[pulumi.Input[str]] = None,
             ipsec_internal_addresses: Optional[pulumi.Input[Sequence[pulumi.Input[str]]]] = None,
+            label_fingerprint: Optional[pulumi.Input[str]] = None,
+            labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             mtu: Optional[pulumi.Input[str]] = None,
             name: Optional[pulumi.Input[str]] = None,
             pairing_key: Optional[pulumi.Input[str]] = None,
             partner_asn: Optional[pulumi.Input[str]] = None,
             private_interconnect_infos: Optional[pulumi.Input[Sequence[pulumi.Input[Union['InterconnectAttachmentPrivateInterconnectInfoArgs', 'InterconnectAttachmentPrivateInterconnectInfoArgsDict']]]]] = None,
             project: Optional[pulumi.Input[str]] = None,
+            pulumi_labels: Optional[pulumi.Input[Mapping[str, pulumi.Input[str]]]] = None,
             region: Optional[pulumi.Input[str]] = None,
             router: Optional[pulumi.Input[str]] = None,
             self_link: Optional[pulumi.Input[str]] = None,
@@ -1501,6 +1630,7 @@ class InterconnectAttachment(pulumi.CustomResource):
                selected availability domain will be provided to the Partner via the
                pairing key so that the provisioned circuit will lie in the specified
                domain. If not specified, the value will default to AVAILABILITY_DOMAIN_ANY.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] effective_labels: All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
         :param pulumi.Input[str] encryption: Indicates the user-supplied encryption option of this interconnect
                attachment. Can only be specified at attachment creation for PARTNER or
                DEDICATED attachments.
@@ -1534,6 +1664,16 @@ class InterconnectAttachment(pulumi.CustomResource):
                encryption option as IPSEC, later on when creating HA VPN gateway on this
                interconnect attachment, the HA VPN gateway's IP address will be
                allocated from regional external IP address pool.
+        :param pulumi.Input[str] label_fingerprint: A fingerprint for the labels being applied to this Interconnect, which is essentially a hash
+               of the labels set used for optimistic locking. The fingerprint is initially generated by
+               Compute Engine and changes after every request to modify or update labels.
+               You must always provide an up-to-date fingerprint hash in order to update or change labels,
+               otherwise the request will fail with error 412 conditionNotMet.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] labels: Labels for this resource. These can only be added or modified by the setLabels
+               method. Each label key/value pair must comply with RFC1035. Label values may be empty.
+               
+               **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+               Please refer to the field `effective_labels` for all of the labels present on the resource.
         :param pulumi.Input[str] mtu: Maximum Transmission Unit (MTU), in bytes, of packets passing through
                this interconnect attachment. Currently, only 1440 and 1500 are allowed. If not specified, the value will default to 1440.
         :param pulumi.Input[str] name: Name of the resource. Provided by the client when the resource is created. The
@@ -1556,6 +1696,8 @@ class InterconnectAttachment(pulumi.CustomResource):
                Structure is documented below.
         :param pulumi.Input[str] project: The ID of the project in which the resource belongs.
                If it is not provided, the provider project is used.
+        :param pulumi.Input[Mapping[str, pulumi.Input[str]]] pulumi_labels: The combination of labels configured directly on the resource
+               and default labels configured on the provider.
         :param pulumi.Input[str] region: Region where the regional interconnect attachment resides.
         :param pulumi.Input[str] router: URL of the cloud router to be used for dynamic routing. This router must be in
                the same region as this InterconnectAttachment. The InterconnectAttachment will
@@ -1594,16 +1736,20 @@ class InterconnectAttachment(pulumi.CustomResource):
         __props__.__dict__["customer_router_ipv6_address"] = customer_router_ipv6_address
         __props__.__dict__["description"] = description
         __props__.__dict__["edge_availability_domain"] = edge_availability_domain
+        __props__.__dict__["effective_labels"] = effective_labels
         __props__.__dict__["encryption"] = encryption
         __props__.__dict__["google_reference_id"] = google_reference_id
         __props__.__dict__["interconnect"] = interconnect
         __props__.__dict__["ipsec_internal_addresses"] = ipsec_internal_addresses
+        __props__.__dict__["label_fingerprint"] = label_fingerprint
+        __props__.__dict__["labels"] = labels
         __props__.__dict__["mtu"] = mtu
         __props__.__dict__["name"] = name
         __props__.__dict__["pairing_key"] = pairing_key
         __props__.__dict__["partner_asn"] = partner_asn
         __props__.__dict__["private_interconnect_infos"] = private_interconnect_infos
         __props__.__dict__["project"] = project
+        __props__.__dict__["pulumi_labels"] = pulumi_labels
         __props__.__dict__["region"] = region
         __props__.__dict__["router"] = router
         __props__.__dict__["self_link"] = self_link
@@ -1716,6 +1862,14 @@ class InterconnectAttachment(pulumi.CustomResource):
         return pulumi.get(self, "edge_availability_domain")
 
     @property
+    @pulumi.getter(name="effectiveLabels")
+    def effective_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
+        """
+        return pulumi.get(self, "effective_labels")
+
+    @property
     @pulumi.getter
     def encryption(self) -> pulumi.Output[Optional[str]]:
         """
@@ -1775,6 +1929,30 @@ class InterconnectAttachment(pulumi.CustomResource):
         allocated from regional external IP address pool.
         """
         return pulumi.get(self, "ipsec_internal_addresses")
+
+    @property
+    @pulumi.getter(name="labelFingerprint")
+    def label_fingerprint(self) -> pulumi.Output[str]:
+        """
+        A fingerprint for the labels being applied to this Interconnect, which is essentially a hash
+        of the labels set used for optimistic locking. The fingerprint is initially generated by
+        Compute Engine and changes after every request to modify or update labels.
+        You must always provide an up-to-date fingerprint hash in order to update or change labels,
+        otherwise the request will fail with error 412 conditionNotMet.
+        """
+        return pulumi.get(self, "label_fingerprint")
+
+    @property
+    @pulumi.getter
+    def labels(self) -> pulumi.Output[Optional[Mapping[str, str]]]:
+        """
+        Labels for this resource. These can only be added or modified by the setLabels
+        method. Each label key/value pair must comply with RFC1035. Label values may be empty.
+
+        **Note**: This field is non-authoritative, and will only manage the labels present in your configuration.
+        Please refer to the field `effective_labels` for all of the labels present on the resource.
+        """
+        return pulumi.get(self, "labels")
 
     @property
     @pulumi.getter
@@ -1839,6 +2017,15 @@ class InterconnectAttachment(pulumi.CustomResource):
         If it is not provided, the provider project is used.
         """
         return pulumi.get(self, "project")
+
+    @property
+    @pulumi.getter(name="pulumiLabels")
+    def pulumi_labels(self) -> pulumi.Output[Mapping[str, str]]:
+        """
+        The combination of labels configured directly on the resource
+        and default labels configured on the provider.
+        """
+        return pulumi.get(self, "pulumi_labels")
 
     @property
     @pulumi.getter

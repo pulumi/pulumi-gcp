@@ -519,6 +519,23 @@ public final class RouterPeerArgs extends com.pulumi.resources.ResourceArgs {
         return Optional.ofNullable(this.routerApplianceInstance);
     }
 
+    /**
+     * The user-defined zero-custom-learned-route-priority for a custom-learned-route-priority in BGP session.
+     * This value has to be set true to force the custom_learned_route_priority to be 0.
+     * 
+     */
+    @Import(name="zeroCustomLearnedRoutePriority")
+    private @Nullable Output<Boolean> zeroCustomLearnedRoutePriority;
+
+    /**
+     * @return The user-defined zero-custom-learned-route-priority for a custom-learned-route-priority in BGP session.
+     * This value has to be set true to force the custom_learned_route_priority to be 0.
+     * 
+     */
+    public Optional<Output<Boolean>> zeroCustomLearnedRoutePriority() {
+        return Optional.ofNullable(this.zeroCustomLearnedRoutePriority);
+    }
+
     private RouterPeerArgs() {}
 
     private RouterPeerArgs(RouterPeerArgs $) {
@@ -548,6 +565,7 @@ public final class RouterPeerArgs extends com.pulumi.resources.ResourceArgs {
         this.region = $.region;
         this.router = $.router;
         this.routerApplianceInstance = $.routerApplianceInstance;
+        this.zeroCustomLearnedRoutePriority = $.zeroCustomLearnedRoutePriority;
     }
 
     public static Builder builder() {
@@ -1287,6 +1305,29 @@ public final class RouterPeerArgs extends com.pulumi.resources.ResourceArgs {
          */
         public Builder routerApplianceInstance(String routerApplianceInstance) {
             return routerApplianceInstance(Output.of(routerApplianceInstance));
+        }
+
+        /**
+         * @param zeroCustomLearnedRoutePriority The user-defined zero-custom-learned-route-priority for a custom-learned-route-priority in BGP session.
+         * This value has to be set true to force the custom_learned_route_priority to be 0.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zeroCustomLearnedRoutePriority(@Nullable Output<Boolean> zeroCustomLearnedRoutePriority) {
+            $.zeroCustomLearnedRoutePriority = zeroCustomLearnedRoutePriority;
+            return this;
+        }
+
+        /**
+         * @param zeroCustomLearnedRoutePriority The user-defined zero-custom-learned-route-priority for a custom-learned-route-priority in BGP session.
+         * This value has to be set true to force the custom_learned_route_priority to be 0.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder zeroCustomLearnedRoutePriority(Boolean zeroCustomLearnedRoutePriority) {
+            return zeroCustomLearnedRoutePriority(Output.of(zeroCustomLearnedRoutePriority));
         }
 
         public RouterPeerArgs build() {

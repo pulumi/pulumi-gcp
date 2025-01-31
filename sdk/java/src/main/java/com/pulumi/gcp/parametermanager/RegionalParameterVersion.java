@@ -76,6 +76,7 @@ import javax.annotation.Nullable;
  * import com.pulumi.gcp.parametermanager.RegionalParameterArgs;
  * import com.pulumi.gcp.parametermanager.RegionalParameterVersion;
  * import com.pulumi.gcp.parametermanager.RegionalParameterVersionArgs;
+ * import static com.pulumi.codegen.internal.Serialization.*;
  * import java.util.List;
  * import java.util.ArrayList;
  * import java.util.Map;
@@ -98,9 +99,11 @@ import javax.annotation.Nullable;
  *         var regional_parameter_version_with_json_format = new RegionalParameterVersion("regional-parameter-version-with-json-format", RegionalParameterVersionArgs.builder()
  *             .parameter(regional_parameter_basic.id())
  *             .parameterVersionId("regional_parameter_version")
- *             .parameterData(StdFunctions.file(FileArgs.builder()
- *                 .input("parameter_data_json_format.yaml")
- *                 .build()).result())
+ *             .parameterData(serializeJson(
+ *                 jsonObject(
+ *                     jsonProperty("key1", "val1"),
+ *                     jsonProperty("key2", "val2")
+ *                 )))
  *             .build());
  * 
  *     }
@@ -108,53 +111,6 @@ import javax.annotation.Nullable;
  * }
  * </pre>
  * &lt;!--End PulumiCodeChooser --&gt;
- * ### Regional Parameter Version With Yaml Format
- * 
- * &lt;!--Start PulumiCodeChooser --&gt;
- * <pre>
- * {@code
- * package generated_program;
- * 
- * import com.pulumi.Context;
- * import com.pulumi.Pulumi;
- * import com.pulumi.core.Output;
- * import com.pulumi.gcp.parametermanager.RegionalParameter;
- * import com.pulumi.gcp.parametermanager.RegionalParameterArgs;
- * import com.pulumi.gcp.parametermanager.RegionalParameterVersion;
- * import com.pulumi.gcp.parametermanager.RegionalParameterVersionArgs;
- * import java.util.List;
- * import java.util.ArrayList;
- * import java.util.Map;
- * import java.io.File;
- * import java.nio.file.Files;
- * import java.nio.file.Paths;
- * 
- * public class App {
- *     public static void main(String[] args) {
- *         Pulumi.run(App::stack);
- *     }
- * 
- *     public static void stack(Context ctx) {
- *         var regional_parameter_basic = new RegionalParameter("regional-parameter-basic", RegionalParameterArgs.builder()
- *             .parameterId("regional_parameter")
- *             .format("YAML")
- *             .location("us-central1")
- *             .build());
- * 
- *         var regional_parameter_version_with_yaml_format = new RegionalParameterVersion("regional-parameter-version-with-yaml-format", RegionalParameterVersionArgs.builder()
- *             .parameter(regional_parameter_basic.id())
- *             .parameterVersionId("regional_parameter_version")
- *             .parameterData(StdFunctions.file(FileArgs.builder()
- *                 .input("parameter_data_yaml_format.yaml")
- *                 .build()).result())
- *             .build());
- * 
- *     }
- * }
- * }
- * </pre>
- * &lt;!--End PulumiCodeChooser --&gt;
- * 
  * ## Import
  * 
  * RegionalParameterVersion can be imported using any of these accepted formats:

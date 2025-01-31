@@ -5,15 +5,30 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 // Export members:
+export { GetParameterArgs, GetParameterResult, GetParameterOutputArgs } from "./getParameter";
+export const getParameter: typeof import("./getParameter").getParameter = null as any;
+export const getParameterOutput: typeof import("./getParameter").getParameterOutput = null as any;
+utilities.lazyLoad(exports, ["getParameter","getParameterOutput"], () => require("./getParameter"));
+
 export { GetRegionalParameterArgs, GetRegionalParameterResult, GetRegionalParameterOutputArgs } from "./getRegionalParameter";
 export const getRegionalParameter: typeof import("./getRegionalParameter").getRegionalParameter = null as any;
 export const getRegionalParameterOutput: typeof import("./getRegionalParameter").getRegionalParameterOutput = null as any;
 utilities.lazyLoad(exports, ["getRegionalParameter","getRegionalParameterOutput"], () => require("./getRegionalParameter"));
 
+export { GetRegionalParametersArgs, GetRegionalParametersResult, GetRegionalParametersOutputArgs } from "./getRegionalParameters";
+export const getRegionalParameters: typeof import("./getRegionalParameters").getRegionalParameters = null as any;
+export const getRegionalParametersOutput: typeof import("./getRegionalParameters").getRegionalParametersOutput = null as any;
+utilities.lazyLoad(exports, ["getRegionalParameters","getRegionalParametersOutput"], () => require("./getRegionalParameters"));
+
 export { ParameterArgs, ParameterState } from "./parameter";
 export type Parameter = import("./parameter").Parameter;
 export const Parameter: typeof import("./parameter").Parameter = null as any;
 utilities.lazyLoad(exports, ["Parameter"], () => require("./parameter"));
+
+export { ParameterVersionArgs, ParameterVersionState } from "./parameterVersion";
+export type ParameterVersion = import("./parameterVersion").ParameterVersion;
+export const ParameterVersion: typeof import("./parameterVersion").ParameterVersion = null as any;
+utilities.lazyLoad(exports, ["ParameterVersion"], () => require("./parameterVersion"));
 
 export { RegionalParameterArgs, RegionalParameterState } from "./regionalParameter";
 export type RegionalParameter = import("./regionalParameter").RegionalParameter;
@@ -32,6 +47,8 @@ const _module = {
         switch (type) {
             case "gcp:parametermanager/parameter:Parameter":
                 return new Parameter(name, <any>undefined, { urn })
+            case "gcp:parametermanager/parameterVersion:ParameterVersion":
+                return new ParameterVersion(name, <any>undefined, { urn })
             case "gcp:parametermanager/regionalParameter:RegionalParameter":
                 return new RegionalParameter(name, <any>undefined, { urn })
             case "gcp:parametermanager/regionalParameterVersion:RegionalParameterVersion":
@@ -42,5 +59,6 @@ const _module = {
     },
 };
 pulumi.runtime.registerResourceModule("gcp", "parametermanager/parameter", _module)
+pulumi.runtime.registerResourceModule("gcp", "parametermanager/parameterVersion", _module)
 pulumi.runtime.registerResourceModule("gcp", "parametermanager/regionalParameter", _module)
 pulumi.runtime.registerResourceModule("gcp", "parametermanager/regionalParameterVersion", _module)

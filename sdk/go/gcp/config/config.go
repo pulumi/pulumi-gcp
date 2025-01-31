@@ -35,6 +35,9 @@ func GetApiGatewayCustomEndpoint(ctx *pulumi.Context) string {
 func GetApigeeCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:apigeeCustomEndpoint")
 }
+func GetApihubCustomEndpoint(ctx *pulumi.Context) string {
+	return config.Get(ctx, "gcp:apihubCustomEndpoint")
+}
 func GetApikeysCustomEndpoint(ctx *pulumi.Context) string {
 	return config.Get(ctx, "gcp:apikeysCustomEndpoint")
 }

@@ -15,14 +15,52 @@ else:
 from .. import _utilities
 
 __all__ = [
+    'RuntimeNotebookRuntimeTemplateRef',
     'RuntimeTemplateDataPersistentDiskSpec',
     'RuntimeTemplateEncryptionSpec',
     'RuntimeTemplateEucConfig',
+    'RuntimeTemplateIamBindingCondition',
+    'RuntimeTemplateIamMemberCondition',
     'RuntimeTemplateIdleShutdownConfig',
     'RuntimeTemplateMachineSpec',
     'RuntimeTemplateNetworkSpec',
     'RuntimeTemplateShieldedVmConfig',
 ]
+
+@pulumi.output_type
+class RuntimeNotebookRuntimeTemplateRef(dict):
+    @staticmethod
+    def __key_warning(key: str):
+        suggest = None
+        if key == "notebookRuntimeTemplate":
+            suggest = "notebook_runtime_template"
+
+        if suggest:
+            pulumi.log.warn(f"Key '{key}' not found in RuntimeNotebookRuntimeTemplateRef. Access the value via the '{suggest}' property getter instead.")
+
+    def __getitem__(self, key: str) -> Any:
+        RuntimeNotebookRuntimeTemplateRef.__key_warning(key)
+        return super().__getitem__(key)
+
+    def get(self, key: str, default = None) -> Any:
+        RuntimeNotebookRuntimeTemplateRef.__key_warning(key)
+        return super().get(key, default)
+
+    def __init__(__self__, *,
+                 notebook_runtime_template: str):
+        """
+        :param str notebook_runtime_template: The resource name of the NotebookRuntimeTemplate based on which a NotebookRuntime will be created.
+        """
+        pulumi.set(__self__, "notebook_runtime_template", notebook_runtime_template)
+
+    @property
+    @pulumi.getter(name="notebookRuntimeTemplate")
+    def notebook_runtime_template(self) -> str:
+        """
+        The resource name of the NotebookRuntimeTemplate based on which a NotebookRuntime will be created.
+        """
+        return pulumi.get(self, "notebook_runtime_template")
+
 
 @pulumi.output_type
 class RuntimeTemplateDataPersistentDiskSpec(dict):
@@ -144,6 +182,60 @@ class RuntimeTemplateEucConfig(dict):
         Disable end user credential access for the runtime.
         """
         return pulumi.get(self, "euc_disabled")
+
+
+@pulumi.output_type
+class RuntimeTemplateIamBindingCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
+
+
+@pulumi.output_type
+class RuntimeTemplateIamMemberCondition(dict):
+    def __init__(__self__, *,
+                 expression: str,
+                 title: str,
+                 description: Optional[str] = None):
+        pulumi.set(__self__, "expression", expression)
+        pulumi.set(__self__, "title", title)
+        if description is not None:
+            pulumi.set(__self__, "description", description)
+
+    @property
+    @pulumi.getter
+    def expression(self) -> str:
+        return pulumi.get(self, "expression")
+
+    @property
+    @pulumi.getter
+    def title(self) -> str:
+        return pulumi.get(self, "title")
+
+    @property
+    @pulumi.getter
+    def description(self) -> Optional[str]:
+        return pulumi.get(self, "description")
 
 
 @pulumi.output_type

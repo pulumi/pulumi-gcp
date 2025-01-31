@@ -50,6 +50,35 @@ import (
 //	}
 //
 // ```
+// ### Public Advertised Prefixes Pdp Scope
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/compute"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := compute.NewPublicAdvertisedPrefix(ctx, "prefixes", &compute.PublicAdvertisedPrefixArgs{
+//				Name:              pulumi.String("my-pap"),
+//				Description:       pulumi.String("description"),
+//				DnsVerificationIp: pulumi.String("127.127.0.0"),
+//				IpCidrRange:       pulumi.String("127.127.0.0/16"),
+//				PdpScope:          pulumi.String("REGIONAL"),
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -92,6 +121,10 @@ type PublicAdvertisedPrefix struct {
 	// following characters must be a dash, lowercase letter, or digit,
 	// except the last character, which cannot be a dash.
 	Name pulumi.StringOutput `pulumi:"name"`
+	// Specifies how child public delegated prefix will be scoped. pdpScope
+	// must be one of: GLOBAL, REGIONAL
+	// Possible values are: `GLOBAL`, `REGIONAL`.
+	PdpScope pulumi.StringPtrOutput `pulumi:"pdpScope"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringOutput `pulumi:"project"`
@@ -152,6 +185,10 @@ type publicAdvertisedPrefixState struct {
 	// following characters must be a dash, lowercase letter, or digit,
 	// except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
+	// Specifies how child public delegated prefix will be scoped. pdpScope
+	// must be one of: GLOBAL, REGIONAL
+	// Possible values are: `GLOBAL`, `REGIONAL`.
+	PdpScope *string `pulumi:"pdpScope"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -177,6 +214,10 @@ type PublicAdvertisedPrefixState struct {
 	// following characters must be a dash, lowercase letter, or digit,
 	// except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
+	// Specifies how child public delegated prefix will be scoped. pdpScope
+	// must be one of: GLOBAL, REGIONAL
+	// Possible values are: `GLOBAL`, `REGIONAL`.
+	PdpScope pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -206,6 +247,10 @@ type publicAdvertisedPrefixArgs struct {
 	// following characters must be a dash, lowercase letter, or digit,
 	// except the last character, which cannot be a dash.
 	Name *string `pulumi:"name"`
+	// Specifies how child public delegated prefix will be scoped. pdpScope
+	// must be one of: GLOBAL, REGIONAL
+	// Possible values are: `GLOBAL`, `REGIONAL`.
+	PdpScope *string `pulumi:"pdpScope"`
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project *string `pulumi:"project"`
@@ -228,6 +273,10 @@ type PublicAdvertisedPrefixArgs struct {
 	// following characters must be a dash, lowercase letter, or digit,
 	// except the last character, which cannot be a dash.
 	Name pulumi.StringPtrInput
+	// Specifies how child public delegated prefix will be scoped. pdpScope
+	// must be one of: GLOBAL, REGIONAL
+	// Possible values are: `GLOBAL`, `REGIONAL`.
+	PdpScope pulumi.StringPtrInput
 	// The ID of the project in which the resource belongs.
 	// If it is not provided, the provider project is used.
 	Project pulumi.StringPtrInput
@@ -345,6 +394,13 @@ func (o PublicAdvertisedPrefixOutput) IpCidrRange() pulumi.StringOutput {
 // except the last character, which cannot be a dash.
 func (o PublicAdvertisedPrefixOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *PublicAdvertisedPrefix) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
+}
+
+// Specifies how child public delegated prefix will be scoped. pdpScope
+// must be one of: GLOBAL, REGIONAL
+// Possible values are: `GLOBAL`, `REGIONAL`.
+func (o PublicAdvertisedPrefixOutput) PdpScope() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *PublicAdvertisedPrefix) pulumi.StringPtrOutput { return v.PdpScope }).(pulumi.StringPtrOutput)
 }
 
 // The ID of the project in which the resource belongs.

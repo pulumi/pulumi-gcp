@@ -332,6 +332,16 @@ namespace Pulumi.Gcp.Filestore
         public Output<ImmutableDictionary<string, string>> PulumiLabels { get; private set; } = null!;
 
         /// <summary>
+        /// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags.
+        /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when
+        /// empty. The field is immutable and causes resource replacement when mutated. This field is only set at create time and
+        /// modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the
+        /// 'google_tags_tag_value' resource.
+        /// </summary>
+        [Output("tags")]
+        public Output<ImmutableDictionary<string, string>?> Tags { get; private set; } = null!;
+
+        /// <summary>
         /// The service tier of the instance.
         /// Possible values include: STANDARD, PREMIUM, BASIC_HDD, BASIC_SSD, HIGH_SCALE_SSD, ZONAL, REGIONAL and ENTERPRISE
         /// </summary>
@@ -483,6 +493,22 @@ namespace Pulumi.Gcp.Filestore
         /// </summary>
         [Input("protocol")]
         public Input<string>? Protocol { get; set; }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags.
+        /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when
+        /// empty. The field is immutable and causes resource replacement when mutated. This field is only set at create time and
+        /// modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the
+        /// 'google_tags_tag_value' resource.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
+        }
 
         /// <summary>
         /// The service tier of the instance.
@@ -638,6 +664,22 @@ namespace Pulumi.Gcp.Filestore
                 var emptySecret = Output.CreateSecret(ImmutableDictionary.Create<string, string>());
                 _pulumiLabels = Output.All(value, emptySecret).Apply(v => v[0]);
             }
+        }
+
+        [Input("tags")]
+        private InputMap<string>? _tags;
+
+        /// <summary>
+        /// A map of resource manager tags. Resource manager tag keys and values have the same definition as resource manager tags.
+        /// Keys must be in the format tagKeys/{tag_key_id}, and values are in the format tagValues/456. The field is ignored when
+        /// empty. The field is immutable and causes resource replacement when mutated. This field is only set at create time and
+        /// modifying this field after creation will trigger recreation. To apply tags to an existing resource, see the
+        /// 'google_tags_tag_value' resource.
+        /// </summary>
+        public InputMap<string> Tags
+        {
+            get => _tags ?? (_tags = new InputMap<string>());
+            set => _tags = value;
         }
 
         /// <summary>

@@ -40,6 +40,27 @@ namespace Pulumi.Gcp.Compute
     /// 
     /// });
     /// ```
+    /// ### Public Advertised Prefixes Pdp Scope
+    /// 
+    /// ```csharp
+    /// using System.Collections.Generic;
+    /// using System.Linq;
+    /// using Pulumi;
+    /// using Gcp = Pulumi.Gcp;
+    /// 
+    /// return await Deployment.RunAsync(() =&gt; 
+    /// {
+    ///     var prefixes = new Gcp.Compute.PublicAdvertisedPrefix("prefixes", new()
+    ///     {
+    ///         Name = "my-pap",
+    ///         Description = "description",
+    ///         DnsVerificationIp = "127.127.0.0",
+    ///         IpCidrRange = "127.127.0.0/16",
+    ///         PdpScope = "REGIONAL",
+    ///     });
+    /// 
+    /// });
+    /// ```
     /// 
     /// ## Import
     /// 
@@ -99,6 +120,14 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Output("name")]
         public Output<string> Name { get; private set; } = null!;
+
+        /// <summary>
+        /// Specifies how child public delegated prefix will be scoped. pdpScope
+        /// must be one of: GLOBAL, REGIONAL
+        /// Possible values are: `GLOBAL`, `REGIONAL`.
+        /// </summary>
+        [Output("pdpScope")]
+        public Output<string?> PdpScope { get; private set; } = null!;
 
         /// <summary>
         /// The ID of the project in which the resource belongs.
@@ -198,6 +227,14 @@ namespace Pulumi.Gcp.Compute
         public Input<string>? Name { get; set; }
 
         /// <summary>
+        /// Specifies how child public delegated prefix will be scoped. pdpScope
+        /// must be one of: GLOBAL, REGIONAL
+        /// Possible values are: `GLOBAL`, `REGIONAL`.
+        /// </summary>
+        [Input("pdpScope")]
+        public Input<string>? PdpScope { get; set; }
+
+        /// <summary>
         /// The ID of the project in which the resource belongs.
         /// If it is not provided, the provider project is used.
         /// </summary>
@@ -243,6 +280,14 @@ namespace Pulumi.Gcp.Compute
         /// </summary>
         [Input("name")]
         public Input<string>? Name { get; set; }
+
+        /// <summary>
+        /// Specifies how child public delegated prefix will be scoped. pdpScope
+        /// must be one of: GLOBAL, REGIONAL
+        /// Possible values are: `GLOBAL`, `REGIONAL`.
+        /// </summary>
+        [Input("pdpScope")]
+        public Input<string>? PdpScope { get; set; }
 
         /// <summary>
         /// The ID of the project in which the resource belongs.

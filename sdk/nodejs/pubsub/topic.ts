@@ -63,6 +63,7 @@ import * as utilities from "../utilities";
  *     name: "example-topic",
  *     messageStoragePolicy: {
  *         allowedPersistenceRegions: ["europe-west3"],
+ *         enforceInTransit: true,
  *     },
  * });
  * ```
@@ -138,6 +139,27 @@ import * as utilities from "../utilities";
  *         },
  *         platformLogsSettings: {
  *             severity: "WARNING",
+ *         },
+ *     },
+ * });
+ * ```
+ * ### Pubsub Topic Ingestion Azure Event Hubs
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const example = new gcp.pubsub.Topic("example", {
+ *     name: "example-topic",
+ *     ingestionDataSourceSettings: {
+ *         azureEventHubs: {
+ *             resourceGroup: "azure-ingestion-resource-group",
+ *             namespace: "azure-ingestion-namespace",
+ *             eventHub: "azure-ingestion-event-hub",
+ *             clientId: "aZZZZZZZ-YYYY-HHHH-GGGG-abcdef569123",
+ *             tenantId: "0XXXXXXX-YYYY-HHHH-GGGG-123456789123",
+ *             subscriptionId: "bXXXXXXX-YYYY-HHHH-GGGG-123456789123",
+ *             gcpServiceAccount: "fake-service-account@fake-gcp-project.iam.gserviceaccount.com",
  *         },
  *     },
  * });

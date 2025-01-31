@@ -27,8 +27,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
-     * Default value: &#34;AUTH_MODE_DISABLED&#34; Possible values: [&#34;AUTH_MODE_UNSPECIFIED&#34;, &#34;AUTH_MODE_IAM_AUTH&#34;,
-     * &#34;AUTH_MODE_DISABLED&#34;]
+     * Default value is `AUTH_MODE_DISABLED`.
+     * Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
      * 
      */
     @Import(name="authorizationMode")
@@ -36,8 +36,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
-     * Default value: &#34;AUTH_MODE_DISABLED&#34; Possible values: [&#34;AUTH_MODE_UNSPECIFIED&#34;, &#34;AUTH_MODE_IAM_AUTH&#34;,
-     * &#34;AUTH_MODE_DISABLED&#34;]
+     * Default value is `AUTH_MODE_DISABLED`.
+     * Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
      * 
      */
     public Optional<Output<String>> authorizationMode() {
@@ -46,6 +46,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Cross cluster replication config
+     * Structure is documented below.
      * 
      */
     @Import(name="crossClusterReplicationConfig")
@@ -53,6 +54,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Cross cluster replication config
+     * Structure is documented below.
      * 
      */
     public Optional<Output<ClusterCrossClusterReplicationConfigArgs>> crossClusterReplicationConfig() {
@@ -60,16 +62,18 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional. Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster
-     * operation will fail. Default value is true.
+     * Optional. Indicates if the cluster is deletion protected or not.
+     * If the value if set to true, any delete cluster operation will fail.
+     * Default value is true.
      * 
      */
     @Import(name="deletionProtectionEnabled")
     private @Nullable Output<Boolean> deletionProtectionEnabled;
 
     /**
-     * @return Optional. Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster
-     * operation will fail. Default value is true.
+     * @return Optional. Indicates if the cluster is deletion protected or not.
+     * If the value if set to true, any delete cluster operation will fail.
+     * Default value is true.
      * 
      */
     public Optional<Output<Boolean>> deletionProtectionEnabled() {
@@ -78,6 +82,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Maintenance policy for a cluster
+     * Structure is documented below.
      * 
      */
     @Import(name="maintenancePolicy")
@@ -85,6 +90,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Maintenance policy for a cluster
+     * Structure is documented below.
      * 
      */
     public Optional<Output<ClusterMaintenancePolicyArgs>> maintenancePolicy() {
@@ -95,6 +101,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
      * Unique name of the resource in this scope including project and location using the form:
      * projects/{projectId}/locations/{locationId}/clusters/{clusterId}
      * 
+     * ***
+     * 
      */
     @Import(name="name")
     private @Nullable Output<String> name;
@@ -103,22 +111,26 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
      * @return Unique name of the resource in this scope including project and location using the form:
      * projects/{projectId}/locations/{locationId}/clusters/{clusterId}
      * 
+     * ***
+     * 
      */
     public Optional<Output<String>> name() {
         return Optional.ofNullable(this.name);
     }
 
     /**
-     * The nodeType for the Redis cluster. If not provided, REDIS_HIGHMEM_MEDIUM will be used as default Possible values:
-     * [&#34;REDIS_SHARED_CORE_NANO&#34;, &#34;REDIS_HIGHMEM_MEDIUM&#34;, &#34;REDIS_HIGHMEM_XLARGE&#34;, &#34;REDIS_STANDARD_SMALL&#34;]
+     * The nodeType for the Redis cluster.
+     * If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
+     * Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
      * 
      */
     @Import(name="nodeType")
     private @Nullable Output<String> nodeType;
 
     /**
-     * @return The nodeType for the Redis cluster. If not provided, REDIS_HIGHMEM_MEDIUM will be used as default Possible values:
-     * [&#34;REDIS_SHARED_CORE_NANO&#34;, &#34;REDIS_HIGHMEM_MEDIUM&#34;, &#34;REDIS_HIGHMEM_XLARGE&#34;, &#34;REDIS_STANDARD_SMALL&#34;]
+     * @return The nodeType for the Redis cluster.
+     * If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
+     * Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
      * 
      */
     public Optional<Output<String>> nodeType() {
@@ -127,6 +139,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Persistence config (RDB, AOF) for the cluster.
+     * Structure is documented below.
      * 
      */
     @Import(name="persistenceConfig")
@@ -134,15 +147,26 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Persistence config (RDB, AOF) for the cluster.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<ClusterPersistenceConfigArgs>> persistenceConfig() {
         return Optional.ofNullable(this.persistenceConfig);
     }
 
+    /**
+     * The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     @Import(name="project")
     private @Nullable Output<String> project;
 
+    /**
+     * @return The ID of the project in which the resource belongs.
+     * If it is not provided, the provider project is used.
+     * 
+     */
     public Optional<Output<String>> project() {
         return Optional.ofNullable(this.project);
     }
@@ -154,8 +178,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
      * Structure is documented below.
      * 
      */
-    @Import(name="pscConfigs", required=true)
-    private Output<List<ClusterPscConfigArgs>> pscConfigs;
+    @Import(name="pscConfigs")
+    private @Nullable Output<List<ClusterPscConfigArgs>> pscConfigs;
 
     /**
      * @return Required. Each PscConfig configures the consumer network where two
@@ -164,13 +188,13 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
      * Structure is documented below.
      * 
      */
-    public Output<List<ClusterPscConfigArgs>> pscConfigs() {
-        return this.pscConfigs;
+    public Optional<Output<List<ClusterPscConfigArgs>>> pscConfigs() {
+        return Optional.ofNullable(this.pscConfigs);
     }
 
     /**
-     * Configure Redis Cluster behavior using a subset of native Redis configuration parameters. Please check Memorystore
-     * documentation for the list of supported parameters:
+     * Configure Redis Cluster behavior using a subset of native Redis configuration parameters.
+     * Please check Memorystore documentation for the list of supported parameters:
      * https://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations
      * 
      */
@@ -178,8 +202,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     private @Nullable Output<Map<String,String>> redisConfigs;
 
     /**
-     * @return Configure Redis Cluster behavior using a subset of native Redis configuration parameters. Please check Memorystore
-     * documentation for the list of supported parameters:
+     * @return Configure Redis Cluster behavior using a subset of native Redis configuration parameters.
+     * Please check Memorystore documentation for the list of supported parameters:
      * https://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations
      * 
      */
@@ -233,18 +257,20 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
     }
 
     /**
-     * Optional. The in-transit encryption for the Redis cluster. If not provided, encryption is disabled for the cluster.
-     * Default value: &#34;TRANSIT_ENCRYPTION_MODE_DISABLED&#34; Possible values: [&#34;TRANSIT_ENCRYPTION_MODE_UNSPECIFIED&#34;,
-     * &#34;TRANSIT_ENCRYPTION_MODE_DISABLED&#34;, &#34;TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION&#34;]
+     * Optional. The in-transit encryption for the Redis cluster.
+     * If not provided, encryption is disabled for the cluster.
+     * Default value is `TRANSIT_ENCRYPTION_MODE_DISABLED`.
+     * Possible values are: `TRANSIT_ENCRYPTION_MODE_UNSPECIFIED`, `TRANSIT_ENCRYPTION_MODE_DISABLED`, `TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION`.
      * 
      */
     @Import(name="transitEncryptionMode")
     private @Nullable Output<String> transitEncryptionMode;
 
     /**
-     * @return Optional. The in-transit encryption for the Redis cluster. If not provided, encryption is disabled for the cluster.
-     * Default value: &#34;TRANSIT_ENCRYPTION_MODE_DISABLED&#34; Possible values: [&#34;TRANSIT_ENCRYPTION_MODE_UNSPECIFIED&#34;,
-     * &#34;TRANSIT_ENCRYPTION_MODE_DISABLED&#34;, &#34;TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION&#34;]
+     * @return Optional. The in-transit encryption for the Redis cluster.
+     * If not provided, encryption is disabled for the cluster.
+     * Default value is `TRANSIT_ENCRYPTION_MODE_DISABLED`.
+     * Possible values are: `TRANSIT_ENCRYPTION_MODE_UNSPECIFIED`, `TRANSIT_ENCRYPTION_MODE_DISABLED`, `TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION`.
      * 
      */
     public Optional<Output<String>> transitEncryptionMode() {
@@ -253,6 +279,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * Immutable. Zone distribution config for Memorystore Redis cluster.
+     * Structure is documented below.
      * 
      */
     @Import(name="zoneDistributionConfig")
@@ -260,6 +287,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
     /**
      * @return Immutable. Zone distribution config for Memorystore Redis cluster.
+     * Structure is documented below.
      * 
      */
     public Optional<Output<ClusterZoneDistributionConfigArgs>> zoneDistributionConfig() {
@@ -306,8 +334,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param authorizationMode Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
-         * Default value: &#34;AUTH_MODE_DISABLED&#34; Possible values: [&#34;AUTH_MODE_UNSPECIFIED&#34;, &#34;AUTH_MODE_IAM_AUTH&#34;,
-         * &#34;AUTH_MODE_DISABLED&#34;]
+         * Default value is `AUTH_MODE_DISABLED`.
+         * Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
          * 
          * @return builder
          * 
@@ -319,8 +347,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param authorizationMode Optional. The authorization mode of the Redis cluster. If not provided, auth feature is disabled for the cluster.
-         * Default value: &#34;AUTH_MODE_DISABLED&#34; Possible values: [&#34;AUTH_MODE_UNSPECIFIED&#34;, &#34;AUTH_MODE_IAM_AUTH&#34;,
-         * &#34;AUTH_MODE_DISABLED&#34;]
+         * Default value is `AUTH_MODE_DISABLED`.
+         * Possible values are: `AUTH_MODE_UNSPECIFIED`, `AUTH_MODE_IAM_AUTH`, `AUTH_MODE_DISABLED`.
          * 
          * @return builder
          * 
@@ -331,6 +359,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param crossClusterReplicationConfig Cross cluster replication config
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -342,6 +371,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param crossClusterReplicationConfig Cross cluster replication config
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -351,8 +381,9 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deletionProtectionEnabled Optional. Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster
-         * operation will fail. Default value is true.
+         * @param deletionProtectionEnabled Optional. Indicates if the cluster is deletion protected or not.
+         * If the value if set to true, any delete cluster operation will fail.
+         * Default value is true.
          * 
          * @return builder
          * 
@@ -363,8 +394,9 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param deletionProtectionEnabled Optional. Indicates if the cluster is deletion protected or not. If the value if set to true, any delete cluster
-         * operation will fail. Default value is true.
+         * @param deletionProtectionEnabled Optional. Indicates if the cluster is deletion protected or not.
+         * If the value if set to true, any delete cluster operation will fail.
+         * Default value is true.
          * 
          * @return builder
          * 
@@ -375,6 +407,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param maintenancePolicy Maintenance policy for a cluster
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -386,6 +419,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param maintenancePolicy Maintenance policy for a cluster
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -397,6 +431,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         /**
          * @param name Unique name of the resource in this scope including project and location using the form:
          * projects/{projectId}/locations/{locationId}/clusters/{clusterId}
+         * 
+         * ***
          * 
          * @return builder
          * 
@@ -410,6 +446,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          * @param name Unique name of the resource in this scope including project and location using the form:
          * projects/{projectId}/locations/{locationId}/clusters/{clusterId}
          * 
+         * ***
+         * 
          * @return builder
          * 
          */
@@ -418,8 +456,9 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeType The nodeType for the Redis cluster. If not provided, REDIS_HIGHMEM_MEDIUM will be used as default Possible values:
-         * [&#34;REDIS_SHARED_CORE_NANO&#34;, &#34;REDIS_HIGHMEM_MEDIUM&#34;, &#34;REDIS_HIGHMEM_XLARGE&#34;, &#34;REDIS_STANDARD_SMALL&#34;]
+         * @param nodeType The nodeType for the Redis cluster.
+         * If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
+         * Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
          * 
          * @return builder
          * 
@@ -430,8 +469,9 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param nodeType The nodeType for the Redis cluster. If not provided, REDIS_HIGHMEM_MEDIUM will be used as default Possible values:
-         * [&#34;REDIS_SHARED_CORE_NANO&#34;, &#34;REDIS_HIGHMEM_MEDIUM&#34;, &#34;REDIS_HIGHMEM_XLARGE&#34;, &#34;REDIS_STANDARD_SMALL&#34;]
+         * @param nodeType The nodeType for the Redis cluster.
+         * If not provided, REDIS_HIGHMEM_MEDIUM will be used as default
+         * Possible values are: `REDIS_SHARED_CORE_NANO`, `REDIS_HIGHMEM_MEDIUM`, `REDIS_HIGHMEM_XLARGE`, `REDIS_STANDARD_SMALL`.
          * 
          * @return builder
          * 
@@ -442,6 +482,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param persistenceConfig Persistence config (RDB, AOF) for the cluster.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -453,6 +494,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param persistenceConfig Persistence config (RDB, AOF) for the cluster.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -461,11 +503,25 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
             return persistenceConfig(Output.of(persistenceConfig));
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(@Nullable Output<String> project) {
             $.project = project;
             return this;
         }
 
+        /**
+         * @param project The ID of the project in which the resource belongs.
+         * If it is not provided, the provider project is used.
+         * 
+         * @return builder
+         * 
+         */
         public Builder project(String project) {
             return project(Output.of(project));
         }
@@ -479,7 +535,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
          * @return builder
          * 
          */
-        public Builder pscConfigs(Output<List<ClusterPscConfigArgs>> pscConfigs) {
+        public Builder pscConfigs(@Nullable Output<List<ClusterPscConfigArgs>> pscConfigs) {
             $.pscConfigs = pscConfigs;
             return this;
         }
@@ -511,8 +567,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param redisConfigs Configure Redis Cluster behavior using a subset of native Redis configuration parameters. Please check Memorystore
-         * documentation for the list of supported parameters:
+         * @param redisConfigs Configure Redis Cluster behavior using a subset of native Redis configuration parameters.
+         * Please check Memorystore documentation for the list of supported parameters:
          * https://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations
          * 
          * @return builder
@@ -524,8 +580,8 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param redisConfigs Configure Redis Cluster behavior using a subset of native Redis configuration parameters. Please check Memorystore
-         * documentation for the list of supported parameters:
+         * @param redisConfigs Configure Redis Cluster behavior using a subset of native Redis configuration parameters.
+         * Please check Memorystore documentation for the list of supported parameters:
          * https://cloud.google.com/memorystore/docs/cluster/supported-instance-configurations
          * 
          * @return builder
@@ -599,9 +655,10 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param transitEncryptionMode Optional. The in-transit encryption for the Redis cluster. If not provided, encryption is disabled for the cluster.
-         * Default value: &#34;TRANSIT_ENCRYPTION_MODE_DISABLED&#34; Possible values: [&#34;TRANSIT_ENCRYPTION_MODE_UNSPECIFIED&#34;,
-         * &#34;TRANSIT_ENCRYPTION_MODE_DISABLED&#34;, &#34;TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION&#34;]
+         * @param transitEncryptionMode Optional. The in-transit encryption for the Redis cluster.
+         * If not provided, encryption is disabled for the cluster.
+         * Default value is `TRANSIT_ENCRYPTION_MODE_DISABLED`.
+         * Possible values are: `TRANSIT_ENCRYPTION_MODE_UNSPECIFIED`, `TRANSIT_ENCRYPTION_MODE_DISABLED`, `TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION`.
          * 
          * @return builder
          * 
@@ -612,9 +669,10 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         /**
-         * @param transitEncryptionMode Optional. The in-transit encryption for the Redis cluster. If not provided, encryption is disabled for the cluster.
-         * Default value: &#34;TRANSIT_ENCRYPTION_MODE_DISABLED&#34; Possible values: [&#34;TRANSIT_ENCRYPTION_MODE_UNSPECIFIED&#34;,
-         * &#34;TRANSIT_ENCRYPTION_MODE_DISABLED&#34;, &#34;TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION&#34;]
+         * @param transitEncryptionMode Optional. The in-transit encryption for the Redis cluster.
+         * If not provided, encryption is disabled for the cluster.
+         * Default value is `TRANSIT_ENCRYPTION_MODE_DISABLED`.
+         * Possible values are: `TRANSIT_ENCRYPTION_MODE_UNSPECIFIED`, `TRANSIT_ENCRYPTION_MODE_DISABLED`, `TRANSIT_ENCRYPTION_MODE_SERVER_AUTHENTICATION`.
          * 
          * @return builder
          * 
@@ -625,6 +683,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param zoneDistributionConfig Immutable. Zone distribution config for Memorystore Redis cluster.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -636,6 +695,7 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
 
         /**
          * @param zoneDistributionConfig Immutable. Zone distribution config for Memorystore Redis cluster.
+         * Structure is documented below.
          * 
          * @return builder
          * 
@@ -645,9 +705,6 @@ public final class ClusterArgs extends com.pulumi.resources.ResourceArgs {
         }
 
         public ClusterArgs build() {
-            if ($.pscConfigs == null) {
-                throw new MissingRequiredPropertyException("ClusterArgs", "pscConfigs");
-            }
             if ($.shardCount == null) {
                 throw new MissingRequiredPropertyException("ClusterArgs", "shardCount");
             }

@@ -28,10 +28,16 @@ import * as utilities from "../utilities";
  *
  * * `{{key}}`
  *
+ * * `projects/{{project}}/meta-data/{{key}}`
+ *
  * When using the `pulumi import` command, project metadata items can be imported using one of the formats above. For example:
  *
  * ```sh
  * $ pulumi import gcp:compute/projectMetadataItem:ProjectMetadataItem default {{key}}
+ * ```
+ *
+ * ```sh
+ * $ pulumi import gcp:compute/projectMetadataItem:ProjectMetadataItem default projects/{{project}}/meta-data/{{key}}
  * ```
  */
 export class ProjectMetadataItem extends pulumi.CustomResource {

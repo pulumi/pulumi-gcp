@@ -426,14 +426,16 @@ public class Cluster extends com.pulumi.resources.CustomResource {
         return this.continuousBackupInfos;
     }
     /**
-     * The database engine major version. This is an optional field and it&#39;s populated at the Cluster creation time. This field cannot be changed after cluster creation.
+     * The database engine major version. This is an optional field and it&#39;s populated at the Cluster creation time.
+     * Note: Changing this field to a higer version results in upgrading the AlloyDB cluster which is an irreversible change.
      * 
      */
     @Export(name="databaseVersion", refs={String.class}, tree="[0]")
     private Output<String> databaseVersion;
 
     /**
-     * @return The database engine major version. This is an optional field and it&#39;s populated at the Cluster creation time. This field cannot be changed after cluster creation.
+     * @return The database engine major version. This is an optional field and it&#39;s populated at the Cluster creation time.
+     * Note: Changing this field to a higer version results in upgrading the AlloyDB cluster which is an irreversible change.
      * 
      */
     public Output<String> databaseVersion() {
@@ -768,6 +770,24 @@ public class Cluster extends com.pulumi.resources.CustomResource {
      */
     public Output<Optional<ClusterSecondaryConfig>> secondaryConfig() {
         return Codegen.optional(this.secondaryConfig);
+    }
+    /**
+     * Set to true to skip awaiting on the major version upgrade of the cluster.
+     * Possible values: true, false
+     * Default value: &#34;true&#34;
+     * 
+     */
+    @Export(name="skipAwaitMajorVersionUpgrade", refs={Boolean.class}, tree="[0]")
+    private Output</* @Nullable */ Boolean> skipAwaitMajorVersionUpgrade;
+
+    /**
+     * @return Set to true to skip awaiting on the major version upgrade of the cluster.
+     * Possible values: true, false
+     * Default value: &#34;true&#34;
+     * 
+     */
+    public Output<Optional<Boolean>> skipAwaitMajorVersionUpgrade() {
+        return Codegen.optional(this.skipAwaitMajorVersionUpgrade);
     }
     /**
      * Output only. The current serving state of the cluster.

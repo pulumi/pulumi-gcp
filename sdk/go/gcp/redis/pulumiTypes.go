@@ -2275,8 +2275,6 @@ type ClusterPscConfig struct {
 	// Required. The consumer network where the network address of
 	// the discovery endpoint will be reserved, in the form of
 	// projects/{network_project_id_or_number}/global/networks/{network_id}.
-	//
-	// ***
 	Network string `pulumi:"network"`
 }
 
@@ -2295,8 +2293,6 @@ type ClusterPscConfigArgs struct {
 	// Required. The consumer network where the network address of
 	// the discovery endpoint will be reserved, in the form of
 	// projects/{network_project_id_or_number}/global/networks/{network_id}.
-	//
-	// ***
 	Network pulumi.StringInput `pulumi:"network"`
 }
 
@@ -2354,8 +2350,6 @@ func (o ClusterPscConfigOutput) ToClusterPscConfigOutputWithContext(ctx context.
 // Required. The consumer network where the network address of
 // the discovery endpoint will be reserved, in the form of
 // projects/{network_project_id_or_number}/global/networks/{network_id}.
-//
-// ***
 func (o ClusterPscConfigOutput) Network() pulumi.StringOutput {
 	return o.ApplyT(func(v ClusterPscConfig) string { return v.Network }).(pulumi.StringOutput)
 }
@@ -2511,6 +2505,118 @@ func (o ClusterPscConnectionArrayOutput) Index(i pulumi.IntInput) ClusterPscConn
 	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterPscConnection {
 		return vs[0].([]ClusterPscConnection)[vs[1].(int)]
 	}).(ClusterPscConnectionOutput)
+}
+
+type ClusterPscServiceAttachment struct {
+	// (Output)
+	// Type of a PSC connection targeting this service attachment.
+	ConnectionType *string `pulumi:"connectionType"`
+	// (Output)
+	// Service attachment URI which your self-created PscConnection should use as
+	ServiceAttachment *string `pulumi:"serviceAttachment"`
+}
+
+// ClusterPscServiceAttachmentInput is an input type that accepts ClusterPscServiceAttachmentArgs and ClusterPscServiceAttachmentOutput values.
+// You can construct a concrete instance of `ClusterPscServiceAttachmentInput` via:
+//
+//	ClusterPscServiceAttachmentArgs{...}
+type ClusterPscServiceAttachmentInput interface {
+	pulumi.Input
+
+	ToClusterPscServiceAttachmentOutput() ClusterPscServiceAttachmentOutput
+	ToClusterPscServiceAttachmentOutputWithContext(context.Context) ClusterPscServiceAttachmentOutput
+}
+
+type ClusterPscServiceAttachmentArgs struct {
+	// (Output)
+	// Type of a PSC connection targeting this service attachment.
+	ConnectionType pulumi.StringPtrInput `pulumi:"connectionType"`
+	// (Output)
+	// Service attachment URI which your self-created PscConnection should use as
+	ServiceAttachment pulumi.StringPtrInput `pulumi:"serviceAttachment"`
+}
+
+func (ClusterPscServiceAttachmentArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterPscServiceAttachment)(nil)).Elem()
+}
+
+func (i ClusterPscServiceAttachmentArgs) ToClusterPscServiceAttachmentOutput() ClusterPscServiceAttachmentOutput {
+	return i.ToClusterPscServiceAttachmentOutputWithContext(context.Background())
+}
+
+func (i ClusterPscServiceAttachmentArgs) ToClusterPscServiceAttachmentOutputWithContext(ctx context.Context) ClusterPscServiceAttachmentOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterPscServiceAttachmentOutput)
+}
+
+// ClusterPscServiceAttachmentArrayInput is an input type that accepts ClusterPscServiceAttachmentArray and ClusterPscServiceAttachmentArrayOutput values.
+// You can construct a concrete instance of `ClusterPscServiceAttachmentArrayInput` via:
+//
+//	ClusterPscServiceAttachmentArray{ ClusterPscServiceAttachmentArgs{...} }
+type ClusterPscServiceAttachmentArrayInput interface {
+	pulumi.Input
+
+	ToClusterPscServiceAttachmentArrayOutput() ClusterPscServiceAttachmentArrayOutput
+	ToClusterPscServiceAttachmentArrayOutputWithContext(context.Context) ClusterPscServiceAttachmentArrayOutput
+}
+
+type ClusterPscServiceAttachmentArray []ClusterPscServiceAttachmentInput
+
+func (ClusterPscServiceAttachmentArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterPscServiceAttachment)(nil)).Elem()
+}
+
+func (i ClusterPscServiceAttachmentArray) ToClusterPscServiceAttachmentArrayOutput() ClusterPscServiceAttachmentArrayOutput {
+	return i.ToClusterPscServiceAttachmentArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterPscServiceAttachmentArray) ToClusterPscServiceAttachmentArrayOutputWithContext(ctx context.Context) ClusterPscServiceAttachmentArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterPscServiceAttachmentArrayOutput)
+}
+
+type ClusterPscServiceAttachmentOutput struct{ *pulumi.OutputState }
+
+func (ClusterPscServiceAttachmentOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterPscServiceAttachment)(nil)).Elem()
+}
+
+func (o ClusterPscServiceAttachmentOutput) ToClusterPscServiceAttachmentOutput() ClusterPscServiceAttachmentOutput {
+	return o
+}
+
+func (o ClusterPscServiceAttachmentOutput) ToClusterPscServiceAttachmentOutputWithContext(ctx context.Context) ClusterPscServiceAttachmentOutput {
+	return o
+}
+
+// (Output)
+// Type of a PSC connection targeting this service attachment.
+func (o ClusterPscServiceAttachmentOutput) ConnectionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterPscServiceAttachment) *string { return v.ConnectionType }).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Service attachment URI which your self-created PscConnection should use as
+func (o ClusterPscServiceAttachmentOutput) ServiceAttachment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterPscServiceAttachment) *string { return v.ServiceAttachment }).(pulumi.StringPtrOutput)
+}
+
+type ClusterPscServiceAttachmentArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterPscServiceAttachmentArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterPscServiceAttachment)(nil)).Elem()
+}
+
+func (o ClusterPscServiceAttachmentArrayOutput) ToClusterPscServiceAttachmentArrayOutput() ClusterPscServiceAttachmentArrayOutput {
+	return o
+}
+
+func (o ClusterPscServiceAttachmentArrayOutput) ToClusterPscServiceAttachmentArrayOutputWithContext(ctx context.Context) ClusterPscServiceAttachmentArrayOutput {
+	return o
+}
+
+func (o ClusterPscServiceAttachmentArrayOutput) Index(i pulumi.IntInput) ClusterPscServiceAttachmentOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterPscServiceAttachment {
+		return vs[0].([]ClusterPscServiceAttachment)[vs[1].(int)]
+	}).(ClusterPscServiceAttachmentOutput)
 }
 
 type ClusterStateInfo struct {
@@ -2767,6 +2873,544 @@ func (o ClusterStateInfoUpdateInfoPtrOutput) TargetShardCount() pulumi.IntPtrOut
 		}
 		return v.TargetShardCount
 	}).(pulumi.IntPtrOutput)
+}
+
+type ClusterUserCreatedConnectionsClusterEndpoint struct {
+	// Structure is documented below.
+	Connections []ClusterUserCreatedConnectionsClusterEndpointConnection `pulumi:"connections"`
+}
+
+// ClusterUserCreatedConnectionsClusterEndpointInput is an input type that accepts ClusterUserCreatedConnectionsClusterEndpointArgs and ClusterUserCreatedConnectionsClusterEndpointOutput values.
+// You can construct a concrete instance of `ClusterUserCreatedConnectionsClusterEndpointInput` via:
+//
+//	ClusterUserCreatedConnectionsClusterEndpointArgs{...}
+type ClusterUserCreatedConnectionsClusterEndpointInput interface {
+	pulumi.Input
+
+	ToClusterUserCreatedConnectionsClusterEndpointOutput() ClusterUserCreatedConnectionsClusterEndpointOutput
+	ToClusterUserCreatedConnectionsClusterEndpointOutputWithContext(context.Context) ClusterUserCreatedConnectionsClusterEndpointOutput
+}
+
+type ClusterUserCreatedConnectionsClusterEndpointArgs struct {
+	// Structure is documented below.
+	Connections ClusterUserCreatedConnectionsClusterEndpointConnectionArrayInput `pulumi:"connections"`
+}
+
+func (ClusterUserCreatedConnectionsClusterEndpointArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterUserCreatedConnectionsClusterEndpoint)(nil)).Elem()
+}
+
+func (i ClusterUserCreatedConnectionsClusterEndpointArgs) ToClusterUserCreatedConnectionsClusterEndpointOutput() ClusterUserCreatedConnectionsClusterEndpointOutput {
+	return i.ToClusterUserCreatedConnectionsClusterEndpointOutputWithContext(context.Background())
+}
+
+func (i ClusterUserCreatedConnectionsClusterEndpointArgs) ToClusterUserCreatedConnectionsClusterEndpointOutputWithContext(ctx context.Context) ClusterUserCreatedConnectionsClusterEndpointOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterUserCreatedConnectionsClusterEndpointOutput)
+}
+
+// ClusterUserCreatedConnectionsClusterEndpointArrayInput is an input type that accepts ClusterUserCreatedConnectionsClusterEndpointArray and ClusterUserCreatedConnectionsClusterEndpointArrayOutput values.
+// You can construct a concrete instance of `ClusterUserCreatedConnectionsClusterEndpointArrayInput` via:
+//
+//	ClusterUserCreatedConnectionsClusterEndpointArray{ ClusterUserCreatedConnectionsClusterEndpointArgs{...} }
+type ClusterUserCreatedConnectionsClusterEndpointArrayInput interface {
+	pulumi.Input
+
+	ToClusterUserCreatedConnectionsClusterEndpointArrayOutput() ClusterUserCreatedConnectionsClusterEndpointArrayOutput
+	ToClusterUserCreatedConnectionsClusterEndpointArrayOutputWithContext(context.Context) ClusterUserCreatedConnectionsClusterEndpointArrayOutput
+}
+
+type ClusterUserCreatedConnectionsClusterEndpointArray []ClusterUserCreatedConnectionsClusterEndpointInput
+
+func (ClusterUserCreatedConnectionsClusterEndpointArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterUserCreatedConnectionsClusterEndpoint)(nil)).Elem()
+}
+
+func (i ClusterUserCreatedConnectionsClusterEndpointArray) ToClusterUserCreatedConnectionsClusterEndpointArrayOutput() ClusterUserCreatedConnectionsClusterEndpointArrayOutput {
+	return i.ToClusterUserCreatedConnectionsClusterEndpointArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterUserCreatedConnectionsClusterEndpointArray) ToClusterUserCreatedConnectionsClusterEndpointArrayOutputWithContext(ctx context.Context) ClusterUserCreatedConnectionsClusterEndpointArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterUserCreatedConnectionsClusterEndpointArrayOutput)
+}
+
+type ClusterUserCreatedConnectionsClusterEndpointOutput struct{ *pulumi.OutputState }
+
+func (ClusterUserCreatedConnectionsClusterEndpointOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterUserCreatedConnectionsClusterEndpoint)(nil)).Elem()
+}
+
+func (o ClusterUserCreatedConnectionsClusterEndpointOutput) ToClusterUserCreatedConnectionsClusterEndpointOutput() ClusterUserCreatedConnectionsClusterEndpointOutput {
+	return o
+}
+
+func (o ClusterUserCreatedConnectionsClusterEndpointOutput) ToClusterUserCreatedConnectionsClusterEndpointOutputWithContext(ctx context.Context) ClusterUserCreatedConnectionsClusterEndpointOutput {
+	return o
+}
+
+// Structure is documented below.
+func (o ClusterUserCreatedConnectionsClusterEndpointOutput) Connections() ClusterUserCreatedConnectionsClusterEndpointConnectionArrayOutput {
+	return o.ApplyT(func(v ClusterUserCreatedConnectionsClusterEndpoint) []ClusterUserCreatedConnectionsClusterEndpointConnection {
+		return v.Connections
+	}).(ClusterUserCreatedConnectionsClusterEndpointConnectionArrayOutput)
+}
+
+type ClusterUserCreatedConnectionsClusterEndpointArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterUserCreatedConnectionsClusterEndpointArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterUserCreatedConnectionsClusterEndpoint)(nil)).Elem()
+}
+
+func (o ClusterUserCreatedConnectionsClusterEndpointArrayOutput) ToClusterUserCreatedConnectionsClusterEndpointArrayOutput() ClusterUserCreatedConnectionsClusterEndpointArrayOutput {
+	return o
+}
+
+func (o ClusterUserCreatedConnectionsClusterEndpointArrayOutput) ToClusterUserCreatedConnectionsClusterEndpointArrayOutputWithContext(ctx context.Context) ClusterUserCreatedConnectionsClusterEndpointArrayOutput {
+	return o
+}
+
+func (o ClusterUserCreatedConnectionsClusterEndpointArrayOutput) Index(i pulumi.IntInput) ClusterUserCreatedConnectionsClusterEndpointOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterUserCreatedConnectionsClusterEndpoint {
+		return vs[0].([]ClusterUserCreatedConnectionsClusterEndpoint)[vs[1].(int)]
+	}).(ClusterUserCreatedConnectionsClusterEndpointOutput)
+}
+
+type ClusterUserCreatedConnectionsClusterEndpointConnection struct {
+	// Detailed information of a PSC connection that is created by the customer
+	// who owns the cluster.
+	// Structure is documented below.
+	PscConnection *ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnection `pulumi:"pscConnection"`
+}
+
+// ClusterUserCreatedConnectionsClusterEndpointConnectionInput is an input type that accepts ClusterUserCreatedConnectionsClusterEndpointConnectionArgs and ClusterUserCreatedConnectionsClusterEndpointConnectionOutput values.
+// You can construct a concrete instance of `ClusterUserCreatedConnectionsClusterEndpointConnectionInput` via:
+//
+//	ClusterUserCreatedConnectionsClusterEndpointConnectionArgs{...}
+type ClusterUserCreatedConnectionsClusterEndpointConnectionInput interface {
+	pulumi.Input
+
+	ToClusterUserCreatedConnectionsClusterEndpointConnectionOutput() ClusterUserCreatedConnectionsClusterEndpointConnectionOutput
+	ToClusterUserCreatedConnectionsClusterEndpointConnectionOutputWithContext(context.Context) ClusterUserCreatedConnectionsClusterEndpointConnectionOutput
+}
+
+type ClusterUserCreatedConnectionsClusterEndpointConnectionArgs struct {
+	// Detailed information of a PSC connection that is created by the customer
+	// who owns the cluster.
+	// Structure is documented below.
+	PscConnection ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionPtrInput `pulumi:"pscConnection"`
+}
+
+func (ClusterUserCreatedConnectionsClusterEndpointConnectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterUserCreatedConnectionsClusterEndpointConnection)(nil)).Elem()
+}
+
+func (i ClusterUserCreatedConnectionsClusterEndpointConnectionArgs) ToClusterUserCreatedConnectionsClusterEndpointConnectionOutput() ClusterUserCreatedConnectionsClusterEndpointConnectionOutput {
+	return i.ToClusterUserCreatedConnectionsClusterEndpointConnectionOutputWithContext(context.Background())
+}
+
+func (i ClusterUserCreatedConnectionsClusterEndpointConnectionArgs) ToClusterUserCreatedConnectionsClusterEndpointConnectionOutputWithContext(ctx context.Context) ClusterUserCreatedConnectionsClusterEndpointConnectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterUserCreatedConnectionsClusterEndpointConnectionOutput)
+}
+
+// ClusterUserCreatedConnectionsClusterEndpointConnectionArrayInput is an input type that accepts ClusterUserCreatedConnectionsClusterEndpointConnectionArray and ClusterUserCreatedConnectionsClusterEndpointConnectionArrayOutput values.
+// You can construct a concrete instance of `ClusterUserCreatedConnectionsClusterEndpointConnectionArrayInput` via:
+//
+//	ClusterUserCreatedConnectionsClusterEndpointConnectionArray{ ClusterUserCreatedConnectionsClusterEndpointConnectionArgs{...} }
+type ClusterUserCreatedConnectionsClusterEndpointConnectionArrayInput interface {
+	pulumi.Input
+
+	ToClusterUserCreatedConnectionsClusterEndpointConnectionArrayOutput() ClusterUserCreatedConnectionsClusterEndpointConnectionArrayOutput
+	ToClusterUserCreatedConnectionsClusterEndpointConnectionArrayOutputWithContext(context.Context) ClusterUserCreatedConnectionsClusterEndpointConnectionArrayOutput
+}
+
+type ClusterUserCreatedConnectionsClusterEndpointConnectionArray []ClusterUserCreatedConnectionsClusterEndpointConnectionInput
+
+func (ClusterUserCreatedConnectionsClusterEndpointConnectionArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterUserCreatedConnectionsClusterEndpointConnection)(nil)).Elem()
+}
+
+func (i ClusterUserCreatedConnectionsClusterEndpointConnectionArray) ToClusterUserCreatedConnectionsClusterEndpointConnectionArrayOutput() ClusterUserCreatedConnectionsClusterEndpointConnectionArrayOutput {
+	return i.ToClusterUserCreatedConnectionsClusterEndpointConnectionArrayOutputWithContext(context.Background())
+}
+
+func (i ClusterUserCreatedConnectionsClusterEndpointConnectionArray) ToClusterUserCreatedConnectionsClusterEndpointConnectionArrayOutputWithContext(ctx context.Context) ClusterUserCreatedConnectionsClusterEndpointConnectionArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterUserCreatedConnectionsClusterEndpointConnectionArrayOutput)
+}
+
+type ClusterUserCreatedConnectionsClusterEndpointConnectionOutput struct{ *pulumi.OutputState }
+
+func (ClusterUserCreatedConnectionsClusterEndpointConnectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterUserCreatedConnectionsClusterEndpointConnection)(nil)).Elem()
+}
+
+func (o ClusterUserCreatedConnectionsClusterEndpointConnectionOutput) ToClusterUserCreatedConnectionsClusterEndpointConnectionOutput() ClusterUserCreatedConnectionsClusterEndpointConnectionOutput {
+	return o
+}
+
+func (o ClusterUserCreatedConnectionsClusterEndpointConnectionOutput) ToClusterUserCreatedConnectionsClusterEndpointConnectionOutputWithContext(ctx context.Context) ClusterUserCreatedConnectionsClusterEndpointConnectionOutput {
+	return o
+}
+
+// Detailed information of a PSC connection that is created by the customer
+// who owns the cluster.
+// Structure is documented below.
+func (o ClusterUserCreatedConnectionsClusterEndpointConnectionOutput) PscConnection() ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionPtrOutput {
+	return o.ApplyT(func(v ClusterUserCreatedConnectionsClusterEndpointConnection) *ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnection {
+		return v.PscConnection
+	}).(ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionPtrOutput)
+}
+
+type ClusterUserCreatedConnectionsClusterEndpointConnectionArrayOutput struct{ *pulumi.OutputState }
+
+func (ClusterUserCreatedConnectionsClusterEndpointConnectionArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]ClusterUserCreatedConnectionsClusterEndpointConnection)(nil)).Elem()
+}
+
+func (o ClusterUserCreatedConnectionsClusterEndpointConnectionArrayOutput) ToClusterUserCreatedConnectionsClusterEndpointConnectionArrayOutput() ClusterUserCreatedConnectionsClusterEndpointConnectionArrayOutput {
+	return o
+}
+
+func (o ClusterUserCreatedConnectionsClusterEndpointConnectionArrayOutput) ToClusterUserCreatedConnectionsClusterEndpointConnectionArrayOutputWithContext(ctx context.Context) ClusterUserCreatedConnectionsClusterEndpointConnectionArrayOutput {
+	return o
+}
+
+func (o ClusterUserCreatedConnectionsClusterEndpointConnectionArrayOutput) Index(i pulumi.IntInput) ClusterUserCreatedConnectionsClusterEndpointConnectionOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) ClusterUserCreatedConnectionsClusterEndpointConnection {
+		return vs[0].([]ClusterUserCreatedConnectionsClusterEndpointConnection)[vs[1].(int)]
+	}).(ClusterUserCreatedConnectionsClusterEndpointConnectionOutput)
+}
+
+type ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnection struct {
+	// The IP allocated on the consumer network for the PSC forwarding rule.
+	Address string `pulumi:"address"`
+	// (Output)
+	// Output Only. Type of a PSC Connection.
+	// Possible values:
+	// CONNECTION_TYPE_DISCOVERY
+	// CONNECTION_TYPE_PRIMARY
+	// CONNECTION_TYPE_READER
+	ConnectionType *string `pulumi:"connectionType"`
+	// The URI of the consumer side forwarding rule.
+	// Format:
+	// projects/{project}/regions/{region}/forwardingRules/{forwarding_rule}
+	ForwardingRule string `pulumi:"forwardingRule"`
+	// The consumer network where the IP address resides, in the form of
+	// projects/{project_id}/global/networks/{network_id}.
+	Network string `pulumi:"network"`
+	// The consumer projectId where the forwarding rule is created from.
+	ProjectId *string `pulumi:"projectId"`
+	// The PSC connection id of the forwarding rule connected to the
+	// service attachment.
+	PscConnectionId string `pulumi:"pscConnectionId"`
+	// (Output)
+	// Output Only. The status of the PSC connection: whether a connection exists and ACTIVE or it no longer exists.
+	// Possible values:
+	// ACTIVE
+	// NOT_FOUND
+	PscConnectionStatus *string `pulumi:"pscConnectionStatus"`
+	// The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
+	ServiceAttachment string `pulumi:"serviceAttachment"`
+}
+
+// ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionInput is an input type that accepts ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionArgs and ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionOutput values.
+// You can construct a concrete instance of `ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionInput` via:
+//
+//	ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionArgs{...}
+type ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionInput interface {
+	pulumi.Input
+
+	ToClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionOutput() ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionOutput
+	ToClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionOutputWithContext(context.Context) ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionOutput
+}
+
+type ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionArgs struct {
+	// The IP allocated on the consumer network for the PSC forwarding rule.
+	Address pulumi.StringInput `pulumi:"address"`
+	// (Output)
+	// Output Only. Type of a PSC Connection.
+	// Possible values:
+	// CONNECTION_TYPE_DISCOVERY
+	// CONNECTION_TYPE_PRIMARY
+	// CONNECTION_TYPE_READER
+	ConnectionType pulumi.StringPtrInput `pulumi:"connectionType"`
+	// The URI of the consumer side forwarding rule.
+	// Format:
+	// projects/{project}/regions/{region}/forwardingRules/{forwarding_rule}
+	ForwardingRule pulumi.StringInput `pulumi:"forwardingRule"`
+	// The consumer network where the IP address resides, in the form of
+	// projects/{project_id}/global/networks/{network_id}.
+	Network pulumi.StringInput `pulumi:"network"`
+	// The consumer projectId where the forwarding rule is created from.
+	ProjectId pulumi.StringPtrInput `pulumi:"projectId"`
+	// The PSC connection id of the forwarding rule connected to the
+	// service attachment.
+	PscConnectionId pulumi.StringInput `pulumi:"pscConnectionId"`
+	// (Output)
+	// Output Only. The status of the PSC connection: whether a connection exists and ACTIVE or it no longer exists.
+	// Possible values:
+	// ACTIVE
+	// NOT_FOUND
+	PscConnectionStatus pulumi.StringPtrInput `pulumi:"pscConnectionStatus"`
+	// The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
+	ServiceAttachment pulumi.StringInput `pulumi:"serviceAttachment"`
+}
+
+func (ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnection)(nil)).Elem()
+}
+
+func (i ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionArgs) ToClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionOutput() ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionOutput {
+	return i.ToClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionOutputWithContext(context.Background())
+}
+
+func (i ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionArgs) ToClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionOutputWithContext(ctx context.Context) ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionOutput)
+}
+
+func (i ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionArgs) ToClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionPtrOutput() ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionPtrOutput {
+	return i.ToClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionPtrOutputWithContext(context.Background())
+}
+
+func (i ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionArgs) ToClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionPtrOutputWithContext(ctx context.Context) ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionOutput).ToClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionPtrOutputWithContext(ctx)
+}
+
+// ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionPtrInput is an input type that accepts ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionArgs, ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionPtr and ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionPtrOutput values.
+// You can construct a concrete instance of `ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionPtrInput` via:
+//
+//	        ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionArgs{...}
+//
+//	or:
+//
+//	        nil
+type ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionPtrInput interface {
+	pulumi.Input
+
+	ToClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionPtrOutput() ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionPtrOutput
+	ToClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionPtrOutputWithContext(context.Context) ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionPtrOutput
+}
+
+type clusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionPtrType ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionArgs
+
+func ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionPtr(v *ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionArgs) ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionPtrInput {
+	return (*clusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionPtrType)(v)
+}
+
+func (*clusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionPtrType) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnection)(nil)).Elem()
+}
+
+func (i *clusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionPtrType) ToClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionPtrOutput() ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionPtrOutput {
+	return i.ToClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionPtrOutputWithContext(context.Background())
+}
+
+func (i *clusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionPtrType) ToClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionPtrOutputWithContext(ctx context.Context) ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionPtrOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionPtrOutput)
+}
+
+type ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionOutput struct{ *pulumi.OutputState }
+
+func (ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnection)(nil)).Elem()
+}
+
+func (o ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionOutput) ToClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionOutput() ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionOutput {
+	return o
+}
+
+func (o ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionOutput) ToClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionOutputWithContext(ctx context.Context) ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionOutput {
+	return o
+}
+
+func (o ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionOutput) ToClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionPtrOutput() ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionPtrOutput {
+	return o.ToClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionPtrOutputWithContext(context.Background())
+}
+
+func (o ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionOutput) ToClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionPtrOutputWithContext(ctx context.Context) ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionPtrOutput {
+	return o.ApplyTWithContext(ctx, func(_ context.Context, v ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnection) *ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnection {
+		return &v
+	}).(ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionPtrOutput)
+}
+
+// The IP allocated on the consumer network for the PSC forwarding rule.
+func (o ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionOutput) Address() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnection) string { return v.Address }).(pulumi.StringOutput)
+}
+
+// (Output)
+// Output Only. Type of a PSC Connection.
+// Possible values:
+// CONNECTION_TYPE_DISCOVERY
+// CONNECTION_TYPE_PRIMARY
+// CONNECTION_TYPE_READER
+func (o ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionOutput) ConnectionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnection) *string {
+		return v.ConnectionType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The URI of the consumer side forwarding rule.
+// Format:
+// projects/{project}/regions/{region}/forwardingRules/{forwarding_rule}
+func (o ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionOutput) ForwardingRule() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnection) string {
+		return v.ForwardingRule
+	}).(pulumi.StringOutput)
+}
+
+// The consumer network where the IP address resides, in the form of
+// projects/{project_id}/global/networks/{network_id}.
+func (o ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionOutput) Network() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnection) string { return v.Network }).(pulumi.StringOutput)
+}
+
+// The consumer projectId where the forwarding rule is created from.
+func (o ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnection) *string {
+		return v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The PSC connection id of the forwarding rule connected to the
+// service attachment.
+func (o ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionOutput) PscConnectionId() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnection) string {
+		return v.PscConnectionId
+	}).(pulumi.StringOutput)
+}
+
+// (Output)
+// Output Only. The status of the PSC connection: whether a connection exists and ACTIVE or it no longer exists.
+// Possible values:
+// ACTIVE
+// NOT_FOUND
+func (o ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionOutput) PscConnectionStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnection) *string {
+		return v.PscConnectionStatus
+	}).(pulumi.StringPtrOutput)
+}
+
+// The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
+func (o ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionOutput) ServiceAttachment() pulumi.StringOutput {
+	return o.ApplyT(func(v ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnection) string {
+		return v.ServiceAttachment
+	}).(pulumi.StringOutput)
+}
+
+type ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionPtrOutput struct{ *pulumi.OutputState }
+
+func (ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionPtrOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((**ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnection)(nil)).Elem()
+}
+
+func (o ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionPtrOutput) ToClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionPtrOutput() ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionPtrOutput {
+	return o
+}
+
+func (o ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionPtrOutput) ToClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionPtrOutputWithContext(ctx context.Context) ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionPtrOutput {
+	return o
+}
+
+func (o ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionPtrOutput) Elem() ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionOutput {
+	return o.ApplyT(func(v *ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnection) ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnection {
+		if v != nil {
+			return *v
+		}
+		var ret ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnection
+		return ret
+	}).(ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionOutput)
+}
+
+// The IP allocated on the consumer network for the PSC forwarding rule.
+func (o ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionPtrOutput) Address() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnection) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Address
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Output Only. Type of a PSC Connection.
+// Possible values:
+// CONNECTION_TYPE_DISCOVERY
+// CONNECTION_TYPE_PRIMARY
+// CONNECTION_TYPE_READER
+func (o ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionPtrOutput) ConnectionType() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnection) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ConnectionType
+	}).(pulumi.StringPtrOutput)
+}
+
+// The URI of the consumer side forwarding rule.
+// Format:
+// projects/{project}/regions/{region}/forwardingRules/{forwarding_rule}
+func (o ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionPtrOutput) ForwardingRule() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnection) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ForwardingRule
+	}).(pulumi.StringPtrOutput)
+}
+
+// The consumer network where the IP address resides, in the form of
+// projects/{project_id}/global/networks/{network_id}.
+func (o ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionPtrOutput) Network() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnection) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.Network
+	}).(pulumi.StringPtrOutput)
+}
+
+// The consumer projectId where the forwarding rule is created from.
+func (o ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionPtrOutput) ProjectId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnection) *string {
+		if v == nil {
+			return nil
+		}
+		return v.ProjectId
+	}).(pulumi.StringPtrOutput)
+}
+
+// The PSC connection id of the forwarding rule connected to the
+// service attachment.
+func (o ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionPtrOutput) PscConnectionId() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnection) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.PscConnectionId
+	}).(pulumi.StringPtrOutput)
+}
+
+// (Output)
+// Output Only. The status of the PSC connection: whether a connection exists and ACTIVE or it no longer exists.
+// Possible values:
+// ACTIVE
+// NOT_FOUND
+func (o ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionPtrOutput) PscConnectionStatus() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnection) *string {
+		if v == nil {
+			return nil
+		}
+		return v.PscConnectionStatus
+	}).(pulumi.StringPtrOutput)
+}
+
+// The service attachment which is the target of the PSC connection, in the form of projects/{project-id}/regions/{region}/serviceAttachments/{service-attachment-id}.
+func (o ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionPtrOutput) ServiceAttachment() pulumi.StringPtrOutput {
+	return o.ApplyT(func(v *ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnection) *string {
+		if v == nil {
+			return nil
+		}
+		return &v.ServiceAttachment
+	}).(pulumi.StringPtrOutput)
 }
 
 type ClusterZoneDistributionConfig struct {
@@ -5098,10 +5742,18 @@ func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterPscConfigArrayInput)(nil)).Elem(), ClusterPscConfigArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterPscConnectionInput)(nil)).Elem(), ClusterPscConnectionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterPscConnectionArrayInput)(nil)).Elem(), ClusterPscConnectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterPscServiceAttachmentInput)(nil)).Elem(), ClusterPscServiceAttachmentArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterPscServiceAttachmentArrayInput)(nil)).Elem(), ClusterPscServiceAttachmentArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterStateInfoInput)(nil)).Elem(), ClusterStateInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterStateInfoArrayInput)(nil)).Elem(), ClusterStateInfoArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterStateInfoUpdateInfoInput)(nil)).Elem(), ClusterStateInfoUpdateInfoArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterStateInfoUpdateInfoPtrInput)(nil)).Elem(), ClusterStateInfoUpdateInfoArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterUserCreatedConnectionsClusterEndpointInput)(nil)).Elem(), ClusterUserCreatedConnectionsClusterEndpointArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterUserCreatedConnectionsClusterEndpointArrayInput)(nil)).Elem(), ClusterUserCreatedConnectionsClusterEndpointArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterUserCreatedConnectionsClusterEndpointConnectionInput)(nil)).Elem(), ClusterUserCreatedConnectionsClusterEndpointConnectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterUserCreatedConnectionsClusterEndpointConnectionArrayInput)(nil)).Elem(), ClusterUserCreatedConnectionsClusterEndpointConnectionArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionInput)(nil)).Elem(), ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionPtrInput)(nil)).Elem(), ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterZoneDistributionConfigInput)(nil)).Elem(), ClusterZoneDistributionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ClusterZoneDistributionConfigPtrInput)(nil)).Elem(), ClusterZoneDistributionConfigArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*InstanceMaintenancePolicyInput)(nil)).Elem(), InstanceMaintenancePolicyArgs{})
@@ -5164,10 +5816,18 @@ func init() {
 	pulumi.RegisterOutputType(ClusterPscConfigArrayOutput{})
 	pulumi.RegisterOutputType(ClusterPscConnectionOutput{})
 	pulumi.RegisterOutputType(ClusterPscConnectionArrayOutput{})
+	pulumi.RegisterOutputType(ClusterPscServiceAttachmentOutput{})
+	pulumi.RegisterOutputType(ClusterPscServiceAttachmentArrayOutput{})
 	pulumi.RegisterOutputType(ClusterStateInfoOutput{})
 	pulumi.RegisterOutputType(ClusterStateInfoArrayOutput{})
 	pulumi.RegisterOutputType(ClusterStateInfoUpdateInfoOutput{})
 	pulumi.RegisterOutputType(ClusterStateInfoUpdateInfoPtrOutput{})
+	pulumi.RegisterOutputType(ClusterUserCreatedConnectionsClusterEndpointOutput{})
+	pulumi.RegisterOutputType(ClusterUserCreatedConnectionsClusterEndpointArrayOutput{})
+	pulumi.RegisterOutputType(ClusterUserCreatedConnectionsClusterEndpointConnectionOutput{})
+	pulumi.RegisterOutputType(ClusterUserCreatedConnectionsClusterEndpointConnectionArrayOutput{})
+	pulumi.RegisterOutputType(ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionOutput{})
+	pulumi.RegisterOutputType(ClusterUserCreatedConnectionsClusterEndpointConnectionPscConnectionPtrOutput{})
 	pulumi.RegisterOutputType(ClusterZoneDistributionConfigOutput{})
 	pulumi.RegisterOutputType(ClusterZoneDistributionConfigPtrOutput{})
 	pulumi.RegisterOutputType(InstanceMaintenancePolicyOutput{})

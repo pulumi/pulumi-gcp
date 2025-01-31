@@ -4,6 +4,23 @@
 import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
+/**
+ * Retrieves the current IAM policy data for repositorygroup
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.gemini.getRepositoryGroupIamPolicy({
+ *     project: example.project,
+ *     location: example.location,
+ *     codeRepositoryIndex: example.codeRepositoryIndex,
+ *     repositoryGroupId: example.repositoryGroupId,
+ * });
+ * ```
+ */
 export function getRepositoryGroupIamPolicy(args: GetRepositoryGroupIamPolicyArgs, opts?: pulumi.InvokeOptions): Promise<GetRepositoryGroupIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invoke("gcp:gemini/getRepositoryGroupIamPolicy:getRepositoryGroupIamPolicy", {
@@ -55,6 +72,23 @@ export interface GetRepositoryGroupIamPolicyResult {
     readonly project: string;
     readonly repositoryGroupId: string;
 }
+/**
+ * Retrieves the current IAM policy data for repositorygroup
+ *
+ * ## example
+ *
+ * ```typescript
+ * import * as pulumi from "@pulumi/pulumi";
+ * import * as gcp from "@pulumi/gcp";
+ *
+ * const policy = gcp.gemini.getRepositoryGroupIamPolicy({
+ *     project: example.project,
+ *     location: example.location,
+ *     codeRepositoryIndex: example.codeRepositoryIndex,
+ *     repositoryGroupId: example.repositoryGroupId,
+ * });
+ * ```
+ */
 export function getRepositoryGroupIamPolicyOutput(args: GetRepositoryGroupIamPolicyOutputArgs, opts?: pulumi.InvokeOutputOptions): pulumi.Output<GetRepositoryGroupIamPolicyResult> {
     opts = pulumi.mergeOptions(utilities.resourceOptsDefaults(), opts || {});
     return pulumi.runtime.invokeOutput("gcp:gemini/getRepositoryGroupIamPolicy:getRepositoryGroupIamPolicy", {

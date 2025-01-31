@@ -270,6 +270,130 @@ func (o RegionalParameterPolicyMemberArrayOutput) Index(i pulumi.IntInput) Regio
 	}).(RegionalParameterPolicyMemberOutput)
 }
 
+type GetParameterPolicyMember struct {
+	// IAM policy binding member referring to a Google Cloud resource by user-assigned name. If a
+	// resource is deleted and recreated with the same name, the binding will be applicable to the
+	// new resource. Format:
+	// 'principal://parametermanager.googleapis.com/projects/{{project}}/name/locations/global/parameters/{{parameter_id}}'
+	IamPolicyNamePrincipal string `pulumi:"iamPolicyNamePrincipal"`
+	// IAM policy binding member referring to a Google Cloud resource by system-assigned unique identifier.
+	// If a resource is deleted and recreated with the same name, the binding will not be applicable to the
+	// new resource. Format:
+	// 'principal://parametermanager.googleapis.com/projects/{{project}}/uid/locations/global/parameters/{{uid}}'
+	IamPolicyUidPrincipal string `pulumi:"iamPolicyUidPrincipal"`
+}
+
+// GetParameterPolicyMemberInput is an input type that accepts GetParameterPolicyMemberArgs and GetParameterPolicyMemberOutput values.
+// You can construct a concrete instance of `GetParameterPolicyMemberInput` via:
+//
+//	GetParameterPolicyMemberArgs{...}
+type GetParameterPolicyMemberInput interface {
+	pulumi.Input
+
+	ToGetParameterPolicyMemberOutput() GetParameterPolicyMemberOutput
+	ToGetParameterPolicyMemberOutputWithContext(context.Context) GetParameterPolicyMemberOutput
+}
+
+type GetParameterPolicyMemberArgs struct {
+	// IAM policy binding member referring to a Google Cloud resource by user-assigned name. If a
+	// resource is deleted and recreated with the same name, the binding will be applicable to the
+	// new resource. Format:
+	// 'principal://parametermanager.googleapis.com/projects/{{project}}/name/locations/global/parameters/{{parameter_id}}'
+	IamPolicyNamePrincipal pulumi.StringInput `pulumi:"iamPolicyNamePrincipal"`
+	// IAM policy binding member referring to a Google Cloud resource by system-assigned unique identifier.
+	// If a resource is deleted and recreated with the same name, the binding will not be applicable to the
+	// new resource. Format:
+	// 'principal://parametermanager.googleapis.com/projects/{{project}}/uid/locations/global/parameters/{{uid}}'
+	IamPolicyUidPrincipal pulumi.StringInput `pulumi:"iamPolicyUidPrincipal"`
+}
+
+func (GetParameterPolicyMemberArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetParameterPolicyMember)(nil)).Elem()
+}
+
+func (i GetParameterPolicyMemberArgs) ToGetParameterPolicyMemberOutput() GetParameterPolicyMemberOutput {
+	return i.ToGetParameterPolicyMemberOutputWithContext(context.Background())
+}
+
+func (i GetParameterPolicyMemberArgs) ToGetParameterPolicyMemberOutputWithContext(ctx context.Context) GetParameterPolicyMemberOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetParameterPolicyMemberOutput)
+}
+
+// GetParameterPolicyMemberArrayInput is an input type that accepts GetParameterPolicyMemberArray and GetParameterPolicyMemberArrayOutput values.
+// You can construct a concrete instance of `GetParameterPolicyMemberArrayInput` via:
+//
+//	GetParameterPolicyMemberArray{ GetParameterPolicyMemberArgs{...} }
+type GetParameterPolicyMemberArrayInput interface {
+	pulumi.Input
+
+	ToGetParameterPolicyMemberArrayOutput() GetParameterPolicyMemberArrayOutput
+	ToGetParameterPolicyMemberArrayOutputWithContext(context.Context) GetParameterPolicyMemberArrayOutput
+}
+
+type GetParameterPolicyMemberArray []GetParameterPolicyMemberInput
+
+func (GetParameterPolicyMemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetParameterPolicyMember)(nil)).Elem()
+}
+
+func (i GetParameterPolicyMemberArray) ToGetParameterPolicyMemberArrayOutput() GetParameterPolicyMemberArrayOutput {
+	return i.ToGetParameterPolicyMemberArrayOutputWithContext(context.Background())
+}
+
+func (i GetParameterPolicyMemberArray) ToGetParameterPolicyMemberArrayOutputWithContext(ctx context.Context) GetParameterPolicyMemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetParameterPolicyMemberArrayOutput)
+}
+
+type GetParameterPolicyMemberOutput struct{ *pulumi.OutputState }
+
+func (GetParameterPolicyMemberOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetParameterPolicyMember)(nil)).Elem()
+}
+
+func (o GetParameterPolicyMemberOutput) ToGetParameterPolicyMemberOutput() GetParameterPolicyMemberOutput {
+	return o
+}
+
+func (o GetParameterPolicyMemberOutput) ToGetParameterPolicyMemberOutputWithContext(ctx context.Context) GetParameterPolicyMemberOutput {
+	return o
+}
+
+// IAM policy binding member referring to a Google Cloud resource by user-assigned name. If a
+// resource is deleted and recreated with the same name, the binding will be applicable to the
+// new resource. Format:
+// 'principal://parametermanager.googleapis.com/projects/{{project}}/name/locations/global/parameters/{{parameter_id}}'
+func (o GetParameterPolicyMemberOutput) IamPolicyNamePrincipal() pulumi.StringOutput {
+	return o.ApplyT(func(v GetParameterPolicyMember) string { return v.IamPolicyNamePrincipal }).(pulumi.StringOutput)
+}
+
+// IAM policy binding member referring to a Google Cloud resource by system-assigned unique identifier.
+// If a resource is deleted and recreated with the same name, the binding will not be applicable to the
+// new resource. Format:
+// 'principal://parametermanager.googleapis.com/projects/{{project}}/uid/locations/global/parameters/{{uid}}'
+func (o GetParameterPolicyMemberOutput) IamPolicyUidPrincipal() pulumi.StringOutput {
+	return o.ApplyT(func(v GetParameterPolicyMember) string { return v.IamPolicyUidPrincipal }).(pulumi.StringOutput)
+}
+
+type GetParameterPolicyMemberArrayOutput struct{ *pulumi.OutputState }
+
+func (GetParameterPolicyMemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetParameterPolicyMember)(nil)).Elem()
+}
+
+func (o GetParameterPolicyMemberArrayOutput) ToGetParameterPolicyMemberArrayOutput() GetParameterPolicyMemberArrayOutput {
+	return o
+}
+
+func (o GetParameterPolicyMemberArrayOutput) ToGetParameterPolicyMemberArrayOutputWithContext(ctx context.Context) GetParameterPolicyMemberArrayOutput {
+	return o
+}
+
+func (o GetParameterPolicyMemberArrayOutput) Index(i pulumi.IntInput) GetParameterPolicyMemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetParameterPolicyMember {
+		return vs[0].([]GetParameterPolicyMember)[vs[1].(int)]
+	}).(GetParameterPolicyMemberOutput)
+}
+
 type GetRegionalParameterPolicyMember struct {
 	// IAM policy binding member referring to a Google Cloud resource by user-assigned name. If a resource is
 	// deleted and recreated with the same name, the binding will be applicable to the new resource. Format:
@@ -391,17 +515,340 @@ func (o GetRegionalParameterPolicyMemberArrayOutput) Index(i pulumi.IntInput) Ge
 	}).(GetRegionalParameterPolicyMemberOutput)
 }
 
+type GetRegionalParametersParameter struct {
+	// The time at which the regional parameter was created.
+	CreateTime      string            `pulumi:"createTime"`
+	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
+	// The format type of the regional parameter.
+	Format string `pulumi:"format"`
+	// The labels assigned to the regional parameter.
+	Labels map[string]string `pulumi:"labels"`
+	// The location of regional parameter.
+	Location string `pulumi:"location"`
+	// The resource name of the regional parameter. Format: `projects/{{project}}/locations/{{location}}/parameters/{{parameter_id}}`
+	Name string `pulumi:"name"`
+	// The unique name of the resource.
+	ParameterId string `pulumi:"parameterId"`
+	// An object containing a unique resource identity tied to the regional parameter. Structure is documented below.
+	PolicyMembers []GetRegionalParametersParameterPolicyMember `pulumi:"policyMembers"`
+	// The ID of the project.
+	Project string `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	//  and default labels configured on the provider.
+	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
+	// The time at which the regional parameter was updated.
+	UpdateTime string `pulumi:"updateTime"`
+}
+
+// GetRegionalParametersParameterInput is an input type that accepts GetRegionalParametersParameterArgs and GetRegionalParametersParameterOutput values.
+// You can construct a concrete instance of `GetRegionalParametersParameterInput` via:
+//
+//	GetRegionalParametersParameterArgs{...}
+type GetRegionalParametersParameterInput interface {
+	pulumi.Input
+
+	ToGetRegionalParametersParameterOutput() GetRegionalParametersParameterOutput
+	ToGetRegionalParametersParameterOutputWithContext(context.Context) GetRegionalParametersParameterOutput
+}
+
+type GetRegionalParametersParameterArgs struct {
+	// The time at which the regional parameter was created.
+	CreateTime      pulumi.StringInput    `pulumi:"createTime"`
+	EffectiveLabels pulumi.StringMapInput `pulumi:"effectiveLabels"`
+	// The format type of the regional parameter.
+	Format pulumi.StringInput `pulumi:"format"`
+	// The labels assigned to the regional parameter.
+	Labels pulumi.StringMapInput `pulumi:"labels"`
+	// The location of regional parameter.
+	Location pulumi.StringInput `pulumi:"location"`
+	// The resource name of the regional parameter. Format: `projects/{{project}}/locations/{{location}}/parameters/{{parameter_id}}`
+	Name pulumi.StringInput `pulumi:"name"`
+	// The unique name of the resource.
+	ParameterId pulumi.StringInput `pulumi:"parameterId"`
+	// An object containing a unique resource identity tied to the regional parameter. Structure is documented below.
+	PolicyMembers GetRegionalParametersParameterPolicyMemberArrayInput `pulumi:"policyMembers"`
+	// The ID of the project.
+	Project pulumi.StringInput `pulumi:"project"`
+	// The combination of labels configured directly on the resource
+	//  and default labels configured on the provider.
+	PulumiLabels pulumi.StringMapInput `pulumi:"pulumiLabels"`
+	// The time at which the regional parameter was updated.
+	UpdateTime pulumi.StringInput `pulumi:"updateTime"`
+}
+
+func (GetRegionalParametersParameterArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionalParametersParameter)(nil)).Elem()
+}
+
+func (i GetRegionalParametersParameterArgs) ToGetRegionalParametersParameterOutput() GetRegionalParametersParameterOutput {
+	return i.ToGetRegionalParametersParameterOutputWithContext(context.Background())
+}
+
+func (i GetRegionalParametersParameterArgs) ToGetRegionalParametersParameterOutputWithContext(ctx context.Context) GetRegionalParametersParameterOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionalParametersParameterOutput)
+}
+
+// GetRegionalParametersParameterArrayInput is an input type that accepts GetRegionalParametersParameterArray and GetRegionalParametersParameterArrayOutput values.
+// You can construct a concrete instance of `GetRegionalParametersParameterArrayInput` via:
+//
+//	GetRegionalParametersParameterArray{ GetRegionalParametersParameterArgs{...} }
+type GetRegionalParametersParameterArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionalParametersParameterArrayOutput() GetRegionalParametersParameterArrayOutput
+	ToGetRegionalParametersParameterArrayOutputWithContext(context.Context) GetRegionalParametersParameterArrayOutput
+}
+
+type GetRegionalParametersParameterArray []GetRegionalParametersParameterInput
+
+func (GetRegionalParametersParameterArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionalParametersParameter)(nil)).Elem()
+}
+
+func (i GetRegionalParametersParameterArray) ToGetRegionalParametersParameterArrayOutput() GetRegionalParametersParameterArrayOutput {
+	return i.ToGetRegionalParametersParameterArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionalParametersParameterArray) ToGetRegionalParametersParameterArrayOutputWithContext(ctx context.Context) GetRegionalParametersParameterArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionalParametersParameterArrayOutput)
+}
+
+type GetRegionalParametersParameterOutput struct{ *pulumi.OutputState }
+
+func (GetRegionalParametersParameterOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionalParametersParameter)(nil)).Elem()
+}
+
+func (o GetRegionalParametersParameterOutput) ToGetRegionalParametersParameterOutput() GetRegionalParametersParameterOutput {
+	return o
+}
+
+func (o GetRegionalParametersParameterOutput) ToGetRegionalParametersParameterOutputWithContext(ctx context.Context) GetRegionalParametersParameterOutput {
+	return o
+}
+
+// The time at which the regional parameter was created.
+func (o GetRegionalParametersParameterOutput) CreateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionalParametersParameter) string { return v.CreateTime }).(pulumi.StringOutput)
+}
+
+func (o GetRegionalParametersParameterOutput) EffectiveLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetRegionalParametersParameter) map[string]string { return v.EffectiveLabels }).(pulumi.StringMapOutput)
+}
+
+// The format type of the regional parameter.
+func (o GetRegionalParametersParameterOutput) Format() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionalParametersParameter) string { return v.Format }).(pulumi.StringOutput)
+}
+
+// The labels assigned to the regional parameter.
+func (o GetRegionalParametersParameterOutput) Labels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetRegionalParametersParameter) map[string]string { return v.Labels }).(pulumi.StringMapOutput)
+}
+
+// The location of regional parameter.
+func (o GetRegionalParametersParameterOutput) Location() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionalParametersParameter) string { return v.Location }).(pulumi.StringOutput)
+}
+
+// The resource name of the regional parameter. Format: `projects/{{project}}/locations/{{location}}/parameters/{{parameter_id}}`
+func (o GetRegionalParametersParameterOutput) Name() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionalParametersParameter) string { return v.Name }).(pulumi.StringOutput)
+}
+
+// The unique name of the resource.
+func (o GetRegionalParametersParameterOutput) ParameterId() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionalParametersParameter) string { return v.ParameterId }).(pulumi.StringOutput)
+}
+
+// An object containing a unique resource identity tied to the regional parameter. Structure is documented below.
+func (o GetRegionalParametersParameterOutput) PolicyMembers() GetRegionalParametersParameterPolicyMemberArrayOutput {
+	return o.ApplyT(func(v GetRegionalParametersParameter) []GetRegionalParametersParameterPolicyMember {
+		return v.PolicyMembers
+	}).(GetRegionalParametersParameterPolicyMemberArrayOutput)
+}
+
+// The ID of the project.
+func (o GetRegionalParametersParameterOutput) Project() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionalParametersParameter) string { return v.Project }).(pulumi.StringOutput)
+}
+
+// The combination of labels configured directly on the resource
+//
+//	and default labels configured on the provider.
+func (o GetRegionalParametersParameterOutput) PulumiLabels() pulumi.StringMapOutput {
+	return o.ApplyT(func(v GetRegionalParametersParameter) map[string]string { return v.PulumiLabels }).(pulumi.StringMapOutput)
+}
+
+// The time at which the regional parameter was updated.
+func (o GetRegionalParametersParameterOutput) UpdateTime() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionalParametersParameter) string { return v.UpdateTime }).(pulumi.StringOutput)
+}
+
+type GetRegionalParametersParameterArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionalParametersParameterArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionalParametersParameter)(nil)).Elem()
+}
+
+func (o GetRegionalParametersParameterArrayOutput) ToGetRegionalParametersParameterArrayOutput() GetRegionalParametersParameterArrayOutput {
+	return o
+}
+
+func (o GetRegionalParametersParameterArrayOutput) ToGetRegionalParametersParameterArrayOutputWithContext(ctx context.Context) GetRegionalParametersParameterArrayOutput {
+	return o
+}
+
+func (o GetRegionalParametersParameterArrayOutput) Index(i pulumi.IntInput) GetRegionalParametersParameterOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionalParametersParameter {
+		return vs[0].([]GetRegionalParametersParameter)[vs[1].(int)]
+	}).(GetRegionalParametersParameterOutput)
+}
+
+type GetRegionalParametersParameterPolicyMember struct {
+	// AM policy binding member referring to a Google Cloud resource by user-assigned name. If a resource is deleted and recreated with the same name, the binding will be applicable to the
+	// new resource. Format:
+	// `principal://parametermanager.googleapis.com/projects/{{project}}/name/locations/{{location}}/parameters/{{parameter_id}}`
+	IamPolicyNamePrincipal string `pulumi:"iamPolicyNamePrincipal"`
+	// IAM policy binding member referring to a Google Cloud resource by system-assigned unique identifier.
+	// If a resource is deleted and recreated with the same name, the binding will not be applicable to the
+	// new resource. Format:
+	// `principal://parametermanager.googleapis.com/projects/{{project}}/uid/locations/{{location}}/parameters/{{uid}}`
+	IamPolicyUidPrincipal string `pulumi:"iamPolicyUidPrincipal"`
+}
+
+// GetRegionalParametersParameterPolicyMemberInput is an input type that accepts GetRegionalParametersParameterPolicyMemberArgs and GetRegionalParametersParameterPolicyMemberOutput values.
+// You can construct a concrete instance of `GetRegionalParametersParameterPolicyMemberInput` via:
+//
+//	GetRegionalParametersParameterPolicyMemberArgs{...}
+type GetRegionalParametersParameterPolicyMemberInput interface {
+	pulumi.Input
+
+	ToGetRegionalParametersParameterPolicyMemberOutput() GetRegionalParametersParameterPolicyMemberOutput
+	ToGetRegionalParametersParameterPolicyMemberOutputWithContext(context.Context) GetRegionalParametersParameterPolicyMemberOutput
+}
+
+type GetRegionalParametersParameterPolicyMemberArgs struct {
+	// AM policy binding member referring to a Google Cloud resource by user-assigned name. If a resource is deleted and recreated with the same name, the binding will be applicable to the
+	// new resource. Format:
+	// `principal://parametermanager.googleapis.com/projects/{{project}}/name/locations/{{location}}/parameters/{{parameter_id}}`
+	IamPolicyNamePrincipal pulumi.StringInput `pulumi:"iamPolicyNamePrincipal"`
+	// IAM policy binding member referring to a Google Cloud resource by system-assigned unique identifier.
+	// If a resource is deleted and recreated with the same name, the binding will not be applicable to the
+	// new resource. Format:
+	// `principal://parametermanager.googleapis.com/projects/{{project}}/uid/locations/{{location}}/parameters/{{uid}}`
+	IamPolicyUidPrincipal pulumi.StringInput `pulumi:"iamPolicyUidPrincipal"`
+}
+
+func (GetRegionalParametersParameterPolicyMemberArgs) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionalParametersParameterPolicyMember)(nil)).Elem()
+}
+
+func (i GetRegionalParametersParameterPolicyMemberArgs) ToGetRegionalParametersParameterPolicyMemberOutput() GetRegionalParametersParameterPolicyMemberOutput {
+	return i.ToGetRegionalParametersParameterPolicyMemberOutputWithContext(context.Background())
+}
+
+func (i GetRegionalParametersParameterPolicyMemberArgs) ToGetRegionalParametersParameterPolicyMemberOutputWithContext(ctx context.Context) GetRegionalParametersParameterPolicyMemberOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionalParametersParameterPolicyMemberOutput)
+}
+
+// GetRegionalParametersParameterPolicyMemberArrayInput is an input type that accepts GetRegionalParametersParameterPolicyMemberArray and GetRegionalParametersParameterPolicyMemberArrayOutput values.
+// You can construct a concrete instance of `GetRegionalParametersParameterPolicyMemberArrayInput` via:
+//
+//	GetRegionalParametersParameterPolicyMemberArray{ GetRegionalParametersParameterPolicyMemberArgs{...} }
+type GetRegionalParametersParameterPolicyMemberArrayInput interface {
+	pulumi.Input
+
+	ToGetRegionalParametersParameterPolicyMemberArrayOutput() GetRegionalParametersParameterPolicyMemberArrayOutput
+	ToGetRegionalParametersParameterPolicyMemberArrayOutputWithContext(context.Context) GetRegionalParametersParameterPolicyMemberArrayOutput
+}
+
+type GetRegionalParametersParameterPolicyMemberArray []GetRegionalParametersParameterPolicyMemberInput
+
+func (GetRegionalParametersParameterPolicyMemberArray) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionalParametersParameterPolicyMember)(nil)).Elem()
+}
+
+func (i GetRegionalParametersParameterPolicyMemberArray) ToGetRegionalParametersParameterPolicyMemberArrayOutput() GetRegionalParametersParameterPolicyMemberArrayOutput {
+	return i.ToGetRegionalParametersParameterPolicyMemberArrayOutputWithContext(context.Background())
+}
+
+func (i GetRegionalParametersParameterPolicyMemberArray) ToGetRegionalParametersParameterPolicyMemberArrayOutputWithContext(ctx context.Context) GetRegionalParametersParameterPolicyMemberArrayOutput {
+	return pulumi.ToOutputWithContext(ctx, i).(GetRegionalParametersParameterPolicyMemberArrayOutput)
+}
+
+type GetRegionalParametersParameterPolicyMemberOutput struct{ *pulumi.OutputState }
+
+func (GetRegionalParametersParameterPolicyMemberOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*GetRegionalParametersParameterPolicyMember)(nil)).Elem()
+}
+
+func (o GetRegionalParametersParameterPolicyMemberOutput) ToGetRegionalParametersParameterPolicyMemberOutput() GetRegionalParametersParameterPolicyMemberOutput {
+	return o
+}
+
+func (o GetRegionalParametersParameterPolicyMemberOutput) ToGetRegionalParametersParameterPolicyMemberOutputWithContext(ctx context.Context) GetRegionalParametersParameterPolicyMemberOutput {
+	return o
+}
+
+// AM policy binding member referring to a Google Cloud resource by user-assigned name. If a resource is deleted and recreated with the same name, the binding will be applicable to the
+// new resource. Format:
+// `principal://parametermanager.googleapis.com/projects/{{project}}/name/locations/{{location}}/parameters/{{parameter_id}}`
+func (o GetRegionalParametersParameterPolicyMemberOutput) IamPolicyNamePrincipal() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionalParametersParameterPolicyMember) string { return v.IamPolicyNamePrincipal }).(pulumi.StringOutput)
+}
+
+// IAM policy binding member referring to a Google Cloud resource by system-assigned unique identifier.
+// If a resource is deleted and recreated with the same name, the binding will not be applicable to the
+// new resource. Format:
+// `principal://parametermanager.googleapis.com/projects/{{project}}/uid/locations/{{location}}/parameters/{{uid}}`
+func (o GetRegionalParametersParameterPolicyMemberOutput) IamPolicyUidPrincipal() pulumi.StringOutput {
+	return o.ApplyT(func(v GetRegionalParametersParameterPolicyMember) string { return v.IamPolicyUidPrincipal }).(pulumi.StringOutput)
+}
+
+type GetRegionalParametersParameterPolicyMemberArrayOutput struct{ *pulumi.OutputState }
+
+func (GetRegionalParametersParameterPolicyMemberArrayOutput) ElementType() reflect.Type {
+	return reflect.TypeOf((*[]GetRegionalParametersParameterPolicyMember)(nil)).Elem()
+}
+
+func (o GetRegionalParametersParameterPolicyMemberArrayOutput) ToGetRegionalParametersParameterPolicyMemberArrayOutput() GetRegionalParametersParameterPolicyMemberArrayOutput {
+	return o
+}
+
+func (o GetRegionalParametersParameterPolicyMemberArrayOutput) ToGetRegionalParametersParameterPolicyMemberArrayOutputWithContext(ctx context.Context) GetRegionalParametersParameterPolicyMemberArrayOutput {
+	return o
+}
+
+func (o GetRegionalParametersParameterPolicyMemberArrayOutput) Index(i pulumi.IntInput) GetRegionalParametersParameterPolicyMemberOutput {
+	return pulumi.All(o, i).ApplyT(func(vs []interface{}) GetRegionalParametersParameterPolicyMember {
+		return vs[0].([]GetRegionalParametersParameterPolicyMember)[vs[1].(int)]
+	}).(GetRegionalParametersParameterPolicyMemberOutput)
+}
+
 func init() {
 	pulumi.RegisterInputType(reflect.TypeOf((*ParameterPolicyMemberInput)(nil)).Elem(), ParameterPolicyMemberArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*ParameterPolicyMemberArrayInput)(nil)).Elem(), ParameterPolicyMemberArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionalParameterPolicyMemberInput)(nil)).Elem(), RegionalParameterPolicyMemberArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*RegionalParameterPolicyMemberArrayInput)(nil)).Elem(), RegionalParameterPolicyMemberArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetParameterPolicyMemberInput)(nil)).Elem(), GetParameterPolicyMemberArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetParameterPolicyMemberArrayInput)(nil)).Elem(), GetParameterPolicyMemberArray{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionalParameterPolicyMemberInput)(nil)).Elem(), GetRegionalParameterPolicyMemberArgs{})
 	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionalParameterPolicyMemberArrayInput)(nil)).Elem(), GetRegionalParameterPolicyMemberArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionalParametersParameterInput)(nil)).Elem(), GetRegionalParametersParameterArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionalParametersParameterArrayInput)(nil)).Elem(), GetRegionalParametersParameterArray{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionalParametersParameterPolicyMemberInput)(nil)).Elem(), GetRegionalParametersParameterPolicyMemberArgs{})
+	pulumi.RegisterInputType(reflect.TypeOf((*GetRegionalParametersParameterPolicyMemberArrayInput)(nil)).Elem(), GetRegionalParametersParameterPolicyMemberArray{})
 	pulumi.RegisterOutputType(ParameterPolicyMemberOutput{})
 	pulumi.RegisterOutputType(ParameterPolicyMemberArrayOutput{})
 	pulumi.RegisterOutputType(RegionalParameterPolicyMemberOutput{})
 	pulumi.RegisterOutputType(RegionalParameterPolicyMemberArrayOutput{})
+	pulumi.RegisterOutputType(GetParameterPolicyMemberOutput{})
+	pulumi.RegisterOutputType(GetParameterPolicyMemberArrayOutput{})
 	pulumi.RegisterOutputType(GetRegionalParameterPolicyMemberOutput{})
 	pulumi.RegisterOutputType(GetRegionalParameterPolicyMemberArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionalParametersParameterOutput{})
+	pulumi.RegisterOutputType(GetRegionalParametersParameterArrayOutput{})
+	pulumi.RegisterOutputType(GetRegionalParametersParameterPolicyMemberOutput{})
+	pulumi.RegisterOutputType(GetRegionalParametersParameterPolicyMemberArrayOutput{})
 }

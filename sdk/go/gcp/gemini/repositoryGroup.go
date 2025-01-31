@@ -12,7 +12,50 @@ import (
 	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
 )
 
+// The resource for managing Repository Group for Gemini Code Assist.
+//
+// To get more information about RepositoryGroup, see:
+//
+// * [API documentation](https://cloud.google.com/gemini/docs/api/reference/rest/v1/projects.locations.codeRepositoryIndexes.repositoryGroups)
+//
 // ## Example Usage
+//
+// ### Gemini Repository Group Basic
+//
+// ```go
+// package main
+//
+// import (
+//
+//	"github.com/pulumi/pulumi-gcp/sdk/v8/go/gcp/gemini"
+//	"github.com/pulumi/pulumi/sdk/v3/go/pulumi"
+//
+// )
+//
+//	func main() {
+//		pulumi.Run(func(ctx *pulumi.Context) error {
+//			_, err := gemini.NewRepositoryGroup(ctx, "example", &gemini.RepositoryGroupArgs{
+//				Location:            pulumi.String("us-central1"),
+//				CodeRepositoryIndex: pulumi.String("example-cri"),
+//				RepositoryGroupId:   pulumi.String("example-repository-group"),
+//				Repositories: gemini.RepositoryGroupRepositoryArray{
+//					&gemini.RepositoryGroupRepositoryArgs{
+//						Resource:      pulumi.String("projects/example-project/locations/us-central1/connections/example-connection/gitRepositoryLinks/example-repo"),
+//						BranchPattern: pulumi.String("main"),
+//					},
+//				},
+//				Labels: pulumi.StringMap{
+//					"label1": pulumi.String("value1"),
+//				},
+//			})
+//			if err != nil {
+//				return err
+//			}
+//			return nil
+//		})
+//	}
+//
+// ```
 //
 // ## Import
 //
@@ -42,27 +85,27 @@ type RepositoryGroup struct {
 
 	// Required. Id of the Code Repository Index.
 	CodeRepositoryIndex pulumi.StringOutput `pulumi:"codeRepositoryIndex"`
-	// Output only. Create time stamp
+	// Output only. Create time stamp.
 	CreateTime pulumi.StringOutput `pulumi:"createTime"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapOutput `pulumi:"effectiveLabels"`
-	// Optional. Labels as key value pairs **Note**: This field is non-authoritative, and will only manage the labels present
+	// Optional. Labels as key value pairs. **Note**: This field is non-authoritative, and will only manage the labels present
 	// in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels pulumi.StringMapOutput `pulumi:"labels"`
 	// The location of the Code Repository Index, for example `us-central1`.
 	Location pulumi.StringOutput `pulumi:"location"`
-	// Immutable. Identifier. name of resource
+	// Immutable. Identifier. Name of Repository Group.
 	Name    pulumi.StringOutput `pulumi:"name"`
 	Project pulumi.StringOutput `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapOutput `pulumi:"pulumiLabels"`
-	// Required. List of repositories to group
+	// Required. List of repositories to group.
 	// Structure is documented below.
 	Repositories RepositoryGroupRepositoryArrayOutput `pulumi:"repositories"`
 	// Required. Id of the Repository Group.
 	RepositoryGroupId pulumi.StringOutput `pulumi:"repositoryGroupId"`
-	// Output only. Update time stamp
+	// Output only. Update time stamp.
 	UpdateTime pulumi.StringOutput `pulumi:"updateTime"`
 }
 
@@ -115,54 +158,54 @@ func GetRepositoryGroup(ctx *pulumi.Context,
 type repositoryGroupState struct {
 	// Required. Id of the Code Repository Index.
 	CodeRepositoryIndex *string `pulumi:"codeRepositoryIndex"`
-	// Output only. Create time stamp
+	// Output only. Create time stamp.
 	CreateTime *string `pulumi:"createTime"`
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels map[string]string `pulumi:"effectiveLabels"`
-	// Optional. Labels as key value pairs **Note**: This field is non-authoritative, and will only manage the labels present
+	// Optional. Labels as key value pairs. **Note**: This field is non-authoritative, and will only manage the labels present
 	// in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location of the Code Repository Index, for example `us-central1`.
 	Location *string `pulumi:"location"`
-	// Immutable. Identifier. name of resource
+	// Immutable. Identifier. Name of Repository Group.
 	Name    *string `pulumi:"name"`
 	Project *string `pulumi:"project"`
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels map[string]string `pulumi:"pulumiLabels"`
-	// Required. List of repositories to group
+	// Required. List of repositories to group.
 	// Structure is documented below.
 	Repositories []RepositoryGroupRepository `pulumi:"repositories"`
 	// Required. Id of the Repository Group.
 	RepositoryGroupId *string `pulumi:"repositoryGroupId"`
-	// Output only. Update time stamp
+	// Output only. Update time stamp.
 	UpdateTime *string `pulumi:"updateTime"`
 }
 
 type RepositoryGroupState struct {
 	// Required. Id of the Code Repository Index.
 	CodeRepositoryIndex pulumi.StringPtrInput
-	// Output only. Create time stamp
+	// Output only. Create time stamp.
 	CreateTime pulumi.StringPtrInput
 	// All of labels (key/value pairs) present on the resource in GCP, including the labels configured through Pulumi, other clients and services.
 	EffectiveLabels pulumi.StringMapInput
-	// Optional. Labels as key value pairs **Note**: This field is non-authoritative, and will only manage the labels present
+	// Optional. Labels as key value pairs. **Note**: This field is non-authoritative, and will only manage the labels present
 	// in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location of the Code Repository Index, for example `us-central1`.
 	Location pulumi.StringPtrInput
-	// Immutable. Identifier. name of resource
+	// Immutable. Identifier. Name of Repository Group.
 	Name    pulumi.StringPtrInput
 	Project pulumi.StringPtrInput
 	// The combination of labels configured directly on the resource
 	// and default labels configured on the provider.
 	PulumiLabels pulumi.StringMapInput
-	// Required. List of repositories to group
+	// Required. List of repositories to group.
 	// Structure is documented below.
 	Repositories RepositoryGroupRepositoryArrayInput
 	// Required. Id of the Repository Group.
 	RepositoryGroupId pulumi.StringPtrInput
-	// Output only. Update time stamp
+	// Output only. Update time stamp.
 	UpdateTime pulumi.StringPtrInput
 }
 
@@ -173,13 +216,13 @@ func (RepositoryGroupState) ElementType() reflect.Type {
 type repositoryGroupArgs struct {
 	// Required. Id of the Code Repository Index.
 	CodeRepositoryIndex string `pulumi:"codeRepositoryIndex"`
-	// Optional. Labels as key value pairs **Note**: This field is non-authoritative, and will only manage the labels present
+	// Optional. Labels as key value pairs. **Note**: This field is non-authoritative, and will only manage the labels present
 	// in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels map[string]string `pulumi:"labels"`
 	// The location of the Code Repository Index, for example `us-central1`.
 	Location string  `pulumi:"location"`
 	Project  *string `pulumi:"project"`
-	// Required. List of repositories to group
+	// Required. List of repositories to group.
 	// Structure is documented below.
 	Repositories []RepositoryGroupRepository `pulumi:"repositories"`
 	// Required. Id of the Repository Group.
@@ -190,13 +233,13 @@ type repositoryGroupArgs struct {
 type RepositoryGroupArgs struct {
 	// Required. Id of the Code Repository Index.
 	CodeRepositoryIndex pulumi.StringInput
-	// Optional. Labels as key value pairs **Note**: This field is non-authoritative, and will only manage the labels present
+	// Optional. Labels as key value pairs. **Note**: This field is non-authoritative, and will only manage the labels present
 	// in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
 	Labels pulumi.StringMapInput
 	// The location of the Code Repository Index, for example `us-central1`.
 	Location pulumi.StringInput
 	Project  pulumi.StringPtrInput
-	// Required. List of repositories to group
+	// Required. List of repositories to group.
 	// Structure is documented below.
 	Repositories RepositoryGroupRepositoryArrayInput
 	// Required. Id of the Repository Group.
@@ -295,7 +338,7 @@ func (o RepositoryGroupOutput) CodeRepositoryIndex() pulumi.StringOutput {
 	return o.ApplyT(func(v *RepositoryGroup) pulumi.StringOutput { return v.CodeRepositoryIndex }).(pulumi.StringOutput)
 }
 
-// Output only. Create time stamp
+// Output only. Create time stamp.
 func (o RepositoryGroupOutput) CreateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *RepositoryGroup) pulumi.StringOutput { return v.CreateTime }).(pulumi.StringOutput)
 }
@@ -305,7 +348,7 @@ func (o RepositoryGroupOutput) EffectiveLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *RepositoryGroup) pulumi.StringMapOutput { return v.EffectiveLabels }).(pulumi.StringMapOutput)
 }
 
-// Optional. Labels as key value pairs **Note**: This field is non-authoritative, and will only manage the labels present
+// Optional. Labels as key value pairs. **Note**: This field is non-authoritative, and will only manage the labels present
 // in your configuration. Please refer to the field 'effective_labels' for all of the labels present on the resource.
 func (o RepositoryGroupOutput) Labels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *RepositoryGroup) pulumi.StringMapOutput { return v.Labels }).(pulumi.StringMapOutput)
@@ -316,7 +359,7 @@ func (o RepositoryGroupOutput) Location() pulumi.StringOutput {
 	return o.ApplyT(func(v *RepositoryGroup) pulumi.StringOutput { return v.Location }).(pulumi.StringOutput)
 }
 
-// Immutable. Identifier. name of resource
+// Immutable. Identifier. Name of Repository Group.
 func (o RepositoryGroupOutput) Name() pulumi.StringOutput {
 	return o.ApplyT(func(v *RepositoryGroup) pulumi.StringOutput { return v.Name }).(pulumi.StringOutput)
 }
@@ -331,7 +374,7 @@ func (o RepositoryGroupOutput) PulumiLabels() pulumi.StringMapOutput {
 	return o.ApplyT(func(v *RepositoryGroup) pulumi.StringMapOutput { return v.PulumiLabels }).(pulumi.StringMapOutput)
 }
 
-// Required. List of repositories to group
+// Required. List of repositories to group.
 // Structure is documented below.
 func (o RepositoryGroupOutput) Repositories() RepositoryGroupRepositoryArrayOutput {
 	return o.ApplyT(func(v *RepositoryGroup) RepositoryGroupRepositoryArrayOutput { return v.Repositories }).(RepositoryGroupRepositoryArrayOutput)
@@ -342,7 +385,7 @@ func (o RepositoryGroupOutput) RepositoryGroupId() pulumi.StringOutput {
 	return o.ApplyT(func(v *RepositoryGroup) pulumi.StringOutput { return v.RepositoryGroupId }).(pulumi.StringOutput)
 }
 
-// Output only. Update time stamp
+// Output only. Update time stamp.
 func (o RepositoryGroupOutput) UpdateTime() pulumi.StringOutput {
 	return o.ApplyT(func(v *RepositoryGroup) pulumi.StringOutput { return v.UpdateTime }).(pulumi.StringOutput)
 }

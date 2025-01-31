@@ -83,7 +83,7 @@ public final class CodeRepositoryIndexState extends com.pulumi.resources.Resourc
 
     /**
      * Optional. Immutable. Customer-managed encryption key name, in the format
-     * projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*.
+     * `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`.
      * 
      */
     @Import(name="kmsKey")
@@ -91,7 +91,7 @@ public final class CodeRepositoryIndexState extends com.pulumi.resources.Resourc
 
     /**
      * @return Optional. Immutable. Customer-managed encryption key name, in the format
-     * projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*.
+     * `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`.
      * 
      */
     public Optional<Output<String>> kmsKey() {
@@ -183,12 +183,7 @@ public final class CodeRepositoryIndexState extends com.pulumi.resources.Resourc
 
     /**
      * Output only. Code Repository Index instance State.
-     * Possible values:
-     * STATE_UNSPECIFIED
-     * CREATING
-     * ACTIVE
-     * DELETING
-     * SUSPENDED
+     * Possible values are: `STATE_UNSPECIFIED`, `CREATING`, `ACTIVE`, `DELETING`, `SUSPENDED`.
      * 
      */
     @Import(name="state")
@@ -196,12 +191,7 @@ public final class CodeRepositoryIndexState extends com.pulumi.resources.Resourc
 
     /**
      * @return Output only. Code Repository Index instance State.
-     * Possible values:
-     * STATE_UNSPECIFIED
-     * CREATING
-     * ACTIVE
-     * DELETING
-     * SUSPENDED
+     * Possible values are: `STATE_UNSPECIFIED`, `CREATING`, `ACTIVE`, `DELETING`, `SUSPENDED`.
      * 
      */
     public Optional<Output<String>> state() {
@@ -348,7 +338,7 @@ public final class CodeRepositoryIndexState extends com.pulumi.resources.Resourc
 
         /**
          * @param kmsKey Optional. Immutable. Customer-managed encryption key name, in the format
-         * projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*.
+         * `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`.
          * 
          * @return builder
          * 
@@ -360,7 +350,7 @@ public final class CodeRepositoryIndexState extends com.pulumi.resources.Resourc
 
         /**
          * @param kmsKey Optional. Immutable. Customer-managed encryption key name, in the format
-         * projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*.
+         * `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`.
          * 
          * @return builder
          * 
@@ -484,12 +474,7 @@ public final class CodeRepositoryIndexState extends com.pulumi.resources.Resourc
 
         /**
          * @param state Output only. Code Repository Index instance State.
-         * Possible values:
-         * STATE_UNSPECIFIED
-         * CREATING
-         * ACTIVE
-         * DELETING
-         * SUSPENDED
+         * Possible values are: `STATE_UNSPECIFIED`, `CREATING`, `ACTIVE`, `DELETING`, `SUSPENDED`.
          * 
          * @return builder
          * 
@@ -501,12 +486,7 @@ public final class CodeRepositoryIndexState extends com.pulumi.resources.Resourc
 
         /**
          * @param state Output only. Code Repository Index instance State.
-         * Possible values:
-         * STATE_UNSPECIFIED
-         * CREATING
-         * ACTIVE
-         * DELETING
-         * SUSPENDED
+         * Possible values are: `STATE_UNSPECIFIED`, `CREATING`, `ACTIVE`, `DELETING`, `SUSPENDED`.
          * 
          * @return builder
          * 

@@ -5,6 +5,14 @@ import * as pulumi from "@pulumi/pulumi";
 import * as utilities from "../utilities";
 
 /**
+ * The resource for managing Code Repository Index for Gemini Code Assist.
+ *
+ * To get more information about CodeRepositoryIndex, see:
+ *
+ * * [API documentation](https://cloud.google.com/gemini/docs/api/reference/rest/v1/projects.locations.codeRepositoryIndexes)
+ * * How-to Guides
+ *     * [Gemini Code Assist overview](https://cloud.google.com/gemini/docs/codeassist/overview)
+ *
  * ## Example Usage
  *
  * ### Gemini Code Repository Index Basic
@@ -15,7 +23,7 @@ import * as utilities from "../utilities";
  *
  * const example = new gcp.gemini.CodeRepositoryIndex("example", {
  *     location: "us-central1",
- *     codeRepositoryIndexId: "",
+ *     codeRepositoryIndexId: "code-repository-index-example",
  *     kmsKey: "projects/projectExample/locations/locationExample/keyRings/keyRingExample/cryptoKeys/cryptoKeyExample",
  * });
  * ```
@@ -93,7 +101,7 @@ export class CodeRepositoryIndex extends pulumi.CustomResource {
     public readonly forceDestroy!: pulumi.Output<boolean | undefined>;
     /**
      * Optional. Immutable. Customer-managed encryption key name, in the format
-     * projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*.
+     * `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`.
      */
     public readonly kmsKey!: pulumi.Output<string | undefined>;
     /**
@@ -122,12 +130,7 @@ export class CodeRepositoryIndex extends pulumi.CustomResource {
     public /*out*/ readonly pulumiLabels!: pulumi.Output<{[key: string]: string}>;
     /**
      * Output only. Code Repository Index instance State.
-     * Possible values:
-     * STATE_UNSPECIFIED
-     * CREATING
-     * ACTIVE
-     * DELETING
-     * SUSPENDED
+     * Possible values are: `STATE_UNSPECIFIED`, `CREATING`, `ACTIVE`, `DELETING`, `SUSPENDED`.
      */
     public /*out*/ readonly state!: pulumi.Output<string>;
     /**
@@ -213,7 +216,7 @@ export interface CodeRepositoryIndexState {
     forceDestroy?: pulumi.Input<boolean>;
     /**
      * Optional. Immutable. Customer-managed encryption key name, in the format
-     * projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*.
+     * `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`.
      */
     kmsKey?: pulumi.Input<string>;
     /**
@@ -242,12 +245,7 @@ export interface CodeRepositoryIndexState {
     pulumiLabels?: pulumi.Input<{[key: string]: pulumi.Input<string>}>;
     /**
      * Output only. Code Repository Index instance State.
-     * Possible values:
-     * STATE_UNSPECIFIED
-     * CREATING
-     * ACTIVE
-     * DELETING
-     * SUSPENDED
+     * Possible values are: `STATE_UNSPECIFIED`, `CREATING`, `ACTIVE`, `DELETING`, `SUSPENDED`.
      */
     state?: pulumi.Input<string>;
     /**
@@ -273,7 +271,7 @@ export interface CodeRepositoryIndexArgs {
     forceDestroy?: pulumi.Input<boolean>;
     /**
      * Optional. Immutable. Customer-managed encryption key name, in the format
-     * projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*.
+     * `projects/*&#47;locations/*&#47;keyRings/*&#47;cryptoKeys/*`.
      */
     kmsKey?: pulumi.Input<string>;
     /**

@@ -6,6 +6,7 @@ package com.pulumi.gcp.cloudrunv2.inputs;
 import com.pulumi.core.Output;
 import com.pulumi.core.annotations.Import;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceBinaryAuthorizationArgs;
+import com.pulumi.gcp.cloudrunv2.inputs.ServiceBuildConfigArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceConditionArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceScalingArgs;
 import com.pulumi.gcp.cloudrunv2.inputs.ServiceTemplateArgs;
@@ -65,6 +66,21 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
      */
     public Optional<Output<ServiceBinaryAuthorizationArgs>> binaryAuthorization() {
         return Optional.ofNullable(this.binaryAuthorization);
+    }
+
+    /**
+     * Configuration for building a Cloud Run function.
+     * 
+     */
+    @Import(name="buildConfig")
+    private @Nullable Output<ServiceBuildConfigArgs> buildConfig;
+
+    /**
+     * @return Configuration for building a Cloud Run function.
+     * 
+     */
+    public Optional<Output<ServiceBuildConfigArgs>> buildConfig() {
+        return Optional.ofNullable(this.buildConfig);
     }
 
     /**
@@ -657,6 +673,7 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
     private ServiceState(ServiceState $) {
         this.annotations = $.annotations;
         this.binaryAuthorization = $.binaryAuthorization;
+        this.buildConfig = $.buildConfig;
         this.client = $.client;
         this.clientVersion = $.clientVersion;
         this.conditions = $.conditions;
@@ -766,6 +783,27 @@ public final class ServiceState extends com.pulumi.resources.ResourceArgs {
          */
         public Builder binaryAuthorization(ServiceBinaryAuthorizationArgs binaryAuthorization) {
             return binaryAuthorization(Output.of(binaryAuthorization));
+        }
+
+        /**
+         * @param buildConfig Configuration for building a Cloud Run function.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder buildConfig(@Nullable Output<ServiceBuildConfigArgs> buildConfig) {
+            $.buildConfig = buildConfig;
+            return this;
+        }
+
+        /**
+         * @param buildConfig Configuration for building a Cloud Run function.
+         * 
+         * @return builder
+         * 
+         */
+        public Builder buildConfig(ServiceBuildConfigArgs buildConfig) {
+            return buildConfig(Output.of(buildConfig));
         }
 
         /**

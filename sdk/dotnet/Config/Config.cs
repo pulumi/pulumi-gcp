@@ -88,6 +88,13 @@ namespace Pulumi.Gcp
             set => _apigeeCustomEndpoint.Set(value);
         }
 
+        private static readonly __Value<string?> _apihubCustomEndpoint = new __Value<string?>(() => __config.Get("apihubCustomEndpoint"));
+        public static string? ApihubCustomEndpoint
+        {
+            get => _apihubCustomEndpoint.Get();
+            set => _apihubCustomEndpoint.Set(value);
+        }
+
         private static readonly __Value<string?> _apikeysCustomEndpoint = new __Value<string?>(() => __config.Get("apikeysCustomEndpoint"));
         public static string? ApikeysCustomEndpoint
         {
