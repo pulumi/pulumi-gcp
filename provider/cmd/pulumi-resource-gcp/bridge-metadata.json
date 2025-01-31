@@ -1342,6 +1342,16 @@
                 "fields": {
                     "node_config": {
                         "maxItemsOne": true
+                    },
+                    "properties": {
+                        "maxItemsOne": true,
+                        "elem": {
+                            "fields": {
+                                "property": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -1538,6 +1548,15 @@
                                 }
                             }
                         }
+                    }
+                }
+            },
+            "google_apihub_api_hub_instance": {
+                "current": "gcp:apihub/apiHubInstance:ApiHubInstance",
+                "majorVersion": 8,
+                "fields": {
+                    "config": {
+                        "maxItemsOne": true
                     }
                 }
             },
@@ -3467,6 +3486,18 @@
                     }
                 }
             },
+            "google_chronicle_retrohunt": {
+                "current": "gcp:chronicle/retrohunt:Retrohunt",
+                "majorVersion": 8,
+                "fields": {
+                    "execution_interval": {
+                        "maxItemsOne": false
+                    },
+                    "process_interval": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
             "google_chronicle_rule": {
                 "current": "gcp:chronicle/rule:Rule",
                 "majorVersion": 8,
@@ -4048,6 +4079,9 @@
                 "majorVersion": 8,
                 "fields": {
                     "binary_authorization": {
+                        "maxItemsOne": true
+                    },
+                    "build_config": {
                         "maxItemsOne": true
                     },
                     "conditions": {
@@ -5369,6 +5403,15 @@
                 "current": "gcp:cloudfunctions/functionIamPolicy:FunctionIamPolicy",
                 "majorVersion": 8
             },
+            "google_colab_runtime": {
+                "current": "gcp:colab/runtime:Runtime",
+                "majorVersion": 8,
+                "fields": {
+                    "notebook_runtime_template_ref": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
             "google_colab_runtime_template": {
                 "current": "gcp:colab/runtimeTemplate:RuntimeTemplate",
                 "majorVersion": 8,
@@ -5398,6 +5441,31 @@
                         "maxItemsOne": true
                     }
                 }
+            },
+            "google_colab_runtime_template_iam_binding": {
+                "current": "gcp:colab/runtimeTemplateIamBinding:RuntimeTemplateIamBinding",
+                "majorVersion": 8,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    },
+                    "members": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_colab_runtime_template_iam_member": {
+                "current": "gcp:colab/runtimeTemplateIamMember:RuntimeTemplateIamMember",
+                "majorVersion": 8,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "google_colab_runtime_template_iam_policy": {
+                "current": "gcp:colab/runtimeTemplateIamPolicy:RuntimeTemplateIamPolicy",
+                "majorVersion": 8
             },
             "google_composer_environment": {
                 "current": "gcp:composer/environment:Environment",
@@ -5993,6 +6061,9 @@
                                 "src_ip_ranges": {
                                     "maxItemsOne": false
                                 },
+                                "src_networks": {
+                                    "maxItemsOne": false
+                                },
                                 "src_region_codes": {
                                     "maxItemsOne": false
                                 },
@@ -6114,6 +6185,9 @@
                                                 "maxItemsOne": false
                                             },
                                             "src_ip_ranges": {
+                                                "maxItemsOne": false
+                                            },
+                                            "src_networks": {
                                                 "maxItemsOne": false
                                             },
                                             "src_region_codes": {
@@ -6885,6 +6959,31 @@
                     }
                 }
             },
+            "google_compute_instance_template_iam_binding": {
+                "current": "gcp:compute/instanceTemplateIamBinding:InstanceTemplateIamBinding",
+                "majorVersion": 8,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    },
+                    "members": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_compute_instance_template_iam_member": {
+                "current": "gcp:compute/instanceTemplateIamMember:InstanceTemplateIamMember",
+                "majorVersion": 8,
+                "fields": {
+                    "condition": {
+                        "maxItemsOne": true
+                    }
+                }
+            },
+            "google_compute_instance_template_iam_policy": {
+                "current": "gcp:compute/instanceTemplateIamPolicy:InstanceTemplateIamPolicy",
+                "majorVersion": 8
+            },
             "google_compute_interconnect": {
                 "current": "gcp:compute/interconnect:Interconnect",
                 "majorVersion": 8,
@@ -7106,6 +7205,9 @@
                                 "src_ip_ranges": {
                                     "maxItemsOne": false
                                 },
+                                "src_networks": {
+                                    "maxItemsOne": false
+                                },
                                 "src_region_codes": {
                                     "maxItemsOne": false
                                 },
@@ -7233,6 +7335,9 @@
                                                 "maxItemsOne": false
                                             },
                                             "src_ip_ranges": {
+                                                "maxItemsOne": false
+                                            },
+                                            "src_networks": {
                                                 "maxItemsOne": false
                                             },
                                             "src_region_codes": {
@@ -8007,6 +8112,9 @@
                                 "src_ip_ranges": {
                                     "maxItemsOne": false
                                 },
+                                "src_networks": {
+                                    "maxItemsOne": false
+                                },
                                 "src_region_codes": {
                                     "maxItemsOne": false
                                 },
@@ -8134,6 +8242,9 @@
                                                 "maxItemsOne": false
                                             },
                                             "src_ip_ranges": {
+                                                "maxItemsOne": false
+                                            },
+                                            "src_networks": {
                                                 "maxItemsOne": false
                                             },
                                             "src_region_codes": {
@@ -23424,6 +23535,12 @@
                 "current": "gcp:networksecurity/securityProfile:SecurityProfile",
                 "majorVersion": 8,
                 "fields": {
+                    "custom_intercept_profile": {
+                        "maxItemsOne": true
+                    },
+                    "custom_mirroring_profile": {
+                        "maxItemsOne": true
+                    },
                     "threat_prevention_profile": {
                         "maxItemsOne": true,
                         "elem": {
@@ -25276,6 +25393,10 @@
                     }
                 }
             },
+            "google_parameter_manager_parameter_version": {
+                "current": "gcp:parametermanager/parameterVersion:ParameterVersion",
+                "majorVersion": 8
+            },
             "google_parameter_manager_regional_parameter": {
                 "current": "gcp:parametermanager/regionalParameter:RegionalParameter",
                 "majorVersion": 8,
@@ -26422,6 +26543,9 @@
                                 "aws_kinesis": {
                                     "maxItemsOne": true
                                 },
+                                "azure_event_hubs": {
+                                    "maxItemsOne": true
+                                },
                                 "cloud_storage": {
                                     "maxItemsOne": true,
                                     "elem": {
@@ -26605,6 +26729,9 @@
                     "psc_connections": {
                         "maxItemsOne": false
                     },
+                    "psc_service_attachments": {
+                        "maxItemsOne": false
+                    },
                     "state_info": {
                         "maxItemsOne": false,
                         "elem": {
@@ -26617,6 +26744,29 @@
                     },
                     "zone_distribution_config": {
                         "maxItemsOne": true
+                    }
+                }
+            },
+            "google_redis_cluster_user_created_connections": {
+                "current": "gcp:redis/clusterUserCreatedConnections:ClusterUserCreatedConnections",
+                "majorVersion": 8,
+                "fields": {
+                    "cluster_endpoints": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "connections": {
+                                    "maxItemsOne": false,
+                                    "elem": {
+                                        "fields": {
+                                            "psc_connection": {
+                                                "maxItemsOne": true
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -30878,6 +31028,9 @@
                     "binary_authorization": {
                         "maxItemsOne": false
                     },
+                    "build_config": {
+                        "maxItemsOne": false
+                    },
                     "conditions": {
                         "maxItemsOne": false
                     },
@@ -31383,6 +31536,10 @@
             },
             "google_cloudfunctions_function_iam_policy": {
                 "current": "gcp:cloudfunctions/getFunctionIamPolicy:getFunctionIamPolicy",
+                "majorVersion": 8
+            },
+            "google_colab_runtime_template_iam_policy": {
+                "current": "gcp:colab/getRuntimeTemplateIamPolicy:getRuntimeTemplateIamPolicy",
                 "majorVersion": 8
             },
             "google_composer_environment": {
@@ -32209,6 +32366,10 @@
                         "maxItemsOne": false
                     }
                 }
+            },
+            "google_compute_instance_template_iam_policy": {
+                "current": "gcp:compute/getInstanceTemplateIamPolicy:getInstanceTemplateIamPolicy",
+                "majorVersion": 8
             },
             "google_compute_lb_ip_ranges": {
                 "current": "gcp:compute/getLBIPRanges:getLBIPRanges",
@@ -34747,6 +34908,15 @@
                 "current": "gcp:kms/getKeyHandle:getKeyHandle",
                 "majorVersion": 8
             },
+            "google_kms_key_handles": {
+                "current": "gcp:kms/getKeyHandles:getKeyHandles",
+                "majorVersion": 8,
+                "fields": {
+                    "key_handles": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "google_kms_key_ring": {
                 "current": "gcp:kms/getKMSKeyRing:getKMSKeyRing",
                 "majorVersion": 8
@@ -35199,12 +35369,46 @@
                 "current": "gcp:organizations/getOrganization:getOrganization",
                 "majorVersion": 8
             },
+            "google_organizations": {
+                "current": "gcp:organizations/getS:getS",
+                "majorVersion": 8,
+                "fields": {
+                    "organizations": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
+            "google_parameter_manager_parameter": {
+                "current": "gcp:parametermanager/getParameter:getParameter",
+                "majorVersion": 8,
+                "fields": {
+                    "policy_member": {
+                        "maxItemsOne": false
+                    }
+                }
+            },
             "google_parameter_manager_regional_parameter": {
                 "current": "gcp:parametermanager/getRegionalParameter:getRegionalParameter",
                 "majorVersion": 8,
                 "fields": {
                     "policy_member": {
                         "maxItemsOne": false
+                    }
+                }
+            },
+            "google_parameter_manager_regional_parameters": {
+                "current": "gcp:parametermanager/getRegionalParameters:getRegionalParameters",
+                "majorVersion": 8,
+                "fields": {
+                    "parameters": {
+                        "maxItemsOne": false,
+                        "elem": {
+                            "fields": {
+                                "policy_member": {
+                                    "maxItemsOne": false
+                                }
+                            }
+                        }
                     }
                 }
             },
@@ -35599,6 +35803,9 @@
                         "elem": {
                             "fields": {
                                 "aws_kinesis": {
+                                    "maxItemsOne": false
+                                },
+                                "azure_event_hubs": {
                                     "maxItemsOne": false
                                 },
                                 "cloud_storage": {
@@ -36791,6 +36998,10 @@
                 "effective_labels",
                 "terraform_labels"
             ],
+            "google_apihub_api_hub_instance": [
+                "effective_labels",
+                "terraform_labels"
+            ],
             "google_artifact_registry_repository": [
                 "effective_labels",
                 "terraform_labels"
@@ -36956,6 +37167,10 @@
                 "terraform_labels"
             ],
             "google_compute_interconnect": [
+                "effective_labels",
+                "terraform_labels"
+            ],
+            "google_compute_interconnect_attachment": [
                 "effective_labels",
                 "terraform_labels"
             ],
@@ -37773,9 +37988,17 @@
                 "cloud_vm_clusters.$.effective_labels",
                 "cloud_vm_clusters.$.terraform_labels"
             ],
+            "google_parameter_manager_parameter": [
+                "effective_labels",
+                "terraform_labels"
+            ],
             "google_parameter_manager_regional_parameter": [
                 "effective_labels",
                 "terraform_labels"
+            ],
+            "google_parameter_manager_regional_parameters": [
+                "parameters.$.effective_labels",
+                "parameters.$.terraform_labels"
             ],
             "google_privateca_certificate_authority": [
                 "effective_labels",
@@ -37910,6 +38133,7 @@
             "gcp:apigee/sharedflowDeployment:SharedflowDeployment": 0,
             "gcp:apigee/syncAuthorization:SyncAuthorization": 0,
             "gcp:apigee/targetServer:TargetServer": 0,
+            "gcp:apihub/apiHubInstance:ApiHubInstance": 0,
             "gcp:appengine/application:Application": 0,
             "gcp:appengine/applicationUrlDispatchRules:ApplicationUrlDispatchRules": 0,
             "gcp:appengine/domainMapping:DomainMapping": 0,
@@ -38015,6 +38239,7 @@
             "gcp:chronicle/dataAccessLabel:DataAccessLabel": 0,
             "gcp:chronicle/dataAccessScope:DataAccessScope": 0,
             "gcp:chronicle/referenceList:ReferenceList": 0,
+            "gcp:chronicle/retrohunt:Retrohunt": 0,
             "gcp:chronicle/rule:Rule": 0,
             "gcp:chronicle/ruleDeployment:RuleDeployment": 0,
             "gcp:chronicle/watchlist:Watchlist": 0,
@@ -38074,7 +38299,11 @@
             "gcp:cloudtasks/queueIamBinding:QueueIamBinding": 0,
             "gcp:cloudtasks/queueIamMember:QueueIamMember": 0,
             "gcp:cloudtasks/queueIamPolicy:QueueIamPolicy": 0,
+            "gcp:colab/runtime:Runtime": 0,
             "gcp:colab/runtimeTemplate:RuntimeTemplate": 0,
+            "gcp:colab/runtimeTemplateIamBinding:RuntimeTemplateIamBinding": 0,
+            "gcp:colab/runtimeTemplateIamMember:RuntimeTemplateIamMember": 0,
+            "gcp:colab/runtimeTemplateIamPolicy:RuntimeTemplateIamPolicy": 0,
             "gcp:composer/environment:Environment": 0,
             "gcp:composer/userWorkloadsConfigMap:UserWorkloadsConfigMap": 0,
             "gcp:composer/userWorkloadsSecret:UserWorkloadsSecret": 0,
@@ -38129,6 +38358,9 @@
             "gcp:compute/instanceIAMPolicy:InstanceIAMPolicy": 0,
             "gcp:compute/instanceSettings:InstanceSettings": 0,
             "gcp:compute/instanceTemplate:InstanceTemplate": 0,
+            "gcp:compute/instanceTemplateIamBinding:InstanceTemplateIamBinding": 0,
+            "gcp:compute/instanceTemplateIamMember:InstanceTemplateIamMember": 0,
+            "gcp:compute/instanceTemplateIamPolicy:InstanceTemplateIamPolicy": 0,
             "gcp:compute/interconnect:Interconnect": 0,
             "gcp:compute/interconnectAttachment:InterconnectAttachment": 0,
             "gcp:compute/machineImage:MachineImage": 0,
@@ -38681,6 +38913,7 @@
             "gcp:oslogin/sshPublicKey:SshPublicKey": 0,
             "gcp:parallelstore/instance:Instance": 0,
             "gcp:parametermanager/parameter:Parameter": 0,
+            "gcp:parametermanager/parameterVersion:ParameterVersion": 0,
             "gcp:parametermanager/regionalParameter:RegionalParameter": 0,
             "gcp:parametermanager/regionalParameterVersion:RegionalParameterVersion": 0,
             "gcp:privilegedaccessmanager/entitlement:entitlement": 0,
@@ -38714,6 +38947,7 @@
             "gcp:pubsub/topicIAMPolicy:TopicIAMPolicy": 0,
             "gcp:recaptcha/enterpriseKey:EnterpriseKey": 0,
             "gcp:redis/cluster:Cluster": 0,
+            "gcp:redis/clusterUserCreatedConnections:ClusterUserCreatedConnections": 0,
             "gcp:redis/instance:Instance": 0,
             "gcp:resourcemanager/lien:Lien": 0,
             "gcp:runtimeconfig/config:Config": 0,
@@ -38973,6 +39207,7 @@
             "gcp:cloudrunv2/getService:getService": 0,
             "gcp:cloudrunv2/getServiceIamPolicy:getServiceIamPolicy": 0,
             "gcp:cloudtasks/getQueueIamPolicy:getQueueIamPolicy": 0,
+            "gcp:colab/getRuntimeTemplateIamPolicy:getRuntimeTemplateIamPolicy": 0,
             "gcp:composer/getEnvironment:getEnvironment": 0,
             "gcp:composer/getImageVersions:getImageVersions": 0,
             "gcp:composer/getUserWorkloadsConfigMap:getUserWorkloadsConfigMap": 0,
@@ -39002,6 +39237,7 @@
             "gcp:compute/getInstanceIamPolicy:getInstanceIamPolicy": 0,
             "gcp:compute/getInstanceSerialPort:getInstanceSerialPort": 0,
             "gcp:compute/getInstanceTemplate:getInstanceTemplate": 0,
+            "gcp:compute/getInstanceTemplateIamPolicy:getInstanceTemplateIamPolicy": 0,
             "gcp:compute/getLBIPRanges:getLBIPRanges": 0,
             "gcp:compute/getMachineImageIamPolicy:getMachineImageIamPolicy": 0,
             "gcp:compute/getMachineTypes:getMachineTypes": 0,
@@ -39123,6 +39359,7 @@
             "gcp:kms/getKMSSecretAsymmetric:getKMSSecretAsymmetric": 0,
             "gcp:kms/getKMSSecretCiphertext:getKMSSecretCiphertext": 0,
             "gcp:kms/getKeyHandle:getKeyHandle": 0,
+            "gcp:kms/getKeyHandles:getKeyHandles": 0,
             "gcp:kms/getKeyRingIamPolicy:getKeyRingIamPolicy": 0,
             "gcp:kms/getKeyRings:getKeyRings": 0,
             "gcp:logging/getFolderSettings:getFolderSettings": 0,
@@ -39158,7 +39395,10 @@
             "gcp:organizations/getIAMPolicy:getIAMPolicy": 0,
             "gcp:organizations/getOrganization:getOrganization": 0,
             "gcp:organizations/getProject:getProject": 0,
+            "gcp:organizations/getS:getS": 0,
+            "gcp:parametermanager/getParameter:getParameter": 0,
             "gcp:parametermanager/getRegionalParameter:getRegionalParameter": 0,
+            "gcp:parametermanager/getRegionalParameters:getRegionalParameters": 0,
             "gcp:privilegedaccessmanager/getEntitlement:getEntitlement": 0,
             "gcp:projects/getIamPolicy:getIamPolicy": 0,
             "gcp:projects/getOrganizationPolicy:getOrganizationPolicy": 0,

@@ -1077,7 +1077,7 @@ index 2c406e0c7..8b2d102b8 100644
  
    version {
 diff --git a/website/docs/r/compute_project_metadata_item.html.markdown b/website/docs/r/compute_project_metadata_item.html.markdown
-index 3c624d8fc..a7a982c18 100644
+index ff0556f26..42a358a8a 100644
 --- a/website/docs/r/compute_project_metadata_item.html.markdown
 +++ b/website/docs/r/compute_project_metadata_item.html.markdown
 @@ -8,7 +8,7 @@ description: |-
