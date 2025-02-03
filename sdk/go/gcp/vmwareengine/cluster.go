@@ -34,7 +34,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vmwareengine.NewNetwork(ctx, "cluster-nw", &vmwareengine.NetworkArgs{
+//			cluster_nw, err := vmwareengine.NewNetwork(ctx, "cluster-nw", &vmwareengine.NetworkArgs{
 //				Name:        pulumi.String("pc-nw"),
 //				Type:        pulumi.String("STANDARD"),
 //				Location:    pulumi.String("global"),
@@ -43,7 +43,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vmwareengine.NewPrivateCloud(ctx, "cluster-pc", &vmwareengine.PrivateCloudArgs{
+//			cluster_pc, err := vmwareengine.NewPrivateCloud(ctx, "cluster-pc", &vmwareengine.PrivateCloudArgs{
 //				Location:    pulumi.String("us-west1-a"),
 //				Name:        pulumi.String("sample-pc"),
 //				Description: pulumi.String("Sample test PC."),
@@ -96,7 +96,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vmwareengine.NewNetwork(ctx, "cluster-nw", &vmwareengine.NetworkArgs{
+//			cluster_nw, err := vmwareengine.NewNetwork(ctx, "cluster-nw", &vmwareengine.NetworkArgs{
 //				Name:        pulumi.String("pc-nw"),
 //				Type:        pulumi.String("STANDARD"),
 //				Location:    pulumi.String("global"),
@@ -105,7 +105,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vmwareengine.NewPrivateCloud(ctx, "cluster-pc", &vmwareengine.PrivateCloudArgs{
+//			cluster_pc, err := vmwareengine.NewPrivateCloud(ctx, "cluster-pc", &vmwareengine.PrivateCloudArgs{
 //				Location:    pulumi.String("us-west1-a"),
 //				Name:        pulumi.String("sample-pc"),
 //				Description: pulumi.String("Sample test PC."),

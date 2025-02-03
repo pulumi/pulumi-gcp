@@ -103,7 +103,7 @@ import (
 //				return err
 //			}
 //			// health check
-//			_, err = compute.NewHealthCheck(ctx, "default", &compute.HealthCheckArgs{
+//			_default, err := compute.NewHealthCheck(ctx, "default", &compute.HealthCheckArgs{
 //				Name:             pulumi.String("l7-ilb-hc"),
 //				Project:          serviceProject.ProjectId,
 //				CheckIntervalSec: pulumi.Int(1),
@@ -260,7 +260,7 @@ import (
 //				return err
 //			}
 //			// health check
-//			_, err = compute.NewHealthCheck(ctx, "default", &compute.HealthCheckArgs{
+//			_default, err := compute.NewHealthCheck(ctx, "default", &compute.HealthCheckArgs{
 //				Name:             pulumi.String("l7-ilb-hc"),
 //				Project:          serviceProject.ProjectId,
 //				CheckIntervalSec: pulumi.Int(1),

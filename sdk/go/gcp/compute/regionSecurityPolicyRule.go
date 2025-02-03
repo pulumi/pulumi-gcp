@@ -28,7 +28,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewRegionSecurityPolicy(ctx, "default", &compute.RegionSecurityPolicyArgs{
+//			_default, err := compute.NewRegionSecurityPolicy(ctx, "default", &compute.RegionSecurityPolicyArgs{
 //				Region:      pulumi.String("us-west2"),
 //				Name:        pulumi.String("policyruletest"),
 //				Description: pulumi.String("basic region security policy"),
@@ -75,7 +75,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewRegionSecurityPolicy(ctx, "default", &compute.RegionSecurityPolicyArgs{
+//			_default, err := compute.NewRegionSecurityPolicy(ctx, "default", &compute.RegionSecurityPolicyArgs{
 //				Region:      pulumi.String("us-west2"),
 //				Name:        pulumi.String("policywithmultiplerules"),
 //				Description: pulumi.String("basic region security policy"),
@@ -142,7 +142,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewRegionSecurityPolicy(ctx, "default", &compute.RegionSecurityPolicyArgs{
+//			_default, err := compute.NewRegionSecurityPolicy(ctx, "default", &compute.RegionSecurityPolicyArgs{
 //				Region:      pulumi.String("us-west2"),
 //				Name:        pulumi.String("policywithdefaultrule"),
 //				Description: pulumi.String("basic region security policy"),
@@ -207,7 +207,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewRegionSecurityPolicy(ctx, "default", &compute.RegionSecurityPolicyArgs{
+//			_default, err := compute.NewRegionSecurityPolicy(ctx, "default", &compute.RegionSecurityPolicyArgs{
 //				Region:      pulumi.String("asia-southeast1"),
 //				Name:        pulumi.String("policyruletest"),
 //				Description: pulumi.String("basic region security policy"),
