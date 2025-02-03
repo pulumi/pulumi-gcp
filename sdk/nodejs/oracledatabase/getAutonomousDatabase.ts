@@ -18,7 +18,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my-instance = gcp.oracledatabase.getAutonomousDatabase({
+ * const my_instance = gcp.oracledatabase.getAutonomousDatabase({
  *     location: "us-east4",
  *     autonomousDatabaseId: "autonomous_database_id",
  * });
@@ -91,7 +91,7 @@ export interface GetAutonomousDatabaseResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my-instance = gcp.oracledatabase.getAutonomousDatabase({
+ * const my_instance = gcp.oracledatabase.getAutonomousDatabase({
  *     location: "us-east4",
  *     autonomousDatabaseId: "autonomous_database_id",
  * });

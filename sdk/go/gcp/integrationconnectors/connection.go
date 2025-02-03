@@ -89,7 +89,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = secretmanager.NewSecret(ctx, "secret-basic", &secretmanager.SecretArgs{
+//			secret_basic, err := secretmanager.NewSecret(ctx, "secret-basic", &secretmanager.SecretArgs{
 //				SecretId: pulumi.String("test-secret"),
 //				Replication: &secretmanager.SecretReplicationArgs{
 //					UserManaged: &secretmanager.SecretReplicationUserManagedArgs{
@@ -104,7 +104,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = secretmanager.NewSecretVersion(ctx, "secret-version-basic", &secretmanager.SecretVersionArgs{
+//			secret_version_basic, err := secretmanager.NewSecretVersion(ctx, "secret-version-basic", &secretmanager.SecretVersionArgs{
 //				Secret:     secret_basic.ID(),
 //				SecretData: pulumi.String("dummypassword"),
 //			})

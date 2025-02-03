@@ -43,7 +43,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := organizations.NewProject(ctx, "default", &organizations.ProjectArgs{
+//			_default, err := organizations.NewProject(ctx, "default", &organizations.ProjectArgs{
 //				ProjectId:      pulumi.String("my-project"),
 //				Name:           pulumi.String("my-project"),
 //				OrgId:          pulumi.String("123456789"),

@@ -298,7 +298,7 @@ import (
 //				return err
 //			}
 //			// See https://cloud.google.com/secure-source-manager/docs/create-private-service-connect-instance#root-ca-api
-//			_, err = securesourcemanager.NewInstance(ctx, "default", &securesourcemanager.InstanceArgs{
+//			_default, err := securesourcemanager.NewInstance(ctx, "default", &securesourcemanager.InstanceArgs{
 //				InstanceId: pulumi.String("my-instance"),
 //				Location:   pulumi.String("us-central1"),
 //				PrivateConfig: &securesourcemanager.InstancePrivateConfigArgs{
@@ -549,7 +549,7 @@ import (
 //				return err
 //			}
 //			// See https://cloud.google.com/secure-source-manager/docs/create-private-service-connect-instance#root-ca-api
-//			_, err = securesourcemanager.NewInstance(ctx, "default", &securesourcemanager.InstanceArgs{
+//			_default, err := securesourcemanager.NewInstance(ctx, "default", &securesourcemanager.InstanceArgs{
 //				InstanceId: pulumi.String("my-instance"),
 //				Location:   pulumi.String("us-central1"),
 //				PrivateConfig: &securesourcemanager.InstancePrivateConfigArgs{

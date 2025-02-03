@@ -432,7 +432,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewRouterRoutePolicy(ctx, "rp-export", &compute.RouterRoutePolicyArgs{
+//			rp_export, err := compute.NewRouterRoutePolicy(ctx, "rp-export", &compute.RouterRoutePolicyArgs{
 //				Name:   pulumi.String("my-router-rp-export"),
 //				Router: router.Name,
 //				Region: router.Region,
@@ -458,7 +458,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewRouterRoutePolicy(ctx, "rp-import", &compute.RouterRoutePolicyArgs{
+//			rp_import, err := compute.NewRouterRoutePolicy(ctx, "rp-import", &compute.RouterRoutePolicyArgs{
 //				Name:   pulumi.String("my-router-rp-import"),
 //				Router: router.Name,
 //				Region: router.Region,

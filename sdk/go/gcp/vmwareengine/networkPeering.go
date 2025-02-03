@@ -34,7 +34,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := vmwareengine.NewNetwork(ctx, "network-peering-nw", &vmwareengine.NetworkArgs{
+//			network_peering_nw, err := vmwareengine.NewNetwork(ctx, "network-peering-nw", &vmwareengine.NetworkArgs{
 //				Name:     pulumi.String("default-np-nw"),
 //				Location: pulumi.String("global"),
 //				Type:     pulumi.String("STANDARD"),
@@ -42,7 +42,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vmwareengine.NewNetwork(ctx, "network-peering-peer-nw", &vmwareengine.NetworkArgs{
+//			network_peering_peer_nw, err := vmwareengine.NewNetwork(ctx, "network-peering-peer-nw", &vmwareengine.NetworkArgs{
 //				Name:     pulumi.String("peer-np-nw"),
 //				Location: pulumi.String("global"),
 //				Type:     pulumi.String("STANDARD"),
@@ -84,13 +84,13 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewNetwork(ctx, "network-peering-vpc", &compute.NetworkArgs{
+//			network_peering_vpc, err := compute.NewNetwork(ctx, "network-peering-vpc", &compute.NetworkArgs{
 //				Name: pulumi.String("default-vpc"),
 //			})
 //			if err != nil {
 //				return err
 //			}
-//			_, err = vmwareengine.NewNetwork(ctx, "network-peering-standard-nw", &vmwareengine.NetworkArgs{
+//			network_peering_standard_nw, err := vmwareengine.NewNetwork(ctx, "network-peering-standard-nw", &vmwareengine.NetworkArgs{
 //				Name:     pulumi.String("default-standard-nw-np"),
 //				Location: pulumi.String("global"),
 //				Type:     pulumi.String("STANDARD"),
