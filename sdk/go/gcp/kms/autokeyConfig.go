@@ -117,7 +117,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = kms.NewAutokeyConfig(ctx, "example-autokeyconfig", &kms.AutokeyConfigArgs{
+//			example_autokeyconfig, err := kms.NewAutokeyConfig(ctx, "example-autokeyconfig", &kms.AutokeyConfigArgs{
 //				Folder: autokmsFolder.ID(),
 //				KeyProject: keyProject.ProjectId.ApplyT(func(projectId string) (string, error) {
 //					return fmt.Sprintf("projects/%v", projectId), nil

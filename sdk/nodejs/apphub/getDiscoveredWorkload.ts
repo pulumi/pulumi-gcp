@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my-workload = gcp.apphub.getDiscoveredWorkload({
+ * const my_workload = gcp.apphub.getDiscoveredWorkload({
  *     location: "us-central1",
  *     workloadUri: "my-workload-uri",
  * });
@@ -84,7 +84,7 @@ export interface GetDiscoveredWorkloadResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const my-workload = gcp.apphub.getDiscoveredWorkload({
+ * const my_workload = gcp.apphub.getDiscoveredWorkload({
  *     location: "us-central1",
  *     workloadUri: "my-workload-uri",
  * });

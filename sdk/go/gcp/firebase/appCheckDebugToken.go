@@ -40,7 +40,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := firebase.NewWebApp(ctx, "default", &firebase.WebAppArgs{
+//			_default, err := firebase.NewWebApp(ctx, "default", &firebase.WebAppArgs{
 //				Project:     pulumi.String("my-project-name"),
 //				DisplayName: pulumi.String("Web App for debug token"),
 //			})

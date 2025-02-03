@@ -48,7 +48,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewInstance(ctx, "target-vm", &compute.InstanceArgs{
+//			target_vm, err := compute.NewInstance(ctx, "target-vm", &compute.InstanceArgs{
 //				Name:        pulumi.String("target-vm"),
 //				MachineType: pulumi.String("e2-medium"),
 //				Zone:        pulumi.String("us-central1-a"),
@@ -105,7 +105,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewInstance(ctx, "target-vm", &compute.InstanceArgs{
+//			target_vmInstance, err := compute.NewInstance(ctx, "target-vm", &compute.InstanceArgs{
 //				Name:        pulumi.String("custom-network-target-vm"),
 //				MachineType: pulumi.String("e2-medium"),
 //				Zone:        pulumi.String("us-central1-a"),
@@ -150,7 +150,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
+//			_default, err := compute.NewNetwork(ctx, "default", &compute.NetworkArgs{
 //				Name:                  pulumi.String("custom-default-network"),
 //				AutoCreateSubnetworks: pulumi.Bool(false),
 //				RoutingMode:           pulumi.String("REGIONAL"),
@@ -177,7 +177,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewInstance(ctx, "target-vm", &compute.InstanceArgs{
+//			target_vm, err := compute.NewInstance(ctx, "target-vm", &compute.InstanceArgs{
 //				NetworkInterfaces: compute.InstanceNetworkInterfaceArray{
 //					&compute.InstanceNetworkInterfaceArgs{
 //						AccessConfigs: compute.InstanceNetworkInterfaceAccessConfigArray{
