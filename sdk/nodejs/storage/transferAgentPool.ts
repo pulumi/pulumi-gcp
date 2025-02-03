@@ -23,7 +23,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const default = gcp.storage.getTransferProjectServiceAccount({
+ * const _default = gcp.storage.getTransferProjectServiceAccount({
  *     project: "my-project-name",
  * });
  * const pubsubEditorRole = new gcp.projects.IAMMember("pubsub_editor_role", {

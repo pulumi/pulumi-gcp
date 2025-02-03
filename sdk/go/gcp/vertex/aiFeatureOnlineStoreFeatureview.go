@@ -57,7 +57,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = bigquery.NewDataset(ctx, "tf-test-dataset", &bigquery.DatasetArgs{
+//			tf_test_dataset, err := bigquery.NewDataset(ctx, "tf-test-dataset", &bigquery.DatasetArgs{
 //				DatasetId:    pulumi.String("example_feature_view"),
 //				FriendlyName: pulumi.String("test"),
 //				Description:  pulumi.String("This is a test description"),
@@ -66,7 +66,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = bigquery.NewTable(ctx, "tf-test-table", &bigquery.TableArgs{
+//			tf_test_table, err := bigquery.NewTable(ctx, "tf-test-table", &bigquery.TableArgs{
 //				DeletionProtection: pulumi.Bool(false),
 //				DatasetId:          tf_test_dataset.DatasetId,
 //				TableId:            pulumi.String("example_feature_view"),
@@ -496,7 +496,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = bigquery.NewDataset(ctx, "tf-test-dataset", &bigquery.DatasetArgs{
+//			tf_test_dataset, err := bigquery.NewDataset(ctx, "tf-test-dataset", &bigquery.DatasetArgs{
 //				DatasetId:    pulumi.String("example_feature_view_vector_search"),
 //				FriendlyName: pulumi.String("test"),
 //				Description:  pulumi.String("This is a test description"),
@@ -505,7 +505,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = bigquery.NewTable(ctx, "tf-test-table", &bigquery.TableArgs{
+//			tf_test_table, err := bigquery.NewTable(ctx, "tf-test-table", &bigquery.TableArgs{
 //				DeletionProtection: pulumi.Bool(false),
 //				DatasetId:          tf_test_dataset.DatasetId,
 //				TableId:            pulumi.String("example_feature_view_vector_search"),

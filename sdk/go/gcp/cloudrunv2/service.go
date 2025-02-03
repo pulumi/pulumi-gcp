@@ -126,7 +126,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = secretmanager.NewSecretVersion(ctx, "secret-version-data", &secretmanager.SecretVersionArgs{
+//			secret_version_data, err := secretmanager.NewSecretVersion(ctx, "secret-version-data", &secretmanager.SecretVersionArgs{
 //				Secret:     secret.Name,
 //				SecretData: pulumi.String("secret-data"),
 //			})
@@ -464,7 +464,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = secretmanager.NewSecretVersion(ctx, "secret-version-data", &secretmanager.SecretVersionArgs{
+//			secret_version_data, err := secretmanager.NewSecretVersion(ctx, "secret-version-data", &secretmanager.SecretVersionArgs{
 //				Secret:     secret.Name,
 //				SecretData: pulumi.String("secret-data"),
 //			})

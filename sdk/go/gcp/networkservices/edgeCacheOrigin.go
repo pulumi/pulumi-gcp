@@ -143,7 +143,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := secretmanager.NewSecret(ctx, "secret-basic", &secretmanager.SecretArgs{
+//			secret_basic, err := secretmanager.NewSecret(ctx, "secret-basic", &secretmanager.SecretArgs{
 //				SecretId: pulumi.String("secret-name"),
 //				Replication: &secretmanager.SecretReplicationArgs{
 //					Auto: &secretmanager.SecretReplicationAutoArgs{},
@@ -152,7 +152,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = secretmanager.NewSecretVersion(ctx, "secret-version-basic", &secretmanager.SecretVersionArgs{
+//			secret_version_basic, err := secretmanager.NewSecretVersion(ctx, "secret-version-basic", &secretmanager.SecretVersionArgs{
 //				Secret:     secret_basic.ID(),
 //				SecretData: pulumi.String("secret-data"),
 //			})

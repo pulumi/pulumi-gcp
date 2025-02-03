@@ -20,7 +20,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const project-sink = gcp.logging.getSink({
+ * const project_sink = gcp.logging.getSink({
  *     id: "projects/0123456789/sinks/my-sink-name",
  * });
  * ```
@@ -100,7 +100,7 @@ export interface GetSinkResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const project-sink = gcp.logging.getSink({
+ * const project_sink = gcp.logging.getSink({
  *     id: "projects/0123456789/sinks/my-sink-name",
  * });
  * ```

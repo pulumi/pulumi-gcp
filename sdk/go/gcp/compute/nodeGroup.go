@@ -41,7 +41,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewNodeTemplate(ctx, "soletenant-tmpl", &compute.NodeTemplateArgs{
+//			soletenant_tmpl, err := compute.NewNodeTemplate(ctx, "soletenant-tmpl", &compute.NodeTemplateArgs{
 //				Name:     pulumi.String("soletenant-tmpl"),
 //				Region:   pulumi.String("us-central1"),
 //				NodeType: pulumi.String("n1-node-96-624"),
@@ -78,7 +78,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewNodeTemplate(ctx, "soletenant-tmpl", &compute.NodeTemplateArgs{
+//			soletenant_tmpl, err := compute.NewNodeTemplate(ctx, "soletenant-tmpl", &compute.NodeTemplateArgs{
 //				Name:     pulumi.String("soletenant-tmpl"),
 //				Region:   pulumi.String("us-central1"),
 //				NodeType: pulumi.String("c2-node-60-240"),
@@ -116,7 +116,7 @@ import (
 //
 //	func main() {
 //		pulumi.Run(func(ctx *pulumi.Context) error {
-//			_, err := compute.NewNodeTemplate(ctx, "soletenant-tmpl", &compute.NodeTemplateArgs{
+//			soletenant_tmpl, err := compute.NewNodeTemplate(ctx, "soletenant-tmpl", &compute.NodeTemplateArgs{
 //				Name:     pulumi.String("soletenant-tmpl"),
 //				Region:   pulumi.String("us-central1"),
 //				NodeType: pulumi.String("n1-node-96-624"),
@@ -172,7 +172,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = compute.NewNodeTemplate(ctx, "soletenant-tmpl", &compute.NodeTemplateArgs{
+//			soletenant_tmpl, err := compute.NewNodeTemplate(ctx, "soletenant-tmpl", &compute.NodeTemplateArgs{
 //				Name:     pulumi.String("soletenant-tmpl"),
 //				Region:   pulumi.String("us-central1"),
 //				NodeType: pulumi.String("n1-node-96-624"),

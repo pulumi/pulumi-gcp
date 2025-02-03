@@ -57,7 +57,7 @@ import (
 //				return err
 //			}
 //			// redis cluster without endpoint
-//			_, err = redis.NewCluster(ctx, "cluster-user-conn", &redis.ClusterArgs{
+//			cluster_user_connCluster, err := redis.NewCluster(ctx, "cluster-user-conn", &redis.ClusterArgs{
 //				Name:                      pulumi.String("cluster-user-conn"),
 //				ShardCount:                pulumi.Int(3),
 //				Region:                    pulumi.String("us-central1"),
@@ -294,7 +294,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = networkconnectivity.NewServiceConnectionPolicy(ctx, "default", &networkconnectivity.ServiceConnectionPolicyArgs{
+//			_default, err := networkconnectivity.NewServiceConnectionPolicy(ctx, "default", &networkconnectivity.ServiceConnectionPolicyArgs{
 //				Name:         pulumi.String("scpolicy"),
 //				Location:     pulumi.String("us-central1"),
 //				ServiceClass: pulumi.String("gcp-memorystore-redis"),
@@ -310,7 +310,7 @@ import (
 //				return err
 //			}
 //			// redis cluster without endpoint
-//			_, err = redis.NewCluster(ctx, "cluster-user-auto-conn", &redis.ClusterArgs{
+//			cluster_user_auto_connCluster, err := redis.NewCluster(ctx, "cluster-user-auto-conn", &redis.ClusterArgs{
 //				Name:                      pulumi.String("cluster-user-auto-conn"),
 //				ShardCount:                pulumi.Int(3),
 //				Region:                    pulumi.String("us-central1"),
