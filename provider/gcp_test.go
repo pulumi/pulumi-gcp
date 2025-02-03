@@ -167,6 +167,27 @@ func TestPreConfigureCallbackNoWarningWhenNoProjectConfigSet(t *testing.T) {
 	}, nil))
 }
 
+// TestPreConfigureCallbackNoWarningWhenNoProjectConfigSetMistyped checks that we still
+// skip the warning when Pulumi string-encodes the bool value.
+//
+// Repro for https://github.com/pulumi/pulumi-gcp/issues/2928
+func TestPreConfigureCallbackNoWarningWhenNoProjectConfigSetMistyped(t *testing.T) {
+	t.Parallel()
+	if testing.Short() {
+		t.Skipf("Skipping in testing.Short() mode, assuming this is a CI run without GCP creds")
+	}
+
+	expectedLogs := &expectLogs{t, nil}
+	defer expectedLogs.assertDone()
+
+	ctx := testutil.InitLogging(t, context.Background(), expectedLogs)
+	callback := preConfigureCallbackWithLogger(new(atomic.Bool), nil)
+
+	assert.NoError(t, callback(ctx, nil, resource.PropertyMap{
+		"disableGlobalProjectWarning": resource.NewProperty("true"),
+	}, nil))
+}
+
 func TestPreConfigureCallbackNoWarningWhenProjectSet(t *testing.T) {
 	t.Parallel()
 	if testing.Short() {
