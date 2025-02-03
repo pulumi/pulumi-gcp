@@ -48,7 +48,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = firebase.NewAndroidApp(ctx, "default", &firebase.AndroidAppArgs{
+//			_default, err := firebase.NewAndroidApp(ctx, "default", &firebase.AndroidAppArgs{
 //				Project:     pulumi.String("my-project-name"),
 //				DisplayName: pulumi.String("Play Integrity app"),
 //				PackageName: pulumi.String("package.name.playintegrity"),
@@ -111,7 +111,7 @@ import (
 //			if err != nil {
 //				return err
 //			}
-//			_, err = firebase.NewAndroidApp(ctx, "default", &firebase.AndroidAppArgs{
+//			_default, err := firebase.NewAndroidApp(ctx, "default", &firebase.AndroidAppArgs{
 //				Project:     pulumi.String("my-project-name"),
 //				DisplayName: pulumi.String("Play Integrity app"),
 //				PackageName: pulumi.String("package.name.playintegrity"),

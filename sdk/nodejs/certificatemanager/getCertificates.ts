@@ -15,7 +15,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const default = gcp.certificatemanager.getCertificates({});
+ * const _default = gcp.certificatemanager.getCertificates({});
  * ```
  *
  * ### With A Filter
@@ -24,7 +24,7 @@ import * as utilities from "../utilities";
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const default = gcp.certificatemanager.getCertificates({
+ * const _default = gcp.certificatemanager.getCertificates({
  *     filter: "name:projects/PROJECT_ID/locations/REGION/certificates/certificate-name-*",
  * });
  * ```
@@ -73,7 +73,7 @@ export interface GetCertificatesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const default = gcp.certificatemanager.getCertificates({});
+ * const _default = gcp.certificatemanager.getCertificates({});
  * ```
  *
  * ### With A Filter
@@ -82,7 +82,7 @@ export interface GetCertificatesResult {
  * import * as pulumi from "@pulumi/pulumi";
  * import * as gcp from "@pulumi/gcp";
  *
- * const default = gcp.certificatemanager.getCertificates({
+ * const _default = gcp.certificatemanager.getCertificates({
  *     filter: "name:projects/PROJECT_ID/locations/REGION/certificates/certificate-name-*",
  * });
  * ```
